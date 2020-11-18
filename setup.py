@@ -71,7 +71,6 @@ enable_pumi = False
 pumi_prefix = ''
 enable_strumpack = False
 strumpack_prefix = ''
-skip_ext = False
 
 dry_run = -1
 
@@ -588,17 +587,27 @@ def configure_install(self):
         except ImportError:
             assert False, "Can not import mpi4py"
 
+    if self.mfem_prefix_no_swig != '':
+        self.mfem_prefix = self.mfem_prefix_no_swig
+
     if self.mfem_prefix != '':
         mfem_prefix = abspath(self.mfem_prefix)
         mfems_prefix = abspath(self.mfem_prefix)
         mfemp_prefix = abspath(self.mfem_prefix)
-        
+
         path = os.path.join(mfem_prefix, 'lib', 'libmfem'+dylibext)
         assert os.path.exists(path), "libmfem.so is not found in the specified <path>/lib"
         build_mfem = False
         hypre_prefix = mfem_prefix
         metis_prefix = mfem_prefix
-        clean_swig = True
+
+        if self.mfem_prefix_no_swig != '':
+            clean_swig = False
+            run_swig = False
+        else:
+            clean_swig = True
+            run_swig = True
+
     else:
         build_mfem = True
         build_mfemp = build_parallel
@@ -622,6 +631,8 @@ def configure_install(self):
         assert os.path.exists(path), "libmetis.so is not found in the specified <path>/lib"
         build_metis = False
 
+    if enable_pumi: run_swig = True
+    if enable_strumpack : run_swig = True    
     if self.pumi_prefix != '':
         pumi_prefix = abspath(self.pumi_prefix)
     else:
@@ -632,6 +643,7 @@ def configure_install(self):
     else:
         strumpack_prefix = mfem_prefix
 
+
     if self.CC != '':
         cc_command = self.CC
     if self.CXX != '':
@@ -640,9 +652,6 @@ def configure_install(self):
         mpicc_command = self.MPICC
     if self.MPICXX != '':
         mpicxx_command = self.MPICXX
-
-    # we call swig whenever extra libraries are specified
-    run_swig = (not build_mfem or enable_pumi or enable_strumpack)
 
     if skip_ext:
         build_metis = False
@@ -690,6 +699,8 @@ class Install(_install):
         ('with-parallel', None, 'Installed both serial and parallel version'),
         ('mfem-prefix=', None, 'Specify locaiton of mfem' +
          'libmfem.so must exits under <mfem-prefix>/lib'),
+        ('mfem-prefix-no-swig=', None, 'Specify locaiton of mfem' +
+         'libmfem.so must exits under <mfem-prefix>/lib witout regenerating SWIG wrapper'),
         ('hypre-prefix=', None, 'Specify locaiton of hypre' +
          'libHYPRE.so must exits under <hypre-prefix>/lib'),
         ('metis-prefix=', None, 'Specify locaiton of metis'+
@@ -717,6 +728,7 @@ class Install(_install):
         self.skip_ext = False
         self.with_parallel = False
         self.mfem_prefix = ''
+        self.mfem_prefix_no_swig = ''                        
         self.metis_prefix = ''
         self.hypre_prefix = ''
 

@@ -1,4 +1,4 @@
-#  MFEM + PyMFEM (MFEM Python wrapper)
+#  PyMFEM (MFEM Python wrapper)
 
 This package (PyMFEM) is Python wrapper for MFEM, which is a high performance finite
 element metod library.(http://mfem.org/).
@@ -7,43 +7,23 @@ Installer downloads a couple of external libraries and build them.
 By default, "pip install mfem" downloads and builds the serial version of MFEM and PyMFEM.
 See more detail below for other configurations
 
-## Install (serial mfem + wrapper)
+## Install
 ```
-pip install mfem --no-binary mfem
+pip install mfem --no-binary mfem   # install serial MFEM + wrapper
 ```
+For other configuration such as parallel version, one has to donwload
+the package and run setup script. For example, this below download
+MFEM, Metis and Hypre and install under <prefix>/mfem
 ```
 $ pip3 download mfem
 (expand tar.gz file and move to the downloaded directory)
-$ python setup.py build  # build mfem and PyMFEM in serial
-$ python setup.py build --with-parallel # build metis/hypre/mfem and PyMFEM in parallel
+$ python setup.py install --with-parallel # build metis/hypre/mfem and PyMFEM in parallel
+```
+For other configurations, see docs/install.txt or help
+```
+$ python setup.py install --help
 ```
 
-## Some install recipes
-* building external (metis/hypre/mfem)
-
-```
-$ python3 setup.py install --prefix=~/sandbox --verbose --ext-only --with-parallel
-```
-
-* building PyMFEM (after --ext-only)
-
-```
-python3 setup.py install --prefix=~/sandbox --verbose --skip-ext --with-parallel
-```
-
-* run swig
-
-```
-$ python3 setup.py install --prefix=~/sandbox --verbose --skip-ext --with-parallel --swig
-```
-* clean up all externals
-```
-$ python3 setup.py clean --all-externals
-```
-* choosing compiler
-```
-$ python setup.py build --parallel --CC=xxx, --CXX=xxx, --MPICC=xxx, --MPICXX=xxx
-```
 ## Usage
 Here is an example to solve div(grad(f)) = 1 in squre and to plot the result
 with matplotlib
