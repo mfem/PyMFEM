@@ -87,12 +87,12 @@ tpc = ax1.tripcolor(triang, sol, shading='gouraud')
 fig1.colorbar(tpc)
 plt.show()
 ```
-![](docs/example_image.png)
+![](https://github.com/mfem/PyMFEM/blob/pip_install_dev/docs/example_image.png)
 
 
 ## License
 PyMFEM is licesed under BSD-3.
-Please referre the developers web sites for the external libraries
-MFEM: https://mfem.org/
-Hypre: https://computing.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods
-METIS: http://glaros.dtc.umn.edu/gkhome/metis/metis/overview
+Please refer the developers' web sites for the external libraries
+* MFEM: https://mfem.org/
+* Hypre: https://computing.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods
+* METIS: http://glaros.dtc.umn.edu/gkhome/metis/metis/overview
