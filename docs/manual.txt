@@ -132,6 +132,12 @@ to find more details of the MFEM library.
       QuadratureFunction::Save(std::ostream &out) is wrapped as Save(filename, precision=8)      
 	     
   4-4) mfem::Mesh
+         Simple mesh generator is wrapped as follows
+	     mesh = mfem.Mesh(10, 10, "TRIANGLE")
+	     mesh = mfem.Mesh(10, 10, "QUADRILATERAL")
+	     mesh = mfem.Mesh(10, 10, 10, "HEXAHEDRON")
+	     mesh = mfem.Mesh(10, 10, 10, "TETRAHEDRON")
+	     
          Wrapper of following methods are customized to
 	 return either python list object or tuple of lists or int
 	  
@@ -174,7 +180,10 @@ to find more details of the MFEM library.
               Mesh(int _Dim, int NVert, int NElem, int NBdrElem = 0,
     	           int _spaceDim= -1)
          
-         GetVertexArray can be used to obtain Vertex point data
+         GetVertexArray
+	    GetVertexArray(i) : return i-th vertex as numpy array
+            GetVertexArray()  : return all vertices as 2D numpy array
+	 
 	 as NumPy object
 
          GetBdrElementFace(i) returns tuple
@@ -203,6 +212,8 @@ to find more details of the MFEM library.
          will look for 4 points.
 
          GetScaledJacobian(i, sd) returns minimum Jacobinan computed on in each element.
+
+           
 
   4-5) sparsemat
          RAP has two different implementations. One accept three references.

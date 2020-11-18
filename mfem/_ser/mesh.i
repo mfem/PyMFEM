@@ -332,34 +332,17 @@ namespace mfem{
 	mesh = new mfem::Mesh(imesh, generate_edges, refine, fix_orientation);
 	return mesh;
    }
-   Mesh(int nx, int ny, int nz, const char *type, int generate_edges = 0,
-        double sx = 1.0, double sy = 1.0, double sz = 1.0){
+   Mesh(int nx, int ny, int nz, const char *type, bool generate_edges = 0,
+        double sx = 1.0, double sy = 1.0, double sz = 1.0,
+	bool sfc_ordering = true){
      mfem::Mesh *mesh;     
-     if (std::strcmp(type, "POINT")) {
-	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::POINT,
-			       generate_edges, sx, sy, sz);
-     }
-     else if (std::strcmp(type, "SEGMENT")) {
-	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::SEGMENT,
-			       generate_edges, sx, sy, sz);
-	 
-     }
-     else if (std::strcmp(type, "TRIANGLE")) {
-	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::TRIANGLE,
-			       generate_edges, sx, sy, sz);
-	 
-     }
-     else if (std::strcmp(type, "QUADRILATERAL")) {
-	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::QUADRILATERAL,
-			       generate_edges, sx, sy, sz);
-	 
-     }	 
-     else if (std::strcmp(type, "TETRAHEDRON")) {
+
+     if (std::strcmp(type, "TETRAHEDRON") == 0) {
 	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::TETRAHEDRON,
 			       generate_edges, sx, sy, sz);
 	 
      }	 
-     else if (std::strcmp(type, "HEXAHEDRON")) {
+     else if (std::strcmp(type, "HEXAHEDRON") == 0) {
 	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::HEXAHEDRON,
 			       generate_edges, sx, sy, sz);
 	 
@@ -369,35 +352,16 @@ namespace mfem{
      }
      return mesh;       
    }
-   Mesh(int nx, int ny,  const char *type, int generate_edges = 0,
-        double sx = 1.0, double sy = 1.0){
-     mfem::Mesh *mesh;     
-     if (std::strcmp(type, "POINT")) {
-	 mesh = new mfem::Mesh(nx, ny, mfem::Element::POINT,
-			       generate_edges, sx, sy);
-     }
-     else if (std::strcmp(type, "SEGMENT")) {
-	 mesh = new mfem::Mesh(nx, ny, mfem::Element::SEGMENT,
-			       generate_edges, sx, sy);
-	 
-     }
-     else if (std::strcmp(type, "TRIANGLE")) {
+   Mesh(int nx, int ny,  const char *type, bool generate_edges = 0,
+        double sx = 1.0, double sy = 1.0, bool sfc_ordering = true){
+     mfem::Mesh *mesh;
+     if (std::strcmp(type, "TRIANGLE") == 0) {
 	 mesh = new mfem::Mesh(nx, ny, mfem::Element::TRIANGLE,
 			       generate_edges, sx, sy);
 	 
      }
-     else if (std::strcmp(type, "QUADRILATERAL")) {
+     else if (std::strcmp(type, "QUADRILATERAL") == 0) {
 	 mesh = new mfem::Mesh(nx, ny, mfem::Element::QUADRILATERAL,
-			       generate_edges, sx, sy);
-	 
-     }	 
-     else if (std::strcmp(type, "TETRAHEDRON")) {
-	 mesh = new mfem::Mesh(nx, ny, mfem::Element::TETRAHEDRON,
-			       generate_edges, sx, sy);
-	 
-     }	 
-     else if (std::strcmp(type, "HEXAHEDRON")) {
-	 mesh = new mfem::Mesh(nx, ny,  mfem::Element::HEXAHEDRON,
 			       generate_edges, sx, sy);
 	 
      }	 
@@ -438,6 +402,28 @@ namespace mfem{
      }
      return array;
    }
+   
+   PyObject* GetVertexArray() const
+   {
+     int L = self->SpaceDimension();
+     int NV = self->GetNV();          
+     int n, counter;
+
+     npy_intp dims[] = {NV, L};
+     PyObject *array = PyArray_SimpleNew(2, dims, NPY_DOUBLE);
+     double *x    = (double *)PyArray_DATA(array);
+     counter = 0;
+
+     for (int i = 0; i < NV; i++) {
+          const double *v = self->GetVertex(i);       
+          for (n = 0; n < L; n++) {
+              x[counter] = v[n];
+	      counter++;
+          }
+     }
+     return array;
+   }
+   
    PyObject* GetBdrElementFace(int i) const
    {
      int a;

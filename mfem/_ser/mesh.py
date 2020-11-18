@@ -1128,8 +1128,8 @@ class Mesh(object):
         __init__(Mesh self, std::istream & input, int generate_edges=0, int refine=1, bool fix_orientation=True) -> Mesh
         __init__(Mesh self, mfem::Mesh *[] mesh_array, int num_pieces) -> Mesh
         __init__(Mesh self, Mesh orig_mesh, int ref_factor, int ref_type) -> Mesh
-        __init__(Mesh self, int nx, int ny, int nz, char const * type, int generate_edges=0, double sx=1.0, double sy=1.0, double sz=1.0) -> Mesh
-        __init__(Mesh self, int nx, int ny, char const * type, int generate_edges=0, double sx=1.0, double sy=1.0) -> Mesh
+        __init__(Mesh self, int nx, int ny, int nz, char const * type, bool generate_edges=False, double sx=1.0, double sy=1.0, double sz=1.0, bool sfc_ordering=True) -> Mesh
+        __init__(Mesh self, int nx, int ny, char const * type, bool generate_edges=False, double sx=1.0, double sy=1.0, bool sfc_ordering=True) -> Mesh
         """
         _mesh.Mesh_swiginit(self, _mesh.new_Mesh(*args))
 
@@ -1143,9 +1143,12 @@ class Mesh(object):
         return _mesh.Mesh_GetAttributeArray(self)
     GetAttributeArray = _swig_new_instance_method(_mesh.Mesh_GetAttributeArray)
 
-    def GetVertexArray(self, i):
-        r"""GetVertexArray(Mesh self, int i) -> PyObject *"""
-        return _mesh.Mesh_GetVertexArray(self, i)
+    def GetVertexArray(self, *args):
+        r"""
+        GetVertexArray(Mesh self, int i) -> PyObject
+        GetVertexArray(Mesh self) -> PyObject *
+        """
+        return _mesh.Mesh_GetVertexArray(self, *args)
     GetVertexArray = _swig_new_instance_method(_mesh.Mesh_GetVertexArray)
 
     def GetBdrElementFace(self, *args):
