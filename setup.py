@@ -67,6 +67,7 @@ mfemp_prefix = ''
 metis_prefix = ''
 hypre_prefix = ''
 
+enable_cuda = False
 enable_pumi = False
 pumi_prefix = ''
 enable_strumpack = False
@@ -334,7 +335,10 @@ def cmake_make_mfem(serial=True):
         if enable_pumi:
             cmake_opts['DMFEM_USE_PUMI'] = '1'
             cmake_opts['DPUMI_DIR'] = pumi_prefix
-
+            
+    if enable_cuda:
+        cmake_opts['DMFEM_USE_CUDA'] = '1'
+        
     pwd = chdir(path)
     cmake('..', **cmake_opts)
 
@@ -561,6 +565,7 @@ def configure_install(self):
     global mfems_prefix, mfemp_prefix, metis_prefix, hypre_prefix
     global cc_command, cxx_command, mpicc_command, mpicxx_command
     global metis_64
+    global enable_cuda
     global enable_pumi, pumi_prefix
     global enable_strumpack, strumpack_prefix
 
@@ -579,7 +584,7 @@ def configure_install(self):
     metis_64 = bool(self.with_metis64)
     enable_pumi = bool(self.with_pumi)
     enable_strumpack = bool(self.with_strumpack)
-
+    enable_cuda = bool(self.with_cuda)    
 
     if build_parallel:
         try:
@@ -709,10 +714,11 @@ class Install(_install):
         ('ext-only', None, 'Build metis, hypre, mfem(C++) only'),
         ('skip-ext', None, 'Skip building metis, hypre, mfem(C++) only'),        
 
-        ('CC', None, 'c compiler'),
-        ('CXX', None, 'c++ compiler'),
-        ('MPICC', None, 'mpic compiler'),
-        ('MPICXX', None, 'mpic++ compiler'),
+        ('CC=', None, 'c compiler'),
+        ('CXX=', None, 'c++ compiler'),
+        ('MPICC=', None, 'mpic compiler'),
+        ('MPICXX=', None, 'mpic++ compiler'),
+        ('with-cuda', None, 'enable cuda'),
         ('with-metis64', None, 'use 64bit int in metis'),
         ('with-pumi', None, 'enable pumi (parallel only)'),
         ('pumi-prefix=', None, 'Specify locaiton of pumi'),
@@ -732,6 +738,7 @@ class Install(_install):
         self.metis_prefix = ''
         self.hypre_prefix = ''
 
+        self.with_cuda = False
         self.with_metis64 = False
         self.with_pumi = False
         self.pumi_prefix = ''

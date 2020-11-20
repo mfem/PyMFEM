@@ -10,13 +10,14 @@ See more detail below for other configurations
 ```
 pip install mfem --no-binary mfem   # install serial MFEM + wrapper
 ```
-For other configuration such as parallel version, one has to donwload
-the package and run setup script. For example, this below download
-MFEM, Metis and Hypre and install under <prefix>/mfem
+The setup script accept various options. TO use it, please donwload
+the package and run the script manually. For example, this below download
+and build parallel version of MFEM libray (linked with Metis and Hypre)
+and install under <prefix>/mfem
 ```
 $ pip3 download mfem
 (expand tar.gz file and move to the downloaded directory)
-$ python setup.py install --with-parallel # build metis/hypre/mfem and PyMFEM in parallel
+$ python setup.py install --with-parallel # it download and build metis/hypre/mfem
 ```
 For other configurations, see docs/install.txt or help
 ```
