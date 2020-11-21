@@ -3704,33 +3704,15 @@ SWIG_AsPtr_std_string (PyObject * obj, std::string **val)
   return SWIG_ERROR;
 }
 
-SWIGINTERN mfem::Mesh *new_mfem_Mesh__SWIG_12(int nx,int ny,int nz,char const *type,int generate_edges=0,double sx=1.0,double sy=1.0,double sz=1.0){
+SWIGINTERN mfem::Mesh *new_mfem_Mesh__SWIG_12(int nx,int ny,int nz,char const *type,bool generate_edges=0,double sx=1.0,double sy=1.0,double sz=1.0,bool sfc_ordering=true){
      mfem::Mesh *mesh;     
-     if (std::strcmp(type, "POINT")) {
-	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::POINT,
-			       generate_edges, sx, sy, sz);
-     }
-     else if (std::strcmp(type, "SEGMENT")) {
-	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::SEGMENT,
-			       generate_edges, sx, sy, sz);
-	 
-     }
-     else if (std::strcmp(type, "TRIANGLE")) {
-	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::TRIANGLE,
-			       generate_edges, sx, sy, sz);
-	 
-     }
-     else if (std::strcmp(type, "QUADRILATERAL")) {
-	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::QUADRILATERAL,
-			       generate_edges, sx, sy, sz);
-	 
-     }	 
-     else if (std::strcmp(type, "TETRAHEDRON")) {
+
+     if (std::strcmp(type, "TETRAHEDRON") == 0) {
 	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::TETRAHEDRON,
 			       generate_edges, sx, sy, sz);
 	 
      }	 
-     else if (std::strcmp(type, "HEXAHEDRON")) {
+     else if (std::strcmp(type, "HEXAHEDRON") == 0) {
 	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::HEXAHEDRON,
 			       generate_edges, sx, sy, sz);
 	 
@@ -3740,34 +3722,15 @@ SWIGINTERN mfem::Mesh *new_mfem_Mesh__SWIG_12(int nx,int ny,int nz,char const *t
      }
      return mesh;       
    }
-SWIGINTERN mfem::Mesh *new_mfem_Mesh__SWIG_13(int nx,int ny,char const *type,int generate_edges=0,double sx=1.0,double sy=1.0){
-     mfem::Mesh *mesh;     
-     if (std::strcmp(type, "POINT")) {
-	 mesh = new mfem::Mesh(nx, ny, mfem::Element::POINT,
-			       generate_edges, sx, sy);
-     }
-     else if (std::strcmp(type, "SEGMENT")) {
-	 mesh = new mfem::Mesh(nx, ny, mfem::Element::SEGMENT,
-			       generate_edges, sx, sy);
-	 
-     }
-     else if (std::strcmp(type, "TRIANGLE")) {
+SWIGINTERN mfem::Mesh *new_mfem_Mesh__SWIG_13(int nx,int ny,char const *type,bool generate_edges=0,double sx=1.0,double sy=1.0,bool sfc_ordering=true){
+     mfem::Mesh *mesh;
+     if (std::strcmp(type, "TRIANGLE") == 0) {
 	 mesh = new mfem::Mesh(nx, ny, mfem::Element::TRIANGLE,
 			       generate_edges, sx, sy);
 	 
      }
-     else if (std::strcmp(type, "QUADRILATERAL")) {
+     else if (std::strcmp(type, "QUADRILATERAL") == 0) {
 	 mesh = new mfem::Mesh(nx, ny, mfem::Element::QUADRILATERAL,
-			       generate_edges, sx, sy);
-	 
-     }	 
-     else if (std::strcmp(type, "TETRAHEDRON")) {
-	 mesh = new mfem::Mesh(nx, ny, mfem::Element::TETRAHEDRON,
-			       generate_edges, sx, sy);
-	 
-     }	 
-     else if (std::strcmp(type, "HEXAHEDRON")) {
-	 mesh = new mfem::Mesh(nx, ny,  mfem::Element::HEXAHEDRON,
 			       generate_edges, sx, sy);
 	 
      }	 
@@ -3792,7 +3755,7 @@ SWIGINTERN PyObject *mfem_Mesh_GetAttributeArray(mfem::Mesh const *self){
      }
      return array;
    }
-SWIGINTERN PyObject *mfem_Mesh_GetVertexArray(mfem::Mesh const *self,int i){
+SWIGINTERN PyObject *mfem_Mesh_GetVertexArray__SWIG_0(mfem::Mesh const *self,int i){
      int L = self->SpaceDimension();          
      int n;
      const double *v = self->GetVertex(i);
@@ -3801,6 +3764,25 @@ SWIGINTERN PyObject *mfem_Mesh_GetVertexArray(mfem::Mesh const *self,int i){
      double *x    = (double *)PyArray_DATA(array);
      for (n = 0; n < L; n++) {
         x[n] = v[n];
+     }
+     return array;
+   }
+SWIGINTERN PyObject *mfem_Mesh_GetVertexArray__SWIG_1(mfem::Mesh const *self){
+     int L = self->SpaceDimension();
+     int NV = self->GetNV();          
+     int n, counter;
+
+     npy_intp dims[] = {NV, L};
+     PyObject *array = PyArray_SimpleNew(2, dims, NPY_DOUBLE);
+     double *x    = (double *)PyArray_DATA(array);
+     counter = 0;
+
+     for (int i = 0; i < NV; i++) {
+          const double *v = self->GetVertex(i);       
+          for (n = 0; n < L; n++) {
+              x[counter] = v[n];
+	      counter++;
+          }
      }
      return array;
    }
@@ -16552,22 +16534,27 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_12(PyObject *SWIGUNUSEDPARM(self), Py_
   int arg2 ;
   int arg3 ;
   char *arg4 = (char *) 0 ;
-  int arg5 = (int) 0 ;
+  bool arg5 = (bool) 0 ;
   double arg6 = (double) 1.0 ;
   double arg7 = (double) 1.0 ;
   double arg8 = (double) 1.0 ;
+  bool arg9 = (bool) true ;
   int res4 ;
   char *buf4 = 0 ;
   int alloc4 = 0 ;
+  bool val5 ;
+  int ecode5 = 0 ;
   double val6 ;
   int ecode6 = 0 ;
   double val7 ;
   int ecode7 = 0 ;
   double val8 ;
   int ecode8 = 0 ;
+  bool val9 ;
+  int ecode9 = 0 ;
   mfem::Mesh *result = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 8)) SWIG_fail;
+  if ((nobjs < 4) || (nobjs > 9)) SWIG_fail;
   {
     if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
@@ -16592,12 +16579,11 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_12(PyObject *SWIGUNUSEDPARM(self), Py_
   }
   arg4 = reinterpret_cast< char * >(buf4);
   if (swig_obj[4]) {
-    {
-      if ((PyArray_PyIntAsInt(swig_obj[4]) == -1) && PyErr_Occurred()) {
-        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-      };  
-      arg5 = PyArray_PyIntAsInt(swig_obj[4]);
-    }
+    ecode5 = SWIG_AsVal_bool(swig_obj[4], &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_Mesh" "', argument " "5"" of type '" "bool""'");
+    } 
+    arg5 = static_cast< bool >(val5);
   }
   if (swig_obj[5]) {
     ecode6 = SWIG_AsVal_double(swig_obj[5], &val6);
@@ -16620,9 +16606,16 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_12(PyObject *SWIGUNUSEDPARM(self), Py_
     } 
     arg8 = static_cast< double >(val8);
   }
+  if (swig_obj[8]) {
+    ecode9 = SWIG_AsVal_bool(swig_obj[8], &val9);
+    if (!SWIG_IsOK(ecode9)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode9), "in method '" "new_Mesh" "', argument " "9"" of type '" "bool""'");
+    } 
+    arg9 = static_cast< bool >(val9);
+  }
   {
     try {
-      result = (mfem::Mesh *)new_mfem_Mesh__SWIG_12(arg1,arg2,arg3,(char const *)arg4,arg5,arg6,arg7,arg8); 
+      result = (mfem::Mesh *)new_mfem_Mesh__SWIG_12(arg1,arg2,arg3,(char const *)arg4,arg5,arg6,arg7,arg8,arg9); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -16642,19 +16635,24 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_13(PyObject *SWIGUNUSEDPARM(self), Py_
   int arg1 ;
   int arg2 ;
   char *arg3 = (char *) 0 ;
-  int arg4 = (int) 0 ;
+  bool arg4 = (bool) 0 ;
   double arg5 = (double) 1.0 ;
   double arg6 = (double) 1.0 ;
+  bool arg7 = (bool) true ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
   double val5 ;
   int ecode5 = 0 ;
   double val6 ;
   int ecode6 = 0 ;
+  bool val7 ;
+  int ecode7 = 0 ;
   mfem::Mesh *result = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 6)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 7)) SWIG_fail;
   {
     if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
@@ -16673,12 +16671,11 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_13(PyObject *SWIGUNUSEDPARM(self), Py_
   }
   arg3 = reinterpret_cast< char * >(buf3);
   if (swig_obj[3]) {
-    {
-      if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-      };  
-      arg4 = PyArray_PyIntAsInt(swig_obj[3]);
-    }
+    ecode4 = SWIG_AsVal_bool(swig_obj[3], &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Mesh" "', argument " "4"" of type '" "bool""'");
+    } 
+    arg4 = static_cast< bool >(val4);
   }
   if (swig_obj[4]) {
     ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
@@ -16694,9 +16691,16 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_13(PyObject *SWIGUNUSEDPARM(self), Py_
     } 
     arg6 = static_cast< double >(val6);
   }
+  if (swig_obj[6]) {
+    ecode7 = SWIG_AsVal_bool(swig_obj[6], &val7);
+    if (!SWIG_IsOK(ecode7)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "new_Mesh" "', argument " "7"" of type '" "bool""'");
+    } 
+    arg7 = static_cast< bool >(val7);
+  }
   {
     try {
-      result = (mfem::Mesh *)new_mfem_Mesh__SWIG_13(arg1,arg2,(char const *)arg3,arg4,arg5,arg6); 
+      result = (mfem::Mesh *)new_mfem_Mesh__SWIG_13(arg1,arg2,(char const *)arg3,arg4,arg5,arg6,arg7); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -16957,7 +16961,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       }
     }
   }
-  if ((argc >= 3) && (argc <= 6)) {
+  if ((argc >= 3) && (argc <= 7)) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
@@ -16984,12 +16988,8 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
             return _wrap_new_Mesh__SWIG_13(self, argc, argv);
           }
           {
-            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
-              PyErr_Clear();
-              _v = 0;
-            } else {
-              _v = 1;    
-            }
+            int res = SWIG_AsVal_bool(argv[3], NULL);
+            _v = SWIG_CheckState(res);
           }
           if (_v) {
             if (argc <= 4) {
@@ -17008,7 +17008,16 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
                 _v = SWIG_CheckState(res);
               }
               if (_v) {
-                return _wrap_new_Mesh__SWIG_13(self, argc, argv);
+                if (argc <= 6) {
+                  return _wrap_new_Mesh__SWIG_13(self, argc, argv);
+                }
+                {
+                  int res = SWIG_AsVal_bool(argv[6], NULL);
+                  _v = SWIG_CheckState(res);
+                }
+                if (_v) {
+                  return _wrap_new_Mesh__SWIG_13(self, argc, argv);
+                }
               }
             }
           }
@@ -17061,7 +17070,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       }
     }
   }
-  if ((argc >= 4) && (argc <= 8)) {
+  if ((argc >= 4) && (argc <= 9)) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
@@ -17097,12 +17106,8 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
               return _wrap_new_Mesh__SWIG_12(self, argc, argv);
             }
             {
-              if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
-                PyErr_Clear();
-                _v = 0;
-              } else {
-                _v = 1;    
-              }
+              int res = SWIG_AsVal_bool(argv[4], NULL);
+              _v = SWIG_CheckState(res);
             }
             if (_v) {
               if (argc <= 5) {
@@ -17129,7 +17134,16 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
                     _v = SWIG_CheckState(res);
                   }
                   if (_v) {
-                    return _wrap_new_Mesh__SWIG_12(self, argc, argv);
+                    if (argc <= 8) {
+                      return _wrap_new_Mesh__SWIG_12(self, argc, argv);
+                    }
+                    {
+                      int res = SWIG_AsVal_bool(argv[8], NULL);
+                      _v = SWIG_CheckState(res);
+                    }
+                    if (_v) {
+                      return _wrap_new_Mesh__SWIG_12(self, argc, argv);
+                    }
                   }
                 }
               }
@@ -17302,8 +17316,8 @@ fail:
     "    mfem::Mesh::Mesh(std::istream &,int,int,bool)\n"
     "    mfem::Mesh::Mesh(mfem::Mesh *[],int)\n"
     "    mfem::Mesh::Mesh(mfem::Mesh *,int,int)\n"
-    "    mfem::Mesh::Mesh(int,int,int,char const *,int,double,double,double)\n"
-    "    mfem::Mesh::Mesh(int,int,char const *,int,double,double)\n");
+    "    mfem::Mesh::Mesh(int,int,int,char const *,bool,double,double,double,bool)\n"
+    "    mfem::Mesh::Mesh(int,int,char const *,bool,double,double,bool)\n");
   return 0;
 }
 
@@ -17389,34 +17403,29 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Mesh_GetVertexArray(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_Mesh_GetVertexArray__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"i",  NULL 
-  };
   PyObject *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Mesh_GetVertexArray", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_GetVertexArray" "', argument " "1"" of type '" "mfem::Mesh const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(obj1);
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
   }
   {
     try {
-      result = (PyObject *)mfem_Mesh_GetVertexArray((mfem::Mesh const *)arg1,arg2); 
+      result = (PyObject *)mfem_Mesh_GetVertexArray__SWIG_0((mfem::Mesh const *)arg1,arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -17426,6 +17435,80 @@ SWIGINTERN PyObject *_wrap_Mesh_GetVertexArray(PyObject *SWIGUNUSEDPARM(self), P
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_GetVertexArray__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_GetVertexArray" "', argument " "1"" of type '" "mfem::Mesh const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  {
+    try {
+      result = (PyObject *)mfem_Mesh_GetVertexArray__SWIG_1((mfem::Mesh const *)arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = result;
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_GetVertexArray(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "Mesh_GetVertexArray", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_Mesh_GetVertexArray__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_Mesh_GetVertexArray__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Mesh_GetVertexArray'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Mesh::GetVertexArray(int) const\n"
+    "    mfem::Mesh::GetVertexArray() const\n");
+  return 0;
 }
 
 
@@ -20003,12 +20086,15 @@ static PyMethodDef SwigMethods[] = {
 		"Mesh(std::istream & input, int generate_edges=0, int refine=1, bool fix_orientation=True)\n"
 		"Mesh(mfem::Mesh *[] mesh_array, int num_pieces)\n"
 		"Mesh(Mesh orig_mesh, int ref_factor, int ref_type)\n"
-		"Mesh(int nx, int ny, int nz, char const * type, int generate_edges=0, double sx=1.0, double sy=1.0, double sz=1.0)\n"
-		"new_Mesh(int nx, int ny, char const * type, int generate_edges=0, double sx=1.0, double sy=1.0) -> Mesh\n"
+		"Mesh(int nx, int ny, int nz, char const * type, bool generate_edges=False, double sx=1.0, double sy=1.0, double sz=1.0, bool sfc_ordering=True)\n"
+		"new_Mesh(int nx, int ny, char const * type, bool generate_edges=False, double sx=1.0, double sy=1.0, bool sfc_ordering=True) -> Mesh\n"
 		""},
 	 { "Mesh_PrintToFile", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintToFile, METH_VARARGS|METH_KEYWORDS, "Mesh_PrintToFile(Mesh self, char const * mesh_file, int const precision)"},
 	 { "Mesh_GetAttributeArray", _wrap_Mesh_GetAttributeArray, METH_O, "Mesh_GetAttributeArray(Mesh self) -> PyObject *"},
-	 { "Mesh_GetVertexArray", (PyCFunction)(void(*)(void))_wrap_Mesh_GetVertexArray, METH_VARARGS|METH_KEYWORDS, "Mesh_GetVertexArray(Mesh self, int i) -> PyObject *"},
+	 { "Mesh_GetVertexArray", _wrap_Mesh_GetVertexArray, METH_VARARGS, "\n"
+		"Mesh_GetVertexArray(Mesh self, int i) -> PyObject\n"
+		"Mesh_GetVertexArray(Mesh self) -> PyObject *\n"
+		""},
 	 { "Mesh_GetBdrElementFace", _wrap_Mesh_GetBdrElementFace, METH_VARARGS, "\n"
 		"Mesh_GetBdrElementFace(Mesh self, int i, int * arg3, int * arg4)\n"
 		"Mesh_GetBdrElementFace(Mesh self, int i) -> PyObject *\n"
@@ -20359,12 +20445,15 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Mesh(std::istream & input, int generate_edges=0, int refine=1, bool fix_orientation=True)\n"
 		"Mesh(mfem::Mesh *[] mesh_array, int num_pieces)\n"
 		"Mesh(Mesh orig_mesh, int ref_factor, int ref_type)\n"
-		"Mesh(int nx, int ny, int nz, char const * type, int generate_edges=0, double sx=1.0, double sy=1.0, double sz=1.0)\n"
-		"new_Mesh(int nx, int ny, char const * type, int generate_edges=0, double sx=1.0, double sy=1.0) -> Mesh\n"
+		"Mesh(int nx, int ny, int nz, char const * type, bool generate_edges=False, double sx=1.0, double sy=1.0, double sz=1.0, bool sfc_ordering=True)\n"
+		"new_Mesh(int nx, int ny, char const * type, bool generate_edges=False, double sx=1.0, double sy=1.0, bool sfc_ordering=True) -> Mesh\n"
 		""},
 	 { "Mesh_PrintToFile", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintToFile, METH_VARARGS|METH_KEYWORDS, "PrintToFile(Mesh self, char const * mesh_file, int const precision)"},
 	 { "Mesh_GetAttributeArray", _wrap_Mesh_GetAttributeArray, METH_O, "GetAttributeArray(Mesh self) -> PyObject *"},
-	 { "Mesh_GetVertexArray", (PyCFunction)(void(*)(void))_wrap_Mesh_GetVertexArray, METH_VARARGS|METH_KEYWORDS, "GetVertexArray(Mesh self, int i) -> PyObject *"},
+	 { "Mesh_GetVertexArray", _wrap_Mesh_GetVertexArray, METH_VARARGS, "\n"
+		"GetVertexArray(Mesh self, int i) -> PyObject\n"
+		"GetVertexArray(Mesh self) -> PyObject *\n"
+		""},
 	 { "Mesh_GetBdrElementFace", _wrap_Mesh_GetBdrElementFace, METH_VARARGS, "\n"
 		"GetBdrElementFace(Mesh self, int i, int * arg3, int * arg4)\n"
 		"GetBdrElementFace(Mesh self, int i) -> PyObject *\n"

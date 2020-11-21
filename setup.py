@@ -68,6 +68,7 @@ metis_prefix = ''
 hypre_prefix = ''
 
 enable_cuda = False
+cuda_prefix = ''
 enable_pumi = False
 pumi_prefix = ''
 enable_strumpack = False
@@ -396,13 +397,15 @@ def write_setup_local():
 
     def add_extra(xxx):
         params['add_' + xxx] = '1'
-        params[xxx + 'inc'] = os.path.join(xxx + '_prefix', 'include')
-        params[xxx + 'lib'] = os.path.join(xxx + '_prefix', 'lib')
+        params[xxx + 'inc'] = os.path.join(globals()[xxx + '_prefix'], 'include')
+        params[xxx + 'lib'] = os.path.join(globals()[xxx + '_prefix'], 'lib')
 
     if enable_pumi:
         add_extra('pumi')
     if enable_strumpack:
         add_extra('strumpack')
+    if enable_cuda:
+        add_extra('cuda')
 
 
     pwd = chdir(rootdir)
@@ -565,7 +568,7 @@ def configure_install(self):
     global mfems_prefix, mfemp_prefix, metis_prefix, hypre_prefix
     global cc_command, cxx_command, mpicc_command, mpicxx_command
     global metis_64
-    global enable_cuda
+    global enable_cuda, cuda_prefix
     global enable_pumi, pumi_prefix
     global enable_strumpack, strumpack_prefix
 
@@ -578,7 +581,7 @@ def configure_install(self):
     swig_only = bool(self.swig)
     ext_only = bool(self.ext_only)
     build_serial = (not swig_only and not ext_only)
-    run_swig = False
+    run_swig = swig_only
 
     build_parallel = bool(self.with_parallel)     # controlls PyMFEM parallel
     metis_64 = bool(self.with_metis64)
@@ -648,6 +651,9 @@ def configure_install(self):
     else:
         strumpack_prefix = mfem_prefix
 
+    if enable_cuda:
+        nvcc = find_command('nvcc')
+        cuda_prefix = os.path.dirname(os.path.dirname(nvcc))
 
     if self.CC != '':
         cc_command = self.CC
@@ -760,8 +766,11 @@ class Install(_install):
         if not is_configured:
             configure_install(self)
             print_config()
-            
-        _install.run(self)
+
+        if swig_only:
+            self.run_command("build")
+        else:
+            _install.run(self)
 
 class BuildPy(_build_py):
     '''
@@ -775,10 +784,7 @@ class BuildPy(_build_py):
         _build_py.finalize_options(self)
 
     def run(self):
-        if swig_only:
-            generate_wrapper()
-
-        else:
+        if not swig_only:            
             if build_metis:
                 download('metis')
                 make_metis(use_int64=metis_64)
@@ -800,6 +806,8 @@ class BuildPy(_build_py):
             clean_wrapper()
         if run_swig:
             generate_wrapper()
+            if swig_only:
+                return
 
         if build_serial:
             make_mfem_wrapper(serial=True)
@@ -846,7 +854,7 @@ class Clean(_clean):
         ('metis', None, 'clean metis'),
         ('hypre', None, 'clean hypre'),
         ('swig', None,  'clean swig'),        
-        ('all-ext', None, 'delete all externals'),
+        ('all-exts', None, 'delete all externals'),
         ]
 
     def initialize_options(self):

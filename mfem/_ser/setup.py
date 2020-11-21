@@ -49,6 +49,9 @@ include_dirs = [mfemserbuilddir, mfemserincdir, numpyinc, ]
 library_dirs = [mfemserlnkdir,]
 libraries    = ['mfem']
 
+if add_cuda:
+    include_dirs = [mfemserbuilddir, mfemserincdir, numpyinc, cudainc]    
+
 extra_compile_args = [cxx11flag, '-DSWIG_TYPE_TABLE=PyMFEM']
 
 import six

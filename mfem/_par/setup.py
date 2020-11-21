@@ -79,6 +79,9 @@ if add_strumpack:
         include_dirs.append(strumpackinc)
     if strumpacklib != "":
         library_dirs.append(strumpacklib)
+        
+if add_cuda:
+    include_dirs.append(cudainc)
 
 import six
 if six.PY3:

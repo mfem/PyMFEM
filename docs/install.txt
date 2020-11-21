@@ -38,7 +38,21 @@ $ python3 setup.py install --prefix=~/sandbox --verbose --skip-ext --with-parall
 $ python3 setup.py clean --all-externals
 
 * choosing compiler
-$ python setup.py build --parallel --CC=xxx, --CXX=xxx, --MPICC=xxx, --MPICXX=xxx
+$ python setup.py install --parallel --CC=xxx, --CXX=xxx, --MPICC=xxx, --MPICXX=xxx
+
+
+* cuda
+$ python3 setup.py install  --prefix=~/sandbox  --verbose --with-cuda
+
+Note Cuda support is only partially tested. One may want to build it step-by-step.
+# build MFEM library with cuda
+$ python3 setup.py install  --prefix=~/sandbox  --verbose --ext-only --with-cuda (--with-paralle)
+# build Wrapper
+$ python3 setup.py install  --prefix=~/sandbox  --verbose --skip-ext --with-cuda
+# One may need to regenerate wrapper
+$ touch mfem/*/*.i
+$ python3 setup.py install  --prefix=~/sandbox  --verbose --swig
+
 
 
 

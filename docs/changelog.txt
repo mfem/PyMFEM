@@ -1,4 +1,11 @@
 	<<<  Change Log. >>>
+2020 11.21
+        * cuda build is tested
+	* In solver.hpp, many routines takes Operator &, but FormLinearSystem
+	  takes OperatorHandle. A new typemap (operator_ptr_typemap) is added to
+	  call OperatorHandle -> Ptr() inside the wrapper so that one can pass
+	  OperatorHandle to the routines such as SetOperator, PCG and etc.
+	  
 2020 11.05
         * migration to pip install
 	* mesh.GetVertexArray() is added to return the all vertices
