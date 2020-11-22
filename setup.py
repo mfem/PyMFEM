@@ -385,6 +385,7 @@ def write_setup_local():
               'mfemserlnkdir': os.path.join(mfemser, 'lib'),
               'add_pumi': '',
               'add_strumpack': '',
+              'add_cuda': '',              
               'cxx11flag': cxx11_flag,
               }
 
