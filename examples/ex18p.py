@@ -146,11 +146,11 @@ sol = mfem.ParGridFunction(vfes, u_block.GetData())
 sol.ProjectCoefficient(u0)
 
 smyid = '{:0>6d}'.format(myid)
-pmesh.PrintToFile("vortex-mesh."+smyid, 8)
+pmesh.Print("vortex-mesh."+smyid, 8)
 for k in range(num_equation):
     uk = mfem.ParGridFunction(fes, u_block.GetBlock(k).GetData())
     sol_name = "vortex-" + str(k) + "-init."+smyid
-    uk.SaveToFile(sol_name, 8)            
+    uk.Save(sol_name, 8)            
 
 # 9. Set up the nonlinear form corresponding to the DG discretization of the
 #    flux divergence, and assemble the corresponding mass matrix.
@@ -225,7 +225,7 @@ while not done:
 for k in range(num_equation):
     uk = mfem.ParGridFunction(fes, u_block.GetBlock(k).GetData())
     sol_name = "vortex-" + str(k) + "-final."+smyid
-    uk.SaveToFile(sol_name, 8)            
+    uk.Save(sol_name, 8)            
 
 # 12. Compute the L2 solution error summed for all components.
 #if (t_final == 2.0):

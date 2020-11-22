@@ -215,7 +215,7 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         rel_tol = 1e-8;
         skip_zero_entries = 0;
         ref_density = 1.0
-        self.z = mfem.Vector(self.Height()/2)
+        self.z = mfem.Vector(self.Height()//2)
         self.fespace =  fespace
         self.viscosity = visc
        
@@ -280,7 +280,7 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         self.newton_solver = newton_solver
        
     def Mult(self, vx, vx_dt):    
-        sc = self.Height()/2
+        sc = self.Height()//2
         v = mfem.Vector(vx, 0,  sc)
         x = mfem.Vector(vx, sc,  sc)
         dv_dt = mfem.Vector(dvx_dt, 0, sc)
@@ -293,7 +293,7 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
 #        Print(vx.Size())
 
     def ImplicitSolve(self, dt, vx, dvx_dt):
-        sc = self.Height()/2
+        sc = self.Height()//2
         v = mfem.Vector(vx, 0,  sc)
         x = mfem.Vector(vx, sc,  sc)
         dv_dt = mfem.Vector(dvx_dt, 0, sc)
@@ -355,11 +355,11 @@ while not last_step:
 nodes = x
 owns_nodes = 0
 nodes, owns_nodes = mesh.SwapNodes(nodes, owns_nodes)
-mesh.PrintToFile('deformed.mesh', 8)
+mesh.Print('deformed.mesh', 8)
 mesh.SwapNodes(nodes, owns_nodes)
-v.SaveToFile('velocity.sol', 8)
+v.Save('velocity.sol', 8)
 oper.GetElasticEnergyDensity(x, w)
-w.SaveToFile('elastic_energy.sol',  8)
+w.Save('elastic_energy.sol',  8)
 
 
 

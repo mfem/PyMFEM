@@ -94,23 +94,24 @@ elif (hybridization):
 a.Assemble();
 
 
-A = mfem.SparseMatrix()
+A = mfem.OperatorPtr()
 B = mfem.Vector()
 X = mfem.Vector()
 a.FormLinearSystem(ess_tdof_list, x, b, A, X, B);
 ## Here, original version calls hegith, which is not
 ## defined in the header...!?
-print("Size of linear system: " + str(A.Size())) 
+print("Size of linear system: " + str(A.Height())) 
 
-# 10. Solve 
-M = mfem.GSSmoother(A)
+# 10. Solve
+AA = mfem.OperatorHandle2SparseMatrix(A)
+M = mfem.GSSmoother(AA)
 X.Print("x")
-mfem.PCG(A, M, B, X, 1, 10000, 1e-20, 0.0);
+mfem.PCG(AA, M, B, X, 1, 10000, 1e-20, 0.0);
 
 # 11. Recover the solution as a finite element grid function.
 a.RecoverFEMSolution(X, b, x);
 
 print("|| F_h - F ||_{L^2} = " + str(x.ComputeL2Error(F)))
 
-mesh.PrintToFile('refined.mesh', 8)
-x.SaveToFile('sol.gf', 8)
+mesh.Print('refined.mesh', 8)
+x.Save('sol.gf', 8)

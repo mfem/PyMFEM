@@ -214,8 +214,8 @@ x0.MakeRef(x0_space, x.GetBlock(x0_var), 0);
 
 #  11. Save the refined mesh and the solution. This output can be viewed
 #     later using GLVis: "glvis -m refined.mesh -g sol.gf".      
-mesh.PrintToFile('refined.mesh', 8)
-x0.SaveToFile('sol.gf', 8)
+mesh.Print('refined.mesh', 8)
+x0.Save('sol.gf', 8)
 
 if (visualization):
     sol_sock = mfem.socketstream("localhost", 19916)

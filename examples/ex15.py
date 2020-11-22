@@ -269,13 +269,14 @@ while  (time < t_final + 1e-10):
          ess_tdof_list = intArray()
          fespace.GetEssentialTrueDofs(ess_bdr, ess_tdof_list);
 
-         A = mfem.SparseMatrix()
+         A = mfem.OperatorPtr()              
          B = mfem.Vector()
          X = mfem.Vector()
          a.FormLinearSystem(ess_tdof_list, x, b, A, X, B);
 
-         M = mfem.GSSmoother(A);
-         mfem.PCG(A, M, B, X, 0, 500, 1e-12, 0.0)
+         AA = mfem.OperatorHandle2SparseMatrix(A)              
+         M = mfem.GSSmoother(AA);
+         mfem.PCG(AA, M, B, X, 0, 500, 1e-12, 0.0)
 
          # 17. Extract the local solution on each processor.
          a.RecoverFEMSolution(X, b, x);

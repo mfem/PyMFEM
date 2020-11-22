@@ -11,9 +11,17 @@ from mpi4py import MPI
 import numpy as np
 from numpy import sin, cos, exp
 
+#### time.clock deprecated and removed in PY3.8
+import time
+try:
+    clock = time.process_time
+except AttributeError:
+    clock = time.clock
+
 def pFunc_exact(x):
     xi = float(x[0]); yi = float(x[1]); zi = 0.0
     if len(x) == 3: zi = x[2]
+    from numpy import sin, cos, exp        
     return exp(xi)*sin(yi)*cos(zi)
 
 class uFunc_ex(mfem.VectorPyCoefficient):
@@ -31,13 +39,18 @@ class pFunc_ex(mfem.PyCoefficient):
        return  pFunc_exact(x)
    
 class fFunc(mfem.VectorPyCoefficient):
-   def EvalValue(self, x):    
-       return [0, 0, 0]
+   def EvalValue(self, x):
+       if len(x) == 3:
+           return [0., 0., 0.]
+       else:
+           return [0., 0.]
 
 class gFunc(mfem.PyCoefficient):
    def EvalValue(self, x):
-       if len(x) == 3: return  -pFunc_exact(x)       
-       return 0
+       if len(x) == 3:
+           return  -pFunc_exact(x)
+       else:
+           return 0.0
 class f_natural(mfem.PyCoefficient):
    def EvalValue(self, x):    
        return -pFunc_exact(x)
@@ -96,6 +109,7 @@ rhs = mfem.BlockVector(block_offsets)
 trueX = mfem.BlockVector(block_trueOffsets)
 
 trueRhs = mfem.BlockVector(block_trueOffsets)
+trueRhs.Assign(0.0)
 
 fform = mfem.ParLinearForm()
 fform.Update(R_space, rhs.GetBlock(0), 0)
@@ -152,7 +166,7 @@ darcyPr.SetDiagonalBlock(1, invS);
 maxIter = 500; rtol = 1e-6; atol = 1e-10
 
 import time
-stime = time.clock()
+stime = clock()
 solver = mfem.MINRESSolver(MPI.COMM_WORLD)
 
 solver.SetAbsTol(atol)
@@ -164,7 +178,7 @@ solver.SetPrintLevel(1)
 trueX.Assign(0.0)
 solver.Mult(trueRhs, trueX)
 
-solve_time = time.clock() - stime
+solve_time = clock() - stime
 
 if verbose:
     if solver.GetConverged():

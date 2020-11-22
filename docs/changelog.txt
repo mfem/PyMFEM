@@ -1,0 +1,79 @@
+	<<<  Change Log. >>>
+2020 11.21
+        * cuda build is tested
+	* In solver.hpp, many routines takes Operator &, but FormLinearSystem
+	  takes OperatorHandle. A new typemap (operator_ptr_typemap) is added to
+	  call OperatorHandle -> Ptr() inside the wrapper so that one can pass
+	  OperatorHandle to the routines such as SetOperator, PCG and etc.
+	  
+2020 11.05
+        * migration to pip install
+	* mesh.GetVertexArray() is added to return the all vertices
+	* mesh.Mesh(int, int, "element name") was fixed
+
+2018 09.27
+	* strumpack support is added
+	* ParFiniteElementSpace:: GetSharedEdgeDofs, ParFiniteElementSpace::GetSharedFaceDofs are wrapped to return list
+2018 06.22
+	* regenerate wrapper using MFEM 3.4
+	* In nonlinearfomr.i, a new typemap is introduce to wrap folloing
+	* arguments as list/tuple
+	**  Array<FiniteElementSpace *>
+	**  Array<Array<int>>
+	**  Array<Vector *>
+	* following dynamic cast wrapper is added
+	** Opr2BlockOpr : Operator -> BlockOprator
+	** Opr2SparseMat : Operator -> SparseMatrix
+2018 04.18
+	* update ex10p
+	* CHypreParVec::__mul__, __imul__  are updated to support multiplying
+	complex number
+	* Various fixes in chypre.py
+	* wrapper class regenerated using mfem 324d66b0c7fc75225e830dcfb02647722bae1fe0
+	* INSTALL instruction is updated to mention DMFEM_USE_EXCEPTIONS=1
+	 
+2018 02.12
+	* ParMesh::ParMesh(comm, filename)  
+	* ParMesh::ParPrintToFile(filename) # convinent version of ParPrint
+	* ParGridFunction::ParGridFunction(pmesh, filename)
+        ** this is implemented temporariy in a python proxy class
+	** it will be changed to call C++ constructor when a new version
+	** is released.
+	
+2018 02.02
+	* Vector::Print(filename) and SparseMatrix::Print(filename) are added
+	* chypre.IdentityPyMat is added
+	* chypre.CHypreVec.GlobalVector was rewritten to do allgather on python level.
+2018 01.24
+	* The issue of not raising the type conversion error when int is an argument
+	is fixed
+	* ToHypreParCSR is modified so that it causes hypre_CSRMatrixReorder call when
+	col_starts and row_starts are the same.
+2018 01.20
+	* generating mfem::SparseMatrix from scipy.csr_matrix is added
+	* setting mfem::Vector using numpy array is added
+	* BlockOperator and BlockMatrix keeps a link to offset and operators
+	
+2018 01.03
+	* fiexed mfem.par.InnerProduct. It was overwriten by InnerProduct defined in Vector
+	* EmptySquarePyMat and HStackPyVec are added in chypre.py
+	* DeltaCoefficient is not ignored anymore.
+	
+2017 12.27
+        * Overloaded functions whose definitionsare distributed among several .hpp are
+	  handled by common_functions.i. Such functions include Add, Mult, Transpose,
+	  RAP, and InnerProduct.
+	* Due to above change, add_sparse, add_dense has been removed.
+	* Element access to DenseTensor object is added.
+	* GetDataArray of DenseTensor and DenseMatrix is changed to return a mere
+	  memory view of objects' internal data, instead of copy of data
+     	
+2017 12.03
+	* Rebuild all cxx to work with MFEM 3.3.2
+	* mesh::GetBdrElementAdjacentElement is wrapped to return two integers	
+	
+2017 10.10	chypre.py
+	* CHypreMat::__add__ and CHypreMat::__sub__ was calling CHypreMat without
+ 	  specifing col_parts. 
+
+	

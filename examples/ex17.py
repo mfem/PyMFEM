@@ -229,8 +229,21 @@ X = mfem.Vector()
 a.FormLinearSystem(ess_tdof_list, x, b, A, X, B);
 print('...done')
 
-sys.stdout.flush() # without this, the following output will be out of order....
-A.PrintInfo(sys.stdout)
+
+A.PrintInfo()
+'''
+   Note: extension of ostream &
+
+   A.PrintInfo()               # output to std::cout
+   A.PrintInfo("matrix info")  # output to file 
+
+   Above two are the same as
+
+   from mfem._ser.io_stream import STDOUT, wFILE
+   A.PrintInfo(STDOUT)
+   A.PrintInfo(wFILE("matrix_info"))
+
+'''
 
 # 11. Define a simple symmetric Gauss-Seidel preconditioner and use it to
 #     solve the system Ax=b with PCG for the symmetric formulation, or GMRES
@@ -257,8 +270,9 @@ if (visualization):
 nodes = mesh.GetNodes()
 nodes += x
 x.Neg()
-mesh.PrintToFile('displaced.mesh', 8)
-x.SaveToFile('sol.gf', 8)
+
+mesh.Print('displaced.mesh', 8)
+x.Save('sol.gf', 8)
 
 # 15. Visualization: send data by socket to a GLVis server.
 if (visualization):    

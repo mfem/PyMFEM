@@ -38,9 +38,15 @@ from mfem.common.arg_parser import ArgParser
 from mfem import path
 import mfem.ser as mfem
 
-def_meshfile =expanduser(join(path, 'data', 'star.mesh'))
+import os
+def_meshfile =expanduser(join(os.path.dirname(__file__), '..', 'data', 'star.mesh'))
+
 def run(order = 1, static_cond = False,
-        meshfile = def_meshfile, visualization = False):
+        meshfile = def_meshfile, visualization = False,
+        device='cpu', pa=False):
+
+   device = mfem.Device(device)
+   device.Print()
    
    mesh = mfem.Mesh(meshfile, 1,1)
    dim = mesh.Dimension()
@@ -95,6 +101,8 @@ def run(order = 1, static_cond = False,
    #   corresponding to the Laplacian operator -Delta, by adding the Diffusion
    #   domain integrator.
    a = mfem.BilinearForm(fespace);
+   if pa:
+       a.SetAssemblyLevel(mfem.AssemblyLevel_PARTIAL)
    a.AddDomainIntegrator(mfem.DiffusionIntegrator(one))
    #9. Assemble the bilinear form and the corresponding linear system,
    #   applying any necessary transformations such as: eliminating boundary
@@ -103,21 +111,32 @@ def run(order = 1, static_cond = False,
    if static_cond: a.EnableStaticCondensation()
    a.Assemble();
 
-   A = mfem.SparseMatrix()
+   A = mfem.OperatorPtr()
    B = mfem.Vector()
    X = mfem.Vector()
+   
    a.FormLinearSystem(ess_tdof_list, x, b, A, X, B);
-   print("Size of linear system: " + str(A.Size()))
+   print("Size of linear system: " + str(A.Height()))
+   
+   # 10. Solve
 
-   # 10. Solve 
-   M = mfem.GSSmoother(A)
-   mfem.PCG(A, M, B, X, 1, 200, 1e-12, 0.0);
+   if pa:
+       if mfem.UsesTensorBasis(fespace):
+           M = mfem.OperatorJacobiSmoother(a, ess_tdof_list)
+           mfem.PCG(A, M, B, X, 1, 4000, 1e-12, 0.0)
+       else:
+           mfem.CG(A, B, X, 1, 400, 1e-12, 0.0);
+   else:
+       AA = mfem.OperatorHandle2SparseMatrix(A)      
+       M = mfem.GSSmoother(AA)
+       mfem.PCG(A, M, B, X, 1, 200, 1e-12, 0.0);
+
    # 11. Recover the solution as a finite element grid function.
    a.RecoverFEMSolution(X, b, x)
    # 12. Save the refined mesh and the solution. This output can be viewed later
    #     using GLVis: "glvis -m refined.mesh -g sol.gf".
-   mesh.PrintToFile('refined.mesh', 8)
-   x.SaveToFile('sol.gf', 8)
+   mesh.Print('refined.mesh', 8)
+   x.Save('sol.gf', 8)
 
    #13. Send the solution by socket to a GLVis server.
    if (visualization):
@@ -141,14 +160,29 @@ if __name__ == "__main__":
    parser.add_argument('-sc', '--static-condensation',
                        action = 'store_true', 
                        help = "Enable static condensation.")
+   parser.add_argument("-pa", "--partial-assembly",
+                       action = 'store_true',
+                       help = "Enable Partial Assembly.");
+   parser.add_argument("-d", "--device",
+                       default = "cpu", type=str, 
+                       help = "Device configuration string, see Device::Configure().")
+   
    args = parser.parse_args()
    parser.print_options(args)
 
 
    order = args.order
    static_cond = args.static_condensation
-   meshfile =expanduser(join(path, 'data', args.mesh))
-   visualization = args.visualization
 
-   run(order = order, static_cond = static_cond,
-       meshfile = meshfile, visualization = visualization)
+   meshfile = expanduser(join(os.path.dirname(__file__), '..', 'data', args.mesh))
+   visualization = args.visualization
+   device = args.device
+   pa = args.partial_assembly
+
+   run(order=order,
+       static_cond=static_cond,
+       meshfile=meshfile,
+       visualization=visualization,
+       device=device,
+       pa=pa)
+

@@ -20,4 +20,5 @@ def debug_print(message):
     
     print(message)
 
-__version__ = '3.4rc0'
+__version__ = '4.2.1.16'
+

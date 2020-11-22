@@ -1,0 +1,13 @@
+###
+
+### source distribution
+# update version number
+$ rm -rf dist/*
+$ python3 setup.py sdist
+$ twine check dist/*        # check syntax
+$ python3 -m twine upload --repository testpypi dist/*    # upload at testpypi
+$ python3 -m twine upload dist/*                          # uploade to the official
+
+### building step-by-step
+pip download -i  https://test.pypi.org/simple/ mfem
+python3 setup.py install --prefix=~/sandbox --verbose --with-parallel

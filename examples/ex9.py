@@ -154,8 +154,8 @@ b.Assemble()
 u = mfem.GridFunction(fes)
 u.ProjectCoefficient(u0)
 
-mesh.PrintToFile('ex9.mesh', 8)
-u.SaveToFile('ex9-init.gf', 8)
+mesh.Print('ex9.mesh', 8)
+u.Save('ex9-init.gf', 8)
 
 class FE_Evolution(mfem.PyTimeDependentOperator):
     def __init__(self, M, K, b):
@@ -199,4 +199,4 @@ while True:
    if ti % vis_steps == 0:
        print("time step: " + str(ti) + ", time: " + str(t))
 
-u.SaveToFile('ex9-final.gf', 8)
+u.Save('ex9-final.gf', 8)

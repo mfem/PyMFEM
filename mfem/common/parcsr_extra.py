@@ -1,10 +1,9 @@
-import sys
+from __future__ import print_function
 
 #
 #   this modules works only with parallel version
 #
-
-   
+import sys   
 import numpy as np
 
 def get_assumed_patitioning(m):
@@ -17,7 +16,7 @@ def get_assumed_patitioning(m):
     num_proc = MPI.COMM_WORLD.size
     myid     = MPI.COMM_WORLD.rank
    
-    min_nrows  = m / num_proc
+    min_nrows  = m // num_proc
     extra_rows = m % num_proc
     start_row  = min_nrows * myid + (extra_rows if extra_rows < myid else myid)
     end_row    = start_row + min_nrows + (1 if extra_rows > myid else 0)
@@ -113,9 +112,9 @@ def ToHypreParCSR(mat, check_partitioning = False, verbose = False,
         for k in range(num_proc):
             MPI.COMM_WORLD.Barrier()                              
             if myid == k:
-                print 'MyID : ', k
-                print (m, n), nrows, len(data), i, j, data, row_starts, col_starts
-                print 'NNZ', np.sum(data != 0.0)
+                print('MyID : ', k)
+                print((m, n), nrows, len(data), i, j, data, row_starts, col_starts)
+                print('NNZ', np.sum(data != 0.0))
         MPI.COMM_WORLD.Barrier()                              
 
     from scipy.sparse import csr_matrix
@@ -164,9 +163,9 @@ def ToHypreParCSR(mat, check_partitioning = False, verbose = False,
             for k in range(num_proc):
                 MPI.COMM_WORLD.Barrier()                              
                 if myid == k:
-                    print 'MyID : ', k
-                    print ch, nrows, row_starts, col_starts
-                    print 'NNZ', np.sum(data != 0.0)
+                    print('MyID : ', k)
+                    print(ch, nrows, row_starts, col_starts)
+                    print('NNZ', np.sum(data != 0.0))
             MPI.COMM_WORLD.Barrier()                              
             raise ValueError("partitioning of input matrix is not correct")
     if verbose: verbose_message(m, n, nrows, i, j, data, row_starts, col_starts)
@@ -206,18 +205,13 @@ def ToScipyCoo(mat):
     n = jupper - jlower + 1
     n = mat.N()    
 
-    #if myid == 1:
-    #   print m, n
-    #   print data
-    #   print irn
-    #   print jcn
     from scipy.sparse import coo_matrix
     try:
        return coo_matrix((data, (irn-ilower, jcn)), shape = (m, n))
     except:
-       print "wrong input"
-       print num_rows, ilower, iupper, jlower, jupper
-       print np.min(irn-ilower), np.max(irn-ilower) , np.min(jcn),  np.max(jcn), (m, n)
+       print("wrong input")
+       print(num_rows, ilower, iupper, jlower, jupper)
+       print(np.min(irn-ilower), np.max(irn-ilower) , np.min(jcn),  np.max(jcn), (m, n))
        raise
 def InnerProductComplex(A, B):
     import mfem.par as mfem    
@@ -453,9 +447,9 @@ def ResetHypreDiag(M, idx, value = 1.0):
     try:  
         mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n)).tolil()
     except:
-       print "wrong input"
-       print num_rows, ilower, iupper, jlower, jupper
-       print np.min(irn-ilower), np.max(irn-ilower) , np.min(jcn),  np.max(jcn), (m, n)
+       print("wrong input")
+       print(num_rows, ilower, iupper, jlower, jupper)
+       print(np.min(irn-ilower), np.max(irn-ilower) , np.min(jcn),  np.max(jcn), (m, n))
        raise
 
     idx = np.array(idx, dtype=int, copy=False)
@@ -501,9 +495,6 @@ def ResetHypreCol(M, idx):
     from mpi4py import MPI
     myid     = MPI.COMM_WORLD.rank
 
-    #print np.min(irn), np.max(irn), np.min(jcn), np.max(jcn)
-
-    
     m = iupper - ilower + 1
     n0 = jupper - jlower + 1
     n = M.N()

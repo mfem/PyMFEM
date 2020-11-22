@@ -147,7 +147,9 @@ class CHypreVec(list):
         rr = rdata*r - idata*i
         ii = rdata*i + idata*r
 
-        rr = ToHypreParVec(rr) if np.count_nonzero(rr) != 0 else None
+        # note: for the real part we keep it even if it is zero
+        #       so that it conservs vector size information
+        rr = ToHypreParVec(rr) 
         ii = ToHypreParVec(ii) if np.count_nonzero(ii) != 0 else None           
               
         return CHypreVec(rr, ii, horizontal=self._horizontal)
@@ -363,7 +365,7 @@ class CHypreVec(list):
         is too small so that some node does not have data.
         '''
         def gather_allvector(data):
-            from mpi_dtype import get_mpi_datatype
+            from mfem.common.mpi_dtype import get_mpi_datatype
             from mpi4py import MPI
        
             mpi_data_type = get_mpi_datatype(data)
@@ -1101,19 +1103,18 @@ def IdentityPyMat(m, col_starts = None, diag=1.0):
            col_starts = get_assumed_patitioning(m)
         rows =  col_starts[1] - col_starts[0]
 
-        try:
+        if np.iscomplexobj(diag):
             real = diag.real
             imag = diag.imag
-        except:
-            real = diag
-            imag = 0.0
-        if real != 0.0:
-            m1 = lil_matrix((rows, m))
-            for i in range(rows):
-                m1[i, i+col_starts[0]] = real
-            m1 = m1.tocsr() 
         else:
-            m1 = None
+            real = float(np.real(diag))
+            imag = 0.0
+        #if real != 0.0:
+        m1 = lil_matrix((rows, m))
+        for i in range(rows):
+            m1[i, i+col_starts[0]] = real
+        m1 = m1.tocsr() 
+
         if imag != 0.0:
             m2 = lil_matrix((rows, m))
             for i in range(rows):
@@ -1126,7 +1127,6 @@ def IdentityPyMat(m, col_starts = None, diag=1.0):
         m1 = coo_matrix((m, m))
         m1.setdiag(np.zeros(m)+diag)
         return m1.tocsr()
-     
 
 def HStackPyVec(vecs, col_starts = None):
     '''

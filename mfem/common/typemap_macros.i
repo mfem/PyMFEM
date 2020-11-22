@@ -27,8 +27,24 @@
 
 // wrap integer with  default -1
 %define INT_DEFAULT_NEGATIVE_ONE(type_name)
+%typemap(in) (type_name) {
+  if (PyInt_Check($input)) {
+     $1 = PyInt_AsLong($input);
+  } else if ((PyArray_PyIntAsInt($input) != -1) || !PyErr_Occurred()) {
+     $1 = PyArray_PyIntAsInt($input);
+  } else {
+    PyErr_SetString(PyExc_ValueError, "Expecting a integer");
+    return NULL;
+  }
+}
 %typemap(typecheck) (type_name) {
-   $1 = PyInt_Check($input) ? 1 : 0;
+  if (PyInt_Check($input)) {
+    $1 = 1;
+  } else if ((PyArray_PyIntAsInt($input) != -1) || !PyErr_Occurred()) {
+    $1 = 1;
+  } else {
+    $1 = 0;
+  }
 }
 %enddef
 
@@ -70,11 +86,13 @@
 }
 %enddef
 
-// int point input for single int
+// int pointer input for single int
 %define INT_TO_INTARRAY_IN(type_name)
 %typemap(in) type_name (int temp){
   if (PyInt_Check($input)) {
      temp = PyInt_AsLong($input);
+  } else if ((PyArray_PyIntAsInt($input) != -1) || !PyErr_Occurred()) {
+     temp = PyArray_PyIntAsInt($input);
   } else {
     PyErr_SetString(PyExc_ValueError, "Expecting a integer");
     return NULL;
@@ -82,7 +100,13 @@
   $1 = &temp;
 }
 %typemap(typecheck, precedence=SWIG_TYPECHECK_POINTER) (type_name) {
-   $1 = PyInt_Check($input) ? 1 : 0;  
+  if (PyInt_Check($input)) {
+    $1 = 1;
+  } else if ((PyArray_PyIntAsInt($input) != -1) || !PyErr_Occurred()) {
+    $1 = 1;
+  } else {
+    $1 = 0;
+  }
 }
 %enddef
 
