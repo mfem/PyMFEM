@@ -26,8 +26,8 @@ branches:
     - test
 env:
   - USE_CUDA_PARALLEL="00"    # serial
-  - USE_CUDA_PARALLEL="10"    # parallel
-  - USE_CUDA_PARALLEL="01"    # serial + cuda
+  - USE_CUDA_PARALLEL="01"    # parallel
+  - USE_CUDA_PARALLEL="10"    # cuda
 #  - USE_CUDA_PARALLEL="11"    # parallel + cuda  
     
 jobs:
@@ -46,6 +46,12 @@ before_install:
     ./travis/add_cuda.sh;
     export PATH=/usr/local/cuda-11.1/bin:$PATH;
     fi
+  - >
+    if [ "${USE_CUDA_PARALLEL}" = "01" ] || [ "${USE_CUDA_PARALLEL}" = "11" ]; then
+    which mpicc;
+    pip3 install mpi4py;
+    python3 -c "import mpi4py;print(mpi4py.get_include())";
+    fi
 
 install:
   - pip install -r requirements.txt
@@ -55,25 +61,35 @@ script:
   - echo $PATH
   - >
     if [ "${USE_CUDA_PARALLEL}" = "00" ]; then  
-    python3 setup.py install; 
+    python3 setup.py install --prefix=$TRAVIS_BUILD_DIR/..;
+    cd $TRAVIS_BUILD_DIR/test;
+    python3 ../examples/ex1.py;
     fi
   - >
     if [ "${USE_CUDA_PARALLEL}" = "01" ]; then
-    python3 setup.py install --with-parallel;
+    python3 setup.py install --with-parallel --prefix=$TRAVIS_BUILD_DIR/..; 
     which mpicc;
+    cd $TRAVIS_BUILD_DIR/test;
+    mpirun -np 2 python3 ../examples/ex1p.py;    
     fi
   - >
     if [ "${USE_CUDA_PARALLEL}" = "10" ]; then
-    python3 setup.py install --with-cuda;
+    python3 setup.py install --with-cuda --prefix=$TRAVIS_BUILD_DIR/..; 
     which nvcc;
+    cd $TRAVIS_BUILD_DIR/test;
+    python3 ../examples/ex1.py --d='cuda' --pa;
     fi
   - >
     if [ "${USE_CUDA_PARALLEL}" = "11" ]; then
     which nvcc;
     which mpicc;
-    python3 setup.py install --with-cuda --with-paralel;
+    python3 setup.py install --with-cuda --with-paralel --prefix=$TRAVIS_BUILD_DIR/..;
+    cd $TRAVIS_BUILD_DIR/test;
+    mpirun -np2 python3 ../examples/ex1p.py --d='cuda' --pa;
     fi
   - python3 --version
+
+  
 
 
 
