@@ -1,14 +1,79 @@
+dist: focul
+
 language: python
+
+sudo: enabled
+
 python:
-  - "3.6"
-  - "3.7"
-  - "3.8"
+   - "3.6"
+#  - "3.7"
+#  - "3.8"
+
+addons:
+  apt:
+     packages:
+       # GCC 4.9
+       # - g++-4.9
+       # MPICH
+       - mpich
+       - libmpich-dev
+       # OpenMPI
+       # - openmpi-bin
+       # - libopenmpi-dev
+       
 branches:
   only:
     - test
+env:
+  - USE_CUDA_PARALLEL="00"    # serial
+  - USE_CUDA_PARALLEL="10"    # parallel
+  - USE_CUDA_PARALLEL="01"    # serial + cuda
+#  - USE_CUDA_PARALLEL="11"    # parallel + cuda  
+    
+jobs:
+  include:
+    - os: osx
+      osx_image: xcode11.2
+      compiler: clang
+      language: shell
+      name: "Mac: Serial"
+      env: USE_CUDA_PARALLEL=00 
+
 # command to install dependencies
+before_install:
+  - >
+    if [ "${USE_CUDA_PARALLEL}" = "11" ] || [ "${USE_CUDA_PARALLEL}" = "10" ]; then
+    ./travis/add_cuda.sh;
+    export PATH=/usr/local/cuda-11.1/bin:$PATH;
+    fi
+
 install:
   - pip install -r requirements.txt
-# command to run tests
+
 script:
-  - python3 setup.py install 
+  - echo $USE_CUDA_PARALLEL
+  - echo $PATH
+  - >
+    if [ "${USE_CUDA_PARALLEL}" = "00" ]; then  
+    python3 setup.py install 
+    fi
+  - >
+    if [ "${USE_CUDA_PARALLEL}" = "01" ]; then
+    python3 setup.py install --with-parallel
+    which mpicc;
+    fi
+  - >
+    if [ "${USE_CUDA_PARALLEL}" = "10" ]; then
+    python3 setup.py install --with-cuda
+    which nvcc;
+    fi
+  - >
+    if [ "${USE_CUDA_PARALLEL}" = "11" ]; then
+    which nvcc;
+    which mpicc;
+    python3 setup.py install --with-cuda --with-paralel
+    fi
+  - python3 --version
+
+
+
