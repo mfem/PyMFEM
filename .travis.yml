@@ -59,6 +59,9 @@ install:
 script:
   - echo $USE_CUDA_PARALLEL
   - echo $PATH
+  - PYTHONVERSION=$(python3 -c "import os;print(os.path.basename(os.path.dirname(os.__file__))[-3:])");
+  - PYTHONLIB=${TRAVIS_BUILD_DIR}/../lib/python${PYTHONVERSION};
+  - export PYTHONPATH=$PYTHONLIB/site-packages:$PYTHONPATH  
   - >
     if [ "${USE_CUDA_PARALLEL}" = "00" ]; then  
     python3 setup.py install --prefix=$TRAVIS_BUILD_DIR/..;
