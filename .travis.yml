@@ -6,8 +6,8 @@ sudo: enabled
 
 python:
    - "3.6"
-#  - "3.7"
-#  - "3.8"
+   - "3.7"
+   - "3.8"
 
 addons:
   apt:
@@ -28,7 +28,7 @@ env:
   - USE_CUDA_PARALLEL="00"    # serial
   - USE_CUDA_PARALLEL="01"    # parallel
   - USE_CUDA_PARALLEL="10"    # cuda
-#  - USE_CUDA_PARALLEL="11"    # parallel + cuda  
+  - USE_CUDA_PARALLEL="11"    # parallel + cuda  
     
 jobs:
   include:
@@ -80,7 +80,7 @@ script:
     python3 setup.py install --with-cuda --prefix=$TRAVIS_BUILD_DIR/..; 
     which nvcc;
     cd $TRAVIS_BUILD_DIR/test;
-    python3 ../examples/ex1.py --d='cuda' --pa;
+    #python3 ../examples/ex1.py --d='cuda' --pa;
     fi
   - >
     if [ "${USE_CUDA_PARALLEL}" = "11" ]; then
@@ -88,7 +88,7 @@ script:
     which mpicc;
     python3 setup.py install --with-cuda --with-paralel --prefix=$TRAVIS_BUILD_DIR/..;
     cd $TRAVIS_BUILD_DIR/test;
-    mpirun -np2 python3 ../examples/ex1p.py --d='cuda' --pa;
+    #mpirun -np2 python3 ../examples/ex1p.py --d='cuda' --pa;
     fi
   - python3 --version
 
