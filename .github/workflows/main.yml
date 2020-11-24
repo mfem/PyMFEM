@@ -43,7 +43,7 @@ jobs:
         python -m pip install --upgrade pip setuptools wheel
 
         mkdir -p ~/sandbox/lib
-        export PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages	
+        PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages	
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
         echo $PYTHONPATH
         ls -l $PYTHONLIB
