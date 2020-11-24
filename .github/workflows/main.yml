@@ -48,7 +48,9 @@ jobs:
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
         echo $PYTHONPATH
 
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        if [ -f requirements.txt ]; then
+	    pip install -r requirements.txt --prefix=~/sandbox
+	fi
         pip install numpy --prefix=~/sandbox
         python -c "import numpy;print(numpy.__file__)"	
 
