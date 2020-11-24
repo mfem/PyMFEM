@@ -15,9 +15,9 @@ jobs:
         #os: [ubuntu-latest]
         os: [ubuntu-20.04]
         env:
-           #- { USE_CUDA_PARALLEL: "00"}
-           - { USE_CUDA_PARALLEL: "10"}
-           - { USE_CUDA_PARALLEL: "01"}
+           - { USE_CUDA_PARALLEL: "00"}
+           #- { USE_CUDA_PARALLEL: "10"}
+           #- { USE_CUDA_PARALLEL: "01"}
            #- { USE_CUDA_PARALLEL: "11"}
 
         include:
