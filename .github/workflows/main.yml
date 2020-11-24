@@ -65,7 +65,7 @@ jobs:
       run: |
         export PATH=/usr/local/cuda-${cuda}/bin:$PATH
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
-	export SANDBOX=~/sandbox
+        export SANDBOX=~/sandbox
         echo $PATH
         echo $PYTHONPATH
         if [ "${USE_CUDA_PARALLEL}" = "00" ]; then  
@@ -76,7 +76,7 @@ jobs:
         fi
         if [ "${USE_CUDA_PARALLEL}" = "10" ]; then
            python setup.py install --with-cuda --prefix=$SANDBOX
-	fi
+        fi
         if [ "${USE_CUDA_PARALLEL}" = "11" ]; then
            python setup.py install --with-cuda --with-paralel --prefix=$SANDBOX
         fi
@@ -85,7 +85,7 @@ jobs:
       run: |
         export PATH=/usr/local/cuda-${cuda}/bin:$PATH
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
-	export SANDBOX=~/sandbox
+        export SANDBOX=~/sandbox
         cd $SANDBOX/test
         echo $PATH
         echo $PYTHONPATH
