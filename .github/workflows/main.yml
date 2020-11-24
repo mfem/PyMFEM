@@ -50,7 +50,7 @@ jobs:
 
         #if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         pip install numpy --prefix=~/sandbox
-	ls -l ~/sandbox/lib
+        ls -l ~/sandbox/lib
         python -c "import numpy;print(numpy.__file__)"	
         pwd
         if [ "${USE_CUDA_PARALLEL}" = "11" ] || [ "${USE_CUDA_PARALLEL}" = "10" ]; then
