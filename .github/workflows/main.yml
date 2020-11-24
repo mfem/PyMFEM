@@ -98,7 +98,7 @@ jobs:
         echo $PATH
         echo $PYTHONPATH
         echo $SANDBOX
-        cd $SANDBOX/test
+        cd test
         echo $PATH
         echo $PYTHONPATH
         if [ "${USE_CUDA_PARALLEL}" = "00" ]; then  
