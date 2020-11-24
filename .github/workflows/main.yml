@@ -45,7 +45,7 @@ jobs:
         export PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages	
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
         echo $PYTHONPATH
-	ls -l $PYTHONLIB
+        ls -l $PYTHONLIB
 
         #if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         pip install numpy --prefix=~/sandbox	
