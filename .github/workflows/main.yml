@@ -25,10 +25,11 @@ jobs:
              env: {USE_CUDA_PARALLEL: "00"}
 #
     runs-on: ${{ matrix.os }}	   
-    env: 
-       USE_CUDA_PARALLEL: ${{ matrix.env.USE_CUDA_PARALLEL }}
-       CUDA: "10.1"
-       SANDBOX: ~/sandbox
+    env: ${{ matrix.env }}
+    #env: 
+    #   USE_CUDA_PARALLEL: ${{ matrix.env.USE_CUDA_PARALLEL }}
+    #   CUDA: "10.1"
+    #   SANDBOX: ~/sandbox
 
     steps:
     - uses: actions/checkout@v2
