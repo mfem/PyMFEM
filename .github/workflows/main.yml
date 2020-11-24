@@ -15,9 +15,9 @@ jobs:
         os: [ubuntu-latest]
         env:
            #- { USE_CUDA_PARALLEL: "00"}
-           - { USE_CUDA_PARALLEL: "10", cuda: "10.1"}	
+           - { USE_CUDA_PARALLEL: "10"}
            - { USE_CUDA_PARALLEL: "01"}
-           #- { USE_CUDA_PARALLEL: "11", cuda: "10.1"}	
+           #- { USE_CUDA_PARALLEL: "11"}
 
         include:
            - os: macos-latest
@@ -26,8 +26,8 @@ jobs:
 #
     runs-on: ${{ matrix.os }}	   
     env: 
-       ${{ matrix.env }}
-    env:
+       USE_CUDA_PARALLEL: ${{ matrix.env.USE_CUDA_PARALLEL }}
+       CUDA: "10.1"
        PYTHONLIB: ~/sandbox/lib/python${{ matrix.python-version }}/site-packages
        
     steps:
