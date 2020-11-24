@@ -30,7 +30,7 @@ jobs:
        USE_CUDA_PARALLEL: ${{ matrix.env.USE_CUDA_PARALLEL }}
        CUDA: "10.1"
        SANDBOX: ~/sandbox
-       PYTHONLIB: ~/sandbox/lib/python${{ matrix.python-version }}/site-packages	
+
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
@@ -43,6 +43,7 @@ jobs:
         python -m pip install --upgrade pip setuptools wheel
 
         mkdir -p ~/sandbox/lib
+        PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
         echo $PYTHONPATH
 
@@ -69,9 +70,11 @@ jobs:
     - name: Build
       run: |
         export PATH=/usr/local/cuda-${CUDA}/bin:$PATH
+        PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages	
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
         echo $PATH
         echo $PYTHONPATH
+	echo $SANDBOX
         if [ "${USE_CUDA_PARALLEL}" = "00" ]; then  
            python setup.py install --prefix=$SANDBOX
         fi
@@ -89,7 +92,11 @@ jobs:
       run: |
 
         export PATH=/usr/local/cuda-${CUDA}/bin:$PATH
+        PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages	
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
+        echo $PATH
+        echo $PYTHONPATH
+	echo $SANDBOX
         cd $SANDBOX/test
         echo $PATH
         echo $PYTHONPATH
