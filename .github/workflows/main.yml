@@ -12,7 +12,8 @@ jobs:
       fail-fast: false
       matrix:
         python-version: [3.6, 3.7, 3.8]
-        os: [ubuntu-latest]
+        #os: [ubuntu-latest]
+	os: [ubuntu-20.04]
         env:
            #- { USE_CUDA_PARALLEL: "00"}
            - { USE_CUDA_PARALLEL: "10"}
@@ -28,7 +29,7 @@ jobs:
     #env: ${{ matrix.env }}
     env: 
        USE_CUDA_PARALLEL: ${{ matrix.env.USE_CUDA_PARALLEL }}
-       CUDA: "10.1"
+       CUDA: "11.1"
        SANDBOX: ~/sandbox
 
     steps:
@@ -53,7 +54,7 @@ jobs:
 
         if [ "${USE_CUDA_PARALLEL}" = "11" ] || [ "${USE_CUDA_PARALLEL}" = "10" ]; then
             echo $cuda
-            source ./ci_scripts/add_cuda_10_1.sh;
+            source ./ci_scripts/add_cuda_11_1.sh;
         fi
         if [ "${USE_CUDA_PARALLEL}" = "01" ] || [ "${USE_CUDA_PARALLEL}" = "11" ]; then
             sudo apt-get install mpich;
