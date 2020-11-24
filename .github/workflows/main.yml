@@ -27,6 +27,7 @@ jobs:
     runs-on: ${{ matrix.os }}	   
     env: 
        ${{ matrix.env }}
+    env:
        PYTHONLIB: ~/sandbox/lib/python${{ matrix.python-version }}/site-packages
        
     steps:
