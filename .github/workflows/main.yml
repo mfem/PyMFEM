@@ -25,7 +25,10 @@ jobs:
              env: {USE_CUDA_PARALLEL: "00"}
 #
     runs-on: ${{ matrix.os }}	   
-    env: ${{ matrix.env }}		   
+    env: 
+       ${{ matrix.env }}
+       PYTHONLIB: ~/sandbox/lib/python${{ matrix.python-version }}/site-packages
+       
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
@@ -63,6 +66,7 @@ jobs:
         
     - name: Build
       run: |
+        PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages      
         export PATH=/usr/local/cuda-${cuda}/bin:$PATH
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
         export SANDBOX=~/sandbox
@@ -83,6 +87,7 @@ jobs:
 
     - name: EX1_RUN      
       run: |
+        PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages            
         export PATH=/usr/local/cuda-${cuda}/bin:$PATH
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
         export SANDBOX=~/sandbox
