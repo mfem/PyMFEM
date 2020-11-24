@@ -56,6 +56,10 @@ before_install:
 install:
   - pip install -r requirements.txt
 
+#
+# this section buid the code and run ex1
+# for now cuda case runs partial assembly on cpu
+#
 script:
   - echo $USE_CUDA_PARALLEL
   - echo $PATH
@@ -80,6 +84,7 @@ script:
     python3 setup.py install --with-cuda --prefix=$TRAVIS_BUILD_DIR/..; 
     which nvcc;
     cd $TRAVIS_BUILD_DIR/test;
+    python3 ../examples/ex1.py --pa;    
     fi
 # python3 ../examples/ex1.py --d='cuda' --pa;    
   - >
@@ -88,6 +93,7 @@ script:
     which mpicc;
     python3 setup.py install --with-cuda --with-paralel --prefix=$TRAVIS_BUILD_DIR/..;
     cd $TRAVIS_BUILD_DIR/test;
+    mpirun -np 2 python3 ../examples/ex1p.py --pa;    
     fi
   - python3 --version    
 # mpirun -np2 python3 ../examples/ex1p.py --d='cuda' --pa;
