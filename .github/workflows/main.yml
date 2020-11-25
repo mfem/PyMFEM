@@ -114,6 +114,3 @@ jobs:
         if [ "${USE_CUDA_PARALLEL}" = "11" ]; then
            mpirun -np 2 python ../examples/ex1.py --pa
         fi
-
-
-
