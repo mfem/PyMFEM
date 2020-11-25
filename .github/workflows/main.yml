@@ -86,7 +86,7 @@ jobs:
            python setup.py install --with-cuda --prefix=$SANDBOX
         fi
         if [ "${USE_CUDA_PARALLEL}" = "11" ]; then
-           python setup.py install --with-cuda --with-paralel --prefix=$SANDBOX
+           python setup.py install --with-cuda --with-parallel --prefix=$SANDBOX
         fi
 
     - name: EX1_RUN      
