@@ -85,6 +85,30 @@ import mfem._par.operators
 import mfem._par.matrix
 import mfem._par.sparsemat
 import mfem._par.densemat
+class IterativeSolverMonitor(object):
+    r"""Proxy of C++ mfem::IterativeSolverMonitor class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        r"""__init__(IterativeSolverMonitor self) -> IterativeSolverMonitor"""
+        _solvers.IterativeSolverMonitor_swiginit(self, _solvers.new_IterativeSolverMonitor())
+    __swig_destroy__ = _solvers.delete_IterativeSolverMonitor
+
+    def MonitorResidual(self, it, norm, r, final):
+        r"""MonitorResidual(IterativeSolverMonitor self, int it, double norm, Vector r, bool final)"""
+        return _solvers.IterativeSolverMonitor_MonitorResidual(self, it, norm, r, final)
+    MonitorResidual = _swig_new_instance_method(_solvers.IterativeSolverMonitor_MonitorResidual)
+
+    def MonitorSolution(self, it, norm, x, final):
+        r"""MonitorSolution(IterativeSolverMonitor self, int it, double norm, Vector x, bool final)"""
+        return _solvers.IterativeSolverMonitor_MonitorSolution(self, it, norm, x, final)
+    MonitorSolution = _swig_new_instance_method(_solvers.IterativeSolverMonitor_MonitorSolution)
+
+# Register IterativeSolverMonitor in _solvers:
+_solvers.IterativeSolverMonitor_swigregister(IterativeSolverMonitor)
+
 class IterativeSolver(mfem._par.operators.Solver):
     r"""Proxy of C++ mfem::IterativeSolver class."""
 
@@ -138,6 +162,16 @@ class IterativeSolver(mfem._par.operators.Solver):
         r"""SetOperator(IterativeSolver self, Operator op)"""
         return _solvers.IterativeSolver_SetOperator(self, op)
     SetOperator = _swig_new_instance_method(_solvers.IterativeSolver_SetOperator)
+
+    def SetMonitor(self, m):
+        r"""SetMonitor(IterativeSolver self, IterativeSolverMonitor m)"""
+        return _solvers.IterativeSolver_SetMonitor(self, m)
+    SetMonitor = _swig_new_instance_method(_solvers.IterativeSolver_SetMonitor)
+
+    def GetComm(self):
+        r"""GetComm(IterativeSolver self) -> MPI_Comm"""
+        return _solvers.IterativeSolver_GetComm(self)
+    GetComm = _swig_new_instance_method(_solvers.IterativeSolver_GetComm)
     __swig_destroy__ = _solvers.delete_IterativeSolver
 
 # Register IterativeSolver in _solvers:
@@ -162,6 +196,11 @@ class OperatorJacobiSmoother(mfem._par.operators.Solver):
         return _solvers.OperatorJacobiSmoother_Mult(self, x, y)
     Mult = _swig_new_instance_method(_solvers.OperatorJacobiSmoother_Mult)
 
+    def MultTranspose(self, x, y):
+        r"""MultTranspose(OperatorJacobiSmoother self, Vector x, Vector y)"""
+        return _solvers.OperatorJacobiSmoother_MultTranspose(self, x, y)
+    MultTranspose = _swig_new_instance_method(_solvers.OperatorJacobiSmoother_MultTranspose)
+
     def SetOperator(self, op):
         r"""SetOperator(OperatorJacobiSmoother self, Operator op)"""
         return _solvers.OperatorJacobiSmoother_SetOperator(self, op)
@@ -174,6 +213,43 @@ class OperatorJacobiSmoother(mfem._par.operators.Solver):
 
 # Register OperatorJacobiSmoother in _solvers:
 _solvers.OperatorJacobiSmoother_swigregister(OperatorJacobiSmoother)
+
+class OperatorChebyshevSmoother(mfem._par.operators.Solver):
+    r"""Proxy of C++ mfem::OperatorChebyshevSmoother class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        r"""
+        __init__(OperatorChebyshevSmoother self, Operator oper_, Vector d, intArray ess_tdof_list, int order, double max_eig_estimate) -> OperatorChebyshevSmoother
+        __init__(OperatorChebyshevSmoother self, Operator oper_, Vector d, intArray ess_tdof_list, int order, MPI_Comm comm=MPI_COMM_NULL, int power_iterations=10, double power_tolerance=1e-8) -> OperatorChebyshevSmoother
+        """
+        _solvers.OperatorChebyshevSmoother_swiginit(self, _solvers.new_OperatorChebyshevSmoother(*args))
+    __swig_destroy__ = _solvers.delete_OperatorChebyshevSmoother
+
+    def Mult(self, x, y):
+        r"""Mult(OperatorChebyshevSmoother self, Vector x, Vector y)"""
+        return _solvers.OperatorChebyshevSmoother_Mult(self, x, y)
+    Mult = _swig_new_instance_method(_solvers.OperatorChebyshevSmoother_Mult)
+
+    def MultTranspose(self, x, y):
+        r"""MultTranspose(OperatorChebyshevSmoother self, Vector x, Vector y)"""
+        return _solvers.OperatorChebyshevSmoother_MultTranspose(self, x, y)
+    MultTranspose = _swig_new_instance_method(_solvers.OperatorChebyshevSmoother_MultTranspose)
+
+    def SetOperator(self, op_):
+        r"""SetOperator(OperatorChebyshevSmoother self, Operator op_)"""
+        return _solvers.OperatorChebyshevSmoother_SetOperator(self, op_)
+    SetOperator = _swig_new_instance_method(_solvers.OperatorChebyshevSmoother_SetOperator)
+
+    def Setup(self):
+        r"""Setup(OperatorChebyshevSmoother self)"""
+        return _solvers.OperatorChebyshevSmoother_Setup(self)
+    Setup = _swig_new_instance_method(_solvers.OperatorChebyshevSmoother_Setup)
+
+# Register OperatorChebyshevSmoother in _solvers:
+_solvers.OperatorChebyshevSmoother_swigregister(OperatorChebyshevSmoother)
 
 class SLISolver(IterativeSolver):
     r"""Proxy of C++ mfem::SLISolver class."""
@@ -426,6 +502,43 @@ class NewtonSolver(IterativeSolver):
 # Register NewtonSolver in _solvers:
 _solvers.NewtonSolver_swigregister(NewtonSolver)
 
+class LBFGSSolver(NewtonSolver):
+    r"""Proxy of C++ mfem::LBFGSSolver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        r"""
+        __init__(LBFGSSolver self) -> LBFGSSolver
+        __init__(LBFGSSolver self, MPI_Comm _comm) -> LBFGSSolver
+        """
+        _solvers.LBFGSSolver_swiginit(self, _solvers.new_LBFGSSolver(*args))
+
+    def SetHistorySize(self, dim):
+        r"""SetHistorySize(LBFGSSolver self, int dim)"""
+        return _solvers.LBFGSSolver_SetHistorySize(self, dim)
+    SetHistorySize = _swig_new_instance_method(_solvers.LBFGSSolver_SetHistorySize)
+
+    def Mult(self, b, x):
+        r"""Mult(LBFGSSolver self, Vector b, Vector x)"""
+        return _solvers.LBFGSSolver_Mult(self, b, x)
+    Mult = _swig_new_instance_method(_solvers.LBFGSSolver_Mult)
+
+    def SetPreconditioner(self, pr):
+        r"""SetPreconditioner(LBFGSSolver self, Solver pr)"""
+        return _solvers.LBFGSSolver_SetPreconditioner(self, pr)
+    SetPreconditioner = _swig_new_instance_method(_solvers.LBFGSSolver_SetPreconditioner)
+
+    def SetSolver(self, solver):
+        r"""SetSolver(LBFGSSolver self, Solver solver)"""
+        return _solvers.LBFGSSolver_SetSolver(self, solver)
+    SetSolver = _swig_new_instance_method(_solvers.LBFGSSolver_SetSolver)
+    __swig_destroy__ = _solvers.delete_LBFGSSolver
+
+# Register LBFGSSolver in _solvers:
+_solvers.LBFGSSolver_swigregister(LBFGSSolver)
+
 
 def aGMRES(A, x, b, M, max_iter, m_max, m_min, m_step, cf, tol, atol, printit):
     r"""aGMRES(Operator A, Vector x, Vector b, Operator M, int & max_iter, int m_max, int m_min, int m_step, double cf, double & tol, double & atol, int printit) -> int"""
@@ -625,6 +738,25 @@ class BlockILU(mfem._par.operators.Solver):
 
 # Register BlockILU in _solvers:
 _solvers.BlockILU_swigregister(BlockILU)
+
+class ResidualBCMonitor(IterativeSolverMonitor):
+    r"""Proxy of C++ mfem::ResidualBCMonitor class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, ess_dofs_list_):
+        r"""__init__(ResidualBCMonitor self, intArray ess_dofs_list_) -> ResidualBCMonitor"""
+        _solvers.ResidualBCMonitor_swiginit(self, _solvers.new_ResidualBCMonitor(ess_dofs_list_))
+
+    def MonitorResidual(self, it, norm, r, final):
+        r"""MonitorResidual(ResidualBCMonitor self, int it, double norm, Vector r, bool final)"""
+        return _solvers.ResidualBCMonitor_MonitorResidual(self, it, norm, r, final)
+    MonitorResidual = _swig_new_instance_method(_solvers.ResidualBCMonitor_MonitorResidual)
+    __swig_destroy__ = _solvers.delete_ResidualBCMonitor
+
+# Register ResidualBCMonitor in _solvers:
+_solvers.ResidualBCMonitor_swigregister(ResidualBCMonitor)
 
 
 

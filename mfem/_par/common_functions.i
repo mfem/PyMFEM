@@ -1,6 +1,8 @@
 %module(package="mfem._par") common_functions
 
 %{
+#include <fstream>
+#include "io_stream.hpp"            
 #include "linalg/blockmatrix.hpp"
 #include "linalg/sparsemat.hpp"
 #include "linalg/densemat.hpp"
@@ -20,6 +22,7 @@ import_array();
 %include "exception.i"
 %include "../common/exception.i"
 
+%import "globals.i"
 %import "array.i"
 
 %ignore "";

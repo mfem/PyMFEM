@@ -161,6 +161,16 @@ class OperatorHandle(object):
         return _handle.OperatorHandle_EliminateRowsCols(self, A, ess_dof_list)
     EliminateRowsCols = _swig_new_instance_method(_handle.OperatorHandle_EliminateRowsCols)
 
+    def EliminateRows(self, ess_dof_list):
+        r"""EliminateRows(OperatorHandle self, intArray ess_dof_list)"""
+        return _handle.OperatorHandle_EliminateRows(self, ess_dof_list)
+    EliminateRows = _swig_new_instance_method(_handle.OperatorHandle_EliminateRows)
+
+    def EliminateCols(self, ess_dof_list):
+        r"""EliminateCols(OperatorHandle self, intArray ess_dof_list)"""
+        return _handle.OperatorHandle_EliminateCols(self, ess_dof_list)
+    EliminateCols = _swig_new_instance_method(_handle.OperatorHandle_EliminateCols)
+
     def EliminateBC(self, A_e, ess_dof_list, X, B):
         r"""EliminateBC(OperatorHandle self, OperatorHandle A_e, intArray ess_dof_list, Vector X, Vector B)"""
         return _handle.OperatorHandle_EliminateBC(self, A_e, ess_dof_list, X, B)

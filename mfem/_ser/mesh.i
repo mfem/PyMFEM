@@ -24,8 +24,12 @@ import_array();
 
 %include "../common/cpointers.i"
 %include "exception.i"
+
+%include "std_string.i"
+
 %import "matrix.i"
 %import "array.i"
+%import "sort_pairs.i"
 %import "ncmesh.i"
 %import "vector.i"
 %import "gridfunc.i"
@@ -275,6 +279,15 @@ def GetEdgeTransformation(self, i):
     _mesh.Mesh_GetEdgeTransformation(self, i, Tr)
     return Tr
 %}
+%feature("shadow") mfem::Mesh::GetFaceInfos %{
+def GetFaceInfos(self, i):
+    from mfem.ser import intp
+    Elem1 = intp()
+    Elem2 = intp()  
+  
+    _mesh.Mesh_GetFaceInfos(self, i, Elem1, Elem2)
+    return Elem1.value(), Elem2.value()
+%}
 %feature("shadow") mfem::Mesh::FindPoints %{
 def FindPoints(self, pp, warn=True, inv_trans=None):          
     r"""count, element_id, integration_points = FindPoints(points, warn=True, inv_trans=None)"""
@@ -319,34 +332,17 @@ namespace mfem{
 	mesh = new mfem::Mesh(imesh, generate_edges, refine, fix_orientation);
 	return mesh;
    }
-   Mesh(int nx, int ny, int nz, const char *type, int generate_edges = 0,
-        double sx = 1.0, double sy = 1.0, double sz = 1.0){
+   Mesh(int nx, int ny, int nz, const char *type, bool generate_edges = 0,
+        double sx = 1.0, double sy = 1.0, double sz = 1.0,
+	bool sfc_ordering = true){
      mfem::Mesh *mesh;     
-     if (std::strcmp(type, "POINT")) {
-	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::POINT,
-			       generate_edges, sx, sy, sz);
-     }
-     else if (std::strcmp(type, "SEGMENT")) {
-	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::SEGMENT,
-			       generate_edges, sx, sy, sz);
-	 
-     }
-     else if (std::strcmp(type, "TRIANGLE")) {
-	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::TRIANGLE,
-			       generate_edges, sx, sy, sz);
-	 
-     }
-     else if (std::strcmp(type, "QUADRILATERAL")) {
-	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::QUADRILATERAL,
-			       generate_edges, sx, sy, sz);
-	 
-     }	 
-     else if (std::strcmp(type, "TETRAHEDRON")) {
+
+     if (std::strcmp(type, "TETRAHEDRON") == 0) {
 	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::TETRAHEDRON,
 			       generate_edges, sx, sy, sz);
 	 
      }	 
-     else if (std::strcmp(type, "HEXAHEDRON")) {
+     else if (std::strcmp(type, "HEXAHEDRON") == 0) {
 	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::HEXAHEDRON,
 			       generate_edges, sx, sy, sz);
 	 
@@ -356,35 +352,16 @@ namespace mfem{
      }
      return mesh;       
    }
-   Mesh(int nx, int ny,  const char *type, int generate_edges = 0,
-        double sx = 1.0, double sy = 1.0){
-     mfem::Mesh *mesh;     
-     if (std::strcmp(type, "POINT")) {
-	 mesh = new mfem::Mesh(nx, ny, mfem::Element::POINT,
-			       generate_edges, sx, sy);
-     }
-     else if (std::strcmp(type, "SEGMENT")) {
-	 mesh = new mfem::Mesh(nx, ny, mfem::Element::SEGMENT,
-			       generate_edges, sx, sy);
-	 
-     }
-     else if (std::strcmp(type, "TRIANGLE")) {
+   Mesh(int nx, int ny,  const char *type, bool generate_edges = 0,
+        double sx = 1.0, double sy = 1.0, bool sfc_ordering = true){
+     mfem::Mesh *mesh;
+     if (std::strcmp(type, "TRIANGLE") == 0) {
 	 mesh = new mfem::Mesh(nx, ny, mfem::Element::TRIANGLE,
 			       generate_edges, sx, sy);
 	 
      }
-     else if (std::strcmp(type, "QUADRILATERAL")) {
+     else if (std::strcmp(type, "QUADRILATERAL") == 0) {
 	 mesh = new mfem::Mesh(nx, ny, mfem::Element::QUADRILATERAL,
-			       generate_edges, sx, sy);
-	 
-     }	 
-     else if (std::strcmp(type, "TETRAHEDRON")) {
-	 mesh = new mfem::Mesh(nx, ny, mfem::Element::TETRAHEDRON,
-			       generate_edges, sx, sy);
-	 
-     }	 
-     else if (std::strcmp(type, "HEXAHEDRON")) {
-	 mesh = new mfem::Mesh(nx, ny,  mfem::Element::HEXAHEDRON,
 			       generate_edges, sx, sy);
 	 
      }	 
@@ -425,6 +402,28 @@ namespace mfem{
      }
      return array;
    }
+   
+   PyObject* GetVertexArray() const
+   {
+     int L = self->SpaceDimension();
+     int NV = self->GetNV();          
+     int n, counter;
+
+     npy_intp dims[] = {NV, L};
+     PyObject *array = PyArray_SimpleNew(2, dims, NPY_DOUBLE);
+     double *x    = (double *)PyArray_DATA(array);
+     counter = 0;
+
+     for (int i = 0; i < NV; i++) {
+          const double *v = self->GetVertex(i);       
+          for (n = 0; n < L; n++) {
+              x[counter] = v[n];
+	      counter++;
+          }
+     }
+     return array;
+   }
+   
    PyObject* GetBdrElementFace(int i) const
    {
      int a;
@@ -489,8 +488,47 @@ namespace mfem{
      }
      return array;
    }
-  };
-}
+  double GetScaledJacobian(int i, int sd=2)
+  {
+    // compute scaled Jacobian
+    //   i : element index
+    //   sd: subdivision 
+    //   https://github.com/mfem/mfem/pull/1835/files
+    // 
+    double attr = mfem::infinity();
+    mfem::DenseMatrix J(self->Dimension());
+    
+    mfem::Geometry::Type geom = self->GetElementBaseGeometry(i);
+    mfem::ElementTransformation *T = self->GetElementTransformation(i);
+
+    mfem::RefinedGeometry *RefG = mfem::GlobGeometryRefiner.Refine(geom, sd, 1);
+    mfem::IntegrationRule &ir = RefG->RefPts;
+
+    // For each element, find the minimal scaled Jacobian in a
+    // lattice of points with the given subdivision factor.
+
+    for (int j = 0; j < ir.GetNPoints(); j++)
+      {
+	T->SetIntPoint(&ir.IntPoint(j));
+	mfem::Geometries.JacToPerfJac(geom, T->Jacobian(), J);
+
+        // Jacobian determinant
+        double sJ = J.Det();
+
+        for (int k = 0; k < J.Width(); k++)
+	  {
+	    mfem::Vector col;
+	    J.GetColumnReference(k, col);
+            // Scale by column norms
+	    sJ /= col.Norml2();
+	  }
+
+	attr = fmin(sJ, attr);
+      }
+    return attr;
+  }
+  };  // end of extend
+}     // end of namespace
 
 /*
 virtual void PrintXG(std::ostream &out = mfem::out) const;

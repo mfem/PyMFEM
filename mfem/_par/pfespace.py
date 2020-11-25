@@ -84,6 +84,7 @@ import mfem._par.vector
 import mfem._par.array
 import mfem._par.fespace
 import mfem._par.coefficient
+import mfem._par.globals
 import mfem._par.matrix
 import mfem._par.intrules
 import mfem._par.sparsemat
@@ -92,6 +93,7 @@ import mfem._par.eltrans
 import mfem._par.fe
 import mfem._par.geom
 import mfem._par.mesh
+import mfem._par.sort_pairs
 import mfem._par.ncmesh
 import mfem._par.vtk
 import mfem._par.element
@@ -345,6 +347,11 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
         r"""GetFaceNbrGlobalDofMap(ParFiniteElementSpace self) -> HYPRE_Int const *"""
         return _pfespace.ParFiniteElementSpace_GetFaceNbrGlobalDofMap(self)
     GetFaceNbrGlobalDofMap = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetFaceNbrGlobalDofMap)
+
+    def GetFaceNbrElementTransformation(self, i):
+        r"""GetFaceNbrElementTransformation(ParFiniteElementSpace self, int i) -> ElementTransformation"""
+        return _pfespace.ParFiniteElementSpace_GetFaceNbrElementTransformation(self, i)
+    GetFaceNbrElementTransformation = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetFaceNbrElementTransformation)
 
     def Lose_Dof_TrueDof_Matrix(self):
         r"""Lose_Dof_TrueDof_Matrix(ParFiniteElementSpace self)"""

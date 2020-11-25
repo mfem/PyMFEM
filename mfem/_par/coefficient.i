@@ -40,6 +40,8 @@ import_array();
 %}
 
 %include "exception.i"
+
+%import "globals.i"
 %import "array.i"
 %import "matrix.i"
 %import "intrules.i"
@@ -148,7 +150,7 @@ namespace mfem {
    $1 = PyList_Check($input) ? 1 : 0;
 }
 
-%include "fem/coefficient.hpp"
+%include "../../headers/coefficient.hpp"
 
 %feature("director") mfem::VectorPyCoefficientBase;
 %feature("director") mfem::PyCoefficientBase;

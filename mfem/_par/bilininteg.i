@@ -14,6 +14,8 @@ import_array();
 //%include "../common/cpointers.i"
 //%import "cpointers.i"
 %include "exception.i"
+
+%import "globals.i"
 %import "array.i"
 %import "coefficient.i"
 %import "matrix.i"
@@ -32,6 +34,8 @@ import_array();
  //%template(IntegrationPointArray) mfem::Array<mfem::IntegrationPoint>;
 
 %feature("director") mfem::BilinearFormIntegrator;
+
+%ignore  mfem::MassIntegrator::SetupPA;
 
 %include "../common/bilininteg_ext.i"
 %include "fem/bilininteg.hpp"

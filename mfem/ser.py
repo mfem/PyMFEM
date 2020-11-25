@@ -4,6 +4,7 @@ from  mfem._ser.device import *
 from  mfem._ser.hash import *
 from  mfem._ser.array import *
 from  mfem._ser.mesh import *
+from  mfem._ser.ncmesh import *
 from  mfem._ser.handle import *
 from  mfem._ser.point import *
 from  mfem._ser.segment import *
