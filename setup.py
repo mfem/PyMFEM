@@ -842,7 +842,7 @@ class BuildPy(_build_py):
            if not dry_run:
                _build_py.run(self)
            else:
-               print("perform regular installation"
+               print("perform regular installation")
 
 class BdistWheel(_bdist_wheel):
     '''
