@@ -611,8 +611,11 @@ def configure_install(self):
         if self.mfemp_prefix != '':
             mfemp_prefix = abspath(self.mfemp_prefix)
 
-        path = os.path.join(mfem_prefix, 'lib', 'libmfem'+dylibext)
+        path = os.path.join(mfems_prefix, 'lib', 'libmfem'+dylibext)
         assert os.path.exists(path), "libmfem.so is not found in the specified <path>/lib"
+        path = os.path.join(mfemp_prefix, 'lib', 'libmfem'+dylibext)
+        assert os.path.exists(path), "libmfem.so is not found in the specified <path>/lib"
+        
         build_mfem = False
         hypre_prefix = mfem_prefix
         metis_prefix = mfem_prefix
