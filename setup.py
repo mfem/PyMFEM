@@ -839,7 +839,10 @@ class BuildPy(_build_py):
         if build_parallel:
             make_mfem_wrapper(serial=False)
         if not skip_install:
-           _build_py.run(self)
+           if not dry_run:
+               _build_py.run(self)
+           else:
+               print("perform regular installation"
 
 class BdistWheel(_bdist_wheel):
     '''
