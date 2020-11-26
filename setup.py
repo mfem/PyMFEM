@@ -16,6 +16,7 @@ from setuptools import setup, find_packages
 from setuptools.command.build_py import build_py as _build_py
 from setuptools.command.install import install as _install
 from setuptools.command.install_egg_info import install_egg_info as _install_egg_info
+from setuptools.command.install_scripts import install_scripts as _install_scripts
 
 try:
     from setuptools._distutils.command.clean import clean as _clean
@@ -874,6 +875,13 @@ class InstallEggInfo(_install_egg_info):
             _install_egg_info.run(self)
         else:
             print("skipping regular install_egg_info")
+            
+class InstallScripts(_install_scripts):
+    def run(self):
+        if not dry_run:
+            _install_scripts.run(self)
+        else:
+            print("skipping regular install_scripts")
     
 class Clean(_clean):
     '''
@@ -944,6 +952,7 @@ def run_setup():
         cmdclass = {'build_py': BuildPy,
                     'install': Install,
                     'install_egg_info': InstallEggInfo,
+                    'install_scripts': InstallScripts,
                     'bdist_wheel': BdistWheel,
                     'clean': Clean},
         install_requires=["numpy"],
