@@ -719,11 +719,10 @@ class Install(_install):
         ('no-serial', None, 'Does not build serial version'),
         ('mfem-prefix=', None, 'Specify locaiton of mfem' +
          'libmfem.so must exits under <mfem-prefix>/lib'),
-        ('mfemp-prefix=', None, 'Specify locaiton of mfem (parallel)' +
-         'libmfem.so must exits under <mfem-prefix>/lib'),
-        ('mfems-prefix=', None, 'Specify locaiton of mfem (serial)' +
-         'libmfem.so must exits under <mfem-prefix>/lib'),
-        
+        ('mfemp-prefix=', None, 'Specify locaiton of parallel mfem ' +
+         'libmfem.so must exits under <mfemp-prefix>/lib'),
+        ('mfems-prefix=', None, 'Specify locaiton of serial mfem ' +
+         'libmfem.so must exits under <mfems-prefix>/lib'),        
         ('mfem-prefix-no-swig', None, 'skip running swig when mfem-prefix is chosen'),
         ('hypre-prefix=', None, 'Specify locaiton of hypre' +
          'libHYPRE.so must exits under <hypre-prefix>/lib'),
