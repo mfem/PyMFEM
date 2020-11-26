@@ -54,6 +54,7 @@ prefix = ''
 
 verbose = -1
 swig_only = False
+skip_install = False
 run_swig = False
 clean_swig = False
 build_mfem = True
@@ -837,7 +838,7 @@ class BuildPy(_build_py):
             make_mfem_wrapper(serial=True)
         if build_parallel:
             make_mfem_wrapper(serial=False)
-        if not build_only:
+        if not skip_install:
            _build_py.run(self)
 
 class BdistWheel(_bdist_wheel):
