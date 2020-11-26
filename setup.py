@@ -581,10 +581,13 @@ def configure_install(self):
 
     swig_only = bool(self.swig)
     ext_only = bool(self.ext_only)
-    build_serial = (not swig_only and not ext_only)
+
     run_swig = swig_only
 
     build_parallel = bool(self.with_parallel)     # controlls PyMFEM parallel
+    build_serial = not bool(self.no_serial)
+    if build_serial:
+        build_serial = (not swig_only and not ext_only)
     metis_64 = bool(self.with_metis64)
     enable_pumi = bool(self.with_pumi)
     enable_strumpack = bool(self.with_strumpack)
@@ -709,6 +712,7 @@ class Install(_install):
     '''
     user_options = _install.user_options + [
         ('with-parallel', None, 'Installed both serial and parallel version'),
+        ('no-serial', None, 'Does not build serial version'),
         ('mfem-prefix=', None, 'Specify locaiton of mfem' +
          'libmfem.so must exits under <mfem-prefix>/lib'),
         ('mfem-prefix-no-swig=', None, 'Specify locaiton of mfem' +
@@ -740,6 +744,7 @@ class Install(_install):
         self.ext_only = False
         self.skip_ext = False
         self.with_parallel = False
+        self.no_serial = False
         self.mfem_prefix = ''
         self.mfem_prefix_no_swig = ''                        
         self.metis_prefix = ''
