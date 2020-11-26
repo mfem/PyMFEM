@@ -80,7 +80,7 @@ cc_command = 'cc' if os.getenv("CC") is None else os.getenv("CC")
 cxx_command = 'c++' if os.getenv("CC") is None else os.getenv("CXX")
 mpicc_command = 'mpicc' if os.getenv("MPICC") is None else os.getenv("MPICC")
 mpicxx_command = 'mpic++' if os.getenv("MPICXX") is None else os.getenv("MPICXX")
-cxx11_flag = '-std=c++11'
+cxx11_flag = '-std=c++11' if os.getenv("CXX11FLAG") is None else os.getenv("CXX11FLAG")
 
 ### meta data
 def version():
@@ -563,7 +563,7 @@ def configure_install(self):
     called when install workflow is used
     '''
     global prefix, dry_run, verbose
-    global clean_swig, run_swig, swig_only
+    global clean_swig, run_swig, swig_only, skip_install
     global build_mfem, build_mfemp, build_parallel, build_serial
     global build_metis, build_hypre
     global mfems_prefix, mfemp_prefix, metis_prefix, hypre_prefix
@@ -578,7 +578,7 @@ def configure_install(self):
 
     prefix = abspath(self.prefix)
     skip_ext = bool(self.skip_ext)
-
+    skip_install = bool(self.build_only)
     swig_only = bool(self.swig)
     ext_only = bool(self.ext_only)
 
@@ -723,8 +723,8 @@ class Install(_install):
          'libmetis.so must exits under <metis-prefix>/lib'),
         ('swig', None, 'Run Swig'),
         ('ext-only', None, 'Build metis, hypre, mfem(C++) only'),
-        ('skip-ext', None, 'Skip building metis, hypre, mfem(C++) only'),        
-
+        ('skip-ext', None, 'Skip building metis, hypre, mfem(C++) only'),
+        ('build-only', None, 'Skip final install stage to prefix'),
         ('CC=', None, 'c compiler'),
         ('CXX=', None, 'c++ compiler'),
         ('MPICC=', None, 'mpic compiler'),
@@ -744,6 +744,7 @@ class Install(_install):
         self.ext_only = False
         self.skip_ext = False
         self.with_parallel = False
+        self.build_only = False
         self.no_serial = False
         self.mfem_prefix = ''
         self.mfem_prefix_no_swig = ''                        
@@ -819,8 +820,8 @@ class BuildPy(_build_py):
             make_mfem_wrapper(serial=True)
         if build_parallel:
             make_mfem_wrapper(serial=False)
-        
-        _build_py.run(self)
+        if not build_only:
+           _build_py.run(self)
 
 class BdistWheel(_bdist_wheel):
     '''
