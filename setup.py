@@ -34,7 +34,7 @@ setup(
     long_description=long_description,
     url='https://github.com/mfem/PyMFEM',
     author='S. Sihraiwa',
-    author_email='shiraiwa@psfc.mit.edu',
+    author_email='shiraiwa@princeton.edu',
     license='LGPL-2.1',
 
     classifiers=[
