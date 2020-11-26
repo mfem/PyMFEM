@@ -606,6 +606,10 @@ def configure_install(self):
         mfem_prefix = abspath(self.mfem_prefix)
         mfems_prefix = abspath(self.mfem_prefix)
         mfemp_prefix = abspath(self.mfem_prefix)
+        if self.mfems_prefix != '':
+            mfems_prefix = abspath(self.mfems_prefix)
+        if self.mfemp_prefix != '':
+            mfemp_prefix = abspath(self.mfemp_prefix)
 
         path = os.path.join(mfem_prefix, 'lib', 'libmfem'+dylibext)
         assert os.path.exists(path), "libmfem.so is not found in the specified <path>/lib"
@@ -715,8 +719,12 @@ class Install(_install):
         ('no-serial', None, 'Does not build serial version'),
         ('mfem-prefix=', None, 'Specify locaiton of mfem' +
          'libmfem.so must exits under <mfem-prefix>/lib'),
-        ('mfem-prefix-no-swig=', None, 'Specify locaiton of mfem' +
-         'libmfem.so must exits under <mfem-prefix>/lib witout regenerating SWIG wrapper'),
+        ('mfemp-prefix=', None, 'Specify locaiton of mfem (parallel)' +
+         'libmfem.so must exits under <mfem-prefix>/lib'),
+        ('mfems-prefix=', None, 'Specify locaiton of mfem (serial)' +
+         'libmfem.so must exits under <mfem-prefix>/lib'),
+        
+        ('mfem-prefix-no-swig', None, 'skip running swig when mfem-prefix is chosen'),
         ('hypre-prefix=', None, 'Specify locaiton of hypre' +
          'libHYPRE.so must exits under <hypre-prefix>/lib'),
         ('metis-prefix=', None, 'Specify locaiton of metis'+
@@ -747,6 +755,8 @@ class Install(_install):
         self.build_only = False
         self.no_serial = False
         self.mfem_prefix = ''
+        self.mfems_prefix = ''
+        self.mfemp_prefix = ''        
         self.mfem_prefix_no_swig = ''                        
         self.metis_prefix = ''
         self.hypre_prefix = ''
