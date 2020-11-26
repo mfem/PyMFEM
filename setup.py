@@ -626,6 +626,8 @@ def configure_install(self):
         else:
             clean_swig = True
             run_swig = True
+        if swig_only:
+            clean_swig = False
 
     else:
         build_mfem = True
@@ -719,19 +721,22 @@ class Install(_install):
     '''
     user_options = _install.user_options + [
         ('with-parallel', None, 'Installed both serial and parallel version'),
-        ('no-serial', None, 'Does not build serial version'),
+        ('no-serial', None, 'Skip building the serial wrapper'),
         ('mfem-prefix=', None, 'Specify locaiton of mfem' +
-         'libmfem.so must exits under <mfem-prefix>/lib'),
+         'libmfem.so must exits under <mfem-prefix>/lib. ' +
+         'This mode uses clean-swig + run-swig, unless mfem-prefix-no-swig is on'),
         ('mfemp-prefix=', None, 'Specify locaiton of parallel mfem ' +
-         'libmfem.so must exits under <mfemp-prefix>/lib'),
+         'libmfem.so must exits under <mfemp-prefix>/lib. ' +
+         'Need to use it with mfem-prefix'),
         ('mfems-prefix=', None, 'Specify locaiton of serial mfem ' +
-         'libmfem.so must exits under <mfems-prefix>/lib'),        
+         'libmfem.so must exits under <mfems-prefix>/lib. ',
+         'Need to use it with mfem-prefix'),        
         ('mfem-prefix-no-swig', None, 'skip running swig when mfem-prefix is chosen'),
         ('hypre-prefix=', None, 'Specify locaiton of hypre' +
          'libHYPRE.so must exits under <hypre-prefix>/lib'),
         ('metis-prefix=', None, 'Specify locaiton of metis'+
          'libmetis.so must exits under <metis-prefix>/lib'),
-        ('swig', None, 'Run Swig'),
+        ('swig', None, 'Run Swig and exit'),
         ('ext-only', None, 'Build metis, hypre, mfem(C++) only'),
         ('skip-ext', None, 'Skip building metis, hypre, mfem(C++) only'),
         ('build-only', None, 'Skip final install stage to prefix'),
