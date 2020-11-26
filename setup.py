@@ -15,6 +15,8 @@ import multiprocessing
 from setuptools import setup, find_packages
 from setuptools.command.build_py import build_py as _build_py
 from setuptools.command.install import install as _install
+from setuptools.command.install_egg_info import install_egg_info as _install_egg_info
+
 try:
     from setuptools._distutils.command.clean import clean as _clean
 except ImportError:
@@ -866,6 +868,13 @@ class BdistWheel(_bdist_wheel):
         # Run the default bdist_wheel command
         '''
         
+class InstallEggInfo(_install_egg_info):
+    def run(self):
+        if not dry_run:
+            _install_egg_info.run(self)
+        else:
+            print("skipping regular install_egg_info")
+    
 class Clean(_clean):
     '''
     Called when python setup.py clean
@@ -934,6 +943,7 @@ def run_setup():
     setup(
         cmdclass = {'build_py': BuildPy,
                     'install': Install,
+                    'install_egg_info': InstallEggInfo,
                     'bdist_wheel': BdistWheel,
                     'clean': Clean},
         install_requires=["numpy"],
