@@ -600,9 +600,6 @@ def configure_install(self):
         except ImportError:
             assert False, "Can not import mpi4py"
 
-    if self.mfem_prefix_no_swig != '':
-        self.mfem_prefix = self.mfem_prefix_no_swig
-
     if self.mfem_prefix != '':
         mfem_prefix = abspath(self.mfem_prefix)
         mfems_prefix = abspath(self.mfem_prefix)
@@ -764,8 +761,8 @@ class Install(_install):
         self.no_serial = False
         self.mfem_prefix = ''
         self.mfems_prefix = ''
-        self.mfemp_prefix = ''        
-        self.mfem_prefix_no_swig = ''                        
+        self.mfemp_prefix = ''
+        self.mfem_prefix_no_swig = ''
         self.metis_prefix = ''
         self.hypre_prefix = ''
 
@@ -839,10 +836,7 @@ class BuildPy(_build_py):
         if build_parallel:
             make_mfem_wrapper(serial=False)
         if not skip_install:
-           if not dry_run:
-               _build_py.run(self)
-           else:
-               print("perform regular installation")
+           _build_py.run(self)
 
 class BdistWheel(_bdist_wheel):
     '''
