@@ -17,20 +17,6 @@
 %mpi4py_typemap(Comm, MPI_Comm);
 #endif
 
-%inline %{
-/*--------------------------------------------------------------------------
- * Big int stuff
- *--------------------------------------------------------------------------*/
-#ifdef HYPRE_BIGINT
-typedef long long int HYPRE_Int;
-#define HYPRE_MPI_INT MPI_LONG_LONG_INT
-#else 
-typedef int HYPRE_Int;
-#define HYPRE_MPI_INT MPI_INT
-#endif
-%}
-
-
 %init %{
 import_array();
 %}
@@ -44,6 +30,8 @@ import_array();
 %import "hypre.i"
 %import "restriction.i"
 %import "../common/exception.i"
+
+%import "../common/hypre_int.i"
 
 %pointer_class(int, intp);
 %immutable face_nbr_glob_dof_map;

@@ -189,7 +189,7 @@ class FaceIntegrator(mfem.NonlinearFormIntegrator):
         if (el1.Space() == mfem.FunctionSpace().Pk):
             intorder += 1
 
-        ir = mfem.IntRules.Get(Tr.FaceGeom, intorder)
+        ir = mfem.IntRules.Get(Tr.GetGeometryType(), int(intorder))
         for i in range(ir.GetNPoints()):
             ip = ir.IntPoint(i)
             Tr.Loc1.Transform(ip, self.eip1)

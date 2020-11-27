@@ -1,16 +1,21 @@
 %module (package="mfem._par") eltrans
 
 %{
+#include "mfem.hpp"    
 #include "general/array.hpp"
 #include "fem/intrules.hpp"
 #include "fem/eltrans.hpp"
-#include "numpy/arrayobject.h"      
+#include "numpy/arrayobject.h"
+#include "io_stream.hpp"  
 %}
 
 %init %{
 import_array();
 %}
 
+%include "exception.i"
+
+%import "globals.i"
 %import "array.i"
 %import "vector.i"
 %import "densemat.i"

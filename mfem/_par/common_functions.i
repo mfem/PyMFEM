@@ -1,6 +1,8 @@
 %module(package="mfem._par") common_functions
 
 %{
+#include <fstream>
+#include "io_stream.hpp"            
 #include "linalg/blockmatrix.hpp"
 #include "linalg/sparsemat.hpp"
 #include "linalg/densemat.hpp"
@@ -8,7 +10,7 @@
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"     
   %}
-%include  "config/config.hpp" // include mfem MACRO (MFEM_USE_MPI)
+%include "../common/mfem_config.i"
 
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);
@@ -20,6 +22,7 @@ import_array();
 %include "exception.i"
 %include "../common/exception.i"
 
+%import "globals.i"
 %import "array.i"
 
 %ignore "";

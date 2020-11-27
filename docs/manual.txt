@@ -1,6 +1,6 @@
 '''''
 PyMFEM
-built on mfem 4.1 (commit SHA=8dbbcfc25629ac7612fe31afd5b511752ff0e69b)
+built on mfem 4.2 (commit SHA=ed5604e0d350461f20842275578aa2f9e6a61343)
 '''''
 
 PyMFEM is a python wrapper for MFEM, lightweight FEM (finite element
@@ -8,7 +8,7 @@ method) library developed by LLNL (http://mfem.org).
 PyMFEM is tested with python = 3.6, 3.7
 
 This wrapper is meant for a rapid-prototyping of FEM programs, and
-is built using SWIG 3.0.12
+is built using SWIG 4.0.2
 With PyMFEM, a user can create C++ MFEM objects and call their
 method from python. We strongly recommend visiting the MFEM web site
 to find more details of the MFEM library.
@@ -132,8 +132,14 @@ to find more details of the MFEM library.
       QuadratureFunction::Save(std::ostream &out) is wrapped as Save(filename, precision=8)      
 	     
   4-4) mfem::Mesh
+         Simple mesh generator is wrapped as follows
+	     mesh = mfem.Mesh(10, 10, "TRIANGLE")
+	     mesh = mfem.Mesh(10, 10, "QUADRILATERAL")
+	     mesh = mfem.Mesh(10, 10, 10, "HEXAHEDRON")
+	     mesh = mfem.Mesh(10, 10, 10, "TETRAHEDRON")
+	     
          Wrapper of following methods are customized to
-	 return either python list object or tuple of lists
+	 return either python list object or tuple of lists or int
 	  
             GetBdrElementVertices(i)
             GetElementVertices(i)
@@ -144,6 +150,7 @@ to find more details of the MFEM library.
             GetFaceVertices(i)
             GetElementFaces(i)
 	    GetBdrElementAdjacentElement()
+	    GetFaceInfos()
 
          These methods returns an IsoparametricTransformation object
 	 
@@ -173,7 +180,12 @@ to find more details of the MFEM library.
               Mesh(int _Dim, int NVert, int NElem, int NBdrElem = 0,
     	           int _spaceDim= -1)
          
-         GetVertexArray can be used to obtain Vertex point data
+         GetVertexArray
+	    GetVertexArray(i) : returns i-th vertex as numpy array
+            GetVertexArray()  : returns all vertices as 2D numpy array
+	    
+	 GetElementCenterArray(i): returns i-th vertex element center as numpy array
+	 
 	 as NumPy object
 
          GetBdrElementFace(i) returns tuple
@@ -201,7 +213,9 @@ to find more details of the MFEM library.
  	                                               warn=True, int_trans=None)
          will look for 4 points.
 
+         GetScaledJacobian(i, sd) returns minimum Jacobinan computed on in each element.
 
+           
 
   4-5) sparsemat
          RAP has two different implementations. One accept three references.

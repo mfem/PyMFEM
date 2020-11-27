@@ -22,7 +22,7 @@ if cxx_ser != '': os.environ['CXX'] = cxx_ser
 from distutils.core import *
 from distutils      import sysconfig
 
-modules= ["io_stream", "vtk", 
+modules= ["io_stream", "vtk", "sort_pairs", "datacollection",
           "globals", "mem_manager", "device", "hash", "stable3d",
           "error", "array", "common_functions", "socketstream", "handle",
           "segment", "point",
@@ -48,6 +48,9 @@ print("numpy inc", numpyinc)
 include_dirs = [mfemserbuilddir, mfemserincdir, numpyinc, ]
 library_dirs = [mfemserlnkdir,]
 libraries    = ['mfem']
+
+if add_cuda:
+    include_dirs = [mfemserbuilddir, mfemserincdir, numpyinc, cudainc]    
 
 extra_compile_args = [cxx11flag, '-DSWIG_TYPE_TABLE=PyMFEM']
 
