@@ -82,12 +82,6 @@ MFEM_VERSION_MINOR = _pncmesh.MFEM_VERSION_MINOR
 
 MFEM_VERSION_PATCH = _pncmesh.MFEM_VERSION_PATCH
 
-MFEM_SOURCE_DIR = _pncmesh.MFEM_SOURCE_DIR
-
-MFEM_INSTALL_DIR = _pncmesh.MFEM_INSTALL_DIR
-
-MFEM_TIMER_TYPE = _pncmesh.MFEM_TIMER_TYPE
-
 MFEM_HYPRE_VERSION = _pncmesh.MFEM_HYPRE_VERSION
 
 import mfem._par.mesh
@@ -137,7 +131,7 @@ class ParNCMesh(mfem._par.ncmesh.NCMesh):
     __swig_destroy__ = _pncmesh.delete_ParNCMesh
 
     def Refine(self, refinements):
-        r"""Refine(ParNCMesh self, mfem::Array< mfem::Refinement > const & refinements)"""
+        r"""Refine(ParNCMesh self, RefinementArray refinements)"""
         return _pncmesh.ParNCMesh_Refine(self, refinements)
     Refine = _swig_new_instance_method(_pncmesh.ParNCMesh_Refine)
 

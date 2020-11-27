@@ -243,6 +243,7 @@ def GetBoundingBox(self, ref = 2):
     _mesh.Mesh_GetBoundingBox(self, min, max, ref)      
     return min.GetDataArray().copy(), max.GetDataArray().copy()
 %}
+
 %feature("shadow") mfem::Mesh::GetFaceElements %{
 def GetFaceElements(self, Face):
     from mfem.ser import intp
@@ -488,6 +489,23 @@ namespace mfem{
      }
      return array;
    }
+   
+   PyObject* GetElementCenterArray(int idx)
+   {
+     int i;
+     mfem::Vector v;
+
+     self->GetElementCenter(idx, v);
+
+     npy_intp dims[] = {v.Size()};
+     PyObject *array = PyArray_SimpleNew(1, dims, NPY_DOUBLE);
+     double *x    = (double *)PyArray_DATA(array);
+     for (i = 0; i < v.Size() ; i++){
+	 x[i] = v[i];
+     }
+     return array;
+   }
+   
   double GetScaledJacobian(int i, int sd=2)
   {
     // compute scaled Jacobian

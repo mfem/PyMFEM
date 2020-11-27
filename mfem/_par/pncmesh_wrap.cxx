@@ -5044,7 +5044,7 @@ static PyMethodDef SwigMethods[] = {
 		"new_ParNCMesh(ParNCMesh other) -> ParNCMesh\n"
 		""},
 	 { "delete_ParNCMesh", _wrap_delete_ParNCMesh, METH_O, "delete_ParNCMesh(ParNCMesh self)"},
-	 { "ParNCMesh_Refine", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_Refine, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_Refine(ParNCMesh self, mfem::Array< mfem::Refinement > const & refinements)"},
+	 { "ParNCMesh_Refine", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_Refine, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_Refine(ParNCMesh self, RefinementArray refinements)"},
 	 { "ParNCMesh_LimitNCLevel", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_LimitNCLevel, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_LimitNCLevel(ParNCMesh self, int max_nc_level)"},
 	 { "ParNCMesh_CheckDerefinementNCLevel", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_CheckDerefinementNCLevel, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_CheckDerefinementNCLevel(ParNCMesh self, Table deref_table, intArray level_ok, int max_nc_level)"},
 	 { "ParNCMesh_Derefine", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_Derefine, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_Derefine(ParNCMesh self, intArray derefs)"},
@@ -5090,7 +5090,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"new_ParNCMesh(ParNCMesh other) -> ParNCMesh\n"
 		""},
 	 { "delete_ParNCMesh", _wrap_delete_ParNCMesh, METH_O, "delete_ParNCMesh(ParNCMesh self)"},
-	 { "ParNCMesh_Refine", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_Refine, METH_VARARGS|METH_KEYWORDS, "Refine(ParNCMesh self, mfem::Array< mfem::Refinement > const & refinements)"},
+	 { "ParNCMesh_Refine", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_Refine, METH_VARARGS|METH_KEYWORDS, "Refine(ParNCMesh self, RefinementArray refinements)"},
 	 { "ParNCMesh_LimitNCLevel", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_LimitNCLevel, METH_VARARGS|METH_KEYWORDS, "LimitNCLevel(ParNCMesh self, int max_nc_level)"},
 	 { "ParNCMesh_CheckDerefinementNCLevel", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_CheckDerefinementNCLevel, METH_VARARGS|METH_KEYWORDS, "CheckDerefinementNCLevel(ParNCMesh self, Table deref_table, intArray level_ok, int max_nc_level)"},
 	 { "ParNCMesh_Derefine", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_Derefine, METH_VARARGS|METH_KEYWORDS, "Derefine(ParNCMesh self, intArray derefs)"},
@@ -6006,9 +6006,6 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40200)/10000))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40200)/100)%100))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40200)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/1.0.0/src/mfem"));
-  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/1.0.0/mfem/par"));
-  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
   SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21802)));
   
   if (import_mpi4py() < 0)

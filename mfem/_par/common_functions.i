@@ -10,7 +10,7 @@
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"     
   %}
-%include  "config/config.hpp" // include mfem MACRO (MFEM_USE_MPI)
+%include "../common/mfem_config.i"
 
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);

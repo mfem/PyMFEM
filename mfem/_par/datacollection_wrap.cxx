@@ -3129,11 +3129,10 @@ namespace Swig {
 #define SWIGTYPE_p_pri_t swig_types[29]
 #define SWIGTYPE_p_quad_t swig_types[30]
 #define SWIGTYPE_p_seg_t swig_types[31]
-#define SWIGTYPE_p_std__string swig_types[32]
-#define SWIGTYPE_p_tet_t swig_types[33]
-#define SWIGTYPE_p_tri_t swig_types[34]
-static swig_type_info *swig_types[36];
-static swig_module_info swig_module = {swig_types, 35, 0, 0, 0, 0};
+#define SWIGTYPE_p_tet_t swig_types[32]
+#define SWIGTYPE_p_tri_t swig_types[33]
+static swig_type_info *swig_types[35];
+static swig_module_info swig_module = {swig_types, 34, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3297,6 +3296,146 @@ SWIG_FromCharPtr(const char *cptr)
 #include "mpi4py/mpi4py.h"
 
 
+SWIGINTERN int
+SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
+{
+#if PY_VERSION_HEX>=0x03000000
+#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+  if (PyBytes_Check(obj))
+#else
+  if (PyUnicode_Check(obj))
+#endif
+#else  
+  if (PyString_Check(obj))
+#endif
+  {
+    char *cstr; Py_ssize_t len;
+    int ret = SWIG_OK;
+#if PY_VERSION_HEX>=0x03000000
+#if !defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+    if (!alloc && cptr) {
+        /* We can't allow converting without allocation, since the internal
+           representation of string in Python 3 is UCS-2/UCS-4 but we require
+           a UTF-8 representation.
+           TODO(bhy) More detailed explanation */
+        return SWIG_RuntimeError;
+    }
+    obj = PyUnicode_AsUTF8String(obj);
+    if (!obj)
+      return SWIG_TypeError;
+    if (alloc)
+      *alloc = SWIG_NEWOBJ;
+#endif
+    if (PyBytes_AsStringAndSize(obj, &cstr, &len) == -1)
+      return SWIG_TypeError;
+#else
+    if (PyString_AsStringAndSize(obj, &cstr, &len) == -1)
+      return SWIG_TypeError;
+#endif
+    if (cptr) {
+      if (alloc) {
+	if (*alloc == SWIG_NEWOBJ) {
+	  *cptr = reinterpret_cast< char* >(memcpy(new char[len + 1], cstr, sizeof(char)*(len + 1)));
+	  *alloc = SWIG_NEWOBJ;
+	} else {
+	  *cptr = cstr;
+	  *alloc = SWIG_OLDOBJ;
+	}
+      } else {
+#if PY_VERSION_HEX>=0x03000000
+#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+	*cptr = PyBytes_AsString(obj);
+#else
+	assert(0); /* Should never reach here with Unicode strings in Python 3 */
+#endif
+#else
+	*cptr = SWIG_Python_str_AsChar(obj);
+        if (!*cptr)
+          ret = SWIG_TypeError;
+#endif
+      }
+    }
+    if (psize) *psize = len + 1;
+#if PY_VERSION_HEX>=0x03000000 && !defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+    Py_XDECREF(obj);
+#endif
+    return ret;
+  } else {
+#if defined(SWIG_PYTHON_2_UNICODE)
+#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+#error "Cannot use both SWIG_PYTHON_2_UNICODE and SWIG_PYTHON_STRICT_BYTE_CHAR at once"
+#endif
+#if PY_VERSION_HEX<0x03000000
+    if (PyUnicode_Check(obj)) {
+      char *cstr; Py_ssize_t len;
+      if (!alloc && cptr) {
+        return SWIG_RuntimeError;
+      }
+      obj = PyUnicode_AsUTF8String(obj);
+      if (!obj)
+        return SWIG_TypeError;
+      if (PyString_AsStringAndSize(obj, &cstr, &len) != -1) {
+        if (cptr) {
+          if (alloc) *alloc = SWIG_NEWOBJ;
+          *cptr = reinterpret_cast< char* >(memcpy(new char[len + 1], cstr, sizeof(char)*(len + 1)));
+        }
+        if (psize) *psize = len + 1;
+
+        Py_XDECREF(obj);
+        return SWIG_OK;
+      } else {
+        Py_XDECREF(obj);
+      }
+    }
+#endif
+#endif
+
+    swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
+    if (pchar_descriptor) {
+      void* vptr = 0;
+      if (SWIG_ConvertPtr(obj, &vptr, pchar_descriptor, 0) == SWIG_OK) {
+	if (cptr) *cptr = (char *) vptr;
+	if (psize) *psize = vptr ? (strlen((char *)vptr) + 1) : 0;
+	if (alloc) *alloc = SWIG_OLDOBJ;
+	return SWIG_OK;
+      }
+    }
+  }
+  return SWIG_TypeError;
+}
+
+
+SWIGINTERN int
+SWIG_AsPtr_std_string (PyObject * obj, std::string **val) 
+{
+  char* buf = 0 ; size_t size = 0; int alloc = SWIG_OLDOBJ;
+  if (SWIG_IsOK((SWIG_AsCharPtrAndSize(obj, &buf, &size, &alloc)))) {
+    if (buf) {
+      if (val) *val = new std::string(buf, size - 1);
+      if (alloc == SWIG_NEWOBJ) delete[] buf;
+      return SWIG_NEWOBJ;
+    } else {
+      if (val) *val = 0;
+      return SWIG_OLDOBJ;
+    }
+  } else {
+    static int init = 0;
+    static swig_type_info* descriptor = 0;
+    if (!init) {
+      descriptor = SWIG_TypeQuery("std::string" " *");
+      init = 1;
+    }
+    if (descriptor) {
+      std::string *vptr;
+      int res = SWIG_ConvertPtr(obj, (void**)&vptr, descriptor, 0);
+      if (SWIG_IsOK(res) && val) *val = vptr;
+      return res;
+    }
+  }
+  return SWIG_ERROR;
+}
+
+
 SWIGINTERNINLINE PyObject*
   SWIG_From_bool  (bool value)
 {
@@ -3376,6 +3515,13 @@ SWIG_AsVal_double (PyObject *obj, double *val)
 
 
   #define SWIG_From_double   PyFloat_FromDouble 
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_std_string  (const std::string& s)
+{
+  return SWIG_FromCharPtrAndSize(s.data(), s.size());
+}
 
 
 #include <float.h>
@@ -3511,8 +3657,7 @@ SWIGINTERN PyObject *_wrap_new_DataCollection(PyObject *SWIGUNUSEDPARM(self), Py
   PyObject *resultobj = 0;
   std::string *arg1 = 0 ;
   mfem::Mesh *arg2 = (mfem::Mesh *) NULL ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   PyObject * obj0 = 0 ;
@@ -3523,14 +3668,17 @@ SWIGINTERN PyObject *_wrap_new_DataCollection(PyObject *SWIGUNUSEDPARM(self), Py
   mfem::DataCollection *result = 0 ;
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:new_DataCollection", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_std__string,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DataCollection" "', argument " "1"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DataCollection" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DataCollection" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
   }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DataCollection" "', argument " "1"" of type '" "std::string const &""'"); 
-  }
-  arg1 = reinterpret_cast< std::string * >(argp1);
   if (obj1) {
     res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
     if (!SWIG_IsOK(res2)) {
@@ -3547,8 +3695,10 @@ SWIGINTERN PyObject *_wrap_new_DataCollection(PyObject *SWIGUNUSEDPARM(self), Py
     }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DataCollection, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return NULL;
 }
 
@@ -3560,8 +3710,7 @@ SWIGINTERN PyObject *_wrap_DataCollection_RegisterField(PyObject *SWIGUNUSEDPARM
   mfem::GridFunction *arg3 = (mfem::GridFunction *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -3577,14 +3726,17 @@ SWIGINTERN PyObject *_wrap_DataCollection_RegisterField(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataCollection_RegisterField" "', argument " "1"" of type '" "mfem::DataCollection *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DataCollection * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__string,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_RegisterField" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_RegisterField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_RegisterField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_RegisterField" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DataCollection_RegisterField" "', argument " "3"" of type '" "mfem::GridFunction *""'"); 
@@ -3599,8 +3751,10 @@ SWIGINTERN PyObject *_wrap_DataCollection_RegisterField(PyObject *SWIGUNUSEDPARM
     }    
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -3611,8 +3765,7 @@ SWIGINTERN PyObject *_wrap_DataCollection_DeregisterField(PyObject *SWIGUNUSEDPA
   std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
@@ -3625,14 +3778,17 @@ SWIGINTERN PyObject *_wrap_DataCollection_DeregisterField(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataCollection_DeregisterField" "', argument " "1"" of type '" "mfem::DataCollection *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DataCollection * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__string,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_DeregisterField" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_DeregisterField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_DeregisterField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_DeregisterField" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   {
     try {
       (arg1)->DeregisterField((std::string const &)*arg2); 
@@ -3642,8 +3798,10 @@ SWIGINTERN PyObject *_wrap_DataCollection_DeregisterField(PyObject *SWIGUNUSEDPA
     }    
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -3655,8 +3813,7 @@ SWIGINTERN PyObject *_wrap_DataCollection_RegisterQField(PyObject *SWIGUNUSEDPAR
   mfem::QuadratureFunction *arg3 = (mfem::QuadratureFunction *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -3672,14 +3829,17 @@ SWIGINTERN PyObject *_wrap_DataCollection_RegisterQField(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataCollection_RegisterQField" "', argument " "1"" of type '" "mfem::DataCollection *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DataCollection * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__string,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_RegisterQField" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_RegisterQField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_RegisterQField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_RegisterQField" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DataCollection_RegisterQField" "', argument " "3"" of type '" "mfem::QuadratureFunction *""'"); 
@@ -3694,8 +3854,10 @@ SWIGINTERN PyObject *_wrap_DataCollection_RegisterQField(PyObject *SWIGUNUSEDPAR
     }    
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -3706,8 +3868,7 @@ SWIGINTERN PyObject *_wrap_DataCollection_DeregisterQField(PyObject *SWIGUNUSEDP
   std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
@@ -3720,14 +3881,17 @@ SWIGINTERN PyObject *_wrap_DataCollection_DeregisterQField(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataCollection_DeregisterQField" "', argument " "1"" of type '" "mfem::DataCollection *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DataCollection * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__string,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_DeregisterQField" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_DeregisterQField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_DeregisterQField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_DeregisterQField" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   {
     try {
       (arg1)->DeregisterQField((std::string const &)*arg2); 
@@ -3737,8 +3901,10 @@ SWIGINTERN PyObject *_wrap_DataCollection_DeregisterQField(PyObject *SWIGUNUSEDP
     }    
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -3749,8 +3915,7 @@ SWIGINTERN PyObject *_wrap_DataCollection_HasField(PyObject *SWIGUNUSEDPARM(self
   std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
@@ -3764,14 +3929,17 @@ SWIGINTERN PyObject *_wrap_DataCollection_HasField(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataCollection_HasField" "', argument " "1"" of type '" "mfem::DataCollection const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DataCollection * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__string,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_HasField" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_HasField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_HasField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_HasField" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   {
     try {
       result = (bool)((mfem::DataCollection const *)arg1)->HasField((std::string const &)*arg2); 
@@ -3781,8 +3949,10 @@ SWIGINTERN PyObject *_wrap_DataCollection_HasField(PyObject *SWIGUNUSEDPARM(self
     }    
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -3793,8 +3963,7 @@ SWIGINTERN PyObject *_wrap_DataCollection_GetField(PyObject *SWIGUNUSEDPARM(self
   std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
@@ -3808,14 +3977,17 @@ SWIGINTERN PyObject *_wrap_DataCollection_GetField(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataCollection_GetField" "', argument " "1"" of type '" "mfem::DataCollection *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DataCollection * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__string,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_GetField" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_GetField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_GetField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_GetField" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   {
     try {
       result = (mfem::GridFunction *)(arg1)->GetField((std::string const &)*arg2); 
@@ -3825,8 +3997,10 @@ SWIGINTERN PyObject *_wrap_DataCollection_GetField(PyObject *SWIGUNUSEDPARM(self
     }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -3867,8 +4041,7 @@ SWIGINTERN PyObject *_wrap_DataCollection_GetParField(PyObject *SWIGUNUSEDPARM(s
   std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
@@ -3882,14 +4055,17 @@ SWIGINTERN PyObject *_wrap_DataCollection_GetParField(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataCollection_GetParField" "', argument " "1"" of type '" "mfem::DataCollection *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DataCollection * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__string,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_GetParField" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_GetParField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_GetParField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_GetParField" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   {
     try {
       result = (mfem::ParGridFunction *)(arg1)->GetParField((std::string const &)*arg2); 
@@ -3899,8 +4075,10 @@ SWIGINTERN PyObject *_wrap_DataCollection_GetParField(PyObject *SWIGUNUSEDPARM(s
     }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -3911,8 +4089,7 @@ SWIGINTERN PyObject *_wrap_DataCollection_HasQField(PyObject *SWIGUNUSEDPARM(sel
   std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
@@ -3926,14 +4103,17 @@ SWIGINTERN PyObject *_wrap_DataCollection_HasQField(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataCollection_HasQField" "', argument " "1"" of type '" "mfem::DataCollection const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DataCollection * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__string,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_HasQField" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_HasQField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_HasQField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_HasQField" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   {
     try {
       result = (bool)((mfem::DataCollection const *)arg1)->HasQField((std::string const &)*arg2); 
@@ -3943,8 +4123,10 @@ SWIGINTERN PyObject *_wrap_DataCollection_HasQField(PyObject *SWIGUNUSEDPARM(sel
     }    
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -3955,8 +4137,7 @@ SWIGINTERN PyObject *_wrap_DataCollection_GetQField(PyObject *SWIGUNUSEDPARM(sel
   std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
@@ -3970,14 +4151,17 @@ SWIGINTERN PyObject *_wrap_DataCollection_GetQField(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataCollection_GetQField" "', argument " "1"" of type '" "mfem::DataCollection *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DataCollection * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__string,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_GetQField" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_GetQField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_GetQField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_GetQField" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   {
     try {
       result = (mfem::QuadratureFunction *)(arg1)->GetQField((std::string const &)*arg2); 
@@ -3987,8 +4171,10 @@ SWIGINTERN PyObject *_wrap_DataCollection_GetQField(PyObject *SWIGUNUSEDPARM(sel
     }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -4445,7 +4631,7 @@ SWIGINTERN PyObject *_wrap_DataCollection_GetCollectionName(PyObject *SWIGUNUSED
       SWIG_fail; 
     }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__string, 0 |  0 );
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
   return resultobj;
 fail:
   return NULL;
@@ -4733,8 +4919,7 @@ SWIGINTERN PyObject *_wrap_DataCollection_SetPrefixPath(PyObject *SWIGUNUSEDPARM
   std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
@@ -4747,14 +4932,17 @@ SWIGINTERN PyObject *_wrap_DataCollection_SetPrefixPath(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataCollection_SetPrefixPath" "', argument " "1"" of type '" "mfem::DataCollection *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DataCollection * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__string,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_SetPrefixPath" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_SetPrefixPath" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_SetPrefixPath" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_SetPrefixPath" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   {
     try {
       (arg1)->SetPrefixPath((std::string const &)*arg2); 
@@ -4764,8 +4952,10 @@ SWIGINTERN PyObject *_wrap_DataCollection_SetPrefixPath(PyObject *SWIGUNUSEDPARM
     }    
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -4793,7 +4983,7 @@ SWIGINTERN PyObject *_wrap_DataCollection_GetPrefixPath(PyObject *SWIGUNUSEDPARM
       SWIG_fail; 
     }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__string, 0 |  0 );
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
   return resultobj;
 fail:
   return NULL;
@@ -4864,8 +5054,7 @@ SWIGINTERN PyObject *_wrap_DataCollection_SaveField(PyObject *SWIGUNUSEDPARM(sel
   std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
@@ -4878,14 +5067,17 @@ SWIGINTERN PyObject *_wrap_DataCollection_SaveField(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataCollection_SaveField" "', argument " "1"" of type '" "mfem::DataCollection *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DataCollection * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__string,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_SaveField" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_SaveField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_SaveField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_SaveField" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   {
     try {
       (arg1)->SaveField((std::string const &)*arg2); 
@@ -4895,8 +5087,10 @@ SWIGINTERN PyObject *_wrap_DataCollection_SaveField(PyObject *SWIGUNUSEDPARM(sel
     }    
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -4907,8 +5101,7 @@ SWIGINTERN PyObject *_wrap_DataCollection_SaveQField(PyObject *SWIGUNUSEDPARM(se
   std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
@@ -4921,14 +5114,17 @@ SWIGINTERN PyObject *_wrap_DataCollection_SaveQField(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DataCollection_SaveQField" "', argument " "1"" of type '" "mfem::DataCollection *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DataCollection * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__string,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_SaveQField" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DataCollection_SaveQField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_SaveQField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DataCollection_SaveQField" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   {
     try {
       (arg1)->SaveQField((std::string const &)*arg2); 
@@ -4938,8 +5134,10 @@ SWIGINTERN PyObject *_wrap_DataCollection_SaveQField(PyObject *SWIGUNUSEDPARM(se
     }    
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -5099,11 +5297,10 @@ SWIGINTERN PyObject *DataCollection_swiginit(PyObject *SWIGUNUSEDPARM(self), PyO
 SWIGINTERN PyObject *_wrap_VisItFieldInfo_association_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::VisItFieldInfo *arg1 = (mfem::VisItFieldInfo *) 0 ;
-  std::string arg2 ;
+  std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args, "VisItFieldInfo_association_set", 2, 2, swig_obj)) SWIG_fail;
@@ -5113,22 +5310,22 @@ SWIGINTERN PyObject *_wrap_VisItFieldInfo_association_set(PyObject *SWIGUNUSEDPA
   }
   arg1 = reinterpret_cast< mfem::VisItFieldInfo * >(argp1);
   {
-    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__string,  0  | 0);
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VisItFieldInfo_association_set" "', argument " "2"" of type '" "std::string""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VisItFieldInfo_association_set" "', argument " "2"" of type '" "std::string""'");
-    } else {
-      std::string * temp = reinterpret_cast< std::string * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VisItFieldInfo_association_set" "', argument " "2"" of type '" "std::string const &""'"); 
     }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VisItFieldInfo_association_set" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (arg1) (arg1)->association = arg2;
+  if (arg1) (arg1)->association = *arg2;
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -5139,7 +5336,7 @@ SWIGINTERN PyObject *_wrap_VisItFieldInfo_association_get(PyObject *SWIGUNUSEDPA
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  std::string result;
+  std::string *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -5148,8 +5345,8 @@ SWIGINTERN PyObject *_wrap_VisItFieldInfo_association_get(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VisItFieldInfo_association_get" "', argument " "1"" of type '" "mfem::VisItFieldInfo *""'"); 
   }
   arg1 = reinterpret_cast< mfem::VisItFieldInfo * >(argp1);
-  result =  ((arg1)->association);
-  resultobj = SWIG_NewPointerObj((new std::string(static_cast< const std::string& >(result))), SWIGTYPE_p_std__string, SWIG_POINTER_OWN |  0 );
+  result = (std::string *) & ((arg1)->association);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
   return resultobj;
 fail:
   return NULL;
@@ -5283,23 +5480,17 @@ SWIGINTERN PyObject *_wrap_new_VisItFieldInfo__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   std::string arg1 ;
   int arg2 ;
   int arg3 = (int) 1 ;
-  void *argp1 ;
-  int res1 = 0 ;
   mfem::VisItFieldInfo *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   {
-    res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_std__string,  0  | 0);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_VisItFieldInfo" "', argument " "1"" of type '" "std::string""'"); 
-    }  
-    if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VisItFieldInfo" "', argument " "1"" of type '" "std::string""'");
-    } else {
-      std::string * temp = reinterpret_cast< std::string * >(argp1);
-      arg1 = *temp;
-      if (SWIG_IsNewObj(res1)) delete temp;
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_VisItFieldInfo" "', argument " "1"" of type '" "std::string""'"); 
     }
+    arg1 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
   }
   {
     if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
@@ -5343,7 +5534,7 @@ SWIGINTERN PyObject *_wrap_new_VisItFieldInfo(PyObject *self, PyObject *args) {
   }
   if ((argc >= 2) && (argc <= 3)) {
     int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_std__string, SWIG_POINTER_NO_NULL | 0);
+    int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
     _v = SWIG_CheckState(res);
     if (_v) {
       {
@@ -5426,21 +5617,23 @@ SWIGINTERN PyObject *_wrap_new_VisItDataCollection__SWIG_0(PyObject *SWIGUNUSEDP
   PyObject *resultobj = 0;
   std::string *arg1 = 0 ;
   mfem::Mesh *arg2 = (mfem::Mesh *) NULL ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   mfem::VisItDataCollection *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_std__string,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_VisItDataCollection" "', argument " "1"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_VisItDataCollection" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VisItDataCollection" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
   }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VisItDataCollection" "', argument " "1"" of type '" "std::string const &""'"); 
-  }
-  arg1 = reinterpret_cast< std::string * >(argp1);
   if (swig_obj[1]) {
     res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
     if (!SWIG_IsOK(res2)) {
@@ -5457,8 +5650,10 @@ SWIGINTERN PyObject *_wrap_new_VisItDataCollection__SWIG_0(PyObject *SWIGUNUSEDP
     }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VisItDataCollection, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return NULL;
 }
 
@@ -5468,8 +5663,7 @@ SWIGINTERN PyObject *_wrap_new_VisItDataCollection__SWIG_1(PyObject *SWIGUNUSEDP
   MPI_Comm arg1 ;
   std::string *arg2 = 0 ;
   mfem::Mesh *arg3 = (mfem::Mesh *) NULL ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   mfem::VisItDataCollection *result = 0 ;
@@ -5484,14 +5678,17 @@ SWIGINTERN PyObject *_wrap_new_VisItDataCollection__SWIG_1(PyObject *SWIGUNUSEDP
     arg1 = *ptr;
     if (SWIG_IsNewObj(res)) delete ptr;
   }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__string,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_VisItDataCollection" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_VisItDataCollection" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VisItDataCollection" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VisItDataCollection" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   if (swig_obj[2]) {
     res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
     if (!SWIG_IsOK(res3)) {
@@ -5508,8 +5705,10 @@ SWIGINTERN PyObject *_wrap_new_VisItDataCollection__SWIG_1(PyObject *SWIGUNUSEDP
     }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VisItDataCollection, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -5524,7 +5723,7 @@ SWIGINTERN PyObject *_wrap_new_VisItDataCollection(PyObject *self, PyObject *arg
   --argc;
   if ((argc >= 1) && (argc <= 2)) {
     int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_std__string, SWIG_POINTER_NO_NULL | 0);
+    int res = SWIG_AsPtr_std_string(argv[0], (std::string**)(0));
     _v = SWIG_CheckState(res);
     if (_v) {
       if (argc <= 1) {
@@ -5543,7 +5742,7 @@ SWIGINTERN PyObject *_wrap_new_VisItDataCollection(PyObject *self, PyObject *arg
     int res = SWIG_AsPtr_MPI_Comm(argv[0], (MPI_Comm**)(0));
     _v = SWIG_CheckState(res);
     if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_std__string, SWIG_POINTER_NO_NULL | 0);
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
       _v = SWIG_CheckState(res);
       if (_v) {
         if (argc <= 2) {
@@ -5705,8 +5904,7 @@ SWIGINTERN PyObject *_wrap_VisItDataCollection_RegisterField(PyObject *SWIGUNUSE
   mfem::GridFunction *arg3 = (mfem::GridFunction *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -5722,14 +5920,17 @@ SWIGINTERN PyObject *_wrap_VisItDataCollection_RegisterField(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VisItDataCollection_RegisterField" "', argument " "1"" of type '" "mfem::VisItDataCollection *""'"); 
   }
   arg1 = reinterpret_cast< mfem::VisItDataCollection * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__string,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VisItDataCollection_RegisterField" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VisItDataCollection_RegisterField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VisItDataCollection_RegisterField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VisItDataCollection_RegisterField" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VisItDataCollection_RegisterField" "', argument " "3"" of type '" "mfem::GridFunction *""'"); 
@@ -5744,8 +5945,10 @@ SWIGINTERN PyObject *_wrap_VisItDataCollection_RegisterField(PyObject *SWIGUNUSE
     }    
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -5757,8 +5960,7 @@ SWIGINTERN PyObject *_wrap_VisItDataCollection_RegisterQField(PyObject *SWIGUNUS
   mfem::QuadratureFunction *arg3 = (mfem::QuadratureFunction *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -5774,14 +5976,17 @@ SWIGINTERN PyObject *_wrap_VisItDataCollection_RegisterQField(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VisItDataCollection_RegisterQField" "', argument " "1"" of type '" "mfem::VisItDataCollection *""'"); 
   }
   arg1 = reinterpret_cast< mfem::VisItDataCollection * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__string,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VisItDataCollection_RegisterQField" "', argument " "2"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VisItDataCollection_RegisterQField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VisItDataCollection_RegisterQField" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VisItDataCollection_RegisterQField" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VisItDataCollection_RegisterQField" "', argument " "3"" of type '" "mfem::QuadratureFunction *""'"); 
@@ -5796,8 +6001,10 @@ SWIGINTERN PyObject *_wrap_VisItDataCollection_RegisterQField(PyObject *SWIGUNUS
     }    
   }
   resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -6052,8 +6259,7 @@ SWIGINTERN PyObject *_wrap_new_ParaViewDataCollection(PyObject *SWIGUNUSEDPARM(s
   PyObject *resultobj = 0;
   std::string *arg1 = 0 ;
   mfem::Mesh *arg2 = (mfem::Mesh *) NULL ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
+  int res1 = SWIG_OLDOBJ ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   PyObject * obj0 = 0 ;
@@ -6064,14 +6270,17 @@ SWIGINTERN PyObject *_wrap_new_ParaViewDataCollection(PyObject *SWIGUNUSEDPARM(s
   mfem::ParaViewDataCollection *result = 0 ;
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:new_ParaViewDataCollection", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_std__string,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ParaViewDataCollection" "', argument " "1"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res1 = SWIG_AsPtr_std_string(obj0, &ptr);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ParaViewDataCollection" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ParaViewDataCollection" "', argument " "1"" of type '" "std::string const &""'"); 
+    }
+    arg1 = ptr;
   }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ParaViewDataCollection" "', argument " "1"" of type '" "std::string const &""'"); 
-  }
-  arg1 = reinterpret_cast< std::string * >(argp1);
   if (obj1) {
     res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
     if (!SWIG_IsOK(res2)) {
@@ -6088,8 +6297,10 @@ SWIGINTERN PyObject *_wrap_new_ParaViewDataCollection(PyObject *SWIGUNUSEDPARM(s
     }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParaViewDataCollection, SWIG_POINTER_NEW |  0 );
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res1)) delete arg1;
   return NULL;
 }
 
@@ -6479,8 +6690,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "DataCollection_ResetError", (PyCFunction)(void(*)(void))_wrap_DataCollection_ResetError, METH_VARARGS|METH_KEYWORDS, "DataCollection_ResetError(DataCollection self, int err=NO_ERROR)"},
 	 { "DataCollection_swigregister", DataCollection_swigregister, METH_O, NULL},
 	 { "DataCollection_swiginit", DataCollection_swiginit, METH_VARARGS, NULL},
-	 { "VisItFieldInfo_association_set", _wrap_VisItFieldInfo_association_set, METH_VARARGS, "VisItFieldInfo_association_set(VisItFieldInfo self, std::string association)"},
-	 { "VisItFieldInfo_association_get", _wrap_VisItFieldInfo_association_get, METH_O, "VisItFieldInfo_association_get(VisItFieldInfo self) -> std::string"},
+	 { "VisItFieldInfo_association_set", _wrap_VisItFieldInfo_association_set, METH_VARARGS, "VisItFieldInfo_association_set(VisItFieldInfo self, std::string const & association)"},
+	 { "VisItFieldInfo_association_get", _wrap_VisItFieldInfo_association_get, METH_O, "VisItFieldInfo_association_get(VisItFieldInfo self) -> std::string const &"},
 	 { "VisItFieldInfo_num_components_set", _wrap_VisItFieldInfo_num_components_set, METH_VARARGS, "VisItFieldInfo_num_components_set(VisItFieldInfo self, int num_components)"},
 	 { "VisItFieldInfo_num_components_get", _wrap_VisItFieldInfo_num_components_get, METH_O, "VisItFieldInfo_num_components_get(VisItFieldInfo self) -> int"},
 	 { "VisItFieldInfo_lod_set", _wrap_VisItFieldInfo_lod_set, METH_VARARGS, "VisItFieldInfo_lod_set(VisItFieldInfo self, int lod)"},
@@ -6573,8 +6784,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "DataCollection_ResetError", (PyCFunction)(void(*)(void))_wrap_DataCollection_ResetError, METH_VARARGS|METH_KEYWORDS, "ResetError(DataCollection self, int err=NO_ERROR)"},
 	 { "DataCollection_swigregister", DataCollection_swigregister, METH_O, NULL},
 	 { "DataCollection_swiginit", DataCollection_swiginit, METH_VARARGS, NULL},
-	 { "VisItFieldInfo_association_set", _wrap_VisItFieldInfo_association_set, METH_VARARGS, "VisItFieldInfo_association_set(VisItFieldInfo self, std::string association)"},
-	 { "VisItFieldInfo_association_get", _wrap_VisItFieldInfo_association_get, METH_O, "VisItFieldInfo_association_get(VisItFieldInfo self) -> std::string"},
+	 { "VisItFieldInfo_association_set", _wrap_VisItFieldInfo_association_set, METH_VARARGS, "VisItFieldInfo_association_set(VisItFieldInfo self, std::string const & association)"},
+	 { "VisItFieldInfo_association_get", _wrap_VisItFieldInfo_association_get, METH_O, "VisItFieldInfo_association_get(VisItFieldInfo self) -> std::string const &"},
 	 { "VisItFieldInfo_num_components_set", _wrap_VisItFieldInfo_num_components_set, METH_VARARGS, "VisItFieldInfo_num_components_set(VisItFieldInfo self, int num_components)"},
 	 { "VisItFieldInfo_num_components_get", _wrap_VisItFieldInfo_num_components_get, METH_O, "VisItFieldInfo_num_components_get(VisItFieldInfo self) -> int"},
 	 { "VisItFieldInfo_lod_set", _wrap_VisItFieldInfo_lod_set, METH_VARARGS, "VisItFieldInfo_lod_set(VisItFieldInfo self, int lod)"},
@@ -6667,7 +6878,6 @@ static swig_type_info _swigt__p_mfem__VisItFieldInfo = {"_p_mfem__VisItFieldInfo
 static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 0};
 
@@ -6704,7 +6914,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_pri_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
-  &_swigt__p_std__string,
   &_swigt__p_tet_t,
   &_swigt__p_tri_t,
 };
@@ -6741,7 +6950,6 @@ static swig_cast_info _swigc__p_mfem__VisItFieldInfo[] = {  {&_swigt__p_mfem__Vi
 static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 0, 0}};
 
@@ -6778,7 +6986,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_pri_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
-  _swigc__p_std__string,
   _swigc__p_tet_t,
   _swigc__p_tri_t,
 };
@@ -7524,9 +7731,6 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40200)/10000))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40200)/100)%100))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40200)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/1.0.0/src/mfem"));
-  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/1.0.0/mfem/par"));
-  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
   SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21802)));
   
   import_array();

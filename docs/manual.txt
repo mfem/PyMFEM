@@ -181,8 +181,10 @@ to find more details of the MFEM library.
     	           int _spaceDim= -1)
          
          GetVertexArray
-	    GetVertexArray(i) : return i-th vertex as numpy array
-            GetVertexArray()  : return all vertices as 2D numpy array
+	    GetVertexArray(i) : returns i-th vertex as numpy array
+            GetVertexArray()  : returns all vertices as 2D numpy array
+	    
+	 GetElementCenterArray(i): returns i-th vertex element center as numpy array
 	 
 	 as NumPy object
 

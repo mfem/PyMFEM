@@ -486,8 +486,10 @@ def generate_wrapper():
         parflag.append('-I'+os.path.join(strumpack_prefix, 'include'))
 
     for file in ifiles():
-        if file == 'pumi.i' and not enable_pumi:
-            continue
+#        pumi.i does not depends on pumi specific header so this should
+#        work        
+#        if file == 'pumi.i':# and not enable_pumi:
+#            continue
         if file == 'strumpack.i' and not enable_strumpack:
             continue
         if not check_new(file):

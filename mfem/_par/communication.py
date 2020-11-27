@@ -80,12 +80,6 @@ MFEM_VERSION_MINOR = _communication.MFEM_VERSION_MINOR
 
 MFEM_VERSION_PATCH = _communication.MFEM_VERSION_PATCH
 
-MFEM_SOURCE_DIR = _communication.MFEM_SOURCE_DIR
-
-MFEM_INSTALL_DIR = _communication.MFEM_INSTALL_DIR
-
-MFEM_TIMER_TYPE = _communication.MFEM_TIMER_TYPE
-
 MFEM_HYPRE_VERSION = _communication.MFEM_HYPRE_VERSION
 
 import mfem._par.array
