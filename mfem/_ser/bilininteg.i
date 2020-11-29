@@ -39,6 +39,7 @@ import_array();
 %import "eltrans.i"
 %import "linearform.i"
 %import "fe.i"
+%import "nonlininteg.i"
 %include "../common/exception_director.i"
  //%template(IntegrationPointArray) mfem::Array<mfem::IntegrationPoint>;
 
