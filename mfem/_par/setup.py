@@ -20,8 +20,6 @@ from  setup_local import *
 if cc_par != '': os.environ['CC'] = cc_par
 if cxx_par != '': os.environ['CXX'] = cxx_par
 
-
-
 from distutils.core import setup, Extension
 from distutils.core import *
 from distutils      import sysconfig
