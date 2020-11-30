@@ -94,7 +94,8 @@ import mfem._ser.lininteg
 import mfem._ser.handle
 import mfem._ser.restriction
 import mfem._ser.linearform
-class BilinearFormIntegrator(object):
+import mfem._ser.nonlininteg
+class BilinearFormIntegrator(mfem._ser.nonlininteg.NonlinearFormIntegrator):
     r"""Proxy of C++ mfem::BilinearFormIntegrator class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
@@ -110,7 +111,8 @@ class BilinearFormIntegrator(object):
 
     def AssemblePA(self, *args):
         r"""
-        AssemblePA(BilinearFormIntegrator self)
+        AssemblePA(BilinearFormIntegrator self, FiniteElementSpace fes)
+        AssemblePA(BilinearFormIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)
         AssemblePA(BilinearFormIntegrator self, FiniteElementSpace fes)
         AssemblePA(BilinearFormIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)
         """
@@ -278,7 +280,8 @@ class TransposeIntegrator(BilinearFormIntegrator):
 
     def AssemblePA(self, *args):
         r"""
-        AssemblePA(TransposeIntegrator self)
+        AssemblePA(TransposeIntegrator self, FiniteElementSpace fes)
+        AssemblePA(TransposeIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)
         AssemblePA(TransposeIntegrator self, FiniteElementSpace fes)
         """
         return _bilininteg.TransposeIntegrator_AssemblePA(self, *args)
@@ -1423,7 +1426,8 @@ class GradientIntegrator(BilinearFormIntegrator):
 
     def AssemblePA(self, *args):
         r"""
-        AssemblePA(GradientIntegrator self)
+        AssemblePA(GradientIntegrator self, FiniteElementSpace fes)
+        AssemblePA(GradientIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)
         AssemblePA(GradientIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)
         """
         return _bilininteg.GradientIntegrator_AssemblePA(self, *args)
@@ -1507,7 +1511,8 @@ class DiffusionIntegrator(BilinearFormIntegrator):
 
     def AssemblePA(self, *args):
         r"""
-        AssemblePA(DiffusionIntegrator self)
+        AssemblePA(DiffusionIntegrator self, FiniteElementSpace fes)
+        AssemblePA(DiffusionIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)
         AssemblePA(DiffusionIntegrator self, FiniteElementSpace fes)
         """
         return _bilininteg.DiffusionIntegrator_AssemblePA(self, *args)
@@ -1588,7 +1593,8 @@ class MassIntegrator(BilinearFormIntegrator):
 
     def AssemblePA(self, *args):
         r"""
-        AssemblePA(MassIntegrator self)
+        AssemblePA(MassIntegrator self, FiniteElementSpace fes)
+        AssemblePA(MassIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)
         AssemblePA(MassIntegrator self, FiniteElementSpace fes)
         """
         return _bilininteg.MassIntegrator_AssemblePA(self, *args)
@@ -1673,7 +1679,8 @@ class ConvectionIntegrator(BilinearFormIntegrator):
 
     def AssemblePA(self, *args):
         r"""
-        AssemblePA(ConvectionIntegrator self)
+        AssemblePA(ConvectionIntegrator self, FiniteElementSpace fes)
+        AssemblePA(ConvectionIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)
         AssemblePA(ConvectionIntegrator self, FiniteElementSpace arg2)
         """
         return _bilininteg.ConvectionIntegrator_AssemblePA(self, *args)
@@ -1768,7 +1775,8 @@ class VectorMassIntegrator(BilinearFormIntegrator):
 
     def AssemblePA(self, *args):
         r"""
-        AssemblePA(VectorMassIntegrator self)
+        AssemblePA(VectorMassIntegrator self, FiniteElementSpace fes)
+        AssemblePA(VectorMassIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)
         AssemblePA(VectorMassIntegrator self, FiniteElementSpace fes)
         """
         return _bilininteg.VectorMassIntegrator_AssemblePA(self, *args)
@@ -1949,7 +1957,8 @@ class CurlCurlIntegrator(BilinearFormIntegrator):
 
     def AssemblePA(self, *args):
         r"""
-        AssemblePA(CurlCurlIntegrator self)
+        AssemblePA(CurlCurlIntegrator self, FiniteElementSpace fes)
+        AssemblePA(CurlCurlIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)
         AssemblePA(CurlCurlIntegrator self, FiniteElementSpace fes)
         """
         return _bilininteg.CurlCurlIntegrator_AssemblePA(self, *args)
@@ -2031,7 +2040,8 @@ class VectorFEMassIntegrator(BilinearFormIntegrator):
 
     def AssemblePA(self, *args):
         r"""
-        AssemblePA(VectorFEMassIntegrator self)
+        AssemblePA(VectorFEMassIntegrator self, FiniteElementSpace fes)
+        AssemblePA(VectorFEMassIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)
         AssemblePA(VectorFEMassIntegrator self, FiniteElementSpace fes)
         AssemblePA(VectorFEMassIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)
         """
@@ -2073,7 +2083,8 @@ class VectorDivergenceIntegrator(BilinearFormIntegrator):
 
     def AssemblePA(self, *args):
         r"""
-        AssemblePA(VectorDivergenceIntegrator self)
+        AssemblePA(VectorDivergenceIntegrator self, FiniteElementSpace fes)
+        AssemblePA(VectorDivergenceIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)
         AssemblePA(VectorDivergenceIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)
         """
         return _bilininteg.VectorDivergenceIntegrator_AssemblePA(self, *args)
@@ -2152,7 +2163,8 @@ class VectorDiffusionIntegrator(BilinearFormIntegrator):
 
     def AssemblePA(self, *args):
         r"""
-        AssemblePA(VectorDiffusionIntegrator self)
+        AssemblePA(VectorDiffusionIntegrator self, FiniteElementSpace fes)
+        AssemblePA(VectorDiffusionIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)
         AssemblePA(VectorDiffusionIntegrator self, FiniteElementSpace fes)
         """
         return _bilininteg.VectorDiffusionIntegrator_AssemblePA(self, *args)
@@ -2239,6 +2251,14 @@ class DGTraceIntegrator(BilinearFormIntegrator):
         """
         return _bilininteg.DGTraceIntegrator_AssembleFaceMatrix(self, *args)
     AssembleFaceMatrix = _swig_new_instance_method(_bilininteg.DGTraceIntegrator_AssembleFaceMatrix)
+
+    def AssemblePA(self, *args):
+        r"""
+        AssemblePA(DGTraceIntegrator self, FiniteElementSpace fes)
+        AssemblePA(DGTraceIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)
+        """
+        return _bilininteg.DGTraceIntegrator_AssemblePA(self, *args)
+    AssemblePA = _swig_new_instance_method(_bilininteg.DGTraceIntegrator_AssemblePA)
 
     def AssemblePAInteriorFaces(self, fes):
         r"""AssemblePAInteriorFaces(DGTraceIntegrator self, FiniteElementSpace fes)"""

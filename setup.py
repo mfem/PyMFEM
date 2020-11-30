@@ -15,6 +15,9 @@ import multiprocessing
 from setuptools import setup, find_packages
 from setuptools.command.build_py import build_py as _build_py
 from setuptools.command.install import install as _install
+from setuptools.command.install_egg_info import install_egg_info as _install_egg_info
+from setuptools.command.install_scripts import install_scripts as _install_scripts
+
 try:
     from setuptools._distutils.command.clean import clean as _clean
 except ImportError:
@@ -54,6 +57,7 @@ prefix = ''
 
 verbose = -1
 swig_only = False
+skip_install = False
 run_swig = False
 clean_swig = False
 build_mfem = True
@@ -80,7 +84,7 @@ cc_command = 'cc' if os.getenv("CC") is None else os.getenv("CC")
 cxx_command = 'c++' if os.getenv("CC") is None else os.getenv("CXX")
 mpicc_command = 'mpicc' if os.getenv("MPICC") is None else os.getenv("MPICC")
 mpicxx_command = 'mpic++' if os.getenv("MPICXX") is None else os.getenv("MPICXX")
-cxx11_flag = '-std=c++11'
+cxx11_flag = '-std=c++11' if os.getenv("CXX11FLAG") is None else os.getenv("CXX11FLAG")
 
 ### meta data
 def version():
@@ -117,7 +121,9 @@ metadata = {'name'             : 'mfem',
                                  'Intended Audience :: Developers',
                                  'Topic :: Scientific/Engineering :: Physics',
                                  'License :: OSI Approved :: BSD License',
-                                 'Programming Language :: Python :: 3.6',  ],
+                                 'Programming Language :: Python :: 3.6',
+                                 'Programming Language :: Python :: 3.7',
+                                 'Programming Language :: Python :: 3.8',  ],
             'keywords'         : [k for k in keywords.split('\n')    if k],
             'platforms'        : [p for p in platforms.split('\n')   if p],
             'license'          : 'BSD-3',
@@ -482,8 +488,10 @@ def generate_wrapper():
         parflag.append('-I'+os.path.join(strumpack_prefix, 'include'))
 
     for file in ifiles():
-        if file == 'pumi.i' and not enable_pumi:
-            continue
+#        pumi.i does not depends on pumi specific header so this should
+#        work        
+#        if file == 'pumi.i':# and not enable_pumi:
+#            continue
         if file == 'strumpack.i' and not enable_strumpack:
             continue
         if not check_new(file):
@@ -563,7 +571,7 @@ def configure_install(self):
     called when install workflow is used
     '''
     global prefix, dry_run, verbose
-    global clean_swig, run_swig, swig_only
+    global clean_swig, run_swig, swig_only, skip_install
     global build_mfem, build_mfemp, build_parallel, build_serial
     global build_metis, build_hypre
     global mfems_prefix, mfemp_prefix, metis_prefix, hypre_prefix
@@ -578,13 +586,16 @@ def configure_install(self):
 
     prefix = abspath(self.prefix)
     skip_ext = bool(self.skip_ext)
-
+    skip_install = bool(self.build_only)
     swig_only = bool(self.swig)
     ext_only = bool(self.ext_only)
-    build_serial = (not swig_only and not ext_only)
+
     run_swig = swig_only
 
     build_parallel = bool(self.with_parallel)     # controlls PyMFEM parallel
+    build_serial = not bool(self.no_serial)
+    if build_serial:
+        build_serial = (not swig_only and not ext_only)
     metis_64 = bool(self.with_metis64)
     enable_pumi = bool(self.with_pumi)
     enable_strumpack = bool(self.with_strumpack)
@@ -596,16 +607,20 @@ def configure_install(self):
         except ImportError:
             assert False, "Can not import mpi4py"
 
-    if self.mfem_prefix_no_swig != '':
-        self.mfem_prefix = self.mfem_prefix_no_swig
-
     if self.mfem_prefix != '':
         mfem_prefix = abspath(self.mfem_prefix)
         mfems_prefix = abspath(self.mfem_prefix)
         mfemp_prefix = abspath(self.mfem_prefix)
+        if self.mfems_prefix != '':
+            mfems_prefix = abspath(self.mfems_prefix)
+        if self.mfemp_prefix != '':
+            mfemp_prefix = abspath(self.mfemp_prefix)
 
-        path = os.path.join(mfem_prefix, 'lib', 'libmfem'+dylibext)
+        path = os.path.join(mfems_prefix, 'lib', 'libmfem'+dylibext)
         assert os.path.exists(path), "libmfem.so is not found in the specified <path>/lib"
+        path = os.path.join(mfemp_prefix, 'lib', 'libmfem'+dylibext)
+        assert os.path.exists(path), "libmfem.so is not found in the specified <path>/lib"
+        
         build_mfem = False
         hypre_prefix = mfem_prefix
         metis_prefix = mfem_prefix
@@ -616,6 +631,8 @@ def configure_install(self):
         else:
             clean_swig = True
             run_swig = True
+        if swig_only:
+            clean_swig = False
 
     else:
         build_mfem = True
@@ -709,18 +726,25 @@ class Install(_install):
     '''
     user_options = _install.user_options + [
         ('with-parallel', None, 'Installed both serial and parallel version'),
+        ('no-serial', None, 'Skip building the serial wrapper'),
         ('mfem-prefix=', None, 'Specify locaiton of mfem' +
-         'libmfem.so must exits under <mfem-prefix>/lib'),
-        ('mfem-prefix-no-swig=', None, 'Specify locaiton of mfem' +
-         'libmfem.so must exits under <mfem-prefix>/lib witout regenerating SWIG wrapper'),
+         'libmfem.so must exits under <mfem-prefix>/lib. ' +
+         'This mode uses clean-swig + run-swig, unless mfem-prefix-no-swig is on'),
+        ('mfemp-prefix=', None, 'Specify locaiton of parallel mfem ' +
+         'libmfem.so must exits under <mfemp-prefix>/lib. ' +
+         'Need to use it with mfem-prefix'),
+        ('mfems-prefix=', None, 'Specify locaiton of serial mfem ' +
+         'libmfem.so must exits under <mfems-prefix>/lib. ',
+         'Need to use it with mfem-prefix'),        
+        ('mfem-prefix-no-swig', None, 'skip running swig when mfem-prefix is chosen'),
         ('hypre-prefix=', None, 'Specify locaiton of hypre' +
          'libHYPRE.so must exits under <hypre-prefix>/lib'),
         ('metis-prefix=', None, 'Specify locaiton of metis'+
          'libmetis.so must exits under <metis-prefix>/lib'),
-        ('swig', None, 'Run Swig'),
+        ('swig', None, 'Run Swig and exit'),
         ('ext-only', None, 'Build metis, hypre, mfem(C++) only'),
-        ('skip-ext', None, 'Skip building metis, hypre, mfem(C++) only'),        
-
+        ('skip-ext', None, 'Skip building metis, hypre, mfem(C++) only'),
+        ('build-only', None, 'Skip final install stage to prefix'),
         ('CC=', None, 'c compiler'),
         ('CXX=', None, 'c++ compiler'),
         ('MPICC=', None, 'mpic compiler'),
@@ -740,8 +764,12 @@ class Install(_install):
         self.ext_only = False
         self.skip_ext = False
         self.with_parallel = False
+        self.build_only = False
+        self.no_serial = False
         self.mfem_prefix = ''
-        self.mfem_prefix_no_swig = ''                        
+        self.mfems_prefix = ''
+        self.mfemp_prefix = ''
+        self.mfem_prefix_no_swig = ''
         self.metis_prefix = ''
         self.hypre_prefix = ''
 
@@ -814,8 +842,8 @@ class BuildPy(_build_py):
             make_mfem_wrapper(serial=True)
         if build_parallel:
             make_mfem_wrapper(serial=False)
-        
-        _build_py.run(self)
+        if not skip_install:
+           _build_py.run(self)
 
 class BdistWheel(_bdist_wheel):
     '''
@@ -845,6 +873,20 @@ class BdistWheel(_bdist_wheel):
         # Run the default bdist_wheel command
         '''
         
+class InstallEggInfo(_install_egg_info):
+    def run(self):
+        if not dry_run:
+            _install_egg_info.run(self)
+        else:
+            print("skipping regular install_egg_info")
+            
+class InstallScripts(_install_scripts):
+    def run(self):
+        if not dry_run:
+            _install_scripts.run(self)
+        else:
+            print("skipping regular install_scripts")
+    
 class Clean(_clean):
     '''
     Called when python setup.py clean
@@ -913,6 +955,8 @@ def run_setup():
     setup(
         cmdclass = {'build_py': BuildPy,
                     'install': Install,
+                    'install_egg_info': InstallEggInfo,
+                    'install_scripts': InstallScripts,
                     'bdist_wheel': BdistWheel,
                     'clean': Clean},
         install_requires=["numpy"],
@@ -928,3 +972,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

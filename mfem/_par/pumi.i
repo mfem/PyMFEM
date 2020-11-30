@@ -54,7 +54,10 @@ import_array();
     return dynamic_cast<mfem::ParPumiMesh*>(pmesh);
   }
 %}
-  
+
+#undef MFEM_USE_PUMI
+#define MFEM_USE_PUMI YES
+
 %include "mesh/pumi.hpp"
 
 

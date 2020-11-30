@@ -1,4 +1,10 @@
 	<<<  Change Log. >>>
+2020 11.29
+        * bilininteg.i is adjusted so that NonlinearIntegrator is properly recognized
+	  as a base class of BilinearIntegrator class. This allows to use SetIntOrder
+	  and some others in BilinearIntegrator
+2020 11.23
+        * Mesh.GetElementCenterArray is added, which returns numpy array
 2020 11.21
         * cuda build is tested
 	* In solver.hpp, many routines takes Operator &, but FormLinearSystem

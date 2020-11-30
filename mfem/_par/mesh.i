@@ -474,6 +474,23 @@ namespace mfem{
      }
      return array;
    }
+   
+   PyObject* GetElementCenterArray(int idx)
+   {
+     int i;
+     mfem::Vector v;
+     
+     self->GetElementCenter(idx, v);
+
+     npy_intp dims[] = {v.Size()};
+     PyObject *array = PyArray_SimpleNew(1, dims, NPY_DOUBLE);
+     double *x    = (double *)PyArray_DATA(array);
+     for (i = 0; i < v.Size() ; i++){
+	 x[i] = v[i];
+     }
+     return array;
+   }
+   
   double GetScaledJacobian(int i, int sd=2)
   {
     // compute scaled Jacobian
