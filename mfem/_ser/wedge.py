@@ -10,17 +10,17 @@ if _swig_python_version_info < (2, 7, 0):
 
 # Import the low-level C/C++ module
 if __package__ or "." in __name__:
-    from . import _point
+    from . import _wedge
 else:
-    import _point
+    import _wedge
 
 try:
     import builtins as __builtin__
 except ImportError:
     import __builtin__
 
-_swig_new_instance_method = _point.SWIG_PyInstanceMethod_New
-_swig_new_static_method = _point.SWIG_PyStaticMethod_New
+_swig_new_instance_method = _wedge.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _wedge.SWIG_PyStaticMethod_New
 
 def _swig_repr(self):
     try:
@@ -66,93 +66,100 @@ class _SwigNonDynamicMeta(type):
 
 import weakref
 
-import mfem._ser.element
-import mfem._ser.globals
+import mfem._ser.fe
 import mfem._ser.array
 import mfem._ser.mem_manager
-import mfem._ser.densemat
 import mfem._ser.vector
-import mfem._ser.operators
-import mfem._ser.matrix
 import mfem._ser.geom
 import mfem._ser.intrules
+import mfem._ser.densemat
+import mfem._ser.operators
+import mfem._ser.matrix
+import mfem._ser.sparsemat
+import mfem._ser.element
+import mfem._ser.globals
 import mfem._ser.table
 import mfem._ser.hash
-class Point(mfem._ser.element.Element):
-    r"""Proxy of C++ mfem::Point class."""
+class Wedge(mfem._ser.element.Element):
+    r"""Proxy of C++ mfem::Wedge class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
     def __init__(self, *args):
         r"""
-        __init__(Point self) -> Point
-        __init__(Point self, int const * ind, int attr=-1) -> Point
+        __init__(Wedge self) -> Wedge
+        __init__(Wedge self, int const * ind, int attr=1) -> Wedge
+        __init__(Wedge self, int ind1, int ind2, int ind3, int ind4, int ind5, int ind6, int attr=1) -> Wedge
         """
-        _point.Point_swiginit(self, _point.new_Point(*args))
+        _wedge.Wedge_swiginit(self, _wedge.new_Wedge(*args))
 
     def GetType(self):
-        r"""GetType(Point self) -> mfem::Element::Type"""
-        return _point.Point_GetType(self)
-    GetType = _swig_new_instance_method(_point.Point_GetType)
+        r"""GetType(Wedge self) -> mfem::Element::Type"""
+        return _wedge.Wedge_GetType(self)
+    GetType = _swig_new_instance_method(_wedge.Wedge_GetType)
+
+    def SetVertices(self, ind):
+        r"""SetVertices(Wedge self, int const * ind)"""
+        return _wedge.Wedge_SetVertices(self, ind)
+    SetVertices = _swig_new_instance_method(_wedge.Wedge_SetVertices)
 
     def GetVertices(self, *args):
         r"""
-        GetVertices(Point self, intArray v)
-        GetVertices(Point self) -> int *
+        GetVertices(Wedge self, intArray v)
+        GetVertices(Wedge self) -> int *
         """
-        return _point.Point_GetVertices(self, *args)
-    GetVertices = _swig_new_instance_method(_point.Point_GetVertices)
+        return _wedge.Wedge_GetVertices(self, *args)
+    GetVertices = _swig_new_instance_method(_wedge.Wedge_GetVertices)
 
     def GetNVertices(self):
-        r"""GetNVertices(Point self) -> int"""
-        return _point.Point_GetNVertices(self)
-    GetNVertices = _swig_new_instance_method(_point.Point_GetNVertices)
+        r"""GetNVertices(Wedge self) -> int"""
+        return _wedge.Wedge_GetNVertices(self)
+    GetNVertices = _swig_new_instance_method(_wedge.Wedge_GetNVertices)
 
     def GetNEdges(self):
-        r"""GetNEdges(Point self) -> int"""
-        return _point.Point_GetNEdges(self)
-    GetNEdges = _swig_new_instance_method(_point.Point_GetNEdges)
+        r"""GetNEdges(Wedge self) -> int"""
+        return _wedge.Wedge_GetNEdges(self)
+    GetNEdges = _swig_new_instance_method(_wedge.Wedge_GetNEdges)
 
     def GetEdgeVertices(self, ei):
-        r"""GetEdgeVertices(Point self, int ei) -> int const *"""
-        return _point.Point_GetEdgeVertices(self, ei)
-    GetEdgeVertices = _swig_new_instance_method(_point.Point_GetEdgeVertices)
+        r"""GetEdgeVertices(Wedge self, int ei) -> int const *"""
+        return _wedge.Wedge_GetEdgeVertices(self, ei)
+    GetEdgeVertices = _swig_new_instance_method(_wedge.Wedge_GetEdgeVertices)
 
     def GetNFaces(self, *args):
         r"""
-        GetNFaces(Point self, int & nFaceVertices) -> int
-        GetNFaces(Point self) -> int
+        GetNFaces(Wedge self, int & nFaceVertices) -> int
+        GetNFaces(Wedge self) -> int
         """
 
         if len(args) == 1:
              import warnings
-             warnings.warn("Point::GetNFaces(int & nFaceVertices) is deprecated is deprecated",
+             warnings.warn("Wedge::GetNFaces(int & nFaceVertices) is deprecated is deprecated",
          	              DeprecationWarning,)
 
 
-        return _point.Point_GetNFaces(self, *args)
+        return _wedge.Wedge_GetNFaces(self, *args)
 
 
-    def GetNFaceVertices(self, arg2):
-        r"""GetNFaceVertices(Point self, int arg2) -> int"""
-        return _point.Point_GetNFaceVertices(self, arg2)
-    GetNFaceVertices = _swig_new_instance_method(_point.Point_GetNFaceVertices)
+    def GetNFaceVertices(self, fi):
+        r"""GetNFaceVertices(Wedge self, int fi) -> int"""
+        return _wedge.Wedge_GetNFaceVertices(self, fi)
+    GetNFaceVertices = _swig_new_instance_method(_wedge.Wedge_GetNFaceVertices)
 
     def GetFaceVertices(self, fi):
-        r"""GetFaceVertices(Point self, int fi) -> int const *"""
-        return _point.Point_GetFaceVertices(self, fi)
-    GetFaceVertices = _swig_new_instance_method(_point.Point_GetFaceVertices)
+        r"""GetFaceVertices(Wedge self, int fi) -> int const *"""
+        return _wedge.Wedge_GetFaceVertices(self, fi)
+    GetFaceVertices = _swig_new_instance_method(_wedge.Wedge_GetFaceVertices)
 
     def Duplicate(self, m):
-        r"""Duplicate(Point self, mfem::Mesh * m) -> Element"""
-        return _point.Point_Duplicate(self, m)
-    Duplicate = _swig_new_instance_method(_point.Point_Duplicate)
-    __swig_destroy__ = _point.delete_Point
+        r"""Duplicate(Wedge self, mfem::Mesh * m) -> Element"""
+        return _wedge.Wedge_Duplicate(self, m)
+    Duplicate = _swig_new_instance_method(_wedge.Wedge_Duplicate)
+    __swig_destroy__ = _wedge.delete_Wedge
 
-# Register Point in _point:
-_point.Point_swigregister(Point)
+# Register Wedge in _wedge:
+_wedge.Wedge_swigregister(Wedge)
 
 
-cvar = _point.cvar
 

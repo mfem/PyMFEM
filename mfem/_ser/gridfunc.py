@@ -158,6 +158,7 @@ import mfem._ser.handle
 import mfem._ser.restriction
 import mfem._ser.bilininteg
 import mfem._ser.linearform
+import mfem._ser.nonlininteg
 class GridFunction(mfem._ser.vector.Vector):
     r"""Proxy of C++ mfem::GridFunction class."""
 

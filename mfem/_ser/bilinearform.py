@@ -152,6 +152,7 @@ import mfem._ser.bilininteg
 import mfem._ser.fe_coll
 import mfem._ser.lininteg
 import mfem._ser.linearform
+import mfem._ser.nonlininteg
 import mfem._ser.element
 import mfem._ser.table
 import mfem._ser.hash
@@ -542,8 +543,14 @@ class BilinearForm(mfem._ser.matrix.Matrix):
 
     def GetFES(self):
         r"""GetFES(BilinearForm self) -> FiniteElementSpace"""
+
+        import warnings
+        warnings.warn("mfem::BilinearForm::GetFES() is deprecated",
+                      DeprecationWarning,)
+
+
         return _bilinearform.BilinearForm_GetFES(self)
-    GetFES = _swig_new_instance_method(_bilinearform.BilinearForm_GetFES)
+
 
     def FESpace(self, *args):
         r"""

@@ -156,6 +156,7 @@ import mfem._ser.element
 import mfem._ser.table
 import mfem._ser.hash
 import mfem._ser.bilininteg
+import mfem._ser.nonlininteg
 import mfem._ser.vertex
 import mfem._ser.vtk
 class LinearForm(mfem._ser.vector.Vector):
@@ -175,8 +176,14 @@ class LinearForm(mfem._ser.vector.Vector):
 
     def GetFES(self):
         r"""GetFES(LinearForm self) -> FiniteElementSpace"""
+
+        import warnings
+        warnings.warn("mfem::LinearForm::GetFES() is deprecated",
+                      DeprecationWarning,)
+
+
         return _linearform.LinearForm_GetFES(self)
-    GetFES = _swig_new_instance_method(_linearform.LinearForm_GetFES)
+
 
     def FESpace(self, *args):
         r"""

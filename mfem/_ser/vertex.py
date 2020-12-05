@@ -107,8 +107,15 @@ class Vertex(object):
         SetCoords(Vertex self, double const * p)
         SetCoords(Vertex self, int dim, double const * p)
         """
+
+        if len(args) == 2:
+             import warnings
+             warnings.warn("Vertex::SetCoords(const double *p) is deprecated is deprecated",
+         	              DeprecationWarning,)
+
+
         return _vertex.Vertex_SetCoords(self, *args)
-    SetCoords = _swig_new_instance_method(_vertex.Vertex_SetCoords)
+
     __swig_destroy__ = _vertex.delete_Vertex
 
 # Register Vertex in _vertex:

@@ -85,6 +85,7 @@ def GetNodalValues(self, *args):
 }
 
 %include "../common/exception.i"
+
 %include "fem/gridfunc.hpp"
 
 namespace mfem{
