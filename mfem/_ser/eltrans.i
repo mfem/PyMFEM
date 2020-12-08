@@ -37,5 +37,8 @@ def Transform(self, *args):
         return _eltrans.ElementTransformation_Transform(self, *args)
 %}
 
+%include "../common/deprecation.i"
+DEPRECATED_METHOD(mfem::IsoparametricTransformation::FinalizeTransformation())
+
 %include "fem/eltrans.hpp"
 

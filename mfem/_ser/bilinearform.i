@@ -96,6 +96,10 @@ namespace mfem {
     di.thisown=0 
     %}
 } //end of namespace
+
+%include "../common/deprecation.i"
+DEPRECATED_METHOD(mfem::BilinearForm::GetFES())
+
 %include "fem/bilinearform.hpp"
 
 // instatitate template methods 

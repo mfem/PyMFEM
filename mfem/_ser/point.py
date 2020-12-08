@@ -124,8 +124,15 @@ class Point(mfem._ser.element.Element):
         GetNFaces(Point self, int & nFaceVertices) -> int
         GetNFaces(Point self) -> int
         """
+
+        if len(args) == 1:
+             import warnings
+             warnings.warn("Point::GetNFaces(int & nFaceVertices) is deprecated is deprecated",
+         	              DeprecationWarning,)
+
+
         return _point.Point_GetNFaces(self, *args)
-    GetNFaces = _swig_new_instance_method(_point.Point_GetNFaces)
+
 
     def GetNFaceVertices(self, arg2):
         r"""GetNFaceVertices(Point self, int arg2) -> int"""

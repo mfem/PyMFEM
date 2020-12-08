@@ -19,6 +19,12 @@ import_array();
 %import "table.i"
 %import "hash.i"
 %import "../common/exception.i"
+
+%include "../common/deprecation.i"
+DEPRECATED_OVERLOADED_METHOD(mfem::Element::GetNFaces,
+    	                     Element::GetNFaces(int & nFaceVertices) is deprecated,
+			     len(args) == 1)
+
 %include "mesh/element.hpp"
 
 %extend mfem::Element {

@@ -384,8 +384,14 @@ class IsoparametricTransformation(ElementTransformation):
 
     def FinalizeTransformation(self):
         r"""FinalizeTransformation(IsoparametricTransformation self)"""
+
+        import warnings
+        warnings.warn("mfem::IsoparametricTransformation::FinalizeTransformation() is deprecated",
+                      DeprecationWarning,)
+
+
         return _eltrans.IsoparametricTransformation_FinalizeTransformation(self)
-    FinalizeTransformation = _swig_new_instance_method(_eltrans.IsoparametricTransformation_FinalizeTransformation)
+
 
 # Register IsoparametricTransformation in _eltrans:
 _eltrans.IsoparametricTransformation_swigregister(IsoparametricTransformation)

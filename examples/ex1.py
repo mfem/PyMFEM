@@ -68,7 +68,7 @@ def run(order = 1, static_cond = False,
        fec = mfem.H1_FECollection(order, dim)
    elif mesh.GetNodes():
        fec = mesh.GetNodes().OwnFEC()
-       prinr( "Using isoparametric FEs: " + str(fec.Name()));
+       print( "Using isoparametric FEs: " + str(fec.Name()));
    else:
        order = 1
        fec = mfem.H1_FECollection(order, dim)
