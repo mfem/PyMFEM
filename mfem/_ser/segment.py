@@ -130,8 +130,15 @@ class Segment(mfem._ser.element.Element):
         GetNFaces(Segment self, int & nFaceVertices) -> int
         GetNFaces(Segment self) -> int
         """
+
+        if len(args) == 1:
+             import warnings
+             warnings.warn("Segment::GetNFaces(int & nFaceVertices) is deprecated is deprecated",
+         	              DeprecationWarning,)
+
+
         return _segment.Segment_GetNFaces(self, *args)
-    GetNFaces = _swig_new_instance_method(_segment.Segment_GetNFaces)
+
 
     def GetNFaceVertices(self, arg2):
         r"""GetNFaceVertices(Segment self, int arg2) -> int"""

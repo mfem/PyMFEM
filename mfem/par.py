@@ -15,6 +15,11 @@ from  mfem._par.device import *
 from  mfem._par.hash import *
 from  mfem._par.point import *
 from  mfem._par.segment import *
+from  mfem._par.triangle import *
+from  mfem._par.quadrilateral import *
+from  mfem._par.wedge import *
+from  mfem._par.tetrahedron import *
+from  mfem._par.hexahedron import *
 from  mfem._par.array import *
 from  mfem._par.common_functions import *
 from  mfem._par.socketstream import *

@@ -154,8 +154,15 @@ class Element(object):
         GetNFaces(Element self, int & nFaceVertices) -> int
         GetNFaces(Element self) -> int
         """
+
+        if len(args) == 1:
+             import warnings
+             warnings.warn("Element::GetNFaces(int & nFaceVertices) is deprecated is deprecated",
+         	              DeprecationWarning,)
+
+
         return _element.Element_GetNFaces(self, *args)
-    GetNFaces = _swig_new_instance_method(_element.Element_GetNFaces)
+
 
     def GetNFaceVertices(self, fi):
         r"""GetNFaceVertices(Element self, int fi) -> int"""

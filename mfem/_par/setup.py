@@ -20,8 +20,6 @@ from  setup_local import *
 if cc_par != '': os.environ['CC'] = cc_par
 if cxx_par != '': os.environ['CXX'] = cxx_par
 
-
-
 from distutils.core import setup, Extension
 from distutils.core import *
 from distutils      import sysconfig
@@ -30,19 +28,20 @@ modules= ["io_stream", "vtk", "sort_pairs", "datacollection",
           "globals", "mem_manager", "device", "hash", "stable3d",
           "cpointers",
           "error", "array", "common_functions",
-          "point", "segment", 
-          "socketstream", "handle", 
+          "segment", "point", "hexahedron", "quadrilateral",
+          "tetrahedron", "triangle", "wedge",
+          "socketstream", "handle",
           "blockvector", "blockoperator", "blockmatrix",
           "vertex", "sets", "element", "table",
-          "fe", "mesh", "fespace", 
+          "fe", "mesh", "fespace",
           "fe_coll", "coefficient",
           "linearform", "vector", "lininteg", "complex_operator",
           "gridfunc", "hybridization", "bilinearform",
           "bilininteg", "intrules", "sparsemat", "densemat",
           "solvers", "estimators", "mesh_operators", "ode",
-          "sparsesmoothers", "ncmesh", 
+          "sparsesmoothers", "ncmesh",
           "matrix", "operators", "eltrans", "geom",
-          "nonlininteg", "nonlinearform", 
+          "nonlininteg", "nonlinearform",
           "pmesh", "pncmesh", "communication",
           "pfespace", "pgridfunc",
           "plinearform", "pbilinearform", "pnonlinearform",

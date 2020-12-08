@@ -157,8 +157,13 @@ class Device(object):
 
     @staticmethod
     def GetMemoryType():
+
+        import warnings
+        warnings.warn("mfem::Device::GetMemoryType() is deprecated",
+                      DeprecationWarning,)
+
+
         return _device.Device_GetMemoryType()
-    GetMemoryType = _swig_new_static_method(_device.Device_GetMemoryType)
 
     @staticmethod
     def GetDeviceMemoryClass():
@@ -167,8 +172,13 @@ class Device(object):
 
     @staticmethod
     def GetMemoryClass():
+
+        import warnings
+        warnings.warn("mfem::Device::GetMemoryClass() is deprecated",
+                      DeprecationWarning,)
+
+
         return _device.Device_GetMemoryClass()
-    GetMemoryClass = _swig_new_static_method(_device.Device_GetMemoryClass)
 
     @staticmethod
     def SetGPUAwareMPI(force=True):
@@ -216,16 +226,26 @@ def Device_GetDeviceMemoryType():
 Device_GetDeviceMemoryType = _device.Device_GetDeviceMemoryType
 
 def Device_GetMemoryType():
+
+    import warnings
+    warnings.warn("mfem::Device::GetMemoryType() is deprecated",
+                  DeprecationWarning,)
+
+
     return _device.Device_GetMemoryType()
-Device_GetMemoryType = _device.Device_GetMemoryType
 
 def Device_GetDeviceMemoryClass():
     return _device.Device_GetDeviceMemoryClass()
 Device_GetDeviceMemoryClass = _device.Device_GetDeviceMemoryClass
 
 def Device_GetMemoryClass():
+
+    import warnings
+    warnings.warn("mfem::Device::GetMemoryClass() is deprecated",
+                  DeprecationWarning,)
+
+
     return _device.Device_GetMemoryClass()
-Device_GetMemoryClass = _device.Device_GetMemoryClass
 
 def Device_SetGPUAwareMPI(force=True):
     return _device.Device_SetGPUAwareMPI(force)

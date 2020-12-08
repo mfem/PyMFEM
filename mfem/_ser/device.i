@@ -17,4 +17,8 @@ import_array();
 
 %import "mem_manager.i"
 
+%include "../common/deprecation.i"
+DEPRECATED_METHOD(mfem::Device::GetMemoryType())
+DEPRECATED_METHOD(mfem::Device::GetMemoryClass())
+
 %include "general/device.hpp"

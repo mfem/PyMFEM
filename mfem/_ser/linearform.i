@@ -57,7 +57,11 @@ namespace mfem {
     self._integrators.append(lfi)
     lfi.thisown=0 
    %}    
-} 
+}
+
+%include "../common/deprecation.i"
+DEPRECATED_METHOD(mfem::LinearForm::GetFES())
+
 %include "fem/linearform.hpp"
 
 
