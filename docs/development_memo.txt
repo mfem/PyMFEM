@@ -11,3 +11,16 @@ $ python3 -m twine upload dist/*                          # uploade to the offic
 ### building step-by-step
 pip download -i  https://test.pypi.org/simple/ mfem
 python3 setup.py install --prefix=~/sandbox --verbose --with-parallel
+
+### test inside virtualenv
+virtualenv env
+source env/bin/activate
+
+### test verious pip combinations
+pip3 install -i  https://test.pypi.org/simple  mfem --no-binary mfem --verbose
+pip3 install -i  https://test.pypi.org/simple  mfem --no-binary mfem --verbose --prefix=~/sandbox
+
+virtualenv env
+source env/bin/activate
+pip3 install -i  https://test.pypi.org/simple  mfem --no-binary mfem --verbose
+

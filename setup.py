@@ -5,6 +5,7 @@ import sys
 import os
 import urllib
 import gzip
+import site
 import re
 import shutil
 import subprocess
@@ -136,6 +137,28 @@ metadata = {'name'             : 'mfem',
 def abspath(path):
     return os.path.abspath(os.path.expanduser(path))
 
+def install_prefix():
+    """Return the installation directory, or None"""
+    if '--user' in sys.argv:
+        paths = (site.getusersitepackages(),)
+    else:
+        py_version = '%s.%s' % (sys.version_info[0], sys.version_info[1])
+        paths = (s % (py_version) for s in (
+            sys.prefix + '/lib/python%s/dist-packages/',
+            sys.prefix + '/lib/python%s/site-packages/',
+            sys.prefix + '/local/lib/python%s/dist-packages/',
+            sys.prefix + '/local/lib/python%s/site-packages/',
+            '/Library/Python/%s/site-packages/',
+        ))
+
+    for path in paths:
+        if os.path.exists(path):
+            path = os.path.dirname(path)
+            path = os.path.dirname(path)            
+            return path
+    assert False, "no installation path found"
+    return None
+
 def find_command(name):
     from shutil import which
     return which(name)
@@ -221,6 +244,20 @@ def cmake(path, **kwargs):
         command.append('-'+key+'='+value)
     make_call(command)
 
+
+def find_libpath_from_prefix(lib, prefix):
+    prefix = abspath(prefix)
+    soname = 'lib'+lib+dylibext
+    path = os.path.join(metis_prefix, 'lib', soname)
+    if not os.path.exists(path):
+        path = os.path.join(metis_prefix, 'lib64', soname)
+        if not os.path.exists(path):
+            return ''
+    return path
+    
+###
+#  build libraries
+###
 def cmake_make_hypre():
     '''
     build hypre
@@ -326,13 +363,14 @@ def cmake_make_mfem(serial=True):
         cmake_opts['DMFEM_USE_MPI'] = '1'
         cmake_opts['DMFEM_USE_METIS_5'] = '1'
         cmake_opts['DHYPRE_DIR'] = os.path.join(hypre_prefix)
-        #cmake_opts['DHYPRE_INCLUDE'] = os.path.join(hypre_prefix, 'include')
         cmake_opts['DMETIS_DIR'] = os.path.join(metis_prefix)
-        #cmake_opts['DMETIS_INCLUDE'] = os.path.join(metis_prefix, 'include')
         #cmake_opts['DCMAKE_CXX_STANDARD_LIBRARIES'] = "-lHYPRE -lmetis"
 
-        lflags = "-L" + os.path.join(metis_prefix, 'lib')
-        lflags = lflags + " -L" + os.path.join(hypre_prefix, 'lib')
+        hyprelibpath = find_libpath_from_prefix('HYPRE', hypre_prefix)
+        metislibpath = find_libpath_from_prefix('metis', metis_prefix)            
+        
+        lflags = "-L" + metislibpath
+        lflags = lflags + " -L" + hyprelibpath
         cmake_opts['DCMAKE_SHARED_LINKER_FLAGS'] = lflags
         #cmake_opts['DCMAKE_EXT_LINKER_FLAGS'] = lflags
 
@@ -368,7 +406,9 @@ def write_setup_local():
     else:
         mfemser = mfems_prefix
         mfempar = mfemp_prefix
-    
+
+    hyprelibpath = find_libpath_from_prefix('HYPRE', hypre_prefix)
+    metislibpath = find_libpath_from_prefix('metis', metis_prefix)
     params = {'cxx_ser': cxx_command,
               'cc_ser': cc_command,
               'cxx_par': mpicxx_command,
@@ -379,9 +419,9 @@ def write_setup_local():
               'swigflag': '-Wall -c++ -python -fastproxy -olddefs -keyword',
 
               'hypreinc': os.path.join(hypre_prefix, 'include'),
-              'hyprelib': os.path.join(hypre_prefix, 'lib'),
+              'hyprelib': hyprelibpath,
               'metisinc': os.path.join(metis_prefix, 'include'),
-              'metis5lib': os.path.join(metis_prefix, 'lib'),
+              'metis5lib': metislibpath,
               'numpync': numpy.get_include(),
               'mfembuilddir': os.path.join(mfempar, 'include'),
               'mfemincdir': os.path.join(mfempar, 'include', 'mfem'),
@@ -616,10 +656,10 @@ def configure_install(self):
         if self.mfemp_prefix != '':
             mfemp_prefix = abspath(self.mfemp_prefix)
 
-        path = os.path.join(mfems_prefix, 'lib', 'libmfem'+dylibext)
-        assert os.path.exists(path), "libmfem.so is not found in the specified <path>/lib"
-        path = os.path.join(mfemp_prefix, 'lib', 'libmfem'+dylibext)
-        assert os.path.exists(path), "libmfem.so is not found in the specified <path>/lib"
+        check = find_libpath_from_prefix('mfem', mfems_prefix)
+        assert check != '', "libmfem.so is not found in the specified <path>/lib"
+        check = find_libpath_from_prefix('mfem', mfemp_prefix)        
+        assert check != '', "libmfem.so is not found in the specified <path>/lib"
         
         build_mfem = False
         hypre_prefix = mfem_prefix
@@ -646,16 +686,14 @@ def configure_install(self):
         mfemp_prefix = os.path.join(prefix, 'mfem', 'par')
 
     if self.hypre_prefix != '':
-        hypre_prefix = abspath(self.hypre_prefix)            
-        path = os.path.join(hypre_prefix, 'lib', 'libHYPRE'+dylibext)
-        assert os.path.exists(path), "libHYPRE.so is not found in the specified <path>/lib"
-        build_hypre = False
+       check = find_libpath_from_prefix('HYPRE', self.hypre_prefix)
+       assert check != '', "libHYPRE.so is not found in the specified <path>/lib or lib64"
+       hypre_prefix = self.hypre_prefix
 
     if self.metis_prefix != '':
-        metis_prefix = abspath(self.metis_prefix)
-        path = os.path.join(metis_prefix, 'lib', 'libmetis'+dylibext)
-        assert os.path.exists(path), "libmetis.so is not found in the specified <path>/lib"
-        build_metis = False
+       check = find_libpath_from_prefix('metis', self.metis_prefix)
+       assert check != '', "libmetis.so is not found in the specified <path>/lib or lib64"
+       metis_prefix = self.metis_prefix       
 
     if enable_pumi: run_swig = True
     if enable_strumpack : run_swig = True    
@@ -759,7 +797,6 @@ class Install(_install):
 
     def initialize_options(self):
         _install.initialize_options(self)
-
         self.swig = False
         self.ext_only = False
         self.skip_ext = False
@@ -790,6 +827,9 @@ class Install(_install):
         if (bool(self.ext_only) and bool(self.skip_ext)):
             assert False, "skip-ext and ext-only can not use together"
         _install.finalize_options(self)
+        if (self.prefix == '' or
+            self.prefix is None):
+            self.prefix = install_prefix()
         
     def run(self):
         if not is_configured:
@@ -959,7 +999,7 @@ def run_setup():
                     'install_scripts': InstallScripts,
                     'bdist_wheel': BdistWheel,
                     'clean': Clean},
-        install_requires=["numpy"],
+        install_requires=[],
         packages=find_packages(),
         extras_require={},
         package_data={'mfem._par':['*.so'], 'mfem._ser':['*.so']},
