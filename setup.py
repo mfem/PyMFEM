@@ -366,8 +366,8 @@ def cmake_make_mfem(serial=True):
         cmake_opts['DMETIS_DIR'] = os.path.join(metis_prefix)
         #cmake_opts['DCMAKE_CXX_STANDARD_LIBRARIES'] = "-lHYPRE -lmetis"
 
-        hyprelibpath = find_libpath_from_prefix('HYPRE', hypre_prefix)
-        metislibpath = find_libpath_from_prefix('metis', metis_prefix)            
+        hyprelibpath = os.path.dirname(find_libpath_from_prefix('HYPRE', hypre_prefix))
+        metislibpath = os.path.dirname(find_libpath_from_prefix('metis', metis_prefix))
         
         lflags = "-L" + metislibpath
         lflags = lflags + " -L" + hyprelibpath
@@ -407,8 +407,8 @@ def write_setup_local():
         mfemser = mfems_prefix
         mfempar = mfemp_prefix
 
-    hyprelibpath = find_libpath_from_prefix('HYPRE', hypre_prefix)
-    metislibpath = find_libpath_from_prefix('metis', metis_prefix)
+    hyprelibpath = os.path.dirname(find_libpath_from_prefix('HYPRE', hypre_prefix))
+    metislibpath = os.path.dirname(find_libpath_from_prefix('metis', metis_prefix))
     params = {'cxx_ser': cxx_command,
               'cc_ser': cc_command,
               'cxx_par': mpicxx_command,
