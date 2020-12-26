@@ -19,6 +19,10 @@ $ pip3 download mfem
 (expand tar.gz file and move to the downloaded directory)
 $ python setup.py install --with-parallel # it download and build metis/hypre/mfem
 ```
+Choosing compiler
+```
+$ python setup.py install --with-parallel --CC=icc --CXX=icpc --MPICC=mpiicc --MPICXX=mpiicpc
+```
 For other configurations, see docs/install.txt or help
 ```
 $ python setup.py install --help

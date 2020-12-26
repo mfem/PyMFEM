@@ -17,8 +17,8 @@ def debug_print(message):
     elif pymfem_debug > 2: # debug = 3
         import traceback as tb
         print(''.join(tb.format_list([tb.extract_stack(limit = 2)[0],])))
-    
+
     print(message)
 
-__version__ = '4.2.0.1'
+__version__ = '4.2.0.2'
 
