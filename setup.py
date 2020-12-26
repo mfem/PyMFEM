@@ -161,9 +161,14 @@ def install_prefix():
         ))
 
     for path in paths:
+        if verbose:
+            print("testing installation path", path)
         if os.path.exists(path):
             path = os.path.dirname(path)
             path = os.path.dirname(path)
+            path = os.path.dirname(path)
+            if verbose:
+                print("found this one", path)            
             return path
     assert False, "no installation path found"
     return None
@@ -872,9 +877,15 @@ class Install(_install):
         if (bool(self.ext_only) and bool(self.skip_ext)):
             assert False, "skip-ext and ext-only can not use together"
         _install.finalize_options(self)
+
+        global verbose
+        verbose = bool(self.verbose)
         if (self.prefix == '' or
                 self.prefix is None):
             self.prefix = install_prefix()
+        else:
+            if verbose:
+                print("prefix is given :", self.prefix)
 
     def run(self):
         if not is_configured:
