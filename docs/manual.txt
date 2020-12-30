@@ -213,7 +213,7 @@ to find more details of the MFEM library.
  	                                               warn=True, int_trans=None)
          will look for 4 points.
 
-         GetScaledJacobian(i, sd) returns minimum Jacobinan computed on in each element.
+         GetScaledJacobian(i, sd) returns minimum Jacobian computed on in each element.
 
            
 
@@ -404,11 +404,11 @@ to find more details of the MFEM library.
 
    4-16) mfem:ComplexOperator
          ownReal, onwImag for Constructor is optional.
-	 hermitan keyword is used to specify the type of matrix
+	 hermitian keyword is used to specify the type of matrix
 
              op_complex = ComplexOperator(M1, M2, ownReal=False, ownImag=False,
-	                                  hermitan=True)
-             hermitan = False results in BLOCK_SYMMETRIC format
+	                                  hermitian=True)
+             hermitian = False results in BLOCK_SYMMETRIC format
 
          Returned ComplexOperator hold the passed real and imag operators
 	 so that Python does not garbage collect them.
