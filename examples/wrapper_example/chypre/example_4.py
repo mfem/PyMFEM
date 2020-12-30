@@ -32,13 +32,13 @@ def print_hypre(M, txt):
        MPI.COMM_WORLD.Barrier()                              
        if myid == i:
           if myid == 0:
-              print txt
-              print 'MyID: ', myid
+              print(txt)
+              print('MyID: ', myid)
           else:
-              print 'MyID: ', myid
+              print('MyID: ', myid)
           m  = ToScipyCoo(M)              
-          print 'shape = ', m.shape
-          print  m.toarray()
+          print('shape = ', m.shape)
+          print(m.toarray())
        MPI.COMM_WORLD.Barrier()                              
 shape = (1, 6)
 # make sample matrix
