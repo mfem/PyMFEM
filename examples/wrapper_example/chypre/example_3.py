@@ -38,13 +38,13 @@ def print_hypre(M, txt):
        MPI.COMM_WORLD.Barrier()                              
        if myid == i:
           if myid == 0:
-              print txt
-              print 'MyID: ', myid
+              print(txt)
+              print('MyID: ', myid)
           else:
-              print 'MyID: ', myid
+              print('MyID: ', myid)
           m  = ToScipyCoo(M)              
-          print 'shape = ', m.shape
-          print  m.toarray()
+          print('shape = ', m.shape)
+          print(m.toarray())
        MPI.COMM_WORLD.Barrier()                              
 shape = (2, 5) if myid < 2 else (1, 5)
 # make sample matrix
@@ -88,12 +88,8 @@ M2 = ToHypreParCSR(m2)
 M3 = mfem.ParMult(M, M2)
 print_hypre(M3, 'M*v')
 v = Hypre2Array(M3)
-if myid == 0: print v
+if myid == 0: print(v)
 M3 = mfem.ParMult(M2.Transpose(), M)
 print_hypre(M3, 'v^t * M')
 v = Hypre2Array(M3)
-if myid == 0: print v
-
-
-
-
+if myid == 0: print(v)
