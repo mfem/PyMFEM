@@ -1,4 +1,7 @@
 	<<<  Change Log. >>>
+2021 01.17
+        * mesh.CartasianPartitioing is improved to accept an iterable (list/tuple)
+	  as an argument.
 2020 11.29
         * bilininteg.i is adjusted so that NonlinearIntegrator is properly recognized
 	  as a base class of BilinearIntegrator class. This allows to use SetIntOrder

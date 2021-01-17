@@ -215,6 +215,7 @@ to find more details of the MFEM library.
 
          GetScaledJacobian(i, sd) returns minimum Jacobian computed on in each element.
 
+         CaltecianPartitioning(nxyz) accept tuple/list as nxyz
            
 
   4-5) sparsemat

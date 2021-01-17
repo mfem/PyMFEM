@@ -2,7 +2,7 @@ from __future__ import print_function
 import os
 import sys
 
-def run_test():
+def run_test1(mfem):
     print("Test mesh module")
     Nvert = 6; Nelem = 8; Nbelem=2
     
@@ -36,11 +36,32 @@ def run_test():
     print(Tr.Weight())    
     Tr = mesh.GetEdgeTransformation(i)
     print(Tr.Weight())
-    
+
+def run_test2(mfem):
+    mesh = mfem.Mesh(6, 6, 6, "TETRAHEDRON")
+    #r = mesh.CartesianPartitioning([2, 2, 2])
+    #print(r)
+
+    d = mfem.intArray([2, 2, 2])
+    dd = d.GetData()
+
+    r = mesh.CartesianPartitioning(dd)
+    result = mfem.intArray()
+    result.MakeRef(r, mesh.GetNE())
+    result.MakeDataOwner()
+    print(result.ToList())
+
+    '''    
+
+    mesh.Print("sample.mesh")
+    r = mesh.CartesianPartitioning([2, 2, 2])
+    print(r)
+    '''
 if __name__=='__main__':
     if len(sys.argv) > 1 and sys.argv[1] == '-p':   
         import mfem.par as mfem
     else:
         import mfem.ser as mfem
         
-    run_test()
+    run_test1(mfem)
+    run_test2(mfem)    

@@ -304,7 +304,30 @@ def FindPoints(self, pp, warn=True, inv_trans=None):
     elem_ids = elem_ids.ToList()
     return count, elem_ids, int_points
 %}
+%feature("shadow") mfem::Mesh::CartesianPartitioning %{
+def CartesianPartitioning(self, nxyz):
+    import mfem.ser as mfem
+    import warnings      
+    try:
+        nxyz = list(nxyz)
+        d = mfem.intArray(nxyz)
+        dd = d.GetData()
+        use_old_style = False	  
+    except BaseException:
+        dd = nxyz
+        use_old_style = True
+        warnings.warn("CartesianPartitioning argument should be iterable",
+		      DeprecationWarning,)
+    r = _mesh.Mesh_CartesianPartitioning(self, dd)
 
+    if use_old_style:
+       return r
+	 
+    result = mfem.intArray()
+    result.MakeRef(r, self.GetNE())
+    result.MakeDataOwner()
+    return result.ToList()
+%}
 
 %immutable attributes;
 %immutable bdr_attributes;
