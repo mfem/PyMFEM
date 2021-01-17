@@ -215,8 +215,10 @@ to find more details of the MFEM library.
 
          GetScaledJacobian(i, sd) returns minimum Jacobian computed on in each element.
 
-         CaltecianPartitioning(nxyz) accept tuple/list as nxyz
-           
+         CaltecianPartitioning(nxyz, return_list=False)
+	    * accept tuple/list as nxyz
+            * return_list = True will return a list to represent the patitioning
+	      by default it returns SWIG native int * object.
 
   4-5) sparsemat
          RAP has two different implementations. One accept three references.

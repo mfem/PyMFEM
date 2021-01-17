@@ -66,6 +66,70 @@ class _SwigNonDynamicMeta(type):
 
 import weakref
 
+class intp(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        _mesh.intp_swiginit(self, _mesh.new_intp())
+    __swig_destroy__ = _mesh.delete_intp
+
+    def assign(self, value):
+        return _mesh.intp_assign(self, value)
+    assign = _swig_new_instance_method(_mesh.intp_assign)
+
+    def value(self):
+        return _mesh.intp_value(self)
+    value = _swig_new_instance_method(_mesh.intp_value)
+
+    def cast(self):
+        return _mesh.intp_cast(self)
+    cast = _swig_new_instance_method(_mesh.intp_cast)
+
+    @staticmethod
+    def frompointer(t):
+        return _mesh.intp_frompointer(t)
+    frompointer = _swig_new_static_method(_mesh.intp_frompointer)
+
+# Register intp in _mesh:
+_mesh.intp_swigregister(intp)
+
+def intp_frompointer(t):
+    return _mesh.intp_frompointer(t)
+intp_frompointer = _mesh.intp_frompointer
+
+class doublep(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        _mesh.doublep_swiginit(self, _mesh.new_doublep())
+    __swig_destroy__ = _mesh.delete_doublep
+
+    def assign(self, value):
+        return _mesh.doublep_assign(self, value)
+    assign = _swig_new_instance_method(_mesh.doublep_assign)
+
+    def value(self):
+        return _mesh.doublep_value(self)
+    value = _swig_new_instance_method(_mesh.doublep_value)
+
+    def cast(self):
+        return _mesh.doublep_cast(self)
+    cast = _swig_new_instance_method(_mesh.doublep_cast)
+
+    @staticmethod
+    def frompointer(t):
+        return _mesh.doublep_frompointer(t)
+    frompointer = _swig_new_static_method(_mesh.doublep_frompointer)
+
+# Register doublep in _mesh:
+_mesh.doublep_swigregister(doublep)
+
+def doublep_frompointer(t):
+    return _mesh.doublep_frompointer(t)
+doublep_frompointer = _mesh.doublep_frompointer
+
 import mfem._par.matrix
 import mfem._par.vector
 import mfem._par.array
@@ -565,7 +629,7 @@ class Mesh(object):
     GetBdrElementEdgeIndex = _swig_new_instance_method(_mesh.Mesh_GetBdrElementEdgeIndex)
 
     def GetBdrElementAdjacentElement(self, bdr_el):
-        from mfem._par import intp
+        from mfem.par import intp
         el = intp()
         info = intp()  
         _mesh.Mesh_GetBdrElementAdjacentElement(self, bdr_el, el, info)
@@ -740,29 +804,27 @@ class Mesh(object):
         return _mesh.Mesh_ReorientTetMesh(self)
     ReorientTetMesh = _swig_new_instance_method(_mesh.Mesh_ReorientTetMesh)
 
-    def CartesianPartitioning(self, nxyz):
+    def CartesianPartitioning(self, nxyz, return_list=False):
         import mfem.par as mfem
         import warnings
         try:
             nxyz = list(nxyz)
             d = mfem.intArray(nxyz)
             dd = d.GetData()
-            use_old_style = False	  
         except BaseException:
             dd = nxyz
-            use_old_style = True
             warnings.warn("CartesianPartitioning argument should be iterable",
     		      DeprecationWarning,)
 
         r = _mesh.Mesh_CartesianPartitioning(self, dd)
 
-        if use_old_style:
-           return r
-
-        result = mfem.intArray()
-        result.MakeRef(r, self.GetNE())
-        result.MakeDataOwner()
-        return result.ToList()
+        if not return_list:
+            return r
+        else:	 
+            result = mfem.intArray()
+            result.MakeRef(r, self.GetNE())
+            result.MakeDataOwner()
+            return result.ToList()
 
 
 
