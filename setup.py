@@ -951,16 +951,16 @@ if haveWheel:
         '''
 
         def finalize_options(self):
-            def _has_ext_modules(self):
+            def _has_ext_modules():
                 return True
             from setuptools.dist import Distribution
             #Distribution.is_pure = _is_pure
-            Distribution.has_ext_modules = _has_ext_modules
+            self.distribution.has_ext_modules = _has_ext_modules
             _bdist_wheel.finalize_options(self)
-
+            
         def run(self):
             _bdist_wheel.run(self)
-            assert False, "bdist install is not supported, use source install"
+            #assert False, "bdist install is not supported, use source install"
             '''
             if not is_configured:
                 print('running config')

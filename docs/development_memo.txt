@@ -24,3 +24,14 @@ virtualenv env
 source env/bin/activate
 pip3 install -i  https://test.pypi.org/simple  mfem --no-binary mfem --verbose
 
+
+### docker ...
+
+sudo docker pull quay.io/pypa/manylinux2010_x86_64
+sudo docker run -it -v $(pwd):/io quay.io/pypa/manylinux2010_x86_64
+###  (may not need this) yum install openssh-server openssh-clients
+git clone git@github.com:mfem/PyMFEM.git
+export PATH=/opt/python/cp36-cp36m/bin:$PATH
+pip install numpy
+pip install six
+python3 setup.py install
