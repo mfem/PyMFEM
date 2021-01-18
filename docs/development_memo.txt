@@ -34,4 +34,6 @@ git clone git@github.com:mfem/PyMFEM.git
 export PATH=/opt/python/cp36-cp36m/bin:$PATH
 pip install numpy
 pip install six
+pip install auditwheel
+pip install twine
 python3 setup.py install

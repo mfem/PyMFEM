@@ -18,6 +18,7 @@ from setuptools import setup, find_packages
 from setuptools.command.build_py import build_py as _build_py
 from setuptools.command.install import install as _install
 from setuptools.command.install_egg_info import install_egg_info as _install_egg_info
+from setuptools.command.install_lib import install_lib as _install_lib
 from setuptools.command.install_scripts import install_scripts as _install_scripts
 
 try:
@@ -973,7 +974,13 @@ if haveWheel:
 
             # Run the default bdist_wheel command
             '''
-
+            
+class InstallLib(_install_lib):
+    def finalize_options(self):
+        _install_lib.finalize_options(self)
+        src_cmd_obj = self.distribution.get_command_obj('install')
+        src_cmd_obj.ensure_finalized()
+        self.install_dir = src_cmd_obj.install_platlib
 
 class InstallEggInfo(_install_egg_info):
     def run(self):
@@ -1053,13 +1060,14 @@ class Clean(_clean):
         _clean.run(self)
 
 
-datafiles = [os.path.join('data', f) for f in os.listdir('data')]
+#cdatafiles = [os.path.join('data', f) for f in os.listdir('data')]
 
 
 def run_setup():
     setup_args = metadata.copy()
     cmdclass = {'build_py': BuildPy,
                 'install': Install,
+                'install_lib': InstallLib,
                 'install_egg_info': InstallEggInfo,
                 'install_scripts': InstallScripts,
                 'clean': Clean}
