@@ -2,7 +2,7 @@
 
    vector_example.py
 
-   demonstrate how to make mfem::Vector and assine values
+   demonstrate how to make mfem::Vector and assign values
    from numpy array
 
 '''
@@ -16,7 +16,7 @@ vec = np.array([1,2,3,4,5.])
 v = mfem.Vector(vec)
 v.Print()
 
-print("Please Maks sure that you are passing float")
+print("Please make sure that you are passing float")
 vec = np.array([1,2,3,4,5]).astype(float)
 v = mfem.Vector(vec)
 v.Print()
@@ -37,7 +37,7 @@ v2 = mfem.Vector(np.array([1,2,3,4,10.]))
 v.Assign(v2)
 v.Print()
 
-print("These does not work (wrong type)")
+print("This does not work (wrong type)")
 try:
     vec = np.array([1,2,3,4,3])
     v.Assign(vec)

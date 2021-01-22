@@ -1,6 +1,6 @@
 #  PyMFEM (MFEM Python wrapper)
 
-This package (PyMFEM) is Python wrapper for the MFEM high performance parallel finite element metod library.(http://mfem.org/).
+This package (PyMFEM) is Python wrapper for the MFEM high performance parallel finite element method library.(http://mfem.org/).
 
 Installer downloads a couple of external libraries and build them.
 By default, "pip install mfem" downloads and builds the serial version of MFEM and PyMFEM.
@@ -10,14 +10,18 @@ See more detail below for other configurations
 ```
 pip install mfem --no-binary mfem   # install serial MFEM + wrapper
 ```
-The setup script accept various options. TO use it, please donwload
+The setup script accept various options. TO use it, please download
 the package and run the script manually. For example, this below download
-and build parallel version of MFEM libray (linked with Metis and Hypre)
+and build parallel version of MFEM library (linked with Metis and Hypre)
 and install under <prefix>/mfem
 ```
 $ pip3 download mfem
 (expand tar.gz file and move to the downloaded directory)
 $ python setup.py install --with-parallel # it download and build metis/hypre/mfem
+```
+Choosing compiler
+```
+$ python setup.py install --with-parallel --CC=icc --CXX=icpc --MPICC=mpiicc --MPICXX=mpiicpc
 ```
 For other configurations, see docs/install.txt or help
 ```
@@ -25,12 +29,12 @@ $ python setup.py install --help
 ```
 
 ## Usage
-Here is an example to solve div(grad(f)) = 1 in squre and to plot the result
-with matplotlib (modifed from ex1.cpp)
+Here is an example to solve div(grad(f)) = 1 in a square and to plot the result
+with matplotlib (modified from ex1.cpp)
 ```
 import mfem.ser as mfem
 
-# create sample mesh for squre shape
+# create sample mesh for square shape
 mesh = mfem.Mesh(10, 10, "TRIANGLE")
 
 # create finite element function space
@@ -53,7 +57,7 @@ b = mfem.LinearForm(fespace)
 b.AddDomainIntegrator(mfem.DomainLFIntegrator(one))
 b.Assemble()
 
-# create gridfuction, which is where the solution vector is stored
+# create gridfunction, which is where the solution vector is stored
 x = mfem.GridFunction(fespace);
 x.Assign(0.0)
 
@@ -91,7 +95,7 @@ plt.show()
 
 
 ## License
-PyMFEM is licesed under BSD-3.
+PyMFEM is licensed under BSD-3.
 Please refer the developers' web sites for the external libraries
 * MFEM: https://mfem.org/
 * Hypre: https://computing.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods

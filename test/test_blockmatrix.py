@@ -17,11 +17,11 @@ offset2 = mfem.intArray([0, 3, 6])
 m = mfem.BlockMatrix(offset1, offset2)
 m.SetBlock(0, 0, mmat)
 
-print m._offsets
-print m._linked_mat
+print(m._offsets)
+print(m._linked_mat)
 
 m = mfem.BlockMatrix(offset1)
 m.SetBlock(0, 1, mmat)
 m.SetBlock(1, 0, mmat)
-print m._offsets
-print m._linked_mat
+print(m._offsets)
+print(m._linked_mat)

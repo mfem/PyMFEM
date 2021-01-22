@@ -17,22 +17,22 @@ offset2 = mfem.intArray([0, 3, 6])
 print('BlockOperator')
 m = mfem.BlockOperator(offset1, offset2)
 m.SetBlock(0, 0, mmat)
-print m._offsets[0].ToList()
-print m._offsets[1].ToList()
-print m._linked_op
+print(m._offsets[0].ToList())
+print(m._offsets[1].ToList())
+print(m._linked_op)
 
 print('BlockOperator')
 m = mfem.BlockOperator(offset1)
 m.SetBlock(0, 1, mmat)
 m.SetDiagonalBlock(1, mmat)
-print m._offsets.ToList()
-print m._linked_op
+print(m._offsets.ToList())
+print(m._linked_op)
 
 print('BlockDiagonalPreconditioner')
 m = mfem.BlockDiagonalPreconditioner(offset1)
 m.SetDiagonalBlock(1, mmat)
-print m._offsets.ToList()
-print m._linked_op
+print(m._offsets.ToList())
+print(m._linked_op)
 
 print('BlockLowerTriangularPreconditioner')
 m = mfem.BlockLowerTriangularPreconditioner(offset1)
@@ -42,5 +42,5 @@ try:
 except ValueError:
    print("this cause value error")
 m.SetBlock(1, 0, mmat)   
-print m._offsets.ToList()
-print m._linked_op
+print(m._offsets.ToList())
+print(m._linked_op)

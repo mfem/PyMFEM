@@ -213,9 +213,12 @@ to find more details of the MFEM library.
  	                                               warn=True, int_trans=None)
          will look for 4 points.
 
-         GetScaledJacobian(i, sd) returns minimum Jacobinan computed on in each element.
+         GetScaledJacobian(i, sd) returns minimum Jacobian computed on in each element.
 
-           
+         CaltecianPartitioning(nxyz, return_list=False)
+	    * accept tuple/list as nxyz
+            * return_list = True will return a list to represent the patitioning
+	      by default it returns SWIG native int * object.
 
   4-5) sparsemat
          RAP has two different implementations. One accept three references.
@@ -404,11 +407,11 @@ to find more details of the MFEM library.
 
    4-16) mfem:ComplexOperator
          ownReal, onwImag for Constructor is optional.
-	 hermitan keyword is used to specify the type of matrix
+	 hermitian keyword is used to specify the type of matrix
 
              op_complex = ComplexOperator(M1, M2, ownReal=False, ownImag=False,
-	                                  hermitan=True)
-             hermitan = False results in BLOCK_SYMMETRIC format
+	                                  hermitian=True)
+             hermitian = False results in BLOCK_SYMMETRIC format
 
          Returned ComplexOperator hold the passed real and imag operators
 	 so that Python does not garbage collect them.
