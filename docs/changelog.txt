@@ -1,4 +1,22 @@
 	<<<  Change Log. >>>
+2020 11.29
+        * bilininteg.i is adjusted so that NonlinearIntegrator is properly recognized
+	  as a base class of BilinearIntegrator class. This allows to use SetIntOrder
+	  and some others in BilinearIntegrator
+2020 11.23
+        * Mesh.GetElementCenterArray is added, which returns numpy array
+2020 11.21
+        * cuda build is tested
+	* In solver.hpp, many routines takes Operator &, but FormLinearSystem
+	  takes OperatorHandle. A new typemap (operator_ptr_typemap) is added to
+	  call OperatorHandle -> Ptr() inside the wrapper so that one can pass
+	  OperatorHandle to the routines such as SetOperator, PCG and etc.
+	  
+2020 11.05
+        * migration to pip install
+	* mesh.GetVertexArray() is added to return the all vertices
+	* mesh.Mesh(int, int, "element name") was fixed
+
 2018 09.27
 	* strumpack support is added
 	* ParFiniteElementSpace:: GetSharedEdgeDofs, ParFiniteElementSpace::GetSharedFaceDofs are wrapped to return list

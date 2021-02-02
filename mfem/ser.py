@@ -4,9 +4,15 @@ from  mfem._ser.device import *
 from  mfem._ser.hash import *
 from  mfem._ser.array import *
 from  mfem._ser.mesh import *
+from  mfem._ser.ncmesh import *
 from  mfem._ser.handle import *
 from  mfem._ser.point import *
 from  mfem._ser.segment import *
+from  mfem._ser.triangle import *
+from  mfem._ser.quadrilateral import *
+from  mfem._ser.wedge import *
+from  mfem._ser.tetrahedron import *
+from  mfem._ser.hexahedron import *
 from  mfem._ser.common_functions import *
 from  mfem._ser.operators import *
 from  mfem._ser.blockoperator import *
@@ -58,4 +64,6 @@ import mfem._ser.mesh as mesh
 import mfem._ser.solvers as solvers
 import mfem._ser.vector as vector
 import mfem._ser.sparsemat as sparsemat
+
+
 

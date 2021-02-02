@@ -32,7 +32,4 @@ if __name__ == '__main__':
 
    for i in range(30):
        ex1p.run()
-       print format_memory_usage()
-   
-    
-    
+       print(format_memory_usage())

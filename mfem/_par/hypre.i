@@ -28,6 +28,8 @@ import_array();
 
 %include "exception.i"
 %import "../common/ignore_common_functions.i"
+
+%import "globals.i"
 %import "vector.i"
 %import "sparsemat.i"
 %import "../common/exception.i"
@@ -38,7 +40,7 @@ OSTREAM_TYPEMAP(std::ostream&)
 %ignore DiscreteCurl;
 %ignore DiscreteGrad;
 
-%import "hypre_int.i"
+%import "../common/hypre_int.i"
 
 %inline %{
 int sizeof_HYPRE_Int(){

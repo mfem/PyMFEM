@@ -31,6 +31,8 @@ import_array();
 #endif
 
 %include "exception.i"
+%include "std_string.i"
+
  //%include "../common/cpointers.i"
  //%import "cpointers.i"
 %import "mesh.i"

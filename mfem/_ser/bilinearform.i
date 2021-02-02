@@ -11,6 +11,7 @@ import_array();
 %include "../common/cpointers.i"
 %include "exception.i"
 
+%import "globals.i"
 %import "mem_manager.i"
 %import "array.i"
 %import "fespace.i"
@@ -95,6 +96,10 @@ namespace mfem {
     di.thisown=0 
     %}
 } //end of namespace
+
+%include "../common/deprecation.i"
+DEPRECATED_METHOD(mfem::BilinearForm::GetFES())
+
 %include "fem/bilinearform.hpp"
 
 // instatitate template methods 

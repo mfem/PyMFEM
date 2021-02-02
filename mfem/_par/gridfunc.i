@@ -20,6 +20,9 @@ import_array();
 //%include "../common/cpointers.i"
 //%import "cpointers.i"
 %include "exception.i"
+
+%include "std_string.i"
+
 %import "array.i"
 %import "vector.i"
 %import "coefficient.i"

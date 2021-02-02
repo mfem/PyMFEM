@@ -1,0 +1,58 @@
+Install
+
+Default pip install installs serial MFEM + wrapper
+
+$ pip install mfem --no-binary mfem
+
+For other configuration such as parallel version, one has to download
+the package and run setup script. pip download command download tar-gziped
+package.
+
+$ pip download mfem
+
+Once the package is expanded, enter the package directory and
+use the setup.py on the top level. For example, --with-parallel option,
+it build MFEM in both serial and parallel and build wrapper. It also
+download Metis and Hypre for parallel MFEM.
+
+$ python setup.py install --with-parallel
+
+One can also specify the MFEM installed in other location using
+--mfem-prefix=<xxxx>. This will regenerate the SWIG wrapper. Or
+you can use --mfem-prefix-no-swig=<xxxx> to reuse the wrapper code
+distributed with this package
+
+setup.py allows various options. Some examples are listed below.
+Use python setup.py install --help to see the full list.
+
+* building external (metis/hypre/mfem)
+$ python3 setup.py install --prefix=~/sandbox --verbose --ext-only --with-parallel
+
+* building PyMFEM (after --ext-only)
+python3 setup.py install --prefix=~/sandbox --verbose --skip-ext --with-parallel
+
+* run swig
+$ python3 setup.py install --prefix=~/sandbox --verbose --skip-ext --with-parallel --swig
+
+* clean up all externals
+$ python3 setup.py clean --all-externals
+
+* choosing compiler
+$ python setup.py install --parallel --CC=xxx, --CXX=xxx, --MPICC=xxx, --MPICXX=xxx
+
+
+* cuda
+$ python3 setup.py install  --prefix=~/sandbox  --verbose --with-cuda
+
+Note Cuda support is only partially tested. One may want to build it step-by-step.
+# build MFEM library with cuda
+$ python3 setup.py install  --prefix=~/sandbox  --verbose --ext-only --with-cuda (--with-parallel)
+# build Wrapper
+$ python3 setup.py install  --prefix=~/sandbox  --verbose --skip-ext --with-cuda
+# One may need to regenerate wrapper
+$ touch mfem/*/*.i
+$ python3 setup.py install  --prefix=~/sandbox  --verbose --swig
+
+
+
+
