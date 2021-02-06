@@ -23,7 +23,7 @@ jobs:
           echo This job does specify a container.
           echo It runs in the container instead of the VM.
           git clone https://github.com/sshiraiwa/PyMFEM.git
-	  git checkout release_binary
+          git checkout release_binary
           export PATH=/opt/python/cp36-cp36m/bin:$PATH
           pip3 install numpy
           pip3 install six
