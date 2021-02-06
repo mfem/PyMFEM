@@ -23,13 +23,14 @@ jobs:
           echo This job does specify a container.
           echo It runs in the container instead of the VM.
           git clone https://github.com/sshiraiwa/PyMFEM.git
+	  git checkout release_binary
           export PATH=/opt/python/cp36-cp36m/bin:$PATH
           pip3 install numpy
           pip3 install six
           pip3 install auditwheel
           pip3 install twine
           CWD=$PWD
-          ls
+          ls -l 
           cd PyMFEM
           python3 setup.py install
           rm -rf dist/*
