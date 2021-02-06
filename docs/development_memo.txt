@@ -37,3 +37,10 @@ pip install six
 pip install auditwheel
 pip install twine
 python3 setup.py install
+rm -rf dist/*
+python3 setup.py bdist_wheel
+export LD_LIBRARY_PATH=/root/PyMFEM/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
+rm -rf wheelhouse/*
+auditwheel repair dist/mfem-4.2.1.30-cp38-cp38-linux_x86_64.whl
+rm -rf dist/*
+python3 setup.py sdist

@@ -975,7 +975,6 @@ if haveWheel:
             #_cleanup_symlinks(self)
 
             # Run the default bdist_wheel command
-
             
 class InstallLib(_install_lib):
     def finalize_options(self):
@@ -991,34 +990,8 @@ class InstallEggInfo(_install_egg_info):
         else:
             print("skipping regular install_egg_info")
 
-
-def fix_run_path(path):
-    '''
-    fix run path of _xxx.so so that it will find
-    libmfem.so. 
-    Called only when bdist install is called
-    '''
-    d = os.path.join(path, 'mfem', '_ser')
-    owd = chdir(d)
-    for f in os.listdir(d):
-        if f.endswith('.so'):
-            print("changing runpath of ", f)
-            global verbose
-            verbose = True
-            command = ['chrpath', '-r', '../ser/lib', f]
-            make_call(command)
-            command = ['chrpath', f]            
-            make_call(command)
-    os.chdir(owd)
-    
 class InstallScripts(_install_scripts):
     def run(self):
-        if do_bdist_wheel:
-            pass
-            # how do we fix rpath???
-            # this is set in distutils
-            # fix_run_path(prefix)
-            
         if not dry_run :
             _install_scripts.run(self)
         else:
