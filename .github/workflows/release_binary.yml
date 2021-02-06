@@ -27,12 +27,12 @@ jobs:
           pip install numpy
           pip install six
           pip install auditwheel
-          pip install twine
-	  echo $PWD
-	  cd PyMFEM
-	  python3 setup.py install
-	  rm -rf dist/*
-	  python3 setup.py bdist_wheel
+          pip install
+          echo $PWD
+          cd PyMFEM
+          python3 setup.py install
+          rm -rf dist/*
+          python3 setup.py bdist_wheel
           export LD_LIBRARY_PATH=/root/PyMFEM/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
           rm -rf wheelhouse/*
           auditwheel repair dist/*.whl
