@@ -29,7 +29,7 @@ jobs:
           pip3 install auditwheel
           pip3 install twine
           CWD=$PWD
-	  ls
+          ls
           cd PyMFEM
           python3 setup.py install
           rm -rf dist/*
