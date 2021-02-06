@@ -24,10 +24,10 @@ jobs:
           echo It runs in the container instead of the VM.
           git clone https://github.com/sshiraiwa/PyMFEM.git
           export PATH=/opt/python/cp36-cp36m/bin:$PATH
-          pip install numpy
-          pip install six
-          pip install auditwheel
-          pip install
+          pip3 install numpy
+          pip3 install six
+          pip3 install auditwheel
+          pip3 install twine
           echo $PWD
           #cd PyMFEM
           #python3 setup.py install
