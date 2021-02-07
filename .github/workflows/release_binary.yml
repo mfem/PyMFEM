@@ -28,7 +28,7 @@ jobs:
         run: |
           echo It runs in the container instead of the VM.
           git clone https://github.com/sshiraiwa/PyMFEM.git
-	  ls -l /opt/python/
+          ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.python-version }}/bin:$PATH
           pip3 install numpy
           pip3 install six
