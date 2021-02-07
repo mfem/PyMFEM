@@ -2,7 +2,7 @@ from __future__ import print_function
 import os
 import sys
 
-def run_test():
+def run_test1(mfem):
     print("Test mesh module")
     Nvert = 6; Nelem = 8; Nbelem=2
     
@@ -36,11 +36,69 @@ def run_test():
     print(Tr.Weight())    
     Tr = mesh.GetEdgeTransformation(i)
     print(Tr.Weight())
-    
+
+def run_test2(mfem):
+    import tracemalloc
+    import linecache
+    mesh = mfem.Mesh(6, 6, 6, "TETRAHEDRON")
+
+    r = mesh.CartesianPartitioning([2, 2, 2], return_list=True)    
+    print(r)
+
+    r = mesh.CartesianPartitioning([2, 2, 2])
+    print(r)
+    mesh.PrintWithPartitioning(r, "partiotioned.mesh")
+    '''
+    tracemalloc.start()
+    def display_top(snapshot, key_type='lineno', limit=3):
+        snapshot = snapshot.filter_traces((
+            tracemalloc.Filter(False, "<frozen importlib._bootstrap>"),
+            tracemalloc.Filter(False, "<unknown>"),
+        ))
+        top_stats = snapshot.statistics(key_type)
+
+        print("Top %s lines" % limit)
+        for index, stat in enumerate(top_stats[:limit], 1):
+            frame = stat.traceback[0]
+            # replace "/path/to/module/file.py" with "module/file.py"
+            filename = os.sep.join(frame.filename.split(os.sep)[-2:])
+            print("#%s: %s:%s: %.1f KiB"
+                  % (index, filename, frame.lineno, stat.size / 1024))
+            line = linecache.getline(frame.filename, frame.lineno).strip()
+            if line:
+                print('    %s' % line)
+
+        other = top_stats[limit:]
+        if other:
+            size = sum(stat.size for stat in other)
+            print("%s other: %.1f KiB" % (len(other), size / 1024))
+        total = sum(stat.size for stat in top_stats)
+        print("Total allocated size: %.1f KiB" % (total / 1024))
+
+    snapshot = tracemalloc.take_snapshot()
+    display_top(snapshot)
+    '''
+    '''
+    d = mfem.intArray([2, 2, 2])
+    dd = d.GetData()
+
+    r = mesh.CartesianPartitioning(dd)
+    result = mfem.intArray()
+    result.MakeRef(r, mesh.GetNE())
+    result.MakeDataOwner()
+    '''
+
+    '''    
+
+    mesh.Print("sample.mesh")
+    r = mesh.CartesianPartitioning([2, 2, 2])
+    print(r)
+    '''
 if __name__=='__main__':
     if len(sys.argv) > 1 and sys.argv[1] == '-p':   
         import mfem.par as mfem
     else:
         import mfem.ser as mfem
         
-    run_test()
+    run_test1(mfem)
+    run_test2(mfem)    
