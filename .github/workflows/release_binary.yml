@@ -22,7 +22,7 @@ jobs:
           pip3 install auditwheel
           pip3 install twine
           cd PyMFEM
-          #git checkout release_binary	  
+          git checkout action_test
           rm -rf dist/*
           python3 setup.py sdist
           ls -l dist/
@@ -55,6 +55,7 @@ jobs:
           ls -l 
           cd PyMFEM
           #git checkout release_binary
+          git checkout action_test	  
           python3 setup.py install
           rm -rf dist/*
           python3 setup.py bdist_wheel
