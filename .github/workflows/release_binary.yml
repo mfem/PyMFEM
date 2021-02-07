@@ -14,12 +14,22 @@ jobs:
         run: |
           echo This job does not specify a container.
           echo It runs directly on the virtual machine.
-
+          git clone https://github.com/sshiraiwa/PyMFEM.git
+          pip3 install numpy
+          pip3 install six
+          pip3 install auditwheel
+          pip3 install twine
+          cd PyMFEM
+          rm -rf dist/*
+          python3 setup.py sdist
+          ls -l dist/
+          python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
+          #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*   	  
   container:
     strategy:
       matrix:
-        pythonpath:  ["cp36-cp36m"]
-        #pythonpath: ["cp36-cp36m", "cp37-cp37m", "cp38-cp38", "cp39-cp39"]
+        #pythonpath:  ["cp36-cp36m"]
+        pythonpath: ["cp36-cp36m", "cp37-cp37m", "cp38-cp38", "cp39-cp39"]
  
     runs-on: ubuntu-latest
     container: quay.io/pypa/manylinux2010_x86_64
@@ -46,13 +56,8 @@ jobs:
           rm -rf wheelhouse/*
           auditwheel repair dist/*.whl
           rm -rf dist/*
-          python3 setup.py sdist
+          #python3 setup.py sdist
           mv wheelhouse/* dist/
           ls -l dist/
-          echo ${{ secrets.TEST_PYPI_TOKEN }}
-          python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*   
-      #- name: publish to Test PyPI
-      #  uses: pypa/gh-action-pypi-publish@master
-      #  with:
-      #     password: ${{ secrets.TEST_PYPI_TOKEN }}
-      #     repository_url: https://test.pypi.org/legacy/
+          python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
+          #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*   	  
