@@ -16,6 +16,10 @@ jobs:
           echo It runs directly on the virtual machine.
 
   container:
+    strategy:
+      matrix:
+        pythonpath: ["cp36-cp36m"]
+  
     runs-on: ubuntu-latest
     container: quay.io/pypa/manylinux2010_x86_64
     #container: node:10.16-jessie
@@ -24,7 +28,8 @@ jobs:
         run: |
           echo It runs in the container instead of the VM.
           git clone https://github.com/sshiraiwa/PyMFEM.git
-          export PATH=/opt/python/cp36-cp36m/bin:$PATH
+	  ls -l /opt/python/
+          export PATH=/opt/python/${{ matrix.python-version }}/bin:$PATH
           pip3 install numpy
           pip3 install six
           pip3 install auditwheel
