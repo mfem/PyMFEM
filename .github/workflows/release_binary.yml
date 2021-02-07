@@ -42,7 +42,7 @@ jobs:
       - name: build package
         run: |
           echo It runs in the container instead of the VM.
-          git clone https://github.com/mfe/PyMFEM.git
+          git clone https://github.com/mfem/PyMFEM.git
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
           pip3 install setuptools
