@@ -4,9 +4,7 @@ on:
   push:
     branches: [ master ]
     tags: ["v*"]
-    type: [closed]
-  #pull_request:
-  #  branches: [ test ]
+    types: [closed]
 
 jobs:
   vm:
