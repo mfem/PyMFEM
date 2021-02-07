@@ -43,7 +43,7 @@ jobs:
           python3 setup.py sdist
           mv wheelhouse/* dist/
           ls -l dist/
-	  echo ${{ secrets.TEST_PYPI_TOKEN }}
+          echo ${{ secrets.TEST_PYPI_TOKEN }}
           python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*   
       #- name: publish to Test PyPI
       #  uses: pypa/gh-action-pypi-publish@master
