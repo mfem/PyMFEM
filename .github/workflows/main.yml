@@ -5,6 +5,7 @@ on:
     branches: [ test ]
   pull_request:
     branches: [ test ]
+    types: [opened]
 
 jobs:
   build:
