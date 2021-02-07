@@ -13,7 +13,7 @@ jobs:
         run: |
           echo This job does not specify a container.
           echo It runs directly on the virtual machine.
-          git clone https://github.com/sshiraiwa/PyMFEM.git
+          git clone https://github.com/mfem/PyMFEM.git
           pip3 install setuptools
           pip3 install setuptools-rust	  
           pip3 install wheel	  
@@ -42,7 +42,7 @@ jobs:
       - name: build package
         run: |
           echo It runs in the container instead of the VM.
-          git clone https://github.com/sshiraiwa/PyMFEM.git
+          git clone https://github.com/mfe/PyMFEM.git
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
           pip3 install setuptools
