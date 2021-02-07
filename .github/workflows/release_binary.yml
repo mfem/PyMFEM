@@ -15,6 +15,7 @@ jobs:
           echo This job does not specify a container.
           echo It runs directly on the virtual machine.
           git clone https://github.com/sshiraiwa/PyMFEM.git
+          pip3 install wheel	  
           pip3 install numpy
           pip3 install six
           pip3 install auditwheel
@@ -26,6 +27,7 @@ jobs:
           python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
           #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*   	  
   container:
+    needs: vm
     strategy:
       matrix:
         #pythonpath:  ["cp36-cp36m"]
