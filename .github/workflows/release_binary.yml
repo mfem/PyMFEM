@@ -2,8 +2,8 @@ name: release_binary
 
 on:
   push:
-    branches: [ action_test ]
-    #tags: ["v*"]
+    #branches: [ action_test ]
+    tags: ["v*"]
 
 jobs:
   vm:
@@ -15,10 +15,10 @@ jobs:
           echo This job does not specify a container.
           echo It runs directly on the virtual machine.
           #
-          #git clone https://github.com/mfem/PyMFEM.git
+          git clone https://github.com/mfem/PyMFEM.git
           git clone https://github.com/sshiraiwa/PyMFEM.git
           cd PyMFEM	  
-          git checkout action_test
+          #git checkout action_test
           #
           export PATH=/opt/python/cp36-cp36m/bin:$PATH	  
           pip3 install wheel	  
@@ -30,7 +30,7 @@ jobs:
           python3 setup.py sdist
           ls -l dist/
           #python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
-          #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*   	  
+          python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*   	  
   container:
     needs: vm
     strategy:
@@ -46,10 +46,10 @@ jobs:
         run: |
           echo It runs in the container instead of the VM.
           #
-          #git clone https://github.com/mfem/PyMFEM.git
-          git clone https://github.com/sshiraiwa/PyMFEM.git
+          git clone https://github.com/mfem/PyMFEM.git
+          #git clone https://github.com/sshiraiwa/PyMFEM.git
           cd PyMFEM	  
-          git checkout action_test
+          #git checkout action_test
           #
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
@@ -70,4 +70,4 @@ jobs:
           mv wheelhouse/* dist/
           ls -l dist/
           #python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
-          #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*   	  
+          python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*   	  
