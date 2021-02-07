@@ -1,4 +1,7 @@
 	<<<  Change Log. >>>
+2021 02.07
+        * A new Github action to automate PyPI binary release
+	
 2021 01.17
         * mesh.CartasianPartitioing is improved to accept an iterable (list/tuple)
 	  as an argument.
