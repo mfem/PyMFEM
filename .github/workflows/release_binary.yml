@@ -9,7 +9,8 @@ jobs:
   vm:
     runs-on: ubuntu-latest
     steps:
-      - name: Run on VM    
+      - name: Run on VM
+        if: startsWith(github.ref, 'refs/tags')    
         run: |
           echo This job does not specify a container.
           echo It runs directly on the virtual machine.
@@ -38,6 +39,7 @@ jobs:
     #container: node:10.16-jessie
     steps:
       - name: build package
+        if: startsWith(github.ref, 'refs/tags')
         run: |
           echo It runs in the container instead of the VM.
           git clone https://github.com/sshiraiwa/PyMFEM.git
