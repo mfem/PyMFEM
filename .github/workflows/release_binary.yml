@@ -2,8 +2,8 @@ name: release_binary
 
 on:
   push:
-    branches: [ action_test ]
-    #tags: ["v*"]
+    #branches: [ action_test ]
+    tags: ["v*"]
 
 jobs:
   vm:
@@ -22,7 +22,7 @@ jobs:
           pip3 install auditwheel
           pip3 install twine
           cd PyMFEM
-          git checkout release_binary	  
+          #git checkout release_binary	  
           rm -rf dist/*
           python3 setup.py sdist
           ls -l dist/
@@ -45,6 +45,8 @@ jobs:
           git clone https://github.com/sshiraiwa/PyMFEM.git
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
+          pip3 install setuptools
+          pip3 install setuptools-rust	  
           pip3 install numpy
           pip3 install six
           pip3 install auditwheel
@@ -52,7 +54,7 @@ jobs:
           CWD=$PWD
           ls -l 
           cd PyMFEM
-          git checkout release_binary
+          #git checkout release_binary
           python3 setup.py install
           rm -rf dist/*
           python3 setup.py bdist_wheel
