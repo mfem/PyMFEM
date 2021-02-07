@@ -18,7 +18,8 @@ jobs:
   container:
     strategy:
       matrix:
-        pythonpath: ["cp36-cp36m"]
+        pythonpath:  ["cp36-cp36m"]
+	#pythonpath: ["cp36-cp36m", "cp37-cp37m", "cp38-cp38", "cp39-cp39"]
   
     runs-on: ubuntu-latest
     container: quay.io/pypa/manylinux2010_x86_64
@@ -29,7 +30,7 @@ jobs:
           echo It runs in the container instead of the VM.
           git clone https://github.com/sshiraiwa/PyMFEM.git
           ls -l /opt/python/
-          export PATH=/opt/python/${{ matrix.python-version }}/bin:$PATH
+          export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
           pip3 install numpy
           pip3 install six
           pip3 install auditwheel
