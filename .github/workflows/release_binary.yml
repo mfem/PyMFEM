@@ -19,8 +19,8 @@ jobs:
     strategy:
       matrix:
         pythonpath:  ["cp36-cp36m"]
-	#pythonpath: ["cp36-cp36m", "cp37-cp37m", "cp38-cp38", "cp39-cp39"]
-  
+        #pythonpath: ["cp36-cp36m", "cp37-cp37m", "cp38-cp38", "cp39-cp39"]
+ 
     runs-on: ubuntu-latest
     container: quay.io/pypa/manylinux2010_x86_64
     #container: node:10.16-jessie
