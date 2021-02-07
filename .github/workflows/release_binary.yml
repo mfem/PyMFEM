@@ -10,14 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     container: quay.io/pypa/manylinux2010_x86_64    
     steps:
-      - name: Run on VM
+      - name: build_sdist
         run: |
           echo This job does not specify a container.
           echo It runs directly on the virtual machine.
+          #
           #git clone https://github.com/mfem/PyMFEM.git
           git clone https://github.com/sshiraiwa/PyMFEM.git
           cd PyMFEM	  
-          git checkout action_test	  
+          git checkout action_test
+          #
+          export PATH=/opt/python/cp36-cp36m/bin:$PATH	  
           pip3 install wheel	  
           pip3 install numpy
           pip3 install six
@@ -42,10 +45,12 @@ jobs:
       - name: build package
         run: |
           echo It runs in the container instead of the VM.
+          #
           #git clone https://github.com/mfem/PyMFEM.git
           git clone https://github.com/sshiraiwa/PyMFEM.git
           cd PyMFEM	  
-          git checkout action_test	  	  
+          git checkout action_test
+          #
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
           pip3 install numpy
@@ -54,7 +59,6 @@ jobs:
           pip3 install twine
           CWD=$PWD
           ls -l 
-          #git checkout release_binary
           python3 setup.py install
           rm -rf dist/*
           python3 setup.py bdist_wheel
