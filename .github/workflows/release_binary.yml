@@ -10,16 +10,18 @@ jobs:
   vm:
     runs-on: ubuntu-latest
     steps:
-      - run: |
+      - name: Run on VM    
+        run: |
           echo This job does not specify a container.
           echo It runs directly on the virtual machine.
-        name: Run on VM
+
   container:
     runs-on: ubuntu-latest
     container: quay.io/pypa/manylinux2010_x86_64
     #container: node:10.16-jessie
     steps:
-      - run: |
+      - name: build package
+        run: |
           echo This job does specify a container.
           echo It runs in the container instead of the VM.
           git clone https://github.com/sshiraiwa/PyMFEM.git
@@ -39,5 +41,12 @@ jobs:
           rm -rf wheelhouse/*
           auditwheel repair dist/*.whl
           rm -rf dist/*
-          python3 setup.py sdist	  
-        name: Run in container
+          python3 setup.py sdist
+	  ls -l wheelhouse
+	  mv wheelhouse/* dist/
+
+      - name: publish to Test PyPI
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+           password: ${{ secrets.TEST_PYPI_TOKEN }}
+           repository_url: https://test.pypi.org/legacy/
