@@ -15,6 +15,7 @@ jobs:
           echo This job does not specify a container.
           echo It runs directly on the virtual machine.
           git clone https://github.com/sshiraiwa/PyMFEM.git
+          pip3 install setuptools
           pip3 install wheel	  
           pip3 install numpy
           pip3 install six
