@@ -8,6 +8,7 @@ See more detail below for other configurations
 
 ## Install
 ```
+pip install mfem                    # binary install is available only on linux platforms (Py36-39) 
 pip install mfem --no-binary mfem   # install serial MFEM + wrapper
 ```
 The setup script accept various options. TO use it, please download
