@@ -2,8 +2,8 @@ name: release_binary
 
 on:
   push:
-    #branches: [ action_test ]
-    tags: ["v*"]
+    branches: [ action_test ]
+    #tags: ["v*"]
 
 jobs:
   vm:
@@ -27,7 +27,7 @@ jobs:
           python3 setup.py sdist
           ls -l dist/
           #python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
-          python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*   	  
+          #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*   	  
   container:
     needs: vm
     strategy:
@@ -45,8 +45,8 @@ jobs:
           git clone https://github.com/mfem/PyMFEM.git
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
-          pip3 install setuptools
-          pip3 install setuptools-rust	  
+          #pip3 install setuptools
+          #pip3 install setuptools-rust	  
           pip3 install numpy
           pip3 install six
           pip3 install auditwheel
@@ -66,4 +66,4 @@ jobs:
           mv wheelhouse/* dist/
           ls -l dist/
           #python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
-          python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*   	  
+          #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*   	  
