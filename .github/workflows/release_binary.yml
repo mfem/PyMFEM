@@ -16,7 +16,7 @@ jobs:
           echo It runs directly on the virtual machine.
           #
           git clone https://github.com/mfem/PyMFEM.git
-          git clone https://github.com/sshiraiwa/PyMFEM.git
+          #git clone https://github.com/sshiraiwa/PyMFEM.git
           cd PyMFEM	  
           #git checkout action_test
           #
