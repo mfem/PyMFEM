@@ -13,7 +13,9 @@ jobs:
         run: |
           echo This job does not specify a container.
           echo It runs directly on the virtual machine.
-          git clone https://github.com/mfem/PyMFEM.git
+	  #git clone https://github.com/mfem/PyMFEM.git
+          git clone https://github.com/sshiraiwa/PyMFEM.git
+          git checkout action_test	  
           pip3 install setuptools
           pip3 install setuptools-rust	  
           pip3 install wheel	  
@@ -22,7 +24,6 @@ jobs:
           pip3 install auditwheel
           pip3 install twine
           cd PyMFEM
-          git checkout action_test
           rm -rf dist/*
           python3 setup.py sdist
           ls -l dist/
@@ -42,7 +43,9 @@ jobs:
       - name: build package
         run: |
           echo It runs in the container instead of the VM.
-          git clone https://github.com/mfem/PyMFEM.git
+	  #git clone https://github.com/mfem/PyMFEM.git
+          git clone https://github.com/sshiraiwa/PyMFEM.git
+          git checkout action_test	  	  
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
           #pip3 install setuptools
@@ -55,7 +58,6 @@ jobs:
           ls -l 
           cd PyMFEM
           #git checkout release_binary
-          git checkout action_test	  
           python3 setup.py install
           rm -rf dist/*
           python3 setup.py bdist_wheel
