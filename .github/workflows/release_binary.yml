@@ -2,7 +2,8 @@ name: release_binary
 
 on:
   push:
-    branches: [ release_binary ]
+    branches: [ master ]
+    tags: ["v*"]
   #pull_request:
   #  branches: [ test ]
 
@@ -25,8 +26,8 @@ jobs:
           rm -rf dist/*
           python3 setup.py sdist
           ls -l dist/
-          python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
-          #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*   	  
+          #python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
+          python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*   	  
   container:
     needs: vm
     strategy:
@@ -62,5 +63,5 @@ jobs:
           #python3 setup.py sdist
           mv wheelhouse/* dist/
           ls -l dist/
-          python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
-          #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*   	  
+          #python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
+          python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*   	  
