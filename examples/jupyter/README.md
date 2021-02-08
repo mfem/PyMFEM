@@ -5,4 +5,4 @@
 
 This directory contains [Jupyter](https://jupyter.org/) versions of some of the PyMFEM examples with inline visualization using [pyglvis](https://github.com/GLVis/pyglvis).
 
-See the pyglvis [README](https://github.com/GLVis/pyglvis/blob/master/README.md) for more details on installation and usage.
+See the [pyglvis README](https://github.com/GLVis/pyglvis/blob/master/README.md) for more details on installation and usage.
