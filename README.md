@@ -1,3 +1,6 @@
+[![badge](https://github.com/GLVis/pyglvis/blob/master/examples/ex1.svg "MFEM's Example 1")](https://mybinder.org/v2/gh/GLVis/pyglvis/HEAD?filepath=examples%2Fex1.ipynb)
+[![badge](https://github.com/GLVis/pyglvis/blob/master/examples/ex9.svg "MFEM's Example 9")](https://mybinder.org/v2/gh/GLVis/pyglvis/HEAD?filepath=examples%2Fex9.ipynb)
+
 #  PyMFEM (MFEM Python wrapper)
 
 This package (PyMFEM) is Python wrapper for the MFEM high performance parallel finite element method library.(http://mfem.org/).
@@ -31,7 +34,7 @@ $ python setup.py install --help
 
 ## Usage
 Here is an example to solve div(grad(f)) = 1 in a square and to plot the result
-with matplotlib (modified from ex1.cpp)
+with matplotlib (modified from ex1.cpp). Use the badge above to open this in Binder.
 ```
 import mfem.ser as mfem
 
