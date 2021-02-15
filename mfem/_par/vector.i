@@ -251,6 +251,35 @@ void subtract_vector(const double a, const mfem::Vector &x,
      npy_intp dims[] = {L};
      return  PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, A);
   }
+  PyObject* WriteToStream(PyObject* StringIO, int width=8) const  {
+      PyObject* module = PyImport_ImportModule("io");
+      if (!module){
+   	 PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+         return (PyObject *) NULL;
+      }      
+      PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+      if (!cls){
+   	 PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+         return (PyObject *) NULL;
+      }      
+      int check = PyObject_IsInstance(StringIO, cls);
+      Py_DECREF(module);
+      if (! check){
+ 	 PyErr_SetString(PyExc_TypeError, "First argument must be IOString");
+         return (PyObject *) NULL;
+      }
+      std::ostringstream stream;
+      self->Print(stream, width);      
+      std::string str =  stream.str();
+      const char* s = str.c_str();
+      const int n = str.length();
+      PyObject *ret = PyObject_CallMethod(StringIO, "write", "s#", s, static_cast<Py_ssize_t>(n));
+      if (PyErr_Occurred()) {
+         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
+         return (PyObject *) NULL;
+      }
+      return ret;
+  }
 };
 
 %pythoncode %{

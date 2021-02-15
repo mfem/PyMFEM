@@ -8,6 +8,9 @@
  * interface file instead.
  * ----------------------------------------------------------------------------- */
 
+#define PY_SSIZE_T_CLEAN
+
+
 
 #ifndef SWIGPYTHON
 #define SWIGPYTHON
@@ -3783,6 +3786,35 @@ SWIGINTERN void mfem_Mesh_PrintToFile(mfem::Mesh const *self,char const *mesh_fi
 	std::ofstream mesh_ofs(mesh_file);	
         mesh_ofs.precision(precision);
         self->Print(mesh_ofs);	
+   }
+SWIGINTERN PyObject *mfem_Mesh_WriteToStream(mfem::Mesh const *self,PyObject *StringIO){
+      PyObject* module = PyImport_ImportModule("io");
+      if (!module){
+   	 PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+         return (PyObject *) NULL;
+      }      
+      PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+      if (!cls){
+   	 PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+         return (PyObject *) NULL;
+      }      
+      int check = PyObject_IsInstance(StringIO, cls);
+      Py_DECREF(module);
+      if (! check){
+ 	 PyErr_SetString(PyExc_TypeError, "First argument must be IOString");
+         return (PyObject *) NULL;
+      }
+      std::ostringstream stream;
+      self->Print(stream);      
+      std::string str =  stream.str();
+      const char* s = str.c_str();
+      const int n = str.length();
+      PyObject *ret = PyObject_CallMethod(StringIO, "write", "s#", s, static_cast<Py_ssize_t>(n));
+      if (PyErr_Occurred()) {
+         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
+         return (PyObject *) NULL;
+      }
+      return ret;
    }
 SWIGINTERN PyObject *mfem_Mesh_GetAttributeArray(mfem::Mesh const *self){
      int i;
@@ -20069,6 +20101,52 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Mesh_WriteToStream(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  PyObject *arg2 = (PyObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"StringIO",  NULL 
+  };
+  PyObject *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Mesh_WriteToStream", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_WriteToStream" "', argument " "1"" of type '" "mfem::Mesh const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  arg2 = obj1;
+  {
+    try {
+      result = (PyObject *)mfem_Mesh_WriteToStream((mfem::Mesh const *)arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = result;
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Mesh_GetAttributeArray(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
@@ -23118,6 +23196,7 @@ static PyMethodDef SwigMethods[] = {
 		"new_Mesh(int nx, int ny, char const * type, bool generate_edges=False, double sx=1.0, double sy=1.0, bool sfc_ordering=True) -> Mesh\n"
 		""},
 	 { "Mesh_PrintToFile", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintToFile, METH_VARARGS|METH_KEYWORDS, "Mesh_PrintToFile(Mesh self, char const * mesh_file, int const precision)"},
+	 { "Mesh_WriteToStream", (PyCFunction)(void(*)(void))_wrap_Mesh_WriteToStream, METH_VARARGS|METH_KEYWORDS, "Mesh_WriteToStream(Mesh self, PyObject * StringIO) -> PyObject *"},
 	 { "Mesh_GetAttributeArray", _wrap_Mesh_GetAttributeArray, METH_O, "Mesh_GetAttributeArray(Mesh self) -> PyObject *"},
 	 { "Mesh_GetVertexArray", _wrap_Mesh_GetVertexArray, METH_VARARGS, "\n"
 		"Mesh_GetVertexArray(Mesh self, int i) -> PyObject\n"
@@ -23494,6 +23573,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"new_Mesh(int nx, int ny, char const * type, bool generate_edges=False, double sx=1.0, double sy=1.0, bool sfc_ordering=True) -> Mesh\n"
 		""},
 	 { "Mesh_PrintToFile", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintToFile, METH_VARARGS|METH_KEYWORDS, "PrintToFile(Mesh self, char const * mesh_file, int const precision)"},
+	 { "Mesh_WriteToStream", (PyCFunction)(void(*)(void))_wrap_Mesh_WriteToStream, METH_VARARGS|METH_KEYWORDS, "WriteToStream(Mesh self, PyObject * StringIO) -> PyObject *"},
 	 { "Mesh_GetAttributeArray", _wrap_Mesh_GetAttributeArray, METH_O, "GetAttributeArray(Mesh self) -> PyObject *"},
 	 { "Mesh_GetVertexArray", _wrap_Mesh_GetVertexArray, METH_VARARGS, "\n"
 		"GetVertexArray(Mesh self, int i) -> PyObject\n"
