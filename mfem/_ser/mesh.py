@@ -1157,6 +1157,11 @@ class Mesh(object):
         return _mesh.Mesh_PrintToFile(self, mesh_file, precision)
     PrintToFile = _swig_new_instance_method(_mesh.Mesh_PrintToFile)
 
+    def WriteToStream(self, StringIO):
+        r"""WriteToStream(Mesh self, PyObject * StringIO) -> PyObject *"""
+        return _mesh.Mesh_WriteToStream(self, StringIO)
+    WriteToStream = _swig_new_instance_method(_mesh.Mesh_WriteToStream)
+
     def GetAttributeArray(self):
         r"""GetAttributeArray(Mesh self) -> PyObject *"""
         return _mesh.Mesh_GetAttributeArray(self)
