@@ -17,8 +17,8 @@
 %init %{
 import_array();
 %}
-//%include "../common/cpointers.i"
-//%import "cpointers.i"
+
+%include "../common/cpointers.i"
 %include "exception.i"
 
 %include "std_string.i"

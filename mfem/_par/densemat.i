@@ -57,21 +57,21 @@ if len(args) == 1 and isinstance(args[0], ndarray):
 
 %feature("shadow") mfem::DenseMatrix::operator+= %{
 def __iadd__(self, v):
-    ret = _densmat.DenseMatrix___iadd__(self, v)
+    ret = _densemat.DenseMatrix___iadd__(self, v)
     ret.thisown = self.thisown
     self.thisown = 0                  
     return ret
 %}
 %feature("shadow") mfem::DenseMatrix::operator-= %{
 def __isub__(self, v):
-    ret = _densmat.DenseMatrix___isub__(self, v)  
+    ret = _densemat.DenseMatrix___isub__(self, v)  
     ret.thisown = self.thisown
     self.thisown = 0            
     return ret
 %} 
 %feature("shadow") mfem::DenseMatrix::operator*= %{
 def __imul__(self, v):
-    ret = _densmat.DenseMatrix___imul__(self, v)  
+    ret = _densemat.DenseMatrix___imul__(self, v)  
     ret.thisown = self.thisown
     self.thisown = 0            
     return ret

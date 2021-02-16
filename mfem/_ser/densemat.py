@@ -283,7 +283,7 @@ class DenseMatrix(mfem._ser.matrix.Matrix):
     Add = _swig_new_instance_method(_densemat.DenseMatrix_Add)
 
     def __iadd__(self, v):
-        ret = _densmat.DenseMatrix___iadd__(self, v)
+        ret = _densemat.DenseMatrix___iadd__(self, v)
         ret.thisown = self.thisown
         self.thisown = 0                  
         return ret
@@ -291,7 +291,7 @@ class DenseMatrix(mfem._ser.matrix.Matrix):
 
 
     def __isub__(self, v):
-        ret = _densmat.DenseMatrix___isub__(self, v)  
+        ret = _densemat.DenseMatrix___isub__(self, v)  
         ret.thisown = self.thisown
         self.thisown = 0            
         return ret
@@ -299,7 +299,7 @@ class DenseMatrix(mfem._ser.matrix.Matrix):
 
 
     def __imul__(self, v):
-        ret = _densmat.DenseMatrix___imul__(self, v)  
+        ret = _densemat.DenseMatrix___imul__(self, v)  
         ret.thisown = self.thisown
         self.thisown = 0            
         return ret
