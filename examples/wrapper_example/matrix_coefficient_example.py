@@ -1,3 +1,16 @@
+'''
+   Matrix coefficient example
+
+   How to run:
+      python <arguments>
+
+   Example of arguments:
+      coefficient_example.py
+
+   Description:  This example code demonstrates how to use matrix coefficient,
+                 which is defiend in Python.
+
+'''
 import mfem.ser as mfem
 import numpy as np
 
