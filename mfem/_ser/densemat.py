@@ -579,7 +579,7 @@ class DenseMatrix(mfem._ser.matrix.Matrix):
         keep_link = False
         if len(args) == 1 and isinstance(args[0], ndarray):
                 if args[0].dtype != 'float64':
-                     raise ValueError('Must be float64 array:' + args[0].dtype + ' was given')
+                    raise ValueError('Must be float64 array:' + str(args[0].dtype) + ' was given')
                 elif args[0].ndim != 2:
                     raise ValueError('Ndim must be two') 
                 elif args[0].shape[1] != _densemat.DenseMatrix_Size(self):
