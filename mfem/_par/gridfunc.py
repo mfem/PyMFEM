@@ -95,6 +95,7 @@ import mfem._par.hypre
 import mfem._par.restriction
 import mfem._par.bilininteg
 import mfem._par.linearform
+import mfem._par.nonlininteg
 class GridFunction(mfem._par.vector.Vector):
     r"""Proxy of C++ mfem::GridFunction class."""
 
@@ -535,6 +536,11 @@ class GridFunction(mfem._par.vector.Vector):
         r"""SaveToFile(GridFunction self, char const * gf_file, int const precision)"""
         return _gridfunc.GridFunction_SaveToFile(self, gf_file, precision)
     SaveToFile = _swig_new_instance_method(_gridfunc.GridFunction_SaveToFile)
+
+    def WriteToStream(self, StringIO):
+        r"""WriteToStream(GridFunction self, PyObject * StringIO) -> PyObject *"""
+        return _gridfunc.GridFunction_WriteToStream(self, StringIO)
+    WriteToStream = _swig_new_instance_method(_gridfunc.GridFunction_WriteToStream)
 
     def iadd(self, c):
         r"""iadd(GridFunction self, GridFunction c) -> GridFunction"""

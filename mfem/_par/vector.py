@@ -501,6 +501,11 @@ class Vector(object):
         return _vector.Vector_GetDataArray(self)
     GetDataArray = _swig_new_instance_method(_vector.Vector_GetDataArray)
 
+    def WriteToStream(self, StringIO, width=8):
+        r"""WriteToStream(Vector self, PyObject * StringIO, int width=8) -> PyObject *"""
+        return _vector.Vector_WriteToStream(self, StringIO, width)
+    WriteToStream = _swig_new_instance_method(_vector.Vector_WriteToStream)
+
     def Print(self, *args):
         r"""
         Print(Vector self, std::ostream & out=mfem::out, int width=8)
