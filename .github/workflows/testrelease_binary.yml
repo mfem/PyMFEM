@@ -18,7 +18,7 @@ jobs:
           git clone https://github.com/mfem/PyMFEM.git
           #git clone https://github.com/sshiraiwa/PyMFEM.git
           cd PyMFEM	  
-          #git checkout action_test
+          git checkout test_release
           #
           export PATH=/opt/python/cp36-cp36m/bin:$PATH	  
           pip3 install wheel	  
@@ -50,8 +50,8 @@ jobs:
           #
           git clone https://github.com/mfem/PyMFEM.git
           #git clone https://github.com/sshiraiwa/PyMFEM.git
-          cd PyMFEM	  
-          #git checkout action_test
+          cd PyMFEM
+          git checkout test_release	  
           #
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH

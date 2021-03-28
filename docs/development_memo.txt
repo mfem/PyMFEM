@@ -44,3 +44,6 @@ rm -rf wheelhouse/*
 auditwheel repair dist/mfem-4.2.1.30-cp38-cp38-linux_x86_64.whl
 rm -rf dist/*
 python3 setup.py sdist
+
+### make a test release
+make a pre-release with tag name starting from test_
