@@ -114,6 +114,11 @@ def long_description():
     with open(os.path.join(rootdir, 'README.md'), encoding='utf-8') as f:
         return f.read()
 
+def install_requires():
+    fid = open(os.path.join(rootdir, 'requirements.txt'))
+    requirements = fid.read_text().splitlines()
+    fid.close()
+    return requirements
 
 keywords = """
 scientific computing
@@ -1079,12 +1084,11 @@ def run_setup():
                 'clean': Clean}
     if haveWheel:
         cmdclass['bdist_wheel'] = BdistWheel
+
+    install_req = install_requires()
     setup(
         cmdclass=cmdclass,
-        install_requires=['numpy >= 1.19.4; python_version < "3.7"',
-                          'numpy >= 1.20.0; python_version >= "3.7"',
-                          'scipy',
-                          'six'],
+        install_requires=install_req,
         packages=find_packages(),
         extras_require={},
         package_data={'mfem._par': ['*.so'], 'mfem._ser': ['*.so']},
