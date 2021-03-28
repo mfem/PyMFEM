@@ -1086,6 +1086,7 @@ def run_setup():
         cmdclass['bdist_wheel'] = BdistWheel
 
     install_req = install_requires()
+    print(install_req)
     setup(
         cmdclass=cmdclass,
         install_requires=install_req,
