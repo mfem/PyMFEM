@@ -1,6 +1,3 @@
-#
-# this action runs when tag name starts with t and upload file to testpypi
-#
 name: testrelease_binary
 
 on:
