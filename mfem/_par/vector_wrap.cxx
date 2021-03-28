@@ -3122,6 +3122,35 @@ SWIGINTERN PyObject *mfem_Vector_GetDataArray(mfem::Vector const *self){
      npy_intp dims[] = {L};
      return  PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, A);
   }
+SWIGINTERN PyObject *mfem_Vector_WriteToStream(mfem::Vector const *self,PyObject *StringIO,int width=8){
+      PyObject* module = PyImport_ImportModule("io");
+      if (!module){
+   	 PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+         return (PyObject *) NULL;
+      }      
+      PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+      if (!cls){
+   	 PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+         return (PyObject *) NULL;
+      }      
+      int check = PyObject_IsInstance(StringIO, cls);
+      Py_DECREF(module);
+      if (! check){
+ 	 PyErr_SetString(PyExc_TypeError, "First argument must be IOString");
+         return (PyObject *) NULL;
+      }
+      std::ostringstream stream;
+      self->Print(stream, width);      
+      std::string str =  stream.str();
+      const char* s = str.c_str();
+      const int n = str.length();
+      PyObject *ret = PyObject_CallMethod(StringIO, "write", "s#", s, static_cast<Py_ssize_t>(n));
+      if (PyErr_Occurred()) {
+         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
+         return (PyObject *) NULL;
+      }
+      return ret;
+  }
 
 SWIGINTERN swig_type_info*
 SWIG_pchar_descriptor(void)
@@ -8894,6 +8923,59 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Vector_WriteToStream(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Vector *arg1 = (mfem::Vector *) 0 ;
+  PyObject *arg2 = (PyObject *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"StringIO",  (char *)"width",  NULL 
+  };
+  PyObject *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:Vector_WriteToStream", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vector_WriteToStream" "', argument " "1"" of type '" "mfem::Vector const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Vector * >(argp1);
+  arg2 = obj1;
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      result = (PyObject *)mfem_Vector_WriteToStream((mfem::Vector const *)arg1,arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = result;
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Vector_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Vector *arg1 = (mfem::Vector *) 0 ;
@@ -9489,6 +9571,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "Vector___setitem__", (PyCFunction)(void(*)(void))_wrap_Vector___setitem__, METH_VARARGS|METH_KEYWORDS, "Vector___setitem__(Vector self, int i, double const v)"},
 	 { "Vector___getitem__", (PyCFunction)(void(*)(void))_wrap_Vector___getitem__, METH_VARARGS|METH_KEYWORDS, "Vector___getitem__(Vector self, PyObject * param) -> PyObject *"},
 	 { "Vector_GetDataArray", _wrap_Vector_GetDataArray, METH_O, "Vector_GetDataArray(Vector self) -> PyObject *"},
+	 { "Vector_WriteToStream", (PyCFunction)(void(*)(void))_wrap_Vector_WriteToStream, METH_VARARGS|METH_KEYWORDS, "Vector_WriteToStream(Vector self, PyObject * StringIO, int width=8) -> PyObject *"},
 	 { "Vector_Print", _wrap_Vector_Print, METH_VARARGS, "\n"
 		"Vector_Print(Vector self, std::ostream & out=mfem::out, int width=8)\n"
 		"Vector_Print(Vector self, char const * file, int precision=8)\n"
@@ -9635,6 +9718,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Vector___setitem__", (PyCFunction)(void(*)(void))_wrap_Vector___setitem__, METH_VARARGS|METH_KEYWORDS, "__setitem__(Vector self, int i, double const v)"},
 	 { "Vector___getitem__", (PyCFunction)(void(*)(void))_wrap_Vector___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(Vector self, PyObject * param) -> PyObject *"},
 	 { "Vector_GetDataArray", _wrap_Vector_GetDataArray, METH_O, "GetDataArray(Vector self) -> PyObject *"},
+	 { "Vector_WriteToStream", (PyCFunction)(void(*)(void))_wrap_Vector_WriteToStream, METH_VARARGS|METH_KEYWORDS, "WriteToStream(Vector self, PyObject * StringIO, int width=8) -> PyObject *"},
 	 { "Vector_Print", _wrap_Vector_Print, METH_VARARGS, "\n"
 		"Print(Vector self, std::ostream & out=mfem::out, int width=8)\n"
 		"Print(Vector self, char const * file, int precision=8)\n"

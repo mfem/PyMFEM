@@ -22,7 +22,7 @@ jobs:
           #
           export PATH=/opt/python/cp36-cp36m/bin:$PATH	  
           pip3 install wheel	  
-          pip3 install numpy
+          pip3 install numpy==1.20.0
           pip3 install six
           pip3 install auditwheel
           pip3 install twine
@@ -53,7 +53,7 @@ jobs:
           #
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
-          pip3 install numpy
+          pip3 install numpy==1.20.0
           pip3 install six
           pip3 install auditwheel
           pip3 install twine

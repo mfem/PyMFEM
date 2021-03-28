@@ -1075,7 +1075,9 @@ def run_setup():
         cmdclass['bdist_wheel'] = BdistWheel
     setup(
         cmdclass=cmdclass,
-        install_requires=[],
+        install_requires=['numpy>= 1.20.0',
+                          'scipy',
+                          'six'],
         packages=find_packages(),
         extras_require={},
         package_data={'mfem._par': ['*.so'], 'mfem._ser': ['*.so']},

@@ -40,7 +40,7 @@ from numpy import ndarray, ascontiguousarray
 keep_link = False
 if len(args) == 1 and isinstance(args[0], ndarray):
         if args[0].dtype != 'float64':
-            raise ValueError('Must be float64 array:' + args[0].dtype + ' was given')  
+            raise ValueError('Must be float64 array:' + str(args[0].dtype) + ' was given')  
         elif args[0].ndim != 2:
             raise ValueError('Ndim must be two') 
         elif args[0].shape[1] != _densemat.DenseMatrix_Size(self):
@@ -57,21 +57,21 @@ if len(args) == 1 and isinstance(args[0], ndarray):
 
 %feature("shadow") mfem::DenseMatrix::operator+= %{
 def __iadd__(self, v):
-    ret = _densmat.DenseMatrix___iadd__(self, v)
+    ret = _densemat.DenseMatrix___iadd__(self, v)
     ret.thisown = self.thisown
     self.thisown = 0                  
     return ret
 %}
 %feature("shadow") mfem::DenseMatrix::operator-= %{
 def __isub__(self, v):
-    ret = _densmat.DenseMatrix___isub__(self, v)  
+    ret = _densemat.DenseMatrix___isub__(self, v)  
     ret.thisown = self.thisown
     self.thisown = 0            
     return ret
 %} 
 %feature("shadow") mfem::DenseMatrix::operator*= %{
 def __imul__(self, v):
-    ret = _densmat.DenseMatrix___imul__(self, v)  
+    ret = _densemat.DenseMatrix___imul__(self, v)  
     ret.thisown = self.thisown
     self.thisown = 0            
     return ret
