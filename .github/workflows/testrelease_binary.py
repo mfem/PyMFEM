@@ -6,7 +6,7 @@ name: testrelease_binary
 on:
   push:
     #branches: [ action_test ]
-    tags: ["t*"]
+    tags: ["test_*"]
 
 jobs:
   vm:
