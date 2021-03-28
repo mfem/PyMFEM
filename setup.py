@@ -22,6 +22,11 @@ from setuptools.command.install_lib import install_lib as _install_lib
 from setuptools.command.install_scripts import install_scripts as _install_scripts
 
 try:
+    import numpy
+except ImportError:
+    assert False, "numpy is not found"
+    
+try:
     from setuptools._distutils.command.clean import clean as _clean
 except ImportError:
     from distutils.command.clean import clean as _clean
