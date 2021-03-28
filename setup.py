@@ -116,7 +116,7 @@ def long_description():
 
 def install_requires():
     fid = open(os.path.join(rootdir, 'requirements.txt'))
-    requirements = fid.read_text().splitlines()
+    requirements = [x.strip() for x in fid.readlines()]
     fid.close()
     return requirements
 
