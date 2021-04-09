@@ -17,8 +17,8 @@
 %init %{
 import_array();
 %}
-//%include "../common/cpointers.i"
-//%import "cpointers.i"
+
+%include "../common/cpointers.i"
 %include "exception.i"
 
 %include "std_string.i"
@@ -109,6 +109,37 @@ void SaveToFile(const char *gf_file, const int precision) const
         mesh_ofs.precision(precision);
         self->Save(mesh_ofs);	
    }
+
+PyObject* WriteToStream(PyObject* StringIO) const  {
+    PyObject* module = PyImport_ImportModule("io");
+    if (!module){
+   	 PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+         return (PyObject *) NULL;
+    }      
+    PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+    if (!cls){
+   	 PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+         return (PyObject *) NULL;
+    }      
+    int check = PyObject_IsInstance(StringIO, cls);
+    Py_DECREF(module);
+    if (! check){
+ 	 PyErr_SetString(PyExc_TypeError, "First argument must be IOString");
+         return (PyObject *) NULL;
+    }
+    std::ostringstream stream;
+    self->Save(stream);
+    std::string str =  stream.str();
+    const char* s = str.c_str();
+    const int n = str.length();
+    PyObject *ret = PyObject_CallMethod(StringIO, "write", "s#", s, static_cast<Py_ssize_t>(n));
+    if (PyErr_Occurred()) {
+       PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
+       return (PyObject *) NULL;
+    }
+    return ret;      
+}
+ 
 GridFunction & iadd(GridFunction &c)
    {
       *self += c;

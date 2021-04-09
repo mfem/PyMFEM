@@ -74,6 +74,14 @@ to find more details of the MFEM library.
      Vector::GetDataArray returns NumPy object viewing the data stored in C++ Vector
      object. Note that the returned NumPy array does not own the data.
 
+     Vector::WriteToStream(IOString, width=8) writes data to io.IOString
+     ex)
+         v = mfem.Vector([1,2,3])
+         o = io.StringIO()
+         length = v.WriteToStream(o)
+         print(o.getvalue())
+     
+
   4-2) mfem::Coefficient
        PyCoefficient is derived from FunctionCoefficient
        PyCoefficientT is time-dependent version
@@ -129,7 +137,22 @@ to find more details of the MFEM library.
       the same is used for ParGridFunction
 
       GridFunction::Save(std::ostream &out) is wrapped as Save(filename, precision=8)
-      QuadratureFunction::Save(std::ostream &out) is wrapped as Save(filename, precision=8)      
+      QuadratureFunction::Save(std::ostream &out) is wrapped as Save(filename, precision=8)
+
+      GridFunction::WriteToStream(IOString) writes data to io.IOString
+      ex)
+          mesh = mfem.Mesh(3)
+          fec = mfem.H1_FECollection(1)
+          fes = mfem.FiniteElementSpace(mesh, fec)
+          x = mfem.GridFunction(fes)
+          x.Assign(0.0)
+	  
+          o = io.StringIO()
+          l1 = mesh.WriteToStream(o)
+          l2 = x.WriteToStream(o)
+
+          print('result: ', o.getvalue())
+
 	     
   4-4) mfem::Mesh
          Simple mesh generator is wrapped as follows
@@ -215,7 +238,17 @@ to find more details of the MFEM library.
 
          GetScaledJacobian(i, sd) returns minimum Jacobian computed on in each element.
 
-           
+         CaltecianPartitioning(nxyz, return_list=False)
+	    * accept tuple/list as nxyz
+            * return_list = True will return a list to represent the patitioning
+	      by default it returns SWIG native int * object.
+
+         Mesh::WriteToStream(IOString) writes data to io.IOString
+	 ex)
+             v = mfem.Mesh(3)
+             o = io.StringIO()
+             length = v.WriteToStream(o)
+	     print('data: ', o.getvalue())
 
   4-5) sparsemat
          RAP has two different implementations. One accept three references.

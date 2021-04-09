@@ -18,8 +18,14 @@ from setuptools import setup, find_packages
 from setuptools.command.build_py import build_py as _build_py
 from setuptools.command.install import install as _install
 from setuptools.command.install_egg_info import install_egg_info as _install_egg_info
+from setuptools.command.install_lib import install_lib as _install_lib
 from setuptools.command.install_scripts import install_scripts as _install_scripts
 
+try:
+    import numpy
+except ImportError:
+    assert False, "numpy is not found"
+    
 try:
     from setuptools._distutils.command.clean import clean as _clean
 except ImportError:
@@ -80,6 +86,7 @@ enable_strumpack = False
 strumpack_prefix = ''
 
 dry_run = -1
+do_bdist_wheel = False
 
 cc_command = 'cc' if os.getenv("CC") is None else os.getenv("CC")
 cxx_command = 'c++' if os.getenv("CC") is None else os.getenv("CXX")
@@ -107,6 +114,11 @@ def long_description():
     with open(os.path.join(rootdir, 'README.md'), encoding='utf-8') as f:
         return f.read()
 
+def install_requires():
+    fid = open(os.path.join(rootdir, 'requirements.txt'))
+    requirements = fid.read().split('\n')
+    fid.close()
+    return requirements
 
 keywords = """
 scientific computing
@@ -130,7 +142,8 @@ metadata = {'name': 'mfem',
                             'License :: OSI Approved :: BSD License',
                             'Programming Language :: Python :: 3.6',
                             'Programming Language :: Python :: 3.7',
-                            'Programming Language :: Python :: 3.8', ],
+                            'Programming Language :: Python :: 3.8', 
+                            'Programming Language :: Python :: 3.9', ],            
             'keywords': [k for k in keywords.split('\n') if k],
             'platforms': [p for p in platforms.split('\n') if p],
             'license': 'BSD-3',
@@ -794,7 +807,7 @@ def configure_bdist(self):
     global cc_command, cxx_command, mpicc_command, mpicxx_command
     global enable_pumi, pumi_prefix
     global enable_strumpack, strumpack_prefix
-
+    global do_bdist_wheel
     dry_run = bool(self.dry_run) if dry_run == -1 else dry_run
     verbose = bool(self.verbose) if verbose == -1 else verbose
 
@@ -806,6 +819,7 @@ def configure_bdist(self):
 
     global is_configured
     is_configured = True
+    do_bdist_wheel = True
 
 
 class Install(_install):
@@ -951,29 +965,34 @@ if haveWheel:
         '''
 
         def finalize_options(self):
-            def _has_ext_modules(self):
+            def _has_ext_modules():
                 return True
             from setuptools.dist import Distribution
             #Distribution.is_pure = _is_pure
-            Distribution.has_ext_modules = _has_ext_modules
+            self.distribution.has_ext_modules = _has_ext_modules
             _bdist_wheel.finalize_options(self)
-
+            
         def run(self):
-            _bdist_wheel.run(self)
-            assert False, "bdist install is not supported, use source install"
-            '''
             if not is_configured:
                 print('running config')
                 configure_bdist(self)
                 print_config()
+            self.run_command("build")            
+            _bdist_wheel.run(self)
+            #assert False, "bdist install is not supported, use source install"
 
             # Ensure that there is a basic library build for bdist_egg to pull from.
-            self.run_command("build")
+            #self.run_command("build")
             #_cleanup_symlinks(self)
 
             # Run the default bdist_wheel command
-            '''
-
+            
+class InstallLib(_install_lib):
+    def finalize_options(self):
+        _install_lib.finalize_options(self)
+        src_cmd_obj = self.distribution.get_command_obj('install')
+        src_cmd_obj.ensure_finalized()
+        self.install_dir = src_cmd_obj.install_platlib
 
 class InstallEggInfo(_install_egg_info):
     def run(self):
@@ -982,10 +1001,9 @@ class InstallEggInfo(_install_egg_info):
         else:
             print("skipping regular install_egg_info")
 
-
 class InstallScripts(_install_scripts):
     def run(self):
-        if not dry_run:
+        if not dry_run :
             _install_scripts.run(self)
         else:
             print("skipping regular install_scripts")
@@ -1053,21 +1071,25 @@ class Clean(_clean):
         _clean.run(self)
 
 
-datafiles = [os.path.join('data', f) for f in os.listdir('data')]
+#cdatafiles = [os.path.join('data', f) for f in os.listdir('data')]
 
 
 def run_setup():
     setup_args = metadata.copy()
     cmdclass = {'build_py': BuildPy,
                 'install': Install,
+                'install_lib': InstallLib,
                 'install_egg_info': InstallEggInfo,
                 'install_scripts': InstallScripts,
                 'clean': Clean}
     if haveWheel:
         cmdclass['bdist_wheel'] = BdistWheel
+
+    install_req = install_requires()
+    print(install_req)
     setup(
         cmdclass=cmdclass,
-        install_requires=[],
+        install_requires=install_req,
         packages=find_packages(),
         extras_require={},
         package_data={'mfem._par': ['*.so'], 'mfem._ser': ['*.so']},

@@ -18,6 +18,10 @@ mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 #include "io_stream.hpp"   
 %}
 
+%begin %{
+#define PY_SSIZE_T_CLEAN
+%}
+
 %init %{
 import_array();
 %}
@@ -304,7 +308,28 @@ def FindPoints(self, pp, warn=True, inv_trans=None):
     elem_ids = elem_ids.ToList()
     return count, elem_ids, int_points
 %}
+%feature("shadow") mfem::Mesh::CartesianPartitioning %{
+def CartesianPartitioning(self, nxyz, return_list=False):
+    import mfem.ser as mfem
+    import warnings      
+    try:
+        nxyz = list(nxyz)
+        d = mfem.intArray(nxyz)
+        dd = d.GetData()
+    except BaseException:
+        dd = nxyz
+        warnings.warn("CartesianPartitioning argument should be iterable",
+		      DeprecationWarning,)
+    r = _mesh.Mesh_CartesianPartitioning(self, dd)
 
+    if not return_list:
+        return r
+    else:	 
+        result = mfem.intArray()
+        result.MakeRef(r, self.GetNE())
+        result.MakeDataOwner()
+        return result.ToList()
+%}
 
 %immutable attributes;
 %immutable bdr_attributes;
@@ -378,6 +403,38 @@ namespace mfem{
         mesh_ofs.precision(precision);
         self->Print(mesh_ofs);	
    }
+
+   PyObject* WriteToStream(PyObject* StringIO) const
+   {
+      PyObject* module = PyImport_ImportModule("io");
+      if (!module){
+   	 PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+         return (PyObject *) NULL;
+      }      
+      PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+      if (!cls){
+   	 PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+         return (PyObject *) NULL;
+      }      
+      int check = PyObject_IsInstance(StringIO, cls);
+      Py_DECREF(module);
+      if (! check){
+ 	 PyErr_SetString(PyExc_TypeError, "First argument must be IOString");
+         return (PyObject *) NULL;
+      }
+      std::ostringstream stream;
+      self->Print(stream);      
+      std::string str =  stream.str();
+      const char* s = str.c_str();
+      const int n = str.length();
+      PyObject *ret = PyObject_CallMethod(StringIO, "write", "s#", s, static_cast<Py_ssize_t>(n));
+      if (PyErr_Occurred()) {
+         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
+         return (PyObject *) NULL;
+      }
+      return ret;
+   }
+   
    PyObject* GetAttributeArray() const
    {
      int i;

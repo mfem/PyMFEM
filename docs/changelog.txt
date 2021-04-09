@@ -1,4 +1,16 @@
 	<<<  Change Log. >>>
+2021 02.14
+        * WriteToStram is added to mfem::Mesh, mfem::Vector and mfem::GrigFunction
+
+2021 02.07
+        * A new Github action to automate PyPI binary release
+	
+2021 01.17
+        * mesh.CartasianPartitioing is improved to accept an iterable (list/tuple)
+	  as an argument.
+2020 12.06
+        * common/depelicated.i is added. This interface file contains
+	  two macros for specfing method and overloaded method as deprecated.
 2020 11.29
         * bilininteg.i is adjusted so that NonlinearIntegrator is properly recognized
 	  as a base class of BilinearIntegrator class. This allows to use SetIntOrder
