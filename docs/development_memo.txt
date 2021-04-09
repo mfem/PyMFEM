@@ -44,3 +44,9 @@ rm -rf wheelhouse/*
 auditwheel repair dist/mfem-4.2.1.30-cp38-cp38-linux_x86_64.whl
 rm -rf dist/*
 python3 setup.py sdist
+
+### make a test release
+testrelease_binary uses test_release branch and push a package to test PyPI.
+this action triggers when a new tag whose name stats with test_ is
+created.
+
