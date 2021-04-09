@@ -115,7 +115,10 @@ def long_description():
         return f.read()
 
 def install_requires():
-    fid = open(os.path.join(rootdir, 'requirements.txt'))
+    fname = os.path.join(rootdir, 'requirements.txt')
+    if not os.path.exists(fname):
+        return []
+    fid = open(fname)
     requirements = fid.read().split('\n')
     fid.close()
     return requirements
