@@ -66,70 +66,6 @@ class _SwigNonDynamicMeta(type):
 
 import weakref
 
-class intp(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self):
-        _fe_coll.intp_swiginit(self, _fe_coll.new_intp())
-    __swig_destroy__ = _fe_coll.delete_intp
-
-    def assign(self, value):
-        return _fe_coll.intp_assign(self, value)
-    assign = _swig_new_instance_method(_fe_coll.intp_assign)
-
-    def value(self):
-        return _fe_coll.intp_value(self)
-    value = _swig_new_instance_method(_fe_coll.intp_value)
-
-    def cast(self):
-        return _fe_coll.intp_cast(self)
-    cast = _swig_new_instance_method(_fe_coll.intp_cast)
-
-    @staticmethod
-    def frompointer(t):
-        return _fe_coll.intp_frompointer(t)
-    frompointer = _swig_new_static_method(_fe_coll.intp_frompointer)
-
-# Register intp in _fe_coll:
-_fe_coll.intp_swigregister(intp)
-
-def intp_frompointer(t):
-    return _fe_coll.intp_frompointer(t)
-intp_frompointer = _fe_coll.intp_frompointer
-
-class doublep(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self):
-        _fe_coll.doublep_swiginit(self, _fe_coll.new_doublep())
-    __swig_destroy__ = _fe_coll.delete_doublep
-
-    def assign(self, value):
-        return _fe_coll.doublep_assign(self, value)
-    assign = _swig_new_instance_method(_fe_coll.doublep_assign)
-
-    def value(self):
-        return _fe_coll.doublep_value(self)
-    value = _swig_new_instance_method(_fe_coll.doublep_value)
-
-    def cast(self):
-        return _fe_coll.doublep_cast(self)
-    cast = _swig_new_instance_method(_fe_coll.doublep_cast)
-
-    @staticmethod
-    def frompointer(t):
-        return _fe_coll.doublep_frompointer(t)
-    frompointer = _swig_new_static_method(_fe_coll.doublep_frompointer)
-
-# Register doublep in _fe_coll:
-_fe_coll.doublep_swigregister(doublep)
-
-def doublep_frompointer(t):
-    return _fe_coll.doublep_frompointer(t)
-doublep_frompointer = _fe_coll.doublep_frompointer
-
 import mfem._ser.mesh
 import mfem._ser.matrix
 import mfem._ser.vector
@@ -156,6 +92,7 @@ import mfem._ser.table
 import mfem._ser.hash
 import mfem._ser.bilininteg
 import mfem._ser.linearform
+import mfem._ser.nonlininteg
 import mfem._ser.vertex
 import mfem._ser.vtk
 class FiniteElementCollection(object):

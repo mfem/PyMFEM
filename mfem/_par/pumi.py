@@ -84,86 +84,6 @@ MFEM_VERSION_PATCH = _pumi.MFEM_VERSION_PATCH
 
 MFEM_HYPRE_VERSION = _pumi.MFEM_HYPRE_VERSION
 
-class intp(object):
-    r"""Proxy of C++ intp class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self):
-        r"""__init__(intp self) -> intp"""
-        _pumi.intp_swiginit(self, _pumi.new_intp())
-    __swig_destroy__ = _pumi.delete_intp
-
-    def assign(self, value):
-        r"""assign(intp self, int value)"""
-        return _pumi.intp_assign(self, value)
-    assign = _swig_new_instance_method(_pumi.intp_assign)
-
-    def value(self):
-        r"""value(intp self) -> int"""
-        return _pumi.intp_value(self)
-    value = _swig_new_instance_method(_pumi.intp_value)
-
-    def cast(self):
-        r"""cast(intp self) -> int *"""
-        return _pumi.intp_cast(self)
-    cast = _swig_new_instance_method(_pumi.intp_cast)
-
-    @staticmethod
-    def frompointer(t):
-        r"""frompointer(int * t) -> intp"""
-        return _pumi.intp_frompointer(t)
-    frompointer = _swig_new_static_method(_pumi.intp_frompointer)
-
-# Register intp in _pumi:
-_pumi.intp_swigregister(intp)
-
-def intp_frompointer(t):
-    r"""intp_frompointer(int * t) -> intp"""
-    return _pumi.intp_frompointer(t)
-intp_frompointer = _pumi.intp_frompointer
-
-class doublep(object):
-    r"""Proxy of C++ doublep class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self):
-        r"""__init__(doublep self) -> doublep"""
-        _pumi.doublep_swiginit(self, _pumi.new_doublep())
-    __swig_destroy__ = _pumi.delete_doublep
-
-    def assign(self, value):
-        r"""assign(doublep self, double value)"""
-        return _pumi.doublep_assign(self, value)
-    assign = _swig_new_instance_method(_pumi.doublep_assign)
-
-    def value(self):
-        r"""value(doublep self) -> double"""
-        return _pumi.doublep_value(self)
-    value = _swig_new_instance_method(_pumi.doublep_value)
-
-    def cast(self):
-        r"""cast(doublep self) -> double *"""
-        return _pumi.doublep_cast(self)
-    cast = _swig_new_instance_method(_pumi.doublep_cast)
-
-    @staticmethod
-    def frompointer(t):
-        r"""frompointer(double * t) -> doublep"""
-        return _pumi.doublep_frompointer(t)
-    frompointer = _swig_new_static_method(_pumi.doublep_frompointer)
-
-# Register doublep in _pumi:
-_pumi.doublep_swigregister(doublep)
-
-def doublep_frompointer(t):
-    r"""doublep_frompointer(double * t) -> doublep"""
-    return _pumi.doublep_frompointer(t)
-doublep_frompointer = _pumi.doublep_frompointer
-
 import mfem._par.pgridfunc
 import mfem._par.pfespace
 import mfem._par.operators
@@ -193,6 +113,7 @@ import mfem._par.bilininteg
 import mfem._par.fe_coll
 import mfem._par.lininteg
 import mfem._par.linearform
+import mfem._par.nonlininteg
 import mfem._par.handle
 import mfem._par.hypre
 import mfem._par.restriction

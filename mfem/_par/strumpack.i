@@ -31,7 +31,6 @@ import_array();
 #endif
 
 
-%include "../common/cpointers.i"
 %include "exception.i"
 %import "../common/numpy_int_typemap.i"
 
@@ -94,7 +93,7 @@ char **argv_obj(PyObject* input){
 
 %newobject argv_obj;
 //%include "carrays.i"
-//%include "cpointer.i"
+
 //%array_class(char *, ptcharArray);
 //%pointer_functions(char, charp);
 

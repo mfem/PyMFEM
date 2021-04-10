@@ -88,6 +88,7 @@ import mfem._ser.bilininteg
 import mfem._ser.fe_coll
 import mfem._ser.lininteg
 import mfem._ser.linearform
+import mfem._ser.nonlininteg
 import mfem._ser.element
 import mfem._ser.table
 import mfem._ser.hash
@@ -96,7 +97,6 @@ import mfem._ser.vtk
 import mfem._ser.handle
 import mfem._ser.restriction
 import mfem._ser.bilinearform
-import mfem._ser.nonlininteg
 class NonlinearForm(mfem._ser.operators.Operator):
     r"""Proxy of C++ mfem::NonlinearForm class."""
 

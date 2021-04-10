@@ -96,6 +96,7 @@ import mfem._par.hypre
 import mfem._par.restriction
 import mfem._par.bilininteg
 import mfem._par.linearform
+import mfem._par.nonlininteg
 import mfem._par.estimators
 import mfem._par.bilinearform
 class MeshOperator(object):

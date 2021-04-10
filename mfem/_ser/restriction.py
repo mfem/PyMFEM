@@ -92,6 +92,7 @@ import mfem._ser.lininteg
 import mfem._ser.handle
 import mfem._ser.bilininteg
 import mfem._ser.linearform
+import mfem._ser.nonlininteg
 import mfem._ser.vertex
 import mfem._ser.vtk
 L2FaceValues_SingleValued = _restriction.L2FaceValues_SingleValued

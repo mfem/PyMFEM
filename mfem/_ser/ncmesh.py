@@ -66,86 +66,6 @@ class _SwigNonDynamicMeta(type):
 
 import weakref
 
-class intp(object):
-    r"""Proxy of C++ intp class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self):
-        r"""__init__(intp self) -> intp"""
-        _ncmesh.intp_swiginit(self, _ncmesh.new_intp())
-    __swig_destroy__ = _ncmesh.delete_intp
-
-    def assign(self, value):
-        r"""assign(intp self, int value)"""
-        return _ncmesh.intp_assign(self, value)
-    assign = _swig_new_instance_method(_ncmesh.intp_assign)
-
-    def value(self):
-        r"""value(intp self) -> int"""
-        return _ncmesh.intp_value(self)
-    value = _swig_new_instance_method(_ncmesh.intp_value)
-
-    def cast(self):
-        r"""cast(intp self) -> int *"""
-        return _ncmesh.intp_cast(self)
-    cast = _swig_new_instance_method(_ncmesh.intp_cast)
-
-    @staticmethod
-    def frompointer(t):
-        r"""frompointer(int * t) -> intp"""
-        return _ncmesh.intp_frompointer(t)
-    frompointer = _swig_new_static_method(_ncmesh.intp_frompointer)
-
-# Register intp in _ncmesh:
-_ncmesh.intp_swigregister(intp)
-
-def intp_frompointer(t):
-    r"""intp_frompointer(int * t) -> intp"""
-    return _ncmesh.intp_frompointer(t)
-intp_frompointer = _ncmesh.intp_frompointer
-
-class doublep(object):
-    r"""Proxy of C++ doublep class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self):
-        r"""__init__(doublep self) -> doublep"""
-        _ncmesh.doublep_swiginit(self, _ncmesh.new_doublep())
-    __swig_destroy__ = _ncmesh.delete_doublep
-
-    def assign(self, value):
-        r"""assign(doublep self, double value)"""
-        return _ncmesh.doublep_assign(self, value)
-    assign = _swig_new_instance_method(_ncmesh.doublep_assign)
-
-    def value(self):
-        r"""value(doublep self) -> double"""
-        return _ncmesh.doublep_value(self)
-    value = _swig_new_instance_method(_ncmesh.doublep_value)
-
-    def cast(self):
-        r"""cast(doublep self) -> double *"""
-        return _ncmesh.doublep_cast(self)
-    cast = _swig_new_instance_method(_ncmesh.doublep_cast)
-
-    @staticmethod
-    def frompointer(t):
-        r"""frompointer(double * t) -> doublep"""
-        return _ncmesh.doublep_frompointer(t)
-    frompointer = _swig_new_static_method(_ncmesh.doublep_frompointer)
-
-# Register doublep in _ncmesh:
-_ncmesh.doublep_swigregister(doublep)
-
-def doublep_frompointer(t):
-    r"""doublep_frompointer(double * t) -> doublep"""
-    return _ncmesh.doublep_frompointer(t)
-doublep_frompointer = _ncmesh.doublep_frompointer
-
 import mfem._ser.mesh
 import mfem._ser.matrix
 import mfem._ser.vector
@@ -172,6 +92,7 @@ import mfem._ser.table
 import mfem._ser.hash
 import mfem._ser.bilininteg
 import mfem._ser.linearform
+import mfem._ser.nonlininteg
 import mfem._ser.vertex
 import mfem._ser.vtk
 class Refinement(object):
