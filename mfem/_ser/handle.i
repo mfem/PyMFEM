@@ -39,9 +39,6 @@ import_array();
 %include "petsc.i"
 #endif
 
-//
-%pointer_class(int, intp);
-
 %import "mem_manager.i"
 
 %include "linalg/handle.hpp"

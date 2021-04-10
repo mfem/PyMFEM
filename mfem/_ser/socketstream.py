@@ -93,6 +93,7 @@ import mfem._ser.table
 import mfem._ser.hash
 import mfem._ser.bilininteg
 import mfem._ser.linearform
+import mfem._ser.nonlininteg
 import mfem._ser.vertex
 import mfem._ser.vtk
 class socketbuf(object):
