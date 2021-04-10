@@ -95,6 +95,7 @@ import mfem._par.bilininteg
 import mfem._par.fe_coll
 import mfem._par.lininteg
 import mfem._par.linearform
+import mfem._par.nonlininteg
 import mfem._par.restriction
 class Hybridization(object):
     r"""Proxy of C++ mfem::Hybridization class."""

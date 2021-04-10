@@ -26,7 +26,6 @@ mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 import_array();
 %}
 
-%include "../common/cpointers.i"
 %include "exception.i"
 
 %include "std_string.i"

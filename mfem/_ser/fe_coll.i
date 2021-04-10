@@ -20,8 +20,6 @@
 import_array();
 %}
 
-%include "../common/cpointers.i"
-
 %include "exception.i"
 %import "mesh.i"
 %import "array.i"
