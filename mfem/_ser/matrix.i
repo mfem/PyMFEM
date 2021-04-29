@@ -30,3 +30,4 @@ OSTREAM_TYPEMAP(std::ostream&)
   virtual void Print (std::ostream & out = mfem::out, int width_ = 4) const;
 */
 OSTREAM_ADD_DEFAULT_FILE(Matrix, Print)
+ //OSTREAM_ADD_DEFAULT_FILE_ARG1(Matrix, Print, int width_=4, width_)

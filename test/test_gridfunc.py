@@ -19,8 +19,8 @@ else:
     myid = 0
 
 def run_test():
-    #meshfile =expanduser(join(mfem_path, 'data', 'beam-tri.mesh'))
-    meshfile = expanduser(join(mfem_path, 'data', 'semi_circle.mesh'))
+    #meshfile = expanduser(join(mfem_path, 'data', 'semi_circle.mesh'))
+    meshfile = "../data/amr-quad.mesh"
     mesh = mfem.Mesh(meshfile, 1, 1)
     dim = mesh.Dimension()
     sdim = mesh.SpaceDimension()    
@@ -32,8 +32,12 @@ def run_test():
     c = mfem.ConstantCoefficient(1.0)
     gf = mfem.GridFunction(fespace)
     gf.ProjectCoefficient(c)
-    
+
+    mesh.PrintVTK('mesh.vtk', 1)    
     gf.Save('out_test_gridfunc.gf')
+    gf.SaveVTK(mfem.wFILE('out_test_gridfunc1.vtk'), 'data', 1)    
+    gf.SaveVTK('out_test_gridfunc2.vtk', 'data', 1)
+
     
 if __name__=='__main__':
     run_test()
