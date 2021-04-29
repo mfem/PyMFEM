@@ -201,12 +201,10 @@ GridFunction.__imul__  = __imul__
 fem/gridfunc.hpp:   virtual void Save(std::ostream &out) const;
 fem/gridfunc.hpp:   void Save(std::ostream &out) const;
 
-fem/gridfunc.hpp:   void SaveSTLTri(std::ostream &out, double p1[], double p2[], double p3[]);
 fem/gridfunc.hpp:   void SaveVTK(std::ostream &out, const std::string &field_name, int ref);
 fem/gridfunc.hpp:   void SaveSTL(std::ostream &out, int TimesToRefine = 1);
 */
-
 OSTREAM_ADD_DEFAULT_FILE(GridFunction, Save)
-OSTREAM_ADD_DEFAULT_FILE(QuadratureFunction, Save)
+OSTREAM_ADD_DEFAULT_FILE(QuadratureFunction, Save)      
 
-
+  
