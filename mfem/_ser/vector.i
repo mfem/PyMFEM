@@ -20,6 +20,10 @@
 %}
 
 // initialization required to return numpy array from SWIG
+%begin %{
+#define PY_SSIZE_T_CLEAN
+%}
+
 %init %{
 import_array();
 %}
