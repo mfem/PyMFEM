@@ -8,7 +8,6 @@
 %init %{
 import_array();
 %}
-%include "../common/cpointers.i"
 %include "exception.i"
 
 %import "globals.i"

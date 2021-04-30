@@ -4224,6 +4224,11 @@ SWIGINTERN PyObject *_wrap_new_BilinearForm__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BilinearForm, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -4259,6 +4264,11 @@ SWIGINTERN PyObject *_wrap_new_BilinearForm__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BilinearForm, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -4311,6 +4321,11 @@ SWIGINTERN PyObject *_wrap_new_BilinearForm__SWIG_2(PyObject *SWIGUNUSEDPARM(sel
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BilinearForm, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -4409,6 +4424,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_Size(PyObject *SWIGUNUSEDPARM(self), PyO
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -4449,6 +4469,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_SetAssemblyLevel(PyObject *SWIGUNUSEDPAR
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4479,6 +4504,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_GetAssemblyLevel(PyObject *SWIGUNUSEDPAR
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -4508,6 +4538,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EnableStaticCondensation(PyObject *SWIGU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4538,6 +4573,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_StaticCondensationIsEnabled(PyObject *SW
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -4568,6 +4608,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_SCFESpace(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
   return resultobj;
@@ -4629,6 +4674,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EnableHybridization(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4670,6 +4720,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_UsePrecomputedSparsity(PyObject *SWIGUNU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4721,6 +4776,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_UseSparsity__SWIG_0(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4759,6 +4819,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_UseSparsity__SWIG_1(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4845,6 +4910,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AllocateMatrix(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4875,6 +4945,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_GetDBFI(PyObject *SWIGUNUSEDPARM(self), 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__BilinearFormIntegrator_p_t, 0 |  0 );
   return resultobj;
@@ -4905,6 +4980,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_GetBBFI(PyObject *SWIGUNUSEDPARM(self), 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__BilinearFormIntegrator_p_t, 0 |  0 );
   return resultobj;
@@ -4935,6 +5015,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_GetBBFI_Marker(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__ArrayT_int_t_p_t, 0 |  0 );
   return resultobj;
@@ -4965,6 +5050,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_GetFBFI(PyObject *SWIGUNUSEDPARM(self), 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__BilinearFormIntegrator_p_t, 0 |  0 );
   return resultobj;
@@ -4995,6 +5085,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_GetBFBFI(PyObject *SWIGUNUSEDPARM(self),
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__BilinearFormIntegrator_p_t, 0 |  0 );
   return resultobj;
@@ -5025,6 +5120,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_GetBFBFI_Marker(PyObject *SWIGUNUSEDPARM
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__ArrayT_int_t_p_t, 0 |  0 );
   return resultobj;
@@ -5073,6 +5173,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm___call__(PyObject *SWIGUNUSEDPARM(self),
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_double(static_cast< double >(*result));
   return resultobj;
@@ -5124,6 +5229,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_Elem__SWIG_0(PyObject *SWIGUNUSEDPARM(se
       catch (Swig::DirectorException &e) {
         SWIG_fail; 
       }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -5181,6 +5291,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_Elem__SWIG_1(PyObject *SWIGUNUSEDPARM(se
       catch (Swig::DirectorException &e) {
         SWIG_fail; 
       }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -5327,6 +5442,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_Mult(PyObject *SWIGUNUSEDPARM(self), PyO
       catch (Swig::DirectorException &e) {
         SWIG_fail; 
       }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -5385,6 +5505,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FullMult(PyObject *SWIGUNUSEDPARM(self),
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -5460,6 +5585,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AddMult(PyObject *SWIGUNUSEDPARM(self), 
       catch (Swig::DirectorException &e) {
         SWIG_fail; 
       }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -5518,6 +5648,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FullAddMult(PyObject *SWIGUNUSEDPARM(sel
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -5593,6 +5728,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AddMultTranspose(PyObject *SWIGUNUSEDPAR
       catch (Swig::DirectorException &e) {
         SWIG_fail; 
       }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -5651,6 +5791,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FullAddMultTranspose(PyObject *SWIGUNUSE
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -5715,6 +5860,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_MultTranspose(PyObject *SWIGUNUSEDPARM(s
       catch (Swig::DirectorException &e) {
         SWIG_fail; 
       }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -5774,6 +5924,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_InnerProduct(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
@@ -5813,6 +5968,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_Inverse(PyObject *SWIGUNUSEDPARM(self), 
       catch (Swig::DirectorException &e) {
         SWIG_fail; 
       }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -5869,6 +6029,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_Finalize(PyObject *SWIGUNUSEDPARM(self),
       catch (Swig::DirectorException &e) {
         SWIG_fail; 
       }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -5900,6 +6065,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_SpMat__SWIG_0(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
   return resultobj;
@@ -5928,6 +6098,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_SpMat__SWIG_1(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
   return resultobj;
@@ -5994,6 +6169,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_LoseMat(PyObject *SWIGUNUSEDPARM(self), 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
   return resultobj;
@@ -6022,6 +6202,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_SpMatElim__SWIG_0(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
   return resultobj;
@@ -6050,6 +6235,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_SpMatElim__SWIG_1(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
   return resultobj;
@@ -6126,6 +6316,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AddDomainIntegrator(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6161,6 +6356,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AddBoundaryIntegrator__SWIG_0(PyObject *
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6207,6 +6407,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AddBoundaryIntegrator__SWIG_1(PyObject *
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6298,6 +6503,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AddInteriorFaceIntegrator(PyObject *SWIG
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6333,6 +6543,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AddBdrFaceIntegrator__SWIG_0(PyObject *S
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6379,6 +6594,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AddBdrFaceIntegrator__SWIG_1(PyObject *S
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6471,6 +6691,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_Assemble(PyObject *SWIGUNUSEDPARM(self),
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6514,6 +6739,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleDiagonal(PyObject *SWIGUNUSEDPAR
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6553,6 +6783,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_GetProlongation(PyObject *SWIGUNUSEDPARM
       catch (Swig::DirectorException &e) {
         SWIG_fail; 
       }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -6598,6 +6833,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_GetRestriction(PyObject *SWIGUNUSEDPARM(
       catch (Swig::DirectorException &e) {
         SWIG_fail; 
       }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -6643,6 +6883,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_GetOutputProlongation(PyObject *SWIGUNUS
       catch (Swig::DirectorException &e) {
         SWIG_fail; 
       }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -6688,6 +6933,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_GetOutputRestriction(PyObject *SWIGUNUSE
       catch (Swig::DirectorException &e) {
         SWIG_fail; 
       }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -6805,6 +7055,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem__SWIG_0(PyObject *SWIGU
       catch (Swig::DirectorException &e) {
         SWIG_fail; 
       }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -6866,6 +7121,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormSystemMatrix__SWIG_0(PyObject *SWIGU
       catch (Swig::DirectorException &e) {
         SWIG_fail; 
       }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -6945,6 +7205,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_RecoverFEMSolution(PyObject *SWIGUNUSEDP
       catch (Swig::DirectorException &e) {
         SWIG_fail; 
       }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -6977,6 +7242,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_ComputeElementMatrices(PyObject *SWIGUNU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7006,6 +7276,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FreeElementMatrices(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7057,6 +7332,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_ComputeElementMatrix(PyObject *SWIGUNUSE
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7108,6 +7388,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_ComputeBdrElementMatrix(PyObject *SWIGUN
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7162,6 +7447,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleElementMatrix__SWIG_0(PyObject *
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7227,6 +7517,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleElementMatrix__SWIG_1(PyObject *
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7376,6 +7671,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleBdrElementMatrix__SWIG_0(PyObjec
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7441,6 +7741,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleBdrElementMatrix__SWIG_1(PyObjec
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7606,6 +7911,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBC__SWIG_0(PyObject *S
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7654,6 +7964,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBC__SWIG_1(PyObject *S
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7777,6 +8092,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCDiag(PyObject *SWIGU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7847,6 +8167,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofs__SWIG_0(PyObject *SWIGUNU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7895,6 +8220,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofs__SWIG_1(PyObject *SWIGUNU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8036,6 +8366,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofs__SWIG_0(PyO
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8084,6 +8419,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofs__SWIG_1(PyO
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8207,6 +8547,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofsDiag(PyObjec
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8274,6 +8619,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofsInRHS(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8330,6 +8680,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FullInnerProduct(PyObject *SWIGUNUSEDPAR
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
@@ -8381,6 +8736,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_Update(PyObject *SWIGUNUSEDPARM(self), P
       catch (Swig::DirectorException &e) {
         SWIG_fail; 
       }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -8414,6 +8774,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_GetFES(PyObject *SWIGUNUSEDPARM(self), P
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
   return resultobj;
@@ -8442,6 +8807,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FESpace__SWIG_0(PyObject *SWIGUNUSEDPARM
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
   return resultobj;
@@ -8470,6 +8840,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FESpace__SWIG_1(PyObject *SWIGUNUSEDPARM
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
   return resultobj;
@@ -8546,6 +8921,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_SetDiagonalPolicy(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8575,6 +8955,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_UseExternalIntegrators(PyObject *SWIGUNU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8604,6 +8989,11 @@ SWIGINTERN PyObject *_wrap_delete_BilinearForm(PyObject *SWIGUNUSEDPARM(self), P
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8706,6 +9096,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem__SWIG_2(PyObject *SWIGU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8755,6 +9150,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormSystemMatrix__SWIG_2(PyObject *SWIGU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8857,6 +9257,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem__SWIG_3(PyObject *SWIGU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9078,6 +9483,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormSystemMatrix__SWIG_3(PyObject *SWIGU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9226,6 +9636,11 @@ SWIGINTERN PyObject *_wrap_new_MixedBilinearForm__SWIG_0(PyObject *SWIGUNUSEDPAR
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedBilinearForm, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -9270,6 +9685,11 @@ SWIGINTERN PyObject *_wrap_new_MixedBilinearForm__SWIG_1(PyObject *SWIGUNUSEDPAR
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedBilinearForm, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -9363,6 +9783,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_Elem__SWIG_0(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
   return resultobj;
@@ -9405,6 +9830,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_Elem__SWIG_1(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_double(static_cast< double >(*result));
   return resultobj;
@@ -9536,6 +9966,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_Mult(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9602,6 +10037,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddMult(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9657,6 +10097,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_MultTranspose(PyObject *SWIGUNUSEDP
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9723,6 +10168,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddMultTranspose(PyObject *SWIGUNUS
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9753,6 +10203,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_Inverse(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MatrixInverse, 0 |  0 );
   return resultobj;
@@ -9794,6 +10249,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_Finalize(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9837,6 +10297,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_GetBlocks(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9865,6 +10330,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_SpMat__SWIG_0(PyObject *SWIGUNUSEDP
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
   return resultobj;
@@ -9893,6 +10363,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_SpMat__SWIG_1(PyObject *SWIGUNUSEDP
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
   return resultobj;
@@ -9959,6 +10434,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_LoseMat(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
   return resultobj;
@@ -9999,6 +10479,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddDomainIntegrator(PyObject *SWIGU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10034,6 +10519,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddBoundaryIntegrator__SWIG_0(PyObj
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10080,6 +10570,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddBoundaryIntegrator__SWIG_1(PyObj
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10171,6 +10666,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddTraceFaceIntegrator(PyObject *SW
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10206,6 +10706,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddBdrTraceFaceIntegrator__SWIG_0(P
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10252,6 +10757,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddBdrTraceFaceIntegrator__SWIG_1(P
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10333,6 +10843,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_GetDBFI(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__BilinearFormIntegrator_p_t, 0 |  0 );
   return resultobj;
@@ -10363,6 +10878,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_GetBBFI(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__BilinearFormIntegrator_p_t, 0 |  0 );
   return resultobj;
@@ -10393,6 +10913,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_GetBBFI_Marker(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__ArrayT_int_t_p_t, 0 |  0 );
   return resultobj;
@@ -10423,6 +10948,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_GetTFBFI(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__BilinearFormIntegrator_p_t, 0 |  0 );
   return resultobj;
@@ -10453,6 +10983,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_GetBTFBFI(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__BilinearFormIntegrator_p_t, 0 |  0 );
   return resultobj;
@@ -10483,6 +11018,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_GetBTFBFI_Marker(PyObject *SWIGUNUS
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__ArrayT_int_t_p_t, 0 |  0 );
   return resultobj;
@@ -10523,6 +11063,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_SetAssemblyLevel(PyObject *SWIGUNUS
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10564,6 +11109,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_Assemble(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10619,6 +11169,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleDiagonal_ADAt(PyObject *SWI
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10649,6 +11204,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_GetProlongation(PyObject *SWIGUNUSE
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Operator, 0 |  0 );
   return resultobj;
@@ -10679,6 +11239,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_GetRestriction(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Operator, 0 |  0 );
   return resultobj;
@@ -10709,6 +11274,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_GetOutputProlongation(PyObject *SWI
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Operator, 0 |  0 );
   return resultobj;
@@ -10739,6 +11309,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_GetOutputRestriction(PyObject *SWIG
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Operator, 0 |  0 );
   return resultobj;
@@ -10768,6 +11343,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_ConformingAssemble(PyObject *SWIGUN
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10819,6 +11399,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_ComputeElementMatrix(PyObject *SWIG
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10870,6 +11455,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_ComputeBdrElementMatrix(PyObject *S
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10924,6 +11514,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleElementMatrix__SWIG_0(PyObj
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11000,6 +11595,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleElementMatrix__SWIG_1(PyObj
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11154,6 +11754,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleBdrElementMatrix__SWIG_0(Py
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11230,6 +11835,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleBdrElementMatrix__SWIG_1(Py
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11397,6 +12007,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_EliminateTrialDofs(PyObject *SWIGUN
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11464,6 +12079,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_EliminateEssentialBCFromTrialDofs(P
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11507,6 +12127,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_EliminateTestDofs(PyObject *SWIGUNU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11574,6 +12199,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_FormRectangularSystemMatrix(PyObjec
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11689,6 +12319,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_FormRectangularLinearSystem(PyObjec
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11718,6 +12353,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_Update(PyObject *SWIGUNUSEDPARM(sel
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11746,6 +12386,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_TrialFESpace__SWIG_0(PyObject *SWIG
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
   return resultobj;
@@ -11774,6 +12419,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_TrialFESpace__SWIG_1(PyObject *SWIG
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
   return resultobj;
@@ -11838,6 +12488,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_TestFESpace__SWIG_0(PyObject *SWIGU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
   return resultobj;
@@ -11866,6 +12521,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_TestFESpace__SWIG_1(PyObject *SWIGU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
   return resultobj;
@@ -11931,6 +12591,11 @@ SWIGINTERN PyObject *_wrap_delete_MixedBilinearForm(PyObject *SWIGUNUSEDPARM(sel
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11983,6 +12648,11 @@ SWIGINTERN PyObject *_wrap_new_DiscreteLinearOperator(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DiscreteLinearOperator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -12023,6 +12693,11 @@ SWIGINTERN PyObject *_wrap_DiscreteLinearOperator_AddDomainInterpolator(PyObject
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12063,6 +12738,11 @@ SWIGINTERN PyObject *_wrap_DiscreteLinearOperator_AddTraceFaceInterpolator(PyObj
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12093,6 +12773,11 @@ SWIGINTERN PyObject *_wrap_DiscreteLinearOperator_GetDI(PyObject *SWIGUNUSEDPARM
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__BilinearFormIntegrator_p_t, 0 |  0 );
   return resultobj;
@@ -12134,6 +12819,11 @@ SWIGINTERN PyObject *_wrap_DiscreteLinearOperator_Assemble(PyObject *SWIGUNUSEDP
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12163,6 +12853,11 @@ SWIGINTERN PyObject *_wrap_delete_DiscreteLinearOperator(PyObject *SWIGUNUSEDPAR
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;

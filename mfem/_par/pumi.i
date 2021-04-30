@@ -40,7 +40,7 @@
 import_array();
 %}
 
-%include "../common/cpointers.i"
+//%import "cpointers.i"
 %include "exception.i"
 %import "../common/numpy_int_typemap.i"
 %import "pgridfunc.i"

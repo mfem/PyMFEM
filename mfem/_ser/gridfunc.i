@@ -19,7 +19,6 @@
 import_array();
 %}
 
-%include "../common/cpointers.i"
 %include "exception.i"
 
 %include "std_string.i"

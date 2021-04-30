@@ -96,6 +96,7 @@ import mfem._par.handle
 import mfem._par.hypre
 import mfem._par.bilininteg
 import mfem._par.linearform
+import mfem._par.nonlininteg
 class ParL2FaceRestriction(mfem._par.restriction.L2FaceRestriction):
     r"""Proxy of C++ mfem::ParL2FaceRestriction class."""
 

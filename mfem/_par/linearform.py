@@ -95,6 +95,7 @@ import mfem._par.handle
 import mfem._par.hypre
 import mfem._par.restriction
 import mfem._par.bilininteg
+import mfem._par.nonlininteg
 class LinearForm(mfem._par.vector.Vector):
     r"""Proxy of C++ mfem::LinearForm class."""
 

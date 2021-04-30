@@ -105,6 +105,7 @@ import mfem._par.handle
 import mfem._par.hypre
 import mfem._par.restriction
 import mfem._par.bilininteg
+import mfem._par.nonlininteg
 import mfem._par.pfespace
 import mfem._par.pmesh
 import mfem._par.pncmesh
