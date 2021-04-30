@@ -21,7 +21,6 @@ mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 %begin %{
 #define PY_SSIZE_T_CLEAN
 %}
-
 %init %{
 import_array();
 %}
