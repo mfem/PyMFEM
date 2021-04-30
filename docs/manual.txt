@@ -390,13 +390,26 @@ to find more details of the MFEM library.
    4-12) std::ostream&
 
          methods which takes std::ostream& are wrapped so that it accept
-	 either empty argument (stdout) or filename.
+	 either
+	   1) filename
+	   2) mfem.STDOUT
+	   3) StringIO
+
+         (example)
+            mesh.PrintVTK("mesh.vtk", 1)
+     	    mesh.Print(mfem.STDOUT)
+	    gf.SaveVTK("gf.vtk", "data", 1)
+	    gf.Save("data.gf")
+
+         Some methos are wrapped so that it runs without argument. In this
+	 case, data is passed to STDOUT.	 
 	 Not all methods are wrapped yet. Look for OSTREAM_ADD_DEFAULT_FILE
 	 (or OSTREAM_ADD_DEFAULT_STDOUT_FILE) macros in the SWIG interface
 	 file to find which method is wrapped.
 
          (example)
-	    sparsmat.PrintInfo()
+	    SparseMat::PrintInfo
+	    STable3D::Print
        
    4-13) mfem::table
            GetRowList returns a version of GetRow which returns Python

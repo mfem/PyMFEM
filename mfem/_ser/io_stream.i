@@ -12,6 +12,6 @@
 %include "io_stream.hpp"
 
 %pythoncode %{
-  STDOUT = wFILE('__stdout__', 8)
+  STDOUT = wFILE()
 %}
 //
