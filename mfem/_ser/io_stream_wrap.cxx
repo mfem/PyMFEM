@@ -2767,7 +2767,7 @@ namespace swig {
 #include  "fstream"
 #include  "iostream"
 #include  "string"
-#include  "io_stream.hpp"    
+#include  "../common/io_stream.hpp"    
 
 
 SWIGINTERN swig_type_info*

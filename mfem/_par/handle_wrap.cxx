@@ -3250,7 +3250,7 @@ namespace swig {
 
 #include <fstream>  
 #include <iostream>
-#include "io_stream.hpp"        
+#include "../common/io_stream.hpp"        
 #include "config/config.hpp"  
 #include "linalg/hypre.hpp"
 #include "linalg/handle.hpp"  

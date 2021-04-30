@@ -3206,7 +3206,7 @@ namespace swig {
 
 #include <fstream>
 #include <iostream>
-#include "io_stream.hpp"           
+#include "../common/io_stream.hpp"           
 #include "mesh/ncmesh.hpp"
 #include "numpy/arrayobject.h"    
 

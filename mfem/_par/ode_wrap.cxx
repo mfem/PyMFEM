@@ -3232,7 +3232,7 @@ namespace swig {
 #include "linalg/ode.hpp"
 #include "pyoperator.hpp"
 #include "numpy/arrayobject.h"    
-#include "io_stream.hpp"
+#include "../common/io_stream.hpp"
 
 
 SWIGINTERN int

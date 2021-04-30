@@ -3191,7 +3191,7 @@ namespace swig {
 
 
 #include <iostream>
-#include "io_stream.hpp"      
+#include "../common/io_stream.hpp"      
 #include "mesh/mesh_headers.hpp"
 #include "fem/gridfunc.hpp"  
 #include "general/socketstream.hpp"

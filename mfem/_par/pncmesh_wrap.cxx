@@ -3201,7 +3201,7 @@ namespace swig {
 
 
 #include <mpi.h>
-#include "io_stream.hpp"       
+#include "../common/io_stream.hpp"       
 #include "config/config.hpp"
 #include "mesh/mesh_headers.hpp"
 #include "mpi4py/mpi4py.h"

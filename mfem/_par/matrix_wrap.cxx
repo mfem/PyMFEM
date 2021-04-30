@@ -3199,7 +3199,7 @@ namespace swig {
 #include <fstream>
 #include <iostream>
 #include "numpy/arrayobject.h"  
-#include "io_stream.hpp"  
+#include "../common/io_stream.hpp"  
 #include "pyoperator.hpp"
 #include "linalg/matrix.hpp"  
 

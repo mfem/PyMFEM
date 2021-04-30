@@ -3202,7 +3202,7 @@ namespace swig {
 #include "linalg/blockmatrix.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
-#include "io_stream.hpp"      
+#include "../common/io_stream.hpp"      
 
 
 SWIGINTERNINLINE PyObject*

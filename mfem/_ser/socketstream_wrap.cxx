@@ -3188,7 +3188,7 @@ namespace swig {
 }
 
 
-#include "io_stream.hpp"          
+#include "../common/io_stream.hpp"          
 #include "numpy/arrayobject.h"    
 #include "mesh/mesh_headers.hpp"
 #include "fem/gridfunc.hpp"  

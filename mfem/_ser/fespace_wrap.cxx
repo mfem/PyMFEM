@@ -3449,7 +3449,7 @@ namespace swig {
 #include <cstring>
 #include <ctime>
 
-#include "io_stream.hpp"            
+#include "../common/io_stream.hpp"            
 #include "numpy/arrayobject.h"
 #include "fem/fem.hpp"
 #include "fem/fe_coll.hpp"
