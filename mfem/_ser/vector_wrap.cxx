@@ -2786,7 +2786,7 @@ namespace swig {
 #include <ctime>
 #include "mfem.hpp"  
 #include "numpy/arrayobject.h"
-#include "io_stream.hpp"          
+#include "../common/io_stream.hpp"          
 
 
 #include <string>

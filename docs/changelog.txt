@@ -1,4 +1,11 @@
 	<<<  Change Log. >>>
+2021 04.30
+        * improved std::ostream & wrappring. Methods which takes std::ostream& are
+	wrapped so that it accept either
+	   1) filename    for saving data to file
+	   2) mfem.STDOUT for writing data to stdout
+	   3) StringIO    for in-memory data passing
+	
 2021 02.14
         * WriteToStram is added to mfem::Mesh, mfem::Vector and mfem::GrigFunction
 

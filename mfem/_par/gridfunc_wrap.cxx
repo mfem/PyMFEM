@@ -3388,7 +3388,7 @@ namespace swig {
   #include "fem/gridfunc.hpp"
   #include "pycoefficient.hpp"
   #include "numpy/arrayobject.h"
-  #include "io_stream.hpp"        
+  #include "../common/io_stream.hpp"        
 
 
 #include <string>

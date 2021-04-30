@@ -2779,7 +2779,7 @@ namespace swig {
 
 #include <iostream>
 #include <fstream>
-#include "io_stream.hpp"          
+#include "../common/io_stream.hpp"          
 #include "linalg/sparsemat.hpp"
 #include "linalg/densemat.hpp"
 #include "linalg/blockmatrix.hpp"

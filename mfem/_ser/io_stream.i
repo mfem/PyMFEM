@@ -6,10 +6,10 @@
 #include  "fstream"
 #include  "iostream"
 #include  "string"
-#include  "io_stream.hpp"    
+#include  "../common/io_stream.hpp"    
 %}
 
-%include "io_stream.hpp"
+%include "../common/io_stream.hpp"
 
 %pythoncode %{
   STDOUT = wFILE()

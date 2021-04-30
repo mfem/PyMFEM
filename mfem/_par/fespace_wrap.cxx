@@ -3471,7 +3471,7 @@ namespace swig {
 #include "fem/coefficient.hpp"
 #include "fem/intrules.hpp"  
 #include "fem/restriction.hpp"
-#include "io_stream.hpp"      
+#include "../common/io_stream.hpp"      
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"           
 

@@ -15,7 +15,7 @@ mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 // void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
 #include "numpy/arrayobject.h"
 #include "pycoefficient.hpp"
-#include "io_stream.hpp"   
+#include "../common/io_stream.hpp"   
 %}
 
 %begin %{

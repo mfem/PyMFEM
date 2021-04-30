@@ -2781,7 +2781,7 @@ namespace swig {
 #include <fstream>
 #include <iostream>  
 #include <mpi.h>
-#include "io_stream.hpp"      
+#include "../common/io_stream.hpp"      
 #include "config/config.hpp"    
 #include "general/sets.hpp"
 #include "general/communication.hpp"
