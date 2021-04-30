@@ -18,4 +18,3 @@ import_array();
 OSTREAM_TYPEMAP(std::ostream&)
 
 %include "mesh/vtk.hpp"
-

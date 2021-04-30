@@ -10,6 +10,9 @@
 #include "numpy/arrayobject.h"    
 %}
 
+%begin %{
+#define PY_SSIZE_T_CLEAN
+%}
 %init %{
 import_array();
 %}
