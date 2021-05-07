@@ -3214,6 +3214,7 @@ namespace swig {
 #include <limits>
 #include <cmath>
 #include <cstring>
+#include "general/zstr.hpp"
 #include "linalg/handle.hpp"    
 #include "linalg/sparsemat.hpp"  
 #include "numpy/arrayobject.h"
@@ -11552,10 +11553,10 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out2 ;
-  int use_stringio2 = 0 ;
+  std::ofstream out_txt2 ;
+  mfem::ofgzstream *out_gz2 = 0 ;
   PyObject *string_io2 = 0 ;
-  std::ostringstream stream2 ;
+  std::ostringstream *stream2 = 0 ;
   PyObject *ret2 = 0 ;
   
   if ((nobjs < 1) || (nobjs > 3)) SWIG_fail;
@@ -11586,29 +11587,33 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(s
             SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
             return NULL;
           }
-          use_stringio2=1;
           string_io2=swig_obj[1];
+          stream2 = new std::ostringstream();
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp2 = new PyMFEM::wFILE(filename, 8, true);	
+          temp2 = new PyMFEM::wFILE(filename, 8, true);
+          Py_DECREF(str);	 
         }
       }
       
-      if (use_stringio2 == 0){
+      if (stream2 == 0){
         if (temp2->isSTDOUT() == 1) {
           arg2 = &std::cout;
+        } else if (temp2->isGZ()){
+          out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
+          arg2 = out_gz2;	     
         } else {
-          out2.open(temp2->getFilename());
-          out2.precision(temp2->getPrecision());
-          if (temp2->isTemporary()){
-            delete temp2;
-          }
-          arg2 = &out2;
+          out_txt2.open(temp2->getFilename());
+          out_txt2.precision(temp2->getPrecision());
+          arg2 = &out_txt2;
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       } else {
-        arg2 = &stream2;
+        arg2 = stream2;
       }
     }
   }
@@ -11635,8 +11640,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   }
   resultobj = SWIG_Py_Void();
   {
-    if (use_stringio2 == 1) {
-      std::string str =  stream2.str();
+    if (stream2) {
+      std::string str =  stream2->str();
       const char* s = str.c_str();
       const int n = str.length();
       ret2 = PyObject_CallMethod(string_io2, "write", "s#",
@@ -11645,15 +11650,21 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(s
         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
         return NULL;
       }
+      delete stream2;
       Py_XDECREF(resultobj);   /* Blow away any previous result */
       resultobj = ret2;    
     }
   }
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -11661,10 +11672,15 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   return resultobj;
 fail:
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -11681,10 +11697,10 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMatlab__SWIG_0(PyObject *SWIGUNUSED
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out2 ;
-  int use_stringio2 = 0 ;
+  std::ofstream out_txt2 ;
+  mfem::ofgzstream *out_gz2 = 0 ;
   PyObject *string_io2 = 0 ;
-  std::ostringstream stream2 ;
+  std::ostringstream *stream2 = 0 ;
   PyObject *ret2 = 0 ;
   
   if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
@@ -11715,29 +11731,33 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMatlab__SWIG_0(PyObject *SWIGUNUSED
             SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
             return NULL;
           }
-          use_stringio2=1;
           string_io2=swig_obj[1];
+          stream2 = new std::ostringstream();
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp2 = new PyMFEM::wFILE(filename, 8, true);	
+          temp2 = new PyMFEM::wFILE(filename, 8, true);
+          Py_DECREF(str);	 
         }
       }
       
-      if (use_stringio2 == 0){
+      if (stream2 == 0){
         if (temp2->isSTDOUT() == 1) {
           arg2 = &std::cout;
+        } else if (temp2->isGZ()){
+          out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
+          arg2 = out_gz2;	     
         } else {
-          out2.open(temp2->getFilename());
-          out2.precision(temp2->getPrecision());
-          if (temp2->isTemporary()){
-            delete temp2;
-          }
-          arg2 = &out2;
+          out_txt2.open(temp2->getFilename());
+          out_txt2.precision(temp2->getPrecision());
+          arg2 = &out_txt2;
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       } else {
-        arg2 = &stream2;
+        arg2 = stream2;
       }
     }
   }
@@ -11756,8 +11776,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMatlab__SWIG_0(PyObject *SWIGUNUSED
   }
   resultobj = SWIG_Py_Void();
   {
-    if (use_stringio2 == 1) {
-      std::string str =  stream2.str();
+    if (stream2) {
+      std::string str =  stream2->str();
       const char* s = str.c_str();
       const int n = str.length();
       ret2 = PyObject_CallMethod(string_io2, "write", "s#",
@@ -11766,15 +11786,21 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMatlab__SWIG_0(PyObject *SWIGUNUSED
         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
         return NULL;
       }
+      delete stream2;
       Py_XDECREF(resultobj);   /* Blow away any previous result */
       resultobj = ret2;    
     }
   }
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -11782,10 +11808,15 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMatlab__SWIG_0(PyObject *SWIGUNUSED
   return resultobj;
 fail:
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -11802,10 +11833,10 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMM__SWIG_0(PyObject *SWIGUNUSEDPARM
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out2 ;
-  int use_stringio2 = 0 ;
+  std::ofstream out_txt2 ;
+  mfem::ofgzstream *out_gz2 = 0 ;
   PyObject *string_io2 = 0 ;
-  std::ostringstream stream2 ;
+  std::ostringstream *stream2 = 0 ;
   PyObject *ret2 = 0 ;
   
   if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
@@ -11836,29 +11867,33 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMM__SWIG_0(PyObject *SWIGUNUSEDPARM
             SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
             return NULL;
           }
-          use_stringio2=1;
           string_io2=swig_obj[1];
+          stream2 = new std::ostringstream();
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp2 = new PyMFEM::wFILE(filename, 8, true);	
+          temp2 = new PyMFEM::wFILE(filename, 8, true);
+          Py_DECREF(str);	 
         }
       }
       
-      if (use_stringio2 == 0){
+      if (stream2 == 0){
         if (temp2->isSTDOUT() == 1) {
           arg2 = &std::cout;
+        } else if (temp2->isGZ()){
+          out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
+          arg2 = out_gz2;	     
         } else {
-          out2.open(temp2->getFilename());
-          out2.precision(temp2->getPrecision());
-          if (temp2->isTemporary()){
-            delete temp2;
-          }
-          arg2 = &out2;
+          out_txt2.open(temp2->getFilename());
+          out_txt2.precision(temp2->getPrecision());
+          arg2 = &out_txt2;
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       } else {
-        arg2 = &stream2;
+        arg2 = stream2;
       }
     }
   }
@@ -11877,8 +11912,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMM__SWIG_0(PyObject *SWIGUNUSEDPARM
   }
   resultobj = SWIG_Py_Void();
   {
-    if (use_stringio2 == 1) {
-      std::string str =  stream2.str();
+    if (stream2) {
+      std::string str =  stream2->str();
       const char* s = str.c_str();
       const int n = str.length();
       ret2 = PyObject_CallMethod(string_io2, "write", "s#",
@@ -11887,15 +11922,21 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMM__SWIG_0(PyObject *SWIGUNUSEDPARM
         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
         return NULL;
       }
+      delete stream2;
       Py_XDECREF(resultobj);   /* Blow away any previous result */
       resultobj = ret2;    
     }
   }
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -11903,10 +11944,15 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMM__SWIG_0(PyObject *SWIGUNUSEDPARM
   return resultobj;
 fail:
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -11922,10 +11968,10 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR__SWIG_0(PyObject *SWIGUNUSEDPAR
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out2 ;
-  int use_stringio2 = 0 ;
+  std::ofstream out_txt2 ;
+  mfem::ofgzstream *out_gz2 = 0 ;
   PyObject *string_io2 = 0 ;
-  std::ostringstream stream2 ;
+  std::ostringstream *stream2 = 0 ;
   PyObject *ret2 = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
@@ -11955,29 +12001,33 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR__SWIG_0(PyObject *SWIGUNUSEDPAR
           SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
           return NULL;
         }
-        use_stringio2=1;
         string_io2=swig_obj[1];
+        stream2 = new std::ostringstream();
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp2 = new PyMFEM::wFILE(filename, 8, true);	
+        temp2 = new PyMFEM::wFILE(filename, 8, true);
+        Py_DECREF(str);	 
       }
     }
     
-    if (use_stringio2 == 0){
+    if (stream2 == 0){
       if (temp2->isSTDOUT() == 1) {
         arg2 = &std::cout;
+      } else if (temp2->isGZ()){
+        out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
+        arg2 = out_gz2;	     
       } else {
-        out2.open(temp2->getFilename());
-        out2.precision(temp2->getPrecision());
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
-        arg2 = &out2;
+        out_txt2.open(temp2->getFilename());
+        out_txt2.precision(temp2->getPrecision());
+        arg2 = &out_txt2;
+      }
+      if (temp2->isTemporary()){
+        delete temp2;
       }
     } else {
-      arg2 = &stream2;
+      arg2 = stream2;
     }
   }
   {
@@ -11995,8 +12045,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR__SWIG_0(PyObject *SWIGUNUSEDPAR
   }
   resultobj = SWIG_Py_Void();
   {
-    if (use_stringio2 == 1) {
-      std::string str =  stream2.str();
+    if (stream2) {
+      std::string str =  stream2->str();
       const char* s = str.c_str();
       const int n = str.length();
       ret2 = PyObject_CallMethod(string_io2, "write", "s#",
@@ -12005,15 +12055,21 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR__SWIG_0(PyObject *SWIGUNUSEDPAR
         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
         return NULL;
       }
+      delete stream2;
       Py_XDECREF(resultobj);   /* Blow away any previous result */
       resultobj = ret2;    
     }
   }
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -12021,10 +12077,15 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR__SWIG_0(PyObject *SWIGUNUSEDPAR
   return resultobj;
 fail:
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -12040,10 +12101,10 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR2__SWIG_0(PyObject *SWIGUNUSEDPA
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out2 ;
-  int use_stringio2 = 0 ;
+  std::ofstream out_txt2 ;
+  mfem::ofgzstream *out_gz2 = 0 ;
   PyObject *string_io2 = 0 ;
-  std::ostringstream stream2 ;
+  std::ostringstream *stream2 = 0 ;
   PyObject *ret2 = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
@@ -12073,29 +12134,33 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR2__SWIG_0(PyObject *SWIGUNUSEDPA
           SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
           return NULL;
         }
-        use_stringio2=1;
         string_io2=swig_obj[1];
+        stream2 = new std::ostringstream();
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp2 = new PyMFEM::wFILE(filename, 8, true);	
+        temp2 = new PyMFEM::wFILE(filename, 8, true);
+        Py_DECREF(str);	 
       }
     }
     
-    if (use_stringio2 == 0){
+    if (stream2 == 0){
       if (temp2->isSTDOUT() == 1) {
         arg2 = &std::cout;
+      } else if (temp2->isGZ()){
+        out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
+        arg2 = out_gz2;	     
       } else {
-        out2.open(temp2->getFilename());
-        out2.precision(temp2->getPrecision());
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
-        arg2 = &out2;
+        out_txt2.open(temp2->getFilename());
+        out_txt2.precision(temp2->getPrecision());
+        arg2 = &out_txt2;
+      }
+      if (temp2->isTemporary()){
+        delete temp2;
       }
     } else {
-      arg2 = &stream2;
+      arg2 = stream2;
     }
   }
   {
@@ -12113,8 +12178,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR2__SWIG_0(PyObject *SWIGUNUSEDPA
   }
   resultobj = SWIG_Py_Void();
   {
-    if (use_stringio2 == 1) {
-      std::string str =  stream2.str();
+    if (stream2) {
+      std::string str =  stream2->str();
       const char* s = str.c_str();
       const int n = str.length();
       ret2 = PyObject_CallMethod(string_io2, "write", "s#",
@@ -12123,15 +12188,21 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR2__SWIG_0(PyObject *SWIGUNUSEDPA
         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
         return NULL;
       }
+      delete stream2;
       Py_XDECREF(resultobj);   /* Blow away any previous result */
       resultobj = ret2;    
     }
   }
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -12139,10 +12210,15 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR2__SWIG_0(PyObject *SWIGUNUSEDPA
   return resultobj;
 fail:
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -12158,10 +12234,10 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPA
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out2 ;
-  int use_stringio2 = 0 ;
+  std::ofstream out_txt2 ;
+  mfem::ofgzstream *out_gz2 = 0 ;
   PyObject *string_io2 = 0 ;
-  std::ostringstream stream2 ;
+  std::ostringstream *stream2 = 0 ;
   PyObject *ret2 = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
@@ -12191,29 +12267,33 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPA
           SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
           return NULL;
         }
-        use_stringio2=1;
         string_io2=swig_obj[1];
+        stream2 = new std::ostringstream();
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp2 = new PyMFEM::wFILE(filename, 8, true);	
+        temp2 = new PyMFEM::wFILE(filename, 8, true);
+        Py_DECREF(str);	 
       }
     }
     
-    if (use_stringio2 == 0){
+    if (stream2 == 0){
       if (temp2->isSTDOUT() == 1) {
         arg2 = &std::cout;
+      } else if (temp2->isGZ()){
+        out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
+        arg2 = out_gz2;	     
       } else {
-        out2.open(temp2->getFilename());
-        out2.precision(temp2->getPrecision());
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
-        arg2 = &out2;
+        out_txt2.open(temp2->getFilename());
+        out_txt2.precision(temp2->getPrecision());
+        arg2 = &out_txt2;
+      }
+      if (temp2->isTemporary()){
+        delete temp2;
       }
     } else {
-      arg2 = &stream2;
+      arg2 = stream2;
     }
   }
   {
@@ -12231,8 +12311,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPA
   }
   resultobj = SWIG_Py_Void();
   {
-    if (use_stringio2 == 1) {
-      std::string str =  stream2.str();
+    if (stream2) {
+      std::string str =  stream2->str();
       const char* s = str.c_str();
       const int n = str.length();
       ret2 = PyObject_CallMethod(string_io2, "write", "s#",
@@ -12241,15 +12321,21 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPA
         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
         return NULL;
       }
+      delete stream2;
       Py_XDECREF(resultobj);   /* Blow away any previous result */
       resultobj = ret2;    
     }
   }
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -12257,10 +12343,15 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPA
   return resultobj;
 fail:
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -12996,7 +13087,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Print(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            _v = 0;
+            std::cout << "it is text (out)\n";	
+            _v = 1;
           }
         } else {
           _v = 1;
@@ -13147,7 +13239,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMatlab(PyObject *self, PyObject *ar
               _v = 0;	   	   	   
             }
           } else {
-            _v = 0;
+            std::cout << "it is text (out)\n";	
+            _v = 1;
           }
         } else {
           _v = 1;
@@ -13285,7 +13378,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMM(PyObject *self, PyObject *args) 
               _v = 0;	   	   	   
             }
           } else {
-            _v = 0;
+            std::cout << "it is text (out)\n";	
+            _v = 1;
           }
         } else {
           _v = 1;
@@ -13487,7 +13581,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR(PyObject *self, PyObject *args)
               _v = 0;	   	   	   
             }
           } else {
-            _v = 0;
+            std::cout << "it is text (out)\n";	
+            _v = 1;
           }
         } else {
           _v = 1;
@@ -13664,7 +13759,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR2(PyObject *self, PyObject *args
               _v = 0;	   	   	   
             }
           } else {
-            _v = 0;
+            std::cout << "it is text (out)\n";	
+            _v = 1;
           }
         } else {
           _v = 1;
@@ -13841,7 +13937,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintInfo(PyObject *self, PyObject *args
               _v = 0;	   	   	   
             }
           } else {
-            _v = 0;
+            std::cout << "it is text (out)\n";	
+            _v = 1;
           }
         } else {
           _v = 1;
@@ -13879,10 +13976,10 @@ SWIGINTERN PyObject *_wrap___lshift__(PyObject *SWIGUNUSEDPARM(self), PyObject *
   std::ostream *arg1 = 0 ;
   mfem::SparseMatrix *arg2 = 0 ;
   PyMFEM::wFILE *temp1 = 0 ;
-  std::ofstream out1 ;
-  int use_stringio1 = 0 ;
+  std::ofstream out_txt1 ;
+  mfem::ofgzstream *out_gz1 = 0 ;
   PyObject *string_io1 = 0 ;
-  std::ostringstream stream1 ;
+  std::ostringstream *stream1 = 0 ;
   PyObject *ret1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
@@ -13915,29 +14012,33 @@ SWIGINTERN PyObject *_wrap___lshift__(PyObject *SWIGUNUSEDPARM(self), PyObject *
           SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
           return NULL;
         }
-        use_stringio1=1;
         string_io1=obj0;
+        stream1 = new std::ostringstream();
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj0, "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp1 = new PyMFEM::wFILE(filename, 8, true);	
+        temp1 = new PyMFEM::wFILE(filename, 8, true);
+        Py_DECREF(str);	 
       }
     }
     
-    if (use_stringio1 == 0){
+    if (stream1 == 0){
       if (temp1->isSTDOUT() == 1) {
         arg1 = &std::cout;
+      } else if (temp1->isGZ()){
+        out_gz1 = new mfem::ofgzstream(temp1->getFilename(), true);
+        arg1 = out_gz1;	     
       } else {
-        out1.open(temp1->getFilename());
-        out1.precision(temp1->getPrecision());
-        if (temp1->isTemporary()){
-          delete temp1;
-        }
-        arg1 = &out1;
+        out_txt1.open(temp1->getFilename());
+        out_txt1.precision(temp1->getPrecision());
+        arg1 = &out_txt1;
+      }
+      if (temp1->isTemporary()){
+        delete temp1;
       }
     } else {
-      arg1 = &stream1;
+      arg1 = stream1;
     }
   }
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__SparseMatrix,  0  | 0);
@@ -13963,8 +14064,8 @@ SWIGINTERN PyObject *_wrap___lshift__(PyObject *SWIGUNUSEDPARM(self), PyObject *
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__ostream, 0 |  0 );
   {
-    if (use_stringio1 == 1) {
-      std::string str =  stream1.str();
+    if (stream1) {
+      std::string str =  stream1->str();
       const char* s = str.c_str();
       const int n = str.length();
       ret1 = PyObject_CallMethod(string_io1, "write", "s#",
@@ -13973,15 +14074,21 @@ SWIGINTERN PyObject *_wrap___lshift__(PyObject *SWIGUNUSEDPARM(self), PyObject *
         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
         return NULL;
       }
+      delete stream1;
       Py_XDECREF(resultobj);   /* Blow away any previous result */
       resultobj = ret1;    
     }
   }
   {
-    if (use_stringio1 == 0) {
+    if (!stream1) {
       if (temp1) {
         if (temp1->isSTDOUT() != 1) {
-          out1.close();
+          if (out_txt1.is_open()){
+            out_txt1.close();
+          }
+          if (out_gz1){
+            delete out_gz1;
+          }
         }
       }
     }
@@ -13989,10 +14096,15 @@ SWIGINTERN PyObject *_wrap___lshift__(PyObject *SWIGUNUSEDPARM(self), PyObject *
   return resultobj;
 fail:
   {
-    if (use_stringio1 == 0) {
+    if (!stream1) {
       if (temp1) {
         if (temp1->isSTDOUT() != 1) {
-          out1.close();
+          if (out_txt1.is_open()){
+            out_txt1.close();
+          }
+          if (out_gz1){
+            delete out_gz1;
+          }
         }
       }
     }

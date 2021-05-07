@@ -51,6 +51,7 @@ import_array();
 
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
+ISTREAM_TYPEMAP(std::istream&)
 
 // this prevent automatic conversion from int to double so
 // that it select collect overloaded method....

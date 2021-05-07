@@ -41,6 +41,7 @@ import_array();
 
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
+ISTREAM_TYPEMAP(std::istream&)
 
 ARRAY_TO_DOUBLEARRAY_IN(double *_data)
 

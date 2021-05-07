@@ -14,4 +14,3 @@
 %pythoncode %{
   STDOUT = wFILE()
 %}
-//
