@@ -7,11 +7,14 @@
 #include <fstream>  
 #include <iostream>
 #include <stdio.h>  
-#include "io_stream.hpp"    
+#include "../common/io_stream.hpp"    
 #include "general/array.hpp"
 #include "numpy/arrayobject.h"
 %}
 
+%begin %{
+#define PY_SSIZE_T_CLEAN
+%}
 %init %{
 import_array();
 %}

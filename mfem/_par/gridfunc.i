@@ -11,7 +11,11 @@
   #include "fem/gridfunc.hpp"
   #include "pycoefficient.hpp"
   #include "numpy/arrayobject.h"
-  #include "io_stream.hpp"        
+  #include "../common/io_stream.hpp"        
+%}
+
+%begin %{
+#define PY_SSIZE_T_CLEAN
 %}
 
 %init %{
@@ -202,3 +206,5 @@ fem/gridfunc.hpp:   void SaveSTL(std::ostream &out, int TimesToRefine = 1);
 
 OSTREAM_ADD_DEFAULT_FILE(GridFunction, Save)
 OSTREAM_ADD_DEFAULT_FILE(QuadratureFunction, Save)
+
+  

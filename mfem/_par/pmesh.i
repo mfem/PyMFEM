@@ -10,7 +10,7 @@
 #include <cmath>
 #include <cstring>  
 #include <mpi.h>
-#include "io_stream.hpp"     
+#include "../common/io_stream.hpp"     
 #include "config/config.hpp"
 #include "mesh/pmesh.hpp"
 #include "fem/linearform.hpp"
