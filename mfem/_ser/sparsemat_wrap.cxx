@@ -14023,7 +14023,6 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Print(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {
@@ -14181,7 +14180,6 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMatlab(PyObject *self, PyObject *ar
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {
@@ -14326,7 +14324,6 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMM(PyObject *self, PyObject *args) 
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {
@@ -14541,7 +14538,6 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR(PyObject *self, PyObject *args)
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {
@@ -14731,7 +14727,6 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR2(PyObject *self, PyObject *args
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {
@@ -14921,7 +14916,6 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintInfo(PyObject *self, PyObject *args
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {

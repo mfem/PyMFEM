@@ -8,7 +8,7 @@ import os
 from mfem import path
 import mfem.ser as mfem
 from mfem.ser import intArray
-from os.path import expanduser, join, dirname
+from os.path import expanduser, join, dirname, exists
 import numpy as np
 from numpy import sqrt, pi, cos, sin, hypot, arctan2
 from scipy.special import erfc
@@ -25,8 +25,10 @@ vis_steps = 5
 # 2. Read the mesh from the given mesh file. We can handle geometrically
 #    periodic meshes in this code.
 
-path = dirname(dirname(__file__))
 meshfile = expanduser(join(path, 'data', 'periodic-hexagon.mesh'))
+if not exists(meshfile):
+    path = dirname(dirname(__file__))
+    meshfile = expanduser(join(path, 'data', 'periodic-hexagon.mesh'))    
 mesh = mfem.Mesh(meshfile, 1,1)
 dim = mesh.Dimension()
 
@@ -159,7 +161,18 @@ u.ProjectCoefficient(u0)
 mesh.Print('ex9.mesh', 8)
 u.Save('ex9-init.gf', 8)
 
-pd = mfem.ParaViewDataCollection()
+from  mfem._ser.vtk import VTKFormat_BINARY
+from  mfem._ser.datacollection import ParaViewDataCollection
+
+pd = ParaViewDataCollection("Example9", mesh)
+pd.SetPrefixPath("ParaView");
+pd.RegisterField("solution", u);
+pd.SetLevelsOfDetail(order);
+pd.SetDataFormat(VTKFormat_BINARY)
+pd.SetHighOrderOutput(True)
+pd.SetCycle(0)
+pd.SetTime(0.0)
+pd.Save()
 
 class FE_Evolution(mfem.PyTimeDependentOperator):
     def __init__(self, M, K, b):
@@ -202,5 +215,7 @@ while True:
    ti = ti + 1
    if ti % vis_steps == 0:
        print("time step: " + str(ti) + ", time: " + str(t))
-
+   pd.SetCycle(ti)
+   pd.SetTime(t)
+   pd.Save()
 u.Save('ex9-final.gf', 8)

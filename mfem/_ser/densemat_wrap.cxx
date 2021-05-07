@@ -12145,7 +12145,6 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {
@@ -12303,7 +12302,6 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {
@@ -12461,7 +12459,6 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintMatlab(PyObject *self, PyObject *arg
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {

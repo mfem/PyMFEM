@@ -387,13 +387,14 @@ to find more details of the MFEM library.
 	 precision. Also, note that sock << flush in c++ should be rephrased
 	 sock.flush()
 	   
-   4-12) std::ostream&
+   4-12) std::ostream& and std::istream&
 
          methods which takes std::ostream& are wrapped so that it accept
 	 either
-	   1) filename (if it ends with .gz, it uses compression)
-	   2) mfem.STDOUT
-	   3) StringIO
+	   1) filename 
+	   2) compressed filename (when the filename ends with .gz)
+	   3) mfem.STDOUT
+	   4) StringIO
 
          (example)
             mesh.PrintVTK("mesh.vtk", 1)
@@ -410,7 +411,15 @@ to find more details of the MFEM library.
          (example)
 	    SparseMat::PrintInfo
 	    STable3D::Print
+
+         std::istream & is also wrapped in a similar way
+	   1) filename 
+	   2) compressed filename (when the filename ends with .gz)
+	   3) StringIO
+
+         See test/test_gz.py to see an example
        
+
    4-13) mfem::table
            GetRowList returns a version of GetRow which returns Python
 	   list instead of int pointer.

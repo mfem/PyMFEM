@@ -8920,7 +8920,6 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_Load(PyObject *SWIGUNUSEDPARM(self
   PyMFEM::wFILE *temp3 = 0 ;
   std::ifstream in_txt3 ;
   mfem::ifgzstream *in_gz3 = 0 ;
-  PyObject *input_str3 = 0 ;
   std::istringstream *stream3 = 0 ;
   Py_ssize_t len3 = 0 ;
   PyObject *ret3 = 0 ;
@@ -8965,18 +8964,18 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_Load(PyObject *SWIGUNUSEDPARM(self
           return NULL;
         }
         
-        PyObject *input_str3 = PyObject_CallMethod(obj2, "getvalue", NULL);
+        PyObject *input_str = PyObject_CallMethod(obj2, "getvalue", NULL);
         if (PyErr_Occurred()) {
           PyErr_SetString(PyExc_RuntimeError, "Can not read from StringIO");
           return NULL;
         }
         
         char *buf = nullptr;
-        PyObject *str = PyUnicode_AsUTF8String(input_str3);	 
+        PyObject *str = PyUnicode_AsUTF8String(input_str);	 
         PyBytes_AsStringAndSize(str, &buf, &len3);
         stream3 = new std::istringstream(buf);
         Py_DECREF(str);
-        Py_DECREF(input_str3);	 
+        Py_DECREF(input_str);	 
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj2, "utf-8", "~E~");	
@@ -9242,7 +9241,6 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_Save(PyObject *self, PyObject *arg
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {
@@ -9325,7 +9323,6 @@ SWIGINTERN PyObject *_wrap_new_QuadratureSpace__SWIG_1(PyObject *SWIGUNUSEDPARM(
   PyMFEM::wFILE *temp2 = 0 ;
   std::ifstream in_txt2 ;
   mfem::ifgzstream *in_gz2 = 0 ;
-  PyObject *input_str2 = 0 ;
   std::istringstream *stream2 = 0 ;
   Py_ssize_t len2 = 0 ;
   PyObject *ret2 = 0 ;
@@ -9359,18 +9356,18 @@ SWIGINTERN PyObject *_wrap_new_QuadratureSpace__SWIG_1(PyObject *SWIGUNUSEDPARM(
           return NULL;
         }
         
-        PyObject *input_str2 = PyObject_CallMethod(swig_obj[1], "getvalue", NULL);
+        PyObject *input_str = PyObject_CallMethod(swig_obj[1], "getvalue", NULL);
         if (PyErr_Occurred()) {
           PyErr_SetString(PyExc_RuntimeError, "Can not read from StringIO");
           return NULL;
         }
         
         char *buf = nullptr;
-        PyObject *str = PyUnicode_AsUTF8String(input_str2);	 
+        PyObject *str = PyUnicode_AsUTF8String(input_str);	 
         PyBytes_AsStringAndSize(str, &buf, &len2);
         stream2 = new std::istringstream(buf);
         Py_DECREF(str);
-        Py_DECREF(input_str2);	 
+        Py_DECREF(input_str);	 
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -9995,7 +9992,6 @@ SWIGINTERN PyObject *_wrap_QuadratureSpace_Save(PyObject *self, PyObject *args) 
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {

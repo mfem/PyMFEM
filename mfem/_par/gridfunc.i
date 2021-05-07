@@ -89,16 +89,7 @@ def GetNodalValues(self, *args):
 
 namespace mfem{
 %extend GridFunction{
-GridFunction(Mesh *m, const char *grid_file){
-   mfem::GridFunction *gf;
-   std::ifstream igrid(grid_file);
-   if (!igrid) {
-      std::cerr << "\nCan not open grid function file: " << grid_file << '\n' << std::endl;
-      return NULL;
-   }
-   gf = new mfem::GridFunction(m, igrid);
-   return gf;
-}
+     
 GridFunction(mfem::FiniteElementSpace *fes, const mfem::Vector &v, int offset){
    mfem::GridFunction *gf;   
    gf = new mfem::GridFunction(fes, v.GetData() + offset);

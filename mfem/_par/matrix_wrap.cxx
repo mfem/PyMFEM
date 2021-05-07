@@ -3966,7 +3966,6 @@ SWIGINTERN PyObject *_wrap_Matrix_Print(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {

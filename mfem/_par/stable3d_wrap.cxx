@@ -4354,7 +4354,6 @@ SWIGINTERN PyObject *_wrap_STable3D_Print(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {

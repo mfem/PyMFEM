@@ -5551,7 +5551,6 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_PrintMatlab(PyObject *self, PyObject *arg
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {

@@ -8790,7 +8790,6 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_9(PyObject *SWIGUNUSEDPARM(self), Py_s
   PyMFEM::wFILE *temp1 = 0 ;
   std::ifstream in_txt1 ;
   mfem::ifgzstream *in_gz1 = 0 ;
-  PyObject *input_str1 = 0 ;
   std::istringstream *stream1 = 0 ;
   Py_ssize_t len1 = 0 ;
   PyObject *ret1 = 0 ;
@@ -8821,18 +8820,18 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_9(PyObject *SWIGUNUSEDPARM(self), Py_s
           return NULL;
         }
         
-        PyObject *input_str1 = PyObject_CallMethod(swig_obj[0], "getvalue", NULL);
+        PyObject *input_str = PyObject_CallMethod(swig_obj[0], "getvalue", NULL);
         if (PyErr_Occurred()) {
           PyErr_SetString(PyExc_RuntimeError, "Can not read from StringIO");
           return NULL;
         }
         
         char *buf = nullptr;
-        PyObject *str = PyUnicode_AsUTF8String(input_str1);	 
+        PyObject *str = PyUnicode_AsUTF8String(input_str);	 
         PyBytes_AsStringAndSize(str, &buf, &len1);
         stream1 = new std::istringstream(buf);
         Py_DECREF(str);
-        Py_DECREF(input_str1);	 
+        Py_DECREF(input_str);	 
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[0], "utf-8", "~E~");	
@@ -9049,7 +9048,6 @@ SWIGINTERN PyObject *_wrap_Mesh_Load(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   PyMFEM::wFILE *temp2 = 0 ;
   std::ifstream in_txt2 ;
   mfem::ifgzstream *in_gz2 = 0 ;
-  PyObject *input_str2 = 0 ;
   std::istringstream *stream2 = 0 ;
   Py_ssize_t len2 = 0 ;
   PyObject *ret2 = 0 ;
@@ -9092,18 +9090,18 @@ SWIGINTERN PyObject *_wrap_Mesh_Load(PyObject *SWIGUNUSEDPARM(self), PyObject *a
           return NULL;
         }
         
-        PyObject *input_str2 = PyObject_CallMethod(obj1, "getvalue", NULL);
+        PyObject *input_str = PyObject_CallMethod(obj1, "getvalue", NULL);
         if (PyErr_Occurred()) {
           PyErr_SetString(PyExc_RuntimeError, "Can not read from StringIO");
           return NULL;
         }
         
         char *buf = nullptr;
-        PyObject *str = PyUnicode_AsUTF8String(input_str2);	 
+        PyObject *str = PyUnicode_AsUTF8String(input_str);	 
         PyBytes_AsStringAndSize(str, &buf, &len2);
         stream2 = new std::istringstream(buf);
         Py_DECREF(str);
-        Py_DECREF(input_str2);	 
+        Py_DECREF(input_str);	 
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj1, "utf-8", "~E~");	
@@ -17677,7 +17675,6 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTU(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {
@@ -21416,7 +21413,6 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {
@@ -21561,7 +21557,6 @@ SWIGINTERN PyObject *_wrap_Mesh_Print(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {
@@ -21706,7 +21701,6 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {
@@ -21874,7 +21868,6 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {
@@ -21914,7 +21907,6 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {
@@ -22148,7 +22140,6 @@ SWIGINTERN PyObject *_wrap___lshift__(PyObject *self, PyObject *args) {
             _v = 0;	   	   	   
           }
         } else {
-          std::cout << "it is text (out)\n";	
           _v = 1;
         }
       } else {
