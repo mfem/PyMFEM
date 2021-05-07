@@ -161,14 +161,11 @@ u.ProjectCoefficient(u0)
 mesh.Print('ex9.mesh', 8)
 u.Save('ex9-init.gf', 8)
 
-from  mfem._ser.vtk import VTKFormat_BINARY
-from  mfem._ser.datacollection import ParaViewDataCollection
-
-pd = ParaViewDataCollection("Example9", mesh)
+pd = mfem.ParaViewDataCollection("Example9", mesh)
 pd.SetPrefixPath("ParaView");
 pd.RegisterField("solution", u);
 pd.SetLevelsOfDetail(order);
-pd.SetDataFormat(VTKFormat_BINARY)
+pd.SetDataFormat(mfem.VTKFormat_BINARY)
 pd.SetHighOrderOutput(True)
 pd.SetCycle(0)
 pd.SetTime(0.0)
