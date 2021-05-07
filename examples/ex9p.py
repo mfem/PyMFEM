@@ -7,7 +7,7 @@
 from mfem import path
 import mfem.par as mfem
 from mfem.par import intArray
-from os.path import expanduser, join
+from os.path import expanduser, join, dirname, exists
 from mpi4py import MPI
 import numpy as np
 from numpy import sqrt, pi, cos, sin, hypot, arctan2
@@ -29,6 +29,10 @@ vis_steps = 5
 # 3. Read the serial mesh from the given mesh file on all processors. We can
 #    handle geometrically periodic meshes in this code.
 meshfile = expanduser(join(path, 'data', 'periodic-hexagon.mesh'))
+if not exists(meshfile):
+    path = dirname(dirname(__file__))
+    meshfile = expanduser(join(path, 'data', 'periodic-hexagon.mesh'))    
+
 mesh = mfem.Mesh(meshfile, 1,1)
 dim = mesh.Dimension()
 

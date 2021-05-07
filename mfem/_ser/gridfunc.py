@@ -530,14 +530,6 @@ class GridFunction(mfem._ser.vector.Vector):
         """
         _gridfunc.GridFunction_swiginit(self, _gridfunc.new_GridFunction(*args))
 
-    def Save(self, *args):
-        r"""
-        Save(GridFunction self, std::ostream & out)
-        Save(GridFunction self, char const * gf_file, int const precision)
-        """
-        return _gridfunc.GridFunction_Save(self, *args)
-    Save = _swig_new_instance_method(_gridfunc.GridFunction_Save)
-
     def SaveToFile(self, gf_file, precision):
         r"""SaveToFile(GridFunction self, char const * gf_file, int const precision)"""
         return _gridfunc.GridFunction_SaveToFile(self, gf_file, precision)
@@ -570,6 +562,14 @@ class GridFunction(mfem._ser.vector.Vector):
         r"""idiv(GridFunction self, double c) -> GridFunction"""
         return _gridfunc.GridFunction_idiv(self, c)
     idiv = _swig_new_instance_method(_gridfunc.GridFunction_idiv)
+
+    def Save(self, *args):
+        r"""
+        Save(GridFunction self, std::ostream & out)
+        Save(GridFunction self, char const * file, int precision=8)
+        """
+        return _gridfunc.GridFunction_Save(self, *args)
+    Save = _swig_new_instance_method(_gridfunc.GridFunction_Save)
 
 # Register GridFunction in _gridfunc:
 _gridfunc.GridFunction_swigregister(GridFunction)
@@ -641,9 +641,12 @@ class QuadratureFunction(mfem._ser.vector.Vector):
         return _gridfunc.QuadratureFunction_GetElementValues(self, *args)
     GetElementValues = _swig_new_instance_method(_gridfunc.QuadratureFunction_GetElementValues)
 
-    def Save(self, out):
-        r"""Save(QuadratureFunction self, std::ostream & out)"""
-        return _gridfunc.QuadratureFunction_Save(self, out)
+    def Save(self, *args):
+        r"""
+        Save(QuadratureFunction self, std::ostream & out)
+        Save(QuadratureFunction self, char const * file, int precision=8)
+        """
+        return _gridfunc.QuadratureFunction_Save(self, *args)
     Save = _swig_new_instance_method(_gridfunc.QuadratureFunction_Save)
 
 # Register QuadratureFunction in _gridfunc:

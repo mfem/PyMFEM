@@ -3718,24 +3718,14 @@ SWIG_AsPtr_std_string (PyObject * obj, std::string **val)
   return SWIG_ERROR;
 }
 
-
-
-
-SWIGINTERN mfem::GridFunction *new_mfem_GridFunction__SWIG_6(mfem::Mesh *m,char const *grid_file){
-   mfem::GridFunction *gf;
-   std::ifstream igrid(grid_file);
-   if (!igrid) {
-      std::cerr << "\nCan not open grid function file: " << grid_file << '\n' << std::endl;
-      return NULL;
-   }
-   gf = new mfem::GridFunction(m, igrid);
-   return gf;
-}
-SWIGINTERN mfem::GridFunction *new_mfem_GridFunction__SWIG_7(mfem::FiniteElementSpace *fes,mfem::Vector const &v,int offset){
+SWIGINTERN mfem::GridFunction *new_mfem_GridFunction__SWIG_6(mfem::FiniteElementSpace *fes,mfem::Vector const &v,int offset){
    mfem::GridFunction *gf;   
    gf = new mfem::GridFunction(fes, v.GetData() + offset);
    return gf;
 }
+
+
+
 SWIGINTERN void mfem_GridFunction_SaveToFile(mfem::GridFunction const *self,char const *gf_file,int const precision){
         std::cerr << "\nWarning Deprecated : Use Save(filename) insteead of SaveToFile \n";  
 	std::ofstream mesh_ofs(gf_file);	
@@ -3975,7 +3965,6 @@ SWIGINTERN PyObject *_wrap_new_GridFunction__SWIG_4(PyObject *SWIGUNUSEDPARM(sel
   PyMFEM::wFILE *temp2 = 0 ;
   std::ifstream in_txt2 ;
   mfem::ifgzstream *in_gz2 = 0 ;
-  PyObject *input_str2 = 0 ;
   std::istringstream *stream2 = 0 ;
   Py_ssize_t len2 = 0 ;
   PyObject *ret2 = 0 ;
@@ -4009,18 +3998,18 @@ SWIGINTERN PyObject *_wrap_new_GridFunction__SWIG_4(PyObject *SWIGUNUSEDPARM(sel
           return NULL;
         }
         
-        PyObject *input_str2 = PyObject_CallMethod(swig_obj[1], "getvalue", NULL);
+        PyObject *input_str = PyObject_CallMethod(swig_obj[1], "getvalue", NULL);
         if (PyErr_Occurred()) {
           PyErr_SetString(PyExc_RuntimeError, "Can not read from StringIO");
           return NULL;
         }
         
         char *buf = nullptr;
-        PyObject *str = PyUnicode_AsUTF8String(input_str2);	 
+        PyObject *str = PyUnicode_AsUTF8String(input_str);	 
         PyBytes_AsStringAndSize(str, &buf, &len2);
         stream2 = new std::istringstream(buf);
         Py_DECREF(str);
-        Py_DECREF(input_str2);	 
+        Py_DECREF(input_str);	 
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -12835,50 +12824,6 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_GridFunction__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
-  char *arg2 = (char *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 ;
-  char *buf2 = 0 ;
-  int alloc2 = 0 ;
-  mfem::GridFunction *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_GridFunction" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_GridFunction" "', argument " "2"" of type '" "char const *""'");
-  }
-  arg2 = reinterpret_cast< char * >(buf2);
-  {
-    try {
-      result = (mfem::GridFunction *)new_mfem_GridFunction__SWIG_6(arg1,(char const *)arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NEW |  0 );
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return resultobj;
-fail:
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_GridFunction__SWIG_7(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
   mfem::FiniteElementSpace *arg1 = (mfem::FiniteElementSpace *) 0 ;
   mfem::Vector *arg2 = 0 ;
   int arg3 ;
@@ -12910,7 +12855,7 @@ SWIGINTERN PyObject *_wrap_new_GridFunction__SWIG_7(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      result = (mfem::GridFunction *)new_mfem_GridFunction__SWIG_7(arg1,(mfem::Vector const &)*arg2,arg3); 
+      result = (mfem::GridFunction *)new_mfem_GridFunction__SWIG_6(arg1,(mfem::Vector const &)*arg2,arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -12967,19 +12912,6 @@ SWIGINTERN PyObject *_wrap_new_GridFunction(PyObject *self, PyObject *args) {
       _v = SWIG_CheckState(res);
       if (_v) {
         return _wrap_new_GridFunction__SWIG_3(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_new_GridFunction__SWIG_6(self, argc, argv);
       }
     }
   }
@@ -13064,7 +12996,7 @@ SWIGINTERN PyObject *_wrap_new_GridFunction(PyObject *self, PyObject *args) {
           }
         }
         if (_v) {
-          return _wrap_new_GridFunction__SWIG_7(self, argc, argv);
+          return _wrap_new_GridFunction__SWIG_6(self, argc, argv);
         }
       }
     }
@@ -13079,7 +13011,6 @@ fail:
     "    mfem::GridFunction::GridFunction(mfem::FiniteElementSpace *,double *)\n"
     "    mfem::GridFunction::GridFunction(mfem::Mesh *,std::istream &)\n"
     "    mfem::GridFunction::GridFunction(mfem::Mesh *,mfem::GridFunction *[],int)\n"
-    "    mfem::GridFunction::GridFunction(mfem::Mesh *,char const *)\n"
     "    mfem::GridFunction::GridFunction(mfem::FiniteElementSpace *,mfem::Vector const &,int)\n");
   return 0;
 }
@@ -13568,7 +13499,6 @@ SWIGINTERN PyObject *_wrap_GridFunction_Save(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {
@@ -13902,7 +13832,6 @@ SWIGINTERN PyObject *_wrap_new_QuadratureFunction__SWIG_4(PyObject *SWIGUNUSEDPA
   PyMFEM::wFILE *temp2 = 0 ;
   std::ifstream in_txt2 ;
   mfem::ifgzstream *in_gz2 = 0 ;
-  PyObject *input_str2 = 0 ;
   std::istringstream *stream2 = 0 ;
   Py_ssize_t len2 = 0 ;
   PyObject *ret2 = 0 ;
@@ -13936,18 +13865,18 @@ SWIGINTERN PyObject *_wrap_new_QuadratureFunction__SWIG_4(PyObject *SWIGUNUSEDPA
           return NULL;
         }
         
-        PyObject *input_str2 = PyObject_CallMethod(swig_obj[1], "getvalue", NULL);
+        PyObject *input_str = PyObject_CallMethod(swig_obj[1], "getvalue", NULL);
         if (PyErr_Occurred()) {
           PyErr_SetString(PyExc_RuntimeError, "Can not read from StringIO");
           return NULL;
         }
         
         char *buf = nullptr;
-        PyObject *str = PyUnicode_AsUTF8String(input_str2);	 
+        PyObject *str = PyUnicode_AsUTF8String(input_str);	 
         PyBytes_AsStringAndSize(str, &buf, &len2);
         stream2 = new std::istringstream(buf);
         Py_DECREF(str);
-        Py_DECREF(input_str2);	 
+        Py_DECREF(input_str);	 
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -15347,7 +15276,6 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_Save(PyObject *self, PyObject *arg
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {
@@ -15551,7 +15479,6 @@ SWIGINTERN PyObject *_wrap___lshift__(PyObject *self, PyObject *args) {
             _v = 0;	   	   	   
           }
         } else {
-          std::cout << "it is text (out)\n";	
           _v = 1;
         }
       } else {
@@ -15590,7 +15517,6 @@ SWIGINTERN PyObject *_wrap___lshift__(PyObject *self, PyObject *args) {
             _v = 0;	   	   	   
           }
         } else {
-          std::cout << "it is text (out)\n";	
           _v = 1;
         }
       } else {
@@ -16178,7 +16104,6 @@ static PyMethodDef SwigMethods[] = {
 		"GridFunction(FiniteElementSpace f, double * data)\n"
 		"GridFunction(Mesh m, std::istream & input)\n"
 		"GridFunction(Mesh m, mfem::GridFunction *[] gf_array, int num_pieces)\n"
-		"GridFunction(Mesh m, char const * grid_file)\n"
 		"new_GridFunction(FiniteElementSpace fes, Vector v, int offset) -> GridFunction\n"
 		""},
 	 { "GridFunction_SaveToFile", (PyCFunction)(void(*)(void))_wrap_GridFunction_SaveToFile, METH_VARARGS|METH_KEYWORDS, "GridFunction_SaveToFile(GridFunction self, char const * gf_file, int const precision)"},
@@ -16408,7 +16333,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"GridFunction(FiniteElementSpace f, double * data)\n"
 		"GridFunction(Mesh m, std::istream & input)\n"
 		"GridFunction(Mesh m, mfem::GridFunction *[] gf_array, int num_pieces)\n"
-		"GridFunction(Mesh m, char const * grid_file)\n"
 		"new_GridFunction(FiniteElementSpace fes, Vector v, int offset) -> GridFunction\n"
 		""},
 	 { "GridFunction_SaveToFile", (PyCFunction)(void(*)(void))_wrap_GridFunction_SaveToFile, METH_VARARGS|METH_KEYWORDS, "SaveToFile(GridFunction self, char const * gf_file, int const precision)"},

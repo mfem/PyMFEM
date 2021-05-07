@@ -9823,7 +9823,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_PrintCommPkg(PyObject *self, PyObject 
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {

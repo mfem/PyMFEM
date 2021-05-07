@@ -103,13 +103,6 @@ GridFunction(mfem::FiniteElementSpace *fes, const mfem::Vector &v, int offset){
    gf = new mfem::GridFunction(fes, v.GetData() + offset);
    return gf;
 }
-
-void Save(const char *gf_file, const int precision) const
-{
-     std::ofstream mesh_ofs(gf_file);	
-     mesh_ofs.precision(precision);
-     self->Save(mesh_ofs);	
-}
  
 void SaveToFile(const char *gf_file, const int precision) const
    {
@@ -207,8 +200,8 @@ fem/gridfunc.hpp:   void Save(std::ostream &out) const;
 fem/gridfunc.hpp:   void SaveVTK(std::ostream &out, const std::string &field_name, int ref);
 fem/gridfunc.hpp:   void SaveSTL(std::ostream &out, int TimesToRefine = 1);
 */
-//#ifndef SWIGIMPORTED
-//OSTREAM_ADD_DEFAULT_FILE(GridFunction, Save)
-//OSTREAM_ADD_DEFAULT_FILE(QuadratureFunction, Save)
-//#endif   
+#ifndef SWIGIMPORTED
+OSTREAM_ADD_DEFAULT_FILE(GridFunction, Save)
+OSTREAM_ADD_DEFAULT_FILE(QuadratureFunction, Save)
+#endif   
   

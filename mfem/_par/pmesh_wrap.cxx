@@ -3827,7 +3827,6 @@ SWIGINTERN PyObject *_wrap_new_ParMesh__SWIG_4(PyObject *SWIGUNUSEDPARM(self), P
   PyMFEM::wFILE *temp2 = 0 ;
   std::ifstream in_txt2 ;
   mfem::ifgzstream *in_gz2 = 0 ;
-  PyObject *input_str2 = 0 ;
   std::istringstream *stream2 = 0 ;
   Py_ssize_t len2 = 0 ;
   PyObject *ret2 = 0 ;
@@ -3867,18 +3866,18 @@ SWIGINTERN PyObject *_wrap_new_ParMesh__SWIG_4(PyObject *SWIGUNUSEDPARM(self), P
           return NULL;
         }
         
-        PyObject *input_str2 = PyObject_CallMethod(swig_obj[1], "getvalue", NULL);
+        PyObject *input_str = PyObject_CallMethod(swig_obj[1], "getvalue", NULL);
         if (PyErr_Occurred()) {
           PyErr_SetString(PyExc_RuntimeError, "Can not read from StringIO");
           return NULL;
         }
         
         char *buf = nullptr;
-        PyObject *str = PyUnicode_AsUTF8String(input_str2);	 
+        PyObject *str = PyUnicode_AsUTF8String(input_str);	 
         PyBytes_AsStringAndSize(str, &buf, &len2);
         stream2 = new std::istringstream(buf);
         Py_DECREF(str);
-        Py_DECREF(input_str2);	 
+        Py_DECREF(input_str);	 
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -7494,7 +7493,6 @@ SWIGINTERN PyObject *_wrap_ParMesh_Print(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {
@@ -7633,7 +7631,6 @@ SWIGINTERN PyObject *_wrap_ParMesh_PrintXG(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {
@@ -7772,7 +7769,6 @@ SWIGINTERN PyObject *_wrap_ParMesh_PrintAsOne(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {
@@ -7911,7 +7907,6 @@ SWIGINTERN PyObject *_wrap_ParMesh_PrintAsOneXG(PyObject *self, PyObject *args) 
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {
@@ -8050,7 +8045,6 @@ SWIGINTERN PyObject *_wrap_ParMesh_PrintInfo(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {
@@ -8253,7 +8247,6 @@ SWIGINTERN PyObject *_wrap_ParMesh_ParPrint(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            std::cout << "it is text (out)\n";	
             _v = 1;
           }
         } else {

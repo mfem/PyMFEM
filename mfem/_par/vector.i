@@ -12,7 +12,8 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "../common/io_stream.hpp"             
+#include "../common/io_stream.hpp"
+#include "general/zstr.hpp"  
 #include "numpy/arrayobject.h"
 #include "linalg/vector.hpp"  
 %}

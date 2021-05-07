@@ -47,6 +47,8 @@ from  mfem._ser.element import *
 from  mfem._ser.nonlininteg import *
 from  mfem._ser.nonlinearform import *
 from  mfem._ser.stable3d import *
+#from  mfem._ser.vtk import *
+#from  mfem._ser.datacollection import *
 from  mfem._ser.io_stream import wFILE, STDOUT
 
 

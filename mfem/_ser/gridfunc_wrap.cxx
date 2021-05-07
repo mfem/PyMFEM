@@ -3726,11 +3726,6 @@ SWIGINTERN mfem::GridFunction *new_mfem_GridFunction__SWIG_6(mfem::FiniteElement
 
 
 
-SWIGINTERN void mfem_GridFunction_Save__SWIG_1(mfem::GridFunction const *self,char const *gf_file,int const precision){
-     std::ofstream mesh_ofs(gf_file);	
-     mesh_ofs.precision(precision);
-     self->Save(mesh_ofs);	
-}
 SWIGINTERN void mfem_GridFunction_SaveToFile(mfem::GridFunction const *self,char const *gf_file,int const precision){
         std::cerr << "\nWarning Deprecated : Use Save(filename) insteead of SaveToFile \n";
 	std::ofstream mesh_ofs(gf_file);	
@@ -3786,6 +3781,17 @@ SWIGINTERN mfem::GridFunction &mfem_GridFunction_idiv(mfem::GridFunction *self,d
       * self /= c;
       return *self;
    }
+SWIGINTERN void mfem_GridFunction_Save__SWIG_1(mfem::GridFunction *self,char const *file,int precision=8){
+  std::ofstream ofile(file);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile.precision(precision);  
+  self -> Save(ofile);
+  ofile.close();
+  }
 
 SWIGINTERNINLINE PyObject*
   SWIG_From_bool  (bool value)
@@ -3793,6 +3799,17 @@ SWIGINTERNINLINE PyObject*
   return PyBool_FromLong(value ? 1 : 0);
 }
 
+SWIGINTERN void mfem_QuadratureFunction_Save__SWIG_1(mfem::QuadratureFunction *self,char const *file,int precision=8){
+  std::ofstream ofile(file);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile.precision(precision);  
+  self -> Save(ofile);
+  ofile.close();
+  }
 
 
 /* ---------------------------------------------------
@@ -13665,142 +13682,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  char *arg2 = (char *) 0 ;
-  int arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 ;
-  char *buf2 = 0 ;
-  int alloc2 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_Save" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_Save" "', argument " "2"" of type '" "char const *""'");
-  }
-  arg2 = reinterpret_cast< char * >(buf2);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-  }
-  {
-    try {
-      mfem_GridFunction_Save__SWIG_1((mfem::GridFunction const *)arg1,(char const *)arg2,arg3);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return resultobj;
-fail:
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_Save(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[4] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_Save", 0, 3, argv))) SWIG_fail;
-  --argc;
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        void *ptr;
-        //std::string *ptr2 = (std::string *)0;
-        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
-          PyErr_Clear();
-          if (!PyString_Check(argv[1]) && !PyUnicode_Check(argv[1])) {
-            // not string
-            _v = 1;	   	
-            PyObject* module = PyImport_ImportModule("io");
-            if (!module){
-              _v = 0;	   
-            }      
-            PyObject* cls = PyObject_GetAttrString(module, "StringIO");
-            if (!cls){
-              _v = 0;	   	   
-            }      
-            int check = PyObject_IsInstance(argv[1], cls);
-            Py_DECREF(module);
-            if (! check){
-              _v = 0;	   	   	   
-            }
-          } else {
-            _v = 1;
-          }
-        } else {
-          _v = 1;
-        }
-      }
-      if (_v) {
-        return _wrap_GridFunction_Save__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_GridFunction_Save__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_Save'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::GridFunction::Save(std::ostream &) const\n"
-    "    mfem::GridFunction::Save(char const *,int const) const\n");
-  return 0;
-}
-
-
 SWIGINTERN PyObject *_wrap_GridFunction_SaveToFile(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
@@ -14212,6 +14093,147 @@ SWIGINTERN PyObject *_wrap_GridFunction_idiv(PyObject *SWIGUNUSEDPARM(self), PyO
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GridFunction_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_Save" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_Save" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    }
+  }
+  {
+    try {
+      mfem_GridFunction_Save__SWIG_1(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GridFunction_Save(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_Save", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if ((argc >= 2) && (argc <= 3)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_GridFunction_Save__SWIG_1(self, argc, argv);
+        }
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_GridFunction_Save__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        //std::string *ptr2 = (std::string *)0;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          if (!PyString_Check(argv[1]) && !PyUnicode_Check(argv[1])) {
+            // not string
+            _v = 1;	   	
+            PyObject* module = PyImport_ImportModule("io");
+            if (!module){
+              _v = 0;	   
+            }      
+            PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+            if (!cls){
+              _v = 0;	   	   
+            }      
+            int check = PyObject_IsInstance(argv[1], cls);
+            Py_DECREF(module);
+            if (! check){
+              _v = 0;	   	   	   
+            }
+          } else {
+            _v = 1;
+          }
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap_GridFunction_Save__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_Save'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::GridFunction::Save(std::ostream &) const\n"
+    "    mfem::GridFunction::Save(char const *,int)\n");
+  return 0;
 }
 
 
@@ -15850,7 +15872,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_QuadratureFunction_Save(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_QuadratureFunction_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::QuadratureFunction *arg1 = (mfem::QuadratureFunction *) 0 ;
   std::ostream *arg2 = 0 ;
@@ -15862,22 +15884,17 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_Save(PyObject *SWIGUNUSEDPARM(self
   PyObject *string_io2 = 0 ;
   std::ostringstream *stream2 = 0 ;
   PyObject *ret2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"out",  NULL 
-  };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:QuadratureFunction_Save", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunction_Save" "', argument " "1"" of type '" "mfem::QuadratureFunction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::QuadratureFunction * >(argp1);
   {
     //  PyMFEM::wFILE or string argument or StringIO
-    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
-      if (!PyString_Check(obj1) && !PyUnicode_Check(obj1)) {
+    if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      if (!PyString_Check(swig_obj[1]) && !PyUnicode_Check(swig_obj[1])) {
         // not string, check if it is StringIO
         PyObject* module = PyImport_ImportModule("io");
         if (!module){
@@ -15889,17 +15906,17 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_Save(PyObject *SWIGUNUSEDPARM(self
           PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
           return NULL;
         }      
-        int check = PyObject_IsInstance(obj1, cls);
+        int check = PyObject_IsInstance(swig_obj[1], cls);
         Py_DECREF(module);
         if (! check){
           SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
           return NULL;
         }
-        string_io2=obj1;
+        string_io2=swig_obj[1];
         stream2 = new std::ostringstream();
       } else {
         // if it is string, extract filename as char*
-        PyObject* str = PyUnicode_AsEncodedString(obj1, "utf-8", "~E~");	
+        PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
         temp2 = new PyMFEM::wFILE(filename, 8, true);
         Py_DECREF(str);	 
@@ -15991,6 +16008,147 @@ fail:
     }
   }
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_QuadratureFunction_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::QuadratureFunction *arg1 = (mfem::QuadratureFunction *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunction_Save" "', argument " "1"" of type '" "mfem::QuadratureFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::QuadratureFunction * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "QuadratureFunction_Save" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    }
+  }
+  {
+    try {
+      mfem_QuadratureFunction_Save__SWIG_1(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_QuadratureFunction_Save(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "QuadratureFunction_Save", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if ((argc >= 2) && (argc <= 3)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__QuadratureFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_QuadratureFunction_Save__SWIG_1(self, argc, argv);
+        }
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_QuadratureFunction_Save__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__QuadratureFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        //std::string *ptr2 = (std::string *)0;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          if (!PyString_Check(argv[1]) && !PyUnicode_Check(argv[1])) {
+            // not string
+            _v = 1;	   	
+            PyObject* module = PyImport_ImportModule("io");
+            if (!module){
+              _v = 0;	   
+            }      
+            PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+            if (!cls){
+              _v = 0;	   	   
+            }      
+            int check = PyObject_IsInstance(argv[1], cls);
+            Py_DECREF(module);
+            if (! check){
+              _v = 0;	   	   	   
+            }
+          } else {
+            _v = 1;
+          }
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap_QuadratureFunction_Save__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'QuadratureFunction_Save'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::QuadratureFunction::Save(std::ostream &) const\n"
+    "    mfem::QuadratureFunction::Save(char const *,int)\n");
+  return 0;
 }
 
 
@@ -16845,10 +17003,6 @@ static PyMethodDef SwigMethods[] = {
 		"GridFunction(Mesh m, mfem::GridFunction *[] gf_array, int num_pieces)\n"
 		"new_GridFunction(FiniteElementSpace fes, Vector v, int offset) -> GridFunction\n"
 		""},
-	 { "GridFunction_Save", _wrap_GridFunction_Save, METH_VARARGS, "\n"
-		"GridFunction_Save(GridFunction self, std::ostream & out)\n"
-		"GridFunction_Save(GridFunction self, char const * gf_file, int const precision)\n"
-		""},
 	 { "GridFunction_SaveToFile", (PyCFunction)(void(*)(void))_wrap_GridFunction_SaveToFile, METH_VARARGS|METH_KEYWORDS, "GridFunction_SaveToFile(GridFunction self, char const * gf_file, int const precision)"},
 	 { "GridFunction_WriteToStream", (PyCFunction)(void(*)(void))_wrap_GridFunction_WriteToStream, METH_VARARGS|METH_KEYWORDS, "GridFunction_WriteToStream(GridFunction self, PyObject * StringIO) -> PyObject *"},
 	 { "GridFunction_iadd", (PyCFunction)(void(*)(void))_wrap_GridFunction_iadd, METH_VARARGS|METH_KEYWORDS, "GridFunction_iadd(GridFunction self, GridFunction c) -> GridFunction"},
@@ -16858,6 +17012,10 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "GridFunction_imul", (PyCFunction)(void(*)(void))_wrap_GridFunction_imul, METH_VARARGS|METH_KEYWORDS, "GridFunction_imul(GridFunction self, double c) -> GridFunction"},
 	 { "GridFunction_idiv", (PyCFunction)(void(*)(void))_wrap_GridFunction_idiv, METH_VARARGS|METH_KEYWORDS, "GridFunction_idiv(GridFunction self, double c) -> GridFunction"},
+	 { "GridFunction_Save", _wrap_GridFunction_Save, METH_VARARGS, "\n"
+		"GridFunction_Save(GridFunction self, std::ostream & out)\n"
+		"GridFunction_Save(GridFunction self, char const * file, int precision=8)\n"
+		""},
 	 { "GridFunction_swigregister", GridFunction_swigregister, METH_O, NULL},
 	 { "GridFunction_swiginit", GridFunction_swiginit, METH_VARARGS, NULL},
 	 { "new_QuadratureFunction", _wrap_new_QuadratureFunction, METH_VARARGS, "\n"
@@ -16886,7 +17044,10 @@ static PyMethodDef SwigMethods[] = {
 		"QuadratureFunction_GetElementValues(QuadratureFunction self, int idx, DenseMatrix values)\n"
 		"QuadratureFunction_GetElementValues(QuadratureFunction self, int idx, DenseMatrix values)\n"
 		""},
-	 { "QuadratureFunction_Save", (PyCFunction)(void(*)(void))_wrap_QuadratureFunction_Save, METH_VARARGS|METH_KEYWORDS, "QuadratureFunction_Save(QuadratureFunction self, std::ostream & out)"},
+	 { "QuadratureFunction_Save", _wrap_QuadratureFunction_Save, METH_VARARGS, "\n"
+		"QuadratureFunction_Save(QuadratureFunction self, std::ostream & out)\n"
+		"QuadratureFunction_Save(QuadratureFunction self, char const * file, int precision=8)\n"
+		""},
 	 { "QuadratureFunction_swigregister", QuadratureFunction_swigregister, METH_O, NULL},
 	 { "QuadratureFunction_swiginit", QuadratureFunction_swiginit, METH_VARARGS, NULL},
 	 { "__lshift__", _wrap___lshift__, METH_VARARGS, "\n"
@@ -17071,10 +17232,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"GridFunction(Mesh m, mfem::GridFunction *[] gf_array, int num_pieces)\n"
 		"new_GridFunction(FiniteElementSpace fes, Vector v, int offset) -> GridFunction\n"
 		""},
-	 { "GridFunction_Save", _wrap_GridFunction_Save, METH_VARARGS, "\n"
-		"Save(GridFunction self, std::ostream & out)\n"
-		"Save(GridFunction self, char const * gf_file, int const precision)\n"
-		""},
 	 { "GridFunction_SaveToFile", (PyCFunction)(void(*)(void))_wrap_GridFunction_SaveToFile, METH_VARARGS|METH_KEYWORDS, "SaveToFile(GridFunction self, char const * gf_file, int const precision)"},
 	 { "GridFunction_WriteToStream", (PyCFunction)(void(*)(void))_wrap_GridFunction_WriteToStream, METH_VARARGS|METH_KEYWORDS, "WriteToStream(GridFunction self, PyObject * StringIO) -> PyObject *"},
 	 { "GridFunction_iadd", (PyCFunction)(void(*)(void))_wrap_GridFunction_iadd, METH_VARARGS|METH_KEYWORDS, "iadd(GridFunction self, GridFunction c) -> GridFunction"},
@@ -17084,6 +17241,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "GridFunction_imul", (PyCFunction)(void(*)(void))_wrap_GridFunction_imul, METH_VARARGS|METH_KEYWORDS, "imul(GridFunction self, double c) -> GridFunction"},
 	 { "GridFunction_idiv", (PyCFunction)(void(*)(void))_wrap_GridFunction_idiv, METH_VARARGS|METH_KEYWORDS, "idiv(GridFunction self, double c) -> GridFunction"},
+	 { "GridFunction_Save", _wrap_GridFunction_Save, METH_VARARGS, "\n"
+		"Save(GridFunction self, std::ostream & out)\n"
+		"Save(GridFunction self, char const * file, int precision=8)\n"
+		""},
 	 { "GridFunction_swigregister", GridFunction_swigregister, METH_O, NULL},
 	 { "GridFunction_swiginit", GridFunction_swiginit, METH_VARARGS, NULL},
 	 { "new_QuadratureFunction", _wrap_new_QuadratureFunction, METH_VARARGS, "\n"
@@ -17112,7 +17273,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"GetElementValues(QuadratureFunction self, int idx, DenseMatrix values)\n"
 		"GetElementValues(QuadratureFunction self, int idx, DenseMatrix values)\n"
 		""},
-	 { "QuadratureFunction_Save", (PyCFunction)(void(*)(void))_wrap_QuadratureFunction_Save, METH_VARARGS|METH_KEYWORDS, "Save(QuadratureFunction self, std::ostream & out)"},
+	 { "QuadratureFunction_Save", _wrap_QuadratureFunction_Save, METH_VARARGS, "\n"
+		"Save(QuadratureFunction self, std::ostream & out)\n"
+		"Save(QuadratureFunction self, char const * file, int precision=8)\n"
+		""},
 	 { "QuadratureFunction_swigregister", QuadratureFunction_swigregister, METH_O, NULL},
 	 { "QuadratureFunction_swiginit", QuadratureFunction_swiginit, METH_VARARGS, NULL},
 	 { "__lshift__", _wrap___lshift__, METH_VARARGS, "\n"

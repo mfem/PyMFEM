@@ -7,7 +7,8 @@
 #include <fstream>  
 #include <iostream>
 #include <stdio.h>  
-#include "../common/io_stream.hpp"    
+#include "../common/io_stream.hpp"
+#include "general/zstr.hpp"  
 #include "general/array.hpp"
 #include "numpy/arrayobject.h"
 %}
