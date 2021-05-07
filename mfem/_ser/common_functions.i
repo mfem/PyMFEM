@@ -3,6 +3,7 @@
 %{
 #include <iostream>
 #include <fstream>
+#include "general/zstr.hpp"  
 #include "../common/io_stream.hpp"          
 #include "linalg/sparsemat.hpp"
 #include "linalg/densemat.hpp"

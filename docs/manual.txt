@@ -391,7 +391,7 @@ to find more details of the MFEM library.
 
          methods which takes std::ostream& are wrapped so that it accept
 	 either
-	   1) filename
+	   1) filename (if it ends with .gz, it uses compression)
 	   2) mfem.STDOUT
 	   3) StringIO
 

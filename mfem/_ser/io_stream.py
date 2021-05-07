@@ -92,6 +92,11 @@ class wFILE(object):
         return _io_stream.wFILE_getFilename(self)
     getFilename = _swig_new_instance_method(_io_stream.wFILE_getFilename)
 
+    def isGZ(self):
+        r"""isGZ(wFILE self) -> bool"""
+        return _io_stream.wFILE_isGZ(self)
+    isGZ = _swig_new_instance_method(_io_stream.wFILE_isGZ)
+
     def getPrecision(self):
         r"""getPrecision(wFILE self) -> int"""
         return _io_stream.wFILE_getPrecision(self)

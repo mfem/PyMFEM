@@ -3279,6 +3279,29 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_wFILE_isGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyMFEM::wFILE *arg1 = (PyMFEM::wFILE *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PyMFEM__wFILE, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "wFILE_isGZ" "', argument " "1"" of type '" "PyMFEM::wFILE *""'"); 
+  }
+  arg1 = reinterpret_cast< PyMFEM::wFILE * >(argp1);
+  result = (bool)(arg1)->isGZ();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_wFILE_getPrecision(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PyMFEM::wFILE *arg1 = (PyMFEM::wFILE *) 0 ;
@@ -3378,6 +3401,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "wFILE_isSTDOUT", _wrap_wFILE_isSTDOUT, METH_O, "wFILE_isSTDOUT(wFILE self) -> int"},
 	 { "wFILE_isTemporary", _wrap_wFILE_isTemporary, METH_O, "wFILE_isTemporary(wFILE self) -> bool"},
 	 { "wFILE_getFilename", _wrap_wFILE_getFilename, METH_O, "wFILE_getFilename(wFILE self) -> char *"},
+	 { "wFILE_isGZ", _wrap_wFILE_isGZ, METH_O, "wFILE_isGZ(wFILE self) -> bool"},
 	 { "wFILE_getPrecision", _wrap_wFILE_getPrecision, METH_O, "wFILE_getPrecision(wFILE self) -> int"},
 	 { "wFILE_setPrecision", (PyCFunction)(void(*)(void))_wrap_wFILE_setPrecision, METH_VARARGS|METH_KEYWORDS, "wFILE_setPrecision(wFILE self, int precision)"},
 	 { "delete_wFILE", _wrap_delete_wFILE, METH_O, "delete_wFILE(wFILE self)"},
@@ -3396,6 +3420,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "wFILE_isSTDOUT", _wrap_wFILE_isSTDOUT, METH_O, "isSTDOUT(wFILE self) -> int"},
 	 { "wFILE_isTemporary", _wrap_wFILE_isTemporary, METH_O, "isTemporary(wFILE self) -> bool"},
 	 { "wFILE_getFilename", _wrap_wFILE_getFilename, METH_O, "getFilename(wFILE self) -> char *"},
+	 { "wFILE_isGZ", _wrap_wFILE_isGZ, METH_O, "isGZ(wFILE self) -> bool"},
 	 { "wFILE_getPrecision", _wrap_wFILE_getPrecision, METH_O, "getPrecision(wFILE self) -> int"},
 	 { "wFILE_setPrecision", (PyCFunction)(void(*)(void))_wrap_wFILE_setPrecision, METH_VARARGS|METH_KEYWORDS, "setPrecision(wFILE self, int precision)"},
 	 { "delete_wFILE", _wrap_delete_wFILE, METH_O, "delete_wFILE(wFILE self)"},

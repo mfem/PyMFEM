@@ -5,6 +5,7 @@
 #include <limits>
 #include <cmath>
 #include <cstring>
+#include "general/zstr.hpp"  
 #include "linalg/handle.hpp"  
 #include "linalg/sparsemat.hpp"
 #include "numpy/arrayobject.h"
