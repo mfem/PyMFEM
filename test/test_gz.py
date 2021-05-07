@@ -58,6 +58,12 @@ def run_test():
     gf2.Load("out_test_gz.dat", gf.Size())
     odata2 = gf2.GetDataArray().copy()
     check(odata, odata2, ".dat file does not agree with original")
+
+    gf.Print("out_test_gz.dat.gz")
+    gf2.Load("out_test_gz.dat.gz", gf.Size())
+    odata2 = gf2.GetDataArray().copy()
+    check(odata, odata2, ".dat file does not agree with original")
+    
     
     c = mfem.ConstantCoefficient(2.0)
     gf.ProjectCoefficient(c)
