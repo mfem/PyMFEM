@@ -63,7 +63,7 @@ jobs:
           fi	  
           CWD=$PWD
           ls -l
-	  yum install zlib-devel
+          yum install zlib-devel
           python3 setup.py install
           rm -rf dist/*
           python3 setup.py bdist_wheel
