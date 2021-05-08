@@ -73,7 +73,7 @@ class wFILE(object):
     def __init__(self, *args):
         r"""
         __init__(wFILE self) -> wFILE
-        __init__(wFILE self, char const * filename, int precision=8) -> wFILE
+        __init__(wFILE self, char const * filename, int precision=8, bool temporary=False) -> wFILE
         """
         _io_stream.wFILE_swiginit(self, _io_stream.new_wFILE(*args))
 
@@ -82,10 +82,20 @@ class wFILE(object):
         return _io_stream.wFILE_isSTDOUT(self)
     isSTDOUT = _swig_new_instance_method(_io_stream.wFILE_isSTDOUT)
 
+    def isTemporary(self):
+        r"""isTemporary(wFILE self) -> bool"""
+        return _io_stream.wFILE_isTemporary(self)
+    isTemporary = _swig_new_instance_method(_io_stream.wFILE_isTemporary)
+
     def getFilename(self):
         r"""getFilename(wFILE self) -> char *"""
         return _io_stream.wFILE_getFilename(self)
     getFilename = _swig_new_instance_method(_io_stream.wFILE_getFilename)
+
+    def isGZ(self):
+        r"""isGZ(wFILE self) -> bool"""
+        return _io_stream.wFILE_isGZ(self)
+    isGZ = _swig_new_instance_method(_io_stream.wFILE_isGZ)
 
     def getPrecision(self):
         r"""getPrecision(wFILE self) -> int"""
@@ -102,7 +112,7 @@ class wFILE(object):
 _io_stream.wFILE_swigregister(wFILE)
 
 
-STDOUT = wFILE('__stdout__', 8)
+STDOUT = wFILE()
 
 
 

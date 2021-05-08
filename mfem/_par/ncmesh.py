@@ -95,6 +95,7 @@ import mfem._par.hypre
 import mfem._par.restriction
 import mfem._par.bilininteg
 import mfem._par.linearform
+import mfem._par.nonlininteg
 class Refinement(object):
     r"""Proxy of C++ mfem::Refinement class."""
 

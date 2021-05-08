@@ -8,7 +8,6 @@
 %init %{
 import_array();
 %}
-%include "../common/cpointers.i"
 %include "exception.i"
 
 %import "globals.i"
@@ -72,11 +71,18 @@ namespace mfem {
    %}
 %pythonprepend MixedBilinearForm::AddBoundaryIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
+    bfi = args[0]	     
     self._integrators.append(bfi)
     bfi.thisown=0 
    %} 
 %pythonprepend MixedBilinearForm::AddTraceFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
+    self._integrators.append(bfi)
+    bfi.thisown=0 
+   %}
+%pythonprepend MixedBilinearForm::AddBdrTraceFaceIntegrator %{
+    if not hasattr(self, "_integrators"): self._integrators = []
+    bfi = args[0]	     
     self._integrators.append(bfi)
     bfi.thisown=0 
    %} 

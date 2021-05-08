@@ -1,4 +1,12 @@
 %module(package="mfem._ser", directors="0")  gridfunc
+%feature("autodoc", "1");
+
+%begin %{
+#ifndef PY_SSIZE_T_CLEAN  
+#define PY_SSIZE_T_CLEAN
+#endif
+%}
+
 %{
   #include "fem/linearform.hpp"
   #include "fem/gridfunc.hpp"
@@ -12,16 +20,14 @@
   #include <ctime>
   #include "pycoefficient.hpp"
   #include "numpy/arrayobject.h"
-  #include "io_stream.hpp"          
+  #include "../common/io_stream.hpp"          
 %}
 // initialization required to return numpy array from SWIG
 %init %{
 import_array();
 %}
 
-%include "../common/cpointers.i"
 %include "exception.i"
-
 %include "std_string.i"
 
 %import "array.i"
@@ -41,6 +47,7 @@ import_array();
 
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
+ISTREAM_TYPEMAP(std::istream&)
 
 %rename(Assign) mfem::GridFunction::operator=;
 
@@ -90,16 +97,7 @@ def GetNodalValues(self, *args):
 
 namespace mfem{
 %extend GridFunction{
-GridFunction(Mesh *m, const char *grid_file){
-   mfem::GridFunction *gf;
-   std::ifstream igrid(grid_file);
-   if (!igrid) {
-      std::cerr << "\nCan not open grid function file: " << grid_file << '\n' << std::endl;
-      return NULL;
-   }
-   gf = new mfem::GridFunction(m, igrid);
-   return gf;
-}
+     
 GridFunction(mfem::FiniteElementSpace *fes, const mfem::Vector &v, int offset){
    mfem::GridFunction *gf;   
    gf = new mfem::GridFunction(fes, v.GetData() + offset);
@@ -113,7 +111,7 @@ void SaveToFile(const char *gf_file, const int precision) const
         mesh_ofs.precision(precision);
         self->Save(mesh_ofs);	
    }
- 
+
 PyObject* WriteToStream(PyObject* StringIO) const  {
     PyObject* module = PyImport_ImportModule("io");
     if (!module){
@@ -169,8 +167,7 @@ GridFunction & idiv(double c)
       * self /= c;
       return *self;
    }
-  }
-   
+  }  
 }
 
 %pythoncode %{
@@ -190,24 +187,21 @@ def __imul__(self, v):
     ret = _gridfunc.GridFunction_imul(self, v)
     ret.thisown = 0
     return self
-      
+
 GridFunction.__iadd__  = __iadd__
 GridFunction.__idiv__  = __idiv__
 GridFunction.__isub__  = __isub__
 GridFunction.__imul__  = __imul__      
 %} 
 
-
 /*
 fem/gridfunc.hpp:   virtual void Save(std::ostream &out) const;
 fem/gridfunc.hpp:   void Save(std::ostream &out) const;
-
-fem/gridfunc.hpp:   void SaveSTLTri(std::ostream &out, double p1[], double p2[], double p3[]);
 fem/gridfunc.hpp:   void SaveVTK(std::ostream &out, const std::string &field_name, int ref);
 fem/gridfunc.hpp:   void SaveSTL(std::ostream &out, int TimesToRefine = 1);
 */
-
+#ifndef SWIGIMPORTED
 OSTREAM_ADD_DEFAULT_FILE(GridFunction, Save)
 OSTREAM_ADD_DEFAULT_FILE(QuadratureFunction, Save)
-
-
+#endif   
+  

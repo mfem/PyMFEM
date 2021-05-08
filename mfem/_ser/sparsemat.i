@@ -5,16 +5,21 @@
 #include <limits>
 #include <cmath>
 #include <cstring>
+#include "general/zstr.hpp"  
 #include "linalg/handle.hpp"  
 #include "linalg/sparsemat.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
-#include "io_stream.hpp"  
+#include "../common/io_stream.hpp"  
 %}
 // initialization required to return numpy array from SWIG
+%begin %{
+#define PY_SSIZE_T_CLEAN
+%}
 %init %{
 import_array();
 %}
+
 %include "exception.i"
 %import "mem_manager.i"
 

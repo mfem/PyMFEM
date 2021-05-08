@@ -3319,7 +3319,7 @@ namespace swig {
 #include "fem/intrules.hpp"
 #include "fem/eltrans.hpp"
 #include "numpy/arrayobject.h"
-#include "io_stream.hpp"
+#include "../common/io_stream.hpp"
 
 
 SWIGINTERNINLINE PyObject*
@@ -7935,7 +7935,11 @@ SWIGINTERN PyObject *_wrap_FaceElementTransformations_CheckConsistency(PyObject 
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp3 = 0 ;
-  std::ofstream out3 ;
+  std::ofstream out_txt3 ;
+  mfem::ofgzstream *out_gz3 = 0 ;
+  PyObject *string_io3 = 0 ;
+  std::ostringstream *stream3 = 0 ;
+  PyObject *ret3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -7960,18 +7964,53 @@ SWIGINTERN PyObject *_wrap_FaceElementTransformations_CheckConsistency(PyObject 
   }
   if (obj2) {
     {
+      //  PyMFEM::wFILE or string argument or StringIO
       if (SWIG_ConvertPtr(obj2, (void **) &temp3, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
-        SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
-        return NULL;
-      }  
-      
-      if (temp3->isSTDOUT() == 1) {
-        arg3 = &std::cout;
+        if (!PyString_Check(obj2) && !PyUnicode_Check(obj2)) {
+          // not string, check if it is StringIO
+          PyObject* module = PyImport_ImportModule("io");
+          if (!module){
+            PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+            return NULL;
+          }      
+          PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+          if (!cls){
+            PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+            return NULL;
+          }      
+          int check = PyObject_IsInstance(obj2, cls);
+          Py_DECREF(module);
+          if (! check){
+            SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
+            return NULL;
+          }
+          string_io3=obj2;
+          stream3 = new std::ostringstream();
+        } else {
+          // if it is string, extract filename as char*
+          PyObject* str = PyUnicode_AsEncodedString(obj2, "utf-8", "~E~");	
+          const char* filename = PyBytes_AsString(str);
+          temp3 = new PyMFEM::wFILE(filename, 8, true);
+          Py_DECREF(str);	 
+        }
       }
-      else {
-        out3.open(temp3->getFilename());
-        out3.precision(temp3->getPrecision());
-        arg3 = &out3;
+      
+      if (stream3 == 0){
+        if (temp3->isSTDOUT() == 1) {
+          arg3 = &std::cout;
+        } else if (temp3->isGZ()){
+          out_gz3 = new mfem::ofgzstream(temp3->getFilename(), true);
+          arg3 = out_gz3;	     
+        } else {
+          out_txt3.open(temp3->getFilename());
+          out_txt3.precision(temp3->getPrecision());
+          arg3 = &out_txt3;
+        }
+        if (temp3->isTemporary()){
+          delete temp3;
+        }
+      } else {
+        arg3 = stream3;
       }
     }
   }
@@ -7996,18 +8035,48 @@ SWIGINTERN PyObject *_wrap_FaceElementTransformations_CheckConsistency(PyObject 
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
   {
-    if (temp3) {
-      if (temp3->isSTDOUT() != 1) {
-        out3.close();
+    if (stream3) {
+      std::string str =  stream3->str();
+      const char* s = str.c_str();
+      const int n = str.length();
+      ret3 = PyObject_CallMethod(string_io3, "write", "s#",
+        s, static_cast<Py_ssize_t>(n));
+      if (PyErr_Occurred()) {
+        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
+        return NULL;
+      }
+      delete stream3;
+      Py_XDECREF(resultobj);   /* Blow away any previous result */
+      resultobj = ret3;    
+    }
+  }
+  {
+    if (!stream3) {
+      if (temp3) {
+        if (temp3->isSTDOUT() != 1) {
+          if (out_txt3.is_open()){
+            out_txt3.close();
+          }
+          if (out_gz3){
+            delete out_gz3;
+          }
+        }
       }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp3) {
-      if (temp3->isSTDOUT() != 1) {
-        out3.close();
+    if (!stream3) {
+      if (temp3) {
+        if (temp3->isSTDOUT() != 1) {
+          if (out_txt3.is_open()){
+            out_txt3.close();
+          }
+          if (out_gz3){
+            delete out_gz3;
+          }
+        }
       }
     }
   }

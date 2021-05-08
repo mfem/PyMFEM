@@ -95,6 +95,7 @@ import mfem._par.handle
 import mfem._par.hypre
 import mfem._par.bilininteg
 import mfem._par.linearform
+import mfem._par.nonlininteg
 L2FaceValues_SingleValued = _restriction.L2FaceValues_SingleValued
 
 L2FaceValues_DoubleValued = _restriction.L2FaceValues_DoubleValued

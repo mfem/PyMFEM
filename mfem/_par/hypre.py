@@ -1038,6 +1038,45 @@ class HypreEuclid(HypreSolver):
 # Register HypreEuclid in _hypre:
 _hypre.HypreEuclid_swigregister(HypreEuclid)
 
+class HypreILU(HypreSolver):
+    r"""Proxy of C++ mfem::HypreILU class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        r"""__init__(HypreILU self) -> HypreILU"""
+        _hypre.HypreILU_swiginit(self, _hypre.new_HypreILU())
+    __swig_destroy__ = _hypre.delete_HypreILU
+
+    def SetLevelOfFill(self, lev_fill):
+        r"""SetLevelOfFill(HypreILU self, HYPRE_Int lev_fill)"""
+        return _hypre.HypreILU_SetLevelOfFill(self, lev_fill)
+    SetLevelOfFill = _swig_new_instance_method(_hypre.HypreILU_SetLevelOfFill)
+
+    def SetPrintLevel(self, print_level):
+        r"""SetPrintLevel(HypreILU self, HYPRE_Int print_level)"""
+        return _hypre.HypreILU_SetPrintLevel(self, print_level)
+    SetPrintLevel = _swig_new_instance_method(_hypre.HypreILU_SetPrintLevel)
+
+    def SetOperator(self, op):
+        r"""SetOperator(HypreILU self, Operator op)"""
+        return _hypre.HypreILU_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_hypre.HypreILU_SetOperator)
+
+    def SetupFcn(self):
+        r"""SetupFcn(HypreILU self) -> HYPRE_PtrToParSolverFcn"""
+        return _hypre.HypreILU_SetupFcn(self)
+    SetupFcn = _swig_new_instance_method(_hypre.HypreILU_SetupFcn)
+
+    def SolveFcn(self):
+        r"""SolveFcn(HypreILU self) -> HYPRE_PtrToParSolverFcn"""
+        return _hypre.HypreILU_SolveFcn(self)
+    SolveFcn = _swig_new_instance_method(_hypre.HypreILU_SolveFcn)
+
+# Register HypreILU in _hypre:
+_hypre.HypreILU_swigregister(HypreILU)
+
 class HypreBoomerAMG(HypreSolver):
     r"""Proxy of C++ mfem::HypreBoomerAMG class."""
 

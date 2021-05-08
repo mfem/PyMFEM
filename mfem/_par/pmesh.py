@@ -114,6 +114,7 @@ import mfem._par.hypre
 import mfem._par.restriction
 import mfem._par.bilininteg
 import mfem._par.linearform
+import mfem._par.nonlininteg
 import mfem._par.pncmesh
 import mfem._par.communication
 import mfem._par.sets
@@ -122,6 +123,15 @@ class ParMesh(mfem._par.mesh.Mesh):
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        r"""
+        __init__(ParMesh self, ParMesh pmesh, bool copy_nodes=True) -> ParMesh
+        __init__(ParMesh self, MPI_Comm comm, Mesh mesh, int * partitioning_=None, int part_method=1) -> ParMesh
+        __init__(ParMesh self, MPI_Comm comm, std::istream & input, bool refine=True) -> ParMesh
+        __init__(ParMesh self, ParMesh orig_mesh, int ref_factor, int ref_type) -> ParMesh
+        """
+        _pmesh.ParMesh_swiginit(self, _pmesh.new_ParMesh(*args))
 
     def Finalize(self, refine=False, fix_orientation=False):
         r"""Finalize(ParMesh self, bool refine=False, bool fix_orientation=False)"""
@@ -338,16 +348,6 @@ class ParMesh(mfem._par.mesh.Mesh):
         return _pmesh.ParMesh_PrintSharedEntities(self, fname_prefix)
     PrintSharedEntities = _swig_new_instance_method(_pmesh.ParMesh_PrintSharedEntities)
     __swig_destroy__ = _pmesh.delete_ParMesh
-
-    def __init__(self, *args):
-        r"""
-        __init__(ParMesh self, ParMesh pmesh, bool copy_nodes=True) -> ParMesh
-        __init__(ParMesh self, MPI_Comm comm, Mesh mesh, int * partitioning_=None, int part_method=1) -> ParMesh
-        __init__(ParMesh self, MPI_Comm comm, std::istream & input, bool refine=True) -> ParMesh
-        __init__(ParMesh self, ParMesh orig_mesh, int ref_factor, int ref_type) -> ParMesh
-        __init__(ParMesh self, MPI_Comm comm, char const * mesh_file) -> ParMesh
-        """
-        _pmesh.ParMesh_swiginit(self, _pmesh.new_ParMesh(*args))
 
     def ParPrintToFile(self, mesh_file, precision):
         r"""ParPrintToFile(ParMesh self, char const * mesh_file, int const precision)"""

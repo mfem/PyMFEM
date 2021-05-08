@@ -3,7 +3,7 @@
 %{
 #include <fstream>  
 #include <iostream>
-#include "io_stream.hpp"      
+#include "../common/io_stream.hpp"      
 #include "config/config.hpp"  
 #include "linalg/hypre.hpp"
 #include "linalg/handle.hpp"  
@@ -38,9 +38,6 @@ import_array();
 #ifdef MFEM_USE_PETSC
 %include "petsc.i"
 #endif
-
-//
-%pointer_class(int, intp);
 
 %import "mem_manager.i"
 

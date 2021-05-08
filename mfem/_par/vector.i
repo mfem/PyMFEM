@@ -12,12 +12,16 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "io_stream.hpp"             
+#include "../common/io_stream.hpp"
+#include "general/zstr.hpp"  
 #include "numpy/arrayobject.h"
 #include "linalg/vector.hpp"  
 %}
 
 // initialization required to return numpy array from SWIG
+%begin %{
+#define PY_SSIZE_T_CLEAN
+%}
 %init %{
 import_array();
 %}
@@ -33,6 +37,7 @@ import_array();
 
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
+ISTREAM_TYPEMAP(std::istream&)
 
 ARRAY_TO_DOUBLEARRAY_IN(double *_data)
 

@@ -10,17 +10,17 @@ if _swig_python_version_info < (2, 7, 0):
 
 # Import the low-level C/C++ module
 if __package__ or "." in __name__:
-    from . import _io_stream
+    from . import _cpointers
 else:
-    import _io_stream
+    import _cpointers
 
 try:
     import builtins as __builtin__
 except ImportError:
     import __builtin__
 
-_swig_new_instance_method = _io_stream.SWIG_PyInstanceMethod_New
-_swig_new_static_method = _io_stream.SWIG_PyStaticMethod_New
+_swig_new_instance_method = _cpointers.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _cpointers.SWIG_PyStaticMethod_New
 
 def _swig_repr(self):
     try:
@@ -64,55 +64,69 @@ class _SwigNonDynamicMeta(type):
     __setattr__ = _swig_setattr_nondynamic_class_variable(type.__setattr__)
 
 
-class wFILE(object):
-    r"""Proxy of C++ PyMFEM::wFILE class."""
-
+class intp(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
-        r"""
-        __init__(wFILE self) -> wFILE
-        __init__(wFILE self, char const * filename, int precision=8, bool temporary=False) -> wFILE
-        """
-        _io_stream.wFILE_swiginit(self, _io_stream.new_wFILE(*args))
+    def __init__(self):
+        _cpointers.intp_swiginit(self, _cpointers.new_intp())
+    __swig_destroy__ = _cpointers.delete_intp
 
-    def isSTDOUT(self):
-        r"""isSTDOUT(wFILE self) -> int"""
-        return _io_stream.wFILE_isSTDOUT(self)
-    isSTDOUT = _swig_new_instance_method(_io_stream.wFILE_isSTDOUT)
+    def assign(self, value):
+        return _cpointers.intp_assign(self, value)
+    assign = _swig_new_instance_method(_cpointers.intp_assign)
 
-    def isTemporary(self):
-        r"""isTemporary(wFILE self) -> bool"""
-        return _io_stream.wFILE_isTemporary(self)
-    isTemporary = _swig_new_instance_method(_io_stream.wFILE_isTemporary)
+    def value(self):
+        return _cpointers.intp_value(self)
+    value = _swig_new_instance_method(_cpointers.intp_value)
 
-    def getFilename(self):
-        r"""getFilename(wFILE self) -> char *"""
-        return _io_stream.wFILE_getFilename(self)
-    getFilename = _swig_new_instance_method(_io_stream.wFILE_getFilename)
+    def cast(self):
+        return _cpointers.intp_cast(self)
+    cast = _swig_new_instance_method(_cpointers.intp_cast)
 
-    def isGZ(self):
-        r"""isGZ(wFILE self) -> bool"""
-        return _io_stream.wFILE_isGZ(self)
-    isGZ = _swig_new_instance_method(_io_stream.wFILE_isGZ)
+    @staticmethod
+    def frompointer(t):
+        return _cpointers.intp_frompointer(t)
+    frompointer = _swig_new_static_method(_cpointers.intp_frompointer)
 
-    def getPrecision(self):
-        r"""getPrecision(wFILE self) -> int"""
-        return _io_stream.wFILE_getPrecision(self)
-    getPrecision = _swig_new_instance_method(_io_stream.wFILE_getPrecision)
+# Register intp in _cpointers:
+_cpointers.intp_swigregister(intp)
 
-    def setPrecision(self, precision):
-        r"""setPrecision(wFILE self, int precision)"""
-        return _io_stream.wFILE_setPrecision(self, precision)
-    setPrecision = _swig_new_instance_method(_io_stream.wFILE_setPrecision)
-    __swig_destroy__ = _io_stream.delete_wFILE
+def intp_frompointer(t):
+    return _cpointers.intp_frompointer(t)
+intp_frompointer = _cpointers.intp_frompointer
 
-# Register wFILE in _io_stream:
-_io_stream.wFILE_swigregister(wFILE)
+class doublep(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
 
+    def __init__(self):
+        _cpointers.doublep_swiginit(self, _cpointers.new_doublep())
+    __swig_destroy__ = _cpointers.delete_doublep
 
-STDOUT = wFILE()
+    def assign(self, value):
+        return _cpointers.doublep_assign(self, value)
+    assign = _swig_new_instance_method(_cpointers.doublep_assign)
+
+    def value(self):
+        return _cpointers.doublep_value(self)
+    value = _swig_new_instance_method(_cpointers.doublep_value)
+
+    def cast(self):
+        return _cpointers.doublep_cast(self)
+    cast = _swig_new_instance_method(_cpointers.doublep_cast)
+
+    @staticmethod
+    def frompointer(t):
+        return _cpointers.doublep_frompointer(t)
+    frompointer = _swig_new_static_method(_cpointers.doublep_frompointer)
+
+# Register doublep in _cpointers:
+_cpointers.doublep_swigregister(doublep)
+
+def doublep_frompointer(t):
+    return _cpointers.doublep_frompointer(t)
+doublep_frompointer = _cpointers.doublep_frompointer
 
 
 

@@ -93,6 +93,7 @@ import mfem._par.bilininteg
 import mfem._par.fe_coll
 import mfem._par.lininteg
 import mfem._par.linearform
+import mfem._par.nonlininteg
 import mfem._par.handle
 import mfem._par.hypre
 import mfem._par.restriction
@@ -620,6 +621,7 @@ class MixedBilinearForm(mfem._par.matrix.Matrix):
         """
 
         if not hasattr(self, "_integrators"): self._integrators = []
+        bfi = args[0]	     
         self._integrators.append(bfi)
         bfi.thisown=0 
 
@@ -643,8 +645,15 @@ class MixedBilinearForm(mfem._par.matrix.Matrix):
         AddBdrTraceFaceIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi)
         AddBdrTraceFaceIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi, intArray bdr_marker)
         """
+
+        if not hasattr(self, "_integrators"): self._integrators = []
+        bfi = args[0]	     
+        self._integrators.append(bfi)
+        bfi.thisown=0 
+
+
         return _bilinearform.MixedBilinearForm_AddBdrTraceFaceIntegrator(self, *args)
-    AddBdrTraceFaceIntegrator = _swig_new_instance_method(_bilinearform.MixedBilinearForm_AddBdrTraceFaceIntegrator)
+
 
     def GetDBFI(self):
         r"""GetDBFI(MixedBilinearForm self) -> mfem::Array< mfem::BilinearFormIntegrator * > *"""

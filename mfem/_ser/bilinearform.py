@@ -66,70 +66,6 @@ class _SwigNonDynamicMeta(type):
 
 import weakref
 
-class intp(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self):
-        _bilinearform.intp_swiginit(self, _bilinearform.new_intp())
-    __swig_destroy__ = _bilinearform.delete_intp
-
-    def assign(self, value):
-        return _bilinearform.intp_assign(self, value)
-    assign = _swig_new_instance_method(_bilinearform.intp_assign)
-
-    def value(self):
-        return _bilinearform.intp_value(self)
-    value = _swig_new_instance_method(_bilinearform.intp_value)
-
-    def cast(self):
-        return _bilinearform.intp_cast(self)
-    cast = _swig_new_instance_method(_bilinearform.intp_cast)
-
-    @staticmethod
-    def frompointer(t):
-        return _bilinearform.intp_frompointer(t)
-    frompointer = _swig_new_static_method(_bilinearform.intp_frompointer)
-
-# Register intp in _bilinearform:
-_bilinearform.intp_swigregister(intp)
-
-def intp_frompointer(t):
-    return _bilinearform.intp_frompointer(t)
-intp_frompointer = _bilinearform.intp_frompointer
-
-class doublep(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self):
-        _bilinearform.doublep_swiginit(self, _bilinearform.new_doublep())
-    __swig_destroy__ = _bilinearform.delete_doublep
-
-    def assign(self, value):
-        return _bilinearform.doublep_assign(self, value)
-    assign = _swig_new_instance_method(_bilinearform.doublep_assign)
-
-    def value(self):
-        return _bilinearform.doublep_value(self)
-    value = _swig_new_instance_method(_bilinearform.doublep_value)
-
-    def cast(self):
-        return _bilinearform.doublep_cast(self)
-    cast = _swig_new_instance_method(_bilinearform.doublep_cast)
-
-    @staticmethod
-    def frompointer(t):
-        return _bilinearform.doublep_frompointer(t)
-    frompointer = _swig_new_static_method(_bilinearform.doublep_frompointer)
-
-# Register doublep in _bilinearform:
-_bilinearform.doublep_swigregister(doublep)
-
-def doublep_frompointer(t):
-    return _bilinearform.doublep_frompointer(t)
-doublep_frompointer = _bilinearform.doublep_frompointer
-
 import mfem._ser.globals
 import mfem._ser.mem_manager
 import mfem._ser.array
@@ -688,6 +624,7 @@ class MixedBilinearForm(mfem._ser.matrix.Matrix):
         """
 
         if not hasattr(self, "_integrators"): self._integrators = []
+        bfi = args[0]	     
         self._integrators.append(bfi)
         bfi.thisown=0 
 
@@ -711,8 +648,15 @@ class MixedBilinearForm(mfem._ser.matrix.Matrix):
         AddBdrTraceFaceIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi)
         AddBdrTraceFaceIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi, intArray bdr_marker)
         """
+
+        if not hasattr(self, "_integrators"): self._integrators = []
+        bfi = args[0]	     
+        self._integrators.append(bfi)
+        bfi.thisown=0 
+
+
         return _bilinearform.MixedBilinearForm_AddBdrTraceFaceIntegrator(self, *args)
-    AddBdrTraceFaceIntegrator = _swig_new_instance_method(_bilinearform.MixedBilinearForm_AddBdrTraceFaceIntegrator)
+
 
     def GetDBFI(self):
         r"""GetDBFI(MixedBilinearForm self) -> mfem::Array< mfem::BilinearFormIntegrator * > *"""

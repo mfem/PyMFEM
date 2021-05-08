@@ -6,24 +6,31 @@
 %module(package="mfem._ser") vector
 %feature("autodoc", "1");
 %{
+#include "linalg/vector.hpp"  
 #include <sstream>
 #include <fstream>
+#include <iostream>
 #include <limits>
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "io_stream.hpp"        
 #include "mfem.hpp"  
-#include "linalg/vector.hpp"
 #include "numpy/arrayobject.h"
+#include "../common/io_stream.hpp"          
 %}
 
 // initialization required to return numpy array from SWIG
+%begin %{
+#define PY_SSIZE_T_CLEAN
+%}
+
 %init %{
 import_array();
 %}
 
 %include "exception.i"
+%include "std_string.i"
+
 %import "array.i"
 %import "../common/ignore_common_functions.i"
 %import "../common/numpy_int_typemap.i"
@@ -34,6 +41,7 @@ import_array();
 
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
+ISTREAM_TYPEMAP(std::istream&)
 
 ARRAY_TO_DOUBLEARRAY_IN(double *_data)
 
@@ -297,4 +305,6 @@ linalg/vector.hpp:   void Print_HYPRE(std::ostream &out) const;
 #ifndef SWIGIMPORTED
 OSTREAM_ADD_DEFAULT_FILE(Vector, Print)
 OSTREAM_ADD_DEFAULT_STDOUT_FILE(Vector, Print_HYPRE)
-#endif
+#endif  
+
+  

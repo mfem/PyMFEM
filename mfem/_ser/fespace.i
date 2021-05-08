@@ -9,7 +9,7 @@
 #include <cstring>
 #include <ctime>
 
-#include "io_stream.hpp"            
+#include "../common/io_stream.hpp"            
 #include "numpy/arrayobject.h"
 #include "fem/fem.hpp"
 #include "fem/fe_coll.hpp"
@@ -44,6 +44,7 @@ import_array();
 
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
+ISTREAM_TYPEMAP(std::istream&)
 
 // default number is -1, which conflict with error code of PyArray_PyIntAsInt...
 %typemap(typecheck) (int ndofs = -1) {

@@ -15,7 +15,7 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "io_stream.hpp"         
+#include "../common/io_stream.hpp"         
 #include "numpy/arrayobject.h"
 #include "pycoefficient.hpp"
 
@@ -40,7 +40,7 @@
 import_array();
 %}
 
-%include "../common/cpointers.i"
+//%import "cpointers.i"
 %include "exception.i"
 %import "../common/numpy_int_typemap.i"
 %import "pgridfunc.i"

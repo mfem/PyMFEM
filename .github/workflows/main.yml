@@ -103,6 +103,7 @@ jobs:
         echo $PYTHONPATH
         if [ "${USE_CUDA_PARALLEL}" = "00" ]; then  
            python ../examples/ex1.py;
+           python ../examples/ex9.py;	   
         fi
         if [ "${USE_CUDA_PARALLEL}" = "01" ]; then
            which mpicc;

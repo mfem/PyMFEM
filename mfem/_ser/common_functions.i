@@ -3,7 +3,8 @@
 %{
 #include <iostream>
 #include <fstream>
-#include "io_stream.hpp"          
+#include "general/zstr.hpp"  
+#include "../common/io_stream.hpp"          
 #include "linalg/sparsemat.hpp"
 #include "linalg/densemat.hpp"
 #include "linalg/blockmatrix.hpp"

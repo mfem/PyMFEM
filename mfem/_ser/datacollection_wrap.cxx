@@ -3106,29 +3106,27 @@ namespace Swig {
 #define SWIGTYPE_p_QFieldMapType swig_types[6]
 #define SWIGTYPE_p_RefCoord swig_types[7]
 #define SWIGTYPE_p_char swig_types[8]
-#define SWIGTYPE_p_doublep swig_types[9]
-#define SWIGTYPE_p_hex_t swig_types[10]
-#define SWIGTYPE_p_intp swig_types[11]
-#define SWIGTYPE_p_mfem__DataCollection swig_types[12]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[13]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[14]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[15]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[16]
-#define SWIGTYPE_p_mfem__Mesh swig_types[17]
-#define SWIGTYPE_p_mfem__NamedFieldsMapT_mfem__GridFunction_t__MapType swig_types[18]
-#define SWIGTYPE_p_mfem__NamedFieldsMapT_mfem__QuadratureFunction_t__MapType swig_types[19]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[20]
-#define SWIGTYPE_p_mfem__ParaViewDataCollection swig_types[21]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[22]
-#define SWIGTYPE_p_mfem__VisItDataCollection swig_types[23]
-#define SWIGTYPE_p_mfem__VisItFieldInfo swig_types[24]
-#define SWIGTYPE_p_pri_t swig_types[25]
-#define SWIGTYPE_p_quad_t swig_types[26]
-#define SWIGTYPE_p_seg_t swig_types[27]
-#define SWIGTYPE_p_tet_t swig_types[28]
-#define SWIGTYPE_p_tri_t swig_types[29]
-static swig_type_info *swig_types[31];
-static swig_module_info swig_module = {swig_types, 30, 0, 0, 0, 0};
+#define SWIGTYPE_p_hex_t swig_types[9]
+#define SWIGTYPE_p_mfem__DataCollection swig_types[10]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[11]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[12]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[13]
+#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[14]
+#define SWIGTYPE_p_mfem__Mesh swig_types[15]
+#define SWIGTYPE_p_mfem__NamedFieldsMapT_mfem__GridFunction_t__MapType swig_types[16]
+#define SWIGTYPE_p_mfem__NamedFieldsMapT_mfem__QuadratureFunction_t__MapType swig_types[17]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[18]
+#define SWIGTYPE_p_mfem__ParaViewDataCollection swig_types[19]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[20]
+#define SWIGTYPE_p_mfem__VisItDataCollection swig_types[21]
+#define SWIGTYPE_p_mfem__VisItFieldInfo swig_types[22]
+#define SWIGTYPE_p_pri_t swig_types[23]
+#define SWIGTYPE_p_quad_t swig_types[24]
+#define SWIGTYPE_p_seg_t swig_types[25]
+#define SWIGTYPE_p_tet_t swig_types[26]
+#define SWIGTYPE_p_tri_t swig_types[27]
+static swig_type_info *swig_types[29];
+static swig_module_info swig_module = {swig_types, 28, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -7097,9 +7095,7 @@ static swig_type_info _swigt__p_QFieldMapIterator = {"_p_QFieldMapIterator", "QF
 static swig_type_info _swigt__p_QFieldMapType = {"_p_QFieldMapType", "QFieldMapType *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_doublep = {"_p_doublep", "doublep *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_intp = {"_p_intp", "intp *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DataCollection = {"_p_mfem__DataCollection", "mfem::DataCollection *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
@@ -7129,9 +7125,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_QFieldMapType,
   &_swigt__p_RefCoord,
   &_swigt__p_char,
-  &_swigt__p_doublep,
   &_swigt__p_hex_t,
-  &_swigt__p_intp,
   &_swigt__p_mfem__DataCollection,
   &_swigt__p_mfem__GridFunction,
   &_swigt__p_mfem__IntegrationRule,
@@ -7161,9 +7155,7 @@ static swig_cast_info _swigc__p_QFieldMapIterator[] = {  {&_swigt__p_QFieldMapIt
 static swig_cast_info _swigc__p_QFieldMapType[] = {  {&_swigt__p_QFieldMapType, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_doublep[] = {  {&_swigt__p_doublep, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_intp[] = {  {&_swigt__p_intp, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DataCollection[] = {  {&_swigt__p_mfem__DataCollection, 0, 0, 0},  {&_swigt__p_mfem__VisItDataCollection, _p_mfem__VisItDataCollectionTo_p_mfem__DataCollection, 0, 0},  {&_swigt__p_mfem__ParaViewDataCollection, _p_mfem__ParaViewDataCollectionTo_p_mfem__DataCollection, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
@@ -7193,9 +7185,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_QFieldMapType,
   _swigc__p_RefCoord,
   _swigc__p_char,
-  _swigc__p_doublep,
   _swigc__p_hex_t,
-  _swigc__p_intp,
   _swigc__p_mfem__DataCollection,
   _swigc__p_mfem__GridFunction,
   _swigc__p_mfem__IntegrationRule,

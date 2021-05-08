@@ -7,11 +7,15 @@
 #include <fstream>  
 #include <iostream>
 #include <stdio.h>  
-#include "io_stream.hpp"    
+#include "../common/io_stream.hpp"
+#include "general/zstr.hpp"  
 #include "general/array.hpp"
 #include "numpy/arrayobject.h"
 %}
 
+%begin %{
+#define PY_SSIZE_T_CLEAN
+%}
 %init %{
 import_array();
 %}
@@ -21,6 +25,7 @@ import_array();
 
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
+ISTREAM_TYPEMAP(std::istream&)
 
 %import "mem_manager.i"
 

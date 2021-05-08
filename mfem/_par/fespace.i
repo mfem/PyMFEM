@@ -17,7 +17,7 @@
 #include "fem/coefficient.hpp"
 #include "fem/intrules.hpp"  
 #include "fem/restriction.hpp"
-#include "io_stream.hpp"      
+#include "../common/io_stream.hpp"      
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"           
 %}
@@ -46,6 +46,7 @@ import_array();
 
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
+ISTREAM_TYPEMAP(std::istream&)
 
 // default number is -1, which conflict with error code of PyArray_PyIntAsInt...
 INT_DEFAULT_NEGATIVE_ONE(int ndofs = -1)

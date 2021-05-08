@@ -17,15 +17,17 @@ mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 // void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
 #include "numpy/arrayobject.h"
 #include "pycoefficient.hpp"
+#include "../common/io_stream.hpp"   
+%}
 
-#include "io_stream.hpp"   
+%begin %{
+#define PY_SSIZE_T_CLEAN
 %}
 
 %init %{
 import_array();
 %}
 
-%include "../common/cpointers.i"
 %include "exception.i"
 
 %include "std_string.i"
@@ -53,6 +55,7 @@ import_array();
 
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
+ISTREAM_TYPEMAP(std::istream&)
 
 
 // ignore these constructors, since in python element::type is given by 
@@ -332,19 +335,19 @@ def CartesianPartitioning(self, nxyz, return_list=False):
 
 namespace mfem{
 %extend Mesh{
-   Mesh(const char *mesh_file, int generate_edges, int refine,
-        bool fix_orientation = true){
-
-        mfem::Mesh *mesh;
-        std::ifstream imesh(mesh_file);
-        if (!imesh)
-        {
-	  std::cerr << "\nCan not open mesh file: " << mesh_file << '\n' << std::endl;
-   	  return NULL;
-        }
-	mesh = new mfem::Mesh(imesh, generate_edges, refine, fix_orientation);
-	return mesh;
-   }
+    //   Mesh(const char *mesh_file, int generate_edges, int refine,
+    //        bool fix_orientation = true){
+    //
+    //        mfem::Mesh *mesh;
+    //        std::ifstream imesh(mesh_file);
+    //        if (!imesh)
+    //        {
+    //	  std::cerr << "\nCan not open mesh file: " << mesh_file << '\n' << std::endl;
+    //   	  return NULL;
+    //        }
+    //	mesh = new mfem::Mesh(imesh, generate_edges, refine, fix_orientation);
+    //	return mesh;
+    //   }
    Mesh(int nx, int ny, int nz, const char *type, bool generate_edges = 0,
         double sx = 1.0, double sy = 1.0, double sz = 1.0,
 	bool sfc_ordering = true){

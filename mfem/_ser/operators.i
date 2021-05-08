@@ -5,8 +5,9 @@
 %{
 #include <fstream>
 #include <iostream>  
-  
-#include "io_stream.hpp"        
+
+#include "general/zstr.hpp"  
+#include "../common/io_stream.hpp"        
 #include "pyoperator.hpp"
 #include "numpy/arrayobject.h"
 #include "linalg/operator.hpp"  

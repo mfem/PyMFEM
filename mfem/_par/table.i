@@ -5,8 +5,9 @@
 %{
 #include <fstream>  
 #include <iostream>
+#include "general/zstr.hpp"  
 #include "numpy/arrayobject.h"      
-#include "io_stream.hpp"
+#include "../common/io_stream.hpp"
 #include "general/table.hpp"
 %}
 

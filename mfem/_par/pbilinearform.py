@@ -105,6 +105,7 @@ import mfem._par.bilininteg
 import mfem._par.fe_coll
 import mfem._par.lininteg
 import mfem._par.linearform
+import mfem._par.nonlininteg
 import mfem._par.restriction
 import mfem._par.pfespace
 import mfem._par.pmesh

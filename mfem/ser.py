@@ -1,3 +1,4 @@
+from  mfem._ser.cpointers import *
 from  mfem._ser.globals import *
 from  mfem._ser.mem_manager import *
 from  mfem._ser.device import *
@@ -46,6 +47,8 @@ from  mfem._ser.element import *
 from  mfem._ser.nonlininteg import *
 from  mfem._ser.nonlinearform import *
 from  mfem._ser.stable3d import *
+from  mfem._ser.vtk import *
+from  mfem._ser.datacollection import *
 from  mfem._ser.io_stream import wFILE, STDOUT
 
 

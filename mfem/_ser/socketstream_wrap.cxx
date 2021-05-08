@@ -3100,25 +3100,23 @@ namespace Swig {
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
 #define SWIGTYPE_p_RefCoord swig_types[1]
 #define SWIGTYPE_p_char swig_types[2]
-#define SWIGTYPE_p_doublep swig_types[3]
-#define SWIGTYPE_p_hex_t swig_types[4]
-#define SWIGTYPE_p_intp swig_types[5]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[6]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[7]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[8]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[9]
-#define SWIGTYPE_p_mfem__Mesh swig_types[10]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[11]
-#define SWIGTYPE_p_mfem__socketbuf swig_types[12]
-#define SWIGTYPE_p_mfem__socketserver swig_types[13]
-#define SWIGTYPE_p_mfem__socketstream swig_types[14]
-#define SWIGTYPE_p_pri_t swig_types[15]
-#define SWIGTYPE_p_quad_t swig_types[16]
-#define SWIGTYPE_p_seg_t swig_types[17]
-#define SWIGTYPE_p_tet_t swig_types[18]
-#define SWIGTYPE_p_tri_t swig_types[19]
-static swig_type_info *swig_types[21];
-static swig_module_info swig_module = {swig_types, 20, 0, 0, 0, 0};
+#define SWIGTYPE_p_hex_t swig_types[3]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[4]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[5]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[6]
+#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[7]
+#define SWIGTYPE_p_mfem__Mesh swig_types[8]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[9]
+#define SWIGTYPE_p_mfem__socketbuf swig_types[10]
+#define SWIGTYPE_p_mfem__socketserver swig_types[11]
+#define SWIGTYPE_p_mfem__socketstream swig_types[12]
+#define SWIGTYPE_p_pri_t swig_types[13]
+#define SWIGTYPE_p_quad_t swig_types[14]
+#define SWIGTYPE_p_seg_t swig_types[15]
+#define SWIGTYPE_p_tet_t swig_types[16]
+#define SWIGTYPE_p_tri_t swig_types[17]
+static swig_type_info *swig_types[19];
+static swig_module_info swig_module = {swig_types, 18, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3222,7 +3220,7 @@ namespace swig {
 }
 
 
-#include "io_stream.hpp"          
+#include "../common/io_stream.hpp"          
 #include "numpy/arrayobject.h"    
 #include "mesh/mesh_headers.hpp"
 #include "fem/gridfunc.hpp"  
@@ -5613,9 +5611,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_doublep = {"_p_doublep", "doublep *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_intp = {"_p_intp", "intp *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__L2_FECollection = {"_p_mfem__L2_FECollection", "mfem::L2_FECollection *|mfem::DG_FECollection *", 0, 0, (void*)0, 0};
@@ -5635,9 +5631,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_RefCoord,
   &_swigt__p_char,
-  &_swigt__p_doublep,
   &_swigt__p_hex_t,
-  &_swigt__p_intp,
   &_swigt__p_mfem__GridFunction,
   &_swigt__p_mfem__IntegrationRule,
   &_swigt__p_mfem__L2_FECollection,
@@ -5657,9 +5651,7 @@ static swig_type_info *swig_type_initial[] = {
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_doublep[] = {  {&_swigt__p_doublep, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_intp[] = {  {&_swigt__p_intp, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2_FECollection[] = {  {&_swigt__p_mfem__L2_FECollection, 0, 0, 0},{0, 0, 0, 0}};
@@ -5679,9 +5671,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_RefCoord,
   _swigc__p_char,
-  _swigc__p_doublep,
   _swigc__p_hex_t,
-  _swigc__p_intp,
   _swigc__p_mfem__GridFunction,
   _swigc__p_mfem__IntegrationRule,
   _swigc__p_mfem__L2_FECollection,

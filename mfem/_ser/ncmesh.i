@@ -5,7 +5,8 @@
 %{
 #include <fstream>
 #include <iostream>
-#include "io_stream.hpp"           
+#include "../common/io_stream.hpp"
+#include "general/zstr.hpp"  
 #include "mesh/ncmesh.hpp"
 #include "numpy/arrayobject.h"    
 %}
@@ -15,7 +16,6 @@
 %}
 
 %include "exception.i"
-%include "../common/cpointers.i"
 %import "mesh.i"
 %import "array.i"
 %import "fem/geom.hpp"
@@ -23,6 +23,7 @@
 
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
+ISTREAM_TYPEMAP(std::istream&)
 
 %immutable embeddings;
 

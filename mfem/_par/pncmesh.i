@@ -4,7 +4,7 @@
 
 %{
 #include <mpi.h>
-#include "io_stream.hpp"       
+#include "../common/io_stream.hpp"       
 #include "config/config.hpp"
 #include "mesh/mesh_headers.hpp"
 #include "mpi4py/mpi4py.h"
@@ -32,6 +32,7 @@ import_array();
 
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
+ISTREAM_TYPEMAP(std::istream&)
 
 %pointer_class(int, intp);
 

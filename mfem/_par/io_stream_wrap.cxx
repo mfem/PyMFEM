@@ -2799,7 +2799,7 @@ namespace swig {
 #include  "fstream"
 #include  "iostream"
 #include  "string"
-#include  "io_stream.hpp"    
+#include  "../common/io_stream.hpp"    
 
 
 SWIGINTERN swig_type_info*
@@ -3078,10 +3078,31 @@ SWIG_AsVal_int (PyObject * obj, int *val)
 }
 
 
+SWIGINTERN int
+SWIG_AsVal_bool (PyObject *obj, bool *val)
+{
+  int r;
+  if (!PyBool_Check(obj))
+    return SWIG_ERROR;
+  r = PyObject_IsTrue(obj);
+  if (r == -1)
+    return SWIG_ERROR;
+  if (val) *val = r ? true : false;
+  return SWIG_OK;
+}
+
+
 SWIGINTERNINLINE PyObject*
   SWIG_From_int  (int value)
 {
   return PyInt_FromLong((long) value);
+}
+
+
+SWIGINTERNINLINE PyObject*
+  SWIG_From_bool  (bool value)
+{
+  return PyBool_FromLong(value ? 1 : 0);
 }
 
 
@@ -3136,14 +3157,17 @@ SWIGINTERN PyObject *_wrap_new_wFILE__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
   int arg2 = (int) 8 ;
+  bool arg3 = (bool) 0 ;
   int res1 ;
   char *buf1 = 0 ;
   int alloc1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
+  bool val3 ;
+  int ecode3 = 0 ;
   PyMFEM::wFILE *result = 0 ;
   
-  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_wFILE" "', argument " "1"" of type '" "char const *""'");
@@ -3156,7 +3180,14 @@ SWIGINTERN PyObject *_wrap_new_wFILE__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_
     } 
     arg2 = static_cast< int >(val2);
   }
-  result = (PyMFEM::wFILE *)new PyMFEM::wFILE((char const *)arg1,arg2);
+  if (swig_obj[2]) {
+    ecode3 = SWIG_AsVal_bool(swig_obj[2], &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_wFILE" "', argument " "3"" of type '" "bool""'");
+    } 
+    arg3 = static_cast< bool >(val3);
+  }
+  result = (PyMFEM::wFILE *)new PyMFEM::wFILE((char const *)arg1,arg2,arg3);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_PyMFEM__wFILE, SWIG_POINTER_NEW |  0 );
   if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
   return resultobj;
@@ -3168,16 +3199,16 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_wFILE(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[3] = {
+  PyObject *argv[4] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_wFILE", 0, 2, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_wFILE", 0, 3, argv))) SWIG_fail;
   --argc;
   if (argc == 0) {
     return _wrap_new_wFILE__SWIG_0(self, argc, argv);
   }
-  if ((argc >= 1) && (argc <= 2)) {
+  if ((argc >= 1) && (argc <= 3)) {
     int _v;
     int res = SWIG_AsCharPtrAndSize(argv[0], 0, NULL, 0);
     _v = SWIG_CheckState(res);
@@ -3190,7 +3221,16 @@ SWIGINTERN PyObject *_wrap_new_wFILE(PyObject *self, PyObject *args) {
         _v = SWIG_CheckState(res);
       }
       if (_v) {
-        return _wrap_new_wFILE__SWIG_1(self, argc, argv);
+        if (argc <= 2) {
+          return _wrap_new_wFILE__SWIG_1(self, argc, argv);
+        }
+        {
+          int res = SWIG_AsVal_bool(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_new_wFILE__SWIG_1(self, argc, argv);
+        }
       }
     }
   }
@@ -3199,7 +3239,7 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_wFILE'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    PyMFEM::wFILE::wFILE()\n"
-    "    PyMFEM::wFILE::wFILE(char const *,int)\n");
+    "    PyMFEM::wFILE::wFILE(char const *,int,bool)\n");
   return 0;
 }
 
@@ -3227,6 +3267,29 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_wFILE_isTemporary(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyMFEM::wFILE *arg1 = (PyMFEM::wFILE *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PyMFEM__wFILE, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "wFILE_isTemporary" "', argument " "1"" of type '" "PyMFEM::wFILE *""'"); 
+  }
+  arg1 = reinterpret_cast< PyMFEM::wFILE * >(argp1);
+  result = (bool)(arg1)->isTemporary();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_wFILE_getFilename(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PyMFEM::wFILE *arg1 = (PyMFEM::wFILE *) 0 ;
@@ -3244,6 +3307,29 @@ SWIGINTERN PyObject *_wrap_wFILE_getFilename(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< PyMFEM::wFILE * >(argp1);
   result = (char *)(arg1)->getFilename();
   resultobj = SWIG_FromCharPtr((const char *)result);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_wFILE_isGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyMFEM::wFILE *arg1 = (PyMFEM::wFILE *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PyMFEM__wFILE, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "wFILE_isGZ" "', argument " "1"" of type '" "PyMFEM::wFILE *""'"); 
+  }
+  arg1 = reinterpret_cast< PyMFEM::wFILE * >(argp1);
+  result = (bool)(arg1)->isGZ();
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
   return NULL;
@@ -3344,10 +3430,12 @@ static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_wFILE", _wrap_new_wFILE, METH_VARARGS, "\n"
 		"wFILE()\n"
-		"new_wFILE(char const * filename, int precision=8) -> wFILE\n"
+		"new_wFILE(char const * filename, int precision=8, bool temporary=False) -> wFILE\n"
 		""},
 	 { "wFILE_isSTDOUT", _wrap_wFILE_isSTDOUT, METH_O, "wFILE_isSTDOUT(wFILE self) -> int"},
+	 { "wFILE_isTemporary", _wrap_wFILE_isTemporary, METH_O, "wFILE_isTemporary(wFILE self) -> bool"},
 	 { "wFILE_getFilename", _wrap_wFILE_getFilename, METH_O, "wFILE_getFilename(wFILE self) -> char *"},
+	 { "wFILE_isGZ", _wrap_wFILE_isGZ, METH_O, "wFILE_isGZ(wFILE self) -> bool"},
 	 { "wFILE_getPrecision", _wrap_wFILE_getPrecision, METH_O, "wFILE_getPrecision(wFILE self) -> int"},
 	 { "wFILE_setPrecision", (PyCFunction)(void(*)(void))_wrap_wFILE_setPrecision, METH_VARARGS|METH_KEYWORDS, "wFILE_setPrecision(wFILE self, int precision)"},
 	 { "delete_wFILE", _wrap_delete_wFILE, METH_O, "delete_wFILE(wFILE self)"},
@@ -3361,10 +3449,12 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_wFILE", _wrap_new_wFILE, METH_VARARGS, "\n"
 		"wFILE()\n"
-		"new_wFILE(char const * filename, int precision=8) -> wFILE\n"
+		"new_wFILE(char const * filename, int precision=8, bool temporary=False) -> wFILE\n"
 		""},
 	 { "wFILE_isSTDOUT", _wrap_wFILE_isSTDOUT, METH_O, "isSTDOUT(wFILE self) -> int"},
+	 { "wFILE_isTemporary", _wrap_wFILE_isTemporary, METH_O, "isTemporary(wFILE self) -> bool"},
 	 { "wFILE_getFilename", _wrap_wFILE_getFilename, METH_O, "getFilename(wFILE self) -> char *"},
+	 { "wFILE_isGZ", _wrap_wFILE_isGZ, METH_O, "isGZ(wFILE self) -> bool"},
 	 { "wFILE_getPrecision", _wrap_wFILE_getPrecision, METH_O, "getPrecision(wFILE self) -> int"},
 	 { "wFILE_setPrecision", (PyCFunction)(void(*)(void))_wrap_wFILE_setPrecision, METH_VARARGS|METH_KEYWORDS, "setPrecision(wFILE self, int precision)"},
 	 { "delete_wFILE", _wrap_delete_wFILE, METH_O, "delete_wFILE(wFILE self)"},
