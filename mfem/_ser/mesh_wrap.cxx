@@ -3234,12 +3234,11 @@ namespace Swig {
 #define SWIGTYPE_p_pri_t swig_types[163]
 #define SWIGTYPE_p_quad_t swig_types[164]
 #define SWIGTYPE_p_seg_t swig_types[165]
-#define SWIGTYPE_p_std__istream swig_types[166]
-#define SWIGTYPE_p_std__ostream swig_types[167]
-#define SWIGTYPE_p_tet_t swig_types[168]
-#define SWIGTYPE_p_tri_t swig_types[169]
-static swig_type_info *swig_types[171];
-static swig_module_info swig_module = {swig_types, 170, 0, 0, 0, 0};
+#define SWIGTYPE_p_std__ostream swig_types[166]
+#define SWIGTYPE_p_tet_t swig_types[167]
+#define SWIGTYPE_p_tri_t swig_types[168]
+static swig_type_info *swig_types[170];
+static swig_module_info swig_module = {swig_types, 169, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -8788,21 +8787,75 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_9(PyObject *SWIGUNUSEDPARM(self), Py_s
   int arg2 = (int) 0 ;
   int arg3 = (int) 1 ;
   bool arg4 = (bool) true ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
+  PyMFEM::wFILE *temp1 = 0 ;
+  std::ifstream in_txt1 ;
+  mfem::ifgzstream *in_gz1 = 0 ;
+  std::istringstream *stream1 = 0 ;
+  Py_ssize_t len1 = 0 ;
+  PyObject *ret1 = 0 ;
   bool val4 ;
   int ecode4 = 0 ;
   mfem::Mesh *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_std__istream,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Mesh" "', argument " "1"" of type '" "std::istream &""'"); 
+  {
+    //  PyMFEM::wFILE or string argument or StringIO
+    if (SWIG_ConvertPtr(swig_obj[0], (void **) &temp1, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      if (!PyString_Check(swig_obj[0]) && !PyUnicode_Check(swig_obj[0])) {
+        // not string, check if it is StringIO
+        PyObject* module = PyImport_ImportModule("io");
+        if (!module){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+          return NULL;
+        }      
+        PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+        if (!cls){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+          return NULL;
+        }      
+        int check = PyObject_IsInstance(swig_obj[0], cls);
+        Py_DECREF(module);
+        if (! check){
+          SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
+          return NULL;
+        }
+        
+        PyObject *input_str = PyObject_CallMethod(swig_obj[0], "getvalue", NULL);
+        if (PyErr_Occurred()) {
+          PyErr_SetString(PyExc_RuntimeError, "Can not read from StringIO");
+          return NULL;
+        }
+        
+        char *buf = nullptr;
+        PyObject *str = PyUnicode_AsUTF8String(input_str);	 
+        PyBytes_AsStringAndSize(str, &buf, &len1);
+        stream1 = new std::istringstream(buf);
+        Py_DECREF(str);
+        Py_DECREF(input_str);	 
+      } else {
+        // if it is string, extract filename as char*
+        PyObject* str = PyUnicode_AsEncodedString(swig_obj[0], "utf-8", "~E~");	
+        const char* filename = PyBytes_AsString(str);
+        temp1 = new PyMFEM::wFILE(filename, 8, true);
+        Py_DECREF(str);
+      }
+    }
+    if (stream1 == 0){
+      if (temp1->isGZ()){
+        in_gz1 = new mfem::ifgzstream(temp1->getFilename());
+        arg1 = in_gz1;
+      } else {
+        in_txt1.open(temp1->getFilename(), std::ifstream::in);
+        in_txt1.precision(temp1->getPrecision());
+        arg1 = &in_txt1;
+      }
+      if (temp1->isTemporary()){
+        delete temp1;
+      }
+    } else {
+      arg1 = stream1;
+    }
   }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Mesh" "', argument " "1"" of type '" "std::istream &""'"); 
-  }
-  arg1 = reinterpret_cast< std::istream * >(argp1);
   if (swig_obj[1]) {
     {
       if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
@@ -8846,8 +8899,40 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_9(PyObject *SWIGUNUSEDPARM(self), Py_s
     }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Mesh, SWIG_POINTER_NEW |  0 );
+  {
+    if (stream1) {
+      ret1 = PyLong_FromSsize_t(len1);
+      if (PyErr_Occurred()) {
+        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
+        return NULL;
+      }
+      delete stream1;    
+      Py_XDECREF(resultobj);   /* Blow away any previous result */
+      resultobj = ret1;    
+    }
+  }
+  {
+    if (!stream1) {
+      if (temp1) {
+        in_txt1.close();
+      }
+      if (in_gz1){
+        delete in_gz1;
+      }
+    }  
+  }
   return resultobj;
 fail:
+  {
+    if (!stream1) {
+      if (temp1) {
+        in_txt1.close();
+      }
+      if (in_gz1){
+        delete in_gz1;
+      }
+    }  
+  }
   return NULL;
 }
 
@@ -8960,8 +9045,12 @@ SWIGINTERN PyObject *_wrap_Mesh_Load(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   bool arg5 = (bool) true ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ifstream in_txt2 ;
+  mfem::ifgzstream *in_gz2 = 0 ;
+  std::istringstream *stream2 = 0 ;
+  Py_ssize_t len2 = 0 ;
+  PyObject *ret2 = 0 ;
   bool val5 ;
   int ecode5 = 0 ;
   PyObject * obj0 = 0 ;
@@ -8979,14 +9068,64 @@ SWIGINTERN PyObject *_wrap_Mesh_Load(PyObject *SWIGUNUSEDPARM(self), PyObject *a
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_Load" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__istream,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_Load" "', argument " "2"" of type '" "std::istream &""'"); 
+  {
+    //  PyMFEM::wFILE or string argument or StringIO
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      if (!PyString_Check(obj1) && !PyUnicode_Check(obj1)) {
+        // not string, check if it is StringIO
+        PyObject* module = PyImport_ImportModule("io");
+        if (!module){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+          return NULL;
+        }      
+        PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+        if (!cls){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+          return NULL;
+        }      
+        int check = PyObject_IsInstance(obj1, cls);
+        Py_DECREF(module);
+        if (! check){
+          SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
+          return NULL;
+        }
+        
+        PyObject *input_str = PyObject_CallMethod(obj1, "getvalue", NULL);
+        if (PyErr_Occurred()) {
+          PyErr_SetString(PyExc_RuntimeError, "Can not read from StringIO");
+          return NULL;
+        }
+        
+        char *buf = nullptr;
+        PyObject *str = PyUnicode_AsUTF8String(input_str);	 
+        PyBytes_AsStringAndSize(str, &buf, &len2);
+        stream2 = new std::istringstream(buf);
+        Py_DECREF(str);
+        Py_DECREF(input_str);	 
+      } else {
+        // if it is string, extract filename as char*
+        PyObject* str = PyUnicode_AsEncodedString(obj1, "utf-8", "~E~");	
+        const char* filename = PyBytes_AsString(str);
+        temp2 = new PyMFEM::wFILE(filename, 8, true);
+        Py_DECREF(str);
+      }
+    }
+    if (stream2 == 0){
+      if (temp2->isGZ()){
+        in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+        arg2 = in_gz2;
+      } else {
+        in_txt2.open(temp2->getFilename(), std::ifstream::in);
+        in_txt2.precision(temp2->getPrecision());
+        arg2 = &in_txt2;
+      }
+      if (temp2->isTemporary()){
+        delete temp2;
+      }
+    } else {
+      arg2 = stream2;
+    }
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Mesh_Load" "', argument " "2"" of type '" "std::istream &""'"); 
-  }
-  arg2 = reinterpret_cast< std::istream * >(argp2);
   if (obj2) {
     {
       if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
@@ -9030,8 +9169,40 @@ SWIGINTERN PyObject *_wrap_Mesh_Load(PyObject *SWIGUNUSEDPARM(self), PyObject *a
     }	 
   }
   resultobj = SWIG_Py_Void();
+  {
+    if (stream2) {
+      ret2 = PyLong_FromSsize_t(len2);
+      if (PyErr_Occurred()) {
+        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
+        return NULL;
+      }
+      delete stream2;    
+      Py_XDECREF(resultobj);   /* Blow away any previous result */
+      resultobj = ret2;    
+    }
+  }
+  {
+    if (!stream2) {
+      if (temp2) {
+        in_txt2.close();
+      }
+      if (in_gz2){
+        delete in_gz2;
+      }
+    }  
+  }
   return resultobj;
 fail:
+  {
+    if (!stream2) {
+      if (temp2) {
+        in_txt2.close();
+      }
+      if (in_gz2){
+        delete in_gz2;
+      }
+    }  
+  }
   return NULL;
 }
 
@@ -16571,10 +16742,10 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out2 ;
-  int use_stringio2 = 0 ;
+  std::ofstream out_txt2 ;
+  mfem::ofgzstream *out_gz2 = 0 ;
   PyObject *string_io2 = 0 ;
-  std::ostringstream stream2 ;
+  std::ostringstream *stream2 = 0 ;
   PyObject *ret2 = 0 ;
   
   if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
@@ -16605,29 +16776,33 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
             SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
             return NULL;
           }
-          use_stringio2=1;
           string_io2=swig_obj[1];
+          stream2 = new std::ostringstream();
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp2 = new PyMFEM::wFILE(filename, 8, true);	
+          temp2 = new PyMFEM::wFILE(filename, 8, true);
+          Py_DECREF(str);	 
         }
       }
       
-      if (use_stringio2 == 0){
+      if (stream2 == 0){
         if (temp2->isSTDOUT() == 1) {
           arg2 = &std::cout;
+        } else if (temp2->isGZ()){
+          out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
+          arg2 = out_gz2;	     
         } else {
-          out2.open(temp2->getFilename());
-          out2.precision(temp2->getPrecision());
-          if (temp2->isTemporary()){
-            delete temp2;
-          }
-          arg2 = &out2;
+          out_txt2.open(temp2->getFilename());
+          out_txt2.precision(temp2->getPrecision());
+          arg2 = &out_txt2;
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       } else {
-        arg2 = &stream2;
+        arg2 = stream2;
       }
     }
   }
@@ -16652,8 +16827,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   }
   resultobj = SWIG_Py_Void();
   {
-    if (use_stringio2 == 1) {
-      std::string str =  stream2.str();
+    if (stream2) {
+      std::string str =  stream2->str();
       const char* s = str.c_str();
       const int n = str.length();
       ret2 = PyObject_CallMethod(string_io2, "write", "s#",
@@ -16662,15 +16837,21 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
         return NULL;
       }
+      delete stream2;
       Py_XDECREF(resultobj);   /* Blow away any previous result */
       resultobj = ret2;    
     }
   }
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -16678,10 +16859,15 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   return resultobj;
 fail:
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -16698,10 +16884,10 @@ SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out2 ;
-  int use_stringio2 = 0 ;
+  std::ofstream out_txt2 ;
+  mfem::ofgzstream *out_gz2 = 0 ;
   PyObject *string_io2 = 0 ;
-  std::ostringstream stream2 ;
+  std::ostringstream *stream2 = 0 ;
   PyObject *ret2 = 0 ;
   
   if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
@@ -16732,29 +16918,33 @@ SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
             SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
             return NULL;
           }
-          use_stringio2=1;
           string_io2=swig_obj[1];
+          stream2 = new std::ostringstream();
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp2 = new PyMFEM::wFILE(filename, 8, true);	
+          temp2 = new PyMFEM::wFILE(filename, 8, true);
+          Py_DECREF(str);	 
         }
       }
       
-      if (use_stringio2 == 0){
+      if (stream2 == 0){
         if (temp2->isSTDOUT() == 1) {
           arg2 = &std::cout;
+        } else if (temp2->isGZ()){
+          out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
+          arg2 = out_gz2;	     
         } else {
-          out2.open(temp2->getFilename());
-          out2.precision(temp2->getPrecision());
-          if (temp2->isTemporary()){
-            delete temp2;
-          }
-          arg2 = &out2;
+          out_txt2.open(temp2->getFilename());
+          out_txt2.precision(temp2->getPrecision());
+          arg2 = &out_txt2;
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       } else {
-        arg2 = &stream2;
+        arg2 = stream2;
       }
     }
   }
@@ -16779,8 +16969,8 @@ SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
   }
   resultobj = SWIG_Py_Void();
   {
-    if (use_stringio2 == 1) {
-      std::string str =  stream2.str();
+    if (stream2) {
+      std::string str =  stream2->str();
       const char* s = str.c_str();
       const int n = str.length();
       ret2 = PyObject_CallMethod(string_io2, "write", "s#",
@@ -16789,15 +16979,21 @@ SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
         return NULL;
       }
+      delete stream2;
       Py_XDECREF(resultobj);   /* Blow away any previous result */
       resultobj = ret2;    
     }
   }
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -16805,10 +17001,15 @@ SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
   return resultobj;
 fail:
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -16824,10 +17025,10 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out2 ;
-  int use_stringio2 = 0 ;
+  std::ofstream out_txt2 ;
+  mfem::ofgzstream *out_gz2 = 0 ;
   PyObject *string_io2 = 0 ;
-  std::ostringstream stream2 ;
+  std::ostringstream *stream2 = 0 ;
   PyObject *ret2 = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
@@ -16857,29 +17058,33 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
           SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
           return NULL;
         }
-        use_stringio2=1;
         string_io2=swig_obj[1];
+        stream2 = new std::ostringstream();
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp2 = new PyMFEM::wFILE(filename, 8, true);	
+        temp2 = new PyMFEM::wFILE(filename, 8, true);
+        Py_DECREF(str);	 
       }
     }
     
-    if (use_stringio2 == 0){
+    if (stream2 == 0){
       if (temp2->isSTDOUT() == 1) {
         arg2 = &std::cout;
+      } else if (temp2->isGZ()){
+        out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
+        arg2 = out_gz2;	     
       } else {
-        out2.open(temp2->getFilename());
-        out2.precision(temp2->getPrecision());
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
-        arg2 = &out2;
+        out_txt2.open(temp2->getFilename());
+        out_txt2.precision(temp2->getPrecision());
+        arg2 = &out_txt2;
+      }
+      if (temp2->isTemporary()){
+        delete temp2;
       }
     } else {
-      arg2 = &stream2;
+      arg2 = stream2;
     }
   }
   {
@@ -16903,8 +17108,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   }
   resultobj = SWIG_Py_Void();
   {
-    if (use_stringio2 == 1) {
-      std::string str =  stream2.str();
+    if (stream2) {
+      std::string str =  stream2->str();
       const char* s = str.c_str();
       const int n = str.length();
       ret2 = PyObject_CallMethod(string_io2, "write", "s#",
@@ -16913,15 +17118,21 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
         return NULL;
       }
+      delete stream2;
       Py_XDECREF(resultobj);   /* Blow away any previous result */
       resultobj = ret2;    
     }
   }
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -16929,10 +17140,15 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   return resultobj;
 fail:
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -16950,10 +17166,10 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out2 ;
-  int use_stringio2 = 0 ;
+  std::ofstream out_txt2 ;
+  mfem::ofgzstream *out_gz2 = 0 ;
   PyObject *string_io2 = 0 ;
-  std::ostringstream stream2 ;
+  std::ostringstream *stream2 = 0 ;
   PyObject *ret2 = 0 ;
   
   if ((nobjs < 3) || (nobjs > 4)) SWIG_fail;
@@ -16983,29 +17199,33 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
           SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
           return NULL;
         }
-        use_stringio2=1;
         string_io2=swig_obj[1];
+        stream2 = new std::ostringstream();
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp2 = new PyMFEM::wFILE(filename, 8, true);	
+        temp2 = new PyMFEM::wFILE(filename, 8, true);
+        Py_DECREF(str);	 
       }
     }
     
-    if (use_stringio2 == 0){
+    if (stream2 == 0){
       if (temp2->isSTDOUT() == 1) {
         arg2 = &std::cout;
+      } else if (temp2->isGZ()){
+        out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
+        arg2 = out_gz2;	     
       } else {
-        out2.open(temp2->getFilename());
-        out2.precision(temp2->getPrecision());
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
-        arg2 = &out2;
+        out_txt2.open(temp2->getFilename());
+        out_txt2.precision(temp2->getPrecision());
+        arg2 = &out_txt2;
+      }
+      if (temp2->isTemporary()){
+        delete temp2;
       }
     } else {
-      arg2 = &stream2;
+      arg2 = stream2;
     }
   }
   {
@@ -17043,8 +17263,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   }
   resultobj = SWIG_Py_Void();
   {
-    if (use_stringio2 == 1) {
-      std::string str =  stream2.str();
+    if (stream2) {
+      std::string str =  stream2->str();
       const char* s = str.c_str();
       const int n = str.length();
       ret2 = PyObject_CallMethod(string_io2, "write", "s#",
@@ -17053,15 +17273,21 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
         return NULL;
       }
+      delete stream2;
       Py_XDECREF(resultobj);   /* Blow away any previous result */
       resultobj = ret2;    
     }
   }
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -17069,10 +17295,15 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   return resultobj;
 fail:
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -17093,10 +17324,10 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTU__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out2 ;
-  int use_stringio2 = 0 ;
+  std::ofstream out_txt2 ;
+  mfem::ofgzstream *out_gz2 = 0 ;
   PyObject *string_io2 = 0 ;
-  std::ostringstream stream2 ;
+  std::ostringstream *stream2 = 0 ;
   PyObject *ret2 = 0 ;
   int val4 ;
   int ecode4 = 0 ;
@@ -17132,29 +17363,33 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTU__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
           SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
           return NULL;
         }
-        use_stringio2=1;
         string_io2=swig_obj[1];
+        stream2 = new std::ostringstream();
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp2 = new PyMFEM::wFILE(filename, 8, true);	
+        temp2 = new PyMFEM::wFILE(filename, 8, true);
+        Py_DECREF(str);	 
       }
     }
     
-    if (use_stringio2 == 0){
+    if (stream2 == 0){
       if (temp2->isSTDOUT() == 1) {
         arg2 = &std::cout;
+      } else if (temp2->isGZ()){
+        out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
+        arg2 = out_gz2;	     
       } else {
-        out2.open(temp2->getFilename());
-        out2.precision(temp2->getPrecision());
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
-        arg2 = &out2;
+        out_txt2.open(temp2->getFilename());
+        out_txt2.precision(temp2->getPrecision());
+        arg2 = &out_txt2;
+      }
+      if (temp2->isTemporary()){
+        delete temp2;
       }
     } else {
-      arg2 = &stream2;
+      arg2 = stream2;
     }
   }
   if (swig_obj[2]) {
@@ -17215,8 +17450,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTU__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   }
   resultobj = SWIG_Py_Void();
   {
-    if (use_stringio2 == 1) {
-      std::string str =  stream2.str();
+    if (stream2) {
+      std::string str =  stream2->str();
       const char* s = str.c_str();
       const int n = str.length();
       ret2 = PyObject_CallMethod(string_io2, "write", "s#",
@@ -17225,15 +17460,21 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTU__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
         return NULL;
       }
+      delete stream2;
       Py_XDECREF(resultobj);   /* Blow away any previous result */
       resultobj = ret2;    
     }
   }
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -17241,10 +17482,15 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTU__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   return resultobj;
 fail:
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -17429,7 +17675,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTU(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            _v = 0;
+            _v = 1;
           }
         } else {
           _v = 1;
@@ -17663,10 +17909,10 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning(PyObject *SWIGUNUSEDPARM(s
   void *argp2 = 0 ;
   int res2 = 0 ;
   PyMFEM::wFILE *temp3 = 0 ;
-  std::ofstream out3 ;
-  int use_stringio3 = 0 ;
+  std::ofstream out_txt3 ;
+  mfem::ofgzstream *out_gz3 = 0 ;
   PyObject *string_io3 = 0 ;
-  std::ostringstream stream3 ;
+  std::ostringstream *stream3 = 0 ;
   PyObject *ret3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
@@ -17708,29 +17954,33 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning(PyObject *SWIGUNUSEDPARM(s
           SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
           return NULL;
         }
-        use_stringio3=1;
         string_io3=obj2;
+        stream3 = new std::ostringstream();
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj2, "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp3 = new PyMFEM::wFILE(filename, 8, true);	
+        temp3 = new PyMFEM::wFILE(filename, 8, true);
+        Py_DECREF(str);	 
       }
     }
     
-    if (use_stringio3 == 0){
+    if (stream3 == 0){
       if (temp3->isSTDOUT() == 1) {
         arg3 = &std::cout;
+      } else if (temp3->isGZ()){
+        out_gz3 = new mfem::ofgzstream(temp3->getFilename(), true);
+        arg3 = out_gz3;	     
       } else {
-        out3.open(temp3->getFilename());
-        out3.precision(temp3->getPrecision());
-        if (temp3->isTemporary()){
-          delete temp3;
-        }
-        arg3 = &out3;
+        out_txt3.open(temp3->getFilename());
+        out_txt3.precision(temp3->getPrecision());
+        arg3 = &out_txt3;
+      }
+      if (temp3->isTemporary()){
+        delete temp3;
       }
     } else {
-      arg3 = &stream3;
+      arg3 = stream3;
     }
   }
   if (obj3) {
@@ -17762,8 +18012,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning(PyObject *SWIGUNUSEDPARM(s
   }
   resultobj = SWIG_Py_Void();
   {
-    if (use_stringio3 == 1) {
-      std::string str =  stream3.str();
+    if (stream3) {
+      std::string str =  stream3->str();
       const char* s = str.c_str();
       const int n = str.length();
       ret3 = PyObject_CallMethod(string_io3, "write", "s#",
@@ -17772,15 +18022,21 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning(PyObject *SWIGUNUSEDPARM(s
         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
         return NULL;
       }
+      delete stream3;
       Py_XDECREF(resultobj);   /* Blow away any previous result */
       resultobj = ret3;    
     }
   }
   {
-    if (use_stringio3 == 0) {
+    if (!stream3) {
       if (temp3) {
         if (temp3->isSTDOUT() != 1) {
-          out3.close();
+          if (out_txt3.is_open()){
+            out_txt3.close();
+          }
+          if (out_gz3){
+            delete out_gz3;
+          }
         }
       }
     }
@@ -17788,10 +18044,15 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning(PyObject *SWIGUNUSEDPARM(s
   return resultobj;
 fail:
   {
-    if (use_stringio3 == 0) {
+    if (!stream3) {
       if (temp3) {
         if (temp3->isSTDOUT() != 1) {
-          out3.close();
+          if (out_txt3.is_open()){
+            out_txt3.close();
+          }
+          if (out_gz3){
+            delete out_gz3;
+          }
         }
       }
     }
@@ -17811,10 +18072,10 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning(PyObject *SWIGUNUS
   void *argp2 = 0 ;
   int res2 = 0 ;
   PyMFEM::wFILE *temp3 = 0 ;
-  std::ofstream out3 ;
-  int use_stringio3 = 0 ;
+  std::ofstream out_txt3 ;
+  mfem::ofgzstream *out_gz3 = 0 ;
   PyObject *string_io3 = 0 ;
-  std::ostringstream stream3 ;
+  std::ostringstream *stream3 = 0 ;
   PyObject *ret3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
@@ -17856,29 +18117,33 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning(PyObject *SWIGUNUS
           SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
           return NULL;
         }
-        use_stringio3=1;
         string_io3=obj2;
+        stream3 = new std::ostringstream();
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj2, "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp3 = new PyMFEM::wFILE(filename, 8, true);	
+        temp3 = new PyMFEM::wFILE(filename, 8, true);
+        Py_DECREF(str);	 
       }
     }
     
-    if (use_stringio3 == 0){
+    if (stream3 == 0){
       if (temp3->isSTDOUT() == 1) {
         arg3 = &std::cout;
+      } else if (temp3->isGZ()){
+        out_gz3 = new mfem::ofgzstream(temp3->getFilename(), true);
+        arg3 = out_gz3;	     
       } else {
-        out3.open(temp3->getFilename());
-        out3.precision(temp3->getPrecision());
-        if (temp3->isTemporary()){
-          delete temp3;
-        }
-        arg3 = &out3;
+        out_txt3.open(temp3->getFilename());
+        out_txt3.precision(temp3->getPrecision());
+        arg3 = &out_txt3;
+      }
+      if (temp3->isTemporary()){
+        delete temp3;
       }
     } else {
-      arg3 = &stream3;
+      arg3 = stream3;
     }
   }
   if (obj3) {
@@ -17910,8 +18175,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning(PyObject *SWIGUNUS
   }
   resultobj = SWIG_Py_Void();
   {
-    if (use_stringio3 == 1) {
-      std::string str =  stream3.str();
+    if (stream3) {
+      std::string str =  stream3->str();
       const char* s = str.c_str();
       const int n = str.length();
       ret3 = PyObject_CallMethod(string_io3, "write", "s#",
@@ -17920,15 +18185,21 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning(PyObject *SWIGUNUS
         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
         return NULL;
       }
+      delete stream3;
       Py_XDECREF(resultobj);   /* Blow away any previous result */
       resultobj = ret3;    
     }
   }
   {
-    if (use_stringio3 == 0) {
+    if (!stream3) {
       if (temp3) {
         if (temp3->isSTDOUT() != 1) {
-          out3.close();
+          if (out_txt3.is_open()){
+            out_txt3.close();
+          }
+          if (out_gz3){
+            delete out_gz3;
+          }
         }
       }
     }
@@ -17936,10 +18207,15 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning(PyObject *SWIGUNUS
   return resultobj;
 fail:
   {
-    if (use_stringio3 == 0) {
+    if (!stream3) {
       if (temp3) {
         if (temp3->isSTDOUT() != 1) {
-          out3.close();
+          if (out_txt3.is_open()){
+            out_txt3.close();
+          }
+          if (out_gz3){
+            delete out_gz3;
+          }
         }
       }
     }
@@ -17958,10 +18234,10 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintSurfaces(PyObject *SWIGUNUSEDPARM(self), Py
   void *argp2 = 0 ;
   int res2 = 0 ;
   PyMFEM::wFILE *temp3 = 0 ;
-  std::ofstream out3 ;
-  int use_stringio3 = 0 ;
+  std::ofstream out_txt3 ;
+  mfem::ofgzstream *out_gz3 = 0 ;
   PyObject *string_io3 = 0 ;
-  std::ostringstream stream3 ;
+  std::ostringstream *stream3 = 0 ;
   PyObject *ret3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
@@ -18005,29 +18281,33 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintSurfaces(PyObject *SWIGUNUSEDPARM(self), Py
           SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
           return NULL;
         }
-        use_stringio3=1;
         string_io3=obj2;
+        stream3 = new std::ostringstream();
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj2, "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp3 = new PyMFEM::wFILE(filename, 8, true);	
+        temp3 = new PyMFEM::wFILE(filename, 8, true);
+        Py_DECREF(str);	 
       }
     }
     
-    if (use_stringio3 == 0){
+    if (stream3 == 0){
       if (temp3->isSTDOUT() == 1) {
         arg3 = &std::cout;
+      } else if (temp3->isGZ()){
+        out_gz3 = new mfem::ofgzstream(temp3->getFilename(), true);
+        arg3 = out_gz3;	     
       } else {
-        out3.open(temp3->getFilename());
-        out3.precision(temp3->getPrecision());
-        if (temp3->isTemporary()){
-          delete temp3;
-        }
-        arg3 = &out3;
+        out_txt3.open(temp3->getFilename());
+        out_txt3.precision(temp3->getPrecision());
+        arg3 = &out_txt3;
+      }
+      if (temp3->isTemporary()){
+        delete temp3;
       }
     } else {
-      arg3 = &stream3;
+      arg3 = stream3;
     }
   }
   {
@@ -18051,8 +18331,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintSurfaces(PyObject *SWIGUNUSEDPARM(self), Py
   }
   resultobj = SWIG_Py_Void();
   {
-    if (use_stringio3 == 1) {
-      std::string str =  stream3.str();
+    if (stream3) {
+      std::string str =  stream3->str();
       const char* s = str.c_str();
       const int n = str.length();
       ret3 = PyObject_CallMethod(string_io3, "write", "s#",
@@ -18061,15 +18341,21 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintSurfaces(PyObject *SWIGUNUSEDPARM(self), Py
         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
         return NULL;
       }
+      delete stream3;
       Py_XDECREF(resultobj);   /* Blow away any previous result */
       resultobj = ret3;    
     }
   }
   {
-    if (use_stringio3 == 0) {
+    if (!stream3) {
       if (temp3) {
         if (temp3->isSTDOUT() != 1) {
-          out3.close();
+          if (out_txt3.is_open()){
+            out_txt3.close();
+          }
+          if (out_gz3){
+            delete out_gz3;
+          }
         }
       }
     }
@@ -18077,10 +18363,15 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintSurfaces(PyObject *SWIGUNUSEDPARM(self), Py
   return resultobj;
 fail:
   {
-    if (use_stringio3 == 0) {
+    if (!stream3) {
       if (temp3) {
         if (temp3->isSTDOUT() != 1) {
-          out3.close();
+          if (out_txt3.is_open()){
+            out_txt3.close();
+          }
+          if (out_gz3){
+            delete out_gz3;
+          }
         }
       }
     }
@@ -18905,10 +19196,10 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsByGeometry(PyObject *SWIGUNUSEDPARM
   void *argp2 = 0 ;
   int res2 = 0 ;
   PyMFEM::wFILE *temp3 = 0 ;
-  std::ofstream out3 ;
-  int use_stringio3 = 0 ;
+  std::ofstream out_txt3 ;
+  mfem::ofgzstream *out_gz3 = 0 ;
   PyObject *string_io3 = 0 ;
-  std::ostringstream stream3 ;
+  std::ostringstream *stream3 = 0 ;
   PyObject *ret3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
@@ -18953,29 +19244,33 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsByGeometry(PyObject *SWIGUNUSEDPARM
           SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
           return NULL;
         }
-        use_stringio3=1;
         string_io3=obj2;
+        stream3 = new std::ostringstream();
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj2, "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp3 = new PyMFEM::wFILE(filename, 8, true);	
+        temp3 = new PyMFEM::wFILE(filename, 8, true);
+        Py_DECREF(str);	 
       }
     }
     
-    if (use_stringio3 == 0){
+    if (stream3 == 0){
       if (temp3->isSTDOUT() == 1) {
         arg3 = &std::cout;
+      } else if (temp3->isGZ()){
+        out_gz3 = new mfem::ofgzstream(temp3->getFilename(), true);
+        arg3 = out_gz3;	     
       } else {
-        out3.open(temp3->getFilename());
-        out3.precision(temp3->getPrecision());
-        if (temp3->isTemporary()){
-          delete temp3;
-        }
-        arg3 = &out3;
+        out_txt3.open(temp3->getFilename());
+        out_txt3.precision(temp3->getPrecision());
+        arg3 = &out_txt3;
+      }
+      if (temp3->isTemporary()){
+        delete temp3;
       }
     } else {
-      arg3 = &stream3;
+      arg3 = stream3;
     }
   }
   {
@@ -18999,8 +19294,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsByGeometry(PyObject *SWIGUNUSEDPARM
   }
   resultobj = SWIG_Py_Void();
   {
-    if (use_stringio3 == 1) {
-      std::string str =  stream3.str();
+    if (stream3) {
+      std::string str =  stream3->str();
       const char* s = str.c_str();
       const int n = str.length();
       ret3 = PyObject_CallMethod(string_io3, "write", "s#",
@@ -19009,15 +19304,21 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsByGeometry(PyObject *SWIGUNUSEDPARM
         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
         return NULL;
       }
+      delete stream3;
       Py_XDECREF(resultobj);   /* Blow away any previous result */
       resultobj = ret3;    
     }
   }
   {
-    if (use_stringio3 == 0) {
+    if (!stream3) {
       if (temp3) {
         if (temp3->isSTDOUT() != 1) {
-          out3.close();
+          if (out_txt3.is_open()){
+            out_txt3.close();
+          }
+          if (out_gz3){
+            delete out_gz3;
+          }
         }
       }
     }
@@ -19025,10 +19326,15 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsByGeometry(PyObject *SWIGUNUSEDPARM
   return resultobj;
 fail:
   {
-    if (use_stringio3 == 0) {
+    if (!stream3) {
       if (temp3) {
         if (temp3->isSTDOUT() != 1) {
-          out3.close();
+          if (out_txt3.is_open()){
+            out_txt3.close();
+          }
+          if (out_gz3){
+            delete out_gz3;
+          }
         }
       }
     }
@@ -19051,10 +19357,10 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics(PyObject *SWIGUNUSEDPARM(se
   void *argp3 = 0 ;
   int res3 = 0 ;
   PyMFEM::wFILE *temp4 = 0 ;
-  std::ofstream out4 ;
-  int use_stringio4 = 0 ;
+  std::ofstream out_txt4 ;
+  mfem::ofgzstream *out_gz4 = 0 ;
   PyObject *string_io4 = 0 ;
-  std::ostringstream stream4 ;
+  std::ostringstream *stream4 = 0 ;
   PyObject *ret4 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
@@ -19106,29 +19412,33 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics(PyObject *SWIGUNUSEDPARM(se
             SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
             return NULL;
           }
-          use_stringio4=1;
           string_io4=obj3;
+          stream4 = new std::ostringstream();
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(obj3, "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp4 = new PyMFEM::wFILE(filename, 8, true);	
+          temp4 = new PyMFEM::wFILE(filename, 8, true);
+          Py_DECREF(str);	 
         }
       }
       
-      if (use_stringio4 == 0){
+      if (stream4 == 0){
         if (temp4->isSTDOUT() == 1) {
           arg4 = &std::cout;
+        } else if (temp4->isGZ()){
+          out_gz4 = new mfem::ofgzstream(temp4->getFilename(), true);
+          arg4 = out_gz4;	     
         } else {
-          out4.open(temp4->getFilename());
-          out4.precision(temp4->getPrecision());
-          if (temp4->isTemporary()){
-            delete temp4;
-          }
-          arg4 = &out4;
+          out_txt4.open(temp4->getFilename());
+          out_txt4.precision(temp4->getPrecision());
+          arg4 = &out_txt4;
+        }
+        if (temp4->isTemporary()){
+          delete temp4;
         }
       } else {
-        arg4 = &stream4;
+        arg4 = stream4;
       }
     }
   }
@@ -19153,8 +19463,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics(PyObject *SWIGUNUSEDPARM(se
   }
   resultobj = SWIG_Py_Void();
   {
-    if (use_stringio4 == 1) {
-      std::string str =  stream4.str();
+    if (stream4) {
+      std::string str =  stream4->str();
       const char* s = str.c_str();
       const int n = str.length();
       ret4 = PyObject_CallMethod(string_io4, "write", "s#",
@@ -19163,15 +19473,21 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics(PyObject *SWIGUNUSEDPARM(se
         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
         return NULL;
       }
+      delete stream4;
       Py_XDECREF(resultobj);   /* Blow away any previous result */
       resultobj = ret4;    
     }
   }
   {
-    if (use_stringio4 == 0) {
+    if (!stream4) {
       if (temp4) {
         if (temp4->isSTDOUT() != 1) {
-          out4.close();
+          if (out_txt4.is_open()){
+            out_txt4.close();
+          }
+          if (out_gz4){
+            delete out_gz4;
+          }
         }
       }
     }
@@ -19179,10 +19495,15 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics(PyObject *SWIGUNUSEDPARM(se
   return resultobj;
 fail:
   {
-    if (use_stringio4 == 0) {
+    if (!stream4) {
       if (temp4) {
         if (temp4->isSTDOUT() != 1) {
-          out4.close();
+          if (out_txt4.is_open()){
+            out_txt4.close();
+          }
+          if (out_gz4){
+            delete out_gz4;
+          }
         }
       }
     }
@@ -19199,10 +19520,10 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out2 ;
-  int use_stringio2 = 0 ;
+  std::ofstream out_txt2 ;
+  mfem::ofgzstream *out_gz2 = 0 ;
   PyObject *string_io2 = 0 ;
-  std::ostringstream stream2 ;
+  std::ostringstream *stream2 = 0 ;
   PyObject *ret2 = 0 ;
   
   if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
@@ -19233,29 +19554,33 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
             SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
             return NULL;
           }
-          use_stringio2=1;
           string_io2=swig_obj[1];
+          stream2 = new std::ostringstream();
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp2 = new PyMFEM::wFILE(filename, 8, true);	
+          temp2 = new PyMFEM::wFILE(filename, 8, true);
+          Py_DECREF(str);	 
         }
       }
       
-      if (use_stringio2 == 0){
+      if (stream2 == 0){
         if (temp2->isSTDOUT() == 1) {
           arg2 = &std::cout;
+        } else if (temp2->isGZ()){
+          out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
+          arg2 = out_gz2;	     
         } else {
-          out2.open(temp2->getFilename());
-          out2.precision(temp2->getPrecision());
-          if (temp2->isTemporary()){
-            delete temp2;
-          }
-          arg2 = &out2;
+          out_txt2.open(temp2->getFilename());
+          out_txt2.precision(temp2->getPrecision());
+          arg2 = &out_txt2;
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       } else {
-        arg2 = &stream2;
+        arg2 = stream2;
       }
     }
   }
@@ -19280,8 +19605,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   }
   resultobj = SWIG_Py_Void();
   {
-    if (use_stringio2 == 1) {
-      std::string str =  stream2.str();
+    if (stream2) {
+      std::string str =  stream2->str();
       const char* s = str.c_str();
       const int n = str.length();
       ret2 = PyObject_CallMethod(string_io2, "write", "s#",
@@ -19290,15 +19615,21 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
         return NULL;
       }
+      delete stream2;
       Py_XDECREF(resultobj);   /* Blow away any previous result */
       resultobj = ret2;    
     }
   }
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -19306,10 +19637,15 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   return resultobj;
 fail:
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -19696,50 +20032,6 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       }
     }
   }
-  if ((argc >= 1) && (argc <= 4)) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_std__istream, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      if (argc <= 1) {
-        return _wrap_new_Mesh__SWIG_9(self, argc, argv);
-      }
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        if (argc <= 2) {
-          return _wrap_new_Mesh__SWIG_9(self, argc, argv);
-        }
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          if (argc <= 3) {
-            return _wrap_new_Mesh__SWIG_9(self, argc, argv);
-          }
-          {
-            int res = SWIG_AsVal_bool(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_new_Mesh__SWIG_9(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
   if ((argc >= 1) && (argc <= 2)) {
     int _v;
     {
@@ -19804,6 +20096,75 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
           }
           if (_v) {
             return _wrap_new_Mesh__SWIG_8(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  if ((argc >= 1) && (argc <= 4)) {
+    int _v;
+    {
+      void *ptr;
+      //std::string *ptr2 = (std::string *)0;
+      if (SWIG_ConvertPtr(argv[0], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+        PyErr_Clear();
+        if (!PyString_Check(argv[0]) && !PyUnicode_Check(argv[0])) {
+          // not string
+          _v = 1;	   	
+          PyObject* module = PyImport_ImportModule("io");
+          if (!module){
+            _v = 0;	   
+          }      
+          PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+          if (!cls){
+            _v = 0;	   	   
+          }      
+          int check = PyObject_IsInstance(argv[0], cls);
+          Py_DECREF(module);
+          if (! check){
+            _v = 0;	   	   	   
+          }
+        } else {
+          _v = 1;
+        }
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_Mesh__SWIG_9(self, argc, argv);
+      }
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_new_Mesh__SWIG_9(self, argc, argv);
+        }
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          if (argc <= 3) {
+            return _wrap_new_Mesh__SWIG_9(self, argc, argv);
+          }
+          {
+            int res = SWIG_AsVal_bool(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_new_Mesh__SWIG_9(self, argc, argv);
           }
         }
       }
@@ -21052,7 +21413,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            _v = 0;
+            _v = 1;
           }
         } else {
           _v = 1;
@@ -21196,7 +21557,7 @@ SWIGINTERN PyObject *_wrap_Mesh_Print(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            _v = 0;
+            _v = 1;
           }
         } else {
           _v = 1;
@@ -21340,7 +21701,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            _v = 0;
+            _v = 1;
           }
         } else {
           _v = 1;
@@ -21507,7 +21868,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            _v = 0;
+            _v = 1;
           }
         } else {
           _v = 1;
@@ -21546,7 +21907,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK(PyObject *self, PyObject *args) {
               _v = 0;	   	   	   
             }
           } else {
-            _v = 0;
+            _v = 1;
           }
         } else {
           _v = 1;
@@ -21607,10 +21968,10 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py
   std::ostream *arg1 = 0 ;
   mfem::Mesh *arg2 = 0 ;
   PyMFEM::wFILE *temp1 = 0 ;
-  std::ofstream out1 ;
-  int use_stringio1 = 0 ;
+  std::ofstream out_txt1 ;
+  mfem::ofgzstream *out_gz1 = 0 ;
   PyObject *string_io1 = 0 ;
-  std::ostringstream stream1 ;
+  std::ostringstream *stream1 = 0 ;
   PyObject *ret1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
@@ -21638,29 +21999,33 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py
           SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
           return NULL;
         }
-        use_stringio1=1;
         string_io1=swig_obj[0];
+        stream1 = new std::ostringstream();
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[0], "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp1 = new PyMFEM::wFILE(filename, 8, true);	
+        temp1 = new PyMFEM::wFILE(filename, 8, true);
+        Py_DECREF(str);	 
       }
     }
     
-    if (use_stringio1 == 0){
+    if (stream1 == 0){
       if (temp1->isSTDOUT() == 1) {
         arg1 = &std::cout;
+      } else if (temp1->isGZ()){
+        out_gz1 = new mfem::ofgzstream(temp1->getFilename(), true);
+        arg1 = out_gz1;	     
       } else {
-        out1.open(temp1->getFilename());
-        out1.precision(temp1->getPrecision());
-        if (temp1->isTemporary()){
-          delete temp1;
-        }
-        arg1 = &out1;
+        out_txt1.open(temp1->getFilename());
+        out_txt1.precision(temp1->getPrecision());
+        arg1 = &out_txt1;
+      }
+      if (temp1->isTemporary()){
+        delete temp1;
       }
     } else {
-      arg1 = &stream1;
+      arg1 = stream1;
     }
   }
   res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Mesh,  0  | 0);
@@ -21692,8 +22057,8 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__ostream, 0 |  0 );
   {
-    if (use_stringio1 == 1) {
-      std::string str =  stream1.str();
+    if (stream1) {
+      std::string str =  stream1->str();
       const char* s = str.c_str();
       const int n = str.length();
       ret1 = PyObject_CallMethod(string_io1, "write", "s#",
@@ -21702,15 +22067,21 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py
         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
         return NULL;
       }
+      delete stream1;
       Py_XDECREF(resultobj);   /* Blow away any previous result */
       resultobj = ret1;    
     }
   }
   {
-    if (use_stringio1 == 0) {
+    if (!stream1) {
       if (temp1) {
         if (temp1->isSTDOUT() != 1) {
-          out1.close();
+          if (out_txt1.is_open()){
+            out_txt1.close();
+          }
+          if (out_gz1){
+            delete out_gz1;
+          }
         }
       }
     }
@@ -21718,10 +22089,15 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py
   return resultobj;
 fail:
   {
-    if (use_stringio1 == 0) {
+    if (!stream1) {
       if (temp1) {
         if (temp1->isSTDOUT() != 1) {
-          out1.close();
+          if (out_txt1.is_open()){
+            out_txt1.close();
+          }
+          if (out_gz1){
+            delete out_gz1;
+          }
         }
       }
     }
@@ -21764,7 +22140,7 @@ SWIGINTERN PyObject *_wrap___lshift__(PyObject *self, PyObject *args) {
             _v = 0;	   	   	   
           }
         } else {
-          _v = 0;
+          _v = 1;
         }
       } else {
         _v = 1;
@@ -24608,7 +24984,6 @@ static swig_type_info _swigt__p_p_mfem__Mesh = {"_p_p_mfem__Mesh", "mfem::Mesh *
 static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__istream = {"_p_std__istream", "std::istream *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__ostream = {"_p_std__ostream", "std::ostream *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__OutStream = {"_p_mfem__OutStream", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
@@ -24781,7 +25156,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_pri_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
-  &_swigt__p_std__istream,
   &_swigt__p_std__ostream,
   &_swigt__p_tet_t,
   &_swigt__p_tri_t,
@@ -24952,7 +25326,6 @@ static swig_cast_info _swigc__p_p_mfem__Mesh[] = {  {&_swigt__p_p_mfem__Mesh, 0,
 static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__istream[] = {  {&_swigt__p_std__istream, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__OutStream[] = {{&_swigt__p_mfem__OutStream, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__ostream[] = {  {&_swigt__p_std__ostream, 0, 0, 0},  {&_swigt__p_mfem__OutStream, _p_mfem__OutStreamTo_p_std__ostream, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -25125,7 +25498,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_pri_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
-  _swigc__p_std__istream,
   _swigc__p_std__ostream,
   _swigc__p_tet_t,
   _swigc__p_tri_t,

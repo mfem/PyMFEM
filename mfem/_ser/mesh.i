@@ -51,6 +51,7 @@ import_array();
 
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
+ISTREAM_TYPEMAP(std::istream&)
 
 // this prevent automatic conversion from int to double so
 // that it select collect overloaded method....
@@ -343,19 +344,19 @@ def CartesianPartitioning(self, nxyz, return_list=False):
 
 namespace mfem{
 %extend Mesh{
-   Mesh(const char *mesh_file, int generate_edges, int refine,
-        bool fix_orientation = true){
-
-        mfem::Mesh *mesh;
-        std::ifstream imesh(mesh_file);
-        if (!imesh)
-        {
-	  std::cerr << "\nCan not open mesh file: " << mesh_file << '\n' << std::endl;
-   	  return NULL;
-        }
-	mesh = new mfem::Mesh(imesh, generate_edges, refine, fix_orientation);
-	return mesh;
-   }
+    //Mesh(const char *mesh_file, int generate_edges, int refine,
+    //    bool fix_orientation = true){
+    //
+    //    mfem::Mesh *mesh;
+    //    std::ifstream imesh(mesh_file);
+    //    if (!imesh)
+    //    {
+    //	  std::cerr << "\nCan not open mesh file: " << mesh_file << '\n' << std::endl;
+    //  return NULL;
+    //    }
+    //	mesh = new mfem::Mesh(imesh, generate_edges, refine, fix_orientation);
+    //	return mesh;
+    //   }
    Mesh(int nx, int ny, int nz, const char *type, bool generate_edges = 0,
         double sx = 1.0, double sy = 1.0, double sz = 1.0,
 	bool sfc_ordering = true){

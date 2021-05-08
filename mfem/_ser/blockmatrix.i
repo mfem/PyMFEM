@@ -3,6 +3,7 @@
 %{
 #include <fstream>  
 #include <iostream>
+#include "general/zstr.hpp"      
 #include "linalg/blockmatrix.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"

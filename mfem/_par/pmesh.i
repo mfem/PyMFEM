@@ -41,7 +41,7 @@ import_array();
 
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
-
+ISTREAM_TYPEMAP(std::istream&)
 
 %immutable face_nbr_elements;
 %immutable face_nbr_vertices;
@@ -78,17 +78,18 @@ def GroupEdge(self, group, i, *args):
 
 namespace mfem{
 %extend ParMesh{
-ParMesh(MPI_Comm comm, const char *mesh_file){
-    mfem::ParMesh *mesh;
-    std::ifstream imesh(mesh_file);
-    if (!imesh)
-    {
-    std::cerr << "\nCan not open mesh file: " << mesh_file << '\n' << std::endl;
-    return NULL;
-    }
-    mesh = new mfem::ParMesh(comm, imesh);
-    return mesh;
-    }
+     //     
+     //ParMesh(MPI_Comm comm, const char *mesh_file){
+     //mfem::ParMesh *mesh;
+     //std::ifstream imesh(mesh_file);
+     //if (!imesh)
+     //{
+     //std::cerr << "\nCan not open mesh file: " << mesh_file << '\n' << std::endl;
+     //return NULL;
+     //}
+     //mesh = new mfem::ParMesh(comm, imesh);
+     //return mesh;
+     //}
 void ParPrintToFile(const char *mesh_file, const int precision) const
     {
     std::ofstream mesh_ofs(mesh_file);	

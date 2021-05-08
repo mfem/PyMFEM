@@ -7903,10 +7903,10 @@ SWIGINTERN PyObject *_wrap_FaceElementTransformations_CheckConsistency(PyObject 
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp3 = 0 ;
-  std::ofstream out3 ;
-  int use_stringio3 = 0 ;
+  std::ofstream out_txt3 ;
+  mfem::ofgzstream *out_gz3 = 0 ;
   PyObject *string_io3 = 0 ;
-  std::ostringstream stream3 ;
+  std::ostringstream *stream3 = 0 ;
   PyObject *ret3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
@@ -7952,29 +7952,33 @@ SWIGINTERN PyObject *_wrap_FaceElementTransformations_CheckConsistency(PyObject 
             SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
             return NULL;
           }
-          use_stringio3=1;
           string_io3=obj2;
+          stream3 = new std::ostringstream();
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(obj2, "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp3 = new PyMFEM::wFILE(filename, 8, true);	
+          temp3 = new PyMFEM::wFILE(filename, 8, true);
+          Py_DECREF(str);	 
         }
       }
       
-      if (use_stringio3 == 0){
+      if (stream3 == 0){
         if (temp3->isSTDOUT() == 1) {
           arg3 = &std::cout;
+        } else if (temp3->isGZ()){
+          out_gz3 = new mfem::ofgzstream(temp3->getFilename(), true);
+          arg3 = out_gz3;	     
         } else {
-          out3.open(temp3->getFilename());
-          out3.precision(temp3->getPrecision());
-          if (temp3->isTemporary()){
-            delete temp3;
-          }
-          arg3 = &out3;
+          out_txt3.open(temp3->getFilename());
+          out_txt3.precision(temp3->getPrecision());
+          arg3 = &out_txt3;
+        }
+        if (temp3->isTemporary()){
+          delete temp3;
         }
       } else {
-        arg3 = &stream3;
+        arg3 = stream3;
       }
     }
   }
@@ -7999,8 +8003,8 @@ SWIGINTERN PyObject *_wrap_FaceElementTransformations_CheckConsistency(PyObject 
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
   {
-    if (use_stringio3 == 1) {
-      std::string str =  stream3.str();
+    if (stream3) {
+      std::string str =  stream3->str();
       const char* s = str.c_str();
       const int n = str.length();
       ret3 = PyObject_CallMethod(string_io3, "write", "s#",
@@ -8009,15 +8013,21 @@ SWIGINTERN PyObject *_wrap_FaceElementTransformations_CheckConsistency(PyObject 
         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
         return NULL;
       }
+      delete stream3;
       Py_XDECREF(resultobj);   /* Blow away any previous result */
       resultobj = ret3;    
     }
   }
   {
-    if (use_stringio3 == 0) {
+    if (!stream3) {
       if (temp3) {
         if (temp3->isSTDOUT() != 1) {
-          out3.close();
+          if (out_txt3.is_open()){
+            out_txt3.close();
+          }
+          if (out_gz3){
+            delete out_gz3;
+          }
         }
       }
     }
@@ -8025,10 +8035,15 @@ SWIGINTERN PyObject *_wrap_FaceElementTransformations_CheckConsistency(PyObject 
   return resultobj;
 fail:
   {
-    if (use_stringio3 == 0) {
+    if (!stream3) {
       if (temp3) {
         if (temp3->isSTDOUT() != 1) {
-          out3.close();
+          if (out_txt3.is_open()){
+            out_txt3.close();
+          }
+          if (out_gz3){
+            delete out_gz3;
+          }
         }
       }
     }

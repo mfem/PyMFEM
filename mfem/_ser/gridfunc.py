@@ -526,7 +526,6 @@ class GridFunction(mfem._ser.vector.Vector):
         __init__(GridFunction self, FiniteElementSpace f, double * data) -> GridFunction
         __init__(GridFunction self, Mesh m, std::istream & input) -> GridFunction
         __init__(GridFunction self, Mesh m, mfem::GridFunction *[] gf_array, int num_pieces) -> GridFunction
-        __init__(GridFunction self, Mesh m, char const * grid_file) -> GridFunction
         __init__(GridFunction self, FiniteElementSpace fes, Vector v, int offset) -> GridFunction
         """
         _gridfunc.GridFunction_swiginit(self, _gridfunc.new_GridFunction(*args))

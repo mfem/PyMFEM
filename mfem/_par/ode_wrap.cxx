@@ -9341,10 +9341,10 @@ SWIGINTERN PyObject *_wrap_NewmarkSolver_PrintProperties(PyObject *SWIGUNUSEDPAR
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out2 ;
-  int use_stringio2 = 0 ;
+  std::ofstream out_txt2 ;
+  mfem::ofgzstream *out_gz2 = 0 ;
   PyObject *string_io2 = 0 ;
-  std::ostringstream stream2 ;
+  std::ostringstream *stream2 = 0 ;
   PyObject *ret2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
@@ -9380,29 +9380,33 @@ SWIGINTERN PyObject *_wrap_NewmarkSolver_PrintProperties(PyObject *SWIGUNUSEDPAR
             SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
             return NULL;
           }
-          use_stringio2=1;
           string_io2=obj1;
+          stream2 = new std::ostringstream();
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(obj1, "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp2 = new PyMFEM::wFILE(filename, 8, true);	
+          temp2 = new PyMFEM::wFILE(filename, 8, true);
+          Py_DECREF(str);	 
         }
       }
       
-      if (use_stringio2 == 0){
+      if (stream2 == 0){
         if (temp2->isSTDOUT() == 1) {
           arg2 = &std::cout;
+        } else if (temp2->isGZ()){
+          out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
+          arg2 = out_gz2;	     
         } else {
-          out2.open(temp2->getFilename());
-          out2.precision(temp2->getPrecision());
-          if (temp2->isTemporary()){
-            delete temp2;
-          }
-          arg2 = &out2;
+          out_txt2.open(temp2->getFilename());
+          out_txt2.precision(temp2->getPrecision());
+          arg2 = &out_txt2;
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       } else {
-        arg2 = &stream2;
+        arg2 = stream2;
       }
     }
   }
@@ -9421,8 +9425,8 @@ SWIGINTERN PyObject *_wrap_NewmarkSolver_PrintProperties(PyObject *SWIGUNUSEDPAR
   }
   resultobj = SWIG_Py_Void();
   {
-    if (use_stringio2 == 1) {
-      std::string str =  stream2.str();
+    if (stream2) {
+      std::string str =  stream2->str();
       const char* s = str.c_str();
       const int n = str.length();
       ret2 = PyObject_CallMethod(string_io2, "write", "s#",
@@ -9431,15 +9435,21 @@ SWIGINTERN PyObject *_wrap_NewmarkSolver_PrintProperties(PyObject *SWIGUNUSEDPAR
         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
         return NULL;
       }
+      delete stream2;
       Py_XDECREF(resultobj);   /* Blow away any previous result */
       resultobj = ret2;    
     }
   }
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -9447,10 +9457,15 @@ SWIGINTERN PyObject *_wrap_NewmarkSolver_PrintProperties(PyObject *SWIGUNUSEDPAR
   return resultobj;
 fail:
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -9889,10 +9904,10 @@ SWIGINTERN PyObject *_wrap_GeneralizedAlpha2Solver_PrintProperties(PyObject *SWI
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out2 ;
-  int use_stringio2 = 0 ;
+  std::ofstream out_txt2 ;
+  mfem::ofgzstream *out_gz2 = 0 ;
   PyObject *string_io2 = 0 ;
-  std::ostringstream stream2 ;
+  std::ostringstream *stream2 = 0 ;
   PyObject *ret2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
@@ -9928,29 +9943,33 @@ SWIGINTERN PyObject *_wrap_GeneralizedAlpha2Solver_PrintProperties(PyObject *SWI
             SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
             return NULL;
           }
-          use_stringio2=1;
           string_io2=obj1;
+          stream2 = new std::ostringstream();
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(obj1, "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp2 = new PyMFEM::wFILE(filename, 8, true);	
+          temp2 = new PyMFEM::wFILE(filename, 8, true);
+          Py_DECREF(str);	 
         }
       }
       
-      if (use_stringio2 == 0){
+      if (stream2 == 0){
         if (temp2->isSTDOUT() == 1) {
           arg2 = &std::cout;
+        } else if (temp2->isGZ()){
+          out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
+          arg2 = out_gz2;	     
         } else {
-          out2.open(temp2->getFilename());
-          out2.precision(temp2->getPrecision());
-          if (temp2->isTemporary()){
-            delete temp2;
-          }
-          arg2 = &out2;
+          out_txt2.open(temp2->getFilename());
+          out_txt2.precision(temp2->getPrecision());
+          arg2 = &out_txt2;
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       } else {
-        arg2 = &stream2;
+        arg2 = stream2;
       }
     }
   }
@@ -9969,8 +9988,8 @@ SWIGINTERN PyObject *_wrap_GeneralizedAlpha2Solver_PrintProperties(PyObject *SWI
   }
   resultobj = SWIG_Py_Void();
   {
-    if (use_stringio2 == 1) {
-      std::string str =  stream2.str();
+    if (stream2) {
+      std::string str =  stream2->str();
       const char* s = str.c_str();
       const int n = str.length();
       ret2 = PyObject_CallMethod(string_io2, "write", "s#",
@@ -9979,15 +9998,21 @@ SWIGINTERN PyObject *_wrap_GeneralizedAlpha2Solver_PrintProperties(PyObject *SWI
         PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
         return NULL;
       }
+      delete stream2;
       Py_XDECREF(resultobj);   /* Blow away any previous result */
       resultobj = ret2;    
     }
   }
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }
@@ -9995,10 +10020,15 @@ SWIGINTERN PyObject *_wrap_GeneralizedAlpha2Solver_PrintProperties(PyObject *SWI
   return resultobj;
 fail:
   {
-    if (use_stringio2 == 0) {
+    if (!stream2) {
       if (temp2) {
         if (temp2->isSTDOUT() != 1) {
-          out2.close();
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
         }
       }
     }

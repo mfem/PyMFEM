@@ -12,7 +12,8 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "../common/io_stream.hpp"             
+#include "../common/io_stream.hpp"
+#include "general/zstr.hpp"  
 #include "numpy/arrayobject.h"
 #include "linalg/vector.hpp"  
 %}
@@ -36,6 +37,7 @@ import_array();
 
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
+ISTREAM_TYPEMAP(std::istream&)
 
 ARRAY_TO_DOUBLEARRAY_IN(double *_data)
 

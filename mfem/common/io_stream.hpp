@@ -28,6 +28,14 @@ class wFILE
        char * getFilename(void){
 	 return _filename;
        }
+       bool isGZ(void){
+         int len = strlen(_filename);
+         if ((len >= 3) && strcmp(_filename+len-3, ".gz") == 0){
+	   return true;
+	 } else {
+	   return false;
+	 }
+       }
        int getPrecision(void){
 	 return _precision;
        }

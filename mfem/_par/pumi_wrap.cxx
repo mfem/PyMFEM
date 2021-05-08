@@ -3096,11 +3096,10 @@ namespace Swig {
 #define SWIGTYPE_p_pri_t swig_types[28]
 #define SWIGTYPE_p_quad_t swig_types[29]
 #define SWIGTYPE_p_seg_t swig_types[30]
-#define SWIGTYPE_p_std__istream swig_types[31]
-#define SWIGTYPE_p_tet_t swig_types[32]
-#define SWIGTYPE_p_tri_t swig_types[33]
-static swig_type_info *swig_types[35];
-static swig_module_info swig_module = {swig_types, 34, 0, 0, 0, 0};
+#define SWIGTYPE_p_tet_t swig_types[31]
+#define SWIGTYPE_p_tri_t swig_types[32]
+static swig_type_info *swig_types[34];
+static swig_module_info swig_module = {swig_types, 33, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3564,8 +3563,12 @@ SWIGINTERN PyObject *_wrap_PumiMesh_Load__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self
   bool arg5 = (bool) true ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ifstream in_txt2 ;
+  mfem::ifgzstream *in_gz2 = 0 ;
+  std::istringstream *stream2 = 0 ;
+  Py_ssize_t len2 = 0 ;
+  PyObject *ret2 = 0 ;
   bool val5 ;
   int ecode5 = 0 ;
   
@@ -3575,14 +3578,64 @@ SWIGINTERN PyObject *_wrap_PumiMesh_Load__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PumiMesh_Load" "', argument " "1"" of type '" "mfem::PumiMesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::PumiMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__istream,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PumiMesh_Load" "', argument " "2"" of type '" "std::istream &""'"); 
+  {
+    //  PyMFEM::wFILE or string argument or StringIO
+    if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      if (!PyString_Check(swig_obj[1]) && !PyUnicode_Check(swig_obj[1])) {
+        // not string, check if it is StringIO
+        PyObject* module = PyImport_ImportModule("io");
+        if (!module){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+          return NULL;
+        }      
+        PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+        if (!cls){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+          return NULL;
+        }      
+        int check = PyObject_IsInstance(swig_obj[1], cls);
+        Py_DECREF(module);
+        if (! check){
+          SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
+          return NULL;
+        }
+        
+        PyObject *input_str = PyObject_CallMethod(swig_obj[1], "getvalue", NULL);
+        if (PyErr_Occurred()) {
+          PyErr_SetString(PyExc_RuntimeError, "Can not read from StringIO");
+          return NULL;
+        }
+        
+        char *buf = nullptr;
+        PyObject *str = PyUnicode_AsUTF8String(input_str);	 
+        PyBytes_AsStringAndSize(str, &buf, &len2);
+        stream2 = new std::istringstream(buf);
+        Py_DECREF(str);
+        Py_DECREF(input_str);	 
+      } else {
+        // if it is string, extract filename as char*
+        PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
+        const char* filename = PyBytes_AsString(str);
+        temp2 = new PyMFEM::wFILE(filename, 8, true);
+        Py_DECREF(str);
+      }
+    }
+    if (stream2 == 0){
+      if (temp2->isGZ()){
+        in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+        arg2 = in_gz2;
+      } else {
+        in_txt2.open(temp2->getFilename(), std::ifstream::in);
+        in_txt2.precision(temp2->getPrecision());
+        arg2 = &in_txt2;
+      }
+      if (temp2->isTemporary()){
+        delete temp2;
+      }
+    } else {
+      arg2 = stream2;
+    }
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PumiMesh_Load" "', argument " "2"" of type '" "std::istream &""'"); 
-  }
-  arg2 = reinterpret_cast< std::istream * >(argp2);
   if (swig_obj[2]) {
     {
       if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
@@ -3620,8 +3673,40 @@ SWIGINTERN PyObject *_wrap_PumiMesh_Load__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
+  {
+    if (stream2) {
+      ret2 = PyLong_FromSsize_t(len2);
+      if (PyErr_Occurred()) {
+        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
+        return NULL;
+      }
+      delete stream2;    
+      Py_XDECREF(resultobj);   /* Blow away any previous result */
+      resultobj = ret2;    
+    }
+  }
+  {
+    if (!stream2) {
+      if (temp2) {
+        in_txt2.close();
+      }
+      if (in_gz2){
+        delete in_gz2;
+      }
+    }  
+  }
   return resultobj;
 fail:
+  {
+    if (!stream2) {
+      if (temp2) {
+        in_txt2.close();
+      }
+      if (in_gz2){
+        delete in_gz2;
+      }
+    }  
+  }
   return NULL;
 }
 
@@ -3709,55 +3794,6 @@ SWIGINTERN PyObject *_wrap_PumiMesh_Load(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__istream, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        if (argc <= 2) {
-          return _wrap_PumiMesh_Load__SWIG_0_0(self, argc, argv);
-        }
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          if (argc <= 3) {
-            return _wrap_PumiMesh_Load__SWIG_0_0(self, argc, argv);
-          }
-          {
-            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
-              PyErr_Clear();
-              _v = 0;
-            } else {
-              _v = 1;    
-            }
-          }
-          if (_v) {
-            if (argc <= 4) {
-              return _wrap_PumiMesh_Load__SWIG_0_0(self, argc, argv);
-            }
-            {
-              int res = SWIG_AsVal_bool(argv[4], NULL);
-              _v = SWIG_CheckState(res);
-            }
-            if (_v) {
-              return _wrap_PumiMesh_Load__SWIG_0_0(self, argc, argv);
-            }
-          }
-        }
-      }
-    }
-  }
-  if ((argc >= 2) && (argc <= 5)) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__PumiMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_apf__Mesh2, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
@@ -3794,6 +3830,80 @@ SWIGINTERN PyObject *_wrap_PumiMesh_Load(PyObject *self, PyObject *args) {
             }
             if (_v) {
               return _wrap_PumiMesh_Load__SWIG_1(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
+  if ((argc >= 2) && (argc <= 5)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__PumiMesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        //std::string *ptr2 = (std::string *)0;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          if (!PyString_Check(argv[1]) && !PyUnicode_Check(argv[1])) {
+            // not string
+            _v = 1;	   	
+            PyObject* module = PyImport_ImportModule("io");
+            if (!module){
+              _v = 0;	   
+            }      
+            PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+            if (!cls){
+              _v = 0;	   	   
+            }      
+            int check = PyObject_IsInstance(argv[1], cls);
+            Py_DECREF(module);
+            if (! check){
+              _v = 0;	   	   	   
+            }
+          } else {
+            _v = 1;
+          }
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_PumiMesh_Load__SWIG_0_0(self, argc, argv);
+        }
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          if (argc <= 3) {
+            return _wrap_PumiMesh_Load__SWIG_0_0(self, argc, argv);
+          }
+          {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
+              _v = 0;
+            } else {
+              _v = 1;    
+            }
+          }
+          if (_v) {
+            if (argc <= 4) {
+              return _wrap_PumiMesh_Load__SWIG_0_0(self, argc, argv);
+            }
+            {
+              int res = SWIG_AsVal_bool(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              return _wrap_PumiMesh_Load__SWIG_0_0(self, argc, argv);
             }
           }
         }
@@ -4867,24 +4977,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static void *_p_mfem__ParMeshTo_p_mfem__Mesh(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Mesh *)  ((mfem::ParMesh *) x));
-}
-static void *_p_mfem__PumiMeshTo_p_mfem__Mesh(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Mesh *)  ((mfem::PumiMesh *) x));
-}
-static void *_p_mfem__ParPumiMeshTo_p_mfem__Mesh(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Mesh *) (mfem::ParMesh *) ((mfem::ParPumiMesh *) x));
-}
-static void *_p_mfem__ParGridFunctionTo_p_mfem__GridFunction(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::GridFunction *)  ((mfem::ParGridFunction *) x));
-}
-static void *_p_mfem__GridFunctionPumiTo_p_mfem__GridFunction(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::GridFunction *)  ((mfem::GridFunctionPumi *) x));
-}
-static void *_p_mfem__ParPumiMeshTo_p_mfem__ParMesh(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ParMesh *)  ((mfem::ParPumiMesh *) x));
-}
 static void *_p_mfem__HypreParVectorTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Vector *)  ((mfem::HypreParVector *) x));
 }
@@ -4902,6 +4994,24 @@ static void *_p_mfem__GridFunctionPumiTo_p_mfem__Vector(void *x, int *SWIGUNUSED
 }
 static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Vector *)  ((mfem::LinearForm *) x));
+}
+static void *_p_mfem__ParPumiMeshTo_p_mfem__ParMesh(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ParMesh *)  ((mfem::ParPumiMesh *) x));
+}
+static void *_p_mfem__ParGridFunctionTo_p_mfem__GridFunction(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::GridFunction *)  ((mfem::ParGridFunction *) x));
+}
+static void *_p_mfem__GridFunctionPumiTo_p_mfem__GridFunction(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::GridFunction *)  ((mfem::GridFunctionPumi *) x));
+}
+static void *_p_mfem__ParMeshTo_p_mfem__Mesh(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Mesh *)  ((mfem::ParMesh *) x));
+}
+static void *_p_mfem__PumiMeshTo_p_mfem__Mesh(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Mesh *)  ((mfem::PumiMesh *) x));
+}
+static void *_p_mfem__ParPumiMeshTo_p_mfem__Mesh(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Mesh *) (mfem::ParMesh *) ((mfem::ParPumiMesh *) x));
 }
 static swig_type_info _swigt__p_CommGroup = {"_p_CommGroup", "CommGroup *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_GroupId = {"_p_GroupId", "GroupId *", 0, 0, (void*)0, 0};
@@ -4934,7 +5044,6 @@ static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", 0, 0,
 static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__istream = {"_p_std__istream", "std::istream *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 0};
 
@@ -4970,7 +5079,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_pri_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
-  &_swigt__p_std__istream,
   &_swigt__p_tet_t,
   &_swigt__p_tri_t,
 };
@@ -5006,7 +5114,6 @@ static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__HypreParVe
 static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__istream[] = {  {&_swigt__p_std__istream, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 0, 0}};
 
@@ -5042,7 +5149,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_pri_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
-  _swigc__p_std__istream,
   _swigc__p_tet_t,
   _swigc__p_tri_t,
 };
