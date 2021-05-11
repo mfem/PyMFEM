@@ -1,7 +1,13 @@
 	<<<  Change Log. >>>
+
 2021 05.19
         * Fixed std::istream & wrapping not to return the lenght of data. This fixes
 	  the constructors such as mfem::Mesh(std::stream &)
+
+2021 05.11
+        * NumbaFunction, VectorNumbaFunction, and MatrixNumbaFunction is added
+	  to use Numba JITed python code for mfem function coefficients.
+
 2021 05.07
         * vtk.py and datacollection.py was loaded in mfem.ser and mfem.par namespace properly
 	* istream& wrapping was improved in the same way as ostream&
