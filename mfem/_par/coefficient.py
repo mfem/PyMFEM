@@ -2005,24 +2005,29 @@ class MatrixNumbaFunction(object):
 _coefficient.MatrixNumbaFunction_swigregister(MatrixNumbaFunction)
 
 
-from numba import cfunc, types, carray
-scalar_sig = types.double(types.CPointer(types.double),
+try:
+    from numba import cfunc, types, carray
+    scalar_sig = types.double(types.CPointer(types.double),
 			  types.intc)
-scalar_sig_t = types.double(types.CPointer(types.double),
+    scalar_sig_t = types.double(types.CPointer(types.double),
 			    types.double,
 			    types.intc)
-vector_sig = types.void(types.CPointer(types.double),
+    vector_sig = types.void(types.CPointer(types.double),
 			types.CPointer(types.double),
 			types.intc,
 			types.intc)
-vector_sig_t = types.void(types.CPointer(types.double),
+    vector_sig_t = types.void(types.CPointer(types.double),
 			  types.double,
                           types.CPointer(types.double),
 			  types.intc,
 			  types.intc)
 
-matrix_scalar = vector_sig
-matrix_scalar_t = vector_sig_t
+    matrix_scalar = vector_sig
+    matrix_scalar_t = vector_sig_t
+except ImportError:
+    pass
+except BaseError:
+    assert False, "Failed setting Numba signatures by an error other than ImportError"
 
 
 def fake_func(x):
