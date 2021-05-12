@@ -27,10 +27,10 @@ c = NumbaFunction(s_func, sdim, True).GenerateCoefficient()
 
 @cfunc(vector_sig):
 def v_func(ptx, out, sdim, vdim)
-    out_array = carray(out, (m, ))
+    out_array = carray(out, (vdim, ))
     for i in range(m):
         out_array[i] = x+i
-    return out_array
+
 c = VectorNumbaFunction(v_func, sdim, ndim).GenerateCoeficient()
 
 @cfunc(vector_sig_t):
@@ -247,8 +247,8 @@ try:
 			  types.intc,
 			  types.intc)
   
-    matrix_scalar = vector_sig
-    matrix_scalar_t = vector_sig_t
+    matrix_sig = vector_sig
+    matrix_sig_t = vector_sig_t
 except ImportError:
     pass
 except BaseError:
