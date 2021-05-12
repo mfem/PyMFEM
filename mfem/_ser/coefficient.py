@@ -1996,8 +1996,8 @@ try:
 			  types.intc,
 			  types.intc)
 
-    matrix_scalar = vector_sig
-    matrix_scalar_t = vector_sig_t
+    matrix_sig = vector_sig
+    matrix_sig_t = vector_sig_t
 except ImportError:
     pass
 except BaseError:

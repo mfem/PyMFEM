@@ -310,7 +310,11 @@ to find more details of the MFEM library.
 
               # Assigning (copy) from NumPy array
 	      m = DenseMatrix(3,3)
-	      m.Assign(np.arange(9.).reshape(3,3))
+	      m.Assign(np.arange(9.).reshape(3,3))  # <-- In this case,
+	                                            #     wrapper automatically tranpose
+	                                            #     input matrix so that data is
+						    #     column order. The same is done
+						    #     in GetDataArray()
 	      
               x = DenseTensor(2, 3, 5)
 	      x.Assign(1) # set all 1
