@@ -10,8 +10,8 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
-		      bool fix_orientation = true);
+//mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
+//		      bool fix_orientation = true);
 // void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
 #include "numpy/arrayobject.h"
 #include "pycoefficient.hpp"

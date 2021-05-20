@@ -515,6 +515,16 @@ class Vector(object):
         return _vector.Vector_Print(self, *args)
     Print = _swig_new_instance_method(_vector.Vector_Print)
 
+    def PrintGZ(self, file, precision=8):
+        r"""PrintGZ(Vector self, char const * file, int precision=8)"""
+        return _vector.Vector_PrintGZ(self, file, precision)
+    PrintGZ = _swig_new_instance_method(_vector.Vector_PrintGZ)
+
+    def Print_HYPREGZ(self, file, precision=8):
+        r"""Print_HYPREGZ(Vector self, char const * file, int precision=8)"""
+        return _vector.Vector_Print_HYPREGZ(self, file, precision)
+    Print_HYPREGZ = _swig_new_instance_method(_vector.Vector_Print_HYPREGZ)
+
     def Print_HYPRE(self, *args):
         r"""
         Print_HYPRE(Vector self, std::ostream & out)

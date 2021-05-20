@@ -111,6 +111,11 @@ class Matrix(mfem._par.operators.Operator):
         return _matrix.Matrix_Print(self, *args)
     Print = _swig_new_instance_method(_matrix.Matrix_Print)
 
+    def PrintGZ(self, file, precision=8):
+        r"""PrintGZ(Matrix self, char const * file, int precision=8)"""
+        return _matrix.Matrix_PrintGZ(self, file, precision)
+    PrintGZ = _swig_new_instance_method(_matrix.Matrix_PrintGZ)
+
 # Register Matrix in _matrix:
 _matrix.Matrix_swigregister(Matrix)
 

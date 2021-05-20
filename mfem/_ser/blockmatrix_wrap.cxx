@@ -3548,6 +3548,17 @@ SWIGINTERN void mfem_BlockMatrix_PrintMatlab__SWIG_1(mfem::BlockMatrix *self,cha
   self -> PrintMatlab(ofile);
   ofile.close();
   }
+SWIGINTERN void mfem_BlockMatrix_PrintMatlabGZ(mfem::BlockMatrix *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> PrintMatlab(*ofile);
+  delete ofile;
+  }
 
 
 /* ---------------------------------------------------
@@ -5818,6 +5829,70 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_BlockMatrix_PrintMatlabGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:BlockMatrix_PrintMatlabGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockMatrix_PrintMatlabGZ" "', argument " "1"" of type '" "mfem::BlockMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockMatrix_PrintMatlabGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_BlockMatrix_PrintMatlabGZ(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *BlockMatrix_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
@@ -5881,6 +5956,7 @@ static PyMethodDef SwigMethods[] = {
 		"BlockMatrix_PrintMatlab(BlockMatrix self, std::ostream & os=mfem::out)\n"
 		"BlockMatrix_PrintMatlab(BlockMatrix self, char const * file, int precision=8)\n"
 		""},
+	 { "BlockMatrix_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "BlockMatrix_PrintMatlabGZ(BlockMatrix self, char const * file, int precision=8)"},
 	 { "BlockMatrix_swigregister", BlockMatrix_swigregister, METH_O, NULL},
 	 { "BlockMatrix_swiginit", BlockMatrix_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
@@ -5938,6 +6014,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"PrintMatlab(BlockMatrix self, std::ostream & os=mfem::out)\n"
 		"PrintMatlab(BlockMatrix self, char const * file, int precision=8)\n"
 		""},
+	 { "BlockMatrix_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "PrintMatlabGZ(BlockMatrix self, char const * file, int precision=8)"},
 	 { "BlockMatrix_swigregister", BlockMatrix_swigregister, METH_O, NULL},
 	 { "BlockMatrix_swiginit", BlockMatrix_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }

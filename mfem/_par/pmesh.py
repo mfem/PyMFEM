@@ -362,6 +362,11 @@ class ParMesh(mfem._par.mesh.Mesh):
         return _pmesh.ParMesh_Print(self, *args)
     Print = _swig_new_instance_method(_pmesh.ParMesh_Print)
 
+    def PrintGZ(self, file, precision=8):
+        r"""PrintGZ(ParMesh self, char const * file, int precision=8)"""
+        return _pmesh.ParMesh_PrintGZ(self, file, precision)
+    PrintGZ = _swig_new_instance_method(_pmesh.ParMesh_PrintGZ)
+
     def PrintXG(self, *args):
         r"""
         PrintXG(ParMesh self, std::ostream & out=out)
@@ -369,6 +374,11 @@ class ParMesh(mfem._par.mesh.Mesh):
         """
         return _pmesh.ParMesh_PrintXG(self, *args)
     PrintXG = _swig_new_instance_method(_pmesh.ParMesh_PrintXG)
+
+    def PrintXGGZ(self, file, precision=8):
+        r"""PrintXGGZ(ParMesh self, char const * file, int precision=8)"""
+        return _pmesh.ParMesh_PrintXGGZ(self, file, precision)
+    PrintXGGZ = _swig_new_instance_method(_pmesh.ParMesh_PrintXGGZ)
 
     def PrintAsOne(self, *args):
         r"""
@@ -378,6 +388,11 @@ class ParMesh(mfem._par.mesh.Mesh):
         return _pmesh.ParMesh_PrintAsOne(self, *args)
     PrintAsOne = _swig_new_instance_method(_pmesh.ParMesh_PrintAsOne)
 
+    def PrintAsOneGZ(self, file, precision=8):
+        r"""PrintAsOneGZ(ParMesh self, char const * file, int precision=8)"""
+        return _pmesh.ParMesh_PrintAsOneGZ(self, file, precision)
+    PrintAsOneGZ = _swig_new_instance_method(_pmesh.ParMesh_PrintAsOneGZ)
+
     def PrintAsOneXG(self, *args):
         r"""
         PrintAsOneXG(ParMesh self, std::ostream & out=out)
@@ -386,6 +401,11 @@ class ParMesh(mfem._par.mesh.Mesh):
         return _pmesh.ParMesh_PrintAsOneXG(self, *args)
     PrintAsOneXG = _swig_new_instance_method(_pmesh.ParMesh_PrintAsOneXG)
 
+    def PrintAsOneXGGZ(self, file, precision=8):
+        r"""PrintAsOneXGGZ(ParMesh self, char const * file, int precision=8)"""
+        return _pmesh.ParMesh_PrintAsOneXGGZ(self, file, precision)
+    PrintAsOneXGGZ = _swig_new_instance_method(_pmesh.ParMesh_PrintAsOneXGGZ)
+
     def PrintInfo(self, *args):
         r"""
         PrintInfo(ParMesh self, std::ostream & out=out)
@@ -393,6 +413,16 @@ class ParMesh(mfem._par.mesh.Mesh):
         """
         return _pmesh.ParMesh_PrintInfo(self, *args)
     PrintInfo = _swig_new_instance_method(_pmesh.ParMesh_PrintInfo)
+
+    def PrintInfoGZ(self, file, precision=8):
+        r"""PrintInfoGZ(ParMesh self, char const * file, int precision=8)"""
+        return _pmesh.ParMesh_PrintInfoGZ(self, file, precision)
+    PrintInfoGZ = _swig_new_instance_method(_pmesh.ParMesh_PrintInfoGZ)
+
+    def ParPrintGZ(self, file, precision=8):
+        r"""ParPrintGZ(ParMesh self, char const * file, int precision=8)"""
+        return _pmesh.ParMesh_ParPrintGZ(self, file, precision)
+    ParPrintGZ = _swig_new_instance_method(_pmesh.ParMesh_ParPrintGZ)
 
     def ParPrint(self, *args):
         r"""

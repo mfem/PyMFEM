@@ -3826,6 +3826,17 @@ SWIGINTERN void mfem_GridFunction_Save__SWIG_1(mfem::GridFunction *self,char con
   self -> Save(ofile);
   ofile.close();
   }
+SWIGINTERN void mfem_GridFunction_SaveGZ(mfem::GridFunction *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> Save(*ofile);
+  delete ofile;
+  }
 
 SWIGINTERNINLINE PyObject*
   SWIG_From_bool  (bool value)
@@ -3843,6 +3854,17 @@ SWIGINTERN void mfem_QuadratureFunction_Save__SWIG_1(mfem::QuadratureFunction *s
   ofile.precision(precision);  
   self -> Save(ofile);
   ofile.close();
+  }
+SWIGINTERN void mfem_QuadratureFunction_SaveGZ(mfem::QuadratureFunction *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> Save(*ofile);
+  delete ofile;
   }
 
 
@@ -4053,14 +4075,20 @@ SWIGINTERN PyObject *_wrap_new_GridFunction__SWIG_4(PyObject *SWIGUNUSEDPARM(sel
       }
     }
     if (stream2 == 0){
-      if (temp2->isGZ()){
-        in_gz2 = new mfem::ifgzstream(temp2->getFilename());
-        arg2 = in_gz2;
-      } else {
-        in_txt2.open(temp2->getFilename(), std::ifstream::in);
-        in_txt2.precision(temp2->getPrecision());
-        arg2 = &in_txt2;
-      }
+      /*
+            if (temp2->isGZ()){
+        	 in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+               arg2 = in_gz2;
+            } else {
+        	 in_txt2.open(temp2->getFilename(), std::ifstream::in);
+               in_txt2.precision(temp2->getPrecision());
+               arg2 = &in_txt2;
+            }
+           */
+      /* this will auto-detect the input file type */
+      in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+      arg2 = in_gz2;
+      
       if (temp2->isTemporary()){
         delete temp2;
       }
@@ -4082,18 +4110,6 @@ SWIGINTERN PyObject *_wrap_new_GridFunction__SWIG_4(PyObject *SWIGUNUSEDPARM(sel
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NEW |  0 );
-  {
-    if (stream2) {
-      ret2 = PyLong_FromSsize_t(len2);
-      if (PyErr_Occurred()) {
-        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
-        return NULL;
-      }
-      delete stream2;    
-      Py_XDECREF(resultobj);   /* Blow away any previous result */
-      resultobj = ret2;    
-    }
-  }
   {
     if (!stream2) {
       if (temp2) {
@@ -13554,6 +13570,64 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_GridFunction_SaveGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:GridFunction_SaveGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_SaveGZ" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_SaveGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_GridFunction_SaveGZ(arg1,(char const *)arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *GridFunction_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
@@ -13920,14 +13994,20 @@ SWIGINTERN PyObject *_wrap_new_QuadratureFunction__SWIG_4(PyObject *SWIGUNUSEDPA
       }
     }
     if (stream2 == 0){
-      if (temp2->isGZ()){
-        in_gz2 = new mfem::ifgzstream(temp2->getFilename());
-        arg2 = in_gz2;
-      } else {
-        in_txt2.open(temp2->getFilename(), std::ifstream::in);
-        in_txt2.precision(temp2->getPrecision());
-        arg2 = &in_txt2;
-      }
+      /*
+            if (temp2->isGZ()){
+        	 in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+               arg2 = in_gz2;
+            } else {
+        	 in_txt2.open(temp2->getFilename(), std::ifstream::in);
+               in_txt2.precision(temp2->getPrecision());
+               arg2 = &in_txt2;
+            }
+           */
+      /* this will auto-detect the input file type */
+      in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+      arg2 = in_gz2;
+      
       if (temp2->isTemporary()){
         delete temp2;
       }
@@ -13949,18 +14029,6 @@ SWIGINTERN PyObject *_wrap_new_QuadratureFunction__SWIG_4(PyObject *SWIGUNUSEDPA
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__QuadratureFunction, SWIG_POINTER_NEW |  0 );
-  {
-    if (stream2) {
-      ret2 = PyLong_FromSsize_t(len2);
-      if (PyErr_Occurred()) {
-        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
-        return NULL;
-      }
-      delete stream2;    
-      Py_XDECREF(resultobj);   /* Blow away any previous result */
-      resultobj = ret2;    
-    }
-  }
   {
     if (!stream2) {
       if (temp2) {
@@ -15331,6 +15399,64 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_QuadratureFunction_SaveGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::QuadratureFunction *arg1 = (mfem::QuadratureFunction *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:QuadratureFunction_SaveGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunction_SaveGZ" "', argument " "1"" of type '" "mfem::QuadratureFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::QuadratureFunction * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "QuadratureFunction_SaveGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_QuadratureFunction_SaveGZ(arg1,(char const *)arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *QuadratureFunction_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
@@ -16153,6 +16279,7 @@ static PyMethodDef SwigMethods[] = {
 		"GridFunction_Save(GridFunction self, std::ostream & out)\n"
 		"GridFunction_Save(GridFunction self, char const * file, int precision=8)\n"
 		""},
+	 { "GridFunction_SaveGZ", (PyCFunction)(void(*)(void))_wrap_GridFunction_SaveGZ, METH_VARARGS|METH_KEYWORDS, "GridFunction_SaveGZ(GridFunction self, char const * file, int precision=8)"},
 	 { "GridFunction_swigregister", GridFunction_swigregister, METH_O, NULL},
 	 { "GridFunction_swiginit", GridFunction_swiginit, METH_VARARGS, NULL},
 	 { "new_QuadratureFunction", _wrap_new_QuadratureFunction, METH_VARARGS, "\n"
@@ -16185,6 +16312,7 @@ static PyMethodDef SwigMethods[] = {
 		"QuadratureFunction_Save(QuadratureFunction self, std::ostream & out)\n"
 		"QuadratureFunction_Save(QuadratureFunction self, char const * file, int precision=8)\n"
 		""},
+	 { "QuadratureFunction_SaveGZ", (PyCFunction)(void(*)(void))_wrap_QuadratureFunction_SaveGZ, METH_VARARGS|METH_KEYWORDS, "QuadratureFunction_SaveGZ(QuadratureFunction self, char const * file, int precision=8)"},
 	 { "QuadratureFunction_swigregister", QuadratureFunction_swigregister, METH_O, NULL},
 	 { "QuadratureFunction_swiginit", QuadratureFunction_swiginit, METH_VARARGS, NULL},
 	 { "__lshift__", _wrap___lshift__, METH_VARARGS, "\n"
@@ -16382,6 +16510,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Save(GridFunction self, std::ostream & out)\n"
 		"Save(GridFunction self, char const * file, int precision=8)\n"
 		""},
+	 { "GridFunction_SaveGZ", (PyCFunction)(void(*)(void))_wrap_GridFunction_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(GridFunction self, char const * file, int precision=8)"},
 	 { "GridFunction_swigregister", GridFunction_swigregister, METH_O, NULL},
 	 { "GridFunction_swiginit", GridFunction_swiginit, METH_VARARGS, NULL},
 	 { "new_QuadratureFunction", _wrap_new_QuadratureFunction, METH_VARARGS, "\n"
@@ -16414,6 +16543,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Save(QuadratureFunction self, std::ostream & out)\n"
 		"Save(QuadratureFunction self, char const * file, int precision=8)\n"
 		""},
+	 { "QuadratureFunction_SaveGZ", (PyCFunction)(void(*)(void))_wrap_QuadratureFunction_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(QuadratureFunction self, char const * file, int precision=8)"},
 	 { "QuadratureFunction_swigregister", QuadratureFunction_swigregister, METH_O, NULL},
 	 { "QuadratureFunction_swiginit", QuadratureFunction_swiginit, METH_VARARGS, NULL},
 	 { "__lshift__", _wrap___lshift__, METH_VARARGS, "\n"
