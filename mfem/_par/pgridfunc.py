@@ -418,6 +418,11 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         return _pgridfunc.ParGridFunction_Save(self, *args)
     Save = _swig_new_instance_method(_pgridfunc.ParGridFunction_Save)
 
+    def SaveGZ(self, file, precision=8):
+        r"""SaveGZ(ParGridFunction self, char const * file, int precision=8)"""
+        return _pgridfunc.ParGridFunction_SaveGZ(self, file, precision)
+    SaveGZ = _swig_new_instance_method(_pgridfunc.ParGridFunction_SaveGZ)
+
     def SaveAsOne(self, *args):
         r"""
         SaveAsOne(ParGridFunction self, std::ostream & out=out)
@@ -425,6 +430,11 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         """
         return _pgridfunc.ParGridFunction_SaveAsOne(self, *args)
     SaveAsOne = _swig_new_instance_method(_pgridfunc.ParGridFunction_SaveAsOne)
+
+    def SaveAsOneGZ(self, file, precision=8):
+        r"""SaveAsOneGZ(ParGridFunction self, char const * file, int precision=8)"""
+        return _pgridfunc.ParGridFunction_SaveAsOneGZ(self, file, precision)
+    SaveAsOneGZ = _swig_new_instance_method(_pgridfunc.ParGridFunction_SaveAsOneGZ)
 
 # Register ParGridFunction in _pgridfunc:
 _pgridfunc.ParGridFunction_swigregister(ParGridFunction)

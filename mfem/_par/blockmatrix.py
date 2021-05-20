@@ -233,6 +233,11 @@ class BlockMatrix(mfem._par.matrix.AbstractSparseMatrix):
         return _blockmatrix.BlockMatrix_PrintMatlab(self, *args)
     PrintMatlab = _swig_new_instance_method(_blockmatrix.BlockMatrix_PrintMatlab)
 
+    def PrintMatlabGZ(self, file, precision=8):
+        r"""PrintMatlabGZ(BlockMatrix self, char const * file, int precision=8)"""
+        return _blockmatrix.BlockMatrix_PrintMatlabGZ(self, file, precision)
+    PrintMatlabGZ = _swig_new_instance_method(_blockmatrix.BlockMatrix_PrintMatlabGZ)
+
 # Register BlockMatrix in _blockmatrix:
 _blockmatrix.BlockMatrix_swigregister(BlockMatrix)
 

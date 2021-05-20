@@ -572,6 +572,11 @@ class GridFunction(mfem._par.vector.Vector):
         return _gridfunc.GridFunction_Save(self, *args)
     Save = _swig_new_instance_method(_gridfunc.GridFunction_Save)
 
+    def SaveGZ(self, file, precision=8):
+        r"""SaveGZ(GridFunction self, char const * file, int precision=8)"""
+        return _gridfunc.GridFunction_SaveGZ(self, file, precision)
+    SaveGZ = _swig_new_instance_method(_gridfunc.GridFunction_SaveGZ)
+
 # Register GridFunction in _gridfunc:
 _gridfunc.GridFunction_swigregister(GridFunction)
 
@@ -649,6 +654,11 @@ class QuadratureFunction(mfem._par.vector.Vector):
         """
         return _gridfunc.QuadratureFunction_Save(self, *args)
     Save = _swig_new_instance_method(_gridfunc.QuadratureFunction_Save)
+
+    def SaveGZ(self, file, precision=8):
+        r"""SaveGZ(QuadratureFunction self, char const * file, int precision=8)"""
+        return _gridfunc.QuadratureFunction_SaveGZ(self, file, precision)
+    SaveGZ = _swig_new_instance_method(_gridfunc.QuadratureFunction_SaveGZ)
 
 # Register QuadratureFunction in _gridfunc:
 _gridfunc.QuadratureFunction_swigregister(QuadratureFunction)

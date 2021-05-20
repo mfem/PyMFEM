@@ -371,6 +371,11 @@ class NCMesh(object):
         return _ncmesh.NCMesh_PrintMemoryDetail(self)
     PrintMemoryDetail = _swig_new_instance_method(_ncmesh.NCMesh_PrintMemoryDetail)
 
+    def PrintVertexParentsGZ(self, file, precision=8):
+        r"""PrintVertexParentsGZ(NCMesh self, char const * file, int precision=8)"""
+        return _ncmesh.NCMesh_PrintVertexParentsGZ(self, file, precision)
+    PrintVertexParentsGZ = _swig_new_instance_method(_ncmesh.NCMesh_PrintVertexParentsGZ)
+
     def PrintVertexParents(self, *args):
         r"""
         PrintVertexParents(NCMesh self, std::ostream & out)
@@ -379,6 +384,11 @@ class NCMesh(object):
         """
         return _ncmesh.NCMesh_PrintVertexParents(self, *args)
     PrintVertexParents = _swig_new_instance_method(_ncmesh.NCMesh_PrintVertexParents)
+
+    def PrintCoarseElementsGZ(self, file, precision=8):
+        r"""PrintCoarseElementsGZ(NCMesh self, char const * file, int precision=8)"""
+        return _ncmesh.NCMesh_PrintCoarseElementsGZ(self, file, precision)
+    PrintCoarseElementsGZ = _swig_new_instance_method(_ncmesh.NCMesh_PrintCoarseElementsGZ)
 
     def PrintCoarseElements(self, *args):
         r"""
@@ -396,6 +406,11 @@ class NCMesh(object):
         """
         return _ncmesh.NCMesh_PrintStats(self, *args)
     PrintStats = _swig_new_instance_method(_ncmesh.NCMesh_PrintStats)
+
+    def PrintStatsGZ(self, file, precision=8):
+        r"""PrintStatsGZ(NCMesh self, char const * file, int precision=8)"""
+        return _ncmesh.NCMesh_PrintStatsGZ(self, file, precision)
+    PrintStatsGZ = _swig_new_instance_method(_ncmesh.NCMesh_PrintStatsGZ)
 
 # Register NCMesh in _ncmesh:
 _ncmesh.NCMesh_swigregister(NCMesh)

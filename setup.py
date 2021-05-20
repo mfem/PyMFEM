@@ -426,7 +426,7 @@ def cmake_make_mfem(serial=True):
 
         if enable_strumpack:
             cmake_opts['DMFEM_USE_STRUMPACK'] = '1'
-            cmake_opts['STRUMPACK_DIR'] = strumpack_prefix
+            cmake_opts['DSTRUMPACK_DIR'] = strumpack_prefix
         if enable_pumi:
             cmake_opts['DMFEM_USE_PUMI'] = '1'
             cmake_opts['DPUMI_DIR'] = pumi_prefix
