@@ -9539,7 +9539,6 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_Load(PyObject *SWIGUNUSEDPARM(self
   mfem::ifgzstream *in_gz3 = 0 ;
   std::istringstream *stream3 = 0 ;
   Py_ssize_t len3 = 0 ;
-  PyObject *ret3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -10030,7 +10029,6 @@ SWIGINTERN PyObject *_wrap_new_QuadratureSpace__SWIG_1(PyObject *SWIGUNUSEDPARM(
   mfem::ifgzstream *in_gz2 = 0 ;
   std::istringstream *stream2 = 0 ;
   Py_ssize_t len2 = 0 ;
-  PyObject *ret2 = 0 ;
   mfem::QuadratureSpace *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
