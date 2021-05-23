@@ -211,22 +211,28 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
     GetFaceRestriction = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetFaceRestriction)
 
     def GetSharedEdgeDofs(self, group, ei):
-      from  .array import intArray
-      dofs = intArray()      
-      _pfespace.ParFiniteElementSpace_GetSharedEdgeDofs(self, group, ei, dofs)
-      return dofs.ToList()      
+        from  .array import intArray
+        dofs = intArray() 
+        _pfespace.ParFiniteElementSpace_GetSharedEdgeDofs(self, group, ei, dofs)
+        return dofs.ToList()
 
 
 
-    def GetSharedTriangleDofs(self, group, fi, dofs):
-        r"""GetSharedTriangleDofs(ParFiniteElementSpace self, int group, int fi, intArray dofs)"""
-        return _pfespace.ParFiniteElementSpace_GetSharedTriangleDofs(self, group, fi, dofs)
-    GetSharedTriangleDofs = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetSharedTriangleDofs)
+    def GetSharedTriangleDofs(self, group, fi):
+        from  .array import intArray
+        dofs = intArray()
+        _pfespace.ParFiniteElementSpace_GetSharedTriangleDofs(self, group, fi, dofs)
+        return dofs.ToList()
 
-    def GetSharedQuadrilateralDofs(self, group, fi, dofs):
-        r"""GetSharedQuadrilateralDofs(ParFiniteElementSpace self, int group, int fi, intArray dofs)"""
-        return _pfespace.ParFiniteElementSpace_GetSharedQuadrilateralDofs(self, group, fi, dofs)
-    GetSharedQuadrilateralDofs = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetSharedQuadrilateralDofs)
+
+
+    def GetSharedQuadrilateralDofs(self, group, fi):
+        from  .array import intArray
+        dofs = intArray()
+        _pfespace.ParFiniteElementSpace_GetSharedQuadrilateralDofs(self, group, fi, dofs)
+        return dofs.ToList()
+
+
 
     def Dof_TrueDof_Matrix(self):
         r"""Dof_TrueDof_Matrix(ParFiniteElementSpace self) -> HypreParMatrix"""

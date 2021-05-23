@@ -221,6 +221,11 @@ class GroupTopology(object):
         return _communication.GroupTopology_Save(self, *args)
     Save = _swig_new_instance_method(_communication.GroupTopology_Save)
 
+    def SaveGZ(self, file, precision=8):
+        r"""SaveGZ(GroupTopology self, char const * file, int precision=8)"""
+        return _communication.GroupTopology_SaveGZ(self, file, precision)
+    SaveGZ = _swig_new_instance_method(_communication.GroupTopology_SaveGZ)
+
 # Register GroupTopology in _communication:
 _communication.GroupTopology_swigregister(GroupTopology)
 
@@ -287,6 +292,11 @@ class GroupCommunicator(object):
         """
         return _communication.GroupCommunicator_PrintInfo(self, *args)
     PrintInfo = _swig_new_instance_method(_communication.GroupCommunicator_PrintInfo)
+
+    def PrintInfoGZ(self, file, precision=8):
+        r"""PrintInfoGZ(GroupCommunicator self, char const * file, int precision=8)"""
+        return _communication.GroupCommunicator_PrintInfoGZ(self, file, precision)
+    PrintInfoGZ = _swig_new_instance_method(_communication.GroupCommunicator_PrintInfoGZ)
 
 # Register GroupCommunicator in _communication:
 _communication.GroupCommunicator_swigregister(GroupCommunicator)

@@ -10,8 +10,8 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
-		      bool fix_orientation = true);
+//mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
+//		      bool fix_orientation = true);
 // void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
 #include "numpy/arrayobject.h"
 #include "pycoefficient.hpp"
@@ -165,7 +165,7 @@ if (!SWIG_IsOK(res2)){
 def GetBdrElementVertices(self, i):
     from  .array import intArray
     ivert = intArray()
-    _mesh.Mesh_GetBdrElementVertices(self, i, ivert)
+    $action(self, i, ivert)
     return ivert.ToList()
 %}
 
@@ -174,7 +174,7 @@ def GetBdrElementAdjacentElement(self, bdr_el):
     from mfem.ser import intp
     el = intp()
     info = intp()  
-    _mesh.Mesh_GetBdrElementAdjacentElement(self, bdr_el, el, info)
+    $action(self, bdr_el, el, info)
     return el.value(), info.value()
 %}
 
@@ -182,7 +182,7 @@ def GetBdrElementAdjacentElement(self, bdr_el):
 def GetElementVertices(self, i):
     from  .array import intArray
     ivert = intArray()
-    _mesh.Mesh_GetElementVertices(self, i, ivert)
+    $action(self, i, ivert)
     return ivert.ToList()
 %}
 
@@ -191,7 +191,7 @@ def GetElementEdges(self, i):
     from  .array import intArray
     ia = intArray()
     ib = intArray()      
-    _mesh.Mesh_GetElementEdges(self, i, ia, ib)
+    $action(self, i, ia, ib)
     return ia.ToList(), ib.ToList()      
 %} 
 
@@ -200,7 +200,7 @@ def GetBdrElementEdges(self, i):
     from  .array import intArray
     ia = intArray()
     ib = intArray()      
-    _mesh.Mesh_GetBdrElementEdges(self, i, ia, ib)
+    $action(self, i, ia, ib)
     return ia.ToList(), ib.ToList()
 %} 
 
@@ -209,7 +209,7 @@ def GetFaceEdges(self, i):
     from  .array import intArray
     ia = intArray()
     ib = intArray()      
-    _mesh.Mesh_GetFaceEdges(self, i, ia, ib)
+    $action(self, i, ia, ib)
     return ia.ToList(), ib.ToList()
 %}
 
@@ -217,7 +217,7 @@ def GetFaceEdges(self, i):
 def GetEdgeVertices(self, i):
     from  .array import intArray
     ia = intArray()
-    _mesh.Mesh_GetEdgeVertices(self, i, ia)
+    $action(self, i, ia)
     return ia.ToList()
 %}
 
@@ -225,7 +225,7 @@ def GetEdgeVertices(self, i):
 def GetFaceVertices(self, i):
     from  .array import intArray
     ia = intArray()
-    _mesh.Mesh_GetFaceVertices(self, i, ia)
+    $action(self, i, ia)
     return ia.ToList()
 %}
 
@@ -234,7 +234,7 @@ def GetElementFaces(self, i):
     from  .array import intArray
     ia = intArray()
     ib = intArray()      
-    _mesh.Mesh_GetElementFaces(self, i, ia, ib)
+    $action(self, i, ia, ib)
     return ia.ToList(), ib.ToList()
 %}
 
@@ -243,7 +243,7 @@ def GetBoundingBox(self, ref = 2):
     from  .vector import Vector
     min = Vector()
     max = Vector()      
-    _mesh.Mesh_GetBoundingBox(self, min, max, ref)      
+    $action(self, min, max, ref)      
     return min.GetDataArray().copy(), max.GetDataArray().copy()
 %}
 
@@ -252,35 +252,35 @@ def GetFaceElements(self, Face):
     from mfem.ser import intp
     Elem1 = intp()
     Elem2 = intp()  
-    val = _mesh.Mesh_GetFaceElements(self, Face, Elem1, Elem2)
+    val = $action(self, Face, Elem1, Elem2)
     return Elem1.value(), Elem2.value()
 %}
 %feature("shadow") mfem::Mesh::GetElementTransformation %{
 def GetElementTransformation(self, i):
     from mfem.ser import IsoparametricTransformation
     Tr = IsoparametricTransformation()
-    _mesh.Mesh_GetElementTransformation(self, i, Tr)
+    $action(self, i, Tr)
     return Tr
 %}
 %feature("shadow") mfem::Mesh::GetBdrElementTransformation %{
 def GetBdrElementTransformation(self, i):
     from mfem.ser import IsoparametricTransformation
     Tr = IsoparametricTransformation()
-    _mesh.Mesh_GetBdrElementTransformation(self, i, Tr)
+    $action(self, i, Tr)
     return Tr
 %}
 %feature("shadow") mfem::Mesh::GetFaceTransformation %{
 def GetFaceTransformation(self, i):
     from mfem.ser import IsoparametricTransformation
     Tr = IsoparametricTransformation()
-    _mesh.Mesh_GetFaceTransformation(self, i, Tr)
+    $action(self, i, Tr)
     return Tr
 %}
 %feature("shadow") mfem::Mesh::GetEdgeTransformation %{
 def GetEdgeTransformation(self, i):
     from mfem.ser import IsoparametricTransformation
     Tr = IsoparametricTransformation()
-    _mesh.Mesh_GetEdgeTransformation(self, i, Tr)
+    $action(self, i, Tr)
     return Tr
 %}
 %feature("shadow") mfem::Mesh::GetFaceInfos %{
@@ -289,7 +289,7 @@ def GetFaceInfos(self, i):
     Elem1 = intp()
     Elem2 = intp()  
   
-    _mesh.Mesh_GetFaceInfos(self, i, Elem1, Elem2)
+    $action(self, i, Elem1, Elem2)
     return Elem1.value(), Elem2.value()
 %}
 %feature("shadow") mfem::Mesh::FindPoints %{
@@ -303,7 +303,7 @@ def FindPoints(self, pp, warn=True, inv_trans=None):
     M.Assign(pp)
     elem_ids = mfem.intArray()
     int_points = mfem.IntegrationPointArray()
-    count = _mesh.Mesh_FindPoints(self, M, elem_ids, int_points, warn, inv_trans)
+    count = $action(self, M, elem_ids, int_points, warn, inv_trans)
     elem_ids = elem_ids.ToList()
     return count, elem_ids, int_points
 %}
@@ -319,7 +319,7 @@ def CartesianPartitioning(self, nxyz, return_list=False):
         dd = nxyz
         warnings.warn("CartesianPartitioning argument should be iterable",
 		      DeprecationWarning,)
-    r = _mesh.Mesh_CartesianPartitioning(self, dd)
+    r = $action(self, dd)
 
     if not return_list:
         return r

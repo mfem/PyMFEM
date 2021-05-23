@@ -1152,6 +1152,11 @@ class Mesh(object):
         return _mesh.Mesh_PrintInfo(self, *args)
     PrintInfo = _swig_new_instance_method(_mesh.Mesh_PrintInfo)
 
+    def PrintInfoGZ(self, file, precision=8):
+        r"""PrintInfoGZ(Mesh self, char const * file, int precision=8)"""
+        return _mesh.Mesh_PrintInfoGZ(self, file, precision)
+    PrintInfoGZ = _swig_new_instance_method(_mesh.Mesh_PrintInfoGZ)
+
     def Print(self, *args):
         r"""
         Print(Mesh self, std::ostream & out=out)
@@ -1159,6 +1164,11 @@ class Mesh(object):
         """
         return _mesh.Mesh_Print(self, *args)
     Print = _swig_new_instance_method(_mesh.Mesh_Print)
+
+    def PrintGZ(self, file, precision=8):
+        r"""PrintGZ(Mesh self, char const * file, int precision=8)"""
+        return _mesh.Mesh_PrintGZ(self, file, precision)
+    PrintGZ = _swig_new_instance_method(_mesh.Mesh_PrintGZ)
 
     def PrintXG(self, *args):
         r"""
@@ -1168,6 +1178,11 @@ class Mesh(object):
         return _mesh.Mesh_PrintXG(self, *args)
     PrintXG = _swig_new_instance_method(_mesh.Mesh_PrintXG)
 
+    def PrintXGGZ(self, file, precision=8):
+        r"""PrintXGGZ(Mesh self, char const * file, int precision=8)"""
+        return _mesh.Mesh_PrintXGGZ(self, file, precision)
+    PrintXGGZ = _swig_new_instance_method(_mesh.Mesh_PrintXGGZ)
+
     def PrintVTK(self, *args):
         r"""
         PrintVTK(Mesh self, std::ostream & out)
@@ -1176,6 +1191,11 @@ class Mesh(object):
         """
         return _mesh.Mesh_PrintVTK(self, *args)
     PrintVTK = _swig_new_instance_method(_mesh.Mesh_PrintVTK)
+
+    def PrintVTKGZ(self, file, precision=8):
+        r"""PrintVTKGZ(Mesh self, char const * file, int precision=8)"""
+        return _mesh.Mesh_PrintVTKGZ(self, file, precision)
+    PrintVTKGZ = _swig_new_instance_method(_mesh.Mesh_PrintVTKGZ)
 
 # Register Mesh in _mesh:
 _mesh.Mesh_swigregister(Mesh)
