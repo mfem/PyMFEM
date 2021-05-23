@@ -4047,7 +4047,6 @@ SWIGINTERN PyObject *_wrap_new_GridFunction__SWIG_4(PyObject *SWIGUNUSEDPARM(sel
   mfem::ifgzstream *in_gz2 = 0 ;
   std::istringstream *stream2 = 0 ;
   Py_ssize_t len2 = 0 ;
-  PyObject *ret2 = 0 ;
   mfem::GridFunction *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
@@ -14695,7 +14694,6 @@ SWIGINTERN PyObject *_wrap_new_QuadratureFunction__SWIG_4(PyObject *SWIGUNUSEDPA
   mfem::ifgzstream *in_gz2 = 0 ;
   std::istringstream *stream2 = 0 ;
   Py_ssize_t len2 = 0 ;
-  PyObject *ret2 = 0 ;
   mfem::QuadratureFunction *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;

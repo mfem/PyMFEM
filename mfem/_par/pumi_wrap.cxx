@@ -3600,7 +3600,6 @@ SWIGINTERN PyObject *_wrap_PumiMesh_Load__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self
   mfem::ifgzstream *in_gz2 = 0 ;
   std::istringstream *stream2 = 0 ;
   Py_ssize_t len2 = 0 ;
-  PyObject *ret2 = 0 ;
   bool val5 ;
   int ecode5 = 0 ;
   
