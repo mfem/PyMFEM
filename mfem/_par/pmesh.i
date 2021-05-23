@@ -55,10 +55,10 @@ def GroupFace(self, group, i, *args):
         from mfem.par import intp    
         face = intp()
         o = intp()
-        _pmesh.Mesh_ParGroupFace(self, group, i, face, o)      
+        $action(self, group, i, face, o)      
         return face.value(), o.value()
     else:
-        return _pmesh.ParMesh_GroupFace(self, group, i, *args)            
+        return $action(self, group, i, *args)            
 %}
 	  
 %feature("shadow") mfem::ParMesh::GroupEdge %{
@@ -67,10 +67,10 @@ def GroupEdge(self, group, i, *args):
         from mfem.par import intp  
         edge = intp()
         o = intp()  
-        _pmesh.ParMesh_GroupEdge(self, group, i, edge, o)
+        $action(self, group, i, edge, o)
         return edge.value(), o.value()
     else:
-        return _pmesh.ParMesh_GroupEdge(self, group, i, *args)      
+        return $action(self, group, i, *args)      
 %}
 
 

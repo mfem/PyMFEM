@@ -312,7 +312,7 @@ class ParMesh(mfem._par.mesh.Mesh):
         from  .vector import Vector
         min = Vector()
         max = Vector()      
-        _mesh.Mesh_GetBoundingBox(self, min, max, ref)      
+        _pmesh.ParMesh_GetBoundingBox(self, min, max, ref)      
         return min.GetDataArray().copy(), max.GetDataArray().copy()
 
 
@@ -337,7 +337,7 @@ class ParMesh(mfem._par.mesh.Mesh):
         M.Assign(pp)
         elem_ids = mfem.intArray()
         int_points = mfem.IntegrationPointArray()
-        count = _mesh.Mesh_FindPoints(self, M, elem_ids, int_points, warn, inv_trans)      
+        count = _pmesh.ParMesh_FindPoints(self, M, elem_ids, int_points, warn, inv_trans)      
         elem_ids = elem_ids.ToList()
         return count, elem_ids, int_points
 
