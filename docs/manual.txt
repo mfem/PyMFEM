@@ -117,6 +117,21 @@ to find more details of the MFEM library.
           Note: the argument is first tested if it can be converted using
 	        np.array(x,  dtype=float)
 
+
+       Using Numba JIT functions for FunctionCoefficients is supported.
+       For example, to use Numba compiled function, one can use
+       GenerateCoefficient mehtod in NumberFunction class as follows.
+
+       >>> from numba import cfunc, carray
+       >>> from mfem.coefficient import scalar_sig
+       >>> sdim = mesh.SpaceDimension()
+       >>> vdim = mesh.Dimension()
+       >>> @cfunc(scalar_sig)
+           def s_func(ptx, sdim):
+           ...    return 2*ptx[0]
+       >>> c = NumbaFunction(s_func, sdim).GenerateCoefficient()
+
+
   4-3) mfem::GridFunction
        GetNodalValues(i) will perform GetNodalValue(Vector(), i) and
        return NumPy array of Vector()
@@ -295,7 +310,11 @@ to find more details of the MFEM library.
 
               # Assigning (copy) from NumPy array
 	      m = DenseMatrix(3,3)
-	      m.Assign(np.arange(9.).reshape(3,3))
+	      m.Assign(np.arange(9.).reshape(3,3))  # <-- In this case,
+	                                            #     wrapper automatically tranpose
+	                                            #     input matrix so that data is
+						    #     column order. The same is done
+						    #     in GetDataArray()
 	      
               x = DenseTensor(2, 3, 5)
 	      x.Assign(1) # set all 1
