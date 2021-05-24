@@ -3809,6 +3809,18 @@ SWIGINTERN void mfem_FiniteElementSpace_Save__SWIG_1(mfem::FiniteElementSpace *s
   self -> Save(ofile);
   ofile.close();
   }
+SWIGINTERN void mfem_FiniteElementSpace_SaveGZ(mfem::FiniteElementSpace *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile -> precision(precision);  
+  self -> Save(*ofile);
+  delete ofile;
+  }
 SWIGINTERN void mfem_FiniteElementSpace_Save__SWIG_2(mfem::FiniteElementSpace *self){
   self -> Save(std::cout);
   }
@@ -3822,6 +3834,18 @@ SWIGINTERN void mfem_QuadratureSpace_Save__SWIG_1(mfem::QuadratureSpace *self,ch
   ofile.precision(precision);    
   self -> Save(ofile);
   ofile.close();
+  }
+SWIGINTERN void mfem_QuadratureSpace_SaveGZ(mfem::QuadratureSpace *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile -> precision(precision);  
+  self -> Save(*ofile);
+  delete ofile;
   }
 SWIGINTERN void mfem_QuadratureSpace_Save__SWIG_2(mfem::QuadratureSpace *self){
   self -> Save(std::cout);
@@ -9515,7 +9539,6 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_Load(PyObject *SWIGUNUSEDPARM(self
   mfem::ifgzstream *in_gz3 = 0 ;
   std::istringstream *stream3 = 0 ;
   Py_ssize_t len3 = 0 ;
-  PyObject *ret3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -9578,14 +9601,20 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_Load(PyObject *SWIGUNUSEDPARM(self
       }
     }
     if (stream3 == 0){
-      if (temp3->isGZ()){
-        in_gz3 = new mfem::ifgzstream(temp3->getFilename());
-        arg3 = in_gz3;
-      } else {
-        in_txt3.open(temp3->getFilename(), std::ifstream::in);
-        in_txt3.precision(temp3->getPrecision());
-        arg3 = &in_txt3;
-      }
+      /*
+            if (temp3->isGZ()){
+        	 in_gz3 = new mfem::ifgzstream(temp3->getFilename());
+               arg3 = in_gz3;
+            } else {
+        	 in_txt3.open(temp3->getFilename(), std::ifstream::in);
+               in_txt3.precision(temp3->getPrecision());
+               arg3 = &in_txt3;
+            }
+           */
+      /* this will auto-detect the input file type */
+      in_gz3 = new mfem::ifgzstream(temp3->getFilename());
+      arg3 = in_gz3;
+      
       if (temp3->isTemporary()){
         delete temp3;
       }
@@ -9613,18 +9642,6 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_Load(PyObject *SWIGUNUSEDPARM(self
     }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
-  {
-    if (stream3) {
-      ret3 = PyLong_FromSsize_t(len3);
-      if (PyErr_Occurred()) {
-        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
-        return NULL;
-      }
-      delete stream3;    
-      Py_XDECREF(resultobj);   /* Blow away any previous result */
-      resultobj = ret3;    
-    }
-  }
   {
     if (!stream3) {
       if (temp3) {
@@ -9724,6 +9741,70 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_Save__SWIG_1(PyObject *SWIGUNUSEDP
   {
     try {
       mfem_FiniteElementSpace_Save__SWIG_1(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FiniteElementSpace_SaveGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::FiniteElementSpace *arg1 = (mfem::FiniteElementSpace *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:FiniteElementSpace_SaveGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FiniteElementSpace_SaveGZ" "', argument " "1"" of type '" "mfem::FiniteElementSpace *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FiniteElementSpace * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FiniteElementSpace_SaveGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_FiniteElementSpace_SaveGZ(arg1,(char const *)arg2,arg3);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -9948,7 +10029,6 @@ SWIGINTERN PyObject *_wrap_new_QuadratureSpace__SWIG_1(PyObject *SWIGUNUSEDPARM(
   mfem::ifgzstream *in_gz2 = 0 ;
   std::istringstream *stream2 = 0 ;
   Py_ssize_t len2 = 0 ;
-  PyObject *ret2 = 0 ;
   mfem::QuadratureSpace *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
@@ -10000,14 +10080,20 @@ SWIGINTERN PyObject *_wrap_new_QuadratureSpace__SWIG_1(PyObject *SWIGUNUSEDPARM(
       }
     }
     if (stream2 == 0){
-      if (temp2->isGZ()){
-        in_gz2 = new mfem::ifgzstream(temp2->getFilename());
-        arg2 = in_gz2;
-      } else {
-        in_txt2.open(temp2->getFilename(), std::ifstream::in);
-        in_txt2.precision(temp2->getPrecision());
-        arg2 = &in_txt2;
-      }
+      /*
+            if (temp2->isGZ()){
+        	 in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+               arg2 = in_gz2;
+            } else {
+        	 in_txt2.open(temp2->getFilename(), std::ifstream::in);
+               in_txt2.precision(temp2->getPrecision());
+               arg2 = &in_txt2;
+            }
+           */
+      /* this will auto-detect the input file type */
+      in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+      arg2 = in_gz2;
+      
       if (temp2->isTemporary()){
         delete temp2;
       }
@@ -10035,18 +10121,6 @@ SWIGINTERN PyObject *_wrap_new_QuadratureSpace__SWIG_1(PyObject *SWIGUNUSEDPARM(
     }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__QuadratureSpace, SWIG_POINTER_NEW |  0 );
-  {
-    if (stream2) {
-      ret2 = PyLong_FromSsize_t(len2);
-      if (PyErr_Occurred()) {
-        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
-        return NULL;
-      }
-      delete stream2;    
-      Py_XDECREF(resultobj);   /* Blow away any previous result */
-      resultobj = ret2;    
-    }
-  }
   {
     if (!stream2) {
       if (temp2) {
@@ -10535,6 +10609,70 @@ SWIGINTERN PyObject *_wrap_QuadratureSpace_Save__SWIG_1(PyObject *SWIGUNUSEDPARM
   {
     try {
       mfem_QuadratureSpace_Save__SWIG_1(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_QuadratureSpace_SaveGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::QuadratureSpace *arg1 = (mfem::QuadratureSpace *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:QuadratureSpace_SaveGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__QuadratureSpace, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureSpace_SaveGZ" "', argument " "1"" of type '" "mfem::QuadratureSpace *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::QuadratureSpace * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "QuadratureSpace_SaveGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_QuadratureSpace_SaveGZ(arg1,(char const *)arg2,arg3);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -11573,6 +11711,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "FiniteElementSpace_IsDGSpace", _wrap_FiniteElementSpace_IsDGSpace, METH_O, "FiniteElementSpace_IsDGSpace(FiniteElementSpace self) -> bool"},
 	 { "FiniteElementSpace_Load", (PyCFunction)(void(*)(void))_wrap_FiniteElementSpace_Load, METH_VARARGS|METH_KEYWORDS, "FiniteElementSpace_Load(FiniteElementSpace self, Mesh m, std::istream & input) -> FiniteElementCollection"},
 	 { "delete_FiniteElementSpace", _wrap_delete_FiniteElementSpace, METH_O, "delete_FiniteElementSpace(FiniteElementSpace self)"},
+	 { "FiniteElementSpace_SaveGZ", (PyCFunction)(void(*)(void))_wrap_FiniteElementSpace_SaveGZ, METH_VARARGS|METH_KEYWORDS, "FiniteElementSpace_SaveGZ(FiniteElementSpace self, char const * file, int precision=8)"},
 	 { "FiniteElementSpace_Save", _wrap_FiniteElementSpace_Save, METH_VARARGS, "\n"
 		"FiniteElementSpace_Save(FiniteElementSpace self, std::ostream & out)\n"
 		"FiniteElementSpace_Save(FiniteElementSpace self, char const * file, int precision=8)\n"
@@ -11589,6 +11728,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "QuadratureSpace_GetMesh", _wrap_QuadratureSpace_GetMesh, METH_O, "QuadratureSpace_GetMesh(QuadratureSpace self) -> Mesh"},
 	 { "QuadratureSpace_GetNE", _wrap_QuadratureSpace_GetNE, METH_O, "QuadratureSpace_GetNE(QuadratureSpace self) -> int"},
 	 { "QuadratureSpace_GetElementIntRule", (PyCFunction)(void(*)(void))_wrap_QuadratureSpace_GetElementIntRule, METH_VARARGS|METH_KEYWORDS, "QuadratureSpace_GetElementIntRule(QuadratureSpace self, int idx) -> IntegrationRule"},
+	 { "QuadratureSpace_SaveGZ", (PyCFunction)(void(*)(void))_wrap_QuadratureSpace_SaveGZ, METH_VARARGS|METH_KEYWORDS, "QuadratureSpace_SaveGZ(QuadratureSpace self, char const * file, int precision=8)"},
 	 { "QuadratureSpace_Save", _wrap_QuadratureSpace_Save, METH_VARARGS, "\n"
 		"QuadratureSpace_Save(QuadratureSpace self, std::ostream & out)\n"
 		"QuadratureSpace_Save(QuadratureSpace self, char const * file, int precision=8)\n"
@@ -11739,6 +11879,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "FiniteElementSpace_IsDGSpace", _wrap_FiniteElementSpace_IsDGSpace, METH_O, "IsDGSpace(FiniteElementSpace self) -> bool"},
 	 { "FiniteElementSpace_Load", (PyCFunction)(void(*)(void))_wrap_FiniteElementSpace_Load, METH_VARARGS|METH_KEYWORDS, "Load(FiniteElementSpace self, Mesh m, std::istream & input) -> FiniteElementCollection"},
 	 { "delete_FiniteElementSpace", _wrap_delete_FiniteElementSpace, METH_O, "delete_FiniteElementSpace(FiniteElementSpace self)"},
+	 { "FiniteElementSpace_SaveGZ", (PyCFunction)(void(*)(void))_wrap_FiniteElementSpace_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(FiniteElementSpace self, char const * file, int precision=8)"},
 	 { "FiniteElementSpace_Save", _wrap_FiniteElementSpace_Save, METH_VARARGS, "\n"
 		"Save(FiniteElementSpace self, std::ostream & out)\n"
 		"Save(FiniteElementSpace self, char const * file, int precision=8)\n"
@@ -11755,6 +11896,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "QuadratureSpace_GetMesh", _wrap_QuadratureSpace_GetMesh, METH_O, "GetMesh(QuadratureSpace self) -> Mesh"},
 	 { "QuadratureSpace_GetNE", _wrap_QuadratureSpace_GetNE, METH_O, "GetNE(QuadratureSpace self) -> int"},
 	 { "QuadratureSpace_GetElementIntRule", (PyCFunction)(void(*)(void))_wrap_QuadratureSpace_GetElementIntRule, METH_VARARGS|METH_KEYWORDS, "GetElementIntRule(QuadratureSpace self, int idx) -> IntegrationRule"},
+	 { "QuadratureSpace_SaveGZ", (PyCFunction)(void(*)(void))_wrap_QuadratureSpace_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(QuadratureSpace self, char const * file, int precision=8)"},
 	 { "QuadratureSpace_Save", _wrap_QuadratureSpace_Save, METH_VARARGS, "\n"
 		"Save(QuadratureSpace self, std::ostream & out)\n"
 		"Save(QuadratureSpace self, char const * file, int precision=8)\n"

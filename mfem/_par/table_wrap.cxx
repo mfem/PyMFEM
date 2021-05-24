@@ -2979,6 +2979,17 @@ SWIGINTERN void mfem_Table_Print__SWIG_1(mfem::Table *self,char const *file,int 
   self -> Print(ofile);
   ofile.close();
   }
+SWIGINTERN void mfem_Table_PrintGZ(mfem::Table *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> Print(*ofile);
+  delete ofile;
+  }
 SWIGINTERN void mfem_Table_PrintMatlab__SWIG_1(mfem::Table *self,char const *file,int precision=8){
   std::ofstream ofile(file);
   if (!ofile)
@@ -2990,6 +3001,17 @@ SWIGINTERN void mfem_Table_PrintMatlab__SWIG_1(mfem::Table *self,char const *fil
   self -> PrintMatlab(ofile);
   ofile.close();
   }
+SWIGINTERN void mfem_Table_PrintMatlabGZ(mfem::Table *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> PrintMatlab(*ofile);
+  delete ofile;
+  }
 SWIGINTERN void mfem_Table_Save__SWIG_1(mfem::Table *self,char const *file,int precision=8){
   std::ofstream ofile(file);
   if (!ofile)
@@ -3000,6 +3022,18 @@ SWIGINTERN void mfem_Table_Save__SWIG_1(mfem::Table *self,char const *file,int p
   ofile.precision(precision);    
   self -> Save(ofile);
   ofile.close();
+  }
+SWIGINTERN void mfem_Table_SaveGZ(mfem::Table *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile -> precision(precision);  
+  self -> Save(*ofile);
+  delete ofile;
   }
 SWIGINTERN void mfem_Table_Save__SWIG_2(mfem::Table *self){
   self -> Save(std::cout);
@@ -5723,7 +5757,6 @@ SWIGINTERN PyObject *_wrap_Table_Load(PyObject *SWIGUNUSEDPARM(self), PyObject *
   mfem::ifgzstream *in_gz2 = 0 ;
   std::istringstream *stream2 = 0 ;
   Py_ssize_t len2 = 0 ;
-  PyObject *ret2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
@@ -5779,14 +5812,20 @@ SWIGINTERN PyObject *_wrap_Table_Load(PyObject *SWIGUNUSEDPARM(self), PyObject *
       }
     }
     if (stream2 == 0){
-      if (temp2->isGZ()){
-        in_gz2 = new mfem::ifgzstream(temp2->getFilename());
-        arg2 = in_gz2;
-      } else {
-        in_txt2.open(temp2->getFilename(), std::ifstream::in);
-        in_txt2.precision(temp2->getPrecision());
-        arg2 = &in_txt2;
-      }
+      /*
+            if (temp2->isGZ()){
+        	 in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+               arg2 = in_gz2;
+            } else {
+        	 in_txt2.open(temp2->getFilename(), std::ifstream::in);
+               in_txt2.precision(temp2->getPrecision());
+               arg2 = &in_txt2;
+            }
+           */
+      /* this will auto-detect the input file type */
+      in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+      arg2 = in_gz2;
+      
       if (temp2->isTemporary()){
         delete temp2;
       }
@@ -5811,18 +5850,6 @@ SWIGINTERN PyObject *_wrap_Table_Load(PyObject *SWIGUNUSEDPARM(self), PyObject *
     }	 
   }
   resultobj = SWIG_Py_Void();
-  {
-    if (stream2) {
-      ret2 = PyLong_FromSsize_t(len2);
-      if (PyErr_Occurred()) {
-        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
-        return NULL;
-      }
-      delete stream2;    
-      Py_XDECREF(resultobj);   /* Blow away any previous result */
-      resultobj = ret2;    
-    }
-  }
   {
     if (!stream2) {
       if (temp2) {
@@ -6265,6 +6292,67 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Table_PrintGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Table *arg1 = (mfem::Table *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:Table_PrintGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Table, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_PrintGZ" "', argument " "1"" of type '" "mfem::Table *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Table * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Table_PrintGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_Table_PrintGZ(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Table_PrintMatlab__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Table *arg1 = (mfem::Table *) 0 ;
@@ -6403,6 +6491,67 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Table_PrintMatlabGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Table *arg1 = (mfem::Table *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:Table_PrintMatlabGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Table, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_PrintMatlabGZ" "', argument " "1"" of type '" "mfem::Table *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Table * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Table_PrintMatlabGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_Table_PrintMatlabGZ(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Table_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Table *arg1 = (mfem::Table *) 0 ;
@@ -6436,6 +6585,67 @@ SWIGINTERN PyObject *_wrap_Table_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       mfem_Table_Save__SWIG_1(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Table_SaveGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Table *arg1 = (mfem::Table *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:Table_SaveGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Table, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_SaveGZ" "', argument " "1"" of type '" "mfem::Table *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Table * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Table_SaveGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_Table_SaveGZ(arg1,(char const *)arg2,arg3);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -7156,10 +7366,13 @@ static PyMethodDef SwigMethods[] = {
 		"Table_Print(Table self, std::ostream & out=mfem::out, int width=4)\n"
 		"Table_Print(Table self, char const * file, int precision=8)\n"
 		""},
+	 { "Table_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Table_PrintGZ, METH_VARARGS|METH_KEYWORDS, "Table_PrintGZ(Table self, char const * file, int precision=8)"},
 	 { "Table_PrintMatlab", _wrap_Table_PrintMatlab, METH_VARARGS, "\n"
 		"Table_PrintMatlab(Table self, std::ostream & out)\n"
 		"Table_PrintMatlab(Table self, char const * file, int precision=8)\n"
 		""},
+	 { "Table_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_Table_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "Table_PrintMatlabGZ(Table self, char const * file, int precision=8)"},
+	 { "Table_SaveGZ", (PyCFunction)(void(*)(void))_wrap_Table_SaveGZ, METH_VARARGS|METH_KEYWORDS, "Table_SaveGZ(Table self, char const * file, int precision=8)"},
 	 { "Table_Save", _wrap_Table_Save, METH_VARARGS, "\n"
 		"Table_Save(Table self, std::ostream & out)\n"
 		"Table_Save(Table self, char const * file, int precision=8)\n"
@@ -7259,10 +7472,13 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Print(Table self, std::ostream & out=mfem::out, int width=4)\n"
 		"Print(Table self, char const * file, int precision=8)\n"
 		""},
+	 { "Table_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Table_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(Table self, char const * file, int precision=8)"},
 	 { "Table_PrintMatlab", _wrap_Table_PrintMatlab, METH_VARARGS, "\n"
 		"PrintMatlab(Table self, std::ostream & out)\n"
 		"PrintMatlab(Table self, char const * file, int precision=8)\n"
 		""},
+	 { "Table_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_Table_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "PrintMatlabGZ(Table self, char const * file, int precision=8)"},
+	 { "Table_SaveGZ", (PyCFunction)(void(*)(void))_wrap_Table_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(Table self, char const * file, int precision=8)"},
 	 { "Table_Save", _wrap_Table_Save, METH_VARARGS, "\n"
 		"Save(Table self, std::ostream & out)\n"
 		"Save(Table self, char const * file, int precision=8)\n"

@@ -135,6 +135,18 @@ void method(const char *file, int precision=8){
   self -> method(ofile);
   ofile.close();
   }
+void method ## GZ(const char *file, int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile -> precision(precision);  
+  self -> method(*ofile);
+  delete ofile;
+  }
 void method(void){
   self -> method(std::cout);
   }
@@ -155,6 +167,17 @@ void method(const char *file, int precision=8){
   self -> method(ofile);
   ofile.close();
   }
+void method ## GZ(const char *file, int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> method(*ofile);
+  delete ofile;
+  }
 };
 %enddef
 
@@ -166,7 +189,7 @@ void method(const char *file, int precision=8){
 //usage ISTREAM_TYPEMAP(std::istream&)
 %define ISTREAM_TYPEMAP(T)
   %typemap(in) T (PyMFEM::wFILE *temp=0, std::ifstream in_txt, mfem::ifgzstream *in_gz=0,
-		  std::istringstream *stream=0, Py_ssize_t len = 0, PyObject* ret=0){
+		  std::istringstream *stream=0, Py_ssize_t len = 0){
    //  PyMFEM::wFILE or string argument or StringIO
    if (SWIG_ConvertPtr($input, (void **) &temp, $descriptor(PyMFEM::wFILE *), 0 | 0) == -1) {
       if (!PyString_Check($input) && !PyUnicode_Check($input)) {	
@@ -209,6 +232,7 @@ void method(const char *file, int precision=8){
       }
    }
    if (stream == 0){
+     /*
       if (temp->isGZ()){
   	 in_gz = new mfem::ifgzstream(temp->getFilename());
          $1 = in_gz;
@@ -217,6 +241,11 @@ void method(const char *file, int precision=8){
          in_txt.precision(temp->getPrecision());
          $1 = &in_txt;
       }
+     */
+      /* this will auto-detect the input file type */
+      in_gz = new mfem::ifgzstream(temp->getFilename());
+      $1 = in_gz;
+     
       if (temp->isTemporary()){
          delete temp;
       }
@@ -264,7 +293,7 @@ void method(const char *file, int precision=8){
      }
   }  
  }
-
+/*
 %typemap(argout) T {
   if (stream$argnum) {  
     ret$argnum = PyLong_FromSsize_t(len$argnum);
@@ -273,9 +302,10 @@ void method(const char *file, int precision=8){
        return NULL;
     }
     delete stream$argnum;    
-    Py_XDECREF($result);   /* Blow away any previous result */
+    Py_XDECREF($result);   // Blow away any previous result
     $result = ret$argnum;    
   }
 }
+*/
 %enddef
 

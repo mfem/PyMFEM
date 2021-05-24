@@ -4001,6 +4001,17 @@ SWIGINTERN void mfem_HypreParMatrix_PrintCommPkg__SWIG_1(mfem::HypreParMatrix *s
   self -> PrintCommPkg(ofile);
   ofile.close();
   }
+SWIGINTERN void mfem_HypreParMatrix_PrintCommPkgGZ(mfem::HypreParMatrix *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> PrintCommPkg(*ofile);
+  delete ofile;
+  }
 
 SWIGINTERN int
 SWIG_AsVal_int (PyObject * obj, int *val)
@@ -9901,6 +9912,64 @@ fail:
     "    mfem::HypreParMatrix::PrintCommPkg(std::ostream &) const\n"
     "    mfem::HypreParMatrix::PrintCommPkg(char const *,int)\n");
   return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_HypreParMatrix_PrintCommPkgGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::HypreParMatrix *arg1 = (mfem::HypreParMatrix *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:HypreParMatrix_PrintCommPkgGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HypreParMatrix_PrintCommPkgGZ" "', argument " "1"" of type '" "mfem::HypreParMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::HypreParMatrix * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "HypreParMatrix_PrintCommPkgGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_HypreParMatrix_PrintCommPkgGZ(arg1,(char const *)arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
 }
 
 
@@ -17715,6 +17784,7 @@ static PyMethodDef SwigMethods[] = {
 		"HypreParMatrix_PrintCommPkg(HypreParMatrix self, std::ostream & out=out)\n"
 		"HypreParMatrix_PrintCommPkg(HypreParMatrix self, char const * file, int precision=8)\n"
 		""},
+	 { "HypreParMatrix_PrintCommPkgGZ", (PyCFunction)(void(*)(void))_wrap_HypreParMatrix_PrintCommPkgGZ, METH_VARARGS|METH_KEYWORDS, "HypreParMatrix_PrintCommPkgGZ(HypreParMatrix self, char const * file, int precision=8)"},
 	 { "HypreParMatrix_swigregister", HypreParMatrix_swigregister, METH_O, NULL},
 	 { "HypreParMatrix_swiginit", HypreParMatrix_swiginit, METH_VARARGS, NULL},
 	 { "ParMult", (PyCFunction)(void(*)(void))_wrap_ParMult, METH_VARARGS|METH_KEYWORDS, "ParMult(HypreParMatrix A, HypreParMatrix B, bool own_matrix=False) -> HypreParMatrix"},
@@ -18056,6 +18126,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"PrintCommPkg(HypreParMatrix self, std::ostream & out=out)\n"
 		"PrintCommPkg(HypreParMatrix self, char const * file, int precision=8)\n"
 		""},
+	 { "HypreParMatrix_PrintCommPkgGZ", (PyCFunction)(void(*)(void))_wrap_HypreParMatrix_PrintCommPkgGZ, METH_VARARGS|METH_KEYWORDS, "PrintCommPkgGZ(HypreParMatrix self, char const * file, int precision=8)"},
 	 { "HypreParMatrix_swigregister", HypreParMatrix_swigregister, METH_O, NULL},
 	 { "HypreParMatrix_swiginit", HypreParMatrix_swiginit, METH_VARARGS, NULL},
 	 { "ParMult", (PyCFunction)(void(*)(void))_wrap_ParMult, METH_VARARGS|METH_KEYWORDS, "ParMult(HypreParMatrix A, HypreParMatrix B, bool own_matrix=False) -> HypreParMatrix"},

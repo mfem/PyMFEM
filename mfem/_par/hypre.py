@@ -505,6 +505,11 @@ class HypreParMatrix(mfem._par.operators.Operator):
         return _hypre.HypreParMatrix_PrintCommPkg(self, *args)
     PrintCommPkg = _swig_new_instance_method(_hypre.HypreParMatrix_PrintCommPkg)
 
+    def PrintCommPkgGZ(self, file, precision=8):
+        r"""PrintCommPkgGZ(HypreParMatrix self, char const * file, int precision=8)"""
+        return _hypre.HypreParMatrix_PrintCommPkgGZ(self, file, precision)
+    PrintCommPkgGZ = _swig_new_instance_method(_hypre.HypreParMatrix_PrintCommPkgGZ)
+
 # Register HypreParMatrix in _hypre:
 _hypre.HypreParMatrix_swigregister(HypreParMatrix)
 

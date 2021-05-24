@@ -143,6 +143,11 @@ class STable3D(object):
         return _stable3d.STable3D_Print(self, *args)
     Print = _swig_new_instance_method(_stable3d.STable3D_Print)
 
+    def PrintGZ(self, file, precision=8):
+        r"""PrintGZ(STable3D self, char const * file, int precision=8)"""
+        return _stable3d.STable3D_PrintGZ(self, file, precision)
+    PrintGZ = _swig_new_instance_method(_stable3d.STable3D_PrintGZ)
+
 # Register STable3D in _stable3d:
 _stable3d.STable3D_swigregister(STable3D)
 

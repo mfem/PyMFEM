@@ -3673,6 +3673,17 @@ SWIGINTERN void mfem_ParMesh_Print__SWIG_1(mfem::ParMesh *self,char const *file,
   self -> Print(ofile);
   ofile.close();
   }
+SWIGINTERN void mfem_ParMesh_PrintGZ(mfem::ParMesh *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> Print(*ofile);
+  delete ofile;
+  }
 SWIGINTERN void mfem_ParMesh_PrintXG__SWIG_1(mfem::ParMesh *self,char const *file,int precision=8){
   std::ofstream ofile(file);
   if (!ofile)
@@ -3683,6 +3694,17 @@ SWIGINTERN void mfem_ParMesh_PrintXG__SWIG_1(mfem::ParMesh *self,char const *fil
   ofile.precision(precision);  
   self -> PrintXG(ofile);
   ofile.close();
+  }
+SWIGINTERN void mfem_ParMesh_PrintXGGZ(mfem::ParMesh *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> PrintXG(*ofile);
+  delete ofile;
   }
 SWIGINTERN void mfem_ParMesh_PrintAsOne__SWIG_1(mfem::ParMesh *self,char const *file,int precision=8){
   std::ofstream ofile(file);
@@ -3695,6 +3717,17 @@ SWIGINTERN void mfem_ParMesh_PrintAsOne__SWIG_1(mfem::ParMesh *self,char const *
   self -> PrintAsOne(ofile);
   ofile.close();
   }
+SWIGINTERN void mfem_ParMesh_PrintAsOneGZ(mfem::ParMesh *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> PrintAsOne(*ofile);
+  delete ofile;
+  }
 SWIGINTERN void mfem_ParMesh_PrintAsOneXG__SWIG_1(mfem::ParMesh *self,char const *file,int precision=8){
   std::ofstream ofile(file);
   if (!ofile)
@@ -3705,6 +3738,17 @@ SWIGINTERN void mfem_ParMesh_PrintAsOneXG__SWIG_1(mfem::ParMesh *self,char const
   ofile.precision(precision);  
   self -> PrintAsOneXG(ofile);
   ofile.close();
+  }
+SWIGINTERN void mfem_ParMesh_PrintAsOneXGGZ(mfem::ParMesh *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> PrintAsOneXG(*ofile);
+  delete ofile;
   }
 SWIGINTERN void mfem_ParMesh_PrintInfo__SWIG_1(mfem::ParMesh *self,char const *file,int precision=8){
   std::ofstream ofile(file);
@@ -3717,6 +3761,17 @@ SWIGINTERN void mfem_ParMesh_PrintInfo__SWIG_1(mfem::ParMesh *self,char const *f
   self -> PrintInfo(ofile);
   ofile.close();
   }
+SWIGINTERN void mfem_ParMesh_PrintInfoGZ(mfem::ParMesh *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> PrintInfo(*ofile);
+  delete ofile;
+  }
 SWIGINTERN void mfem_ParMesh_ParPrint__SWIG_1(mfem::ParMesh *self,char const *file,int precision=8){
   std::ofstream ofile(file);
   if (!ofile)
@@ -3727,6 +3782,18 @@ SWIGINTERN void mfem_ParMesh_ParPrint__SWIG_1(mfem::ParMesh *self,char const *fi
   ofile.precision(precision);    
   self -> ParPrint(ofile);
   ofile.close();
+  }
+SWIGINTERN void mfem_ParMesh_ParPrintGZ(mfem::ParMesh *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile -> precision(precision);  
+  self -> ParPrint(*ofile);
+  delete ofile;
   }
 SWIGINTERN void mfem_ParMesh_ParPrint__SWIG_2(mfem::ParMesh *self){
   self -> ParPrint(std::cout);
@@ -3863,7 +3930,6 @@ SWIGINTERN PyObject *_wrap_new_ParMesh__SWIG_4(PyObject *SWIGUNUSEDPARM(self), P
   mfem::ifgzstream *in_gz2 = 0 ;
   std::istringstream *stream2 = 0 ;
   Py_ssize_t len2 = 0 ;
-  PyObject *ret2 = 0 ;
   bool val3 ;
   int ecode3 = 0 ;
   mfem::ParMesh *result = 0 ;
@@ -3921,14 +3987,20 @@ SWIGINTERN PyObject *_wrap_new_ParMesh__SWIG_4(PyObject *SWIGUNUSEDPARM(self), P
       }
     }
     if (stream2 == 0){
-      if (temp2->isGZ()){
-        in_gz2 = new mfem::ifgzstream(temp2->getFilename());
-        arg2 = in_gz2;
-      } else {
-        in_txt2.open(temp2->getFilename(), std::ifstream::in);
-        in_txt2.precision(temp2->getPrecision());
-        arg2 = &in_txt2;
-      }
+      /*
+            if (temp2->isGZ()){
+        	 in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+               arg2 = in_gz2;
+            } else {
+        	 in_txt2.open(temp2->getFilename(), std::ifstream::in);
+               in_txt2.precision(temp2->getPrecision());
+               arg2 = &in_txt2;
+            }
+           */
+      /* this will auto-detect the input file type */
+      in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+      arg2 = in_gz2;
+      
       if (temp2->isTemporary()){
         delete temp2;
       }
@@ -3957,18 +4029,6 @@ SWIGINTERN PyObject *_wrap_new_ParMesh__SWIG_4(PyObject *SWIGUNUSEDPARM(self), P
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParMesh, SWIG_POINTER_NEW |  0 );
-  {
-    if (stream2) {
-      ret2 = PyLong_FromSsize_t(len2);
-      if (PyErr_Occurred()) {
-        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
-        return NULL;
-      }
-      delete stream2;    
-      Py_XDECREF(resultobj);   /* Blow away any previous result */
-      resultobj = ret2;    
-    }
-  }
   {
     if (!stream2) {
       if (temp2) {
@@ -7574,6 +7634,64 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ParMesh_PrintGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:ParMesh_PrintGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParMesh_PrintGZ" "', argument " "1"" of type '" "mfem::ParMesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParMesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParMesh_PrintGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_ParMesh_PrintGZ(arg1,(char const *)arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ParMesh_PrintXG__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
@@ -7709,6 +7827,64 @@ fail:
     "    mfem::ParMesh::PrintXG(std::ostream &) const\n"
     "    mfem::ParMesh::PrintXG(char const *,int)\n");
   return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParMesh_PrintXGGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:ParMesh_PrintXGGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParMesh_PrintXGGZ" "', argument " "1"" of type '" "mfem::ParMesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParMesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParMesh_PrintXGGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_ParMesh_PrintXGGZ(arg1,(char const *)arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
 }
 
 
@@ -7850,6 +8026,64 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ParMesh_PrintAsOneGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:ParMesh_PrintAsOneGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParMesh_PrintAsOneGZ" "', argument " "1"" of type '" "mfem::ParMesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParMesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParMesh_PrintAsOneGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_ParMesh_PrintAsOneGZ(arg1,(char const *)arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ParMesh_PrintAsOneXG__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
@@ -7985,6 +8219,64 @@ fail:
     "    mfem::ParMesh::PrintAsOneXG(std::ostream &)\n"
     "    mfem::ParMesh::PrintAsOneXG(char const *,int)\n");
   return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParMesh_PrintAsOneXGGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:ParMesh_PrintAsOneXGGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParMesh_PrintAsOneXGGZ" "', argument " "1"" of type '" "mfem::ParMesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParMesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParMesh_PrintAsOneXGGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_ParMesh_PrintAsOneXGGZ(arg1,(char const *)arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
 }
 
 
@@ -8126,6 +8418,64 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ParMesh_PrintInfoGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:ParMesh_PrintInfoGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParMesh_PrintInfoGZ" "', argument " "1"" of type '" "mfem::ParMesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParMesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParMesh_PrintInfoGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_ParMesh_PrintInfoGZ(arg1,(char const *)arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ParMesh_ParPrint__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
@@ -8159,6 +8509,64 @@ SWIGINTERN PyObject *_wrap_ParMesh_ParPrint__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       mfem_ParMesh_ParPrint__SWIG_1(arg1,(char const *)arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParMesh_ParPrintGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:ParMesh_ParPrintGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParMesh_ParPrintGZ" "', argument " "1"" of type '" "mfem::ParMesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParMesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParMesh_ParPrintGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_ParMesh_ParPrintGZ(arg1,(char const *)arg2,arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -8385,22 +8793,28 @@ static PyMethodDef SwigMethods[] = {
 		"ParMesh_Print(ParMesh self, std::ostream & out=out)\n"
 		"ParMesh_Print(ParMesh self, char const * file, int precision=8)\n"
 		""},
+	 { "ParMesh_PrintGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintGZ, METH_VARARGS|METH_KEYWORDS, "ParMesh_PrintGZ(ParMesh self, char const * file, int precision=8)"},
 	 { "ParMesh_PrintXG", _wrap_ParMesh_PrintXG, METH_VARARGS, "\n"
 		"ParMesh_PrintXG(ParMesh self, std::ostream & out=out)\n"
 		"ParMesh_PrintXG(ParMesh self, char const * file, int precision=8)\n"
 		""},
+	 { "ParMesh_PrintXGGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintXGGZ, METH_VARARGS|METH_KEYWORDS, "ParMesh_PrintXGGZ(ParMesh self, char const * file, int precision=8)"},
 	 { "ParMesh_PrintAsOne", _wrap_ParMesh_PrintAsOne, METH_VARARGS, "\n"
 		"ParMesh_PrintAsOne(ParMesh self, std::ostream & out=out)\n"
 		"ParMesh_PrintAsOne(ParMesh self, char const * file, int precision=8)\n"
 		""},
+	 { "ParMesh_PrintAsOneGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintAsOneGZ, METH_VARARGS|METH_KEYWORDS, "ParMesh_PrintAsOneGZ(ParMesh self, char const * file, int precision=8)"},
 	 { "ParMesh_PrintAsOneXG", _wrap_ParMesh_PrintAsOneXG, METH_VARARGS, "\n"
 		"ParMesh_PrintAsOneXG(ParMesh self, std::ostream & out=out)\n"
 		"ParMesh_PrintAsOneXG(ParMesh self, char const * file, int precision=8)\n"
 		""},
+	 { "ParMesh_PrintAsOneXGGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintAsOneXGGZ, METH_VARARGS|METH_KEYWORDS, "ParMesh_PrintAsOneXGGZ(ParMesh self, char const * file, int precision=8)"},
 	 { "ParMesh_PrintInfo", _wrap_ParMesh_PrintInfo, METH_VARARGS, "\n"
 		"ParMesh_PrintInfo(ParMesh self, std::ostream & out=out)\n"
 		"ParMesh_PrintInfo(ParMesh self, char const * file, int precision=8)\n"
 		""},
+	 { "ParMesh_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "ParMesh_PrintInfoGZ(ParMesh self, char const * file, int precision=8)"},
+	 { "ParMesh_ParPrintGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_ParPrintGZ, METH_VARARGS|METH_KEYWORDS, "ParMesh_ParPrintGZ(ParMesh self, char const * file, int precision=8)"},
 	 { "ParMesh_ParPrint", _wrap_ParMesh_ParPrint, METH_VARARGS, "\n"
 		"ParMesh_ParPrint(ParMesh self, std::ostream & out)\n"
 		"ParMesh_ParPrint(ParMesh self, char const * file, int precision=8)\n"
@@ -8482,22 +8896,28 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Print(ParMesh self, std::ostream & out=out)\n"
 		"Print(ParMesh self, char const * file, int precision=8)\n"
 		""},
+	 { "ParMesh_PrintGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(ParMesh self, char const * file, int precision=8)"},
 	 { "ParMesh_PrintXG", _wrap_ParMesh_PrintXG, METH_VARARGS, "\n"
 		"PrintXG(ParMesh self, std::ostream & out=out)\n"
 		"PrintXG(ParMesh self, char const * file, int precision=8)\n"
 		""},
+	 { "ParMesh_PrintXGGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintXGGZ, METH_VARARGS|METH_KEYWORDS, "PrintXGGZ(ParMesh self, char const * file, int precision=8)"},
 	 { "ParMesh_PrintAsOne", _wrap_ParMesh_PrintAsOne, METH_VARARGS, "\n"
 		"PrintAsOne(ParMesh self, std::ostream & out=out)\n"
 		"PrintAsOne(ParMesh self, char const * file, int precision=8)\n"
 		""},
+	 { "ParMesh_PrintAsOneGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintAsOneGZ, METH_VARARGS|METH_KEYWORDS, "PrintAsOneGZ(ParMesh self, char const * file, int precision=8)"},
 	 { "ParMesh_PrintAsOneXG", _wrap_ParMesh_PrintAsOneXG, METH_VARARGS, "\n"
 		"PrintAsOneXG(ParMesh self, std::ostream & out=out)\n"
 		"PrintAsOneXG(ParMesh self, char const * file, int precision=8)\n"
 		""},
+	 { "ParMesh_PrintAsOneXGGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintAsOneXGGZ, METH_VARARGS|METH_KEYWORDS, "PrintAsOneXGGZ(ParMesh self, char const * file, int precision=8)"},
 	 { "ParMesh_PrintInfo", _wrap_ParMesh_PrintInfo, METH_VARARGS, "\n"
 		"PrintInfo(ParMesh self, std::ostream & out=out)\n"
 		"PrintInfo(ParMesh self, char const * file, int precision=8)\n"
 		""},
+	 { "ParMesh_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "PrintInfoGZ(ParMesh self, char const * file, int precision=8)"},
+	 { "ParMesh_ParPrintGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_ParPrintGZ, METH_VARARGS|METH_KEYWORDS, "ParPrintGZ(ParMesh self, char const * file, int precision=8)"},
 	 { "ParMesh_ParPrint", _wrap_ParMesh_ParPrint, METH_VARARGS, "\n"
 		"ParPrint(ParMesh self, std::ostream & out)\n"
 		"ParPrint(ParMesh self, char const * file, int precision=8)\n"

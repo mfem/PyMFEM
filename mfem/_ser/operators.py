@@ -224,6 +224,11 @@ class Operator(object):
         """
         return _operators.Operator_PrintMatlab(self, *args)
     PrintMatlab = _swig_new_instance_method(_operators.Operator_PrintMatlab)
+
+    def PrintMatlabGZ(self, file, precision=8):
+        r"""PrintMatlabGZ(Operator self, char const * file, int precision=8)"""
+        return _operators.Operator_PrintMatlabGZ(self, file, precision)
+    PrintMatlabGZ = _swig_new_instance_method(_operators.Operator_PrintMatlabGZ)
     def __disown__(self):
         self.this.disown()
         _operators.disown_Operator(self)

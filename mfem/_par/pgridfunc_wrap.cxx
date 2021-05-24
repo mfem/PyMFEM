@@ -3752,6 +3752,17 @@ SWIGINTERN void mfem_ParGridFunction_Save__SWIG_1(mfem::ParGridFunction *self,ch
   self -> Save(ofile);
   ofile.close();
   }
+SWIGINTERN void mfem_ParGridFunction_SaveGZ(mfem::ParGridFunction *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> Save(*ofile);
+  delete ofile;
+  }
 SWIGINTERN void mfem_ParGridFunction_SaveAsOne__SWIG_1(mfem::ParGridFunction *self,char const *file,int precision=8){
   std::ofstream ofile(file);
   if (!ofile)
@@ -3762,6 +3773,17 @@ SWIGINTERN void mfem_ParGridFunction_SaveAsOne__SWIG_1(mfem::ParGridFunction *se
   ofile.precision(precision);  
   self -> SaveAsOne(ofile);
   ofile.close();
+  }
+SWIGINTERN void mfem_ParGridFunction_SaveAsOneGZ(mfem::ParGridFunction *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> SaveAsOne(*ofile);
+  delete ofile;
   }
 
 
@@ -4110,7 +4132,6 @@ SWIGINTERN PyObject *_wrap_new_ParGridFunction__SWIG_7(PyObject *SWIGUNUSEDPARM(
   mfem::ifgzstream *in_gz2 = 0 ;
   std::istringstream *stream2 = 0 ;
   Py_ssize_t len2 = 0 ;
-  PyObject *ret2 = 0 ;
   mfem::ParGridFunction *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
@@ -4162,14 +4183,20 @@ SWIGINTERN PyObject *_wrap_new_ParGridFunction__SWIG_7(PyObject *SWIGUNUSEDPARM(
       }
     }
     if (stream2 == 0){
-      if (temp2->isGZ()){
-        in_gz2 = new mfem::ifgzstream(temp2->getFilename());
-        arg2 = in_gz2;
-      } else {
-        in_txt2.open(temp2->getFilename(), std::ifstream::in);
-        in_txt2.precision(temp2->getPrecision());
-        arg2 = &in_txt2;
-      }
+      /*
+            if (temp2->isGZ()){
+        	 in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+               arg2 = in_gz2;
+            } else {
+        	 in_txt2.open(temp2->getFilename(), std::ifstream::in);
+               in_txt2.precision(temp2->getPrecision());
+               arg2 = &in_txt2;
+            }
+           */
+      /* this will auto-detect the input file type */
+      in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+      arg2 = in_gz2;
+      
       if (temp2->isTemporary()){
         delete temp2;
       }
@@ -4191,18 +4218,6 @@ SWIGINTERN PyObject *_wrap_new_ParGridFunction__SWIG_7(PyObject *SWIGUNUSEDPARM(
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParGridFunction, SWIG_POINTER_NEW |  0 );
-  {
-    if (stream2) {
-      ret2 = PyLong_FromSsize_t(len2);
-      if (PyErr_Occurred()) {
-        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
-        return NULL;
-      }
-      delete stream2;    
-      Py_XDECREF(resultobj);   /* Blow away any previous result */
-      resultobj = ret2;    
-    }
-  }
   {
     if (!stream2) {
       if (temp2) {
@@ -10683,6 +10698,64 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ParGridFunction_SaveGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ParGridFunction *arg1 = (mfem::ParGridFunction *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:ParGridFunction_SaveGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParGridFunction_SaveGZ" "', argument " "1"" of type '" "mfem::ParGridFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParGridFunction * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParGridFunction_SaveGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_ParGridFunction_SaveGZ(arg1,(char const *)arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ParGridFunction_SaveAsOne__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::ParGridFunction *arg1 = (mfem::ParGridFunction *) 0 ;
@@ -10818,6 +10891,64 @@ fail:
     "    mfem::ParGridFunction::SaveAsOne(std::ostream &)\n"
     "    mfem::ParGridFunction::SaveAsOne(char const *,int)\n");
   return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParGridFunction_SaveAsOneGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ParGridFunction *arg1 = (mfem::ParGridFunction *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:ParGridFunction_SaveAsOneGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParGridFunction_SaveAsOneGZ" "', argument " "1"" of type '" "mfem::ParGridFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParGridFunction * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParGridFunction_SaveAsOneGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_ParGridFunction_SaveAsOneGZ(arg1,(char const *)arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
 }
 
 
@@ -11088,10 +11219,12 @@ static PyMethodDef SwigMethods[] = {
 		"ParGridFunction_Save(ParGridFunction self, std::ostream & out)\n"
 		"ParGridFunction_Save(ParGridFunction self, char const * file, int precision=8)\n"
 		""},
+	 { "ParGridFunction_SaveGZ", (PyCFunction)(void(*)(void))_wrap_ParGridFunction_SaveGZ, METH_VARARGS|METH_KEYWORDS, "ParGridFunction_SaveGZ(ParGridFunction self, char const * file, int precision=8)"},
 	 { "ParGridFunction_SaveAsOne", _wrap_ParGridFunction_SaveAsOne, METH_VARARGS, "\n"
 		"ParGridFunction_SaveAsOne(ParGridFunction self, std::ostream & out=out)\n"
 		"ParGridFunction_SaveAsOne(ParGridFunction self, char const * file, int precision=8)\n"
 		""},
+	 { "ParGridFunction_SaveAsOneGZ", (PyCFunction)(void(*)(void))_wrap_ParGridFunction_SaveAsOneGZ, METH_VARARGS|METH_KEYWORDS, "ParGridFunction_SaveAsOneGZ(ParGridFunction self, char const * file, int precision=8)"},
 	 { "ParGridFunction_swigregister", ParGridFunction_swigregister, METH_O, NULL},
 	 { "ParGridFunction_swiginit", ParGridFunction_swiginit, METH_VARARGS, NULL},
 	 { "L2ZZErrorEstimator", (PyCFunction)(void(*)(void))_wrap_L2ZZErrorEstimator, METH_VARARGS|METH_KEYWORDS, "L2ZZErrorEstimator(BilinearFormIntegrator flux_integrator, ParGridFunction x, ParFiniteElementSpace smooth_flux_fes, ParFiniteElementSpace flux_fes, Vector errors, int norm_p=2, double solver_tol=1e-12, int solver_max_it=200) -> double"},
@@ -11235,10 +11368,12 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Save(ParGridFunction self, std::ostream & out)\n"
 		"Save(ParGridFunction self, char const * file, int precision=8)\n"
 		""},
+	 { "ParGridFunction_SaveGZ", (PyCFunction)(void(*)(void))_wrap_ParGridFunction_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(ParGridFunction self, char const * file, int precision=8)"},
 	 { "ParGridFunction_SaveAsOne", _wrap_ParGridFunction_SaveAsOne, METH_VARARGS, "\n"
 		"SaveAsOne(ParGridFunction self, std::ostream & out=out)\n"
 		"SaveAsOne(ParGridFunction self, char const * file, int precision=8)\n"
 		""},
+	 { "ParGridFunction_SaveAsOneGZ", (PyCFunction)(void(*)(void))_wrap_ParGridFunction_SaveAsOneGZ, METH_VARARGS|METH_KEYWORDS, "SaveAsOneGZ(ParGridFunction self, char const * file, int precision=8)"},
 	 { "ParGridFunction_swigregister", ParGridFunction_swigregister, METH_O, NULL},
 	 { "ParGridFunction_swiginit", ParGridFunction_swiginit, METH_VARARGS, NULL},
 	 { "L2ZZErrorEstimator", (PyCFunction)(void(*)(void))_wrap_L2ZZErrorEstimator, METH_VARARGS|METH_KEYWORDS, "L2ZZErrorEstimator(BilinearFormIntegrator flux_integrator, ParGridFunction x, ParFiniteElementSpace smooth_flux_fes, ParFiniteElementSpace flux_fes, Vector errors, int norm_p=2, double solver_tol=1e-12, int solver_max_it=200) -> double"},

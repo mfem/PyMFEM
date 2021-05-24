@@ -3290,6 +3290,17 @@ SWIGINTERN void mfem_Vector_Print__SWIG_1(mfem::Vector *self,char const *file,in
   self -> Print(ofile);
   ofile.close();
   }
+SWIGINTERN void mfem_Vector_PrintGZ(mfem::Vector *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> Print(*ofile);
+  delete ofile;
+  }
 SWIGINTERN void mfem_Vector_Print_HYPRE__SWIG_1(mfem::Vector *self,char const *file,int precision=8){
   std::ofstream ofile(file);
   if (!ofile)
@@ -3300,6 +3311,18 @@ SWIGINTERN void mfem_Vector_Print_HYPRE__SWIG_1(mfem::Vector *self,char const *f
   ofile.precision(precision);    
   self -> Print_HYPRE(ofile);
   ofile.close();
+  }
+SWIGINTERN void mfem_Vector_Print_HYPREGZ(mfem::Vector *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile -> precision(precision);  
+  self -> Print_HYPRE(*ofile);
+  delete ofile;
   }
 SWIGINTERN void mfem_Vector_Print_HYPRE__SWIG_2(mfem::Vector *self){
   self -> Print_HYPRE(std::cout);
@@ -4355,7 +4378,6 @@ SWIGINTERN PyObject *_wrap_Vector_Load__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
   mfem::ifgzstream *in_gz2 = 0 ;
   std::istringstream *stream2 = 0 ;
   Py_ssize_t len2 = 0 ;
-  PyObject *ret2 = 0 ;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Vector, 0 |  0 );
@@ -4406,14 +4428,20 @@ SWIGINTERN PyObject *_wrap_Vector_Load__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
       }
     }
     if (stream2 == 0){
-      if (temp2->isGZ()){
-        in_gz2 = new mfem::ifgzstream(temp2->getFilename());
-        arg2 = in_gz2;
-      } else {
-        in_txt2.open(temp2->getFilename(), std::ifstream::in);
-        in_txt2.precision(temp2->getPrecision());
-        arg2 = &in_txt2;
-      }
+      /*
+            if (temp2->isGZ()){
+        	 in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+               arg2 = in_gz2;
+            } else {
+        	 in_txt2.open(temp2->getFilename(), std::ifstream::in);
+               in_txt2.precision(temp2->getPrecision());
+               arg2 = &in_txt2;
+            }
+           */
+      /* this will auto-detect the input file type */
+      in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+      arg2 = in_gz2;
+      
       if (temp2->isTemporary()){
         delete temp2;
       }
@@ -4444,18 +4472,6 @@ SWIGINTERN PyObject *_wrap_Vector_Load__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
     }	 
   }
   resultobj = SWIG_Py_Void();
-  {
-    if (stream2) {
-      ret2 = PyLong_FromSsize_t(len2);
-      if (PyErr_Occurred()) {
-        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
-        return NULL;
-      }
-      delete stream2;    
-      Py_XDECREF(resultobj);   /* Blow away any previous result */
-      resultobj = ret2;    
-    }
-  }
   {
     if (!stream2) {
       if (temp2) {
@@ -4493,7 +4509,6 @@ SWIGINTERN PyObject *_wrap_Vector_Load__SWIG_2(PyObject *SWIGUNUSEDPARM(self), P
   mfem::ifgzstream *in_gz2 = 0 ;
   std::istringstream *stream2 = 0 ;
   Py_ssize_t len2 = 0 ;
-  PyObject *ret2 = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Vector, 0 |  0 );
@@ -4544,14 +4559,20 @@ SWIGINTERN PyObject *_wrap_Vector_Load__SWIG_2(PyObject *SWIGUNUSEDPARM(self), P
       }
     }
     if (stream2 == 0){
-      if (temp2->isGZ()){
-        in_gz2 = new mfem::ifgzstream(temp2->getFilename());
-        arg2 = in_gz2;
-      } else {
-        in_txt2.open(temp2->getFilename(), std::ifstream::in);
-        in_txt2.precision(temp2->getPrecision());
-        arg2 = &in_txt2;
-      }
+      /*
+            if (temp2->isGZ()){
+        	 in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+               arg2 = in_gz2;
+            } else {
+        	 in_txt2.open(temp2->getFilename(), std::ifstream::in);
+               in_txt2.precision(temp2->getPrecision());
+               arg2 = &in_txt2;
+            }
+           */
+      /* this will auto-detect the input file type */
+      in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+      arg2 = in_gz2;
+      
       if (temp2->isTemporary()){
         delete temp2;
       }
@@ -4576,18 +4597,6 @@ SWIGINTERN PyObject *_wrap_Vector_Load__SWIG_2(PyObject *SWIGUNUSEDPARM(self), P
     }	 
   }
   resultobj = SWIG_Py_Void();
-  {
-    if (stream2) {
-      ret2 = PyLong_FromSsize_t(len2);
-      if (PyErr_Occurred()) {
-        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
-        return NULL;
-      }
-      delete stream2;    
-      Py_XDECREF(resultobj);   /* Blow away any previous result */
-      resultobj = ret2;    
-    }
-  }
   {
     if (!stream2) {
       if (temp2) {
@@ -9493,6 +9502,67 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Vector_PrintGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Vector *arg1 = (mfem::Vector *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:Vector_PrintGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vector_PrintGZ" "', argument " "1"" of type '" "mfem::Vector *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Vector * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Vector_PrintGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_Vector_PrintGZ(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Vector_Print_HYPRE__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Vector *arg1 = (mfem::Vector *) 0 ;
@@ -9526,6 +9596,67 @@ SWIGINTERN PyObject *_wrap_Vector_Print_HYPRE__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       mfem_Vector_Print_HYPRE__SWIG_1(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Vector_Print_HYPREGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Vector *arg1 = (mfem::Vector *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:Vector_Print_HYPREGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vector_Print_HYPREGZ" "', argument " "1"" of type '" "mfem::Vector *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Vector * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Vector_Print_HYPREGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_Vector_Print_HYPREGZ(arg1,(char const *)arg2,arg3);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -9977,6 +10108,8 @@ static PyMethodDef SwigMethods[] = {
 		"Vector_Print(Vector self, std::ostream & out=mfem::out, int width=8)\n"
 		"Vector_Print(Vector self, char const * file, int precision=8)\n"
 		""},
+	 { "Vector_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Vector_PrintGZ, METH_VARARGS|METH_KEYWORDS, "Vector_PrintGZ(Vector self, char const * file, int precision=8)"},
+	 { "Vector_Print_HYPREGZ", (PyCFunction)(void(*)(void))_wrap_Vector_Print_HYPREGZ, METH_VARARGS|METH_KEYWORDS, "Vector_Print_HYPREGZ(Vector self, char const * file, int precision=8)"},
 	 { "Vector_Print_HYPRE", _wrap_Vector_Print_HYPRE, METH_VARARGS, "\n"
 		"Vector_Print_HYPRE(Vector self, std::ostream & out)\n"
 		"Vector_Print_HYPRE(Vector self, char const * file, int precision=8)\n"
@@ -10124,6 +10257,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Print(Vector self, std::ostream & out=mfem::out, int width=8)\n"
 		"Print(Vector self, char const * file, int precision=8)\n"
 		""},
+	 { "Vector_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Vector_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(Vector self, char const * file, int precision=8)"},
+	 { "Vector_Print_HYPREGZ", (PyCFunction)(void(*)(void))_wrap_Vector_Print_HYPREGZ, METH_VARARGS|METH_KEYWORDS, "Print_HYPREGZ(Vector self, char const * file, int precision=8)"},
 	 { "Vector_Print_HYPRE", _wrap_Vector_Print_HYPRE, METH_VARARGS, "\n"
 		"Print_HYPRE(Vector self, std::ostream & out)\n"
 		"Print_HYPRE(Vector self, char const * file, int precision=8)\n"

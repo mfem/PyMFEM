@@ -3148,6 +3148,17 @@ SWIGINTERN void mfem_Array_Sl_int_Sg__Print__SWIG_1(mfem::Array< int > *self,cha
   self -> Print(ofile);
   ofile.close();
   }
+SWIGINTERN void mfem_Array_Sl_int_Sg__PrintGZ(mfem::Array< int > *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> Print(*ofile);
+  delete ofile;
+  }
 SWIGINTERN void mfem_Array_Sl_int_Sg__Save__SWIG_1(mfem::Array< int > *self,char const *file,int precision=8){
   std::ofstream ofile(file);
   if (!ofile)
@@ -3158,6 +3169,18 @@ SWIGINTERN void mfem_Array_Sl_int_Sg__Save__SWIG_1(mfem::Array< int > *self,char
   ofile.precision(precision);    
   self -> Save(ofile);
   ofile.close();
+  }
+SWIGINTERN void mfem_Array_Sl_int_Sg__SaveGZ(mfem::Array< int > *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile -> precision(precision);  
+  self -> Save(*ofile);
+  delete ofile;
   }
 SWIGINTERN void mfem_Array_Sl_int_Sg__Save__SWIG_2(mfem::Array< int > *self){
   self -> Save(std::cout);
@@ -3186,6 +3209,17 @@ SWIGINTERN void mfem_Array_Sl_double_Sg__Print__SWIG_1(mfem::Array< double > *se
   self -> Print(ofile);
   ofile.close();
   }
+SWIGINTERN void mfem_Array_Sl_double_Sg__PrintGZ(mfem::Array< double > *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> Print(*ofile);
+  delete ofile;
+  }
 SWIGINTERN void mfem_Array_Sl_double_Sg__Save__SWIG_1(mfem::Array< double > *self,char const *file,int precision=8){
   std::ofstream ofile(file);
   if (!ofile)
@@ -3196,6 +3230,18 @@ SWIGINTERN void mfem_Array_Sl_double_Sg__Save__SWIG_1(mfem::Array< double > *sel
   ofile.precision(precision);    
   self -> Save(ofile);
   ofile.close();
+  }
+SWIGINTERN void mfem_Array_Sl_double_Sg__SaveGZ(mfem::Array< double > *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile -> precision(precision);  
+  self -> Save(*ofile);
+  delete ofile;
   }
 SWIGINTERN void mfem_Array_Sl_double_Sg__Save__SWIG_2(mfem::Array< double > *self){
   self -> Save(std::cout);
@@ -5478,7 +5524,6 @@ SWIGINTERN PyObject *_wrap_intArray_Load__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   mfem::ifgzstream *in_gz2 = 0 ;
   std::istringstream *stream2 = 0 ;
   Py_ssize_t len2 = 0 ;
-  PyObject *ret2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
   
@@ -5531,14 +5576,20 @@ SWIGINTERN PyObject *_wrap_intArray_Load__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
       }
     }
     if (stream2 == 0){
-      if (temp2->isGZ()){
-        in_gz2 = new mfem::ifgzstream(temp2->getFilename());
-        arg2 = in_gz2;
-      } else {
-        in_txt2.open(temp2->getFilename(), std::ifstream::in);
-        in_txt2.precision(temp2->getPrecision());
-        arg2 = &in_txt2;
-      }
+      /*
+            if (temp2->isGZ()){
+        	 in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+               arg2 = in_gz2;
+            } else {
+        	 in_txt2.open(temp2->getFilename(), std::ifstream::in);
+               in_txt2.precision(temp2->getPrecision());
+               arg2 = &in_txt2;
+            }
+           */
+      /* this will auto-detect the input file type */
+      in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+      arg2 = in_gz2;
+      
       if (temp2->isTemporary()){
         delete temp2;
       }
@@ -5570,18 +5621,6 @@ SWIGINTERN PyObject *_wrap_intArray_Load__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
     }	 
   }
   resultobj = SWIG_Py_Void();
-  {
-    if (stream2) {
-      ret2 = PyLong_FromSsize_t(len2);
-      if (PyErr_Occurred()) {
-        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
-        return NULL;
-      }
-      delete stream2;    
-      Py_XDECREF(resultobj);   /* Blow away any previous result */
-      resultobj = ret2;    
-    }
-  }
   {
     if (!stream2) {
       if (temp2) {
@@ -5622,7 +5661,6 @@ SWIGINTERN PyObject *_wrap_intArray_Load__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   mfem::ifgzstream *in_gz3 = 0 ;
   std::istringstream *stream3 = 0 ;
   Py_ssize_t len3 = 0 ;
-  PyObject *ret3 = 0 ;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
@@ -5678,14 +5716,20 @@ SWIGINTERN PyObject *_wrap_intArray_Load__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
       }
     }
     if (stream3 == 0){
-      if (temp3->isGZ()){
-        in_gz3 = new mfem::ifgzstream(temp3->getFilename());
-        arg3 = in_gz3;
-      } else {
-        in_txt3.open(temp3->getFilename(), std::ifstream::in);
-        in_txt3.precision(temp3->getPrecision());
-        arg3 = &in_txt3;
-      }
+      /*
+            if (temp3->isGZ()){
+        	 in_gz3 = new mfem::ifgzstream(temp3->getFilename());
+               arg3 = in_gz3;
+            } else {
+        	 in_txt3.open(temp3->getFilename(), std::ifstream::in);
+               in_txt3.precision(temp3->getPrecision());
+               arg3 = &in_txt3;
+            }
+           */
+      /* this will auto-detect the input file type */
+      in_gz3 = new mfem::ifgzstream(temp3->getFilename());
+      arg3 = in_gz3;
+      
       if (temp3->isTemporary()){
         delete temp3;
       }
@@ -5710,18 +5754,6 @@ SWIGINTERN PyObject *_wrap_intArray_Load__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
     }	 
   }
   resultobj = SWIG_Py_Void();
-  {
-    if (stream3) {
-      ret3 = PyLong_FromSsize_t(len3);
-      if (PyErr_Occurred()) {
-        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
-        return NULL;
-      }
-      delete stream3;    
-      Py_XDECREF(resultobj);   /* Blow away any previous result */
-      resultobj = ret3;    
-    }
-  }
   {
     if (!stream3) {
       if (temp3) {
@@ -7068,6 +7100,68 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_intArray_PrintGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< int > *arg1 = (mfem::Array< int > *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:intArray_PrintGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intArray_PrintGZ" "', argument " "1"" of type '" "mfem::Array< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "intArray_PrintGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    ecode3 = SWIG_AsVal_int(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "intArray_PrintGZ" "', argument " "3"" of type '" "int""'");
+    } 
+    arg3 = static_cast< int >(val3);
+  }
+  {
+    try {
+      mfem_Array_Sl_int_Sg__PrintGZ(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_intArray_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Array< int > *arg1 = (mfem::Array< int > *) 0 ;
@@ -7102,6 +7196,68 @@ SWIGINTERN PyObject *_wrap_intArray_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       mfem_Array_Sl_int_Sg__Save__SWIG_1(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_intArray_SaveGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< int > *arg1 = (mfem::Array< int > *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:intArray_SaveGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intArray_SaveGZ" "', argument " "1"" of type '" "mfem::Array< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "intArray_SaveGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    ecode3 = SWIG_AsVal_int(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "intArray_SaveGZ" "', argument " "3"" of type '" "int""'");
+    } 
+    arg3 = static_cast< int >(val3);
+  }
+  {
+    try {
+      mfem_Array_Sl_int_Sg__SaveGZ(arg1,(char const *)arg2,arg3);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -9543,7 +9699,6 @@ SWIGINTERN PyObject *_wrap_doubleArray_Load__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   mfem::ifgzstream *in_gz2 = 0 ;
   std::istringstream *stream2 = 0 ;
   Py_ssize_t len2 = 0 ;
-  PyObject *ret2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
   
@@ -9596,14 +9751,20 @@ SWIGINTERN PyObject *_wrap_doubleArray_Load__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
       }
     }
     if (stream2 == 0){
-      if (temp2->isGZ()){
-        in_gz2 = new mfem::ifgzstream(temp2->getFilename());
-        arg2 = in_gz2;
-      } else {
-        in_txt2.open(temp2->getFilename(), std::ifstream::in);
-        in_txt2.precision(temp2->getPrecision());
-        arg2 = &in_txt2;
-      }
+      /*
+            if (temp2->isGZ()){
+        	 in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+               arg2 = in_gz2;
+            } else {
+        	 in_txt2.open(temp2->getFilename(), std::ifstream::in);
+               in_txt2.precision(temp2->getPrecision());
+               arg2 = &in_txt2;
+            }
+           */
+      /* this will auto-detect the input file type */
+      in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+      arg2 = in_gz2;
+      
       if (temp2->isTemporary()){
         delete temp2;
       }
@@ -9635,18 +9796,6 @@ SWIGINTERN PyObject *_wrap_doubleArray_Load__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
     }	 
   }
   resultobj = SWIG_Py_Void();
-  {
-    if (stream2) {
-      ret2 = PyLong_FromSsize_t(len2);
-      if (PyErr_Occurred()) {
-        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
-        return NULL;
-      }
-      delete stream2;    
-      Py_XDECREF(resultobj);   /* Blow away any previous result */
-      resultobj = ret2;    
-    }
-  }
   {
     if (!stream2) {
       if (temp2) {
@@ -9687,7 +9836,6 @@ SWIGINTERN PyObject *_wrap_doubleArray_Load__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   mfem::ifgzstream *in_gz3 = 0 ;
   std::istringstream *stream3 = 0 ;
   Py_ssize_t len3 = 0 ;
-  PyObject *ret3 = 0 ;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_double_t, 0 |  0 );
@@ -9743,14 +9891,20 @@ SWIGINTERN PyObject *_wrap_doubleArray_Load__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
       }
     }
     if (stream3 == 0){
-      if (temp3->isGZ()){
-        in_gz3 = new mfem::ifgzstream(temp3->getFilename());
-        arg3 = in_gz3;
-      } else {
-        in_txt3.open(temp3->getFilename(), std::ifstream::in);
-        in_txt3.precision(temp3->getPrecision());
-        arg3 = &in_txt3;
-      }
+      /*
+            if (temp3->isGZ()){
+        	 in_gz3 = new mfem::ifgzstream(temp3->getFilename());
+               arg3 = in_gz3;
+            } else {
+        	 in_txt3.open(temp3->getFilename(), std::ifstream::in);
+               in_txt3.precision(temp3->getPrecision());
+               arg3 = &in_txt3;
+            }
+           */
+      /* this will auto-detect the input file type */
+      in_gz3 = new mfem::ifgzstream(temp3->getFilename());
+      arg3 = in_gz3;
+      
       if (temp3->isTemporary()){
         delete temp3;
       }
@@ -9775,18 +9929,6 @@ SWIGINTERN PyObject *_wrap_doubleArray_Load__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
     }	 
   }
   resultobj = SWIG_Py_Void();
-  {
-    if (stream3) {
-      ret3 = PyLong_FromSsize_t(len3);
-      if (PyErr_Occurred()) {
-        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
-        return NULL;
-      }
-      delete stream3;    
-      Py_XDECREF(resultobj);   /* Blow away any previous result */
-      resultobj = ret3;    
-    }
-  }
   {
     if (!stream3) {
       if (temp3) {
@@ -11133,6 +11275,68 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_doubleArray_PrintGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< double > *arg1 = (mfem::Array< double > *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:doubleArray_PrintGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleArray_PrintGZ" "', argument " "1"" of type '" "mfem::Array< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "doubleArray_PrintGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    ecode3 = SWIG_AsVal_int(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "doubleArray_PrintGZ" "', argument " "3"" of type '" "int""'");
+    } 
+    arg3 = static_cast< int >(val3);
+  }
+  {
+    try {
+      mfem_Array_Sl_double_Sg__PrintGZ(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_doubleArray_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Array< double > *arg1 = (mfem::Array< double > *) 0 ;
@@ -11167,6 +11371,68 @@ SWIGINTERN PyObject *_wrap_doubleArray_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       mfem_Array_Sl_double_Sg__Save__SWIG_1(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_doubleArray_SaveGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< double > *arg1 = (mfem::Array< double > *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:doubleArray_SaveGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleArray_SaveGZ" "', argument " "1"" of type '" "mfem::Array< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "doubleArray_SaveGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    ecode3 = SWIG_AsVal_int(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "doubleArray_SaveGZ" "', argument " "3"" of type '" "int""'");
+    } 
+    arg3 = static_cast< int >(val3);
+  }
+  {
+    try {
+      mfem_Array_Sl_double_Sg__SaveGZ(arg1,(char const *)arg2,arg3);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -11840,6 +12106,8 @@ static PyMethodDef SwigMethods[] = {
 		"intArray_Print(intArray self, std::ostream & out=mfem::out, int width=4)\n"
 		"intArray_Print(intArray self, char const * file, int precision=8)\n"
 		""},
+	 { "intArray_PrintGZ", (PyCFunction)(void(*)(void))_wrap_intArray_PrintGZ, METH_VARARGS|METH_KEYWORDS, "intArray_PrintGZ(intArray self, char const * file, int precision=8)"},
+	 { "intArray_SaveGZ", (PyCFunction)(void(*)(void))_wrap_intArray_SaveGZ, METH_VARARGS|METH_KEYWORDS, "intArray_SaveGZ(intArray self, char const * file, int precision=8)"},
 	 { "intArray_Save", _wrap_intArray_Save, METH_VARARGS, "\n"
 		"intArray_Save(intArray self, std::ostream & out, int fmt=0)\n"
 		"intArray_Save(intArray self, char const * file, int precision=8)\n"
@@ -11935,6 +12203,8 @@ static PyMethodDef SwigMethods[] = {
 		"doubleArray_Print(doubleArray self, std::ostream & out=mfem::out, int width=4)\n"
 		"doubleArray_Print(doubleArray self, char const * file, int precision=8)\n"
 		""},
+	 { "doubleArray_PrintGZ", (PyCFunction)(void(*)(void))_wrap_doubleArray_PrintGZ, METH_VARARGS|METH_KEYWORDS, "doubleArray_PrintGZ(doubleArray self, char const * file, int precision=8)"},
+	 { "doubleArray_SaveGZ", (PyCFunction)(void(*)(void))_wrap_doubleArray_SaveGZ, METH_VARARGS|METH_KEYWORDS, "doubleArray_SaveGZ(doubleArray self, char const * file, int precision=8)"},
 	 { "doubleArray_Save", _wrap_doubleArray_Save, METH_VARARGS, "\n"
 		"doubleArray_Save(doubleArray self, std::ostream & out, int fmt=0)\n"
 		"doubleArray_Save(doubleArray self, char const * file, int precision=8)\n"
@@ -12046,6 +12316,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Print(intArray self, std::ostream & out=mfem::out, int width=4)\n"
 		"Print(intArray self, char const * file, int precision=8)\n"
 		""},
+	 { "intArray_PrintGZ", (PyCFunction)(void(*)(void))_wrap_intArray_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(intArray self, char const * file, int precision=8)"},
+	 { "intArray_SaveGZ", (PyCFunction)(void(*)(void))_wrap_intArray_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(intArray self, char const * file, int precision=8)"},
 	 { "intArray_Save", _wrap_intArray_Save, METH_VARARGS, "\n"
 		"Save(intArray self, std::ostream & out, int fmt=0)\n"
 		"Save(intArray self, char const * file, int precision=8)\n"
@@ -12141,6 +12413,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Print(doubleArray self, std::ostream & out=mfem::out, int width=4)\n"
 		"Print(doubleArray self, char const * file, int precision=8)\n"
 		""},
+	 { "doubleArray_PrintGZ", (PyCFunction)(void(*)(void))_wrap_doubleArray_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(doubleArray self, char const * file, int precision=8)"},
+	 { "doubleArray_SaveGZ", (PyCFunction)(void(*)(void))_wrap_doubleArray_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(doubleArray self, char const * file, int precision=8)"},
 	 { "doubleArray_Save", _wrap_doubleArray_Save, METH_VARARGS, "\n"
 		"Save(doubleArray self, std::ostream & out, int fmt=0)\n"
 		"Save(doubleArray self, char const * file, int precision=8)\n"

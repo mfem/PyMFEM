@@ -151,6 +151,7 @@ namespace mfem {
 }
 
 %include "../../headers/coefficient.hpp"
+%include "../common/numba_coefficient.i"
 
 %feature("director") mfem::VectorPyCoefficientBase;
 %feature("director") mfem::PyCoefficientBase;

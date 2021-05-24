@@ -60,11 +60,11 @@ def GetNodalValues(self, *args):
     from .vector import Vector
     if len(args) == 1:
         vec = Vector()
-        _gridfunc.GridFunction_GetNodalValues(self, vec, args[0])
+        $action(self, vec, args[0])
         vec.thisown = 0
         return vec.GetDataArray()
     else:
-        return _gridfunc.GridFunction_GetNodalValues(self, *args)
+        return $action(self, *args)
 %}
 
 

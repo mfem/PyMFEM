@@ -348,6 +348,16 @@ class intArray(object):
         return _array.intArray_Print(self, *args)
     Print = _swig_new_instance_method(_array.intArray_Print)
 
+    def PrintGZ(self, file, precision=8):
+        r"""PrintGZ(intArray self, char const * file, int precision=8)"""
+        return _array.intArray_PrintGZ(self, file, precision)
+    PrintGZ = _swig_new_instance_method(_array.intArray_PrintGZ)
+
+    def SaveGZ(self, file, precision=8):
+        r"""SaveGZ(intArray self, char const * file, int precision=8)"""
+        return _array.intArray_SaveGZ(self, file, precision)
+    SaveGZ = _swig_new_instance_method(_array.intArray_SaveGZ)
+
     def Save(self, *args):
         r"""
         Save(intArray self, std::ostream & out, int fmt=0)
@@ -642,6 +652,16 @@ class doubleArray(object):
         """
         return _array.doubleArray_Print(self, *args)
     Print = _swig_new_instance_method(_array.doubleArray_Print)
+
+    def PrintGZ(self, file, precision=8):
+        r"""PrintGZ(doubleArray self, char const * file, int precision=8)"""
+        return _array.doubleArray_PrintGZ(self, file, precision)
+    PrintGZ = _swig_new_instance_method(_array.doubleArray_PrintGZ)
+
+    def SaveGZ(self, file, precision=8):
+        r"""SaveGZ(doubleArray self, char const * file, int precision=8)"""
+        return _array.doubleArray_SaveGZ(self, file, precision)
+    SaveGZ = _swig_new_instance_method(_array.doubleArray_SaveGZ)
 
     def Save(self, *args):
         r"""

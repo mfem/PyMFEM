@@ -3384,8 +3384,8 @@ namespace swig {
 #include <cmath>
 #include <cstring>
 #include <ctime>
-mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
-		      bool fix_orientation = true);
+//mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
+//		      bool fix_orientation = true);
 // void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
 #include "numpy/arrayobject.h"
 #include "pycoefficient.hpp"
@@ -3969,6 +3969,17 @@ SWIGINTERN void mfem_Mesh_PrintInfo__SWIG_1(mfem::Mesh *self,char const *file,in
   self -> PrintInfo(ofile);
   ofile.close();
   }
+SWIGINTERN void mfem_Mesh_PrintInfoGZ(mfem::Mesh *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> PrintInfo(*ofile);
+  delete ofile;
+  }
 SWIGINTERN void mfem_Mesh_Print__SWIG_1(mfem::Mesh *self,char const *file,int precision=8){
   std::ofstream ofile(file);
   if (!ofile)
@@ -3979,6 +3990,17 @@ SWIGINTERN void mfem_Mesh_Print__SWIG_1(mfem::Mesh *self,char const *file,int pr
   ofile.precision(precision);  
   self -> Print(ofile);
   ofile.close();
+  }
+SWIGINTERN void mfem_Mesh_PrintGZ(mfem::Mesh *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> Print(*ofile);
+  delete ofile;
   }
 SWIGINTERN void mfem_Mesh_PrintXG__SWIG_1(mfem::Mesh *self,char const *file,int precision=8){
   std::ofstream ofile(file);
@@ -3991,6 +4013,17 @@ SWIGINTERN void mfem_Mesh_PrintXG__SWIG_1(mfem::Mesh *self,char const *file,int 
   self -> PrintXG(ofile);
   ofile.close();
   }
+SWIGINTERN void mfem_Mesh_PrintXGGZ(mfem::Mesh *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> PrintXG(*ofile);
+  delete ofile;
+  }
 SWIGINTERN void mfem_Mesh_PrintVTK__SWIG_2(mfem::Mesh *self,char const *file,int precision=8){
   std::ofstream ofile(file);
   if (!ofile)
@@ -4001,6 +4034,17 @@ SWIGINTERN void mfem_Mesh_PrintVTK__SWIG_2(mfem::Mesh *self,char const *file,int
   ofile.precision(precision);  
   self -> PrintVTK(ofile);
   ofile.close();
+  }
+SWIGINTERN void mfem_Mesh_PrintVTKGZ(mfem::Mesh *self,char const *file,int precision=8){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> PrintVTK(*ofile);
+  delete ofile;
   }
 
 
@@ -8826,7 +8870,6 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_9(PyObject *SWIGUNUSEDPARM(self), Py_s
   mfem::ifgzstream *in_gz1 = 0 ;
   std::istringstream *stream1 = 0 ;
   Py_ssize_t len1 = 0 ;
-  PyObject *ret1 = 0 ;
   bool val4 ;
   int ecode4 = 0 ;
   mfem::Mesh *result = 0 ;
@@ -8875,14 +8918,20 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_9(PyObject *SWIGUNUSEDPARM(self), Py_s
       }
     }
     if (stream1 == 0){
-      if (temp1->isGZ()){
-        in_gz1 = new mfem::ifgzstream(temp1->getFilename());
-        arg1 = in_gz1;
-      } else {
-        in_txt1.open(temp1->getFilename(), std::ifstream::in);
-        in_txt1.precision(temp1->getPrecision());
-        arg1 = &in_txt1;
-      }
+      /*
+            if (temp1->isGZ()){
+        	 in_gz1 = new mfem::ifgzstream(temp1->getFilename());
+               arg1 = in_gz1;
+            } else {
+        	 in_txt1.open(temp1->getFilename(), std::ifstream::in);
+               in_txt1.precision(temp1->getPrecision());
+               arg1 = &in_txt1;
+            }
+           */
+      /* this will auto-detect the input file type */
+      in_gz1 = new mfem::ifgzstream(temp1->getFilename());
+      arg1 = in_gz1;
+      
       if (temp1->isTemporary()){
         delete temp1;
       }
@@ -8933,18 +8982,6 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_9(PyObject *SWIGUNUSEDPARM(self), Py_s
     }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Mesh, SWIG_POINTER_NEW |  0 );
-  {
-    if (stream1) {
-      ret1 = PyLong_FromSsize_t(len1);
-      if (PyErr_Occurred()) {
-        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
-        return NULL;
-      }
-      delete stream1;    
-      Py_XDECREF(resultobj);   /* Blow away any previous result */
-      resultobj = ret1;    
-    }
-  }
   {
     if (!stream1) {
       if (temp1) {
@@ -9084,7 +9121,6 @@ SWIGINTERN PyObject *_wrap_Mesh_Load(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   mfem::ifgzstream *in_gz2 = 0 ;
   std::istringstream *stream2 = 0 ;
   Py_ssize_t len2 = 0 ;
-  PyObject *ret2 = 0 ;
   bool val5 ;
   int ecode5 = 0 ;
   PyObject * obj0 = 0 ;
@@ -9145,14 +9181,20 @@ SWIGINTERN PyObject *_wrap_Mesh_Load(PyObject *SWIGUNUSEDPARM(self), PyObject *a
       }
     }
     if (stream2 == 0){
-      if (temp2->isGZ()){
-        in_gz2 = new mfem::ifgzstream(temp2->getFilename());
-        arg2 = in_gz2;
-      } else {
-        in_txt2.open(temp2->getFilename(), std::ifstream::in);
-        in_txt2.precision(temp2->getPrecision());
-        arg2 = &in_txt2;
-      }
+      /*
+            if (temp2->isGZ()){
+        	 in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+               arg2 = in_gz2;
+            } else {
+        	 in_txt2.open(temp2->getFilename(), std::ifstream::in);
+               in_txt2.precision(temp2->getPrecision());
+               arg2 = &in_txt2;
+            }
+           */
+      /* this will auto-detect the input file type */
+      in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+      arg2 = in_gz2;
+      
       if (temp2->isTemporary()){
         delete temp2;
       }
@@ -9203,18 +9245,6 @@ SWIGINTERN PyObject *_wrap_Mesh_Load(PyObject *SWIGUNUSEDPARM(self), PyObject *a
     }	 
   }
   resultobj = SWIG_Py_Void();
-  {
-    if (stream2) {
-      ret2 = PyLong_FromSsize_t(len2);
-      if (PyErr_Occurred()) {
-        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
-        return NULL;
-      }
-      delete stream2;    
-      Py_XDECREF(resultobj);   /* Blow away any previous result */
-      resultobj = ret2;    
-    }
-  }
   {
     if (!stream2) {
       if (temp2) {
@@ -21494,6 +21524,70 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Mesh_PrintInfoGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:Mesh_PrintInfoGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_PrintInfoGZ" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_PrintInfoGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_Mesh_PrintInfoGZ(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
@@ -21638,6 +21732,70 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Mesh_PrintGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:Mesh_PrintGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_PrintGZ" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_PrintGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_Mesh_PrintGZ(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
@@ -21779,6 +21937,70 @@ fail:
     "    mfem::Mesh::PrintXG(std::ostream &) const\n"
     "    mfem::Mesh::PrintXG(char const *,int)\n");
   return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_PrintXGGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:Mesh_PrintXGGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_PrintXGGZ" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_PrintXGGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_Mesh_PrintXGGZ(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
 }
 
 
@@ -21983,6 +22205,70 @@ fail:
     "    mfem::Mesh::PrintVTK(std::ostream &,int,int)\n"
     "    mfem::Mesh::PrintVTK(char const *,int)\n");
   return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_PrintVTKGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:Mesh_PrintVTKGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_PrintVTKGZ" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_PrintVTKGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      mfem_Mesh_PrintVTKGZ(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
 }
 
 
@@ -24046,19 +24332,23 @@ static PyMethodDef SwigMethods[] = {
 		"Mesh_PrintInfo(Mesh self, std::ostream & out=out)\n"
 		"Mesh_PrintInfo(Mesh self, char const * file, int precision=8)\n"
 		""},
+	 { "Mesh_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "Mesh_PrintInfoGZ(Mesh self, char const * file, int precision=8)"},
 	 { "Mesh_Print", _wrap_Mesh_Print, METH_VARARGS, "\n"
 		"Mesh_Print(Mesh self, std::ostream & out=out)\n"
 		"Mesh_Print(Mesh self, char const * file, int precision=8)\n"
 		""},
+	 { "Mesh_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintGZ, METH_VARARGS|METH_KEYWORDS, "Mesh_PrintGZ(Mesh self, char const * file, int precision=8)"},
 	 { "Mesh_PrintXG", _wrap_Mesh_PrintXG, METH_VARARGS, "\n"
 		"Mesh_PrintXG(Mesh self, std::ostream & out=out)\n"
 		"Mesh_PrintXG(Mesh self, char const * file, int precision=8)\n"
 		""},
+	 { "Mesh_PrintXGGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintXGGZ, METH_VARARGS|METH_KEYWORDS, "Mesh_PrintXGGZ(Mesh self, char const * file, int precision=8)"},
 	 { "Mesh_PrintVTK", _wrap_Mesh_PrintVTK, METH_VARARGS, "\n"
 		"Mesh_PrintVTK(Mesh self, std::ostream & out)\n"
 		"Mesh_PrintVTK(Mesh self, std::ostream & out, int ref, int field_data=0)\n"
 		"Mesh_PrintVTK(Mesh self, char const * file, int precision=8)\n"
 		""},
+	 { "Mesh_PrintVTKGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintVTKGZ, METH_VARARGS|METH_KEYWORDS, "Mesh_PrintVTKGZ(Mesh self, char const * file, int precision=8)"},
 	 { "Mesh_swigregister", Mesh_swigregister, METH_O, NULL},
 	 { "Mesh_swiginit", Mesh_swiginit, METH_VARARGS, NULL},
 	 { "__lshift__", _wrap___lshift__, METH_VARARGS, "\n"
@@ -24407,19 +24697,23 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"PrintInfo(Mesh self, std::ostream & out=out)\n"
 		"PrintInfo(Mesh self, char const * file, int precision=8)\n"
 		""},
+	 { "Mesh_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "PrintInfoGZ(Mesh self, char const * file, int precision=8)"},
 	 { "Mesh_Print", _wrap_Mesh_Print, METH_VARARGS, "\n"
 		"Print(Mesh self, std::ostream & out=out)\n"
 		"Print(Mesh self, char const * file, int precision=8)\n"
 		""},
+	 { "Mesh_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(Mesh self, char const * file, int precision=8)"},
 	 { "Mesh_PrintXG", _wrap_Mesh_PrintXG, METH_VARARGS, "\n"
 		"PrintXG(Mesh self, std::ostream & out=out)\n"
 		"PrintXG(Mesh self, char const * file, int precision=8)\n"
 		""},
+	 { "Mesh_PrintXGGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintXGGZ, METH_VARARGS|METH_KEYWORDS, "PrintXGGZ(Mesh self, char const * file, int precision=8)"},
 	 { "Mesh_PrintVTK", _wrap_Mesh_PrintVTK, METH_VARARGS, "\n"
 		"PrintVTK(Mesh self, std::ostream & out)\n"
 		"PrintVTK(Mesh self, std::ostream & out, int ref, int field_data=0)\n"
 		"PrintVTK(Mesh self, char const * file, int precision=8)\n"
 		""},
+	 { "Mesh_PrintVTKGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintVTKGZ, METH_VARARGS|METH_KEYWORDS, "PrintVTKGZ(Mesh self, char const * file, int precision=8)"},
 	 { "Mesh_swigregister", Mesh_swigregister, METH_O, NULL},
 	 { "Mesh_swiginit", Mesh_swiginit, METH_VARARGS, NULL},
 	 { "__lshift__", _wrap___lshift__, METH_VARARGS, "\n"

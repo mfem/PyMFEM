@@ -2,9 +2,9 @@
 [![badge](https://github.com/GLVis/pyglvis/blob/master/examples/ex1.svg "MFEM's Example 1")](https://mybinder.org/v2/gh/GLVis/pyglvis/HEAD?filepath=examples%2Fex1.ipynb)
 [![badge](https://github.com/GLVis/pyglvis/blob/master/examples/ex9.svg "MFEM's Example 9")](https://mybinder.org/v2/gh/GLVis/pyglvis/HEAD?filepath=examples%2Fex9.ipynb)
 
-#  PyMFEM (MFEM Python wrapper)
+#  MFEM + PyMFEM (FEM library)
 
-This package (PyMFEM) is Python wrapper for the MFEM high performance parallel finite element method library.(http://mfem.org/).
+This package provides MFEM and its Python wrapper (PyMFEM). MFEM is a high performance parallel finite element method (FEM) library (http://mfem.org/).
 
 Installer downloads a couple of external libraries and build them.
 By default, "pip install mfem" downloads and builds the serial version of MFEM and PyMFEM.
