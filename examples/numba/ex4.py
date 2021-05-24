@@ -23,39 +23,39 @@ order = 1
 meshfile = expanduser(join(path, 'data', 'star.mesh'))
 if not exists(meshfile):
     path = dirname(dirname(__file__))
+    path = dirname(path)    
     meshfile = expanduser(join(path, 'data', 'star.mesh'))
 
 mesh = mfem.Mesh(meshfile, 1,1)
 dim = mesh.Dimension()
 sdim = mesh.SpaceDimension()
+ndim = mesh.Dimension()
 
-class E_exact(mfem.VectorPyCoefficient):
-    def __init__(self):
-       mfem.VectorPyCoefficient.__init__(self, dim)
-    def EvalValue(self, p):
-       dim = p.shape[0]
-       x = p[0]; y = p[1]
-       F0 = cos(kappa*x)*sin(kappa*y)
-       F1 = cos(kappa*y)*sin(kappa*x)       
-       if dim == 3:
-           return (F0, F1, 0.0)
-       else:
-           return (F0, F1)
-class f_exact(mfem.VectorPyCoefficient):
-    def __init__(self):
-       mfem.VectorPyCoefficient.__init__(self, dim)
-    def EvalValue(self, p):
-       dim = p.shape[0]
-       x = p[0]; y = p[1]
-       temp = 1. + 2.*kappa*kappa
+from numba import cfunc, carray    
+
+@cfunc(mfem.vector_sig)
+def E_exact(p, out, sdim, vdim):
+    out_array = carray(out, (vdim, ))    
+    x = p[0]; y = p[1]
+    F0 = cos(kappa*x)*sin(kappa*y)
+    F1 = cos(kappa*y)*sin(kappa*x)
+    out_array[0] = F0
+    out_array[1] = F1
+    if vdim == 3:
+        out_array[2] = 0.0
+        
+@cfunc(mfem.vector_sig)        
+def f_exact(p, out, sdim, vdim):
+    out_array = carray(out, (vdim, ))    
+    x = p[0]; y = p[1]
+    temp = 1. + 2.*kappa*kappa
        
-       F0 = temp * cos(kappa*x)*sin(kappa*y)
-       F1 = temp * cos(kappa*y)*sin(kappa*x)       
-       if dim == 3:
-           return (F0, F1, 0.0)
-       else:
-           return (F0, F1)
-
+    F0 = temp * cos(kappa*x)*sin(kappa*y)
+    F1 = temp * cos(kappa*y)*sin(kappa*x)
+    out_array[0] = F0
+    out_array[1] = F1
+    if vdim == 3:
+        out_array[2] = 0.0
 
 ref_levels = int(np.floor(np.log(25000./mesh.GetNE())/np.log(2.)/dim))
 for x in range(ref_levels):
@@ -74,13 +74,13 @@ if mesh.bdr_attributes.Size():
     fespace.GetEssentialTrueDofs(ess_bdr, ess_tdof_list);
 
 b = mfem.LinearForm(fespace);
-f = f_exact()
+f = mfem.VectorNumbaFunction(f_exact, sdim, ndim).GenerateCoefficient()
 dd = mfem.VectorFEDomainLFIntegrator(f)
 b.AddDomainIntegrator(dd)
 b.Assemble()
     
 x = mfem.GridFunction(fespace)
-F = E_exact()
+F = mfem.VectorNumbaFunction(E_exact, sdim, ndim).GenerateCoefficient()
 x.ProjectCoefficient(F);
 
 alpha = mfem.ConstantCoefficient(1.0);

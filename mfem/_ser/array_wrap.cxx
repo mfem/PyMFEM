@@ -5524,7 +5524,6 @@ SWIGINTERN PyObject *_wrap_intArray_Load__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   mfem::ifgzstream *in_gz2 = 0 ;
   std::istringstream *stream2 = 0 ;
   Py_ssize_t len2 = 0 ;
-  PyObject *ret2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
   
@@ -5662,7 +5661,6 @@ SWIGINTERN PyObject *_wrap_intArray_Load__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   mfem::ifgzstream *in_gz3 = 0 ;
   std::istringstream *stream3 = 0 ;
   Py_ssize_t len3 = 0 ;
-  PyObject *ret3 = 0 ;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
@@ -9701,7 +9699,6 @@ SWIGINTERN PyObject *_wrap_doubleArray_Load__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   mfem::ifgzstream *in_gz2 = 0 ;
   std::istringstream *stream2 = 0 ;
   Py_ssize_t len2 = 0 ;
-  PyObject *ret2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
   
@@ -9839,7 +9836,6 @@ SWIGINTERN PyObject *_wrap_doubleArray_Load__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   mfem::ifgzstream *in_gz3 = 0 ;
   std::istringstream *stream3 = 0 ;
   Py_ssize_t len3 = 0 ;
-  PyObject *ret3 = 0 ;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_double_t, 0 |  0 );

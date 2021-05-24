@@ -1874,6 +1874,161 @@ def ComputeGlobalLpNorm(*args):
     """
     return _coefficient.ComputeGlobalLpNorm(*args)
 ComputeGlobalLpNorm = _coefficient.ComputeGlobalLpNorm
+class NumbaFunctionBase(object):
+    r"""Proxy of C++ NumbaFunctionBase class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, input, sdim, td):
+        r"""__init__(NumbaFunctionBase self, PyObject * input, int sdim, bool td) -> NumbaFunctionBase"""
+        _coefficient.NumbaFunctionBase_swiginit(self, _coefficient.new_NumbaFunctionBase(input, sdim, td))
+
+    def print_add(self):
+        r"""print_add(NumbaFunctionBase self) -> double"""
+        return _coefficient.NumbaFunctionBase_print_add(self)
+    print_add = _swig_new_instance_method(_coefficient.NumbaFunctionBase_print_add)
+    __swig_destroy__ = _coefficient.delete_NumbaFunctionBase
+
+# Register NumbaFunctionBase in _coefficient:
+_coefficient.NumbaFunctionBase_swigregister(NumbaFunctionBase)
+
+class NumbaFunction(NumbaFunctionBase):
+    r"""Proxy of C++ NumbaFunction class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        r"""
+        __init__(NumbaFunction self, PyObject * input, int sdim) -> NumbaFunction
+        __init__(NumbaFunction self, PyObject * input, int sdim, bool td) -> NumbaFunction
+        """
+        _coefficient.NumbaFunction_swiginit(self, _coefficient.new_NumbaFunction(*args))
+
+    def call(self, x):
+        r"""call(NumbaFunction self, Vector x) -> double"""
+        return _coefficient.NumbaFunction_call(self, x)
+    call = _swig_new_instance_method(_coefficient.NumbaFunction_call)
+
+    def callt(self, x, t):
+        r"""callt(NumbaFunction self, Vector x, double t) -> double"""
+        return _coefficient.NumbaFunction_callt(self, x, t)
+    callt = _swig_new_instance_method(_coefficient.NumbaFunction_callt)
+
+    def GenerateCoefficient(self):
+        r"""GenerateCoefficient(NumbaFunction self) -> FunctionCoefficient"""
+        val = _coefficient.NumbaFunction_GenerateCoefficient(self)
+
+        val._link = self
+
+
+        return val
+
+    __swig_destroy__ = _coefficient.delete_NumbaFunction
+
+# Register NumbaFunction in _coefficient:
+_coefficient.NumbaFunction_swigregister(NumbaFunction)
+
+class VectorNumbaFunction(NumbaFunctionBase):
+    r"""Proxy of C++ VectorNumbaFunction class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        r"""
+        __init__(VectorNumbaFunction self, PyObject * input, int sdim, int vdim) -> VectorNumbaFunction
+        __init__(VectorNumbaFunction self, PyObject * input, int sdim, int vdim, bool td) -> VectorNumbaFunction
+        """
+        _coefficient.VectorNumbaFunction_swiginit(self, _coefficient.new_VectorNumbaFunction(*args))
+
+    def call(self, x, out):
+        r"""call(VectorNumbaFunction self, Vector x, Vector out)"""
+        return _coefficient.VectorNumbaFunction_call(self, x, out)
+    call = _swig_new_instance_method(_coefficient.VectorNumbaFunction_call)
+
+    def callt(self, x, t, out):
+        r"""callt(VectorNumbaFunction self, Vector x, double t, Vector out)"""
+        return _coefficient.VectorNumbaFunction_callt(self, x, t, out)
+    callt = _swig_new_instance_method(_coefficient.VectorNumbaFunction_callt)
+
+    def GenerateCoefficient(self):
+        r"""GenerateCoefficient(VectorNumbaFunction self) -> VectorFunctionCoefficient"""
+        val = _coefficient.VectorNumbaFunction_GenerateCoefficient(self)
+
+        val._link = self
+
+
+        return val
+
+    __swig_destroy__ = _coefficient.delete_VectorNumbaFunction
+
+# Register VectorNumbaFunction in _coefficient:
+_coefficient.VectorNumbaFunction_swigregister(VectorNumbaFunction)
+
+class MatrixNumbaFunction(object):
+    r"""Proxy of C++ MatrixNumbaFunction class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        r"""
+        __init__(MatrixNumbaFunction self, PyObject * input, int sdim, int vdim) -> MatrixNumbaFunction
+        __init__(MatrixNumbaFunction self, PyObject * input, int sdim, int vdim, bool td) -> MatrixNumbaFunction
+        """
+        _coefficient.MatrixNumbaFunction_swiginit(self, _coefficient.new_MatrixNumbaFunction(*args))
+
+    def call(self, x, out):
+        r"""call(MatrixNumbaFunction self, Vector x, DenseMatrix out)"""
+        return _coefficient.MatrixNumbaFunction_call(self, x, out)
+    call = _swig_new_instance_method(_coefficient.MatrixNumbaFunction_call)
+
+    def callt(self, x, t, out):
+        r"""callt(MatrixNumbaFunction self, Vector x, double t, DenseMatrix out)"""
+        return _coefficient.MatrixNumbaFunction_callt(self, x, t, out)
+    callt = _swig_new_instance_method(_coefficient.MatrixNumbaFunction_callt)
+
+    def GenerateCoefficient(self):
+        r"""GenerateCoefficient(MatrixNumbaFunction self) -> MatrixFunctionCoefficient"""
+        val = _coefficient.MatrixNumbaFunction_GenerateCoefficient(self)
+
+        val._link = self
+
+
+        return val
+
+    __swig_destroy__ = _coefficient.delete_MatrixNumbaFunction
+
+# Register MatrixNumbaFunction in _coefficient:
+_coefficient.MatrixNumbaFunction_swigregister(MatrixNumbaFunction)
+
+
+try:
+    from numba import cfunc, types, carray
+    scalar_sig = types.double(types.CPointer(types.double),
+			  types.intc)
+    scalar_sig_t = types.double(types.CPointer(types.double),
+			    types.double,
+			    types.intc)
+    vector_sig = types.void(types.CPointer(types.double),
+			types.CPointer(types.double),
+			types.intc,
+			types.intc)
+    vector_sig_t = types.void(types.CPointer(types.double),
+			  types.double,
+                          types.CPointer(types.double),
+			  types.intc,
+			  types.intc)
+
+    matrix_sig = vector_sig
+    matrix_sig_t = vector_sig_t
+except ImportError:
+    pass
+except BaseError:
+    assert False, "Failed setting Numba signatures by an error other than ImportError"
+
 
 def fake_func(x):
     r"""fake_func(Vector x) -> double"""

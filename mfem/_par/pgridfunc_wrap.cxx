@@ -4132,7 +4132,6 @@ SWIGINTERN PyObject *_wrap_new_ParGridFunction__SWIG_7(PyObject *SWIGUNUSEDPARM(
   mfem::ifgzstream *in_gz2 = 0 ;
   std::istringstream *stream2 = 0 ;
   Py_ssize_t len2 = 0 ;
-  PyObject *ret2 = 0 ;
   mfem::ParGridFunction *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;

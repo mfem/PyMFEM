@@ -153,6 +153,7 @@ namespace mfem {
 }
 
 %include "../../headers/coefficient.hpp"
+%include "../common/numba_coefficient.i"
 
 %feature("director") mfem::VectorPyCoefficientBase;
 %feature("director") mfem::PyCoefficientBase;
@@ -170,6 +171,7 @@ void fake_func_vec(const mfem::Vector &x, mfem::Vector &Ht)
      Ht(1) = 0.0;
      Ht(2) = 0.0;
 }
+
 void fake_func_mat(const mfem::Vector &x, mfem::DenseMatrix &Kt)
 {
   Kt(0,0) = 1.0;

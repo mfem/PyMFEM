@@ -189,7 +189,7 @@ void method ## GZ(const char *file, int precision=8){
 //usage ISTREAM_TYPEMAP(std::istream&)
 %define ISTREAM_TYPEMAP(T)
   %typemap(in) T (PyMFEM::wFILE *temp=0, std::ifstream in_txt, mfem::ifgzstream *in_gz=0,
-		  std::istringstream *stream=0, Py_ssize_t len = 0, PyObject* ret=0){
+		  std::istringstream *stream=0, Py_ssize_t len = 0){
    //  PyMFEM::wFILE or string argument or StringIO
    if (SWIG_ConvertPtr($input, (void **) &temp, $descriptor(PyMFEM::wFILE *), 0 | 0) == -1) {
       if (!PyString_Check($input) && !PyUnicode_Check($input)) {	
