@@ -151,6 +151,7 @@ class VectorNumbaFunction : public NumbaFunctionBase {
        NumbaFunctionBase(input, sdim, td), vdim_(vdim){}
   
     void call(const mfem::Vector &x, mfem::Vector &out){
+      out = 0.0;
       return ((void (*) (double *, double *, int, int))address_)(x.GetData(), 
     							      out.GetData(),
                                                               sdim_,
@@ -158,6 +159,7 @@ class VectorNumbaFunction : public NumbaFunctionBase {
        
     }
     void callt(const mfem::Vector &x, double t, mfem::Vector &out){
+      out = 0.0;      
       return ((void (*) (double *, double,  double *, int, int))address_)(x.GetData(),
 							              t,
 								      out.GetData(),
@@ -192,6 +194,7 @@ class MatrixNumbaFunction : NumbaFunctionBase {
        NumbaFunctionBase(input, sdim, td), vdim_(vdim){}
 
     void call(const mfem::Vector &x, mfem::DenseMatrix &out){
+      out = 0.0;
       return ((void (*) (double *, double *, int, int))address_)(x.GetData(), 
     							      out.GetData(),
                                                               sdim_,
@@ -199,6 +202,7 @@ class MatrixNumbaFunction : NumbaFunctionBase {
        
     }
     void callt(const mfem::Vector &x, double t, mfem::DenseMatrix &out){
+      out = 0.0;
       return ((void (*) (double *, double,  double *, int, int))address_)(x.GetData(),
 							              t,
 								      out.GetData(),

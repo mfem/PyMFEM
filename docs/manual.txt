@@ -117,7 +117,7 @@ to find more details of the MFEM library.
           Note: the argument is first tested if it can be converted using
 	        np.array(x,  dtype=float)
 
-
+       (EXPERIMENTAL)
        Using Numba JIT functions for FunctionCoefficients is supported.
        For example, to use Numba compiled function, one can use
        GenerateCoefficient mehtod in NumberFunction class as follows.
@@ -512,7 +512,7 @@ to find more details of the MFEM library.
             strumpack.SetOperator(Arow)
             strumpack.SetFromCommandLine()
             strumpack.Mult(B, X);
-	     
+
 -- Known issues --
 
   PyMFEM is an on-going effort. Not all MFEM functionality is properly

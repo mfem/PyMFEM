@@ -47,10 +47,17 @@ class m_coeff(mfem.MatrixPyCoefficient):
                          [0.0, p[1], p[2]],
                          [0.0, 0.0, p[2]]])
 
+@cfunc("float64(float64, float64, float64)")
+def s_func0(x, y, z):
+    return x
 
-@cfunc(mfem.scalar_sig)
+def s_func1(x, y, z):
+    return x
+s_func0 = cfunc("float64(float64, float64, float64)")(s_func1)
+
+@cfunc(mfem.scalar_sig, cache=False)
 def s_func(ptx, sdim):
-    return ptx[0]
+    return s_func0(ptx[0], ptx[1],  ptx[2])
 
 
 @cfunc(mfem.vector_sig)
@@ -63,15 +70,17 @@ def v_func(ptx, out, sdim, vdim):
 @cfunc(mfem.matrix_sig)
 def m_func(ptx, out, sdim, vdim):
     # we use farray to assign the data like above.
+    # note out is zero-ed in wrapper. so we don't need to
+    # set zero here.
     out_array = farray(out, (vdim, vdim))
     out_array[0, 0] = ptx[0]
     out_array[0, 1] = ptx[1]
     out_array[0, 2] = ptx[2]
-    out_array[1, 0] = 0.0
+    #out_array[1, 0] = 0.0
     out_array[1, 1] = ptx[1]
     out_array[1, 2] = ptx[2]
-    out_array[2, 0] = 0.0
-    out_array[2, 1] = 0.0
+    #out_array[2, 0] = 0.0
+    #out_array[2, 1] = 0.0
     out_array[2, 2] = ptx[2]
     '''
     accessing the array linearly does not speed up.
@@ -94,10 +103,10 @@ def check(a, b, msg):
 
 def run_test():
     #meshfile = expanduser(join(mfem_path, 'data', 'semi_circle.mesh'))
-    mesh = mfem.Mesh(30, 30, 30, "TETRAHEDRON")
+    mesh = mfem.Mesh(3, 3, 3, "TETRAHEDRON")
     mesh.ReorientTetMesh()
 
-    order = 2
+    order = 1
 
     dim = mesh.Dimension()
     sdim = mesh.SpaceDimension()
