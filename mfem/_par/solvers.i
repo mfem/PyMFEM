@@ -6,7 +6,8 @@
 #include "linalg/sparsemat.hpp"
 #include "linalg/solvers.hpp"
 #include "pyoperator.hpp"
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"
+using namespace mfem;
 %}
 
 %init %{

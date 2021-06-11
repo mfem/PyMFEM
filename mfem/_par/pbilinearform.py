@@ -140,6 +140,11 @@ class ParBilinearForm(mfem._par.bilinearform.BilinearForm):
         return _pbilinearform.ParBilinearForm_Assemble(self, skip_zeros)
     Assemble = _swig_new_instance_method(_pbilinearform.ParBilinearForm_Assemble)
 
+    def AssembleDiagonal(self, diag):
+        r"""AssembleDiagonal(ParBilinearForm self, Vector diag)"""
+        return _pbilinearform.ParBilinearForm_AssembleDiagonal(self, diag)
+    AssembleDiagonal = _swig_new_instance_method(_pbilinearform.ParBilinearForm_AssembleDiagonal)
+
     def ParallelAssembleElim(self, *args):
         r"""
         ParallelAssembleElim(ParBilinearForm self) -> HypreParMatrix
@@ -191,6 +196,11 @@ class ParBilinearForm(mfem._par.bilinearform.BilinearForm):
         return _pbilinearform.ParBilinearForm_GetProlongation(self)
     GetProlongation = _swig_new_instance_method(_pbilinearform.ParBilinearForm_GetProlongation)
 
+    def GetRestrictionTranspose(self):
+        r"""GetRestrictionTranspose(ParBilinearForm self) -> Operator"""
+        return _pbilinearform.ParBilinearForm_GetRestrictionTranspose(self)
+    GetRestrictionTranspose = _swig_new_instance_method(_pbilinearform.ParBilinearForm_GetRestrictionTranspose)
+
     def GetRestriction(self):
         r"""GetRestriction(ParBilinearForm self) -> Operator"""
         return _pbilinearform.ParBilinearForm_GetRestriction(self)
@@ -205,6 +215,11 @@ class ParBilinearForm(mfem._par.bilinearform.BilinearForm):
         r"""Update(ParBilinearForm self, FiniteElementSpace nfes=None)"""
         return _pbilinearform.ParBilinearForm_Update(self, nfes)
     Update = _swig_new_instance_method(_pbilinearform.ParBilinearForm_Update)
+
+    def EliminateVDofsInRHS(self, vdofs, x, b):
+        r"""EliminateVDofsInRHS(ParBilinearForm self, intArray vdofs, Vector x, Vector b)"""
+        return _pbilinearform.ParBilinearForm_EliminateVDofsInRHS(self, vdofs, x, b)
+    EliminateVDofsInRHS = _swig_new_instance_method(_pbilinearform.ParBilinearForm_EliminateVDofsInRHS)
     __swig_destroy__ = _pbilinearform.delete_ParBilinearForm
 
     def FormLinearSystem(self, *args):
@@ -251,14 +266,20 @@ class ParMixedBilinearForm(mfem._par.bilinearform.MixedBilinearForm):
         return _pbilinearform.ParMixedBilinearForm_ParallelAssemble(self, *args)
     ParallelAssemble = _swig_new_instance_method(_pbilinearform.ParMixedBilinearForm_ParallelAssemble)
 
-    def FormRectangularSystemMatrix(self, trial_tdof_list, test_tdof_list, A):
-        r"""FormRectangularSystemMatrix(ParMixedBilinearForm self, intArray trial_tdof_list, intArray test_tdof_list, OperatorHandle A)"""
-        return _pbilinearform.ParMixedBilinearForm_FormRectangularSystemMatrix(self, trial_tdof_list, test_tdof_list, A)
+    def FormRectangularSystemMatrix(self, *args):
+        r"""
+        FormRectangularSystemMatrix(ParMixedBilinearForm self)
+        FormRectangularSystemMatrix(ParMixedBilinearForm self, intArray trial_tdof_list, intArray test_tdof_list, OperatorHandle A)
+        """
+        return _pbilinearform.ParMixedBilinearForm_FormRectangularSystemMatrix(self, *args)
     FormRectangularSystemMatrix = _swig_new_instance_method(_pbilinearform.ParMixedBilinearForm_FormRectangularSystemMatrix)
 
-    def FormRectangularLinearSystem(self, trial_tdof_list, test_tdof_list, x, b, A, X, B):
-        r"""FormRectangularLinearSystem(ParMixedBilinearForm self, intArray trial_tdof_list, intArray test_tdof_list, Vector x, Vector b, OperatorHandle A, Vector X, Vector B)"""
-        return _pbilinearform.ParMixedBilinearForm_FormRectangularLinearSystem(self, trial_tdof_list, test_tdof_list, x, b, A, X, B)
+    def FormRectangularLinearSystem(self, *args):
+        r"""
+        FormRectangularLinearSystem(ParMixedBilinearForm self)
+        FormRectangularLinearSystem(ParMixedBilinearForm self, intArray trial_tdof_list, intArray test_tdof_list, Vector x, Vector b, OperatorHandle A, Vector X, Vector B)
+        """
+        return _pbilinearform.ParMixedBilinearForm_FormRectangularLinearSystem(self, *args)
     FormRectangularLinearSystem = _swig_new_instance_method(_pbilinearform.ParMixedBilinearForm_FormRectangularLinearSystem)
 
     def TrueAddMult(self, x, y, a=1.0):
@@ -280,15 +301,26 @@ class ParDiscreteLinearOperator(mfem._par.bilinearform.DiscreteLinearOperator):
         r"""__init__(ParDiscreteLinearOperator self, ParFiniteElementSpace dfes, ParFiniteElementSpace rfes) -> ParDiscreteLinearOperator"""
         _pbilinearform.ParDiscreteLinearOperator_swiginit(self, _pbilinearform.new_ParDiscreteLinearOperator(dfes, rfes))
 
-    def ParallelAssemble(self):
-        r"""ParallelAssemble(ParDiscreteLinearOperator self) -> HypreParMatrix"""
-        return _pbilinearform.ParDiscreteLinearOperator_ParallelAssemble(self)
+    def ParallelAssemble(self, *args):
+        r"""
+        ParallelAssemble(ParDiscreteLinearOperator self) -> HypreParMatrix
+        ParallelAssemble(ParDiscreteLinearOperator self, OperatorHandle A)
+        """
+        return _pbilinearform.ParDiscreteLinearOperator_ParallelAssemble(self, *args)
     ParallelAssemble = _swig_new_instance_method(_pbilinearform.ParDiscreteLinearOperator_ParallelAssemble)
 
     def GetParBlocks(self, blocks):
         r"""GetParBlocks(ParDiscreteLinearOperator self, mfem::Array2D< mfem::HypreParMatrix * > & blocks)"""
         return _pbilinearform.ParDiscreteLinearOperator_GetParBlocks(self, blocks)
     GetParBlocks = _swig_new_instance_method(_pbilinearform.ParDiscreteLinearOperator_GetParBlocks)
+
+    def FormRectangularSystemMatrix(self, *args):
+        r"""
+        FormRectangularSystemMatrix(ParDiscreteLinearOperator self)
+        FormRectangularSystemMatrix(ParDiscreteLinearOperator self, OperatorHandle A)
+        """
+        return _pbilinearform.ParDiscreteLinearOperator_FormRectangularSystemMatrix(self, *args)
+    FormRectangularSystemMatrix = _swig_new_instance_method(_pbilinearform.ParDiscreteLinearOperator_FormRectangularSystemMatrix)
     __swig_destroy__ = _pbilinearform.delete_ParDiscreteLinearOperator
 
 # Register ParDiscreteLinearOperator in _pbilinearform:

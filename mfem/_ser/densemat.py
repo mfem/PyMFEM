@@ -566,6 +566,11 @@ class DenseMatrix(mfem._ser.matrix.Matrix):
         r"""HostReadWrite(DenseMatrix self) -> double *"""
         return _densemat.DenseMatrix_HostReadWrite(self)
     HostReadWrite = _swig_new_instance_method(_densemat.DenseMatrix_HostReadWrite)
+
+    def Swap(self, other):
+        r"""Swap(DenseMatrix self, DenseMatrix other)"""
+        return _densemat.DenseMatrix_Swap(self, other)
+    Swap = _swig_new_instance_method(_densemat.DenseMatrix_Swap)
     __swig_destroy__ = _densemat.delete_DenseMatrix
 
     def Assign(self, *args):
@@ -1012,6 +1017,7 @@ class DenseTensor(object):
         r"""
         __init__(DenseTensor self) -> DenseTensor
         __init__(DenseTensor self, int i, int j, int k) -> DenseTensor
+        __init__(DenseTensor self, int i, int j, int k, mfem::MemoryType mt) -> DenseTensor
         __init__(DenseTensor self, DenseTensor other) -> DenseTensor
         """
         _densemat.DenseTensor_swiginit(self, _densemat.new_DenseTensor(*args))
@@ -1036,9 +1042,9 @@ class DenseTensor(object):
         return _densemat.DenseTensor_TotalSize(self)
     TotalSize = _swig_new_instance_method(_densemat.DenseTensor_TotalSize)
 
-    def SetSize(self, i, j, k):
-        r"""SetSize(DenseTensor self, int i, int j, int k)"""
-        return _densemat.DenseTensor_SetSize(self, i, j, k)
+    def SetSize(self, *args, **kwargs):
+        r"""SetSize(DenseTensor self, int i, int j, int k, mfem::MemoryType mt_=MemoryType::PRESERVE)"""
+        return _densemat.DenseTensor_SetSize(self, *args, **kwargs)
     SetSize = _swig_new_instance_method(_densemat.DenseTensor_SetSize)
 
     def UseExternalData(self, ext_data, i, j, k):
@@ -1121,6 +1127,11 @@ class DenseTensor(object):
         r"""HostReadWrite(DenseTensor self) -> double *"""
         return _densemat.DenseTensor_HostReadWrite(self)
     HostReadWrite = _swig_new_instance_method(_densemat.DenseTensor_HostReadWrite)
+
+    def Swap(self, t):
+        r"""Swap(DenseTensor self, DenseTensor t)"""
+        return _densemat.DenseTensor_Swap(self, t)
+    Swap = _swig_new_instance_method(_densemat.DenseTensor_Swap)
     __swig_destroy__ = _densemat.delete_DenseTensor
 
     def Assign(self, c):

@@ -2,7 +2,8 @@
 %{
 #include "fem/bilinearform.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"         
+#include "pyoperator.hpp"
+using namespace mfem;  
 %}
 
 %init %{
@@ -34,12 +35,13 @@ import_array();
 namespace mfem { 
 %pythonprepend BilinearForm::AddDomainIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
+    bfi = args[0]
     self._integrators.append(bfi)
     bfi.thisown=0 
     %}
 %pythonprepend BilinearForm::AddBoundaryIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
-    bfi = args[0]	     
+    bfi = args[0]
     self._integrators.append(bfi)
     bfi.thisown=0 
    %} 
@@ -66,12 +68,13 @@ namespace mfem {
    %} 
 %pythonprepend MixedBilinearForm::AddDomainIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
+    bfi = args[0]
     self._integrators.append(bfi)
     bfi.thisown=0 
    %}
 %pythonprepend MixedBilinearForm::AddBoundaryIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
-    bfi = args[0]	     
+    bfi = args[0]
     self._integrators.append(bfi)
     bfi.thisown=0 
    %} 
@@ -82,7 +85,7 @@ namespace mfem {
    %}
 %pythonprepend MixedBilinearForm::AddBdrTraceFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
-    bfi = args[0]	     
+    bfi = args[0]
     self._integrators.append(bfi)
     bfi.thisown=0 
    %} 
@@ -115,10 +118,12 @@ DEPRECATED_METHOD(mfem::BilinearForm::GetFES())
 %enddef
 
 FORM_SYSTEM_MATRIX_WRAP(mfem::SparseMatrix)
-  
+
+ /*
 #ifdef MFEM_USE_MPI
   FORM_SYSTEM_MATRIX_WRAP(mfem::HypreParMatrix)
 #endif
+ */
   
 #ifdef MFEM_USE_PETSC
   FORM_SYSTEM_MATRIX_WRAP(mfem::PetscParMatrix)

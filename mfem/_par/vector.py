@@ -164,6 +164,11 @@ class Vector(object):
         return _vector.Vector_Destroy(self)
     Destroy = _swig_new_instance_method(_vector.Vector_Destroy)
 
+    def DeleteDevice(self, copy_to_host=True):
+        r"""DeleteDevice(Vector self, bool copy_to_host=True)"""
+        return _vector.Vector_DeleteDevice(self, copy_to_host)
+    DeleteDevice = _swig_new_instance_method(_vector.Vector_DeleteDevice)
+
     def Size(self):
         r"""Size(Vector self) -> int"""
         return _vector.Vector_Size(self)
@@ -178,6 +183,22 @@ class Vector(object):
         r"""GetData(Vector self) -> double *"""
         return _vector.Vector_GetData(self)
     GetData = _swig_new_instance_method(_vector.Vector_GetData)
+
+    def begin(self, *args):
+        r"""
+        begin(Vector self) -> double
+        begin(Vector self) -> double const *
+        """
+        return _vector.Vector_begin(self, *args)
+    begin = _swig_new_instance_method(_vector.Vector_begin)
+
+    def end(self, *args):
+        r"""
+        end(Vector self) -> double
+        end(Vector self) -> double const *
+        """
+        return _vector.Vector_end(self, *args)
+    end = _swig_new_instance_method(_vector.Vector_end)
 
     def GetMemory(self, *args):
         r"""
@@ -327,6 +348,11 @@ class Vector(object):
         return _vector.Vector_SetSubVectorComplement(self, dofs, val)
     SetSubVectorComplement = _swig_new_instance_method(_vector.Vector_SetSubVectorComplement)
 
+    def PrintHash(self, out):
+        r"""PrintHash(Vector self, std::ostream & out)"""
+        return _vector.Vector_PrintHash(self, out)
+    PrintHash = _swig_new_instance_method(_vector.Vector_PrintHash)
+
     def Randomize(self, seed=0):
         r"""Randomize(Vector self, int seed=0)"""
         return _vector.Vector_Randomize(self, seed)
@@ -418,8 +444,9 @@ class Vector(object):
         __init__(Vector self) -> Vector
         __init__(Vector self, Vector arg2) -> Vector
         __init__(Vector self, int s) -> Vector
-        __init__(Vector self, double * _data, int _size) -> Vector
+        __init__(Vector self, double * data_, int size_) -> Vector
         __init__(Vector self, int size_, mfem::MemoryType mt) -> Vector
+        __init__(Vector self, int size_, mfem::MemoryType h_mt, mfem::MemoryType d_mt) -> Vector
         __init__(Vector self, Vector v, int offset, int size) -> Vector
         """
 

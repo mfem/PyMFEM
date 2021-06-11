@@ -120,6 +120,11 @@ class ErrorEstimator(AbstractErrorEstimator):
         raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
 
+    def GetTotalError(self):
+        r"""GetTotalError(ErrorEstimator self) -> double"""
+        return _estimators.ErrorEstimator_GetTotalError(self)
+    GetTotalError = _swig_new_instance_method(_estimators.ErrorEstimator_GetTotalError)
+
     def GetLocalErrors(self):
         r"""GetLocalErrors(ErrorEstimator self) -> Vector"""
         return _estimators.ErrorEstimator_GetLocalErrors(self)
@@ -245,6 +250,53 @@ class LpErrorEstimator(ErrorEstimator):
 
 # Register LpErrorEstimator in _estimators:
 _estimators.LpErrorEstimator_swigregister(LpErrorEstimator)
+
+class KellyErrorEstimator(ErrorEstimator):
+    r"""Proxy of C++ mfem::KellyErrorEstimator class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        r"""
+        __init__(KellyErrorEstimator self, BilinearFormIntegrator di_, GridFunction sol_, FiniteElementSpace flux_fes_, intArray attributes_=mfem::Array< int >()) -> KellyErrorEstimator
+        __init__(KellyErrorEstimator self, BilinearFormIntegrator di_, GridFunction sol_, FiniteElementSpace flux_fes_, intArray attributes_=mfem::Array< int >()) -> KellyErrorEstimator
+        """
+        _estimators.KellyErrorEstimator_swiginit(self, _estimators.new_KellyErrorEstimator(*args))
+    __swig_destroy__ = _estimators.delete_KellyErrorEstimator
+
+    def GetLocalErrors(self):
+        r"""GetLocalErrors(KellyErrorEstimator self) -> Vector"""
+        return _estimators.KellyErrorEstimator_GetLocalErrors(self)
+    GetLocalErrors = _swig_new_instance_method(_estimators.KellyErrorEstimator_GetLocalErrors)
+
+    def Reset(self):
+        r"""Reset(KellyErrorEstimator self)"""
+        return _estimators.KellyErrorEstimator_Reset(self)
+    Reset = _swig_new_instance_method(_estimators.KellyErrorEstimator_Reset)
+
+    def GetTotalError(self):
+        r"""GetTotalError(KellyErrorEstimator self) -> double"""
+        return _estimators.KellyErrorEstimator_GetTotalError(self)
+    GetTotalError = _swig_new_instance_method(_estimators.KellyErrorEstimator_GetTotalError)
+
+    def SetElementCoefficientFunction(self, compute_element_coefficient_):
+        r"""SetElementCoefficientFunction(KellyErrorEstimator self, mfem::KellyErrorEstimator::ElementCoefficientFunction compute_element_coefficient_)"""
+        return _estimators.KellyErrorEstimator_SetElementCoefficientFunction(self, compute_element_coefficient_)
+    SetElementCoefficientFunction = _swig_new_instance_method(_estimators.KellyErrorEstimator_SetElementCoefficientFunction)
+
+    def SetFaceCoefficientFunction(self, compute_face_coefficient_):
+        r"""SetFaceCoefficientFunction(KellyErrorEstimator self, mfem::KellyErrorEstimator::FaceCoefficientFunction compute_face_coefficient_)"""
+        return _estimators.KellyErrorEstimator_SetFaceCoefficientFunction(self, compute_face_coefficient_)
+    SetFaceCoefficientFunction = _swig_new_instance_method(_estimators.KellyErrorEstimator_SetFaceCoefficientFunction)
+
+    def ResetCoefficientFunctions(self):
+        r"""ResetCoefficientFunctions(KellyErrorEstimator self)"""
+        return _estimators.KellyErrorEstimator_ResetCoefficientFunctions(self)
+    ResetCoefficientFunctions = _swig_new_instance_method(_estimators.KellyErrorEstimator_ResetCoefficientFunctions)
+
+# Register KellyErrorEstimator in _estimators:
+_estimators.KellyErrorEstimator_swigregister(KellyErrorEstimator)
 
 
 

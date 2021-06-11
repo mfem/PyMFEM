@@ -4586,6 +4586,57 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_GroupTopology_Swap(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::GroupTopology *arg1 = (mfem::GroupTopology *) 0 ;
+  mfem::GroupTopology *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"other",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GroupTopology_Swap", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_Swap" "', argument " "1"" of type '" "mfem::GroupTopology *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__GroupTopology,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroupTopology_Swap" "', argument " "2"" of type '" "mfem::GroupTopology &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroupTopology_Swap" "', argument " "2"" of type '" "mfem::GroupTopology &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::GroupTopology * >(argp2);
+  {
+    try {
+      (arg1)->Swap(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_GroupTopology(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::GroupTopology *arg1 = (mfem::GroupTopology *) 0 ;
@@ -5809,6 +5860,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "GroupTopology_GetGroup", (PyCFunction)(void(*)(void))_wrap_GroupTopology_GetGroup, METH_VARARGS|METH_KEYWORDS, "GroupTopology_GetGroup(GroupTopology self, int g) -> int const *"},
 	 { "GroupTopology_Load", (PyCFunction)(void(*)(void))_wrap_GroupTopology_Load, METH_VARARGS|METH_KEYWORDS, "GroupTopology_Load(GroupTopology self, std::istream & _in)"},
 	 { "GroupTopology_Copy", (PyCFunction)(void(*)(void))_wrap_GroupTopology_Copy, METH_VARARGS|METH_KEYWORDS, "GroupTopology_Copy(GroupTopology self, GroupTopology copy)"},
+	 { "GroupTopology_Swap", (PyCFunction)(void(*)(void))_wrap_GroupTopology_Swap, METH_VARARGS|METH_KEYWORDS, "GroupTopology_Swap(GroupTopology self, GroupTopology other)"},
 	 { "delete_GroupTopology", _wrap_delete_GroupTopology, METH_O, "delete_GroupTopology(GroupTopology self)"},
 	 { "GroupTopology_Save", _wrap_GroupTopology_Save, METH_VARARGS, "\n"
 		"GroupTopology_Save(GroupTopology self, std::ostream & out)\n"
@@ -5877,6 +5929,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "GroupTopology_GetGroup", (PyCFunction)(void(*)(void))_wrap_GroupTopology_GetGroup, METH_VARARGS|METH_KEYWORDS, "GetGroup(GroupTopology self, int g) -> int const *"},
 	 { "GroupTopology_Load", (PyCFunction)(void(*)(void))_wrap_GroupTopology_Load, METH_VARARGS|METH_KEYWORDS, "Load(GroupTopology self, std::istream & _in)"},
 	 { "GroupTopology_Copy", (PyCFunction)(void(*)(void))_wrap_GroupTopology_Copy, METH_VARARGS|METH_KEYWORDS, "Copy(GroupTopology self, GroupTopology copy)"},
+	 { "GroupTopology_Swap", (PyCFunction)(void(*)(void))_wrap_GroupTopology_Swap, METH_VARARGS|METH_KEYWORDS, "Swap(GroupTopology self, GroupTopology other)"},
 	 { "delete_GroupTopology", _wrap_delete_GroupTopology, METH_O, "delete_GroupTopology(GroupTopology self)"},
 	 { "GroupTopology_Save", _wrap_GroupTopology_Save, METH_VARARGS, "\n"
 		"Save(GroupTopology self, std::ostream & out)\n"
@@ -6706,14 +6759,14 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40200)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.2.0"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40200)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40300)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.3.0"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40300)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40200)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40200)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40200)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40300)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40300)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40300)%100))));
   SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(22000)));
   
   import_array();

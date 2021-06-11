@@ -105,8 +105,9 @@ class HypreParVector(mfem._par.vector.Vector):
 
     def __init__(self, *args):
         r"""
-        __init__(HypreParVector self, MPI_Comm comm, HYPRE_Int glob_size, HYPRE_Int * col) -> HypreParVector
-        __init__(HypreParVector self, MPI_Comm comm, HYPRE_Int glob_size, double * _data) -> HypreParVector
+        __init__(HypreParVector self) -> HypreParVector
+        __init__(HypreParVector self, MPI_Comm comm, HYPRE_BigInt glob_size, HYPRE_BigInt * col) -> HypreParVector
+        __init__(HypreParVector self, MPI_Comm comm, HYPRE_BigInt glob_size, double * data_, HYPRE_BigInt * col) -> HypreParVector
         __init__(HypreParVector self, HypreParVector y) -> HypreParVector
         __init__(HypreParVector self, HypreParMatrix A, int transpose=0) -> HypreParVector
         __init__(HypreParVector self, HYPRE_ParVector y) -> HypreParVector
@@ -138,13 +139,21 @@ class HypreParVector(mfem._par.vector.Vector):
         return _hypre.HypreParVector_GetComm(self)
     GetComm = _swig_new_instance_method(_hypre.HypreParVector_GetComm)
 
-    def Partitioning(self):
-        r"""Partitioning(HypreParVector self) -> HYPRE_Int *"""
-        return _hypre.HypreParVector_Partitioning(self)
+    def WrapHypreParVector(self, y, owner=True):
+        r"""WrapHypreParVector(HypreParVector self, hypre_ParVector * y, bool owner=True)"""
+        return _hypre.HypreParVector_WrapHypreParVector(self, y, owner)
+    WrapHypreParVector = _swig_new_instance_method(_hypre.HypreParVector_WrapHypreParVector)
+
+    def Partitioning(self, *args):
+        r"""
+        Partitioning(HypreParVector self) -> HYPRE_BigInt const
+        Partitioning(HypreParVector self) -> HYPRE_BigInt *
+        """
+        return _hypre.HypreParVector_Partitioning(self, *args)
     Partitioning = _swig_new_instance_method(_hypre.HypreParVector_Partitioning)
 
     def GlobalSize(self):
-        r"""GlobalSize(HypreParVector self) -> HYPRE_Int"""
+        r"""GlobalSize(HypreParVector self) -> HYPRE_BigInt"""
         return _hypre.HypreParVector_GlobalSize(self)
     GlobalSize = _swig_new_instance_method(_hypre.HypreParVector_GlobalSize)
 
@@ -168,9 +177,9 @@ class HypreParVector(mfem._par.vector.Vector):
         return _hypre.HypreParVector_GlobalVector(self)
     GlobalVector = _swig_new_instance_method(_hypre.HypreParVector_GlobalVector)
 
-    def SetData(self, _data):
-        r"""SetData(HypreParVector self, double * _data)"""
-        return _hypre.HypreParVector_SetData(self, _data)
+    def SetData(self, data_):
+        r"""SetData(HypreParVector self, double * data_)"""
+        return _hypre.HypreParVector_SetData(self, data_)
     SetData = _swig_new_instance_method(_hypre.HypreParVector_SetData)
 
     def Randomize(self, seed):
@@ -203,18 +212,23 @@ class HypreParMatrix(mfem._par.operators.Operator):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
+    def WrapHypreParCSRMatrix(self, a, owner=True):
+        r"""WrapHypreParCSRMatrix(HypreParMatrix self, hypre_ParCSRMatrix * a, bool owner=True)"""
+        return _hypre.HypreParMatrix_WrapHypreParCSRMatrix(self, a, owner)
+    WrapHypreParCSRMatrix = _swig_new_instance_method(_hypre.HypreParMatrix_WrapHypreParCSRMatrix)
+
     def __init__(self, *args):
         r"""
         __init__(HypreParMatrix self) -> HypreParMatrix
         __init__(HypreParMatrix self, hypre_ParCSRMatrix * a, bool owner=True) -> HypreParMatrix
-        __init__(HypreParMatrix self, MPI_Comm comm, HYPRE_Int glob_size, HYPRE_Int * row_starts, SparseMatrix diag) -> HypreParMatrix
-        __init__(HypreParMatrix self, MPI_Comm comm, HYPRE_Int global_num_rows, HYPRE_Int global_num_cols, HYPRE_Int * row_starts, HYPRE_Int * col_starts, SparseMatrix diag) -> HypreParMatrix
-        __init__(HypreParMatrix self, MPI_Comm comm, HYPRE_Int global_num_rows, HYPRE_Int global_num_cols, HYPRE_Int * row_starts, HYPRE_Int * col_starts, SparseMatrix diag, SparseMatrix offd, HYPRE_Int * cmap) -> HypreParMatrix
-        __init__(HypreParMatrix self, MPI_Comm comm, HYPRE_Int global_num_rows, HYPRE_Int global_num_cols, HYPRE_Int * row_starts, HYPRE_Int * col_starts, HYPRE_Int * diag_i, HYPRE_Int * diag_j, double * diag_data, HYPRE_Int * offd_i, HYPRE_Int * offd_j, double * offd_data, HYPRE_Int offd_num_cols, HYPRE_Int * offd_col_map) -> HypreParMatrix
-        __init__(HypreParMatrix self, MPI_Comm comm, HYPRE_Int * row_starts, HYPRE_Int * col_starts, SparseMatrix a) -> HypreParMatrix
-        __init__(HypreParMatrix self, MPI_Comm comm, HYPRE_Int global_num_rows, HYPRE_Int global_num_cols, HYPRE_Int * row_starts, HYPRE_Int * col_starts, mfem::Table * diag) -> HypreParMatrix
-        __init__(HypreParMatrix self, MPI_Comm comm, int id, int np, HYPRE_Int * row, HYPRE_Int * col, HYPRE_Int * i_diag, HYPRE_Int * j_diag, HYPRE_Int * i_offd, HYPRE_Int * j_offd, HYPRE_Int * cmap, HYPRE_Int cmap_size) -> HypreParMatrix
-        __init__(HypreParMatrix self, MPI_Comm comm, int nrows, HYPRE_Int glob_nrows, HYPRE_Int glob_ncols, int * I) -> HypreParMatrix
+        __init__(HypreParMatrix self, MPI_Comm comm, HYPRE_BigInt glob_size, HYPRE_BigInt * row_starts, SparseMatrix diag) -> HypreParMatrix
+        __init__(HypreParMatrix self, MPI_Comm comm, HYPRE_BigInt global_num_rows, HYPRE_BigInt global_num_cols, HYPRE_BigInt * row_starts, HYPRE_BigInt * col_starts, SparseMatrix diag) -> HypreParMatrix
+        __init__(HypreParMatrix self, MPI_Comm comm, HYPRE_BigInt global_num_rows, HYPRE_BigInt global_num_cols, HYPRE_BigInt * row_starts, HYPRE_BigInt * col_starts, SparseMatrix diag, SparseMatrix offd, HYPRE_BigInt * cmap) -> HypreParMatrix
+        __init__(HypreParMatrix self, MPI_Comm comm, HYPRE_BigInt global_num_rows, HYPRE_BigInt global_num_cols, HYPRE_BigInt * row_starts, HYPRE_BigInt * col_starts, HYPRE_Int * diag_i, HYPRE_Int * diag_j, double * diag_data, HYPRE_Int * offd_i, HYPRE_Int * offd_j, double * offd_data, HYPRE_Int offd_num_cols, HYPRE_BigInt * offd_col_map) -> HypreParMatrix
+        __init__(HypreParMatrix self, MPI_Comm comm, HYPRE_BigInt * row_starts, HYPRE_BigInt * col_starts, SparseMatrix a) -> HypreParMatrix
+        __init__(HypreParMatrix self, MPI_Comm comm, HYPRE_BigInt global_num_rows, HYPRE_BigInt global_num_cols, HYPRE_BigInt * row_starts, HYPRE_BigInt * col_starts, mfem::Table * diag) -> HypreParMatrix
+        __init__(HypreParMatrix self, MPI_Comm comm, int id, int np, HYPRE_BigInt * row, HYPRE_BigInt * col, HYPRE_Int * i_diag, HYPRE_Int * j_diag, HYPRE_Int * i_offd, HYPRE_Int * j_offd, HYPRE_BigInt * cmap, HYPRE_Int cmap_size) -> HypreParMatrix
+        __init__(HypreParMatrix self, MPI_Comm comm, int nrows, HYPRE_BigInt glob_nrows, HYPRE_BigInt glob_ncols, int * I, HYPRE_BigInt * J, double * data, HYPRE_BigInt * rows, HYPRE_BigInt * cols) -> HypreParMatrix
         __init__(HypreParMatrix self, HypreParMatrix P) -> HypreParMatrix
         """
         _hypre.HypreParMatrix_swiginit(self, _hypre.new_HypreParMatrix(*args))
@@ -265,33 +279,33 @@ class HypreParMatrix(mfem._par.operators.Operator):
     CopyColStarts = _swig_new_instance_method(_hypre.HypreParMatrix_CopyColStarts)
 
     def NNZ(self):
-        r"""NNZ(HypreParMatrix self) -> HYPRE_Int"""
+        r"""NNZ(HypreParMatrix self) -> HYPRE_BigInt"""
         return _hypre.HypreParMatrix_NNZ(self)
     NNZ = _swig_new_instance_method(_hypre.HypreParMatrix_NNZ)
 
     def RowPart(self, *args):
         r"""
-        RowPart(HypreParMatrix self) -> HYPRE_Int
-        RowPart(HypreParMatrix self) -> HYPRE_Int const *
+        RowPart(HypreParMatrix self) -> HYPRE_BigInt
+        RowPart(HypreParMatrix self) -> HYPRE_BigInt const *
         """
         return _hypre.HypreParMatrix_RowPart(self, *args)
     RowPart = _swig_new_instance_method(_hypre.HypreParMatrix_RowPart)
 
     def ColPart(self, *args):
         r"""
-        ColPart(HypreParMatrix self) -> HYPRE_Int
-        ColPart(HypreParMatrix self) -> HYPRE_Int const *
+        ColPart(HypreParMatrix self) -> HYPRE_BigInt
+        ColPart(HypreParMatrix self) -> HYPRE_BigInt const *
         """
         return _hypre.HypreParMatrix_ColPart(self, *args)
     ColPart = _swig_new_instance_method(_hypre.HypreParMatrix_ColPart)
 
     def M(self):
-        r"""M(HypreParMatrix self) -> HYPRE_Int"""
+        r"""M(HypreParMatrix self) -> HYPRE_BigInt"""
         return _hypre.HypreParMatrix_M(self)
     M = _swig_new_instance_method(_hypre.HypreParMatrix_M)
 
     def N(self):
-        r"""N(HypreParMatrix self) -> HYPRE_Int"""
+        r"""N(HypreParMatrix self) -> HYPRE_BigInt"""
         return _hypre.HypreParMatrix_N(self)
     N = _swig_new_instance_method(_hypre.HypreParMatrix_N)
 
@@ -304,9 +318,19 @@ class HypreParMatrix(mfem._par.operators.Operator):
     GetDiag = _swig_new_instance_method(_hypre.HypreParMatrix_GetDiag)
 
     def GetOffd(self, offd, cmap):
-        r"""GetOffd(HypreParMatrix self, SparseMatrix offd, HYPRE_Int *& cmap)"""
+        r"""GetOffd(HypreParMatrix self, SparseMatrix offd, HYPRE_BigInt *& cmap)"""
         return _hypre.HypreParMatrix_GetOffd(self, offd, cmap)
     GetOffd = _swig_new_instance_method(_hypre.HypreParMatrix_GetOffd)
+
+    def MergeDiagAndOffd(self, merged):
+        r"""MergeDiagAndOffd(HypreParMatrix self, SparseMatrix merged)"""
+        return _hypre.HypreParMatrix_MergeDiagAndOffd(self, merged)
+    MergeDiagAndOffd = _swig_new_instance_method(_hypre.HypreParMatrix_MergeDiagAndOffd)
+
+    def AssembleDiagonal(self, diag):
+        r"""AssembleDiagonal(HypreParMatrix self, Vector diag)"""
+        return _hypre.HypreParMatrix_AssembleDiagonal(self, diag)
+    AssembleDiagonal = _swig_new_instance_method(_hypre.HypreParMatrix_AssembleDiagonal)
 
     def GetBlocks(self, blocks, interleaved_rows=False, interleaved_cols=False):
         r"""GetBlocks(HypreParMatrix self, mfem::Array2D< mfem::HypreParMatrix * > & blocks, bool interleaved_rows=False, bool interleaved_cols=False)"""
@@ -317,6 +341,11 @@ class HypreParMatrix(mfem._par.operators.Operator):
         r"""Transpose(HypreParMatrix self) -> HypreParMatrix"""
         return _hypre.HypreParMatrix_Transpose(self)
     Transpose = _swig_new_instance_method(_hypre.HypreParMatrix_Transpose)
+
+    def ExtractSubmatrix(self, indices, threshhold=0.0):
+        r"""ExtractSubmatrix(HypreParMatrix self, intArray indices, double threshhold=0.0) -> HypreParMatrix"""
+        return _hypre.HypreParMatrix_ExtractSubmatrix(self, indices, threshhold)
+    ExtractSubmatrix = _swig_new_instance_method(_hypre.HypreParMatrix_ExtractSubmatrix)
 
     def GetNumRows(self):
         r"""GetNumRows(HypreParMatrix self) -> int"""
@@ -329,22 +358,22 @@ class HypreParMatrix(mfem._par.operators.Operator):
     GetNumCols = _swig_new_instance_method(_hypre.HypreParMatrix_GetNumCols)
 
     def GetGlobalNumRows(self):
-        r"""GetGlobalNumRows(HypreParMatrix self) -> HYPRE_Int"""
+        r"""GetGlobalNumRows(HypreParMatrix self) -> HYPRE_BigInt"""
         return _hypre.HypreParMatrix_GetGlobalNumRows(self)
     GetGlobalNumRows = _swig_new_instance_method(_hypre.HypreParMatrix_GetGlobalNumRows)
 
     def GetGlobalNumCols(self):
-        r"""GetGlobalNumCols(HypreParMatrix self) -> HYPRE_Int"""
+        r"""GetGlobalNumCols(HypreParMatrix self) -> HYPRE_BigInt"""
         return _hypre.HypreParMatrix_GetGlobalNumCols(self)
     GetGlobalNumCols = _swig_new_instance_method(_hypre.HypreParMatrix_GetGlobalNumCols)
 
     def GetRowStarts(self):
-        r"""GetRowStarts(HypreParMatrix self) -> HYPRE_Int *"""
+        r"""GetRowStarts(HypreParMatrix self) -> HYPRE_BigInt *"""
         return _hypre.HypreParMatrix_GetRowStarts(self)
     GetRowStarts = _swig_new_instance_method(_hypre.HypreParMatrix_GetRowStarts)
 
     def GetColStarts(self):
-        r"""GetColStarts(HypreParMatrix self) -> HYPRE_Int *"""
+        r"""GetColStarts(HypreParMatrix self) -> HYPRE_BigInt *"""
         return _hypre.HypreParMatrix_GetColStarts(self)
     GetColStarts = _swig_new_instance_method(_hypre.HypreParMatrix_GetColStarts)
 
@@ -398,7 +427,7 @@ class HypreParMatrix(mfem._par.operators.Operator):
     Add = _swig_new_instance_method(_hypre.HypreParMatrix_Add)
 
     def LeftDiagMult(self, D, row_starts=None):
-        r"""LeftDiagMult(HypreParMatrix self, SparseMatrix D, HYPRE_Int * row_starts=None) -> HypreParMatrix"""
+        r"""LeftDiagMult(HypreParMatrix self, SparseMatrix D, HYPRE_BigInt * row_starts=None) -> HypreParMatrix"""
         return _hypre.HypreParMatrix_LeftDiagMult(self, D, row_starts)
     LeftDiagMult = _swig_new_instance_method(_hypre.HypreParMatrix_LeftDiagMult)
 
@@ -427,6 +456,11 @@ class HypreParMatrix(mfem._par.operators.Operator):
         r"""Threshold(HypreParMatrix self, double threshold=0.0)"""
         return _hypre.HypreParMatrix_Threshold(self, threshold)
     Threshold = _swig_new_instance_method(_hypre.HypreParMatrix_Threshold)
+
+    def DropSmallEntries(self, tol):
+        r"""DropSmallEntries(HypreParMatrix self, double tol)"""
+        return _hypre.HypreParMatrix_DropSmallEntries(self, tol)
+    DropSmallEntries = _swig_new_instance_method(_hypre.HypreParMatrix_DropSmallEntries)
 
     def EliminateZeroRows(self):
         r"""EliminateZeroRows(HypreParMatrix self)"""
@@ -465,6 +499,11 @@ class HypreParMatrix(mfem._par.operators.Operator):
         r"""Read_IJMatrix(HypreParMatrix self, MPI_Comm comm, char const * fname)"""
         return _hypre.HypreParMatrix_Read_IJMatrix(self, comm, fname)
     Read_IJMatrix = _swig_new_instance_method(_hypre.HypreParMatrix_Read_IJMatrix)
+
+    def PrintHash(self, out):
+        r"""PrintHash(HypreParMatrix self, std::ostream & out)"""
+        return _hypre.HypreParMatrix_PrintHash(self, out)
+    PrintHash = _swig_new_instance_method(_hypre.HypreParMatrix_PrintHash)
     __swig_destroy__ = _hypre.delete_HypreParMatrix
 
     def GetType(self):
@@ -513,6 +552,17 @@ class HypreParMatrix(mfem._par.operators.Operator):
 # Register HypreParMatrix in _hypre:
 _hypre.HypreParMatrix_swigregister(HypreParMatrix)
 
+BlockInverseScaleJob_MATRIX_ONLY = _hypre.BlockInverseScaleJob_MATRIX_ONLY
+
+BlockInverseScaleJob_RHS_ONLY = _hypre.BlockInverseScaleJob_RHS_ONLY
+
+BlockInverseScaleJob_MATRIX_AND_RHS = _hypre.BlockInverseScaleJob_MATRIX_AND_RHS
+
+
+def BlockInverseScale(A, C, b, d, blocksize, job):
+    r"""BlockInverseScale(HypreParMatrix A, HypreParMatrix C, Vector b, HypreParVector d, int blocksize, mfem::BlockInverseScaleJob job)"""
+    return _hypre.BlockInverseScale(A, C, b, d, blocksize, job)
+BlockInverseScale = _hypre.BlockInverseScale
 
 def ParMult(A, B, own_matrix=False):
     r"""ParMult(HypreParMatrix A, HypreParMatrix B, bool own_matrix=False) -> HypreParMatrix"""
@@ -550,6 +600,8 @@ class HypreSmoother(mfem._par.operators.Solver):
     
     GS = _hypre.HypreSmoother_GS
     
+    OPFS = _hypre.HypreSmoother_OPFS
+    
     Chebyshev = _hypre.HypreSmoother_Chebyshev
     
     Taubin = _hypre.HypreSmoother_Taubin
@@ -560,7 +612,7 @@ class HypreSmoother(mfem._par.operators.Solver):
     def __init__(self, *args):
         r"""
         __init__(HypreSmoother self) -> HypreSmoother
-        __init__(HypreSmoother self, HypreParMatrix _A, int type=l1GS, int relax_times=1, double relax_weight=1.0, double omega=1.0, int poly_order=2, double poly_fraction=.3, int eig_est_cg_iter=10) -> HypreSmoother
+        __init__(HypreSmoother self, HypreParMatrix A_, int type=l1GS, int relax_times=1, double relax_weight=1.0, double omega=1.0, int poly_order=2, double poly_fraction=.3, int eig_est_cg_iter=10) -> HypreSmoother
         """
         _hypre.HypreSmoother_swiginit(self, _hypre.new_HypreSmoother(*args))
 
@@ -604,6 +656,11 @@ class HypreSmoother(mfem._par.operators.Solver):
         return _hypre.HypreSmoother_SetPositiveDiagonal(self, pos)
     SetPositiveDiagonal = _swig_new_instance_method(_hypre.HypreSmoother_SetPositiveDiagonal)
 
+    def SetOperatorSymmetry(self, is_sym):
+        r"""SetOperatorSymmetry(HypreSmoother self, bool is_sym)"""
+        return _hypre.HypreSmoother_SetOperatorSymmetry(self, is_sym)
+    SetOperatorSymmetry = _swig_new_instance_method(_hypre.HypreSmoother_SetOperatorSymmetry)
+
     def SetOperator(self, op):
         r"""SetOperator(HypreSmoother self, Operator op)"""
         return _hypre.HypreSmoother_SetOperator(self, op)
@@ -616,6 +673,11 @@ class HypreSmoother(mfem._par.operators.Solver):
         """
         return _hypre.HypreSmoother_Mult(self, *args)
     Mult = _swig_new_instance_method(_hypre.HypreSmoother_Mult)
+
+    def MultTranspose(self, b, x):
+        r"""MultTranspose(HypreSmoother self, Vector b, Vector x)"""
+        return _hypre.HypreSmoother_MultTranspose(self, b, x)
+    MultTranspose = _swig_new_instance_method(_hypre.HypreSmoother_MultTranspose)
     __swig_destroy__ = _hypre.delete_HypreSmoother
 
 # Register HypreSmoother in _hypre:
@@ -668,6 +730,41 @@ class HypreSolver(mfem._par.operators.Solver):
 # Register HypreSolver in _hypre:
 _hypre.HypreSolver_swigregister(HypreSolver)
 
+class HypreTriSolve(HypreSolver):
+    r"""Proxy of C++ mfem::HypreTriSolve class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        r"""
+        __init__(HypreTriSolve self) -> HypreTriSolve
+        __init__(HypreTriSolve self, HypreParMatrix A) -> HypreTriSolve
+        """
+        _hypre.HypreTriSolve_swiginit(self, _hypre.new_HypreTriSolve(*args))
+
+    def SetupFcn(self):
+        r"""SetupFcn(HypreTriSolve self) -> HYPRE_PtrToParSolverFcn"""
+        return _hypre.HypreTriSolve_SetupFcn(self)
+    SetupFcn = _swig_new_instance_method(_hypre.HypreTriSolve_SetupFcn)
+
+    def SolveFcn(self):
+        r"""SolveFcn(HypreTriSolve self) -> HYPRE_PtrToParSolverFcn"""
+        return _hypre.HypreTriSolve_SolveFcn(self)
+    SolveFcn = _swig_new_instance_method(_hypre.HypreTriSolve_SolveFcn)
+
+    def GetData(self, *args):
+        r"""
+        GetData(HypreTriSolve self) -> HypreParMatrix
+        GetData(HypreTriSolve self) -> HypreParMatrix
+        """
+        return _hypre.HypreTriSolve_GetData(self, *args)
+    GetData = _swig_new_instance_method(_hypre.HypreTriSolve_GetData)
+    __swig_destroy__ = _hypre.delete_HypreTriSolve
+
+# Register HypreTriSolve in _hypre:
+_hypre.HypreTriSolve_swigregister(HypreTriSolve)
+
 class HyprePCG(HypreSolver):
     r"""Proxy of C++ mfem::HyprePCG class."""
 
@@ -677,7 +774,7 @@ class HyprePCG(HypreSolver):
     def __init__(self, *args):
         r"""
         __init__(HyprePCG self, MPI_Comm comm) -> HyprePCG
-        __init__(HyprePCG self, HypreParMatrix _A) -> HyprePCG
+        __init__(HyprePCG self, HypreParMatrix A_) -> HyprePCG
         """
         _hypre.HyprePCG_swiginit(self, _hypre.new_HyprePCG(*args))
 
@@ -690,6 +787,11 @@ class HyprePCG(HypreSolver):
         r"""SetTol(HyprePCG self, double tol)"""
         return _hypre.HyprePCG_SetTol(self, tol)
     SetTol = _swig_new_instance_method(_hypre.HyprePCG_SetTol)
+
+    def SetAbsTol(self, atol):
+        r"""SetAbsTol(HyprePCG self, double atol)"""
+        return _hypre.HyprePCG_SetAbsTol(self, atol)
+    SetAbsTol = _swig_new_instance_method(_hypre.HyprePCG_SetAbsTol)
 
     def SetMaxIter(self, max_iter):
         r"""SetMaxIter(HyprePCG self, int max_iter)"""
@@ -762,7 +864,7 @@ class HypreGMRES(HypreSolver):
     def __init__(self, *args):
         r"""
         __init__(HypreGMRES self, MPI_Comm comm) -> HypreGMRES
-        __init__(HypreGMRES self, HypreParMatrix _A) -> HypreGMRES
+        __init__(HypreGMRES self, HypreParMatrix A_) -> HypreGMRES
         """
         _hypre.HypreGMRES_swiginit(self, _hypre.new_HypreGMRES(*args))
 
@@ -775,6 +877,11 @@ class HypreGMRES(HypreSolver):
         r"""SetTol(HypreGMRES self, double tol)"""
         return _hypre.HypreGMRES_SetTol(self, tol)
     SetTol = _swig_new_instance_method(_hypre.HypreGMRES_SetTol)
+
+    def SetAbsTol(self, tol):
+        r"""SetAbsTol(HypreGMRES self, double tol)"""
+        return _hypre.HypreGMRES_SetAbsTol(self, tol)
+    SetAbsTol = _swig_new_instance_method(_hypre.HypreGMRES_SetAbsTol)
 
     def SetMaxIter(self, max_iter):
         r"""SetMaxIter(HypreGMRES self, int max_iter)"""
@@ -842,7 +949,7 @@ class HypreFGMRES(HypreSolver):
     def __init__(self, *args):
         r"""
         __init__(HypreFGMRES self, MPI_Comm comm) -> HypreFGMRES
-        __init__(HypreFGMRES self, HypreParMatrix _A) -> HypreFGMRES
+        __init__(HypreFGMRES self, HypreParMatrix A_) -> HypreFGMRES
         """
         _hypre.HypreFGMRES_swiginit(self, _hypre.new_HypreFGMRES(*args))
 
@@ -965,9 +1072,12 @@ class HypreDiagScale(HypreSolver):
         return _hypre.HypreDiagScale_SolveFcn(self)
     SolveFcn = _swig_new_instance_method(_hypre.HypreDiagScale_SolveFcn)
 
-    def GetData(self):
-        r"""GetData(HypreDiagScale self) -> HypreParMatrix"""
-        return _hypre.HypreDiagScale_GetData(self)
+    def GetData(self, *args):
+        r"""
+        GetData(HypreDiagScale self) -> HypreParMatrix
+        GetData(HypreDiagScale self) -> HypreParMatrix
+        """
+        return _hypre.HypreDiagScale_GetData(self, *args)
     GetData = _swig_new_instance_method(_hypre.HypreDiagScale_GetData)
     __swig_destroy__ = _hypre.delete_HypreDiagScale
 
@@ -1110,10 +1220,100 @@ class HypreBoomerAMG(HypreSolver):
         return _hypre.HypreBoomerAMG_SetElasticityOptions(self, fespace)
     SetElasticityOptions = _swig_new_instance_method(_hypre.HypreBoomerAMG_SetElasticityOptions)
 
+    def SetAdvectiveOptions(self, *args, **kwargs):
+        r"""SetAdvectiveOptions(HypreBoomerAMG self, int distance=15, std::string const & prerelax="", std::string const & postrelax="FFC")"""
+        return _hypre.HypreBoomerAMG_SetAdvectiveOptions(self, *args, **kwargs)
+    SetAdvectiveOptions = _swig_new_instance_method(_hypre.HypreBoomerAMG_SetAdvectiveOptions)
+
+    def SetStrongThresholdR(self, strengthR):
+        r"""SetStrongThresholdR(HypreBoomerAMG self, double strengthR)"""
+        return _hypre.HypreBoomerAMG_SetStrongThresholdR(self, strengthR)
+    SetStrongThresholdR = _swig_new_instance_method(_hypre.HypreBoomerAMG_SetStrongThresholdR)
+
+    def SetFilterThresholdR(self, filterR):
+        r"""SetFilterThresholdR(HypreBoomerAMG self, double filterR)"""
+        return _hypre.HypreBoomerAMG_SetFilterThresholdR(self, filterR)
+    SetFilterThresholdR = _swig_new_instance_method(_hypre.HypreBoomerAMG_SetFilterThresholdR)
+
+    def SetRestriction(self, restrict_type):
+        r"""SetRestriction(HypreBoomerAMG self, int restrict_type)"""
+        return _hypre.HypreBoomerAMG_SetRestriction(self, restrict_type)
+    SetRestriction = _swig_new_instance_method(_hypre.HypreBoomerAMG_SetRestriction)
+
+    def SetIsTriangular(self):
+        r"""SetIsTriangular(HypreBoomerAMG self)"""
+        return _hypre.HypreBoomerAMG_SetIsTriangular(self)
+    SetIsTriangular = _swig_new_instance_method(_hypre.HypreBoomerAMG_SetIsTriangular)
+
+    def SetGMRESSwitchR(self, gmres_switch):
+        r"""SetGMRESSwitchR(HypreBoomerAMG self, int gmres_switch)"""
+        return _hypre.HypreBoomerAMG_SetGMRESSwitchR(self, gmres_switch)
+    SetGMRESSwitchR = _swig_new_instance_method(_hypre.HypreBoomerAMG_SetGMRESSwitchR)
+
+    def SetCycleNumSweeps(self, prerelax, postrelax):
+        r"""SetCycleNumSweeps(HypreBoomerAMG self, int prerelax, int postrelax)"""
+        return _hypre.HypreBoomerAMG_SetCycleNumSweeps(self, prerelax, postrelax)
+    SetCycleNumSweeps = _swig_new_instance_method(_hypre.HypreBoomerAMG_SetCycleNumSweeps)
+
     def SetPrintLevel(self, print_level):
         r"""SetPrintLevel(HypreBoomerAMG self, int print_level)"""
         return _hypre.HypreBoomerAMG_SetPrintLevel(self, print_level)
     SetPrintLevel = _swig_new_instance_method(_hypre.HypreBoomerAMG_SetPrintLevel)
+
+    def SetMaxIter(self, max_iter):
+        r"""SetMaxIter(HypreBoomerAMG self, int max_iter)"""
+        return _hypre.HypreBoomerAMG_SetMaxIter(self, max_iter)
+    SetMaxIter = _swig_new_instance_method(_hypre.HypreBoomerAMG_SetMaxIter)
+
+    def SetMaxLevels(self, max_levels):
+        r"""SetMaxLevels(HypreBoomerAMG self, int max_levels)"""
+        return _hypre.HypreBoomerAMG_SetMaxLevels(self, max_levels)
+    SetMaxLevels = _swig_new_instance_method(_hypre.HypreBoomerAMG_SetMaxLevels)
+
+    def SetTol(self, tol):
+        r"""SetTol(HypreBoomerAMG self, double tol)"""
+        return _hypre.HypreBoomerAMG_SetTol(self, tol)
+    SetTol = _swig_new_instance_method(_hypre.HypreBoomerAMG_SetTol)
+
+    def SetStrengthThresh(self, strength):
+        r"""SetStrengthThresh(HypreBoomerAMG self, double strength)"""
+        return _hypre.HypreBoomerAMG_SetStrengthThresh(self, strength)
+    SetStrengthThresh = _swig_new_instance_method(_hypre.HypreBoomerAMG_SetStrengthThresh)
+
+    def SetInterpolation(self, interp_type):
+        r"""SetInterpolation(HypreBoomerAMG self, int interp_type)"""
+        return _hypre.HypreBoomerAMG_SetInterpolation(self, interp_type)
+    SetInterpolation = _swig_new_instance_method(_hypre.HypreBoomerAMG_SetInterpolation)
+
+    def SetCoarsening(self, coarsen_type):
+        r"""SetCoarsening(HypreBoomerAMG self, int coarsen_type)"""
+        return _hypre.HypreBoomerAMG_SetCoarsening(self, coarsen_type)
+    SetCoarsening = _swig_new_instance_method(_hypre.HypreBoomerAMG_SetCoarsening)
+
+    def SetRelaxType(self, relax_type):
+        r"""SetRelaxType(HypreBoomerAMG self, int relax_type)"""
+        return _hypre.HypreBoomerAMG_SetRelaxType(self, relax_type)
+    SetRelaxType = _swig_new_instance_method(_hypre.HypreBoomerAMG_SetRelaxType)
+
+    def SetCycleType(self, cycle_type):
+        r"""SetCycleType(HypreBoomerAMG self, int cycle_type)"""
+        return _hypre.HypreBoomerAMG_SetCycleType(self, cycle_type)
+    SetCycleType = _swig_new_instance_method(_hypre.HypreBoomerAMG_SetCycleType)
+
+    def GetNumIterations(self, num_iterations):
+        r"""GetNumIterations(HypreBoomerAMG self, int & num_iterations)"""
+        return _hypre.HypreBoomerAMG_GetNumIterations(self, num_iterations)
+    GetNumIterations = _swig_new_instance_method(_hypre.HypreBoomerAMG_GetNumIterations)
+
+    def SetNodal(self, blocksize):
+        r"""SetNodal(HypreBoomerAMG self, int blocksize)"""
+        return _hypre.HypreBoomerAMG_SetNodal(self, blocksize)
+    SetNodal = _swig_new_instance_method(_hypre.HypreBoomerAMG_SetNodal)
+
+    def SetAggressiveCoarsening(self, num_levels):
+        r"""SetAggressiveCoarsening(HypreBoomerAMG self, int num_levels)"""
+        return _hypre.HypreBoomerAMG_SetAggressiveCoarsening(self, num_levels)
+    SetAggressiveCoarsening = _swig_new_instance_method(_hypre.HypreBoomerAMG_SetAggressiveCoarsening)
 
     def SetupFcn(self):
         r"""SetupFcn(HypreBoomerAMG self) -> HYPRE_PtrToParSolverFcn"""
@@ -1124,6 +1324,14 @@ class HypreBoomerAMG(HypreSolver):
         r"""SolveFcn(HypreBoomerAMG self) -> HYPRE_PtrToParSolverFcn"""
         return _hypre.HypreBoomerAMG_SolveFcn(self)
     SolveFcn = _swig_new_instance_method(_hypre.HypreBoomerAMG_SolveFcn)
+
+    def Mult(self, *args):
+        r"""
+        Mult(HypreBoomerAMG self, HypreParVector b, HypreParVector x)
+        Mult(HypreBoomerAMG self, Vector b, Vector x)
+        """
+        return _hypre.HypreBoomerAMG_Mult(self, *args)
+    Mult = _swig_new_instance_method(_hypre.HypreBoomerAMG_Mult)
     __swig_destroy__ = _hypre.delete_HypreBoomerAMG
 
 # Register HypreBoomerAMG in _hypre:

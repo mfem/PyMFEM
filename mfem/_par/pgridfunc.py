@@ -257,12 +257,18 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         return _pgridfunc.ParGridFunction_GetVectorValue(self, *args)
     GetVectorValue = _swig_new_instance_method(_pgridfunc.ParGridFunction_GetVectorValue)
 
+    def GetElementDofValues(self, el, dof_vals):
+        r"""GetElementDofValues(ParGridFunction self, int el, Vector dof_vals)"""
+        return _pgridfunc.ParGridFunction_GetElementDofValues(self, el, dof_vals)
+    GetElementDofValues = _swig_new_instance_method(_pgridfunc.ParGridFunction_GetElementDofValues)
+
     def ProjectCoefficient(self, *args):
         r"""
         ProjectCoefficient(ParGridFunction self, Coefficient coeff)
         ProjectCoefficient(ParGridFunction self, Coefficient coeff, intArray dofs, int vd=0)
         ProjectCoefficient(ParGridFunction self, VectorCoefficient vcoeff)
         ProjectCoefficient(ParGridFunction self, VectorCoefficient vcoeff, intArray dofs)
+        ProjectCoefficient(ParGridFunction self, VectorCoefficient vcoeff, int attribute)
         ProjectCoefficient(ParGridFunction self, mfem::Coefficient *[] coeff)
         ProjectCoefficient(ParGridFunction self, Coefficient coeff)
         """
@@ -331,9 +337,9 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         return _pgridfunc.ParGridFunction_ComputeDivError(self, exdiv, irs)
     ComputeDivError = _swig_new_instance_method(_pgridfunc.ParGridFunction_ComputeDivError)
 
-    def ComputeDGFaceJumpError(self, exsol, ell_coeff, Nu, irs=0):
-        r"""ComputeDGFaceJumpError(ParGridFunction self, Coefficient exsol, Coefficient ell_coeff, double Nu, mfem::IntegrationRule const *[] irs=0) -> double"""
-        return _pgridfunc.ParGridFunction_ComputeDGFaceJumpError(self, exsol, ell_coeff, Nu, irs)
+    def ComputeDGFaceJumpError(self, exsol, ell_coeff, jump_scaling, irs=0):
+        r"""ComputeDGFaceJumpError(ParGridFunction self, Coefficient exsol, Coefficient ell_coeff, JumpScaling jump_scaling, mfem::IntegrationRule const *[] irs=0) -> double"""
+        return _pgridfunc.ParGridFunction_ComputeDGFaceJumpError(self, exsol, ell_coeff, jump_scaling, irs)
     ComputeDGFaceJumpError = _swig_new_instance_method(_pgridfunc.ParGridFunction_ComputeDGFaceJumpError)
 
     def ComputeH1Error(self, *args):
@@ -413,6 +419,7 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
     def Save(self, *args):
         r"""
         Save(ParGridFunction self, std::ostream & out)
+        Save(ParGridFunction self, char const * fname, int precision=16)
         Save(ParGridFunction self, char const * file, int precision=8)
         """
         return _pgridfunc.ParGridFunction_Save(self, *args)
@@ -425,6 +432,7 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
 
     def SaveAsOne(self, *args):
         r"""
+        SaveAsOne(ParGridFunction self, char const * fname, int precision=16)
         SaveAsOne(ParGridFunction self, std::ostream & out=out)
         SaveAsOne(ParGridFunction self, char const * file, int precision=8)
         """

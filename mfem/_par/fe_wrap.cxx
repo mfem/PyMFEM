@@ -7425,6 +7425,78 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ScalarFiniteElement_ScalarLocalRestriction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ScalarFiniteElement *arg1 = (mfem::ScalarFiniteElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  mfem::ScalarFiniteElement *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"Trans",  (char *)"R",  (char *)"coarse_fe",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:ScalarFiniteElement_ScalarLocalRestriction", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ScalarFiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ScalarFiniteElement_ScalarLocalRestriction" "', argument " "1"" of type '" "mfem::ScalarFiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ScalarFiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ScalarFiniteElement_ScalarLocalRestriction" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScalarFiniteElement_ScalarLocalRestriction" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ScalarFiniteElement_ScalarLocalRestriction" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScalarFiniteElement_ScalarLocalRestriction" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__ScalarFiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ScalarFiniteElement_ScalarLocalRestriction" "', argument " "4"" of type '" "mfem::ScalarFiniteElement const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScalarFiniteElement_ScalarLocalRestriction" "', argument " "4"" of type '" "mfem::ScalarFiniteElement const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::ScalarFiniteElement * >(argp4);
+  {
+    try {
+      ((mfem::ScalarFiniteElement const *)arg1)->ScalarLocalRestriction(*arg2,*arg3,(mfem::ScalarFiniteElement const &)*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ScalarFiniteElement_GetDofToQuad(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ScalarFiniteElement *arg1 = (mfem::ScalarFiniteElement *) 0 ;
@@ -8217,6 +8289,41 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_NodalFiniteElement_GetLexicographicOrdering(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::NodalFiniteElement *arg1 = (mfem::NodalFiniteElement *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Array< int > *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NodalFiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NodalFiniteElement_GetLexicographicOrdering" "', argument " "1"" of type '" "mfem::NodalFiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NodalFiniteElement * >(argp1);
+  {
+    try {
+      result = (mfem::Array< int > *) &((mfem::NodalFiniteElement const *)arg1)->GetLexicographicOrdering(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_NodalFiniteElement(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::NodalFiniteElement *arg1 = (mfem::NodalFiniteElement *) 0 ;
@@ -8301,6 +8408,66 @@ SWIGINTERN PyObject *_wrap_PositiveFiniteElement_GetLocalInterpolation(PyObject 
   {
     try {
       ((mfem::PositiveFiniteElement const *)arg1)->GetLocalInterpolation(*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PositiveFiniteElement_GetLocalRestriction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::PositiveFiniteElement *arg1 = (mfem::PositiveFiniteElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"Trans",  (char *)"R",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:PositiveFiniteElement_GetLocalRestriction", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PositiveFiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PositiveFiniteElement_GetLocalRestriction" "', argument " "1"" of type '" "mfem::PositiveFiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::PositiveFiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PositiveFiniteElement_GetLocalRestriction" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PositiveFiniteElement_GetLocalRestriction" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "PositiveFiniteElement_GetLocalRestriction" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PositiveFiniteElement_GetLocalRestriction" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::PositiveFiniteElement const *)arg1)->GetLocalRestriction(*arg2,*arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -27437,6 +27604,78 @@ SWIGINTERN PyObject *_wrap_NodalTensorFiniteElement_GetDofToQuad(PyObject *SWIGU
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DofToQuad, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NodalTensorFiniteElement_GetTransferMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::NodalTensorFiniteElement *arg1 = (mfem::NodalTensorFiniteElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"fe",  (char *)"Trans",  (char *)"I",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:NodalTensorFiniteElement_GetTransferMatrix", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NodalTensorFiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NodalTensorFiniteElement_GetTransferMatrix" "', argument " "1"" of type '" "mfem::NodalTensorFiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NodalTensorFiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NodalTensorFiniteElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NodalTensorFiniteElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "NodalTensorFiniteElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NodalTensorFiniteElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "NodalTensorFiniteElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NodalTensorFiniteElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::NodalTensorFiniteElement const *)arg1)->GetTransferMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -47974,6 +48213,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "ScalarFiniteElement_SetMapType", (PyCFunction)(void(*)(void))_wrap_ScalarFiniteElement_SetMapType, METH_VARARGS|METH_KEYWORDS, "ScalarFiniteElement_SetMapType(ScalarFiniteElement self, int M)"},
 	 { "ScalarFiniteElement_NodalLocalInterpolation", (PyCFunction)(void(*)(void))_wrap_ScalarFiniteElement_NodalLocalInterpolation, METH_VARARGS|METH_KEYWORDS, "ScalarFiniteElement_NodalLocalInterpolation(ScalarFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I, ScalarFiniteElement fine_fe)"},
 	 { "ScalarFiniteElement_ScalarLocalInterpolation", (PyCFunction)(void(*)(void))_wrap_ScalarFiniteElement_ScalarLocalInterpolation, METH_VARARGS|METH_KEYWORDS, "ScalarFiniteElement_ScalarLocalInterpolation(ScalarFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I, ScalarFiniteElement fine_fe)"},
+	 { "ScalarFiniteElement_ScalarLocalRestriction", (PyCFunction)(void(*)(void))_wrap_ScalarFiniteElement_ScalarLocalRestriction, METH_VARARGS|METH_KEYWORDS, "ScalarFiniteElement_ScalarLocalRestriction(ScalarFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix R, ScalarFiniteElement coarse_fe)"},
 	 { "ScalarFiniteElement_GetDofToQuad", (PyCFunction)(void(*)(void))_wrap_ScalarFiniteElement_GetDofToQuad, METH_VARARGS|METH_KEYWORDS, "ScalarFiniteElement_GetDofToQuad(ScalarFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"},
 	 { "delete_ScalarFiniteElement", _wrap_delete_ScalarFiniteElement, METH_O, "delete_ScalarFiniteElement(ScalarFiniteElement self)"},
 	 { "ScalarFiniteElement_swigregister", ScalarFiniteElement_swigregister, METH_O, NULL},
@@ -47988,9 +48228,11 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "NodalFiniteElement_ProjectGrad", (PyCFunction)(void(*)(void))_wrap_NodalFiniteElement_ProjectGrad, METH_VARARGS|METH_KEYWORDS, "NodalFiniteElement_ProjectGrad(NodalFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"},
 	 { "NodalFiniteElement_ProjectDiv", (PyCFunction)(void(*)(void))_wrap_NodalFiniteElement_ProjectDiv, METH_VARARGS|METH_KEYWORDS, "NodalFiniteElement_ProjectDiv(NodalFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix div)"},
+	 { "NodalFiniteElement_GetLexicographicOrdering", _wrap_NodalFiniteElement_GetLexicographicOrdering, METH_O, "NodalFiniteElement_GetLexicographicOrdering(NodalFiniteElement self) -> intArray"},
 	 { "delete_NodalFiniteElement", _wrap_delete_NodalFiniteElement, METH_O, "delete_NodalFiniteElement(NodalFiniteElement self)"},
 	 { "NodalFiniteElement_swigregister", NodalFiniteElement_swigregister, METH_O, NULL},
 	 { "PositiveFiniteElement_GetLocalInterpolation", (PyCFunction)(void(*)(void))_wrap_PositiveFiniteElement_GetLocalInterpolation, METH_VARARGS|METH_KEYWORDS, "PositiveFiniteElement_GetLocalInterpolation(PositiveFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "PositiveFiniteElement_GetLocalRestriction", (PyCFunction)(void(*)(void))_wrap_PositiveFiniteElement_GetLocalRestriction, METH_VARARGS|METH_KEYWORDS, "PositiveFiniteElement_GetLocalRestriction(PositiveFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"},
 	 { "PositiveFiniteElement_GetTransferMatrix", (PyCFunction)(void(*)(void))_wrap_PositiveFiniteElement_GetTransferMatrix, METH_VARARGS|METH_KEYWORDS, "PositiveFiniteElement_GetTransferMatrix(PositiveFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
 	 { "PositiveFiniteElement_Project", _wrap_PositiveFiniteElement_Project, METH_VARARGS, "\n"
 		"PositiveFiniteElement_Project(PositiveFiniteElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
@@ -48476,6 +48718,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "TensorBasisElement_swigregister", TensorBasisElement_swigregister, METH_O, NULL},
 	 { "TensorBasisElement_swiginit", TensorBasisElement_swiginit, METH_VARARGS, NULL},
 	 { "NodalTensorFiniteElement_GetDofToQuad", (PyCFunction)(void(*)(void))_wrap_NodalTensorFiniteElement_GetDofToQuad, METH_VARARGS|METH_KEYWORDS, "NodalTensorFiniteElement_GetDofToQuad(NodalTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"},
+	 { "NodalTensorFiniteElement_GetTransferMatrix", (PyCFunction)(void(*)(void))_wrap_NodalTensorFiniteElement_GetTransferMatrix, METH_VARARGS|METH_KEYWORDS, "NodalTensorFiniteElement_GetTransferMatrix(NodalTensorFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
 	 { "delete_NodalTensorFiniteElement", _wrap_delete_NodalTensorFiniteElement, METH_O, "delete_NodalTensorFiniteElement(NodalTensorFiniteElement self)"},
 	 { "NodalTensorFiniteElement_swigregister", NodalTensorFiniteElement_swigregister, METH_O, NULL},
 	 { "PositiveTensorFiniteElement_GetDofToQuad", (PyCFunction)(void(*)(void))_wrap_PositiveTensorFiniteElement_GetDofToQuad, METH_VARARGS|METH_KEYWORDS, "PositiveTensorFiniteElement_GetDofToQuad(PositiveTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"},
@@ -49034,6 +49277,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ScalarFiniteElement_SetMapType", (PyCFunction)(void(*)(void))_wrap_ScalarFiniteElement_SetMapType, METH_VARARGS|METH_KEYWORDS, "SetMapType(ScalarFiniteElement self, int M)"},
 	 { "ScalarFiniteElement_NodalLocalInterpolation", (PyCFunction)(void(*)(void))_wrap_ScalarFiniteElement_NodalLocalInterpolation, METH_VARARGS|METH_KEYWORDS, "NodalLocalInterpolation(ScalarFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I, ScalarFiniteElement fine_fe)"},
 	 { "ScalarFiniteElement_ScalarLocalInterpolation", (PyCFunction)(void(*)(void))_wrap_ScalarFiniteElement_ScalarLocalInterpolation, METH_VARARGS|METH_KEYWORDS, "ScalarLocalInterpolation(ScalarFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I, ScalarFiniteElement fine_fe)"},
+	 { "ScalarFiniteElement_ScalarLocalRestriction", (PyCFunction)(void(*)(void))_wrap_ScalarFiniteElement_ScalarLocalRestriction, METH_VARARGS|METH_KEYWORDS, "ScalarLocalRestriction(ScalarFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix R, ScalarFiniteElement coarse_fe)"},
 	 { "ScalarFiniteElement_GetDofToQuad", (PyCFunction)(void(*)(void))_wrap_ScalarFiniteElement_GetDofToQuad, METH_VARARGS|METH_KEYWORDS, "GetDofToQuad(ScalarFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"},
 	 { "delete_ScalarFiniteElement", _wrap_delete_ScalarFiniteElement, METH_O, "delete_ScalarFiniteElement(ScalarFiniteElement self)"},
 	 { "ScalarFiniteElement_swigregister", ScalarFiniteElement_swigregister, METH_O, NULL},
@@ -49048,9 +49292,11 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "NodalFiniteElement_ProjectGrad", (PyCFunction)(void(*)(void))_wrap_NodalFiniteElement_ProjectGrad, METH_VARARGS|METH_KEYWORDS, "ProjectGrad(NodalFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"},
 	 { "NodalFiniteElement_ProjectDiv", (PyCFunction)(void(*)(void))_wrap_NodalFiniteElement_ProjectDiv, METH_VARARGS|METH_KEYWORDS, "ProjectDiv(NodalFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix div)"},
+	 { "NodalFiniteElement_GetLexicographicOrdering", _wrap_NodalFiniteElement_GetLexicographicOrdering, METH_O, "GetLexicographicOrdering(NodalFiniteElement self) -> intArray"},
 	 { "delete_NodalFiniteElement", _wrap_delete_NodalFiniteElement, METH_O, "delete_NodalFiniteElement(NodalFiniteElement self)"},
 	 { "NodalFiniteElement_swigregister", NodalFiniteElement_swigregister, METH_O, NULL},
 	 { "PositiveFiniteElement_GetLocalInterpolation", (PyCFunction)(void(*)(void))_wrap_PositiveFiniteElement_GetLocalInterpolation, METH_VARARGS|METH_KEYWORDS, "GetLocalInterpolation(PositiveFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "PositiveFiniteElement_GetLocalRestriction", (PyCFunction)(void(*)(void))_wrap_PositiveFiniteElement_GetLocalRestriction, METH_VARARGS|METH_KEYWORDS, "GetLocalRestriction(PositiveFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"},
 	 { "PositiveFiniteElement_GetTransferMatrix", (PyCFunction)(void(*)(void))_wrap_PositiveFiniteElement_GetTransferMatrix, METH_VARARGS|METH_KEYWORDS, "GetTransferMatrix(PositiveFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
 	 { "PositiveFiniteElement_Project", _wrap_PositiveFiniteElement_Project, METH_VARARGS, "\n"
 		"Project(PositiveFiniteElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
@@ -49536,6 +49782,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "TensorBasisElement_swigregister", TensorBasisElement_swigregister, METH_O, NULL},
 	 { "TensorBasisElement_swiginit", TensorBasisElement_swiginit, METH_VARARGS, NULL},
 	 { "NodalTensorFiniteElement_GetDofToQuad", (PyCFunction)(void(*)(void))_wrap_NodalTensorFiniteElement_GetDofToQuad, METH_VARARGS|METH_KEYWORDS, "GetDofToQuad(NodalTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"},
+	 { "NodalTensorFiniteElement_GetTransferMatrix", (PyCFunction)(void(*)(void))_wrap_NodalTensorFiniteElement_GetTransferMatrix, METH_VARARGS|METH_KEYWORDS, "GetTransferMatrix(NodalTensorFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
 	 { "delete_NodalTensorFiniteElement", _wrap_delete_NodalTensorFiniteElement, METH_O, "delete_NodalTensorFiniteElement(NodalTensorFiniteElement self)"},
 	 { "NodalTensorFiniteElement_swigregister", NodalTensorFiniteElement_swigregister, METH_O, NULL},
 	 { "PositiveTensorFiniteElement_GetDofToQuad", (PyCFunction)(void(*)(void))_wrap_PositiveTensorFiniteElement_GetDofToQuad, METH_VARARGS|METH_KEYWORDS, "GetDofToQuad(PositiveTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"},
@@ -52165,6 +52412,7 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "BasisType_OpenHalfUniform",SWIG_From_int(static_cast< int >(mfem::BasisType::OpenHalfUniform)));
   SWIG_Python_SetConstant(d, "BasisType_Serendipity",SWIG_From_int(static_cast< int >(mfem::BasisType::Serendipity)));
   SWIG_Python_SetConstant(d, "BasisType_ClosedGL",SWIG_From_int(static_cast< int >(mfem::BasisType::ClosedGL)));
+  SWIG_Python_SetConstant(d, "BasisType_IntegratedGLL",SWIG_From_int(static_cast< int >(mfem::BasisType::IntegratedGLL)));
   SWIG_Python_SetConstant(d, "BasisType_NumBasisTypes",SWIG_From_int(static_cast< int >(mfem::BasisType::NumBasisTypes)));
   SWIG_Python_SetConstant(d, "DofToQuad_FULL",SWIG_From_int(static_cast< int >(mfem::DofToQuad::FULL)));
   SWIG_Python_SetConstant(d, "DofToQuad_TENSOR",SWIG_From_int(static_cast< int >(mfem::DofToQuad::TENSOR)));
@@ -52184,6 +52432,7 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "Poly_1D_ChangeOfBasis",SWIG_From_int(static_cast< int >(mfem::Poly_1D::ChangeOfBasis)));
   SWIG_Python_SetConstant(d, "Poly_1D_Barycentric",SWIG_From_int(static_cast< int >(mfem::Poly_1D::Barycentric)));
   SWIG_Python_SetConstant(d, "Poly_1D_Positive",SWIG_From_int(static_cast< int >(mfem::Poly_1D::Positive)));
+  SWIG_Python_SetConstant(d, "Poly_1D_Integrated",SWIG_From_int(static_cast< int >(mfem::Poly_1D::Integrated)));
   SWIG_Python_SetConstant(d, "Poly_1D_NumEvalTypes",SWIG_From_int(static_cast< int >(mfem::Poly_1D::NumEvalTypes)));
   SWIG_Python_SetConstant(d, "TensorBasisElement_L2_DOF_MAP",SWIG_From_int(static_cast< int >(mfem::TensorBasisElement::L2_DOF_MAP)));
   SWIG_Python_SetConstant(d, "TensorBasisElement_H1_DOF_MAP",SWIG_From_int(static_cast< int >(mfem::TensorBasisElement::H1_DOF_MAP)));
