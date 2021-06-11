@@ -336,7 +336,6 @@ def CartesianPartitioning(self, nxyz, return_list=False):
 %immutable attributes;
 %immutable bdr_attributes;
 %ignore MesquiteSmooth;
-%ignore mfem::Mesh::Mesh(Mesh *orig_mesh, const Array<int> &ref_factors, int ref_type);
 
 %newobject mfem::Mesh::GetFaceToElementTable;
 %newobject mfem::Mesh::GetVertexToElementTable;
