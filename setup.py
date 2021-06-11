@@ -22,11 +22,6 @@ from setuptools.command.install_lib import install_lib as _install_lib
 from setuptools.command.install_scripts import install_scripts as _install_scripts
 
 try:
-    import numpy
-except ImportError:
-    assert False, "numpy is not found"
-    
-try:
     from setuptools._distutils.command.clean import clean as _clean
 except ImportError:
     from distutils.command.clean import clean as _clean
@@ -41,12 +36,15 @@ except ImportError:
 # from codecs import open
 
 # constants
-repos = {"mfem": "https://github.com/mfem/mfem/archive/v4.2.tar.gz",
-         "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
-         "hypre": "https://github.com/hypre-space/hypre/archive/v2.20.0.tar.gz", }
+repo_releases = {"mfem": "https://github.com/mfem/mfem/archive/v4.2.tar.gz",
+                 "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
+                 "hypre": "https://github.com/hypre-space/hypre/archive/v2.20.0.tar.gz",}
+repos = {"mfem": "git@github.com:mfem/mfem.git", }
 
 rootdir = os.path.abspath(os.path.dirname(__file__))
 extdir = os.path.join(rootdir, 'external')
+if not os.path.exists(extdir):
+    os.mkdir(os.path.join(rootdir, 'external'))
 
 if platform == "linux" or platform == "linux2":
     dylibext = '.so'
@@ -68,6 +66,7 @@ skip_install = False
 run_swig = False
 clean_swig = False
 build_mfem = True
+mfem_branch = None
 build_mfemp = False
 build_metis = False
 build_hypre = False
@@ -263,7 +262,7 @@ def download(xxx):
     if os.path.exists(os.path.join(extdir, xxx)):
         print("Download " + xxx + " skipped. Use clean --all-exts if needed")
         return
-    url = repos[xxx]
+    url = repo_releases[xxx]
     print("Downloading :", url)
 
     ftpstream = request.urlopen(url)
@@ -272,6 +271,23 @@ def download(xxx):
     os.rename(os.path.join(extdir, targz.getnames()[0].split('/')[0]),
               os.path.join(extdir, xxx))
 
+def gitclone(xxx):
+    cwd = os.getcwd()
+    repo_xxx = os.path.join(extdir, xxx)
+    if os.path.exists(repo_xxx):
+        print("Deleting the existing " + xxx)
+        shutil.rmtree(repo_xxx)
+          
+    os.chdir(extdir)
+    command = ['git', 'clone', repos[xxx]]
+    make_call(command)
+        
+    if not os.path.exists(repo_xxx):
+        print(repo_xxx + " does not exist. Check if git clone worked")
+    os.chdir(repo_xxx)
+    command = ['git', 'checkout',  mfem_branch]
+    make_call(command)
+    os.chdir(cwd)
 
 def cmake(path, **kwargs):
     '''
@@ -675,6 +691,7 @@ def configure_install(self):
     global prefix, dry_run, verbose
     global clean_swig, run_swig, swig_only, skip_install
     global build_mfem, build_mfemp, build_parallel, build_serial
+    global mfem_branch
     global build_metis, build_hypre
     global mfems_prefix, mfemp_prefix, metis_prefix, hypre_prefix
     global cc_command, cxx_command, mpicc_command, mpicxx_command
@@ -746,6 +763,9 @@ def configure_install(self):
         mfem_prefix = os.path.join(prefix, 'mfem')
         mfems_prefix = os.path.join(prefix, 'mfem', 'ser')
         mfemp_prefix = os.path.join(prefix, 'mfem', 'par')
+
+    if self.mfem_branch != '': 
+        mfem_branch = self.mfem_branch
 
     if self.hypre_prefix != '':
         check = find_libpath_from_prefix('HYPRE', self.hypre_prefix)
@@ -843,6 +863,8 @@ class Install(_install):
          'libmfem.so must exits under <mfems-prefix>/lib. ',
          'Need to use it with mfem-prefix'),
         ('mfem-prefix-no-swig', None, 'skip running swig when mfem-prefix is chosen'),
+        ('mfem-branch=', None, 'Specify branch of mfem' +
+         'MFEM is cloned and built using the specfied branch '),
         ('hypre-prefix=', None, 'Specify locaiton of hypre' +
          'libHYPRE.so must exits under <hypre-prefix>/lib'),
         ('metis-prefix=', None, 'Specify locaiton of metis' +
@@ -875,6 +897,7 @@ class Install(_install):
         self.mfems_prefix = ''
         self.mfemp_prefix = ''
         self.mfem_prefix_no_swig = ''
+        self.mfem_branch = ''
         self.metis_prefix = ''
         self.hypre_prefix = ''
 
@@ -938,13 +961,13 @@ class BuildPy(_build_py):
                 cmake_make_hypre()
             mfem_downloaded = False
             if build_mfem:
-                download('mfem')
+                download('mfem') if mfem_branch is None else gitclone('mfem')
                 mfem_downloaded = True
                 cmake_make_mfem(serial=True)
 
             if build_mfemp:
                 if not mfem_downloaded:
-                    download('mfem')
+                    download('mfem') if mfem_branch is None else gitclone('mfem')       
                 cmake_make_mfem(serial=False)
 
         if clean_swig:
