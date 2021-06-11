@@ -40,6 +40,8 @@ $ python3 setup.py clean --all-externals
 * choosing compiler
 $ python setup.py install --parallel --CC=xxx, --CXX=xxx, --MPICC=xxx, --MPICXX=xxx
 
+* build with a specific mfem branch
+$ python setup.py install --mfem-branch="mfem-4.3-dev"
 
 * cuda
 $ python3 setup.py install  --prefix=~/sandbox  --verbose --with-cuda
