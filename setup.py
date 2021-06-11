@@ -593,6 +593,8 @@ def generate_wrapper():
     import mpi4py
     parflag = ['-I' + os.path.join(mfempar, 'include'),
                '-I' + os.path.join(mfempar, 'include', 'mfem'),
+               '-I' + os.path.join(hypre_prefix, 'include'),
+               '-I' + os.path.join(metis_prefix, 'include'),               
                '-I' + mpi4py.get_include()]
 
     if enable_pumi:
@@ -677,6 +679,9 @@ def print_config():
     print(" call swig wrapper : " + ("Yes" if run_swig else "No"))
     print(" build serial wrapper: " + ("Yes" if build_serial else "No"))
     print(" build parallel wrapper : " + ("Yes" if build_parallel else "No"))
+
+    print(" hypre prefix", hypre_prefix)
+    print(" metis prefix", metis_prefix)    
     print(" c compiler : " + cc_command)
     print(" c++ compiler : " + cxx_command)
     print(" mpi-c compiler : " + mpicc_command)

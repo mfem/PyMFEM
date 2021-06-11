@@ -10,9 +10,10 @@
 #include "fem/pfespace.hpp"    
 #include "config/config.hpp"        
 #include "linalg/hypre.hpp"
+#include "linalg/hypre_parcsr.hpp"  
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
-#include "../common/io_stream.hpp"    
+#include "../common/io_stream.hpp"
 %}
 
 %include "../common/mfem_config.i"
@@ -41,6 +42,7 @@ OSTREAM_TYPEMAP(std::ostream&)
 %ignore DiscreteGrad;
 
 %import "../common/hypre_int.i"
+
 
 %inline %{
 int sizeof_HYPRE_Int(){

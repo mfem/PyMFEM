@@ -3099,16 +3099,16 @@ namespace Swig {
 
 #define SWIGTYPE_p_CommGroup swig_types[0]
 #define SWIGTYPE_p_GroupId swig_types[1]
-#define SWIGTYPE_p_HYPRE_BigInt swig_types[2]
-#define SWIGTYPE_p_MPI_Comm swig_types[3]
-#define SWIGTYPE_p_PyMFEM__wFILE swig_types[4]
-#define SWIGTYPE_p_RefCoord swig_types[5]
-#define SWIGTYPE_p_char swig_types[6]
-#define SWIGTYPE_p_double swig_types[7]
-#define SWIGTYPE_p_hex_t swig_types[8]
-#define SWIGTYPE_p_int swig_types[9]
-#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[10]
-#define SWIGTYPE_p_mfem__ArrayT_HYPRE_BigInt_t swig_types[11]
+#define SWIGTYPE_p_MPI_Comm swig_types[2]
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[3]
+#define SWIGTYPE_p_RefCoord swig_types[4]
+#define SWIGTYPE_p__HYPRE_ExecutionPolicy swig_types[5]
+#define SWIGTYPE_p__HYPRE_MemoryLocation swig_types[6]
+#define SWIGTYPE_p_char swig_types[7]
+#define SWIGTYPE_p_double swig_types[8]
+#define SWIGTYPE_p_hex_t swig_types[9]
+#define SWIGTYPE_p_int swig_types[10]
+#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[11]
 #define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[12]
 #define SWIGTYPE_p_mfem__BiCubic2DFiniteElement swig_types[13]
 #define SWIGTYPE_p_mfem__BiCubic3DFiniteElement swig_types[14]
@@ -3842,7 +3842,7 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_face_nbr_glob_dof_map_get(PyObj
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
   result = (mfem::Array< HYPRE_BigInt > *)& ((arg1)->face_nbr_glob_dof_map);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_HYPRE_BigInt_t, 0 |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -4590,7 +4590,7 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetDofOffsets(PyObject *SWIGUNU
     //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
     //    catch (std::exception &e) { SWIG_fail; }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_HYPRE_BigInt, 0 |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -4625,7 +4625,7 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetTrueDofOffsets(PyObject *SWI
     //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
     //    catch (std::exception &e) { SWIG_fail; }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_HYPRE_BigInt, 0 |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -4649,7 +4649,7 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GlobalVSize(PyObject *SWIGUNUSE
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
   {
     try {
-      result = ((mfem::ParFiniteElementSpace const *)arg1)->GlobalVSize(); 
+      result = (HYPRE_BigInt)((mfem::ParFiniteElementSpace const *)arg1)->GlobalVSize(); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -4660,7 +4660,7 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GlobalVSize(PyObject *SWIGUNUSE
     //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
     //    catch (std::exception &e) { SWIG_fail; }    
   }
-  resultobj = SWIG_NewPointerObj((new HYPRE_BigInt(static_cast< const HYPRE_BigInt& >(result))), SWIGTYPE_p_HYPRE_BigInt, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
   return NULL;
@@ -4684,7 +4684,7 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GlobalTrueVSize(PyObject *SWIGU
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
   {
     try {
-      result = ((mfem::ParFiniteElementSpace const *)arg1)->GlobalTrueVSize(); 
+      result = (HYPRE_BigInt)((mfem::ParFiniteElementSpace const *)arg1)->GlobalTrueVSize(); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -4695,7 +4695,7 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GlobalTrueVSize(PyObject *SWIGU
     //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
     //    catch (std::exception &e) { SWIG_fail; }    
   }
-  resultobj = SWIG_NewPointerObj((new HYPRE_BigInt(static_cast< const HYPRE_BigInt& >(result))), SWIGTYPE_p_HYPRE_BigInt, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
   return NULL;
@@ -5774,7 +5774,7 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetGlobalTDofNumber(PyObject *S
   }
   {
     try {
-      result = ((mfem::ParFiniteElementSpace const *)arg1)->GetGlobalTDofNumber(arg2); 
+      result = (HYPRE_BigInt)((mfem::ParFiniteElementSpace const *)arg1)->GetGlobalTDofNumber(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -5785,7 +5785,7 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetGlobalTDofNumber(PyObject *S
     //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
     //    catch (std::exception &e) { SWIG_fail; }    
   }
-  resultobj = SWIG_NewPointerObj((new HYPRE_BigInt(static_cast< const HYPRE_BigInt& >(result))), SWIGTYPE_p_HYPRE_BigInt, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
   return NULL;
@@ -5819,7 +5819,7 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetGlobalScalarTDofNumber(PyObj
   }
   {
     try {
-      result = (arg1)->GetGlobalScalarTDofNumber(arg2); 
+      result = (HYPRE_BigInt)(arg1)->GetGlobalScalarTDofNumber(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -5830,7 +5830,7 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetGlobalScalarTDofNumber(PyObj
     //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
     //    catch (std::exception &e) { SWIG_fail; }    
   }
-  resultobj = SWIG_NewPointerObj((new HYPRE_BigInt(static_cast< const HYPRE_BigInt& >(result))), SWIGTYPE_p_HYPRE_BigInt, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
   return NULL;
@@ -5854,7 +5854,7 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetMyDofOffset(PyObject *SWIGUN
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
   {
     try {
-      result = ((mfem::ParFiniteElementSpace const *)arg1)->GetMyDofOffset(); 
+      result = (HYPRE_BigInt)((mfem::ParFiniteElementSpace const *)arg1)->GetMyDofOffset(); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -5865,7 +5865,7 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetMyDofOffset(PyObject *SWIGUN
     //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
     //    catch (std::exception &e) { SWIG_fail; }    
   }
-  resultobj = SWIG_NewPointerObj((new HYPRE_BigInt(static_cast< const HYPRE_BigInt& >(result))), SWIGTYPE_p_HYPRE_BigInt, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
   return NULL;
@@ -5889,7 +5889,7 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetMyTDofOffset(PyObject *SWIGU
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
   {
     try {
-      result = ((mfem::ParFiniteElementSpace const *)arg1)->GetMyTDofOffset(); 
+      result = (HYPRE_BigInt)((mfem::ParFiniteElementSpace const *)arg1)->GetMyTDofOffset(); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -5900,7 +5900,7 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetMyTDofOffset(PyObject *SWIGU
     //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
     //    catch (std::exception &e) { SWIG_fail; }    
   }
-  resultobj = SWIG_NewPointerObj((new HYPRE_BigInt(static_cast< const HYPRE_BigInt& >(result))), SWIGTYPE_p_HYPRE_BigInt, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
   return NULL;
@@ -6346,7 +6346,7 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetFaceNbrGlobalDofMap(PyObject
     //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
     //    catch (std::exception &e) { SWIG_fail; }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_HYPRE_BigInt, 0 |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7517,7 +7517,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "ParFiniteElementSpace_face_nbr_element_dof_get", _wrap_ParFiniteElementSpace_face_nbr_element_dof_get, METH_O, "ParFiniteElementSpace_face_nbr_element_dof_get(ParFiniteElementSpace self) -> Table"},
 	 { "ParFiniteElementSpace_face_nbr_ldof_set", _wrap_ParFiniteElementSpace_face_nbr_ldof_set, METH_VARARGS, "ParFiniteElementSpace_face_nbr_ldof_set(ParFiniteElementSpace self, Table face_nbr_ldof)"},
 	 { "ParFiniteElementSpace_face_nbr_ldof_get", _wrap_ParFiniteElementSpace_face_nbr_ldof_get, METH_O, "ParFiniteElementSpace_face_nbr_ldof_get(ParFiniteElementSpace self) -> Table"},
-	 { "ParFiniteElementSpace_face_nbr_glob_dof_map_get", _wrap_ParFiniteElementSpace_face_nbr_glob_dof_map_get, METH_O, "ParFiniteElementSpace_face_nbr_glob_dof_map_get(ParFiniteElementSpace self) -> mfem::Array< HYPRE_BigInt > *"},
+	 { "ParFiniteElementSpace_face_nbr_glob_dof_map_get", _wrap_ParFiniteElementSpace_face_nbr_glob_dof_map_get, METH_O, "ParFiniteElementSpace_face_nbr_glob_dof_map_get(ParFiniteElementSpace self) -> intArray"},
 	 { "ParFiniteElementSpace_send_face_nbr_ldof_set", _wrap_ParFiniteElementSpace_send_face_nbr_ldof_set, METH_VARARGS, "ParFiniteElementSpace_send_face_nbr_ldof_set(ParFiniteElementSpace self, Table send_face_nbr_ldof)"},
 	 { "ParFiniteElementSpace_send_face_nbr_ldof_get", _wrap_ParFiniteElementSpace_send_face_nbr_ldof_get, METH_O, "ParFiniteElementSpace_send_face_nbr_ldof_get(ParFiniteElementSpace self) -> Table"},
 	 { "new_ParFiniteElementSpace", _wrap_new_ParFiniteElementSpace, METH_VARARGS, "\n"
@@ -7618,7 +7618,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ParFiniteElementSpace_face_nbr_element_dof_get", _wrap_ParFiniteElementSpace_face_nbr_element_dof_get, METH_O, "ParFiniteElementSpace_face_nbr_element_dof_get(ParFiniteElementSpace self) -> Table"},
 	 { "ParFiniteElementSpace_face_nbr_ldof_set", _wrap_ParFiniteElementSpace_face_nbr_ldof_set, METH_VARARGS, "ParFiniteElementSpace_face_nbr_ldof_set(ParFiniteElementSpace self, Table face_nbr_ldof)"},
 	 { "ParFiniteElementSpace_face_nbr_ldof_get", _wrap_ParFiniteElementSpace_face_nbr_ldof_get, METH_O, "ParFiniteElementSpace_face_nbr_ldof_get(ParFiniteElementSpace self) -> Table"},
-	 { "ParFiniteElementSpace_face_nbr_glob_dof_map_get", _wrap_ParFiniteElementSpace_face_nbr_glob_dof_map_get, METH_O, "ParFiniteElementSpace_face_nbr_glob_dof_map_get(ParFiniteElementSpace self) -> mfem::Array< HYPRE_BigInt > *"},
+	 { "ParFiniteElementSpace_face_nbr_glob_dof_map_get", _wrap_ParFiniteElementSpace_face_nbr_glob_dof_map_get, METH_O, "ParFiniteElementSpace_face_nbr_glob_dof_map_get(ParFiniteElementSpace self) -> intArray"},
 	 { "ParFiniteElementSpace_send_face_nbr_ldof_set", _wrap_ParFiniteElementSpace_send_face_nbr_ldof_set, METH_VARARGS, "ParFiniteElementSpace_send_face_nbr_ldof_set(ParFiniteElementSpace self, Table send_face_nbr_ldof)"},
 	 { "ParFiniteElementSpace_send_face_nbr_ldof_get", _wrap_ParFiniteElementSpace_send_face_nbr_ldof_get, METH_O, "ParFiniteElementSpace_send_face_nbr_ldof_get(ParFiniteElementSpace self) -> Table"},
 	 { "new_ParFiniteElementSpace", _wrap_new_ParFiniteElementSpace, METH_VARARGS, "\n"
@@ -8270,16 +8270,16 @@ static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(n
 }
 static swig_type_info _swigt__p_CommGroup = {"_p_CommGroup", "CommGroup *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_GroupId = {"_p_GroupId", "GroupId *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_HYPRE_BigInt = {"_p_HYPRE_BigInt", "HYPRE_BigInt *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p__HYPRE_ExecutionPolicy = {"_p__HYPRE_ExecutionPolicy", "enum _HYPRE_ExecutionPolicy *|HYPRE_ExecutionPolicy *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p__HYPRE_MemoryLocation = {"_p__HYPRE_MemoryLocation", "enum _HYPRE_MemoryLocation *|HYPRE_MemoryLocation *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_double = {"_p_double", "HYPRE_Real *|HYPRE_Complex *|double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__ArrayT_HYPRE_BigInt_t = {"_p_mfem__ArrayT_HYPRE_BigInt_t", "mfem::Array< HYPRE_BigInt > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *|HYPRE_BigInt *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *|mfem::Array< HYPRE_BigInt > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ConformingProlongationOperator = {"_p_mfem__ConformingProlongationOperator", "mfem::ConformingProlongationOperator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ConvectionIntegrator = {"_p_mfem__ConvectionIntegrator", "mfem::ConvectionIntegrator *|mfem::NonconservativeConvectionIntegrator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DGTraceIntegrator = {"_p_mfem__DGTraceIntegrator", "mfem::DGTraceIntegrator *|mfem::ConservativeDGTraceIntegrator *", 0, 0, (void*)0, 0};
@@ -8488,16 +8488,16 @@ static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_CommGroup,
   &_swigt__p_GroupId,
-  &_swigt__p_HYPRE_BigInt,
   &_swigt__p_MPI_Comm,
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_RefCoord,
+  &_swigt__p__HYPRE_ExecutionPolicy,
+  &_swigt__p__HYPRE_MemoryLocation,
   &_swigt__p_char,
   &_swigt__p_double,
   &_swigt__p_hex_t,
   &_swigt__p_int,
   &_swigt__p_mfem__AbstractSparseMatrix,
-  &_swigt__p_mfem__ArrayT_HYPRE_BigInt_t,
   &_swigt__p_mfem__ArrayT_int_t,
   &_swigt__p_mfem__BiCubic2DFiniteElement,
   &_swigt__p_mfem__BiCubic3DFiniteElement,
@@ -8706,15 +8706,15 @@ static swig_type_info *swig_type_initial[] = {
 
 static swig_cast_info _swigc__p_CommGroup[] = {  {&_swigt__p_CommGroup, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_GroupId[] = {  {&_swigt__p_GroupId, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_HYPRE_BigInt[] = {  {&_swigt__p_HYPRE_BigInt, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p__HYPRE_ExecutionPolicy[] = {  {&_swigt__p__HYPRE_ExecutionPolicy, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p__HYPRE_MemoryLocation[] = {  {&_swigt__p__HYPRE_MemoryLocation, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ArrayT_HYPRE_BigInt_t[] = {  {&_swigt__p_mfem__ArrayT_HYPRE_BigInt_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ConformingProlongationOperator[] = {  {&_swigt__p_mfem__ConformingProlongationOperator, 0, 0, 0},  {&_swigt__p_mfem__DeviceConformingProlongationOperator, _p_mfem__DeviceConformingProlongationOperatorTo_p_mfem__ConformingProlongationOperator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ConvectionIntegrator[] = {  {&_swigt__p_mfem__ConvectionIntegrator, 0, 0, 0},{0, 0, 0, 0}};
@@ -8924,16 +8924,16 @@ static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_CommGroup,
   _swigc__p_GroupId,
-  _swigc__p_HYPRE_BigInt,
   _swigc__p_MPI_Comm,
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_RefCoord,
+  _swigc__p__HYPRE_ExecutionPolicy,
+  _swigc__p__HYPRE_MemoryLocation,
   _swigc__p_char,
   _swigc__p_double,
   _swigc__p_hex_t,
   _swigc__p_int,
   _swigc__p_mfem__AbstractSparseMatrix,
-  _swigc__p_mfem__ArrayT_HYPRE_BigInt_t,
   _swigc__p_mfem__ArrayT_int_t,
   _swigc__p_mfem__BiCubic2DFiniteElement,
   _swigc__p_mfem__BiCubic3DFiniteElement,
