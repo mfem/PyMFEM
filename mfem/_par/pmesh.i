@@ -36,6 +36,7 @@ import_array();
  //%import "cpointers.i"
 %import "mesh.i"
 %import "pncmesh.i"
+%import "hypre.i"
 %import "communication.i"
 %import "../common/exception.i"
 

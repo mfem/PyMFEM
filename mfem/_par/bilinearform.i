@@ -29,7 +29,6 @@ import_array();
 %import "gridfunc.i"
 %include "../common/exception_director.i"
 
-%ignore mfem::MixedBilinearForm::AddBoundaryDomainIntegrator;
 %feature("director") mfem::BilinearForm;
 
 namespace mfem { 
