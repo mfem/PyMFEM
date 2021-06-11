@@ -4,7 +4,8 @@
 #include "fem/linearform.hpp"
 #include "fem/bilininteg.hpp"
 #include "pycoefficient.hpp"
-#include "numpy/arrayobject.h"      
+#include "numpy/arrayobject.h"
+using namespace mfem;  
 %}
 
 %init %{

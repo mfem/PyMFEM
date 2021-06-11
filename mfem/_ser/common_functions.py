@@ -102,9 +102,9 @@ Add = _common_functions.Add
 
 def Transpose(*args):
     r"""
-    Transpose(mfem::Table const & A, mfem::Table & At, int _ncols_A=-1)
+    Transpose(mfem::Table const & A, mfem::Table & At, int ncols_A_=-1)
     Transpose(mfem::Table const & A) -> mfem::Table
-    Transpose(intArray A, mfem::Table & At, int _ncols_A=-1)
+    Transpose(intArray A, mfem::Table & At, int ncols_A_=-1)
     Transpose(mfem::SparseMatrix const & A) -> mfem::SparseMatrix
     Transpose(mfem::BlockMatrix const & A) -> mfem::BlockMatrix *
     """

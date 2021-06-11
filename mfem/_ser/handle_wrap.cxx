@@ -3711,16 +3711,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_OperatorHandle___ref__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_OperatorHandle___ref____SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   mfem::Operator *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OperatorHandle, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle___ref__" "', argument " "1"" of type '" "mfem::OperatorHandle *""'"); 
@@ -3749,6 +3747,80 @@ SWIGINTERN PyObject *_wrap_OperatorHandle___ref__(PyObject *SWIGUNUSEDPARM(self)
   return resultobj;
 fail:
   PyErr_Clear();
+  Py_INCREF(Py_NotImplemented);
+  return Py_NotImplemented;
+}
+
+
+SWIGINTERN PyObject *_wrap_OperatorHandle___ref____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::Operator *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OperatorHandle, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle___ref__" "', argument " "1"" of type '" "mfem::OperatorHandle const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
+  {
+    try {
+      result = (mfem::Operator *) &((mfem::OperatorHandle const *)arg1)->operator *();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  return resultobj;
+fail:
+  PyErr_Clear();
+  Py_INCREF(Py_NotImplemented);
+  return Py_NotImplemented;
+}
+
+
+SWIGINTERN PyObject *_wrap_OperatorHandle___ref__(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "OperatorHandle___ref__", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__OperatorHandle, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_OperatorHandle___ref____SWIG_0(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__OperatorHandle, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_OperatorHandle___ref____SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
   Py_INCREF(Py_NotImplemented);
   return Py_NotImplemented;
 }
@@ -5236,6 +5308,60 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_OperatorHandle_AssembleDiagonal(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"diag",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:OperatorHandle_AssembleDiagonal", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__OperatorHandle, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_AssembleDiagonal" "', argument " "1"" of type '" "mfem::OperatorHandle const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OperatorHandle_AssembleDiagonal" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OperatorHandle_AssembleDiagonal" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    try {
+      (*arg1)->AssembleDiagonal(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_OperatorHandle_GetProlongation(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
@@ -5336,6 +5462,47 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_GetOutputProlongation(PyObject *SWIGUN
   {
     try {
       result = (mfem::Operator *)(*arg1)->GetOutputProlongation();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OperatorHandle_GetOutputRestrictionTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Operator *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OperatorHandle, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_GetOutputRestrictionTranspose" "', argument " "1"" of type '" "mfem::OperatorHandle const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
+  {
+    try {
+      result = (mfem::Operator *)(*arg1)->GetOutputRestrictionTranspose();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -6152,7 +6319,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_OperatorHandle", _wrap_delete_OperatorHandle, METH_O, "delete_OperatorHandle(OperatorHandle self)"},
 	 { "OperatorHandle_Ptr", _wrap_OperatorHandle_Ptr, METH_O, "OperatorHandle_Ptr(OperatorHandle self) -> Operator"},
 	 { "OperatorHandle___deref__", _wrap_OperatorHandle___deref__, METH_O, "OperatorHandle___deref__(OperatorHandle self) -> Operator"},
-	 { "OperatorHandle___ref__", _wrap_OperatorHandle___ref__, METH_O, "OperatorHandle___ref__(OperatorHandle self) -> Operator"},
+	 { "OperatorHandle___ref__", _wrap_OperatorHandle___ref__, METH_VARARGS, "\n"
+		"OperatorHandle___ref__(OperatorHandle self) -> Operator\n"
+		"OperatorHandle___ref__(OperatorHandle self) -> Operator\n"
+		""},
 	 { "OperatorHandle_Type", _wrap_OperatorHandle_Type, METH_O, "OperatorHandle_Type(OperatorHandle self) -> mfem::Operator::Type"},
 	 { "OperatorHandle_OwnsOperator", _wrap_OperatorHandle_OwnsOperator, METH_O, "OperatorHandle_OwnsOperator(OperatorHandle self) -> bool"},
 	 { "OperatorHandle_SetOperatorOwner", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_SetOperatorOwner, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_SetOperatorOwner(OperatorHandle self, bool own=True)"},
@@ -6181,9 +6351,11 @@ static PyMethodDef SwigMethods[] = {
 	 { "OperatorHandle_Mult", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_Mult, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_Mult(OperatorHandle self, Vector x, Vector y)"},
 	 { "OperatorHandle_MultTranspose", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_MultTranspose, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_MultTranspose(OperatorHandle self, Vector x, Vector y)"},
 	 { "OperatorHandle_GetGradient", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_GetGradient, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_GetGradient(OperatorHandle self, Vector x) -> Operator"},
+	 { "OperatorHandle_AssembleDiagonal", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_AssembleDiagonal, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_AssembleDiagonal(OperatorHandle self, Vector diag)"},
 	 { "OperatorHandle_GetProlongation", _wrap_OperatorHandle_GetProlongation, METH_O, "OperatorHandle_GetProlongation(OperatorHandle self) -> Operator"},
 	 { "OperatorHandle_GetRestriction", _wrap_OperatorHandle_GetRestriction, METH_O, "OperatorHandle_GetRestriction(OperatorHandle self) -> Operator"},
 	 { "OperatorHandle_GetOutputProlongation", _wrap_OperatorHandle_GetOutputProlongation, METH_O, "OperatorHandle_GetOutputProlongation(OperatorHandle self) -> Operator"},
+	 { "OperatorHandle_GetOutputRestrictionTranspose", _wrap_OperatorHandle_GetOutputRestrictionTranspose, METH_O, "OperatorHandle_GetOutputRestrictionTranspose(OperatorHandle self) -> Operator"},
 	 { "OperatorHandle_GetOutputRestriction", _wrap_OperatorHandle_GetOutputRestriction, METH_O, "OperatorHandle_GetOutputRestriction(OperatorHandle self) -> Operator"},
 	 { "OperatorHandle_FormLinearSystem", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_FormLinearSystem, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_FormLinearSystem(OperatorHandle self, intArray ess_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B, int copy_interior=0)"},
 	 { "OperatorHandle_FormRectangularLinearSystem", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_FormRectangularLinearSystem, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_FormRectangularLinearSystem(OperatorHandle self, intArray trial_tdof_list, intArray test_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B)"},
@@ -6208,7 +6380,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_OperatorHandle", _wrap_delete_OperatorHandle, METH_O, "delete_OperatorHandle(OperatorHandle self)"},
 	 { "OperatorHandle_Ptr", _wrap_OperatorHandle_Ptr, METH_O, "Ptr(OperatorHandle self) -> Operator"},
 	 { "OperatorHandle___deref__", _wrap_OperatorHandle___deref__, METH_O, "__deref__(OperatorHandle self) -> Operator"},
-	 { "OperatorHandle___ref__", _wrap_OperatorHandle___ref__, METH_O, "__ref__(OperatorHandle self) -> Operator"},
+	 { "OperatorHandle___ref__", _wrap_OperatorHandle___ref__, METH_VARARGS, "\n"
+		"__ref__(OperatorHandle self) -> Operator\n"
+		"__ref__(OperatorHandle self) -> Operator\n"
+		""},
 	 { "OperatorHandle_Type", _wrap_OperatorHandle_Type, METH_O, "Type(OperatorHandle self) -> mfem::Operator::Type"},
 	 { "OperatorHandle_OwnsOperator", _wrap_OperatorHandle_OwnsOperator, METH_O, "OwnsOperator(OperatorHandle self) -> bool"},
 	 { "OperatorHandle_SetOperatorOwner", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_SetOperatorOwner, METH_VARARGS|METH_KEYWORDS, "SetOperatorOwner(OperatorHandle self, bool own=True)"},
@@ -6237,9 +6412,11 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "OperatorHandle_Mult", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(OperatorHandle self, Vector x, Vector y)"},
 	 { "OperatorHandle_MultTranspose", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(OperatorHandle self, Vector x, Vector y)"},
 	 { "OperatorHandle_GetGradient", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_GetGradient, METH_VARARGS|METH_KEYWORDS, "GetGradient(OperatorHandle self, Vector x) -> Operator"},
+	 { "OperatorHandle_AssembleDiagonal", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_AssembleDiagonal, METH_VARARGS|METH_KEYWORDS, "AssembleDiagonal(OperatorHandle self, Vector diag)"},
 	 { "OperatorHandle_GetProlongation", _wrap_OperatorHandle_GetProlongation, METH_O, "GetProlongation(OperatorHandle self) -> Operator"},
 	 { "OperatorHandle_GetRestriction", _wrap_OperatorHandle_GetRestriction, METH_O, "GetRestriction(OperatorHandle self) -> Operator"},
 	 { "OperatorHandle_GetOutputProlongation", _wrap_OperatorHandle_GetOutputProlongation, METH_O, "GetOutputProlongation(OperatorHandle self) -> Operator"},
+	 { "OperatorHandle_GetOutputRestrictionTranspose", _wrap_OperatorHandle_GetOutputRestrictionTranspose, METH_O, "GetOutputRestrictionTranspose(OperatorHandle self) -> Operator"},
 	 { "OperatorHandle_GetOutputRestriction", _wrap_OperatorHandle_GetOutputRestriction, METH_O, "GetOutputRestriction(OperatorHandle self) -> Operator"},
 	 { "OperatorHandle_FormLinearSystem", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_FormLinearSystem, METH_VARARGS|METH_KEYWORDS, "FormLinearSystem(OperatorHandle self, intArray ess_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B, int copy_interior=0)"},
 	 { "OperatorHandle_FormRectangularLinearSystem", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_FormRectangularLinearSystem, METH_VARARGS|METH_KEYWORDS, "FormRectangularLinearSystem(OperatorHandle self, intArray trial_tdof_list, intArray test_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B)"},
@@ -7230,14 +7407,14 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40200)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.2.0"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40200)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40300)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.3.0"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40300)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40200)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40200)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40200)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40300)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40300)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40300)%100))));
   
   import_array();
   

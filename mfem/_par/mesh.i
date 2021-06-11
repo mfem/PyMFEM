@@ -17,7 +17,9 @@ mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 // void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
 #include "numpy/arrayobject.h"
 #include "pycoefficient.hpp"
-#include "../common/io_stream.hpp"   
+#include "../common/io_stream.hpp"
+
+using namespace mfem;
 %}
 
 %begin %{
@@ -326,6 +328,7 @@ def CartesianPartitioning(self, nxyz, return_list=False):
 %immutable attributes;
 %immutable bdr_attributes;
 %ignore MesquiteSmooth;
+%ignore mfem::Mesh::Mesh(Mesh *orig_mesh, const Array<int> &ref_factors, int ref_type);
 
 %newobject mfem::Mesh::GetFaceToElementTable;
 %newobject mfem::Mesh::GetVertexToElementTable;

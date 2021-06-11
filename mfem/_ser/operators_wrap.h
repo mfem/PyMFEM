@@ -24,9 +24,11 @@ public:
     virtual void Mult(mfem::Vector const &x, mfem::Vector &y) const;
     virtual void MultTranspose(mfem::Vector const &x, mfem::Vector &y) const;
     virtual mfem::Operator &GetGradient(mfem::Vector const &x) const;
+    virtual void AssembleDiagonal(mfem::Vector &diag) const;
     virtual mfem::Operator const *GetProlongation() const;
     virtual mfem::Operator const *GetRestriction() const;
     virtual mfem::Operator const *GetOutputProlongation() const;
+    virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
     virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
     virtual ~SwigDirector_Operator();
@@ -60,7 +62,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[9];
+    mutable swig::SwigVar_PyObject vtable[11];
 #endif
 
 };
@@ -75,14 +77,16 @@ public:
     virtual void Mult(mfem::Vector const &x, mfem::Vector &y) const;
     virtual void MultTranspose(mfem::Vector const &x, mfem::Vector &y) const;
     virtual mfem::Operator &GetGradient(mfem::Vector const &x) const;
+    virtual void AssembleDiagonal(mfem::Vector &diag) const;
     virtual mfem::Operator const *GetProlongation() const;
     virtual mfem::Operator const *GetRestriction() const;
     virtual mfem::Operator const *GetOutputProlongation() const;
+    virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
     virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
     virtual ~SwigDirector_TimeDependentOperator();
     virtual double GetTime() const;
-    virtual void SetTime(double const _t);
+    virtual void SetTime(double const t_);
     virtual void SetEvalMode(mfem::TimeDependentOperator::EvalMode const new_eval_mode);
     virtual void ExplicitMult(mfem::Vector const &x, mfem::Vector &y) const;
     virtual void ImplicitMult(mfem::Vector const &x, mfem::Vector const &k, mfem::Vector &y) const;
@@ -124,7 +128,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[22];
+    mutable swig::SwigVar_PyObject vtable[24];
 #endif
 
 };
@@ -139,9 +143,11 @@ public:
     virtual void Mult(mfem::Vector const &x, mfem::Vector &y) const;
     virtual void MultTranspose(mfem::Vector const &x, mfem::Vector &y) const;
     virtual mfem::Operator &GetGradient(mfem::Vector const &x) const;
+    virtual void AssembleDiagonal(mfem::Vector &diag) const;
     virtual mfem::Operator const *GetProlongation() const;
     virtual mfem::Operator const *GetRestriction() const;
     virtual mfem::Operator const *GetOutputProlongation() const;
+    virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
     virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
     virtual ~SwigDirector_Solver();
@@ -176,7 +182,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[10];
+    mutable swig::SwigVar_PyObject vtable[12];
 #endif
 
 };
@@ -191,9 +197,11 @@ public:
     virtual void Mult(mfem::Vector const &x, mfem::Vector &y) const;
     virtual void MultTranspose(mfem::Vector const &x, mfem::Vector &y) const;
     virtual mfem::Operator &GetGradient(mfem::Vector const &x) const;
+    virtual void AssembleDiagonal(mfem::Vector &diag) const;
     virtual mfem::Operator const *GetProlongation() const;
     virtual mfem::Operator const *GetRestriction() const;
     virtual mfem::Operator const *GetOutputProlongation() const;
+    virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
     virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
     virtual ~SwigDirector_PyOperatorBase();
@@ -228,7 +236,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[10];
+    mutable swig::SwigVar_PyObject vtable[12];
 #endif
 
 };
@@ -243,14 +251,16 @@ public:
     virtual void Mult(mfem::Vector const &x, mfem::Vector &y) const;
     virtual void MultTranspose(mfem::Vector const &x, mfem::Vector &y) const;
     virtual mfem::Operator &GetGradient(mfem::Vector const &x) const;
+    virtual void AssembleDiagonal(mfem::Vector &diag) const;
     virtual mfem::Operator const *GetProlongation() const;
     virtual mfem::Operator const *GetRestriction() const;
     virtual mfem::Operator const *GetOutputProlongation() const;
+    virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
     virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
     virtual ~SwigDirector_PyTimeDependentOperatorBase();
     virtual double GetTime() const;
-    virtual void SetTime(double const _t);
+    virtual void SetTime(double const t_);
     virtual void SetEvalMode(mfem::TimeDependentOperator::EvalMode const new_eval_mode);
     virtual void ExplicitMult(mfem::Vector const &x, mfem::Vector &y) const;
     virtual void ImplicitMult(mfem::Vector const &x, mfem::Vector const &k, mfem::Vector &y) const;
@@ -293,7 +303,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[23];
+    mutable swig::SwigVar_PyObject vtable[25];
 #endif
 
 };

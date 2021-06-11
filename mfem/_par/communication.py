@@ -211,6 +211,11 @@ class GroupTopology(object):
         r"""Copy(GroupTopology self, GroupTopology copy)"""
         return _communication.GroupTopology_Copy(self, copy)
     Copy = _swig_new_instance_method(_communication.GroupTopology_Copy)
+
+    def Swap(self, other):
+        r"""Swap(GroupTopology self, GroupTopology other)"""
+        return _communication.GroupTopology_Swap(self, other)
+    Swap = _swig_new_instance_method(_communication.GroupTopology_Swap)
     __swig_destroy__ = _communication.delete_GroupTopology
 
     def Save(self, *args):

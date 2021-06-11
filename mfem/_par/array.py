@@ -76,7 +76,7 @@ class intArray(object):
         __init__(intArray self) -> intArray
         __init__(intArray self, mfem::MemoryType mt) -> intArray
         __init__(intArray self, int asize) -> intArray
-        __init__(intArray self, int * _data) -> intArray
+        __init__(intArray self, int * data_) -> intArray
         __init__(intArray self, intArray src) -> intArray
         """
         _array.intArray_swiginit(self, _array.new_intArray(*args))
@@ -381,7 +381,7 @@ class doubleArray(object):
         __init__(doubleArray self) -> doubleArray
         __init__(doubleArray self, mfem::MemoryType mt) -> doubleArray
         __init__(doubleArray self, int asize) -> doubleArray
-        __init__(doubleArray self, double * _data) -> doubleArray
+        __init__(doubleArray self, double * data_) -> doubleArray
         __init__(doubleArray self, doubleArray src) -> doubleArray
         """
         _array.doubleArray_swiginit(self, _array.new_doubleArray(*args))

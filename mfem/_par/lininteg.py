@@ -92,6 +92,7 @@ class LinearFormIntegrator(object):
         r"""
         AssembleRHSElementVect(LinearFormIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
         AssembleRHSElementVect(LinearFormIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
+        AssembleRHSElementVect(LinearFormIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.LinearFormIntegrator_AssembleRHSElementVect(self, *args)
     AssembleRHSElementVect = _swig_new_instance_method(_lininteg.LinearFormIntegrator_AssembleRHSElementVect)
@@ -165,6 +166,7 @@ class DomainLFIntegrator(DeltaLFIntegrator):
         r"""
         AssembleRHSElementVect(DomainLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
         AssembleRHSElementVect(DomainLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
+        AssembleRHSElementVect(DomainLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.DomainLFIntegrator_AssembleRHSElementVect(self, *args)
     AssembleRHSElementVect = _swig_new_instance_method(_lininteg.DomainLFIntegrator_AssembleRHSElementVect)
@@ -192,6 +194,7 @@ class DomainLFGradIntegrator(DeltaLFIntegrator):
         r"""
         AssembleRHSElementVect(DomainLFGradIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
         AssembleRHSElementVect(DomainLFGradIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
+        AssembleRHSElementVect(DomainLFGradIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.DomainLFGradIntegrator_AssembleRHSElementVect(self, *args)
     AssembleRHSElementVect = _swig_new_instance_method(_lininteg.DomainLFGradIntegrator_AssembleRHSElementVect)
@@ -219,6 +222,7 @@ class BoundaryLFIntegrator(LinearFormIntegrator):
         r"""
         AssembleRHSElementVect(BoundaryLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
         AssembleRHSElementVect(BoundaryLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
+        AssembleRHSElementVect(BoundaryLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.BoundaryLFIntegrator_AssembleRHSElementVect(self, *args)
     AssembleRHSElementVect = _swig_new_instance_method(_lininteg.BoundaryLFIntegrator_AssembleRHSElementVect)
@@ -241,6 +245,7 @@ class BoundaryNormalLFIntegrator(LinearFormIntegrator):
         r"""
         AssembleRHSElementVect(BoundaryNormalLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
         AssembleRHSElementVect(BoundaryNormalLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
+        AssembleRHSElementVect(BoundaryNormalLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.BoundaryNormalLFIntegrator_AssembleRHSElementVect(self, *args)
     AssembleRHSElementVect = _swig_new_instance_method(_lininteg.BoundaryNormalLFIntegrator_AssembleRHSElementVect)
@@ -263,6 +268,7 @@ class BoundaryTangentialLFIntegrator(LinearFormIntegrator):
         r"""
         AssembleRHSElementVect(BoundaryTangentialLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
         AssembleRHSElementVect(BoundaryTangentialLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
+        AssembleRHSElementVect(BoundaryTangentialLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.BoundaryTangentialLFIntegrator_AssembleRHSElementVect(self, *args)
     AssembleRHSElementVect = _swig_new_instance_method(_lininteg.BoundaryTangentialLFIntegrator_AssembleRHSElementVect)
@@ -290,6 +296,7 @@ class VectorDomainLFIntegrator(DeltaLFIntegrator):
         r"""
         AssembleRHSElementVect(VectorDomainLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
         AssembleRHSElementVect(VectorDomainLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
+        AssembleRHSElementVect(VectorDomainLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.VectorDomainLFIntegrator_AssembleRHSElementVect(self, *args)
     AssembleRHSElementVect = _swig_new_instance_method(_lininteg.VectorDomainLFIntegrator_AssembleRHSElementVect)
@@ -312,6 +319,7 @@ class VectorBoundaryLFIntegrator(LinearFormIntegrator):
         r"""
         AssembleRHSElementVect(VectorBoundaryLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
         AssembleRHSElementVect(VectorBoundaryLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
+        AssembleRHSElementVect(VectorBoundaryLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.VectorBoundaryLFIntegrator_AssembleRHSElementVect(self, *args)
     AssembleRHSElementVect = _swig_new_instance_method(_lininteg.VectorBoundaryLFIntegrator_AssembleRHSElementVect)
@@ -344,6 +352,7 @@ class VectorFEDomainLFIntegrator(DeltaLFIntegrator):
         r"""
         AssembleRHSElementVect(VectorFEDomainLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
         AssembleRHSElementVect(VectorFEDomainLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
+        AssembleRHSElementVect(VectorFEDomainLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.VectorFEDomainLFIntegrator_AssembleRHSElementVect(self, *args)
     AssembleRHSElementVect = _swig_new_instance_method(_lininteg.VectorFEDomainLFIntegrator_AssembleRHSElementVect)
@@ -371,6 +380,7 @@ class VectorFEDomainLFCurlIntegrator(DeltaLFIntegrator):
         r"""
         AssembleRHSElementVect(VectorFEDomainLFCurlIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
         AssembleRHSElementVect(VectorFEDomainLFCurlIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
+        AssembleRHSElementVect(VectorFEDomainLFCurlIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect(self, *args)
     AssembleRHSElementVect = _swig_new_instance_method(_lininteg.VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect)
@@ -398,6 +408,7 @@ class VectorFEDomainLFDivIntegrator(DeltaLFIntegrator):
         r"""
         AssembleRHSElementVect(VectorFEDomainLFDivIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
         AssembleRHSElementVect(VectorFEDomainLFDivIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
+        AssembleRHSElementVect(VectorFEDomainLFDivIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.VectorFEDomainLFDivIntegrator_AssembleRHSElementVect(self, *args)
     AssembleRHSElementVect = _swig_new_instance_method(_lininteg.VectorFEDomainLFDivIntegrator_AssembleRHSElementVect)
@@ -420,6 +431,7 @@ class VectorBoundaryFluxLFIntegrator(LinearFormIntegrator):
         r"""
         AssembleRHSElementVect(VectorBoundaryFluxLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
         AssembleRHSElementVect(VectorBoundaryFluxLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
+        AssembleRHSElementVect(VectorBoundaryFluxLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect(self, *args)
     AssembleRHSElementVect = _swig_new_instance_method(_lininteg.VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect)
@@ -445,6 +457,7 @@ class VectorFEBoundaryFluxLFIntegrator(LinearFormIntegrator):
         r"""
         AssembleRHSElementVect(VectorFEBoundaryFluxLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
         AssembleRHSElementVect(VectorFEBoundaryFluxLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
+        AssembleRHSElementVect(VectorFEBoundaryFluxLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect(self, *args)
     AssembleRHSElementVect = _swig_new_instance_method(_lininteg.VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect)
@@ -472,6 +485,7 @@ class VectorFEBoundaryTangentLFIntegrator(LinearFormIntegrator):
         r"""
         AssembleRHSElementVect(VectorFEBoundaryTangentLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
         AssembleRHSElementVect(VectorFEBoundaryTangentLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
+        AssembleRHSElementVect(VectorFEBoundaryTangentLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect(self, *args)
     AssembleRHSElementVect = _swig_new_instance_method(_lininteg.VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect)
@@ -486,14 +500,18 @@ class BoundaryFlowIntegrator(LinearFormIntegrator):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, _f, _u, a, b):
-        r"""__init__(BoundaryFlowIntegrator self, Coefficient _f, VectorCoefficient _u, double a, double b) -> BoundaryFlowIntegrator"""
-        _lininteg.BoundaryFlowIntegrator_swiginit(self, _lininteg.new_BoundaryFlowIntegrator(_f, _u, a, b))
+    def __init__(self, *args):
+        r"""
+        __init__(BoundaryFlowIntegrator self, Coefficient f_, VectorCoefficient u_, double a) -> BoundaryFlowIntegrator
+        __init__(BoundaryFlowIntegrator self, Coefficient f_, VectorCoefficient u_, double a, double b) -> BoundaryFlowIntegrator
+        """
+        _lininteg.BoundaryFlowIntegrator_swiginit(self, _lininteg.new_BoundaryFlowIntegrator(*args))
 
     def AssembleRHSElementVect(self, *args):
         r"""
         AssembleRHSElementVect(BoundaryFlowIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
         AssembleRHSElementVect(BoundaryFlowIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
+        AssembleRHSElementVect(BoundaryFlowIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.BoundaryFlowIntegrator_AssembleRHSElementVect(self, *args)
     AssembleRHSElementVect = _swig_new_instance_method(_lininteg.BoundaryFlowIntegrator_AssembleRHSElementVect)
@@ -520,6 +538,7 @@ class DGDirichletLFIntegrator(LinearFormIntegrator):
         r"""
         AssembleRHSElementVect(DGDirichletLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
         AssembleRHSElementVect(DGDirichletLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
+        AssembleRHSElementVect(DGDirichletLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.DGDirichletLFIntegrator_AssembleRHSElementVect(self, *args)
     AssembleRHSElementVect = _swig_new_instance_method(_lininteg.DGDirichletLFIntegrator_AssembleRHSElementVect)
@@ -542,6 +561,7 @@ class DGElasticityDirichletLFIntegrator(LinearFormIntegrator):
         r"""
         AssembleRHSElementVect(DGElasticityDirichletLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
         AssembleRHSElementVect(DGElasticityDirichletLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
+        AssembleRHSElementVect(DGElasticityDirichletLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.DGElasticityDirichletLFIntegrator_AssembleRHSElementVect(self, *args)
     AssembleRHSElementVect = _swig_new_instance_method(_lininteg.DGElasticityDirichletLFIntegrator_AssembleRHSElementVect)
@@ -563,6 +583,7 @@ class VectorQuadratureLFIntegrator(LinearFormIntegrator):
         r"""
         AssembleRHSElementVect(VectorQuadratureLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
         AssembleRHSElementVect(VectorQuadratureLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
+        AssembleRHSElementVect(VectorQuadratureLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)
         AssembleRHSElementVect(VectorQuadratureLFIntegrator self, FiniteElement fe, ElementTransformation Tr, Vector elvect)
         """
         return _lininteg.VectorQuadratureLFIntegrator_AssembleRHSElementVect(self, *args)
@@ -590,6 +611,7 @@ class QuadratureLFIntegrator(LinearFormIntegrator):
         r"""
         AssembleRHSElementVect(QuadratureLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
         AssembleRHSElementVect(QuadratureLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
+        AssembleRHSElementVect(QuadratureLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)
         AssembleRHSElementVect(QuadratureLFIntegrator self, FiniteElement fe, ElementTransformation Tr, Vector elvect)
         """
         return _lininteg.QuadratureLFIntegrator_AssembleRHSElementVect(self, *args)

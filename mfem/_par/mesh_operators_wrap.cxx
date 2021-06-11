@@ -3094,36 +3094,41 @@ namespace Swig {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_MPI_Comm swig_types[0]
-#define SWIGTYPE_p_PyMFEM__wFILE swig_types[1]
-#define SWIGTYPE_p_RefCoord swig_types[2]
-#define SWIGTYPE_p_char swig_types[3]
-#define SWIGTYPE_p_hex_t swig_types[4]
-#define SWIGTYPE_p_int swig_types[5]
-#define SWIGTYPE_p_mfem__AnisotropicErrorEstimator swig_types[6]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__MeshOperator_p_t swig_types[7]
-#define SWIGTYPE_p_mfem__ErrorEstimator swig_types[8]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[9]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[10]
-#define SWIGTYPE_p_mfem__L2ZienkiewiczZhuEstimator swig_types[11]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[12]
-#define SWIGTYPE_p_mfem__LpErrorEstimator swig_types[13]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[14]
-#define SWIGTYPE_p_mfem__Mesh swig_types[15]
-#define SWIGTYPE_p_mfem__MeshOperator swig_types[16]
-#define SWIGTYPE_p_mfem__MeshOperatorSequence swig_types[17]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[18]
-#define SWIGTYPE_p_mfem__Rebalancer swig_types[19]
-#define SWIGTYPE_p_mfem__ThresholdDerefiner swig_types[20]
-#define SWIGTYPE_p_mfem__ThresholdRefiner swig_types[21]
-#define SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator swig_types[22]
-#define SWIGTYPE_p_pri_t swig_types[23]
-#define SWIGTYPE_p_quad_t swig_types[24]
-#define SWIGTYPE_p_seg_t swig_types[25]
-#define SWIGTYPE_p_tet_t swig_types[26]
-#define SWIGTYPE_p_tri_t swig_types[27]
-static swig_type_info *swig_types[29];
-static swig_module_info swig_module = {swig_types, 28, 0, 0, 0, 0};
+#define SWIGTYPE_p_ElementCoefficientFunction swig_types[0]
+#define SWIGTYPE_p_FaceCoefficientFunction swig_types[1]
+#define SWIGTYPE_p_MPI_Comm swig_types[2]
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[3]
+#define SWIGTYPE_p_RefCoord swig_types[4]
+#define SWIGTYPE_p_char swig_types[5]
+#define SWIGTYPE_p_hex_t swig_types[6]
+#define SWIGTYPE_p_int swig_types[7]
+#define SWIGTYPE_p_mfem__AnisotropicErrorEstimator swig_types[8]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__MeshOperator_p_t swig_types[9]
+#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[10]
+#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[11]
+#define SWIGTYPE_p_mfem__ErrorEstimator swig_types[12]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[13]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[14]
+#define SWIGTYPE_p_mfem__KellyErrorEstimator swig_types[15]
+#define SWIGTYPE_p_mfem__L2ZienkiewiczZhuEstimator swig_types[16]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[17]
+#define SWIGTYPE_p_mfem__LpErrorEstimator swig_types[18]
+#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[19]
+#define SWIGTYPE_p_mfem__Mesh swig_types[20]
+#define SWIGTYPE_p_mfem__MeshOperator swig_types[21]
+#define SWIGTYPE_p_mfem__MeshOperatorSequence swig_types[22]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[23]
+#define SWIGTYPE_p_mfem__Rebalancer swig_types[24]
+#define SWIGTYPE_p_mfem__ThresholdDerefiner swig_types[25]
+#define SWIGTYPE_p_mfem__ThresholdRefiner swig_types[26]
+#define SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator swig_types[27]
+#define SWIGTYPE_p_pri_t swig_types[28]
+#define SWIGTYPE_p_quad_t swig_types[29]
+#define SWIGTYPE_p_seg_t swig_types[30]
+#define SWIGTYPE_p_tet_t swig_types[31]
+#define SWIGTYPE_p_tri_t swig_types[32]
+static swig_type_info *swig_types[34];
+static swig_module_info swig_module = {swig_types, 33, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4962,6 +4967,9 @@ static void *_p_mfem__L2ZienkiewiczZhuEstimatorTo_p_mfem__ErrorEstimator(void *x
 static void *_p_mfem__LpErrorEstimatorTo_p_mfem__ErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::ErrorEstimator *)  ((mfem::LpErrorEstimator *) x));
 }
+static void *_p_mfem__KellyErrorEstimatorTo_p_mfem__ErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ErrorEstimator *)  ((mfem::KellyErrorEstimator *) x));
+}
 static void *_p_mfem__ThresholdRefinerTo_p_mfem__MeshOperator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::MeshOperator *)  ((mfem::ThresholdRefiner *) x));
 }
@@ -4974,6 +4982,8 @@ static void *_p_mfem__MeshOperatorSequenceTo_p_mfem__MeshOperator(void *x, int *
 static void *_p_mfem__RebalancerTo_p_mfem__MeshOperator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::MeshOperator *)  ((mfem::Rebalancer *) x));
 }
+static swig_type_info _swigt__p_ElementCoefficientFunction = {"_p_ElementCoefficientFunction", "ElementCoefficientFunction *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FaceCoefficientFunction = {"_p_FaceCoefficientFunction", "FaceCoefficientFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
@@ -4981,11 +4991,14 @@ static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__MeshOperator_p_t = {"_p_mfem__ArrayT_mfem__MeshOperator_p_t", "mfem::Array< mfem::MeshOperator * > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ConvectionIntegrator = {"_p_mfem__ConvectionIntegrator", "mfem::ConvectionIntegrator *|mfem::NonconservativeConvectionIntegrator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__DGTraceIntegrator = {"_p_mfem__DGTraceIntegrator", "mfem::DGTraceIntegrator *|mfem::ConservativeDGTraceIntegrator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ErrorEstimator = {"_p_mfem__ErrorEstimator", "mfem::ErrorEstimator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__AnisotropicErrorEstimator = {"_p_mfem__AnisotropicErrorEstimator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__ZienkiewiczZhuEstimator = {"_p_mfem__ZienkiewiczZhuEstimator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__L2ZienkiewiczZhuEstimator = {"_p_mfem__L2ZienkiewiczZhuEstimator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__LpErrorEstimator = {"_p_mfem__LpErrorEstimator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__KellyErrorEstimator = {"_p_mfem__KellyErrorEstimator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__L2_FECollection = {"_p_mfem__L2_FECollection", "mfem::L2_FECollection *|mfem::DG_FECollection *", 0, 0, (void*)0, 0};
@@ -5004,6 +5017,8 @@ static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 
 static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_ElementCoefficientFunction,
+  &_swigt__p_FaceCoefficientFunction,
   &_swigt__p_MPI_Comm,
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_RefCoord,
@@ -5012,9 +5027,12 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_int,
   &_swigt__p_mfem__AnisotropicErrorEstimator,
   &_swigt__p_mfem__ArrayT_mfem__MeshOperator_p_t,
+  &_swigt__p_mfem__ConvectionIntegrator,
+  &_swigt__p_mfem__DGTraceIntegrator,
   &_swigt__p_mfem__ErrorEstimator,
   &_swigt__p_mfem__GridFunction,
   &_swigt__p_mfem__IntegrationRule,
+  &_swigt__p_mfem__KellyErrorEstimator,
   &_swigt__p_mfem__L2ZienkiewiczZhuEstimator,
   &_swigt__p_mfem__L2_FECollection,
   &_swigt__p_mfem__LpErrorEstimator,
@@ -5034,6 +5052,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_tri_t,
 };
 
+static swig_cast_info _swigc__p_ElementCoefficientFunction[] = {  {&_swigt__p_ElementCoefficientFunction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FaceCoefficientFunction[] = {  {&_swigt__p_FaceCoefficientFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
@@ -5041,11 +5061,14 @@ static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0,
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__MeshOperator_p_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__MeshOperator_p_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ConvectionIntegrator[] = {  {&_swigt__p_mfem__ConvectionIntegrator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__DGTraceIntegrator[] = {  {&_swigt__p_mfem__DGTraceIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__AnisotropicErrorEstimator[] = {{&_swigt__p_mfem__AnisotropicErrorEstimator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ZienkiewiczZhuEstimator[] = {{&_swigt__p_mfem__ZienkiewiczZhuEstimator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2ZienkiewiczZhuEstimator[] = {{&_swigt__p_mfem__L2ZienkiewiczZhuEstimator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LpErrorEstimator[] = {{&_swigt__p_mfem__LpErrorEstimator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ErrorEstimator[] = {  {&_swigt__p_mfem__ErrorEstimator, 0, 0, 0},  {&_swigt__p_mfem__AnisotropicErrorEstimator, _p_mfem__AnisotropicErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__ZienkiewiczZhuEstimator, _p_mfem__ZienkiewiczZhuEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__L2ZienkiewiczZhuEstimator, _p_mfem__L2ZienkiewiczZhuEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__LpErrorEstimator, _p_mfem__LpErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__KellyErrorEstimator[] = {{&_swigt__p_mfem__KellyErrorEstimator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ErrorEstimator[] = {  {&_swigt__p_mfem__ErrorEstimator, 0, 0, 0},  {&_swigt__p_mfem__AnisotropicErrorEstimator, _p_mfem__AnisotropicErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__ZienkiewiczZhuEstimator, _p_mfem__ZienkiewiczZhuEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__L2ZienkiewiczZhuEstimator, _p_mfem__L2ZienkiewiczZhuEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__LpErrorEstimator, _p_mfem__LpErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__KellyErrorEstimator, _p_mfem__KellyErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2_FECollection[] = {  {&_swigt__p_mfem__L2_FECollection, 0, 0, 0},{0, 0, 0, 0}};
@@ -5064,6 +5087,8 @@ static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 
 static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_ElementCoefficientFunction,
+  _swigc__p_FaceCoefficientFunction,
   _swigc__p_MPI_Comm,
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_RefCoord,
@@ -5072,9 +5097,12 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_int,
   _swigc__p_mfem__AnisotropicErrorEstimator,
   _swigc__p_mfem__ArrayT_mfem__MeshOperator_p_t,
+  _swigc__p_mfem__ConvectionIntegrator,
+  _swigc__p_mfem__DGTraceIntegrator,
   _swigc__p_mfem__ErrorEstimator,
   _swigc__p_mfem__GridFunction,
   _swigc__p_mfem__IntegrationRule,
+  _swigc__p_mfem__KellyErrorEstimator,
   _swigc__p_mfem__L2ZienkiewiczZhuEstimator,
   _swigc__p_mfem__L2_FECollection,
   _swigc__p_mfem__LpErrorEstimator,

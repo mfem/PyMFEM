@@ -12022,7 +12022,7 @@ static PyMethodDef SwigMethods[] = {
 		"intArray()\n"
 		"intArray(mfem::MemoryType mt)\n"
 		"intArray(int asize)\n"
-		"intArray(int * _data)\n"
+		"intArray(int * data_)\n"
 		"new_intArray(intArray src) -> intArray\n"
 		""},
 	 { "delete_intArray", _wrap_delete_intArray, METH_O, "delete_intArray(intArray self)"},
@@ -12119,7 +12119,7 @@ static PyMethodDef SwigMethods[] = {
 		"doubleArray()\n"
 		"doubleArray(mfem::MemoryType mt)\n"
 		"doubleArray(int asize)\n"
-		"doubleArray(double * _data)\n"
+		"doubleArray(double * data_)\n"
 		"new_doubleArray(doubleArray src) -> doubleArray\n"
 		""},
 	 { "delete_doubleArray", _wrap_delete_doubleArray, METH_O, "delete_doubleArray(doubleArray self)"},
@@ -12232,7 +12232,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"intArray()\n"
 		"intArray(mfem::MemoryType mt)\n"
 		"intArray(int asize)\n"
-		"intArray(int * _data)\n"
+		"intArray(int * data_)\n"
 		"new_intArray(intArray src) -> intArray\n"
 		""},
 	 { "delete_intArray", _wrap_delete_intArray, METH_O, "delete_intArray(intArray self)"},
@@ -12329,7 +12329,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"doubleArray()\n"
 		"doubleArray(mfem::MemoryType mt)\n"
 		"doubleArray(int asize)\n"
-		"doubleArray(double * _data)\n"
+		"doubleArray(double * data_)\n"
 		"new_doubleArray(doubleArray src) -> doubleArray\n"
 		""},
 	 { "delete_doubleArray", _wrap_delete_doubleArray, METH_O, "delete_doubleArray(doubleArray self)"},

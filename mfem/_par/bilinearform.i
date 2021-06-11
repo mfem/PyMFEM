@@ -2,7 +2,8 @@
 %{
 #include "fem/bilinearform.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"           
+#include "pyoperator.hpp"
+using namespace mfem;
 %}
 
 %init %{
@@ -34,6 +35,7 @@ import_array();
 namespace mfem { 
 %pythonprepend BilinearForm::AddDomainIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
+    bfi = args[0]	     
     self._integrators.append(bfi)
     bfi.thisown=0 
    %}
@@ -66,6 +68,7 @@ namespace mfem {
    %} 
 %pythonprepend MixedBilinearForm::AddDomainIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
+    bfi = args[0]	     
     self._integrators.append(bfi)
     bfi.thisown=0 
    %}

@@ -110,9 +110,12 @@ class OperatorHandle(object):
         return _handle.OperatorHandle___deref__(self)
     __deref__ = _swig_new_instance_method(_handle.OperatorHandle___deref__)
 
-    def __ref__(self):
-        r"""__ref__(OperatorHandle self) -> Operator"""
-        return _handle.OperatorHandle___ref__(self)
+    def __ref__(self, *args):
+        r"""
+        __ref__(OperatorHandle self) -> Operator
+        __ref__(OperatorHandle self) -> Operator
+        """
+        return _handle.OperatorHandle___ref__(self, *args)
     __ref__ = _swig_new_instance_method(_handle.OperatorHandle___ref__)
 
     def Type(self):
@@ -243,6 +246,11 @@ class OperatorHandle(object):
         return _handle.OperatorHandle_GetGradient(self, x)
     GetGradient = _swig_new_instance_method(_handle.OperatorHandle_GetGradient)
 
+    def AssembleDiagonal(self, diag):
+        r"""AssembleDiagonal(OperatorHandle self, Vector diag)"""
+        return _handle.OperatorHandle_AssembleDiagonal(self, diag)
+    AssembleDiagonal = _swig_new_instance_method(_handle.OperatorHandle_AssembleDiagonal)
+
     def GetProlongation(self):
         r"""GetProlongation(OperatorHandle self) -> Operator"""
         return _handle.OperatorHandle_GetProlongation(self)
@@ -257,6 +265,11 @@ class OperatorHandle(object):
         r"""GetOutputProlongation(OperatorHandle self) -> Operator"""
         return _handle.OperatorHandle_GetOutputProlongation(self)
     GetOutputProlongation = _swig_new_instance_method(_handle.OperatorHandle_GetOutputProlongation)
+
+    def GetOutputRestrictionTranspose(self):
+        r"""GetOutputRestrictionTranspose(OperatorHandle self) -> Operator"""
+        return _handle.OperatorHandle_GetOutputRestrictionTranspose(self)
+    GetOutputRestrictionTranspose = _swig_new_instance_method(_handle.OperatorHandle_GetOutputRestrictionTranspose)
 
     def GetOutputRestriction(self):
         r"""GetOutputRestriction(OperatorHandle self) -> Operator"""

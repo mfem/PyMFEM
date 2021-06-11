@@ -175,6 +175,26 @@ class FiniteElementSpace(object):
         return _fespace.FiniteElementSpace_Nonconforming(self)
     Nonconforming = _swig_new_instance_method(_fespace.FiniteElementSpace_Nonconforming)
 
+    def SetElementOrder(self, i, p):
+        r"""SetElementOrder(FiniteElementSpace self, int i, int p)"""
+        return _fespace.FiniteElementSpace_SetElementOrder(self, i, p)
+    SetElementOrder = _swig_new_instance_method(_fespace.FiniteElementSpace_SetElementOrder)
+
+    def GetElementOrder(self, i):
+        r"""GetElementOrder(FiniteElementSpace self, int i) -> int"""
+        return _fespace.FiniteElementSpace_GetElementOrder(self, i)
+    GetElementOrder = _swig_new_instance_method(_fespace.FiniteElementSpace_GetElementOrder)
+
+    def GetMaxElementOrder(self):
+        r"""GetMaxElementOrder(FiniteElementSpace self) -> int"""
+        return _fespace.FiniteElementSpace_GetMaxElementOrder(self)
+    GetMaxElementOrder = _swig_new_instance_method(_fespace.FiniteElementSpace_GetMaxElementOrder)
+
+    def IsVariableOrder(self):
+        r"""IsVariableOrder(FiniteElementSpace self) -> bool"""
+        return _fespace.FiniteElementSpace_IsVariableOrder(self)
+    IsVariableOrder = _swig_new_instance_method(_fespace.FiniteElementSpace_IsVariableOrder)
+
     def GetConformingProlongation(self):
         r"""GetConformingProlongation(FiniteElementSpace self) -> SparseMatrix"""
         return _fespace.FiniteElementSpace_GetConformingProlongation(self)
@@ -185,15 +205,35 @@ class FiniteElementSpace(object):
         return _fespace.FiniteElementSpace_GetConformingRestriction(self)
     GetConformingRestriction = _swig_new_instance_method(_fespace.FiniteElementSpace_GetConformingRestriction)
 
+    def GetHpConformingRestriction(self):
+        r"""GetHpConformingRestriction(FiniteElementSpace self) -> SparseMatrix"""
+        return _fespace.FiniteElementSpace_GetHpConformingRestriction(self)
+    GetHpConformingRestriction = _swig_new_instance_method(_fespace.FiniteElementSpace_GetHpConformingRestriction)
+
     def GetProlongationMatrix(self):
         r"""GetProlongationMatrix(FiniteElementSpace self) -> Operator"""
         return _fespace.FiniteElementSpace_GetProlongationMatrix(self)
     GetProlongationMatrix = _swig_new_instance_method(_fespace.FiniteElementSpace_GetProlongationMatrix)
 
+    def GetRestrictionTransposeOperator(self):
+        r"""GetRestrictionTransposeOperator(FiniteElementSpace self) -> Operator"""
+        return _fespace.FiniteElementSpace_GetRestrictionTransposeOperator(self)
+    GetRestrictionTransposeOperator = _swig_new_instance_method(_fespace.FiniteElementSpace_GetRestrictionTransposeOperator)
+
+    def GetRestrictionOperator(self):
+        r"""GetRestrictionOperator(FiniteElementSpace self) -> Operator"""
+        return _fespace.FiniteElementSpace_GetRestrictionOperator(self)
+    GetRestrictionOperator = _swig_new_instance_method(_fespace.FiniteElementSpace_GetRestrictionOperator)
+
     def GetRestrictionMatrix(self):
         r"""GetRestrictionMatrix(FiniteElementSpace self) -> SparseMatrix"""
         return _fespace.FiniteElementSpace_GetRestrictionMatrix(self)
     GetRestrictionMatrix = _swig_new_instance_method(_fespace.FiniteElementSpace_GetRestrictionMatrix)
+
+    def GetHpRestrictionMatrix(self):
+        r"""GetHpRestrictionMatrix(FiniteElementSpace self) -> SparseMatrix"""
+        return _fespace.FiniteElementSpace_GetHpRestrictionMatrix(self)
+    GetHpRestrictionMatrix = _swig_new_instance_method(_fespace.FiniteElementSpace_GetHpRestrictionMatrix)
 
     def GetElementRestriction(self, e_ordering):
         r"""GetElementRestriction(FiniteElementSpace self, mfem::ElementDofOrdering e_ordering) -> Operator"""
@@ -218,20 +258,25 @@ class FiniteElementSpace(object):
         return _fespace.FiniteElementSpace_GetFaceQuadratureInterpolator(self, ir, type)
     GetFaceQuadratureInterpolator = _swig_new_instance_method(_fespace.FiniteElementSpace_GetFaceQuadratureInterpolator)
 
-    def GetVDim(self):
-        r"""GetVDim(FiniteElementSpace self) -> int"""
-        return _fespace.FiniteElementSpace_GetVDim(self)
-    GetVDim = _swig_new_instance_method(_fespace.FiniteElementSpace_GetVDim)
-
     def GetOrder(self, i):
         r"""GetOrder(FiniteElementSpace self, int i) -> int"""
         return _fespace.FiniteElementSpace_GetOrder(self, i)
     GetOrder = _swig_new_instance_method(_fespace.FiniteElementSpace_GetOrder)
 
-    def GetFaceOrder(self, i):
-        r"""GetFaceOrder(FiniteElementSpace self, int i) -> int"""
-        return _fespace.FiniteElementSpace_GetFaceOrder(self, i)
+    def GetEdgeOrder(self, edge, variant=0):
+        r"""GetEdgeOrder(FiniteElementSpace self, int edge, int variant=0) -> int"""
+        return _fespace.FiniteElementSpace_GetEdgeOrder(self, edge, variant)
+    GetEdgeOrder = _swig_new_instance_method(_fespace.FiniteElementSpace_GetEdgeOrder)
+
+    def GetFaceOrder(self, face, variant=0):
+        r"""GetFaceOrder(FiniteElementSpace self, int face, int variant=0) -> int"""
+        return _fespace.FiniteElementSpace_GetFaceOrder(self, face, variant)
     GetFaceOrder = _swig_new_instance_method(_fespace.FiniteElementSpace_GetFaceOrder)
+
+    def GetVDim(self):
+        r"""GetVDim(FiniteElementSpace self) -> int"""
+        return _fespace.FiniteElementSpace_GetVDim(self)
+    GetVDim = _swig_new_instance_method(_fespace.FiniteElementSpace_GetVDim)
 
     def GetNDofs(self):
         r"""GetNDofs(FiniteElementSpace self) -> int"""
@@ -547,9 +592,9 @@ class FiniteElementSpace(object):
         return _fespace.FiniteElementSpace_GetFaceElement(self, i)
     GetFaceElement = _swig_new_instance_method(_fespace.FiniteElementSpace_GetFaceElement)
 
-    def GetEdgeElement(self, i):
-        r"""GetEdgeElement(FiniteElementSpace self, int i) -> FiniteElement"""
-        return _fespace.FiniteElementSpace_GetEdgeElement(self, i)
+    def GetEdgeElement(self, i, variant=0):
+        r"""GetEdgeElement(FiniteElementSpace self, int i, int variant=0) -> FiniteElement"""
+        return _fespace.FiniteElementSpace_GetEdgeElement(self, i, variant)
     GetEdgeElement = _swig_new_instance_method(_fespace.FiniteElementSpace_GetEdgeElement)
 
     def GetTraceElement(self, i, geom_type):
@@ -566,6 +611,11 @@ class FiniteElementSpace(object):
         r"""GetEssentialTrueDofs(FiniteElementSpace self, intArray bdr_attr_is_ess, intArray ess_tdof_list, int component=-1)"""
         return _fespace.FiniteElementSpace_GetEssentialTrueDofs(self, bdr_attr_is_ess, ess_tdof_list, component)
     GetEssentialTrueDofs = _swig_new_instance_method(_fespace.FiniteElementSpace_GetEssentialTrueDofs)
+
+    def GetBoundaryTrueDofs(self, boundary_dofs, component=-1):
+        r"""GetBoundaryTrueDofs(FiniteElementSpace self, intArray boundary_dofs, int component=-1)"""
+        return _fespace.FiniteElementSpace_GetBoundaryTrueDofs(self, boundary_dofs, component)
+    GetBoundaryTrueDofs = _swig_new_instance_method(_fespace.FiniteElementSpace_GetBoundaryTrueDofs)
 
     @staticmethod
     def MarkerToList(marker, list):
@@ -652,6 +702,11 @@ class FiniteElementSpace(object):
         return _fespace.FiniteElementSpace_IsDGSpace(self)
     IsDGSpace = _swig_new_instance_method(_fespace.FiniteElementSpace_IsDGSpace)
 
+    def SetRelaxedHpConformity(self, relaxed=True):
+        r"""SetRelaxedHpConformity(FiniteElementSpace self, bool relaxed=True)"""
+        return _fespace.FiniteElementSpace_SetRelaxedHpConformity(self, relaxed)
+    SetRelaxedHpConformity = _swig_new_instance_method(_fespace.FiniteElementSpace_SetRelaxedHpConformity)
+
     def Load(self, m, input):
         r"""Load(FiniteElementSpace self, Mesh m, std::istream & input) -> FiniteElementCollection"""
         return _fespace.FiniteElementSpace_Load(self, m, input)
@@ -709,6 +764,11 @@ class QuadratureSpace(object):
         return _fespace.QuadratureSpace_GetSize(self)
     GetSize = _swig_new_instance_method(_fespace.QuadratureSpace_GetSize)
 
+    def GetOrder(self):
+        r"""GetOrder(QuadratureSpace self) -> int"""
+        return _fespace.QuadratureSpace_GetOrder(self)
+    GetOrder = _swig_new_instance_method(_fespace.QuadratureSpace_GetOrder)
+
     def GetMesh(self):
         r"""GetMesh(QuadratureSpace self) -> Mesh"""
         return _fespace.QuadratureSpace_GetMesh(self)
@@ -740,97 +800,6 @@ class QuadratureSpace(object):
 
 # Register QuadratureSpace in _fespace:
 _fespace.QuadratureSpace_swigregister(QuadratureSpace)
-
-class GridTransfer(object):
-    r"""Proxy of C++ mfem::GridTransfer class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
-    __repr__ = _swig_repr
-    __swig_destroy__ = _fespace.delete_GridTransfer
-
-    def SetOperatorType(self, type):
-        r"""SetOperatorType(GridTransfer self, mfem::Operator::Type type)"""
-        return _fespace.GridTransfer_SetOperatorType(self, type)
-    SetOperatorType = _swig_new_instance_method(_fespace.GridTransfer_SetOperatorType)
-
-    def ForwardOperator(self):
-        r"""ForwardOperator(GridTransfer self) -> Operator"""
-        return _fespace.GridTransfer_ForwardOperator(self)
-    ForwardOperator = _swig_new_instance_method(_fespace.GridTransfer_ForwardOperator)
-
-    def BackwardOperator(self):
-        r"""BackwardOperator(GridTransfer self) -> Operator"""
-        return _fespace.GridTransfer_BackwardOperator(self)
-    BackwardOperator = _swig_new_instance_method(_fespace.GridTransfer_BackwardOperator)
-
-    def TrueForwardOperator(self):
-        r"""TrueForwardOperator(GridTransfer self) -> Operator"""
-        return _fespace.GridTransfer_TrueForwardOperator(self)
-    TrueForwardOperator = _swig_new_instance_method(_fespace.GridTransfer_TrueForwardOperator)
-
-    def TrueBackwardOperator(self):
-        r"""TrueBackwardOperator(GridTransfer self) -> Operator"""
-        return _fespace.GridTransfer_TrueBackwardOperator(self)
-    TrueBackwardOperator = _swig_new_instance_method(_fespace.GridTransfer_TrueBackwardOperator)
-
-# Register GridTransfer in _fespace:
-_fespace.GridTransfer_swigregister(GridTransfer)
-
-class InterpolationGridTransfer(GridTransfer):
-    r"""Proxy of C++ mfem::InterpolationGridTransfer class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self, coarse_fes, fine_fes):
-        r"""__init__(InterpolationGridTransfer self, FiniteElementSpace coarse_fes, FiniteElementSpace fine_fes) -> InterpolationGridTransfer"""
-        _fespace.InterpolationGridTransfer_swiginit(self, _fespace.new_InterpolationGridTransfer(coarse_fes, fine_fes))
-    __swig_destroy__ = _fespace.delete_InterpolationGridTransfer
-
-    def SetMassIntegrator(self, mass_integ_, own_mass_integ_=True):
-        r"""SetMassIntegrator(InterpolationGridTransfer self, BilinearFormIntegrator mass_integ_, bool own_mass_integ_=True)"""
-        return _fespace.InterpolationGridTransfer_SetMassIntegrator(self, mass_integ_, own_mass_integ_)
-    SetMassIntegrator = _swig_new_instance_method(_fespace.InterpolationGridTransfer_SetMassIntegrator)
-
-    def ForwardOperator(self):
-        r"""ForwardOperator(InterpolationGridTransfer self) -> Operator"""
-        return _fespace.InterpolationGridTransfer_ForwardOperator(self)
-    ForwardOperator = _swig_new_instance_method(_fespace.InterpolationGridTransfer_ForwardOperator)
-
-    def BackwardOperator(self):
-        r"""BackwardOperator(InterpolationGridTransfer self) -> Operator"""
-        return _fespace.InterpolationGridTransfer_BackwardOperator(self)
-    BackwardOperator = _swig_new_instance_method(_fespace.InterpolationGridTransfer_BackwardOperator)
-
-# Register InterpolationGridTransfer in _fespace:
-_fespace.InterpolationGridTransfer_swigregister(InterpolationGridTransfer)
-
-class L2ProjectionGridTransfer(GridTransfer):
-    r"""Proxy of C++ mfem::L2ProjectionGridTransfer class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self, coarse_fes, fine_fes):
-        r"""__init__(L2ProjectionGridTransfer self, FiniteElementSpace coarse_fes, FiniteElementSpace fine_fes) -> L2ProjectionGridTransfer"""
-        _fespace.L2ProjectionGridTransfer_swiginit(self, _fespace.new_L2ProjectionGridTransfer(coarse_fes, fine_fes))
-
-    def ForwardOperator(self):
-        r"""ForwardOperator(L2ProjectionGridTransfer self) -> Operator"""
-        return _fespace.L2ProjectionGridTransfer_ForwardOperator(self)
-    ForwardOperator = _swig_new_instance_method(_fespace.L2ProjectionGridTransfer_ForwardOperator)
-
-    def BackwardOperator(self):
-        r"""BackwardOperator(L2ProjectionGridTransfer self) -> Operator"""
-        return _fespace.L2ProjectionGridTransfer_BackwardOperator(self)
-    BackwardOperator = _swig_new_instance_method(_fespace.L2ProjectionGridTransfer_BackwardOperator)
-    __swig_destroy__ = _fespace.delete_L2ProjectionGridTransfer
-
-# Register L2ProjectionGridTransfer in _fespace:
-_fespace.L2ProjectionGridTransfer_swigregister(L2ProjectionGridTransfer)
 
 
 def UsesTensorBasis(fes):

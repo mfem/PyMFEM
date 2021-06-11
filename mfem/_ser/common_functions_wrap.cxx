@@ -4865,9 +4865,9 @@ static PyMethodDef SwigMethods[] = {
 		"Add(mfem::SparseMatrix const & A, double alpha, mfem::DenseMatrix & B)\n"
 		""},
 	 { "Transpose", _wrap_Transpose, METH_VARARGS, "\n"
-		"Transpose(mfem::Table const & A, mfem::Table & At, int _ncols_A=-1)\n"
+		"Transpose(mfem::Table const & A, mfem::Table & At, int ncols_A_=-1)\n"
 		"Transpose(mfem::Table const & A) -> mfem::Table\n"
-		"Transpose(intArray A, mfem::Table & At, int _ncols_A=-1)\n"
+		"Transpose(intArray A, mfem::Table & At, int ncols_A_=-1)\n"
 		"Transpose(mfem::SparseMatrix const & A) -> mfem::SparseMatrix\n"
 		"Transpose(mfem::BlockMatrix const & A) -> mfem::BlockMatrix *\n"
 		""},
@@ -4903,9 +4903,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Add(mfem::SparseMatrix const & A, double alpha, mfem::DenseMatrix & B)\n"
 		""},
 	 { "Transpose", _wrap_Transpose, METH_VARARGS, "\n"
-		"Transpose(mfem::Table const & A, mfem::Table & At, int _ncols_A=-1)\n"
+		"Transpose(mfem::Table const & A, mfem::Table & At, int ncols_A_=-1)\n"
 		"Transpose(mfem::Table const & A) -> mfem::Table\n"
-		"Transpose(intArray A, mfem::Table & At, int _ncols_A=-1)\n"
+		"Transpose(intArray A, mfem::Table & At, int ncols_A_=-1)\n"
 		"Transpose(mfem::SparseMatrix const & A) -> mfem::SparseMatrix\n"
 		"Transpose(mfem::BlockMatrix const & A) -> mfem::BlockMatrix *\n"
 		""},

@@ -3106,33 +3106,32 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__ArrayT_mfem__Embedding_t swig_types[6]
 #define SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t swig_types[7]
 #define SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t swig_types[8]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Vertex_t swig_types[9]
-#define SWIGTYPE_p_mfem__CoarseFineTransformations swig_types[10]
-#define SWIGTYPE_p_mfem__DenseTensor swig_types[11]
-#define SWIGTYPE_p_mfem__Embedding swig_types[12]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[13]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[14]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[15]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[16]
-#define SWIGTYPE_p_mfem__MemoryT_mfem__Refinement_t swig_types[17]
-#define SWIGTYPE_p_mfem__Mesh swig_types[18]
-#define SWIGTYPE_p_mfem__NCMesh swig_types[19]
-#define SWIGTYPE_p_mfem__NCMesh__MeshId swig_types[20]
-#define SWIGTYPE_p_mfem__NCMesh__NCList swig_types[21]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[22]
-#define SWIGTYPE_p_mfem__Refinement swig_types[23]
-#define SWIGTYPE_p_mfem__STable swig_types[24]
-#define SWIGTYPE_p_mfem__Table swig_types[25]
-#define SWIGTYPE_p_p_mfem__Refinement swig_types[26]
-#define SWIGTYPE_p_pri_t swig_types[27]
-#define SWIGTYPE_p_quad_t swig_types[28]
-#define SWIGTYPE_p_seg_t swig_types[29]
-#define SWIGTYPE_p_std__istream swig_types[30]
+#define SWIGTYPE_p_mfem__CoarseFineTransformations swig_types[9]
+#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[10]
+#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[11]
+#define SWIGTYPE_p_mfem__DenseTensor swig_types[12]
+#define SWIGTYPE_p_mfem__Embedding swig_types[13]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[14]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[15]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[16]
+#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[17]
+#define SWIGTYPE_p_mfem__MemoryT_mfem__Refinement_t swig_types[18]
+#define SWIGTYPE_p_mfem__Mesh swig_types[19]
+#define SWIGTYPE_p_mfem__NCMesh swig_types[20]
+#define SWIGTYPE_p_mfem__NCMesh__MeshId swig_types[21]
+#define SWIGTYPE_p_mfem__NCMesh__NCList swig_types[22]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[23]
+#define SWIGTYPE_p_mfem__Refinement swig_types[24]
+#define SWIGTYPE_p_mfem__STable swig_types[25]
+#define SWIGTYPE_p_mfem__Table swig_types[26]
+#define SWIGTYPE_p_p_mfem__Refinement swig_types[27]
+#define SWIGTYPE_p_pri_t swig_types[28]
+#define SWIGTYPE_p_quad_t swig_types[29]
+#define SWIGTYPE_p_seg_t swig_types[30]
 #define SWIGTYPE_p_tet_t swig_types[31]
 #define SWIGTYPE_p_tri_t swig_types[32]
-#define SWIGTYPE_p_void swig_types[33]
-static swig_type_info *swig_types[35];
-static swig_module_info swig_module = {swig_types, 34, 0, 0, 0, 0};
+static swig_type_info *swig_types[34];
+static swig_module_info swig_module = {swig_types, 33, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3607,83 +3606,6 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
   return SWIG_OK;
 }
 
-
-
-
-SWIGINTERN void mfem_NCMesh_PrintVertexParents__SWIG_1(mfem::NCMesh *self,char const *file,int precision=8){
-  std::ofstream ofile(file);
-  if (!ofile)
-     {
-        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
-        return;
-      }
-  ofile.precision(precision);    
-  self -> PrintVertexParents(ofile);
-  ofile.close();
-  }
-SWIGINTERN void mfem_NCMesh_PrintVertexParentsGZ(mfem::NCMesh *self,char const *file,int precision=8){
-  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
-  
-  if (!ofile)
-     {
-        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
-        return;
-      }
-  ofile -> precision(precision);  
-  self -> PrintVertexParents(*ofile);
-  delete ofile;
-  }
-SWIGINTERN void mfem_NCMesh_PrintVertexParents__SWIG_2(mfem::NCMesh *self){
-  self -> PrintVertexParents(std::cout);
-  }
-SWIGINTERN void mfem_NCMesh_PrintCoarseElements__SWIG_1(mfem::NCMesh *self,char const *file,int precision=8){
-  std::ofstream ofile(file);
-  if (!ofile)
-     {
-        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
-        return;
-      }
-  ofile.precision(precision);    
-  self -> PrintCoarseElements(ofile);
-  ofile.close();
-  }
-SWIGINTERN void mfem_NCMesh_PrintCoarseElementsGZ(mfem::NCMesh *self,char const *file,int precision=8){
-  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
-  
-  if (!ofile)
-     {
-        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
-        return;
-      }
-  ofile -> precision(precision);  
-  self -> PrintCoarseElements(*ofile);
-  delete ofile;
-  }
-SWIGINTERN void mfem_NCMesh_PrintCoarseElements__SWIG_2(mfem::NCMesh *self){
-  self -> PrintCoarseElements(std::cout);
-  }
-SWIGINTERN void mfem_NCMesh_PrintStats__SWIG_1(mfem::NCMesh *self,char const *file,int precision=8){
-  std::ofstream ofile(file);
-  if (!ofile)
-     {
-        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
-        return;
-      }
-  ofile.precision(precision);  
-  self -> PrintStats(ofile);
-  ofile.close();
-  }
-SWIGINTERN void mfem_NCMesh_PrintStatsGZ(mfem::NCMesh *self,char const *file,int precision=8){
-  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
-  if (!ofile)
-     {
-        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
-        return;
-      }
-  ofile ->precision(precision);  
-  self -> PrintStats(*ofile);
-  delete ofile;
-  }
 
 SWIGINTERN int
 SWIG_AsVal_int (PyObject * obj, int *val)
@@ -4668,32 +4590,79 @@ SWIGINTERN PyObject *CoarseFineTransformations_swiginit(PyObject *SWIGUNUSEDPARM
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_NCMesh__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Swap(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
-  std::istream *arg2 = (std::istream *) NULL ;
+  mfem::CoarseFineTransformations *arg1 = 0 ;
+  mfem::CoarseFineTransformations *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"a",  (char *)"b",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Swap", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__CoarseFineTransformations,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Swap" "', argument " "1"" of type '" "mfem::CoarseFineTransformations &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Swap" "', argument " "1"" of type '" "mfem::CoarseFineTransformations &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CoarseFineTransformations * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__CoarseFineTransformations,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Swap" "', argument " "2"" of type '" "mfem::CoarseFineTransformations &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Swap" "', argument " "2"" of type '" "mfem::CoarseFineTransformations &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::CoarseFineTransformations * >(argp2);
+  {
+    try {
+      mfem::Swap(*arg1,*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_NCMesh__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
   mfem::NCMesh *result = 0 ;
   
-  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_NCMesh" "', argument " "1"" of type '" "mfem::Mesh const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
-  if (swig_obj[1]) {
-    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_std__istream, 0 |  0 );
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_NCMesh" "', argument " "2"" of type '" "std::istream *""'"); 
-    }
-    arg2 = reinterpret_cast< std::istream * >(argp2);
-  }
   {
     try {
-      result = (mfem::NCMesh *)new mfem::NCMesh((mfem::Mesh const *)arg1,arg2);
+      result = (mfem::NCMesh *)new mfem::NCMesh((mfem::Mesh const *)arg1);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -4718,6 +4687,156 @@ fail:
 
 
 SWIGINTERN PyObject *_wrap_new_NCMesh__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  std::istream *arg1 = 0 ;
+  int arg2 ;
+  int *arg3 = 0 ;
+  int *arg4 = 0 ;
+  PyMFEM::wFILE *temp1 = 0 ;
+  std::ifstream in_txt1 ;
+  mfem::ifgzstream *in_gz1 = 0 ;
+  std::istringstream *stream1 = 0 ;
+  Py_ssize_t len1 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  mfem::NCMesh *result = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  {
+    //  PyMFEM::wFILE or string argument or StringIO
+    if (SWIG_ConvertPtr(swig_obj[0], (void **) &temp1, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      if (!PyString_Check(swig_obj[0]) && !PyUnicode_Check(swig_obj[0])) {
+        // not string, check if it is StringIO
+        PyObject* module = PyImport_ImportModule("io");
+        if (!module){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+          return NULL;
+        }      
+        PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+        if (!cls){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+          return NULL;
+        }      
+        int check = PyObject_IsInstance(swig_obj[0], cls);
+        Py_DECREF(module);
+        if (! check){
+          SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
+          return NULL;
+        }
+        
+        PyObject *input_str = PyObject_CallMethod(swig_obj[0], "getvalue", NULL);
+        if (PyErr_Occurred()) {
+          PyErr_SetString(PyExc_RuntimeError, "Can not read from StringIO");
+          return NULL;
+        }
+        
+        char *buf = nullptr;
+        PyObject *str = PyUnicode_AsUTF8String(input_str);	 
+        PyBytes_AsStringAndSize(str, &buf, &len1);
+        stream1 = new std::istringstream(buf);
+        Py_DECREF(str);
+        Py_DECREF(input_str);	 
+      } else {
+        // if it is string, extract filename as char*
+        PyObject* str = PyUnicode_AsEncodedString(swig_obj[0], "utf-8", "~E~");	
+        const char* filename = PyBytes_AsString(str);
+        temp1 = new PyMFEM::wFILE(filename, 8, true);
+        Py_DECREF(str);
+      }
+    }
+    if (stream1 == 0){
+      /*
+            if (temp1->isGZ()){
+        	 in_gz1 = new mfem::ifgzstream(temp1->getFilename());
+               arg1 = in_gz1;
+            } else {
+        	 in_txt1.open(temp1->getFilename(), std::ifstream::in);
+               in_txt1.precision(temp1->getPrecision());
+               arg1 = &in_txt1;
+            }
+           */
+      /* this will auto-detect the input file type */
+      in_gz1 = new mfem::ifgzstream(temp1->getFilename());
+      arg1 = in_gz1;
+      
+      if (temp1->isTemporary()){
+        delete temp1;
+      }
+    } else {
+      arg1 = stream1;
+    }
+  }
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_int,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_NCMesh" "', argument " "3"" of type '" "int &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_NCMesh" "', argument " "3"" of type '" "int &""'"); 
+  }
+  arg3 = reinterpret_cast< int * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_int,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_NCMesh" "', argument " "4"" of type '" "int &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_NCMesh" "', argument " "4"" of type '" "int &""'"); 
+  }
+  arg4 = reinterpret_cast< int * >(argp4);
+  {
+    try {
+      result = (mfem::NCMesh *)new mfem::NCMesh(*arg1,arg2,*arg3,*arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__NCMesh, SWIG_POINTER_NEW |  0 );
+  {
+    if (!stream1) {
+      if (temp1) {
+        in_txt1.close();
+      }
+      if (in_gz1){
+        delete in_gz1;
+      }
+    }  
+  }
+  return resultobj;
+fail:
+  {
+    if (!stream1) {
+      if (temp1) {
+        in_txt1.close();
+      }
+      if (in_gz1){
+        delete in_gz1;
+      }
+    }  
+  }
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_NCMesh__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::NCMesh *arg1 = 0 ;
   void *argp1 = 0 ;
@@ -4761,27 +4880,19 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_NCMesh(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[3] = {
+  PyObject *argv[5] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_NCMesh", 0, 2, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_NCMesh", 0, 4, argv))) SWIG_fail;
   --argc;
-  if ((argc >= 1) && (argc <= 2)) {
+  if (argc == 1) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      if (argc <= 1) {
-        return _wrap_new_NCMesh__SWIG_0(self, argc, argv);
-      }
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__istream, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_new_NCMesh__SWIG_0(self, argc, argv);
-      }
+      return _wrap_new_NCMesh__SWIG_0(self, argc, argv);
     }
   }
   if (argc == 1) {
@@ -4789,14 +4900,69 @@ SWIGINTERN PyObject *_wrap_new_NCMesh(PyObject *self, PyObject *args) {
     int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__NCMesh, SWIG_POINTER_NO_NULL | 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_new_NCMesh__SWIG_1(self, argc, argv);
+      return _wrap_new_NCMesh__SWIG_2(self, argc, argv);
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    {
+      void *ptr;
+      //std::string *ptr2 = (std::string *)0;
+      if (SWIG_ConvertPtr(argv[0], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+        PyErr_Clear();
+        if (!PyString_Check(argv[0]) && !PyUnicode_Check(argv[0])) {
+          // not string
+          _v = 1;	   	
+          PyObject* module = PyImport_ImportModule("io");
+          if (!module){
+            _v = 0;	   
+          }      
+          PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+          if (!cls){
+            _v = 0;	   	   
+          }      
+          int check = PyObject_IsInstance(argv[0], cls);
+          Py_DECREF(module);
+          if (! check){
+            _v = 0;	   	   	   
+          }
+        } else {
+          _v = 1;
+        }
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_int, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_int, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_new_NCMesh__SWIG_1(self, argc, argv);
+          }
+        }
+      }
     }
   }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_NCMesh'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    mfem::NCMesh::NCMesh(mfem::Mesh const *,std::istream *)\n"
+    "    mfem::NCMesh::NCMesh(mfem::Mesh const *)\n"
+    "    mfem::NCMesh::NCMesh(std::istream &,int,int &,int &)\n"
     "    mfem::NCMesh::NCMesh(mfem::NCMesh const &)\n");
   return 0;
 }
@@ -6453,7 +6619,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_NCMesh_PrintVertexParents__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_NCMesh_Print(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::NCMesh *arg1 = (mfem::NCMesh *) 0 ;
   std::ostream *arg2 = 0 ;
@@ -6465,17 +6631,22 @@ SWIGINTERN PyObject *_wrap_NCMesh_PrintVertexParents__SWIG_0(PyObject *SWIGUNUSE
   PyObject *string_io2 = 0 ;
   std::ostringstream *stream2 = 0 ;
   PyObject *ret2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"out",  NULL 
+  };
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:NCMesh_Print", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_PrintVertexParents" "', argument " "1"" of type '" "mfem::NCMesh const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_Print" "', argument " "1"" of type '" "mfem::NCMesh const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
   {
     //  PyMFEM::wFILE or string argument or StringIO
-    if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
-      if (!PyString_Check(swig_obj[1]) && !PyUnicode_Check(swig_obj[1])) {
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      if (!PyString_Check(obj1) && !PyUnicode_Check(obj1)) {
         // not string, check if it is StringIO
         PyObject* module = PyImport_ImportModule("io");
         if (!module){
@@ -6487,17 +6658,17 @@ SWIGINTERN PyObject *_wrap_NCMesh_PrintVertexParents__SWIG_0(PyObject *SWIGUNUSE
           PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
           return NULL;
         }      
-        int check = PyObject_IsInstance(swig_obj[1], cls);
+        int check = PyObject_IsInstance(obj1, cls);
         Py_DECREF(module);
         if (! check){
           SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
           return NULL;
         }
-        string_io2=swig_obj[1];
+        string_io2=obj1;
         stream2 = new std::ostringstream();
       } else {
         // if it is string, extract filename as char*
-        PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
+        PyObject* str = PyUnicode_AsEncodedString(obj1, "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
         temp2 = new PyMFEM::wFILE(filename, 8, true);
         Py_DECREF(str);	 
@@ -6524,7 +6695,7 @@ SWIGINTERN PyObject *_wrap_NCMesh_PrintVertexParents__SWIG_0(PyObject *SWIGUNUSE
   }
   {
     try {
-      ((mfem::NCMesh const *)arg1)->PrintVertexParents(*arg2);
+      ((mfem::NCMesh const *)arg1)->Print(*arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -6592,78 +6763,24 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_NCMesh_PrintCoarseElements__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_NCMesh_IsLegacyLoaded(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::NCMesh *arg1 = (mfem::NCMesh *) 0 ;
-  std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out_txt2 ;
-  mfem::ofgzstream *out_gz2 = 0 ;
-  PyObject *string_io2 = 0 ;
-  std::ostringstream *stream2 = 0 ;
-  PyObject *ret2 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_PrintCoarseElements" "', argument " "1"" of type '" "mfem::NCMesh const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_IsLegacyLoaded" "', argument " "1"" of type '" "mfem::NCMesh const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
   {
-    //  PyMFEM::wFILE or string argument or StringIO
-    if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
-      if (!PyString_Check(swig_obj[1]) && !PyUnicode_Check(swig_obj[1])) {
-        // not string, check if it is StringIO
-        PyObject* module = PyImport_ImportModule("io");
-        if (!module){
-          PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
-          return NULL;
-        }      
-        PyObject* cls = PyObject_GetAttrString(module, "StringIO");
-        if (!cls){
-          PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
-          return NULL;
-        }      
-        int check = PyObject_IsInstance(swig_obj[1], cls);
-        Py_DECREF(module);
-        if (! check){
-          SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
-          return NULL;
-        }
-        string_io2=swig_obj[1];
-        stream2 = new std::ostringstream();
-      } else {
-        // if it is string, extract filename as char*
-        PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
-        const char* filename = PyBytes_AsString(str);
-        temp2 = new PyMFEM::wFILE(filename, 8, true);
-        Py_DECREF(str);	 
-      }
-    }
-    
-    if (stream2 == 0){
-      if (temp2->isSTDOUT() == 1) {
-        arg2 = &std::cout;
-      } else if (temp2->isGZ()){
-        out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
-        arg2 = out_gz2;	     
-      } else {
-        out_txt2.open(temp2->getFilename());
-        out_txt2.precision(temp2->getPrecision());
-        arg2 = &out_txt2;
-      }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
-    } else {
-      arg2 = stream2;
-    }
-  }
-  {
     try {
-      ((mfem::NCMesh const *)arg1)->PrintCoarseElements(*arg2);
+      result = (bool)((mfem::NCMesh const *)arg1)->IsLegacyLoaded();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -6680,327 +6797,17 @@ SWIGINTERN PyObject *_wrap_NCMesh_PrintCoarseElements__SWIG_0(PyObject *SWIGUNUS
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
   }
-  resultobj = SWIG_Py_Void();
-  {
-    if (stream2) {
-      std::string str =  stream2->str();
-      const char* s = str.c_str();
-      const int n = str.length();
-      ret2 = PyObject_CallMethod(string_io2, "write", "s#",
-        s, static_cast<Py_ssize_t>(n));
-      if (PyErr_Occurred()) {
-        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
-        return NULL;
-      }
-      delete stream2;
-      Py_XDECREF(resultobj);   /* Blow away any previous result */
-      resultobj = ret2;    
-    }
-  }
-  {
-    if (!stream2) {
-      if (temp2) {
-        if (temp2->isSTDOUT() != 1) {
-          if (out_txt2.is_open()){
-            out_txt2.close();
-          }
-          if (out_gz2){
-            delete out_gz2;
-          }
-        }
-      }
-    }
-  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
-  {
-    if (!stream2) {
-      if (temp2) {
-        if (temp2->isSTDOUT() != 1) {
-          if (out_txt2.is_open()){
-            out_txt2.close();
-          }
-          if (out_gz2){
-            delete out_gz2;
-          }
-        }
-      }
-    }
-  }
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_NCMesh_LoadVertexParents(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_NCMesh_LegacyToNewVertexOrdering(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::NCMesh *arg1 = (mfem::NCMesh *) 0 ;
-  std::istream *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyMFEM::wFILE *temp2 = 0 ;
-  std::ifstream in_txt2 ;
-  mfem::ifgzstream *in_gz2 = 0 ;
-  std::istringstream *stream2 = 0 ;
-  Py_ssize_t len2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"input",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:NCMesh_LoadVertexParents", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_LoadVertexParents" "', argument " "1"" of type '" "mfem::NCMesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
-  {
-    //  PyMFEM::wFILE or string argument or StringIO
-    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
-      if (!PyString_Check(obj1) && !PyUnicode_Check(obj1)) {
-        // not string, check if it is StringIO
-        PyObject* module = PyImport_ImportModule("io");
-        if (!module){
-          PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
-          return NULL;
-        }      
-        PyObject* cls = PyObject_GetAttrString(module, "StringIO");
-        if (!cls){
-          PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
-          return NULL;
-        }      
-        int check = PyObject_IsInstance(obj1, cls);
-        Py_DECREF(module);
-        if (! check){
-          SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
-          return NULL;
-        }
-        
-        PyObject *input_str = PyObject_CallMethod(obj1, "getvalue", NULL);
-        if (PyErr_Occurred()) {
-          PyErr_SetString(PyExc_RuntimeError, "Can not read from StringIO");
-          return NULL;
-        }
-        
-        char *buf = nullptr;
-        PyObject *str = PyUnicode_AsUTF8String(input_str);	 
-        PyBytes_AsStringAndSize(str, &buf, &len2);
-        stream2 = new std::istringstream(buf);
-        Py_DECREF(str);
-        Py_DECREF(input_str);	 
-      } else {
-        // if it is string, extract filename as char*
-        PyObject* str = PyUnicode_AsEncodedString(obj1, "utf-8", "~E~");	
-        const char* filename = PyBytes_AsString(str);
-        temp2 = new PyMFEM::wFILE(filename, 8, true);
-        Py_DECREF(str);
-      }
-    }
-    if (stream2 == 0){
-      /*
-            if (temp2->isGZ()){
-        	 in_gz2 = new mfem::ifgzstream(temp2->getFilename());
-               arg2 = in_gz2;
-            } else {
-        	 in_txt2.open(temp2->getFilename(), std::ifstream::in);
-               in_txt2.precision(temp2->getPrecision());
-               arg2 = &in_txt2;
-            }
-           */
-      /* this will auto-detect the input file type */
-      in_gz2 = new mfem::ifgzstream(temp2->getFilename());
-      arg2 = in_gz2;
-      
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
-    } else {
-      arg2 = stream2;
-    }
-  }
-  {
-    try {
-      (arg1)->LoadVertexParents(*arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  {
-    if (!stream2) {
-      if (temp2) {
-        in_txt2.close();
-      }
-      if (in_gz2){
-        delete in_gz2;
-      }
-    }  
-  }
-  return resultobj;
-fail:
-  {
-    if (!stream2) {
-      if (temp2) {
-        in_txt2.close();
-      }
-      if (in_gz2){
-        delete in_gz2;
-      }
-    }  
-  }
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NCMesh_LoadCoarseElements(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::NCMesh *arg1 = (mfem::NCMesh *) 0 ;
-  std::istream *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyMFEM::wFILE *temp2 = 0 ;
-  std::ifstream in_txt2 ;
-  mfem::ifgzstream *in_gz2 = 0 ;
-  std::istringstream *stream2 = 0 ;
-  Py_ssize_t len2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"input",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:NCMesh_LoadCoarseElements", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_LoadCoarseElements" "', argument " "1"" of type '" "mfem::NCMesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
-  {
-    //  PyMFEM::wFILE or string argument or StringIO
-    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
-      if (!PyString_Check(obj1) && !PyUnicode_Check(obj1)) {
-        // not string, check if it is StringIO
-        PyObject* module = PyImport_ImportModule("io");
-        if (!module){
-          PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
-          return NULL;
-        }      
-        PyObject* cls = PyObject_GetAttrString(module, "StringIO");
-        if (!cls){
-          PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
-          return NULL;
-        }      
-        int check = PyObject_IsInstance(obj1, cls);
-        Py_DECREF(module);
-        if (! check){
-          SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
-          return NULL;
-        }
-        
-        PyObject *input_str = PyObject_CallMethod(obj1, "getvalue", NULL);
-        if (PyErr_Occurred()) {
-          PyErr_SetString(PyExc_RuntimeError, "Can not read from StringIO");
-          return NULL;
-        }
-        
-        char *buf = nullptr;
-        PyObject *str = PyUnicode_AsUTF8String(input_str);	 
-        PyBytes_AsStringAndSize(str, &buf, &len2);
-        stream2 = new std::istringstream(buf);
-        Py_DECREF(str);
-        Py_DECREF(input_str);	 
-      } else {
-        // if it is string, extract filename as char*
-        PyObject* str = PyUnicode_AsEncodedString(obj1, "utf-8", "~E~");	
-        const char* filename = PyBytes_AsString(str);
-        temp2 = new PyMFEM::wFILE(filename, 8, true);
-        Py_DECREF(str);
-      }
-    }
-    if (stream2 == 0){
-      /*
-            if (temp2->isGZ()){
-        	 in_gz2 = new mfem::ifgzstream(temp2->getFilename());
-               arg2 = in_gz2;
-            } else {
-        	 in_txt2.open(temp2->getFilename(), std::ifstream::in);
-               in_txt2.precision(temp2->getPrecision());
-               arg2 = &in_txt2;
-            }
-           */
-      /* this will auto-detect the input file type */
-      in_gz2 = new mfem::ifgzstream(temp2->getFilename());
-      arg2 = in_gz2;
-      
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
-    } else {
-      arg2 = stream2;
-    }
-  }
-  {
-    try {
-      (arg1)->LoadCoarseElements(*arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  {
-    if (!stream2) {
-      if (temp2) {
-        in_txt2.close();
-      }
-      if (in_gz2){
-        delete in_gz2;
-      }
-    }  
-  }
-  return resultobj;
-fail:
-  {
-    if (!stream2) {
-      if (temp2) {
-        in_txt2.close();
-      }
-      if (in_gz2){
-        delete in_gz2;
-      }
-    }  
-  }
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NCMesh_SetVertexPositions(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::NCMesh *arg1 = (mfem::NCMesh *) 0 ;
-  mfem::Array< mfem::Vertex > *arg2 = 0 ;
+  mfem::Array< int > *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -7008,26 +6815,26 @@ SWIGINTERN PyObject *_wrap_NCMesh_SetVertexPositions(PyObject *SWIGUNUSEDPARM(se
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"vertices",  NULL 
+    (char *)"self",  (char *)"order",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:NCMesh_SetVertexPositions", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:NCMesh_LegacyToNewVertexOrdering", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_SetVertexPositions" "', argument " "1"" of type '" "mfem::NCMesh *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_LegacyToNewVertexOrdering" "', argument " "1"" of type '" "mfem::NCMesh const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_mfem__Vertex_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NCMesh_SetVertexPositions" "', argument " "2"" of type '" "mfem::Array< mfem::Vertex > const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NCMesh_LegacyToNewVertexOrdering" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NCMesh_SetVertexPositions" "', argument " "2"" of type '" "mfem::Array< mfem::Vertex > const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NCMesh_LegacyToNewVertexOrdering" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
   }
-  arg2 = reinterpret_cast< mfem::Array< mfem::Vertex > * >(argp2);
+  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
   {
     try {
-      (arg1)->SetVertexPositions((mfem::Array< mfem::Vertex > const &)*arg2);
+      ((mfem::NCMesh const *)arg1)->LegacyToNewVertexOrdering(*arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -7169,862 +6976,6 @@ SWIGINTERN PyObject *_wrap_NCMesh_PrintMemoryDetail(PyObject *SWIGUNUSEDPARM(sel
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NCMesh_PrintStats__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::NCMesh *arg1 = (mfem::NCMesh *) 0 ;
-  std::ostream &arg2_defvalue = mfem::out ;
-  std::ostream *arg2 = (std::ostream *) &arg2_defvalue ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out_txt2 ;
-  mfem::ofgzstream *out_gz2 = 0 ;
-  PyObject *string_io2 = 0 ;
-  std::ostringstream *stream2 = 0 ;
-  PyObject *ret2 = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_PrintStats" "', argument " "1"" of type '" "mfem::NCMesh const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
-  if (swig_obj[1]) {
-    {
-      //  PyMFEM::wFILE or string argument or StringIO
-      if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
-        if (!PyString_Check(swig_obj[1]) && !PyUnicode_Check(swig_obj[1])) {
-          // not string, check if it is StringIO
-          PyObject* module = PyImport_ImportModule("io");
-          if (!module){
-            PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
-            return NULL;
-          }      
-          PyObject* cls = PyObject_GetAttrString(module, "StringIO");
-          if (!cls){
-            PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
-            return NULL;
-          }      
-          int check = PyObject_IsInstance(swig_obj[1], cls);
-          Py_DECREF(module);
-          if (! check){
-            SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
-            return NULL;
-          }
-          string_io2=swig_obj[1];
-          stream2 = new std::ostringstream();
-        } else {
-          // if it is string, extract filename as char*
-          PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
-          const char* filename = PyBytes_AsString(str);
-          temp2 = new PyMFEM::wFILE(filename, 8, true);
-          Py_DECREF(str);	 
-        }
-      }
-      
-      if (stream2 == 0){
-        if (temp2->isSTDOUT() == 1) {
-          arg2 = &std::cout;
-        } else if (temp2->isGZ()){
-          out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
-          arg2 = out_gz2;	     
-        } else {
-          out_txt2.open(temp2->getFilename());
-          out_txt2.precision(temp2->getPrecision());
-          arg2 = &out_txt2;
-        }
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
-      } else {
-        arg2 = stream2;
-      }
-    }
-  }
-  {
-    try {
-      ((mfem::NCMesh const *)arg1)->PrintStats(*arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  {
-    if (stream2) {
-      std::string str =  stream2->str();
-      const char* s = str.c_str();
-      const int n = str.length();
-      ret2 = PyObject_CallMethod(string_io2, "write", "s#",
-        s, static_cast<Py_ssize_t>(n));
-      if (PyErr_Occurred()) {
-        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
-        return NULL;
-      }
-      delete stream2;
-      Py_XDECREF(resultobj);   /* Blow away any previous result */
-      resultobj = ret2;    
-    }
-  }
-  {
-    if (!stream2) {
-      if (temp2) {
-        if (temp2->isSTDOUT() != 1) {
-          if (out_txt2.is_open()){
-            out_txt2.close();
-          }
-          if (out_gz2){
-            delete out_gz2;
-          }
-        }
-      }
-    }
-  }
-  return resultobj;
-fail:
-  {
-    if (!stream2) {
-      if (temp2) {
-        if (temp2->isSTDOUT() != 1) {
-          if (out_txt2.is_open()){
-            out_txt2.close();
-          }
-          if (out_gz2){
-            delete out_gz2;
-          }
-        }
-      }
-    }
-  }
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NCMesh_PrintVertexParents__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::NCMesh *arg1 = (mfem::NCMesh *) 0 ;
-  char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 ;
-  char *buf2 = 0 ;
-  int alloc2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_PrintVertexParents" "', argument " "1"" of type '" "mfem::NCMesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NCMesh_PrintVertexParents" "', argument " "2"" of type '" "char const *""'");
-  }
-  arg2 = reinterpret_cast< char * >(buf2);
-  if (swig_obj[2]) {
-    {
-      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-      };  
-      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-    }
-  }
-  {
-    try {
-      mfem_NCMesh_PrintVertexParents__SWIG_1(arg1,(char const *)arg2,arg3);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return resultobj;
-fail:
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NCMesh_PrintVertexParentsGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::NCMesh *arg1 = (mfem::NCMesh *) 0 ;
-  char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 ;
-  char *buf2 = 0 ;
-  int alloc2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:NCMesh_PrintVertexParentsGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_PrintVertexParentsGZ" "', argument " "1"" of type '" "mfem::NCMesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NCMesh_PrintVertexParentsGZ" "', argument " "2"" of type '" "char const *""'");
-  }
-  arg2 = reinterpret_cast< char * >(buf2);
-  if (obj2) {
-    {
-      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
-        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-      };  
-      arg3 = PyArray_PyIntAsInt(obj2);
-    }
-  }
-  {
-    try {
-      mfem_NCMesh_PrintVertexParentsGZ(arg1,(char const *)arg2,arg3);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return resultobj;
-fail:
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NCMesh_PrintVertexParents__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::NCMesh *arg1 = (mfem::NCMesh *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_PrintVertexParents" "', argument " "1"" of type '" "mfem::NCMesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
-  {
-    try {
-      mfem_NCMesh_PrintVertexParents__SWIG_2(arg1);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NCMesh_PrintVertexParents(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[4] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "NCMesh_PrintVertexParents", 0, 3, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__NCMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_NCMesh_PrintVertexParents__SWIG_2(self, argc, argv);
-    }
-  }
-  if ((argc >= 2) && (argc <= 3)) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__NCMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        if (argc <= 2) {
-          return _wrap_NCMesh_PrintVertexParents__SWIG_1(self, argc, argv);
-        }
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_NCMesh_PrintVertexParents__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__NCMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        void *ptr;
-        //std::string *ptr2 = (std::string *)0;
-        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
-          PyErr_Clear();
-          if (!PyString_Check(argv[1]) && !PyUnicode_Check(argv[1])) {
-            // not string
-            _v = 1;	   	
-            PyObject* module = PyImport_ImportModule("io");
-            if (!module){
-              _v = 0;	   
-            }      
-            PyObject* cls = PyObject_GetAttrString(module, "StringIO");
-            if (!cls){
-              _v = 0;	   	   
-            }      
-            int check = PyObject_IsInstance(argv[1], cls);
-            Py_DECREF(module);
-            if (! check){
-              _v = 0;	   	   	   
-            }
-          } else {
-            _v = 1;
-          }
-        } else {
-          _v = 1;
-        }
-      }
-      if (_v) {
-        return _wrap_NCMesh_PrintVertexParents__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'NCMesh_PrintVertexParents'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::NCMesh::PrintVertexParents(std::ostream &) const\n"
-    "    mfem::NCMesh::PrintVertexParents(char const *,int)\n"
-    "    mfem::NCMesh::PrintVertexParents()\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_NCMesh_PrintCoarseElements__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::NCMesh *arg1 = (mfem::NCMesh *) 0 ;
-  char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 ;
-  char *buf2 = 0 ;
-  int alloc2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_PrintCoarseElements" "', argument " "1"" of type '" "mfem::NCMesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NCMesh_PrintCoarseElements" "', argument " "2"" of type '" "char const *""'");
-  }
-  arg2 = reinterpret_cast< char * >(buf2);
-  if (swig_obj[2]) {
-    {
-      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-      };  
-      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-    }
-  }
-  {
-    try {
-      mfem_NCMesh_PrintCoarseElements__SWIG_1(arg1,(char const *)arg2,arg3);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return resultobj;
-fail:
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NCMesh_PrintCoarseElementsGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::NCMesh *arg1 = (mfem::NCMesh *) 0 ;
-  char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 ;
-  char *buf2 = 0 ;
-  int alloc2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:NCMesh_PrintCoarseElementsGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_PrintCoarseElementsGZ" "', argument " "1"" of type '" "mfem::NCMesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NCMesh_PrintCoarseElementsGZ" "', argument " "2"" of type '" "char const *""'");
-  }
-  arg2 = reinterpret_cast< char * >(buf2);
-  if (obj2) {
-    {
-      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
-        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-      };  
-      arg3 = PyArray_PyIntAsInt(obj2);
-    }
-  }
-  {
-    try {
-      mfem_NCMesh_PrintCoarseElementsGZ(arg1,(char const *)arg2,arg3);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return resultobj;
-fail:
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NCMesh_PrintCoarseElements__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::NCMesh *arg1 = (mfem::NCMesh *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_PrintCoarseElements" "', argument " "1"" of type '" "mfem::NCMesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
-  {
-    try {
-      mfem_NCMesh_PrintCoarseElements__SWIG_2(arg1);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NCMesh_PrintCoarseElements(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[4] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "NCMesh_PrintCoarseElements", 0, 3, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__NCMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_NCMesh_PrintCoarseElements__SWIG_2(self, argc, argv);
-    }
-  }
-  if ((argc >= 2) && (argc <= 3)) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__NCMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        if (argc <= 2) {
-          return _wrap_NCMesh_PrintCoarseElements__SWIG_1(self, argc, argv);
-        }
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_NCMesh_PrintCoarseElements__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__NCMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        void *ptr;
-        //std::string *ptr2 = (std::string *)0;
-        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
-          PyErr_Clear();
-          if (!PyString_Check(argv[1]) && !PyUnicode_Check(argv[1])) {
-            // not string
-            _v = 1;	   	
-            PyObject* module = PyImport_ImportModule("io");
-            if (!module){
-              _v = 0;	   
-            }      
-            PyObject* cls = PyObject_GetAttrString(module, "StringIO");
-            if (!cls){
-              _v = 0;	   	   
-            }      
-            int check = PyObject_IsInstance(argv[1], cls);
-            Py_DECREF(module);
-            if (! check){
-              _v = 0;	   	   	   
-            }
-          } else {
-            _v = 1;
-          }
-        } else {
-          _v = 1;
-        }
-      }
-      if (_v) {
-        return _wrap_NCMesh_PrintCoarseElements__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'NCMesh_PrintCoarseElements'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::NCMesh::PrintCoarseElements(std::ostream &) const\n"
-    "    mfem::NCMesh::PrintCoarseElements(char const *,int)\n"
-    "    mfem::NCMesh::PrintCoarseElements()\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_NCMesh_PrintStats__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::NCMesh *arg1 = (mfem::NCMesh *) 0 ;
-  char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 ;
-  char *buf2 = 0 ;
-  int alloc2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_PrintStats" "', argument " "1"" of type '" "mfem::NCMesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NCMesh_PrintStats" "', argument " "2"" of type '" "char const *""'");
-  }
-  arg2 = reinterpret_cast< char * >(buf2);
-  if (swig_obj[2]) {
-    {
-      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-      };  
-      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-    }
-  }
-  {
-    try {
-      mfem_NCMesh_PrintStats__SWIG_1(arg1,(char const *)arg2,arg3);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return resultobj;
-fail:
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_NCMesh_PrintStats(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[4] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "NCMesh_PrintStats", 0, 3, argv))) SWIG_fail;
-  --argc;
-  if ((argc >= 1) && (argc <= 2)) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__NCMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      if (argc <= 1) {
-        return _wrap_NCMesh_PrintStats__SWIG_0(self, argc, argv);
-      }
-      {
-        void *ptr;
-        //std::string *ptr2 = (std::string *)0;
-        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
-          PyErr_Clear();
-          if (!PyString_Check(argv[1]) && !PyUnicode_Check(argv[1])) {
-            // not string
-            _v = 1;	   	
-            PyObject* module = PyImport_ImportModule("io");
-            if (!module){
-              _v = 0;	   
-            }      
-            PyObject* cls = PyObject_GetAttrString(module, "StringIO");
-            if (!cls){
-              _v = 0;	   	   
-            }      
-            int check = PyObject_IsInstance(argv[1], cls);
-            Py_DECREF(module);
-            if (! check){
-              _v = 0;	   	   	   
-            }
-          } else {
-            _v = 1;
-          }
-        } else {
-          _v = 1;
-        }
-      }
-      if (_v) {
-        return _wrap_NCMesh_PrintStats__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  if ((argc >= 2) && (argc <= 3)) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__NCMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        if (argc <= 2) {
-          return _wrap_NCMesh_PrintStats__SWIG_1(self, argc, argv);
-        }
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_NCMesh_PrintStats__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'NCMesh_PrintStats'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::NCMesh::PrintStats(std::ostream &) const\n"
-    "    mfem::NCMesh::PrintStats(char const *,int)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_NCMesh_PrintStatsGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::NCMesh *arg1 = (mfem::NCMesh *) 0 ;
-  char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 ;
-  char *buf2 = 0 ;
-  int alloc2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:NCMesh_PrintStatsGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_PrintStatsGZ" "', argument " "1"" of type '" "mfem::NCMesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NCMesh_PrintStatsGZ" "', argument " "2"" of type '" "char const *""'");
-  }
-  arg2 = reinterpret_cast< char * >(buf2);
-  if (obj2) {
-    {
-      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
-        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-      };  
-      arg3 = PyArray_PyIntAsInt(obj2);
-    }
-  }
-  {
-    try {
-      mfem_NCMesh_PrintStatsGZ(arg1,(char const *)arg2,arg3);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return resultobj;
-fail:
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return NULL;
 }
 
@@ -10816,8 +9767,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_CoarseFineTransformations", _wrap_delete_CoarseFineTransformations, METH_O, "delete_CoarseFineTransformations(CoarseFineTransformations self)"},
 	 { "CoarseFineTransformations_swigregister", CoarseFineTransformations_swigregister, METH_O, NULL},
 	 { "CoarseFineTransformations_swiginit", CoarseFineTransformations_swiginit, METH_VARARGS, NULL},
+	 { "Swap", (PyCFunction)(void(*)(void))_wrap_Swap, METH_VARARGS|METH_KEYWORDS, "Swap(CoarseFineTransformations a, CoarseFineTransformations b)"},
 	 { "new_NCMesh", _wrap_new_NCMesh, METH_VARARGS, "\n"
-		"NCMesh(Mesh mesh, std::istream * vertex_parents=None)\n"
+		"NCMesh(Mesh mesh)\n"
+		"NCMesh(std::istream & input, int version, int & curved, int & is_nc)\n"
 		"new_NCMesh(NCMesh other) -> NCMesh\n"
 		""},
 	 { "delete_NCMesh", _wrap_delete_NCMesh, METH_O, "delete_NCMesh(NCMesh self)"},
@@ -10852,36 +9805,19 @@ static PyMethodDef SwigMethods[] = {
 	 { "NCMesh_GetElementDepth", (PyCFunction)(void(*)(void))_wrap_NCMesh_GetElementDepth, METH_VARARGS|METH_KEYWORDS, "NCMesh_GetElementDepth(NCMesh self, int i) -> int"},
 	 { "NCMesh_GetElementSizeReduction", (PyCFunction)(void(*)(void))_wrap_NCMesh_GetElementSizeReduction, METH_VARARGS|METH_KEYWORDS, "NCMesh_GetElementSizeReduction(NCMesh self, int i) -> int"},
 	 { "NCMesh_GetElementFacesAttributes", (PyCFunction)(void(*)(void))_wrap_NCMesh_GetElementFacesAttributes, METH_VARARGS|METH_KEYWORDS, "NCMesh_GetElementFacesAttributes(NCMesh self, int i, intArray faces, intArray fattr)"},
-	 { "NCMesh_LoadVertexParents", (PyCFunction)(void(*)(void))_wrap_NCMesh_LoadVertexParents, METH_VARARGS|METH_KEYWORDS, "NCMesh_LoadVertexParents(NCMesh self, std::istream & input)"},
-	 { "NCMesh_LoadCoarseElements", (PyCFunction)(void(*)(void))_wrap_NCMesh_LoadCoarseElements, METH_VARARGS|METH_KEYWORDS, "NCMesh_LoadCoarseElements(NCMesh self, std::istream & input)"},
-	 { "NCMesh_SetVertexPositions", (PyCFunction)(void(*)(void))_wrap_NCMesh_SetVertexPositions, METH_VARARGS|METH_KEYWORDS, "NCMesh_SetVertexPositions(NCMesh self, mfem::Array< mfem::Vertex > const & vertices)"},
+	 { "NCMesh_Print", (PyCFunction)(void(*)(void))_wrap_NCMesh_Print, METH_VARARGS|METH_KEYWORDS, "NCMesh_Print(NCMesh self, std::ostream & out)"},
+	 { "NCMesh_IsLegacyLoaded", _wrap_NCMesh_IsLegacyLoaded, METH_O, "NCMesh_IsLegacyLoaded(NCMesh self) -> bool"},
+	 { "NCMesh_LegacyToNewVertexOrdering", (PyCFunction)(void(*)(void))_wrap_NCMesh_LegacyToNewVertexOrdering, METH_VARARGS|METH_KEYWORDS, "NCMesh_LegacyToNewVertexOrdering(NCMesh self, intArray order)"},
 	 { "NCMesh_Trim", _wrap_NCMesh_Trim, METH_O, "NCMesh_Trim(NCMesh self)"},
 	 { "NCMesh_MemoryUsage", _wrap_NCMesh_MemoryUsage, METH_O, "NCMesh_MemoryUsage(NCMesh self) -> long"},
 	 { "NCMesh_PrintMemoryDetail", _wrap_NCMesh_PrintMemoryDetail, METH_O, "NCMesh_PrintMemoryDetail(NCMesh self) -> int"},
-	 { "NCMesh_PrintVertexParentsGZ", (PyCFunction)(void(*)(void))_wrap_NCMesh_PrintVertexParentsGZ, METH_VARARGS|METH_KEYWORDS, "NCMesh_PrintVertexParentsGZ(NCMesh self, char const * file, int precision=8)"},
-	 { "NCMesh_PrintVertexParents", _wrap_NCMesh_PrintVertexParents, METH_VARARGS, "\n"
-		"NCMesh_PrintVertexParents(NCMesh self, std::ostream & out)\n"
-		"NCMesh_PrintVertexParents(NCMesh self, char const * file, int precision=8)\n"
-		"NCMesh_PrintVertexParents(NCMesh self)\n"
-		""},
-	 { "NCMesh_PrintCoarseElementsGZ", (PyCFunction)(void(*)(void))_wrap_NCMesh_PrintCoarseElementsGZ, METH_VARARGS|METH_KEYWORDS, "NCMesh_PrintCoarseElementsGZ(NCMesh self, char const * file, int precision=8)"},
-	 { "NCMesh_PrintCoarseElements", _wrap_NCMesh_PrintCoarseElements, METH_VARARGS, "\n"
-		"NCMesh_PrintCoarseElements(NCMesh self, std::ostream & out)\n"
-		"NCMesh_PrintCoarseElements(NCMesh self, char const * file, int precision=8)\n"
-		"NCMesh_PrintCoarseElements(NCMesh self)\n"
-		""},
-	 { "NCMesh_PrintStats", _wrap_NCMesh_PrintStats, METH_VARARGS, "\n"
-		"NCMesh_PrintStats(NCMesh self, std::ostream & out=out)\n"
-		"NCMesh_PrintStats(NCMesh self, char const * file, int precision=8)\n"
-		""},
-	 { "NCMesh_PrintStatsGZ", (PyCFunction)(void(*)(void))_wrap_NCMesh_PrintStatsGZ, METH_VARARGS|METH_KEYWORDS, "NCMesh_PrintStatsGZ(NCMesh self, char const * file, int precision=8)"},
 	 { "NCMesh_swigregister", NCMesh_swigregister, METH_O, NULL},
 	 { "NCMesh_swiginit", NCMesh_swiginit, METH_VARARGS, NULL},
 	 { "new_RefinementArray", _wrap_new_RefinementArray, METH_VARARGS, "\n"
 		"RefinementArray()\n"
 		"RefinementArray(mfem::MemoryType mt)\n"
 		"RefinementArray(int asize)\n"
-		"RefinementArray(Refinement _data, int asize)\n"
+		"RefinementArray(Refinement data_, int asize)\n"
 		"new_RefinementArray(RefinementArray src) -> RefinementArray\n"
 		""},
 	 { "delete_RefinementArray", _wrap_delete_RefinementArray, METH_O, "delete_RefinementArray(RefinementArray self)"},
@@ -10987,8 +9923,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_CoarseFineTransformations", _wrap_delete_CoarseFineTransformations, METH_O, "delete_CoarseFineTransformations(CoarseFineTransformations self)"},
 	 { "CoarseFineTransformations_swigregister", CoarseFineTransformations_swigregister, METH_O, NULL},
 	 { "CoarseFineTransformations_swiginit", CoarseFineTransformations_swiginit, METH_VARARGS, NULL},
+	 { "Swap", (PyCFunction)(void(*)(void))_wrap_Swap, METH_VARARGS|METH_KEYWORDS, "Swap(CoarseFineTransformations a, CoarseFineTransformations b)"},
 	 { "new_NCMesh", _wrap_new_NCMesh, METH_VARARGS, "\n"
-		"NCMesh(Mesh mesh, std::istream * vertex_parents=None)\n"
+		"NCMesh(Mesh mesh)\n"
+		"NCMesh(std::istream & input, int version, int & curved, int & is_nc)\n"
 		"new_NCMesh(NCMesh other) -> NCMesh\n"
 		""},
 	 { "delete_NCMesh", _wrap_delete_NCMesh, METH_O, "delete_NCMesh(NCMesh self)"},
@@ -11023,36 +9961,19 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "NCMesh_GetElementDepth", (PyCFunction)(void(*)(void))_wrap_NCMesh_GetElementDepth, METH_VARARGS|METH_KEYWORDS, "GetElementDepth(NCMesh self, int i) -> int"},
 	 { "NCMesh_GetElementSizeReduction", (PyCFunction)(void(*)(void))_wrap_NCMesh_GetElementSizeReduction, METH_VARARGS|METH_KEYWORDS, "GetElementSizeReduction(NCMesh self, int i) -> int"},
 	 { "NCMesh_GetElementFacesAttributes", (PyCFunction)(void(*)(void))_wrap_NCMesh_GetElementFacesAttributes, METH_VARARGS|METH_KEYWORDS, "GetElementFacesAttributes(NCMesh self, int i, intArray faces, intArray fattr)"},
-	 { "NCMesh_LoadVertexParents", (PyCFunction)(void(*)(void))_wrap_NCMesh_LoadVertexParents, METH_VARARGS|METH_KEYWORDS, "LoadVertexParents(NCMesh self, std::istream & input)"},
-	 { "NCMesh_LoadCoarseElements", (PyCFunction)(void(*)(void))_wrap_NCMesh_LoadCoarseElements, METH_VARARGS|METH_KEYWORDS, "LoadCoarseElements(NCMesh self, std::istream & input)"},
-	 { "NCMesh_SetVertexPositions", (PyCFunction)(void(*)(void))_wrap_NCMesh_SetVertexPositions, METH_VARARGS|METH_KEYWORDS, "SetVertexPositions(NCMesh self, mfem::Array< mfem::Vertex > const & vertices)"},
+	 { "NCMesh_Print", (PyCFunction)(void(*)(void))_wrap_NCMesh_Print, METH_VARARGS|METH_KEYWORDS, "Print(NCMesh self, std::ostream & out)"},
+	 { "NCMesh_IsLegacyLoaded", _wrap_NCMesh_IsLegacyLoaded, METH_O, "IsLegacyLoaded(NCMesh self) -> bool"},
+	 { "NCMesh_LegacyToNewVertexOrdering", (PyCFunction)(void(*)(void))_wrap_NCMesh_LegacyToNewVertexOrdering, METH_VARARGS|METH_KEYWORDS, "LegacyToNewVertexOrdering(NCMesh self, intArray order)"},
 	 { "NCMesh_Trim", _wrap_NCMesh_Trim, METH_O, "Trim(NCMesh self)"},
 	 { "NCMesh_MemoryUsage", _wrap_NCMesh_MemoryUsage, METH_O, "MemoryUsage(NCMesh self) -> long"},
 	 { "NCMesh_PrintMemoryDetail", _wrap_NCMesh_PrintMemoryDetail, METH_O, "PrintMemoryDetail(NCMesh self) -> int"},
-	 { "NCMesh_PrintVertexParentsGZ", (PyCFunction)(void(*)(void))_wrap_NCMesh_PrintVertexParentsGZ, METH_VARARGS|METH_KEYWORDS, "PrintVertexParentsGZ(NCMesh self, char const * file, int precision=8)"},
-	 { "NCMesh_PrintVertexParents", _wrap_NCMesh_PrintVertexParents, METH_VARARGS, "\n"
-		"PrintVertexParents(NCMesh self, std::ostream & out)\n"
-		"PrintVertexParents(NCMesh self, char const * file, int precision=8)\n"
-		"PrintVertexParents(NCMesh self)\n"
-		""},
-	 { "NCMesh_PrintCoarseElementsGZ", (PyCFunction)(void(*)(void))_wrap_NCMesh_PrintCoarseElementsGZ, METH_VARARGS|METH_KEYWORDS, "PrintCoarseElementsGZ(NCMesh self, char const * file, int precision=8)"},
-	 { "NCMesh_PrintCoarseElements", _wrap_NCMesh_PrintCoarseElements, METH_VARARGS, "\n"
-		"PrintCoarseElements(NCMesh self, std::ostream & out)\n"
-		"PrintCoarseElements(NCMesh self, char const * file, int precision=8)\n"
-		"PrintCoarseElements(NCMesh self)\n"
-		""},
-	 { "NCMesh_PrintStats", _wrap_NCMesh_PrintStats, METH_VARARGS, "\n"
-		"PrintStats(NCMesh self, std::ostream & out=out)\n"
-		"PrintStats(NCMesh self, char const * file, int precision=8)\n"
-		""},
-	 { "NCMesh_PrintStatsGZ", (PyCFunction)(void(*)(void))_wrap_NCMesh_PrintStatsGZ, METH_VARARGS|METH_KEYWORDS, "PrintStatsGZ(NCMesh self, char const * file, int precision=8)"},
 	 { "NCMesh_swigregister", NCMesh_swigregister, METH_O, NULL},
 	 { "NCMesh_swiginit", NCMesh_swiginit, METH_VARARGS, NULL},
 	 { "new_RefinementArray", _wrap_new_RefinementArray, METH_VARARGS, "\n"
 		"RefinementArray()\n"
 		"RefinementArray(mfem::MemoryType mt)\n"
 		"RefinementArray(int asize)\n"
-		"RefinementArray(Refinement _data, int asize)\n"
+		"RefinementArray(Refinement data_, int asize)\n"
 		"new_RefinementArray(RefinementArray src) -> RefinementArray\n"
 		""},
 	 { "delete_RefinementArray", _wrap_delete_RefinementArray, METH_O, "delete_RefinementArray(RefinementArray self)"},
@@ -11137,8 +10058,9 @@ static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__Embedding_t = {"_p_mfem__ArrayT_mfem__Embedding_t", "mfem::Array< mfem::Embedding > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__Geometry__Type_t = {"_p_mfem__ArrayT_mfem__Geometry__Type_t", "mfem::Array< enum mfem::Geometry::Type > *|mfem::Array< mfem::Geometry::Type > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__Refinement_t = {"_p_mfem__ArrayT_mfem__Refinement_t", "mfem::Array< mfem::Refinement > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__ArrayT_mfem__Vertex_t = {"_p_mfem__ArrayT_mfem__Vertex_t", "mfem::Array< mfem::Vertex > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__CoarseFineTransformations = {"_p_mfem__CoarseFineTransformations", "mfem::CoarseFineTransformations *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ConvectionIntegrator = {"_p_mfem__ConvectionIntegrator", "mfem::ConvectionIntegrator *|mfem::NonconservativeConvectionIntegrator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__DGTraceIntegrator = {"_p_mfem__DGTraceIntegrator", "mfem::DGTraceIntegrator *|mfem::ConservativeDGTraceIntegrator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DenseTensor = {"_p_mfem__DenseTensor", "mfem::DenseTensor *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Embedding = {"_p_mfem__Embedding", "mfem::Embedding *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
@@ -11158,10 +10080,8 @@ static swig_type_info _swigt__p_p_mfem__Refinement = {"_p_p_mfem__Refinement", "
 static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__istream = {"_p_std__istream", "std::istream *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_void = {"_p_void", "void *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_PyMFEM__wFILE,
@@ -11173,8 +10093,9 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__ArrayT_mfem__Embedding_t,
   &_swigt__p_mfem__ArrayT_mfem__Geometry__Type_t,
   &_swigt__p_mfem__ArrayT_mfem__Refinement_t,
-  &_swigt__p_mfem__ArrayT_mfem__Vertex_t,
   &_swigt__p_mfem__CoarseFineTransformations,
+  &_swigt__p_mfem__ConvectionIntegrator,
+  &_swigt__p_mfem__DGTraceIntegrator,
   &_swigt__p_mfem__DenseTensor,
   &_swigt__p_mfem__Embedding,
   &_swigt__p_mfem__GridFunction,
@@ -11194,10 +10115,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_pri_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
-  &_swigt__p_std__istream,
   &_swigt__p_tet_t,
   &_swigt__p_tri_t,
-  &_swigt__p_void,
 };
 
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
@@ -11209,8 +10128,9 @@ static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__Arra
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__Embedding_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__Embedding_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__Geometry__Type_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__Geometry__Type_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__Refinement_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__Refinement_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ArrayT_mfem__Vertex_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__Vertex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__CoarseFineTransformations[] = {  {&_swigt__p_mfem__CoarseFineTransformations, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ConvectionIntegrator[] = {  {&_swigt__p_mfem__ConvectionIntegrator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__DGTraceIntegrator[] = {  {&_swigt__p_mfem__DGTraceIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DenseTensor[] = {  {&_swigt__p_mfem__DenseTensor, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Embedding[] = {  {&_swigt__p_mfem__Embedding, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
@@ -11230,10 +10150,8 @@ static swig_cast_info _swigc__p_p_mfem__Refinement[] = {  {&_swigt__p_p_mfem__Re
 static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__istream[] = {  {&_swigt__p_std__istream, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_PyMFEM__wFILE,
@@ -11245,8 +10163,9 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__ArrayT_mfem__Embedding_t,
   _swigc__p_mfem__ArrayT_mfem__Geometry__Type_t,
   _swigc__p_mfem__ArrayT_mfem__Refinement_t,
-  _swigc__p_mfem__ArrayT_mfem__Vertex_t,
   _swigc__p_mfem__CoarseFineTransformations,
+  _swigc__p_mfem__ConvectionIntegrator,
+  _swigc__p_mfem__DGTraceIntegrator,
   _swigc__p_mfem__DenseTensor,
   _swigc__p_mfem__Embedding,
   _swigc__p_mfem__GridFunction,
@@ -11266,10 +10185,8 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_pri_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
-  _swigc__p_std__istream,
   _swigc__p_tet_t,
   _swigc__p_tri_t,
-  _swigc__p_void,
 };
 
 

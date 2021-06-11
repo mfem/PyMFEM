@@ -30,9 +30,9 @@ ISTREAM_TYPEMAP(std::istream&)
 %include  "mesh/ncmesh.hpp"
 
 #ifndef SWIGIMPORTED
-OSTREAM_ADD_DEFAULT_STDOUT_FILE(NCMesh, PrintVertexParents)
-OSTREAM_ADD_DEFAULT_STDOUT_FILE(NCMesh, PrintCoarseElements)
-OSTREAM_ADD_DEFAULT_FILE(NCMesh, PrintStats)
+ //OSTREAM_ADD_DEFAULT_STDOUT_FILE(NCMesh, PrintVertexParents)
+ //OSTREAM_ADD_DEFAULT_STDOUT_FILE(NCMesh, PrintCoarseElements)
+ //OSTREAM_ADD_DEFAULT_FILE(NCMesh, PrintStats)
 #endif
 
 namespace mfem{

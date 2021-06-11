@@ -79,9 +79,9 @@ class ODESolver(object):
         raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
 
-    def Init(self, f):
-        r"""Init(ODESolver self, TimeDependentOperator f)"""
-        return _ode.ODESolver_Init(self, f)
+    def Init(self, f_):
+        r"""Init(ODESolver self, TimeDependentOperator f_)"""
+        return _ode.ODESolver_Init(self, f_)
     Init = _swig_new_instance_method(_ode.ODESolver_Init)
 
     def Step(self, x, t, dt):
@@ -127,9 +127,9 @@ class ForwardEulerSolver(ODESolver):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def Init(self, _f):
-        r"""Init(ForwardEulerSolver self, TimeDependentOperator _f)"""
-        return _ode.ForwardEulerSolver_Init(self, _f)
+    def Init(self, f_):
+        r"""Init(ForwardEulerSolver self, TimeDependentOperator f_)"""
+        return _ode.ForwardEulerSolver_Init(self, f_)
     Init = _swig_new_instance_method(_ode.ForwardEulerSolver_Init)
 
     def Step(self, x, t, dt):
@@ -152,12 +152,12 @@ class RK2Solver(ODESolver):
     __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        r"""__init__(RK2Solver self, double const _a=2./3.) -> RK2Solver"""
+        r"""__init__(RK2Solver self, double const a_=2./3.) -> RK2Solver"""
         _ode.RK2Solver_swiginit(self, _ode.new_RK2Solver(*args, **kwargs))
 
-    def Init(self, _f):
-        r"""Init(RK2Solver self, TimeDependentOperator _f)"""
-        return _ode.RK2Solver_Init(self, _f)
+    def Init(self, f_):
+        r"""Init(RK2Solver self, TimeDependentOperator f_)"""
+        return _ode.RK2Solver_Init(self, f_)
     Init = _swig_new_instance_method(_ode.RK2Solver_Init)
 
     def Step(self, x, t, dt):
@@ -175,9 +175,9 @@ class RK3SSPSolver(ODESolver):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def Init(self, _f):
-        r"""Init(RK3SSPSolver self, TimeDependentOperator _f)"""
-        return _ode.RK3SSPSolver_Init(self, _f)
+    def Init(self, f_):
+        r"""Init(RK3SSPSolver self, TimeDependentOperator f_)"""
+        return _ode.RK3SSPSolver_Init(self, f_)
     Init = _swig_new_instance_method(_ode.RK3SSPSolver_Init)
 
     def Step(self, x, t, dt):
@@ -199,9 +199,9 @@ class RK4Solver(ODESolver):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def Init(self, _f):
-        r"""Init(RK4Solver self, TimeDependentOperator _f)"""
-        return _ode.RK4Solver_Init(self, _f)
+    def Init(self, f_):
+        r"""Init(RK4Solver self, TimeDependentOperator f_)"""
+        return _ode.RK4Solver_Init(self, f_)
     Init = _swig_new_instance_method(_ode.RK4Solver_Init)
 
     def Step(self, x, t, dt):
@@ -223,13 +223,13 @@ class ExplicitRKSolver(ODESolver):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, _s, _a, _b, _c):
-        r"""__init__(ExplicitRKSolver self, int _s, double const * _a, double const * _b, double const * _c) -> ExplicitRKSolver"""
-        _ode.ExplicitRKSolver_swiginit(self, _ode.new_ExplicitRKSolver(_s, _a, _b, _c))
+    def __init__(self, s_, a_, b_, c_):
+        r"""__init__(ExplicitRKSolver self, int s_, double const * a_, double const * b_, double const * c_) -> ExplicitRKSolver"""
+        _ode.ExplicitRKSolver_swiginit(self, _ode.new_ExplicitRKSolver(s_, a_, b_, c_))
 
-    def Init(self, _f):
-        r"""Init(ExplicitRKSolver self, TimeDependentOperator _f)"""
-        return _ode.ExplicitRKSolver_Init(self, _f)
+    def Init(self, f_):
+        r"""Init(ExplicitRKSolver self, TimeDependentOperator f_)"""
+        return _ode.ExplicitRKSolver_Init(self, f_)
     Init = _swig_new_instance_method(_ode.ExplicitRKSolver_Init)
 
     def Step(self, x, t, dt):
@@ -275,13 +275,13 @@ class AdamsBashforthSolver(ODESolver):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, _s, _a):
-        r"""__init__(AdamsBashforthSolver self, int _s, double const * _a) -> AdamsBashforthSolver"""
-        _ode.AdamsBashforthSolver_swiginit(self, _ode.new_AdamsBashforthSolver(_s, _a))
+    def __init__(self, s_, a_):
+        r"""__init__(AdamsBashforthSolver self, int s_, double const * a_) -> AdamsBashforthSolver"""
+        _ode.AdamsBashforthSolver_swiginit(self, _ode.new_AdamsBashforthSolver(s_, a_))
 
-    def Init(self, _f):
-        r"""Init(AdamsBashforthSolver self, TimeDependentOperator _f)"""
-        return _ode.AdamsBashforthSolver_Init(self, _f)
+    def Init(self, f_):
+        r"""Init(AdamsBashforthSolver self, TimeDependentOperator f_)"""
+        return _ode.AdamsBashforthSolver_Init(self, f_)
     Init = _swig_new_instance_method(_ode.AdamsBashforthSolver_Init)
 
     def Step(self, x, t, dt):
@@ -392,13 +392,13 @@ class AdamsMoultonSolver(ODESolver):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, _s, _a):
-        r"""__init__(AdamsMoultonSolver self, int _s, double const * _a) -> AdamsMoultonSolver"""
-        _ode.AdamsMoultonSolver_swiginit(self, _ode.new_AdamsMoultonSolver(_s, _a))
+    def __init__(self, s_, a_):
+        r"""__init__(AdamsMoultonSolver self, int s_, double const * a_) -> AdamsMoultonSolver"""
+        _ode.AdamsMoultonSolver_swiginit(self, _ode.new_AdamsMoultonSolver(s_, a_))
 
-    def Init(self, _f):
-        r"""Init(AdamsMoultonSolver self, TimeDependentOperator _f)"""
-        return _ode.AdamsMoultonSolver_Init(self, _f)
+    def Init(self, f_):
+        r"""Init(AdamsMoultonSolver self, TimeDependentOperator f_)"""
+        return _ode.AdamsMoultonSolver_Init(self, f_)
     Init = _swig_new_instance_method(_ode.AdamsMoultonSolver_Init)
 
     def Step(self, x, t, dt):
@@ -509,9 +509,9 @@ class BackwardEulerSolver(ODESolver):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def Init(self, _f):
-        r"""Init(BackwardEulerSolver self, TimeDependentOperator _f)"""
-        return _ode.BackwardEulerSolver_Init(self, _f)
+    def Init(self, f_):
+        r"""Init(BackwardEulerSolver self, TimeDependentOperator f_)"""
+        return _ode.BackwardEulerSolver_Init(self, f_)
     Init = _swig_new_instance_method(_ode.BackwardEulerSolver_Init)
 
     def Step(self, x, t, dt):
@@ -533,9 +533,9 @@ class ImplicitMidpointSolver(ODESolver):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def Init(self, _f):
-        r"""Init(ImplicitMidpointSolver self, TimeDependentOperator _f)"""
-        return _ode.ImplicitMidpointSolver_Init(self, _f)
+    def Init(self, f_):
+        r"""Init(ImplicitMidpointSolver self, TimeDependentOperator f_)"""
+        return _ode.ImplicitMidpointSolver_Init(self, f_)
     Init = _swig_new_instance_method(_ode.ImplicitMidpointSolver_Init)
 
     def Step(self, x, t, dt):
@@ -561,9 +561,9 @@ class SDIRK23Solver(ODESolver):
         r"""__init__(SDIRK23Solver self, int gamma_opt=1) -> SDIRK23Solver"""
         _ode.SDIRK23Solver_swiginit(self, _ode.new_SDIRK23Solver(gamma_opt))
 
-    def Init(self, _f):
-        r"""Init(SDIRK23Solver self, TimeDependentOperator _f)"""
-        return _ode.SDIRK23Solver_Init(self, _f)
+    def Init(self, f_):
+        r"""Init(SDIRK23Solver self, TimeDependentOperator f_)"""
+        return _ode.SDIRK23Solver_Init(self, f_)
     Init = _swig_new_instance_method(_ode.SDIRK23Solver_Init)
 
     def Step(self, x, t, dt):
@@ -581,9 +581,9 @@ class SDIRK34Solver(ODESolver):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def Init(self, _f):
-        r"""Init(SDIRK34Solver self, TimeDependentOperator _f)"""
-        return _ode.SDIRK34Solver_Init(self, _f)
+    def Init(self, f_):
+        r"""Init(SDIRK34Solver self, TimeDependentOperator f_)"""
+        return _ode.SDIRK34Solver_Init(self, f_)
     Init = _swig_new_instance_method(_ode.SDIRK34Solver_Init)
 
     def Step(self, x, t, dt):
@@ -605,9 +605,9 @@ class SDIRK33Solver(ODESolver):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def Init(self, _f):
-        r"""Init(SDIRK33Solver self, TimeDependentOperator _f)"""
-        return _ode.SDIRK33Solver_Init(self, _f)
+    def Init(self, f_):
+        r"""Init(SDIRK33Solver self, TimeDependentOperator f_)"""
+        return _ode.SDIRK33Solver_Init(self, f_)
     Init = _swig_new_instance_method(_ode.SDIRK33Solver_Init)
 
     def Step(self, x, t, dt):
@@ -623,6 +623,78 @@ class SDIRK33Solver(ODESolver):
 # Register SDIRK33Solver in _ode:
 _ode.SDIRK33Solver_swigregister(SDIRK33Solver)
 
+class TrapezoidalRuleSolver(ODESolver):
+    r"""Proxy of C++ mfem::TrapezoidalRuleSolver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def Init(self, f_):
+        r"""Init(TrapezoidalRuleSolver self, TimeDependentOperator f_)"""
+        return _ode.TrapezoidalRuleSolver_Init(self, f_)
+    Init = _swig_new_instance_method(_ode.TrapezoidalRuleSolver_Init)
+
+    def Step(self, x, t, dt):
+        r"""Step(TrapezoidalRuleSolver self, Vector x, double & t, double & dt)"""
+        return _ode.TrapezoidalRuleSolver_Step(self, x, t, dt)
+    Step = _swig_new_instance_method(_ode.TrapezoidalRuleSolver_Step)
+
+    def __init__(self):
+        r"""__init__(TrapezoidalRuleSolver self) -> TrapezoidalRuleSolver"""
+        _ode.TrapezoidalRuleSolver_swiginit(self, _ode.new_TrapezoidalRuleSolver())
+    __swig_destroy__ = _ode.delete_TrapezoidalRuleSolver
+
+# Register TrapezoidalRuleSolver in _ode:
+_ode.TrapezoidalRuleSolver_swigregister(TrapezoidalRuleSolver)
+
+class ESDIRK32Solver(ODESolver):
+    r"""Proxy of C++ mfem::ESDIRK32Solver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def Init(self, f_):
+        r"""Init(ESDIRK32Solver self, TimeDependentOperator f_)"""
+        return _ode.ESDIRK32Solver_Init(self, f_)
+    Init = _swig_new_instance_method(_ode.ESDIRK32Solver_Init)
+
+    def Step(self, x, t, dt):
+        r"""Step(ESDIRK32Solver self, Vector x, double & t, double & dt)"""
+        return _ode.ESDIRK32Solver_Step(self, x, t, dt)
+    Step = _swig_new_instance_method(_ode.ESDIRK32Solver_Step)
+
+    def __init__(self):
+        r"""__init__(ESDIRK32Solver self) -> ESDIRK32Solver"""
+        _ode.ESDIRK32Solver_swiginit(self, _ode.new_ESDIRK32Solver())
+    __swig_destroy__ = _ode.delete_ESDIRK32Solver
+
+# Register ESDIRK32Solver in _ode:
+_ode.ESDIRK32Solver_swigregister(ESDIRK32Solver)
+
+class ESDIRK33Solver(ODESolver):
+    r"""Proxy of C++ mfem::ESDIRK33Solver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def Init(self, f_):
+        r"""Init(ESDIRK33Solver self, TimeDependentOperator f_)"""
+        return _ode.ESDIRK33Solver_Init(self, f_)
+    Init = _swig_new_instance_method(_ode.ESDIRK33Solver_Init)
+
+    def Step(self, x, t, dt):
+        r"""Step(ESDIRK33Solver self, Vector x, double & t, double & dt)"""
+        return _ode.ESDIRK33Solver_Step(self, x, t, dt)
+    Step = _swig_new_instance_method(_ode.ESDIRK33Solver_Step)
+
+    def __init__(self):
+        r"""__init__(ESDIRK33Solver self) -> ESDIRK33Solver"""
+        _ode.ESDIRK33Solver_swiginit(self, _ode.new_ESDIRK33Solver())
+    __swig_destroy__ = _ode.delete_ESDIRK33Solver
+
+# Register ESDIRK33Solver in _ode:
+_ode.ESDIRK33Solver_swigregister(ESDIRK33Solver)
+
 class GeneralizedAlphaSolver(ODESolver):
     r"""Proxy of C++ mfem::GeneralizedAlphaSolver class."""
 
@@ -633,9 +705,9 @@ class GeneralizedAlphaSolver(ODESolver):
         r"""__init__(GeneralizedAlphaSolver self, double rho=1.0) -> GeneralizedAlphaSolver"""
         _ode.GeneralizedAlphaSolver_swiginit(self, _ode.new_GeneralizedAlphaSolver(rho))
 
-    def Init(self, _f):
-        r"""Init(GeneralizedAlphaSolver self, TimeDependentOperator _f)"""
-        return _ode.GeneralizedAlphaSolver_Init(self, _f)
+    def Init(self, f_):
+        r"""Init(GeneralizedAlphaSolver self, TimeDependentOperator f_)"""
+        return _ode.GeneralizedAlphaSolver_Init(self, f_)
     Init = _swig_new_instance_method(_ode.GeneralizedAlphaSolver_Init)
 
     def Step(self, x, t, dt):
@@ -821,9 +893,9 @@ class NewmarkSolver(SecondOrderODESolver):
         return _ode.NewmarkSolver_PrintProperties(self, *args, **kwargs)
     PrintProperties = _swig_new_instance_method(_ode.NewmarkSolver_PrintProperties)
 
-    def Init(self, _f):
-        r"""Init(NewmarkSolver self, SecondOrderTimeDependentOperator _f)"""
-        return _ode.NewmarkSolver_Init(self, _f)
+    def Init(self, f_):
+        r"""Init(NewmarkSolver self, SecondOrderTimeDependentOperator f_)"""
+        return _ode.NewmarkSolver_Init(self, f_)
     Init = _swig_new_instance_method(_ode.NewmarkSolver_Init)
 
     def Step(self, x, dxdt, t, dt):
@@ -892,9 +964,9 @@ class GeneralizedAlpha2Solver(SecondOrderODESolver):
         return _ode.GeneralizedAlpha2Solver_PrintProperties(self, *args, **kwargs)
     PrintProperties = _swig_new_instance_method(_ode.GeneralizedAlpha2Solver_PrintProperties)
 
-    def Init(self, _f):
-        r"""Init(GeneralizedAlpha2Solver self, SecondOrderTimeDependentOperator _f)"""
-        return _ode.GeneralizedAlpha2Solver_Init(self, _f)
+    def Init(self, f_):
+        r"""Init(GeneralizedAlpha2Solver self, SecondOrderTimeDependentOperator f_)"""
+        return _ode.GeneralizedAlpha2Solver_Init(self, f_)
     Init = _swig_new_instance_method(_ode.GeneralizedAlpha2Solver_Init)
 
     def Step(self, x, dxdt, t, dt):

@@ -41,6 +41,7 @@ import_array();
 namespace mfem { 
 %pythonprepend LinearForm::AddDomainIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
+    lfi = args[0]
     self._integrators.append(lfi)
     lfi.thisown=0 
    %}
@@ -55,7 +56,12 @@ namespace mfem {
     lfi = args[0]
     self._integrators.append(lfi)
     lfi.thisown=0 
-   %}    
+   %}
+%pythonprepend LinearForm::AddInteriorFaceIntegrator %{
+    if not hasattr(self, "_integrators"): self._integrators = []
+    self._integrators.append(lfi)
+    lfi.thisown=0 
+   %}
 }
 
 %include "../common/deprecation.i"

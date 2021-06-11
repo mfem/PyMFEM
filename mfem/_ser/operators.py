@@ -137,6 +137,11 @@ class Operator(object):
         return _operators.Operator_GetGradient(self, x)
     GetGradient = _swig_new_instance_method(_operators.Operator_GetGradient)
 
+    def AssembleDiagonal(self, diag):
+        r"""AssembleDiagonal(Operator self, Vector diag)"""
+        return _operators.Operator_AssembleDiagonal(self, diag)
+    AssembleDiagonal = _swig_new_instance_method(_operators.Operator_AssembleDiagonal)
+
     def GetProlongation(self):
         r"""GetProlongation(Operator self) -> Operator"""
         return _operators.Operator_GetProlongation(self)
@@ -151,6 +156,11 @@ class Operator(object):
         r"""GetOutputProlongation(Operator self) -> Operator"""
         return _operators.Operator_GetOutputProlongation(self)
     GetOutputProlongation = _swig_new_instance_method(_operators.Operator_GetOutputProlongation)
+
+    def GetOutputRestrictionTranspose(self):
+        r"""GetOutputRestrictionTranspose(Operator self) -> Operator"""
+        return _operators.Operator_GetOutputRestrictionTranspose(self)
+    GetOutputRestrictionTranspose = _swig_new_instance_method(_operators.Operator_GetOutputRestrictionTranspose)
 
     def GetOutputRestriction(self):
         r"""GetOutputRestriction(Operator self) -> Operator"""
@@ -271,9 +281,9 @@ class TimeDependentOperator(Operator):
         return _operators.TimeDependentOperator_GetTime(self)
     GetTime = _swig_new_instance_method(_operators.TimeDependentOperator_GetTime)
 
-    def SetTime(self, _t):
-        r"""SetTime(TimeDependentOperator self, double const _t)"""
-        return _operators.TimeDependentOperator_SetTime(self, _t)
+    def SetTime(self, t_):
+        r"""SetTime(TimeDependentOperator self, double const t_)"""
+        return _operators.TimeDependentOperator_SetTime(self, t_)
     SetTime = _swig_new_instance_method(_operators.TimeDependentOperator_SetTime)
 
     def isExplicit(self):
@@ -431,7 +441,7 @@ class SecondOrderTimeDependentOperator(TimeDependentOperator):
     def ImplicitSolve(self, *args):
         r"""
         ImplicitSolve(SecondOrderTimeDependentOperator self, double const dt, Vector x, Vector k)
-        ImplicitSolve(SecondOrderTimeDependentOperator self, double const dt0, double const dt1, Vector x, Vector dxdt, Vector k)
+        ImplicitSolve(SecondOrderTimeDependentOperator self, double const fac0, double const fac1, Vector x, Vector dxdt, Vector k)
         """
         return _operators.SecondOrderTimeDependentOperator_ImplicitSolve(self, *args)
     ImplicitSolve = _swig_new_instance_method(_operators.SecondOrderTimeDependentOperator_ImplicitSolve)
@@ -590,6 +600,11 @@ class RAPOperator(Operator):
         return _operators.RAPOperator_Mult(self, x, y)
     Mult = _swig_new_instance_method(_operators.RAPOperator_Mult)
 
+    def AssembleDiagonal(self, diag):
+        r"""AssembleDiagonal(RAPOperator self, Vector diag)"""
+        return _operators.RAPOperator_AssembleDiagonal(self, diag)
+    AssembleDiagonal = _swig_new_instance_method(_operators.RAPOperator_AssembleDiagonal)
+
     def MultTranspose(self, x, y):
         r"""MultTranspose(RAPOperator self, Vector x, Vector y)"""
         return _operators.RAPOperator_MultTranspose(self, x, y)
@@ -643,10 +658,15 @@ class ConstrainedOperator(Operator):
         return _operators.ConstrainedOperator_GetMemoryClass(self)
     GetMemoryClass = _swig_new_instance_method(_operators.ConstrainedOperator_GetMemoryClass)
 
-    def SetDiagonalPolicy(self, _diag_policy):
-        r"""SetDiagonalPolicy(ConstrainedOperator self, mfem::Operator::DiagonalPolicy const _diag_policy)"""
-        return _operators.ConstrainedOperator_SetDiagonalPolicy(self, _diag_policy)
+    def SetDiagonalPolicy(self, diag_policy_):
+        r"""SetDiagonalPolicy(ConstrainedOperator self, mfem::Operator::DiagonalPolicy const diag_policy_)"""
+        return _operators.ConstrainedOperator_SetDiagonalPolicy(self, diag_policy_)
     SetDiagonalPolicy = _swig_new_instance_method(_operators.ConstrainedOperator_SetDiagonalPolicy)
+
+    def AssembleDiagonal(self, diag):
+        r"""AssembleDiagonal(ConstrainedOperator self, Vector diag)"""
+        return _operators.ConstrainedOperator_AssembleDiagonal(self, diag)
+    AssembleDiagonal = _swig_new_instance_method(_operators.ConstrainedOperator_AssembleDiagonal)
 
     def EliminateRHS(self, x, b):
         r"""EliminateRHS(ConstrainedOperator self, Vector x, Vector b)"""
