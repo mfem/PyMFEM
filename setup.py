@@ -94,7 +94,6 @@ mpicxx_command = 'mpic++' if os.getenv(
     "MPICXX") is None else os.getenv("MPICXX")
 cxx11_flag = '-std=c++11' if os.getenv(
     "CXX11FLAG") is None else os.getenv("CXX11FLAG")
-swig_command = find_command('swig') if os.getenv("SWIG") is None else os.getenv("SWIG")
 
 # meta data
 
@@ -569,6 +568,8 @@ def generate_wrapper():
         mfemser = mfems_prefix
         mfempar = mfemp_prefix
 
+    swig_command = (find_command('swig') if os.getenv("SWIG") is None
+                    else os.getenv("SWIG"))
     if swig_command is None:
         assert False, "SWIG is not installed"
 
