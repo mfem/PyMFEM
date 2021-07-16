@@ -39,7 +39,7 @@ import_array();
 OSTREAM_TYPEMAP(std::ostream&)
 ISTREAM_TYPEMAP(std::istream&)
 
-ARRAY_TO_DOUBLEARRAY_IN(double *_data)
+ARRAY_TO_DOUBLEARRAY_IN(double *data_)
 
 %pythonprepend mfem::Vector::Vector %{
 from numpy import ndarray, ascontiguousarray

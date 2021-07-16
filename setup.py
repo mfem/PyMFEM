@@ -39,7 +39,7 @@ except ImportError:
 repo_releases = {"mfem": "https://github.com/mfem/mfem/archive/v4.2.tar.gz",
                  "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
                  "hypre": "https://github.com/hypre-space/hypre/archive/v2.20.0.tar.gz",}
-repos = {"mfem": "git@github.com:mfem/mfem.git", }
+repos = {"mfem": "https://github.com/mfem/mfem.git",}
 
 rootdir = os.path.abspath(os.path.dirname(__file__))
 extdir = os.path.join(rootdir, 'external')

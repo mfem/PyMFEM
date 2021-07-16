@@ -48,6 +48,9 @@ OSTREAM_TYPEMAP(std::ostream&)
 int sizeof_HYPRE_Int(){
     return sizeof(HYPRE_Int);
 }
+int sizeof_HYPRE_BigInt(){
+    return sizeof(HYPRE_BigInt);
+}
 %}
 
 /*
@@ -56,18 +59,18 @@ int sizeof_HYPRE_Int(){
                   HYPRE_Int *col);
 
 */
-%typemap(in) (double *_data,  HYPRE_Int *col)(PyArrayObject * tmp_arr1_ = NULL,  PyArrayObject * tmp_arr2_ = NULL){
+%typemap(in) (double *data_,  HYPRE_BigInt *col)(PyArrayObject * tmp_arr1_ = NULL,  PyArrayObject * tmp_arr2_ = NULL){
   //HypreParVec constructer requires outside object alive
   //   We keep reference to such outside numpy array in ProxyClass
   tmp_arr1_ = (PyArrayObject *)PyList_GetItem($input,0);
   tmp_arr2_ = (PyArrayObject *)PyList_GetItem($input,1);
   
   $1 = (double *) PyArray_DATA(tmp_arr1_);
-  $2 = (HYPRE_Int *) PyArray_DATA(tmp_arr2_);
+  $2 = (HYPRE_BigInt *) PyArray_DATA(tmp_arr2_);
 }
-%typemap(freearg) (double *_data,  HYPRE_Int *col){
+%typemap(freearg) (double *data_,  HYPRE_BigInt *col){
 }
-%typemap(typecheck )(double *_data,  HYPRE_Int *col){
+%typemap(typecheck )(double *data_,  HYPRE_BigInt *col){
   /* check if list of 2 numpy array or not */
   if (!PyList_Check($input)) $1 = 0;
   else {
@@ -92,10 +95,10 @@ int sizeof_HYPRE_Int(){
  */
 
 %typemap(in) (int *I,
-	      HYPRE_Int *J,
+	      HYPRE_BigInt *J,
               double *data,
-	      HYPRE_Int *rows,
-	      HYPRE_Int *cols)
+	      HYPRE_BigInt *rows,
+	      HYPRE_BigInt *cols)
              (PyArrayObject *tmp_arr1_ = NULL,
 	      PyArrayObject *tmp_arr2_ = NULL,
 	      PyArrayObject *tmp_arr3_ = NULL,
@@ -111,17 +114,17 @@ int sizeof_HYPRE_Int(){
      tmp_arr5_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,4));
   }
   $1 = (int *) PyArray_DATA(tmp_arr1_);
-  $2 = (HYPRE_Int *) PyArray_DATA(tmp_arr2_);
+  $2 = (HYPRE_BigInt *) PyArray_DATA(tmp_arr2_);
   $3 = (double *) PyArray_DATA(tmp_arr3_);
-  $4 = (HYPRE_Int *) PyArray_DATA(tmp_arr4_);
+  $4 = (HYPRE_BigInt *) PyArray_DATA(tmp_arr4_);
   if (list_len_ == 4){
     $5 = $4;
   } else {
-    $5 = (HYPRE_Int *) PyArray_DATA(tmp_arr5_);
+    $5 = (HYPRE_BigInt *) PyArray_DATA(tmp_arr5_);
   }
 }
-%typemap(freearg) (int *I, HYPRE_Int *J,
-		   double *data, HYPRE_Int *rows, HYPRE_Int *cols){
+%typemap(freearg) (int *I, HYPRE_BigInt *J,
+		   double *data, HYPRE_BigInt *rows, HYPRE_BigInt *cols){
   Py_XDECREF(tmp_arr1_$argnum);
   Py_XDECREF(tmp_arr2_$argnum);  
   Py_XDECREF(tmp_arr3_$argnum);
@@ -131,9 +134,9 @@ int sizeof_HYPRE_Int(){
   }
 }
 
-%typemap(typecheck ) (int *I, HYPRE_Int *J,
-                      double *data, HYPRE_Int *rows,
-		      HYPRE_Int *cols){
+%typemap(typecheck ) (int *I, HYPRE_BigInt *J,
+                      double *data, HYPRE_BigInt *rows,
+		      HYPRE_BigInt *cols){
   /* check if list of 5 numpy array or not */
   if (!PyList_Check($input)) $1 = 0;
   else {
@@ -220,15 +223,15 @@ PyObject* GetPartitioningArray()
 {
   // assumed partitioning mode only
   npy_intp dims[] = {3};
-  int typenum =  (sizeof(HYPRE_Int) == 4) ? NPY_INT32 : NPY_INT64;
-  HYPRE_Int *part_out;
+  int typenum =  (sizeof(HYPRE_BigInt) == 4) ? NPY_INT32 : NPY_INT64;
+  HYPRE_BigInt *part_out;
   
-  HYPRE_Int *part = self -> Partitioning();
+  HYPRE_BigInt *part = self -> Partitioning();
   PyObject *tmp_arr = PyArray_ZEROS(1, dims, typenum, 0);
   PyObject *arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)tmp_arr);
   Py_XDECREF(tmp_arr);
 
-  part_out = (HYPRE_Int *) PyArray_DATA(arr1);
+  part_out = (HYPRE_BigInt *) PyArray_DATA(arr1);
   part_out[0] = part[0];
   part_out[1] = part[1];
   part_out[2] = part[2];  
@@ -241,15 +244,15 @@ PyObject* GetRowPartArray()
 {
   // assumed partitioning mode only
   npy_intp dims[] = {3};
-  int typenum =  (sizeof(HYPRE_Int) == 4) ? NPY_INT32 : NPY_INT64;
-  HYPRE_Int *part_out;
+  int typenum =  (sizeof(HYPRE_BigInt) == 4) ? NPY_INT32 : NPY_INT64;
+  HYPRE_BigInt *part_out;
   
-  HYPRE_Int *part = self -> RowPart();
+  HYPRE_BigInt *part = self -> RowPart();
   PyObject *tmp_arr = PyArray_ZEROS(1, dims, typenum, 0);
   PyObject *arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)tmp_arr);
   Py_XDECREF(tmp_arr);
 
-  part_out = (HYPRE_Int *) PyArray_DATA(arr1);
+  part_out = (HYPRE_BigInt *) PyArray_DATA(arr1);
   part_out[0] = part[0];
   part_out[1] = part[1];
   part_out[2] = part[2];  
@@ -260,15 +263,15 @@ PyObject* GetColPartArray()
 {
   // assumed partitioning mode only
   npy_intp dims[] = {3};
-  int typenum =  (sizeof(HYPRE_Int) == 4) ? NPY_INT32 : NPY_INT64;
-  HYPRE_Int *part_out;
+  int typenum =  (sizeof(HYPRE_BigInt) == 4) ? NPY_INT32 : NPY_INT64;
+  HYPRE_BigInt *part_out;
   
-  HYPRE_Int *part = self -> ColPart();
+  HYPRE_BigInt *part = self -> ColPart();
   PyObject *tmp_arr = PyArray_ZEROS(1, dims, typenum, 0);
   PyObject *arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)tmp_arr);
   Py_XDECREF(tmp_arr);
 
-  part_out = (HYPRE_Int *) PyArray_DATA(arr1);
+  part_out = (HYPRE_BigInt *) PyArray_DATA(arr1);
   part_out[0] = part[0];
   part_out[1] = part[1];
   part_out[2] = part[2];  
@@ -302,7 +305,7 @@ PyObject* get_local_true_nnz()
    HYPRE_Int         first_col_diag;
    hypre_CSRMatrix  *diag;
    hypre_CSRMatrix  *offd;
-   HYPRE_Int        *col_map_offd;
+   HYPRE_BigInt     *col_map_offd;
    HYPRE_Int         num_rows;
    HYPRE_Int        *row_starts;
    HYPRE_Int        *col_starts;
@@ -395,7 +398,7 @@ PyObject* GetCooDataArray(const HYPRE_Int           base_i = 0,
    HYPRE_Int         first_col_diag;
    hypre_CSRMatrix  *diag;
    hypre_CSRMatrix  *offd;
-   HYPRE_Int        *col_map_offd;
+   HYPRE_BigInt        *col_map_offd;
    HYPRE_Int         num_rows;
    HYPRE_Int        *row_starts;
    HYPRE_Int        *col_starts;

@@ -14654,18 +14654,41 @@ SWIGINTERN PyObject *_wrap_new_LUFactors__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   PyObject *resultobj = 0;
   double *arg1 = (double *) 0 ;
   int *arg2 = (int *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   mfem::LUFactors *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_LUFactors" "', argument " "1"" of type '" "double *""'"); 
+  {
+    int i, si;
+    if (SWIG_ConvertPtr(swig_obj[0], (void **) &arg1, SWIGTYPE_p_double, 0|0) != -1){
+      
+    }
+    else if (PyArray_Check(swig_obj[0])){
+      arg1 = (double *) PyArray_DATA((PyArrayObject *)swig_obj[0]);
+      //     arg1 = (double *) PyArray_DATA(swig_obj[0]);
+    }
+    else {
+      if (!PyList_Check(swig_obj[0])) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list");
+        return NULL;
+      }
+      si = PyList_Size(swig_obj[0]);
+      arg1 = (double *) malloc((si)*sizeof(double));
+      for (i = 0; i < si; i++) {
+        PyObject *s = PyList_GetItem(swig_obj[0],i);
+        if (PyInt_Check(s)) {
+          arg1[i] = (double)PyFloat_AsDouble(s);
+        } else if (PyFloat_Check(s)) {
+          arg1[i] = (double)PyFloat_AsDouble(s);
+        } else {
+          PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
+          return NULL;
+        }
+      }
+    }
+    
   }
-  arg1 = reinterpret_cast< double * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_int, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_LUFactors" "', argument " "2"" of type '" "int *""'"); 
@@ -14710,9 +14733,20 @@ SWIGINTERN PyObject *_wrap_new_LUFactors(PyObject *self, PyObject *args) {
   }
   if (argc == 2) {
     int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_double, 0);
-    _v = SWIG_CheckState(res);
+    {
+      if (SWIG_ConvertPtr(argv[0], (void **) &_v, SWIGTYPE_p_double, 1) != -1){
+        _v = 1;
+      }
+      else if (PyList_Check(argv[0])){
+        _v = 1;
+      }
+      else if (PyArray_Check(argv[0])){
+        _v = 1;
+      }
+      else {
+        _v = 0;
+      }
+    }
     if (_v) {
       void *vptr = 0;
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_int, 0);

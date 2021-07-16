@@ -4082,16 +4082,39 @@ SWIGINTERN PyObject *_wrap_new_Vector__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py
   PyObject *resultobj = 0;
   double *arg1 = (double *) 0 ;
   int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
   mfem::Vector *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Vector" "', argument " "1"" of type '" "double *""'"); 
+  {
+    int i, si;
+    if (SWIG_ConvertPtr(swig_obj[0], (void **) &arg1, SWIGTYPE_p_double, 0|0) != -1){
+      
+    }
+    else if (PyArray_Check(swig_obj[0])){
+      arg1 = (double *) PyArray_DATA((PyArrayObject *)swig_obj[0]);
+      //     arg1 = (double *) PyArray_DATA(swig_obj[0]);
+    }
+    else {
+      if (!PyList_Check(swig_obj[0])) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list");
+        return NULL;
+      }
+      si = PyList_Size(swig_obj[0]);
+      arg1 = (double *) malloc((si)*sizeof(double));
+      for (i = 0; i < si; i++) {
+        PyObject *s = PyList_GetItem(swig_obj[0],i);
+        if (PyInt_Check(s)) {
+          arg1[i] = (double)PyFloat_AsDouble(s);
+        } else if (PyFloat_Check(s)) {
+          arg1[i] = (double)PyFloat_AsDouble(s);
+        } else {
+          PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
+          return NULL;
+        }
+      }
+    }
+    
   }
-  arg1 = reinterpret_cast< double * >(argp1);
   {
     if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
@@ -9554,25 +9577,6 @@ SWIGINTERN PyObject *_wrap_new_Vector(PyObject *self, PyObject *args) {
   }
   if (argc == 2) {
     int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_double, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        return _wrap_new_Vector__SWIG_3(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         PyErr_Clear();
@@ -9588,6 +9592,36 @@ SWIGINTERN PyObject *_wrap_new_Vector(PyObject *self, PyObject *args) {
       }
       if (_v) {
         return _wrap_new_Vector__SWIG_4(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      if (SWIG_ConvertPtr(argv[0], (void **) &_v, SWIGTYPE_p_double, 1) != -1){
+        _v = 1;
+      }
+      else if (PyList_Check(argv[0])){
+        _v = 1;
+      }
+      else if (PyArray_Check(argv[0])){
+        _v = 1;
+      }
+      else {
+        _v = 0;
+      }
+    }
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_new_Vector__SWIG_3(self, argc, argv);
       }
     }
   }

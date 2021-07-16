@@ -117,7 +117,7 @@
 //     or
 //     list: list is copyed value will be managed by MFEM
 %define ARRAY_TO_DOUBLEARRAY_IN(type_name)
-%typemap(in)  (double *_data){
+%typemap(in) (type_name){
   int i, si;
   if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor, $disown|0) != -1){
 	      
