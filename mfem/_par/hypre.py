@@ -97,6 +97,11 @@ def sizeof_HYPRE_Int():
     r"""sizeof_HYPRE_Int() -> int"""
     return _hypre.sizeof_HYPRE_Int()
 sizeof_HYPRE_Int = _hypre.sizeof_HYPRE_Int
+
+def sizeof_HYPRE_BigInt():
+    r"""sizeof_HYPRE_BigInt() -> int"""
+    return _hypre.sizeof_HYPRE_BigInt()
+sizeof_HYPRE_BigInt = _hypre.sizeof_HYPRE_BigInt
 class HypreParVector(mfem._par.vector.Vector):
     r"""Proxy of C++ mfem::HypreParVector class."""
 
@@ -107,7 +112,7 @@ class HypreParVector(mfem._par.vector.Vector):
         r"""
         __init__(HypreParVector self) -> HypreParVector
         __init__(HypreParVector self, MPI_Comm comm, HYPRE_BigInt glob_size, HYPRE_BigInt * col) -> HypreParVector
-        __init__(HypreParVector self, MPI_Comm comm, HYPRE_BigInt glob_size, double * data_, HYPRE_BigInt * col) -> HypreParVector
+        __init__(HypreParVector self, MPI_Comm comm, HYPRE_BigInt glob_size, double * data_) -> HypreParVector
         __init__(HypreParVector self, HypreParVector y) -> HypreParVector
         __init__(HypreParVector self, HypreParMatrix A, int transpose=0) -> HypreParVector
         __init__(HypreParVector self, HYPRE_ParVector y) -> HypreParVector
@@ -228,7 +233,7 @@ class HypreParMatrix(mfem._par.operators.Operator):
         __init__(HypreParMatrix self, MPI_Comm comm, HYPRE_BigInt * row_starts, HYPRE_BigInt * col_starts, SparseMatrix a) -> HypreParMatrix
         __init__(HypreParMatrix self, MPI_Comm comm, HYPRE_BigInt global_num_rows, HYPRE_BigInt global_num_cols, HYPRE_BigInt * row_starts, HYPRE_BigInt * col_starts, mfem::Table * diag) -> HypreParMatrix
         __init__(HypreParMatrix self, MPI_Comm comm, int id, int np, HYPRE_BigInt * row, HYPRE_BigInt * col, HYPRE_Int * i_diag, HYPRE_Int * j_diag, HYPRE_Int * i_offd, HYPRE_Int * j_offd, HYPRE_BigInt * cmap, HYPRE_Int cmap_size) -> HypreParMatrix
-        __init__(HypreParMatrix self, MPI_Comm comm, int nrows, HYPRE_BigInt glob_nrows, HYPRE_BigInt glob_ncols, int * I, HYPRE_BigInt * J, double * data, HYPRE_BigInt * rows, HYPRE_BigInt * cols) -> HypreParMatrix
+        __init__(HypreParMatrix self, MPI_Comm comm, int nrows, HYPRE_BigInt glob_nrows, HYPRE_BigInt glob_ncols, int * I) -> HypreParMatrix
         __init__(HypreParMatrix self, HypreParMatrix P) -> HypreParMatrix
         """
         _hypre.HypreParMatrix_swiginit(self, _hypre.new_HypreParMatrix(*args))
