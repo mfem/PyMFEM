@@ -43,6 +43,7 @@ $ python setup.py install --parallel --CC=xxx, --CXX=xxx, --MPICC=xxx, --MPICXX=
 * build with a specific mfem branch
 $ python setup.py install --mfem-branch="mfem-4.3-dev"
 
+
 * cuda
 $ python3 setup.py install  --prefix=~/sandbox  --verbose --with-cuda
 
@@ -54,6 +55,7 @@ $ python3 setup.py install  --prefix=~/sandbox  --verbose --skip-ext --with-cuda
 # One may need to regenerate wrapper
 $ touch mfem/*/*.i
 $ python3 setup.py install  --prefix=~/sandbox  --verbose --swig
+
 
 
 
