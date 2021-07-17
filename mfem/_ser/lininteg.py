@@ -152,7 +152,7 @@ class DomainLFIntegrator(DeltaLFIntegrator):
         """
         _lininteg.DomainLFIntegrator_swiginit(self, _lininteg.new_DomainLFIntegrator(*args))
 
-        self._coeff = args[0]
+        self._coeff = args
 
 
 
@@ -184,6 +184,11 @@ class DomainLFGradIntegrator(DeltaLFIntegrator):
     def __init__(self, QF):
         r"""__init__(DomainLFGradIntegrator self, VectorCoefficient QF) -> DomainLFGradIntegrator"""
         _lininteg.DomainLFGradIntegrator_swiginit(self, _lininteg.new_DomainLFGradIntegrator(QF))
+
+        self._coeff = QF
+
+
+
 
     def AssembleDeltaElementVect(self, fe, Trans, elvect):
         r"""AssembleDeltaElementVect(DomainLFGradIntegrator self, FiniteElement fe, ElementTransformation Trans, Vector elvect)"""
@@ -241,6 +246,11 @@ class BoundaryNormalLFIntegrator(LinearFormIntegrator):
         r"""__init__(BoundaryNormalLFIntegrator self, VectorCoefficient QG, int a=1, int b=1) -> BoundaryNormalLFIntegrator"""
         _lininteg.BoundaryNormalLFIntegrator_swiginit(self, _lininteg.new_BoundaryNormalLFIntegrator(QG, a, b))
 
+        self._coeff = QG
+
+
+
+
     def AssembleRHSElementVect(self, *args):
         r"""
         AssembleRHSElementVect(BoundaryNormalLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
@@ -264,6 +274,11 @@ class BoundaryTangentialLFIntegrator(LinearFormIntegrator):
         r"""__init__(BoundaryTangentialLFIntegrator self, VectorCoefficient QG, int a=1, int b=1) -> BoundaryTangentialLFIntegrator"""
         _lininteg.BoundaryTangentialLFIntegrator_swiginit(self, _lininteg.new_BoundaryTangentialLFIntegrator(QG, a, b))
 
+        self._coeff = QG
+
+
+
+
     def AssembleRHSElementVect(self, *args):
         r"""
         AssembleRHSElementVect(BoundaryTangentialLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
@@ -286,6 +301,11 @@ class VectorDomainLFIntegrator(DeltaLFIntegrator):
     def __init__(self, QF):
         r"""__init__(VectorDomainLFIntegrator self, VectorCoefficient QF) -> VectorDomainLFIntegrator"""
         _lininteg.VectorDomainLFIntegrator_swiginit(self, _lininteg.new_VectorDomainLFIntegrator(QF))
+
+        self._coeff = QF
+
+
+
 
     def AssembleDeltaElementVect(self, fe, Trans, elvect):
         r"""AssembleDeltaElementVect(VectorDomainLFIntegrator self, FiniteElement fe, ElementTransformation Trans, Vector elvect)"""
@@ -314,6 +334,11 @@ class VectorBoundaryLFIntegrator(LinearFormIntegrator):
     def __init__(self, QG):
         r"""__init__(VectorBoundaryLFIntegrator self, VectorCoefficient QG) -> VectorBoundaryLFIntegrator"""
         _lininteg.VectorBoundaryLFIntegrator_swiginit(self, _lininteg.new_VectorBoundaryLFIntegrator(QG))
+
+        self._coeff = QG
+
+
+
 
     def AssembleRHSElementVect(self, *args):
         r"""
@@ -371,6 +396,11 @@ class VectorFEDomainLFCurlIntegrator(DeltaLFIntegrator):
         r"""__init__(VectorFEDomainLFCurlIntegrator self, VectorCoefficient F) -> VectorFEDomainLFCurlIntegrator"""
         _lininteg.VectorFEDomainLFCurlIntegrator_swiginit(self, _lininteg.new_VectorFEDomainLFCurlIntegrator(F))
 
+        self._coeff = F
+
+
+
+
     def AssembleDeltaElementVect(self, fe, Trans, elvect):
         r"""AssembleDeltaElementVect(VectorFEDomainLFCurlIntegrator self, FiniteElement fe, ElementTransformation Trans, Vector elvect)"""
         return _lininteg.VectorFEDomainLFCurlIntegrator_AssembleDeltaElementVect(self, fe, Trans, elvect)
@@ -398,6 +428,11 @@ class VectorFEDomainLFDivIntegrator(DeltaLFIntegrator):
     def __init__(self, QF):
         r"""__init__(VectorFEDomainLFDivIntegrator self, Coefficient QF) -> VectorFEDomainLFDivIntegrator"""
         _lininteg.VectorFEDomainLFDivIntegrator_swiginit(self, _lininteg.new_VectorFEDomainLFDivIntegrator(QF))
+
+        self._coeff = QF
+
+
+
 
     def AssembleDeltaElementVect(self, fe, Trans, elvect):
         r"""AssembleDeltaElementVect(VectorFEDomainLFDivIntegrator self, FiniteElement fe, ElementTransformation Trans, Vector elvect)"""
@@ -427,6 +462,11 @@ class VectorBoundaryFluxLFIntegrator(LinearFormIntegrator):
         r"""__init__(VectorBoundaryFluxLFIntegrator self, Coefficient f, double s=1.0, IntegrationRule ir=None) -> VectorBoundaryFluxLFIntegrator"""
         _lininteg.VectorBoundaryFluxLFIntegrator_swiginit(self, _lininteg.new_VectorBoundaryFluxLFIntegrator(f, s, ir))
 
+        self._coeff = (f, ir)
+
+
+
+
     def AssembleRHSElementVect(self, *args):
         r"""
         AssembleRHSElementVect(VectorBoundaryFluxLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
@@ -452,6 +492,11 @@ class VectorFEBoundaryFluxLFIntegrator(LinearFormIntegrator):
         __init__(VectorFEBoundaryFluxLFIntegrator self, Coefficient f, int a=2, int b=0) -> VectorFEBoundaryFluxLFIntegrator
         """
         _lininteg.VectorFEBoundaryFluxLFIntegrator_swiginit(self, _lininteg.new_VectorFEBoundaryFluxLFIntegrator(*args))
+
+        self._coeff = args
+
+
+
 
     def AssembleRHSElementVect(self, *args):
         r"""
@@ -507,6 +552,11 @@ class BoundaryFlowIntegrator(LinearFormIntegrator):
         """
         _lininteg.BoundaryFlowIntegrator_swiginit(self, _lininteg.new_BoundaryFlowIntegrator(*args))
 
+        self._coeff = args
+
+
+
+
     def AssembleRHSElementVect(self, *args):
         r"""
         AssembleRHSElementVect(BoundaryFlowIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
@@ -534,6 +584,11 @@ class DGDirichletLFIntegrator(LinearFormIntegrator):
         """
         _lininteg.DGDirichletLFIntegrator_swiginit(self, _lininteg.new_DGDirichletLFIntegrator(*args))
 
+        self._coeff = args
+
+
+
+
     def AssembleRHSElementVect(self, *args):
         r"""
         AssembleRHSElementVect(DGDirichletLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
@@ -556,6 +611,11 @@ class DGElasticityDirichletLFIntegrator(LinearFormIntegrator):
     def __init__(self, uD_, lambda_, mu_, alpha_, kappa_):
         r"""__init__(DGElasticityDirichletLFIntegrator self, VectorCoefficient uD_, Coefficient lambda_, Coefficient mu_, double alpha_, double kappa_) -> DGElasticityDirichletLFIntegrator"""
         _lininteg.DGElasticityDirichletLFIntegrator_swiginit(self, _lininteg.new_DGElasticityDirichletLFIntegrator(uD_, lambda_, mu_, alpha_, kappa_))
+
+        self._coeff = uD_
+
+
+
 
     def AssembleRHSElementVect(self, *args):
         r"""

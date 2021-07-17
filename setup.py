@@ -568,6 +568,13 @@ def generate_wrapper():
         mfemser = mfems_prefix
         mfempar = mfemp_prefix
 
+    pwd = chdir(os.path.join(rootdir, 'mfem', 'common'))
+    command1 = [sys.executable, "generate_lininteg_ext.py"]
+    command2 = [sys.executable, "generate_bilininteg_ext.py"]
+    make_call(command1)
+    make_call(command2)        
+    os.chdir(pwd)
+    
     swig_command = (find_command('swig') if os.getenv("SWIG") is None
                     else os.getenv("SWIG"))
     if swig_command is None:
