@@ -253,11 +253,12 @@ class TransposeIntegrator(BilinearFormIntegrator):
 
     def __init__(self, bfi_, own_bfi_=1):
         r"""__init__(TransposeIntegrator self, BilinearFormIntegrator bfi_, int own_bfi_=1) -> TransposeIntegrator"""
-
-        if _own_bfi == 1:  _bfi.thisown = 0
-
-
         _bilininteg.TransposeIntegrator_swiginit(self, _bilininteg.new_TransposeIntegrator(bfi_, own_bfi_))
+
+        if own_bfi_ == 1:  bfi_.thisown = 0
+
+
+
 
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(TransposeIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
@@ -336,6 +337,11 @@ class LumpedIntegrator(BilinearFormIntegrator):
         r"""__init__(LumpedIntegrator self, BilinearFormIntegrator bfi_, int own_bfi_=1) -> LumpedIntegrator"""
         _bilininteg.LumpedIntegrator_swiginit(self, _bilininteg.new_LumpedIntegrator(bfi_, own_bfi_))
 
+        if own_bfi_ == 1:  bfi_.thisown = 0
+
+
+
+
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(LumpedIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.LumpedIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
@@ -353,11 +359,12 @@ class InverseIntegrator(BilinearFormIntegrator):
 
     def __init__(self, integ, own_integ=1):
         r"""__init__(InverseIntegrator self, BilinearFormIntegrator integ, int own_integ=1) -> InverseIntegrator"""
+        _bilininteg.InverseIntegrator_swiginit(self, _bilininteg.new_InverseIntegrator(integ, own_integ))
 
         if own_integ == 1:  integ.thisown = 0
 
 
-        _bilininteg.InverseIntegrator_swiginit(self, _bilininteg.new_InverseIntegrator(integ, own_integ))
+
 
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(InverseIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
@@ -378,13 +385,19 @@ class SumIntegrator(BilinearFormIntegrator):
         r"""__init__(SumIntegrator self, int own_integs=1) -> SumIntegrator"""
         _bilininteg.SumIntegrator_swiginit(self, _bilininteg.new_SumIntegrator(own_integs))
 
+        self.own_integs = own_integs
+
+
+
+
     def AddIntegrator(self, integ):
         r"""AddIntegrator(SumIntegrator self, BilinearFormIntegrator integ)"""
+        val = _bilininteg.SumIntegrator_AddIntegrator(self, integ)
 
-        integ.thisown = 0
+        if self.own_integs == 1: integ._thisown = 0
 
 
-        return _bilininteg.SumIntegrator_AddIntegrator(self, integ)
+        return val
 
 
     def AssembleElementMatrix(self, el, Trans, elmat):
@@ -561,6 +574,11 @@ class MixedScalarMassIntegrator(MixedScalarIntegrator):
         __init__(MixedScalarMassIntegrator self, Coefficient q) -> MixedScalarMassIntegrator
         """
         _bilininteg.MixedScalarMassIntegrator_swiginit(self, _bilininteg.new_MixedScalarMassIntegrator(*args))
+
+        self._coeff = args
+
+
+
     __swig_destroy__ = _bilininteg.delete_MixedScalarMassIntegrator
 
 # Register MixedScalarMassIntegrator in _bilininteg:
@@ -575,6 +593,11 @@ class MixedVectorProductIntegrator(MixedScalarVectorIntegrator):
     def __init__(self, vq):
         r"""__init__(MixedVectorProductIntegrator self, VectorCoefficient vq) -> MixedVectorProductIntegrator"""
         _bilininteg.MixedVectorProductIntegrator_swiginit(self, _bilininteg.new_MixedVectorProductIntegrator(vq))
+
+        self._coeff = vq
+
+
+
     __swig_destroy__ = _bilininteg.delete_MixedVectorProductIntegrator
 
 # Register MixedVectorProductIntegrator in _bilininteg:
@@ -592,6 +615,11 @@ class MixedScalarDerivativeIntegrator(MixedScalarIntegrator):
         __init__(MixedScalarDerivativeIntegrator self, Coefficient q) -> MixedScalarDerivativeIntegrator
         """
         _bilininteg.MixedScalarDerivativeIntegrator_swiginit(self, _bilininteg.new_MixedScalarDerivativeIntegrator(*args))
+
+        self._coeff = args
+
+
+
     __swig_destroy__ = _bilininteg.delete_MixedScalarDerivativeIntegrator
 
 # Register MixedScalarDerivativeIntegrator in _bilininteg:
@@ -609,6 +637,11 @@ class MixedScalarWeakDerivativeIntegrator(MixedScalarIntegrator):
         __init__(MixedScalarWeakDerivativeIntegrator self, Coefficient q) -> MixedScalarWeakDerivativeIntegrator
         """
         _bilininteg.MixedScalarWeakDerivativeIntegrator_swiginit(self, _bilininteg.new_MixedScalarWeakDerivativeIntegrator(*args))
+
+        self._coeff = args
+
+
+
     __swig_destroy__ = _bilininteg.delete_MixedScalarWeakDerivativeIntegrator
 
 # Register MixedScalarWeakDerivativeIntegrator in _bilininteg:
@@ -626,6 +659,11 @@ class MixedScalarDivergenceIntegrator(MixedScalarIntegrator):
         __init__(MixedScalarDivergenceIntegrator self, Coefficient q) -> MixedScalarDivergenceIntegrator
         """
         _bilininteg.MixedScalarDivergenceIntegrator_swiginit(self, _bilininteg.new_MixedScalarDivergenceIntegrator(*args))
+
+        self._coeff = args
+
+
+
     __swig_destroy__ = _bilininteg.delete_MixedScalarDivergenceIntegrator
 
 # Register MixedScalarDivergenceIntegrator in _bilininteg:
@@ -640,6 +678,11 @@ class MixedVectorDivergenceIntegrator(MixedScalarVectorIntegrator):
     def __init__(self, vq):
         r"""__init__(MixedVectorDivergenceIntegrator self, VectorCoefficient vq) -> MixedVectorDivergenceIntegrator"""
         _bilininteg.MixedVectorDivergenceIntegrator_swiginit(self, _bilininteg.new_MixedVectorDivergenceIntegrator(vq))
+
+        self._coeff = vq
+
+
+
     __swig_destroy__ = _bilininteg.delete_MixedVectorDivergenceIntegrator
 
 # Register MixedVectorDivergenceIntegrator in _bilininteg:
@@ -657,6 +700,11 @@ class MixedScalarWeakGradientIntegrator(MixedScalarIntegrator):
         __init__(MixedScalarWeakGradientIntegrator self, Coefficient q) -> MixedScalarWeakGradientIntegrator
         """
         _bilininteg.MixedScalarWeakGradientIntegrator_swiginit(self, _bilininteg.new_MixedScalarWeakGradientIntegrator(*args))
+
+        self._coeff = args
+
+
+
     __swig_destroy__ = _bilininteg.delete_MixedScalarWeakGradientIntegrator
 
 # Register MixedScalarWeakGradientIntegrator in _bilininteg:
@@ -674,6 +722,11 @@ class MixedScalarCurlIntegrator(MixedScalarIntegrator):
         __init__(MixedScalarCurlIntegrator self, Coefficient q) -> MixedScalarCurlIntegrator
         """
         _bilininteg.MixedScalarCurlIntegrator_swiginit(self, _bilininteg.new_MixedScalarCurlIntegrator(*args))
+
+        self._coeff = args
+
+
+
     __swig_destroy__ = _bilininteg.delete_MixedScalarCurlIntegrator
 
 # Register MixedScalarCurlIntegrator in _bilininteg:
@@ -691,6 +744,11 @@ class MixedScalarWeakCurlIntegrator(MixedScalarIntegrator):
         __init__(MixedScalarWeakCurlIntegrator self, Coefficient q) -> MixedScalarWeakCurlIntegrator
         """
         _bilininteg.MixedScalarWeakCurlIntegrator_swiginit(self, _bilininteg.new_MixedScalarWeakCurlIntegrator(*args))
+
+        self._coeff = args
+
+
+
     __swig_destroy__ = _bilininteg.delete_MixedScalarWeakCurlIntegrator
 
 # Register MixedScalarWeakCurlIntegrator in _bilininteg:
@@ -710,6 +768,11 @@ class MixedVectorMassIntegrator(MixedVectorIntegrator):
         __init__(MixedVectorMassIntegrator self, MatrixCoefficient mq) -> MixedVectorMassIntegrator
         """
         _bilininteg.MixedVectorMassIntegrator_swiginit(self, _bilininteg.new_MixedVectorMassIntegrator(*args))
+
+        self._coeff = args
+
+
+
     __swig_destroy__ = _bilininteg.delete_MixedVectorMassIntegrator
 
 # Register MixedVectorMassIntegrator in _bilininteg:
@@ -724,6 +787,11 @@ class MixedCrossProductIntegrator(MixedVectorIntegrator):
     def __init__(self, vq):
         r"""__init__(MixedCrossProductIntegrator self, VectorCoefficient vq) -> MixedCrossProductIntegrator"""
         _bilininteg.MixedCrossProductIntegrator_swiginit(self, _bilininteg.new_MixedCrossProductIntegrator(vq))
+
+        self._coeff = vq
+
+
+
     __swig_destroy__ = _bilininteg.delete_MixedCrossProductIntegrator
 
 # Register MixedCrossProductIntegrator in _bilininteg:
@@ -807,6 +875,11 @@ class MixedWeakDivCrossIntegrator(MixedVectorIntegrator):
         r"""__init__(MixedWeakDivCrossIntegrator self, VectorCoefficient vq) -> MixedWeakDivCrossIntegrator"""
         _bilininteg.MixedWeakDivCrossIntegrator_swiginit(self, _bilininteg.new_MixedWeakDivCrossIntegrator(vq))
 
+        self._coeff = vq
+
+
+
+
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedWeakDivCrossIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedWeakDivCrossIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
@@ -840,6 +913,11 @@ class MixedGradGradIntegrator(MixedVectorIntegrator):
         __init__(MixedGradGradIntegrator self, MatrixCoefficient mq) -> MixedGradGradIntegrator
         """
         _bilininteg.MixedGradGradIntegrator_swiginit(self, _bilininteg.new_MixedGradGradIntegrator(*args))
+
+        self._coeff = args
+
+
+
 
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedGradGradIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
@@ -880,6 +958,11 @@ class MixedCrossGradGradIntegrator(MixedVectorIntegrator):
         r"""__init__(MixedCrossGradGradIntegrator self, VectorCoefficient vq) -> MixedCrossGradGradIntegrator"""
         _bilininteg.MixedCrossGradGradIntegrator_swiginit(self, _bilininteg.new_MixedCrossGradGradIntegrator(vq))
 
+        self._coeff = vq
+
+
+
+
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedCrossGradGradIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedCrossGradGradIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
@@ -919,6 +1002,11 @@ class MixedCurlCurlIntegrator(MixedVectorIntegrator):
         """
         _bilininteg.MixedCurlCurlIntegrator_swiginit(self, _bilininteg.new_MixedCurlCurlIntegrator(*args))
 
+        self._coeff = args
+
+
+
+
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedCurlCurlIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedCurlCurlIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
@@ -952,6 +1040,11 @@ class MixedCrossCurlCurlIntegrator(MixedVectorIntegrator):
     def __init__(self, vq):
         r"""__init__(MixedCrossCurlCurlIntegrator self, VectorCoefficient vq) -> MixedCrossCurlCurlIntegrator"""
         _bilininteg.MixedCrossCurlCurlIntegrator_swiginit(self, _bilininteg.new_MixedCrossCurlCurlIntegrator(vq))
+
+        self._coeff = vq
+
+
+
 
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedCrossCurlCurlIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
@@ -987,6 +1080,11 @@ class MixedCrossCurlGradIntegrator(MixedVectorIntegrator):
         r"""__init__(MixedCrossCurlGradIntegrator self, VectorCoefficient vq) -> MixedCrossCurlGradIntegrator"""
         _bilininteg.MixedCrossCurlGradIntegrator_swiginit(self, _bilininteg.new_MixedCrossCurlGradIntegrator(vq))
 
+        self._coeff = vq
+
+
+
+
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedCrossCurlGradIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedCrossCurlGradIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
@@ -1020,6 +1118,11 @@ class MixedCrossGradCurlIntegrator(MixedVectorIntegrator):
     def __init__(self, vq):
         r"""__init__(MixedCrossGradCurlIntegrator self, VectorCoefficient vq) -> MixedCrossGradCurlIntegrator"""
         _bilininteg.MixedCrossGradCurlIntegrator_swiginit(self, _bilininteg.new_MixedCrossGradCurlIntegrator(vq))
+
+        self._coeff = vq
+
+
+
 
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedCrossGradCurlIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
@@ -1055,6 +1158,11 @@ class MixedWeakCurlCrossIntegrator(MixedVectorIntegrator):
         r"""__init__(MixedWeakCurlCrossIntegrator self, VectorCoefficient vq) -> MixedWeakCurlCrossIntegrator"""
         _bilininteg.MixedWeakCurlCrossIntegrator_swiginit(self, _bilininteg.new_MixedWeakCurlCrossIntegrator(vq))
 
+        self._coeff = vq
+
+
+
+
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedWeakCurlCrossIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedWeakCurlCrossIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
@@ -1084,6 +1192,11 @@ class MixedScalarWeakCurlCrossIntegrator(MixedScalarVectorIntegrator):
         r"""__init__(MixedScalarWeakCurlCrossIntegrator self, VectorCoefficient vq) -> MixedScalarWeakCurlCrossIntegrator"""
         _bilininteg.MixedScalarWeakCurlCrossIntegrator_swiginit(self, _bilininteg.new_MixedScalarWeakCurlCrossIntegrator(vq))
 
+        self._coeff = vq
+
+
+
+
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedScalarWeakCurlCrossIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedScalarWeakCurlCrossIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
@@ -1112,6 +1225,11 @@ class MixedCrossGradIntegrator(MixedVectorIntegrator):
     def __init__(self, vq):
         r"""__init__(MixedCrossGradIntegrator self, VectorCoefficient vq) -> MixedCrossGradIntegrator"""
         _bilininteg.MixedCrossGradIntegrator_swiginit(self, _bilininteg.new_MixedCrossGradIntegrator(vq))
+
+        self._coeff = vq
+
+
+
 
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedCrossGradIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
@@ -1147,6 +1265,11 @@ class MixedCrossCurlIntegrator(MixedVectorIntegrator):
         r"""__init__(MixedCrossCurlIntegrator self, VectorCoefficient vq) -> MixedCrossCurlIntegrator"""
         _bilininteg.MixedCrossCurlIntegrator_swiginit(self, _bilininteg.new_MixedCrossCurlIntegrator(vq))
 
+        self._coeff = vq
+
+
+
+
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedCrossCurlIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedCrossCurlIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
@@ -1175,6 +1298,11 @@ class MixedScalarCrossCurlIntegrator(MixedScalarVectorIntegrator):
     def __init__(self, vq):
         r"""__init__(MixedScalarCrossCurlIntegrator self, VectorCoefficient vq) -> MixedScalarCrossCurlIntegrator"""
         _bilininteg.MixedScalarCrossCurlIntegrator_swiginit(self, _bilininteg.new_MixedScalarCrossCurlIntegrator(vq))
+
+        self._coeff = vq
+
+
+
 
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedScalarCrossCurlIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
@@ -1205,6 +1333,11 @@ class MixedScalarCrossGradIntegrator(MixedScalarVectorIntegrator):
         r"""__init__(MixedScalarCrossGradIntegrator self, VectorCoefficient vq) -> MixedScalarCrossGradIntegrator"""
         _bilininteg.MixedScalarCrossGradIntegrator_swiginit(self, _bilininteg.new_MixedScalarCrossGradIntegrator(vq))
 
+        self._coeff = vq
+
+
+
+
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedScalarCrossGradIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedScalarCrossGradIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
@@ -1234,6 +1367,11 @@ class MixedScalarCrossProductIntegrator(MixedScalarVectorIntegrator):
         r"""__init__(MixedScalarCrossProductIntegrator self, VectorCoefficient vq) -> MixedScalarCrossProductIntegrator"""
         _bilininteg.MixedScalarCrossProductIntegrator_swiginit(self, _bilininteg.new_MixedScalarCrossProductIntegrator(vq))
 
+        self._coeff = vq
+
+
+
+
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedScalarCrossProductIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedScalarCrossProductIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
@@ -1257,6 +1395,11 @@ class MixedScalarWeakCrossProductIntegrator(MixedScalarVectorIntegrator):
     def __init__(self, vq):
         r"""__init__(MixedScalarWeakCrossProductIntegrator self, VectorCoefficient vq) -> MixedScalarWeakCrossProductIntegrator"""
         _bilininteg.MixedScalarWeakCrossProductIntegrator_swiginit(self, _bilininteg.new_MixedScalarWeakCrossProductIntegrator(vq))
+
+        self._coeff = vq
+
+
+
 
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedScalarWeakCrossProductIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
@@ -1287,6 +1430,11 @@ class MixedDirectionalDerivativeIntegrator(MixedScalarVectorIntegrator):
         r"""__init__(MixedDirectionalDerivativeIntegrator self, VectorCoefficient vq) -> MixedDirectionalDerivativeIntegrator"""
         _bilininteg.MixedDirectionalDerivativeIntegrator_swiginit(self, _bilininteg.new_MixedDirectionalDerivativeIntegrator(vq))
 
+        self._coeff = vq
+
+
+
+
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedDirectionalDerivativeIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedDirectionalDerivativeIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
@@ -1315,6 +1463,11 @@ class MixedGradDivIntegrator(MixedScalarVectorIntegrator):
     def __init__(self, vq):
         r"""__init__(MixedGradDivIntegrator self, VectorCoefficient vq) -> MixedGradDivIntegrator"""
         _bilininteg.MixedGradDivIntegrator_swiginit(self, _bilininteg.new_MixedGradDivIntegrator(vq))
+
+        self._coeff = vq
+
+
+
 
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedGradDivIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
@@ -1350,6 +1503,11 @@ class MixedDivGradIntegrator(MixedScalarVectorIntegrator):
         r"""__init__(MixedDivGradIntegrator self, VectorCoefficient vq) -> MixedDivGradIntegrator"""
         _bilininteg.MixedDivGradIntegrator_swiginit(self, _bilininteg.new_MixedDivGradIntegrator(vq))
 
+        self._coeff = vq
+
+
+
+
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedDivGradIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedDivGradIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
@@ -1383,6 +1541,11 @@ class MixedScalarWeakDivergenceIntegrator(MixedScalarVectorIntegrator):
     def __init__(self, vq):
         r"""__init__(MixedScalarWeakDivergenceIntegrator self, VectorCoefficient vq) -> MixedScalarWeakDivergenceIntegrator"""
         _bilininteg.MixedScalarWeakDivergenceIntegrator_swiginit(self, _bilininteg.new_MixedScalarWeakDivergenceIntegrator(vq))
+
+        self._coeff = vq
+
+
+
 
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedScalarWeakDivergenceIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
@@ -1418,7 +1581,7 @@ class MixedVectorGradientIntegrator(MixedVectorIntegrator):
         """
         _bilininteg.MixedVectorGradientIntegrator_swiginit(self, _bilininteg.new_MixedVectorGradientIntegrator(*args))
 
-        if len(args) > 0: self._coeff = args[0]
+        self._coeff = args
 
 
 
@@ -1441,6 +1604,11 @@ class MixedVectorCurlIntegrator(MixedVectorIntegrator):
         __init__(MixedVectorCurlIntegrator self, MatrixCoefficient mq) -> MixedVectorCurlIntegrator
         """
         _bilininteg.MixedVectorCurlIntegrator_swiginit(self, _bilininteg.new_MixedVectorCurlIntegrator(*args))
+
+        self._coeff = args
+
+
+
     __swig_destroy__ = _bilininteg.delete_MixedVectorCurlIntegrator
 
 # Register MixedVectorCurlIntegrator in _bilininteg:
@@ -1460,6 +1628,11 @@ class MixedVectorWeakCurlIntegrator(MixedVectorIntegrator):
         __init__(MixedVectorWeakCurlIntegrator self, MatrixCoefficient mq) -> MixedVectorWeakCurlIntegrator
         """
         _bilininteg.MixedVectorWeakCurlIntegrator_swiginit(self, _bilininteg.new_MixedVectorWeakCurlIntegrator(*args))
+
+        self._coeff = args
+
+
+
     __swig_destroy__ = _bilininteg.delete_MixedVectorWeakCurlIntegrator
 
 # Register MixedVectorWeakCurlIntegrator in _bilininteg:
@@ -1480,7 +1653,7 @@ class MixedVectorWeakDivergenceIntegrator(MixedVectorIntegrator):
         """
         _bilininteg.MixedVectorWeakDivergenceIntegrator_swiginit(self, _bilininteg.new_MixedVectorWeakDivergenceIntegrator(*args))
 
-        if len(args) > 0: self._coeff = args[0]
+        self._coeff = args
 
 
 
@@ -1502,6 +1675,11 @@ class GradientIntegrator(BilinearFormIntegrator):
         __init__(GradientIntegrator self, Coefficient q) -> GradientIntegrator
         """
         _bilininteg.GradientIntegrator_swiginit(self, _bilininteg.new_GradientIntegrator(*args))
+
+        self._coeff = args
+
+
+
 
     def AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat):
         r"""AssembleElementMatrix2(GradientIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix elmat)"""
@@ -1558,7 +1736,7 @@ class DiffusionIntegrator(BilinearFormIntegrator):
         """
         _bilininteg.DiffusionIntegrator_swiginit(self, _bilininteg.new_DiffusionIntegrator(*args))
 
-        if len(args) > 0: self._coeff = args[0]
+        self._coeff = args
 
 
 
@@ -1665,7 +1843,7 @@ class MassIntegrator(BilinearFormIntegrator):
         """
         _bilininteg.MassIntegrator_swiginit(self, _bilininteg.new_MassIntegrator(*args))
 
-        if len(args) > 0: self._coeff = args[0]
+        self._coeff = args
 
 
 
@@ -1754,6 +1932,11 @@ class BoundaryMassIntegrator(MassIntegrator):
         r"""__init__(BoundaryMassIntegrator self, Coefficient q) -> BoundaryMassIntegrator"""
         _bilininteg.BoundaryMassIntegrator_swiginit(self, _bilininteg.new_BoundaryMassIntegrator(q))
 
+        self._coeff = q
+
+
+
+
     def AssembleFaceMatrix(self, *args):
         r"""
         AssembleFaceMatrix(BoundaryMassIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Trans, DenseMatrix elmat)
@@ -1776,6 +1959,11 @@ class ConvectionIntegrator(BilinearFormIntegrator):
     def __init__(self, q, a=1.0):
         r"""__init__(ConvectionIntegrator self, VectorCoefficient q, double a=1.0) -> ConvectionIntegrator"""
         _bilininteg.ConvectionIntegrator_swiginit(self, _bilininteg.new_ConvectionIntegrator(q, a))
+
+        self._coeff = q
+
+
+
 
     def AssembleElementMatrix(self, arg2, arg3, arg4):
         r"""AssembleElementMatrix(ConvectionIntegrator self, FiniteElement arg2, ElementTransformation arg3, DenseMatrix arg4)"""
@@ -1856,6 +2044,11 @@ class ConservativeConvectionIntegrator(TransposeIntegrator):
     def __init__(self, q, a=1.0):
         r"""__init__(ConservativeConvectionIntegrator self, VectorCoefficient q, double a=1.0) -> ConservativeConvectionIntegrator"""
         _bilininteg.ConservativeConvectionIntegrator_swiginit(self, _bilininteg.new_ConservativeConvectionIntegrator(q, a))
+
+        self._coeff = q
+
+
+
     __swig_destroy__ = _bilininteg.delete_ConservativeConvectionIntegrator
 
 # Register ConservativeConvectionIntegrator in _bilininteg:
@@ -1870,6 +2063,11 @@ class GroupConvectionIntegrator(BilinearFormIntegrator):
     def __init__(self, q, a=1.0):
         r"""__init__(GroupConvectionIntegrator self, VectorCoefficient q, double a=1.0) -> GroupConvectionIntegrator"""
         _bilininteg.GroupConvectionIntegrator_swiginit(self, _bilininteg.new_GroupConvectionIntegrator(q, a))
+
+        self._coeff = q
+
+
+
 
     def AssembleElementMatrix(self, arg2, arg3, arg4):
         r"""AssembleElementMatrix(GroupConvectionIntegrator self, FiniteElement arg2, ElementTransformation arg3, DenseMatrix arg4)"""
@@ -1895,6 +2093,11 @@ class VectorMassIntegrator(BilinearFormIntegrator):
         __init__(VectorMassIntegrator self, MatrixCoefficient q, int qo=0) -> VectorMassIntegrator
         """
         _bilininteg.VectorMassIntegrator_swiginit(self, _bilininteg.new_VectorMassIntegrator(*args))
+
+        self._coeff = args
+
+
+
 
     def GetVDim(self):
         r"""GetVDim(VectorMassIntegrator self) -> int"""
@@ -1972,6 +2175,11 @@ class VectorFEDivergenceIntegrator(BilinearFormIntegrator):
         """
         _bilininteg.VectorFEDivergenceIntegrator_swiginit(self, _bilininteg.new_VectorFEDivergenceIntegrator(*args))
 
+        self._coeff = args
+
+
+
+
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(VectorFEDivergenceIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.VectorFEDivergenceIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
@@ -2004,6 +2212,11 @@ class VectorFEWeakDivergenceIntegrator(BilinearFormIntegrator):
         """
         _bilininteg.VectorFEWeakDivergenceIntegrator_swiginit(self, _bilininteg.new_VectorFEWeakDivergenceIntegrator(*args))
 
+        self._coeff = args
+
+
+
+
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(VectorFEWeakDivergenceIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.VectorFEWeakDivergenceIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
@@ -2031,6 +2244,11 @@ class VectorFECurlIntegrator(BilinearFormIntegrator):
         """
         _bilininteg.VectorFECurlIntegrator_swiginit(self, _bilininteg.new_VectorFECurlIntegrator(*args))
 
+        self._coeff = args
+
+
+
+
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(VectorFECurlIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.VectorFECurlIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
@@ -2054,6 +2272,11 @@ class DerivativeIntegrator(BilinearFormIntegrator):
     def __init__(self, q, i):
         r"""__init__(DerivativeIntegrator self, Coefficient q, int i) -> DerivativeIntegrator"""
         _bilininteg.DerivativeIntegrator_swiginit(self, _bilininteg.new_DerivativeIntegrator(q, i))
+
+        self._coeff = q
+
+
+
 
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(DerivativeIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
@@ -2085,7 +2308,7 @@ class CurlCurlIntegrator(BilinearFormIntegrator):
         """
         _bilininteg.CurlCurlIntegrator_swiginit(self, _bilininteg.new_CurlCurlIntegrator(*args))
 
-        if len(args) > 0: self._coeff = args[0]
+        self._coeff = args
 
 
 
@@ -2141,6 +2364,11 @@ class VectorCurlCurlIntegrator(BilinearFormIntegrator):
         """
         _bilininteg.VectorCurlCurlIntegrator_swiginit(self, _bilininteg.new_VectorCurlCurlIntegrator(*args))
 
+        self._coeff = args
+
+
+
+
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(VectorCurlCurlIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.VectorCurlCurlIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
@@ -2175,7 +2403,7 @@ class VectorFEMassIntegrator(BilinearFormIntegrator):
         """
         _bilininteg.VectorFEMassIntegrator_swiginit(self, _bilininteg.new_VectorFEMassIntegrator(*args))
 
-        if len(args) > 0: self._coeff = args[0]
+        self._coeff = args
 
 
 
@@ -2227,6 +2455,11 @@ class VectorDivergenceIntegrator(BilinearFormIntegrator):
         __init__(VectorDivergenceIntegrator self, Coefficient q) -> VectorDivergenceIntegrator
         """
         _bilininteg.VectorDivergenceIntegrator_swiginit(self, _bilininteg.new_VectorDivergenceIntegrator(*args))
+
+        self._coeff = args
+
+
+
 
     def AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat):
         r"""AssembleElementMatrix2(VectorDivergenceIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix elmat)"""
@@ -2280,6 +2513,11 @@ class DivDivIntegrator(BilinearFormIntegrator):
         """
         _bilininteg.DivDivIntegrator_swiginit(self, _bilininteg.new_DivDivIntegrator(*args))
 
+        self._coeff = args
+
+
+
+
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(DivDivIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.DivDivIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
@@ -2305,6 +2543,11 @@ class VectorDiffusionIntegrator(BilinearFormIntegrator):
         __init__(VectorDiffusionIntegrator self, MatrixCoefficient mq) -> VectorDiffusionIntegrator
         """
         _bilininteg.VectorDiffusionIntegrator_swiginit(self, _bilininteg.new_VectorDiffusionIntegrator(*args))
+
+        self._coeff = args
+
+
+
 
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(VectorDiffusionIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
@@ -2372,6 +2615,11 @@ class ElasticityIntegrator(BilinearFormIntegrator):
         """
         _bilininteg.ElasticityIntegrator_swiginit(self, _bilininteg.new_ElasticityIntegrator(*args))
 
+        self._coeff = args
+
+
+
+
     def AssembleElementMatrix(self, arg2, arg3, arg4):
         r"""AssembleElementMatrix(ElasticityIntegrator self, FiniteElement arg2, ElementTransformation arg3, DenseMatrix arg4)"""
         return _bilininteg.ElasticityIntegrator_AssembleElementMatrix(self, arg2, arg3, arg4)
@@ -2404,6 +2652,11 @@ class DGTraceIntegrator(BilinearFormIntegrator):
         __init__(DGTraceIntegrator self, Coefficient rho_, VectorCoefficient u_, double a, double b) -> DGTraceIntegrator
         """
         _bilininteg.DGTraceIntegrator_swiginit(self, _bilininteg.new_DGTraceIntegrator(*args))
+
+        self._coeff = args
+
+
+
 
     def AssembleFaceMatrix(self, *args):
         r"""
@@ -2480,6 +2733,11 @@ class NonconservativeDGTraceIntegrator(TransposeIntegrator):
         __init__(NonconservativeDGTraceIntegrator self, Coefficient rho, VectorCoefficient u, double a, double b) -> NonconservativeDGTraceIntegrator
         """
         _bilininteg.NonconservativeDGTraceIntegrator_swiginit(self, _bilininteg.new_NonconservativeDGTraceIntegrator(*args))
+
+        self._coeff = args
+
+
+
     __swig_destroy__ = _bilininteg.delete_NonconservativeDGTraceIntegrator
 
 # Register NonconservativeDGTraceIntegrator in _bilininteg:
@@ -2498,6 +2756,11 @@ class DGDiffusionIntegrator(BilinearFormIntegrator):
         __init__(DGDiffusionIntegrator self, MatrixCoefficient q, double const s, double const k) -> DGDiffusionIntegrator
         """
         _bilininteg.DGDiffusionIntegrator_swiginit(self, _bilininteg.new_DGDiffusionIntegrator(*args))
+
+        self._coeff = args
+
+
+
 
     def AssembleFaceMatrix(self, *args):
         r"""
@@ -2547,6 +2810,11 @@ class DGElasticityIntegrator(BilinearFormIntegrator):
         __init__(DGElasticityIntegrator self, Coefficient lambda_, Coefficient mu_, double alpha_, double kappa_) -> DGElasticityIntegrator
         """
         _bilininteg.DGElasticityIntegrator_swiginit(self, _bilininteg.new_DGElasticityIntegrator(*args))
+
+        self._coeff = args
+
+
+
 
     def AssembleFaceMatrix(self, *args):
         r"""
@@ -2764,6 +3032,11 @@ class ScalarProductInterpolator(DiscreteInterpolator):
         r"""__init__(ScalarProductInterpolator self, Coefficient sc) -> ScalarProductInterpolator"""
         _bilininteg.ScalarProductInterpolator_swiginit(self, _bilininteg.new_ScalarProductInterpolator(sc))
 
+        self._coeff = sc
+
+
+
+
     def AssembleElementMatrix2(self, dom_fe, ran_fe, Trans, elmat):
         r"""AssembleElementMatrix2(ScalarProductInterpolator self, FiniteElement dom_fe, FiniteElement ran_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.ScalarProductInterpolator_AssembleElementMatrix2(self, dom_fe, ran_fe, Trans, elmat)
@@ -2782,6 +3055,11 @@ class ScalarVectorProductInterpolator(DiscreteInterpolator):
     def __init__(self, sc):
         r"""__init__(ScalarVectorProductInterpolator self, Coefficient sc) -> ScalarVectorProductInterpolator"""
         _bilininteg.ScalarVectorProductInterpolator_swiginit(self, _bilininteg.new_ScalarVectorProductInterpolator(sc))
+
+        self._coeff = sc
+
+
+
 
     def AssembleElementMatrix2(self, dom_fe, ran_fe, Trans, elmat):
         r"""AssembleElementMatrix2(ScalarVectorProductInterpolator self, FiniteElement dom_fe, FiniteElement ran_fe, ElementTransformation Trans, DenseMatrix elmat)"""
@@ -2802,6 +3080,11 @@ class VectorScalarProductInterpolator(DiscreteInterpolator):
         r"""__init__(VectorScalarProductInterpolator self, VectorCoefficient vc) -> VectorScalarProductInterpolator"""
         _bilininteg.VectorScalarProductInterpolator_swiginit(self, _bilininteg.new_VectorScalarProductInterpolator(vc))
 
+        self._coeff = vc
+
+
+
+
     def AssembleElementMatrix2(self, dom_fe, ran_fe, Trans, elmat):
         r"""AssembleElementMatrix2(VectorScalarProductInterpolator self, FiniteElement dom_fe, FiniteElement ran_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.VectorScalarProductInterpolator_AssembleElementMatrix2(self, dom_fe, ran_fe, Trans, elmat)
@@ -2820,6 +3103,11 @@ class ScalarCrossProductInterpolator(DiscreteInterpolator):
     def __init__(self, vc):
         r"""__init__(ScalarCrossProductInterpolator self, VectorCoefficient vc) -> ScalarCrossProductInterpolator"""
         _bilininteg.ScalarCrossProductInterpolator_swiginit(self, _bilininteg.new_ScalarCrossProductInterpolator(vc))
+
+        self._coeff = vc
+
+
+
 
     def AssembleElementMatrix2(self, nd_fe, l2_fe, Trans, elmat):
         r"""AssembleElementMatrix2(ScalarCrossProductInterpolator self, FiniteElement nd_fe, FiniteElement l2_fe, ElementTransformation Trans, DenseMatrix elmat)"""
@@ -2840,6 +3128,11 @@ class VectorCrossProductInterpolator(DiscreteInterpolator):
         r"""__init__(VectorCrossProductInterpolator self, VectorCoefficient vc) -> VectorCrossProductInterpolator"""
         _bilininteg.VectorCrossProductInterpolator_swiginit(self, _bilininteg.new_VectorCrossProductInterpolator(vc))
 
+        self._coeff = vc
+
+
+
+
     def AssembleElementMatrix2(self, nd_fe, rt_fe, Trans, elmat):
         r"""AssembleElementMatrix2(VectorCrossProductInterpolator self, FiniteElement nd_fe, FiniteElement rt_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.VectorCrossProductInterpolator_AssembleElementMatrix2(self, nd_fe, rt_fe, Trans, elmat)
@@ -2858,6 +3151,11 @@ class VectorInnerProductInterpolator(DiscreteInterpolator):
     def __init__(self, vc):
         r"""__init__(VectorInnerProductInterpolator self, VectorCoefficient vc) -> VectorInnerProductInterpolator"""
         _bilininteg.VectorInnerProductInterpolator_swiginit(self, _bilininteg.new_VectorInnerProductInterpolator(vc))
+
+        self._coeff = vc
+
+
+
 
     def AssembleElementMatrix2(self, rt_fe, l2_fe, Trans, elmat):
         r"""AssembleElementMatrix2(VectorInnerProductInterpolator self, FiniteElement rt_fe, FiniteElement l2_fe, ElementTransformation Trans, DenseMatrix elmat)"""
