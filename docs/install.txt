@@ -47,6 +47,14 @@ $ python setup.py install --mfem-branch="mfem-4.3-dev"
 * cuda
 $ python3 setup.py install  --prefix=~/sandbox  --verbose --with-cuda
 
+* libceed
+** download libceed and build
+$ python3 setup.py install  --with-libceed --libceed-only
+
+** download/build libceed and build mfem serial (to turn on CEED in MFEM)
+$ python3 setup.py install  --with-libceed --ext-only
+
+
 Note Cuda support is only partially tested. One may want to build it step-by-step.
 # build MFEM library with cuda
 $ python3 setup.py install  --prefix=~/sandbox  --verbose --ext-only --with-cuda (--with-parallel)
