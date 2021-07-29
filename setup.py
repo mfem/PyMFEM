@@ -542,6 +542,7 @@ def write_setup_local():
               'add_pumi': '',
               'add_strumpack': '',
               'add_cuda': '',
+              'add_libceed': '',              
               'cxx11flag': cxx11_flag,
               }
 
