@@ -3489,6 +3489,54 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Device_SetMemoryTypes(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::MemoryType arg1 ;
+  mfem::MemoryType arg2 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"h_mt",  (char *)"d_mt",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Device_SetMemoryTypes", kwnames, &obj0, &obj1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "Device_SetMemoryTypes" "', argument " "1"" of type '" "mfem::MemoryType""'");
+  } 
+  arg1 = static_cast< mfem::MemoryType >(val1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Device_SetMemoryTypes" "', argument " "2"" of type '" "mfem::MemoryType""'");
+  } 
+  arg2 = static_cast< mfem::MemoryType >(val2);
+  {
+    try {
+      mfem::Device::SetMemoryTypes(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Device_Print(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Device *arg1 = (mfem::Device *) 0 ;
@@ -3649,6 +3697,34 @@ SWIGINTERN PyObject *_wrap_Device_IsDisabled(PyObject *SWIGUNUSEDPARM(self), PyO
     }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Device_GetId(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Device_GetId", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (int)mfem::Device::GetId();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
   return NULL;
@@ -3953,11 +4029,13 @@ static PyMethodDef SwigMethods[] = {
 	 { "new_Device", _wrap_new_Device, METH_VARARGS, NULL},
 	 { "delete_Device", _wrap_delete_Device, METH_O, NULL},
 	 { "Device_Configure", (PyCFunction)(void(*)(void))_wrap_Device_Configure, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "Device_SetMemoryTypes", (PyCFunction)(void(*)(void))_wrap_Device_SetMemoryTypes, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "Device_Print", (PyCFunction)(void(*)(void))_wrap_Device_Print, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "Device_IsConfigured", _wrap_Device_IsConfigured, METH_NOARGS, NULL},
 	 { "Device_IsAvailable", _wrap_Device_IsAvailable, METH_NOARGS, NULL},
 	 { "Device_IsEnabled", _wrap_Device_IsEnabled, METH_NOARGS, NULL},
 	 { "Device_IsDisabled", _wrap_Device_IsDisabled, METH_NOARGS, NULL},
+	 { "Device_GetId", _wrap_Device_GetId, METH_NOARGS, NULL},
 	 { "Device_Allows", (PyCFunction)(void(*)(void))_wrap_Device_Allows, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "Device_GetHostMemoryType", _wrap_Device_GetHostMemoryType, METH_NOARGS, NULL},
 	 { "Device_GetHostMemoryClass", _wrap_Device_GetHostMemoryClass, METH_NOARGS, NULL},
@@ -3982,11 +4060,13 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "new_Device", _wrap_new_Device, METH_VARARGS, NULL},
 	 { "delete_Device", _wrap_delete_Device, METH_O, NULL},
 	 { "Device_Configure", (PyCFunction)(void(*)(void))_wrap_Device_Configure, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "Device_SetMemoryTypes", (PyCFunction)(void(*)(void))_wrap_Device_SetMemoryTypes, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "Device_Print", (PyCFunction)(void(*)(void))_wrap_Device_Print, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "Device_IsConfigured", _wrap_Device_IsConfigured, METH_NOARGS, NULL},
 	 { "Device_IsAvailable", _wrap_Device_IsAvailable, METH_NOARGS, NULL},
 	 { "Device_IsEnabled", _wrap_Device_IsEnabled, METH_NOARGS, NULL},
 	 { "Device_IsDisabled", _wrap_Device_IsDisabled, METH_NOARGS, NULL},
+	 { "Device_GetId", _wrap_Device_GetId, METH_NOARGS, NULL},
 	 { "Device_Allows", (PyCFunction)(void(*)(void))_wrap_Device_Allows, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "Device_GetHostMemoryType", _wrap_Device_GetHostMemoryType, METH_NOARGS, NULL},
 	 { "Device_GetHostMemoryClass", _wrap_Device_GetHostMemoryClass, METH_NOARGS, NULL},
@@ -4771,6 +4851,7 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "Backend_RAJA_CPU",SWIG_From_int(static_cast< int >(mfem::Backend::RAJA_CPU)));
   SWIG_Python_SetConstant(d, "Backend_RAJA_OMP",SWIG_From_int(static_cast< int >(mfem::Backend::RAJA_OMP)));
   SWIG_Python_SetConstant(d, "Backend_RAJA_CUDA",SWIG_From_int(static_cast< int >(mfem::Backend::RAJA_CUDA)));
+  SWIG_Python_SetConstant(d, "Backend_RAJA_HIP",SWIG_From_int(static_cast< int >(mfem::Backend::RAJA_HIP)));
   SWIG_Python_SetConstant(d, "Backend_OCCA_CPU",SWIG_From_int(static_cast< int >(mfem::Backend::OCCA_CPU)));
   SWIG_Python_SetConstant(d, "Backend_OCCA_OMP",SWIG_From_int(static_cast< int >(mfem::Backend::OCCA_OMP)));
   SWIG_Python_SetConstant(d, "Backend_OCCA_CUDA",SWIG_From_int(static_cast< int >(mfem::Backend::OCCA_CUDA)));

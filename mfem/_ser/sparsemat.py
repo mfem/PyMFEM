@@ -122,7 +122,7 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
         __init__(SparseMatrix self, int * i) -> SparseMatrix
         __init__(SparseMatrix self, int * i, bool ownij, bool owna, bool issorted) -> SparseMatrix
         __init__(SparseMatrix self, int nrows, int ncols, int rowsize) -> SparseMatrix
-        __init__(SparseMatrix self, SparseMatrix mat, bool copy_graph=True) -> SparseMatrix
+        __init__(SparseMatrix self, SparseMatrix mat, bool copy_graph=True, mfem::MemoryType mt=MemoryType::PRESERVE) -> SparseMatrix
         __init__(SparseMatrix self, Vector v) -> SparseMatrix
         """
 
@@ -152,9 +152,9 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
 
         _sparsemat.SparseMatrix_swiginit(self, _sparsemat.new_SparseMatrix(*args))
 
-    def UseCuSparse(self, _useCuSparse=True):
-        r"""UseCuSparse(SparseMatrix self, bool _useCuSparse=True)"""
-        return _sparsemat.SparseMatrix_UseCuSparse(self, _useCuSparse)
+    def UseCuSparse(self, useCuSparse_=True):
+        r"""UseCuSparse(SparseMatrix self, bool useCuSparse_=True)"""
+        return _sparsemat.SparseMatrix_UseCuSparse(self, useCuSparse_)
     UseCuSparse = _swig_new_instance_method(_sparsemat.SparseMatrix_UseCuSparse)
 
     def MakeRef(self, master):
@@ -171,6 +171,11 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
         r"""Clear(SparseMatrix self)"""
         return _sparsemat.SparseMatrix_Clear(self)
     Clear = _swig_new_instance_method(_sparsemat.SparseMatrix_Clear)
+
+    def ClearCuSparse(self):
+        r"""ClearCuSparse(SparseMatrix self)"""
+        return _sparsemat.SparseMatrix_ClearCuSparse(self)
+    ClearCuSparse = _swig_new_instance_method(_sparsemat.SparseMatrix_ClearCuSparse)
 
     def Empty(self):
         r"""Empty(SparseMatrix self) -> bool"""

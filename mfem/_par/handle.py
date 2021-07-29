@@ -117,9 +117,12 @@ class OperatorHandle(object):
         return _handle.OperatorHandle___deref__(self)
     __deref__ = _swig_new_instance_method(_handle.OperatorHandle___deref__)
 
-    def __ref__(self):
-        r"""__ref__(OperatorHandle self) -> Operator"""
-        return _handle.OperatorHandle___ref__(self)
+    def __ref__(self, *args):
+        r"""
+        __ref__(OperatorHandle self) -> Operator
+        __ref__(OperatorHandle self) -> Operator
+        """
+        return _handle.OperatorHandle___ref__(self, *args)
     __ref__ = _swig_new_instance_method(_handle.OperatorHandle___ref__)
 
     def Type(self):
@@ -148,12 +151,12 @@ class OperatorHandle(object):
     SetType = _swig_new_instance_method(_handle.OperatorHandle_SetType)
 
     def MakeSquareBlockDiag(self, comm, glob_size, row_starts, diag):
-        r"""MakeSquareBlockDiag(OperatorHandle self, MPI_Comm comm, HYPRE_Int glob_size, HYPRE_Int * row_starts, SparseMatrix diag)"""
+        r"""MakeSquareBlockDiag(OperatorHandle self, MPI_Comm comm, HYPRE_BigInt glob_size, HYPRE_BigInt * row_starts, SparseMatrix diag)"""
         return _handle.OperatorHandle_MakeSquareBlockDiag(self, comm, glob_size, row_starts, diag)
     MakeSquareBlockDiag = _swig_new_instance_method(_handle.OperatorHandle_MakeSquareBlockDiag)
 
     def MakeRectangularBlockDiag(self, comm, glob_num_rows, glob_num_cols, row_starts, col_starts, diag):
-        r"""MakeRectangularBlockDiag(OperatorHandle self, MPI_Comm comm, HYPRE_Int glob_num_rows, HYPRE_Int glob_num_cols, HYPRE_Int * row_starts, HYPRE_Int * col_starts, SparseMatrix diag)"""
+        r"""MakeRectangularBlockDiag(OperatorHandle self, MPI_Comm comm, HYPRE_BigInt glob_num_rows, HYPRE_BigInt glob_num_cols, HYPRE_BigInt * row_starts, HYPRE_BigInt * col_starts, SparseMatrix diag)"""
         return _handle.OperatorHandle_MakeRectangularBlockDiag(self, comm, glob_num_rows, glob_num_cols, row_starts, col_starts, diag)
     MakeRectangularBlockDiag = _swig_new_instance_method(_handle.OperatorHandle_MakeRectangularBlockDiag)
 
@@ -260,6 +263,11 @@ class OperatorHandle(object):
         return _handle.OperatorHandle_GetGradient(self, x)
     GetGradient = _swig_new_instance_method(_handle.OperatorHandle_GetGradient)
 
+    def AssembleDiagonal(self, diag):
+        r"""AssembleDiagonal(OperatorHandle self, Vector diag)"""
+        return _handle.OperatorHandle_AssembleDiagonal(self, diag)
+    AssembleDiagonal = _swig_new_instance_method(_handle.OperatorHandle_AssembleDiagonal)
+
     def GetProlongation(self):
         r"""GetProlongation(OperatorHandle self) -> Operator"""
         return _handle.OperatorHandle_GetProlongation(self)
@@ -274,6 +282,11 @@ class OperatorHandle(object):
         r"""GetOutputProlongation(OperatorHandle self) -> Operator"""
         return _handle.OperatorHandle_GetOutputProlongation(self)
     GetOutputProlongation = _swig_new_instance_method(_handle.OperatorHandle_GetOutputProlongation)
+
+    def GetOutputRestrictionTranspose(self):
+        r"""GetOutputRestrictionTranspose(OperatorHandle self) -> Operator"""
+        return _handle.OperatorHandle_GetOutputRestrictionTranspose(self)
+    GetOutputRestrictionTranspose = _swig_new_instance_method(_handle.OperatorHandle_GetOutputRestrictionTranspose)
 
     def GetOutputRestriction(self):
         r"""GetOutputRestriction(OperatorHandle self) -> Operator"""

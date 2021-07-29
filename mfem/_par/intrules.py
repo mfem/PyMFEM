@@ -77,7 +77,7 @@ class IntegrationPointArray(object):
         __init__(IntegrationPointArray self) -> IntegrationPointArray
         __init__(IntegrationPointArray self, mfem::MemoryType mt) -> IntegrationPointArray
         __init__(IntegrationPointArray self, int asize) -> IntegrationPointArray
-        __init__(IntegrationPointArray self, IntegrationPoint _data, int asize) -> IntegrationPointArray
+        __init__(IntegrationPointArray self, IntegrationPoint data_, int asize) -> IntegrationPointArray
         __init__(IntegrationPointArray self, IntegrationPointArray src) -> IntegrationPointArray
         """
         _intrules.IntegrationPointArray_swiginit(self, _intrules.new_IntegrationPointArray(*args))
@@ -408,40 +408,47 @@ class QuadratureFunctions1D(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def GaussLegendre(self, np, ir):
-        r"""GaussLegendre(QuadratureFunctions1D self, int const np, IntegrationRule ir)"""
-        return _intrules.QuadratureFunctions1D_GaussLegendre(self, np, ir)
-    GaussLegendre = _swig_new_instance_method(_intrules.QuadratureFunctions1D_GaussLegendre)
+    @staticmethod
+    def GaussLegendre(np, ir):
+        r"""GaussLegendre(int const np, IntegrationRule ir)"""
+        return _intrules.QuadratureFunctions1D_GaussLegendre(np, ir)
+    GaussLegendre = _swig_new_static_method(_intrules.QuadratureFunctions1D_GaussLegendre)
 
-    def GaussLobatto(self, np, ir):
-        r"""GaussLobatto(QuadratureFunctions1D self, int const np, IntegrationRule ir)"""
-        return _intrules.QuadratureFunctions1D_GaussLobatto(self, np, ir)
-    GaussLobatto = _swig_new_instance_method(_intrules.QuadratureFunctions1D_GaussLobatto)
+    @staticmethod
+    def GaussLobatto(np, ir):
+        r"""GaussLobatto(int const np, IntegrationRule ir)"""
+        return _intrules.QuadratureFunctions1D_GaussLobatto(np, ir)
+    GaussLobatto = _swig_new_static_method(_intrules.QuadratureFunctions1D_GaussLobatto)
 
-    def OpenUniform(self, np, ir):
-        r"""OpenUniform(QuadratureFunctions1D self, int const np, IntegrationRule ir)"""
-        return _intrules.QuadratureFunctions1D_OpenUniform(self, np, ir)
-    OpenUniform = _swig_new_instance_method(_intrules.QuadratureFunctions1D_OpenUniform)
+    @staticmethod
+    def OpenUniform(np, ir):
+        r"""OpenUniform(int const np, IntegrationRule ir)"""
+        return _intrules.QuadratureFunctions1D_OpenUniform(np, ir)
+    OpenUniform = _swig_new_static_method(_intrules.QuadratureFunctions1D_OpenUniform)
 
-    def ClosedUniform(self, np, ir):
-        r"""ClosedUniform(QuadratureFunctions1D self, int const np, IntegrationRule ir)"""
-        return _intrules.QuadratureFunctions1D_ClosedUniform(self, np, ir)
-    ClosedUniform = _swig_new_instance_method(_intrules.QuadratureFunctions1D_ClosedUniform)
+    @staticmethod
+    def ClosedUniform(np, ir):
+        r"""ClosedUniform(int const np, IntegrationRule ir)"""
+        return _intrules.QuadratureFunctions1D_ClosedUniform(np, ir)
+    ClosedUniform = _swig_new_static_method(_intrules.QuadratureFunctions1D_ClosedUniform)
 
-    def OpenHalfUniform(self, np, ir):
-        r"""OpenHalfUniform(QuadratureFunctions1D self, int const np, IntegrationRule ir)"""
-        return _intrules.QuadratureFunctions1D_OpenHalfUniform(self, np, ir)
-    OpenHalfUniform = _swig_new_instance_method(_intrules.QuadratureFunctions1D_OpenHalfUniform)
+    @staticmethod
+    def OpenHalfUniform(np, ir):
+        r"""OpenHalfUniform(int const np, IntegrationRule ir)"""
+        return _intrules.QuadratureFunctions1D_OpenHalfUniform(np, ir)
+    OpenHalfUniform = _swig_new_static_method(_intrules.QuadratureFunctions1D_OpenHalfUniform)
 
-    def ClosedGL(self, np, ir):
-        r"""ClosedGL(QuadratureFunctions1D self, int const np, IntegrationRule ir)"""
-        return _intrules.QuadratureFunctions1D_ClosedGL(self, np, ir)
-    ClosedGL = _swig_new_instance_method(_intrules.QuadratureFunctions1D_ClosedGL)
+    @staticmethod
+    def ClosedGL(np, ir):
+        r"""ClosedGL(int const np, IntegrationRule ir)"""
+        return _intrules.QuadratureFunctions1D_ClosedGL(np, ir)
+    ClosedGL = _swig_new_static_method(_intrules.QuadratureFunctions1D_ClosedGL)
 
-    def GivePolyPoints(self, np, pts, type):
-        r"""GivePolyPoints(QuadratureFunctions1D self, int const np, double * pts, int const type)"""
-        return _intrules.QuadratureFunctions1D_GivePolyPoints(self, np, pts, type)
-    GivePolyPoints = _swig_new_instance_method(_intrules.QuadratureFunctions1D_GivePolyPoints)
+    @staticmethod
+    def GivePolyPoints(np, pts, type):
+        r"""GivePolyPoints(int const np, double * pts, int const type)"""
+        return _intrules.QuadratureFunctions1D_GivePolyPoints(np, pts, type)
+    GivePolyPoints = _swig_new_static_method(_intrules.QuadratureFunctions1D_GivePolyPoints)
 
     def __init__(self):
         r"""__init__(QuadratureFunctions1D self) -> QuadratureFunctions1D"""
@@ -450,6 +457,41 @@ class QuadratureFunctions1D(object):
 
 # Register QuadratureFunctions1D in _intrules:
 _intrules.QuadratureFunctions1D_swigregister(QuadratureFunctions1D)
+
+def QuadratureFunctions1D_GaussLegendre(np, ir):
+    r"""QuadratureFunctions1D_GaussLegendre(int const np, IntegrationRule ir)"""
+    return _intrules.QuadratureFunctions1D_GaussLegendre(np, ir)
+QuadratureFunctions1D_GaussLegendre = _intrules.QuadratureFunctions1D_GaussLegendre
+
+def QuadratureFunctions1D_GaussLobatto(np, ir):
+    r"""QuadratureFunctions1D_GaussLobatto(int const np, IntegrationRule ir)"""
+    return _intrules.QuadratureFunctions1D_GaussLobatto(np, ir)
+QuadratureFunctions1D_GaussLobatto = _intrules.QuadratureFunctions1D_GaussLobatto
+
+def QuadratureFunctions1D_OpenUniform(np, ir):
+    r"""QuadratureFunctions1D_OpenUniform(int const np, IntegrationRule ir)"""
+    return _intrules.QuadratureFunctions1D_OpenUniform(np, ir)
+QuadratureFunctions1D_OpenUniform = _intrules.QuadratureFunctions1D_OpenUniform
+
+def QuadratureFunctions1D_ClosedUniform(np, ir):
+    r"""QuadratureFunctions1D_ClosedUniform(int const np, IntegrationRule ir)"""
+    return _intrules.QuadratureFunctions1D_ClosedUniform(np, ir)
+QuadratureFunctions1D_ClosedUniform = _intrules.QuadratureFunctions1D_ClosedUniform
+
+def QuadratureFunctions1D_OpenHalfUniform(np, ir):
+    r"""QuadratureFunctions1D_OpenHalfUniform(int const np, IntegrationRule ir)"""
+    return _intrules.QuadratureFunctions1D_OpenHalfUniform(np, ir)
+QuadratureFunctions1D_OpenHalfUniform = _intrules.QuadratureFunctions1D_OpenHalfUniform
+
+def QuadratureFunctions1D_ClosedGL(np, ir):
+    r"""QuadratureFunctions1D_ClosedGL(int const np, IntegrationRule ir)"""
+    return _intrules.QuadratureFunctions1D_ClosedGL(np, ir)
+QuadratureFunctions1D_ClosedGL = _intrules.QuadratureFunctions1D_ClosedGL
+
+def QuadratureFunctions1D_GivePolyPoints(np, pts, type):
+    r"""QuadratureFunctions1D_GivePolyPoints(int const np, double * pts, int const type)"""
+    return _intrules.QuadratureFunctions1D_GivePolyPoints(np, pts, type)
+QuadratureFunctions1D_GivePolyPoints = _intrules.QuadratureFunctions1D_GivePolyPoints
 
 class Quadrature1D(object):
     r"""Proxy of C++ mfem::Quadrature1D class."""

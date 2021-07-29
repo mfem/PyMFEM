@@ -3578,13 +3578,89 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_LinearFormIntegrator_AssembleRHSElementVect__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::LinearFormIntegrator *arg1 = (mfem::LinearFormIntegrator *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::FiniteElement *arg3 = 0 ;
+  mfem::FaceElementTransformations *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__LinearFormIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearFormIntegrator_AssembleRHSElementVect" "', argument " "1"" of type '" "mfem::LinearFormIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::LinearFormIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LinearFormIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "LinearFormIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "LinearFormIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "LinearFormIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__FaceElementTransformations,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "LinearFormIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "LinearFormIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::FaceElementTransformations * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "LinearFormIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "LinearFormIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  {
+    try {
+      (arg1)->AssembleRHSElementVect((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_LinearFormIntegrator_AssembleRHSElementVect(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[5] = {
+  PyObject *argv[6] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "LinearFormIntegrator_AssembleRHSElementVect", 0, 4, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "LinearFormIntegrator_AssembleRHSElementVect", 0, 5, argv))) SWIG_fail;
   --argc;
   if (argc == 4) {
     int _v;
@@ -3632,12 +3708,40 @@ SWIGINTERN PyObject *_wrap_LinearFormIntegrator_AssembleRHSElementVect(PyObject 
       }
     }
   }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__LinearFormIntegrator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__FaceElementTransformations, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_LinearFormIntegrator_AssembleRHSElementVect__SWIG_2(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'LinearFormIntegrator_AssembleRHSElementVect'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::LinearFormIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::Vector &)\n"
-    "    mfem::LinearFormIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
+    "    mfem::LinearFormIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n"
+    "    mfem::LinearFormIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
   return 0;
 }
 
@@ -4326,13 +4430,89 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_DomainLFIntegrator_AssembleRHSElementVect__SWIG_1_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::DomainLFIntegrator *arg1 = (mfem::DomainLFIntegrator *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::FiniteElement *arg3 = 0 ;
+  mfem::FaceElementTransformations *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DomainLFIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DomainLFIntegrator_AssembleRHSElementVect" "', argument " "1"" of type '" "mfem::DomainLFIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DomainLFIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DomainLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DomainLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DomainLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DomainLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__FaceElementTransformations,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "DomainLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DomainLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::FaceElementTransformations * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "DomainLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DomainLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  {
+    try {
+      (arg1)->AssembleRHSElementVect((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_DomainLFIntegrator_AssembleRHSElementVect(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[5] = {
+  PyObject *argv[6] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "DomainLFIntegrator_AssembleRHSElementVect", 0, 4, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "DomainLFIntegrator_AssembleRHSElementVect", 0, 5, argv))) SWIG_fail;
   --argc;
   if (argc == 4) {
     int _v;
@@ -4380,12 +4560,40 @@ SWIGINTERN PyObject *_wrap_DomainLFIntegrator_AssembleRHSElementVect(PyObject *s
       }
     }
   }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__DomainLFIntegrator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__FaceElementTransformations, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_DomainLFIntegrator_AssembleRHSElementVect__SWIG_1_1(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'DomainLFIntegrator_AssembleRHSElementVect'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::DomainLFIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::Vector &)\n"
-    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n"
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
   return 0;
 }
 
@@ -4677,13 +4885,89 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_DomainLFGradIntegrator_AssembleRHSElementVect__SWIG_1_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::DomainLFGradIntegrator *arg1 = (mfem::DomainLFGradIntegrator *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::FiniteElement *arg3 = 0 ;
+  mfem::FaceElementTransformations *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DomainLFGradIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DomainLFGradIntegrator_AssembleRHSElementVect" "', argument " "1"" of type '" "mfem::DomainLFGradIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DomainLFGradIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DomainLFGradIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DomainLFGradIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DomainLFGradIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DomainLFGradIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__FaceElementTransformations,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "DomainLFGradIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DomainLFGradIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::FaceElementTransformations * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "DomainLFGradIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DomainLFGradIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  {
+    try {
+      (arg1)->AssembleRHSElementVect((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_DomainLFGradIntegrator_AssembleRHSElementVect(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[5] = {
+  PyObject *argv[6] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "DomainLFGradIntegrator_AssembleRHSElementVect", 0, 4, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "DomainLFGradIntegrator_AssembleRHSElementVect", 0, 5, argv))) SWIG_fail;
   --argc;
   if (argc == 4) {
     int _v;
@@ -4731,12 +5015,40 @@ SWIGINTERN PyObject *_wrap_DomainLFGradIntegrator_AssembleRHSElementVect(PyObjec
       }
     }
   }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__DomainLFGradIntegrator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__FaceElementTransformations, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_DomainLFGradIntegrator_AssembleRHSElementVect__SWIG_1_1(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'DomainLFGradIntegrator_AssembleRHSElementVect'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::DomainLFGradIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::Vector &)\n"
-    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n"
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
   return 0;
 }
 
@@ -4976,13 +5288,89 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_BoundaryLFIntegrator_AssembleRHSElementVect__SWIG_2_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::BoundaryLFIntegrator *arg1 = (mfem::BoundaryLFIntegrator *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::FiniteElement *arg3 = 0 ;
+  mfem::FaceElementTransformations *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BoundaryLFIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BoundaryLFIntegrator_AssembleRHSElementVect" "', argument " "1"" of type '" "mfem::BoundaryLFIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BoundaryLFIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BoundaryLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BoundaryLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BoundaryLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BoundaryLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__FaceElementTransformations,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "BoundaryLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BoundaryLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::FaceElementTransformations * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "BoundaryLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BoundaryLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  {
+    try {
+      (arg1)->AssembleRHSElementVect((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_BoundaryLFIntegrator_AssembleRHSElementVect(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[5] = {
+  PyObject *argv[6] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "BoundaryLFIntegrator_AssembleRHSElementVect", 0, 4, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "BoundaryLFIntegrator_AssembleRHSElementVect", 0, 5, argv))) SWIG_fail;
   --argc;
   if (argc == 4) {
     int _v;
@@ -5030,12 +5418,40 @@ SWIGINTERN PyObject *_wrap_BoundaryLFIntegrator_AssembleRHSElementVect(PyObject 
       }
     }
   }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BoundaryLFIntegrator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__FaceElementTransformations, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_BoundaryLFIntegrator_AssembleRHSElementVect__SWIG_2_0(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BoundaryLFIntegrator_AssembleRHSElementVect'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::BoundaryLFIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::Vector &)\n"
-    "    mfem::BoundaryLFIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
+    "    mfem::BoundaryLFIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n"
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
   return 0;
 }
 
@@ -5275,13 +5691,89 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_BoundaryNormalLFIntegrator_AssembleRHSElementVect__SWIG_1_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::BoundaryNormalLFIntegrator *arg1 = (mfem::BoundaryNormalLFIntegrator *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::FiniteElement *arg3 = 0 ;
+  mfem::FaceElementTransformations *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BoundaryNormalLFIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BoundaryNormalLFIntegrator_AssembleRHSElementVect" "', argument " "1"" of type '" "mfem::BoundaryNormalLFIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BoundaryNormalLFIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BoundaryNormalLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BoundaryNormalLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BoundaryNormalLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BoundaryNormalLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__FaceElementTransformations,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "BoundaryNormalLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BoundaryNormalLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::FaceElementTransformations * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "BoundaryNormalLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BoundaryNormalLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  {
+    try {
+      (arg1)->AssembleRHSElementVect((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_BoundaryNormalLFIntegrator_AssembleRHSElementVect(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[5] = {
+  PyObject *argv[6] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "BoundaryNormalLFIntegrator_AssembleRHSElementVect", 0, 4, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "BoundaryNormalLFIntegrator_AssembleRHSElementVect", 0, 5, argv))) SWIG_fail;
   --argc;
   if (argc == 4) {
     int _v;
@@ -5329,12 +5821,40 @@ SWIGINTERN PyObject *_wrap_BoundaryNormalLFIntegrator_AssembleRHSElementVect(PyO
       }
     }
   }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BoundaryNormalLFIntegrator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__FaceElementTransformations, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_BoundaryNormalLFIntegrator_AssembleRHSElementVect__SWIG_1_1(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BoundaryNormalLFIntegrator_AssembleRHSElementVect'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::BoundaryNormalLFIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::Vector &)\n"
-    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n"
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
   return 0;
 }
 
@@ -5574,13 +6094,89 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_BoundaryTangentialLFIntegrator_AssembleRHSElementVect__SWIG_1_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::BoundaryTangentialLFIntegrator *arg1 = (mfem::BoundaryTangentialLFIntegrator *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::FiniteElement *arg3 = 0 ;
+  mfem::FaceElementTransformations *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BoundaryTangentialLFIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BoundaryTangentialLFIntegrator_AssembleRHSElementVect" "', argument " "1"" of type '" "mfem::BoundaryTangentialLFIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BoundaryTangentialLFIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BoundaryTangentialLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BoundaryTangentialLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BoundaryTangentialLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BoundaryTangentialLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__FaceElementTransformations,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "BoundaryTangentialLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BoundaryTangentialLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::FaceElementTransformations * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "BoundaryTangentialLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BoundaryTangentialLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  {
+    try {
+      (arg1)->AssembleRHSElementVect((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_BoundaryTangentialLFIntegrator_AssembleRHSElementVect(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[5] = {
+  PyObject *argv[6] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "BoundaryTangentialLFIntegrator_AssembleRHSElementVect", 0, 4, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "BoundaryTangentialLFIntegrator_AssembleRHSElementVect", 0, 5, argv))) SWIG_fail;
   --argc;
   if (argc == 4) {
     int _v;
@@ -5628,12 +6224,40 @@ SWIGINTERN PyObject *_wrap_BoundaryTangentialLFIntegrator_AssembleRHSElementVect
       }
     }
   }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BoundaryTangentialLFIntegrator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__FaceElementTransformations, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_BoundaryTangentialLFIntegrator_AssembleRHSElementVect__SWIG_1_1(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BoundaryTangentialLFIntegrator_AssembleRHSElementVect'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::BoundaryTangentialLFIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::Vector &)\n"
-    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n"
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
   return 0;
 }
 
@@ -5925,13 +6549,89 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_VectorDomainLFIntegrator_AssembleRHSElementVect__SWIG_1_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::VectorDomainLFIntegrator *arg1 = (mfem::VectorDomainLFIntegrator *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::FiniteElement *arg3 = 0 ;
+  mfem::FaceElementTransformations *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorDomainLFIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorDomainLFIntegrator_AssembleRHSElementVect" "', argument " "1"" of type '" "mfem::VectorDomainLFIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorDomainLFIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorDomainLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorDomainLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorDomainLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorDomainLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__FaceElementTransformations,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "VectorDomainLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorDomainLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::FaceElementTransformations * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "VectorDomainLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorDomainLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  {
+    try {
+      (arg1)->AssembleRHSElementVect((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_VectorDomainLFIntegrator_AssembleRHSElementVect(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[5] = {
+  PyObject *argv[6] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "VectorDomainLFIntegrator_AssembleRHSElementVect", 0, 4, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "VectorDomainLFIntegrator_AssembleRHSElementVect", 0, 5, argv))) SWIG_fail;
   --argc;
   if (argc == 4) {
     int _v;
@@ -5979,12 +6679,40 @@ SWIGINTERN PyObject *_wrap_VectorDomainLFIntegrator_AssembleRHSElementVect(PyObj
       }
     }
   }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorDomainLFIntegrator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__FaceElementTransformations, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_VectorDomainLFIntegrator_AssembleRHSElementVect__SWIG_1_1(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'VectorDomainLFIntegrator_AssembleRHSElementVect'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::VectorDomainLFIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::Vector &)\n"
-    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n"
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
   return 0;
 }
 
@@ -6204,13 +6932,89 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_VectorBoundaryLFIntegrator_AssembleRHSElementVect__SWIG_2_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::VectorBoundaryLFIntegrator *arg1 = (mfem::VectorBoundaryLFIntegrator *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::FiniteElement *arg3 = 0 ;
+  mfem::FaceElementTransformations *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorBoundaryLFIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorBoundaryLFIntegrator_AssembleRHSElementVect" "', argument " "1"" of type '" "mfem::VectorBoundaryLFIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorBoundaryLFIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorBoundaryLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorBoundaryLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorBoundaryLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorBoundaryLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__FaceElementTransformations,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "VectorBoundaryLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorBoundaryLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::FaceElementTransformations * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "VectorBoundaryLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorBoundaryLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  {
+    try {
+      (arg1)->AssembleRHSElementVect((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_VectorBoundaryLFIntegrator_AssembleRHSElementVect(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[5] = {
+  PyObject *argv[6] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "VectorBoundaryLFIntegrator_AssembleRHSElementVect", 0, 4, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "VectorBoundaryLFIntegrator_AssembleRHSElementVect", 0, 5, argv))) SWIG_fail;
   --argc;
   if (argc == 4) {
     int _v;
@@ -6258,12 +7062,40 @@ SWIGINTERN PyObject *_wrap_VectorBoundaryLFIntegrator_AssembleRHSElementVect(PyO
       }
     }
   }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorBoundaryLFIntegrator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__FaceElementTransformations, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_VectorBoundaryLFIntegrator_AssembleRHSElementVect__SWIG_2_0(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'VectorBoundaryLFIntegrator_AssembleRHSElementVect'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::VectorBoundaryLFIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::Vector &)\n"
-    "    mfem::VectorBoundaryLFIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
+    "    mfem::VectorBoundaryLFIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n"
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
   return 0;
 }
 
@@ -6555,13 +7387,89 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_VectorFEDomainLFIntegrator_AssembleRHSElementVect__SWIG_1_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::VectorFEDomainLFIntegrator *arg1 = (mfem::VectorFEDomainLFIntegrator *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::FiniteElement *arg3 = 0 ;
+  mfem::FaceElementTransformations *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorFEDomainLFIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorFEDomainLFIntegrator_AssembleRHSElementVect" "', argument " "1"" of type '" "mfem::VectorFEDomainLFIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorFEDomainLFIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorFEDomainLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorFEDomainLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorFEDomainLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorFEDomainLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__FaceElementTransformations,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "VectorFEDomainLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorFEDomainLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::FaceElementTransformations * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "VectorFEDomainLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorFEDomainLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  {
+    try {
+      (arg1)->AssembleRHSElementVect((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_VectorFEDomainLFIntegrator_AssembleRHSElementVect(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[5] = {
+  PyObject *argv[6] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "VectorFEDomainLFIntegrator_AssembleRHSElementVect", 0, 4, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "VectorFEDomainLFIntegrator_AssembleRHSElementVect", 0, 5, argv))) SWIG_fail;
   --argc;
   if (argc == 4) {
     int _v;
@@ -6609,12 +7517,40 @@ SWIGINTERN PyObject *_wrap_VectorFEDomainLFIntegrator_AssembleRHSElementVect(PyO
       }
     }
   }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorFEDomainLFIntegrator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__FaceElementTransformations, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_VectorFEDomainLFIntegrator_AssembleRHSElementVect__SWIG_1_1(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'VectorFEDomainLFIntegrator_AssembleRHSElementVect'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::VectorFEDomainLFIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::Vector &)\n"
-    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n"
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
   return 0;
 }
 
@@ -6906,13 +7842,89 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect__SWIG_1_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::VectorFEDomainLFCurlIntegrator *arg1 = (mfem::VectorFEDomainLFCurlIntegrator *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::FiniteElement *arg3 = 0 ;
+  mfem::FaceElementTransformations *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorFEDomainLFCurlIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect" "', argument " "1"" of type '" "mfem::VectorFEDomainLFCurlIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorFEDomainLFCurlIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__FaceElementTransformations,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::FaceElementTransformations * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  {
+    try {
+      (arg1)->AssembleRHSElementVect((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[5] = {
+  PyObject *argv[6] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect", 0, 4, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect", 0, 5, argv))) SWIG_fail;
   --argc;
   if (argc == 4) {
     int _v;
@@ -6960,12 +7972,40 @@ SWIGINTERN PyObject *_wrap_VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect
       }
     }
   }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorFEDomainLFCurlIntegrator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__FaceElementTransformations, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect__SWIG_1_1(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::VectorFEDomainLFCurlIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::Vector &)\n"
-    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n"
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
   return 0;
 }
 
@@ -7257,13 +8297,89 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_VectorFEDomainLFDivIntegrator_AssembleRHSElementVect__SWIG_1_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::VectorFEDomainLFDivIntegrator *arg1 = (mfem::VectorFEDomainLFDivIntegrator *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::FiniteElement *arg3 = 0 ;
+  mfem::FaceElementTransformations *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorFEDomainLFDivIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorFEDomainLFDivIntegrator_AssembleRHSElementVect" "', argument " "1"" of type '" "mfem::VectorFEDomainLFDivIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorFEDomainLFDivIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorFEDomainLFDivIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorFEDomainLFDivIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorFEDomainLFDivIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorFEDomainLFDivIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__FaceElementTransformations,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "VectorFEDomainLFDivIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorFEDomainLFDivIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::FaceElementTransformations * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "VectorFEDomainLFDivIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorFEDomainLFDivIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  {
+    try {
+      (arg1)->AssembleRHSElementVect((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_VectorFEDomainLFDivIntegrator_AssembleRHSElementVect(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[5] = {
+  PyObject *argv[6] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "VectorFEDomainLFDivIntegrator_AssembleRHSElementVect", 0, 4, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "VectorFEDomainLFDivIntegrator_AssembleRHSElementVect", 0, 5, argv))) SWIG_fail;
   --argc;
   if (argc == 4) {
     int _v;
@@ -7311,12 +8427,40 @@ SWIGINTERN PyObject *_wrap_VectorFEDomainLFDivIntegrator_AssembleRHSElementVect(
       }
     }
   }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorFEDomainLFDivIntegrator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__FaceElementTransformations, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_VectorFEDomainLFDivIntegrator_AssembleRHSElementVect__SWIG_1_1(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'VectorFEDomainLFDivIntegrator_AssembleRHSElementVect'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::VectorFEDomainLFDivIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::Vector &)\n"
-    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n"
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
   return 0;
 }
 
@@ -7558,13 +8702,89 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect__SWIG_1_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::VectorBoundaryFluxLFIntegrator *arg1 = (mfem::VectorBoundaryFluxLFIntegrator *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::FiniteElement *arg3 = 0 ;
+  mfem::FaceElementTransformations *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorBoundaryFluxLFIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect" "', argument " "1"" of type '" "mfem::VectorBoundaryFluxLFIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorBoundaryFluxLFIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__FaceElementTransformations,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::FaceElementTransformations * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  {
+    try {
+      (arg1)->AssembleRHSElementVect((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[5] = {
+  PyObject *argv[6] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect", 0, 4, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect", 0, 5, argv))) SWIG_fail;
   --argc;
   if (argc == 4) {
     int _v;
@@ -7612,12 +8832,40 @@ SWIGINTERN PyObject *_wrap_VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect
       }
     }
   }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorBoundaryFluxLFIntegrator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__FaceElementTransformations, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect__SWIG_1_1(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::VectorBoundaryFluxLFIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::Vector &)\n"
-    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n"
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
   return 0;
 }
 
@@ -7977,13 +9225,89 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect__SWIG_1_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::VectorFEBoundaryFluxLFIntegrator *arg1 = (mfem::VectorFEBoundaryFluxLFIntegrator *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::FiniteElement *arg3 = 0 ;
+  mfem::FaceElementTransformations *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorFEBoundaryFluxLFIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect" "', argument " "1"" of type '" "mfem::VectorFEBoundaryFluxLFIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorFEBoundaryFluxLFIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__FaceElementTransformations,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::FaceElementTransformations * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  {
+    try {
+      (arg1)->AssembleRHSElementVect((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[5] = {
+  PyObject *argv[6] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect", 0, 4, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect", 0, 5, argv))) SWIG_fail;
   --argc;
   if (argc == 4) {
     int _v;
@@ -8031,12 +9355,40 @@ SWIGINTERN PyObject *_wrap_VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVe
       }
     }
   }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorFEBoundaryFluxLFIntegrator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__FaceElementTransformations, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect__SWIG_1_1(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::VectorFEBoundaryFluxLFIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::Vector &)\n"
-    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n"
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
   return 0;
 }
 
@@ -8276,13 +9628,89 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect__SWIG_1_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::VectorFEBoundaryTangentLFIntegrator *arg1 = (mfem::VectorFEBoundaryTangentLFIntegrator *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::FiniteElement *arg3 = 0 ;
+  mfem::FaceElementTransformations *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorFEBoundaryTangentLFIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect" "', argument " "1"" of type '" "mfem::VectorFEBoundaryTangentLFIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorFEBoundaryTangentLFIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__FaceElementTransformations,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::FaceElementTransformations * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  {
+    try {
+      (arg1)->AssembleRHSElementVect((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[5] = {
+  PyObject *argv[6] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect", 0, 4, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect", 0, 5, argv))) SWIG_fail;
   --argc;
   if (argc == 4) {
     int _v;
@@ -8330,12 +9758,40 @@ SWIGINTERN PyObject *_wrap_VectorFEBoundaryTangentLFIntegrator_AssembleRHSElemen
       }
     }
   }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorFEBoundaryTangentLFIntegrator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__FaceElementTransformations, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect__SWIG_1_1(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::VectorFEBoundaryTangentLFIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::Vector &)\n"
-    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n"
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
   return 0;
 }
 
@@ -8385,7 +9841,62 @@ SWIGINTERN PyObject *VectorFEBoundaryTangentLFIntegrator_swiginit(PyObject *SWIG
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_BoundaryFlowIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_new_BoundaryFlowIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Coefficient *arg1 = 0 ;
+  mfem::VectorCoefficient *arg2 = 0 ;
+  double arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  mfem::BoundaryFlowIntegrator *result = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BoundaryFlowIntegrator" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BoundaryFlowIntegrator" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_BoundaryFlowIntegrator" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BoundaryFlowIntegrator" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_BoundaryFlowIntegrator" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  {
+    try {
+      result = (mfem::BoundaryFlowIntegrator *)new mfem::BoundaryFlowIntegrator(*arg1,*arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BoundaryFlowIntegrator, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_BoundaryFlowIntegrator__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Coefficient *arg1 = 0 ;
   mfem::VectorCoefficient *arg2 = 0 ;
@@ -8399,17 +9910,10 @@ SWIGINTERN PyObject *_wrap_new_BoundaryFlowIntegrator(PyObject *SWIGUNUSEDPARM(s
   int ecode3 = 0 ;
   double val4 ;
   int ecode4 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char * kwnames[] = {
-    (char *)"_f",  (char *)"_u",  (char *)"a",  (char *)"b",  NULL 
-  };
   mfem::BoundaryFlowIntegrator *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:new_BoundaryFlowIntegrator", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BoundaryFlowIntegrator" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
   }
@@ -8417,7 +9921,7 @@ SWIGINTERN PyObject *_wrap_new_BoundaryFlowIntegrator(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BoundaryFlowIntegrator" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_BoundaryFlowIntegrator" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
   }
@@ -8425,12 +9929,12 @@ SWIGINTERN PyObject *_wrap_new_BoundaryFlowIntegrator(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BoundaryFlowIntegrator" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
   }
   arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
-  ecode3 = SWIG_AsVal_double(obj2, &val3);
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_BoundaryFlowIntegrator" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
-  ecode4 = SWIG_AsVal_double(obj3, &val4);
+  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
   if (!SWIG_IsOK(ecode4)) {
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_BoundaryFlowIntegrator" "', argument " "4"" of type '" "double""'");
   } 
@@ -8452,6 +9956,70 @@ SWIGINTERN PyObject *_wrap_new_BoundaryFlowIntegrator(PyObject *SWIGUNUSEDPARM(s
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_BoundaryFlowIntegrator(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_BoundaryFlowIntegrator", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_new_BoundaryFlowIntegrator__SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_double(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_new_BoundaryFlowIntegrator__SWIG_1(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_BoundaryFlowIntegrator'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::BoundaryFlowIntegrator::BoundaryFlowIntegrator(mfem::Coefficient &,mfem::VectorCoefficient &,double)\n"
+    "    mfem::BoundaryFlowIntegrator::BoundaryFlowIntegrator(mfem::Coefficient &,mfem::VectorCoefficient &,double,double)\n");
+  return 0;
 }
 
 
@@ -8585,13 +10153,89 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_BoundaryFlowIntegrator_AssembleRHSElementVect__SWIG_2_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::BoundaryFlowIntegrator *arg1 = (mfem::BoundaryFlowIntegrator *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::FiniteElement *arg3 = 0 ;
+  mfem::FaceElementTransformations *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BoundaryFlowIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BoundaryFlowIntegrator_AssembleRHSElementVect" "', argument " "1"" of type '" "mfem::BoundaryFlowIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BoundaryFlowIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BoundaryFlowIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BoundaryFlowIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BoundaryFlowIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BoundaryFlowIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__FaceElementTransformations,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "BoundaryFlowIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BoundaryFlowIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::FaceElementTransformations * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "BoundaryFlowIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BoundaryFlowIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  {
+    try {
+      (arg1)->AssembleRHSElementVect((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_BoundaryFlowIntegrator_AssembleRHSElementVect(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[5] = {
+  PyObject *argv[6] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "BoundaryFlowIntegrator_AssembleRHSElementVect", 0, 4, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "BoundaryFlowIntegrator_AssembleRHSElementVect", 0, 5, argv))) SWIG_fail;
   --argc;
   if (argc == 4) {
     int _v;
@@ -8639,12 +10283,40 @@ SWIGINTERN PyObject *_wrap_BoundaryFlowIntegrator_AssembleRHSElementVect(PyObjec
       }
     }
   }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BoundaryFlowIntegrator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__FaceElementTransformations, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_BoundaryFlowIntegrator_AssembleRHSElementVect__SWIG_2_0(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BoundaryFlowIntegrator_AssembleRHSElementVect'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::BoundaryFlowIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::Vector &)\n"
-    "    mfem::BoundaryFlowIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
+    "    mfem::BoundaryFlowIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n"
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
   return 0;
 }
 
@@ -9094,13 +10766,89 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_DGDirichletLFIntegrator_AssembleRHSElementVect__SWIG_2_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::DGDirichletLFIntegrator *arg1 = (mfem::DGDirichletLFIntegrator *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::FiniteElement *arg3 = 0 ;
+  mfem::FaceElementTransformations *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DGDirichletLFIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DGDirichletLFIntegrator_AssembleRHSElementVect" "', argument " "1"" of type '" "mfem::DGDirichletLFIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DGDirichletLFIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DGDirichletLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DGDirichletLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DGDirichletLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DGDirichletLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__FaceElementTransformations,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "DGDirichletLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DGDirichletLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::FaceElementTransformations * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "DGDirichletLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DGDirichletLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  {
+    try {
+      (arg1)->AssembleRHSElementVect((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_DGDirichletLFIntegrator_AssembleRHSElementVect(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[5] = {
+  PyObject *argv[6] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "DGDirichletLFIntegrator_AssembleRHSElementVect", 0, 4, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "DGDirichletLFIntegrator_AssembleRHSElementVect", 0, 5, argv))) SWIG_fail;
   --argc;
   if (argc == 4) {
     int _v;
@@ -9148,12 +10896,40 @@ SWIGINTERN PyObject *_wrap_DGDirichletLFIntegrator_AssembleRHSElementVect(PyObje
       }
     }
   }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__DGDirichletLFIntegrator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__FaceElementTransformations, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_DGDirichletLFIntegrator_AssembleRHSElementVect__SWIG_2_0(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'DGDirichletLFIntegrator_AssembleRHSElementVect'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::DGDirichletLFIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::Vector &)\n"
-    "    mfem::DGDirichletLFIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
+    "    mfem::DGDirichletLFIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n"
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
   return 0;
 }
 
@@ -9415,13 +11191,89 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_DGElasticityDirichletLFIntegrator_AssembleRHSElementVect__SWIG_2_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::DGElasticityDirichletLFIntegrator *arg1 = (mfem::DGElasticityDirichletLFIntegrator *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::FiniteElement *arg3 = 0 ;
+  mfem::FaceElementTransformations *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DGElasticityDirichletLFIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DGElasticityDirichletLFIntegrator_AssembleRHSElementVect" "', argument " "1"" of type '" "mfem::DGElasticityDirichletLFIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DGElasticityDirichletLFIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DGElasticityDirichletLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DGElasticityDirichletLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DGElasticityDirichletLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DGElasticityDirichletLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__FaceElementTransformations,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "DGElasticityDirichletLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DGElasticityDirichletLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::FaceElementTransformations * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "DGElasticityDirichletLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DGElasticityDirichletLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  {
+    try {
+      (arg1)->AssembleRHSElementVect((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_DGElasticityDirichletLFIntegrator_AssembleRHSElementVect(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[5] = {
+  PyObject *argv[6] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "DGElasticityDirichletLFIntegrator_AssembleRHSElementVect", 0, 4, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "DGElasticityDirichletLFIntegrator_AssembleRHSElementVect", 0, 5, argv))) SWIG_fail;
   --argc;
   if (argc == 4) {
     int _v;
@@ -9469,12 +11321,40 @@ SWIGINTERN PyObject *_wrap_DGElasticityDirichletLFIntegrator_AssembleRHSElementV
       }
     }
   }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__DGElasticityDirichletLFIntegrator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__FaceElementTransformations, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_DGElasticityDirichletLFIntegrator_AssembleRHSElementVect__SWIG_2_0(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'DGElasticityDirichletLFIntegrator_AssembleRHSElementVect'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::DGElasticityDirichletLFIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::Vector &)\n"
-    "    mfem::DGElasticityDirichletLFIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
+    "    mfem::DGElasticityDirichletLFIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n"
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n");
   return 0;
 }
 
@@ -9654,6 +11534,82 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_VectorQuadratureLFIntegrator_AssembleRHSElementVect__SWIG_0_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::VectorQuadratureLFIntegrator *arg1 = (mfem::VectorQuadratureLFIntegrator *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::FiniteElement *arg3 = 0 ;
+  mfem::FaceElementTransformations *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorQuadratureLFIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorQuadratureLFIntegrator_AssembleRHSElementVect" "', argument " "1"" of type '" "mfem::VectorQuadratureLFIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorQuadratureLFIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorQuadratureLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorQuadratureLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorQuadratureLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorQuadratureLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__FaceElementTransformations,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "VectorQuadratureLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorQuadratureLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::FaceElementTransformations * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "VectorQuadratureLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorQuadratureLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  {
+    try {
+      (arg1)->AssembleRHSElementVect((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_VectorQuadratureLFIntegrator_AssembleRHSElementVect__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::VectorQuadratureLFIntegrator *arg1 = (mfem::VectorQuadratureLFIntegrator *) 0 ;
@@ -9721,11 +11677,11 @@ fail:
 
 SWIGINTERN PyObject *_wrap_VectorQuadratureLFIntegrator_AssembleRHSElementVect(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[5] = {
+  PyObject *argv[6] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "VectorQuadratureLFIntegrator_AssembleRHSElementVect", 0, 4, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "VectorQuadratureLFIntegrator_AssembleRHSElementVect", 0, 5, argv))) SWIG_fail;
   --argc;
   if (argc == 4) {
     int _v;
@@ -9796,12 +11752,40 @@ SWIGINTERN PyObject *_wrap_VectorQuadratureLFIntegrator_AssembleRHSElementVect(P
       }
     }
   }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorQuadratureLFIntegrator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__FaceElementTransformations, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_VectorQuadratureLFIntegrator_AssembleRHSElementVect__SWIG_0_2(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'VectorQuadratureLFIntegrator_AssembleRHSElementVect'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::Vector &)\n"
     "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n"
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n"
     "    mfem::VectorQuadratureLFIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::Vector &)\n");
   return 0;
 }
@@ -10023,6 +12007,82 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_QuadratureLFIntegrator_AssembleRHSElementVect__SWIG_0_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::QuadratureLFIntegrator *arg1 = (mfem::QuadratureLFIntegrator *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::FiniteElement *arg3 = 0 ;
+  mfem::FaceElementTransformations *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__QuadratureLFIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureLFIntegrator_AssembleRHSElementVect" "', argument " "1"" of type '" "mfem::QuadratureLFIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::QuadratureLFIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "QuadratureLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "QuadratureLFIntegrator_AssembleRHSElementVect" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "QuadratureLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "QuadratureLFIntegrator_AssembleRHSElementVect" "', argument " "3"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__FaceElementTransformations,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "QuadratureLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "QuadratureLFIntegrator_AssembleRHSElementVect" "', argument " "4"" of type '" "mfem::FaceElementTransformations &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::FaceElementTransformations * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "QuadratureLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "QuadratureLFIntegrator_AssembleRHSElementVect" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  {
+    try {
+      (arg1)->AssembleRHSElementVect((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_QuadratureLFIntegrator_AssembleRHSElementVect__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::QuadratureLFIntegrator *arg1 = (mfem::QuadratureLFIntegrator *) 0 ;
@@ -10090,11 +12150,11 @@ fail:
 
 SWIGINTERN PyObject *_wrap_QuadratureLFIntegrator_AssembleRHSElementVect(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[5] = {
+  PyObject *argv[6] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "QuadratureLFIntegrator_AssembleRHSElementVect", 0, 4, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "QuadratureLFIntegrator_AssembleRHSElementVect", 0, 5, argv))) SWIG_fail;
   --argc;
   if (argc == 4) {
     int _v;
@@ -10165,12 +12225,40 @@ SWIGINTERN PyObject *_wrap_QuadratureLFIntegrator_AssembleRHSElementVect(PyObjec
       }
     }
   }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__QuadratureLFIntegrator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__FaceElementTransformations, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_QuadratureLFIntegrator_AssembleRHSElementVect__SWIG_0_2(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'QuadratureLFIntegrator_AssembleRHSElementVect'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::Vector &)\n"
     "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n"
+    "    AssembleRHSElementVect(mfem::FiniteElement const &,mfem::FiniteElement const &,mfem::FaceElementTransformations &,mfem::Vector &)\n"
     "    mfem::QuadratureLFIntegrator::AssembleRHSElementVect(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::Vector &)\n");
   return 0;
 }
@@ -10268,6 +12356,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "LinearFormIntegrator_AssembleRHSElementVect", _wrap_LinearFormIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"LinearFormIntegrator_AssembleRHSElementVect(LinearFormIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"LinearFormIntegrator_AssembleRHSElementVect(LinearFormIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"LinearFormIntegrator_AssembleRHSElementVect(LinearFormIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "LinearFormIntegrator_SetIntRule", (PyCFunction)(void(*)(void))_wrap_LinearFormIntegrator_SetIntRule, METH_VARARGS|METH_KEYWORDS, "LinearFormIntegrator_SetIntRule(LinearFormIntegrator self, IntegrationRule ir)"},
 	 { "LinearFormIntegrator_GetIntRule", _wrap_LinearFormIntegrator_GetIntRule, METH_O, "LinearFormIntegrator_GetIntRule(LinearFormIntegrator self) -> IntegrationRule"},
@@ -10286,6 +12375,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "DomainLFIntegrator_AssembleRHSElementVect", _wrap_DomainLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"DomainLFIntegrator_AssembleRHSElementVect(DomainLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"DomainLFIntegrator_AssembleRHSElementVect(DomainLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"DomainLFIntegrator_AssembleRHSElementVect(DomainLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_DomainLFIntegrator", _wrap_delete_DomainLFIntegrator, METH_O, "delete_DomainLFIntegrator(DomainLFIntegrator self)"},
 	 { "DomainLFIntegrator_swigregister", DomainLFIntegrator_swigregister, METH_O, NULL},
@@ -10295,6 +12385,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "DomainLFGradIntegrator_AssembleRHSElementVect", _wrap_DomainLFGradIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"DomainLFGradIntegrator_AssembleRHSElementVect(DomainLFGradIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"DomainLFGradIntegrator_AssembleRHSElementVect(DomainLFGradIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"DomainLFGradIntegrator_AssembleRHSElementVect(DomainLFGradIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_DomainLFGradIntegrator", _wrap_delete_DomainLFGradIntegrator, METH_O, "delete_DomainLFGradIntegrator(DomainLFGradIntegrator self)"},
 	 { "DomainLFGradIntegrator_swigregister", DomainLFGradIntegrator_swigregister, METH_O, NULL},
@@ -10303,6 +12394,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "BoundaryLFIntegrator_AssembleRHSElementVect", _wrap_BoundaryLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"BoundaryLFIntegrator_AssembleRHSElementVect(BoundaryLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"BoundaryLFIntegrator_AssembleRHSElementVect(BoundaryLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"BoundaryLFIntegrator_AssembleRHSElementVect(BoundaryLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_BoundaryLFIntegrator", _wrap_delete_BoundaryLFIntegrator, METH_O, "delete_BoundaryLFIntegrator(BoundaryLFIntegrator self)"},
 	 { "BoundaryLFIntegrator_swigregister", BoundaryLFIntegrator_swigregister, METH_O, NULL},
@@ -10311,6 +12403,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "BoundaryNormalLFIntegrator_AssembleRHSElementVect", _wrap_BoundaryNormalLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"BoundaryNormalLFIntegrator_AssembleRHSElementVect(BoundaryNormalLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"BoundaryNormalLFIntegrator_AssembleRHSElementVect(BoundaryNormalLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"BoundaryNormalLFIntegrator_AssembleRHSElementVect(BoundaryNormalLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_BoundaryNormalLFIntegrator", _wrap_delete_BoundaryNormalLFIntegrator, METH_O, "delete_BoundaryNormalLFIntegrator(BoundaryNormalLFIntegrator self)"},
 	 { "BoundaryNormalLFIntegrator_swigregister", BoundaryNormalLFIntegrator_swigregister, METH_O, NULL},
@@ -10319,6 +12412,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "BoundaryTangentialLFIntegrator_AssembleRHSElementVect", _wrap_BoundaryTangentialLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"BoundaryTangentialLFIntegrator_AssembleRHSElementVect(BoundaryTangentialLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"BoundaryTangentialLFIntegrator_AssembleRHSElementVect(BoundaryTangentialLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"BoundaryTangentialLFIntegrator_AssembleRHSElementVect(BoundaryTangentialLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_BoundaryTangentialLFIntegrator", _wrap_delete_BoundaryTangentialLFIntegrator, METH_O, "delete_BoundaryTangentialLFIntegrator(BoundaryTangentialLFIntegrator self)"},
 	 { "BoundaryTangentialLFIntegrator_swigregister", BoundaryTangentialLFIntegrator_swigregister, METH_O, NULL},
@@ -10328,6 +12422,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "VectorDomainLFIntegrator_AssembleRHSElementVect", _wrap_VectorDomainLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"VectorDomainLFIntegrator_AssembleRHSElementVect(VectorDomainLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"VectorDomainLFIntegrator_AssembleRHSElementVect(VectorDomainLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"VectorDomainLFIntegrator_AssembleRHSElementVect(VectorDomainLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_VectorDomainLFIntegrator", _wrap_delete_VectorDomainLFIntegrator, METH_O, "delete_VectorDomainLFIntegrator(VectorDomainLFIntegrator self)"},
 	 { "VectorDomainLFIntegrator_swigregister", VectorDomainLFIntegrator_swigregister, METH_O, NULL},
@@ -10336,6 +12431,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "VectorBoundaryLFIntegrator_AssembleRHSElementVect", _wrap_VectorBoundaryLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"VectorBoundaryLFIntegrator_AssembleRHSElementVect(VectorBoundaryLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"VectorBoundaryLFIntegrator_AssembleRHSElementVect(VectorBoundaryLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"VectorBoundaryLFIntegrator_AssembleRHSElementVect(VectorBoundaryLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_VectorBoundaryLFIntegrator", _wrap_delete_VectorBoundaryLFIntegrator, METH_O, "delete_VectorBoundaryLFIntegrator(VectorBoundaryLFIntegrator self)"},
 	 { "VectorBoundaryLFIntegrator_swigregister", VectorBoundaryLFIntegrator_swigregister, METH_O, NULL},
@@ -10345,6 +12441,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "VectorFEDomainLFIntegrator_AssembleRHSElementVect", _wrap_VectorFEDomainLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"VectorFEDomainLFIntegrator_AssembleRHSElementVect(VectorFEDomainLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"VectorFEDomainLFIntegrator_AssembleRHSElementVect(VectorFEDomainLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"VectorFEDomainLFIntegrator_AssembleRHSElementVect(VectorFEDomainLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_VectorFEDomainLFIntegrator", _wrap_delete_VectorFEDomainLFIntegrator, METH_O, "delete_VectorFEDomainLFIntegrator(VectorFEDomainLFIntegrator self)"},
 	 { "VectorFEDomainLFIntegrator_swigregister", VectorFEDomainLFIntegrator_swigregister, METH_O, NULL},
@@ -10354,6 +12451,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect", _wrap_VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect(VectorFEDomainLFCurlIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect(VectorFEDomainLFCurlIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect(VectorFEDomainLFCurlIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_VectorFEDomainLFCurlIntegrator", _wrap_delete_VectorFEDomainLFCurlIntegrator, METH_O, "delete_VectorFEDomainLFCurlIntegrator(VectorFEDomainLFCurlIntegrator self)"},
 	 { "VectorFEDomainLFCurlIntegrator_swigregister", VectorFEDomainLFCurlIntegrator_swigregister, METH_O, NULL},
@@ -10363,6 +12461,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "VectorFEDomainLFDivIntegrator_AssembleRHSElementVect", _wrap_VectorFEDomainLFDivIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"VectorFEDomainLFDivIntegrator_AssembleRHSElementVect(VectorFEDomainLFDivIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"VectorFEDomainLFDivIntegrator_AssembleRHSElementVect(VectorFEDomainLFDivIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"VectorFEDomainLFDivIntegrator_AssembleRHSElementVect(VectorFEDomainLFDivIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_VectorFEDomainLFDivIntegrator", _wrap_delete_VectorFEDomainLFDivIntegrator, METH_O, "delete_VectorFEDomainLFDivIntegrator(VectorFEDomainLFDivIntegrator self)"},
 	 { "VectorFEDomainLFDivIntegrator_swigregister", VectorFEDomainLFDivIntegrator_swigregister, METH_O, NULL},
@@ -10371,6 +12470,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect", _wrap_VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect(VectorBoundaryFluxLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect(VectorBoundaryFluxLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect(VectorBoundaryFluxLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_VectorBoundaryFluxLFIntegrator", _wrap_delete_VectorBoundaryFluxLFIntegrator, METH_O, "delete_VectorBoundaryFluxLFIntegrator(VectorBoundaryFluxLFIntegrator self)"},
 	 { "VectorBoundaryFluxLFIntegrator_swigregister", VectorBoundaryFluxLFIntegrator_swigregister, METH_O, NULL},
@@ -10382,6 +12482,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect", _wrap_VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect(VectorFEBoundaryFluxLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect(VectorFEBoundaryFluxLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect(VectorFEBoundaryFluxLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_VectorFEBoundaryFluxLFIntegrator", _wrap_delete_VectorFEBoundaryFluxLFIntegrator, METH_O, "delete_VectorFEBoundaryFluxLFIntegrator(VectorFEBoundaryFluxLFIntegrator self)"},
 	 { "VectorFEBoundaryFluxLFIntegrator_swigregister", VectorFEBoundaryFluxLFIntegrator_swigregister, METH_O, NULL},
@@ -10390,14 +12491,19 @@ static PyMethodDef SwigMethods[] = {
 	 { "VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect", _wrap_VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect(VectorFEBoundaryTangentLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect(VectorFEBoundaryTangentLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect(VectorFEBoundaryTangentLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_VectorFEBoundaryTangentLFIntegrator", _wrap_delete_VectorFEBoundaryTangentLFIntegrator, METH_O, "delete_VectorFEBoundaryTangentLFIntegrator(VectorFEBoundaryTangentLFIntegrator self)"},
 	 { "VectorFEBoundaryTangentLFIntegrator_swigregister", VectorFEBoundaryTangentLFIntegrator_swigregister, METH_O, NULL},
 	 { "VectorFEBoundaryTangentLFIntegrator_swiginit", VectorFEBoundaryTangentLFIntegrator_swiginit, METH_VARARGS, NULL},
-	 { "new_BoundaryFlowIntegrator", (PyCFunction)(void(*)(void))_wrap_new_BoundaryFlowIntegrator, METH_VARARGS|METH_KEYWORDS, "new_BoundaryFlowIntegrator(Coefficient _f, VectorCoefficient _u, double a, double b) -> BoundaryFlowIntegrator"},
+	 { "new_BoundaryFlowIntegrator", _wrap_new_BoundaryFlowIntegrator, METH_VARARGS, "\n"
+		"BoundaryFlowIntegrator(Coefficient f_, VectorCoefficient u_, double a)\n"
+		"new_BoundaryFlowIntegrator(Coefficient f_, VectorCoefficient u_, double a, double b) -> BoundaryFlowIntegrator\n"
+		""},
 	 { "BoundaryFlowIntegrator_AssembleRHSElementVect", _wrap_BoundaryFlowIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"BoundaryFlowIntegrator_AssembleRHSElementVect(BoundaryFlowIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"BoundaryFlowIntegrator_AssembleRHSElementVect(BoundaryFlowIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"BoundaryFlowIntegrator_AssembleRHSElementVect(BoundaryFlowIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_BoundaryFlowIntegrator", _wrap_delete_BoundaryFlowIntegrator, METH_O, "delete_BoundaryFlowIntegrator(BoundaryFlowIntegrator self)"},
 	 { "BoundaryFlowIntegrator_swigregister", BoundaryFlowIntegrator_swigregister, METH_O, NULL},
@@ -10410,6 +12516,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "DGDirichletLFIntegrator_AssembleRHSElementVect", _wrap_DGDirichletLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"DGDirichletLFIntegrator_AssembleRHSElementVect(DGDirichletLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"DGDirichletLFIntegrator_AssembleRHSElementVect(DGDirichletLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"DGDirichletLFIntegrator_AssembleRHSElementVect(DGDirichletLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_DGDirichletLFIntegrator", _wrap_delete_DGDirichletLFIntegrator, METH_O, "delete_DGDirichletLFIntegrator(DGDirichletLFIntegrator self)"},
 	 { "DGDirichletLFIntegrator_swigregister", DGDirichletLFIntegrator_swigregister, METH_O, NULL},
@@ -10418,6 +12525,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "DGElasticityDirichletLFIntegrator_AssembleRHSElementVect", _wrap_DGElasticityDirichletLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"DGElasticityDirichletLFIntegrator_AssembleRHSElementVect(DGElasticityDirichletLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"DGElasticityDirichletLFIntegrator_AssembleRHSElementVect(DGElasticityDirichletLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"DGElasticityDirichletLFIntegrator_AssembleRHSElementVect(DGElasticityDirichletLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_DGElasticityDirichletLFIntegrator", _wrap_delete_DGElasticityDirichletLFIntegrator, METH_O, "delete_DGElasticityDirichletLFIntegrator(DGElasticityDirichletLFIntegrator self)"},
 	 { "DGElasticityDirichletLFIntegrator_swigregister", DGElasticityDirichletLFIntegrator_swigregister, METH_O, NULL},
@@ -10425,6 +12533,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "VectorQuadratureLFIntegrator_AssembleRHSElementVect", _wrap_VectorQuadratureLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"VectorQuadratureLFIntegrator_AssembleRHSElementVect(VectorQuadratureLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"VectorQuadratureLFIntegrator_AssembleRHSElementVect(VectorQuadratureLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"VectorQuadratureLFIntegrator_AssembleRHSElementVect(VectorQuadratureLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		"VectorQuadratureLFIntegrator_AssembleRHSElementVect(VectorQuadratureLFIntegrator self, FiniteElement fe, ElementTransformation Tr, Vector elvect)\n"
 		""},
 	 { "VectorQuadratureLFIntegrator_SetIntRule", (PyCFunction)(void(*)(void))_wrap_VectorQuadratureLFIntegrator_SetIntRule, METH_VARARGS|METH_KEYWORDS, "VectorQuadratureLFIntegrator_SetIntRule(VectorQuadratureLFIntegrator self, IntegrationRule ir)"},
@@ -10433,6 +12542,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "QuadratureLFIntegrator_AssembleRHSElementVect", _wrap_QuadratureLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"QuadratureLFIntegrator_AssembleRHSElementVect(QuadratureLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"QuadratureLFIntegrator_AssembleRHSElementVect(QuadratureLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"QuadratureLFIntegrator_AssembleRHSElementVect(QuadratureLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		"QuadratureLFIntegrator_AssembleRHSElementVect(QuadratureLFIntegrator self, FiniteElement fe, ElementTransformation Tr, Vector elvect)\n"
 		""},
 	 { "QuadratureLFIntegrator_SetIntRule", (PyCFunction)(void(*)(void))_wrap_QuadratureLFIntegrator_SetIntRule, METH_VARARGS|METH_KEYWORDS, "QuadratureLFIntegrator_SetIntRule(QuadratureLFIntegrator self, IntegrationRule ir)"},
@@ -10447,6 +12557,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "LinearFormIntegrator_AssembleRHSElementVect", _wrap_LinearFormIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"AssembleRHSElementVect(LinearFormIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"AssembleRHSElementVect(LinearFormIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"AssembleRHSElementVect(LinearFormIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "LinearFormIntegrator_SetIntRule", (PyCFunction)(void(*)(void))_wrap_LinearFormIntegrator_SetIntRule, METH_VARARGS|METH_KEYWORDS, "SetIntRule(LinearFormIntegrator self, IntegrationRule ir)"},
 	 { "LinearFormIntegrator_GetIntRule", _wrap_LinearFormIntegrator_GetIntRule, METH_O, "GetIntRule(LinearFormIntegrator self) -> IntegrationRule"},
@@ -10465,6 +12576,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "DomainLFIntegrator_AssembleRHSElementVect", _wrap_DomainLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"AssembleRHSElementVect(DomainLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"AssembleRHSElementVect(DomainLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"AssembleRHSElementVect(DomainLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_DomainLFIntegrator", _wrap_delete_DomainLFIntegrator, METH_O, "delete_DomainLFIntegrator(DomainLFIntegrator self)"},
 	 { "DomainLFIntegrator_swigregister", DomainLFIntegrator_swigregister, METH_O, NULL},
@@ -10474,6 +12586,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "DomainLFGradIntegrator_AssembleRHSElementVect", _wrap_DomainLFGradIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"AssembleRHSElementVect(DomainLFGradIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"AssembleRHSElementVect(DomainLFGradIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"AssembleRHSElementVect(DomainLFGradIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_DomainLFGradIntegrator", _wrap_delete_DomainLFGradIntegrator, METH_O, "delete_DomainLFGradIntegrator(DomainLFGradIntegrator self)"},
 	 { "DomainLFGradIntegrator_swigregister", DomainLFGradIntegrator_swigregister, METH_O, NULL},
@@ -10482,6 +12595,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "BoundaryLFIntegrator_AssembleRHSElementVect", _wrap_BoundaryLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"AssembleRHSElementVect(BoundaryLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"AssembleRHSElementVect(BoundaryLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"AssembleRHSElementVect(BoundaryLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_BoundaryLFIntegrator", _wrap_delete_BoundaryLFIntegrator, METH_O, "delete_BoundaryLFIntegrator(BoundaryLFIntegrator self)"},
 	 { "BoundaryLFIntegrator_swigregister", BoundaryLFIntegrator_swigregister, METH_O, NULL},
@@ -10490,6 +12604,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "BoundaryNormalLFIntegrator_AssembleRHSElementVect", _wrap_BoundaryNormalLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"AssembleRHSElementVect(BoundaryNormalLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"AssembleRHSElementVect(BoundaryNormalLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"AssembleRHSElementVect(BoundaryNormalLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_BoundaryNormalLFIntegrator", _wrap_delete_BoundaryNormalLFIntegrator, METH_O, "delete_BoundaryNormalLFIntegrator(BoundaryNormalLFIntegrator self)"},
 	 { "BoundaryNormalLFIntegrator_swigregister", BoundaryNormalLFIntegrator_swigregister, METH_O, NULL},
@@ -10498,6 +12613,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "BoundaryTangentialLFIntegrator_AssembleRHSElementVect", _wrap_BoundaryTangentialLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"AssembleRHSElementVect(BoundaryTangentialLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"AssembleRHSElementVect(BoundaryTangentialLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"AssembleRHSElementVect(BoundaryTangentialLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_BoundaryTangentialLFIntegrator", _wrap_delete_BoundaryTangentialLFIntegrator, METH_O, "delete_BoundaryTangentialLFIntegrator(BoundaryTangentialLFIntegrator self)"},
 	 { "BoundaryTangentialLFIntegrator_swigregister", BoundaryTangentialLFIntegrator_swigregister, METH_O, NULL},
@@ -10507,6 +12623,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "VectorDomainLFIntegrator_AssembleRHSElementVect", _wrap_VectorDomainLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"AssembleRHSElementVect(VectorDomainLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"AssembleRHSElementVect(VectorDomainLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"AssembleRHSElementVect(VectorDomainLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_VectorDomainLFIntegrator", _wrap_delete_VectorDomainLFIntegrator, METH_O, "delete_VectorDomainLFIntegrator(VectorDomainLFIntegrator self)"},
 	 { "VectorDomainLFIntegrator_swigregister", VectorDomainLFIntegrator_swigregister, METH_O, NULL},
@@ -10515,6 +12632,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "VectorBoundaryLFIntegrator_AssembleRHSElementVect", _wrap_VectorBoundaryLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"AssembleRHSElementVect(VectorBoundaryLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"AssembleRHSElementVect(VectorBoundaryLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"AssembleRHSElementVect(VectorBoundaryLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_VectorBoundaryLFIntegrator", _wrap_delete_VectorBoundaryLFIntegrator, METH_O, "delete_VectorBoundaryLFIntegrator(VectorBoundaryLFIntegrator self)"},
 	 { "VectorBoundaryLFIntegrator_swigregister", VectorBoundaryLFIntegrator_swigregister, METH_O, NULL},
@@ -10524,6 +12642,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "VectorFEDomainLFIntegrator_AssembleRHSElementVect", _wrap_VectorFEDomainLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"AssembleRHSElementVect(VectorFEDomainLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"AssembleRHSElementVect(VectorFEDomainLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"AssembleRHSElementVect(VectorFEDomainLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_VectorFEDomainLFIntegrator", _wrap_delete_VectorFEDomainLFIntegrator, METH_O, "delete_VectorFEDomainLFIntegrator(VectorFEDomainLFIntegrator self)"},
 	 { "VectorFEDomainLFIntegrator_swigregister", VectorFEDomainLFIntegrator_swigregister, METH_O, NULL},
@@ -10533,6 +12652,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect", _wrap_VectorFEDomainLFCurlIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"AssembleRHSElementVect(VectorFEDomainLFCurlIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"AssembleRHSElementVect(VectorFEDomainLFCurlIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"AssembleRHSElementVect(VectorFEDomainLFCurlIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_VectorFEDomainLFCurlIntegrator", _wrap_delete_VectorFEDomainLFCurlIntegrator, METH_O, "delete_VectorFEDomainLFCurlIntegrator(VectorFEDomainLFCurlIntegrator self)"},
 	 { "VectorFEDomainLFCurlIntegrator_swigregister", VectorFEDomainLFCurlIntegrator_swigregister, METH_O, NULL},
@@ -10542,6 +12662,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "VectorFEDomainLFDivIntegrator_AssembleRHSElementVect", _wrap_VectorFEDomainLFDivIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"AssembleRHSElementVect(VectorFEDomainLFDivIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"AssembleRHSElementVect(VectorFEDomainLFDivIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"AssembleRHSElementVect(VectorFEDomainLFDivIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_VectorFEDomainLFDivIntegrator", _wrap_delete_VectorFEDomainLFDivIntegrator, METH_O, "delete_VectorFEDomainLFDivIntegrator(VectorFEDomainLFDivIntegrator self)"},
 	 { "VectorFEDomainLFDivIntegrator_swigregister", VectorFEDomainLFDivIntegrator_swigregister, METH_O, NULL},
@@ -10550,6 +12671,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect", _wrap_VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"AssembleRHSElementVect(VectorBoundaryFluxLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"AssembleRHSElementVect(VectorBoundaryFluxLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"AssembleRHSElementVect(VectorBoundaryFluxLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_VectorBoundaryFluxLFIntegrator", _wrap_delete_VectorBoundaryFluxLFIntegrator, METH_O, "delete_VectorBoundaryFluxLFIntegrator(VectorBoundaryFluxLFIntegrator self)"},
 	 { "VectorBoundaryFluxLFIntegrator_swigregister", VectorBoundaryFluxLFIntegrator_swigregister, METH_O, NULL},
@@ -10561,6 +12683,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect", _wrap_VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"AssembleRHSElementVect(VectorFEBoundaryFluxLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"AssembleRHSElementVect(VectorFEBoundaryFluxLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"AssembleRHSElementVect(VectorFEBoundaryFluxLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_VectorFEBoundaryFluxLFIntegrator", _wrap_delete_VectorFEBoundaryFluxLFIntegrator, METH_O, "delete_VectorFEBoundaryFluxLFIntegrator(VectorFEBoundaryFluxLFIntegrator self)"},
 	 { "VectorFEBoundaryFluxLFIntegrator_swigregister", VectorFEBoundaryFluxLFIntegrator_swigregister, METH_O, NULL},
@@ -10569,14 +12692,19 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect", _wrap_VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"AssembleRHSElementVect(VectorFEBoundaryTangentLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"AssembleRHSElementVect(VectorFEBoundaryTangentLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"AssembleRHSElementVect(VectorFEBoundaryTangentLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_VectorFEBoundaryTangentLFIntegrator", _wrap_delete_VectorFEBoundaryTangentLFIntegrator, METH_O, "delete_VectorFEBoundaryTangentLFIntegrator(VectorFEBoundaryTangentLFIntegrator self)"},
 	 { "VectorFEBoundaryTangentLFIntegrator_swigregister", VectorFEBoundaryTangentLFIntegrator_swigregister, METH_O, NULL},
 	 { "VectorFEBoundaryTangentLFIntegrator_swiginit", VectorFEBoundaryTangentLFIntegrator_swiginit, METH_VARARGS, NULL},
-	 { "new_BoundaryFlowIntegrator", (PyCFunction)(void(*)(void))_wrap_new_BoundaryFlowIntegrator, METH_VARARGS|METH_KEYWORDS, "new_BoundaryFlowIntegrator(Coefficient _f, VectorCoefficient _u, double a, double b) -> BoundaryFlowIntegrator"},
+	 { "new_BoundaryFlowIntegrator", _wrap_new_BoundaryFlowIntegrator, METH_VARARGS, "\n"
+		"BoundaryFlowIntegrator(Coefficient f_, VectorCoefficient u_, double a)\n"
+		"new_BoundaryFlowIntegrator(Coefficient f_, VectorCoefficient u_, double a, double b) -> BoundaryFlowIntegrator\n"
+		""},
 	 { "BoundaryFlowIntegrator_AssembleRHSElementVect", _wrap_BoundaryFlowIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"AssembleRHSElementVect(BoundaryFlowIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"AssembleRHSElementVect(BoundaryFlowIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"AssembleRHSElementVect(BoundaryFlowIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_BoundaryFlowIntegrator", _wrap_delete_BoundaryFlowIntegrator, METH_O, "delete_BoundaryFlowIntegrator(BoundaryFlowIntegrator self)"},
 	 { "BoundaryFlowIntegrator_swigregister", BoundaryFlowIntegrator_swigregister, METH_O, NULL},
@@ -10589,6 +12717,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "DGDirichletLFIntegrator_AssembleRHSElementVect", _wrap_DGDirichletLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"AssembleRHSElementVect(DGDirichletLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"AssembleRHSElementVect(DGDirichletLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"AssembleRHSElementVect(DGDirichletLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_DGDirichletLFIntegrator", _wrap_delete_DGDirichletLFIntegrator, METH_O, "delete_DGDirichletLFIntegrator(DGDirichletLFIntegrator self)"},
 	 { "DGDirichletLFIntegrator_swigregister", DGDirichletLFIntegrator_swigregister, METH_O, NULL},
@@ -10597,6 +12726,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "DGElasticityDirichletLFIntegrator_AssembleRHSElementVect", _wrap_DGElasticityDirichletLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"AssembleRHSElementVect(DGElasticityDirichletLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"AssembleRHSElementVect(DGElasticityDirichletLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"AssembleRHSElementVect(DGElasticityDirichletLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		""},
 	 { "delete_DGElasticityDirichletLFIntegrator", _wrap_delete_DGElasticityDirichletLFIntegrator, METH_O, "delete_DGElasticityDirichletLFIntegrator(DGElasticityDirichletLFIntegrator self)"},
 	 { "DGElasticityDirichletLFIntegrator_swigregister", DGElasticityDirichletLFIntegrator_swigregister, METH_O, NULL},
@@ -10604,6 +12734,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "VectorQuadratureLFIntegrator_AssembleRHSElementVect", _wrap_VectorQuadratureLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"AssembleRHSElementVect(VectorQuadratureLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"AssembleRHSElementVect(VectorQuadratureLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"AssembleRHSElementVect(VectorQuadratureLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		"AssembleRHSElementVect(VectorQuadratureLFIntegrator self, FiniteElement fe, ElementTransformation Tr, Vector elvect)\n"
 		""},
 	 { "VectorQuadratureLFIntegrator_SetIntRule", (PyCFunction)(void(*)(void))_wrap_VectorQuadratureLFIntegrator_SetIntRule, METH_VARARGS|METH_KEYWORDS, "SetIntRule(VectorQuadratureLFIntegrator self, IntegrationRule ir)"},
@@ -10612,6 +12743,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "QuadratureLFIntegrator_AssembleRHSElementVect", _wrap_QuadratureLFIntegrator_AssembleRHSElementVect, METH_VARARGS, "\n"
 		"AssembleRHSElementVect(QuadratureLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)\n"
 		"AssembleRHSElementVect(QuadratureLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)\n"
+		"AssembleRHSElementVect(QuadratureLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)\n"
 		"AssembleRHSElementVect(QuadratureLFIntegrator self, FiniteElement fe, ElementTransformation Tr, Vector elvect)\n"
 		""},
 	 { "QuadratureLFIntegrator_SetIntRule", (PyCFunction)(void(*)(void))_wrap_QuadratureLFIntegrator_SetIntRule, METH_VARARGS|METH_KEYWORDS, "SetIntRule(QuadratureLFIntegrator self, IntegrationRule ir)"},

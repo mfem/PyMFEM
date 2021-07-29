@@ -161,6 +161,18 @@ class Geometry(object):
         return _geom.Geometry_JacToPerfJac(self, GeomType, J, PJ)
     JacToPerfJac = _swig_new_instance_method(_geom.Geometry_JacToPerfJac)
 
+    @staticmethod
+    def IsTensorProduct(geom):
+        r"""IsTensorProduct(mfem::Geometry::Type geom) -> bool"""
+        return _geom.Geometry_IsTensorProduct(geom)
+    IsTensorProduct = _swig_new_static_method(_geom.Geometry_IsTensorProduct)
+
+    @staticmethod
+    def TensorProductGeometry(dim):
+        r"""TensorProductGeometry(int dim) -> mfem::Geometry::Type"""
+        return _geom.Geometry_TensorProductGeometry(dim)
+    TensorProductGeometry = _swig_new_static_method(_geom.Geometry_TensorProductGeometry)
+
     def NumBdr(self, GeomType):
         r"""NumBdr(Geometry self, int GeomType) -> int"""
         return _geom.Geometry_NumBdr(self, GeomType)
@@ -197,6 +209,16 @@ def Geometry_ProjectPoint(*args):
     """
     return _geom.Geometry_ProjectPoint(*args)
 Geometry_ProjectPoint = _geom.Geometry_ProjectPoint
+
+def Geometry_IsTensorProduct(geom):
+    r"""Geometry_IsTensorProduct(mfem::Geometry::Type geom) -> bool"""
+    return _geom.Geometry_IsTensorProduct(geom)
+Geometry_IsTensorProduct = _geom.Geometry_IsTensorProduct
+
+def Geometry_TensorProductGeometry(dim):
+    r"""Geometry_TensorProductGeometry(int dim) -> mfem::Geometry::Type"""
+    return _geom.Geometry_TensorProductGeometry(dim)
+Geometry_TensorProductGeometry = _geom.Geometry_TensorProductGeometry
 
 class RefinedGeometry(object):
     r"""Proxy of C++ mfem::RefinedGeometry class."""
@@ -274,7 +296,7 @@ class GeometryTypeArray(object):
         __init__(GeometryTypeArray self) -> GeometryTypeArray
         __init__(GeometryTypeArray self, mfem::MemoryType mt) -> GeometryTypeArray
         __init__(GeometryTypeArray self, int asize) -> GeometryTypeArray
-        __init__(GeometryTypeArray self, mfem::Geometry::Type * _data, int asize) -> GeometryTypeArray
+        __init__(GeometryTypeArray self, mfem::Geometry::Type * data_, int asize) -> GeometryTypeArray
         __init__(GeometryTypeArray self, GeometryTypeArray src) -> GeometryTypeArray
         """
         _geom.GeometryTypeArray_swiginit(self, _geom.new_GeometryTypeArray(*args))

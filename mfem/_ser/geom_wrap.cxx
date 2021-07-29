@@ -4363,6 +4363,91 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Geometry_IsTensorProduct(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Geometry::Type arg1 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"geom",  NULL 
+  };
+  bool result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:Geometry_IsTensorProduct", kwnames, &obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "Geometry_IsTensorProduct" "', argument " "1"" of type '" "mfem::Geometry::Type""'");
+  } 
+  arg1 = static_cast< mfem::Geometry::Type >(val1);
+  {
+    try {
+      result = (bool)mfem::Geometry::IsTensorProduct(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Geometry_TensorProductGeometry(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"dim",  NULL 
+  };
+  mfem::Geometry::Type result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:Geometry_TensorProductGeometry", kwnames, &obj0)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
+  }
+  {
+    try {
+      result = (mfem::Geometry::Type)mfem::Geometry::TensorProductGeometry(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Geometry_NumBdr(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Geometry *arg1 = (mfem::Geometry *) 0 ;
@@ -8102,6 +8187,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "Geometry_GetPerfGeomToGeomJac", (PyCFunction)(void(*)(void))_wrap_Geometry_GetPerfGeomToGeomJac, METH_VARARGS|METH_KEYWORDS, "Geometry_GetPerfGeomToGeomJac(Geometry self, int GeomType) -> DenseMatrix"},
 	 { "Geometry_GetPerfPointMat", (PyCFunction)(void(*)(void))_wrap_Geometry_GetPerfPointMat, METH_VARARGS|METH_KEYWORDS, "Geometry_GetPerfPointMat(Geometry self, int GeomType, DenseMatrix pm)"},
 	 { "Geometry_JacToPerfJac", (PyCFunction)(void(*)(void))_wrap_Geometry_JacToPerfJac, METH_VARARGS|METH_KEYWORDS, "Geometry_JacToPerfJac(Geometry self, int GeomType, DenseMatrix J, DenseMatrix PJ)"},
+	 { "Geometry_IsTensorProduct", (PyCFunction)(void(*)(void))_wrap_Geometry_IsTensorProduct, METH_VARARGS|METH_KEYWORDS, "Geometry_IsTensorProduct(mfem::Geometry::Type geom) -> bool"},
+	 { "Geometry_TensorProductGeometry", (PyCFunction)(void(*)(void))_wrap_Geometry_TensorProductGeometry, METH_VARARGS|METH_KEYWORDS, "Geometry_TensorProductGeometry(int dim) -> mfem::Geometry::Type"},
 	 { "Geometry_NumBdr", (PyCFunction)(void(*)(void))_wrap_Geometry_NumBdr, METH_VARARGS|METH_KEYWORDS, "Geometry_NumBdr(Geometry self, int GeomType) -> int"},
 	 { "Geometry_swigregister", Geometry_swigregister, METH_O, NULL},
 	 { "Geometry_swiginit", Geometry_swiginit, METH_VARARGS, NULL},
@@ -8136,7 +8223,7 @@ static PyMethodDef SwigMethods[] = {
 		"GeometryTypeArray()\n"
 		"GeometryTypeArray(mfem::MemoryType mt)\n"
 		"GeometryTypeArray(int asize)\n"
-		"GeometryTypeArray(mfem::Geometry::Type * _data, int asize)\n"
+		"GeometryTypeArray(mfem::Geometry::Type * data_, int asize)\n"
 		"new_GeometryTypeArray(GeometryTypeArray src) -> GeometryTypeArray\n"
 		""},
 	 { "delete_GeometryTypeArray", _wrap_delete_GeometryTypeArray, METH_O, "delete_GeometryTypeArray(GeometryTypeArray self)"},
@@ -8228,6 +8315,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Geometry_GetPerfGeomToGeomJac", (PyCFunction)(void(*)(void))_wrap_Geometry_GetPerfGeomToGeomJac, METH_VARARGS|METH_KEYWORDS, "GetPerfGeomToGeomJac(Geometry self, int GeomType) -> DenseMatrix"},
 	 { "Geometry_GetPerfPointMat", (PyCFunction)(void(*)(void))_wrap_Geometry_GetPerfPointMat, METH_VARARGS|METH_KEYWORDS, "GetPerfPointMat(Geometry self, int GeomType, DenseMatrix pm)"},
 	 { "Geometry_JacToPerfJac", (PyCFunction)(void(*)(void))_wrap_Geometry_JacToPerfJac, METH_VARARGS|METH_KEYWORDS, "JacToPerfJac(Geometry self, int GeomType, DenseMatrix J, DenseMatrix PJ)"},
+	 { "Geometry_IsTensorProduct", (PyCFunction)(void(*)(void))_wrap_Geometry_IsTensorProduct, METH_VARARGS|METH_KEYWORDS, "IsTensorProduct(mfem::Geometry::Type geom) -> bool"},
+	 { "Geometry_TensorProductGeometry", (PyCFunction)(void(*)(void))_wrap_Geometry_TensorProductGeometry, METH_VARARGS|METH_KEYWORDS, "TensorProductGeometry(int dim) -> mfem::Geometry::Type"},
 	 { "Geometry_NumBdr", (PyCFunction)(void(*)(void))_wrap_Geometry_NumBdr, METH_VARARGS|METH_KEYWORDS, "NumBdr(Geometry self, int GeomType) -> int"},
 	 { "Geometry_swigregister", Geometry_swigregister, METH_O, NULL},
 	 { "Geometry_swiginit", Geometry_swiginit, METH_VARARGS, NULL},
@@ -8262,7 +8351,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"GeometryTypeArray()\n"
 		"GeometryTypeArray(mfem::MemoryType mt)\n"
 		"GeometryTypeArray(int asize)\n"
-		"GeometryTypeArray(mfem::Geometry::Type * _data, int asize)\n"
+		"GeometryTypeArray(mfem::Geometry::Type * data_, int asize)\n"
 		"new_GeometryTypeArray(GeometryTypeArray src) -> GeometryTypeArray\n"
 		""},
 	 { "delete_GeometryTypeArray", _wrap_delete_GeometryTypeArray, METH_O, "delete_GeometryTypeArray(GeometryTypeArray self)"},

@@ -112,14 +112,20 @@ class ParL2FaceRestriction(mfem._par.restriction.L2FaceRestriction):
         return _prestriction.ParL2FaceRestriction_Mult(self, x, y)
     Mult = _swig_new_instance_method(_prestriction.ParL2FaceRestriction_Mult)
 
-    def FillI(self, mat, face_mat):
-        r"""FillI(ParL2FaceRestriction self, SparseMatrix mat, SparseMatrix face_mat)"""
-        return _prestriction.ParL2FaceRestriction_FillI(self, mat, face_mat)
+    def FillI(self, *args):
+        r"""
+        FillI(ParL2FaceRestriction self, SparseMatrix mat, bool const keep_nbr_block=False)
+        FillI(ParL2FaceRestriction self, SparseMatrix mat, SparseMatrix face_mat)
+        """
+        return _prestriction.ParL2FaceRestriction_FillI(self, *args)
     FillI = _swig_new_instance_method(_prestriction.ParL2FaceRestriction_FillI)
 
-    def FillJAndData(self, ea_data, mat, face_mat):
-        r"""FillJAndData(ParL2FaceRestriction self, Vector ea_data, SparseMatrix mat, SparseMatrix face_mat)"""
-        return _prestriction.ParL2FaceRestriction_FillJAndData(self, ea_data, mat, face_mat)
+    def FillJAndData(self, *args):
+        r"""
+        FillJAndData(ParL2FaceRestriction self, Vector ea_data, SparseMatrix mat, SparseMatrix face_mat)
+        FillJAndData(ParL2FaceRestriction self, Vector ea_data, SparseMatrix mat, bool const keep_nbr_block=False)
+        """
+        return _prestriction.ParL2FaceRestriction_FillJAndData(self, *args)
     FillJAndData = _swig_new_instance_method(_prestriction.ParL2FaceRestriction_FillJAndData)
     __swig_destroy__ = _prestriction.delete_ParL2FaceRestriction
 

@@ -21,10 +21,12 @@
 %include "exception.i"
 %import "../common/exception.i"
 
+ /*
 #ifdef MFEM_USE_MPI
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);
 #endif
+ */
 
 %init %{
 import_array();
@@ -32,9 +34,11 @@ import_array();
 
 %import "operators.i"
 
+ /*
 #ifdef MFEM_USE_MPI
 %import "hypre.i"
 #endif
+ */
 #ifdef MFEM_USE_PETSC
 %include "petsc.i"
 #endif
@@ -68,6 +72,7 @@ OperatorPtr=OperatorHandle
 %enddef
 
 // instatitate template methods (step 2: Instantiation)
+ /*
 #ifdef MFEM_USE_MPI
 AS_WRAP(mfem::HypreParMatrix)
 IS_WRAP(mfem::HypreParMatrix)
@@ -75,6 +80,7 @@ GET_WRAP(mfem::HypreParMatrix)
 RESET_WRAP(mfem::HypreParMatrix)          
 CONVERT_FROM_WRAP(mfem::HypreParMatrix)
 #endif
+ */
   
 #ifdef MFEM_USE_PETSC
 AS_WRAP(mfem::PetscParMatrix)

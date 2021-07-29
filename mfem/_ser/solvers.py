@@ -168,6 +168,7 @@ class OperatorJacobiSmoother(mfem._ser.operators.Solver):
 
     def __init__(self, *args):
         r"""
+        __init__(OperatorJacobiSmoother self, double const damping=1.0) -> OperatorJacobiSmoother
         __init__(OperatorJacobiSmoother self, mfem::BilinearForm const & a, intArray ess_tdof_list, double const damping=1.0) -> OperatorJacobiSmoother
         __init__(OperatorJacobiSmoother self, Vector d, intArray ess_tdof_list, double const damping=1.0) -> OperatorJacobiSmoother
         """
@@ -459,6 +460,11 @@ class NewtonSolver(IterativeSolver):
         r"""ProcessNewState(NewtonSolver self, Vector x)"""
         return _solvers.NewtonSolver_ProcessNewState(self, x)
     ProcessNewState = _swig_new_instance_method(_solvers.NewtonSolver_ProcessNewState)
+
+    def SetAdaptiveLinRtol(self, *args, **kwargs):
+        r"""SetAdaptiveLinRtol(NewtonSolver self, int const type=2, double const rtol0=0.5, double const rtol_max=0.9, double const alpha=0.5*(1.0+sqrt(5.0)), double const gamma=1.0)"""
+        return _solvers.NewtonSolver_SetAdaptiveLinRtol(self, *args, **kwargs)
+    SetAdaptiveLinRtol = _swig_new_instance_method(_solvers.NewtonSolver_SetAdaptiveLinRtol)
     __swig_destroy__ = _solvers.delete_NewtonSolver
 
 # Register NewtonSolver in _solvers:
@@ -630,14 +636,14 @@ class SLBQPOptimizer(OptimizationSolver):
         return _solvers.SLBQPOptimizer_SetOptimizationProblem(self, prob)
     SetOptimizationProblem = _swig_new_instance_method(_solvers.SLBQPOptimizer_SetOptimizationProblem)
 
-    def SetBounds(self, _lo, _hi):
-        r"""SetBounds(SLBQPOptimizer self, Vector _lo, Vector _hi)"""
-        return _solvers.SLBQPOptimizer_SetBounds(self, _lo, _hi)
+    def SetBounds(self, lo_, hi_):
+        r"""SetBounds(SLBQPOptimizer self, Vector lo_, Vector hi_)"""
+        return _solvers.SLBQPOptimizer_SetBounds(self, lo_, hi_)
     SetBounds = _swig_new_instance_method(_solvers.SLBQPOptimizer_SetBounds)
 
-    def SetLinearConstraint(self, _w, _a):
-        r"""SetLinearConstraint(SLBQPOptimizer self, Vector _w, double _a)"""
-        return _solvers.SLBQPOptimizer_SetLinearConstraint(self, _w, _a)
+    def SetLinearConstraint(self, w_, a_):
+        r"""SetLinearConstraint(SLBQPOptimizer self, Vector w_, double a_)"""
+        return _solvers.SLBQPOptimizer_SetLinearConstraint(self, w_, a_)
     SetLinearConstraint = _swig_new_instance_method(_solvers.SLBQPOptimizer_SetLinearConstraint)
 
     def Mult(self, xt, x):
@@ -713,6 +719,59 @@ class ResidualBCMonitor(IterativeSolverMonitor):
 
 # Register ResidualBCMonitor in _solvers:
 _solvers.ResidualBCMonitor_swigregister(ResidualBCMonitor)
+
+class DirectSubBlockSolver(mfem._ser.operators.Solver):
+    r"""Proxy of C++ mfem::DirectSubBlockSolver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, A, block_dof):
+        r"""__init__(DirectSubBlockSolver self, SparseMatrix A, SparseMatrix block_dof) -> DirectSubBlockSolver"""
+        _solvers.DirectSubBlockSolver_swiginit(self, _solvers.new_DirectSubBlockSolver(A, block_dof))
+
+    def Mult(self, x, y):
+        r"""Mult(DirectSubBlockSolver self, Vector x, Vector y)"""
+        return _solvers.DirectSubBlockSolver_Mult(self, x, y)
+    Mult = _swig_new_instance_method(_solvers.DirectSubBlockSolver_Mult)
+
+    def SetOperator(self, op):
+        r"""SetOperator(DirectSubBlockSolver self, Operator op)"""
+        return _solvers.DirectSubBlockSolver_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_solvers.DirectSubBlockSolver_SetOperator)
+    __swig_destroy__ = _solvers.delete_DirectSubBlockSolver
+
+# Register DirectSubBlockSolver in _solvers:
+_solvers.DirectSubBlockSolver_swigregister(DirectSubBlockSolver)
+
+class ProductSolver(mfem._ser.operators.Solver):
+    r"""Proxy of C++ mfem::ProductSolver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, A_, S0_, S1_, ownA, ownS0, ownS1):
+        r"""__init__(ProductSolver self, Operator A_, Solver S0_, Solver S1_, bool ownA, bool ownS0, bool ownS1) -> ProductSolver"""
+        _solvers.ProductSolver_swiginit(self, _solvers.new_ProductSolver(A_, S0_, S1_, ownA, ownS0, ownS1))
+
+    def Mult(self, x, y):
+        r"""Mult(ProductSolver self, Vector x, Vector y)"""
+        return _solvers.ProductSolver_Mult(self, x, y)
+    Mult = _swig_new_instance_method(_solvers.ProductSolver_Mult)
+
+    def MultTranspose(self, x, y):
+        r"""MultTranspose(ProductSolver self, Vector x, Vector y)"""
+        return _solvers.ProductSolver_MultTranspose(self, x, y)
+    MultTranspose = _swig_new_instance_method(_solvers.ProductSolver_MultTranspose)
+
+    def SetOperator(self, op):
+        r"""SetOperator(ProductSolver self, Operator op)"""
+        return _solvers.ProductSolver_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_solvers.ProductSolver_SetOperator)
+    __swig_destroy__ = _solvers.delete_ProductSolver
+
+# Register ProductSolver in _solvers:
+_solvers.ProductSolver_swigregister(ProductSolver)
 
 
 

@@ -3251,7 +3251,8 @@ namespace swig {
 #include "linalg/sparsemat.hpp"  
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
-#include "../common/io_stream.hpp"    
+#include "../common/io_stream.hpp"
+using namespace mfem;
   
 
   mfem::SparseMatrix *RAP_P (const mfem::SparseMatrix &A,
@@ -3424,13 +3425,6 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
 }
 
 
-SWIGINTERNINLINE PyObject*
-  SWIG_From_bool  (bool value)
-{
-  return PyBool_FromLong(value ? 1 : 0);
-}
-
-
 #include <limits.h>
 #if !defined(SWIG_NO_LLONG_MAX)
 # if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
@@ -3454,6 +3448,13 @@ SWIG_AsVal_int (PyObject * obj, int *val)
     }
   }  
   return res;
+}
+
+
+SWIGINTERNINLINE PyObject*
+  SWIG_From_bool  (bool value)
+{
+  return PyBool_FromLong(value ? 1 : 0);
 }
 
 SWIGINTERN PyObject *mfem_SparseMatrix_GetIArray(mfem::SparseMatrix const *self){
@@ -4461,13 +4462,16 @@ SWIGINTERN PyObject *_wrap_new_SparseMatrix__SWIG_5(PyObject *SWIGUNUSEDPARM(sel
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = 0 ;
   bool arg2 = (bool) true ;
+  mfem::MemoryType arg3 = (mfem::MemoryType) MemoryType::PRESERVE ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   bool val2 ;
   int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
   mfem::SparseMatrix *result = 0 ;
   
-  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__SparseMatrix,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SparseMatrix" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
@@ -4483,9 +4487,16 @@ SWIGINTERN PyObject *_wrap_new_SparseMatrix__SWIG_5(PyObject *SWIGUNUSEDPARM(sel
     } 
     arg2 = static_cast< bool >(val2);
   }
+  if (swig_obj[2]) {
+    ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SparseMatrix" "', argument " "3"" of type '" "mfem::MemoryType""'");
+    } 
+    arg3 = static_cast< mfem::MemoryType >(val3);
+  }
   {
     try {
-      result = (mfem::SparseMatrix *)new mfem::SparseMatrix((mfem::SparseMatrix const &)*arg1,arg2); 
+      result = (mfem::SparseMatrix *)new mfem::SparseMatrix((mfem::SparseMatrix const &)*arg1,arg2,arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -4550,7 +4561,7 @@ SWIGINTERN PyObject *_wrap_new_SparseMatrix(PyObject *self, PyObject *args) {
   if (argc == 0) {
     return _wrap_new_SparseMatrix__SWIG_0(self, argc, argv);
   }
-  if ((argc >= 1) && (argc <= 2)) {
+  if ((argc >= 1) && (argc <= 3)) {
     int _v;
     int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__SparseMatrix, SWIG_POINTER_NO_NULL | 0);
     _v = SWIG_CheckState(res);
@@ -4563,7 +4574,16 @@ SWIGINTERN PyObject *_wrap_new_SparseMatrix(PyObject *self, PyObject *args) {
         _v = SWIG_CheckState(res);
       }
       if (_v) {
-        return _wrap_new_SparseMatrix__SWIG_5(self, argc, argv);
+        if (argc <= 2) {
+          return _wrap_new_SparseMatrix__SWIG_5(self, argc, argv);
+        }
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_new_SparseMatrix__SWIG_5(self, argc, argv);
+        }
       }
     }
   }
@@ -4715,7 +4735,7 @@ fail:
     "    mfem::SparseMatrix::SparseMatrix(int *,int *,double *,int,int)\n"
     "    mfem::SparseMatrix::SparseMatrix(int *,int *,double *,int,int,bool,bool,bool)\n"
     "    mfem::SparseMatrix::SparseMatrix(int,int,int)\n"
-    "    mfem::SparseMatrix::SparseMatrix(mfem::SparseMatrix const &,bool)\n"
+    "    mfem::SparseMatrix::SparseMatrix(mfem::SparseMatrix const &,bool,mfem::MemoryType)\n"
     "    mfem::SparseMatrix::SparseMatrix(mfem::Vector const &)\n");
   return 0;
 }
@@ -4732,7 +4752,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_UseCuSparse(PyObject *SWIGUNUSEDPARM(sel
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"_useCuSparse",  NULL 
+    (char *)"self",  (char *)"useCuSparse_",  NULL 
   };
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:SparseMatrix_UseCuSparse", kwnames, &obj0, &obj1)) SWIG_fail;
@@ -4868,6 +4888,40 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Clear(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       (arg1)->Clear(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SparseMatrix_ClearCuSparse(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_ClearCuSparse" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  {
+    try {
+      (arg1)->ClearCuSparse(); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -15101,13 +15155,14 @@ static PyMethodDef SwigMethods[] = {
 		"SparseMatrix(int * i)\n"
 		"SparseMatrix(int * i, bool ownij, bool owna, bool issorted)\n"
 		"SparseMatrix(int nrows, int ncols, int rowsize)\n"
-		"SparseMatrix(SparseMatrix mat, bool copy_graph=True)\n"
+		"SparseMatrix(SparseMatrix mat, bool copy_graph=True, mfem::MemoryType mt=MemoryType::PRESERVE)\n"
 		"new_SparseMatrix(Vector v) -> SparseMatrix\n"
 		""},
-	 { "SparseMatrix_UseCuSparse", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_UseCuSparse, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_UseCuSparse(SparseMatrix self, bool _useCuSparse=True)"},
+	 { "SparseMatrix_UseCuSparse", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_UseCuSparse, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_UseCuSparse(SparseMatrix self, bool useCuSparse_=True)"},
 	 { "SparseMatrix_MakeRef", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_MakeRef, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_MakeRef(SparseMatrix self, SparseMatrix master)"},
 	 { "SparseMatrix_Size", _wrap_SparseMatrix_Size, METH_O, "SparseMatrix_Size(SparseMatrix self) -> int"},
 	 { "SparseMatrix_Clear", _wrap_SparseMatrix_Clear, METH_O, "SparseMatrix_Clear(SparseMatrix self)"},
+	 { "SparseMatrix_ClearCuSparse", _wrap_SparseMatrix_ClearCuSparse, METH_O, "SparseMatrix_ClearCuSparse(SparseMatrix self)"},
 	 { "SparseMatrix_Empty", _wrap_SparseMatrix_Empty, METH_O, "SparseMatrix_Empty(SparseMatrix self) -> bool"},
 	 { "SparseMatrix_GetI", _wrap_SparseMatrix_GetI, METH_VARARGS, "\n"
 		"SparseMatrix_GetI(SparseMatrix self) -> int\n"
@@ -15351,13 +15406,14 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"SparseMatrix(int * i)\n"
 		"SparseMatrix(int * i, bool ownij, bool owna, bool issorted)\n"
 		"SparseMatrix(int nrows, int ncols, int rowsize)\n"
-		"SparseMatrix(SparseMatrix mat, bool copy_graph=True)\n"
+		"SparseMatrix(SparseMatrix mat, bool copy_graph=True, mfem::MemoryType mt=MemoryType::PRESERVE)\n"
 		"new_SparseMatrix(Vector v) -> SparseMatrix\n"
 		""},
-	 { "SparseMatrix_UseCuSparse", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_UseCuSparse, METH_VARARGS|METH_KEYWORDS, "UseCuSparse(SparseMatrix self, bool _useCuSparse=True)"},
+	 { "SparseMatrix_UseCuSparse", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_UseCuSparse, METH_VARARGS|METH_KEYWORDS, "UseCuSparse(SparseMatrix self, bool useCuSparse_=True)"},
 	 { "SparseMatrix_MakeRef", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_MakeRef, METH_VARARGS|METH_KEYWORDS, "MakeRef(SparseMatrix self, SparseMatrix master)"},
 	 { "SparseMatrix_Size", _wrap_SparseMatrix_Size, METH_O, "Size(SparseMatrix self) -> int"},
 	 { "SparseMatrix_Clear", _wrap_SparseMatrix_Clear, METH_O, "Clear(SparseMatrix self)"},
+	 { "SparseMatrix_ClearCuSparse", _wrap_SparseMatrix_ClearCuSparse, METH_O, "ClearCuSparse(SparseMatrix self)"},
 	 { "SparseMatrix_Empty", _wrap_SparseMatrix_Empty, METH_O, "Empty(SparseMatrix self) -> bool"},
 	 { "SparseMatrix_GetI", _wrap_SparseMatrix_GetI, METH_VARARGS, "\n"
 		"GetI(SparseMatrix self) -> int\n"

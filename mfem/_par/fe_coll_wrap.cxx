@@ -3097,158 +3097,163 @@ namespace Swig {
 #define SWIGTYPE_p_MPI_Comm swig_types[0]
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[1]
 #define SWIGTYPE_p_RefCoord swig_types[2]
-#define SWIGTYPE_p_char swig_types[3]
-#define SWIGTYPE_p_hex_t swig_types[4]
-#define SWIGTYPE_p_int swig_types[5]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[6]
-#define SWIGTYPE_p_mfem__BiCubic2DFiniteElement swig_types[7]
-#define SWIGTYPE_p_mfem__BiCubic3DFiniteElement swig_types[8]
-#define SWIGTYPE_p_mfem__BiLinear2DFiniteElement swig_types[9]
-#define SWIGTYPE_p_mfem__BiLinear3DFiniteElement swig_types[10]
-#define SWIGTYPE_p_mfem__BiQuad2DFiniteElement swig_types[11]
-#define SWIGTYPE_p_mfem__BiQuadPos2DFiniteElement swig_types[12]
-#define SWIGTYPE_p_mfem__BiQuadratic3DFiniteElement swig_types[13]
-#define SWIGTYPE_p_mfem__Const2DFECollection swig_types[14]
-#define SWIGTYPE_p_mfem__Const3DFECollection swig_types[15]
-#define SWIGTYPE_p_mfem__CrouzeixRaviartFECollection swig_types[16]
-#define SWIGTYPE_p_mfem__CrouzeixRaviartFiniteElement swig_types[17]
-#define SWIGTYPE_p_mfem__CrouzeixRaviartQuadFiniteElement swig_types[18]
-#define SWIGTYPE_p_mfem__Cubic1DFiniteElement swig_types[19]
-#define SWIGTYPE_p_mfem__Cubic2DFiniteElement swig_types[20]
-#define SWIGTYPE_p_mfem__Cubic3DFiniteElement swig_types[21]
-#define SWIGTYPE_p_mfem__CubicDiscont2DFECollection swig_types[22]
-#define SWIGTYPE_p_mfem__CubicFECollection swig_types[23]
-#define SWIGTYPE_p_mfem__DG_Interface_FECollection swig_types[24]
-#define SWIGTYPE_p_mfem__FiniteElement swig_types[25]
-#define SWIGTYPE_p_mfem__FiniteElementCollection swig_types[26]
-#define SWIGTYPE_p_mfem__GaussBiLinear2DFiniteElement swig_types[27]
-#define SWIGTYPE_p_mfem__GaussBiQuad2DFiniteElement swig_types[28]
-#define SWIGTYPE_p_mfem__GaussLinear2DFiniteElement swig_types[29]
-#define SWIGTYPE_p_mfem__GaussLinearDiscont2DFECollection swig_types[30]
-#define SWIGTYPE_p_mfem__GaussQuad2DFiniteElement swig_types[31]
-#define SWIGTYPE_p_mfem__GaussQuadraticDiscont2DFECollection swig_types[32]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[33]
-#define SWIGTYPE_p_mfem__H1Pos_FECollection swig_types[34]
-#define SWIGTYPE_p_mfem__H1Pos_HexahedronElement swig_types[35]
-#define SWIGTYPE_p_mfem__H1Pos_QuadrilateralElement swig_types[36]
-#define SWIGTYPE_p_mfem__H1Pos_SegmentElement swig_types[37]
-#define SWIGTYPE_p_mfem__H1Pos_TetrahedronElement swig_types[38]
-#define SWIGTYPE_p_mfem__H1Pos_TriangleElement swig_types[39]
-#define SWIGTYPE_p_mfem__H1Pos_WedgeElement swig_types[40]
-#define SWIGTYPE_p_mfem__H1Ser_FECollection swig_types[41]
-#define SWIGTYPE_p_mfem__H1Ser_QuadrilateralElement swig_types[42]
-#define SWIGTYPE_p_mfem__H1_FECollection swig_types[43]
-#define SWIGTYPE_p_mfem__H1_HexahedronElement swig_types[44]
-#define SWIGTYPE_p_mfem__H1_QuadrilateralElement swig_types[45]
-#define SWIGTYPE_p_mfem__H1_SegmentElement swig_types[46]
-#define SWIGTYPE_p_mfem__H1_TetrahedronElement swig_types[47]
-#define SWIGTYPE_p_mfem__H1_Trace_FECollection swig_types[48]
-#define SWIGTYPE_p_mfem__H1_TriangleElement swig_types[49]
-#define SWIGTYPE_p_mfem__H1_WedgeElement swig_types[50]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[51]
-#define SWIGTYPE_p_mfem__L2Pos_HexahedronElement swig_types[52]
-#define SWIGTYPE_p_mfem__L2Pos_QuadrilateralElement swig_types[53]
-#define SWIGTYPE_p_mfem__L2Pos_SegmentElement swig_types[54]
-#define SWIGTYPE_p_mfem__L2Pos_TetrahedronElement swig_types[55]
-#define SWIGTYPE_p_mfem__L2Pos_TriangleElement swig_types[56]
-#define SWIGTYPE_p_mfem__L2Pos_WedgeElement swig_types[57]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[58]
-#define SWIGTYPE_p_mfem__L2_HexahedronElement swig_types[59]
-#define SWIGTYPE_p_mfem__L2_QuadrilateralElement swig_types[60]
-#define SWIGTYPE_p_mfem__L2_SegmentElement swig_types[61]
-#define SWIGTYPE_p_mfem__L2_TetrahedronElement swig_types[62]
-#define SWIGTYPE_p_mfem__L2_TriangleElement swig_types[63]
-#define SWIGTYPE_p_mfem__L2_WedgeElement swig_types[64]
-#define SWIGTYPE_p_mfem__Lagrange1DFiniteElement swig_types[65]
-#define SWIGTYPE_p_mfem__LagrangeHexFiniteElement swig_types[66]
-#define SWIGTYPE_p_mfem__Linear1DFiniteElement swig_types[67]
-#define SWIGTYPE_p_mfem__Linear2DFiniteElement swig_types[68]
-#define SWIGTYPE_p_mfem__Linear3DFiniteElement swig_types[69]
-#define SWIGTYPE_p_mfem__LinearDiscont2DFECollection swig_types[70]
-#define SWIGTYPE_p_mfem__LinearDiscont3DFECollection swig_types[71]
-#define SWIGTYPE_p_mfem__LinearFECollection swig_types[72]
-#define SWIGTYPE_p_mfem__LinearNonConf3DFECollection swig_types[73]
-#define SWIGTYPE_p_mfem__Local_FECollection swig_types[74]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[75]
-#define SWIGTYPE_p_mfem__ND1_3DFECollection swig_types[76]
-#define SWIGTYPE_p_mfem__ND_FECollection swig_types[77]
-#define SWIGTYPE_p_mfem__ND_HexahedronElement swig_types[78]
-#define SWIGTYPE_p_mfem__ND_QuadrilateralElement swig_types[79]
-#define SWIGTYPE_p_mfem__ND_SegmentElement swig_types[80]
-#define SWIGTYPE_p_mfem__ND_TetrahedronElement swig_types[81]
-#define SWIGTYPE_p_mfem__ND_Trace_FECollection swig_types[82]
-#define SWIGTYPE_p_mfem__ND_TriangleElement swig_types[83]
-#define SWIGTYPE_p_mfem__NURBS1DFiniteElement swig_types[84]
-#define SWIGTYPE_p_mfem__NURBS2DFiniteElement swig_types[85]
-#define SWIGTYPE_p_mfem__NURBS3DFiniteElement swig_types[86]
-#define SWIGTYPE_p_mfem__NURBSFECollection swig_types[87]
-#define SWIGTYPE_p_mfem__NURBSFiniteElement swig_types[88]
-#define SWIGTYPE_p_mfem__Nedelec1HexFiniteElement swig_types[89]
-#define SWIGTYPE_p_mfem__Nedelec1TetFiniteElement swig_types[90]
-#define SWIGTYPE_p_mfem__NodalFiniteElement swig_types[91]
-#define SWIGTYPE_p_mfem__NodalTensorFiniteElement swig_types[92]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[93]
-#define SWIGTYPE_p_mfem__P0HexFiniteElement swig_types[94]
-#define SWIGTYPE_p_mfem__P0QuadFiniteElement swig_types[95]
-#define SWIGTYPE_p_mfem__P0SegmentFiniteElement swig_types[96]
-#define SWIGTYPE_p_mfem__P0TetFiniteElement swig_types[97]
-#define SWIGTYPE_p_mfem__P0TriangleFiniteElement swig_types[98]
-#define SWIGTYPE_p_mfem__P0WedgeFiniteElement swig_types[99]
-#define SWIGTYPE_p_mfem__P1OnQuadFECollection swig_types[100]
-#define SWIGTYPE_p_mfem__P1OnQuadFiniteElement swig_types[101]
-#define SWIGTYPE_p_mfem__P1SegmentFiniteElement swig_types[102]
-#define SWIGTYPE_p_mfem__P1TetNonConfFiniteElement swig_types[103]
-#define SWIGTYPE_p_mfem__P2SegmentFiniteElement swig_types[104]
-#define SWIGTYPE_p_mfem__PointFiniteElement swig_types[105]
-#define SWIGTYPE_p_mfem__PositiveFiniteElement swig_types[106]
-#define SWIGTYPE_p_mfem__PositiveTensorFiniteElement swig_types[107]
-#define SWIGTYPE_p_mfem__Quad1DFiniteElement swig_types[108]
-#define SWIGTYPE_p_mfem__Quad2DFiniteElement swig_types[109]
-#define SWIGTYPE_p_mfem__QuadPos1DFiniteElement swig_types[110]
-#define SWIGTYPE_p_mfem__Quadratic3DFiniteElement swig_types[111]
-#define SWIGTYPE_p_mfem__QuadraticDiscont2DFECollection swig_types[112]
-#define SWIGTYPE_p_mfem__QuadraticDiscont3DFECollection swig_types[113]
-#define SWIGTYPE_p_mfem__QuadraticFECollection swig_types[114]
-#define SWIGTYPE_p_mfem__QuadraticPosDiscont2DFECollection swig_types[115]
-#define SWIGTYPE_p_mfem__QuadraticPosFECollection swig_types[116]
-#define SWIGTYPE_p_mfem__RT0HexFiniteElement swig_types[117]
-#define SWIGTYPE_p_mfem__RT0QuadFiniteElement swig_types[118]
-#define SWIGTYPE_p_mfem__RT0TetFiniteElement swig_types[119]
-#define SWIGTYPE_p_mfem__RT0TriangleFiniteElement swig_types[120]
-#define SWIGTYPE_p_mfem__RT0_2DFECollection swig_types[121]
-#define SWIGTYPE_p_mfem__RT0_3DFECollection swig_types[122]
-#define SWIGTYPE_p_mfem__RT1HexFiniteElement swig_types[123]
-#define SWIGTYPE_p_mfem__RT1QuadFiniteElement swig_types[124]
-#define SWIGTYPE_p_mfem__RT1TriangleFiniteElement swig_types[125]
-#define SWIGTYPE_p_mfem__RT1_2DFECollection swig_types[126]
-#define SWIGTYPE_p_mfem__RT1_3DFECollection swig_types[127]
-#define SWIGTYPE_p_mfem__RT2QuadFiniteElement swig_types[128]
-#define SWIGTYPE_p_mfem__RT2TriangleFiniteElement swig_types[129]
-#define SWIGTYPE_p_mfem__RT2_2DFECollection swig_types[130]
-#define SWIGTYPE_p_mfem__RT_FECollection swig_types[131]
-#define SWIGTYPE_p_mfem__RT_HexahedronElement swig_types[132]
-#define SWIGTYPE_p_mfem__RT_QuadrilateralElement swig_types[133]
-#define SWIGTYPE_p_mfem__RT_TetrahedronElement swig_types[134]
-#define SWIGTYPE_p_mfem__RT_Trace_FECollection swig_types[135]
-#define SWIGTYPE_p_mfem__RT_TriangleElement swig_types[136]
-#define SWIGTYPE_p_mfem__RefinedBiLinear2DFiniteElement swig_types[137]
-#define SWIGTYPE_p_mfem__RefinedLinear1DFiniteElement swig_types[138]
-#define SWIGTYPE_p_mfem__RefinedLinear2DFiniteElement swig_types[139]
-#define SWIGTYPE_p_mfem__RefinedLinear3DFiniteElement swig_types[140]
-#define SWIGTYPE_p_mfem__RefinedLinearFECollection swig_types[141]
-#define SWIGTYPE_p_mfem__RefinedTriLinear3DFiniteElement swig_types[142]
-#define SWIGTYPE_p_mfem__RotTriLinearHexFiniteElement swig_types[143]
-#define SWIGTYPE_p_mfem__ScalarFiniteElement swig_types[144]
-#define SWIGTYPE_p_mfem__TriLinear3DFiniteElement swig_types[145]
-#define SWIGTYPE_p_mfem__VectorFiniteElement swig_types[146]
-#define SWIGTYPE_p_mfem__VectorTensorFiniteElement swig_types[147]
-#define SWIGTYPE_p_pri_t swig_types[148]
-#define SWIGTYPE_p_quad_t swig_types[149]
-#define SWIGTYPE_p_seg_t swig_types[150]
-#define SWIGTYPE_p_tet_t swig_types[151]
-#define SWIGTYPE_p_tri_t swig_types[152]
-static swig_type_info *swig_types[154];
-static swig_module_info swig_module = {swig_types, 153, 0, 0, 0, 0};
+#define SWIGTYPE_p__HYPRE_ExecutionPolicy swig_types[3]
+#define SWIGTYPE_p__HYPRE_MemoryLocation swig_types[4]
+#define SWIGTYPE_p_char swig_types[5]
+#define SWIGTYPE_p_double swig_types[6]
+#define SWIGTYPE_p_hex_t swig_types[7]
+#define SWIGTYPE_p_int swig_types[8]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[9]
+#define SWIGTYPE_p_mfem__BiCubic2DFiniteElement swig_types[10]
+#define SWIGTYPE_p_mfem__BiCubic3DFiniteElement swig_types[11]
+#define SWIGTYPE_p_mfem__BiLinear2DFiniteElement swig_types[12]
+#define SWIGTYPE_p_mfem__BiLinear3DFiniteElement swig_types[13]
+#define SWIGTYPE_p_mfem__BiQuad2DFiniteElement swig_types[14]
+#define SWIGTYPE_p_mfem__BiQuadPos2DFiniteElement swig_types[15]
+#define SWIGTYPE_p_mfem__BiQuadratic3DFiniteElement swig_types[16]
+#define SWIGTYPE_p_mfem__Const2DFECollection swig_types[17]
+#define SWIGTYPE_p_mfem__Const3DFECollection swig_types[18]
+#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[19]
+#define SWIGTYPE_p_mfem__CrouzeixRaviartFECollection swig_types[20]
+#define SWIGTYPE_p_mfem__CrouzeixRaviartFiniteElement swig_types[21]
+#define SWIGTYPE_p_mfem__CrouzeixRaviartQuadFiniteElement swig_types[22]
+#define SWIGTYPE_p_mfem__Cubic1DFiniteElement swig_types[23]
+#define SWIGTYPE_p_mfem__Cubic2DFiniteElement swig_types[24]
+#define SWIGTYPE_p_mfem__Cubic3DFiniteElement swig_types[25]
+#define SWIGTYPE_p_mfem__CubicDiscont2DFECollection swig_types[26]
+#define SWIGTYPE_p_mfem__CubicFECollection swig_types[27]
+#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[28]
+#define SWIGTYPE_p_mfem__DG_Interface_FECollection swig_types[29]
+#define SWIGTYPE_p_mfem__FiniteElement swig_types[30]
+#define SWIGTYPE_p_mfem__FiniteElementCollection swig_types[31]
+#define SWIGTYPE_p_mfem__GaussBiLinear2DFiniteElement swig_types[32]
+#define SWIGTYPE_p_mfem__GaussBiQuad2DFiniteElement swig_types[33]
+#define SWIGTYPE_p_mfem__GaussLinear2DFiniteElement swig_types[34]
+#define SWIGTYPE_p_mfem__GaussLinearDiscont2DFECollection swig_types[35]
+#define SWIGTYPE_p_mfem__GaussQuad2DFiniteElement swig_types[36]
+#define SWIGTYPE_p_mfem__GaussQuadraticDiscont2DFECollection swig_types[37]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[38]
+#define SWIGTYPE_p_mfem__H1Pos_FECollection swig_types[39]
+#define SWIGTYPE_p_mfem__H1Pos_HexahedronElement swig_types[40]
+#define SWIGTYPE_p_mfem__H1Pos_QuadrilateralElement swig_types[41]
+#define SWIGTYPE_p_mfem__H1Pos_SegmentElement swig_types[42]
+#define SWIGTYPE_p_mfem__H1Pos_TetrahedronElement swig_types[43]
+#define SWIGTYPE_p_mfem__H1Pos_TriangleElement swig_types[44]
+#define SWIGTYPE_p_mfem__H1Pos_WedgeElement swig_types[45]
+#define SWIGTYPE_p_mfem__H1Ser_FECollection swig_types[46]
+#define SWIGTYPE_p_mfem__H1Ser_QuadrilateralElement swig_types[47]
+#define SWIGTYPE_p_mfem__H1_FECollection swig_types[48]
+#define SWIGTYPE_p_mfem__H1_HexahedronElement swig_types[49]
+#define SWIGTYPE_p_mfem__H1_QuadrilateralElement swig_types[50]
+#define SWIGTYPE_p_mfem__H1_SegmentElement swig_types[51]
+#define SWIGTYPE_p_mfem__H1_TetrahedronElement swig_types[52]
+#define SWIGTYPE_p_mfem__H1_Trace_FECollection swig_types[53]
+#define SWIGTYPE_p_mfem__H1_TriangleElement swig_types[54]
+#define SWIGTYPE_p_mfem__H1_WedgeElement swig_types[55]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[56]
+#define SWIGTYPE_p_mfem__L2Pos_HexahedronElement swig_types[57]
+#define SWIGTYPE_p_mfem__L2Pos_QuadrilateralElement swig_types[58]
+#define SWIGTYPE_p_mfem__L2Pos_SegmentElement swig_types[59]
+#define SWIGTYPE_p_mfem__L2Pos_TetrahedronElement swig_types[60]
+#define SWIGTYPE_p_mfem__L2Pos_TriangleElement swig_types[61]
+#define SWIGTYPE_p_mfem__L2Pos_WedgeElement swig_types[62]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[63]
+#define SWIGTYPE_p_mfem__L2_HexahedronElement swig_types[64]
+#define SWIGTYPE_p_mfem__L2_QuadrilateralElement swig_types[65]
+#define SWIGTYPE_p_mfem__L2_SegmentElement swig_types[66]
+#define SWIGTYPE_p_mfem__L2_TetrahedronElement swig_types[67]
+#define SWIGTYPE_p_mfem__L2_TriangleElement swig_types[68]
+#define SWIGTYPE_p_mfem__L2_WedgeElement swig_types[69]
+#define SWIGTYPE_p_mfem__Lagrange1DFiniteElement swig_types[70]
+#define SWIGTYPE_p_mfem__LagrangeHexFiniteElement swig_types[71]
+#define SWIGTYPE_p_mfem__Linear1DFiniteElement swig_types[72]
+#define SWIGTYPE_p_mfem__Linear2DFiniteElement swig_types[73]
+#define SWIGTYPE_p_mfem__Linear3DFiniteElement swig_types[74]
+#define SWIGTYPE_p_mfem__LinearDiscont2DFECollection swig_types[75]
+#define SWIGTYPE_p_mfem__LinearDiscont3DFECollection swig_types[76]
+#define SWIGTYPE_p_mfem__LinearFECollection swig_types[77]
+#define SWIGTYPE_p_mfem__LinearNonConf3DFECollection swig_types[78]
+#define SWIGTYPE_p_mfem__Local_FECollection swig_types[79]
+#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[80]
+#define SWIGTYPE_p_mfem__ND1_3DFECollection swig_types[81]
+#define SWIGTYPE_p_mfem__ND_FECollection swig_types[82]
+#define SWIGTYPE_p_mfem__ND_HexahedronElement swig_types[83]
+#define SWIGTYPE_p_mfem__ND_QuadrilateralElement swig_types[84]
+#define SWIGTYPE_p_mfem__ND_SegmentElement swig_types[85]
+#define SWIGTYPE_p_mfem__ND_TetrahedronElement swig_types[86]
+#define SWIGTYPE_p_mfem__ND_Trace_FECollection swig_types[87]
+#define SWIGTYPE_p_mfem__ND_TriangleElement swig_types[88]
+#define SWIGTYPE_p_mfem__NURBS1DFiniteElement swig_types[89]
+#define SWIGTYPE_p_mfem__NURBS2DFiniteElement swig_types[90]
+#define SWIGTYPE_p_mfem__NURBS3DFiniteElement swig_types[91]
+#define SWIGTYPE_p_mfem__NURBSFECollection swig_types[92]
+#define SWIGTYPE_p_mfem__NURBSFiniteElement swig_types[93]
+#define SWIGTYPE_p_mfem__Nedelec1HexFiniteElement swig_types[94]
+#define SWIGTYPE_p_mfem__Nedelec1TetFiniteElement swig_types[95]
+#define SWIGTYPE_p_mfem__NodalFiniteElement swig_types[96]
+#define SWIGTYPE_p_mfem__NodalTensorFiniteElement swig_types[97]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[98]
+#define SWIGTYPE_p_mfem__P0HexFiniteElement swig_types[99]
+#define SWIGTYPE_p_mfem__P0QuadFiniteElement swig_types[100]
+#define SWIGTYPE_p_mfem__P0SegmentFiniteElement swig_types[101]
+#define SWIGTYPE_p_mfem__P0TetFiniteElement swig_types[102]
+#define SWIGTYPE_p_mfem__P0TriangleFiniteElement swig_types[103]
+#define SWIGTYPE_p_mfem__P0WedgeFiniteElement swig_types[104]
+#define SWIGTYPE_p_mfem__P1OnQuadFECollection swig_types[105]
+#define SWIGTYPE_p_mfem__P1OnQuadFiniteElement swig_types[106]
+#define SWIGTYPE_p_mfem__P1SegmentFiniteElement swig_types[107]
+#define SWIGTYPE_p_mfem__P1TetNonConfFiniteElement swig_types[108]
+#define SWIGTYPE_p_mfem__P2SegmentFiniteElement swig_types[109]
+#define SWIGTYPE_p_mfem__PointFiniteElement swig_types[110]
+#define SWIGTYPE_p_mfem__PositiveFiniteElement swig_types[111]
+#define SWIGTYPE_p_mfem__PositiveTensorFiniteElement swig_types[112]
+#define SWIGTYPE_p_mfem__Quad1DFiniteElement swig_types[113]
+#define SWIGTYPE_p_mfem__Quad2DFiniteElement swig_types[114]
+#define SWIGTYPE_p_mfem__QuadPos1DFiniteElement swig_types[115]
+#define SWIGTYPE_p_mfem__Quadratic3DFiniteElement swig_types[116]
+#define SWIGTYPE_p_mfem__QuadraticDiscont2DFECollection swig_types[117]
+#define SWIGTYPE_p_mfem__QuadraticDiscont3DFECollection swig_types[118]
+#define SWIGTYPE_p_mfem__QuadraticFECollection swig_types[119]
+#define SWIGTYPE_p_mfem__QuadraticPosDiscont2DFECollection swig_types[120]
+#define SWIGTYPE_p_mfem__QuadraticPosFECollection swig_types[121]
+#define SWIGTYPE_p_mfem__RT0HexFiniteElement swig_types[122]
+#define SWIGTYPE_p_mfem__RT0QuadFiniteElement swig_types[123]
+#define SWIGTYPE_p_mfem__RT0TetFiniteElement swig_types[124]
+#define SWIGTYPE_p_mfem__RT0TriangleFiniteElement swig_types[125]
+#define SWIGTYPE_p_mfem__RT0_2DFECollection swig_types[126]
+#define SWIGTYPE_p_mfem__RT0_3DFECollection swig_types[127]
+#define SWIGTYPE_p_mfem__RT1HexFiniteElement swig_types[128]
+#define SWIGTYPE_p_mfem__RT1QuadFiniteElement swig_types[129]
+#define SWIGTYPE_p_mfem__RT1TriangleFiniteElement swig_types[130]
+#define SWIGTYPE_p_mfem__RT1_2DFECollection swig_types[131]
+#define SWIGTYPE_p_mfem__RT1_3DFECollection swig_types[132]
+#define SWIGTYPE_p_mfem__RT2QuadFiniteElement swig_types[133]
+#define SWIGTYPE_p_mfem__RT2TriangleFiniteElement swig_types[134]
+#define SWIGTYPE_p_mfem__RT2_2DFECollection swig_types[135]
+#define SWIGTYPE_p_mfem__RT_FECollection swig_types[136]
+#define SWIGTYPE_p_mfem__RT_HexahedronElement swig_types[137]
+#define SWIGTYPE_p_mfem__RT_QuadrilateralElement swig_types[138]
+#define SWIGTYPE_p_mfem__RT_TetrahedronElement swig_types[139]
+#define SWIGTYPE_p_mfem__RT_Trace_FECollection swig_types[140]
+#define SWIGTYPE_p_mfem__RT_TriangleElement swig_types[141]
+#define SWIGTYPE_p_mfem__RefinedBiLinear2DFiniteElement swig_types[142]
+#define SWIGTYPE_p_mfem__RefinedLinear1DFiniteElement swig_types[143]
+#define SWIGTYPE_p_mfem__RefinedLinear2DFiniteElement swig_types[144]
+#define SWIGTYPE_p_mfem__RefinedLinear3DFiniteElement swig_types[145]
+#define SWIGTYPE_p_mfem__RefinedLinearFECollection swig_types[146]
+#define SWIGTYPE_p_mfem__RefinedTriLinear3DFiniteElement swig_types[147]
+#define SWIGTYPE_p_mfem__RotTriLinearHexFiniteElement swig_types[148]
+#define SWIGTYPE_p_mfem__ScalarFiniteElement swig_types[149]
+#define SWIGTYPE_p_mfem__TriLinear3DFiniteElement swig_types[150]
+#define SWIGTYPE_p_mfem__VectorFiniteElement swig_types[151]
+#define SWIGTYPE_p_mfem__VectorTensorFiniteElement swig_types[152]
+#define SWIGTYPE_p_pri_t swig_types[153]
+#define SWIGTYPE_p_quad_t swig_types[154]
+#define SWIGTYPE_p_seg_t swig_types[155]
+#define SWIGTYPE_p_tet_t swig_types[156]
+#define SWIGTYPE_p_tri_t swig_types[157]
+static swig_type_info *swig_types[159];
+static swig_module_info swig_module = {swig_types, 158, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3913,18 +3918,20 @@ SWIGINTERN PyObject *_wrap_FiniteElementCollection_HasFaceDofs(PyObject *SWIGUNU
   PyObject *resultobj = 0;
   mfem::FiniteElementCollection *arg1 = (mfem::FiniteElementCollection *) 0 ;
   mfem::Geometry::Type arg2 ;
+  int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"GeomType",  NULL 
+    (char *)"self",  (char *)"geom",  (char *)"p",  NULL 
   };
   int result;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:FiniteElementCollection_HasFaceDofs", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:FiniteElementCollection_HasFaceDofs", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FiniteElementCollection_HasFaceDofs" "', argument " "1"" of type '" "mfem::FiniteElementCollection const *""'"); 
@@ -3936,8 +3943,14 @@ SWIGINTERN PyObject *_wrap_FiniteElementCollection_HasFaceDofs(PyObject *SWIGUNU
   } 
   arg2 = static_cast< mfem::Geometry::Type >(val2);
   {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
     try {
-      result = (int)((mfem::FiniteElementCollection const *)arg1)->HasFaceDofs(arg2); 
+      result = (int)((mfem::FiniteElementCollection const *)arg1)->HasFaceDofs(arg2,arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -4177,6 +4190,256 @@ SWIGINTERN PyObject *_wrap_FiniteElementCollection_SubDofOrder(PyObject *SWIGUNU
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FiniteElementCollection_GetFE(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::FiniteElementCollection *arg1 = (mfem::FiniteElementCollection *) 0 ;
+  mfem::Geometry::Type arg2 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"geom",  (char *)"p",  NULL 
+  };
+  mfem::FiniteElement *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:FiniteElementCollection_GetFE", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FiniteElementCollection_GetFE" "', argument " "1"" of type '" "mfem::FiniteElementCollection const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FiniteElementCollection * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FiniteElementCollection_GetFE" "', argument " "2"" of type '" "mfem::Geometry::Type""'");
+  } 
+  arg2 = static_cast< mfem::Geometry::Type >(val2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      result = (mfem::FiniteElement *)((mfem::FiniteElementCollection const *)arg1)->GetFE(arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FiniteElementCollection_GetNumDof(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::FiniteElementCollection *arg1 = (mfem::FiniteElementCollection *) 0 ;
+  mfem::Geometry::Type arg2 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"geom",  (char *)"p",  NULL 
+  };
+  int result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:FiniteElementCollection_GetNumDof", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FiniteElementCollection_GetNumDof" "', argument " "1"" of type '" "mfem::FiniteElementCollection const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FiniteElementCollection * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FiniteElementCollection_GetNumDof" "', argument " "2"" of type '" "mfem::Geometry::Type""'");
+  } 
+  arg2 = static_cast< mfem::Geometry::Type >(val2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      result = (int)((mfem::FiniteElementCollection const *)arg1)->GetNumDof(arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FiniteElementCollection_GetDofOrdering(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::FiniteElementCollection *arg1 = (mfem::FiniteElementCollection *) 0 ;
+  mfem::Geometry::Type arg2 ;
+  int arg3 ;
+  int arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"geom",  (char *)"p",  (char *)"ori",  NULL 
+  };
+  int *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:FiniteElementCollection_GetDofOrdering", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FiniteElementCollection_GetDofOrdering" "', argument " "1"" of type '" "mfem::FiniteElementCollection const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FiniteElementCollection * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FiniteElementCollection_GetDofOrdering" "', argument " "2"" of type '" "mfem::Geometry::Type""'");
+  } 
+  arg2 = static_cast< mfem::Geometry::Type >(val2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(obj3);
+  }
+  {
+    try {
+      result = (int *)((mfem::FiniteElementCollection const *)arg1)->GetDofOrdering(arg2,arg3,arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FiniteElementCollection_GetOrder(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::FiniteElementCollection *arg1 = (mfem::FiniteElementCollection *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FiniteElementCollection_GetOrder" "', argument " "1"" of type '" "mfem::FiniteElementCollection const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FiniteElementCollection * >(argp1);
+  {
+    try {
+      result = (int)((mfem::FiniteElementCollection const *)arg1)->GetOrder(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FiniteElementCollection_Clone(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::FiniteElementCollection *arg1 = (mfem::FiniteElementCollection *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"p",  NULL 
+  };
+  mfem::FiniteElementCollection *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:FiniteElementCollection_Clone", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FiniteElementCollection_Clone" "', argument " "1"" of type '" "mfem::FiniteElementCollection const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FiniteElementCollection * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      result = (mfem::FiniteElementCollection *)((mfem::FiniteElementCollection const *)arg1)->Clone(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -4462,41 +4725,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_H1_FECollection_GetTraceCollection(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::H1_FECollection *arg1 = (mfem::H1_FECollection *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  mfem::FiniteElementCollection *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__H1_FECollection, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "H1_FECollection_GetTraceCollection" "', argument " "1"" of type '" "mfem::H1_FECollection const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::H1_FECollection * >(argp1);
-  {
-    try {
-      result = (mfem::FiniteElementCollection *)((mfem::H1_FECollection const *)arg1)->GetTraceCollection(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_H1_FECollection_GetBasisType(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::H1_FECollection *arg1 = (mfem::H1_FECollection *) 0 ;
@@ -4532,7 +4760,42 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_H1_FECollection_GetDofMap(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_H1_FECollection_GetTraceCollection(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::H1_FECollection *arg1 = (mfem::H1_FECollection *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::FiniteElementCollection *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__H1_FECollection, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "H1_FECollection_GetTraceCollection" "', argument " "1"" of type '" "mfem::H1_FECollection const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::H1_FECollection * >(argp1);
+  {
+    try {
+      result = (mfem::FiniteElementCollection *)((mfem::H1_FECollection const *)arg1)->GetTraceCollection(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_H1_FECollection_GetDofMap__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::H1_FECollection *arg1 = (mfem::H1_FECollection *) 0 ;
   mfem::Geometry::Type arg2 ;
@@ -4540,20 +4803,15 @@ SWIGINTERN PyObject *_wrap_H1_FECollection_GetDofMap(PyObject *SWIGUNUSEDPARM(se
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"GeomType",  NULL 
-  };
   int *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:H1_FECollection_GetDofMap", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__H1_FECollection, 0 |  0 );
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__H1_FECollection, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "H1_FECollection_GetDofMap" "', argument " "1"" of type '" "mfem::H1_FECollection const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::H1_FECollection * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "H1_FECollection_GetDofMap" "', argument " "2"" of type '" "mfem::Geometry::Type""'");
   } 
@@ -4572,6 +4830,157 @@ SWIGINTERN PyObject *_wrap_H1_FECollection_GetDofMap(PyObject *SWIGUNUSEDPARM(se
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_H1_FECollection_GetDofMap__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::H1_FECollection *arg1 = (mfem::H1_FECollection *) 0 ;
+  mfem::Geometry::Type arg2 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int *result = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__H1_FECollection, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "H1_FECollection_GetDofMap" "', argument " "1"" of type '" "mfem::H1_FECollection const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::H1_FECollection * >(argp1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "H1_FECollection_GetDofMap" "', argument " "2"" of type '" "mfem::Geometry::Type""'");
+  } 
+  arg2 = static_cast< mfem::Geometry::Type >(val2);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  }
+  {
+    try {
+      result = (int *)((mfem::H1_FECollection const *)arg1)->GetDofMap(arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_H1_FECollection_GetDofMap(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "H1_FECollection_GetDofMap", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__H1_FECollection, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_H1_FECollection_GetDofMap__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__H1_FECollection, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_H1_FECollection_GetDofMap__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'H1_FECollection_GetDofMap'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::H1_FECollection::GetDofMap(mfem::Geometry::Type) const\n"
+    "    mfem::H1_FECollection::GetDofMap(mfem::Geometry::Type,int) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_H1_FECollection_Clone(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::H1_FECollection *arg1 = (mfem::H1_FECollection *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"p",  NULL 
+  };
+  mfem::FiniteElementCollection *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:H1_FECollection_Clone", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__H1_FECollection, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "H1_FECollection_Clone" "', argument " "1"" of type '" "mfem::H1_FECollection const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::H1_FECollection * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      result = (mfem::FiniteElementCollection *)((mfem::H1_FECollection const *)arg1)->Clone(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -5265,6 +5674,51 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_L2_FECollection_Clone(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::L2_FECollection *arg1 = (mfem::L2_FECollection *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"p",  NULL 
+  };
+  mfem::FiniteElementCollection *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:L2_FECollection_Clone", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__L2_FECollection, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "L2_FECollection_Clone" "', argument " "1"" of type '" "mfem::L2_FECollection const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::L2_FECollection * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      result = (mfem::FiniteElementCollection *)((mfem::L2_FECollection const *)arg1)->Clone(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_L2_FECollection(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::L2_FECollection *arg1 = (mfem::L2_FECollection *) 0 ;
@@ -5668,6 +6122,121 @@ SWIGINTERN PyObject *_wrap_RT_FECollection_GetTraceCollection(PyObject *SWIGUNUS
   {
     try {
       result = (mfem::FiniteElementCollection *)((mfem::RT_FECollection const *)arg1)->GetTraceCollection(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RT_FECollection_GetClosedBasisType(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::RT_FECollection *arg1 = (mfem::RT_FECollection *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__RT_FECollection, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RT_FECollection_GetClosedBasisType" "', argument " "1"" of type '" "mfem::RT_FECollection const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::RT_FECollection * >(argp1);
+  {
+    try {
+      result = (int)((mfem::RT_FECollection const *)arg1)->GetClosedBasisType(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RT_FECollection_GetOpenBasisType(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::RT_FECollection *arg1 = (mfem::RT_FECollection *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__RT_FECollection, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RT_FECollection_GetOpenBasisType" "', argument " "1"" of type '" "mfem::RT_FECollection const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::RT_FECollection * >(argp1);
+  {
+    try {
+      result = (int)((mfem::RT_FECollection const *)arg1)->GetOpenBasisType(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RT_FECollection_Clone(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::RT_FECollection *arg1 = (mfem::RT_FECollection *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"p",  NULL 
+  };
+  mfem::FiniteElementCollection *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:RT_FECollection_Clone", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__RT_FECollection, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RT_FECollection_Clone" "', argument " "1"" of type '" "mfem::RT_FECollection const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::RT_FECollection * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      result = (mfem::FiniteElementCollection *)((mfem::RT_FECollection const *)arg1)->Clone(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -6246,6 +6815,121 @@ SWIGINTERN PyObject *_wrap_ND_FECollection_GetTraceCollection(PyObject *SWIGUNUS
   {
     try {
       result = (mfem::FiniteElementCollection *)((mfem::ND_FECollection const *)arg1)->GetTraceCollection(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_FECollection_GetClosedBasisType(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ND_FECollection *arg1 = (mfem::ND_FECollection *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_FECollection, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_FECollection_GetClosedBasisType" "', argument " "1"" of type '" "mfem::ND_FECollection const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_FECollection * >(argp1);
+  {
+    try {
+      result = (int)((mfem::ND_FECollection const *)arg1)->GetClosedBasisType(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_FECollection_GetOpenBasisType(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ND_FECollection *arg1 = (mfem::ND_FECollection *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_FECollection, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_FECollection_GetOpenBasisType" "', argument " "1"" of type '" "mfem::ND_FECollection const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_FECollection * >(argp1);
+  {
+    try {
+      result = (int)((mfem::ND_FECollection const *)arg1)->GetOpenBasisType(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_FECollection_Clone(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ND_FECollection *arg1 = (mfem::ND_FECollection *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"p",  NULL 
+  };
+  mfem::FiniteElementCollection *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ND_FECollection_Clone", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_FECollection, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_FECollection_Clone" "', argument " "1"" of type '" "mfem::ND_FECollection const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_FECollection * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      result = (mfem::FiniteElementCollection *)((mfem::ND_FECollection const *)arg1)->Clone(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -13779,7 +14463,7 @@ SWIGINTERN PyObject *_wrap_Local_FECollection_FiniteElementForGeometry(PyObject 
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"_GeomType",  NULL 
+    (char *)"self",  (char *)"GeomType_",  NULL 
   };
   mfem::FiniteElement *result = 0 ;
   
@@ -13825,7 +14509,7 @@ SWIGINTERN PyObject *_wrap_Local_FECollection_DofForGeometry(PyObject *SWIGUNUSE
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"_GeomType",  NULL 
+    (char *)"self",  (char *)"GeomType_",  NULL 
   };
   int result;
   
@@ -14037,12 +14721,17 @@ static PyMethodDef SwigMethods[] = {
 	 { "FiniteElementCollection_DofOrderForOrientation", (PyCFunction)(void(*)(void))_wrap_FiniteElementCollection_DofOrderForOrientation, METH_VARARGS|METH_KEYWORDS, "FiniteElementCollection_DofOrderForOrientation(FiniteElementCollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"},
 	 { "FiniteElementCollection_Name", _wrap_FiniteElementCollection_Name, METH_O, "FiniteElementCollection_Name(FiniteElementCollection self) -> char const *"},
 	 { "FiniteElementCollection_GetContType", _wrap_FiniteElementCollection_GetContType, METH_O, "FiniteElementCollection_GetContType(FiniteElementCollection self) -> int"},
-	 { "FiniteElementCollection_HasFaceDofs", (PyCFunction)(void(*)(void))_wrap_FiniteElementCollection_HasFaceDofs, METH_VARARGS|METH_KEYWORDS, "FiniteElementCollection_HasFaceDofs(FiniteElementCollection self, mfem::Geometry::Type GeomType) -> int"},
+	 { "FiniteElementCollection_HasFaceDofs", (PyCFunction)(void(*)(void))_wrap_FiniteElementCollection_HasFaceDofs, METH_VARARGS|METH_KEYWORDS, "FiniteElementCollection_HasFaceDofs(FiniteElementCollection self, mfem::Geometry::Type geom, int p) -> int"},
 	 { "FiniteElementCollection_TraceFiniteElementForGeometry", (PyCFunction)(void(*)(void))_wrap_FiniteElementCollection_TraceFiniteElementForGeometry, METH_VARARGS|METH_KEYWORDS, "FiniteElementCollection_TraceFiniteElementForGeometry(FiniteElementCollection self, mfem::Geometry::Type GeomType) -> FiniteElement"},
 	 { "FiniteElementCollection_GetTraceCollection", _wrap_FiniteElementCollection_GetTraceCollection, METH_O, "FiniteElementCollection_GetTraceCollection(FiniteElementCollection self) -> FiniteElementCollection"},
 	 { "delete_FiniteElementCollection", _wrap_delete_FiniteElementCollection, METH_O, "delete_FiniteElementCollection(FiniteElementCollection self)"},
 	 { "FiniteElementCollection_New", (PyCFunction)(void(*)(void))_wrap_FiniteElementCollection_New, METH_VARARGS|METH_KEYWORDS, "FiniteElementCollection_New(char const * name) -> FiniteElementCollection"},
 	 { "FiniteElementCollection_SubDofOrder", (PyCFunction)(void(*)(void))_wrap_FiniteElementCollection_SubDofOrder, METH_VARARGS|METH_KEYWORDS, "FiniteElementCollection_SubDofOrder(FiniteElementCollection self, mfem::Geometry::Type Geom, int SDim, int Info, intArray dofs)"},
+	 { "FiniteElementCollection_GetFE", (PyCFunction)(void(*)(void))_wrap_FiniteElementCollection_GetFE, METH_VARARGS|METH_KEYWORDS, "FiniteElementCollection_GetFE(FiniteElementCollection self, mfem::Geometry::Type geom, int p) -> FiniteElement"},
+	 { "FiniteElementCollection_GetNumDof", (PyCFunction)(void(*)(void))_wrap_FiniteElementCollection_GetNumDof, METH_VARARGS|METH_KEYWORDS, "FiniteElementCollection_GetNumDof(FiniteElementCollection self, mfem::Geometry::Type geom, int p) -> int"},
+	 { "FiniteElementCollection_GetDofOrdering", (PyCFunction)(void(*)(void))_wrap_FiniteElementCollection_GetDofOrdering, METH_VARARGS|METH_KEYWORDS, "FiniteElementCollection_GetDofOrdering(FiniteElementCollection self, mfem::Geometry::Type geom, int p, int ori) -> int const *"},
+	 { "FiniteElementCollection_GetOrder", _wrap_FiniteElementCollection_GetOrder, METH_O, "FiniteElementCollection_GetOrder(FiniteElementCollection self) -> int"},
+	 { "FiniteElementCollection_Clone", (PyCFunction)(void(*)(void))_wrap_FiniteElementCollection_Clone, METH_VARARGS|METH_KEYWORDS, "FiniteElementCollection_Clone(FiniteElementCollection self, int p) -> FiniteElementCollection"},
 	 { "FiniteElementCollection_swigregister", FiniteElementCollection_swigregister, METH_O, NULL},
 	 { "new_H1_FECollection", (PyCFunction)(void(*)(void))_wrap_new_H1_FECollection, METH_VARARGS|METH_KEYWORDS, "new_H1_FECollection(int const p, int const dim=3, int const btype=GaussLobatto) -> H1_FECollection"},
 	 { "H1_FECollection_FiniteElementForGeometry", (PyCFunction)(void(*)(void))_wrap_H1_FECollection_FiniteElementForGeometry, METH_VARARGS|METH_KEYWORDS, "H1_FECollection_FiniteElementForGeometry(H1_FECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"},
@@ -14050,9 +14739,13 @@ static PyMethodDef SwigMethods[] = {
 	 { "H1_FECollection_DofOrderForOrientation", (PyCFunction)(void(*)(void))_wrap_H1_FECollection_DofOrderForOrientation, METH_VARARGS|METH_KEYWORDS, "H1_FECollection_DofOrderForOrientation(H1_FECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"},
 	 { "H1_FECollection_Name", _wrap_H1_FECollection_Name, METH_O, "H1_FECollection_Name(H1_FECollection self) -> char const *"},
 	 { "H1_FECollection_GetContType", _wrap_H1_FECollection_GetContType, METH_O, "H1_FECollection_GetContType(H1_FECollection self) -> int"},
-	 { "H1_FECollection_GetTraceCollection", _wrap_H1_FECollection_GetTraceCollection, METH_O, "H1_FECollection_GetTraceCollection(H1_FECollection self) -> FiniteElementCollection"},
 	 { "H1_FECollection_GetBasisType", _wrap_H1_FECollection_GetBasisType, METH_O, "H1_FECollection_GetBasisType(H1_FECollection self) -> int"},
-	 { "H1_FECollection_GetDofMap", (PyCFunction)(void(*)(void))_wrap_H1_FECollection_GetDofMap, METH_VARARGS|METH_KEYWORDS, "H1_FECollection_GetDofMap(H1_FECollection self, mfem::Geometry::Type GeomType) -> int const *"},
+	 { "H1_FECollection_GetTraceCollection", _wrap_H1_FECollection_GetTraceCollection, METH_O, "H1_FECollection_GetTraceCollection(H1_FECollection self) -> FiniteElementCollection"},
+	 { "H1_FECollection_GetDofMap", _wrap_H1_FECollection_GetDofMap, METH_VARARGS, "\n"
+		"H1_FECollection_GetDofMap(H1_FECollection self, mfem::Geometry::Type GeomType) -> int const\n"
+		"H1_FECollection_GetDofMap(H1_FECollection self, mfem::Geometry::Type GeomType, int p) -> int const *\n"
+		""},
+	 { "H1_FECollection_Clone", (PyCFunction)(void(*)(void))_wrap_H1_FECollection_Clone, METH_VARARGS|METH_KEYWORDS, "H1_FECollection_Clone(H1_FECollection self, int p) -> FiniteElementCollection"},
 	 { "delete_H1_FECollection", _wrap_delete_H1_FECollection, METH_O, "delete_H1_FECollection(H1_FECollection self)"},
 	 { "H1_FECollection_swigregister", H1_FECollection_swigregister, METH_O, NULL},
 	 { "H1_FECollection_swiginit", H1_FECollection_swiginit, METH_VARARGS, NULL},
@@ -14076,6 +14769,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "L2_FECollection_GetContType", _wrap_L2_FECollection_GetContType, METH_O, "L2_FECollection_GetContType(L2_FECollection self) -> int"},
 	 { "L2_FECollection_TraceFiniteElementForGeometry", (PyCFunction)(void(*)(void))_wrap_L2_FECollection_TraceFiniteElementForGeometry, METH_VARARGS|METH_KEYWORDS, "L2_FECollection_TraceFiniteElementForGeometry(L2_FECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"},
 	 { "L2_FECollection_GetBasisType", _wrap_L2_FECollection_GetBasisType, METH_O, "L2_FECollection_GetBasisType(L2_FECollection self) -> int"},
+	 { "L2_FECollection_Clone", (PyCFunction)(void(*)(void))_wrap_L2_FECollection_Clone, METH_VARARGS|METH_KEYWORDS, "L2_FECollection_Clone(L2_FECollection self, int p) -> FiniteElementCollection"},
 	 { "delete_L2_FECollection", _wrap_delete_L2_FECollection, METH_O, "delete_L2_FECollection(L2_FECollection self)"},
 	 { "L2_FECollection_swigregister", L2_FECollection_swigregister, METH_O, NULL},
 	 { "L2_FECollection_swiginit", L2_FECollection_swiginit, METH_VARARGS, NULL},
@@ -14086,6 +14780,9 @@ static PyMethodDef SwigMethods[] = {
 	 { "RT_FECollection_Name", _wrap_RT_FECollection_Name, METH_O, "RT_FECollection_Name(RT_FECollection self) -> char const *"},
 	 { "RT_FECollection_GetContType", _wrap_RT_FECollection_GetContType, METH_O, "RT_FECollection_GetContType(RT_FECollection self) -> int"},
 	 { "RT_FECollection_GetTraceCollection", _wrap_RT_FECollection_GetTraceCollection, METH_O, "RT_FECollection_GetTraceCollection(RT_FECollection self) -> FiniteElementCollection"},
+	 { "RT_FECollection_GetClosedBasisType", _wrap_RT_FECollection_GetClosedBasisType, METH_O, "RT_FECollection_GetClosedBasisType(RT_FECollection self) -> int"},
+	 { "RT_FECollection_GetOpenBasisType", _wrap_RT_FECollection_GetOpenBasisType, METH_O, "RT_FECollection_GetOpenBasisType(RT_FECollection self) -> int"},
+	 { "RT_FECollection_Clone", (PyCFunction)(void(*)(void))_wrap_RT_FECollection_Clone, METH_VARARGS|METH_KEYWORDS, "RT_FECollection_Clone(RT_FECollection self, int p) -> FiniteElementCollection"},
 	 { "delete_RT_FECollection", _wrap_delete_RT_FECollection, METH_O, "delete_RT_FECollection(RT_FECollection self)"},
 	 { "RT_FECollection_swigregister", RT_FECollection_swigregister, METH_O, NULL},
 	 { "RT_FECollection_swiginit", RT_FECollection_swiginit, METH_VARARGS, NULL},
@@ -14104,6 +14801,9 @@ static PyMethodDef SwigMethods[] = {
 	 { "ND_FECollection_Name", _wrap_ND_FECollection_Name, METH_O, "ND_FECollection_Name(ND_FECollection self) -> char const *"},
 	 { "ND_FECollection_GetContType", _wrap_ND_FECollection_GetContType, METH_O, "ND_FECollection_GetContType(ND_FECollection self) -> int"},
 	 { "ND_FECollection_GetTraceCollection", _wrap_ND_FECollection_GetTraceCollection, METH_O, "ND_FECollection_GetTraceCollection(ND_FECollection self) -> FiniteElementCollection"},
+	 { "ND_FECollection_GetClosedBasisType", _wrap_ND_FECollection_GetClosedBasisType, METH_O, "ND_FECollection_GetClosedBasisType(ND_FECollection self) -> int"},
+	 { "ND_FECollection_GetOpenBasisType", _wrap_ND_FECollection_GetOpenBasisType, METH_O, "ND_FECollection_GetOpenBasisType(ND_FECollection self) -> int"},
+	 { "ND_FECollection_Clone", (PyCFunction)(void(*)(void))_wrap_ND_FECollection_Clone, METH_VARARGS|METH_KEYWORDS, "ND_FECollection_Clone(ND_FECollection self, int p) -> FiniteElementCollection"},
 	 { "delete_ND_FECollection", _wrap_delete_ND_FECollection, METH_O, "delete_ND_FECollection(ND_FECollection self)"},
 	 { "ND_FECollection_swigregister", ND_FECollection_swigregister, METH_O, NULL},
 	 { "ND_FECollection_swiginit", ND_FECollection_swiginit, METH_VARARGS, NULL},
@@ -14341,8 +15041,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "RT1_3DFECollection_swigregister", RT1_3DFECollection_swigregister, METH_O, NULL},
 	 { "RT1_3DFECollection_swiginit", RT1_3DFECollection_swiginit, METH_VARARGS, NULL},
 	 { "new_Local_FECollection", (PyCFunction)(void(*)(void))_wrap_new_Local_FECollection, METH_VARARGS|METH_KEYWORDS, "new_Local_FECollection(char const * fe_name) -> Local_FECollection"},
-	 { "Local_FECollection_FiniteElementForGeometry", (PyCFunction)(void(*)(void))_wrap_Local_FECollection_FiniteElementForGeometry, METH_VARARGS|METH_KEYWORDS, "Local_FECollection_FiniteElementForGeometry(Local_FECollection self, mfem::Geometry::Type _GeomType) -> FiniteElement"},
-	 { "Local_FECollection_DofForGeometry", (PyCFunction)(void(*)(void))_wrap_Local_FECollection_DofForGeometry, METH_VARARGS|METH_KEYWORDS, "Local_FECollection_DofForGeometry(Local_FECollection self, mfem::Geometry::Type _GeomType) -> int"},
+	 { "Local_FECollection_FiniteElementForGeometry", (PyCFunction)(void(*)(void))_wrap_Local_FECollection_FiniteElementForGeometry, METH_VARARGS|METH_KEYWORDS, "Local_FECollection_FiniteElementForGeometry(Local_FECollection self, mfem::Geometry::Type GeomType_) -> FiniteElement"},
+	 { "Local_FECollection_DofForGeometry", (PyCFunction)(void(*)(void))_wrap_Local_FECollection_DofForGeometry, METH_VARARGS|METH_KEYWORDS, "Local_FECollection_DofForGeometry(Local_FECollection self, mfem::Geometry::Type GeomType_) -> int"},
 	 { "Local_FECollection_DofOrderForOrientation", (PyCFunction)(void(*)(void))_wrap_Local_FECollection_DofOrderForOrientation, METH_VARARGS|METH_KEYWORDS, "Local_FECollection_DofOrderForOrientation(Local_FECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"},
 	 { "Local_FECollection_Name", _wrap_Local_FECollection_Name, METH_O, "Local_FECollection_Name(Local_FECollection self) -> char const *"},
 	 { "delete_Local_FECollection", _wrap_delete_Local_FECollection, METH_O, "delete_Local_FECollection(Local_FECollection self)"},
@@ -14360,12 +15060,17 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "FiniteElementCollection_DofOrderForOrientation", (PyCFunction)(void(*)(void))_wrap_FiniteElementCollection_DofOrderForOrientation, METH_VARARGS|METH_KEYWORDS, "DofOrderForOrientation(FiniteElementCollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"},
 	 { "FiniteElementCollection_Name", _wrap_FiniteElementCollection_Name, METH_O, "Name(FiniteElementCollection self) -> char const *"},
 	 { "FiniteElementCollection_GetContType", _wrap_FiniteElementCollection_GetContType, METH_O, "GetContType(FiniteElementCollection self) -> int"},
-	 { "FiniteElementCollection_HasFaceDofs", (PyCFunction)(void(*)(void))_wrap_FiniteElementCollection_HasFaceDofs, METH_VARARGS|METH_KEYWORDS, "HasFaceDofs(FiniteElementCollection self, mfem::Geometry::Type GeomType) -> int"},
+	 { "FiniteElementCollection_HasFaceDofs", (PyCFunction)(void(*)(void))_wrap_FiniteElementCollection_HasFaceDofs, METH_VARARGS|METH_KEYWORDS, "HasFaceDofs(FiniteElementCollection self, mfem::Geometry::Type geom, int p) -> int"},
 	 { "FiniteElementCollection_TraceFiniteElementForGeometry", (PyCFunction)(void(*)(void))_wrap_FiniteElementCollection_TraceFiniteElementForGeometry, METH_VARARGS|METH_KEYWORDS, "TraceFiniteElementForGeometry(FiniteElementCollection self, mfem::Geometry::Type GeomType) -> FiniteElement"},
 	 { "FiniteElementCollection_GetTraceCollection", _wrap_FiniteElementCollection_GetTraceCollection, METH_O, "GetTraceCollection(FiniteElementCollection self) -> FiniteElementCollection"},
 	 { "delete_FiniteElementCollection", _wrap_delete_FiniteElementCollection, METH_O, "delete_FiniteElementCollection(FiniteElementCollection self)"},
 	 { "FiniteElementCollection_New", (PyCFunction)(void(*)(void))_wrap_FiniteElementCollection_New, METH_VARARGS|METH_KEYWORDS, "New(char const * name) -> FiniteElementCollection"},
 	 { "FiniteElementCollection_SubDofOrder", (PyCFunction)(void(*)(void))_wrap_FiniteElementCollection_SubDofOrder, METH_VARARGS|METH_KEYWORDS, "SubDofOrder(FiniteElementCollection self, mfem::Geometry::Type Geom, int SDim, int Info, intArray dofs)"},
+	 { "FiniteElementCollection_GetFE", (PyCFunction)(void(*)(void))_wrap_FiniteElementCollection_GetFE, METH_VARARGS|METH_KEYWORDS, "GetFE(FiniteElementCollection self, mfem::Geometry::Type geom, int p) -> FiniteElement"},
+	 { "FiniteElementCollection_GetNumDof", (PyCFunction)(void(*)(void))_wrap_FiniteElementCollection_GetNumDof, METH_VARARGS|METH_KEYWORDS, "GetNumDof(FiniteElementCollection self, mfem::Geometry::Type geom, int p) -> int"},
+	 { "FiniteElementCollection_GetDofOrdering", (PyCFunction)(void(*)(void))_wrap_FiniteElementCollection_GetDofOrdering, METH_VARARGS|METH_KEYWORDS, "GetDofOrdering(FiniteElementCollection self, mfem::Geometry::Type geom, int p, int ori) -> int const *"},
+	 { "FiniteElementCollection_GetOrder", _wrap_FiniteElementCollection_GetOrder, METH_O, "GetOrder(FiniteElementCollection self) -> int"},
+	 { "FiniteElementCollection_Clone", (PyCFunction)(void(*)(void))_wrap_FiniteElementCollection_Clone, METH_VARARGS|METH_KEYWORDS, "Clone(FiniteElementCollection self, int p) -> FiniteElementCollection"},
 	 { "FiniteElementCollection_swigregister", FiniteElementCollection_swigregister, METH_O, NULL},
 	 { "new_H1_FECollection", (PyCFunction)(void(*)(void))_wrap_new_H1_FECollection, METH_VARARGS|METH_KEYWORDS, "new_H1_FECollection(int const p, int const dim=3, int const btype=GaussLobatto) -> H1_FECollection"},
 	 { "H1_FECollection_FiniteElementForGeometry", (PyCFunction)(void(*)(void))_wrap_H1_FECollection_FiniteElementForGeometry, METH_VARARGS|METH_KEYWORDS, "FiniteElementForGeometry(H1_FECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"},
@@ -14373,9 +15078,13 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "H1_FECollection_DofOrderForOrientation", (PyCFunction)(void(*)(void))_wrap_H1_FECollection_DofOrderForOrientation, METH_VARARGS|METH_KEYWORDS, "DofOrderForOrientation(H1_FECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"},
 	 { "H1_FECollection_Name", _wrap_H1_FECollection_Name, METH_O, "Name(H1_FECollection self) -> char const *"},
 	 { "H1_FECollection_GetContType", _wrap_H1_FECollection_GetContType, METH_O, "GetContType(H1_FECollection self) -> int"},
-	 { "H1_FECollection_GetTraceCollection", _wrap_H1_FECollection_GetTraceCollection, METH_O, "GetTraceCollection(H1_FECollection self) -> FiniteElementCollection"},
 	 { "H1_FECollection_GetBasisType", _wrap_H1_FECollection_GetBasisType, METH_O, "GetBasisType(H1_FECollection self) -> int"},
-	 { "H1_FECollection_GetDofMap", (PyCFunction)(void(*)(void))_wrap_H1_FECollection_GetDofMap, METH_VARARGS|METH_KEYWORDS, "GetDofMap(H1_FECollection self, mfem::Geometry::Type GeomType) -> int const *"},
+	 { "H1_FECollection_GetTraceCollection", _wrap_H1_FECollection_GetTraceCollection, METH_O, "GetTraceCollection(H1_FECollection self) -> FiniteElementCollection"},
+	 { "H1_FECollection_GetDofMap", _wrap_H1_FECollection_GetDofMap, METH_VARARGS, "\n"
+		"GetDofMap(H1_FECollection self, mfem::Geometry::Type GeomType) -> int const\n"
+		"GetDofMap(H1_FECollection self, mfem::Geometry::Type GeomType, int p) -> int const *\n"
+		""},
+	 { "H1_FECollection_Clone", (PyCFunction)(void(*)(void))_wrap_H1_FECollection_Clone, METH_VARARGS|METH_KEYWORDS, "Clone(H1_FECollection self, int p) -> FiniteElementCollection"},
 	 { "delete_H1_FECollection", _wrap_delete_H1_FECollection, METH_O, "delete_H1_FECollection(H1_FECollection self)"},
 	 { "H1_FECollection_swigregister", H1_FECollection_swigregister, METH_O, NULL},
 	 { "H1_FECollection_swiginit", H1_FECollection_swiginit, METH_VARARGS, NULL},
@@ -14399,6 +15108,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "L2_FECollection_GetContType", _wrap_L2_FECollection_GetContType, METH_O, "GetContType(L2_FECollection self) -> int"},
 	 { "L2_FECollection_TraceFiniteElementForGeometry", (PyCFunction)(void(*)(void))_wrap_L2_FECollection_TraceFiniteElementForGeometry, METH_VARARGS|METH_KEYWORDS, "TraceFiniteElementForGeometry(L2_FECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"},
 	 { "L2_FECollection_GetBasisType", _wrap_L2_FECollection_GetBasisType, METH_O, "GetBasisType(L2_FECollection self) -> int"},
+	 { "L2_FECollection_Clone", (PyCFunction)(void(*)(void))_wrap_L2_FECollection_Clone, METH_VARARGS|METH_KEYWORDS, "Clone(L2_FECollection self, int p) -> FiniteElementCollection"},
 	 { "delete_L2_FECollection", _wrap_delete_L2_FECollection, METH_O, "delete_L2_FECollection(L2_FECollection self)"},
 	 { "L2_FECollection_swigregister", L2_FECollection_swigregister, METH_O, NULL},
 	 { "L2_FECollection_swiginit", L2_FECollection_swiginit, METH_VARARGS, NULL},
@@ -14409,6 +15119,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "RT_FECollection_Name", _wrap_RT_FECollection_Name, METH_O, "Name(RT_FECollection self) -> char const *"},
 	 { "RT_FECollection_GetContType", _wrap_RT_FECollection_GetContType, METH_O, "GetContType(RT_FECollection self) -> int"},
 	 { "RT_FECollection_GetTraceCollection", _wrap_RT_FECollection_GetTraceCollection, METH_O, "GetTraceCollection(RT_FECollection self) -> FiniteElementCollection"},
+	 { "RT_FECollection_GetClosedBasisType", _wrap_RT_FECollection_GetClosedBasisType, METH_O, "GetClosedBasisType(RT_FECollection self) -> int"},
+	 { "RT_FECollection_GetOpenBasisType", _wrap_RT_FECollection_GetOpenBasisType, METH_O, "GetOpenBasisType(RT_FECollection self) -> int"},
+	 { "RT_FECollection_Clone", (PyCFunction)(void(*)(void))_wrap_RT_FECollection_Clone, METH_VARARGS|METH_KEYWORDS, "Clone(RT_FECollection self, int p) -> FiniteElementCollection"},
 	 { "delete_RT_FECollection", _wrap_delete_RT_FECollection, METH_O, "delete_RT_FECollection(RT_FECollection self)"},
 	 { "RT_FECollection_swigregister", RT_FECollection_swigregister, METH_O, NULL},
 	 { "RT_FECollection_swiginit", RT_FECollection_swiginit, METH_VARARGS, NULL},
@@ -14427,6 +15140,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ND_FECollection_Name", _wrap_ND_FECollection_Name, METH_O, "Name(ND_FECollection self) -> char const *"},
 	 { "ND_FECollection_GetContType", _wrap_ND_FECollection_GetContType, METH_O, "GetContType(ND_FECollection self) -> int"},
 	 { "ND_FECollection_GetTraceCollection", _wrap_ND_FECollection_GetTraceCollection, METH_O, "GetTraceCollection(ND_FECollection self) -> FiniteElementCollection"},
+	 { "ND_FECollection_GetClosedBasisType", _wrap_ND_FECollection_GetClosedBasisType, METH_O, "GetClosedBasisType(ND_FECollection self) -> int"},
+	 { "ND_FECollection_GetOpenBasisType", _wrap_ND_FECollection_GetOpenBasisType, METH_O, "GetOpenBasisType(ND_FECollection self) -> int"},
+	 { "ND_FECollection_Clone", (PyCFunction)(void(*)(void))_wrap_ND_FECollection_Clone, METH_VARARGS|METH_KEYWORDS, "Clone(ND_FECollection self, int p) -> FiniteElementCollection"},
 	 { "delete_ND_FECollection", _wrap_delete_ND_FECollection, METH_O, "delete_ND_FECollection(ND_FECollection self)"},
 	 { "ND_FECollection_swigregister", ND_FECollection_swigregister, METH_O, NULL},
 	 { "ND_FECollection_swiginit", ND_FECollection_swiginit, METH_VARARGS, NULL},
@@ -14664,8 +15380,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "RT1_3DFECollection_swigregister", RT1_3DFECollection_swigregister, METH_O, NULL},
 	 { "RT1_3DFECollection_swiginit", RT1_3DFECollection_swiginit, METH_VARARGS, NULL},
 	 { "new_Local_FECollection", (PyCFunction)(void(*)(void))_wrap_new_Local_FECollection, METH_VARARGS|METH_KEYWORDS, "new_Local_FECollection(char const * fe_name) -> Local_FECollection"},
-	 { "Local_FECollection_FiniteElementForGeometry", (PyCFunction)(void(*)(void))_wrap_Local_FECollection_FiniteElementForGeometry, METH_VARARGS|METH_KEYWORDS, "FiniteElementForGeometry(Local_FECollection self, mfem::Geometry::Type _GeomType) -> FiniteElement"},
-	 { "Local_FECollection_DofForGeometry", (PyCFunction)(void(*)(void))_wrap_Local_FECollection_DofForGeometry, METH_VARARGS|METH_KEYWORDS, "DofForGeometry(Local_FECollection self, mfem::Geometry::Type _GeomType) -> int"},
+	 { "Local_FECollection_FiniteElementForGeometry", (PyCFunction)(void(*)(void))_wrap_Local_FECollection_FiniteElementForGeometry, METH_VARARGS|METH_KEYWORDS, "FiniteElementForGeometry(Local_FECollection self, mfem::Geometry::Type GeomType_) -> FiniteElement"},
+	 { "Local_FECollection_DofForGeometry", (PyCFunction)(void(*)(void))_wrap_Local_FECollection_DofForGeometry, METH_VARARGS|METH_KEYWORDS, "DofForGeometry(Local_FECollection self, mfem::Geometry::Type GeomType_) -> int"},
 	 { "Local_FECollection_DofOrderForOrientation", (PyCFunction)(void(*)(void))_wrap_Local_FECollection_DofOrderForOrientation, METH_VARARGS|METH_KEYWORDS, "DofOrderForOrientation(Local_FECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"},
 	 { "Local_FECollection_Name", _wrap_Local_FECollection_Name, METH_O, "Name(Local_FECollection self) -> char const *"},
 	 { "delete_Local_FECollection", _wrap_delete_Local_FECollection, METH_O, "delete_Local_FECollection(Local_FECollection self)"},
@@ -15104,15 +15820,20 @@ static void *_p_mfem__NURBS3DFiniteElementTo_p_mfem__FiniteElement(void *x, int 
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p__HYPRE_ExecutionPolicy = {"_p__HYPRE_ExecutionPolicy", "enum _HYPRE_ExecutionPolicy *|HYPRE_ExecutionPolicy *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p__HYPRE_MemoryLocation = {"_p__HYPRE_MemoryLocation", "enum _HYPRE_MemoryLocation *|HYPRE_MemoryLocation *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_double = {"_p_double", "HYPRE_Real *|HYPRE_Complex *|double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *|HYPRE_BigInt *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Const2DFECollection = {"_p_mfem__Const2DFECollection", "mfem::Const2DFECollection *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Const3DFECollection = {"_p_mfem__Const3DFECollection", "mfem::Const3DFECollection *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ConvectionIntegrator = {"_p_mfem__ConvectionIntegrator", "mfem::ConvectionIntegrator *|mfem::NonconservativeConvectionIntegrator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__CrouzeixRaviartFECollection = {"_p_mfem__CrouzeixRaviartFECollection", "mfem::CrouzeixRaviartFECollection *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__CubicDiscont2DFECollection = {"_p_mfem__CubicDiscont2DFECollection", "mfem::CubicDiscont2DFECollection *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__CubicFECollection = {"_p_mfem__CubicFECollection", "mfem::CubicFECollection *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__DGTraceIntegrator = {"_p_mfem__DGTraceIntegrator", "mfem::DGTraceIntegrator *|mfem::ConservativeDGTraceIntegrator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DG_Interface_FECollection = {"_p_mfem__DG_Interface_FECollection", "mfem::DG_Interface_FECollection *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__FiniteElement = {"_p_mfem__FiniteElement", "mfem::FiniteElement *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__P0HexFiniteElement = {"_p_mfem__P0HexFiniteElement", 0, 0, 0, 0, 0};
@@ -15259,7 +15980,10 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_MPI_Comm,
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_RefCoord,
+  &_swigt__p__HYPRE_ExecutionPolicy,
+  &_swigt__p__HYPRE_MemoryLocation,
   &_swigt__p_char,
+  &_swigt__p_double,
   &_swigt__p_hex_t,
   &_swigt__p_int,
   &_swigt__p_mfem__ArrayT_int_t,
@@ -15272,6 +15996,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__BiQuadratic3DFiniteElement,
   &_swigt__p_mfem__Const2DFECollection,
   &_swigt__p_mfem__Const3DFECollection,
+  &_swigt__p_mfem__ConvectionIntegrator,
   &_swigt__p_mfem__CrouzeixRaviartFECollection,
   &_swigt__p_mfem__CrouzeixRaviartFiniteElement,
   &_swigt__p_mfem__CrouzeixRaviartQuadFiniteElement,
@@ -15280,6 +16005,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__Cubic3DFiniteElement,
   &_swigt__p_mfem__CubicDiscont2DFECollection,
   &_swigt__p_mfem__CubicFECollection,
+  &_swigt__p_mfem__DGTraceIntegrator,
   &_swigt__p_mfem__DG_Interface_FECollection,
   &_swigt__p_mfem__FiniteElement,
   &_swigt__p_mfem__FiniteElementCollection,
@@ -15414,15 +16140,20 @@ static swig_type_info *swig_type_initial[] = {
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p__HYPRE_ExecutionPolicy[] = {  {&_swigt__p__HYPRE_ExecutionPolicy, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p__HYPRE_MemoryLocation[] = {  {&_swigt__p__HYPRE_MemoryLocation, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Const2DFECollection[] = {  {&_swigt__p_mfem__Const2DFECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Const3DFECollection[] = {  {&_swigt__p_mfem__Const3DFECollection, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ConvectionIntegrator[] = {  {&_swigt__p_mfem__ConvectionIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__CrouzeixRaviartFECollection[] = {  {&_swigt__p_mfem__CrouzeixRaviartFECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__CubicDiscont2DFECollection[] = {  {&_swigt__p_mfem__CubicDiscont2DFECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__CubicFECollection[] = {  {&_swigt__p_mfem__CubicFECollection, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__DGTraceIntegrator[] = {  {&_swigt__p_mfem__DGTraceIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DG_Interface_FECollection[] = {  {&_swigt__p_mfem__DG_Interface_FECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__P0HexFiniteElement[] = {{&_swigt__p_mfem__P0HexFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LagrangeHexFiniteElement[] = {{&_swigt__p_mfem__LagrangeHexFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
@@ -15569,7 +16300,10 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_MPI_Comm,
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_RefCoord,
+  _swigc__p__HYPRE_ExecutionPolicy,
+  _swigc__p__HYPRE_MemoryLocation,
   _swigc__p_char,
+  _swigc__p_double,
   _swigc__p_hex_t,
   _swigc__p_int,
   _swigc__p_mfem__ArrayT_int_t,
@@ -15582,6 +16316,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__BiQuadratic3DFiniteElement,
   _swigc__p_mfem__Const2DFECollection,
   _swigc__p_mfem__Const3DFECollection,
+  _swigc__p_mfem__ConvectionIntegrator,
   _swigc__p_mfem__CrouzeixRaviartFECollection,
   _swigc__p_mfem__CrouzeixRaviartFiniteElement,
   _swigc__p_mfem__CrouzeixRaviartQuadFiniteElement,
@@ -15590,6 +16325,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__Cubic3DFiniteElement,
   _swigc__p_mfem__CubicDiscont2DFECollection,
   _swigc__p_mfem__CubicFECollection,
+  _swigc__p_mfem__DGTraceIntegrator,
   _swigc__p_mfem__DG_Interface_FECollection,
   _swigc__p_mfem__FiniteElement,
   _swigc__p_mfem__FiniteElementCollection,

@@ -1,12 +1,7 @@
+%include  "HYPRE_utilities.h"
 %inline %{
-/*--------------------------------------------------------------------------
- * Big int stuff
- *--------------------------------------------------------------------------*/
-#ifdef HYPRE_BIGINT
-typedef long long int HYPRE_Int;
-#define HYPRE_MPI_INT MPI_LONG_LONG_INT
-#else 
-typedef int HYPRE_Int;
-#define HYPRE_MPI_INT MPI_INT
+#if MFEM_HYPRE_VERSION < 21600 
+typedef HYPRE_Int HYPRE_BigInt;
+#define HYPRE_MPI_BIG_INT HYPRE_MPI_INT
 #endif
 %}

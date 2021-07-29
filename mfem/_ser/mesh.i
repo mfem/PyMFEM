@@ -3,6 +3,7 @@
 #include "mesh/mesh_headers.hpp"
 #include "fem/fem.hpp"
 #include "general/array.hpp"
+#include "general/mem_manager.hpp"
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -15,7 +16,8 @@
 // void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
 #include "numpy/arrayobject.h"
 #include "pycoefficient.hpp"
-#include "../common/io_stream.hpp"   
+#include "../common/io_stream.hpp"
+using namespace mfem;
 %}
 
 %begin %{
@@ -30,6 +32,7 @@ import_array();
 %include "std_string.i"
 
 %import "matrix.i"
+%import "mem_manager.i"
 %import "array.i"
 %import "sort_pairs.i"
 %import "ncmesh.i"

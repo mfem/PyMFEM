@@ -102,6 +102,35 @@ class Hashed4(object):
 # Register Hashed4 in _hash:
 _hash.Hashed4_swigregister(Hashed4)
 
+class HashFunction(object):
+    r"""Proxy of C++ mfem::HashFunction class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        r"""__init__(HashFunction self) -> HashFunction"""
+        _hash.HashFunction_swiginit(self, _hash.new_HashFunction())
+    __swig_destroy__ = _hash.delete_HashFunction
+
+    def AppendBytes(self, seq, num_bytes):
+        r"""AppendBytes(HashFunction self, void const * seq, size_t num_bytes) -> HashFunction"""
+        return _hash.HashFunction_AppendBytes(self, seq, num_bytes)
+    AppendBytes = _swig_new_instance_method(_hash.HashFunction_AppendBytes)
+
+    def AppendDoubles(self, doubles, num_doubles):
+        r"""AppendDoubles(HashFunction self, double const * doubles, size_t num_doubles) -> HashFunction"""
+        return _hash.HashFunction_AppendDoubles(self, doubles, num_doubles)
+    AppendDoubles = _swig_new_instance_method(_hash.HashFunction_AppendDoubles)
+
+    def GetHash(self):
+        r"""GetHash(HashFunction self) -> std::string"""
+        return _hash.HashFunction_GetHash(self)
+    GetHash = _swig_new_instance_method(_hash.HashFunction_GetHash)
+
+# Register HashFunction in _hash:
+_hash.HashFunction_swigregister(HashFunction)
+
 
 def sort3(a, b, c):
     r"""sort3(int & a, int & b, int & c)"""

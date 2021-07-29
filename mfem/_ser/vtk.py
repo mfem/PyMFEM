@@ -78,6 +78,110 @@ import mfem._ser.geom
 import mfem._ser.intrules
 import mfem._ser.table
 import mfem._ser.hash
+class VTKGeometry(object):
+    r"""Proxy of C++ mfem::VTKGeometry class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    POINT = _vtk.VTKGeometry_POINT
+    
+    SEGMENT = _vtk.VTKGeometry_SEGMENT
+    
+    TRIANGLE = _vtk.VTKGeometry_TRIANGLE
+    
+    SQUARE = _vtk.VTKGeometry_SQUARE
+    
+    TETRAHEDRON = _vtk.VTKGeometry_TETRAHEDRON
+    
+    CUBE = _vtk.VTKGeometry_CUBE
+    
+    PRISM = _vtk.VTKGeometry_PRISM
+    
+    QUADRATIC_SEGMENT = _vtk.VTKGeometry_QUADRATIC_SEGMENT
+    
+    QUADRATIC_TRIANGLE = _vtk.VTKGeometry_QUADRATIC_TRIANGLE
+    
+    BIQUADRATIC_SQUARE = _vtk.VTKGeometry_BIQUADRATIC_SQUARE
+    
+    QUADRATIC_TETRAHEDRON = _vtk.VTKGeometry_QUADRATIC_TETRAHEDRON
+    
+    TRIQUADRATIC_CUBE = _vtk.VTKGeometry_TRIQUADRATIC_CUBE
+    
+    QUADRATIC_PRISM = _vtk.VTKGeometry_QUADRATIC_PRISM
+    
+    BIQUADRATIC_QUADRATIC_PRISM = _vtk.VTKGeometry_BIQUADRATIC_QUADRATIC_PRISM
+    
+    LAGRANGE_SEGMENT = _vtk.VTKGeometry_LAGRANGE_SEGMENT
+    
+    LAGRANGE_TRIANGLE = _vtk.VTKGeometry_LAGRANGE_TRIANGLE
+    
+    LAGRANGE_SQUARE = _vtk.VTKGeometry_LAGRANGE_SQUARE
+    
+    LAGRANGE_TETRAHEDRON = _vtk.VTKGeometry_LAGRANGE_TETRAHEDRON
+    
+    LAGRANGE_CUBE = _vtk.VTKGeometry_LAGRANGE_CUBE
+    
+    LAGRANGE_PRISM = _vtk.VTKGeometry_LAGRANGE_PRISM
+    
+    VertexPermutation = property(_vtk.VTKGeometry_VertexPermutation_get, _vtk.VTKGeometry_VertexPermutation_set, doc=r"""VertexPermutation : a(mfem::Geometry::NUM_GEOMETRIES).p.q(const).int""")
+
+    @staticmethod
+    def GetMFEMGeometry(vtk_geom):
+        r"""GetMFEMGeometry(int vtk_geom) -> mfem::Geometry::Type"""
+        return _vtk.VTKGeometry_GetMFEMGeometry(vtk_geom)
+    GetMFEMGeometry = _swig_new_static_method(_vtk.VTKGeometry_GetMFEMGeometry)
+
+    @staticmethod
+    def IsLagrange(vtk_geom):
+        r"""IsLagrange(int vtk_geom) -> bool"""
+        return _vtk.VTKGeometry_IsLagrange(vtk_geom)
+    IsLagrange = _swig_new_static_method(_vtk.VTKGeometry_IsLagrange)
+
+    @staticmethod
+    def IsQuadratic(vtk_geom):
+        r"""IsQuadratic(int vtk_geom) -> bool"""
+        return _vtk.VTKGeometry_IsQuadratic(vtk_geom)
+    IsQuadratic = _swig_new_static_method(_vtk.VTKGeometry_IsQuadratic)
+
+    @staticmethod
+    def GetOrder(vtk_geom, npoints):
+        r"""GetOrder(int vtk_geom, int npoints) -> int"""
+        return _vtk.VTKGeometry_GetOrder(vtk_geom, npoints)
+    GetOrder = _swig_new_static_method(_vtk.VTKGeometry_GetOrder)
+
+    def __init__(self):
+        r"""__init__(VTKGeometry self) -> VTKGeometry"""
+        _vtk.VTKGeometry_swiginit(self, _vtk.new_VTKGeometry())
+    __swig_destroy__ = _vtk.delete_VTKGeometry
+
+# Register VTKGeometry in _vtk:
+_vtk.VTKGeometry_swigregister(VTKGeometry)
+cvar = _vtk.cvar
+VTKGeometry.PrismMap = _vtk.cvar.VTKGeometry_PrismMap
+VTKGeometry.Map = _vtk.cvar.VTKGeometry_Map
+VTKGeometry.QuadraticMap = _vtk.cvar.VTKGeometry_QuadraticMap
+VTKGeometry.HighOrderMap = _vtk.cvar.VTKGeometry_HighOrderMap
+
+def VTKGeometry_GetMFEMGeometry(vtk_geom):
+    r"""VTKGeometry_GetMFEMGeometry(int vtk_geom) -> mfem::Geometry::Type"""
+    return _vtk.VTKGeometry_GetMFEMGeometry(vtk_geom)
+VTKGeometry_GetMFEMGeometry = _vtk.VTKGeometry_GetMFEMGeometry
+
+def VTKGeometry_IsLagrange(vtk_geom):
+    r"""VTKGeometry_IsLagrange(int vtk_geom) -> bool"""
+    return _vtk.VTKGeometry_IsLagrange(vtk_geom)
+VTKGeometry_IsLagrange = _vtk.VTKGeometry_IsLagrange
+
+def VTKGeometry_IsQuadratic(vtk_geom):
+    r"""VTKGeometry_IsQuadratic(int vtk_geom) -> bool"""
+    return _vtk.VTKGeometry_IsQuadratic(vtk_geom)
+VTKGeometry_IsQuadratic = _vtk.VTKGeometry_IsQuadratic
+
+def VTKGeometry_GetOrder(vtk_geom, npoints):
+    r"""VTKGeometry_GetOrder(int vtk_geom, int npoints) -> int"""
+    return _vtk.VTKGeometry_GetOrder(vtk_geom, npoints)
+VTKGeometry_GetOrder = _vtk.VTKGeometry_GetOrder
+
 VTKFormat_ASCII = _vtk.VTKFormat_ASCII
 
 VTKFormat_BINARY = _vtk.VTKFormat_BINARY
