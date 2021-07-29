@@ -82,6 +82,9 @@ if add_strumpack:
 if add_cuda:
     include_dirs.append(cudainc)
 
+if add_libceed:
+    include_dirs.append(libceedinc)
+
 import six
 if six.PY3:
     macros = [('TARGET_PY3', '1'),]
@@ -94,7 +97,7 @@ ext_modules = [Extension(proxy_names[modules[0]],
                         extra_link_args = [],
                         include_dirs = include_dirs,
                         library_dirs = library_dirs,
-                        runtime_library_dirs = library_dirs,  
+                        runtime_library_dirs = library_dirs,
                          libraries = libraries,
                          define_macros=macros),]
 
@@ -106,7 +109,7 @@ ext_modules.extend([Extension(proxy_names[name],
                         library_dirs = library_dirs,
                         runtime_library_dirs = library_dirs,
                         libraries = libraries,
-                        define_macros=macros)                 
+                        define_macros=macros)
                for name in modules[1:]])
 
 ### read version number from __init__.py

@@ -36,7 +36,7 @@ except ImportError:
 # from codecs import open
 
 # constants
-repo_releases = {"mfem": "https://github.com/mfem/mfem/archive/v4.2.tar.gz",
+repo_releases = {"mfem": "https://github.com/mfem/mfem/archive/v4.3.tar.gz",
                  "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
                  "hypre": "https://github.com/hypre-space/hypre/archive/v2.20.0.tar.gz",
                  "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.9.0.tar.gz", }
@@ -222,7 +222,6 @@ def make_call(command, target=''):
             target = " ".join(command)
         print("Failed when calling command: " + target)
         raise
-
 
 def chdir(path):
     '''
@@ -565,6 +564,8 @@ def write_setup_local():
         add_extra('strumpack')
     if enable_cuda:
         add_extra('cuda')
+    if enable_libceed:
+        add_extra('libceed')
 
     pwd = chdir(rootdir)
 
