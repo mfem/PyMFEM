@@ -1,10 +1,10 @@
-name: 4.3-test
+name: 4.4-test
 
 on:
   push:
-    branches: [ mfem-4.3-dev ]
+    branches: [ mfem-4.4-dev ]
   pull_request:
-    branches: [ mfem-4.3-dev ]
+    branches: [ mfem-4.4-dev ]
     types: [synchronize]
 
 jobs:
@@ -76,17 +76,17 @@ jobs:
         echo $PYTHONPATH
         echo $SANDBOX
         if [ "${USE_CUDA_PARALLEL}" = "00" ]; then  
-           python setup.py install --prefix=$SANDBOX --mfem-branch="mfem-4.3-dev"
+           python setup.py install --prefix=$SANDBOX --mfem-branch="mfem-4.4-dev"
         fi
         if [ "${USE_CUDA_PARALLEL}" = "01" ]; then
-           python setup.py install --with-parallel --prefix=$SANDBOX --mfem-branch="mfem-4.3-dev"
+           python setup.py install --with-parallel --prefix=$SANDBOX --mfem-branch="mfem-4.4-dev"
         fi
         if [ "${USE_CUDA_PARALLEL}" = "10" ]; then
            ls -l /usr/local/cuda-${CUDA}/include
-           python setup.py install --with-cuda --prefix=$SANDBOX --mfem-branch="mfem-4.3-dev"
+           python setup.py install --with-cuda --prefix=$SANDBOX --mfem-branch="mfem-4.4-dev"
         fi
         if [ "${USE_CUDA_PARALLEL}" = "11" ]; then
-           python setup.py install --with-cuda --with-parallel --prefix=$SANDBOX --mfem-branch="mfem-4.3-dev"
+           python setup.py install --with-cuda --with-parallel --prefix=$SANDBOX --mfem-branch="mfem-4.4-dev"
         fi
 
     - name: EX1_RUN      
