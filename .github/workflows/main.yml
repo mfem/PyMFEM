@@ -57,11 +57,11 @@ jobs:
         fi
         python -c "import numpy;print(numpy.__file__)"	
 
-        if [ "${USE_CUDA_PARALLEL}" = "11" ] || [ "${USE_CUDA_PARALLEL}" = "10" ]; then
+        if [ "${USE_CUDA_PARALLEL:0:1}" = "1" ] ; then
             echo $cuda
             source ./ci_scripts/add_cuda_11_1.sh;
         fi
-        if [ "${USE_CUDA_PARALLEL}" = "01" ] || [ "${USE_CUDA_PARALLEL}" = "11" ]; then
+        if [ "${USE_CUDA_PARALLEL:1:1}" = "1" ] ; then
             sudo apt-get install mpich;
             sudo apt-get install libmpich-dev;
             pip install mpi4py --no-cache-dir --prefix=~/sandbox;
