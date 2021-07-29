@@ -25,7 +25,6 @@ jobs:
            - os: macos-latest
              python-version: 3.9
              env: {USE_CUDA_PARALLEL: "000"}
-        include:
            - os: [ubuntu-20.04]
              python-version: 3.9
              env: {USE_CUDA_PARALLEL: "001"}
