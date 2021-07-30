@@ -211,7 +211,7 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
     GetFE = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetFE)
 
     def GetFaceRestriction(self, *args, **kwargs):
-        r"""GetFaceRestriction(ParFiniteElementSpace self, mfem::ElementDofOrdering e_ordering, mfem::FaceType type, mfem::L2FaceValues mul=DoubleValued) -> Operator"""
+        r"""GetFaceRestriction(ParFiniteElementSpace self, mfem::ElementDofOrdering e_ordering, mfem::FaceType type, mfem::L2FaceValues mul=DoubleValued) -> FaceRestriction"""
         return _pfespace.ParFiniteElementSpace_GetFaceRestriction(self, *args, **kwargs)
     GetFaceRestriction = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetFaceRestriction)
 

@@ -3509,6 +3509,32 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
 }
 
 
+#include <limits.h>
+#if !defined(SWIG_NO_LLONG_MAX)
+# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
+#   define LLONG_MAX __LONG_LONG_MAX__
+#   define LLONG_MIN (-LLONG_MAX - 1LL)
+#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
+# endif
+#endif
+
+
+SWIGINTERN int
+SWIG_AsVal_int (PyObject * obj, int *val)
+{
+  long v;
+  int res = SWIG_AsVal_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v < INT_MIN || v > INT_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = static_cast< int >(v);
+    }
+  }  
+  return res;
+}
+
+
   #define SWIG_From_double   PyFloat_FromDouble 
 
 
@@ -3533,6 +3559,32 @@ SwigDirector_NonlinearFormIntegrator::SwigDirector_NonlinearFormIntegrator(PyObj
 
 
 
+void SwigDirector_NonlinearFormIntegrator::SetIntRule(mfem::IntegrationRule const *ir) {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(ir), SWIGTYPE_p_mfem__IntegrationRule,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 0;
+  const char *const swig_method_name = "SetIntRule";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("SetIntRule");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
 void SwigDirector_NonlinearFormIntegrator::AssembleElementVector(mfem::FiniteElement const &el, mfem::ElementTransformation &Tr, mfem::Vector const &elfun, mfem::Vector &elvect) {
   swig::SwigVar_PyObject obj0;
   obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&el), SWIGTYPE_p_mfem__FiniteElement,  0 );
@@ -3546,7 +3598,7 @@ void SwigDirector_NonlinearFormIntegrator::AssembleElementVector(mfem::FiniteEle
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 0;
+  const size_t swig_method_index = 1;
   const char *const swig_method_name = "AssembleElementVector";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3, NULL);
@@ -3580,7 +3632,7 @@ void SwigDirector_NonlinearFormIntegrator::AssembleFaceVector(mfem::FiniteElemen
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 1;
+  const size_t swig_method_index = 2;
   const char *const swig_method_name = "AssembleFaceVector";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3,(PyObject *)obj4, NULL);
@@ -3612,7 +3664,7 @@ void SwigDirector_NonlinearFormIntegrator::AssembleElementGrad(mfem::FiniteEleme
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char *const swig_method_name = "AssembleElementGrad";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3, NULL);
@@ -3646,7 +3698,7 @@ void SwigDirector_NonlinearFormIntegrator::AssembleFaceGrad(mfem::FiniteElement 
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char *const swig_method_name = "AssembleFaceGrad";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3,(PyObject *)obj4, NULL);
@@ -3678,7 +3730,7 @@ double SwigDirector_NonlinearFormIntegrator::GetElementEnergy(mfem::FiniteElemen
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char *const swig_method_name = "GetElementEnergy";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
@@ -3711,7 +3763,7 @@ void SwigDirector_NonlinearFormIntegrator::AssemblePA(mfem::FiniteElementSpace c
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char *const swig_method_name = "AssemblePA";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
@@ -3739,7 +3791,7 @@ void SwigDirector_NonlinearFormIntegrator::AssemblePA(mfem::FiniteElementSpace c
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char *const swig_method_name = "AssemblePA";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
@@ -3767,7 +3819,7 @@ void SwigDirector_NonlinearFormIntegrator::AssembleGradPA(mfem::Vector const &x,
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char *const swig_method_name = "AssembleGradPA";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
@@ -3795,7 +3847,7 @@ double SwigDirector_NonlinearFormIntegrator::GetLocalStateEnergyPA(mfem::Vector 
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char *const swig_method_name = "GetLocalStateEnergyPA";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
@@ -3830,7 +3882,7 @@ void SwigDirector_NonlinearFormIntegrator::AddMultPA(mfem::Vector const &x, mfem
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char *const swig_method_name = "AddMultPA";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
@@ -3858,7 +3910,7 @@ void SwigDirector_NonlinearFormIntegrator::AddMultGradPA(mfem::Vector const &x, 
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char *const swig_method_name = "AddMultGradPA";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
@@ -3884,7 +3936,7 @@ void SwigDirector_NonlinearFormIntegrator::AssembleGradDiagonalPA(mfem::Vector &
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char *const swig_method_name = "AssembleGradDiagonalPA";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
@@ -3910,7 +3962,7 @@ bool SwigDirector_NonlinearFormIntegrator::SupportsCeed() const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char *const swig_method_name = "SupportsCeed";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject args = PyTuple_New(0);
@@ -3944,7 +3996,7 @@ void SwigDirector_NonlinearFormIntegrator::AssembleMF(mfem::FiniteElementSpace c
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char *const swig_method_name = "AssembleMF";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
@@ -3972,7 +4024,7 @@ void SwigDirector_NonlinearFormIntegrator::AddMultMF(mfem::Vector const &x, mfem
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char *const swig_method_name = "AddMultMF";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
@@ -4053,6 +4105,8 @@ SWIGINTERN PyObject *_wrap_NonlinearFormIntegrator_SetIntRule(PyObject *SWIGUNUS
   char * kwnames[] = {
     (char *)"self",  (char *)"ir",  NULL 
   };
+  Swig::Director *director = 0;
+  bool upcall = false;
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:NonlinearFormIntegrator_SetIntRule", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NonlinearFormIntegrator, 0 |  0 );
@@ -4065,13 +4119,23 @@ SWIGINTERN PyObject *_wrap_NonlinearFormIntegrator_SetIntRule(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NonlinearFormIntegrator_SetIntRule" "', argument " "2"" of type '" "mfem::IntegrationRule const *""'"); 
   }
   arg2 = reinterpret_cast< mfem::IntegrationRule * >(argp2);
-  {
-    try {
-      (arg1)->SetIntRule((mfem::IntegrationRule const *)arg2); 
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          (arg1)->mfem::NonlinearFormIntegrator::SetIntRule((mfem::IntegrationRule const *)arg2);
+        } else {
+          (arg1)->SetIntRule((mfem::IntegrationRule const *)arg2);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4091,7 +4155,7 @@ SWIGINTERN PyObject *_wrap_NonlinearFormIntegrator_SetIntegrationRule(PyObject *
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"irule",  NULL 
+    (char *)"self",  (char *)"ir",  NULL 
   };
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:NonlinearFormIntegrator_SetIntegrationRule", kwnames, &obj0, &obj1)) SWIG_fail;
@@ -4111,6 +4175,46 @@ SWIGINTERN PyObject *_wrap_NonlinearFormIntegrator_SetIntegrationRule(PyObject *
   {
     try {
       (arg1)->SetIntegrationRule((mfem::IntegrationRule const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NonlinearFormIntegrator_SetPAMemoryType(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::NonlinearFormIntegrator *arg1 = (mfem::NonlinearFormIntegrator *) 0 ;
+  mfem::MemoryType arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"mt",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:NonlinearFormIntegrator_SetPAMemoryType", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NonlinearFormIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NonlinearFormIntegrator_SetPAMemoryType" "', argument " "1"" of type '" "mfem::NonlinearFormIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NonlinearFormIntegrator * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "NonlinearFormIntegrator_SetPAMemoryType" "', argument " "2"" of type '" "mfem::MemoryType""'");
+  } 
+  arg2 = static_cast< mfem::MemoryType >(val2);
+  {
+    try {
+      (arg1)->SetPAMemoryType(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -8359,7 +8463,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_NonlinearFormIntegrator", (PyCFunction)(void(*)(void))_wrap_new_NonlinearFormIntegrator, METH_VARARGS|METH_KEYWORDS, "new_NonlinearFormIntegrator(PyObject * _self, IntegrationRule ir=None) -> NonlinearFormIntegrator"},
 	 { "NonlinearFormIntegrator_SetIntRule", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_SetIntRule, METH_VARARGS|METH_KEYWORDS, "NonlinearFormIntegrator_SetIntRule(NonlinearFormIntegrator self, IntegrationRule ir)"},
-	 { "NonlinearFormIntegrator_SetIntegrationRule", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_SetIntegrationRule, METH_VARARGS|METH_KEYWORDS, "NonlinearFormIntegrator_SetIntegrationRule(NonlinearFormIntegrator self, IntegrationRule irule)"},
+	 { "NonlinearFormIntegrator_SetIntegrationRule", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_SetIntegrationRule, METH_VARARGS|METH_KEYWORDS, "NonlinearFormIntegrator_SetIntegrationRule(NonlinearFormIntegrator self, IntegrationRule ir)"},
+	 { "NonlinearFormIntegrator_SetPAMemoryType", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_SetPAMemoryType, METH_VARARGS|METH_KEYWORDS, "NonlinearFormIntegrator_SetPAMemoryType(NonlinearFormIntegrator self, mfem::MemoryType mt)"},
 	 { "NonlinearFormIntegrator_GetIntegrationRule", _wrap_NonlinearFormIntegrator_GetIntegrationRule, METH_O, "NonlinearFormIntegrator_GetIntegrationRule(NonlinearFormIntegrator self) -> IntegrationRule"},
 	 { "NonlinearFormIntegrator_AssembleElementVector", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_AssembleElementVector, METH_VARARGS|METH_KEYWORDS, "NonlinearFormIntegrator_AssembleElementVector(NonlinearFormIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elfun, Vector elvect)"},
 	 { "NonlinearFormIntegrator_AssembleFaceVector", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_AssembleFaceVector, METH_VARARGS|METH_KEYWORDS, "NonlinearFormIntegrator_AssembleFaceVector(NonlinearFormIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elfun, Vector elvect)"},
@@ -8471,7 +8576,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_NonlinearFormIntegrator", (PyCFunction)(void(*)(void))_wrap_new_NonlinearFormIntegrator, METH_VARARGS|METH_KEYWORDS, "new_NonlinearFormIntegrator(PyObject * _self, IntegrationRule ir=None) -> NonlinearFormIntegrator"},
 	 { "NonlinearFormIntegrator_SetIntRule", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_SetIntRule, METH_VARARGS|METH_KEYWORDS, "SetIntRule(NonlinearFormIntegrator self, IntegrationRule ir)"},
-	 { "NonlinearFormIntegrator_SetIntegrationRule", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_SetIntegrationRule, METH_VARARGS|METH_KEYWORDS, "SetIntegrationRule(NonlinearFormIntegrator self, IntegrationRule irule)"},
+	 { "NonlinearFormIntegrator_SetIntegrationRule", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_SetIntegrationRule, METH_VARARGS|METH_KEYWORDS, "SetIntegrationRule(NonlinearFormIntegrator self, IntegrationRule ir)"},
+	 { "NonlinearFormIntegrator_SetPAMemoryType", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_SetPAMemoryType, METH_VARARGS|METH_KEYWORDS, "SetPAMemoryType(NonlinearFormIntegrator self, mfem::MemoryType mt)"},
 	 { "NonlinearFormIntegrator_GetIntegrationRule", _wrap_NonlinearFormIntegrator_GetIntegrationRule, METH_O, "GetIntegrationRule(NonlinearFormIntegrator self) -> IntegrationRule"},
 	 { "NonlinearFormIntegrator_AssembleElementVector", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_AssembleElementVector, METH_VARARGS|METH_KEYWORDS, "AssembleElementVector(NonlinearFormIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elfun, Vector elvect)"},
 	 { "NonlinearFormIntegrator_AssembleFaceVector", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_AssembleFaceVector, METH_VARARGS|METH_KEYWORDS, "AssembleFaceVector(NonlinearFormIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elfun, Vector elvect)"},
@@ -8945,7 +9051,7 @@ static void *_p_mfem__ND_TriangleElementTo_p_mfem__FiniteElement(void *x, int *S
     return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_TriangleElement *) x));
 }
 static void *_p_mfem__ND_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_SegmentElement *) x));
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *)(mfem::VectorTensorFiniteElement *) ((mfem::ND_SegmentElement *) x));
 }
 static void *_p_mfem__NURBSFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *) ((mfem::NURBSFiniteElement *) x));

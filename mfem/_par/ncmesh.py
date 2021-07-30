@@ -142,9 +142,12 @@ class CoarseFineTransformations(object):
     point_matrices = property(_ncmesh.CoarseFineTransformations_point_matrices_get, _ncmesh.CoarseFineTransformations_point_matrices_set, doc=r"""point_matrices : a(mfem::Geometry::NumGeom).mfem::DenseTensor""")
     embeddings = property(_ncmesh.CoarseFineTransformations_embeddings_get, doc=r"""embeddings : mfem::Array<(mfem::Embedding)>""")
 
-    def GetCoarseToFineMap(self, fine_mesh, coarse_to_fine, coarse_to_ref_type, ref_type_to_matrix, ref_type_to_geom):
-        r"""GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine, intArray coarse_to_ref_type, Table ref_type_to_matrix, GeometryTypeArray ref_type_to_geom)"""
-        return _ncmesh.CoarseFineTransformations_GetCoarseToFineMap(self, fine_mesh, coarse_to_fine, coarse_to_ref_type, ref_type_to_matrix, ref_type_to_geom)
+    def GetCoarseToFineMap(self, *args):
+        r"""
+        GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine, intArray coarse_to_ref_type, Table ref_type_to_matrix, GeometryTypeArray ref_type_to_geom, bool get_coarse_to_fine_only=False)
+        GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine)
+        """
+        return _ncmesh.CoarseFineTransformations_GetCoarseToFineMap(self, *args)
     GetCoarseToFineMap = _swig_new_instance_method(_ncmesh.CoarseFineTransformations_GetCoarseToFineMap)
 
     def Clear(self):

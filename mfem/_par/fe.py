@@ -2434,9 +2434,12 @@ class VectorTensorFiniteElement(VectorFiniteElement, TensorBasisElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, dims, d, p, cbtype, obtype, M, dmtype):
-        r"""__init__(VectorTensorFiniteElement self, int const dims, int const d, int const p, int const cbtype, int const obtype, int const M, mfem::TensorBasisElement::DofMapType const dmtype) -> VectorTensorFiniteElement"""
-        _fe.VectorTensorFiniteElement_swiginit(self, _fe.new_VectorTensorFiniteElement(dims, d, p, cbtype, obtype, M, dmtype))
+    def __init__(self, *args):
+        r"""
+        __init__(VectorTensorFiniteElement self, int const dims, int const d, int const p, int const cbtype, int const obtype, int const M, mfem::TensorBasisElement::DofMapType const dmtype) -> VectorTensorFiniteElement
+        __init__(VectorTensorFiniteElement self, int const dims, int const d, int const p, int const obtype, int const M, mfem::TensorBasisElement::DofMapType const dmtype) -> VectorTensorFiniteElement
+        """
+        _fe.VectorTensorFiniteElement_swiginit(self, _fe.new_VectorTensorFiniteElement(*args))
 
     def GetDofToQuad(self, ir, mode):
         r"""GetDofToQuad(VectorTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"""
@@ -3818,7 +3821,7 @@ class ND_TriangleElement(VectorFiniteElement):
 # Register ND_TriangleElement in _fe:
 _fe.ND_TriangleElement_swigregister(ND_TriangleElement)
 
-class ND_SegmentElement(VectorFiniteElement):
+class ND_SegmentElement(VectorTensorFiniteElement):
     r"""Proxy of C++ mfem::ND_SegmentElement class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")

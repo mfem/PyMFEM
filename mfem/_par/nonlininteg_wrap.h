@@ -19,6 +19,7 @@ class SwigDirector_NonlinearFormIntegrator : public mfem::NonlinearFormIntegrato
 
 public:
     SwigDirector_NonlinearFormIntegrator(PyObject *self, mfem::IntegrationRule const *ir = NULL);
+    virtual void SetIntRule(mfem::IntegrationRule const *ir);
     virtual void AssembleElementVector(mfem::FiniteElement const &el, mfem::ElementTransformation &Tr, mfem::Vector const &elfun, mfem::Vector &elvect);
     virtual void AssembleFaceVector(mfem::FiniteElement const &el1, mfem::FiniteElement const &el2, mfem::FaceElementTransformations &Tr, mfem::Vector const &elfun, mfem::Vector &elvect);
     virtual void AssembleElementGrad(mfem::FiniteElement const &el, mfem::ElementTransformation &Tr, mfem::Vector const &elfun, mfem::DenseMatrix &elmat);
@@ -65,7 +66,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[15];
+    mutable swig::SwigVar_PyObject vtable[16];
 #endif
 
 };

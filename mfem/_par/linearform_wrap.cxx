@@ -4138,6 +4138,36 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_LinearForm_GetIFLFI(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::LinearForm *arg1 = (mfem::LinearForm *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Array< mfem::LinearFormIntegrator * > *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__LinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearForm_GetIFLFI" "', argument " "1"" of type '" "mfem::LinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::LinearForm * >(argp1);
+  {
+    try {
+      result = (mfem::Array< mfem::LinearFormIntegrator * > *)(arg1)->GetIFLFI(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__LinearFormIntegrator_p_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_LinearForm_GetFLFI_Marker(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::LinearForm *arg1 = (mfem::LinearForm *) 0 ;
@@ -4587,6 +4617,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "LinearForm_GetDLFI_Delta", _wrap_LinearForm_GetDLFI_Delta, METH_O, "LinearForm_GetDLFI_Delta(LinearForm self) -> mfem::Array< mfem::DeltaLFIntegrator * > *"},
 	 { "LinearForm_GetBLFI", _wrap_LinearForm_GetBLFI, METH_O, "LinearForm_GetBLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"},
 	 { "LinearForm_GetFLFI", _wrap_LinearForm_GetFLFI, METH_O, "LinearForm_GetFLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"},
+	 { "LinearForm_GetIFLFI", _wrap_LinearForm_GetIFLFI, METH_O, "LinearForm_GetIFLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"},
 	 { "LinearForm_GetFLFI_Marker", _wrap_LinearForm_GetFLFI_Marker, METH_O, "LinearForm_GetFLFI_Marker(LinearForm self) -> mfem::Array< mfem::Array< int > * > *"},
 	 { "LinearForm_Assemble", _wrap_LinearForm_Assemble, METH_O, "LinearForm_Assemble(LinearForm self)"},
 	 { "LinearForm_AssembleDelta", _wrap_LinearForm_AssembleDelta, METH_O, "LinearForm_AssembleDelta(LinearForm self)"},
@@ -4634,6 +4665,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "LinearForm_GetDLFI_Delta", _wrap_LinearForm_GetDLFI_Delta, METH_O, "GetDLFI_Delta(LinearForm self) -> mfem::Array< mfem::DeltaLFIntegrator * > *"},
 	 { "LinearForm_GetBLFI", _wrap_LinearForm_GetBLFI, METH_O, "GetBLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"},
 	 { "LinearForm_GetFLFI", _wrap_LinearForm_GetFLFI, METH_O, "GetFLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"},
+	 { "LinearForm_GetIFLFI", _wrap_LinearForm_GetIFLFI, METH_O, "GetIFLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"},
 	 { "LinearForm_GetFLFI_Marker", _wrap_LinearForm_GetFLFI_Marker, METH_O, "GetFLFI_Marker(LinearForm self) -> mfem::Array< mfem::Array< int > * > *"},
 	 { "LinearForm_Assemble", _wrap_LinearForm_Assemble, METH_O, "Assemble(LinearForm self)"},
 	 { "LinearForm_AssembleDelta", _wrap_LinearForm_AssembleDelta, METH_O, "AssembleDelta(LinearForm self)"},

@@ -80,6 +80,7 @@ class BlockVector(mfem._par.vector.Vector):
         __init__(BlockVector self, intArray bOffsets, mfem::MemoryType mt) -> BlockVector
         __init__(BlockVector self, BlockVector block) -> BlockVector
         __init__(BlockVector self, double * data, intArray bOffsets) -> BlockVector
+        __init__(BlockVector self, Vector v, intArray bOffsets) -> BlockVector
         """
         _blockvector.BlockVector_swiginit(self, _blockvector.new_BlockVector(*args))
 
@@ -116,6 +117,16 @@ class BlockVector(mfem._par.vector.Vector):
         """
         return _blockvector.BlockVector_Update(self, *args)
     Update = _swig_new_instance_method(_blockvector.BlockVector_Update)
+
+    def SyncToBlocks(self):
+        r"""SyncToBlocks(BlockVector self)"""
+        return _blockvector.BlockVector_SyncToBlocks(self)
+    SyncToBlocks = _swig_new_instance_method(_blockvector.BlockVector_SyncToBlocks)
+
+    def SyncFromBlocks(self):
+        r"""SyncFromBlocks(BlockVector self)"""
+        return _blockvector.BlockVector_SyncFromBlocks(self)
+    SyncFromBlocks = _swig_new_instance_method(_blockvector.BlockVector_SyncFromBlocks)
 
 # Register BlockVector in _blockvector:
 _blockvector.BlockVector_swigregister(BlockVector)

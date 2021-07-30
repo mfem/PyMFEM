@@ -454,6 +454,11 @@ class ParaViewDataCollection(DataCollection):
         return _datacollection.ParaViewDataCollection_SetHighOrderOutput(self, high_order_output_)
     SetHighOrderOutput = _swig_new_instance_method(_datacollection.ParaViewDataCollection_SetHighOrderOutput)
 
+    def UseRestartMode(self, restart_mode_):
+        r"""UseRestartMode(ParaViewDataCollection self, bool restart_mode_)"""
+        return _datacollection.ParaViewDataCollection_UseRestartMode(self, restart_mode_)
+    UseRestartMode = _swig_new_instance_method(_datacollection.ParaViewDataCollection_UseRestartMode)
+
     def Load(self, cycle_=0):
         r"""Load(ParaViewDataCollection self, int cycle_=0)"""
         return _datacollection.ParaViewDataCollection_Load(self, cycle_)

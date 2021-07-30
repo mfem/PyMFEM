@@ -205,6 +205,11 @@ class LinearForm(mfem._ser.vector.Vector):
         return _linearform.LinearForm_GetFLFI(self)
     GetFLFI = _swig_new_instance_method(_linearform.LinearForm_GetFLFI)
 
+    def GetIFLFI(self):
+        r"""GetIFLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"""
+        return _linearform.LinearForm_GetIFLFI(self)
+    GetIFLFI = _swig_new_instance_method(_linearform.LinearForm_GetIFLFI)
+
     def GetFLFI_Marker(self):
         r"""GetFLFI_Marker(LinearForm self) -> mfem::Array< mfem::Array< int > * > *"""
         return _linearform.LinearForm_GetFLFI_Marker(self)

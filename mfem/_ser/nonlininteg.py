@@ -114,10 +114,15 @@ class NonlinearFormIntegrator(object):
         return _nonlininteg.NonlinearFormIntegrator_SetIntRule(self, ir)
     SetIntRule = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_SetIntRule)
 
-    def SetIntegrationRule(self, irule):
-        r"""SetIntegrationRule(NonlinearFormIntegrator self, IntegrationRule irule)"""
-        return _nonlininteg.NonlinearFormIntegrator_SetIntegrationRule(self, irule)
+    def SetIntegrationRule(self, ir):
+        r"""SetIntegrationRule(NonlinearFormIntegrator self, IntegrationRule ir)"""
+        return _nonlininteg.NonlinearFormIntegrator_SetIntegrationRule(self, ir)
     SetIntegrationRule = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_SetIntegrationRule)
+
+    def SetPAMemoryType(self, mt):
+        r"""SetPAMemoryType(NonlinearFormIntegrator self, mfem::MemoryType mt)"""
+        return _nonlininteg.NonlinearFormIntegrator_SetPAMemoryType(self, mt)
+    SetPAMemoryType = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_SetPAMemoryType)
 
     def GetIntegrationRule(self):
         r"""GetIntegrationRule(NonlinearFormIntegrator self) -> IntegrationRule"""
