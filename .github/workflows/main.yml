@@ -15,7 +15,7 @@ jobs:
         python-version: [3.6, 3.7, 3.8, 3.9]
         #os: [ubuntu-latest]
         os: [ubuntu-20.04]
-	# USE_FLAGS :  cuda, parallel, libceed
+        # USE_FLAGS :  cuda, parallel, libceed
         env:
            - { USE_FLAGS: "000"}
            - { USE_FLAGS: "100"}
