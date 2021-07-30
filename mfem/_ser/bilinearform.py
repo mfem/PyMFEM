@@ -631,7 +631,6 @@ class MixedBilinearForm(mfem._ser.matrix.Matrix):
         r"""AddDomainIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi)"""
 
         if not hasattr(self, "_integrators"): self._integrators = []
-        bfi = args[0]
         self._integrators.append(bfi)
         bfi.thisown=0
 
