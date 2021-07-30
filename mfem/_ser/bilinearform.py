@@ -167,6 +167,7 @@ class BilinearForm(mfem._ser.matrix.Matrix):
 
         if not hasattr(self, "_integrators"): self._integrators = []
         self._integrators.append(constr_integ)
+        # constr_integ is deleted by Hybridization destructor
         constr_integ.thisown = 0
 
 
@@ -293,7 +294,7 @@ class BilinearForm(mfem._ser.matrix.Matrix):
 
         if not hasattr(self, "_spmat"): self._spmat = []
         self._spmat.append(val)
-        val.thisown=0 
+        val.thisown=0
 
 
         return val
@@ -321,7 +322,8 @@ class BilinearForm(mfem._ser.matrix.Matrix):
         if not hasattr(self, "_integrators"): self._integrators = []
         bfi = args[0]
         self._integrators.append(bfi)
-        bfi.thisown=0 
+        self.UseExternalIntegrators()
+        #bfi.thisown=0
 
 
         return _bilinearform.BilinearForm_AddDomainIntegrator(self, *args)
@@ -336,7 +338,8 @@ class BilinearForm(mfem._ser.matrix.Matrix):
         if not hasattr(self, "_integrators"): self._integrators = []
         bfi = args[0]
         self._integrators.append(bfi)
-        bfi.thisown=0 
+        self.UseExternalIntegrators()
+        #bfi.thisown=0 
 
 
         return _bilinearform.BilinearForm_AddBoundaryIntegrator(self, *args)
@@ -347,7 +350,8 @@ class BilinearForm(mfem._ser.matrix.Matrix):
 
         if not hasattr(self, "_integrators"): self._integrators = []
         self._integrators.append(bfi)
-        bfi.thisown=0 
+        self.UseExternalIntegrators()
+        #bfi.thisown=0
 
 
         return _bilinearform.BilinearForm_AddInteriorFaceIntegrator(self, bfi)
@@ -362,7 +366,8 @@ class BilinearForm(mfem._ser.matrix.Matrix):
         if not hasattr(self, "_integrators"): self._integrators = []
         bfi = args[0]
         self._integrators.append(bfi)
-        bfi.thisown=0 
+        self.UseExternalIntegrators()
+        #bfi.thisown=0
 
 
         return _bilinearform.BilinearForm_AddBdrFaceIntegrator(self, *args)
@@ -611,7 +616,7 @@ class MixedBilinearForm(mfem._ser.matrix.Matrix):
 
         if not hasattr(self, "_spmat"): self._spmat = []
         self._spmat.append(val)
-        val.thisown=0 
+        val.thisown=0
 
 
         return val
@@ -628,7 +633,7 @@ class MixedBilinearForm(mfem._ser.matrix.Matrix):
         if not hasattr(self, "_integrators"): self._integrators = []
         bfi = args[0]
         self._integrators.append(bfi)
-        bfi.thisown=0 
+        bfi.thisown=0
 
 
         return _bilinearform.MixedBilinearForm_AddDomainIntegrator(self, bfi)
@@ -643,7 +648,7 @@ class MixedBilinearForm(mfem._ser.matrix.Matrix):
         if not hasattr(self, "_integrators"): self._integrators = []
         bfi = args[0]
         self._integrators.append(bfi)
-        bfi.thisown=0 
+        bfi.thisown=0
 
 
         return _bilinearform.MixedBilinearForm_AddBoundaryIntegrator(self, *args)
@@ -654,7 +659,7 @@ class MixedBilinearForm(mfem._ser.matrix.Matrix):
 
         if not hasattr(self, "_integrators"): self._integrators = []
         self._integrators.append(bfi)
-        bfi.thisown=0 
+        bfi.thisown=0
 
 
         return _bilinearform.MixedBilinearForm_AddTraceFaceIntegrator(self, bfi)
@@ -669,7 +674,8 @@ class MixedBilinearForm(mfem._ser.matrix.Matrix):
         if not hasattr(self, "_integrators"): self._integrators = []
         bfi = args[0]
         self._integrators.append(bfi)
-        bfi.thisown=0 
+        self.UseExternalIntegrators()
+        #bfi.thisown=0 
 
 
         return _bilinearform.MixedBilinearForm_AddBdrTraceFaceIntegrator(self, *args)
@@ -836,7 +842,7 @@ class DiscreteLinearOperator(MixedBilinearForm):
 
         if not hasattr(self, "_integrators"): self._integrators = []
         self._integrators.append(di)
-        di.thisown=0 
+        di.thisown=0
 
 
         return _bilinearform.DiscreteLinearOperator_AddDomainInterpolator(self, di)
@@ -847,7 +853,7 @@ class DiscreteLinearOperator(MixedBilinearForm):
 
         if not hasattr(self, "_integrators"): self._integrators = []
         self._integrators.append(di)
-        di.thisown=0 
+        di.thisown=0
 
 
         return _bilinearform.DiscreteLinearOperator_AddTraceFaceInterpolator(self, di)

@@ -36,72 +36,76 @@ namespace mfem {
     if not hasattr(self, "_integrators"): self._integrators = []
     bfi = args[0]	     
     self._integrators.append(bfi)
-    bfi.thisown=0 
+    self.UseExternalIntegrators()
+    #bfi.thisown=0
    %}
 %pythonprepend BilinearForm::AddBoundaryIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     bfi = args[0]	     	     
     self._integrators.append(bfi)
-    bfi.thisown=0 
+    self.UseExternalIntegrators()
+    #bfi.thisown=0
    %} 
 %pythonprepend BilinearForm::AddBdrFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     bfi = args[0]
     self._integrators.append(bfi)
-    bfi.thisown=0 
+    self.UseExternalIntegrators()
+    bfi.thisown=0
    %} 
 %pythonprepend BilinearForm::AddInteriorFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(bfi)
-    bfi.thisown=0 
+    self.UseExternalIntegrators()
+    #bfi.thisown=0
    %}
 %pythonappend BilinearForm::SpMat %{
     if not hasattr(self, "_spmat"): self._spmat = []
     self._spmat.append(val)
-    val.thisown=0 
+    #val.thisown=0
    %}
 %pythonappend BilinearForm::EnableHybridization %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(constr_integ)
+    # this will be deleted by Hybridization destructor   
     constr_integ.thisown = 0
    %} 
 %pythonprepend MixedBilinearForm::AddDomainIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
-    bfi = args[0]	     
     self._integrators.append(bfi)
-    bfi.thisown=0 
+    bfi.thisown=0
    %}
 %pythonprepend MixedBilinearForm::AddBoundaryIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     bfi = args[0]	     
     self._integrators.append(bfi)
-    bfi.thisown=0 
+    bfi.thisown=0
    %} 
 %pythonprepend MixedBilinearForm::AddTraceFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(bfi)
-    bfi.thisown=0 
+    bfi.thisown=0
    %}
 %pythonprepend MixedBilinearForm::AddBdrTraceFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     bfi = args[0]	     
     self._integrators.append(bfi)
-    bfi.thisown=0 
+    bfi.thisown=0
    %} 
 %pythonappend MixedBilinearForm::SpMat %{
     if not hasattr(self, "_spmat"): self._spmat = []
     self._spmat.append(val)
-    val.thisown=0 
+    val.thisown=0
    %}
 %pythonprepend DiscreteLinearOperator::AddDomainInterpolator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(di)
-    di.thisown=0 
+    di.thisown=0
    %} 
 %pythonprepend DiscreteLinearOperator::AddTraceFaceInterpolator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(di)
-    di.thisown=0 
+    di.thisown=0
    %}
   
 } //end of namespace
