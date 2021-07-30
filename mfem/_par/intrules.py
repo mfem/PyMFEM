@@ -361,6 +361,11 @@ class IntegrationRule(IntegrationPointArray):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
+    def SetPointIndices(self):
+        r"""SetPointIndices(IntegrationRule self)"""
+        return _intrules.IntegrationRule_SetPointIndices(self)
+    SetPointIndices = _swig_new_instance_method(_intrules.IntegrationRule_SetPointIndices)
+
     def __init__(self, *args):
         r"""
         __init__(IntegrationRule self) -> IntegrationRule

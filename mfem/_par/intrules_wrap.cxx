@@ -6960,6 +6960,43 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_IntegrationRule_SetPointIndices(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::IntegrationRule *arg1 = (mfem::IntegrationRule *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegrationRule_SetPointIndices" "', argument " "1"" of type '" "mfem::IntegrationRule *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::IntegrationRule * >(argp1);
+  {
+    try {
+      (arg1)->SetPointIndices();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_IntegrationRule__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::IntegrationRule *arg1 = 0 ;
@@ -8467,6 +8504,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_IntegrationPoint", _wrap_delete_IntegrationPoint, METH_O, "delete_IntegrationPoint(IntegrationPoint self)"},
 	 { "IntegrationPoint_swigregister", IntegrationPoint_swigregister, METH_O, NULL},
 	 { "IntegrationPoint_swiginit", IntegrationPoint_swiginit, METH_VARARGS, NULL},
+	 { "IntegrationRule_SetPointIndices", _wrap_IntegrationRule_SetPointIndices, METH_O, "IntegrationRule_SetPointIndices(IntegrationRule self)"},
 	 { "new_IntegrationRule", _wrap_new_IntegrationRule, METH_VARARGS, "\n"
 		"IntegrationRule()\n"
 		"IntegrationRule(int NP)\n"
@@ -8622,6 +8660,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_IntegrationPoint", _wrap_delete_IntegrationPoint, METH_O, "delete_IntegrationPoint(IntegrationPoint self)"},
 	 { "IntegrationPoint_swigregister", IntegrationPoint_swigregister, METH_O, NULL},
 	 { "IntegrationPoint_swiginit", IntegrationPoint_swiginit, METH_VARARGS, NULL},
+	 { "IntegrationRule_SetPointIndices", _wrap_IntegrationRule_SetPointIndices, METH_O, "SetPointIndices(IntegrationRule self)"},
 	 { "new_IntegrationRule", _wrap_new_IntegrationRule, METH_VARARGS, "\n"
 		"IntegrationRule()\n"
 		"IntegrationRule(int NP)\n"

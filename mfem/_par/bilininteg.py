@@ -261,6 +261,11 @@ class TransposeIntegrator(BilinearFormIntegrator):
 
 
 
+    def SetIntRule(self, ir):
+        r"""SetIntRule(TransposeIntegrator self, IntegrationRule ir)"""
+        return _bilininteg.TransposeIntegrator_SetIntRule(self, ir)
+    SetIntRule = _swig_new_instance_method(_bilininteg.TransposeIntegrator_SetIntRule)
+
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(TransposeIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.TransposeIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
@@ -343,6 +348,11 @@ class LumpedIntegrator(BilinearFormIntegrator):
 
 
 
+    def SetIntRule(self, ir):
+        r"""SetIntRule(LumpedIntegrator self, IntegrationRule ir)"""
+        return _bilininteg.LumpedIntegrator_SetIntRule(self, ir)
+    SetIntRule = _swig_new_instance_method(_bilininteg.LumpedIntegrator_SetIntRule)
+
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(LumpedIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.LumpedIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
@@ -367,6 +377,11 @@ class InverseIntegrator(BilinearFormIntegrator):
 
 
 
+    def SetIntRule(self, ir):
+        r"""SetIntRule(InverseIntegrator self, IntegrationRule ir)"""
+        return _bilininteg.InverseIntegrator_SetIntRule(self, ir)
+    SetIntRule = _swig_new_instance_method(_bilininteg.InverseIntegrator_SetIntRule)
+
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(InverseIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.InverseIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
@@ -390,6 +405,11 @@ class SumIntegrator(BilinearFormIntegrator):
 
 
 
+
+    def SetIntRule(self, ir):
+        r"""SetIntRule(SumIntegrator self, IntegrationRule ir)"""
+        return _bilininteg.SumIntegrator_SetIntRule(self, ir)
+    SetIntRule = _swig_new_instance_method(_bilininteg.SumIntegrator_SetIntRule)
 
     def AddIntegrator(self, integ):
         r"""AddIntegrator(SumIntegrator self, BilinearFormIntegrator integ)"""
