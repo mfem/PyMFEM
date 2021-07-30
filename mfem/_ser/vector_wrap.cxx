@@ -6045,7 +6045,7 @@ SWIGINTERN PyObject *_wrap_Vector_SyncMemory(PyObject *SWIGUNUSEDPARM(self), PyO
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Vector_SyncMemory", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Vector, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vector_SyncMemory" "', argument " "1"" of type '" "mfem::Vector *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vector_SyncMemory" "', argument " "1"" of type '" "mfem::Vector const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Vector * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
@@ -6058,7 +6058,7 @@ SWIGINTERN PyObject *_wrap_Vector_SyncMemory(PyObject *SWIGUNUSEDPARM(self), PyO
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
   {
     try {
-      (arg1)->SyncMemory((mfem::Vector const &)*arg2);
+      ((mfem::Vector const *)arg1)->SyncMemory((mfem::Vector const &)*arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -6096,7 +6096,7 @@ SWIGINTERN PyObject *_wrap_Vector_SyncAliasMemory(PyObject *SWIGUNUSEDPARM(self)
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Vector_SyncAliasMemory", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Vector, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vector_SyncAliasMemory" "', argument " "1"" of type '" "mfem::Vector *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vector_SyncAliasMemory" "', argument " "1"" of type '" "mfem::Vector const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Vector * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
@@ -6109,7 +6109,7 @@ SWIGINTERN PyObject *_wrap_Vector_SyncAliasMemory(PyObject *SWIGUNUSEDPARM(self)
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
   {
     try {
-      (arg1)->SyncAliasMemory((mfem::Vector const &)*arg2);
+      ((mfem::Vector const *)arg1)->SyncAliasMemory((mfem::Vector const &)*arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {

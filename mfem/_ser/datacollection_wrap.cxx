@@ -6810,6 +6810,57 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ParaViewDataCollection_UseRestartMode(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ParaViewDataCollection *arg1 = (mfem::ParaViewDataCollection *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"restart_mode_",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ParaViewDataCollection_UseRestartMode", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParaViewDataCollection, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParaViewDataCollection_UseRestartMode" "', argument " "1"" of type '" "mfem::ParaViewDataCollection *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParaViewDataCollection * >(argp1);
+  ecode2 = SWIG_AsVal_bool(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ParaViewDataCollection_UseRestartMode" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  {
+    try {
+      (arg1)->UseRestartMode(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ParaViewDataCollection_Load(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParaViewDataCollection *arg1 = (mfem::ParaViewDataCollection *) 0 ;
@@ -6989,6 +7040,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "ParaViewDataCollection_SetCompression", (PyCFunction)(void(*)(void))_wrap_ParaViewDataCollection_SetCompression, METH_VARARGS|METH_KEYWORDS, "ParaViewDataCollection_SetCompression(ParaViewDataCollection self, bool compression_)"},
 	 { "ParaViewDataCollection_IsBinaryFormat", _wrap_ParaViewDataCollection_IsBinaryFormat, METH_O, "ParaViewDataCollection_IsBinaryFormat(ParaViewDataCollection self) -> bool"},
 	 { "ParaViewDataCollection_SetHighOrderOutput", (PyCFunction)(void(*)(void))_wrap_ParaViewDataCollection_SetHighOrderOutput, METH_VARARGS|METH_KEYWORDS, "ParaViewDataCollection_SetHighOrderOutput(ParaViewDataCollection self, bool high_order_output_)"},
+	 { "ParaViewDataCollection_UseRestartMode", (PyCFunction)(void(*)(void))_wrap_ParaViewDataCollection_UseRestartMode, METH_VARARGS|METH_KEYWORDS, "ParaViewDataCollection_UseRestartMode(ParaViewDataCollection self, bool restart_mode_)"},
 	 { "ParaViewDataCollection_Load", (PyCFunction)(void(*)(void))_wrap_ParaViewDataCollection_Load, METH_VARARGS|METH_KEYWORDS, "ParaViewDataCollection_Load(ParaViewDataCollection self, int cycle_=0)"},
 	 { "delete_ParaViewDataCollection", _wrap_delete_ParaViewDataCollection, METH_O, "delete_ParaViewDataCollection(ParaViewDataCollection self)"},
 	 { "ParaViewDataCollection_swigregister", ParaViewDataCollection_swigregister, METH_O, NULL},
@@ -7072,6 +7124,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ParaViewDataCollection_SetCompression", (PyCFunction)(void(*)(void))_wrap_ParaViewDataCollection_SetCompression, METH_VARARGS|METH_KEYWORDS, "SetCompression(ParaViewDataCollection self, bool compression_)"},
 	 { "ParaViewDataCollection_IsBinaryFormat", _wrap_ParaViewDataCollection_IsBinaryFormat, METH_O, "IsBinaryFormat(ParaViewDataCollection self) -> bool"},
 	 { "ParaViewDataCollection_SetHighOrderOutput", (PyCFunction)(void(*)(void))_wrap_ParaViewDataCollection_SetHighOrderOutput, METH_VARARGS|METH_KEYWORDS, "SetHighOrderOutput(ParaViewDataCollection self, bool high_order_output_)"},
+	 { "ParaViewDataCollection_UseRestartMode", (PyCFunction)(void(*)(void))_wrap_ParaViewDataCollection_UseRestartMode, METH_VARARGS|METH_KEYWORDS, "UseRestartMode(ParaViewDataCollection self, bool restart_mode_)"},
 	 { "ParaViewDataCollection_Load", (PyCFunction)(void(*)(void))_wrap_ParaViewDataCollection_Load, METH_VARARGS|METH_KEYWORDS, "Load(ParaViewDataCollection self, int cycle_=0)"},
 	 { "delete_ParaViewDataCollection", _wrap_delete_ParaViewDataCollection, METH_O, "delete_ParaViewDataCollection(ParaViewDataCollection self)"},
 	 { "ParaViewDataCollection_swigregister", ParaViewDataCollection_swigregister, METH_O, NULL},

@@ -3583,16 +3583,6 @@ SWIG_From_char  (char c)
 }
 
 
-SWIGINTERNINLINE PyObject*
-  SWIG_From_bool  (bool value)
-{
-  return PyBool_FromLong(value ? 1 : 0);
-}
-
-
-  #define SWIG_From_long   PyInt_FromLong 
-
-
 SWIGINTERN int
 SWIG_AsVal_bool (PyObject *obj, bool *val)
 {
@@ -3605,6 +3595,16 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
   if (val) *val = r ? true : false;
   return SWIG_OK;
 }
+
+
+SWIGINTERNINLINE PyObject*
+  SWIG_From_bool  (bool value)
+{
+  return PyBool_FromLong(value ? 1 : 0);
+}
+
+
+  #define SWIG_From_long   PyInt_FromLong 
 
 
 SWIGINTERN int
@@ -4284,7 +4284,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_CoarseFineTransformations_GetCoarseToFineMap(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_CoarseFineTransformations_GetCoarseToFineMap__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::CoarseFineTransformations *arg1 = (mfem::CoarseFineTransformations *) 0 ;
   mfem::Mesh *arg2 = 0 ;
@@ -4292,6 +4292,7 @@ SWIGINTERN PyObject *_wrap_CoarseFineTransformations_GetCoarseToFineMap(PyObject
   mfem::Array< int > *arg4 = 0 ;
   mfem::Table *arg5 = 0 ;
   mfem::Array< mfem::Geometry::Type > *arg6 = 0 ;
+  bool arg7 = (bool) false ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -4304,23 +4305,16 @@ SWIGINTERN PyObject *_wrap_CoarseFineTransformations_GetCoarseToFineMap(PyObject
   int res5 = 0 ;
   void *argp6 = 0 ;
   int res6 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  PyObject * obj4 = 0 ;
-  PyObject * obj5 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"fine_mesh",  (char *)"coarse_to_fine",  (char *)"coarse_to_ref_type",  (char *)"ref_type_to_matrix",  (char *)"ref_type_to_geom",  NULL 
-  };
+  bool val7 ;
+  int ecode7 = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOO:CoarseFineTransformations_GetCoarseToFineMap", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__CoarseFineTransformations, 0 |  0 );
+  if ((nobjs < 6) || (nobjs > 7)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__CoarseFineTransformations, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CoarseFineTransformations_GetCoarseToFineMap" "', argument " "1"" of type '" "mfem::CoarseFineTransformations const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::CoarseFineTransformations * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Mesh,  0  | 0);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Mesh,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CoarseFineTransformations_GetCoarseToFineMap" "', argument " "2"" of type '" "mfem::Mesh const &""'"); 
   }
@@ -4328,7 +4322,7 @@ SWIGINTERN PyObject *_wrap_CoarseFineTransformations_GetCoarseToFineMap(PyObject
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CoarseFineTransformations_GetCoarseToFineMap" "', argument " "2"" of type '" "mfem::Mesh const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Mesh * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Table,  0 );
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Table,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CoarseFineTransformations_GetCoarseToFineMap" "', argument " "3"" of type '" "mfem::Table &""'"); 
   }
@@ -4336,7 +4330,7 @@ SWIGINTERN PyObject *_wrap_CoarseFineTransformations_GetCoarseToFineMap(PyObject
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CoarseFineTransformations_GetCoarseToFineMap" "', argument " "3"" of type '" "mfem::Table &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Table * >(argp3);
-  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CoarseFineTransformations_GetCoarseToFineMap" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -4344,7 +4338,7 @@ SWIGINTERN PyObject *_wrap_CoarseFineTransformations_GetCoarseToFineMap(PyObject
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CoarseFineTransformations_GetCoarseToFineMap" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
   }
   arg4 = reinterpret_cast< mfem::Array< int > * >(argp4);
-  res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_mfem__Table,  0 );
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Table,  0 );
   if (!SWIG_IsOK(res5)) {
     SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "CoarseFineTransformations_GetCoarseToFineMap" "', argument " "5"" of type '" "mfem::Table &""'"); 
   }
@@ -4352,7 +4346,7 @@ SWIGINTERN PyObject *_wrap_CoarseFineTransformations_GetCoarseToFineMap(PyObject
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CoarseFineTransformations_GetCoarseToFineMap" "', argument " "5"" of type '" "mfem::Table &""'"); 
   }
   arg5 = reinterpret_cast< mfem::Table * >(argp5);
-  res6 = SWIG_ConvertPtr(obj5, &argp6, SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t,  0 );
+  res6 = SWIG_ConvertPtr(swig_obj[5], &argp6, SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t,  0 );
   if (!SWIG_IsOK(res6)) {
     SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "CoarseFineTransformations_GetCoarseToFineMap" "', argument " "6"" of type '" "mfem::Array< mfem::Geometry::Type > &""'"); 
   }
@@ -4360,9 +4354,16 @@ SWIGINTERN PyObject *_wrap_CoarseFineTransformations_GetCoarseToFineMap(PyObject
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CoarseFineTransformations_GetCoarseToFineMap" "', argument " "6"" of type '" "mfem::Array< mfem::Geometry::Type > &""'"); 
   }
   arg6 = reinterpret_cast< mfem::Array< mfem::Geometry::Type > * >(argp6);
+  if (swig_obj[6]) {
+    ecode7 = SWIG_AsVal_bool(swig_obj[6], &val7);
+    if (!SWIG_IsOK(ecode7)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "CoarseFineTransformations_GetCoarseToFineMap" "', argument " "7"" of type '" "bool""'");
+    } 
+    arg7 = static_cast< bool >(val7);
+  }
   {
     try {
-      ((mfem::CoarseFineTransformations const *)arg1)->GetCoarseToFineMap((mfem::Mesh const &)*arg2,*arg3,*arg4,*arg5,*arg6);
+      ((mfem::CoarseFineTransformations const *)arg1)->GetCoarseToFineMap((mfem::Mesh const &)*arg2,*arg3,*arg4,*arg5,*arg6,arg7);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -4383,6 +4384,144 @@ SWIGINTERN PyObject *_wrap_CoarseFineTransformations_GetCoarseToFineMap(PyObject
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CoarseFineTransformations_GetCoarseToFineMap__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::CoarseFineTransformations *arg1 = (mfem::CoarseFineTransformations *) 0 ;
+  mfem::Mesh *arg2 = 0 ;
+  mfem::Table *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__CoarseFineTransformations, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CoarseFineTransformations_GetCoarseToFineMap" "', argument " "1"" of type '" "mfem::CoarseFineTransformations const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CoarseFineTransformations * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Mesh,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CoarseFineTransformations_GetCoarseToFineMap" "', argument " "2"" of type '" "mfem::Mesh const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CoarseFineTransformations_GetCoarseToFineMap" "', argument " "2"" of type '" "mfem::Mesh const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Mesh * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Table,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CoarseFineTransformations_GetCoarseToFineMap" "', argument " "3"" of type '" "mfem::Table &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CoarseFineTransformations_GetCoarseToFineMap" "', argument " "3"" of type '" "mfem::Table &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Table * >(argp3);
+  {
+    try {
+      ((mfem::CoarseFineTransformations const *)arg1)->GetCoarseToFineMap((mfem::Mesh const &)*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CoarseFineTransformations_GetCoarseToFineMap(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[8] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "CoarseFineTransformations_GetCoarseToFineMap", 0, 7, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__CoarseFineTransformations, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Mesh, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Table, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_CoarseFineTransformations_GetCoarseToFineMap__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  if ((argc >= 6) && (argc <= 7)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__CoarseFineTransformations, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Mesh, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Table, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Table, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              void *vptr = 0;
+              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t, SWIG_POINTER_NO_NULL);
+              _v = SWIG_CheckState(res);
+              if (_v) {
+                if (argc <= 6) {
+                  return _wrap_CoarseFineTransformations_GetCoarseToFineMap__SWIG_0(self, argc, argv);
+                }
+                {
+                  int res = SWIG_AsVal_bool(argv[6], NULL);
+                  _v = SWIG_CheckState(res);
+                }
+                if (_v) {
+                  return _wrap_CoarseFineTransformations_GetCoarseToFineMap__SWIG_0(self, argc, argv);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'CoarseFineTransformations_GetCoarseToFineMap'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::CoarseFineTransformations::GetCoarseToFineMap(mfem::Mesh const &,mfem::Table &,mfem::Array< int > &,mfem::Table &,mfem::Array< mfem::Geometry::Type > &,bool) const\n"
+    "    mfem::CoarseFineTransformations::GetCoarseToFineMap(mfem::Mesh const &,mfem::Table &) const\n");
+  return 0;
 }
 
 
@@ -9759,7 +9898,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "CoarseFineTransformations_point_matrices_set", _wrap_CoarseFineTransformations_point_matrices_set, METH_VARARGS, "CoarseFineTransformations_point_matrices_set(CoarseFineTransformations self, DenseTensor point_matrices)"},
 	 { "CoarseFineTransformations_point_matrices_get", _wrap_CoarseFineTransformations_point_matrices_get, METH_O, "CoarseFineTransformations_point_matrices_get(CoarseFineTransformations self) -> DenseTensor"},
 	 { "CoarseFineTransformations_embeddings_get", _wrap_CoarseFineTransformations_embeddings_get, METH_O, "CoarseFineTransformations_embeddings_get(CoarseFineTransformations self) -> mfem::Array< mfem::Embedding > *"},
-	 { "CoarseFineTransformations_GetCoarseToFineMap", (PyCFunction)(void(*)(void))_wrap_CoarseFineTransformations_GetCoarseToFineMap, METH_VARARGS|METH_KEYWORDS, "CoarseFineTransformations_GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine, intArray coarse_to_ref_type, Table ref_type_to_matrix, GeometryTypeArray ref_type_to_geom)"},
+	 { "CoarseFineTransformations_GetCoarseToFineMap", _wrap_CoarseFineTransformations_GetCoarseToFineMap, METH_VARARGS, "\n"
+		"CoarseFineTransformations_GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine, intArray coarse_to_ref_type, Table ref_type_to_matrix, GeometryTypeArray ref_type_to_geom, bool get_coarse_to_fine_only=False)\n"
+		"CoarseFineTransformations_GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine)\n"
+		""},
 	 { "CoarseFineTransformations_Clear", _wrap_CoarseFineTransformations_Clear, METH_O, "CoarseFineTransformations_Clear(CoarseFineTransformations self)"},
 	 { "CoarseFineTransformations_IsInitialized", _wrap_CoarseFineTransformations_IsInitialized, METH_O, "CoarseFineTransformations_IsInitialized(CoarseFineTransformations self) -> bool"},
 	 { "CoarseFineTransformations_MemoryUsage", _wrap_CoarseFineTransformations_MemoryUsage, METH_O, "CoarseFineTransformations_MemoryUsage(CoarseFineTransformations self) -> long"},
@@ -9915,7 +10057,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "CoarseFineTransformations_point_matrices_set", _wrap_CoarseFineTransformations_point_matrices_set, METH_VARARGS, "CoarseFineTransformations_point_matrices_set(CoarseFineTransformations self, DenseTensor point_matrices)"},
 	 { "CoarseFineTransformations_point_matrices_get", _wrap_CoarseFineTransformations_point_matrices_get, METH_O, "CoarseFineTransformations_point_matrices_get(CoarseFineTransformations self) -> DenseTensor"},
 	 { "CoarseFineTransformations_embeddings_get", _wrap_CoarseFineTransformations_embeddings_get, METH_O, "CoarseFineTransformations_embeddings_get(CoarseFineTransformations self) -> mfem::Array< mfem::Embedding > *"},
-	 { "CoarseFineTransformations_GetCoarseToFineMap", (PyCFunction)(void(*)(void))_wrap_CoarseFineTransformations_GetCoarseToFineMap, METH_VARARGS|METH_KEYWORDS, "GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine, intArray coarse_to_ref_type, Table ref_type_to_matrix, GeometryTypeArray ref_type_to_geom)"},
+	 { "CoarseFineTransformations_GetCoarseToFineMap", _wrap_CoarseFineTransformations_GetCoarseToFineMap, METH_VARARGS, "\n"
+		"GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine, intArray coarse_to_ref_type, Table ref_type_to_matrix, GeometryTypeArray ref_type_to_geom, bool get_coarse_to_fine_only=False)\n"
+		"GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine)\n"
+		""},
 	 { "CoarseFineTransformations_Clear", _wrap_CoarseFineTransformations_Clear, METH_O, "Clear(CoarseFineTransformations self)"},
 	 { "CoarseFineTransformations_IsInitialized", _wrap_CoarseFineTransformations_IsInitialized, METH_O, "IsInitialized(CoarseFineTransformations self) -> bool"},
 	 { "CoarseFineTransformations_MemoryUsage", _wrap_CoarseFineTransformations_MemoryUsage, METH_O, "MemoryUsage(CoarseFineTransformations self) -> long"},

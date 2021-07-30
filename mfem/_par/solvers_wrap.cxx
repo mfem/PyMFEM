@@ -4728,7 +4728,7 @@ SWIGINTERN PyObject *OperatorJacobiSmoother_swiginit(PyObject *SWIGUNUSEDPARM(se
 
 SWIGINTERN PyObject *_wrap_new_OperatorChebyshevSmoother__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
+  mfem::Operator *arg1 = 0 ;
   mfem::Vector *arg2 = 0 ;
   mfem::Array< int > *arg3 = 0 ;
   int arg4 ;
@@ -4744,9 +4744,12 @@ SWIGINTERN PyObject *_wrap_new_OperatorChebyshevSmoother__SWIG_0(PyObject *SWIGU
   mfem::OperatorChebyshevSmoother *result = 0 ;
   
   if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Operator,  0  | 0);
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_OperatorChebyshevSmoother" "', argument " "1"" of type '" "mfem::Operator *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_OperatorChebyshevSmoother" "', argument " "1"" of type '" "mfem::Operator const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_OperatorChebyshevSmoother" "', argument " "1"" of type '" "mfem::Operator const &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Operator * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
@@ -4778,7 +4781,7 @@ SWIGINTERN PyObject *_wrap_new_OperatorChebyshevSmoother__SWIG_0(PyObject *SWIGU
   arg5 = static_cast< double >(val5);
   {
     try {
-      result = (mfem::OperatorChebyshevSmoother *)new mfem::OperatorChebyshevSmoother(arg1,(mfem::Vector const &)*arg2,(mfem::Array< int > const &)*arg3,arg4,arg5); 
+      result = (mfem::OperatorChebyshevSmoother *)new mfem::OperatorChebyshevSmoother((mfem::Operator const &)*arg1,(mfem::Vector const &)*arg2,(mfem::Array< int > const &)*arg3,arg4,arg5); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -4798,7 +4801,7 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_OperatorChebyshevSmoother__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
+  mfem::Operator *arg1 = 0 ;
   mfem::Vector *arg2 = 0 ;
   mfem::Array< int > *arg3 = 0 ;
   int arg4 ;
@@ -4816,9 +4819,12 @@ SWIGINTERN PyObject *_wrap_new_OperatorChebyshevSmoother__SWIG_1(PyObject *SWIGU
   mfem::OperatorChebyshevSmoother *result = 0 ;
   
   if ((nobjs < 4) || (nobjs > 7)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Operator,  0  | 0);
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_OperatorChebyshevSmoother" "', argument " "1"" of type '" "mfem::Operator *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_OperatorChebyshevSmoother" "', argument " "1"" of type '" "mfem::Operator const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_OperatorChebyshevSmoother" "', argument " "1"" of type '" "mfem::Operator const &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Operator * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
@@ -4871,7 +4877,7 @@ SWIGINTERN PyObject *_wrap_new_OperatorChebyshevSmoother__SWIG_1(PyObject *SWIGU
   }
   {
     try {
-      result = (mfem::OperatorChebyshevSmoother *)new mfem::OperatorChebyshevSmoother(arg1,(mfem::Vector const &)*arg2,(mfem::Array< int > const &)*arg3,arg4,arg5,arg6,arg7); 
+      result = (mfem::OperatorChebyshevSmoother *)new mfem::OperatorChebyshevSmoother((mfem::Operator const &)*arg1,(mfem::Vector const &)*arg2,(mfem::Array< int > const &)*arg3,arg4,arg5,arg6,arg7); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -4899,8 +4905,7 @@ SWIGINTERN PyObject *_wrap_new_OperatorChebyshevSmoother(PyObject *self, PyObjec
   --argc;
   if ((argc >= 4) && (argc <= 7)) {
     int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, 0);
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__Operator, SWIG_POINTER_NO_NULL | 0);
     _v = SWIG_CheckState(res);
     if (_v) {
       int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
@@ -4955,8 +4960,7 @@ SWIGINTERN PyObject *_wrap_new_OperatorChebyshevSmoother(PyObject *self, PyObjec
   }
   if (argc == 5) {
     int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, 0);
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__Operator, SWIG_POINTER_NO_NULL | 0);
     _v = SWIG_CheckState(res);
     if (_v) {
       int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
@@ -4990,8 +4994,8 @@ SWIGINTERN PyObject *_wrap_new_OperatorChebyshevSmoother(PyObject *self, PyObjec
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_OperatorChebyshevSmoother'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    mfem::OperatorChebyshevSmoother::OperatorChebyshevSmoother(mfem::Operator *,mfem::Vector const &,mfem::Array< int > const &,int,double)\n"
-    "    mfem::OperatorChebyshevSmoother::OperatorChebyshevSmoother(mfem::Operator *,mfem::Vector const &,mfem::Array< int > const &,int,MPI_Comm,int,double)\n");
+    "    mfem::OperatorChebyshevSmoother::OperatorChebyshevSmoother(mfem::Operator const &,mfem::Vector const &,mfem::Array< int > const &,int,double)\n"
+    "    mfem::OperatorChebyshevSmoother::OperatorChebyshevSmoother(mfem::Operator const &,mfem::Vector const &,mfem::Array< int > const &,int,MPI_Comm,int,double)\n");
   return 0;
 }
 
@@ -10641,12 +10645,12 @@ SWIGINTERN PyObject *_wrap_new_BlockILU__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   mfem::BlockILU *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Operator,  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Operator,  0  | 0);
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlockILU" "', argument " "1"" of type '" "mfem::Operator &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlockILU" "', argument " "1"" of type '" "mfem::Operator const &""'"); 
   }
   if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlockILU" "', argument " "1"" of type '" "mfem::Operator &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlockILU" "', argument " "1"" of type '" "mfem::Operator const &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Operator * >(argp1);
   if (swig_obj[1]) {
@@ -10674,7 +10678,7 @@ SWIGINTERN PyObject *_wrap_new_BlockILU__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   }
   {
     try {
-      result = (mfem::BlockILU *)new mfem::BlockILU(*arg1,arg2,arg3,arg4); 
+      result = (mfem::BlockILU *)new mfem::BlockILU((mfem::Operator const &)*arg1,arg2,arg3,arg4); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -10702,8 +10706,7 @@ SWIGINTERN PyObject *_wrap_new_BlockILU(PyObject *self, PyObject *args) {
   --argc;
   if ((argc >= 1) && (argc <= 4)) {
     int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, SWIG_POINTER_NO_NULL);
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__Operator, SWIG_POINTER_NO_NULL | 0);
     _v = SWIG_CheckState(res);
     if (_v) {
       if (argc <= 1) {
@@ -10785,7 +10788,7 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_BlockILU'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::BlockILU::BlockILU(int,mfem::BlockILU::Reordering,int)\n"
-    "    mfem::BlockILU::BlockILU(mfem::Operator &,int,mfem::BlockILU::Reordering,int)\n");
+    "    mfem::BlockILU::BlockILU(mfem::Operator const &,int,mfem::BlockILU::Reordering,int)\n");
   return 0;
 }
 
