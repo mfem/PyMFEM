@@ -27,32 +27,33 @@ def run(order=1,
     if numba:
         from numba import cfunc
 
-        @cfunc(mfem.vector_sig)
-        def E_exact(x, out, _sdim, _vdim):
+        @mfem.jit.vector()
+        def E_exact(x, out):
             out[0] = sin(kappa*x[1])
             out[1] = sin(kappa*x[2])
             out[2] = sin(kappa*x[0])
-        @cfunc(mfem.vector_sig)            
-        def f_exact(x, out, _sdim, _vdim):
+        @mfem.jit.vector()
+        def f_exact(x, out):
             out[0] = (1 + kappa**2)*sin(kappa * x[1])
             out[1] = (1 + kappa**2)*sin(kappa * x[2])
             out[2] = (1 + kappa**2)*sin(kappa * x[0])
     else:
-        class E_exact(mfem.VectorPyCoefficient):
+        class cE_exact(mfem.VectorPyCoefficient):
             def __init__(self):
                 mfem.VectorPyCoefficient.__init__(self, sdim)
             def EvalValue(self, x):
                return (sin(kappa * x[1]),
                        sin(kappa * x[2]),
                        sin(kappa * x[0]))
-        class f_exact(mfem.VectorPyCoefficient):
+        E_exact = cE_exact()
+        class cf_exact(mfem.VectorPyCoefficient):
             def __init__(self):
                 mfem.VectorPyCoefficient.__init__(self, sdim)
             def EvalValue(self, x):   
                 return ((1 + kappa**2)*sin(kappa * x[1]),
                         (1 + kappa**2)*sin(kappa * x[2]),
                         (1 + kappa**2)*sin(kappa * x[0]))
-
+        f_exact = cf_exact()
     #   3. Refine the mesh to increase the resolution. In this example we do
     #      'ref_levels' of uniform refinement. We choose 'ref_levels' to be the
     #      largest number that gives a final mesh with no more than 50,000
@@ -88,11 +89,7 @@ def run(order=1,
     #    finite element fespace.
 
     b = mfem.LinearForm(fespace);
-    if numba:
-        f = mfem.VectorNumbaFunction(f_exact, sdim, dim).GenerateCoefficient()
-    else:
-        f = f_exact()
-    dd = mfem.VectorFEDomainLFIntegrator(f);
+    dd = mfem.VectorFEDomainLFIntegrator(f_exact)
     b.AddDomainIntegrator(dd)
     b.Assemble();
 
@@ -104,12 +101,7 @@ def run(order=1,
 
     #from mfem.examples.ex3 import E_exact_cb
     x = mfem.GridFunction(fespace)
-    if numba:
-        E = mfem.VectorNumbaFunction(E_exact, sdim, dim).GenerateCoefficient()
-    else:
-        E = E_exact()
-
-    x.ProjectCoefficient(E)
+    x.ProjectCoefficient(E_exact)
 
     # 8. Set up the bilinear form corresponding to the EM diffusion operator
     #       curl muinv curl + sigma I, by adding the curl-curl and the mass domain
@@ -149,7 +141,7 @@ def run(order=1,
 
     # 12. Compute and print the L^2 norm of the error.
     import sys
-    sys.stdout.write("|| E_h - E ||_{L^2} = " + str(x.ComputeL2Error(E))+"\n")
+    sys.stdout.write("|| E_h - E ||_{L^2} = " + str(x.ComputeL2Error(E_exact))+"\n")
 
     mesh.Print('refined.mesh', 8)
     x.Save('sol.gf', 8)
@@ -184,7 +176,7 @@ if __name__ == "__main__":
                         default="cpu", type=str,
                         help="Device configuration string, see Device::Configure().")
     parser.add_argument("-n", "--numba",
-                        default=False, type=bool,
+                        default=True, type=bool,
                         help="Use Number compiled coefficient")
 
     args = parser.parse_args()
