@@ -3627,7 +3627,7 @@ SWIGINTERN PyObject *mfem_DenseMatrix_GetDataArray(mfem::DenseMatrix const *self
 
 
 
-SWIGINTERN void mfem_DenseMatrix_Print__SWIG_1(mfem::DenseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_DenseMatrix_Print__SWIG_1(mfem::DenseMatrix *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3638,7 +3638,7 @@ SWIGINTERN void mfem_DenseMatrix_Print__SWIG_1(mfem::DenseMatrix *self,char cons
   self -> Print(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_DenseMatrix_PrintGZ(mfem::DenseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_DenseMatrix_PrintGZ(mfem::DenseMatrix *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3649,7 +3649,7 @@ SWIGINTERN void mfem_DenseMatrix_PrintGZ(mfem::DenseMatrix *self,char const *fil
   self -> Print(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_DenseMatrix_PrintT__SWIG_1(mfem::DenseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_DenseMatrix_PrintT__SWIG_1(mfem::DenseMatrix *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3660,7 +3660,7 @@ SWIGINTERN void mfem_DenseMatrix_PrintT__SWIG_1(mfem::DenseMatrix *self,char con
   self -> PrintT(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_DenseMatrix_PrintTGZ(mfem::DenseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_DenseMatrix_PrintTGZ(mfem::DenseMatrix *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3671,7 +3671,7 @@ SWIGINTERN void mfem_DenseMatrix_PrintTGZ(mfem::DenseMatrix *self,char const *fi
   self -> PrintT(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_DenseMatrix_PrintMatlab__SWIG_1(mfem::DenseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_DenseMatrix_PrintMatlab__SWIG_1(mfem::DenseMatrix *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3682,7 +3682,7 @@ SWIGINTERN void mfem_DenseMatrix_PrintMatlab__SWIG_1(mfem::DenseMatrix *self,cha
   self -> PrintMatlab(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_DenseMatrix_PrintMatlabGZ(mfem::DenseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_DenseMatrix_PrintMatlabGZ(mfem::DenseMatrix *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -12190,7 +12190,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   PyObject *resultobj = 0;
   mfem::DenseMatrix *arg1 = (mfem::DenseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -12347,7 +12347,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintGZ(PyObject *SWIGUNUSEDPARM(self), P
   PyObject *resultobj = 0;
   mfem::DenseMatrix *arg1 = (mfem::DenseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -12411,7 +12411,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   PyObject *resultobj = 0;
   mfem::DenseMatrix *arg1 = (mfem::DenseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -12568,7 +12568,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintTGZ(PyObject *SWIGUNUSEDPARM(self), 
   PyObject *resultobj = 0;
   mfem::DenseMatrix *arg1 = (mfem::DenseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -12632,7 +12632,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintMatlab__SWIG_1(PyObject *SWIGUNUSEDP
   PyObject *resultobj = 0;
   mfem::DenseMatrix *arg1 = (mfem::DenseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -12776,7 +12776,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintMatlabGZ(PyObject *SWIGUNUSEDPARM(se
   PyObject *resultobj = 0;
   mfem::DenseMatrix *arg1 = (mfem::DenseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -19715,19 +19715,19 @@ static PyMethodDef SwigMethods[] = {
 	 { "DenseMatrix_GetDataArray", _wrap_DenseMatrix_GetDataArray, METH_O, "DenseMatrix_GetDataArray(DenseMatrix self) -> PyObject *"},
 	 { "DenseMatrix_Print", _wrap_DenseMatrix_Print, METH_VARARGS, "\n"
 		"DenseMatrix_Print(DenseMatrix self, std::ostream & out=mfem::out, int width_=4)\n"
-		"DenseMatrix_Print(DenseMatrix self, char const * file, int precision=8)\n"
+		"DenseMatrix_Print(DenseMatrix self, char const * file, int precision=16)\n"
 		""},
-	 { "DenseMatrix_PrintGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintGZ, METH_VARARGS|METH_KEYWORDS, "DenseMatrix_PrintGZ(DenseMatrix self, char const * file, int precision=8)"},
+	 { "DenseMatrix_PrintGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintGZ, METH_VARARGS|METH_KEYWORDS, "DenseMatrix_PrintGZ(DenseMatrix self, char const * file, int precision=16)"},
 	 { "DenseMatrix_PrintT", _wrap_DenseMatrix_PrintT, METH_VARARGS, "\n"
 		"DenseMatrix_PrintT(DenseMatrix self, std::ostream & out=mfem::out, int width_=4)\n"
-		"DenseMatrix_PrintT(DenseMatrix self, char const * file, int precision=8)\n"
+		"DenseMatrix_PrintT(DenseMatrix self, char const * file, int precision=16)\n"
 		""},
-	 { "DenseMatrix_PrintTGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintTGZ, METH_VARARGS|METH_KEYWORDS, "DenseMatrix_PrintTGZ(DenseMatrix self, char const * file, int precision=8)"},
+	 { "DenseMatrix_PrintTGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintTGZ, METH_VARARGS|METH_KEYWORDS, "DenseMatrix_PrintTGZ(DenseMatrix self, char const * file, int precision=16)"},
 	 { "DenseMatrix_PrintMatlab", _wrap_DenseMatrix_PrintMatlab, METH_VARARGS, "\n"
 		"DenseMatrix_PrintMatlab(DenseMatrix self, std::ostream & out=mfem::out)\n"
-		"DenseMatrix_PrintMatlab(DenseMatrix self, char const * file, int precision=8)\n"
+		"DenseMatrix_PrintMatlab(DenseMatrix self, char const * file, int precision=16)\n"
 		""},
-	 { "DenseMatrix_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "DenseMatrix_PrintMatlabGZ(DenseMatrix self, char const * file, int precision=8)"},
+	 { "DenseMatrix_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "DenseMatrix_PrintMatlabGZ(DenseMatrix self, char const * file, int precision=16)"},
 	 { "DenseMatrix_swigregister", DenseMatrix_swigregister, METH_O, NULL},
 	 { "DenseMatrix_swiginit", DenseMatrix_swiginit, METH_VARARGS, NULL},
 	 { "LinearSolve", (PyCFunction)(void(*)(void))_wrap_LinearSolve, METH_VARARGS|METH_KEYWORDS, "LinearSolve(DenseMatrix A, double * X, double TOL=1.e-9) -> bool"},
@@ -20043,19 +20043,19 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "DenseMatrix_GetDataArray", _wrap_DenseMatrix_GetDataArray, METH_O, "GetDataArray(DenseMatrix self) -> PyObject *"},
 	 { "DenseMatrix_Print", _wrap_DenseMatrix_Print, METH_VARARGS, "\n"
 		"Print(DenseMatrix self, std::ostream & out=mfem::out, int width_=4)\n"
-		"Print(DenseMatrix self, char const * file, int precision=8)\n"
+		"Print(DenseMatrix self, char const * file, int precision=16)\n"
 		""},
-	 { "DenseMatrix_PrintGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(DenseMatrix self, char const * file, int precision=8)"},
+	 { "DenseMatrix_PrintGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(DenseMatrix self, char const * file, int precision=16)"},
 	 { "DenseMatrix_PrintT", _wrap_DenseMatrix_PrintT, METH_VARARGS, "\n"
 		"PrintT(DenseMatrix self, std::ostream & out=mfem::out, int width_=4)\n"
-		"PrintT(DenseMatrix self, char const * file, int precision=8)\n"
+		"PrintT(DenseMatrix self, char const * file, int precision=16)\n"
 		""},
-	 { "DenseMatrix_PrintTGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintTGZ, METH_VARARGS|METH_KEYWORDS, "PrintTGZ(DenseMatrix self, char const * file, int precision=8)"},
+	 { "DenseMatrix_PrintTGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintTGZ, METH_VARARGS|METH_KEYWORDS, "PrintTGZ(DenseMatrix self, char const * file, int precision=16)"},
 	 { "DenseMatrix_PrintMatlab", _wrap_DenseMatrix_PrintMatlab, METH_VARARGS, "\n"
 		"PrintMatlab(DenseMatrix self, std::ostream & out=mfem::out)\n"
-		"PrintMatlab(DenseMatrix self, char const * file, int precision=8)\n"
+		"PrintMatlab(DenseMatrix self, char const * file, int precision=16)\n"
 		""},
-	 { "DenseMatrix_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "PrintMatlabGZ(DenseMatrix self, char const * file, int precision=8)"},
+	 { "DenseMatrix_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "PrintMatlabGZ(DenseMatrix self, char const * file, int precision=16)"},
 	 { "DenseMatrix_swigregister", DenseMatrix_swigregister, METH_O, NULL},
 	 { "DenseMatrix_swiginit", DenseMatrix_swiginit, METH_VARARGS, NULL},
 	 { "LinearSolve", (PyCFunction)(void(*)(void))_wrap_LinearSolve, METH_VARARGS|METH_KEYWORDS, "LinearSolve(DenseMatrix A, double * X, double TOL=1.e-9) -> bool"},

@@ -3279,7 +3279,7 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
-SWIGINTERN void mfem_Vector_Print__SWIG_1(mfem::Vector *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Vector_Print__SWIG_1(mfem::Vector *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3290,7 +3290,7 @@ SWIGINTERN void mfem_Vector_Print__SWIG_1(mfem::Vector *self,char const *file,in
   self -> Print(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_Vector_PrintGZ(mfem::Vector *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Vector_PrintGZ(mfem::Vector *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3301,7 +3301,7 @@ SWIGINTERN void mfem_Vector_PrintGZ(mfem::Vector *self,char const *file,int prec
   self -> Print(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_Vector_Print_HYPRE__SWIG_1(mfem::Vector *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Vector_Print_HYPRE__SWIG_1(mfem::Vector *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3312,7 +3312,7 @@ SWIGINTERN void mfem_Vector_Print_HYPRE__SWIG_1(mfem::Vector *self,char const *f
   self -> Print_HYPRE(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_Vector_Print_HYPREGZ(mfem::Vector *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Vector_Print_HYPREGZ(mfem::Vector *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   
   if (!ofile)
@@ -10013,7 +10013,7 @@ SWIGINTERN PyObject *_wrap_Vector_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   PyObject *resultobj = 0;
   mfem::Vector *arg1 = (mfem::Vector *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -10167,7 +10167,7 @@ SWIGINTERN PyObject *_wrap_Vector_PrintGZ(PyObject *SWIGUNUSEDPARM(self), PyObje
   PyObject *resultobj = 0;
   mfem::Vector *arg1 = (mfem::Vector *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -10228,7 +10228,7 @@ SWIGINTERN PyObject *_wrap_Vector_Print_HYPRE__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   PyObject *resultobj = 0;
   mfem::Vector *arg1 = (mfem::Vector *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -10283,7 +10283,7 @@ SWIGINTERN PyObject *_wrap_Vector_Print_HYPREGZ(PyObject *SWIGUNUSEDPARM(self), 
   PyObject *resultobj = 0;
   mfem::Vector *arg1 = (mfem::Vector *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -10784,13 +10784,13 @@ static PyMethodDef SwigMethods[] = {
 	 { "Vector_WriteToStream", (PyCFunction)(void(*)(void))_wrap_Vector_WriteToStream, METH_VARARGS|METH_KEYWORDS, "Vector_WriteToStream(Vector self, PyObject * StringIO, int width=8) -> PyObject *"},
 	 { "Vector_Print", _wrap_Vector_Print, METH_VARARGS, "\n"
 		"Vector_Print(Vector self, std::ostream & out=mfem::out, int width=8)\n"
-		"Vector_Print(Vector self, char const * file, int precision=8)\n"
+		"Vector_Print(Vector self, char const * file, int precision=16)\n"
 		""},
-	 { "Vector_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Vector_PrintGZ, METH_VARARGS|METH_KEYWORDS, "Vector_PrintGZ(Vector self, char const * file, int precision=8)"},
-	 { "Vector_Print_HYPREGZ", (PyCFunction)(void(*)(void))_wrap_Vector_Print_HYPREGZ, METH_VARARGS|METH_KEYWORDS, "Vector_Print_HYPREGZ(Vector self, char const * file, int precision=8)"},
+	 { "Vector_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Vector_PrintGZ, METH_VARARGS|METH_KEYWORDS, "Vector_PrintGZ(Vector self, char const * file, int precision=16)"},
+	 { "Vector_Print_HYPREGZ", (PyCFunction)(void(*)(void))_wrap_Vector_Print_HYPREGZ, METH_VARARGS|METH_KEYWORDS, "Vector_Print_HYPREGZ(Vector self, char const * file, int precision=16)"},
 	 { "Vector_Print_HYPRE", _wrap_Vector_Print_HYPRE, METH_VARARGS, "\n"
 		"Vector_Print_HYPRE(Vector self, std::ostream & out)\n"
-		"Vector_Print_HYPRE(Vector self, char const * file, int precision=8)\n"
+		"Vector_Print_HYPRE(Vector self, char const * file, int precision=16)\n"
 		"Vector_Print_HYPRE(Vector self)\n"
 		""},
 	 { "Vector_swigregister", Vector_swigregister, METH_O, NULL},
@@ -10950,13 +10950,13 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Vector_WriteToStream", (PyCFunction)(void(*)(void))_wrap_Vector_WriteToStream, METH_VARARGS|METH_KEYWORDS, "WriteToStream(Vector self, PyObject * StringIO, int width=8) -> PyObject *"},
 	 { "Vector_Print", _wrap_Vector_Print, METH_VARARGS, "\n"
 		"Print(Vector self, std::ostream & out=mfem::out, int width=8)\n"
-		"Print(Vector self, char const * file, int precision=8)\n"
+		"Print(Vector self, char const * file, int precision=16)\n"
 		""},
-	 { "Vector_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Vector_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(Vector self, char const * file, int precision=8)"},
-	 { "Vector_Print_HYPREGZ", (PyCFunction)(void(*)(void))_wrap_Vector_Print_HYPREGZ, METH_VARARGS|METH_KEYWORDS, "Print_HYPREGZ(Vector self, char const * file, int precision=8)"},
+	 { "Vector_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Vector_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(Vector self, char const * file, int precision=16)"},
+	 { "Vector_Print_HYPREGZ", (PyCFunction)(void(*)(void))_wrap_Vector_Print_HYPREGZ, METH_VARARGS|METH_KEYWORDS, "Print_HYPREGZ(Vector self, char const * file, int precision=16)"},
 	 { "Vector_Print_HYPRE", _wrap_Vector_Print_HYPRE, METH_VARARGS, "\n"
 		"Print_HYPRE(Vector self, std::ostream & out)\n"
-		"Print_HYPRE(Vector self, char const * file, int precision=8)\n"
+		"Print_HYPRE(Vector self, char const * file, int precision=16)\n"
 		"Print_HYPRE(Vector self)\n"
 		""},
 	 { "Vector_swigregister", Vector_swigregister, METH_O, NULL},

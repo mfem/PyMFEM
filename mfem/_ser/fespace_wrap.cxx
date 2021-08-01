@@ -3720,7 +3720,7 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
-SWIGINTERN void mfem_FiniteElementSpace_Save__SWIG_1(mfem::FiniteElementSpace *self,char const *file,int precision=8){
+SWIGINTERN void mfem_FiniteElementSpace_Save__SWIG_1(mfem::FiniteElementSpace *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3731,7 +3731,7 @@ SWIGINTERN void mfem_FiniteElementSpace_Save__SWIG_1(mfem::FiniteElementSpace *s
   self -> Save(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_FiniteElementSpace_SaveGZ(mfem::FiniteElementSpace *self,char const *file,int precision=8){
+SWIGINTERN void mfem_FiniteElementSpace_SaveGZ(mfem::FiniteElementSpace *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   
   if (!ofile)
@@ -3746,7 +3746,7 @@ SWIGINTERN void mfem_FiniteElementSpace_SaveGZ(mfem::FiniteElementSpace *self,ch
 SWIGINTERN void mfem_FiniteElementSpace_Save__SWIG_2(mfem::FiniteElementSpace *self){
   self -> Save(std::cout);
   }
-SWIGINTERN void mfem_QuadratureSpace_Save__SWIG_1(mfem::QuadratureSpace *self,char const *file,int precision=8){
+SWIGINTERN void mfem_QuadratureSpace_Save__SWIG_1(mfem::QuadratureSpace *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3757,7 +3757,7 @@ SWIGINTERN void mfem_QuadratureSpace_Save__SWIG_1(mfem::QuadratureSpace *self,ch
   self -> Save(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_QuadratureSpace_SaveGZ(mfem::QuadratureSpace *self,char const *file,int precision=8){
+SWIGINTERN void mfem_QuadratureSpace_SaveGZ(mfem::QuadratureSpace *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   
   if (!ofile)
@@ -10281,7 +10281,7 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_Save__SWIG_1(PyObject *SWIGUNUSEDP
   PyObject *resultobj = 0;
   mfem::FiniteElementSpace *arg1 = (mfem::FiniteElementSpace *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -10339,7 +10339,7 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_SaveGZ(PyObject *SWIGUNUSEDPARM(se
   PyObject *resultobj = 0;
   mfem::FiniteElementSpace *arg1 = (mfem::FiniteElementSpace *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -11190,7 +11190,7 @@ SWIGINTERN PyObject *_wrap_QuadratureSpace_Save__SWIG_1(PyObject *SWIGUNUSEDPARM
   PyObject *resultobj = 0;
   mfem::QuadratureSpace *arg1 = (mfem::QuadratureSpace *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -11248,7 +11248,7 @@ SWIGINTERN PyObject *_wrap_QuadratureSpace_SaveGZ(PyObject *SWIGUNUSEDPARM(self)
   PyObject *resultobj = 0;
   mfem::QuadratureSpace *arg1 = (mfem::QuadratureSpace *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -11627,10 +11627,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "FiniteElementSpace_SetRelaxedHpConformity", (PyCFunction)(void(*)(void))_wrap_FiniteElementSpace_SetRelaxedHpConformity, METH_VARARGS|METH_KEYWORDS, "FiniteElementSpace_SetRelaxedHpConformity(FiniteElementSpace self, bool relaxed=True)"},
 	 { "FiniteElementSpace_Load", (PyCFunction)(void(*)(void))_wrap_FiniteElementSpace_Load, METH_VARARGS|METH_KEYWORDS, "FiniteElementSpace_Load(FiniteElementSpace self, Mesh m, std::istream & input) -> FiniteElementCollection"},
 	 { "delete_FiniteElementSpace", _wrap_delete_FiniteElementSpace, METH_O, "delete_FiniteElementSpace(FiniteElementSpace self)"},
-	 { "FiniteElementSpace_SaveGZ", (PyCFunction)(void(*)(void))_wrap_FiniteElementSpace_SaveGZ, METH_VARARGS|METH_KEYWORDS, "FiniteElementSpace_SaveGZ(FiniteElementSpace self, char const * file, int precision=8)"},
+	 { "FiniteElementSpace_SaveGZ", (PyCFunction)(void(*)(void))_wrap_FiniteElementSpace_SaveGZ, METH_VARARGS|METH_KEYWORDS, "FiniteElementSpace_SaveGZ(FiniteElementSpace self, char const * file, int precision=16)"},
 	 { "FiniteElementSpace_Save", _wrap_FiniteElementSpace_Save, METH_VARARGS, "\n"
 		"FiniteElementSpace_Save(FiniteElementSpace self, std::ostream & out)\n"
-		"FiniteElementSpace_Save(FiniteElementSpace self, char const * file, int precision=8)\n"
+		"FiniteElementSpace_Save(FiniteElementSpace self, char const * file, int precision=16)\n"
 		"FiniteElementSpace_Save(FiniteElementSpace self)\n"
 		""},
 	 { "FiniteElementSpace_swigregister", FiniteElementSpace_swigregister, METH_O, NULL},
@@ -11645,10 +11645,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "QuadratureSpace_GetMesh", _wrap_QuadratureSpace_GetMesh, METH_O, "QuadratureSpace_GetMesh(QuadratureSpace self) -> Mesh"},
 	 { "QuadratureSpace_GetNE", _wrap_QuadratureSpace_GetNE, METH_O, "QuadratureSpace_GetNE(QuadratureSpace self) -> int"},
 	 { "QuadratureSpace_GetElementIntRule", (PyCFunction)(void(*)(void))_wrap_QuadratureSpace_GetElementIntRule, METH_VARARGS|METH_KEYWORDS, "QuadratureSpace_GetElementIntRule(QuadratureSpace self, int idx) -> IntegrationRule"},
-	 { "QuadratureSpace_SaveGZ", (PyCFunction)(void(*)(void))_wrap_QuadratureSpace_SaveGZ, METH_VARARGS|METH_KEYWORDS, "QuadratureSpace_SaveGZ(QuadratureSpace self, char const * file, int precision=8)"},
+	 { "QuadratureSpace_SaveGZ", (PyCFunction)(void(*)(void))_wrap_QuadratureSpace_SaveGZ, METH_VARARGS|METH_KEYWORDS, "QuadratureSpace_SaveGZ(QuadratureSpace self, char const * file, int precision=16)"},
 	 { "QuadratureSpace_Save", _wrap_QuadratureSpace_Save, METH_VARARGS, "\n"
 		"QuadratureSpace_Save(QuadratureSpace self, std::ostream & out)\n"
-		"QuadratureSpace_Save(QuadratureSpace self, char const * file, int precision=8)\n"
+		"QuadratureSpace_Save(QuadratureSpace self, char const * file, int precision=16)\n"
 		"QuadratureSpace_Save(QuadratureSpace self)\n"
 		""},
 	 { "QuadratureSpace_swigregister", QuadratureSpace_swigregister, METH_O, NULL},
@@ -11788,10 +11788,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "FiniteElementSpace_SetRelaxedHpConformity", (PyCFunction)(void(*)(void))_wrap_FiniteElementSpace_SetRelaxedHpConformity, METH_VARARGS|METH_KEYWORDS, "SetRelaxedHpConformity(FiniteElementSpace self, bool relaxed=True)"},
 	 { "FiniteElementSpace_Load", (PyCFunction)(void(*)(void))_wrap_FiniteElementSpace_Load, METH_VARARGS|METH_KEYWORDS, "Load(FiniteElementSpace self, Mesh m, std::istream & input) -> FiniteElementCollection"},
 	 { "delete_FiniteElementSpace", _wrap_delete_FiniteElementSpace, METH_O, "delete_FiniteElementSpace(FiniteElementSpace self)"},
-	 { "FiniteElementSpace_SaveGZ", (PyCFunction)(void(*)(void))_wrap_FiniteElementSpace_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(FiniteElementSpace self, char const * file, int precision=8)"},
+	 { "FiniteElementSpace_SaveGZ", (PyCFunction)(void(*)(void))_wrap_FiniteElementSpace_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(FiniteElementSpace self, char const * file, int precision=16)"},
 	 { "FiniteElementSpace_Save", _wrap_FiniteElementSpace_Save, METH_VARARGS, "\n"
 		"Save(FiniteElementSpace self, std::ostream & out)\n"
-		"Save(FiniteElementSpace self, char const * file, int precision=8)\n"
+		"Save(FiniteElementSpace self, char const * file, int precision=16)\n"
 		"Save(FiniteElementSpace self)\n"
 		""},
 	 { "FiniteElementSpace_swigregister", FiniteElementSpace_swigregister, METH_O, NULL},
@@ -11806,10 +11806,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "QuadratureSpace_GetMesh", _wrap_QuadratureSpace_GetMesh, METH_O, "GetMesh(QuadratureSpace self) -> Mesh"},
 	 { "QuadratureSpace_GetNE", _wrap_QuadratureSpace_GetNE, METH_O, "GetNE(QuadratureSpace self) -> int"},
 	 { "QuadratureSpace_GetElementIntRule", (PyCFunction)(void(*)(void))_wrap_QuadratureSpace_GetElementIntRule, METH_VARARGS|METH_KEYWORDS, "GetElementIntRule(QuadratureSpace self, int idx) -> IntegrationRule"},
-	 { "QuadratureSpace_SaveGZ", (PyCFunction)(void(*)(void))_wrap_QuadratureSpace_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(QuadratureSpace self, char const * file, int precision=8)"},
+	 { "QuadratureSpace_SaveGZ", (PyCFunction)(void(*)(void))_wrap_QuadratureSpace_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(QuadratureSpace self, char const * file, int precision=16)"},
 	 { "QuadratureSpace_Save", _wrap_QuadratureSpace_Save, METH_VARARGS, "\n"
 		"Save(QuadratureSpace self, std::ostream & out)\n"
-		"Save(QuadratureSpace self, char const * file, int precision=8)\n"
+		"Save(QuadratureSpace self, char const * file, int precision=16)\n"
 		"Save(QuadratureSpace self)\n"
 		""},
 	 { "QuadratureSpace_swigregister", QuadratureSpace_swigregister, METH_O, NULL},

@@ -7,11 +7,13 @@
 from mfem import path
 import mfem.ser as mfem
 from mfem.ser import intArray
-from os.path import expanduser, join
+from os.path import expanduser, join, dirname
 import numpy as np
 
 order = 1
-meshfile = expanduser(join(path, 'data', 'star.mesh'))
+path = dirname((__file__))
+meshfile = expanduser(join(path, '..', 'data', 'star.mesh'))
+
 mesh = mfem.Mesh(meshfile, 1,1)
 
 dim = mesh.Dimension()

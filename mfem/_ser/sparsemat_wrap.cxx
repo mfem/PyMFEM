@@ -3603,7 +3603,7 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
-SWIGINTERN void mfem_SparseMatrix_Print__SWIG_1(mfem::SparseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_SparseMatrix_Print__SWIG_1(mfem::SparseMatrix *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3614,7 +3614,7 @@ SWIGINTERN void mfem_SparseMatrix_Print__SWIG_1(mfem::SparseMatrix *self,char co
   self -> Print(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_SparseMatrix_PrintGZ(mfem::SparseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_SparseMatrix_PrintGZ(mfem::SparseMatrix *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3625,7 +3625,7 @@ SWIGINTERN void mfem_SparseMatrix_PrintGZ(mfem::SparseMatrix *self,char const *f
   self -> Print(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_SparseMatrix_PrintMatlab__SWIG_1(mfem::SparseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_SparseMatrix_PrintMatlab__SWIG_1(mfem::SparseMatrix *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3636,7 +3636,7 @@ SWIGINTERN void mfem_SparseMatrix_PrintMatlab__SWIG_1(mfem::SparseMatrix *self,c
   self -> PrintMatlab(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_SparseMatrix_PrintMatlabGZ(mfem::SparseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_SparseMatrix_PrintMatlabGZ(mfem::SparseMatrix *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3647,7 +3647,7 @@ SWIGINTERN void mfem_SparseMatrix_PrintMatlabGZ(mfem::SparseMatrix *self,char co
   self -> PrintMatlab(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_SparseMatrix_PrintMM__SWIG_1(mfem::SparseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_SparseMatrix_PrintMM__SWIG_1(mfem::SparseMatrix *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3658,7 +3658,7 @@ SWIGINTERN void mfem_SparseMatrix_PrintMM__SWIG_1(mfem::SparseMatrix *self,char 
   self -> PrintMM(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_SparseMatrix_PrintMMGZ(mfem::SparseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_SparseMatrix_PrintMMGZ(mfem::SparseMatrix *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3669,7 +3669,7 @@ SWIGINTERN void mfem_SparseMatrix_PrintMMGZ(mfem::SparseMatrix *self,char const 
   self -> PrintMM(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_SparseMatrix_PrintCSR__SWIG_1(mfem::SparseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_SparseMatrix_PrintCSR__SWIG_1(mfem::SparseMatrix *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3680,7 +3680,7 @@ SWIGINTERN void mfem_SparseMatrix_PrintCSR__SWIG_1(mfem::SparseMatrix *self,char
   self -> PrintCSR(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_SparseMatrix_PrintCSRGZ(mfem::SparseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_SparseMatrix_PrintCSRGZ(mfem::SparseMatrix *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   
   if (!ofile)
@@ -3695,7 +3695,7 @@ SWIGINTERN void mfem_SparseMatrix_PrintCSRGZ(mfem::SparseMatrix *self,char const
 SWIGINTERN void mfem_SparseMatrix_PrintCSR__SWIG_2(mfem::SparseMatrix *self){
   self -> PrintCSR(std::cout);
   }
-SWIGINTERN void mfem_SparseMatrix_PrintCSR2__SWIG_1(mfem::SparseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_SparseMatrix_PrintCSR2__SWIG_1(mfem::SparseMatrix *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3706,7 +3706,7 @@ SWIGINTERN void mfem_SparseMatrix_PrintCSR2__SWIG_1(mfem::SparseMatrix *self,cha
   self -> PrintCSR2(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_SparseMatrix_PrintCSR2GZ(mfem::SparseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_SparseMatrix_PrintCSR2GZ(mfem::SparseMatrix *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   
   if (!ofile)
@@ -3721,7 +3721,7 @@ SWIGINTERN void mfem_SparseMatrix_PrintCSR2GZ(mfem::SparseMatrix *self,char cons
 SWIGINTERN void mfem_SparseMatrix_PrintCSR2__SWIG_2(mfem::SparseMatrix *self){
   self -> PrintCSR2(std::cout);
   }
-SWIGINTERN void mfem_SparseMatrix_PrintInfo__SWIG_1(mfem::SparseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_SparseMatrix_PrintInfo__SWIG_1(mfem::SparseMatrix *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3732,7 +3732,7 @@ SWIGINTERN void mfem_SparseMatrix_PrintInfo__SWIG_1(mfem::SparseMatrix *self,cha
   self -> PrintInfo(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_SparseMatrix_PrintInfoGZ(mfem::SparseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_SparseMatrix_PrintInfoGZ(mfem::SparseMatrix *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   
   if (!ofile)
@@ -14093,7 +14093,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -14250,7 +14250,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintGZ(PyObject *SWIGUNUSEDPARM(self), 
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -14314,7 +14314,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMatlab__SWIG_1(PyObject *SWIGUNUSED
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -14458,7 +14458,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMatlabGZ(PyObject *SWIGUNUSEDPARM(s
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -14522,7 +14522,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMM__SWIG_1(PyObject *SWIGUNUSEDPARM
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -14666,7 +14666,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMMGZ(PyObject *SWIGUNUSEDPARM(self)
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -14730,7 +14730,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR__SWIG_1(PyObject *SWIGUNUSEDPAR
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -14788,7 +14788,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSRGZ(PyObject *SWIGUNUSEDPARM(self
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -14983,7 +14983,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR2__SWIG_1(PyObject *SWIGUNUSEDPA
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -15041,7 +15041,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR2GZ(PyObject *SWIGUNUSEDPARM(sel
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -15236,7 +15236,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintInfo__SWIG_1(PyObject *SWIGUNUSEDPA
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -15294,7 +15294,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintInfoGZ(PyObject *SWIGUNUSEDPARM(sel
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -16421,35 +16421,35 @@ static PyMethodDef SwigMethods[] = {
 	 { "SparseMatrix_GetDataArray", _wrap_SparseMatrix_GetDataArray, METH_O, "SparseMatrix_GetDataArray(SparseMatrix self) -> PyObject *"},
 	 { "SparseMatrix_Print", _wrap_SparseMatrix_Print, METH_VARARGS, "\n"
 		"SparseMatrix_Print(SparseMatrix self, std::ostream & out=mfem::out, int width_=4)\n"
-		"SparseMatrix_Print(SparseMatrix self, char const * file, int precision=8)\n"
+		"SparseMatrix_Print(SparseMatrix self, char const * file, int precision=16)\n"
 		""},
-	 { "SparseMatrix_PrintGZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintGZ, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_PrintGZ(SparseMatrix self, char const * file, int precision=8)"},
+	 { "SparseMatrix_PrintGZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintGZ, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_PrintGZ(SparseMatrix self, char const * file, int precision=16)"},
 	 { "SparseMatrix_PrintMatlab", _wrap_SparseMatrix_PrintMatlab, METH_VARARGS, "\n"
 		"SparseMatrix_PrintMatlab(SparseMatrix self, std::ostream & out=mfem::out)\n"
-		"SparseMatrix_PrintMatlab(SparseMatrix self, char const * file, int precision=8)\n"
+		"SparseMatrix_PrintMatlab(SparseMatrix self, char const * file, int precision=16)\n"
 		""},
-	 { "SparseMatrix_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_PrintMatlabGZ(SparseMatrix self, char const * file, int precision=8)"},
+	 { "SparseMatrix_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_PrintMatlabGZ(SparseMatrix self, char const * file, int precision=16)"},
 	 { "SparseMatrix_PrintMM", _wrap_SparseMatrix_PrintMM, METH_VARARGS, "\n"
 		"SparseMatrix_PrintMM(SparseMatrix self, std::ostream & out=mfem::out)\n"
-		"SparseMatrix_PrintMM(SparseMatrix self, char const * file, int precision=8)\n"
+		"SparseMatrix_PrintMM(SparseMatrix self, char const * file, int precision=16)\n"
 		""},
-	 { "SparseMatrix_PrintMMGZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintMMGZ, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_PrintMMGZ(SparseMatrix self, char const * file, int precision=8)"},
-	 { "SparseMatrix_PrintCSRGZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintCSRGZ, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_PrintCSRGZ(SparseMatrix self, char const * file, int precision=8)"},
+	 { "SparseMatrix_PrintMMGZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintMMGZ, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_PrintMMGZ(SparseMatrix self, char const * file, int precision=16)"},
+	 { "SparseMatrix_PrintCSRGZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintCSRGZ, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_PrintCSRGZ(SparseMatrix self, char const * file, int precision=16)"},
 	 { "SparseMatrix_PrintCSR", _wrap_SparseMatrix_PrintCSR, METH_VARARGS, "\n"
 		"SparseMatrix_PrintCSR(SparseMatrix self, std::ostream & out)\n"
-		"SparseMatrix_PrintCSR(SparseMatrix self, char const * file, int precision=8)\n"
+		"SparseMatrix_PrintCSR(SparseMatrix self, char const * file, int precision=16)\n"
 		"SparseMatrix_PrintCSR(SparseMatrix self)\n"
 		""},
-	 { "SparseMatrix_PrintCSR2GZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintCSR2GZ, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_PrintCSR2GZ(SparseMatrix self, char const * file, int precision=8)"},
+	 { "SparseMatrix_PrintCSR2GZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintCSR2GZ, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_PrintCSR2GZ(SparseMatrix self, char const * file, int precision=16)"},
 	 { "SparseMatrix_PrintCSR2", _wrap_SparseMatrix_PrintCSR2, METH_VARARGS, "\n"
 		"SparseMatrix_PrintCSR2(SparseMatrix self, std::ostream & out)\n"
-		"SparseMatrix_PrintCSR2(SparseMatrix self, char const * file, int precision=8)\n"
+		"SparseMatrix_PrintCSR2(SparseMatrix self, char const * file, int precision=16)\n"
 		"SparseMatrix_PrintCSR2(SparseMatrix self)\n"
 		""},
-	 { "SparseMatrix_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_PrintInfoGZ(SparseMatrix self, char const * file, int precision=8)"},
+	 { "SparseMatrix_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_PrintInfoGZ(SparseMatrix self, char const * file, int precision=16)"},
 	 { "SparseMatrix_PrintInfo", _wrap_SparseMatrix_PrintInfo, METH_VARARGS, "\n"
 		"SparseMatrix_PrintInfo(SparseMatrix self, std::ostream & out)\n"
-		"SparseMatrix_PrintInfo(SparseMatrix self, char const * file, int precision=8)\n"
+		"SparseMatrix_PrintInfo(SparseMatrix self, char const * file, int precision=16)\n"
 		"SparseMatrix_PrintInfo(SparseMatrix self)\n"
 		""},
 	 { "SparseMatrix_swigregister", SparseMatrix_swigregister, METH_O, NULL},
@@ -16672,35 +16672,35 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SparseMatrix_GetDataArray", _wrap_SparseMatrix_GetDataArray, METH_O, "GetDataArray(SparseMatrix self) -> PyObject *"},
 	 { "SparseMatrix_Print", _wrap_SparseMatrix_Print, METH_VARARGS, "\n"
 		"Print(SparseMatrix self, std::ostream & out=mfem::out, int width_=4)\n"
-		"Print(SparseMatrix self, char const * file, int precision=8)\n"
+		"Print(SparseMatrix self, char const * file, int precision=16)\n"
 		""},
-	 { "SparseMatrix_PrintGZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(SparseMatrix self, char const * file, int precision=8)"},
+	 { "SparseMatrix_PrintGZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(SparseMatrix self, char const * file, int precision=16)"},
 	 { "SparseMatrix_PrintMatlab", _wrap_SparseMatrix_PrintMatlab, METH_VARARGS, "\n"
 		"PrintMatlab(SparseMatrix self, std::ostream & out=mfem::out)\n"
-		"PrintMatlab(SparseMatrix self, char const * file, int precision=8)\n"
+		"PrintMatlab(SparseMatrix self, char const * file, int precision=16)\n"
 		""},
-	 { "SparseMatrix_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "PrintMatlabGZ(SparseMatrix self, char const * file, int precision=8)"},
+	 { "SparseMatrix_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "PrintMatlabGZ(SparseMatrix self, char const * file, int precision=16)"},
 	 { "SparseMatrix_PrintMM", _wrap_SparseMatrix_PrintMM, METH_VARARGS, "\n"
 		"PrintMM(SparseMatrix self, std::ostream & out=mfem::out)\n"
-		"PrintMM(SparseMatrix self, char const * file, int precision=8)\n"
+		"PrintMM(SparseMatrix self, char const * file, int precision=16)\n"
 		""},
-	 { "SparseMatrix_PrintMMGZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintMMGZ, METH_VARARGS|METH_KEYWORDS, "PrintMMGZ(SparseMatrix self, char const * file, int precision=8)"},
-	 { "SparseMatrix_PrintCSRGZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintCSRGZ, METH_VARARGS|METH_KEYWORDS, "PrintCSRGZ(SparseMatrix self, char const * file, int precision=8)"},
+	 { "SparseMatrix_PrintMMGZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintMMGZ, METH_VARARGS|METH_KEYWORDS, "PrintMMGZ(SparseMatrix self, char const * file, int precision=16)"},
+	 { "SparseMatrix_PrintCSRGZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintCSRGZ, METH_VARARGS|METH_KEYWORDS, "PrintCSRGZ(SparseMatrix self, char const * file, int precision=16)"},
 	 { "SparseMatrix_PrintCSR", _wrap_SparseMatrix_PrintCSR, METH_VARARGS, "\n"
 		"PrintCSR(SparseMatrix self, std::ostream & out)\n"
-		"PrintCSR(SparseMatrix self, char const * file, int precision=8)\n"
+		"PrintCSR(SparseMatrix self, char const * file, int precision=16)\n"
 		"PrintCSR(SparseMatrix self)\n"
 		""},
-	 { "SparseMatrix_PrintCSR2GZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintCSR2GZ, METH_VARARGS|METH_KEYWORDS, "PrintCSR2GZ(SparseMatrix self, char const * file, int precision=8)"},
+	 { "SparseMatrix_PrintCSR2GZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintCSR2GZ, METH_VARARGS|METH_KEYWORDS, "PrintCSR2GZ(SparseMatrix self, char const * file, int precision=16)"},
 	 { "SparseMatrix_PrintCSR2", _wrap_SparseMatrix_PrintCSR2, METH_VARARGS, "\n"
 		"PrintCSR2(SparseMatrix self, std::ostream & out)\n"
-		"PrintCSR2(SparseMatrix self, char const * file, int precision=8)\n"
+		"PrintCSR2(SparseMatrix self, char const * file, int precision=16)\n"
 		"PrintCSR2(SparseMatrix self)\n"
 		""},
-	 { "SparseMatrix_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "PrintInfoGZ(SparseMatrix self, char const * file, int precision=8)"},
+	 { "SparseMatrix_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "PrintInfoGZ(SparseMatrix self, char const * file, int precision=16)"},
 	 { "SparseMatrix_PrintInfo", _wrap_SparseMatrix_PrintInfo, METH_VARARGS, "\n"
 		"PrintInfo(SparseMatrix self, std::ostream & out)\n"
-		"PrintInfo(SparseMatrix self, char const * file, int precision=8)\n"
+		"PrintInfo(SparseMatrix self, char const * file, int precision=16)\n"
 		"PrintInfo(SparseMatrix self)\n"
 		""},
 	 { "SparseMatrix_swigregister", SparseMatrix_swigregister, METH_O, NULL},

@@ -3968,7 +3968,7 @@ SWIGINTERN double mfem_Mesh_GetScaledJacobian(mfem::Mesh *self,int i,int sd=2){
       }
     return attr;
   }
-SWIGINTERN void mfem_Mesh_PrintInfo__SWIG_1(mfem::Mesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Mesh_PrintInfo__SWIG_1(mfem::Mesh *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3979,7 +3979,7 @@ SWIGINTERN void mfem_Mesh_PrintInfo__SWIG_1(mfem::Mesh *self,char const *file,in
   self -> PrintInfo(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_Mesh_PrintInfoGZ(mfem::Mesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Mesh_PrintInfoGZ(mfem::Mesh *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3990,7 +3990,7 @@ SWIGINTERN void mfem_Mesh_PrintInfoGZ(mfem::Mesh *self,char const *file,int prec
   self -> PrintInfo(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_Mesh_Print__SWIG_1(mfem::Mesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Mesh_Print__SWIG_1(mfem::Mesh *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -4001,7 +4001,7 @@ SWIGINTERN void mfem_Mesh_Print__SWIG_1(mfem::Mesh *self,char const *file,int pr
   self -> Print(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_Mesh_PrintGZ(mfem::Mesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Mesh_PrintGZ(mfem::Mesh *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -4012,7 +4012,7 @@ SWIGINTERN void mfem_Mesh_PrintGZ(mfem::Mesh *self,char const *file,int precisio
   self -> Print(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_Mesh_PrintXG__SWIG_1(mfem::Mesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Mesh_PrintXG__SWIG_1(mfem::Mesh *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -4023,7 +4023,7 @@ SWIGINTERN void mfem_Mesh_PrintXG__SWIG_1(mfem::Mesh *self,char const *file,int 
   self -> PrintXG(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_Mesh_PrintXGGZ(mfem::Mesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Mesh_PrintXGGZ(mfem::Mesh *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -4034,7 +4034,7 @@ SWIGINTERN void mfem_Mesh_PrintXGGZ(mfem::Mesh *self,char const *file,int precis
   self -> PrintXG(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_Mesh_PrintVTK__SWIG_2(mfem::Mesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Mesh_PrintVTK__SWIG_2(mfem::Mesh *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -4045,7 +4045,7 @@ SWIGINTERN void mfem_Mesh_PrintVTK__SWIG_2(mfem::Mesh *self,char const *file,int
   self -> PrintVTK(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_Mesh_PrintVTKGZ(mfem::Mesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Mesh_PrintVTKGZ(mfem::Mesh *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -21222,7 +21222,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -21360,7 +21360,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfoGZ(PyObject *SWIGUNUSEDPARM(self), PyOb
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -21418,7 +21418,7 @@ SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -21556,7 +21556,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintGZ(PyObject *SWIGUNUSEDPARM(self), PyObject
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -21614,7 +21614,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -21752,7 +21752,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXGGZ(PyObject *SWIGUNUSEDPARM(self), PyObje
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -21810,7 +21810,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_2(PyObject *SWIGUNUSEDPARM(self),
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -22008,7 +22008,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTKGZ(PyObject *SWIGUNUSEDPARM(self), PyObj
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -24212,25 +24212,25 @@ static PyMethodDef SwigMethods[] = {
 	 { "Mesh_GetScaledJacobian", (PyCFunction)(void(*)(void))_wrap_Mesh_GetScaledJacobian, METH_VARARGS|METH_KEYWORDS, "Mesh_GetScaledJacobian(Mesh self, int i, int sd=2) -> double"},
 	 { "Mesh_PrintInfo", _wrap_Mesh_PrintInfo, METH_VARARGS, "\n"
 		"Mesh_PrintInfo(Mesh self, std::ostream & out=out)\n"
-		"Mesh_PrintInfo(Mesh self, char const * file, int precision=8)\n"
+		"Mesh_PrintInfo(Mesh self, char const * file, int precision=16)\n"
 		""},
-	 { "Mesh_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "Mesh_PrintInfoGZ(Mesh self, char const * file, int precision=8)"},
+	 { "Mesh_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "Mesh_PrintInfoGZ(Mesh self, char const * file, int precision=16)"},
 	 { "Mesh_Print", _wrap_Mesh_Print, METH_VARARGS, "\n"
 		"Mesh_Print(Mesh self, std::ostream & out=out)\n"
-		"Mesh_Print(Mesh self, char const * file, int precision=8)\n"
+		"Mesh_Print(Mesh self, char const * file, int precision=16)\n"
 		""},
-	 { "Mesh_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintGZ, METH_VARARGS|METH_KEYWORDS, "Mesh_PrintGZ(Mesh self, char const * file, int precision=8)"},
+	 { "Mesh_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintGZ, METH_VARARGS|METH_KEYWORDS, "Mesh_PrintGZ(Mesh self, char const * file, int precision=16)"},
 	 { "Mesh_PrintXG", _wrap_Mesh_PrintXG, METH_VARARGS, "\n"
 		"Mesh_PrintXG(Mesh self, std::ostream & out=out)\n"
-		"Mesh_PrintXG(Mesh self, char const * file, int precision=8)\n"
+		"Mesh_PrintXG(Mesh self, char const * file, int precision=16)\n"
 		""},
-	 { "Mesh_PrintXGGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintXGGZ, METH_VARARGS|METH_KEYWORDS, "Mesh_PrintXGGZ(Mesh self, char const * file, int precision=8)"},
+	 { "Mesh_PrintXGGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintXGGZ, METH_VARARGS|METH_KEYWORDS, "Mesh_PrintXGGZ(Mesh self, char const * file, int precision=16)"},
 	 { "Mesh_PrintVTK", _wrap_Mesh_PrintVTK, METH_VARARGS, "\n"
 		"Mesh_PrintVTK(Mesh self, std::ostream & out)\n"
 		"Mesh_PrintVTK(Mesh self, std::ostream & out, int ref, int field_data=0)\n"
-		"Mesh_PrintVTK(Mesh self, char const * file, int precision=8)\n"
+		"Mesh_PrintVTK(Mesh self, char const * file, int precision=16)\n"
 		""},
-	 { "Mesh_PrintVTKGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintVTKGZ, METH_VARARGS|METH_KEYWORDS, "Mesh_PrintVTKGZ(Mesh self, char const * file, int precision=8)"},
+	 { "Mesh_PrintVTKGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintVTKGZ, METH_VARARGS|METH_KEYWORDS, "Mesh_PrintVTKGZ(Mesh self, char const * file, int precision=16)"},
 	 { "Mesh_swigregister", Mesh_swigregister, METH_O, NULL},
 	 { "Mesh_swiginit", Mesh_swiginit, METH_VARARGS, NULL},
 	 { "__lshift__", _wrap___lshift__, METH_VARARGS, "\n"
@@ -24601,25 +24601,25 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Mesh_GetScaledJacobian", (PyCFunction)(void(*)(void))_wrap_Mesh_GetScaledJacobian, METH_VARARGS|METH_KEYWORDS, "GetScaledJacobian(Mesh self, int i, int sd=2) -> double"},
 	 { "Mesh_PrintInfo", _wrap_Mesh_PrintInfo, METH_VARARGS, "\n"
 		"PrintInfo(Mesh self, std::ostream & out=out)\n"
-		"PrintInfo(Mesh self, char const * file, int precision=8)\n"
+		"PrintInfo(Mesh self, char const * file, int precision=16)\n"
 		""},
-	 { "Mesh_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "PrintInfoGZ(Mesh self, char const * file, int precision=8)"},
+	 { "Mesh_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "PrintInfoGZ(Mesh self, char const * file, int precision=16)"},
 	 { "Mesh_Print", _wrap_Mesh_Print, METH_VARARGS, "\n"
 		"Print(Mesh self, std::ostream & out=out)\n"
-		"Print(Mesh self, char const * file, int precision=8)\n"
+		"Print(Mesh self, char const * file, int precision=16)\n"
 		""},
-	 { "Mesh_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(Mesh self, char const * file, int precision=8)"},
+	 { "Mesh_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(Mesh self, char const * file, int precision=16)"},
 	 { "Mesh_PrintXG", _wrap_Mesh_PrintXG, METH_VARARGS, "\n"
 		"PrintXG(Mesh self, std::ostream & out=out)\n"
-		"PrintXG(Mesh self, char const * file, int precision=8)\n"
+		"PrintXG(Mesh self, char const * file, int precision=16)\n"
 		""},
-	 { "Mesh_PrintXGGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintXGGZ, METH_VARARGS|METH_KEYWORDS, "PrintXGGZ(Mesh self, char const * file, int precision=8)"},
+	 { "Mesh_PrintXGGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintXGGZ, METH_VARARGS|METH_KEYWORDS, "PrintXGGZ(Mesh self, char const * file, int precision=16)"},
 	 { "Mesh_PrintVTK", _wrap_Mesh_PrintVTK, METH_VARARGS, "\n"
 		"PrintVTK(Mesh self, std::ostream & out)\n"
 		"PrintVTK(Mesh self, std::ostream & out, int ref, int field_data=0)\n"
-		"PrintVTK(Mesh self, char const * file, int precision=8)\n"
+		"PrintVTK(Mesh self, char const * file, int precision=16)\n"
 		""},
-	 { "Mesh_PrintVTKGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintVTKGZ, METH_VARARGS|METH_KEYWORDS, "PrintVTKGZ(Mesh self, char const * file, int precision=8)"},
+	 { "Mesh_PrintVTKGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintVTKGZ, METH_VARARGS|METH_KEYWORDS, "PrintVTKGZ(Mesh self, char const * file, int precision=16)"},
 	 { "Mesh_swigregister", Mesh_swigregister, METH_O, NULL},
 	 { "Mesh_swiginit", Mesh_swiginit, METH_VARARGS, NULL},
 	 { "__lshift__", _wrap___lshift__, METH_VARARGS, "\n"

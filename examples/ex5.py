@@ -10,12 +10,13 @@ from os.path import expanduser, join
 import numpy as np
 from numpy import sin, cos, exp
 
-#### time.clock deprecated and removed in PY3.8
+# time.clock deprecated and removed in PY3.8
 import time
 try:
     clock = time.process_time
 except AttributeError:
     clock = time.clock
+
 
 def run(order=1,
         meshfile='',
@@ -23,54 +24,60 @@ def run(order=1,
         device='cpu',
         numba=False,
         pa=False):
-    
+
     def pFunc_exact(x):
-        xi = float(x[0]); yi = float(x[1]); zi = 0.0
-        if len(x) == 3: zi = x[2]
-        from numpy import sin, cos, exp    
-        return exp(xi)*sin(yi)*cos(zi) 
+        xi = float(x[0])
+        yi = float(x[1])
+        zi = 0.0
+        if len(x) == 3:
+            zi = x[2]
+        from numpy import sin, cos, exp
+        return exp(xi)*sin(yi)*cos(zi)
 
     class uFunc_ex(mfem.VectorPyCoefficient):
-       def EvalValue(self, x):
-           xi = float(x[0]); yi = float(x[1]); zi = 0.0
-           if len(x) == 3: zi = x[2]
-           ret = [- exp(xi)*sin(yi)*cos(zi),
-                  - exp(xi)*cos(yi)*cos(zi)]
-           if len(x) == 3:
-              ret.append(exp(xi)*sin(yi)*sin(zi))
-           return ret
+        def EvalValue(self, x):
+            xi = float(x[0])
+            yi = float(x[1])
+            zi = 0.0
+            if len(x) == 3:
+                zi = x[2]
+            ret = [- exp(xi)*sin(yi)*cos(zi),
+                   - exp(xi)*cos(yi)*cos(zi)]
+            if len(x) == 3:
+                ret.append(exp(xi)*sin(yi)*sin(zi))
+            return ret
 
     class pFunc_ex(mfem.PyCoefficient):
-       def EvalValue(self, x):
-           return  pFunc_exact(x)
+        def EvalValue(self, x):
+            return pFunc_exact(x)
 
     class fFunc(mfem.VectorPyCoefficient):
-       def EvalValue(self, x):
-           if len(x) == 3:
-               return [0., 0., 0.]
-           else:
-               return [0., 0.]
+        def EvalValue(self, x):
+            if len(x) == 3:
+                return [0., 0., 0.]
+            else:
+                return [0., 0.]
 
     class gFunc(mfem.PyCoefficient):
-       def EvalValue(self, x):
-           if len(x) == 3: return  -pFunc_exact(x)       
-           return 0.
+        def EvalValue(self, x):
+            if len(x) == 3:
+                return -pFunc_exact(x)
+            return 0.
 
     class f_natural(mfem.PyCoefficient):
-       def EvalValue(self, x):
-           return -pFunc_exact(x)
-
+        def EvalValue(self, x):
+            return -pFunc_exact(x)
 
     device = mfem.Device(device)
     device.Print()
-       
-    mesh = mfem.Mesh(meshfile, 1,1)
+
+    mesh = mfem.Mesh(meshfile, 1, 1)
 
     dim = mesh.Dimension()
 
     ref_levels = int(np.floor(np.log(10000./mesh.GetNE())/np.log(2.)/dim))
     for x in range(ref_levels):
-       mesh.UniformRefinement();
+        mesh.UniformRefinement()
 
     hdiv_coll = mfem.RT_FECollection(order, dim)
     l2_coll = mfem.L2_FECollection(order, dim)
@@ -104,8 +111,9 @@ def run(order=1,
     fform = mfem.LinearForm()
     fform.Update(R_space, rhs.GetBlock(0), 0)
     fform.AddDomainIntegrator(mfem.VectorFEDomainLFIntegrator(fcoeff))
-    fform.AddBoundaryIntegrator(mfem.VectorFEBoundaryFluxLFIntegrator(fnatcoeff))
-    fform.Assemble();
+    fform.AddBoundaryIntegrator(
+        mfem.VectorFEBoundaryFluxLFIntegrator(fnatcoeff))
+    fform.Assemble()
 
     gform = mfem.LinearForm()
     gform.Update(W_space, rhs.GetBlock(1), 0)
@@ -116,35 +124,38 @@ def run(order=1,
     bVarf = mfem.MixedBilinearForm(R_space, W_space)
 
     mVarf.AddDomainIntegrator(mfem.VectorFEMassIntegrator(k))
-    if pa: mVarf.SetAssemblyLevel(mfem.AssemblyLevel_PARTIAL)
-    mVarf.Assemble();
-    if not pa: mVarf.Finalize();
+    if pa:
+        mVarf.SetAssemblyLevel(mfem.AssemblyLevel_PARTIAL)
+    mVarf.Assemble()
+    if not pa:
+        mVarf.Finalize()
 
-    bVarf.AddDomainIntegrator( mfem.VectorFEDivergenceIntegrator())
-    if pa: bVarf.SetAssemblyLevel(mfem.AssemblyLevel_PARTIAL)
+    bVarf.AddDomainIntegrator(mfem.VectorFEDivergenceIntegrator())
+    if pa:
+        bVarf.SetAssemblyLevel(mfem.AssemblyLevel_PARTIAL)
     bVarf.Assemble()
-    if not pa: bVarf.Finalize()
+    if not pa:
+        bVarf.Finalize()
 
     darcyOp = mfem.BlockOperator(block_offsets)
 
     if pa:
         Bt = mfem.TransposeOperator(bVarf)
-        
-        darcyOp.SetBlock(0,0, mVarf)
-        darcyOp.SetBlock(0,1, Bt, -1)
-        darcyOp.SetBlock(1,0, bVarf, -1)
+
+        darcyOp.SetBlock(0, 0, mVarf)
+        darcyOp.SetBlock(0, 1, Bt, -1)
+        darcyOp.SetBlock(1, 0, bVarf, -1)
     else:
-        M = mVarf.SpMat()        
+        M = mVarf.SpMat()
         B = bVarf.SpMat()
-        B *= -1;
+        B *= -1
         if mfem.Device.IsEnabled():
             B = mfem.Transpose(B)
         Bt = mfem.TransposeOperator(B)
 
-        darcyOp.SetBlock(0,0, M)
-        darcyOp.SetBlock(0,1, Bt)
-        darcyOp.SetBlock(1,0, B)
-
+        darcyOp.SetBlock(0, 0, M)
+        darcyOp.SetBlock(0, 1, Bt)
+        darcyOp.SetBlock(1, 0, B)
 
     Md = mfem.Vector(mVarf.Height())
     darcyPrec = mfem.BlockDiagonalPreconditioner(block_offsets)
@@ -155,7 +166,7 @@ def run(order=1,
         invMd = mfem.Vector(mVarf.Height())
 
         for i in range(invMd.Size()):
-           invMd[i] = 1.0/Md_host[i]
+            invMd[i] = 1.0/Md_host[i]
 
         BMBt_diag = mfem.Vector(bVarf.Height())
         bVarf.AssembleDiagonal_ADAt(invMd, BMBt_diag)
@@ -163,23 +174,25 @@ def run(order=1,
         invM = mfem.OperatorJacobiSmoother(Md, ess_tdof_list)
         invS = mfem.OperatorJacobiSmoother(BMBt_diag, ess_tdof_list)
     else:
-        MinvBt = mfem.Transpose(B)    
+        MinvBt = mfem.Transpose(B)
         M.GetDiag(Md)
 
         for i in range(Md.Size()):
-           MinvBt.ScaleRow(i, 1/Md[i])
+            MinvBt.ScaleRow(i, 1/Md[i])
         S = mfem.Mult(B, MinvBt)
 
         invM = mfem.DSmoother(M)
         invS = mfem.GSSmoother(S)
-    
-    invM.iterative_mode = False;
-    invS.iterative_mode = False;
 
-    darcyPrec.SetDiagonalBlock(0, invM);
-    darcyPrec.SetDiagonalBlock(1, invS);
+    invM.iterative_mode = False
+    invS.iterative_mode = False
 
-    maxIter = 1000; rtol = 1e-6; atol = 1e-10
+    darcyPrec.SetDiagonalBlock(0, invM)
+    darcyPrec.SetDiagonalBlock(1, invS)
+
+    maxIter = 1000
+    rtol = 1e-6
+    atol = 1e-10
 
     stime = clock()
     solver = mfem.MINRESSolver()
@@ -195,26 +208,27 @@ def run(order=1,
     solve_time = clock() - stime
 
     if solver.GetConverged():
-       print("MINRES converged in " + str(solver.GetNumIterations()) + 
-          " iterations with a residual norm of " + str(solver.GetFinalNorm()))
+        print("MINRES converged in " + str(solver.GetNumIterations()) +
+              " iterations with a residual norm of " + str(solver.GetFinalNorm()))
     else:
-       print("MINRES did not converge in " + str(solver.GetNumIterations()) + 
-             " iterations. Residual norm is " + str(solver.GetFinalNorm()))
-    print("MINRES solver took " + str(solve_time) +  "s.")
+        print("MINRES did not converge in " + str(solver.GetNumIterations()) +
+              " iterations. Residual norm is " + str(solver.GetFinalNorm()))
+    print("MINRES solver took " + str(solve_time) + "s.")
 
-    u = mfem.GridFunction(); p = mfem.GridFunction()
+    u = mfem.GridFunction()
+    p = mfem.GridFunction()
     u.MakeRef(R_space, x.GetBlock(0), 0)
     p.MakeRef(W_space, x.GetBlock(1), 0)
 
-    order_quad = max(2, 2*order+1);
+    order_quad = max(2, 2*order+1)
 
-    irs =[mfem.IntRules.Get(i, order_quad)
-          for i in range(mfem.Geometry.NumGeom)]
+    irs = [mfem.IntRules.Get(i, order_quad)
+           for i in range(mfem.Geometry.NumGeom)]
 
     norm_p = mfem.ComputeLpNorm(2, pcoeff, mesh, irs)
     norm_u = mfem.ComputeLpNorm(2, ucoeff, mesh, irs)
-    err_u  = u.ComputeL2Error(ucoeff, irs)
-    err_p  = p.ComputeL2Error(pcoeff, irs)
+    err_u = u.ComputeL2Error(ucoeff, irs)
+    err_p = p.ComputeL2Error(pcoeff, irs)
 
     print("|| u_h - u_ex || / || u_ex || = " + str(err_u / norm_u))
     print("|| p_h - p_ex || / || p_ex || = " + str(err_p / norm_p))
@@ -244,12 +258,13 @@ def run(order=1,
         sout_u.precision(8)
         sout_u << "solution\n" << mesh << u << "window_title 'Velocity'\n"
         sout_p = mfem.socketstream("localhost", 19916)
-        sout_p.precision(8)        
-        sout_p << "solution\n" << mesh << p << "window_title 'Pressure'\n"         
-        
+        sout_p.precision(8)
+        sout_p << "solution\n" << mesh << p << "window_title 'Pressure'\n"
+
+
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
-    
+
     parser = ArgParser(description='Ex1 (Laplace Problem)')
     parser.add_argument('-m', '--mesh',
                         default='star.mesh',
@@ -272,7 +287,8 @@ if __name__ == "__main__":
     parser.print_options(args)
 
     order = args.order
-    meshfile = expanduser(join(os.path.dirname(__file__), '..', 'data', args.mesh))
+    meshfile = expanduser(
+        join(os.path.dirname(__file__), '..', 'data', args.mesh))
     visualization = args.visualization
     device = args.device
     pa = args.partial_assembly

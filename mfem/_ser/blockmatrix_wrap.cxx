@@ -3537,7 +3537,7 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
-SWIGINTERN void mfem_BlockMatrix_PrintMatlab__SWIG_1(mfem::BlockMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_BlockMatrix_PrintMatlab__SWIG_1(mfem::BlockMatrix *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3548,7 +3548,7 @@ SWIGINTERN void mfem_BlockMatrix_PrintMatlab__SWIG_1(mfem::BlockMatrix *self,cha
   self -> PrintMatlab(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_BlockMatrix_PrintMatlabGZ(mfem::BlockMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_BlockMatrix_PrintMatlabGZ(mfem::BlockMatrix *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -5689,7 +5689,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_PrintMatlab__SWIG_1(PyObject *SWIGUNUSEDP
   PyObject *resultobj = 0;
   mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -5833,7 +5833,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_PrintMatlabGZ(PyObject *SWIGUNUSEDPARM(se
   PyObject *resultobj = 0;
   mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -5954,9 +5954,9 @@ static PyMethodDef SwigMethods[] = {
 	 { "BlockMatrix_owns_blocks_get", _wrap_BlockMatrix_owns_blocks_get, METH_O, "BlockMatrix_owns_blocks_get(BlockMatrix self) -> int"},
 	 { "BlockMatrix_PrintMatlab", _wrap_BlockMatrix_PrintMatlab, METH_VARARGS, "\n"
 		"BlockMatrix_PrintMatlab(BlockMatrix self, std::ostream & os=mfem::out)\n"
-		"BlockMatrix_PrintMatlab(BlockMatrix self, char const * file, int precision=8)\n"
+		"BlockMatrix_PrintMatlab(BlockMatrix self, char const * file, int precision=16)\n"
 		""},
-	 { "BlockMatrix_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "BlockMatrix_PrintMatlabGZ(BlockMatrix self, char const * file, int precision=8)"},
+	 { "BlockMatrix_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "BlockMatrix_PrintMatlabGZ(BlockMatrix self, char const * file, int precision=16)"},
 	 { "BlockMatrix_swigregister", BlockMatrix_swigregister, METH_O, NULL},
 	 { "BlockMatrix_swiginit", BlockMatrix_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
@@ -6012,9 +6012,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "BlockMatrix_owns_blocks_get", _wrap_BlockMatrix_owns_blocks_get, METH_O, "BlockMatrix_owns_blocks_get(BlockMatrix self) -> int"},
 	 { "BlockMatrix_PrintMatlab", _wrap_BlockMatrix_PrintMatlab, METH_VARARGS, "\n"
 		"PrintMatlab(BlockMatrix self, std::ostream & os=mfem::out)\n"
-		"PrintMatlab(BlockMatrix self, char const * file, int precision=8)\n"
+		"PrintMatlab(BlockMatrix self, char const * file, int precision=16)\n"
 		""},
-	 { "BlockMatrix_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "PrintMatlabGZ(BlockMatrix self, char const * file, int precision=8)"},
+	 { "BlockMatrix_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "PrintMatlabGZ(BlockMatrix self, char const * file, int precision=16)"},
 	 { "BlockMatrix_swigregister", BlockMatrix_swigregister, METH_O, NULL},
 	 { "BlockMatrix_swiginit", BlockMatrix_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }

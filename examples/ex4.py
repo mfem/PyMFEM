@@ -20,7 +20,7 @@ kappa = np.pi*freq
 order = 1
 
 
-path = dirname(dirname(__file__))
+path = dirname((__file__))
 meshfile = expanduser(join(path, '..', 'data', 'star.mesh'))
 
 mesh = mfem.Mesh(meshfile, 1,1)

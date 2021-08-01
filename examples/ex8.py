@@ -15,7 +15,7 @@
       ex8.py -m star-surf.mesh -o 2
       ex8.py -m mobius-strip.mesh
 '''
-from os.path import expanduser, join
+from os.path import expanduser, join, dirname
 import numpy as np
 from numpy import sin, cos, exp, sqrt
 
@@ -42,8 +42,8 @@ visualization = args.visualization
 #   2. Read the mesh from the given mesh file. We can handle triangular,
 #      quadrilateral, tetrahedral, hexahedral, surface and volume meshes with
 #      the same code.
-
-meshfile = args.mesh
+path = dirname((__file__))
+meshfile = expanduser(join(path, '..', 'data', args.mesh))
 mesh = mfem.Mesh(meshfile, 1,1)
 
 dim = mesh.Dimension()
@@ -134,8 +134,13 @@ Bhat.Finalize()
 
 Sinv = mfem.BilinearForm(test_space)
 Sum = mfem.SumIntegrator()
-Sum.AddIntegrator(mfem.DiffusionIntegrator(one))
-Sum.AddIntegrator(mfem.MassIntegrator(one))
+a = mfem.DiffusionIntegrator(one)
+b = mfem.MassIntegrator(one)
+#Sum.AddIntegrator(mfem.DiffusionIntegrator(one))
+#Sum.AddIntegrator(mfem.MassIntegrator(one))
+Sum.AddIntegrator(a)
+Sum.AddIntegrator(b)
+
 Sinv.AddDomainIntegrator(mfem.InverseIntegrator(Sum))
 Sinv.Assemble()
 Sinv.Finalize()

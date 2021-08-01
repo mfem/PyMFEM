@@ -3822,7 +3822,7 @@ SWIGINTERN mfem::GridFunction &mfem_GridFunction_idiv(mfem::GridFunction *self,d
       * self /= c;
       return *self;
    }
-SWIGINTERN void mfem_GridFunction_Save__SWIG_2(mfem::GridFunction *self,char const *file,int precision=8){
+SWIGINTERN void mfem_GridFunction_Save__SWIG_2(mfem::GridFunction *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3833,7 +3833,7 @@ SWIGINTERN void mfem_GridFunction_Save__SWIG_2(mfem::GridFunction *self,char con
   self -> Save(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_GridFunction_SaveGZ(mfem::GridFunction *self,char const *file,int precision=8){
+SWIGINTERN void mfem_GridFunction_SaveGZ(mfem::GridFunction *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3851,7 +3851,7 @@ SWIGINTERNINLINE PyObject*
   return PyBool_FromLong(value ? 1 : 0);
 }
 
-SWIGINTERN void mfem_QuadratureFunction_Save__SWIG_1(mfem::QuadratureFunction *self,char const *file,int precision=8){
+SWIGINTERN void mfem_QuadratureFunction_Save__SWIG_1(mfem::QuadratureFunction *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3862,7 +3862,7 @@ SWIGINTERN void mfem_QuadratureFunction_Save__SWIG_1(mfem::QuadratureFunction *s
   self -> Save(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_QuadratureFunction_SaveGZ(mfem::QuadratureFunction *self,char const *file,int precision=8){
+SWIGINTERN void mfem_QuadratureFunction_SaveGZ(mfem::QuadratureFunction *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -14527,7 +14527,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_Save__SWIG_2(PyObject *SWIGUNUSEDPARM(se
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -14695,7 +14695,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveGZ(PyObject *SWIGUNUSEDPARM(self), P
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -16693,7 +16693,7 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_Save__SWIG_1(PyObject *SWIGUNUSEDP
   PyObject *resultobj = 0;
   mfem::QuadratureFunction *arg1 = (mfem::QuadratureFunction *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -16834,7 +16834,7 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_SaveGZ(PyObject *SWIGUNUSEDPARM(se
   PyObject *resultobj = 0;
   mfem::QuadratureFunction *arg1 = (mfem::QuadratureFunction *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -17762,9 +17762,9 @@ static PyMethodDef SwigMethods[] = {
 	 { "GridFunction_Save", _wrap_GridFunction_Save, METH_VARARGS, "\n"
 		"GridFunction_Save(GridFunction self, std::ostream & out)\n"
 		"GridFunction_Save(GridFunction self, char const * fname, int precision=16)\n"
-		"GridFunction_Save(GridFunction self, char const * file, int precision=8)\n"
+		"GridFunction_Save(GridFunction self, char const * file, int precision=16)\n"
 		""},
-	 { "GridFunction_SaveGZ", (PyCFunction)(void(*)(void))_wrap_GridFunction_SaveGZ, METH_VARARGS|METH_KEYWORDS, "GridFunction_SaveGZ(GridFunction self, char const * file, int precision=8)"},
+	 { "GridFunction_SaveGZ", (PyCFunction)(void(*)(void))_wrap_GridFunction_SaveGZ, METH_VARARGS|METH_KEYWORDS, "GridFunction_SaveGZ(GridFunction self, char const * file, int precision=16)"},
 	 { "GridFunction_swigregister", GridFunction_swigregister, METH_O, NULL},
 	 { "GridFunction_swiginit", GridFunction_swiginit, METH_VARARGS, NULL},
 	 { "new_JumpScaling", (PyCFunction)(void(*)(void))_wrap_new_JumpScaling, METH_VARARGS|METH_KEYWORDS, "new_JumpScaling(double nu_=1.0, mfem::JumpScaling::JumpScalingType type_=CONSTANT) -> JumpScaling"},
@@ -17800,9 +17800,9 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "QuadratureFunction_Save", _wrap_QuadratureFunction_Save, METH_VARARGS, "\n"
 		"QuadratureFunction_Save(QuadratureFunction self, std::ostream & out)\n"
-		"QuadratureFunction_Save(QuadratureFunction self, char const * file, int precision=8)\n"
+		"QuadratureFunction_Save(QuadratureFunction self, char const * file, int precision=16)\n"
 		""},
-	 { "QuadratureFunction_SaveGZ", (PyCFunction)(void(*)(void))_wrap_QuadratureFunction_SaveGZ, METH_VARARGS|METH_KEYWORDS, "QuadratureFunction_SaveGZ(QuadratureFunction self, char const * file, int precision=8)"},
+	 { "QuadratureFunction_SaveGZ", (PyCFunction)(void(*)(void))_wrap_QuadratureFunction_SaveGZ, METH_VARARGS|METH_KEYWORDS, "QuadratureFunction_SaveGZ(QuadratureFunction self, char const * file, int precision=16)"},
 	 { "QuadratureFunction_swigregister", QuadratureFunction_swigregister, METH_O, NULL},
 	 { "QuadratureFunction_swiginit", QuadratureFunction_swiginit, METH_VARARGS, NULL},
 	 { "__lshift__", _wrap___lshift__, METH_VARARGS, "\n"
@@ -18004,9 +18004,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "GridFunction_Save", _wrap_GridFunction_Save, METH_VARARGS, "\n"
 		"Save(GridFunction self, std::ostream & out)\n"
 		"Save(GridFunction self, char const * fname, int precision=16)\n"
-		"Save(GridFunction self, char const * file, int precision=8)\n"
+		"Save(GridFunction self, char const * file, int precision=16)\n"
 		""},
-	 { "GridFunction_SaveGZ", (PyCFunction)(void(*)(void))_wrap_GridFunction_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(GridFunction self, char const * file, int precision=8)"},
+	 { "GridFunction_SaveGZ", (PyCFunction)(void(*)(void))_wrap_GridFunction_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(GridFunction self, char const * file, int precision=16)"},
 	 { "GridFunction_swigregister", GridFunction_swigregister, METH_O, NULL},
 	 { "GridFunction_swiginit", GridFunction_swiginit, METH_VARARGS, NULL},
 	 { "new_JumpScaling", (PyCFunction)(void(*)(void))_wrap_new_JumpScaling, METH_VARARGS|METH_KEYWORDS, "new_JumpScaling(double nu_=1.0, mfem::JumpScaling::JumpScalingType type_=CONSTANT) -> JumpScaling"},
@@ -18042,9 +18042,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "QuadratureFunction_Save", _wrap_QuadratureFunction_Save, METH_VARARGS, "\n"
 		"Save(QuadratureFunction self, std::ostream & out)\n"
-		"Save(QuadratureFunction self, char const * file, int precision=8)\n"
+		"Save(QuadratureFunction self, char const * file, int precision=16)\n"
 		""},
-	 { "QuadratureFunction_SaveGZ", (PyCFunction)(void(*)(void))_wrap_QuadratureFunction_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(QuadratureFunction self, char const * file, int precision=8)"},
+	 { "QuadratureFunction_SaveGZ", (PyCFunction)(void(*)(void))_wrap_QuadratureFunction_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(QuadratureFunction self, char const * file, int precision=16)"},
 	 { "QuadratureFunction_swigregister", QuadratureFunction_swigregister, METH_O, NULL},
 	 { "QuadratureFunction_swiginit", QuadratureFunction_swiginit, METH_VARARGS, NULL},
 	 { "__lshift__", _wrap___lshift__, METH_VARARGS, "\n"
