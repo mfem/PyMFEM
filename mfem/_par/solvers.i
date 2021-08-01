@@ -29,4 +29,5 @@ import_array();
 %import "../common/exception.i"
 
 %ignore mfem::IterativeSolverMonitor::SetIterativeSolver;
+%feature("director") mfem::IterativeSolverMonitor;
 %include "linalg/solvers.hpp"

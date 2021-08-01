@@ -16,7 +16,7 @@
 '''
 import sys
 from mfem.common.arg_parser import ArgParser
-from os.path import expanduser, join
+from os.path import expanduser, join, dirname
 import numpy as np
 from mfem import path
 
@@ -139,8 +139,9 @@ if (kappa < 0):
    kappa = (order+1.)*(order+1.)
    args.kappa = kappa
 parser.print_options(args)
-# 2. Read the mesh from the given mesh file.
-meshfile =expanduser(join(path, 'data', args.mesh))
+# 2. Read the mesh from the given mesh file
+meshfile = expanduser(
+           join(dirname(__file__), '..', 'data', args.mesh))
 mesh = mfem.Mesh(meshfile, 1,1)
 dim = mesh.Dimension()
 if (mesh.attributes.Max() < 2 or 

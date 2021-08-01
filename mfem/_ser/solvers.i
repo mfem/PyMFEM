@@ -1,4 +1,4 @@
-%module(package="mfem._ser") solvers
+%module(package="mfem._ser", directors="1") solvers
 
 %{
 #include "linalg/handle.hpp"  
@@ -20,6 +20,8 @@ import_array();
 %import "sparsemat.i"
 %import "../common/exception_director.i"
 %import "../common/operator_ptr_typemap.i"
+%import "../common/exception_director.i"
 %ignore mfem::IterativeSolverMonitor::SetIterativeSolver;
-
+%feature("director") mfem::IterativeSolverMonitor;
 %include "linalg/solvers.hpp"
+

@@ -6,7 +6,7 @@
 from mfem import path
 import mfem.ser as mfem
 from mfem.ser import intArray
-from os.path import expanduser, join
+from os.path import expanduser, join, dirname
 import numpy as np
 
 ref_levels = -1
@@ -16,8 +16,8 @@ kappa = -1.0
 
 if (kappa < 0):  kappa = (order+1)**2.
 
-
-meshfile = expanduser(join(path, 'data', 'star.mesh'))
+meshfile = expanduser(
+           join(dirname(__file__), '..', 'data', 'star.mesh'))
 mesh = mfem.Mesh(meshfile, 1,1)
 
 dim = mesh.Dimension()
