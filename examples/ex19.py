@@ -19,10 +19,9 @@
 
 import sys
 from mfem.common.arg_parser import ArgParser
-from mfem import path
 import mfem.ser as mfem
 from mfem.ser import intArray, add_vector, Add
-from os.path import expanduser, join
+from os.path import expanduser, join, dirname
 import numpy as np
 from numpy import sqrt, pi, cos, sin, hypot, arctan2
 from scipy.special import erfc
@@ -68,7 +67,7 @@ def ex19_main(args):
 
     parser.print_options(args)
 
-    meshfile = expanduser(join(path, 'data', args.mesh))
+    meshfile = expanduser(join(dirname(__file__), '..', 'data', args.mesh))
     mesh = mfem.Mesh(meshfile, 1,1)
     dim = mesh.Dimension()
 
@@ -238,6 +237,24 @@ class JacobianPreconditioner(mfem.Solver):
         #  the iterative solver which, in turn, updates its preconditioner
         self.stiff_pcg.SetOperator(self.jacobian.GetBlock(0,0))
 
+class GeneralResidualMonitor(mfem.IterativeSolverMonitor):
+    def __init__(self, prefix, print_level):
+        mfem.IterativeSolverMonitor.__init__(self)
+        self.print_level = print_level
+        self.prefix = prefix
+        self.norm = 0
+    def MonitorResidual(self, it, norm, r, final):
+        txt = ''
+        if (self.print_level == 1 or
+            (self.print_level == 3 and (final or it == 0))):
+            txt = (txt + self.prefix +  " iteration " +  '{:>2}'.format(it) + 
+                   " : ||r|| = " + "{:g}".format(norm))
+            if it > 0:
+                txt = txt + ",  ||r||/||r_0|| = " + "{:g}".format(norm/self.norm0)
+            else:
+                self.norm0 = norm;
+            print(txt)
+        
 class RubberOperator(mfem.PyOperator):
     def __init__(self, spaces, ess_bdr, block_offsets,
                        rel_tol, abs_tol, iter, mu):
@@ -269,7 +286,9 @@ class RubberOperator(mfem.PyOperator):
         j_gmres.SetRelTol(1e-12)
         j_gmres.SetAbsTol(1e-12)
         j_gmres.SetMaxIter(300)
-        j_gmres.SetPrintLevel(0)
+        j_gmres.SetPrintLevel(-1)
+        self.j_monitor = GeneralResidualMonitor("  GMRES", 3)
+        j_gmres.SetMonitor(self.j_monitor)        
         j_gmres.SetPreconditioner(self.j_prec)
         self.j_solver = j_gmres
 
@@ -278,10 +297,12 @@ class RubberOperator(mfem.PyOperator):
         newton_solver.iterative_mode = True;
         newton_solver.SetSolver(self.j_solver);
         newton_solver.SetOperator(self)
-        newton_solver.SetPrintLevel(1)
+        newton_solver.SetPrintLevel(-1)
         newton_solver.SetRelTol(rel_tol)
         newton_solver.SetAbsTol(abs_tol)
         newton_solver.SetMaxIter(iter)
+        self.n_monitor = GeneralResidualMonitor("Newton", 1)
+        newton_solver.SetMonitor(self.n_monitor)
         self.newton_solver = newton_solver
         
     def Solve(self, xp):

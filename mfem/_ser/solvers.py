@@ -81,7 +81,11 @@ class IterativeSolverMonitor(object):
 
     def __init__(self):
         r"""__init__(IterativeSolverMonitor self) -> IterativeSolverMonitor"""
-        _solvers.IterativeSolverMonitor_swiginit(self, _solvers.new_IterativeSolverMonitor())
+        if self.__class__ == IterativeSolverMonitor:
+            _self = None
+        else:
+            _self = self
+        _solvers.IterativeSolverMonitor_swiginit(self, _solvers.new_IterativeSolverMonitor(_self, ))
     __swig_destroy__ = _solvers.delete_IterativeSolverMonitor
 
     def MonitorResidual(self, it, norm, r, final):
@@ -93,6 +97,10 @@ class IterativeSolverMonitor(object):
         r"""MonitorSolution(IterativeSolverMonitor self, int it, double norm, Vector x, bool final)"""
         return _solvers.IterativeSolverMonitor_MonitorSolution(self, it, norm, x, final)
     MonitorSolution = _swig_new_instance_method(_solvers.IterativeSolverMonitor_MonitorSolution)
+    def __disown__(self):
+        self.this.disown()
+        _solvers.disown_IterativeSolverMonitor(self)
+        return weakref.proxy(self)
 
 # Register IterativeSolverMonitor in _solvers:
 _solvers.IterativeSolverMonitor_swigregister(IterativeSolverMonitor)
