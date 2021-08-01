@@ -46,7 +46,7 @@ for line in fid.readlines():
 fid.close()
 
 out.append("%pythonappend SumIntegrator::AddIntegrator %{")
-out.append("   if self.own_integs == 1: integ._thisown = 0")
+out.append("   if self.own_integs == 1: integ.thisown = 0")
 out.append("%}")
 out.append("}")            
 out.append("")            
