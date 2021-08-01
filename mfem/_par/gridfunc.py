@@ -577,13 +577,13 @@ class GridFunction(mfem._par.vector.Vector):
         r"""
         Save(GridFunction self, std::ostream & out)
         Save(GridFunction self, char const * fname, int precision=16)
-        Save(GridFunction self, char const * file, int precision=8)
+        Save(GridFunction self, char const * file, int precision=16)
         """
         return _gridfunc.GridFunction_Save(self, *args)
     Save = _swig_new_instance_method(_gridfunc.GridFunction_Save)
 
-    def SaveGZ(self, file, precision=8):
-        r"""SaveGZ(GridFunction self, char const * file, int precision=8)"""
+    def SaveGZ(self, file, precision=16):
+        r"""SaveGZ(GridFunction self, char const * file, int precision=16)"""
         return _gridfunc.GridFunction_SaveGZ(self, file, precision)
     SaveGZ = _swig_new_instance_method(_gridfunc.GridFunction_SaveGZ)
 
@@ -685,13 +685,13 @@ class QuadratureFunction(mfem._par.vector.Vector):
     def Save(self, *args):
         r"""
         Save(QuadratureFunction self, std::ostream & out)
-        Save(QuadratureFunction self, char const * file, int precision=8)
+        Save(QuadratureFunction self, char const * file, int precision=16)
         """
         return _gridfunc.QuadratureFunction_Save(self, *args)
     Save = _swig_new_instance_method(_gridfunc.QuadratureFunction_Save)
 
-    def SaveGZ(self, file, precision=8):
-        r"""SaveGZ(QuadratureFunction self, char const * file, int precision=8)"""
+    def SaveGZ(self, file, precision=16):
+        r"""SaveGZ(QuadratureFunction self, char const * file, int precision=16)"""
         return _gridfunc.QuadratureFunction_SaveGZ(self, file, precision)
     SaveGZ = _swig_new_instance_method(_gridfunc.QuadratureFunction_SaveGZ)
 

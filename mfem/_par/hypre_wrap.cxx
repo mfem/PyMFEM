@@ -3998,7 +3998,7 @@ SWIGINTERN PyObject *mfem_HypreParMatrix_GetCooDataArray(mfem::HypreParMatrix *s
      Py_XDECREF(o);     
      return Py_None;
 }
-SWIGINTERN void mfem_HypreParMatrix_PrintCommPkg__SWIG_1(mfem::HypreParMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_HypreParMatrix_PrintCommPkg__SWIG_1(mfem::HypreParMatrix *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -4009,7 +4009,7 @@ SWIGINTERN void mfem_HypreParMatrix_PrintCommPkg__SWIG_1(mfem::HypreParMatrix *s
   self -> PrintCommPkg(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_HypreParMatrix_PrintCommPkgGZ(mfem::HypreParMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_HypreParMatrix_PrintCommPkgGZ(mfem::HypreParMatrix *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -11116,7 +11116,7 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_PrintCommPkg__SWIG_1(PyObject *SWIGUNU
   PyObject *resultobj = 0;
   mfem::HypreParMatrix *arg1 = (mfem::HypreParMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -11254,7 +11254,7 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_PrintCommPkgGZ(PyObject *SWIGUNUSEDPAR
   PyObject *resultobj = 0;
   mfem::HypreParMatrix *arg1 = (mfem::HypreParMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -20820,9 +20820,9 @@ static PyMethodDef SwigMethods[] = {
 	 { "HypreParMatrix_GetCooDataArray", (PyCFunction)(void(*)(void))_wrap_HypreParMatrix_GetCooDataArray, METH_VARARGS|METH_KEYWORDS, "HypreParMatrix_GetCooDataArray(HypreParMatrix self, HYPRE_Int const base_i=0, HYPRE_Int const base_j=0) -> PyObject *"},
 	 { "HypreParMatrix_PrintCommPkg", _wrap_HypreParMatrix_PrintCommPkg, METH_VARARGS, "\n"
 		"HypreParMatrix_PrintCommPkg(HypreParMatrix self, std::ostream & out=out)\n"
-		"HypreParMatrix_PrintCommPkg(HypreParMatrix self, char const * file, int precision=8)\n"
+		"HypreParMatrix_PrintCommPkg(HypreParMatrix self, char const * file, int precision=16)\n"
 		""},
-	 { "HypreParMatrix_PrintCommPkgGZ", (PyCFunction)(void(*)(void))_wrap_HypreParMatrix_PrintCommPkgGZ, METH_VARARGS|METH_KEYWORDS, "HypreParMatrix_PrintCommPkgGZ(HypreParMatrix self, char const * file, int precision=8)"},
+	 { "HypreParMatrix_PrintCommPkgGZ", (PyCFunction)(void(*)(void))_wrap_HypreParMatrix_PrintCommPkgGZ, METH_VARARGS|METH_KEYWORDS, "HypreParMatrix_PrintCommPkgGZ(HypreParMatrix self, char const * file, int precision=16)"},
 	 { "HypreParMatrix_swigregister", HypreParMatrix_swigregister, METH_O, NULL},
 	 { "HypreParMatrix_swiginit", HypreParMatrix_swiginit, METH_VARARGS, NULL},
 	 { "BlockInverseScale", (PyCFunction)(void(*)(void))_wrap_BlockInverseScale, METH_VARARGS|METH_KEYWORDS, "BlockInverseScale(HypreParMatrix A, HypreParMatrix C, Vector b, HypreParVector d, int blocksize, mfem::BlockInverseScaleJob job)"},
@@ -21235,9 +21235,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "HypreParMatrix_GetCooDataArray", (PyCFunction)(void(*)(void))_wrap_HypreParMatrix_GetCooDataArray, METH_VARARGS|METH_KEYWORDS, "GetCooDataArray(HypreParMatrix self, HYPRE_Int const base_i=0, HYPRE_Int const base_j=0) -> PyObject *"},
 	 { "HypreParMatrix_PrintCommPkg", _wrap_HypreParMatrix_PrintCommPkg, METH_VARARGS, "\n"
 		"PrintCommPkg(HypreParMatrix self, std::ostream & out=out)\n"
-		"PrintCommPkg(HypreParMatrix self, char const * file, int precision=8)\n"
+		"PrintCommPkg(HypreParMatrix self, char const * file, int precision=16)\n"
 		""},
-	 { "HypreParMatrix_PrintCommPkgGZ", (PyCFunction)(void(*)(void))_wrap_HypreParMatrix_PrintCommPkgGZ, METH_VARARGS|METH_KEYWORDS, "PrintCommPkgGZ(HypreParMatrix self, char const * file, int precision=8)"},
+	 { "HypreParMatrix_PrintCommPkgGZ", (PyCFunction)(void(*)(void))_wrap_HypreParMatrix_PrintCommPkgGZ, METH_VARARGS|METH_KEYWORDS, "PrintCommPkgGZ(HypreParMatrix self, char const * file, int precision=16)"},
 	 { "HypreParMatrix_swigregister", HypreParMatrix_swigregister, METH_O, NULL},
 	 { "HypreParMatrix_swiginit", HypreParMatrix_swiginit, METH_VARARGS, NULL},
 	 { "BlockInverseScale", (PyCFunction)(void(*)(void))_wrap_BlockInverseScale, METH_VARARGS|METH_KEYWORDS, "BlockInverseScale(HypreParMatrix A, HypreParMatrix C, Vector b, HypreParVector d, int blocksize, mfem::BlockInverseScaleJob job)"},

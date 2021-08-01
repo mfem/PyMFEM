@@ -621,39 +621,39 @@ class DenseMatrix(mfem._ser.matrix.Matrix):
     def Print(self, *args):
         r"""
         Print(DenseMatrix self, std::ostream & out=mfem::out, int width_=4)
-        Print(DenseMatrix self, char const * file, int precision=8)
+        Print(DenseMatrix self, char const * file, int precision=16)
         """
         return _densemat.DenseMatrix_Print(self, *args)
     Print = _swig_new_instance_method(_densemat.DenseMatrix_Print)
 
-    def PrintGZ(self, file, precision=8):
-        r"""PrintGZ(DenseMatrix self, char const * file, int precision=8)"""
+    def PrintGZ(self, file, precision=16):
+        r"""PrintGZ(DenseMatrix self, char const * file, int precision=16)"""
         return _densemat.DenseMatrix_PrintGZ(self, file, precision)
     PrintGZ = _swig_new_instance_method(_densemat.DenseMatrix_PrintGZ)
 
     def PrintT(self, *args):
         r"""
         PrintT(DenseMatrix self, std::ostream & out=mfem::out, int width_=4)
-        PrintT(DenseMatrix self, char const * file, int precision=8)
+        PrintT(DenseMatrix self, char const * file, int precision=16)
         """
         return _densemat.DenseMatrix_PrintT(self, *args)
     PrintT = _swig_new_instance_method(_densemat.DenseMatrix_PrintT)
 
-    def PrintTGZ(self, file, precision=8):
-        r"""PrintTGZ(DenseMatrix self, char const * file, int precision=8)"""
+    def PrintTGZ(self, file, precision=16):
+        r"""PrintTGZ(DenseMatrix self, char const * file, int precision=16)"""
         return _densemat.DenseMatrix_PrintTGZ(self, file, precision)
     PrintTGZ = _swig_new_instance_method(_densemat.DenseMatrix_PrintTGZ)
 
     def PrintMatlab(self, *args):
         r"""
         PrintMatlab(DenseMatrix self, std::ostream & out=mfem::out)
-        PrintMatlab(DenseMatrix self, char const * file, int precision=8)
+        PrintMatlab(DenseMatrix self, char const * file, int precision=16)
         """
         return _densemat.DenseMatrix_PrintMatlab(self, *args)
     PrintMatlab = _swig_new_instance_method(_densemat.DenseMatrix_PrintMatlab)
 
-    def PrintMatlabGZ(self, file, precision=8):
-        r"""PrintMatlabGZ(DenseMatrix self, char const * file, int precision=8)"""
+    def PrintMatlabGZ(self, file, precision=16):
+        r"""PrintMatlabGZ(DenseMatrix self, char const * file, int precision=16)"""
         return _densemat.DenseMatrix_PrintMatlabGZ(self, file, precision)
     PrintMatlabGZ = _swig_new_instance_method(_densemat.DenseMatrix_PrintMatlabGZ)
 

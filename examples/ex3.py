@@ -6,6 +6,7 @@
 import mfem.ser as mfem
 from mfem.ser import intArray
 import os
+from os.path import expanduser, join
 import numpy as np
 from numpy import sin, array
 

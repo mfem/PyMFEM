@@ -3540,7 +3540,7 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
-SWIGINTERN void mfem_Operator_PrintMatlab__SWIG_1(mfem::Operator *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Operator_PrintMatlab__SWIG_1(mfem::Operator *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3551,7 +3551,7 @@ SWIGINTERN void mfem_Operator_PrintMatlab__SWIG_1(mfem::Operator *self,char cons
   self -> PrintMatlab(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_Operator_PrintMatlabGZ(mfem::Operator *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Operator_PrintMatlabGZ(mfem::Operator *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -8444,7 +8444,7 @@ SWIGINTERN PyObject *_wrap_Operator_PrintMatlab__SWIG_1(PyObject *SWIGUNUSEDPARM
   PyObject *resultobj = 0;
   mfem::Operator *arg1 = (mfem::Operator *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -8611,7 +8611,7 @@ SWIGINTERN PyObject *_wrap_Operator_PrintMatlabGZ(PyObject *SWIGUNUSEDPARM(self)
   PyObject *resultobj = 0;
   mfem::Operator *arg1 = (mfem::Operator *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -15350,9 +15350,9 @@ static PyMethodDef SwigMethods[] = {
 	 { "Operator_GetType", _wrap_Operator_GetType, METH_O, "Operator_GetType(Operator self) -> mfem::Operator::Type"},
 	 { "Operator_PrintMatlab", _wrap_Operator_PrintMatlab, METH_VARARGS, "\n"
 		"Operator_PrintMatlab(Operator self, std::ostream & out, int n=0, int m=0)\n"
-		"Operator_PrintMatlab(Operator self, char const * file, int precision=8)\n"
+		"Operator_PrintMatlab(Operator self, char const * file, int precision=16)\n"
 		""},
-	 { "Operator_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_Operator_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "Operator_PrintMatlabGZ(Operator self, char const * file, int precision=8)"},
+	 { "Operator_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_Operator_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "Operator_PrintMatlabGZ(Operator self, char const * file, int precision=16)"},
 	 { "disown_Operator", (PyCFunction)(void(*)(void))_wrap_disown_Operator, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "Operator_swigregister", Operator_swigregister, METH_O, NULL},
 	 { "Operator_swiginit", Operator_swiginit, METH_VARARGS, NULL},
@@ -15535,9 +15535,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Operator_GetType", _wrap_Operator_GetType, METH_O, "GetType(Operator self) -> mfem::Operator::Type"},
 	 { "Operator_PrintMatlab", _wrap_Operator_PrintMatlab, METH_VARARGS, "\n"
 		"PrintMatlab(Operator self, std::ostream & out, int n=0, int m=0)\n"
-		"PrintMatlab(Operator self, char const * file, int precision=8)\n"
+		"PrintMatlab(Operator self, char const * file, int precision=16)\n"
 		""},
-	 { "Operator_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_Operator_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "PrintMatlabGZ(Operator self, char const * file, int precision=8)"},
+	 { "Operator_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_Operator_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "PrintMatlabGZ(Operator self, char const * file, int precision=16)"},
 	 { "disown_Operator", (PyCFunction)(void(*)(void))_wrap_disown_Operator, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "Operator_swigregister", Operator_swigregister, METH_O, NULL},
 	 { "Operator_swiginit", Operator_swiginit, METH_VARARGS, NULL},

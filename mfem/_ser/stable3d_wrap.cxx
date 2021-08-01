@@ -3347,7 +3347,7 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
-SWIGINTERN void mfem_STable3D_Print__SWIG_1(mfem::STable3D *self,char const *file,int precision=8){
+SWIGINTERN void mfem_STable3D_Print__SWIG_1(mfem::STable3D *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3358,7 +3358,7 @@ SWIGINTERN void mfem_STable3D_Print__SWIG_1(mfem::STable3D *self,char const *fil
   self -> Print(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_STable3D_PrintGZ(mfem::STable3D *self,char const *file,int precision=8){
+SWIGINTERN void mfem_STable3D_PrintGZ(mfem::STable3D *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -4378,7 +4378,7 @@ SWIGINTERN PyObject *_wrap_STable3D_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   PyObject *resultobj = 0;
   mfem::STable3D *arg1 = (mfem::STable3D *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -4522,7 +4522,7 @@ SWIGINTERN PyObject *_wrap_STable3D_PrintGZ(PyObject *SWIGUNUSEDPARM(self), PyOb
   PyObject *resultobj = 0;
   mfem::STable3D *arg1 = (mfem::STable3D *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -4620,9 +4620,9 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_STable3D", _wrap_delete_STable3D, METH_O, "delete_STable3D(STable3D self)"},
 	 { "STable3D_Print", _wrap_STable3D_Print, METH_VARARGS, "\n"
 		"STable3D_Print(STable3D self, std::ostream & out=out)\n"
-		"STable3D_Print(STable3D self, char const * file, int precision=8)\n"
+		"STable3D_Print(STable3D self, char const * file, int precision=16)\n"
 		""},
-	 { "STable3D_PrintGZ", (PyCFunction)(void(*)(void))_wrap_STable3D_PrintGZ, METH_VARARGS|METH_KEYWORDS, "STable3D_PrintGZ(STable3D self, char const * file, int precision=8)"},
+	 { "STable3D_PrintGZ", (PyCFunction)(void(*)(void))_wrap_STable3D_PrintGZ, METH_VARARGS|METH_KEYWORDS, "STable3D_PrintGZ(STable3D self, char const * file, int precision=16)"},
 	 { "STable3D_swigregister", STable3D_swigregister, METH_O, NULL},
 	 { "STable3D_swiginit", STable3D_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
@@ -4655,9 +4655,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_STable3D", _wrap_delete_STable3D, METH_O, "delete_STable3D(STable3D self)"},
 	 { "STable3D_Print", _wrap_STable3D_Print, METH_VARARGS, "\n"
 		"Print(STable3D self, std::ostream & out=out)\n"
-		"Print(STable3D self, char const * file, int precision=8)\n"
+		"Print(STable3D self, char const * file, int precision=16)\n"
 		""},
-	 { "STable3D_PrintGZ", (PyCFunction)(void(*)(void))_wrap_STable3D_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(STable3D self, char const * file, int precision=8)"},
+	 { "STable3D_PrintGZ", (PyCFunction)(void(*)(void))_wrap_STable3D_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(STable3D self, char const * file, int precision=16)"},
 	 { "STable3D_swigregister", STable3D_swigregister, METH_O, NULL},
 	 { "STable3D_swiginit", STable3D_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
