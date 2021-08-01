@@ -415,7 +415,7 @@ class SumIntegrator(BilinearFormIntegrator):
         r"""AddIntegrator(SumIntegrator self, BilinearFormIntegrator integ)"""
         val = _bilininteg.SumIntegrator_AddIntegrator(self, integ)
 
-        if self.own_integs == 1: integ._thisown = 0
+        if self.own_integs == 1: integ.thisown = 0
 
 
         return val
