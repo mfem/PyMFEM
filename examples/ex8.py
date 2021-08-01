@@ -25,7 +25,7 @@ import mfem.ser as mfem
 
 parser = ArgParser(description='Ex8')
 parser.add_argument('-m', '--mesh',
-                    default = 'star.mesh', 
+                    default = '../data/star.mesh', 
                     action = 'store', type = str,
                     help='Mesh file to use.')
 parser.add_argument('-o', '--order',
@@ -43,7 +43,7 @@ visualization = args.visualization
 #      quadrilateral, tetrahedral, hexahedral, surface and volume meshes with
 #      the same code.
 
-meshfile = expanduser(join(path, 'data', 'star.mesh'))
+meshfile = args.mesh
 mesh = mfem.Mesh(meshfile, 1,1)
 
 dim = mesh.Dimension()

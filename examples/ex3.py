@@ -54,6 +54,10 @@ def run(order=1,
                         (1 + kappa**2)*sin(kappa * x[2]),
                         (1 + kappa**2)*sin(kappa * x[0]))
         f_exact = cf_exact()
+
+    device = mfem.Device(device)
+    device.Print()
+        
     #   3. Refine the mesh to increase the resolution. In this example we do
     #      'ref_levels' of uniform refinement. We choose 'ref_levels' to be the
     #      largest number that gives a final mesh with no more than 50,000
@@ -152,7 +156,7 @@ if __name__ == "__main__":
     
     parser = ArgParser(description='Ex1 (Laplace Problem)')
     parser.add_argument('-m', '--mesh',
-                        default=os.path.join("..", "data", "beam-tet.mesh"),
+                        default="beam-tet.mesh",
                         action='store', type=str,
                         help='Mesh file to use.')
     parser.add_argument("-f", "--frequency",
@@ -185,13 +189,20 @@ if __name__ == "__main__":
     order = args.order
     static_cond = args.static_condensation
 
-    meshfile = args.mesh
+    meshfile = expanduser(join(os.path.dirname(__file__), '..', 'data', args.mesh))
     visualization = args.visualization
     device = args.device
     pa = args.partial_assembly
     freq = args.frequency
     numba = args.numba
-    
+
+    if numba:
+        try:
+            import numba
+        except:
+            print("NUMBA is not available... using regular function coefficients")
+            numba = False
+        
     run(freq=freq,
         order=order,
         static_cond=static_cond,

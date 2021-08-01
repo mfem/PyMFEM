@@ -20,10 +20,8 @@ kappa = np.pi*freq
 order = 1
 
 
-meshfile = expanduser(join(path, 'data', 'star.mesh'))
-if not exists(meshfile):
-    path = dirname(dirname(__file__))
-    meshfile = expanduser(join(path, 'data', 'star.mesh'))
+path = dirname(dirname(__file__))
+meshfile = expanduser(join(path, '..', 'data', 'star.mesh'))
 
 mesh = mfem.Mesh(meshfile, 1,1)
 dim = mesh.Dimension()
@@ -110,7 +108,6 @@ print("Size of linear system: " + str(A.Height()))
 # 10. Solve
 AA = mfem.OperatorHandle2SparseMatrix(A)
 M = mfem.GSSmoother(AA)
-X.Print("x")
 mfem.PCG(AA, M, B, X, 1, 10000, 1e-20, 0.0);
 
 # 11. Recover the solution as a finite element grid function.
