@@ -122,10 +122,10 @@ def compare_results(lines1, lines2, case, verbose=True):
         compare.append(flag)
     return all(compare)
 
-def compare_outputs(case):
-    files1 = os.listdir(os.path.join(sandbox, case, 'exe'))
-    files2 = os.listdir(os.path.join(sandbox, case, 'py'))
-
+def do_compare_outputs(dir1, dir2):
+    files1 = os.listdir(dir1)
+    files2 = os.listdir(dir2)
+    
     unique_file = list(set(files1+files2))
     if (len(unique_file) != len(files1) or
             len(unique_file) != len(files2)):
@@ -135,18 +135,30 @@ def compare_outputs(case):
         return False
 
     for f in files1:
+        if os.path.isdir(os.path.join(dir1, f)):
+            dir11 = os.path.join(dir1, f)
+            dir22 = os.path.join(dir2, f)
+            flag = do_compare_outputs(dir11, dir22)
+            if not flag:
+                return False
+            continue
+        
         if not f in files2:
             print("File not found in python outputs", f)
             return False
-        l1 = open(os.path.join(sandbox, case, 'exe', f), 'r').readlines()
-        l2 = open(os.path.join(sandbox, case, 'py', f), 'r').readlines()
+        l1 = open(os.path.join(dir1, f), 'r').readlines()
+        l2 = open(os.path.join(dir2, f), 'r').readlines()
 
         if l1 != l2:
             print("Contents does not agree: ", f)
             return False
 
     return True
-        
+
+def compare_outputs(case):        
+    dir1 = os.path.join(sandbox, case, 'exe')
+    dir2 = os.path.join(sandbox, case, 'py')
+    return do_compare_outputs(dir1, dir2)
 
 def run_test(mfem_exes, pymfem_exes, sandbox, serial=True, np=2, verbose=False):
     print("mfem examples from : " + os.path.dirname(mfem_exes[0]))
@@ -192,7 +204,7 @@ def run_test(mfem_exes, pymfem_exes, sandbox, serial=True, np=2, verbose=False):
 
         flag1 = compare_results(l1, l2, case, verbose=verbose)
         flag2 = compare_outputs(case)
-        flag = flag1 or flag2
+        flag = flag1 and flag2
         if flag:
             print(os.path.basename(e1) + "  " +
                   bcolors.OKGREEN + "PASS" + bcolors.ENDC)
