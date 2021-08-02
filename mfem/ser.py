@@ -25,6 +25,7 @@ from  mfem._ser.socketstream import *
 from  mfem._ser.fe_coll import *
 from  mfem._ser.vector import *
 from  mfem._ser.complex_operator import *
+from  mfem._ser.complex_fem import *
 from  mfem._ser.fespace import *
 from  mfem._ser.linearform import *
 from  mfem._ser.bilininteg import *

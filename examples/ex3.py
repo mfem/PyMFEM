@@ -26,8 +26,6 @@ def run(order=1,
     sdim= mesh.SpaceDimension()
 
     if numba:
-        from numba import cfunc
-
         @mfem.jit.vector()
         def E_exact(x, out):
             out[0] = sin(kappa*x[1])

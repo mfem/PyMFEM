@@ -1,5 +1,9 @@
 	<<<  Change Log. >>>
-
+2021 08.02
+        * Added ex21
+	* SwapNodes returns None when mesh object does not have Nodes
+	* added socketstream::good wrapper.
+	
 2021 07.31
         * preparation for MFEM4.3
 	* test_example now compares all output files.
@@ -11,6 +15,8 @@
 2021 05.19
         * Fixed std::istream & wrapping not to return the lenght of data. This fixes
 	  the constructors such as mfem::Mesh(std::stream &)
+	* PrintGZ, SaveGZ, etc are added to the methods to save data to file. As
+	  the name suggest, they turn on compression internally.
 
 2021 05.11
         * NumbaFunction, VectorNumbaFunction, and MatrixNumbaFunction is added
