@@ -122,7 +122,7 @@ def run(order=1,
     #  7. Compute and display mean and standard deviation of the energy
     e_mean /= (nsteps + 1)
     e_var = 0.0
-    for i in range(nsteps):
+    for i in range(nsteps+1):
         e_var += (e[i] - e_mean)**2
     e_var /= (nsteps + 1);
     print("\n".join(["",
@@ -165,10 +165,6 @@ if __name__ == "__main__":
                                       "\t  2 - Gaussian Potential Well\n",
                                       "\t  3 - Quartic Potential\n",
                                       "\t  4 - Negative Quartic Potential",]))
-    parser.add_argument('-vis', '--visualization',
-                        action='store_true',
-                        default=True,
-                        help='Enable GLVis visualization')
     parser.add_argument('-o', '--order',
                         action='store', default=1, type=int,
                         help="Time integration order")
@@ -179,8 +175,16 @@ if __name__ == "__main__":
                         action='store', default=0.1, type=float,
                         help="Time step size")
     parser.add_argument('-k', '--spring-constant',
-                        action='store', default=1.0, type=float,
+                        action='store', default=1, type=float,
                         help="Sprint constant")
+    parser.add_argument('-vis', '--visualization',
+                        action='store_true',
+                        default=True,
+                        help='Enable GLVis visualization')
+    parser.add_argument('-no-gp', '--no-gnuplot',
+                        action='store_true',
+                        default=True,
+                        help='Disable GnuPlot visualization')
     
     
     args = parser.parse_args()
@@ -192,7 +196,7 @@ if __name__ == "__main__":
     nsteps = args.number_of_steps
     dt = args.time_step
     sc = args.spring_constant
-
+    np_gp = args.no_gnuplot
 
     run(order=order,
         prob=prob,
