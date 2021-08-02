@@ -282,6 +282,9 @@ to find more details of the MFEM library.
              length = v.WriteToStream(o)
 	     print('data: ', o.getvalue())
 
+        AddVertex accepts either numpy float array, mfem.Vector or list
+	AddQuad (and other similar methods) accepts either numpy int32 array, Array<int> or list
+
   4-5) sparsemat
          RAP has two different implementations. One accept three references.
 	 The other accept a pointer as a third argument, instead.

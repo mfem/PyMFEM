@@ -6,7 +6,7 @@
 import os
 import mfem.ser as mfem
 from mfem.ser import intArray
-from os.path import expanduser, join
+from os.path import expanduser, join, dirname
 import numpy as np
 from numpy import sin, cos, exp
 
@@ -288,7 +288,7 @@ if __name__ == "__main__":
 
     order = args.order
     meshfile = expanduser(
-        join(os.path.dirname(__file__), '..', 'data', args.mesh))
+        join(dirname(__file__), '..', 'data', args.mesh))
     visualization = args.visualization
     device = args.device
     pa = args.partial_assembly

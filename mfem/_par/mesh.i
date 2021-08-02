@@ -76,56 +76,11 @@ ISTREAM_TYPEMAP(std::istream&)
   $1 = 0; // ignore this pattern
 }
 
-// to give vertex array as list
-%typemap(in) (const double *){
-  int i;
-  if (!PyList_Check($input)) {
-    PyErr_SetString(PyExc_ValueError, "Expecting a list");
-    return NULL;
-  }
-  int l = PyList_Size($input);
-  $1 = (double *) malloc((l)*sizeof(double));
-  for (i = 0; i < l; i++) {
-    PyObject *s = PyList_GetItem($input,i);
-    if (PyInt_Check(s)) {
-        $1[i] = (double)PyFloat_AsDouble(s);
-    } else if (PyFloat_Check(s)) {
-        $1[i] = (double)PyFloat_AsDouble(s);
-    } else {
-        free($1);      
-        PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
-        return NULL;
-    }
-  }
-}
-%typemap(typecheck) (const double *) {
-   $1 = PyList_Check($input) ? 1 : 0;
-}
-// to give index array as list
-%typemap(in) (const int *vi){
-  int i;
-  if (!PyList_Check($input)) {
-    PyErr_SetString(PyExc_ValueError, "Expecting a list");
-    return NULL;
-  }
-  int l = PyList_Size($input);
-  $1 = (int *) malloc((l)*sizeof(int));
-  for (i = 0; i < l; i++) {
-    PyObject *s = PyList_GetItem($input,i);
-    if (PyInt_Check(s)) {
-        $1[i] = (int)PyInt_AsLong(s);
-    } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
-        $1[i] = PyArray_PyIntAsInt(s);
-    } else {    
-        free($1);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
-        return NULL;
-    }
-  }
-}
-%typemap(typecheck) (const int *vi) {
-   $1 = PyList_Check($input) ? 1 : 0;
-}
+%import "../common/const_doubleptr_typemap.i"
+CONST_DOUBLEPTR_IN(const double *)
+
+%import "../common/const_intptr_typemap.i"
+CONST_INTPTR_IN(const int *vi)
 
 // SwapNodes
 %typemap(in) mfem::GridFunction *&nodes (mfem::GridFunction *Pnodes){

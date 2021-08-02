@@ -2,6 +2,11 @@
 # 
 #  using numba JIT function for mfem::FunctionCoefficient
 #
+(1) Using NumberFunction object  ---
+(2) Using mfem.jit decorator
+
+--- (1) Using NumberFunction object  ---
+
 from numba import cfunc, carray
 
 from mfem.coefficient import (scalar_sig,
@@ -55,6 +60,19 @@ def m_func(ptx, t, out, sdim, vdim):
         for j in range(vdim):
             out_array[i, j] = i*m + j
 c = MatrixNumbaFunction(m_func, sdim, ndim, True).GenerateCoefficient()
+
+--- (2) mfem.jit decorator ---
+@mfem.jit.scalar()
+def c12(ptx):
+    return s_func0(ptx[0], ptx[1],  ptx[2])
+@mfem.jit.vector()
+def f_exact(x, out):
+    out[0] = (1 + kappa**2)*sin(kappa * x[1])
+    out[1] = (1 + kappa**2)*sin(kappa * x[2])
+    out[2] = (1 + kappa**2)*sin(kappa * x[0])
+
+Then, decorated function can be used as function coefficient
+x.ProjectCoefficient(f_exact)       
 
 */
 
