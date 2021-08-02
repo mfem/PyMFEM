@@ -205,6 +205,11 @@ class socketstream(object):
         return _socketstream.socketstream_flush(self)
     flush = _swig_new_instance_method(_socketstream.socketstream_flush)
 
+    def good(self):
+        r"""good(socketstream self) -> bool"""
+        return _socketstream.socketstream_good(self)
+    good = _swig_new_instance_method(_socketstream.socketstream_good)
+
     def __lshift__(self, *args):
         r"""
         __lshift__(socketstream self, char const [] ostr) -> socketstream
