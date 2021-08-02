@@ -15648,7 +15648,12 @@ SWIGINTERN PyObject *_wrap_Mesh_SwapNodes(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     Py_XDECREF(resultobj);
     resultobj = PyList_New(0);
-    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj(SWIG_as_voidptr(*arg2), SWIGTYPE_p_mfem__GridFunction, 0 |  0 ));
+    if (*arg2){
+      // return None if Nodes is NULL    
+      resultobj = SWIG_Python_AppendOutput(resultobj, Py_None);
+    } else {
+      resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj(SWIG_as_voidptr(*arg2), SWIGTYPE_p_mfem__GridFunction, 0 |  0 ));
+    }
   }
   {
     resultobj = SWIG_Python_AppendOutput(resultobj, PyLong_FromLong((long)*arg3));  

@@ -90,9 +90,9 @@ CONST_INTPTR_IN(const int *vi)
 
 // to give index array as list/Array<int>/const int*
 
-// SwapNodes
-
-
+// SwapNodes (
+//   it return new *GridFunction and own_nodes, also if nodes is NULL
+//   it return None
 %typemap(in) mfem::GridFunction *&nodes (mfem::GridFunction *Pnodes){
 int res2 = 0;
 res2 = SWIG_ConvertPtr($input, (void **) &Pnodes, $descriptor(mfem::GridFunction *), 0);
@@ -109,7 +109,12 @@ if (!SWIG_IsOK(res2)){
 %typemap(argout) (mfem::GridFunction *&nodes){
   Py_XDECREF($result);
   $result = PyList_New(0);
-  %append_output(SWIG_NewPointerObj(SWIG_as_voidptr(*arg2), $descriptor(mfem::GridFunction *), 0 |  0 ));
+  if (*arg$argnum){
+     // return None if Nodes is NULL
+     %append_output(Py_None);
+  } else {
+     %append_output(SWIG_NewPointerObj(SWIG_as_voidptr(*arg$argnum), $descriptor(mfem::GridFunction *), 0 |  0 ));
+  }
  }
 %typemap(argout) int &own_nodes_{
   %append_output(PyLong_FromLong((long)*$1));  

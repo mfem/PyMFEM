@@ -544,8 +544,6 @@ to find more details of the MFEM library.
 
   1) t*.hpp files are not wrapped
   
-  2) Mesh::SwapNodes is not working perfectly.
-  
   3) Memory management.
       python uses garbage collection. Since wrapper does not know
       exactly how objects are used in c++ layer, MFEM object may be
@@ -553,7 +551,6 @@ to find more details of the MFEM library.
       this by adjusting thisown flag or %newobject directive. This
       needs to be done method by method, and not yet completed.
 
-  4) Visualization through visit is not included
 
   5) SuperLU and PETSc are not supported.
   
