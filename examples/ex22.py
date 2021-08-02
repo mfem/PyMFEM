@@ -224,7 +224,7 @@ def run(mesh_file="",
 
     a = mfem.SesquilinearForm(fespace, conv)
     if pa:
-        a.SetAssemblyLevel(mfem.AssemblyLevel.PARTIAL)
+        a.SetAssemblyLevel(mfem.AssemblyLevel_PARTIAL)
     if prob == 0:
         a.AddDomainIntegrator(mfem.DiffusionIntegrator(stiffnessCoef),
                               None)
@@ -257,7 +257,7 @@ def run(mesh_file="",
 
     pcOp = mfem.BilinearForm(fespace)
     if pa:
-        pcOp.SetAssemblyLevel(mfem.AssemblyLevel.PARTIAL)
+        pcOp.SetAssemblyLevel(mfem.AssemblyLevel_PARTIAL)
 
     if prob == 0:
         pcOp.AddDomainIntegrator(mfem.DiffusionIntegrator(stiffnessCoef))
