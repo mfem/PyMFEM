@@ -629,13 +629,13 @@ class HypreParMatrix(mfem._par.operators.Operator):
     def PrintCommPkg(self, *args):
         r"""
         PrintCommPkg(HypreParMatrix self, std::ostream & out=out)
-        PrintCommPkg(HypreParMatrix self, char const * file, int precision=8)
+        PrintCommPkg(HypreParMatrix self, char const * file, int precision=16)
         """
         return _hypre.HypreParMatrix_PrintCommPkg(self, *args)
     PrintCommPkg = _swig_new_instance_method(_hypre.HypreParMatrix_PrintCommPkg)
 
-    def PrintCommPkgGZ(self, file, precision=8):
-        r"""PrintCommPkgGZ(HypreParMatrix self, char const * file, int precision=8)"""
+    def PrintCommPkgGZ(self, file, precision=16):
+        r"""PrintCommPkgGZ(HypreParMatrix self, char const * file, int precision=16)"""
         return _hypre.HypreParMatrix_PrintCommPkgGZ(self, file, precision)
     PrintCommPkgGZ = _swig_new_instance_method(_hypre.HypreParMatrix_PrintCommPkgGZ)
 

@@ -15,7 +15,7 @@
       ex8.py -m star-surf.mesh -o 2
       ex8.py -m mobius-strip.mesh
 '''
-from os.path import expanduser, join
+from os.path import expanduser, join, dirname
 import numpy as np
 from numpy import sin, cos, exp, sqrt
 
@@ -25,7 +25,7 @@ import mfem.ser as mfem
 
 parser = ArgParser(description='Ex8')
 parser.add_argument('-m', '--mesh',
-                    default = 'star.mesh', 
+                    default = '../data/star.mesh', 
                     action = 'store', type = str,
                     help='Mesh file to use.')
 parser.add_argument('-o', '--order',
@@ -42,8 +42,8 @@ visualization = args.visualization
 #   2. Read the mesh from the given mesh file. We can handle triangular,
 #      quadrilateral, tetrahedral, hexahedral, surface and volume meshes with
 #      the same code.
-
-meshfile = expanduser(join(path, 'data', 'star.mesh'))
+path = dirname((__file__))
+meshfile = expanduser(join(path, '..', 'data', args.mesh))
 mesh = mfem.Mesh(meshfile, 1,1)
 
 dim = mesh.Dimension()
@@ -136,6 +136,7 @@ Sinv = mfem.BilinearForm(test_space)
 Sum = mfem.SumIntegrator()
 Sum.AddIntegrator(mfem.DiffusionIntegrator(one))
 Sum.AddIntegrator(mfem.MassIntegrator(one))
+
 Sinv.AddDomainIntegrator(mfem.InverseIntegrator(Sum))
 Sinv.Assemble()
 Sinv.Finalize()

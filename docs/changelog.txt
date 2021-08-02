@@ -1,4 +1,11 @@
 	<<<  Change Log. >>>
+2021 07.31
+        * preparation for MFEM4.3
+	* test_example now compares all output files.
+        * Added ex0, ex20, refreshed many examples
+	* mesh.AddVertex accept numpy float array, mfem.Vector or list
+	* mesh.AddQuad (and other similar routine which
+	  accept const *int vi) accept numpy int32 array, mfem.Array<int> or list
 	
 2021 05.19
         * Fixed std::istream & wrapping not to return the lenght of data. This fixes

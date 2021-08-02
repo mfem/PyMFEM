@@ -806,79 +806,79 @@ class SparseMatrix(mfem._par.matrix.AbstractSparseMatrix):
     def Print(self, *args):
         r"""
         Print(SparseMatrix self, std::ostream & out=mfem::out, int width_=4)
-        Print(SparseMatrix self, char const * file, int precision=8)
+        Print(SparseMatrix self, char const * file, int precision=16)
         """
         return _sparsemat.SparseMatrix_Print(self, *args)
     Print = _swig_new_instance_method(_sparsemat.SparseMatrix_Print)
 
-    def PrintGZ(self, file, precision=8):
-        r"""PrintGZ(SparseMatrix self, char const * file, int precision=8)"""
+    def PrintGZ(self, file, precision=16):
+        r"""PrintGZ(SparseMatrix self, char const * file, int precision=16)"""
         return _sparsemat.SparseMatrix_PrintGZ(self, file, precision)
     PrintGZ = _swig_new_instance_method(_sparsemat.SparseMatrix_PrintGZ)
 
     def PrintMatlab(self, *args):
         r"""
         PrintMatlab(SparseMatrix self, std::ostream & out=mfem::out)
-        PrintMatlab(SparseMatrix self, char const * file, int precision=8)
+        PrintMatlab(SparseMatrix self, char const * file, int precision=16)
         """
         return _sparsemat.SparseMatrix_PrintMatlab(self, *args)
     PrintMatlab = _swig_new_instance_method(_sparsemat.SparseMatrix_PrintMatlab)
 
-    def PrintMatlabGZ(self, file, precision=8):
-        r"""PrintMatlabGZ(SparseMatrix self, char const * file, int precision=8)"""
+    def PrintMatlabGZ(self, file, precision=16):
+        r"""PrintMatlabGZ(SparseMatrix self, char const * file, int precision=16)"""
         return _sparsemat.SparseMatrix_PrintMatlabGZ(self, file, precision)
     PrintMatlabGZ = _swig_new_instance_method(_sparsemat.SparseMatrix_PrintMatlabGZ)
 
     def PrintMM(self, *args):
         r"""
         PrintMM(SparseMatrix self, std::ostream & out=mfem::out)
-        PrintMM(SparseMatrix self, char const * file, int precision=8)
+        PrintMM(SparseMatrix self, char const * file, int precision=16)
         """
         return _sparsemat.SparseMatrix_PrintMM(self, *args)
     PrintMM = _swig_new_instance_method(_sparsemat.SparseMatrix_PrintMM)
 
-    def PrintMMGZ(self, file, precision=8):
-        r"""PrintMMGZ(SparseMatrix self, char const * file, int precision=8)"""
+    def PrintMMGZ(self, file, precision=16):
+        r"""PrintMMGZ(SparseMatrix self, char const * file, int precision=16)"""
         return _sparsemat.SparseMatrix_PrintMMGZ(self, file, precision)
     PrintMMGZ = _swig_new_instance_method(_sparsemat.SparseMatrix_PrintMMGZ)
 
-    def PrintCSRGZ(self, file, precision=8):
-        r"""PrintCSRGZ(SparseMatrix self, char const * file, int precision=8)"""
+    def PrintCSRGZ(self, file, precision=16):
+        r"""PrintCSRGZ(SparseMatrix self, char const * file, int precision=16)"""
         return _sparsemat.SparseMatrix_PrintCSRGZ(self, file, precision)
     PrintCSRGZ = _swig_new_instance_method(_sparsemat.SparseMatrix_PrintCSRGZ)
 
     def PrintCSR(self, *args):
         r"""
         PrintCSR(SparseMatrix self, std::ostream & out)
-        PrintCSR(SparseMatrix self, char const * file, int precision=8)
+        PrintCSR(SparseMatrix self, char const * file, int precision=16)
         PrintCSR(SparseMatrix self)
         """
         return _sparsemat.SparseMatrix_PrintCSR(self, *args)
     PrintCSR = _swig_new_instance_method(_sparsemat.SparseMatrix_PrintCSR)
 
-    def PrintCSR2GZ(self, file, precision=8):
-        r"""PrintCSR2GZ(SparseMatrix self, char const * file, int precision=8)"""
+    def PrintCSR2GZ(self, file, precision=16):
+        r"""PrintCSR2GZ(SparseMatrix self, char const * file, int precision=16)"""
         return _sparsemat.SparseMatrix_PrintCSR2GZ(self, file, precision)
     PrintCSR2GZ = _swig_new_instance_method(_sparsemat.SparseMatrix_PrintCSR2GZ)
 
     def PrintCSR2(self, *args):
         r"""
         PrintCSR2(SparseMatrix self, std::ostream & out)
-        PrintCSR2(SparseMatrix self, char const * file, int precision=8)
+        PrintCSR2(SparseMatrix self, char const * file, int precision=16)
         PrintCSR2(SparseMatrix self)
         """
         return _sparsemat.SparseMatrix_PrintCSR2(self, *args)
     PrintCSR2 = _swig_new_instance_method(_sparsemat.SparseMatrix_PrintCSR2)
 
-    def PrintInfoGZ(self, file, precision=8):
-        r"""PrintInfoGZ(SparseMatrix self, char const * file, int precision=8)"""
+    def PrintInfoGZ(self, file, precision=16):
+        r"""PrintInfoGZ(SparseMatrix self, char const * file, int precision=16)"""
         return _sparsemat.SparseMatrix_PrintInfoGZ(self, file, precision)
     PrintInfoGZ = _swig_new_instance_method(_sparsemat.SparseMatrix_PrintInfoGZ)
 
     def PrintInfo(self, *args):
         r"""
         PrintInfo(SparseMatrix self, std::ostream & out)
-        PrintInfo(SparseMatrix self, char const * file, int precision=8)
+        PrintInfo(SparseMatrix self, char const * file, int precision=16)
         PrintInfo(SparseMatrix self)
         """
         return _sparsemat.SparseMatrix_PrintInfo(self, *args)

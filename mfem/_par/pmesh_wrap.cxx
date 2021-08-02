@@ -3669,7 +3669,7 @@ SWIGINTERN void mfem_ParMesh_ParPrintToFile(mfem::ParMesh const *self,char const
     mesh_ofs.precision(precision);
     self->ParPrint(mesh_ofs);	
     }
-SWIGINTERN void mfem_ParMesh_Print__SWIG_1(mfem::ParMesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_ParMesh_Print__SWIG_1(mfem::ParMesh *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3680,7 +3680,7 @@ SWIGINTERN void mfem_ParMesh_Print__SWIG_1(mfem::ParMesh *self,char const *file,
   self -> Print(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_ParMesh_PrintGZ(mfem::ParMesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_ParMesh_PrintGZ(mfem::ParMesh *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3691,7 +3691,7 @@ SWIGINTERN void mfem_ParMesh_PrintGZ(mfem::ParMesh *self,char const *file,int pr
   self -> Print(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_ParMesh_PrintXG__SWIG_1(mfem::ParMesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_ParMesh_PrintXG__SWIG_1(mfem::ParMesh *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3702,7 +3702,7 @@ SWIGINTERN void mfem_ParMesh_PrintXG__SWIG_1(mfem::ParMesh *self,char const *fil
   self -> PrintXG(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_ParMesh_PrintXGGZ(mfem::ParMesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_ParMesh_PrintXGGZ(mfem::ParMesh *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3713,7 +3713,7 @@ SWIGINTERN void mfem_ParMesh_PrintXGGZ(mfem::ParMesh *self,char const *file,int 
   self -> PrintXG(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_ParMesh_PrintAsOne__SWIG_1(mfem::ParMesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_ParMesh_PrintAsOne__SWIG_1(mfem::ParMesh *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3724,7 +3724,7 @@ SWIGINTERN void mfem_ParMesh_PrintAsOne__SWIG_1(mfem::ParMesh *self,char const *
   self -> PrintAsOne(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_ParMesh_PrintAsOneGZ(mfem::ParMesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_ParMesh_PrintAsOneGZ(mfem::ParMesh *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3735,7 +3735,7 @@ SWIGINTERN void mfem_ParMesh_PrintAsOneGZ(mfem::ParMesh *self,char const *file,i
   self -> PrintAsOne(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_ParMesh_PrintAsOneXG__SWIG_1(mfem::ParMesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_ParMesh_PrintAsOneXG__SWIG_1(mfem::ParMesh *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3746,7 +3746,7 @@ SWIGINTERN void mfem_ParMesh_PrintAsOneXG__SWIG_1(mfem::ParMesh *self,char const
   self -> PrintAsOneXG(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_ParMesh_PrintAsOneXGGZ(mfem::ParMesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_ParMesh_PrintAsOneXGGZ(mfem::ParMesh *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3757,7 +3757,7 @@ SWIGINTERN void mfem_ParMesh_PrintAsOneXGGZ(mfem::ParMesh *self,char const *file
   self -> PrintAsOneXG(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_ParMesh_PrintInfo__SWIG_1(mfem::ParMesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_ParMesh_PrintInfo__SWIG_1(mfem::ParMesh *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3768,7 +3768,7 @@ SWIGINTERN void mfem_ParMesh_PrintInfo__SWIG_1(mfem::ParMesh *self,char const *f
   self -> PrintInfo(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_ParMesh_PrintInfoGZ(mfem::ParMesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_ParMesh_PrintInfoGZ(mfem::ParMesh *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3779,7 +3779,7 @@ SWIGINTERN void mfem_ParMesh_PrintInfoGZ(mfem::ParMesh *self,char const *file,in
   self -> PrintInfo(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_ParMesh_ParPrint__SWIG_1(mfem::ParMesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_ParMesh_ParPrint__SWIG_1(mfem::ParMesh *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3790,7 +3790,7 @@ SWIGINTERN void mfem_ParMesh_ParPrint__SWIG_1(mfem::ParMesh *self,char const *fi
   self -> ParPrint(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_ParMesh_ParPrintGZ(mfem::ParMesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_ParMesh_ParPrintGZ(mfem::ParMesh *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   
   if (!ofile)
@@ -8282,7 +8282,7 @@ SWIGINTERN PyObject *_wrap_ParMesh_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -8420,7 +8420,7 @@ SWIGINTERN PyObject *_wrap_ParMesh_PrintGZ(PyObject *SWIGUNUSEDPARM(self), PyObj
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -8478,7 +8478,7 @@ SWIGINTERN PyObject *_wrap_ParMesh_PrintXG__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -8616,7 +8616,7 @@ SWIGINTERN PyObject *_wrap_ParMesh_PrintXGGZ(PyObject *SWIGUNUSEDPARM(self), PyO
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -8674,7 +8674,7 @@ SWIGINTERN PyObject *_wrap_ParMesh_PrintAsOne__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -8812,7 +8812,7 @@ SWIGINTERN PyObject *_wrap_ParMesh_PrintAsOneGZ(PyObject *SWIGUNUSEDPARM(self), 
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -8870,7 +8870,7 @@ SWIGINTERN PyObject *_wrap_ParMesh_PrintAsOneXG__SWIG_1(PyObject *SWIGUNUSEDPARM
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -9008,7 +9008,7 @@ SWIGINTERN PyObject *_wrap_ParMesh_PrintAsOneXGGZ(PyObject *SWIGUNUSEDPARM(self)
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -9066,7 +9066,7 @@ SWIGINTERN PyObject *_wrap_ParMesh_PrintInfo__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -9204,7 +9204,7 @@ SWIGINTERN PyObject *_wrap_ParMesh_PrintInfoGZ(PyObject *SWIGUNUSEDPARM(self), P
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -9262,7 +9262,7 @@ SWIGINTERN PyObject *_wrap_ParMesh_ParPrint__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -9314,7 +9314,7 @@ SWIGINTERN PyObject *_wrap_ParMesh_ParPrintGZ(PyObject *SWIGUNUSEDPARM(self), Py
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -9587,33 +9587,33 @@ static PyMethodDef SwigMethods[] = {
 	 { "ParMesh_ParPrintToFile", (PyCFunction)(void(*)(void))_wrap_ParMesh_ParPrintToFile, METH_VARARGS|METH_KEYWORDS, "ParMesh_ParPrintToFile(ParMesh self, char const * mesh_file, int const precision)"},
 	 { "ParMesh_Print", _wrap_ParMesh_Print, METH_VARARGS, "\n"
 		"ParMesh_Print(ParMesh self, std::ostream & out=out)\n"
-		"ParMesh_Print(ParMesh self, char const * file, int precision=8)\n"
+		"ParMesh_Print(ParMesh self, char const * file, int precision=16)\n"
 		""},
-	 { "ParMesh_PrintGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintGZ, METH_VARARGS|METH_KEYWORDS, "ParMesh_PrintGZ(ParMesh self, char const * file, int precision=8)"},
+	 { "ParMesh_PrintGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintGZ, METH_VARARGS|METH_KEYWORDS, "ParMesh_PrintGZ(ParMesh self, char const * file, int precision=16)"},
 	 { "ParMesh_PrintXG", _wrap_ParMesh_PrintXG, METH_VARARGS, "\n"
 		"ParMesh_PrintXG(ParMesh self, std::ostream & out=out)\n"
-		"ParMesh_PrintXG(ParMesh self, char const * file, int precision=8)\n"
+		"ParMesh_PrintXG(ParMesh self, char const * file, int precision=16)\n"
 		""},
-	 { "ParMesh_PrintXGGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintXGGZ, METH_VARARGS|METH_KEYWORDS, "ParMesh_PrintXGGZ(ParMesh self, char const * file, int precision=8)"},
+	 { "ParMesh_PrintXGGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintXGGZ, METH_VARARGS|METH_KEYWORDS, "ParMesh_PrintXGGZ(ParMesh self, char const * file, int precision=16)"},
 	 { "ParMesh_PrintAsOne", _wrap_ParMesh_PrintAsOne, METH_VARARGS, "\n"
 		"ParMesh_PrintAsOne(ParMesh self, std::ostream & out=out)\n"
-		"ParMesh_PrintAsOne(ParMesh self, char const * file, int precision=8)\n"
+		"ParMesh_PrintAsOne(ParMesh self, char const * file, int precision=16)\n"
 		""},
-	 { "ParMesh_PrintAsOneGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintAsOneGZ, METH_VARARGS|METH_KEYWORDS, "ParMesh_PrintAsOneGZ(ParMesh self, char const * file, int precision=8)"},
+	 { "ParMesh_PrintAsOneGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintAsOneGZ, METH_VARARGS|METH_KEYWORDS, "ParMesh_PrintAsOneGZ(ParMesh self, char const * file, int precision=16)"},
 	 { "ParMesh_PrintAsOneXG", _wrap_ParMesh_PrintAsOneXG, METH_VARARGS, "\n"
 		"ParMesh_PrintAsOneXG(ParMesh self, std::ostream & out=out)\n"
-		"ParMesh_PrintAsOneXG(ParMesh self, char const * file, int precision=8)\n"
+		"ParMesh_PrintAsOneXG(ParMesh self, char const * file, int precision=16)\n"
 		""},
-	 { "ParMesh_PrintAsOneXGGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintAsOneXGGZ, METH_VARARGS|METH_KEYWORDS, "ParMesh_PrintAsOneXGGZ(ParMesh self, char const * file, int precision=8)"},
+	 { "ParMesh_PrintAsOneXGGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintAsOneXGGZ, METH_VARARGS|METH_KEYWORDS, "ParMesh_PrintAsOneXGGZ(ParMesh self, char const * file, int precision=16)"},
 	 { "ParMesh_PrintInfo", _wrap_ParMesh_PrintInfo, METH_VARARGS, "\n"
 		"ParMesh_PrintInfo(ParMesh self, std::ostream & out=out)\n"
-		"ParMesh_PrintInfo(ParMesh self, char const * file, int precision=8)\n"
+		"ParMesh_PrintInfo(ParMesh self, char const * file, int precision=16)\n"
 		""},
-	 { "ParMesh_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "ParMesh_PrintInfoGZ(ParMesh self, char const * file, int precision=8)"},
-	 { "ParMesh_ParPrintGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_ParPrintGZ, METH_VARARGS|METH_KEYWORDS, "ParMesh_ParPrintGZ(ParMesh self, char const * file, int precision=8)"},
+	 { "ParMesh_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "ParMesh_PrintInfoGZ(ParMesh self, char const * file, int precision=16)"},
+	 { "ParMesh_ParPrintGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_ParPrintGZ, METH_VARARGS|METH_KEYWORDS, "ParMesh_ParPrintGZ(ParMesh self, char const * file, int precision=16)"},
 	 { "ParMesh_ParPrint", _wrap_ParMesh_ParPrint, METH_VARARGS, "\n"
 		"ParMesh_ParPrint(ParMesh self, std::ostream & out)\n"
-		"ParMesh_ParPrint(ParMesh self, char const * file, int precision=8)\n"
+		"ParMesh_ParPrint(ParMesh self, char const * file, int precision=16)\n"
 		"ParMesh_ParPrint(ParMesh self)\n"
 		""},
 	 { "ParMesh_swigregister", ParMesh_swigregister, METH_O, NULL},
@@ -9704,33 +9704,33 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ParMesh_ParPrintToFile", (PyCFunction)(void(*)(void))_wrap_ParMesh_ParPrintToFile, METH_VARARGS|METH_KEYWORDS, "ParPrintToFile(ParMesh self, char const * mesh_file, int const precision)"},
 	 { "ParMesh_Print", _wrap_ParMesh_Print, METH_VARARGS, "\n"
 		"Print(ParMesh self, std::ostream & out=out)\n"
-		"Print(ParMesh self, char const * file, int precision=8)\n"
+		"Print(ParMesh self, char const * file, int precision=16)\n"
 		""},
-	 { "ParMesh_PrintGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(ParMesh self, char const * file, int precision=8)"},
+	 { "ParMesh_PrintGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(ParMesh self, char const * file, int precision=16)"},
 	 { "ParMesh_PrintXG", _wrap_ParMesh_PrintXG, METH_VARARGS, "\n"
 		"PrintXG(ParMesh self, std::ostream & out=out)\n"
-		"PrintXG(ParMesh self, char const * file, int precision=8)\n"
+		"PrintXG(ParMesh self, char const * file, int precision=16)\n"
 		""},
-	 { "ParMesh_PrintXGGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintXGGZ, METH_VARARGS|METH_KEYWORDS, "PrintXGGZ(ParMesh self, char const * file, int precision=8)"},
+	 { "ParMesh_PrintXGGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintXGGZ, METH_VARARGS|METH_KEYWORDS, "PrintXGGZ(ParMesh self, char const * file, int precision=16)"},
 	 { "ParMesh_PrintAsOne", _wrap_ParMesh_PrintAsOne, METH_VARARGS, "\n"
 		"PrintAsOne(ParMesh self, std::ostream & out=out)\n"
-		"PrintAsOne(ParMesh self, char const * file, int precision=8)\n"
+		"PrintAsOne(ParMesh self, char const * file, int precision=16)\n"
 		""},
-	 { "ParMesh_PrintAsOneGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintAsOneGZ, METH_VARARGS|METH_KEYWORDS, "PrintAsOneGZ(ParMesh self, char const * file, int precision=8)"},
+	 { "ParMesh_PrintAsOneGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintAsOneGZ, METH_VARARGS|METH_KEYWORDS, "PrintAsOneGZ(ParMesh self, char const * file, int precision=16)"},
 	 { "ParMesh_PrintAsOneXG", _wrap_ParMesh_PrintAsOneXG, METH_VARARGS, "\n"
 		"PrintAsOneXG(ParMesh self, std::ostream & out=out)\n"
-		"PrintAsOneXG(ParMesh self, char const * file, int precision=8)\n"
+		"PrintAsOneXG(ParMesh self, char const * file, int precision=16)\n"
 		""},
-	 { "ParMesh_PrintAsOneXGGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintAsOneXGGZ, METH_VARARGS|METH_KEYWORDS, "PrintAsOneXGGZ(ParMesh self, char const * file, int precision=8)"},
+	 { "ParMesh_PrintAsOneXGGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintAsOneXGGZ, METH_VARARGS|METH_KEYWORDS, "PrintAsOneXGGZ(ParMesh self, char const * file, int precision=16)"},
 	 { "ParMesh_PrintInfo", _wrap_ParMesh_PrintInfo, METH_VARARGS, "\n"
 		"PrintInfo(ParMesh self, std::ostream & out=out)\n"
-		"PrintInfo(ParMesh self, char const * file, int precision=8)\n"
+		"PrintInfo(ParMesh self, char const * file, int precision=16)\n"
 		""},
-	 { "ParMesh_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "PrintInfoGZ(ParMesh self, char const * file, int precision=8)"},
-	 { "ParMesh_ParPrintGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_ParPrintGZ, METH_VARARGS|METH_KEYWORDS, "ParPrintGZ(ParMesh self, char const * file, int precision=8)"},
+	 { "ParMesh_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "PrintInfoGZ(ParMesh self, char const * file, int precision=16)"},
+	 { "ParMesh_ParPrintGZ", (PyCFunction)(void(*)(void))_wrap_ParMesh_ParPrintGZ, METH_VARARGS|METH_KEYWORDS, "ParPrintGZ(ParMesh self, char const * file, int precision=16)"},
 	 { "ParMesh_ParPrint", _wrap_ParMesh_ParPrint, METH_VARARGS, "\n"
 		"ParPrint(ParMesh self, std::ostream & out)\n"
-		"ParPrint(ParMesh self, char const * file, int precision=8)\n"
+		"ParPrint(ParMesh self, char const * file, int precision=16)\n"
 		"ParPrint(ParMesh self)\n"
 		""},
 	 { "ParMesh_swigregister", ParMesh_swigregister, METH_O, NULL},

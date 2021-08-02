@@ -536,25 +536,25 @@ class Vector(object):
     def Print(self, *args):
         r"""
         Print(Vector self, std::ostream & out=mfem::out, int width=8)
-        Print(Vector self, char const * file, int precision=8)
+        Print(Vector self, char const * file, int precision=16)
         """
         return _vector.Vector_Print(self, *args)
     Print = _swig_new_instance_method(_vector.Vector_Print)
 
-    def PrintGZ(self, file, precision=8):
-        r"""PrintGZ(Vector self, char const * file, int precision=8)"""
+    def PrintGZ(self, file, precision=16):
+        r"""PrintGZ(Vector self, char const * file, int precision=16)"""
         return _vector.Vector_PrintGZ(self, file, precision)
     PrintGZ = _swig_new_instance_method(_vector.Vector_PrintGZ)
 
-    def Print_HYPREGZ(self, file, precision=8):
-        r"""Print_HYPREGZ(Vector self, char const * file, int precision=8)"""
+    def Print_HYPREGZ(self, file, precision=16):
+        r"""Print_HYPREGZ(Vector self, char const * file, int precision=16)"""
         return _vector.Vector_Print_HYPREGZ(self, file, precision)
     Print_HYPREGZ = _swig_new_instance_method(_vector.Vector_Print_HYPREGZ)
 
     def Print_HYPRE(self, *args):
         r"""
         Print_HYPRE(Vector self, std::ostream & out)
-        Print_HYPRE(Vector self, char const * file, int precision=8)
+        Print_HYPRE(Vector self, char const * file, int precision=16)
         Print_HYPRE(Vector self)
         """
         return _vector.Vector_Print_HYPRE(self, *args)

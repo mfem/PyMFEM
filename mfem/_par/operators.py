@@ -230,13 +230,13 @@ class Operator(object):
     def PrintMatlab(self, *args):
         r"""
         PrintMatlab(Operator self, std::ostream & out, int n=0, int m=0)
-        PrintMatlab(Operator self, char const * file, int precision=8)
+        PrintMatlab(Operator self, char const * file, int precision=16)
         """
         return _operators.Operator_PrintMatlab(self, *args)
     PrintMatlab = _swig_new_instance_method(_operators.Operator_PrintMatlab)
 
-    def PrintMatlabGZ(self, file, precision=8):
-        r"""PrintMatlabGZ(Operator self, char const * file, int precision=8)"""
+    def PrintMatlabGZ(self, file, precision=16):
+        r"""PrintMatlabGZ(Operator self, char const * file, int precision=16)"""
         return _operators.Operator_PrintMatlabGZ(self, file, precision)
     PrintMatlabGZ = _swig_new_instance_method(_operators.Operator_PrintMatlabGZ)
     def __disown__(self):

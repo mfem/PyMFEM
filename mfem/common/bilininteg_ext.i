@@ -288,6 +288,6 @@ namespace mfem {
 %}
 
 %pythonappend SumIntegrator::AddIntegrator %{
-   if self.own_integs == 1: integ._thisown = 0
+   if self.own_integs == 1: integ.thisown = 0
 %}
 }

@@ -4,11 +4,10 @@
       refinement loop. 
       See c++ version in the MFEM library for more detail 
 '''
-from mfem import path
 from mfem.common.arg_parser import ArgParser
 import mfem.ser as mfem
 from mfem.ser import intArray
-from os.path import expanduser, join
+from os.path import expanduser, join, dirname
 import numpy as np
 from numpy import sqrt, pi, cos, sin, hypot, arctan2
 from scipy.special import erfc
@@ -52,7 +51,6 @@ parser.add_argument('-vs', '--visualization-steps',
                     help = "Visualize every n-th timestep.")
 
 args = parser.parse_args()
-mesh = args.mesh
 ref_levels = args.refine
 order = args.order
 ode_solver_type = args.ode_solver
@@ -74,7 +72,7 @@ from ex18_common import FE_Evolution, InitialCondition, RiemannSolver, DomainInt
 
 # 2. Read the mesh from the given mesh file. This example requires a 2D
 #    periodic mesh, such as ../data/periodic-square.mesh.
-meshfile = expanduser(join(path, 'data', mesh))
+meshfile =expanduser(join(dirname(__file__), '..', 'data', args.mesh))
 mesh = mfem.Mesh(meshfile, 1,1)
 dim = mesh.Dimension()
 

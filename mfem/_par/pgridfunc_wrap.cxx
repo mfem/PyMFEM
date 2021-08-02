@@ -3748,7 +3748,7 @@ SWIGINTERN mfem::ParGridFunction *new_mfem_ParGridFunction__SWIG_8(mfem::ParFini
    gf = new mfem::ParGridFunction(fes, v.GetData() + offset);
    return gf;
  }
-SWIGINTERN void mfem_ParGridFunction_Save__SWIG_2(mfem::ParGridFunction *self,char const *file,int precision=8){
+SWIGINTERN void mfem_ParGridFunction_Save__SWIG_2(mfem::ParGridFunction *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3759,7 +3759,7 @@ SWIGINTERN void mfem_ParGridFunction_Save__SWIG_2(mfem::ParGridFunction *self,ch
   self -> Save(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_ParGridFunction_SaveGZ(mfem::ParGridFunction *self,char const *file,int precision=8){
+SWIGINTERN void mfem_ParGridFunction_SaveGZ(mfem::ParGridFunction *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3770,7 +3770,7 @@ SWIGINTERN void mfem_ParGridFunction_SaveGZ(mfem::ParGridFunction *self,char con
   self -> Save(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_ParGridFunction_SaveAsOne__SWIG_2(mfem::ParGridFunction *self,char const *file,int precision=8){
+SWIGINTERN void mfem_ParGridFunction_SaveAsOne__SWIG_2(mfem::ParGridFunction *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3781,7 +3781,7 @@ SWIGINTERN void mfem_ParGridFunction_SaveAsOne__SWIG_2(mfem::ParGridFunction *se
   self -> SaveAsOne(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_ParGridFunction_SaveAsOneGZ(mfem::ParGridFunction *self,char const *file,int precision=8){
+SWIGINTERN void mfem_ParGridFunction_SaveAsOneGZ(mfem::ParGridFunction *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -10817,7 +10817,7 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_Save__SWIG_2(PyObject *SWIGUNUSEDPARM
   PyObject *resultobj = 0;
   mfem::ParGridFunction *arg1 = (mfem::ParGridFunction *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -10979,7 +10979,7 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_SaveGZ(PyObject *SWIGUNUSEDPARM(self)
   PyObject *resultobj = 0;
   mfem::ParGridFunction *arg1 = (mfem::ParGridFunction *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -11037,7 +11037,7 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_SaveAsOne__SWIG_2(PyObject *SWIGUNUSE
   PyObject *resultobj = 0;
   mfem::ParGridFunction *arg1 = (mfem::ParGridFunction *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -11202,7 +11202,7 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_SaveAsOneGZ(PyObject *SWIGUNUSEDPARM(
   PyObject *resultobj = 0;
   mfem::ParGridFunction *arg1 = (mfem::ParGridFunction *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -11524,15 +11524,15 @@ static PyMethodDef SwigMethods[] = {
 	 { "ParGridFunction_Save", _wrap_ParGridFunction_Save, METH_VARARGS, "\n"
 		"ParGridFunction_Save(ParGridFunction self, std::ostream & out)\n"
 		"ParGridFunction_Save(ParGridFunction self, char const * fname, int precision=16)\n"
-		"ParGridFunction_Save(ParGridFunction self, char const * file, int precision=8)\n"
+		"ParGridFunction_Save(ParGridFunction self, char const * file, int precision=16)\n"
 		""},
-	 { "ParGridFunction_SaveGZ", (PyCFunction)(void(*)(void))_wrap_ParGridFunction_SaveGZ, METH_VARARGS|METH_KEYWORDS, "ParGridFunction_SaveGZ(ParGridFunction self, char const * file, int precision=8)"},
+	 { "ParGridFunction_SaveGZ", (PyCFunction)(void(*)(void))_wrap_ParGridFunction_SaveGZ, METH_VARARGS|METH_KEYWORDS, "ParGridFunction_SaveGZ(ParGridFunction self, char const * file, int precision=16)"},
 	 { "ParGridFunction_SaveAsOne", _wrap_ParGridFunction_SaveAsOne, METH_VARARGS, "\n"
 		"ParGridFunction_SaveAsOne(ParGridFunction self, char const * fname, int precision=16)\n"
 		"ParGridFunction_SaveAsOne(ParGridFunction self, std::ostream & out=out)\n"
-		"ParGridFunction_SaveAsOne(ParGridFunction self, char const * file, int precision=8)\n"
+		"ParGridFunction_SaveAsOne(ParGridFunction self, char const * file, int precision=16)\n"
 		""},
-	 { "ParGridFunction_SaveAsOneGZ", (PyCFunction)(void(*)(void))_wrap_ParGridFunction_SaveAsOneGZ, METH_VARARGS|METH_KEYWORDS, "ParGridFunction_SaveAsOneGZ(ParGridFunction self, char const * file, int precision=8)"},
+	 { "ParGridFunction_SaveAsOneGZ", (PyCFunction)(void(*)(void))_wrap_ParGridFunction_SaveAsOneGZ, METH_VARARGS|METH_KEYWORDS, "ParGridFunction_SaveAsOneGZ(ParGridFunction self, char const * file, int precision=16)"},
 	 { "ParGridFunction_swigregister", ParGridFunction_swigregister, METH_O, NULL},
 	 { "ParGridFunction_swiginit", ParGridFunction_swiginit, METH_VARARGS, NULL},
 	 { "L2ZZErrorEstimator", (PyCFunction)(void(*)(void))_wrap_L2ZZErrorEstimator, METH_VARARGS|METH_KEYWORDS, "L2ZZErrorEstimator(BilinearFormIntegrator flux_integrator, ParGridFunction x, ParFiniteElementSpace smooth_flux_fes, ParFiniteElementSpace flux_fes, Vector errors, int norm_p=2, double solver_tol=1e-12, int solver_max_it=200) -> double"},
@@ -11677,15 +11677,15 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ParGridFunction_Save", _wrap_ParGridFunction_Save, METH_VARARGS, "\n"
 		"Save(ParGridFunction self, std::ostream & out)\n"
 		"Save(ParGridFunction self, char const * fname, int precision=16)\n"
-		"Save(ParGridFunction self, char const * file, int precision=8)\n"
+		"Save(ParGridFunction self, char const * file, int precision=16)\n"
 		""},
-	 { "ParGridFunction_SaveGZ", (PyCFunction)(void(*)(void))_wrap_ParGridFunction_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(ParGridFunction self, char const * file, int precision=8)"},
+	 { "ParGridFunction_SaveGZ", (PyCFunction)(void(*)(void))_wrap_ParGridFunction_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(ParGridFunction self, char const * file, int precision=16)"},
 	 { "ParGridFunction_SaveAsOne", _wrap_ParGridFunction_SaveAsOne, METH_VARARGS, "\n"
 		"SaveAsOne(ParGridFunction self, char const * fname, int precision=16)\n"
 		"SaveAsOne(ParGridFunction self, std::ostream & out=out)\n"
-		"SaveAsOne(ParGridFunction self, char const * file, int precision=8)\n"
+		"SaveAsOne(ParGridFunction self, char const * file, int precision=16)\n"
 		""},
-	 { "ParGridFunction_SaveAsOneGZ", (PyCFunction)(void(*)(void))_wrap_ParGridFunction_SaveAsOneGZ, METH_VARARGS|METH_KEYWORDS, "SaveAsOneGZ(ParGridFunction self, char const * file, int precision=8)"},
+	 { "ParGridFunction_SaveAsOneGZ", (PyCFunction)(void(*)(void))_wrap_ParGridFunction_SaveAsOneGZ, METH_VARARGS|METH_KEYWORDS, "SaveAsOneGZ(ParGridFunction self, char const * file, int precision=16)"},
 	 { "ParGridFunction_swigregister", ParGridFunction_swigregister, METH_O, NULL},
 	 { "ParGridFunction_swiginit", ParGridFunction_swiginit, METH_VARARGS, NULL},
 	 { "L2ZZErrorEstimator", (PyCFunction)(void(*)(void))_wrap_L2ZZErrorEstimator, METH_VARARGS|METH_KEYWORDS, "L2ZZErrorEstimator(BilinearFormIntegrator flux_integrator, ParGridFunction x, ParFiniteElementSpace smooth_flux_fes, ParFiniteElementSpace flux_fes, Vector errors, int norm_p=2, double solver_tol=1e-12, int solver_max_it=200) -> double"},

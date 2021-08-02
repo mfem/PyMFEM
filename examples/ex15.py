@@ -29,10 +29,9 @@
 
 import sys
 from mfem.common.arg_parser import ArgParser
-from os.path import expanduser, join
+from os.path import expanduser, join, dirname
 import numpy as np
 from numpy import cos, sin, pi, exp, sqrt, arctan
-from mfem import path
 
 import mfem.ser as mfem
 from mfem.ser import intArray
@@ -157,7 +156,7 @@ def UpdateProblem(mesh, fespace, x, a, b):
 # 2. Read the mesh from the given mesh file on all processors. We can handle
 #    triangular, quadrilateral, tetrahedral, hexahedral, surface and volume
 #    meshes with the same code
-meshfile =expanduser(join(path, 'data', args.mesh))
+meshfile =expanduser(join(dirname(__file__), '..', 'data', args.mesh))
 mesh = mfem.Mesh(meshfile, 1,1)
 dim = mesh.Dimension() 
 sdim = mesh.SpaceDimension()

@@ -221,13 +221,13 @@ class GroupTopology(object):
     def Save(self, *args):
         r"""
         Save(GroupTopology self, std::ostream & out)
-        Save(GroupTopology self, char const * file, int precision=8)
+        Save(GroupTopology self, char const * file, int precision=16)
         """
         return _communication.GroupTopology_Save(self, *args)
     Save = _swig_new_instance_method(_communication.GroupTopology_Save)
 
-    def SaveGZ(self, file, precision=8):
-        r"""SaveGZ(GroupTopology self, char const * file, int precision=8)"""
+    def SaveGZ(self, file, precision=16):
+        r"""SaveGZ(GroupTopology self, char const * file, int precision=16)"""
         return _communication.GroupTopology_SaveGZ(self, file, precision)
     SaveGZ = _swig_new_instance_method(_communication.GroupTopology_SaveGZ)
 
@@ -293,13 +293,13 @@ class GroupCommunicator(object):
     def PrintInfo(self, *args):
         r"""
         PrintInfo(GroupCommunicator self, std::ostream & out=mfem::out)
-        PrintInfo(GroupCommunicator self, char const * file, int precision=8)
+        PrintInfo(GroupCommunicator self, char const * file, int precision=16)
         """
         return _communication.GroupCommunicator_PrintInfo(self, *args)
     PrintInfo = _swig_new_instance_method(_communication.GroupCommunicator_PrintInfo)
 
-    def PrintInfoGZ(self, file, precision=8):
-        r"""PrintInfoGZ(GroupCommunicator self, char const * file, int precision=8)"""
+    def PrintInfoGZ(self, file, precision=16):
+        r"""PrintInfoGZ(GroupCommunicator self, char const * file, int precision=16)"""
         return _communication.GroupCommunicator_PrintInfoGZ(self, file, precision)
     PrintInfoGZ = _swig_new_instance_method(_communication.GroupCommunicator_PrintInfoGZ)
 

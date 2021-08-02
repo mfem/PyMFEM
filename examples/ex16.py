@@ -20,7 +20,7 @@
 '''
 import sys
 from mfem.common.arg_parser import ArgParser
-from os.path import expanduser, join
+from os.path import expanduser, join, dirname
 import numpy as np
 from mfem import path
 
@@ -105,7 +105,7 @@ class ConductionOperator(mfem.PyTimeDependentOperator):
 class InitialTemperature(mfem.PyCoefficient):
     def EvalValue(self, x):
         xx = np.array(x)
-        norm2 = float(np.sum(xx**2) )
+        norm2 = np.sqrt(np.sum(xx**2))
         if norm2 < 0.5: return 2.0
         return 1.0
 
@@ -153,11 +153,12 @@ kappa = args.kappa;
 visualization = args.visualization
 vis_steps = args.visualization_steps
 ode_solver_type = args.ode_solver
+meshfile = expanduser(
+           join(dirname(__file__), '..', 'data', args.mesh))
 parser.print_options(args)
 
 # 2. Read the mesh from the given mesh file. We can handle triangular,
 #    quadrilateral, tetrahedral and hexahedral meshes with the same code.
-meshfile =expanduser(join(path, 'data', args.mesh))
 mesh = mfem.Mesh(meshfile, 1,1)
 dim = mesh.Dimension()
 
@@ -224,7 +225,8 @@ while not last_step:
     t, dt = ode_solver.Step(u, t, dt)
 
     if (last_step or (ti % vis_steps) == 0):
-         print("step "  + str(ti) + ", t = " +str(t))
+    #if True:
+         print("step "  + str(ti) + ", t = " +"{:g}".format(t))
          u_gf.SetFromTrueDofs(u);
          if (visualization):
              sout << "solution\n" << mesh << u_gf

@@ -1906,19 +1906,29 @@ class NumbaFunction(NumbaFunctionBase):
         """
         _coefficient.NumbaFunction_swiginit(self, _coefficient.new_NumbaFunction(*args))
 
+    def call0(self, x):
+        r"""call0(NumbaFunction self, Vector x) -> double"""
+        return _coefficient.NumbaFunction_call0(self, x)
+    call0 = _swig_new_instance_method(_coefficient.NumbaFunction_call0)
+
     def call(self, x):
         r"""call(NumbaFunction self, Vector x) -> double"""
         return _coefficient.NumbaFunction_call(self, x)
     call = _swig_new_instance_method(_coefficient.NumbaFunction_call)
+
+    def call0t(self, x, t):
+        r"""call0t(NumbaFunction self, Vector x, double t) -> double"""
+        return _coefficient.NumbaFunction_call0t(self, x, t)
+    call0t = _swig_new_instance_method(_coefficient.NumbaFunction_call0t)
 
     def callt(self, x, t):
         r"""callt(NumbaFunction self, Vector x, double t) -> double"""
         return _coefficient.NumbaFunction_callt(self, x, t)
     callt = _swig_new_instance_method(_coefficient.NumbaFunction_callt)
 
-    def GenerateCoefficient(self):
-        r"""GenerateCoefficient(NumbaFunction self) -> FunctionCoefficient"""
-        val = _coefficient.NumbaFunction_GenerateCoefficient(self)
+    def GenerateCoefficient(self, use_0=0):
+        r"""GenerateCoefficient(NumbaFunction self, int use_0=0) -> FunctionCoefficient"""
+        val = _coefficient.NumbaFunction_GenerateCoefficient(self, use_0)
 
         val._link = self
 
@@ -1953,9 +1963,19 @@ class VectorNumbaFunction(NumbaFunctionBase):
         return _coefficient.VectorNumbaFunction_callt(self, x, t, out)
     callt = _swig_new_instance_method(_coefficient.VectorNumbaFunction_callt)
 
-    def GenerateCoefficient(self):
-        r"""GenerateCoefficient(VectorNumbaFunction self) -> VectorFunctionCoefficient"""
-        val = _coefficient.VectorNumbaFunction_GenerateCoefficient(self)
+    def call0(self, x, out):
+        r"""call0(VectorNumbaFunction self, Vector x, Vector out)"""
+        return _coefficient.VectorNumbaFunction_call0(self, x, out)
+    call0 = _swig_new_instance_method(_coefficient.VectorNumbaFunction_call0)
+
+    def call0t(self, x, t, out):
+        r"""call0t(VectorNumbaFunction self, Vector x, double t, Vector out)"""
+        return _coefficient.VectorNumbaFunction_call0t(self, x, t, out)
+    call0t = _swig_new_instance_method(_coefficient.VectorNumbaFunction_call0t)
+
+    def GenerateCoefficient(self, use_0=0):
+        r"""GenerateCoefficient(VectorNumbaFunction self, int use_0=0) -> VectorFunctionCoefficient"""
+        val = _coefficient.VectorNumbaFunction_GenerateCoefficient(self, use_0)
 
         val._link = self
 
@@ -1990,9 +2010,19 @@ class MatrixNumbaFunction(object):
         return _coefficient.MatrixNumbaFunction_callt(self, x, t, out)
     callt = _swig_new_instance_method(_coefficient.MatrixNumbaFunction_callt)
 
-    def GenerateCoefficient(self):
-        r"""GenerateCoefficient(MatrixNumbaFunction self) -> MatrixFunctionCoefficient"""
-        val = _coefficient.MatrixNumbaFunction_GenerateCoefficient(self)
+    def call0(self, x, out):
+        r"""call0(MatrixNumbaFunction self, Vector x, DenseMatrix out)"""
+        return _coefficient.MatrixNumbaFunction_call0(self, x, out)
+    call0 = _swig_new_instance_method(_coefficient.MatrixNumbaFunction_call0)
+
+    def call0t(self, x, t, out):
+        r"""call0t(MatrixNumbaFunction self, Vector x, double t, DenseMatrix out)"""
+        return _coefficient.MatrixNumbaFunction_call0t(self, x, t, out)
+    call0t = _swig_new_instance_method(_coefficient.MatrixNumbaFunction_call0t)
+
+    def GenerateCoefficient(self, use_0=0):
+        r"""GenerateCoefficient(MatrixNumbaFunction self, int use_0=0) -> MatrixFunctionCoefficient"""
+        val = _coefficient.MatrixNumbaFunction_GenerateCoefficient(self, use_0)
 
         val._link = self
 
@@ -2024,6 +2054,84 @@ try:
 
     matrix_sig = vector_sig
     matrix_sig_t = vector_sig_t
+
+    from inspect import signature
+
+    class _JIT(object):
+        def scalar(self, sdim=3, td=False):
+            def dec(func):
+                l = len(signature(func).parameters)
+                if l == 1 and not td:
+                    sig = types.double(types.CPointer(types.double))
+                    use_0 = 1
+                elif l == 2 and not td:
+                    sig = scalar_sig
+                    use_0 = 0			  
+                elif l == 2 and td:
+                    sig = types.double(types.CPointer(types.double),
+                    types.double)
+                    use_0 = 1			  			  
+                elif l == 3 and td:
+                    sig = scalar_sig_t
+                    use_0 = 0			  			  			  
+                from numba import cfunc
+                ff = cfunc(sig)(func)
+                coeff = NumbaFunction(ff, sdim, td).GenerateCoefficient(use_0)
+                return coeff
+            return dec
+        def vector(self, sdim=3, vdim=-1, td=False):
+            vdim = sdim if vdim==-1 else vdim
+            def dec(func):
+                l = len(signature(func).parameters)
+                if l == 2 and not td:
+                    sig = types.void(types.CPointer(types.double),
+                                     types.CPointer(types.double),)
+                    use_0 = 1
+                elif l == 4 and not td:
+                    sig = vector_sig
+                    use_0 = 0			  
+                elif l == 3 and td:
+                    sig = types.void(types.CPointer(types.double),
+                                     types.CPointer(types.double),
+                                     types.double)
+                    use_0 = 1			  			  
+                elif l == 5 and td:
+                    sig = vector_sig_t
+                    use_0 = 0			  			  			  
+                else:
+                    assert False, "Unsupported signature type"
+                from numba import cfunc
+                ff = cfunc(sig)(func)
+                coeff = VectorNumbaFunction(ff, sdim, vdim, td).GenerateCoefficient(use_0)
+                return coeff
+            return dec
+        def matrxi(self, sdim=3, vdim=-1, td=False):
+            vdim = sdim if vdim==-1 else vdim				   
+            def dec(func):
+                l = len(signature(func).parameters)
+                if l == 2 and not td:
+                    sig = types.void(types.CPointer(types.double),
+                                     types.CPointer(types.double),)
+                    use_0 = 1
+                elif l == 4 and not td:
+                    sig = matrix_sig
+                    use_0 = 0			  
+                elif l == 3 and td:
+                    sig = types.void(types.CPointer(types.double),
+                                     types.CPointer(types.double),
+                                     types.double)
+                    use_0 = 1			  			  
+                elif l == 5 and td:
+                    sig = matrix_sig_t
+                    use_0 = 0			  			  			  
+                else:
+                    assert False, "Unsupported signature type"
+                from numba import cfunc
+                ff = cfunc(sig)(func)
+                coeff = MatrxixNumbaFunction(ff, sdim, vdim, td).GenerateCoefficient(use_0)
+                return coeff
+            return dec
+    jit = _JIT()
 except ImportError:
     pass
 except BaseError:

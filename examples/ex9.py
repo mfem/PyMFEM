@@ -95,11 +95,11 @@ def run(ref_levels=2,
         mesh.UniformRefinement()
         if mesh.NURBSext:
             mesh.SetCurvature(max(order, 1))
-        bb_min, bb_max = mesh.GetBoundingBox(max(order, 1))
+    bb_min, bb_max = mesh.GetBoundingBox(max(order, 1))
 
     # 5. Define the discontinuous DG finite element space of the given
     #    polynomial order on the refined mesh.
-    fec = mfem.DG_FECollection(order, dim)
+    fec = mfem.DG_FECollection(order, dim, mfem.BasisType.GaussLobatto)
     fes = mfem.FiniteElementSpace(mesh, fec)
 
     print("Number of unknowns: " + str(fes.GetVSize()))
@@ -165,7 +165,7 @@ def run(ref_levels=2,
                         rx = rx * s
                         ry = ry * s
                     return (erfc(w * (X[0]-cx-rx)) * erfc(-w*(X[0]-cx+rx)) *
-                            erfc(w * (X[1]-cy-ry)) * erfc(-w*(X[1]-cy+ry)))/16
+                            erfc(w * (X[1]-cy-ry)) * erfc(-w*(X[1]-cy+ry)))/16.
 
             elif problem == 2:
                 rho = hypot(x[0], x[1])

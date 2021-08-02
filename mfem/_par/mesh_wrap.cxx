@@ -3968,7 +3968,7 @@ SWIGINTERN double mfem_Mesh_GetScaledJacobian(mfem::Mesh *self,int i,int sd=2){
       }
     return attr;
   }
-SWIGINTERN void mfem_Mesh_PrintInfo__SWIG_1(mfem::Mesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Mesh_PrintInfo__SWIG_1(mfem::Mesh *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3979,7 +3979,7 @@ SWIGINTERN void mfem_Mesh_PrintInfo__SWIG_1(mfem::Mesh *self,char const *file,in
   self -> PrintInfo(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_Mesh_PrintInfoGZ(mfem::Mesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Mesh_PrintInfoGZ(mfem::Mesh *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3990,7 +3990,7 @@ SWIGINTERN void mfem_Mesh_PrintInfoGZ(mfem::Mesh *self,char const *file,int prec
   self -> PrintInfo(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_Mesh_Print__SWIG_1(mfem::Mesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Mesh_Print__SWIG_1(mfem::Mesh *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -4001,7 +4001,7 @@ SWIGINTERN void mfem_Mesh_Print__SWIG_1(mfem::Mesh *self,char const *file,int pr
   self -> Print(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_Mesh_PrintGZ(mfem::Mesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Mesh_PrintGZ(mfem::Mesh *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -4012,7 +4012,7 @@ SWIGINTERN void mfem_Mesh_PrintGZ(mfem::Mesh *self,char const *file,int precisio
   self -> Print(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_Mesh_PrintXG__SWIG_1(mfem::Mesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Mesh_PrintXG__SWIG_1(mfem::Mesh *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -4023,7 +4023,7 @@ SWIGINTERN void mfem_Mesh_PrintXG__SWIG_1(mfem::Mesh *self,char const *file,int 
   self -> PrintXG(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_Mesh_PrintXGGZ(mfem::Mesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Mesh_PrintXGGZ(mfem::Mesh *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -4034,7 +4034,7 @@ SWIGINTERN void mfem_Mesh_PrintXGGZ(mfem::Mesh *self,char const *file,int precis
   self -> PrintXG(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_Mesh_PrintVTK__SWIG_2(mfem::Mesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Mesh_PrintVTK__SWIG_2(mfem::Mesh *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -4045,7 +4045,7 @@ SWIGINTERN void mfem_Mesh_PrintVTK__SWIG_2(mfem::Mesh *self,char const *file,int
   self -> PrintVTK(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_Mesh_PrintVTKGZ(mfem::Mesh *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Mesh_PrintVTKGZ(mfem::Mesh *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -5404,6 +5404,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddVertex__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   double *arg2 = (double *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  mfem::Vector *temp_vec2 ;
+  double *temp_ptr2 ;
   int result;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
@@ -5415,21 +5417,39 @@ SWIGINTERN PyObject *_wrap_Mesh_AddVertex__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   {
     int i;
     if (!PyList_Check(swig_obj[1])) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    int l = PyList_Size(swig_obj[1]);
-    arg2 = (double *) malloc((l)*sizeof(double));
-    for (i = 0; i < l; i++) {
-      PyObject *s = PyList_GetItem(swig_obj[1],i);
-      if (PyInt_Check(s)) {
-        arg2[i] = (double)PyFloat_AsDouble(s);
-      } else if (PyFloat_Check(s)) {
-        arg2[i] = (double)PyFloat_AsDouble(s);
+      if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_double, 0 |0) == -1) {
+        if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_vec2, SWIGTYPE_p_mfem__Vector, 0 |0) == -1) {
+          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISFLOAT(swig_obj[1])){
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy float array");
+            return NULL;
+          } else {
+            //std::cout << "Calling numpy data(float)\n";	     
+            arg2 = (double *) PyArray_DATA((PyArrayObject *)swig_obj[1]);	     
+          }
+        } else {
+          //std::cout << "Calling Vector::GetData\n";
+          arg2 = temp_vec2 -> GetData();
+        }
       } else {
-        free(arg2);      
-        PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
-        return NULL;
+        // const (
+        //std::cout << "Using const double\n";      
+        arg2 = temp_ptr2;
+      }
+    } else {
+      //std::cout << "Using List\n";    
+      int l = PyList_Size(swig_obj[1]);
+      arg2 = (double *) malloc((l)*sizeof(double));
+      for (i = 0; i < l; i++) {
+        PyObject *s = PyList_GetItem(swig_obj[1],i);
+        if (PyInt_Check(s)) {
+          arg2[i] = (double)PyFloat_AsDouble(s);
+        } else if (PyFloat_Check(s)) {
+          arg2[i] = (double)PyFloat_AsDouble(s);
+        } else {
+          free(arg2);      
+          PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
+          return NULL;
+        }
       }
     }
   }
@@ -5501,7 +5521,27 @@ SWIGINTERN PyObject *_wrap_Mesh_AddVertex(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        _v = PyList_Check(argv[1]) ? 1 : 0;
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_double, 0 |0) == -1) {
+          PyErr_Clear();
+          if (!PyList_Check(argv[1])) {
+            PyErr_Clear();
+            if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__Vector, 0 |0) == -1) {
+              PyErr_Clear();
+              if (!PyArray_Check(argv[1]) || !PyArray_ISFLOAT(argv[1])){
+                _v = 0;	      
+              } else {
+                _v = 1;  // accept numpy float array
+              }
+            } else {
+              _v = 1;  // accept vector
+            }
+          } else {
+            _v = 1;  // acccept list
+          }
+        } else {
+          _v = 1;     // accept const double*
+        }
       }
       if (_v) {
         return _wrap_Mesh_AddVertex__SWIG_1(self, argc, argv);
@@ -5641,6 +5681,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddSegment__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   int arg3 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  mfem::Array< int > *temp_arr2 ;
+  int *temp_ptr2 ;
   int result;
   
   if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
@@ -5652,21 +5694,41 @@ SWIGINTERN PyObject *_wrap_Mesh_AddSegment__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   {
     int i;
     if (!PyList_Check(swig_obj[1])) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    int l = PyList_Size(swig_obj[1]);
-    arg2 = (int *) malloc((l)*sizeof(int));
-    for (i = 0; i < l; i++) {
-      PyObject *s = PyList_GetItem(swig_obj[1],i);
-      if (PyInt_Check(s)) {
-        arg2[i] = (int)PyInt_AsLong(s);
-      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
-        arg2[i] = PyArray_PyIntAsInt(s);
+      if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
+        if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
+          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            return NULL;
+          } else {
+            //std::cout << "Calling numpy data(int)\n";	     
+            arg2 = (int *) PyArray_DATA((PyArrayObject *)swig_obj[1]);
+            //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";
+          }	 
+        } else {
+          //std::cout << "Calling Array<int>::GetData\n";
+          arg2 = temp_arr2 -> GetData();
+          //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	 
+        }
       } else {
-        free(arg2);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
-        return NULL;
+        // const (
+        //std::cout << "Using const int\n";      
+        arg2 = temp_ptr2;
+        //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
+      }
+    } else {
+      int l = PyList_Size(swig_obj[1]);
+      arg2 = (int *) malloc((l)*sizeof(int));
+      for (i = 0; i < l; i++) {
+        PyObject *s = PyList_GetItem(swig_obj[1],i);
+        if (PyInt_Check(s)) {
+          arg2[i] = (int)PyInt_AsLong(s);
+        } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+          arg2[i] = PyArray_PyIntAsInt(s);
+        } else {
+          free(arg2);
+          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          return NULL;
+        }
       }
     }
   }
@@ -5713,7 +5775,26 @@ SWIGINTERN PyObject *_wrap_Mesh_AddSegment(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        _v = PyList_Check(argv[1]) ? 1 : 0;
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_int, 0 |0) == -1) {
+          PyErr_Clear();
+          if (!PyList_Check(argv[1])) {
+            PyErr_Clear();
+            if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
+              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
+                _v = 0;	      
+              } else {
+                _v = 1;  // accept numpy int array
+              }
+            } else {
+              _v = 1;  // accept array <int>
+            }
+          } else {
+            _v = 1;  // acccept list
+          }
+        } else {
+          _v = 1;     // accept const int*
+        }
       }
       if (_v) {
         if (argc <= 2) {
@@ -5855,6 +5936,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTriangle__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   int arg3 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  mfem::Array< int > *temp_arr2 ;
+  int *temp_ptr2 ;
   int result;
   
   if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
@@ -5866,21 +5949,41 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTriangle__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   {
     int i;
     if (!PyList_Check(swig_obj[1])) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    int l = PyList_Size(swig_obj[1]);
-    arg2 = (int *) malloc((l)*sizeof(int));
-    for (i = 0; i < l; i++) {
-      PyObject *s = PyList_GetItem(swig_obj[1],i);
-      if (PyInt_Check(s)) {
-        arg2[i] = (int)PyInt_AsLong(s);
-      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
-        arg2[i] = PyArray_PyIntAsInt(s);
+      if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
+        if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
+          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            return NULL;
+          } else {
+            //std::cout << "Calling numpy data(int)\n";	     
+            arg2 = (int *) PyArray_DATA((PyArrayObject *)swig_obj[1]);
+            //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";
+          }	 
+        } else {
+          //std::cout << "Calling Array<int>::GetData\n";
+          arg2 = temp_arr2 -> GetData();
+          //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	 
+        }
       } else {
-        free(arg2);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
-        return NULL;
+        // const (
+        //std::cout << "Using const int\n";      
+        arg2 = temp_ptr2;
+        //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
+      }
+    } else {
+      int l = PyList_Size(swig_obj[1]);
+      arg2 = (int *) malloc((l)*sizeof(int));
+      for (i = 0; i < l; i++) {
+        PyObject *s = PyList_GetItem(swig_obj[1],i);
+        if (PyInt_Check(s)) {
+          arg2[i] = (int)PyInt_AsLong(s);
+        } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+          arg2[i] = PyArray_PyIntAsInt(s);
+        } else {
+          free(arg2);
+          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          return NULL;
+        }
       }
     }
   }
@@ -5927,7 +6030,26 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTriangle(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        _v = PyList_Check(argv[1]) ? 1 : 0;
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_int, 0 |0) == -1) {
+          PyErr_Clear();
+          if (!PyList_Check(argv[1])) {
+            PyErr_Clear();
+            if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
+              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
+                _v = 0;	      
+              } else {
+                _v = 1;  // accept numpy int array
+              }
+            } else {
+              _v = 1;  // accept array <int>
+            }
+          } else {
+            _v = 1;  // acccept list
+          }
+        } else {
+          _v = 1;     // accept const int*
+        }
       }
       if (_v) {
         if (argc <= 2) {
@@ -6016,6 +6138,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTri(PyObject *SWIGUNUSEDPARM(self), PyObject 
   int arg3 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  mfem::Array< int > *temp_arr2 ;
+  int *temp_ptr2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -6033,21 +6157,41 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTri(PyObject *SWIGUNUSEDPARM(self), PyObject 
   {
     int i;
     if (!PyList_Check(obj1)) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    int l = PyList_Size(obj1);
-    arg2 = (int *) malloc((l)*sizeof(int));
-    for (i = 0; i < l; i++) {
-      PyObject *s = PyList_GetItem(obj1,i);
-      if (PyInt_Check(s)) {
-        arg2[i] = (int)PyInt_AsLong(s);
-      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
-        arg2[i] = PyArray_PyIntAsInt(s);
+      if (SWIG_ConvertPtr(obj1, (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
+        if (SWIG_ConvertPtr(obj1, (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
+          if (!PyArray_Check(obj1) || !PyArray_ISINTEGER(obj1)){
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            return NULL;
+          } else {
+            //std::cout << "Calling numpy data(int)\n";	     
+            arg2 = (int *) PyArray_DATA((PyArrayObject *)obj1);
+            //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";
+          }	 
+        } else {
+          //std::cout << "Calling Array<int>::GetData\n";
+          arg2 = temp_arr2 -> GetData();
+          //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	 
+        }
       } else {
-        free(arg2);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
-        return NULL;
+        // const (
+        //std::cout << "Using const int\n";      
+        arg2 = temp_ptr2;
+        //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
+      }
+    } else {
+      int l = PyList_Size(obj1);
+      arg2 = (int *) malloc((l)*sizeof(int));
+      for (i = 0; i < l; i++) {
+        PyObject *s = PyList_GetItem(obj1,i);
+        if (PyInt_Check(s)) {
+          arg2[i] = (int)PyInt_AsLong(s);
+        } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+          arg2[i] = PyArray_PyIntAsInt(s);
+        } else {
+          free(arg2);
+          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          return NULL;
+        }
       }
     }
   }
@@ -6156,6 +6300,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddQuad__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   int arg3 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  mfem::Array< int > *temp_arr2 ;
+  int *temp_ptr2 ;
   int result;
   
   if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
@@ -6167,21 +6313,41 @@ SWIGINTERN PyObject *_wrap_Mesh_AddQuad__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   {
     int i;
     if (!PyList_Check(swig_obj[1])) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    int l = PyList_Size(swig_obj[1]);
-    arg2 = (int *) malloc((l)*sizeof(int));
-    for (i = 0; i < l; i++) {
-      PyObject *s = PyList_GetItem(swig_obj[1],i);
-      if (PyInt_Check(s)) {
-        arg2[i] = (int)PyInt_AsLong(s);
-      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
-        arg2[i] = PyArray_PyIntAsInt(s);
+      if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
+        if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
+          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            return NULL;
+          } else {
+            //std::cout << "Calling numpy data(int)\n";	     
+            arg2 = (int *) PyArray_DATA((PyArrayObject *)swig_obj[1]);
+            //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";
+          }	 
+        } else {
+          //std::cout << "Calling Array<int>::GetData\n";
+          arg2 = temp_arr2 -> GetData();
+          //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	 
+        }
       } else {
-        free(arg2);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
-        return NULL;
+        // const (
+        //std::cout << "Using const int\n";      
+        arg2 = temp_ptr2;
+        //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
+      }
+    } else {
+      int l = PyList_Size(swig_obj[1]);
+      arg2 = (int *) malloc((l)*sizeof(int));
+      for (i = 0; i < l; i++) {
+        PyObject *s = PyList_GetItem(swig_obj[1],i);
+        if (PyInt_Check(s)) {
+          arg2[i] = (int)PyInt_AsLong(s);
+        } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+          arg2[i] = PyArray_PyIntAsInt(s);
+        } else {
+          free(arg2);
+          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          return NULL;
+        }
       }
     }
   }
@@ -6228,7 +6394,26 @@ SWIGINTERN PyObject *_wrap_Mesh_AddQuad(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        _v = PyList_Check(argv[1]) ? 1 : 0;
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_int, 0 |0) == -1) {
+          PyErr_Clear();
+          if (!PyList_Check(argv[1])) {
+            PyErr_Clear();
+            if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
+              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
+                _v = 0;	      
+              } else {
+                _v = 1;  // accept numpy int array
+              }
+            } else {
+              _v = 1;  // accept array <int>
+            }
+          } else {
+            _v = 1;  // acccept list
+          }
+        } else {
+          _v = 1;     // accept const int*
+        }
       }
       if (_v) {
         if (argc <= 2) {
@@ -6397,6 +6582,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTet__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
   int arg3 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  mfem::Array< int > *temp_arr2 ;
+  int *temp_ptr2 ;
   int result;
   
   if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
@@ -6408,21 +6595,41 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTet__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
   {
     int i;
     if (!PyList_Check(swig_obj[1])) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    int l = PyList_Size(swig_obj[1]);
-    arg2 = (int *) malloc((l)*sizeof(int));
-    for (i = 0; i < l; i++) {
-      PyObject *s = PyList_GetItem(swig_obj[1],i);
-      if (PyInt_Check(s)) {
-        arg2[i] = (int)PyInt_AsLong(s);
-      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
-        arg2[i] = PyArray_PyIntAsInt(s);
+      if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
+        if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
+          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            return NULL;
+          } else {
+            //std::cout << "Calling numpy data(int)\n";	     
+            arg2 = (int *) PyArray_DATA((PyArrayObject *)swig_obj[1]);
+            //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";
+          }	 
+        } else {
+          //std::cout << "Calling Array<int>::GetData\n";
+          arg2 = temp_arr2 -> GetData();
+          //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	 
+        }
       } else {
-        free(arg2);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
-        return NULL;
+        // const (
+        //std::cout << "Using const int\n";      
+        arg2 = temp_ptr2;
+        //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
+      }
+    } else {
+      int l = PyList_Size(swig_obj[1]);
+      arg2 = (int *) malloc((l)*sizeof(int));
+      for (i = 0; i < l; i++) {
+        PyObject *s = PyList_GetItem(swig_obj[1],i);
+        if (PyInt_Check(s)) {
+          arg2[i] = (int)PyInt_AsLong(s);
+        } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+          arg2[i] = PyArray_PyIntAsInt(s);
+        } else {
+          free(arg2);
+          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          return NULL;
+        }
       }
     }
   }
@@ -6469,7 +6676,26 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTet(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        _v = PyList_Check(argv[1]) ? 1 : 0;
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_int, 0 |0) == -1) {
+          PyErr_Clear();
+          if (!PyList_Check(argv[1])) {
+            PyErr_Clear();
+            if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
+              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
+                _v = 0;	      
+              } else {
+                _v = 1;  // accept numpy int array
+              }
+            } else {
+              _v = 1;  // accept array <int>
+            }
+          } else {
+            _v = 1;  // acccept list
+          }
+        } else {
+          _v = 1;     // accept const int*
+        }
       }
       if (_v) {
         if (argc <= 2) {
@@ -6652,6 +6878,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddWedge__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   int arg3 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  mfem::Array< int > *temp_arr2 ;
+  int *temp_ptr2 ;
   int result;
   
   if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
@@ -6663,21 +6891,41 @@ SWIGINTERN PyObject *_wrap_Mesh_AddWedge__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   {
     int i;
     if (!PyList_Check(swig_obj[1])) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    int l = PyList_Size(swig_obj[1]);
-    arg2 = (int *) malloc((l)*sizeof(int));
-    for (i = 0; i < l; i++) {
-      PyObject *s = PyList_GetItem(swig_obj[1],i);
-      if (PyInt_Check(s)) {
-        arg2[i] = (int)PyInt_AsLong(s);
-      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
-        arg2[i] = PyArray_PyIntAsInt(s);
+      if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
+        if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
+          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            return NULL;
+          } else {
+            //std::cout << "Calling numpy data(int)\n";	     
+            arg2 = (int *) PyArray_DATA((PyArrayObject *)swig_obj[1]);
+            //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";
+          }	 
+        } else {
+          //std::cout << "Calling Array<int>::GetData\n";
+          arg2 = temp_arr2 -> GetData();
+          //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	 
+        }
       } else {
-        free(arg2);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
-        return NULL;
+        // const (
+        //std::cout << "Using const int\n";      
+        arg2 = temp_ptr2;
+        //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
+      }
+    } else {
+      int l = PyList_Size(swig_obj[1]);
+      arg2 = (int *) malloc((l)*sizeof(int));
+      for (i = 0; i < l; i++) {
+        PyObject *s = PyList_GetItem(swig_obj[1],i);
+        if (PyInt_Check(s)) {
+          arg2[i] = (int)PyInt_AsLong(s);
+        } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+          arg2[i] = PyArray_PyIntAsInt(s);
+        } else {
+          free(arg2);
+          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          return NULL;
+        }
       }
     }
   }
@@ -6724,7 +6972,26 @@ SWIGINTERN PyObject *_wrap_Mesh_AddWedge(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        _v = PyList_Check(argv[1]) ? 1 : 0;
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_int, 0 |0) == -1) {
+          PyErr_Clear();
+          if (!PyList_Check(argv[1])) {
+            PyErr_Clear();
+            if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
+              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
+                _v = 0;	      
+              } else {
+                _v = 1;  // accept numpy int array
+              }
+            } else {
+              _v = 1;  // accept array <int>
+            }
+          } else {
+            _v = 1;  // acccept list
+          }
+        } else {
+          _v = 1;     // accept const int*
+        }
       }
       if (_v) {
         if (argc <= 2) {
@@ -6941,6 +7208,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHex__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
   int arg3 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  mfem::Array< int > *temp_arr2 ;
+  int *temp_ptr2 ;
   int result;
   
   if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
@@ -6952,21 +7221,41 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHex__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
   {
     int i;
     if (!PyList_Check(swig_obj[1])) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    int l = PyList_Size(swig_obj[1]);
-    arg2 = (int *) malloc((l)*sizeof(int));
-    for (i = 0; i < l; i++) {
-      PyObject *s = PyList_GetItem(swig_obj[1],i);
-      if (PyInt_Check(s)) {
-        arg2[i] = (int)PyInt_AsLong(s);
-      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
-        arg2[i] = PyArray_PyIntAsInt(s);
+      if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
+        if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
+          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            return NULL;
+          } else {
+            //std::cout << "Calling numpy data(int)\n";	     
+            arg2 = (int *) PyArray_DATA((PyArrayObject *)swig_obj[1]);
+            //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";
+          }	 
+        } else {
+          //std::cout << "Calling Array<int>::GetData\n";
+          arg2 = temp_arr2 -> GetData();
+          //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	 
+        }
       } else {
-        free(arg2);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
-        return NULL;
+        // const (
+        //std::cout << "Using const int\n";      
+        arg2 = temp_ptr2;
+        //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
+      }
+    } else {
+      int l = PyList_Size(swig_obj[1]);
+      arg2 = (int *) malloc((l)*sizeof(int));
+      for (i = 0; i < l; i++) {
+        PyObject *s = PyList_GetItem(swig_obj[1],i);
+        if (PyInt_Check(s)) {
+          arg2[i] = (int)PyInt_AsLong(s);
+        } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+          arg2[i] = PyArray_PyIntAsInt(s);
+        } else {
+          free(arg2);
+          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          return NULL;
+        }
       }
     }
   }
@@ -7013,7 +7302,26 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHex(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        _v = PyList_Check(argv[1]) ? 1 : 0;
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_int, 0 |0) == -1) {
+          PyErr_Clear();
+          if (!PyList_Check(argv[1])) {
+            PyErr_Clear();
+            if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
+              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
+                _v = 0;	      
+              } else {
+                _v = 1;  // accept numpy int array
+              }
+            } else {
+              _v = 1;  // accept array <int>
+            }
+          } else {
+            _v = 1;  // acccept list
+          }
+        } else {
+          _v = 1;     // accept const int*
+        }
       }
       if (_v) {
         if (argc <= 2) {
@@ -7152,6 +7460,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsTets(PyObject *SWIGUNUSEDPARM(self), PyO
   int arg3 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  mfem::Array< int > *temp_arr2 ;
+  int *temp_ptr2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -7168,21 +7478,41 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsTets(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     int i;
     if (!PyList_Check(obj1)) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    int l = PyList_Size(obj1);
-    arg2 = (int *) malloc((l)*sizeof(int));
-    for (i = 0; i < l; i++) {
-      PyObject *s = PyList_GetItem(obj1,i);
-      if (PyInt_Check(s)) {
-        arg2[i] = (int)PyInt_AsLong(s);
-      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
-        arg2[i] = PyArray_PyIntAsInt(s);
+      if (SWIG_ConvertPtr(obj1, (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
+        if (SWIG_ConvertPtr(obj1, (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
+          if (!PyArray_Check(obj1) || !PyArray_ISINTEGER(obj1)){
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            return NULL;
+          } else {
+            //std::cout << "Calling numpy data(int)\n";	     
+            arg2 = (int *) PyArray_DATA((PyArrayObject *)obj1);
+            //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";
+          }	 
+        } else {
+          //std::cout << "Calling Array<int>::GetData\n";
+          arg2 = temp_arr2 -> GetData();
+          //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	 
+        }
       } else {
-        free(arg2);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
-        return NULL;
+        // const (
+        //std::cout << "Using const int\n";      
+        arg2 = temp_ptr2;
+        //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
+      }
+    } else {
+      int l = PyList_Size(obj1);
+      arg2 = (int *) malloc((l)*sizeof(int));
+      for (i = 0; i < l; i++) {
+        PyObject *s = PyList_GetItem(obj1,i);
+        if (PyInt_Check(s)) {
+          arg2[i] = (int)PyInt_AsLong(s);
+        } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+          arg2[i] = PyArray_PyIntAsInt(s);
+        } else {
+          free(arg2);
+          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          return NULL;
+        }
       }
     }
   }
@@ -7221,6 +7551,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsWedges(PyObject *SWIGUNUSEDPARM(self), P
   int arg3 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  mfem::Array< int > *temp_arr2 ;
+  int *temp_ptr2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -7237,21 +7569,41 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsWedges(PyObject *SWIGUNUSEDPARM(self), P
   {
     int i;
     if (!PyList_Check(obj1)) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    int l = PyList_Size(obj1);
-    arg2 = (int *) malloc((l)*sizeof(int));
-    for (i = 0; i < l; i++) {
-      PyObject *s = PyList_GetItem(obj1,i);
-      if (PyInt_Check(s)) {
-        arg2[i] = (int)PyInt_AsLong(s);
-      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
-        arg2[i] = PyArray_PyIntAsInt(s);
+      if (SWIG_ConvertPtr(obj1, (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
+        if (SWIG_ConvertPtr(obj1, (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
+          if (!PyArray_Check(obj1) || !PyArray_ISINTEGER(obj1)){
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            return NULL;
+          } else {
+            //std::cout << "Calling numpy data(int)\n";	     
+            arg2 = (int *) PyArray_DATA((PyArrayObject *)obj1);
+            //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";
+          }	 
+        } else {
+          //std::cout << "Calling Array<int>::GetData\n";
+          arg2 = temp_arr2 -> GetData();
+          //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	 
+        }
       } else {
-        free(arg2);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
-        return NULL;
+        // const (
+        //std::cout << "Using const int\n";      
+        arg2 = temp_ptr2;
+        //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
+      }
+    } else {
+      int l = PyList_Size(obj1);
+      arg2 = (int *) malloc((l)*sizeof(int));
+      for (i = 0; i < l; i++) {
+        PyObject *s = PyList_GetItem(obj1,i);
+        if (PyInt_Check(s)) {
+          arg2[i] = (int)PyInt_AsLong(s);
+        } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+          arg2[i] = PyArray_PyIntAsInt(s);
+        } else {
+          free(arg2);
+          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          return NULL;
+        }
       }
     }
   }
@@ -7438,6 +7790,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrSegment__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   int arg3 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  mfem::Array< int > *temp_arr2 ;
+  int *temp_ptr2 ;
   int result;
   
   if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
@@ -7449,21 +7803,41 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrSegment__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   {
     int i;
     if (!PyList_Check(swig_obj[1])) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    int l = PyList_Size(swig_obj[1]);
-    arg2 = (int *) malloc((l)*sizeof(int));
-    for (i = 0; i < l; i++) {
-      PyObject *s = PyList_GetItem(swig_obj[1],i);
-      if (PyInt_Check(s)) {
-        arg2[i] = (int)PyInt_AsLong(s);
-      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
-        arg2[i] = PyArray_PyIntAsInt(s);
+      if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
+        if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
+          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            return NULL;
+          } else {
+            //std::cout << "Calling numpy data(int)\n";	     
+            arg2 = (int *) PyArray_DATA((PyArrayObject *)swig_obj[1]);
+            //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";
+          }	 
+        } else {
+          //std::cout << "Calling Array<int>::GetData\n";
+          arg2 = temp_arr2 -> GetData();
+          //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	 
+        }
       } else {
-        free(arg2);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
-        return NULL;
+        // const (
+        //std::cout << "Using const int\n";      
+        arg2 = temp_ptr2;
+        //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
+      }
+    } else {
+      int l = PyList_Size(swig_obj[1]);
+      arg2 = (int *) malloc((l)*sizeof(int));
+      for (i = 0; i < l; i++) {
+        PyObject *s = PyList_GetItem(swig_obj[1],i);
+        if (PyInt_Check(s)) {
+          arg2[i] = (int)PyInt_AsLong(s);
+        } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+          arg2[i] = PyArray_PyIntAsInt(s);
+        } else {
+          free(arg2);
+          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          return NULL;
+        }
       }
     }
   }
@@ -7510,7 +7884,26 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrSegment(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        _v = PyList_Check(argv[1]) ? 1 : 0;
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_int, 0 |0) == -1) {
+          PyErr_Clear();
+          if (!PyList_Check(argv[1])) {
+            PyErr_Clear();
+            if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
+              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
+                _v = 0;	      
+              } else {
+                _v = 1;  // accept numpy int array
+              }
+            } else {
+              _v = 1;  // accept array <int>
+            }
+          } else {
+            _v = 1;  // acccept list
+          }
+        } else {
+          _v = 1;     // accept const int*
+        }
       }
       if (_v) {
         if (argc <= 2) {
@@ -7652,6 +8045,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrTriangle__SWIG_1(PyObject *SWIGUNUSEDPARM(
   int arg3 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  mfem::Array< int > *temp_arr2 ;
+  int *temp_ptr2 ;
   int result;
   
   if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
@@ -7663,21 +8058,41 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrTriangle__SWIG_1(PyObject *SWIGUNUSEDPARM(
   {
     int i;
     if (!PyList_Check(swig_obj[1])) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    int l = PyList_Size(swig_obj[1]);
-    arg2 = (int *) malloc((l)*sizeof(int));
-    for (i = 0; i < l; i++) {
-      PyObject *s = PyList_GetItem(swig_obj[1],i);
-      if (PyInt_Check(s)) {
-        arg2[i] = (int)PyInt_AsLong(s);
-      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
-        arg2[i] = PyArray_PyIntAsInt(s);
+      if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
+        if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
+          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            return NULL;
+          } else {
+            //std::cout << "Calling numpy data(int)\n";	     
+            arg2 = (int *) PyArray_DATA((PyArrayObject *)swig_obj[1]);
+            //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";
+          }	 
+        } else {
+          //std::cout << "Calling Array<int>::GetData\n";
+          arg2 = temp_arr2 -> GetData();
+          //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	 
+        }
       } else {
-        free(arg2);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
-        return NULL;
+        // const (
+        //std::cout << "Using const int\n";      
+        arg2 = temp_ptr2;
+        //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
+      }
+    } else {
+      int l = PyList_Size(swig_obj[1]);
+      arg2 = (int *) malloc((l)*sizeof(int));
+      for (i = 0; i < l; i++) {
+        PyObject *s = PyList_GetItem(swig_obj[1],i);
+        if (PyInt_Check(s)) {
+          arg2[i] = (int)PyInt_AsLong(s);
+        } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+          arg2[i] = PyArray_PyIntAsInt(s);
+        } else {
+          free(arg2);
+          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          return NULL;
+        }
       }
     }
   }
@@ -7724,7 +8139,26 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrTriangle(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        _v = PyList_Check(argv[1]) ? 1 : 0;
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_int, 0 |0) == -1) {
+          PyErr_Clear();
+          if (!PyList_Check(argv[1])) {
+            PyErr_Clear();
+            if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
+              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
+                _v = 0;	      
+              } else {
+                _v = 1;  // accept numpy int array
+              }
+            } else {
+              _v = 1;  // accept array <int>
+            }
+          } else {
+            _v = 1;  // acccept list
+          }
+        } else {
+          _v = 1;     // accept const int*
+        }
       }
       if (_v) {
         if (argc <= 2) {
@@ -7883,6 +8317,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuad__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   int arg3 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  mfem::Array< int > *temp_arr2 ;
+  int *temp_ptr2 ;
   int result;
   
   if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
@@ -7894,21 +8330,41 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuad__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   {
     int i;
     if (!PyList_Check(swig_obj[1])) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    int l = PyList_Size(swig_obj[1]);
-    arg2 = (int *) malloc((l)*sizeof(int));
-    for (i = 0; i < l; i++) {
-      PyObject *s = PyList_GetItem(swig_obj[1],i);
-      if (PyInt_Check(s)) {
-        arg2[i] = (int)PyInt_AsLong(s);
-      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
-        arg2[i] = PyArray_PyIntAsInt(s);
+      if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
+        if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
+          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            return NULL;
+          } else {
+            //std::cout << "Calling numpy data(int)\n";	     
+            arg2 = (int *) PyArray_DATA((PyArrayObject *)swig_obj[1]);
+            //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";
+          }	 
+        } else {
+          //std::cout << "Calling Array<int>::GetData\n";
+          arg2 = temp_arr2 -> GetData();
+          //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	 
+        }
       } else {
-        free(arg2);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
-        return NULL;
+        // const (
+        //std::cout << "Using const int\n";      
+        arg2 = temp_ptr2;
+        //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
+      }
+    } else {
+      int l = PyList_Size(swig_obj[1]);
+      arg2 = (int *) malloc((l)*sizeof(int));
+      for (i = 0; i < l; i++) {
+        PyObject *s = PyList_GetItem(swig_obj[1],i);
+        if (PyInt_Check(s)) {
+          arg2[i] = (int)PyInt_AsLong(s);
+        } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+          arg2[i] = PyArray_PyIntAsInt(s);
+        } else {
+          free(arg2);
+          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          return NULL;
+        }
       }
     }
   }
@@ -7955,7 +8411,26 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuad(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        _v = PyList_Check(argv[1]) ? 1 : 0;
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_int, 0 |0) == -1) {
+          PyErr_Clear();
+          if (!PyList_Check(argv[1])) {
+            PyErr_Clear();
+            if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
+              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
+                _v = 0;	      
+              } else {
+                _v = 1;  // accept numpy int array
+              }
+            } else {
+              _v = 1;  // accept array <int>
+            }
+          } else {
+            _v = 1;  // acccept list
+          }
+        } else {
+          _v = 1;     // accept const int*
+        }
       }
       if (_v) {
         if (argc <= 2) {
@@ -8054,6 +8529,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuadAsTriangles(PyObject *SWIGUNUSEDPARM(s
   int arg3 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  mfem::Array< int > *temp_arr2 ;
+  int *temp_ptr2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -8070,21 +8547,41 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuadAsTriangles(PyObject *SWIGUNUSEDPARM(s
   {
     int i;
     if (!PyList_Check(obj1)) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    int l = PyList_Size(obj1);
-    arg2 = (int *) malloc((l)*sizeof(int));
-    for (i = 0; i < l; i++) {
-      PyObject *s = PyList_GetItem(obj1,i);
-      if (PyInt_Check(s)) {
-        arg2[i] = (int)PyInt_AsLong(s);
-      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
-        arg2[i] = PyArray_PyIntAsInt(s);
+      if (SWIG_ConvertPtr(obj1, (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
+        if (SWIG_ConvertPtr(obj1, (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
+          if (!PyArray_Check(obj1) || !PyArray_ISINTEGER(obj1)){
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            return NULL;
+          } else {
+            //std::cout << "Calling numpy data(int)\n";	     
+            arg2 = (int *) PyArray_DATA((PyArrayObject *)obj1);
+            //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";
+          }	 
+        } else {
+          //std::cout << "Calling Array<int>::GetData\n";
+          arg2 = temp_arr2 -> GetData();
+          //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	 
+        }
       } else {
-        free(arg2);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
-        return NULL;
+        // const (
+        //std::cout << "Using const int\n";      
+        arg2 = temp_ptr2;
+        //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
+      }
+    } else {
+      int l = PyList_Size(obj1);
+      arg2 = (int *) malloc((l)*sizeof(int));
+      for (i = 0; i < l; i++) {
+        PyObject *s = PyList_GetItem(obj1,i);
+        if (PyInt_Check(s)) {
+          arg2[i] = (int)PyInt_AsLong(s);
+        } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+          arg2[i] = PyArray_PyIntAsInt(s);
+        } else {
+          free(arg2);
+          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          return NULL;
+        }
       }
     }
   }
@@ -14676,6 +15173,8 @@ SWIGINTERN PyObject *_wrap_Mesh_SetNode(PyObject *SWIGUNUSEDPARM(self), PyObject
   double *arg3 = (double *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  mfem::Vector *temp_vec3 ;
+  double *temp_ptr3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -14698,21 +15197,39 @@ SWIGINTERN PyObject *_wrap_Mesh_SetNode(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     int i;
     if (!PyList_Check(obj2)) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    int l = PyList_Size(obj2);
-    arg3 = (double *) malloc((l)*sizeof(double));
-    for (i = 0; i < l; i++) {
-      PyObject *s = PyList_GetItem(obj2,i);
-      if (PyInt_Check(s)) {
-        arg3[i] = (double)PyFloat_AsDouble(s);
-      } else if (PyFloat_Check(s)) {
-        arg3[i] = (double)PyFloat_AsDouble(s);
+      if (SWIG_ConvertPtr(obj2, (void **) &temp_ptr3, SWIGTYPE_p_double, 0 |0) == -1) {
+        if (SWIG_ConvertPtr(obj2, (void **) &temp_vec3, SWIGTYPE_p_mfem__Vector, 0 |0) == -1) {
+          if (!PyArray_Check(obj2) || !PyArray_ISFLOAT(obj2)){
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy float array");
+            return NULL;
+          } else {
+            //std::cout << "Calling numpy data(float)\n";	     
+            arg3 = (double *) PyArray_DATA((PyArrayObject *)obj2);	     
+          }
+        } else {
+          //std::cout << "Calling Vector::GetData\n";
+          arg3 = temp_vec3 -> GetData();
+        }
       } else {
-        free(arg3);      
-        PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
-        return NULL;
+        // const (
+        //std::cout << "Using const double\n";      
+        arg3 = temp_ptr3;
+      }
+    } else {
+      //std::cout << "Using List\n";    
+      int l = PyList_Size(obj2);
+      arg3 = (double *) malloc((l)*sizeof(double));
+      for (i = 0; i < l; i++) {
+        PyObject *s = PyList_GetItem(obj2,i);
+        if (PyInt_Check(s)) {
+          arg3[i] = (double)PyFloat_AsDouble(s);
+        } else if (PyFloat_Check(s)) {
+          arg3[i] = (double)PyFloat_AsDouble(s);
+        } else {
+          free(arg3);      
+          PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
+          return NULL;
+        }
       }
     }
   }
@@ -21222,7 +21739,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -21360,7 +21877,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfoGZ(PyObject *SWIGUNUSEDPARM(self), PyOb
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -21418,7 +21935,7 @@ SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -21556,7 +22073,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintGZ(PyObject *SWIGUNUSEDPARM(self), PyObject
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -21614,7 +22131,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -21752,7 +22269,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXGGZ(PyObject *SWIGUNUSEDPARM(self), PyObje
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -21810,7 +22327,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_2(PyObject *SWIGUNUSEDPARM(self),
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -22008,7 +22525,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTKGZ(PyObject *SWIGUNUSEDPARM(self), PyObj
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -24212,25 +24729,25 @@ static PyMethodDef SwigMethods[] = {
 	 { "Mesh_GetScaledJacobian", (PyCFunction)(void(*)(void))_wrap_Mesh_GetScaledJacobian, METH_VARARGS|METH_KEYWORDS, "Mesh_GetScaledJacobian(Mesh self, int i, int sd=2) -> double"},
 	 { "Mesh_PrintInfo", _wrap_Mesh_PrintInfo, METH_VARARGS, "\n"
 		"Mesh_PrintInfo(Mesh self, std::ostream & out=out)\n"
-		"Mesh_PrintInfo(Mesh self, char const * file, int precision=8)\n"
+		"Mesh_PrintInfo(Mesh self, char const * file, int precision=16)\n"
 		""},
-	 { "Mesh_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "Mesh_PrintInfoGZ(Mesh self, char const * file, int precision=8)"},
+	 { "Mesh_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "Mesh_PrintInfoGZ(Mesh self, char const * file, int precision=16)"},
 	 { "Mesh_Print", _wrap_Mesh_Print, METH_VARARGS, "\n"
 		"Mesh_Print(Mesh self, std::ostream & out=out)\n"
-		"Mesh_Print(Mesh self, char const * file, int precision=8)\n"
+		"Mesh_Print(Mesh self, char const * file, int precision=16)\n"
 		""},
-	 { "Mesh_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintGZ, METH_VARARGS|METH_KEYWORDS, "Mesh_PrintGZ(Mesh self, char const * file, int precision=8)"},
+	 { "Mesh_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintGZ, METH_VARARGS|METH_KEYWORDS, "Mesh_PrintGZ(Mesh self, char const * file, int precision=16)"},
 	 { "Mesh_PrintXG", _wrap_Mesh_PrintXG, METH_VARARGS, "\n"
 		"Mesh_PrintXG(Mesh self, std::ostream & out=out)\n"
-		"Mesh_PrintXG(Mesh self, char const * file, int precision=8)\n"
+		"Mesh_PrintXG(Mesh self, char const * file, int precision=16)\n"
 		""},
-	 { "Mesh_PrintXGGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintXGGZ, METH_VARARGS|METH_KEYWORDS, "Mesh_PrintXGGZ(Mesh self, char const * file, int precision=8)"},
+	 { "Mesh_PrintXGGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintXGGZ, METH_VARARGS|METH_KEYWORDS, "Mesh_PrintXGGZ(Mesh self, char const * file, int precision=16)"},
 	 { "Mesh_PrintVTK", _wrap_Mesh_PrintVTK, METH_VARARGS, "\n"
 		"Mesh_PrintVTK(Mesh self, std::ostream & out)\n"
 		"Mesh_PrintVTK(Mesh self, std::ostream & out, int ref, int field_data=0)\n"
-		"Mesh_PrintVTK(Mesh self, char const * file, int precision=8)\n"
+		"Mesh_PrintVTK(Mesh self, char const * file, int precision=16)\n"
 		""},
-	 { "Mesh_PrintVTKGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintVTKGZ, METH_VARARGS|METH_KEYWORDS, "Mesh_PrintVTKGZ(Mesh self, char const * file, int precision=8)"},
+	 { "Mesh_PrintVTKGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintVTKGZ, METH_VARARGS|METH_KEYWORDS, "Mesh_PrintVTKGZ(Mesh self, char const * file, int precision=16)"},
 	 { "Mesh_swigregister", Mesh_swigregister, METH_O, NULL},
 	 { "Mesh_swiginit", Mesh_swiginit, METH_VARARGS, NULL},
 	 { "__lshift__", _wrap___lshift__, METH_VARARGS, "\n"
@@ -24601,25 +25118,25 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Mesh_GetScaledJacobian", (PyCFunction)(void(*)(void))_wrap_Mesh_GetScaledJacobian, METH_VARARGS|METH_KEYWORDS, "GetScaledJacobian(Mesh self, int i, int sd=2) -> double"},
 	 { "Mesh_PrintInfo", _wrap_Mesh_PrintInfo, METH_VARARGS, "\n"
 		"PrintInfo(Mesh self, std::ostream & out=out)\n"
-		"PrintInfo(Mesh self, char const * file, int precision=8)\n"
+		"PrintInfo(Mesh self, char const * file, int precision=16)\n"
 		""},
-	 { "Mesh_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "PrintInfoGZ(Mesh self, char const * file, int precision=8)"},
+	 { "Mesh_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "PrintInfoGZ(Mesh self, char const * file, int precision=16)"},
 	 { "Mesh_Print", _wrap_Mesh_Print, METH_VARARGS, "\n"
 		"Print(Mesh self, std::ostream & out=out)\n"
-		"Print(Mesh self, char const * file, int precision=8)\n"
+		"Print(Mesh self, char const * file, int precision=16)\n"
 		""},
-	 { "Mesh_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(Mesh self, char const * file, int precision=8)"},
+	 { "Mesh_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(Mesh self, char const * file, int precision=16)"},
 	 { "Mesh_PrintXG", _wrap_Mesh_PrintXG, METH_VARARGS, "\n"
 		"PrintXG(Mesh self, std::ostream & out=out)\n"
-		"PrintXG(Mesh self, char const * file, int precision=8)\n"
+		"PrintXG(Mesh self, char const * file, int precision=16)\n"
 		""},
-	 { "Mesh_PrintXGGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintXGGZ, METH_VARARGS|METH_KEYWORDS, "PrintXGGZ(Mesh self, char const * file, int precision=8)"},
+	 { "Mesh_PrintXGGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintXGGZ, METH_VARARGS|METH_KEYWORDS, "PrintXGGZ(Mesh self, char const * file, int precision=16)"},
 	 { "Mesh_PrintVTK", _wrap_Mesh_PrintVTK, METH_VARARGS, "\n"
 		"PrintVTK(Mesh self, std::ostream & out)\n"
 		"PrintVTK(Mesh self, std::ostream & out, int ref, int field_data=0)\n"
-		"PrintVTK(Mesh self, char const * file, int precision=8)\n"
+		"PrintVTK(Mesh self, char const * file, int precision=16)\n"
 		""},
-	 { "Mesh_PrintVTKGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintVTKGZ, METH_VARARGS|METH_KEYWORDS, "PrintVTKGZ(Mesh self, char const * file, int precision=8)"},
+	 { "Mesh_PrintVTKGZ", (PyCFunction)(void(*)(void))_wrap_Mesh_PrintVTKGZ, METH_VARARGS|METH_KEYWORDS, "PrintVTKGZ(Mesh self, char const * file, int precision=16)"},
 	 { "Mesh_swigregister", Mesh_swigregister, METH_O, NULL},
 	 { "Mesh_swiginit", Mesh_swiginit, METH_VARARGS, NULL},
 	 { "__lshift__", _wrap___lshift__, METH_VARARGS, "\n"

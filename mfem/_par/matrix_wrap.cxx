@@ -3371,7 +3371,7 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
-SWIGINTERN void mfem_Matrix_Print__SWIG_1(mfem::Matrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Matrix_Print__SWIG_1(mfem::Matrix *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3382,7 +3382,7 @@ SWIGINTERN void mfem_Matrix_Print__SWIG_1(mfem::Matrix *self,char const *file,in
   self -> Print(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_Matrix_PrintGZ(mfem::Matrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Matrix_PrintGZ(mfem::Matrix *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3924,7 +3924,7 @@ SWIGINTERN PyObject *_wrap_Matrix_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   PyObject *resultobj = 0;
   mfem::Matrix *arg1 = (mfem::Matrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -4075,7 +4075,7 @@ SWIGINTERN PyObject *_wrap_Matrix_PrintGZ(PyObject *SWIGUNUSEDPARM(self), PyObje
   PyObject *resultobj = 0;
   mfem::Matrix *arg1 = (mfem::Matrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -4644,9 +4644,9 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_Matrix", _wrap_delete_Matrix, METH_O, "delete_Matrix(Matrix self)"},
 	 { "Matrix_Print", _wrap_Matrix_Print, METH_VARARGS, "\n"
 		"Matrix_Print(Matrix self, std::ostream & out=mfem::out, int width_=4)\n"
-		"Matrix_Print(Matrix self, char const * file, int precision=8)\n"
+		"Matrix_Print(Matrix self, char const * file, int precision=16)\n"
 		""},
-	 { "Matrix_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Matrix_PrintGZ, METH_VARARGS|METH_KEYWORDS, "Matrix_PrintGZ(Matrix self, char const * file, int precision=8)"},
+	 { "Matrix_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Matrix_PrintGZ, METH_VARARGS|METH_KEYWORDS, "Matrix_PrintGZ(Matrix self, char const * file, int precision=16)"},
 	 { "Matrix_swigregister", Matrix_swigregister, METH_O, NULL},
 	 { "delete_MatrixInverse", _wrap_delete_MatrixInverse, METH_O, "delete_MatrixInverse(MatrixInverse self)"},
 	 { "MatrixInverse_swigregister", MatrixInverse_swigregister, METH_O, NULL},
@@ -4675,9 +4675,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_Matrix", _wrap_delete_Matrix, METH_O, "delete_Matrix(Matrix self)"},
 	 { "Matrix_Print", _wrap_Matrix_Print, METH_VARARGS, "\n"
 		"Print(Matrix self, std::ostream & out=mfem::out, int width_=4)\n"
-		"Print(Matrix self, char const * file, int precision=8)\n"
+		"Print(Matrix self, char const * file, int precision=16)\n"
 		""},
-	 { "Matrix_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Matrix_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(Matrix self, char const * file, int precision=8)"},
+	 { "Matrix_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Matrix_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(Matrix self, char const * file, int precision=16)"},
 	 { "Matrix_swigregister", Matrix_swigregister, METH_O, NULL},
 	 { "delete_MatrixInverse", _wrap_delete_MatrixInverse, METH_O, "delete_MatrixInverse(MatrixInverse self)"},
 	 { "MatrixInverse_swigregister", MatrixInverse_swigregister, METH_O, NULL},

@@ -117,8 +117,24 @@ to find more details of the MFEM library.
           Note: the argument is first tested if it can be converted using
 	        np.array(x,  dtype=float)
 
-       (EXPERIMENTAL)
-       Using Numba JIT functions for FunctionCoefficients is supported.
+       Function coefficient written in Python can be JITed using Numba. To use
+       this feature, one can either use mfem.jit.* decorators or instantiate
+       NumberFunction (or Vector/MatrixNumbaFunction) and call GenerateCoefficient
+       in most case, the prier one is convenient. 
+
+       -Example-
+       (Using jit decorator)
+       >>>  @mfem.jit.scalar()
+            def c12(ptx):
+                return s_func0(ptx[0], ptx[1],  ptx[2])
+       >>>  @mfem.jit.vector()
+            def f_exact(x, out):
+               out[0] = (1 + kappa**2)*sin(kappa * x[1])
+               out[1] = (1 + kappa**2)*sin(kappa * x[2])
+               out[2] = (1 + kappa**2)*sin(kappa * x[0])
+       >>> x.ProjectCoefficient(f_exact)       
+
+       (Using NumbaFunction object)
        For example, to use Numba compiled function, one can use
        GenerateCoefficient mehtod in NumberFunction class as follows.
 
@@ -131,6 +147,7 @@ to find more details of the MFEM library.
            ...    return 2*ptx[0]
        >>> c = NumbaFunction(s_func, sdim).GenerateCoefficient()
 
+       Please look test_numba.py and ex3.py for more examples
 
   4-3) mfem::GridFunction
        GetNodalValues(i) will perform GetNodalValue(Vector(), i) and
@@ -264,6 +281,9 @@ to find more details of the MFEM library.
              o = io.StringIO()
              length = v.WriteToStream(o)
 	     print('data: ', o.getvalue())
+
+        AddVertex accepts either numpy float array, mfem.Vector or list
+	AddQuad (and other similar methods) accepts either numpy int32 array, Array<int> or list
 
   4-5) sparsemat
          RAP has two different implementations. One accept three references.

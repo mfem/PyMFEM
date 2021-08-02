@@ -124,7 +124,7 @@
 //This macro extend class to write file and stdout (no argument)
 %define OSTREAM_ADD_DEFAULT_STDOUT_FILE(class, method)
 %extend mfem::class {
-void method(const char *file, int precision=8){
+void method(const char *file, int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -135,7 +135,7 @@ void method(const char *file, int precision=8){
   self -> method(ofile);
   ofile.close();
   }
-void method ## GZ(const char *file, int precision=8){
+void method ## GZ(const char *file, int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   
   if (!ofile)
@@ -156,7 +156,7 @@ void method(void){
 
 %define OSTREAM_ADD_DEFAULT_FILE(class, method)
 %extend mfem::class {
-void method(const char *file, int precision=8){
+void method(const char *file, int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -167,7 +167,7 @@ void method(const char *file, int precision=8){
   self -> method(ofile);
   ofile.close();
   }
-void method ## GZ(const char *file, int precision=8){
+void method ## GZ(const char *file, int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {

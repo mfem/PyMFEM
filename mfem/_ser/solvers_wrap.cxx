@@ -3407,6 +3407,13 @@ SWIGINTERNINLINE PyObject*
   #define SWIG_From_double   PyFloat_FromDouble 
 
 
+SWIGINTERNINLINE PyObject*
+  SWIG_From_bool  (bool value)
+{
+  return PyBool_FromLong(value ? 1 : 0);
+}
+
+
 #include <limits.h>
 #if !defined(SWIG_NO_LLONG_MAX)
 # if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
@@ -3440,17 +3447,103 @@ SWIG_AsVal_int (PyObject * obj, int *val)
 
 #include "solvers_wrap.h"
 
+SwigDirector_IterativeSolverMonitor::SwigDirector_IterativeSolverMonitor(PyObject *self): mfem::IterativeSolverMonitor(), Swig::Director(self) {
+  SWIG_DIRECTOR_RGTR((mfem::IterativeSolverMonitor *)this, this); 
+}
+
+
+
+
+SwigDirector_IterativeSolverMonitor::~SwigDirector_IterativeSolverMonitor() {
+}
+
+void SwigDirector_IterativeSolverMonitor::MonitorResidual(int it, double norm, mfem::Vector const &r, bool final) {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_From_int(static_cast< int >(it));
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_From_double(static_cast< double >(norm));
+  swig::SwigVar_PyObject obj2;
+  obj2 = SWIG_NewPointerObj(SWIG_as_voidptr(&r), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj3;
+  obj3 = SWIG_From_bool(static_cast< bool >(final));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call IterativeSolverMonitor.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 0;
+  const char *const swig_method_name = "MonitorResidual";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("MonitorResidual");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
+void SwigDirector_IterativeSolverMonitor::MonitorSolution(int it, double norm, mfem::Vector const &x, bool final) {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_From_int(static_cast< int >(it));
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_From_double(static_cast< double >(norm));
+  swig::SwigVar_PyObject obj2;
+  obj2 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj3;
+  obj3 = SWIG_From_bool(static_cast< bool >(final));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call IterativeSolverMonitor.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 1;
+  const char *const swig_method_name = "MonitorSolution";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("MonitorSolution");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_new_IterativeSolverMonitor(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_IterativeSolverMonitor(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"_self",  NULL 
+  };
   mfem::IterativeSolverMonitor *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_IterativeSolverMonitor", 0, 0, 0)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_IterativeSolverMonitor", kwnames, &obj0)) SWIG_fail;
+  arg1 = obj0;
   {
     try {
-      result = (mfem::IterativeSolverMonitor *)new mfem::IterativeSolverMonitor();
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (mfem::IterativeSolverMonitor *)new SwigDirector_IterativeSolverMonitor(arg1); 
+      } else {
+        result = (mfem::IterativeSolverMonitor *)new mfem::IterativeSolverMonitor(); 
+      }
+      
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -3537,6 +3630,8 @@ SWIGINTERN PyObject *_wrap_IterativeSolverMonitor_MonitorResidual(PyObject *SWIG
   char * kwnames[] = {
     (char *)"self",  (char *)"it",  (char *)"norm",  (char *)"r",  (char *)"final",  NULL 
   };
+  Swig::Director *director = 0;
+  bool upcall = false;
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOO:IterativeSolverMonitor_MonitorResidual", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__IterativeSolverMonitor, 0 |  0 );
@@ -3568,24 +3663,34 @@ SWIGINTERN PyObject *_wrap_IterativeSolverMonitor_MonitorResidual(PyObject *SWIG
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "IterativeSolverMonitor_MonitorResidual" "', argument " "5"" of type '" "bool""'");
   } 
   arg5 = static_cast< bool >(val5);
-  {
-    try {
-      (arg1)->MonitorResidual(arg2,arg3,(mfem::Vector const &)*arg4,arg5);
-    }
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          (arg1)->mfem::IterativeSolverMonitor::MonitorResidual(arg2,arg3,(mfem::Vector const &)*arg4,arg5);
+        } else {
+          (arg1)->MonitorResidual(arg2,arg3,(mfem::Vector const &)*arg4,arg5);
+        }
+      }
 #ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
+      catch (mfem::ErrorException &_e) {
+        std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+        s = s + s2;    
+        SWIG_exception(SWIG_RuntimeError, s.c_str());
+      }
 #endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
+      
+      catch (Swig::DirectorException &e){
+        SWIG_fail;
+      }    
+      catch (...) {
+        SWIG_exception(SWIG_RuntimeError, "unknown exception");
+      }	 
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -3617,6 +3722,8 @@ SWIGINTERN PyObject *_wrap_IterativeSolverMonitor_MonitorSolution(PyObject *SWIG
   char * kwnames[] = {
     (char *)"self",  (char *)"it",  (char *)"norm",  (char *)"x",  (char *)"final",  NULL 
   };
+  Swig::Director *director = 0;
+  bool upcall = false;
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOO:IterativeSolverMonitor_MonitorSolution", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__IterativeSolverMonitor, 0 |  0 );
@@ -3648,25 +3755,63 @@ SWIGINTERN PyObject *_wrap_IterativeSolverMonitor_MonitorSolution(PyObject *SWIG
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "IterativeSolverMonitor_MonitorSolution" "', argument " "5"" of type '" "bool""'");
   } 
   arg5 = static_cast< bool >(val5);
-  {
-    try {
-      (arg1)->MonitorSolution(arg2,arg3,(mfem::Vector const &)*arg4,arg5);
-    }
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          (arg1)->mfem::IterativeSolverMonitor::MonitorSolution(arg2,arg3,(mfem::Vector const &)*arg4,arg5);
+        } else {
+          (arg1)->MonitorSolution(arg2,arg3,(mfem::Vector const &)*arg4,arg5);
+        }
+      }
 #ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
+      catch (mfem::ErrorException &_e) {
+        std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+        s = s + s2;    
+        SWIG_exception(SWIG_RuntimeError, s.c_str());
+      }
 #endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
+      
+      catch (Swig::DirectorException &e){
+        SWIG_fail;
+      }    
+      catch (...) {
+        SWIG_exception(SWIG_RuntimeError, "unknown exception");
+      }	 
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
   }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_disown_IterativeSolverMonitor(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::IterativeSolverMonitor *arg1 = (mfem::IterativeSolverMonitor *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"_self",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:disown_IterativeSolverMonitor", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__IterativeSolverMonitor, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "disown_IterativeSolverMonitor" "', argument " "1"" of type '" "mfem::IterativeSolverMonitor *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::IterativeSolverMonitor * >(argp1);
+  {
+    Swig::Director *director = SWIG_DIRECTOR_CAST(arg1);
+    if (director) director->swig_disown();
+  }
+  
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -11917,10 +12062,11 @@ SWIGINTERN PyObject *ProductSolver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyOb
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
-	 { "new_IterativeSolverMonitor", _wrap_new_IterativeSolverMonitor, METH_NOARGS, "new_IterativeSolverMonitor() -> IterativeSolverMonitor"},
+	 { "new_IterativeSolverMonitor", (PyCFunction)(void(*)(void))_wrap_new_IterativeSolverMonitor, METH_VARARGS|METH_KEYWORDS, "new_IterativeSolverMonitor(PyObject * _self) -> IterativeSolverMonitor"},
 	 { "delete_IterativeSolverMonitor", _wrap_delete_IterativeSolverMonitor, METH_O, "delete_IterativeSolverMonitor(IterativeSolverMonitor self)"},
 	 { "IterativeSolverMonitor_MonitorResidual", (PyCFunction)(void(*)(void))_wrap_IterativeSolverMonitor_MonitorResidual, METH_VARARGS|METH_KEYWORDS, "IterativeSolverMonitor_MonitorResidual(IterativeSolverMonitor self, int it, double norm, Vector r, bool final)"},
 	 { "IterativeSolverMonitor_MonitorSolution", (PyCFunction)(void(*)(void))_wrap_IterativeSolverMonitor_MonitorSolution, METH_VARARGS|METH_KEYWORDS, "IterativeSolverMonitor_MonitorSolution(IterativeSolverMonitor self, int it, double norm, Vector x, bool final)"},
+	 { "disown_IterativeSolverMonitor", (PyCFunction)(void(*)(void))_wrap_disown_IterativeSolverMonitor, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "IterativeSolverMonitor_swigregister", IterativeSolverMonitor_swigregister, METH_O, NULL},
 	 { "IterativeSolverMonitor_swiginit", IterativeSolverMonitor_swiginit, METH_VARARGS, NULL},
 	 { "IterativeSolver_SetRelTol", (PyCFunction)(void(*)(void))_wrap_IterativeSolver_SetRelTol, METH_VARARGS|METH_KEYWORDS, "IterativeSolver_SetRelTol(IterativeSolver self, double rtol)"},
@@ -12098,10 +12244,11 @@ static PyMethodDef SwigMethods[] = {
 static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
-	 { "new_IterativeSolverMonitor", _wrap_new_IterativeSolverMonitor, METH_NOARGS, "new_IterativeSolverMonitor() -> IterativeSolverMonitor"},
+	 { "new_IterativeSolverMonitor", (PyCFunction)(void(*)(void))_wrap_new_IterativeSolverMonitor, METH_VARARGS|METH_KEYWORDS, "new_IterativeSolverMonitor(PyObject * _self) -> IterativeSolverMonitor"},
 	 { "delete_IterativeSolverMonitor", _wrap_delete_IterativeSolverMonitor, METH_O, "delete_IterativeSolverMonitor(IterativeSolverMonitor self)"},
 	 { "IterativeSolverMonitor_MonitorResidual", (PyCFunction)(void(*)(void))_wrap_IterativeSolverMonitor_MonitorResidual, METH_VARARGS|METH_KEYWORDS, "MonitorResidual(IterativeSolverMonitor self, int it, double norm, Vector r, bool final)"},
 	 { "IterativeSolverMonitor_MonitorSolution", (PyCFunction)(void(*)(void))_wrap_IterativeSolverMonitor_MonitorSolution, METH_VARARGS|METH_KEYWORDS, "MonitorSolution(IterativeSolverMonitor self, int it, double norm, Vector x, bool final)"},
+	 { "disown_IterativeSolverMonitor", (PyCFunction)(void(*)(void))_wrap_disown_IterativeSolverMonitor, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "IterativeSolverMonitor_swigregister", IterativeSolverMonitor_swigregister, METH_O, NULL},
 	 { "IterativeSolverMonitor_swiginit", IterativeSolverMonitor_swiginit, METH_VARARGS, NULL},
 	 { "IterativeSolver_SetRelTol", (PyCFunction)(void(*)(void))_wrap_IterativeSolver_SetRelTol, METH_VARARGS|METH_KEYWORDS, "SetRelTol(IterativeSolver self, double rtol)"},

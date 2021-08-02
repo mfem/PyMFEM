@@ -11,10 +11,9 @@
 '''
 import sys
 from mfem.common.arg_parser import ArgParser
-from mfem import path
 import mfem.ser as mfem
 from mfem.ser import intArray, add_vector, Add
-from os.path import expanduser, join
+from os.path import expanduser, join, dirname
 import numpy as np
 from numpy import sqrt, pi, cos, sin, hypot, arctan2
 from scipy.special import erfc
@@ -69,21 +68,11 @@ mu = args.shear_modulus
 K = args.bulk_modulus
 visualization = args.visualization
 vis_steps = args.visualization_steps
+meshfile = expanduser(
+           join(dirname(__file__), '..', 'data', args.mesh))
+
 parser.print_options(args)
-'''
-ref_levels = 2
-order = 1
-ode_solver_type = 3
-t_final = 300.0
-dt = 3
-visc = 1e-2
-mu = 0.25
-K = 5.0
 
-vis_steps = 1
-'''
-
-meshfile = expanduser(join(path, 'data', args.mesh))
 mesh = mfem.Mesh(meshfile, 1,1)
 dim = mesh.Dimension()
 #        self.solver.SetOperator(M)
