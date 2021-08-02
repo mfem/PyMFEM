@@ -34,6 +34,7 @@ from  mfem._par.mesh import *
 from  mfem._par.fe_coll import *
 from  mfem._par.vector import *
 from  mfem._par.complex_operator import *
+from  mfem._par.complex_fem import *
 from  mfem._par.fespace import *
 from  mfem._par.linearform import *
 from  mfem._par.bilininteg import *
