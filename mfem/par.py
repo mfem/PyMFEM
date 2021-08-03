@@ -68,6 +68,8 @@ from  mfem._par.stable3d import *
 from  mfem._par.vtk import *
 from  mfem._par.datacollection import *
 from  mfem._par.io_stream import wFILE, STDOUT
+from  mfem._par.fespacehierarchy import *
+from  mfem._par.multigrid import *
 
 import mfem._par.array as array
 import mfem._par.blockoperator as blockoperator

@@ -72,7 +72,9 @@ def run_file(command, num=5):
     p = sp.Popen(command, stdout=sp.PIPE, stderr=sp.STDOUT, stdin=sp.PIPE)
     p.stdin.write(b'q\n')
     lines, errs = p.communicate()
+
     lines = lines.decode('utf-8').split('\n')
+    lines = [x for x in lines if not x.startswith('\x1b')] # remove line with ESC
     t2 = time.time()
     sys.stdout.flush()
     lines = [l for l in lines if len(l.strip()) != 0]
@@ -229,8 +231,6 @@ def find_mfem_examples(dir, serial=True, example='all'):
 
     if serial:
         names = [x for x in names if not x.endswith('p')]
-    else:
-        names = [x for x in names if x.endswith('p')]
 
     if example != 'all':
         names = [n for n in names if n == example]

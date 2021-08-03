@@ -51,7 +51,8 @@ from  mfem._ser.stable3d import *
 from  mfem._ser.vtk import *
 from  mfem._ser.datacollection import *
 from  mfem._ser.io_stream import wFILE, STDOUT
-
+from  mfem._ser.fespacehierarchy import *
+from  mfem._ser.multigrid import *
 
 import mfem._ser.array as array
 import mfem._ser.blockoperator as blockoperator
