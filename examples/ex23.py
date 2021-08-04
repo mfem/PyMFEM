@@ -94,7 +94,8 @@ def run(mesh_file="",
             self.Kmat0.Mult(u, z)
             z.Neg()
 
-            for j in self.ess_tdof_list.ToList():
+            # iterate over Array<int> :D
+            for j in self.ess_tdof_list:
                 z[j] = 0.0
 
             self.T_solver.Mult(z, d2udt2)

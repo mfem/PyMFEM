@@ -605,6 +605,24 @@ class RefinementArray(object):
 
 
 
+    def __iter__(self):
+        class iter_array:
+            def __init__(self, obj):
+                self.obj = obj
+                self.size = obj.Size()
+            def __iter__(self):
+                self.idx = 0
+            def __next__(self):
+                if self.idx < self.size:
+                    res = self.obj[self.idx]
+                    self.idx += 1
+                    return res
+                else:
+                    raise StopIteration
+        return iter_array(self)
+
+
+
 # Register RefinementArray in _ncmesh:
 _ncmesh.RefinementArray_swigregister(RefinementArray)
 

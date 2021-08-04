@@ -116,11 +116,30 @@ ISTREAM_TYPEMAP(std::istream&)
      *self = a;
   }   
   void FakeToList(void){}
+  void __iter__(void){}
 };
 namespace mfem{
 %feature("shadow")Array::FakeToList %{
 def ToList(self):
     return [self[i] for i in range(self.Size())]
+%}
+%feature("shadow")Array::__iter__ %{
+def __iter__(self):
+    class iter_array:
+        def __init__(self, obj):
+            self.obj = obj
+            self.idx = 0
+            self.size = obj.Size()
+        def __iter__(self):
+            self.idx = 0
+        def __next__(self):
+            if self.idx < self.size:
+                res = self.obj[self.idx]
+                self.idx += 1
+                return res
+            else:
+                raise StopIteration
+    return iter_array(self)
 %}
 }  
 

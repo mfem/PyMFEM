@@ -10966,6 +10966,14 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(se
           }
           string_io2=swig_obj[1];
           stream2 = new std::ostringstream();
+          int prec = 16;
+          if (PyObject_HasAttrString(swig_obj[1], "precision")){
+            PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+            prec = (int)PyLong_AsLong(attr);
+            //std::cout << "setting prec" << prec << "\n";
+          }
+          stream2->precision(prec);
+          
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -11116,6 +11124,14 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintMatlab__SWIG_0(PyObject *SWIGUNUSEDP
           }
           string_io2=swig_obj[1];
           stream2 = new std::ostringstream();
+          int prec = 16;
+          if (PyObject_HasAttrString(swig_obj[1], "precision")){
+            PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+            prec = (int)PyLong_AsLong(attr);
+            //std::cout << "setting prec" << prec << "\n";
+          }
+          stream2->precision(prec);
+          
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -11259,6 +11275,14 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT__SWIG_0(PyObject *SWIGUNUSEDPARM(s
           }
           string_io2=swig_obj[1];
           stream2 = new std::ostringstream();
+          int prec = 16;
+          if (PyObject_HasAttrString(swig_obj[1], "precision")){
+            PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+            prec = (int)PyLong_AsLong(attr);
+            //std::cout << "setting prec" << prec << "\n";
+          }
+          stream2->precision(prec);
+          
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	

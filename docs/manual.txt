@@ -28,7 +28,22 @@ to find more details of the MFEM library.
  Following features are realized in PyMFEM using SWIG interface
  in order to use MFEM more conveniently from python. 
  Some of them may be integrated to MFEM itself in future.
- 
+
+  4-0) mfem::Array
+     Array<T> is a template in MFEM. PyMFEM has couple of intstatiation of
+     this template such as
+       * Array<int>  -> intArray
+       * Array<double> -> doubleArray
+     (example)
+        >>> x = mfem.intArray(5)
+	>>> x.Assign(3)   # set all elements to 3 (replacement of = operator)
+	>>> x.ToList()    # convert to list
+	>>> for k in x:
+	       print(k)   # iterator
+	>>> print(x[0])   # access to element
+	>>> x[3] = 5      # set element
+
+
   4-1) mfem::Vector
      Constructor using python list or NumPy array:
      
