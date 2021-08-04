@@ -3012,6 +3012,7 @@ SWIGINTERN void mfem_Array_Sl_int_Sg__Assign__SWIG_1(mfem::Array< int > *self,in
      *self = a;
   }
 SWIGINTERN void mfem_Array_Sl_int_Sg__FakeToList(mfem::Array< int > *self){}
+SWIGINTERN void mfem_Array_Sl_int_Sg____iter__(mfem::Array< int > *self){}
 
 SWIGINTERN swig_type_info*
 SWIG_pchar_descriptor(void)
@@ -3198,6 +3199,7 @@ SWIGINTERN void mfem_Array_Sl_double_Sg__Assign__SWIG_1(mfem::Array< double > *s
      *self = a;
   }
 SWIGINTERN void mfem_Array_Sl_double_Sg__FakeToList(mfem::Array< double > *self){}
+SWIGINTERN void mfem_Array_Sl_double_Sg____iter__(mfem::Array< double > *self){}
 SWIGINTERN void mfem_Array_Sl_double_Sg__Print__SWIG_1(mfem::Array< double > *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
@@ -5264,6 +5266,14 @@ SWIGINTERN PyObject *_wrap_intArray_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
           }
           string_io2=swig_obj[1];
           stream2 = new std::ostringstream();
+          int prec = 16;
+          if (PyObject_HasAttrString(swig_obj[1], "precision")){
+            PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+            prec = (int)PyLong_AsLong(attr);
+            //std::cout << "setting prec" << prec << "\n";
+          }
+          stream2->precision(prec);
+          
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -5411,6 +5421,14 @@ SWIGINTERN PyObject *_wrap_intArray_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
         }
         string_io2=swig_obj[1];
         stream2 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(swig_obj[1], "precision")){
+          PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream2->precision(prec);
+        
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -6933,6 +6951,43 @@ SWIGINTERN PyObject *_wrap_intArray_FakeToList(PyObject *SWIGUNUSEDPARM(self), P
   {
     try {
       mfem_Array_Sl_int_Sg__FakeToList(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_intArray___iter__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< int > *arg1 = (mfem::Array< int > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intArray___iter__" "', argument " "1"" of type '" "mfem::Array< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
+  {
+    try {
+      mfem_Array_Sl_int_Sg____iter__(arg1);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -9439,6 +9494,14 @@ SWIGINTERN PyObject *_wrap_doubleArray_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(se
           }
           string_io2=swig_obj[1];
           stream2 = new std::ostringstream();
+          int prec = 16;
+          if (PyObject_HasAttrString(swig_obj[1], "precision")){
+            PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+            prec = (int)PyLong_AsLong(attr);
+            //std::cout << "setting prec" << prec << "\n";
+          }
+          stream2->precision(prec);
+          
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -9586,6 +9649,14 @@ SWIGINTERN PyObject *_wrap_doubleArray_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
         }
         string_io2=swig_obj[1];
         stream2 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(swig_obj[1], "precision")){
+          PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream2->precision(prec);
+        
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -11128,6 +11199,43 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_doubleArray___iter__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< double > *arg1 = (mfem::Array< double > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleArray___iter__" "', argument " "1"" of type '" "mfem::Array< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
+  {
+    try {
+      mfem_Array_Sl_double_Sg____iter__(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_doubleArray_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Array< double > *arg1 = (mfem::Array< double > *) 0 ;
@@ -12102,6 +12210,7 @@ static PyMethodDef SwigMethods[] = {
 		"intArray_Assign(intArray self, int const & a)\n"
 		""},
 	 { "intArray_FakeToList", _wrap_intArray_FakeToList, METH_O, "intArray_FakeToList(intArray self)"},
+	 { "intArray___iter__", _wrap_intArray___iter__, METH_O, "intArray___iter__(intArray self)"},
 	 { "intArray_Print", _wrap_intArray_Print, METH_VARARGS, "\n"
 		"intArray_Print(intArray self, std::ostream & out=mfem::out, int width=4)\n"
 		"intArray_Print(intArray self, char const * file, int precision=16)\n"
@@ -12199,6 +12308,7 @@ static PyMethodDef SwigMethods[] = {
 		"doubleArray_Assign(doubleArray self, double const & a)\n"
 		""},
 	 { "doubleArray_FakeToList", _wrap_doubleArray_FakeToList, METH_O, "doubleArray_FakeToList(doubleArray self)"},
+	 { "doubleArray___iter__", _wrap_doubleArray___iter__, METH_O, "doubleArray___iter__(doubleArray self)"},
 	 { "doubleArray_Print", _wrap_doubleArray_Print, METH_VARARGS, "\n"
 		"doubleArray_Print(doubleArray self, std::ostream & out=mfem::out, int width=4)\n"
 		"doubleArray_Print(doubleArray self, char const * file, int precision=16)\n"
@@ -12312,6 +12422,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Assign(intArray self, int const & a)\n"
 		""},
 	 { "intArray_FakeToList", _wrap_intArray_FakeToList, METH_O, "FakeToList(intArray self)"},
+	 { "intArray___iter__", _wrap_intArray___iter__, METH_O, "__iter__(intArray self)"},
 	 { "intArray_Print", _wrap_intArray_Print, METH_VARARGS, "\n"
 		"Print(intArray self, std::ostream & out=mfem::out, int width=4)\n"
 		"Print(intArray self, char const * file, int precision=16)\n"
@@ -12409,6 +12520,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Assign(doubleArray self, double const & a)\n"
 		""},
 	 { "doubleArray_FakeToList", _wrap_doubleArray_FakeToList, METH_O, "FakeToList(doubleArray self)"},
+	 { "doubleArray___iter__", _wrap_doubleArray___iter__, METH_O, "__iter__(doubleArray self)"},
 	 { "doubleArray_Print", _wrap_doubleArray_Print, METH_VARARGS, "\n"
 		"Print(doubleArray self, std::ostream & out=mfem::out, int width=4)\n"
 		"Print(doubleArray self, char const * file, int precision=16)\n"

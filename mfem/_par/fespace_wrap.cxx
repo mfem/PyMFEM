@@ -3175,142 +3175,146 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__HypreIdentity swig_types[75]
 #define SWIGTYPE_p_mfem__HyprePCG swig_types[76]
 #define SWIGTYPE_p_mfem__HypreParMatrix swig_types[77]
-#define SWIGTYPE_p_mfem__HypreParaSails swig_types[78]
-#define SWIGTYPE_p_mfem__HypreSmoother swig_types[79]
-#define SWIGTYPE_p_mfem__HypreSolver swig_types[80]
-#define SWIGTYPE_p_mfem__HypreTriSolve swig_types[81]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[82]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[83]
-#define SWIGTYPE_p_mfem__IsoparametricTransformation swig_types[84]
-#define SWIGTYPE_p_mfem__L2ElementRestriction swig_types[85]
-#define SWIGTYPE_p_mfem__L2FaceRestriction swig_types[86]
-#define SWIGTYPE_p_mfem__L2Pos_HexahedronElement swig_types[87]
-#define SWIGTYPE_p_mfem__L2Pos_QuadrilateralElement swig_types[88]
-#define SWIGTYPE_p_mfem__L2Pos_SegmentElement swig_types[89]
-#define SWIGTYPE_p_mfem__L2Pos_TetrahedronElement swig_types[90]
-#define SWIGTYPE_p_mfem__L2Pos_TriangleElement swig_types[91]
-#define SWIGTYPE_p_mfem__L2Pos_WedgeElement swig_types[92]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[93]
-#define SWIGTYPE_p_mfem__L2_HexahedronElement swig_types[94]
-#define SWIGTYPE_p_mfem__L2_QuadrilateralElement swig_types[95]
-#define SWIGTYPE_p_mfem__L2_SegmentElement swig_types[96]
-#define SWIGTYPE_p_mfem__L2_TetrahedronElement swig_types[97]
-#define SWIGTYPE_p_mfem__L2_TriangleElement swig_types[98]
-#define SWIGTYPE_p_mfem__L2_WedgeElement swig_types[99]
-#define SWIGTYPE_p_mfem__Lagrange1DFiniteElement swig_types[100]
-#define SWIGTYPE_p_mfem__LagrangeHexFiniteElement swig_types[101]
-#define SWIGTYPE_p_mfem__Linear1DFiniteElement swig_types[102]
-#define SWIGTYPE_p_mfem__Linear2DFiniteElement swig_types[103]
-#define SWIGTYPE_p_mfem__Linear3DFiniteElement swig_types[104]
-#define SWIGTYPE_p_mfem__LinearDiscont2DFECollection swig_types[105]
-#define SWIGTYPE_p_mfem__LinearDiscont3DFECollection swig_types[106]
-#define SWIGTYPE_p_mfem__LinearFECollection swig_types[107]
-#define SWIGTYPE_p_mfem__LinearNonConf3DFECollection swig_types[108]
-#define SWIGTYPE_p_mfem__Local_FECollection swig_types[109]
-#define SWIGTYPE_p_mfem__Matrix swig_types[110]
-#define SWIGTYPE_p_mfem__MatrixInverse swig_types[111]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[112]
-#define SWIGTYPE_p_mfem__Mesh swig_types[113]
-#define SWIGTYPE_p_mfem__ND1_3DFECollection swig_types[114]
-#define SWIGTYPE_p_mfem__ND_FECollection swig_types[115]
-#define SWIGTYPE_p_mfem__ND_HexahedronElement swig_types[116]
-#define SWIGTYPE_p_mfem__ND_QuadrilateralElement swig_types[117]
-#define SWIGTYPE_p_mfem__ND_SegmentElement swig_types[118]
-#define SWIGTYPE_p_mfem__ND_TetrahedronElement swig_types[119]
-#define SWIGTYPE_p_mfem__ND_Trace_FECollection swig_types[120]
-#define SWIGTYPE_p_mfem__ND_TriangleElement swig_types[121]
-#define SWIGTYPE_p_mfem__NURBS1DFiniteElement swig_types[122]
-#define SWIGTYPE_p_mfem__NURBS2DFiniteElement swig_types[123]
-#define SWIGTYPE_p_mfem__NURBS3DFiniteElement swig_types[124]
-#define SWIGTYPE_p_mfem__NURBSExtension swig_types[125]
-#define SWIGTYPE_p_mfem__NURBSFECollection swig_types[126]
-#define SWIGTYPE_p_mfem__NURBSFiniteElement swig_types[127]
-#define SWIGTYPE_p_mfem__Nedelec1HexFiniteElement swig_types[128]
-#define SWIGTYPE_p_mfem__Nedelec1TetFiniteElement swig_types[129]
-#define SWIGTYPE_p_mfem__NodalFiniteElement swig_types[130]
-#define SWIGTYPE_p_mfem__NodalTensorFiniteElement swig_types[131]
-#define SWIGTYPE_p_mfem__Operator swig_types[132]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[133]
-#define SWIGTYPE_p_mfem__Ordering swig_types[134]
-#define SWIGTYPE_p_mfem__P0HexFiniteElement swig_types[135]
-#define SWIGTYPE_p_mfem__P0QuadFiniteElement swig_types[136]
-#define SWIGTYPE_p_mfem__P0SegmentFiniteElement swig_types[137]
-#define SWIGTYPE_p_mfem__P0TetFiniteElement swig_types[138]
-#define SWIGTYPE_p_mfem__P0TriangleFiniteElement swig_types[139]
-#define SWIGTYPE_p_mfem__P0WedgeFiniteElement swig_types[140]
-#define SWIGTYPE_p_mfem__P1OnQuadFECollection swig_types[141]
-#define SWIGTYPE_p_mfem__P1OnQuadFiniteElement swig_types[142]
-#define SWIGTYPE_p_mfem__P1SegmentFiniteElement swig_types[143]
-#define SWIGTYPE_p_mfem__P1TetNonConfFiniteElement swig_types[144]
-#define SWIGTYPE_p_mfem__P2SegmentFiniteElement swig_types[145]
-#define SWIGTYPE_p_mfem__PointFiniteElement swig_types[146]
-#define SWIGTYPE_p_mfem__PositiveFiniteElement swig_types[147]
-#define SWIGTYPE_p_mfem__PositiveTensorFiniteElement swig_types[148]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[149]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[150]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[151]
-#define SWIGTYPE_p_mfem__Quad1DFiniteElement swig_types[152]
-#define SWIGTYPE_p_mfem__Quad2DFiniteElement swig_types[153]
-#define SWIGTYPE_p_mfem__QuadPos1DFiniteElement swig_types[154]
-#define SWIGTYPE_p_mfem__Quadratic3DFiniteElement swig_types[155]
-#define SWIGTYPE_p_mfem__QuadraticDiscont2DFECollection swig_types[156]
-#define SWIGTYPE_p_mfem__QuadraticDiscont3DFECollection swig_types[157]
-#define SWIGTYPE_p_mfem__QuadraticFECollection swig_types[158]
-#define SWIGTYPE_p_mfem__QuadraticPosDiscont2DFECollection swig_types[159]
-#define SWIGTYPE_p_mfem__QuadraticPosFECollection swig_types[160]
-#define SWIGTYPE_p_mfem__QuadratureInterpolator swig_types[161]
-#define SWIGTYPE_p_mfem__QuadratureSpace swig_types[162]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[163]
-#define SWIGTYPE_p_mfem__RT0HexFiniteElement swig_types[164]
-#define SWIGTYPE_p_mfem__RT0QuadFiniteElement swig_types[165]
-#define SWIGTYPE_p_mfem__RT0TetFiniteElement swig_types[166]
-#define SWIGTYPE_p_mfem__RT0TriangleFiniteElement swig_types[167]
-#define SWIGTYPE_p_mfem__RT0_2DFECollection swig_types[168]
-#define SWIGTYPE_p_mfem__RT0_3DFECollection swig_types[169]
-#define SWIGTYPE_p_mfem__RT1HexFiniteElement swig_types[170]
-#define SWIGTYPE_p_mfem__RT1QuadFiniteElement swig_types[171]
-#define SWIGTYPE_p_mfem__RT1TriangleFiniteElement swig_types[172]
-#define SWIGTYPE_p_mfem__RT1_2DFECollection swig_types[173]
-#define SWIGTYPE_p_mfem__RT1_3DFECollection swig_types[174]
-#define SWIGTYPE_p_mfem__RT2QuadFiniteElement swig_types[175]
-#define SWIGTYPE_p_mfem__RT2TriangleFiniteElement swig_types[176]
-#define SWIGTYPE_p_mfem__RT2_2DFECollection swig_types[177]
-#define SWIGTYPE_p_mfem__RT_FECollection swig_types[178]
-#define SWIGTYPE_p_mfem__RT_HexahedronElement swig_types[179]
-#define SWIGTYPE_p_mfem__RT_QuadrilateralElement swig_types[180]
-#define SWIGTYPE_p_mfem__RT_TetrahedronElement swig_types[181]
-#define SWIGTYPE_p_mfem__RT_Trace_FECollection swig_types[182]
-#define SWIGTYPE_p_mfem__RT_TriangleElement swig_types[183]
-#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[184]
-#define SWIGTYPE_p_mfem__RefinedBiLinear2DFiniteElement swig_types[185]
-#define SWIGTYPE_p_mfem__RefinedLinear1DFiniteElement swig_types[186]
-#define SWIGTYPE_p_mfem__RefinedLinear2DFiniteElement swig_types[187]
-#define SWIGTYPE_p_mfem__RefinedLinear3DFiniteElement swig_types[188]
-#define SWIGTYPE_p_mfem__RefinedLinearFECollection swig_types[189]
-#define SWIGTYPE_p_mfem__RefinedTriLinear3DFiniteElement swig_types[190]
-#define SWIGTYPE_p_mfem__RotTriLinearHexFiniteElement swig_types[191]
-#define SWIGTYPE_p_mfem__STable swig_types[192]
-#define SWIGTYPE_p_mfem__ScalarFiniteElement swig_types[193]
-#define SWIGTYPE_p_mfem__ScaledOperator swig_types[194]
-#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[195]
-#define SWIGTYPE_p_mfem__Solver swig_types[196]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[197]
-#define SWIGTYPE_p_mfem__Table swig_types[198]
-#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[199]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[200]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[201]
-#define SWIGTYPE_p_mfem__TriLinear3DFiniteElement swig_types[202]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[203]
-#define SWIGTYPE_p_mfem__VectorFiniteElement swig_types[204]
-#define SWIGTYPE_p_mfem__VectorTensorFiniteElement swig_types[205]
-#define SWIGTYPE_p_pri_t swig_types[206]
-#define SWIGTYPE_p_quad_t swig_types[207]
-#define SWIGTYPE_p_seg_t swig_types[208]
-#define SWIGTYPE_p_tet_t swig_types[209]
-#define SWIGTYPE_p_tri_t swig_types[210]
-#define SWIGTYPE_p_void swig_types[211]
-static swig_type_info *swig_types[213];
-static swig_module_info swig_module = {swig_types, 212, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__HypreParVector swig_types[78]
+#define SWIGTYPE_p_mfem__HypreParaSails swig_types[79]
+#define SWIGTYPE_p_mfem__HypreSmoother swig_types[80]
+#define SWIGTYPE_p_mfem__HypreSolver swig_types[81]
+#define SWIGTYPE_p_mfem__HypreTriSolve swig_types[82]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[83]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[84]
+#define SWIGTYPE_p_mfem__IsoparametricTransformation swig_types[85]
+#define SWIGTYPE_p_mfem__L2ElementRestriction swig_types[86]
+#define SWIGTYPE_p_mfem__L2FaceRestriction swig_types[87]
+#define SWIGTYPE_p_mfem__L2Pos_HexahedronElement swig_types[88]
+#define SWIGTYPE_p_mfem__L2Pos_QuadrilateralElement swig_types[89]
+#define SWIGTYPE_p_mfem__L2Pos_SegmentElement swig_types[90]
+#define SWIGTYPE_p_mfem__L2Pos_TetrahedronElement swig_types[91]
+#define SWIGTYPE_p_mfem__L2Pos_TriangleElement swig_types[92]
+#define SWIGTYPE_p_mfem__L2Pos_WedgeElement swig_types[93]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[94]
+#define SWIGTYPE_p_mfem__L2_HexahedronElement swig_types[95]
+#define SWIGTYPE_p_mfem__L2_QuadrilateralElement swig_types[96]
+#define SWIGTYPE_p_mfem__L2_SegmentElement swig_types[97]
+#define SWIGTYPE_p_mfem__L2_TetrahedronElement swig_types[98]
+#define SWIGTYPE_p_mfem__L2_TriangleElement swig_types[99]
+#define SWIGTYPE_p_mfem__L2_WedgeElement swig_types[100]
+#define SWIGTYPE_p_mfem__Lagrange1DFiniteElement swig_types[101]
+#define SWIGTYPE_p_mfem__LagrangeHexFiniteElement swig_types[102]
+#define SWIGTYPE_p_mfem__Linear1DFiniteElement swig_types[103]
+#define SWIGTYPE_p_mfem__Linear2DFiniteElement swig_types[104]
+#define SWIGTYPE_p_mfem__Linear3DFiniteElement swig_types[105]
+#define SWIGTYPE_p_mfem__LinearDiscont2DFECollection swig_types[106]
+#define SWIGTYPE_p_mfem__LinearDiscont3DFECollection swig_types[107]
+#define SWIGTYPE_p_mfem__LinearFECollection swig_types[108]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[109]
+#define SWIGTYPE_p_mfem__LinearNonConf3DFECollection swig_types[110]
+#define SWIGTYPE_p_mfem__Local_FECollection swig_types[111]
+#define SWIGTYPE_p_mfem__Matrix swig_types[112]
+#define SWIGTYPE_p_mfem__MatrixInverse swig_types[113]
+#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[114]
+#define SWIGTYPE_p_mfem__Mesh swig_types[115]
+#define SWIGTYPE_p_mfem__ND1_3DFECollection swig_types[116]
+#define SWIGTYPE_p_mfem__ND_FECollection swig_types[117]
+#define SWIGTYPE_p_mfem__ND_HexahedronElement swig_types[118]
+#define SWIGTYPE_p_mfem__ND_QuadrilateralElement swig_types[119]
+#define SWIGTYPE_p_mfem__ND_SegmentElement swig_types[120]
+#define SWIGTYPE_p_mfem__ND_TetrahedronElement swig_types[121]
+#define SWIGTYPE_p_mfem__ND_Trace_FECollection swig_types[122]
+#define SWIGTYPE_p_mfem__ND_TriangleElement swig_types[123]
+#define SWIGTYPE_p_mfem__NURBS1DFiniteElement swig_types[124]
+#define SWIGTYPE_p_mfem__NURBS2DFiniteElement swig_types[125]
+#define SWIGTYPE_p_mfem__NURBS3DFiniteElement swig_types[126]
+#define SWIGTYPE_p_mfem__NURBSExtension swig_types[127]
+#define SWIGTYPE_p_mfem__NURBSFECollection swig_types[128]
+#define SWIGTYPE_p_mfem__NURBSFiniteElement swig_types[129]
+#define SWIGTYPE_p_mfem__Nedelec1HexFiniteElement swig_types[130]
+#define SWIGTYPE_p_mfem__Nedelec1TetFiniteElement swig_types[131]
+#define SWIGTYPE_p_mfem__NodalFiniteElement swig_types[132]
+#define SWIGTYPE_p_mfem__NodalTensorFiniteElement swig_types[133]
+#define SWIGTYPE_p_mfem__Operator swig_types[134]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[135]
+#define SWIGTYPE_p_mfem__Ordering swig_types[136]
+#define SWIGTYPE_p_mfem__P0HexFiniteElement swig_types[137]
+#define SWIGTYPE_p_mfem__P0QuadFiniteElement swig_types[138]
+#define SWIGTYPE_p_mfem__P0SegmentFiniteElement swig_types[139]
+#define SWIGTYPE_p_mfem__P0TetFiniteElement swig_types[140]
+#define SWIGTYPE_p_mfem__P0TriangleFiniteElement swig_types[141]
+#define SWIGTYPE_p_mfem__P0WedgeFiniteElement swig_types[142]
+#define SWIGTYPE_p_mfem__P1OnQuadFECollection swig_types[143]
+#define SWIGTYPE_p_mfem__P1OnQuadFiniteElement swig_types[144]
+#define SWIGTYPE_p_mfem__P1SegmentFiniteElement swig_types[145]
+#define SWIGTYPE_p_mfem__P1TetNonConfFiniteElement swig_types[146]
+#define SWIGTYPE_p_mfem__P2SegmentFiniteElement swig_types[147]
+#define SWIGTYPE_p_mfem__PointFiniteElement swig_types[148]
+#define SWIGTYPE_p_mfem__PositiveFiniteElement swig_types[149]
+#define SWIGTYPE_p_mfem__PositiveTensorFiniteElement swig_types[150]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[151]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[152]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[153]
+#define SWIGTYPE_p_mfem__Quad1DFiniteElement swig_types[154]
+#define SWIGTYPE_p_mfem__Quad2DFiniteElement swig_types[155]
+#define SWIGTYPE_p_mfem__QuadPos1DFiniteElement swig_types[156]
+#define SWIGTYPE_p_mfem__Quadratic3DFiniteElement swig_types[157]
+#define SWIGTYPE_p_mfem__QuadraticDiscont2DFECollection swig_types[158]
+#define SWIGTYPE_p_mfem__QuadraticDiscont3DFECollection swig_types[159]
+#define SWIGTYPE_p_mfem__QuadraticFECollection swig_types[160]
+#define SWIGTYPE_p_mfem__QuadraticPosDiscont2DFECollection swig_types[161]
+#define SWIGTYPE_p_mfem__QuadraticPosFECollection swig_types[162]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[163]
+#define SWIGTYPE_p_mfem__QuadratureInterpolator swig_types[164]
+#define SWIGTYPE_p_mfem__QuadratureSpace swig_types[165]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[166]
+#define SWIGTYPE_p_mfem__RT0HexFiniteElement swig_types[167]
+#define SWIGTYPE_p_mfem__RT0QuadFiniteElement swig_types[168]
+#define SWIGTYPE_p_mfem__RT0TetFiniteElement swig_types[169]
+#define SWIGTYPE_p_mfem__RT0TriangleFiniteElement swig_types[170]
+#define SWIGTYPE_p_mfem__RT0_2DFECollection swig_types[171]
+#define SWIGTYPE_p_mfem__RT0_3DFECollection swig_types[172]
+#define SWIGTYPE_p_mfem__RT1HexFiniteElement swig_types[173]
+#define SWIGTYPE_p_mfem__RT1QuadFiniteElement swig_types[174]
+#define SWIGTYPE_p_mfem__RT1TriangleFiniteElement swig_types[175]
+#define SWIGTYPE_p_mfem__RT1_2DFECollection swig_types[176]
+#define SWIGTYPE_p_mfem__RT1_3DFECollection swig_types[177]
+#define SWIGTYPE_p_mfem__RT2QuadFiniteElement swig_types[178]
+#define SWIGTYPE_p_mfem__RT2TriangleFiniteElement swig_types[179]
+#define SWIGTYPE_p_mfem__RT2_2DFECollection swig_types[180]
+#define SWIGTYPE_p_mfem__RT_FECollection swig_types[181]
+#define SWIGTYPE_p_mfem__RT_HexahedronElement swig_types[182]
+#define SWIGTYPE_p_mfem__RT_QuadrilateralElement swig_types[183]
+#define SWIGTYPE_p_mfem__RT_TetrahedronElement swig_types[184]
+#define SWIGTYPE_p_mfem__RT_Trace_FECollection swig_types[185]
+#define SWIGTYPE_p_mfem__RT_TriangleElement swig_types[186]
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[187]
+#define SWIGTYPE_p_mfem__RefinedBiLinear2DFiniteElement swig_types[188]
+#define SWIGTYPE_p_mfem__RefinedLinear1DFiniteElement swig_types[189]
+#define SWIGTYPE_p_mfem__RefinedLinear2DFiniteElement swig_types[190]
+#define SWIGTYPE_p_mfem__RefinedLinear3DFiniteElement swig_types[191]
+#define SWIGTYPE_p_mfem__RefinedLinearFECollection swig_types[192]
+#define SWIGTYPE_p_mfem__RefinedTriLinear3DFiniteElement swig_types[193]
+#define SWIGTYPE_p_mfem__RotTriLinearHexFiniteElement swig_types[194]
+#define SWIGTYPE_p_mfem__STable swig_types[195]
+#define SWIGTYPE_p_mfem__ScalarFiniteElement swig_types[196]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[197]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[198]
+#define SWIGTYPE_p_mfem__Solver swig_types[199]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[200]
+#define SWIGTYPE_p_mfem__Table swig_types[201]
+#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[202]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[203]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[204]
+#define SWIGTYPE_p_mfem__TriLinear3DFiniteElement swig_types[205]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[206]
+#define SWIGTYPE_p_mfem__Vector swig_types[207]
+#define SWIGTYPE_p_mfem__VectorFiniteElement swig_types[208]
+#define SWIGTYPE_p_mfem__VectorTensorFiniteElement swig_types[209]
+#define SWIGTYPE_p_pri_t swig_types[210]
+#define SWIGTYPE_p_quad_t swig_types[211]
+#define SWIGTYPE_p_seg_t swig_types[212]
+#define SWIGTYPE_p_tet_t swig_types[213]
+#define SWIGTYPE_p_tri_t swig_types[214]
+#define SWIGTYPE_p_void swig_types[215]
+static swig_type_info *swig_types[217];
+static swig_module_info swig_module = {swig_types, 216, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -9384,6 +9388,14 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_Save__SWIG_0(PyObject *SWIGUNUSEDP
         }
         string_io2=swig_obj[1];
         stream2 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(swig_obj[1], "precision")){
+          PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream2->precision(prec);
+        
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -10392,6 +10404,14 @@ SWIGINTERN PyObject *_wrap_QuadratureSpace_Save__SWIG_0(PyObject *SWIGUNUSEDPARM
         }
         string_io2=swig_obj[1];
         stream2 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(swig_obj[1], "precision")){
+          PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream2->precision(prec);
+        
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -11637,6 +11657,18 @@ static void *_p_mfem__FaceElementTransformationsTo_p_mfem__IsoparametricTransfor
 static void *_p_mfem__STableTo_p_mfem__Table(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Table *)  ((mfem::STable *) x));
 }
+static void *_p_mfem__HypreParVectorTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::HypreParVector *) x));
+}
+static void *_p_mfem__GridFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::GridFunction *) x));
+}
+static void *_p_mfem__QuadratureFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::QuadratureFunction *) x));
+}
+static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::LinearForm *) x));
+}
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
@@ -11843,6 +11875,10 @@ static swig_type_info _swigt__p_mfem__QuadratureSpace = {"_p_mfem__QuadratureSpa
 static swig_type_info _swigt__p_mfem__SparseMatrix = {"_p_mfem__SparseMatrix", "mfem::SparseMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Table = {"_p_mfem__Table", "mfem::Table *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__STable = {"_p_mfem__STable", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__HypreParVector = {"_p_mfem__HypreParVector", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
@@ -11929,6 +11965,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__HypreIdentity,
   &_swigt__p_mfem__HyprePCG,
   &_swigt__p_mfem__HypreParMatrix,
+  &_swigt__p_mfem__HypreParVector,
   &_swigt__p_mfem__HypreParaSails,
   &_swigt__p_mfem__HypreSmoother,
   &_swigt__p_mfem__HypreSolver,
@@ -11959,6 +11996,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__LinearDiscont2DFECollection,
   &_swigt__p_mfem__LinearDiscont3DFECollection,
   &_swigt__p_mfem__LinearFECollection,
+  &_swigt__p_mfem__LinearForm,
   &_swigt__p_mfem__LinearNonConf3DFECollection,
   &_swigt__p_mfem__Local_FECollection,
   &_swigt__p_mfem__Matrix,
@@ -12012,6 +12050,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__QuadraticFECollection,
   &_swigt__p_mfem__QuadraticPosDiscont2DFECollection,
   &_swigt__p_mfem__QuadraticPosFECollection,
+  &_swigt__p_mfem__QuadratureFunction,
   &_swigt__p_mfem__QuadratureInterpolator,
   &_swigt__p_mfem__QuadratureSpace,
   &_swigt__p_mfem__RAPOperator,
@@ -12055,6 +12094,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__TransposeOperator,
   &_swigt__p_mfem__TriLinear3DFiniteElement,
   &_swigt__p_mfem__TripleProductOperator,
+  &_swigt__p_mfem__Vector,
   &_swigt__p_mfem__VectorFiniteElement,
   &_swigt__p_mfem__VectorTensorFiniteElement,
   &_swigt__p_pri_t,
@@ -12271,6 +12311,10 @@ static swig_cast_info _swigc__p_mfem__QuadratureSpace[] = {  {&_swigt__p_mfem__Q
 static swig_cast_info _swigc__p_mfem__SparseMatrix[] = {  {&_swigt__p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__STable[] = {{&_swigt__p_mfem__STable, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Table[] = {  {&_swigt__p_mfem__STable, _p_mfem__STableTo_p_mfem__Table, 0, 0},  {&_swigt__p_mfem__Table, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__HypreParVector[] = {{&_swigt__p_mfem__HypreParVector, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__HypreParVector, _p_mfem__HypreParVectorTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -12357,6 +12401,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__HypreIdentity,
   _swigc__p_mfem__HyprePCG,
   _swigc__p_mfem__HypreParMatrix,
+  _swigc__p_mfem__HypreParVector,
   _swigc__p_mfem__HypreParaSails,
   _swigc__p_mfem__HypreSmoother,
   _swigc__p_mfem__HypreSolver,
@@ -12387,6 +12432,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__LinearDiscont2DFECollection,
   _swigc__p_mfem__LinearDiscont3DFECollection,
   _swigc__p_mfem__LinearFECollection,
+  _swigc__p_mfem__LinearForm,
   _swigc__p_mfem__LinearNonConf3DFECollection,
   _swigc__p_mfem__Local_FECollection,
   _swigc__p_mfem__Matrix,
@@ -12440,6 +12486,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__QuadraticFECollection,
   _swigc__p_mfem__QuadraticPosDiscont2DFECollection,
   _swigc__p_mfem__QuadraticPosFECollection,
+  _swigc__p_mfem__QuadratureFunction,
   _swigc__p_mfem__QuadratureInterpolator,
   _swigc__p_mfem__QuadratureSpace,
   _swigc__p_mfem__RAPOperator,
@@ -12483,6 +12530,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__TransposeOperator,
   _swigc__p_mfem__TriLinear3DFiniteElement,
   _swigc__p_mfem__TripleProductOperator,
+  _swigc__p_mfem__Vector,
   _swigc__p_mfem__VectorFiniteElement,
   _swigc__p_mfem__VectorTensorFiniteElement,
   _swigc__p_pri_t,

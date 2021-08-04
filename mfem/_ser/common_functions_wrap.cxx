@@ -3619,7 +3619,7 @@ SWIGINTERN PyObject *_wrap___lshift__(PyObject *SWIGUNUSEDPARM(self), PyObject *
         if (PyObject_HasAttrString(obj0, "precision")){
           PyObject *attr = PyObject_GetAttrString(obj0, "precision");
           prec = (int)PyLong_AsLong(attr);
-          std::cout << "setting prec" << prec << "\n";
+          //std::cout << "setting prec" << prec << "\n";
         }
         stream1->precision(prec);
         

@@ -119,13 +119,32 @@ ISTREAM_TYPEMAP(std::istream&)
   }
   void FakeToList(void){}
   /* since Array is template class I can not fill PyList object
-     in C++ side */  
-
+     in C++ side */
+  void __iter__(void){}
+  /* this will be shadowed by Python */
 };
 namespace mfem{
 %feature("shadow")Array::FakeToList %{
 def ToList(self):
     return [self[i] for i in range(self.Size())]
+%}
+%feature("shadow")Array::__iter__ %{
+def __iter__(self):
+    class iter_array:
+        def __init__(self, obj):
+            self.obj = obj
+            self.idx = 0
+            self.size = obj.Size()
+        def __iter__(self):
+            self.idx = 0
+        def __next__(self):
+            if self.idx < self.size:
+                res = self.obj[self.idx]
+                self.idx += 1
+                return res
+            else:
+                raise StopIteration
+    return iter_array(self)
 %}
 }
 

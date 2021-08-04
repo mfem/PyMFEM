@@ -3901,6 +3901,14 @@ SWIGINTERN PyObject *_wrap_WriteVTKEncodedCompressed(PyObject *SWIGUNUSEDPARM(se
         }
         string_io1=obj0;
         stream1 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(obj0, "precision")){
+          PyObject *attr = PyObject_GetAttrString(obj0, "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream1->precision(prec);
+        
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj0, "utf-8", "~E~");	
