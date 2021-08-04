@@ -438,8 +438,17 @@ to find more details of the MFEM library.
          (example)
             mesh.PrintVTK("mesh.vtk", 1)
      	    mesh.Print(mfem.STDOUT)
+	    
+	    #
 	    gf.SaveVTK("gf.vtk", "data", 1)
 	    gf.Save("data.gf")
+
+            # save multile gf to one StringIO....
+	    from io import StringIO()
+	    output = StringIO()
+	    output.precision = 8
+	    gf.Save(output)
+	    gf2.Save(output)	    
 
          Some methos are wrapped so that it runs without argument. In this
 	 case, data is passed to STDOUT.	 
