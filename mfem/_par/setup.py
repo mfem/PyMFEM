@@ -47,7 +47,7 @@ modules= ["io_stream", "vtk", "sort_pairs", "datacollection",
           "pfespace", "pgridfunc",
           "plinearform", "pbilinearform", "pnonlinearform",
           "hypre", "restriction", "prestriction",
-          "fespacehierarchy", "multigrid"]
+          "fespacehierarchy", "multigrid", "constraints"]
 
 if add_pumi != '':
     modules.append("pumi")
