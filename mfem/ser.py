@@ -53,6 +53,7 @@ from  mfem._ser.datacollection import *
 from  mfem._ser.io_stream import wFILE, STDOUT
 from  mfem._ser.fespacehierarchy import *
 from  mfem._ser.multigrid import *
+from  mfem._ser.constraints import *
 
 import mfem._ser.array as array
 import mfem._ser.blockoperator as blockoperator

@@ -1,4 +1,8 @@
 	<<<  Change Log. >>>
+2021 08.03
+        * added constraints wrapper
+	* added ex28 and a few otber serial examples
+
 2021 08.02
         * Added ex21
 	* SwapNodes returns None when mesh object does not have Nodes
