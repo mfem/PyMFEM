@@ -49,6 +49,8 @@ void mfem::PyTimeDependentOperatorBase::Mult(const mfem::Vector &x, mfem::Vector
 //%feature("noabstract") mfem::Operator;
 //%feature("noabstract") mfem::TimeDependentOperator;
 %feature("director") mfem::TimeDependentOperator;
+%feature("director") mfem::TimeDependentAdjointOperator;
+%feature("director") mfem::SecondOrderTimeDependentOperator;
 %feature("director") mfem::Operator;
 %feature("director") mfem::Solver;
 

@@ -26,6 +26,9 @@ import_array();
 %rename("%s") mfem::Mult;
 %rename("%s") mfem::RAP;
 %rename("%s") mfem::InnerProduct;
+%rename("%s") mfem::OuterProduct;
+%rename("%s") mfem::TransposeMult;
+%rename("%s") mfem::Mult_AtDA;
 %newobject mfem::Add;
 %newobject mfem::RAP;
 %include "general/table.hpp"
@@ -33,4 +36,3 @@ import_array();
 %include "linalg/densemat.hpp"
 %include "linalg/sparsemat.hpp"
 %include "linalg/blockmatrix.hpp"
-

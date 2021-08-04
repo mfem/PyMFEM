@@ -31,6 +31,14 @@
          }
 	 string_io=$input;
 	 stream = new std::ostringstream();
+	 int prec = 16;
+	 if (PyObject_HasAttrString($input, "precision")){
+	   PyObject *attr = PyObject_GetAttrString($input, "precision");
+	   prec = (int)PyLong_AsLong(attr);
+	   //std::cout << "setting prec" << prec << "\n";
+	 }
+         stream->precision(prec);
+	 
       } else {
  	 // if it is string, extract filename as char*
          PyObject* str = PyUnicode_AsEncodedString($input, "utf-8", "~E~");	

@@ -134,6 +134,144 @@ private:
 };
 
 
+class SwigDirector_TimeDependentAdjointOperator : public mfem::TimeDependentAdjointOperator, public Swig::Director {
+
+public:
+    SwigDirector_TimeDependentAdjointOperator(PyObject *self, int dim, int adjdim, double t = 0., mfem::TimeDependentOperator::Type type = mfem::TimeDependentOperator::EXPLICIT);
+    virtual mfem::MemoryClass GetMemoryClass() const;
+    virtual void Mult(mfem::Vector const &x, mfem::Vector &y) const;
+    virtual void MultTranspose(mfem::Vector const &x, mfem::Vector &y) const;
+    virtual mfem::Operator &GetGradient(mfem::Vector const &x) const;
+    virtual void AssembleDiagonal(mfem::Vector &diag) const;
+    virtual mfem::Operator const *GetProlongation() const;
+    virtual mfem::Operator const *GetRestriction() const;
+    virtual mfem::Operator const *GetOutputProlongation() const;
+    virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
+    virtual mfem::Operator const *GetOutputRestriction() const;
+    virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
+    virtual ~SwigDirector_TimeDependentAdjointOperator();
+    virtual double GetTime() const;
+    virtual void SetTime(double const t_);
+    virtual void SetEvalMode(mfem::TimeDependentOperator::EvalMode const new_eval_mode);
+    virtual void ExplicitMult(mfem::Vector const &x, mfem::Vector &y) const;
+    virtual void ImplicitMult(mfem::Vector const &x, mfem::Vector const &k, mfem::Vector &y) const;
+    virtual void ImplicitSolve(double const dt, mfem::Vector const &x, mfem::Vector &k);
+    virtual mfem::Operator &GetImplicitGradient(mfem::Vector const &x, mfem::Vector const &k, double shift) const;
+    virtual mfem::Operator &GetExplicitGradient(mfem::Vector const &x) const;
+    virtual int SUNImplicitSetup(mfem::Vector const &x, mfem::Vector const &fx, int jok, int *jcur, double gamma);
+    virtual int SUNImplicitSolve(mfem::Vector const &b, mfem::Vector &x, double tol);
+    virtual int SUNMassSetup();
+    virtual int SUNMassSolve(mfem::Vector const &b, mfem::Vector &x, double tol);
+    virtual int SUNMassMult(mfem::Vector const &x, mfem::Vector &v);
+    virtual void QuadratureIntegration(mfem::Vector const &y, mfem::Vector &qdot) const;
+    virtual void AdjointRateMult(mfem::Vector const &y, mfem::Vector &yB, mfem::Vector &yBdot) const;
+    virtual void QuadratureSensitivityMult(mfem::Vector const &y, mfem::Vector const &yB, mfem::Vector &qBdot) const;
+    virtual int SUNImplicitSetupB(double const t, mfem::Vector const &x, mfem::Vector const &xB, mfem::Vector const &fxB, int jokB, int *jcurB, double gammaB);
+    virtual int SUNImplicitSolveB(mfem::Vector &x, mfem::Vector const &b, double tol);
+
+/* Internal director utilities */
+public:
+    bool swig_get_inner(const char *swig_protected_method_name) const {
+      std::map<std::string, bool>::const_iterator iv = swig_inner.find(swig_protected_method_name);
+      return (iv != swig_inner.end() ? iv->second : false);
+    }
+    void swig_set_inner(const char *swig_protected_method_name, bool swig_val) const {
+      swig_inner[swig_protected_method_name] = swig_val;
+    }
+private:
+    mutable std::map<std::string, bool> swig_inner;
+
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+/* VTable implementation */
+    PyObject *swig_get_method(size_t method_index, const char *method_name) const {
+      PyObject *method = vtable[method_index];
+      if (!method) {
+        swig::SwigVar_PyObject name = SWIG_Python_str_FromChar(method_name);
+        method = PyObject_GetAttr(swig_get_self(), name);
+        if (!method) {
+          std::string msg = "Method in class TimeDependentAdjointOperator doesn't exist, undefined ";
+          msg += method_name;
+          Swig::DirectorMethodException::raise(msg.c_str());
+        }
+        vtable[method_index] = method;
+      }
+      return method;
+    }
+private:
+    mutable swig::SwigVar_PyObject vtable[29];
+#endif
+
+};
+
+
+class SwigDirector_SecondOrderTimeDependentOperator : public mfem::SecondOrderTimeDependentOperator, public Swig::Director {
+
+public:
+    SwigDirector_SecondOrderTimeDependentOperator(PyObject *self, int n = 0, double t_ = 0.0, mfem::TimeDependentOperator::Type type_ = mfem::TimeDependentOperator::EXPLICIT);
+    SwigDirector_SecondOrderTimeDependentOperator(PyObject *self, int h, int w, double t_ = 0.0, mfem::TimeDependentOperator::Type type_ = mfem::TimeDependentOperator::EXPLICIT);
+    virtual mfem::MemoryClass GetMemoryClass() const;
+    virtual void Mult(mfem::Vector const &x, mfem::Vector &y) const;
+    virtual void MultTranspose(mfem::Vector const &x, mfem::Vector &y) const;
+    virtual mfem::Operator &GetGradient(mfem::Vector const &x) const;
+    virtual void AssembleDiagonal(mfem::Vector &diag) const;
+    virtual mfem::Operator const *GetProlongation() const;
+    virtual mfem::Operator const *GetRestriction() const;
+    virtual mfem::Operator const *GetOutputProlongation() const;
+    virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
+    virtual mfem::Operator const *GetOutputRestriction() const;
+    virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
+    virtual ~SwigDirector_SecondOrderTimeDependentOperator();
+    virtual double GetTime() const;
+    virtual void SetTime(double const t_);
+    virtual void SetEvalMode(mfem::TimeDependentOperator::EvalMode const new_eval_mode);
+    virtual void ExplicitMult(mfem::Vector const &x, mfem::Vector &y) const;
+    virtual void ImplicitMult(mfem::Vector const &x, mfem::Vector const &k, mfem::Vector &y) const;
+    virtual void ImplicitSolve(double const dt, mfem::Vector const &x, mfem::Vector &k);
+    virtual mfem::Operator &GetImplicitGradient(mfem::Vector const &x, mfem::Vector const &k, double shift) const;
+    virtual mfem::Operator &GetExplicitGradient(mfem::Vector const &x) const;
+    virtual int SUNImplicitSetup(mfem::Vector const &x, mfem::Vector const &fx, int jok, int *jcur, double gamma);
+    virtual int SUNImplicitSolve(mfem::Vector const &b, mfem::Vector &x, double tol);
+    virtual int SUNMassSetup();
+    virtual int SUNMassSolve(mfem::Vector const &b, mfem::Vector &x, double tol);
+    virtual int SUNMassMult(mfem::Vector const &x, mfem::Vector &v);
+    virtual void Mult(mfem::Vector const &x, mfem::Vector const &dxdt, mfem::Vector &y) const;
+    virtual void ImplicitSolve(double const fac0, double const fac1, mfem::Vector const &x, mfem::Vector const &dxdt, mfem::Vector &k);
+
+/* Internal director utilities */
+public:
+    bool swig_get_inner(const char *swig_protected_method_name) const {
+      std::map<std::string, bool>::const_iterator iv = swig_inner.find(swig_protected_method_name);
+      return (iv != swig_inner.end() ? iv->second : false);
+    }
+    void swig_set_inner(const char *swig_protected_method_name, bool swig_val) const {
+      swig_inner[swig_protected_method_name] = swig_val;
+    }
+private:
+    mutable std::map<std::string, bool> swig_inner;
+
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+/* VTable implementation */
+    PyObject *swig_get_method(size_t method_index, const char *method_name) const {
+      PyObject *method = vtable[method_index];
+      if (!method) {
+        swig::SwigVar_PyObject name = SWIG_Python_str_FromChar(method_name);
+        method = PyObject_GetAttr(swig_get_self(), name);
+        if (!method) {
+          std::string msg = "Method in class SecondOrderTimeDependentOperator doesn't exist, undefined ";
+          msg += method_name;
+          Swig::DirectorMethodException::raise(msg.c_str());
+        }
+        vtable[method_index] = method;
+      }
+      return method;
+    }
+private:
+    mutable swig::SwigVar_PyObject vtable[26];
+#endif
+
+};
+
+
 class SwigDirector_Solver : public mfem::Solver, public Swig::Director {
 
 public:

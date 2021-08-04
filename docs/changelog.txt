@@ -1,7 +1,9 @@
 	<<<  Change Log. >>>
 2021 08.03
         * added constraints wrapper
-	* added ex28 and a few otber serial examples
+	* added ex28 and a few other serial examples
+	* added director to SecondOrderTimeDependentOperator
+	* added ex23
 
 2021 08.02
         * Added ex21
