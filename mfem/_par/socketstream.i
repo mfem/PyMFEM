@@ -45,7 +45,10 @@ import_array();
    { 
      self->flush();
    }
-  
+  bool good()
+  {
+    return self->std::iostream::good();
+  }
   mfem::socketstream& __lshift__(const char ostr[])
    { 
       *self << ostr;

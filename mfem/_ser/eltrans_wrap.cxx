@@ -7986,6 +7986,14 @@ SWIGINTERN PyObject *_wrap_FaceElementTransformations_CheckConsistency(PyObject 
           }
           string_io3=obj2;
           stream3 = new std::ostringstream();
+          int prec = 16;
+          if (PyObject_HasAttrString(obj2, "precision")){
+            PyObject *attr = PyObject_GetAttrString(obj2, "precision");
+            prec = (int)PyLong_AsLong(attr);
+            //std::cout << "setting prec" << prec << "\n";
+          }
+          stream3->precision(prec);
+          
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(obj2, "utf-8", "~E~");	

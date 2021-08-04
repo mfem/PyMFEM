@@ -1,7 +1,5 @@
 '''
    MFEM example 20
-      This is a version of Example 18 with a simple adaptive mesh
-      refinement loop. 
       See c++ version in the MFEM library for more detail 
 '''
 import os

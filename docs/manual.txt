@@ -28,7 +28,22 @@ to find more details of the MFEM library.
  Following features are realized in PyMFEM using SWIG interface
  in order to use MFEM more conveniently from python. 
  Some of them may be integrated to MFEM itself in future.
- 
+
+  4-0) mfem::Array
+     Array<T> is a template in MFEM. PyMFEM has couple of intstatiation of
+     this template such as
+       * Array<int>  -> intArray
+       * Array<double> -> doubleArray
+     (example)
+        >>> x = mfem.intArray(5)
+	>>> x.Assign(3)   # set all elements to 3 (replacement of = operator)
+	>>> x.ToList()    # convert to list
+	>>> for k in x:
+	       print(k)   # iterator
+	>>> print(x[0])   # access to element
+	>>> x[3] = 5      # set element
+
+
   4-1) mfem::Vector
      Constructor using python list or NumPy array:
      
@@ -438,8 +453,17 @@ to find more details of the MFEM library.
          (example)
             mesh.PrintVTK("mesh.vtk", 1)
      	    mesh.Print(mfem.STDOUT)
+	    
+	    #
 	    gf.SaveVTK("gf.vtk", "data", 1)
 	    gf.Save("data.gf")
+
+            # save multile gf to one StringIO....
+	    from io import StringIO()
+	    output = StringIO()
+	    output.precision = 8
+	    gf.Save(output)
+	    gf2.Save(output)	    
 
          Some methos are wrapped so that it runs without argument. In this
 	 case, data is passed to STDOUT.	 
@@ -544,8 +568,6 @@ to find more details of the MFEM library.
 
   1) t*.hpp files are not wrapped
   
-  2) Mesh::SwapNodes is not working perfectly.
-  
   3) Memory management.
       python uses garbage collection. Since wrapper does not know
       exactly how objects are used in c++ layer, MFEM object may be
@@ -553,7 +575,6 @@ to find more details of the MFEM library.
       this by adjusting thisown flag or %newobject directive. This
       needs to be done method by method, and not yet completed.
 
-  4) Visualization through visit is not included
 
   5) SuperLU and PETSc are not supported.
   

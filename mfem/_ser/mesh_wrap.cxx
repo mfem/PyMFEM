@@ -16672,7 +16672,12 @@ SWIGINTERN PyObject *_wrap_Mesh_SwapNodes(PyObject *SWIGUNUSEDPARM(self), PyObje
   {
     Py_XDECREF(resultobj);
     resultobj = PyList_New(0);
-    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj(SWIG_as_voidptr(*arg2), SWIGTYPE_p_mfem__GridFunction, 0 |  0 ));
+    if (*arg2){
+      // return None if Nodes is NULL
+      resultobj = SWIG_Python_AppendOutput(resultobj, Py_None);
+    } else {
+      resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj(SWIG_as_voidptr(*arg2), SWIGTYPE_p_mfem__GridFunction, 0 |  0 ));
+    }
   }
   {
     resultobj = SWIG_Python_AppendOutput(resultobj, PyLong_FromLong((long)*arg3));  
@@ -18531,6 +18536,14 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
           }
           string_io2=swig_obj[1];
           stream2 = new std::ostringstream();
+          int prec = 16;
+          if (PyObject_HasAttrString(swig_obj[1], "precision")){
+            PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+            prec = (int)PyLong_AsLong(attr);
+            //std::cout << "setting prec" << prec << "\n";
+          }
+          stream2->precision(prec);
+          
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -18673,6 +18686,14 @@ SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
           }
           string_io2=swig_obj[1];
           stream2 = new std::ostringstream();
+          int prec = 16;
+          if (PyObject_HasAttrString(swig_obj[1], "precision")){
+            PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+            prec = (int)PyLong_AsLong(attr);
+            //std::cout << "setting prec" << prec << "\n";
+          }
+          stream2->precision(prec);
+          
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -18877,6 +18898,14 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
         }
         string_io2=swig_obj[1];
         stream2 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(swig_obj[1], "precision")){
+          PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream2->precision(prec);
+        
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -19018,6 +19047,14 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
         }
         string_io2=swig_obj[1];
         stream2 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(swig_obj[1], "precision")){
+          PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream2->precision(prec);
+        
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -19182,6 +19219,14 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTU__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
         }
         string_io2=swig_obj[1];
         stream2 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(swig_obj[1], "precision")){
+          PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream2->precision(prec);
+        
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -19773,6 +19818,14 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning(PyObject *SWIGUNUSEDPARM(s
         }
         string_io3=obj2;
         stream3 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(obj2, "precision")){
+          PyObject *attr = PyObject_GetAttrString(obj2, "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream3->precision(prec);
+        
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj2, "utf-8", "~E~");	
@@ -19936,6 +19989,14 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning(PyObject *SWIGUNUS
         }
         string_io3=obj2;
         stream3 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(obj2, "precision")){
+          PyObject *attr = PyObject_GetAttrString(obj2, "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream3->precision(prec);
+        
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj2, "utf-8", "~E~");	
@@ -20100,6 +20161,14 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintSurfaces(PyObject *SWIGUNUSEDPARM(self), Py
         }
         string_io3=obj2;
         stream3 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(obj2, "precision")){
+          PyObject *attr = PyObject_GetAttrString(obj2, "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream3->precision(prec);
+        
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj2, "utf-8", "~E~");	
@@ -21063,6 +21132,14 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsByGeometry(PyObject *SWIGUNUSEDPARM
         }
         string_io3=obj2;
         stream3 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(obj2, "precision")){
+          PyObject *attr = PyObject_GetAttrString(obj2, "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream3->precision(prec);
+        
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj2, "utf-8", "~E~");	
@@ -21231,6 +21308,14 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics(PyObject *SWIGUNUSEDPARM(se
           }
           string_io4=obj3;
           stream4 = new std::ostringstream();
+          int prec = 16;
+          if (PyObject_HasAttrString(obj3, "precision")){
+            PyObject *attr = PyObject_GetAttrString(obj3, "precision");
+            prec = (int)PyLong_AsLong(attr);
+            //std::cout << "setting prec" << prec << "\n";
+          }
+          stream4->precision(prec);
+          
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(obj3, "utf-8", "~E~");	
@@ -21373,6 +21458,14 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
           }
           string_io2=swig_obj[1];
           stream2 = new std::ostringstream();
+          int prec = 16;
+          if (PyObject_HasAttrString(swig_obj[1], "precision")){
+            PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+            prec = (int)PyLong_AsLong(attr);
+            //std::cout << "setting prec" << prec << "\n";
+          }
+          stream2->precision(prec);
+          
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -24147,6 +24240,14 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py
         }
         string_io1=swig_obj[0];
         stream1 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(swig_obj[0], "precision")){
+          PyObject *attr = PyObject_GetAttrString(swig_obj[0], "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream1->precision(prec);
+        
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[0], "utf-8", "~E~");	

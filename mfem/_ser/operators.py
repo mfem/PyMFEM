@@ -378,10 +378,15 @@ class TimeDependentAdjointOperator(TimeDependentOperator):
     r"""Proxy of C++ mfem::TimeDependentAdjointOperator class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
-    __repr__ = _swig_repr
+        r"""__init__(TimeDependentAdjointOperator self, int dim, int adjdim, double t=0., mfem::TimeDependentOperator::Type type=EXPLICIT) -> TimeDependentAdjointOperator"""
+        if self.__class__ == TimeDependentAdjointOperator:
+            _self = None
+        else:
+            _self = self
+        _operators.TimeDependentAdjointOperator_swiginit(self, _operators.new_TimeDependentAdjointOperator(_self, *args, **kwargs))
     __swig_destroy__ = _operators.delete_TimeDependentAdjointOperator
 
     def QuadratureIntegration(self, y, qdot):
@@ -413,6 +418,10 @@ class TimeDependentAdjointOperator(TimeDependentOperator):
         r"""GetAdjointHeight(TimeDependentAdjointOperator self) -> int"""
         return _operators.TimeDependentAdjointOperator_GetAdjointHeight(self)
     GetAdjointHeight = _swig_new_instance_method(_operators.TimeDependentAdjointOperator_GetAdjointHeight)
+    def __disown__(self):
+        self.this.disown()
+        _operators.disown_TimeDependentAdjointOperator(self)
+        return weakref.proxy(self)
 
 # Register TimeDependentAdjointOperator in _operators:
 _operators.TimeDependentAdjointOperator_swigregister(TimeDependentAdjointOperator)
@@ -428,7 +437,11 @@ class SecondOrderTimeDependentOperator(TimeDependentOperator):
         __init__(SecondOrderTimeDependentOperator self, int n=0, double t_=0.0, mfem::TimeDependentOperator::Type type_=EXPLICIT) -> SecondOrderTimeDependentOperator
         __init__(SecondOrderTimeDependentOperator self, int h, int w, double t_=0.0, mfem::TimeDependentOperator::Type type_=EXPLICIT) -> SecondOrderTimeDependentOperator
         """
-        _operators.SecondOrderTimeDependentOperator_swiginit(self, _operators.new_SecondOrderTimeDependentOperator(*args))
+        if self.__class__ == SecondOrderTimeDependentOperator:
+            _self = None
+        else:
+            _self = self
+        _operators.SecondOrderTimeDependentOperator_swiginit(self, _operators.new_SecondOrderTimeDependentOperator(_self, *args))
 
     def Mult(self, *args):
         r"""
@@ -446,6 +459,10 @@ class SecondOrderTimeDependentOperator(TimeDependentOperator):
         return _operators.SecondOrderTimeDependentOperator_ImplicitSolve(self, *args)
     ImplicitSolve = _swig_new_instance_method(_operators.SecondOrderTimeDependentOperator_ImplicitSolve)
     __swig_destroy__ = _operators.delete_SecondOrderTimeDependentOperator
+    def __disown__(self):
+        self.this.disown()
+        _operators.disown_SecondOrderTimeDependentOperator(self)
+        return weakref.proxy(self)
 
 # Register SecondOrderTimeDependentOperator in _operators:
 _operators.SecondOrderTimeDependentOperator_swigregister(SecondOrderTimeDependentOperator)

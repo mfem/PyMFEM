@@ -34,6 +34,7 @@ from  mfem._par.mesh import *
 from  mfem._par.fe_coll import *
 from  mfem._par.vector import *
 from  mfem._par.complex_operator import *
+from  mfem._par.complex_fem import *
 from  mfem._par.fespace import *
 from  mfem._par.linearform import *
 from  mfem._par.bilininteg import *
@@ -67,6 +68,9 @@ from  mfem._par.stable3d import *
 from  mfem._par.vtk import *
 from  mfem._par.datacollection import *
 from  mfem._par.io_stream import wFILE, STDOUT
+from  mfem._par.fespacehierarchy import *
+from  mfem._par.multigrid import *
+from  mfem._par.constraints import *
 
 import mfem._par.array as array
 import mfem._par.blockoperator as blockoperator

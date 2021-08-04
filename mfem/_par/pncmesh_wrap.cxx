@@ -3115,25 +3115,29 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[15]
 #define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[16]
 #define SWIGTYPE_p_mfem__GridFunction swig_types[17]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[18]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[19]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[20]
-#define SWIGTYPE_p_mfem__Mesh swig_types[21]
-#define SWIGTYPE_p_mfem__NCMesh swig_types[22]
-#define SWIGTYPE_p_mfem__NCMesh__MeshId swig_types[23]
-#define SWIGTYPE_p_mfem__NCMesh__NCList swig_types[24]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[25]
-#define SWIGTYPE_p_mfem__ParNCMesh swig_types[26]
-#define SWIGTYPE_p_mfem__STable swig_types[27]
-#define SWIGTYPE_p_mfem__Table swig_types[28]
-#define SWIGTYPE_p_pri_t swig_types[29]
-#define SWIGTYPE_p_quad_t swig_types[30]
-#define SWIGTYPE_p_seg_t swig_types[31]
-#define SWIGTYPE_p_std__vectorT_int_t swig_types[32]
-#define SWIGTYPE_p_tet_t swig_types[33]
-#define SWIGTYPE_p_tri_t swig_types[34]
-static swig_type_info *swig_types[36];
-static swig_module_info swig_module = {swig_types, 35, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__HypreParVector swig_types[18]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[19]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[20]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[21]
+#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[22]
+#define SWIGTYPE_p_mfem__Mesh swig_types[23]
+#define SWIGTYPE_p_mfem__NCMesh swig_types[24]
+#define SWIGTYPE_p_mfem__NCMesh__MeshId swig_types[25]
+#define SWIGTYPE_p_mfem__NCMesh__NCList swig_types[26]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[27]
+#define SWIGTYPE_p_mfem__ParNCMesh swig_types[28]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[29]
+#define SWIGTYPE_p_mfem__STable swig_types[30]
+#define SWIGTYPE_p_mfem__Table swig_types[31]
+#define SWIGTYPE_p_mfem__Vector swig_types[32]
+#define SWIGTYPE_p_pri_t swig_types[33]
+#define SWIGTYPE_p_quad_t swig_types[34]
+#define SWIGTYPE_p_seg_t swig_types[35]
+#define SWIGTYPE_p_std__vectorT_int_t swig_types[36]
+#define SWIGTYPE_p_tet_t swig_types[37]
+#define SWIGTYPE_p_tri_t swig_types[38]
+static swig_type_info *swig_types[40];
+static swig_module_info swig_module = {swig_types, 39, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5537,6 +5541,18 @@ static void *_p_mfem__ParNCMeshTo_p_mfem__NCMesh(void *x, int *SWIGUNUSEDPARM(ne
 static void *_p_mfem__STableTo_p_mfem__Table(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Table *)  ((mfem::STable *) x));
 }
+static void *_p_mfem__HypreParVectorTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::HypreParVector *) x));
+}
+static void *_p_mfem__GridFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::GridFunction *) x));
+}
+static void *_p_mfem__QuadratureFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::QuadratureFunction *) x));
+}
+static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::LinearForm *) x));
+}
 static swig_type_info _swigt__p_CommGroup = {"_p_CommGroup", "CommGroup *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_GroupId = {"_p_GroupId", "GroupId *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
@@ -5566,6 +5582,10 @@ static swig_type_info _swigt__p_mfem__OperatorHandle = {"_p_mfem__OperatorHandle
 static swig_type_info _swigt__p_mfem__ParNCMesh = {"_p_mfem__ParNCMesh", "mfem::ParNCMesh *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Table = {"_p_mfem__Table", "mfem::Table *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__STable = {"_p_mfem__STable", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__HypreParVector = {"_p_mfem__HypreParVector", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
@@ -5592,8 +5612,10 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__DGTraceIntegrator,
   &_swigt__p_mfem__FiniteElementSpace,
   &_swigt__p_mfem__GridFunction,
+  &_swigt__p_mfem__HypreParVector,
   &_swigt__p_mfem__IntegrationRule,
   &_swigt__p_mfem__L2_FECollection,
+  &_swigt__p_mfem__LinearForm,
   &_swigt__p_mfem__MatrixVectorProductCoefficient,
   &_swigt__p_mfem__Mesh,
   &_swigt__p_mfem__NCMesh,
@@ -5601,8 +5623,10 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__NCMesh__NCList,
   &_swigt__p_mfem__OperatorHandle,
   &_swigt__p_mfem__ParNCMesh,
+  &_swigt__p_mfem__QuadratureFunction,
   &_swigt__p_mfem__STable,
   &_swigt__p_mfem__Table,
+  &_swigt__p_mfem__Vector,
   &_swigt__p_pri_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
@@ -5640,6 +5664,10 @@ static swig_cast_info _swigc__p_mfem__OperatorHandle[] = {  {&_swigt__p_mfem__Op
 static swig_cast_info _swigc__p_mfem__ParNCMesh[] = {  {&_swigt__p_mfem__ParNCMesh, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__STable[] = {{&_swigt__p_mfem__STable, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Table[] = {  {&_swigt__p_mfem__STable, _p_mfem__STableTo_p_mfem__Table, 0, 0},  {&_swigt__p_mfem__Table, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__HypreParVector[] = {{&_swigt__p_mfem__HypreParVector, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__HypreParVector, _p_mfem__HypreParVectorTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -5666,8 +5694,10 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__DGTraceIntegrator,
   _swigc__p_mfem__FiniteElementSpace,
   _swigc__p_mfem__GridFunction,
+  _swigc__p_mfem__HypreParVector,
   _swigc__p_mfem__IntegrationRule,
   _swigc__p_mfem__L2_FECollection,
+  _swigc__p_mfem__LinearForm,
   _swigc__p_mfem__MatrixVectorProductCoefficient,
   _swigc__p_mfem__Mesh,
   _swigc__p_mfem__NCMesh,
@@ -5675,8 +5705,10 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__NCMesh__NCList,
   _swigc__p_mfem__OperatorHandle,
   _swigc__p_mfem__ParNCMesh,
+  _swigc__p_mfem__QuadratureFunction,
   _swigc__p_mfem__STable,
   _swigc__p_mfem__Table,
+  _swigc__p_mfem__Vector,
   _swigc__p_pri_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,

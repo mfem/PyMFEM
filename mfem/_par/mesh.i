@@ -82,7 +82,9 @@ CONST_DOUBLEPTR_IN(const double *)
 %import "../common/const_intptr_typemap.i"
 CONST_INTPTR_IN(const int *vi)
 
-// SwapNodes
+// SwapNodes (
+//   it return new *GridFunction and own_nodes, also if nodes is NULL
+//   it return None
 %typemap(in) mfem::GridFunction *&nodes (mfem::GridFunction *Pnodes){
 int res2 = 0;
 res2 = SWIG_ConvertPtr($input, (void **) &Pnodes, $descriptor(mfem::GridFunction *), 0);
@@ -90,7 +92,8 @@ if (!SWIG_IsOK(res2)){
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_SwapNodes" "', argument " "2"" of type '" "*mfem::GridFunction""'");      
  }
  $1 = &Pnodes;
- } 
+ }
+ 
 %typemap(in) int &own_nodes_ (int own_nodes){
   own_nodes = (int)PyInt_AsLong($input);
   $1 = &own_nodes;
@@ -98,12 +101,16 @@ if (!SWIG_IsOK(res2)){
 %typemap(argout) (mfem::GridFunction *&nodes){
   Py_XDECREF($result);
   $result = PyList_New(0);
-  %append_output(SWIG_NewPointerObj(SWIG_as_voidptr(*arg2), $descriptor(mfem::GridFunction *), 0 |  0 ));
- }   
+  if (*arg$argnum){
+     // return None if Nodes is NULL    
+     %append_output(Py_None);
+  } else {
+     %append_output(SWIG_NewPointerObj(SWIG_as_voidptr(*arg$argnum), $descriptor(mfem::GridFunction *), 0 |  0 ));
+  }
+ }
 %typemap(argout) int &own_nodes_{
   %append_output(PyLong_FromLong((long)*$1));  
 }
-
 
 // default number is -1, which conflict with error code of PyArray_PyIntAsInt...
 %typemap(typecheck) (int nonconforming = -1) {

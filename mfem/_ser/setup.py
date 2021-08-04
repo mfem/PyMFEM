@@ -33,12 +33,14 @@ modules= ["io_stream", "vtk", "sort_pairs", "datacollection",
           "mesh", "fespace",
           "fe_coll", "coefficient",
           "linearform", "vector", "lininteg", "complex_operator",
+          "complex_fem",
           "gridfunc", "hybridization", "bilinearform",
           "bilininteg", "intrules", "sparsemat", "densemat",
           "solvers", "estimators", "mesh_operators", "ode",
           "sparsesmoothers",
           "matrix", "operators", "ncmesh", "eltrans", "geom",
-          "nonlininteg", "nonlinearform", "restriction"]
+          "nonlininteg", "nonlinearform", "restriction",
+          "fespacehierarchy", "multigrid", "constraints"]
 
 sources = {name: [name + "_wrap.cxx"] for name in modules}
 proxy_names = {name: '_'+name for name in modules}

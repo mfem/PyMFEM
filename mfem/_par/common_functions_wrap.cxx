@@ -3850,6 +3850,14 @@ SWIGINTERN PyObject *_wrap___lshift__(PyObject *SWIGUNUSEDPARM(self), PyObject *
         }
         string_io1=obj0;
         stream1 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(obj0, "precision")){
+          PyObject *attr = PyObject_GetAttrString(obj0, "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream1->precision(prec);
+        
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj0, "utf-8", "~E~");	
@@ -4122,6 +4130,61 @@ SWIGINTERN PyObject *_wrap_Mult__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize
   {
     try {
       result = (mfem::SparseMatrix *)mfem::Mult((mfem::SparseMatrix const &)*arg1,(mfem::SparseMatrix const &)*arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_TransposeMult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = 0 ;
+  mfem::SparseMatrix *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  (char *)"B",  NULL 
+  };
+  mfem::SparseMatrix *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:TransposeMult", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__SparseMatrix,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TransposeMult" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TransposeMult" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__SparseMatrix,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "TransposeMult" "', argument " "2"" of type '" "mfem::SparseMatrix const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TransposeMult" "', argument " "2"" of type '" "mfem::SparseMatrix const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::SparseMatrix * >(argp2);
+  {
+    try {
+      result = (mfem::SparseMatrix *)mfem::TransposeMult((mfem::SparseMatrix const &)*arg1,(mfem::SparseMatrix const &)*arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -4526,6 +4589,72 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Mult_AtDA(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::SparseMatrix *arg3 = (mfem::SparseMatrix *) NULL ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  (char *)"D",  (char *)"OAtDA",  NULL 
+  };
+  mfem::SparseMatrix *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:Mult_AtDA", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__SparseMatrix,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mult_AtDA" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Mult_AtDA" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mult_AtDA" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Mult_AtDA" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  if (obj2) {
+    res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Mult_AtDA" "', argument " "3"" of type '" "mfem::SparseMatrix *""'"); 
+    }
+    arg3 = reinterpret_cast< mfem::SparseMatrix * >(argp3);
+  }
+  {
+    try {
+      result = (mfem::SparseMatrix *)mfem::Mult_AtDA((mfem::SparseMatrix const &)*arg1,(mfem::Vector const &)*arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Add__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = 0 ;
@@ -4735,6 +4864,274 @@ SWIGINTERN PyObject *_wrap_Add__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OuterProduct__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::DenseMatrix *arg1 = 0 ;
+  mfem::DenseMatrix *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  mfem::DenseMatrix *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OuterProduct" "', argument " "1"" of type '" "mfem::DenseMatrix const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OuterProduct" "', argument " "1"" of type '" "mfem::DenseMatrix const &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OuterProduct" "', argument " "2"" of type '" "mfem::DenseMatrix const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OuterProduct" "', argument " "2"" of type '" "mfem::DenseMatrix const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
+  {
+    try {
+      result = (mfem::DenseMatrix *)mfem::OuterProduct((mfem::DenseMatrix const &)*arg1,(mfem::DenseMatrix const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DenseMatrix, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OuterProduct__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::DenseMatrix *arg1 = 0 ;
+  mfem::SparseMatrix *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  mfem::SparseMatrix *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OuterProduct" "', argument " "1"" of type '" "mfem::DenseMatrix const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OuterProduct" "', argument " "1"" of type '" "mfem::DenseMatrix const &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__SparseMatrix,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OuterProduct" "', argument " "2"" of type '" "mfem::SparseMatrix const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OuterProduct" "', argument " "2"" of type '" "mfem::SparseMatrix const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::SparseMatrix * >(argp2);
+  {
+    try {
+      result = (mfem::SparseMatrix *)mfem::OuterProduct((mfem::DenseMatrix const &)*arg1,(mfem::SparseMatrix const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OuterProduct__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = 0 ;
+  mfem::DenseMatrix *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  mfem::SparseMatrix *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__SparseMatrix,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OuterProduct" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OuterProduct" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OuterProduct" "', argument " "2"" of type '" "mfem::DenseMatrix const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OuterProduct" "', argument " "2"" of type '" "mfem::DenseMatrix const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
+  {
+    try {
+      result = (mfem::SparseMatrix *)mfem::OuterProduct((mfem::SparseMatrix const &)*arg1,(mfem::DenseMatrix const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OuterProduct__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = 0 ;
+  mfem::SparseMatrix *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  mfem::SparseMatrix *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__SparseMatrix,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OuterProduct" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OuterProduct" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__SparseMatrix,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OuterProduct" "', argument " "2"" of type '" "mfem::SparseMatrix const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OuterProduct" "', argument " "2"" of type '" "mfem::SparseMatrix const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::SparseMatrix * >(argp2);
+  {
+    try {
+      result = (mfem::SparseMatrix *)mfem::OuterProduct((mfem::SparseMatrix const &)*arg1,(mfem::SparseMatrix const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OuterProduct(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "OuterProduct", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL | 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_OuterProduct__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL | 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__SparseMatrix, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_OuterProduct__SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__SparseMatrix, SWIG_POINTER_NO_NULL | 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_OuterProduct__SWIG_2(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__SparseMatrix, SWIG_POINTER_NO_NULL | 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__SparseMatrix, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_OuterProduct__SWIG_3(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'OuterProduct'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::OuterProduct(mfem::DenseMatrix const &,mfem::DenseMatrix const &)\n"
+    "    mfem::OuterProduct(mfem::DenseMatrix const &,mfem::SparseMatrix const &)\n"
+    "    mfem::OuterProduct(mfem::SparseMatrix const &,mfem::DenseMatrix const &)\n"
+    "    mfem::OuterProduct(mfem::SparseMatrix const &,mfem::SparseMatrix const &)\n");
+  return 0;
 }
 
 
@@ -5393,6 +5790,7 @@ static PyMethodDef SwigMethods[] = {
 		"Transpose(mfem::BlockMatrix const & A) -> mfem::BlockMatrix\n"
 		"Transpose(mfem::SparseMatrix const & A) -> mfem::SparseMatrix *\n"
 		""},
+	 { "TransposeMult", (PyCFunction)(void(*)(void))_wrap_TransposeMult, METH_VARARGS|METH_KEYWORDS, "TransposeMult(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B) -> mfem::SparseMatrix *"},
 	 { "Mult", _wrap_Mult, METH_VARARGS, "\n"
 		"Mult(mfem::Table const & A, mfem::Table const & B, mfem::Table & C)\n"
 		"Mult(mfem::Table const & A, mfem::Table const & B) -> mfem::Table\n"
@@ -5400,6 +5798,13 @@ static PyMethodDef SwigMethods[] = {
 		"Mult(mfem::DenseMatrix const & b, mfem::DenseMatrix const & c, mfem::DenseMatrix & a)\n"
 		"Mult(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B, mfem::SparseMatrix * OAB=None) -> mfem::SparseMatrix\n"
 		"Mult(mfem::SparseMatrix const & A, mfem::DenseMatrix & B) -> mfem::DenseMatrix *\n"
+		""},
+	 { "Mult_AtDA", (PyCFunction)(void(*)(void))_wrap_Mult_AtDA, METH_VARARGS|METH_KEYWORDS, "Mult_AtDA(mfem::SparseMatrix const & A, mfem::Vector const & D, mfem::SparseMatrix * OAtDA=None) -> mfem::SparseMatrix *"},
+	 { "OuterProduct", _wrap_OuterProduct, METH_VARARGS, "\n"
+		"OuterProduct(mfem::DenseMatrix const & A, mfem::DenseMatrix const & B) -> mfem::DenseMatrix\n"
+		"OuterProduct(mfem::DenseMatrix const & A, mfem::SparseMatrix const & B) -> mfem::SparseMatrix\n"
+		"OuterProduct(mfem::SparseMatrix const & A, mfem::DenseMatrix const & B) -> mfem::SparseMatrix\n"
+		"OuterProduct(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B) -> mfem::SparseMatrix *\n"
 		""},
 	 { "InnerProduct", _wrap_InnerProduct, METH_VARARGS, "\n"
 		"InnerProduct(mfem::Vector const & x, mfem::Vector const & y) -> double\n"
@@ -5439,6 +5844,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Transpose(mfem::BlockMatrix const & A) -> mfem::BlockMatrix\n"
 		"Transpose(mfem::SparseMatrix const & A) -> mfem::SparseMatrix *\n"
 		""},
+	 { "TransposeMult", (PyCFunction)(void(*)(void))_wrap_TransposeMult, METH_VARARGS|METH_KEYWORDS, "TransposeMult(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B) -> mfem::SparseMatrix *"},
 	 { "Mult", _wrap_Mult, METH_VARARGS, "\n"
 		"Mult(mfem::Table const & A, mfem::Table const & B, mfem::Table & C)\n"
 		"Mult(mfem::Table const & A, mfem::Table const & B) -> mfem::Table\n"
@@ -5446,6 +5852,13 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Mult(mfem::DenseMatrix const & b, mfem::DenseMatrix const & c, mfem::DenseMatrix & a)\n"
 		"Mult(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B, mfem::SparseMatrix * OAB=None) -> mfem::SparseMatrix\n"
 		"Mult(mfem::SparseMatrix const & A, mfem::DenseMatrix & B) -> mfem::DenseMatrix *\n"
+		""},
+	 { "Mult_AtDA", (PyCFunction)(void(*)(void))_wrap_Mult_AtDA, METH_VARARGS|METH_KEYWORDS, "Mult_AtDA(mfem::SparseMatrix const & A, mfem::Vector const & D, mfem::SparseMatrix * OAtDA=None) -> mfem::SparseMatrix *"},
+	 { "OuterProduct", _wrap_OuterProduct, METH_VARARGS, "\n"
+		"OuterProduct(mfem::DenseMatrix const & A, mfem::DenseMatrix const & B) -> mfem::DenseMatrix\n"
+		"OuterProduct(mfem::DenseMatrix const & A, mfem::SparseMatrix const & B) -> mfem::SparseMatrix\n"
+		"OuterProduct(mfem::SparseMatrix const & A, mfem::DenseMatrix const & B) -> mfem::SparseMatrix\n"
+		"OuterProduct(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B) -> mfem::SparseMatrix *\n"
 		""},
 	 { "InnerProduct", _wrap_InnerProduct, METH_VARARGS, "\n"
 		"InnerProduct(mfem::Vector const & x, mfem::Vector const & y) -> double\n"

@@ -36,6 +36,7 @@ modules= ["io_stream", "vtk", "sort_pairs", "datacollection",
           "fe", "mesh", "fespace",
           "fe_coll", "coefficient",
           "linearform", "vector", "lininteg", "complex_operator",
+          "complex_fem",          
           "gridfunc", "hybridization", "bilinearform",
           "bilininteg", "intrules", "sparsemat", "densemat",
           "solvers", "estimators", "mesh_operators", "ode",
@@ -45,7 +46,8 @@ modules= ["io_stream", "vtk", "sort_pairs", "datacollection",
           "pmesh", "pncmesh", "communication",
           "pfespace", "pgridfunc",
           "plinearform", "pbilinearform", "pnonlinearform",
-          "hypre", "restriction", "prestriction"]
+          "hypre", "restriction", "prestriction",
+          "fespacehierarchy", "multigrid", "constraints"]
 
 if add_pumi != '':
     modules.append("pumi")
