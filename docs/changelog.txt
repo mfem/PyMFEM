@@ -1,4 +1,7 @@
 	<<<  Change Log. >>>
+2021 08.04
+	* added ex24. This one shows partial assembly and numba coefficient
+	
 2021 08.03
         * added constraints wrapper
 	* added ex28 and a few other serial examples
