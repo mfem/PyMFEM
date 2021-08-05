@@ -275,7 +275,7 @@ class PyCoefficientT(PyCoefficientBase):
 	 
 class VectorPyCoefficient(VectorPyCoefficientBase):
    def __init__(self, dim):
-       self.sdim = dim
+       self.vdim = dim
        VectorPyCoefficientBase.__init__(self, dim, 0)
    def _EvalPy(self, x, V):
        v = self.EvalValue(x.GetDataArray())
@@ -290,7 +290,7 @@ class VectorPyCoefficient(VectorPyCoefficientBase):
   
 class VectorPyCoefficientT(VectorPyCoefficientBase):
    def __init__(self, dim):
-       self.sdim = dim  
+       self.vdim = dim  
        VectorPyCoefficientBase.__init__(self, dim, 1)
    def _EvalPy(self, x, V):
        v = self.EvalValue(x.GetDataArray(), 0)
@@ -305,7 +305,7 @@ class VectorPyCoefficientT(VectorPyCoefficientBase):
 
 class MatrixPyCoefficient(MatrixPyCoefficientBase):
    def __init__(self, dim):
-       self.sdim = dim
+       self.vdim = dim
        MatrixPyCoefficientBase.__init__(self, dim, 0)
    def _EvalPy(self, x, K):
        k = self.EvalValue(x.GetDataArray())
@@ -316,7 +316,7 @@ class MatrixPyCoefficient(MatrixPyCoefficientBase):
   
 class MatrixPyCoefficientT(MatrixPyCoefficientBase):
    def __init__(self, dim):
-       self.sdim = dim  
+       self.vdim = dim  
        MatrixPyCoefficientBase.__init__(self, dim, 1)
    def _EvalPyT(self, x, t, K):
        k = self.EvalValue(x.GetDataArray(), t)
