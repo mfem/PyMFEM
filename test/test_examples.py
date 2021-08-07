@@ -239,7 +239,9 @@ def find_mfem_examples(dir, serial=True, example='all'):
 
     if serial:
         names = [x for x in names if not x.endswith('p')]
-
+    else:
+        names = [x for x in names if x.endswith('p')]
+        
     if example != 'all':
         names = [n for n in names if n == example]
     names = [n for n in names if not n in skip_test]
