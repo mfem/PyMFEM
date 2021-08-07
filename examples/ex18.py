@@ -176,7 +176,7 @@ if (cfl > 0):
 
 # Integrate in time.
 done = False;
-ti = 1            
+ti = 1   
 while not done:
     dt_real = min(dt, t_final - t);
     t, dt_real = ode_solver.Step(sol, t, dt_real);
@@ -185,7 +185,7 @@ while not done:
     ti = ti+1
     done = (t >= t_final - 1e-8*dt)
     if (done or ti % vis_steps == 0):
-        print("time step: " + str(ti) + ", time: " + str(t))
+        print("time step: " + str(ti) + ", time: " + "{:g}".format(t))
         if (visualization):
             sout << "solution\n" << mesh << mom << flush;
 

@@ -135,10 +135,10 @@ to find more details of the MFEM library.
        Function coefficient written in Python can be JITed using Numba. To use
        this feature, one can either use mfem.jit.* decorators or instantiate
        NumberFunction (or Vector/MatrixNumbaFunction) and call GenerateCoefficient
-       in most case, the prier one is convenient. 
+       in most case, the first one is convenient. 
 
        -Example-
-       (Using jit decorator)
+       (Using jit decorator -- see more example in ex1 and ex24)
        >>>  @mfem.jit.scalar()
             def c12(ptx):
                 return s_func0(ptx[0], ptx[1],  ptx[2])
@@ -200,6 +200,13 @@ to find more details of the MFEM library.
 
           print('result: ', o.getvalue())
 
+      Those methods which take a pointer to IntegrationRule array (
+      const IntegrationRule *irs[]) accept a list of IntegrationRule
+      ex)
+         coeff = mfem.ConstantCoefficient(1.0)
+         irs = [mfem.IntRules.Get(i, order)
+                for i in range(mfem.Geometry.NumGeom)]
+         err = x.ComputeL2Error(coeff, irs)
 	     
   4-4) mfem::Mesh
          Simple mesh generator is wrapped as follows
