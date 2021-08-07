@@ -50,3 +50,11 @@ testrelease_binary uses test_release branch and push a package to test PyPI.
 this action triggers when a new tag whose name stats with test_ is
 created.
 
+### debugging
+gdb python
+gdb) run ../examples/ex1p
+gdb) bt    <--- backtrace
+
+### profiling
+python -m cProfile -o output ../example/ex18.py
+

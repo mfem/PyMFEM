@@ -222,7 +222,7 @@ def run(ref_levels=2,
         pd.SetCycle(0)
         pd.SetTime(0.0)
         pd.Save()
-        
+
     if visualization:
         sol_sock = mfem.socketstream("localhost", 19916)
         sol_sock.precision(8)
@@ -238,7 +238,7 @@ def run(ref_levels=2,
             break
         t, dt = ode_solver.Step(u, t, dt)
         ti = ti + 1
-        
+
         if ti % vis_steps == 0:
             print("time step: " + str(ti) + ", time: " + str(np.round(t, 3)))
             if paraview:
@@ -247,7 +247,7 @@ def run(ref_levels=2,
                 pd.Save()
             if visualization:
                 sol_sock.send_solution(mesh,  u)
-                
+
     u.Save('ex9-final.gf', 8)
 
 

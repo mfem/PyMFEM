@@ -25,14 +25,14 @@ import mfem.ser as mfem
 
 parser = ArgParser(description='Ex8')
 parser.add_argument('-m', '--mesh',
-                    default = '../data/star.mesh', 
-                    action = 'store', type = str,
+                    default='../data/star.mesh',
+                    action='store', type=str,
                     help='Mesh file to use.')
 parser.add_argument('-o', '--order',
-                    action = 'store', default = 1, type=int,
-      help = "Finite element order (polynomial degree)");
+                    action='store', default=1, type=int,
+                    help="Finite element order (polynomial degree)")
 parser.add_argument('-vis', '--visualization',
-                    action = 'store_true', default = True, 
+                    action='store_true', default=True,
                     help='Enable GLVis visualization')
 
 args = parser.parse_args()
@@ -44,7 +44,7 @@ visualization = args.visualization
 #      the same code.
 path = dirname((__file__))
 meshfile = expanduser(join(path, '..', 'data', args.mesh))
-mesh = mfem.Mesh(meshfile, 1,1)
+mesh = mfem.Mesh(meshfile, 1, 1)
 
 dim = mesh.Dimension()
 
@@ -54,7 +54,7 @@ dim = mesh.Dimension()
 #      elements.
 ref_levels = int(np.floor(np.log(10000./mesh.GetNE())/np.log(2.)/dim))
 for x in range(ref_levels):
-   mesh.UniformRefinement();
+    mesh.UniformRefinement()
 
 #  4. Define the trial, interfacial (trace) and test DPG spaces:
 #     - The trial space, x0_space, contains the non-interfacial unknowns and
@@ -64,21 +64,21 @@ for x in range(ref_levels):
 #     - The test space, test_space, is an enriched space where the enrichment
 #       degree may depend on the spatial dimension of the domain, the type of
 #       the mesh and the trial space order.
-   
-trial_order = order
-trace_order = order - 1;
-test_order  = order  # reduced order, full order is (order + dim - 1)
 
-if (dim == 2 and  (order%2 == 0 or (mesh.MeshGenerator() & 2 and order > 1))):
+trial_order = order
+trace_order = order - 1
+test_order = order  # reduced order, full order is (order + dim - 1)
+
+if (dim == 2 and (order % 2 == 0 or (mesh.MeshGenerator() & 2 and order > 1))):
     test_order = test_order + 1
 if (test_order < trial_order):
     print("Warning, test space not enriched enough to handle primal trial space")
 
-x0_fec   = mfem.H1_FECollection(trial_order, dim)
+x0_fec = mfem.H1_FECollection(trial_order, dim)
 xhat_fec = mfem.RT_Trace_FECollection(trace_order, dim)
 test_fec = mfem.L2_FECollection(test_order, dim)
-    
-x0_space   = mfem.FiniteElementSpace(mesh, x0_fec)
+
+x0_space = mfem.FiniteElementSpace(mesh, x0_fec)
 xhat_space = mfem.FiniteElementSpace(mesh, xhat_fec)
 test_space = mfem.FiniteElementSpace(mesh, test_fec)
 
@@ -86,7 +86,9 @@ test_space = mfem.FiniteElementSpace(mesh, test_fec)
 #    variables. Also allocate two BlockVector objects to store the solution
 #    and rhs.
 
-x0_var = 0;  xhat_var = 1;  NVAR = 2
+x0_var = 0
+xhat_var = 1
+NVAR = 2
 
 s0 = x0_space.GetVSize()
 s1 = xhat_space.GetVSize()
@@ -95,7 +97,7 @@ s_test = test_space.GetVSize()
 offsets = mfem.intArray([0, s0, s0+s1])
 offsets_test = mfem.intArray([0, s_test])
 
-print('\n'.join(["nNumber of Unknowns", 
+print('\n'.join(["nNumber of Unknowns",
                  " Trial space,     X0   : " + str(s0) +
                  " (order " + str(trial_order) + ")",
                  " Interface space, Xhat : " + str(s1) +
@@ -110,9 +112,9 @@ x.Assign(0.0)
 #    the FEM linear system, which in this case is (f,phi_i) where f=1.0 and
 #    phi_i are the basis functions in the test finite element fespace.
 one = mfem.ConstantCoefficient(1.0)
-F = mfem.LinearForm(test_space);
+F = mfem.LinearForm(test_space)
 F.AddDomainIntegrator(mfem.DomainLFIntegrator(one))
-F.Assemble();
+F.Assemble()
 
 # 7. Set up the mixed bilinear form for the primal trial unknowns, B0,
 #    the mixed bilinear form for the interfacial unknowns, Bhat,
@@ -121,13 +123,13 @@ F.Assemble();
 ess_bdr = mfem.intArray(mesh.bdr_attributes.Max())
 ess_bdr.Assign(1)
 
-B0 = mfem.MixedBilinearForm(x0_space,test_space);
+B0 = mfem.MixedBilinearForm(x0_space, test_space)
 B0.AddDomainIntegrator(mfem.DiffusionIntegrator(one))
 B0.Assemble()
 B0.EliminateTrialDofs(ess_bdr, x.GetBlock(x0_var), F)
 B0.Finalize()
 
-Bhat = mfem.MixedBilinearForm(xhat_space,test_space)
+Bhat = mfem.MixedBilinearForm(xhat_space, test_space)
 Bhat.AddTraceFaceIntegrator(mfem.TraceJumpIntegrator())
 Bhat.Assemble()
 Bhat.Finalize()
@@ -147,10 +149,10 @@ S0.Assemble()
 S0.EliminateEssentialBC(ess_bdr)
 S0.Finalize()
 
-matB0   = B0.SpMat()
+matB0 = B0.SpMat()
 matBhat = Bhat.SpMat()
 matSinv = Sinv.SpMat()
-matS0   = S0.SpMat()
+matS0 = S0.SpMat()
 
 # 8. Set up the 1x2 block Least Squares DPG operator, B = [B0  Bhat],
 #    the normal equation operator, A = B^t Sinv B, and
@@ -161,7 +163,7 @@ B.SetBlock(0, 1, matBhat)
 A = mfem.RAPOperator(B, matSinv, B)
 
 SinvF = mfem.Vector(s_test)
-matSinv.Mult(F,SinvF)
+matSinv.Mult(F, SinvF)
 B.MultTranspose(SinvF, b)
 
 
@@ -175,7 +177,7 @@ B.MultTranspose(SinvF, b)
 # RAP_R replaces RAP, since RAP has two definition one accept
 # pointer and the other accept reference. From Python, two
 # can not be distingished..
-Shat = mfem.RAP_R(matBhat, matSinv, matBhat);
+Shat = mfem.RAP_R(matBhat, matSinv, matBhat)
 prec_rtol = 1e-3
 prec_maxit = 200
 S0inv = mfem.CGSolver()
@@ -211,10 +213,10 @@ res = sqrt(matSinv.InnerProduct(LSres, LSres))
 print("|| B0*x0 + Bhat*xhat - F ||_{S^-1} = " + str(res))
 
 x0 = mfem.GridFunction()
-x0.MakeRef(x0_space, x.GetBlock(x0_var), 0);
+x0.MakeRef(x0_space, x.GetBlock(x0_var), 0)
 
 #  11. Save the refined mesh and the solution. This output can be viewed
-#     later using GLVis: "glvis -m refined.mesh -g sol.gf".      
+#     later using GLVis: "glvis -m refined.mesh -g sol.gf".
 mesh.Print('refined.mesh', 8)
 x0.Save('sol.gf', 8)
 

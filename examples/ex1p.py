@@ -27,7 +27,7 @@ def run(order=1, static_cond=False,
 
     device = mfem.Device(device)
     device.Print()
-    
+
     mesh = mfem.Mesh(meshfile, 1, 1)
     dim = mesh.Dimension()
 

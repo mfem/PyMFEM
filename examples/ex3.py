@@ -10,6 +10,7 @@ from os.path import expanduser, join
 import numpy as np
 from numpy import sin, array
 
+
 def run(order=1,
         static_cond=False,
         freq=1,
@@ -18,12 +19,12 @@ def run(order=1,
         device='cpu',
         numba=False,
         pa=False):
-   
+
     kappa = np.pi*freq
-    mesh = mfem.Mesh(meshfile, 1,1)
+    mesh = mfem.Mesh(meshfile, 1, 1)
 
     dim = mesh.Dimension()
-    sdim= mesh.SpaceDimension()
+    sdim = mesh.SpaceDimension()
 
     if numba:
         @mfem.jit.vector()
@@ -31,6 +32,7 @@ def run(order=1,
             out[0] = sin(kappa*x[1])
             out[1] = sin(kappa*x[2])
             out[2] = sin(kappa*x[0])
+
         @mfem.jit.vector()
         def f_exact(x, out):
             out[0] = (1 + kappa**2)*sin(kappa * x[1])
@@ -40,15 +42,18 @@ def run(order=1,
         class cE_exact(mfem.VectorPyCoefficient):
             def __init__(self):
                 mfem.VectorPyCoefficient.__init__(self, sdim)
+
             def EvalValue(self, x):
-               return (sin(kappa * x[1]),
-                       sin(kappa * x[2]),
-                       sin(kappa * x[0]))
+                return (sin(kappa * x[1]),
+                        sin(kappa * x[2]),
+                        sin(kappa * x[0]))
         E_exact = cE_exact()
+
         class cf_exact(mfem.VectorPyCoefficient):
             def __init__(self):
                 mfem.VectorPyCoefficient.__init__(self, sdim)
-            def EvalValue(self, x):   
+
+            def EvalValue(self, x):
                 return ((1 + kappa**2)*sin(kappa * x[1]),
                         (1 + kappa**2)*sin(kappa * x[2]),
                         (1 + kappa**2)*sin(kappa * x[0]))
@@ -56,7 +61,7 @@ def run(order=1,
 
     device = mfem.Device(device)
     device.Print()
-        
+
     #   3. Refine the mesh to increase the resolution. In this example we do
     #      'ref_levels' of uniform refinement. We choose 'ref_levels' to be the
     #      largest number that gives a final mesh with no more than 50,000
@@ -64,8 +69,8 @@ def run(order=1,
 
     ref_levels = int(np.floor(np.log(50000./mesh.GetNE())/np.log(2.)/dim))
     for x in range(ref_levels):
-       mesh.UniformRefinement();
-    mesh.ReorientTetMesh();
+        mesh.UniformRefinement()
+    mesh.ReorientTetMesh()
 
     #  4. Define a finite element space on the mesh. Here we use the Nedelec
     #     finite elements of the specified order.
@@ -80,21 +85,21 @@ def run(order=1,
     #    the boundary attributes from the mesh as essential (Dirichlet) and
     #    converting them to a list of true dofs.
 
-    ess_tdof_list = intArray();
+    ess_tdof_list = intArray()
     if mesh.bdr_attributes.Size():
         ess_bdr = intArray(mesh.bdr_attributes.Max())
         ess_bdr = intArray([1]*mesh.bdr_attributes.Max())
-        fespace.GetEssentialTrueDofs(ess_bdr, ess_tdof_list);
+        fespace.GetEssentialTrueDofs(ess_bdr, ess_tdof_list)
 
     # 6. Set up the linear form b(.) which corresponds to the right-hand side
     #    of the FEM linear system, which in this case is (f,phi_i) where f is
     #    given by the function f_exact and phi_i are the basis functions in the
     #    finite element fespace.
 
-    b = mfem.LinearForm(fespace);
+    b = mfem.LinearForm(fespace)
     dd = mfem.VectorFEDomainLFIntegrator(f_exact)
     b.AddDomainIntegrator(dd)
-    b.Assemble();
+    b.Assemble()
 
     # 7. Define the solution vector x as a finite element grid function
     #    corresponding to fespace. Initialize x by projecting the exact
@@ -110,41 +115,42 @@ def run(order=1,
     #       curl muinv curl + sigma I, by adding the curl-curl and the mass domain
     #       integrators.
 
-    muinv = mfem.ConstantCoefficient(1.0);
-    sigma = mfem.ConstantCoefficient(1.0);
-    a = mfem.BilinearForm(fespace);
-    a.AddDomainIntegrator(mfem.CurlCurlIntegrator(muinv));
-    a.AddDomainIntegrator(mfem.VectorFEMassIntegrator(sigma));
+    muinv = mfem.ConstantCoefficient(1.0)
+    sigma = mfem.ConstantCoefficient(1.0)
+    a = mfem.BilinearForm(fespace)
+    a.AddDomainIntegrator(mfem.CurlCurlIntegrator(muinv))
+    a.AddDomainIntegrator(mfem.VectorFEMassIntegrator(sigma))
 
     # 9. Assemble the bilinear form and the corresponding linear system,
     #       applying any necessary transformations such as: eliminating boundary
     #       conditions, applying conforming constraints for non-conforming AMR,
     #       static condensation, etc.
 
-
-    if (static_cond):  a.EnableStaticCondensation()
-    a.Assemble();
+    if (static_cond):
+        a.EnableStaticCondensation()
+    a.Assemble()
 
     A = mfem.SparseMatrix()
     B = mfem.Vector()
     X = mfem.Vector()
-    a.FormLinearSystem(ess_tdof_list, x, b, A, X, B);
-    ## Here, original version calls hegith, which is not
-    ## defined in the header...!?
-    print("Size of linear system: " + str(A.Size())) 
+    a.FormLinearSystem(ess_tdof_list, x, b, A, X, B)
+    # Here, original version calls hegith, which is not
+    # defined in the header...!?
+    print("Size of linear system: " + str(A.Size()))
     import sys
     sys.stdout.flush()
-    # 10. Solve 
+    # 10. Solve
     M = mfem.GSSmoother(A)
-    mfem.PCG(A, M, B, X, 1, 500, 1e-12, 0.0);
+    mfem.PCG(A, M, B, X, 1, 500, 1e-12, 0.0)
     sys.stdout.flush()
 
     # 11. Recover the solution as a finite element grid function.
-    a.RecoverFEMSolution(X, b, x);
+    a.RecoverFEMSolution(X, b, x)
 
     # 12. Compute and print the L^2 norm of the error.
     import sys
-    sys.stdout.write("|| E_h - E ||_{L^2} = " + str(x.ComputeL2Error(E_exact))+"\n")
+    sys.stdout.write("|| E_h - E ||_{L^2} = " +
+                     str(x.ComputeL2Error(E_exact))+"\n")
 
     mesh.Print('refined.mesh', 8)
     x.Save('sol.gf', 8)
@@ -152,8 +158,8 @@ def run(order=1,
 
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
-    
-    parser = ArgParser(description='Ex1 (Laplace Problem)')
+
+    parser = ArgParser(description='Ex3 (Definite Maxwell Problem)')
     parser.add_argument('-m', '--mesh',
                         default="beam-tet.mesh",
                         action='store', type=str,
@@ -188,7 +194,8 @@ if __name__ == "__main__":
     order = args.order
     static_cond = args.static_condensation
 
-    meshfile = expanduser(join(os.path.dirname(__file__), '..', 'data', args.mesh))
+    meshfile = expanduser(
+        join(os.path.dirname(__file__), '..', 'data', args.mesh))
     visualization = args.visualization
     device = args.device
     pa = args.partial_assembly
@@ -201,7 +208,7 @@ if __name__ == "__main__":
         except:
             print("NUMBA is not available... using regular function coefficients")
             numba = False
-        
+
     run(freq=freq,
         order=order,
         static_cond=static_cond,
@@ -210,5 +217,3 @@ if __name__ == "__main__":
         device=device,
         pa=pa,
         numba=numba)
-
-

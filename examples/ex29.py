@@ -277,6 +277,7 @@ def run(order=3,
         flux_sock << "window_title 'Flux'\n"
         flux_sock.flush()
 
+
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
 

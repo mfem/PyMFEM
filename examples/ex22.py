@@ -51,20 +51,20 @@ def run(mesh_file="",
     #    'ref_levels' of uniform refinement where the user specifies
     #    the number of levels with the '-r' option.
     for i in range(ref_levels):
-       mesh.UniformRefinement()
-       
+        mesh.UniformRefinement()
+
     # 5. Define a finite element space on the mesh. Here we use continuous
     #    Lagrange, Nedelec, or Raviart-Thomas finite elements of the specified
     #    order.
-    if (dim == 1 and prob != 0 ):
-       print("Switching to problem type 0, H1 basis functions, for 1 dimensional mesh.")
-       prob = 0
+    if (dim == 1 and prob != 0):
+        print("Switching to problem type 0, H1 basis functions, for 1 dimensional mesh.")
+        prob = 0
 
     if prob == 0:
         fec = mfem.H1_FECollection(order, dim)
-    elif prob == 1:        
+    elif prob == 1:
         fec = mfem.ND_FECollection(order, dim)
-    elif prob == 2:                
+    elif prob == 2:
         fec = mfem.RT_FECollection(order-1, dim)
     else:
         assert False, "unknown problem"
@@ -77,11 +77,11 @@ def run(mesh_file="",
     #    of mesh and the problem type.
     ess_tdof_list = mfem.intArray()
     ess_bdr = mfem.intArray()
-          
+
     if mesh.bdr_attributes.Size():
-       ess_bdr.SetSize(mesh.bdr_attributes.Max())
-       ess_bdr.Assign(1)
-       fespace.GetEssentialTrueDofs(ess_bdr, ess_tdof_list)
+        ess_bdr.SetSize(mesh.bdr_attributes.Max())
+        ess_bdr.Assign(1)
+        fespace.GetEssentialTrueDofs(ess_bdr, ess_tdof_list)
 
     # 7. Set up the linear form b(.) which corresponds to the right-hand side of
     #    the FEM linear system.
@@ -109,28 +109,33 @@ def run(mesh_file="",
     else:
         def u0_exact(x):
             alpha = (epsilon * omega - 1j * sigma)
-            kappa = sqrt(mu * omega* alpha)
+            kappa = sqrt(mu * omega * alpha)
             return exp(-1j * kappa * x[dim - 1])
-        
+
         class cu0_real_exact(mfem.PyCoefficient):
             def EvalValue(self, x):
-               return u0_exact(x).real
+                return u0_exact(x).real
+
         class cu0_imag_exact(mfem.PyCoefficient):
             def EvalValue(self, x):
-               return u0_exact(x).imag
+                return u0_exact(x).imag
         u0_real_exact = cu0_real_exact()
         u0_imag_exact = cu0_imag_exact()
 
         sdim = mesh.SpaceDimension()
+
         class cu1_real_exact(mfem.VectorPyCoefficient):
             def __init__(self):
                 mfem.VectorPyCoefficient.__init__(self, sdim)
-            def EvalValue(self, x):   
+
+            def EvalValue(self, x):
                 return (u0_exact(x).real, 0, 0)
+
         class cu1_imag_exact(mfem.VectorPyCoefficient):
             def __init__(self):
                 mfem.VectorPyCoefficient.__init__(self, sdim)
-            def EvalValue(self, x):   
+
+            def EvalValue(self, x):
                 return (u0_exact(x).imag, 0, 0)
         u1_real_exact = cu1_real_exact()
         u1_imag_exact = cu1_imag_exact()
@@ -138,21 +143,24 @@ def run(mesh_file="",
         class cu2_real_exact(mfem.VectorPyCoefficient):
             def __init__(self):
                 mfem.VectorPyCoefficient.__init__(self, sdim)
+
             def EvalValue(self, x):
                 ret = x*0
                 ret[dim-1] = u0_exact(x).real
                 return ret
+
         class cu2_imag_exact(mfem.VectorPyCoefficient):
             def __init__(self):
                 mfem.VectorPyCoefficient.__init__(self, sdim)
-            def EvalValue(self, x):   
+
+            def EvalValue(self, x):
                 ret = x*0
                 ret[dim-1] = u0_exact(x).imag
                 return ret
 
         u2_real_exact = cu2_real_exact()
         u2_imag_exact = cu2_imag_exact()
-        
+
     u = mfem.ComplexGridFunction(fespace)
     if exact_sol:
         u_exact = mfem.ComplexGridFunction(fespace)
@@ -163,7 +171,7 @@ def run(mesh_file="",
     u1_i = u1_imag_exact
     u2_r = u2_real_exact
     u2_i = u2_imag_exact
-    
+
     zeroCoef = mfem.ConstantCoefficient(0.0)
     oneCoef = mfem.ConstantCoefficient(1.0)
 
@@ -171,9 +179,9 @@ def run(mesh_file="",
     zeroVec.Assign(0.0)
     oneVec = mfem.Vector(dim)
     oneVec.Assign(0.0)
-    oneVec[dim-1 if prob==2 else 0] = 1.0
+    oneVec[dim-1 if prob == 2 else 0] = 1.0
     zeroVecCoeff = mfem.VectorConstantCoefficient(zeroVec)
-    oneVecCoeff = mfem.VectorConstantCoefficient(oneVec)    
+    oneVecCoeff = mfem.VectorConstantCoefficient(oneVec)
 
     if prob == 0:
         if exact_sol:
@@ -193,15 +201,17 @@ def run(mesh_file="",
             u_exact.ProjectCoefficient(u2_r, u2_i)
         else:
             u.ProjectBdrCoefficientNormal(oneVecCoef, zeroVecCoef, ess_bdr)
-            
+
     if (visualization and exact_sol):
         sol_sock_r = mfem.socketstream("localhost", 19916)
         sol_sock_r.precision(8)
-        sol_sock_r << "solution\n" << mesh << u_exact.real() << "window_title 'Exact: Real Part'"
+        sol_sock_r << "solution\n" << mesh << u_exact.real(
+        ) << "window_title 'Exact: Real Part'"
         sol_sock_r.flush()
         sol_sock_i = mfem.socketstream("localhost", 19916)
         sol_sock_i.precision(8)
-        sol_sock_i << "solution\n" << mesh << u_exact.imag() << "window_title 'Exact: Imag Part'"
+        sol_sock_i << "solution\n" << mesh << u_exact.imag(
+        ) << "window_title 'Exact: Imag Part'"
         sol_sock_i.flush()
 
     # 9. Set up the sesquilinear form a(.,.) on the finite element space
@@ -263,7 +273,7 @@ def run(mesh_file="",
         pcOp.AddDomainIntegrator(mfem.DiffusionIntegrator(stiffnessCoef))
         pcOp.AddDomainIntegrator(mfem.MassIntegrator(massCoef))
         pcOp.AddDomainIntegrator(mfem.MassIntegrator(lossCoef))
-    elif prob ==1:
+    elif prob == 1:
         pcOp.AddDomainIntegrator(mfem.CurlCurlIntegrator(stiffnessCoef))
         pcOp.AddDomainIntegrator(mfem.VectorFEMassIntegrator(negMassCoef))
         pcOp.AddDomainIntegrator(mfem.VectorFEMassIntegrator(lossCoef))
@@ -275,8 +285,8 @@ def run(mesh_file="",
     # 10. Assemble the form and the corresponding linear system, applying any
     #     necessary transformations such as: assembly, eliminating boundary
     #     conditions, conforming constraints for non-conforming AMR, etc.
-    a.Assemble();
-    pcOp.Assemble();
+    a.Assemble()
+    pcOp.Assemble()
 
     A = mfem.OperatorHandle()
     B = mfem.Vector()
@@ -289,7 +299,7 @@ def run(mesh_file="",
     #     preconditioner based on the appropriate sparse smoother.
     blockOffsets = mfem.intArray()
     blockOffsets.SetSize(3)
-    blockOffsets[0] = 0;
+    blockOffsets[0] = 0
     blockOffsets[1] = A.Height() // 2
     blockOffsets[2] = A.Height() // 2
     blockOffsets.PartialSum()
@@ -308,15 +318,15 @@ def run(mesh_file="",
         elif prob == 1:
             pc_r = mfem.GSSmoother(mfem.OperatorHandle2SparseMatrix(PCOp))
         elif prob == 2:
-            pc_r = mfem.DSmoother(mfem.OperatorHandle2SparseMatrix(PCOp))            
+            pc_r = mfem.DSmoother(mfem.OperatorHandle2SparseMatrix(PCOp))
 
     s = 1.0 if prob != 1 else -1.0
-      
+
     pc_i = mfem.ScaledOperator(pc_r,
-                                s if conv == mfem.ComplexOperator.HERMITIAN else -s)
+                               s if conv == mfem.ComplexOperator.HERMITIAN else -s)
     BDP.SetDiagonalBlock(0, pc_r)
     BDP.SetDiagonalBlock(1, pc_i)
-    #BDP.owns_blocks = 1  #this is not necessary since Python owns smoothers
+    # BDP.owns_blocks = 1  #this is not necessary since Python owns smoothers
 
     gmres = mfem.GMRESSolver()
     gmres.SetPreconditioner(BDP)
@@ -325,7 +335,7 @@ def run(mesh_file="",
     gmres.SetMaxIter(1000)
     gmres.SetPrintLevel(1)
     gmres.Mult(B, U)
-    
+
     # 12. Recover the solution as a finite element grid function and compute the
     #     errors if the exact solution is known.
     a.RecoverFEMSolution(U, b, u)
@@ -358,25 +368,29 @@ def run(mesh_file="",
     if visualization:
         sol_sock_r = mfem.socketstream("localhost", 19916)
         sol_sock_r.precision(8)
-        sol_sock_r << "solution\n" << mesh << u.real() << "window_title 'Solution: Real Part'"
-        sol_sock_i = mfem.socketstream("localhost", 19916)        
+        sol_sock_r << "solution\n" << mesh << u.real(
+        ) << "window_title 'Solution: Real Part'"
+        sol_sock_i = mfem.socketstream("localhost", 19916)
         sol_sock_i.precision(8)
-        sol_sock_i << "solution\n" << mesh << u.imag() << "window_title 'Solution: Imag Part'"
+        sol_sock_i << "solution\n" << mesh << u.imag(
+        ) << "window_title 'Solution: Imag Part'"
 
     if visualization and exact_sol:
-        u_exact -= u;
+        u_exact -= u
         sol_sock_r = mfem.socketstream("localhost", 19916)
         sol_sock_r.precision(8)
-        sol_sock_r << "solution\n" << mesh << u_exact.real() << "window_title 'Error: Real Part'"
-        sol_sock_i = mfem.socketstream("localhost", 19916)        
+        sol_sock_r << "solution\n" << mesh << u_exact.real(
+        ) << "window_title 'Error: Real Part'"
+        sol_sock_i = mfem.socketstream("localhost", 19916)
         sol_sock_i.precision(8)
-        sol_sock_i << "solution\n" << mesh << u_exact.imag() << "window_title 'Error: Imag Part'"
+        sol_sock_i << "solution\n" << mesh << u_exact.imag(
+        ) << "window_title 'Error: Imag Part'"
 
     if visualization:
         u_t = mfem.GridFunction(fespace)
         u_t.Assign(u.real())
         sol_sock = mfem.socketstream("localhost", 19916)
-        sol_sock.precision(8)        
+        sol_sock.precision(8)
         sol_sock << "solution\n" << mesh << u_t
         sol_sock << "window_title 'Harmonic Solution (t = 0.0 T)'"
         sol_sock << "pause\n"
@@ -385,18 +399,20 @@ def run(mesh_file="",
         print("GLVis visualization paused. Press space (in the GLVis window) to resume it.")
         num_frames = 32
         i = 0
-        
+
         # Let's plot one wave cycle...
         for i in range(32):
             t = (i % num_frames) / num_frames
-            oss  = "Harmonic Solution (t = " + str(t) + " T)"
-            dd = (cos( 2.0 * pi * t)*u.real().GetDataArray()+
-                  sin( 2.0 * pi * t)*u.imag().GetDataArray())
-            u_t.Assign(mfem.Vector(dd))  # we can not load numpy directly...(sorry)
-            sol_sock << "solution\n" << mesh << u_t            
+            oss = "Harmonic Solution (t = " + str(t) + " T)"
+            dd = (cos(2.0 * pi * t)*u.real().GetDataArray() +
+                  sin(2.0 * pi * t)*u.imag().GetDataArray())
+            # we can not load numpy directly...(sorry)
+            u_t.Assign(mfem.Vector(dd))
+            sol_sock << "solution\n" << mesh << u_t
             sol_sock << "window_title '" << oss << "'"
             sol_sock.flush()
-   
+
+
 def check_for_inline_mesh(mesh_file):
     return os.path.basename(mesh_file)[:7] == "inline-"
 
@@ -467,7 +483,7 @@ if __name__ == "__main__":
         ref_levels=args.refine,
         prob=args.problem_type,
         visualization=args.visualization,
-        #visualization=False,
+        # visualization=False,
         harm_conv=args.no_hermitian,
         a_coef=args.stiffness_coef,
         epsilon=args.permittivity,

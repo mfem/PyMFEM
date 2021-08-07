@@ -19,40 +19,39 @@
 '''
 import sys
 from mfem.common.arg_parser import ArgParser
-from os.path import expanduser, join
+from os.path import expanduser, join, dirname
 import numpy as np
 
-from mfem import path
 import mfem.par as mfem
 from mpi4py import MPI
 
 num_procs = MPI.COMM_WORLD.size
-myid      = MPI.COMM_WORLD.rank
+myid = MPI.COMM_WORLD.rank
 
 parser = ArgParser(description='Ex14p')
 parser.add_argument('-m', '--mesh',
-                    default = 'star.mesh', 
-                    action = 'store', type = str,
+                    default='star.mesh',
+                    action='store', type=str,
                     help='Mesh file to use.')
 parser.add_argument('-rs', '--refine-serial',
-                    action = 'store', default = -1, type=int,
-       help = "Number of times to refine the mesh uniformly before parallel")
+                    action='store', default=-1, type=int,
+                    help="Number of times to refine the mesh uniformly before parallel")
 parser.add_argument('-rp', '--refine-parallel',
-                    action = 'store', default = 2, type=int,
-       help = "Number of times to refine the mesh uniformly after parallel")
+                    action='store', default=2, type=int,
+                    help="Number of times to refine the mesh uniformly after parallel")
 parser.add_argument('-o', '--order',
-                    action = 'store', default = 1, type=int,
-                    help = "Finite element order (polynomial degree)");
+                    action='store', default=1, type=int,
+                    help="Finite element order (polynomial degree)")
 parser.add_argument('-s', '--sigma',
-                    action = 'store', default = -1.0, type=float,
-       help = '\n'.join(["One of the two DG penalty parameters, typically +1/-1."
-                         " See the documentation of class DGDiffusionIntegrator."]))
+                    action='store', default=-1.0, type=float,
+                    help='\n'.join(["One of the two DG penalty parameters, typically +1/-1."
+                                    " See the documentation of class DGDiffusionIntegrator."]))
 parser.add_argument('-k', '--kappa',
-                    action = 'store', default = -1.0, type=float,
-       help = '\n'.join(["One of the two DG penalty parameters, should be positve."
-                          " Negative values are replaced with (order+1)^2."]))
+                    action='store', default=-1.0, type=float,
+                    help='\n'.join(["One of the two DG penalty parameters, should be positve."
+                                    " Negative values are replaced with (order+1)^2."]))
 parser.add_argument('-vis', '--visualization',
-                    action = 'store_true',
+                    action='store_true',
                     help='Enable GLVis visualization')
 args = parser.parse_args()
 ser_ref_levels = args.refine_serial
@@ -61,16 +60,17 @@ order = args.order
 sigma = args.sigma
 kappa = args.kappa
 visualization = args.visualization
-if (kappa < 0): 
-   kappa = (order+1.)*(order+1.)
-   args.kappa = kappa
-if (myid == 0): parser.print_options(args)
+if (kappa < 0):
+    kappa = (order+1.)*(order+1.)
+    args.kappa = kappa
+if (myid == 0):
+    parser.print_options(args)
 
 # 3. Read the (serial) mesh from the given mesh file on all processors. We
 #    can handle triangular, quadrilateral, tetrahedral and hexahedral meshes
 #    with the same code. NURBS meshes are projected to second order meshes.
-meshfile = expanduser(join(path, 'data', args.mesh))
-mesh = mfem.Mesh(meshfile, 1,1)
+meshfile = expanduser(join(dirname(__file__), '..', 'data', args.mesh))
+mesh = mfem.Mesh(meshfile, 1, 1)
 dim = mesh.Dimension()
 
 # 4. Refine the serial mesh on all processors to increase the resolution. In
@@ -79,12 +79,12 @@ dim = mesh.Dimension()
 #    gives a final mesh with no more than 10,000 elements.
 
 if ser_ref_levels < 0:
-   ser_ref_levels = int(np.floor(np.log(10000./mesh.GetNE())/np.log(2.)/dim))
+    ser_ref_levels = int(np.floor(np.log(10000./mesh.GetNE())/np.log(2.)/dim))
 for x in range(ser_ref_levels):
-   mesh.UniformRefinement();
-   
+    mesh.UniformRefinement()
+
 if (mesh.NURBSext):
-   mesh.SetCurvature(max(order, 1))
+    mesh.SetCurvature(max(order, 1))
 
 # 5. Define a parallel mesh by a partitioning of the serial mesh. Refine
 #    this mesh further in parallel to increase the resolution. Once the
@@ -92,7 +92,7 @@ if (mesh.NURBSext):
 pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
 del mesh
 for x in range(par_ref_levels):
-    pmesh.UniformRefinement();
+    pmesh.UniformRefinement()
 
 # 6. Define a parallel finite element space on the parallel mesh. Here we
 #    use discontinuous finite elements of the specified order >= 0.
@@ -100,16 +100,16 @@ fec = mfem.DG_FECollection(order, dim)
 fespace = mfem.ParFiniteElementSpace(pmesh, fec)
 glob_size = fespace.GlobalTrueVSize()
 if (myid == 0):
-    print('Number of unknowns: '+ str(glob_size))
+    print('Number of unknowns: ' + str(glob_size))
 
 # 7. Set up the parallel linear form b(.) which corresponds to the
 #    right-hand side of the FEM linear system.
-b =  mfem.ParLinearForm(fespace);
+b = mfem.ParLinearForm(fespace)
 one = mfem.ConstantCoefficient(1.0)
 zero = mfem.ConstantCoefficient(0.0)
 b.AddDomainIntegrator(mfem.DomainLFIntegrator(one))
 b.AddBdrFaceIntegrator(
-      mfem.DGDirichletLFIntegrator(zero, one, sigma, kappa))
+    mfem.DGDirichletLFIntegrator(zero, one, sigma, kappa))
 b.Assemble()
 
 # 8. Define the solution vector x as a parallel finite element grid function
@@ -134,7 +134,7 @@ a.Finalize()
 #     b(.) and the finite element approximation.
 A = a.ParallelAssemble()
 B = b.ParallelAssemble()
-X = x.ParallelProject()    #HypreParVector
+X = x.ParallelProject()  # HypreParVector
 
 del a
 del b
@@ -149,7 +149,7 @@ if sigma == -1.0:
     pcg.SetPrintLevel(2)
     pcg.SetPreconditioner(amg)
     pcg.Mult(B, X)
-else:    
+else:
     gmres = mfem.GMRESSolver(MPI.COMM_WORLD)
     gmres.SetAbsTol(0.0)
     gmres.SetRelTol(1e-12)
@@ -168,8 +168,8 @@ x.Assign(X)
 # 13. Save the refined mesh and the solution in parallel. This output can
 #     be viewed later using GLVis: "glvis -np <np> -m mesh -g sol".
 smyid = '{:0>6d}'.format(myid)
-mesh_name  =  "mesh."+smyid
-sol_name   =  "sol."+smyid
+mesh_name = "mesh."+smyid
+sol_name = "sol."+smyid
 
 pmesh.Print(mesh_name, 8)
 x.Save(sol_name, 8)
@@ -177,9 +177,6 @@ x.Save(sol_name, 8)
 # 14. Send the solution by socket to a GLVis server.
 if (visualization):
     sol_sock = mfem.socketstream("localhost", 19916)
-    sol_sock.send_text("parallel " + str(num_procs) + " "  + str(myid))
+    sol_sock.send_text("parallel " + str(num_procs) + " " + str(myid))
     sol_sock.precision(8)
     sol_sock.send_solution(pmesh,  x)
-
-
-

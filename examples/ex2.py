@@ -4,10 +4,11 @@
    See c++ version in the MFEM library for more detail
 '''
 import os
-from os.path import expanduser, join
+from os.path import expanduser, join, dirname
 import numpy as np
 
 import mfem.ser as mfem
+
 
 def run(order=1, static_cond=False,
         meshfile='', visualization=False,
@@ -137,10 +138,10 @@ def run(order=1, static_cond=False,
 
 
 if __name__ == "__main__":
-    from mfem.common.arg_parser import ArgParser    
+    from mfem.common.arg_parser import ArgParser
     parser = ArgParser(description='Ex1 (Laplace Problem)')
     parser.add_argument('-m', '--mesh',
-                        default='beam-.mesh',
+                        default='beam-tri.mesh',
                         action='store', type=str,
                         help='Mesh file to use.')
     parser.add_argument('-vis', '--visualization',
@@ -166,7 +167,7 @@ if __name__ == "__main__":
     static_cond = args.static_condensation
 
     meshfile = expanduser(
-        join(os.path.dirname(__file__), '..','data','beam-tri.mesh'))
+        join(dirname(__file__), '..', 'data', args.mesh))
 
     visualization = args.visualization
     device = args.device
