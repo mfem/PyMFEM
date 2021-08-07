@@ -114,17 +114,17 @@ namespace mfem {
 
 // instatitate template methods 
 %define FORM_SYSTEM_MATRIX_WRAP(OsType)
-%template(FormLinearSystem) mfem::BilinearForm::FormLinearSystem<OsType>;
-%template(FormSystemMatrix) mfem::BilinearForm::FormSystemMatrix<OsType>;
+%template(FormLinearSystem) mfem::BilinearForm::FormLinearSystem<mfem:: ## OsType>;
+%template(FormSystemMatrix) mfem::BilinearForm::FormSystemMatrix<mfem:: ## OsType>;
 %enddef
 
-FORM_SYSTEM_MATRIX_WRAP(mfem::SparseMatrix)
+FORM_SYSTEM_MATRIX_WRAP(SparseMatrix)
   
 #ifdef MFEM_USE_MPI
-  FORM_SYSTEM_MATRIX_WRAP(mfem::HypreParMatrix)
+  FORM_SYSTEM_MATRIX_WRAP(HypreParMatrix)
 #endif
   
 #ifdef MFEM_USE_PETSC
-  FORM_SYSTEM_MATRIX_WRAP(mfem::PetscParMatrix)
+  FORM_SYSTEM_MATRIX_WRAP(PetscParMatrix)
 #endif  
 

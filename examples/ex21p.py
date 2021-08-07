@@ -14,11 +14,12 @@ num_procs = MPI.COMM_WORLD.size
 myid = MPI.COMM_WORLD.rank
 smyid = '.'+'{:0>6d}'.format(myid)
 
+
 def run(order=1,
         static_cond=False,
         meshfile="",
         visualization=1,
-        serial_ref_levels=0):        
+        serial_ref_levels=0):
 
     # 2. Read the mesh from the given mesh file. We can handle triangular,
     #    quadrilateral, tetrahedral, and hexahedral meshes with the same code.
@@ -35,7 +36,7 @@ def run(order=1,
     #    NURBS mesh a bit more and then project the curvature to quadratic Nodes.
     if mesh.NURBSext and serial_ref_levels == 0:
         serial_ref_levels = 2
-        
+
     for i in range(serial_ref_levels):
         mesh.UniformRefinement()
 
@@ -122,8 +123,9 @@ def run(order=1,
     tdim = dim*(dim+1)//2
     flux_fec = mfem.L2_FECollection(order, dim)
     flux_fespace = mfem.ParFiniteElementSpace(pmesh, flux_fec, tdim)
-    smooth_flux_fespace = mfem.ParFiniteElementSpace(pmesh, fec, tdim)    
-    estimator = mfem.L2ZienkiewiczZhuEstimator(integ, x, flux_fespace, smooth_flux_fespace)
+    smooth_flux_fespace = mfem.ParFiniteElementSpace(pmesh, fec, tdim)
+    estimator = mfem.L2ZienkiewiczZhuEstimator(
+        integ, x, flux_fespace, smooth_flux_fespace)
 
     # 11. A refiner selects and refines elements based on a refinement strategy.
     #     The strategy here is to refine elements with errors larger than a
@@ -163,7 +165,7 @@ def run(order=1,
         a.FormLinearSystem(ess_tdof_list, x, b, A, X, B, copy_interior)
 
         # 16. Define and apply a parallel PCG solver for AX=B with the BoomerAMG
-        #     preconditioner from hypre.        
+        #     preconditioner from hypre.
         amg = mfem.HypreBoomerAMG()
         amg.SetPrintLevel(0)
         # amg.SetSystemsOptions(dim); // optional
@@ -172,8 +174,8 @@ def run(order=1,
         pcg.SetOperator(A)
         pcg.SetRelTol(1e-6)
         pcg.SetMaxIter(500)
-        pcg.SetPrintLevel(3) # print the first and the last iterations only
-        pcg.Mult(B, X);        
+        pcg.SetPrintLevel(3)  # print the first and the last iterations only
+        pcg.Mult(B, X)
 
         # 17. After solving the linear system, reconstruct the solution as a
         #     finite element GridFunction. Constrained nodes are interpolated
@@ -199,7 +201,7 @@ def run(order=1,
                 kk = "Rj1" if dim == 2 else ""
                 sol_sock << "keys '" << kk << "m'" << "\n"
                 sol_sock.endline()
-                
+
             sol_sock << "window_title 'AMR iteration: " << it << "'\n" << "pause"
 
             if myid == 0:
@@ -231,7 +233,7 @@ def run(order=1,
         x.Update()
 
         # 21. Load balance the mesh, and update the space and solution. Currently
-        #     available only for nonconforming meshes.        
+        #     available only for nonconforming meshes.
         if pmesh.Nonconforming():
             pmesh.Rebalance()
             fespace.Update()
@@ -273,7 +275,6 @@ if __name__ == "__main__":
                         action='store_true',
                         default=True,
                         help='Enable GLVis visualization')
-    
 
     args = parser.parse_args()
     if myid == 0:
@@ -285,7 +286,6 @@ if __name__ == "__main__":
     meshfile = expanduser(
         join(os.path.dirname(__file__), '..', 'data', args.mesh))
     visualization = args.visualization
-
 
     run(order=order,
         static_cond=static_cond,

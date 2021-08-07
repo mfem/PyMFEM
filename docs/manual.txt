@@ -564,6 +564,20 @@ to find more details of the MFEM library.
             strumpack.SetFromCommandLine()
             strumpack.Mult(B, X);
 
+     4-18) OperatorHandle
+           It is often required to convert Operator Handle to a specific operaotr class
+           using OperatorHandle::As <T>. handle.hpp defines also Is, Get, Reset,
+	   and ConvertFrom. These templates are instantiated for SparseMatrix,
+	   HypreParMatrix, and PetscParMatrix. Instatiated methods have class name
+	   appeded to its method name. For example, in ex1.py, it is use as
+	   follows.
+	   
+              A = mfem.OperatorPtr()
+	      <....>
+              AA = A.AsSparseMatrix()
+              M = mfem.GSSmoother(AA)
+              mfem.PCG(A, M, B, X, 1, 200, 1e-12, 0.0)
+
 -- Known issues --
 
   PyMFEM is an on-going effort. Not all MFEM functionality is properly
