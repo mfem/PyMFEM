@@ -17,6 +17,7 @@ smyid = '{:0>6d}'.format(myid)
 m_ = 1.0
 k_ = 1.0
 
+
 def nicePrint(*s):
     MPI.COMM_WORLD.Barrier()
     for i in range(num_procs):
@@ -92,11 +93,6 @@ def run(order=1,
 
     part = mfem.intArray(nelems)
 
-    x0 = mfem.Vector(3)
-    x0.Assign(0.0)
-    x1 = mfem.Vector(3)
-    x1.Assign(0.0)
-    v = mfem.intArray(4)
     # 6. Perform time-stepping
     e_mean = 0.0
 
@@ -106,7 +102,7 @@ def run(order=1,
             e_mean += e[0]
             if visualization:
                 for j in range(num_procs):
-                    mesh.AddVertex([0,0,0])
+                    mesh.AddVertex([0, 0, 0])
                     mesh.AddVertex([q[0], p[0], 0.0])
 
         #  6b. Advance the state of the system
@@ -116,9 +112,8 @@ def run(order=1,
 
         #  6d. Add results to GLVis visualization
         if visualization:
-            x0[2] = t
             for j in range(num_procs):
-                mesh.AddVertex([0,  0, t])                
+                mesh.AddVertex([0,  0, t])
                 mesh.AddVertex([q[0], p[0], t])
                 mesh.AddQuad([2*i*num_procs + 2*j,
                               2*(i+1)*num_procs + 2*j,
@@ -143,7 +138,7 @@ def run(order=1,
         mesh.FinalizeQuadMesh(1)
 
         pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh, part.GetData())
-        
+
         fec = mfem.H1_FECollection(1, 2)
         fespace = mfem.ParFiniteElementSpace(pmesh, fec)
         energy = mfem.ParGridFunction(fespace)
@@ -155,7 +150,7 @@ def run(order=1,
 
         sock = mfem.socketstream("localhost", 19916)
         sock.precision(8)
-        sock << "parallel " << num_procs << " " << myid << "\n"        
+        sock << "parallel " << num_procs << " " << myid << "\n"
         sock << "solution\n" << pmesh << energy
         sock << "window_title 'Energy in Phase Space'\n"
         sock << "keys\n maac\n" << "axis_labels 'q' 'p' 't'\n"
