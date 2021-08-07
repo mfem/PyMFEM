@@ -32,6 +32,7 @@ from scipy.special import erfc
 from mpi4py import MPI
 num_procs = MPI.COMM_WORLD.size
 myid = MPI.COMM_WORLD.rank
+smyid = '.'+'{:0>6d}'.format(myid)
 
 parser = ArgParser(description='Ex19p')
 parser.add_argument('-m', '--mesh',
@@ -176,10 +177,9 @@ def ex19_main(args):
     owns_nodes = 0
     nodes, owns_nodes = pmesh.SwapNodes(nodes, owns_nodes)
 
-    smyid = '.'+'{:0>6d}'.format(myid)
-    pmesh.Print('deformed.mesh'+smyid, 8)
-    p_gf.Save('pressure.sol'+smyid, 8)
-    x_def.Save("deformation.sol"+smyid,  8)
+    pmesh.Print('mesh'+smyid, 8)
+    p_gf.Save('pressure'+smyid, 8)
+    x_def.Save("deformation"+smyid,  8)
 
 
 '''
@@ -199,6 +199,28 @@ def ex19_main(args):
  complement S = B K^-1 B^T. The Schur complement is approximated using
  a mass matrix of the pressure variables.
 '''
+class GeneralResidualMonitor(mfem.IterativeSolverMonitor):
+    def __init__(self, prefix, print_level):
+        mfem.IterativeSolverMonitor.__init__(self)
+        if myid == 0:
+            self.print_level = print_level
+        else:
+            self.print_level = -1            
+        self.prefix = prefix
+        self.norm = 0
+
+    def MonitorResidual(self, it, norm, r, final):
+        txt = ''
+        if (self.print_level == 1 or
+                (self.print_level == 3 and (final or it == 0))):
+            txt = (txt + self.prefix + " iteration " + '{:>2}'.format(it) +
+                   " : ||r|| = " + "{:g}".format(norm))
+            if it > 0:
+                txt = txt + ",  ||r||/||r_0|| = " + \
+                    "{:g}".format(norm/self.norm0)
+            else:
+                self.norm0 = norm
+            print(txt)
 
 
 class JacobianPreconditioner(mfem.Solver):
@@ -312,7 +334,9 @@ class RubberOperator(mfem.PyOperator):
         j_gmres.SetRelTol(1e-12)
         j_gmres.SetAbsTol(1e-12)
         j_gmres.SetMaxIter(300)
-        j_gmres.SetPrintLevel(0)
+        j_gmres.SetPrintLevel(-1)
+        self.j_monitor = GeneralResidualMonitor("  GMRES", 3)
+        j_gmres.SetMonitor(self.j_monitor)
         j_gmres.SetPreconditioner(self.j_prec)
         self.j_solver = j_gmres
 
@@ -321,7 +345,9 @@ class RubberOperator(mfem.PyOperator):
         newton_solver.iterative_mode = True
         newton_solver.SetSolver(self.j_solver)
         newton_solver.SetOperator(self)
-        newton_solver.SetPrintLevel(1)
+        newton_solver.SetPrintLevel(-1)
+        self.n_monitor = GeneralResidualMonitor("Newton", 1)
+        newton_solver.SetMonitor(self.n_monitor)
         newton_solver.SetRelTol(rel_tol)
         newton_solver.SetAbsTol(abs_tol)
         newton_solver.SetMaxIter(iter)

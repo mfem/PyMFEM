@@ -62,8 +62,9 @@ class bcolors:
 ignore_txt_def = ['seconds', 'residual']
 ignore_txt_dict = {'ex15p': ['seconds', 'residual', ],
                    'ex12p' : ['seconds'],
+                   'ex18p': ['time step' ],
                    'ex10': ['iteration', 'seconds', 'residual', ],
-                   'ex10p': ['iteration', 'seconds', 'residual', ],
+                   'ex10p': ['iteration', 'seconds', 'residual', 'rtol'],
                    'ex13p': ['iteration', 'seconds', 'residual', ]}
 
 
@@ -77,7 +78,8 @@ def run_file(command, num=5):
     lines = lines.decode('utf-8').split('\n')
     lines = [x for x in lines if not x.startswith('\x1b')] # remove line with ESC
 
-    print("\n".join(lines))
+    # debug print all output....
+    # print("\n".join(lines))
     t2 = time.time()
     sys.stdout.flush()
     lines = [l for l in lines if len(l.strip()) != 0]
@@ -167,6 +169,7 @@ def do_compare_outputs(dir1, dir2):
            print("Contents does not agree: ", f)
            print("# "+str(mismatch) + "lines do not agree out of "+str(len(l1)))
            return False
+    print("No difference in generate files (Passed output file check)")
     return True
 
 def compare_outputs(case):        

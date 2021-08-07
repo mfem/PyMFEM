@@ -229,6 +229,9 @@ while not done:
             sout.send_text("parallel " + str(num_procs) + " " + str(myid))
             sout.send_solution(pmesh, mom)
             sout.flush()
+            
+if myid==0:
+    print("done")
 
 # 11. Save the final solution. This output can be viewed later using GLVis:
 #     "glvis -np 4 -m vortex-mesh -g vortex-1-final".
@@ -243,4 +246,4 @@ for k in range(num_equation):
 if True:
     error = sol.ComputeLpError(2., u0)
     if myid == 0:
-        print("Solution error: " + str(error))
+        print("Solution error: " + "{:g}".format(error))
