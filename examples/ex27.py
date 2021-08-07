@@ -273,7 +273,8 @@ def IntegrateBC(x, bdr, alpha, beta, gamma):
                 FTr.Elem1.SetIntPoint(eip)
                 fe.CalcPhysDShape(FTr.Elem1, dshape)
                 mfem.CalcOrtho(FTr.Face.Jacobian(), w_nor)
-                val += alpha * dshape.InnerProduct(w_nor, loc_dofs) / face_weight
+                val += alpha * \
+                    dshape.InnerProduct(w_nor, loc_dofs) / face_weight
             if not b_is_zero:
                 fe.CalcShape(eip, shape)
                 val += beta * (shape * loc_dofs)

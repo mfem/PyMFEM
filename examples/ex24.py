@@ -12,6 +12,7 @@ from numpy import sin, cos, exp, sqrt, pi, abs, array, floor, log
 
 freq = 1.0
 
+
 def run(order=1,
         prob=0,
         static_cond=False,
@@ -26,7 +27,7 @@ def run(order=1,
     # 2. Enable hardware devices such as GPUs, and programming models such as
     #    CUDA, OCCA, RAJA and OpenMP based on command line options.
     device = mfem.Device(device)
-    device.Print();
+    device.Print()
 
     # 3. Read the mesh from the given mesh file. We can handle triangular,
     #    quadrilateral, tetrahedral, hexahedral, surface and volume meshes with
@@ -55,7 +56,7 @@ def run(order=1,
     else:
         trial_fec = mfem.RT_FECollection(order-1, dim)
         test_fec = mfem.L2_FECollection(order-1, dim)
-        
+
     trial_fes = mfem.FiniteElementSpace(mesh, trial_fec)
     test_fes = mfem.FiniteElementSpace(mesh, test_fec)
 
@@ -76,18 +77,18 @@ def run(order=1,
     #    corresponding to the trial fespace.
     gftest = mfem.GridFunction(test_fes)
     gftrial = mfem.GridFunction(trial_fes)
-    x = mfem.GridFunction(test_fes);
+    x = mfem.GridFunction(test_fes)
 
     if numba:
         @mfem.jit.scalar()
         def p_coef(x):
             if dim == 3:
-                return sin(x[0]) * sin(x[1]) * sin(x[2]);
+                return sin(x[0]) * sin(x[1]) * sin(x[2])
             elif dim == 2:
                 return sin(x[0]) * sin(x[1])
             return 0.0
 
-        @mfem.jit.vector(sdim=sdim, vdim=dim)        
+        @mfem.jit.vector(sdim=sdim, vdim=dim)
         def gradp_coef(x, out, sdim_, dim_):
             if sdim_ == 3:
                 out[0] = cos(x[0]) * sin(x[1]) * sin(x[2])
@@ -98,8 +99,8 @@ def run(order=1,
                 out[1] = sin(x[0]) * cos(x[1])
                 if dim_ == 3:
                     out[2] = 0.0
-                    
-        @mfem.jit.vector(sdim=sdim, vdim=dim)                    
+
+        @mfem.jit.vector(sdim=sdim, vdim=dim)
         def v_coef(x, out, sdim_, dim_):
             if sdim_ == 3:
                 out[0] = sin(kappa * x[1])
@@ -110,38 +111,38 @@ def run(order=1,
                 out[1] = sin(kappa * x[0])
                 if dim_ == 3:
                     out[2] = 0.0
-        
+
         @mfem.jit.scalar()
         def cdiv_gradp_coeff(x):
             if dim == 3:
                 return -3.0 * sin(x[0]) * sin(x[1]) * sin(x[2])
             elif dim == 2:
                 return -2.0 * sin(x[0]) * sin(x[1])
-            return 0.0;
+            return 0.0
 
-        @mfem.jit.vector(sdim=sdim, vdim=dim)        
+        @mfem.jit.vector(sdim=sdim, vdim=dim)
         def curlv_coef(x, out, sdim_, dim_):
             if sdim_ == 3:
-                out[0] =  -kappa * cos(kappa * x[2])
-                out[1] =  -kappa * cos(kappa * x[0])
-                out[2] =  -kappa * cos(kappa * x[1])
+                out[0] = -kappa * cos(kappa * x[2])
+                out[1] = -kappa * cos(kappa * x[0])
+                out[2] = -kappa * cos(kappa * x[1])
             else:
                 for i in range(dim_):
                     out[i] = 0.0
-            
+
         @mfem.jit.scalar()
         def divgradp_coef(x):
             if dim == 3:
                 return -3.0 * sin(x[0]) * sin(x[1]) * sin(x[2])
             elif dim == 2:
                 return -2.0 * sin(x[0]) * sin(x[1])
-            return 0.0;
+            return 0.0
 
     else:
         class cp_exact(mfem.PyCoefficient):
             def EvalValue(self, x):
                 if dim == 3:
-                    return sin(x[0]) * sin(x[1]) * sin(x[2]);
+                    return sin(x[0]) * sin(x[1]) * sin(x[2])
                 elif dim == 2:
                     return sin(x[0]) * sin(x[1])
                 return 0.0
@@ -154,7 +155,7 @@ def run(order=1,
                 if dim == 3:
                     return [cos(x[0]) * sin(x[1]) * sin(x[2]),
                             sin(x[0]) * cos(x[1]) * sin(x[2]),
-                            sin(x[0]) * sin(x[1]) * cos(x[2]),]
+                            sin(x[0]) * sin(x[1]) * cos(x[2]), ]
                 elif dim == 2:
                     v1 = cos(x[0]) * sin(x[1])
                     v2 = sin(x[0]) * cos(x[1])
@@ -164,46 +165,47 @@ def run(order=1,
                         return v1, v2
 
         class cdiv_gradp_exact(mfem.PyCoefficient):
-            def EvalValue(self, x):        
+            def EvalValue(self, x):
                 if dim == 3:
                     return -3.0 * sin(x[0]) * sin(x[1]) * sin(x[2])
                 elif dim == 2:
                     return -2.0 * sin(x[0]) * sin(x[1])
-                return 0.0;
+                return 0.0
 
         class cv_exact(mfem.VectorPyCoefficient):
             def __init__(self):
                 mfem.VectorPyCoefficient.__init__(self, sdim)
-            def EvalValue(self, x):            
+
+            def EvalValue(self, x):
                 if dim == 3:
                     return [sin(kappa * x[1]),
                             sin(kappa * x[2]),
                             sin(kappa * x[0])]
                 else:
-                   v1 = sin(kappa * x[1])
-                   v2 = sin(kappa * x[0])
-                   if len(x) == 3:
-                       return (v1, v2, 0.0)
-                   else:
-                       return (v1, v2)
+                    v1 = sin(kappa * x[1])
+                    v2 = sin(kappa * x[0])
+                    if len(x) == 3:
+                        return (v1, v2, 0.0)
+                    else:
+                        return (v1, v2)
 
         class ccurlv_exact(mfem.PyCoefficient):
             def EvalValue(self, x):
                 if dim == 3:
-                    return [ -kappa * cos(kappa * x[2]),
-                             -kappa * cos(kappa * x[0]),
-                             -kappa * cos(kappa * x[1]),]
+                    return [-kappa * cos(kappa * x[2]),
+                            -kappa * cos(kappa * x[0]),
+                            -kappa * cos(kappa * x[1]), ]
                 else:
                     return [0.0] * self.vdim
-                
+
         p_coef = cp_exact()
         gradp_coef = cgradp_exact()
         v_coef = cv_exact()
         curlv_coef = ccurlv_exact()
-        divgradp_coef =  cdiv_gradp_exact()
+        divgradp_coef = cdiv_gradp_exact()
 
     if prob == 0:
-        gftrial.ProjectCoefficient(p_coef);
+        gftrial.ProjectCoefficient(p_coef)
     elif prob == 1:
         gftrial.ProjectCoefficient(v_coef)
     else:
@@ -217,9 +219,9 @@ def run(order=1,
     a = mfem.BilinearForm(test_fes)
     a_mixed = mfem.MixedBilinearForm(trial_fes, test_fes)
     if pa:
-        a.SetAssemblyLevel(mfem.AssemblyLevel_PARTIAL);
+        a.SetAssemblyLevel(mfem.AssemblyLevel_PARTIAL)
         a_mixed.SetAssemblyLevel(mfem.AssemblyLevel_PARTIAL)
-  
+
     if prob == 0:
         a.AddDomainIntegrator(mfem.VectorFEMassIntegrator(one))
         a_mixed.AddDomainIntegrator(mfem.MixedVectorGradientIntegrator(one))
@@ -229,7 +231,7 @@ def run(order=1,
     else:
         a.AddDomainIntegrator(mfem.MassIntegrator(one))
         a_mixed.AddDomainIntegrator(mfem.VectorFEDivergenceIntegrator(one))
-        
+
     # 8. Assemble the bilinear form and the corresponding linear system,
     #    applying any necessary transformations such as: eliminating boundary
     #    conditions, applying conforming constraints for non-conforming AMR,
@@ -241,7 +243,7 @@ def run(order=1,
     if not pa:
         a.Finalize()
 
-    a_mixed.Assemble();
+    a_mixed.Assemble()
     if not pa:
         a_mixed.Finalize()
 
@@ -263,9 +265,9 @@ def run(order=1,
     if pa:
         ess_tdof_list = mfem.intArray()
         Jacobi = mfem.OperatorJacobiSmoother(a, ess_tdof_list)
-        cg.SetOperator(a);
-        cg.SetPreconditioner(Jacobi);
-        cg.Mult(rhs, x);
+        cg.SetOperator(a)
+        cg.SetPreconditioner(Jacobi)
+        cg.Mult(rhs, x)
     else:
         Amat = a.SpMat()
         Jacobi = mfem.DSmoother(Amat)
@@ -298,45 +300,45 @@ def run(order=1,
     exact_proj.SetTrueVector()
     exact_proj.SetFromTrueVector()
 
-    print() # put empty line
+    print()  # put empty line
     # 12. Compute and print the L_2 norm of the error.
     if prob == 0:
         errSol = x.ComputeL2Error(gradp_coef)
         errInterp = discreteInterpolant.ComputeL2Error(gradp_coef)
         errProj = exact_proj.ComputeL2Error(gradp_coef)
 
-        print(" Solution of (E_h,v) = (grad p_h,v) for E_h and v in H(curl): " + 
+        print(" Solution of (E_h,v) = (grad p_h,v) for E_h and v in H(curl): " +
               "|| E_h - grad p ||_{L_2} = " + "{:g}".format(errSol) + "\n")
-        print(" Gradient interpolant E_h = grad p_h in H(curl): || E_h - grad p" + 
+        print(" Gradient interpolant E_h = grad p_h in H(curl): || E_h - grad p" +
               " ||_{L_2} = " + "{:g}".format(errInterp) + "\n")
-        print(" Projection E_h of exact grad p in H(curl): || E_h - grad p " + 
-              "||_{L_2} = " + "{:g}".format(errProj)  + "\n")
+        print(" Projection E_h of exact grad p in H(curl): || E_h - grad p " +
+              "||_{L_2} = " + "{:g}".format(errProj) + "\n")
     elif prob == 1:
         errSol = x.ComputeL2Error(curlv_coef)
         errInterp = discreteInterpolant.ComputeL2Error(curlv_coef)
         errProj = exact_proj.ComputeL2Error(curlv_coef)
 
-        print(" Solution of (E_h,w) = (curl v_h,w) for E_h and w in H(div): " + 
+        print(" Solution of (E_h,w) = (curl v_h,w) for E_h and w in H(div): " +
               "|| E_h - curl v ||_{L_2} = " + "{:g}".format(errSol) + "\n")
         print(" Curl interpolant E_h = curl v_h in H(div): || E_h - curl v " +
               "||_{L_2} = " + "{:g}".format(errInterp) + "\n")
-        print(" Projection E_h of exact curl v in H(div): || E_h - curl v " + 
-              "||_{L_2} = "  + "{:g}".format(errProj)  + "\n")
+        print(" Projection E_h of exact curl v in H(div): || E_h - curl v " +
+              "||_{L_2} = " + "{:g}".format(errProj) + "\n")
     else:
         order_quad = max(2, 2*order+1)
         irs = [mfem.IntRules.Get(i, order_quad)
                for i in range(mfem.Geometry.NumGeom)]
-        
+
         errSol = x.ComputeL2Error(divgradp_coef, irs)
         errInterp = discreteInterpolant.ComputeL2Error(divgradp_coef, irs)
         errProj = exact_proj.ComputeL2Error(divgradp_coef, irs)
 
-        print(" Solution of (f_h,q) = (div v_h,q) for f_h and q in L_2: " + 
-             "|| f_h - div v ||_{L_2} = " + "{:g}".format(errSol) + "\n")
-        print(" Divergence interpolant f_h = div v_h in L_2: || f_h - div v " + 
-             "||_{L_2} = " + "{:g}".format(errInterp) + "\n")
-        print(" Projection f_h of exact div v in L_2: || f_h - div v " + 
-             "||_{L_2} = " + "{:g}".format(errProj) + "\n")
+        print(" Solution of (f_h,q) = (div v_h,q) for f_h and q in L_2: " +
+              "|| f_h - div v ||_{L_2} = " + "{:g}".format(errSol) + "\n")
+        print(" Divergence interpolant f_h = div v_h in L_2: || f_h - div v " +
+              "||_{L_2} = " + "{:g}".format(errInterp) + "\n")
+        print(" Projection f_h of exact div v in L_2: || f_h - div v " +
+              "||_{L_2} = " + "{:g}".format(errProj) + "\n")
 
     # 13. Save the refined mesh and the solution. This output can be viewed
     #     later using GLVis: "glvis -m refined.mesh -g sol.gf".
@@ -346,13 +348,14 @@ def run(order=1,
     # 14. Send the solution by socket to a GLVis server.
     if visualization:
         sol_sock = mfem.socketstream("localhost", 19916)
-        sol_sock.precision(8);
+        sol_sock.precision(8)
         sol_sock << "solution\n" << mesh << x
         sol_sock.flush()
 
+
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
-    
+
     parser = ArgParser(description='Ex24 (Mixed finite element spaces)')
 
     parser.add_argument('-m', '--mesh',
@@ -381,11 +384,11 @@ if __name__ == "__main__":
                         default=1, action='store', type=int,
                         help="Use Number compiled coefficient")
 
-
     args = parser.parse_args()
     parser.print_options(args)
 
-    meshfile = expanduser(join(os.path.dirname(__file__), '..', 'data', args.mesh))
+    meshfile = expanduser(
+        join(os.path.dirname(__file__), '..', 'data', args.mesh))
     numba = (args.numba == 1)
 
     run(order=args.order,
@@ -396,4 +399,3 @@ if __name__ == "__main__":
         device=args.device,
         pa=args.partial_assembly,
         numba=numba)
-    

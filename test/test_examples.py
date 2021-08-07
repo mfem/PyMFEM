@@ -155,7 +155,8 @@ def do_compare_outputs(dir1, dir2):
         for ll1, ll2 in zip(l1, l2):
             if ll1 != ll2:
                 try:
-                    if float(ll1) == float(ll2): continue
+                    if ([float(x) for x in ll1.split(' ')] ==
+                        [float(x) for x in ll2.split(' ')]): continue
                 except:
                     print("found a line mismatch :", ll1, ll2)
                     mismatch += 1

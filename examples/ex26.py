@@ -19,15 +19,14 @@ def run(order_refinements=2,
     class DiffusionMultigrid(mfem.PyGeometricMultigrid):
         def __init__(self, fespaces, ess_bdr):
             mfem.PyGeometricMultigrid.__init__(self, fespaces)
-            
+
             self.smoothers = []
             self.ConstructCoarseOperatorAndSolver(fespaces.GetFESpaceAtLevel(0),
                                                   ess_bdr)
-            
-            for level in range(1, fespaces.GetNumLevels()):
-                 self.ConstructOperatorAndSmoother(fespaces.GetFESpaceAtLevel(level),
-                                                   ess_bdr)
 
+            for level in range(1, fespaces.GetNumLevels()):
+                self.ConstructOperatorAndSmoother(fespaces.GetFESpaceAtLevel(level),
+                                                  ess_bdr)
 
         def ConstructBilinearForm(self, fespace, ess_bdr):
             form = mfem.BilinearForm(fespace)
@@ -65,7 +64,7 @@ def run(order_refinements=2,
             opr = mfem.OperatorPtr()
             opr.SetType(mfem.Operator.ANY_TYPE)
             self.bfs[-1].FormSystemMatrix(self.essentialTrueDofs[-1], opr)
-            opr.SetOperatorOwner(False);
+            opr.SetOperatorOwner(False)
 
             diag = mfem.Vector(fespace.GetTrueVSize())
             self.bfs[-1].AssembleDiagonal(diag)
@@ -82,7 +81,7 @@ def run(order_refinements=2,
     mesh = mfem.Mesh(mesh_file, 1, 1)
     dim = mesh.Dimension()
 
-    ref_levels = int(np.floor(np.log( 5000. / mesh.GetNE()) / np.log(2.)/ dim))
+    ref_levels = int(np.floor(np.log(5000. / mesh.GetNE()) / np.log(2.) / dim))
     for i in range(ref_levels):
         mesh.UniformRefinement()
 
@@ -94,17 +93,19 @@ def run(order_refinements=2,
     fec = mfem.H1_FECollection(1, dim)
     coarse_fespace = mfem.FiniteElementSpace(mesh, fec)
     # note ownM and ownFES are False since they are managed by Python GC.
-    fespaces = mfem.FiniteElementSpaceHierarchy(mesh, coarse_fespace, False, False)
+    fespaces = mfem.FiniteElementSpaceHierarchy(
+        mesh, coarse_fespace, False, False)
 
     collections = []
-    collections.append(fec);
+    collections.append(fec)
     for level in range(geometric_refinements):
-        fespaces.AddUniformlyRefinedLevel();
+        fespaces.AddUniformlyRefinedLevel()
     for level in range(order_refinements):
         collections.append(mfem.H1_FECollection(2**(level+1), dim))
         fespaces.AddOrderRefinedLevel(collections[-1])
 
-    print("Number of finite element unknowns: " + str(fespaces.GetFinestFESpace().GetTrueVSize()))
+    print("Number of finite element unknowns: " +
+          str(fespaces.GetFinestFESpace().GetTrueVSize()))
 
     # 6. Set up the linear form b(.) which corresponds to the right-hand side of
     #    the FEM linear system, which in this case is (1,phi_i) where phi_i are
@@ -132,10 +133,10 @@ def run(order_refinements=2,
 
     A = mfem.OperatorPtr()
     B = mfem.Vector()
-    X = mfem.Vector()    
+    X = mfem.Vector()
 
     M.FormFineLinearSystem(x, b, A, X, B)
-    print( "Size of linear system: " + str(A.Height()))
+    print("Size of linear system: " + str(A.Height()))
 
     # 9. Solve the linear system A X = B.
     mfem.PCG(A.Ptr(), M, B, X, 1, 2000, 1e-12, 0.0)
@@ -155,6 +156,7 @@ def run(order_refinements=2,
         sol_sock << "solution\n" << fespaces.GetFinestFESpace().GetMesh() << x
         sol_sock.flush()
 
+
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
 
@@ -165,7 +167,7 @@ if __name__ == "__main__":
                         action='store', type=str,
                         help='Mesh file to use.')
     parser.add_argument('-gr', '--geometric-refinement',
-                        action='store', default=0, type=int,                        
+                        action='store', default=0, type=int,
                         help="Number of geometric refinements done prior to order refinements.")
     parser.add_argument('-or', '--order-refinement',
                         action='store', default=2, type=int,
@@ -176,16 +178,15 @@ if __name__ == "__main__":
     parser.add_argument('-vis', '--visualization',
                         action='store_true',
                         help='Enable GLVis visualization')
-                  
+
     args = parser.parse_args()
     parser.print_options(args)
 
-    mesh_file = expanduser(join(os.path.dirname(__file__), '..', 'data', args.mesh))
-        
+    mesh_file = expanduser(
+        join(os.path.dirname(__file__), '..', 'data', args.mesh))
+
     run(order_refinements=args.order_refinement,
         geometric_refinements=args.geometric_refinement,
         mesh_file=mesh_file,
         visualization=args.visualization,
         device=args.device)
-
-

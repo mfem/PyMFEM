@@ -14,11 +14,12 @@ order = 1
 sigma = -1.0
 kappa = -1.0
 
-if (kappa < 0):  kappa = (order+1)**2.
+if (kappa < 0):
+    kappa = (order+1)**2.
 
 meshfile = expanduser(
-           join(dirname(__file__), '..', 'data', 'star.mesh'))
-mesh = mfem.Mesh(meshfile, 1,1)
+    join(dirname(__file__), '..', 'data', 'star.mesh'))
+mesh = mfem.Mesh(meshfile, 1, 1)
 
 dim = mesh.Dimension()
 
@@ -27,27 +28,27 @@ dim = mesh.Dimension()
 #      largest number that gives a final mesh with no more than 50,000
 #      elements.
 if ref_levels < 0:
-   ref_levels = int(np.floor(np.log(50000./mesh.GetNE())/np.log(2.)/dim))
+    ref_levels = int(np.floor(np.log(50000./mesh.GetNE())/np.log(2.)/dim))
 for x in range(ref_levels):
-   mesh.UniformRefinement();
-   
+    mesh.UniformRefinement()
+
 if (mesh.NURBSext):
-   mesh.SetCurvature(max(order, 1))
+    mesh.SetCurvature(max(order, 1))
 
 # 4. Define a finite element space on the mesh. Here we use discontinuous
 #    finite elements of the specified order >= 0.
 fec = mfem.DG_FECollection(order, dim)
 fespace = mfem.FiniteElementSpace(mesh, fec)
-print('Number of finite element unknowns: '+ str(fespace.GetVSize()))
+print('Number of finite element unknowns: ' + str(fespace.GetVSize()))
 
 # 5. Set up the linear form b(.) which corresponds to the right-hand side of
 #    the FEM linear system.
-b =  mfem.LinearForm(fespace);
+b = mfem.LinearForm(fespace)
 one = mfem.ConstantCoefficient(1.0)
 zero = mfem.ConstantCoefficient(0.0)
 b.AddDomainIntegrator(mfem.DomainLFIntegrator(one))
 b.AddBdrFaceIntegrator(
-      mfem.DGDirichletLFIntegrator(zero, one, sigma, kappa))
+    mfem.DGDirichletLFIntegrator(zero, one, sigma, kappa))
 b.Assemble()
 
 # 6. Define the solution vector x as a finite element grid function
@@ -73,9 +74,9 @@ A = a.SpMat()
 # 8. Define a simple symmetric Gauss-Seidel preconditioner and use it to
 #    solve the system Ax=b with PCG in the symmetric case, and GMRES in the
 #    non-symmetric one.
-M = mfem.GSSmoother(A);
+M = mfem.GSSmoother(A)
 if (sigma == -1.0):
-    mfem.PCG(A, M, b, x, 1, 500, 1e-12, 0.0);
+    mfem.PCG(A, M, b, x, 1, 500, 1e-12, 0.0)
 else:
     mfem.GMRES(A, M, b, x, 1, 500, 10, 1e-12, 0.0)
 

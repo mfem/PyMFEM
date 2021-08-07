@@ -9,28 +9,29 @@ from os.path import expanduser, join, dirname
 import numpy as np
 from numpy import sin, cos, exp, sqrt, pi, abs, array, floor, log
 
+
 def build_trapezoid_mesh(offset):
     assert offset < 0.9, "offset is too large!"
 
     dimension = 2
-    nvt = 4 # vertices
-    nbe = 4 # num boundary elements
-    mesh = mfem.Mesh(dimension, nvt, 1, nbe);
-    
+    nvt = 4  # vertices
+    nbe = 4  # num boundary elements
+    mesh = mfem.Mesh(dimension, nvt, 1, nbe)
+
     mesh.AddVertex(0.0, 0.0)
     mesh.AddVertex(1.0, 0.0)
     mesh.AddVertex(offset, 1.0)
     mesh.AddVertex(1.0, 1.0)
 
     #  element
-    mesh.AddQuad([0, 1, 3, 2], 1);
+    mesh.AddQuad([0, 1, 3, 2], 1)
 
     #  boundary
     mesh.AddBdrSegment([0, 1], 1)
     mesh.AddBdrSegment([1, 3], 2)
     mesh.AddBdrSegment([2, 3], 3)
-    mesh.AddBdrSegment([0, 2], 4)    
-    
+    mesh.AddBdrSegment([0, 2], 4)
+
     mesh.FinalizeQuadMesh(1, 0, True)
 
     return mesh
@@ -40,7 +41,7 @@ def run(order=1,
         offset=0.3,
         visit=False,
         visualization=True):
-    
+
     # 2. Build a trapezoidal mesh with a single quadrilateral element, where
     #    'offset' determines how far off it is from a rectangle.
     mesh = build_trapezoid_mesh(offset)
@@ -58,7 +59,7 @@ def run(order=1,
     #    elements, i.e. dim copies of a scalar finite element space. The vector
     #    dimension is specified by the last argument of the FiniteElementSpace
     #    constructor.
-    
+
     fec = mfem.H1_FECollection(order, dim)
     fespace = mfem.FiniteElementSpace(mesh, fec, dim)
     print("Number of finite element unknowns: " + str(fespace.GetTrueVSize()))
@@ -80,14 +81,14 @@ def run(order=1,
     f = mfem.VectorArrayCoefficient(dim)
     for i in range(dim-1):
         f.Set(i, mfem.ConstantCoefficient(0.0))
-    push_force=mfem.Vector(mesh.bdr_attributes.Max())
+    push_force = mfem.Vector(mesh.bdr_attributes.Max())
     push_force.Assign(0.0)
     push_force[1] = -5.0e-2
     f.Set(0, mfem.PWConstCoefficient(push_force))
 
     b = mfem.LinearForm(fespace)
     b.AddBoundaryIntegrator(mfem.VectorBoundaryLFIntegrator(f))
-    b.Assemble();
+    b.Assemble()
 
     # 7. Define the solution vector x as a finite element grid function
     #    corresponding to fespace.
@@ -124,7 +125,7 @@ def run(order=1,
 
     # 10. Set up constraint matrix to constrain normal displacement (but
     #     allow tangential displacement) on specified boundaries.
-    constraint_atts = mfem.intArray([1,4])
+    constraint_atts = mfem.intArray([1, 4])
     lagrange_rowstarts = mfem.intArray()
     local_constraints = mfem.BuildNormalConstraints(fespace,
                                                     constraint_atts,
@@ -158,7 +159,7 @@ def run(order=1,
     # 14. Save the displaced mesh and the inverted solution (which gives the
     #     backward displacements to the original grid). This output can be
     #     viewed later using GLVis: "glvis -m displaced.mesh -g sol.gf".
-    x *= -1; # sign convention for GLVis displacements
+    x *= -1  # sign convention for GLVis displacements
     mesh.Print("displaced.mesh", 8)
     x.Save("sol.gf", 8)
 
@@ -166,19 +167,21 @@ def run(order=1,
     #     keys in GLVis to visualize the displacements.
     if visualization:
         sol_sock = mfem.socketstream('localhost', 19916)
-        sol_sock.precision(8);
+        sol_sock.precision(8)
         sol_sock << "solution\n" << mesh << x
         sol_sock.flush
+
 
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
 
-    parser = ArgParser(description='Ex28 (Constraints and sliding boundary conditions')
+    parser = ArgParser(
+        description='Ex28 (Constraints and sliding boundary conditions')
     parser.add_argument('-o', '--order',
                         action='store', default=1, type=int,
                         help="Finite element order (polynomial degree)")
     parser.add_argument('-offset', '--offset',
-                        action='store', default=0.3, type=float,                       
+                        action='store', default=0.3, type=float,
                         help="How much to offset the trapezoid.")
     parser.add_argument('-vis', '--visualization',
                         action='store_true',
@@ -186,7 +189,6 @@ if __name__ == "__main__":
     parser.add_argument('-visit', '--visit-datafiles',
                         action='store_true',
                         help="Save data files for VisIt (visit.llnl.gov) visualization.")
-
 
     args = parser.parse_args()
     parser.print_options(args)

@@ -35,6 +35,7 @@ import numpy as np
 
 import mfem.ser as mfem
 
+
 def run(order=1, static_cond=False,
         meshfile='', visualization=False,
         device='cpu', pa=False):
@@ -150,7 +151,7 @@ def run(order=1, static_cond=False,
 
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
-    
+
     parser = ArgParser(description='Ex1 (Laplace Problem)')
     parser.add_argument('-m', '--mesh',
                         default='star.mesh',
@@ -178,7 +179,8 @@ if __name__ == "__main__":
     order = args.order
     static_cond = args.static_condensation
 
-    meshfile = expanduser(join(os.path.dirname(__file__), '..', 'data', args.mesh))
+    meshfile = expanduser(
+        join(os.path.dirname(__file__), '..', 'data', args.mesh))
     visualization = args.visualization
     device = args.device
     pa = args.partial_assembly

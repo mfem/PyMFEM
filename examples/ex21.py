@@ -206,7 +206,7 @@ def run(order=1,
         #     changed.
         a.Update()
         b.Update()
-    
+
     mesh.Print("ex21_reference.mesh", 16)
     nodes = mfem.GridFunction(fespace)
     mesh.GetNodes(nodes)

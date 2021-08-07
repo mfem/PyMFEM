@@ -10,6 +10,7 @@ from os.path import expanduser, join, dirname
 import numpy as np
 from numpy import sin, cos, exp, sqrt, pi, abs, array, floor, log, sum
 
+
 def run(mesh_file="",
         ref_levels=2,
         order=2,
@@ -24,11 +25,12 @@ def run(mesh_file="",
 
     class WaveOperator(mfem.SecondOrderTimeDependentOperator):
         def __init__(self, fespace, ess_bdr, speed):
-            mfem.SecondOrderTimeDependentOperator.__init__(self, fespace.GetTrueVSize(), 0.0)
+            mfem.SecondOrderTimeDependentOperator.__init__(
+                self, fespace.GetTrueVSize(), 0.0)
 
             self.ess_tdof_list = mfem.intArray()
-            
-            rel_tol = 1e-8;
+
+            rel_tol = 1e-8
             fespace.GetEssentialTrueDofs(ess_bdr, self.ess_tdof_list)
 
             c2 = mfem.ConstantCoefficient(speed*speed)
@@ -42,8 +44,8 @@ def run(mesh_file="",
             K.FormSystemMatrix(dummy, self.Kmat0)
             K.FormSystemMatrix(self.ess_tdof_list, self.Kmat)
             self.K = K
-            
-            self.Mmat = mfem.SparseMatrix()            
+
+            self.Mmat = mfem.SparseMatrix()
             M = mfem.BilinearForm(fespace)
             M.AddDomainIntegrator(mfem.MassIntegrator())
             M.Assemble()
@@ -59,9 +61,9 @@ def run(mesh_file="",
             M_solver.SetPrintLevel(0)
             M_solver.SetPreconditioner(M_prec)
             M_solver.SetOperator(self.Mmat)
-            self.M_prec = M_prec            
-            self.M_solver= M_solver
-            
+            self.M_prec = M_prec
+            self.M_solver = M_solver
+
             T_solver = mfem.CGSolver()
             T_prec = mfem.DSmoother()
             T_solver.iterative_mode = False
@@ -80,17 +82,17 @@ def run(mesh_file="",
             # for d2udt2
             z = mfem.Vector(u.Size())
             self.Kmat.Mult(u, z)
-            z.Neg() # z = -z
+            z.Neg()  # z = -z
             self.M_solver.Mult(z, d2udt2)
-            
+
         def ImplicitSolve(self, fac0, fac1, u, dudt, d2udt2):
             # Solve the equation:
             #    d2udt2 = M^{-1}*[-K(u + fac0*d2udt2)]
             # for d2udt2
             if self.T is None:
-               self.T = mfem.Add(1.0, self.Mmat, fac0, self.Kmat)
-               self.T_solver.SetOperator(self.T)
-            z = mfem.Vector(u.Size())            
+                self.T = mfem.Add(1.0, self.Mmat, fac0, self.Kmat)
+                self.T_solver.SetOperator(self.T)
+            z = mfem.Vector(u.Size())
             self.Kmat0.Mult(u, z)
             z.Neg()
 
@@ -102,7 +104,6 @@ def run(mesh_file="",
 
         def SetParameters(self, u):
             self.T = None
-
 
     mesh = mfem.Mesh(mesh_file, 1, 1)
     dim = mesh.Dimension()
@@ -133,7 +134,7 @@ def run(mesh_file="",
     fe_coll = mfem.H1_FECollection(order, dim)
     fespace = mfem.FiniteElementSpace(mesh, fe_coll)
 
-    fe_size = fespace.GetTrueVSize();
+    fe_size = fespace.GetTrueVSize()
     print("Number of temperature unknowns: " + str(fe_size))
 
     u_gf = mfem.GridFunction(fespace)
@@ -144,15 +145,16 @@ def run(mesh_file="",
     class cInitialSolution(mfem.PyCoefficient):
         def EvalValue(self, x):
             norm2 = sum(x**2)
-            return exp(-norm2*30);
+            return exp(-norm2*30)
+
     class cInitialRate(mfem.PyCoefficient):
         def EvalValue(self, x):
             return 0
-        
+
     u_0 = cInitialSolution()
     dudt_0 = cInitialRate()
-    
-    u_gf.ProjectCoefficient(u_0);
+
+    u_gf.ProjectCoefficient(u_0)
     u = mfem.Vector()
     u_gf.GetTrueDofs(u)
 
@@ -172,7 +174,7 @@ def run(mesh_file="",
     oper = WaveOperator(fespace, ess_bdr, speed)
 
     u_gf.SetFromTrueDofs(u)
-    
+
     mesh.Print("ex23.mesh", 8)
     output = io.StringIO()
     output.precision = 8
@@ -184,8 +186,8 @@ def run(mesh_file="",
 
     if visit:
         visit_dc = mfem.VisItDataCollection("Example23", mesh)
-        visit_dc.RegisterField("solution", u_gf);
-        visit_dc.RegisterField("rate", dudt_gf);
+        visit_dc.RegisterField("solution", u_gf)
+        visit_dc.RegisterField("rate", dudt_gf)
         visit_dc.SetCycle(0)
         visit_dc.SetTime(0.0)
         visit_dc.Save()
@@ -194,14 +196,15 @@ def run(mesh_file="",
         sout = mfem.socketstream("localhost", 19916)
         if not sout.good():
             print("Unable to connect to GLVis server at localhost:19916")
-            visualization = False;
+            visualization = False
             print("GLVis visualization disabled.")
         else:
-            sout.precision(precision);
+            sout.precision(precision)
             sout << "solution\n" << mesh << dudt_gf
-            sout << "pause\n";
+            sout << "pause\n"
             sout.flush()
-            print("GLVis visualization paused. Press space (in the GLVis window) to resume it.")
+            print(
+                "GLVis visualization paused. Press space (in the GLVis window) to resume it.")
 
     # 8. Perform time-integration (looping over the time iterations, ti, with a
     #    time-step dt).
@@ -219,7 +222,7 @@ def run(mesh_file="",
 
         if last_step or (ti % vis_steps == 0):
             print("step " + str(ti) + ", t = " + "{:g}".format(t))
-                   
+
             u_gf.SetFromTrueDofs(u)
             dudt_gf.SetFromTrueDofs(dudt)
             if visualization:
@@ -243,52 +246,54 @@ def run(mesh_file="",
     fid.write(output.getvalue())
     fid.close()
 
+
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
     parser = ArgParser(description="Ex23 (Wave problem)")
     parser.add_argument('-m', '--mesh',
-                        default = 'star.mesh', 
-                        action = 'store', type = str,
+                        default='star.mesh',
+                        action='store', type=str,
                         help='Mesh file to use.')
     parser.add_argument('-r', '--refine',
-                        action = 'store', default = 2, type=int,
-                 help = "Number of times to refine the mesh uniformly before parallel")
+                        action='store', default=2, type=int,
+                        help="Number of times to refine the mesh uniformly before parallel")
     parser.add_argument('-o', '--order',
-                        action = 'store', default = 2, type=int,
-                        help = "Finite element order (polynomial degree)");
+                        action='store', default=2, type=int,
+                        help="Finite element order (polynomial degree)")
     help_ode = '\n'.join(["ODE solver: [0--10] \t- GeneralizedAlpha(0.1 * s),",
                           "11 \t - Average Acceleration,",
                           "12 \t - Linear Acceleration",
                           "13 \t- CentralDifference",
                           "14 \t- FoxGoodwin"])
     parser.add_argument('-s', '--ode-solver',
-                        action = 'store', default = 10, type=int,
-                        help = help_ode)
+                        action='store', default=10, type=int,
+                        help=help_ode)
     parser.add_argument('-tf', '--t-final',
-                        action = 'store', default = 0.5, type=float,
-                        help = "Final time; start time is 0.")
+                        action='store', default=0.5, type=float,
+                        help="Final time; start time is 0.")
     parser.add_argument('-dt', '--time-step',
-                        action = 'store', default = 1e-2, type=float,
-                        help = "Time step")
+                        action='store', default=1e-2, type=float,
+                        help="Time step")
     parser.add_argument("-c", "--speed",
-                        action = 'store', default = 1.0, type=float,                    
-                        help="Wave speed.");
+                        action='store', default=1.0, type=float,
+                        help="Wave speed.")
     parser.add_argument("-neu",  "--neumann",
-                        action = 'store_true', default = False,
+                        action='store_true', default=False,
                         help="BC switch.")
     parser.add_argument('-vis', '--visualization',
-                        action = 'store_true', default = True, 
+                        action='store_true', default=True,
                         help='Enable GLVis visualization')
     parser.add_argument('-visit', '--visit-datafiles',
                         action='store_true', default=True,
                         help="Save data files for VisIt (visit.llnl.gov) visualization.")
     parser.add_argument("-vs", "--visualization-steps",
-                        action = 'store', default = 5,  type = int,
-                        help = "Visualize every n-th timestep.");
+                        action='store', default=5,  type=int,
+                        help="Visualize every n-th timestep.")
 
     args = parser.parse_args()
     parser.print_options(args)
-    mesh_file = expanduser(join(os.path.dirname(__file__), '..', 'data', args.mesh))
+    mesh_file = expanduser(
+        join(os.path.dirname(__file__), '..', 'data', args.mesh))
 
     run(mesh_file=mesh_file,
         ref_levels=args.refine,
@@ -301,6 +306,3 @@ if __name__ == "__main__":
         visit=args.visit_datafiles,
         vis_steps=args.visualization_steps,
         visualization=args.visualization)
-
-
-        
