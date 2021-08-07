@@ -1,4 +1,4 @@
-%module(package="mfem._ser") io_stream
+%module(package="mfem._par") io_stream
 
 %feature("autodoc", "1");
 
