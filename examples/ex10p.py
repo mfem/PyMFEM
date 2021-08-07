@@ -280,7 +280,6 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         rho = mfem.ConstantCoefficient(ref_density)
         M.AddDomainIntegrator(mfem.VectorMassIntegrator(rho))
         M.Assemble(skip_zero_entries)
-        M.EliminateEssentialBC(ess_bdr)
         M.Finalize(skip_zero_entries)
         self.Mmat = M.ParallelAssemble()
 
@@ -309,7 +308,6 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         visc_coeff = mfem.ConstantCoefficient(visc)
         S.AddDomainIntegrator(mfem.VectorDiffusionIntegrator(visc_coeff))
         S.Assemble(skip_zero_entries)
-        S.EliminateEssentialBC(ess_bdr)
         S.Finalize(skip_zero_entries)
 
         self.reduced_oper = ReducedSystemOperator(M, S, H, self.ess_tdof_list)
@@ -336,6 +334,7 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         newton_solver.SetPrintLevel(1)  # print Newton iterations
         newton_solver.SetRelTol(rel_tol)
         newton_solver.SetAbsTol(0.0)
+        newton_solver.SetAdaptiveLinRtol(2, 0.5, 0.9)
         newton_solver.SetMaxIter(10)
         self.newton_solver = newton_solver
 
@@ -454,9 +453,10 @@ while not last_step:
         ee = oper.ElasticEnergy(x_gf)
         ke = oper.KineticEnergy(v_gf)
 
-        text = ("step " + str(ti) + ", t = " + str(t) + ", EE = " +
-                str(ee) + ", KE = " + str(ke) +
-                ", dTE = " + str((ee+ke)-(ee0+ke0)))
+        text = ("step " + str(ti) + ", t = " + str(t) +
+                ", EE = " + "{:g}".format(ee) +
+                ", KE = " + "{:g}".format(ke) +
+                ", dTE = " + "{:g}".format((ee+ke)-(ee0+ke0)))
 
         if myid == 0:
             print(text)

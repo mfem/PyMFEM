@@ -61,6 +61,7 @@ class bcolors:
 # special handling of text (needs to be set manually)
 ignore_txt_def = ['seconds', 'residual']
 ignore_txt_dict = {'ex15p': ['seconds', 'residual', ],
+                   'ex12p' : ['seconds'],
                    'ex10': ['iteration', 'seconds', 'residual', ],
                    'ex10p': ['iteration', 'seconds', 'residual', ],
                    'ex13p': ['iteration', 'seconds', 'residual', ]}
@@ -75,6 +76,8 @@ def run_file(command, num=5):
 
     lines = lines.decode('utf-8').split('\n')
     lines = [x for x in lines if not x.startswith('\x1b')] # remove line with ESC
+
+    print("\n".join(lines))
     t2 = time.time()
     sys.stdout.flush()
     lines = [l for l in lines if len(l.strip()) != 0]
@@ -266,7 +269,7 @@ if __name__ == "__main__":
 
     from mfem.common.arg_parser import ArgParser
     parser = ArgParser(description='test')
-    parser.add_argument('-np', default=2,
+    parser.add_argument('-np', default=4,
                         action='store', type=int,
                         help='Number of processes for MPI')
     parser.add_argument('-verbose',
