@@ -3355,28 +3355,52 @@ SWIGINTERN PyObject *_wrap_new_intArray__SWIG_3(PyObject *SWIGUNUSEDPARM(self), 
   PyObject *resultobj = 0;
   int *arg1 = (int *) 0 ;
   int arg2 ;
+  int *temp_ptr1 ;
+  bool ptr_given1 = false ;
+  bool is_tuple1 = false ;
+  PyObject *s11 ;
+  PyObject *s21 ;
   mfem::Array< int > *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
   {
     int i;
     if (!PyList_Check(swig_obj[0])) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    arg2 = PyList_Size(swig_obj[0]);
-    arg1 = (int *) malloc((arg2)*sizeof(int));
-    for (i = 0; i < arg2; i++) {
-      PyObject *s = PyList_GetItem(swig_obj[0],i);
-      if (PyInt_Check(s)) {
-        arg1[i] = (int)PyInt_AsLong(s);
-      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
-        arg1[i] = PyArray_PyIntAsInt(s);
-      } else {
-        free(arg1);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
+      if (!PyTuple_Check(swig_obj[0])) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
         return NULL;
+      } else {
+        is_tuple1 = true;
       }
+    }
+    arg2 = (is_tuple1) ? PyTuple_Size(swig_obj[0]) : PyList_Size(swig_obj[0]);
+    if (arg2 == 2){
+      s11 = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], 0) : PyList_GetItem(swig_obj[0],0);
+      s21 = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], 1) : PyList_GetItem(swig_obj[0],1);    
+      if (SWIG_ConvertPtr(s11, (void **) &temp_ptr1,
+          SWIGTYPE_p_int, 0 |0) == -1) {
+        ptr_given1=false;
+      } else {
+        ptr_given1=true;
+      }
+    }
+    if (! ptr_given1){
+      arg1 = (int *) malloc((arg2)*sizeof(int));
+      for (i = 0; i < arg2; i++) {
+        PyObject *s = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], i) : PyList_GetItem(swig_obj[0],i);
+        if (PyInt_Check(s)) {
+          arg1[i] = (int)PyInt_AsLong(s);
+        } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+          arg1[i] = PyArray_PyIntAsInt(s);
+        } else {
+          free(arg1);
+          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          return NULL;
+        }
+      }
+    } else {
+      arg1 = temp_ptr1;
+      arg2 = PyLong_AsLong(s21);    
     }
   }
   {
@@ -3483,7 +3507,13 @@ SWIGINTERN PyObject *_wrap_new_intArray(PyObject *self, PyObject *args) {
   if (argc == 1) {
     int _v;
     {
-      _v = PyList_Check(argv[0]) ? 1 : 0;
+      _v = 0;
+      if (PyList_Check(argv[0])){
+        _v = 1;
+      }
+      if (PyTuple_Check(argv[0])){
+        _v = 1;
+      }
     }
     if (_v) {
       if (argc <= 1) {
@@ -7583,28 +7613,52 @@ SWIGINTERN PyObject *_wrap_new_doubleArray__SWIG_3(PyObject *SWIGUNUSEDPARM(self
   PyObject *resultobj = 0;
   double *arg1 = (double *) 0 ;
   int arg2 ;
+  double *temp_ptr1 ;
+  bool ptr_given1 = false ;
+  bool is_tuple1 = false ;
+  PyObject *s11 ;
+  PyObject *s21 ;
   mfem::Array< double > *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
   {
     int i;
     if (!PyList_Check(swig_obj[0])) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    arg2 = PyList_Size(swig_obj[0]);
-    arg1 = (double *) malloc((arg2)*sizeof(int));
-    for (i = 0; i < arg2; i++) {
-      PyObject *s = PyList_GetItem(swig_obj[0],i);
-      if (PyInt_Check(s)) {
-        arg1[i] = (double)PyFloat_AsDouble(s);
-      } else if (PyFloat_Check(s)) {
-        arg1[i] = (double)PyFloat_AsDouble(s);
-      } else {
-        free(arg1);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
+      if (!PyTuple_Check(swig_obj[0])) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
         return NULL;
+      } else {
+        is_tuple1 = true;
       }
+    }
+    arg2 = (is_tuple1) ? PyTuple_Size(swig_obj[0]) : PyList_Size(swig_obj[0]);  
+    if (arg2 == 2){
+      s11 = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], 0) : PyList_GetItem(swig_obj[0],0);
+      s21 = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], 1) : PyList_GetItem(swig_obj[0],1);    
+      if (SWIG_ConvertPtr(s11, (void **) &temp_ptr1,
+          SWIGTYPE_p_double, 0 |0) == -1) {
+        ptr_given1=false;
+      } else {
+        ptr_given1=true;
+      }
+    }
+    if (! ptr_given1){
+      arg1 = (double *) malloc((arg2)*sizeof(double));
+      for (i = 0; i < arg2; i++) {
+        PyObject *s = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], i) : PyList_GetItem(swig_obj[0],i);      
+        if (PyInt_Check(s)) {
+          arg1[i] = (double)PyInt_AsLong(s);
+        } else if (PyFloat_Check(s)) {
+          arg1[i] = (double)PyFloat_AsDouble(s);	
+        } else {
+          free(arg1);
+          PyErr_SetString(PyExc_ValueError, "List items must be float");
+          return NULL;
+        }
+      }
+    } else {
+      arg1 = temp_ptr1;
+      arg2 = PyLong_AsLong(s21);    
     }
   }
   {
@@ -7711,7 +7765,13 @@ SWIGINTERN PyObject *_wrap_new_doubleArray(PyObject *self, PyObject *args) {
   if (argc == 1) {
     int _v;
     {
-      _v = PyList_Check(argv[0]) ? 1 : 0;
+      _v = 0;
+      if (PyList_Check(argv[0])){
+        _v = 1;
+      }
+      if (PyTuple_Check(argv[0])){
+        _v = 1;
+      }
     }
     if (_v) {
       if (argc <= 1) {

@@ -1,4 +1,9 @@
 	<<<  Change Log. >>>
+2021 08.06
+        * ex27 is added
+	* ex26 is added
+	* array((int *, size)) and array((double *, size)) is wrapped. This allows
+	  for changing the contents of exisint Array<T>
 2021 08.04
 	* added ex24. This one shows partial assembly and numba coefficient
 	
