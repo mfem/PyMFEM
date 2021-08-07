@@ -12,6 +12,7 @@ import numpy as np
 
 num_proc = MPI.COMM_WORLD.size
 myid = MPI.COMM_WORLD.rank
+smyid = '{:0>6d}'.format(myid)
 verbose = (myid == 0)
 
 order = 1
@@ -152,12 +153,11 @@ while True:
     #     changed.
     a.Update()
     b.Update()
+
+    if ((it + 1) % 5) == 0:
+        pmesh.ParPrint("ex6p-checkpoint."+smyid, 8)        
+        if myid == 0:
+            print("Checkpoint saved")
     it = it + 1
 
-
-smyid = '{:0>6d}'.format(myid)
-mesh_name = "mesh."+smyid
-sol_name = "ex6-sol."+smyid
-
-pmesh.Print(mesh_name, 8)
-x.Save(sol_name, 8)
+    

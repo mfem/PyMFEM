@@ -206,7 +206,7 @@ pmesh.Print(mesh_name, 8)
 
 for i in range(nev):
     x.Assign(lobpcg.GetEigenvector(i))
-    sol_name = "mode_"+str(i)+"."+smyid
+    sol_name = "mode_"+str(i).zfill(2)+"."+smyid
     x.Save(sol_name, 8)
 
 # 11. Send the solution by socket to a GLVis server.

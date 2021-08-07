@@ -26,6 +26,7 @@ from mpi4py import MPI
 
 num_procs = MPI.COMM_WORLD.size
 myid = MPI.COMM_WORLD.rank
+smyid = '{:0>6d}'.format(myid)
 
 parser = ArgParser(description='Ex12 (linear elastisity)')
 parser.add_argument('-m', '--mesh',
@@ -38,8 +39,11 @@ parser.add_argument('-o', '--order',
 parser.add_argument("-n", "--num-eigs",
                     action='store', default=5, type=int,
                     help="Number of desired eigenmodes.")
+parser.add_argument("-s", "--seed",
+                    action='store', default=66, type=int,
+                    help="Random seed used to initialize LOBPCG.")
 parser.add_argument('-elast', '--amg-for-elasticity',
-                    action='store_true',
+                    action='store_true', 
                     help='Use the special AMG elasticity solver (GM/LN approaches)',
                     dest='amg_elast', default=False)
 parser.add_argument('-sys', '--amg-for-systems',
@@ -55,6 +59,7 @@ order = args.order
 amg_elast = args.amg_elast
 nev = args.num_eigs
 visualization = args.visualization
+seed = args.seed
 if (myid == 0):
     parser.print_options(args)
 
@@ -144,7 +149,8 @@ m.AddDomainIntegrator(mfem.VectorMassIntegrator())
 m.Assemble()
 
 # shift the eigenvalue corresponding to eliminated dofs to a large value
-m.EliminateEssentialBCDiag(ess_bdr,  3.0e-300)
+import sys
+m.EliminateEssentialBCDiag(ess_bdr,  sys.float_info.min)
 m.Finalize()
 if (myid == 0):
     print("done. ")
@@ -164,6 +170,7 @@ else:
 
 lobpcg = mfem.HypreLOBPCG(MPI.COMM_WORLD)
 lobpcg.SetNumModes(nev)
+lobpcg.SetRandomSeed(seed)
 lobpcg.SetPreconditioner(amg)
 lobpcg.SetMaxIter(100)
 lobpcg.SetTol(1e-8)
@@ -199,7 +206,7 @@ pmesh.Print(mesh_name, 8)
 
 for i in range(nev):
     x.Assign(lobpcg.GetEigenvector(i))
-    sol_name = "mode_"+str(i)+"."+smyid
+    sol_name = "mode_"+str(i).zfill(2)+"."+smyid
     x.Save(sol_name, 8)
 
 # 13. Send the above data by socket to a GLVis server. Use the "n" and "b"

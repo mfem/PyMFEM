@@ -150,10 +150,6 @@ a.AddDomainIntegrator(mfem.MassIntegrator(one))
 
 #  8. Assemble the linear system, apply conforming constraints, etc.
 a.Assemble()
-a.Finalize()
-mat = a.ParallelAssemble()
-mat.Print("parmatrix")
-
 A = mfem.HypreParMatrix()
 B = mfem.Vector()
 X = mfem.Vector()
