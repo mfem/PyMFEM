@@ -7,6 +7,7 @@
 
    See c++ version in the MFEM library for more detail 
 '''
+import sys
 import mfem.par as mfem
 from mfem.par import intArray, doubleArray
 from os.path import expanduser, join, dirname
@@ -20,7 +21,7 @@ order = 1
 nev = 5
 visualization = 1
 
-num_proc = MPI.COMM_WORLD.size
+num_procs = MPI.COMM_WORLD.size
 myid = MPI.COMM_WORLD.rank
 
 meshfile = expanduser(join(dirname(__file__), '..', 'data', 'beam-tet.mesh'))
@@ -89,23 +90,39 @@ x = mfem.ParGridFunction(fespace)
 
 
 smyid = '{:0>6d}'.format(myid)
-mesh_name = "ex13_mesh."+smyid
+mesh_name = "mesh."+smyid
 
 
 pmesh.Print(mesh_name, 8)
 
 for i in range(nev):
-    if (myid == 0):
-        print("Eigenmode " + str(i+1) + '/' + str(nev) +
-              ", Lambda = " + str(eigenvalues[i]))
-
-    sol_name = "ex13_mode_"+str(i)+"."+smyid
+    sol_name = "mode_"+str(i).zfill(2)+"."+smyid
     x.Assign(ame.GetEigenvector(i))
     x.Save(sol_name, 8)
-    c = None
-    if (myid == 0):
-        from builtins import input
-        c = input("press (q)uit or (c)ontinue --> ")
-    c = MPI.COMM_WORLD.bcast(c, root=0)
-    if (c != 'c'):
-        break
+
+
+if visualization:
+    for i in range(nev):
+        mode_sock = mfem.socketstream("localhost", 19916)
+        mode_sock.precision(8)
+        
+        if (myid == 0):
+             print("Eigenmode " + str(i+1) + '/' + str(nev) +
+                   ", Lambda = " + str(eigenvalues[i]))
+
+        x.Assign(ame.GetEigenvector(i))
+        mode_sock << "parallel " << num_procs << " " << myid << "\n"
+        mode_sock << "solution\n" << pmesh << x
+        mode_sock.flush()
+        mode_sock << "window_title 'Eigenmode " << i+1 << '/' << nev
+        mode_sock << ", Lambda = " << "{:g}".format(eigenvalues[i]) << "'"
+        mode_sock.endline()
+        
+        if (myid == 0):
+            from builtins import input
+            c = input("press (q)uit or (c)ontinue --> ")
+        else:
+            c = None        
+        c = MPI.COMM_WORLD.bcast(c, root=0)
+        if (c != 'c'):
+            sys.exit()
