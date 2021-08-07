@@ -131,7 +131,8 @@ def run(order=1, static_cond=False,
         else:
             mfem.CG(A, B, X, 1, 400, 1e-12, 0.0)
     else:
-        AA = mfem.OperatorHandle2SparseMatrix(A)
+        #AA = mfem.OperatorHandle2SparseMatrix(A)
+        AA = A.AsSparseMatrix()
         M = mfem.GSSmoother(AA)
         mfem.PCG(A, M, B, X, 1, 200, 1e-12, 0.0)
 

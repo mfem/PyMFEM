@@ -585,24 +585,46 @@ class ParComplexLinearForm(mfem._par.vector.Vector):
 
     def AddDomainIntegrator(self, lfi_real, lfi_imag):
         r"""AddDomainIntegrator(ParComplexLinearForm self, LinearFormIntegrator lfi_real, LinearFormIntegrator lfi_imag)"""
-        return _complex_fem.ParComplexLinearForm_AddDomainIntegrator(self, lfi_real, lfi_imag)
-    AddDomainIntegrator = _swig_new_instance_method(_complex_fem.ParComplexLinearForm_AddDomainIntegrator)
+        val = _complex_fem.ParComplexLinearForm_AddDomainIntegrator(self, lfi_real, lfi_imag)
+
+        self._intg = (lfi_real, lfi_imag)
+        if  hasattr(lfi_real, "thisown"): lfi_real.thisown=0
+        if  hasattr(lfi_imag, "thisown"): lfi_imag.thisown=0
+        lfi_imag.thisown=0
+
+
+        return val
+
 
     def AddBoundaryIntegrator(self, *args):
         r"""
         AddBoundaryIntegrator(ParComplexLinearForm self, LinearFormIntegrator lfi_real, LinearFormIntegrator lfi_imag)
         AddBoundaryIntegrator(ParComplexLinearForm self, LinearFormIntegrator lfi_real, LinearFormIntegrator lfi_imag, intArray bdr_attr_marker)
         """
-        return _complex_fem.ParComplexLinearForm_AddBoundaryIntegrator(self, *args)
-    AddBoundaryIntegrator = _swig_new_instance_method(_complex_fem.ParComplexLinearForm_AddBoundaryIntegrator)
+        val = _complex_fem.ParComplexLinearForm_AddBoundaryIntegrator(self, *args)
+
+        self._intg = args
+        if  hasattr(args[0], "thisown"): args[1].thisown=0
+        if  hasattr(args[1], "thisown"): args[1].thisown=0
+
+
+        return val
+
 
     def AddBdrFaceIntegrator(self, *args):
         r"""
         AddBdrFaceIntegrator(ParComplexLinearForm self, LinearFormIntegrator lfi_real, LinearFormIntegrator lfi_imag)
         AddBdrFaceIntegrator(ParComplexLinearForm self, LinearFormIntegrator lfi_real, LinearFormIntegrator lfi_imag, intArray bdr_attr_marker)
         """
-        return _complex_fem.ParComplexLinearForm_AddBdrFaceIntegrator(self, *args)
-    AddBdrFaceIntegrator = _swig_new_instance_method(_complex_fem.ParComplexLinearForm_AddBdrFaceIntegrator)
+        val = _complex_fem.ParComplexLinearForm_AddBdrFaceIntegrator(self, *args)
+
+        self._intg = args
+        if  hasattr(args[0], "thisown"): args[1].thisown=0
+        if  hasattr(args[1], "thisown"): args[1].thisown=0
+
+
+        return val
+
 
     def ParFESpace(self):
         r"""ParFESpace(ParComplexLinearForm self) -> ParFiniteElementSpace"""
@@ -707,29 +729,57 @@ class ParSesquilinearForm(object):
 
     def AddDomainIntegrator(self, bfi_real, bfi_imag):
         r"""AddDomainIntegrator(ParSesquilinearForm self, BilinearFormIntegrator bfi_real, BilinearFormIntegrator bfi_imag)"""
-        return _complex_fem.ParSesquilinearForm_AddDomainIntegrator(self, bfi_real, bfi_imag)
-    AddDomainIntegrator = _swig_new_instance_method(_complex_fem.ParSesquilinearForm_AddDomainIntegrator)
+        val = _complex_fem.ParSesquilinearForm_AddDomainIntegrator(self, bfi_real, bfi_imag)
+
+        self._intg = (bfi_real, bfi_imag)
+        if hasattr(bfi_real, "thisown"): bfi_real.thisown=0
+        if hasattr(bfi_imag, "thisown"): bfi_imag.thisown=0
+
+
+        return val
+
 
     def AddBoundaryIntegrator(self, *args):
         r"""
         AddBoundaryIntegrator(ParSesquilinearForm self, BilinearFormIntegrator bfi_real, BilinearFormIntegrator bfi_imag)
         AddBoundaryIntegrator(ParSesquilinearForm self, BilinearFormIntegrator bfi_real, BilinearFormIntegrator bfi_imag, intArray bdr_marker)
         """
-        return _complex_fem.ParSesquilinearForm_AddBoundaryIntegrator(self, *args)
-    AddBoundaryIntegrator = _swig_new_instance_method(_complex_fem.ParSesquilinearForm_AddBoundaryIntegrator)
+        val = _complex_fem.ParSesquilinearForm_AddBoundaryIntegrator(self, *args)
+
+        self._intg = args
+        if  hasattr(args[0], "thisown"): args[1].thisown=0
+        if  hasattr(args[1], "thisown"): args[1].thisown=0
+
+
+        return val
+
 
     def AddInteriorFaceIntegrator(self, bfi_real, bfi_imag):
         r"""AddInteriorFaceIntegrator(ParSesquilinearForm self, BilinearFormIntegrator bfi_real, BilinearFormIntegrator bfi_imag)"""
-        return _complex_fem.ParSesquilinearForm_AddInteriorFaceIntegrator(self, bfi_real, bfi_imag)
-    AddInteriorFaceIntegrator = _swig_new_instance_method(_complex_fem.ParSesquilinearForm_AddInteriorFaceIntegrator)
+        val = _complex_fem.ParSesquilinearForm_AddInteriorFaceIntegrator(self, bfi_real, bfi_imag)
+
+        self._intg = (bfi_real, bfi_imag)
+        if hasattr(bfi_real, "thisown"): bfi_real.thisown=0
+        if hasattr(bfi_imag, "thisown"): bfi_imag.thisown=0
+
+
+        return val
+
 
     def AddBdrFaceIntegrator(self, *args):
         r"""
         AddBdrFaceIntegrator(ParSesquilinearForm self, BilinearFormIntegrator bfi_real, BilinearFormIntegrator bfi_imag)
         AddBdrFaceIntegrator(ParSesquilinearForm self, BilinearFormIntegrator bfi_real, BilinearFormIntegrator bfi_imag, intArray bdr_marker)
         """
-        return _complex_fem.ParSesquilinearForm_AddBdrFaceIntegrator(self, *args)
-    AddBdrFaceIntegrator = _swig_new_instance_method(_complex_fem.ParSesquilinearForm_AddBdrFaceIntegrator)
+        val = _complex_fem.ParSesquilinearForm_AddBdrFaceIntegrator(self, *args)
+
+        self._intg = args
+        if  hasattr(args[0], "thisown"): args[1].thisown=0
+        if  hasattr(args[1], "thisown"): args[1].thisown=0
+
+
+        return val
+
 
     def Assemble(self, skip_zeros=1):
         r"""Assemble(ParSesquilinearForm self, int skip_zeros=1)"""
