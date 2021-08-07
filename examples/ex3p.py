@@ -19,6 +19,7 @@ order = 1
 
 num_proc = MPI.COMM_WORLD.size
 myid = MPI.COMM_WORLD.rank
+smyid = '{:0>6d}'.format(myid)
 verbose = (myid == 0)
 
 
@@ -61,7 +62,6 @@ class f_exact(mfem.VectorPyCoefficient):
 ref_levels = int(np.floor(np.log(1000./mesh.GetNE())/np.log(2.)/dim))
 for x in range(ref_levels):
     mesh.UniformRefinement()
-
 
 #   5. Define a parallel mesh by a partitioning of the serial mesh. Refine
 #      this mesh further in parallel to increase the resolution. Once the
@@ -163,7 +163,9 @@ a.RecoverFEMSolution(X, b, x)
 # 12. Compute and print the L^2 norm of the error.
 err = x.ComputeL2Error(E)
 if verbose:  # note that err should be evaulated on all nodes
-    print("|| E_h - E ||_{L^2} = " + str(err))
+    print("|| E_h - E ||_{L^2} = " + "{:g}".format(err))
 
-mesh.Print('refined.mesh', 8)
-x.Save('sol.gf', 8)
+x.Save('sol.'+smyid)
+pmesh.Print('mesh.'+smyid)
+    
+
