@@ -123,16 +123,17 @@ def run(order=1,
     mVarf = mfem.BilinearForm(R_space)
     bVarf = mfem.MixedBilinearForm(R_space, W_space)
 
-    mVarf.AddDomainIntegrator(mfem.VectorFEMassIntegrator(k))
+
     if pa:
         mVarf.SetAssemblyLevel(mfem.AssemblyLevel_PARTIAL)
+    mVarf.AddDomainIntegrator(mfem.VectorFEMassIntegrator(k))        
     mVarf.Assemble()
     if not pa:
         mVarf.Finalize()
 
-    bVarf.AddDomainIntegrator(mfem.VectorFEDivergenceIntegrator())
     if pa:
         bVarf.SetAssemblyLevel(mfem.AssemblyLevel_PARTIAL)
+    bVarf.AddDomainIntegrator(mfem.VectorFEDivergenceIntegrator())        
     bVarf.Assemble()
     if not pa:
         bVarf.Finalize()
@@ -265,7 +266,7 @@ def run(order=1,
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
 
-    parser = ArgParser(description='Ex1 (Laplace Problem)')
+    parser = ArgParser(description='Ex5 (Darcy Problem)')
     parser.add_argument('-m', '--mesh',
                         default='star.mesh',
                         action='store', type=str,
