@@ -29,70 +29,9 @@ ISTREAM_TYPEMAP(std::istream&)
 
 %import "mem_manager.i"
 
-// intArray constructor
-%typemap(in) (int *data_, int asize) {
-  int i;
-  if (!PyList_Check($input)) {
-    PyErr_SetString(PyExc_ValueError, "Expecting a list");
-    return NULL;
-  }
-  $2 = PyList_Size($input);
-  $1 = (int *) malloc(($2)*sizeof(int));
-  for (i = 0; i < $2; i++) {
-    PyObject *s = PyList_GetItem($input,i);
-    if (PyInt_Check(s)) {
-        $1[i] = (int)PyInt_AsLong(s);
-    } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
-        $1[i] = PyArray_PyIntAsInt(s);
-    } else {    
-        free($1);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
-        return NULL;
-    }
-  }
-}
-%typemap(typecheck) (int *data_, int asize) {
-   $1 = PyList_Check($input) ? 1 : 0;
-}
-
-%typemap(newfree) (int *data_,  int asize) {
-   if ($1) free($1);
-}
-
-// dobuleArray constructor
-%typemap(in) (double *data_, int asize) {
-  int i;
-  if (!PyList_Check($input)) {
-    PyErr_SetString(PyExc_ValueError, "Expecting a list");
-    return NULL;
-  }
-  $2 = PyList_Size($input);
-  $1 = (double *) malloc(($2)*sizeof(int));
-  for (i = 0; i < $2; i++) {
-    PyObject *s = PyList_GetItem($input,i);
-    if (PyInt_Check(s)) {
-        $1[i] = (double)PyFloat_AsDouble(s);
-    } else if (PyFloat_Check(s)) {
-        $1[i] = (double)PyFloat_AsDouble(s);
-    } else {
-        free($1);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
-        return NULL;
-    }
-  }
-}
-%typemap(typecheck) (double *data_, int asize) {
-   $1 = PyList_Check($input) ? 1 : 0;
-}
-
-%typemap(newfree) (double *data_,  int asize) {
-   if ($1) free($1);
-}
-
-%pythonappend mfem::Array::Array %{
-  if len(args) == 1 and isinstance(args[0], list):
-      self.MakeDataOwner()
-%}
+%import "../common/data_size_typemap.i"
+INTPTR_SIZE_IN(int *data_, int asize)
+DOUBLEPTR_SIZE_IN(double *data_, int asize)
 
 //%import "intrules.i"
 //%newobject intArray

@@ -82,7 +82,13 @@ class intArray(object):
         _array.intArray_swiginit(self, _array.new_intArray(*args))
 
         if len(args) == 1 and isinstance(args[0], list):
-            self.MakeDataOwner()
+            if (len(args[0]) == 2 and hasattr(args[0][0], 'disown') and
+         not hasattr(args[0][1], 'disown')):
+        ## first element is SwigObject, like <Swig Object of type 'int *'>
+        ## We do not own data in this case.
+                pass
+            else:
+                self.MakeDataOwner()
 
 
 
@@ -319,13 +325,21 @@ class intArray(object):
 
     def __setitem__(self, i, v):
         r"""__setitem__(intArray self, int i, int const v)"""
+
+        i = int(i)
+
+
         return _array.intArray___setitem__(self, i, v)
-    __setitem__ = _swig_new_instance_method(_array.intArray___setitem__)
+
 
     def __getitem__(self, i):
         r"""__getitem__(intArray self, int const i) -> int const &"""
+
+        i = int(i)
+
+
         return _array.intArray___getitem__(self, i)
-    __getitem__ = _swig_new_instance_method(_array.intArray___getitem__)
+
 
     def Assign(self, *args):
         r"""
@@ -406,7 +420,13 @@ class doubleArray(object):
         _array.doubleArray_swiginit(self, _array.new_doubleArray(*args))
 
         if len(args) == 1 and isinstance(args[0], list):
-            self.MakeDataOwner()
+            if (len(args[0]) == 2 and hasattr(args[0][0], 'disown') and
+         not hasattr(args[0][1], 'disown')):
+        ## first element is SwigObject, like <Swig Object of type 'int *'>
+        ## We do not own data in this case.
+                pass
+            else:
+                self.MakeDataOwner()
 
 
 
@@ -643,13 +663,21 @@ class doubleArray(object):
 
     def __setitem__(self, i, v):
         r"""__setitem__(doubleArray self, int i, double const v)"""
+
+        i = int(i)
+
+
         return _array.doubleArray___setitem__(self, i, v)
-    __setitem__ = _swig_new_instance_method(_array.doubleArray___setitem__)
+
 
     def __getitem__(self, i):
         r"""__getitem__(doubleArray self, int const i) -> double const &"""
+
+        i = int(i)
+
+
         return _array.doubleArray___getitem__(self, i)
-    __getitem__ = _swig_new_instance_method(_array.doubleArray___getitem__)
+
 
     def Assign(self, *args):
         r"""

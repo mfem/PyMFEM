@@ -29,26 +29,45 @@ ISTREAM_TYPEMAP(std::istream&)
 
 %import "mem_manager.i"
 
+%import "../common/data_size_typemap.i"
+INTPTR_SIZE_IN(int *data_, int asize)
+DOUBLEPTR_SIZE_IN(double *data_, int asize)
+
 // intArray constructor
-%typemap(in) (int *data_, int asize) {
+ /*
+%typemap(in) (int *data_, int asize) (int * temp_ptr, bool ptr_given=false, PyObject *s1, PyObject *s2){
   int i;
   if (!PyList_Check($input)) {
     PyErr_SetString(PyExc_ValueError, "Expecting a list");
     return NULL;
   }
   $2 = PyList_Size($input);
-  $1 = (int *) malloc(($2)*sizeof(int));
-  for (i = 0; i < $2; i++) {
-    PyObject *s = PyList_GetItem($input,i);
-    if (PyInt_Check(s)) {
-        $1[i] = (int)PyInt_AsLong(s);
-    } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
-        $1[i] = PyArray_PyIntAsInt(s);
-    } else {    
-        free($1);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
-        return NULL;
-    }
+  if ($2 == 2){
+     s1 = PyList_GetItem($input,0);
+     s2 = PyList_GetItem($input,1);
+     if (SWIG_ConvertPtr(s1, (void **) &temp_ptr, $descriptor(const int *), 0 |0) == -1) {
+        ptr_given=false;
+     } else {
+        ptr_given=true;
+     }
+  }
+  if (! ptr_given){
+       $1 = (int *) malloc(($2)*sizeof(int));    
+      for (i = 0; i < $2; i++) {
+         PyObject *s = PyList_GetItem($input,i);
+         if (PyInt_Check(s)) {
+             $1[i] = (int)PyInt_AsLong(s);
+         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+             $1[i] = PyArray_PyIntAsInt(s);
+	 } else {
+             free($1);
+             PyErr_SetString(PyExc_ValueError, "List items must be integer");
+             return NULL;
+	 }
+      }
+  } else {
+    $1 = temp_ptr;
+    $2 = PyLong_AsLong(s2);    
   }
 }
 %typemap(typecheck) (int *data_, int asize) {
@@ -59,7 +78,6 @@ ISTREAM_TYPEMAP(std::istream&)
    if ($1) free($1);
 }
 
-// doubleArray constructor
 %typemap(in) (double *data_, int asize) {
   int i;
   if (!PyList_Check($input)) {
@@ -88,11 +106,17 @@ ISTREAM_TYPEMAP(std::istream&)
 %typemap(newfree) (double *data_,  int asize) {
    if ($1) free($1);
 }
-
+*/
 
 %pythonappend mfem::Array::Array %{
   if len(args) == 1 and isinstance(args[0], list):
-      self.MakeDataOwner()
+      if (len(args[0]) == 2 and hasattr(args[0][0], 'disown') and
+	  not hasattr(args[0][1], 'disown')):
+          ## first element is SwigObject, like <Swig Object of type 'int *'>
+          ## We do not own data in this case.
+          pass
+      else:
+          self.MakeDataOwner()
 %}
 
 //%import "intrules.i"
@@ -124,6 +148,12 @@ ISTREAM_TYPEMAP(std::istream&)
   /* this will be shadowed by Python */
 };
 namespace mfem{
+%pythonprepend Array::__setitem__ %{
+    i = int(i)
+%}
+%pythonprepend Array::__getitem__ %{
+    i = int(i)
+%}
 %feature("shadow")Array::FakeToList %{
 def ToList(self):
     return [self[i] for i in range(self.Size())]

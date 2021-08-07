@@ -151,10 +151,18 @@ def do_compare_outputs(dir1, dir2):
         l1 = open(os.path.join(dir1, f), 'r').readlines()
         l2 = open(os.path.join(dir2, f), 'r').readlines()
 
-        if l1 != l2:
-            print("Contents does not agree: ", f)
-            return False
-
+        mismatch = 0
+        for ll1, ll2 in zip(l1, l2):
+            if ll1 != ll2:
+                try:
+                    if float(ll1) == float(ll2): continue
+                except:
+                    print("found a line mismatch :", ll1, ll2)
+                    mismatch += 1
+        if mismatch > 3:
+           print("Contents does not agree: ", f)
+           print("# "+str(mismatch) + "lines do not agree out of "+str(len(l1)))
+           return False
     return True
 
 def compare_outputs(case):        

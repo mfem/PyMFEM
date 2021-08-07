@@ -80,12 +80,6 @@ class intArray(object):
         __init__(intArray self, intArray src) -> intArray
         """
         _array.intArray_swiginit(self, _array.new_intArray(*args))
-
-        if len(args) == 1 and isinstance(args[0], list):
-            self.MakeDataOwner()
-
-
-
     __swig_destroy__ = _array.delete_intArray
 
     def GetData(self, *args):
@@ -404,12 +398,6 @@ class doubleArray(object):
         __init__(doubleArray self, doubleArray src) -> doubleArray
         """
         _array.doubleArray_swiginit(self, _array.new_doubleArray(*args))
-
-        if len(args) == 1 and isinstance(args[0], list):
-            self.MakeDataOwner()
-
-
-
     __swig_destroy__ = _array.delete_doubleArray
 
     def GetData(self, *args):
