@@ -409,7 +409,13 @@ class RefinementArray(object):
         _ncmesh.RefinementArray_swiginit(self, _ncmesh.new_RefinementArray(*args))
 
         if len(args) == 1 and isinstance(args[0], list):
-            self.MakeDataOwner()
+            if (len(args[0]) == 2 and hasattr(args[0][0], 'disown') and
+         not hasattr(args[0][1], 'disown')):
+        ## first element is SwigObject, like <Swig Object of type 'int *'>
+        ## We do not own data in this case.
+                pass
+            else:
+                self.MakeDataOwner()
 
 
 
@@ -583,13 +589,21 @@ class RefinementArray(object):
 
     def __setitem__(self, i, v):
         r"""__setitem__(RefinementArray self, int i, Refinement v)"""
+
+        i = int(i)
+
+
         return _ncmesh.RefinementArray___setitem__(self, i, v)
-    __setitem__ = _swig_new_instance_method(_ncmesh.RefinementArray___setitem__)
+
 
     def __getitem__(self, i):
         r"""__getitem__(RefinementArray self, int const i) -> Refinement"""
+
+        i = int(i)
+
+
         return _ncmesh.RefinementArray___getitem__(self, i)
-    __getitem__ = _swig_new_instance_method(_ncmesh.RefinementArray___getitem__)
+
 
     def Assign(self, *args):
         r"""
@@ -608,6 +622,7 @@ class RefinementArray(object):
         class iter_array:
             def __init__(self, obj):
                 self.obj = obj
+                self.idx = 0
                 self.size = obj.Size()
             def __iter__(self):
                 self.idx = 0

@@ -81,12 +81,6 @@ class IntegrationPointArray(object):
         __init__(IntegrationPointArray self, IntegrationPointArray src) -> IntegrationPointArray
         """
         _intrules.IntegrationPointArray_swiginit(self, _intrules.new_IntegrationPointArray(*args))
-
-        if len(args) == 1 and isinstance(args[0], list):
-            self.MakeDataOwner()
-
-
-
     __swig_destroy__ = _intrules.delete_IntegrationPointArray
 
     def GetData(self, *args):
@@ -275,6 +269,25 @@ class IntegrationPointArray(object):
 
     def ToList(self):
         return [self[i] for i in range(self.Size())]
+
+
+
+    def __iter__(self):
+        class iter_array:
+            def __init__(self, obj):
+                self.obj = obj
+                self.idx = 0
+                self.size = obj.Size()
+            def __iter__(self):
+                self.idx = 0
+            def __next__(self):
+                if self.idx < self.size:
+                    res = self.obj[self.idx]
+                    self.idx += 1
+                    return res
+                else:
+                    raise StopIteration
+        return iter_array(self)
 
 
 

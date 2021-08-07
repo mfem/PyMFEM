@@ -300,12 +300,6 @@ class GeometryTypeArray(object):
         __init__(GeometryTypeArray self, GeometryTypeArray src) -> GeometryTypeArray
         """
         _geom.GeometryTypeArray_swiginit(self, _geom.new_GeometryTypeArray(*args))
-
-        if len(args) == 1 and isinstance(args[0], list):
-            self.MakeDataOwner()
-
-
-
     __swig_destroy__ = _geom.delete_GeometryTypeArray
 
     def GetData(self, *args):
@@ -494,6 +488,25 @@ class GeometryTypeArray(object):
 
     def ToList(self):
         return [self[i] for i in range(self.Size())]
+
+
+
+    def __iter__(self):
+        class iter_array:
+            def __init__(self, obj):
+                self.obj = obj
+                self.idx = 0
+                self.size = obj.Size()
+            def __iter__(self):
+                self.idx = 0
+            def __next__(self):
+                if self.idx < self.size:
+                    res = self.obj[self.idx]
+                    self.idx += 1
+                    return res
+                else:
+                    raise StopIteration
+        return iter_array(self)
 
 
 

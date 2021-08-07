@@ -3415,6 +3415,7 @@ SWIGINTERN void mfem_Array_Sl_mfem_Geometry_Type_Sg__Assign__SWIG_1(mfem::Array<
      *self = a;
   }
 SWIGINTERN void mfem_Array_Sl_mfem_Geometry_Type_Sg__FakeToList(mfem::Array< mfem::Geometry::Type > *self){}
+SWIGINTERN void mfem_Array_Sl_mfem_Geometry_Type_Sg____iter__(mfem::Array< mfem::Geometry::Type > *self){}
 
 
 /* ---------------------------------------------------
@@ -8154,6 +8155,46 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_GeometryTypeArray___iter__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Geometry::Type > *arg1 = (mfem::Array< mfem::Geometry::Type > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeometryTypeArray___iter__" "', argument " "1"" of type '" "mfem::Array< mfem::Geometry::Type > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Geometry::Type > * >(argp1);
+  {
+    try {
+      mfem_Array_Sl_mfem_Geometry_Type_Sg____iter__(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *GeometryTypeArray_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
@@ -8288,6 +8329,7 @@ static PyMethodDef SwigMethods[] = {
 		"GeometryTypeArray_Assign(GeometryTypeArray self, mfem::Geometry::Type const & a)\n"
 		""},
 	 { "GeometryTypeArray_FakeToList", _wrap_GeometryTypeArray_FakeToList, METH_O, "GeometryTypeArray_FakeToList(GeometryTypeArray self)"},
+	 { "GeometryTypeArray___iter__", _wrap_GeometryTypeArray___iter__, METH_O, "GeometryTypeArray___iter__(GeometryTypeArray self)"},
 	 { "GeometryTypeArray_swigregister", GeometryTypeArray_swigregister, METH_O, NULL},
 	 { "GeometryTypeArray_swiginit", GeometryTypeArray_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
@@ -8416,6 +8458,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Assign(GeometryTypeArray self, mfem::Geometry::Type const & a)\n"
 		""},
 	 { "GeometryTypeArray_FakeToList", _wrap_GeometryTypeArray_FakeToList, METH_O, "FakeToList(GeometryTypeArray self)"},
+	 { "GeometryTypeArray___iter__", _wrap_GeometryTypeArray___iter__, METH_O, "__iter__(GeometryTypeArray self)"},
 	 { "GeometryTypeArray_swigregister", GeometryTypeArray_swigregister, METH_O, NULL},
 	 { "GeometryTypeArray_swiginit", GeometryTypeArray_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }

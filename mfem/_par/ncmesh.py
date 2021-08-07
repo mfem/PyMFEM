@@ -408,12 +408,6 @@ class RefinementArray(object):
         __init__(RefinementArray self, RefinementArray src) -> RefinementArray
         """
         _ncmesh.RefinementArray_swiginit(self, _ncmesh.new_RefinementArray(*args))
-
-        if len(args) == 1 and isinstance(args[0], list):
-            self.MakeDataOwner()
-
-
-
     __swig_destroy__ = _ncmesh.delete_RefinementArray
 
     def GetData(self, *args):
@@ -609,6 +603,7 @@ class RefinementArray(object):
         class iter_array:
             def __init__(self, obj):
                 self.obj = obj
+                self.idx = 0
                 self.size = obj.Size()
             def __iter__(self):
                 self.idx = 0
