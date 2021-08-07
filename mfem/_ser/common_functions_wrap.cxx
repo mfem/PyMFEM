@@ -2695,17 +2695,18 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
 #define SWIGTYPE_p_char swig_types[1]
 #define SWIGTYPE_p_double swig_types[2]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[3]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__SparseMatrix_p_t swig_types[4]
-#define SWIGTYPE_p_mfem__BlockMatrix swig_types[5]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[6]
-#define SWIGTYPE_p_mfem__STable swig_types[7]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[8]
-#define SWIGTYPE_p_mfem__Table swig_types[9]
-#define SWIGTYPE_p_mfem__Vector swig_types[10]
-#define SWIGTYPE_p_std__ostream swig_types[11]
-static swig_type_info *swig_types[13];
-static swig_module_info swig_module = {swig_types, 12, 0, 0, 0, 0};
+#define SWIGTYPE_p_int swig_types[3]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[4]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__SparseMatrix_p_t swig_types[5]
+#define SWIGTYPE_p_mfem__BlockMatrix swig_types[6]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[7]
+#define SWIGTYPE_p_mfem__STable swig_types[8]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[9]
+#define SWIGTYPE_p_mfem__Table swig_types[10]
+#define SWIGTYPE_p_mfem__Vector swig_types[11]
+#define SWIGTYPE_p_std__ostream swig_types[12]
+static swig_type_info *swig_types[14];
+static swig_module_info swig_module = {swig_types, 13, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5342,6 +5343,7 @@ static void *_p_mfem__STableTo_p_mfem__Table(void *x, int *SWIGUNUSEDPARM(newmem
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__SparseMatrix_p_t = {"_p_mfem__ArrayT_mfem__SparseMatrix_p_t", "mfem::Array< mfem::SparseMatrix * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__BlockMatrix = {"_p_mfem__BlockMatrix", "mfem::BlockMatrix *", 0, 0, (void*)0, 0};
@@ -5356,6 +5358,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
   &_swigt__p_double,
+  &_swigt__p_int,
   &_swigt__p_mfem__ArrayT_int_t,
   &_swigt__p_mfem__ArrayT_mfem__SparseMatrix_p_t,
   &_swigt__p_mfem__BlockMatrix,
@@ -5370,6 +5373,7 @@ static swig_type_info *swig_type_initial[] = {
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__SparseMatrix_p_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__SparseMatrix_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__BlockMatrix[] = {  {&_swigt__p_mfem__BlockMatrix, 0, 0, 0},{0, 0, 0, 0}};
@@ -5384,6 +5388,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
   _swigc__p_double,
+  _swigc__p_int,
   _swigc__p_mfem__ArrayT_int_t,
   _swigc__p_mfem__ArrayT_mfem__SparseMatrix_p_t,
   _swigc__p_mfem__BlockMatrix,

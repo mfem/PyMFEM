@@ -3100,66 +3100,67 @@ namespace Swig {
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
 #define SWIGTYPE_p_char swig_types[1]
 #define SWIGTYPE_p_double swig_types[2]
-#define SWIGTYPE_p_mfem__AB1Solver swig_types[3]
-#define SWIGTYPE_p_mfem__AB2Solver swig_types[4]
-#define SWIGTYPE_p_mfem__AB3Solver swig_types[5]
-#define SWIGTYPE_p_mfem__AB4Solver swig_types[6]
-#define SWIGTYPE_p_mfem__AB5Solver swig_types[7]
-#define SWIGTYPE_p_mfem__AM0Solver swig_types[8]
-#define SWIGTYPE_p_mfem__AM1Solver swig_types[9]
-#define SWIGTYPE_p_mfem__AM2Solver swig_types[10]
-#define SWIGTYPE_p_mfem__AM3Solver swig_types[11]
-#define SWIGTYPE_p_mfem__AM4Solver swig_types[12]
-#define SWIGTYPE_p_mfem__AdamsBashforthSolver swig_types[13]
-#define SWIGTYPE_p_mfem__AdamsMoultonSolver swig_types[14]
-#define SWIGTYPE_p_mfem__AverageAccelerationSolver swig_types[15]
-#define SWIGTYPE_p_mfem__BackwardEulerSolver swig_types[16]
-#define SWIGTYPE_p_mfem__CentralDifferenceSolver swig_types[17]
-#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[18]
-#define SWIGTYPE_p_mfem__ESDIRK32Solver swig_types[19]
-#define SWIGTYPE_p_mfem__ESDIRK33Solver swig_types[20]
-#define SWIGTYPE_p_mfem__ExplicitRKSolver swig_types[21]
-#define SWIGTYPE_p_mfem__ForwardEulerSolver swig_types[22]
-#define SWIGTYPE_p_mfem__FoxGoodwinSolver swig_types[23]
-#define SWIGTYPE_p_mfem__GeneralizedAlpha2Solver swig_types[24]
-#define SWIGTYPE_p_mfem__GeneralizedAlphaSolver swig_types[25]
-#define SWIGTYPE_p_mfem__HHTAlphaSolver swig_types[26]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[27]
-#define SWIGTYPE_p_mfem__ImplicitMidpointSolver swig_types[28]
-#define SWIGTYPE_p_mfem__LinearAccelerationSolver swig_types[29]
-#define SWIGTYPE_p_mfem__NewmarkSolver swig_types[30]
-#define SWIGTYPE_p_mfem__ODESolver swig_types[31]
-#define SWIGTYPE_p_mfem__Operator swig_types[32]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[33]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[34]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[35]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[36]
-#define SWIGTYPE_p_mfem__RK2Solver swig_types[37]
-#define SWIGTYPE_p_mfem__RK3SSPSolver swig_types[38]
-#define SWIGTYPE_p_mfem__RK4Solver swig_types[39]
-#define SWIGTYPE_p_mfem__RK6Solver swig_types[40]
-#define SWIGTYPE_p_mfem__RK8Solver swig_types[41]
-#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[42]
-#define SWIGTYPE_p_mfem__SDIRK23Solver swig_types[43]
-#define SWIGTYPE_p_mfem__SDIRK33Solver swig_types[44]
-#define SWIGTYPE_p_mfem__SDIRK34Solver swig_types[45]
-#define SWIGTYPE_p_mfem__SIA1Solver swig_types[46]
-#define SWIGTYPE_p_mfem__SIA2Solver swig_types[47]
-#define SWIGTYPE_p_mfem__SIASolver swig_types[48]
-#define SWIGTYPE_p_mfem__SIAVSolver swig_types[49]
-#define SWIGTYPE_p_mfem__ScaledOperator swig_types[50]
-#define SWIGTYPE_p_mfem__SecondOrderODESolver swig_types[51]
-#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[52]
-#define SWIGTYPE_p_mfem__Solver swig_types[53]
-#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[54]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[55]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[56]
-#define SWIGTYPE_p_mfem__TrapezoidalRuleSolver swig_types[57]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[58]
-#define SWIGTYPE_p_mfem__Vector swig_types[59]
-#define SWIGTYPE_p_mfem__WBZAlphaSolver swig_types[60]
-static swig_type_info *swig_types[62];
-static swig_module_info swig_module = {swig_types, 61, 0, 0, 0, 0};
+#define SWIGTYPE_p_int swig_types[3]
+#define SWIGTYPE_p_mfem__AB1Solver swig_types[4]
+#define SWIGTYPE_p_mfem__AB2Solver swig_types[5]
+#define SWIGTYPE_p_mfem__AB3Solver swig_types[6]
+#define SWIGTYPE_p_mfem__AB4Solver swig_types[7]
+#define SWIGTYPE_p_mfem__AB5Solver swig_types[8]
+#define SWIGTYPE_p_mfem__AM0Solver swig_types[9]
+#define SWIGTYPE_p_mfem__AM1Solver swig_types[10]
+#define SWIGTYPE_p_mfem__AM2Solver swig_types[11]
+#define SWIGTYPE_p_mfem__AM3Solver swig_types[12]
+#define SWIGTYPE_p_mfem__AM4Solver swig_types[13]
+#define SWIGTYPE_p_mfem__AdamsBashforthSolver swig_types[14]
+#define SWIGTYPE_p_mfem__AdamsMoultonSolver swig_types[15]
+#define SWIGTYPE_p_mfem__AverageAccelerationSolver swig_types[16]
+#define SWIGTYPE_p_mfem__BackwardEulerSolver swig_types[17]
+#define SWIGTYPE_p_mfem__CentralDifferenceSolver swig_types[18]
+#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[19]
+#define SWIGTYPE_p_mfem__ESDIRK32Solver swig_types[20]
+#define SWIGTYPE_p_mfem__ESDIRK33Solver swig_types[21]
+#define SWIGTYPE_p_mfem__ExplicitRKSolver swig_types[22]
+#define SWIGTYPE_p_mfem__ForwardEulerSolver swig_types[23]
+#define SWIGTYPE_p_mfem__FoxGoodwinSolver swig_types[24]
+#define SWIGTYPE_p_mfem__GeneralizedAlpha2Solver swig_types[25]
+#define SWIGTYPE_p_mfem__GeneralizedAlphaSolver swig_types[26]
+#define SWIGTYPE_p_mfem__HHTAlphaSolver swig_types[27]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[28]
+#define SWIGTYPE_p_mfem__ImplicitMidpointSolver swig_types[29]
+#define SWIGTYPE_p_mfem__LinearAccelerationSolver swig_types[30]
+#define SWIGTYPE_p_mfem__NewmarkSolver swig_types[31]
+#define SWIGTYPE_p_mfem__ODESolver swig_types[32]
+#define SWIGTYPE_p_mfem__Operator swig_types[33]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[34]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[35]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[36]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[37]
+#define SWIGTYPE_p_mfem__RK2Solver swig_types[38]
+#define SWIGTYPE_p_mfem__RK3SSPSolver swig_types[39]
+#define SWIGTYPE_p_mfem__RK4Solver swig_types[40]
+#define SWIGTYPE_p_mfem__RK6Solver swig_types[41]
+#define SWIGTYPE_p_mfem__RK8Solver swig_types[42]
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[43]
+#define SWIGTYPE_p_mfem__SDIRK23Solver swig_types[44]
+#define SWIGTYPE_p_mfem__SDIRK33Solver swig_types[45]
+#define SWIGTYPE_p_mfem__SDIRK34Solver swig_types[46]
+#define SWIGTYPE_p_mfem__SIA1Solver swig_types[47]
+#define SWIGTYPE_p_mfem__SIA2Solver swig_types[48]
+#define SWIGTYPE_p_mfem__SIASolver swig_types[49]
+#define SWIGTYPE_p_mfem__SIAVSolver swig_types[50]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[51]
+#define SWIGTYPE_p_mfem__SecondOrderODESolver swig_types[52]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[53]
+#define SWIGTYPE_p_mfem__Solver swig_types[54]
+#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[55]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[56]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[57]
+#define SWIGTYPE_p_mfem__TrapezoidalRuleSolver swig_types[58]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[59]
+#define SWIGTYPE_p_mfem__Vector swig_types[60]
+#define SWIGTYPE_p_mfem__WBZAlphaSolver swig_types[61]
+static swig_type_info *swig_types[63];
+static swig_module_info swig_module = {swig_types, 62, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -13048,6 +13049,7 @@ static void *_p_mfem__CentralDifferenceSolverTo_p_mfem__NewmarkSolver(void *x, i
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__AB1Solver = {"_p_mfem__AB1Solver", "mfem::AB1Solver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__AB2Solver = {"_p_mfem__AB2Solver", "mfem::AB2Solver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__AB3Solver = {"_p_mfem__AB3Solver", "mfem::AB3Solver *", 0, 0, (void*)0, 0};
@@ -13111,6 +13113,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
   &_swigt__p_double,
+  &_swigt__p_int,
   &_swigt__p_mfem__AB1Solver,
   &_swigt__p_mfem__AB2Solver,
   &_swigt__p_mfem__AB3Solver,
@@ -13174,6 +13177,7 @@ static swig_type_info *swig_type_initial[] = {
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__AB1Solver[] = {  {&_swigt__p_mfem__AB1Solver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__AB2Solver[] = {  {&_swigt__p_mfem__AB2Solver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__AB3Solver[] = {  {&_swigt__p_mfem__AB3Solver, 0, 0, 0},{0, 0, 0, 0}};
@@ -13237,6 +13241,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
   _swigc__p_double,
+  _swigc__p_int,
   _swigc__p_mfem__AB1Solver,
   _swigc__p_mfem__AB2Solver,
   _swigc__p_mfem__AB3Solver,

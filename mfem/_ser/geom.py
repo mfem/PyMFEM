@@ -302,7 +302,13 @@ class GeometryTypeArray(object):
         _geom.GeometryTypeArray_swiginit(self, _geom.new_GeometryTypeArray(*args))
 
         if len(args) == 1 and isinstance(args[0], list):
-            self.MakeDataOwner()
+            if (len(args[0]) == 2 and hasattr(args[0][0], 'disown') and
+         not hasattr(args[0][1], 'disown')):
+        ## first element is SwigObject, like <Swig Object of type 'int *'>
+        ## We do not own data in this case.
+                pass
+            else:
+                self.MakeDataOwner()
 
 
 
@@ -476,13 +482,21 @@ class GeometryTypeArray(object):
 
     def __setitem__(self, i, v):
         r"""__setitem__(GeometryTypeArray self, int i, mfem::Geometry::Type const v)"""
+
+        i = int(i)
+
+
         return _geom.GeometryTypeArray___setitem__(self, i, v)
-    __setitem__ = _swig_new_instance_method(_geom.GeometryTypeArray___setitem__)
+
 
     def __getitem__(self, i):
         r"""__getitem__(GeometryTypeArray self, int const i) -> mfem::Geometry::Type const &"""
+
+        i = int(i)
+
+
         return _geom.GeometryTypeArray___getitem__(self, i)
-    __getitem__ = _swig_new_instance_method(_geom.GeometryTypeArray___getitem__)
+
 
     def Assign(self, *args):
         r"""
@@ -494,6 +508,25 @@ class GeometryTypeArray(object):
 
     def ToList(self):
         return [self[i] for i in range(self.Size())]
+
+
+
+    def __iter__(self):
+        class iter_array:
+            def __init__(self, obj):
+                self.obj = obj
+                self.idx = 0
+                self.size = obj.Size()
+            def __iter__(self):
+                self.idx = 0
+            def __next__(self):
+                if self.idx < self.size:
+                    res = self.obj[self.idx]
+                    self.idx += 1
+                    return res
+                else:
+                    raise StopIteration
+        return iter_array(self)
 
 
 
