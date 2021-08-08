@@ -167,5 +167,3 @@ if verbose:  # note that err should be evaulated on all nodes
 
 x.Save('sol.'+smyid)
 pmesh.Print('mesh.'+smyid)
-    
-

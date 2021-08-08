@@ -155,9 +155,7 @@ while True:
     b.Update()
 
     if ((it + 1) % 5) == 0:
-        pmesh.ParPrint("ex6p-checkpoint."+smyid, 8)        
+        pmesh.ParPrint("ex6p-checkpoint."+smyid, 8)
         if myid == 0:
             print("Checkpoint saved")
     it = it + 1
-
-    

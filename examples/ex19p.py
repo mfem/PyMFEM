@@ -199,13 +199,15 @@ def ex19_main(args):
  complement S = B K^-1 B^T. The Schur complement is approximated using
  a mass matrix of the pressure variables.
 '''
+
+
 class GeneralResidualMonitor(mfem.IterativeSolverMonitor):
     def __init__(self, prefix, print_level):
         mfem.IterativeSolverMonitor.__init__(self)
         if myid == 0:
             self.print_level = print_level
         else:
-            self.print_level = -1            
+            self.print_level = -1
         self.prefix = prefix
         self.norm = 0
 

@@ -123,17 +123,16 @@ def run(order=1,
     mVarf = mfem.BilinearForm(R_space)
     bVarf = mfem.MixedBilinearForm(R_space, W_space)
 
-
     if pa:
         mVarf.SetAssemblyLevel(mfem.AssemblyLevel_PARTIAL)
-    mVarf.AddDomainIntegrator(mfem.VectorFEMassIntegrator(k))        
+    mVarf.AddDomainIntegrator(mfem.VectorFEMassIntegrator(k))
     mVarf.Assemble()
     if not pa:
         mVarf.Finalize()
 
     if pa:
         bVarf.SetAssemblyLevel(mfem.AssemblyLevel_PARTIAL)
-    bVarf.AddDomainIntegrator(mfem.VectorFEDivergenceIntegrator())        
+    bVarf.AddDomainIntegrator(mfem.VectorFEDivergenceIntegrator())
     bVarf.Assemble()
     if not pa:
         bVarf.Finalize()

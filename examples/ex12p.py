@@ -43,7 +43,7 @@ parser.add_argument("-s", "--seed",
                     action='store', default=66, type=int,
                     help="Random seed used to initialize LOBPCG.")
 parser.add_argument('-elast', '--amg-for-elasticity',
-                    action='store_true', 
+                    action='store_true',
                     help='Use the special AMG elasticity solver (GM/LN approaches)',
                     dest='amg_elast', default=False)
 parser.add_argument('-sys', '--amg-for-systems',
@@ -149,7 +149,6 @@ m.AddDomainIntegrator(mfem.VectorMassIntegrator())
 m.Assemble()
 
 # shift the eigenvalue corresponding to eliminated dofs to a large value
-import sys
 m.EliminateEssentialBCDiag(ess_bdr,  sys.float_info.min)
 m.Finalize()
 if (myid == 0):

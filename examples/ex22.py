@@ -358,7 +358,6 @@ def run(mesh_file="",
     print("|| Re (u_h - u) ||_{L^2} = " + "{:g}".format(err_r))
     print("|| Im (u_h - u) ||_{L^2} = " + "{:g}".format(err_i))
 
-
     # 13. Save the refined mesh and the solution. This output can be viewed
     #     later using GLVis: "glvis -m mesh -g sol".
     mesh.Print("refined.mesh", 8)

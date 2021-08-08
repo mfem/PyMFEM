@@ -229,8 +229,8 @@ while not done:
             sout.send_text("parallel " + str(num_procs) + " " + str(myid))
             sout.send_solution(pmesh, mom)
             sout.flush()
-            
-if myid==0:
+
+if myid == 0:
     print("done")
 
 # 11. Save the final solution. This output can be viewed later using GLVis:
