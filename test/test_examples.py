@@ -67,6 +67,9 @@ ignore_txt_dict = {'ex15p': ['seconds', 'residual', ],
                    'ex10p': ['iteration', 'seconds', 'residual', 'rtol'],
                    'ex13p': ['iteration', 'seconds', 'residual', ]}
 
+options_def = []
+options_dict = {'ex28p': ['-p', '1e3']}
+
 
 def run_file(command, num=5):
     t1 = time.time()
@@ -194,8 +197,10 @@ def run_test(mfem_exes, pymfem_exes, sandbox, serial=True, np=2, verbose=False):
 
     for e1, e2 in zip(mfem_exes, pymfem_exes):
         case = os.path.basename(e1)
-
+        opts = options_dict.get(case, options_def)
+        
         print("Running : " + case)
+        
         path = os.path.join(sandbox, case)
         os.makedirs(path)
         os.chdir(path)
@@ -206,7 +211,7 @@ def run_test(mfem_exes, pymfem_exes, sandbox, serial=True, np=2, verbose=False):
         os.makedirs(path)
         os.chdir(path)
         
-        comm = comm_mpi + [e1]
+        comm = comm_mpi + [e1] + opts
         t1, l1 = run_file(comm, num=5)
 
         print("Running : " + os.path.basename(e2))
@@ -216,7 +221,7 @@ def run_test(mfem_exes, pymfem_exes, sandbox, serial=True, np=2, verbose=False):
         os.chdir(path)
 
         # note -u is unbuffered option
-        comm = comm_mpi + [sys.executable,  "-u", e2]
+        comm = comm_mpi + [sys.executable,  "-u", e2] + opts
         t2, l2 = run_file(comm, num=5)
 
         flag1 = compare_results(l1, l2, case, verbose=verbose)

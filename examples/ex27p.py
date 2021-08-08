@@ -1,5 +1,5 @@
 '''
-   MFEM example 27
+   MFEM example 27p
       See c++ version in the MFEM library for more detail 
 '''
 import os
@@ -13,7 +13,6 @@ from mpi4py import MPI
 num_procs = MPI.COMM_WORLD.size
 myid = MPI.COMM_WORLD.rank
 smyid = '.'+'{:0>6d}'.format(myid)
-
 
 def generate_serial_mesh(ref, a_):
 
