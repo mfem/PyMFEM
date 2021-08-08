@@ -163,7 +163,6 @@ def run(order=1,
     mVarf.Assemble()
     if not pa:
         mVarf.Finalize()
-    M = mVarf.ParallelAssemble()
 
     if pa:
         bVarf.SetAssemblyLevel(mfem.AssemblyLevel_PARTIAL)
