@@ -30,6 +30,7 @@ import_array();
 %import "fespace.i"
 %import "operators.i"
 %import "sparsemat.i"
+%import "hypre.i"
 %import "solvers.i"
 
 %include "linalg/constraints.hpp"
