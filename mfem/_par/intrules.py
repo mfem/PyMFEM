@@ -251,13 +251,21 @@ class IntegrationPointArray(object):
 
     def __setitem__(self, i, v):
         r"""__setitem__(IntegrationPointArray self, int i, IntegrationPoint v)"""
+
+        i = int(i)
+
+
         return _intrules.IntegrationPointArray___setitem__(self, i, v)
-    __setitem__ = _swig_new_instance_method(_intrules.IntegrationPointArray___setitem__)
+
 
     def __getitem__(self, i):
         r"""__getitem__(IntegrationPointArray self, int const i) -> IntegrationPoint"""
+
+        i = int(i)
+
+
         return _intrules.IntegrationPointArray___getitem__(self, i)
-    __getitem__ = _swig_new_instance_method(_intrules.IntegrationPointArray___getitem__)
+
 
     def Assign(self, *args):
         r"""

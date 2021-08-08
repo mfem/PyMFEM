@@ -14,6 +14,7 @@ num_procs = MPI.COMM_WORLD.size
 myid = MPI.COMM_WORLD.rank
 smyid = '.'+'{:0>6d}'.format(myid)
 
+
 def build_trapezoid_mesh(offset):
     assert offset < 0.9, "offset is too large!"
 
@@ -40,10 +41,12 @@ def build_trapezoid_mesh(offset):
 
     return mesh
 
+
 def print0(*args):
     if myid == 0:
         print(*args)
-        
+
+
 def run(order=1,
         offset=0.3,
         reorder_space=True,
@@ -66,7 +69,7 @@ def run(order=1,
 
     pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
     pmesh.UniformRefinement()
-    
+
     # 4. Define a finite element space on the mesh. Here we use vector finite
     #    elements, i.e. dim copies of a scalar finite element space. The vector
     #    dimension is specified by the last argument of the FiniteElementSpace
@@ -78,9 +81,11 @@ def run(order=1,
     else:
         fec = mfem.H1_FECollection(order, dim)
         if reorder_space:
-           fespace = mfem.ParFiniteElementSpace(pmesh, fec, dim, mfem.Ordering.byNODES)
+            fespace = mfem.ParFiniteElementSpace(
+                pmesh, fec, dim, mfem.Ordering.byNODES)
         else:
-           fespace = mfem.ParFiniteElementSpace(pmesh, fec, dim, mfem.Ordering.byVDIM)
+            fespace = mfem.ParFiniteElementSpace(
+                pmesh, fec, dim, mfem.Ordering.byVDIM)
 
     s = fespace.GlobalTrueVSize()
     print0("Number of finite element unknowns: " + str(s))
@@ -149,16 +154,16 @@ def run(order=1,
     constraint_atts = mfem.intArray([1, 4])
     constraint_rowstarts = mfem.intArray()
     local_constraints = mfem.ParBuildNormalConstraints(fespace,
-                                                    constraint_atts,
-                                                    constraint_rowstarts)
+                                                       constraint_atts,
+                                                       constraint_rowstarts)
 
     # 11. Define and apply an iterative solver for the constrained system
     #     in saddle-point form with a Gauss-Seidel smoother for the
     #     displacement block.
     if penalty == 0.0:
         solver = mfem.EliminationCGSolver(A, local_constraints,
-                                           constraint_rowstarts, dim,
-                                           reorder_space)
+                                          constraint_rowstarts, dim,
+                                          reorder_space)
     else:
         solver = mfem.PenaltyPCGSolver(A, local_constraints, penalty,
                                        dim, reorder_space)
@@ -175,7 +180,7 @@ def run(order=1,
 
     if not use_nodal_space:
         pmesh.SetNodalFESpace(fespace)
-        
+
     nodes = pmesh.GetNodes()
     nodes += x
 
@@ -212,10 +217,10 @@ if __name__ == "__main__":
                         action='store', default=1, type=int,
                         help="Finite element order (polynomial degree)")
     parser.add_argument('-nodes', '--by-nodes',
-                        action='store_true', 
+                        action='store_true',
                         help="Use byNODES ordering of vector space")
     parser.add_argument('-vdim', '--by-vdim',
-                        action='store_true', 
+                        action='store_true',
                         help="Use byVDIM ordering of vector space")
     parser.add_argument('-offset', '--offset',
                         action='store', default=0.3, type=float,
@@ -229,7 +234,7 @@ if __name__ == "__main__":
     parser.add_argument('-p', '--penalty',
                         action='store', default=0.0, type=float,
                         help="Penalty parameter; 0 means use elemination solver")
-                        
+
     args = parser.parse_args()
 
     reorder_space = False
@@ -237,9 +242,9 @@ if __name__ == "__main__":
         reorder_space = True
     if args.by_vdim:
         reorder_space = False
-    args.by_nodes =  reorder_space
-    args.by_vdim =  not reorder_space
-    
+    args.by_nodes = reorder_space
+    args.by_vdim = not reorder_space
+
     if myid == 0:
         parser.print_options(args)
 
