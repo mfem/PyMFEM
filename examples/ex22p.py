@@ -14,10 +14,11 @@ num_procs = MPI.COMM_WORLD.size
 myid = MPI.COMM_WORLD.rank
 smyid = '.'+'{:0>6d}'.format(myid)
 
+
 def run(mesh_file="",
         order=1,
         ser_ref_levels=0,
-        par_ref_levels=0,        
+        par_ref_levels=0,
         visualization=1,
         prob=0,
         herm_conv=True,
@@ -61,7 +62,6 @@ def run(mesh_file="",
     pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
     for i in range(par_ref_levels):
         pmesh.UniformRefinement()
-    
 
     # 5. Define a finite element space on the mesh. Here we use continuous
     #    Lagrange, Nedelec, or Raviart-Thomas finite elements of the specified
@@ -222,7 +222,7 @@ def run(mesh_file="",
         ) << "window_title 'Exact: Real Part'"
         sol_sock_r.flush()
         sol_sock_i = mfem.socketstream("localhost", 19916)
-        sol_sock_i << "parallel " << num_procs << " " << myid << "\n"        
+        sol_sock_i << "parallel " << num_procs << " " << myid << "\n"
         sol_sock_i.precision(8)
         sol_sock_i << "solution\n" << pmesh << u_exact.imag(
         ) << "window_title 'Exact: Imag Part'"
@@ -308,7 +308,7 @@ def run(mesh_file="",
     a.FormLinearSystem(ess_tdof_list, u, b, A, U, B)
 
     if myid == 0:
-         print("Size of linear system: " + str(2*global_dof))
+        print("Size of linear system: " + str(2*global_dof))
 
     # 11. Define and apply a GMRES solver for AU=B with a block diagonal
     #     preconditioner based on the appropriate sparse smoother.
@@ -336,7 +336,7 @@ def run(mesh_file="",
             if dim == 2:
                 pc_r = mfem.HypreAMS(PCOp.AsHypreParMatrix(), fespace)
             else:
-                pc_r = mfem.HypreADS(PCOp.AsHypreParMatrix(), fespace)                
+                pc_r = mfem.HypreADS(PCOp.AsHypreParMatrix(), fespace)
 
     pc_i = mfem.ScaledOperator(pc_r,
                                -1 if conv == mfem.ComplexOperator.HERMITIAN else 1)
@@ -388,9 +388,9 @@ def run(mesh_file="",
         sol_sock_r.precision(8)
         sol_sock_r << "solution\n" << pmesh << u.real(
         ) << "window_title 'Solution: Real Part'"
-        
+
         sol_sock_i = mfem.socketstream("localhost", 19916)
-        sol_sock_i << "parallel " << num_procs << " " << myid << "\n"                
+        sol_sock_i << "parallel " << num_procs << " " << myid << "\n"
         sol_sock_i.precision(8)
         sol_sock_i << "solution\n" << pmesh << u.imag(
         ) << "window_title 'Solution: Imag Part'"
@@ -412,7 +412,7 @@ def run(mesh_file="",
         u_t = mfem.ParGridFunction(fespace)
         u_t.Assign(u.real())
         sol_sock = mfem.socketstream("localhost", 19916)
-        sol_sock << "parallel " << num_procs << " " << myid << "\n"        
+        sol_sock << "parallel " << num_procs << " " << myid << "\n"
         sol_sock.precision(8)
         sol_sock << "solution\n" << pmesh << u_t
         sol_sock << "window_title 'Harmonic Solution (t = 0.0 T)'"
@@ -420,7 +420,8 @@ def run(mesh_file="",
         sol_sock.flush()
 
         if myid == 0:
-            print("GLVis visualization paused. Press space (in the GLVis window) to resume it.")
+            print(
+                "GLVis visualization paused. Press space (in the GLVis window) to resume it.")
         num_frames = 32
         i = 0
 
@@ -432,7 +433,7 @@ def run(mesh_file="",
                   sin(2.0 * pi * t)*u.imag().GetDataArray())
             # we can not load numpy directly...(sorry)
             u_t.Assign(mfem.Vector(dd))
-            sol_sock << "parallel " << num_procs << " " << myid << "\n"                    
+            sol_sock << "parallel " << num_procs << " " << myid << "\n"
             sol_sock << "solution\n" << pmesh << u_t
             sol_sock << "window_title '" << oss << "'"
             sol_sock.flush()
@@ -508,7 +509,7 @@ if __name__ == "__main__":
 
     herm = False if args.no_hermitian else True
     args.hermitian = herm
-    args.no_hermitian = not herm    
+    args.no_hermitian = not herm
     if myid == 0:
         parser.print_options(args)
 

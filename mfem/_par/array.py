@@ -313,13 +313,21 @@ class intArray(object):
 
     def __setitem__(self, i, v):
         r"""__setitem__(intArray self, int i, int const v)"""
+
+        i = int(i)
+
+
         return _array.intArray___setitem__(self, i, v)
-    __setitem__ = _swig_new_instance_method(_array.intArray___setitem__)
+
 
     def __getitem__(self, i):
         r"""__getitem__(intArray self, int const i) -> int const &"""
+
+        i = int(i)
+
+
         return _array.intArray___getitem__(self, i)
-    __getitem__ = _swig_new_instance_method(_array.intArray___getitem__)
+
 
     def Assign(self, *args):
         r"""
@@ -631,13 +639,21 @@ class doubleArray(object):
 
     def __setitem__(self, i, v):
         r"""__setitem__(doubleArray self, int i, double const v)"""
+
+        i = int(i)
+
+
         return _array.doubleArray___setitem__(self, i, v)
-    __setitem__ = _swig_new_instance_method(_array.doubleArray___setitem__)
+
 
     def __getitem__(self, i):
         r"""__getitem__(doubleArray self, int const i) -> double const &"""
+
+        i = int(i)
+
+
         return _array.doubleArray___getitem__(self, i)
-    __getitem__ = _swig_new_instance_method(_array.doubleArray___getitem__)
+
 
     def Assign(self, *args):
         r"""

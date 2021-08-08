@@ -28,6 +28,7 @@ num_procs = MPI.COMM_WORLD.size
 myid = MPI.COMM_WORLD.rank
 smyid = '{:0>6d}'.format(myid)
 
+
 def run(order=1, meshfile=''):
     '''
     run ex0
@@ -84,7 +85,7 @@ def run(order=1, meshfile=''):
     cg.SetPreconditioner(M)
     cg.SetOperator(A)
     cg.Mult(B, X)
-    
+
     # 10. Recover the solution x as a grid function and save to file. The output
     #     can be viewed using GLVis as follows: "glvis -m mesh.mesh -g sol.gf"
     a.RecoverFEMSolution(X, b, x)

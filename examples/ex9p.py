@@ -234,6 +234,7 @@ class FE_Evolution(mfem.PyTimeDependentOperator):
 #        such as numpy.. this needs to be implemented and don't
 #        overwrite Mult
 
+
     def Mult(self, x, y):
         self.K.Mult(x, self.z)
         self.z += b
@@ -252,7 +253,7 @@ while True:
     ti = ti + 1
     if ti % vis_steps == 0:
         if myid == 0:
-            print("time step: " + str(ti) + ", time: " + str(np.round(t, 3)))            
+            print("time step: " + str(ti) + ", time: " + str(np.round(t, 3)))
 
 
 u.Assign(U)

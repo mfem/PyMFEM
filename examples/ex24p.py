@@ -417,7 +417,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if myid == 0:
-         parser.print_options(args)
+        parser.print_options(args)
 
     meshfile = expanduser(
         join(os.path.dirname(__file__), '..', 'data', args.mesh))

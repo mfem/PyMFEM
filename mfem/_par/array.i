@@ -58,6 +58,12 @@ DOUBLEPTR_SIZE_IN(double *data_, int asize)
   void __iter__(void){}
 };
 namespace mfem{
+%pythonprepend Array::__setitem__ %{
+    i = int(i)
+%}
+%pythonprepend Array::__getitem__ %{
+    i = int(i)
+%}  
 %feature("shadow")Array::FakeToList %{
 def ToList(self):
     return [self[i] for i in range(self.Size())]

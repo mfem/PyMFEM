@@ -14,6 +14,7 @@ num_procs = MPI.COMM_WORLD.size
 myid = MPI.COMM_WORLD.rank
 smyid = '.'+'{:0>6d}'.format(myid)
 
+
 def run(order_refinements=2,
         geometric_refinements=0,
         mesh_file='',
@@ -50,11 +51,12 @@ def run(order_refinements=2,
             self.ConstructBilinearForm(coarse_fespace, ess_bdr, False)
 
             hypreCoarseMat = mfem.HypreParMatrix()
-            self.bfs[-1].FormSystemMatrix(self.essentialTrueDofs[-1], hypreCoarseMat)
+            self.bfs[-1].FormSystemMatrix(self.essentialTrueDofs[-1],
+                                          hypreCoarseMat)
 
             amg = mfem.HypreBoomerAMG(hypreCoarseMat)
             amg.SetPrintLevel(-1)
-            
+
             pcg = mfem.CGSolver(MPI.COMM_WORLD)
             pcg.SetPrintLevel(-1)
             pcg.SetMaxIter(200)
@@ -100,7 +102,7 @@ def run(order_refinements=2,
 
     pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
     pmesh.UniformRefinement()
-    pmesh.UniformRefinement()    
+    pmesh.UniformRefinement()
 
     # 5. Define a finite element space hierarchy on the mesh. Here we use
     #    continuous Lagrange finite elements. We start with order 1 on the

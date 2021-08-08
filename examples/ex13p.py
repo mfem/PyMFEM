@@ -105,10 +105,10 @@ if visualization:
     for i in range(nev):
         mode_sock = mfem.socketstream("localhost", 19916)
         mode_sock.precision(8)
-        
+
         if (myid == 0):
-             print("Eigenmode " + str(i+1) + '/' + str(nev) +
-                   ", Lambda = " + str(eigenvalues[i]))
+            print("Eigenmode " + str(i+1) + '/' + str(nev) +
+                  ", Lambda = " + str(eigenvalues[i]))
 
         x.Assign(ame.GetEigenvector(i))
         mode_sock << "parallel " << num_procs << " " << myid << "\n"
@@ -117,12 +117,12 @@ if visualization:
         mode_sock << "window_title 'Eigenmode " << i+1 << '/' << nev
         mode_sock << ", Lambda = " << "{:g}".format(eigenvalues[i]) << "'"
         mode_sock.endline()
-        
+
         if (myid == 0):
             from builtins import input
             c = input("press (q)uit or (c)ontinue --> ")
         else:
-            c = None        
+            c = None
         c = MPI.COMM_WORLD.bcast(c, root=0)
         if (c != 'c'):
             sys.exit()

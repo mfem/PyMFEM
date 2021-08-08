@@ -3,6 +3,9 @@
 
    See c++ version in the MFEM library for more detail 
 '''
+import time
+from numpy import sin, cos, exp
+import numpy as np
 from mfem import path
 import mfem.par as mfem
 from mfem.par import intArray
@@ -16,15 +19,13 @@ myid = MPI.COMM_WORLD.rank
 smyid = '{:0>6d}'.format(myid)
 verbose = (myid == 0)
 
-import numpy as np
-from numpy import sin, cos, exp
 
 # time.clock deprecated and removed in PY3.8
-import time
 try:
     clock = time.process_time
 except AttributeError:
     clock = time.clock
+
 
 def run(order=1,
         refine=-1,
@@ -44,7 +45,6 @@ def run(order=1,
         from numpy import sin, cos, exp
         return exp(xi)*sin(yi)*cos(zi)
 
-
     class uFunc_ex(mfem.VectorPyCoefficient):
         def EvalValue(self, x):
             xi = float(x[0])
@@ -58,11 +58,9 @@ def run(order=1,
                 ret.append(exp(xi)*sin(yi)*sin(zi))
             return ret
 
-
     class pFunc_ex(mfem.PyCoefficient):
         def EvalValue(self, x):
             return pFunc_exact(x)
-
 
     class fFunc(mfem.VectorPyCoefficient):
         def EvalValue(self, x):
@@ -71,7 +69,6 @@ def run(order=1,
             else:
                 return [0., 0.]
 
-
     class gFunc(mfem.PyCoefficient):
         def EvalValue(self, x):
             if len(x) == 3:
@@ -79,11 +76,9 @@ def run(order=1,
             else:
                 return 0.0
 
-
     class f_natural(mfem.PyCoefficient):
         def EvalValue(self, x):
             return -pFunc_exact(x)
-
 
     device = mfem.Device(device)
     if myid == 0:
@@ -95,9 +90,9 @@ def run(order=1,
     if refine == -1:
         ref_levels = int(np.floor(np.log(10000./mesh.GetNE())/np.log(2.)/dim))
         for x in range(ref_levels):
-             mesh.UniformRefinement()
+            mesh.UniformRefinement()
     for i in range(refine):
-        mesh.UniformRefinement()        
+        mesh.UniformRefinement()
 
     pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
     par_ref_levels = 2
@@ -144,7 +139,8 @@ def run(order=1,
     fform = mfem.ParLinearForm()
     fform.Update(R_space, rhs.GetBlock(0), 0)
     fform.AddDomainIntegrator(mfem.VectorFEDomainLFIntegrator(fcoeff))
-    fform.AddBoundaryIntegrator(mfem.VectorFEBoundaryFluxLFIntegrator(fnatcoeff))
+    fform.AddBoundaryIntegrator(
+        mfem.VectorFEBoundaryFluxLFIntegrator(fnatcoeff))
     fform.Assemble()
     fform.ParallelAssemble(trueRhs.GetBlock(0))
 
@@ -170,42 +166,43 @@ def run(order=1,
     bVarf.Assemble()
     if not pa:
         bVarf.Finalize()
-        
+
     darcyOp = mfem.BlockOperator(block_trueOffsets)
-    
-    if pa:
-         opM = mfem.OperatorPtr()
-         opB = mfem.OperatorPtr()        
-
-         empty_tdof_list = mfem.intArray()
-         mVarf.FormSystemMatrix(empty_tdof_list, opM)
-         bVarf.FormRectangularSystemMatrix(empty_tdof_list, empty_tdof_list, opB)
-         Bt = mfem.TransposeOperator(opB.Ptr())
-
-         darcyOp.SetBlock(0,0, opM.Ptr())
-         darcyOp.SetBlock(0,1, Bt, -1.0)
-         darcyOp.SetBlock(1,0, opB.Ptr(), -1.0)
-    else: 
-         M = mVarf.ParallelAssemble()
-         B = bVarf.ParallelAssemble()
-         B *= -1
-         Bt = mfem.TransposeOperator(B)
-
-         darcyOp.SetBlock(0, 0, M)
-         darcyOp.SetBlock(0, 1, Bt)
-         darcyOp.SetBlock(1, 0, B)
 
     if pa:
-         Md_PA = mfem.Vector(R_space.GetTrueVSize())
-         mVarf.AssembleDiagonal(Md_PA)
-         Md_host = mfem.Vector(Md_PA.HostRead(), R_space.GetTrueVSize())
-         invMd = mfem.Vector(1.0 / Md_host.GetDataArray())
+        opM = mfem.OperatorPtr()
+        opB = mfem.OperatorPtr()
 
-         BMBt_diag = mfem.Vector(bVarf.Height())
-         bVarf.AssembleDiagonal_ADAt(invMd, BMBt_diag)
-         ess_tdof_list = mfem.intArray()
-         invM = mfem.OperatorJacobiSmoother(Md_PA, ess_tdof_list)
-         invS = mfem.OperatorJacobiSmoother(BMBt_diag, ess_tdof_list)
+        empty_tdof_list = mfem.intArray()
+        mVarf.FormSystemMatrix(empty_tdof_list, opM)
+        bVarf.FormRectangularSystemMatrix(
+            empty_tdof_list, empty_tdof_list, opB)
+        Bt = mfem.TransposeOperator(opB.Ptr())
+
+        darcyOp.SetBlock(0, 0, opM.Ptr())
+        darcyOp.SetBlock(0, 1, Bt, -1.0)
+        darcyOp.SetBlock(1, 0, opB.Ptr(), -1.0)
+    else:
+        M = mVarf.ParallelAssemble()
+        B = bVarf.ParallelAssemble()
+        B *= -1
+        Bt = mfem.TransposeOperator(B)
+
+        darcyOp.SetBlock(0, 0, M)
+        darcyOp.SetBlock(0, 1, Bt)
+        darcyOp.SetBlock(1, 0, B)
+
+    if pa:
+        Md_PA = mfem.Vector(R_space.GetTrueVSize())
+        mVarf.AssembleDiagonal(Md_PA)
+        Md_host = mfem.Vector(Md_PA.HostRead(), R_space.GetTrueVSize())
+        invMd = mfem.Vector(1.0 / Md_host.GetDataArray())
+
+        BMBt_diag = mfem.Vector(bVarf.Height())
+        bVarf.AssembleDiagonal_ADAt(invMd, BMBt_diag)
+        ess_tdof_list = mfem.intArray()
+        invM = mfem.OperatorJacobiSmoother(Md_PA, ess_tdof_list)
+        invS = mfem.OperatorJacobiSmoother(BMBt_diag, ess_tdof_list)
     else:
         Md = mfem.HypreParVector(MPI.COMM_WORLD, M.GetGlobalNumRows(),
                                  M.GetRowStarts())
@@ -238,10 +235,9 @@ def run(order=1,
     solver.SetPreconditioner(darcyPr)
     solver.SetPrintLevel(1)
     trueX.Assign(0.0)
-    solver.Mult(trueRhs, trueX)    
+    solver.Mult(trueRhs, trueX)
     if device.IsEnabled():
         trueX.HostRead()
-
 
     solve_time = clock() - stime
 
@@ -273,24 +269,26 @@ def run(order=1,
     norm_p = mfem.ComputeGlobalLpNorm(2, pcoeff, pmesh, irs)
 
     if verbose:
-        print("|| u_h - u_ex || / || u_ex || = " + "{:g}".format(err_u / norm_u))
-        print("|| p_h - p_ex || / || p_ex || = " + "{:g}".format(err_p / norm_p))
+        print("|| u_h - u_ex || / || u_ex || = " +
+              "{:g}".format(err_u / norm_u))
+        print("|| p_h - p_ex || / || p_ex || = " +
+              "{:g}".format(err_p / norm_p))
 
     #  Save the refined mesh and the solution in parallel. This output can be
     #  viewed later using GLVis: "glvis -np <np> -m mesh -g sol_*".
     pmesh.Print('mesh.' + smyid, 8)
     u.Save('sol_u.' + smyid, 8)
-    p.Save('sol_p.' + smyid, 8)     
+    p.Save('sol_p.' + smyid, 8)
 
     # Save data in the Visit format
     visit_dc = mfem.VisItDataCollection("Example5-Parallel", pmesh)
     visit_dc.RegisterField("velocity", u)
     visit_dc.RegisterField("pressure", p)
     visit_format = (mfem.DataCollection.PARALLEL_FORMAT if par_format else
-              mfem.DataCollection.SERIAL_FORMAT)
+                    mfem.DataCollection.SERIAL_FORMAT)
     visit_dc.SetFormat(visit_format)
     visit_dc.Save()
-    
+
     # Save data in the ParaVier format
     paraview_dc = mfem.ParaViewDataCollection("Example5P", pmesh)
     paraview_dc.SetPrefixPath("ParaView")
@@ -303,7 +301,6 @@ def run(order=1,
     paraview_dc.RegisterField("pressure", p)
     paraview_dc.Save()
 
-
     if visualization:
         u_sock = mfem.socketstream("localhost", 19916)
         u_sock << "parallel " << num_procs << " " << myid << "\n"
@@ -311,10 +308,10 @@ def run(order=1,
         u_sock << "solution\n" << pmesh << u << "window_title 'Velocity'\n"
         MPI.Barrier()
         p_sock = mfem.socketstream("localhost", 19916)
-        p_sock << "parallel " << num_procs << " " << myid << "\n"        
+        p_sock << "parallel " << num_procs << " " << myid << "\n"
         p_sock.precision(8)
         p_sock << "solution\n" << pmesh << p << "window_title 'Pressure'\n"
-        
+
 
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
@@ -331,7 +328,7 @@ if __name__ == "__main__":
                         action='store', default=1, type=int,
                         help="Finite element order (polynomial degree) or -1 for isoparametric space.")
     parser.add_argument('-pf', '--parallel-format',
-                        action='store_true', 
+                        action='store_true',
                         help="Use parallel format for Visit output")
     parser.add_argument("-pa", "--partial-assembly",
                         action='store_true',
@@ -361,4 +358,3 @@ if __name__ == "__main__":
         par_format=args.parallel_format,
         device=device,
         pa=pa)
-    
