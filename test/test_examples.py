@@ -169,7 +169,7 @@ def do_compare_outputs(dir1, dir2):
            print("Contents does not agree: ", f)
            print("# "+str(mismatch) + "lines do not agree out of "+str(len(l1)))
            return False
-    print("No difference in generate files (Passed output file check)")
+    print("No difference in generate files (Passed output file check) in " + os.path.basename(dir1))
     return True
 
 def compare_outputs(case):        
