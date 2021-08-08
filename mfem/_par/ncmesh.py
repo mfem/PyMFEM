@@ -578,13 +578,21 @@ class RefinementArray(object):
 
     def __setitem__(self, i, v):
         r"""__setitem__(RefinementArray self, int i, Refinement v)"""
+
+        i = int(i)
+
+
         return _ncmesh.RefinementArray___setitem__(self, i, v)
-    __setitem__ = _swig_new_instance_method(_ncmesh.RefinementArray___setitem__)
+
 
     def __getitem__(self, i):
         r"""__getitem__(RefinementArray self, int const i) -> Refinement"""
+
+        i = int(i)
+
+
         return _ncmesh.RefinementArray___getitem__(self, i)
-    __getitem__ = _swig_new_instance_method(_ncmesh.RefinementArray___getitem__)
+
 
     def Assign(self, *args):
         r"""
