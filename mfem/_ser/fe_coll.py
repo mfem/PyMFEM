@@ -137,9 +137,9 @@ class FiniteElementCollection(object):
         return _fe_coll.FiniteElementCollection_GetContType(self)
     GetContType = _swig_new_instance_method(_fe_coll.FiniteElementCollection_GetContType)
 
-    def HasFaceDofs(self, GeomType):
-        r"""HasFaceDofs(FiniteElementCollection self, mfem::Geometry::Type GeomType) -> int"""
-        return _fe_coll.FiniteElementCollection_HasFaceDofs(self, GeomType)
+    def HasFaceDofs(self, geom, p):
+        r"""HasFaceDofs(FiniteElementCollection self, mfem::Geometry::Type geom, int p) -> int"""
+        return _fe_coll.FiniteElementCollection_HasFaceDofs(self, geom, p)
     HasFaceDofs = _swig_new_instance_method(_fe_coll.FiniteElementCollection_HasFaceDofs)
 
     def TraceFiniteElementForGeometry(self, GeomType):
@@ -163,6 +163,31 @@ class FiniteElementCollection(object):
         r"""SubDofOrder(FiniteElementCollection self, mfem::Geometry::Type Geom, int SDim, int Info, intArray dofs)"""
         return _fe_coll.FiniteElementCollection_SubDofOrder(self, Geom, SDim, Info, dofs)
     SubDofOrder = _swig_new_instance_method(_fe_coll.FiniteElementCollection_SubDofOrder)
+
+    def GetFE(self, geom, p):
+        r"""GetFE(FiniteElementCollection self, mfem::Geometry::Type geom, int p) -> FiniteElement"""
+        return _fe_coll.FiniteElementCollection_GetFE(self, geom, p)
+    GetFE = _swig_new_instance_method(_fe_coll.FiniteElementCollection_GetFE)
+
+    def GetNumDof(self, geom, p):
+        r"""GetNumDof(FiniteElementCollection self, mfem::Geometry::Type geom, int p) -> int"""
+        return _fe_coll.FiniteElementCollection_GetNumDof(self, geom, p)
+    GetNumDof = _swig_new_instance_method(_fe_coll.FiniteElementCollection_GetNumDof)
+
+    def GetDofOrdering(self, geom, p, ori):
+        r"""GetDofOrdering(FiniteElementCollection self, mfem::Geometry::Type geom, int p, int ori) -> int const *"""
+        return _fe_coll.FiniteElementCollection_GetDofOrdering(self, geom, p, ori)
+    GetDofOrdering = _swig_new_instance_method(_fe_coll.FiniteElementCollection_GetDofOrdering)
+
+    def GetOrder(self):
+        r"""GetOrder(FiniteElementCollection self) -> int"""
+        return _fe_coll.FiniteElementCollection_GetOrder(self)
+    GetOrder = _swig_new_instance_method(_fe_coll.FiniteElementCollection_GetOrder)
+
+    def Clone(self, p):
+        r"""Clone(FiniteElementCollection self, int p) -> FiniteElementCollection"""
+        return _fe_coll.FiniteElementCollection_Clone(self, p)
+    Clone = _swig_new_instance_method(_fe_coll.FiniteElementCollection_Clone)
 
 # Register FiniteElementCollection in _fe_coll:
 _fe_coll.FiniteElementCollection_swigregister(FiniteElementCollection)
@@ -207,20 +232,28 @@ class H1_FECollection(FiniteElementCollection):
         return _fe_coll.H1_FECollection_GetContType(self)
     GetContType = _swig_new_instance_method(_fe_coll.H1_FECollection_GetContType)
 
-    def GetTraceCollection(self):
-        r"""GetTraceCollection(H1_FECollection self) -> FiniteElementCollection"""
-        return _fe_coll.H1_FECollection_GetTraceCollection(self)
-    GetTraceCollection = _swig_new_instance_method(_fe_coll.H1_FECollection_GetTraceCollection)
-
     def GetBasisType(self):
         r"""GetBasisType(H1_FECollection self) -> int"""
         return _fe_coll.H1_FECollection_GetBasisType(self)
     GetBasisType = _swig_new_instance_method(_fe_coll.H1_FECollection_GetBasisType)
 
-    def GetDofMap(self, GeomType):
-        r"""GetDofMap(H1_FECollection self, mfem::Geometry::Type GeomType) -> int const *"""
-        return _fe_coll.H1_FECollection_GetDofMap(self, GeomType)
+    def GetTraceCollection(self):
+        r"""GetTraceCollection(H1_FECollection self) -> FiniteElementCollection"""
+        return _fe_coll.H1_FECollection_GetTraceCollection(self)
+    GetTraceCollection = _swig_new_instance_method(_fe_coll.H1_FECollection_GetTraceCollection)
+
+    def GetDofMap(self, *args):
+        r"""
+        GetDofMap(H1_FECollection self, mfem::Geometry::Type GeomType) -> int const
+        GetDofMap(H1_FECollection self, mfem::Geometry::Type GeomType, int p) -> int const *
+        """
+        return _fe_coll.H1_FECollection_GetDofMap(self, *args)
     GetDofMap = _swig_new_instance_method(_fe_coll.H1_FECollection_GetDofMap)
+
+    def Clone(self, p):
+        r"""Clone(H1_FECollection self, int p) -> FiniteElementCollection"""
+        return _fe_coll.H1_FECollection_Clone(self, p)
+    Clone = _swig_new_instance_method(_fe_coll.H1_FECollection_Clone)
     __swig_destroy__ = _fe_coll.delete_H1_FECollection
 
 # Register H1_FECollection in _fe_coll:
@@ -312,6 +345,11 @@ class L2_FECollection(FiniteElementCollection):
         r"""GetBasisType(L2_FECollection self) -> int"""
         return _fe_coll.L2_FECollection_GetBasisType(self)
     GetBasisType = _swig_new_instance_method(_fe_coll.L2_FECollection_GetBasisType)
+
+    def Clone(self, p):
+        r"""Clone(L2_FECollection self, int p) -> FiniteElementCollection"""
+        return _fe_coll.L2_FECollection_Clone(self, p)
+    Clone = _swig_new_instance_method(_fe_coll.L2_FECollection_Clone)
     __swig_destroy__ = _fe_coll.delete_L2_FECollection
 
 # Register L2_FECollection in _fe_coll:
@@ -356,6 +394,21 @@ class RT_FECollection(FiniteElementCollection):
         r"""GetTraceCollection(RT_FECollection self) -> FiniteElementCollection"""
         return _fe_coll.RT_FECollection_GetTraceCollection(self)
     GetTraceCollection = _swig_new_instance_method(_fe_coll.RT_FECollection_GetTraceCollection)
+
+    def GetClosedBasisType(self):
+        r"""GetClosedBasisType(RT_FECollection self) -> int"""
+        return _fe_coll.RT_FECollection_GetClosedBasisType(self)
+    GetClosedBasisType = _swig_new_instance_method(_fe_coll.RT_FECollection_GetClosedBasisType)
+
+    def GetOpenBasisType(self):
+        r"""GetOpenBasisType(RT_FECollection self) -> int"""
+        return _fe_coll.RT_FECollection_GetOpenBasisType(self)
+    GetOpenBasisType = _swig_new_instance_method(_fe_coll.RT_FECollection_GetOpenBasisType)
+
+    def Clone(self, p):
+        r"""Clone(RT_FECollection self, int p) -> FiniteElementCollection"""
+        return _fe_coll.RT_FECollection_Clone(self, p)
+    Clone = _swig_new_instance_method(_fe_coll.RT_FECollection_Clone)
     __swig_destroy__ = _fe_coll.delete_RT_FECollection
 
 # Register RT_FECollection in _fe_coll:
@@ -428,6 +481,21 @@ class ND_FECollection(FiniteElementCollection):
         r"""GetTraceCollection(ND_FECollection self) -> FiniteElementCollection"""
         return _fe_coll.ND_FECollection_GetTraceCollection(self)
     GetTraceCollection = _swig_new_instance_method(_fe_coll.ND_FECollection_GetTraceCollection)
+
+    def GetClosedBasisType(self):
+        r"""GetClosedBasisType(ND_FECollection self) -> int"""
+        return _fe_coll.ND_FECollection_GetClosedBasisType(self)
+    GetClosedBasisType = _swig_new_instance_method(_fe_coll.ND_FECollection_GetClosedBasisType)
+
+    def GetOpenBasisType(self):
+        r"""GetOpenBasisType(ND_FECollection self) -> int"""
+        return _fe_coll.ND_FECollection_GetOpenBasisType(self)
+    GetOpenBasisType = _swig_new_instance_method(_fe_coll.ND_FECollection_GetOpenBasisType)
+
+    def Clone(self, p):
+        r"""Clone(ND_FECollection self, int p) -> FiniteElementCollection"""
+        return _fe_coll.ND_FECollection_Clone(self, p)
+    Clone = _swig_new_instance_method(_fe_coll.ND_FECollection_Clone)
     __swig_destroy__ = _fe_coll.delete_ND_FECollection
 
 # Register ND_FECollection in _fe_coll:
@@ -1454,14 +1522,14 @@ class Local_FECollection(FiniteElementCollection):
         r"""__init__(Local_FECollection self, char const * fe_name) -> Local_FECollection"""
         _fe_coll.Local_FECollection_swiginit(self, _fe_coll.new_Local_FECollection(fe_name))
 
-    def FiniteElementForGeometry(self, _GeomType):
-        r"""FiniteElementForGeometry(Local_FECollection self, mfem::Geometry::Type _GeomType) -> FiniteElement"""
-        return _fe_coll.Local_FECollection_FiniteElementForGeometry(self, _GeomType)
+    def FiniteElementForGeometry(self, GeomType_):
+        r"""FiniteElementForGeometry(Local_FECollection self, mfem::Geometry::Type GeomType_) -> FiniteElement"""
+        return _fe_coll.Local_FECollection_FiniteElementForGeometry(self, GeomType_)
     FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.Local_FECollection_FiniteElementForGeometry)
 
-    def DofForGeometry(self, _GeomType):
-        r"""DofForGeometry(Local_FECollection self, mfem::Geometry::Type _GeomType) -> int"""
-        return _fe_coll.Local_FECollection_DofForGeometry(self, _GeomType)
+    def DofForGeometry(self, GeomType_):
+        r"""DofForGeometry(Local_FECollection self, mfem::Geometry::Type GeomType_) -> int"""
+        return _fe_coll.Local_FECollection_DofForGeometry(self, GeomType_)
     DofForGeometry = _swig_new_instance_method(_fe_coll.Local_FECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):

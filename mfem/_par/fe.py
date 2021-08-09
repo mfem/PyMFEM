@@ -98,6 +98,8 @@ class BasisType(object):
     
     ClosedGL = _fe.BasisType_ClosedGL
     
+    IntegratedGLL = _fe.BasisType_IntegratedGLL
+    
     NumBasisTypes = _fe.BasisType_NumBasisTypes
     
 
@@ -546,6 +548,11 @@ class ScalarFiniteElement(FiniteElement):
         return _fe.ScalarFiniteElement_ScalarLocalInterpolation(self, Trans, I, fine_fe)
     ScalarLocalInterpolation = _swig_new_instance_method(_fe.ScalarFiniteElement_ScalarLocalInterpolation)
 
+    def ScalarLocalRestriction(self, Trans, R, coarse_fe):
+        r"""ScalarLocalRestriction(ScalarFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix R, ScalarFiniteElement coarse_fe)"""
+        return _fe.ScalarFiniteElement_ScalarLocalRestriction(self, Trans, R, coarse_fe)
+    ScalarLocalRestriction = _swig_new_instance_method(_fe.ScalarFiniteElement_ScalarLocalRestriction)
+
     def GetDofToQuad(self, ir, mode):
         r"""GetDofToQuad(ScalarFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"""
         return _fe.ScalarFiniteElement_GetDofToQuad(self, ir, mode)
@@ -602,6 +609,11 @@ class NodalFiniteElement(ScalarFiniteElement):
         r"""ProjectDiv(NodalFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix div)"""
         return _fe.NodalFiniteElement_ProjectDiv(self, fe, Trans, div)
     ProjectDiv = _swig_new_instance_method(_fe.NodalFiniteElement_ProjectDiv)
+
+    def GetLexicographicOrdering(self):
+        r"""GetLexicographicOrdering(NodalFiniteElement self) -> intArray"""
+        return _fe.NodalFiniteElement_GetLexicographicOrdering(self)
+    GetLexicographicOrdering = _swig_new_instance_method(_fe.NodalFiniteElement_GetLexicographicOrdering)
     __swig_destroy__ = _fe.delete_NodalFiniteElement
 
 # Register NodalFiniteElement in _fe:
@@ -620,6 +632,11 @@ class PositiveFiniteElement(ScalarFiniteElement):
         r"""GetLocalInterpolation(PositiveFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.PositiveFiniteElement_GetLocalInterpolation(self, Trans, I)
     GetLocalInterpolation = _swig_new_instance_method(_fe.PositiveFiniteElement_GetLocalInterpolation)
+
+    def GetLocalRestriction(self, Trans, R):
+        r"""GetLocalRestriction(PositiveFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
+        return _fe.PositiveFiniteElement_GetLocalRestriction(self, Trans, R)
+    GetLocalRestriction = _swig_new_instance_method(_fe.PositiveFiniteElement_GetLocalRestriction)
 
     def GetTransferMatrix(self, fe, Trans, I):
         r"""GetTransferMatrix(PositiveFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
@@ -2166,6 +2183,8 @@ class Poly_1D(object):
     
     Positive = _fe.Poly_1D_Positive
     
+    Integrated = _fe.Poly_1D_Integrated
+    
     NumEvalTypes = _fe.Poly_1D_NumEvalTypes
     
 
@@ -2381,6 +2400,11 @@ class NodalTensorFiniteElement(NodalFiniteElement, TensorBasisElement):
         r"""GetDofToQuad(NodalTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"""
         return _fe.NodalTensorFiniteElement_GetDofToQuad(self, ir, mode)
     GetDofToQuad = _swig_new_instance_method(_fe.NodalTensorFiniteElement_GetDofToQuad)
+
+    def GetTransferMatrix(self, fe, Trans, I):
+        r"""GetTransferMatrix(NodalTensorFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
+        return _fe.NodalTensorFiniteElement_GetTransferMatrix(self, fe, Trans, I)
+    GetTransferMatrix = _swig_new_instance_method(_fe.NodalTensorFiniteElement_GetTransferMatrix)
     __swig_destroy__ = _fe.delete_NodalTensorFiniteElement
 
 # Register NodalTensorFiniteElement in _fe:
@@ -2410,9 +2434,12 @@ class VectorTensorFiniteElement(VectorFiniteElement, TensorBasisElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, dims, d, p, cbtype, obtype, M, dmtype):
-        r"""__init__(VectorTensorFiniteElement self, int const dims, int const d, int const p, int const cbtype, int const obtype, int const M, mfem::TensorBasisElement::DofMapType const dmtype) -> VectorTensorFiniteElement"""
-        _fe.VectorTensorFiniteElement_swiginit(self, _fe.new_VectorTensorFiniteElement(dims, d, p, cbtype, obtype, M, dmtype))
+    def __init__(self, *args):
+        r"""
+        __init__(VectorTensorFiniteElement self, int const dims, int const d, int const p, int const cbtype, int const obtype, int const M, mfem::TensorBasisElement::DofMapType const dmtype) -> VectorTensorFiniteElement
+        __init__(VectorTensorFiniteElement self, int const dims, int const d, int const p, int const obtype, int const M, mfem::TensorBasisElement::DofMapType const dmtype) -> VectorTensorFiniteElement
+        """
+        _fe.VectorTensorFiniteElement_swiginit(self, _fe.new_VectorTensorFiniteElement(*args))
 
     def GetDofToQuad(self, ir, mode):
         r"""GetDofToQuad(VectorTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"""
@@ -3794,7 +3821,7 @@ class ND_TriangleElement(VectorFiniteElement):
 # Register ND_TriangleElement in _fe:
 _fe.ND_TriangleElement_swigregister(ND_TriangleElement)
 
-class ND_SegmentElement(VectorFiniteElement):
+class ND_SegmentElement(VectorTensorFiniteElement):
     r"""Proxy of C++ mfem::ND_SegmentElement class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")

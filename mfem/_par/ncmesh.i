@@ -9,6 +9,8 @@
 #include "../common/io_stream.hpp"
 #include "mesh/ncmesh.hpp"
 #include "general/zstr.hpp"
+#include "fem/gridfunc.hpp"
+#include "fem/bilinearform.hpp"  
 #include "numpy/arrayobject.h"      
 %}
 
@@ -36,9 +38,9 @@ ISTREAM_TYPEMAP(std::istream&)
  */
 
 #ifndef SWIGIMPORTED
-OSTREAM_ADD_DEFAULT_STDOUT_FILE(NCMesh, PrintVertexParents)
-OSTREAM_ADD_DEFAULT_STDOUT_FILE(NCMesh, PrintCoarseElements)
-OSTREAM_ADD_DEFAULT_FILE(NCMesh, PrintStats)
+ //OSTREAM_ADD_DEFAULT_STDOUT_FILE(NCMesh, PrintVertexParents)
+ //OSTREAM_ADD_DEFAULT_STDOUT_FILE(NCMesh, PrintCoarseElements)
+ //OSTREAM_ADD_DEFAULT_FILE(NCMesh, PrintStats)
 #endif
 
 namespace mfem{

@@ -9,6 +9,7 @@ import numpy as np
 import numba
 import time
 
+
 if len(sys.argv) > 1 and sys.argv[1] == '-p':
     import mfem.par as mfem
     use_parallel = True
@@ -127,11 +128,19 @@ def run_test():
 
     gf = mfem.GridFunction(fespace1)
     c1 = mfem.NumbaFunction(s_func, sdim).GenerateCoefficient()
+
+    @mfem.jit.scalar(sdim)
+    def c11(ptx, _sdim):
+        return s_func0(ptx[0], ptx[1],  ptx[2])
+    @mfem.jit.scalar()
+    def c12(ptx):
+        return s_func0(ptx[0], ptx[1],  ptx[2])
+
     c2 = s_coeff()
 
     gf.Assign(0.0)
     start = time.time()
-    gf.ProjectCoefficient(c1)
+    gf.ProjectCoefficient(c12)
     end = time.time()
     data1 = gf.GetDataArray().copy()
     print("Numba time (scalar)", end - start)

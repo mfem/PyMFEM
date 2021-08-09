@@ -336,7 +336,7 @@ class VisItFieldInfo(object):
     def __init__(self, *args):
         r"""
         __init__(VisItFieldInfo self) -> VisItFieldInfo
-        __init__(VisItFieldInfo self, std::string _association, int _num_components, int _lod=1) -> VisItFieldInfo
+        __init__(VisItFieldInfo self, std::string association_, int num_components_, int lod_=1) -> VisItFieldInfo
         """
         _datacollection.VisItFieldInfo_swiginit(self, _datacollection.new_VisItFieldInfo(*args))
     __swig_destroy__ = _datacollection.delete_VisItFieldInfo
@@ -453,6 +453,11 @@ class ParaViewDataCollection(DataCollection):
         r"""SetHighOrderOutput(ParaViewDataCollection self, bool high_order_output_)"""
         return _datacollection.ParaViewDataCollection_SetHighOrderOutput(self, high_order_output_)
     SetHighOrderOutput = _swig_new_instance_method(_datacollection.ParaViewDataCollection_SetHighOrderOutput)
+
+    def UseRestartMode(self, restart_mode_):
+        r"""UseRestartMode(ParaViewDataCollection self, bool restart_mode_)"""
+        return _datacollection.ParaViewDataCollection_UseRestartMode(self, restart_mode_)
+    UseRestartMode = _swig_new_instance_method(_datacollection.ParaViewDataCollection_UseRestartMode)
 
     def Load(self, cycle_=0):
         r"""Load(ParaViewDataCollection self, int cycle_=0)"""

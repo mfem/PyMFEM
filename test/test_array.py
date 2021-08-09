@@ -23,13 +23,28 @@ def run_test():
     a.Print()
     a.Print("intArray.dat")
     a.Save("intArray_save.dat")
+
+    a2 = mfem.intArray([a.GetData(), a.Size()])
+    a3 = mfem.intArray((a.GetData(), a.Size()))    
+
+    a.ToList()
+    a[2] = 4
+    print(a2.ToList())
+    print(a3.ToList())    
     
     b = mfem.doubleArray([1.1,2.2,3.])
     for i in range(b.Size()):
         print(b[i])
     b.Print()
     b.Print("doubleArray.dat")
-    b.Save("doubleArray_save.dat")    
+    b.Save("doubleArray_save.dat")
+
+    b2 = mfem.doubleArray([b.GetData(), b.Size()])
+    b3 = mfem.doubleArray((b.GetData(), b.Size()))
+    b[1] = 4    
+    print(b2.ToList())
+    print(b3.ToList())    
+    
     
 if __name__=='__main__':
     run_test()

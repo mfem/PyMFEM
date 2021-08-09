@@ -10,7 +10,8 @@
 #include "linalg/sparsemat.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
-#include "../common/io_stream.hpp"  
+#include "../common/io_stream.hpp"
+using namespace mfem;  
 %}
 // initialization required to return numpy array from SWIG
 %begin %{

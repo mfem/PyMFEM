@@ -96,10 +96,6 @@ import mfem._par.hypre
 import mfem._par.bilininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
-L2FaceValues_SingleValued = _restriction.L2FaceValues_SingleValued
-
-L2FaceValues_DoubleValued = _restriction.L2FaceValues_DoubleValued
-
 class ElementRestriction(mfem._par.operators.Operator):
     r"""Proxy of C++ mfem::ElementRestriction class."""
 
@@ -129,6 +125,11 @@ class ElementRestriction(mfem._par.operators.Operator):
         r"""MultTransposeUnsigned(ElementRestriction self, Vector x, Vector y)"""
         return _restriction.ElementRestriction_MultTransposeUnsigned(self, x, y)
     MultTransposeUnsigned = _swig_new_instance_method(_restriction.ElementRestriction_MultTransposeUnsigned)
+
+    def MultLeftInverse(self, x, y):
+        r"""MultLeftInverse(ElementRestriction self, Vector x, Vector y)"""
+        return _restriction.ElementRestriction_MultLeftInverse(self, x, y)
+    MultLeftInverse = _swig_new_instance_method(_restriction.ElementRestriction_MultLeftInverse)
 
     def BooleanMask(self, y):
         r"""BooleanMask(ElementRestriction self, Vector y)"""
@@ -188,31 +189,63 @@ class L2ElementRestriction(mfem._par.operators.Operator):
 # Register L2ElementRestriction in _restriction:
 _restriction.L2ElementRestriction_swigregister(L2ElementRestriction)
 
-class H1FaceRestriction(mfem._par.operators.Operator):
+L2FaceValues_SingleValued = _restriction.L2FaceValues_SingleValued
+
+L2FaceValues_DoubleValued = _restriction.L2FaceValues_DoubleValued
+
+class FaceRestriction(mfem._par.operators.Operator):
+    r"""Proxy of C++ mfem::FaceRestriction class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _restriction.delete_FaceRestriction
+
+    def Mult(self, x, y):
+        r"""Mult(FaceRestriction self, Vector x, Vector y)"""
+        return _restriction.FaceRestriction_Mult(self, x, y)
+    Mult = _swig_new_instance_method(_restriction.FaceRestriction_Mult)
+
+    def AddMultTranspose(self, x, y):
+        r"""AddMultTranspose(FaceRestriction self, Vector x, Vector y)"""
+        return _restriction.FaceRestriction_AddMultTranspose(self, x, y)
+    AddMultTranspose = _swig_new_instance_method(_restriction.FaceRestriction_AddMultTranspose)
+
+    def MultTranspose(self, x, y):
+        r"""MultTranspose(FaceRestriction self, Vector x, Vector y)"""
+        return _restriction.FaceRestriction_MultTranspose(self, x, y)
+    MultTranspose = _swig_new_instance_method(_restriction.FaceRestriction_MultTranspose)
+
+# Register FaceRestriction in _restriction:
+_restriction.FaceRestriction_swigregister(FaceRestriction)
+
+class H1FaceRestriction(FaceRestriction):
     r"""Proxy of C++ mfem::H1FaceRestriction class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, arg2, arg3, arg4):
-        r"""__init__(H1FaceRestriction self, FiniteElementSpace arg2, mfem::ElementDofOrdering const arg3, mfem::FaceType const arg4) -> H1FaceRestriction"""
-        _restriction.H1FaceRestriction_swiginit(self, _restriction.new_H1FaceRestriction(arg2, arg3, arg4))
+    def __init__(self, fes, ordering, type):
+        r"""__init__(H1FaceRestriction self, FiniteElementSpace fes, mfem::ElementDofOrdering const ordering, mfem::FaceType const type) -> H1FaceRestriction"""
+        _restriction.H1FaceRestriction_swiginit(self, _restriction.new_H1FaceRestriction(fes, ordering, type))
 
     def Mult(self, x, y):
         r"""Mult(H1FaceRestriction self, Vector x, Vector y)"""
         return _restriction.H1FaceRestriction_Mult(self, x, y)
     Mult = _swig_new_instance_method(_restriction.H1FaceRestriction_Mult)
 
-    def MultTranspose(self, x, y):
-        r"""MultTranspose(H1FaceRestriction self, Vector x, Vector y)"""
-        return _restriction.H1FaceRestriction_MultTranspose(self, x, y)
-    MultTranspose = _swig_new_instance_method(_restriction.H1FaceRestriction_MultTranspose)
+    def AddMultTranspose(self, x, y):
+        r"""AddMultTranspose(H1FaceRestriction self, Vector x, Vector y)"""
+        return _restriction.H1FaceRestriction_AddMultTranspose(self, x, y)
+    AddMultTranspose = _swig_new_instance_method(_restriction.H1FaceRestriction_AddMultTranspose)
     __swig_destroy__ = _restriction.delete_H1FaceRestriction
 
 # Register H1FaceRestriction in _restriction:
 _restriction.H1FaceRestriction_swigregister(H1FaceRestriction)
 
-class L2FaceRestriction(mfem._par.operators.Operator):
+class L2FaceRestriction(FaceRestriction):
     r"""Proxy of C++ mfem::L2FaceRestriction class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
@@ -227,19 +260,19 @@ class L2FaceRestriction(mfem._par.operators.Operator):
         return _restriction.L2FaceRestriction_Mult(self, x, y)
     Mult = _swig_new_instance_method(_restriction.L2FaceRestriction_Mult)
 
-    def MultTranspose(self, x, y):
-        r"""MultTranspose(L2FaceRestriction self, Vector x, Vector y)"""
-        return _restriction.L2FaceRestriction_MultTranspose(self, x, y)
-    MultTranspose = _swig_new_instance_method(_restriction.L2FaceRestriction_MultTranspose)
+    def AddMultTranspose(self, x, y):
+        r"""AddMultTranspose(L2FaceRestriction self, Vector x, Vector y)"""
+        return _restriction.L2FaceRestriction_AddMultTranspose(self, x, y)
+    AddMultTranspose = _swig_new_instance_method(_restriction.L2FaceRestriction_AddMultTranspose)
 
-    def FillI(self, mat, face_mat):
-        r"""FillI(L2FaceRestriction self, SparseMatrix mat, SparseMatrix face_mat)"""
-        return _restriction.L2FaceRestriction_FillI(self, mat, face_mat)
+    def FillI(self, mat, keep_nbr_block=False):
+        r"""FillI(L2FaceRestriction self, SparseMatrix mat, bool const keep_nbr_block=False)"""
+        return _restriction.L2FaceRestriction_FillI(self, mat, keep_nbr_block)
     FillI = _swig_new_instance_method(_restriction.L2FaceRestriction_FillI)
 
-    def FillJAndData(self, ea_data, mat, face_mat):
-        r"""FillJAndData(L2FaceRestriction self, Vector ea_data, SparseMatrix mat, SparseMatrix face_mat)"""
-        return _restriction.L2FaceRestriction_FillJAndData(self, ea_data, mat, face_mat)
+    def FillJAndData(self, ea_data, mat, keep_nbr_block=False):
+        r"""FillJAndData(L2FaceRestriction self, Vector ea_data, SparseMatrix mat, bool const keep_nbr_block=False)"""
+        return _restriction.L2FaceRestriction_FillJAndData(self, ea_data, mat, keep_nbr_block)
     FillJAndData = _swig_new_instance_method(_restriction.L2FaceRestriction_FillJAndData)
 
     def AddFaceMatricesToElementMatrices(self, fea_data, ea_data):

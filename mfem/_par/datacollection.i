@@ -1,4 +1,4 @@
-%module(package="mfem._ser") datacollection
+%module(package="mfem._par") datacollection
 %{
 #include  "mfem.hpp"
 #include "general/globals.hpp"

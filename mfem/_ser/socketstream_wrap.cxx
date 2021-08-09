@@ -3100,23 +3100,31 @@ namespace Swig {
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
 #define SWIGTYPE_p_RefCoord swig_types[1]
 #define SWIGTYPE_p_char swig_types[2]
-#define SWIGTYPE_p_hex_t swig_types[3]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[4]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[5]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[6]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[7]
-#define SWIGTYPE_p_mfem__Mesh swig_types[8]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[9]
-#define SWIGTYPE_p_mfem__socketbuf swig_types[10]
-#define SWIGTYPE_p_mfem__socketserver swig_types[11]
-#define SWIGTYPE_p_mfem__socketstream swig_types[12]
-#define SWIGTYPE_p_pri_t swig_types[13]
-#define SWIGTYPE_p_quad_t swig_types[14]
-#define SWIGTYPE_p_seg_t swig_types[15]
-#define SWIGTYPE_p_tet_t swig_types[16]
-#define SWIGTYPE_p_tri_t swig_types[17]
-static swig_type_info *swig_types[19];
-static swig_module_info swig_module = {swig_types, 18, 0, 0, 0, 0};
+#define SWIGTYPE_p_double swig_types[3]
+#define SWIGTYPE_p_hex_t swig_types[4]
+#define SWIGTYPE_p_int swig_types[5]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[6]
+#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[7]
+#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[8]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[9]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[10]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[11]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[12]
+#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[13]
+#define SWIGTYPE_p_mfem__Mesh swig_types[14]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[15]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[16]
+#define SWIGTYPE_p_mfem__Vector swig_types[17]
+#define SWIGTYPE_p_mfem__socketbuf swig_types[18]
+#define SWIGTYPE_p_mfem__socketserver swig_types[19]
+#define SWIGTYPE_p_mfem__socketstream swig_types[20]
+#define SWIGTYPE_p_pri_t swig_types[21]
+#define SWIGTYPE_p_quad_t swig_types[22]
+#define SWIGTYPE_p_seg_t swig_types[23]
+#define SWIGTYPE_p_tet_t swig_types[24]
+#define SWIGTYPE_p_tri_t swig_types[25]
+static swig_type_info *swig_types[27];
+static swig_module_info swig_module = {swig_types, 26, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3519,6 +3527,9 @@ SWIGINTERN void mfem_socketstream_send_text(mfem::socketstream *self,char const 
 SWIGINTERN void mfem_socketstream_flush(mfem::socketstream *self){
      *self << std::flush;
    }
+SWIGINTERN bool mfem_socketstream_good(mfem::socketstream *self){
+    return self->std::iostream::good();
+  }
 SWIGINTERN mfem::socketstream &mfem_socketstream___lshift____SWIG_0(mfem::socketstream *self,char const ostr[]){ 
       *self << ostr;
       return *self;
@@ -4847,6 +4858,47 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_socketstream_good(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketstream_good" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
+  {
+    try {
+      result = (bool)mfem_socketstream_good(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_socketstream___lshift____SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
@@ -5526,6 +5578,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "socketstream_send_solution", (PyCFunction)(void(*)(void))_wrap_socketstream_send_solution, METH_VARARGS|METH_KEYWORDS, "socketstream_send_solution(socketstream self, Mesh mesh, GridFunction gf)"},
 	 { "socketstream_send_text", (PyCFunction)(void(*)(void))_wrap_socketstream_send_text, METH_VARARGS|METH_KEYWORDS, "socketstream_send_text(socketstream self, char const [] ostr)"},
 	 { "socketstream_flush", _wrap_socketstream_flush, METH_O, "socketstream_flush(socketstream self)"},
+	 { "socketstream_good", _wrap_socketstream_good, METH_O, "socketstream_good(socketstream self) -> bool"},
 	 { "socketstream___lshift__", _wrap_socketstream___lshift__, METH_VARARGS, "\n"
 		"socketstream___lshift__(socketstream self, char const [] ostr) -> socketstream\n"
 		"socketstream___lshift__(socketstream self, int const x) -> socketstream\n"
@@ -5583,6 +5636,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "socketstream_send_solution", (PyCFunction)(void(*)(void))_wrap_socketstream_send_solution, METH_VARARGS|METH_KEYWORDS, "send_solution(socketstream self, Mesh mesh, GridFunction gf)"},
 	 { "socketstream_send_text", (PyCFunction)(void(*)(void))_wrap_socketstream_send_text, METH_VARARGS|METH_KEYWORDS, "send_text(socketstream self, char const [] ostr)"},
 	 { "socketstream_flush", _wrap_socketstream_flush, METH_O, "flush(socketstream self)"},
+	 { "socketstream_good", _wrap_socketstream_good, METH_O, "good(socketstream self) -> bool"},
 	 { "socketstream___lshift__", _wrap_socketstream___lshift__, METH_VARARGS, "\n"
 		"__lshift__(socketstream self, char const [] ostr) -> socketstream\n"
 		"__lshift__(socketstream self, int const x) -> socketstream\n"
@@ -5608,16 +5662,33 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
+static void *_p_mfem__GridFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::GridFunction *) x));
+}
+static void *_p_mfem__QuadratureFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::QuadratureFunction *) x));
+}
+static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::LinearForm *) x));
+}
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ConvectionIntegrator = {"_p_mfem__ConvectionIntegrator", "mfem::ConvectionIntegrator *|mfem::NonconservativeConvectionIntegrator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__DGTraceIntegrator = {"_p_mfem__DGTraceIntegrator", "mfem::DGTraceIntegrator *|mfem::ConservativeDGTraceIntegrator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__L2_FECollection = {"_p_mfem__L2_FECollection", "mfem::L2_FECollection *|mfem::DG_FECollection *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__MatrixVectorProductCoefficient = {"_p_mfem__MatrixVectorProductCoefficient", "mfem::MatrixVectorProductCoefficient *|mfem::MatVecCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Mesh = {"_p_mfem__Mesh", "mfem::Mesh *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__OperatorHandle = {"_p_mfem__OperatorHandle", "mfem::OperatorPtr *|mfem::OperatorHandle *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__socketbuf = {"_p_mfem__socketbuf", "mfem::socketbuf *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__socketserver = {"_p_mfem__socketserver", "mfem::socketserver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__socketstream = {"_p_mfem__socketstream", "mfem::socketstream *", 0, 0, (void*)0, 0};
@@ -5631,13 +5702,21 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_RefCoord,
   &_swigt__p_char,
+  &_swigt__p_double,
   &_swigt__p_hex_t,
+  &_swigt__p_int,
+  &_swigt__p_mfem__ArrayT_int_t,
+  &_swigt__p_mfem__ConvectionIntegrator,
+  &_swigt__p_mfem__DGTraceIntegrator,
   &_swigt__p_mfem__GridFunction,
   &_swigt__p_mfem__IntegrationRule,
   &_swigt__p_mfem__L2_FECollection,
+  &_swigt__p_mfem__LinearForm,
   &_swigt__p_mfem__MatrixVectorProductCoefficient,
   &_swigt__p_mfem__Mesh,
   &_swigt__p_mfem__OperatorHandle,
+  &_swigt__p_mfem__QuadratureFunction,
+  &_swigt__p_mfem__Vector,
   &_swigt__p_mfem__socketbuf,
   &_swigt__p_mfem__socketserver,
   &_swigt__p_mfem__socketstream,
@@ -5651,13 +5730,21 @@ static swig_type_info *swig_type_initial[] = {
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ConvectionIntegrator[] = {  {&_swigt__p_mfem__ConvectionIntegrator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__DGTraceIntegrator[] = {  {&_swigt__p_mfem__DGTraceIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2_FECollection[] = {  {&_swigt__p_mfem__L2_FECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MatrixVectorProductCoefficient[] = {  {&_swigt__p_mfem__MatrixVectorProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Mesh[] = {  {&_swigt__p_mfem__Mesh, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__OperatorHandle[] = {  {&_swigt__p_mfem__OperatorHandle, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__socketbuf[] = {  {&_swigt__p_mfem__socketbuf, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__socketserver[] = {  {&_swigt__p_mfem__socketserver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__socketstream[] = {  {&_swigt__p_mfem__socketstream, 0, 0, 0},{0, 0, 0, 0}};
@@ -5671,13 +5758,21 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_RefCoord,
   _swigc__p_char,
+  _swigc__p_double,
   _swigc__p_hex_t,
+  _swigc__p_int,
+  _swigc__p_mfem__ArrayT_int_t,
+  _swigc__p_mfem__ConvectionIntegrator,
+  _swigc__p_mfem__DGTraceIntegrator,
   _swigc__p_mfem__GridFunction,
   _swigc__p_mfem__IntegrationRule,
   _swigc__p_mfem__L2_FECollection,
+  _swigc__p_mfem__LinearForm,
   _swigc__p_mfem__MatrixVectorProductCoefficient,
   _swigc__p_mfem__Mesh,
   _swigc__p_mfem__OperatorHandle,
+  _swigc__p_mfem__QuadratureFunction,
+  _swigc__p_mfem__Vector,
   _swigc__p_mfem__socketbuf,
   _swigc__p_mfem__socketserver,
   _swigc__p_mfem__socketstream,

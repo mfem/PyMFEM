@@ -3241,7 +3241,8 @@ namespace swig {
 #include "linalg/sparsemat.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
-#include "../common/io_stream.hpp"     
+#include "../common/io_stream.hpp"
+using namespace mfem;  
 
 
 SWIGINTERN swig_type_info*
@@ -3626,7 +3627,7 @@ SWIGINTERN PyObject *mfem_DenseMatrix_GetDataArray(mfem::DenseMatrix const *self
 
 
 
-SWIGINTERN void mfem_DenseMatrix_Print__SWIG_1(mfem::DenseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_DenseMatrix_Print__SWIG_1(mfem::DenseMatrix *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3637,7 +3638,7 @@ SWIGINTERN void mfem_DenseMatrix_Print__SWIG_1(mfem::DenseMatrix *self,char cons
   self -> Print(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_DenseMatrix_PrintGZ(mfem::DenseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_DenseMatrix_PrintGZ(mfem::DenseMatrix *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3648,7 +3649,7 @@ SWIGINTERN void mfem_DenseMatrix_PrintGZ(mfem::DenseMatrix *self,char const *fil
   self -> Print(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_DenseMatrix_PrintT__SWIG_1(mfem::DenseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_DenseMatrix_PrintT__SWIG_1(mfem::DenseMatrix *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3659,7 +3660,7 @@ SWIGINTERN void mfem_DenseMatrix_PrintT__SWIG_1(mfem::DenseMatrix *self,char con
   self -> PrintT(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_DenseMatrix_PrintTGZ(mfem::DenseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_DenseMatrix_PrintTGZ(mfem::DenseMatrix *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3670,7 +3671,7 @@ SWIGINTERN void mfem_DenseMatrix_PrintTGZ(mfem::DenseMatrix *self,char const *fi
   self -> PrintT(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_DenseMatrix_PrintMatlab__SWIG_1(mfem::DenseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_DenseMatrix_PrintMatlab__SWIG_1(mfem::DenseMatrix *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3681,7 +3682,7 @@ SWIGINTERN void mfem_DenseMatrix_PrintMatlab__SWIG_1(mfem::DenseMatrix *self,cha
   self -> PrintMatlab(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_DenseMatrix_PrintMatlabGZ(mfem::DenseMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_DenseMatrix_PrintMatlabGZ(mfem::DenseMatrix *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3692,6 +3693,22 @@ SWIGINTERN void mfem_DenseMatrix_PrintMatlabGZ(mfem::DenseMatrix *self,char cons
   self -> PrintMatlab(*ofile);
   delete ofile;
   }
+
+SWIGINTERN int
+SWIG_AsVal_int (PyObject * obj, int *val)
+{
+  long v;
+  int res = SWIG_AsVal_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v < INT_MIN || v > INT_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = static_cast< int >(v);
+    }
+  }  
+  return res;
+}
+
 SWIGINTERN void mfem_DenseTensor_Assign(mfem::DenseTensor *self,double const c){
     (* self) = c;
   }
@@ -10949,6 +10966,14 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(se
           }
           string_io2=swig_obj[1];
           stream2 = new std::ostringstream();
+          int prec = 16;
+          if (PyObject_HasAttrString(swig_obj[1], "precision")){
+            PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+            prec = (int)PyLong_AsLong(attr);
+            //std::cout << "setting prec" << prec << "\n";
+          }
+          stream2->precision(prec);
+          
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -11099,6 +11124,14 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintMatlab__SWIG_0(PyObject *SWIGUNUSEDP
           }
           string_io2=swig_obj[1];
           stream2 = new std::ostringstream();
+          int prec = 16;
+          if (PyObject_HasAttrString(swig_obj[1], "precision")){
+            PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+            prec = (int)PyLong_AsLong(attr);
+            //std::cout << "setting prec" << prec << "\n";
+          }
+          stream2->precision(prec);
+          
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -11242,6 +11275,14 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT__SWIG_0(PyObject *SWIGUNUSEDPARM(s
           }
           string_io2=swig_obj[1];
           stream2 = new std::ostringstream();
+          int prec = 16;
+          if (PyObject_HasAttrString(swig_obj[1], "precision")){
+            PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+            prec = (int)PyLong_AsLong(attr);
+            //std::cout << "setting prec" << prec << "\n";
+          }
+          stream2->precision(prec);
+          
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -11714,6 +11755,60 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_DenseMatrix_Swap(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::DenseMatrix *arg1 = (mfem::DenseMatrix *) 0 ;
+  mfem::DenseMatrix *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"other",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:DenseMatrix_Swap", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DenseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseMatrix_Swap" "', argument " "1"" of type '" "mfem::DenseMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DenseMatrix_Swap" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DenseMatrix_Swap" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
+  {
+    try {
+      (arg1)->Swap(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_DenseMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::DenseMatrix *arg1 = (mfem::DenseMatrix *) 0 ;
@@ -12119,7 +12214,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   PyObject *resultobj = 0;
   mfem::DenseMatrix *arg1 = (mfem::DenseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -12276,7 +12371,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintGZ(PyObject *SWIGUNUSEDPARM(self), P
   PyObject *resultobj = 0;
   mfem::DenseMatrix *arg1 = (mfem::DenseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -12340,7 +12435,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   PyObject *resultobj = 0;
   mfem::DenseMatrix *arg1 = (mfem::DenseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -12497,7 +12592,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintTGZ(PyObject *SWIGUNUSEDPARM(self), 
   PyObject *resultobj = 0;
   mfem::DenseMatrix *arg1 = (mfem::DenseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -12561,7 +12656,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintMatlab__SWIG_1(PyObject *SWIGUNUSEDP
   PyObject *resultobj = 0;
   mfem::DenseMatrix *arg1 = (mfem::DenseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -12705,7 +12800,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintMatlabGZ(PyObject *SWIGUNUSEDPARM(se
   PyObject *resultobj = 0;
   mfem::DenseMatrix *arg1 = (mfem::DenseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -14583,18 +14678,41 @@ SWIGINTERN PyObject *_wrap_new_LUFactors__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   PyObject *resultobj = 0;
   double *arg1 = (double *) 0 ;
   int *arg2 = (int *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   mfem::LUFactors *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_LUFactors" "', argument " "1"" of type '" "double *""'"); 
+  {
+    int i, si;
+    if (SWIG_ConvertPtr(swig_obj[0], (void **) &arg1, SWIGTYPE_p_double, 0|0) != -1){
+      
+    }
+    else if (PyArray_Check(swig_obj[0])){
+      arg1 = (double *) PyArray_DATA((PyArrayObject *)swig_obj[0]);
+      //     arg1 = (double *) PyArray_DATA(swig_obj[0]);
+    }
+    else {
+      if (!PyList_Check(swig_obj[0])) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list");
+        return NULL;
+      }
+      si = PyList_Size(swig_obj[0]);
+      arg1 = (double *) malloc((si)*sizeof(double));
+      for (i = 0; i < si; i++) {
+        PyObject *s = PyList_GetItem(swig_obj[0],i);
+        if (PyInt_Check(s)) {
+          arg1[i] = (double)PyFloat_AsDouble(s);
+        } else if (PyFloat_Check(s)) {
+          arg1[i] = (double)PyFloat_AsDouble(s);
+        } else {
+          PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
+          return NULL;
+        }
+      }
+    }
+    
   }
-  arg1 = reinterpret_cast< double * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_int, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_LUFactors" "', argument " "2"" of type '" "int *""'"); 
@@ -14639,9 +14757,20 @@ SWIGINTERN PyObject *_wrap_new_LUFactors(PyObject *self, PyObject *args) {
   }
   if (argc == 2) {
     int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_double, 0);
-    _v = SWIG_CheckState(res);
+    {
+      if (SWIG_ConvertPtr(argv[0], (void **) &_v, SWIGTYPE_p_double, 1) != -1){
+        _v = 1;
+      }
+      else if (PyList_Check(argv[0])){
+        _v = 1;
+      }
+      else if (PyArray_Check(argv[0])){
+        _v = 1;
+      }
+      else {
+        _v = 0;
+      }
+    }
     if (_v) {
       void *vptr = 0;
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_int, 0);
@@ -17259,6 +17388,66 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_DenseTensor__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
+  int arg1 ;
+  int arg2 ;
+  int arg3 ;
+  mfem::MemoryType arg4 ;
+  int val4 ;
+  int ecode4 = 0 ;
+  mfem::DenseTensor *result = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+  }
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  }
+  ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_DenseTensor" "', argument " "4"" of type '" "mfem::MemoryType""'");
+  } 
+  arg4 = static_cast< mfem::MemoryType >(val4);
+  {
+    try {
+      result = (mfem::DenseTensor *)new mfem::DenseTensor(arg1,arg2,arg3,arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DenseTensor, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_DenseTensor__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
   mfem::DenseTensor *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -17301,11 +17490,11 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_DenseTensor(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[4] = {
+  PyObject *argv[5] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_DenseTensor", 0, 3, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_DenseTensor", 0, 4, argv))) SWIG_fail;
   --argc;
   if (argc == 0) {
     return _wrap_new_DenseTensor__SWIG_0(self, argc, argv);
@@ -17315,7 +17504,7 @@ SWIGINTERN PyObject *_wrap_new_DenseTensor(PyObject *self, PyObject *args) {
     int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__DenseTensor, SWIG_POINTER_NO_NULL | 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_new_DenseTensor__SWIG_2(self, argc, argv);
+      return _wrap_new_DenseTensor__SWIG_3(self, argc, argv);
     }
   }
   if (argc == 3) {
@@ -17352,12 +17541,53 @@ SWIGINTERN PyObject *_wrap_new_DenseTensor(PyObject *self, PyObject *args) {
       }
     }
   }
+  if (argc == 4) {
+    int _v;
+    {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
+    }
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_int(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_new_DenseTensor__SWIG_2(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_DenseTensor'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::DenseTensor::DenseTensor()\n"
     "    mfem::DenseTensor::DenseTensor(int,int,int)\n"
+    "    mfem::DenseTensor::DenseTensor(int,int,int,mfem::MemoryType)\n"
     "    mfem::DenseTensor::DenseTensor(mfem::DenseTensor const &)\n");
   return 0;
 }
@@ -17533,17 +17763,21 @@ SWIGINTERN PyObject *_wrap_DenseTensor_SetSize(PyObject *SWIGUNUSEDPARM(self), P
   int arg2 ;
   int arg3 ;
   int arg4 ;
+  mfem::MemoryType arg5 = (mfem::MemoryType) MemoryType::PRESERVE ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int val5 ;
+  int ecode5 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"i",  (char *)"j",  (char *)"k",  NULL 
+    (char *)"self",  (char *)"i",  (char *)"j",  (char *)"k",  (char *)"mt_",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:DenseTensor_SetSize", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO|O:DenseTensor_SetSize", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DenseTensor, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseTensor_SetSize" "', argument " "1"" of type '" "mfem::DenseTensor *""'"); 
@@ -17567,9 +17801,16 @@ SWIGINTERN PyObject *_wrap_DenseTensor_SetSize(PyObject *SWIGUNUSEDPARM(self), P
     };  
     arg4 = PyArray_PyIntAsInt(obj3);
   }
+  if (obj4) {
+    ecode5 = SWIG_AsVal_int(obj4, &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "DenseTensor_SetSize" "', argument " "5"" of type '" "mfem::MemoryType""'");
+    } 
+    arg5 = static_cast< mfem::MemoryType >(val5);
+  }
   {
     try {
-      (arg1)->SetSize(arg2,arg3,arg4);
+      (arg1)->SetSize(arg2,arg3,arg4,arg5);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -18739,6 +18980,60 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_DenseTensor_Swap(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::DenseTensor *arg1 = (mfem::DenseTensor *) 0 ;
+  mfem::DenseTensor *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"t",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:DenseTensor_Swap", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DenseTensor, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseTensor_Swap" "', argument " "1"" of type '" "mfem::DenseTensor *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseTensor * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseTensor,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DenseTensor_Swap" "', argument " "2"" of type '" "mfem::DenseTensor &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DenseTensor_Swap" "', argument " "2"" of type '" "mfem::DenseTensor &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::DenseTensor * >(argp2);
+  {
+    try {
+      (arg1)->Swap(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_DenseTensor(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::DenseTensor *arg1 = (mfem::DenseTensor *) 0 ;
@@ -19432,6 +19727,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "DenseMatrix_HostWrite", _wrap_DenseMatrix_HostWrite, METH_O, "DenseMatrix_HostWrite(DenseMatrix self) -> double *"},
 	 { "DenseMatrix_ReadWrite", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_ReadWrite, METH_VARARGS|METH_KEYWORDS, "DenseMatrix_ReadWrite(DenseMatrix self, bool on_dev=True) -> double *"},
 	 { "DenseMatrix_HostReadWrite", _wrap_DenseMatrix_HostReadWrite, METH_O, "DenseMatrix_HostReadWrite(DenseMatrix self) -> double *"},
+	 { "DenseMatrix_Swap", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_Swap, METH_VARARGS|METH_KEYWORDS, "DenseMatrix_Swap(DenseMatrix self, DenseMatrix other)"},
 	 { "delete_DenseMatrix", _wrap_delete_DenseMatrix, METH_O, "delete_DenseMatrix(DenseMatrix self)"},
 	 { "DenseMatrix_Assign", _wrap_DenseMatrix_Assign, METH_VARARGS, "\n"
 		"DenseMatrix_Assign(DenseMatrix self, double const v)\n"
@@ -19443,19 +19739,19 @@ static PyMethodDef SwigMethods[] = {
 	 { "DenseMatrix_GetDataArray", _wrap_DenseMatrix_GetDataArray, METH_O, "DenseMatrix_GetDataArray(DenseMatrix self) -> PyObject *"},
 	 { "DenseMatrix_Print", _wrap_DenseMatrix_Print, METH_VARARGS, "\n"
 		"DenseMatrix_Print(DenseMatrix self, std::ostream & out=mfem::out, int width_=4)\n"
-		"DenseMatrix_Print(DenseMatrix self, char const * file, int precision=8)\n"
+		"DenseMatrix_Print(DenseMatrix self, char const * file, int precision=16)\n"
 		""},
-	 { "DenseMatrix_PrintGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintGZ, METH_VARARGS|METH_KEYWORDS, "DenseMatrix_PrintGZ(DenseMatrix self, char const * file, int precision=8)"},
+	 { "DenseMatrix_PrintGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintGZ, METH_VARARGS|METH_KEYWORDS, "DenseMatrix_PrintGZ(DenseMatrix self, char const * file, int precision=16)"},
 	 { "DenseMatrix_PrintT", _wrap_DenseMatrix_PrintT, METH_VARARGS, "\n"
 		"DenseMatrix_PrintT(DenseMatrix self, std::ostream & out=mfem::out, int width_=4)\n"
-		"DenseMatrix_PrintT(DenseMatrix self, char const * file, int precision=8)\n"
+		"DenseMatrix_PrintT(DenseMatrix self, char const * file, int precision=16)\n"
 		""},
-	 { "DenseMatrix_PrintTGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintTGZ, METH_VARARGS|METH_KEYWORDS, "DenseMatrix_PrintTGZ(DenseMatrix self, char const * file, int precision=8)"},
+	 { "DenseMatrix_PrintTGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintTGZ, METH_VARARGS|METH_KEYWORDS, "DenseMatrix_PrintTGZ(DenseMatrix self, char const * file, int precision=16)"},
 	 { "DenseMatrix_PrintMatlab", _wrap_DenseMatrix_PrintMatlab, METH_VARARGS, "\n"
 		"DenseMatrix_PrintMatlab(DenseMatrix self, std::ostream & out=mfem::out)\n"
-		"DenseMatrix_PrintMatlab(DenseMatrix self, char const * file, int precision=8)\n"
+		"DenseMatrix_PrintMatlab(DenseMatrix self, char const * file, int precision=16)\n"
 		""},
-	 { "DenseMatrix_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "DenseMatrix_PrintMatlabGZ(DenseMatrix self, char const * file, int precision=8)"},
+	 { "DenseMatrix_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "DenseMatrix_PrintMatlabGZ(DenseMatrix self, char const * file, int precision=16)"},
 	 { "DenseMatrix_swigregister", DenseMatrix_swigregister, METH_O, NULL},
 	 { "DenseMatrix_swiginit", DenseMatrix_swiginit, METH_VARARGS, NULL},
 	 { "LinearSolve", (PyCFunction)(void(*)(void))_wrap_LinearSolve, METH_VARARGS|METH_KEYWORDS, "LinearSolve(DenseMatrix A, double * X, double TOL=1.e-9) -> bool"},
@@ -19554,13 +19850,14 @@ static PyMethodDef SwigMethods[] = {
 	 { "new_DenseTensor", _wrap_new_DenseTensor, METH_VARARGS, "\n"
 		"DenseTensor()\n"
 		"DenseTensor(int i, int j, int k)\n"
+		"DenseTensor(int i, int j, int k, mfem::MemoryType mt)\n"
 		"new_DenseTensor(DenseTensor other) -> DenseTensor\n"
 		""},
 	 { "DenseTensor_SizeI", _wrap_DenseTensor_SizeI, METH_O, "DenseTensor_SizeI(DenseTensor self) -> int"},
 	 { "DenseTensor_SizeJ", _wrap_DenseTensor_SizeJ, METH_O, "DenseTensor_SizeJ(DenseTensor self) -> int"},
 	 { "DenseTensor_SizeK", _wrap_DenseTensor_SizeK, METH_O, "DenseTensor_SizeK(DenseTensor self) -> int"},
 	 { "DenseTensor_TotalSize", _wrap_DenseTensor_TotalSize, METH_O, "DenseTensor_TotalSize(DenseTensor self) -> int"},
-	 { "DenseTensor_SetSize", (PyCFunction)(void(*)(void))_wrap_DenseTensor_SetSize, METH_VARARGS|METH_KEYWORDS, "DenseTensor_SetSize(DenseTensor self, int i, int j, int k)"},
+	 { "DenseTensor_SetSize", (PyCFunction)(void(*)(void))_wrap_DenseTensor_SetSize, METH_VARARGS|METH_KEYWORDS, "DenseTensor_SetSize(DenseTensor self, int i, int j, int k, mfem::MemoryType mt_=MemoryType::PRESERVE)"},
 	 { "DenseTensor_UseExternalData", (PyCFunction)(void(*)(void))_wrap_DenseTensor_UseExternalData, METH_VARARGS|METH_KEYWORDS, "DenseTensor_UseExternalData(DenseTensor self, double * ext_data, int i, int j, int k)"},
 	 { "DenseTensor___call__", _wrap_DenseTensor___call__, METH_VARARGS, "\n"
 		"DenseTensor___call__(DenseTensor self, int k) -> DenseMatrix\n"
@@ -19586,6 +19883,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "DenseTensor_HostWrite", _wrap_DenseTensor_HostWrite, METH_O, "DenseTensor_HostWrite(DenseTensor self) -> double *"},
 	 { "DenseTensor_ReadWrite", (PyCFunction)(void(*)(void))_wrap_DenseTensor_ReadWrite, METH_VARARGS|METH_KEYWORDS, "DenseTensor_ReadWrite(DenseTensor self, bool on_dev=True) -> double *"},
 	 { "DenseTensor_HostReadWrite", _wrap_DenseTensor_HostReadWrite, METH_O, "DenseTensor_HostReadWrite(DenseTensor self) -> double *"},
+	 { "DenseTensor_Swap", (PyCFunction)(void(*)(void))_wrap_DenseTensor_Swap, METH_VARARGS|METH_KEYWORDS, "DenseTensor_Swap(DenseTensor self, DenseTensor t)"},
 	 { "delete_DenseTensor", _wrap_delete_DenseTensor, METH_O, "delete_DenseTensor(DenseTensor self)"},
 	 { "DenseTensor_Assign", (PyCFunction)(void(*)(void))_wrap_DenseTensor_Assign, METH_VARARGS|METH_KEYWORDS, "DenseTensor_Assign(DenseTensor self, double const c)"},
 	 { "DenseTensor___getitem__", _wrap_DenseTensor___getitem__, METH_VARARGS, "\n"
@@ -19757,6 +20055,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "DenseMatrix_HostWrite", _wrap_DenseMatrix_HostWrite, METH_O, "HostWrite(DenseMatrix self) -> double *"},
 	 { "DenseMatrix_ReadWrite", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_ReadWrite, METH_VARARGS|METH_KEYWORDS, "ReadWrite(DenseMatrix self, bool on_dev=True) -> double *"},
 	 { "DenseMatrix_HostReadWrite", _wrap_DenseMatrix_HostReadWrite, METH_O, "HostReadWrite(DenseMatrix self) -> double *"},
+	 { "DenseMatrix_Swap", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_Swap, METH_VARARGS|METH_KEYWORDS, "Swap(DenseMatrix self, DenseMatrix other)"},
 	 { "delete_DenseMatrix", _wrap_delete_DenseMatrix, METH_O, "delete_DenseMatrix(DenseMatrix self)"},
 	 { "DenseMatrix_Assign", _wrap_DenseMatrix_Assign, METH_VARARGS, "\n"
 		"Assign(DenseMatrix self, double const v)\n"
@@ -19768,19 +20067,19 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "DenseMatrix_GetDataArray", _wrap_DenseMatrix_GetDataArray, METH_O, "GetDataArray(DenseMatrix self) -> PyObject *"},
 	 { "DenseMatrix_Print", _wrap_DenseMatrix_Print, METH_VARARGS, "\n"
 		"Print(DenseMatrix self, std::ostream & out=mfem::out, int width_=4)\n"
-		"Print(DenseMatrix self, char const * file, int precision=8)\n"
+		"Print(DenseMatrix self, char const * file, int precision=16)\n"
 		""},
-	 { "DenseMatrix_PrintGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(DenseMatrix self, char const * file, int precision=8)"},
+	 { "DenseMatrix_PrintGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(DenseMatrix self, char const * file, int precision=16)"},
 	 { "DenseMatrix_PrintT", _wrap_DenseMatrix_PrintT, METH_VARARGS, "\n"
 		"PrintT(DenseMatrix self, std::ostream & out=mfem::out, int width_=4)\n"
-		"PrintT(DenseMatrix self, char const * file, int precision=8)\n"
+		"PrintT(DenseMatrix self, char const * file, int precision=16)\n"
 		""},
-	 { "DenseMatrix_PrintTGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintTGZ, METH_VARARGS|METH_KEYWORDS, "PrintTGZ(DenseMatrix self, char const * file, int precision=8)"},
+	 { "DenseMatrix_PrintTGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintTGZ, METH_VARARGS|METH_KEYWORDS, "PrintTGZ(DenseMatrix self, char const * file, int precision=16)"},
 	 { "DenseMatrix_PrintMatlab", _wrap_DenseMatrix_PrintMatlab, METH_VARARGS, "\n"
 		"PrintMatlab(DenseMatrix self, std::ostream & out=mfem::out)\n"
-		"PrintMatlab(DenseMatrix self, char const * file, int precision=8)\n"
+		"PrintMatlab(DenseMatrix self, char const * file, int precision=16)\n"
 		""},
-	 { "DenseMatrix_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "PrintMatlabGZ(DenseMatrix self, char const * file, int precision=8)"},
+	 { "DenseMatrix_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "PrintMatlabGZ(DenseMatrix self, char const * file, int precision=16)"},
 	 { "DenseMatrix_swigregister", DenseMatrix_swigregister, METH_O, NULL},
 	 { "DenseMatrix_swiginit", DenseMatrix_swiginit, METH_VARARGS, NULL},
 	 { "LinearSolve", (PyCFunction)(void(*)(void))_wrap_LinearSolve, METH_VARARGS|METH_KEYWORDS, "LinearSolve(DenseMatrix A, double * X, double TOL=1.e-9) -> bool"},
@@ -19879,13 +20178,14 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "new_DenseTensor", _wrap_new_DenseTensor, METH_VARARGS, "\n"
 		"DenseTensor()\n"
 		"DenseTensor(int i, int j, int k)\n"
+		"DenseTensor(int i, int j, int k, mfem::MemoryType mt)\n"
 		"new_DenseTensor(DenseTensor other) -> DenseTensor\n"
 		""},
 	 { "DenseTensor_SizeI", _wrap_DenseTensor_SizeI, METH_O, "SizeI(DenseTensor self) -> int"},
 	 { "DenseTensor_SizeJ", _wrap_DenseTensor_SizeJ, METH_O, "SizeJ(DenseTensor self) -> int"},
 	 { "DenseTensor_SizeK", _wrap_DenseTensor_SizeK, METH_O, "SizeK(DenseTensor self) -> int"},
 	 { "DenseTensor_TotalSize", _wrap_DenseTensor_TotalSize, METH_O, "TotalSize(DenseTensor self) -> int"},
-	 { "DenseTensor_SetSize", (PyCFunction)(void(*)(void))_wrap_DenseTensor_SetSize, METH_VARARGS|METH_KEYWORDS, "SetSize(DenseTensor self, int i, int j, int k)"},
+	 { "DenseTensor_SetSize", (PyCFunction)(void(*)(void))_wrap_DenseTensor_SetSize, METH_VARARGS|METH_KEYWORDS, "SetSize(DenseTensor self, int i, int j, int k, mfem::MemoryType mt_=MemoryType::PRESERVE)"},
 	 { "DenseTensor_UseExternalData", (PyCFunction)(void(*)(void))_wrap_DenseTensor_UseExternalData, METH_VARARGS|METH_KEYWORDS, "UseExternalData(DenseTensor self, double * ext_data, int i, int j, int k)"},
 	 { "DenseTensor___call__", _wrap_DenseTensor___call__, METH_VARARGS, "\n"
 		"__call__(DenseTensor self, int k) -> DenseMatrix\n"
@@ -19911,6 +20211,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "DenseTensor_HostWrite", _wrap_DenseTensor_HostWrite, METH_O, "HostWrite(DenseTensor self) -> double *"},
 	 { "DenseTensor_ReadWrite", (PyCFunction)(void(*)(void))_wrap_DenseTensor_ReadWrite, METH_VARARGS|METH_KEYWORDS, "ReadWrite(DenseTensor self, bool on_dev=True) -> double *"},
 	 { "DenseTensor_HostReadWrite", _wrap_DenseTensor_HostReadWrite, METH_O, "HostReadWrite(DenseTensor self) -> double *"},
+	 { "DenseTensor_Swap", (PyCFunction)(void(*)(void))_wrap_DenseTensor_Swap, METH_VARARGS|METH_KEYWORDS, "Swap(DenseTensor self, DenseTensor t)"},
 	 { "delete_DenseTensor", _wrap_delete_DenseTensor, METH_O, "delete_DenseTensor(DenseTensor self)"},
 	 { "DenseTensor_Assign", (PyCFunction)(void(*)(void))_wrap_DenseTensor_Assign, METH_VARARGS|METH_KEYWORDS, "Assign(DenseTensor self, double const c)"},
 	 { "DenseTensor___getitem__", _wrap_DenseTensor___getitem__, METH_VARARGS, "\n"

@@ -118,7 +118,7 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
     num_face_nbr_dofs = property(_pfespace.ParFiniteElementSpace_num_face_nbr_dofs_get, _pfespace.ParFiniteElementSpace_num_face_nbr_dofs_set, doc=r"""num_face_nbr_dofs : int""")
     face_nbr_element_dof = property(_pfespace.ParFiniteElementSpace_face_nbr_element_dof_get, _pfespace.ParFiniteElementSpace_face_nbr_element_dof_set, doc=r"""face_nbr_element_dof : mfem::Table""")
     face_nbr_ldof = property(_pfespace.ParFiniteElementSpace_face_nbr_ldof_get, _pfespace.ParFiniteElementSpace_face_nbr_ldof_set, doc=r"""face_nbr_ldof : mfem::Table""")
-    face_nbr_glob_dof_map = property(_pfespace.ParFiniteElementSpace_face_nbr_glob_dof_map_get, doc=r"""face_nbr_glob_dof_map : mfem::Array<(HYPRE_Int)>""")
+    face_nbr_glob_dof_map = property(_pfespace.ParFiniteElementSpace_face_nbr_glob_dof_map_get, doc=r"""face_nbr_glob_dof_map : mfem::Array<(HYPRE_BigInt)>""")
     send_face_nbr_ldof = property(_pfespace.ParFiniteElementSpace_send_face_nbr_ldof_get, _pfespace.ParFiniteElementSpace_send_face_nbr_ldof_set, doc=r"""send_face_nbr_ldof : mfem::Table""")
 
     def __init__(self, *args):
@@ -157,22 +157,22 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
     GetDofSign = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetDofSign)
 
     def GetDofOffsets(self):
-        r"""GetDofOffsets(ParFiniteElementSpace self) -> HYPRE_Int *"""
+        r"""GetDofOffsets(ParFiniteElementSpace self) -> HYPRE_BigInt *"""
         return _pfespace.ParFiniteElementSpace_GetDofOffsets(self)
     GetDofOffsets = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetDofOffsets)
 
     def GetTrueDofOffsets(self):
-        r"""GetTrueDofOffsets(ParFiniteElementSpace self) -> HYPRE_Int *"""
+        r"""GetTrueDofOffsets(ParFiniteElementSpace self) -> HYPRE_BigInt *"""
         return _pfespace.ParFiniteElementSpace_GetTrueDofOffsets(self)
     GetTrueDofOffsets = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetTrueDofOffsets)
 
     def GlobalVSize(self):
-        r"""GlobalVSize(ParFiniteElementSpace self) -> HYPRE_Int"""
+        r"""GlobalVSize(ParFiniteElementSpace self) -> HYPRE_BigInt"""
         return _pfespace.ParFiniteElementSpace_GlobalVSize(self)
     GlobalVSize = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GlobalVSize)
 
     def GlobalTrueVSize(self):
-        r"""GlobalTrueVSize(ParFiniteElementSpace self) -> HYPRE_Int"""
+        r"""GlobalTrueVSize(ParFiniteElementSpace self) -> HYPRE_BigInt"""
         return _pfespace.ParFiniteElementSpace_GlobalTrueVSize(self)
     GlobalTrueVSize = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GlobalTrueVSize)
 
@@ -205,8 +205,13 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
 
 
 
+    def GetFE(self, i):
+        r"""GetFE(ParFiniteElementSpace self, int i) -> FiniteElement"""
+        return _pfespace.ParFiniteElementSpace_GetFE(self, i)
+    GetFE = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetFE)
+
     def GetFaceRestriction(self, *args, **kwargs):
-        r"""GetFaceRestriction(ParFiniteElementSpace self, mfem::ElementDofOrdering e_ordering, mfem::FaceType type, mfem::L2FaceValues mul=DoubleValued) -> Operator"""
+        r"""GetFaceRestriction(ParFiniteElementSpace self, mfem::ElementDofOrdering e_ordering, mfem::FaceType type, mfem::L2FaceValues mul=DoubleValued) -> FaceRestriction"""
         return _pfespace.ParFiniteElementSpace_GetFaceRestriction(self, *args, **kwargs)
     GetFaceRestriction = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetFaceRestriction)
 
@@ -288,22 +293,22 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
     GetLocalTDofNumber = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetLocalTDofNumber)
 
     def GetGlobalTDofNumber(self, ldof):
-        r"""GetGlobalTDofNumber(ParFiniteElementSpace self, int ldof) -> HYPRE_Int"""
+        r"""GetGlobalTDofNumber(ParFiniteElementSpace self, int ldof) -> HYPRE_BigInt"""
         return _pfespace.ParFiniteElementSpace_GetGlobalTDofNumber(self, ldof)
     GetGlobalTDofNumber = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetGlobalTDofNumber)
 
     def GetGlobalScalarTDofNumber(self, sldof):
-        r"""GetGlobalScalarTDofNumber(ParFiniteElementSpace self, int sldof) -> HYPRE_Int"""
+        r"""GetGlobalScalarTDofNumber(ParFiniteElementSpace self, int sldof) -> HYPRE_BigInt"""
         return _pfespace.ParFiniteElementSpace_GetGlobalScalarTDofNumber(self, sldof)
     GetGlobalScalarTDofNumber = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetGlobalScalarTDofNumber)
 
     def GetMyDofOffset(self):
-        r"""GetMyDofOffset(ParFiniteElementSpace self) -> HYPRE_Int"""
+        r"""GetMyDofOffset(ParFiniteElementSpace self) -> HYPRE_BigInt"""
         return _pfespace.ParFiniteElementSpace_GetMyDofOffset(self)
     GetMyDofOffset = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetMyDofOffset)
 
     def GetMyTDofOffset(self):
-        r"""GetMyTDofOffset(ParFiniteElementSpace self) -> HYPRE_Int"""
+        r"""GetMyTDofOffset(ParFiniteElementSpace self) -> HYPRE_BigInt"""
         return _pfespace.ParFiniteElementSpace_GetMyTDofOffset(self)
     GetMyTDofOffset = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetMyTDofOffset)
 
@@ -311,6 +316,16 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
         r"""GetProlongationMatrix(ParFiniteElementSpace self) -> Operator"""
         return _pfespace.ParFiniteElementSpace_GetProlongationMatrix(self)
     GetProlongationMatrix = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetProlongationMatrix)
+
+    def GetRestrictionTransposeOperator(self):
+        r"""GetRestrictionTransposeOperator(ParFiniteElementSpace self) -> Operator"""
+        return _pfespace.ParFiniteElementSpace_GetRestrictionTransposeOperator(self)
+    GetRestrictionTransposeOperator = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetRestrictionTransposeOperator)
+
+    def GetRestrictionOperator(self):
+        r"""GetRestrictionOperator(ParFiniteElementSpace self) -> Operator"""
+        return _pfespace.ParFiniteElementSpace_GetRestrictionOperator(self)
+    GetRestrictionOperator = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetRestrictionOperator)
 
     def GetRestrictionMatrix(self):
         r"""GetRestrictionMatrix(ParFiniteElementSpace self) -> SparseMatrix"""
@@ -348,7 +363,7 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
     GetFaceNbrFaceFE = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetFaceNbrFaceFE)
 
     def GetFaceNbrGlobalDofMap(self):
-        r"""GetFaceNbrGlobalDofMap(ParFiniteElementSpace self) -> HYPRE_Int const *"""
+        r"""GetFaceNbrGlobalDofMap(ParFiniteElementSpace self) -> HYPRE_BigInt const *"""
         return _pfespace.ParFiniteElementSpace_GetFaceNbrGlobalDofMap(self)
     GetFaceNbrGlobalDofMap = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetFaceNbrGlobalDofMap)
 
@@ -417,9 +432,17 @@ class ConformingProlongationOperator(mfem._par.operators.Operator):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, pfes):
-        r"""__init__(ConformingProlongationOperator self, ParFiniteElementSpace pfes) -> ConformingProlongationOperator"""
-        _pfespace.ConformingProlongationOperator_swiginit(self, _pfespace.new_ConformingProlongationOperator(pfes))
+    def __init__(self, *args):
+        r"""
+        __init__(ConformingProlongationOperator self, int lsize, GroupCommunicator gc_, bool local_=False) -> ConformingProlongationOperator
+        __init__(ConformingProlongationOperator self, ParFiniteElementSpace pfes, bool local_=False) -> ConformingProlongationOperator
+        """
+        _pfespace.ConformingProlongationOperator_swiginit(self, _pfespace.new_ConformingProlongationOperator(*args))
+
+    def GetGroupCommunicator(self):
+        r"""GetGroupCommunicator(ConformingProlongationOperator self) -> GroupCommunicator"""
+        return _pfespace.ConformingProlongationOperator_GetGroupCommunicator(self)
+    GetGroupCommunicator = _swig_new_instance_method(_pfespace.ConformingProlongationOperator_GetGroupCommunicator)
 
     def Mult(self, x, y):
         r"""Mult(ConformingProlongationOperator self, Vector x, Vector y)"""
@@ -441,9 +464,12 @@ class DeviceConformingProlongationOperator(ConformingProlongationOperator):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, pfes):
-        r"""__init__(DeviceConformingProlongationOperator self, ParFiniteElementSpace pfes) -> DeviceConformingProlongationOperator"""
-        _pfespace.DeviceConformingProlongationOperator_swiginit(self, _pfespace.new_DeviceConformingProlongationOperator(pfes))
+    def __init__(self, *args):
+        r"""
+        __init__(DeviceConformingProlongationOperator self, GroupCommunicator gc_, SparseMatrix R, bool local_=False) -> DeviceConformingProlongationOperator
+        __init__(DeviceConformingProlongationOperator self, ParFiniteElementSpace pfes, bool local_=False) -> DeviceConformingProlongationOperator
+        """
+        _pfespace.DeviceConformingProlongationOperator_swiginit(self, _pfespace.new_DeviceConformingProlongationOperator(*args))
     __swig_destroy__ = _pfespace.delete_DeviceConformingProlongationOperator
 
     def Mult(self, x, y):

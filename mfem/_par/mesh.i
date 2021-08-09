@@ -17,7 +17,9 @@ mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 // void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
 #include "numpy/arrayobject.h"
 #include "pycoefficient.hpp"
-#include "../common/io_stream.hpp"   
+#include "../common/io_stream.hpp"
+
+using namespace mfem;
 %}
 
 %begin %{
@@ -74,58 +76,15 @@ ISTREAM_TYPEMAP(std::istream&)
   $1 = 0; // ignore this pattern
 }
 
-// to give vertex array as list
-%typemap(in) (const double *){
-  int i;
-  if (!PyList_Check($input)) {
-    PyErr_SetString(PyExc_ValueError, "Expecting a list");
-    return NULL;
-  }
-  int l = PyList_Size($input);
-  $1 = (double *) malloc((l)*sizeof(double));
-  for (i = 0; i < l; i++) {
-    PyObject *s = PyList_GetItem($input,i);
-    if (PyInt_Check(s)) {
-        $1[i] = (double)PyFloat_AsDouble(s);
-    } else if (PyFloat_Check(s)) {
-        $1[i] = (double)PyFloat_AsDouble(s);
-    } else {
-        free($1);      
-        PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
-        return NULL;
-    }
-  }
-}
-%typemap(typecheck) (const double *) {
-   $1 = PyList_Check($input) ? 1 : 0;
-}
-// to give index array as list
-%typemap(in) (const int *vi){
-  int i;
-  if (!PyList_Check($input)) {
-    PyErr_SetString(PyExc_ValueError, "Expecting a list");
-    return NULL;
-  }
-  int l = PyList_Size($input);
-  $1 = (int *) malloc((l)*sizeof(int));
-  for (i = 0; i < l; i++) {
-    PyObject *s = PyList_GetItem($input,i);
-    if (PyInt_Check(s)) {
-        $1[i] = (int)PyInt_AsLong(s);
-    } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
-        $1[i] = PyArray_PyIntAsInt(s);
-    } else {    
-        free($1);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
-        return NULL;
-    }
-  }
-}
-%typemap(typecheck) (const int *vi) {
-   $1 = PyList_Check($input) ? 1 : 0;
-}
+%import "../common/const_doubleptr_typemap.i"
+CONST_DOUBLEPTR_IN(const double *)
 
-// SwapNodes
+%import "../common/const_intptr_typemap.i"
+CONST_INTPTR_IN(const int *vi)
+
+// SwapNodes (
+//   it return new *GridFunction and own_nodes, also if nodes is NULL
+//   it return None
 %typemap(in) mfem::GridFunction *&nodes (mfem::GridFunction *Pnodes){
 int res2 = 0;
 res2 = SWIG_ConvertPtr($input, (void **) &Pnodes, $descriptor(mfem::GridFunction *), 0);
@@ -133,7 +92,8 @@ if (!SWIG_IsOK(res2)){
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_SwapNodes" "', argument " "2"" of type '" "*mfem::GridFunction""'");      
  }
  $1 = &Pnodes;
- } 
+ }
+ 
 %typemap(in) int &own_nodes_ (int own_nodes){
   own_nodes = (int)PyInt_AsLong($input);
   $1 = &own_nodes;
@@ -141,12 +101,16 @@ if (!SWIG_IsOK(res2)){
 %typemap(argout) (mfem::GridFunction *&nodes){
   Py_XDECREF($result);
   $result = PyList_New(0);
-  %append_output(SWIG_NewPointerObj(SWIG_as_voidptr(*arg2), $descriptor(mfem::GridFunction *), 0 |  0 ));
- }   
+  if (*arg$argnum){
+     // return None if Nodes is NULL    
+     %append_output(Py_None);
+  } else {
+     %append_output(SWIG_NewPointerObj(SWIG_as_voidptr(*arg$argnum), $descriptor(mfem::GridFunction *), 0 |  0 ));
+  }
+ }
 %typemap(argout) int &own_nodes_{
   %append_output(PyLong_FromLong((long)*$1));  
 }
-
 
 // default number is -1, which conflict with error code of PyArray_PyIntAsInt...
 %typemap(typecheck) (int nonconforming = -1) {

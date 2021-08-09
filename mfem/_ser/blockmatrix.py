@@ -228,13 +228,13 @@ class BlockMatrix(mfem._ser.matrix.AbstractSparseMatrix):
     def PrintMatlab(self, *args):
         r"""
         PrintMatlab(BlockMatrix self, std::ostream & os=mfem::out)
-        PrintMatlab(BlockMatrix self, char const * file, int precision=8)
+        PrintMatlab(BlockMatrix self, char const * file, int precision=16)
         """
         return _blockmatrix.BlockMatrix_PrintMatlab(self, *args)
     PrintMatlab = _swig_new_instance_method(_blockmatrix.BlockMatrix_PrintMatlab)
 
-    def PrintMatlabGZ(self, file, precision=8):
-        r"""PrintMatlabGZ(BlockMatrix self, char const * file, int precision=8)"""
+    def PrintMatlabGZ(self, file, precision=16):
+        r"""PrintMatlabGZ(BlockMatrix self, char const * file, int precision=16)"""
         return _blockmatrix.BlockMatrix_PrintMatlabGZ(self, file, precision)
     PrintMatlabGZ = _swig_new_instance_method(_blockmatrix.BlockMatrix_PrintMatlabGZ)
 

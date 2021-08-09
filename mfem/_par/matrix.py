@@ -106,13 +106,13 @@ class Matrix(mfem._par.operators.Operator):
     def Print(self, *args):
         r"""
         Print(Matrix self, std::ostream & out=mfem::out, int width_=4)
-        Print(Matrix self, char const * file, int precision=8)
+        Print(Matrix self, char const * file, int precision=16)
         """
         return _matrix.Matrix_Print(self, *args)
     Print = _swig_new_instance_method(_matrix.Matrix_Print)
 
-    def PrintGZ(self, file, precision=8):
-        r"""PrintGZ(Matrix self, char const * file, int precision=8)"""
+    def PrintGZ(self, file, precision=16):
+        r"""PrintGZ(Matrix self, char const * file, int precision=16)"""
         return _matrix.Matrix_PrintGZ(self, file, precision)
     PrintGZ = _swig_new_instance_method(_matrix.Matrix_PrintGZ)
 

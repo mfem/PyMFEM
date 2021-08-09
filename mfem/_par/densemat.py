@@ -566,6 +566,11 @@ class DenseMatrix(mfem._par.matrix.Matrix):
         r"""HostReadWrite(DenseMatrix self) -> double *"""
         return _densemat.DenseMatrix_HostReadWrite(self)
     HostReadWrite = _swig_new_instance_method(_densemat.DenseMatrix_HostReadWrite)
+
+    def Swap(self, other):
+        r"""Swap(DenseMatrix self, DenseMatrix other)"""
+        return _densemat.DenseMatrix_Swap(self, other)
+    Swap = _swig_new_instance_method(_densemat.DenseMatrix_Swap)
     __swig_destroy__ = _densemat.delete_DenseMatrix
 
     def Assign(self, *args):
@@ -616,39 +621,39 @@ class DenseMatrix(mfem._par.matrix.Matrix):
     def Print(self, *args):
         r"""
         Print(DenseMatrix self, std::ostream & out=mfem::out, int width_=4)
-        Print(DenseMatrix self, char const * file, int precision=8)
+        Print(DenseMatrix self, char const * file, int precision=16)
         """
         return _densemat.DenseMatrix_Print(self, *args)
     Print = _swig_new_instance_method(_densemat.DenseMatrix_Print)
 
-    def PrintGZ(self, file, precision=8):
-        r"""PrintGZ(DenseMatrix self, char const * file, int precision=8)"""
+    def PrintGZ(self, file, precision=16):
+        r"""PrintGZ(DenseMatrix self, char const * file, int precision=16)"""
         return _densemat.DenseMatrix_PrintGZ(self, file, precision)
     PrintGZ = _swig_new_instance_method(_densemat.DenseMatrix_PrintGZ)
 
     def PrintT(self, *args):
         r"""
         PrintT(DenseMatrix self, std::ostream & out=mfem::out, int width_=4)
-        PrintT(DenseMatrix self, char const * file, int precision=8)
+        PrintT(DenseMatrix self, char const * file, int precision=16)
         """
         return _densemat.DenseMatrix_PrintT(self, *args)
     PrintT = _swig_new_instance_method(_densemat.DenseMatrix_PrintT)
 
-    def PrintTGZ(self, file, precision=8):
-        r"""PrintTGZ(DenseMatrix self, char const * file, int precision=8)"""
+    def PrintTGZ(self, file, precision=16):
+        r"""PrintTGZ(DenseMatrix self, char const * file, int precision=16)"""
         return _densemat.DenseMatrix_PrintTGZ(self, file, precision)
     PrintTGZ = _swig_new_instance_method(_densemat.DenseMatrix_PrintTGZ)
 
     def PrintMatlab(self, *args):
         r"""
         PrintMatlab(DenseMatrix self, std::ostream & out=mfem::out)
-        PrintMatlab(DenseMatrix self, char const * file, int precision=8)
+        PrintMatlab(DenseMatrix self, char const * file, int precision=16)
         """
         return _densemat.DenseMatrix_PrintMatlab(self, *args)
     PrintMatlab = _swig_new_instance_method(_densemat.DenseMatrix_PrintMatlab)
 
-    def PrintMatlabGZ(self, file, precision=8):
-        r"""PrintMatlabGZ(DenseMatrix self, char const * file, int precision=8)"""
+    def PrintMatlabGZ(self, file, precision=16):
+        r"""PrintMatlabGZ(DenseMatrix self, char const * file, int precision=16)"""
         return _densemat.DenseMatrix_PrintMatlabGZ(self, file, precision)
     PrintMatlabGZ = _swig_new_instance_method(_densemat.DenseMatrix_PrintMatlabGZ)
 
@@ -1012,6 +1017,7 @@ class DenseTensor(object):
         r"""
         __init__(DenseTensor self) -> DenseTensor
         __init__(DenseTensor self, int i, int j, int k) -> DenseTensor
+        __init__(DenseTensor self, int i, int j, int k, mfem::MemoryType mt) -> DenseTensor
         __init__(DenseTensor self, DenseTensor other) -> DenseTensor
         """
         _densemat.DenseTensor_swiginit(self, _densemat.new_DenseTensor(*args))
@@ -1036,9 +1042,9 @@ class DenseTensor(object):
         return _densemat.DenseTensor_TotalSize(self)
     TotalSize = _swig_new_instance_method(_densemat.DenseTensor_TotalSize)
 
-    def SetSize(self, i, j, k):
-        r"""SetSize(DenseTensor self, int i, int j, int k)"""
-        return _densemat.DenseTensor_SetSize(self, i, j, k)
+    def SetSize(self, *args, **kwargs):
+        r"""SetSize(DenseTensor self, int i, int j, int k, mfem::MemoryType mt_=MemoryType::PRESERVE)"""
+        return _densemat.DenseTensor_SetSize(self, *args, **kwargs)
     SetSize = _swig_new_instance_method(_densemat.DenseTensor_SetSize)
 
     def UseExternalData(self, ext_data, i, j, k):
@@ -1121,6 +1127,11 @@ class DenseTensor(object):
         r"""HostReadWrite(DenseTensor self) -> double *"""
         return _densemat.DenseTensor_HostReadWrite(self)
     HostReadWrite = _swig_new_instance_method(_densemat.DenseTensor_HostReadWrite)
+
+    def Swap(self, t):
+        r"""Swap(DenseTensor self, DenseTensor t)"""
+        return _densemat.DenseTensor_Swap(self, t)
+    Swap = _swig_new_instance_method(_densemat.DenseTensor_Swap)
     __swig_destroy__ = _densemat.delete_DenseTensor
 
     def Assign(self, c):

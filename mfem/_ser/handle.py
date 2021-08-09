@@ -110,9 +110,12 @@ class OperatorHandle(object):
         return _handle.OperatorHandle___deref__(self)
     __deref__ = _swig_new_instance_method(_handle.OperatorHandle___deref__)
 
-    def __ref__(self):
-        r"""__ref__(OperatorHandle self) -> Operator"""
-        return _handle.OperatorHandle___ref__(self)
+    def __ref__(self, *args):
+        r"""
+        __ref__(OperatorHandle self) -> Operator
+        __ref__(OperatorHandle self) -> Operator
+        """
+        return _handle.OperatorHandle___ref__(self, *args)
     __ref__ = _swig_new_instance_method(_handle.OperatorHandle___ref__)
 
     def Type(self):
@@ -150,6 +153,11 @@ class OperatorHandle(object):
         return _handle.OperatorHandle_MakeRAP(self, Rt, A, P)
     MakeRAP = _swig_new_instance_method(_handle.OperatorHandle_MakeRAP)
 
+    def ConvertFrom(self, A):
+        r"""ConvertFrom(OperatorHandle self, OperatorHandle A)"""
+        return _handle.OperatorHandle_ConvertFrom(self, A)
+    ConvertFrom = _swig_new_instance_method(_handle.OperatorHandle_ConvertFrom)
+
     def EliminateRowsCols(self, A, ess_dof_list):
         r"""EliminateRowsCols(OperatorHandle self, OperatorHandle A, intArray ess_dof_list)"""
         return _handle.OperatorHandle_EliminateRowsCols(self, A, ess_dof_list)
@@ -170,33 +178,30 @@ class OperatorHandle(object):
         return _handle.OperatorHandle_EliminateBC(self, A_e, ess_dof_list, X, B)
     EliminateBC = _swig_new_instance_method(_handle.OperatorHandle_EliminateBC)
 
-    def As(self):
-        r"""As(OperatorHandle self) -> mfem::SparseMatrix *"""
-        return _handle.OperatorHandle_As(self)
-    As = _swig_new_instance_method(_handle.OperatorHandle_As)
+    def AsSparseMatrix(self):
+        r"""AsSparseMatrix(OperatorHandle self) -> mfem::SparseMatrix *"""
+        return _handle.OperatorHandle_AsSparseMatrix(self)
+    AsSparseMatrix = _swig_new_instance_method(_handle.OperatorHandle_AsSparseMatrix)
 
-    def Is(self):
-        r"""Is(OperatorHandle self) -> mfem::SparseMatrix *"""
-        return _handle.OperatorHandle_Is(self)
-    Is = _swig_new_instance_method(_handle.OperatorHandle_Is)
+    def IsSparseMatrix(self):
+        r"""IsSparseMatrix(OperatorHandle self) -> mfem::SparseMatrix *"""
+        return _handle.OperatorHandle_IsSparseMatrix(self)
+    IsSparseMatrix = _swig_new_instance_method(_handle.OperatorHandle_IsSparseMatrix)
 
-    def Get(self, A):
-        r"""Get(OperatorHandle self, mfem::SparseMatrix *& A)"""
-        return _handle.OperatorHandle_Get(self, A)
-    Get = _swig_new_instance_method(_handle.OperatorHandle_Get)
+    def GetSparseMatrix(self, A):
+        r"""GetSparseMatrix(OperatorHandle self, mfem::SparseMatrix *& A)"""
+        return _handle.OperatorHandle_GetSparseMatrix(self, A)
+    GetSparseMatrix = _swig_new_instance_method(_handle.OperatorHandle_GetSparseMatrix)
 
-    def Reset(self, A, own_A=True):
-        r"""Reset(OperatorHandle self, mfem::SparseMatrix * A, bool own_A=True)"""
-        return _handle.OperatorHandle_Reset(self, A, own_A)
-    Reset = _swig_new_instance_method(_handle.OperatorHandle_Reset)
+    def ResetSparseMatrix(self, A, own_A=True):
+        r"""ResetSparseMatrix(OperatorHandle self, mfem::SparseMatrix * A, bool own_A=True)"""
+        return _handle.OperatorHandle_ResetSparseMatrix(self, A, own_A)
+    ResetSparseMatrix = _swig_new_instance_method(_handle.OperatorHandle_ResetSparseMatrix)
 
-    def ConvertFrom(self, *args):
-        r"""
-        ConvertFrom(OperatorHandle self, OperatorHandle A)
-        ConvertFrom(OperatorHandle self, mfem::SparseMatrix * A)
-        """
-        return _handle.OperatorHandle_ConvertFrom(self, *args)
-    ConvertFrom = _swig_new_instance_method(_handle.OperatorHandle_ConvertFrom)
+    def ConvertFromSparseMatrix(self, A):
+        r"""ConvertFromSparseMatrix(OperatorHandle self, mfem::SparseMatrix * A)"""
+        return _handle.OperatorHandle_ConvertFromSparseMatrix(self, A)
+    ConvertFromSparseMatrix = _swig_new_instance_method(_handle.OperatorHandle_ConvertFromSparseMatrix)
 
     def InitTVectors(self, Po, Ri, Pi, x, b, X, B):
         r"""InitTVectors(OperatorHandle self, Operator Po, Operator Ri, Operator Pi, Vector x, Vector b, Vector X, Vector B)"""
@@ -243,6 +248,11 @@ class OperatorHandle(object):
         return _handle.OperatorHandle_GetGradient(self, x)
     GetGradient = _swig_new_instance_method(_handle.OperatorHandle_GetGradient)
 
+    def AssembleDiagonal(self, diag):
+        r"""AssembleDiagonal(OperatorHandle self, Vector diag)"""
+        return _handle.OperatorHandle_AssembleDiagonal(self, diag)
+    AssembleDiagonal = _swig_new_instance_method(_handle.OperatorHandle_AssembleDiagonal)
+
     def GetProlongation(self):
         r"""GetProlongation(OperatorHandle self) -> Operator"""
         return _handle.OperatorHandle_GetProlongation(self)
@@ -257,6 +267,11 @@ class OperatorHandle(object):
         r"""GetOutputProlongation(OperatorHandle self) -> Operator"""
         return _handle.OperatorHandle_GetOutputProlongation(self)
     GetOutputProlongation = _swig_new_instance_method(_handle.OperatorHandle_GetOutputProlongation)
+
+    def GetOutputRestrictionTranspose(self):
+        r"""GetOutputRestrictionTranspose(OperatorHandle self) -> Operator"""
+        return _handle.OperatorHandle_GetOutputRestrictionTranspose(self)
+    GetOutputRestrictionTranspose = _swig_new_instance_method(_handle.OperatorHandle_GetOutputRestrictionTranspose)
 
     def GetOutputRestriction(self):
         r"""GetOutputRestriction(OperatorHandle self) -> Operator"""

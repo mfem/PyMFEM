@@ -2694,17 +2694,18 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
 #define SWIGTYPE_p_char swig_types[1]
-#define SWIGTYPE_p_int swig_types[2]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[3]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Connection_t swig_types[4]
-#define SWIGTYPE_p_mfem__Connection swig_types[5]
-#define SWIGTYPE_p_mfem__DSTable swig_types[6]
-#define SWIGTYPE_p_mfem__MemoryT_int_t swig_types[7]
-#define SWIGTYPE_p_mfem__STable swig_types[8]
-#define SWIGTYPE_p_mfem__Table swig_types[9]
-#define SWIGTYPE_p_void swig_types[10]
-static swig_type_info *swig_types[12];
-static swig_module_info swig_module = {swig_types, 11, 0, 0, 0, 0};
+#define SWIGTYPE_p_double swig_types[2]
+#define SWIGTYPE_p_int swig_types[3]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[4]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Connection_t swig_types[5]
+#define SWIGTYPE_p_mfem__Connection swig_types[6]
+#define SWIGTYPE_p_mfem__DSTable swig_types[7]
+#define SWIGTYPE_p_mfem__MemoryT_int_t swig_types[8]
+#define SWIGTYPE_p_mfem__STable swig_types[9]
+#define SWIGTYPE_p_mfem__Table swig_types[10]
+#define SWIGTYPE_p_void swig_types[11]
+static swig_type_info *swig_types[13];
+static swig_module_info swig_module = {swig_types, 12, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2968,7 +2969,7 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
-SWIGINTERN void mfem_Table_Print__SWIG_1(mfem::Table *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Table_Print__SWIG_1(mfem::Table *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -2979,7 +2980,7 @@ SWIGINTERN void mfem_Table_Print__SWIG_1(mfem::Table *self,char const *file,int 
   self -> Print(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_Table_PrintGZ(mfem::Table *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Table_PrintGZ(mfem::Table *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -2990,7 +2991,7 @@ SWIGINTERN void mfem_Table_PrintGZ(mfem::Table *self,char const *file,int precis
   self -> Print(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_Table_PrintMatlab__SWIG_1(mfem::Table *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Table_PrintMatlab__SWIG_1(mfem::Table *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3001,7 +3002,7 @@ SWIGINTERN void mfem_Table_PrintMatlab__SWIG_1(mfem::Table *self,char const *fil
   self -> PrintMatlab(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_Table_PrintMatlabGZ(mfem::Table *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Table_PrintMatlabGZ(mfem::Table *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3012,7 +3013,7 @@ SWIGINTERN void mfem_Table_PrintMatlabGZ(mfem::Table *self,char const *file,int 
   self -> PrintMatlab(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_Table_Save__SWIG_1(mfem::Table *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Table_Save__SWIG_1(mfem::Table *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3023,7 +3024,7 @@ SWIGINTERN void mfem_Table_Save__SWIG_1(mfem::Table *self,char const *file,int p
   self -> Save(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_Table_SaveGZ(mfem::Table *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Table_SaveGZ(mfem::Table *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   
   if (!ofile)
@@ -5371,6 +5372,14 @@ SWIGINTERN PyObject *_wrap_Table_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), P
           }
           string_io2=swig_obj[1];
           stream2 = new std::ostringstream();
+          int prec = 16;
+          if (PyObject_HasAttrString(swig_obj[1], "precision")){
+            PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+            prec = (int)PyLong_AsLong(attr);
+            //std::cout << "setting prec" << prec << "\n";
+          }
+          stream2->precision(prec);
+          
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -5516,6 +5525,14 @@ SWIGINTERN PyObject *_wrap_Table_PrintMatlab__SWIG_0(PyObject *SWIGUNUSEDPARM(se
         }
         string_io2=swig_obj[1];
         stream2 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(swig_obj[1], "precision")){
+          PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream2->precision(prec);
+        
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -5652,6 +5669,14 @@ SWIGINTERN PyObject *_wrap_Table_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
         }
         string_io2=swig_obj[1];
         stream2 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(swig_obj[1], "precision")){
+          PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream2->precision(prec);
+        
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -6142,7 +6167,7 @@ SWIGINTERN PyObject *_wrap_Table_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
   PyObject *resultobj = 0;
   mfem::Table *arg1 = (mfem::Table *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -6296,7 +6321,7 @@ SWIGINTERN PyObject *_wrap_Table_PrintGZ(PyObject *SWIGUNUSEDPARM(self), PyObjec
   PyObject *resultobj = 0;
   mfem::Table *arg1 = (mfem::Table *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -6357,7 +6382,7 @@ SWIGINTERN PyObject *_wrap_Table_PrintMatlab__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   PyObject *resultobj = 0;
   mfem::Table *arg1 = (mfem::Table *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -6495,7 +6520,7 @@ SWIGINTERN PyObject *_wrap_Table_PrintMatlabGZ(PyObject *SWIGUNUSEDPARM(self), P
   PyObject *resultobj = 0;
   mfem::Table *arg1 = (mfem::Table *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -6556,7 +6581,7 @@ SWIGINTERN PyObject *_wrap_Table_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py
   PyObject *resultobj = 0;
   mfem::Table *arg1 = (mfem::Table *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -6611,7 +6636,7 @@ SWIGINTERN PyObject *_wrap_Table_SaveGZ(PyObject *SWIGUNUSEDPARM(self), PyObject
   PyObject *resultobj = 0;
   mfem::Table *arg1 = (mfem::Table *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -7364,18 +7389,18 @@ static PyMethodDef SwigMethods[] = {
 	 { "Table_GetRowList", (PyCFunction)(void(*)(void))_wrap_Table_GetRowList, METH_VARARGS|METH_KEYWORDS, "Table_GetRowList(Table self, int i) -> PyObject *"},
 	 { "Table_Print", _wrap_Table_Print, METH_VARARGS, "\n"
 		"Table_Print(Table self, std::ostream & out=mfem::out, int width=4)\n"
-		"Table_Print(Table self, char const * file, int precision=8)\n"
+		"Table_Print(Table self, char const * file, int precision=16)\n"
 		""},
-	 { "Table_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Table_PrintGZ, METH_VARARGS|METH_KEYWORDS, "Table_PrintGZ(Table self, char const * file, int precision=8)"},
+	 { "Table_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Table_PrintGZ, METH_VARARGS|METH_KEYWORDS, "Table_PrintGZ(Table self, char const * file, int precision=16)"},
 	 { "Table_PrintMatlab", _wrap_Table_PrintMatlab, METH_VARARGS, "\n"
 		"Table_PrintMatlab(Table self, std::ostream & out)\n"
-		"Table_PrintMatlab(Table self, char const * file, int precision=8)\n"
+		"Table_PrintMatlab(Table self, char const * file, int precision=16)\n"
 		""},
-	 { "Table_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_Table_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "Table_PrintMatlabGZ(Table self, char const * file, int precision=8)"},
-	 { "Table_SaveGZ", (PyCFunction)(void(*)(void))_wrap_Table_SaveGZ, METH_VARARGS|METH_KEYWORDS, "Table_SaveGZ(Table self, char const * file, int precision=8)"},
+	 { "Table_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_Table_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "Table_PrintMatlabGZ(Table self, char const * file, int precision=16)"},
+	 { "Table_SaveGZ", (PyCFunction)(void(*)(void))_wrap_Table_SaveGZ, METH_VARARGS|METH_KEYWORDS, "Table_SaveGZ(Table self, char const * file, int precision=16)"},
 	 { "Table_Save", _wrap_Table_Save, METH_VARARGS, "\n"
 		"Table_Save(Table self, std::ostream & out)\n"
-		"Table_Save(Table self, char const * file, int precision=8)\n"
+		"Table_Save(Table self, char const * file, int precision=16)\n"
 		"Table_Save(Table self)\n"
 		""},
 	 { "Table_swigregister", Table_swigregister, METH_O, NULL},
@@ -7470,18 +7495,18 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Table_GetRowList", (PyCFunction)(void(*)(void))_wrap_Table_GetRowList, METH_VARARGS|METH_KEYWORDS, "GetRowList(Table self, int i) -> PyObject *"},
 	 { "Table_Print", _wrap_Table_Print, METH_VARARGS, "\n"
 		"Print(Table self, std::ostream & out=mfem::out, int width=4)\n"
-		"Print(Table self, char const * file, int precision=8)\n"
+		"Print(Table self, char const * file, int precision=16)\n"
 		""},
-	 { "Table_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Table_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(Table self, char const * file, int precision=8)"},
+	 { "Table_PrintGZ", (PyCFunction)(void(*)(void))_wrap_Table_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(Table self, char const * file, int precision=16)"},
 	 { "Table_PrintMatlab", _wrap_Table_PrintMatlab, METH_VARARGS, "\n"
 		"PrintMatlab(Table self, std::ostream & out)\n"
-		"PrintMatlab(Table self, char const * file, int precision=8)\n"
+		"PrintMatlab(Table self, char const * file, int precision=16)\n"
 		""},
-	 { "Table_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_Table_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "PrintMatlabGZ(Table self, char const * file, int precision=8)"},
-	 { "Table_SaveGZ", (PyCFunction)(void(*)(void))_wrap_Table_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(Table self, char const * file, int precision=8)"},
+	 { "Table_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_Table_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "PrintMatlabGZ(Table self, char const * file, int precision=16)"},
+	 { "Table_SaveGZ", (PyCFunction)(void(*)(void))_wrap_Table_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(Table self, char const * file, int precision=16)"},
 	 { "Table_Save", _wrap_Table_Save, METH_VARARGS, "\n"
 		"Save(Table self, std::ostream & out)\n"
-		"Save(Table self, char const * file, int precision=8)\n"
+		"Save(Table self, char const * file, int precision=16)\n"
 		"Save(Table self)\n"
 		""},
 	 { "Table_swigregister", Table_swigregister, METH_O, NULL},
@@ -7511,6 +7536,7 @@ static void *_p_mfem__STableTo_p_mfem__Table(void *x, int *SWIGUNUSEDPARM(newmem
 }
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__Connection_t = {"_p_mfem__ArrayT_mfem__Connection_t", "mfem::Array< mfem::Connection > *", 0, 0, (void*)0, 0};
@@ -7524,6 +7550,7 @@ static swig_type_info _swigt__p_void = {"_p_void", "void *", 0, 0, (void*)0, 0};
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
+  &_swigt__p_double,
   &_swigt__p_int,
   &_swigt__p_mfem__ArrayT_int_t,
   &_swigt__p_mfem__ArrayT_mfem__Connection_t,
@@ -7537,6 +7564,7 @@ static swig_type_info *swig_type_initial[] = {
 
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__Connection_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__Connection_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -7550,6 +7578,7 @@ static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0,
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
+  _swigc__p_double,
   _swigc__p_int,
   _swigc__p_mfem__ArrayT_int_t,
   _swigc__p_mfem__ArrayT_mfem__Connection_t,

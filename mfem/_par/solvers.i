@@ -6,7 +6,8 @@
 #include "linalg/sparsemat.hpp"
 #include "linalg/solvers.hpp"
 #include "pyoperator.hpp"
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"
+using namespace mfem;
 %}
 
 %init %{
@@ -28,4 +29,5 @@ import_array();
 %import "../common/exception.i"
 
 %ignore mfem::IterativeSolverMonitor::SetIterativeSolver;
+%feature("director") mfem::IterativeSolverMonitor;
 %include "linalg/solvers.hpp"

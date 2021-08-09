@@ -2695,17 +2695,18 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
 #define SWIGTYPE_p_char swig_types[1]
 #define SWIGTYPE_p_double swig_types[2]
-#define SWIGTYPE_p_mfem__ArrayT_double_t swig_types[3]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t swig_types[4]
-#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[5]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[6]
-#define SWIGTYPE_p_mfem__IntegrationRules swig_types[7]
-#define SWIGTYPE_p_mfem__MemoryT_mfem__IntegrationPoint_t swig_types[8]
-#define SWIGTYPE_p_mfem__Quadrature1D swig_types[9]
-#define SWIGTYPE_p_mfem__QuadratureFunctions1D swig_types[10]
-#define SWIGTYPE_p_p_mfem__IntegrationPoint swig_types[11]
-static swig_type_info *swig_types[13];
-static swig_module_info swig_module = {swig_types, 12, 0, 0, 0, 0};
+#define SWIGTYPE_p_int swig_types[3]
+#define SWIGTYPE_p_mfem__ArrayT_double_t swig_types[4]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t swig_types[5]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[6]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[7]
+#define SWIGTYPE_p_mfem__IntegrationRules swig_types[8]
+#define SWIGTYPE_p_mfem__MemoryT_mfem__IntegrationPoint_t swig_types[9]
+#define SWIGTYPE_p_mfem__Quadrature1D swig_types[10]
+#define SWIGTYPE_p_mfem__QuadratureFunctions1D swig_types[11]
+#define SWIGTYPE_p_p_mfem__IntegrationPoint swig_types[12]
+static swig_type_info *swig_types[14];
+static swig_module_info swig_module = {swig_types, 13, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3004,6 +3005,7 @@ SWIGINTERN void mfem_Array_Sl_mfem_IntegrationPoint_Sg__Assign__SWIG_1(mfem::Arr
      *self = a;
   }
 SWIGINTERN void mfem_Array_Sl_mfem_IntegrationPoint_Sg__FakeToList(mfem::Array< mfem::IntegrationPoint > *self){}
+SWIGINTERN void mfem_Array_Sl_mfem_IntegrationPoint_Sg____iter__(mfem::Array< mfem::IntegrationPoint > *self){}
 
   #define SWIG_From_double   PyFloat_FromDouble 
 
@@ -5592,6 +5594,43 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_IntegrationPointArray___iter__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::IntegrationPoint > *arg1 = (mfem::Array< mfem::IntegrationPoint > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegrationPointArray___iter__" "', argument " "1"" of type '" "mfem::Array< mfem::IntegrationPoint > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::IntegrationPoint > * >(argp1);
+  {
+    try {
+      mfem_Array_Sl_mfem_IntegrationPoint_Sg____iter__(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *IntegrationPointArray_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
@@ -6960,6 +6999,43 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_IntegrationRule_SetPointIndices(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::IntegrationRule *arg1 = (mfem::IntegrationRule *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegrationRule_SetPointIndices" "', argument " "1"" of type '" "mfem::IntegrationRule *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::IntegrationRule * >(argp1);
+  {
+    try {
+      (arg1)->SetPointIndices();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_IntegrationRule__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::IntegrationRule *arg1 = 0 ;
@@ -7494,40 +7570,31 @@ SWIGINTERN PyObject *IntegrationRule_swiginit(PyObject *SWIGUNUSEDPARM(self), Py
 
 SWIGINTERN PyObject *_wrap_QuadratureFunctions1D_GaussLegendre(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  mfem::QuadratureFunctions1D *arg1 = (mfem::QuadratureFunctions1D *) 0 ;
-  int arg2 ;
-  mfem::IntegrationRule *arg3 = (mfem::IntegrationRule *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
+  int arg1 ;
+  mfem::IntegrationRule *arg2 = (mfem::IntegrationRule *) 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"np",  (char *)"ir",  NULL 
+    (char *)"np",  (char *)"ir",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:QuadratureFunctions1D_GaussLegendre", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__QuadratureFunctions1D, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunctions1D_GaussLegendre" "', argument " "1"" of type '" "mfem::QuadratureFunctions1D *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::QuadratureFunctions1D * >(argp1);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:QuadratureFunctions1D_GaussLegendre", kwnames, &obj0, &obj1)) SWIG_fail;
   {
-    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(obj1);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
-  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "QuadratureFunctions1D_GaussLegendre" "', argument " "3"" of type '" "mfem::IntegrationRule *""'"); 
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "QuadratureFunctions1D_GaussLegendre" "', argument " "2"" of type '" "mfem::IntegrationRule *""'"); 
   }
-  arg3 = reinterpret_cast< mfem::IntegrationRule * >(argp3);
+  arg2 = reinterpret_cast< mfem::IntegrationRule * >(argp2);
   {
     try {
-      (arg1)->GaussLegendre(arg2,arg3);
+      mfem::QuadratureFunctions1D::GaussLegendre(arg1,arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -7550,40 +7617,31 @@ fail:
 
 SWIGINTERN PyObject *_wrap_QuadratureFunctions1D_GaussLobatto(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  mfem::QuadratureFunctions1D *arg1 = (mfem::QuadratureFunctions1D *) 0 ;
-  int arg2 ;
-  mfem::IntegrationRule *arg3 = (mfem::IntegrationRule *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
+  int arg1 ;
+  mfem::IntegrationRule *arg2 = (mfem::IntegrationRule *) 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"np",  (char *)"ir",  NULL 
+    (char *)"np",  (char *)"ir",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:QuadratureFunctions1D_GaussLobatto", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__QuadratureFunctions1D, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunctions1D_GaussLobatto" "', argument " "1"" of type '" "mfem::QuadratureFunctions1D *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::QuadratureFunctions1D * >(argp1);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:QuadratureFunctions1D_GaussLobatto", kwnames, &obj0, &obj1)) SWIG_fail;
   {
-    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(obj1);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
-  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "QuadratureFunctions1D_GaussLobatto" "', argument " "3"" of type '" "mfem::IntegrationRule *""'"); 
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "QuadratureFunctions1D_GaussLobatto" "', argument " "2"" of type '" "mfem::IntegrationRule *""'"); 
   }
-  arg3 = reinterpret_cast< mfem::IntegrationRule * >(argp3);
+  arg2 = reinterpret_cast< mfem::IntegrationRule * >(argp2);
   {
     try {
-      (arg1)->GaussLobatto(arg2,arg3);
+      mfem::QuadratureFunctions1D::GaussLobatto(arg1,arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -7606,40 +7664,31 @@ fail:
 
 SWIGINTERN PyObject *_wrap_QuadratureFunctions1D_OpenUniform(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  mfem::QuadratureFunctions1D *arg1 = (mfem::QuadratureFunctions1D *) 0 ;
-  int arg2 ;
-  mfem::IntegrationRule *arg3 = (mfem::IntegrationRule *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
+  int arg1 ;
+  mfem::IntegrationRule *arg2 = (mfem::IntegrationRule *) 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"np",  (char *)"ir",  NULL 
+    (char *)"np",  (char *)"ir",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:QuadratureFunctions1D_OpenUniform", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__QuadratureFunctions1D, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunctions1D_OpenUniform" "', argument " "1"" of type '" "mfem::QuadratureFunctions1D *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::QuadratureFunctions1D * >(argp1);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:QuadratureFunctions1D_OpenUniform", kwnames, &obj0, &obj1)) SWIG_fail;
   {
-    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(obj1);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
-  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "QuadratureFunctions1D_OpenUniform" "', argument " "3"" of type '" "mfem::IntegrationRule *""'"); 
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "QuadratureFunctions1D_OpenUniform" "', argument " "2"" of type '" "mfem::IntegrationRule *""'"); 
   }
-  arg3 = reinterpret_cast< mfem::IntegrationRule * >(argp3);
+  arg2 = reinterpret_cast< mfem::IntegrationRule * >(argp2);
   {
     try {
-      (arg1)->OpenUniform(arg2,arg3);
+      mfem::QuadratureFunctions1D::OpenUniform(arg1,arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -7662,40 +7711,31 @@ fail:
 
 SWIGINTERN PyObject *_wrap_QuadratureFunctions1D_ClosedUniform(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  mfem::QuadratureFunctions1D *arg1 = (mfem::QuadratureFunctions1D *) 0 ;
-  int arg2 ;
-  mfem::IntegrationRule *arg3 = (mfem::IntegrationRule *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
+  int arg1 ;
+  mfem::IntegrationRule *arg2 = (mfem::IntegrationRule *) 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"np",  (char *)"ir",  NULL 
+    (char *)"np",  (char *)"ir",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:QuadratureFunctions1D_ClosedUniform", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__QuadratureFunctions1D, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunctions1D_ClosedUniform" "', argument " "1"" of type '" "mfem::QuadratureFunctions1D *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::QuadratureFunctions1D * >(argp1);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:QuadratureFunctions1D_ClosedUniform", kwnames, &obj0, &obj1)) SWIG_fail;
   {
-    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(obj1);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
-  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "QuadratureFunctions1D_ClosedUniform" "', argument " "3"" of type '" "mfem::IntegrationRule *""'"); 
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "QuadratureFunctions1D_ClosedUniform" "', argument " "2"" of type '" "mfem::IntegrationRule *""'"); 
   }
-  arg3 = reinterpret_cast< mfem::IntegrationRule * >(argp3);
+  arg2 = reinterpret_cast< mfem::IntegrationRule * >(argp2);
   {
     try {
-      (arg1)->ClosedUniform(arg2,arg3);
+      mfem::QuadratureFunctions1D::ClosedUniform(arg1,arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -7718,40 +7758,31 @@ fail:
 
 SWIGINTERN PyObject *_wrap_QuadratureFunctions1D_OpenHalfUniform(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  mfem::QuadratureFunctions1D *arg1 = (mfem::QuadratureFunctions1D *) 0 ;
-  int arg2 ;
-  mfem::IntegrationRule *arg3 = (mfem::IntegrationRule *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
+  int arg1 ;
+  mfem::IntegrationRule *arg2 = (mfem::IntegrationRule *) 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"np",  (char *)"ir",  NULL 
+    (char *)"np",  (char *)"ir",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:QuadratureFunctions1D_OpenHalfUniform", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__QuadratureFunctions1D, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunctions1D_OpenHalfUniform" "', argument " "1"" of type '" "mfem::QuadratureFunctions1D *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::QuadratureFunctions1D * >(argp1);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:QuadratureFunctions1D_OpenHalfUniform", kwnames, &obj0, &obj1)) SWIG_fail;
   {
-    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(obj1);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
-  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "QuadratureFunctions1D_OpenHalfUniform" "', argument " "3"" of type '" "mfem::IntegrationRule *""'"); 
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "QuadratureFunctions1D_OpenHalfUniform" "', argument " "2"" of type '" "mfem::IntegrationRule *""'"); 
   }
-  arg3 = reinterpret_cast< mfem::IntegrationRule * >(argp3);
+  arg2 = reinterpret_cast< mfem::IntegrationRule * >(argp2);
   {
     try {
-      (arg1)->OpenHalfUniform(arg2,arg3);
+      mfem::QuadratureFunctions1D::OpenHalfUniform(arg1,arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -7774,40 +7805,31 @@ fail:
 
 SWIGINTERN PyObject *_wrap_QuadratureFunctions1D_ClosedGL(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  mfem::QuadratureFunctions1D *arg1 = (mfem::QuadratureFunctions1D *) 0 ;
-  int arg2 ;
-  mfem::IntegrationRule *arg3 = (mfem::IntegrationRule *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
+  int arg1 ;
+  mfem::IntegrationRule *arg2 = (mfem::IntegrationRule *) 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"np",  (char *)"ir",  NULL 
+    (char *)"np",  (char *)"ir",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:QuadratureFunctions1D_ClosedGL", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__QuadratureFunctions1D, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunctions1D_ClosedGL" "', argument " "1"" of type '" "mfem::QuadratureFunctions1D *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::QuadratureFunctions1D * >(argp1);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:QuadratureFunctions1D_ClosedGL", kwnames, &obj0, &obj1)) SWIG_fail;
   {
-    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(obj1);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
-  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "QuadratureFunctions1D_ClosedGL" "', argument " "3"" of type '" "mfem::IntegrationRule *""'"); 
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "QuadratureFunctions1D_ClosedGL" "', argument " "2"" of type '" "mfem::IntegrationRule *""'"); 
   }
-  arg3 = reinterpret_cast< mfem::IntegrationRule * >(argp3);
+  arg2 = reinterpret_cast< mfem::IntegrationRule * >(argp2);
   {
     try {
-      (arg1)->ClosedGL(arg2,arg3);
+      mfem::QuadratureFunctions1D::ClosedGL(arg1,arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -7830,48 +7852,39 @@ fail:
 
 SWIGINTERN PyObject *_wrap_QuadratureFunctions1D_GivePolyPoints(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  mfem::QuadratureFunctions1D *arg1 = (mfem::QuadratureFunctions1D *) 0 ;
-  int arg2 ;
-  double *arg3 = (double *) 0 ;
-  int arg4 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
+  int arg1 ;
+  double *arg2 = (double *) 0 ;
+  int arg3 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"np",  (char *)"pts",  (char *)"type",  NULL 
+    (char *)"np",  (char *)"pts",  (char *)"type",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:QuadratureFunctions1D_GivePolyPoints", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__QuadratureFunctions1D, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunctions1D_GivePolyPoints" "', argument " "1"" of type '" "mfem::QuadratureFunctions1D *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::QuadratureFunctions1D * >(argp1);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:QuadratureFunctions1D_GivePolyPoints", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
   {
-    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(obj1);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
-  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "QuadratureFunctions1D_GivePolyPoints" "', argument " "3"" of type '" "double *""'"); 
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "QuadratureFunctions1D_GivePolyPoints" "', argument " "2"" of type '" "double *""'"); 
   }
-  arg3 = reinterpret_cast< double * >(argp3);
+  arg2 = reinterpret_cast< double * >(argp2);
   {
-    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyArray_PyIntAsInt(obj3);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
-      (arg1)->GivePolyPoints(arg2,arg3,arg4);
+      mfem::QuadratureFunctions1D::GivePolyPoints(arg1,arg2,arg3);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -8426,7 +8439,7 @@ static PyMethodDef SwigMethods[] = {
 		"IntegrationPointArray()\n"
 		"IntegrationPointArray(mfem::MemoryType mt)\n"
 		"IntegrationPointArray(int asize)\n"
-		"IntegrationPointArray(IntegrationPoint _data, int asize)\n"
+		"IntegrationPointArray(IntegrationPoint data_, int asize)\n"
 		"new_IntegrationPointArray(IntegrationPointArray src) -> IntegrationPointArray\n"
 		""},
 	 { "delete_IntegrationPointArray", _wrap_delete_IntegrationPointArray, METH_O, "delete_IntegrationPointArray(IntegrationPointArray self)"},
@@ -8491,6 +8504,7 @@ static PyMethodDef SwigMethods[] = {
 		"IntegrationPointArray_Assign(IntegrationPointArray self, IntegrationPoint a)\n"
 		""},
 	 { "IntegrationPointArray_FakeToList", _wrap_IntegrationPointArray_FakeToList, METH_O, "IntegrationPointArray_FakeToList(IntegrationPointArray self)"},
+	 { "IntegrationPointArray___iter__", _wrap_IntegrationPointArray___iter__, METH_O, "IntegrationPointArray___iter__(IntegrationPointArray self)"},
 	 { "IntegrationPointArray_swigregister", IntegrationPointArray_swigregister, METH_O, NULL},
 	 { "IntegrationPointArray_swiginit", IntegrationPointArray_swiginit, METH_VARARGS, NULL},
 	 { "IntegrationPoint_x_set", _wrap_IntegrationPoint_x_set, METH_VARARGS, "IntegrationPoint_x_set(IntegrationPoint self, double x)"},
@@ -8530,6 +8544,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_IntegrationPoint", _wrap_delete_IntegrationPoint, METH_O, "delete_IntegrationPoint(IntegrationPoint self)"},
 	 { "IntegrationPoint_swigregister", IntegrationPoint_swigregister, METH_O, NULL},
 	 { "IntegrationPoint_swiginit", IntegrationPoint_swiginit, METH_VARARGS, NULL},
+	 { "IntegrationRule_SetPointIndices", _wrap_IntegrationRule_SetPointIndices, METH_O, "IntegrationRule_SetPointIndices(IntegrationRule self)"},
 	 { "new_IntegrationRule", _wrap_new_IntegrationRule, METH_VARARGS, "\n"
 		"IntegrationRule()\n"
 		"IntegrationRule(int NP)\n"
@@ -8547,13 +8562,13 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_IntegrationRule", _wrap_delete_IntegrationRule, METH_O, "delete_IntegrationRule(IntegrationRule self)"},
 	 { "IntegrationRule_swigregister", IntegrationRule_swigregister, METH_O, NULL},
 	 { "IntegrationRule_swiginit", IntegrationRule_swiginit, METH_VARARGS, NULL},
-	 { "QuadratureFunctions1D_GaussLegendre", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_GaussLegendre, METH_VARARGS|METH_KEYWORDS, "QuadratureFunctions1D_GaussLegendre(QuadratureFunctions1D self, int const np, IntegrationRule ir)"},
-	 { "QuadratureFunctions1D_GaussLobatto", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_GaussLobatto, METH_VARARGS|METH_KEYWORDS, "QuadratureFunctions1D_GaussLobatto(QuadratureFunctions1D self, int const np, IntegrationRule ir)"},
-	 { "QuadratureFunctions1D_OpenUniform", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_OpenUniform, METH_VARARGS|METH_KEYWORDS, "QuadratureFunctions1D_OpenUniform(QuadratureFunctions1D self, int const np, IntegrationRule ir)"},
-	 { "QuadratureFunctions1D_ClosedUniform", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_ClosedUniform, METH_VARARGS|METH_KEYWORDS, "QuadratureFunctions1D_ClosedUniform(QuadratureFunctions1D self, int const np, IntegrationRule ir)"},
-	 { "QuadratureFunctions1D_OpenHalfUniform", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_OpenHalfUniform, METH_VARARGS|METH_KEYWORDS, "QuadratureFunctions1D_OpenHalfUniform(QuadratureFunctions1D self, int const np, IntegrationRule ir)"},
-	 { "QuadratureFunctions1D_ClosedGL", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_ClosedGL, METH_VARARGS|METH_KEYWORDS, "QuadratureFunctions1D_ClosedGL(QuadratureFunctions1D self, int const np, IntegrationRule ir)"},
-	 { "QuadratureFunctions1D_GivePolyPoints", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_GivePolyPoints, METH_VARARGS|METH_KEYWORDS, "QuadratureFunctions1D_GivePolyPoints(QuadratureFunctions1D self, int const np, double * pts, int const type)"},
+	 { "QuadratureFunctions1D_GaussLegendre", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_GaussLegendre, METH_VARARGS|METH_KEYWORDS, "QuadratureFunctions1D_GaussLegendre(int const np, IntegrationRule ir)"},
+	 { "QuadratureFunctions1D_GaussLobatto", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_GaussLobatto, METH_VARARGS|METH_KEYWORDS, "QuadratureFunctions1D_GaussLobatto(int const np, IntegrationRule ir)"},
+	 { "QuadratureFunctions1D_OpenUniform", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_OpenUniform, METH_VARARGS|METH_KEYWORDS, "QuadratureFunctions1D_OpenUniform(int const np, IntegrationRule ir)"},
+	 { "QuadratureFunctions1D_ClosedUniform", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_ClosedUniform, METH_VARARGS|METH_KEYWORDS, "QuadratureFunctions1D_ClosedUniform(int const np, IntegrationRule ir)"},
+	 { "QuadratureFunctions1D_OpenHalfUniform", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_OpenHalfUniform, METH_VARARGS|METH_KEYWORDS, "QuadratureFunctions1D_OpenHalfUniform(int const np, IntegrationRule ir)"},
+	 { "QuadratureFunctions1D_ClosedGL", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_ClosedGL, METH_VARARGS|METH_KEYWORDS, "QuadratureFunctions1D_ClosedGL(int const np, IntegrationRule ir)"},
+	 { "QuadratureFunctions1D_GivePolyPoints", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_GivePolyPoints, METH_VARARGS|METH_KEYWORDS, "QuadratureFunctions1D_GivePolyPoints(int const np, double * pts, int const type)"},
 	 { "new_QuadratureFunctions1D", _wrap_new_QuadratureFunctions1D, METH_NOARGS, "new_QuadratureFunctions1D() -> QuadratureFunctions1D"},
 	 { "delete_QuadratureFunctions1D", _wrap_delete_QuadratureFunctions1D, METH_O, "delete_QuadratureFunctions1D(QuadratureFunctions1D self)"},
 	 { "QuadratureFunctions1D_swigregister", QuadratureFunctions1D_swigregister, METH_O, NULL},
@@ -8581,7 +8596,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"IntegrationPointArray()\n"
 		"IntegrationPointArray(mfem::MemoryType mt)\n"
 		"IntegrationPointArray(int asize)\n"
-		"IntegrationPointArray(IntegrationPoint _data, int asize)\n"
+		"IntegrationPointArray(IntegrationPoint data_, int asize)\n"
 		"new_IntegrationPointArray(IntegrationPointArray src) -> IntegrationPointArray\n"
 		""},
 	 { "delete_IntegrationPointArray", _wrap_delete_IntegrationPointArray, METH_O, "delete_IntegrationPointArray(IntegrationPointArray self)"},
@@ -8646,6 +8661,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Assign(IntegrationPointArray self, IntegrationPoint a)\n"
 		""},
 	 { "IntegrationPointArray_FakeToList", _wrap_IntegrationPointArray_FakeToList, METH_O, "FakeToList(IntegrationPointArray self)"},
+	 { "IntegrationPointArray___iter__", _wrap_IntegrationPointArray___iter__, METH_O, "__iter__(IntegrationPointArray self)"},
 	 { "IntegrationPointArray_swigregister", IntegrationPointArray_swigregister, METH_O, NULL},
 	 { "IntegrationPointArray_swiginit", IntegrationPointArray_swiginit, METH_VARARGS, NULL},
 	 { "IntegrationPoint_x_set", _wrap_IntegrationPoint_x_set, METH_VARARGS, "IntegrationPoint_x_set(IntegrationPoint self, double x)"},
@@ -8685,6 +8701,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_IntegrationPoint", _wrap_delete_IntegrationPoint, METH_O, "delete_IntegrationPoint(IntegrationPoint self)"},
 	 { "IntegrationPoint_swigregister", IntegrationPoint_swigregister, METH_O, NULL},
 	 { "IntegrationPoint_swiginit", IntegrationPoint_swiginit, METH_VARARGS, NULL},
+	 { "IntegrationRule_SetPointIndices", _wrap_IntegrationRule_SetPointIndices, METH_O, "SetPointIndices(IntegrationRule self)"},
 	 { "new_IntegrationRule", _wrap_new_IntegrationRule, METH_VARARGS, "\n"
 		"IntegrationRule()\n"
 		"IntegrationRule(int NP)\n"
@@ -8702,13 +8719,13 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_IntegrationRule", _wrap_delete_IntegrationRule, METH_O, "delete_IntegrationRule(IntegrationRule self)"},
 	 { "IntegrationRule_swigregister", IntegrationRule_swigregister, METH_O, NULL},
 	 { "IntegrationRule_swiginit", IntegrationRule_swiginit, METH_VARARGS, NULL},
-	 { "QuadratureFunctions1D_GaussLegendre", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_GaussLegendre, METH_VARARGS|METH_KEYWORDS, "GaussLegendre(QuadratureFunctions1D self, int const np, IntegrationRule ir)"},
-	 { "QuadratureFunctions1D_GaussLobatto", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_GaussLobatto, METH_VARARGS|METH_KEYWORDS, "GaussLobatto(QuadratureFunctions1D self, int const np, IntegrationRule ir)"},
-	 { "QuadratureFunctions1D_OpenUniform", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_OpenUniform, METH_VARARGS|METH_KEYWORDS, "OpenUniform(QuadratureFunctions1D self, int const np, IntegrationRule ir)"},
-	 { "QuadratureFunctions1D_ClosedUniform", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_ClosedUniform, METH_VARARGS|METH_KEYWORDS, "ClosedUniform(QuadratureFunctions1D self, int const np, IntegrationRule ir)"},
-	 { "QuadratureFunctions1D_OpenHalfUniform", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_OpenHalfUniform, METH_VARARGS|METH_KEYWORDS, "OpenHalfUniform(QuadratureFunctions1D self, int const np, IntegrationRule ir)"},
-	 { "QuadratureFunctions1D_ClosedGL", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_ClosedGL, METH_VARARGS|METH_KEYWORDS, "ClosedGL(QuadratureFunctions1D self, int const np, IntegrationRule ir)"},
-	 { "QuadratureFunctions1D_GivePolyPoints", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_GivePolyPoints, METH_VARARGS|METH_KEYWORDS, "GivePolyPoints(QuadratureFunctions1D self, int const np, double * pts, int const type)"},
+	 { "QuadratureFunctions1D_GaussLegendre", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_GaussLegendre, METH_VARARGS|METH_KEYWORDS, "GaussLegendre(int const np, IntegrationRule ir)"},
+	 { "QuadratureFunctions1D_GaussLobatto", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_GaussLobatto, METH_VARARGS|METH_KEYWORDS, "GaussLobatto(int const np, IntegrationRule ir)"},
+	 { "QuadratureFunctions1D_OpenUniform", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_OpenUniform, METH_VARARGS|METH_KEYWORDS, "OpenUniform(int const np, IntegrationRule ir)"},
+	 { "QuadratureFunctions1D_ClosedUniform", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_ClosedUniform, METH_VARARGS|METH_KEYWORDS, "ClosedUniform(int const np, IntegrationRule ir)"},
+	 { "QuadratureFunctions1D_OpenHalfUniform", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_OpenHalfUniform, METH_VARARGS|METH_KEYWORDS, "OpenHalfUniform(int const np, IntegrationRule ir)"},
+	 { "QuadratureFunctions1D_ClosedGL", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_ClosedGL, METH_VARARGS|METH_KEYWORDS, "ClosedGL(int const np, IntegrationRule ir)"},
+	 { "QuadratureFunctions1D_GivePolyPoints", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctions1D_GivePolyPoints, METH_VARARGS|METH_KEYWORDS, "GivePolyPoints(int const np, double * pts, int const type)"},
 	 { "new_QuadratureFunctions1D", _wrap_new_QuadratureFunctions1D, METH_NOARGS, "new_QuadratureFunctions1D() -> QuadratureFunctions1D"},
 	 { "delete_QuadratureFunctions1D", _wrap_delete_QuadratureFunctions1D, METH_O, "delete_QuadratureFunctions1D(QuadratureFunctions1D self)"},
 	 { "QuadratureFunctions1D_swigregister", QuadratureFunctions1D_swigregister, METH_O, NULL},
@@ -8738,6 +8755,7 @@ static void *_p_mfem__IntegrationRuleTo_p_mfem__ArrayT_mfem__IntegrationPoint_t(
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_double_t = {"_p_mfem__ArrayT_double_t", "mfem::Array< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__IntegrationPoint_t = {"_p_mfem__ArrayT_mfem__IntegrationPoint_t", "mfem::Array< mfem::IntegrationPoint > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationPoint = {"_p_mfem__IntegrationPoint", "mfem::IntegrationPoint *", 0, 0, (void*)0, 0};
@@ -8752,6 +8770,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
   &_swigt__p_double,
+  &_swigt__p_int,
   &_swigt__p_mfem__ArrayT_double_t,
   &_swigt__p_mfem__ArrayT_mfem__IntegrationPoint_t,
   &_swigt__p_mfem__IntegrationPoint,
@@ -8766,6 +8785,7 @@ static swig_type_info *swig_type_initial[] = {
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_double_t[] = {  {&_swigt__p_mfem__ArrayT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__IntegrationPoint_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__IntegrationPoint_t, 0, 0, 0},  {&_swigt__p_mfem__IntegrationRule, _p_mfem__IntegrationRuleTo_p_mfem__ArrayT_mfem__IntegrationPoint_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationPoint[] = {  {&_swigt__p_mfem__IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
@@ -8780,6 +8800,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
   _swigc__p_double,
+  _swigc__p_int,
   _swigc__p_mfem__ArrayT_double_t,
   _swigc__p_mfem__ArrayT_mfem__IntegrationPoint_t,
   _swigc__p_mfem__IntegrationPoint,

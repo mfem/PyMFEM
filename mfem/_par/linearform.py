@@ -124,15 +124,19 @@ class LinearForm(mfem._par.vector.Vector):
         return _linearform.LinearForm_FESpace(self, *args)
     FESpace = _swig_new_instance_method(_linearform.LinearForm_FESpace)
 
-    def AddDomainIntegrator(self, lfi):
-        r"""AddDomainIntegrator(LinearForm self, LinearFormIntegrator lfi)"""
+    def AddDomainIntegrator(self, *args):
+        r"""
+        AddDomainIntegrator(LinearForm self, LinearFormIntegrator lfi)
+        AddDomainIntegrator(LinearForm self, LinearFormIntegrator lfi, intArray elem_marker)
+        """
 
         if not hasattr(self, "_integrators"): self._integrators = []
+        lfi = args[0]	     
         self._integrators.append(lfi)
         lfi.thisown=0 
 
 
-        return _linearform.LinearForm_AddDomainIntegrator(self, lfi)
+        return _linearform.LinearForm_AddDomainIntegrator(self, *args)
 
 
     def AddBoundaryIntegrator(self, *args):
@@ -165,6 +169,17 @@ class LinearForm(mfem._par.vector.Vector):
         return _linearform.LinearForm_AddBdrFaceIntegrator(self, *args)
 
 
+    def AddInteriorFaceIntegrator(self, lfi):
+        r"""AddInteriorFaceIntegrator(LinearForm self, LinearFormIntegrator lfi)"""
+
+        if not hasattr(self, "_integrators"): self._integrators = []
+        self._integrators.append(lfi)
+        lfi.thisown=0 
+
+
+        return _linearform.LinearForm_AddInteriorFaceIntegrator(self, lfi)
+
+
     def GetDLFI(self):
         r"""GetDLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"""
         return _linearform.LinearForm_GetDLFI(self)
@@ -184,6 +199,11 @@ class LinearForm(mfem._par.vector.Vector):
         r"""GetFLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"""
         return _linearform.LinearForm_GetFLFI(self)
     GetFLFI = _swig_new_instance_method(_linearform.LinearForm_GetFLFI)
+
+    def GetIFLFI(self):
+        r"""GetIFLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"""
+        return _linearform.LinearForm_GetIFLFI(self)
+    GetIFLFI = _swig_new_instance_method(_linearform.LinearForm_GetIFLFI)
 
     def GetFLFI_Marker(self):
         r"""GetFLFI_Marker(LinearForm self) -> mfem::Array< mfem::Array< int > * > *"""

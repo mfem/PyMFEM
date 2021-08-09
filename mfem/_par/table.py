@@ -286,38 +286,38 @@ class Table(object):
     def Print(self, *args):
         r"""
         Print(Table self, std::ostream & out=mfem::out, int width=4)
-        Print(Table self, char const * file, int precision=8)
+        Print(Table self, char const * file, int precision=16)
         """
         return _table.Table_Print(self, *args)
     Print = _swig_new_instance_method(_table.Table_Print)
 
-    def PrintGZ(self, file, precision=8):
-        r"""PrintGZ(Table self, char const * file, int precision=8)"""
+    def PrintGZ(self, file, precision=16):
+        r"""PrintGZ(Table self, char const * file, int precision=16)"""
         return _table.Table_PrintGZ(self, file, precision)
     PrintGZ = _swig_new_instance_method(_table.Table_PrintGZ)
 
     def PrintMatlab(self, *args):
         r"""
         PrintMatlab(Table self, std::ostream & out)
-        PrintMatlab(Table self, char const * file, int precision=8)
+        PrintMatlab(Table self, char const * file, int precision=16)
         """
         return _table.Table_PrintMatlab(self, *args)
     PrintMatlab = _swig_new_instance_method(_table.Table_PrintMatlab)
 
-    def PrintMatlabGZ(self, file, precision=8):
-        r"""PrintMatlabGZ(Table self, char const * file, int precision=8)"""
+    def PrintMatlabGZ(self, file, precision=16):
+        r"""PrintMatlabGZ(Table self, char const * file, int precision=16)"""
         return _table.Table_PrintMatlabGZ(self, file, precision)
     PrintMatlabGZ = _swig_new_instance_method(_table.Table_PrintMatlabGZ)
 
-    def SaveGZ(self, file, precision=8):
-        r"""SaveGZ(Table self, char const * file, int precision=8)"""
+    def SaveGZ(self, file, precision=16):
+        r"""SaveGZ(Table self, char const * file, int precision=16)"""
         return _table.Table_SaveGZ(self, file, precision)
     SaveGZ = _swig_new_instance_method(_table.Table_SaveGZ)
 
     def Save(self, *args):
         r"""
         Save(Table self, std::ostream & out)
-        Save(Table self, char const * file, int precision=8)
+        Save(Table self, char const * file, int precision=16)
         Save(Table self)
         """
         return _table.Table_Save(self, *args)

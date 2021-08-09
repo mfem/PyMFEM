@@ -39,44 +39,62 @@ import_array();
 
 %import "mem_manager.i"
 
+
+
+%import "../common/handle_template.i"
+
+// instatitate template methods (step 1: Rename Macro )
+
+ //CONSTRUCTOR_RENAME(SparseMatrix)
+AS_RENAME(SparseMatrix)
+IS_RENAME(SparseMatrix)
+GET_RENAME(SparseMatrix)
+RESET_RENAME(SparseMatrix)
+CONVERT_FROM_RENAME(SparseMatrix)
+
+ //CONSTRUCTOR_RENAME(HypreParMatrix)  
+AS_RENAME(HypreParMatrix)
+IS_RENAME(HypreParMatrix)
+GET_RENAME(HypreParMatrix)
+RESET_RENAME(HypreParMatrix)
+CONVERT_FROM_RENAME(HypreParMatrix)
+
+#ifdef MFEM_USE_PETSC
+ //CONSTRUCTOR_RENAME(PetscParMatrix)  
+AS_RENAME(PetscParMatrix)
+IS_RENAME(PetscParMatrix)
+GET_RENAME(PetscParMatrix)
+RESET_RENAME(PetscParMatrix)
+CONVERT_FROM_RENAME(PetscParMatrix)  
+#endif
+
 %include "linalg/handle.hpp"
 
 %pythoncode %{
 OperatorPtr=OperatorHandle  
 %}
 
-// instatitate template methods (step 1: Macro definition)
-%define OPERATORHANDLE_WRAP(T)
-%template(OperatorHandle) mfem::OperatorHandle::OperatorHandle<T >;
-%enddef
-%define AS_WRAP(T)
-%template(As) mfem::OperatorHandle::As<T >;
-%enddef
-%define IS_WRAP(T)
-%template(Is) mfem::OperatorHandle::Is<T >;
-%enddef
-%define GET_WRAP(T)
-%template(Get) mfem::OperatorHandle::Get<T >;
-%enddef
-%define RESET_WRAP(T)
-%template(Reset) mfem::OperatorHandle::Reset<T >;
-%enddef
-%define CONVERT_FROM_WRAP(T)
-%template(ConvertFrom) mfem::OperatorHandle::ConvertFrom<T >;
-%enddef
-
 // instatitate template methods (step 2: Instantiation)
-AS_WRAP(mfem::HypreParMatrix)
-IS_WRAP(mfem::HypreParMatrix)
-GET_WRAP(mfem::HypreParMatrix)
-RESET_WRAP(mfem::HypreParMatrix)          
-CONVERT_FROM_WRAP(mfem::HypreParMatrix)
+//CONSTRUCTOR_WRAP(SparseMatrix)
+AS_WRAP(SparseMatrix)
+IS_WRAP(SparseMatrix)
+GET_WRAP(SparseMatrix)
+RESET_WRAP(SparseMatrix)          
+CONVERT_FROM_WRAP(SparseMatrix)
+
+//CONSTRUCTOR_WRAP(HypreParMatrix)  
+AS_WRAP(HypreParMatrix)
+IS_WRAP(HypreParMatrix)
+GET_WRAP(HypreParMatrix)
+RESET_WRAP(HypreParMatrix)          
+CONVERT_FROM_WRAP(HypreParMatrix)
 
 #ifdef MFEM_USE_PETSC
-AS_WRAP(mfem::PetscParMatrix)
-IS_WRAP(mfem::PetscParMatrix)
-GET_WRAP(mfem::PetscParMatrix)
-RESET_WRAP(mfem::PetscParMatrix)          
-CONVERT_FROM_WRAP(mfem::PetscParMatrix)
+//CONSTRUCTOR_WRAP(PetscParMatrix)    
+AS_WRAP(PetscParMatrix)
+IS_WRAP(PetscParMatrix)
+GET_WRAP(PetscParMatrix)
+RESET_WRAP(PetscParMatrix)          
+CONVERT_FROM_WRAP(PetscParMatrix)
 #endif
   

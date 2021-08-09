@@ -2695,17 +2695,18 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_MPI_Comm swig_types[0]
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[1]
 #define SWIGTYPE_p_char swig_types[2]
-#define SWIGTYPE_p_int swig_types[3]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[4]
-#define SWIGTYPE_p_mfem__GroupCommunicator swig_types[5]
-#define SWIGTYPE_p_mfem__GroupTopology swig_types[6]
-#define SWIGTYPE_p_mfem__ListOfIntegerSets swig_types[7]
-#define SWIGTYPE_p_mfem__MPI_Session swig_types[8]
-#define SWIGTYPE_p_mfem__STable swig_types[9]
-#define SWIGTYPE_p_mfem__Table swig_types[10]
-#define SWIGTYPE_p_p_p_char swig_types[11]
-static swig_type_info *swig_types[13];
-static swig_module_info swig_module = {swig_types, 12, 0, 0, 0, 0};
+#define SWIGTYPE_p_double swig_types[3]
+#define SWIGTYPE_p_int swig_types[4]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[5]
+#define SWIGTYPE_p_mfem__GroupCommunicator swig_types[6]
+#define SWIGTYPE_p_mfem__GroupTopology swig_types[7]
+#define SWIGTYPE_p_mfem__ListOfIntegerSets swig_types[8]
+#define SWIGTYPE_p_mfem__MPI_Session swig_types[9]
+#define SWIGTYPE_p_mfem__STable swig_types[10]
+#define SWIGTYPE_p_mfem__Table swig_types[11]
+#define SWIGTYPE_p_p_p_char swig_types[12]
+static swig_type_info *swig_types[14];
+static swig_module_info swig_module = {swig_types, 13, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3018,7 +3019,7 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
-SWIGINTERN void mfem_GroupTopology_Save__SWIG_1(mfem::GroupTopology *self,char const *file,int precision=8){
+SWIGINTERN void mfem_GroupTopology_Save__SWIG_1(mfem::GroupTopology *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3029,7 +3030,7 @@ SWIGINTERN void mfem_GroupTopology_Save__SWIG_1(mfem::GroupTopology *self,char c
   self -> Save(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_GroupTopology_SaveGZ(mfem::GroupTopology *self,char const *file,int precision=8){
+SWIGINTERN void mfem_GroupTopology_SaveGZ(mfem::GroupTopology *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3191,7 +3192,7 @@ SWIG_AsVal_int (PyObject * obj, int *val)
   return res;
 }
 
-SWIGINTERN void mfem_GroupCommunicator_PrintInfo__SWIG_1(mfem::GroupCommunicator *self,char const *file,int precision=8){
+SWIGINTERN void mfem_GroupCommunicator_PrintInfo__SWIG_1(mfem::GroupCommunicator *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3202,7 +3203,7 @@ SWIGINTERN void mfem_GroupCommunicator_PrintInfo__SWIG_1(mfem::GroupCommunicator
   self -> PrintInfo(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_GroupCommunicator_PrintInfoGZ(mfem::GroupCommunicator *self,char const *file,int precision=8){
+SWIGINTERN void mfem_GroupCommunicator_PrintInfoGZ(mfem::GroupCommunicator *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -4311,6 +4312,14 @@ SWIGINTERN PyObject *_wrap_GroupTopology_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(s
         }
         string_io2=swig_obj[1];
         stream2 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(swig_obj[1], "precision")){
+          PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream2->precision(prec);
+        
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -4586,6 +4595,57 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_GroupTopology_Swap(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::GroupTopology *arg1 = (mfem::GroupTopology *) 0 ;
+  mfem::GroupTopology *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"other",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GroupTopology_Swap", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_Swap" "', argument " "1"" of type '" "mfem::GroupTopology *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__GroupTopology,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroupTopology_Swap" "', argument " "2"" of type '" "mfem::GroupTopology &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroupTopology_Swap" "', argument " "2"" of type '" "mfem::GroupTopology &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::GroupTopology * >(argp2);
+  {
+    try {
+      (arg1)->Swap(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_GroupTopology(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::GroupTopology *arg1 = (mfem::GroupTopology *) 0 ;
@@ -4627,7 +4687,7 @@ SWIGINTERN PyObject *_wrap_GroupTopology_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   PyObject *resultobj = 0;
   mfem::GroupTopology *arg1 = (mfem::GroupTopology *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -4765,7 +4825,7 @@ SWIGINTERN PyObject *_wrap_GroupTopology_SaveGZ(PyObject *SWIGUNUSEDPARM(self), 
   PyObject *resultobj = 0;
   mfem::GroupTopology *arg1 = (mfem::GroupTopology *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -5388,6 +5448,14 @@ SWIGINTERN PyObject *_wrap_GroupCommunicator_PrintInfo__SWIG_0(PyObject *SWIGUNU
           }
           string_io2=swig_obj[1];
           stream2 = new std::ostringstream();
+          int prec = 16;
+          if (PyObject_HasAttrString(swig_obj[1], "precision")){
+            PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+            prec = (int)PyLong_AsLong(attr);
+            //std::cout << "setting prec" << prec << "\n";
+          }
+          stream2->precision(prec);
+          
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -5524,7 +5592,7 @@ SWIGINTERN PyObject *_wrap_GroupCommunicator_PrintInfo__SWIG_1(PyObject *SWIGUNU
   PyObject *resultobj = 0;
   mfem::GroupCommunicator *arg1 = (mfem::GroupCommunicator *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -5665,7 +5733,7 @@ SWIGINTERN PyObject *_wrap_GroupCommunicator_PrintInfoGZ(PyObject *SWIGUNUSEDPAR
   PyObject *resultobj = 0;
   mfem::GroupCommunicator *arg1 = (mfem::GroupCommunicator *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -5809,12 +5877,13 @@ static PyMethodDef SwigMethods[] = {
 	 { "GroupTopology_GetGroup", (PyCFunction)(void(*)(void))_wrap_GroupTopology_GetGroup, METH_VARARGS|METH_KEYWORDS, "GroupTopology_GetGroup(GroupTopology self, int g) -> int const *"},
 	 { "GroupTopology_Load", (PyCFunction)(void(*)(void))_wrap_GroupTopology_Load, METH_VARARGS|METH_KEYWORDS, "GroupTopology_Load(GroupTopology self, std::istream & _in)"},
 	 { "GroupTopology_Copy", (PyCFunction)(void(*)(void))_wrap_GroupTopology_Copy, METH_VARARGS|METH_KEYWORDS, "GroupTopology_Copy(GroupTopology self, GroupTopology copy)"},
+	 { "GroupTopology_Swap", (PyCFunction)(void(*)(void))_wrap_GroupTopology_Swap, METH_VARARGS|METH_KEYWORDS, "GroupTopology_Swap(GroupTopology self, GroupTopology other)"},
 	 { "delete_GroupTopology", _wrap_delete_GroupTopology, METH_O, "delete_GroupTopology(GroupTopology self)"},
 	 { "GroupTopology_Save", _wrap_GroupTopology_Save, METH_VARARGS, "\n"
 		"GroupTopology_Save(GroupTopology self, std::ostream & out)\n"
-		"GroupTopology_Save(GroupTopology self, char const * file, int precision=8)\n"
+		"GroupTopology_Save(GroupTopology self, char const * file, int precision=16)\n"
 		""},
-	 { "GroupTopology_SaveGZ", (PyCFunction)(void(*)(void))_wrap_GroupTopology_SaveGZ, METH_VARARGS|METH_KEYWORDS, "GroupTopology_SaveGZ(GroupTopology self, char const * file, int precision=8)"},
+	 { "GroupTopology_SaveGZ", (PyCFunction)(void(*)(void))_wrap_GroupTopology_SaveGZ, METH_VARARGS|METH_KEYWORDS, "GroupTopology_SaveGZ(GroupTopology self, char const * file, int precision=16)"},
 	 { "GroupTopology_swigregister", GroupTopology_swigregister, METH_O, NULL},
 	 { "GroupTopology_swiginit", GroupTopology_swiginit, METH_VARARGS, NULL},
 	 { "new_GroupCommunicator", (PyCFunction)(void(*)(void))_wrap_new_GroupCommunicator, METH_VARARGS|METH_KEYWORDS, "new_GroupCommunicator(GroupTopology gt, mfem::GroupCommunicator::Mode m=byNeighbor) -> GroupCommunicator"},
@@ -5834,9 +5903,9 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_GroupCommunicator", _wrap_delete_GroupCommunicator, METH_O, "delete_GroupCommunicator(GroupCommunicator self)"},
 	 { "GroupCommunicator_PrintInfo", _wrap_GroupCommunicator_PrintInfo, METH_VARARGS, "\n"
 		"GroupCommunicator_PrintInfo(GroupCommunicator self, std::ostream & out=mfem::out)\n"
-		"GroupCommunicator_PrintInfo(GroupCommunicator self, char const * file, int precision=8)\n"
+		"GroupCommunicator_PrintInfo(GroupCommunicator self, char const * file, int precision=16)\n"
 		""},
-	 { "GroupCommunicator_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_GroupCommunicator_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "GroupCommunicator_PrintInfoGZ(GroupCommunicator self, char const * file, int precision=8)"},
+	 { "GroupCommunicator_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_GroupCommunicator_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "GroupCommunicator_PrintInfoGZ(GroupCommunicator self, char const * file, int precision=16)"},
 	 { "GroupCommunicator_swigregister", GroupCommunicator_swigregister, METH_O, NULL},
 	 { "GroupCommunicator_swiginit", GroupCommunicator_swiginit, METH_VARARGS, NULL},
 	 { "ReorderRanksZCurve", (PyCFunction)(void(*)(void))_wrap_ReorderRanksZCurve, METH_VARARGS|METH_KEYWORDS, "ReorderRanksZCurve(MPI_Comm comm) -> MPI_Comm"},
@@ -5877,12 +5946,13 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "GroupTopology_GetGroup", (PyCFunction)(void(*)(void))_wrap_GroupTopology_GetGroup, METH_VARARGS|METH_KEYWORDS, "GetGroup(GroupTopology self, int g) -> int const *"},
 	 { "GroupTopology_Load", (PyCFunction)(void(*)(void))_wrap_GroupTopology_Load, METH_VARARGS|METH_KEYWORDS, "Load(GroupTopology self, std::istream & _in)"},
 	 { "GroupTopology_Copy", (PyCFunction)(void(*)(void))_wrap_GroupTopology_Copy, METH_VARARGS|METH_KEYWORDS, "Copy(GroupTopology self, GroupTopology copy)"},
+	 { "GroupTopology_Swap", (PyCFunction)(void(*)(void))_wrap_GroupTopology_Swap, METH_VARARGS|METH_KEYWORDS, "Swap(GroupTopology self, GroupTopology other)"},
 	 { "delete_GroupTopology", _wrap_delete_GroupTopology, METH_O, "delete_GroupTopology(GroupTopology self)"},
 	 { "GroupTopology_Save", _wrap_GroupTopology_Save, METH_VARARGS, "\n"
 		"Save(GroupTopology self, std::ostream & out)\n"
-		"Save(GroupTopology self, char const * file, int precision=8)\n"
+		"Save(GroupTopology self, char const * file, int precision=16)\n"
 		""},
-	 { "GroupTopology_SaveGZ", (PyCFunction)(void(*)(void))_wrap_GroupTopology_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(GroupTopology self, char const * file, int precision=8)"},
+	 { "GroupTopology_SaveGZ", (PyCFunction)(void(*)(void))_wrap_GroupTopology_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(GroupTopology self, char const * file, int precision=16)"},
 	 { "GroupTopology_swigregister", GroupTopology_swigregister, METH_O, NULL},
 	 { "GroupTopology_swiginit", GroupTopology_swiginit, METH_VARARGS, NULL},
 	 { "new_GroupCommunicator", (PyCFunction)(void(*)(void))_wrap_new_GroupCommunicator, METH_VARARGS|METH_KEYWORDS, "new_GroupCommunicator(GroupTopology gt, mfem::GroupCommunicator::Mode m=byNeighbor) -> GroupCommunicator"},
@@ -5902,9 +5972,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_GroupCommunicator", _wrap_delete_GroupCommunicator, METH_O, "delete_GroupCommunicator(GroupCommunicator self)"},
 	 { "GroupCommunicator_PrintInfo", _wrap_GroupCommunicator_PrintInfo, METH_VARARGS, "\n"
 		"PrintInfo(GroupCommunicator self, std::ostream & out=mfem::out)\n"
-		"PrintInfo(GroupCommunicator self, char const * file, int precision=8)\n"
+		"PrintInfo(GroupCommunicator self, char const * file, int precision=16)\n"
 		""},
-	 { "GroupCommunicator_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_GroupCommunicator_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "PrintInfoGZ(GroupCommunicator self, char const * file, int precision=8)"},
+	 { "GroupCommunicator_PrintInfoGZ", (PyCFunction)(void(*)(void))_wrap_GroupCommunicator_PrintInfoGZ, METH_VARARGS|METH_KEYWORDS, "PrintInfoGZ(GroupCommunicator self, char const * file, int precision=16)"},
 	 { "GroupCommunicator_swigregister", GroupCommunicator_swigregister, METH_O, NULL},
 	 { "GroupCommunicator_swiginit", GroupCommunicator_swiginit, METH_VARARGS, NULL},
 	 { "ReorderRanksZCurve", (PyCFunction)(void(*)(void))_wrap_ReorderRanksZCurve, METH_VARARGS|METH_KEYWORDS, "ReorderRanksZCurve(MPI_Comm comm) -> MPI_Comm"},
@@ -5920,6 +5990,7 @@ static void *_p_mfem__STableTo_p_mfem__Table(void *x, int *SWIGUNUSEDPARM(newmem
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GroupCommunicator = {"_p_mfem__GroupCommunicator", "mfem::GroupCommunicator *", 0, 0, (void*)0, 0};
@@ -5934,6 +6005,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_MPI_Comm,
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
+  &_swigt__p_double,
   &_swigt__p_int,
   &_swigt__p_mfem__ArrayT_int_t,
   &_swigt__p_mfem__GroupCommunicator,
@@ -5948,6 +6020,7 @@ static swig_type_info *swig_type_initial[] = {
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GroupCommunicator[] = {  {&_swigt__p_mfem__GroupCommunicator, 0, 0, 0},{0, 0, 0, 0}};
@@ -5962,6 +6035,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_MPI_Comm,
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
+  _swigc__p_double,
   _swigc__p_int,
   _swigc__p_mfem__ArrayT_int_t,
   _swigc__p_mfem__GroupCommunicator,
@@ -6706,14 +6780,14 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40200)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.2.0"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40200)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40300)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.3.0"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40300)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40200)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40200)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40200)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40300)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40300)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40300)%100))));
   SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(22000)));
   
   import_array();

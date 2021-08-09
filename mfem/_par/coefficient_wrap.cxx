@@ -3108,91 +3108,92 @@ namespace Swig {
 #define SWIGTYPE_p_f_double_double__double swig_types[8]
 #define SWIGTYPE_p_f_r_mfem__Vector__double swig_types[9]
 #define SWIGTYPE_p_f_r_mfem__Vector_double__double swig_types[10]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[11]
-#define SWIGTYPE_p_mfem__Coefficient swig_types[12]
-#define SWIGTYPE_p_mfem__ConstantCoefficient swig_types[13]
-#define SWIGTYPE_p_mfem__CrossCrossCoefficient swig_types[14]
-#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[15]
-#define SWIGTYPE_p_mfem__DeltaCoefficient swig_types[16]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[17]
-#define SWIGTYPE_p_mfem__DeterminantCoefficient swig_types[18]
-#define SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient swig_types[19]
-#define SWIGTYPE_p_mfem__ElementTransformation swig_types[20]
-#define SWIGTYPE_p_mfem__FaceElementTransformations swig_types[21]
-#define SWIGTYPE_p_mfem__FunctionCoefficient swig_types[22]
-#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[23]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[24]
-#define SWIGTYPE_p_mfem__GridFunctionCoefficient swig_types[25]
-#define SWIGTYPE_p_mfem__IdentityMatrixCoefficient swig_types[26]
-#define SWIGTYPE_p_mfem__InnerProductCoefficient swig_types[27]
-#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[28]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[29]
-#define SWIGTYPE_p_mfem__InverseMatrixCoefficient swig_types[30]
-#define SWIGTYPE_p_mfem__IsoparametricTransformation swig_types[31]
-#define SWIGTYPE_p_mfem__MatrixArrayCoefficient swig_types[32]
-#define SWIGTYPE_p_mfem__MatrixCoefficient swig_types[33]
-#define SWIGTYPE_p_mfem__MatrixConstantCoefficient swig_types[34]
-#define SWIGTYPE_p_mfem__MatrixFunctionCoefficient swig_types[35]
-#define SWIGTYPE_p_mfem__MatrixPyCoefficientBase swig_types[36]
-#define SWIGTYPE_p_mfem__MatrixRestrictedCoefficient swig_types[37]
-#define SWIGTYPE_p_mfem__MatrixSumCoefficient swig_types[38]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[39]
-#define SWIGTYPE_p_mfem__Mesh swig_types[40]
-#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[41]
-#define SWIGTYPE_p_mfem__OuterProductCoefficient swig_types[42]
-#define SWIGTYPE_p_mfem__PWConstCoefficient swig_types[43]
-#define SWIGTYPE_p_mfem__ParMesh swig_types[44]
-#define SWIGTYPE_p_mfem__PowerCoefficient swig_types[45]
-#define SWIGTYPE_p_mfem__ProductCoefficient swig_types[46]
-#define SWIGTYPE_p_mfem__PyCoefficientBase swig_types[47]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[48]
-#define SWIGTYPE_p_mfem__QuadratureFunctionCoefficient swig_types[49]
-#define SWIGTYPE_p_mfem__RatioCoefficient swig_types[50]
-#define SWIGTYPE_p_mfem__RestrictedCoefficient swig_types[51]
-#define SWIGTYPE_p_mfem__ScalarMatrixProductCoefficient swig_types[52]
-#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[53]
-#define SWIGTYPE_p_mfem__SumCoefficient swig_types[54]
-#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[55]
-#define SWIGTYPE_p_mfem__TransposeMatrixCoefficient swig_types[56]
-#define SWIGTYPE_p_mfem__Vector swig_types[57]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[58]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[59]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[60]
-#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[61]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[62]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[63]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[64]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[65]
-#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[66]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[67]
-#define SWIGTYPE_p_mfem__VectorRotProductCoefficient swig_types[68]
-#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[69]
-#define SWIGTYPE_p_p_mfem__Coefficient swig_types[70]
-#define SWIGTYPE_p_p_mfem__ConstantCoefficient swig_types[71]
-#define SWIGTYPE_p_p_mfem__DeltaCoefficient swig_types[72]
-#define SWIGTYPE_p_p_mfem__DeterminantCoefficient swig_types[73]
-#define SWIGTYPE_p_p_mfem__DivergenceGridFunctionCoefficient swig_types[74]
-#define SWIGTYPE_p_p_mfem__FunctionCoefficient swig_types[75]
-#define SWIGTYPE_p_p_mfem__GridFunctionCoefficient swig_types[76]
-#define SWIGTYPE_p_p_mfem__InnerProductCoefficient swig_types[77]
-#define SWIGTYPE_p_p_mfem__PWConstCoefficient swig_types[78]
-#define SWIGTYPE_p_p_mfem__PowerCoefficient swig_types[79]
-#define SWIGTYPE_p_p_mfem__ProductCoefficient swig_types[80]
-#define SWIGTYPE_p_p_mfem__PyCoefficientBase swig_types[81]
-#define SWIGTYPE_p_p_mfem__QuadratureFunctionCoefficient swig_types[82]
-#define SWIGTYPE_p_p_mfem__RatioCoefficient swig_types[83]
-#define SWIGTYPE_p_p_mfem__RestrictedCoefficient swig_types[84]
-#define SWIGTYPE_p_p_mfem__SumCoefficient swig_types[85]
-#define SWIGTYPE_p_p_mfem__TransformedCoefficient swig_types[86]
-#define SWIGTYPE_p_p_mfem__VectorRotProductCoefficient swig_types[87]
-#define SWIGTYPE_p_std__functionT_double_fmfem__Vector_const_RF_t swig_types[88]
-#define SWIGTYPE_p_std__functionT_double_fmfem__Vector_const_R_doubleF_t swig_types[89]
-#define SWIGTYPE_p_std__functionT_void_fmfem__Vector_const_R_double_mfem__DenseMatrix_RF_t swig_types[90]
-#define SWIGTYPE_p_std__functionT_void_fmfem__Vector_const_R_double_mfem__Vector_RF_t swig_types[91]
-#define SWIGTYPE_p_std__functionT_void_fmfem__Vector_const_R_mfem__DenseMatrix_RF_t swig_types[92]
-#define SWIGTYPE_p_std__functionT_void_fmfem__Vector_const_R_mfem__Vector_RF_t swig_types[93]
-static swig_type_info *swig_types[95];
-static swig_module_info swig_module = {swig_types, 94, 0, 0, 0, 0};
+#define SWIGTYPE_p_int swig_types[11]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[12]
+#define SWIGTYPE_p_mfem__Coefficient swig_types[13]
+#define SWIGTYPE_p_mfem__ConstantCoefficient swig_types[14]
+#define SWIGTYPE_p_mfem__CrossCrossCoefficient swig_types[15]
+#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[16]
+#define SWIGTYPE_p_mfem__DeltaCoefficient swig_types[17]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[18]
+#define SWIGTYPE_p_mfem__DeterminantCoefficient swig_types[19]
+#define SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient swig_types[20]
+#define SWIGTYPE_p_mfem__ElementTransformation swig_types[21]
+#define SWIGTYPE_p_mfem__FaceElementTransformations swig_types[22]
+#define SWIGTYPE_p_mfem__FunctionCoefficient swig_types[23]
+#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[24]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[25]
+#define SWIGTYPE_p_mfem__GridFunctionCoefficient swig_types[26]
+#define SWIGTYPE_p_mfem__IdentityMatrixCoefficient swig_types[27]
+#define SWIGTYPE_p_mfem__InnerProductCoefficient swig_types[28]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[29]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[30]
+#define SWIGTYPE_p_mfem__InverseMatrixCoefficient swig_types[31]
+#define SWIGTYPE_p_mfem__IsoparametricTransformation swig_types[32]
+#define SWIGTYPE_p_mfem__MatrixArrayCoefficient swig_types[33]
+#define SWIGTYPE_p_mfem__MatrixCoefficient swig_types[34]
+#define SWIGTYPE_p_mfem__MatrixConstantCoefficient swig_types[35]
+#define SWIGTYPE_p_mfem__MatrixFunctionCoefficient swig_types[36]
+#define SWIGTYPE_p_mfem__MatrixPyCoefficientBase swig_types[37]
+#define SWIGTYPE_p_mfem__MatrixRestrictedCoefficient swig_types[38]
+#define SWIGTYPE_p_mfem__MatrixSumCoefficient swig_types[39]
+#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[40]
+#define SWIGTYPE_p_mfem__Mesh swig_types[41]
+#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[42]
+#define SWIGTYPE_p_mfem__OuterProductCoefficient swig_types[43]
+#define SWIGTYPE_p_mfem__PWConstCoefficient swig_types[44]
+#define SWIGTYPE_p_mfem__ParMesh swig_types[45]
+#define SWIGTYPE_p_mfem__PowerCoefficient swig_types[46]
+#define SWIGTYPE_p_mfem__ProductCoefficient swig_types[47]
+#define SWIGTYPE_p_mfem__PyCoefficientBase swig_types[48]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[49]
+#define SWIGTYPE_p_mfem__QuadratureFunctionCoefficient swig_types[50]
+#define SWIGTYPE_p_mfem__RatioCoefficient swig_types[51]
+#define SWIGTYPE_p_mfem__RestrictedCoefficient swig_types[52]
+#define SWIGTYPE_p_mfem__ScalarMatrixProductCoefficient swig_types[53]
+#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[54]
+#define SWIGTYPE_p_mfem__SumCoefficient swig_types[55]
+#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[56]
+#define SWIGTYPE_p_mfem__TransposeMatrixCoefficient swig_types[57]
+#define SWIGTYPE_p_mfem__Vector swig_types[58]
+#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[59]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[60]
+#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[61]
+#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[62]
+#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[63]
+#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[64]
+#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[65]
+#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[66]
+#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[67]
+#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[68]
+#define SWIGTYPE_p_mfem__VectorRotProductCoefficient swig_types[69]
+#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[70]
+#define SWIGTYPE_p_p_mfem__Coefficient swig_types[71]
+#define SWIGTYPE_p_p_mfem__ConstantCoefficient swig_types[72]
+#define SWIGTYPE_p_p_mfem__DeltaCoefficient swig_types[73]
+#define SWIGTYPE_p_p_mfem__DeterminantCoefficient swig_types[74]
+#define SWIGTYPE_p_p_mfem__DivergenceGridFunctionCoefficient swig_types[75]
+#define SWIGTYPE_p_p_mfem__FunctionCoefficient swig_types[76]
+#define SWIGTYPE_p_p_mfem__GridFunctionCoefficient swig_types[77]
+#define SWIGTYPE_p_p_mfem__InnerProductCoefficient swig_types[78]
+#define SWIGTYPE_p_p_mfem__PWConstCoefficient swig_types[79]
+#define SWIGTYPE_p_p_mfem__PowerCoefficient swig_types[80]
+#define SWIGTYPE_p_p_mfem__ProductCoefficient swig_types[81]
+#define SWIGTYPE_p_p_mfem__PyCoefficientBase swig_types[82]
+#define SWIGTYPE_p_p_mfem__QuadratureFunctionCoefficient swig_types[83]
+#define SWIGTYPE_p_p_mfem__RatioCoefficient swig_types[84]
+#define SWIGTYPE_p_p_mfem__RestrictedCoefficient swig_types[85]
+#define SWIGTYPE_p_p_mfem__SumCoefficient swig_types[86]
+#define SWIGTYPE_p_p_mfem__TransformedCoefficient swig_types[87]
+#define SWIGTYPE_p_p_mfem__VectorRotProductCoefficient swig_types[88]
+#define SWIGTYPE_p_std__functionT_double_fmfem__Vector_const_RF_t swig_types[89]
+#define SWIGTYPE_p_std__functionT_double_fmfem__Vector_const_R_doubleF_t swig_types[90]
+#define SWIGTYPE_p_std__functionT_void_fmfem__Vector_const_R_double_mfem__DenseMatrix_RF_t swig_types[91]
+#define SWIGTYPE_p_std__functionT_void_fmfem__Vector_const_R_double_mfem__Vector_RF_t swig_types[92]
+#define SWIGTYPE_p_std__functionT_void_fmfem__Vector_const_R_mfem__DenseMatrix_RF_t swig_types[93]
+#define SWIGTYPE_p_std__functionT_void_fmfem__Vector_const_R_mfem__Vector_RF_t swig_types[94]
+static swig_type_info *swig_types[96];
+static swig_module_info swig_module = {swig_types, 95, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3562,24 +3563,40 @@ class NumbaFunction : public NumbaFunctionBase {
     
     NumbaFunction(PyObject *input, int sdim, bool td):
        NumbaFunctionBase(input, sdim, td){}
-    
+
+    double call0(const mfem::Vector &x){
+      return ((double (*)(double *))address_)(x.GetData());
+    }
     double call(const mfem::Vector &x){
       return ((double (*)(double *, int))address_)(x.GetData(), sdim_);
+    }
+    double call0t(const mfem::Vector &x, double t){
+      return ((double (*)(double *, double))address_)(x.GetData(), t);
     }
     double callt(const mfem::Vector &x, double t){
       return ((double (*)(double *, double, int))address_)(x.GetData(), t, sdim_);
     }
 
     // FunctionCoefficient
-    mfem::FunctionCoefficient* GenerateCoefficient(){
+    mfem::FunctionCoefficient* GenerateCoefficient(int use_0=0){
       using std::placeholders::_1;
-      using std::placeholders::_2;      
-      if (td_) {
-         obj2 = std::bind(&NumbaFunction::callt, this, _1, _2);
-         return new mfem::FunctionCoefficient(obj2);
+      using std::placeholders::_2;
+      if (use_0==0) {
+	if (td_) {
+            obj2 = std::bind(&NumbaFunction::callt, this, _1, _2);
+            return new mfem::FunctionCoefficient(obj2);
+        } else {
+           obj1 = std::bind(&NumbaFunction::call, this, _1);
+           return new mfem::FunctionCoefficient(obj1);
+        }
       } else {
-         obj1 = std::bind(&NumbaFunction::call, this, _1);
-         return new mfem::FunctionCoefficient(obj1);
+	if (td_) {
+	  obj2 = std::bind(&NumbaFunction::call0t, this, _1, _2);
+            return new mfem::FunctionCoefficient(obj2);
+        } else {
+	  obj1 = std::bind(&NumbaFunction::call0, this, _1);
+           return new mfem::FunctionCoefficient(obj1);
+        }
       }
    }
 };
@@ -3597,7 +3614,8 @@ class VectorNumbaFunction : public NumbaFunctionBase {
     
     VectorNumbaFunction(PyObject *input, int sdim, int vdim, bool td):
        NumbaFunctionBase(input, sdim, td), vdim_(vdim){}
-  
+
+      
     void call(const mfem::Vector &x, mfem::Vector &out){
       out = 0.0;
       return ((void (*) (double *, double *, int, int))address_)(x.GetData(), 
@@ -3614,17 +3632,39 @@ class VectorNumbaFunction : public NumbaFunctionBase {
 								      sdim_,
 	 							      vdim_);            
     }
+    void call0(const mfem::Vector &x, mfem::Vector &out){
+      out = 0.0;
+      return ((void (*) (double *, double *))address_)(x.GetData(), 
+						       out.GetData());
+       
+    }
+    void call0t(const mfem::Vector &x, double t, mfem::Vector &out){
+      out = 0.0;      
+      return ((void (*) (double *, double,  double *))address_)(x.GetData(),
+						                t,
+								out.GetData());
+    }
 
-    mfem::VectorFunctionCoefficient* GenerateCoefficient(){
+    mfem::VectorFunctionCoefficient* GenerateCoefficient(int use_0=0){
       using std::placeholders::_1;
       using std::placeholders::_2;
-      using std::placeholders::_3;            
-      if (td_) {
-	obj2 = std::bind(&VectorNumbaFunction::callt, this, _1, _2, _3);
-	return new mfem::VectorFunctionCoefficient(vdim_, obj2);
+      using std::placeholders::_3;
+      if (use_0 == 0){
+         if (td_) {
+    	   obj2 = std::bind(&VectorNumbaFunction::callt, this, _1, _2, _3);
+	   return new mfem::VectorFunctionCoefficient(vdim_, obj2);
+         } else {
+    	   obj1 = std::bind(&VectorNumbaFunction::call, this, _1, _2);
+	   return new mfem::VectorFunctionCoefficient(vdim_, obj1);
+         }
       } else {
-	obj1 = std::bind(&VectorNumbaFunction::call, this, _1, _2);
-	return new mfem::VectorFunctionCoefficient(vdim_, obj1);
+         if (td_) {	
+    	   obj2 = std::bind(&VectorNumbaFunction::call0t, this, _1, _2, _3);
+	   return new mfem::VectorFunctionCoefficient(vdim_, obj2);
+         } else {
+    	   obj1 = std::bind(&VectorNumbaFunction::call0, this, _1, _2);
+	   return new mfem::VectorFunctionCoefficient(vdim_, obj1);
+	 }
       }
    }
 };
@@ -3657,17 +3697,40 @@ class MatrixNumbaFunction : NumbaFunctionBase {
 								      sdim_,
 	 							      vdim_);            
     }
+    void call0(const mfem::Vector &x, mfem::DenseMatrix &out){
+      out = 0.0;
+      return ((void (*) (double *, double *))address_)(x.GetData(), 
+						       out.GetData());
        
-    mfem::MatrixFunctionCoefficient* GenerateCoefficient(){
+    }
+    void call0t(const mfem::Vector &x, double t, mfem::DenseMatrix &out){
+      out = 0.0;
+      return ((void (*) (double *, double,  double *))address_)(x.GetData(),
+						                t,
+							        out.GetData());
+    }
+       
+    mfem::MatrixFunctionCoefficient* GenerateCoefficient(int use_0=0){
       using std::placeholders::_1;
       using std::placeholders::_2;
-      using std::placeholders::_3;      
+      using std::placeholders::_3;
+      if (use_0 == 0) {
       if (td_) {
  	obj2 = std::bind(&MatrixNumbaFunction::callt, this, _1, _2, _3);
 	return new mfem::MatrixFunctionCoefficient(vdim_, obj2);
       } else {
 	obj1 = std::bind(&MatrixNumbaFunction::call, this, _1, _2);
 	return new mfem::MatrixFunctionCoefficient(vdim_, obj1);
+      }
+      } else {
+      if (td_) {
+ 	obj2 = std::bind(&MatrixNumbaFunction::call0t, this, _1, _2, _3);
+	return new mfem::MatrixFunctionCoefficient(vdim_, obj2);
+      } else {
+	obj1 = std::bind(&MatrixNumbaFunction::call0, this, _1, _2);
+	return new mfem::MatrixFunctionCoefficient(vdim_, obj1);
+      }
+
       }
     }
 };
@@ -23036,6 +23099,55 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_NumbaFunction_call0(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  NumbaFunction *arg1 = (NumbaFunction *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  NULL 
+  };
+  double result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:NumbaFunction_call0", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_NumbaFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NumbaFunction_call0" "', argument " "1"" of type '" "NumbaFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< NumbaFunction * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NumbaFunction_call0" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NumbaFunction_call0" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    try {
+      result = (double)(arg1)->call0((mfem::Vector const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_NumbaFunction_call(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   NumbaFunction *arg1 = (NumbaFunction *) 0 ;
@@ -23068,6 +23180,64 @@ SWIGINTERN PyObject *_wrap_NumbaFunction_call(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       result = (double)(arg1)->call((mfem::Vector const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NumbaFunction_call0t(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  NumbaFunction *arg1 = (NumbaFunction *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  double arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"t",  NULL 
+  };
+  double result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:NumbaFunction_call0t", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_NumbaFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NumbaFunction_call0t" "', argument " "1"" of type '" "NumbaFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< NumbaFunction * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NumbaFunction_call0t" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NumbaFunction_call0t" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "NumbaFunction_call0t" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  {
+    try {
+      result = (double)(arg1)->call0t((mfem::Vector const &)*arg2,arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -23143,24 +23313,36 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_NumbaFunction_GenerateCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_NumbaFunction_GenerateCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   NumbaFunction *arg1 = (NumbaFunction *) 0 ;
+  int arg2 = (int) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"use_0",  NULL 
+  };
   mfem::FunctionCoefficient *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_NumbaFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:NumbaFunction_GenerateCoefficient", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_NumbaFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NumbaFunction_GenerateCoefficient" "', argument " "1"" of type '" "NumbaFunction *""'"); 
   }
   arg1 = reinterpret_cast< NumbaFunction * >(argp1);
+  if (obj1) {
+    {
+      if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(obj1);
+    }
+  }
   {
     try {
-      result = (mfem::FunctionCoefficient *)(arg1)->GenerateCoefficient(); 
+      result = (mfem::FunctionCoefficient *)(arg1)->GenerateCoefficient(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -23520,24 +23702,165 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_VectorNumbaFunction_GenerateCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_VectorNumbaFunction_call0(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   VectorNumbaFunction *arg1 = (VectorNumbaFunction *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"out",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:VectorNumbaFunction_call0", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_VectorNumbaFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorNumbaFunction_call0" "', argument " "1"" of type '" "VectorNumbaFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< VectorNumbaFunction * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorNumbaFunction_call0" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorNumbaFunction_call0" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorNumbaFunction_call0" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorNumbaFunction_call0" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      (arg1)->call0((mfem::Vector const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_VectorNumbaFunction_call0t(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  VectorNumbaFunction *arg1 = (VectorNumbaFunction *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  double arg3 ;
+  mfem::Vector *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"t",  (char *)"out",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:VectorNumbaFunction_call0t", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_VectorNumbaFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorNumbaFunction_call0t" "', argument " "1"" of type '" "VectorNumbaFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< VectorNumbaFunction * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorNumbaFunction_call0t" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorNumbaFunction_call0t" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "VectorNumbaFunction_call0t" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "VectorNumbaFunction_call0t" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorNumbaFunction_call0t" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
+  {
+    try {
+      (arg1)->call0t((mfem::Vector const &)*arg2,arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_VectorNumbaFunction_GenerateCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  VectorNumbaFunction *arg1 = (VectorNumbaFunction *) 0 ;
+  int arg2 = (int) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"use_0",  NULL 
+  };
   mfem::VectorFunctionCoefficient *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_VectorNumbaFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:VectorNumbaFunction_GenerateCoefficient", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_VectorNumbaFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorNumbaFunction_GenerateCoefficient" "', argument " "1"" of type '" "VectorNumbaFunction *""'"); 
   }
   arg1 = reinterpret_cast< VectorNumbaFunction * >(argp1);
+  if (obj1) {
+    {
+      if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(obj1);
+    }
+  }
   {
     try {
-      result = (mfem::VectorFunctionCoefficient *)(arg1)->GenerateCoefficient(); 
+      result = (mfem::VectorFunctionCoefficient *)(arg1)->GenerateCoefficient(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -23897,24 +24220,165 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MatrixNumbaFunction_GenerateCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MatrixNumbaFunction_call0(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   MatrixNumbaFunction *arg1 = (MatrixNumbaFunction *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"out",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:MatrixNumbaFunction_call0", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_MatrixNumbaFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MatrixNumbaFunction_call0" "', argument " "1"" of type '" "MatrixNumbaFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< MatrixNumbaFunction * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MatrixNumbaFunction_call0" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatrixNumbaFunction_call0" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MatrixNumbaFunction_call0" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatrixNumbaFunction_call0" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      (arg1)->call0((mfem::Vector const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MatrixNumbaFunction_call0t(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  MatrixNumbaFunction *arg1 = (MatrixNumbaFunction *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  double arg3 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"t",  (char *)"out",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:MatrixNumbaFunction_call0t", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_MatrixNumbaFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MatrixNumbaFunction_call0t" "', argument " "1"" of type '" "MatrixNumbaFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< MatrixNumbaFunction * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MatrixNumbaFunction_call0t" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatrixNumbaFunction_call0t" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MatrixNumbaFunction_call0t" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MatrixNumbaFunction_call0t" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatrixNumbaFunction_call0t" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      (arg1)->call0t((mfem::Vector const &)*arg2,arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MatrixNumbaFunction_GenerateCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  MatrixNumbaFunction *arg1 = (MatrixNumbaFunction *) 0 ;
+  int arg2 = (int) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"use_0",  NULL 
+  };
   mfem::MatrixFunctionCoefficient *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_MatrixNumbaFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:MatrixNumbaFunction_GenerateCoefficient", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_MatrixNumbaFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MatrixNumbaFunction_GenerateCoefficient" "', argument " "1"" of type '" "MatrixNumbaFunction *""'"); 
   }
   arg1 = reinterpret_cast< MatrixNumbaFunction * >(argp1);
+  if (obj1) {
+    {
+      if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(obj1);
+    }
+  }
   {
     try {
-      result = (mfem::MatrixFunctionCoefficient *)(arg1)->GenerateCoefficient(); 
+      result = (mfem::MatrixFunctionCoefficient *)(arg1)->GenerateCoefficient(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -25810,9 +26274,11 @@ static PyMethodDef SwigMethods[] = {
 		"NumbaFunction(PyObject * input, int sdim)\n"
 		"new_NumbaFunction(PyObject * input, int sdim, bool td) -> NumbaFunction\n"
 		""},
+	 { "NumbaFunction_call0", (PyCFunction)(void(*)(void))_wrap_NumbaFunction_call0, METH_VARARGS|METH_KEYWORDS, "NumbaFunction_call0(NumbaFunction self, Vector x) -> double"},
 	 { "NumbaFunction_call", (PyCFunction)(void(*)(void))_wrap_NumbaFunction_call, METH_VARARGS|METH_KEYWORDS, "NumbaFunction_call(NumbaFunction self, Vector x) -> double"},
+	 { "NumbaFunction_call0t", (PyCFunction)(void(*)(void))_wrap_NumbaFunction_call0t, METH_VARARGS|METH_KEYWORDS, "NumbaFunction_call0t(NumbaFunction self, Vector x, double t) -> double"},
 	 { "NumbaFunction_callt", (PyCFunction)(void(*)(void))_wrap_NumbaFunction_callt, METH_VARARGS|METH_KEYWORDS, "NumbaFunction_callt(NumbaFunction self, Vector x, double t) -> double"},
-	 { "NumbaFunction_GenerateCoefficient", _wrap_NumbaFunction_GenerateCoefficient, METH_O, "NumbaFunction_GenerateCoefficient(NumbaFunction self) -> FunctionCoefficient"},
+	 { "NumbaFunction_GenerateCoefficient", (PyCFunction)(void(*)(void))_wrap_NumbaFunction_GenerateCoefficient, METH_VARARGS|METH_KEYWORDS, "NumbaFunction_GenerateCoefficient(NumbaFunction self, int use_0=0) -> FunctionCoefficient"},
 	 { "delete_NumbaFunction", _wrap_delete_NumbaFunction, METH_O, "delete_NumbaFunction(NumbaFunction self)"},
 	 { "NumbaFunction_swigregister", NumbaFunction_swigregister, METH_O, NULL},
 	 { "NumbaFunction_swiginit", NumbaFunction_swiginit, METH_VARARGS, NULL},
@@ -25822,7 +26288,9 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "VectorNumbaFunction_call", (PyCFunction)(void(*)(void))_wrap_VectorNumbaFunction_call, METH_VARARGS|METH_KEYWORDS, "VectorNumbaFunction_call(VectorNumbaFunction self, Vector x, Vector out)"},
 	 { "VectorNumbaFunction_callt", (PyCFunction)(void(*)(void))_wrap_VectorNumbaFunction_callt, METH_VARARGS|METH_KEYWORDS, "VectorNumbaFunction_callt(VectorNumbaFunction self, Vector x, double t, Vector out)"},
-	 { "VectorNumbaFunction_GenerateCoefficient", _wrap_VectorNumbaFunction_GenerateCoefficient, METH_O, "VectorNumbaFunction_GenerateCoefficient(VectorNumbaFunction self) -> VectorFunctionCoefficient"},
+	 { "VectorNumbaFunction_call0", (PyCFunction)(void(*)(void))_wrap_VectorNumbaFunction_call0, METH_VARARGS|METH_KEYWORDS, "VectorNumbaFunction_call0(VectorNumbaFunction self, Vector x, Vector out)"},
+	 { "VectorNumbaFunction_call0t", (PyCFunction)(void(*)(void))_wrap_VectorNumbaFunction_call0t, METH_VARARGS|METH_KEYWORDS, "VectorNumbaFunction_call0t(VectorNumbaFunction self, Vector x, double t, Vector out)"},
+	 { "VectorNumbaFunction_GenerateCoefficient", (PyCFunction)(void(*)(void))_wrap_VectorNumbaFunction_GenerateCoefficient, METH_VARARGS|METH_KEYWORDS, "VectorNumbaFunction_GenerateCoefficient(VectorNumbaFunction self, int use_0=0) -> VectorFunctionCoefficient"},
 	 { "delete_VectorNumbaFunction", _wrap_delete_VectorNumbaFunction, METH_O, "delete_VectorNumbaFunction(VectorNumbaFunction self)"},
 	 { "VectorNumbaFunction_swigregister", VectorNumbaFunction_swigregister, METH_O, NULL},
 	 { "VectorNumbaFunction_swiginit", VectorNumbaFunction_swiginit, METH_VARARGS, NULL},
@@ -25832,7 +26300,9 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "MatrixNumbaFunction_call", (PyCFunction)(void(*)(void))_wrap_MatrixNumbaFunction_call, METH_VARARGS|METH_KEYWORDS, "MatrixNumbaFunction_call(MatrixNumbaFunction self, Vector x, DenseMatrix out)"},
 	 { "MatrixNumbaFunction_callt", (PyCFunction)(void(*)(void))_wrap_MatrixNumbaFunction_callt, METH_VARARGS|METH_KEYWORDS, "MatrixNumbaFunction_callt(MatrixNumbaFunction self, Vector x, double t, DenseMatrix out)"},
-	 { "MatrixNumbaFunction_GenerateCoefficient", _wrap_MatrixNumbaFunction_GenerateCoefficient, METH_O, "MatrixNumbaFunction_GenerateCoefficient(MatrixNumbaFunction self) -> MatrixFunctionCoefficient"},
+	 { "MatrixNumbaFunction_call0", (PyCFunction)(void(*)(void))_wrap_MatrixNumbaFunction_call0, METH_VARARGS|METH_KEYWORDS, "MatrixNumbaFunction_call0(MatrixNumbaFunction self, Vector x, DenseMatrix out)"},
+	 { "MatrixNumbaFunction_call0t", (PyCFunction)(void(*)(void))_wrap_MatrixNumbaFunction_call0t, METH_VARARGS|METH_KEYWORDS, "MatrixNumbaFunction_call0t(MatrixNumbaFunction self, Vector x, double t, DenseMatrix out)"},
+	 { "MatrixNumbaFunction_GenerateCoefficient", (PyCFunction)(void(*)(void))_wrap_MatrixNumbaFunction_GenerateCoefficient, METH_VARARGS|METH_KEYWORDS, "MatrixNumbaFunction_GenerateCoefficient(MatrixNumbaFunction self, int use_0=0) -> MatrixFunctionCoefficient"},
 	 { "delete_MatrixNumbaFunction", _wrap_delete_MatrixNumbaFunction, METH_O, "delete_MatrixNumbaFunction(MatrixNumbaFunction self)"},
 	 { "MatrixNumbaFunction_swigregister", MatrixNumbaFunction_swigregister, METH_O, NULL},
 	 { "MatrixNumbaFunction_swiginit", MatrixNumbaFunction_swiginit, METH_VARARGS, NULL},
@@ -26369,9 +26839,11 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"NumbaFunction(PyObject * input, int sdim)\n"
 		"new_NumbaFunction(PyObject * input, int sdim, bool td) -> NumbaFunction\n"
 		""},
+	 { "NumbaFunction_call0", (PyCFunction)(void(*)(void))_wrap_NumbaFunction_call0, METH_VARARGS|METH_KEYWORDS, "call0(NumbaFunction self, Vector x) -> double"},
 	 { "NumbaFunction_call", (PyCFunction)(void(*)(void))_wrap_NumbaFunction_call, METH_VARARGS|METH_KEYWORDS, "call(NumbaFunction self, Vector x) -> double"},
+	 { "NumbaFunction_call0t", (PyCFunction)(void(*)(void))_wrap_NumbaFunction_call0t, METH_VARARGS|METH_KEYWORDS, "call0t(NumbaFunction self, Vector x, double t) -> double"},
 	 { "NumbaFunction_callt", (PyCFunction)(void(*)(void))_wrap_NumbaFunction_callt, METH_VARARGS|METH_KEYWORDS, "callt(NumbaFunction self, Vector x, double t) -> double"},
-	 { "NumbaFunction_GenerateCoefficient", _wrap_NumbaFunction_GenerateCoefficient, METH_O, "GenerateCoefficient(NumbaFunction self) -> FunctionCoefficient"},
+	 { "NumbaFunction_GenerateCoefficient", (PyCFunction)(void(*)(void))_wrap_NumbaFunction_GenerateCoefficient, METH_VARARGS|METH_KEYWORDS, "GenerateCoefficient(NumbaFunction self, int use_0=0) -> FunctionCoefficient"},
 	 { "delete_NumbaFunction", _wrap_delete_NumbaFunction, METH_O, "delete_NumbaFunction(NumbaFunction self)"},
 	 { "NumbaFunction_swigregister", NumbaFunction_swigregister, METH_O, NULL},
 	 { "NumbaFunction_swiginit", NumbaFunction_swiginit, METH_VARARGS, NULL},
@@ -26381,7 +26853,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "VectorNumbaFunction_call", (PyCFunction)(void(*)(void))_wrap_VectorNumbaFunction_call, METH_VARARGS|METH_KEYWORDS, "call(VectorNumbaFunction self, Vector x, Vector out)"},
 	 { "VectorNumbaFunction_callt", (PyCFunction)(void(*)(void))_wrap_VectorNumbaFunction_callt, METH_VARARGS|METH_KEYWORDS, "callt(VectorNumbaFunction self, Vector x, double t, Vector out)"},
-	 { "VectorNumbaFunction_GenerateCoefficient", _wrap_VectorNumbaFunction_GenerateCoefficient, METH_O, "GenerateCoefficient(VectorNumbaFunction self) -> VectorFunctionCoefficient"},
+	 { "VectorNumbaFunction_call0", (PyCFunction)(void(*)(void))_wrap_VectorNumbaFunction_call0, METH_VARARGS|METH_KEYWORDS, "call0(VectorNumbaFunction self, Vector x, Vector out)"},
+	 { "VectorNumbaFunction_call0t", (PyCFunction)(void(*)(void))_wrap_VectorNumbaFunction_call0t, METH_VARARGS|METH_KEYWORDS, "call0t(VectorNumbaFunction self, Vector x, double t, Vector out)"},
+	 { "VectorNumbaFunction_GenerateCoefficient", (PyCFunction)(void(*)(void))_wrap_VectorNumbaFunction_GenerateCoefficient, METH_VARARGS|METH_KEYWORDS, "GenerateCoefficient(VectorNumbaFunction self, int use_0=0) -> VectorFunctionCoefficient"},
 	 { "delete_VectorNumbaFunction", _wrap_delete_VectorNumbaFunction, METH_O, "delete_VectorNumbaFunction(VectorNumbaFunction self)"},
 	 { "VectorNumbaFunction_swigregister", VectorNumbaFunction_swigregister, METH_O, NULL},
 	 { "VectorNumbaFunction_swiginit", VectorNumbaFunction_swiginit, METH_VARARGS, NULL},
@@ -26391,7 +26865,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "MatrixNumbaFunction_call", (PyCFunction)(void(*)(void))_wrap_MatrixNumbaFunction_call, METH_VARARGS|METH_KEYWORDS, "call(MatrixNumbaFunction self, Vector x, DenseMatrix out)"},
 	 { "MatrixNumbaFunction_callt", (PyCFunction)(void(*)(void))_wrap_MatrixNumbaFunction_callt, METH_VARARGS|METH_KEYWORDS, "callt(MatrixNumbaFunction self, Vector x, double t, DenseMatrix out)"},
-	 { "MatrixNumbaFunction_GenerateCoefficient", _wrap_MatrixNumbaFunction_GenerateCoefficient, METH_O, "GenerateCoefficient(MatrixNumbaFunction self) -> MatrixFunctionCoefficient"},
+	 { "MatrixNumbaFunction_call0", (PyCFunction)(void(*)(void))_wrap_MatrixNumbaFunction_call0, METH_VARARGS|METH_KEYWORDS, "call0(MatrixNumbaFunction self, Vector x, DenseMatrix out)"},
+	 { "MatrixNumbaFunction_call0t", (PyCFunction)(void(*)(void))_wrap_MatrixNumbaFunction_call0t, METH_VARARGS|METH_KEYWORDS, "call0t(MatrixNumbaFunction self, Vector x, double t, DenseMatrix out)"},
+	 { "MatrixNumbaFunction_GenerateCoefficient", (PyCFunction)(void(*)(void))_wrap_MatrixNumbaFunction_GenerateCoefficient, METH_VARARGS|METH_KEYWORDS, "GenerateCoefficient(MatrixNumbaFunction self, int use_0=0) -> MatrixFunctionCoefficient"},
 	 { "delete_MatrixNumbaFunction", _wrap_delete_MatrixNumbaFunction, METH_O, "delete_MatrixNumbaFunction(MatrixNumbaFunction self)"},
 	 { "MatrixNumbaFunction_swigregister", MatrixNumbaFunction_swigregister, METH_O, NULL},
 	 { "MatrixNumbaFunction_swiginit", MatrixNumbaFunction_swiginit, METH_VARARGS, NULL},
@@ -26649,6 +27125,7 @@ static swig_type_info _swigt__p_f_double__double = {"_p_f_double__double", "doub
 static swig_type_info _swigt__p_f_double_double__double = {"_p_f_double_double__double", "double (*)(double,double)", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_f_r_mfem__Vector__double = {"_p_f_r_mfem__Vector__double", "double (*)(mfem::Vector &)", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_f_r_mfem__Vector_double__double = {"_p_f_r_mfem__Vector_double__double", "double (*)(mfem::Vector &,double)", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Coefficient = {"_p_mfem__Coefficient", "mfem::Coefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ConstantCoefficient = {"_p_mfem__ConstantCoefficient", "mfem::ConstantCoefficient *", 0, 0, (void*)0, 0};
@@ -26745,6 +27222,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_f_double_double__double,
   &_swigt__p_f_r_mfem__Vector__double,
   &_swigt__p_f_r_mfem__Vector_double__double,
+  &_swigt__p_int,
   &_swigt__p_mfem__ArrayT_int_t,
   &_swigt__p_mfem__Coefficient,
   &_swigt__p_mfem__ConstantCoefficient,
@@ -26841,6 +27319,7 @@ static swig_cast_info _swigc__p_f_double__double[] = {  {&_swigt__p_f_double__do
 static swig_cast_info _swigc__p_f_double_double__double[] = {  {&_swigt__p_f_double_double__double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_f_r_mfem__Vector__double[] = {  {&_swigt__p_f_r_mfem__Vector__double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_f_r_mfem__Vector_double__double[] = {  {&_swigt__p_f_r_mfem__Vector_double__double, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Coefficient[] = {  {&_swigt__p_mfem__PyCoefficientBase, _p_mfem__PyCoefficientBaseTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__VectorRotProductCoefficient, _p_mfem__VectorRotProductCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__InnerProductCoefficient, _p_mfem__InnerProductCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__PowerCoefficient, _p_mfem__PowerCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__RatioCoefficient, _p_mfem__RatioCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__ProductCoefficient, _p_mfem__ProductCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__SumCoefficient, _p_mfem__SumCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__DivergenceGridFunctionCoefficient, _p_mfem__DivergenceGridFunctionCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__RestrictedCoefficient, _p_mfem__RestrictedCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__DeltaCoefficient, _p_mfem__DeltaCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__TransformedCoefficient, _p_mfem__TransformedCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__GridFunctionCoefficient, _p_mfem__GridFunctionCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__FunctionCoefficient, _p_mfem__FunctionCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__Coefficient, 0, 0, 0},  {&_swigt__p_mfem__PWConstCoefficient, _p_mfem__PWConstCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__ConstantCoefficient, _p_mfem__ConstantCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__DeterminantCoefficient, _p_mfem__DeterminantCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__QuadratureFunctionCoefficient, _p_mfem__QuadratureFunctionCoefficientTo_p_mfem__Coefficient, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ConstantCoefficient[] = {  {&_swigt__p_mfem__ConstantCoefficient, 0, 0, 0},{0, 0, 0, 0}};
@@ -26937,6 +27416,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_f_double_double__double,
   _swigc__p_f_r_mfem__Vector__double,
   _swigc__p_f_r_mfem__Vector_double__double,
+  _swigc__p_int,
   _swigc__p_mfem__ArrayT_int_t,
   _swigc__p_mfem__Coefficient,
   _swigc__p_mfem__ConstantCoefficient,
@@ -27755,14 +28235,14 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40200)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.2.0"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40200)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40300)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.3.0"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40300)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40200)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40200)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40200)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40300)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40300)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40300)%100))));
   SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(22000)));
   
   import_array();

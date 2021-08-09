@@ -3012,6 +3012,7 @@ SWIGINTERN void mfem_Array_Sl_int_Sg__Assign__SWIG_1(mfem::Array< int > *self,in
      *self = a;
   }
 SWIGINTERN void mfem_Array_Sl_int_Sg__FakeToList(mfem::Array< int > *self){}
+SWIGINTERN void mfem_Array_Sl_int_Sg____iter__(mfem::Array< int > *self){}
 
 SWIGINTERN swig_type_info*
 SWIG_pchar_descriptor(void)
@@ -3137,7 +3138,7 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
-SWIGINTERN void mfem_Array_Sl_int_Sg__Print__SWIG_1(mfem::Array< int > *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Array_Sl_int_Sg__Print__SWIG_1(mfem::Array< int > *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3148,7 +3149,7 @@ SWIGINTERN void mfem_Array_Sl_int_Sg__Print__SWIG_1(mfem::Array< int > *self,cha
   self -> Print(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_Array_Sl_int_Sg__PrintGZ(mfem::Array< int > *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Array_Sl_int_Sg__PrintGZ(mfem::Array< int > *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3159,7 +3160,7 @@ SWIGINTERN void mfem_Array_Sl_int_Sg__PrintGZ(mfem::Array< int > *self,char cons
   self -> Print(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_Array_Sl_int_Sg__Save__SWIG_1(mfem::Array< int > *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Array_Sl_int_Sg__Save__SWIG_1(mfem::Array< int > *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3170,7 +3171,7 @@ SWIGINTERN void mfem_Array_Sl_int_Sg__Save__SWIG_1(mfem::Array< int > *self,char
   self -> Save(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_Array_Sl_int_Sg__SaveGZ(mfem::Array< int > *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Array_Sl_int_Sg__SaveGZ(mfem::Array< int > *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   
   if (!ofile)
@@ -3198,7 +3199,8 @@ SWIGINTERN void mfem_Array_Sl_double_Sg__Assign__SWIG_1(mfem::Array< double > *s
      *self = a;
   }
 SWIGINTERN void mfem_Array_Sl_double_Sg__FakeToList(mfem::Array< double > *self){}
-SWIGINTERN void mfem_Array_Sl_double_Sg__Print__SWIG_1(mfem::Array< double > *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Array_Sl_double_Sg____iter__(mfem::Array< double > *self){}
+SWIGINTERN void mfem_Array_Sl_double_Sg__Print__SWIG_1(mfem::Array< double > *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3209,7 +3211,7 @@ SWIGINTERN void mfem_Array_Sl_double_Sg__Print__SWIG_1(mfem::Array< double > *se
   self -> Print(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_Array_Sl_double_Sg__PrintGZ(mfem::Array< double > *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Array_Sl_double_Sg__PrintGZ(mfem::Array< double > *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -3220,7 +3222,7 @@ SWIGINTERN void mfem_Array_Sl_double_Sg__PrintGZ(mfem::Array< double > *self,cha
   self -> Print(*ofile);
   delete ofile;
   }
-SWIGINTERN void mfem_Array_Sl_double_Sg__Save__SWIG_1(mfem::Array< double > *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Array_Sl_double_Sg__Save__SWIG_1(mfem::Array< double > *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3231,7 +3233,7 @@ SWIGINTERN void mfem_Array_Sl_double_Sg__Save__SWIG_1(mfem::Array< double > *sel
   self -> Save(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_Array_Sl_double_Sg__SaveGZ(mfem::Array< double > *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Array_Sl_double_Sg__SaveGZ(mfem::Array< double > *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   
   if (!ofile)
@@ -3353,28 +3355,52 @@ SWIGINTERN PyObject *_wrap_new_intArray__SWIG_3(PyObject *SWIGUNUSEDPARM(self), 
   PyObject *resultobj = 0;
   int *arg1 = (int *) 0 ;
   int arg2 ;
+  int *temp_ptr1 ;
+  bool ptr_given1 = false ;
+  bool is_tuple1 = false ;
+  PyObject *s11 ;
+  PyObject *s21 ;
   mfem::Array< int > *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
   {
     int i;
     if (!PyList_Check(swig_obj[0])) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    arg2 = PyList_Size(swig_obj[0]);
-    arg1 = (int *) malloc((arg2)*sizeof(int));
-    for (i = 0; i < arg2; i++) {
-      PyObject *s = PyList_GetItem(swig_obj[0],i);
-      if (PyInt_Check(s)) {
-        arg1[i] = (int)PyInt_AsLong(s);
-      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
-        arg1[i] = PyArray_PyIntAsInt(s);
-      } else {
-        free(arg1);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
+      if (!PyTuple_Check(swig_obj[0])) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
         return NULL;
+      } else {
+        is_tuple1 = true;
       }
+    }
+    arg2 = (is_tuple1) ? PyTuple_Size(swig_obj[0]) : PyList_Size(swig_obj[0]);
+    if (arg2 == 2){
+      s11 = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], 0) : PyList_GetItem(swig_obj[0],0);
+      s21 = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], 1) : PyList_GetItem(swig_obj[0],1);    
+      if (SWIG_ConvertPtr(s11, (void **) &temp_ptr1,
+          SWIGTYPE_p_int, 0 |0) == -1) {
+        ptr_given1=false;
+      } else {
+        ptr_given1=true;
+      }
+    }
+    if (! ptr_given1){
+      arg1 = (int *) malloc((arg2)*sizeof(int));
+      for (i = 0; i < arg2; i++) {
+        PyObject *s = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], i) : PyList_GetItem(swig_obj[0],i);
+        if (PyInt_Check(s)) {
+          arg1[i] = (int)PyInt_AsLong(s);
+        } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+          arg1[i] = PyArray_PyIntAsInt(s);
+        } else {
+          free(arg1);
+          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          return NULL;
+        }
+      }
+    } else {
+      arg1 = temp_ptr1;
+      arg2 = PyLong_AsLong(s21);    
     }
   }
   {
@@ -3481,7 +3507,13 @@ SWIGINTERN PyObject *_wrap_new_intArray(PyObject *self, PyObject *args) {
   if (argc == 1) {
     int _v;
     {
-      _v = PyList_Check(argv[0]) ? 1 : 0;
+      _v = 0;
+      if (PyList_Check(argv[0])){
+        _v = 1;
+      }
+      if (PyTuple_Check(argv[0])){
+        _v = 1;
+      }
     }
     if (_v) {
       if (argc <= 1) {
@@ -5264,6 +5296,14 @@ SWIGINTERN PyObject *_wrap_intArray_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
           }
           string_io2=swig_obj[1];
           stream2 = new std::ostringstream();
+          int prec = 16;
+          if (PyObject_HasAttrString(swig_obj[1], "precision")){
+            PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+            prec = (int)PyLong_AsLong(attr);
+            //std::cout << "setting prec" << prec << "\n";
+          }
+          stream2->precision(prec);
+          
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -5411,6 +5451,14 @@ SWIGINTERN PyObject *_wrap_intArray_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
         }
         string_io2=swig_obj[1];
         stream2 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(swig_obj[1], "precision")){
+          PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream2->precision(prec);
+        
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -6953,11 +7001,48 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_intArray___iter__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< int > *arg1 = (mfem::Array< int > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intArray___iter__" "', argument " "1"" of type '" "mfem::Array< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
+  {
+    try {
+      mfem_Array_Sl_int_Sg____iter__(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_intArray_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Array< int > *arg1 = (mfem::Array< int > *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -7104,7 +7189,7 @@ SWIGINTERN PyObject *_wrap_intArray_PrintGZ(PyObject *SWIGUNUSEDPARM(self), PyOb
   PyObject *resultobj = 0;
   mfem::Array< int > *arg1 = (mfem::Array< int > *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -7166,7 +7251,7 @@ SWIGINTERN PyObject *_wrap_intArray_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   PyObject *resultobj = 0;
   mfem::Array< int > *arg1 = (mfem::Array< int > *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -7222,7 +7307,7 @@ SWIGINTERN PyObject *_wrap_intArray_SaveGZ(PyObject *SWIGUNUSEDPARM(self), PyObj
   PyObject *resultobj = 0;
   mfem::Array< int > *arg1 = (mfem::Array< int > *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -7528,28 +7613,52 @@ SWIGINTERN PyObject *_wrap_new_doubleArray__SWIG_3(PyObject *SWIGUNUSEDPARM(self
   PyObject *resultobj = 0;
   double *arg1 = (double *) 0 ;
   int arg2 ;
+  double *temp_ptr1 ;
+  bool ptr_given1 = false ;
+  bool is_tuple1 = false ;
+  PyObject *s11 ;
+  PyObject *s21 ;
   mfem::Array< double > *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
   {
     int i;
     if (!PyList_Check(swig_obj[0])) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    arg2 = PyList_Size(swig_obj[0]);
-    arg1 = (double *) malloc((arg2)*sizeof(int));
-    for (i = 0; i < arg2; i++) {
-      PyObject *s = PyList_GetItem(swig_obj[0],i);
-      if (PyInt_Check(s)) {
-        arg1[i] = (double)PyFloat_AsDouble(s);
-      } else if (PyFloat_Check(s)) {
-        arg1[i] = (double)PyFloat_AsDouble(s);
-      } else {
-        free(arg1);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
+      if (!PyTuple_Check(swig_obj[0])) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
         return NULL;
+      } else {
+        is_tuple1 = true;
       }
+    }
+    arg2 = (is_tuple1) ? PyTuple_Size(swig_obj[0]) : PyList_Size(swig_obj[0]);  
+    if (arg2 == 2){
+      s11 = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], 0) : PyList_GetItem(swig_obj[0],0);
+      s21 = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], 1) : PyList_GetItem(swig_obj[0],1);    
+      if (SWIG_ConvertPtr(s11, (void **) &temp_ptr1,
+          SWIGTYPE_p_double, 0 |0) == -1) {
+        ptr_given1=false;
+      } else {
+        ptr_given1=true;
+      }
+    }
+    if (! ptr_given1){
+      arg1 = (double *) malloc((arg2)*sizeof(double));
+      for (i = 0; i < arg2; i++) {
+        PyObject *s = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], i) : PyList_GetItem(swig_obj[0],i);      
+        if (PyInt_Check(s)) {
+          arg1[i] = (double)PyInt_AsLong(s);
+        } else if (PyFloat_Check(s)) {
+          arg1[i] = (double)PyFloat_AsDouble(s);	
+        } else {
+          free(arg1);
+          PyErr_SetString(PyExc_ValueError, "List items must be float");
+          return NULL;
+        }
+      }
+    } else {
+      arg1 = temp_ptr1;
+      arg2 = PyLong_AsLong(s21);    
     }
   }
   {
@@ -7656,7 +7765,13 @@ SWIGINTERN PyObject *_wrap_new_doubleArray(PyObject *self, PyObject *args) {
   if (argc == 1) {
     int _v;
     {
-      _v = PyList_Check(argv[0]) ? 1 : 0;
+      _v = 0;
+      if (PyList_Check(argv[0])){
+        _v = 1;
+      }
+      if (PyTuple_Check(argv[0])){
+        _v = 1;
+      }
     }
     if (_v) {
       if (argc <= 1) {
@@ -9439,6 +9554,14 @@ SWIGINTERN PyObject *_wrap_doubleArray_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(se
           }
           string_io2=swig_obj[1];
           stream2 = new std::ostringstream();
+          int prec = 16;
+          if (PyObject_HasAttrString(swig_obj[1], "precision")){
+            PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+            prec = (int)PyLong_AsLong(attr);
+            //std::cout << "setting prec" << prec << "\n";
+          }
+          stream2->precision(prec);
+          
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -9586,6 +9709,14 @@ SWIGINTERN PyObject *_wrap_doubleArray_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
         }
         string_io2=swig_obj[1];
         stream2 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(swig_obj[1], "precision")){
+          PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream2->precision(prec);
+        
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -11128,11 +11259,48 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_doubleArray___iter__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< double > *arg1 = (mfem::Array< double > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleArray___iter__" "', argument " "1"" of type '" "mfem::Array< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
+  {
+    try {
+      mfem_Array_Sl_double_Sg____iter__(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_doubleArray_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Array< double > *arg1 = (mfem::Array< double > *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -11279,7 +11447,7 @@ SWIGINTERN PyObject *_wrap_doubleArray_PrintGZ(PyObject *SWIGUNUSEDPARM(self), P
   PyObject *resultobj = 0;
   mfem::Array< double > *arg1 = (mfem::Array< double > *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -11341,7 +11509,7 @@ SWIGINTERN PyObject *_wrap_doubleArray_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   PyObject *resultobj = 0;
   mfem::Array< double > *arg1 = (mfem::Array< double > *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -11397,7 +11565,7 @@ SWIGINTERN PyObject *_wrap_doubleArray_SaveGZ(PyObject *SWIGUNUSEDPARM(self), Py
   PyObject *resultobj = 0;
   mfem::Array< double > *arg1 = (mfem::Array< double > *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -12022,7 +12190,7 @@ static PyMethodDef SwigMethods[] = {
 		"intArray()\n"
 		"intArray(mfem::MemoryType mt)\n"
 		"intArray(int asize)\n"
-		"intArray(int * _data)\n"
+		"intArray(int * data_)\n"
 		"new_intArray(intArray src) -> intArray\n"
 		""},
 	 { "delete_intArray", _wrap_delete_intArray, METH_O, "delete_intArray(intArray self)"},
@@ -12102,15 +12270,16 @@ static PyMethodDef SwigMethods[] = {
 		"intArray_Assign(intArray self, int const & a)\n"
 		""},
 	 { "intArray_FakeToList", _wrap_intArray_FakeToList, METH_O, "intArray_FakeToList(intArray self)"},
+	 { "intArray___iter__", _wrap_intArray___iter__, METH_O, "intArray___iter__(intArray self)"},
 	 { "intArray_Print", _wrap_intArray_Print, METH_VARARGS, "\n"
 		"intArray_Print(intArray self, std::ostream & out=mfem::out, int width=4)\n"
-		"intArray_Print(intArray self, char const * file, int precision=8)\n"
+		"intArray_Print(intArray self, char const * file, int precision=16)\n"
 		""},
-	 { "intArray_PrintGZ", (PyCFunction)(void(*)(void))_wrap_intArray_PrintGZ, METH_VARARGS|METH_KEYWORDS, "intArray_PrintGZ(intArray self, char const * file, int precision=8)"},
-	 { "intArray_SaveGZ", (PyCFunction)(void(*)(void))_wrap_intArray_SaveGZ, METH_VARARGS|METH_KEYWORDS, "intArray_SaveGZ(intArray self, char const * file, int precision=8)"},
+	 { "intArray_PrintGZ", (PyCFunction)(void(*)(void))_wrap_intArray_PrintGZ, METH_VARARGS|METH_KEYWORDS, "intArray_PrintGZ(intArray self, char const * file, int precision=16)"},
+	 { "intArray_SaveGZ", (PyCFunction)(void(*)(void))_wrap_intArray_SaveGZ, METH_VARARGS|METH_KEYWORDS, "intArray_SaveGZ(intArray self, char const * file, int precision=16)"},
 	 { "intArray_Save", _wrap_intArray_Save, METH_VARARGS, "\n"
 		"intArray_Save(intArray self, std::ostream & out, int fmt=0)\n"
-		"intArray_Save(intArray self, char const * file, int precision=8)\n"
+		"intArray_Save(intArray self, char const * file, int precision=16)\n"
 		"intArray_Save(intArray self)\n"
 		""},
 	 { "intArray_swigregister", intArray_swigregister, METH_O, NULL},
@@ -12119,7 +12288,7 @@ static PyMethodDef SwigMethods[] = {
 		"doubleArray()\n"
 		"doubleArray(mfem::MemoryType mt)\n"
 		"doubleArray(int asize)\n"
-		"doubleArray(double * _data)\n"
+		"doubleArray(double * data_)\n"
 		"new_doubleArray(doubleArray src) -> doubleArray\n"
 		""},
 	 { "delete_doubleArray", _wrap_delete_doubleArray, METH_O, "delete_doubleArray(doubleArray self)"},
@@ -12199,15 +12368,16 @@ static PyMethodDef SwigMethods[] = {
 		"doubleArray_Assign(doubleArray self, double const & a)\n"
 		""},
 	 { "doubleArray_FakeToList", _wrap_doubleArray_FakeToList, METH_O, "doubleArray_FakeToList(doubleArray self)"},
+	 { "doubleArray___iter__", _wrap_doubleArray___iter__, METH_O, "doubleArray___iter__(doubleArray self)"},
 	 { "doubleArray_Print", _wrap_doubleArray_Print, METH_VARARGS, "\n"
 		"doubleArray_Print(doubleArray self, std::ostream & out=mfem::out, int width=4)\n"
-		"doubleArray_Print(doubleArray self, char const * file, int precision=8)\n"
+		"doubleArray_Print(doubleArray self, char const * file, int precision=16)\n"
 		""},
-	 { "doubleArray_PrintGZ", (PyCFunction)(void(*)(void))_wrap_doubleArray_PrintGZ, METH_VARARGS|METH_KEYWORDS, "doubleArray_PrintGZ(doubleArray self, char const * file, int precision=8)"},
-	 { "doubleArray_SaveGZ", (PyCFunction)(void(*)(void))_wrap_doubleArray_SaveGZ, METH_VARARGS|METH_KEYWORDS, "doubleArray_SaveGZ(doubleArray self, char const * file, int precision=8)"},
+	 { "doubleArray_PrintGZ", (PyCFunction)(void(*)(void))_wrap_doubleArray_PrintGZ, METH_VARARGS|METH_KEYWORDS, "doubleArray_PrintGZ(doubleArray self, char const * file, int precision=16)"},
+	 { "doubleArray_SaveGZ", (PyCFunction)(void(*)(void))_wrap_doubleArray_SaveGZ, METH_VARARGS|METH_KEYWORDS, "doubleArray_SaveGZ(doubleArray self, char const * file, int precision=16)"},
 	 { "doubleArray_Save", _wrap_doubleArray_Save, METH_VARARGS, "\n"
 		"doubleArray_Save(doubleArray self, std::ostream & out, int fmt=0)\n"
-		"doubleArray_Save(doubleArray self, char const * file, int precision=8)\n"
+		"doubleArray_Save(doubleArray self, char const * file, int precision=16)\n"
 		"doubleArray_Save(doubleArray self)\n"
 		""},
 	 { "doubleArray_swigregister", doubleArray_swigregister, METH_O, NULL},
@@ -12232,7 +12402,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"intArray()\n"
 		"intArray(mfem::MemoryType mt)\n"
 		"intArray(int asize)\n"
-		"intArray(int * _data)\n"
+		"intArray(int * data_)\n"
 		"new_intArray(intArray src) -> intArray\n"
 		""},
 	 { "delete_intArray", _wrap_delete_intArray, METH_O, "delete_intArray(intArray self)"},
@@ -12312,15 +12482,16 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Assign(intArray self, int const & a)\n"
 		""},
 	 { "intArray_FakeToList", _wrap_intArray_FakeToList, METH_O, "FakeToList(intArray self)"},
+	 { "intArray___iter__", _wrap_intArray___iter__, METH_O, "__iter__(intArray self)"},
 	 { "intArray_Print", _wrap_intArray_Print, METH_VARARGS, "\n"
 		"Print(intArray self, std::ostream & out=mfem::out, int width=4)\n"
-		"Print(intArray self, char const * file, int precision=8)\n"
+		"Print(intArray self, char const * file, int precision=16)\n"
 		""},
-	 { "intArray_PrintGZ", (PyCFunction)(void(*)(void))_wrap_intArray_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(intArray self, char const * file, int precision=8)"},
-	 { "intArray_SaveGZ", (PyCFunction)(void(*)(void))_wrap_intArray_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(intArray self, char const * file, int precision=8)"},
+	 { "intArray_PrintGZ", (PyCFunction)(void(*)(void))_wrap_intArray_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(intArray self, char const * file, int precision=16)"},
+	 { "intArray_SaveGZ", (PyCFunction)(void(*)(void))_wrap_intArray_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(intArray self, char const * file, int precision=16)"},
 	 { "intArray_Save", _wrap_intArray_Save, METH_VARARGS, "\n"
 		"Save(intArray self, std::ostream & out, int fmt=0)\n"
-		"Save(intArray self, char const * file, int precision=8)\n"
+		"Save(intArray self, char const * file, int precision=16)\n"
 		"Save(intArray self)\n"
 		""},
 	 { "intArray_swigregister", intArray_swigregister, METH_O, NULL},
@@ -12329,7 +12500,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"doubleArray()\n"
 		"doubleArray(mfem::MemoryType mt)\n"
 		"doubleArray(int asize)\n"
-		"doubleArray(double * _data)\n"
+		"doubleArray(double * data_)\n"
 		"new_doubleArray(doubleArray src) -> doubleArray\n"
 		""},
 	 { "delete_doubleArray", _wrap_delete_doubleArray, METH_O, "delete_doubleArray(doubleArray self)"},
@@ -12409,15 +12580,16 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Assign(doubleArray self, double const & a)\n"
 		""},
 	 { "doubleArray_FakeToList", _wrap_doubleArray_FakeToList, METH_O, "FakeToList(doubleArray self)"},
+	 { "doubleArray___iter__", _wrap_doubleArray___iter__, METH_O, "__iter__(doubleArray self)"},
 	 { "doubleArray_Print", _wrap_doubleArray_Print, METH_VARARGS, "\n"
 		"Print(doubleArray self, std::ostream & out=mfem::out, int width=4)\n"
-		"Print(doubleArray self, char const * file, int precision=8)\n"
+		"Print(doubleArray self, char const * file, int precision=16)\n"
 		""},
-	 { "doubleArray_PrintGZ", (PyCFunction)(void(*)(void))_wrap_doubleArray_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(doubleArray self, char const * file, int precision=8)"},
-	 { "doubleArray_SaveGZ", (PyCFunction)(void(*)(void))_wrap_doubleArray_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(doubleArray self, char const * file, int precision=8)"},
+	 { "doubleArray_PrintGZ", (PyCFunction)(void(*)(void))_wrap_doubleArray_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(doubleArray self, char const * file, int precision=16)"},
+	 { "doubleArray_SaveGZ", (PyCFunction)(void(*)(void))_wrap_doubleArray_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(doubleArray self, char const * file, int precision=16)"},
 	 { "doubleArray_Save", _wrap_doubleArray_Save, METH_VARARGS, "\n"
 		"Save(doubleArray self, std::ostream & out, int fmt=0)\n"
-		"Save(doubleArray self, char const * file, int precision=8)\n"
+		"Save(doubleArray self, char const * file, int precision=16)\n"
 		"Save(doubleArray self)\n"
 		""},
 	 { "doubleArray_swigregister", doubleArray_swigregister, METH_O, NULL},

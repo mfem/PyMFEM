@@ -3106,27 +3106,34 @@ namespace Swig {
 #define SWIGTYPE_p_QFieldMapType swig_types[6]
 #define SWIGTYPE_p_RefCoord swig_types[7]
 #define SWIGTYPE_p_char swig_types[8]
-#define SWIGTYPE_p_hex_t swig_types[9]
-#define SWIGTYPE_p_mfem__DataCollection swig_types[10]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[11]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[12]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[13]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[14]
-#define SWIGTYPE_p_mfem__Mesh swig_types[15]
-#define SWIGTYPE_p_mfem__NamedFieldsMapT_mfem__GridFunction_t__MapType swig_types[16]
-#define SWIGTYPE_p_mfem__NamedFieldsMapT_mfem__QuadratureFunction_t__MapType swig_types[17]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[18]
-#define SWIGTYPE_p_mfem__ParaViewDataCollection swig_types[19]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[20]
-#define SWIGTYPE_p_mfem__VisItDataCollection swig_types[21]
-#define SWIGTYPE_p_mfem__VisItFieldInfo swig_types[22]
-#define SWIGTYPE_p_pri_t swig_types[23]
-#define SWIGTYPE_p_quad_t swig_types[24]
-#define SWIGTYPE_p_seg_t swig_types[25]
-#define SWIGTYPE_p_tet_t swig_types[26]
-#define SWIGTYPE_p_tri_t swig_types[27]
-static swig_type_info *swig_types[29];
-static swig_module_info swig_module = {swig_types, 28, 0, 0, 0, 0};
+#define SWIGTYPE_p_double swig_types[9]
+#define SWIGTYPE_p_hex_t swig_types[10]
+#define SWIGTYPE_p_int swig_types[11]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[12]
+#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[13]
+#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[14]
+#define SWIGTYPE_p_mfem__DataCollection swig_types[15]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[16]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[17]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[18]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[19]
+#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[20]
+#define SWIGTYPE_p_mfem__Mesh swig_types[21]
+#define SWIGTYPE_p_mfem__NamedFieldsMapT_mfem__GridFunction_t__MapType swig_types[22]
+#define SWIGTYPE_p_mfem__NamedFieldsMapT_mfem__QuadratureFunction_t__MapType swig_types[23]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[24]
+#define SWIGTYPE_p_mfem__ParaViewDataCollection swig_types[25]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[26]
+#define SWIGTYPE_p_mfem__Vector swig_types[27]
+#define SWIGTYPE_p_mfem__VisItDataCollection swig_types[28]
+#define SWIGTYPE_p_mfem__VisItFieldInfo swig_types[29]
+#define SWIGTYPE_p_pri_t swig_types[30]
+#define SWIGTYPE_p_quad_t swig_types[31]
+#define SWIGTYPE_p_seg_t swig_types[32]
+#define SWIGTYPE_p_tet_t swig_types[33]
+#define SWIGTYPE_p_tri_t swig_types[34]
+static swig_type_info *swig_types[36];
+static swig_module_info swig_module = {swig_types, 35, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -6808,6 +6815,57 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ParaViewDataCollection_UseRestartMode(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ParaViewDataCollection *arg1 = (mfem::ParaViewDataCollection *) 0 ;
+  bool arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"restart_mode_",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ParaViewDataCollection_UseRestartMode", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParaViewDataCollection, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParaViewDataCollection_UseRestartMode" "', argument " "1"" of type '" "mfem::ParaViewDataCollection *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParaViewDataCollection * >(argp1);
+  ecode2 = SWIG_AsVal_bool(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ParaViewDataCollection_UseRestartMode" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  {
+    try {
+      (arg1)->UseRestartMode(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ParaViewDataCollection_Load(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParaViewDataCollection *arg1 = (mfem::ParaViewDataCollection *) 0 ;
@@ -6961,7 +7019,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "VisItFieldInfo_lod_get", _wrap_VisItFieldInfo_lod_get, METH_O, "VisItFieldInfo_lod_get(VisItFieldInfo self) -> int"},
 	 { "new_VisItFieldInfo", _wrap_new_VisItFieldInfo, METH_VARARGS, "\n"
 		"VisItFieldInfo()\n"
-		"new_VisItFieldInfo(std::string _association, int _num_components, int _lod=1) -> VisItFieldInfo\n"
+		"new_VisItFieldInfo(std::string association_, int num_components_, int lod_=1) -> VisItFieldInfo\n"
 		""},
 	 { "delete_VisItFieldInfo", _wrap_delete_VisItFieldInfo, METH_O, "delete_VisItFieldInfo(VisItFieldInfo self)"},
 	 { "VisItFieldInfo_swigregister", VisItFieldInfo_swigregister, METH_O, NULL},
@@ -6987,6 +7045,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "ParaViewDataCollection_SetCompression", (PyCFunction)(void(*)(void))_wrap_ParaViewDataCollection_SetCompression, METH_VARARGS|METH_KEYWORDS, "ParaViewDataCollection_SetCompression(ParaViewDataCollection self, bool compression_)"},
 	 { "ParaViewDataCollection_IsBinaryFormat", _wrap_ParaViewDataCollection_IsBinaryFormat, METH_O, "ParaViewDataCollection_IsBinaryFormat(ParaViewDataCollection self) -> bool"},
 	 { "ParaViewDataCollection_SetHighOrderOutput", (PyCFunction)(void(*)(void))_wrap_ParaViewDataCollection_SetHighOrderOutput, METH_VARARGS|METH_KEYWORDS, "ParaViewDataCollection_SetHighOrderOutput(ParaViewDataCollection self, bool high_order_output_)"},
+	 { "ParaViewDataCollection_UseRestartMode", (PyCFunction)(void(*)(void))_wrap_ParaViewDataCollection_UseRestartMode, METH_VARARGS|METH_KEYWORDS, "ParaViewDataCollection_UseRestartMode(ParaViewDataCollection self, bool restart_mode_)"},
 	 { "ParaViewDataCollection_Load", (PyCFunction)(void(*)(void))_wrap_ParaViewDataCollection_Load, METH_VARARGS|METH_KEYWORDS, "ParaViewDataCollection_Load(ParaViewDataCollection self, int cycle_=0)"},
 	 { "delete_ParaViewDataCollection", _wrap_delete_ParaViewDataCollection, METH_O, "delete_ParaViewDataCollection(ParaViewDataCollection self)"},
 	 { "ParaViewDataCollection_swigregister", ParaViewDataCollection_swigregister, METH_O, NULL},
@@ -7044,7 +7103,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "VisItFieldInfo_lod_get", _wrap_VisItFieldInfo_lod_get, METH_O, "VisItFieldInfo_lod_get(VisItFieldInfo self) -> int"},
 	 { "new_VisItFieldInfo", _wrap_new_VisItFieldInfo, METH_VARARGS, "\n"
 		"VisItFieldInfo()\n"
-		"new_VisItFieldInfo(std::string _association, int _num_components, int _lod=1) -> VisItFieldInfo\n"
+		"new_VisItFieldInfo(std::string association_, int num_components_, int lod_=1) -> VisItFieldInfo\n"
 		""},
 	 { "delete_VisItFieldInfo", _wrap_delete_VisItFieldInfo, METH_O, "delete_VisItFieldInfo(VisItFieldInfo self)"},
 	 { "VisItFieldInfo_swigregister", VisItFieldInfo_swigregister, METH_O, NULL},
@@ -7070,6 +7129,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ParaViewDataCollection_SetCompression", (PyCFunction)(void(*)(void))_wrap_ParaViewDataCollection_SetCompression, METH_VARARGS|METH_KEYWORDS, "SetCompression(ParaViewDataCollection self, bool compression_)"},
 	 { "ParaViewDataCollection_IsBinaryFormat", _wrap_ParaViewDataCollection_IsBinaryFormat, METH_O, "IsBinaryFormat(ParaViewDataCollection self) -> bool"},
 	 { "ParaViewDataCollection_SetHighOrderOutput", (PyCFunction)(void(*)(void))_wrap_ParaViewDataCollection_SetHighOrderOutput, METH_VARARGS|METH_KEYWORDS, "SetHighOrderOutput(ParaViewDataCollection self, bool high_order_output_)"},
+	 { "ParaViewDataCollection_UseRestartMode", (PyCFunction)(void(*)(void))_wrap_ParaViewDataCollection_UseRestartMode, METH_VARARGS|METH_KEYWORDS, "UseRestartMode(ParaViewDataCollection self, bool restart_mode_)"},
 	 { "ParaViewDataCollection_Load", (PyCFunction)(void(*)(void))_wrap_ParaViewDataCollection_Load, METH_VARARGS|METH_KEYWORDS, "Load(ParaViewDataCollection self, int cycle_=0)"},
 	 { "delete_ParaViewDataCollection", _wrap_delete_ParaViewDataCollection, METH_O, "delete_ParaViewDataCollection(ParaViewDataCollection self)"},
 	 { "ParaViewDataCollection_swigregister", ParaViewDataCollection_swigregister, METH_O, NULL},
@@ -7086,6 +7146,15 @@ static void *_p_mfem__VisItDataCollectionTo_p_mfem__DataCollection(void *x, int 
 static void *_p_mfem__ParaViewDataCollectionTo_p_mfem__DataCollection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::DataCollection *)  ((mfem::ParaViewDataCollection *) x));
 }
+static void *_p_mfem__GridFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::GridFunction *) x));
+}
+static void *_p_mfem__QuadratureFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::QuadratureFunction *) x));
+}
+static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::LinearForm *) x));
+}
 static swig_type_info _swigt__p_FieldMapConstIterator = {"_p_FieldMapConstIterator", "FieldMapConstIterator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FieldMapIterator = {"_p_FieldMapIterator", "FieldMapIterator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FieldMapType = {"_p_FieldMapType", "FieldMapType *", 0, 0, (void*)0, 0};
@@ -7095,7 +7164,12 @@ static swig_type_info _swigt__p_QFieldMapIterator = {"_p_QFieldMapIterator", "QF
 static swig_type_info _swigt__p_QFieldMapType = {"_p_QFieldMapType", "QFieldMapType *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ConvectionIntegrator = {"_p_mfem__ConvectionIntegrator", "mfem::ConvectionIntegrator *|mfem::NonconservativeConvectionIntegrator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__DGTraceIntegrator = {"_p_mfem__DGTraceIntegrator", "mfem::DGTraceIntegrator *|mfem::ConservativeDGTraceIntegrator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DataCollection = {"_p_mfem__DataCollection", "mfem::DataCollection *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
@@ -7107,6 +7181,8 @@ static swig_type_info _swigt__p_mfem__NamedFieldsMapT_mfem__QuadratureFunction_t
 static swig_type_info _swigt__p_mfem__OperatorHandle = {"_p_mfem__OperatorHandle", "mfem::OperatorPtr *|mfem::OperatorHandle *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ParaViewDataCollection = {"_p_mfem__ParaViewDataCollection", "mfem::ParaViewDataCollection *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", "mfem::QuadratureFunction *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__VisItDataCollection = {"_p_mfem__VisItDataCollection", "mfem::VisItDataCollection *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__VisItFieldInfo = {"_p_mfem__VisItFieldInfo", "mfem::VisItFieldInfo *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
@@ -7125,11 +7201,17 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_QFieldMapType,
   &_swigt__p_RefCoord,
   &_swigt__p_char,
+  &_swigt__p_double,
   &_swigt__p_hex_t,
+  &_swigt__p_int,
+  &_swigt__p_mfem__ArrayT_int_t,
+  &_swigt__p_mfem__ConvectionIntegrator,
+  &_swigt__p_mfem__DGTraceIntegrator,
   &_swigt__p_mfem__DataCollection,
   &_swigt__p_mfem__GridFunction,
   &_swigt__p_mfem__IntegrationRule,
   &_swigt__p_mfem__L2_FECollection,
+  &_swigt__p_mfem__LinearForm,
   &_swigt__p_mfem__MatrixVectorProductCoefficient,
   &_swigt__p_mfem__Mesh,
   &_swigt__p_mfem__NamedFieldsMapT_mfem__GridFunction_t__MapType,
@@ -7137,6 +7219,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__OperatorHandle,
   &_swigt__p_mfem__ParaViewDataCollection,
   &_swigt__p_mfem__QuadratureFunction,
+  &_swigt__p_mfem__Vector,
   &_swigt__p_mfem__VisItDataCollection,
   &_swigt__p_mfem__VisItFieldInfo,
   &_swigt__p_pri_t,
@@ -7155,7 +7238,12 @@ static swig_cast_info _swigc__p_QFieldMapIterator[] = {  {&_swigt__p_QFieldMapIt
 static swig_cast_info _swigc__p_QFieldMapType[] = {  {&_swigt__p_QFieldMapType, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ConvectionIntegrator[] = {  {&_swigt__p_mfem__ConvectionIntegrator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__DGTraceIntegrator[] = {  {&_swigt__p_mfem__DGTraceIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DataCollection[] = {  {&_swigt__p_mfem__DataCollection, 0, 0, 0},  {&_swigt__p_mfem__VisItDataCollection, _p_mfem__VisItDataCollectionTo_p_mfem__DataCollection, 0, 0},  {&_swigt__p_mfem__ParaViewDataCollection, _p_mfem__ParaViewDataCollectionTo_p_mfem__DataCollection, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
@@ -7167,6 +7255,8 @@ static swig_cast_info _swigc__p_mfem__NamedFieldsMapT_mfem__QuadratureFunction_t
 static swig_cast_info _swigc__p_mfem__OperatorHandle[] = {  {&_swigt__p_mfem__OperatorHandle, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ParaViewDataCollection[] = {  {&_swigt__p_mfem__ParaViewDataCollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {  {&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__VisItDataCollection[] = {  {&_swigt__p_mfem__VisItDataCollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__VisItFieldInfo[] = {  {&_swigt__p_mfem__VisItFieldInfo, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -7185,11 +7275,17 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_QFieldMapType,
   _swigc__p_RefCoord,
   _swigc__p_char,
+  _swigc__p_double,
   _swigc__p_hex_t,
+  _swigc__p_int,
+  _swigc__p_mfem__ArrayT_int_t,
+  _swigc__p_mfem__ConvectionIntegrator,
+  _swigc__p_mfem__DGTraceIntegrator,
   _swigc__p_mfem__DataCollection,
   _swigc__p_mfem__GridFunction,
   _swigc__p_mfem__IntegrationRule,
   _swigc__p_mfem__L2_FECollection,
+  _swigc__p_mfem__LinearForm,
   _swigc__p_mfem__MatrixVectorProductCoefficient,
   _swigc__p_mfem__Mesh,
   _swigc__p_mfem__NamedFieldsMapT_mfem__GridFunction_t__MapType,
@@ -7197,6 +7293,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__OperatorHandle,
   _swigc__p_mfem__ParaViewDataCollection,
   _swigc__p_mfem__QuadratureFunction,
+  _swigc__p_mfem__Vector,
   _swigc__p_mfem__VisItDataCollection,
   _swigc__p_mfem__VisItFieldInfo,
   _swigc__p_pri_t,

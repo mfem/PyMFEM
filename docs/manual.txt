@@ -28,7 +28,22 @@ to find more details of the MFEM library.
  Following features are realized in PyMFEM using SWIG interface
  in order to use MFEM more conveniently from python. 
  Some of them may be integrated to MFEM itself in future.
- 
+
+  4-0) mfem::Array
+     Array<T> is a template in MFEM. PyMFEM has couple of intstatiation of
+     this template such as
+       * Array<int>  -> intArray
+       * Array<double> -> doubleArray
+     (example)
+        >>> x = mfem.intArray(5)
+	>>> x.Assign(3)   # set all elements to 3 (replacement of = operator)
+	>>> x.ToList()    # convert to list
+	>>> for k in x:
+	       print(k)   # iterator
+	>>> print(x[0])   # access to element
+	>>> x[3] = 5      # set element
+
+
   4-1) mfem::Vector
      Constructor using python list or NumPy array:
      
@@ -117,8 +132,24 @@ to find more details of the MFEM library.
           Note: the argument is first tested if it can be converted using
 	        np.array(x,  dtype=float)
 
-       (EXPERIMENTAL)
-       Using Numba JIT functions for FunctionCoefficients is supported.
+       Function coefficient written in Python can be JITed using Numba. To use
+       this feature, one can either use mfem.jit.* decorators or instantiate
+       NumberFunction (or Vector/MatrixNumbaFunction) and call GenerateCoefficient
+       in most case, the first one is convenient. 
+
+       -Example-
+       (Using jit decorator -- see more example in ex1 and ex24)
+       >>>  @mfem.jit.scalar()
+            def c12(ptx):
+                return s_func0(ptx[0], ptx[1],  ptx[2])
+       >>>  @mfem.jit.vector()
+            def f_exact(x, out):
+               out[0] = (1 + kappa**2)*sin(kappa * x[1])
+               out[1] = (1 + kappa**2)*sin(kappa * x[2])
+               out[2] = (1 + kappa**2)*sin(kappa * x[0])
+       >>> x.ProjectCoefficient(f_exact)       
+
+       (Using NumbaFunction object)
        For example, to use Numba compiled function, one can use
        GenerateCoefficient mehtod in NumberFunction class as follows.
 
@@ -131,6 +162,7 @@ to find more details of the MFEM library.
            ...    return 2*ptx[0]
        >>> c = NumbaFunction(s_func, sdim).GenerateCoefficient()
 
+       Please look test_numba.py and ex3.py for more examples
 
   4-3) mfem::GridFunction
        GetNodalValues(i) will perform GetNodalValue(Vector(), i) and
@@ -168,6 +200,13 @@ to find more details of the MFEM library.
 
           print('result: ', o.getvalue())
 
+      Those methods which take a pointer to IntegrationRule array (
+      const IntegrationRule *irs[]) accept a list of IntegrationRule
+      ex)
+         coeff = mfem.ConstantCoefficient(1.0)
+         irs = [mfem.IntRules.Get(i, order)
+                for i in range(mfem.Geometry.NumGeom)]
+         err = x.ComputeL2Error(coeff, irs)
 	     
   4-4) mfem::Mesh
          Simple mesh generator is wrapped as follows
@@ -264,6 +303,9 @@ to find more details of the MFEM library.
              o = io.StringIO()
              length = v.WriteToStream(o)
 	     print('data: ', o.getvalue())
+
+        AddVertex accepts either numpy float array, mfem.Vector or list
+	AddQuad (and other similar methods) accepts either numpy int32 array, Array<int> or list
 
   4-5) sparsemat
          RAP has two different implementations. One accept three references.
@@ -418,8 +460,17 @@ to find more details of the MFEM library.
          (example)
             mesh.PrintVTK("mesh.vtk", 1)
      	    mesh.Print(mfem.STDOUT)
+	    
+	    #
 	    gf.SaveVTK("gf.vtk", "data", 1)
 	    gf.Save("data.gf")
+
+            # save multile gf to one StringIO....
+	    from io import StringIO()
+	    output = StringIO()
+	    output.precision = 8
+	    gf.Save(output)
+	    gf2.Save(output)	    
 
          Some methos are wrapped so that it runs without argument. In this
 	 case, data is passed to STDOUT.	 
@@ -513,6 +564,20 @@ to find more details of the MFEM library.
             strumpack.SetFromCommandLine()
             strumpack.Mult(B, X);
 
+     4-18) OperatorHandle
+           It is often required to convert Operator Handle to a specific operaotr class
+           using OperatorHandle::As <T>. handle.hpp defines also Is, Get, Reset,
+	   and ConvertFrom. These templates are instantiated for SparseMatrix,
+	   HypreParMatrix, and PetscParMatrix. Instatiated methods have class name
+	   appeded to its method name. For example, in ex1.py, it is use as
+	   follows.
+	   
+              A = mfem.OperatorPtr()
+	      <....>
+              AA = A.AsSparseMatrix()
+              M = mfem.GSSmoother(AA)
+              mfem.PCG(A, M, B, X, 1, 200, 1e-12, 0.0)
+
 -- Known issues --
 
   PyMFEM is an on-going effort. Not all MFEM functionality is properly
@@ -524,8 +589,6 @@ to find more details of the MFEM library.
 
   1) t*.hpp files are not wrapped
   
-  2) Mesh::SwapNodes is not working perfectly.
-  
   3) Memory management.
       python uses garbage collection. Since wrapper does not know
       exactly how objects are used in c++ layer, MFEM object may be
@@ -533,7 +596,6 @@ to find more details of the MFEM library.
       this by adjusting thisown flag or %newobject directive. This
       needs to be done method by method, and not yet completed.
 
-  4) Visualization through visit is not included
 
   5) SuperLU and PETSc are not supported.
   

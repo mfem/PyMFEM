@@ -3099,84 +3099,89 @@ namespace Swig {
 
 #define SWIGTYPE_p_MPI_Comm swig_types[0]
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[1]
-#define SWIGTYPE_p_char swig_types[2]
-#define SWIGTYPE_p_int swig_types[3]
-#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[4]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[5]
-#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[6]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[7]
-#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[8]
-#define SWIGTYPE_p_mfem__HypreADS swig_types[9]
-#define SWIGTYPE_p_mfem__HypreAMS swig_types[10]
-#define SWIGTYPE_p_mfem__HypreBoomerAMG swig_types[11]
-#define SWIGTYPE_p_mfem__HypreDiagScale swig_types[12]
-#define SWIGTYPE_p_mfem__HypreEuclid swig_types[13]
-#define SWIGTYPE_p_mfem__HypreFGMRES swig_types[14]
-#define SWIGTYPE_p_mfem__HypreGMRES swig_types[15]
-#define SWIGTYPE_p_mfem__HypreILU swig_types[16]
-#define SWIGTYPE_p_mfem__HypreIdentity swig_types[17]
-#define SWIGTYPE_p_mfem__HyprePCG swig_types[18]
-#define SWIGTYPE_p_mfem__HypreParMatrix swig_types[19]
-#define SWIGTYPE_p_mfem__HypreParVector swig_types[20]
-#define SWIGTYPE_p_mfem__HypreParaSails swig_types[21]
-#define SWIGTYPE_p_mfem__HypreSmoother swig_types[22]
-#define SWIGTYPE_p_mfem__HypreSolver swig_types[23]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[24]
-#define SWIGTYPE_p_mfem__Matrix swig_types[25]
-#define SWIGTYPE_p_mfem__MatrixInverse swig_types[26]
-#define SWIGTYPE_p_mfem__Operator swig_types[27]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[28]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[29]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[30]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[31]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[32]
-#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[33]
-#define SWIGTYPE_p_mfem__ScaledOperator swig_types[34]
-#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[35]
-#define SWIGTYPE_p_mfem__Solver swig_types[36]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[37]
-#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[38]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[39]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[40]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[41]
-#define SWIGTYPE_p_mfem__Vector swig_types[42]
-#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[43]
-#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[44]
-#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[45]
-#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[46]
-#define SWIGTYPE_p_p_mfem__HypreADS swig_types[47]
-#define SWIGTYPE_p_p_mfem__HypreAMS swig_types[48]
-#define SWIGTYPE_p_p_mfem__HypreBoomerAMG swig_types[49]
-#define SWIGTYPE_p_p_mfem__HypreDiagScale swig_types[50]
-#define SWIGTYPE_p_p_mfem__HypreEuclid swig_types[51]
-#define SWIGTYPE_p_p_mfem__HypreFGMRES swig_types[52]
-#define SWIGTYPE_p_p_mfem__HypreGMRES swig_types[53]
-#define SWIGTYPE_p_p_mfem__HypreILU swig_types[54]
-#define SWIGTYPE_p_p_mfem__HypreIdentity swig_types[55]
-#define SWIGTYPE_p_p_mfem__HyprePCG swig_types[56]
-#define SWIGTYPE_p_p_mfem__HypreParMatrix swig_types[57]
-#define SWIGTYPE_p_p_mfem__HypreParaSails swig_types[58]
-#define SWIGTYPE_p_p_mfem__HypreSmoother swig_types[59]
-#define SWIGTYPE_p_p_mfem__HypreSolver swig_types[60]
-#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[61]
-#define SWIGTYPE_p_p_mfem__Matrix swig_types[62]
-#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[63]
-#define SWIGTYPE_p_p_mfem__Operator swig_types[64]
-#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[65]
-#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[66]
-#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[67]
-#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[68]
-#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[69]
-#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[70]
-#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[71]
-#define SWIGTYPE_p_p_mfem__Solver swig_types[72]
-#define SWIGTYPE_p_p_mfem__SparseMatrix swig_types[73]
-#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[74]
-#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[75]
-#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[76]
-#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[77]
-static swig_type_info *swig_types[79];
-static swig_module_info swig_module = {swig_types, 78, 0, 0, 0, 0};
+#define SWIGTYPE_p__HYPRE_ExecutionPolicy swig_types[2]
+#define SWIGTYPE_p__HYPRE_MemoryLocation swig_types[3]
+#define SWIGTYPE_p_char swig_types[4]
+#define SWIGTYPE_p_double swig_types[5]
+#define SWIGTYPE_p_int swig_types[6]
+#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[7]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[8]
+#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[9]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[10]
+#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[11]
+#define SWIGTYPE_p_mfem__HypreADS swig_types[12]
+#define SWIGTYPE_p_mfem__HypreAMS swig_types[13]
+#define SWIGTYPE_p_mfem__HypreBoomerAMG swig_types[14]
+#define SWIGTYPE_p_mfem__HypreDiagScale swig_types[15]
+#define SWIGTYPE_p_mfem__HypreEuclid swig_types[16]
+#define SWIGTYPE_p_mfem__HypreFGMRES swig_types[17]
+#define SWIGTYPE_p_mfem__HypreGMRES swig_types[18]
+#define SWIGTYPE_p_mfem__HypreILU swig_types[19]
+#define SWIGTYPE_p_mfem__HypreIdentity swig_types[20]
+#define SWIGTYPE_p_mfem__HyprePCG swig_types[21]
+#define SWIGTYPE_p_mfem__HypreParMatrix swig_types[22]
+#define SWIGTYPE_p_mfem__HypreParVector swig_types[23]
+#define SWIGTYPE_p_mfem__HypreParaSails swig_types[24]
+#define SWIGTYPE_p_mfem__HypreSmoother swig_types[25]
+#define SWIGTYPE_p_mfem__HypreSolver swig_types[26]
+#define SWIGTYPE_p_mfem__HypreTriSolve swig_types[27]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[28]
+#define SWIGTYPE_p_mfem__Matrix swig_types[29]
+#define SWIGTYPE_p_mfem__MatrixInverse swig_types[30]
+#define SWIGTYPE_p_mfem__Operator swig_types[31]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[32]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[33]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[34]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[35]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[36]
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[37]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[38]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[39]
+#define SWIGTYPE_p_mfem__Solver swig_types[40]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[41]
+#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[42]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[43]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[44]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[45]
+#define SWIGTYPE_p_mfem__Vector swig_types[46]
+#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[47]
+#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[48]
+#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[49]
+#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[50]
+#define SWIGTYPE_p_p_mfem__HypreADS swig_types[51]
+#define SWIGTYPE_p_p_mfem__HypreAMS swig_types[52]
+#define SWIGTYPE_p_p_mfem__HypreBoomerAMG swig_types[53]
+#define SWIGTYPE_p_p_mfem__HypreDiagScale swig_types[54]
+#define SWIGTYPE_p_p_mfem__HypreEuclid swig_types[55]
+#define SWIGTYPE_p_p_mfem__HypreFGMRES swig_types[56]
+#define SWIGTYPE_p_p_mfem__HypreGMRES swig_types[57]
+#define SWIGTYPE_p_p_mfem__HypreILU swig_types[58]
+#define SWIGTYPE_p_p_mfem__HypreIdentity swig_types[59]
+#define SWIGTYPE_p_p_mfem__HyprePCG swig_types[60]
+#define SWIGTYPE_p_p_mfem__HypreParMatrix swig_types[61]
+#define SWIGTYPE_p_p_mfem__HypreParaSails swig_types[62]
+#define SWIGTYPE_p_p_mfem__HypreSmoother swig_types[63]
+#define SWIGTYPE_p_p_mfem__HypreSolver swig_types[64]
+#define SWIGTYPE_p_p_mfem__HypreTriSolve swig_types[65]
+#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[66]
+#define SWIGTYPE_p_p_mfem__Matrix swig_types[67]
+#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[68]
+#define SWIGTYPE_p_p_mfem__Operator swig_types[69]
+#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[70]
+#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[71]
+#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[72]
+#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[73]
+#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[74]
+#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[75]
+#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[76]
+#define SWIGTYPE_p_p_mfem__Solver swig_types[77]
+#define SWIGTYPE_p_p_mfem__SparseMatrix swig_types[78]
+#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[79]
+#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[80]
+#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[81]
+#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[82]
+static swig_type_info *swig_types[84];
+static swig_module_info swig_module = {swig_types, 83, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3742,16 +3747,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_OperatorHandle___ref__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_OperatorHandle___ref____SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   mfem::Operator *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OperatorHandle, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle___ref__" "', argument " "1"" of type '" "mfem::OperatorHandle *""'"); 
@@ -3774,6 +3777,74 @@ SWIGINTERN PyObject *_wrap_OperatorHandle___ref__(PyObject *SWIGUNUSEDPARM(self)
   return resultobj;
 fail:
   PyErr_Clear();
+  Py_INCREF(Py_NotImplemented);
+  return Py_NotImplemented;
+}
+
+
+SWIGINTERN PyObject *_wrap_OperatorHandle___ref____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::Operator *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OperatorHandle, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle___ref__" "', argument " "1"" of type '" "mfem::OperatorHandle const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
+  {
+    try {
+      result = (mfem::Operator *) &((mfem::OperatorHandle const *)arg1)->operator *(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  return resultobj;
+fail:
+  PyErr_Clear();
+  Py_INCREF(Py_NotImplemented);
+  return Py_NotImplemented;
+}
+
+
+SWIGINTERN PyObject *_wrap_OperatorHandle___ref__(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "OperatorHandle___ref__", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__OperatorHandle, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_OperatorHandle___ref____SWIG_0(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__OperatorHandle, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_OperatorHandle___ref____SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
   Py_INCREF(Py_NotImplemented);
   return Py_NotImplemented;
 }
@@ -3979,8 +4050,8 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_MakeSquareBlockDiag(PyObject *SWIGUNUS
   PyObject *resultobj = 0;
   mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
   MPI_Comm arg2 ;
-  HYPRE_Int arg3 ;
-  HYPRE_Int *arg4 = (HYPRE_Int *) 0 ;
+  HYPRE_BigInt arg3 ;
+  HYPRE_BigInt *arg4 = (HYPRE_BigInt *) 0 ;
   mfem::SparseMatrix *arg5 = (mfem::SparseMatrix *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -4020,9 +4091,9 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_MakeSquareBlockDiag(PyObject *SWIGUNUS
   }
   res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_int, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "OperatorHandle_MakeSquareBlockDiag" "', argument " "4"" of type '" "HYPRE_Int *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "OperatorHandle_MakeSquareBlockDiag" "', argument " "4"" of type '" "HYPRE_BigInt *""'"); 
   }
-  arg4 = reinterpret_cast< HYPRE_Int * >(argp4);
+  arg4 = reinterpret_cast< HYPRE_BigInt * >(argp4);
   res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
   if (!SWIG_IsOK(res5)) {
     SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "OperatorHandle_MakeSquareBlockDiag" "', argument " "5"" of type '" "mfem::SparseMatrix *""'"); 
@@ -4052,10 +4123,10 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_MakeRectangularBlockDiag(PyObject *SWI
   PyObject *resultobj = 0;
   mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
   MPI_Comm arg2 ;
-  HYPRE_Int arg3 ;
-  HYPRE_Int arg4 ;
-  HYPRE_Int *arg5 = (HYPRE_Int *) 0 ;
-  HYPRE_Int *arg6 = (HYPRE_Int *) 0 ;
+  HYPRE_BigInt arg3 ;
+  HYPRE_BigInt arg4 ;
+  HYPRE_BigInt *arg5 = (HYPRE_BigInt *) 0 ;
+  HYPRE_BigInt *arg6 = (HYPRE_BigInt *) 0 ;
   mfem::SparseMatrix *arg7 = (mfem::SparseMatrix *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -4105,14 +4176,14 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_MakeRectangularBlockDiag(PyObject *SWI
   }
   res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_int, 0 |  0 );
   if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "OperatorHandle_MakeRectangularBlockDiag" "', argument " "5"" of type '" "HYPRE_Int *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "OperatorHandle_MakeRectangularBlockDiag" "', argument " "5"" of type '" "HYPRE_BigInt *""'"); 
   }
-  arg5 = reinterpret_cast< HYPRE_Int * >(argp5);
+  arg5 = reinterpret_cast< HYPRE_BigInt * >(argp5);
   res6 = SWIG_ConvertPtr(obj5, &argp6,SWIGTYPE_p_int, 0 |  0 );
   if (!SWIG_IsOK(res6)) {
-    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "OperatorHandle_MakeRectangularBlockDiag" "', argument " "6"" of type '" "HYPRE_Int *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "OperatorHandle_MakeRectangularBlockDiag" "', argument " "6"" of type '" "HYPRE_BigInt *""'"); 
   }
-  arg6 = reinterpret_cast< HYPRE_Int * >(argp6);
+  arg6 = reinterpret_cast< HYPRE_BigInt * >(argp6);
   res7 = SWIG_ConvertPtr(obj6, &argp7,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
   if (!SWIG_IsOK(res7)) {
     SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "OperatorHandle_MakeRectangularBlockDiag" "', argument " "7"" of type '" "mfem::SparseMatrix *""'"); 
@@ -4270,7 +4341,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_OperatorHandle_ConvertFrom__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_OperatorHandle_ConvertFrom(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
   mfem::OperatorHandle *arg2 = 0 ;
@@ -4278,14 +4349,19 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_ConvertFrom__SWIG_0(PyObject *SWIGUNUS
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"A",  NULL 
+  };
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OperatorHandle, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:OperatorHandle_ConvertFrom", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__OperatorHandle, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_ConvertFrom" "', argument " "1"" of type '" "mfem::OperatorHandle *""'"); 
   }
   arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__OperatorHandle,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__OperatorHandle,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OperatorHandle_ConvertFrom" "', argument " "2"" of type '" "mfem::OperatorHandle &""'"); 
   }
@@ -4553,7 +4629,226 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_OperatorHandle_As(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_OperatorHandle_AsSparseMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::SparseMatrix *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OperatorHandle, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_AsSparseMatrix" "', argument " "1"" of type '" "mfem::OperatorHandle const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
+  {
+    try {
+      result = (mfem::SparseMatrix *)((mfem::OperatorHandle const *)arg1)->SWIGTEMPLATEDISAMBIGUATOR As< mfem::SparseMatrix >(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OperatorHandle_IsSparseMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::SparseMatrix *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OperatorHandle, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_IsSparseMatrix" "', argument " "1"" of type '" "mfem::OperatorHandle const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
+  {
+    try {
+      result = (mfem::SparseMatrix *)((mfem::OperatorHandle const *)arg1)->SWIGTEMPLATEDISAMBIGUATOR Is< mfem::SparseMatrix >(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OperatorHandle_GetSparseMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
+  mfem::SparseMatrix **arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"A",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:OperatorHandle_GetSparseMatrix", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__OperatorHandle, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_GetSparseMatrix" "', argument " "1"" of type '" "mfem::OperatorHandle const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_p_mfem__SparseMatrix,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OperatorHandle_GetSparseMatrix" "', argument " "2"" of type '" "mfem::SparseMatrix *&""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OperatorHandle_GetSparseMatrix" "', argument " "2"" of type '" "mfem::SparseMatrix *&""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::SparseMatrix ** >(argp2);
+  {
+    try {
+      ((mfem::OperatorHandle const *)arg1)->SWIGTEMPLATEDISAMBIGUATOR Get< mfem::SparseMatrix >(*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OperatorHandle_ResetSparseMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
+  mfem::SparseMatrix *arg2 = (mfem::SparseMatrix *) 0 ;
+  bool arg3 = (bool) true ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  bool val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"A",  (char *)"own_A",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:OperatorHandle_ResetSparseMatrix", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__OperatorHandle, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_ResetSparseMatrix" "', argument " "1"" of type '" "mfem::OperatorHandle *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OperatorHandle_ResetSparseMatrix" "', argument " "2"" of type '" "mfem::SparseMatrix *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::SparseMatrix * >(argp2);
+  if (obj2) {
+    ecode3 = SWIG_AsVal_bool(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "OperatorHandle_ResetSparseMatrix" "', argument " "3"" of type '" "bool""'");
+    } 
+    arg3 = static_cast< bool >(val3);
+  }
+  {
+    try {
+      (arg1)->SWIGTEMPLATEDISAMBIGUATOR Reset< mfem::SparseMatrix >(arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OperatorHandle_ConvertFromSparseMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
+  mfem::SparseMatrix *arg2 = (mfem::SparseMatrix *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"A",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:OperatorHandle_ConvertFromSparseMatrix", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__OperatorHandle, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_ConvertFromSparseMatrix" "', argument " "1"" of type '" "mfem::OperatorHandle *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OperatorHandle_ConvertFromSparseMatrix" "', argument " "2"" of type '" "mfem::SparseMatrix *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::SparseMatrix * >(argp2);
+  {
+    try {
+      (arg1)->SWIGTEMPLATEDISAMBIGUATOR ConvertFrom< mfem::SparseMatrix >(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OperatorHandle_AsHypreParMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
   void *argp1 = 0 ;
@@ -4565,7 +4860,7 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_As(PyObject *SWIGUNUSEDPARM(self), PyO
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OperatorHandle, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_As" "', argument " "1"" of type '" "mfem::OperatorHandle const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_AsHypreParMatrix" "', argument " "1"" of type '" "mfem::OperatorHandle const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
   {
@@ -4588,7 +4883,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_OperatorHandle_Is(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_OperatorHandle_IsHypreParMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
   void *argp1 = 0 ;
@@ -4600,7 +4895,7 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_Is(PyObject *SWIGUNUSEDPARM(self), PyO
   swig_obj[0] = args;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OperatorHandle, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_Is" "', argument " "1"" of type '" "mfem::OperatorHandle const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_IsHypreParMatrix" "', argument " "1"" of type '" "mfem::OperatorHandle const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
   {
@@ -4623,7 +4918,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_OperatorHandle_Get(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_OperatorHandle_GetHypreParMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
   mfem::HypreParMatrix **arg2 = 0 ;
@@ -4637,18 +4932,18 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_Get(PyObject *SWIGUNUSEDPARM(self), Py
     (char *)"self",  (char *)"A",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:OperatorHandle_Get", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:OperatorHandle_GetHypreParMatrix", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__OperatorHandle, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_Get" "', argument " "1"" of type '" "mfem::OperatorHandle const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_GetHypreParMatrix" "', argument " "1"" of type '" "mfem::OperatorHandle const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_p_mfem__HypreParMatrix,  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OperatorHandle_Get" "', argument " "2"" of type '" "mfem::HypreParMatrix *&""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OperatorHandle_GetHypreParMatrix" "', argument " "2"" of type '" "mfem::HypreParMatrix *&""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OperatorHandle_Get" "', argument " "2"" of type '" "mfem::HypreParMatrix *&""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OperatorHandle_GetHypreParMatrix" "', argument " "2"" of type '" "mfem::HypreParMatrix *&""'"); 
   }
   arg2 = reinterpret_cast< mfem::HypreParMatrix ** >(argp2);
   {
@@ -4671,7 +4966,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_OperatorHandle_Reset(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_OperatorHandle_ResetHypreParMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
   mfem::HypreParMatrix *arg2 = (mfem::HypreParMatrix *) 0 ;
@@ -4689,21 +4984,21 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_Reset(PyObject *SWIGUNUSEDPARM(self), 
     (char *)"self",  (char *)"A",  (char *)"own_A",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:OperatorHandle_Reset", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:OperatorHandle_ResetHypreParMatrix", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__OperatorHandle, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_Reset" "', argument " "1"" of type '" "mfem::OperatorHandle *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_ResetHypreParMatrix" "', argument " "1"" of type '" "mfem::OperatorHandle *""'"); 
   }
   arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OperatorHandle_Reset" "', argument " "2"" of type '" "mfem::HypreParMatrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OperatorHandle_ResetHypreParMatrix" "', argument " "2"" of type '" "mfem::HypreParMatrix *""'"); 
   }
   arg2 = reinterpret_cast< mfem::HypreParMatrix * >(argp2);
   if (obj2) {
     ecode3 = SWIG_AsVal_bool(obj2, &val3);
     if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "OperatorHandle_Reset" "', argument " "3"" of type '" "bool""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "OperatorHandle_ResetHypreParMatrix" "', argument " "3"" of type '" "bool""'");
     } 
     arg3 = static_cast< bool >(val3);
   }
@@ -4727,7 +5022,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_OperatorHandle_ConvertFrom__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_OperatorHandle_ConvertFromHypreParMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
   mfem::HypreParMatrix *arg2 = (mfem::HypreParMatrix *) 0 ;
@@ -4735,16 +5030,21 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_ConvertFrom__SWIG_2(PyObject *SWIGUNUS
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"A",  NULL 
+  };
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OperatorHandle, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:OperatorHandle_ConvertFromHypreParMatrix", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__OperatorHandle, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_ConvertFrom" "', argument " "1"" of type '" "mfem::OperatorHandle *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_ConvertFromHypreParMatrix" "', argument " "1"" of type '" "mfem::OperatorHandle *""'"); 
   }
   arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OperatorHandle_ConvertFrom" "', argument " "2"" of type '" "mfem::HypreParMatrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OperatorHandle_ConvertFromHypreParMatrix" "', argument " "2"" of type '" "mfem::HypreParMatrix *""'"); 
   }
   arg2 = reinterpret_cast< mfem::HypreParMatrix * >(argp2);
   {
@@ -4764,52 +5064,6 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_ConvertFrom__SWIG_2(PyObject *SWIGUNUS
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_OperatorHandle_ConvertFrom(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "OperatorHandle_ConvertFrom", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__OperatorHandle, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__OperatorHandle, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_OperatorHandle_ConvertFrom__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__OperatorHandle, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__HypreParMatrix, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_OperatorHandle_ConvertFrom__SWIG_2(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'OperatorHandle_ConvertFrom'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::OperatorHandle::ConvertFrom(mfem::OperatorHandle &)\n"
-    "    mfem::OperatorHandle::ConvertFrom< mfem::HypreParMatrix >(mfem::HypreParMatrix *)\n");
-  return 0;
 }
 
 
@@ -5268,6 +5522,54 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_OperatorHandle_AssembleDiagonal(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"diag",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:OperatorHandle_AssembleDiagonal", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__OperatorHandle, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_AssembleDiagonal" "', argument " "1"" of type '" "mfem::OperatorHandle const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OperatorHandle_AssembleDiagonal" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OperatorHandle_AssembleDiagonal" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    try {
+      (*arg1)->AssembleDiagonal(*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_OperatorHandle_GetProlongation(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
@@ -5356,6 +5658,41 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_GetOutputProlongation(PyObject *SWIGUN
   {
     try {
       result = (mfem::Operator *)(*arg1)->GetOutputProlongation(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OperatorHandle_GetOutputRestrictionTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OperatorHandle *arg1 = (mfem::OperatorHandle *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Operator *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OperatorHandle, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_GetOutputRestrictionTranspose" "', argument " "1"" of type '" "mfem::OperatorHandle const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
+  {
+    try {
+      result = (mfem::Operator *)(*arg1)->GetOutputRestrictionTranspose(); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -5949,6 +6286,14 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab(PyObject *SWIGUNUSEDPARM(s
         }
         string_io2=obj1;
         stream2 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(obj1, "precision")){
+          PyObject *attr = PyObject_GetAttrString(obj1, "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream2->precision(prec);
+        
       } else {
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj1, "utf-8", "~E~");	
@@ -6112,28 +6457,34 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_OperatorHandle", _wrap_delete_OperatorHandle, METH_O, "delete_OperatorHandle(OperatorHandle self)"},
 	 { "OperatorHandle_Ptr", _wrap_OperatorHandle_Ptr, METH_O, "OperatorHandle_Ptr(OperatorHandle self) -> Operator"},
 	 { "OperatorHandle___deref__", _wrap_OperatorHandle___deref__, METH_O, "OperatorHandle___deref__(OperatorHandle self) -> Operator"},
-	 { "OperatorHandle___ref__", _wrap_OperatorHandle___ref__, METH_O, "OperatorHandle___ref__(OperatorHandle self) -> Operator"},
+	 { "OperatorHandle___ref__", _wrap_OperatorHandle___ref__, METH_VARARGS, "\n"
+		"OperatorHandle___ref__(OperatorHandle self) -> Operator\n"
+		"OperatorHandle___ref__(OperatorHandle self) -> Operator\n"
+		""},
 	 { "OperatorHandle_Type", _wrap_OperatorHandle_Type, METH_O, "OperatorHandle_Type(OperatorHandle self) -> mfem::Operator::Type"},
 	 { "OperatorHandle_OwnsOperator", _wrap_OperatorHandle_OwnsOperator, METH_O, "OperatorHandle_OwnsOperator(OperatorHandle self) -> bool"},
 	 { "OperatorHandle_SetOperatorOwner", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_SetOperatorOwner, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_SetOperatorOwner(OperatorHandle self, bool own=True)"},
 	 { "OperatorHandle_Clear", _wrap_OperatorHandle_Clear, METH_O, "OperatorHandle_Clear(OperatorHandle self)"},
 	 { "OperatorHandle_SetType", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_SetType, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_SetType(OperatorHandle self, mfem::Operator::Type tid)"},
-	 { "OperatorHandle_MakeSquareBlockDiag", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_MakeSquareBlockDiag, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_MakeSquareBlockDiag(OperatorHandle self, MPI_Comm comm, HYPRE_Int glob_size, HYPRE_Int * row_starts, SparseMatrix diag)"},
-	 { "OperatorHandle_MakeRectangularBlockDiag", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_MakeRectangularBlockDiag, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_MakeRectangularBlockDiag(OperatorHandle self, MPI_Comm comm, HYPRE_Int glob_num_rows, HYPRE_Int glob_num_cols, HYPRE_Int * row_starts, HYPRE_Int * col_starts, SparseMatrix diag)"},
+	 { "OperatorHandle_MakeSquareBlockDiag", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_MakeSquareBlockDiag, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_MakeSquareBlockDiag(OperatorHandle self, MPI_Comm comm, HYPRE_BigInt glob_size, HYPRE_BigInt * row_starts, SparseMatrix diag)"},
+	 { "OperatorHandle_MakeRectangularBlockDiag", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_MakeRectangularBlockDiag, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_MakeRectangularBlockDiag(OperatorHandle self, MPI_Comm comm, HYPRE_BigInt glob_num_rows, HYPRE_BigInt glob_num_cols, HYPRE_BigInt * row_starts, HYPRE_BigInt * col_starts, SparseMatrix diag)"},
 	 { "OperatorHandle_MakePtAP", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_MakePtAP, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_MakePtAP(OperatorHandle self, OperatorHandle A, OperatorHandle P)"},
 	 { "OperatorHandle_MakeRAP", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_MakeRAP, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_MakeRAP(OperatorHandle self, OperatorHandle Rt, OperatorHandle A, OperatorHandle P)"},
+	 { "OperatorHandle_ConvertFrom", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_ConvertFrom, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_ConvertFrom(OperatorHandle self, OperatorHandle A)"},
 	 { "OperatorHandle_EliminateRowsCols", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_EliminateRowsCols, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_EliminateRowsCols(OperatorHandle self, OperatorHandle A, intArray ess_dof_list)"},
 	 { "OperatorHandle_EliminateRows", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_EliminateRows, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_EliminateRows(OperatorHandle self, intArray ess_dof_list)"},
 	 { "OperatorHandle_EliminateCols", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_EliminateCols, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_EliminateCols(OperatorHandle self, intArray ess_dof_list)"},
 	 { "OperatorHandle_EliminateBC", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_EliminateBC, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_EliminateBC(OperatorHandle self, OperatorHandle A_e, intArray ess_dof_list, Vector X, Vector B)"},
-	 { "OperatorHandle_As", _wrap_OperatorHandle_As, METH_O, "OperatorHandle_As(OperatorHandle self) -> HypreParMatrix"},
-	 { "OperatorHandle_Is", _wrap_OperatorHandle_Is, METH_O, "OperatorHandle_Is(OperatorHandle self) -> HypreParMatrix"},
-	 { "OperatorHandle_Get", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_Get, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_Get(OperatorHandle self, mfem::HypreParMatrix *& A)"},
-	 { "OperatorHandle_Reset", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_Reset, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_Reset(OperatorHandle self, HypreParMatrix A, bool own_A=True)"},
-	 { "OperatorHandle_ConvertFrom", _wrap_OperatorHandle_ConvertFrom, METH_VARARGS, "\n"
-		"OperatorHandle_ConvertFrom(OperatorHandle self, OperatorHandle A)\n"
-		"OperatorHandle_ConvertFrom(OperatorHandle self, HypreParMatrix A)\n"
-		""},
+	 { "OperatorHandle_AsSparseMatrix", _wrap_OperatorHandle_AsSparseMatrix, METH_O, "OperatorHandle_AsSparseMatrix(OperatorHandle self) -> SparseMatrix"},
+	 { "OperatorHandle_IsSparseMatrix", _wrap_OperatorHandle_IsSparseMatrix, METH_O, "OperatorHandle_IsSparseMatrix(OperatorHandle self) -> SparseMatrix"},
+	 { "OperatorHandle_GetSparseMatrix", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_GetSparseMatrix, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_GetSparseMatrix(OperatorHandle self, mfem::SparseMatrix *& A)"},
+	 { "OperatorHandle_ResetSparseMatrix", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_ResetSparseMatrix, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_ResetSparseMatrix(OperatorHandle self, SparseMatrix A, bool own_A=True)"},
+	 { "OperatorHandle_ConvertFromSparseMatrix", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_ConvertFromSparseMatrix, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_ConvertFromSparseMatrix(OperatorHandle self, SparseMatrix A)"},
+	 { "OperatorHandle_AsHypreParMatrix", _wrap_OperatorHandle_AsHypreParMatrix, METH_O, "OperatorHandle_AsHypreParMatrix(OperatorHandle self) -> HypreParMatrix"},
+	 { "OperatorHandle_IsHypreParMatrix", _wrap_OperatorHandle_IsHypreParMatrix, METH_O, "OperatorHandle_IsHypreParMatrix(OperatorHandle self) -> HypreParMatrix"},
+	 { "OperatorHandle_GetHypreParMatrix", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_GetHypreParMatrix, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_GetHypreParMatrix(OperatorHandle self, mfem::HypreParMatrix *& A)"},
+	 { "OperatorHandle_ResetHypreParMatrix", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_ResetHypreParMatrix, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_ResetHypreParMatrix(OperatorHandle self, HypreParMatrix A, bool own_A=True)"},
+	 { "OperatorHandle_ConvertFromHypreParMatrix", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_ConvertFromHypreParMatrix, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_ConvertFromHypreParMatrix(OperatorHandle self, HypreParMatrix A)"},
 	 { "OperatorHandle_InitTVectors", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_InitTVectors, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_InitTVectors(OperatorHandle self, Operator Po, Operator Ri, Operator Pi, Vector x, Vector b, Vector X, Vector B)"},
 	 { "OperatorHandle_Height", _wrap_OperatorHandle_Height, METH_O, "OperatorHandle_Height(OperatorHandle self) -> int"},
 	 { "OperatorHandle_NumRows", _wrap_OperatorHandle_NumRows, METH_O, "OperatorHandle_NumRows(OperatorHandle self) -> int"},
@@ -6143,9 +6494,11 @@ static PyMethodDef SwigMethods[] = {
 	 { "OperatorHandle_Mult", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_Mult, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_Mult(OperatorHandle self, Vector x, Vector y)"},
 	 { "OperatorHandle_MultTranspose", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_MultTranspose, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_MultTranspose(OperatorHandle self, Vector x, Vector y)"},
 	 { "OperatorHandle_GetGradient", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_GetGradient, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_GetGradient(OperatorHandle self, Vector x) -> Operator"},
+	 { "OperatorHandle_AssembleDiagonal", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_AssembleDiagonal, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_AssembleDiagonal(OperatorHandle self, Vector diag)"},
 	 { "OperatorHandle_GetProlongation", _wrap_OperatorHandle_GetProlongation, METH_O, "OperatorHandle_GetProlongation(OperatorHandle self) -> Operator"},
 	 { "OperatorHandle_GetRestriction", _wrap_OperatorHandle_GetRestriction, METH_O, "OperatorHandle_GetRestriction(OperatorHandle self) -> Operator"},
 	 { "OperatorHandle_GetOutputProlongation", _wrap_OperatorHandle_GetOutputProlongation, METH_O, "OperatorHandle_GetOutputProlongation(OperatorHandle self) -> Operator"},
+	 { "OperatorHandle_GetOutputRestrictionTranspose", _wrap_OperatorHandle_GetOutputRestrictionTranspose, METH_O, "OperatorHandle_GetOutputRestrictionTranspose(OperatorHandle self) -> Operator"},
 	 { "OperatorHandle_GetOutputRestriction", _wrap_OperatorHandle_GetOutputRestriction, METH_O, "OperatorHandle_GetOutputRestriction(OperatorHandle self) -> Operator"},
 	 { "OperatorHandle_FormLinearSystem", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_FormLinearSystem, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_FormLinearSystem(OperatorHandle self, intArray ess_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B, int copy_interior=0)"},
 	 { "OperatorHandle_FormRectangularLinearSystem", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_FormRectangularLinearSystem, METH_VARARGS|METH_KEYWORDS, "OperatorHandle_FormRectangularLinearSystem(OperatorHandle self, intArray trial_tdof_list, intArray test_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B)"},
@@ -6170,28 +6523,34 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_OperatorHandle", _wrap_delete_OperatorHandle, METH_O, "delete_OperatorHandle(OperatorHandle self)"},
 	 { "OperatorHandle_Ptr", _wrap_OperatorHandle_Ptr, METH_O, "Ptr(OperatorHandle self) -> Operator"},
 	 { "OperatorHandle___deref__", _wrap_OperatorHandle___deref__, METH_O, "__deref__(OperatorHandle self) -> Operator"},
-	 { "OperatorHandle___ref__", _wrap_OperatorHandle___ref__, METH_O, "__ref__(OperatorHandle self) -> Operator"},
+	 { "OperatorHandle___ref__", _wrap_OperatorHandle___ref__, METH_VARARGS, "\n"
+		"__ref__(OperatorHandle self) -> Operator\n"
+		"__ref__(OperatorHandle self) -> Operator\n"
+		""},
 	 { "OperatorHandle_Type", _wrap_OperatorHandle_Type, METH_O, "Type(OperatorHandle self) -> mfem::Operator::Type"},
 	 { "OperatorHandle_OwnsOperator", _wrap_OperatorHandle_OwnsOperator, METH_O, "OwnsOperator(OperatorHandle self) -> bool"},
 	 { "OperatorHandle_SetOperatorOwner", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_SetOperatorOwner, METH_VARARGS|METH_KEYWORDS, "SetOperatorOwner(OperatorHandle self, bool own=True)"},
 	 { "OperatorHandle_Clear", _wrap_OperatorHandle_Clear, METH_O, "Clear(OperatorHandle self)"},
 	 { "OperatorHandle_SetType", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_SetType, METH_VARARGS|METH_KEYWORDS, "SetType(OperatorHandle self, mfem::Operator::Type tid)"},
-	 { "OperatorHandle_MakeSquareBlockDiag", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_MakeSquareBlockDiag, METH_VARARGS|METH_KEYWORDS, "MakeSquareBlockDiag(OperatorHandle self, MPI_Comm comm, HYPRE_Int glob_size, HYPRE_Int * row_starts, SparseMatrix diag)"},
-	 { "OperatorHandle_MakeRectangularBlockDiag", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_MakeRectangularBlockDiag, METH_VARARGS|METH_KEYWORDS, "MakeRectangularBlockDiag(OperatorHandle self, MPI_Comm comm, HYPRE_Int glob_num_rows, HYPRE_Int glob_num_cols, HYPRE_Int * row_starts, HYPRE_Int * col_starts, SparseMatrix diag)"},
+	 { "OperatorHandle_MakeSquareBlockDiag", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_MakeSquareBlockDiag, METH_VARARGS|METH_KEYWORDS, "MakeSquareBlockDiag(OperatorHandle self, MPI_Comm comm, HYPRE_BigInt glob_size, HYPRE_BigInt * row_starts, SparseMatrix diag)"},
+	 { "OperatorHandle_MakeRectangularBlockDiag", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_MakeRectangularBlockDiag, METH_VARARGS|METH_KEYWORDS, "MakeRectangularBlockDiag(OperatorHandle self, MPI_Comm comm, HYPRE_BigInt glob_num_rows, HYPRE_BigInt glob_num_cols, HYPRE_BigInt * row_starts, HYPRE_BigInt * col_starts, SparseMatrix diag)"},
 	 { "OperatorHandle_MakePtAP", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_MakePtAP, METH_VARARGS|METH_KEYWORDS, "MakePtAP(OperatorHandle self, OperatorHandle A, OperatorHandle P)"},
 	 { "OperatorHandle_MakeRAP", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_MakeRAP, METH_VARARGS|METH_KEYWORDS, "MakeRAP(OperatorHandle self, OperatorHandle Rt, OperatorHandle A, OperatorHandle P)"},
+	 { "OperatorHandle_ConvertFrom", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_ConvertFrom, METH_VARARGS|METH_KEYWORDS, "ConvertFrom(OperatorHandle self, OperatorHandle A)"},
 	 { "OperatorHandle_EliminateRowsCols", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_EliminateRowsCols, METH_VARARGS|METH_KEYWORDS, "EliminateRowsCols(OperatorHandle self, OperatorHandle A, intArray ess_dof_list)"},
 	 { "OperatorHandle_EliminateRows", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_EliminateRows, METH_VARARGS|METH_KEYWORDS, "EliminateRows(OperatorHandle self, intArray ess_dof_list)"},
 	 { "OperatorHandle_EliminateCols", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_EliminateCols, METH_VARARGS|METH_KEYWORDS, "EliminateCols(OperatorHandle self, intArray ess_dof_list)"},
 	 { "OperatorHandle_EliminateBC", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_EliminateBC, METH_VARARGS|METH_KEYWORDS, "EliminateBC(OperatorHandle self, OperatorHandle A_e, intArray ess_dof_list, Vector X, Vector B)"},
-	 { "OperatorHandle_As", _wrap_OperatorHandle_As, METH_O, "As(OperatorHandle self) -> HypreParMatrix"},
-	 { "OperatorHandle_Is", _wrap_OperatorHandle_Is, METH_O, "Is(OperatorHandle self) -> HypreParMatrix"},
-	 { "OperatorHandle_Get", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_Get, METH_VARARGS|METH_KEYWORDS, "Get(OperatorHandle self, mfem::HypreParMatrix *& A)"},
-	 { "OperatorHandle_Reset", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_Reset, METH_VARARGS|METH_KEYWORDS, "Reset(OperatorHandle self, HypreParMatrix A, bool own_A=True)"},
-	 { "OperatorHandle_ConvertFrom", _wrap_OperatorHandle_ConvertFrom, METH_VARARGS, "\n"
-		"ConvertFrom(OperatorHandle self, OperatorHandle A)\n"
-		"ConvertFrom(OperatorHandle self, HypreParMatrix A)\n"
-		""},
+	 { "OperatorHandle_AsSparseMatrix", _wrap_OperatorHandle_AsSparseMatrix, METH_O, "AsSparseMatrix(OperatorHandle self) -> SparseMatrix"},
+	 { "OperatorHandle_IsSparseMatrix", _wrap_OperatorHandle_IsSparseMatrix, METH_O, "IsSparseMatrix(OperatorHandle self) -> SparseMatrix"},
+	 { "OperatorHandle_GetSparseMatrix", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_GetSparseMatrix, METH_VARARGS|METH_KEYWORDS, "GetSparseMatrix(OperatorHandle self, mfem::SparseMatrix *& A)"},
+	 { "OperatorHandle_ResetSparseMatrix", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_ResetSparseMatrix, METH_VARARGS|METH_KEYWORDS, "ResetSparseMatrix(OperatorHandle self, SparseMatrix A, bool own_A=True)"},
+	 { "OperatorHandle_ConvertFromSparseMatrix", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_ConvertFromSparseMatrix, METH_VARARGS|METH_KEYWORDS, "ConvertFromSparseMatrix(OperatorHandle self, SparseMatrix A)"},
+	 { "OperatorHandle_AsHypreParMatrix", _wrap_OperatorHandle_AsHypreParMatrix, METH_O, "AsHypreParMatrix(OperatorHandle self) -> HypreParMatrix"},
+	 { "OperatorHandle_IsHypreParMatrix", _wrap_OperatorHandle_IsHypreParMatrix, METH_O, "IsHypreParMatrix(OperatorHandle self) -> HypreParMatrix"},
+	 { "OperatorHandle_GetHypreParMatrix", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_GetHypreParMatrix, METH_VARARGS|METH_KEYWORDS, "GetHypreParMatrix(OperatorHandle self, mfem::HypreParMatrix *& A)"},
+	 { "OperatorHandle_ResetHypreParMatrix", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_ResetHypreParMatrix, METH_VARARGS|METH_KEYWORDS, "ResetHypreParMatrix(OperatorHandle self, HypreParMatrix A, bool own_A=True)"},
+	 { "OperatorHandle_ConvertFromHypreParMatrix", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_ConvertFromHypreParMatrix, METH_VARARGS|METH_KEYWORDS, "ConvertFromHypreParMatrix(OperatorHandle self, HypreParMatrix A)"},
 	 { "OperatorHandle_InitTVectors", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_InitTVectors, METH_VARARGS|METH_KEYWORDS, "InitTVectors(OperatorHandle self, Operator Po, Operator Ri, Operator Pi, Vector x, Vector b, Vector X, Vector B)"},
 	 { "OperatorHandle_Height", _wrap_OperatorHandle_Height, METH_O, "Height(OperatorHandle self) -> int"},
 	 { "OperatorHandle_NumRows", _wrap_OperatorHandle_NumRows, METH_O, "NumRows(OperatorHandle self) -> int"},
@@ -6201,9 +6560,11 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "OperatorHandle_Mult", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(OperatorHandle self, Vector x, Vector y)"},
 	 { "OperatorHandle_MultTranspose", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(OperatorHandle self, Vector x, Vector y)"},
 	 { "OperatorHandle_GetGradient", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_GetGradient, METH_VARARGS|METH_KEYWORDS, "GetGradient(OperatorHandle self, Vector x) -> Operator"},
+	 { "OperatorHandle_AssembleDiagonal", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_AssembleDiagonal, METH_VARARGS|METH_KEYWORDS, "AssembleDiagonal(OperatorHandle self, Vector diag)"},
 	 { "OperatorHandle_GetProlongation", _wrap_OperatorHandle_GetProlongation, METH_O, "GetProlongation(OperatorHandle self) -> Operator"},
 	 { "OperatorHandle_GetRestriction", _wrap_OperatorHandle_GetRestriction, METH_O, "GetRestriction(OperatorHandle self) -> Operator"},
 	 { "OperatorHandle_GetOutputProlongation", _wrap_OperatorHandle_GetOutputProlongation, METH_O, "GetOutputProlongation(OperatorHandle self) -> Operator"},
+	 { "OperatorHandle_GetOutputRestrictionTranspose", _wrap_OperatorHandle_GetOutputRestrictionTranspose, METH_O, "GetOutputRestrictionTranspose(OperatorHandle self) -> Operator"},
 	 { "OperatorHandle_GetOutputRestriction", _wrap_OperatorHandle_GetOutputRestriction, METH_O, "GetOutputRestriction(OperatorHandle self) -> Operator"},
 	 { "OperatorHandle_FormLinearSystem", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_FormLinearSystem, METH_VARARGS|METH_KEYWORDS, "FormLinearSystem(OperatorHandle self, intArray ess_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B, int copy_interior=0)"},
 	 { "OperatorHandle_FormRectangularLinearSystem", (PyCFunction)(void(*)(void))_wrap_OperatorHandle_FormRectangularLinearSystem, METH_VARARGS|METH_KEYWORDS, "FormRectangularLinearSystem(OperatorHandle self, intArray trial_tdof_list, intArray test_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B)"},
@@ -6326,6 +6687,9 @@ static void *_p_mfem__HypreSolverTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPAR
 static void *_p_mfem__HypreSmootherTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::Solver *) ((mfem::HypreSmoother *) x));
 }
+static void *_p_mfem__HypreTriSolveTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreTriSolve *) x));
+}
 static void *_p_p_mfem__HyprePCGTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HyprePCG **) x));
 }
@@ -6428,10 +6792,16 @@ static void *_p_p_mfem__HypreSolverTo_p_p_mfem__Operator(void *x, int *SWIGUNUSE
 static void *_p_p_mfem__HypreSmootherTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator **) (mfem::Solver *) ((mfem::HypreSmoother **) x));
 }
+static void *_p_p_mfem__HypreTriSolveTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreTriSolve **) x));
+}
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p__HYPRE_ExecutionPolicy = {"_p__HYPRE_ExecutionPolicy", "enum _HYPRE_ExecutionPolicy *|HYPRE_ExecutionPolicy *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p__HYPRE_MemoryLocation = {"_p__HYPRE_MemoryLocation", "enum _HYPRE_MemoryLocation *|HYPRE_MemoryLocation *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_double = {"_p_double", "HYPRE_Real *|HYPRE_Complex *|double *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *|HYPRE_BigInt *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__HypreParMatrix = {"_p_mfem__HypreParMatrix", "mfem::HypreParMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Operator = {"_p_mfem__Operator", "mfem::Operator *", 0, 0, (void*)0, 0};
@@ -6467,6 +6837,7 @@ static swig_type_info _swigt__p_mfem__HypreAMS = {"_p_mfem__HypreAMS", 0, 0, 0, 
 static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__HypreSolver = {"_p_mfem__HypreSolver", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__HypreSmoother = {"_p_mfem__HypreSmoother", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__HypreTriSolve = {"_p_mfem__HypreTriSolve", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__OperatorHandle = {"_p_mfem__OperatorHandle", "mfem::OperatorPtr *|mfem::OperatorHandle *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__SparseMatrix = {"_p_mfem__SparseMatrix", "mfem::SparseMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
@@ -6475,7 +6846,6 @@ static swig_type_info _swigt__p_p_mfem__HypreParMatrix = {"_p_p_mfem__HypreParMa
 static swig_type_info _swigt__p_p_mfem__Operator = {"_p_p_mfem__Operator", "mfem::Operator **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_mfem__HyprePCG = {"_p_p_mfem__HyprePCG", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__Matrix = {"_p_p_mfem__Matrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__SparseMatrix = {"_p_p_mfem__SparseMatrix", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__DenseMatrix = {"_p_p_mfem__DenseMatrix", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__AbstractSparseMatrix = {"_p_p_mfem__AbstractSparseMatrix", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__HypreDiagScale = {"_p_p_mfem__HypreDiagScale", 0, 0, 0, 0, 0};
@@ -6506,11 +6876,16 @@ static swig_type_info _swigt__p_p_mfem__HypreAMS = {"_p_p_mfem__HypreAMS", 0, 0,
 static swig_type_info _swigt__p_p_mfem__Solver = {"_p_p_mfem__Solver", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__HypreSolver = {"_p_p_mfem__HypreSolver", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__HypreSmoother = {"_p_p_mfem__HypreSmoother", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__HypreTriSolve = {"_p_p_mfem__HypreTriSolve", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__SparseMatrix = {"_p_p_mfem__SparseMatrix", "mfem::SparseMatrix **", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_MPI_Comm,
   &_swigt__p_PyMFEM__wFILE,
+  &_swigt__p__HYPRE_ExecutionPolicy,
+  &_swigt__p__HYPRE_MemoryLocation,
   &_swigt__p_char,
+  &_swigt__p_double,
   &_swigt__p_int,
   &_swigt__p_mfem__AbstractSparseMatrix,
   &_swigt__p_mfem__ArrayT_int_t,
@@ -6532,6 +6907,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__HypreParaSails,
   &_swigt__p_mfem__HypreSmoother,
   &_swigt__p_mfem__HypreSolver,
+  &_swigt__p_mfem__HypreTriSolve,
   &_swigt__p_mfem__IdentityOperator,
   &_swigt__p_mfem__Matrix,
   &_swigt__p_mfem__MatrixInverse,
@@ -6569,6 +6945,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_p_mfem__HypreParaSails,
   &_swigt__p_p_mfem__HypreSmoother,
   &_swigt__p_p_mfem__HypreSolver,
+  &_swigt__p_p_mfem__HypreTriSolve,
   &_swigt__p_p_mfem__IdentityOperator,
   &_swigt__p_p_mfem__Matrix,
   &_swigt__p_p_mfem__MatrixInverse,
@@ -6590,7 +6967,10 @@ static swig_type_info *swig_type_initial[] = {
 
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p__HYPRE_ExecutionPolicy[] = {  {&_swigt__p__HYPRE_ExecutionPolicy, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p__HYPRE_MemoryLocation[] = {  {&_swigt__p__HYPRE_MemoryLocation, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HypreParMatrix[] = {  {&_swigt__p_mfem__HypreParMatrix, 0, 0, 0},{0, 0, 0, 0}};
@@ -6626,7 +7006,8 @@ static swig_cast_info _swigc__p_mfem__HypreAMS[] = {{&_swigt__p_mfem__HypreAMS, 
 static swig_cast_info _swigc__p_mfem__Solver[] = {{&_swigt__p_mfem__Solver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HypreSolver[] = {{&_swigt__p_mfem__HypreSolver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HypreSmoother[] = {{&_swigt__p_mfem__HypreSmoother, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__HyprePCG, _p_mfem__HyprePCGTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreDiagScale, _p_mfem__HypreDiagScaleTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreFGMRES, _p_mfem__HypreFGMRESTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreADS, _p_mfem__HypreADSTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreEuclid, _p_mfem__HypreEuclidTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreBoomerAMG, _p_mfem__HypreBoomerAMGTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentAdjointOperator, _p_mfem__TimeDependentAdjointOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ScaledOperator, _p_mfem__ScaledOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__RectangularConstrainedOperator, _p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreILU, _p_mfem__HypreILUTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreGMRES, _p_mfem__HypreGMRESTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreParaSails, _p_mfem__HypreParaSailsTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreParMatrix, _p_mfem__HypreParMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreIdentity, _p_mfem__HypreIdentityTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreAMS, _p_mfem__HypreAMSTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreSolver, _p_mfem__HypreSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreSmoother, _p_mfem__HypreSmootherTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__HypreTriSolve[] = {{&_swigt__p_mfem__HypreTriSolve, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__HyprePCG, _p_mfem__HyprePCGTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreDiagScale, _p_mfem__HypreDiagScaleTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreFGMRES, _p_mfem__HypreFGMRESTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreADS, _p_mfem__HypreADSTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreEuclid, _p_mfem__HypreEuclidTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreBoomerAMG, _p_mfem__HypreBoomerAMGTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentAdjointOperator, _p_mfem__TimeDependentAdjointOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ScaledOperator, _p_mfem__ScaledOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__RectangularConstrainedOperator, _p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreILU, _p_mfem__HypreILUTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreGMRES, _p_mfem__HypreGMRESTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreParaSails, _p_mfem__HypreParaSailsTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreParMatrix, _p_mfem__HypreParMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreIdentity, _p_mfem__HypreIdentityTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreAMS, _p_mfem__HypreAMSTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreSolver, _p_mfem__HypreSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreSmoother, _p_mfem__HypreSmootherTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreTriSolve, _p_mfem__HypreTriSolveTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__OperatorHandle[] = {  {&_swigt__p_mfem__OperatorHandle, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SparseMatrix[] = {  {&_swigt__p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HypreParVector[] = {{&_swigt__p_mfem__HypreParVector, 0, 0, 0},{0, 0, 0, 0}};
@@ -6634,7 +7015,6 @@ static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__HypreParVe
 static swig_cast_info _swigc__p_p_mfem__HypreParMatrix[] = {  {&_swigt__p_p_mfem__HypreParMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__HyprePCG[] = {{&_swigt__p_p_mfem__HyprePCG, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__Matrix[] = {{&_swigt__p_p_mfem__Matrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__SparseMatrix[] = {{&_swigt__p_p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__DenseMatrix[] = {{&_swigt__p_p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__AbstractSparseMatrix[] = {{&_swigt__p_p_mfem__AbstractSparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__HypreDiagScale[] = {{&_swigt__p_p_mfem__HypreDiagScale, 0, 0, 0},{0, 0, 0, 0}};
@@ -6665,12 +7045,17 @@ static swig_cast_info _swigc__p_p_mfem__HypreAMS[] = {{&_swigt__p_p_mfem__HypreA
 static swig_cast_info _swigc__p_p_mfem__Solver[] = {{&_swigt__p_p_mfem__Solver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__HypreSolver[] = {{&_swigt__p_p_mfem__HypreSolver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__HypreSmoother[] = {{&_swigt__p_p_mfem__HypreSmoother, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__Operator[] = {  {&_swigt__p_p_mfem__HyprePCG, _p_p_mfem__HyprePCGTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Matrix, _p_p_mfem__MatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__SparseMatrix, _p_p_mfem__SparseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__DenseMatrix, _p_p_mfem__DenseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__AbstractSparseMatrix, _p_p_mfem__AbstractSparseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreDiagScale, _p_p_mfem__HypreDiagScaleTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreFGMRES, _p_p_mfem__HypreFGMRESTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreADS, _p_p_mfem__HypreADSTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreEuclid, _p_p_mfem__HypreEuclidTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreBoomerAMG, _p_p_mfem__HypreBoomerAMGTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__IdentityOperator, _p_p_mfem__IdentityOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__SecondOrderTimeDependentOperator, _p_p_mfem__SecondOrderTimeDependentOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TimeDependentAdjointOperator, _p_p_mfem__TimeDependentAdjointOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TimeDependentOperator, _p_p_mfem__TimeDependentOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ScaledOperator, _p_p_mfem__ScaledOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TransposeOperator, _p_p_mfem__TransposeOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ProductOperator, _p_p_mfem__ProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__RAPOperator, _p_p_mfem__RAPOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Operator, 0, 0, 0},  {&_swigt__p_p_mfem__RectangularConstrainedOperator, _p_p_mfem__RectangularConstrainedOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ConstrainedOperator, _p_p_mfem__ConstrainedOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TripleProductOperator, _p_p_mfem__TripleProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreILU, _p_p_mfem__HypreILUTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreGMRES, _p_p_mfem__HypreGMRESTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreParaSails, _p_p_mfem__HypreParaSailsTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreParMatrix, _p_p_mfem__HypreParMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreIdentity, _p_p_mfem__HypreIdentityTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__DenseMatrixInverse, _p_p_mfem__DenseMatrixInverseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__MatrixInverse, _p_p_mfem__MatrixInverseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__PyOperatorBase, _p_p_mfem__PyOperatorBaseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__PyTimeDependentOperatorBase, _p_p_mfem__PyTimeDependentOperatorBaseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreAMS, _p_p_mfem__HypreAMSTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Solver, _p_p_mfem__SolverTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreSolver, _p_p_mfem__HypreSolverTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreSmoother, _p_p_mfem__HypreSmootherTo_p_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__HypreTriSolve[] = {{&_swigt__p_p_mfem__HypreTriSolve, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__Operator[] = {  {&_swigt__p_p_mfem__HyprePCG, _p_p_mfem__HyprePCGTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Matrix, _p_p_mfem__MatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__SparseMatrix, _p_p_mfem__SparseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__DenseMatrix, _p_p_mfem__DenseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__AbstractSparseMatrix, _p_p_mfem__AbstractSparseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreDiagScale, _p_p_mfem__HypreDiagScaleTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreFGMRES, _p_p_mfem__HypreFGMRESTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreADS, _p_p_mfem__HypreADSTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreEuclid, _p_p_mfem__HypreEuclidTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreBoomerAMG, _p_p_mfem__HypreBoomerAMGTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__IdentityOperator, _p_p_mfem__IdentityOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__SecondOrderTimeDependentOperator, _p_p_mfem__SecondOrderTimeDependentOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TimeDependentAdjointOperator, _p_p_mfem__TimeDependentAdjointOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TimeDependentOperator, _p_p_mfem__TimeDependentOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ScaledOperator, _p_p_mfem__ScaledOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TransposeOperator, _p_p_mfem__TransposeOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ProductOperator, _p_p_mfem__ProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__RAPOperator, _p_p_mfem__RAPOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Operator, 0, 0, 0},  {&_swigt__p_p_mfem__RectangularConstrainedOperator, _p_p_mfem__RectangularConstrainedOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ConstrainedOperator, _p_p_mfem__ConstrainedOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TripleProductOperator, _p_p_mfem__TripleProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreILU, _p_p_mfem__HypreILUTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreGMRES, _p_p_mfem__HypreGMRESTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreParaSails, _p_p_mfem__HypreParaSailsTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreParMatrix, _p_p_mfem__HypreParMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreIdentity, _p_p_mfem__HypreIdentityTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__DenseMatrixInverse, _p_p_mfem__DenseMatrixInverseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__MatrixInverse, _p_p_mfem__MatrixInverseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__PyOperatorBase, _p_p_mfem__PyOperatorBaseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__PyTimeDependentOperatorBase, _p_p_mfem__PyTimeDependentOperatorBaseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreAMS, _p_p_mfem__HypreAMSTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Solver, _p_p_mfem__SolverTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreSolver, _p_p_mfem__HypreSolverTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreSmoother, _p_p_mfem__HypreSmootherTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreTriSolve, _p_p_mfem__HypreTriSolveTo_p_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__SparseMatrix[] = {  {&_swigt__p_p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_MPI_Comm,
   _swigc__p_PyMFEM__wFILE,
+  _swigc__p__HYPRE_ExecutionPolicy,
+  _swigc__p__HYPRE_MemoryLocation,
   _swigc__p_char,
+  _swigc__p_double,
   _swigc__p_int,
   _swigc__p_mfem__AbstractSparseMatrix,
   _swigc__p_mfem__ArrayT_int_t,
@@ -6692,6 +7077,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__HypreParaSails,
   _swigc__p_mfem__HypreSmoother,
   _swigc__p_mfem__HypreSolver,
+  _swigc__p_mfem__HypreTriSolve,
   _swigc__p_mfem__IdentityOperator,
   _swigc__p_mfem__Matrix,
   _swigc__p_mfem__MatrixInverse,
@@ -6729,6 +7115,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_p_mfem__HypreParaSails,
   _swigc__p_p_mfem__HypreSmoother,
   _swigc__p_p_mfem__HypreSolver,
+  _swigc__p_p_mfem__HypreTriSolve,
   _swigc__p_p_mfem__IdentityOperator,
   _swigc__p_p_mfem__Matrix,
   _swigc__p_p_mfem__MatrixInverse,
@@ -7481,14 +7868,14 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40200)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.2.0"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40200)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40300)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.3.0"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40300)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40200)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40200)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40200)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40300)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40300)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40300)%100))));
   SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(22000)));
   
   if (import_mpi4py() < 0)

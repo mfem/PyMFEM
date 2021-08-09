@@ -2,6 +2,11 @@
 # 
 #  using numba JIT function for mfem::FunctionCoefficient
 #
+(1) Using NumberFunction object  ---
+(2) Using mfem.jit decorator
+
+--- (1) Using NumberFunction object  ---
+
 from numba import cfunc, carray
 
 from mfem.coefficient import (scalar_sig,
@@ -55,6 +60,19 @@ def m_func(ptx, t, out, sdim, vdim):
         for j in range(vdim):
             out_array[i, j] = i*m + j
 c = MatrixNumbaFunction(m_func, sdim, ndim, True).GenerateCoefficient()
+
+--- (2) mfem.jit decorator ---
+@mfem.jit.scalar()
+def c12(ptx):
+    return s_func0(ptx[0], ptx[1],  ptx[2])
+@mfem.jit.vector()
+def f_exact(x, out):
+    out[0] = (1 + kappa**2)*sin(kappa * x[1])
+    out[1] = (1 + kappa**2)*sin(kappa * x[2])
+    out[2] = (1 + kappa**2)*sin(kappa * x[0])
+
+Then, decorated function can be used as function coefficient
+x.ProjectCoefficient(f_exact)       
 
 */
 
@@ -114,24 +132,40 @@ class NumbaFunction : public NumbaFunctionBase {
     
     NumbaFunction(PyObject *input, int sdim, bool td):
        NumbaFunctionBase(input, sdim, td){}
-    
+
+    double call0(const mfem::Vector &x){
+      return ((double (*)(double *))address_)(x.GetData());
+    }
     double call(const mfem::Vector &x){
       return ((double (*)(double *, int))address_)(x.GetData(), sdim_);
+    }
+    double call0t(const mfem::Vector &x, double t){
+      return ((double (*)(double *, double))address_)(x.GetData(), t);
     }
     double callt(const mfem::Vector &x, double t){
       return ((double (*)(double *, double, int))address_)(x.GetData(), t, sdim_);
     }
 
     // FunctionCoefficient
-    mfem::FunctionCoefficient* GenerateCoefficient(){
+    mfem::FunctionCoefficient* GenerateCoefficient(int use_0=0){
       using std::placeholders::_1;
-      using std::placeholders::_2;      
-      if (td_) {
-         obj2 = std::bind(&NumbaFunction::callt, this, _1, _2);
-         return new mfem::FunctionCoefficient(obj2);
+      using std::placeholders::_2;
+      if (use_0==0) {
+	if (td_) {
+            obj2 = std::bind(&NumbaFunction::callt, this, _1, _2);
+            return new mfem::FunctionCoefficient(obj2);
+        } else {
+           obj1 = std::bind(&NumbaFunction::call, this, _1);
+           return new mfem::FunctionCoefficient(obj1);
+        }
       } else {
-         obj1 = std::bind(&NumbaFunction::call, this, _1);
-         return new mfem::FunctionCoefficient(obj1);
+	if (td_) {
+	  obj2 = std::bind(&NumbaFunction::call0t, this, _1, _2);
+            return new mfem::FunctionCoefficient(obj2);
+        } else {
+	  obj1 = std::bind(&NumbaFunction::call0, this, _1);
+           return new mfem::FunctionCoefficient(obj1);
+        }
       }
    }
 };
@@ -149,7 +183,8 @@ class VectorNumbaFunction : public NumbaFunctionBase {
     
     VectorNumbaFunction(PyObject *input, int sdim, int vdim, bool td):
        NumbaFunctionBase(input, sdim, td), vdim_(vdim){}
-  
+
+      
     void call(const mfem::Vector &x, mfem::Vector &out){
       out = 0.0;
       return ((void (*) (double *, double *, int, int))address_)(x.GetData(), 
@@ -166,17 +201,39 @@ class VectorNumbaFunction : public NumbaFunctionBase {
 								      sdim_,
 	 							      vdim_);            
     }
+    void call0(const mfem::Vector &x, mfem::Vector &out){
+      out = 0.0;
+      return ((void (*) (double *, double *))address_)(x.GetData(), 
+						       out.GetData());
+       
+    }
+    void call0t(const mfem::Vector &x, double t, mfem::Vector &out){
+      out = 0.0;      
+      return ((void (*) (double *, double,  double *))address_)(x.GetData(),
+						                t,
+								out.GetData());
+    }
 
-    mfem::VectorFunctionCoefficient* GenerateCoefficient(){
+    mfem::VectorFunctionCoefficient* GenerateCoefficient(int use_0=0){
       using std::placeholders::_1;
       using std::placeholders::_2;
-      using std::placeholders::_3;            
-      if (td_) {
-	obj2 = std::bind(&VectorNumbaFunction::callt, this, _1, _2, _3);
-	return new mfem::VectorFunctionCoefficient(vdim_, obj2);
+      using std::placeholders::_3;
+      if (use_0 == 0){
+         if (td_) {
+    	   obj2 = std::bind(&VectorNumbaFunction::callt, this, _1, _2, _3);
+	   return new mfem::VectorFunctionCoefficient(vdim_, obj2);
+         } else {
+    	   obj1 = std::bind(&VectorNumbaFunction::call, this, _1, _2);
+	   return new mfem::VectorFunctionCoefficient(vdim_, obj1);
+         }
       } else {
-	obj1 = std::bind(&VectorNumbaFunction::call, this, _1, _2);
-	return new mfem::VectorFunctionCoefficient(vdim_, obj1);
+         if (td_) {	
+    	   obj2 = std::bind(&VectorNumbaFunction::call0t, this, _1, _2, _3);
+	   return new mfem::VectorFunctionCoefficient(vdim_, obj2);
+         } else {
+    	   obj1 = std::bind(&VectorNumbaFunction::call0, this, _1, _2);
+	   return new mfem::VectorFunctionCoefficient(vdim_, obj1);
+	 }
       }
    }
 };
@@ -209,17 +266,40 @@ class MatrixNumbaFunction : NumbaFunctionBase {
 								      sdim_,
 	 							      vdim_);            
     }
+    void call0(const mfem::Vector &x, mfem::DenseMatrix &out){
+      out = 0.0;
+      return ((void (*) (double *, double *))address_)(x.GetData(), 
+						       out.GetData());
        
-    mfem::MatrixFunctionCoefficient* GenerateCoefficient(){
+    }
+    void call0t(const mfem::Vector &x, double t, mfem::DenseMatrix &out){
+      out = 0.0;
+      return ((void (*) (double *, double,  double *))address_)(x.GetData(),
+						                t,
+							        out.GetData());
+    }
+       
+    mfem::MatrixFunctionCoefficient* GenerateCoefficient(int use_0=0){
       using std::placeholders::_1;
       using std::placeholders::_2;
-      using std::placeholders::_3;      
+      using std::placeholders::_3;
+      if (use_0 == 0) {
       if (td_) {
  	obj2 = std::bind(&MatrixNumbaFunction::callt, this, _1, _2, _3);
 	return new mfem::MatrixFunctionCoefficient(vdim_, obj2);
       } else {
 	obj1 = std::bind(&MatrixNumbaFunction::call, this, _1, _2);
 	return new mfem::MatrixFunctionCoefficient(vdim_, obj1);
+      }
+      } else {
+      if (td_) {
+ 	obj2 = std::bind(&MatrixNumbaFunction::call0t, this, _1, _2, _3);
+	return new mfem::MatrixFunctionCoefficient(vdim_, obj2);
+      } else {
+	obj1 = std::bind(&MatrixNumbaFunction::call0, this, _1, _2);
+	return new mfem::MatrixFunctionCoefficient(vdim_, obj1);
+      }
+
       }
     }
 };
@@ -253,6 +333,84 @@ try:
   
     matrix_sig = vector_sig
     matrix_sig_t = vector_sig_t
+      
+    from inspect import signature
+      
+    class _JIT(object):
+        def scalar(self, sdim=3, td=False):
+            def dec(func):
+                l = len(signature(func).parameters)
+                if l == 1 and not td:
+                    sig = types.double(types.CPointer(types.double))
+                    use_0 = 1
+                elif l == 2 and not td:
+                    sig = scalar_sig
+                    use_0 = 0			  
+                elif l == 2 and td:
+                    sig = types.double(types.CPointer(types.double),
+                    types.double)
+                    use_0 = 1			  			  
+                elif l == 3 and td:
+                    sig = scalar_sig_t
+                    use_0 = 0			  			  			  
+                from numba import cfunc
+                ff = cfunc(sig)(func)
+                coeff = NumbaFunction(ff, sdim, td).GenerateCoefficient(use_0)
+                return coeff
+            return dec
+        def vector(self, sdim=3, vdim=-1, td=False):
+            vdim = sdim if vdim==-1 else vdim
+            def dec(func):
+                l = len(signature(func).parameters)
+                if l == 2 and not td:
+                    sig = types.void(types.CPointer(types.double),
+                                     types.CPointer(types.double),)
+                    use_0 = 1
+                elif l == 4 and not td:
+                    sig = vector_sig
+                    use_0 = 0			  
+                elif l == 3 and td:
+                    sig = types.void(types.CPointer(types.double),
+                                     types.CPointer(types.double),
+                                     types.double)
+                    use_0 = 1			  			  
+                elif l == 5 and td:
+                    sig = vector_sig_t
+                    use_0 = 0			  			  			  
+                else:
+                    assert False, "Unsupported signature type"
+                from numba import cfunc
+                ff = cfunc(sig)(func)
+                coeff = VectorNumbaFunction(ff, sdim, vdim, td).GenerateCoefficient(use_0)
+                return coeff
+            return dec
+        def matrxi(self, sdim=3, vdim=-1, td=False):
+            vdim = sdim if vdim==-1 else vdim				   
+            def dec(func):
+                l = len(signature(func).parameters)
+                if l == 2 and not td:
+                    sig = types.void(types.CPointer(types.double),
+                                     types.CPointer(types.double),)
+                    use_0 = 1
+                elif l == 4 and not td:
+                    sig = matrix_sig
+                    use_0 = 0			  
+                elif l == 3 and td:
+                    sig = types.void(types.CPointer(types.double),
+                                     types.CPointer(types.double),
+                                     types.double)
+                    use_0 = 1			  			  
+                elif l == 5 and td:
+                    sig = matrix_sig_t
+                    use_0 = 0			  			  			  
+                else:
+                    assert False, "Unsupported signature type"
+                from numba import cfunc
+                ff = cfunc(sig)(func)
+                coeff = MatrxixNumbaFunction(ff, sdim, vdim, td).GenerateCoefficient(use_0)
+                return coeff
+            return dec
+    jit = _JIT()
 except ImportError:
     pass
 except BaseError:

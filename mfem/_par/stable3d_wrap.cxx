@@ -3102,10 +3102,12 @@ namespace Swig {
 
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
 #define SWIGTYPE_p_char swig_types[1]
-#define SWIGTYPE_p_mfem__STable3D swig_types[2]
-#define SWIGTYPE_p_mfem__STable3DNode swig_types[3]
-static swig_type_info *swig_types[5];
-static swig_module_info swig_module = {swig_types, 4, 0, 0, 0, 0};
+#define SWIGTYPE_p_double swig_types[2]
+#define SWIGTYPE_p_int swig_types[3]
+#define SWIGTYPE_p_mfem__STable3D swig_types[4]
+#define SWIGTYPE_p_mfem__STable3DNode swig_types[5]
+static swig_type_info *swig_types[7];
+static swig_module_info swig_module = {swig_types, 6, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3347,7 +3349,7 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
-SWIGINTERN void mfem_STable3D_Print__SWIG_1(mfem::STable3D *self,char const *file,int precision=8){
+SWIGINTERN void mfem_STable3D_Print__SWIG_1(mfem::STable3D *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3358,7 +3360,7 @@ SWIGINTERN void mfem_STable3D_Print__SWIG_1(mfem::STable3D *self,char const *fil
   self -> Print(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_STable3D_PrintGZ(mfem::STable3D *self,char const *file,int precision=8){
+SWIGINTERN void mfem_STable3D_PrintGZ(mfem::STable3D *self,char const *file,int precision=16){
   mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
   if (!ofile)
      {
@@ -4182,6 +4184,14 @@ SWIGINTERN PyObject *_wrap_STable3D_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
           }
           string_io2=swig_obj[1];
           stream2 = new std::ostringstream();
+          int prec = 16;
+          if (PyObject_HasAttrString(swig_obj[1], "precision")){
+            PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+            prec = (int)PyLong_AsLong(attr);
+            //std::cout << "setting prec" << prec << "\n";
+          }
+          stream2->precision(prec);
+          
         } else {
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
@@ -4312,7 +4322,7 @@ SWIGINTERN PyObject *_wrap_STable3D_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   PyObject *resultobj = 0;
   mfem::STable3D *arg1 = (mfem::STable3D *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -4450,7 +4460,7 @@ SWIGINTERN PyObject *_wrap_STable3D_PrintGZ(PyObject *SWIGUNUSEDPARM(self), PyOb
   PyObject *resultobj = 0;
   mfem::STable3D *arg1 = (mfem::STable3D *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -4542,9 +4552,9 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_STable3D", _wrap_delete_STable3D, METH_O, "delete_STable3D(STable3D self)"},
 	 { "STable3D_Print", _wrap_STable3D_Print, METH_VARARGS, "\n"
 		"STable3D_Print(STable3D self, std::ostream & out=out)\n"
-		"STable3D_Print(STable3D self, char const * file, int precision=8)\n"
+		"STable3D_Print(STable3D self, char const * file, int precision=16)\n"
 		""},
-	 { "STable3D_PrintGZ", (PyCFunction)(void(*)(void))_wrap_STable3D_PrintGZ, METH_VARARGS|METH_KEYWORDS, "STable3D_PrintGZ(STable3D self, char const * file, int precision=8)"},
+	 { "STable3D_PrintGZ", (PyCFunction)(void(*)(void))_wrap_STable3D_PrintGZ, METH_VARARGS|METH_KEYWORDS, "STable3D_PrintGZ(STable3D self, char const * file, int precision=16)"},
 	 { "STable3D_swigregister", STable3D_swigregister, METH_O, NULL},
 	 { "STable3D_swiginit", STable3D_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
@@ -4577,9 +4587,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_STable3D", _wrap_delete_STable3D, METH_O, "delete_STable3D(STable3D self)"},
 	 { "STable3D_Print", _wrap_STable3D_Print, METH_VARARGS, "\n"
 		"Print(STable3D self, std::ostream & out=out)\n"
-		"Print(STable3D self, char const * file, int precision=8)\n"
+		"Print(STable3D self, char const * file, int precision=16)\n"
 		""},
-	 { "STable3D_PrintGZ", (PyCFunction)(void(*)(void))_wrap_STable3D_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(STable3D self, char const * file, int precision=8)"},
+	 { "STable3D_PrintGZ", (PyCFunction)(void(*)(void))_wrap_STable3D_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(STable3D self, char const * file, int precision=16)"},
 	 { "STable3D_swigregister", STable3D_swigregister, METH_O, NULL},
 	 { "STable3D_swiginit", STable3D_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
@@ -4590,24 +4600,32 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__STable3D = {"_p_mfem__STable3D", "mfem::STable3D *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__STable3DNode = {"_p_mfem__STable3DNode", "mfem::STable3DNode *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
+  &_swigt__p_double,
+  &_swigt__p_int,
   &_swigt__p_mfem__STable3D,
   &_swigt__p_mfem__STable3DNode,
 };
 
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__STable3D[] = {  {&_swigt__p_mfem__STable3D, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__STable3DNode[] = {  {&_swigt__p_mfem__STable3DNode, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
+  _swigc__p_double,
+  _swigc__p_int,
   _swigc__p_mfem__STable3D,
   _swigc__p_mfem__STable3DNode,
 };

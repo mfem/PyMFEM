@@ -161,6 +161,18 @@ class Geometry(object):
         return _geom.Geometry_JacToPerfJac(self, GeomType, J, PJ)
     JacToPerfJac = _swig_new_instance_method(_geom.Geometry_JacToPerfJac)
 
+    @staticmethod
+    def IsTensorProduct(geom):
+        r"""IsTensorProduct(mfem::Geometry::Type geom) -> bool"""
+        return _geom.Geometry_IsTensorProduct(geom)
+    IsTensorProduct = _swig_new_static_method(_geom.Geometry_IsTensorProduct)
+
+    @staticmethod
+    def TensorProductGeometry(dim):
+        r"""TensorProductGeometry(int dim) -> mfem::Geometry::Type"""
+        return _geom.Geometry_TensorProductGeometry(dim)
+    TensorProductGeometry = _swig_new_static_method(_geom.Geometry_TensorProductGeometry)
+
     def NumBdr(self, GeomType):
         r"""NumBdr(Geometry self, int GeomType) -> int"""
         return _geom.Geometry_NumBdr(self, GeomType)
@@ -197,6 +209,16 @@ def Geometry_ProjectPoint(*args):
     """
     return _geom.Geometry_ProjectPoint(*args)
 Geometry_ProjectPoint = _geom.Geometry_ProjectPoint
+
+def Geometry_IsTensorProduct(geom):
+    r"""Geometry_IsTensorProduct(mfem::Geometry::Type geom) -> bool"""
+    return _geom.Geometry_IsTensorProduct(geom)
+Geometry_IsTensorProduct = _geom.Geometry_IsTensorProduct
+
+def Geometry_TensorProductGeometry(dim):
+    r"""Geometry_TensorProductGeometry(int dim) -> mfem::Geometry::Type"""
+    return _geom.Geometry_TensorProductGeometry(dim)
+Geometry_TensorProductGeometry = _geom.Geometry_TensorProductGeometry
 
 class RefinedGeometry(object):
     r"""Proxy of C++ mfem::RefinedGeometry class."""
@@ -274,16 +296,10 @@ class GeometryTypeArray(object):
         __init__(GeometryTypeArray self) -> GeometryTypeArray
         __init__(GeometryTypeArray self, mfem::MemoryType mt) -> GeometryTypeArray
         __init__(GeometryTypeArray self, int asize) -> GeometryTypeArray
-        __init__(GeometryTypeArray self, mfem::Geometry::Type * _data, int asize) -> GeometryTypeArray
+        __init__(GeometryTypeArray self, mfem::Geometry::Type * data_, int asize) -> GeometryTypeArray
         __init__(GeometryTypeArray self, GeometryTypeArray src) -> GeometryTypeArray
         """
         _geom.GeometryTypeArray_swiginit(self, _geom.new_GeometryTypeArray(*args))
-
-        if len(args) == 1 and isinstance(args[0], list):
-            self.MakeDataOwner()
-
-
-
     __swig_destroy__ = _geom.delete_GeometryTypeArray
 
     def GetData(self, *args):
@@ -454,13 +470,21 @@ class GeometryTypeArray(object):
 
     def __setitem__(self, i, v):
         r"""__setitem__(GeometryTypeArray self, int i, mfem::Geometry::Type const v)"""
+
+        i = int(i)
+
+
         return _geom.GeometryTypeArray___setitem__(self, i, v)
-    __setitem__ = _swig_new_instance_method(_geom.GeometryTypeArray___setitem__)
+
 
     def __getitem__(self, i):
         r"""__getitem__(GeometryTypeArray self, int const i) -> mfem::Geometry::Type const &"""
+
+        i = int(i)
+
+
         return _geom.GeometryTypeArray___getitem__(self, i)
-    __getitem__ = _swig_new_instance_method(_geom.GeometryTypeArray___getitem__)
+
 
     def Assign(self, *args):
         r"""
@@ -472,6 +496,25 @@ class GeometryTypeArray(object):
 
     def ToList(self):
         return [self[i] for i in range(self.Size())]
+
+
+
+    def __iter__(self):
+        class iter_array:
+            def __init__(self, obj):
+                self.obj = obj
+                self.idx = 0
+                self.size = obj.Size()
+            def __iter__(self):
+                self.idx = 0
+            def __next__(self):
+                if self.idx < self.size:
+                    res = self.obj[self.idx]
+                    self.idx += 1
+                    return res
+                else:
+                    raise StopIteration
+        return iter_array(self)
 
 
 

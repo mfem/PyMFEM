@@ -27,6 +27,8 @@ namespace mfem{
   %}
 }
 
+/* this is to ignroe final keyword */
+# define final
 %include "fem/estimators.hpp"
 
 

@@ -26,44 +26,43 @@
       ex11p.py -m klein-bottle.mesh -n 10
 '''
 import sys
-from os.path import expanduser, join
+from os.path import expanduser, join, dirname
 import numpy as np
 
-from mfem import path
 from mfem.common.arg_parser import ArgParser
 import mfem.par as mfem
 from mpi4py import MPI
 
 
 num_procs = MPI.COMM_WORLD.size
-myid      = MPI.COMM_WORLD.rank
+myid = MPI.COMM_WORLD.rank
 
 
 parser = ArgParser(description='Ex11 ')
 parser.add_argument('-m', '--mesh',
-                    default = 'star.mesh',
-                    action = 'store', type = str,
+                    default='star.mesh',
+                    action='store', type=str,
                     help='Mesh file to use.')
 parser.add_argument('-rs', '--refine-serial',
-                    default = 2,
-                    action = 'store', type = int,
-     help = "Number of times to refine the mesh uniformly in serial.")
+                    default=2,
+                    action='store', type=int,
+                    help="Number of times to refine the mesh uniformly in serial.")
 
 parser.add_argument('-rp', '--refine-parallel',
-                    default = 1,
-                    action = 'store', type = int,
-     help = "Number of times to refine the mesh uniformly in parallel.")
+                    default=1,
+                    action='store', type=int,
+                    help="Number of times to refine the mesh uniformly in parallel.")
 parser.add_argument('-o', '--order',
-                    action = 'store', default = 1, type=int,
-  help = ("Finite element order (polynomial degree) or -1 for isoparametric space."))
+                    action='store', default=1, type=int,
+                    help=("Finite element order (polynomial degree) or -1 for isoparametric space."))
 parser.add_argument("-n", "--num-eigs",
-                   action = 'store', default = 5, type=int,                   
-                 help =  "Number of desired eigenmodes.");
+                    action='store', default=5, type=int,
+                    help="Number of desired eigenmodes.")
 parser.add_argument("-sp", "--strumpack",
-                   action = 'store_true', default = False,
-                   help =  "Use the STRUMPACK Solver.")
+                    action='store_true', default=False,
+                    help="Use the STRUMPACK Solver.")
 parser.add_argument('-vis', '--visualization',
-                    action = 'store_true', default=True,
+                    action='store_true', default=True,
                     help='Enable GLVis visualization')
 args = parser.parse_args()
 
@@ -74,20 +73,21 @@ order = args.order
 nev = args.num_eigs
 visualization = args.visualization
 use_strumpack = args.strumpack
-if (myid == 0): parser.print_options(args)
+if (myid == 0):
+    parser.print_options(args)
 
 # 3. Read the mesh from the given mesh file on all processors. We can handle
 #    triangular, quadrilateral, tetrahedral, hexahedral, surface and volume
 #    meshes with the same code
-meshfile =expanduser(join(path, 'data', args.mesh))
-mesh = mfem.Mesh(meshfile, 1,1)
+meshfile = expanduser(join(dirname(__file__), '..', 'data', args.mesh))
+mesh = mfem.Mesh(meshfile, 1, 1)
 dim = mesh.Dimension()
 
 # 4. Refine the serial mesh on all processors to increase the resolution. In
 #    this example we do 'ref_levels' of uniform refinement (2 by default, or
 #    specified on the command line with -rs).
 for x in range(ser_ref_levels):
-   mesh.UniformRefinement();
+    mesh.UniformRefinement()
 
 # 5. Define a parallel mesh by a partitioning of the serial mesh. Refine
 #    this mesh further in parallel to increase the resolution (1 time by
@@ -102,17 +102,17 @@ for l in range(par_ref_levels):
 #    use continuous Lagrange finite elements of the specified order. If
 #    order < 1, we instead use an isoparametric/isogeometric space.
 if order > 0:
-   fec = mfem.H1_FECollection(order, dim)
+    fec = mfem.H1_FECollection(order, dim)
 elif pmesh.GetNodes():
-   fec = pmesh.GetNodes().OwnFEC()   
+    fec = pmesh.GetNodes().OwnFEC()
 else:
-   fec = mfem.H1_FECollection(1, dim)
+    fec = mfem.H1_FECollection(1, dim)
 
-fespace =mfem.ParFiniteElementSpace(pmesh, fec)
+fespace = mfem.ParFiniteElementSpace(pmesh, fec)
 fe_size = fespace.GlobalTrueVSize()
 
 if (myid == 0):
-   print('Number of unknowns: '+  str(fe_size))
+    print('Number of unknowns: ' + str(fe_size))
 
 # 7. Set up the parallel bilinear forms a(.,.) and m(.,.) on the finite
 #    element space. The first corresponds to the Laplacian operator -Delta,
@@ -129,13 +129,13 @@ if pmesh.bdr_attributes.Size() != 0:
     ess_bdr.SetSize(pmesh.bdr_attributes.Max())
     ess_bdr.Assign(1)
 
-a = mfem.ParBilinearForm(fespace);
+a = mfem.ParBilinearForm(fespace)
 a.AddDomainIntegrator(mfem.DiffusionIntegrator(one))
 if pmesh.bdr_attributes.Size() == 0:
     # Add a mass term if the mesh has no boundary, e.g. periodic mesh or
     # closed surface.
     a.AddDomainIntegrator(mfem.MassIntegrator(one))
-    
+
 a.Assemble()
 a.EliminateEssentialBCDiag(ess_bdr, 1.0)
 a.Finalize()
@@ -147,15 +147,15 @@ m.Assemble()
 
 # shift the eigenvalue corresponding to eliminated dofs to a large value
 m.EliminateEssentialBCDiag(ess_bdr,  3.0e-300)
-m.Finalize();
+m.Finalize()
 
-A = a.ParallelAssemble();
-M = m.ParallelAssemble();
+A = a.ParallelAssemble()
+M = m.ParallelAssemble()
 
 if use_strumpack:
-  import mfem.par.strumpack as strmpk
-  Arow = strmpk.STRUMPACKRowLocMatrix(A)
-  
+    import mfem.par.strumpack as strmpk
+    Arow = strmpk.STRUMPACKRowLocMatrix(A)
+
 
 # 8. Define and configure the LOBPCG eigensolver and the BoomerAMG
 #    preconditioner for A to be used within the solver. Set the matrices
@@ -167,7 +167,7 @@ if use_strumpack:
     strumpack = strmpk.STRUMPACKSolver(args, MPI.COMM_WORLD)
     strumpack.SetPrintFactorStatistics(True)
     strumpack.SetPrintSolveStatistics(False)
-    strumpack.SetKrylovSolver(strmpk.KrylovSolver_DIRECT);
+    strumpack.SetKrylovSolver(strmpk.KrylovSolver_DIRECT)
     strumpack.SetReorderingStrategy(strmpk.ReorderingStrategy_METIS)
     strumpack.SetMC64Job(strmpk.MC64Job_NONE)
     # strumpack.SetSymmetricPattern(True)
@@ -176,11 +176,11 @@ if use_strumpack:
     precond = strumpack
 else:
     amg = mfem.HypreBoomerAMG(A)
-    amg.SetPrintLevel(0);
+    amg.SetPrintLevel(0)
     precond = amg
 
 lobpcg = mfem.HypreLOBPCG(MPI.COMM_WORLD)
-lobpcg.SetNumModes(nev);
+lobpcg.SetNumModes(nev)
 lobpcg.SetPreconditioner(precond)
 lobpcg.SetMaxIter(200)
 lobpcg.SetTol(1e-8)
@@ -201,38 +201,38 @@ x = mfem.ParGridFunction(fespace)
 #     viewed later using GLVis: "glvis -np <np> -m mesh -g mode".
 
 smyid = '{:0>6d}'.format(myid)
-mesh_name  =  "mesh."+smyid
+mesh_name = "mesh."+smyid
 pmesh.Print(mesh_name, 8)
 
 for i in range(nev):
     x.Assign(lobpcg.GetEigenvector(i))
-    sol_name   =  "mode_"+str(i)+"."+smyid    
+    sol_name = "mode_"+str(i).zfill(2)+"."+smyid
     x.Save(sol_name, 8)
-    
+
 # 11. Send the solution by socket to a GLVis server.
 if (visualization):
     mode_sock = mfem.socketstream("localhost", 19916)
-    mode_sock.precision(8);
+    mode_sock.precision(8)
 
     for i in range(nev):
-        if ( myid == 0 ):
-            print("Eigenmode " + str(i+1)  +'/' + str(nev) +
+        if (myid == 0):
+            print("Eigenmode " + str(i+1) + '/' + str(nev) +
                   ", Lambda = " + str(eigenvalues[i]))
-            
+
         # convert eigenvector from HypreParVector to ParGridFunction
         x.Assign(lobpcg.GetEigenvector(i))
 
-        mode_sock.send_text("parallel " + str(num_procs) +  " " + str(myid))
+        mode_sock.send_text("parallel " + str(num_procs) + " " + str(myid))
         mode_sock.send_solution(pmesh,   x)
-        mode_sock.send_text("window_title 'Eigenmode " + str(i+1) +'/' +
+        mode_sock.send_text("window_title 'Eigenmode " + str(i+1) + '/' +
                             str(nev) + ", Lambda = " + str(eigenvalues[i]) + "'")
-                            
-        c  = None
+
+        c = None
         if (myid == 0):
             from builtins import input
             c = input("press (q)uit or (c)ontinue --> ")
         c = MPI.COMM_WORLD.bcast(c, root=0)
-        if (c != 'c'): break
+        if (c != 'c'):
+            break
 
-    mode_sock.close();
-    
+    mode_sock.close()

@@ -96,6 +96,8 @@ import mfem._ser.vertex
 import mfem._ser.vtk
 import mfem._ser.handle
 import mfem._ser.restriction
+AssemblyLevel_LEGACY = _bilinearform.AssemblyLevel_LEGACY
+
 AssemblyLevel_LEGACYFULL = _bilinearform.AssemblyLevel_LEGACYFULL
 
 AssemblyLevel_FULL = _bilinearform.AssemblyLevel_FULL
@@ -139,6 +141,11 @@ class BilinearForm(mfem._ser.matrix.Matrix):
         return _bilinearform.BilinearForm_GetAssemblyLevel(self)
     GetAssemblyLevel = _swig_new_instance_method(_bilinearform.BilinearForm_GetAssemblyLevel)
 
+    def GetHybridization(self):
+        r"""GetHybridization(BilinearForm self) -> Hybridization *"""
+        return _bilinearform.BilinearForm_GetHybridization(self)
+    GetHybridization = _swig_new_instance_method(_bilinearform.BilinearForm_GetHybridization)
+
     def EnableStaticCondensation(self):
         r"""EnableStaticCondensation(BilinearForm self)"""
         return _bilinearform.BilinearForm_EnableStaticCondensation(self)
@@ -160,6 +167,7 @@ class BilinearForm(mfem._ser.matrix.Matrix):
 
         if not hasattr(self, "_integrators"): self._integrators = []
         self._integrators.append(constr_integ)
+        # constr_integ is deleted by Hybridization destructor
         constr_integ.thisown = 0
 
 
@@ -286,7 +294,7 @@ class BilinearForm(mfem._ser.matrix.Matrix):
 
         if not hasattr(self, "_spmat"): self._spmat = []
         self._spmat.append(val)
-        val.thisown=0 
+        val.thisown=0
 
 
         return val
@@ -305,15 +313,20 @@ class BilinearForm(mfem._ser.matrix.Matrix):
         return _bilinearform.BilinearForm_SpMatElim(self, *args)
     SpMatElim = _swig_new_instance_method(_bilinearform.BilinearForm_SpMatElim)
 
-    def AddDomainIntegrator(self, bfi):
-        r"""AddDomainIntegrator(BilinearForm self, BilinearFormIntegrator bfi)"""
+    def AddDomainIntegrator(self, *args):
+        r"""
+        AddDomainIntegrator(BilinearForm self, BilinearFormIntegrator bfi)
+        AddDomainIntegrator(BilinearForm self, BilinearFormIntegrator bfi, intArray elem_marker)
+        """
 
         if not hasattr(self, "_integrators"): self._integrators = []
+        bfi = args[0]
         self._integrators.append(bfi)
-        bfi.thisown=0 
+        self.UseExternalIntegrators()
+        #bfi.thisown=0
 
 
-        return _bilinearform.BilinearForm_AddDomainIntegrator(self, bfi)
+        return _bilinearform.BilinearForm_AddDomainIntegrator(self, *args)
 
 
     def AddBoundaryIntegrator(self, *args):
@@ -323,9 +336,10 @@ class BilinearForm(mfem._ser.matrix.Matrix):
         """
 
         if not hasattr(self, "_integrators"): self._integrators = []
-        bfi = args[0]	     
+        bfi = args[0]
         self._integrators.append(bfi)
-        bfi.thisown=0 
+        self.UseExternalIntegrators()
+        #bfi.thisown=0 
 
 
         return _bilinearform.BilinearForm_AddBoundaryIntegrator(self, *args)
@@ -336,7 +350,8 @@ class BilinearForm(mfem._ser.matrix.Matrix):
 
         if not hasattr(self, "_integrators"): self._integrators = []
         self._integrators.append(bfi)
-        bfi.thisown=0 
+        self.UseExternalIntegrators()
+        #bfi.thisown=0
 
 
         return _bilinearform.BilinearForm_AddInteriorFaceIntegrator(self, bfi)
@@ -351,7 +366,8 @@ class BilinearForm(mfem._ser.matrix.Matrix):
         if not hasattr(self, "_integrators"): self._integrators = []
         bfi = args[0]
         self._integrators.append(bfi)
-        bfi.thisown=0 
+        self.UseExternalIntegrators()
+        #bfi.thisown=0
 
 
         return _bilinearform.BilinearForm_AddBdrFaceIntegrator(self, *args)
@@ -381,6 +397,11 @@ class BilinearForm(mfem._ser.matrix.Matrix):
         r"""GetOutputProlongation(BilinearForm self) -> Operator"""
         return _bilinearform.BilinearForm_GetOutputProlongation(self)
     GetOutputProlongation = _swig_new_instance_method(_bilinearform.BilinearForm_GetOutputProlongation)
+
+    def GetOutputRestrictionTranspose(self):
+        r"""GetOutputRestrictionTranspose(BilinearForm self) -> Operator"""
+        return _bilinearform.BilinearForm_GetOutputRestrictionTranspose(self)
+    GetOutputRestrictionTranspose = _swig_new_instance_method(_bilinearform.BilinearForm_GetOutputRestrictionTranspose)
 
     def GetOutputRestriction(self):
         r"""GetOutputRestriction(BilinearForm self) -> Operator"""
@@ -595,7 +616,7 @@ class MixedBilinearForm(mfem._ser.matrix.Matrix):
 
         if not hasattr(self, "_spmat"): self._spmat = []
         self._spmat.append(val)
-        val.thisown=0 
+        val.thisown=0
 
 
         return val
@@ -611,7 +632,7 @@ class MixedBilinearForm(mfem._ser.matrix.Matrix):
 
         if not hasattr(self, "_integrators"): self._integrators = []
         self._integrators.append(bfi)
-        bfi.thisown=0 
+        bfi.thisown=0
 
 
         return _bilinearform.MixedBilinearForm_AddDomainIntegrator(self, bfi)
@@ -624,9 +645,9 @@ class MixedBilinearForm(mfem._ser.matrix.Matrix):
         """
 
         if not hasattr(self, "_integrators"): self._integrators = []
-        bfi = args[0]	     
+        bfi = args[0]
         self._integrators.append(bfi)
-        bfi.thisown=0 
+        bfi.thisown=0
 
 
         return _bilinearform.MixedBilinearForm_AddBoundaryIntegrator(self, *args)
@@ -637,7 +658,7 @@ class MixedBilinearForm(mfem._ser.matrix.Matrix):
 
         if not hasattr(self, "_integrators"): self._integrators = []
         self._integrators.append(bfi)
-        bfi.thisown=0 
+        bfi.thisown=0
 
 
         return _bilinearform.MixedBilinearForm_AddTraceFaceIntegrator(self, bfi)
@@ -650,9 +671,10 @@ class MixedBilinearForm(mfem._ser.matrix.Matrix):
         """
 
         if not hasattr(self, "_integrators"): self._integrators = []
-        bfi = args[0]	     
+        bfi = args[0]
         self._integrators.append(bfi)
-        bfi.thisown=0 
+        self.UseExternalIntegrators()
+        #bfi.thisown=0 
 
 
         return _bilinearform.MixedBilinearForm_AddBdrTraceFaceIntegrator(self, *args)
@@ -819,7 +841,7 @@ class DiscreteLinearOperator(MixedBilinearForm):
 
         if not hasattr(self, "_integrators"): self._integrators = []
         self._integrators.append(di)
-        di.thisown=0 
+        di.thisown=0
 
 
         return _bilinearform.DiscreteLinearOperator_AddDomainInterpolator(self, di)
@@ -830,7 +852,7 @@ class DiscreteLinearOperator(MixedBilinearForm):
 
         if not hasattr(self, "_integrators"): self._integrators = []
         self._integrators.append(di)
-        di.thisown=0 
+        di.thisown=0
 
 
         return _bilinearform.DiscreteLinearOperator_AddTraceFaceInterpolator(self, di)
@@ -841,10 +863,20 @@ class DiscreteLinearOperator(MixedBilinearForm):
         return _bilinearform.DiscreteLinearOperator_GetDI(self)
     GetDI = _swig_new_instance_method(_bilinearform.DiscreteLinearOperator_GetDI)
 
+    def SetAssemblyLevel(self, assembly_level):
+        r"""SetAssemblyLevel(DiscreteLinearOperator self, mfem::AssemblyLevel assembly_level)"""
+        return _bilinearform.DiscreteLinearOperator_SetAssemblyLevel(self, assembly_level)
+    SetAssemblyLevel = _swig_new_instance_method(_bilinearform.DiscreteLinearOperator_SetAssemblyLevel)
+
     def Assemble(self, skip_zeros=1):
         r"""Assemble(DiscreteLinearOperator self, int skip_zeros=1)"""
         return _bilinearform.DiscreteLinearOperator_Assemble(self, skip_zeros)
     Assemble = _swig_new_instance_method(_bilinearform.DiscreteLinearOperator_Assemble)
+
+    def GetOutputRestrictionTranspose(self):
+        r"""GetOutputRestrictionTranspose(DiscreteLinearOperator self) -> Operator"""
+        return _bilinearform.DiscreteLinearOperator_GetOutputRestrictionTranspose(self)
+    GetOutputRestrictionTranspose = _swig_new_instance_method(_bilinearform.DiscreteLinearOperator_GetOutputRestrictionTranspose)
     __swig_destroy__ = _bilinearform.delete_DiscreteLinearOperator
 
 # Register DiscreteLinearOperator in _bilinearform:

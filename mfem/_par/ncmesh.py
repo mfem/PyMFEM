@@ -142,9 +142,12 @@ class CoarseFineTransformations(object):
     point_matrices = property(_ncmesh.CoarseFineTransformations_point_matrices_get, _ncmesh.CoarseFineTransformations_point_matrices_set, doc=r"""point_matrices : a(mfem::Geometry::NumGeom).mfem::DenseTensor""")
     embeddings = property(_ncmesh.CoarseFineTransformations_embeddings_get, doc=r"""embeddings : mfem::Array<(mfem::Embedding)>""")
 
-    def GetCoarseToFineMap(self, fine_mesh, coarse_to_fine, coarse_to_ref_type, ref_type_to_matrix, ref_type_to_geom):
-        r"""GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine, intArray coarse_to_ref_type, Table ref_type_to_matrix, GeometryTypeArray ref_type_to_geom)"""
-        return _ncmesh.CoarseFineTransformations_GetCoarseToFineMap(self, fine_mesh, coarse_to_fine, coarse_to_ref_type, ref_type_to_matrix, ref_type_to_geom)
+    def GetCoarseToFineMap(self, *args):
+        r"""
+        GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine, intArray coarse_to_ref_type, Table ref_type_to_matrix, GeometryTypeArray ref_type_to_geom, bool get_coarse_to_fine_only=False)
+        GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine)
+        """
+        return _ncmesh.CoarseFineTransformations_GetCoarseToFineMap(self, *args)
     GetCoarseToFineMap = _swig_new_instance_method(_ncmesh.CoarseFineTransformations_GetCoarseToFineMap)
 
     def Clear(self):
@@ -170,6 +173,11 @@ class CoarseFineTransformations(object):
 # Register CoarseFineTransformations in _ncmesh:
 _ncmesh.CoarseFineTransformations_swigregister(CoarseFineTransformations)
 
+
+def Swap(a, b):
+    r"""Swap(CoarseFineTransformations a, CoarseFineTransformations b)"""
+    return _ncmesh.Swap(a, b)
+Swap = _ncmesh.Swap
 class NCMesh(object):
     r"""Proxy of C++ mfem::NCMesh class."""
 
@@ -178,7 +186,8 @@ class NCMesh(object):
 
     def __init__(self, *args):
         r"""
-        __init__(NCMesh self, Mesh mesh, std::istream * vertex_parents=None) -> NCMesh
+        __init__(NCMesh self, Mesh mesh) -> NCMesh
+        __init__(NCMesh self, std::istream & input, int version, int & curved, int & is_nc) -> NCMesh
         __init__(NCMesh self, NCMesh other) -> NCMesh
         """
         _ncmesh.NCMesh_swiginit(self, _ncmesh.new_NCMesh(*args))
@@ -341,20 +350,20 @@ class NCMesh(object):
         return _ncmesh.NCMesh_GetElementFacesAttributes(self, i, faces, fattr)
     GetElementFacesAttributes = _swig_new_instance_method(_ncmesh.NCMesh_GetElementFacesAttributes)
 
-    def LoadVertexParents(self, input):
-        r"""LoadVertexParents(NCMesh self, std::istream & input)"""
-        return _ncmesh.NCMesh_LoadVertexParents(self, input)
-    LoadVertexParents = _swig_new_instance_method(_ncmesh.NCMesh_LoadVertexParents)
+    def Print(self, out):
+        r"""Print(NCMesh self, std::ostream & out)"""
+        return _ncmesh.NCMesh_Print(self, out)
+    Print = _swig_new_instance_method(_ncmesh.NCMesh_Print)
 
-    def LoadCoarseElements(self, input):
-        r"""LoadCoarseElements(NCMesh self, std::istream & input)"""
-        return _ncmesh.NCMesh_LoadCoarseElements(self, input)
-    LoadCoarseElements = _swig_new_instance_method(_ncmesh.NCMesh_LoadCoarseElements)
+    def IsLegacyLoaded(self):
+        r"""IsLegacyLoaded(NCMesh self) -> bool"""
+        return _ncmesh.NCMesh_IsLegacyLoaded(self)
+    IsLegacyLoaded = _swig_new_instance_method(_ncmesh.NCMesh_IsLegacyLoaded)
 
-    def SetVertexPositions(self, vertices):
-        r"""SetVertexPositions(NCMesh self, mfem::Array< mfem::Vertex > const & vertices)"""
-        return _ncmesh.NCMesh_SetVertexPositions(self, vertices)
-    SetVertexPositions = _swig_new_instance_method(_ncmesh.NCMesh_SetVertexPositions)
+    def LegacyToNewVertexOrdering(self, order):
+        r"""LegacyToNewVertexOrdering(NCMesh self, intArray order)"""
+        return _ncmesh.NCMesh_LegacyToNewVertexOrdering(self, order)
+    LegacyToNewVertexOrdering = _swig_new_instance_method(_ncmesh.NCMesh_LegacyToNewVertexOrdering)
 
     def Trim(self):
         r"""Trim(NCMesh self)"""
@@ -370,47 +379,6 @@ class NCMesh(object):
         r"""PrintMemoryDetail(NCMesh self) -> int"""
         return _ncmesh.NCMesh_PrintMemoryDetail(self)
     PrintMemoryDetail = _swig_new_instance_method(_ncmesh.NCMesh_PrintMemoryDetail)
-
-    def PrintVertexParentsGZ(self, file, precision=8):
-        r"""PrintVertexParentsGZ(NCMesh self, char const * file, int precision=8)"""
-        return _ncmesh.NCMesh_PrintVertexParentsGZ(self, file, precision)
-    PrintVertexParentsGZ = _swig_new_instance_method(_ncmesh.NCMesh_PrintVertexParentsGZ)
-
-    def PrintVertexParents(self, *args):
-        r"""
-        PrintVertexParents(NCMesh self, std::ostream & out)
-        PrintVertexParents(NCMesh self, char const * file, int precision=8)
-        PrintVertexParents(NCMesh self)
-        """
-        return _ncmesh.NCMesh_PrintVertexParents(self, *args)
-    PrintVertexParents = _swig_new_instance_method(_ncmesh.NCMesh_PrintVertexParents)
-
-    def PrintCoarseElementsGZ(self, file, precision=8):
-        r"""PrintCoarseElementsGZ(NCMesh self, char const * file, int precision=8)"""
-        return _ncmesh.NCMesh_PrintCoarseElementsGZ(self, file, precision)
-    PrintCoarseElementsGZ = _swig_new_instance_method(_ncmesh.NCMesh_PrintCoarseElementsGZ)
-
-    def PrintCoarseElements(self, *args):
-        r"""
-        PrintCoarseElements(NCMesh self, std::ostream & out)
-        PrintCoarseElements(NCMesh self, char const * file, int precision=8)
-        PrintCoarseElements(NCMesh self)
-        """
-        return _ncmesh.NCMesh_PrintCoarseElements(self, *args)
-    PrintCoarseElements = _swig_new_instance_method(_ncmesh.NCMesh_PrintCoarseElements)
-
-    def PrintStats(self, *args):
-        r"""
-        PrintStats(NCMesh self, std::ostream & out=out)
-        PrintStats(NCMesh self, char const * file, int precision=8)
-        """
-        return _ncmesh.NCMesh_PrintStats(self, *args)
-    PrintStats = _swig_new_instance_method(_ncmesh.NCMesh_PrintStats)
-
-    def PrintStatsGZ(self, file, precision=8):
-        r"""PrintStatsGZ(NCMesh self, char const * file, int precision=8)"""
-        return _ncmesh.NCMesh_PrintStatsGZ(self, file, precision)
-    PrintStatsGZ = _swig_new_instance_method(_ncmesh.NCMesh_PrintStatsGZ)
 
 # Register NCMesh in _ncmesh:
 _ncmesh.NCMesh_swigregister(NCMesh)
@@ -436,16 +404,10 @@ class RefinementArray(object):
         __init__(RefinementArray self) -> RefinementArray
         __init__(RefinementArray self, mfem::MemoryType mt) -> RefinementArray
         __init__(RefinementArray self, int asize) -> RefinementArray
-        __init__(RefinementArray self, Refinement _data, int asize) -> RefinementArray
+        __init__(RefinementArray self, Refinement data_, int asize) -> RefinementArray
         __init__(RefinementArray self, RefinementArray src) -> RefinementArray
         """
         _ncmesh.RefinementArray_swiginit(self, _ncmesh.new_RefinementArray(*args))
-
-        if len(args) == 1 and isinstance(args[0], list):
-            self.MakeDataOwner()
-
-
-
     __swig_destroy__ = _ncmesh.delete_RefinementArray
 
     def GetData(self, *args):
@@ -616,13 +578,21 @@ class RefinementArray(object):
 
     def __setitem__(self, i, v):
         r"""__setitem__(RefinementArray self, int i, Refinement v)"""
+
+        i = int(i)
+
+
         return _ncmesh.RefinementArray___setitem__(self, i, v)
-    __setitem__ = _swig_new_instance_method(_ncmesh.RefinementArray___setitem__)
+
 
     def __getitem__(self, i):
         r"""__getitem__(RefinementArray self, int const i) -> Refinement"""
+
+        i = int(i)
+
+
         return _ncmesh.RefinementArray___getitem__(self, i)
-    __getitem__ = _swig_new_instance_method(_ncmesh.RefinementArray___getitem__)
+
 
     def Assign(self, *args):
         r"""
@@ -634,6 +604,25 @@ class RefinementArray(object):
 
     def ToList(self):
         return [self[i] for i in range(self.Size())]
+
+
+
+    def __iter__(self):
+        class iter_array:
+            def __init__(self, obj):
+                self.obj = obj
+                self.idx = 0
+                self.size = obj.Size()
+            def __iter__(self):
+                self.idx = 0
+            def __next__(self):
+                if self.idx < self.size:
+                    res = self.obj[self.idx]
+                    self.idx += 1
+                    return res
+                else:
+                    raise StopIteration
+        return iter_array(self)
 
 
 

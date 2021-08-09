@@ -1,0 +1,117 @@
+name: 4.4-test
+
+on:
+  push:
+    branches: [ mfem-4.4-dev ]
+  pull_request:
+    branches: [ mfem-4.4-dev ]
+    types: [synchronize]
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [3.6, 3.7, 3.8, 3.9]
+        #os: [ubuntu-latest]
+        os: [ubuntu-20.04]
+        env:
+           - { USE_CUDA_PARALLEL: "00"}
+           - { USE_CUDA_PARALLEL: "10"}
+           - { USE_CUDA_PARALLEL: "01"}
+           - { USE_CUDA_PARALLEL: "11"}
+
+        include:
+           - os: macos-latest
+             python-version: 3.6
+             env: {USE_CUDA_PARALLEL: "00"}
+#
+    runs-on: ${{ matrix.os }}	   
+    #env: ${{ matrix.env }}
+    env: 
+       USE_CUDA_PARALLEL: ${{ matrix.env.USE_CUDA_PARALLEL }}
+       CUDA: "11.1"
+       SANDBOX: ~/sandbox
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip setuptools wheel
+
+        mkdir -p ~/sandbox/lib
+        PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages
+        export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
+        echo $PYTHONPATH
+
+        if [ -f requirements.txt ]; then
+           pip install -r requirements.txt --prefix=~/sandbox
+        fi
+        python -c "import numpy;print(numpy.__file__)"	
+
+        if [ "${USE_CUDA_PARALLEL}" = "11" ] || [ "${USE_CUDA_PARALLEL}" = "10" ]; then
+            echo $cuda
+            source ./ci_scripts/add_cuda_11_1.sh;
+        fi
+        if [ "${USE_CUDA_PARALLEL}" = "01" ] || [ "${USE_CUDA_PARALLEL}" = "11" ]; then
+            sudo apt-get install mpich;
+            sudo apt-get install libmpich-dev;
+            pip install mpi4py --no-cache-dir --prefix=~/sandbox;
+
+            python -c "import mpi4py;print(mpi4py.get_include())";	    
+        fi
+        ls -l $PYTHONLIB	
+        
+    - name: Build
+      run: |
+        export PATH=/usr/local/cuda-${CUDA}/bin:$PATH
+        PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages	
+        export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
+        echo $PATH
+        echo $PYTHONPATH
+        echo $SANDBOX
+        if [ "${USE_CUDA_PARALLEL}" = "00" ]; then  
+           python setup.py install --prefix=$SANDBOX --mfem-branch="mfem-4.4-dev"
+        fi
+        if [ "${USE_CUDA_PARALLEL}" = "01" ]; then
+           python setup.py install --with-parallel --prefix=$SANDBOX --mfem-branch="mfem-4.4-dev"
+        fi
+        if [ "${USE_CUDA_PARALLEL}" = "10" ]; then
+           ls -l /usr/local/cuda-${CUDA}/include
+           python setup.py install --with-cuda --prefix=$SANDBOX --mfem-branch="mfem-4.4-dev"
+        fi
+        if [ "${USE_CUDA_PARALLEL}" = "11" ]; then
+           python setup.py install --with-cuda --with-parallel --prefix=$SANDBOX --mfem-branch="mfem-4.4-dev"
+        fi
+
+    - name: EX1_RUN      
+      run: |
+
+        export PATH=/usr/local/cuda-${CUDA}/bin:$PATH
+        PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages	
+        export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
+        echo $PATH
+        echo $PYTHONPATH
+        echo $SANDBOX
+        cd test
+        echo $PATH
+        echo $PYTHONPATH
+        if [ "${USE_CUDA_PARALLEL}" = "00" ]; then  
+           python ../examples/ex1.py;
+           python ../examples/ex9.py;	   
+        fi
+        if [ "${USE_CUDA_PARALLEL}" = "01" ]; then
+           which mpicc;
+           mpirun -np 2 python ../examples/ex1p.py;    
+        fi
+        if [ "${USE_CUDA_PARALLEL}" = "10" ]; then
+           python ../examples/ex1.py --pa
+        fi
+        if [ "${USE_CUDA_PARALLEL}" = "11" ]; then
+           mpirun -np 2 python ../examples/ex1.py --pa
+        fi
