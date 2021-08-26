@@ -14,7 +14,7 @@ else:
     use_parallel = False
     myid = 0
 
-def test_course_to_file_map():
+def test_course_to_file_map1():
     mesh_file = "../data/inline-quad.mesh"
     device = mfem.Device('cpu')
 
@@ -48,8 +48,40 @@ def test_course_to_file_map():
         g = ref_type_to_geom[i]
         print("ref_type: " + str(i) + "=> geom: " + str(g))
 
+def test_course_to_file_map2():
+    mesh_file = "../data/inline-quad.mesh"
+    device = mfem.Device('cpu')
+
+    mesh = mfem.Mesh(mesh_file, 1, 1)
+
+    els = mfem.intArray([0])
+    mesh.GeneralRefinement(els)
+
+    zero = mfem.Vector(mesh.GetNE())
+    zero.Assign(0.0)
+
+    print(zero.Size())
+    mesh.DerefineByError(zero, 1.0)
+    print(mesh.GetNE())
+    dtrans = mesh.ncmesh.GetDerefinementTransforms()
+    coarse_to_fine = mfem.Table()
+    
+    dtrans.GetCoarseToFineMap(mesh, coarse_to_fine)
+    print("table rows: " + str(coarse_to_fine.Size()))
+    
+    for pe in range(coarse_to_fine.Size()):
+        row = mfem.intArray()
+        coarse_to_fine.GetRow(pe, row)
+        nchild = row.Size();
+        txt = "row " + str(pe) + ":"
+        for fe in range(nchild):
+            child = row[fe]
+            txt += " " + str(child)
+        print(txt)
+
 if __name__ == '__main__':
-    test_course_to_file_map()
+    test_course_to_file_map1()
+    test_course_to_file_map2()
 
 '''
 #include "mfem.hpp"
