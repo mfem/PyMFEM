@@ -43,6 +43,11 @@ to find more details of the MFEM library.
 	>>> print(x[0])   # access to element
 	>>> x[3] = 5      # set element
 
+     mfem.intArray provides an access to int *. For this, we need to
+     pass (int *, length) as a list/tuple.
+        >>> parts = mesh.GeneratePartitioning(3)
+        >>> mfem.intArray([parts, mesh.GetNE()])   <-- int * and length 
+
 
   4-1) mfem::Vector
      Constructor using python list or NumPy array:
@@ -365,8 +370,23 @@ to find more details of the MFEM library.
 	      x[1,2,3]=3
 
               # NOTE the index order is different in the NumPy array returned
-	      # by DenseTensor::GetDataArray
+	      # by DenseTensor::GetDataArray. This is because, we want 
+	      # the major column access work in the same way in C and Python
+	      # x[3].GetDataArray() == x.GetDataArray()[3]
+	      
               x[1 2,3] = x.GetDataArray()[3,1,2]
+
+              # tensor assignment behaves as expected. 
+              t = np.arange(30).reshape(2,3,5)
+	      x.Assign(t) # tensor assignment
+
+              # because of the same reason as DenseMatrix, this operation changes
+	      # internall array element order
+	      t.flatten() ---> [0, 1, 2, 3, 4...]
+	      print(mfem.Vector(m.Data(), 30).GetDataArray()) ---> [0, 15, 5,,,,]
+	      
+
+	      
 	      
 	 Note that internally MFEM DenseMatrix is column major, while NumPy
 	 is row major. Therefore,
