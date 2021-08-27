@@ -198,7 +198,7 @@ def __getitem__(self, *args):
       PyErr_SetString(PyExc_ValueError, "input data length does not match");
       return ;
     }
-    std::cout << shape[0] << " " << shape[1] << " " << shape[2] << "\n";
+
     for (int i=0; i < self->SizeI(); i++){
        for (int j=0; j < self->SizeJ(); j++){
           for (int k=0; k < self->SizeK(); k++){      
