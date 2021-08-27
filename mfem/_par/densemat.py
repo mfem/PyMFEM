@@ -1134,9 +1134,13 @@ class DenseTensor(object):
     Swap = _swig_new_instance_method(_densemat.DenseTensor_Swap)
     __swig_destroy__ = _densemat.delete_DenseTensor
 
-    def Assign(self, c):
-        r"""Assign(DenseTensor self, double const c)"""
-        val = _densemat.DenseTensor_Assign(self, c)
+    def Assign(self, *args):
+        r"""
+        Assign(DenseTensor self, double const c)
+        Assign(DenseTensor self, DenseTensor m)
+        Assign(DenseTensor self, PyObject * numpymat)
+        """
+        val = _densemat.DenseTensor_Assign(self, *args)
 
         return self
 
