@@ -1,13 +1,18 @@
 	<<<  Change Log. >>>
+2021 08.27
+        * memory leak
+        * DenseTensor::Assign now accept numpy 3D array
+	
 2021 08.08
         * added ex0p, ex20p, ex21p, ex22p  ex24p, ex26p, ex27p, ex28p
-	* memory handling of complex_fem for parallel version is fixed.
+        * memory handling of complex_fem for parallel version is fixed.
 	
 2021 08.06
         * ex27 is added
 	* ex26 is added
 	* array((int *, size)) and array((double *, size)) is wrapped. This allows
 	  for changing the contents of exisint Array<T>
+	  
 2021 08.04
 	* added ex24. This one shows partial assembly and numba coefficient
 	

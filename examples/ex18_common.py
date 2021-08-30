@@ -56,13 +56,20 @@ class FE_Evolution(mfem.TimeDependentOperator):
         state = self.state
         dof = self.flux.SizeI()
         dim = self.flux.SizeJ()
+
+        flux_data = []
         for i in range(dof):
             for k in range(num_equation):
                 self.state[k] = x[i, k]
             ComputeFlux(state, dim, self.f)
-            for d in range(dim):
-                for k in range(num_equation):
-                    flux[i, d, k] = self.f[k, d]
+            
+            flux_data.append(self.f.GetDataArray().transpose().copy())
+            #flux[i].Print()
+            #print(self.f.GetDataArray())
+            #for d in range(dim):
+            #    for k in range(num_equation):
+            #        flux[i, d, k] = self.f[k, d]
+        flux.Assign(np.stack(flux_data))
         mcs = ComputeMaxCharSpeed(state, dim)
         if (mcs > max_char_speed):
             globals()['max_char_speed'] = mcs
@@ -282,7 +289,7 @@ def StateIsPhysical(state, dim):
     specific_heat_ratio = globals()["specific_heat_ratio"]
 
     den = state[0]
-    den_vel = state[1:1+dim].GetDataArray()
+    den_vel = state.GetDataArray()[1:1+dim]
     den_energy = state[1 + dim]
 
     if (den < 0):
@@ -361,7 +368,7 @@ class InitialCondition(mfem.VectorPyCoefficient):
 
 def ComputePressure(state, dim):
     den = state[0]
-    den_vel = state[1:1+dim].GetDataArray()
+    den_vel = state.GetDataArray()[1:1+dim]
     den_energy = state[1 + dim]
 
     specific_heat_ratio = globals()["specific_heat_ratio"]
@@ -370,14 +377,13 @@ def ComputePressure(state, dim):
 
     return pres
 
-
 def ComputeFlux(state, dim, flux):
     from mpi4py import MPI
     num_procs = MPI.COMM_WORLD.size
     myid = MPI.COMM_WORLD.rank
 
     den = state[0]
-    den_vel = state[1:1+dim].GetDataArray()
+    den_vel = state.GetDataArray()[1:1+dim]
     den_energy = state[1 + dim]
 
     assert StateIsPhysical(state, dim), ""
@@ -391,14 +397,6 @@ def ComputeFlux(state, dim, flux):
     for d in range(dim):
         fluxA[1+d, d] += pres
 
-    '''
-    for d in range(dim):
-       flux[0, d] = den_vel[d]
-       for i in range(dim):       
-          flux[1+i, d] = den_vel[i] * den_vel[d] / den;
-       flux[1+d, d] += pres;
-    '''
-
     H = (den_energy + pres) / den
     flux.GetDataArray()[1+dim, :] = den_vel * H
 
@@ -410,7 +408,7 @@ def ComputeFluxDotN(state, nor, fluxN):
     fluxN = fluxN.GetDataArray()
 
     den = state[0]
-    den_vel = state[1:1+dim].GetDataArray()
+    den_vel = state.GetDataArray()[1:1+dim]    
     den_energy = state[1 + dim]
 
     assert StateIsPhysical(state, dim), ""
@@ -430,7 +428,7 @@ def ComputeMaxCharSpeed(state, dim):
     specific_heat_ratio = globals()["specific_heat_ratio"]
 
     den = state[0]
-    den_vel = state[1:1+dim].GetDataArray()
+    den_vel = state.GetDataArray()[1:1+dim]    
     den_energy = state[1 + dim]
 
     den_vel2 = np.sum(den_vel**2)
