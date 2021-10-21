@@ -3976,6 +3976,58 @@ SWIGINTERN PyObject *BasisType_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject
   return SWIG_Python_InitShadowInstance(args);
 }
 
+SWIGINTERN PyObject *_wrap_DofToQuad_FE_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DofToQuad *arg1 = (mfem::DofToQuad *) 0 ;
+  mfem::FiniteElement *arg2 = (mfem::FiniteElement *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "DofToQuad_FE_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DofToQuad, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DofToQuad_FE_set" "', argument " "1"" of type '" "mfem::DofToQuad *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DofToQuad * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DofToQuad_FE_set" "', argument " "2"" of type '" "mfem::FiniteElement const *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  if (arg1) (arg1)->FE = (mfem::FiniteElement const *)arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DofToQuad_FE_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DofToQuad *arg1 = (mfem::DofToQuad *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::FiniteElement *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DofToQuad, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DofToQuad_FE_get" "', argument " "1"" of type '" "mfem::DofToQuad *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DofToQuad * >(argp1);
+  result = (mfem::FiniteElement *) ((arg1)->FE);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_DofToQuad_IntRule_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::DofToQuad *arg1 = (mfem::DofToQuad *) 0 ;
@@ -11375,6 +11427,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_BasisType", _wrap_delete_BasisType, METH_O, "delete_BasisType(BasisType self)"},
 	 { "BasisType_swigregister", BasisType_swigregister, METH_O, NULL},
 	 { "BasisType_swiginit", BasisType_swiginit, METH_VARARGS, NULL},
+	 { "DofToQuad_FE_set", _wrap_DofToQuad_FE_set, METH_VARARGS, "DofToQuad_FE_set(DofToQuad self, FiniteElement FE)"},
+	 { "DofToQuad_FE_get", _wrap_DofToQuad_FE_get, METH_O, "DofToQuad_FE_get(DofToQuad self) -> FiniteElement"},
 	 { "DofToQuad_IntRule_set", _wrap_DofToQuad_IntRule_set, METH_VARARGS, "DofToQuad_IntRule_set(DofToQuad self, IntegrationRule IntRule)"},
 	 { "DofToQuad_IntRule_get", _wrap_DofToQuad_IntRule_get, METH_O, "DofToQuad_IntRule_get(DofToQuad self) -> IntegrationRule"},
 	 { "DofToQuad_mode_set", _wrap_DofToQuad_mode_set, METH_VARARGS, "DofToQuad_mode_set(DofToQuad self, mfem::DofToQuad::Mode mode)"},
@@ -11546,6 +11600,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_BasisType", _wrap_delete_BasisType, METH_O, "delete_BasisType(BasisType self)"},
 	 { "BasisType_swigregister", BasisType_swigregister, METH_O, NULL},
 	 { "BasisType_swiginit", BasisType_swiginit, METH_VARARGS, NULL},
+	 { "DofToQuad_FE_set", _wrap_DofToQuad_FE_set, METH_VARARGS, "DofToQuad_FE_set(DofToQuad self, FiniteElement FE)"},
+	 { "DofToQuad_FE_get", _wrap_DofToQuad_FE_get, METH_O, "DofToQuad_FE_get(DofToQuad self) -> FiniteElement"},
 	 { "DofToQuad_IntRule_set", _wrap_DofToQuad_IntRule_set, METH_VARARGS, "DofToQuad_IntRule_set(DofToQuad self, IntegrationRule IntRule)"},
 	 { "DofToQuad_IntRule_get", _wrap_DofToQuad_IntRule_get, METH_O, "DofToQuad_IntRule_get(DofToQuad self) -> IntegrationRule"},
 	 { "DofToQuad_mode_set", _wrap_DofToQuad_mode_set, METH_VARARGS, "DofToQuad_mode_set(DofToQuad self, mfem::DofToQuad::Mode mode)"},

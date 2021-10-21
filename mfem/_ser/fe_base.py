@@ -192,6 +192,7 @@ class DofToQuad(object):
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
+    FE = property(_fe_base.DofToQuad_FE_get, _fe_base.DofToQuad_FE_set, doc=r"""FE : p.q(const).mfem::FiniteElement""")
     IntRule = property(_fe_base.DofToQuad_IntRule_get, _fe_base.DofToQuad_IntRule_set, doc=r"""IntRule : p.q(const).mfem::IntegrationRule""")
     FULL = _fe_base.DofToQuad_FULL
     

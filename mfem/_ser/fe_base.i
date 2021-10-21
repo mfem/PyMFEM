@@ -16,6 +16,9 @@ import_array();
 %include "../common/typemap_macros.i"
 %include "../common/exception.i"
 
-%ignore FE;
+ //%ignore FE;
+namespace mfem{
+  class FiniteElement;
+}
 
 %include "fem/fe/fe_base.hpp"
