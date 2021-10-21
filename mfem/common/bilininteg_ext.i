@@ -259,6 +259,10 @@ namespace mfem {
     self._coeff = args
 %}
 
+%pythonappend DGDiffusionBR2Integrator::DGDiffusionBR2Integrator %{
+    self._coeff = args
+%}
+
 %pythonappend DGElasticityIntegrator::DGElasticityIntegrator %{
     self._coeff = args
 %}

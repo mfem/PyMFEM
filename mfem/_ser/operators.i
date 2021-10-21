@@ -60,6 +60,8 @@ void mfem::PyTimeDependentOperatorBase::Mult(const mfem::Vector &x, mfem::Vector
 //%feature("nodirector") mfem::TimeDependentOperator::GetImplicitGradient;
 //%feature("nodirector") mfem::TimeDependentOperator::GetExplicitGradient;
 
+%ignore mfem::Operator::PrintMatlab;
+
 %include "linalg/operator.hpp"
 %include "pyoperator.hpp"
 
@@ -85,6 +87,8 @@ class PyTimeDependentOperator(PyTimeDependentOperatorBase):
 /*
   void PrintMatlab(std::ostream & out, int n = 0, int m = 0) const;
 */
+/*
 #ifndef SWIGIMPORTED
 OSTREAM_ADD_DEFAULT_FILE(Operator, PrintMatlab)
 #endif
+*/
