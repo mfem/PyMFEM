@@ -76,8 +76,20 @@ import mfem._par.densemat
 import mfem._par.operators
 import mfem._par.matrix
 import mfem._par.sparsemat
-import mfem._par.eltrans
+import mfem._par.fe_base
+import mfem._par.fe_fixed_order
+import mfem._par.element
 import mfem._par.globals
+import mfem._par.table
+import mfem._par.hash
+import mfem._par.fe_h1
+import mfem._par.fe_nd
+import mfem._par.fe_rt
+import mfem._par.fe_l2
+import mfem._par.fe_nurbs
+import mfem._par.fe_pos
+import mfem._par.fe_ser
+import mfem._par.eltrans
 import mfem._par.coefficient
 class LinearFormIntegrator(object):
     r"""Proxy of C++ mfem::LinearFormIntegrator class."""

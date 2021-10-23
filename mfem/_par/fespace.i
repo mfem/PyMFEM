@@ -35,6 +35,7 @@ import_array();
 %import "intrules.i"
 %import "fe.i"
 %import "fe_coll.i"
+%import "doftrans.i"
 %import "densemat.i"
 %import "sparsemat.i"
 %import "eltrans.i"

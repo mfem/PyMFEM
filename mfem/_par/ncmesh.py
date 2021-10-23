@@ -87,9 +87,19 @@ import mfem._par.coefficient
 import mfem._par.sparsemat
 import mfem._par.eltrans
 import mfem._par.fe
+import mfem._par.fe_base
+import mfem._par.fe_fixed_order
+import mfem._par.fe_h1
+import mfem._par.fe_nd
+import mfem._par.fe_rt
+import mfem._par.fe_l2
+import mfem._par.fe_nurbs
+import mfem._par.fe_pos
+import mfem._par.fe_ser
 import mfem._par.fespace
 import mfem._par.fe_coll
 import mfem._par.lininteg
+import mfem._par.doftrans
 import mfem._par.handle
 import mfem._par.hypre
 import mfem._par.restriction
@@ -217,6 +227,11 @@ class NCMesh(object):
         r"""GetNFaces(NCMesh self) -> int"""
         return _ncmesh.NCMesh_GetNFaces(self)
     GetNFaces = _swig_new_instance_method(_ncmesh.NCMesh_GetNFaces)
+
+    def GetNGhostElements(self):
+        r"""GetNGhostElements(NCMesh self) -> int"""
+        return _ncmesh.NCMesh_GetNGhostElements(self)
+    GetNGhostElements = _swig_new_instance_method(_ncmesh.NCMesh_GetNGhostElements)
 
     def Refine(self, refinements):
         r"""Refine(NCMesh self, RefinementArray refinements)"""

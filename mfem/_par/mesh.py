@@ -87,9 +87,19 @@ import mfem._par.coefficient
 import mfem._par.sparsemat
 import mfem._par.eltrans
 import mfem._par.fe
+import mfem._par.fe_base
+import mfem._par.fe_fixed_order
+import mfem._par.fe_h1
+import mfem._par.fe_nd
+import mfem._par.fe_rt
+import mfem._par.fe_l2
+import mfem._par.fe_nurbs
+import mfem._par.fe_pos
+import mfem._par.fe_ser
 import mfem._par.fespace
 import mfem._par.fe_coll
 import mfem._par.lininteg
+import mfem._par.doftrans
 import mfem._par.handle
 import mfem._par.hypre
 import mfem._par.restriction
@@ -234,6 +244,14 @@ class Mesh(object):
         return _mesh.Mesh_AddWedge(self, *args)
     AddWedge = _swig_new_instance_method(_mesh.Mesh_AddWedge)
 
+    def AddPyramid(self, *args):
+        r"""
+        AddPyramid(Mesh self, int v1, int v2, int v3, int v4, int v5, int attr=1) -> int
+        AddPyramid(Mesh self, int const * vi, int attr=1) -> int
+        """
+        return _mesh.Mesh_AddPyramid(self, *args)
+    AddPyramid = _swig_new_instance_method(_mesh.Mesh_AddPyramid)
+
     def AddHex(self, *args):
         r"""
         AddHex(Mesh self, int v1, int v2, int v3, int v4, int v5, int v6, int v7, int v8, int attr=1) -> int
@@ -251,6 +269,11 @@ class Mesh(object):
         r"""AddHexAsWedges(Mesh self, int const * vi, int attr=1)"""
         return _mesh.Mesh_AddHexAsWedges(self, vi, attr)
     AddHexAsWedges = _swig_new_instance_method(_mesh.Mesh_AddHexAsWedges)
+
+    def AddHexAsPyramids(self, vi, attr=1):
+        r"""AddHexAsPyramids(Mesh self, int const * vi, int attr=1)"""
+        return _mesh.Mesh_AddHexAsPyramids(self, vi, attr)
+    AddHexAsPyramids = _swig_new_instance_method(_mesh.Mesh_AddHexAsPyramids)
 
     def AddElement(self, elem):
         r"""AddElement(Mesh self, Element elem) -> int"""
