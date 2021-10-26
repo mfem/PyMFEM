@@ -198,11 +198,29 @@ def install_prefix():
     assert False, "no installation path found"
     return None
 
-def external_install_prefix():
-    import site
-    path = site.getsitepackages()[0]
-    path = os.path.join(path, 'mfem', 'external')
-    return path
+
+def external_install_prefix(verbose=True):
+    if '--user' in sys.argv:
+        paths = (site.getusersitepackages(),)
+    else:
+        py_version = '%s.%s' % (sys.version_info[0], sys.version_info[1])
+        paths = (s % (py_version) for s in (
+            sys.prefix + '/lib/python%s/dist-packages/',
+            sys.prefix + '/lib/python%s/site-packages/',
+            sys.prefix + '/local/lib/python%s/dist-packages/',
+            sys.prefix + '/local/lib/python%s/site-packages/',
+            '/Library/Python/%s/site-packages/',
+        ))
+
+    for path in paths:
+        if verbose:
+            print("testing installation path", path)
+        if os.path.exists(path):
+            path = os.path.join(path, 'mfem', 'external')
+            return path
+    assert False, "no installation path found"
+    return None
+
 
 def find_command(name):
     from shutil import which
@@ -228,6 +246,7 @@ def make_call(command, target=''):
             target = " ".join(command)
         print("Failed when calling command: " + target)
         raise
+
 
 def chdir(path):
     '''
@@ -548,7 +567,7 @@ def write_setup_local():
               'add_strumpack': '',
               'add_cuda': '',
               'add_libceed': '',
-              'libceedinc':os.path.join(libceed_prefix, 'include'),
+              'libceedinc': os.path.join(libceed_prefix, 'include'),
               'cxx11flag': cxx11_flag,
               }
 
@@ -611,7 +630,7 @@ def generate_wrapper():
             return True
         return os.path.getmtime(ifile) > os.path.getmtime(wfile)
 
-    #if build_mfem:
+    # if build_mfem:
     #    mfemser = os.path.join(prefix, 'mfem', 'ser')
     #    mfempar = os.path.join(prefix, 'mfem', 'par')
     mfemser = mfems_prefix
@@ -861,7 +880,7 @@ def configure_install(self):
         else:
             libceed_prefix = mfem_prefix
             build_libceed = True
-            
+
     if enable_pumi:
         run_swig = True
     if enable_strumpack:
@@ -895,7 +914,7 @@ def configure_install(self):
         build_mfem = False
         build_mfemp = False
         build_libceed = False
-        
+
     if ext_only:
         clean_swig = False
         run_swig = False
