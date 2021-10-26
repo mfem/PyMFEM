@@ -1,4 +1,4 @@
-name: InTestMasterBranch
+name: TestMasterTracking
 
 on:
   pull_request_target:
@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    if: contains(github.event.pull_request.lables.*.name, 'InTestMasterTracking')
+    if: contains(github.event.pull_request.labels.*.name, 'in-test-master-tracking')
     strategy:
       fail-fast: false
       matrix:
