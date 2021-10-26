@@ -91,8 +91,8 @@ jobs:
         cd ..
 
         git checkout master_tracking_branch
-	git status
-	
+        git status
+
         if [ "${USE_FLAGS}" = "000" ]; then  
            python setup.py install --prefix=$SANDBOX
         fi
