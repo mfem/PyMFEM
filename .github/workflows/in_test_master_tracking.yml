@@ -1,13 +1,14 @@
-name: InTest
+name: InTestMasterBranch
 
 on:
+  pull_request_target:
+    types:
+      - labeled
   #push:
   #  branches: [ test ]
   #pull_request:
   #  branches: [ test ]
   #  types: [synchronize]
-  pull_request_target:
-    - labeled
 
 jobs:
   if: contains(github.event.pull_request.lables.*.name, 'InTestMasterTracking')
@@ -84,7 +85,7 @@ jobs:
         echo $SANDBOX
 
         #  clone mfem master 
-	cd external
+        cd external
         git clone https://github.com/mfem/mfem.git
         cd ..
 	
