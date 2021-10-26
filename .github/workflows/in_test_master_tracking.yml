@@ -11,8 +11,8 @@ on:
   #  types: [synchronize]
 
 jobs:
-  if: contains(github.event.pull_request.lables.*.name, 'InTestMasterTracking')
   build:
+    if: contains(github.event.pull_request.lables.*.name, 'InTestMasterTracking')
     strategy:
       fail-fast: false
       matrix:
