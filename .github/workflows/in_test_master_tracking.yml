@@ -43,7 +43,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      with: master_tracking_branch
+      with:
+        ref: master_tracking_branch
  
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
