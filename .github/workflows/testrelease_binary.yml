@@ -58,10 +58,8 @@ jobs:
           git clone https://github.com/mfem/PyMFEM.git
           cd PyMFEM
           #
-<<<<<<< HEAD
-=======
+  
           mkdir external	    
->>>>>>> master
           cd external
           git clone https://github.com/mfem/mfem.git
           cd ..
