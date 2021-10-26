@@ -1,14 +1,18 @@
-name: main
+name: InTest
 
 on:
-  push:
-    branches: [ test ]
-  pull_request:
-    branches: [ test ]
-    types: [synchronize]
+  pull_request_target:
+    types:
+      - labeled
+  #push:
+  #  branches: [ test ]
+  #pull_request:
+  #  branches: [ test ]
+  #  types: [synchronize]
 
 jobs:
   build:
+    if: contains(github.event.pull_request.lables.*.name, 'InTest')  
     strategy:
       fail-fast: false
       matrix:

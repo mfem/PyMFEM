@@ -16,9 +16,12 @@ jobs:
           echo It runs directly on the virtual machine.
           #
           git clone https://github.com/mfem/PyMFEM.git
-          #git clone https://github.com/sshiraiwa/PyMFEM.git
           cd PyMFEM	  
           git checkout test_release
+          #
+          cd external
+          git clone https://github.com/mfem/mfem.git
+          cd ..
           #
           export PATH=/opt/python/cp36-cp36m/bin:$PATH	  
           pip3 install wheel	  
@@ -49,8 +52,12 @@ jobs:
           echo It runs in the container instead of the VM.
           #
           git clone https://github.com/mfem/PyMFEM.git
-          #git clone https://github.com/sshiraiwa/PyMFEM.git
           cd PyMFEM
+          #
+          cd external
+          git clone https://github.com/mfem/mfem.git
+          cd ..
+          #	  
           git checkout test_release	  
           #
           ls -l /opt/python/
