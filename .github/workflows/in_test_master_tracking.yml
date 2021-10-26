@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    if: contains(github.event.pull_request.lables.*.name, 'test-master-tracking')
+    if: contains(github.event.pull_request.lables.*.name, 'in-test-master-tracking')
     strategy:
       fail-fast: false
       matrix:
