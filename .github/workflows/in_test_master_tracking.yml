@@ -90,6 +90,9 @@ jobs:
         git clone https://github.com/mfem/mfem.git
         cd ..
 
+        git checkout master_tracking_branch
+        git status
+
         if [ "${USE_FLAGS}" = "000" ]; then  
            python setup.py install --prefix=$SANDBOX
         fi
