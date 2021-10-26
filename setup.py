@@ -170,7 +170,7 @@ metadata = {'name': 'mfem',
 def abspath(path):
     return os.path.abspath(os.path.expanduser(path))
 
-
+'''
 def install_prefix():
     """Return the installation directory, or None"""
     if '--user' in sys.argv:
@@ -197,7 +197,7 @@ def install_prefix():
             return path
     assert False, "no installation path found"
     return None
-
+'''
 
 def external_install_prefix(verbose=True):
     if '--user' in sys.argv:
@@ -530,12 +530,12 @@ def write_setup_local():
     '''
     import numpy
 
-    if build_mfem:
-        mfemser = os.path.join(prefix, 'mfem', 'ser')
-        mfempar = os.path.join(prefix, 'mfem', 'par')
-    else:
-        mfemser = mfems_prefix
-        mfempar = mfemp_prefix
+    #if build_mfem:
+    #    mfemser = os.path.join(prefix, 'mfem', 'ser')
+    #    mfempar = os.path.join(prefix, 'mfem', 'par')
+    #else:
+    mfemser = mfems_prefix
+    mfempar = mfemp_prefix
 
     hyprelibpath = os.path.dirname(
         find_libpath_from_prefix(
@@ -848,7 +848,7 @@ def configure_install(self):
         build_hypre = build_parallel
         build_metis = build_parallel
 
-        if ext_prefix != '':
+        if ext_prefix == '':
             ext_prefix = external_install_prefix()
         hypre_prefix = os.path.join(ext_prefix)
         metis_prefix = os.path.join(ext_prefix)
@@ -1045,19 +1045,23 @@ class Install(_install):
     def finalize_options(self):
         if (bool(self.ext_only) and bool(self.skip_ext)):
             assert False, "skip-ext and ext-only can not use together"
-        _install.finalize_options(self)
 
-        global verbose
-        verbose = bool(self.verbose)
+        given_prefix = True
         if (self.prefix == '' or
                 self.prefix is None):
-            self.prefix = install_prefix()
-        else:
-            if verbose:
-                print("prefix is given :", self.prefix)
+            given_prefix = False
+
+        _install.finalize_options(self)            
+        global verbose
+        verbose = bool(self.verbose)
+        if given_prefix:
             global ext_prefix
             ext_prefix = self.prefix
-
+        else:
+            self.prefix = sys.prefix
+        if verbose:
+            print("prefix is :", self.prefix)
+        
     def run(self):
         if not is_configured:
             configure_install(self)
