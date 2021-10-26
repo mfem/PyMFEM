@@ -848,7 +848,8 @@ def configure_install(self):
         build_hypre = build_parallel
         build_metis = build_parallel
 
-        ext_prefix = external_install_prefix()
+        if ext_prefix != '':
+            ext_prefix = external_install_prefix()
         hypre_prefix = os.path.join(ext_prefix)
         metis_prefix = os.path.join(ext_prefix)
 
@@ -1054,6 +1055,8 @@ class Install(_install):
         else:
             if verbose:
                 print("prefix is given :", self.prefix)
+            global ext_prefix
+            ext_prefix = self.prefix
 
     def run(self):
         if not is_configured:
