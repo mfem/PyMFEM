@@ -84,7 +84,8 @@ jobs:
         echo $PYTHONPATH
         echo $SANDBOX
 
-        #  clone mfem master 
+        #  clone mfem master
+        mkdir external
         cd external
         git clone https://github.com/mfem/mfem.git
         cd ..

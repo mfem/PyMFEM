@@ -19,6 +19,7 @@ jobs:
           cd PyMFEM	  
           git checkout test_release
           #
+          mkdir external	  
           cd external
           git clone https://github.com/mfem/mfem.git
           cd ..
@@ -54,6 +55,7 @@ jobs:
           git clone https://github.com/mfem/PyMFEM.git
           cd PyMFEM
           #
+          mkdir external	    
           cd external
           git clone https://github.com/mfem/mfem.git
           cd ..
