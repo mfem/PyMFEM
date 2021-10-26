@@ -19,10 +19,7 @@ jobs:
           cd PyMFEM	  
           git checkout test_release
           #
-<<<<<<< HEAD
-=======
           mkdir external	  
->>>>>>> master
           cd external
           git clone https://github.com/mfem/mfem.git
           cd ..
