@@ -39,7 +39,8 @@ except ImportError:
 repo_releases = {"mfem": "https://github.com/mfem/mfem/archive/v4.3.tar.gz",
                  "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
                  "hypre": "https://github.com/hypre-space/hypre/archive/v2.20.0.tar.gz",
-                 "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.9.0.tar.gz", }
+                 "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.9.0.tar.gz",
+                 "gslib": "https://github.com/Nek5000/gslib/archive/refs/tags/v1.0.7.tar.gz"}
 
 repos = {"mfem": "https://github.com/mfem/mfem.git", }
 
