@@ -1,13 +1,16 @@
-name: main
+name: InTest
 
 on:
-  push:
-    branches: [ test ]
-  pull_request:
-    branches: [ test ]
-    types: [synchronize]
+  #push:
+  #  branches: [ test ]
+  #pull_request:
+  #  branches: [ test ]
+  #  types: [synchronize]
+  pull_request_target:
+    - labeled
 
 jobs:
+  if: contains(github.event.pull_request.lables.*.name, 'InTestMasterTracking')
   build:
     strategy:
       fail-fast: false
@@ -79,6 +82,12 @@ jobs:
         echo $PATH
         echo $PYTHONPATH
         echo $SANDBOX
+
+        #  clone mfem master 
+	cd external
+        git clone https://github.com/mfem/mfem.git
+        cd ..
+	
         if [ "${USE_FLAGS}" = "000" ]; then  
            python setup.py install --prefix=$SANDBOX
         fi
