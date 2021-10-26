@@ -25,17 +25,16 @@ source env/bin/activate
 pip3 install -i  https://test.pypi.org/simple  mfem --no-binary mfem --verbose
 
 
-### docker ...
+### Test linux binary build locally using docker ...
 
 sudo docker pull quay.io/pypa/manylinux2010_x86_64
 sudo docker run -it -v $(pwd):/io quay.io/pypa/manylinux2010_x86_64
-###  (may not need this) yum install openssh-server openssh-clients
-git clone git@github.com:mfem/PyMFEM.git
+yum install openssh-server openssh-clients
+yum install zlib-devel
+#git clone git@github.com:mfem/PyMFEM.git
+git clone https:/github.com/mfem/PyMFEM.git
 export PATH=/opt/python/cp36-cp36m/bin:$PATH
-pip install numpy
-pip install six
-pip install auditwheel
-pip install twine
+pip install six numpy scipy auditwheel twine cmake
 python3 setup.py install
 rm -rf dist/*
 python3 setup.py bdist_wheel

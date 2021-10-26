@@ -31,6 +31,7 @@ public:
     virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
     virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
+    virtual void PrintMatlab(std::ostream &out) const;
     virtual ~SwigDirector_Operator();
 
 /* Internal director utilities */
@@ -84,6 +85,7 @@ public:
     virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
     virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
+    virtual void PrintMatlab(std::ostream &out) const;
     virtual ~SwigDirector_TimeDependentOperator();
     virtual double GetTime() const;
     virtual void SetTime(double const t_);
@@ -149,6 +151,7 @@ public:
     virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
     virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
+    virtual void PrintMatlab(std::ostream &out) const;
     virtual ~SwigDirector_TimeDependentAdjointOperator();
     virtual double GetTime() const;
     virtual void SetTime(double const t_);
@@ -220,6 +223,7 @@ public:
     virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
     virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
+    virtual void PrintMatlab(std::ostream &out) const;
     virtual ~SwigDirector_SecondOrderTimeDependentOperator();
     virtual double GetTime() const;
     virtual void SetTime(double const t_);
@@ -288,6 +292,7 @@ public:
     virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
     virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
+    virtual void PrintMatlab(std::ostream &out) const;
     virtual ~SwigDirector_Solver();
     virtual void SetOperator(mfem::Operator const &op);
 
@@ -342,6 +347,7 @@ public:
     virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
     virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
+    virtual void PrintMatlab(std::ostream &out) const;
     virtual ~SwigDirector_PyOperatorBase();
     virtual mfem::Vector &_EvalMult(mfem::Vector const &arg0) const;
 
@@ -396,6 +402,7 @@ public:
     virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
     virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
+    virtual void PrintMatlab(std::ostream &out) const;
     virtual ~SwigDirector_PyTimeDependentOperatorBase();
     virtual double GetTime() const;
     virtual void SetTime(double const t_);

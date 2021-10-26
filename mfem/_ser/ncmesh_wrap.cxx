@@ -3130,12 +3130,13 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__Vector swig_types[30]
 #define SWIGTYPE_p_p_mfem__Refinement swig_types[31]
 #define SWIGTYPE_p_pri_t swig_types[32]
-#define SWIGTYPE_p_quad_t swig_types[33]
-#define SWIGTYPE_p_seg_t swig_types[34]
-#define SWIGTYPE_p_tet_t swig_types[35]
-#define SWIGTYPE_p_tri_t swig_types[36]
-static swig_type_info *swig_types[38];
-static swig_module_info swig_module = {swig_types, 37, 0, 0, 0, 0};
+#define SWIGTYPE_p_pyr_t swig_types[33]
+#define SWIGTYPE_p_quad_t swig_types[34]
+#define SWIGTYPE_p_seg_t swig_types[35]
+#define SWIGTYPE_p_tet_t swig_types[36]
+#define SWIGTYPE_p_tri_t swig_types[37]
+static swig_type_info *swig_types[39];
+static swig_module_info swig_module = {swig_types, 38, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5336,6 +5337,47 @@ SWIGINTERN PyObject *_wrap_NCMesh_GetNFaces(PyObject *SWIGUNUSEDPARM(self), PyOb
   {
     try {
       result = (int)((mfem::NCMesh const *)arg1)->GetNFaces();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NCMesh_GetNGhostElements(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::NCMesh *arg1 = (mfem::NCMesh *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_GetNGhostElements" "', argument " "1"" of type '" "mfem::NCMesh const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
+  {
+    try {
+      result = (int)((mfem::NCMesh const *)arg1)->GetNGhostElements();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -9976,6 +10018,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "NCMesh_GetNVertices", _wrap_NCMesh_GetNVertices, METH_O, "NCMesh_GetNVertices(NCMesh self) -> int"},
 	 { "NCMesh_GetNEdges", _wrap_NCMesh_GetNEdges, METH_O, "NCMesh_GetNEdges(NCMesh self) -> int"},
 	 { "NCMesh_GetNFaces", _wrap_NCMesh_GetNFaces, METH_O, "NCMesh_GetNFaces(NCMesh self) -> int"},
+	 { "NCMesh_GetNGhostElements", _wrap_NCMesh_GetNGhostElements, METH_O, "NCMesh_GetNGhostElements(NCMesh self) -> int"},
 	 { "NCMesh_Refine", (PyCFunction)(void(*)(void))_wrap_NCMesh_Refine, METH_VARARGS|METH_KEYWORDS, "NCMesh_Refine(NCMesh self, RefinementArray refinements)"},
 	 { "NCMesh_LimitNCLevel", (PyCFunction)(void(*)(void))_wrap_NCMesh_LimitNCLevel, METH_VARARGS|METH_KEYWORDS, "NCMesh_LimitNCLevel(NCMesh self, int max_nc_level)"},
 	 { "NCMesh_GetDerefinementTable", _wrap_NCMesh_GetDerefinementTable, METH_O, "NCMesh_GetDerefinementTable(NCMesh self) -> Table"},
@@ -10136,6 +10179,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "NCMesh_GetNVertices", _wrap_NCMesh_GetNVertices, METH_O, "GetNVertices(NCMesh self) -> int"},
 	 { "NCMesh_GetNEdges", _wrap_NCMesh_GetNEdges, METH_O, "GetNEdges(NCMesh self) -> int"},
 	 { "NCMesh_GetNFaces", _wrap_NCMesh_GetNFaces, METH_O, "GetNFaces(NCMesh self) -> int"},
+	 { "NCMesh_GetNGhostElements", _wrap_NCMesh_GetNGhostElements, METH_O, "GetNGhostElements(NCMesh self) -> int"},
 	 { "NCMesh_Refine", (PyCFunction)(void(*)(void))_wrap_NCMesh_Refine, METH_VARARGS|METH_KEYWORDS, "Refine(NCMesh self, RefinementArray refinements)"},
 	 { "NCMesh_LimitNCLevel", (PyCFunction)(void(*)(void))_wrap_NCMesh_LimitNCLevel, METH_VARARGS|METH_KEYWORDS, "LimitNCLevel(NCMesh self, int max_nc_level)"},
 	 { "NCMesh_GetDerefinementTable", _wrap_NCMesh_GetDerefinementTable, METH_O, "GetDerefinementTable(NCMesh self) -> Table"},
@@ -10293,6 +10337,7 @@ static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__Quadrature
 static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__Refinement = {"_p_p_mfem__Refinement", "mfem::Refinement **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_pyr_t = {"_p_pyr_t", "pyr_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
@@ -10332,6 +10377,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__Vector,
   &_swigt__p_p_mfem__Refinement,
   &_swigt__p_pri_t,
+  &_swigt__p_pyr_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
   &_swigt__p_tet_t,
@@ -10371,6 +10417,7 @@ static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearFo
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__Refinement[] = {  {&_swigt__p_p_mfem__Refinement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_pyr_t[] = {  {&_swigt__p_pyr_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -10410,6 +10457,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__Vector,
   _swigc__p_p_mfem__Refinement,
   _swigc__p_pri_t,
+  _swigc__p_pyr_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
   _swigc__p_tet_t,

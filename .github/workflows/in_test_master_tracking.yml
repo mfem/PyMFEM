@@ -1,14 +1,18 @@
-name: main
+name: TestMasterTracking
 
 on:
-  push:
-    branches: [ test ]
-  pull_request:
-    branches: [ test ]
-    types: [synchronize]
+  pull_request_target:
+    types:
+      - labeled
+  #push:
+  #  branches: [ test ]
+  #pull_request:
+  #  branches: [ test ]
+  #  types: [synchronize]
 
 jobs:
   build:
+    if: contains(github.event.pull_request.labels.*.name, 'in-test-master-tracking')
     strategy:
       fail-fast: false
       matrix:
@@ -79,6 +83,13 @@ jobs:
         echo $PATH
         echo $PYTHONPATH
         echo $SANDBOX
+
+        #  clone mfem master
+        mkdir external
+        cd external
+        git clone https://github.com/mfem/mfem.git
+        cd ..
+
         if [ "${USE_FLAGS}" = "000" ]; then  
            python setup.py install --prefix=$SANDBOX
         fi

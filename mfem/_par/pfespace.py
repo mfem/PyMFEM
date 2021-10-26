@@ -89,13 +89,22 @@ import mfem._par.densemat
 import mfem._par.eltrans
 import mfem._par.fe
 import mfem._par.geom
+import mfem._par.fe_base
+import mfem._par.fe_fixed_order
+import mfem._par.element
+import mfem._par.table
+import mfem._par.hash
+import mfem._par.fe_h1
+import mfem._par.fe_nd
+import mfem._par.fe_rt
+import mfem._par.fe_l2
+import mfem._par.fe_nurbs
+import mfem._par.fe_pos
+import mfem._par.fe_ser
 import mfem._par.mesh
 import mfem._par.sort_pairs
 import mfem._par.ncmesh
 import mfem._par.vtk
-import mfem._par.element
-import mfem._par.table
-import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.bilininteg
@@ -103,6 +112,7 @@ import mfem._par.fe_coll
 import mfem._par.lininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.doftrans
 import mfem._par.handle
 import mfem._par.hypre
 import mfem._par.restriction
@@ -117,6 +127,7 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
     __repr__ = _swig_repr
     num_face_nbr_dofs = property(_pfespace.ParFiniteElementSpace_num_face_nbr_dofs_get, _pfespace.ParFiniteElementSpace_num_face_nbr_dofs_set, doc=r"""num_face_nbr_dofs : int""")
     face_nbr_element_dof = property(_pfespace.ParFiniteElementSpace_face_nbr_element_dof_get, _pfespace.ParFiniteElementSpace_face_nbr_element_dof_set, doc=r"""face_nbr_element_dof : mfem::Table""")
+    face_nbr_element_fos = property(_pfespace.ParFiniteElementSpace_face_nbr_element_fos_get, _pfespace.ParFiniteElementSpace_face_nbr_element_fos_set, doc=r"""face_nbr_element_fos : mfem::Table""")
     face_nbr_ldof = property(_pfespace.ParFiniteElementSpace_face_nbr_ldof_get, _pfespace.ParFiniteElementSpace_face_nbr_ldof_set, doc=r"""face_nbr_ldof : mfem::Table""")
     face_nbr_glob_dof_map = property(_pfespace.ParFiniteElementSpace_face_nbr_glob_dof_map_get, doc=r"""face_nbr_glob_dof_map : mfem::Array<(HYPRE_BigInt)>""")
     send_face_nbr_ldof = property(_pfespace.ParFiniteElementSpace_send_face_nbr_ldof_get, _pfespace.ParFiniteElementSpace_send_face_nbr_ldof_set, doc=r"""send_face_nbr_ldof : mfem::Table""")
@@ -343,7 +354,7 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
     GetFaceNbrVSize = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetFaceNbrVSize)
 
     def GetFaceNbrElementVDofs(self, i, vdofs):
-        r"""GetFaceNbrElementVDofs(ParFiniteElementSpace self, int i, intArray vdofs)"""
+        r"""GetFaceNbrElementVDofs(ParFiniteElementSpace self, int i, intArray vdofs) -> DofTransformation"""
         return _pfespace.ParFiniteElementSpace_GetFaceNbrElementVDofs(self, i, vdofs)
     GetFaceNbrElementVDofs = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetFaceNbrElementVDofs)
 
@@ -396,6 +407,11 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
         r"""Nonconforming(ParFiniteElementSpace self) -> bool"""
         return _pfespace.ParFiniteElementSpace_Nonconforming(self)
     Nonconforming = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_Nonconforming)
+
+    def SharedNDTriangleDofs(self):
+        r"""SharedNDTriangleDofs(ParFiniteElementSpace self) -> bool"""
+        return _pfespace.ParFiniteElementSpace_SharedNDTriangleDofs(self)
+    SharedNDTriangleDofs = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_SharedNDTriangleDofs)
 
     def GetTrueTransferOperator(self, coarse_fes, T):
         r"""GetTrueTransferOperator(ParFiniteElementSpace self, FiniteElementSpace coarse_fes, OperatorHandle T)"""

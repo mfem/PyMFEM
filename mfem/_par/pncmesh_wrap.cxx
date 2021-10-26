@@ -3131,13 +3131,14 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__Table swig_types[31]
 #define SWIGTYPE_p_mfem__Vector swig_types[32]
 #define SWIGTYPE_p_pri_t swig_types[33]
-#define SWIGTYPE_p_quad_t swig_types[34]
-#define SWIGTYPE_p_seg_t swig_types[35]
-#define SWIGTYPE_p_std__vectorT_int_t swig_types[36]
-#define SWIGTYPE_p_tet_t swig_types[37]
-#define SWIGTYPE_p_tri_t swig_types[38]
-static swig_type_info *swig_types[40];
-static swig_module_info swig_module = {swig_types, 39, 0, 0, 0, 0};
+#define SWIGTYPE_p_pyr_t swig_types[34]
+#define SWIGTYPE_p_quad_t swig_types[35]
+#define SWIGTYPE_p_seg_t swig_types[36]
+#define SWIGTYPE_p_std__vectorT_int_t swig_types[37]
+#define SWIGTYPE_p_tet_t swig_types[38]
+#define SWIGTYPE_p_tri_t swig_types[39]
+static swig_type_info *swig_types[41];
+static swig_module_info swig_module = {swig_types, 40, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4092,6 +4093,66 @@ SWIGINTERN PyObject *_wrap_ParNCMesh_Derefine(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       (arg1)->Derefine((mfem::Array< int > const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParNCMesh_GetFineToCoarsePartitioning(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
+  mfem::Array< int > *arg2 = 0 ;
+  mfem::Array< int > *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"derefs",  (char *)"new_ranks",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ParNCMesh_GetFineToCoarsePartitioning", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_GetFineToCoarsePartitioning" "', argument " "1"" of type '" "mfem::ParNCMesh const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParNCMesh_GetFineToCoarsePartitioning" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParNCMesh_GetFineToCoarsePartitioning" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParNCMesh_GetFineToCoarsePartitioning" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParNCMesh_GetFineToCoarsePartitioning" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
+  {
+    try {
+      ((mfem::ParNCMesh const *)arg1)->GetFineToCoarsePartitioning((mfem::Array< int > const &)*arg2,*arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -5451,6 +5512,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "ParNCMesh_LimitNCLevel", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_LimitNCLevel, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_LimitNCLevel(ParNCMesh self, int max_nc_level)"},
 	 { "ParNCMesh_CheckDerefinementNCLevel", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_CheckDerefinementNCLevel, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_CheckDerefinementNCLevel(ParNCMesh self, Table deref_table, intArray level_ok, int max_nc_level)"},
 	 { "ParNCMesh_Derefine", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_Derefine, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_Derefine(ParNCMesh self, intArray derefs)"},
+	 { "ParNCMesh_GetFineToCoarsePartitioning", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_GetFineToCoarsePartitioning, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_GetFineToCoarsePartitioning(ParNCMesh self, intArray derefs, intArray new_ranks)"},
 	 { "ParNCMesh_Rebalance", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_Rebalance, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_Rebalance(ParNCMesh self, intArray custom_partition=None)"},
 	 { "ParNCMesh_GetNElements", _wrap_ParNCMesh_GetNElements, METH_O, "ParNCMesh_GetNElements(ParNCMesh self) -> int"},
 	 { "ParNCMesh_GetNGhostVertices", _wrap_ParNCMesh_GetNGhostVertices, METH_O, "ParNCMesh_GetNGhostVertices(ParNCMesh self) -> int"},
@@ -5498,6 +5560,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ParNCMesh_LimitNCLevel", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_LimitNCLevel, METH_VARARGS|METH_KEYWORDS, "LimitNCLevel(ParNCMesh self, int max_nc_level)"},
 	 { "ParNCMesh_CheckDerefinementNCLevel", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_CheckDerefinementNCLevel, METH_VARARGS|METH_KEYWORDS, "CheckDerefinementNCLevel(ParNCMesh self, Table deref_table, intArray level_ok, int max_nc_level)"},
 	 { "ParNCMesh_Derefine", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_Derefine, METH_VARARGS|METH_KEYWORDS, "Derefine(ParNCMesh self, intArray derefs)"},
+	 { "ParNCMesh_GetFineToCoarsePartitioning", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_GetFineToCoarsePartitioning, METH_VARARGS|METH_KEYWORDS, "GetFineToCoarsePartitioning(ParNCMesh self, intArray derefs, intArray new_ranks)"},
 	 { "ParNCMesh_Rebalance", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_Rebalance, METH_VARARGS|METH_KEYWORDS, "Rebalance(ParNCMesh self, intArray custom_partition=None)"},
 	 { "ParNCMesh_GetNElements", _wrap_ParNCMesh_GetNElements, METH_O, "GetNElements(ParNCMesh self) -> int"},
 	 { "ParNCMesh_GetNGhostVertices", _wrap_ParNCMesh_GetNGhostVertices, METH_O, "GetNGhostVertices(ParNCMesh self) -> int"},
@@ -5587,6 +5650,7 @@ static swig_type_info _swigt__p_mfem__HypreParVector = {"_p_mfem__HypreParVector
 static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_pyr_t = {"_p_pyr_t", "pyr_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_int_t = {"_p_std__vectorT_int_t", "mfem::ParNCMesh::CommGroup *|std::vector< int > *", 0, 0, (void*)0, 0};
@@ -5628,6 +5692,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__Table,
   &_swigt__p_mfem__Vector,
   &_swigt__p_pri_t,
+  &_swigt__p_pyr_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
   &_swigt__p_std__vectorT_int_t,
@@ -5669,6 +5734,7 @@ static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__
 static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__HypreParVector, _p_mfem__HypreParVectorTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_pyr_t[] = {  {&_swigt__p_pyr_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_int_t[] = {  {&_swigt__p_std__vectorT_int_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -5710,6 +5776,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__Table,
   _swigc__p_mfem__Vector,
   _swigc__p_pri_t,
+  _swigc__p_pyr_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
   _swigc__p_std__vectorT_int_t,
@@ -6450,14 +6517,14 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40300)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.3.0"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40300)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40301)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.3.1"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40301)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40300)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40300)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40300)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40301)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40301)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40301)%100))));
   SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(22000)));
   
   if (import_mpi4py() < 0)

@@ -79,17 +79,27 @@ import mfem._par.densemat
 import mfem._par.eltrans
 import mfem._par.fe
 import mfem._par.geom
+import mfem._par.fe_base
+import mfem._par.fe_fixed_order
+import mfem._par.element
+import mfem._par.table
+import mfem._par.hash
+import mfem._par.fe_h1
+import mfem._par.fe_nd
+import mfem._par.fe_rt
+import mfem._par.fe_l2
+import mfem._par.fe_nurbs
+import mfem._par.fe_pos
+import mfem._par.fe_ser
 import mfem._par.fespace
 import mfem._par.mesh
 import mfem._par.sort_pairs
 import mfem._par.ncmesh
 import mfem._par.vtk
-import mfem._par.element
-import mfem._par.table
-import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.fe_coll
 import mfem._par.lininteg
+import mfem._par.doftrans
 import mfem._par.handle
 import mfem._par.hypre
 import mfem._par.restriction
@@ -534,6 +544,7 @@ class GridFunction(mfem._par.vector.Vector):
         __init__(GridFunction self, GridFunction orig) -> GridFunction
         __init__(GridFunction self, FiniteElementSpace f) -> GridFunction
         __init__(GridFunction self, FiniteElementSpace f, double * data) -> GridFunction
+        __init__(GridFunction self, FiniteElementSpace f, Vector base, int base_offset=0) -> GridFunction
         __init__(GridFunction self, Mesh m, std::istream & input) -> GridFunction
         __init__(GridFunction self, Mesh m, mfem::GridFunction *[] gf_array, int num_pieces) -> GridFunction
         __init__(GridFunction self, FiniteElementSpace fes, Vector v, int offset) -> GridFunction

@@ -76,6 +76,7 @@ build_libceed = False
 build_parallel = False
 build_serial = False
 
+ext_prefix = ''
 mfems_prefix = ''
 mfemp_prefix = ''
 metis_prefix = ''
@@ -198,6 +199,29 @@ def install_prefix():
     return None
 
 
+def external_install_prefix(verbose=True):
+    if '--user' in sys.argv:
+        paths = (site.getusersitepackages(),)
+    else:
+        py_version = '%s.%s' % (sys.version_info[0], sys.version_info[1])
+        paths = (s % (py_version) for s in (
+            sys.prefix + '/lib/python%s/dist-packages/',
+            sys.prefix + '/lib/python%s/site-packages/',
+            sys.prefix + '/local/lib/python%s/dist-packages/',
+            sys.prefix + '/local/lib/python%s/site-packages/',
+            '/Library/Python/%s/site-packages/',
+        ))
+
+    for path in paths:
+        if verbose:
+            print("testing installation path", path)
+        if os.path.exists(path):
+            path = os.path.join(path, 'mfem', 'external')
+            return path
+    assert False, "no installation path found"
+    return None
+
+
 def find_command(name):
     from shutil import which
     return which(name)
@@ -222,6 +246,7 @@ def make_call(command, target=''):
             target = " ".join(command)
         print("Failed when calling command: " + target)
         raise
+
 
 def chdir(path):
     '''
@@ -451,13 +476,12 @@ def cmake_make_mfem(serial=True):
     if serial:
         cmake_opts['DCMAKE_CXX_COMPILER'] = cxx_command
         cmake_opts['DMFEM_USE_EXCEPTIONS'] = '1'
-        cmake_opts['DCMAKE_INSTALL_PREFIX'] = os.path.join(
-            prefix, 'mfem', 'ser')
+        cmake_opts['DCMAKE_INSTALL_PREFIX'] = mfems_prefix
+
     else:
         cmake_opts['DCMAKE_CXX_COMPILER'] = mpicxx_command
         cmake_opts['DMFEM_USE_EXCEPTIONS'] = '0'
-        cmake_opts['DCMAKE_INSTALL_PREFIX'] = os.path.join(
-            prefix, 'mfem', 'par')
+        cmake_opts['DCMAKE_INSTALL_PREFIX'] = mfemp_prefix
         cmake_opts['DMFEM_USE_MPI'] = '1'
         cmake_opts['DMFEM_USE_METIS_5'] = '1'
         cmake_opts['DHYPRE_DIR'] = hypre_prefix
@@ -542,7 +566,8 @@ def write_setup_local():
               'add_pumi': '',
               'add_strumpack': '',
               'add_cuda': '',
-              'add_libceed': '',              
+              'add_libceed': '',
+              'libceedinc': os.path.join(libceed_prefix, 'include'),
               'cxx11flag': cxx11_flag,
               }
 
@@ -565,8 +590,10 @@ def write_setup_local():
         add_extra('strumpack')
     if enable_cuda:
         add_extra('cuda')
+
     if enable_libceed:
         add_extra('libceed')
+        print("libceedinc", os.path.join(libceed_prefix, 'include'))
 
     pwd = chdir(rootdir)
 
@@ -603,12 +630,11 @@ def generate_wrapper():
             return True
         return os.path.getmtime(ifile) > os.path.getmtime(wfile)
 
-    if build_mfem:
-        mfemser = os.path.join(prefix, 'mfem', 'ser')
-        mfempar = os.path.join(prefix, 'mfem', 'par')
-    else:
-        mfemser = mfems_prefix
-        mfempar = mfemp_prefix
+    # if build_mfem:
+    #    mfemser = os.path.join(prefix, 'mfem', 'ser')
+    #    mfempar = os.path.join(prefix, 'mfem', 'par')
+    mfemser = mfems_prefix
+    mfempar = mfemp_prefix
 
     pwd = chdir(os.path.join(rootdir, 'mfem', 'common'))
     command1 = [sys.executable, "generate_lininteg_ext.py"]
@@ -722,7 +748,7 @@ def print_config():
     print("----configuration----")
     print(" prefix", prefix)
     print(" when needed, the dependency (mfem/hypre/metis) will be installed under " +
-          prefix + "/mfem")
+          ext_prefix)
     print(" build mfem : " + ("Yes" if build_mfem else "No"))
     print(" build metis : " + ("Yes" if build_metis else "No"))
     print(" build hypre : " + ("Yes" if build_hypre else "No"))
@@ -744,7 +770,7 @@ def configure_install(self):
     '''
     called when install workflow is used
     '''
-    global prefix, dry_run, verbose
+    global prefix, dry_run, verbose, ext_prefix
     global clean_swig, run_swig, swig_only, skip_install
     global build_mfem, build_mfemp, build_parallel, build_serial
     global mfem_branch
@@ -822,12 +848,13 @@ def configure_install(self):
         build_hypre = build_parallel
         build_metis = build_parallel
 
-        hypre_prefix = os.path.join(prefix, 'mfem')
-        metis_prefix = os.path.join(prefix, 'mfem')
+        ext_prefix = external_install_prefix()
+        hypre_prefix = os.path.join(ext_prefix)
+        metis_prefix = os.path.join(ext_prefix)
 
-        mfem_prefix = os.path.join(prefix, 'mfem')
-        mfems_prefix = os.path.join(prefix, 'mfem', 'ser')
-        mfemp_prefix = os.path.join(prefix, 'mfem', 'par')
+        mfem_prefix = ext_prefix
+        mfems_prefix = os.path.join(ext_prefix, 'ser')
+        mfemp_prefix = os.path.join(ext_prefix, 'par')
 
     if self.mfem_branch != '':
         mfem_branch = self.mfem_branch
@@ -886,6 +913,8 @@ def configure_install(self):
         build_hypre = False
         build_mfem = False
         build_mfemp = False
+        build_libceed = False
+
     if ext_only:
         clean_swig = False
         run_swig = False

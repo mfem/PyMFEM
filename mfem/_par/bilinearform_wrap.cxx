@@ -3249,13 +3249,14 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__VectorMassIntegrator swig_types[149]
 #define SWIGTYPE_p_mfem__VectorScalarProductInterpolator swig_types[150]
 #define SWIGTYPE_p_pri_t swig_types[151]
-#define SWIGTYPE_p_quad_t swig_types[152]
-#define SWIGTYPE_p_seg_t swig_types[153]
-#define SWIGTYPE_p_std__ostream swig_types[154]
-#define SWIGTYPE_p_tet_t swig_types[155]
-#define SWIGTYPE_p_tri_t swig_types[156]
-static swig_type_info *swig_types[158];
-static swig_module_info swig_module = {swig_types, 157, 0, 0, 0, 0};
+#define SWIGTYPE_p_pyr_t swig_types[152]
+#define SWIGTYPE_p_quad_t swig_types[153]
+#define SWIGTYPE_p_seg_t swig_types[154]
+#define SWIGTYPE_p_std__ostream swig_types[155]
+#define SWIGTYPE_p_tet_t swig_types[156]
+#define SWIGTYPE_p_tri_t swig_types[157]
+static swig_type_info *swig_types[159];
+static swig_module_info swig_module = {swig_types, 158, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3947,6 +3948,32 @@ void SwigDirector_BilinearForm::RecoverFEMSolution(mfem::Vector const &X, mfem::
 }
 
 
+void SwigDirector_BilinearForm::PrintMatlab(std::ostream &out) const {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&out), SWIGTYPE_p_std__ostream,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearForm.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 11;
+  const char *const swig_method_name = "PrintMatlab";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("PrintMatlab");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
 SwigDirector_BilinearForm::~SwigDirector_BilinearForm() {
 }
 
@@ -3964,7 +3991,7 @@ double &SwigDirector_BilinearForm::Elem(int i, int j) {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearForm.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char *const swig_method_name = "Elem";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
@@ -4004,7 +4031,7 @@ double const &SwigDirector_BilinearForm::Elem(int i, int j) const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearForm.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char *const swig_method_name = "Elem";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
@@ -4042,7 +4069,7 @@ mfem::MatrixInverse *SwigDirector_BilinearForm::Inverse() const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearForm.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char *const swig_method_name = "Inverse";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject args = PyTuple_New(0);
@@ -4076,7 +4103,7 @@ void SwigDirector_BilinearForm::Finalize(int skip_zeros) {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearForm.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char *const swig_method_name = "Finalize";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
@@ -4104,7 +4131,7 @@ void SwigDirector_BilinearForm::Print(std::ostream &out, int width_) const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearForm.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 15;
+  const size_t swig_method_index = 16;
   const char *const swig_method_name = "Print";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
@@ -4134,7 +4161,7 @@ void SwigDirector_BilinearForm::AddMult(mfem::Vector const &x, mfem::Vector &y, 
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearForm.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 17;
   const char *const swig_method_name = "AddMult";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
@@ -4164,7 +4191,7 @@ void SwigDirector_BilinearForm::AddMultTranspose(mfem::Vector const &x, mfem::Ve
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearForm.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 17;
+  const size_t swig_method_index = 18;
   const char *const swig_method_name = "AddMultTranspose";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
@@ -4202,7 +4229,7 @@ void SwigDirector_BilinearForm::FormLinearSystem(mfem::Array< int > const &ess_t
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearForm.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 18;
+  const size_t swig_method_index = 19;
   const char *const swig_method_name = "FormLinearSystem";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3,(PyObject *)obj4,(PyObject *)obj5,(PyObject *)obj6, NULL);
@@ -4230,7 +4257,7 @@ void SwigDirector_BilinearForm::FormSystemMatrix(mfem::Array< int > const &ess_t
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearForm.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 19;
+  const size_t swig_method_index = 20;
   const char *const swig_method_name = "FormSystemMatrix";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
@@ -4256,7 +4283,7 @@ void SwigDirector_BilinearForm::Update(mfem::FiniteElementSpace *nfes) {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearForm.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 20;
+  const size_t swig_method_index = 21;
   const char *const swig_method_name = "Update";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
@@ -14237,6 +14264,7 @@ static swig_type_info _swigt__p_mfem__HypreParVector = {"_p_mfem__HypreParVector
 static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_pyr_t = {"_p_pyr_t", "pyr_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__ostream = {"_p_std__ostream", "std::ostream *", 0, 0, (void*)0, 0};
@@ -14397,6 +14425,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__VectorMassIntegrator,
   &_swigt__p_mfem__VectorScalarProductInterpolator,
   &_swigt__p_pri_t,
+  &_swigt__p_pyr_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
   &_swigt__p_std__ostream,
@@ -14555,6 +14584,7 @@ static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__
 static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__HypreParVector, _p_mfem__HypreParVectorTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_pyr_t[] = {  {&_swigt__p_pyr_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__OutStream[] = {{&_swigt__p_mfem__OutStream, 0, 0, 0},{0, 0, 0, 0}};
@@ -14715,6 +14745,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__VectorMassIntegrator,
   _swigc__p_mfem__VectorScalarProductInterpolator,
   _swigc__p_pri_t,
+  _swigc__p_pyr_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
   _swigc__p_std__ostream,

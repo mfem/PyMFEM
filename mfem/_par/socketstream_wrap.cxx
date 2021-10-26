@@ -3123,12 +3123,13 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__socketserver swig_types[23]
 #define SWIGTYPE_p_mfem__socketstream swig_types[24]
 #define SWIGTYPE_p_pri_t swig_types[25]
-#define SWIGTYPE_p_quad_t swig_types[26]
-#define SWIGTYPE_p_seg_t swig_types[27]
-#define SWIGTYPE_p_tet_t swig_types[28]
-#define SWIGTYPE_p_tri_t swig_types[29]
-static swig_type_info *swig_types[31];
-static swig_module_info swig_module = {swig_types, 30, 0, 0, 0, 0};
+#define SWIGTYPE_p_pyr_t swig_types[26]
+#define SWIGTYPE_p_quad_t swig_types[27]
+#define SWIGTYPE_p_seg_t swig_types[28]
+#define SWIGTYPE_p_tet_t swig_types[29]
+#define SWIGTYPE_p_tri_t swig_types[30]
+static swig_type_info *swig_types[32];
+static swig_module_info swig_module = {swig_types, 31, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5489,6 +5490,7 @@ static swig_type_info _swigt__p_mfem__socketbuf = {"_p_mfem__socketbuf", "mfem::
 static swig_type_info _swigt__p_mfem__socketserver = {"_p_mfem__socketserver", "mfem::socketserver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__socketstream = {"_p_mfem__socketstream", "mfem::socketstream *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_pyr_t = {"_p_pyr_t", "pyr_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
@@ -5521,6 +5523,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__socketserver,
   &_swigt__p_mfem__socketstream,
   &_swigt__p_pri_t,
+  &_swigt__p_pyr_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
   &_swigt__p_tet_t,
@@ -5553,6 +5556,7 @@ static swig_cast_info _swigc__p_mfem__socketbuf[] = {  {&_swigt__p_mfem__socketb
 static swig_cast_info _swigc__p_mfem__socketserver[] = {  {&_swigt__p_mfem__socketserver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__socketstream[] = {  {&_swigt__p_mfem__socketstream, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_pyr_t[] = {  {&_swigt__p_pyr_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -5585,6 +5589,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__socketserver,
   _swigc__p_mfem__socketstream,
   _swigc__p_pri_t,
+  _swigc__p_pyr_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
   _swigc__p_tet_t,

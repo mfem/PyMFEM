@@ -308,11 +308,6 @@ class OperatorHandle(object):
         return _handle.OperatorHandle_FormDiscreteOperator(self, A)
     FormDiscreteOperator = _swig_new_instance_method(_handle.OperatorHandle_FormDiscreteOperator)
 
-    def PrintMatlab(self, out, n=0, m=0):
-        r"""PrintMatlab(OperatorHandle self, std::ostream & out, int n=0, int m=0)"""
-        return _handle.OperatorHandle_PrintMatlab(self, out, n, m)
-    PrintMatlab = _swig_new_instance_method(_handle.OperatorHandle_PrintMatlab)
-
     def GetType(self):
         r"""GetType(OperatorHandle self) -> mfem::Operator::Type"""
         return _handle.OperatorHandle_GetType(self)
