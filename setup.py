@@ -1058,10 +1058,20 @@ class Install(_install):
             global ext_prefix
             ext_prefix = self.prefix
         else:
-            self.prefix = sys.prefix
+            if '--user' in sys.argv:
+                path = site.getusersitepackages()
+                if os.path.exists(path):
+                    path = os.path.dirname(path)
+                    path = os.path.dirname(path)
+                    path = os.path.dirname(path)
+                else:
+                    assert False, "no installation path found"
+                self.prefix = path
+            else:
+                self.prefix = sys.prefix
         if verbose:
             print("prefix is :", self.prefix)
-        
+
     def run(self):
         if not is_configured:
             configure_install(self)
