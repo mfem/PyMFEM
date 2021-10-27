@@ -350,8 +350,6 @@ def find_libpath_from_prefix(lib, prefix0):
 ###
 #  build libraries
 ###
-
-
 def cmake_make_hypre():
     '''
     build hypre
@@ -370,10 +368,10 @@ def cmake_make_hypre():
 
     cmake_opts = {'DCMAKE_VERBOSE_MAKEFILE': '1',
                   'DBUILD_SHARED_LIBS': '1',
-                  'DHYPRE_INSTALL_PREFIX': os.path.join(prefix, 'mfem'),
+                  'DHYPRE_INSTALL_PREFIX': hypre_prefix,
                   'DHYPRE_ENABLE_SHARED': '1',
-                  'DCMAKE_INSTALL_PREFIX': os.path.join(prefix, 'mfem'),
-                  'DCMAKE_INSTALL_NAME_DIR': os.path.join(prefix, 'mfem', 'lib'),
+                  'DCMAKE_INSTALL_PREFIX': hypre_prefix,
+                  'DCMAKE_INSTALL_NAME_DIR': os.path.join(hypre_prefix, 'lib'),
                   'DCMAKE_C_COMPILER': mpicc_command}
 
     cmake('..', **cmake_opts)
@@ -421,7 +419,7 @@ def make_metis(use_int64=False, use_real64=False):
     make_call(command)
 
     command = ['make', 'config', 'shared=1',
-               'prefix=' + os.path.join(prefix, 'mfem'),
+               'prefix=' + metis_prefix,
                'cc=' + cc_command]
     make_call(command)
     make('metis')
@@ -430,8 +428,8 @@ def make_metis(use_int64=False, use_real64=False):
     if platform == "darwin":
         command = ['install_name_tool',
                    '-id',
-                   os.path.join(prefix, 'lib', 'libmetis.dylib'),
-                   os.path.join(prefix, 'lib', 'libmetis.dylib'), ]
+                   os.path.join(metis_prefix, 'lib', 'libmetis.dylib'),
+                   os.path.join(metis_prefix, 'lib', 'libmetis.dylib'), ]
         make_call(command)
     os.chdir(pwd)
 
