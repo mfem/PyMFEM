@@ -1050,13 +1050,17 @@ class Install(_install):
         if (self.prefix == '' or
                 self.prefix is None):
             given_prefix = False
+        else:
+            self.prefix = os.path.expanduser(self.prefix)
+            prefix = self.prefix
 
         _install.finalize_options(self)            
         global verbose
         verbose = bool(self.verbose)
         if given_prefix:
             global ext_prefix
-            ext_prefix = self.prefix
+            self.prefix = prefix
+            ext_prefix = prefix
         else:
             if '--user' in sys.argv:
                 path = site.getusersitepackages()
