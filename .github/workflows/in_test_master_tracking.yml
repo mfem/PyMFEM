@@ -127,13 +127,11 @@ jobs:
         if [ "${USE_FLAGS}" = "000" ]; then  
            #python ../examples/ex1.py
            #python ../examples/ex9.py
-           cd test
            python test_examples.py -serial
         fi
         if [ "${USE_FLAGS}" = "010" ]; then
            which mpicc
            #mpirun -np 2 python ../examples/ex1p.py
-           cd test
            python test_examples.py -parallel
         fi
         if [ "${USE_FLAGS}" = "100" ]; then
