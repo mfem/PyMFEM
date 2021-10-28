@@ -184,11 +184,18 @@ if __name__ == "__main__":
     parser.add_argument("-d", "--device",
                         default="cpu", type=str,
                         help="Device configuration string, see Device::Configure().")
+    try:
+        from numba import jit
+        HAS_NUMBA = True
+    except ImportError:
+        HAS_NUMBA = False
     parser.add_argument("-n", "--numba",
-                        default=True, type=bool,
+                        default=int(HAS_NUMBA),
+                        type=int,
                         help="Use Number compiled coefficient")
 
     args = parser.parse_args()
+    args.numba = bool(args.numba)
     parser.print_options(args)
 
     order = args.order
@@ -201,13 +208,6 @@ if __name__ == "__main__":
     pa = args.partial_assembly
     freq = args.frequency
     numba = args.numba
-
-    if numba:
-        try:
-            import numba
-        except:
-            print("NUMBA is not available... using regular function coefficients")
-            numba = False
 
     run(freq=freq,
         order=order,

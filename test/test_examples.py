@@ -395,7 +395,7 @@ if __name__ == "__main__":
             print("Serial Test \t" + bcolors.FAIL +
                   " ".join(fails) + bcolors.ENDC)
 
-        print("Serial Test Skipped due to Python vesion \t" + bcolors.FAIL +
+        print("Serial Test Skipped due to the lack of Python vesion \t" + bcolors.FAIL +
               " ".join(skipped) + bcolors.ENDC)            
 
     if testp and len(resultp) != 0:
@@ -406,5 +406,5 @@ if __name__ == "__main__":
             print("Parallel Test \t" + bcolors.FAIL +
                   " ".join(failp) + bcolors.ENDC)
 
-        print("Parallel Test Skipped due to Python vesion \t" + bcolors.FAIL +
+        print("Parallel Test Skipped due to the lack of Python vesion \t" + bcolors.FAIL +
               " ".join(skippedp) + bcolors.ENDC)
