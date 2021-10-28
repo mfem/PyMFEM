@@ -176,7 +176,7 @@ metadata = {'name': 'mfem',
 def abspath(path):
     return os.path.abspath(os.path.expanduser(path))
 
-
+'''
 def install_prefix():
     """Return the installation directory, or None"""
     if '--user' in sys.argv:
@@ -203,7 +203,7 @@ def install_prefix():
             return path
     assert False, "no installation path found"
     return None
-
+'''
 
 def external_install_prefix(verbose=True):
     if '--user' in sys.argv:
@@ -356,8 +356,6 @@ def find_libpath_from_prefix(lib, prefix0):
 ###
 #  build libraries
 ###
-
-
 def cmake_make_hypre():
     '''
     build hypre
@@ -376,10 +374,10 @@ def cmake_make_hypre():
 
     cmake_opts = {'DCMAKE_VERBOSE_MAKEFILE': '1',
                   'DBUILD_SHARED_LIBS': '1',
-                  'DHYPRE_INSTALL_PREFIX': os.path.join(prefix, 'mfem'),
+                  'DHYPRE_INSTALL_PREFIX': hypre_prefix,
                   'DHYPRE_ENABLE_SHARED': '1',
-                  'DCMAKE_INSTALL_PREFIX': os.path.join(prefix, 'mfem'),
-                  'DCMAKE_INSTALL_NAME_DIR': os.path.join(prefix, 'mfem', 'lib'),
+                  'DCMAKE_INSTALL_PREFIX': hypre_prefix,
+                  'DCMAKE_INSTALL_NAME_DIR': os.path.join(hypre_prefix, 'lib'),
                   'DCMAKE_C_COMPILER': mpicc_command}
 
     cmake('..', **cmake_opts)
@@ -427,7 +425,7 @@ def make_metis(use_int64=False, use_real64=False):
     make_call(command)
 
     command = ['make', 'config', 'shared=1',
-               'prefix=' + os.path.join(prefix, 'mfem'),
+               'prefix=' + metis_prefix,
                'cc=' + cc_command]
     make_call(command)
     make('metis')
@@ -436,8 +434,8 @@ def make_metis(use_int64=False, use_real64=False):
     if platform == "darwin":
         command = ['install_name_tool',
                    '-id',
-                   os.path.join(prefix, 'lib', 'libmetis.dylib'),
-                   os.path.join(prefix, 'lib', 'libmetis.dylib'), ]
+                   os.path.join(metis_prefix, 'lib', 'libmetis.dylib'),
+                   os.path.join(metis_prefix, 'lib', 'libmetis.dylib'), ]
         make_call(command)
     os.chdir(pwd)
 
@@ -560,12 +558,12 @@ def write_setup_local():
     '''
     import numpy
 
-    if build_mfem:
-        mfemser = os.path.join(prefix, 'mfem', 'ser')
-        mfempar = os.path.join(prefix, 'mfem', 'par')
-    else:
-        mfemser = mfems_prefix
-        mfempar = mfemp_prefix
+    #if build_mfem:
+    #    mfemser = os.path.join(prefix, 'mfem', 'ser')
+    #    mfempar = os.path.join(prefix, 'mfem', 'par')
+    #else:
+    mfemser = mfems_prefix
+    mfempar = mfemp_prefix
 
     hyprelibpath = os.path.dirname(
         find_libpath_from_prefix(
@@ -887,7 +885,8 @@ def configure_install(self):
         build_hypre = build_parallel
         build_metis = build_parallel
 
-        ext_prefix = external_install_prefix()
+        if ext_prefix == '':
+            ext_prefix = external_install_prefix()
         hypre_prefix = os.path.join(ext_prefix)
         metis_prefix = os.path.join(ext_prefix)
 
@@ -1116,16 +1115,36 @@ class Install(_install):
     def finalize_options(self):
         if (bool(self.ext_only) and bool(self.skip_ext)):
             assert False, "skip-ext and ext-only can not use together"
-        _install.finalize_options(self)
 
-        global verbose
-        verbose = bool(self.verbose)
+        given_prefix = True
         if (self.prefix == '' or
                 self.prefix is None):
-            self.prefix = install_prefix()
+            given_prefix = False
         else:
-            if verbose:
-                print("prefix is given :", self.prefix)
+            self.prefix = os.path.expanduser(self.prefix)
+            prefix = self.prefix
+
+        _install.finalize_options(self)            
+        global verbose
+        verbose = bool(self.verbose)
+        if given_prefix:
+            global ext_prefix
+            self.prefix = prefix
+            ext_prefix = prefix
+        else:
+            if '--user' in sys.argv:
+                path = site.getusersitepackages()
+                if os.path.exists(path):
+                    path = os.path.dirname(path)
+                    path = os.path.dirname(path)
+                    path = os.path.dirname(path)
+                else:
+                    assert False, "no installation path found"
+                self.prefix = path
+            else:
+                self.prefix = sys.prefix
+        if verbose:
+            print("prefix is :", self.prefix)
 
     def run(self):
         if not is_configured:

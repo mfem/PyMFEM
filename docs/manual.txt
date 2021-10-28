@@ -1,11 +1,11 @@
 '''''
 PyMFEM
-built on mfem 4.2 (commit SHA=ed5604e0d350461f20842275578aa2f9e6a61343)
+built on mfem 4.3 
 '''''
 
 PyMFEM is a python wrapper for MFEM, lightweight FEM (finite element
 method) library developed by LLNL (http://mfem.org).
-PyMFEM is tested with python = 3.6, 3.7
+PyMFEM is tested with python = 3.6, 3.7, 3.8, 3.9
 
 This wrapper is meant for a rapid-prototyping of FEM programs, and
 is built using SWIG 4.0.2
