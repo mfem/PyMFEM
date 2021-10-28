@@ -94,7 +94,8 @@ enable_libceed = False
 libceed_prefix = ''
 libceed_only = False
 enable_gslib = False
-gslib_prefix = ''
+gslibs_prefix = ''
+gslibp_prefix = ''
 gslib_only = False
 
 dry_run = -1
@@ -191,8 +192,8 @@ def install_prefix():
         ))
 
     for path in paths:
-        if verbose:
-            print("testing installation path", path)
+        #if verbose:
+        #    print("testing installation path", path)
         if os.path.exists(path):
             path = os.path.dirname(path)
             path = os.path.dirname(path)
@@ -218,8 +219,8 @@ def external_install_prefix(verbose=True):
         ))
 
     for path in paths:
-        if verbose:
-            print("testing installation path", path)
+        #if verbose:
+        #    print("testing installation path", path)
         if os.path.exists(path):
             path = os.path.join(path, 'mfem', 'external')
             return path
@@ -466,11 +467,16 @@ def make_gslib(serial=True):
 
     pwd = chdir(path)
 
-    if enable_cuda:
-        command = ['make', 'configure', 'CUDA_DIR='+cuda_prefix]
+    if serial:
+        command = ['make', 'CC=' + cc_command, 'MPI=0']
         make_call(command)
-    make('gslib')
-    make_install('gslib', prefix=gslib_prefix)
+        command = ['make', 'DESTDIR=' + gslibs_prefix]
+        make_call(command)        
+    else:
+        command = ['make', 'CC=' + mpicc_command]
+        make_call(command)
+        command = ['make', 'DESTDIR=' + gslibp_prefix]
+        make_call(command)
     os.chdir(pwd)
     
 def cmake_make_mfem(serial=True):
@@ -591,7 +597,8 @@ def write_setup_local():
               'add_libceed': '',
               'add_gslib': '',
               'libceedinc': os.path.join(libceed_prefix, 'include'),
-              'gslibinc': os.path.join(gslib_prefix, 'include'),
+              'gslibsinc': os.path.join(gslibs_prefix, 'include'),
+              'gslibpinc': os.path.join(gslibp_prefix, 'include'),
               'cxx11flag': cxx11_flag,
               }
 
@@ -617,7 +624,9 @@ def write_setup_local():
     if enable_libceed:
         add_extra('libceed')
     if enable_gslib:
-        add_extra('gslib')
+        add_extra('gslibs')
+    if enable_gslib:
+        add_extra('gslibp')
 
     pwd = chdir(rootdir)
 
@@ -807,7 +816,7 @@ def configure_install(self):
     global enable_pumi, pumi_prefix
     global enable_strumpack, strumpack_prefix
     global enable_libceed, libceed_prefix, libceed_only
-    global enable_gslib, gslib_prefix, gslib_only
+    global enable_gslib, gslibs_prefix, gslibp_prefix, gslib_only
 
     verbose = bool(self.verbose) if verbose == -1 else verbose
     dry_run = bool(self.dry_run) if dry_run == -1 else dry_run
@@ -900,7 +909,7 @@ def configure_install(self):
         metis_prefix = os.path.expanduser(self.metis_prefix)
         build_metis = False
 
-    if enable_libceed:
+    if enable_libceed or libceed_only:
         if self.libceed_prefix != '':
             libceed_prefix = os.path.expanduser(self.libceed_prefix)
             build_libceed = False
@@ -908,12 +917,15 @@ def configure_install(self):
             libceed_prefix = mfem_prefix
             build_libceed = True
 
-    if enable_gslib:
+
+    if enable_gslib or gslib_only:
         if self.gslib_prefix != '':
-            gslib_prefix = os.path.expanduser(self.gslib_prefix)
             build_gslib = False
+            gslibs_prefix = os.path.expanduser(self.gslib_prefix)
+            gslibp_prefix = os.path.expanduser(self.gslib_prefix)
         else:
-            gslib_prefix = mfem_prefix
+            gslibs_prefix = mfems_prefix
+            gslibp_prefix = mfemp_prefix
             build_gslib = True
 
     if enable_pumi:
@@ -970,6 +982,7 @@ def configure_install(self):
         build_gslib = False
         build_serial = False
         build_parallel = False
+        build_libceed=True
         skip_install = True
         
     if gslib_only:
@@ -980,8 +993,8 @@ def configure_install(self):
         build_metis = False
         build_hypre = False
         build_serial = False
-        build_parallel = False
         build_libceed = False
+        build_gslib=True
         skip_install = True
 
     global is_configured
@@ -1091,7 +1104,7 @@ class Install(_install):
         self.libceed_only = False
 
         self.with_gslib = False
-        self.gslib_prefix = ''
+        self.gslib_prefix = ''        
         self.gslib_only = False
 
         self.CC = ''
@@ -1169,7 +1182,9 @@ class BuildPy(_build_py):
                 make_libceed()
             if build_gslib:
                 download('gslib')
-                make_gslib()
+                make_gslib(serial=True)
+                if build_parallel:
+                    make_gslib(serial=False)                
             mfem_downloaded = False
             if build_mfem:
                 download('mfem') if mfem_branch is None else gitclone('mfem')
