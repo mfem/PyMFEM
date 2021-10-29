@@ -440,7 +440,7 @@ def make_metis(use_int64=False, use_real64=False):
     os.chdir(pwd)
 
 
-def make_libceed(serial=True):
+def make_libceed(serial=False):
     if verbose:
         print("Building libceed")
 
@@ -449,15 +449,17 @@ def make_libceed(serial=True):
         assert False, "libceed is not downloaded"
 
     pwd = chdir(path)
-
+    make_call(['make', 'clean'])
+    
     if enable_cuda:
         command = ['make', 'configure', 'CUDA_DIR='+cuda_prefix]
         make_call(command)
+        
     make('libceed')
     make_install('libceed', prefix=libceed_prefix)
     os.chdir(pwd)
 
-def make_gslib(serial=True):
+def make_gslib(serial=False):
     if verbose:
         print("Building gslib")
 
@@ -466,14 +468,14 @@ def make_gslib(serial=True):
         assert False, "gslib is not downloaded"
 
     pwd = chdir(path)
-
+    make_call(['make', 'clean'])
     if serial:
-        command = ['make', 'CC=' + cc_command, 'MPI=0']
+        command = ['make', 'CC=' + cc_command, 'MPI=0', 'CFLAGS=-fPIC']
         make_call(command)
         command = ['make', 'DESTDIR=' + gslibs_prefix]
         make_call(command)        
     else:
-        command = ['make', 'CC=' + mpicc_command]
+        command = ['make', 'CC=' + mpicc_command, 'CFLAGS=-O2 -fPIC']
         make_call(command)
         command = ['make', 'DESTDIR=' + gslibp_prefix]
         make_call(command)
@@ -538,8 +540,13 @@ def cmake_make_mfem(serial=True):
         cmake_opts['DMFEM_USE_CEED'] = '1'
         cmake_opts['DCEED_DIR'] = libceed_prefix
     if enable_gslib:
-        cmake_opts['DMFEM_USE_GSLIB'] = '1'
-        cmake_opts['DGSLIB_DIR'] = gslib_prefix
+        if serial:
+            pass
+            #cmake_opts['DMFEM_USE_GSLIB'] = '1'            
+            #cmake_opts['DGSLIB_DIR'] = gslibs_prefix
+        else:
+            cmake_opts['DMFEM_USE_GSLIB'] = '1'            
+            cmake_opts['DGSLIB_DIR'] = gslibp_prefix
 
     pwd = chdir(path)
     cmake('..', **cmake_opts)
@@ -549,7 +556,6 @@ def cmake_make_mfem(serial=True):
     make_install('mfem_' + txt)
 
     os.chdir(pwd)
-
 
 def write_setup_local():
     '''
@@ -623,8 +629,8 @@ def write_setup_local():
         add_extra('cuda')
     if enable_libceed:
         add_extra('libceed')
-    if enable_gslib:
-        add_extra('gslibs')
+    #if enable_gslib:
+    #    add_extra('gslibs')
     if enable_gslib:
         add_extra('gslibp')
 
@@ -663,9 +669,6 @@ def generate_wrapper():
             return True
         return os.path.getmtime(ifile) > os.path.getmtime(wfile)
 
-    # if build_mfem:
-    #    mfemser = os.path.join(prefix, 'mfem', 'ser')
-    #    mfempar = os.path.join(prefix, 'mfem', 'par')
     mfemser = mfems_prefix
     mfempar = mfemp_prefix
 
@@ -1063,11 +1066,11 @@ class Install(_install):
         ('with-metis64', None, 'use 64bit int in metis'),
         ('with-pumi', None, 'enable pumi (parallel only)'),
         ('pumi-prefix=', None, 'Specify locaiton of pumi'),
-        ('with-libceed', None, 'enable libceed (parallel only)'),
+        ('with-libceed', None, 'enable libceed'),
         ('libceed-prefix=', None, 'Specify locaiton of libceed'),
         ('libceed-only', None, 'Build libceed only'),
         ('gslib-prefix=', None, 'Specify locaiton of gslib'),
-        ('with-gslib', None, 'enable gslib'),
+        ('with-gslib', None, 'enable gslib (parallel only)'),
         ('gslib-only', None, 'Build gslib only'),
         ('with-strumpack', None, 'enable strumpack (parallel only)'),
         ('strumpack-prefix=', None, 'Specify locaiton of strumpack'),
@@ -1182,9 +1185,9 @@ class BuildPy(_build_py):
                 make_libceed()
             if build_gslib:
                 download('gslib')
-                make_gslib(serial=True)
-                if build_parallel:
-                    make_gslib(serial=False)                
+                make_gslib()
+                make_gslib(serial=True)                
+                    
             mfem_downloaded = False
             if build_mfem:
                 download('mfem') if mfem_branch is None else gitclone('mfem')
@@ -1208,9 +1211,11 @@ class BuildPy(_build_py):
             make_mfem_wrapper(serial=True)
         if build_parallel:
             make_mfem_wrapper(serial=False)
+            
         if not skip_install:
             _build_py.run(self)
-
+        else:
+            sys.exit()
 
 if haveWheel:
     class BdistWheel(_bdist_wheel):
