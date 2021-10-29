@@ -88,6 +88,12 @@ if add_cuda:
 
 if add_libceed:
     include_dirs.append(libceedinc)
+if add_gslibp:
+    include_dirs.append(gslibpinc)
+    modules.append("gslib")
+    sources["gslib"] = ["gslib_wrap.cxx"]
+    proxy_names["gslib"] = "_gslib"
+    
 
 import six
 if six.PY3:

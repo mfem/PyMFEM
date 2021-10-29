@@ -83,6 +83,11 @@ from  mfem._par.fe_pos import *
 from  mfem._par.fe_nurbs import *
 from  mfem._par.doftrans import *
 
+try:
+   from  mfem._par.gslib import *
+except:
+   pass
+
 import mfem._par.array as array
 import mfem._par.blockoperator as blockoperator
 import mfem._par.coefficient as coefficient
