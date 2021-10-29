@@ -185,7 +185,7 @@ def run(order=2,
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
 
-    parser = ArgParser(description='Ex24 (Mixed finite element spaces)')
+    parser = ArgParser(description='Disntance (translated from miniapps/shifted/distance.cpp)')
 
     parser.add_argument('-m', '--mesh',
                         default='inline-quad.mesh',
@@ -226,7 +226,7 @@ if __name__ == "__main__":
     parser.print_options(args)
 
     meshfile = expanduser(
-        join(os.path.dirname(__file__), '..', 'data', args.mesh))
+        join(os.path.dirname(__file__), '..', '..', 'data', args.mesh))
     numba = (args.numba == 1)
 
     run(order=args.order,
