@@ -16225,6 +16225,60 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_DenseTensor__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
+  double *arg1 = (double *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::DenseTensor *result = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DenseTensor" "', argument " "1"" of type '" "double *""'"); 
+  }
+  arg1 = reinterpret_cast< double * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  }
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  }
+  {
+    try {
+      result = (mfem::DenseTensor *)new mfem::DenseTensor(arg1,arg2,arg3,arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DenseTensor, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_DenseTensor__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
   int arg3 ;
@@ -16277,7 +16331,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_DenseTensor__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_DenseTensor__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::DenseTensor *arg1 = 0 ;
   void *argp1 = 0 ;
@@ -16329,7 +16383,7 @@ SWIGINTERN PyObject *_wrap_new_DenseTensor(PyObject *self, PyObject *args) {
     int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__DenseTensor, SWIG_POINTER_NO_NULL | 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_new_DenseTensor__SWIG_3(self, argc, argv);
+      return _wrap_new_DenseTensor__SWIG_4(self, argc, argv);
     }
   }
   if (argc == 3) {
@@ -16368,6 +16422,45 @@ SWIGINTERN PyObject *_wrap_new_DenseTensor(PyObject *self, PyObject *args) {
   }
   if (argc == 4) {
     int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_double, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
+              _v = 0;
+            } else {
+              _v = 1;    
+            }
+          }
+          if (_v) {
+            return _wrap_new_DenseTensor__SWIG_2(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         PyErr_Clear();
@@ -16400,7 +16493,7 @@ SWIGINTERN PyObject *_wrap_new_DenseTensor(PyObject *self, PyObject *args) {
             _v = SWIG_CheckState(res);
           }
           if (_v) {
-            return _wrap_new_DenseTensor__SWIG_2(self, argc, argv);
+            return _wrap_new_DenseTensor__SWIG_3(self, argc, argv);
           }
         }
       }
@@ -16412,6 +16505,7 @@ fail:
     "  Possible C/C++ prototypes are:\n"
     "    mfem::DenseTensor::DenseTensor()\n"
     "    mfem::DenseTensor::DenseTensor(int,int,int)\n"
+    "    mfem::DenseTensor::DenseTensor(double *,int,int,int)\n"
     "    mfem::DenseTensor::DenseTensor(int,int,int,mfem::MemoryType)\n"
     "    mfem::DenseTensor::DenseTensor(mfem::DenseTensor const &)\n");
   return 0;
@@ -18608,6 +18702,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "new_DenseTensor", _wrap_new_DenseTensor, METH_VARARGS, "\n"
 		"DenseTensor()\n"
 		"DenseTensor(int i, int j, int k)\n"
+		"DenseTensor(double * d, int i, int j, int k)\n"
 		"DenseTensor(int i, int j, int k, mfem::MemoryType mt)\n"
 		"new_DenseTensor(DenseTensor other) -> DenseTensor\n"
 		""},
@@ -18940,6 +19035,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "new_DenseTensor", _wrap_new_DenseTensor, METH_VARARGS, "\n"
 		"DenseTensor()\n"
 		"DenseTensor(int i, int j, int k)\n"
+		"DenseTensor(double * d, int i, int j, int k)\n"
 		"DenseTensor(int i, int j, int k, mfem::MemoryType mt)\n"
 		"new_DenseTensor(DenseTensor other) -> DenseTensor\n"
 		""},

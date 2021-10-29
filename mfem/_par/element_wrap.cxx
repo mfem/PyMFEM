@@ -5145,6 +5145,7 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "Element_TETRAHEDRON",SWIG_From_int(static_cast< int >(mfem::Element::TETRAHEDRON)));
   SWIG_Python_SetConstant(d, "Element_HEXAHEDRON",SWIG_From_int(static_cast< int >(mfem::Element::HEXAHEDRON)));
   SWIG_Python_SetConstant(d, "Element_WEDGE",SWIG_From_int(static_cast< int >(mfem::Element::WEDGE)));
+  SWIG_Python_SetConstant(d, "Element_PYRAMID",SWIG_From_int(static_cast< int >(mfem::Element::PYRAMID)));
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else

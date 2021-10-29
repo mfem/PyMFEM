@@ -44,7 +44,6 @@ import_array();
 #endif
 
 %import "mem_manager.i"
-
 %import "../common/handle_template.i"
 
 // instatitate template methods (step 1: Rename Macro )

@@ -31,6 +31,7 @@ public:
     virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
     virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
+    virtual void PrintMatlab(std::ostream &out) const;
     virtual ~SwigDirector_Operator();
 
 /* Internal director utilities */
@@ -62,7 +63,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[11];
+    mutable swig::SwigVar_PyObject vtable[12];
 #endif
 
 };
@@ -84,6 +85,7 @@ public:
     virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
     virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
+    virtual void PrintMatlab(std::ostream &out) const;
     virtual ~SwigDirector_TimeDependentOperator();
     virtual double GetTime() const;
     virtual void SetTime(double const t_);
@@ -128,7 +130,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[24];
+    mutable swig::SwigVar_PyObject vtable[25];
 #endif
 
 };
@@ -149,6 +151,7 @@ public:
     virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
     virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
+    virtual void PrintMatlab(std::ostream &out) const;
     virtual ~SwigDirector_TimeDependentAdjointOperator();
     virtual double GetTime() const;
     virtual void SetTime(double const t_);
@@ -198,7 +201,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[29];
+    mutable swig::SwigVar_PyObject vtable[30];
 #endif
 
 };
@@ -220,6 +223,7 @@ public:
     virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
     virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
+    virtual void PrintMatlab(std::ostream &out) const;
     virtual ~SwigDirector_SecondOrderTimeDependentOperator();
     virtual double GetTime() const;
     virtual void SetTime(double const t_);
@@ -266,7 +270,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[26];
+    mutable swig::SwigVar_PyObject vtable[27];
 #endif
 
 };
@@ -288,6 +292,7 @@ public:
     virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
     virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
+    virtual void PrintMatlab(std::ostream &out) const;
     virtual ~SwigDirector_Solver();
     virtual void SetOperator(mfem::Operator const &op);
 
@@ -320,7 +325,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[12];
+    mutable swig::SwigVar_PyObject vtable[13];
 #endif
 
 };
@@ -342,6 +347,7 @@ public:
     virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
     virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
+    virtual void PrintMatlab(std::ostream &out) const;
     virtual ~SwigDirector_PyOperatorBase();
     virtual mfem::Vector &_EvalMult(mfem::Vector const &arg0) const;
 
@@ -374,7 +380,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[12];
+    mutable swig::SwigVar_PyObject vtable[13];
 #endif
 
 };
@@ -396,6 +402,7 @@ public:
     virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
     virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
+    virtual void PrintMatlab(std::ostream &out) const;
     virtual ~SwigDirector_PyTimeDependentOperatorBase();
     virtual double GetTime() const;
     virtual void SetTime(double const t_);
@@ -441,7 +448,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[25];
+    mutable swig::SwigVar_PyObject vtable[26];
 #endif
 
 };

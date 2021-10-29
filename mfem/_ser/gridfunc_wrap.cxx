@@ -3304,13 +3304,14 @@ namespace Swig {
 #define SWIGTYPE_p_p_mfem__TransformedCoefficient swig_types[199]
 #define SWIGTYPE_p_p_mfem__VectorRotProductCoefficient swig_types[200]
 #define SWIGTYPE_p_pri_t swig_types[201]
-#define SWIGTYPE_p_quad_t swig_types[202]
-#define SWIGTYPE_p_seg_t swig_types[203]
-#define SWIGTYPE_p_std__ostream swig_types[204]
-#define SWIGTYPE_p_tet_t swig_types[205]
-#define SWIGTYPE_p_tri_t swig_types[206]
-static swig_type_info *swig_types[208];
-static swig_module_info swig_module = {swig_types, 207, 0, 0, 0, 0};
+#define SWIGTYPE_p_pyr_t swig_types[202]
+#define SWIGTYPE_p_quad_t swig_types[203]
+#define SWIGTYPE_p_seg_t swig_types[204]
+#define SWIGTYPE_p_std__ostream swig_types[205]
+#define SWIGTYPE_p_tet_t swig_types[206]
+#define SWIGTYPE_p_tri_t swig_types[207]
+static swig_type_info *swig_types[209];
+static swig_module_info swig_module = {swig_types, 208, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3763,7 +3764,7 @@ SWIG_AsPtr_std_string (PyObject * obj, std::string **val)
   return SWIG_ERROR;
 }
 
-SWIGINTERN mfem::GridFunction *new_mfem_GridFunction__SWIG_6(mfem::FiniteElementSpace *fes,mfem::Vector const &v,int offset){
+SWIGINTERN mfem::GridFunction *new_mfem_GridFunction__SWIG_7(mfem::FiniteElementSpace *fes,mfem::Vector const &v,int offset){
    mfem::GridFunction *gf;   
    gf = new mfem::GridFunction(fes, v.GetData() + offset);
    return gf;
@@ -4046,6 +4047,65 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_GridFunction__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
+  mfem::FiniteElementSpace *arg1 = (mfem::FiniteElementSpace *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  int arg3 = (int) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  mfem::GridFunction *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_GridFunction" "', argument " "1"" of type '" "mfem::FiniteElementSpace *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FiniteElementSpace * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_GridFunction" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_GridFunction" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    }
+  }
+  {
+    try {
+      result = (mfem::GridFunction *)new mfem::GridFunction(arg1,*arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_GridFunction__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   std::istream *arg2 = 0 ;
   void *argp1 = 0 ;
@@ -4173,7 +4233,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_GridFunction__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_GridFunction__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   mfem::GridFunction **arg2 ;
@@ -13934,7 +13994,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_GridFunction__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_GridFunction__SWIG_7(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::FiniteElementSpace *arg1 = (mfem::FiniteElementSpace *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -13967,7 +14027,7 @@ SWIGINTERN PyObject *_wrap_new_GridFunction__SWIG_6(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      result = (mfem::GridFunction *)new_mfem_GridFunction__SWIG_6(arg1,(mfem::Vector const &)*arg2,arg3);
+      result = (mfem::GridFunction *)new_mfem_GridFunction__SWIG_7(arg1,(mfem::Vector const &)*arg2,arg3);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -14033,6 +14093,33 @@ SWIGINTERN PyObject *_wrap_new_GridFunction(PyObject *self, PyObject *args) {
       }
     }
   }
+  if ((argc >= 2) && (argc <= 3)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__FiniteElementSpace, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_new_GridFunction__SWIG_4(self, argc, argv);
+        }
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_new_GridFunction__SWIG_4(self, argc, argv);
+        }
+      }
+    }
+  }
   if (argc == 2) {
     int _v;
     void *vptr = 0;
@@ -14068,7 +14155,7 @@ SWIGINTERN PyObject *_wrap_new_GridFunction(PyObject *self, PyObject *args) {
         }
       }
       if (_v) {
-        return _wrap_new_GridFunction__SWIG_4(self, argc, argv);
+        return _wrap_new_GridFunction__SWIG_5(self, argc, argv);
       }
     }
   }
@@ -14091,7 +14178,7 @@ SWIGINTERN PyObject *_wrap_new_GridFunction(PyObject *self, PyObject *args) {
           }
         }
         if (_v) {
-          return _wrap_new_GridFunction__SWIG_5(self, argc, argv);
+          return _wrap_new_GridFunction__SWIG_6(self, argc, argv);
         }
       }
     }
@@ -14114,7 +14201,7 @@ SWIGINTERN PyObject *_wrap_new_GridFunction(PyObject *self, PyObject *args) {
           }
         }
         if (_v) {
-          return _wrap_new_GridFunction__SWIG_6(self, argc, argv);
+          return _wrap_new_GridFunction__SWIG_7(self, argc, argv);
         }
       }
     }
@@ -14127,6 +14214,7 @@ fail:
     "    mfem::GridFunction::GridFunction(mfem::GridFunction const &)\n"
     "    mfem::GridFunction::GridFunction(mfem::FiniteElementSpace *)\n"
     "    mfem::GridFunction::GridFunction(mfem::FiniteElementSpace *,double *)\n"
+    "    mfem::GridFunction::GridFunction(mfem::FiniteElementSpace *,mfem::Vector &,int)\n"
     "    mfem::GridFunction::GridFunction(mfem::Mesh *,std::istream &)\n"
     "    mfem::GridFunction::GridFunction(mfem::Mesh *,mfem::GridFunction *[],int)\n"
     "    mfem::GridFunction::GridFunction(mfem::FiniteElementSpace *,mfem::Vector const &,int)\n");
@@ -17795,6 +17883,7 @@ static PyMethodDef SwigMethods[] = {
 		"GridFunction(GridFunction orig)\n"
 		"GridFunction(FiniteElementSpace f)\n"
 		"GridFunction(FiniteElementSpace f, double * data)\n"
+		"GridFunction(FiniteElementSpace f, Vector base, int base_offset=0)\n"
 		"GridFunction(Mesh m, std::istream & input)\n"
 		"GridFunction(Mesh m, mfem::GridFunction *[] gf_array, int num_pieces)\n"
 		"new_GridFunction(FiniteElementSpace fes, Vector v, int offset) -> GridFunction\n"
@@ -18037,6 +18126,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"GridFunction(GridFunction orig)\n"
 		"GridFunction(FiniteElementSpace f)\n"
 		"GridFunction(FiniteElementSpace f, double * data)\n"
+		"GridFunction(FiniteElementSpace f, Vector base, int base_offset=0)\n"
 		"GridFunction(Mesh m, std::istream & input)\n"
 		"GridFunction(Mesh m, mfem::GridFunction *[] gf_array, int num_pieces)\n"
 		"new_GridFunction(FiniteElementSpace fes, Vector v, int offset) -> GridFunction\n"
@@ -18842,6 +18932,7 @@ static swig_type_info _swigt__p_p_mfem__QuadratureFunctionCoefficient = {"_p_p_m
 static swig_type_info _swigt__p_p_mfem__ExtrudeCoefficient = {"_p_p_mfem__ExtrudeCoefficient", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__GridFunction = {"_p_p_mfem__GridFunction", "mfem::GridFunction **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_pyr_t = {"_p_pyr_t", "pyr_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__ostream = {"_p_std__ostream", "std::ostream *", 0, 0, (void*)0, 0};
@@ -19052,6 +19143,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_p_mfem__TransformedCoefficient,
   &_swigt__p_p_mfem__VectorRotProductCoefficient,
   &_swigt__p_pri_t,
+  &_swigt__p_pyr_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
   &_swigt__p_std__ostream,
@@ -19260,6 +19352,7 @@ static swig_cast_info _swigc__p_p_mfem__ExtrudeCoefficient[] = {{&_swigt__p_p_mf
 static swig_cast_info _swigc__p_p_mfem__Coefficient[] = {  {&_swigt__p_p_mfem__PyCoefficientBase, _p_p_mfem__PyCoefficientBaseTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__VectorRotProductCoefficient, _p_p_mfem__VectorRotProductCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__InnerProductCoefficient, _p_p_mfem__InnerProductCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__PowerCoefficient, _p_p_mfem__PowerCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__RatioCoefficient, _p_p_mfem__RatioCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__ProductCoefficient, _p_p_mfem__ProductCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__SumCoefficient, _p_p_mfem__SumCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__DivergenceGridFunctionCoefficient, _p_p_mfem__DivergenceGridFunctionCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__RestrictedCoefficient, _p_p_mfem__RestrictedCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__DeltaCoefficient, _p_p_mfem__DeltaCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__TransformedCoefficient, _p_p_mfem__TransformedCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__GridFunctionCoefficient, _p_p_mfem__GridFunctionCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__FunctionCoefficient, _p_p_mfem__FunctionCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__Coefficient, 0, 0, 0},  {&_swigt__p_p_mfem__PWConstCoefficient, _p_p_mfem__PWConstCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__ConstantCoefficient, _p_p_mfem__ConstantCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__DeterminantCoefficient, _p_p_mfem__DeterminantCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__QuadratureFunctionCoefficient, _p_p_mfem__QuadratureFunctionCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__ExtrudeCoefficient, _p_p_mfem__ExtrudeCoefficientTo_p_p_mfem__Coefficient, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__GridFunction[] = {  {&_swigt__p_p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_pyr_t[] = {  {&_swigt__p_pyr_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__OutStream[] = {{&_swigt__p_mfem__OutStream, 0, 0, 0},{0, 0, 0, 0}};
@@ -19470,6 +19563,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_p_mfem__TransformedCoefficient,
   _swigc__p_p_mfem__VectorRotProductCoefficient,
   _swigc__p_pri_t,
+  _swigc__p_pyr_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
   _swigc__p_std__ostream,

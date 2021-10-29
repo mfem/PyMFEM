@@ -229,7 +229,8 @@ class Operator(object):
 
     def PrintMatlab(self, *args):
         r"""
-        PrintMatlab(Operator self, std::ostream & out, int n=0, int m=0)
+        PrintMatlab(Operator self, std::ostream & out, int n, int m=0)
+        PrintMatlab(Operator self, std::ostream & out)
         PrintMatlab(Operator self, char const * file, int precision=16)
         """
         return _operators.Operator_PrintMatlab(self, *args)

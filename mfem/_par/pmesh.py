@@ -106,9 +106,19 @@ import mfem._par.coefficient
 import mfem._par.sparsemat
 import mfem._par.eltrans
 import mfem._par.fe
+import mfem._par.fe_base
+import mfem._par.fe_fixed_order
+import mfem._par.fe_h1
+import mfem._par.fe_nd
+import mfem._par.fe_rt
+import mfem._par.fe_l2
+import mfem._par.fe_nurbs
+import mfem._par.fe_pos
+import mfem._par.fe_ser
 import mfem._par.fespace
 import mfem._par.fe_coll
 import mfem._par.lininteg
+import mfem._par.doftrans
 import mfem._par.handle
 import mfem._par.hypre
 import mfem._par.restriction
@@ -303,6 +313,11 @@ class ParMesh(mfem._par.mesh.Mesh):
         r"""GetFaceNbrRank(ParMesh self, int fn) -> int"""
         return _pmesh.ParMesh_GetFaceNbrRank(self, fn)
     GetFaceNbrRank = _swig_new_instance_method(_pmesh.ParMesh_GetFaceNbrRank)
+
+    def GetFaceNbrElementFaces(self, i, fcs, cor):
+        r"""GetFaceNbrElementFaces(ParMesh self, int i, intArray fcs, intArray cor)"""
+        return _pmesh.ParMesh_GetFaceNbrElementFaces(self, i, fcs, cor)
+    GetFaceNbrElementFaces = _swig_new_instance_method(_pmesh.ParMesh_GetFaceNbrElementFaces)
 
     def GetFaceToAllElementTable(self):
         r"""GetFaceToAllElementTable(ParMesh self) -> Table"""

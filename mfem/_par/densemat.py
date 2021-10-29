@@ -1017,6 +1017,7 @@ class DenseTensor(object):
         r"""
         __init__(DenseTensor self) -> DenseTensor
         __init__(DenseTensor self, int i, int j, int k) -> DenseTensor
+        __init__(DenseTensor self, double * d, int i, int j, int k) -> DenseTensor
         __init__(DenseTensor self, int i, int j, int k, mfem::MemoryType mt) -> DenseTensor
         __init__(DenseTensor self, DenseTensor other) -> DenseTensor
         """

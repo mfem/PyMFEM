@@ -380,11 +380,18 @@ if __name__ == "__main__":
     parser.add_argument("-d", "--device",
                         default="cpu", type=str,
                         help="Device configuration string, see Device::Configure().")
+    try:
+        from numba import jit
+        HAS_NUMBA = True
+    except ImportError:
+        HAS_NUMBA = False
     parser.add_argument("-n", "--numba",
-                        default=1, action='store', type=int,
+                        default=int(HAS_NUMBA),
+                        type=int,
                         help="Use Number compiled coefficient")
 
     args = parser.parse_args()
+    args.numba = bool(args.numba)    
     parser.print_options(args)
 
     meshfile = expanduser(

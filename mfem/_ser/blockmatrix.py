@@ -225,14 +225,6 @@ class BlockMatrix(mfem._ser.matrix.AbstractSparseMatrix):
     __swig_destroy__ = _blockmatrix.delete_BlockMatrix
     owns_blocks = property(_blockmatrix.BlockMatrix_owns_blocks_get, _blockmatrix.BlockMatrix_owns_blocks_set, doc=r"""owns_blocks : int""")
 
-    def PrintMatlab(self, *args):
-        r"""
-        PrintMatlab(BlockMatrix self, std::ostream & os=mfem::out)
-        PrintMatlab(BlockMatrix self, char const * file, int precision=16)
-        """
-        return _blockmatrix.BlockMatrix_PrintMatlab(self, *args)
-    PrintMatlab = _swig_new_instance_method(_blockmatrix.BlockMatrix_PrintMatlab)
-
     def PrintMatlabGZ(self, file, precision=16):
         r"""PrintMatlabGZ(BlockMatrix self, char const * file, int precision=16)"""
         return _blockmatrix.BlockMatrix_PrintMatlabGZ(self, file, precision)

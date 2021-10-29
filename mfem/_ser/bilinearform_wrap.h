@@ -32,6 +32,7 @@ public:
     virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
     virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
+    virtual void PrintMatlab(std::ostream &out) const;
     virtual ~SwigDirector_BilinearForm();
     virtual double &Elem(int i, int j);
     virtual double const &Elem(int i, int j) const;

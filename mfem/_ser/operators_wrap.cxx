@@ -3417,153 +3417,6 @@ SWIGINTERNINLINE PyObject*
 }
 
 
-SWIGINTERN swig_type_info*
-SWIG_pchar_descriptor(void)
-{
-  static int init = 0;
-  static swig_type_info* info = 0;
-  if (!init) {
-    info = SWIG_TypeQuery("_p_char");
-    init = 1;
-  }
-  return info;
-}
-
-
-SWIGINTERN int
-SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
-{
-#if PY_VERSION_HEX>=0x03000000
-#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
-  if (PyBytes_Check(obj))
-#else
-  if (PyUnicode_Check(obj))
-#endif
-#else  
-  if (PyString_Check(obj))
-#endif
-  {
-    char *cstr; Py_ssize_t len;
-    int ret = SWIG_OK;
-#if PY_VERSION_HEX>=0x03000000
-#if !defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
-    if (!alloc && cptr) {
-        /* We can't allow converting without allocation, since the internal
-           representation of string in Python 3 is UCS-2/UCS-4 but we require
-           a UTF-8 representation.
-           TODO(bhy) More detailed explanation */
-        return SWIG_RuntimeError;
-    }
-    obj = PyUnicode_AsUTF8String(obj);
-    if (!obj)
-      return SWIG_TypeError;
-    if (alloc)
-      *alloc = SWIG_NEWOBJ;
-#endif
-    if (PyBytes_AsStringAndSize(obj, &cstr, &len) == -1)
-      return SWIG_TypeError;
-#else
-    if (PyString_AsStringAndSize(obj, &cstr, &len) == -1)
-      return SWIG_TypeError;
-#endif
-    if (cptr) {
-      if (alloc) {
-	if (*alloc == SWIG_NEWOBJ) {
-	  *cptr = reinterpret_cast< char* >(memcpy(new char[len + 1], cstr, sizeof(char)*(len + 1)));
-	  *alloc = SWIG_NEWOBJ;
-	} else {
-	  *cptr = cstr;
-	  *alloc = SWIG_OLDOBJ;
-	}
-      } else {
-#if PY_VERSION_HEX>=0x03000000
-#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
-	*cptr = PyBytes_AsString(obj);
-#else
-	assert(0); /* Should never reach here with Unicode strings in Python 3 */
-#endif
-#else
-	*cptr = SWIG_Python_str_AsChar(obj);
-        if (!*cptr)
-          ret = SWIG_TypeError;
-#endif
-      }
-    }
-    if (psize) *psize = len + 1;
-#if PY_VERSION_HEX>=0x03000000 && !defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
-    Py_XDECREF(obj);
-#endif
-    return ret;
-  } else {
-#if defined(SWIG_PYTHON_2_UNICODE)
-#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
-#error "Cannot use both SWIG_PYTHON_2_UNICODE and SWIG_PYTHON_STRICT_BYTE_CHAR at once"
-#endif
-#if PY_VERSION_HEX<0x03000000
-    if (PyUnicode_Check(obj)) {
-      char *cstr; Py_ssize_t len;
-      if (!alloc && cptr) {
-        return SWIG_RuntimeError;
-      }
-      obj = PyUnicode_AsUTF8String(obj);
-      if (!obj)
-        return SWIG_TypeError;
-      if (PyString_AsStringAndSize(obj, &cstr, &len) != -1) {
-        if (cptr) {
-          if (alloc) *alloc = SWIG_NEWOBJ;
-          *cptr = reinterpret_cast< char* >(memcpy(new char[len + 1], cstr, sizeof(char)*(len + 1)));
-        }
-        if (psize) *psize = len + 1;
-
-        Py_XDECREF(obj);
-        return SWIG_OK;
-      } else {
-        Py_XDECREF(obj);
-      }
-    }
-#endif
-#endif
-
-    swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
-    if (pchar_descriptor) {
-      void* vptr = 0;
-      if (SWIG_ConvertPtr(obj, &vptr, pchar_descriptor, 0) == SWIG_OK) {
-	if (cptr) *cptr = (char *) vptr;
-	if (psize) *psize = vptr ? (strlen((char *)vptr) + 1) : 0;
-	if (alloc) *alloc = SWIG_OLDOBJ;
-	return SWIG_OK;
-      }
-    }
-  }
-  return SWIG_TypeError;
-}
-
-
-
-
-SWIGINTERN void mfem_Operator_PrintMatlab__SWIG_1(mfem::Operator *self,char const *file,int precision=16){
-  std::ofstream ofile(file);
-  if (!ofile)
-     {
-        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
-        return;
-      }
-  ofile.precision(precision);  
-  self -> PrintMatlab(ofile);
-  ofile.close();
-  }
-SWIGINTERN void mfem_Operator_PrintMatlabGZ(mfem::Operator *self,char const *file,int precision=16){
-  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
-  if (!ofile)
-     {
-        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
-        return;
-      }
-  ofile ->precision(precision);  
-  self -> PrintMatlab(*ofile);
-  delete ofile;
-  }
-
   #define SWIG_From_double   PyFloat_FromDouble 
 
 
@@ -3981,6 +3834,11 @@ void SwigDirector_Operator::RecoverFEMSolution(mfem::Vector const &X, mfem::Vect
 }
 
 
+void SwigDirector_Operator::PrintMatlab(std::ostream &out) const {
+  mfem::Operator::PrintMatlab(out);
+}
+
+
 SwigDirector_Operator::~SwigDirector_Operator() {
 }
 
@@ -4367,6 +4225,11 @@ void SwigDirector_TimeDependentOperator::RecoverFEMSolution(mfem::Vector const &
       }
     }
   }
+}
+
+
+void SwigDirector_TimeDependentOperator::PrintMatlab(std::ostream &out) const {
+  mfem::Operator::PrintMatlab(out);
 }
 
 
@@ -5201,6 +5064,11 @@ void SwigDirector_TimeDependentAdjointOperator::RecoverFEMSolution(mfem::Vector 
       }
     }
   }
+}
+
+
+void SwigDirector_TimeDependentAdjointOperator::PrintMatlab(std::ostream &out) const {
+  mfem::Operator::PrintMatlab(out);
 }
 
 
@@ -6219,6 +6087,11 @@ void SwigDirector_SecondOrderTimeDependentOperator::RecoverFEMSolution(mfem::Vec
 }
 
 
+void SwigDirector_SecondOrderTimeDependentOperator::PrintMatlab(std::ostream &out) const {
+  mfem::Operator::PrintMatlab(out);
+}
+
+
 SwigDirector_SecondOrderTimeDependentOperator::~SwigDirector_SecondOrderTimeDependentOperator() {
 }
 
@@ -7124,6 +6997,11 @@ void SwigDirector_Solver::RecoverFEMSolution(mfem::Vector const &X, mfem::Vector
 }
 
 
+void SwigDirector_Solver::PrintMatlab(std::ostream &out) const {
+  mfem::Operator::PrintMatlab(out);
+}
+
+
 SwigDirector_Solver::~SwigDirector_Solver() {
 }
 
@@ -7536,6 +7414,11 @@ void SwigDirector_PyOperatorBase::RecoverFEMSolution(mfem::Vector const &X, mfem
       }
     }
   }
+}
+
+
+void SwigDirector_PyOperatorBase::PrintMatlab(std::ostream &out) const {
+  mfem::Operator::PrintMatlab(out);
 }
 
 
@@ -7966,6 +7849,11 @@ void SwigDirector_PyTimeDependentOperatorBase::RecoverFEMSolution(mfem::Vector c
       }
     }
   }
+}
+
+
+void SwigDirector_PyTimeDependentOperatorBase::PrintMatlab(std::ostream &out) const {
+  mfem::Operator::PrintMatlab(out);
 }
 
 
@@ -10116,171 +10004,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Operator_PrintMatlab__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
-  std::ostream *arg2 = 0 ;
-  int arg3 = (int) 0 ;
-  int arg4 = (int) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out_txt2 ;
-  mfem::ofgzstream *out_gz2 = 0 ;
-  PyObject *string_io2 = 0 ;
-  std::ostringstream *stream2 = 0 ;
-  PyObject *ret2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_PrintMatlab" "', argument " "1"" of type '" "mfem::Operator const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
-  {
-    //  PyMFEM::wFILE or string argument or StringIO
-    if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
-      if (!PyString_Check(swig_obj[1]) && !PyUnicode_Check(swig_obj[1])) {
-        // not string, check if it is StringIO
-        PyObject* module = PyImport_ImportModule("io");
-        if (!module){
-          PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
-          return NULL;
-        }      
-        PyObject* cls = PyObject_GetAttrString(module, "StringIO");
-        if (!cls){
-          PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
-          return NULL;
-        }      
-        int check = PyObject_IsInstance(swig_obj[1], cls);
-        Py_DECREF(module);
-        if (! check){
-          SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
-          return NULL;
-        }
-        string_io2=swig_obj[1];
-        stream2 = new std::ostringstream();
-        int prec = 16;
-        if (PyObject_HasAttrString(swig_obj[1], "precision")){
-          PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
-          prec = (int)PyLong_AsLong(attr);
-          //std::cout << "setting prec" << prec << "\n";
-        }
-        stream2->precision(prec);
-        
-      } else {
-        // if it is string, extract filename as char*
-        PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
-        const char* filename = PyBytes_AsString(str);
-        temp2 = new PyMFEM::wFILE(filename, 8, true);
-        Py_DECREF(str);	 
-      }
-    }
-    
-    if (stream2 == 0){
-      if (temp2->isSTDOUT() == 1) {
-        arg2 = &std::cout;
-      } else if (temp2->isGZ()){
-        out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
-        arg2 = out_gz2;	     
-      } else {
-        out_txt2.open(temp2->getFilename());
-        out_txt2.precision(temp2->getPrecision());
-        arg2 = &out_txt2;
-      }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
-    } else {
-      arg2 = stream2;
-    }
-  }
-  if (swig_obj[2]) {
-    {
-      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-      };  
-      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-    }
-  }
-  if (swig_obj[3]) {
-    {
-      if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-      };  
-      arg4 = PyArray_PyIntAsInt(swig_obj[3]);
-    }
-  }
-  {
-    try {
-      ((mfem::Operator const *)arg1)->PrintMatlab(*arg2,arg3,arg4);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  {
-    if (stream2) {
-      std::string str =  stream2->str();
-      const char* s = str.c_str();
-      const int n = str.length();
-      ret2 = PyObject_CallMethod(string_io2, "write", "s#",
-        s, static_cast<Py_ssize_t>(n));
-      if (PyErr_Occurred()) {
-        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
-        return NULL;
-      }
-      delete stream2;
-      Py_XDECREF(resultobj);   /* Blow away any previous result */
-      resultobj = ret2;    
-    }
-  }
-  {
-    if (!stream2) {
-      if (temp2) {
-        if (temp2->isSTDOUT() != 1) {
-          if (out_txt2.is_open()){
-            out_txt2.close();
-          }
-          if (out_gz2){
-            delete out_gz2;
-          }
-        }
-      }
-    }
-  }
-  return resultobj;
-fail:
-  {
-    if (!stream2) {
-      if (temp2) {
-        if (temp2->isSTDOUT() != 1) {
-          if (out_txt2.is_open()){
-            out_txt2.close();
-          }
-          if (out_gz2){
-            delete out_gz2;
-          }
-        }
-      }
-    }
-  }
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_delete_Operator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Operator *arg1 = (mfem::Operator *) 0 ;
@@ -10358,237 +10081,6 @@ SWIGINTERN PyObject *_wrap_Operator_GetType(PyObject *SWIGUNUSEDPARM(self), PyOb
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Operator_PrintMatlab__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
-  char *arg2 = (char *) 0 ;
-  int arg3 = (int) 16 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 ;
-  char *buf2 = 0 ;
-  int alloc2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_PrintMatlab" "', argument " "1"" of type '" "mfem::Operator *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Operator_PrintMatlab" "', argument " "2"" of type '" "char const *""'");
-  }
-  arg2 = reinterpret_cast< char * >(buf2);
-  if (swig_obj[2]) {
-    {
-      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-      };  
-      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-    }
-  }
-  {
-    try {
-      mfem_Operator_PrintMatlab__SWIG_1(arg1,(char const *)arg2,arg3);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return resultobj;
-fail:
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Operator_PrintMatlab(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "Operator_PrintMatlab", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if ((argc >= 2) && (argc <= 3)) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        if (argc <= 2) {
-          return _wrap_Operator_PrintMatlab__SWIG_1(self, argc, argv);
-        }
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_Operator_PrintMatlab__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if ((argc >= 2) && (argc <= 4)) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        void *ptr;
-        //std::string *ptr2 = (std::string *)0;
-        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
-          PyErr_Clear();
-          if (!PyString_Check(argv[1]) && !PyUnicode_Check(argv[1])) {
-            // not string
-            _v = 1;	   	
-            PyObject* module = PyImport_ImportModule("io");
-            if (!module){
-              _v = 0;	   
-            }      
-            PyObject* cls = PyObject_GetAttrString(module, "StringIO");
-            if (!cls){
-              _v = 0;	   	   
-            }      
-            int check = PyObject_IsInstance(argv[1], cls);
-            Py_DECREF(module);
-            if (! check){
-              _v = 0;	   	   	   
-            }
-          } else {
-            _v = 1;
-          }
-        } else {
-          _v = 1;
-        }
-      }
-      if (_v) {
-        if (argc <= 2) {
-          return _wrap_Operator_PrintMatlab__SWIG_0(self, argc, argv);
-        }
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          if (argc <= 3) {
-            return _wrap_Operator_PrintMatlab__SWIG_0(self, argc, argv);
-          }
-          {
-            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
-              PyErr_Clear();
-              _v = 0;
-            } else {
-              _v = 1;    
-            }
-          }
-          if (_v) {
-            return _wrap_Operator_PrintMatlab__SWIG_0(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Operator_PrintMatlab'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Operator::PrintMatlab(std::ostream &,int,int) const\n"
-    "    mfem::Operator::PrintMatlab(char const *,int)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_Operator_PrintMatlabGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
-  char *arg2 = (char *) 0 ;
-  int arg3 = (int) 16 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 ;
-  char *buf2 = 0 ;
-  int alloc2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:Operator_PrintMatlabGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_PrintMatlabGZ" "', argument " "1"" of type '" "mfem::Operator *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Operator_PrintMatlabGZ" "', argument " "2"" of type '" "char const *""'");
-  }
-  arg2 = reinterpret_cast< char * >(buf2);
-  if (obj2) {
-    {
-      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
-        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-      };  
-      arg3 = PyArray_PyIntAsInt(obj2);
-    }
-  }
-  {
-    try {
-      mfem_Operator_PrintMatlabGZ(arg1,(char const *)arg2,arg3);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return resultobj;
-fail:
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return NULL;
 }
 
@@ -17542,11 +17034,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "Operator_FormDiscreteOperator", (PyCFunction)(void(*)(void))_wrap_Operator_FormDiscreteOperator, METH_VARARGS|METH_KEYWORDS, "Operator_FormDiscreteOperator(Operator self, mfem::Operator *& A)"},
 	 { "delete_Operator", _wrap_delete_Operator, METH_O, "delete_Operator(Operator self)"},
 	 { "Operator_GetType", _wrap_Operator_GetType, METH_O, "Operator_GetType(Operator self) -> mfem::Operator::Type"},
-	 { "Operator_PrintMatlab", _wrap_Operator_PrintMatlab, METH_VARARGS, "\n"
-		"Operator_PrintMatlab(Operator self, std::ostream & out, int n=0, int m=0)\n"
-		"Operator_PrintMatlab(Operator self, char const * file, int precision=16)\n"
-		""},
-	 { "Operator_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_Operator_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "Operator_PrintMatlabGZ(Operator self, char const * file, int precision=16)"},
 	 { "disown_Operator", (PyCFunction)(void(*)(void))_wrap_disown_Operator, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "Operator_swigregister", Operator_swigregister, METH_O, NULL},
 	 { "Operator_swiginit", Operator_swiginit, METH_VARARGS, NULL},
@@ -17731,11 +17218,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Operator_FormDiscreteOperator", (PyCFunction)(void(*)(void))_wrap_Operator_FormDiscreteOperator, METH_VARARGS|METH_KEYWORDS, "FormDiscreteOperator(Operator self, mfem::Operator *& A)"},
 	 { "delete_Operator", _wrap_delete_Operator, METH_O, "delete_Operator(Operator self)"},
 	 { "Operator_GetType", _wrap_Operator_GetType, METH_O, "GetType(Operator self) -> mfem::Operator::Type"},
-	 { "Operator_PrintMatlab", _wrap_Operator_PrintMatlab, METH_VARARGS, "\n"
-		"PrintMatlab(Operator self, std::ostream & out, int n=0, int m=0)\n"
-		"PrintMatlab(Operator self, char const * file, int precision=16)\n"
-		""},
-	 { "Operator_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_Operator_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "PrintMatlabGZ(Operator self, char const * file, int precision=16)"},
 	 { "disown_Operator", (PyCFunction)(void(*)(void))_wrap_disown_Operator, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "Operator_swigregister", Operator_swigregister, METH_O, NULL},
 	 { "Operator_swiginit", Operator_swiginit, METH_VARARGS, NULL},

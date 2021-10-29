@@ -94,6 +94,8 @@ class Geometry(object):
     
     PRISM = _geom.Geometry_PRISM
     
+    PYRAMID = _geom.Geometry_PYRAMID
+    
     NUM_GEOMETRIES = _geom.Geometry_NUM_GEOMETRIES
     
     NumGeom = _geom.Geometry_NumGeom

@@ -77,6 +77,18 @@ import mfem._ser.fe
 import mfem._ser.geom
 import mfem._ser.intrules
 import mfem._ser.sparsemat
+import mfem._ser.fe_base
+import mfem._ser.fe_fixed_order
+import mfem._ser.element
+import mfem._ser.table
+import mfem._ser.hash
+import mfem._ser.fe_h1
+import mfem._ser.fe_nd
+import mfem._ser.fe_rt
+import mfem._ser.fe_l2
+import mfem._ser.fe_nurbs
+import mfem._ser.fe_pos
+import mfem._ser.fe_ser
 class ElementTransformation(object):
     r"""Proxy of C++ mfem::ElementTransformation class."""
 
