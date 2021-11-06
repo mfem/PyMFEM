@@ -1,4 +1,7 @@
 	<<<  Change Log. >>>
+2021 10.xx
+        * Fixed an issue due to new fe_xxx.hp
+	
 2021 08.27
         * memory leak
         * DenseTensor::Assign now accept numpy 3D array
