@@ -106,6 +106,7 @@ def run_test():
     mesh3 = mfem.Mesh()    
     mesh.PrintGZ("out_test_gz3.mesh")
     mesh3.Load("out_test_gz3.mesh")
+<<<<<<< HEAD
 
     check_mesh(mesh, mesh3, ".mesh (unexplcit GZ) does not agree with original")
     
@@ -113,6 +114,13 @@ def run_test():
     o = io.StringIO()        
     mesh2 = mfem.Mesh()
     
+=======
+    check_mesh(mesh, mesh3, ".mesh (w/o .gz exntension) does not agree with original")
+    
+
+    o = io.StringIO()        
+    mesh2 = mfem.Mesh()    
+>>>>>>> e4ffd7f99651c68daddd00463922df9e66b6beaf
     mesh.Print(o)
     mesh2.Load(o)
     check_mesh(mesh, mesh2, ".mesh.gz does not agree with original")
