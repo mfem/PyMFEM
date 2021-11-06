@@ -76,6 +76,7 @@ build_libceed = False
 build_parallel = False
 build_serial = False
 
+ext_prefix = ''
 mfems_prefix = ''
 mfemp_prefix = ''
 metis_prefix = ''
@@ -169,7 +170,7 @@ metadata = {'name': 'mfem',
 def abspath(path):
     return os.path.abspath(os.path.expanduser(path))
 
-
+'''
 def install_prefix():
     """Return the installation directory, or None"""
     if '--user' in sys.argv:
@@ -193,6 +194,29 @@ def install_prefix():
             path = os.path.dirname(path)
             if verbose:
                 print("found this one", path)
+            return path
+    assert False, "no installation path found"
+    return None
+'''
+
+def external_install_prefix(verbose=True):
+    if '--user' in sys.argv:
+        paths = (site.getusersitepackages(),)
+    else:
+        py_version = '%s.%s' % (sys.version_info[0], sys.version_info[1])
+        paths = (s % (py_version) for s in (
+            sys.prefix + '/lib/python%s/dist-packages/',
+            sys.prefix + '/lib/python%s/site-packages/',
+            sys.prefix + '/local/lib/python%s/dist-packages/',
+            sys.prefix + '/local/lib/python%s/site-packages/',
+            '/Library/Python/%s/site-packages/',
+        ))
+
+    for path in paths:
+        if verbose:
+            print("testing installation path", path)
+        if os.path.exists(path):
+            path = os.path.join(path, 'mfem', 'external')
             return path
     assert False, "no installation path found"
     return None
@@ -222,6 +246,7 @@ def make_call(command, target=''):
             target = " ".join(command)
         print("Failed when calling command: " + target)
         raise
+
 
 def chdir(path):
     '''
@@ -325,8 +350,6 @@ def find_libpath_from_prefix(lib, prefix0):
 ###
 #  build libraries
 ###
-
-
 def cmake_make_hypre():
     '''
     build hypre
@@ -345,10 +368,10 @@ def cmake_make_hypre():
 
     cmake_opts = {'DCMAKE_VERBOSE_MAKEFILE': '1',
                   'DBUILD_SHARED_LIBS': '1',
-                  'DHYPRE_INSTALL_PREFIX': os.path.join(prefix, 'mfem'),
+                  'DHYPRE_INSTALL_PREFIX': hypre_prefix,
                   'DHYPRE_ENABLE_SHARED': '1',
-                  'DCMAKE_INSTALL_PREFIX': os.path.join(prefix, 'mfem'),
-                  'DCMAKE_INSTALL_NAME_DIR': os.path.join(prefix, 'mfem', 'lib'),
+                  'DCMAKE_INSTALL_PREFIX': hypre_prefix,
+                  'DCMAKE_INSTALL_NAME_DIR': os.path.join(hypre_prefix, 'lib'),
                   'DCMAKE_C_COMPILER': mpicc_command}
 
     cmake('..', **cmake_opts)
@@ -396,7 +419,7 @@ def make_metis(use_int64=False, use_real64=False):
     make_call(command)
 
     command = ['make', 'config', 'shared=1',
-               'prefix=' + os.path.join(prefix, 'mfem'),
+               'prefix=' + metis_prefix,
                'cc=' + cc_command]
     make_call(command)
     make('metis')
@@ -405,8 +428,8 @@ def make_metis(use_int64=False, use_real64=False):
     if platform == "darwin":
         command = ['install_name_tool',
                    '-id',
-                   os.path.join(prefix, 'lib', 'libmetis.dylib'),
-                   os.path.join(prefix, 'lib', 'libmetis.dylib'), ]
+                   os.path.join(metis_prefix, 'lib', 'libmetis.dylib'),
+                   os.path.join(metis_prefix, 'lib', 'libmetis.dylib'), ]
         make_call(command)
     os.chdir(pwd)
 
@@ -451,13 +474,12 @@ def cmake_make_mfem(serial=True):
     if serial:
         cmake_opts['DCMAKE_CXX_COMPILER'] = cxx_command
         cmake_opts['DMFEM_USE_EXCEPTIONS'] = '1'
-        cmake_opts['DCMAKE_INSTALL_PREFIX'] = os.path.join(
-            prefix, 'mfem', 'ser')
+        cmake_opts['DCMAKE_INSTALL_PREFIX'] = mfems_prefix
+
     else:
         cmake_opts['DCMAKE_CXX_COMPILER'] = mpicxx_command
         cmake_opts['DMFEM_USE_EXCEPTIONS'] = '0'
-        cmake_opts['DCMAKE_INSTALL_PREFIX'] = os.path.join(
-            prefix, 'mfem', 'par')
+        cmake_opts['DCMAKE_INSTALL_PREFIX'] = mfemp_prefix
         cmake_opts['DMFEM_USE_MPI'] = '1'
         cmake_opts['DMFEM_USE_METIS_5'] = '1'
         cmake_opts['DHYPRE_DIR'] = hypre_prefix
@@ -506,12 +528,12 @@ def write_setup_local():
     '''
     import numpy
 
-    if build_mfem:
-        mfemser = os.path.join(prefix, 'mfem', 'ser')
-        mfempar = os.path.join(prefix, 'mfem', 'par')
-    else:
-        mfemser = mfems_prefix
-        mfempar = mfemp_prefix
+    #if build_mfem:
+    #    mfemser = os.path.join(prefix, 'mfem', 'ser')
+    #    mfempar = os.path.join(prefix, 'mfem', 'par')
+    #else:
+    mfemser = mfems_prefix
+    mfempar = mfemp_prefix
 
     hyprelibpath = os.path.dirname(
         find_libpath_from_prefix(
@@ -542,7 +564,8 @@ def write_setup_local():
               'add_pumi': '',
               'add_strumpack': '',
               'add_cuda': '',
-              'add_libceed': '',              
+              'add_libceed': '',
+              'libceedinc': os.path.join(libceed_prefix, 'include'),
               'cxx11flag': cxx11_flag,
               }
 
@@ -565,8 +588,10 @@ def write_setup_local():
         add_extra('strumpack')
     if enable_cuda:
         add_extra('cuda')
+
     if enable_libceed:
         add_extra('libceed')
+        print("libceedinc", os.path.join(libceed_prefix, 'include'))
 
     pwd = chdir(rootdir)
 
@@ -603,12 +628,11 @@ def generate_wrapper():
             return True
         return os.path.getmtime(ifile) > os.path.getmtime(wfile)
 
-    if build_mfem:
-        mfemser = os.path.join(prefix, 'mfem', 'ser')
-        mfempar = os.path.join(prefix, 'mfem', 'par')
-    else:
-        mfemser = mfems_prefix
-        mfempar = mfemp_prefix
+    # if build_mfem:
+    #    mfemser = os.path.join(prefix, 'mfem', 'ser')
+    #    mfempar = os.path.join(prefix, 'mfem', 'par')
+    mfemser = mfems_prefix
+    mfempar = mfemp_prefix
 
     pwd = chdir(os.path.join(rootdir, 'mfem', 'common'))
     command1 = [sys.executable, "generate_lininteg_ext.py"]
@@ -722,7 +746,7 @@ def print_config():
     print("----configuration----")
     print(" prefix", prefix)
     print(" when needed, the dependency (mfem/hypre/metis) will be installed under " +
-          prefix + "/mfem")
+          ext_prefix)
     print(" build mfem : " + ("Yes" if build_mfem else "No"))
     print(" build metis : " + ("Yes" if build_metis else "No"))
     print(" build hypre : " + ("Yes" if build_hypre else "No"))
@@ -744,7 +768,7 @@ def configure_install(self):
     '''
     called when install workflow is used
     '''
-    global prefix, dry_run, verbose
+    global prefix, dry_run, verbose, ext_prefix
     global clean_swig, run_swig, swig_only, skip_install
     global build_mfem, build_mfemp, build_parallel, build_serial
     global mfem_branch
@@ -822,12 +846,14 @@ def configure_install(self):
         build_hypre = build_parallel
         build_metis = build_parallel
 
-        hypre_prefix = os.path.join(prefix, 'mfem')
-        metis_prefix = os.path.join(prefix, 'mfem')
+        if ext_prefix == '':
+            ext_prefix = external_install_prefix()
+        hypre_prefix = os.path.join(ext_prefix)
+        metis_prefix = os.path.join(ext_prefix)
 
-        mfem_prefix = os.path.join(prefix, 'mfem')
-        mfems_prefix = os.path.join(prefix, 'mfem', 'ser')
-        mfemp_prefix = os.path.join(prefix, 'mfem', 'par')
+        mfem_prefix = ext_prefix
+        mfems_prefix = os.path.join(ext_prefix, 'ser')
+        mfemp_prefix = os.path.join(ext_prefix, 'par')
 
     if self.mfem_branch != '':
         mfem_branch = self.mfem_branch
@@ -886,6 +912,8 @@ def configure_install(self):
         build_hypre = False
         build_mfem = False
         build_mfemp = False
+        build_libceed = False
+
     if ext_only:
         clean_swig = False
         run_swig = False
@@ -1015,16 +1043,36 @@ class Install(_install):
     def finalize_options(self):
         if (bool(self.ext_only) and bool(self.skip_ext)):
             assert False, "skip-ext and ext-only can not use together"
-        _install.finalize_options(self)
 
-        global verbose
-        verbose = bool(self.verbose)
+        given_prefix = True
         if (self.prefix == '' or
                 self.prefix is None):
-            self.prefix = install_prefix()
+            given_prefix = False
         else:
-            if verbose:
-                print("prefix is given :", self.prefix)
+            self.prefix = os.path.expanduser(self.prefix)
+            prefix = self.prefix
+
+        _install.finalize_options(self)            
+        global verbose
+        verbose = bool(self.verbose)
+        if given_prefix:
+            global ext_prefix
+            self.prefix = prefix
+            ext_prefix = prefix
+        else:
+            if '--user' in sys.argv:
+                path = site.getusersitepackages()
+                if os.path.exists(path):
+                    path = os.path.dirname(path)
+                    path = os.path.dirname(path)
+                    path = os.path.dirname(path)
+                else:
+                    assert False, "no installation path found"
+                self.prefix = path
+            else:
+                self.prefix = sys.prefix
+        if verbose:
+            print("prefix is :", self.prefix)
 
     def run(self):
         if not is_configured:

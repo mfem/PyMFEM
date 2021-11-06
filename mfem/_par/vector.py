@@ -445,6 +445,7 @@ class Vector(object):
         __init__(Vector self, Vector arg2) -> Vector
         __init__(Vector self, int s) -> Vector
         __init__(Vector self, double * data_, int size_) -> Vector
+        __init__(Vector self, Vector base, int base_offset, int size_) -> Vector
         __init__(Vector self, int size_, mfem::MemoryType mt) -> Vector
         __init__(Vector self, int size_, mfem::MemoryType h_mt, mfem::MemoryType d_mt) -> Vector
         __init__(Vector self, Vector v, int offset, int size) -> Vector

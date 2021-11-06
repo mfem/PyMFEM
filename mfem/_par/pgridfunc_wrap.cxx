@@ -3264,12 +3264,13 @@ namespace Swig {
 #define SWIGTYPE_p_p_mfem__TransformedCoefficient swig_types[164]
 #define SWIGTYPE_p_p_mfem__VectorRotProductCoefficient swig_types[165]
 #define SWIGTYPE_p_pri_t swig_types[166]
-#define SWIGTYPE_p_quad_t swig_types[167]
-#define SWIGTYPE_p_seg_t swig_types[168]
-#define SWIGTYPE_p_tet_t swig_types[169]
-#define SWIGTYPE_p_tri_t swig_types[170]
-static swig_type_info *swig_types[172];
-static swig_module_info swig_module = {swig_types, 171, 0, 0, 0, 0};
+#define SWIGTYPE_p_pyr_t swig_types[167]
+#define SWIGTYPE_p_quad_t swig_types[168]
+#define SWIGTYPE_p_seg_t swig_types[169]
+#define SWIGTYPE_p_tet_t swig_types[170]
+#define SWIGTYPE_p_tri_t swig_types[171]
+static swig_type_info *swig_types[173];
+static swig_module_info swig_module = {swig_types, 172, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3743,7 +3744,7 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
-SWIGINTERN mfem::ParGridFunction *new_mfem_ParGridFunction__SWIG_8(mfem::ParFiniteElementSpace *fes,mfem::Vector const &v,int offset){
+SWIGINTERN mfem::ParGridFunction *new_mfem_ParGridFunction__SWIG_9(mfem::ParFiniteElementSpace *fes,mfem::Vector const &v,int offset){
    mfem::ParGridFunction *gf;   
    gf = new mfem::ParGridFunction(fes, v.GetData() + offset);
    return gf;
@@ -3998,6 +3999,59 @@ fail:
 SWIGINTERN PyObject *_wrap_new_ParGridFunction__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  int arg3 = (int) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  mfem::ParGridFunction *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ParGridFunction" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ParGridFunction" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ParGridFunction" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    }
+  }
+  {
+    try {
+      result = (mfem::ParGridFunction *)new mfem::ParGridFunction(arg1,*arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParGridFunction, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_ParGridFunction__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   mfem::GridFunction *arg2 = (mfem::GridFunction *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -4036,7 +4090,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_ParGridFunction__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_ParGridFunction__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   mfem::HypreParVector *arg2 = (mfem::HypreParVector *) 0 ;
@@ -4077,7 +4131,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_ParGridFunction__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_ParGridFunction__SWIG_7(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
   mfem::GridFunction *arg2 = (mfem::GridFunction *) 0 ;
@@ -4128,7 +4182,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_ParGridFunction__SWIG_7(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_ParGridFunction__SWIG_8(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
   std::istream *arg2 = 0 ;
@@ -6800,6 +6854,70 @@ fail:
     "    mfem::ParGridFunction::GetVectorValue(int,mfem::IntegrationPoint const &,mfem::Vector &) const\n"
     "    mfem::ParGridFunction::GetVectorValue(mfem::ElementTransformation &,mfem::IntegrationPoint const &,mfem::Vector &,mfem::Vector *) const\n");
   return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParGridFunction_GetDerivative(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ParGridFunction *arg1 = (mfem::ParGridFunction *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  mfem::ParGridFunction *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"comp",  (char *)"der_comp",  (char *)"der",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:ParGridFunction_GetDerivative", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParGridFunction_GetDerivative" "', argument " "1"" of type '" "mfem::ParGridFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParGridFunction * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__ParGridFunction,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ParGridFunction_GetDerivative" "', argument " "4"" of type '" "mfem::ParGridFunction &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParGridFunction_GetDerivative" "', argument " "4"" of type '" "mfem::ParGridFunction &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::ParGridFunction * >(argp4);
+  {
+    try {
+      (arg1)->GetDerivative(arg2,arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
 }
 
 
@@ -10607,7 +10725,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_ParGridFunction__SWIG_8(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_ParGridFunction__SWIG_9(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -10640,7 +10758,7 @@ SWIGINTERN PyObject *_wrap_new_ParGridFunction__SWIG_8(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      result = (mfem::ParGridFunction *)new_mfem_ParGridFunction__SWIG_8(arg1,(mfem::Vector const &)*arg2,arg3); 
+      result = (mfem::ParGridFunction *)new_mfem_ParGridFunction__SWIG_9(arg1,(mfem::Vector const &)*arg2,arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -10710,7 +10828,7 @@ SWIGINTERN PyObject *_wrap_new_ParGridFunction(PyObject *self, PyObject *args) {
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_new_ParGridFunction__SWIG_4(self, argc, argv);
+        return _wrap_new_ParGridFunction__SWIG_5(self, argc, argv);
       }
     }
   }
@@ -10724,7 +10842,34 @@ SWIGINTERN PyObject *_wrap_new_ParGridFunction(PyObject *self, PyObject *args) {
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__HypreParVector, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_new_ParGridFunction__SWIG_5(self, argc, argv);
+        return _wrap_new_ParGridFunction__SWIG_6(self, argc, argv);
+      }
+    }
+  }
+  if ((argc >= 2) && (argc <= 3)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParFiniteElementSpace, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_new_ParGridFunction__SWIG_4(self, argc, argv);
+        }
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_new_ParGridFunction__SWIG_4(self, argc, argv);
+        }
       }
     }
   }
@@ -10739,13 +10884,13 @@ SWIGINTERN PyObject *_wrap_new_ParGridFunction(PyObject *self, PyObject *args) {
       _v = SWIG_CheckState(res);
       if (_v) {
         if (argc <= 2) {
-          return _wrap_new_ParGridFunction__SWIG_6(self, argc, argv);
+          return _wrap_new_ParGridFunction__SWIG_7(self, argc, argv);
         }
         void *vptr = 0;
         int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_int, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
-          return _wrap_new_ParGridFunction__SWIG_6(self, argc, argv);
+          return _wrap_new_ParGridFunction__SWIG_7(self, argc, argv);
         }
       }
     }
@@ -10785,7 +10930,7 @@ SWIGINTERN PyObject *_wrap_new_ParGridFunction(PyObject *self, PyObject *args) {
         }
       }
       if (_v) {
-        return _wrap_new_ParGridFunction__SWIG_7(self, argc, argv);
+        return _wrap_new_ParGridFunction__SWIG_8(self, argc, argv);
       }
     }
   }
@@ -10807,7 +10952,7 @@ SWIGINTERN PyObject *_wrap_new_ParGridFunction(PyObject *self, PyObject *args) {
           }
         }
         if (_v) {
-          return _wrap_new_ParGridFunction__SWIG_8(self, argc, argv);
+          return _wrap_new_ParGridFunction__SWIG_9(self, argc, argv);
         }
       }
     }
@@ -10820,6 +10965,7 @@ fail:
     "    mfem::ParGridFunction::ParGridFunction(mfem::ParGridFunction const &)\n"
     "    mfem::ParGridFunction::ParGridFunction(mfem::ParFiniteElementSpace *)\n"
     "    mfem::ParGridFunction::ParGridFunction(mfem::ParFiniteElementSpace *,double *)\n"
+    "    mfem::ParGridFunction::ParGridFunction(mfem::ParFiniteElementSpace *,mfem::Vector &,int)\n"
     "    mfem::ParGridFunction::ParGridFunction(mfem::ParFiniteElementSpace *,mfem::GridFunction *)\n"
     "    mfem::ParGridFunction::ParGridFunction(mfem::ParFiniteElementSpace *,mfem::HypreParVector *)\n"
     "    mfem::ParGridFunction::ParGridFunction(mfem::ParMesh *,mfem::GridFunction const *,int const *)\n"
@@ -11468,6 +11614,7 @@ static PyMethodDef SwigMethods[] = {
 		"ParGridFunction_GetVectorValue(ParGridFunction self, int i, IntegrationPoint ip, Vector val)\n"
 		"ParGridFunction_GetVectorValue(ParGridFunction self, ElementTransformation T, IntegrationPoint ip, Vector val, Vector tr=None)\n"
 		""},
+	 { "ParGridFunction_GetDerivative", (PyCFunction)(void(*)(void))_wrap_ParGridFunction_GetDerivative, METH_VARARGS|METH_KEYWORDS, "ParGridFunction_GetDerivative(ParGridFunction self, int comp, int der_comp, ParGridFunction der)"},
 	 { "ParGridFunction_GetElementDofValues", (PyCFunction)(void(*)(void))_wrap_ParGridFunction_GetElementDofValues, METH_VARARGS|METH_KEYWORDS, "ParGridFunction_GetElementDofValues(ParGridFunction self, int el, Vector dof_vals)"},
 	 { "ParGridFunction_ProjectCoefficient", _wrap_ParGridFunction_ProjectCoefficient, METH_VARARGS, "\n"
 		"ParGridFunction_ProjectCoefficient(ParGridFunction self, Coefficient coeff)\n"
@@ -11531,6 +11678,7 @@ static PyMethodDef SwigMethods[] = {
 		"ParGridFunction(ParGridFunction orig)\n"
 		"ParGridFunction(ParFiniteElementSpace pf)\n"
 		"ParGridFunction(ParFiniteElementSpace pf, double * data)\n"
+		"ParGridFunction(ParFiniteElementSpace pf, Vector base, int base_offset=0)\n"
 		"ParGridFunction(ParFiniteElementSpace pf, GridFunction gf)\n"
 		"ParGridFunction(ParFiniteElementSpace pf, HypreParVector tv)\n"
 		"ParGridFunction(ParMesh pmesh, GridFunction gf, int const * partitioning=None)\n"
@@ -11621,6 +11769,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"GetVectorValue(ParGridFunction self, int i, IntegrationPoint ip, Vector val)\n"
 		"GetVectorValue(ParGridFunction self, ElementTransformation T, IntegrationPoint ip, Vector val, Vector tr=None)\n"
 		""},
+	 { "ParGridFunction_GetDerivative", (PyCFunction)(void(*)(void))_wrap_ParGridFunction_GetDerivative, METH_VARARGS|METH_KEYWORDS, "GetDerivative(ParGridFunction self, int comp, int der_comp, ParGridFunction der)"},
 	 { "ParGridFunction_GetElementDofValues", (PyCFunction)(void(*)(void))_wrap_ParGridFunction_GetElementDofValues, METH_VARARGS|METH_KEYWORDS, "GetElementDofValues(ParGridFunction self, int el, Vector dof_vals)"},
 	 { "ParGridFunction_ProjectCoefficient", _wrap_ParGridFunction_ProjectCoefficient, METH_VARARGS, "\n"
 		"ProjectCoefficient(ParGridFunction self, Coefficient coeff)\n"
@@ -11684,6 +11833,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"ParGridFunction(ParGridFunction orig)\n"
 		"ParGridFunction(ParFiniteElementSpace pf)\n"
 		"ParGridFunction(ParFiniteElementSpace pf, double * data)\n"
+		"ParGridFunction(ParFiniteElementSpace pf, Vector base, int base_offset=0)\n"
 		"ParGridFunction(ParFiniteElementSpace pf, GridFunction gf)\n"
 		"ParGridFunction(ParFiniteElementSpace pf, HypreParVector tv)\n"
 		"ParGridFunction(ParMesh pmesh, GridFunction gf, int const * partitioning=None)\n"
@@ -12304,6 +12454,7 @@ static swig_type_info _swigt__p_p_mfem__DeterminantCoefficient = {"_p_p_mfem__De
 static swig_type_info _swigt__p_p_mfem__QuadratureFunctionCoefficient = {"_p_p_mfem__QuadratureFunctionCoefficient", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__ExtrudeCoefficient = {"_p_p_mfem__ExtrudeCoefficient", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_pyr_t = {"_p_pyr_t", "pyr_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
@@ -12477,6 +12628,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_p_mfem__TransformedCoefficient,
   &_swigt__p_p_mfem__VectorRotProductCoefficient,
   &_swigt__p_pri_t,
+  &_swigt__p_pyr_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
   &_swigt__p_tet_t,
@@ -12650,6 +12802,7 @@ static swig_cast_info _swigc__p_p_mfem__QuadratureFunctionCoefficient[] = {{&_sw
 static swig_cast_info _swigc__p_p_mfem__ExtrudeCoefficient[] = {{&_swigt__p_p_mfem__ExtrudeCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__Coefficient[] = {  {&_swigt__p_p_mfem__PyCoefficientBase, _p_p_mfem__PyCoefficientBaseTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__VectorRotProductCoefficient, _p_p_mfem__VectorRotProductCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__InnerProductCoefficient, _p_p_mfem__InnerProductCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__PowerCoefficient, _p_p_mfem__PowerCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__RatioCoefficient, _p_p_mfem__RatioCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__ProductCoefficient, _p_p_mfem__ProductCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__SumCoefficient, _p_p_mfem__SumCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__DivergenceGridFunctionCoefficient, _p_p_mfem__DivergenceGridFunctionCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__RestrictedCoefficient, _p_p_mfem__RestrictedCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__DeltaCoefficient, _p_p_mfem__DeltaCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__TransformedCoefficient, _p_p_mfem__TransformedCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__GridFunctionCoefficient, _p_p_mfem__GridFunctionCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__FunctionCoefficient, _p_p_mfem__FunctionCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__Coefficient, 0, 0, 0},  {&_swigt__p_p_mfem__PWConstCoefficient, _p_p_mfem__PWConstCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__ConstantCoefficient, _p_p_mfem__ConstantCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__DeterminantCoefficient, _p_p_mfem__DeterminantCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__QuadratureFunctionCoefficient, _p_p_mfem__QuadratureFunctionCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__ExtrudeCoefficient, _p_p_mfem__ExtrudeCoefficientTo_p_p_mfem__Coefficient, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_pyr_t[] = {  {&_swigt__p_pyr_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -12823,6 +12976,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_p_mfem__TransformedCoefficient,
   _swigc__p_p_mfem__VectorRotProductCoefficient,
   _swigc__p_pri_t,
+  _swigc__p_pyr_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
   _swigc__p_tet_t,
@@ -13562,14 +13716,14 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40300)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.3.0"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40300)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40301)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.3.1"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40301)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40300)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40300)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40300)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40301)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40301)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40301)%100))));
   SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(22000)));
   
   if (import_mpi4py() < 0)

@@ -79,17 +79,27 @@ import mfem._ser.densemat
 import mfem._ser.eltrans
 import mfem._ser.fe
 import mfem._ser.geom
-import mfem._ser.mesh
-import mfem._ser.sort_pairs
-import mfem._ser.ncmesh
+import mfem._ser.fe_base
+import mfem._ser.fe_fixed_order
 import mfem._ser.element
 import mfem._ser.table
 import mfem._ser.hash
+import mfem._ser.fe_h1
+import mfem._ser.fe_nd
+import mfem._ser.fe_rt
+import mfem._ser.fe_l2
+import mfem._ser.fe_nurbs
+import mfem._ser.fe_pos
+import mfem._ser.fe_ser
+import mfem._ser.mesh
+import mfem._ser.sort_pairs
+import mfem._ser.ncmesh
 import mfem._ser.vertex
 import mfem._ser.vtk
 import mfem._ser.fespace
 import mfem._ser.fe_coll
 import mfem._ser.lininteg
+import mfem._ser.doftrans
 import mfem._ser.handle
 import mfem._ser.restriction
 import mfem._ser.bilininteg
@@ -533,6 +543,7 @@ class GridFunction(mfem._ser.vector.Vector):
         __init__(GridFunction self, GridFunction orig) -> GridFunction
         __init__(GridFunction self, FiniteElementSpace f) -> GridFunction
         __init__(GridFunction self, FiniteElementSpace f, double * data) -> GridFunction
+        __init__(GridFunction self, FiniteElementSpace f, Vector base, int base_offset=0) -> GridFunction
         __init__(GridFunction self, Mesh m, std::istream & input) -> GridFunction
         __init__(GridFunction self, Mesh m, mfem::GridFunction *[] gf_array, int num_pieces) -> GridFunction
         __init__(GridFunction self, FiniteElementSpace fes, Vector v, int offset) -> GridFunction

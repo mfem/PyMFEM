@@ -3136,13 +3136,14 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__Vector swig_types[36]
 #define SWIGTYPE_p_p_mfem__ArrayT_int_t swig_types[37]
 #define SWIGTYPE_p_pri_t swig_types[38]
-#define SWIGTYPE_p_quad_t swig_types[39]
-#define SWIGTYPE_p_seg_t swig_types[40]
-#define SWIGTYPE_p_tet_t swig_types[41]
-#define SWIGTYPE_p_tri_t swig_types[42]
-#define SWIGTYPE_p_void swig_types[43]
-static swig_type_info *swig_types[45];
-static swig_module_info swig_module = {swig_types, 44, 0, 0, 0, 0};
+#define SWIGTYPE_p_pyr_t swig_types[39]
+#define SWIGTYPE_p_quad_t swig_types[40]
+#define SWIGTYPE_p_seg_t swig_types[41]
+#define SWIGTYPE_p_tet_t swig_types[42]
+#define SWIGTYPE_p_tri_t swig_types[43]
+#define SWIGTYPE_p_void swig_types[44]
+static swig_type_info *swig_types[46];
+static swig_module_info swig_module = {swig_types, 45, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4718,7 +4719,7 @@ fail:
 SWIGINTERN PyObject *_wrap_ParMesh_GetGlobalVertexIndices(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
-  mfem::Array< HYPRE_Int > *arg2 = 0 ;
+  mfem::Array< HYPRE_BigInt > *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -4737,12 +4738,12 @@ SWIGINTERN PyObject *_wrap_ParMesh_GetGlobalVertexIndices(PyObject *SWIGUNUSEDPA
   arg1 = reinterpret_cast< mfem::ParMesh * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParMesh_GetGlobalVertexIndices" "', argument " "2"" of type '" "mfem::Array< HYPRE_Int > &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParMesh_GetGlobalVertexIndices" "', argument " "2"" of type '" "mfem::Array< HYPRE_BigInt > &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParMesh_GetGlobalVertexIndices" "', argument " "2"" of type '" "mfem::Array< HYPRE_Int > &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParMesh_GetGlobalVertexIndices" "', argument " "2"" of type '" "mfem::Array< HYPRE_BigInt > &""'"); 
   }
-  arg2 = reinterpret_cast< mfem::Array< HYPRE_Int > * >(argp2);
+  arg2 = reinterpret_cast< mfem::Array< HYPRE_BigInt > * >(argp2);
   {
     try {
       ((mfem::ParMesh const *)arg1)->GetGlobalVertexIndices(*arg2); 
@@ -4766,7 +4767,7 @@ fail:
 SWIGINTERN PyObject *_wrap_ParMesh_GetGlobalEdgeIndices(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
-  mfem::Array< HYPRE_Int > *arg2 = 0 ;
+  mfem::Array< HYPRE_BigInt > *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -4785,12 +4786,12 @@ SWIGINTERN PyObject *_wrap_ParMesh_GetGlobalEdgeIndices(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< mfem::ParMesh * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParMesh_GetGlobalEdgeIndices" "', argument " "2"" of type '" "mfem::Array< HYPRE_Int > &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParMesh_GetGlobalEdgeIndices" "', argument " "2"" of type '" "mfem::Array< HYPRE_BigInt > &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParMesh_GetGlobalEdgeIndices" "', argument " "2"" of type '" "mfem::Array< HYPRE_Int > &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParMesh_GetGlobalEdgeIndices" "', argument " "2"" of type '" "mfem::Array< HYPRE_BigInt > &""'"); 
   }
-  arg2 = reinterpret_cast< mfem::Array< HYPRE_Int > * >(argp2);
+  arg2 = reinterpret_cast< mfem::Array< HYPRE_BigInt > * >(argp2);
   {
     try {
       ((mfem::ParMesh const *)arg1)->GetGlobalEdgeIndices(*arg2); 
@@ -4814,7 +4815,7 @@ fail:
 SWIGINTERN PyObject *_wrap_ParMesh_GetGlobalFaceIndices(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
-  mfem::Array< HYPRE_Int > *arg2 = 0 ;
+  mfem::Array< HYPRE_BigInt > *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -4833,12 +4834,12 @@ SWIGINTERN PyObject *_wrap_ParMesh_GetGlobalFaceIndices(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< mfem::ParMesh * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParMesh_GetGlobalFaceIndices" "', argument " "2"" of type '" "mfem::Array< HYPRE_Int > &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParMesh_GetGlobalFaceIndices" "', argument " "2"" of type '" "mfem::Array< HYPRE_BigInt > &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParMesh_GetGlobalFaceIndices" "', argument " "2"" of type '" "mfem::Array< HYPRE_Int > &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParMesh_GetGlobalFaceIndices" "', argument " "2"" of type '" "mfem::Array< HYPRE_BigInt > &""'"); 
   }
-  arg2 = reinterpret_cast< mfem::Array< HYPRE_Int > * >(argp2);
+  arg2 = reinterpret_cast< mfem::Array< HYPRE_BigInt > * >(argp2);
   {
     try {
       ((mfem::ParMesh const *)arg1)->GetGlobalFaceIndices(*arg2); 
@@ -4862,7 +4863,7 @@ fail:
 SWIGINTERN PyObject *_wrap_ParMesh_GetGlobalElementIndices(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
-  mfem::Array< HYPRE_Int > *arg2 = 0 ;
+  mfem::Array< HYPRE_BigInt > *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -4881,12 +4882,12 @@ SWIGINTERN PyObject *_wrap_ParMesh_GetGlobalElementIndices(PyObject *SWIGUNUSEDP
   arg1 = reinterpret_cast< mfem::ParMesh * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParMesh_GetGlobalElementIndices" "', argument " "2"" of type '" "mfem::Array< HYPRE_Int > &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParMesh_GetGlobalElementIndices" "', argument " "2"" of type '" "mfem::Array< HYPRE_BigInt > &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParMesh_GetGlobalElementIndices" "', argument " "2"" of type '" "mfem::Array< HYPRE_Int > &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParMesh_GetGlobalElementIndices" "', argument " "2"" of type '" "mfem::Array< HYPRE_BigInt > &""'"); 
   }
-  arg2 = reinterpret_cast< mfem::Array< HYPRE_Int > * >(argp2);
+  arg2 = reinterpret_cast< mfem::Array< HYPRE_BigInt > * >(argp2);
   {
     try {
       ((mfem::ParMesh const *)arg1)->GetGlobalElementIndices(*arg2); 
@@ -6195,6 +6196,74 @@ SWIGINTERN PyObject *_wrap_ParMesh_GetFaceNbrRank(PyObject *SWIGUNUSEDPARM(self)
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParMesh_GetFaceNbrElementFaces(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
+  int arg2 ;
+  mfem::Array< int > *arg3 = 0 ;
+  mfem::Array< int > *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"fcs",  (char *)"cor",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:ParMesh_GetFaceNbrElementFaces", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParMesh_GetFaceNbrElementFaces" "', argument " "1"" of type '" "mfem::ParMesh const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParMesh * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParMesh_GetFaceNbrElementFaces" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParMesh_GetFaceNbrElementFaces" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ParMesh_GetFaceNbrElementFaces" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParMesh_GetFaceNbrElementFaces" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Array< int > * >(argp4);
+  {
+    try {
+      ((mfem::ParMesh const *)arg1)->GetFaceNbrElementFaces(arg2,*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -9610,6 +9679,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "ParMesh_GetNFaceNeighborElements", _wrap_ParMesh_GetNFaceNeighborElements, METH_O, "ParMesh_GetNFaceNeighborElements(ParMesh self) -> int"},
 	 { "ParMesh_GetFaceNbrGroup", (PyCFunction)(void(*)(void))_wrap_ParMesh_GetFaceNbrGroup, METH_VARARGS|METH_KEYWORDS, "ParMesh_GetFaceNbrGroup(ParMesh self, int fn) -> int"},
 	 { "ParMesh_GetFaceNbrRank", (PyCFunction)(void(*)(void))_wrap_ParMesh_GetFaceNbrRank, METH_VARARGS|METH_KEYWORDS, "ParMesh_GetFaceNbrRank(ParMesh self, int fn) -> int"},
+	 { "ParMesh_GetFaceNbrElementFaces", (PyCFunction)(void(*)(void))_wrap_ParMesh_GetFaceNbrElementFaces, METH_VARARGS|METH_KEYWORDS, "ParMesh_GetFaceNbrElementFaces(ParMesh self, int i, intArray fcs, intArray cor)"},
 	 { "ParMesh_GetFaceToAllElementTable", _wrap_ParMesh_GetFaceToAllElementTable, METH_O, "ParMesh_GetFaceToAllElementTable(ParMesh self) -> Table"},
 	 { "ParMesh_GetSharedFaceTransformations", (PyCFunction)(void(*)(void))_wrap_ParMesh_GetSharedFaceTransformations, METH_VARARGS|METH_KEYWORDS, "ParMesh_GetSharedFaceTransformations(ParMesh self, int sf, bool fill2=True) -> FaceElementTransformations"},
 	 { "ParMesh_GetFaceNbrElementTransformation", (PyCFunction)(void(*)(void))_wrap_ParMesh_GetFaceNbrElementTransformation, METH_VARARGS|METH_KEYWORDS, "ParMesh_GetFaceNbrElementTransformation(ParMesh self, int i) -> ElementTransformation"},
@@ -9727,6 +9797,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ParMesh_GetNFaceNeighborElements", _wrap_ParMesh_GetNFaceNeighborElements, METH_O, "GetNFaceNeighborElements(ParMesh self) -> int"},
 	 { "ParMesh_GetFaceNbrGroup", (PyCFunction)(void(*)(void))_wrap_ParMesh_GetFaceNbrGroup, METH_VARARGS|METH_KEYWORDS, "GetFaceNbrGroup(ParMesh self, int fn) -> int"},
 	 { "ParMesh_GetFaceNbrRank", (PyCFunction)(void(*)(void))_wrap_ParMesh_GetFaceNbrRank, METH_VARARGS|METH_KEYWORDS, "GetFaceNbrRank(ParMesh self, int fn) -> int"},
+	 { "ParMesh_GetFaceNbrElementFaces", (PyCFunction)(void(*)(void))_wrap_ParMesh_GetFaceNbrElementFaces, METH_VARARGS|METH_KEYWORDS, "GetFaceNbrElementFaces(ParMesh self, int i, intArray fcs, intArray cor)"},
 	 { "ParMesh_GetFaceToAllElementTable", _wrap_ParMesh_GetFaceToAllElementTable, METH_O, "GetFaceToAllElementTable(ParMesh self) -> Table"},
 	 { "ParMesh_GetSharedFaceTransformations", (PyCFunction)(void(*)(void))_wrap_ParMesh_GetSharedFaceTransformations, METH_VARARGS|METH_KEYWORDS, "GetSharedFaceTransformations(ParMesh self, int sf, bool fill2=True) -> FaceElementTransformations"},
 	 { "ParMesh_GetFaceNbrElementTransformation", (PyCFunction)(void(*)(void))_wrap_ParMesh_GetFaceNbrElementTransformation, METH_VARARGS|METH_KEYWORDS, "GetFaceNbrElementTransformation(ParMesh self, int i) -> ElementTransformation"},
@@ -9827,7 +9898,7 @@ static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "HYPRE_Real *|HYPRE_Complex *|double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *|HYPRE_BigInt *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *|mfem::Array< HYPRE_Int > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *|mfem::Array< HYPRE_BigInt > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__Element_p_t = {"_p_mfem__ArrayT_mfem__Element_p_t", "mfem::Array< mfem::Element * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__IntegrationPoint_t = {"_p_mfem__ArrayT_mfem__IntegrationPoint_t", "mfem::Array< mfem::IntegrationPoint > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__Vertex_t = {"_p_mfem__ArrayT_mfem__Vertex_t", "mfem::Array< mfem::Vertex > *", 0, 0, (void*)0, 0};
@@ -9855,6 +9926,7 @@ static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__Quadrature
 static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__ArrayT_int_t = {"_p_p_mfem__ArrayT_int_t", "mfem::Array< int > **|mfem::Array< HYPRE_BigInt > **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_pyr_t = {"_p_pyr_t", "pyr_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
@@ -9901,6 +9973,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__Vector,
   &_swigt__p_p_mfem__ArrayT_int_t,
   &_swigt__p_pri_t,
+  &_swigt__p_pyr_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
   &_swigt__p_tet_t,
@@ -9947,6 +10020,7 @@ static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearFo
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__HypreParVector, _p_mfem__HypreParVectorTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__ArrayT_int_t[] = {  {&_swigt__p_p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_pyr_t[] = {  {&_swigt__p_pyr_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -9993,6 +10067,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__Vector,
   _swigc__p_p_mfem__ArrayT_int_t,
   _swigc__p_pri_t,
+  _swigc__p_pyr_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
   _swigc__p_tet_t,
@@ -10733,14 +10808,14 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40300)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.3.0"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40300)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40301)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.3.1"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40301)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40300)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40300)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40300)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40301)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40301)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40301)%100))));
   SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(22000)));
   
   import_array();

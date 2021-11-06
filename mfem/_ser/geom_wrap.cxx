@@ -9283,6 +9283,7 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "Geometry_TETRAHEDRON",SWIG_From_int(static_cast< int >(mfem::Geometry::TETRAHEDRON)));
   SWIG_Python_SetConstant(d, "Geometry_CUBE",SWIG_From_int(static_cast< int >(mfem::Geometry::CUBE)));
   SWIG_Python_SetConstant(d, "Geometry_PRISM",SWIG_From_int(static_cast< int >(mfem::Geometry::PRISM)));
+  SWIG_Python_SetConstant(d, "Geometry_PYRAMID",SWIG_From_int(static_cast< int >(mfem::Geometry::PYRAMID)));
   SWIG_Python_SetConstant(d, "Geometry_NUM_GEOMETRIES",SWIG_From_int(static_cast< int >(mfem::Geometry::NUM_GEOMETRIES)));
   SWIG_Python_SetConstant(d, "Geometry_NumGeom",SWIG_From_int(static_cast< int >(mfem::Geometry::NumGeom)));
   SWIG_Python_SetConstant(d, "Geometry_MaxDim",SWIG_From_int(static_cast< int >(mfem::Geometry::MaxDim)));

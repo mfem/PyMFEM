@@ -55,6 +55,17 @@ from  mfem._ser.fespacehierarchy import *
 from  mfem._ser.multigrid import *
 from  mfem._ser.constraints import *
 
+from  mfem._ser.fe_base import *
+from  mfem._ser.fe_h1 import *
+from  mfem._ser.fe_l2 import *
+from  mfem._ser.fe_nd import *
+from  mfem._ser.fe_rt import *
+from  mfem._ser.fe_ser import *
+from  mfem._ser.fe_fixed_order import *
+from  mfem._ser.fe_pos import *
+from  mfem._ser.fe_nurbs import *
+from  mfem._ser.doftrans import *
+
 import mfem._ser.array as array
 import mfem._ser.blockoperator as blockoperator
 import mfem._ser.coefficient as coefficient

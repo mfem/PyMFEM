@@ -644,14 +644,6 @@ class DenseMatrix(mfem._ser.matrix.Matrix):
         return _densemat.DenseMatrix_PrintTGZ(self, file, precision)
     PrintTGZ = _swig_new_instance_method(_densemat.DenseMatrix_PrintTGZ)
 
-    def PrintMatlab(self, *args):
-        r"""
-        PrintMatlab(DenseMatrix self, std::ostream & out=mfem::out)
-        PrintMatlab(DenseMatrix self, char const * file, int precision=16)
-        """
-        return _densemat.DenseMatrix_PrintMatlab(self, *args)
-    PrintMatlab = _swig_new_instance_method(_densemat.DenseMatrix_PrintMatlab)
-
     def PrintMatlabGZ(self, file, precision=16):
         r"""PrintMatlabGZ(DenseMatrix self, char const * file, int precision=16)"""
         return _densemat.DenseMatrix_PrintMatlabGZ(self, file, precision)
@@ -1017,6 +1009,7 @@ class DenseTensor(object):
         r"""
         __init__(DenseTensor self) -> DenseTensor
         __init__(DenseTensor self, int i, int j, int k) -> DenseTensor
+        __init__(DenseTensor self, double * d, int i, int j, int k) -> DenseTensor
         __init__(DenseTensor self, int i, int j, int k, mfem::MemoryType mt) -> DenseTensor
         __init__(DenseTensor self, DenseTensor other) -> DenseTensor
         """

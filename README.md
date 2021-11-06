@@ -1,14 +1,14 @@
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mfem/PyMFEM/HEAD)
-[![badge](https://github.com/GLVis/pyglvis/blob/master/examples/ex1.svg "MFEM's Example 1")](https://mybinder.org/v2/gh/GLVis/pyglvis/HEAD?filepath=examples%2Fex1.ipynb)
-[![badge](https://github.com/GLVis/pyglvis/blob/master/examples/ex9.svg "MFEM's Example 9")](https://mybinder.org/v2/gh/GLVis/pyglvis/HEAD?filepath=examples%2Fex9.ipynb)
+[![badge](examples/jupyter/ex1.svg)](https://mybinder.org/v2/gh/mfem/PyMFEM/HEAD?labpath=examples%2Fjupyter%2Fex1.ipynb)
+[![badge](examples/jupyter/ex9.svg)](https://mybinder.org/v2/gh/mfem/PyMFEM/HEAD?labpath=examples%2Fjupyter%2Fex9.ipynb)
 
 #  MFEM + PyMFEM (FEM library)
 
-This package provides MFEM and its Python wrapper (PyMFEM). MFEM is a high performance parallel finite element method (FEM) library (http://mfem.org/).
+This repository provides Python binding for MFEM. MFEM is a high performance parallel finite element method (FEM) library (http://mfem.org/). 
 
-Installer downloads a couple of external libraries and build them.
+Installer (setup.py) builds both MFEM and binding together. 
 By default, "pip install mfem" downloads and builds the serial version of MFEM and PyMFEM.
-See more detail below for other configurations
+Additionally, the installer supports building MFEM with specific options together with other external libraries, including MPI version.
 
 ## Install
 ```
@@ -32,7 +32,15 @@ For other configurations, see docs/install.txt or help
 ```
 $ python setup.py install --help
 ```
-
+## Install from github master
+```
+git clone https://github.com/mfem/PyMFEM.git
+cd PyMFEM
+python setup.py install --mfem-branch=master  # build both MFEM and PyMFEM
+  
+cd test
+python test_examples.py -serial
+```  
 ## Usage
 Here is an example to solve div(grad(f)) = 1 in a square and to plot the result
 with matplotlib (modified from ex1.cpp). Use the badge above to open this in Binder.

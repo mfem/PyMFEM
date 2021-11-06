@@ -816,14 +816,6 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
         return _sparsemat.SparseMatrix_PrintGZ(self, file, precision)
     PrintGZ = _swig_new_instance_method(_sparsemat.SparseMatrix_PrintGZ)
 
-    def PrintMatlab(self, *args):
-        r"""
-        PrintMatlab(SparseMatrix self, std::ostream & out=mfem::out)
-        PrintMatlab(SparseMatrix self, char const * file, int precision=16)
-        """
-        return _sparsemat.SparseMatrix_PrintMatlab(self, *args)
-    PrintMatlab = _swig_new_instance_method(_sparsemat.SparseMatrix_PrintMatlab)
-
     def PrintMatlabGZ(self, file, precision=16):
         r"""PrintMatlabGZ(SparseMatrix self, char const * file, int precision=16)"""
         return _sparsemat.SparseMatrix_PrintMatlabGZ(self, file, precision)
