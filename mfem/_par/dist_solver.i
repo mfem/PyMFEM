@@ -3,7 +3,7 @@
 #include "config/config.hpp"      
 #include "fem/fem.hpp"
 #include "fem/coefficient.hpp"  
-#include "../../external/mfem/miniapps/shifted/dist_solver.hpp"
+#include "miniapps/shifted/dist_solver.hpp"
 #include "pycoefficient.hpp"  
 #include "numpy/arrayobject.h"    
 %}
@@ -13,7 +13,7 @@ import_array();
 %}
 
 %inline %{
-#include "../../external/mfem/miniapps/shifted/dist_solver.cpp"
+#include "miniapps/shifted/dist_solver.cpp"
 %}
 
 
@@ -25,5 +25,5 @@ import_array();
 %import "pgridfunc.i"
 %import "pmesh.i"
 
-%include "../../external/mfem/miniapps/shifted/dist_solver.hpp"
+%include "miniapps/shifted/dist_solver.hpp"
 

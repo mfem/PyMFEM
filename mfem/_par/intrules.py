@@ -77,6 +77,7 @@ class IntegrationPointArray(object):
         __init__(IntegrationPointArray self) -> IntegrationPointArray
         __init__(IntegrationPointArray self, mfem::MemoryType mt) -> IntegrationPointArray
         __init__(IntegrationPointArray self, int asize) -> IntegrationPointArray
+        __init__(IntegrationPointArray self, int asize, mfem::MemoryType mt) -> IntegrationPointArray
         __init__(IntegrationPointArray self, IntegrationPoint data_, int asize) -> IntegrationPointArray
         __init__(IntegrationPointArray self, IntegrationPointArray src) -> IntegrationPointArray
         """

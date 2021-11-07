@@ -66,7 +66,8 @@ import mpi4py
 mpi4pyinc = mpi4py.get_include()
 
 libraries    = ['mfem', 'HYPRE', 'metis']
-include_dirs = [mfembuilddir, mfemincdir, numpyinc, mpi4pyinc, hypreinc, metisinc]
+include_dirs = [mfembuilddir, mfemincdir, mfemsrcdir,
+                numpyinc, mpi4pyinc, hypreinc, metisinc]
 #                mpichinc, hypreinc,]
 library_dirs = [mfemlnkdir, hyprelib, metis5lib,]
 

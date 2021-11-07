@@ -82,6 +82,15 @@ import mfem._par.coefficient
 import mfem._par.sparsemat
 import mfem._par.eltrans
 import mfem._par.fe
+import mfem._par.fe_base
+import mfem._par.fe_fixed_order
+import mfem._par.fe_h1
+import mfem._par.fe_nd
+import mfem._par.fe_rt
+import mfem._par.fe_l2
+import mfem._par.fe_nurbs
+import mfem._par.fe_pos
+import mfem._par.fe_ser
 import mfem._par.pgridfunc
 import mfem._par.pfespace
 import mfem._par.fespace
@@ -96,6 +105,7 @@ import mfem._par.fe_coll
 import mfem._par.lininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.doftrans
 import mfem._par.handle
 import mfem._par.hypre
 import mfem._par.restriction
@@ -300,8 +310,8 @@ class PDEFilter(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, mesh, rh, order=2, maxiter=100, rtol=1e-7, atol=1e-15, print_lv=0):
-        r"""__init__(PDEFilter self, ParMesh mesh, double rh, int order=2, int maxiter=100, double rtol=1e-7, double atol=1e-15, int print_lv=0) -> PDEFilter"""
+    def __init__(self, mesh, rh, order=2, maxiter=100, rtol=1e-12, atol=1e-15, print_lv=0):
+        r"""__init__(PDEFilter self, ParMesh mesh, double rh, int order=2, int maxiter=100, double rtol=1e-12, double atol=1e-15, int print_lv=0) -> PDEFilter"""
         _dist_solver.PDEFilter_swiginit(self, _dist_solver.new_PDEFilter(mesh, rh, order, maxiter, rtol, atol, print_lv))
     __swig_destroy__ = _dist_solver.delete_PDEFilter
 

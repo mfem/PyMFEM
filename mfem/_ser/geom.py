@@ -298,6 +298,7 @@ class GeometryTypeArray(object):
         __init__(GeometryTypeArray self) -> GeometryTypeArray
         __init__(GeometryTypeArray self, mfem::MemoryType mt) -> GeometryTypeArray
         __init__(GeometryTypeArray self, int asize) -> GeometryTypeArray
+        __init__(GeometryTypeArray self, int asize, mfem::MemoryType mt) -> GeometryTypeArray
         __init__(GeometryTypeArray self, mfem::Geometry::Type * data_, int asize) -> GeometryTypeArray
         __init__(GeometryTypeArray self, GeometryTypeArray src) -> GeometryTypeArray
         """

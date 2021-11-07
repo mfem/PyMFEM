@@ -51,7 +51,7 @@ import numpy
 numpyinc = numpy.get_include()
 print("numpy inc", numpyinc)
 
-include_dirs = [mfemserbuilddir, mfemserincdir, numpyinc, ]
+include_dirs = [mfemserbuilddir, mfemserincdir, mfemsrcdir, numpyinc,]
 library_dirs = [mfemserlnkdir,]
 libraries    = ['mfem']
 
