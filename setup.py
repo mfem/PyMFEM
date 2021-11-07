@@ -758,7 +758,7 @@ def print_config():
     print(" build metis : " + ("Yes" if build_metis else "No"))
     print(" build hypre : " + ("Yes" if build_hypre else "No"))
     print(" build libceed : " + ("Yes" if build_libceed else "No"))
-    print(" call swig wrapper : " + ("Yes" if run_swig else "No"))
+    print(" call SWIG wrapper generator: " + ("Yes" if run_swig else "No"))
     print(" build serial wrapper: " + ("Yes" if build_serial else "No"))
     print(" build parallel wrapper : " + ("Yes" if build_parallel else "No"))
 
@@ -925,12 +925,15 @@ def configure_install(self):
         build_mfemp = False
         build_libceed = False
 
+    if swig_only:
+        build_serial = False
+        
     if ext_only:
         clean_swig = False
         run_swig = False
         build_serial = False
         build_parallel = False
-        skip_install = True
+        skip_install = Treu
 
     if libceed_only:
         clean_swig = False
