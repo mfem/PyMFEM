@@ -66,6 +66,7 @@ class _SwigNonDynamicMeta(type):
 
 import weakref
 
+import mfem._par.globals
 import mfem._par.mesh
 import mfem._par.matrix
 import mfem._par.vector
@@ -75,7 +76,6 @@ import mfem._par.operators
 import mfem._par.sort_pairs
 import mfem._par.vtk
 import mfem._par.element
-import mfem._par.globals
 import mfem._par.densemat
 import mfem._par.geom
 import mfem._par.intrules
@@ -131,12 +131,14 @@ class Embedding(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
     parent = property(_ncmesh.Embedding_parent_get, _ncmesh.Embedding_parent_set, doc=r"""parent : int""")
-    matrix = property(_ncmesh.Embedding_matrix_get, _ncmesh.Embedding_matrix_set, doc=r"""matrix : int""")
+    geom = property(_ncmesh.Embedding_geom_get, _ncmesh.Embedding_geom_set, doc=r"""geom : unsigned int""")
+    matrix = property(_ncmesh.Embedding_matrix_get, _ncmesh.Embedding_matrix_set, doc=r"""matrix : unsigned int""")
+    ghost = property(_ncmesh.Embedding_ghost_get, _ncmesh.Embedding_ghost_set, doc=r"""ghost : unsigned int""")
 
     def __init__(self, *args):
         r"""
         __init__(Embedding self) -> Embedding
-        __init__(Embedding self, int elem, int matrix=0) -> Embedding
+        __init__(Embedding self, int elem, mfem::Geometry::Type geom, int matrix=0, bool ghost=False) -> Embedding
         """
         _ncmesh.Embedding_swiginit(self, _ncmesh.new_Embedding(*args))
     __swig_destroy__ = _ncmesh.delete_Embedding
@@ -149,16 +151,13 @@ class CoarseFineTransformations(object):
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    point_matrices = property(_ncmesh.CoarseFineTransformations_point_matrices_get, _ncmesh.CoarseFineTransformations_point_matrices_set, doc=r"""point_matrices : a(mfem::Geometry::NumGeom).mfem::DenseTensor""")
     embeddings = property(_ncmesh.CoarseFineTransformations_embeddings_get, doc=r"""embeddings : mfem::Array<(mfem::Embedding)>""")
+    point_matrices = property(_ncmesh.CoarseFineTransformations_point_matrices_get, _ncmesh.CoarseFineTransformations_point_matrices_set, doc=r"""point_matrices : a(mfem::Geometry::NumGeom).mfem::DenseTensor""")
 
-    def GetCoarseToFineMap(self, *args):
-        r"""
-        GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine, intArray coarse_to_ref_type, Table ref_type_to_matrix, GeometryTypeArray ref_type_to_geom, bool get_coarse_to_fine_only=False)
-        GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine)
-        """
-        return _ncmesh.CoarseFineTransformations_GetCoarseToFineMap(self, *args)
-    GetCoarseToFineMap = _swig_new_instance_method(_ncmesh.CoarseFineTransformations_GetCoarseToFineMap)
+    def MakeCoarseToFineTable(self, coarse_to_fine, want_ghosts=False):
+        r"""MakeCoarseToFineTable(CoarseFineTransformations self, Table coarse_to_fine, bool want_ghosts=False)"""
+        return _ncmesh.CoarseFineTransformations_MakeCoarseToFineTable(self, coarse_to_fine, want_ghosts)
+    MakeCoarseToFineTable = _swig_new_instance_method(_ncmesh.CoarseFineTransformations_MakeCoarseToFineTable)
 
     def Clear(self):
         r"""Clear(CoarseFineTransformations self)"""
@@ -174,6 +173,11 @@ class CoarseFineTransformations(object):
         r"""MemoryUsage(CoarseFineTransformations self) -> long"""
         return _ncmesh.CoarseFineTransformations_MemoryUsage(self)
     MemoryUsage = _swig_new_instance_method(_ncmesh.CoarseFineTransformations_MemoryUsage)
+
+    def GetCoarseToFineMap(self, fine_mesh, coarse_to_fine):
+        r"""GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine)"""
+        return _ncmesh.CoarseFineTransformations_GetCoarseToFineMap(self, fine_mesh, coarse_to_fine)
+    GetCoarseToFineMap = _swig_new_instance_method(_ncmesh.CoarseFineTransformations_GetCoarseToFineMap)
 
     def __init__(self):
         r"""__init__(CoarseFineTransformations self) -> CoarseFineTransformations"""
@@ -419,6 +423,7 @@ class RefinementArray(object):
         __init__(RefinementArray self) -> RefinementArray
         __init__(RefinementArray self, mfem::MemoryType mt) -> RefinementArray
         __init__(RefinementArray self, int asize) -> RefinementArray
+        __init__(RefinementArray self, int asize, mfem::MemoryType mt) -> RefinementArray
         __init__(RefinementArray self, Refinement data_, int asize) -> RefinementArray
         __init__(RefinementArray self, RefinementArray src) -> RefinementArray
         """

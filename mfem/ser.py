@@ -54,6 +54,7 @@ from  mfem._ser.io_stream import wFILE, STDOUT
 from  mfem._ser.fespacehierarchy import *
 from  mfem._ser.multigrid import *
 from  mfem._ser.constraints import *
+from  mfem._ser.transfer import *
 
 from  mfem._ser.fe_base import *
 from  mfem._ser.fe_h1 import *
