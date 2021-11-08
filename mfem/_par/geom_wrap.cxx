@@ -5364,6 +5364,46 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_GeometryTypeArray__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
+  int arg1 ;
+  mfem::MemoryType arg2 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  mfem::Array< mfem::Geometry::Type > *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+  }
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_GeometryTypeArray" "', argument " "2"" of type '" "mfem::MemoryType""'");
+  } 
+  arg2 = static_cast< mfem::MemoryType >(val2);
+  {
+    try {
+      result = (mfem::Array< mfem::Geometry::Type > *)new mfem::Array< mfem::Geometry::Type >(arg1,arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_GeometryTypeArray__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
   mfem::Geometry::Type *arg1 = (mfem::Geometry::Type *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
@@ -5402,7 +5442,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_GeometryTypeArray__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_GeometryTypeArray__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Array< mfem::Geometry::Type > *arg1 = 0 ;
   void *argp1 = 0 ;
@@ -5454,7 +5494,7 @@ SWIGINTERN PyObject *_wrap_new_GeometryTypeArray(PyObject *self, PyObject *args)
     int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t, SWIG_POINTER_NO_NULL | 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_new_GeometryTypeArray__SWIG_4(self, argc, argv);
+      return _wrap_new_GeometryTypeArray__SWIG_5(self, argc, argv);
     }
   }
   if (argc == 1) {
@@ -5496,6 +5536,26 @@ SWIGINTERN PyObject *_wrap_new_GeometryTypeArray(PyObject *self, PyObject *args)
         }
       }
       if (_v) {
+        return _wrap_new_GeometryTypeArray__SWIG_4(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
         return _wrap_new_GeometryTypeArray__SWIG_3(self, argc, argv);
       }
     }
@@ -5507,6 +5567,7 @@ fail:
     "    mfem::Array< mfem::Geometry::Type >::Array()\n"
     "    mfem::Array< mfem::Geometry::Type >::Array(mfem::MemoryType)\n"
     "    mfem::Array< mfem::Geometry::Type >::Array(int)\n"
+    "    mfem::Array< mfem::Geometry::Type >::Array(int,mfem::MemoryType)\n"
     "    mfem::Array< mfem::Geometry::Type >::Array(mfem::Geometry::Type *,int)\n"
     "    mfem::Array< mfem::Geometry::Type >::Array(mfem::Array< mfem::Geometry::Type > const &)\n");
   return 0;
@@ -7808,6 +7869,7 @@ static PyMethodDef SwigMethods[] = {
 		"GeometryTypeArray()\n"
 		"GeometryTypeArray(mfem::MemoryType mt)\n"
 		"GeometryTypeArray(int asize)\n"
+		"GeometryTypeArray(int asize, mfem::MemoryType mt)\n"
 		"GeometryTypeArray(mfem::Geometry::Type * data_, int asize)\n"
 		"new_GeometryTypeArray(GeometryTypeArray src) -> GeometryTypeArray\n"
 		""},
@@ -7937,6 +7999,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"GeometryTypeArray()\n"
 		"GeometryTypeArray(mfem::MemoryType mt)\n"
 		"GeometryTypeArray(int asize)\n"
+		"GeometryTypeArray(int asize, mfem::MemoryType mt)\n"
 		"GeometryTypeArray(mfem::Geometry::Type * data_, int asize)\n"
 		"new_GeometryTypeArray(GeometryTypeArray src) -> GeometryTypeArray\n"
 		""},

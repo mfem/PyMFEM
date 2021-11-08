@@ -81,6 +81,7 @@ build_serial = False
 ext_prefix = ''
 mfems_prefix = ''
 mfemp_prefix = ''
+mfem_source  = ''
 metis_prefix = ''
 hypre_prefix = ''
 
@@ -597,6 +598,7 @@ def write_setup_local():
               'mfemserbuilddir': os.path.join(mfemser, 'include'),
               'mfemserincdir': os.path.join(mfemser, 'include', 'mfem'),
               'mfemserlnkdir': os.path.join(mfemser, 'lib'),
+              'mfemsrcdir': os.path.join(mfem_source),
               'add_pumi': '',
               'add_strumpack': '',
               'add_cuda': '',
@@ -655,6 +657,9 @@ def generate_wrapper():
     '''
     if dry_run or verbose:
         print("generating SWIG wrapper")
+        print("using MFEM source", os.path.abspath(mfem_source))
+    if not os.path.exists(os.path.abspath(mfem_source)):
+        assert False, "MFEM source directory. Use --mfem-source=<path>"
 
     def ifiles():
         ifiles = os.listdir()
@@ -689,7 +694,8 @@ def generate_wrapper():
     pwd = chdir(os.path.join(rootdir, 'mfem', '_ser'))
 
     serflag = ['-I' + os.path.join(mfemser, 'include'),
-               '-I' + os.path.join(mfemser, 'include', 'mfem')]
+               '-I' + os.path.join(mfemser, 'include', 'mfem'),
+               '-I' + os.path.abspath(mfem_source)]    
     for file in ifiles():
         if not check_new(file):
             continue
@@ -705,6 +711,7 @@ def generate_wrapper():
     import mpi4py
     parflag = ['-I' + os.path.join(mfempar, 'include'),
                '-I' + os.path.join(mfempar, 'include', 'mfem'),
+               '-I' + os.path.abspath(mfem_source),               
                '-I' + os.path.join(hypre_prefix, 'include'),
                '-I' + os.path.join(metis_prefix, 'include'),
                '-I' + mpi4py.get_include()]
@@ -766,6 +773,8 @@ def make_mfem_wrapper(serial=True):
     '''
     if dry_run or verbose:
         print("compiling wrapper code, serial=" + str(serial))
+    if not os.path.exists(os.path.abspath(mfem_source)):
+        assert False, "MFEM source directory. Use --mfem-source=<path>"
 
     write_setup_local()
 
@@ -789,8 +798,8 @@ def print_config():
     print(" build metis : " + ("Yes" if build_metis else "No"))
     print(" build hypre : " + ("Yes" if build_hypre else "No"))
     print(" build libceed : " + ("Yes" if build_libceed else "No"))
-    print(" build gslib : " + ("Yes" if build_gslib else "No"))    
-    print(" call swig wrapper : " + ("Yes" if run_swig else "No"))
+    print(" build gslib : " + ("Yes" if build_gslib else "No"))  
+    print(" call SWIG wrapper generator: " + ("Yes" if run_swig else "No"))
     print(" build serial wrapper: " + ("Yes" if build_serial else "No"))
     print(" build parallel wrapper : " + ("Yes" if build_parallel else "No"))
 
@@ -810,8 +819,10 @@ def configure_install(self):
     global prefix, dry_run, verbose, ext_prefix
     global clean_swig, run_swig, swig_only, skip_install
     global build_mfem, build_mfemp, build_parallel, build_serial
-    global mfem_branch
+
+    global mfem_branch, mfem_source
     global build_metis, build_hypre, build_libceed, build_gslib
+
     global mfems_prefix, mfemp_prefix, metis_prefix, hypre_prefix
     global cc_command, cxx_command, mpicc_command, mpicxx_command
     global metis_64
@@ -827,10 +838,13 @@ def configure_install(self):
         verbose = True
 
     prefix = abspath(self.prefix)
+    mfem_source = abspath(self.mfem_source)
+    
     skip_ext = bool(self.skip_ext)
     skip_install = bool(self.build_only)
     swig_only = bool(self.swig)
     ext_only = bool(self.ext_only)
+
 
     metis_64 = bool(self.with_metis64)
     enable_pumi = bool(self.with_pumi)
@@ -843,6 +857,7 @@ def configure_install(self):
 
     build_parallel = bool(self.with_parallel)     # controlls PyMFEM parallel
     build_serial = not bool(self.no_serial)
+
 
     run_swig = swig_only
 
@@ -968,12 +983,15 @@ def configure_install(self):
         build_libceed = False
         build_gslib = False        
 
+    if swig_only:
+        build_serial = False
+        
     if ext_only:
         clean_swig = False
         run_swig = False
         build_serial = False
         build_parallel = False
-        skip_install = True
+        skip_install = Treu
 
     if libceed_only:
         clean_swig = False
@@ -1048,6 +1066,8 @@ class Install(_install):
         ('mfem-prefix-no-swig', None, 'skip running swig when mfem-prefix is chosen'),
         ('mfem-branch=', None, 'Specify branch of mfem' +
          'MFEM is cloned and built using the specfied branch '),
+        ('mfem-source=', None, 'Specify mfem source location' +
+         'MFEM source directory. Required to run-swig '),
         ('hypre-prefix=', None, 'Specify locaiton of hypre' +
          'libHYPRE.so must exits under <hypre-prefix>/lib'),
         ('metis-prefix=', None, 'Specify locaiton of metis' +
@@ -1088,6 +1108,7 @@ class Install(_install):
         self.mfem_prefix = ''
         self.mfems_prefix = ''
         self.mfemp_prefix = ''
+        self.mfem_source = './external/mfem'
         self.mfem_prefix_no_swig = ''
         self.mfem_branch = ''
         self.metis_prefix = ''

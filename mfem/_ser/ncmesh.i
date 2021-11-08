@@ -6,7 +6,8 @@
 #include <fstream>
 #include <iostream>
 #include "../common/io_stream.hpp"
-#include "general/zstr.hpp"  
+#include "general/zstr.hpp"
+#include "general/globals.hpp"
 #include "mesh/ncmesh.hpp"
 #include "fem/gridfunc.hpp"
 #include "fem/bilinearform.hpp"    
@@ -18,6 +19,7 @@
 %}
 
 %include "exception.i"
+%import "globals.i"
 %import "mesh.i"
 %import "array.i"
 %import "fem/geom.hpp"
