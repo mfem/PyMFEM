@@ -160,7 +160,7 @@ def run(order_refinements=2,
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
 
-    parser = ArgParser(description='Ex29 (Solving PDEs on embeded surfaces)')
+    parser = ArgParser(description='Ex26 (Multigrid Preconditioner)')
 
     parser.add_argument('-m', '--mesh',
                         default='star.mesh',
