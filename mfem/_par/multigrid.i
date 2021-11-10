@@ -22,6 +22,11 @@ import_array();
 %import "bilinearform.i"
 %import "fespacehierarchy.i"
 %import "../common/exception_director.i"
+%import "../common/object_array_typemap.i"
+
+ObjectArrayInput(mfem::Solver *);
+ObjectArrayInput(mfem::Operator *);
+BoolArrayInput(bool);
    
 %feature("director") mfem::PyGeometricMultigrid;
 

@@ -22,7 +22,12 @@ import_array();
 %import "bilinearform.i"
 %import "fespacehierarchy.i"
 %import "../common/exception_director.i"
-   
+%import "../common/object_array_typemap.i"
+
+ObjectArrayInput(mfem::Solver *);
+ObjectArrayInput(mfem::Operator *);
+BoolArrayInput(bool);
+
 %feature("director") mfem::PyGeometricMultigrid;
 
 %pythonprepend PyGeometricMultigrid::AppendBilinearForm %{
@@ -44,8 +49,21 @@ import_array();
   @property						     
   def essentialTrueDofs(self):
      return self._esss
-%}		
-
+%}
+/*
+%inline %{
+  namespace mfem{
+  class TestMacro
+  {
+  public:
+    TestMacro( const Array< Operator *> & input){
+      std::cout << "here" << input[0]->Width() << "\n";  
+    }
+    virtual ~TestMacro(){};
+  };
+  }
+%}
+*/
 %include "fem/multigrid.hpp"
 
 %inline %{

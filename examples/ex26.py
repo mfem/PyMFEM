@@ -128,6 +128,7 @@ def run(order_refinements=2,
     ess_bdr = mfem.intArray(mesh.bdr_attributes.Max())
     ess_bdr.Assign(1)
 
+
     M = DiffusionMultigrid(fespaces, ess_bdr)
     M.SetCycleType(mfem.Multigrid.CycleType_VCYCLE, 1, 1)
 
@@ -138,6 +139,10 @@ def run(order_refinements=2,
     M.FormFineLinearSystem(x, b, A, X, B)
     print("Size of linear system: " + str(A.Height()))
 
+    pcg = mfem.CGSolver()
+    #M = mfem.Multigrid([A.Ptr()], [pcg], [A.Ptr()], [True], [True], [True])
+    mfem.TestMacro([A.Ptr()])
+                  
     # 9. Solve the linear system A X = B.
     mfem.PCG(A.Ptr(), M, B, X, 1, 2000, 1e-12, 0.0)
 

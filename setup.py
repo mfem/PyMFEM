@@ -604,6 +604,8 @@ def write_setup_local():
               'add_cuda': '',
               'add_libceed': '',
               'add_gslib': '',
+              'add_gslibp': '',
+              'add_gslibs': '',              
               'libceedinc': os.path.join(libceed_prefix, 'include'),
               'gslibsinc': os.path.join(gslibs_prefix, 'include'),
               'gslibpinc': os.path.join(gslibp_prefix, 'include'),
