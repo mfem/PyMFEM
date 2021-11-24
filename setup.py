@@ -499,6 +499,7 @@ def cmake_make_mfem(serial=True):
         ldflags = "-L" + metislibpath + " " + ldflags
         ldflags = "-L" + hyprelibpath + " " + ldflags
         cmake_opts['DCMAKE_SHARED_LINKER_FLAGS'] = ldflags
+        cmake_opts['DCMAKE_EXT_LINKER_FLAGS'] = ldflags
 
         if enable_strumpack:
             cmake_opts['DMFEM_USE_STRUMPACK'] = '1'
