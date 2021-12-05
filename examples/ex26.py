@@ -140,8 +140,7 @@ def run(order_refinements=2,
     print("Size of linear system: " + str(A.Height()))
 
     pcg = mfem.CGSolver()
-    #M = mfem.Multigrid([A.Ptr()], [pcg], [A.Ptr()], [True], [True], [True])
-    mfem.TestMacro([A.Ptr()])
+    M = mfem.Multigrid([A.Ptr()], [pcg], [A.Ptr()], [True], [True], [True])
                   
     # 9. Solve the linear system A X = B.
     mfem.PCG(A.Ptr(), M, B, X, 1, 2000, 1e-12, 0.0)

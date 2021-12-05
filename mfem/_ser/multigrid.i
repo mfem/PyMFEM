@@ -50,20 +50,6 @@ BoolArrayInput(bool);
   def essentialTrueDofs(self):
      return self._esss
 %}
-/*
-%inline %{
-  namespace mfem{
-  class TestMacro
-  {
-  public:
-    TestMacro( const Array< Operator *> & input){
-      std::cout << "here" << input[0]->Width() << "\n";  
-    }
-    virtual ~TestMacro(){};
-  };
-  }
-%}
-*/
 %include "fem/multigrid.hpp"
 
 %inline %{
