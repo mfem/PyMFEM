@@ -507,5 +507,31 @@ def ResetHypreCol(M, idx):
     mat.eliminate_zeros()    
     return  ToHypreParCSR(mat.tocsr(), col_starts = col_starts)
  
- 
+def ReadHypreDiag(M, idx):
+    '''
+    set diagonal element to value (normally 1)
+    '''
+    col_starts = M.GetColPartArray()
+
+    num_rows, ilower, iupper, jlower, jupper, irn, jcn, data = M.GetCooDataArray()
+    from mpi4py import MPI
+    myid     = MPI.COMM_WORLD.rank
+     
+    m = iupper - ilower + 1
+    n = jupper - jlower + 1
+    n = M.N()    
+    from scipy.sparse import coo_matrix, lil_matrix
+    try:  
+        mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n)).tolil()
+    except:
+       print("wrong input")
+       print(num_rows, ilower, iupper, jlower, jupper)
+       print(np.min(irn-ilower), np.max(irn-ilower) , np.min(jcn),  np.max(jcn), (m, n))
+       raise
+
+    idx = np.array(idx, dtype=int, copy=False)
+    ii =  idx[np.logical_and(idx >= ilower, idx <= iupper)]
+
+    tmp = mat[ii-ilower, ii].toarray().flatten()
+    return tmp
 

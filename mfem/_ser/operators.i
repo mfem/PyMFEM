@@ -54,6 +54,7 @@ void mfem::PyTimeDependentOperatorBase::Mult(const mfem::Vector &x, mfem::Vector
 %feature("director") mfem::Operator;
 %feature("director") mfem::Solver;
 
+//%feature("nodirector") mfem::Operator::SetOperator;
 //%feature("nodirector") mfem::Operator::GetGradient;
 //%feature("nodirector") mfem::Operator::GetProlongation;
 //%feature("nodirector") mfem::Operator::GetRestriction;

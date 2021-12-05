@@ -3097,18 +3097,18 @@ namespace Swig {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_PyGeometricMultigrid swig_types[0]
-#define SWIGTYPE_p_PyMFEM__wFILE swig_types[1]
-#define SWIGTYPE_p_RefCoord swig_types[2]
-#define SWIGTYPE_p_char swig_types[3]
-#define SWIGTYPE_p_double swig_types[4]
-#define SWIGTYPE_p_hex_t swig_types[5]
-#define SWIGTYPE_p_int swig_types[6]
-#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[7]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[8]
-#define SWIGTYPE_p_mfem__BilinearForm swig_types[9]
-#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[10]
-#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[11]
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
+#define SWIGTYPE_p_RefCoord swig_types[1]
+#define SWIGTYPE_p_char swig_types[2]
+#define SWIGTYPE_p_double swig_types[3]
+#define SWIGTYPE_p_hex_t swig_types[4]
+#define SWIGTYPE_p_int swig_types[5]
+#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[6]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[7]
+#define SWIGTYPE_p_mfem__BilinearForm swig_types[8]
+#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[9]
+#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[10]
+#define SWIGTYPE_p_mfem__CustomTransfer swig_types[11]
 #define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[12]
 #define SWIGTYPE_p_mfem__DenseMatrix swig_types[13]
 #define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[14]
@@ -3133,28 +3133,29 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__Operator swig_types[33]
 #define SWIGTYPE_p_mfem__OperatorHandle swig_types[34]
 #define SWIGTYPE_p_mfem__ProductOperator swig_types[35]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[36]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[37]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[38]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[39]
-#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[40]
-#define SWIGTYPE_p_mfem__ScaledOperator swig_types[41]
-#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[42]
-#define SWIGTYPE_p_mfem__Solver swig_types[43]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[44]
-#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[45]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[46]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[47]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[48]
-#define SWIGTYPE_p_mfem__Vector swig_types[49]
-#define SWIGTYPE_p_pri_t swig_types[50]
-#define SWIGTYPE_p_pyr_t swig_types[51]
-#define SWIGTYPE_p_quad_t swig_types[52]
-#define SWIGTYPE_p_seg_t swig_types[53]
-#define SWIGTYPE_p_tet_t swig_types[54]
-#define SWIGTYPE_p_tri_t swig_types[55]
-static swig_type_info *swig_types[57];
-static swig_module_info swig_module = {swig_types, 56, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__PyGeometricMultigrid swig_types[36]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[37]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[38]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[39]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[40]
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[41]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[42]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[43]
+#define SWIGTYPE_p_mfem__Solver swig_types[44]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[45]
+#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[46]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[47]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[48]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[49]
+#define SWIGTYPE_p_mfem__Vector swig_types[50]
+#define SWIGTYPE_p_pri_t swig_types[51]
+#define SWIGTYPE_p_pyr_t swig_types[52]
+#define SWIGTYPE_p_quad_t swig_types[53]
+#define SWIGTYPE_p_seg_t swig_types[54]
+#define SWIGTYPE_p_tet_t swig_types[55]
+#define SWIGTYPE_p_tri_t swig_types[56]
+static swig_type_info *swig_types[58];
+static swig_module_info swig_module = {swig_types, 57, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3437,21 +3438,53 @@ SWIG_AsVal_int (PyObject * obj, int *val)
 }
 
 
-class PyGeometricMultigrid : public mfem::GeometricMultigrid
+  namespace mfem{
+class PyGeometricMultigrid : public GeometricMultigrid
 {
 public:
- PyGeometricMultigrid(const mfem::FiniteElementSpaceHierarchy& fespaces_) 
-   : mfem::GeometricMultigrid(fespaces_){}
+ PyGeometricMultigrid(const FiniteElementSpaceHierarchy& fespaces_) 
+   : GeometricMultigrid(fespaces_){}
   
-  void AppendBilinearForm(mfem::BilinearForm *form){
+  void AppendBilinearForm(BilinearForm *form){
     bfs.Append(form);
   }
-  void AppendEssentialTDofs(mfem::Array<int> *ess){
+  void AppendEssentialTDofs(Array<int> *ess){
       essentialTrueDofs.Append(ess);
   }
   void _pybfs(void){}
   void _pyess(void){}  
 };
+class CustomTransfer : public Operator
+{
+private:
+  Operator *f_opr;
+  SparseMatrix &M1;
+  SparseMatrix &M2;
+  
+public:
+ CustomTransfer(Operator *_f_opr, SparseMatrix &_M1, SparseMatrix &_M2)
+   : Operator(_f_opr -> Height(), _f_opr -> Width()), f_opr(_f_opr), M1(_M1), M2(_M2){}
+ 
+ virtual void Mult(const Vector &x, Vector &y) const {
+   std::cout << "Forward \n";
+   f_opr -> Mult(x, y);
+ }
+ virtual void MultTranspose(const Vector &x, Vector &y) const {
+   std::cout << "Backward \n";
+   Vector *B2 = new Vector(x.Size());
+   Vector *B1 = new Vector(y.Size());
+   
+   M2.Mult(x, *B2);
+   f_opr -> MultTranspose(*B2, *B1);
+
+   GSSmoother prec(M1);
+   PCG(M1, prec, *B1, y, -1, 2000, 1e-24, 0.0);
+
+   delete B1;
+   delete B2;
+ }
+};
+  } /* end of namespace */
 
 
 
@@ -3460,6 +3493,419 @@ public:
  * --------------------------------------------------- */
 
 #include "multigrid_wrap.h"
+
+SwigDirector_PyGeometricMultigrid::SwigDirector_PyGeometricMultigrid(PyObject *self, mfem::FiniteElementSpaceHierarchy const &fespaces_): mfem::PyGeometricMultigrid(fespaces_), Swig::Director(self) {
+  SWIG_DIRECTOR_RGTR((mfem::PyGeometricMultigrid *)this, this); 
+}
+
+
+
+
+mfem::MemoryClass SwigDirector_PyGeometricMultigrid::GetMemoryClass() const {
+  mfem::MemoryClass c_result = SwigValueInit< mfem::MemoryClass >() ;
+  
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyGeometricMultigrid.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 0;
+  const char *const swig_method_name = "GetMemoryClass";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject args = PyTuple_New(0);
+  swig::SwigVar_PyObject result = PyObject_Call(method, (PyObject *) args, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("GetMemoryClass");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  int swig_val;
+  int swig_res = SWIG_AsVal_int(result, &swig_val);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""mfem::MemoryClass""'");
+  }
+  c_result = static_cast< mfem::MemoryClass >(swig_val);
+  return (mfem::MemoryClass) c_result;
+}
+
+
+void SwigDirector_PyGeometricMultigrid::Mult(mfem::Vector const &x, mfem::Vector &y) const {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&y), SWIGTYPE_p_mfem__Vector,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyGeometricMultigrid.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 1;
+  const char *const swig_method_name = "Mult";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("Mult");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0,(PyObject *)obj1, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
+void SwigDirector_PyGeometricMultigrid::MultTranspose(mfem::Vector const &x, mfem::Vector &y) const {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&y), SWIGTYPE_p_mfem__Vector,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyGeometricMultigrid.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char *const swig_method_name = "MultTranspose";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("MultTranspose");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0,(PyObject *)obj1, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
+mfem::Operator &SwigDirector_PyGeometricMultigrid::GetGradient(mfem::Vector const &x) const {
+  mfem::Operator *c_result = 0 ;
+  void *swig_argp ;
+  int swig_res ;
+  swig_owntype own ;
+  
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyGeometricMultigrid.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 3;
+  const char *const swig_method_name = "GetGradient";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("GetGradient");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  swig_res = SWIG_ConvertPtrAndOwn(result, &swig_argp, SWIGTYPE_p_mfem__Operator,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""mfem::Operator &""'");
+  }
+  if (!swig_argp) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ValueError), "invalid null reference " "in output value of type '""mfem::Operator &""'"); 
+  }
+  c_result = reinterpret_cast< mfem::Operator * >(swig_argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(c_result), own /* & TODO: SWIG_POINTER_OWN */);
+  return (mfem::Operator &) *c_result;
+}
+
+
+void SwigDirector_PyGeometricMultigrid::AssembleDiagonal(mfem::Vector &diag) const {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&diag), SWIGTYPE_p_mfem__Vector,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyGeometricMultigrid.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 4;
+  const char *const swig_method_name = "AssembleDiagonal";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("AssembleDiagonal");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
+mfem::Operator const *SwigDirector_PyGeometricMultigrid::GetProlongation() const {
+  mfem::Operator *c_result = 0 ;
+  void *swig_argp ;
+  int swig_res ;
+  swig_owntype own ;
+  
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyGeometricMultigrid.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 5;
+  const char *const swig_method_name = "GetProlongation";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject args = PyTuple_New(0);
+  swig::SwigVar_PyObject result = PyObject_Call(method, (PyObject *) args, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("GetProlongation");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  swig_res = SWIG_ConvertPtrAndOwn(result, &swig_argp, SWIGTYPE_p_mfem__Operator,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""mfem::Operator const *""'");
+  }
+  c_result = reinterpret_cast< mfem::Operator * >(swig_argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(c_result), own /* & TODO: SWIG_POINTER_OWN */);
+  return (mfem::Operator const *) c_result;
+}
+
+
+mfem::Operator const *SwigDirector_PyGeometricMultigrid::GetRestriction() const {
+  mfem::Operator *c_result = 0 ;
+  void *swig_argp ;
+  int swig_res ;
+  swig_owntype own ;
+  
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyGeometricMultigrid.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 6;
+  const char *const swig_method_name = "GetRestriction";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject args = PyTuple_New(0);
+  swig::SwigVar_PyObject result = PyObject_Call(method, (PyObject *) args, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("GetRestriction");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  swig_res = SWIG_ConvertPtrAndOwn(result, &swig_argp, SWIGTYPE_p_mfem__Operator,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""mfem::Operator const *""'");
+  }
+  c_result = reinterpret_cast< mfem::Operator * >(swig_argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(c_result), own /* & TODO: SWIG_POINTER_OWN */);
+  return (mfem::Operator const *) c_result;
+}
+
+
+mfem::Operator const *SwigDirector_PyGeometricMultigrid::GetOutputProlongation() const {
+  mfem::Operator *c_result = 0 ;
+  void *swig_argp ;
+  int swig_res ;
+  swig_owntype own ;
+  
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyGeometricMultigrid.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 7;
+  const char *const swig_method_name = "GetOutputProlongation";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject args = PyTuple_New(0);
+  swig::SwigVar_PyObject result = PyObject_Call(method, (PyObject *) args, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("GetOutputProlongation");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  swig_res = SWIG_ConvertPtrAndOwn(result, &swig_argp, SWIGTYPE_p_mfem__Operator,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""mfem::Operator const *""'");
+  }
+  c_result = reinterpret_cast< mfem::Operator * >(swig_argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(c_result), own /* & TODO: SWIG_POINTER_OWN */);
+  return (mfem::Operator const *) c_result;
+}
+
+
+mfem::Operator const *SwigDirector_PyGeometricMultigrid::GetOutputRestrictionTranspose() const {
+  mfem::Operator *c_result = 0 ;
+  void *swig_argp ;
+  int swig_res ;
+  swig_owntype own ;
+  
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyGeometricMultigrid.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 8;
+  const char *const swig_method_name = "GetOutputRestrictionTranspose";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject args = PyTuple_New(0);
+  swig::SwigVar_PyObject result = PyObject_Call(method, (PyObject *) args, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("GetOutputRestrictionTranspose");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  swig_res = SWIG_ConvertPtrAndOwn(result, &swig_argp, SWIGTYPE_p_mfem__Operator,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""mfem::Operator const *""'");
+  }
+  c_result = reinterpret_cast< mfem::Operator * >(swig_argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(c_result), own /* & TODO: SWIG_POINTER_OWN */);
+  return (mfem::Operator const *) c_result;
+}
+
+
+mfem::Operator const *SwigDirector_PyGeometricMultigrid::GetOutputRestriction() const {
+  mfem::Operator *c_result = 0 ;
+  void *swig_argp ;
+  int swig_res ;
+  swig_owntype own ;
+  
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyGeometricMultigrid.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 9;
+  const char *const swig_method_name = "GetOutputRestriction";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject args = PyTuple_New(0);
+  swig::SwigVar_PyObject result = PyObject_Call(method, (PyObject *) args, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("GetOutputRestriction");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  swig_res = SWIG_ConvertPtrAndOwn(result, &swig_argp, SWIGTYPE_p_mfem__Operator,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""mfem::Operator const *""'");
+  }
+  c_result = reinterpret_cast< mfem::Operator * >(swig_argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(c_result), own /* & TODO: SWIG_POINTER_OWN */);
+  return (mfem::Operator const *) c_result;
+}
+
+
+void SwigDirector_PyGeometricMultigrid::RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x) {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&X), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&b), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj2;
+  obj2 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyGeometricMultigrid.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 10;
+  const char *const swig_method_name = "RecoverFEMSolution";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("RecoverFEMSolution");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
+void SwigDirector_PyGeometricMultigrid::PrintMatlab(std::ostream &out) const {
+  mfem::Operator::PrintMatlab(out);
+}
+
+
+SwigDirector_PyGeometricMultigrid::~SwigDirector_PyGeometricMultigrid() {
+}
+
+void SwigDirector_PyGeometricMultigrid::SetOperator(mfem::Operator const &op) {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&op), SWIGTYPE_p_mfem__Operator,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyGeometricMultigrid.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 11;
+  const char *const swig_method_name = "SetOperator";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("SetOperator");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -4848,27 +5294,36 @@ SWIGINTERN PyObject *GeometricMultigrid_swiginit(PyObject *SWIGUNUSEDPARM(self),
 
 SWIGINTERN PyObject *_wrap_new_PyGeometricMultigrid(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  mfem::FiniteElementSpaceHierarchy *arg1 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
+  PyObject *arg1 = (PyObject *) 0 ;
+  mfem::FiniteElementSpaceHierarchy *arg2 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
   PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
   char * kwnames[] = {
-    (char *)"fespaces_",  NULL 
+    (char *)"_self",  (char *)"fespaces_",  NULL 
   };
-  PyGeometricMultigrid *result = 0 ;
+  mfem::PyGeometricMultigrid *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_PyGeometricMultigrid", kwnames, &obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__FiniteElementSpaceHierarchy,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_PyGeometricMultigrid" "', argument " "1"" of type '" "mfem::FiniteElementSpaceHierarchy const &""'"); 
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_PyGeometricMultigrid", kwnames, &obj0, &obj1)) SWIG_fail;
+  arg1 = obj0;
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElementSpaceHierarchy,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_PyGeometricMultigrid" "', argument " "2"" of type '" "mfem::FiniteElementSpaceHierarchy const &""'"); 
   }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_PyGeometricMultigrid" "', argument " "1"" of type '" "mfem::FiniteElementSpaceHierarchy const &""'"); 
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_PyGeometricMultigrid" "', argument " "2"" of type '" "mfem::FiniteElementSpaceHierarchy const &""'"); 
   }
-  arg1 = reinterpret_cast< mfem::FiniteElementSpaceHierarchy * >(argp1);
+  arg2 = reinterpret_cast< mfem::FiniteElementSpaceHierarchy * >(argp2);
   {
     try {
-      result = (PyGeometricMultigrid *)new PyGeometricMultigrid((mfem::FiniteElementSpaceHierarchy const &)*arg1);
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (mfem::PyGeometricMultigrid *)new SwigDirector_PyGeometricMultigrid(arg1,(mfem::FiniteElementSpaceHierarchy const &)*arg2); 
+      } else {
+        result = (mfem::PyGeometricMultigrid *)new mfem::PyGeometricMultigrid((mfem::FiniteElementSpaceHierarchy const &)*arg2); 
+      }
+      
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -4885,7 +5340,7 @@ SWIGINTERN PyObject *_wrap_new_PyGeometricMultigrid(PyObject *SWIGUNUSEDPARM(sel
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_PyGeometricMultigrid, SWIG_POINTER_NEW |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__PyGeometricMultigrid, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -4894,7 +5349,7 @@ fail:
 
 SWIGINTERN PyObject *_wrap_PyGeometricMultigrid_AppendBilinearForm(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  PyGeometricMultigrid *arg1 = (PyGeometricMultigrid *) 0 ;
+  mfem::PyGeometricMultigrid *arg1 = (mfem::PyGeometricMultigrid *) 0 ;
   mfem::BilinearForm *arg2 = (mfem::BilinearForm *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -4907,11 +5362,11 @@ SWIGINTERN PyObject *_wrap_PyGeometricMultigrid_AppendBilinearForm(PyObject *SWI
   };
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:PyGeometricMultigrid_AppendBilinearForm", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_PyGeometricMultigrid, 0 |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PyGeometricMultigrid, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyGeometricMultigrid_AppendBilinearForm" "', argument " "1"" of type '" "PyGeometricMultigrid *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyGeometricMultigrid_AppendBilinearForm" "', argument " "1"" of type '" "mfem::PyGeometricMultigrid *""'"); 
   }
-  arg1 = reinterpret_cast< PyGeometricMultigrid * >(argp1);
+  arg1 = reinterpret_cast< mfem::PyGeometricMultigrid * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PyGeometricMultigrid_AppendBilinearForm" "', argument " "2"" of type '" "mfem::BilinearForm *""'"); 
@@ -4945,7 +5400,7 @@ fail:
 
 SWIGINTERN PyObject *_wrap_PyGeometricMultigrid_AppendEssentialTDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  PyGeometricMultigrid *arg1 = (PyGeometricMultigrid *) 0 ;
+  mfem::PyGeometricMultigrid *arg1 = (mfem::PyGeometricMultigrid *) 0 ;
   mfem::Array< int > *arg2 = (mfem::Array< int > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -4958,11 +5413,11 @@ SWIGINTERN PyObject *_wrap_PyGeometricMultigrid_AppendEssentialTDofs(PyObject *S
   };
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:PyGeometricMultigrid_AppendEssentialTDofs", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_PyGeometricMultigrid, 0 |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PyGeometricMultigrid, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyGeometricMultigrid_AppendEssentialTDofs" "', argument " "1"" of type '" "PyGeometricMultigrid *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyGeometricMultigrid_AppendEssentialTDofs" "', argument " "1"" of type '" "mfem::PyGeometricMultigrid *""'"); 
   }
-  arg1 = reinterpret_cast< PyGeometricMultigrid * >(argp1);
+  arg1 = reinterpret_cast< mfem::PyGeometricMultigrid * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PyGeometricMultigrid_AppendEssentialTDofs" "', argument " "2"" of type '" "mfem::Array< int > *""'"); 
@@ -4996,18 +5451,18 @@ fail:
 
 SWIGINTERN PyObject *_wrap_PyGeometricMultigrid__pybfs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  PyGeometricMultigrid *arg1 = (PyGeometricMultigrid *) 0 ;
+  mfem::PyGeometricMultigrid *arg1 = (mfem::PyGeometricMultigrid *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PyGeometricMultigrid, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PyGeometricMultigrid, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyGeometricMultigrid__pybfs" "', argument " "1"" of type '" "PyGeometricMultigrid *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyGeometricMultigrid__pybfs" "', argument " "1"" of type '" "mfem::PyGeometricMultigrid *""'"); 
   }
-  arg1 = reinterpret_cast< PyGeometricMultigrid * >(argp1);
+  arg1 = reinterpret_cast< mfem::PyGeometricMultigrid * >(argp1);
   {
     try {
       (arg1)->_pybfs();
@@ -5036,18 +5491,18 @@ fail:
 
 SWIGINTERN PyObject *_wrap_PyGeometricMultigrid__pyess(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  PyGeometricMultigrid *arg1 = (PyGeometricMultigrid *) 0 ;
+  mfem::PyGeometricMultigrid *arg1 = (mfem::PyGeometricMultigrid *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PyGeometricMultigrid, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PyGeometricMultigrid, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyGeometricMultigrid__pyess" "', argument " "1"" of type '" "PyGeometricMultigrid *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyGeometricMultigrid__pyess" "', argument " "1"" of type '" "mfem::PyGeometricMultigrid *""'"); 
   }
-  arg1 = reinterpret_cast< PyGeometricMultigrid * >(argp1);
+  arg1 = reinterpret_cast< mfem::PyGeometricMultigrid * >(argp1);
   {
     try {
       (arg1)->_pyess();
@@ -5076,18 +5531,18 @@ fail:
 
 SWIGINTERN PyObject *_wrap_delete_PyGeometricMultigrid(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  PyGeometricMultigrid *arg1 = (PyGeometricMultigrid *) 0 ;
+  mfem::PyGeometricMultigrid *arg1 = (mfem::PyGeometricMultigrid *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PyGeometricMultigrid, SWIG_POINTER_DISOWN |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PyGeometricMultigrid, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_PyGeometricMultigrid" "', argument " "1"" of type '" "PyGeometricMultigrid *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_PyGeometricMultigrid" "', argument " "1"" of type '" "mfem::PyGeometricMultigrid *""'"); 
   }
-  arg1 = reinterpret_cast< PyGeometricMultigrid * >(argp1);
+  arg1 = reinterpret_cast< mfem::PyGeometricMultigrid * >(argp1);
   {
     try {
       delete arg1;
@@ -5114,14 +5569,292 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_disown_PyGeometricMultigrid(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::PyGeometricMultigrid *arg1 = (mfem::PyGeometricMultigrid *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"_self",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:disown_PyGeometricMultigrid", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PyGeometricMultigrid, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "disown_PyGeometricMultigrid" "', argument " "1"" of type '" "mfem::PyGeometricMultigrid *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::PyGeometricMultigrid * >(argp1);
+  {
+    Swig::Director *director = SWIG_DIRECTOR_CAST(arg1);
+    if (director) director->swig_disown();
+  }
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *PyGeometricMultigrid_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_PyGeometricMultigrid, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__PyGeometricMultigrid, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
 SWIGINTERN PyObject *PyGeometricMultigrid_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_CustomTransfer(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
+  mfem::SparseMatrix *arg2 = 0 ;
+  mfem::SparseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"_f_opr",  (char *)"_M1",  (char *)"_M2",  NULL 
+  };
+  mfem::CustomTransfer *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:new_CustomTransfer", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_CustomTransfer" "', argument " "1"" of type '" "mfem::Operator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__SparseMatrix,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_CustomTransfer" "', argument " "2"" of type '" "mfem::SparseMatrix &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_CustomTransfer" "', argument " "2"" of type '" "mfem::SparseMatrix &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::SparseMatrix * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__SparseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_CustomTransfer" "', argument " "3"" of type '" "mfem::SparseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_CustomTransfer" "', argument " "3"" of type '" "mfem::SparseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::SparseMatrix * >(argp3);
+  {
+    try {
+      result = (mfem::CustomTransfer *)new mfem::CustomTransfer(arg1,*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__CustomTransfer, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CustomTransfer_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::CustomTransfer *arg1 = (mfem::CustomTransfer *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:CustomTransfer_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__CustomTransfer, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CustomTransfer_Mult" "', argument " "1"" of type '" "mfem::CustomTransfer const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CustomTransfer * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CustomTransfer_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CustomTransfer_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CustomTransfer_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CustomTransfer_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      ((mfem::CustomTransfer const *)arg1)->Mult((mfem::Vector const &)*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CustomTransfer_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::CustomTransfer *arg1 = (mfem::CustomTransfer *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:CustomTransfer_MultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__CustomTransfer, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CustomTransfer_MultTranspose" "', argument " "1"" of type '" "mfem::CustomTransfer const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CustomTransfer * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CustomTransfer_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CustomTransfer_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CustomTransfer_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CustomTransfer_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      ((mfem::CustomTransfer const *)arg1)->MultTranspose((mfem::Vector const &)*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_CustomTransfer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::CustomTransfer *arg1 = (mfem::CustomTransfer *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__CustomTransfer, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_CustomTransfer" "', argument " "1"" of type '" "mfem::CustomTransfer *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CustomTransfer * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *CustomTransfer_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__CustomTransfer, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *CustomTransfer_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
 
@@ -5159,14 +5892,21 @@ static PyMethodDef SwigMethods[] = {
 	 { "GeometricMultigrid_RecoverFineFEMSolution", (PyCFunction)(void(*)(void))_wrap_GeometricMultigrid_RecoverFineFEMSolution, METH_VARARGS|METH_KEYWORDS, "GeometricMultigrid_RecoverFineFEMSolution(GeometricMultigrid self, Vector X, Vector b, Vector x)"},
 	 { "GeometricMultigrid_swigregister", GeometricMultigrid_swigregister, METH_O, NULL},
 	 { "GeometricMultigrid_swiginit", GeometricMultigrid_swiginit, METH_VARARGS, NULL},
-	 { "new_PyGeometricMultigrid", (PyCFunction)(void(*)(void))_wrap_new_PyGeometricMultigrid, METH_VARARGS|METH_KEYWORDS, "new_PyGeometricMultigrid(FiniteElementSpaceHierarchy fespaces_) -> PyGeometricMultigrid"},
+	 { "new_PyGeometricMultigrid", (PyCFunction)(void(*)(void))_wrap_new_PyGeometricMultigrid, METH_VARARGS|METH_KEYWORDS, "new_PyGeometricMultigrid(PyObject * _self, FiniteElementSpaceHierarchy fespaces_) -> PyGeometricMultigrid"},
 	 { "PyGeometricMultigrid_AppendBilinearForm", (PyCFunction)(void(*)(void))_wrap_PyGeometricMultigrid_AppendBilinearForm, METH_VARARGS|METH_KEYWORDS, "PyGeometricMultigrid_AppendBilinearForm(PyGeometricMultigrid self, BilinearForm form)"},
 	 { "PyGeometricMultigrid_AppendEssentialTDofs", (PyCFunction)(void(*)(void))_wrap_PyGeometricMultigrid_AppendEssentialTDofs, METH_VARARGS|METH_KEYWORDS, "PyGeometricMultigrid_AppendEssentialTDofs(PyGeometricMultigrid self, intArray ess)"},
 	 { "PyGeometricMultigrid__pybfs", _wrap_PyGeometricMultigrid__pybfs, METH_O, "PyGeometricMultigrid__pybfs(PyGeometricMultigrid self)"},
 	 { "PyGeometricMultigrid__pyess", _wrap_PyGeometricMultigrid__pyess, METH_O, "PyGeometricMultigrid__pyess(PyGeometricMultigrid self)"},
 	 { "delete_PyGeometricMultigrid", _wrap_delete_PyGeometricMultigrid, METH_O, "delete_PyGeometricMultigrid(PyGeometricMultigrid self)"},
+	 { "disown_PyGeometricMultigrid", (PyCFunction)(void(*)(void))_wrap_disown_PyGeometricMultigrid, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "PyGeometricMultigrid_swigregister", PyGeometricMultigrid_swigregister, METH_O, NULL},
 	 { "PyGeometricMultigrid_swiginit", PyGeometricMultigrid_swiginit, METH_VARARGS, NULL},
+	 { "new_CustomTransfer", (PyCFunction)(void(*)(void))_wrap_new_CustomTransfer, METH_VARARGS|METH_KEYWORDS, "new_CustomTransfer(Operator _f_opr, SparseMatrix _M1, SparseMatrix _M2) -> CustomTransfer"},
+	 { "CustomTransfer_Mult", (PyCFunction)(void(*)(void))_wrap_CustomTransfer_Mult, METH_VARARGS|METH_KEYWORDS, "CustomTransfer_Mult(CustomTransfer self, Vector x, Vector y)"},
+	 { "CustomTransfer_MultTranspose", (PyCFunction)(void(*)(void))_wrap_CustomTransfer_MultTranspose, METH_VARARGS|METH_KEYWORDS, "CustomTransfer_MultTranspose(CustomTransfer self, Vector x, Vector y)"},
+	 { "delete_CustomTransfer", _wrap_delete_CustomTransfer, METH_O, "delete_CustomTransfer(CustomTransfer self)"},
+	 { "CustomTransfer_swigregister", CustomTransfer_swigregister, METH_O, NULL},
+	 { "CustomTransfer_swiginit", CustomTransfer_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -5204,58 +5944,44 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "GeometricMultigrid_RecoverFineFEMSolution", (PyCFunction)(void(*)(void))_wrap_GeometricMultigrid_RecoverFineFEMSolution, METH_VARARGS|METH_KEYWORDS, "RecoverFineFEMSolution(GeometricMultigrid self, Vector X, Vector b, Vector x)"},
 	 { "GeometricMultigrid_swigregister", GeometricMultigrid_swigregister, METH_O, NULL},
 	 { "GeometricMultigrid_swiginit", GeometricMultigrid_swiginit, METH_VARARGS, NULL},
-	 { "new_PyGeometricMultigrid", (PyCFunction)(void(*)(void))_wrap_new_PyGeometricMultigrid, METH_VARARGS|METH_KEYWORDS, "new_PyGeometricMultigrid(FiniteElementSpaceHierarchy fespaces_) -> PyGeometricMultigrid"},
+	 { "new_PyGeometricMultigrid", (PyCFunction)(void(*)(void))_wrap_new_PyGeometricMultigrid, METH_VARARGS|METH_KEYWORDS, "new_PyGeometricMultigrid(PyObject * _self, FiniteElementSpaceHierarchy fespaces_) -> PyGeometricMultigrid"},
 	 { "PyGeometricMultigrid_AppendBilinearForm", (PyCFunction)(void(*)(void))_wrap_PyGeometricMultigrid_AppendBilinearForm, METH_VARARGS|METH_KEYWORDS, "AppendBilinearForm(PyGeometricMultigrid self, BilinearForm form)"},
 	 { "PyGeometricMultigrid_AppendEssentialTDofs", (PyCFunction)(void(*)(void))_wrap_PyGeometricMultigrid_AppendEssentialTDofs, METH_VARARGS|METH_KEYWORDS, "AppendEssentialTDofs(PyGeometricMultigrid self, intArray ess)"},
 	 { "PyGeometricMultigrid__pybfs", _wrap_PyGeometricMultigrid__pybfs, METH_O, "_pybfs(PyGeometricMultigrid self)"},
 	 { "PyGeometricMultigrid__pyess", _wrap_PyGeometricMultigrid__pyess, METH_O, "_pyess(PyGeometricMultigrid self)"},
 	 { "delete_PyGeometricMultigrid", _wrap_delete_PyGeometricMultigrid, METH_O, "delete_PyGeometricMultigrid(PyGeometricMultigrid self)"},
+	 { "disown_PyGeometricMultigrid", (PyCFunction)(void(*)(void))_wrap_disown_PyGeometricMultigrid, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "PyGeometricMultigrid_swigregister", PyGeometricMultigrid_swigregister, METH_O, NULL},
 	 { "PyGeometricMultigrid_swiginit", PyGeometricMultigrid_swiginit, METH_VARARGS, NULL},
+	 { "new_CustomTransfer", (PyCFunction)(void(*)(void))_wrap_new_CustomTransfer, METH_VARARGS|METH_KEYWORDS, "new_CustomTransfer(Operator _f_opr, SparseMatrix _M1, SparseMatrix _M2) -> CustomTransfer"},
+	 { "CustomTransfer_Mult", (PyCFunction)(void(*)(void))_wrap_CustomTransfer_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(CustomTransfer self, Vector x, Vector y)"},
+	 { "CustomTransfer_MultTranspose", (PyCFunction)(void(*)(void))_wrap_CustomTransfer_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(CustomTransfer self, Vector x, Vector y)"},
+	 { "delete_CustomTransfer", _wrap_delete_CustomTransfer, METH_O, "delete_CustomTransfer(CustomTransfer self)"},
+	 { "CustomTransfer_swigregister", CustomTransfer_swigregister, METH_O, NULL},
+	 { "CustomTransfer_swiginit", CustomTransfer_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static void *_p_mfem__GridFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::GridFunction *) x));
-}
-static void *_p_mfem__QuadratureFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::QuadratureFunction *) x));
-}
-static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::LinearForm *) x));
-}
-static void *_p_mfem__MultigridTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *)  ((mfem::Multigrid *) x));
-}
-static void *_p_mfem__GeometricMultigridTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::Multigrid *) ((mfem::GeometricMultigrid *) x));
-}
-static void *_p_PyGeometricMultigridTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::Multigrid *)(mfem::GeometricMultigrid *) ((PyGeometricMultigrid *) x));
-}
-static void *_p_mfem__MatrixInverseTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *)  ((mfem::MatrixInverse *) x));
-}
-static void *_p_mfem__DenseMatrixInverseTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::MatrixInverse *) ((mfem::DenseMatrixInverse *) x));
-}
-static void *_p_PyGeometricMultigridTo_p_mfem__GeometricMultigrid(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::GeometricMultigrid *)  ((PyGeometricMultigrid *) x));
-}
 static void *_p_mfem__GeometricMultigridTo_p_mfem__Multigrid(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Multigrid *)  ((mfem::GeometricMultigrid *) x));
 }
-static void *_p_PyGeometricMultigridTo_p_mfem__Multigrid(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Multigrid *) (mfem::GeometricMultigrid *) ((PyGeometricMultigrid *) x));
+static void *_p_mfem__PyGeometricMultigridTo_p_mfem__Multigrid(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Multigrid *) (mfem::GeometricMultigrid *) ((mfem::PyGeometricMultigrid *) x));
+}
+static void *_p_mfem__PyGeometricMultigridTo_p_mfem__GeometricMultigrid(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::GeometricMultigrid *)  ((mfem::PyGeometricMultigrid *) x));
 }
 static void *_p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase *) x));
 }
 static void *_p_mfem__PyOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::PyOperatorBase *) x));
+}
+static void *_p_mfem__CustomTransferTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::CustomTransfer *) x));
 }
 static void *_p_mfem__MatrixInverseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::Solver *) ((mfem::MatrixInverse *) x));
@@ -5305,8 +6031,8 @@ static void *_p_mfem__MultigridTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(
 static void *_p_mfem__GeometricMultigridTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::Multigrid *) ((mfem::GeometricMultigrid *) x));
 }
-static void *_p_PyGeometricMultigridTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::Multigrid *)(mfem::GeometricMultigrid *) ((PyGeometricMultigrid *) x));
+static void *_p_mfem__PyGeometricMultigridTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::Multigrid *)(mfem::GeometricMultigrid *) ((mfem::PyGeometricMultigrid *) x));
 }
 static void *_p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::RectangularConstrainedOperator *) x));
@@ -5344,7 +6070,30 @@ static void *_p_mfem__TimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWI
 static void *_p_mfem__DiscreteLinearOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::Matrix *)(mfem::MixedBilinearForm *) ((mfem::DiscreteLinearOperator *) x));
 }
-static swig_type_info _swigt__p_PyGeometricMultigrid = {"_p_PyGeometricMultigrid", "PyGeometricMultigrid *", 0, 0, (void*)0, 0};
+static void *_p_mfem__MultigridTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *)  ((mfem::Multigrid *) x));
+}
+static void *_p_mfem__GeometricMultigridTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::Multigrid *) ((mfem::GeometricMultigrid *) x));
+}
+static void *_p_mfem__PyGeometricMultigridTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::Multigrid *)(mfem::GeometricMultigrid *) ((mfem::PyGeometricMultigrid *) x));
+}
+static void *_p_mfem__MatrixInverseTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *)  ((mfem::MatrixInverse *) x));
+}
+static void *_p_mfem__DenseMatrixInverseTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::MatrixInverse *) ((mfem::DenseMatrixInverse *) x));
+}
+static void *_p_mfem__GridFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::GridFunction *) x));
+}
+static void *_p_mfem__QuadratureFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::QuadratureFunction *) x));
+}
+static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::LinearForm *) x));
+}
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
@@ -5354,6 +6103,7 @@ static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__BilinearForm = {"_p_mfem__BilinearForm", "mfem::BilinearForm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ConvectionIntegrator = {"_p_mfem__ConvectionIntegrator", "mfem::ConvectionIntegrator *|mfem::NonconservativeConvectionIntegrator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__CustomTransfer = {"_p_mfem__CustomTransfer", "mfem::CustomTransfer *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DGTraceIntegrator = {"_p_mfem__DGTraceIntegrator", "mfem::DGTraceIntegrator *|mfem::ConservativeDGTraceIntegrator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__FiniteElementSpaceHierarchy = {"_p_mfem__FiniteElementSpaceHierarchy", "mfem::FiniteElementSpaceHierarchy *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GeometricMultigrid = {"_p_mfem__GeometricMultigrid", "mfem::GeometricMultigrid *", 0, 0, (void*)0, 0};
@@ -5369,12 +6119,11 @@ static swig_type_info _swigt__p_mfem__DenseMatrixInverse = {"_p_mfem__DenseMatri
 static swig_type_info _swigt__p_mfem__MatrixInverse = {"_p_mfem__MatrixInverse", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__AbstractSparseMatrix = {"_p_mfem__AbstractSparseMatrix", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__DenseMatrix = {"_p_mfem__DenseMatrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__SparseMatrix = {"_p_mfem__SparseMatrix", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__H1FaceRestriction = {"_p_mfem__H1FaceRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2FaceRestriction = {"_p_mfem__L2FaceRestriction", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__FaceRestriction = {"_p_mfem__FaceRestriction", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__L2ElementRestriction = {"_p_mfem__L2ElementRestriction", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__ElementRestriction = {"_p_mfem__ElementRestriction", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2FaceRestriction = {"_p_mfem__L2FaceRestriction", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Matrix = {"_p_mfem__Matrix", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__MixedBilinearForm = {"_p_mfem__MixedBilinearForm", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RectangularConstrainedOperator = {"_p_mfem__RectangularConstrainedOperator", 0, 0, 0, 0, 0};
@@ -5390,7 +6139,9 @@ static swig_type_info _swigt__p_mfem__TimeDependentAdjointOperator = {"_p_mfem__
 static swig_type_info _swigt__p_mfem__TimeDependentOperator = {"_p_mfem__TimeDependentOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__DiscreteLinearOperator = {"_p_mfem__DiscreteLinearOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__OperatorHandle = {"_p_mfem__OperatorHandle", "mfem::OperatorPtr *|mfem::OperatorHandle *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__PyGeometricMultigrid = {"_p_mfem__PyGeometricMultigrid", "mfem::PyGeometricMultigrid *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", "mfem::Solver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__SparseMatrix = {"_p_mfem__SparseMatrix", "mfem::SparseMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", 0, 0, 0, 0, 0};
@@ -5402,7 +6153,6 @@ static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 
 static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p_PyGeometricMultigrid,
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_RefCoord,
   &_swigt__p_char,
@@ -5414,6 +6164,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__BilinearForm,
   &_swigt__p_mfem__ConstrainedOperator,
   &_swigt__p_mfem__ConvectionIntegrator,
+  &_swigt__p_mfem__CustomTransfer,
   &_swigt__p_mfem__DGTraceIntegrator,
   &_swigt__p_mfem__DenseMatrix,
   &_swigt__p_mfem__DenseMatrixInverse,
@@ -5438,6 +6189,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__Operator,
   &_swigt__p_mfem__OperatorHandle,
   &_swigt__p_mfem__ProductOperator,
+  &_swigt__p_mfem__PyGeometricMultigrid,
   &_swigt__p_mfem__PyOperatorBase,
   &_swigt__p_mfem__PyTimeDependentOperatorBase,
   &_swigt__p_mfem__QuadratureFunction,
@@ -5460,7 +6212,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_tri_t,
 };
 
-static swig_cast_info _swigc__p_PyGeometricMultigrid[] = {  {&_swigt__p_PyGeometricMultigrid, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
@@ -5470,26 +6221,26 @@ static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__BilinearForm[] = {  {&_swigt__p_mfem__BilinearForm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ConvectionIntegrator[] = {  {&_swigt__p_mfem__ConvectionIntegrator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__CustomTransfer[] = {  {&_swigt__p_mfem__CustomTransfer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DGTraceIntegrator[] = {  {&_swigt__p_mfem__DGTraceIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__FiniteElementSpaceHierarchy[] = {  {&_swigt__p_mfem__FiniteElementSpaceHierarchy, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__GeometricMultigrid[] = {  {&_swigt__p_mfem__GeometricMultigrid, 0, 0, 0},  {&_swigt__p_PyGeometricMultigrid, _p_PyGeometricMultigridTo_p_mfem__GeometricMultigrid, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__GeometricMultigrid[] = {  {&_swigt__p_mfem__GeometricMultigrid, 0, 0, 0},  {&_swigt__p_mfem__PyGeometricMultigrid, _p_mfem__PyGeometricMultigridTo_p_mfem__GeometricMultigrid, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2_FECollection[] = {  {&_swigt__p_mfem__L2_FECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MatrixVectorProductCoefficient[] = {  {&_swigt__p_mfem__MatrixVectorProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Multigrid[] = {  {&_swigt__p_mfem__Multigrid, 0, 0, 0},  {&_swigt__p_mfem__GeometricMultigrid, _p_mfem__GeometricMultigridTo_p_mfem__Multigrid, 0, 0},  {&_swigt__p_PyGeometricMultigrid, _p_PyGeometricMultigridTo_p_mfem__Multigrid, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Multigrid[] = {  {&_swigt__p_mfem__Multigrid, 0, 0, 0},  {&_swigt__p_mfem__GeometricMultigrid, _p_mfem__GeometricMultigridTo_p_mfem__Multigrid, 0, 0},  {&_swigt__p_mfem__PyGeometricMultigrid, _p_mfem__PyGeometricMultigridTo_p_mfem__Multigrid, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PyOperatorBase[] = {{&_swigt__p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DenseMatrixInverse[] = {{&_swigt__p_mfem__DenseMatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MatrixInverse[] = {{&_swigt__p_mfem__MatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__AbstractSparseMatrix[] = {{&_swigt__p_mfem__AbstractSparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {{&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__SparseMatrix[] = {{&_swigt__p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1FaceRestriction[] = {{&_swigt__p_mfem__H1FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2FaceRestriction[] = {{&_swigt__p_mfem__L2FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__FaceRestriction[] = {{&_swigt__p_mfem__FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2ElementRestriction[] = {{&_swigt__p_mfem__L2ElementRestriction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ElementRestriction[] = {{&_swigt__p_mfem__ElementRestriction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2FaceRestriction[] = {{&_swigt__p_mfem__L2FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Matrix[] = {{&_swigt__p_mfem__Matrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MixedBilinearForm[] = {{&_swigt__p_mfem__MixedBilinearForm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RectangularConstrainedOperator[] = {{&_swigt__p_mfem__RectangularConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
@@ -5504,9 +6255,11 @@ static swig_cast_info _swigc__p_mfem__SecondOrderTimeDependentOperator[] = {{&_s
 static swig_cast_info _swigc__p_mfem__TimeDependentAdjointOperator[] = {{&_swigt__p_mfem__TimeDependentAdjointOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {{&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DiscreteLinearOperator[] = {{&_swigt__p_mfem__DiscreteLinearOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__H1FaceRestriction, _p_mfem__H1FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2FaceRestriction, _p_mfem__L2FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__FaceRestriction, _p_mfem__FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2ElementRestriction, _p_mfem__L2ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ElementRestriction, _p_mfem__ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__BilinearForm, _p_mfem__BilinearFormTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MixedBilinearForm, _p_mfem__MixedBilinearFormTo_p_mfem__Operator, 0, 0},  {&_swigt__p_PyGeometricMultigrid, _p_PyGeometricMultigridTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__GeometricMultigrid, _p_mfem__GeometricMultigridTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Multigrid, _p_mfem__MultigridTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__RectangularConstrainedOperator, _p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ScaledOperator, _p_mfem__ScaledOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentAdjointOperator, _p_mfem__TimeDependentAdjointOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DiscreteLinearOperator, _p_mfem__DiscreteLinearOperatorTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__CustomTransfer, _p_mfem__CustomTransferTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__H1FaceRestriction, _p_mfem__H1FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__FaceRestriction, _p_mfem__FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2ElementRestriction, _p_mfem__L2ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ElementRestriction, _p_mfem__ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2FaceRestriction, _p_mfem__L2FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__BilinearForm, _p_mfem__BilinearFormTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MixedBilinearForm, _p_mfem__MixedBilinearFormTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyGeometricMultigrid, _p_mfem__PyGeometricMultigridTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__GeometricMultigrid, _p_mfem__GeometricMultigridTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Multigrid, _p_mfem__MultigridTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__RectangularConstrainedOperator, _p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ScaledOperator, _p_mfem__ScaledOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentAdjointOperator, _p_mfem__TimeDependentAdjointOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DiscreteLinearOperator, _p_mfem__DiscreteLinearOperatorTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__OperatorHandle[] = {  {&_swigt__p_mfem__OperatorHandle, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__Solver, 0, 0, 0},  {&_swigt__p_mfem__Multigrid, _p_mfem__MultigridTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__GeometricMultigrid, _p_mfem__GeometricMultigridTo_p_mfem__Solver, 0, 0},  {&_swigt__p_PyGeometricMultigrid, _p_PyGeometricMultigridTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Solver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__PyGeometricMultigrid[] = {  {&_swigt__p_mfem__PyGeometricMultigrid, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__Solver, 0, 0, 0},  {&_swigt__p_mfem__Multigrid, _p_mfem__MultigridTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__GeometricMultigrid, _p_mfem__GeometricMultigridTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__PyGeometricMultigrid, _p_mfem__PyGeometricMultigridTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Solver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__SparseMatrix[] = {  {&_swigt__p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
@@ -5518,7 +6271,6 @@ static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 
 static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p_PyGeometricMultigrid,
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_RefCoord,
   _swigc__p_char,
@@ -5530,6 +6282,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__BilinearForm,
   _swigc__p_mfem__ConstrainedOperator,
   _swigc__p_mfem__ConvectionIntegrator,
+  _swigc__p_mfem__CustomTransfer,
   _swigc__p_mfem__DGTraceIntegrator,
   _swigc__p_mfem__DenseMatrix,
   _swigc__p_mfem__DenseMatrixInverse,
@@ -5554,6 +6307,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__Operator,
   _swigc__p_mfem__OperatorHandle,
   _swigc__p_mfem__ProductOperator,
+  _swigc__p_mfem__PyGeometricMultigrid,
   _swigc__p_mfem__PyOperatorBase,
   _swigc__p_mfem__PyTimeDependentOperatorBase,
   _swigc__p_mfem__QuadratureFunction,

@@ -101,29 +101,31 @@ class CHypreVec(list):
         if isinstance(other, CHypreVec):
             assert False, "CHypreVec *= vector is not supported. Use dot"
         elif np.iscomplexobj(other):
-            other = complex(other)
+            #other = complex(other)
             i = other.imag
             r = other.real
 
-            if self[0] is not None and self[0] is not None:
+            if self[0] is not None and self[1] is not None:
                 rr = self[0].GetDataArray() * r - self[1].GetDataArray() * i
                 ii = self[0].GetDataArray() * i + self[1].GetDataArray() * r
                 self[0] = ToHypreParVec(rr)
                 self[1] = ToHypreParVec(ii)
 
             elif self[0] is not None:
-                if i != 0.:
+                if np.any(i != 0.):
                     self[1] = ToHypreParVec(i * self[0].GetDataArray())
-                if r != 0.:
-                    self[0] *= r
+                if np.any(r != 0.):
+                    tmp = self[0].GetDataArray()
+                    tmp *= r
                 else:
                     self[0] = None
 
             elif self[1] is not None:
-                if i != 0.:
+                if np.any(i != 0.):
                     self[0] = ToHypreParVec(-i * self[1].GetDataArray())
-                if r != 0.:
-                    self[1] *= r
+                if np.any(r != 0.):
+                    tmp = self[1].GetDataArray()
+                    tmp *= r                    
                 else:
                     self[1] = None
 
@@ -701,10 +703,22 @@ class CHypreMat(list):
 
     def setDiag(self, idx, value=1.0):
         if self[0] is not None:
-            self[0] = ResetHypreDiag(self[0], idx, value=float(value))
+            self[0] = ResetHypreDiag(self[0], idx, value=np.real(value))
         if self[1] is not None:
-            self[1] = ResetHypreDiag(self[1], idx, value=float(np.imag(value)))
+            self[1] = ResetHypreDiag(self[1], idx, value=np.imag(value))
 
+    def getDiag(self, idx):
+        if self[0] is not None:
+            diagvalue = ReadHypreDiag(self[0], idx)
+        else:
+            diagvalue = complex(0.0)
+            
+        if self[1] is not None:
+            diagvalue = diagvalue + 1j*ReadHypreDiag(self[1], idx)
+        else:
+            diagvalue = diagvalue + 0j
+        return diagvalue
+        
     def resetCol(self, idx, inplace=True):
         if self[0] is not None:
             r = ResetHypreCol(self[0], idx)
@@ -923,7 +937,7 @@ class CHypreMat(list):
         r = ToHypreParCSR(elil.tocsr(), col_starts=cpart)
         return CHypreMat(r, None)
 
-    def eliminate_RowsCols(self, tdof, inplace=False):
+    def eliminate_RowsCols(self, B, tdof, inplace=False, diagpolicy=0):
         # note: tdof is a valued viewed in each node. MyTDoF offset is
         # subtracted
         tdof1 = mfem.par.intArray(tdof)
@@ -942,29 +956,49 @@ class CHypreMat(list):
             target = CHypreMat(r, i)
         else:
             target = self
+
+        row0 = self.GetRowPartArray()[0]
+        gtdof = list(np.array(tdof, dtype=int) + row0)
+
+        if diagpolicy == 0:
+            diagAe = target.getDiag(gtdof) - 1
+            diagA = 1.0
+        else:
+            diagAe = 0.0
+            diagA = target.getDiag(gtdof)
+
         if target[0] is not None:
             Aer = target[0].EliminateRowsCols(tdof1)
             Aer.CopyRowStarts()
             Aer.CopyColStarts()
-            row0 = Aer.GetRowPartArray()[0]
+            #row0 = Aer.GetRowPartArray()[0]
         else:
             Aer = None
+
         if target[1] is not None:
             Aei = target[1].EliminateRowsCols(tdof1)
             Aei.CopyRowStarts()
             Aei.CopyColStarts()
-            row0 = Aei.GetRowPartArray()[0]
+            #row0 = Aei.GetRowPartArray()[0]
         else:
             Aei = None
-        target.setDiag([x + row0 for x in tdof], value=1.0)
-        mat = CHypreMat(Aer, Aei)
-        # print mat.get_local_coo()
-        return mat, target
+
+        Ae = CHypreMat(Aer, Aei)
+
+        target.setDiag(gtdof, value=diagA)
+        Ae.setDiag(gtdof, value=diagAe)
+
+        if diagpolicy == 0:
+            part = B.GetPartitioningArray()
+            xxx = np.ones(part[1] - part[0], dtype=complex)
+            xxx[tdof] = diagA
+            B *= xxx
+
+        return Ae, target, B
 
     @property
     def isHypre(self):
         return True
-
 
 def SquareCHypreMat(part, real=False):
     from scipy.sparse import csr_matrix

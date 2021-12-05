@@ -208,52 +208,70 @@ class GeometricMultigrid(Multigrid):
 _multigrid.GeometricMultigrid_swigregister(GeometricMultigrid)
 
 class PyGeometricMultigrid(GeometricMultigrid):
-    r"""Proxy of C++ PyGeometricMultigrid class."""
+    r"""Proxy of C++ mfem::PyGeometricMultigrid class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
     def __init__(self, fespaces_):
         r"""__init__(PyGeometricMultigrid self, FiniteElementSpaceHierarchy fespaces_) -> PyGeometricMultigrid"""
-        _multigrid.PyGeometricMultigrid_swiginit(self, _multigrid.new_PyGeometricMultigrid(fespaces_))
+        if self.__class__ == PyGeometricMultigrid:
+            _self = None
+        else:
+            _self = self
+        _multigrid.PyGeometricMultigrid_swiginit(self, _multigrid.new_PyGeometricMultigrid(_self, fespaces_))
 
     def AppendBilinearForm(self, form):
         r"""AppendBilinearForm(PyGeometricMultigrid self, BilinearForm form)"""
-
-        if not hasattr(self, "_forms"): self._forms = []
-        self._forms.append(form)
-        form.thisown = 0
-
-
         return _multigrid.PyGeometricMultigrid_AppendBilinearForm(self, form)
-
+    AppendBilinearForm = _swig_new_instance_method(_multigrid.PyGeometricMultigrid_AppendBilinearForm)
 
     def AppendEssentialTDofs(self, ess):
         r"""AppendEssentialTDofs(PyGeometricMultigrid self, intArray ess)"""
-
-        if not hasattr(self, "_esss"): self._esss = []
-        self._esss.append(ess)	    
-        ess.thisown = 0
-
-
         return _multigrid.PyGeometricMultigrid_AppendEssentialTDofs(self, ess)
+    AppendEssentialTDofs = _swig_new_instance_method(_multigrid.PyGeometricMultigrid_AppendEssentialTDofs)
 
+    def _pybfs(self):
+        r"""_pybfs(PyGeometricMultigrid self)"""
+        return _multigrid.PyGeometricMultigrid__pybfs(self)
+    _pybfs = _swig_new_instance_method(_multigrid.PyGeometricMultigrid__pybfs)
 
-    @property						     
-    def bfs(self):
-       return self._forms
-
-
-
-    @property						     
-    def essentialTrueDofs(self):
-       return self._esss
-
-
+    def _pyess(self):
+        r"""_pyess(PyGeometricMultigrid self)"""
+        return _multigrid.PyGeometricMultigrid__pyess(self)
+    _pyess = _swig_new_instance_method(_multigrid.PyGeometricMultigrid__pyess)
     __swig_destroy__ = _multigrid.delete_PyGeometricMultigrid
+    def __disown__(self):
+        self.this.disown()
+        _multigrid.disown_PyGeometricMultigrid(self)
+        return weakref.proxy(self)
 
 # Register PyGeometricMultigrid in _multigrid:
 _multigrid.PyGeometricMultigrid_swigregister(PyGeometricMultigrid)
+
+class CustomTransfer(mfem._ser.operators.Operator):
+    r"""Proxy of C++ mfem::CustomTransfer class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, _f_opr, _M1, _M2):
+        r"""__init__(CustomTransfer self, Operator _f_opr, SparseMatrix _M1, SparseMatrix _M2) -> CustomTransfer"""
+        _multigrid.CustomTransfer_swiginit(self, _multigrid.new_CustomTransfer(_f_opr, _M1, _M2))
+
+    def Mult(self, x, y):
+        r"""Mult(CustomTransfer self, Vector x, Vector y)"""
+        return _multigrid.CustomTransfer_Mult(self, x, y)
+    Mult = _swig_new_instance_method(_multigrid.CustomTransfer_Mult)
+
+    def MultTranspose(self, x, y):
+        r"""MultTranspose(CustomTransfer self, Vector x, Vector y)"""
+        return _multigrid.CustomTransfer_MultTranspose(self, x, y)
+    MultTranspose = _swig_new_instance_method(_multigrid.CustomTransfer_MultTranspose)
+    __swig_destroy__ = _multigrid.delete_CustomTransfer
+
+# Register CustomTransfer in _multigrid:
+_multigrid.CustomTransfer_swigregister(CustomTransfer)
 
 
 

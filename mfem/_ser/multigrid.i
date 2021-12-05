@@ -67,21 +67,53 @@ BoolArrayInput(bool);
 %include "fem/multigrid.hpp"
 
 %inline %{
-class PyGeometricMultigrid : public mfem::GeometricMultigrid
+  namespace mfem{
+class PyGeometricMultigrid : public GeometricMultigrid
 {
 public:
- PyGeometricMultigrid(const mfem::FiniteElementSpaceHierarchy& fespaces_) 
-   : mfem::GeometricMultigrid(fespaces_){}
+ PyGeometricMultigrid(const FiniteElementSpaceHierarchy& fespaces_) 
+   : GeometricMultigrid(fespaces_){}
   
-  void AppendBilinearForm(mfem::BilinearForm *form){
+  void AppendBilinearForm(BilinearForm *form){
     bfs.Append(form);
   }
-  void AppendEssentialTDofs(mfem::Array<int> *ess){
+  void AppendEssentialTDofs(Array<int> *ess){
       essentialTrueDofs.Append(ess);
   }
   void _pybfs(void){}
   void _pyess(void){}  
 };
+class CustomTransfer : public Operator
+{
+private:
+  Operator *f_opr;
+  SparseMatrix &M1;
+  SparseMatrix &M2;
+  
+public:
+ CustomTransfer(Operator *_f_opr, SparseMatrix &_M1, SparseMatrix &_M2)
+   : Operator(_f_opr -> Height(), _f_opr -> Width()), f_opr(_f_opr), M1(_M1), M2(_M2){}
+ 
+ virtual void Mult(const Vector &x, Vector &y) const {
+   std::cout << "Forward \n";
+   f_opr -> Mult(x, y);
+ }
+ virtual void MultTranspose(const Vector &x, Vector &y) const {
+   std::cout << "Backward \n";
+   Vector *B2 = new Vector(x.Size());
+   Vector *B1 = new Vector(y.Size());
+   
+   M2.Mult(x, *B2);
+   f_opr -> MultTranspose(*B2, *B1);
+
+   GSSmoother prec(M1);
+   PCG(M1, prec, *B1, y, -1, 2000, 1e-24, 0.0);
+
+   delete B1;
+   delete B2;
+ }
+};
+  } /* end of namespace */
 %}
 
   

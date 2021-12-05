@@ -781,5 +781,47 @@ class ProductSolver(mfem._ser.operators.Solver):
 # Register ProductSolver in _solvers:
 _solvers.ProductSolver_swigregister(ProductSolver)
 
+class PyIterativeSolver(IterativeSolver):
+    r"""Proxy of C++ mfem::PyIterativeSolver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        r"""__init__(PyIterativeSolver self) -> PyIterativeSolver"""
+        if self.__class__ == PyIterativeSolver:
+            _self = None
+        else:
+            _self = self
+        _solvers.PyIterativeSolver_swiginit(self, _solvers.new_PyIterativeSolver(_self, ))
+
+    def Mult(self, b, x):
+        r"""Mult(PyIterativeSolver self, Vector b, Vector x)"""
+        return _solvers.PyIterativeSolver_Mult(self, b, x)
+    Mult = _swig_new_instance_method(_solvers.PyIterativeSolver_Mult)
+
+    def MultTranspose(self, b, x):
+        r"""MultTranspose(PyIterativeSolver self, Vector b, Vector x)"""
+        return _solvers.PyIterativeSolver_MultTranspose(self, b, x)
+    MultTranspose = _swig_new_instance_method(_solvers.PyIterativeSolver_MultTranspose)
+
+    def SetPreconditioner(self, pr):
+        r"""SetPreconditioner(PyIterativeSolver self, Solver pr)"""
+        return _solvers.PyIterativeSolver_SetPreconditioner(self, pr)
+    SetPreconditioner = _swig_new_instance_method(_solvers.PyIterativeSolver_SetPreconditioner)
+
+    def SetOperator(self, op):
+        r"""SetOperator(PyIterativeSolver self, Operator op)"""
+        return _solvers.PyIterativeSolver_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_solvers.PyIterativeSolver_SetOperator)
+    __swig_destroy__ = _solvers.delete_PyIterativeSolver
+    def __disown__(self):
+        self.this.disown()
+        _solvers.disown_PyIterativeSolver(self)
+        return weakref.proxy(self)
+
+# Register PyIterativeSolver in _solvers:
+_solvers.PyIterativeSolver_swigregister(PyIterativeSolver)
+
 
 
