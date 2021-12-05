@@ -13,7 +13,7 @@
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
 #include "pycoefficient.hpp"
-#include "pysolvers.hpp"  
+#include "common/pysolvers.hpp"
 %}
 %init %{
 import_array();
