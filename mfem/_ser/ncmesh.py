@@ -416,29 +416,6 @@ class RefinementArray(object):
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-
-    def __init__(self, *args):
-        r"""
-        __init__(RefinementArray self) -> RefinementArray
-        __init__(RefinementArray self, mfem::MemoryType mt) -> RefinementArray
-        __init__(RefinementArray self, int asize) -> RefinementArray
-        __init__(RefinementArray self, int asize, mfem::MemoryType mt) -> RefinementArray
-        __init__(RefinementArray self, Refinement data_, int asize) -> RefinementArray
-        __init__(RefinementArray self, RefinementArray src) -> RefinementArray
-        """
-        _ncmesh.RefinementArray_swiginit(self, _ncmesh.new_RefinementArray(*args))
-
-        if len(args) == 1 and isinstance(args[0], list):
-            if (len(args[0]) == 2 and hasattr(args[0][0], 'disown') and
-         not hasattr(args[0][1], 'disown')):
-        ## first element is SwigObject, like <Swig Object of type 'int *'>
-        ## We do not own data in this case.
-                pass
-            else:
-                self.MakeDataOwner()
-
-
-
     __swig_destroy__ = _ncmesh.delete_RefinementArray
 
     def GetData(self, *args):
@@ -606,6 +583,18 @@ class RefinementArray(object):
         r"""HostReadWrite(RefinementArray self) -> Refinement"""
         return _ncmesh.RefinementArray_HostReadWrite(self)
     HostReadWrite = _swig_new_instance_method(_ncmesh.RefinementArray_HostReadWrite)
+
+    def __init__(self, *args):
+        r"""
+        __init__(RefinementArray self) -> RefinementArray
+        __init__(RefinementArray self, mfem::MemoryType mt) -> RefinementArray
+        __init__(RefinementArray self, int asize) -> RefinementArray
+        __init__(RefinementArray self, int asize, mfem::MemoryType mt) -> RefinementArray
+        __init__(RefinementArray self, Refinement data_, int asize) -> RefinementArray
+        __init__(RefinementArray self, RefinementArray src) -> RefinementArray
+        __init__(RefinementArray self, int * pymfem_size) -> RefinementArray
+        """
+        _ncmesh.RefinementArray_swiginit(self, _ncmesh.new_RefinementArray(*args))
 
     def __setitem__(self, i, v):
         r"""__setitem__(RefinementArray self, int i, Refinement v)"""

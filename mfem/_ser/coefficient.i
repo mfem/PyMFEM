@@ -42,6 +42,7 @@ import_array();
 %import "globals.i"
 %import "array.i"
 %import "matrix.i"
+%import "symmat.i"
 %import "intrules.i"
 %import "sparsemat.i"
 %import "densemat.i"

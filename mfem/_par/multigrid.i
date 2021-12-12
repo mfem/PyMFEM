@@ -11,6 +11,7 @@
 #include "fem/multigrid.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
+#include "pycoefficient.hpp"    
 %}
 %init %{
 import_array();
@@ -30,22 +31,22 @@ BoolArrayInput(bool);
    
 %feature("director") mfem::PyGeometricMultigrid;
 
-%pythonprepend PyGeometricMultigrid::AppendBilinearForm %{
+%pythonprepend mfem::PyGeometricMultigrid::AppendBilinearForm %{
    if not hasattr(self, "_forms"): self._forms = []
    self._forms.append(form)
    form.thisown = 0
 %}
-%pythonprepend PyGeometricMultigrid::AppendEssentialTDofs %{
+%pythonprepend mfem::PyGeometricMultigrid::AppendEssentialTDofs %{
    if not hasattr(self, "_esss"): self._esss = []
    self._esss.append(ess)	    
    ess.thisown = 0
 %}
-%feature("shadow") PyGeometricMultigrid::_pybfs %{
+%feature("shadow") mfem::PyGeometricMultigrid::_pybfs %{
   @property						     
   def bfs(self):
      return self._forms
  %}       
-%feature("shadow") PyGeometricMultigrid::_pyess %{       
+%feature("shadow") mfem::PyGeometricMultigrid::_pyess %{       
   @property						     
   def essentialTrueDofs(self):
      return self._esss

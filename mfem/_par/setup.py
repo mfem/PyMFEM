@@ -26,7 +26,7 @@ from distutils      import sysconfig
 
 modules= ["io_stream", "vtk", "sort_pairs", "datacollection",
           "globals", "mem_manager", "device", "hash", "stable3d",
-          "cpointers",
+          "cpointers", "symmat",
           "error", "array", "common_functions",
           "segment", "point", "hexahedron", "quadrilateral",
           "tetrahedron", "triangle", "wedge",

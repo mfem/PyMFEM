@@ -2995,6 +2995,15 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
   return SWIG_OK;
 }
 
+SWIGINTERN mfem::Array< mfem::IntegrationPoint > *new_mfem_Array_Sl_mfem_IntegrationPoint_Sg___SWIG_6(int *pymfem_size){
+    /*
+    This method is wrapped to recived tuple or list to create
+    Array object
+    */
+    mfem::Array <mfem::IntegrationPoint>  *arr;
+    arr = new mfem::Array<mfem::IntegrationPoint>(*pymfem_size);
+    return arr;
+  }
 SWIGINTERN void mfem_Array_Sl_mfem_IntegrationPoint_Sg____setitem__(mfem::Array< mfem::IntegrationPoint > *self,int i,mfem::IntegrationPoint const v){
     (* self)[i] = v;
     }
@@ -3233,102 +3242,6 @@ SWIGINTERN PyObject *_wrap_new_IntegrationPointArray__SWIG_5(PyObject *SWIGUNUSE
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_IntegrationPointArray(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_IntegrationPointArray", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 0) {
-    return _wrap_new_IntegrationPointArray__SWIG_0(self, argc, argv);
-  }
-  if (argc == 1) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_IntegrationPointArray__SWIG_5(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    {
-      int res = SWIG_AsVal_int(argv[0], NULL);
-      _v = SWIG_CheckState(res);
-    }
-    if (_v) {
-      return _wrap_new_IntegrationPointArray__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    {
-      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
-        PyErr_Clear();
-        _v = 0;
-      } else {
-        _v = 1;    
-      }
-    }
-    if (_v) {
-      return _wrap_new_IntegrationPointArray__SWIG_2(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__IntegrationPoint, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        return _wrap_new_IntegrationPointArray__SWIG_4(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    {
-      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
-        PyErr_Clear();
-        _v = 0;
-      } else {
-        _v = 1;    
-      }
-    }
-    if (_v) {
-      {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        return _wrap_new_IntegrationPointArray__SWIG_3(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_IntegrationPointArray'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Array< mfem::IntegrationPoint >::Array()\n"
-    "    mfem::Array< mfem::IntegrationPoint >::Array(mfem::MemoryType)\n"
-    "    mfem::Array< mfem::IntegrationPoint >::Array(int)\n"
-    "    mfem::Array< mfem::IntegrationPoint >::Array(int,mfem::MemoryType)\n"
-    "    mfem::Array< mfem::IntegrationPoint >::Array(mfem::IntegrationPoint *,int)\n"
-    "    mfem::Array< mfem::IntegrationPoint >::Array(mfem::Array< mfem::IntegrationPoint > const &)\n");
-  return 0;
 }
 
 
@@ -5415,6 +5328,169 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_HostReadWrite(PyObject *SWIGUNU
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_IntegrationPointArray__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  int *arg1 = (int *) 0 ;
+  int *temp_ptr1 ;
+  bool is_tuple1 = false ;
+  mfem::Array< mfem::IntegrationPoint > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    int i;
+    if (!PyList_Check(swig_obj[0])) {
+      if (!PyTuple_Check(swig_obj[0])) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
+        return NULL;
+      } else {
+        is_tuple1 = true;
+      }
+    }
+    *temp_ptr1 = (is_tuple1) ? PyTuple_Size(swig_obj[0]) : PyList_Size(swig_obj[0]);
+    arg1 = temp_ptr1;
+  }
+  {
+    try {
+      result = (mfem::Array< mfem::IntegrationPoint > *)new_mfem_Array_Sl_mfem_IntegrationPoint_Sg___SWIG_6(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t, SWIG_POINTER_NEW |  0 );
+  {
+    PyObject *method = PyObject_GetAttrString(swig_obj[0], "__setitem__");
+    PyObject *keywords = PyDict_New();  
+    for (int i = 0; i < *temp_ptr1; i++) {
+      PyObject *s = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], i) : PyList_GetItem(swig_obj[0],i);
+      PyObject *args = Py_BuildValue("io", i, s);
+      PyObject_Call(method, args, keywords);
+      Py_DECREF(args);				       
+    }
+    
+    Py_DECREF(keywords);
+    Py_DECREF(method);      
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_IntegrationPointArray(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_IntegrationPointArray", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_IntegrationPointArray__SWIG_0(self, argc, argv);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t, SWIG_POINTER_NO_NULL | 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_IntegrationPointArray__SWIG_5(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_int, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_IntegrationPointArray__SWIG_6(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      int res = SWIG_AsVal_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      return _wrap_new_IntegrationPointArray__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
+    }
+    if (_v) {
+      return _wrap_new_IntegrationPointArray__SWIG_2(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__IntegrationPoint, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_new_IntegrationPointArray__SWIG_4(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_new_IntegrationPointArray__SWIG_3(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_IntegrationPointArray'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< mfem::IntegrationPoint >::Array()\n"
+    "    mfem::Array< mfem::IntegrationPoint >::Array(mfem::MemoryType)\n"
+    "    mfem::Array< mfem::IntegrationPoint >::Array(int)\n"
+    "    mfem::Array< mfem::IntegrationPoint >::Array(int,mfem::MemoryType)\n"
+    "    mfem::Array< mfem::IntegrationPoint >::Array(mfem::IntegrationPoint *,int)\n"
+    "    mfem::Array< mfem::IntegrationPoint >::Array(mfem::Array< mfem::IntegrationPoint > const &)\n"
+    "    mfem::Array< mfem::IntegrationPoint >::Array(int *)\n");
+  return 0;
 }
 
 
@@ -8499,14 +8575,6 @@ SWIGINTERN PyObject *Swig_var_RefinedIntRules_get(void) {
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
-	 { "new_IntegrationPointArray", _wrap_new_IntegrationPointArray, METH_VARARGS, "\n"
-		"IntegrationPointArray()\n"
-		"IntegrationPointArray(mfem::MemoryType mt)\n"
-		"IntegrationPointArray(int asize)\n"
-		"IntegrationPointArray(int asize, mfem::MemoryType mt)\n"
-		"IntegrationPointArray(IntegrationPoint data_, int asize)\n"
-		"new_IntegrationPointArray(IntegrationPointArray src) -> IntegrationPointArray\n"
-		""},
 	 { "delete_IntegrationPointArray", _wrap_delete_IntegrationPointArray, METH_O, "delete_IntegrationPointArray(IntegrationPointArray self)"},
 	 { "IntegrationPointArray_GetData", _wrap_IntegrationPointArray_GetData, METH_VARARGS, "\n"
 		"IntegrationPointArray_GetData(IntegrationPointArray self) -> IntegrationPoint\n"
@@ -8562,6 +8630,15 @@ static PyMethodDef SwigMethods[] = {
 	 { "IntegrationPointArray_HostWrite", _wrap_IntegrationPointArray_HostWrite, METH_O, "IntegrationPointArray_HostWrite(IntegrationPointArray self) -> IntegrationPoint"},
 	 { "IntegrationPointArray_ReadWrite", (PyCFunction)(void(*)(void))_wrap_IntegrationPointArray_ReadWrite, METH_VARARGS|METH_KEYWORDS, "IntegrationPointArray_ReadWrite(IntegrationPointArray self, bool on_dev=True) -> IntegrationPoint"},
 	 { "IntegrationPointArray_HostReadWrite", _wrap_IntegrationPointArray_HostReadWrite, METH_O, "IntegrationPointArray_HostReadWrite(IntegrationPointArray self) -> IntegrationPoint"},
+	 { "new_IntegrationPointArray", _wrap_new_IntegrationPointArray, METH_VARARGS, "\n"
+		"IntegrationPointArray()\n"
+		"IntegrationPointArray(mfem::MemoryType mt)\n"
+		"IntegrationPointArray(int asize)\n"
+		"IntegrationPointArray(int asize, mfem::MemoryType mt)\n"
+		"IntegrationPointArray(IntegrationPoint data_, int asize)\n"
+		"IntegrationPointArray(IntegrationPointArray src)\n"
+		"new_IntegrationPointArray(int * pymfem_size) -> IntegrationPointArray\n"
+		""},
 	 { "IntegrationPointArray___setitem__", (PyCFunction)(void(*)(void))_wrap_IntegrationPointArray___setitem__, METH_VARARGS|METH_KEYWORDS, "IntegrationPointArray___setitem__(IntegrationPointArray self, int i, IntegrationPoint v)"},
 	 { "IntegrationPointArray___getitem__", (PyCFunction)(void(*)(void))_wrap_IntegrationPointArray___getitem__, METH_VARARGS|METH_KEYWORDS, "IntegrationPointArray___getitem__(IntegrationPointArray self, int const i) -> IntegrationPoint"},
 	 { "IntegrationPointArray_Assign", _wrap_IntegrationPointArray_Assign, METH_VARARGS, "\n"
@@ -8657,14 +8734,6 @@ static PyMethodDef SwigMethods[] = {
 static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
-	 { "new_IntegrationPointArray", _wrap_new_IntegrationPointArray, METH_VARARGS, "\n"
-		"IntegrationPointArray()\n"
-		"IntegrationPointArray(mfem::MemoryType mt)\n"
-		"IntegrationPointArray(int asize)\n"
-		"IntegrationPointArray(int asize, mfem::MemoryType mt)\n"
-		"IntegrationPointArray(IntegrationPoint data_, int asize)\n"
-		"new_IntegrationPointArray(IntegrationPointArray src) -> IntegrationPointArray\n"
-		""},
 	 { "delete_IntegrationPointArray", _wrap_delete_IntegrationPointArray, METH_O, "delete_IntegrationPointArray(IntegrationPointArray self)"},
 	 { "IntegrationPointArray_GetData", _wrap_IntegrationPointArray_GetData, METH_VARARGS, "\n"
 		"GetData(IntegrationPointArray self) -> IntegrationPoint\n"
@@ -8720,6 +8789,15 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "IntegrationPointArray_HostWrite", _wrap_IntegrationPointArray_HostWrite, METH_O, "HostWrite(IntegrationPointArray self) -> IntegrationPoint"},
 	 { "IntegrationPointArray_ReadWrite", (PyCFunction)(void(*)(void))_wrap_IntegrationPointArray_ReadWrite, METH_VARARGS|METH_KEYWORDS, "ReadWrite(IntegrationPointArray self, bool on_dev=True) -> IntegrationPoint"},
 	 { "IntegrationPointArray_HostReadWrite", _wrap_IntegrationPointArray_HostReadWrite, METH_O, "HostReadWrite(IntegrationPointArray self) -> IntegrationPoint"},
+	 { "new_IntegrationPointArray", _wrap_new_IntegrationPointArray, METH_VARARGS, "\n"
+		"IntegrationPointArray()\n"
+		"IntegrationPointArray(mfem::MemoryType mt)\n"
+		"IntegrationPointArray(int asize)\n"
+		"IntegrationPointArray(int asize, mfem::MemoryType mt)\n"
+		"IntegrationPointArray(IntegrationPoint data_, int asize)\n"
+		"IntegrationPointArray(IntegrationPointArray src)\n"
+		"new_IntegrationPointArray(int * pymfem_size) -> IntegrationPointArray\n"
+		""},
 	 { "IntegrationPointArray___setitem__", (PyCFunction)(void(*)(void))_wrap_IntegrationPointArray___setitem__, METH_VARARGS|METH_KEYWORDS, "__setitem__(IntegrationPointArray self, int i, IntegrationPoint v)"},
 	 { "IntegrationPointArray___getitem__", (PyCFunction)(void(*)(void))_wrap_IntegrationPointArray___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(IntegrationPointArray self, int const i) -> IntegrationPoint"},
 	 { "IntegrationPointArray_Assign", _wrap_IntegrationPointArray_Assign, METH_VARARGS, "\n"

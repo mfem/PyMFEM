@@ -75,6 +75,7 @@ import mfem._par.fespace
 import mfem._par.coefficient
 import mfem._par.matrix
 import mfem._par.operators
+import mfem._par.symmat
 import mfem._par.intrules
 import mfem._par.sparsemat
 import mfem._par.densemat
@@ -220,37 +221,23 @@ class PyGeometricMultigrid(GeometricMultigrid):
 
     def AppendBilinearForm(self, form):
         r"""AppendBilinearForm(PyGeometricMultigrid self, BilinearForm form)"""
-
-        if not hasattr(self, "_forms"): self._forms = []
-        self._forms.append(form)
-        form.thisown = 0
-
-
         return _multigrid.PyGeometricMultigrid_AppendBilinearForm(self, form)
-
+    AppendBilinearForm = _swig_new_instance_method(_multigrid.PyGeometricMultigrid_AppendBilinearForm)
 
     def AppendEssentialTDofs(self, ess):
         r"""AppendEssentialTDofs(PyGeometricMultigrid self, intArray ess)"""
-
-        if not hasattr(self, "_esss"): self._esss = []
-        self._esss.append(ess)	    
-        ess.thisown = 0
-
-
         return _multigrid.PyGeometricMultigrid_AppendEssentialTDofs(self, ess)
+    AppendEssentialTDofs = _swig_new_instance_method(_multigrid.PyGeometricMultigrid_AppendEssentialTDofs)
 
+    def _pybfs(self):
+        r"""_pybfs(PyGeometricMultigrid self)"""
+        return _multigrid.PyGeometricMultigrid__pybfs(self)
+    _pybfs = _swig_new_instance_method(_multigrid.PyGeometricMultigrid__pybfs)
 
-    @property						     
-    def bfs(self):
-       return self._forms
-
-
-
-    @property						     
-    def essentialTrueDofs(self):
-       return self._esss
-
-
+    def _pyess(self):
+        r"""_pyess(PyGeometricMultigrid self)"""
+        return _multigrid.PyGeometricMultigrid__pyess(self)
+    _pyess = _swig_new_instance_method(_multigrid.PyGeometricMultigrid__pyess)
     __swig_destroy__ = _multigrid.delete_PyGeometricMultigrid
 
 # Register PyGeometricMultigrid in _multigrid:

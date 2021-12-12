@@ -4426,6 +4426,42 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
+  mfem::HypreParVector *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::HypreParVector *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__HypreParVector,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_HypreParVector" "', argument " "1"" of type '" "mfem::HypreParVector &&""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_HypreParVector" "', argument " "1"" of type '" "mfem::HypreParVector &&""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::HypreParVector * >(argp1);
+  {
+    try {
+      result = (mfem::HypreParVector *)new mfem::HypreParVector((mfem::HypreParVector &&)*arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
   mfem::HypreParMatrix *arg1 = 0 ;
   int arg2 = (int) 0 ;
   void *argp1 = 0 ;
@@ -4469,7 +4505,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   HYPRE_ParVector arg1 ;
   void *argp1 ;
@@ -4510,7 +4546,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_7(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   void *argp1 = 0 ;
@@ -4562,13 +4598,22 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector(PyObject *self, PyObject *args) {
       return _wrap_new_HypreParVector__SWIG_3(self, argc, argv);
     }
   }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__HypreParVector, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_HypreParVector__SWIG_4(self, argc, argv);
+    }
+  }
   if ((argc >= 1) && (argc <= 2)) {
     int _v;
     int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_NO_NULL | 0);
     _v = SWIG_CheckState(res);
     if (_v) {
       if (argc <= 1) {
-        return _wrap_new_HypreParVector__SWIG_4(self, argc, argv);
+        return _wrap_new_HypreParVector__SWIG_5(self, argc, argv);
       }
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
@@ -4579,7 +4624,7 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector(PyObject *self, PyObject *args) {
         }
       }
       if (_v) {
-        return _wrap_new_HypreParVector__SWIG_4(self, argc, argv);
+        return _wrap_new_HypreParVector__SWIG_5(self, argc, argv);
       }
     }
   }
@@ -4588,7 +4633,7 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector(PyObject *self, PyObject *args) {
     int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_HYPRE_ParVector, SWIG_POINTER_NO_NULL | 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_new_HypreParVector__SWIG_5(self, argc, argv);
+      return _wrap_new_HypreParVector__SWIG_6(self, argc, argv);
     }
   }
   if (argc == 1) {
@@ -4597,7 +4642,7 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector(PyObject *self, PyObject *args) {
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParFiniteElementSpace, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_new_HypreParVector__SWIG_6(self, argc, argv);
+      return _wrap_new_HypreParVector__SWIG_7(self, argc, argv);
     }
   }
   if (argc == 3) {
@@ -4671,10 +4716,46 @@ fail:
     "    mfem::HypreParVector::HypreParVector(MPI_Comm,HYPRE_BigInt,HYPRE_BigInt *)\n"
     "    mfem::HypreParVector::HypreParVector(MPI_Comm,HYPRE_BigInt,double *,HYPRE_BigInt *,bool)\n"
     "    mfem::HypreParVector::HypreParVector(mfem::HypreParVector const &)\n"
+    "    mfem::HypreParVector::HypreParVector(mfem::HypreParVector &&)\n"
     "    mfem::HypreParVector::HypreParVector(mfem::HypreParMatrix const &,int)\n"
     "    mfem::HypreParVector::HypreParVector(HYPRE_ParVector)\n"
     "    mfem::HypreParVector::HypreParVector(mfem::ParFiniteElementSpace *)\n");
   return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_HypreParVector_CreateCompatibleVector(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::HypreParVector *arg1 = (mfem::HypreParVector *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::HypreParVector result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__HypreParVector, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HypreParVector_CreateCompatibleVector" "', argument " "1"" of type '" "mfem::HypreParVector const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::HypreParVector * >(argp1);
+  {
+    try {
+      result = ((mfem::HypreParVector const *)arg1)->CreateCompatibleVector(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj((new mfem::HypreParVector(static_cast< const mfem::HypreParVector& >(result))), SWIGTYPE_p_mfem__HypreParVector, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
 }
 
 
@@ -20806,10 +20887,12 @@ static PyMethodDef SwigMethods[] = {
 		"HypreParVector(MPI_Comm comm, HYPRE_BigInt glob_size, HYPRE_BigInt * col)\n"
 		"HypreParVector(MPI_Comm comm, HYPRE_BigInt glob_size, double * data_, bool is_device_ptr=False)\n"
 		"HypreParVector(HypreParVector y)\n"
+		"HypreParVector(HypreParVector other)\n"
 		"HypreParVector(HypreParMatrix A, int transpose=0)\n"
 		"HypreParVector(HYPRE_ParVector y)\n"
 		"new_HypreParVector(mfem::ParFiniteElementSpace * pfes) -> HypreParVector\n"
 		""},
+	 { "HypreParVector_CreateCompatibleVector", _wrap_HypreParVector_CreateCompatibleVector, METH_O, "HypreParVector_CreateCompatibleVector(HypreParVector self) -> HypreParVector"},
 	 { "HypreParVector_GetComm", _wrap_HypreParVector_GetComm, METH_O, "HypreParVector_GetComm(HypreParVector self) -> MPI_Comm"},
 	 { "HypreParVector_WrapHypreParVector", (PyCFunction)(void(*)(void))_wrap_HypreParVector_WrapHypreParVector, METH_VARARGS|METH_KEYWORDS, "HypreParVector_WrapHypreParVector(HypreParVector self, hypre_ParVector * y, bool owner=True)"},
 	 { "HypreParVector_Partitioning", _wrap_HypreParVector_Partitioning, METH_VARARGS, "\n"
@@ -21224,10 +21307,12 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"HypreParVector(MPI_Comm comm, HYPRE_BigInt glob_size, HYPRE_BigInt * col)\n"
 		"HypreParVector(MPI_Comm comm, HYPRE_BigInt glob_size, double * data_, bool is_device_ptr=False)\n"
 		"HypreParVector(HypreParVector y)\n"
+		"HypreParVector(HypreParVector other)\n"
 		"HypreParVector(HypreParMatrix A, int transpose=0)\n"
 		"HypreParVector(HYPRE_ParVector y)\n"
 		"new_HypreParVector(mfem::ParFiniteElementSpace * pfes) -> HypreParVector\n"
 		""},
+	 { "HypreParVector_CreateCompatibleVector", _wrap_HypreParVector_CreateCompatibleVector, METH_O, "CreateCompatibleVector(HypreParVector self) -> HypreParVector"},
 	 { "HypreParVector_GetComm", _wrap_HypreParVector_GetComm, METH_O, "GetComm(HypreParVector self) -> MPI_Comm"},
 	 { "HypreParVector_WrapHypreParVector", (PyCFunction)(void(*)(void))_wrap_HypreParVector_WrapHypreParVector, METH_VARARGS|METH_KEYWORDS, "WrapHypreParVector(HypreParVector self, hypre_ParVector * y, bool owner=True)"},
 	 { "HypreParVector_Partitioning", _wrap_HypreParVector_Partitioning, METH_VARARGS, "\n"

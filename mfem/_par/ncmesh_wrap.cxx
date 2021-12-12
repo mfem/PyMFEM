@@ -3704,6 +3704,15 @@ SWIGINTERNINLINE PyObject*
 
   #define SWIG_From_long   PyInt_FromLong 
 
+SWIGINTERN mfem::Array< mfem::Refinement > *new_mfem_Array_Sl_mfem_Refinement_Sg___SWIG_6(int *pymfem_size){
+    /*
+    This method is wrapped to recived tuple or list to create
+    Array object
+    */
+    mfem::Array <mfem::Refinement>  *arr;
+    arr = new mfem::Array<mfem::Refinement>(*pymfem_size);
+    return arr;
+  }
 SWIGINTERN void mfem_Array_Sl_mfem_Refinement_Sg____setitem__(mfem::Array< mfem::Refinement > *self,int i,mfem::Refinement const v){
     (* self)[i] = v;
     }
@@ -7160,102 +7169,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_RefinementArray(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_RefinementArray", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 0) {
-    return _wrap_new_RefinementArray__SWIG_0(self, argc, argv);
-  }
-  if (argc == 1) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_RefinementArray__SWIG_5(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    {
-      int res = SWIG_AsVal_int(argv[0], NULL);
-      _v = SWIG_CheckState(res);
-    }
-    if (_v) {
-      return _wrap_new_RefinementArray__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    {
-      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
-        PyErr_Clear();
-        _v = 0;
-      } else {
-        _v = 1;    
-      }
-    }
-    if (_v) {
-      return _wrap_new_RefinementArray__SWIG_2(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Refinement, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        return _wrap_new_RefinementArray__SWIG_4(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    {
-      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
-        PyErr_Clear();
-        _v = 0;
-      } else {
-        _v = 1;    
-      }
-    }
-    if (_v) {
-      {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        return _wrap_new_RefinementArray__SWIG_3(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_RefinementArray'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Array< mfem::Refinement >::Array()\n"
-    "    mfem::Array< mfem::Refinement >::Array(mfem::MemoryType)\n"
-    "    mfem::Array< mfem::Refinement >::Array(int)\n"
-    "    mfem::Array< mfem::Refinement >::Array(int,mfem::MemoryType)\n"
-    "    mfem::Array< mfem::Refinement >::Array(mfem::Refinement *,int)\n"
-    "    mfem::Array< mfem::Refinement >::Array(mfem::Array< mfem::Refinement > const &)\n");
-  return 0;
-}
-
-
 SWIGINTERN PyObject *_wrap_delete_RefinementArray(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
@@ -9222,6 +9135,166 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_new_RefinementArray__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  int *arg1 = (int *) 0 ;
+  int *temp_ptr1 ;
+  bool is_tuple1 = false ;
+  mfem::Array< mfem::Refinement > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    int i;
+    if (!PyList_Check(swig_obj[0])) {
+      if (!PyTuple_Check(swig_obj[0])) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
+        return NULL;
+      } else {
+        is_tuple1 = true;
+      }
+    }
+    *temp_ptr1 = (is_tuple1) ? PyTuple_Size(swig_obj[0]) : PyList_Size(swig_obj[0]);
+    arg1 = temp_ptr1;
+  }
+  {
+    try {
+      result = (mfem::Array< mfem::Refinement > *)new_mfem_Array_Sl_mfem_Refinement_Sg___SWIG_6(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, SWIG_POINTER_NEW |  0 );
+  {
+    PyObject *method = PyObject_GetAttrString(swig_obj[0], "__setitem__");
+    PyObject *keywords = PyDict_New();  
+    for (int i = 0; i < *temp_ptr1; i++) {
+      PyObject *s = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], i) : PyList_GetItem(swig_obj[0],i);
+      PyObject *args = Py_BuildValue("io", i, s);
+      PyObject_Call(method, args, keywords);
+      Py_DECREF(args);				       
+    }
+    
+    Py_DECREF(keywords);
+    Py_DECREF(method);      
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_RefinementArray(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_RefinementArray", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_RefinementArray__SWIG_0(self, argc, argv);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, SWIG_POINTER_NO_NULL | 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_RefinementArray__SWIG_5(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_int, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_RefinementArray__SWIG_6(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      int res = SWIG_AsVal_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      return _wrap_new_RefinementArray__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
+    }
+    if (_v) {
+      return _wrap_new_RefinementArray__SWIG_2(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Refinement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_new_RefinementArray__SWIG_4(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_new_RefinementArray__SWIG_3(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_RefinementArray'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< mfem::Refinement >::Array()\n"
+    "    mfem::Array< mfem::Refinement >::Array(mfem::MemoryType)\n"
+    "    mfem::Array< mfem::Refinement >::Array(int)\n"
+    "    mfem::Array< mfem::Refinement >::Array(int,mfem::MemoryType)\n"
+    "    mfem::Array< mfem::Refinement >::Array(mfem::Refinement *,int)\n"
+    "    mfem::Array< mfem::Refinement >::Array(mfem::Array< mfem::Refinement > const &)\n"
+    "    mfem::Array< mfem::Refinement >::Array(int *)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_RefinementArray___setitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
@@ -9583,14 +9656,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "NCMesh_PrintMemoryDetail", _wrap_NCMesh_PrintMemoryDetail, METH_O, "NCMesh_PrintMemoryDetail(NCMesh self) -> int"},
 	 { "NCMesh_swigregister", NCMesh_swigregister, METH_O, NULL},
 	 { "NCMesh_swiginit", NCMesh_swiginit, METH_VARARGS, NULL},
-	 { "new_RefinementArray", _wrap_new_RefinementArray, METH_VARARGS, "\n"
-		"RefinementArray()\n"
-		"RefinementArray(mfem::MemoryType mt)\n"
-		"RefinementArray(int asize)\n"
-		"RefinementArray(int asize, mfem::MemoryType mt)\n"
-		"RefinementArray(Refinement data_, int asize)\n"
-		"new_RefinementArray(RefinementArray src) -> RefinementArray\n"
-		""},
 	 { "delete_RefinementArray", _wrap_delete_RefinementArray, METH_O, "delete_RefinementArray(RefinementArray self)"},
 	 { "RefinementArray_GetData", _wrap_RefinementArray_GetData, METH_VARARGS, "\n"
 		"RefinementArray_GetData(RefinementArray self) -> Refinement\n"
@@ -9646,6 +9711,15 @@ static PyMethodDef SwigMethods[] = {
 	 { "RefinementArray_HostWrite", _wrap_RefinementArray_HostWrite, METH_O, "RefinementArray_HostWrite(RefinementArray self) -> Refinement"},
 	 { "RefinementArray_ReadWrite", (PyCFunction)(void(*)(void))_wrap_RefinementArray_ReadWrite, METH_VARARGS|METH_KEYWORDS, "RefinementArray_ReadWrite(RefinementArray self, bool on_dev=True) -> Refinement"},
 	 { "RefinementArray_HostReadWrite", _wrap_RefinementArray_HostReadWrite, METH_O, "RefinementArray_HostReadWrite(RefinementArray self) -> Refinement"},
+	 { "new_RefinementArray", _wrap_new_RefinementArray, METH_VARARGS, "\n"
+		"RefinementArray()\n"
+		"RefinementArray(mfem::MemoryType mt)\n"
+		"RefinementArray(int asize)\n"
+		"RefinementArray(int asize, mfem::MemoryType mt)\n"
+		"RefinementArray(Refinement data_, int asize)\n"
+		"RefinementArray(RefinementArray src)\n"
+		"new_RefinementArray(int * pymfem_size) -> RefinementArray\n"
+		""},
 	 { "RefinementArray___setitem__", (PyCFunction)(void(*)(void))_wrap_RefinementArray___setitem__, METH_VARARGS|METH_KEYWORDS, "RefinementArray___setitem__(RefinementArray self, int i, Refinement v)"},
 	 { "RefinementArray___getitem__", (PyCFunction)(void(*)(void))_wrap_RefinementArray___getitem__, METH_VARARGS|METH_KEYWORDS, "RefinementArray___getitem__(RefinementArray self, int const i) -> Refinement"},
 	 { "RefinementArray_Assign", _wrap_RefinementArray_Assign, METH_VARARGS, "\n"
@@ -9747,14 +9821,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "NCMesh_PrintMemoryDetail", _wrap_NCMesh_PrintMemoryDetail, METH_O, "PrintMemoryDetail(NCMesh self) -> int"},
 	 { "NCMesh_swigregister", NCMesh_swigregister, METH_O, NULL},
 	 { "NCMesh_swiginit", NCMesh_swiginit, METH_VARARGS, NULL},
-	 { "new_RefinementArray", _wrap_new_RefinementArray, METH_VARARGS, "\n"
-		"RefinementArray()\n"
-		"RefinementArray(mfem::MemoryType mt)\n"
-		"RefinementArray(int asize)\n"
-		"RefinementArray(int asize, mfem::MemoryType mt)\n"
-		"RefinementArray(Refinement data_, int asize)\n"
-		"new_RefinementArray(RefinementArray src) -> RefinementArray\n"
-		""},
 	 { "delete_RefinementArray", _wrap_delete_RefinementArray, METH_O, "delete_RefinementArray(RefinementArray self)"},
 	 { "RefinementArray_GetData", _wrap_RefinementArray_GetData, METH_VARARGS, "\n"
 		"GetData(RefinementArray self) -> Refinement\n"
@@ -9810,6 +9876,15 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "RefinementArray_HostWrite", _wrap_RefinementArray_HostWrite, METH_O, "HostWrite(RefinementArray self) -> Refinement"},
 	 { "RefinementArray_ReadWrite", (PyCFunction)(void(*)(void))_wrap_RefinementArray_ReadWrite, METH_VARARGS|METH_KEYWORDS, "ReadWrite(RefinementArray self, bool on_dev=True) -> Refinement"},
 	 { "RefinementArray_HostReadWrite", _wrap_RefinementArray_HostReadWrite, METH_O, "HostReadWrite(RefinementArray self) -> Refinement"},
+	 { "new_RefinementArray", _wrap_new_RefinementArray, METH_VARARGS, "\n"
+		"RefinementArray()\n"
+		"RefinementArray(mfem::MemoryType mt)\n"
+		"RefinementArray(int asize)\n"
+		"RefinementArray(int asize, mfem::MemoryType mt)\n"
+		"RefinementArray(Refinement data_, int asize)\n"
+		"RefinementArray(RefinementArray src)\n"
+		"new_RefinementArray(int * pymfem_size) -> RefinementArray\n"
+		""},
 	 { "RefinementArray___setitem__", (PyCFunction)(void(*)(void))_wrap_RefinementArray___setitem__, METH_VARARGS|METH_KEYWORDS, "__setitem__(RefinementArray self, int i, Refinement v)"},
 	 { "RefinementArray___getitem__", (PyCFunction)(void(*)(void))_wrap_RefinementArray___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(RefinementArray self, int const i) -> Refinement"},
 	 { "RefinementArray_Assign", _wrap_RefinementArray_Assign, METH_VARARGS, "\n"

@@ -124,6 +124,7 @@ class HypreParVector(mfem._par.vector.Vector):
         __init__(HypreParVector self, MPI_Comm comm, HYPRE_BigInt glob_size, HYPRE_BigInt * col) -> HypreParVector
         __init__(HypreParVector self, MPI_Comm comm, HYPRE_BigInt glob_size, double * data_, bool is_device_ptr=False) -> HypreParVector
         __init__(HypreParVector self, HypreParVector y) -> HypreParVector
+        __init__(HypreParVector self, HypreParVector other) -> HypreParVector
         __init__(HypreParVector self, HypreParMatrix A, int transpose=0) -> HypreParVector
         __init__(HypreParVector self, HYPRE_ParVector y) -> HypreParVector
         __init__(HypreParVector self, mfem::ParFiniteElementSpace * pfes) -> HypreParVector
@@ -148,6 +149,11 @@ class HypreParVector(mfem._par.vector.Vector):
 
 
 
+
+    def CreateCompatibleVector(self):
+        r"""CreateCompatibleVector(HypreParVector self) -> HypreParVector"""
+        return _hypre.HypreParVector_CreateCompatibleVector(self)
+    CreateCompatibleVector = _swig_new_instance_method(_hypre.HypreParVector_CreateCompatibleVector)
 
     def GetComm(self):
         r"""GetComm(HypreParVector self) -> MPI_Comm"""

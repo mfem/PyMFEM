@@ -29,9 +29,12 @@ ISTREAM_TYPEMAP(std::istream&)
 
 %import "mem_manager.i"
 
+%import "../common/memorytype_typemap.i"
+ENUM_TO_MEMORYTYPE(mfem::MemoryType mt)
+
 %import "../common/data_size_typemap.i"
-INTPTR_SIZE_IN(int *data_, int asize)
-DOUBLEPTR_SIZE_IN(double *data_, int asize)
+XXXPTR_SIZE_IN(int *data_, int asize, int)
+XXXPTR_SIZE_IN(double *data_, int asize, double)
 
 //%import "intrules.i"
 //%newobject intArray
@@ -45,6 +48,15 @@ DOUBLEPTR_SIZE_IN(double *data_, int asize)
 
 %include "general/array.hpp"
 %extend mfem::Array{
+  mfem::Array (void *List_or_Tuple){
+    /*
+    This method is wrapped to recived tuple or list to create
+    Array object
+    */
+    mfem::Array <T>  *arr;
+    arr = new mfem::Array<T>(*(int*)List_or_Tuple);    
+    return arr;
+  }
   void __setitem__(int i, const T v) {
     (* self)[i] = v;
     }

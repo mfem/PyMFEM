@@ -29,84 +29,16 @@ ISTREAM_TYPEMAP(std::istream&)
 
 %import "mem_manager.i"
 
+%import "../common/array_listtuple_typemap.i"
+ARRAY_LISTTUPLE_INPUT(int, PyLong_AsLong)
+ARRAY_LISTTUPLE_INPUT(double, PyFloat_AsDouble)
+
+%import "../common/memorytype_typemap.i"
+ENUM_TO_MEMORYTYPE(mfem::MemoryType mt)
+
 %import "../common/data_size_typemap.i"
-INTPTR_SIZE_IN(int *data_, int asize)
-DOUBLEPTR_SIZE_IN(double *data_, int asize)
-
-// intArray constructor
- /*
-%typemap(in) (int *data_, int asize) (int * temp_ptr, bool ptr_given=false, PyObject *s1, PyObject *s2){
-  int i;
-  if (!PyList_Check($input)) {
-    PyErr_SetString(PyExc_ValueError, "Expecting a list");
-    return NULL;
-  }
-  $2 = PyList_Size($input);
-  if ($2 == 2){
-     s1 = PyList_GetItem($input,0);
-     s2 = PyList_GetItem($input,1);
-     if (SWIG_ConvertPtr(s1, (void **) &temp_ptr, $descriptor(const int *), 0 |0) == -1) {
-        ptr_given=false;
-     } else {
-        ptr_given=true;
-     }
-  }
-  if (! ptr_given){
-       $1 = (int *) malloc(($2)*sizeof(int));    
-      for (i = 0; i < $2; i++) {
-         PyObject *s = PyList_GetItem($input,i);
-         if (PyInt_Check(s)) {
-             $1[i] = (int)PyInt_AsLong(s);
-         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
-             $1[i] = PyArray_PyIntAsInt(s);
-	 } else {
-             free($1);
-             PyErr_SetString(PyExc_ValueError, "List items must be integer");
-             return NULL;
-	 }
-      }
-  } else {
-    $1 = temp_ptr;
-    $2 = PyLong_AsLong(s2);    
-  }
-}
-%typemap(typecheck) (int *data_, int asize) {
-   $1 = PyList_Check($input) ? 1 : 0;
-}
-
-%typemap(newfree) (int *data_,  int asize) {
-   if ($1) free($1);
-}
-
-%typemap(in) (double *data_, int asize) {
-  int i;
-  if (!PyList_Check($input)) {
-    PyErr_SetString(PyExc_ValueError, "Expecting a list");
-    return NULL;
-  }
-  $2 = PyList_Size($input);
-  $1 = (double *) malloc(($2)*sizeof(int));
-  for (i = 0; i < $2; i++) {
-    PyObject *s = PyList_GetItem($input,i);
-    if (PyInt_Check(s)) {
-        $1[i] = (double)PyFloat_AsDouble(s);
-    } else if (PyFloat_Check(s)) {
-        $1[i] = (double)PyFloat_AsDouble(s);
-    } else {
-        free($1);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
-        return NULL;
-    }
-  }
-}
-%typemap(typecheck) (double *data_, int asize) {
-   $1 = PyList_Check($input) ? 1 : 0;
-}
-
-%typemap(newfree) (double *data_,  int asize) {
-   if ($1) free($1);
-}
-*/
+XXXPTR_SIZE_IN(int *data_, int asize, int)
+XXXPTR_SIZE_IN(double *data_, int asize, double)
 
 %pythonappend mfem::Array::Array %{
   if len(args) == 1 and isinstance(args[0], list):
@@ -132,6 +64,17 @@ DOUBLEPTR_SIZE_IN(double *data_, int asize)
 %include "general/array.hpp"
 
 %extend mfem::Array{
+  mfem::Array (void *List_or_Tuple, T *_unused){
+    /*
+    This method is wrapped to recived tuple or list to create
+    Array object
+    */
+    mfem::Array <T>  *arr;
+
+    int size = *(int*)List_or_Tuple;
+    arr = new mfem::Array<T>(size);
+    return arr;
+  }
   void __setitem__(int i, const T v) {
     (* self)[i] = v;
     }

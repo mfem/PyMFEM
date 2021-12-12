@@ -3097,101 +3097,33 @@ namespace Swig {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_MPI_Comm swig_types[0]
-#define SWIGTYPE_p_PyGeometricMultigrid swig_types[1]
-#define SWIGTYPE_p_PyMFEM__wFILE swig_types[2]
-#define SWIGTYPE_p_RefCoord swig_types[3]
-#define SWIGTYPE_p__HYPRE_ExecutionPolicy swig_types[4]
-#define SWIGTYPE_p__HYPRE_MemoryLocation swig_types[5]
-#define SWIGTYPE_p_char swig_types[6]
-#define SWIGTYPE_p_double swig_types[7]
-#define SWIGTYPE_p_hex_t swig_types[8]
-#define SWIGTYPE_p_int swig_types[9]
-#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[10]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[11]
-#define SWIGTYPE_p_mfem__BilinearForm swig_types[12]
-#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[13]
-#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[14]
-#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[15]
-#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[16]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[17]
-#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[18]
-#define SWIGTYPE_p_mfem__DenseSymmetricMatrix swig_types[19]
-#define SWIGTYPE_p_mfem__DiscreteLinearOperator swig_types[20]
-#define SWIGTYPE_p_mfem__ElementRestriction swig_types[21]
-#define SWIGTYPE_p_mfem__FaceRestriction swig_types[22]
-#define SWIGTYPE_p_mfem__FiniteElementSpaceHierarchy swig_types[23]
-#define SWIGTYPE_p_mfem__GeometricMultigrid swig_types[24]
-#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[25]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[26]
-#define SWIGTYPE_p_mfem__H1FaceRestriction swig_types[27]
-#define SWIGTYPE_p_mfem__HypreADS swig_types[28]
-#define SWIGTYPE_p_mfem__HypreAMS swig_types[29]
-#define SWIGTYPE_p_mfem__HypreBoomerAMG swig_types[30]
-#define SWIGTYPE_p_mfem__HypreDiagScale swig_types[31]
-#define SWIGTYPE_p_mfem__HypreEuclid swig_types[32]
-#define SWIGTYPE_p_mfem__HypreFGMRES swig_types[33]
-#define SWIGTYPE_p_mfem__HypreGMRES swig_types[34]
-#define SWIGTYPE_p_mfem__HypreILU swig_types[35]
-#define SWIGTYPE_p_mfem__HypreIdentity swig_types[36]
-#define SWIGTYPE_p_mfem__HyprePCG swig_types[37]
-#define SWIGTYPE_p_mfem__HypreParMatrix swig_types[38]
-#define SWIGTYPE_p_mfem__HypreParVector swig_types[39]
-#define SWIGTYPE_p_mfem__HypreParaSails swig_types[40]
-#define SWIGTYPE_p_mfem__HypreSmoother swig_types[41]
-#define SWIGTYPE_p_mfem__HypreSolver swig_types[42]
-#define SWIGTYPE_p_mfem__HypreTriSolve swig_types[43]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[44]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[45]
-#define SWIGTYPE_p_mfem__L2ElementRestriction swig_types[46]
-#define SWIGTYPE_p_mfem__L2FaceRestriction swig_types[47]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[48]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[49]
-#define SWIGTYPE_p_mfem__Matrix swig_types[50]
-#define SWIGTYPE_p_mfem__MatrixInverse swig_types[51]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[52]
-#define SWIGTYPE_p_mfem__MixedBilinearForm swig_types[53]
-#define SWIGTYPE_p_mfem__Multigrid swig_types[54]
-#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[55]
-#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[56]
-#define SWIGTYPE_p_mfem__Operator swig_types[57]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[58]
-#define SWIGTYPE_p_mfem__ParFiniteElementSpaceHierarchy swig_types[59]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[60]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[61]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[62]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[63]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[64]
-#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[65]
-#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[66]
-#define SWIGTYPE_p_mfem__ScaledOperator swig_types[67]
-#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[68]
-#define SWIGTYPE_p_mfem__Solver swig_types[69]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[70]
-#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[71]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[72]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[73]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[74]
-#define SWIGTYPE_p_mfem__Vector swig_types[75]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[76]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[77]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[78]
-#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[79]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[80]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[81]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[82]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[83]
-#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[84]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[85]
-#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[86]
-#define SWIGTYPE_p_pri_t swig_types[87]
-#define SWIGTYPE_p_pyr_t swig_types[88]
-#define SWIGTYPE_p_quad_t swig_types[89]
-#define SWIGTYPE_p_seg_t swig_types[90]
-#define SWIGTYPE_p_tet_t swig_types[91]
-#define SWIGTYPE_p_tri_t swig_types[92]
-static swig_type_info *swig_types[94];
-static swig_module_info swig_module = {swig_types, 93, 0, 0, 0, 0};
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
+#define SWIGTYPE_p_char swig_types[1]
+#define SWIGTYPE_p_double swig_types[2]
+#define SWIGTYPE_p_int swig_types[3]
+#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[4]
+#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[5]
+#define SWIGTYPE_p_mfem__DenseSymmetricMatrix swig_types[6]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[7]
+#define SWIGTYPE_p_mfem__Matrix swig_types[8]
+#define SWIGTYPE_p_mfem__MatrixInverse swig_types[9]
+#define SWIGTYPE_p_mfem__MemoryT_double_t swig_types[10]
+#define SWIGTYPE_p_mfem__Operator swig_types[11]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[12]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[13]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[14]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[15]
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[16]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[17]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[18]
+#define SWIGTYPE_p_mfem__Solver swig_types[19]
+#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[20]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[21]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[22]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[23]
+#define SWIGTYPE_p_mfem__Vector swig_types[24]
+static swig_type_info *swig_types[26];
+static swig_module_info swig_module = {swig_types, 25, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3203,16 +3135,16 @@ static swig_module_info swig_module = {swig_types, 93, 0, 0, 0, 0};
 #define SWIG_TypeQuery SWIG_Python_TypeQuery
 
 /*-----------------------------------------------
-              @(target):= _multigrid.so
+              @(target):= _symmat.so
   ------------------------------------------------*/
 #if PY_VERSION_HEX >= 0x03000000
-#  define SWIG_init    PyInit__multigrid
+#  define SWIG_init    PyInit__symmat
 
 #else
-#  define SWIG_init    init_multigrid
+#  define SWIG_init    init_symmat
 
 #endif
-#define SWIG_name    "_multigrid"
+#define SWIG_name    "_symmat"
 
 #define SWIGVERSION 0x040002 
 #define SWIG_VERSION SWIGVERSION
@@ -3295,19 +3227,21 @@ namespace swig {
 }
 
 
-#include "linalg/operator.hpp"
-#include "linalg/handle.hpp"
-#include "fem/multigrid.hpp"
+#include  "mfem.hpp"
+#include "linalg/symmat.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"
-#include "pycoefficient.hpp"    
+#include "../common/io_stream.hpp"    
+#include "pyoperator.hpp"    
 
 
 SWIGINTERNINLINE PyObject*
-  SWIG_From_int  (int value)
+  SWIG_From_bool  (bool value)
 {
-  return PyInt_FromLong((long) value);
+  return PyBool_FromLong(value ? 1 : 0);
 }
+
+
+  #define SWIG_From_double   PyFloat_FromDouble 
 
 
 SWIGINTERN int
@@ -3354,6 +3288,9 @@ SWIG_AsVal_double (PyObject *obj, double *val)
 #endif
   return res;
 }
+
+
+  #define SWIG_From_long   PyInt_FromLong 
 
 
 #include <float.h>
@@ -3449,923 +3386,360 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
 }
 
 
-#include <limits.h>
-#if !defined(SWIG_NO_LLONG_MAX)
-# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
-#   define LLONG_MAX __LONG_LONG_MAX__
-#   define LLONG_MIN (-LLONG_MAX - 1LL)
-#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
-# endif
-#endif
-
-
-SWIGINTERN int
-SWIG_AsVal_int (PyObject * obj, int *val)
+SWIGINTERN swig_type_info*
+SWIG_pchar_descriptor(void)
 {
-  long v;
-  int res = SWIG_AsVal_long (obj, &v);
-  if (SWIG_IsOK(res)) {
-    if ((v < INT_MIN || v > INT_MAX)) {
-      return SWIG_OverflowError;
-    } else {
-      if (val) *val = static_cast< int >(v);
-    }
-  }  
-  return res;
+  static int init = 0;
+  static swig_type_info* info = 0;
+  if (!init) {
+    info = SWIG_TypeQuery("_p_char");
+    init = 1;
+  }
+  return info;
 }
 
 
-class PyGeometricMultigrid : public mfem::GeometricMultigrid
+SWIGINTERN int
+SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 {
-public:
- PyGeometricMultigrid(const mfem::FiniteElementSpaceHierarchy& fespaces_) 
-   : mfem::GeometricMultigrid(fespaces_){}
-  
-  void AppendBilinearForm(mfem::BilinearForm *form){
-    bfs.Append(form);
-  }
-  void AppendEssentialTDofs(mfem::Array<int> *ess){
-      essentialTrueDofs.Append(ess);
-  }
-  void _pybfs(void){}
-  void _pyess(void){}  
-};
+#if PY_VERSION_HEX>=0x03000000
+#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+  if (PyBytes_Check(obj))
+#else
+  if (PyUnicode_Check(obj))
+#endif
+#else  
+  if (PyString_Check(obj))
+#endif
+  {
+    char *cstr; Py_ssize_t len;
+    int ret = SWIG_OK;
+#if PY_VERSION_HEX>=0x03000000
+#if !defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+    if (!alloc && cptr) {
+        /* We can't allow converting without allocation, since the internal
+           representation of string in Python 3 is UCS-2/UCS-4 but we require
+           a UTF-8 representation.
+           TODO(bhy) More detailed explanation */
+        return SWIG_RuntimeError;
+    }
+    obj = PyUnicode_AsUTF8String(obj);
+    if (!obj)
+      return SWIG_TypeError;
+    if (alloc)
+      *alloc = SWIG_NEWOBJ;
+#endif
+    if (PyBytes_AsStringAndSize(obj, &cstr, &len) == -1)
+      return SWIG_TypeError;
+#else
+    if (PyString_AsStringAndSize(obj, &cstr, &len) == -1)
+      return SWIG_TypeError;
+#endif
+    if (cptr) {
+      if (alloc) {
+	if (*alloc == SWIG_NEWOBJ) {
+	  *cptr = reinterpret_cast< char* >(memcpy(new char[len + 1], cstr, sizeof(char)*(len + 1)));
+	  *alloc = SWIG_NEWOBJ;
+	} else {
+	  *cptr = cstr;
+	  *alloc = SWIG_OLDOBJ;
+	}
+      } else {
+#if PY_VERSION_HEX>=0x03000000
+#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+	*cptr = PyBytes_AsString(obj);
+#else
+	assert(0); /* Should never reach here with Unicode strings in Python 3 */
+#endif
+#else
+	*cptr = SWIG_Python_str_AsChar(obj);
+        if (!*cptr)
+          ret = SWIG_TypeError;
+#endif
+      }
+    }
+    if (psize) *psize = len + 1;
+#if PY_VERSION_HEX>=0x03000000 && !defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+    Py_XDECREF(obj);
+#endif
+    return ret;
+  } else {
+#if defined(SWIG_PYTHON_2_UNICODE)
+#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+#error "Cannot use both SWIG_PYTHON_2_UNICODE and SWIG_PYTHON_STRICT_BYTE_CHAR at once"
+#endif
+#if PY_VERSION_HEX<0x03000000
+    if (PyUnicode_Check(obj)) {
+      char *cstr; Py_ssize_t len;
+      if (!alloc && cptr) {
+        return SWIG_RuntimeError;
+      }
+      obj = PyUnicode_AsUTF8String(obj);
+      if (!obj)
+        return SWIG_TypeError;
+      if (PyString_AsStringAndSize(obj, &cstr, &len) != -1) {
+        if (cptr) {
+          if (alloc) *alloc = SWIG_NEWOBJ;
+          *cptr = reinterpret_cast< char* >(memcpy(new char[len + 1], cstr, sizeof(char)*(len + 1)));
+        }
+        if (psize) *psize = len + 1;
 
+        Py_XDECREF(obj);
+        return SWIG_OK;
+      } else {
+        Py_XDECREF(obj);
+      }
+    }
+#endif
+#endif
+
+    swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
+    if (pchar_descriptor) {
+      void* vptr = 0;
+      if (SWIG_ConvertPtr(obj, &vptr, pchar_descriptor, 0) == SWIG_OK) {
+	if (cptr) *cptr = (char *) vptr;
+	if (psize) *psize = vptr ? (strlen((char *)vptr) + 1) : 0;
+	if (alloc) *alloc = SWIG_OLDOBJ;
+	return SWIG_OK;
+      }
+    }
+  }
+  return SWIG_TypeError;
+}
+
+
+
+
+SWIGINTERN void mfem_DenseSymmetricMatrix_Print__SWIG_1(mfem::DenseSymmetricMatrix *self,char const *file,int precision=16){
+  std::ofstream ofile(file);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile.precision(precision);  
+  self -> Print(ofile);
+  ofile.close();
+  }
+SWIGINTERN void mfem_DenseSymmetricMatrix_PrintGZ(mfem::DenseSymmetricMatrix *self,char const *file,int precision=16){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> Print(*ofile);
+  delete ofile;
+  }
 
 
 /* ---------------------------------------------------
  * C++ director class methods
  * --------------------------------------------------- */
 
-#include "multigrid_wrap.h"
+#include "symmat_wrap.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_new_Multigrid__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+SWIGINTERN PyObject *_wrap_new_DenseSymmetricMatrix__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
   PyObject *resultobj = 0;
-  mfem::Multigrid *result = 0 ;
+  mfem::DenseSymmetricMatrix *result = 0 ;
   
   if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      result = (mfem::Multigrid *)new mfem::Multigrid(); 
+      result = (mfem::DenseSymmetricMatrix *)new mfem::DenseSymmetricMatrix();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Multigrid, SWIG_POINTER_NEW |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DenseSymmetricMatrix, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Multigrid__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_DenseSymmetricMatrix__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  mfem::Array< mfem::Operator * > *arg1 = 0 ;
-  mfem::Array< mfem::Solver * > *arg2 = 0 ;
-  mfem::Array< mfem::Operator * > *arg3 = 0 ;
-  mfem::Array< bool > *arg4 = 0 ;
-  mfem::Array< bool > *arg5 = 0 ;
-  mfem::Array< bool > *arg6 = 0 ;
-  mfem::Operator *temp_ptr1 ;
-  mfem::Array< mfem::Operator * > tmp_array1 ;
-  mfem::Solver *temp_ptr2 ;
-  mfem::Array< mfem::Solver * > tmp_array2 ;
-  mfem::Operator *temp_ptr3 ;
-  mfem::Array< mfem::Operator * > tmp_array3 ;
-  bool temp_ptr4 ;
-  mfem::Array< bool > tmp_array4 ;
-  bool temp_ptr5 ;
-  mfem::Array< bool > tmp_array5 ;
-  bool temp_ptr6 ;
-  mfem::Array< bool > tmp_array6 ;
-  mfem::Multigrid *result = 0 ;
+  int arg1 ;
+  mfem::DenseSymmetricMatrix *result = 0 ;
   
-  if ((nobjs < 6) || (nobjs > 6)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
   {
-    int i;
-    if (!PyList_Check(swig_obj[0])) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    int l = PyList_Size(swig_obj[0]);
-    for (i = 0; i < l; i++) {
-      PyObject *s1 = PyList_GetItem(swig_obj[0],i);
-      if (SWIG_ConvertPtr(s1, (void **) &temp_ptr1, SWIGTYPE_p_mfem__Operator, 0 |0) == -1) {
-        PyErr_SetString(PyExc_ValueError, "Expecting a list of  mfem::Operator * ");       
-        return NULL;
-      }
-    }
-    tmp_array1.SetSize(l);
-    for (i = 0; i < l; i++) {
-      PyObject *s1 = PyList_GetItem(swig_obj[0],i);
-      SWIG_ConvertPtr(s1, (void **) &temp_ptr1, SWIGTYPE_p_mfem__Operator, 0 |0);
-      tmp_array1[i] = temp_ptr1;
-    }
-    arg1 = &tmp_array1;
-  }
-  {
-    int i;
-    if (!PyList_Check(swig_obj[1])) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    int l = PyList_Size(swig_obj[1]);
-    for (i = 0; i < l; i++) {
-      PyObject *s1 = PyList_GetItem(swig_obj[1],i);
-      if (SWIG_ConvertPtr(s1, (void **) &temp_ptr2, SWIGTYPE_p_mfem__Solver, 0 |0) == -1) {
-        PyErr_SetString(PyExc_ValueError, "Expecting a list of  mfem::Solver * ");       
-        return NULL;
-      }
-    }
-    tmp_array2.SetSize(l);
-    for (i = 0; i < l; i++) {
-      PyObject *s1 = PyList_GetItem(swig_obj[1],i);
-      SWIG_ConvertPtr(s1, (void **) &temp_ptr2, SWIGTYPE_p_mfem__Solver, 0 |0);
-      tmp_array2[i] = temp_ptr2;
-    }
-    arg2 = &tmp_array2;
-  }
-  {
-    int i;
-    if (!PyList_Check(swig_obj[2])) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    int l = PyList_Size(swig_obj[2]);
-    for (i = 0; i < l; i++) {
-      PyObject *s1 = PyList_GetItem(swig_obj[2],i);
-      if (SWIG_ConvertPtr(s1, (void **) &temp_ptr3, SWIGTYPE_p_mfem__Operator, 0 |0) == -1) {
-        PyErr_SetString(PyExc_ValueError, "Expecting a list of  mfem::Operator * ");       
-        return NULL;
-      }
-    }
-    tmp_array3.SetSize(l);
-    for (i = 0; i < l; i++) {
-      PyObject *s1 = PyList_GetItem(swig_obj[2],i);
-      SWIG_ConvertPtr(s1, (void **) &temp_ptr3, SWIGTYPE_p_mfem__Operator, 0 |0);
-      tmp_array3[i] = temp_ptr3;
-    }
-    arg3 = &tmp_array3;
-  }
-  {
-    int i;
-    if (!PyList_Check(swig_obj[3])) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    int l = PyList_Size(swig_obj[3]);
-    for (i = 0; i < l; i++) {
-      PyObject *s1 = PyList_GetItem(swig_obj[3],i);
-      if (! PyBool_Check(s1)){
-        PyErr_SetString(PyExc_ValueError, "Expecting a list of bool");       
-        return NULL;
-      }
-    }
-    tmp_array4.SetSize(l);
-    for (i = 0; i < l; i++) {
-      PyObject *s1 = PyList_GetItem(swig_obj[3],i);
-      int isTrue = PyObject_IsTrue(s1);
-      if (isTrue){
-        tmp_array4[i] = true;
-      } else {
-        tmp_array4[i] = false;
-      }
-    }
-    arg4 = &tmp_array4;
-  }
-  {
-    int i;
-    if (!PyList_Check(swig_obj[4])) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    int l = PyList_Size(swig_obj[4]);
-    for (i = 0; i < l; i++) {
-      PyObject *s1 = PyList_GetItem(swig_obj[4],i);
-      if (! PyBool_Check(s1)){
-        PyErr_SetString(PyExc_ValueError, "Expecting a list of bool");       
-        return NULL;
-      }
-    }
-    tmp_array5.SetSize(l);
-    for (i = 0; i < l; i++) {
-      PyObject *s1 = PyList_GetItem(swig_obj[4],i);
-      int isTrue = PyObject_IsTrue(s1);
-      if (isTrue){
-        tmp_array5[i] = true;
-      } else {
-        tmp_array5[i] = false;
-      }
-    }
-    arg5 = &tmp_array5;
-  }
-  {
-    int i;
-    if (!PyList_Check(swig_obj[5])) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    int l = PyList_Size(swig_obj[5]);
-    for (i = 0; i < l; i++) {
-      PyObject *s1 = PyList_GetItem(swig_obj[5],i);
-      if (! PyBool_Check(s1)){
-        PyErr_SetString(PyExc_ValueError, "Expecting a list of bool");       
-        return NULL;
-      }
-    }
-    tmp_array6.SetSize(l);
-    for (i = 0; i < l; i++) {
-      PyObject *s1 = PyList_GetItem(swig_obj[5],i);
-      int isTrue = PyObject_IsTrue(s1);
-      if (isTrue){
-        tmp_array6[i] = true;
-      } else {
-        tmp_array6[i] = false;
-      }
-    }
-    arg6 = &tmp_array6;
+    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
   }
   {
     try {
-      result = (mfem::Multigrid *)new mfem::Multigrid((mfem::Array< mfem::Operator * > const &)*arg1,(mfem::Array< mfem::Solver * > const &)*arg2,(mfem::Array< mfem::Operator * > const &)*arg3,(mfem::Array< bool > const &)*arg4,(mfem::Array< bool > const &)*arg5,(mfem::Array< bool > const &)*arg6); 
+      result = (mfem::DenseSymmetricMatrix *)new mfem::DenseSymmetricMatrix(arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Multigrid, SWIG_POINTER_NEW |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DenseSymmetricMatrix, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Multigrid(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_DenseSymmetricMatrix__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  double *arg1 = (double *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::DenseSymmetricMatrix *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DenseSymmetricMatrix" "', argument " "1"" of type '" "double *""'"); 
+  }
+  arg1 = reinterpret_cast< double * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  {
+    try {
+      result = (mfem::DenseSymmetricMatrix *)new mfem::DenseSymmetricMatrix(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DenseSymmetricMatrix, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_DenseSymmetricMatrix(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[7] = {
+  PyObject *argv[3] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_Multigrid", 0, 6, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_DenseSymmetricMatrix", 0, 2, argv))) SWIG_fail;
   --argc;
   if (argc == 0) {
-    return _wrap_new_Multigrid__SWIG_0(self, argc, argv);
+    return _wrap_new_DenseSymmetricMatrix__SWIG_0(self, argc, argv);
   }
-  if (argc == 6) {
+  if (argc == 1) {
     int _v;
     {
-      _v = 0;
-      if (PyList_Check(argv[0])){
-        _v = 1;
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
+      return _wrap_new_DenseSymmetricMatrix__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_double, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
-        _v = 0;
-        if (PyList_Check(argv[1])){
-          _v = 1;
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
-        {
-          _v = 0;
-          if (PyList_Check(argv[2])){
-            _v = 1;
-          }
-        }
-        if (_v) {
-          {
-            _v = 0;
-            if (PyList_Check(argv[3])){
-              _v = 1;
-            }
-          }
-          if (_v) {
-            {
-              _v = 0;
-              if (PyList_Check(argv[4])){
-                _v = 1;
-              }
-            }
-            if (_v) {
-              {
-                _v = 0;
-                if (PyList_Check(argv[5])){
-                  _v = 1;
-                }
-              }
-              if (_v) {
-                return _wrap_new_Multigrid__SWIG_1(self, argc, argv);
-              }
-            }
-          }
-        }
+        return _wrap_new_DenseSymmetricMatrix__SWIG_2(self, argc, argv);
       }
     }
   }
   
 fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_Multigrid'.\n"
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_DenseSymmetricMatrix'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    mfem::Multigrid::Multigrid()\n"
-    "    mfem::Multigrid::Multigrid(mfem::Array< mfem::Operator * > const &,mfem::Array< mfem::Solver * > const &,mfem::Array< mfem::Operator * > const &,mfem::Array< bool > const &,mfem::Array< bool > const &,mfem::Array< bool > const &)\n");
+    "    mfem::DenseSymmetricMatrix::DenseSymmetricMatrix()\n"
+    "    mfem::DenseSymmetricMatrix::DenseSymmetricMatrix(int)\n"
+    "    mfem::DenseSymmetricMatrix::DenseSymmetricMatrix(double *,int)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_Multigrid(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_UseExternalData(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  mfem::Multigrid *arg1 = (mfem::Multigrid *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Multigrid, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Multigrid" "', argument " "1"" of type '" "mfem::Multigrid *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Multigrid * >(argp1);
-  {
-    try {
-      delete arg1; 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Multigrid_AddLevel(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::Multigrid *arg1 = (mfem::Multigrid *) 0 ;
-  mfem::Operator *arg2 = (mfem::Operator *) 0 ;
-  mfem::Solver *arg3 = (mfem::Solver *) 0 ;
-  bool arg4 ;
-  bool arg5 ;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  double *arg2 = (double *) 0 ;
+  int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  bool val4 ;
-  int ecode4 = 0 ;
-  bool val5 ;
-  int ecode5 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  PyObject * obj4 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"opr",  (char *)"smoother",  (char *)"ownOperator",  (char *)"ownSmoother",  NULL 
+    (char *)"self",  (char *)"d",  (char *)"s",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOO:Multigrid_AddLevel", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Multigrid, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:DenseSymmetricMatrix_UseExternalData", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Multigrid_AddLevel" "', argument " "1"" of type '" "mfem::Multigrid *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_UseExternalData" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix *""'"); 
   }
-  arg1 = reinterpret_cast< mfem::Multigrid * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Multigrid_AddLevel" "', argument " "2"" of type '" "mfem::Operator *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DenseSymmetricMatrix_UseExternalData" "', argument " "2"" of type '" "double *""'"); 
   }
-  arg2 = reinterpret_cast< mfem::Operator * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__Solver, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Multigrid_AddLevel" "', argument " "3"" of type '" "mfem::Solver *""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Solver * >(argp3);
-  ecode4 = SWIG_AsVal_bool(obj3, &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Multigrid_AddLevel" "', argument " "4"" of type '" "bool""'");
-  } 
-  arg4 = static_cast< bool >(val4);
-  ecode5 = SWIG_AsVal_bool(obj4, &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "Multigrid_AddLevel" "', argument " "5"" of type '" "bool""'");
-  } 
-  arg5 = static_cast< bool >(val5);
-  {
-    try {
-      (arg1)->AddLevel(arg2,arg3,arg4,arg5); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Multigrid_NumLevels(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::Multigrid *arg1 = (mfem::Multigrid *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  int result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Multigrid, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Multigrid_NumLevels" "', argument " "1"" of type '" "mfem::Multigrid const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Multigrid * >(argp1);
-  {
-    try {
-      result = (int)((mfem::Multigrid const *)arg1)->NumLevels(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Multigrid_GetFinestLevelIndex(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::Multigrid *arg1 = (mfem::Multigrid *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  int result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Multigrid, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Multigrid_GetFinestLevelIndex" "', argument " "1"" of type '" "mfem::Multigrid const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Multigrid * >(argp1);
-  {
-    try {
-      result = (int)((mfem::Multigrid const *)arg1)->GetFinestLevelIndex(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Multigrid_GetOperatorAtLevel__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Multigrid *arg1 = (mfem::Multigrid *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::Operator *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Multigrid, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Multigrid_GetOperatorAtLevel" "', argument " "1"" of type '" "mfem::Multigrid const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Multigrid * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    try {
-      result = (mfem::Operator *)((mfem::Multigrid const *)arg1)->GetOperatorAtLevel(arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Operator, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Multigrid_GetOperatorAtLevel__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Multigrid *arg1 = (mfem::Multigrid *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::Operator *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Multigrid, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Multigrid_GetOperatorAtLevel" "', argument " "1"" of type '" "mfem::Multigrid *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Multigrid * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    try {
-      result = (mfem::Operator *)(arg1)->GetOperatorAtLevel(arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Operator, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Multigrid_GetOperatorAtLevel(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "Multigrid_GetOperatorAtLevel", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Multigrid, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        return _wrap_Multigrid_GetOperatorAtLevel__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Multigrid, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        return _wrap_Multigrid_GetOperatorAtLevel__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Multigrid_GetOperatorAtLevel'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Multigrid::GetOperatorAtLevel(int) const\n"
-    "    mfem::Multigrid::GetOperatorAtLevel(int)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_Multigrid_GetOperatorAtFinestLevel__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Multigrid *arg1 = (mfem::Multigrid *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::Operator *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Multigrid, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Multigrid_GetOperatorAtFinestLevel" "', argument " "1"" of type '" "mfem::Multigrid const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Multigrid * >(argp1);
-  {
-    try {
-      result = (mfem::Operator *)((mfem::Multigrid const *)arg1)->GetOperatorAtFinestLevel(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Operator, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Multigrid_GetOperatorAtFinestLevel__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Multigrid *arg1 = (mfem::Multigrid *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::Operator *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Multigrid, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Multigrid_GetOperatorAtFinestLevel" "', argument " "1"" of type '" "mfem::Multigrid *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Multigrid * >(argp1);
-  {
-    try {
-      result = (mfem::Operator *)(arg1)->GetOperatorAtFinestLevel(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Operator, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Multigrid_GetOperatorAtFinestLevel(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[2] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "Multigrid_GetOperatorAtFinestLevel", 0, 1, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Multigrid, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_Multigrid_GetOperatorAtFinestLevel__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Multigrid, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_Multigrid_GetOperatorAtFinestLevel__SWIG_0(self, argc, argv);
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Multigrid_GetOperatorAtFinestLevel'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Multigrid::GetOperatorAtFinestLevel() const\n"
-    "    mfem::Multigrid::GetOperatorAtFinestLevel()\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_Multigrid_GetSmootherAtLevel__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Multigrid *arg1 = (mfem::Multigrid *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::Solver *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Multigrid, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Multigrid_GetSmootherAtLevel" "', argument " "1"" of type '" "mfem::Multigrid const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Multigrid * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    try {
-      result = (mfem::Solver *)((mfem::Multigrid const *)arg1)->GetSmootherAtLevel(arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Solver, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Multigrid_GetSmootherAtLevel__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Multigrid *arg1 = (mfem::Multigrid *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::Solver *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Multigrid, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Multigrid_GetSmootherAtLevel" "', argument " "1"" of type '" "mfem::Multigrid *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Multigrid * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    try {
-      result = (mfem::Solver *)(arg1)->GetSmootherAtLevel(arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Solver, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Multigrid_GetSmootherAtLevel(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "Multigrid_GetSmootherAtLevel", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Multigrid, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        return _wrap_Multigrid_GetSmootherAtLevel__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Multigrid, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        return _wrap_Multigrid_GetSmootherAtLevel__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Multigrid_GetSmootherAtLevel'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Multigrid::GetSmootherAtLevel(int) const\n"
-    "    mfem::Multigrid::GetSmootherAtLevel(int)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_Multigrid_SetCycleType(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::Multigrid *arg1 = (mfem::Multigrid *) 0 ;
-  mfem::Multigrid::CycleType arg2 ;
-  int arg3 ;
-  int arg4 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"cycleType_",  (char *)"preSmoothingSteps_",  (char *)"postSmoothingSteps_",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:Multigrid_SetCycleType", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Multigrid, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Multigrid_SetCycleType" "', argument " "1"" of type '" "mfem::Multigrid *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Multigrid * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Multigrid_SetCycleType" "', argument " "2"" of type '" "mfem::Multigrid::CycleType""'");
-  } 
-  arg2 = static_cast< mfem::Multigrid::CycleType >(val2);
+  arg2 = reinterpret_cast< double * >(argp2);
   {
     if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
@@ -4373,23 +3747,23 @@ SWIGINTERN PyObject *_wrap_Multigrid_SetCycleType(PyObject *SWIGUNUSEDPARM(self)
     arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(obj3);
-  }
-  {
     try {
-      (arg1)->SetCycleType(arg2,arg3,arg4); 
+      (arg1)->UseExternalData(arg2,arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4398,9 +3772,1177 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Multigrid_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_Reset(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  mfem::Multigrid *arg1 = (mfem::Multigrid *) 0 ;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  double *arg2 = (double *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"d",  (char *)"s",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:DenseSymmetricMatrix_Reset", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_Reset" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DenseSymmetricMatrix_Reset" "', argument " "2"" of type '" "double *""'"); 
+  }
+  arg2 = reinterpret_cast< double * >(argp2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      (arg1)->Reset(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_ClearExternalData(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_ClearExternalData" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  {
+    try {
+      (arg1)->ClearExternalData();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_Clear(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_Clear" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  {
+    try {
+      (arg1)->Clear();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_SetSize(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"s",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:DenseSymmetricMatrix_SetSize", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_SetSize" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      (arg1)->SetSize(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_Data(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_Data" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  {
+    try {
+      result = (double *)((mfem::DenseSymmetricMatrix const *)arg1)->Data();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_GetData(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_GetData" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  {
+    try {
+      result = (double *)((mfem::DenseSymmetricMatrix const *)arg1)->GetData();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_GetMemory__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::Memory< double > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_GetMemory" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  {
+    try {
+      result = (mfem::Memory< double > *) &(arg1)->GetMemory();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MemoryT_double_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_GetMemory__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::Memory< double > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_GetMemory" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  {
+    try {
+      result = (mfem::Memory< double > *) &((mfem::DenseSymmetricMatrix const *)arg1)->GetMemory();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MemoryT_double_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_GetMemory(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "DenseSymmetricMatrix_GetMemory", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_DenseSymmetricMatrix_GetMemory__SWIG_0(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_DenseSymmetricMatrix_GetMemory__SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'DenseSymmetricMatrix_GetMemory'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::DenseSymmetricMatrix::GetMemory()\n"
+    "    mfem::DenseSymmetricMatrix::GetMemory() const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_OwnsData(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_OwnsData" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  {
+    try {
+      result = (bool)((mfem::DenseSymmetricMatrix const *)arg1)->OwnsData();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix___call____SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double *result = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix___call__" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  }
+  {
+    try {
+      result = (double *) &(arg1)->operator ()(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix___call____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double *result = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix___call__" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  }
+  {
+    try {
+      result = (double *) &((mfem::DenseSymmetricMatrix const *)arg1)->operator ()(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_double(static_cast< double >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix___call__(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "DenseSymmetricMatrix___call__", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_DenseSymmetricMatrix___call____SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_DenseSymmetricMatrix___call____SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'DenseSymmetricMatrix___call__'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::DenseSymmetricMatrix::operator ()(int,int)\n"
+    "    mfem::DenseSymmetricMatrix::operator ()(int,int) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_Elem__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double *result = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_Elem" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  }
+  {
+    try {
+      result = (double *) &(arg1)->Elem(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_Elem__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double *result = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_Elem" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  }
+  {
+    try {
+      result = (double *) &((mfem::DenseSymmetricMatrix const *)arg1)->Elem(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_double(static_cast< double >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_Elem(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "DenseSymmetricMatrix_Elem", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_DenseSymmetricMatrix_Elem__SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_DenseSymmetricMatrix_Elem__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'DenseSymmetricMatrix_Elem'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::DenseSymmetricMatrix::Elem(int,int)\n"
+    "    mfem::DenseSymmetricMatrix::Elem(int,int) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix___imul__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"c",  NULL 
+  };
+  mfem::DenseSymmetricMatrix *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:DenseSymmetricMatrix___imul__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix___imul__" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DenseSymmetricMatrix___imul__" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  {
+    try {
+      result = (mfem::DenseSymmetricMatrix *) &(arg1)->operator *=(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DenseSymmetricMatrix, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_MemoryUsage(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  long result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_MemoryUsage" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  {
+    try {
+      result = (long)((mfem::DenseSymmetricMatrix const *)arg1)->MemoryUsage();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_Read(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  bool arg2 = (bool) true ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"on_dev",  NULL 
+  };
+  double *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:DenseSymmetricMatrix_Read", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_Read" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DenseSymmetricMatrix_Read" "', argument " "2"" of type '" "bool""'");
+    } 
+    arg2 = static_cast< bool >(val2);
+  }
+  {
+    try {
+      result = (double *)((mfem::DenseSymmetricMatrix const *)arg1)->Read(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_HostRead(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_HostRead" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  {
+    try {
+      result = (double *)((mfem::DenseSymmetricMatrix const *)arg1)->HostRead();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_Write(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  bool arg2 = (bool) true ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"on_dev",  NULL 
+  };
+  double *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:DenseSymmetricMatrix_Write", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_Write" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DenseSymmetricMatrix_Write" "', argument " "2"" of type '" "bool""'");
+    } 
+    arg2 = static_cast< bool >(val2);
+  }
+  {
+    try {
+      result = (double *)(arg1)->Write(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_HostWrite(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_HostWrite" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  {
+    try {
+      result = (double *)(arg1)->HostWrite();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_ReadWrite(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  bool arg2 = (bool) true ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"on_dev",  NULL 
+  };
+  double *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:DenseSymmetricMatrix_ReadWrite", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_ReadWrite" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DenseSymmetricMatrix_ReadWrite" "', argument " "2"" of type '" "bool""'");
+    } 
+    arg2 = static_cast< bool >(val2);
+  }
+  {
+    try {
+      result = (double *)(arg1)->ReadWrite(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_HostReadWrite(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_HostReadWrite" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  {
+    try {
+      result = (double *)(arg1)->HostReadWrite();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
   mfem::Vector *arg2 = 0 ;
   mfem::Vector *arg3 = 0 ;
   void *argp1 = 0 ;
@@ -4416,40 +4958,46 @@ SWIGINTERN PyObject *_wrap_Multigrid_Mult(PyObject *SWIGUNUSEDPARM(self), PyObje
     (char *)"self",  (char *)"x",  (char *)"y",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:Multigrid_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Multigrid, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:DenseSymmetricMatrix_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Multigrid_Mult" "', argument " "1"" of type '" "mfem::Multigrid const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_Mult" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix const *""'"); 
   }
-  arg1 = reinterpret_cast< mfem::Multigrid * >(argp1);
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Multigrid_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DenseSymmetricMatrix_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Multigrid_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DenseSymmetricMatrix_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Multigrid_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DenseSymmetricMatrix_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
   if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Multigrid_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DenseSymmetricMatrix_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   {
     try {
-      ((mfem::Multigrid const *)arg1)->Mult((mfem::Vector const &)*arg2,*arg3); 
+      ((mfem::DenseSymmetricMatrix const *)arg1)->Mult((mfem::Vector const &)*arg2,*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4458,131 +5006,238 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Multigrid_SetOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_Inverse(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  mfem::Multigrid *arg1 = (mfem::Multigrid *) 0 ;
-  mfem::Operator *arg2 = 0 ;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"op",  NULL 
-  };
+  PyObject *swig_obj[1] ;
+  mfem::MatrixInverse *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Multigrid_SetOperator", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Multigrid, 0 |  0 );
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Multigrid_SetOperator" "', argument " "1"" of type '" "mfem::Multigrid *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_Inverse" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix const *""'"); 
   }
-  arg1 = reinterpret_cast< mfem::Multigrid * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Operator,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Multigrid_SetOperator" "', argument " "2"" of type '" "mfem::Operator const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Multigrid_SetOperator" "', argument " "2"" of type '" "mfem::Operator const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Operator * >(argp2);
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
   {
     try {
-      (arg1)->SetOperator((mfem::Operator const &)*arg2); 
+      result = (mfem::MatrixInverse *)((mfem::DenseSymmetricMatrix const *)arg1)->Inverse();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MatrixInverse, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  std::ostream &arg2_defvalue = mfem::out ;
+  std::ostream *arg2 = (std::ostream *) &arg2_defvalue ;
+  int arg3 = (int) 4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out_txt2 ;
+  mfem::ofgzstream *out_gz2 = 0 ;
+  PyObject *string_io2 = 0 ;
+  std::ostringstream *stream2 = 0 ;
+  PyObject *ret2 = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_Print" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  if (swig_obj[1]) {
+    {
+      //  PyMFEM::wFILE or string argument or StringIO
+      if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+        if (!PyString_Check(swig_obj[1]) && !PyUnicode_Check(swig_obj[1])) {
+          // not string, check if it is StringIO
+          PyObject* module = PyImport_ImportModule("io");
+          if (!module){
+            PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+            return NULL;
+          }      
+          PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+          if (!cls){
+            PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+            return NULL;
+          }      
+          int check = PyObject_IsInstance(swig_obj[1], cls);
+          Py_DECREF(module);
+          if (! check){
+            SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
+            return NULL;
+          }
+          string_io2=swig_obj[1];
+          stream2 = new std::ostringstream();
+          int prec = 16;
+          if (PyObject_HasAttrString(swig_obj[1], "precision")){
+            PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+            prec = (int)PyLong_AsLong(attr);
+            //std::cout << "setting prec" << prec << "\n";
+          }
+          stream2->precision(prec);
+          
+        } else {
+          // if it is string, extract filename as char*
+          PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
+          const char* filename = PyBytes_AsString(str);
+          temp2 = new PyMFEM::wFILE(filename, 8, true);
+          Py_DECREF(str);	 
+        }
+      }
+      
+      if (stream2 == 0){
+        if (temp2->isSTDOUT() == 1) {
+          arg2 = &std::cout;
+        } else if (temp2->isGZ()){
+          out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
+          arg2 = out_gz2;	     
+        } else {
+          out_txt2.open(temp2->getFilename());
+          out_txt2.precision(temp2->getPrecision());
+          arg2 = &out_txt2;
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
+      } else {
+        arg2 = stream2;
+      }
+    }
+  }
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    }
+  }
+  {
+    try {
+      ((mfem::DenseSymmetricMatrix const *)arg1)->Print(*arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *Multigrid_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__Multigrid, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
-SWIGINTERN PyObject *Multigrid_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  return SWIG_Python_InitShadowInstance(args);
-}
-
-SWIGINTERN PyObject *_wrap_new_GeometricMultigrid(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::FiniteElementSpaceHierarchy *arg1 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  char * kwnames[] = {
-    (char *)"fespaces_",  NULL 
-  };
-  mfem::GeometricMultigrid *result = 0 ;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_GeometricMultigrid", kwnames, &obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__FiniteElementSpaceHierarchy,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_GeometricMultigrid" "', argument " "1"" of type '" "mfem::FiniteElementSpaceHierarchy const &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_GeometricMultigrid" "', argument " "1"" of type '" "mfem::FiniteElementSpaceHierarchy const &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::FiniteElementSpaceHierarchy * >(argp1);
   {
-    try {
-      result = (mfem::GeometricMultigrid *)new mfem::GeometricMultigrid((mfem::FiniteElementSpaceHierarchy const &)*arg1); 
+    if (stream2) {
+      std::string str =  stream2->str();
+      const char* s = str.c_str();
+      const int n = str.length();
+      ret2 = PyObject_CallMethod(string_io2, "write", "s#",
+        s, static_cast<Py_ssize_t>(n));
+      if (PyErr_Occurred()) {
+        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
+        return NULL;
+      }
+      delete stream2;
+      Py_XDECREF(resultobj);   /* Blow away any previous result */
+      resultobj = ret2;    
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GeometricMultigrid, SWIG_POINTER_NEW |  0 );
+  {
+    if (!stream2) {
+      if (temp2) {
+        if (temp2->isSTDOUT() != 1) {
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
+        }
+      }
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (!stream2) {
+      if (temp2) {
+        if (temp2->isSTDOUT() != 1) {
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
+        }
+      }
+    }
+  }
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_GeometricMultigrid(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_delete_DenseSymmetricMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  mfem::GeometricMultigrid *arg1 = (mfem::GeometricMultigrid *) 0 ;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GeometricMultigrid, SWIG_POINTER_DISOWN |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_GeometricMultigrid" "', argument " "1"" of type '" "mfem::GeometricMultigrid *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_DenseSymmetricMatrix" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix *""'"); 
   }
-  arg1 = reinterpret_cast< mfem::GeometricMultigrid * >(argp1);
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4591,1169 +5246,505 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GeometricMultigrid_FormFineLinearSystem(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  mfem::GeometricMultigrid *arg1 = (mfem::GeometricMultigrid *) 0 ;
-  mfem::Vector *arg2 = 0 ;
-  mfem::Vector *arg3 = 0 ;
-  mfem::OperatorHandle *arg4 = 0 ;
-  mfem::Vector *arg5 = 0 ;
-  mfem::Vector *arg6 = 0 ;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  void *argp5 = 0 ;
-  int res5 = 0 ;
-  void *argp6 = 0 ;
-  int res6 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_Print" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DenseSymmetricMatrix_Print" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    }
+  }
+  {
+    try {
+      mfem_DenseSymmetricMatrix_Print__SWIG_1(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_Print(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "DenseSymmetricMatrix_Print", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if ((argc >= 1) && (argc <= 3)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      if (argc <= 1) {
+        return _wrap_DenseSymmetricMatrix_Print__SWIG_0(self, argc, argv);
+      }
+      {
+        void *ptr;
+        //std::string *ptr2 = (std::string *)0;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          if (!PyString_Check(argv[1]) && !PyUnicode_Check(argv[1])) {
+            // not string
+            _v = 1;	   	
+            PyObject* module = PyImport_ImportModule("io");
+            if (!module){
+              _v = 0;	   
+            }      
+            PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+            if (!cls){
+              _v = 0;	   	   
+            }      
+            int check = PyObject_IsInstance(argv[1], cls);
+            Py_DECREF(module);
+            if (! check){
+              _v = 0;	   	   	   
+            }
+          } else {
+            _v = 1;
+          }
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_DenseSymmetricMatrix_Print__SWIG_0(self, argc, argv);
+        }
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_DenseSymmetricMatrix_Print__SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if ((argc >= 2) && (argc <= 3)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_DenseSymmetricMatrix_Print__SWIG_1(self, argc, argv);
+        }
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_DenseSymmetricMatrix_Print__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'DenseSymmetricMatrix_Print'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::DenseSymmetricMatrix::Print(std::ostream &,int) const\n"
+    "    mfem::DenseSymmetricMatrix::Print(char const *,int)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_PrintGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = (mfem::DenseSymmetricMatrix *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 16 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  PyObject * obj4 = 0 ;
-  PyObject * obj5 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"x",  (char *)"b",  (char *)"A",  (char *)"X",  (char *)"B",  NULL 
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOO:GeometricMultigrid_FormFineLinearSystem", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GeometricMultigrid, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:DenseSymmetricMatrix_PrintGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DenseSymmetricMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeometricMultigrid_FormFineLinearSystem" "', argument " "1"" of type '" "mfem::GeometricMultigrid *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseSymmetricMatrix_PrintGZ" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix *""'"); 
   }
-  arg1 = reinterpret_cast< mfem::GeometricMultigrid * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeometricMultigrid_FormFineLinearSystem" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DenseSymmetricMatrix_PrintGZ" "', argument " "2"" of type '" "char const *""'");
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeometricMultigrid_FormFineLinearSystem" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
   }
-  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GeometricMultigrid_FormFineLinearSystem" "', argument " "3"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeometricMultigrid_FormFineLinearSystem" "', argument " "3"" of type '" "mfem::Vector &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__OperatorHandle,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GeometricMultigrid_FormFineLinearSystem" "', argument " "4"" of type '" "mfem::OperatorHandle &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeometricMultigrid_FormFineLinearSystem" "', argument " "4"" of type '" "mfem::OperatorHandle &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::OperatorHandle * >(argp4);
-  res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GeometricMultigrid_FormFineLinearSystem" "', argument " "5"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp5) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeometricMultigrid_FormFineLinearSystem" "', argument " "5"" of type '" "mfem::Vector &""'"); 
-  }
-  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
-  res6 = SWIG_ConvertPtr(obj5, &argp6, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res6)) {
-    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "GeometricMultigrid_FormFineLinearSystem" "', argument " "6"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp6) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeometricMultigrid_FormFineLinearSystem" "', argument " "6"" of type '" "mfem::Vector &""'"); 
-  }
-  arg6 = reinterpret_cast< mfem::Vector * >(argp6);
   {
     try {
-      (arg1)->FormFineLinearSystem(*arg2,*arg3,*arg4,*arg5,*arg6); 
+      mfem_DenseSymmetricMatrix_PrintGZ(arg1,(char const *)arg2,arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return resultobj;
 fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_GeometricMultigrid_RecoverFineFEMSolution(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::GeometricMultigrid *arg1 = (mfem::GeometricMultigrid *) 0 ;
-  mfem::Vector *arg2 = 0 ;
-  mfem::Vector *arg3 = 0 ;
-  mfem::Vector *arg4 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"X",  (char *)"b",  (char *)"x",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:GeometricMultigrid_RecoverFineFEMSolution", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GeometricMultigrid, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeometricMultigrid_RecoverFineFEMSolution" "', argument " "1"" of type '" "mfem::GeometricMultigrid *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GeometricMultigrid * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeometricMultigrid_RecoverFineFEMSolution" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeometricMultigrid_RecoverFineFEMSolution" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GeometricMultigrid_RecoverFineFEMSolution" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeometricMultigrid_RecoverFineFEMSolution" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GeometricMultigrid_RecoverFineFEMSolution" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeometricMultigrid_RecoverFineFEMSolution" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
-  {
-    try {
-      (arg1)->RecoverFineFEMSolution((mfem::Vector const &)*arg2,(mfem::Vector const &)*arg3,*arg4); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *GeometricMultigrid_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *DenseSymmetricMatrix_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__GeometricMultigrid, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__DenseSymmetricMatrix, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *GeometricMultigrid_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  return SWIG_Python_InitShadowInstance(args);
-}
-
-SWIGINTERN PyObject *_wrap_new_PyGeometricMultigrid(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::FiniteElementSpaceHierarchy *arg1 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  char * kwnames[] = {
-    (char *)"fespaces_",  NULL 
-  };
-  PyGeometricMultigrid *result = 0 ;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_PyGeometricMultigrid", kwnames, &obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__FiniteElementSpaceHierarchy,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_PyGeometricMultigrid" "', argument " "1"" of type '" "mfem::FiniteElementSpaceHierarchy const &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_PyGeometricMultigrid" "', argument " "1"" of type '" "mfem::FiniteElementSpaceHierarchy const &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::FiniteElementSpaceHierarchy * >(argp1);
-  {
-    try {
-      result = (PyGeometricMultigrid *)new PyGeometricMultigrid((mfem::FiniteElementSpaceHierarchy const &)*arg1); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_PyGeometricMultigrid, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_PyGeometricMultigrid_AppendBilinearForm(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  PyGeometricMultigrid *arg1 = (PyGeometricMultigrid *) 0 ;
-  mfem::BilinearForm *arg2 = (mfem::BilinearForm *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"form",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:PyGeometricMultigrid_AppendBilinearForm", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_PyGeometricMultigrid, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyGeometricMultigrid_AppendBilinearForm" "', argument " "1"" of type '" "PyGeometricMultigrid *""'"); 
-  }
-  arg1 = reinterpret_cast< PyGeometricMultigrid * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PyGeometricMultigrid_AppendBilinearForm" "', argument " "2"" of type '" "mfem::BilinearForm *""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::BilinearForm * >(argp2);
-  {
-    try {
-      (arg1)->AppendBilinearForm(arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_PyGeometricMultigrid_AppendEssentialTDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  PyGeometricMultigrid *arg1 = (PyGeometricMultigrid *) 0 ;
-  mfem::Array< int > *arg2 = (mfem::Array< int > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"ess",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:PyGeometricMultigrid_AppendEssentialTDofs", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_PyGeometricMultigrid, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyGeometricMultigrid_AppendEssentialTDofs" "', argument " "1"" of type '" "PyGeometricMultigrid *""'"); 
-  }
-  arg1 = reinterpret_cast< PyGeometricMultigrid * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PyGeometricMultigrid_AppendEssentialTDofs" "', argument " "2"" of type '" "mfem::Array< int > *""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  {
-    try {
-      (arg1)->AppendEssentialTDofs(arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_PyGeometricMultigrid__pybfs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  PyGeometricMultigrid *arg1 = (PyGeometricMultigrid *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PyGeometricMultigrid, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyGeometricMultigrid__pybfs" "', argument " "1"" of type '" "PyGeometricMultigrid *""'"); 
-  }
-  arg1 = reinterpret_cast< PyGeometricMultigrid * >(argp1);
-  {
-    try {
-      (arg1)->_pybfs(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_PyGeometricMultigrid__pyess(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  PyGeometricMultigrid *arg1 = (PyGeometricMultigrid *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PyGeometricMultigrid, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyGeometricMultigrid__pyess" "', argument " "1"" of type '" "PyGeometricMultigrid *""'"); 
-  }
-  arg1 = reinterpret_cast< PyGeometricMultigrid * >(argp1);
-  {
-    try {
-      (arg1)->_pyess(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_PyGeometricMultigrid(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  PyGeometricMultigrid *arg1 = (PyGeometricMultigrid *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PyGeometricMultigrid, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_PyGeometricMultigrid" "', argument " "1"" of type '" "PyGeometricMultigrid *""'"); 
-  }
-  arg1 = reinterpret_cast< PyGeometricMultigrid * >(argp1);
-  {
-    try {
-      delete arg1; 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *PyGeometricMultigrid_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_PyGeometricMultigrid, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
-SWIGINTERN PyObject *PyGeometricMultigrid_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *DenseSymmetricMatrix_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
-	 { "new_Multigrid", _wrap_new_Multigrid, METH_VARARGS, "\n"
-		"Multigrid()\n"
-		"new_Multigrid(mfem::Array< mfem::Operator * > const & operators_, mfem::Array< mfem::Solver * > const & smoothers_, mfem::Array< mfem::Operator * > const & prolongations_, mfem::Array< bool > const & ownedOperators_, mfem::Array< bool > const & ownedSmoothers_, mfem::Array< bool > const & ownedProlongations_) -> Multigrid\n"
+	 { "new_DenseSymmetricMatrix", _wrap_new_DenseSymmetricMatrix, METH_VARARGS, "\n"
+		"DenseSymmetricMatrix()\n"
+		"DenseSymmetricMatrix(int s)\n"
+		"new_DenseSymmetricMatrix(double * d, int s) -> DenseSymmetricMatrix\n"
 		""},
-	 { "delete_Multigrid", _wrap_delete_Multigrid, METH_O, "delete_Multigrid(Multigrid self)"},
-	 { "Multigrid_AddLevel", (PyCFunction)(void(*)(void))_wrap_Multigrid_AddLevel, METH_VARARGS|METH_KEYWORDS, "Multigrid_AddLevel(Multigrid self, Operator opr, Solver smoother, bool ownOperator, bool ownSmoother)"},
-	 { "Multigrid_NumLevels", _wrap_Multigrid_NumLevels, METH_O, "Multigrid_NumLevels(Multigrid self) -> int"},
-	 { "Multigrid_GetFinestLevelIndex", _wrap_Multigrid_GetFinestLevelIndex, METH_O, "Multigrid_GetFinestLevelIndex(Multigrid self) -> int"},
-	 { "Multigrid_GetOperatorAtLevel", _wrap_Multigrid_GetOperatorAtLevel, METH_VARARGS, "\n"
-		"Multigrid_GetOperatorAtLevel(Multigrid self, int level) -> Operator\n"
-		"Multigrid_GetOperatorAtLevel(Multigrid self, int level) -> Operator\n"
+	 { "DenseSymmetricMatrix_UseExternalData", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix_UseExternalData, METH_VARARGS|METH_KEYWORDS, "DenseSymmetricMatrix_UseExternalData(DenseSymmetricMatrix self, double * d, int s)"},
+	 { "DenseSymmetricMatrix_Reset", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix_Reset, METH_VARARGS|METH_KEYWORDS, "DenseSymmetricMatrix_Reset(DenseSymmetricMatrix self, double * d, int s)"},
+	 { "DenseSymmetricMatrix_ClearExternalData", _wrap_DenseSymmetricMatrix_ClearExternalData, METH_O, "DenseSymmetricMatrix_ClearExternalData(DenseSymmetricMatrix self)"},
+	 { "DenseSymmetricMatrix_Clear", _wrap_DenseSymmetricMatrix_Clear, METH_O, "DenseSymmetricMatrix_Clear(DenseSymmetricMatrix self)"},
+	 { "DenseSymmetricMatrix_SetSize", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix_SetSize, METH_VARARGS|METH_KEYWORDS, "DenseSymmetricMatrix_SetSize(DenseSymmetricMatrix self, int s)"},
+	 { "DenseSymmetricMatrix_Data", _wrap_DenseSymmetricMatrix_Data, METH_O, "DenseSymmetricMatrix_Data(DenseSymmetricMatrix self) -> double *"},
+	 { "DenseSymmetricMatrix_GetData", _wrap_DenseSymmetricMatrix_GetData, METH_O, "DenseSymmetricMatrix_GetData(DenseSymmetricMatrix self) -> double *"},
+	 { "DenseSymmetricMatrix_GetMemory", _wrap_DenseSymmetricMatrix_GetMemory, METH_VARARGS, "\n"
+		"DenseSymmetricMatrix_GetMemory(DenseSymmetricMatrix self) -> mfem::Memory< double >\n"
+		"DenseSymmetricMatrix_GetMemory(DenseSymmetricMatrix self) -> mfem::Memory< double > const &\n"
 		""},
-	 { "Multigrid_GetOperatorAtFinestLevel", _wrap_Multigrid_GetOperatorAtFinestLevel, METH_VARARGS, "\n"
-		"Multigrid_GetOperatorAtFinestLevel(Multigrid self) -> Operator\n"
-		"Multigrid_GetOperatorAtFinestLevel(Multigrid self) -> Operator\n"
+	 { "DenseSymmetricMatrix_OwnsData", _wrap_DenseSymmetricMatrix_OwnsData, METH_O, "DenseSymmetricMatrix_OwnsData(DenseSymmetricMatrix self) -> bool"},
+	 { "DenseSymmetricMatrix___call__", _wrap_DenseSymmetricMatrix___call__, METH_VARARGS, "\n"
+		"DenseSymmetricMatrix___call__(DenseSymmetricMatrix self, int i, int j) -> double\n"
+		"DenseSymmetricMatrix___call__(DenseSymmetricMatrix self, int i, int j) -> double const &\n"
 		""},
-	 { "Multigrid_GetSmootherAtLevel", _wrap_Multigrid_GetSmootherAtLevel, METH_VARARGS, "\n"
-		"Multigrid_GetSmootherAtLevel(Multigrid self, int level) -> Solver\n"
-		"Multigrid_GetSmootherAtLevel(Multigrid self, int level) -> Solver\n"
+	 { "DenseSymmetricMatrix_Elem", _wrap_DenseSymmetricMatrix_Elem, METH_VARARGS, "\n"
+		"DenseSymmetricMatrix_Elem(DenseSymmetricMatrix self, int i, int j) -> double\n"
+		"DenseSymmetricMatrix_Elem(DenseSymmetricMatrix self, int i, int j) -> double const &\n"
 		""},
-	 { "Multigrid_SetCycleType", (PyCFunction)(void(*)(void))_wrap_Multigrid_SetCycleType, METH_VARARGS|METH_KEYWORDS, "Multigrid_SetCycleType(Multigrid self, mfem::Multigrid::CycleType cycleType_, int preSmoothingSteps_, int postSmoothingSteps_)"},
-	 { "Multigrid_Mult", (PyCFunction)(void(*)(void))_wrap_Multigrid_Mult, METH_VARARGS|METH_KEYWORDS, "Multigrid_Mult(Multigrid self, Vector x, Vector y)"},
-	 { "Multigrid_SetOperator", (PyCFunction)(void(*)(void))_wrap_Multigrid_SetOperator, METH_VARARGS|METH_KEYWORDS, "Multigrid_SetOperator(Multigrid self, Operator op)"},
-	 { "Multigrid_swigregister", Multigrid_swigregister, METH_O, NULL},
-	 { "Multigrid_swiginit", Multigrid_swiginit, METH_VARARGS, NULL},
-	 { "new_GeometricMultigrid", (PyCFunction)(void(*)(void))_wrap_new_GeometricMultigrid, METH_VARARGS|METH_KEYWORDS, "new_GeometricMultigrid(FiniteElementSpaceHierarchy fespaces_) -> GeometricMultigrid"},
-	 { "delete_GeometricMultigrid", _wrap_delete_GeometricMultigrid, METH_O, "delete_GeometricMultigrid(GeometricMultigrid self)"},
-	 { "GeometricMultigrid_FormFineLinearSystem", (PyCFunction)(void(*)(void))_wrap_GeometricMultigrid_FormFineLinearSystem, METH_VARARGS|METH_KEYWORDS, "GeometricMultigrid_FormFineLinearSystem(GeometricMultigrid self, Vector x, Vector b, OperatorHandle A, Vector X, Vector B)"},
-	 { "GeometricMultigrid_RecoverFineFEMSolution", (PyCFunction)(void(*)(void))_wrap_GeometricMultigrid_RecoverFineFEMSolution, METH_VARARGS|METH_KEYWORDS, "GeometricMultigrid_RecoverFineFEMSolution(GeometricMultigrid self, Vector X, Vector b, Vector x)"},
-	 { "GeometricMultigrid_swigregister", GeometricMultigrid_swigregister, METH_O, NULL},
-	 { "GeometricMultigrid_swiginit", GeometricMultigrid_swiginit, METH_VARARGS, NULL},
-	 { "new_PyGeometricMultigrid", (PyCFunction)(void(*)(void))_wrap_new_PyGeometricMultigrid, METH_VARARGS|METH_KEYWORDS, "new_PyGeometricMultigrid(FiniteElementSpaceHierarchy fespaces_) -> PyGeometricMultigrid"},
-	 { "PyGeometricMultigrid_AppendBilinearForm", (PyCFunction)(void(*)(void))_wrap_PyGeometricMultigrid_AppendBilinearForm, METH_VARARGS|METH_KEYWORDS, "PyGeometricMultigrid_AppendBilinearForm(PyGeometricMultigrid self, BilinearForm form)"},
-	 { "PyGeometricMultigrid_AppendEssentialTDofs", (PyCFunction)(void(*)(void))_wrap_PyGeometricMultigrid_AppendEssentialTDofs, METH_VARARGS|METH_KEYWORDS, "PyGeometricMultigrid_AppendEssentialTDofs(PyGeometricMultigrid self, intArray ess)"},
-	 { "PyGeometricMultigrid__pybfs", _wrap_PyGeometricMultigrid__pybfs, METH_O, "PyGeometricMultigrid__pybfs(PyGeometricMultigrid self)"},
-	 { "PyGeometricMultigrid__pyess", _wrap_PyGeometricMultigrid__pyess, METH_O, "PyGeometricMultigrid__pyess(PyGeometricMultigrid self)"},
-	 { "delete_PyGeometricMultigrid", _wrap_delete_PyGeometricMultigrid, METH_O, "delete_PyGeometricMultigrid(PyGeometricMultigrid self)"},
-	 { "PyGeometricMultigrid_swigregister", PyGeometricMultigrid_swigregister, METH_O, NULL},
-	 { "PyGeometricMultigrid_swiginit", PyGeometricMultigrid_swiginit, METH_VARARGS, NULL},
+	 { "DenseSymmetricMatrix___imul__", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix___imul__, METH_VARARGS|METH_KEYWORDS, "DenseSymmetricMatrix___imul__(DenseSymmetricMatrix self, double c) -> DenseSymmetricMatrix"},
+	 { "DenseSymmetricMatrix_MemoryUsage", _wrap_DenseSymmetricMatrix_MemoryUsage, METH_O, "DenseSymmetricMatrix_MemoryUsage(DenseSymmetricMatrix self) -> long"},
+	 { "DenseSymmetricMatrix_Read", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix_Read, METH_VARARGS|METH_KEYWORDS, "DenseSymmetricMatrix_Read(DenseSymmetricMatrix self, bool on_dev=True) -> double const *"},
+	 { "DenseSymmetricMatrix_HostRead", _wrap_DenseSymmetricMatrix_HostRead, METH_O, "DenseSymmetricMatrix_HostRead(DenseSymmetricMatrix self) -> double const *"},
+	 { "DenseSymmetricMatrix_Write", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix_Write, METH_VARARGS|METH_KEYWORDS, "DenseSymmetricMatrix_Write(DenseSymmetricMatrix self, bool on_dev=True) -> double *"},
+	 { "DenseSymmetricMatrix_HostWrite", _wrap_DenseSymmetricMatrix_HostWrite, METH_O, "DenseSymmetricMatrix_HostWrite(DenseSymmetricMatrix self) -> double *"},
+	 { "DenseSymmetricMatrix_ReadWrite", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix_ReadWrite, METH_VARARGS|METH_KEYWORDS, "DenseSymmetricMatrix_ReadWrite(DenseSymmetricMatrix self, bool on_dev=True) -> double *"},
+	 { "DenseSymmetricMatrix_HostReadWrite", _wrap_DenseSymmetricMatrix_HostReadWrite, METH_O, "DenseSymmetricMatrix_HostReadWrite(DenseSymmetricMatrix self) -> double *"},
+	 { "DenseSymmetricMatrix_Mult", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix_Mult, METH_VARARGS|METH_KEYWORDS, "DenseSymmetricMatrix_Mult(DenseSymmetricMatrix self, Vector x, Vector y)"},
+	 { "DenseSymmetricMatrix_Inverse", _wrap_DenseSymmetricMatrix_Inverse, METH_O, "DenseSymmetricMatrix_Inverse(DenseSymmetricMatrix self) -> MatrixInverse"},
+	 { "delete_DenseSymmetricMatrix", _wrap_delete_DenseSymmetricMatrix, METH_O, "delete_DenseSymmetricMatrix(DenseSymmetricMatrix self)"},
+	 { "DenseSymmetricMatrix_Print", _wrap_DenseSymmetricMatrix_Print, METH_VARARGS, "\n"
+		"DenseSymmetricMatrix_Print(DenseSymmetricMatrix self, std::ostream & out=out, int width_=4)\n"
+		"DenseSymmetricMatrix_Print(DenseSymmetricMatrix self, char const * file, int precision=16)\n"
+		""},
+	 { "DenseSymmetricMatrix_PrintGZ", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix_PrintGZ, METH_VARARGS|METH_KEYWORDS, "DenseSymmetricMatrix_PrintGZ(DenseSymmetricMatrix self, char const * file, int precision=16)"},
+	 { "DenseSymmetricMatrix_swigregister", DenseSymmetricMatrix_swigregister, METH_O, NULL},
+	 { "DenseSymmetricMatrix_swiginit", DenseSymmetricMatrix_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
-	 { "new_Multigrid", _wrap_new_Multigrid, METH_VARARGS, "\n"
-		"Multigrid()\n"
-		"new_Multigrid(mfem::Array< mfem::Operator * > const & operators_, mfem::Array< mfem::Solver * > const & smoothers_, mfem::Array< mfem::Operator * > const & prolongations_, mfem::Array< bool > const & ownedOperators_, mfem::Array< bool > const & ownedSmoothers_, mfem::Array< bool > const & ownedProlongations_) -> Multigrid\n"
+	 { "new_DenseSymmetricMatrix", _wrap_new_DenseSymmetricMatrix, METH_VARARGS, "\n"
+		"DenseSymmetricMatrix()\n"
+		"DenseSymmetricMatrix(int s)\n"
+		"new_DenseSymmetricMatrix(double * d, int s) -> DenseSymmetricMatrix\n"
 		""},
-	 { "delete_Multigrid", _wrap_delete_Multigrid, METH_O, "delete_Multigrid(Multigrid self)"},
-	 { "Multigrid_AddLevel", (PyCFunction)(void(*)(void))_wrap_Multigrid_AddLevel, METH_VARARGS|METH_KEYWORDS, "AddLevel(Multigrid self, Operator opr, Solver smoother, bool ownOperator, bool ownSmoother)"},
-	 { "Multigrid_NumLevels", _wrap_Multigrid_NumLevels, METH_O, "NumLevels(Multigrid self) -> int"},
-	 { "Multigrid_GetFinestLevelIndex", _wrap_Multigrid_GetFinestLevelIndex, METH_O, "GetFinestLevelIndex(Multigrid self) -> int"},
-	 { "Multigrid_GetOperatorAtLevel", _wrap_Multigrid_GetOperatorAtLevel, METH_VARARGS, "\n"
-		"GetOperatorAtLevel(Multigrid self, int level) -> Operator\n"
-		"GetOperatorAtLevel(Multigrid self, int level) -> Operator\n"
+	 { "DenseSymmetricMatrix_UseExternalData", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix_UseExternalData, METH_VARARGS|METH_KEYWORDS, "UseExternalData(DenseSymmetricMatrix self, double * d, int s)"},
+	 { "DenseSymmetricMatrix_Reset", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix_Reset, METH_VARARGS|METH_KEYWORDS, "Reset(DenseSymmetricMatrix self, double * d, int s)"},
+	 { "DenseSymmetricMatrix_ClearExternalData", _wrap_DenseSymmetricMatrix_ClearExternalData, METH_O, "ClearExternalData(DenseSymmetricMatrix self)"},
+	 { "DenseSymmetricMatrix_Clear", _wrap_DenseSymmetricMatrix_Clear, METH_O, "Clear(DenseSymmetricMatrix self)"},
+	 { "DenseSymmetricMatrix_SetSize", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix_SetSize, METH_VARARGS|METH_KEYWORDS, "SetSize(DenseSymmetricMatrix self, int s)"},
+	 { "DenseSymmetricMatrix_Data", _wrap_DenseSymmetricMatrix_Data, METH_O, "Data(DenseSymmetricMatrix self) -> double *"},
+	 { "DenseSymmetricMatrix_GetData", _wrap_DenseSymmetricMatrix_GetData, METH_O, "GetData(DenseSymmetricMatrix self) -> double *"},
+	 { "DenseSymmetricMatrix_GetMemory", _wrap_DenseSymmetricMatrix_GetMemory, METH_VARARGS, "\n"
+		"GetMemory(DenseSymmetricMatrix self) -> mfem::Memory< double >\n"
+		"GetMemory(DenseSymmetricMatrix self) -> mfem::Memory< double > const &\n"
 		""},
-	 { "Multigrid_GetOperatorAtFinestLevel", _wrap_Multigrid_GetOperatorAtFinestLevel, METH_VARARGS, "\n"
-		"GetOperatorAtFinestLevel(Multigrid self) -> Operator\n"
-		"GetOperatorAtFinestLevel(Multigrid self) -> Operator\n"
+	 { "DenseSymmetricMatrix_OwnsData", _wrap_DenseSymmetricMatrix_OwnsData, METH_O, "OwnsData(DenseSymmetricMatrix self) -> bool"},
+	 { "DenseSymmetricMatrix___call__", _wrap_DenseSymmetricMatrix___call__, METH_VARARGS, "\n"
+		"__call__(DenseSymmetricMatrix self, int i, int j) -> double\n"
+		"__call__(DenseSymmetricMatrix self, int i, int j) -> double const &\n"
 		""},
-	 { "Multigrid_GetSmootherAtLevel", _wrap_Multigrid_GetSmootherAtLevel, METH_VARARGS, "\n"
-		"GetSmootherAtLevel(Multigrid self, int level) -> Solver\n"
-		"GetSmootherAtLevel(Multigrid self, int level) -> Solver\n"
+	 { "DenseSymmetricMatrix_Elem", _wrap_DenseSymmetricMatrix_Elem, METH_VARARGS, "\n"
+		"Elem(DenseSymmetricMatrix self, int i, int j) -> double\n"
+		"Elem(DenseSymmetricMatrix self, int i, int j) -> double const &\n"
 		""},
-	 { "Multigrid_SetCycleType", (PyCFunction)(void(*)(void))_wrap_Multigrid_SetCycleType, METH_VARARGS|METH_KEYWORDS, "SetCycleType(Multigrid self, mfem::Multigrid::CycleType cycleType_, int preSmoothingSteps_, int postSmoothingSteps_)"},
-	 { "Multigrid_Mult", (PyCFunction)(void(*)(void))_wrap_Multigrid_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(Multigrid self, Vector x, Vector y)"},
-	 { "Multigrid_SetOperator", (PyCFunction)(void(*)(void))_wrap_Multigrid_SetOperator, METH_VARARGS|METH_KEYWORDS, "SetOperator(Multigrid self, Operator op)"},
-	 { "Multigrid_swigregister", Multigrid_swigregister, METH_O, NULL},
-	 { "Multigrid_swiginit", Multigrid_swiginit, METH_VARARGS, NULL},
-	 { "new_GeometricMultigrid", (PyCFunction)(void(*)(void))_wrap_new_GeometricMultigrid, METH_VARARGS|METH_KEYWORDS, "new_GeometricMultigrid(FiniteElementSpaceHierarchy fespaces_) -> GeometricMultigrid"},
-	 { "delete_GeometricMultigrid", _wrap_delete_GeometricMultigrid, METH_O, "delete_GeometricMultigrid(GeometricMultigrid self)"},
-	 { "GeometricMultigrid_FormFineLinearSystem", (PyCFunction)(void(*)(void))_wrap_GeometricMultigrid_FormFineLinearSystem, METH_VARARGS|METH_KEYWORDS, "FormFineLinearSystem(GeometricMultigrid self, Vector x, Vector b, OperatorHandle A, Vector X, Vector B)"},
-	 { "GeometricMultigrid_RecoverFineFEMSolution", (PyCFunction)(void(*)(void))_wrap_GeometricMultigrid_RecoverFineFEMSolution, METH_VARARGS|METH_KEYWORDS, "RecoverFineFEMSolution(GeometricMultigrid self, Vector X, Vector b, Vector x)"},
-	 { "GeometricMultigrid_swigregister", GeometricMultigrid_swigregister, METH_O, NULL},
-	 { "GeometricMultigrid_swiginit", GeometricMultigrid_swiginit, METH_VARARGS, NULL},
-	 { "new_PyGeometricMultigrid", (PyCFunction)(void(*)(void))_wrap_new_PyGeometricMultigrid, METH_VARARGS|METH_KEYWORDS, "new_PyGeometricMultigrid(FiniteElementSpaceHierarchy fespaces_) -> PyGeometricMultigrid"},
-	 { "PyGeometricMultigrid_AppendBilinearForm", (PyCFunction)(void(*)(void))_wrap_PyGeometricMultigrid_AppendBilinearForm, METH_VARARGS|METH_KEYWORDS, "AppendBilinearForm(PyGeometricMultigrid self, BilinearForm form)"},
-	 { "PyGeometricMultigrid_AppendEssentialTDofs", (PyCFunction)(void(*)(void))_wrap_PyGeometricMultigrid_AppendEssentialTDofs, METH_VARARGS|METH_KEYWORDS, "AppendEssentialTDofs(PyGeometricMultigrid self, intArray ess)"},
-	 { "PyGeometricMultigrid__pybfs", _wrap_PyGeometricMultigrid__pybfs, METH_O, "_pybfs(PyGeometricMultigrid self)"},
-	 { "PyGeometricMultigrid__pyess", _wrap_PyGeometricMultigrid__pyess, METH_O, "_pyess(PyGeometricMultigrid self)"},
-	 { "delete_PyGeometricMultigrid", _wrap_delete_PyGeometricMultigrid, METH_O, "delete_PyGeometricMultigrid(PyGeometricMultigrid self)"},
-	 { "PyGeometricMultigrid_swigregister", PyGeometricMultigrid_swigregister, METH_O, NULL},
-	 { "PyGeometricMultigrid_swiginit", PyGeometricMultigrid_swiginit, METH_VARARGS, NULL},
+	 { "DenseSymmetricMatrix___imul__", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix___imul__, METH_VARARGS|METH_KEYWORDS, "__imul__(DenseSymmetricMatrix self, double c) -> DenseSymmetricMatrix"},
+	 { "DenseSymmetricMatrix_MemoryUsage", _wrap_DenseSymmetricMatrix_MemoryUsage, METH_O, "MemoryUsage(DenseSymmetricMatrix self) -> long"},
+	 { "DenseSymmetricMatrix_Read", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix_Read, METH_VARARGS|METH_KEYWORDS, "Read(DenseSymmetricMatrix self, bool on_dev=True) -> double const *"},
+	 { "DenseSymmetricMatrix_HostRead", _wrap_DenseSymmetricMatrix_HostRead, METH_O, "HostRead(DenseSymmetricMatrix self) -> double const *"},
+	 { "DenseSymmetricMatrix_Write", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix_Write, METH_VARARGS|METH_KEYWORDS, "Write(DenseSymmetricMatrix self, bool on_dev=True) -> double *"},
+	 { "DenseSymmetricMatrix_HostWrite", _wrap_DenseSymmetricMatrix_HostWrite, METH_O, "HostWrite(DenseSymmetricMatrix self) -> double *"},
+	 { "DenseSymmetricMatrix_ReadWrite", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix_ReadWrite, METH_VARARGS|METH_KEYWORDS, "ReadWrite(DenseSymmetricMatrix self, bool on_dev=True) -> double *"},
+	 { "DenseSymmetricMatrix_HostReadWrite", _wrap_DenseSymmetricMatrix_HostReadWrite, METH_O, "HostReadWrite(DenseSymmetricMatrix self) -> double *"},
+	 { "DenseSymmetricMatrix_Mult", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(DenseSymmetricMatrix self, Vector x, Vector y)"},
+	 { "DenseSymmetricMatrix_Inverse", _wrap_DenseSymmetricMatrix_Inverse, METH_O, "Inverse(DenseSymmetricMatrix self) -> MatrixInverse"},
+	 { "delete_DenseSymmetricMatrix", _wrap_delete_DenseSymmetricMatrix, METH_O, "delete_DenseSymmetricMatrix(DenseSymmetricMatrix self)"},
+	 { "DenseSymmetricMatrix_Print", _wrap_DenseSymmetricMatrix_Print, METH_VARARGS, "\n"
+		"Print(DenseSymmetricMatrix self, std::ostream & out=out, int width_=4)\n"
+		"Print(DenseSymmetricMatrix self, char const * file, int precision=16)\n"
+		""},
+	 { "DenseSymmetricMatrix_PrintGZ", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(DenseSymmetricMatrix self, char const * file, int precision=16)"},
+	 { "DenseSymmetricMatrix_swigregister", DenseSymmetricMatrix_swigregister, METH_O, NULL},
+	 { "DenseSymmetricMatrix_swiginit", DenseSymmetricMatrix_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static void *_p_mfem__ParFiniteElementSpaceHierarchyTo_p_mfem__FiniteElementSpaceHierarchy(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElementSpaceHierarchy *)  ((mfem::ParFiniteElementSpaceHierarchy *) x));
+static void *_p_mfem__AbstractSparseMatrixTo_p_mfem__Matrix(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Matrix *)  ((mfem::AbstractSparseMatrix *) x));
 }
-static void *_p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *) (mfem::VectorFunctionCoefficient *) ((mfem::VectorPyCoefficientBase *) x));
-}
-static void *_p_mfem__VectorQuadratureFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorQuadratureFunctionCoefficient *) x));
-}
-static void *_p_mfem__MatrixVectorProductCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::MatrixVectorProductCoefficient *) x));
-}
-static void *_p_mfem__VectorCrossProductCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorCrossProductCoefficient *) x));
-}
-static void *_p_mfem__NormalizedVectorCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::NormalizedVectorCoefficient *) x));
-}
-static void *_p_mfem__ScalarVectorProductCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::ScalarVectorProductCoefficient *) x));
-}
-static void *_p_mfem__VectorSumCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorSumCoefficient *) x));
-}
-static void *_p_mfem__VectorRestrictedCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorRestrictedCoefficient *) x));
-}
-static void *_p_mfem__VectorDeltaCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorDeltaCoefficient *) x));
-}
-static void *_p_mfem__CurlGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::CurlGridFunctionCoefficient *) x));
-}
-static void *_p_mfem__GradientGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::GradientGridFunctionCoefficient *) x));
-}
-static void *_p_mfem__VectorGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorGridFunctionCoefficient *) x));
-}
-static void *_p_mfem__VectorArrayCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorArrayCoefficient *) x));
-}
-static void *_p_mfem__VectorFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorFunctionCoefficient *) x));
-}
-static void *_p_mfem__VectorConstantCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorConstantCoefficient *) x));
-}
-static void *_p_mfem__NodeExtrudeCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::NodeExtrudeCoefficient *) x));
-}
-static void *_p_mfem__GeometricMultigridTo_p_mfem__Multigrid(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Multigrid *)  ((mfem::GeometricMultigrid *) x));
-}
-static void *_p_PyGeometricMultigridTo_p_mfem__Multigrid(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Multigrid *) (mfem::GeometricMultigrid *) ((PyGeometricMultigrid *) x));
-}
-static void *_p_PyGeometricMultigridTo_p_mfem__GeometricMultigrid(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::GeometricMultigrid *)  ((PyGeometricMultigrid *) x));
-}
-static void *_p_mfem__HyprePCGTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HyprePCG *) x));
-}
-static void *_p_mfem__SparseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Matrix *)(mfem::AbstractSparseMatrix *) ((mfem::SparseMatrix *) x));
-}
-static void *_p_mfem__DenseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::DenseMatrix *) x));
-}
-static void *_p_mfem__DenseSymmetricMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::DenseSymmetricMatrix *) x));
-}
-static void *_p_mfem__AbstractSparseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::AbstractSparseMatrix *) x));
-}
-static void *_p_mfem__HypreDiagScaleTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreDiagScale *) x));
-}
-static void *_p_mfem__HypreFGMRESTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreFGMRES *) x));
-}
-static void *_p_mfem__HypreADSTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreADS *) x));
-}
-static void *_p_mfem__BilinearFormTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::BilinearForm *) x));
-}
-static void *_p_mfem__MixedBilinearFormTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::MixedBilinearForm *) x));
-}
-static void *_p_mfem__MultigridTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *) ((mfem::Multigrid *) x));
-}
-static void *_p_mfem__GeometricMultigridTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::Multigrid *) ((mfem::GeometricMultigrid *) x));
-}
-static void *_p_PyGeometricMultigridTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::Multigrid *)(mfem::GeometricMultigrid *) ((PyGeometricMultigrid *) x));
-}
-static void *_p_mfem__HypreEuclidTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreEuclid *) x));
-}
-static void *_p_mfem__HypreBoomerAMGTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreBoomerAMG *) x));
-}
-static void *_p_mfem__TimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::TimeDependentOperator *) x));
-}
-static void *_p_mfem__TimeDependentAdjointOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::TimeDependentAdjointOperator *) x));
-}
-static void *_p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::SecondOrderTimeDependentOperator *) x));
-}
-static void *_p_mfem__IdentityOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::IdentityOperator *) x));
-}
-static void *_p_mfem__ScaledOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::ScaledOperator *) x));
-}
-static void *_p_mfem__TransposeOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::TransposeOperator *) x));
-}
-static void *_p_mfem__ProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::ProductOperator *) x));
-}
-static void *_p_mfem__RAPOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::RAPOperator *) x));
-}
-static void *_p_mfem__TripleProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::TripleProductOperator *) x));
-}
-static void *_p_mfem__ConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::ConstrainedOperator *) x));
-}
-static void *_p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::RectangularConstrainedOperator *) x));
-}
-static void *_p_mfem__DiscreteLinearOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Matrix *)(mfem::MixedBilinearForm *) ((mfem::DiscreteLinearOperator *) x));
-}
-static void *_p_mfem__HypreILUTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreILU *) x));
-}
-static void *_p_mfem__ElementRestrictionTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::ElementRestriction *) x));
-}
-static void *_p_mfem__L2ElementRestrictionTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::L2ElementRestriction *) x));
-}
-static void *_p_mfem__FaceRestrictionTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::FaceRestriction *) x));
-}
-static void *_p_mfem__H1FaceRestrictionTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::FaceRestriction *) ((mfem::H1FaceRestriction *) x));
-}
-static void *_p_mfem__L2FaceRestrictionTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::FaceRestriction *) ((mfem::L2FaceRestriction *) x));
-}
-static void *_p_mfem__HypreGMRESTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreGMRES *) x));
-}
-static void *_p_mfem__SolverTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::Solver *) x));
-}
-static void *_p_mfem__HypreParaSailsTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreParaSails *) x));
-}
-static void *_p_mfem__HypreParMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::HypreParMatrix *) x));
-}
-static void *_p_mfem__MatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::Matrix *) x));
-}
-static void *_p_mfem__HypreIdentityTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreIdentity *) x));
-}
-static void *_p_mfem__DenseMatrixInverseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::MatrixInverse *) ((mfem::DenseMatrixInverse *) x));
-}
-static void *_p_mfem__MatrixInverseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *) ((mfem::MatrixInverse *) x));
-}
-static void *_p_mfem__PyOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::PyOperatorBase *) x));
+static void *_p_mfem__DenseSymmetricMatrixTo_p_mfem__Matrix(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Matrix *)  ((mfem::DenseSymmetricMatrix *) x));
 }
 static void *_p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase *) x));
 }
-static void *_p_mfem__HypreSolverTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *) ((mfem::HypreSolver *) x));
+static void *_p_mfem__PyOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::PyOperatorBase *) x));
 }
-static void *_p_mfem__HypreAMSTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreAMS *) x));
+static void *_p_mfem__MatrixInverseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *) ((mfem::MatrixInverse *) x));
 }
-static void *_p_mfem__HypreSmootherTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *) ((mfem::HypreSmoother *) x));
+static void *_p_mfem__SolverTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::Solver *) x));
 }
-static void *_p_mfem__HypreTriSolveTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreTriSolve *) x));
+static void *_p_mfem__AbstractSparseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::AbstractSparseMatrix *) x));
 }
-static void *_p_mfem__HypreGMRESTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreGMRES *) x));
+static void *_p_mfem__DenseSymmetricMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::DenseSymmetricMatrix *) x));
 }
-static void *_p_mfem__HypreParaSailsTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreParaSails *) x));
+static void *_p_mfem__MatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::Matrix *) x));
 }
-static void *_p_mfem__HypreFGMRESTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreFGMRES *) x));
+static void *_p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::RectangularConstrainedOperator *) x));
 }
-static void *_p_mfem__HypreTriSolveTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreTriSolve *) x));
+static void *_p_mfem__ConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::ConstrainedOperator *) x));
 }
-static void *_p_mfem__HypreSolverTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *)  ((mfem::HypreSolver *) x));
+static void *_p_mfem__TripleProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::TripleProductOperator *) x));
 }
-static void *_p_mfem__HypreBoomerAMGTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreBoomerAMG *) x));
+static void *_p_mfem__RAPOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::RAPOperator *) x));
 }
-static void *_p_mfem__DenseMatrixInverseTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::MatrixInverse *) ((mfem::DenseMatrixInverse *) x));
+static void *_p_mfem__ProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::ProductOperator *) x));
 }
-static void *_p_mfem__MatrixInverseTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *)  ((mfem::MatrixInverse *) x));
+static void *_p_mfem__TransposeOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::TransposeOperator *) x));
 }
-static void *_p_mfem__HypreDiagScaleTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreDiagScale *) x));
+static void *_p_mfem__ScaledOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::ScaledOperator *) x));
 }
-static void *_p_mfem__HypreIdentityTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreIdentity *) x));
+static void *_p_mfem__IdentityOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::IdentityOperator *) x));
 }
-static void *_p_mfem__HyprePCGTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HyprePCG *) x));
+static void *_p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::SecondOrderTimeDependentOperator *) x));
 }
-static void *_p_mfem__HypreAMSTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreAMS *) x));
+static void *_p_mfem__TimeDependentAdjointOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::TimeDependentAdjointOperator *) x));
 }
-static void *_p_mfem__HypreEuclidTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreEuclid *) x));
+static void *_p_mfem__TimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::TimeDependentOperator *) x));
 }
-static void *_p_mfem__HypreADSTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreADS *) x));
-}
-static void *_p_mfem__MultigridTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *)  ((mfem::Multigrid *) x));
-}
-static void *_p_mfem__GeometricMultigridTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::Multigrid *) ((mfem::GeometricMultigrid *) x));
-}
-static void *_p_PyGeometricMultigridTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::Multigrid *)(mfem::GeometricMultigrid *) ((PyGeometricMultigrid *) x));
-}
-static void *_p_mfem__HypreILUTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreILU *) x));
-}
-static void *_p_mfem__HypreSmootherTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *)  ((mfem::HypreSmoother *) x));
-}
-static void *_p_mfem__HypreParVectorTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::HypreParVector *) x));
-}
-static void *_p_mfem__GridFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::GridFunction *) x));
-}
-static void *_p_mfem__QuadratureFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::QuadratureFunction *) x));
-}
-static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::LinearForm *) x));
-}
-static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_PyGeometricMultigrid = {"_p_PyGeometricMultigrid", "PyGeometricMultigrid *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p__HYPRE_ExecutionPolicy = {"_p__HYPRE_ExecutionPolicy", "enum _HYPRE_ExecutionPolicy *|HYPRE_ExecutionPolicy *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p__HYPRE_MemoryLocation = {"_p__HYPRE_MemoryLocation", "enum _HYPRE_MemoryLocation *|HYPRE_MemoryLocation *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_double = {"_p_double", "HYPRE_Real *|HYPRE_Complex *|double *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *|HYPRE_BigInt *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__BilinearForm = {"_p_mfem__BilinearForm", "mfem::BilinearForm *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__ConvectionIntegrator = {"_p_mfem__ConvectionIntegrator", "mfem::ConvectionIntegrator *|mfem::NonconservativeConvectionIntegrator *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__DGTraceIntegrator = {"_p_mfem__DGTraceIntegrator", "mfem::DGTraceIntegrator *|mfem::ConservativeDGTraceIntegrator *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__FiniteElementSpaceHierarchy = {"_p_mfem__FiniteElementSpaceHierarchy", "mfem::FiniteElementSpaceHierarchy *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__ParFiniteElementSpaceHierarchy = {"_p_mfem__ParFiniteElementSpaceHierarchy", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__GeometricMultigrid = {"_p_mfem__GeometricMultigrid", "mfem::GeometricMultigrid *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__L2_FECollection = {"_p_mfem__L2_FECollection", "mfem::L2_FECollection *|mfem::DG_FECollection *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__MatrixVectorProductCoefficient = {"_p_mfem__MatrixVectorProductCoefficient", "mfem::MatrixVectorProductCoefficient *|mfem::MatVecCoefficient *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__Multigrid = {"_p_mfem__Multigrid", "mfem::Multigrid *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__Operator = {"_p_mfem__Operator", "mfem::Operator *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__HyprePCG = {"_p_mfem__HyprePCG", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__SparseMatrix = {"_p_mfem__SparseMatrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__DenseMatrix = {"_p_mfem__DenseMatrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__DenseSymmetricMatrix = {"_p_mfem__DenseSymmetricMatrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__DenseSymmetricMatrix = {"_p_mfem__DenseSymmetricMatrix", "mfem::DenseSymmetricMatrix *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__Matrix = {"_p_mfem__Matrix", "mfem::Matrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__AbstractSparseMatrix = {"_p_mfem__AbstractSparseMatrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__Matrix = {"_p_mfem__Matrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreDiagScale = {"_p_mfem__HypreDiagScale", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreFGMRES = {"_p_mfem__HypreFGMRES", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreADS = {"_p_mfem__HypreADS", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__MixedBilinearForm = {"_p_mfem__MixedBilinearForm", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreEuclid = {"_p_mfem__HypreEuclid", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreBoomerAMG = {"_p_mfem__HypreBoomerAMG", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__TimeDependentOperator = {"_p_mfem__TimeDependentOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__TimeDependentAdjointOperator = {"_p_mfem__TimeDependentAdjointOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__SecondOrderTimeDependentOperator = {"_p_mfem__SecondOrderTimeDependentOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__IdentityOperator = {"_p_mfem__IdentityOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ScaledOperator = {"_p_mfem__ScaledOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__TransposeOperator = {"_p_mfem__TransposeOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ProductOperator = {"_p_mfem__ProductOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__RAPOperator = {"_p_mfem__RAPOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__TripleProductOperator = {"_p_mfem__TripleProductOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ConstrainedOperator = {"_p_mfem__ConstrainedOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__RectangularConstrainedOperator = {"_p_mfem__RectangularConstrainedOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__DiscreteLinearOperator = {"_p_mfem__DiscreteLinearOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreILU = {"_p_mfem__HypreILU", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2ElementRestriction = {"_p_mfem__L2ElementRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__FaceRestriction = {"_p_mfem__FaceRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__H1FaceRestriction = {"_p_mfem__H1FaceRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2FaceRestriction = {"_p_mfem__L2FaceRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ElementRestriction = {"_p_mfem__ElementRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreGMRES = {"_p_mfem__HypreGMRES", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreParaSails = {"_p_mfem__HypreParaSails", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreParMatrix = {"_p_mfem__HypreParMatrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreIdentity = {"_p_mfem__HypreIdentity", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__DenseMatrixInverse = {"_p_mfem__DenseMatrixInverse", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__MatrixInverse = {"_p_mfem__MatrixInverse", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__PyOperatorBase = {"_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__MatrixInverse = {"_p_mfem__MatrixInverse", "mfem::MatrixInverse *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__MemoryT_double_t = {"_p_mfem__MemoryT_double_t", "mfem::Memory< double > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__Operator = {"_p_mfem__Operator", "mfem::Operator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__PyTimeDependentOperatorBase = {"_p_mfem__PyTimeDependentOperatorBase", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreSolver = {"_p_mfem__HypreSolver", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreAMS = {"_p_mfem__HypreAMS", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreSmoother = {"_p_mfem__HypreSmoother", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreTriSolve = {"_p_mfem__HypreTriSolve", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__OperatorHandle = {"_p_mfem__OperatorHandle", "mfem::OperatorPtr *|mfem::OperatorHandle *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", "mfem::Solver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__PyOperatorBase = {"_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RectangularConstrainedOperator = {"_p_mfem__RectangularConstrainedOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ConstrainedOperator = {"_p_mfem__ConstrainedOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__TripleProductOperator = {"_p_mfem__TripleProductOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RAPOperator = {"_p_mfem__RAPOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ProductOperator = {"_p_mfem__ProductOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__TransposeOperator = {"_p_mfem__TransposeOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ScaledOperator = {"_p_mfem__ScaledOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__IdentityOperator = {"_p_mfem__IdentityOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__SecondOrderTimeDependentOperator = {"_p_mfem__SecondOrderTimeDependentOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__TimeDependentAdjointOperator = {"_p_mfem__TimeDependentAdjointOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__TimeDependentOperator = {"_p_mfem__TimeDependentOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__HypreParVector = {"_p_mfem__HypreParVector", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorCoefficient = {"_p_mfem__VectorCoefficient", "mfem::VectorCoefficient *|mfem::DiagonalMatrixCoefficient *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__VectorPyCoefficientBase = {"_p_mfem__VectorPyCoefficientBase", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorQuadratureFunctionCoefficient = {"_p_mfem__VectorQuadratureFunctionCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorCrossProductCoefficient = {"_p_mfem__VectorCrossProductCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__NormalizedVectorCoefficient = {"_p_mfem__NormalizedVectorCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ScalarVectorProductCoefficient = {"_p_mfem__ScalarVectorProductCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorSumCoefficient = {"_p_mfem__VectorSumCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorRestrictedCoefficient = {"_p_mfem__VectorRestrictedCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorDeltaCoefficient = {"_p_mfem__VectorDeltaCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__CurlGridFunctionCoefficient = {"_p_mfem__CurlGridFunctionCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__GradientGridFunctionCoefficient = {"_p_mfem__GradientGridFunctionCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorGridFunctionCoefficient = {"_p_mfem__VectorGridFunctionCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorArrayCoefficient = {"_p_mfem__VectorArrayCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorFunctionCoefficient = {"_p_mfem__VectorFunctionCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorConstantCoefficient = {"_p_mfem__VectorConstantCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__NodeExtrudeCoefficient = {"_p_mfem__NodeExtrudeCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_pyr_t = {"_p_pyr_t", "pyr_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p_MPI_Comm,
-  &_swigt__p_PyGeometricMultigrid,
   &_swigt__p_PyMFEM__wFILE,
-  &_swigt__p_RefCoord,
-  &_swigt__p__HYPRE_ExecutionPolicy,
-  &_swigt__p__HYPRE_MemoryLocation,
   &_swigt__p_char,
   &_swigt__p_double,
-  &_swigt__p_hex_t,
   &_swigt__p_int,
   &_swigt__p_mfem__AbstractSparseMatrix,
-  &_swigt__p_mfem__ArrayT_int_t,
-  &_swigt__p_mfem__BilinearForm,
   &_swigt__p_mfem__ConstrainedOperator,
-  &_swigt__p_mfem__ConvectionIntegrator,
-  &_swigt__p_mfem__CurlGridFunctionCoefficient,
-  &_swigt__p_mfem__DGTraceIntegrator,
-  &_swigt__p_mfem__DenseMatrix,
-  &_swigt__p_mfem__DenseMatrixInverse,
   &_swigt__p_mfem__DenseSymmetricMatrix,
-  &_swigt__p_mfem__DiscreteLinearOperator,
-  &_swigt__p_mfem__ElementRestriction,
-  &_swigt__p_mfem__FaceRestriction,
-  &_swigt__p_mfem__FiniteElementSpaceHierarchy,
-  &_swigt__p_mfem__GeometricMultigrid,
-  &_swigt__p_mfem__GradientGridFunctionCoefficient,
-  &_swigt__p_mfem__GridFunction,
-  &_swigt__p_mfem__H1FaceRestriction,
-  &_swigt__p_mfem__HypreADS,
-  &_swigt__p_mfem__HypreAMS,
-  &_swigt__p_mfem__HypreBoomerAMG,
-  &_swigt__p_mfem__HypreDiagScale,
-  &_swigt__p_mfem__HypreEuclid,
-  &_swigt__p_mfem__HypreFGMRES,
-  &_swigt__p_mfem__HypreGMRES,
-  &_swigt__p_mfem__HypreILU,
-  &_swigt__p_mfem__HypreIdentity,
-  &_swigt__p_mfem__HyprePCG,
-  &_swigt__p_mfem__HypreParMatrix,
-  &_swigt__p_mfem__HypreParVector,
-  &_swigt__p_mfem__HypreParaSails,
-  &_swigt__p_mfem__HypreSmoother,
-  &_swigt__p_mfem__HypreSolver,
-  &_swigt__p_mfem__HypreTriSolve,
   &_swigt__p_mfem__IdentityOperator,
-  &_swigt__p_mfem__IntegrationRule,
-  &_swigt__p_mfem__L2ElementRestriction,
-  &_swigt__p_mfem__L2FaceRestriction,
-  &_swigt__p_mfem__L2_FECollection,
-  &_swigt__p_mfem__LinearForm,
   &_swigt__p_mfem__Matrix,
   &_swigt__p_mfem__MatrixInverse,
-  &_swigt__p_mfem__MatrixVectorProductCoefficient,
-  &_swigt__p_mfem__MixedBilinearForm,
-  &_swigt__p_mfem__Multigrid,
-  &_swigt__p_mfem__NodeExtrudeCoefficient,
-  &_swigt__p_mfem__NormalizedVectorCoefficient,
+  &_swigt__p_mfem__MemoryT_double_t,
   &_swigt__p_mfem__Operator,
-  &_swigt__p_mfem__OperatorHandle,
-  &_swigt__p_mfem__ParFiniteElementSpaceHierarchy,
   &_swigt__p_mfem__ProductOperator,
   &_swigt__p_mfem__PyOperatorBase,
   &_swigt__p_mfem__PyTimeDependentOperatorBase,
-  &_swigt__p_mfem__QuadratureFunction,
   &_swigt__p_mfem__RAPOperator,
   &_swigt__p_mfem__RectangularConstrainedOperator,
-  &_swigt__p_mfem__ScalarVectorProductCoefficient,
   &_swigt__p_mfem__ScaledOperator,
   &_swigt__p_mfem__SecondOrderTimeDependentOperator,
   &_swigt__p_mfem__Solver,
-  &_swigt__p_mfem__SparseMatrix,
   &_swigt__p_mfem__TimeDependentAdjointOperator,
   &_swigt__p_mfem__TimeDependentOperator,
   &_swigt__p_mfem__TransposeOperator,
   &_swigt__p_mfem__TripleProductOperator,
   &_swigt__p_mfem__Vector,
-  &_swigt__p_mfem__VectorArrayCoefficient,
-  &_swigt__p_mfem__VectorCoefficient,
-  &_swigt__p_mfem__VectorConstantCoefficient,
-  &_swigt__p_mfem__VectorCrossProductCoefficient,
-  &_swigt__p_mfem__VectorDeltaCoefficient,
-  &_swigt__p_mfem__VectorFunctionCoefficient,
-  &_swigt__p_mfem__VectorGridFunctionCoefficient,
-  &_swigt__p_mfem__VectorPyCoefficientBase,
-  &_swigt__p_mfem__VectorQuadratureFunctionCoefficient,
-  &_swigt__p_mfem__VectorRestrictedCoefficient,
-  &_swigt__p_mfem__VectorSumCoefficient,
-  &_swigt__p_pri_t,
-  &_swigt__p_pyr_t,
-  &_swigt__p_quad_t,
-  &_swigt__p_seg_t,
-  &_swigt__p_tet_t,
-  &_swigt__p_tri_t,
 };
 
-static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_PyGeometricMultigrid[] = {  {&_swigt__p_PyGeometricMultigrid, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p__HYPRE_ExecutionPolicy[] = {  {&_swigt__p__HYPRE_ExecutionPolicy, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p__HYPRE_MemoryLocation[] = {  {&_swigt__p__HYPRE_MemoryLocation, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__BilinearForm[] = {  {&_swigt__p_mfem__BilinearForm, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ConvectionIntegrator[] = {  {&_swigt__p_mfem__ConvectionIntegrator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__DGTraceIntegrator[] = {  {&_swigt__p_mfem__DGTraceIntegrator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ParFiniteElementSpaceHierarchy[] = {{&_swigt__p_mfem__ParFiniteElementSpaceHierarchy, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__FiniteElementSpaceHierarchy[] = {  {&_swigt__p_mfem__FiniteElementSpaceHierarchy, 0, 0, 0},  {&_swigt__p_mfem__ParFiniteElementSpaceHierarchy, _p_mfem__ParFiniteElementSpaceHierarchyTo_p_mfem__FiniteElementSpaceHierarchy, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__GeometricMultigrid[] = {  {&_swigt__p_mfem__GeometricMultigrid, 0, 0, 0},  {&_swigt__p_PyGeometricMultigrid, _p_PyGeometricMultigridTo_p_mfem__GeometricMultigrid, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2_FECollection[] = {  {&_swigt__p_mfem__L2_FECollection, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__MatrixVectorProductCoefficient[] = {  {&_swigt__p_mfem__MatrixVectorProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Multigrid[] = {  {&_swigt__p_mfem__Multigrid, 0, 0, 0},  {&_swigt__p_mfem__GeometricMultigrid, _p_mfem__GeometricMultigridTo_p_mfem__Multigrid, 0, 0},  {&_swigt__p_PyGeometricMultigrid, _p_PyGeometricMultigridTo_p_mfem__Multigrid, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HyprePCG[] = {{&_swigt__p_mfem__HyprePCG, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__SparseMatrix[] = {{&_swigt__p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {{&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__DenseSymmetricMatrix[] = {{&_swigt__p_mfem__DenseSymmetricMatrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__DenseSymmetricMatrix[] = {  {&_swigt__p_mfem__DenseSymmetricMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__AbstractSparseMatrix[] = {{&_swigt__p_mfem__AbstractSparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Matrix[] = {{&_swigt__p_mfem__Matrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreDiagScale[] = {{&_swigt__p_mfem__HypreDiagScale, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreFGMRES[] = {{&_swigt__p_mfem__HypreFGMRES, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreADS[] = {{&_swigt__p_mfem__HypreADS, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__MixedBilinearForm[] = {{&_swigt__p_mfem__MixedBilinearForm, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreEuclid[] = {{&_swigt__p_mfem__HypreEuclid, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreBoomerAMG[] = {{&_swigt__p_mfem__HypreBoomerAMG, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {{&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__TimeDependentAdjointOperator[] = {{&_swigt__p_mfem__TimeDependentAdjointOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__SecondOrderTimeDependentOperator[] = {{&_swigt__p_mfem__SecondOrderTimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__IdentityOperator[] = {{&_swigt__p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ScaledOperator[] = {{&_swigt__p_mfem__ScaledOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__TransposeOperator[] = {{&_swigt__p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ProductOperator[] = {{&_swigt__p_mfem__ProductOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__RAPOperator[] = {{&_swigt__p_mfem__RAPOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__TripleProductOperator[] = {{&_swigt__p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ConstrainedOperator[] = {{&_swigt__p_mfem__ConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__RectangularConstrainedOperator[] = {{&_swigt__p_mfem__RectangularConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__DiscreteLinearOperator[] = {{&_swigt__p_mfem__DiscreteLinearOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreILU[] = {{&_swigt__p_mfem__HypreILU, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2ElementRestriction[] = {{&_swigt__p_mfem__L2ElementRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__FaceRestriction[] = {{&_swigt__p_mfem__FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__H1FaceRestriction[] = {{&_swigt__p_mfem__H1FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2FaceRestriction[] = {{&_swigt__p_mfem__L2FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ElementRestriction[] = {{&_swigt__p_mfem__ElementRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreGMRES[] = {{&_swigt__p_mfem__HypreGMRES, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreParaSails[] = {{&_swigt__p_mfem__HypreParaSails, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreParMatrix[] = {{&_swigt__p_mfem__HypreParMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreIdentity[] = {{&_swigt__p_mfem__HypreIdentity, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__DenseMatrixInverse[] = {{&_swigt__p_mfem__DenseMatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__MatrixInverse[] = {{&_swigt__p_mfem__MatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__PyOperatorBase[] = {{&_swigt__p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Matrix[] = {  {&_swigt__p_mfem__Matrix, 0, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Matrix, 0, 0},  {&_swigt__p_mfem__DenseSymmetricMatrix, _p_mfem__DenseSymmetricMatrixTo_p_mfem__Matrix, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__MatrixInverse[] = {  {&_swigt__p_mfem__MatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__MemoryT_double_t[] = {  {&_swigt__p_mfem__MemoryT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreSolver[] = {{&_swigt__p_mfem__HypreSolver, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreAMS[] = {{&_swigt__p_mfem__HypreAMS, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreSmoother[] = {{&_swigt__p_mfem__HypreSmoother, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreTriSolve[] = {{&_swigt__p_mfem__HypreTriSolve, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__HyprePCG, _p_mfem__HyprePCGTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseSymmetricMatrix, _p_mfem__DenseSymmetricMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreDiagScale, _p_mfem__HypreDiagScaleTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreFGMRES, _p_mfem__HypreFGMRESTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreADS, _p_mfem__HypreADSTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__BilinearForm, _p_mfem__BilinearFormTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MixedBilinearForm, _p_mfem__MixedBilinearFormTo_p_mfem__Operator, 0, 0},  {&_swigt__p_PyGeometricMultigrid, _p_PyGeometricMultigridTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Multigrid, _p_mfem__MultigridTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__GeometricMultigrid, _p_mfem__GeometricMultigridTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreEuclid, _p_mfem__HypreEuclidTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreBoomerAMG, _p_mfem__HypreBoomerAMGTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentAdjointOperator, _p_mfem__TimeDependentAdjointOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ScaledOperator, _p_mfem__ScaledOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RectangularConstrainedOperator, _p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DiscreteLinearOperator, _p_mfem__DiscreteLinearOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__HypreILU, _p_mfem__HypreILUTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2ElementRestriction, _p_mfem__L2ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__FaceRestriction, _p_mfem__FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__H1FaceRestriction, _p_mfem__H1FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2FaceRestriction, _p_mfem__L2FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ElementRestriction, _p_mfem__ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreGMRES, _p_mfem__HypreGMRESTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreParaSails, _p_mfem__HypreParaSailsTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreParMatrix, _p_mfem__HypreParMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreIdentity, _p_mfem__HypreIdentityTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreSolver, _p_mfem__HypreSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreAMS, _p_mfem__HypreAMSTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreSmoother, _p_mfem__HypreSmootherTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreTriSolve, _p_mfem__HypreTriSolveTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__OperatorHandle[] = {  {&_swigt__p_mfem__OperatorHandle, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__HypreGMRES, _p_mfem__HypreGMRESTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreParaSails, _p_mfem__HypreParaSailsTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreFGMRES, _p_mfem__HypreFGMRESTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreTriSolve, _p_mfem__HypreTriSolveTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreSolver, _p_mfem__HypreSolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__Solver, 0, 0, 0},  {&_swigt__p_mfem__HypreBoomerAMG, _p_mfem__HypreBoomerAMGTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreDiagScale, _p_mfem__HypreDiagScaleTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreIdentity, _p_mfem__HypreIdentityTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreAMS, _p_mfem__HypreAMSTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HyprePCG, _p_mfem__HyprePCGTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreEuclid, _p_mfem__HypreEuclidTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreADS, _p_mfem__HypreADSTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__Multigrid, _p_mfem__MultigridTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__GeometricMultigrid, _p_mfem__GeometricMultigridTo_p_mfem__Solver, 0, 0},  {&_swigt__p_PyGeometricMultigrid, _p_PyGeometricMultigridTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreILU, _p_mfem__HypreILUTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreSmoother, _p_mfem__HypreSmootherTo_p_mfem__Solver, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreParVector[] = {{&_swigt__p_mfem__HypreParVector, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__HypreParVector, _p_mfem__HypreParVectorTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorPyCoefficientBase[] = {{&_swigt__p_mfem__VectorPyCoefficientBase, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorQuadratureFunctionCoefficient[] = {{&_swigt__p_mfem__VectorQuadratureFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorCrossProductCoefficient[] = {{&_swigt__p_mfem__VectorCrossProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__NormalizedVectorCoefficient[] = {{&_swigt__p_mfem__NormalizedVectorCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ScalarVectorProductCoefficient[] = {{&_swigt__p_mfem__ScalarVectorProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorSumCoefficient[] = {{&_swigt__p_mfem__VectorSumCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorRestrictedCoefficient[] = {{&_swigt__p_mfem__VectorRestrictedCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorDeltaCoefficient[] = {{&_swigt__p_mfem__VectorDeltaCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__CurlGridFunctionCoefficient[] = {{&_swigt__p_mfem__CurlGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__GradientGridFunctionCoefficient[] = {{&_swigt__p_mfem__GradientGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorGridFunctionCoefficient[] = {{&_swigt__p_mfem__VectorGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorArrayCoefficient[] = {{&_swigt__p_mfem__VectorArrayCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorFunctionCoefficient[] = {{&_swigt__p_mfem__VectorFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorConstantCoefficient[] = {{&_swigt__p_mfem__VectorConstantCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__NodeExtrudeCoefficient[] = {{&_swigt__p_mfem__NodeExtrudeCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorCoefficient[] = {  {&_swigt__p_mfem__VectorPyCoefficientBase, _p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorQuadratureFunctionCoefficient, _p_mfem__VectorQuadratureFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__MatrixVectorProductCoefficient, _p_mfem__MatrixVectorProductCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorCrossProductCoefficient, _p_mfem__VectorCrossProductCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__NormalizedVectorCoefficient, _p_mfem__NormalizedVectorCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__ScalarVectorProductCoefficient, _p_mfem__ScalarVectorProductCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorSumCoefficient, _p_mfem__VectorSumCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorRestrictedCoefficient, _p_mfem__VectorRestrictedCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorDeltaCoefficient, _p_mfem__VectorDeltaCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__CurlGridFunctionCoefficient, _p_mfem__CurlGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__GradientGridFunctionCoefficient, _p_mfem__GradientGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorGridFunctionCoefficient, _p_mfem__VectorGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorArrayCoefficient, _p_mfem__VectorArrayCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorCoefficient, 0, 0, 0},  {&_swigt__p_mfem__VectorFunctionCoefficient, _p_mfem__VectorFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorConstantCoefficient, _p_mfem__VectorConstantCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__NodeExtrudeCoefficient, _p_mfem__NodeExtrudeCoefficientTo_p_mfem__VectorCoefficient, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_pyr_t[] = {  {&_swigt__p_pyr_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__PyOperatorBase[] = {{&_swigt__p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Solver[] = {{&_swigt__p_mfem__Solver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RectangularConstrainedOperator[] = {{&_swigt__p_mfem__RectangularConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ConstrainedOperator[] = {{&_swigt__p_mfem__ConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TripleProductOperator[] = {{&_swigt__p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RAPOperator[] = {{&_swigt__p_mfem__RAPOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ProductOperator[] = {{&_swigt__p_mfem__ProductOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TransposeOperator[] = {{&_swigt__p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ScaledOperator[] = {{&_swigt__p_mfem__ScaledOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__IdentityOperator[] = {{&_swigt__p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__SecondOrderTimeDependentOperator[] = {{&_swigt__p_mfem__SecondOrderTimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TimeDependentAdjointOperator[] = {{&_swigt__p_mfem__TimeDependentAdjointOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {{&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseSymmetricMatrix, _p_mfem__DenseSymmetricMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RectangularConstrainedOperator, _p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__ScaledOperator, _p_mfem__ScaledOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentAdjointOperator, _p_mfem__TimeDependentAdjointOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p_MPI_Comm,
-  _swigc__p_PyGeometricMultigrid,
   _swigc__p_PyMFEM__wFILE,
-  _swigc__p_RefCoord,
-  _swigc__p__HYPRE_ExecutionPolicy,
-  _swigc__p__HYPRE_MemoryLocation,
   _swigc__p_char,
   _swigc__p_double,
-  _swigc__p_hex_t,
   _swigc__p_int,
   _swigc__p_mfem__AbstractSparseMatrix,
-  _swigc__p_mfem__ArrayT_int_t,
-  _swigc__p_mfem__BilinearForm,
   _swigc__p_mfem__ConstrainedOperator,
-  _swigc__p_mfem__ConvectionIntegrator,
-  _swigc__p_mfem__CurlGridFunctionCoefficient,
-  _swigc__p_mfem__DGTraceIntegrator,
-  _swigc__p_mfem__DenseMatrix,
-  _swigc__p_mfem__DenseMatrixInverse,
   _swigc__p_mfem__DenseSymmetricMatrix,
-  _swigc__p_mfem__DiscreteLinearOperator,
-  _swigc__p_mfem__ElementRestriction,
-  _swigc__p_mfem__FaceRestriction,
-  _swigc__p_mfem__FiniteElementSpaceHierarchy,
-  _swigc__p_mfem__GeometricMultigrid,
-  _swigc__p_mfem__GradientGridFunctionCoefficient,
-  _swigc__p_mfem__GridFunction,
-  _swigc__p_mfem__H1FaceRestriction,
-  _swigc__p_mfem__HypreADS,
-  _swigc__p_mfem__HypreAMS,
-  _swigc__p_mfem__HypreBoomerAMG,
-  _swigc__p_mfem__HypreDiagScale,
-  _swigc__p_mfem__HypreEuclid,
-  _swigc__p_mfem__HypreFGMRES,
-  _swigc__p_mfem__HypreGMRES,
-  _swigc__p_mfem__HypreILU,
-  _swigc__p_mfem__HypreIdentity,
-  _swigc__p_mfem__HyprePCG,
-  _swigc__p_mfem__HypreParMatrix,
-  _swigc__p_mfem__HypreParVector,
-  _swigc__p_mfem__HypreParaSails,
-  _swigc__p_mfem__HypreSmoother,
-  _swigc__p_mfem__HypreSolver,
-  _swigc__p_mfem__HypreTriSolve,
   _swigc__p_mfem__IdentityOperator,
-  _swigc__p_mfem__IntegrationRule,
-  _swigc__p_mfem__L2ElementRestriction,
-  _swigc__p_mfem__L2FaceRestriction,
-  _swigc__p_mfem__L2_FECollection,
-  _swigc__p_mfem__LinearForm,
   _swigc__p_mfem__Matrix,
   _swigc__p_mfem__MatrixInverse,
-  _swigc__p_mfem__MatrixVectorProductCoefficient,
-  _swigc__p_mfem__MixedBilinearForm,
-  _swigc__p_mfem__Multigrid,
-  _swigc__p_mfem__NodeExtrudeCoefficient,
-  _swigc__p_mfem__NormalizedVectorCoefficient,
+  _swigc__p_mfem__MemoryT_double_t,
   _swigc__p_mfem__Operator,
-  _swigc__p_mfem__OperatorHandle,
-  _swigc__p_mfem__ParFiniteElementSpaceHierarchy,
   _swigc__p_mfem__ProductOperator,
   _swigc__p_mfem__PyOperatorBase,
   _swigc__p_mfem__PyTimeDependentOperatorBase,
-  _swigc__p_mfem__QuadratureFunction,
   _swigc__p_mfem__RAPOperator,
   _swigc__p_mfem__RectangularConstrainedOperator,
-  _swigc__p_mfem__ScalarVectorProductCoefficient,
   _swigc__p_mfem__ScaledOperator,
   _swigc__p_mfem__SecondOrderTimeDependentOperator,
   _swigc__p_mfem__Solver,
-  _swigc__p_mfem__SparseMatrix,
   _swigc__p_mfem__TimeDependentAdjointOperator,
   _swigc__p_mfem__TimeDependentOperator,
   _swigc__p_mfem__TransposeOperator,
   _swigc__p_mfem__TripleProductOperator,
   _swigc__p_mfem__Vector,
-  _swigc__p_mfem__VectorArrayCoefficient,
-  _swigc__p_mfem__VectorCoefficient,
-  _swigc__p_mfem__VectorConstantCoefficient,
-  _swigc__p_mfem__VectorCrossProductCoefficient,
-  _swigc__p_mfem__VectorDeltaCoefficient,
-  _swigc__p_mfem__VectorFunctionCoefficient,
-  _swigc__p_mfem__VectorGridFunctionCoefficient,
-  _swigc__p_mfem__VectorPyCoefficientBase,
-  _swigc__p_mfem__VectorQuadratureFunctionCoefficient,
-  _swigc__p_mfem__VectorRestrictedCoefficient,
-  _swigc__p_mfem__VectorSumCoefficient,
-  _swigc__p_pri_t,
-  _swigc__p_pyr_t,
-  _swigc__p_quad_t,
-  _swigc__p_seg_t,
-  _swigc__p_tet_t,
-  _swigc__p_tri_t,
 };
 
 
@@ -6492,8 +6483,6 @@ SWIG_init(void) {
   
   import_array();
   
-  SWIG_Python_SetConstant(d, "Multigrid_CycleType_VCYCLE",SWIG_From_int(static_cast< int >(mfem::Multigrid::CycleType::VCYCLE)));
-  SWIG_Python_SetConstant(d, "Multigrid_CycleType_WCYCLE",SWIG_From_int(static_cast< int >(mfem::Multigrid::CycleType::WCYCLE)));
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else

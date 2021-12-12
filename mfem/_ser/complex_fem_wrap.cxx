@@ -4821,7 +4821,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ComplexLinearForm_AddDomainIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_ComplexLinearForm_AddDomainIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::ComplexLinearForm *arg1 = (mfem::ComplexLinearForm *) 0 ;
   mfem::LinearFormIntegrator *arg2 = (mfem::LinearFormIntegrator *) 0 ;
@@ -4832,25 +4832,19 @@ SWIGINTERN PyObject *_wrap_ComplexLinearForm_AddDomainIntegrator(PyObject *SWIGU
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"lfi_real",  (char *)"lfi_imag",  NULL 
-  };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ComplexLinearForm_AddDomainIntegrator", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ComplexLinearForm, 0 |  0 );
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ComplexLinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ComplexLinearForm_AddDomainIntegrator" "', argument " "1"" of type '" "mfem::ComplexLinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ComplexLinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__LinearFormIntegrator, 0 |  0 );
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__LinearFormIntegrator, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ComplexLinearForm_AddDomainIntegrator" "', argument " "2"" of type '" "mfem::LinearFormIntegrator *""'"); 
   }
   arg2 = reinterpret_cast< mfem::LinearFormIntegrator * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__LinearFormIntegrator, 0 |  0 );
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__LinearFormIntegrator, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ComplexLinearForm_AddDomainIntegrator" "', argument " "3"" of type '" "mfem::LinearFormIntegrator *""'"); 
   }
@@ -4878,6 +4872,132 @@ SWIGINTERN PyObject *_wrap_ComplexLinearForm_AddDomainIntegrator(PyObject *SWIGU
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ComplexLinearForm_AddDomainIntegrator__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ComplexLinearForm *arg1 = (mfem::ComplexLinearForm *) 0 ;
+  mfem::LinearFormIntegrator *arg2 = (mfem::LinearFormIntegrator *) 0 ;
+  mfem::LinearFormIntegrator *arg3 = (mfem::LinearFormIntegrator *) 0 ;
+  mfem::Array< int > *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ComplexLinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ComplexLinearForm_AddDomainIntegrator" "', argument " "1"" of type '" "mfem::ComplexLinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ComplexLinearForm * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__LinearFormIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ComplexLinearForm_AddDomainIntegrator" "', argument " "2"" of type '" "mfem::LinearFormIntegrator *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::LinearFormIntegrator * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__LinearFormIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ComplexLinearForm_AddDomainIntegrator" "', argument " "3"" of type '" "mfem::LinearFormIntegrator *""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::LinearFormIntegrator * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ComplexLinearForm_AddDomainIntegrator" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ComplexLinearForm_AddDomainIntegrator" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Array< int > * >(argp4);
+  {
+    try {
+      (arg1)->AddDomainIntegrator(arg2,arg3,*arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ComplexLinearForm_AddDomainIntegrator(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "ComplexLinearForm_AddDomainIntegrator", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ComplexLinearForm, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__LinearFormIntegrator, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__LinearFormIntegrator, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ComplexLinearForm_AddDomainIntegrator__SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ComplexLinearForm, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__LinearFormIntegrator, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__LinearFormIntegrator, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_ComplexLinearForm_AddDomainIntegrator__SWIG_1(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ComplexLinearForm_AddDomainIntegrator'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::ComplexLinearForm::AddDomainIntegrator(mfem::LinearFormIntegrator *,mfem::LinearFormIntegrator *)\n"
+    "    mfem::ComplexLinearForm::AddDomainIntegrator(mfem::LinearFormIntegrator *,mfem::LinearFormIntegrator *,mfem::Array< int > &)\n");
+  return 0;
 }
 
 
@@ -6373,7 +6493,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SesquilinearForm_AddDomainIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_SesquilinearForm_AddDomainIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::SesquilinearForm *arg1 = (mfem::SesquilinearForm *) 0 ;
   mfem::BilinearFormIntegrator *arg2 = (mfem::BilinearFormIntegrator *) 0 ;
@@ -6384,25 +6504,19 @@ SWIGINTERN PyObject *_wrap_SesquilinearForm_AddDomainIntegrator(PyObject *SWIGUN
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"bfi_real",  (char *)"bfi_imag",  NULL 
-  };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:SesquilinearForm_AddDomainIntegrator", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SesquilinearForm, 0 |  0 );
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__SesquilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SesquilinearForm_AddDomainIntegrator" "', argument " "1"" of type '" "mfem::SesquilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::SesquilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SesquilinearForm_AddDomainIntegrator" "', argument " "2"" of type '" "mfem::BilinearFormIntegrator *""'"); 
   }
   arg2 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "SesquilinearForm_AddDomainIntegrator" "', argument " "3"" of type '" "mfem::BilinearFormIntegrator *""'"); 
   }
@@ -6430,6 +6544,132 @@ SWIGINTERN PyObject *_wrap_SesquilinearForm_AddDomainIntegrator(PyObject *SWIGUN
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SesquilinearForm_AddDomainIntegrator__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::SesquilinearForm *arg1 = (mfem::SesquilinearForm *) 0 ;
+  mfem::BilinearFormIntegrator *arg2 = (mfem::BilinearFormIntegrator *) 0 ;
+  mfem::BilinearFormIntegrator *arg3 = (mfem::BilinearFormIntegrator *) 0 ;
+  mfem::Array< int > *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__SesquilinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SesquilinearForm_AddDomainIntegrator" "', argument " "1"" of type '" "mfem::SesquilinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SesquilinearForm * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SesquilinearForm_AddDomainIntegrator" "', argument " "2"" of type '" "mfem::BilinearFormIntegrator *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "SesquilinearForm_AddDomainIntegrator" "', argument " "3"" of type '" "mfem::BilinearFormIntegrator *""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "SesquilinearForm_AddDomainIntegrator" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SesquilinearForm_AddDomainIntegrator" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Array< int > * >(argp4);
+  {
+    try {
+      (arg1)->AddDomainIntegrator(arg2,arg3,*arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SesquilinearForm_AddDomainIntegrator(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "SesquilinearForm_AddDomainIntegrator", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SesquilinearForm, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__BilinearFormIntegrator, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__BilinearFormIntegrator, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_SesquilinearForm_AddDomainIntegrator__SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SesquilinearForm, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__BilinearFormIntegrator, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__BilinearFormIntegrator, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_SesquilinearForm_AddDomainIntegrator__SWIG_1(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'SesquilinearForm_AddDomainIntegrator'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::SesquilinearForm::AddDomainIntegrator(mfem::BilinearFormIntegrator *,mfem::BilinearFormIntegrator *)\n"
+    "    mfem::SesquilinearForm::AddDomainIntegrator(mfem::BilinearFormIntegrator *,mfem::BilinearFormIntegrator *,mfem::Array< int > &)\n");
+  return 0;
 }
 
 
@@ -7539,7 +7779,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_ComplexLinearForm", _wrap_delete_ComplexLinearForm, METH_O, "delete_ComplexLinearForm(ComplexLinearForm self)"},
 	 { "ComplexLinearForm_GetConvention", _wrap_ComplexLinearForm_GetConvention, METH_O, "ComplexLinearForm_GetConvention(ComplexLinearForm self) -> mfem::ComplexOperator::Convention"},
 	 { "ComplexLinearForm_SetConvention", (PyCFunction)(void(*)(void))_wrap_ComplexLinearForm_SetConvention, METH_VARARGS|METH_KEYWORDS, "ComplexLinearForm_SetConvention(ComplexLinearForm self, mfem::ComplexOperator::Convention const & convention)"},
-	 { "ComplexLinearForm_AddDomainIntegrator", (PyCFunction)(void(*)(void))_wrap_ComplexLinearForm_AddDomainIntegrator, METH_VARARGS|METH_KEYWORDS, "ComplexLinearForm_AddDomainIntegrator(ComplexLinearForm self, LinearFormIntegrator lfi_real, LinearFormIntegrator lfi_imag)"},
+	 { "ComplexLinearForm_AddDomainIntegrator", _wrap_ComplexLinearForm_AddDomainIntegrator, METH_VARARGS, "\n"
+		"ComplexLinearForm_AddDomainIntegrator(ComplexLinearForm self, LinearFormIntegrator lfi_real, LinearFormIntegrator lfi_imag)\n"
+		"ComplexLinearForm_AddDomainIntegrator(ComplexLinearForm self, LinearFormIntegrator lfi_real, LinearFormIntegrator lfi_imag, intArray elem_attr_marker)\n"
+		""},
 	 { "ComplexLinearForm_AddBoundaryIntegrator", _wrap_ComplexLinearForm_AddBoundaryIntegrator, METH_VARARGS, "\n"
 		"ComplexLinearForm_AddBoundaryIntegrator(ComplexLinearForm self, LinearFormIntegrator lfi_real, LinearFormIntegrator lfi_imag)\n"
 		"ComplexLinearForm_AddBoundaryIntegrator(ComplexLinearForm self, LinearFormIntegrator lfi_real, LinearFormIntegrator lfi_imag, intArray bdr_attr_marker)\n"
@@ -7582,7 +7825,10 @@ static PyMethodDef SwigMethods[] = {
 		"SesquilinearForm_imag(SesquilinearForm self) -> BilinearForm\n"
 		"SesquilinearForm_imag(SesquilinearForm self) -> BilinearForm\n"
 		""},
-	 { "SesquilinearForm_AddDomainIntegrator", (PyCFunction)(void(*)(void))_wrap_SesquilinearForm_AddDomainIntegrator, METH_VARARGS|METH_KEYWORDS, "SesquilinearForm_AddDomainIntegrator(SesquilinearForm self, BilinearFormIntegrator bfi_real, BilinearFormIntegrator bfi_imag)"},
+	 { "SesquilinearForm_AddDomainIntegrator", _wrap_SesquilinearForm_AddDomainIntegrator, METH_VARARGS, "\n"
+		"SesquilinearForm_AddDomainIntegrator(SesquilinearForm self, BilinearFormIntegrator bfi_real, BilinearFormIntegrator bfi_imag)\n"
+		"SesquilinearForm_AddDomainIntegrator(SesquilinearForm self, BilinearFormIntegrator bfi_real, BilinearFormIntegrator bfi_imag, intArray elem_marker)\n"
+		""},
 	 { "SesquilinearForm_AddBoundaryIntegrator", _wrap_SesquilinearForm_AddBoundaryIntegrator, METH_VARARGS, "\n"
 		"SesquilinearForm_AddBoundaryIntegrator(SesquilinearForm self, BilinearFormIntegrator bfi_real, BilinearFormIntegrator bfi_imag)\n"
 		"SesquilinearForm_AddBoundaryIntegrator(SesquilinearForm self, BilinearFormIntegrator bfi_real, BilinearFormIntegrator bfi_imag, intArray bdr_marker)\n"
@@ -7644,7 +7890,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_ComplexLinearForm", _wrap_delete_ComplexLinearForm, METH_O, "delete_ComplexLinearForm(ComplexLinearForm self)"},
 	 { "ComplexLinearForm_GetConvention", _wrap_ComplexLinearForm_GetConvention, METH_O, "GetConvention(ComplexLinearForm self) -> mfem::ComplexOperator::Convention"},
 	 { "ComplexLinearForm_SetConvention", (PyCFunction)(void(*)(void))_wrap_ComplexLinearForm_SetConvention, METH_VARARGS|METH_KEYWORDS, "SetConvention(ComplexLinearForm self, mfem::ComplexOperator::Convention const & convention)"},
-	 { "ComplexLinearForm_AddDomainIntegrator", (PyCFunction)(void(*)(void))_wrap_ComplexLinearForm_AddDomainIntegrator, METH_VARARGS|METH_KEYWORDS, "AddDomainIntegrator(ComplexLinearForm self, LinearFormIntegrator lfi_real, LinearFormIntegrator lfi_imag)"},
+	 { "ComplexLinearForm_AddDomainIntegrator", _wrap_ComplexLinearForm_AddDomainIntegrator, METH_VARARGS, "\n"
+		"AddDomainIntegrator(ComplexLinearForm self, LinearFormIntegrator lfi_real, LinearFormIntegrator lfi_imag)\n"
+		"AddDomainIntegrator(ComplexLinearForm self, LinearFormIntegrator lfi_real, LinearFormIntegrator lfi_imag, intArray elem_attr_marker)\n"
+		""},
 	 { "ComplexLinearForm_AddBoundaryIntegrator", _wrap_ComplexLinearForm_AddBoundaryIntegrator, METH_VARARGS, "\n"
 		"AddBoundaryIntegrator(ComplexLinearForm self, LinearFormIntegrator lfi_real, LinearFormIntegrator lfi_imag)\n"
 		"AddBoundaryIntegrator(ComplexLinearForm self, LinearFormIntegrator lfi_real, LinearFormIntegrator lfi_imag, intArray bdr_attr_marker)\n"
@@ -7687,7 +7936,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"imag(SesquilinearForm self) -> BilinearForm\n"
 		"imag(SesquilinearForm self) -> BilinearForm\n"
 		""},
-	 { "SesquilinearForm_AddDomainIntegrator", (PyCFunction)(void(*)(void))_wrap_SesquilinearForm_AddDomainIntegrator, METH_VARARGS|METH_KEYWORDS, "AddDomainIntegrator(SesquilinearForm self, BilinearFormIntegrator bfi_real, BilinearFormIntegrator bfi_imag)"},
+	 { "SesquilinearForm_AddDomainIntegrator", _wrap_SesquilinearForm_AddDomainIntegrator, METH_VARARGS, "\n"
+		"AddDomainIntegrator(SesquilinearForm self, BilinearFormIntegrator bfi_real, BilinearFormIntegrator bfi_imag)\n"
+		"AddDomainIntegrator(SesquilinearForm self, BilinearFormIntegrator bfi_real, BilinearFormIntegrator bfi_imag, intArray elem_marker)\n"
+		""},
 	 { "SesquilinearForm_AddBoundaryIntegrator", _wrap_SesquilinearForm_AddBoundaryIntegrator, METH_VARARGS, "\n"
 		"AddBoundaryIntegrator(SesquilinearForm self, BilinearFormIntegrator bfi_real, BilinearFormIntegrator bfi_imag)\n"
 		"AddBoundaryIntegrator(SesquilinearForm self, BilinearFormIntegrator bfi_real, BilinearFormIntegrator bfi_imag, intArray bdr_marker)\n"
@@ -8275,7 +8527,7 @@ static swig_type_info _swigt__p_mfem__OperatorHandle = {"_p_mfem__OperatorHandle
 static swig_type_info _swigt__p_mfem__SesquilinearForm = {"_p_mfem__SesquilinearForm", "mfem::SesquilinearForm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorCoefficient = {"_p_mfem__VectorCoefficient", "mfem::VectorCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__VectorCoefficient = {"_p_mfem__VectorCoefficient", "mfem::VectorCoefficient *|mfem::DiagonalMatrixCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__VectorPyCoefficientBase = {"_p_mfem__VectorPyCoefficientBase", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__VectorQuadratureFunctionCoefficient = {"_p_mfem__VectorQuadratureFunctionCoefficient", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__VectorCrossProductCoefficient = {"_p_mfem__VectorCrossProductCoefficient", 0, 0, 0, 0, 0};

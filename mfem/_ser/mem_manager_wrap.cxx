@@ -3254,6 +3254,55 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_MemoryClassContainsType(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::MemoryClass arg1 ;
+  mfem::MemoryType arg2 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"mc",  (char *)"mt",  NULL 
+  };
+  bool result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:MemoryClassContainsType", kwnames, &obj0, &obj1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "MemoryClassContainsType" "', argument " "1"" of type '" "mfem::MemoryClass""'");
+  } 
+  arg1 = static_cast< mfem::MemoryClass >(val1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MemoryClassContainsType" "', argument " "2"" of type '" "mfem::MemoryType""'");
+  } 
+  arg2 = static_cast< mfem::MemoryType >(val2);
+  {
+    try {
+      result = (bool)mfem::MemoryClassContainsType(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap___mul__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MemoryClass arg1 ;
@@ -3387,6 +3436,94 @@ SWIGINTERN PyObject *_wrap_MemoryManager_Init(PyObject *SWIGUNUSEDPARM(self), Py
   {
     try {
       (arg1)->Init();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MemoryManager_GetDualMemoryType(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::MemoryType arg1 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"mt",  NULL 
+  };
+  mfem::MemoryType result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:MemoryManager_GetDualMemoryType", kwnames, &obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "MemoryManager_GetDualMemoryType" "', argument " "1"" of type '" "mfem::MemoryType""'");
+  } 
+  arg1 = static_cast< mfem::MemoryType >(val1);
+  {
+    try {
+      result = (mfem::MemoryType)mfem::MemoryManager::GetDualMemoryType(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MemoryManager_SetDualMemoryType(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::MemoryType arg1 ;
+  mfem::MemoryType arg2 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"mt",  (char *)"dual_mt",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:MemoryManager_SetDualMemoryType", kwnames, &obj0, &obj1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "MemoryManager_SetDualMemoryType" "', argument " "1"" of type '" "mfem::MemoryType""'");
+  } 
+  arg1 = static_cast< mfem::MemoryType >(val1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MemoryManager_SetDualMemoryType" "', argument " "2"" of type '" "mfem::MemoryType""'");
+  } 
+  arg2 = static_cast< mfem::MemoryType >(val2);
+  {
+    try {
+      mfem::MemoryManager::SetDualMemoryType(arg1,arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -3893,10 +4030,13 @@ static PyMethodDef SwigMethods[] = {
 	 { "IsHostMemory", (PyCFunction)(void(*)(void))_wrap_IsHostMemory, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "IsDeviceMemory", (PyCFunction)(void(*)(void))_wrap_IsDeviceMemory, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "GetMemoryType", (PyCFunction)(void(*)(void))_wrap_GetMemoryType, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "MemoryClassContainsType", (PyCFunction)(void(*)(void))_wrap_MemoryClassContainsType, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "__mul__", (PyCFunction)(void(*)(void))_wrap___mul__, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "new_MemoryManager", _wrap_new_MemoryManager, METH_NOARGS, NULL},
 	 { "delete_MemoryManager", _wrap_delete_MemoryManager, METH_O, NULL},
 	 { "MemoryManager_Init", _wrap_MemoryManager_Init, METH_O, NULL},
+	 { "MemoryManager_GetDualMemoryType", (PyCFunction)(void(*)(void))_wrap_MemoryManager_GetDualMemoryType, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "MemoryManager_SetDualMemoryType", (PyCFunction)(void(*)(void))_wrap_MemoryManager_SetDualMemoryType, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "MemoryManager_Configure", (PyCFunction)(void(*)(void))_wrap_MemoryManager_Configure, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "MemoryManager_Destroy", _wrap_MemoryManager_Destroy, METH_O, NULL},
 	 { "MemoryManager_IsKnown", (PyCFunction)(void(*)(void))_wrap_MemoryManager_IsKnown, METH_VARARGS|METH_KEYWORDS, NULL},
@@ -3918,10 +4058,13 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "IsHostMemory", (PyCFunction)(void(*)(void))_wrap_IsHostMemory, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "IsDeviceMemory", (PyCFunction)(void(*)(void))_wrap_IsDeviceMemory, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "GetMemoryType", (PyCFunction)(void(*)(void))_wrap_GetMemoryType, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "MemoryClassContainsType", (PyCFunction)(void(*)(void))_wrap_MemoryClassContainsType, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "__mul__", (PyCFunction)(void(*)(void))_wrap___mul__, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "new_MemoryManager", _wrap_new_MemoryManager, METH_NOARGS, NULL},
 	 { "delete_MemoryManager", _wrap_delete_MemoryManager, METH_O, NULL},
 	 { "MemoryManager_Init", _wrap_MemoryManager_Init, METH_O, NULL},
+	 { "MemoryManager_GetDualMemoryType", (PyCFunction)(void(*)(void))_wrap_MemoryManager_GetDualMemoryType, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "MemoryManager_SetDualMemoryType", (PyCFunction)(void(*)(void))_wrap_MemoryManager_SetDualMemoryType, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "MemoryManager_Configure", (PyCFunction)(void(*)(void))_wrap_MemoryManager_Configure, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "MemoryManager_Destroy", _wrap_MemoryManager_Destroy, METH_O, NULL},
 	 { "MemoryManager_IsKnown", (PyCFunction)(void(*)(void))_wrap_MemoryManager_IsKnown, METH_VARARGS|METH_KEYWORDS, NULL},
@@ -4705,11 +4848,15 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "MemoryType_HOST_64",SWIG_From_int(static_cast< int >(mfem::MemoryType::HOST_64)));
   SWIG_Python_SetConstant(d, "MemoryType_HOST_DEBUG",SWIG_From_int(static_cast< int >(mfem::MemoryType::HOST_DEBUG)));
   SWIG_Python_SetConstant(d, "MemoryType_HOST_UMPIRE",SWIG_From_int(static_cast< int >(mfem::MemoryType::HOST_UMPIRE)));
+  SWIG_Python_SetConstant(d, "MemoryType_HOST_PINNED",SWIG_From_int(static_cast< int >(mfem::MemoryType::HOST_PINNED)));
   SWIG_Python_SetConstant(d, "MemoryType_MANAGED",SWIG_From_int(static_cast< int >(mfem::MemoryType::MANAGED)));
   SWIG_Python_SetConstant(d, "MemoryType_DEVICE",SWIG_From_int(static_cast< int >(mfem::MemoryType::DEVICE)));
   SWIG_Python_SetConstant(d, "MemoryType_DEVICE_DEBUG",SWIG_From_int(static_cast< int >(mfem::MemoryType::DEVICE_DEBUG)));
   SWIG_Python_SetConstant(d, "MemoryType_DEVICE_UMPIRE",SWIG_From_int(static_cast< int >(mfem::MemoryType::DEVICE_UMPIRE)));
+  SWIG_Python_SetConstant(d, "MemoryType_DEVICE_UMPIRE_2",SWIG_From_int(static_cast< int >(mfem::MemoryType::DEVICE_UMPIRE_2)));
   SWIG_Python_SetConstant(d, "MemoryType_SIZE",SWIG_From_int(static_cast< int >(mfem::MemoryType::SIZE)));
+  SWIG_Python_SetConstant(d, "MemoryType_PRESERVE",SWIG_From_int(static_cast< int >(mfem::MemoryType::PRESERVE)));
+  SWIG_Python_SetConstant(d, "MemoryType_DEFAULT",SWIG_From_int(static_cast< int >(mfem::MemoryType::DEFAULT)));
   globals = SWIG_globals();
   if (!globals) {
     PyErr_SetString(PyExc_TypeError, "Failure to create SWIG globals.");

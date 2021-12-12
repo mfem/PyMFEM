@@ -23,7 +23,7 @@ from distutils.core import *
 from distutils      import sysconfig
 
 modules= ["io_stream", "vtk", "sort_pairs", "datacollection",
-          "cpointers",
+          "cpointers", "symmat",
           "globals", "mem_manager", "device", "hash", "stable3d",
           "error", "array", "common_functions", "socketstream", "handle",
           "fe_base", "fe_fixed_order", "fe_h1", "fe_l2",

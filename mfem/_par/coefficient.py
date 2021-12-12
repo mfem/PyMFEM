@@ -90,6 +90,7 @@ import mfem._par.mem_manager
 import mfem._par.matrix
 import mfem._par.vector
 import mfem._par.operators
+import mfem._par.symmat
 import mfem._par.intrules
 import mfem._par.sparsemat
 import mfem._par.densemat
@@ -265,6 +266,11 @@ class TransformedCoefficient(Coefficient):
         """
         _coefficient.TransformedCoefficient_swiginit(self, _coefficient.new_TransformedCoefficient(*args))
 
+    def SetTime(self, t):
+        r"""SetTime(TransformedCoefficient self, double t)"""
+        return _coefficient.TransformedCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.TransformedCoefficient_SetTime)
+
     def Eval(self, T, ip):
         r"""Eval(TransformedCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"""
         return _coefficient.TransformedCoefficient_Eval(self, T, ip)
@@ -289,14 +295,19 @@ class DeltaCoefficient(Coefficient):
         """
         _coefficient.DeltaCoefficient_swiginit(self, _coefficient.new_DeltaCoefficient(*args))
 
+    def SetTime(self, t):
+        r"""SetTime(DeltaCoefficient self, double t)"""
+        return _coefficient.DeltaCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.DeltaCoefficient_SetTime)
+
     def SetDeltaCenter(self, center):
         r"""SetDeltaCenter(DeltaCoefficient self, Vector center)"""
         return _coefficient.DeltaCoefficient_SetDeltaCenter(self, center)
     SetDeltaCenter = _swig_new_instance_method(_coefficient.DeltaCoefficient_SetDeltaCenter)
 
-    def SetScale(self, _s):
-        r"""SetScale(DeltaCoefficient self, double _s)"""
-        return _coefficient.DeltaCoefficient_SetScale(self, _s)
+    def SetScale(self, s_):
+        r"""SetScale(DeltaCoefficient self, double s_)"""
+        return _coefficient.DeltaCoefficient_SetScale(self, s_)
     SetScale = _swig_new_instance_method(_coefficient.DeltaCoefficient_SetScale)
 
     def SetFunction(self, f):
@@ -304,9 +315,9 @@ class DeltaCoefficient(Coefficient):
         return _coefficient.DeltaCoefficient_SetFunction(self, f)
     SetFunction = _swig_new_instance_method(_coefficient.DeltaCoefficient_SetFunction)
 
-    def SetTol(self, _tol):
-        r"""SetTol(DeltaCoefficient self, double _tol)"""
-        return _coefficient.DeltaCoefficient_SetTol(self, _tol)
+    def SetTol(self, tol_):
+        r"""SetTol(DeltaCoefficient self, double tol_)"""
+        return _coefficient.DeltaCoefficient_SetTol(self, tol_)
     SetTol = _swig_new_instance_method(_coefficient.DeltaCoefficient_SetTol)
 
     def SetWeight(self, w):
@@ -363,14 +374,19 @@ class RestrictedCoefficient(Coefficient):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, _c, attr):
-        r"""__init__(RestrictedCoefficient self, Coefficient _c, intArray attr) -> RestrictedCoefficient"""
-        _coefficient.RestrictedCoefficient_swiginit(self, _coefficient.new_RestrictedCoefficient(_c, attr))
+    def __init__(self, c_, attr):
+        r"""__init__(RestrictedCoefficient self, Coefficient c_, intArray attr) -> RestrictedCoefficient"""
+        _coefficient.RestrictedCoefficient_swiginit(self, _coefficient.new_RestrictedCoefficient(c_, attr))
 
         self._ref_to_c = _c
 
 
 
+
+    def SetTime(self, t):
+        r"""SetTime(RestrictedCoefficient self, double t)"""
+        return _coefficient.RestrictedCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.RestrictedCoefficient_SetTime)
 
     def Eval(self, T, ip):
         r"""Eval(RestrictedCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"""
@@ -495,6 +511,11 @@ class VectorArrayCoefficient(VectorCoefficient):
     def __init__(self, dim):
         r"""__init__(VectorArrayCoefficient self, int dim) -> VectorArrayCoefficient"""
         _coefficient.VectorArrayCoefficient_swiginit(self, _coefficient.new_VectorArrayCoefficient(dim))
+
+    def SetTime(self, t):
+        r"""SetTime(VectorArrayCoefficient self, double t)"""
+        return _coefficient.VectorArrayCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.VectorArrayCoefficient_SetTime)
 
     def GetCoeff(self, i):
         r"""GetCoeff(VectorArrayCoefficient self, int i) -> Coefficient"""
@@ -665,17 +686,22 @@ class VectorDeltaCoefficient(VectorCoefficient):
 
     def __init__(self, *args):
         r"""
-        __init__(VectorDeltaCoefficient self, int _vdim) -> VectorDeltaCoefficient
-        __init__(VectorDeltaCoefficient self, Vector _dir) -> VectorDeltaCoefficient
-        __init__(VectorDeltaCoefficient self, Vector _dir, double x, double s) -> VectorDeltaCoefficient
-        __init__(VectorDeltaCoefficient self, Vector _dir, double x, double y, double s) -> VectorDeltaCoefficient
-        __init__(VectorDeltaCoefficient self, Vector _dir, double x, double y, double z, double s) -> VectorDeltaCoefficient
+        __init__(VectorDeltaCoefficient self, int vdim_) -> VectorDeltaCoefficient
+        __init__(VectorDeltaCoefficient self, Vector dir_) -> VectorDeltaCoefficient
+        __init__(VectorDeltaCoefficient self, Vector dir_, double x, double s) -> VectorDeltaCoefficient
+        __init__(VectorDeltaCoefficient self, Vector dir_, double x, double y, double s) -> VectorDeltaCoefficient
+        __init__(VectorDeltaCoefficient self, Vector dir_, double x, double y, double z, double s) -> VectorDeltaCoefficient
         """
         _coefficient.VectorDeltaCoefficient_swiginit(self, _coefficient.new_VectorDeltaCoefficient(*args))
 
-    def SetDeltaCoefficient(self, _d):
-        r"""SetDeltaCoefficient(VectorDeltaCoefficient self, DeltaCoefficient _d)"""
-        return _coefficient.VectorDeltaCoefficient_SetDeltaCoefficient(self, _d)
+    def SetTime(self, t):
+        r"""SetTime(VectorDeltaCoefficient self, double t)"""
+        return _coefficient.VectorDeltaCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.VectorDeltaCoefficient_SetTime)
+
+    def SetDeltaCoefficient(self, d_):
+        r"""SetDeltaCoefficient(VectorDeltaCoefficient self, DeltaCoefficient d_)"""
+        return _coefficient.VectorDeltaCoefficient_SetDeltaCoefficient(self, d_)
     SetDeltaCoefficient = _swig_new_instance_method(_coefficient.VectorDeltaCoefficient_SetDeltaCoefficient)
 
     def GetDeltaCoefficient(self):
@@ -688,9 +714,9 @@ class VectorDeltaCoefficient(VectorCoefficient):
         return _coefficient.VectorDeltaCoefficient_SetScale(self, s)
     SetScale = _swig_new_instance_method(_coefficient.VectorDeltaCoefficient_SetScale)
 
-    def SetDirection(self, _d):
-        r"""SetDirection(VectorDeltaCoefficient self, Vector _d)"""
-        return _coefficient.VectorDeltaCoefficient_SetDirection(self, _d)
+    def SetDirection(self, d_):
+        r"""SetDirection(VectorDeltaCoefficient self, Vector d_)"""
+        return _coefficient.VectorDeltaCoefficient_SetDirection(self, d_)
     SetDirection = _swig_new_instance_method(_coefficient.VectorDeltaCoefficient_SetDirection)
 
     def SetDeltaCenter(self, center):
@@ -735,6 +761,11 @@ class VectorRestrictedCoefficient(VectorCoefficient):
 
 
 
+
+    def SetTime(self, t):
+        r"""SetTime(VectorRestrictedCoefficient self, double t)"""
+        return _coefficient.VectorRestrictedCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.VectorRestrictedCoefficient_SetTime)
 
     def Eval(self, *args):
         r"""
@@ -849,10 +880,15 @@ class MatrixFunctionCoefficient(MatrixCoefficient):
         r"""
         __init__(MatrixFunctionCoefficient self, int dim, std::function< void (mfem::Vector const &,mfem::DenseMatrix &) > F, Coefficient q=None) -> MatrixFunctionCoefficient
         __init__(MatrixFunctionCoefficient self, DenseMatrix m, Coefficient q) -> MatrixFunctionCoefficient
-        __init__(MatrixFunctionCoefficient self, int dim, std::function< void (mfem::Vector const &,double,mfem::DenseMatrix &) > TDF, Coefficient q=None) -> MatrixFunctionCoefficient
         __init__(MatrixFunctionCoefficient self, int dim, std::function< void (mfem::Vector const &,mfem::Vector &) > SymmF, Coefficient q=None) -> MatrixFunctionCoefficient
+        __init__(MatrixFunctionCoefficient self, int dim, std::function< void (mfem::Vector const &,double,mfem::DenseMatrix &) > TDF, Coefficient q=None) -> MatrixFunctionCoefficient
         """
         _coefficient.MatrixFunctionCoefficient_swiginit(self, _coefficient.new_MatrixFunctionCoefficient(*args))
+
+    def SetTime(self, t):
+        r"""SetTime(MatrixFunctionCoefficient self, double t)"""
+        return _coefficient.MatrixFunctionCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.MatrixFunctionCoefficient_SetTime)
 
     def Eval(self, K, T, ip):
         r"""Eval(MatrixFunctionCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"""
@@ -877,6 +913,11 @@ class MatrixArrayCoefficient(MatrixCoefficient):
     def __init__(self, dim):
         r"""__init__(MatrixArrayCoefficient self, int dim) -> MatrixArrayCoefficient"""
         _coefficient.MatrixArrayCoefficient_swiginit(self, _coefficient.new_MatrixArrayCoefficient(dim))
+
+    def SetTime(self, t):
+        r"""SetTime(MatrixArrayCoefficient self, double t)"""
+        return _coefficient.MatrixArrayCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.MatrixArrayCoefficient_SetTime)
 
     def GetCoeff(self, i, j):
         r"""GetCoeff(MatrixArrayCoefficient self, int i, int j) -> Coefficient"""
@@ -919,6 +960,11 @@ class MatrixRestrictedCoefficient(MatrixCoefficient):
 
 
 
+    def SetTime(self, t):
+        r"""SetTime(MatrixRestrictedCoefficient self, double t)"""
+        return _coefficient.MatrixRestrictedCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.MatrixRestrictedCoefficient_SetTime)
+
     def Eval(self, K, T, ip):
         r"""Eval(MatrixRestrictedCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"""
         return _coefficient.MatrixRestrictedCoefficient_Eval(self, K, T, ip)
@@ -936,10 +982,15 @@ class SumCoefficient(Coefficient):
 
     def __init__(self, *args):
         r"""
-        __init__(SumCoefficient self, double A, Coefficient B, double _alpha=1.0, double _beta=1.0) -> SumCoefficient
-        __init__(SumCoefficient self, Coefficient A, Coefficient B, double _alpha=1.0, double _beta=1.0) -> SumCoefficient
+        __init__(SumCoefficient self, double A, Coefficient B, double alpha_=1.0, double beta_=1.0) -> SumCoefficient
+        __init__(SumCoefficient self, Coefficient A, Coefficient B, double alpha_=1.0, double beta_=1.0) -> SumCoefficient
         """
         _coefficient.SumCoefficient_swiginit(self, _coefficient.new_SumCoefficient(*args))
+
+    def SetTime(self, t):
+        r"""SetTime(SumCoefficient self, double t)"""
+        return _coefficient.SumCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.SumCoefficient_SetTime)
 
     def SetAConst(self, A):
         r"""SetAConst(SumCoefficient self, double A)"""
@@ -971,9 +1022,9 @@ class SumCoefficient(Coefficient):
         return _coefficient.SumCoefficient_GetBCoef(self)
     GetBCoef = _swig_new_instance_method(_coefficient.SumCoefficient_GetBCoef)
 
-    def SetAlpha(self, _alpha):
-        r"""SetAlpha(SumCoefficient self, double _alpha)"""
-        return _coefficient.SumCoefficient_SetAlpha(self, _alpha)
+    def SetAlpha(self, alpha_):
+        r"""SetAlpha(SumCoefficient self, double alpha_)"""
+        return _coefficient.SumCoefficient_SetAlpha(self, alpha_)
     SetAlpha = _swig_new_instance_method(_coefficient.SumCoefficient_SetAlpha)
 
     def GetAlpha(self):
@@ -981,9 +1032,9 @@ class SumCoefficient(Coefficient):
         return _coefficient.SumCoefficient_GetAlpha(self)
     GetAlpha = _swig_new_instance_method(_coefficient.SumCoefficient_GetAlpha)
 
-    def SetBeta(self, _beta):
-        r"""SetBeta(SumCoefficient self, double _beta)"""
-        return _coefficient.SumCoefficient_SetBeta(self, _beta)
+    def SetBeta(self, beta_):
+        r"""SetBeta(SumCoefficient self, double beta_)"""
+        return _coefficient.SumCoefficient_SetBeta(self, beta_)
     SetBeta = _swig_new_instance_method(_coefficient.SumCoefficient_SetBeta)
 
     def GetBeta(self):
@@ -1000,6 +1051,88 @@ class SumCoefficient(Coefficient):
 # Register SumCoefficient in _coefficient:
 _coefficient.SumCoefficient_swigregister(SumCoefficient)
 
+class SymmetricMatrixCoefficient(object):
+    r"""Proxy of C++ mfem::SymmetricMatrixCoefficient class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+
+    def SetTime(self, t):
+        r"""SetTime(SymmetricMatrixCoefficient self, double t)"""
+        return _coefficient.SymmetricMatrixCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.SymmetricMatrixCoefficient_SetTime)
+
+    def GetTime(self):
+        r"""GetTime(SymmetricMatrixCoefficient self) -> double"""
+        return _coefficient.SymmetricMatrixCoefficient_GetTime(self)
+    GetTime = _swig_new_instance_method(_coefficient.SymmetricMatrixCoefficient_GetTime)
+
+    def GetSize(self):
+        r"""GetSize(SymmetricMatrixCoefficient self) -> int"""
+        return _coefficient.SymmetricMatrixCoefficient_GetSize(self)
+    GetSize = _swig_new_instance_method(_coefficient.SymmetricMatrixCoefficient_GetSize)
+
+    def Eval(self, K, T, ip):
+        r"""Eval(SymmetricMatrixCoefficient self, DenseSymmetricMatrix K, ElementTransformation T, IntegrationPoint ip)"""
+        return _coefficient.SymmetricMatrixCoefficient_Eval(self, K, T, ip)
+    Eval = _swig_new_instance_method(_coefficient.SymmetricMatrixCoefficient_Eval)
+    __swig_destroy__ = _coefficient.delete_SymmetricMatrixCoefficient
+
+# Register SymmetricMatrixCoefficient in _coefficient:
+_coefficient.SymmetricMatrixCoefficient_swigregister(SymmetricMatrixCoefficient)
+
+class SymmetricMatrixConstantCoefficient(SymmetricMatrixCoefficient):
+    r"""Proxy of C++ mfem::SymmetricMatrixConstantCoefficient class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+
+    def Eval(self, *args):
+        r"""
+        Eval(SymmetricMatrixConstantCoefficient self, DenseSymmetricMatrix K, ElementTransformation T, IntegrationPoint ip)
+        Eval(SymmetricMatrixConstantCoefficient self, DenseSymmetricMatrix M, ElementTransformation T, IntegrationPoint ip)
+        """
+        return _coefficient.SymmetricMatrixConstantCoefficient_Eval(self, *args)
+    Eval = _swig_new_instance_method(_coefficient.SymmetricMatrixConstantCoefficient_Eval)
+    __swig_destroy__ = _coefficient.delete_SymmetricMatrixConstantCoefficient
+
+# Register SymmetricMatrixConstantCoefficient in _coefficient:
+_coefficient.SymmetricMatrixConstantCoefficient_swigregister(SymmetricMatrixConstantCoefficient)
+
+class SymmetricMatrixFunctionCoefficient(SymmetricMatrixCoefficient):
+    r"""Proxy of C++ mfem::SymmetricMatrixFunctionCoefficient class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        r"""
+        __init__(SymmetricMatrixFunctionCoefficient self, int dim, std::function< void (mfem::Vector const &,mfem::DenseSymmetricMatrix &) > F, Coefficient q=None) -> SymmetricMatrixFunctionCoefficient
+        __init__(SymmetricMatrixFunctionCoefficient self, DenseSymmetricMatrix m, Coefficient q) -> SymmetricMatrixFunctionCoefficient
+        __init__(SymmetricMatrixFunctionCoefficient self, int dim, std::function< void (mfem::Vector const &,double,mfem::DenseSymmetricMatrix &) > TDF, Coefficient q=None) -> SymmetricMatrixFunctionCoefficient
+        """
+        _coefficient.SymmetricMatrixFunctionCoefficient_swiginit(self, _coefficient.new_SymmetricMatrixFunctionCoefficient(*args))
+
+    def SetTime(self, t):
+        r"""SetTime(SymmetricMatrixFunctionCoefficient self, double t)"""
+        return _coefficient.SymmetricMatrixFunctionCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.SymmetricMatrixFunctionCoefficient_SetTime)
+
+    def Eval(self, K, T, ip):
+        r"""Eval(SymmetricMatrixFunctionCoefficient self, DenseSymmetricMatrix K, ElementTransformation T, IntegrationPoint ip)"""
+        return _coefficient.SymmetricMatrixFunctionCoefficient_Eval(self, K, T, ip)
+    Eval = _swig_new_instance_method(_coefficient.SymmetricMatrixFunctionCoefficient_Eval)
+    __swig_destroy__ = _coefficient.delete_SymmetricMatrixFunctionCoefficient
+
+# Register SymmetricMatrixFunctionCoefficient in _coefficient:
+_coefficient.SymmetricMatrixFunctionCoefficient_swigregister(SymmetricMatrixFunctionCoefficient)
+
 class ProductCoefficient(Coefficient):
     r"""Proxy of C++ mfem::ProductCoefficient class."""
 
@@ -1012,6 +1145,11 @@ class ProductCoefficient(Coefficient):
         __init__(ProductCoefficient self, Coefficient A, Coefficient B) -> ProductCoefficient
         """
         _coefficient.ProductCoefficient_swiginit(self, _coefficient.new_ProductCoefficient(*args))
+
+    def SetTime(self, t):
+        r"""SetTime(ProductCoefficient self, double t)"""
+        return _coefficient.ProductCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.ProductCoefficient_SetTime)
 
     def SetAConst(self, A):
         r"""SetAConst(ProductCoefficient self, double A)"""
@@ -1065,6 +1203,11 @@ class RatioCoefficient(Coefficient):
         __init__(RatioCoefficient self, Coefficient A, double B) -> RatioCoefficient
         """
         _coefficient.RatioCoefficient_swiginit(self, _coefficient.new_RatioCoefficient(*args))
+
+    def SetTime(self, t):
+        r"""SetTime(RatioCoefficient self, double t)"""
+        return _coefficient.RatioCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.RatioCoefficient_SetTime)
 
     def SetAConst(self, A):
         r"""SetAConst(RatioCoefficient self, double A)"""
@@ -1121,9 +1264,14 @@ class PowerCoefficient(Coefficient):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, A, _p):
-        r"""__init__(PowerCoefficient self, Coefficient A, double _p) -> PowerCoefficient"""
-        _coefficient.PowerCoefficient_swiginit(self, _coefficient.new_PowerCoefficient(A, _p))
+    def __init__(self, A, p_):
+        r"""__init__(PowerCoefficient self, Coefficient A, double p_) -> PowerCoefficient"""
+        _coefficient.PowerCoefficient_swiginit(self, _coefficient.new_PowerCoefficient(A, p_))
+
+    def SetTime(self, t):
+        r"""SetTime(PowerCoefficient self, double t)"""
+        return _coefficient.PowerCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.PowerCoefficient_SetTime)
 
     def SetACoef(self, A):
         r"""SetACoef(PowerCoefficient self, Coefficient A)"""
@@ -1135,9 +1283,9 @@ class PowerCoefficient(Coefficient):
         return _coefficient.PowerCoefficient_GetACoef(self)
     GetACoef = _swig_new_instance_method(_coefficient.PowerCoefficient_GetACoef)
 
-    def SetExponent(self, _p):
-        r"""SetExponent(PowerCoefficient self, double _p)"""
-        return _coefficient.PowerCoefficient_SetExponent(self, _p)
+    def SetExponent(self, p_):
+        r"""SetExponent(PowerCoefficient self, double p_)"""
+        return _coefficient.PowerCoefficient_SetExponent(self, p_)
     SetExponent = _swig_new_instance_method(_coefficient.PowerCoefficient_SetExponent)
 
     def GetExponent(self):
@@ -1163,6 +1311,11 @@ class InnerProductCoefficient(Coefficient):
     def __init__(self, A, B):
         r"""__init__(InnerProductCoefficient self, VectorCoefficient A, VectorCoefficient B) -> InnerProductCoefficient"""
         _coefficient.InnerProductCoefficient_swiginit(self, _coefficient.new_InnerProductCoefficient(A, B))
+
+    def SetTime(self, t):
+        r"""SetTime(InnerProductCoefficient self, double t)"""
+        return _coefficient.InnerProductCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.InnerProductCoefficient_SetTime)
 
     def SetACoef(self, A):
         r"""SetACoef(InnerProductCoefficient self, VectorCoefficient A)"""
@@ -1203,6 +1356,11 @@ class VectorRotProductCoefficient(Coefficient):
         r"""__init__(VectorRotProductCoefficient self, VectorCoefficient A, VectorCoefficient B) -> VectorRotProductCoefficient"""
         _coefficient.VectorRotProductCoefficient_swiginit(self, _coefficient.new_VectorRotProductCoefficient(A, B))
 
+    def SetTime(self, t):
+        r"""SetTime(VectorRotProductCoefficient self, double t)"""
+        return _coefficient.VectorRotProductCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.VectorRotProductCoefficient_SetTime)
+
     def SetACoef(self, A):
         r"""SetACoef(VectorRotProductCoefficient self, VectorCoefficient A)"""
         return _coefficient.VectorRotProductCoefficient_SetACoef(self, A)
@@ -1242,6 +1400,11 @@ class DeterminantCoefficient(Coefficient):
         r"""__init__(DeterminantCoefficient self, MatrixCoefficient A) -> DeterminantCoefficient"""
         _coefficient.DeterminantCoefficient_swiginit(self, _coefficient.new_DeterminantCoefficient(A))
 
+    def SetTime(self, t):
+        r"""SetTime(DeterminantCoefficient self, double t)"""
+        return _coefficient.DeterminantCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.DeterminantCoefficient_SetTime)
+
     def SetACoef(self, A):
         r"""SetACoef(DeterminantCoefficient self, MatrixCoefficient A)"""
         return _coefficient.DeterminantCoefficient_SetACoef(self, A)
@@ -1270,10 +1433,15 @@ class VectorSumCoefficient(VectorCoefficient):
     def __init__(self, *args):
         r"""
         __init__(VectorSumCoefficient self, int dim) -> VectorSumCoefficient
-        __init__(VectorSumCoefficient self, VectorCoefficient A, VectorCoefficient B, double _alpha=1.0, double _beta=1.0) -> VectorSumCoefficient
-        __init__(VectorSumCoefficient self, VectorCoefficient _A, VectorCoefficient _B, Coefficient _alpha, Coefficient _beta) -> VectorSumCoefficient
+        __init__(VectorSumCoefficient self, VectorCoefficient A, VectorCoefficient B, double alpha_=1.0, double beta_=1.0) -> VectorSumCoefficient
+        __init__(VectorSumCoefficient self, VectorCoefficient A_, VectorCoefficient B_, Coefficient alpha_, Coefficient beta_) -> VectorSumCoefficient
         """
         _coefficient.VectorSumCoefficient_swiginit(self, _coefficient.new_VectorSumCoefficient(*args))
+
+    def SetTime(self, t):
+        r"""SetTime(VectorSumCoefficient self, double t)"""
+        return _coefficient.VectorSumCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.VectorSumCoefficient_SetTime)
 
     def SetACoef(self, A):
         r"""SetACoef(VectorSumCoefficient self, VectorCoefficient A)"""
@@ -1315,9 +1483,9 @@ class VectorSumCoefficient(VectorCoefficient):
         return _coefficient.VectorSumCoefficient_GetBetaCoef(self)
     GetBetaCoef = _swig_new_instance_method(_coefficient.VectorSumCoefficient_GetBetaCoef)
 
-    def SetA(self, _A):
-        r"""SetA(VectorSumCoefficient self, Vector _A)"""
-        return _coefficient.VectorSumCoefficient_SetA(self, _A)
+    def SetA(self, A_):
+        r"""SetA(VectorSumCoefficient self, Vector A_)"""
+        return _coefficient.VectorSumCoefficient_SetA(self, A_)
     SetA = _swig_new_instance_method(_coefficient.VectorSumCoefficient_SetA)
 
     def GetA(self):
@@ -1325,9 +1493,9 @@ class VectorSumCoefficient(VectorCoefficient):
         return _coefficient.VectorSumCoefficient_GetA(self)
     GetA = _swig_new_instance_method(_coefficient.VectorSumCoefficient_GetA)
 
-    def SetB(self, _B):
-        r"""SetB(VectorSumCoefficient self, Vector _B)"""
-        return _coefficient.VectorSumCoefficient_SetB(self, _B)
+    def SetB(self, B_):
+        r"""SetB(VectorSumCoefficient self, Vector B_)"""
+        return _coefficient.VectorSumCoefficient_SetB(self, B_)
     SetB = _swig_new_instance_method(_coefficient.VectorSumCoefficient_SetB)
 
     def GetB(self):
@@ -1335,9 +1503,9 @@ class VectorSumCoefficient(VectorCoefficient):
         return _coefficient.VectorSumCoefficient_GetB(self)
     GetB = _swig_new_instance_method(_coefficient.VectorSumCoefficient_GetB)
 
-    def SetAlpha(self, _alpha):
-        r"""SetAlpha(VectorSumCoefficient self, double _alpha)"""
-        return _coefficient.VectorSumCoefficient_SetAlpha(self, _alpha)
+    def SetAlpha(self, alpha_):
+        r"""SetAlpha(VectorSumCoefficient self, double alpha_)"""
+        return _coefficient.VectorSumCoefficient_SetAlpha(self, alpha_)
     SetAlpha = _swig_new_instance_method(_coefficient.VectorSumCoefficient_SetAlpha)
 
     def GetAlpha(self):
@@ -1345,9 +1513,9 @@ class VectorSumCoefficient(VectorCoefficient):
         return _coefficient.VectorSumCoefficient_GetAlpha(self)
     GetAlpha = _swig_new_instance_method(_coefficient.VectorSumCoefficient_GetAlpha)
 
-    def SetBeta(self, _beta):
-        r"""SetBeta(VectorSumCoefficient self, double _beta)"""
-        return _coefficient.VectorSumCoefficient_SetBeta(self, _beta)
+    def SetBeta(self, beta_):
+        r"""SetBeta(VectorSumCoefficient self, double beta_)"""
+        return _coefficient.VectorSumCoefficient_SetBeta(self, beta_)
     SetBeta = _swig_new_instance_method(_coefficient.VectorSumCoefficient_SetBeta)
 
     def GetBeta(self):
@@ -1379,6 +1547,11 @@ class ScalarVectorProductCoefficient(VectorCoefficient):
         __init__(ScalarVectorProductCoefficient self, Coefficient A, VectorCoefficient B) -> ScalarVectorProductCoefficient
         """
         _coefficient.ScalarVectorProductCoefficient_swiginit(self, _coefficient.new_ScalarVectorProductCoefficient(*args))
+
+    def SetTime(self, t):
+        r"""SetTime(ScalarVectorProductCoefficient self, double t)"""
+        return _coefficient.ScalarVectorProductCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.ScalarVectorProductCoefficient_SetTime)
 
     def SetAConst(self, A):
         r"""SetAConst(ScalarVectorProductCoefficient self, double A)"""
@@ -1432,6 +1605,11 @@ class NormalizedVectorCoefficient(VectorCoefficient):
         r"""__init__(NormalizedVectorCoefficient self, VectorCoefficient A, double tol=1e-6) -> NormalizedVectorCoefficient"""
         _coefficient.NormalizedVectorCoefficient_swiginit(self, _coefficient.new_NormalizedVectorCoefficient(A, tol))
 
+    def SetTime(self, t):
+        r"""SetTime(NormalizedVectorCoefficient self, double t)"""
+        return _coefficient.NormalizedVectorCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.NormalizedVectorCoefficient_SetTime)
+
     def SetACoef(self, A):
         r"""SetACoef(NormalizedVectorCoefficient self, VectorCoefficient A)"""
         return _coefficient.NormalizedVectorCoefficient_SetACoef(self, A)
@@ -1463,6 +1641,11 @@ class VectorCrossProductCoefficient(VectorCoefficient):
     def __init__(self, A, B):
         r"""__init__(VectorCrossProductCoefficient self, VectorCoefficient A, VectorCoefficient B) -> VectorCrossProductCoefficient"""
         _coefficient.VectorCrossProductCoefficient_swiginit(self, _coefficient.new_VectorCrossProductCoefficient(A, B))
+
+    def SetTime(self, t):
+        r"""SetTime(VectorCrossProductCoefficient self, double t)"""
+        return _coefficient.VectorCrossProductCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.VectorCrossProductCoefficient_SetTime)
 
     def SetACoef(self, A):
         r"""SetACoef(VectorCrossProductCoefficient self, VectorCoefficient A)"""
@@ -1505,6 +1688,11 @@ class MatrixVectorProductCoefficient(VectorCoefficient):
     def __init__(self, A, B):
         r"""__init__(MatrixVectorProductCoefficient self, MatrixCoefficient A, VectorCoefficient B) -> MatrixVectorProductCoefficient"""
         _coefficient.MatrixVectorProductCoefficient_swiginit(self, _coefficient.new_MatrixVectorProductCoefficient(A, B))
+
+    def SetTime(self, t):
+        r"""SetTime(MatrixVectorProductCoefficient self, double t)"""
+        return _coefficient.MatrixVectorProductCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.MatrixVectorProductCoefficient_SetTime)
 
     def SetACoef(self, A):
         r"""SetACoef(MatrixVectorProductCoefficient self, MatrixCoefficient A)"""
@@ -1563,9 +1751,14 @@ class MatrixSumCoefficient(MatrixCoefficient):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, A, B, _alpha=1.0, _beta=1.0):
-        r"""__init__(MatrixSumCoefficient self, MatrixCoefficient A, MatrixCoefficient B, double _alpha=1.0, double _beta=1.0) -> MatrixSumCoefficient"""
-        _coefficient.MatrixSumCoefficient_swiginit(self, _coefficient.new_MatrixSumCoefficient(A, B, _alpha, _beta))
+    def __init__(self, A, B, alpha_=1.0, beta_=1.0):
+        r"""__init__(MatrixSumCoefficient self, MatrixCoefficient A, MatrixCoefficient B, double alpha_=1.0, double beta_=1.0) -> MatrixSumCoefficient"""
+        _coefficient.MatrixSumCoefficient_swiginit(self, _coefficient.new_MatrixSumCoefficient(A, B, alpha_, beta_))
+
+    def SetTime(self, t):
+        r"""SetTime(MatrixSumCoefficient self, double t)"""
+        return _coefficient.MatrixSumCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.MatrixSumCoefficient_SetTime)
 
     def SetACoef(self, A):
         r"""SetACoef(MatrixSumCoefficient self, MatrixCoefficient A)"""
@@ -1587,9 +1780,9 @@ class MatrixSumCoefficient(MatrixCoefficient):
         return _coefficient.MatrixSumCoefficient_GetBCoef(self)
     GetBCoef = _swig_new_instance_method(_coefficient.MatrixSumCoefficient_GetBCoef)
 
-    def SetAlpha(self, _alpha):
-        r"""SetAlpha(MatrixSumCoefficient self, double _alpha)"""
-        return _coefficient.MatrixSumCoefficient_SetAlpha(self, _alpha)
+    def SetAlpha(self, alpha_):
+        r"""SetAlpha(MatrixSumCoefficient self, double alpha_)"""
+        return _coefficient.MatrixSumCoefficient_SetAlpha(self, alpha_)
     SetAlpha = _swig_new_instance_method(_coefficient.MatrixSumCoefficient_SetAlpha)
 
     def GetAlpha(self):
@@ -1597,9 +1790,9 @@ class MatrixSumCoefficient(MatrixCoefficient):
         return _coefficient.MatrixSumCoefficient_GetAlpha(self)
     GetAlpha = _swig_new_instance_method(_coefficient.MatrixSumCoefficient_GetAlpha)
 
-    def SetBeta(self, _beta):
-        r"""SetBeta(MatrixSumCoefficient self, double _beta)"""
-        return _coefficient.MatrixSumCoefficient_SetBeta(self, _beta)
+    def SetBeta(self, beta_):
+        r"""SetBeta(MatrixSumCoefficient self, double beta_)"""
+        return _coefficient.MatrixSumCoefficient_SetBeta(self, beta_)
     SetBeta = _swig_new_instance_method(_coefficient.MatrixSumCoefficient_SetBeta)
 
     def GetBeta(self):
@@ -1628,6 +1821,11 @@ class ScalarMatrixProductCoefficient(MatrixCoefficient):
         __init__(ScalarMatrixProductCoefficient self, Coefficient A, MatrixCoefficient B) -> ScalarMatrixProductCoefficient
         """
         _coefficient.ScalarMatrixProductCoefficient_swiginit(self, _coefficient.new_ScalarMatrixProductCoefficient(*args))
+
+    def SetTime(self, t):
+        r"""SetTime(ScalarMatrixProductCoefficient self, double t)"""
+        return _coefficient.ScalarMatrixProductCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.ScalarMatrixProductCoefficient_SetTime)
 
     def SetAConst(self, A):
         r"""SetAConst(ScalarMatrixProductCoefficient self, double A)"""
@@ -1678,6 +1876,11 @@ class TransposeMatrixCoefficient(MatrixCoefficient):
         r"""__init__(TransposeMatrixCoefficient self, MatrixCoefficient A) -> TransposeMatrixCoefficient"""
         _coefficient.TransposeMatrixCoefficient_swiginit(self, _coefficient.new_TransposeMatrixCoefficient(A))
 
+    def SetTime(self, t):
+        r"""SetTime(TransposeMatrixCoefficient self, double t)"""
+        return _coefficient.TransposeMatrixCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.TransposeMatrixCoefficient_SetTime)
+
     def SetACoef(self, A):
         r"""SetACoef(TransposeMatrixCoefficient self, MatrixCoefficient A)"""
         return _coefficient.TransposeMatrixCoefficient_SetACoef(self, A)
@@ -1707,6 +1910,11 @@ class InverseMatrixCoefficient(MatrixCoefficient):
         r"""__init__(InverseMatrixCoefficient self, MatrixCoefficient A) -> InverseMatrixCoefficient"""
         _coefficient.InverseMatrixCoefficient_swiginit(self, _coefficient.new_InverseMatrixCoefficient(A))
 
+    def SetTime(self, t):
+        r"""SetTime(InverseMatrixCoefficient self, double t)"""
+        return _coefficient.InverseMatrixCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.InverseMatrixCoefficient_SetTime)
+
     def SetACoef(self, A):
         r"""SetACoef(InverseMatrixCoefficient self, MatrixCoefficient A)"""
         return _coefficient.InverseMatrixCoefficient_SetACoef(self, A)
@@ -1735,6 +1943,11 @@ class OuterProductCoefficient(MatrixCoefficient):
     def __init__(self, A, B):
         r"""__init__(OuterProductCoefficient self, VectorCoefficient A, VectorCoefficient B) -> OuterProductCoefficient"""
         _coefficient.OuterProductCoefficient_swiginit(self, _coefficient.new_OuterProductCoefficient(A, B))
+
+    def SetTime(self, t):
+        r"""SetTime(OuterProductCoefficient self, double t)"""
+        return _coefficient.OuterProductCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.OuterProductCoefficient_SetTime)
 
     def SetACoef(self, A):
         r"""SetACoef(OuterProductCoefficient self, VectorCoefficient A)"""
@@ -1771,9 +1984,17 @@ class CrossCrossCoefficient(MatrixCoefficient):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, A, K):
-        r"""__init__(CrossCrossCoefficient self, Coefficient A, VectorCoefficient K) -> CrossCrossCoefficient"""
-        _coefficient.CrossCrossCoefficient_swiginit(self, _coefficient.new_CrossCrossCoefficient(A, K))
+    def __init__(self, *args):
+        r"""
+        __init__(CrossCrossCoefficient self, double A, VectorCoefficient K) -> CrossCrossCoefficient
+        __init__(CrossCrossCoefficient self, Coefficient A, VectorCoefficient K) -> CrossCrossCoefficient
+        """
+        _coefficient.CrossCrossCoefficient_swiginit(self, _coefficient.new_CrossCrossCoefficient(*args))
+
+    def SetTime(self, t):
+        r"""SetTime(CrossCrossCoefficient self, double t)"""
+        return _coefficient.CrossCrossCoefficient_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.CrossCrossCoefficient_SetTime)
 
     def SetAConst(self, A):
         r"""SetAConst(CrossCrossCoefficient self, double A)"""
@@ -1823,9 +2044,9 @@ class VectorQuadratureFunctionCoefficient(VectorCoefficient):
         raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
 
-    def SetComponent(self, _index, _length):
-        r"""SetComponent(VectorQuadratureFunctionCoefficient self, int _index, int _length)"""
-        return _coefficient.VectorQuadratureFunctionCoefficient_SetComponent(self, _index, _length)
+    def SetComponent(self, index_, length_):
+        r"""SetComponent(VectorQuadratureFunctionCoefficient self, int index_, int length_)"""
+        return _coefficient.VectorQuadratureFunctionCoefficient_SetComponent(self, index_, length_)
     SetComponent = _swig_new_instance_method(_coefficient.VectorQuadratureFunctionCoefficient_SetComponent)
 
     def GetQuadFunction(self):

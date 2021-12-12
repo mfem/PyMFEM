@@ -3405,6 +3405,15 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
   return SWIG_OK;
 }
 
+SWIGINTERN mfem::Array< mfem::Geometry::Type > *new_mfem_Array_Sl_mfem_Geometry_Type_Sg___SWIG_6(int *pymfem_size){
+    /*
+    This method is wrapped to recived tuple or list to create
+    Array object
+    */
+    mfem::Array <mfem::Geometry::Type>  *arr;
+    arr = new mfem::Array<mfem::Geometry::Type>(*pymfem_size);
+    return arr;
+  }
 SWIGINTERN void mfem_Array_Sl_mfem_Geometry_Type_Sg____setitem__(mfem::Array< mfem::Geometry::Type > *self,int i,mfem::Geometry::Type const v){
     (* self)[i] = v;
     }
@@ -5478,102 +5487,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_GeometryTypeArray(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_GeometryTypeArray", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 0) {
-    return _wrap_new_GeometryTypeArray__SWIG_0(self, argc, argv);
-  }
-  if (argc == 1) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_GeometryTypeArray__SWIG_5(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    {
-      int res = SWIG_AsVal_int(argv[0], NULL);
-      _v = SWIG_CheckState(res);
-    }
-    if (_v) {
-      return _wrap_new_GeometryTypeArray__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    {
-      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
-        PyErr_Clear();
-        _v = 0;
-      } else {
-        _v = 1;    
-      }
-    }
-    if (_v) {
-      return _wrap_new_GeometryTypeArray__SWIG_2(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Geometry__Type, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        return _wrap_new_GeometryTypeArray__SWIG_4(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    {
-      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
-        PyErr_Clear();
-        _v = 0;
-      } else {
-        _v = 1;    
-      }
-    }
-    if (_v) {
-      {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        return _wrap_new_GeometryTypeArray__SWIG_3(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_GeometryTypeArray'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Array< mfem::Geometry::Type >::Array()\n"
-    "    mfem::Array< mfem::Geometry::Type >::Array(mfem::MemoryType)\n"
-    "    mfem::Array< mfem::Geometry::Type >::Array(int)\n"
-    "    mfem::Array< mfem::Geometry::Type >::Array(int,mfem::MemoryType)\n"
-    "    mfem::Array< mfem::Geometry::Type >::Array(mfem::Geometry::Type *,int)\n"
-    "    mfem::Array< mfem::Geometry::Type >::Array(mfem::Array< mfem::Geometry::Type > const &)\n");
-  return 0;
-}
-
-
 SWIGINTERN PyObject *_wrap_delete_GeometryTypeArray(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Array< mfem::Geometry::Type > *arg1 = (mfem::Array< mfem::Geometry::Type > *) 0 ;
@@ -7544,6 +7457,166 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_new_GeometryTypeArray__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  int *arg1 = (int *) 0 ;
+  int *temp_ptr1 ;
+  bool is_tuple1 = false ;
+  mfem::Array< mfem::Geometry::Type > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    int i;
+    if (!PyList_Check(swig_obj[0])) {
+      if (!PyTuple_Check(swig_obj[0])) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
+        return NULL;
+      } else {
+        is_tuple1 = true;
+      }
+    }
+    *temp_ptr1 = (is_tuple1) ? PyTuple_Size(swig_obj[0]) : PyList_Size(swig_obj[0]);
+    arg1 = temp_ptr1;
+  }
+  {
+    try {
+      result = (mfem::Array< mfem::Geometry::Type > *)new_mfem_Array_Sl_mfem_Geometry_Type_Sg___SWIG_6(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t, SWIG_POINTER_NEW |  0 );
+  {
+    PyObject *method = PyObject_GetAttrString(swig_obj[0], "__setitem__");
+    PyObject *keywords = PyDict_New();  
+    for (int i = 0; i < *temp_ptr1; i++) {
+      PyObject *s = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], i) : PyList_GetItem(swig_obj[0],i);
+      PyObject *args = Py_BuildValue("io", i, s);
+      PyObject_Call(method, args, keywords);
+      Py_DECREF(args);				       
+    }
+    
+    Py_DECREF(keywords);
+    Py_DECREF(method);      
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_GeometryTypeArray(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_GeometryTypeArray", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_GeometryTypeArray__SWIG_0(self, argc, argv);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t, SWIG_POINTER_NO_NULL | 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_GeometryTypeArray__SWIG_5(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_int, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_GeometryTypeArray__SWIG_6(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      int res = SWIG_AsVal_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      return _wrap_new_GeometryTypeArray__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
+    }
+    if (_v) {
+      return _wrap_new_GeometryTypeArray__SWIG_2(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Geometry__Type, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_new_GeometryTypeArray__SWIG_4(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_new_GeometryTypeArray__SWIG_3(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_GeometryTypeArray'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< mfem::Geometry::Type >::Array()\n"
+    "    mfem::Array< mfem::Geometry::Type >::Array(mfem::MemoryType)\n"
+    "    mfem::Array< mfem::Geometry::Type >::Array(int)\n"
+    "    mfem::Array< mfem::Geometry::Type >::Array(int,mfem::MemoryType)\n"
+    "    mfem::Array< mfem::Geometry::Type >::Array(mfem::Geometry::Type *,int)\n"
+    "    mfem::Array< mfem::Geometry::Type >::Array(mfem::Array< mfem::Geometry::Type > const &)\n"
+    "    mfem::Array< mfem::Geometry::Type >::Array(int *)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_GeometryTypeArray___setitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Array< mfem::Geometry::Type > *arg1 = (mfem::Array< mfem::Geometry::Type > *) 0 ;
@@ -7865,14 +7938,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_GeometryRefiner", _wrap_delete_GeometryRefiner, METH_O, "delete_GeometryRefiner(GeometryRefiner self)"},
 	 { "GeometryRefiner_swigregister", GeometryRefiner_swigregister, METH_O, NULL},
 	 { "GeometryRefiner_swiginit", GeometryRefiner_swiginit, METH_VARARGS, NULL},
-	 { "new_GeometryTypeArray", _wrap_new_GeometryTypeArray, METH_VARARGS, "\n"
-		"GeometryTypeArray()\n"
-		"GeometryTypeArray(mfem::MemoryType mt)\n"
-		"GeometryTypeArray(int asize)\n"
-		"GeometryTypeArray(int asize, mfem::MemoryType mt)\n"
-		"GeometryTypeArray(mfem::Geometry::Type * data_, int asize)\n"
-		"new_GeometryTypeArray(GeometryTypeArray src) -> GeometryTypeArray\n"
-		""},
 	 { "delete_GeometryTypeArray", _wrap_delete_GeometryTypeArray, METH_O, "delete_GeometryTypeArray(GeometryTypeArray self)"},
 	 { "GeometryTypeArray_GetData", _wrap_GeometryTypeArray_GetData, METH_VARARGS, "\n"
 		"GeometryTypeArray_GetData(GeometryTypeArray self) -> mfem::Geometry::Type\n"
@@ -7928,6 +7993,15 @@ static PyMethodDef SwigMethods[] = {
 	 { "GeometryTypeArray_HostWrite", _wrap_GeometryTypeArray_HostWrite, METH_O, "GeometryTypeArray_HostWrite(GeometryTypeArray self) -> mfem::Geometry::Type *"},
 	 { "GeometryTypeArray_ReadWrite", (PyCFunction)(void(*)(void))_wrap_GeometryTypeArray_ReadWrite, METH_VARARGS|METH_KEYWORDS, "GeometryTypeArray_ReadWrite(GeometryTypeArray self, bool on_dev=True) -> mfem::Geometry::Type *"},
 	 { "GeometryTypeArray_HostReadWrite", _wrap_GeometryTypeArray_HostReadWrite, METH_O, "GeometryTypeArray_HostReadWrite(GeometryTypeArray self) -> mfem::Geometry::Type *"},
+	 { "new_GeometryTypeArray", _wrap_new_GeometryTypeArray, METH_VARARGS, "\n"
+		"GeometryTypeArray()\n"
+		"GeometryTypeArray(mfem::MemoryType mt)\n"
+		"GeometryTypeArray(int asize)\n"
+		"GeometryTypeArray(int asize, mfem::MemoryType mt)\n"
+		"GeometryTypeArray(mfem::Geometry::Type * data_, int asize)\n"
+		"GeometryTypeArray(GeometryTypeArray src)\n"
+		"new_GeometryTypeArray(int * pymfem_size) -> GeometryTypeArray\n"
+		""},
 	 { "GeometryTypeArray___setitem__", (PyCFunction)(void(*)(void))_wrap_GeometryTypeArray___setitem__, METH_VARARGS|METH_KEYWORDS, "GeometryTypeArray___setitem__(GeometryTypeArray self, int i, mfem::Geometry::Type const v)"},
 	 { "GeometryTypeArray___getitem__", (PyCFunction)(void(*)(void))_wrap_GeometryTypeArray___getitem__, METH_VARARGS|METH_KEYWORDS, "GeometryTypeArray___getitem__(GeometryTypeArray self, int const i) -> mfem::Geometry::Type const &"},
 	 { "GeometryTypeArray_Assign", _wrap_GeometryTypeArray_Assign, METH_VARARGS, "\n"
@@ -7995,14 +8069,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_GeometryRefiner", _wrap_delete_GeometryRefiner, METH_O, "delete_GeometryRefiner(GeometryRefiner self)"},
 	 { "GeometryRefiner_swigregister", GeometryRefiner_swigregister, METH_O, NULL},
 	 { "GeometryRefiner_swiginit", GeometryRefiner_swiginit, METH_VARARGS, NULL},
-	 { "new_GeometryTypeArray", _wrap_new_GeometryTypeArray, METH_VARARGS, "\n"
-		"GeometryTypeArray()\n"
-		"GeometryTypeArray(mfem::MemoryType mt)\n"
-		"GeometryTypeArray(int asize)\n"
-		"GeometryTypeArray(int asize, mfem::MemoryType mt)\n"
-		"GeometryTypeArray(mfem::Geometry::Type * data_, int asize)\n"
-		"new_GeometryTypeArray(GeometryTypeArray src) -> GeometryTypeArray\n"
-		""},
 	 { "delete_GeometryTypeArray", _wrap_delete_GeometryTypeArray, METH_O, "delete_GeometryTypeArray(GeometryTypeArray self)"},
 	 { "GeometryTypeArray_GetData", _wrap_GeometryTypeArray_GetData, METH_VARARGS, "\n"
 		"GetData(GeometryTypeArray self) -> mfem::Geometry::Type\n"
@@ -8058,6 +8124,15 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "GeometryTypeArray_HostWrite", _wrap_GeometryTypeArray_HostWrite, METH_O, "HostWrite(GeometryTypeArray self) -> mfem::Geometry::Type *"},
 	 { "GeometryTypeArray_ReadWrite", (PyCFunction)(void(*)(void))_wrap_GeometryTypeArray_ReadWrite, METH_VARARGS|METH_KEYWORDS, "ReadWrite(GeometryTypeArray self, bool on_dev=True) -> mfem::Geometry::Type *"},
 	 { "GeometryTypeArray_HostReadWrite", _wrap_GeometryTypeArray_HostReadWrite, METH_O, "HostReadWrite(GeometryTypeArray self) -> mfem::Geometry::Type *"},
+	 { "new_GeometryTypeArray", _wrap_new_GeometryTypeArray, METH_VARARGS, "\n"
+		"GeometryTypeArray()\n"
+		"GeometryTypeArray(mfem::MemoryType mt)\n"
+		"GeometryTypeArray(int asize)\n"
+		"GeometryTypeArray(int asize, mfem::MemoryType mt)\n"
+		"GeometryTypeArray(mfem::Geometry::Type * data_, int asize)\n"
+		"GeometryTypeArray(GeometryTypeArray src)\n"
+		"new_GeometryTypeArray(int * pymfem_size) -> GeometryTypeArray\n"
+		""},
 	 { "GeometryTypeArray___setitem__", (PyCFunction)(void(*)(void))_wrap_GeometryTypeArray___setitem__, METH_VARARGS|METH_KEYWORDS, "__setitem__(GeometryTypeArray self, int i, mfem::Geometry::Type const v)"},
 	 { "GeometryTypeArray___getitem__", (PyCFunction)(void(*)(void))_wrap_GeometryTypeArray___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(GeometryTypeArray self, int const i) -> mfem::Geometry::Type const &"},
 	 { "GeometryTypeArray_Assign", _wrap_GeometryTypeArray_Assign, METH_VARARGS, "\n"
