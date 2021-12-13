@@ -117,5 +117,137 @@ import mfem._par.restriction
 import mfem._par.bilininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+class FindPointsGSLIB(object):
+    r"""Proxy of C++ mfem::FindPointsGSLIB class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    NONE = _gslib.FindPointsGSLIB_NONE
+    
+    ARITHMETIC = _gslib.FindPointsGSLIB_ARITHMETIC
+    
+    HARMONIC = _gslib.FindPointsGSLIB_HARMONIC
+    
+
+    def __init__(self, *args):
+        r"""
+        __init__(FindPointsGSLIB self) -> FindPointsGSLIB
+        __init__(FindPointsGSLIB self, MPI_Comm comm_) -> FindPointsGSLIB
+        """
+        _gslib.FindPointsGSLIB_swiginit(self, _gslib.new_FindPointsGSLIB(*args))
+    __swig_destroy__ = _gslib.delete_FindPointsGSLIB
+
+    def Setup(self, m, bb_t=0.1, newt_tol=1.0e-12, npt_max=256):
+        r"""Setup(FindPointsGSLIB self, Mesh m, double const bb_t=0.1, double const newt_tol=1.0e-12, int const npt_max=256)"""
+        return _gslib.FindPointsGSLIB_Setup(self, m, bb_t, newt_tol, npt_max)
+    Setup = _swig_new_instance_method(_gslib.FindPointsGSLIB_Setup)
+
+    def FindPoints(self, *args):
+        r"""
+        FindPoints(FindPointsGSLIB self, Vector point_pos)
+        FindPoints(FindPointsGSLIB self, Mesh m, Vector point_pos, double const bb_t=0.1, double const newt_tol=1.0e-12, int const npt_max=256)
+        """
+        return _gslib.FindPointsGSLIB_FindPoints(self, *args)
+    FindPoints = _swig_new_instance_method(_gslib.FindPointsGSLIB_FindPoints)
+
+    def Interpolate(self, *args):
+        r"""
+        Interpolate(FindPointsGSLIB self, GridFunction field_in, Vector field_out)
+        Interpolate(FindPointsGSLIB self, Vector point_pos, GridFunction field_in, Vector field_out)
+        Interpolate(FindPointsGSLIB self, Mesh m, Vector point_pos, GridFunction field_in, Vector field_out)
+        """
+        return _gslib.FindPointsGSLIB_Interpolate(self, *args)
+    Interpolate = _swig_new_instance_method(_gslib.FindPointsGSLIB_Interpolate)
+
+    def SetL2AvgType(self, avgtype_):
+        r"""SetL2AvgType(FindPointsGSLIB self, mfem::FindPointsGSLIB::AvgType avgtype_)"""
+        return _gslib.FindPointsGSLIB_SetL2AvgType(self, avgtype_)
+    SetL2AvgType = _swig_new_instance_method(_gslib.FindPointsGSLIB_SetL2AvgType)
+
+    def SetDefaultInterpolationValue(self, interp_value_):
+        r"""SetDefaultInterpolationValue(FindPointsGSLIB self, double interp_value_)"""
+        return _gslib.FindPointsGSLIB_SetDefaultInterpolationValue(self, interp_value_)
+    SetDefaultInterpolationValue = _swig_new_instance_method(_gslib.FindPointsGSLIB_SetDefaultInterpolationValue)
+
+    def FreeData(self):
+        r"""FreeData(FindPointsGSLIB self)"""
+        return _gslib.FindPointsGSLIB_FreeData(self)
+    FreeData = _swig_new_instance_method(_gslib.FindPointsGSLIB_FreeData)
+
+    def GetCode(self):
+        r"""GetCode(FindPointsGSLIB self) -> mfem::Array< unsigned int > const &"""
+        return _gslib.FindPointsGSLIB_GetCode(self)
+    GetCode = _swig_new_instance_method(_gslib.FindPointsGSLIB_GetCode)
+
+    def GetElem(self):
+        r"""GetElem(FindPointsGSLIB self) -> mfem::Array< unsigned int > const &"""
+        return _gslib.FindPointsGSLIB_GetElem(self)
+    GetElem = _swig_new_instance_method(_gslib.FindPointsGSLIB_GetElem)
+
+    def GetProc(self):
+        r"""GetProc(FindPointsGSLIB self) -> mfem::Array< unsigned int > const &"""
+        return _gslib.FindPointsGSLIB_GetProc(self)
+    GetProc = _swig_new_instance_method(_gslib.FindPointsGSLIB_GetProc)
+
+    def GetReferencePosition(self):
+        r"""GetReferencePosition(FindPointsGSLIB self) -> Vector"""
+        return _gslib.FindPointsGSLIB_GetReferencePosition(self)
+    GetReferencePosition = _swig_new_instance_method(_gslib.FindPointsGSLIB_GetReferencePosition)
+
+    def GetDist(self):
+        r"""GetDist(FindPointsGSLIB self) -> Vector"""
+        return _gslib.FindPointsGSLIB_GetDist(self)
+    GetDist = _swig_new_instance_method(_gslib.FindPointsGSLIB_GetDist)
+
+    def GetGSLIBElem(self):
+        r"""GetGSLIBElem(FindPointsGSLIB self) -> mfem::Array< unsigned int > const &"""
+        return _gslib.FindPointsGSLIB_GetGSLIBElem(self)
+    GetGSLIBElem = _swig_new_instance_method(_gslib.FindPointsGSLIB_GetGSLIBElem)
+
+    def GetGSLIBReferencePosition(self):
+        r"""GetGSLIBReferencePosition(FindPointsGSLIB self) -> Vector"""
+        return _gslib.FindPointsGSLIB_GetGSLIBReferencePosition(self)
+    GetGSLIBReferencePosition = _swig_new_instance_method(_gslib.FindPointsGSLIB_GetGSLIBReferencePosition)
+
+# Register FindPointsGSLIB in _gslib:
+_gslib.FindPointsGSLIB_swigregister(FindPointsGSLIB)
+
+class OversetFindPointsGSLIB(FindPointsGSLIB):
+    r"""Proxy of C++ mfem::OversetFindPointsGSLIB class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        r"""
+        __init__(OversetFindPointsGSLIB self) -> OversetFindPointsGSLIB
+        __init__(OversetFindPointsGSLIB self, MPI_Comm comm_) -> OversetFindPointsGSLIB
+        """
+        _gslib.OversetFindPointsGSLIB_swiginit(self, _gslib.new_OversetFindPointsGSLIB(*args))
+
+    def Setup(self, m, meshid, gfmax=None, bb_t=0.1, newt_tol=1.0e-12, npt_max=256):
+        r"""Setup(OversetFindPointsGSLIB self, Mesh m, int const meshid, GridFunction gfmax=None, double const bb_t=0.1, double const newt_tol=1.0e-12, int const npt_max=256)"""
+        return _gslib.OversetFindPointsGSLIB_Setup(self, m, meshid, gfmax, bb_t, newt_tol, npt_max)
+    Setup = _swig_new_instance_method(_gslib.OversetFindPointsGSLIB_Setup)
+
+    def FindPoints(self, point_pos, point_id):
+        r"""FindPoints(OversetFindPointsGSLIB self, Vector point_pos, mfem::Array< unsigned int > & point_id)"""
+        return _gslib.OversetFindPointsGSLIB_FindPoints(self, point_pos, point_id)
+    FindPoints = _swig_new_instance_method(_gslib.OversetFindPointsGSLIB_FindPoints)
+
+    def Interpolate(self, *args):
+        r"""
+        Interpolate(OversetFindPointsGSLIB self, Vector point_pos, mfem::Array< unsigned int > & point_id, GridFunction field_in, Vector field_out)
+        Interpolate(OversetFindPointsGSLIB self, GridFunction field_in, Vector field_out)
+        Interpolate(OversetFindPointsGSLIB self, Vector point_pos, GridFunction field_in, Vector field_out)
+        Interpolate(OversetFindPointsGSLIB self, Mesh m, Vector point_pos, GridFunction field_in, Vector field_out)
+        """
+        return _gslib.OversetFindPointsGSLIB_Interpolate(self, *args)
+    Interpolate = _swig_new_instance_method(_gslib.OversetFindPointsGSLIB_Interpolate)
+    __swig_destroy__ = _gslib.delete_OversetFindPointsGSLIB
+
+# Register OversetFindPointsGSLIB in _gslib:
+_gslib.OversetFindPointsGSLIB_swigregister(OversetFindPointsGSLIB)
+
 
 
