@@ -247,7 +247,7 @@ class IntegrationPointArray(object):
         __init__(IntegrationPointArray self, int asize, mfem::MemoryType mt) -> IntegrationPointArray
         __init__(IntegrationPointArray self, IntegrationPoint data_, int asize) -> IntegrationPointArray
         __init__(IntegrationPointArray self, IntegrationPointArray src) -> IntegrationPointArray
-        __init__(IntegrationPointArray self, int * pymfem_size) -> IntegrationPointArray
+        __init__(IntegrationPointArray self, void * List_or_Tuple) -> IntegrationPointArray
         """
         _intrules.IntegrationPointArray_swiginit(self, _intrules.new_IntegrationPointArray(*args))
 

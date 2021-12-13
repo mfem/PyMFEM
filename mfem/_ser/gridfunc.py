@@ -73,6 +73,7 @@ import mfem._ser.coefficient
 import mfem._ser.globals
 import mfem._ser.matrix
 import mfem._ser.operators
+import mfem._ser.symmat
 import mfem._ser.intrules
 import mfem._ser.sparsemat
 import mfem._ser.densemat

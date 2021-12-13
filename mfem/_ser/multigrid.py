@@ -216,11 +216,7 @@ class PyGeometricMultigrid(GeometricMultigrid):
 
     def __init__(self, fespaces_):
         r"""__init__(PyGeometricMultigrid self, FiniteElementSpaceHierarchy fespaces_) -> PyGeometricMultigrid"""
-        if self.__class__ == PyGeometricMultigrid:
-            _self = None
-        else:
-            _self = self
-        _multigrid.PyGeometricMultigrid_swiginit(self, _multigrid.new_PyGeometricMultigrid(_self, fespaces_))
+        _multigrid.PyGeometricMultigrid_swiginit(self, _multigrid.new_PyGeometricMultigrid(fespaces_))
 
     def AppendBilinearForm(self, form):
         r"""AppendBilinearForm(PyGeometricMultigrid self, BilinearForm form)"""
@@ -256,10 +252,6 @@ class PyGeometricMultigrid(GeometricMultigrid):
 
 
     __swig_destroy__ = _multigrid.delete_PyGeometricMultigrid
-    def __disown__(self):
-        self.this.disown()
-        _multigrid.disown_PyGeometricMultigrid(self)
-        return weakref.proxy(self)
 
 # Register PyGeometricMultigrid in _multigrid:
 _multigrid.PyGeometricMultigrid_swigregister(PyGeometricMultigrid)

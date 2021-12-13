@@ -84,6 +84,7 @@ import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.coefficient
+import mfem._par.symmat
 import mfem._par.sparsemat
 import mfem._par.eltrans
 import mfem._par.fe
@@ -593,7 +594,7 @@ class RefinementArray(object):
         __init__(RefinementArray self, int asize, mfem::MemoryType mt) -> RefinementArray
         __init__(RefinementArray self, Refinement data_, int asize) -> RefinementArray
         __init__(RefinementArray self, RefinementArray src) -> RefinementArray
-        __init__(RefinementArray self, int * pymfem_size) -> RefinementArray
+        __init__(RefinementArray self, void * List_or_Tuple) -> RefinementArray
         """
         _ncmesh.RefinementArray_swiginit(self, _ncmesh.new_RefinementArray(*args))
 

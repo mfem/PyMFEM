@@ -5,7 +5,8 @@
 #include "fem/pnonlinearform.hpp"
 #include "fem/linearform.hpp"
 #include "numpy/arrayobject.h"  
-#include "pyoperator.hpp"           
+#include "pyoperator.hpp"
+#include "pycoefficient.hpp"  
 %}
 
 %include "../common/mfem_config.i"

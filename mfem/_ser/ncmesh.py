@@ -76,6 +76,7 @@ import mfem._ser.operators
 import mfem._ser.sort_pairs
 import mfem._ser.gridfunc
 import mfem._ser.coefficient
+import mfem._ser.symmat
 import mfem._ser.intrules
 import mfem._ser.sparsemat
 import mfem._ser.densemat
@@ -592,7 +593,7 @@ class RefinementArray(object):
         __init__(RefinementArray self, int asize, mfem::MemoryType mt) -> RefinementArray
         __init__(RefinementArray self, Refinement data_, int asize) -> RefinementArray
         __init__(RefinementArray self, RefinementArray src) -> RefinementArray
-        __init__(RefinementArray self, int * pymfem_size) -> RefinementArray
+        __init__(RefinementArray self, void * List_or_Tuple) -> RefinementArray
         """
         _ncmesh.RefinementArray_swiginit(self, _ncmesh.new_RefinementArray(*args))
 

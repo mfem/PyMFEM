@@ -91,6 +91,7 @@ import mfem._par.fe_pos
 import mfem._par.fe_ser
 import mfem._par.eltrans
 import mfem._par.coefficient
+import mfem._par.symmat
 class LinearFormIntegrator(object):
     r"""Proxy of C++ mfem::LinearFormIntegrator class."""
 

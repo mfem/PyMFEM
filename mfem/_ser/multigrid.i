@@ -3,7 +3,7 @@
    multigrid.i
 
 */
-%module(package="mfem._ser", director=1) multigrid
+%module(package="mfem._ser") multigrid
 %feature("autodoc", "1");
 %{
 #include "linalg/operator.hpp"
@@ -29,7 +29,7 @@ ObjectArrayInput(mfem::Solver *);
 ObjectArrayInput(mfem::Operator *);
 BoolArrayInput(bool);
 
-%feature("director") mfem::PyGeometricMultigrid;
+//%feature("director") mfem::PyGeometricMultigrid;
 
 %pythonprepend mfem::PyGeometricMultigrid::AppendBilinearForm %{
    if not hasattr(self, "_forms"): self._forms = []

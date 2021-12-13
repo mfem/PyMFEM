@@ -3425,6 +3425,13 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
 }
 
 
+SWIGINTERNINLINE PyObject*
+  SWIG_From_bool  (bool value)
+{
+  return PyBool_FromLong(value ? 1 : 0);
+}
+
+
 #include <limits.h>
 #if !defined(SWIG_NO_LLONG_MAX)
 # if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
@@ -3448,13 +3455,6 @@ SWIG_AsVal_int (PyObject * obj, int *val)
     }
   }  
   return res;
-}
-
-
-SWIGINTERNINLINE PyObject*
-  SWIG_From_bool  (bool value)
-{
-  return PyBool_FromLong(value ? 1 : 0);
 }
 
 SWIGINTERN PyObject *mfem_SparseMatrix_GetIArray(mfem::SparseMatrix const *self){
@@ -4517,13 +4517,11 @@ SWIGINTERN PyObject *_wrap_new_SparseMatrix__SWIG_5(PyObject *SWIGUNUSEDPARM(sel
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = 0 ;
   bool arg2 = (bool) true ;
-  mfem::MemoryType arg3 = (mfem::MemoryType) MemoryType::PRESERVE ;
+  mfem::MemoryType arg3 = (mfem::MemoryType) mfem::MemoryType::PRESERVE ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   bool val2 ;
   int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   mfem::SparseMatrix *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 3)) SWIG_fail;
@@ -4543,11 +4541,11 @@ SWIGINTERN PyObject *_wrap_new_SparseMatrix__SWIG_5(PyObject *SWIGUNUSEDPARM(sel
     arg2 = static_cast< bool >(val2);
   }
   if (swig_obj[2]) {
-    ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-    if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SparseMatrix" "', argument " "3"" of type '" "mfem::MemoryType""'");
-    } 
-    arg3 = static_cast< mfem::MemoryType >(val3);
+    {
+      PyObject* k = PyObject_GetAttrString(swig_obj[2], "value");
+      int i = (int)PyLong_AsLong(k);
+      arg3 = static_cast< mfem::MemoryType >(i);
+    }
   }
   {
     try {
@@ -4645,8 +4643,23 @@ SWIGINTERN PyObject *_wrap_new_SparseMatrix(PyObject *self, PyObject *args) {
           return _wrap_new_SparseMatrix__SWIG_5(self, argc, argv);
         }
         {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          _v = 0;
+          PyObject* module = PyImport_ImportModule("enum");
+          if (!module){
+            _v = 0;
+          } else {
+            PyObject* cls = PyObject_GetAttrString(module, "IntEnum");
+            if (!cls){
+              _v = 0;            
+            } else {
+              int check = PyObject_IsInstance(argv[2], cls);
+              if (check) {
+                _v = 1;
+              }
+              Py_DECREF(cls);	 
+            }
+            Py_DECREF(module);
+          }
         }
         if (_v) {
           return _wrap_new_SparseMatrix__SWIG_5(self, argc, argv);
@@ -15992,7 +16005,7 @@ static PyMethodDef SwigMethods[] = {
 		"SparseMatrix(int * i)\n"
 		"SparseMatrix(int * i, bool ownij, bool owna, bool issorted)\n"
 		"SparseMatrix(int nrows, int ncols, int rowsize)\n"
-		"SparseMatrix(SparseMatrix mat, bool copy_graph=True, mfem::MemoryType mt=MemoryType::PRESERVE)\n"
+		"SparseMatrix(SparseMatrix mat, bool copy_graph=True, mfem::MemoryType mt=PRESERVE)\n"
 		"new_SparseMatrix(Vector v) -> SparseMatrix\n"
 		""},
 	 { "SparseMatrix_UseCuSparse", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_UseCuSparse, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_UseCuSparse(SparseMatrix self, bool useCuSparse_=True)"},
@@ -16239,7 +16252,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"SparseMatrix(int * i)\n"
 		"SparseMatrix(int * i, bool ownij, bool owna, bool issorted)\n"
 		"SparseMatrix(int nrows, int ncols, int rowsize)\n"
-		"SparseMatrix(SparseMatrix mat, bool copy_graph=True, mfem::MemoryType mt=MemoryType::PRESERVE)\n"
+		"SparseMatrix(SparseMatrix mat, bool copy_graph=True, mfem::MemoryType mt=PRESERVE)\n"
 		"new_SparseMatrix(Vector v) -> SparseMatrix\n"
 		""},
 	 { "SparseMatrix_UseCuSparse", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_UseCuSparse, METH_VARARGS|METH_KEYWORDS, "UseCuSparse(SparseMatrix self, bool useCuSparse_=True)"},

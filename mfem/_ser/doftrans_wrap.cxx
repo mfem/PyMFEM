@@ -3104,14 +3104,15 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[4]
 #define SWIGTYPE_p_mfem__DenseMatrix swig_types[5]
 #define SWIGTYPE_p_mfem__DofTransformation swig_types[6]
-#define SWIGTYPE_p_mfem__ND_DofTransformation swig_types[7]
-#define SWIGTYPE_p_mfem__ND_TetDofTransformation swig_types[8]
-#define SWIGTYPE_p_mfem__ND_TriDofTransformation swig_types[9]
-#define SWIGTYPE_p_mfem__ND_WedgeDofTransformation swig_types[10]
-#define SWIGTYPE_p_mfem__VDofTransformation swig_types[11]
-#define SWIGTYPE_p_mfem__Vector swig_types[12]
-static swig_type_info *swig_types[14];
-static swig_module_info swig_module = {swig_types, 13, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[7]
+#define SWIGTYPE_p_mfem__ND_DofTransformation swig_types[8]
+#define SWIGTYPE_p_mfem__ND_TetDofTransformation swig_types[9]
+#define SWIGTYPE_p_mfem__ND_TriDofTransformation swig_types[10]
+#define SWIGTYPE_p_mfem__ND_WedgeDofTransformation swig_types[11]
+#define SWIGTYPE_p_mfem__VDofTransformation swig_types[12]
+#define SWIGTYPE_p_mfem__Vector swig_types[13]
+static swig_type_info *swig_types[15];
+static swig_module_info swig_module = {swig_types, 14, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -7722,6 +7723,15 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
+static void *_p_mfem__ND_TriDofTransformationTo_p_mfem__ND_DofTransformation(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ND_DofTransformation *)  ((mfem::ND_TriDofTransformation *) x));
+}
+static void *_p_mfem__ND_TetDofTransformationTo_p_mfem__ND_DofTransformation(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ND_DofTransformation *)  ((mfem::ND_TetDofTransformation *) x));
+}
+static void *_p_mfem__ND_WedgeDofTransformationTo_p_mfem__ND_DofTransformation(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ND_DofTransformation *)  ((mfem::ND_WedgeDofTransformation *) x));
+}
 static void *_p_mfem__VDofTransformationTo_p_mfem__DofTransformation(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::DofTransformation *)  ((mfem::VDofTransformation *) x));
 }
@@ -7737,15 +7747,6 @@ static void *_p_mfem__ND_TetDofTransformationTo_p_mfem__DofTransformation(void *
 static void *_p_mfem__ND_WedgeDofTransformationTo_p_mfem__DofTransformation(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::DofTransformation *) (mfem::ND_DofTransformation *) ((mfem::ND_WedgeDofTransformation *) x));
 }
-static void *_p_mfem__ND_TriDofTransformationTo_p_mfem__ND_DofTransformation(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ND_DofTransformation *)  ((mfem::ND_TriDofTransformation *) x));
-}
-static void *_p_mfem__ND_TetDofTransformationTo_p_mfem__ND_DofTransformation(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ND_DofTransformation *)  ((mfem::ND_TetDofTransformation *) x));
-}
-static void *_p_mfem__ND_WedgeDofTransformationTo_p_mfem__ND_DofTransformation(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ND_DofTransformation *)  ((mfem::ND_WedgeDofTransformation *) x));
-}
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
@@ -7753,6 +7754,7 @@ static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DenseMatrix = {"_p_mfem__DenseMatrix", "mfem::DenseMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DofTransformation = {"_p_mfem__DofTransformation", "mfem::DofTransformation *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__IntegrationPoint = {"_p_mfem__IntegrationPoint", "mfem::IntegrationPoint *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ND_DofTransformation = {"_p_mfem__ND_DofTransformation", "mfem::ND_DofTransformation *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ND_TetDofTransformation = {"_p_mfem__ND_TetDofTransformation", "mfem::ND_TetDofTransformation *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ND_TriDofTransformation = {"_p_mfem__ND_TriDofTransformation", "mfem::ND_TriDofTransformation *", 0, 0, (void*)0, 0};
@@ -7768,6 +7770,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__ArrayT_int_t,
   &_swigt__p_mfem__DenseMatrix,
   &_swigt__p_mfem__DofTransformation,
+  &_swigt__p_mfem__IntegrationPoint,
   &_swigt__p_mfem__ND_DofTransformation,
   &_swigt__p_mfem__ND_TetDofTransformation,
   &_swigt__p_mfem__ND_TriDofTransformation,
@@ -7783,6 +7786,7 @@ static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {  {&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DofTransformation[] = {  {&_swigt__p_mfem__DofTransformation, 0, 0, 0},  {&_swigt__p_mfem__VDofTransformation, _p_mfem__VDofTransformationTo_p_mfem__DofTransformation, 0, 0},  {&_swigt__p_mfem__ND_DofTransformation, _p_mfem__ND_DofTransformationTo_p_mfem__DofTransformation, 0, 0},  {&_swigt__p_mfem__ND_TriDofTransformation, _p_mfem__ND_TriDofTransformationTo_p_mfem__DofTransformation, 0, 0},  {&_swigt__p_mfem__ND_TetDofTransformation, _p_mfem__ND_TetDofTransformationTo_p_mfem__DofTransformation, 0, 0},  {&_swigt__p_mfem__ND_WedgeDofTransformation, _p_mfem__ND_WedgeDofTransformationTo_p_mfem__DofTransformation, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__IntegrationPoint[] = {  {&_swigt__p_mfem__IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ND_DofTransformation[] = {  {&_swigt__p_mfem__ND_DofTransformation, 0, 0, 0},  {&_swigt__p_mfem__ND_TriDofTransformation, _p_mfem__ND_TriDofTransformationTo_p_mfem__ND_DofTransformation, 0, 0},  {&_swigt__p_mfem__ND_TetDofTransformation, _p_mfem__ND_TetDofTransformationTo_p_mfem__ND_DofTransformation, 0, 0},  {&_swigt__p_mfem__ND_WedgeDofTransformation, _p_mfem__ND_WedgeDofTransformationTo_p_mfem__ND_DofTransformation, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ND_TetDofTransformation[] = {  {&_swigt__p_mfem__ND_TetDofTransformation, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ND_TriDofTransformation[] = {  {&_swigt__p_mfem__ND_TriDofTransformation, 0, 0, 0},{0, 0, 0, 0}};
@@ -7798,6 +7802,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__ArrayT_int_t,
   _swigc__p_mfem__DenseMatrix,
   _swigc__p_mfem__DofTransformation,
+  _swigc__p_mfem__IntegrationPoint,
   _swigc__p_mfem__ND_DofTransformation,
   _swigc__p_mfem__ND_TetDofTransformation,
   _swigc__p_mfem__ND_TriDofTransformation,

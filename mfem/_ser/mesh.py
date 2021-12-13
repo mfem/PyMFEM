@@ -76,6 +76,7 @@ import mfem._ser.ncmesh
 import mfem._ser.globals
 import mfem._ser.gridfunc
 import mfem._ser.coefficient
+import mfem._ser.symmat
 import mfem._ser.intrules
 import mfem._ser.sparsemat
 import mfem._ser.densemat
@@ -444,7 +445,7 @@ class Mesh(object):
     GetGlobalNE = _swig_new_instance_method(_mesh.Mesh_GetGlobalNE)
 
     def GetGeometricFactors(self, *args, **kwargs):
-        r"""GetGeometricFactors(Mesh self, IntegrationRule ir, int const flags, mfem::MemoryType d_mt=MemoryType::DEFAULT) -> GeometricFactors"""
+        r"""GetGeometricFactors(Mesh self, IntegrationRule ir, int const flags, mfem::MemoryType d_mt=DEFAULT) -> GeometricFactors"""
         return _mesh.Mesh_GetGeometricFactors(self, *args, **kwargs)
     GetGeometricFactors = _swig_new_instance_method(_mesh.Mesh_GetGeometricFactors)
 
@@ -1389,8 +1390,8 @@ class GeometricFactors(object):
 
     def __init__(self, *args):
         r"""
-        __init__(GeometricFactors self, Mesh mesh, IntegrationRule ir, int flags, mfem::MemoryType d_mt=MemoryType::DEFAULT) -> GeometricFactors
-        __init__(GeometricFactors self, GridFunction nodes, IntegrationRule ir, int flags, mfem::MemoryType d_mt=MemoryType::DEFAULT) -> GeometricFactors
+        __init__(GeometricFactors self, Mesh mesh, IntegrationRule ir, int flags, mfem::MemoryType d_mt=DEFAULT) -> GeometricFactors
+        __init__(GeometricFactors self, GridFunction nodes, IntegrationRule ir, int flags, mfem::MemoryType d_mt=DEFAULT) -> GeometricFactors
         """
         _mesh.GeometricFactors_swiginit(self, _mesh.new_GeometricFactors(*args))
     X = property(_mesh.GeometricFactors_X_get, _mesh.GeometricFactors_X_set, doc=r"""X : mfem::Vector""")

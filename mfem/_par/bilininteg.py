@@ -73,6 +73,7 @@ import mfem._par.coefficient
 import mfem._par.matrix
 import mfem._par.vector
 import mfem._par.operators
+import mfem._par.symmat
 import mfem._par.intrules
 import mfem._par.sparsemat
 import mfem._par.densemat
@@ -795,7 +796,7 @@ class MixedVectorMassIntegrator(MixedVectorIntegrator):
         r"""
         __init__(MixedVectorMassIntegrator self) -> MixedVectorMassIntegrator
         __init__(MixedVectorMassIntegrator self, Coefficient q) -> MixedVectorMassIntegrator
-        __init__(MixedVectorMassIntegrator self, DiagonalMatrixCoefficient & dq) -> MixedVectorMassIntegrator
+        __init__(MixedVectorMassIntegrator self, VectorCoefficient dq) -> MixedVectorMassIntegrator
         __init__(MixedVectorMassIntegrator self, MatrixCoefficient mq) -> MixedVectorMassIntegrator
         """
         _bilininteg.MixedVectorMassIntegrator_swiginit(self, _bilininteg.new_MixedVectorMassIntegrator(*args))
@@ -940,7 +941,7 @@ class MixedGradGradIntegrator(MixedVectorIntegrator):
         r"""
         __init__(MixedGradGradIntegrator self) -> MixedGradGradIntegrator
         __init__(MixedGradGradIntegrator self, Coefficient q) -> MixedGradGradIntegrator
-        __init__(MixedGradGradIntegrator self, DiagonalMatrixCoefficient & dq) -> MixedGradGradIntegrator
+        __init__(MixedGradGradIntegrator self, VectorCoefficient dq) -> MixedGradGradIntegrator
         __init__(MixedGradGradIntegrator self, MatrixCoefficient mq) -> MixedGradGradIntegrator
         """
         _bilininteg.MixedGradGradIntegrator_swiginit(self, _bilininteg.new_MixedGradGradIntegrator(*args))
@@ -1028,7 +1029,7 @@ class MixedCurlCurlIntegrator(MixedVectorIntegrator):
         r"""
         __init__(MixedCurlCurlIntegrator self) -> MixedCurlCurlIntegrator
         __init__(MixedCurlCurlIntegrator self, Coefficient q) -> MixedCurlCurlIntegrator
-        __init__(MixedCurlCurlIntegrator self, DiagonalMatrixCoefficient & dq) -> MixedCurlCurlIntegrator
+        __init__(MixedCurlCurlIntegrator self, VectorCoefficient dq) -> MixedCurlCurlIntegrator
         __init__(MixedCurlCurlIntegrator self, MatrixCoefficient mq) -> MixedCurlCurlIntegrator
         """
         _bilininteg.MixedCurlCurlIntegrator_swiginit(self, _bilininteg.new_MixedCurlCurlIntegrator(*args))
@@ -1607,7 +1608,7 @@ class MixedVectorGradientIntegrator(MixedVectorIntegrator):
         r"""
         __init__(MixedVectorGradientIntegrator self) -> MixedVectorGradientIntegrator
         __init__(MixedVectorGradientIntegrator self, Coefficient q) -> MixedVectorGradientIntegrator
-        __init__(MixedVectorGradientIntegrator self, DiagonalMatrixCoefficient & dq) -> MixedVectorGradientIntegrator
+        __init__(MixedVectorGradientIntegrator self, VectorCoefficient dq) -> MixedVectorGradientIntegrator
         __init__(MixedVectorGradientIntegrator self, MatrixCoefficient mq) -> MixedVectorGradientIntegrator
         """
         _bilininteg.MixedVectorGradientIntegrator_swiginit(self, _bilininteg.new_MixedVectorGradientIntegrator(*args))
@@ -1631,7 +1632,7 @@ class MixedVectorCurlIntegrator(MixedVectorIntegrator):
         r"""
         __init__(MixedVectorCurlIntegrator self) -> MixedVectorCurlIntegrator
         __init__(MixedVectorCurlIntegrator self, Coefficient q) -> MixedVectorCurlIntegrator
-        __init__(MixedVectorCurlIntegrator self, DiagonalMatrixCoefficient & dq) -> MixedVectorCurlIntegrator
+        __init__(MixedVectorCurlIntegrator self, VectorCoefficient dq) -> MixedVectorCurlIntegrator
         __init__(MixedVectorCurlIntegrator self, MatrixCoefficient mq) -> MixedVectorCurlIntegrator
         """
         _bilininteg.MixedVectorCurlIntegrator_swiginit(self, _bilininteg.new_MixedVectorCurlIntegrator(*args))
@@ -1655,7 +1656,7 @@ class MixedVectorWeakCurlIntegrator(MixedVectorIntegrator):
         r"""
         __init__(MixedVectorWeakCurlIntegrator self) -> MixedVectorWeakCurlIntegrator
         __init__(MixedVectorWeakCurlIntegrator self, Coefficient q) -> MixedVectorWeakCurlIntegrator
-        __init__(MixedVectorWeakCurlIntegrator self, DiagonalMatrixCoefficient & dq) -> MixedVectorWeakCurlIntegrator
+        __init__(MixedVectorWeakCurlIntegrator self, VectorCoefficient dq) -> MixedVectorWeakCurlIntegrator
         __init__(MixedVectorWeakCurlIntegrator self, MatrixCoefficient mq) -> MixedVectorWeakCurlIntegrator
         """
         _bilininteg.MixedVectorWeakCurlIntegrator_swiginit(self, _bilininteg.new_MixedVectorWeakCurlIntegrator(*args))
@@ -1679,7 +1680,7 @@ class MixedVectorWeakDivergenceIntegrator(MixedVectorIntegrator):
         r"""
         __init__(MixedVectorWeakDivergenceIntegrator self) -> MixedVectorWeakDivergenceIntegrator
         __init__(MixedVectorWeakDivergenceIntegrator self, Coefficient q) -> MixedVectorWeakDivergenceIntegrator
-        __init__(MixedVectorWeakDivergenceIntegrator self, DiagonalMatrixCoefficient & dq) -> MixedVectorWeakDivergenceIntegrator
+        __init__(MixedVectorWeakDivergenceIntegrator self, VectorCoefficient dq) -> MixedVectorWeakDivergenceIntegrator
         __init__(MixedVectorWeakDivergenceIntegrator self, MatrixCoefficient mq) -> MixedVectorWeakDivergenceIntegrator
         """
         _bilininteg.MixedVectorWeakDivergenceIntegrator_swiginit(self, _bilininteg.new_MixedVectorWeakDivergenceIntegrator(*args))
@@ -1763,7 +1764,7 @@ class DiffusionIntegrator(BilinearFormIntegrator):
         __init__(DiffusionIntegrator self, Coefficient q, IntegrationRule ir=None) -> DiffusionIntegrator
         __init__(DiffusionIntegrator self, VectorCoefficient q, IntegrationRule ir=None) -> DiffusionIntegrator
         __init__(DiffusionIntegrator self, MatrixCoefficient q, IntegrationRule ir=None) -> DiffusionIntegrator
-        __init__(DiffusionIntegrator self, SymmetricMatrixCoefficient & q, IntegrationRule ir=None) -> DiffusionIntegrator
+        __init__(DiffusionIntegrator self, SymmetricMatrixCoefficient q, IntegrationRule ir=None) -> DiffusionIntegrator
         """
         _bilininteg.DiffusionIntegrator_swiginit(self, _bilininteg.new_DiffusionIntegrator(*args))
 
@@ -2333,9 +2334,9 @@ class CurlCurlIntegrator(BilinearFormIntegrator):
         r"""
         __init__(CurlCurlIntegrator self) -> CurlCurlIntegrator
         __init__(CurlCurlIntegrator self, Coefficient q, IntegrationRule ir=None) -> CurlCurlIntegrator
-        __init__(CurlCurlIntegrator self, DiagonalMatrixCoefficient & dq, IntegrationRule ir=None) -> CurlCurlIntegrator
+        __init__(CurlCurlIntegrator self, VectorCoefficient dq, IntegrationRule ir=None) -> CurlCurlIntegrator
         __init__(CurlCurlIntegrator self, MatrixCoefficient mq, IntegrationRule ir=None) -> CurlCurlIntegrator
-        __init__(CurlCurlIntegrator self, SymmetricMatrixCoefficient & smq, IntegrationRule ir=None) -> CurlCurlIntegrator
+        __init__(CurlCurlIntegrator self, SymmetricMatrixCoefficient smq, IntegrationRule ir=None) -> CurlCurlIntegrator
         """
         _bilininteg.CurlCurlIntegrator_swiginit(self, _bilininteg.new_CurlCurlIntegrator(*args))
 
@@ -2425,12 +2426,12 @@ class VectorFEMassIntegrator(BilinearFormIntegrator):
         __init__(VectorFEMassIntegrator self) -> VectorFEMassIntegrator
         __init__(VectorFEMassIntegrator self, Coefficient q_) -> VectorFEMassIntegrator
         __init__(VectorFEMassIntegrator self, Coefficient q) -> VectorFEMassIntegrator
-        __init__(VectorFEMassIntegrator self, DiagonalMatrixCoefficient * dq_) -> VectorFEMassIntegrator
-        __init__(VectorFEMassIntegrator self, DiagonalMatrixCoefficient & dq) -> VectorFEMassIntegrator
+        __init__(VectorFEMassIntegrator self, VectorCoefficient dq_) -> VectorFEMassIntegrator
+        __init__(VectorFEMassIntegrator self, VectorCoefficient dq) -> VectorFEMassIntegrator
         __init__(VectorFEMassIntegrator self, MatrixCoefficient mq_) -> VectorFEMassIntegrator
         __init__(VectorFEMassIntegrator self, MatrixCoefficient mq) -> VectorFEMassIntegrator
-        __init__(VectorFEMassIntegrator self, SymmetricMatrixCoefficient & smq) -> VectorFEMassIntegrator
-        __init__(VectorFEMassIntegrator self, SymmetricMatrixCoefficient * smq) -> VectorFEMassIntegrator
+        __init__(VectorFEMassIntegrator self, SymmetricMatrixCoefficient smq) -> VectorFEMassIntegrator
+        __init__(VectorFEMassIntegrator self, SymmetricMatrixCoefficient smq) -> VectorFEMassIntegrator
         """
         _bilininteg.VectorFEMassIntegrator_swiginit(self, _bilininteg.new_VectorFEMassIntegrator(*args))
 

@@ -122,7 +122,7 @@ class SparseMatrix(mfem._par.matrix.AbstractSparseMatrix):
         __init__(SparseMatrix self, int * i) -> SparseMatrix
         __init__(SparseMatrix self, int * i, bool ownij, bool owna, bool issorted) -> SparseMatrix
         __init__(SparseMatrix self, int nrows, int ncols, int rowsize) -> SparseMatrix
-        __init__(SparseMatrix self, SparseMatrix mat, bool copy_graph=True, mfem::MemoryType mt=MemoryType::PRESERVE) -> SparseMatrix
+        __init__(SparseMatrix self, SparseMatrix mat, bool copy_graph=True, mfem::MemoryType mt=PRESERVE) -> SparseMatrix
         __init__(SparseMatrix self, Vector v) -> SparseMatrix
         """
 

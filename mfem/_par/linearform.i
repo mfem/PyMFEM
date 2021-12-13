@@ -15,7 +15,8 @@
 #include <cstring>
 #include <ctime>
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"           
+#include "pyoperator.hpp"
+#include "pycoefficient.hpp"      
 %}
 
 %init %{

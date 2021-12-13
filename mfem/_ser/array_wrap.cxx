@@ -6786,10 +6786,9 @@ SWIGINTERN PyObject *_wrap_new_intArray__SWIG_6(PyObject *SWIGUNUSEDPARM(self), 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NEW |  0 );
   {
-    //PyObject *name = PyUnicode_FromString("__setitem__");  
     for (int i = 0; i < size1; i++) {
       PyObject *s = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], i) : PyList_GetItem(swig_obj[0],i);
-      (* result)[i] =  PyLong_AsLong(s);
+      (* result)[i] =  (int)PyLong_AsLong(s);
     }
   }
   return resultobj;
@@ -11209,10 +11208,9 @@ SWIGINTERN PyObject *_wrap_new_doubleArray__SWIG_6(PyObject *SWIGUNUSEDPARM(self
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_double_t, SWIG_POINTER_NEW |  0 );
   {
-    //PyObject *name = PyUnicode_FromString("__setitem__");  
     for (int i = 0; i < size1; i++) {
       PyObject *s = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], i) : PyList_GetItem(swig_obj[0],i);
-      (* result)[i] =  PyFloat_AsDouble(s);
+      (* result)[i] =  (double)PyFloat_AsDouble(s);
     }
   }
   return resultobj;

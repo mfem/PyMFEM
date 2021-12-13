@@ -19,7 +19,8 @@
 #include "fem/restriction.hpp"
 #include "../common/io_stream.hpp"      
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"           
+#include "pyoperator.hpp"
+#include "pycoefficient.hpp"        
 %}
 
 %init %{

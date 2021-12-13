@@ -7,7 +7,8 @@
 #include "mesh/mesh_headers.hpp"
 #include "fem/gridfunc.hpp"  
 #include "general/socketstream.hpp"
-#include "numpy/arrayobject.h"  
+#include "numpy/arrayobject.h"
+#include "pycoefficient.hpp"      
 %}
 
 %init %{

@@ -468,7 +468,7 @@ class GeometryTypeArray(object):
         __init__(GeometryTypeArray self, int asize, mfem::MemoryType mt) -> GeometryTypeArray
         __init__(GeometryTypeArray self, mfem::Geometry::Type * data_, int asize) -> GeometryTypeArray
         __init__(GeometryTypeArray self, GeometryTypeArray src) -> GeometryTypeArray
-        __init__(GeometryTypeArray self, int * pymfem_size) -> GeometryTypeArray
+        __init__(GeometryTypeArray self, void * List_or_Tuple) -> GeometryTypeArray
         """
         _geom.GeometryTypeArray_swiginit(self, _geom.new_GeometryTypeArray(*args))
 

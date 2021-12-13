@@ -3,7 +3,7 @@
    multigrid.i
 
 */
-%module(package="mfem._par", director=1) multigrid
+%module(package="mfem._par") multigrid
 %feature("autodoc", "1");
 %{
 #include "linalg/operator.hpp"
@@ -29,7 +29,7 @@ ObjectArrayInput(mfem::Solver *);
 ObjectArrayInput(mfem::Operator *);
 BoolArrayInput(bool);
    
-%feature("director") mfem::PyGeometricMultigrid;
+//%feature("director") mfem::PyGeometricMultigrid;
 
 %pythonprepend mfem::PyGeometricMultigrid::AppendBilinearForm %{
    if not hasattr(self, "_forms"): self._forms = []
@@ -55,21 +55,23 @@ BoolArrayInput(bool);
 %include "fem/multigrid.hpp"
 
 %inline %{
-class PyGeometricMultigrid : public mfem::GeometricMultigrid
+  namespace mfem{  
+class PyGeometricMultigrid : public GeometricMultigrid
 {
 public:
- PyGeometricMultigrid(const mfem::FiniteElementSpaceHierarchy& fespaces_) 
-   : mfem::GeometricMultigrid(fespaces_){}
+ PyGeometricMultigrid(const FiniteElementSpaceHierarchy& fespaces_) 
+   : GeometricMultigrid(fespaces_){}
   
-  void AppendBilinearForm(mfem::BilinearForm *form){
+  void AppendBilinearForm(BilinearForm *form){
     bfs.Append(form);
   }
-  void AppendEssentialTDofs(mfem::Array<int> *ess){
+  void AppendEssentialTDofs(Array<int> *ess){
       essentialTrueDofs.Append(ess);
   }
   void _pybfs(void){}
   void _pyess(void){}  
 };
+  } /* end of namespace */ 
 %}
 
   

@@ -5,6 +5,7 @@
 #include "fem/pgridfunc.hpp"  
 #include "fem/plinearform.hpp"
 #include "numpy/arrayobject.h"
+#include "pycoefficient.hpp"  
 %}
 
 %include "../common/mfem_config.i"

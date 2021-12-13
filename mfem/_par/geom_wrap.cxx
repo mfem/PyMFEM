@@ -3405,13 +3405,13 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
   return SWIG_OK;
 }
 
-SWIGINTERN mfem::Array< mfem::Geometry::Type > *new_mfem_Array_Sl_mfem_Geometry_Type_Sg___SWIG_6(int *pymfem_size){
+SWIGINTERN mfem::Array< mfem::Geometry::Type > *new_mfem_Array_Sl_mfem_Geometry_Type_Sg___SWIG_6(void *List_or_Tuple){
     /*
     This method is wrapped to recived tuple or list to create
     Array object
     */
     mfem::Array <mfem::Geometry::Type>  *arr;
-    arr = new mfem::Array<mfem::Geometry::Type>(*pymfem_size);
+    arr = new mfem::Array<mfem::Geometry::Type>(*(int*)List_or_Tuple);    
     return arr;
   }
 SWIGINTERN void mfem_Array_Sl_mfem_Geometry_Type_Sg____setitem__(mfem::Array< mfem::Geometry::Type > *self,int i,mfem::Geometry::Type const v){
@@ -5309,16 +5309,14 @@ fail:
 SWIGINTERN PyObject *_wrap_new_GeometryTypeArray__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::MemoryType arg1 ;
-  int val1 ;
-  int ecode1 = 0 ;
   mfem::Array< mfem::Geometry::Type > *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_GeometryTypeArray" "', argument " "1"" of type '" "mfem::MemoryType""'");
-  } 
-  arg1 = static_cast< mfem::MemoryType >(val1);
+  {
+    PyObject* k = PyObject_GetAttrString(swig_obj[0], "value");
+    int i = (int)PyLong_AsLong(k);
+    arg1 = static_cast< mfem::MemoryType >(i);
+  }
   {
     try {
       result = (mfem::Array< mfem::Geometry::Type > *)new mfem::Array< mfem::Geometry::Type >(arg1); 
@@ -5375,8 +5373,6 @@ SWIGINTERN PyObject *_wrap_new_GeometryTypeArray__SWIG_3(PyObject *SWIGUNUSEDPAR
   PyObject *resultobj = 0;
   int arg1 ;
   mfem::MemoryType arg2 ;
-  int val2 ;
-  int ecode2 = 0 ;
   mfem::Array< mfem::Geometry::Type > *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
@@ -5386,11 +5382,11 @@ SWIGINTERN PyObject *_wrap_new_GeometryTypeArray__SWIG_3(PyObject *SWIGUNUSEDPAR
     };  
     arg1 = PyArray_PyIntAsInt(swig_obj[0]);
   }
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_GeometryTypeArray" "', argument " "2"" of type '" "mfem::MemoryType""'");
-  } 
-  arg2 = static_cast< mfem::MemoryType >(val2);
+  {
+    PyObject* k = PyObject_GetAttrString(swig_obj[1], "value");
+    int i = (int)PyLong_AsLong(k);
+    arg2 = static_cast< mfem::MemoryType >(i);
+  }
   {
     try {
       result = (mfem::Array< mfem::Geometry::Type > *)new mfem::Array< mfem::Geometry::Type >(arg1,arg2); 
@@ -6039,8 +6035,6 @@ SWIGINTERN PyObject *_wrap_GeometryTypeArray_SetSize__SWIG_2(PyObject *SWIGUNUSE
   mfem::MemoryType arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t, 0 |  0 );
@@ -6054,11 +6048,11 @@ SWIGINTERN PyObject *_wrap_GeometryTypeArray_SetSize__SWIG_2(PyObject *SWIGUNUSE
     };  
     arg2 = PyArray_PyIntAsInt(swig_obj[1]);
   }
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "GeometryTypeArray_SetSize" "', argument " "3"" of type '" "mfem::MemoryType""'");
-  } 
-  arg3 = static_cast< mfem::MemoryType >(val3);
+  {
+    PyObject* k = PyObject_GetAttrString(swig_obj[2], "value");
+    int i = (int)PyLong_AsLong(k);
+    arg3 = static_cast< mfem::MemoryType >(i);
+  }
   {
     try {
       (arg1)->SetSize(arg2,arg3); 
@@ -6147,8 +6141,23 @@ SWIGINTERN PyObject *_wrap_GeometryTypeArray_SetSize(PyObject *self, PyObject *a
       }
       if (_v) {
         {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          _v = 0;
+          PyObject* module = PyImport_ImportModule("enum");
+          if (!module){
+            _v = 0;
+          } else {
+            PyObject* cls = PyObject_GetAttrString(module, "IntEnum");
+            if (!cls){
+              _v = 0;            
+            } else {
+              int check = PyObject_IsInstance(argv[2], cls);
+              if (check) {
+                _v = 1;
+              }
+              Py_DECREF(cls);	 
+            }
+            Py_DECREF(module);
+          }
         }
         if (_v) {
           return _wrap_GeometryTypeArray_SetSize__SWIG_2(self, argc, argv);
@@ -7459,24 +7468,14 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_GeometryTypeArray__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  int *arg1 = (int *) 0 ;
-  int *temp_ptr1 ;
-  bool is_tuple1 = false ;
+  void *arg1 = (void *) 0 ;
+  int res1 ;
   mfem::Array< mfem::Geometry::Type > *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  {
-    int i;
-    if (!PyList_Check(swig_obj[0])) {
-      if (!PyTuple_Check(swig_obj[0])) {
-        PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
-        return NULL;
-      } else {
-        is_tuple1 = true;
-      }
-    }
-    *temp_ptr1 = (is_tuple1) ? PyTuple_Size(swig_obj[0]) : PyList_Size(swig_obj[0]);
-    arg1 = temp_ptr1;
+  res1 = SWIG_ConvertPtr(swig_obj[0],SWIG_as_voidptrptr(&arg1), 0, 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_GeometryTypeArray" "', argument " "1"" of type '" "void *""'"); 
   }
   {
     try {
@@ -7492,19 +7491,6 @@ SWIGINTERN PyObject *_wrap_new_GeometryTypeArray__SWIG_6(PyObject *SWIGUNUSEDPAR
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t, SWIG_POINTER_NEW |  0 );
-  {
-    PyObject *method = PyObject_GetAttrString(swig_obj[0], "__setitem__");
-    PyObject *keywords = PyDict_New();  
-    for (int i = 0; i < *temp_ptr1; i++) {
-      PyObject *s = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], i) : PyList_GetItem(swig_obj[0],i);
-      PyObject *args = Py_BuildValue("io", i, s);
-      PyObject_Call(method, args, keywords);
-      Py_DECREF(args);				       
-    }
-    
-    Py_DECREF(keywords);
-    Py_DECREF(method);      
-  }
   return resultobj;
 fail:
   return NULL;
@@ -7532,21 +7518,11 @@ SWIGINTERN PyObject *_wrap_new_GeometryTypeArray(PyObject *self, PyObject *args)
   }
   if (argc == 1) {
     int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_int, 0);
+    void *ptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &ptr, 0, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
       return _wrap_new_GeometryTypeArray__SWIG_6(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    {
-      int res = SWIG_AsVal_int(argv[0], NULL);
-      _v = SWIG_CheckState(res);
-    }
-    if (_v) {
-      return _wrap_new_GeometryTypeArray__SWIG_1(self, argc, argv);
     }
   }
   if (argc == 1) {
@@ -7561,6 +7537,31 @@ SWIGINTERN PyObject *_wrap_new_GeometryTypeArray(PyObject *self, PyObject *args)
     }
     if (_v) {
       return _wrap_new_GeometryTypeArray__SWIG_2(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      _v = 0;
+      PyObject* module = PyImport_ImportModule("enum");
+      if (!module){
+        _v = 0;
+      } else {
+        PyObject* cls = PyObject_GetAttrString(module, "IntEnum");
+        if (!cls){
+          _v = 0;            
+        } else {
+          int check = PyObject_IsInstance(argv[0], cls);
+          if (check) {
+            _v = 1;
+          }
+          Py_DECREF(cls);	 
+        }
+        Py_DECREF(module);
+      }
+    }
+    if (_v) {
+      return _wrap_new_GeometryTypeArray__SWIG_1(self, argc, argv);
     }
   }
   if (argc == 2) {
@@ -7594,8 +7595,23 @@ SWIGINTERN PyObject *_wrap_new_GeometryTypeArray(PyObject *self, PyObject *args)
     }
     if (_v) {
       {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        _v = 0;
+        PyObject* module = PyImport_ImportModule("enum");
+        if (!module){
+          _v = 0;
+        } else {
+          PyObject* cls = PyObject_GetAttrString(module, "IntEnum");
+          if (!cls){
+            _v = 0;            
+          } else {
+            int check = PyObject_IsInstance(argv[1], cls);
+            if (check) {
+              _v = 1;
+            }
+            Py_DECREF(cls);	 
+          }
+          Py_DECREF(module);
+        }
       }
       if (_v) {
         return _wrap_new_GeometryTypeArray__SWIG_3(self, argc, argv);
@@ -7612,7 +7628,7 @@ fail:
     "    mfem::Array< mfem::Geometry::Type >::Array(int,mfem::MemoryType)\n"
     "    mfem::Array< mfem::Geometry::Type >::Array(mfem::Geometry::Type *,int)\n"
     "    mfem::Array< mfem::Geometry::Type >::Array(mfem::Array< mfem::Geometry::Type > const &)\n"
-    "    mfem::Array< mfem::Geometry::Type >::Array(int *)\n");
+    "    mfem::Array< mfem::Geometry::Type >::Array(void *)\n");
   return 0;
 }
 
@@ -8000,7 +8016,7 @@ static PyMethodDef SwigMethods[] = {
 		"GeometryTypeArray(int asize, mfem::MemoryType mt)\n"
 		"GeometryTypeArray(mfem::Geometry::Type * data_, int asize)\n"
 		"GeometryTypeArray(GeometryTypeArray src)\n"
-		"new_GeometryTypeArray(int * pymfem_size) -> GeometryTypeArray\n"
+		"new_GeometryTypeArray(void * List_or_Tuple) -> GeometryTypeArray\n"
 		""},
 	 { "GeometryTypeArray___setitem__", (PyCFunction)(void(*)(void))_wrap_GeometryTypeArray___setitem__, METH_VARARGS|METH_KEYWORDS, "GeometryTypeArray___setitem__(GeometryTypeArray self, int i, mfem::Geometry::Type const v)"},
 	 { "GeometryTypeArray___getitem__", (PyCFunction)(void(*)(void))_wrap_GeometryTypeArray___getitem__, METH_VARARGS|METH_KEYWORDS, "GeometryTypeArray___getitem__(GeometryTypeArray self, int const i) -> mfem::Geometry::Type const &"},
@@ -8131,7 +8147,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"GeometryTypeArray(int asize, mfem::MemoryType mt)\n"
 		"GeometryTypeArray(mfem::Geometry::Type * data_, int asize)\n"
 		"GeometryTypeArray(GeometryTypeArray src)\n"
-		"new_GeometryTypeArray(int * pymfem_size) -> GeometryTypeArray\n"
+		"new_GeometryTypeArray(void * List_or_Tuple) -> GeometryTypeArray\n"
 		""},
 	 { "GeometryTypeArray___setitem__", (PyCFunction)(void(*)(void))_wrap_GeometryTypeArray___setitem__, METH_VARARGS|METH_KEYWORDS, "__setitem__(GeometryTypeArray self, int i, mfem::Geometry::Type const v)"},
 	 { "GeometryTypeArray___getitem__", (PyCFunction)(void(*)(void))_wrap_GeometryTypeArray___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(GeometryTypeArray self, int const i) -> mfem::Geometry::Type const &"},

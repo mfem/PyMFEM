@@ -3243,42 +3243,43 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__RefinedLinear2DFiniteElement swig_types[140]
 #define SWIGTYPE_p_mfem__RefinedLinear3DFiniteElement swig_types[141]
 #define SWIGTYPE_p_mfem__RefinedTriLinear3DFiniteElement swig_types[142]
-#define SWIGTYPE_p_mfem__RotTriLinearHexFiniteElement swig_types[143]
-#define SWIGTYPE_p_mfem__STable swig_types[144]
-#define SWIGTYPE_p_mfem__ScalarFiniteElement swig_types[145]
-#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[146]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[147]
-#define SWIGTYPE_p_mfem__Table swig_types[148]
-#define SWIGTYPE_p_mfem__TriLinear3DFiniteElement swig_types[149]
-#define SWIGTYPE_p_mfem__Vector swig_types[150]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[151]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[152]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[153]
-#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[154]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[155]
-#define SWIGTYPE_p_mfem__VectorFiniteElement swig_types[156]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[157]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[158]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[159]
-#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[160]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[161]
-#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[162]
-#define SWIGTYPE_p_mfem__VectorTensorFiniteElement swig_types[163]
-#define SWIGTYPE_p_mfem__Vertex swig_types[164]
-#define SWIGTYPE_p_p_mfem__Element swig_types[165]
-#define SWIGTYPE_p_p_mfem__GridFunction swig_types[166]
-#define SWIGTYPE_p_p_mfem__Mesh swig_types[167]
-#define SWIGTYPE_p_pri_t swig_types[168]
-#define SWIGTYPE_p_pyr_t swig_types[169]
-#define SWIGTYPE_p_quad_t swig_types[170]
-#define SWIGTYPE_p_seg_t swig_types[171]
-#define SWIGTYPE_p_std__ostream swig_types[172]
-#define SWIGTYPE_p_std__vectorT_int_t swig_types[173]
-#define SWIGTYPE_p_std__vectorT_mfem__Vector_t swig_types[174]
-#define SWIGTYPE_p_tet_t swig_types[175]
-#define SWIGTYPE_p_tri_t swig_types[176]
-static swig_type_info *swig_types[178];
-static swig_module_info swig_module = {swig_types, 177, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__Refinement swig_types[143]
+#define SWIGTYPE_p_mfem__RotTriLinearHexFiniteElement swig_types[144]
+#define SWIGTYPE_p_mfem__STable swig_types[145]
+#define SWIGTYPE_p_mfem__ScalarFiniteElement swig_types[146]
+#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[147]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[148]
+#define SWIGTYPE_p_mfem__Table swig_types[149]
+#define SWIGTYPE_p_mfem__TriLinear3DFiniteElement swig_types[150]
+#define SWIGTYPE_p_mfem__Vector swig_types[151]
+#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[152]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[153]
+#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[154]
+#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[155]
+#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[156]
+#define SWIGTYPE_p_mfem__VectorFiniteElement swig_types[157]
+#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[158]
+#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[159]
+#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[160]
+#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[161]
+#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[162]
+#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[163]
+#define SWIGTYPE_p_mfem__VectorTensorFiniteElement swig_types[164]
+#define SWIGTYPE_p_mfem__Vertex swig_types[165]
+#define SWIGTYPE_p_p_mfem__Element swig_types[166]
+#define SWIGTYPE_p_p_mfem__GridFunction swig_types[167]
+#define SWIGTYPE_p_p_mfem__Mesh swig_types[168]
+#define SWIGTYPE_p_pri_t swig_types[169]
+#define SWIGTYPE_p_pyr_t swig_types[170]
+#define SWIGTYPE_p_quad_t swig_types[171]
+#define SWIGTYPE_p_seg_t swig_types[172]
+#define SWIGTYPE_p_std__ostream swig_types[173]
+#define SWIGTYPE_p_std__vectorT_int_t swig_types[174]
+#define SWIGTYPE_p_std__vectorT_mfem__Vector_t swig_types[175]
+#define SWIGTYPE_p_tet_t swig_types[176]
+#define SWIGTYPE_p_tri_t swig_types[177]
+static swig_type_info *swig_types[179];
+static swig_module_info swig_module = {swig_types, 178, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -11413,7 +11414,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetGeometricFactors(PyObject *SWIGUNUSEDPARM(sel
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   mfem::IntegrationRule *arg2 = 0 ;
   int arg3 ;
-  mfem::MemoryType arg4 = (mfem::MemoryType) MemoryType::DEFAULT ;
+  mfem::MemoryType arg4 = (mfem::MemoryType) mfem::MemoryType::DEFAULT ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -24981,7 +24982,7 @@ SWIGINTERN PyObject *_wrap_new_GeometricFactors__SWIG_0(PyObject *SWIGUNUSEDPARM
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   mfem::IntegrationRule *arg2 = 0 ;
   int arg3 ;
-  mfem::MemoryType arg4 = (mfem::MemoryType) MemoryType::DEFAULT ;
+  mfem::MemoryType arg4 = (mfem::MemoryType) mfem::MemoryType::DEFAULT ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -25048,7 +25049,7 @@ SWIGINTERN PyObject *_wrap_new_GeometricFactors__SWIG_1(PyObject *SWIGUNUSEDPARM
   mfem::GridFunction *arg1 = 0 ;
   mfem::IntegrationRule *arg2 = 0 ;
   int arg3 ;
-  mfem::MemoryType arg4 = (mfem::MemoryType) MemoryType::DEFAULT ;
+  mfem::MemoryType arg4 = (mfem::MemoryType) mfem::MemoryType::DEFAULT ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -26642,7 +26643,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "Mesh_GetNFbyType", (PyCFunction)(void(*)(void))_wrap_Mesh_GetNFbyType, METH_VARARGS|METH_KEYWORDS, "Mesh_GetNFbyType(Mesh self, mfem::FaceType type) -> int"},
 	 { "Mesh_ReduceInt", (PyCFunction)(void(*)(void))_wrap_Mesh_ReduceInt, METH_VARARGS|METH_KEYWORDS, "Mesh_ReduceInt(Mesh self, int value) -> long"},
 	 { "Mesh_GetGlobalNE", _wrap_Mesh_GetGlobalNE, METH_O, "Mesh_GetGlobalNE(Mesh self) -> long"},
-	 { "Mesh_GetGeometricFactors", (PyCFunction)(void(*)(void))_wrap_Mesh_GetGeometricFactors, METH_VARARGS|METH_KEYWORDS, "Mesh_GetGeometricFactors(Mesh self, IntegrationRule ir, int const flags, mfem::MemoryType d_mt=MemoryType::DEFAULT) -> GeometricFactors"},
+	 { "Mesh_GetGeometricFactors", (PyCFunction)(void(*)(void))_wrap_Mesh_GetGeometricFactors, METH_VARARGS|METH_KEYWORDS, "Mesh_GetGeometricFactors(Mesh self, IntegrationRule ir, int const flags, mfem::MemoryType d_mt=DEFAULT) -> GeometricFactors"},
 	 { "Mesh_GetFaceGeometricFactors", (PyCFunction)(void(*)(void))_wrap_Mesh_GetFaceGeometricFactors, METH_VARARGS|METH_KEYWORDS, "Mesh_GetFaceGeometricFactors(Mesh self, IntegrationRule ir, int const flags, mfem::FaceType type) -> FaceGeometricFactors"},
 	 { "Mesh_DeleteGeometricFactors", _wrap_Mesh_DeleteGeometricFactors, METH_O, "Mesh_DeleteGeometricFactors(Mesh self)"},
 	 { "Mesh_EulerNumber", _wrap_Mesh_EulerNumber, METH_O, "Mesh_EulerNumber(Mesh self) -> int"},
@@ -26885,8 +26886,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "GeometricFactors_computed_factors_set", _wrap_GeometricFactors_computed_factors_set, METH_VARARGS, "GeometricFactors_computed_factors_set(GeometricFactors self, int computed_factors)"},
 	 { "GeometricFactors_computed_factors_get", _wrap_GeometricFactors_computed_factors_get, METH_O, "GeometricFactors_computed_factors_get(GeometricFactors self) -> int"},
 	 { "new_GeometricFactors", _wrap_new_GeometricFactors, METH_VARARGS, "\n"
-		"GeometricFactors(Mesh mesh, IntegrationRule ir, int flags, mfem::MemoryType d_mt=MemoryType::DEFAULT)\n"
-		"new_GeometricFactors(GridFunction nodes, IntegrationRule ir, int flags, mfem::MemoryType d_mt=MemoryType::DEFAULT) -> GeometricFactors\n"
+		"GeometricFactors(Mesh mesh, IntegrationRule ir, int flags, mfem::MemoryType d_mt=DEFAULT)\n"
+		"new_GeometricFactors(GridFunction nodes, IntegrationRule ir, int flags, mfem::MemoryType d_mt=DEFAULT) -> GeometricFactors\n"
 		""},
 	 { "GeometricFactors_X_set", _wrap_GeometricFactors_X_set, METH_VARARGS, "GeometricFactors_X_set(GeometricFactors self, Vector X)"},
 	 { "GeometricFactors_X_get", _wrap_GeometricFactors_X_get, METH_O, "GeometricFactors_X_get(GeometricFactors self) -> Vector"},
@@ -27036,7 +27037,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Mesh_GetNFbyType", (PyCFunction)(void(*)(void))_wrap_Mesh_GetNFbyType, METH_VARARGS|METH_KEYWORDS, "GetNFbyType(Mesh self, mfem::FaceType type) -> int"},
 	 { "Mesh_ReduceInt", (PyCFunction)(void(*)(void))_wrap_Mesh_ReduceInt, METH_VARARGS|METH_KEYWORDS, "ReduceInt(Mesh self, int value) -> long"},
 	 { "Mesh_GetGlobalNE", _wrap_Mesh_GetGlobalNE, METH_O, "GetGlobalNE(Mesh self) -> long"},
-	 { "Mesh_GetGeometricFactors", (PyCFunction)(void(*)(void))_wrap_Mesh_GetGeometricFactors, METH_VARARGS|METH_KEYWORDS, "GetGeometricFactors(Mesh self, IntegrationRule ir, int const flags, mfem::MemoryType d_mt=MemoryType::DEFAULT) -> GeometricFactors"},
+	 { "Mesh_GetGeometricFactors", (PyCFunction)(void(*)(void))_wrap_Mesh_GetGeometricFactors, METH_VARARGS|METH_KEYWORDS, "GetGeometricFactors(Mesh self, IntegrationRule ir, int const flags, mfem::MemoryType d_mt=DEFAULT) -> GeometricFactors"},
 	 { "Mesh_GetFaceGeometricFactors", (PyCFunction)(void(*)(void))_wrap_Mesh_GetFaceGeometricFactors, METH_VARARGS|METH_KEYWORDS, "GetFaceGeometricFactors(Mesh self, IntegrationRule ir, int const flags, mfem::FaceType type) -> FaceGeometricFactors"},
 	 { "Mesh_DeleteGeometricFactors", _wrap_Mesh_DeleteGeometricFactors, METH_O, "DeleteGeometricFactors(Mesh self)"},
 	 { "Mesh_EulerNumber", _wrap_Mesh_EulerNumber, METH_O, "EulerNumber(Mesh self) -> int"},
@@ -27279,8 +27280,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "GeometricFactors_computed_factors_set", _wrap_GeometricFactors_computed_factors_set, METH_VARARGS, "GeometricFactors_computed_factors_set(GeometricFactors self, int computed_factors)"},
 	 { "GeometricFactors_computed_factors_get", _wrap_GeometricFactors_computed_factors_get, METH_O, "GeometricFactors_computed_factors_get(GeometricFactors self) -> int"},
 	 { "new_GeometricFactors", _wrap_new_GeometricFactors, METH_VARARGS, "\n"
-		"GeometricFactors(Mesh mesh, IntegrationRule ir, int flags, mfem::MemoryType d_mt=MemoryType::DEFAULT)\n"
-		"new_GeometricFactors(GridFunction nodes, IntegrationRule ir, int flags, mfem::MemoryType d_mt=MemoryType::DEFAULT) -> GeometricFactors\n"
+		"GeometricFactors(Mesh mesh, IntegrationRule ir, int flags, mfem::MemoryType d_mt=DEFAULT)\n"
+		"new_GeometricFactors(GridFunction nodes, IntegrationRule ir, int flags, mfem::MemoryType d_mt=DEFAULT) -> GeometricFactors\n"
 		""},
 	 { "GeometricFactors_X_set", _wrap_GeometricFactors_X_set, METH_VARARGS, "GeometricFactors_X_set(GeometricFactors self, Vector X)"},
 	 { "GeometricFactors_X_get", _wrap_GeometricFactors_X_get, METH_O, "GeometricFactors_X_get(GeometricFactors self) -> Vector"},
@@ -27855,12 +27856,13 @@ static swig_type_info _swigt__p_mfem__NURBSExtension = {"_p_mfem__NURBSExtension
 static swig_type_info _swigt__p_mfem__NodeExtrudeCoefficient = {"_p_mfem__NodeExtrudeCoefficient", "mfem::NodeExtrudeCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__OperatorHandle = {"_p_mfem__OperatorHandle", "mfem::OperatorPtr *|mfem::OperatorHandle *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", "mfem::QuadratureFunction *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__Refinement = {"_p_mfem__Refinement", "mfem::Refinement *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__SparseMatrix = {"_p_mfem__SparseMatrix", "mfem::SparseMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Table = {"_p_mfem__Table", "mfem::Table *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__STable = {"_p_mfem__STable", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorCoefficient = {"_p_mfem__VectorCoefficient", "mfem::VectorCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__VectorCoefficient = {"_p_mfem__VectorCoefficient", "mfem::VectorCoefficient *|mfem::DiagonalMatrixCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__VectorPyCoefficientBase = {"_p_mfem__VectorPyCoefficientBase", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__VectorQuadratureFunctionCoefficient = {"_p_mfem__VectorQuadratureFunctionCoefficient", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__VectorCrossProductCoefficient = {"_p_mfem__VectorCrossProductCoefficient", 0, 0, 0, 0, 0};
@@ -28034,6 +28036,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__RefinedLinear2DFiniteElement,
   &_swigt__p_mfem__RefinedLinear3DFiniteElement,
   &_swigt__p_mfem__RefinedTriLinear3DFiniteElement,
+  &_swigt__p_mfem__Refinement,
   &_swigt__p_mfem__RotTriLinearHexFiniteElement,
   &_swigt__p_mfem__STable,
   &_swigt__p_mfem__ScalarFiniteElement,
@@ -28213,6 +28216,7 @@ static swig_cast_info _swigc__p_mfem__NURBSExtension[] = {  {&_swigt__p_mfem__NU
 static swig_cast_info _swigc__p_mfem__NodeExtrudeCoefficient[] = {  {&_swigt__p_mfem__NodeExtrudeCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__OperatorHandle[] = {  {&_swigt__p_mfem__OperatorHandle, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {  {&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Refinement[] = {  {&_swigt__p_mfem__Refinement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SparseMatrix[] = {  {&_swigt__p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__STable[] = {{&_swigt__p_mfem__STable, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Table[] = {  {&_swigt__p_mfem__STable, _p_mfem__STableTo_p_mfem__Table, 0, 0},  {&_swigt__p_mfem__Table, 0, 0, 0},{0, 0, 0, 0}};
@@ -28392,6 +28396,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__RefinedLinear2DFiniteElement,
   _swigc__p_mfem__RefinedLinear3DFiniteElement,
   _swigc__p_mfem__RefinedTriLinear3DFiniteElement,
+  _swigc__p_mfem__Refinement,
   _swigc__p_mfem__RotTriLinearHexFiniteElement,
   _swigc__p_mfem__STable,
   _swigc__p_mfem__ScalarFiniteElement,

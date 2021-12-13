@@ -3,6 +3,7 @@
 #include "fem/bilinearform.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
+#include "pycoefficient.hpp"  
 using namespace mfem;  
 %}
 

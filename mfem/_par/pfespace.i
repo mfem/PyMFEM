@@ -7,7 +7,8 @@
 #include "fem/restriction.hpp"
 #include "fem/prestriction.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"  
+#include "pyoperator.hpp"
+#include "pycoefficient.hpp"    
 %}
 
 %include "../common/mfem_config.i"

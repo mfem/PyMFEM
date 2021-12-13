@@ -3098,50 +3098,50 @@ namespace Swig {
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_MPI_Comm swig_types[0]
-#define SWIGTYPE_p_PyGeometricMultigrid swig_types[1]
-#define SWIGTYPE_p_PyMFEM__wFILE swig_types[2]
-#define SWIGTYPE_p_RefCoord swig_types[3]
-#define SWIGTYPE_p__HYPRE_ExecutionPolicy swig_types[4]
-#define SWIGTYPE_p__HYPRE_MemoryLocation swig_types[5]
-#define SWIGTYPE_p_char swig_types[6]
-#define SWIGTYPE_p_double swig_types[7]
-#define SWIGTYPE_p_hex_t swig_types[8]
-#define SWIGTYPE_p_int swig_types[9]
-#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[10]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[11]
-#define SWIGTYPE_p_mfem__BilinearForm swig_types[12]
-#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[13]
-#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[14]
-#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[15]
-#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[16]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[17]
-#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[18]
-#define SWIGTYPE_p_mfem__DenseSymmetricMatrix swig_types[19]
-#define SWIGTYPE_p_mfem__DiscreteLinearOperator swig_types[20]
-#define SWIGTYPE_p_mfem__ElementRestriction swig_types[21]
-#define SWIGTYPE_p_mfem__FaceRestriction swig_types[22]
-#define SWIGTYPE_p_mfem__FiniteElementSpaceHierarchy swig_types[23]
-#define SWIGTYPE_p_mfem__GeometricMultigrid swig_types[24]
-#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[25]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[26]
-#define SWIGTYPE_p_mfem__H1FaceRestriction swig_types[27]
-#define SWIGTYPE_p_mfem__HypreADS swig_types[28]
-#define SWIGTYPE_p_mfem__HypreAMS swig_types[29]
-#define SWIGTYPE_p_mfem__HypreBoomerAMG swig_types[30]
-#define SWIGTYPE_p_mfem__HypreDiagScale swig_types[31]
-#define SWIGTYPE_p_mfem__HypreEuclid swig_types[32]
-#define SWIGTYPE_p_mfem__HypreFGMRES swig_types[33]
-#define SWIGTYPE_p_mfem__HypreGMRES swig_types[34]
-#define SWIGTYPE_p_mfem__HypreILU swig_types[35]
-#define SWIGTYPE_p_mfem__HypreIdentity swig_types[36]
-#define SWIGTYPE_p_mfem__HyprePCG swig_types[37]
-#define SWIGTYPE_p_mfem__HypreParMatrix swig_types[38]
-#define SWIGTYPE_p_mfem__HypreParVector swig_types[39]
-#define SWIGTYPE_p_mfem__HypreParaSails swig_types[40]
-#define SWIGTYPE_p_mfem__HypreSmoother swig_types[41]
-#define SWIGTYPE_p_mfem__HypreSolver swig_types[42]
-#define SWIGTYPE_p_mfem__HypreTriSolve swig_types[43]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[44]
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[1]
+#define SWIGTYPE_p_RefCoord swig_types[2]
+#define SWIGTYPE_p__HYPRE_ExecutionPolicy swig_types[3]
+#define SWIGTYPE_p__HYPRE_MemoryLocation swig_types[4]
+#define SWIGTYPE_p_char swig_types[5]
+#define SWIGTYPE_p_double swig_types[6]
+#define SWIGTYPE_p_hex_t swig_types[7]
+#define SWIGTYPE_p_int swig_types[8]
+#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[9]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[10]
+#define SWIGTYPE_p_mfem__BilinearForm swig_types[11]
+#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[12]
+#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[13]
+#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[14]
+#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[15]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[16]
+#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[17]
+#define SWIGTYPE_p_mfem__DenseSymmetricMatrix swig_types[18]
+#define SWIGTYPE_p_mfem__DiscreteLinearOperator swig_types[19]
+#define SWIGTYPE_p_mfem__ElementRestriction swig_types[20]
+#define SWIGTYPE_p_mfem__FaceRestriction swig_types[21]
+#define SWIGTYPE_p_mfem__FiniteElementSpaceHierarchy swig_types[22]
+#define SWIGTYPE_p_mfem__GeometricMultigrid swig_types[23]
+#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[24]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[25]
+#define SWIGTYPE_p_mfem__H1FaceRestriction swig_types[26]
+#define SWIGTYPE_p_mfem__HypreADS swig_types[27]
+#define SWIGTYPE_p_mfem__HypreAMS swig_types[28]
+#define SWIGTYPE_p_mfem__HypreBoomerAMG swig_types[29]
+#define SWIGTYPE_p_mfem__HypreDiagScale swig_types[30]
+#define SWIGTYPE_p_mfem__HypreEuclid swig_types[31]
+#define SWIGTYPE_p_mfem__HypreFGMRES swig_types[32]
+#define SWIGTYPE_p_mfem__HypreGMRES swig_types[33]
+#define SWIGTYPE_p_mfem__HypreILU swig_types[34]
+#define SWIGTYPE_p_mfem__HypreIdentity swig_types[35]
+#define SWIGTYPE_p_mfem__HyprePCG swig_types[36]
+#define SWIGTYPE_p_mfem__HypreParMatrix swig_types[37]
+#define SWIGTYPE_p_mfem__HypreParVector swig_types[38]
+#define SWIGTYPE_p_mfem__HypreParaSails swig_types[39]
+#define SWIGTYPE_p_mfem__HypreSmoother swig_types[40]
+#define SWIGTYPE_p_mfem__HypreSolver swig_types[41]
+#define SWIGTYPE_p_mfem__HypreTriSolve swig_types[42]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[43]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[44]
 #define SWIGTYPE_p_mfem__IntegrationRule swig_types[45]
 #define SWIGTYPE_p_mfem__L2ElementRestriction swig_types[46]
 #define SWIGTYPE_p_mfem__L2FaceRestriction swig_types[47]
@@ -3158,40 +3158,42 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__OperatorHandle swig_types[58]
 #define SWIGTYPE_p_mfem__ParFiniteElementSpaceHierarchy swig_types[59]
 #define SWIGTYPE_p_mfem__ProductOperator swig_types[60]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[61]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[62]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[63]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[64]
-#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[65]
-#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[66]
-#define SWIGTYPE_p_mfem__ScaledOperator swig_types[67]
-#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[68]
-#define SWIGTYPE_p_mfem__Solver swig_types[69]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[70]
-#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[71]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[72]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[73]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[74]
-#define SWIGTYPE_p_mfem__Vector swig_types[75]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[76]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[77]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[78]
-#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[79]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[80]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[81]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[82]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[83]
-#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[84]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[85]
-#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[86]
-#define SWIGTYPE_p_pri_t swig_types[87]
-#define SWIGTYPE_p_pyr_t swig_types[88]
-#define SWIGTYPE_p_quad_t swig_types[89]
-#define SWIGTYPE_p_seg_t swig_types[90]
-#define SWIGTYPE_p_tet_t swig_types[91]
-#define SWIGTYPE_p_tri_t swig_types[92]
-static swig_type_info *swig_types[94];
-static swig_module_info swig_module = {swig_types, 93, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__PyGeometricMultigrid swig_types[61]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[62]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[63]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[64]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[65]
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[66]
+#define SWIGTYPE_p_mfem__Refinement swig_types[67]
+#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[68]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[69]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[70]
+#define SWIGTYPE_p_mfem__Solver swig_types[71]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[72]
+#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[73]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[74]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[75]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[76]
+#define SWIGTYPE_p_mfem__Vector swig_types[77]
+#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[78]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[79]
+#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[80]
+#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[81]
+#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[82]
+#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[83]
+#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[84]
+#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[85]
+#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[86]
+#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[87]
+#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[88]
+#define SWIGTYPE_p_pri_t swig_types[89]
+#define SWIGTYPE_p_pyr_t swig_types[90]
+#define SWIGTYPE_p_quad_t swig_types[91]
+#define SWIGTYPE_p_seg_t swig_types[92]
+#define SWIGTYPE_p_tet_t swig_types[93]
+#define SWIGTYPE_p_tri_t swig_types[94]
+static swig_type_info *swig_types[96];
+static swig_module_info swig_module = {swig_types, 95, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3475,21 +3477,23 @@ SWIG_AsVal_int (PyObject * obj, int *val)
 }
 
 
-class PyGeometricMultigrid : public mfem::GeometricMultigrid
+  namespace mfem{  
+class PyGeometricMultigrid : public GeometricMultigrid
 {
 public:
- PyGeometricMultigrid(const mfem::FiniteElementSpaceHierarchy& fespaces_) 
-   : mfem::GeometricMultigrid(fespaces_){}
+ PyGeometricMultigrid(const FiniteElementSpaceHierarchy& fespaces_) 
+   : GeometricMultigrid(fespaces_){}
   
-  void AppendBilinearForm(mfem::BilinearForm *form){
+  void AppendBilinearForm(BilinearForm *form){
     bfs.Append(form);
   }
-  void AppendEssentialTDofs(mfem::Array<int> *ess){
+  void AppendEssentialTDofs(Array<int> *ess){
       essentialTrueDofs.Append(ess);
   }
   void _pybfs(void){}
   void _pyess(void){}  
 };
+  } /* end of namespace */ 
 
 
 
@@ -4779,7 +4783,7 @@ SWIGINTERN PyObject *_wrap_new_PyGeometricMultigrid(PyObject *SWIGUNUSEDPARM(sel
   char * kwnames[] = {
     (char *)"fespaces_",  NULL 
   };
-  PyGeometricMultigrid *result = 0 ;
+  mfem::PyGeometricMultigrid *result = 0 ;
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_PyGeometricMultigrid", kwnames, &obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__FiniteElementSpaceHierarchy,  0  | 0);
@@ -4792,7 +4796,7 @@ SWIGINTERN PyObject *_wrap_new_PyGeometricMultigrid(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< mfem::FiniteElementSpaceHierarchy * >(argp1);
   {
     try {
-      result = (PyGeometricMultigrid *)new PyGeometricMultigrid((mfem::FiniteElementSpaceHierarchy const &)*arg1); 
+      result = (mfem::PyGeometricMultigrid *)new mfem::PyGeometricMultigrid((mfem::FiniteElementSpaceHierarchy const &)*arg1); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -4803,7 +4807,7 @@ SWIGINTERN PyObject *_wrap_new_PyGeometricMultigrid(PyObject *SWIGUNUSEDPARM(sel
     //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
     //    catch (std::exception &e) { SWIG_fail; }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_PyGeometricMultigrid, SWIG_POINTER_NEW |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__PyGeometricMultigrid, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -4812,7 +4816,7 @@ fail:
 
 SWIGINTERN PyObject *_wrap_PyGeometricMultigrid_AppendBilinearForm(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  PyGeometricMultigrid *arg1 = (PyGeometricMultigrid *) 0 ;
+  mfem::PyGeometricMultigrid *arg1 = (mfem::PyGeometricMultigrid *) 0 ;
   mfem::BilinearForm *arg2 = (mfem::BilinearForm *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -4825,11 +4829,11 @@ SWIGINTERN PyObject *_wrap_PyGeometricMultigrid_AppendBilinearForm(PyObject *SWI
   };
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:PyGeometricMultigrid_AppendBilinearForm", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_PyGeometricMultigrid, 0 |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PyGeometricMultigrid, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyGeometricMultigrid_AppendBilinearForm" "', argument " "1"" of type '" "PyGeometricMultigrid *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyGeometricMultigrid_AppendBilinearForm" "', argument " "1"" of type '" "mfem::PyGeometricMultigrid *""'"); 
   }
-  arg1 = reinterpret_cast< PyGeometricMultigrid * >(argp1);
+  arg1 = reinterpret_cast< mfem::PyGeometricMultigrid * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PyGeometricMultigrid_AppendBilinearForm" "', argument " "2"" of type '" "mfem::BilinearForm *""'"); 
@@ -4857,7 +4861,7 @@ fail:
 
 SWIGINTERN PyObject *_wrap_PyGeometricMultigrid_AppendEssentialTDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  PyGeometricMultigrid *arg1 = (PyGeometricMultigrid *) 0 ;
+  mfem::PyGeometricMultigrid *arg1 = (mfem::PyGeometricMultigrid *) 0 ;
   mfem::Array< int > *arg2 = (mfem::Array< int > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -4870,11 +4874,11 @@ SWIGINTERN PyObject *_wrap_PyGeometricMultigrid_AppendEssentialTDofs(PyObject *S
   };
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:PyGeometricMultigrid_AppendEssentialTDofs", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_PyGeometricMultigrid, 0 |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PyGeometricMultigrid, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyGeometricMultigrid_AppendEssentialTDofs" "', argument " "1"" of type '" "PyGeometricMultigrid *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyGeometricMultigrid_AppendEssentialTDofs" "', argument " "1"" of type '" "mfem::PyGeometricMultigrid *""'"); 
   }
-  arg1 = reinterpret_cast< PyGeometricMultigrid * >(argp1);
+  arg1 = reinterpret_cast< mfem::PyGeometricMultigrid * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PyGeometricMultigrid_AppendEssentialTDofs" "', argument " "2"" of type '" "mfem::Array< int > *""'"); 
@@ -4902,18 +4906,18 @@ fail:
 
 SWIGINTERN PyObject *_wrap_PyGeometricMultigrid__pybfs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  PyGeometricMultigrid *arg1 = (PyGeometricMultigrid *) 0 ;
+  mfem::PyGeometricMultigrid *arg1 = (mfem::PyGeometricMultigrid *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PyGeometricMultigrid, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PyGeometricMultigrid, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyGeometricMultigrid__pybfs" "', argument " "1"" of type '" "PyGeometricMultigrid *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyGeometricMultigrid__pybfs" "', argument " "1"" of type '" "mfem::PyGeometricMultigrid *""'"); 
   }
-  arg1 = reinterpret_cast< PyGeometricMultigrid * >(argp1);
+  arg1 = reinterpret_cast< mfem::PyGeometricMultigrid * >(argp1);
   {
     try {
       (arg1)->_pybfs(); 
@@ -4936,18 +4940,18 @@ fail:
 
 SWIGINTERN PyObject *_wrap_PyGeometricMultigrid__pyess(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  PyGeometricMultigrid *arg1 = (PyGeometricMultigrid *) 0 ;
+  mfem::PyGeometricMultigrid *arg1 = (mfem::PyGeometricMultigrid *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PyGeometricMultigrid, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PyGeometricMultigrid, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyGeometricMultigrid__pyess" "', argument " "1"" of type '" "PyGeometricMultigrid *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyGeometricMultigrid__pyess" "', argument " "1"" of type '" "mfem::PyGeometricMultigrid *""'"); 
   }
-  arg1 = reinterpret_cast< PyGeometricMultigrid * >(argp1);
+  arg1 = reinterpret_cast< mfem::PyGeometricMultigrid * >(argp1);
   {
     try {
       (arg1)->_pyess(); 
@@ -4970,18 +4974,18 @@ fail:
 
 SWIGINTERN PyObject *_wrap_delete_PyGeometricMultigrid(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  PyGeometricMultigrid *arg1 = (PyGeometricMultigrid *) 0 ;
+  mfem::PyGeometricMultigrid *arg1 = (mfem::PyGeometricMultigrid *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PyGeometricMultigrid, SWIG_POINTER_DISOWN |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PyGeometricMultigrid, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_PyGeometricMultigrid" "', argument " "1"" of type '" "PyGeometricMultigrid *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_PyGeometricMultigrid" "', argument " "1"" of type '" "mfem::PyGeometricMultigrid *""'"); 
   }
-  arg1 = reinterpret_cast< PyGeometricMultigrid * >(argp1);
+  arg1 = reinterpret_cast< mfem::PyGeometricMultigrid * >(argp1);
   {
     try {
       delete arg1; 
@@ -5005,7 +5009,7 @@ fail:
 SWIGINTERN PyObject *PyGeometricMultigrid_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_PyGeometricMultigrid, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__PyGeometricMultigrid, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -5160,11 +5164,11 @@ static void *_p_mfem__NodeExtrudeCoefficientTo_p_mfem__VectorCoefficient(void *x
 static void *_p_mfem__GeometricMultigridTo_p_mfem__Multigrid(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Multigrid *)  ((mfem::GeometricMultigrid *) x));
 }
-static void *_p_PyGeometricMultigridTo_p_mfem__Multigrid(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Multigrid *) (mfem::GeometricMultigrid *) ((PyGeometricMultigrid *) x));
+static void *_p_mfem__PyGeometricMultigridTo_p_mfem__Multigrid(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Multigrid *) (mfem::GeometricMultigrid *) ((mfem::PyGeometricMultigrid *) x));
 }
-static void *_p_PyGeometricMultigridTo_p_mfem__GeometricMultigrid(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::GeometricMultigrid *)  ((PyGeometricMultigrid *) x));
+static void *_p_mfem__PyGeometricMultigridTo_p_mfem__GeometricMultigrid(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::GeometricMultigrid *)  ((mfem::PyGeometricMultigrid *) x));
 }
 static void *_p_mfem__HyprePCGTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HyprePCG *) x));
@@ -5202,8 +5206,8 @@ static void *_p_mfem__MultigridTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(
 static void *_p_mfem__GeometricMultigridTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::Multigrid *) ((mfem::GeometricMultigrid *) x));
 }
-static void *_p_PyGeometricMultigridTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::Multigrid *)(mfem::GeometricMultigrid *) ((PyGeometricMultigrid *) x));
+static void *_p_mfem__PyGeometricMultigridTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::Multigrid *)(mfem::GeometricMultigrid *) ((mfem::PyGeometricMultigrid *) x));
 }
 static void *_p_mfem__HypreEuclidTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreEuclid *) x));
@@ -5355,8 +5359,8 @@ static void *_p_mfem__MultigridTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(ne
 static void *_p_mfem__GeometricMultigridTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Solver *) (mfem::Multigrid *) ((mfem::GeometricMultigrid *) x));
 }
-static void *_p_PyGeometricMultigridTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::Multigrid *)(mfem::GeometricMultigrid *) ((PyGeometricMultigrid *) x));
+static void *_p_mfem__PyGeometricMultigridTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::Multigrid *)(mfem::GeometricMultigrid *) ((mfem::PyGeometricMultigrid *) x));
 }
 static void *_p_mfem__HypreILUTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreILU *) x));
@@ -5377,7 +5381,6 @@ static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(n
     return (void *)((mfem::Vector *)  ((mfem::LinearForm *) x));
 }
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_PyGeometricMultigrid = {"_p_PyGeometricMultigrid", "PyGeometricMultigrid *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p__HYPRE_ExecutionPolicy = {"_p__HYPRE_ExecutionPolicy", "enum _HYPRE_ExecutionPolicy *|HYPRE_ExecutionPolicy *", 0, 0, (void*)0, 0};
@@ -5394,6 +5397,7 @@ static swig_type_info _swigt__p_mfem__FiniteElementSpaceHierarchy = {"_p_mfem__F
 static swig_type_info _swigt__p_mfem__ParFiniteElementSpaceHierarchy = {"_p_mfem__ParFiniteElementSpaceHierarchy", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__GeometricMultigrid = {"_p_mfem__GeometricMultigrid", "mfem::GeometricMultigrid *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__IntegrationPoint = {"_p_mfem__IntegrationPoint", "mfem::IntegrationPoint *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__L2_FECollection = {"_p_mfem__L2_FECollection", "mfem::L2_FECollection *|mfem::DG_FECollection *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__MatrixVectorProductCoefficient = {"_p_mfem__MatrixVectorProductCoefficient", "mfem::MatrixVectorProductCoefficient *|mfem::MatVecCoefficient *", 0, 0, (void*)0, 0};
@@ -5442,6 +5446,8 @@ static swig_type_info _swigt__p_mfem__HypreAMS = {"_p_mfem__HypreAMS", 0, 0, 0, 
 static swig_type_info _swigt__p_mfem__HypreSmoother = {"_p_mfem__HypreSmoother", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__HypreTriSolve = {"_p_mfem__HypreTriSolve", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__OperatorHandle = {"_p_mfem__OperatorHandle", "mfem::OperatorPtr *|mfem::OperatorHandle *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__PyGeometricMultigrid = {"_p_mfem__PyGeometricMultigrid", "mfem::PyGeometricMultigrid *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__Refinement = {"_p_mfem__Refinement", "mfem::Refinement *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", "mfem::Solver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__HypreParVector = {"_p_mfem__HypreParVector", 0, 0, 0, 0, 0};
@@ -5472,7 +5478,6 @@ static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_MPI_Comm,
-  &_swigt__p_PyGeometricMultigrid,
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_RefCoord,
   &_swigt__p__HYPRE_ExecutionPolicy,
@@ -5516,6 +5521,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__HypreSolver,
   &_swigt__p_mfem__HypreTriSolve,
   &_swigt__p_mfem__IdentityOperator,
+  &_swigt__p_mfem__IntegrationPoint,
   &_swigt__p_mfem__IntegrationRule,
   &_swigt__p_mfem__L2ElementRestriction,
   &_swigt__p_mfem__L2FaceRestriction,
@@ -5532,11 +5538,13 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__OperatorHandle,
   &_swigt__p_mfem__ParFiniteElementSpaceHierarchy,
   &_swigt__p_mfem__ProductOperator,
+  &_swigt__p_mfem__PyGeometricMultigrid,
   &_swigt__p_mfem__PyOperatorBase,
   &_swigt__p_mfem__PyTimeDependentOperatorBase,
   &_swigt__p_mfem__QuadratureFunction,
   &_swigt__p_mfem__RAPOperator,
   &_swigt__p_mfem__RectangularConstrainedOperator,
+  &_swigt__p_mfem__Refinement,
   &_swigt__p_mfem__ScalarVectorProductCoefficient,
   &_swigt__p_mfem__ScaledOperator,
   &_swigt__p_mfem__SecondOrderTimeDependentOperator,
@@ -5567,7 +5575,6 @@ static swig_type_info *swig_type_initial[] = {
 };
 
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_PyGeometricMultigrid[] = {  {&_swigt__p_PyGeometricMultigrid, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p__HYPRE_ExecutionPolicy[] = {  {&_swigt__p__HYPRE_ExecutionPolicy, 0, 0, 0},{0, 0, 0, 0}};
@@ -5582,12 +5589,13 @@ static swig_cast_info _swigc__p_mfem__ConvectionIntegrator[] = {  {&_swigt__p_mf
 static swig_cast_info _swigc__p_mfem__DGTraceIntegrator[] = {  {&_swigt__p_mfem__DGTraceIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ParFiniteElementSpaceHierarchy[] = {{&_swigt__p_mfem__ParFiniteElementSpaceHierarchy, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__FiniteElementSpaceHierarchy[] = {  {&_swigt__p_mfem__FiniteElementSpaceHierarchy, 0, 0, 0},  {&_swigt__p_mfem__ParFiniteElementSpaceHierarchy, _p_mfem__ParFiniteElementSpaceHierarchyTo_p_mfem__FiniteElementSpaceHierarchy, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__GeometricMultigrid[] = {  {&_swigt__p_mfem__GeometricMultigrid, 0, 0, 0},  {&_swigt__p_PyGeometricMultigrid, _p_PyGeometricMultigridTo_p_mfem__GeometricMultigrid, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__GeometricMultigrid[] = {  {&_swigt__p_mfem__GeometricMultigrid, 0, 0, 0},  {&_swigt__p_mfem__PyGeometricMultigrid, _p_mfem__PyGeometricMultigridTo_p_mfem__GeometricMultigrid, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__IntegrationPoint[] = {  {&_swigt__p_mfem__IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2_FECollection[] = {  {&_swigt__p_mfem__L2_FECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MatrixVectorProductCoefficient[] = {  {&_swigt__p_mfem__MatrixVectorProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Multigrid[] = {  {&_swigt__p_mfem__Multigrid, 0, 0, 0},  {&_swigt__p_mfem__GeometricMultigrid, _p_mfem__GeometricMultigridTo_p_mfem__Multigrid, 0, 0},  {&_swigt__p_PyGeometricMultigrid, _p_PyGeometricMultigridTo_p_mfem__Multigrid, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Multigrid[] = {  {&_swigt__p_mfem__Multigrid, 0, 0, 0},  {&_swigt__p_mfem__GeometricMultigrid, _p_mfem__GeometricMultigridTo_p_mfem__Multigrid, 0, 0},  {&_swigt__p_mfem__PyGeometricMultigrid, _p_mfem__PyGeometricMultigridTo_p_mfem__Multigrid, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HyprePCG[] = {{&_swigt__p_mfem__HyprePCG, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SparseMatrix[] = {{&_swigt__p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {{&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
@@ -5630,9 +5638,11 @@ static swig_cast_info _swigc__p_mfem__HypreSolver[] = {{&_swigt__p_mfem__HypreSo
 static swig_cast_info _swigc__p_mfem__HypreAMS[] = {{&_swigt__p_mfem__HypreAMS, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HypreSmoother[] = {{&_swigt__p_mfem__HypreSmoother, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HypreTriSolve[] = {{&_swigt__p_mfem__HypreTriSolve, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__HyprePCG, _p_mfem__HyprePCGTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseSymmetricMatrix, _p_mfem__DenseSymmetricMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreDiagScale, _p_mfem__HypreDiagScaleTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreFGMRES, _p_mfem__HypreFGMRESTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreADS, _p_mfem__HypreADSTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__BilinearForm, _p_mfem__BilinearFormTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MixedBilinearForm, _p_mfem__MixedBilinearFormTo_p_mfem__Operator, 0, 0},  {&_swigt__p_PyGeometricMultigrid, _p_PyGeometricMultigridTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Multigrid, _p_mfem__MultigridTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__GeometricMultigrid, _p_mfem__GeometricMultigridTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreEuclid, _p_mfem__HypreEuclidTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreBoomerAMG, _p_mfem__HypreBoomerAMGTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentAdjointOperator, _p_mfem__TimeDependentAdjointOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ScaledOperator, _p_mfem__ScaledOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RectangularConstrainedOperator, _p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DiscreteLinearOperator, _p_mfem__DiscreteLinearOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__HypreILU, _p_mfem__HypreILUTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2ElementRestriction, _p_mfem__L2ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__FaceRestriction, _p_mfem__FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__H1FaceRestriction, _p_mfem__H1FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2FaceRestriction, _p_mfem__L2FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ElementRestriction, _p_mfem__ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreGMRES, _p_mfem__HypreGMRESTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreParaSails, _p_mfem__HypreParaSailsTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreParMatrix, _p_mfem__HypreParMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreIdentity, _p_mfem__HypreIdentityTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreSolver, _p_mfem__HypreSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreAMS, _p_mfem__HypreAMSTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreSmoother, _p_mfem__HypreSmootherTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreTriSolve, _p_mfem__HypreTriSolveTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__HyprePCG, _p_mfem__HyprePCGTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseSymmetricMatrix, _p_mfem__DenseSymmetricMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreDiagScale, _p_mfem__HypreDiagScaleTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreFGMRES, _p_mfem__HypreFGMRESTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreADS, _p_mfem__HypreADSTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__BilinearForm, _p_mfem__BilinearFormTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MixedBilinearForm, _p_mfem__MixedBilinearFormTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyGeometricMultigrid, _p_mfem__PyGeometricMultigridTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Multigrid, _p_mfem__MultigridTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__GeometricMultigrid, _p_mfem__GeometricMultigridTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreEuclid, _p_mfem__HypreEuclidTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreBoomerAMG, _p_mfem__HypreBoomerAMGTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentAdjointOperator, _p_mfem__TimeDependentAdjointOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ScaledOperator, _p_mfem__ScaledOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RectangularConstrainedOperator, _p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DiscreteLinearOperator, _p_mfem__DiscreteLinearOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__HypreILU, _p_mfem__HypreILUTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2ElementRestriction, _p_mfem__L2ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__FaceRestriction, _p_mfem__FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__H1FaceRestriction, _p_mfem__H1FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2FaceRestriction, _p_mfem__L2FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ElementRestriction, _p_mfem__ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreGMRES, _p_mfem__HypreGMRESTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreParaSails, _p_mfem__HypreParaSailsTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreParMatrix, _p_mfem__HypreParMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreIdentity, _p_mfem__HypreIdentityTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreSolver, _p_mfem__HypreSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreAMS, _p_mfem__HypreAMSTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreSmoother, _p_mfem__HypreSmootherTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreTriSolve, _p_mfem__HypreTriSolveTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__OperatorHandle[] = {  {&_swigt__p_mfem__OperatorHandle, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__HypreGMRES, _p_mfem__HypreGMRESTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreParaSails, _p_mfem__HypreParaSailsTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreFGMRES, _p_mfem__HypreFGMRESTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreTriSolve, _p_mfem__HypreTriSolveTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreSolver, _p_mfem__HypreSolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__Solver, 0, 0, 0},  {&_swigt__p_mfem__HypreBoomerAMG, _p_mfem__HypreBoomerAMGTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreDiagScale, _p_mfem__HypreDiagScaleTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreIdentity, _p_mfem__HypreIdentityTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreAMS, _p_mfem__HypreAMSTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HyprePCG, _p_mfem__HyprePCGTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreEuclid, _p_mfem__HypreEuclidTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreADS, _p_mfem__HypreADSTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__Multigrid, _p_mfem__MultigridTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__GeometricMultigrid, _p_mfem__GeometricMultigridTo_p_mfem__Solver, 0, 0},  {&_swigt__p_PyGeometricMultigrid, _p_PyGeometricMultigridTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreILU, _p_mfem__HypreILUTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreSmoother, _p_mfem__HypreSmootherTo_p_mfem__Solver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__PyGeometricMultigrid[] = {  {&_swigt__p_mfem__PyGeometricMultigrid, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Refinement[] = {  {&_swigt__p_mfem__Refinement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__HypreGMRES, _p_mfem__HypreGMRESTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreParaSails, _p_mfem__HypreParaSailsTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreFGMRES, _p_mfem__HypreFGMRESTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreTriSolve, _p_mfem__HypreTriSolveTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreSolver, _p_mfem__HypreSolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__Solver, 0, 0, 0},  {&_swigt__p_mfem__HypreBoomerAMG, _p_mfem__HypreBoomerAMGTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreDiagScale, _p_mfem__HypreDiagScaleTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreIdentity, _p_mfem__HypreIdentityTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreAMS, _p_mfem__HypreAMSTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HyprePCG, _p_mfem__HyprePCGTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreEuclid, _p_mfem__HypreEuclidTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreADS, _p_mfem__HypreADSTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__Multigrid, _p_mfem__MultigridTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__GeometricMultigrid, _p_mfem__GeometricMultigridTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__PyGeometricMultigrid, _p_mfem__PyGeometricMultigridTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreILU, _p_mfem__HypreILUTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreSmoother, _p_mfem__HypreSmootherTo_p_mfem__Solver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HypreParVector[] = {{&_swigt__p_mfem__HypreParVector, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
@@ -5662,7 +5672,6 @@ static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_MPI_Comm,
-  _swigc__p_PyGeometricMultigrid,
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_RefCoord,
   _swigc__p__HYPRE_ExecutionPolicy,
@@ -5706,6 +5715,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__HypreSolver,
   _swigc__p_mfem__HypreTriSolve,
   _swigc__p_mfem__IdentityOperator,
+  _swigc__p_mfem__IntegrationPoint,
   _swigc__p_mfem__IntegrationRule,
   _swigc__p_mfem__L2ElementRestriction,
   _swigc__p_mfem__L2FaceRestriction,
@@ -5722,11 +5732,13 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__OperatorHandle,
   _swigc__p_mfem__ParFiniteElementSpaceHierarchy,
   _swigc__p_mfem__ProductOperator,
+  _swigc__p_mfem__PyGeometricMultigrid,
   _swigc__p_mfem__PyOperatorBase,
   _swigc__p_mfem__PyTimeDependentOperatorBase,
   _swigc__p_mfem__QuadratureFunction,
   _swigc__p_mfem__RAPOperator,
   _swigc__p_mfem__RectangularConstrainedOperator,
+  _swigc__p_mfem__Refinement,
   _swigc__p_mfem__ScalarVectorProductCoefficient,
   _swigc__p_mfem__ScaledOperator,
   _swigc__p_mfem__SecondOrderTimeDependentOperator,
