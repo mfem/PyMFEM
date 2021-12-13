@@ -493,11 +493,13 @@ def cmake_make_mfem(serial=True):
     else:
         os.makedirs(path)
 
+    ldflags = os.getenv('LDFLAGS') if os.getenv('LDFLAGS') is not None else ''
+    
     cmake_opts = {'DCMAKE_VERBOSE_MAKEFILE': '1',
                   'DBUILD_SHARED_LIBS': '1',
                   'DMFEM_ENABLE_EXAMPLES': '1',
                   'DMFEM_ENABLE_MINIAPPS': '1',
-                  'DCMAKE_SHARED_LINKER_FLAGS': '',
+                  'DCMAKE_SHARED_LINKER_FLAGS': ldflags,
                   'DMFEM_USE_ZLIB': '1',
                   'DCMAKE_CXX_FLAGS': cxx11_flag}
 
@@ -523,10 +525,10 @@ def cmake_make_mfem(serial=True):
             find_libpath_from_prefix(
                 'metis', metis_prefix))
 
-        lflags = "-L" + metislibpath
-        lflags = lflags + " -L" + hyprelibpath
-        cmake_opts['DCMAKE_SHARED_LINKER_FLAGS'] = lflags
-        #cmake_opts['DCMAKE_EXT_LINKER_FLAGS'] = lflags
+        ldflags = "-L" + metislibpath + " " + ldflags
+        ldflags = "-L" + hyprelibpath + " " + ldflags
+        cmake_opts['DCMAKE_SHARED_LINKER_FLAGS'] = ldflags
+        cmake_opts['DCMAKE_EXE_LINKER_FLAGS'] = ldflags
 
         if enable_strumpack:
             cmake_opts['DMFEM_USE_STRUMPACK'] = '1'
