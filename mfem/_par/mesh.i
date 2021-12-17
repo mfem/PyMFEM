@@ -59,6 +59,9 @@ import_array();
 OSTREAM_TYPEMAP(std::ostream&)
 ISTREAM_TYPEMAP(std::istream&)
 
+%include "std_vector.i"
+%template(vector_int) std::vector<int>;
+%template(vector_Vector) std::vector<mfem::Vector>;
 
 // ignore these constructors, since in python element::type is given by 
 // string (see extend section below).

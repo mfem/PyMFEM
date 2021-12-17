@@ -360,7 +360,7 @@ class RestrictedCoefficient(Coefficient):
         r"""__init__(RestrictedCoefficient self, Coefficient c_, intArray attr) -> RestrictedCoefficient"""
         _coefficient.RestrictedCoefficient_swiginit(self, _coefficient.new_RestrictedCoefficient(c_, attr))
 
-        self._ref_to_c = _c
+        self._ref_to_c = c_
 
 
 
@@ -2373,6 +2373,11 @@ class PyCoefficientBase(FunctionCoefficient):
             _self = self
         _coefficient.PyCoefficientBase_swiginit(self, _coefficient.new_PyCoefficientBase(_self, tdep))
 
+    def SetTime(self, t):
+        r"""SetTime(PyCoefficientBase self, double t)"""
+        return _coefficient.PyCoefficientBase_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.PyCoefficientBase_SetTime)
+
     def Eval(self, T, ip):
         r"""Eval(PyCoefficientBase self, ElementTransformation T, IntegrationPoint ip) -> double"""
         return _coefficient.PyCoefficientBase_Eval(self, T, ip)
@@ -2409,6 +2414,11 @@ class VectorPyCoefficientBase(VectorFunctionCoefficient):
         else:
             _self = self
         _coefficient.VectorPyCoefficientBase_swiginit(self, _coefficient.new_VectorPyCoefficientBase(_self, dim, tdep, q))
+
+    def SetTime(self, t):
+        r"""SetTime(VectorPyCoefficientBase self, double t)"""
+        return _coefficient.VectorPyCoefficientBase_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.VectorPyCoefficientBase_SetTime)
 
     def Eval(self, *args):
         r"""
@@ -2449,6 +2459,11 @@ class MatrixPyCoefficientBase(MatrixFunctionCoefficient):
         else:
             _self = self
         _coefficient.MatrixPyCoefficientBase_swiginit(self, _coefficient.new_MatrixPyCoefficientBase(_self, dim, tdep))
+
+    def SetTime(self, t):
+        r"""SetTime(MatrixPyCoefficientBase self, double t)"""
+        return _coefficient.MatrixPyCoefficientBase_SetTime(self, t)
+    SetTime = _swig_new_instance_method(_coefficient.MatrixPyCoefficientBase_SetTime)
 
     def Eval(self, K, T, ip):
         r"""Eval(MatrixPyCoefficientBase self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"""

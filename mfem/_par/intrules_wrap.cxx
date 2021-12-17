@@ -2969,7 +2969,7 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
   return SWIG_OK;
 }
 
-SWIGINTERN mfem::Array< mfem::IntegrationPoint > *new_mfem_Array_Sl_mfem_IntegrationPoint_Sg___SWIG_6(void *List_or_Tuple){
+SWIGINTERN mfem::Array< mfem::IntegrationPoint > *new_mfem_Array_Sl_mfem_IntegrationPoint_Sg___SWIG_6(void *List_or_Tuple,mfem::IntegrationPoint *_unused){
     /*
     This method is wrapped to recived tuple or list to create
     Array object
@@ -5317,17 +5317,28 @@ fail:
 SWIGINTERN PyObject *_wrap_new_IntegrationPointArray__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   void *arg1 = (void *) 0 ;
-  int res1 ;
+  mfem::IntegrationPoint *arg2 = (mfem::IntegrationPoint *) 0 ;
+  mfem::IntegrationPoint *temp_ptr1 ;
+  int size1 ;
+  bool is_tuple1 = false ;
   mfem::Array< mfem::IntegrationPoint > *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0],SWIG_as_voidptrptr(&arg1), 0, 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_IntegrationPointArray" "', argument " "1"" of type '" "void *""'"); 
+  {
+    if (!PyList_Check(swig_obj[0])) {
+      if (!PyTuple_Check(swig_obj[0])) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
+        return NULL;
+      } else {
+        is_tuple1 = true;
+      }
+    }
+    size1 = (is_tuple1) ? PyTuple_Size(swig_obj[0]) : PyList_Size(swig_obj[0]);
+    arg1 = (void *) & size1;
   }
   {
     try {
-      result = (mfem::Array< mfem::IntegrationPoint > *)new_mfem_Array_Sl_mfem_IntegrationPoint_Sg___SWIG_6(arg1);
+      result = (mfem::Array< mfem::IntegrationPoint > *)new_mfem_Array_Sl_mfem_IntegrationPoint_Sg___SWIG_6(arg1,arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -5342,6 +5353,18 @@ SWIGINTERN PyObject *_wrap_new_IntegrationPointArray__SWIG_6(PyObject *SWIGUNUSE
     }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t, SWIG_POINTER_NEW |  0 );
+  {
+    //PyObject *name = PyUnicode_FromString("__setitem__");  
+    for (int i = 0; i < size1; i++) {
+      PyObject *s = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], i) : PyList_GetItem(swig_obj[0],i);
+      if (SWIG_ConvertPtr(s, (void **) &temp_ptr1,
+          SWIGTYPE_p_mfem__IntegrationPoint, 0 |0) == -1) {
+        PyErr_SetString(PyExc_ValueError, "List items must be mfem::IntegrationPoint");
+      } else {
+        (* result)[i] =  *temp_ptr1;    
+      }
+    }
+  }
   return resultobj;
 fail:
   return NULL;
@@ -5365,15 +5388,6 @@ SWIGINTERN PyObject *_wrap_new_IntegrationPointArray(PyObject *self, PyObject *a
     _v = SWIG_CheckState(res);
     if (_v) {
       return _wrap_new_IntegrationPointArray__SWIG_5(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    void *ptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &ptr, 0, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_IntegrationPointArray__SWIG_6(self, argc, argv);
     }
   }
   if (argc == 1) {
@@ -5413,6 +5427,24 @@ SWIGINTERN PyObject *_wrap_new_IntegrationPointArray(PyObject *self, PyObject *a
     }
     if (_v) {
       return _wrap_new_IntegrationPointArray__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      _v = 0;
+      if (PyList_Check(argv[0])){
+        _v = 1;
+      }
+      if (PyTuple_Check(argv[0])){
+        _v = 1;
+      }
+    }
+    if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_IntegrationPointArray__SWIG_6(self, argc, argv);
+      }
+      return _wrap_new_IntegrationPointArray__SWIG_6(self, argc, argv);
     }
   }
   if (argc == 2) {
@@ -5479,7 +5511,7 @@ fail:
     "    mfem::Array< mfem::IntegrationPoint >::Array(int,mfem::MemoryType)\n"
     "    mfem::Array< mfem::IntegrationPoint >::Array(mfem::IntegrationPoint *,int)\n"
     "    mfem::Array< mfem::IntegrationPoint >::Array(mfem::Array< mfem::IntegrationPoint > const &)\n"
-    "    mfem::Array< mfem::IntegrationPoint >::Array(void *)\n");
+    "    mfem::Array< mfem::IntegrationPoint >::Array(void *,mfem::IntegrationPoint *)\n");
   return 0;
 }
 

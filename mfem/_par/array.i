@@ -29,12 +29,27 @@ ISTREAM_TYPEMAP(std::istream&)
 
 %import "mem_manager.i"
 
+%import "../common/array_listtuple_typemap.i"
+ARRAY_LISTTUPLE_INPUT(int, PyLong_AsLong)
+ARRAY_LISTTUPLE_INPUT(double, PyFloat_AsDouble)
+
 %import "../common/memorytype_typemap.i"
 ENUM_TO_MEMORYTYPE(mfem::MemoryType mt)
 
 %import "../common/data_size_typemap.i"
 XXXPTR_SIZE_IN(int *data_, int asize, int)
 XXXPTR_SIZE_IN(double *data_, int asize, double)
+
+%pythonappend mfem::Array::Array %{
+  if len(args) == 1 and isinstance(args[0], list):
+      if (len(args[0]) == 2 and hasattr(args[0][0], 'disown') and
+	  not hasattr(args[0][1], 'disown')):
+          ## first element is SwigObject, like <Swig Object of type 'int *'>
+          ## We do not own data in this case.
+          pass
+      else:
+          self.MakeDataOwner()
+%}
 
 //%import "intrules.i"
 //%newobject intArray
@@ -48,7 +63,7 @@ XXXPTR_SIZE_IN(double *data_, int asize, double)
 
 %include "general/array.hpp"
 %extend mfem::Array{
-  mfem::Array (void *List_or_Tuple){
+  mfem::Array (void *List_or_Tuple, T *_unused){
     /*
     This method is wrapped to recived tuple or list to create
     Array object

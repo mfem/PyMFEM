@@ -103,7 +103,7 @@ namespace mfem {
     self._ref_to_vc = vc
 %}
 %pythonappend RestrictedCoefficient::RestrictedCoefficient %{
-    self._ref_to_c = _c
+    self._ref_to_c = c_
 %}
 %pythonappend MatrixRestrictedCoefficient::MatrixRestrictedCoefficient %{
     self._ref_to_mc = mc

@@ -378,7 +378,7 @@ class RestrictedCoefficient(Coefficient):
         r"""__init__(RestrictedCoefficient self, Coefficient c_, intArray attr) -> RestrictedCoefficient"""
         _coefficient.RestrictedCoefficient_swiginit(self, _coefficient.new_RestrictedCoefficient(c_, attr))
 
-        self._ref_to_c = _c
+        self._ref_to_c = c_
 
 
 

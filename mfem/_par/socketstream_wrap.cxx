@@ -3102,52 +3102,56 @@ namespace Swig {
 #define SWIGTYPE_p_RefCoord swig_types[2]
 #define SWIGTYPE_p__HYPRE_ExecutionPolicy swig_types[3]
 #define SWIGTYPE_p__HYPRE_MemoryLocation swig_types[4]
-#define SWIGTYPE_p_char swig_types[5]
-#define SWIGTYPE_p_double swig_types[6]
-#define SWIGTYPE_p_hex_t swig_types[7]
-#define SWIGTYPE_p_int swig_types[8]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[9]
-#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[10]
-#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[11]
-#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[12]
-#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[13]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[14]
-#define SWIGTYPE_p_mfem__HypreParVector swig_types[15]
-#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[16]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[17]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[18]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[19]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[20]
-#define SWIGTYPE_p_mfem__Mesh swig_types[21]
-#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[22]
-#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[23]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[24]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[25]
-#define SWIGTYPE_p_mfem__Refinement swig_types[26]
-#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[27]
-#define SWIGTYPE_p_mfem__Vector swig_types[28]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[29]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[30]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[31]
-#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[32]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[33]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[34]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[35]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[36]
-#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[37]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[38]
-#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[39]
-#define SWIGTYPE_p_mfem__socketbuf swig_types[40]
-#define SWIGTYPE_p_mfem__socketserver swig_types[41]
-#define SWIGTYPE_p_mfem__socketstream swig_types[42]
-#define SWIGTYPE_p_pri_t swig_types[43]
-#define SWIGTYPE_p_pyr_t swig_types[44]
-#define SWIGTYPE_p_quad_t swig_types[45]
-#define SWIGTYPE_p_seg_t swig_types[46]
-#define SWIGTYPE_p_tet_t swig_types[47]
-#define SWIGTYPE_p_tri_t swig_types[48]
-static swig_type_info *swig_types[50];
-static swig_module_info swig_module = {swig_types, 49, 0, 0, 0, 0};
+#define SWIGTYPE_p_allocator_type swig_types[5]
+#define SWIGTYPE_p_char swig_types[6]
+#define SWIGTYPE_p_difference_type swig_types[7]
+#define SWIGTYPE_p_double swig_types[8]
+#define SWIGTYPE_p_hex_t swig_types[9]
+#define SWIGTYPE_p_int swig_types[10]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[11]
+#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[12]
+#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[13]
+#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[14]
+#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[15]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[16]
+#define SWIGTYPE_p_mfem__HypreParVector swig_types[17]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[18]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[19]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[20]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[21]
+#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[22]
+#define SWIGTYPE_p_mfem__Mesh swig_types[23]
+#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[24]
+#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[25]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[26]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[27]
+#define SWIGTYPE_p_mfem__Refinement swig_types[28]
+#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[29]
+#define SWIGTYPE_p_mfem__Vector swig_types[30]
+#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[31]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[32]
+#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[33]
+#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[34]
+#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[35]
+#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[36]
+#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[37]
+#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[38]
+#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[39]
+#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[40]
+#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[41]
+#define SWIGTYPE_p_mfem__socketbuf swig_types[42]
+#define SWIGTYPE_p_mfem__socketserver swig_types[43]
+#define SWIGTYPE_p_mfem__socketstream swig_types[44]
+#define SWIGTYPE_p_pri_t swig_types[45]
+#define SWIGTYPE_p_pyr_t swig_types[46]
+#define SWIGTYPE_p_quad_t swig_types[47]
+#define SWIGTYPE_p_seg_t swig_types[48]
+#define SWIGTYPE_p_size_type swig_types[49]
+#define SWIGTYPE_p_tet_t swig_types[50]
+#define SWIGTYPE_p_tri_t swig_types[51]
+#define SWIGTYPE_p_value_type swig_types[52]
+static swig_type_info *swig_types[54];
+static swig_module_info swig_module = {swig_types, 53, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5536,7 +5540,9 @@ static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wF
 static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p__HYPRE_ExecutionPolicy = {"_p__HYPRE_ExecutionPolicy", "enum _HYPRE_ExecutionPolicy *|HYPRE_ExecutionPolicy *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p__HYPRE_MemoryLocation = {"_p__HYPRE_MemoryLocation", "enum _HYPRE_MemoryLocation *|HYPRE_MemoryLocation *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "HYPRE_Real *|HYPRE_Complex *|double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *|HYPRE_BigInt *", 0, 0, (void*)0, 0};
@@ -5578,8 +5584,10 @@ static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 
 static swig_type_info _swigt__p_pyr_t = {"_p_pyr_t", "pyr_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_size_type = {"_p_size_type", "size_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_MPI_Comm,
@@ -5587,7 +5595,9 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_RefCoord,
   &_swigt__p__HYPRE_ExecutionPolicy,
   &_swigt__p__HYPRE_MemoryLocation,
+  &_swigt__p_allocator_type,
   &_swigt__p_char,
+  &_swigt__p_difference_type,
   &_swigt__p_double,
   &_swigt__p_hex_t,
   &_swigt__p_int,
@@ -5629,8 +5639,10 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_pyr_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
+  &_swigt__p_size_type,
   &_swigt__p_tet_t,
   &_swigt__p_tri_t,
+  &_swigt__p_value_type,
 };
 
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
@@ -5638,7 +5650,9 @@ static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 
 static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p__HYPRE_ExecutionPolicy[] = {  {&_swigt__p__HYPRE_ExecutionPolicy, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p__HYPRE_MemoryLocation[] = {  {&_swigt__p__HYPRE_MemoryLocation, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
@@ -5680,8 +5694,10 @@ static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 
 static swig_cast_info _swigc__p_pyr_t[] = {  {&_swigt__p_pyr_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_size_type[] = {  {&_swigt__p_size_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_MPI_Comm,
@@ -5689,7 +5705,9 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_RefCoord,
   _swigc__p__HYPRE_ExecutionPolicy,
   _swigc__p__HYPRE_MemoryLocation,
+  _swigc__p_allocator_type,
   _swigc__p_char,
+  _swigc__p_difference_type,
   _swigc__p_double,
   _swigc__p_hex_t,
   _swigc__p_int,
@@ -5731,8 +5749,10 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_pyr_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
+  _swigc__p_size_type,
   _swigc__p_tet_t,
   _swigc__p_tri_t,
+  _swigc__p_value_type,
 };
 
 
