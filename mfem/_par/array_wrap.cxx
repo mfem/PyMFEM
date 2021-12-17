@@ -3002,7 +3002,7 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
   return SWIG_OK;
 }
 
-SWIGINTERN mfem::Array< int > *new_mfem_Array_Sl_int_Sg___SWIG_6(void *List_or_Tuple){
+SWIGINTERN mfem::Array< int > *new_mfem_Array_Sl_int_Sg___SWIG_6(void *List_or_Tuple,int *_unused){
     /*
     This method is wrapped to recived tuple or list to create
     Array object
@@ -3198,7 +3198,7 @@ SWIGINTERN void mfem_Array_Sl_int_Sg__Save__SWIG_2(mfem::Array< int > *self){
 
   #define SWIG_From_double   PyFloat_FromDouble 
 
-SWIGINTERN mfem::Array< double > *new_mfem_Array_Sl_double_Sg___SWIG_6(void *List_or_Tuple){
+SWIGINTERN mfem::Array< double > *new_mfem_Array_Sl_double_Sg___SWIG_6(void *List_or_Tuple,double *_unused){
     /*
     This method is wrapped to recived tuple or list to create
     Array object
@@ -6745,17 +6745,28 @@ fail:
 SWIGINTERN PyObject *_wrap_new_intArray__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   void *arg1 = (void *) 0 ;
-  int res1 ;
+  int *arg2 = (int *) 0 ;
+  int *temp_ptr1 ;
+  int size1 ;
+  bool is_tuple1 = false ;
   mfem::Array< int > *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0],SWIG_as_voidptrptr(&arg1), 0, 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_intArray" "', argument " "1"" of type '" "void *""'"); 
+  {
+    if (!PyList_Check(swig_obj[0])) {
+      if (!PyTuple_Check(swig_obj[0])) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
+        return NULL;
+      } else {
+        is_tuple1 = true;
+      }
+    }
+    size1 = (is_tuple1) ? PyTuple_Size(swig_obj[0]) : PyList_Size(swig_obj[0]);
+    arg1 = (void *) & size1;
   }
   {
     try {
-      result = (mfem::Array< int > *)new_mfem_Array_Sl_int_Sg___SWIG_6(arg1);
+      result = (mfem::Array< int > *)new_mfem_Array_Sl_int_Sg___SWIG_6(arg1,arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -6770,6 +6781,12 @@ SWIGINTERN PyObject *_wrap_new_intArray__SWIG_6(PyObject *SWIGUNUSEDPARM(self), 
     }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NEW |  0 );
+  {
+    for (int i = 0; i < size1; i++) {
+      PyObject *s = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], i) : PyList_GetItem(swig_obj[0],i);
+      (* result)[i] =  (int)PyLong_AsLong(s);
+    }
+  }
   return resultobj;
 fail:
   return NULL;
@@ -6797,46 +6814,12 @@ SWIGINTERN PyObject *_wrap_new_intArray(PyObject *self, PyObject *args) {
   }
   if (argc == 1) {
     int _v;
-    void *ptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &ptr, 0, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_intArray__SWIG_6(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
     {
       int res = SWIG_AsVal_int(argv[0], NULL);
       _v = SWIG_CheckState(res);
     }
     if (_v) {
       return _wrap_new_intArray__SWIG_2(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    {
-      _v = 0;
-      PyObject* module = PyImport_ImportModule("enum");
-      if (!module){
-        _v = 0;
-      } else {
-        PyObject* cls = PyObject_GetAttrString(module, "IntEnum");
-        if (!cls){
-          _v = 0;            
-        } else {
-          int check = PyObject_IsInstance(argv[0], cls);
-          if (check) {
-            _v = 1;
-          }
-          Py_DECREF(cls);	 
-        }
-        Py_DECREF(module);
-      }
-    }
-    if (_v) {
-      return _wrap_new_intArray__SWIG_1(self, argc, argv);
     }
   }
   if (argc == 1) {
@@ -6874,6 +6857,49 @@ SWIGINTERN PyObject *_wrap_new_intArray(PyObject *self, PyObject *args) {
         return _wrap_new_intArray__SWIG_4(self, argc, argv);
       }
       return _wrap_new_intArray__SWIG_4(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      _v = 0;
+      PyObject* module = PyImport_ImportModule("enum");
+      if (!module){
+        _v = 0;
+      } else {
+        PyObject* cls = PyObject_GetAttrString(module, "IntEnum");
+        if (!cls){
+          _v = 0;            
+        } else {
+          int check = PyObject_IsInstance(argv[0], cls);
+          if (check) {
+            _v = 1;
+          }
+          Py_DECREF(cls);	 
+        }
+        Py_DECREF(module);
+      }
+    }
+    if (_v) {
+      return _wrap_new_intArray__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      _v = 0;
+      if (PyList_Check(argv[0])){
+        _v = 1;
+      }
+      if (PyTuple_Check(argv[0])){
+        _v = 1;
+      }
+    }
+    if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_intArray__SWIG_6(self, argc, argv);
+      }
+      return _wrap_new_intArray__SWIG_6(self, argc, argv);
     }
   }
   if (argc == 2) {
@@ -6917,7 +6943,7 @@ fail:
     "    mfem::Array< int >::Array(int,mfem::MemoryType)\n"
     "    mfem::Array< int >::Array(int *,int)\n"
     "    mfem::Array< int >::Array(mfem::Array< int > const &)\n"
-    "    mfem::Array< int >::Array(void *)\n");
+    "    mfem::Array< int >::Array(void *,int *)\n");
   return 0;
 }
 
@@ -11141,17 +11167,28 @@ fail:
 SWIGINTERN PyObject *_wrap_new_doubleArray__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   void *arg1 = (void *) 0 ;
-  int res1 ;
+  double *arg2 = (double *) 0 ;
+  double *temp_ptr1 ;
+  int size1 ;
+  bool is_tuple1 = false ;
   mfem::Array< double > *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0],SWIG_as_voidptrptr(&arg1), 0, 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_doubleArray" "', argument " "1"" of type '" "void *""'"); 
+  {
+    if (!PyList_Check(swig_obj[0])) {
+      if (!PyTuple_Check(swig_obj[0])) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
+        return NULL;
+      } else {
+        is_tuple1 = true;
+      }
+    }
+    size1 = (is_tuple1) ? PyTuple_Size(swig_obj[0]) : PyList_Size(swig_obj[0]);
+    arg1 = (void *) & size1;
   }
   {
     try {
-      result = (mfem::Array< double > *)new_mfem_Array_Sl_double_Sg___SWIG_6(arg1);
+      result = (mfem::Array< double > *)new_mfem_Array_Sl_double_Sg___SWIG_6(arg1,arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -11166,6 +11203,12 @@ SWIGINTERN PyObject *_wrap_new_doubleArray__SWIG_6(PyObject *SWIGUNUSEDPARM(self
     }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_double_t, SWIG_POINTER_NEW |  0 );
+  {
+    for (int i = 0; i < size1; i++) {
+      PyObject *s = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], i) : PyList_GetItem(swig_obj[0],i);
+      (* result)[i] =  (double)PyFloat_AsDouble(s);
+    }
+  }
   return resultobj;
 fail:
   return NULL;
@@ -11193,46 +11236,12 @@ SWIGINTERN PyObject *_wrap_new_doubleArray(PyObject *self, PyObject *args) {
   }
   if (argc == 1) {
     int _v;
-    void *ptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &ptr, 0, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_doubleArray__SWIG_6(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
     {
       int res = SWIG_AsVal_int(argv[0], NULL);
       _v = SWIG_CheckState(res);
     }
     if (_v) {
       return _wrap_new_doubleArray__SWIG_2(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    {
-      _v = 0;
-      PyObject* module = PyImport_ImportModule("enum");
-      if (!module){
-        _v = 0;
-      } else {
-        PyObject* cls = PyObject_GetAttrString(module, "IntEnum");
-        if (!cls){
-          _v = 0;            
-        } else {
-          int check = PyObject_IsInstance(argv[0], cls);
-          if (check) {
-            _v = 1;
-          }
-          Py_DECREF(cls);	 
-        }
-        Py_DECREF(module);
-      }
-    }
-    if (_v) {
-      return _wrap_new_doubleArray__SWIG_1(self, argc, argv);
     }
   }
   if (argc == 1) {
@@ -11270,6 +11279,49 @@ SWIGINTERN PyObject *_wrap_new_doubleArray(PyObject *self, PyObject *args) {
         return _wrap_new_doubleArray__SWIG_4(self, argc, argv);
       }
       return _wrap_new_doubleArray__SWIG_4(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      _v = 0;
+      PyObject* module = PyImport_ImportModule("enum");
+      if (!module){
+        _v = 0;
+      } else {
+        PyObject* cls = PyObject_GetAttrString(module, "IntEnum");
+        if (!cls){
+          _v = 0;            
+        } else {
+          int check = PyObject_IsInstance(argv[0], cls);
+          if (check) {
+            _v = 1;
+          }
+          Py_DECREF(cls);	 
+        }
+        Py_DECREF(module);
+      }
+    }
+    if (_v) {
+      return _wrap_new_doubleArray__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      _v = 0;
+      if (PyList_Check(argv[0])){
+        _v = 1;
+      }
+      if (PyTuple_Check(argv[0])){
+        _v = 1;
+      }
+    }
+    if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_doubleArray__SWIG_6(self, argc, argv);
+      }
+      return _wrap_new_doubleArray__SWIG_6(self, argc, argv);
     }
   }
   if (argc == 2) {
@@ -11313,7 +11365,7 @@ fail:
     "    mfem::Array< double >::Array(int,mfem::MemoryType)\n"
     "    mfem::Array< double >::Array(double *,int)\n"
     "    mfem::Array< double >::Array(mfem::Array< double > const &)\n"
-    "    mfem::Array< double >::Array(void *)\n");
+    "    mfem::Array< double >::Array(void *,double *)\n");
   return 0;
 }
 

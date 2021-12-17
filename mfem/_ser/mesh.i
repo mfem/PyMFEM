@@ -11,13 +11,14 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
+#include <vector>  
 //mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 //		      bool fix_orientation = true);
 // void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
 #include "numpy/arrayobject.h"
 #include "pycoefficient.hpp"
 #include "../common/io_stream.hpp"
-using namespace mfem;
+  //using namespace mfem;
 %}
 
 %begin %{
@@ -55,6 +56,11 @@ import_array();
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
 ISTREAM_TYPEMAP(std::istream&)
+
+%include "std_vector.i"
+%template(vector_int) std::vector<int>;
+%template(vector_Vector) std::vector<mfem::Vector>;
+
 
 // this prevent automatic conversion from int to double so
 // that it select collect overloaded method....

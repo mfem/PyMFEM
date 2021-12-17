@@ -2,7 +2,8 @@
 %{
 #include "mfem.hpp"
 #include "fem/gslib.hpp"
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"
+#include "pycoefficient.hpp"
 %}
 
 %include "../common/mfem_config.i"
