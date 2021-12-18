@@ -16,7 +16,7 @@
 #include "fem/pgridfunc.hpp"
 #include "fem/pfespace.hpp"  
 #include "fem/linearform.hpp"  
-#include "pycoefficient.hpp"  
+#include "../common/pycoefficient.hpp"  
 #include "numpy/arrayobject.h"
 %}
 

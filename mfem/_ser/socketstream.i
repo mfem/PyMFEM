@@ -7,7 +7,7 @@
 #include "mesh/mesh_headers.hpp"
 #include "fem/gridfunc.hpp"  
 #include "general/socketstream.hpp"
-#include "pycoefficient.hpp"      
+#include "../common/pycoefficient.hpp"      
 %}
 
 %init %{

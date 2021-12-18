@@ -3254,7 +3254,7 @@ namespace swig {
 #include "mfem.hpp"
 #include "fem/gslib.hpp"
 #include "numpy/arrayobject.h"
-#include "pycoefficient.hpp"
+#include "../common/pycoefficient.hpp"
 
 
 SWIGINTERNINLINE PyObject*

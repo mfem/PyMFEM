@@ -19,7 +19,7 @@
 #include "fem/intrules.hpp"  
 #include "fem/restriction.hpp"
 #include "pyoperator.hpp"
-#include "pycoefficient.hpp"      
+#include "../common/pycoefficient.hpp"      
 %}
 
 %init %{

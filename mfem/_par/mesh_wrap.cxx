@@ -3412,7 +3412,7 @@ mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 		      bool fix_orientation = true);
 // void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
 #include "numpy/arrayobject.h"
-#include "pycoefficient.hpp"
+#include "../common/pycoefficient.hpp"
 #include "../common/io_stream.hpp"
 
 using namespace mfem;

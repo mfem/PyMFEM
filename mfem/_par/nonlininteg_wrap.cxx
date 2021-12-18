@@ -3393,7 +3393,7 @@ namespace swig {
 
 #include "fem/nonlininteg.hpp"
 #include "fem/linearform.hpp"      
-#include "pycoefficient.hpp"
+#include "../common/pycoefficient.hpp"
 #include "pyoperator.hpp"
 using namespace mfem;  
 

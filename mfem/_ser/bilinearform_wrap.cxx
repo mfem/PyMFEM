@@ -3367,7 +3367,7 @@ namespace swig {
 #include "fem/bilinearform.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
-#include "pycoefficient.hpp"  
+#include "../common/pycoefficient.hpp"  
 using namespace mfem;  
 
 

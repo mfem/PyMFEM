@@ -3263,7 +3263,7 @@ namespace swig {
 #include  "mfem.hpp"
 #include "general/globals.hpp"
 #include "numpy/arrayobject.h"
-#include "pycoefficient.hpp"    
+#include "../common/pycoefficient.hpp"    
 
 
 SWIGINTERNINLINE PyObject*

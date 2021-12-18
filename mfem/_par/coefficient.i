@@ -29,7 +29,7 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "pycoefficient.hpp"
+#include "../common/pycoefficient.hpp"
 #include "numpy/arrayobject.h"
 %}
 
@@ -255,7 +255,7 @@ void MatrixPyCoefficientBase::Eval(DenseMatrix &K, ElementTransformation &T,
 }  /* end of name space*/
 %}
 
-%include "pycoefficient.hpp"
+%include "../common/pycoefficient.hpp"
 
 %pythoncode %{
 class PyCoefficient(PyCoefficientBase):

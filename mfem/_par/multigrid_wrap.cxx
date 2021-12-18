@@ -3306,7 +3306,7 @@ namespace swig {
 #include "fem/multigrid.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
-#include "pycoefficient.hpp"    
+#include "../common/pycoefficient.hpp"    
 
 
 SWIGINTERNINLINE PyObject*

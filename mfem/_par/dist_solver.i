@@ -4,7 +4,7 @@
 #include "fem/fem.hpp"
 #include "fem/coefficient.hpp"  
 #include "miniapps/shifted/dist_solver.hpp"
-#include "pycoefficient.hpp"  
+#include "../common/pycoefficient.hpp"  
 #include "numpy/arrayobject.h"    
 %}
 

@@ -12,7 +12,7 @@
 #include "fem/gridfunc.hpp"
 #include "fem/bilinearform.hpp"    
 #include "numpy/arrayobject.h"
-#include "pycoefficient.hpp"  
+#include "../common/pycoefficient.hpp"  
 %}
 
 %init %{

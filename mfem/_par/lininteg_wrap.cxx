@@ -3388,7 +3388,7 @@ namespace swig {
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "pycoefficient.hpp"
+#include "../common/pycoefficient.hpp"
 #include "numpy/arrayobject.h"        
 
 

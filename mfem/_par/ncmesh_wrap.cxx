@@ -3273,7 +3273,7 @@ namespace swig {
 #include "fem/gridfunc.hpp"
 #include "fem/bilinearform.hpp"  
 #include "numpy/arrayobject.h"
-#include "pycoefficient.hpp"  
+#include "../common/pycoefficient.hpp"  
 
 
 SWIGINTERNINLINE PyObject*
@@ -6716,9 +6716,6 @@ SWIGINTERN PyObject *_wrap_NCMesh_Print(PyObject *SWIGUNUSEDPARM(self), PyObject
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -6764,6 +6761,9 @@ SWIGINTERN PyObject *_wrap_NCMesh_Print(PyObject *SWIGUNUSEDPARM(self), PyObject
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -6779,6 +6779,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }

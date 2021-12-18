@@ -10,7 +10,7 @@
 #include "linalg/complex_operator.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
-#include "pycoefficient.hpp"  
+#include "../common/pycoefficient.hpp"  
   %}
 %init %{
 import_array();

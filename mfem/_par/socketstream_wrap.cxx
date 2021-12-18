@@ -3261,7 +3261,7 @@ namespace swig {
 #include "fem/gridfunc.hpp"  
 #include "general/socketstream.hpp"
 #include "numpy/arrayobject.h"
-#include "pycoefficient.hpp"      
+#include "../common/pycoefficient.hpp"      
 
 
 SWIGINTERN swig_type_info*

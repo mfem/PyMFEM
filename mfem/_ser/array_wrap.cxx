@@ -5304,9 +5304,6 @@ SWIGINTERN PyObject *_wrap_intArray_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
           out_txt2.precision(temp2->getPrecision());
           arg2 = &out_txt2;
         }
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
       } else {
         arg2 = stream2;
       }
@@ -5363,6 +5360,9 @@ SWIGINTERN PyObject *_wrap_intArray_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -5378,6 +5378,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -5459,9 +5462,6 @@ SWIGINTERN PyObject *_wrap_intArray_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -5517,6 +5517,9 @@ SWIGINTERN PyObject *_wrap_intArray_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -5532,6 +5535,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -9726,9 +9732,6 @@ SWIGINTERN PyObject *_wrap_doubleArray_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(se
           out_txt2.precision(temp2->getPrecision());
           arg2 = &out_txt2;
         }
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
       } else {
         arg2 = stream2;
       }
@@ -9785,6 +9788,9 @@ SWIGINTERN PyObject *_wrap_doubleArray_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(se
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -9800,6 +9806,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -9881,9 +9890,6 @@ SWIGINTERN PyObject *_wrap_doubleArray_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -9939,6 +9945,9 @@ SWIGINTERN PyObject *_wrap_doubleArray_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -9954,6 +9963,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }

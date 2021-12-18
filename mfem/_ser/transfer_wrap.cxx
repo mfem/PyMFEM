@@ -3366,7 +3366,7 @@ namespace swig {
 #include "numpy/arrayobject.h"
 #include "fem/transfer.hpp"
 #include "pyoperator.hpp"
-#include "pycoefficient.hpp" 
+#include "../common/pycoefficient.hpp" 
 
 
 #include <limits.h>

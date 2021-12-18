@@ -11027,9 +11027,6 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(se
           out_txt2.precision(temp2->getPrecision());
           arg2 = &out_txt2;
         }
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
       } else {
         arg2 = stream2;
       }
@@ -11090,6 +11087,9 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(se
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -11105,6 +11105,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -11186,9 +11189,6 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT__SWIG_0(PyObject *SWIGUNUSEDPARM(s
           out_txt2.precision(temp2->getPrecision());
           arg2 = &out_txt2;
         }
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
       } else {
         arg2 = stream2;
       }
@@ -11249,6 +11249,9 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT__SWIG_0(PyObject *SWIGUNUSEDPARM(s
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -11264,6 +11267,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -14437,7 +14443,8 @@ SWIGINTERN PyObject *_wrap_new_LUFactors__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
         return NULL;
       }
       si = PyList_Size(swig_obj[0]);
-      arg1 = (double *) malloc((si)*sizeof(double));
+      //arg1 = (double *) malloc((si)*sizeof(double));
+      arg1 = new double[si];
       for (i = 0; i < si; i++) {
         PyObject *s = PyList_GetItem(swig_obj[0],i);
         if (PyInt_Check(s)) {
@@ -14445,6 +14452,7 @@ SWIGINTERN PyObject *_wrap_new_LUFactors__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
         } else if (PyFloat_Check(s)) {
           arg1[i] = (double)PyFloat_AsDouble(s);
         } else {
+          delete arg1;
           PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
           return NULL;
         }

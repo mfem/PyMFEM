@@ -4,7 +4,7 @@
 #include "fem/linearform.hpp"
 #include "fem/hybridization.hpp"
 #include "numpy/arrayobject.h"
-#include "pycoefficient.hpp"  
+#include "../common/pycoefficient.hpp"  
 %}
 
 %init %{

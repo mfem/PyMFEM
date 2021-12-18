@@ -3392,7 +3392,7 @@ namespace swig {
 #include "fem/pgridfunc.hpp"
 #include "fem/pfespace.hpp"  
 #include "fem/linearform.hpp"  
-#include "pycoefficient.hpp"  
+#include "../common/pycoefficient.hpp"  
 #include "numpy/arrayobject.h"
 
 
@@ -10377,9 +10377,6 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_Save__SWIG_0(PyObject *SWIGUNUSEDPARM
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -10425,6 +10422,9 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_Save__SWIG_0(PyObject *SWIGUNUSEDPARM
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -10440,6 +10440,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -10624,9 +10627,6 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_SaveAsOne__SWIG_1(PyObject *SWIGUNUSE
           out_txt2.precision(temp2->getPrecision());
           arg2 = &out_txt2;
         }
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
       } else {
         arg2 = stream2;
       }
@@ -10673,6 +10673,9 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_SaveAsOne__SWIG_1(PyObject *SWIGUNUSE
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -10688,6 +10691,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
