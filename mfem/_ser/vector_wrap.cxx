@@ -4146,7 +4146,8 @@ SWIGINTERN PyObject *_wrap_new_Vector__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py
         return NULL;
       }
       si = PyList_Size(swig_obj[0]);
-      arg1 = (double *) malloc((si)*sizeof(double));
+      //arg1 = (double *) malloc((si)*sizeof(double));
+      arg1 = new double[si];
       for (i = 0; i < si; i++) {
         PyObject *s = PyList_GetItem(swig_obj[0],i);
         if (PyInt_Check(s)) {
@@ -4154,6 +4155,7 @@ SWIGINTERN PyObject *_wrap_new_Vector__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py
         } else if (PyFloat_Check(s)) {
           arg1[i] = (double)PyFloat_AsDouble(s);
         } else {
+          delete arg1;
           PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
           return NULL;
         }
