@@ -222,7 +222,7 @@ HypreParMatrix.__repr__ = parmat__repr__
 PyObject* GetPartitioningArray()
 {
   // assumed partitioning mode only
-  npy_intp dims[] = {3};
+  npy_intp dims[] = {2};
   int typenum =  (sizeof(HYPRE_BigInt) == 4) ? NPY_INT32 : NPY_INT64;
   HYPRE_BigInt *part_out;
   
@@ -234,7 +234,7 @@ PyObject* GetPartitioningArray()
   part_out = (HYPRE_BigInt *) PyArray_DATA(arr1);
   part_out[0] = part[0];
   part_out[1] = part[1];
-  part_out[2] = part[2];  
+  //part_out[2] = part[2];  
 
   return arr1;
 }
@@ -243,7 +243,7 @@ PyObject* GetPartitioningArray()
 PyObject* GetRowPartArray()
 {
   // assumed partitioning mode only
-  npy_intp dims[] = {3};
+  npy_intp dims[] = {2};
   int typenum =  (sizeof(HYPRE_BigInt) == 4) ? NPY_INT32 : NPY_INT64;
   HYPRE_BigInt *part_out;
   
@@ -255,14 +255,14 @@ PyObject* GetRowPartArray()
   part_out = (HYPRE_BigInt *) PyArray_DATA(arr1);
   part_out[0] = part[0];
   part_out[1] = part[1];
-  part_out[2] = part[2];  
+  //part_out[2] = part[2];  
 
   return arr1;
 }
 PyObject* GetColPartArray()
 {
   // assumed partitioning mode only
-  npy_intp dims[] = {3};
+  npy_intp dims[] = {2};
   int typenum =  (sizeof(HYPRE_BigInt) == 4) ? NPY_INT32 : NPY_INT64;
   HYPRE_BigInt *part_out;
   
@@ -274,7 +274,7 @@ PyObject* GetColPartArray()
   part_out = (HYPRE_BigInt *) PyArray_DATA(arr1);
   part_out[0] = part[0];
   part_out[1] = part[1];
-  part_out[2] = part[2];  
+  //part_out[2] = part[2];  
 
   return arr1;
 }
