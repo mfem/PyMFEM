@@ -12,7 +12,7 @@
 #include "fem/gridfunc.hpp"
 #include "fem/bilinearform.hpp"  
 #include "numpy/arrayobject.h"
-#include "pycoefficient.hpp"  
+#include "../common/pycoefficient.hpp"  
 %}
 
 %init %{
@@ -63,6 +63,7 @@ namespace mfem{
    %ignore Array<Refinement>::Min;
    %ignore Array<Refinement>::Print;
    %ignore Array<Refinement>::Load;
-
-   %template(RefinementArray) Array<Refinement>;
 }
+%import "../common/array_instantiation_macro.i"
+INSTANTIATE_ARRAY(Refinement)
+

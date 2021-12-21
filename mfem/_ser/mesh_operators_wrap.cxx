@@ -3284,7 +3284,7 @@ namespace swig {
 
 #include "numpy/arrayobject.h"
 #include "mesh/mesh_operators.hpp"
-#include "pycoefficient.hpp"  
+#include "../common/pycoefficient.hpp"  
   
 
 SWIGINTERNINLINE PyObject*

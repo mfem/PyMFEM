@@ -89,10 +89,10 @@ class CHypreVec(list):
     def GetPartitioningArray(self):
         if self[0] is not None:
             part = self[0].GetPartitioningArray()
-            part[2] = self[0].GlobalSize()
+            #part[2] = self[0].GlobalSize()
         elif self[1] is not None:
             prat = self[1].GetPartitioningArray()
-            part[2] = self[1].GlobalSize()
+            #part[2] = self[1].GlobalSize()
         else:
             raise ValueError("CHypreVec is empty")
         return part
@@ -125,7 +125,7 @@ class CHypreVec(list):
                     self[0] = ToHypreParVec(-i * self[1].GetDataArray())
                 if np.any(r != 0.):
                     tmp = self[1].GetDataArray()
-                    tmp *= r                    
+                    tmp *= r
                 else:
                     self[1] = None
 
@@ -227,6 +227,42 @@ class CHypreVec(list):
             raise ValueError(
                 "CHypreVec::dot supports Vec*Vec (InnerProduct) and (Mat^t*Vec)^t ")
 
+    def get_elements(self, idx):
+        part = self.GetPartitioningArray()
+        idx = idx - part[0]
+        idx = idx[idx < part[1]-part[0]]
+        idx = idx[idx >= 0]
+
+        if len(idx) == 0:
+            return np.array([])
+
+        ret = 0.0
+        if self[0] is not None:
+            ret = ret + self[0].GetDataArray()[idx]
+        if self[1] is not None:
+            ret = ret + 1j*self[1].GetDataArray()[idx]
+        return ret
+
+    def set_elements(self, idx, value):
+        part = self.GetPartitioningArray()
+        idx = idx - part[0]
+        idx = idx[idx < part[1]-part[0]]
+        idx = idx[idx >= 0]
+
+        rvalue = value.real if np.iscomplexobj(value) else value
+
+        if len(idx) == 0:
+            return
+
+        if self[0] is not None:
+            self[0].GetDataArray()[idx] = rvalue
+
+        if np.iscomplexobj(value):
+            if self[1] is None:
+                i = self[0].GetDataArray()*0.0
+                self[1] = ToHypreParVec(i)
+            self[1].GetDataArray()[idx] = value.imag
+
     def set_element(self, i, v):
         part = self.GetPartitioningArray()
         if part[0] <= i and i < part[1]:
@@ -252,6 +288,7 @@ class CHypreVec(list):
         for i in tdof:
             v = vec.get_element(i)
             self.set_element(i, v)
+
     '''
     def gather(self):
         from mpi4py import MPI
@@ -277,7 +314,8 @@ class CHypreVec(list):
             raise ValueError("Vector orientation is not right")
 
         part = self.GetPartitioningArray()
-        return SquareCHypreMat(part, real=(self[1] is None))
+        width = self[1].GlobalSize()
+        return SquareCHypreMat(width, part, real=(self[1] is None))
 
     def transpose(self):
         self._horizontal = not self._horizontal
@@ -712,13 +750,13 @@ class CHypreMat(list):
             diagvalue = ReadHypreDiag(self[0], idx)
         else:
             diagvalue = complex(0.0)
-            
+
         if self[1] is not None:
             diagvalue = diagvalue + 1j*ReadHypreDiag(self[1], idx)
         else:
             diagvalue = diagvalue + 0j
         return diagvalue
-        
+
     def resetCol(self, idx, inplace=True):
         if self[0] is not None:
             r = ResetHypreCol(self[0], idx)
@@ -756,9 +794,9 @@ class CHypreMat(list):
         idx is global index
         '''
         rpart = self[0].GetRowPartArray()
-        rpart[2] = self[0].GetGlobalNumRows()
+        #rpart[2] = self[0].GetGlobalNumRows()
         cpart = self[0].GetColPartArray()
-        cpart[2] = self[0].GetGlobalNumCols()
+        #cpart[2] = self[0].GetGlobalNumCols()
 
         idx = idx[idx >= rpart[0]]
         idx = idx[idx < rpart[1]]
@@ -781,9 +819,9 @@ class CHypreMat(list):
         idx is global index
         '''
         cpart = self[0].GetColPartArray()
-        cpart[2] = self[0].GetGlobalNumCols()
+        #cpart[2] = self[0].GetGlobalNumCols()
         rpart = self[0].GetRowPartArray()
-        rpart[2] = self[0].GetGlobalNumRows()
+        #rpart[2] = self[0].GetGlobalNumRows()
 
         idx = idx[idx >= cpart[0]]
         idx = idx[idx < cpart[1]]
@@ -907,13 +945,13 @@ class CHypreMat(list):
         size = self.shape[1]
         if self[0] is not None:
             part = self[0].GetColPartArray()
-            part[2] = self[0].GetGlobalNumCols()
+            width = self[0].GetGlobalNumCols()
         elif self[1] is not None:
             part = self[1].GetColPartArray()
-            part[2] = self[1].GetGlobalNumCols()
+            width = self[1].GetGlobalNumCols()
         else:
             raise ValueError("CHypreMat is empty")
-        return SquareCHypreMat(part, real=(self[1] is None))
+        return SquareCHypreMat(width, part, real=(self[1] is None))
 
     def elimination_matrix(self, idx):
         #  # local version
@@ -988,11 +1026,17 @@ class CHypreMat(list):
         target.setDiag(gtdof, value=diagA)
         Ae.setDiag(gtdof, value=diagAe)
 
-        if diagpolicy == 0:
-            part = B.GetPartitioningArray()
-            xxx = np.ones(part[1] - part[0], dtype=complex)
-            xxx[tdof] = diagA
-            B *= xxx
+        # if diagpolicy == 0:
+        #    part = B.GetPartitioningArray()
+        #    xxx = np.ones(part[1] - part[0], dtype=complex)
+        #    xxx[tdof] = diagA
+        #    B *= xxx
+        # if diagpolicy == 1:
+        #    print(tdof)
+        #    print(diagA.shape)
+        #    diagA = diagA[tdof]
+
+        B.set_elements(gtdof, diagA)
 
         return Ae, target, B
 
@@ -1000,15 +1044,15 @@ class CHypreMat(list):
     def isHypre(self):
         return True
 
-def SquareCHypreMat(part, real=False):
+
+def SquareCHypreMat(width, part, real=False):
     from scipy.sparse import csr_matrix
     lr = part[1] - part[0]
-    c = part[2]
-    m1 = csr_matrix((lr, c))
+    m1 = csr_matrix((lr, width))
     if real:
         m2 = None
     else:
-        m2 = csr_matrix((lr, c))
+        m2 = csr_matrix((lr, width))
     return CHypreMat(m1, m2)
 
 

@@ -59,9 +59,6 @@
          out_txt.precision(temp->getPrecision());
          $1 = &out_txt;
       }
-      if (temp->isTemporary()){
-         delete temp;
-      }
    } else {
       $1 = stream;
    }
@@ -107,10 +104,12 @@
 	     delete out_gz$argnum;
 	   }
          }
+         if (temp$argnum->isTemporary()){
+            delete temp$argnum;
+         }
      }
   }
  }
-
 %typemap(argout) T {
   if (stream$argnum) {  
     std::string str =  stream$argnum->str();

@@ -3889,9 +3889,6 @@ SWIGINTERN PyObject *_wrap_WriteVTKEncodedCompressed(PyObject *SWIGUNUSEDPARM(se
         out_txt1.precision(temp1->getPrecision());
         arg1 = &out_txt1;
       }
-      if (temp1->isTemporary()){
-        delete temp1;
-      }
     } else {
       arg1 = stream1;
     }
@@ -3960,6 +3957,9 @@ SWIGINTERN PyObject *_wrap_WriteVTKEncodedCompressed(PyObject *SWIGUNUSEDPARM(se
             delete out_gz1;
           }
         }
+        if (temp1->isTemporary()){
+          delete temp1;
+        }
       }
     }
   }
@@ -3975,6 +3975,9 @@ fail:
           if (out_gz1){
             delete out_gz1;
           }
+        }
+        if (temp1->isTemporary()){
+          delete temp1;
         }
       }
     }

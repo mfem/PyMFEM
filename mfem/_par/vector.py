@@ -483,6 +483,7 @@ class Vector(object):
     def Assign(self, *args):
         r"""
         Assign(Vector self, double const v)
+        Assign(Vector self, Vector v)
         Assign(Vector self, PyObject * param)
         """
 

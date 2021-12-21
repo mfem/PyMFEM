@@ -3270,7 +3270,7 @@ namespace swig {
 #include "mpi4py/mpi4py.h"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
-#include "pycoefficient.hpp"  
+#include "../common/pycoefficient.hpp"  
 
 
 SWIGINTERNINLINE PyObject*

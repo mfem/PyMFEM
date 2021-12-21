@@ -10,7 +10,7 @@
 #include "mpi4py/mpi4py.h"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
-#include "pycoefficient.hpp"  
+#include "../common/pycoefficient.hpp"  
 %}
 
 %include "../common/mfem_config.i"

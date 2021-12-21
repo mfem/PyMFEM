@@ -3311,7 +3311,7 @@ namespace swig {
 #include "fem/pbilinearform.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
-#include "pycoefficient.hpp"  
+#include "../common/pycoefficient.hpp"  
 
 
 SWIGINTERNINLINE PyObject*

@@ -3412,7 +3412,7 @@ mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 		      bool fix_orientation = true);
 // void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
 #include "numpy/arrayobject.h"
-#include "pycoefficient.hpp"
+#include "../common/pycoefficient.hpp"
 #include "../common/io_stream.hpp"
 
 using namespace mfem;
@@ -12967,6 +12967,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddVertex__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   int res1 = 0 ;
   mfem::Vector *temp_vec2 ;
   double *temp_ptr2 ;
+  bool is_allocated2 = false ;
+  bool is_tuple2 = false ;
   int result;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
@@ -12977,11 +12979,11 @@ SWIGINTERN PyObject *_wrap_Mesh_AddVertex__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
     int i;
-    if (!PyList_Check(swig_obj[1])) {
+    if (!PyList_Check(swig_obj[1]) && !PyTuple_Check(swig_obj[1])) {
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_double, 0 |0) == -1) {
         if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_vec2, SWIGTYPE_p_mfem__Vector, 0 |0) == -1) {
           if (!PyArray_Check(swig_obj[1]) || !PyArray_ISFLOAT(swig_obj[1])){
-            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy float array");
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *double/Vector/numpy float array");
             return NULL;
           } else {
             //std::cout << "Calling numpy data(float)\n";	     
@@ -12997,18 +12999,25 @@ SWIGINTERN PyObject *_wrap_Mesh_AddVertex__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
         arg2 = temp_ptr2;
       }
     } else {
+      int l = 0;
+      if (PyTuple_Check(swig_obj[1])) {
+        is_tuple2 = true;
+        l = PyTuple_Size(swig_obj[1]);      
+      } else {
+        l = PyList_Size(swig_obj[1]);
+      }      
       //std::cout << "Using List\n";    
-      int l = PyList_Size(swig_obj[1]);
-      arg2 = (double *) malloc((l)*sizeof(double));
+      arg2 = new double [l];
+      is_allocated2 = true;
       for (i = 0; i < l; i++) {
-        PyObject *s = PyList_GetItem(swig_obj[1],i);
+        PyObject *s = (is_tuple2) ? PyTuple_GetItem(swig_obj[1], i) : PyList_GetItem(swig_obj[1],i);      
         if (PyInt_Check(s)) {
           arg2[i] = (double)PyFloat_AsDouble(s);
         } else if (PyFloat_Check(s)) {
           arg2[i] = (double)PyFloat_AsDouble(s);
         } else {
-          free(arg2);      
-          PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
+          delete[] arg2;      
+          PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer/float");
           return NULL;
         }
       }
@@ -13028,8 +13037,20 @@ SWIGINTERN PyObject *_wrap_Mesh_AddVertex__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return NULL;
 }
 
@@ -13085,7 +13106,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddVertex(PyObject *self, PyObject *args) {
         void *ptr;
         if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_double, 0 |0) == -1) {
           PyErr_Clear();
-          if (!PyList_Check(argv[1])) {
+          if (!PyTuple_Check(argv[1]) && !PyList_Check(argv[1])){
             PyErr_Clear();
             if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__Vector, 0 |0) == -1) {
               PyErr_Clear();
@@ -13098,7 +13119,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddVertex(PyObject *self, PyObject *args) {
               _v = 1;  // accept vector
             }
           } else {
-            _v = 1;  // acccept list
+            _v = 1;  // acccept list/tuple
           }
         } else {
           _v = 1;     // accept const double*
@@ -13244,6 +13265,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddSegment__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   int res1 = 0 ;
   mfem::Array< int > *temp_arr2 ;
   int *temp_ptr2 ;
+  bool is_allocated2 = false ;
+  bool is_tuple2 = false ;
   int result;
   
   if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
@@ -13254,11 +13277,11 @@ SWIGINTERN PyObject *_wrap_Mesh_AddSegment__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
     int i;
-    if (!PyList_Check(swig_obj[1])) {
+    if (!PyList_Check(swig_obj[1]) && !PyTuple_Check(swig_obj[1])) {
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
           if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
-            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
             //std::cout << "Calling numpy data(int)\n";	     
@@ -13277,17 +13300,25 @@ SWIGINTERN PyObject *_wrap_Mesh_AddSegment__SWIG_1(PyObject *SWIGUNUSEDPARM(self
         //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
       }
     } else {
-      int l = PyList_Size(swig_obj[1]);
-      arg2 = (int *) malloc((l)*sizeof(int));
+      int l = 0;
+      if (PyTuple_Check(swig_obj[1])) {
+        is_tuple2 = true;
+        l = PyTuple_Size(swig_obj[1]);      
+      } else {
+        l = PyList_Size(swig_obj[1]);
+      }
+      //arg2 = (int *) malloc((l)*sizeof(int));
+      arg2 = new int[l];
+      is_allocated2 = true;
       for (i = 0; i < l; i++) {
-        PyObject *s = PyList_GetItem(swig_obj[1],i);
+        PyObject *s = (is_tuple2) ? PyTuple_GetItem(swig_obj[1], i) : PyList_GetItem(swig_obj[1],i);
         if (PyInt_Check(s)) {
           arg2[i] = (int)PyInt_AsLong(s);
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          free(arg2);
-          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          delete[] arg2;
+          PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
       }
@@ -13315,8 +13346,20 @@ SWIGINTERN PyObject *_wrap_Mesh_AddSegment__SWIG_1(PyObject *SWIGUNUSEDPARM(self
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return NULL;
 }
 
@@ -13339,7 +13382,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddSegment(PyObject *self, PyObject *args) {
         void *ptr;
         if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_int, 0 |0) == -1) {
           PyErr_Clear();
-          if (!PyList_Check(argv[1])) {
+          if (!PyList_Check(argv[1]) && !PyTuple_Check(argv[1])) {
             PyErr_Clear();
             if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
               if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
@@ -13351,7 +13394,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddSegment(PyObject *self, PyObject *args) {
               _v = 1;  // accept array <int>
             }
           } else {
-            _v = 1;  // acccept list
+            _v = 1;  // acccept list/tuple
           }
         } else {
           _v = 1;     // accept const int*
@@ -13499,6 +13542,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTriangle__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   int res1 = 0 ;
   mfem::Array< int > *temp_arr2 ;
   int *temp_ptr2 ;
+  bool is_allocated2 = false ;
+  bool is_tuple2 = false ;
   int result;
   
   if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
@@ -13509,11 +13554,11 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTriangle__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
     int i;
-    if (!PyList_Check(swig_obj[1])) {
+    if (!PyList_Check(swig_obj[1]) && !PyTuple_Check(swig_obj[1])) {
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
           if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
-            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
             //std::cout << "Calling numpy data(int)\n";	     
@@ -13532,17 +13577,25 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTriangle__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
         //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
       }
     } else {
-      int l = PyList_Size(swig_obj[1]);
-      arg2 = (int *) malloc((l)*sizeof(int));
+      int l = 0;
+      if (PyTuple_Check(swig_obj[1])) {
+        is_tuple2 = true;
+        l = PyTuple_Size(swig_obj[1]);      
+      } else {
+        l = PyList_Size(swig_obj[1]);
+      }
+      //arg2 = (int *) malloc((l)*sizeof(int));
+      arg2 = new int[l];
+      is_allocated2 = true;
       for (i = 0; i < l; i++) {
-        PyObject *s = PyList_GetItem(swig_obj[1],i);
+        PyObject *s = (is_tuple2) ? PyTuple_GetItem(swig_obj[1], i) : PyList_GetItem(swig_obj[1],i);
         if (PyInt_Check(s)) {
           arg2[i] = (int)PyInt_AsLong(s);
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          free(arg2);
-          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          delete[] arg2;
+          PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
       }
@@ -13570,8 +13623,20 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTriangle__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return NULL;
 }
 
@@ -13594,7 +13659,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTriangle(PyObject *self, PyObject *args) {
         void *ptr;
         if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_int, 0 |0) == -1) {
           PyErr_Clear();
-          if (!PyList_Check(argv[1])) {
+          if (!PyList_Check(argv[1]) && !PyTuple_Check(argv[1])) {
             PyErr_Clear();
             if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
               if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
@@ -13606,7 +13671,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTriangle(PyObject *self, PyObject *args) {
               _v = 1;  // accept array <int>
             }
           } else {
-            _v = 1;  // acccept list
+            _v = 1;  // acccept list/tuple
           }
         } else {
           _v = 1;     // accept const int*
@@ -13701,6 +13766,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTri(PyObject *SWIGUNUSEDPARM(self), PyObject 
   int res1 = 0 ;
   mfem::Array< int > *temp_arr2 ;
   int *temp_ptr2 ;
+  bool is_allocated2 = false ;
+  bool is_tuple2 = false ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -13717,11 +13784,11 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTri(PyObject *SWIGUNUSEDPARM(self), PyObject 
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
     int i;
-    if (!PyList_Check(obj1)) {
+    if (!PyList_Check(obj1) && !PyTuple_Check(obj1)) {
       if (SWIG_ConvertPtr(obj1, (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(obj1, (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
           if (!PyArray_Check(obj1) || !PyArray_ISINTEGER(obj1)){
-            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
             //std::cout << "Calling numpy data(int)\n";	     
@@ -13740,17 +13807,25 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTri(PyObject *SWIGUNUSEDPARM(self), PyObject 
         //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
       }
     } else {
-      int l = PyList_Size(obj1);
-      arg2 = (int *) malloc((l)*sizeof(int));
+      int l = 0;
+      if (PyTuple_Check(obj1)) {
+        is_tuple2 = true;
+        l = PyTuple_Size(obj1);      
+      } else {
+        l = PyList_Size(obj1);
+      }
+      //arg2 = (int *) malloc((l)*sizeof(int));
+      arg2 = new int[l];
+      is_allocated2 = true;
       for (i = 0; i < l; i++) {
-        PyObject *s = PyList_GetItem(obj1,i);
+        PyObject *s = (is_tuple2) ? PyTuple_GetItem(obj1, i) : PyList_GetItem(obj1,i);
         if (PyInt_Check(s)) {
           arg2[i] = (int)PyInt_AsLong(s);
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          free(arg2);
-          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          delete[] arg2;
+          PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
       }
@@ -13778,8 +13853,20 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTri(PyObject *SWIGUNUSEDPARM(self), PyObject 
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return NULL;
 }
 
@@ -13863,6 +13950,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddQuad__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   int res1 = 0 ;
   mfem::Array< int > *temp_arr2 ;
   int *temp_ptr2 ;
+  bool is_allocated2 = false ;
+  bool is_tuple2 = false ;
   int result;
   
   if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
@@ -13873,11 +13962,11 @@ SWIGINTERN PyObject *_wrap_Mesh_AddQuad__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
     int i;
-    if (!PyList_Check(swig_obj[1])) {
+    if (!PyList_Check(swig_obj[1]) && !PyTuple_Check(swig_obj[1])) {
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
           if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
-            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
             //std::cout << "Calling numpy data(int)\n";	     
@@ -13896,17 +13985,25 @@ SWIGINTERN PyObject *_wrap_Mesh_AddQuad__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
         //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
       }
     } else {
-      int l = PyList_Size(swig_obj[1]);
-      arg2 = (int *) malloc((l)*sizeof(int));
+      int l = 0;
+      if (PyTuple_Check(swig_obj[1])) {
+        is_tuple2 = true;
+        l = PyTuple_Size(swig_obj[1]);      
+      } else {
+        l = PyList_Size(swig_obj[1]);
+      }
+      //arg2 = (int *) malloc((l)*sizeof(int));
+      arg2 = new int[l];
+      is_allocated2 = true;
       for (i = 0; i < l; i++) {
-        PyObject *s = PyList_GetItem(swig_obj[1],i);
+        PyObject *s = (is_tuple2) ? PyTuple_GetItem(swig_obj[1], i) : PyList_GetItem(swig_obj[1],i);
         if (PyInt_Check(s)) {
           arg2[i] = (int)PyInt_AsLong(s);
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          free(arg2);
-          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          delete[] arg2;
+          PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
       }
@@ -13934,8 +14031,20 @@ SWIGINTERN PyObject *_wrap_Mesh_AddQuad__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return NULL;
 }
 
@@ -13958,7 +14067,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddQuad(PyObject *self, PyObject *args) {
         void *ptr;
         if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_int, 0 |0) == -1) {
           PyErr_Clear();
-          if (!PyList_Check(argv[1])) {
+          if (!PyList_Check(argv[1]) && !PyTuple_Check(argv[1])) {
             PyErr_Clear();
             if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
               if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
@@ -13970,7 +14079,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddQuad(PyObject *self, PyObject *args) {
               _v = 1;  // accept array <int>
             }
           } else {
-            _v = 1;  // acccept list
+            _v = 1;  // acccept list/tuple
           }
         } else {
           _v = 1;     // accept const int*
@@ -14145,6 +14254,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTet__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
   int res1 = 0 ;
   mfem::Array< int > *temp_arr2 ;
   int *temp_ptr2 ;
+  bool is_allocated2 = false ;
+  bool is_tuple2 = false ;
   int result;
   
   if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
@@ -14155,11 +14266,11 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTet__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
     int i;
-    if (!PyList_Check(swig_obj[1])) {
+    if (!PyList_Check(swig_obj[1]) && !PyTuple_Check(swig_obj[1])) {
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
           if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
-            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
             //std::cout << "Calling numpy data(int)\n";	     
@@ -14178,17 +14289,25 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTet__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
         //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
       }
     } else {
-      int l = PyList_Size(swig_obj[1]);
-      arg2 = (int *) malloc((l)*sizeof(int));
+      int l = 0;
+      if (PyTuple_Check(swig_obj[1])) {
+        is_tuple2 = true;
+        l = PyTuple_Size(swig_obj[1]);      
+      } else {
+        l = PyList_Size(swig_obj[1]);
+      }
+      //arg2 = (int *) malloc((l)*sizeof(int));
+      arg2 = new int[l];
+      is_allocated2 = true;
       for (i = 0; i < l; i++) {
-        PyObject *s = PyList_GetItem(swig_obj[1],i);
+        PyObject *s = (is_tuple2) ? PyTuple_GetItem(swig_obj[1], i) : PyList_GetItem(swig_obj[1],i);
         if (PyInt_Check(s)) {
           arg2[i] = (int)PyInt_AsLong(s);
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          free(arg2);
-          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          delete[] arg2;
+          PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
       }
@@ -14216,8 +14335,20 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTet__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return NULL;
 }
 
@@ -14240,7 +14371,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTet(PyObject *self, PyObject *args) {
         void *ptr;
         if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_int, 0 |0) == -1) {
           PyErr_Clear();
-          if (!PyList_Check(argv[1])) {
+          if (!PyList_Check(argv[1]) && !PyTuple_Check(argv[1])) {
             PyErr_Clear();
             if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
               if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
@@ -14252,7 +14383,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTet(PyObject *self, PyObject *args) {
               _v = 1;  // accept array <int>
             }
           } else {
-            _v = 1;  // acccept list
+            _v = 1;  // acccept list/tuple
           }
         } else {
           _v = 1;     // accept const int*
@@ -14441,6 +14572,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddWedge__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   int res1 = 0 ;
   mfem::Array< int > *temp_arr2 ;
   int *temp_ptr2 ;
+  bool is_allocated2 = false ;
+  bool is_tuple2 = false ;
   int result;
   
   if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
@@ -14451,11 +14584,11 @@ SWIGINTERN PyObject *_wrap_Mesh_AddWedge__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
     int i;
-    if (!PyList_Check(swig_obj[1])) {
+    if (!PyList_Check(swig_obj[1]) && !PyTuple_Check(swig_obj[1])) {
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
           if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
-            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
             //std::cout << "Calling numpy data(int)\n";	     
@@ -14474,17 +14607,25 @@ SWIGINTERN PyObject *_wrap_Mesh_AddWedge__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
         //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
       }
     } else {
-      int l = PyList_Size(swig_obj[1]);
-      arg2 = (int *) malloc((l)*sizeof(int));
+      int l = 0;
+      if (PyTuple_Check(swig_obj[1])) {
+        is_tuple2 = true;
+        l = PyTuple_Size(swig_obj[1]);      
+      } else {
+        l = PyList_Size(swig_obj[1]);
+      }
+      //arg2 = (int *) malloc((l)*sizeof(int));
+      arg2 = new int[l];
+      is_allocated2 = true;
       for (i = 0; i < l; i++) {
-        PyObject *s = PyList_GetItem(swig_obj[1],i);
+        PyObject *s = (is_tuple2) ? PyTuple_GetItem(swig_obj[1], i) : PyList_GetItem(swig_obj[1],i);
         if (PyInt_Check(s)) {
           arg2[i] = (int)PyInt_AsLong(s);
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          free(arg2);
-          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          delete[] arg2;
+          PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
       }
@@ -14512,8 +14653,20 @@ SWIGINTERN PyObject *_wrap_Mesh_AddWedge__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return NULL;
 }
 
@@ -14536,7 +14689,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddWedge(PyObject *self, PyObject *args) {
         void *ptr;
         if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_int, 0 |0) == -1) {
           PyErr_Clear();
-          if (!PyList_Check(argv[1])) {
+          if (!PyList_Check(argv[1]) && !PyTuple_Check(argv[1])) {
             PyErr_Clear();
             if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
               if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
@@ -14548,7 +14701,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddWedge(PyObject *self, PyObject *args) {
               _v = 1;  // accept array <int>
             }
           } else {
-            _v = 1;  // acccept list
+            _v = 1;  // acccept list/tuple
           }
         } else {
           _v = 1;     // accept const int*
@@ -14750,6 +14903,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddPyramid__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   int res1 = 0 ;
   mfem::Array< int > *temp_arr2 ;
   int *temp_ptr2 ;
+  bool is_allocated2 = false ;
+  bool is_tuple2 = false ;
   int result;
   
   if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
@@ -14760,11 +14915,11 @@ SWIGINTERN PyObject *_wrap_Mesh_AddPyramid__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
     int i;
-    if (!PyList_Check(swig_obj[1])) {
+    if (!PyList_Check(swig_obj[1]) && !PyTuple_Check(swig_obj[1])) {
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
           if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
-            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
             //std::cout << "Calling numpy data(int)\n";	     
@@ -14783,17 +14938,25 @@ SWIGINTERN PyObject *_wrap_Mesh_AddPyramid__SWIG_1(PyObject *SWIGUNUSEDPARM(self
         //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
       }
     } else {
-      int l = PyList_Size(swig_obj[1]);
-      arg2 = (int *) malloc((l)*sizeof(int));
+      int l = 0;
+      if (PyTuple_Check(swig_obj[1])) {
+        is_tuple2 = true;
+        l = PyTuple_Size(swig_obj[1]);      
+      } else {
+        l = PyList_Size(swig_obj[1]);
+      }
+      //arg2 = (int *) malloc((l)*sizeof(int));
+      arg2 = new int[l];
+      is_allocated2 = true;
       for (i = 0; i < l; i++) {
-        PyObject *s = PyList_GetItem(swig_obj[1],i);
+        PyObject *s = (is_tuple2) ? PyTuple_GetItem(swig_obj[1], i) : PyList_GetItem(swig_obj[1],i);
         if (PyInt_Check(s)) {
           arg2[i] = (int)PyInt_AsLong(s);
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          free(arg2);
-          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          delete[] arg2;
+          PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
       }
@@ -14821,8 +14984,20 @@ SWIGINTERN PyObject *_wrap_Mesh_AddPyramid__SWIG_1(PyObject *SWIGUNUSEDPARM(self
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return NULL;
 }
 
@@ -14845,7 +15020,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddPyramid(PyObject *self, PyObject *args) {
         void *ptr;
         if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_int, 0 |0) == -1) {
           PyErr_Clear();
-          if (!PyList_Check(argv[1])) {
+          if (!PyList_Check(argv[1]) && !PyTuple_Check(argv[1])) {
             PyErr_Clear();
             if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
               if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
@@ -14857,7 +15032,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddPyramid(PyObject *self, PyObject *args) {
               _v = 1;  // accept array <int>
             }
           } else {
-            _v = 1;  // acccept list
+            _v = 1;  // acccept list/tuple
           }
         } else {
           _v = 1;     // accept const int*
@@ -15070,6 +15245,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHex__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
   int res1 = 0 ;
   mfem::Array< int > *temp_arr2 ;
   int *temp_ptr2 ;
+  bool is_allocated2 = false ;
+  bool is_tuple2 = false ;
   int result;
   
   if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
@@ -15080,11 +15257,11 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHex__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
     int i;
-    if (!PyList_Check(swig_obj[1])) {
+    if (!PyList_Check(swig_obj[1]) && !PyTuple_Check(swig_obj[1])) {
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
           if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
-            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
             //std::cout << "Calling numpy data(int)\n";	     
@@ -15103,17 +15280,25 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHex__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
         //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
       }
     } else {
-      int l = PyList_Size(swig_obj[1]);
-      arg2 = (int *) malloc((l)*sizeof(int));
+      int l = 0;
+      if (PyTuple_Check(swig_obj[1])) {
+        is_tuple2 = true;
+        l = PyTuple_Size(swig_obj[1]);      
+      } else {
+        l = PyList_Size(swig_obj[1]);
+      }
+      //arg2 = (int *) malloc((l)*sizeof(int));
+      arg2 = new int[l];
+      is_allocated2 = true;
       for (i = 0; i < l; i++) {
-        PyObject *s = PyList_GetItem(swig_obj[1],i);
+        PyObject *s = (is_tuple2) ? PyTuple_GetItem(swig_obj[1], i) : PyList_GetItem(swig_obj[1],i);
         if (PyInt_Check(s)) {
           arg2[i] = (int)PyInt_AsLong(s);
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          free(arg2);
-          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          delete[] arg2;
+          PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
       }
@@ -15141,8 +15326,20 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHex__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return NULL;
 }
 
@@ -15165,7 +15362,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHex(PyObject *self, PyObject *args) {
         void *ptr;
         if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_int, 0 |0) == -1) {
           PyErr_Clear();
-          if (!PyList_Check(argv[1])) {
+          if (!PyList_Check(argv[1]) && !PyTuple_Check(argv[1])) {
             PyErr_Clear();
             if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
               if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
@@ -15177,7 +15374,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHex(PyObject *self, PyObject *args) {
               _v = 1;  // accept array <int>
             }
           } else {
-            _v = 1;  // acccept list
+            _v = 1;  // acccept list/tuple
           }
         } else {
           _v = 1;     // accept const int*
@@ -15322,6 +15519,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsTets(PyObject *SWIGUNUSEDPARM(self), PyO
   int res1 = 0 ;
   mfem::Array< int > *temp_arr2 ;
   int *temp_ptr2 ;
+  bool is_allocated2 = false ;
+  bool is_tuple2 = false ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -15337,11 +15536,11 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsTets(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
     int i;
-    if (!PyList_Check(obj1)) {
+    if (!PyList_Check(obj1) && !PyTuple_Check(obj1)) {
       if (SWIG_ConvertPtr(obj1, (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(obj1, (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
           if (!PyArray_Check(obj1) || !PyArray_ISINTEGER(obj1)){
-            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
             //std::cout << "Calling numpy data(int)\n";	     
@@ -15360,17 +15559,25 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsTets(PyObject *SWIGUNUSEDPARM(self), PyO
         //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
       }
     } else {
-      int l = PyList_Size(obj1);
-      arg2 = (int *) malloc((l)*sizeof(int));
+      int l = 0;
+      if (PyTuple_Check(obj1)) {
+        is_tuple2 = true;
+        l = PyTuple_Size(obj1);      
+      } else {
+        l = PyList_Size(obj1);
+      }
+      //arg2 = (int *) malloc((l)*sizeof(int));
+      arg2 = new int[l];
+      is_allocated2 = true;
       for (i = 0; i < l; i++) {
-        PyObject *s = PyList_GetItem(obj1,i);
+        PyObject *s = (is_tuple2) ? PyTuple_GetItem(obj1, i) : PyList_GetItem(obj1,i);
         if (PyInt_Check(s)) {
           arg2[i] = (int)PyInt_AsLong(s);
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          free(arg2);
-          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          delete[] arg2;
+          PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
       }
@@ -15398,8 +15605,20 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsTets(PyObject *SWIGUNUSEDPARM(self), PyO
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return NULL;
 }
 
@@ -15413,6 +15632,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsWedges(PyObject *SWIGUNUSEDPARM(self), P
   int res1 = 0 ;
   mfem::Array< int > *temp_arr2 ;
   int *temp_ptr2 ;
+  bool is_allocated2 = false ;
+  bool is_tuple2 = false ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -15428,11 +15649,11 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsWedges(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
     int i;
-    if (!PyList_Check(obj1)) {
+    if (!PyList_Check(obj1) && !PyTuple_Check(obj1)) {
       if (SWIG_ConvertPtr(obj1, (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(obj1, (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
           if (!PyArray_Check(obj1) || !PyArray_ISINTEGER(obj1)){
-            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
             //std::cout << "Calling numpy data(int)\n";	     
@@ -15451,17 +15672,25 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsWedges(PyObject *SWIGUNUSEDPARM(self), P
         //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
       }
     } else {
-      int l = PyList_Size(obj1);
-      arg2 = (int *) malloc((l)*sizeof(int));
+      int l = 0;
+      if (PyTuple_Check(obj1)) {
+        is_tuple2 = true;
+        l = PyTuple_Size(obj1);      
+      } else {
+        l = PyList_Size(obj1);
+      }
+      //arg2 = (int *) malloc((l)*sizeof(int));
+      arg2 = new int[l];
+      is_allocated2 = true;
       for (i = 0; i < l; i++) {
-        PyObject *s = PyList_GetItem(obj1,i);
+        PyObject *s = (is_tuple2) ? PyTuple_GetItem(obj1, i) : PyList_GetItem(obj1,i);
         if (PyInt_Check(s)) {
           arg2[i] = (int)PyInt_AsLong(s);
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          free(arg2);
-          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          delete[] arg2;
+          PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
       }
@@ -15489,8 +15718,20 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsWedges(PyObject *SWIGUNUSEDPARM(self), P
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return NULL;
 }
 
@@ -15504,6 +15745,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsPyramids(PyObject *SWIGUNUSEDPARM(self),
   int res1 = 0 ;
   mfem::Array< int > *temp_arr2 ;
   int *temp_ptr2 ;
+  bool is_allocated2 = false ;
+  bool is_tuple2 = false ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -15519,11 +15762,11 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsPyramids(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
     int i;
-    if (!PyList_Check(obj1)) {
+    if (!PyList_Check(obj1) && !PyTuple_Check(obj1)) {
       if (SWIG_ConvertPtr(obj1, (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(obj1, (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
           if (!PyArray_Check(obj1) || !PyArray_ISINTEGER(obj1)){
-            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
             //std::cout << "Calling numpy data(int)\n";	     
@@ -15542,17 +15785,25 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsPyramids(PyObject *SWIGUNUSEDPARM(self),
         //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
       }
     } else {
-      int l = PyList_Size(obj1);
-      arg2 = (int *) malloc((l)*sizeof(int));
+      int l = 0;
+      if (PyTuple_Check(obj1)) {
+        is_tuple2 = true;
+        l = PyTuple_Size(obj1);      
+      } else {
+        l = PyList_Size(obj1);
+      }
+      //arg2 = (int *) malloc((l)*sizeof(int));
+      arg2 = new int[l];
+      is_allocated2 = true;
       for (i = 0; i < l; i++) {
-        PyObject *s = PyList_GetItem(obj1,i);
+        PyObject *s = (is_tuple2) ? PyTuple_GetItem(obj1, i) : PyList_GetItem(obj1,i);
         if (PyInt_Check(s)) {
           arg2[i] = (int)PyInt_AsLong(s);
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          free(arg2);
-          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          delete[] arg2;
+          PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
       }
@@ -15580,8 +15831,20 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsPyramids(PyObject *SWIGUNUSEDPARM(self),
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return NULL;
 }
 
@@ -15743,6 +16006,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrSegment__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   int res1 = 0 ;
   mfem::Array< int > *temp_arr2 ;
   int *temp_ptr2 ;
+  bool is_allocated2 = false ;
+  bool is_tuple2 = false ;
   int result;
   
   if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
@@ -15753,11 +16018,11 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrSegment__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
     int i;
-    if (!PyList_Check(swig_obj[1])) {
+    if (!PyList_Check(swig_obj[1]) && !PyTuple_Check(swig_obj[1])) {
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
           if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
-            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
             //std::cout << "Calling numpy data(int)\n";	     
@@ -15776,17 +16041,25 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrSegment__SWIG_1(PyObject *SWIGUNUSEDPARM(s
         //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
       }
     } else {
-      int l = PyList_Size(swig_obj[1]);
-      arg2 = (int *) malloc((l)*sizeof(int));
+      int l = 0;
+      if (PyTuple_Check(swig_obj[1])) {
+        is_tuple2 = true;
+        l = PyTuple_Size(swig_obj[1]);      
+      } else {
+        l = PyList_Size(swig_obj[1]);
+      }
+      //arg2 = (int *) malloc((l)*sizeof(int));
+      arg2 = new int[l];
+      is_allocated2 = true;
       for (i = 0; i < l; i++) {
-        PyObject *s = PyList_GetItem(swig_obj[1],i);
+        PyObject *s = (is_tuple2) ? PyTuple_GetItem(swig_obj[1], i) : PyList_GetItem(swig_obj[1],i);
         if (PyInt_Check(s)) {
           arg2[i] = (int)PyInt_AsLong(s);
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          free(arg2);
-          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          delete[] arg2;
+          PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
       }
@@ -15814,8 +16087,20 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrSegment__SWIG_1(PyObject *SWIGUNUSEDPARM(s
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return NULL;
 }
 
@@ -15838,7 +16123,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrSegment(PyObject *self, PyObject *args) {
         void *ptr;
         if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_int, 0 |0) == -1) {
           PyErr_Clear();
-          if (!PyList_Check(argv[1])) {
+          if (!PyList_Check(argv[1]) && !PyTuple_Check(argv[1])) {
             PyErr_Clear();
             if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
               if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
@@ -15850,7 +16135,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrSegment(PyObject *self, PyObject *args) {
               _v = 1;  // accept array <int>
             }
           } else {
-            _v = 1;  // acccept list
+            _v = 1;  // acccept list/tuple
           }
         } else {
           _v = 1;     // accept const int*
@@ -15998,6 +16283,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrTriangle__SWIG_1(PyObject *SWIGUNUSEDPARM(
   int res1 = 0 ;
   mfem::Array< int > *temp_arr2 ;
   int *temp_ptr2 ;
+  bool is_allocated2 = false ;
+  bool is_tuple2 = false ;
   int result;
   
   if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
@@ -16008,11 +16295,11 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrTriangle__SWIG_1(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
     int i;
-    if (!PyList_Check(swig_obj[1])) {
+    if (!PyList_Check(swig_obj[1]) && !PyTuple_Check(swig_obj[1])) {
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
           if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
-            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
             //std::cout << "Calling numpy data(int)\n";	     
@@ -16031,17 +16318,25 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrTriangle__SWIG_1(PyObject *SWIGUNUSEDPARM(
         //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
       }
     } else {
-      int l = PyList_Size(swig_obj[1]);
-      arg2 = (int *) malloc((l)*sizeof(int));
+      int l = 0;
+      if (PyTuple_Check(swig_obj[1])) {
+        is_tuple2 = true;
+        l = PyTuple_Size(swig_obj[1]);      
+      } else {
+        l = PyList_Size(swig_obj[1]);
+      }
+      //arg2 = (int *) malloc((l)*sizeof(int));
+      arg2 = new int[l];
+      is_allocated2 = true;
       for (i = 0; i < l; i++) {
-        PyObject *s = PyList_GetItem(swig_obj[1],i);
+        PyObject *s = (is_tuple2) ? PyTuple_GetItem(swig_obj[1], i) : PyList_GetItem(swig_obj[1],i);
         if (PyInt_Check(s)) {
           arg2[i] = (int)PyInt_AsLong(s);
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          free(arg2);
-          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          delete[] arg2;
+          PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
       }
@@ -16069,8 +16364,20 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrTriangle__SWIG_1(PyObject *SWIGUNUSEDPARM(
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return NULL;
 }
 
@@ -16093,7 +16400,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrTriangle(PyObject *self, PyObject *args) {
         void *ptr;
         if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_int, 0 |0) == -1) {
           PyErr_Clear();
-          if (!PyList_Check(argv[1])) {
+          if (!PyList_Check(argv[1]) && !PyTuple_Check(argv[1])) {
             PyErr_Clear();
             if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
               if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
@@ -16105,7 +16412,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrTriangle(PyObject *self, PyObject *args) {
               _v = 1;  // accept array <int>
             }
           } else {
-            _v = 1;  // acccept list
+            _v = 1;  // acccept list/tuple
           }
         } else {
           _v = 1;     // accept const int*
@@ -16270,6 +16577,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuad__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   int res1 = 0 ;
   mfem::Array< int > *temp_arr2 ;
   int *temp_ptr2 ;
+  bool is_allocated2 = false ;
+  bool is_tuple2 = false ;
   int result;
   
   if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
@@ -16280,11 +16589,11 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuad__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
     int i;
-    if (!PyList_Check(swig_obj[1])) {
+    if (!PyList_Check(swig_obj[1]) && !PyTuple_Check(swig_obj[1])) {
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
           if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
-            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
             //std::cout << "Calling numpy data(int)\n";	     
@@ -16303,17 +16612,25 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuad__SWIG_1(PyObject *SWIGUNUSEDPARM(self
         //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
       }
     } else {
-      int l = PyList_Size(swig_obj[1]);
-      arg2 = (int *) malloc((l)*sizeof(int));
+      int l = 0;
+      if (PyTuple_Check(swig_obj[1])) {
+        is_tuple2 = true;
+        l = PyTuple_Size(swig_obj[1]);      
+      } else {
+        l = PyList_Size(swig_obj[1]);
+      }
+      //arg2 = (int *) malloc((l)*sizeof(int));
+      arg2 = new int[l];
+      is_allocated2 = true;
       for (i = 0; i < l; i++) {
-        PyObject *s = PyList_GetItem(swig_obj[1],i);
+        PyObject *s = (is_tuple2) ? PyTuple_GetItem(swig_obj[1], i) : PyList_GetItem(swig_obj[1],i);
         if (PyInt_Check(s)) {
           arg2[i] = (int)PyInt_AsLong(s);
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          free(arg2);
-          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          delete[] arg2;
+          PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
       }
@@ -16341,8 +16658,20 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuad__SWIG_1(PyObject *SWIGUNUSEDPARM(self
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return NULL;
 }
 
@@ -16365,7 +16694,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuad(PyObject *self, PyObject *args) {
         void *ptr;
         if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_int, 0 |0) == -1) {
           PyErr_Clear();
-          if (!PyList_Check(argv[1])) {
+          if (!PyList_Check(argv[1]) && !PyTuple_Check(argv[1])) {
             PyErr_Clear();
             if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
               if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
@@ -16377,7 +16706,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuad(PyObject *self, PyObject *args) {
               _v = 1;  // accept array <int>
             }
           } else {
-            _v = 1;  // acccept list
+            _v = 1;  // acccept list/tuple
           }
         } else {
           _v = 1;     // accept const int*
@@ -16482,6 +16811,8 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuadAsTriangles(PyObject *SWIGUNUSEDPARM(s
   int res1 = 0 ;
   mfem::Array< int > *temp_arr2 ;
   int *temp_ptr2 ;
+  bool is_allocated2 = false ;
+  bool is_tuple2 = false ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -16497,11 +16828,11 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuadAsTriangles(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
     int i;
-    if (!PyList_Check(obj1)) {
+    if (!PyList_Check(obj1) && !PyTuple_Check(obj1)) {
       if (SWIG_ConvertPtr(obj1, (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(obj1, (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
           if (!PyArray_Check(obj1) || !PyArray_ISINTEGER(obj1)){
-            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy int array");
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
             //std::cout << "Calling numpy data(int)\n";	     
@@ -16520,17 +16851,25 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuadAsTriangles(PyObject *SWIGUNUSEDPARM(s
         //std::cout << arg2[0] << " " << arg2[1] << " " << arg2[2] << "\n";	       
       }
     } else {
-      int l = PyList_Size(obj1);
-      arg2 = (int *) malloc((l)*sizeof(int));
+      int l = 0;
+      if (PyTuple_Check(obj1)) {
+        is_tuple2 = true;
+        l = PyTuple_Size(obj1);      
+      } else {
+        l = PyList_Size(obj1);
+      }
+      //arg2 = (int *) malloc((l)*sizeof(int));
+      arg2 = new int[l];
+      is_allocated2 = true;
       for (i = 0; i < l; i++) {
-        PyObject *s = PyList_GetItem(obj1,i);
+        PyObject *s = (is_tuple2) ? PyTuple_GetItem(obj1, i) : PyList_GetItem(obj1,i);
         if (PyInt_Check(s)) {
           arg2[i] = (int)PyInt_AsLong(s);
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          free(arg2);
-          PyErr_SetString(PyExc_ValueError, "List items must be integer");
+          delete[] arg2;
+          PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
       }
@@ -16558,8 +16897,20 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuadAsTriangles(PyObject *SWIGUNUSEDPARM(s
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (is_allocated2)
+    {
+      delete[] arg2;
+    }
+  }
   return NULL;
 }
 
@@ -23126,6 +23477,8 @@ SWIGINTERN PyObject *_wrap_Mesh_SetNode(PyObject *SWIGUNUSEDPARM(self), PyObject
   int res1 = 0 ;
   mfem::Vector *temp_vec3 ;
   double *temp_ptr3 ;
+  bool is_allocated3 = false ;
+  bool is_tuple3 = false ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -23147,11 +23500,11 @@ SWIGINTERN PyObject *_wrap_Mesh_SetNode(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   {
     int i;
-    if (!PyList_Check(obj2)) {
+    if (!PyList_Check(obj2) && !PyTuple_Check(obj2)) {
       if (SWIG_ConvertPtr(obj2, (void **) &temp_ptr3, SWIGTYPE_p_double, 0 |0) == -1) {
         if (SWIG_ConvertPtr(obj2, (void **) &temp_vec3, SWIGTYPE_p_mfem__Vector, 0 |0) == -1) {
           if (!PyArray_Check(obj2) || !PyArray_ISFLOAT(obj2)){
-            PyErr_SetString(PyExc_ValueError, "Expecting a list/const *double/Vector/numpy float array");
+            PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *double/Vector/numpy float array");
             return NULL;
           } else {
             //std::cout << "Calling numpy data(float)\n";	     
@@ -23167,18 +23520,25 @@ SWIGINTERN PyObject *_wrap_Mesh_SetNode(PyObject *SWIGUNUSEDPARM(self), PyObject
         arg3 = temp_ptr3;
       }
     } else {
+      int l = 0;
+      if (PyTuple_Check(obj2)) {
+        is_tuple3 = true;
+        l = PyTuple_Size(obj2);      
+      } else {
+        l = PyList_Size(obj2);
+      }      
       //std::cout << "Using List\n";    
-      int l = PyList_Size(obj2);
-      arg3 = (double *) malloc((l)*sizeof(double));
+      arg3 = new double [l];
+      is_allocated3 = true;
       for (i = 0; i < l; i++) {
-        PyObject *s = PyList_GetItem(obj2,i);
+        PyObject *s = (is_tuple3) ? PyTuple_GetItem(obj2, i) : PyList_GetItem(obj2,i);      
         if (PyInt_Check(s)) {
           arg3[i] = (double)PyFloat_AsDouble(s);
         } else if (PyFloat_Check(s)) {
           arg3[i] = (double)PyFloat_AsDouble(s);
         } else {
-          free(arg3);      
-          PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
+          delete[] arg3;      
+          PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer/float");
           return NULL;
         }
       }
@@ -23198,8 +23558,20 @@ SWIGINTERN PyObject *_wrap_Mesh_SetNode(PyObject *SWIGUNUSEDPARM(self), PyObject
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
+  {
+    if (is_allocated3)
+    {
+      delete[] arg3;
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (is_allocated3)
+    {
+      delete[] arg3;
+    }
+  }
   return NULL;
 }
 
@@ -25335,9 +25707,6 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
           out_txt2.precision(temp2->getPrecision());
           arg2 = &out_txt2;
         }
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
       } else {
         arg2 = stream2;
       }
@@ -25384,6 +25753,9 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -25399,6 +25771,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -25479,9 +25854,6 @@ SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
           out_txt2.precision(temp2->getPrecision());
           arg2 = &out_txt2;
         }
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
       } else {
         arg2 = stream2;
       }
@@ -25528,6 +25900,9 @@ SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -25543,6 +25918,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -25679,9 +26057,6 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -25727,6 +26102,9 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -25742,6 +26120,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -25822,9 +26203,6 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -25884,6 +26262,9 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -25899,6 +26280,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -25988,9 +26372,6 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTU__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -26073,6 +26454,9 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTU__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -26088,6 +26472,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -26563,9 +26950,6 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning(PyObject *SWIGUNUSEDPARM(s
         out_txt3.precision(temp3->getPrecision());
         arg3 = &out_txt3;
       }
-      if (temp3->isTemporary()){
-        delete temp3;
-      }
     } else {
       arg3 = stream3;
     }
@@ -26619,6 +27003,9 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning(PyObject *SWIGUNUSEDPARM(s
             delete out_gz3;
           }
         }
+        if (temp3->isTemporary()){
+          delete temp3;
+        }
       }
     }
   }
@@ -26634,6 +27021,9 @@ fail:
           if (out_gz3){
             delete out_gz3;
           }
+        }
+        if (temp3->isTemporary()){
+          delete temp3;
         }
       }
     }
@@ -26728,9 +27118,6 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning(PyObject *SWIGUNUS
         out_txt3.precision(temp3->getPrecision());
         arg3 = &out_txt3;
       }
-      if (temp3->isTemporary()){
-        delete temp3;
-      }
     } else {
       arg3 = stream3;
     }
@@ -26784,6 +27171,9 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning(PyObject *SWIGUNUS
             delete out_gz3;
           }
         }
+        if (temp3->isTemporary()){
+          delete temp3;
+        }
       }
     }
   }
@@ -26799,6 +27189,9 @@ fail:
           if (out_gz3){
             delete out_gz3;
           }
+        }
+        if (temp3->isTemporary()){
+          delete temp3;
         }
       }
     }
@@ -26894,9 +27287,6 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintSurfaces(PyObject *SWIGUNUSEDPARM(self), Py
         out_txt3.precision(temp3->getPrecision());
         arg3 = &out_txt3;
       }
-      if (temp3->isTemporary()){
-        delete temp3;
-      }
     } else {
       arg3 = stream3;
     }
@@ -26942,6 +27332,9 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintSurfaces(PyObject *SWIGUNUSEDPARM(self), Py
             delete out_gz3;
           }
         }
+        if (temp3->isTemporary()){
+          delete temp3;
+        }
       }
     }
   }
@@ -26957,6 +27350,9 @@ fail:
           if (out_gz3){
             delete out_gz3;
           }
+        }
+        if (temp3->isTemporary()){
+          delete temp3;
         }
       }
     }
@@ -27787,9 +28183,6 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsByGeometry(PyObject *SWIGUNUSEDPARM
         out_txt3.precision(temp3->getPrecision());
         arg3 = &out_txt3;
       }
-      if (temp3->isTemporary()){
-        delete temp3;
-      }
     } else {
       arg3 = stream3;
     }
@@ -27835,6 +28228,9 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsByGeometry(PyObject *SWIGUNUSEDPARM
             delete out_gz3;
           }
         }
+        if (temp3->isTemporary()){
+          delete temp3;
+        }
       }
     }
   }
@@ -27850,6 +28246,9 @@ fail:
           if (out_gz3){
             delete out_gz3;
           }
+        }
+        if (temp3->isTemporary()){
+          delete temp3;
         }
       }
     }
@@ -27957,9 +28356,6 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics(PyObject *SWIGUNUSEDPARM(se
           out_txt4.precision(temp4->getPrecision());
           arg4 = &out_txt4;
         }
-        if (temp4->isTemporary()){
-          delete temp4;
-        }
       } else {
         arg4 = stream4;
       }
@@ -28006,6 +28402,9 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics(PyObject *SWIGUNUSEDPARM(se
             delete out_gz4;
           }
         }
+        if (temp4->isTemporary()){
+          delete temp4;
+        }
       }
     }
   }
@@ -28021,6 +28420,9 @@ fail:
           if (out_gz4){
             delete out_gz4;
           }
+        }
+        if (temp4->isTemporary()){
+          delete temp4;
         }
       }
     }
@@ -28101,9 +28503,6 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
           out_txt2.precision(temp2->getPrecision());
           arg2 = &out_txt2;
         }
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
       } else {
         arg2 = stream2;
       }
@@ -28150,6 +28549,9 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -28165,6 +28567,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -30700,9 +31105,6 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py
         out_txt1.precision(temp1->getPrecision());
         arg1 = &out_txt1;
       }
-      if (temp1->isTemporary()){
-        delete temp1;
-      }
     } else {
       arg1 = stream1;
     }
@@ -30756,6 +31158,9 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py
             delete out_gz1;
           }
         }
+        if (temp1->isTemporary()){
+          delete temp1;
+        }
       }
     }
   }
@@ -30771,6 +31176,9 @@ fail:
           if (out_gz1){
             delete out_gz1;
           }
+        }
+        if (temp1->isTemporary()){
+          delete temp1;
         }
       }
     }

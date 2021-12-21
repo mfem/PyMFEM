@@ -3430,7 +3430,7 @@ namespace swig {
   #include <cmath>
   #include <cstring>
   #include <ctime>
-  #include "pycoefficient.hpp"
+  #include "../common/pycoefficient.hpp"
   #include "numpy/arrayobject.h"
   #include "../common/io_stream.hpp"
   using namespace mfem;  
@@ -13486,9 +13486,6 @@ SWIGINTERN PyObject *_wrap_GridFunction_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(se
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -13540,6 +13537,9 @@ SWIGINTERN PyObject *_wrap_GridFunction_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(se
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -13555,6 +13555,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -13701,9 +13704,6 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveVTK(PyObject *SWIGUNUSEDPARM(self), 
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -13772,6 +13772,9 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveVTK(PyObject *SWIGUNUSEDPARM(self), 
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -13788,6 +13791,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -13874,9 +13880,6 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveSTL(PyObject *SWIGUNUSEDPARM(self), 
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -13936,6 +13939,9 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveSTL(PyObject *SWIGUNUSEDPARM(self), 
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -13951,6 +13957,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -14950,9 +14959,6 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py
         out_txt1.precision(temp1->getPrecision());
         arg1 = &out_txt1;
       }
-      if (temp1->isTemporary()){
-        delete temp1;
-      }
     } else {
       arg1 = stream1;
     }
@@ -15012,6 +15018,9 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py
             delete out_gz1;
           }
         }
+        if (temp1->isTemporary()){
+          delete temp1;
+        }
       }
     }
   }
@@ -15027,6 +15036,9 @@ fail:
           if (out_gz1){
             delete out_gz1;
           }
+        }
+        if (temp1->isTemporary()){
+          delete temp1;
         }
       }
     }
@@ -16746,9 +16758,6 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_Save__SWIG_0(PyObject *SWIGUNUSEDP
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -16800,6 +16809,9 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_Save__SWIG_0(PyObject *SWIGUNUSEDP
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -16815,6 +16827,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -17105,9 +17120,6 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py
         out_txt1.precision(temp1->getPrecision());
         arg1 = &out_txt1;
       }
-      if (temp1->isTemporary()){
-        delete temp1;
-      }
     } else {
       arg1 = stream1;
     }
@@ -17167,6 +17179,9 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py
             delete out_gz1;
           }
         }
+        if (temp1->isTemporary()){
+          delete temp1;
+        }
       }
     }
   }
@@ -17182,6 +17197,9 @@ fail:
           if (out_gz1){
             delete out_gz1;
           }
+        }
+        if (temp1->isTemporary()){
+          delete temp1;
         }
       }
     }

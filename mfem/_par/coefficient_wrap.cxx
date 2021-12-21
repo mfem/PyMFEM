@@ -3319,7 +3319,7 @@ namespace swig {
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "pycoefficient.hpp"
+#include "../common/pycoefficient.hpp"
 #include "numpy/arrayobject.h"
 
 
@@ -26885,6 +26885,63 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_PyCoefficientBase_SetTime(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::PyCoefficientBase *arg1 = (mfem::PyCoefficientBase *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"t",  NULL 
+  };
+  Swig::Director *director = 0;
+  bool upcall = false;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:PyCoefficientBase_SetTime", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PyCoefficientBase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyCoefficientBase_SetTime" "', argument " "1"" of type '" "mfem::PyCoefficientBase *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::PyCoefficientBase * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PyCoefficientBase_SetTime" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          (arg1)->mfem::PyCoefficientBase::SetTime(arg2);
+        } else {
+          (arg1)->SetTime(arg2);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_PyCoefficientBase_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::PyCoefficientBase *arg1 = (mfem::PyCoefficientBase *) 0 ;
@@ -27219,6 +27276,63 @@ SWIGINTERN PyObject *_wrap_new_VectorPyCoefficientBase(PyObject *SWIGUNUSEDPARM(
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorPyCoefficientBase, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_VectorPyCoefficientBase_SetTime(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::VectorPyCoefficientBase *arg1 = (mfem::VectorPyCoefficientBase *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"t",  NULL 
+  };
+  Swig::Director *director = 0;
+  bool upcall = false;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:VectorPyCoefficientBase_SetTime", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorPyCoefficientBase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorPyCoefficientBase_SetTime" "', argument " "1"" of type '" "mfem::VectorPyCoefficientBase *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorPyCoefficientBase * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "VectorPyCoefficientBase_SetTime" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          (arg1)->mfem::VectorPyCoefficientBase::SetTime(arg2);
+        } else {
+          (arg1)->SetTime(arg2);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -27715,6 +27829,63 @@ SWIGINTERN PyObject *_wrap_new_MatrixPyCoefficientBase(PyObject *SWIGUNUSEDPARM(
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MatrixPyCoefficientBase, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MatrixPyCoefficientBase_SetTime(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::MatrixPyCoefficientBase *arg1 = (mfem::MatrixPyCoefficientBase *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"t",  NULL 
+  };
+  Swig::Director *director = 0;
+  bool upcall = false;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:MatrixPyCoefficientBase_SetTime", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MatrixPyCoefficientBase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MatrixPyCoefficientBase_SetTime" "', argument " "1"" of type '" "mfem::MatrixPyCoefficientBase *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::MatrixPyCoefficientBase * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MatrixPyCoefficientBase_SetTime" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          (arg1)->mfem::MatrixPyCoefficientBase::SetTime(arg2);
+        } else {
+          (arg1)->SetTime(arg2);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -28619,6 +28790,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "fake_func_vec", (PyCFunction)(void(*)(void))_wrap_fake_func_vec, METH_VARARGS|METH_KEYWORDS, "fake_func_vec(Vector x, Vector Ht)"},
 	 { "fake_func_mat", (PyCFunction)(void(*)(void))_wrap_fake_func_mat, METH_VARARGS|METH_KEYWORDS, "fake_func_mat(Vector x, DenseMatrix Kt)"},
 	 { "new_PyCoefficientBase", (PyCFunction)(void(*)(void))_wrap_new_PyCoefficientBase, METH_VARARGS|METH_KEYWORDS, "new_PyCoefficientBase(PyObject * _self, int tdep) -> PyCoefficientBase"},
+	 { "PyCoefficientBase_SetTime", (PyCFunction)(void(*)(void))_wrap_PyCoefficientBase_SetTime, METH_VARARGS|METH_KEYWORDS, "PyCoefficientBase_SetTime(PyCoefficientBase self, double t)"},
 	 { "PyCoefficientBase_Eval", (PyCFunction)(void(*)(void))_wrap_PyCoefficientBase_Eval, METH_VARARGS|METH_KEYWORDS, "PyCoefficientBase_Eval(PyCoefficientBase self, ElementTransformation T, IntegrationPoint ip) -> double"},
 	 { "PyCoefficientBase__EvalPy", (PyCFunction)(void(*)(void))_wrap_PyCoefficientBase__EvalPy, METH_VARARGS|METH_KEYWORDS, "PyCoefficientBase__EvalPy(PyCoefficientBase self, Vector arg0) -> double"},
 	 { "PyCoefficientBase__EvalPyT", (PyCFunction)(void(*)(void))_wrap_PyCoefficientBase__EvalPyT, METH_VARARGS|METH_KEYWORDS, "PyCoefficientBase__EvalPyT(PyCoefficientBase self, Vector arg0, double arg1) -> double"},
@@ -28627,6 +28799,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "PyCoefficientBase_swigregister", PyCoefficientBase_swigregister, METH_O, NULL},
 	 { "PyCoefficientBase_swiginit", PyCoefficientBase_swiginit, METH_VARARGS, NULL},
 	 { "new_VectorPyCoefficientBase", (PyCFunction)(void(*)(void))_wrap_new_VectorPyCoefficientBase, METH_VARARGS|METH_KEYWORDS, "new_VectorPyCoefficientBase(PyObject * _self, int dim, int tdep, Coefficient q=None) -> VectorPyCoefficientBase"},
+	 { "VectorPyCoefficientBase_SetTime", (PyCFunction)(void(*)(void))_wrap_VectorPyCoefficientBase_SetTime, METH_VARARGS|METH_KEYWORDS, "VectorPyCoefficientBase_SetTime(VectorPyCoefficientBase self, double t)"},
 	 { "VectorPyCoefficientBase_Eval", _wrap_VectorPyCoefficientBase_Eval, METH_VARARGS, "\n"
 		"VectorPyCoefficientBase_Eval(VectorPyCoefficientBase self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
 		"VectorPyCoefficientBase_Eval(VectorPyCoefficientBase self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
@@ -28638,6 +28811,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "VectorPyCoefficientBase_swigregister", VectorPyCoefficientBase_swigregister, METH_O, NULL},
 	 { "VectorPyCoefficientBase_swiginit", VectorPyCoefficientBase_swiginit, METH_VARARGS, NULL},
 	 { "new_MatrixPyCoefficientBase", (PyCFunction)(void(*)(void))_wrap_new_MatrixPyCoefficientBase, METH_VARARGS|METH_KEYWORDS, "new_MatrixPyCoefficientBase(PyObject * _self, int dim, int tdep) -> MatrixPyCoefficientBase"},
+	 { "MatrixPyCoefficientBase_SetTime", (PyCFunction)(void(*)(void))_wrap_MatrixPyCoefficientBase_SetTime, METH_VARARGS|METH_KEYWORDS, "MatrixPyCoefficientBase_SetTime(MatrixPyCoefficientBase self, double t)"},
 	 { "MatrixPyCoefficientBase_Eval", (PyCFunction)(void(*)(void))_wrap_MatrixPyCoefficientBase_Eval, METH_VARARGS|METH_KEYWORDS, "MatrixPyCoefficientBase_Eval(MatrixPyCoefficientBase self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
 	 { "MatrixPyCoefficientBase__EvalPy", (PyCFunction)(void(*)(void))_wrap_MatrixPyCoefficientBase__EvalPy, METH_VARARGS|METH_KEYWORDS, "MatrixPyCoefficientBase__EvalPy(MatrixPyCoefficientBase self, Vector arg0, DenseMatrix arg1)"},
 	 { "MatrixPyCoefficientBase__EvalPyT", (PyCFunction)(void(*)(void))_wrap_MatrixPyCoefficientBase__EvalPyT, METH_VARARGS|METH_KEYWORDS, "MatrixPyCoefficientBase__EvalPyT(MatrixPyCoefficientBase self, Vector arg0, double arg1, DenseMatrix arg2)"},
@@ -29236,6 +29410,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "fake_func_vec", (PyCFunction)(void(*)(void))_wrap_fake_func_vec, METH_VARARGS|METH_KEYWORDS, "fake_func_vec(Vector x, Vector Ht)"},
 	 { "fake_func_mat", (PyCFunction)(void(*)(void))_wrap_fake_func_mat, METH_VARARGS|METH_KEYWORDS, "fake_func_mat(Vector x, DenseMatrix Kt)"},
 	 { "new_PyCoefficientBase", (PyCFunction)(void(*)(void))_wrap_new_PyCoefficientBase, METH_VARARGS|METH_KEYWORDS, "new_PyCoefficientBase(PyObject * _self, int tdep) -> PyCoefficientBase"},
+	 { "PyCoefficientBase_SetTime", (PyCFunction)(void(*)(void))_wrap_PyCoefficientBase_SetTime, METH_VARARGS|METH_KEYWORDS, "SetTime(PyCoefficientBase self, double t)"},
 	 { "PyCoefficientBase_Eval", (PyCFunction)(void(*)(void))_wrap_PyCoefficientBase_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(PyCoefficientBase self, ElementTransformation T, IntegrationPoint ip) -> double"},
 	 { "PyCoefficientBase__EvalPy", (PyCFunction)(void(*)(void))_wrap_PyCoefficientBase__EvalPy, METH_VARARGS|METH_KEYWORDS, "_EvalPy(PyCoefficientBase self, Vector arg0) -> double"},
 	 { "PyCoefficientBase__EvalPyT", (PyCFunction)(void(*)(void))_wrap_PyCoefficientBase__EvalPyT, METH_VARARGS|METH_KEYWORDS, "_EvalPyT(PyCoefficientBase self, Vector arg0, double arg1) -> double"},
@@ -29244,6 +29419,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "PyCoefficientBase_swigregister", PyCoefficientBase_swigregister, METH_O, NULL},
 	 { "PyCoefficientBase_swiginit", PyCoefficientBase_swiginit, METH_VARARGS, NULL},
 	 { "new_VectorPyCoefficientBase", (PyCFunction)(void(*)(void))_wrap_new_VectorPyCoefficientBase, METH_VARARGS|METH_KEYWORDS, "new_VectorPyCoefficientBase(PyObject * _self, int dim, int tdep, Coefficient q=None) -> VectorPyCoefficientBase"},
+	 { "VectorPyCoefficientBase_SetTime", (PyCFunction)(void(*)(void))_wrap_VectorPyCoefficientBase_SetTime, METH_VARARGS|METH_KEYWORDS, "SetTime(VectorPyCoefficientBase self, double t)"},
 	 { "VectorPyCoefficientBase_Eval", _wrap_VectorPyCoefficientBase_Eval, METH_VARARGS, "\n"
 		"Eval(VectorPyCoefficientBase self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
 		"Eval(VectorPyCoefficientBase self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
@@ -29255,6 +29431,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "VectorPyCoefficientBase_swigregister", VectorPyCoefficientBase_swigregister, METH_O, NULL},
 	 { "VectorPyCoefficientBase_swiginit", VectorPyCoefficientBase_swiginit, METH_VARARGS, NULL},
 	 { "new_MatrixPyCoefficientBase", (PyCFunction)(void(*)(void))_wrap_new_MatrixPyCoefficientBase, METH_VARARGS|METH_KEYWORDS, "new_MatrixPyCoefficientBase(PyObject * _self, int dim, int tdep) -> MatrixPyCoefficientBase"},
+	 { "MatrixPyCoefficientBase_SetTime", (PyCFunction)(void(*)(void))_wrap_MatrixPyCoefficientBase_SetTime, METH_VARARGS|METH_KEYWORDS, "SetTime(MatrixPyCoefficientBase self, double t)"},
 	 { "MatrixPyCoefficientBase_Eval", (PyCFunction)(void(*)(void))_wrap_MatrixPyCoefficientBase_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(MatrixPyCoefficientBase self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
 	 { "MatrixPyCoefficientBase__EvalPy", (PyCFunction)(void(*)(void))_wrap_MatrixPyCoefficientBase__EvalPy, METH_VARARGS|METH_KEYWORDS, "_EvalPy(MatrixPyCoefficientBase self, Vector arg0, DenseMatrix arg1)"},
 	 { "MatrixPyCoefficientBase__EvalPyT", (PyCFunction)(void(*)(void))_wrap_MatrixPyCoefficientBase__EvalPyT, METH_VARARGS|METH_KEYWORDS, "_EvalPyT(MatrixPyCoefficientBase self, Vector arg0, double arg1, DenseMatrix arg2)"},

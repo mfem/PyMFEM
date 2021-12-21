@@ -3451,7 +3451,7 @@ namespace swig {
 #include "fem/intrules.hpp"  
 #include "fem/restriction.hpp"
 #include "pyoperator.hpp"
-#include "pycoefficient.hpp"      
+#include "../common/pycoefficient.hpp"      
 
 
 SWIGINTERNINLINE PyObject*
@@ -10110,9 +10110,6 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_Save__SWIG_0(PyObject *SWIGUNUSEDP
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -10164,6 +10161,9 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_Save__SWIG_0(PyObject *SWIGUNUSEDP
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -10179,6 +10179,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -11210,9 +11213,6 @@ SWIGINTERN PyObject *_wrap_QuadratureSpace_Save__SWIG_0(PyObject *SWIGUNUSEDPARM
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -11264,6 +11264,9 @@ SWIGINTERN PyObject *_wrap_QuadratureSpace_Save__SWIG_0(PyObject *SWIGUNUSEDPARM
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -11279,6 +11282,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }

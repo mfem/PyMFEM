@@ -3617,7 +3617,7 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 SWIGINTERN PyObject *mfem_HypreParVector_GetPartitioningArray(mfem::HypreParVector *self){
   // assumed partitioning mode only
-  npy_intp dims[] = {3};
+  npy_intp dims[] = {2};
   int typenum =  (sizeof(HYPRE_BigInt) == 4) ? NPY_INT32 : NPY_INT64;
   HYPRE_BigInt *part_out;
   
@@ -3629,7 +3629,7 @@ SWIGINTERN PyObject *mfem_HypreParVector_GetPartitioningArray(mfem::HypreParVect
   part_out = (HYPRE_BigInt *) PyArray_DATA(arr1);
   part_out[0] = part[0];
   part_out[1] = part[1];
-  part_out[2] = part[2];  
+  //part_out[2] = part[2];  
 
   return arr1;
 }
@@ -3674,7 +3674,7 @@ SWIG_From_signed_SS_char  (signed char value)
 
 SWIGINTERN PyObject *mfem_HypreParMatrix_GetRowPartArray(mfem::HypreParMatrix *self){
   // assumed partitioning mode only
-  npy_intp dims[] = {3};
+  npy_intp dims[] = {2};
   int typenum =  (sizeof(HYPRE_BigInt) == 4) ? NPY_INT32 : NPY_INT64;
   HYPRE_BigInt *part_out;
   
@@ -3686,13 +3686,13 @@ SWIGINTERN PyObject *mfem_HypreParMatrix_GetRowPartArray(mfem::HypreParMatrix *s
   part_out = (HYPRE_BigInt *) PyArray_DATA(arr1);
   part_out[0] = part[0];
   part_out[1] = part[1];
-  part_out[2] = part[2];  
+  //part_out[2] = part[2];  
 
   return arr1;
 }
 SWIGINTERN PyObject *mfem_HypreParMatrix_GetColPartArray(mfem::HypreParMatrix *self){
   // assumed partitioning mode only
-  npy_intp dims[] = {3};
+  npy_intp dims[] = {2};
   int typenum =  (sizeof(HYPRE_BigInt) == 4) ? NPY_INT32 : NPY_INT64;
   HYPRE_BigInt *part_out;
   
@@ -3704,7 +3704,7 @@ SWIGINTERN PyObject *mfem_HypreParMatrix_GetColPartArray(mfem::HypreParMatrix *s
   part_out = (HYPRE_BigInt *) PyArray_DATA(arr1);
   part_out[0] = part[0];
   part_out[1] = part[1];
-  part_out[2] = part[2];  
+  //part_out[2] = part[2];  
 
   return arr1;
 }
@@ -5215,7 +5215,8 @@ SWIGINTERN PyObject *_wrap_HypreParVector_SetData(PyObject *SWIGUNUSEDPARM(self)
         return NULL;
       }
       si = PyList_Size(obj1);
-      arg2 = (double *) malloc((si)*sizeof(double));
+      //arg2 = (double *) malloc((si)*sizeof(double));
+      arg2 = new double[si];
       for (i = 0; i < si; i++) {
         PyObject *s = PyList_GetItem(obj1,i);
         if (PyInt_Check(s)) {
@@ -5223,6 +5224,7 @@ SWIGINTERN PyObject *_wrap_HypreParVector_SetData(PyObject *SWIGUNUSEDPARM(self)
         } else if (PyFloat_Check(s)) {
           arg2[i] = (double)PyFloat_AsDouble(s);
         } else {
+          delete[] arg2;
           PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
           return NULL;
         }
@@ -10826,9 +10828,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_PrintCommPkg__SWIG_0(PyObject *SWIGUNU
           out_txt2.precision(temp2->getPrecision());
           arg2 = &out_txt2;
         }
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
       } else {
         arg2 = stream2;
       }
@@ -10875,6 +10874,9 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_PrintCommPkg__SWIG_0(PyObject *SWIGUNU
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -10890,6 +10892,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -10973,9 +10978,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_PrintHash(PyObject *SWIGUNUSEDPARM(sel
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -11021,6 +11023,9 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_PrintHash(PyObject *SWIGUNUSEDPARM(sel
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -11036,6 +11041,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }

@@ -8020,9 +8020,6 @@ SWIGINTERN PyObject *_wrap_FaceElementTransformations_CheckConsistency(PyObject 
           out_txt3.precision(temp3->getPrecision());
           arg3 = &out_txt3;
         }
-        if (temp3->isTemporary()){
-          delete temp3;
-        }
       } else {
         arg3 = stream3;
       }
@@ -8075,6 +8072,9 @@ SWIGINTERN PyObject *_wrap_FaceElementTransformations_CheckConsistency(PyObject 
             delete out_gz3;
           }
         }
+        if (temp3->isTemporary()){
+          delete temp3;
+        }
       }
     }
   }
@@ -8090,6 +8090,9 @@ fail:
           if (out_gz3){
             delete out_gz3;
           }
+        }
+        if (temp3->isTemporary()){
+          delete temp3;
         }
       }
     }

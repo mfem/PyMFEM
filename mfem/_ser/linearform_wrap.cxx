@@ -3287,7 +3287,7 @@ namespace swig {
 #include <ctime>
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
-#include "pycoefficient.hpp"      
+#include "../common/pycoefficient.hpp"      
 
 
   #define SWIG_From_double   PyFloat_FromDouble 
