@@ -3417,14 +3417,14 @@ SWIGINTERN mfem::Array< mfem::Geometry::Type > *new_mfem_Array_Sl_mfem_Geometry_
 SWIGINTERN void mfem_Array_Sl_mfem_Geometry_Type_Sg____setitem__(mfem::Array< mfem::Geometry::Type > *self,int i,mfem::Geometry::Type const v){
     (* self)[i] = v;
     }
-SWIGINTERN mfem::Geometry::Type const &mfem_Array_Sl_mfem_Geometry_Type_Sg____getitem__(mfem::Array< mfem::Geometry::Type > const *self,int const i){
-    return (* self)[i];
-  }
 SWIGINTERN void mfem_Array_Sl_mfem_Geometry_Type_Sg__Assign__SWIG_1(mfem::Array< mfem::Geometry::Type > *self,mfem::Geometry::Type const &a){
      *self = a;
   }
 SWIGINTERN void mfem_Array_Sl_mfem_Geometry_Type_Sg__FakeToList(mfem::Array< mfem::Geometry::Type > *self){}
 SWIGINTERN void mfem_Array_Sl_mfem_Geometry_Type_Sg____iter__(mfem::Array< mfem::Geometry::Type > *self){}
+SWIGINTERN mfem::Geometry::Type const &mfem_Array_Sl_mfem_Geometry_Type_Sg____getitem__(mfem::Array< mfem::Geometry::Type > const *self,int const i){
+     return (* self)[i];
+ }
 
 
 /* ---------------------------------------------------
@@ -7712,51 +7712,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GeometryTypeArray___getitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::Array< mfem::Geometry::Type > *arg1 = (mfem::Array< mfem::Geometry::Type > *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"i",  NULL 
-  };
-  mfem::Geometry::Type *result = 0 ;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GeometryTypeArray___getitem__", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeometryTypeArray___getitem__" "', argument " "1"" of type '" "mfem::Array< mfem::Geometry::Type > const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Array< mfem::Geometry::Type > * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(obj1);
-  }
-  {
-    try {
-      result = (mfem::Geometry::Type *) &mfem_Array_Sl_mfem_Geometry_Type_Sg____getitem__((mfem::Array< enum mfem::Geometry::Type > const *)arg1,arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_From_int(static_cast< int >(*result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_GeometryTypeArray_Assign__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Array< mfem::Geometry::Type > *arg1 = (mfem::Array< mfem::Geometry::Type > *) 0 ;
@@ -7915,6 +7870,51 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_GeometryTypeArray___getitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Geometry::Type > *arg1 = (mfem::Array< mfem::Geometry::Type > *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
+  mfem::Geometry::Type *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GeometryTypeArray___getitem__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeometryTypeArray___getitem__" "', argument " "1"" of type '" "mfem::Array< mfem::Geometry::Type > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Geometry::Type > * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      result = (mfem::Geometry::Type *) &mfem_Array_Sl_mfem_Geometry_Type_Sg____getitem__((mfem::Array< enum mfem::Geometry::Type > const *)arg1,arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *GeometryTypeArray_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
@@ -8045,13 +8045,13 @@ static PyMethodDef SwigMethods[] = {
 		"new_GeometryTypeArray(void * List_or_Tuple) -> GeometryTypeArray\n"
 		""},
 	 { "GeometryTypeArray___setitem__", (PyCFunction)(void(*)(void))_wrap_GeometryTypeArray___setitem__, METH_VARARGS|METH_KEYWORDS, "GeometryTypeArray___setitem__(GeometryTypeArray self, int i, mfem::Geometry::Type const v)"},
-	 { "GeometryTypeArray___getitem__", (PyCFunction)(void(*)(void))_wrap_GeometryTypeArray___getitem__, METH_VARARGS|METH_KEYWORDS, "GeometryTypeArray___getitem__(GeometryTypeArray self, int const i) -> mfem::Geometry::Type const &"},
 	 { "GeometryTypeArray_Assign", _wrap_GeometryTypeArray_Assign, METH_VARARGS, "\n"
 		"GeometryTypeArray_Assign(GeometryTypeArray self, mfem::Geometry::Type const * arg2)\n"
 		"GeometryTypeArray_Assign(GeometryTypeArray self, mfem::Geometry::Type const & a)\n"
 		""},
 	 { "GeometryTypeArray_FakeToList", _wrap_GeometryTypeArray_FakeToList, METH_O, "GeometryTypeArray_FakeToList(GeometryTypeArray self)"},
 	 { "GeometryTypeArray___iter__", _wrap_GeometryTypeArray___iter__, METH_O, "GeometryTypeArray___iter__(GeometryTypeArray self)"},
+	 { "GeometryTypeArray___getitem__", (PyCFunction)(void(*)(void))_wrap_GeometryTypeArray___getitem__, METH_VARARGS|METH_KEYWORDS, "GeometryTypeArray___getitem__(GeometryTypeArray self, int const i) -> mfem::Geometry::Type const &"},
 	 { "GeometryTypeArray_swigregister", GeometryTypeArray_swigregister, METH_O, NULL},
 	 { "GeometryTypeArray_swiginit", GeometryTypeArray_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
@@ -8176,13 +8176,13 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"new_GeometryTypeArray(void * List_or_Tuple) -> GeometryTypeArray\n"
 		""},
 	 { "GeometryTypeArray___setitem__", (PyCFunction)(void(*)(void))_wrap_GeometryTypeArray___setitem__, METH_VARARGS|METH_KEYWORDS, "__setitem__(GeometryTypeArray self, int i, mfem::Geometry::Type const v)"},
-	 { "GeometryTypeArray___getitem__", (PyCFunction)(void(*)(void))_wrap_GeometryTypeArray___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(GeometryTypeArray self, int const i) -> mfem::Geometry::Type const &"},
 	 { "GeometryTypeArray_Assign", _wrap_GeometryTypeArray_Assign, METH_VARARGS, "\n"
 		"Assign(GeometryTypeArray self, mfem::Geometry::Type const * arg2)\n"
 		"Assign(GeometryTypeArray self, mfem::Geometry::Type const & a)\n"
 		""},
 	 { "GeometryTypeArray_FakeToList", _wrap_GeometryTypeArray_FakeToList, METH_O, "FakeToList(GeometryTypeArray self)"},
 	 { "GeometryTypeArray___iter__", _wrap_GeometryTypeArray___iter__, METH_O, "__iter__(GeometryTypeArray self)"},
+	 { "GeometryTypeArray___getitem__", (PyCFunction)(void(*)(void))_wrap_GeometryTypeArray___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(GeometryTypeArray self, int const i) -> mfem::Geometry::Type const &"},
 	 { "GeometryTypeArray_swigregister", GeometryTypeArray_swigregister, METH_O, NULL},
 	 { "GeometryTypeArray_swiginit", GeometryTypeArray_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }

@@ -260,15 +260,6 @@ class IntegrationPointArray(object):
         return _intrules.IntegrationPointArray___setitem__(self, i, v)
 
 
-    def __getitem__(self, i):
-        r"""__getitem__(IntegrationPointArray self, int const i) -> IntegrationPoint"""
-
-        i = int(i)
-
-
-        return _intrules.IntegrationPointArray___getitem__(self, i)
-
-
     def Assign(self, *args):
         r"""
         Assign(IntegrationPointArray self, IntegrationPoint arg2)
@@ -300,6 +291,11 @@ class IntegrationPointArray(object):
         return iter_array(self)
 
 
+
+    def __getitem__(self, param):
+        r"""__getitem__(IntegrationPointArray self, PyObject * param) -> PyObject *"""
+        return _intrules.IntegrationPointArray___getitem__(self, param)
+    __getitem__ = _swig_new_instance_method(_intrules.IntegrationPointArray___getitem__)
 
 # Register IntegrationPointArray in _intrules:
 _intrules.IntegrationPointArray_swigregister(IntegrationPointArray)

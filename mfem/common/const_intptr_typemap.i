@@ -51,7 +51,7 @@
       } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
         $1[i] = PyArray_PyIntAsInt(s);
       } else {    
-        delete $1;
+        delete[] $1;
         PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
         return NULL;
       }
@@ -63,7 +63,7 @@
 {
  if (is_allocated$argnum)
    {
-    delete $1;
+    delete[] $1;
    }
 }
     

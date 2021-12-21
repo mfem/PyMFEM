@@ -35,7 +35,9 @@ ARRAY_LISTTUPLE_INPUT_SWIGOBJ(mfem::IntegrationPoint)
 %ignore mfem::Array<mfem::IntegrationPoint>::Min;
 %ignore mfem::Array<mfem::IntegrationPoint>::Print;
 %ignore mfem::Array<mfem::IntegrationPoint>::Load;
-%template(IntegrationPointArray) mfem::Array<mfem::IntegrationPoint>;
+//%template(IntegrationPointArray) mfem::Array<mfem::IntegrationPoint>;
+%import "../common/array_instantiation_macro.i"
+INSTANTIATE_ARRAY(IntegrationPoint)
 
 %include "fem/intrules.hpp"
 

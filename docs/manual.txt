@@ -42,7 +42,11 @@ to find more details of the MFEM library.
 	       print(k)   # iterator
 	>>> print(x[0])   # access to element
 	>>> x[3] = 5      # set element
+        >>> x[-3] = 2     # set element counting from end
 
+        >>> print(x[3:])   # slice returns subarray. Note memory is not copyed
+	                   # subarray does not own data
+	
      mfem.intArray provides an access to int *. For this, we need to
      pass (int *, length) as a list/tuple.
         >>> parts = mesh.GeneratePartitioning(3)

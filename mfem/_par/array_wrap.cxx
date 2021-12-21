@@ -3014,9 +3014,6 @@ SWIGINTERN mfem::Array< int > *new_mfem_Array_Sl_int_Sg___SWIG_6(void *List_or_T
 SWIGINTERN void mfem_Array_Sl_int_Sg____setitem__(mfem::Array< int > *self,int i,int const v){
     (* self)[i] = v;
     }
-SWIGINTERN int const &mfem_Array_Sl_int_Sg____getitem__(mfem::Array< int > const *self,int const i){
-    return (* self)[i];
-  }
 SWIGINTERN void mfem_Array_Sl_int_Sg__Assign__SWIG_1(mfem::Array< int > *self,int const &a){
      *self = a;
   }
@@ -3195,6 +3192,46 @@ SWIGINTERN void mfem_Array_Sl_int_Sg__SaveGZ(mfem::Array< int > *self,char const
 SWIGINTERN void mfem_Array_Sl_int_Sg__Save__SWIG_2(mfem::Array< int > *self){
   self -> Save(std::cout);
   }
+SWIGINTERN PyObject *mfem_Array_Sl_int_Sg____getitem__(mfem::Array< int > *self,PyObject *param){
+    int len = self->Size();    
+    if (PySlice_Check(param)) {
+        long start = 0, stop = 0, step = 0, slicelength = 0;
+        int check;
+
+	//%#ifdef TARGET_PY3
+   	check = PySlice_GetIndicesEx(param, len, &start, &stop, &step,
+				     &slicelength);
+        //%#else
+   	//check = PySlice_GetIndicesEx((PySliceObject*)param, len, &start, &stop, &step,
+        //				     &slicelength);
+        //%#endif
+
+	if (check == -1) {
+            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<T> failed.");
+            return NULL; 
+	}
+	if (step == 1) {
+            mfem::Array<int> *vec;
+            vec = new mfem::Array<int>(self->GetData() +  start, slicelength);
+            return SWIG_NewPointerObj(SWIG_as_voidptr(vec), SWIGTYPE_p_mfem__ArrayT_int_t, 1);  
+	} else {
+            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<T> with stride>1 not supported.");
+	    return NULL;
+	}
+    } else {
+        PyErr_Clear();
+        long idx = PyInt_AsLong(param);
+        if (PyErr_Occurred()) {
+           PyErr_SetString(PyExc_ValueError, "Argument must be either int or slice");
+            return NULL; 	
+        }
+        if (idx >= 0){
+          return PyLong_FromLong((* self)[idx]);
+        } else {
+          return PyLong_FromLong((* self)[len+idx]);	  
+	}
+    }
+  }
 
   #define SWIG_From_double   PyFloat_FromDouble 
 
@@ -3210,9 +3247,6 @@ SWIGINTERN mfem::Array< double > *new_mfem_Array_Sl_double_Sg___SWIG_6(void *Lis
 SWIGINTERN void mfem_Array_Sl_double_Sg____setitem__(mfem::Array< double > *self,int i,double const v){
     (* self)[i] = v;
     }
-SWIGINTERN double const &mfem_Array_Sl_double_Sg____getitem__(mfem::Array< double > const *self,int const i){
-    return (* self)[i];
-  }
 SWIGINTERN void mfem_Array_Sl_double_Sg__Assign__SWIG_1(mfem::Array< double > *self,double const &a){
      *self = a;
   }
@@ -3266,9 +3300,465 @@ SWIGINTERN void mfem_Array_Sl_double_Sg__SaveGZ(mfem::Array< double > *self,char
 SWIGINTERN void mfem_Array_Sl_double_Sg__Save__SWIG_2(mfem::Array< double > *self){
   self -> Save(std::cout);
   }
+SWIGINTERN PyObject *mfem_Array_Sl_double_Sg____getitem__(mfem::Array< double > *self,PyObject *param){
+    int len = self->Size();    
+    if (PySlice_Check(param)) {
+        long start = 0, stop = 0, step = 0, slicelength = 0;
+        int check;
+
+	//%#ifdef TARGET_PY3
+   	check = PySlice_GetIndicesEx(param, len, &start, &stop, &step,
+				     &slicelength);
+        //%#else
+   	//check = PySlice_GetIndicesEx((PySliceObject*)param, len, &start, &stop, &step,
+	//			     &slicelength);
+	//%#endif
+
+	if (check == -1) {
+            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<T> failed.");
+            return NULL; 
+	}
+	if (step == 1) {
+            mfem::Array<double> *vec;
+            vec = new mfem::Array<double>(self->GetData() +  start, slicelength);
+            return SWIG_NewPointerObj(SWIG_as_voidptr(vec), SWIGTYPE_p_mfem__ArrayT_double_t, 1);  
+	} else {
+            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<T> with stride>1 not supported.");
+	    return NULL;
+	}
+    } else {
+        PyErr_Clear();
+        long idx = PyInt_AsLong(param);
+        if (PyErr_Occurred()) {
+           PyErr_SetString(PyExc_ValueError, "Argument must be either int or slice");
+            return NULL; 	
+        }
+        if (idx >= 0){
+          return PyFloat_FromDouble((* self)[idx]);	  
+        } else {
+          return PyFloat_FromDouble((* self)[len+idx]);	  	  
+	}
+    }
+  }
 #ifdef __cplusplus
 extern "C" {
 #endif
+SWIGINTERN PyObject *_wrap_doubleSwap__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< double > *arg1 = 0 ;
+  mfem::Array< double > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__ArrayT_double_t,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleSwap" "', argument " "1"" of type '" "mfem::Array< double > &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "1"" of type '" "mfem::Array< double > &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_double_t,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "doubleSwap" "', argument " "2"" of type '" "mfem::Array< double > &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "2"" of type '" "mfem::Array< double > &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< double > * >(argp2);
+  {
+    try {
+      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< double >(*arg1,*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_doubleSwap__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array2D< double > *arg1 = 0 ;
+  mfem::Array2D< double > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Array2DT_double_t,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleSwap" "', argument " "1"" of type '" "mfem::Array2D< double > &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "1"" of type '" "mfem::Array2D< double > &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array2D< double > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Array2DT_double_t,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "doubleSwap" "', argument " "2"" of type '" "mfem::Array2D< double > &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "2"" of type '" "mfem::Array2D< double > &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array2D< double > * >(argp2);
+  {
+    try {
+      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< double >(*arg1,*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_doubleSwap__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  double *arg1 = 0 ;
+  double *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_double,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleSwap" "', argument " "1"" of type '" "double &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "1"" of type '" "double &""'"); 
+  }
+  arg1 = reinterpret_cast< double * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_double,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "doubleSwap" "', argument " "2"" of type '" "double &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "2"" of type '" "double &""'"); 
+  }
+  arg2 = reinterpret_cast< double * >(argp2);
+  {
+    try {
+      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< double >(*arg1,*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_doubleSwap(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "doubleSwap", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_double_t, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ArrayT_double_t, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_doubleSwap__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Array2DT_double_t, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Array2DT_double_t, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_doubleSwap__SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_double, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_double, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_doubleSwap__SWIG_2(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'doubleSwap'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Swap< double >(mfem::Array< double > &,mfem::Array< double > &)\n"
+    "    mfem::Swap< double >(mfem::Array2D< double > &,mfem::Array2D< double > &)\n"
+    "    mfem::Swap< double >(double &,double &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_intSwap__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< int > *arg1 = 0 ;
+  mfem::Array< int > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intSwap" "', argument " "1"" of type '" "mfem::Array< int > &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "1"" of type '" "mfem::Array< int > &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "intSwap" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
+  {
+    try {
+      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< int >(*arg1,*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_intSwap__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array2D< int > *arg1 = 0 ;
+  mfem::Array2D< int > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Array2DT_int_t,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intSwap" "', argument " "1"" of type '" "mfem::Array2D< int > &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "1"" of type '" "mfem::Array2D< int > &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array2D< int > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Array2DT_int_t,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "intSwap" "', argument " "2"" of type '" "mfem::Array2D< int > &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "2"" of type '" "mfem::Array2D< int > &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array2D< int > * >(argp2);
+  {
+    try {
+      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< int >(*arg1,*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_intSwap__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  int *arg1 = 0 ;
+  int *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_int,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intSwap" "', argument " "1"" of type '" "int &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "1"" of type '" "int &""'"); 
+  }
+  arg1 = reinterpret_cast< int * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_int,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "intSwap" "', argument " "2"" of type '" "int &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "2"" of type '" "int &""'"); 
+  }
+  arg2 = reinterpret_cast< int * >(argp2);
+  {
+    try {
+      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< int >(*arg1,*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_intSwap(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "intSwap", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_intSwap__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Array2DT_int_t, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Array2DT_int_t, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_intSwap__SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_int, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_int, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_intSwap__SWIG_2(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'intSwap'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Swap< int >(mfem::Array< int > &,mfem::Array< int > &)\n"
+    "    mfem::Swap< int >(mfem::Array2D< int > &,mfem::Array2D< int > &)\n"
+    "    mfem::Swap< int >(int &,int &)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_intArray__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
   PyObject *resultobj = 0;
   mfem::Array< int > *result = 0 ;
@@ -7011,55 +7501,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_intArray___getitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::Array< int > *arg1 = (mfem::Array< int > *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"i",  NULL 
-  };
-  int *result = 0 ;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:intArray___getitem__", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intArray___getitem__" "', argument " "1"" of type '" "mfem::Array< int > const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "intArray___getitem__" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  {
-    try {
-      result = (int *) &mfem_Array_Sl_int_Sg____getitem__((mfem::Array< int > const *)arg1,arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_From_int(static_cast< int >(*result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_intArray_Assign__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Array< int > *arg1 = (mfem::Array< int > *) 0 ;
@@ -7683,6 +8124,49 @@ fail:
     "    mfem::Array< int >::Save(char const *,int)\n"
     "    mfem::Array< int >::Save()\n");
   return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_intArray___getitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< int > *arg1 = (mfem::Array< int > *) 0 ;
+  PyObject *arg2 = (PyObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"param",  NULL 
+  };
+  PyObject *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:intArray___getitem__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intArray___getitem__" "', argument " "1"" of type '" "mfem::Array< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
+  arg2 = obj1;
+  {
+    try {
+      result = (PyObject *)mfem_Array_Sl_int_Sg____getitem__(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = result;
+  return resultobj;
+fail:
+  return NULL;
 }
 
 
@@ -11439,55 +11923,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_doubleArray___getitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::Array< double > *arg1 = (mfem::Array< double > *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"i",  NULL 
-  };
-  double *result = 0 ;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:doubleArray___getitem__", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_double_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleArray___getitem__" "', argument " "1"" of type '" "mfem::Array< double > const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "doubleArray___getitem__" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  {
-    try {
-      result = (double *) &mfem_Array_Sl_double_Sg____getitem__((mfem::Array< double > const *)arg1,arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_From_double(static_cast< double >(*result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_doubleArray_Assign__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Array< double > *arg1 = (mfem::Array< double > *) 0 ;
@@ -12114,6 +12549,49 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_doubleArray___getitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< double > *arg1 = (mfem::Array< double > *) 0 ;
+  PyObject *arg2 = (PyObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"param",  NULL 
+  };
+  PyObject *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:doubleArray___getitem__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleArray___getitem__" "', argument " "1"" of type '" "mfem::Array< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
+  arg2 = obj1;
+  {
+    try {
+      result = (PyObject *)mfem_Array_Sl_double_Sg____getitem__(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = result;
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *doubleArray_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
@@ -12125,425 +12603,19 @@ SWIGINTERN PyObject *doubleArray_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObje
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_doubleSwap__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Array< double > *arg1 = 0 ;
-  mfem::Array< double > *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__ArrayT_double_t,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleSwap" "', argument " "1"" of type '" "mfem::Array< double > &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "1"" of type '" "mfem::Array< double > &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_double_t,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "doubleSwap" "', argument " "2"" of type '" "mfem::Array< double > &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "2"" of type '" "mfem::Array< double > &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Array< double > * >(argp2);
-  {
-    try {
-      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< double >(*arg1,*arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_doubleSwap__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Array2D< double > *arg1 = 0 ;
-  mfem::Array2D< double > *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Array2DT_double_t,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleSwap" "', argument " "1"" of type '" "mfem::Array2D< double > &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "1"" of type '" "mfem::Array2D< double > &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Array2D< double > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Array2DT_double_t,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "doubleSwap" "', argument " "2"" of type '" "mfem::Array2D< double > &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "2"" of type '" "mfem::Array2D< double > &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Array2D< double > * >(argp2);
-  {
-    try {
-      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< double >(*arg1,*arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_doubleSwap__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  double *arg1 = 0 ;
-  double *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_double,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleSwap" "', argument " "1"" of type '" "double &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "1"" of type '" "double &""'"); 
-  }
-  arg1 = reinterpret_cast< double * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_double,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "doubleSwap" "', argument " "2"" of type '" "double &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "2"" of type '" "double &""'"); 
-  }
-  arg2 = reinterpret_cast< double * >(argp2);
-  {
-    try {
-      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< double >(*arg1,*arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_doubleSwap(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "doubleSwap", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_double_t, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ArrayT_double_t, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_doubleSwap__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Array2DT_double_t, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Array2DT_double_t, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_doubleSwap__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_double, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_double, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_doubleSwap__SWIG_2(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'doubleSwap'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Swap< double >(mfem::Array< double > &,mfem::Array< double > &)\n"
-    "    mfem::Swap< double >(mfem::Array2D< double > &,mfem::Array2D< double > &)\n"
-    "    mfem::Swap< double >(double &,double &)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_intSwap__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Array< int > *arg1 = 0 ;
-  mfem::Array< int > *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intSwap" "', argument " "1"" of type '" "mfem::Array< int > &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "1"" of type '" "mfem::Array< int > &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "intSwap" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  {
-    try {
-      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< int >(*arg1,*arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_intSwap__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Array2D< int > *arg1 = 0 ;
-  mfem::Array2D< int > *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Array2DT_int_t,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intSwap" "', argument " "1"" of type '" "mfem::Array2D< int > &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "1"" of type '" "mfem::Array2D< int > &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Array2D< int > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Array2DT_int_t,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "intSwap" "', argument " "2"" of type '" "mfem::Array2D< int > &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "2"" of type '" "mfem::Array2D< int > &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Array2D< int > * >(argp2);
-  {
-    try {
-      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< int >(*arg1,*arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_intSwap__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  int *arg1 = 0 ;
-  int *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_int,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intSwap" "', argument " "1"" of type '" "int &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "1"" of type '" "int &""'"); 
-  }
-  arg1 = reinterpret_cast< int * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_int,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "intSwap" "', argument " "2"" of type '" "int &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "2"" of type '" "int &""'"); 
-  }
-  arg2 = reinterpret_cast< int * >(argp2);
-  {
-    try {
-      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< int >(*arg1,*arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_intSwap(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "intSwap", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_intSwap__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Array2DT_int_t, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Array2DT_int_t, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_intSwap__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_int, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_int, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_intSwap__SWIG_2(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'intSwap'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Swap< int >(mfem::Array< int > &,mfem::Array< int > &)\n"
-    "    mfem::Swap< int >(mfem::Array2D< int > &,mfem::Array2D< int > &)\n"
-    "    mfem::Swap< int >(int &,int &)\n");
-  return 0;
-}
-
-
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "doubleSwap", _wrap_doubleSwap, METH_VARARGS, "\n"
+		"doubleSwap(doubleArray arg1, doubleArray arg2)\n"
+		"doubleSwap(mfem::Array2D< double > & arg1, mfem::Array2D< double > & arg2)\n"
+		"doubleSwap(double & a, double & b)\n"
+		""},
+	 { "intSwap", _wrap_intSwap, METH_VARARGS, "\n"
+		"intSwap(intArray arg1, intArray arg2)\n"
+		"intSwap(mfem::Array2D< int > & arg1, mfem::Array2D< int > & arg2)\n"
+		"intSwap(int & a, int & b)\n"
+		""},
 	 { "delete_intArray", _wrap_delete_intArray, METH_O, "delete_intArray(intArray self)"},
 	 { "intArray_GetData", _wrap_intArray_GetData, METH_VARARGS, "\n"
 		"intArray_GetData(intArray self) -> int\n"
@@ -12624,7 +12696,6 @@ static PyMethodDef SwigMethods[] = {
 		"new_intArray(void * List_or_Tuple) -> intArray\n"
 		""},
 	 { "intArray___setitem__", (PyCFunction)(void(*)(void))_wrap_intArray___setitem__, METH_VARARGS|METH_KEYWORDS, "intArray___setitem__(intArray self, int i, int const v)"},
-	 { "intArray___getitem__", (PyCFunction)(void(*)(void))_wrap_intArray___getitem__, METH_VARARGS|METH_KEYWORDS, "intArray___getitem__(intArray self, int const i) -> int const &"},
 	 { "intArray_Assign", _wrap_intArray_Assign, METH_VARARGS, "\n"
 		"intArray_Assign(intArray self, int const * arg2)\n"
 		"intArray_Assign(intArray self, int const & a)\n"
@@ -12642,6 +12713,7 @@ static PyMethodDef SwigMethods[] = {
 		"intArray_Save(intArray self, char const * file, int precision=16)\n"
 		"intArray_Save(intArray self)\n"
 		""},
+	 { "intArray___getitem__", (PyCFunction)(void(*)(void))_wrap_intArray___getitem__, METH_VARARGS|METH_KEYWORDS, "intArray___getitem__(intArray self, PyObject * param) -> PyObject *"},
 	 { "intArray_swigregister", intArray_swigregister, METH_O, NULL},
 	 { "intArray_swiginit", intArray_swiginit, METH_VARARGS, NULL},
 	 { "delete_doubleArray", _wrap_delete_doubleArray, METH_O, "delete_doubleArray(doubleArray self)"},
@@ -12724,7 +12796,6 @@ static PyMethodDef SwigMethods[] = {
 		"new_doubleArray(void * List_or_Tuple) -> doubleArray\n"
 		""},
 	 { "doubleArray___setitem__", (PyCFunction)(void(*)(void))_wrap_doubleArray___setitem__, METH_VARARGS|METH_KEYWORDS, "doubleArray___setitem__(doubleArray self, int i, double const v)"},
-	 { "doubleArray___getitem__", (PyCFunction)(void(*)(void))_wrap_doubleArray___getitem__, METH_VARARGS|METH_KEYWORDS, "doubleArray___getitem__(doubleArray self, int const i) -> double const &"},
 	 { "doubleArray_Assign", _wrap_doubleArray_Assign, METH_VARARGS, "\n"
 		"doubleArray_Assign(doubleArray self, double const * arg2)\n"
 		"doubleArray_Assign(doubleArray self, double const & a)\n"
@@ -12742,8 +12813,15 @@ static PyMethodDef SwigMethods[] = {
 		"doubleArray_Save(doubleArray self, char const * file, int precision=16)\n"
 		"doubleArray_Save(doubleArray self)\n"
 		""},
+	 { "doubleArray___getitem__", (PyCFunction)(void(*)(void))_wrap_doubleArray___getitem__, METH_VARARGS|METH_KEYWORDS, "doubleArray___getitem__(doubleArray self, PyObject * param) -> PyObject *"},
 	 { "doubleArray_swigregister", doubleArray_swigregister, METH_O, NULL},
 	 { "doubleArray_swiginit", doubleArray_swiginit, METH_VARARGS, NULL},
+	 { NULL, NULL, 0, NULL }
+};
+
+static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "doubleSwap", _wrap_doubleSwap, METH_VARARGS, "\n"
 		"doubleSwap(doubleArray arg1, doubleArray arg2)\n"
 		"doubleSwap(mfem::Array2D< double > & arg1, mfem::Array2D< double > & arg2)\n"
@@ -12754,12 +12832,6 @@ static PyMethodDef SwigMethods[] = {
 		"intSwap(mfem::Array2D< int > & arg1, mfem::Array2D< int > & arg2)\n"
 		"intSwap(int & a, int & b)\n"
 		""},
-	 { NULL, NULL, 0, NULL }
-};
-
-static PyMethodDef SwigMethods_proxydocs[] = {
-	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "delete_intArray", _wrap_delete_intArray, METH_O, "delete_intArray(intArray self)"},
 	 { "intArray_GetData", _wrap_intArray_GetData, METH_VARARGS, "\n"
 		"GetData(intArray self) -> int\n"
@@ -12840,7 +12912,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"new_intArray(void * List_or_Tuple) -> intArray\n"
 		""},
 	 { "intArray___setitem__", (PyCFunction)(void(*)(void))_wrap_intArray___setitem__, METH_VARARGS|METH_KEYWORDS, "__setitem__(intArray self, int i, int const v)"},
-	 { "intArray___getitem__", (PyCFunction)(void(*)(void))_wrap_intArray___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(intArray self, int const i) -> int const &"},
 	 { "intArray_Assign", _wrap_intArray_Assign, METH_VARARGS, "\n"
 		"Assign(intArray self, int const * arg2)\n"
 		"Assign(intArray self, int const & a)\n"
@@ -12858,6 +12929,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Save(intArray self, char const * file, int precision=16)\n"
 		"Save(intArray self)\n"
 		""},
+	 { "intArray___getitem__", (PyCFunction)(void(*)(void))_wrap_intArray___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(intArray self, PyObject * param) -> PyObject *"},
 	 { "intArray_swigregister", intArray_swigregister, METH_O, NULL},
 	 { "intArray_swiginit", intArray_swiginit, METH_VARARGS, NULL},
 	 { "delete_doubleArray", _wrap_delete_doubleArray, METH_O, "delete_doubleArray(doubleArray self)"},
@@ -12940,7 +13012,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"new_doubleArray(void * List_or_Tuple) -> doubleArray\n"
 		""},
 	 { "doubleArray___setitem__", (PyCFunction)(void(*)(void))_wrap_doubleArray___setitem__, METH_VARARGS|METH_KEYWORDS, "__setitem__(doubleArray self, int i, double const v)"},
-	 { "doubleArray___getitem__", (PyCFunction)(void(*)(void))_wrap_doubleArray___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(doubleArray self, int const i) -> double const &"},
 	 { "doubleArray_Assign", _wrap_doubleArray_Assign, METH_VARARGS, "\n"
 		"Assign(doubleArray self, double const * arg2)\n"
 		"Assign(doubleArray self, double const & a)\n"
@@ -12958,18 +13029,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Save(doubleArray self, char const * file, int precision=16)\n"
 		"Save(doubleArray self)\n"
 		""},
+	 { "doubleArray___getitem__", (PyCFunction)(void(*)(void))_wrap_doubleArray___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(doubleArray self, PyObject * param) -> PyObject *"},
 	 { "doubleArray_swigregister", doubleArray_swigregister, METH_O, NULL},
 	 { "doubleArray_swiginit", doubleArray_swiginit, METH_VARARGS, NULL},
-	 { "doubleSwap", _wrap_doubleSwap, METH_VARARGS, "\n"
-		"doubleSwap(doubleArray arg1, doubleArray arg2)\n"
-		"doubleSwap(mfem::Array2D< double > & arg1, mfem::Array2D< double > & arg2)\n"
-		"doubleSwap(double & a, double & b)\n"
-		""},
-	 { "intSwap", _wrap_intSwap, METH_VARARGS, "\n"
-		"intSwap(intArray arg1, intArray arg2)\n"
-		"intSwap(mfem::Array2D< int > & arg1, mfem::Array2D< int > & arg2)\n"
-		"intSwap(int & a, int & b)\n"
-		""},
 	 { NULL, NULL, 0, NULL }
 };
 

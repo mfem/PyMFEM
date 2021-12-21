@@ -37,7 +37,12 @@ namespace mfem{
    %ignore Array<Geometry::Type>::Min;
    %ignore Array<Geometry::Type>::Print;
    %ignore Array<Geometry::Type>::Load;
-  
-   %template(GeometryTypeArray) Array<Geometry::Type>;
 }
+%template(GeometryTypeArray) mfem::Array<mfem::Geometry::Type>;
+%extend mfem::Array<mfem::Geometry::Type> {
+  const mfem::Geometry::Type  & __getitem__(const int i) const{
+     return (* self)[i];
+ }
+};
+
 

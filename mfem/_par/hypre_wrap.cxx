@@ -5224,7 +5224,7 @@ SWIGINTERN PyObject *_wrap_HypreParVector_SetData(PyObject *SWIGUNUSEDPARM(self)
         } else if (PyFloat_Check(s)) {
           arg2[i] = (double)PyFloat_AsDouble(s);
         } else {
-          delete arg2;
+          delete[] arg2;
           PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
           return NULL;
         }

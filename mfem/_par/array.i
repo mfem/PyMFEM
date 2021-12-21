@@ -75,9 +75,6 @@ XXXPTR_SIZE_IN(double *data_, int asize, double)
   void __setitem__(int i, const T v) {
     (* self)[i] = v;
     }
-  const T & __getitem__(const int i) const{
-    return (* self)[i];
-  }
   void Assign(const T &a){
      *self = a;
   }   
@@ -88,9 +85,9 @@ namespace mfem{
 %pythonprepend Array::__setitem__ %{
     i = int(i)
 %}
-%pythonprepend Array::__getitem__ %{
-    i = int(i)
-%}  
+  //%pythonprepend Array::__getitem__ %{
+  //    i = int(i)
+  //%}  
 %feature("shadow")Array::FakeToList %{
 def ToList(self):
     return [self[i] for i in range(self.Size())]
@@ -129,8 +126,9 @@ OSTREAM_ADD_DEFAULT_STDOUT_FILE(Array2D, Save)
 #endif
 
 namespace mfem{
-%template(intArray) Array<int>;
-%template(doubleArray) Array<double>;
 %template(doubleSwap) Swap<double>;  
 %template(intSwap) Swap<int>;  
 }
+%import "../common/array_instantiation_macro.i"
+INSTANTIATE_ARRAY_INT
+INSTANTIATE_ARRAY_DOUBLE

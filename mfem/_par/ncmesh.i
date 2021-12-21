@@ -63,6 +63,7 @@ namespace mfem{
    %ignore Array<Refinement>::Min;
    %ignore Array<Refinement>::Print;
    %ignore Array<Refinement>::Load;
-
-   %template(RefinementArray) Array<Refinement>;
 }
+%import "../common/array_instantiation_macro.i"
+INSTANTIATE_ARRAY(Refinement)
+

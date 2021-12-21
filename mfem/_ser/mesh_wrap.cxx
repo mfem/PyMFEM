@@ -13744,7 +13744,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddVertex__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
         } else if (PyFloat_Check(s)) {
           arg2[i] = (double)PyFloat_AsDouble(s);
         } else {
-          delete arg2;      
+          delete[] arg2;      
           PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer/float");
           return NULL;
         }
@@ -13774,7 +13774,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddVertex__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return resultobj;
@@ -13782,7 +13782,7 @@ fail:
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return NULL;
@@ -14072,7 +14072,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddSegment__SWIG_1(PyObject *SWIGUNUSEDPARM(self
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          delete arg2;
+          delete[] arg2;
           PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
@@ -14110,7 +14110,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddSegment__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return resultobj;
@@ -14118,7 +14118,7 @@ fail:
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return NULL;
@@ -14361,7 +14361,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTriangle__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          delete arg2;
+          delete[] arg2;
           PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
@@ -14399,7 +14399,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTriangle__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return resultobj;
@@ -14407,7 +14407,7 @@ fail:
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return NULL;
@@ -14597,7 +14597,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTri(PyObject *SWIGUNUSEDPARM(self), PyObject 
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          delete arg2;
+          delete[] arg2;
           PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
@@ -14635,7 +14635,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTri(PyObject *SWIGUNUSEDPARM(self), PyObject 
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return resultobj;
@@ -14643,7 +14643,7 @@ fail:
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return NULL;
@@ -14787,7 +14787,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddQuad__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          delete arg2;
+          delete[] arg2;
           PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
@@ -14825,7 +14825,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddQuad__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return resultobj;
@@ -14833,7 +14833,7 @@ fail:
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return NULL;
@@ -15103,7 +15103,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTet__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          delete arg2;
+          delete[] arg2;
           PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
@@ -15141,7 +15141,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTet__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return resultobj;
@@ -15149,7 +15149,7 @@ fail:
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return NULL;
@@ -15433,7 +15433,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddWedge__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          delete arg2;
+          delete[] arg2;
           PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
@@ -15471,7 +15471,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddWedge__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return resultobj;
@@ -15479,7 +15479,7 @@ fail:
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return NULL;
@@ -15776,7 +15776,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddPyramid__SWIG_1(PyObject *SWIGUNUSEDPARM(self
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          delete arg2;
+          delete[] arg2;
           PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
@@ -15814,7 +15814,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddPyramid__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return resultobj;
@@ -15822,7 +15822,7 @@ fail:
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return NULL;
@@ -16130,7 +16130,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHex__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          delete arg2;
+          delete[] arg2;
           PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
@@ -16168,7 +16168,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHex__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return resultobj;
@@ -16176,7 +16176,7 @@ fail:
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return NULL;
@@ -16415,7 +16415,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsTets(PyObject *SWIGUNUSEDPARM(self), PyO
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          delete arg2;
+          delete[] arg2;
           PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
@@ -16453,7 +16453,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsTets(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return resultobj;
@@ -16461,7 +16461,7 @@ fail:
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return NULL;
@@ -16534,7 +16534,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsWedges(PyObject *SWIGUNUSEDPARM(self), P
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          delete arg2;
+          delete[] arg2;
           PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
@@ -16572,7 +16572,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsWedges(PyObject *SWIGUNUSEDPARM(self), P
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return resultobj;
@@ -16580,7 +16580,7 @@ fail:
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return NULL;
@@ -16653,7 +16653,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsPyramids(PyObject *SWIGUNUSEDPARM(self),
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          delete arg2;
+          delete[] arg2;
           PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
@@ -16691,7 +16691,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsPyramids(PyObject *SWIGUNUSEDPARM(self),
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return resultobj;
@@ -16699,7 +16699,7 @@ fail:
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return NULL;
@@ -16933,7 +16933,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrSegment__SWIG_1(PyObject *SWIGUNUSEDPARM(s
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          delete arg2;
+          delete[] arg2;
           PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
@@ -16971,7 +16971,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrSegment__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return resultobj;
@@ -16979,7 +16979,7 @@ fail:
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return NULL;
@@ -17222,7 +17222,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrTriangle__SWIG_1(PyObject *SWIGUNUSEDPARM(
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          delete arg2;
+          delete[] arg2;
           PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
@@ -17260,7 +17260,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrTriangle__SWIG_1(PyObject *SWIGUNUSEDPARM(
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return resultobj;
@@ -17268,7 +17268,7 @@ fail:
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return NULL;
@@ -17528,7 +17528,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuad__SWIG_1(PyObject *SWIGUNUSEDPARM(self
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          delete arg2;
+          delete[] arg2;
           PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
@@ -17566,7 +17566,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuad__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return resultobj;
@@ -17574,7 +17574,7 @@ fail:
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return NULL;
@@ -17773,7 +17773,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuadAsTriangles(PyObject *SWIGUNUSEDPARM(s
         } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
           arg2[i] = PyArray_PyIntAsInt(s);
         } else {
-          delete arg2;
+          delete[] arg2;
           PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer");
           return NULL;
         }
@@ -17811,7 +17811,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuadAsTriangles(PyObject *SWIGUNUSEDPARM(s
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return resultobj;
@@ -17819,7 +17819,7 @@ fail:
   {
     if (is_allocated2)
     {
-      delete arg2;
+      delete[] arg2;
     }
   }
   return NULL;
@@ -25156,7 +25156,7 @@ SWIGINTERN PyObject *_wrap_Mesh_SetNode(PyObject *SWIGUNUSEDPARM(self), PyObject
         } else if (PyFloat_Check(s)) {
           arg3[i] = (double)PyFloat_AsDouble(s);
         } else {
-          delete arg3;      
+          delete[] arg3;      
           PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer/float");
           return NULL;
         }
@@ -25186,7 +25186,7 @@ SWIGINTERN PyObject *_wrap_Mesh_SetNode(PyObject *SWIGUNUSEDPARM(self), PyObject
   {
     if (is_allocated3)
     {
-      delete arg3;
+      delete[] arg3;
     }
   }
   return resultobj;
@@ -25194,7 +25194,7 @@ fail:
   {
     if (is_allocated3)
     {
-      delete arg3;
+      delete[] arg3;
     }
   }
   return NULL;

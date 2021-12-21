@@ -48,7 +48,7 @@
       } else if (PyFloat_Check(s)) {
         $1[i] = (double)PyFloat_AsDouble(s);
       } else {
-        delete $1;      
+        delete[] $1;      
         PyErr_SetString(PyExc_ValueError, "List/Tuple items must be integer/float");
         return NULL;
       }
@@ -59,7 +59,7 @@
 {
  if (is_allocated$argnum)
    {
-    delete $1;
+    delete[] $1;
    }
 }
 %typemap(typecheck) (TYPENAME) {
