@@ -168,6 +168,9 @@ void subtract_vector(const double a, const mfem::Vector &x,
   void Assign(const double v) {
     (* self) = v;
   }
+  void Assign(const mfem::Vector &v) {
+    (* self) = v;
+  }
   void Assign(PyObject* param) {
     /* note that these error does not raise error in python
        type check is actually done in wrapper layer */

@@ -3038,7 +3038,10 @@ SWIGINTERN mfem::Vector *new_mfem_Vector__SWIG_9(mfem::Vector const &v,int offse
 SWIGINTERN void mfem_Vector_Assign__SWIG_0(mfem::Vector *self,double const v){
     (* self) = v;
   }
-SWIGINTERN void mfem_Vector_Assign__SWIG_1(mfem::Vector *self,PyObject *param){
+SWIGINTERN void mfem_Vector_Assign__SWIG_1(mfem::Vector *self,mfem::Vector const &v){
+    (* self) = v;
+  }
+SWIGINTERN void mfem_Vector_Assign__SWIG_2(mfem::Vector *self,PyObject *param){
     /* note that these error does not raise error in python
        type check is actually done in wrapper layer */
     if (!PyArray_Check(param)){
@@ -9933,6 +9936,52 @@ fail:
 SWIGINTERN PyObject *_wrap_Vector_Assign__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Vector *arg1 = (mfem::Vector *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vector_Assign" "', argument " "1"" of type '" "mfem::Vector *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Vector * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Vector_Assign" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Vector_Assign" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    try {
+      mfem_Vector_Assign__SWIG_1(arg1,(mfem::Vector const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Vector_Assign__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Vector *arg1 = (mfem::Vector *) 0 ;
   PyObject *arg2 = (PyObject *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -9946,7 +9995,7 @@ SWIGINTERN PyObject *_wrap_Vector_Assign__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   arg2 = swig_obj[1];
   {
     try {
-      mfem_Vector_Assign__SWIG_1(arg1,arg2);
+      mfem_Vector_Assign__SWIG_2(arg1,arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -9981,6 +10030,19 @@ SWIGINTERN PyObject *_wrap_Vector_Assign(PyObject *self, PyObject *args) {
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Vector, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_Vector_Assign__SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Vector, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       {
         int res = SWIG_AsVal_double(argv[1], NULL);
         _v = SWIG_CheckState(res);
@@ -9998,7 +10060,7 @@ SWIGINTERN PyObject *_wrap_Vector_Assign(PyObject *self, PyObject *args) {
     if (_v) {
       _v = (argv[1] != 0);
       if (_v) {
-        return _wrap_Vector_Assign__SWIG_1(self, argc, argv);
+        return _wrap_Vector_Assign__SWIG_2(self, argc, argv);
       }
     }
   }
@@ -10007,6 +10069,7 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Vector_Assign'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::Vector::Assign(double const)\n"
+    "    mfem::Vector::Assign(mfem::Vector const &)\n"
     "    mfem::Vector::Assign(PyObject *)\n");
   return 0;
 }
@@ -10971,6 +11034,7 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "Vector_Assign", _wrap_Vector_Assign, METH_VARARGS, "\n"
 		"Vector_Assign(Vector self, double const v)\n"
+		"Vector_Assign(Vector self, Vector v)\n"
 		"Vector_Assign(Vector self, PyObject * param)\n"
 		""},
 	 { "Vector___setitem__", (PyCFunction)(void(*)(void))_wrap_Vector___setitem__, METH_VARARGS|METH_KEYWORDS, "Vector___setitem__(Vector self, int i, double const v)"},
@@ -11139,6 +11203,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "Vector_Assign", _wrap_Vector_Assign, METH_VARARGS, "\n"
 		"Assign(Vector self, double const v)\n"
+		"Assign(Vector self, Vector v)\n"
 		"Assign(Vector self, PyObject * param)\n"
 		""},
 	 { "Vector___setitem__", (PyCFunction)(void(*)(void))_wrap_Vector___setitem__, METH_VARARGS|METH_KEYWORDS, "__setitem__(Vector self, int i, double const v)"},
