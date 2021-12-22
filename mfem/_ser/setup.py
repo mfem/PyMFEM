@@ -20,6 +20,7 @@ if '' in sys.path:
     sys.path.remove('')
 if os.path.abspath('.') in sys.path:
     sys.path.remove(os.path.abspath('.'))
+print("sys.path", sys.path)
 
 ## this forces to use compiler written in setup_local.py
 if cc_ser != '': os.environ['CC'] = cc_ser
