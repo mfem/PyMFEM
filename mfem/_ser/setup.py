@@ -16,11 +16,13 @@ sys.path.insert(0, root)
 from setup_local import *
 
 ## remove current directory from path
+print("__file__", __file__)
 if '' in sys.path:
     sys.path.remove('')
-if os.path.abspath('.') in sys.path:
-    sys.path.remove(os.path.abspath('.'))
-print("sys.path", sys.path)
+items = [x for x in sys.path if os.path.abspath(x) == os.path.dirname(__file__)]
+for x in items:
+    sys.path.remove(x)
+print("sys path", sys.path)
 
 ## this forces to use compiler written in setup_local.py
 if cc_ser != '': os.environ['CC'] = cc_ser
