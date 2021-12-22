@@ -35,9 +35,9 @@
             return NULL; 	
         }
         if (idx >= 0){
-          return SWIG_NewPointerObj(SWIG_as_voidptr(&(* self)[idx]), $descriptor(XXX *), 1);	  
+          return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](idx))), $descriptor(XXX *), 1);	  
         } else {
-          return SWIG_NewPointerObj(SWIG_as_voidptr(&(* self)[len+idx]), $descriptor(XXX *), 1);
+	  return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](len+idx))), $descriptor(XXX *), 1);
 	}
     }
   }
@@ -85,9 +85,9 @@ INSTANTIATE_ARRAY0(XXX, XXX)
             return NULL; 	
         }
         if (idx >= 0){
-          return PyLong_FromLong((* self)[idx]);
+          return PyLong_FromLong(self->operator[](idx));
         } else {
-          return PyLong_FromLong((* self)[len+idx]);	  
+          return PyLong_FromLong(self->operator[](len+idx));
 	}
     }
   }
@@ -131,9 +131,9 @@ INSTANTIATE_ARRAY0(XXX, XXX)
             return NULL; 	
         }
         if (idx >= 0){
-          return PyFloat_FromDouble((* self)[idx]);	  
+          return PyFloat_FromDouble(self->operator[](idx));
         } else {
-          return PyFloat_FromDouble((* self)[len+idx]);	  	  
+          return PyFloat_FromDouble(self->operator[](len+idx));
 	}
     }
   }

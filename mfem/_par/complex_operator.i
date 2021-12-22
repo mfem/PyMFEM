@@ -8,8 +8,18 @@
 %{
 #include "linalg/complex_operator.hpp"
 #include "numpy/arrayobject.h"
+#include "linalg/hypre.hpp"  
 #include "pyoperator.hpp"     
   %}
+
+%include "../common/mfem_config.i"
+
+#ifdef MFEM_USE_MPI
+%include mpi4py/mpi4py.i
+%mpi4py_typemap(Comm, MPI_Comm);
+%import "hypre.i"
+#endif
+
 %init %{
 import_array();
 %}

@@ -138,9 +138,12 @@ class IterativeSolver(mfem._par.operators.Solver):
         return _solvers.IterativeSolver_SetMaxIter(self, max_it)
     SetMaxIter = _swig_new_instance_method(_solvers.IterativeSolver_SetMaxIter)
 
-    def SetPrintLevel(self, print_lvl):
-        r"""SetPrintLevel(IterativeSolver self, int print_lvl)"""
-        return _solvers.IterativeSolver_SetPrintLevel(self, print_lvl)
+    def SetPrintLevel(self, *args):
+        r"""
+        SetPrintLevel(IterativeSolver self, int print_lvl)
+        SetPrintLevel(IterativeSolver self, mfem::IterativeSolver::PrintLevel arg2)
+        """
+        return _solvers.IterativeSolver_SetPrintLevel(self, *args)
     SetPrintLevel = _swig_new_instance_method(_solvers.IterativeSolver_SetPrintLevel)
 
     def GetNumIterations(self):
@@ -149,7 +152,7 @@ class IterativeSolver(mfem._par.operators.Solver):
     GetNumIterations = _swig_new_instance_method(_solvers.IterativeSolver_GetNumIterations)
 
     def GetConverged(self):
-        r"""GetConverged(IterativeSolver self) -> int"""
+        r"""GetConverged(IterativeSolver self) -> bool"""
         return _solvers.IterativeSolver_GetConverged(self)
     GetConverged = _swig_new_instance_method(_solvers.IterativeSolver_GetConverged)
 
@@ -196,6 +199,11 @@ class OperatorJacobiSmoother(mfem._par.operators.Solver):
         """
         _solvers.OperatorJacobiSmoother_swiginit(self, _solvers.new_OperatorJacobiSmoother(*args))
     __swig_destroy__ = _solvers.delete_OperatorJacobiSmoother
+
+    def SetPositiveDiagonal(self, pos_diag=True):
+        r"""SetPositiveDiagonal(OperatorJacobiSmoother self, bool pos_diag=True)"""
+        return _solvers.OperatorJacobiSmoother_SetPositiveDiagonal(self, pos_diag)
+    SetPositiveDiagonal = _swig_new_instance_method(_solvers.OperatorJacobiSmoother_SetPositiveDiagonal)
 
     def Mult(self, x, y):
         r"""Mult(OperatorJacobiSmoother self, Vector x, Vector y)"""

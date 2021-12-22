@@ -335,9 +335,12 @@ class ND_TriDofTransformation(ND_DofTransformation):
         return _doftrans.ND_TriDofTransformation_TransformDual(self, *args)
     TransformDual = _swig_new_instance_method(_doftrans.ND_TriDofTransformation_TransformDual)
 
-    def InvTransformDual(self, v):
-        r"""InvTransformDual(ND_TriDofTransformation self, double * v)"""
-        return _doftrans.ND_TriDofTransformation_InvTransformDual(self, v)
+    def InvTransformDual(self, *args):
+        r"""
+        InvTransformDual(ND_TriDofTransformation self, double * v)
+        InvTransformDual(ND_TriDofTransformation self, Vector v)
+        """
+        return _doftrans.ND_TriDofTransformation_InvTransformDual(self, *args)
     InvTransformDual = _swig_new_instance_method(_doftrans.ND_TriDofTransformation_InvTransformDual)
     __swig_destroy__ = _doftrans.delete_ND_TriDofTransformation
 

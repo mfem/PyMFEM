@@ -9969,6 +9969,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Jacobi(PyObject *SWIGUNUSEDPARM(self), P
   mfem::Vector *arg3 = 0 ;
   mfem::Vector *arg4 = 0 ;
   double arg5 ;
+  bool arg6 = (bool) false ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -9979,16 +9980,19 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Jacobi(PyObject *SWIGUNUSEDPARM(self), P
   int res4 = 0 ;
   double val5 ;
   int ecode5 = 0 ;
+  bool val6 ;
+  int ecode6 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"b",  (char *)"x0",  (char *)"x1",  (char *)"sc",  NULL 
+    (char *)"self",  (char *)"b",  (char *)"x0",  (char *)"x1",  (char *)"sc",  (char *)"use_abs_diag",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOO:SparseMatrix_Jacobi", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOO|O:SparseMatrix_Jacobi", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_Jacobi" "', argument " "1"" of type '" "mfem::SparseMatrix const *""'"); 
@@ -10023,9 +10027,16 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Jacobi(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "SparseMatrix_Jacobi" "', argument " "5"" of type '" "double""'");
   } 
   arg5 = static_cast< double >(val5);
+  if (obj5) {
+    ecode6 = SWIG_AsVal_bool(obj5, &val6);
+    if (!SWIG_IsOK(ecode6)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "SparseMatrix_Jacobi" "', argument " "6"" of type '" "bool""'");
+    } 
+    arg6 = static_cast< bool >(val6);
+  }
   {
     try {
-      ((mfem::SparseMatrix const *)arg1)->Jacobi((mfem::Vector const &)*arg2,(mfem::Vector const &)*arg3,*arg4,arg5);
+      ((mfem::SparseMatrix const *)arg1)->Jacobi((mfem::Vector const &)*arg2,(mfem::Vector const &)*arg3,*arg4,arg5,arg6);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -10055,6 +10066,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_DiagScale(PyObject *SWIGUNUSEDPARM(self)
   mfem::Vector *arg2 = 0 ;
   mfem::Vector *arg3 = 0 ;
   double arg4 = (double) 1.0 ;
+  bool arg5 = (bool) false ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -10063,15 +10075,18 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_DiagScale(PyObject *SWIGUNUSEDPARM(self)
   int res3 = 0 ;
   double val4 ;
   int ecode4 = 0 ;
+  bool val5 ;
+  int ecode5 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"b",  (char *)"x",  (char *)"sc",  NULL 
+    (char *)"self",  (char *)"b",  (char *)"x",  (char *)"sc",  (char *)"use_abs_diag",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:SparseMatrix_DiagScale", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|OO:SparseMatrix_DiagScale", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_DiagScale" "', argument " "1"" of type '" "mfem::SparseMatrix const *""'"); 
@@ -10100,9 +10115,16 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_DiagScale(PyObject *SWIGUNUSEDPARM(self)
     } 
     arg4 = static_cast< double >(val4);
   }
+  if (obj4) {
+    ecode5 = SWIG_AsVal_bool(obj4, &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "SparseMatrix_DiagScale" "', argument " "5"" of type '" "bool""'");
+    } 
+    arg5 = static_cast< bool >(val5);
+  }
   {
     try {
-      ((mfem::SparseMatrix const *)arg1)->DiagScale((mfem::Vector const &)*arg2,*arg3,arg4);
+      ((mfem::SparseMatrix const *)arg1)->DiagScale((mfem::Vector const &)*arg2,*arg3,arg4,arg5);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -16139,8 +16161,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "SparseMatrix_Gauss_Seidel_forw", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Gauss_Seidel_forw, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_Gauss_Seidel_forw(SparseMatrix self, Vector x, Vector y)"},
 	 { "SparseMatrix_Gauss_Seidel_back", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Gauss_Seidel_back, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_Gauss_Seidel_back(SparseMatrix self, Vector x, Vector y)"},
 	 { "SparseMatrix_GetJacobiScaling", _wrap_SparseMatrix_GetJacobiScaling, METH_O, "SparseMatrix_GetJacobiScaling(SparseMatrix self) -> double"},
-	 { "SparseMatrix_Jacobi", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Jacobi, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_Jacobi(SparseMatrix self, Vector b, Vector x0, Vector x1, double sc)"},
-	 { "SparseMatrix_DiagScale", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_DiagScale, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_DiagScale(SparseMatrix self, Vector b, Vector x, double sc=1.0)"},
+	 { "SparseMatrix_Jacobi", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Jacobi, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_Jacobi(SparseMatrix self, Vector b, Vector x0, Vector x1, double sc, bool use_abs_diag=False)"},
+	 { "SparseMatrix_DiagScale", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_DiagScale, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_DiagScale(SparseMatrix self, Vector b, Vector x, double sc=1.0, bool use_abs_diag=False)"},
 	 { "SparseMatrix_Jacobi2", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Jacobi2, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_Jacobi2(SparseMatrix self, Vector b, Vector x0, Vector x1, double sc=1.0)"},
 	 { "SparseMatrix_Jacobi3", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Jacobi3, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_Jacobi3(SparseMatrix self, Vector b, Vector x0, Vector x1, double sc=1.0)"},
 	 { "SparseMatrix_Finalize", _wrap_SparseMatrix_Finalize, METH_VARARGS, "\n"
@@ -16386,8 +16408,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SparseMatrix_Gauss_Seidel_forw", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Gauss_Seidel_forw, METH_VARARGS|METH_KEYWORDS, "Gauss_Seidel_forw(SparseMatrix self, Vector x, Vector y)"},
 	 { "SparseMatrix_Gauss_Seidel_back", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Gauss_Seidel_back, METH_VARARGS|METH_KEYWORDS, "Gauss_Seidel_back(SparseMatrix self, Vector x, Vector y)"},
 	 { "SparseMatrix_GetJacobiScaling", _wrap_SparseMatrix_GetJacobiScaling, METH_O, "GetJacobiScaling(SparseMatrix self) -> double"},
-	 { "SparseMatrix_Jacobi", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Jacobi, METH_VARARGS|METH_KEYWORDS, "Jacobi(SparseMatrix self, Vector b, Vector x0, Vector x1, double sc)"},
-	 { "SparseMatrix_DiagScale", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_DiagScale, METH_VARARGS|METH_KEYWORDS, "DiagScale(SparseMatrix self, Vector b, Vector x, double sc=1.0)"},
+	 { "SparseMatrix_Jacobi", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Jacobi, METH_VARARGS|METH_KEYWORDS, "Jacobi(SparseMatrix self, Vector b, Vector x0, Vector x1, double sc, bool use_abs_diag=False)"},
+	 { "SparseMatrix_DiagScale", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_DiagScale, METH_VARARGS|METH_KEYWORDS, "DiagScale(SparseMatrix self, Vector b, Vector x, double sc=1.0, bool use_abs_diag=False)"},
 	 { "SparseMatrix_Jacobi2", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Jacobi2, METH_VARARGS|METH_KEYWORDS, "Jacobi2(SparseMatrix self, Vector b, Vector x0, Vector x1, double sc=1.0)"},
 	 { "SparseMatrix_Jacobi3", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Jacobi3, METH_VARARGS|METH_KEYWORDS, "Jacobi3(SparseMatrix self, Vector b, Vector x0, Vector x1, double sc=1.0)"},
 	 { "SparseMatrix_Finalize", _wrap_SparseMatrix_Finalize, METH_VARARGS, "\n"

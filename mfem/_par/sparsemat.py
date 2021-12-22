@@ -545,14 +545,14 @@ class SparseMatrix(mfem._par.matrix.AbstractSparseMatrix):
         return _sparsemat.SparseMatrix_GetJacobiScaling(self)
     GetJacobiScaling = _swig_new_instance_method(_sparsemat.SparseMatrix_GetJacobiScaling)
 
-    def Jacobi(self, b, x0, x1, sc):
-        r"""Jacobi(SparseMatrix self, Vector b, Vector x0, Vector x1, double sc)"""
-        return _sparsemat.SparseMatrix_Jacobi(self, b, x0, x1, sc)
+    def Jacobi(self, b, x0, x1, sc, use_abs_diag=False):
+        r"""Jacobi(SparseMatrix self, Vector b, Vector x0, Vector x1, double sc, bool use_abs_diag=False)"""
+        return _sparsemat.SparseMatrix_Jacobi(self, b, x0, x1, sc, use_abs_diag)
     Jacobi = _swig_new_instance_method(_sparsemat.SparseMatrix_Jacobi)
 
-    def DiagScale(self, b, x, sc=1.0):
-        r"""DiagScale(SparseMatrix self, Vector b, Vector x, double sc=1.0)"""
-        return _sparsemat.SparseMatrix_DiagScale(self, b, x, sc)
+    def DiagScale(self, b, x, sc=1.0, use_abs_diag=False):
+        r"""DiagScale(SparseMatrix self, Vector b, Vector x, double sc=1.0, bool use_abs_diag=False)"""
+        return _sparsemat.SparseMatrix_DiagScale(self, b, x, sc, use_abs_diag)
     DiagScale = _swig_new_instance_method(_sparsemat.SparseMatrix_DiagScale)
 
     def Jacobi2(self, b, x0, x1, sc=1.0):

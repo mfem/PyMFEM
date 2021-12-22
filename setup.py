@@ -20,6 +20,7 @@ from setuptools.command.install import install as _install
 from setuptools.command.install_egg_info import install_egg_info as _install_egg_info
 from setuptools.command.install_lib import install_lib as _install_lib
 from setuptools.command.install_scripts import install_scripts as _install_scripts
+import setuptools.command.sdist
 
 try:
     from setuptools._distutils.command.clean import clean as _clean
@@ -995,7 +996,7 @@ def configure_install(self):
         run_swig = False
         build_serial = False
         build_parallel = False
-        skip_install = Treu
+        skip_install = True
 
     if libceed_only:
         clean_swig = False
@@ -1373,7 +1374,7 @@ def run_setup():
         cmdclass['bdist_wheel'] = BdistWheel
 
     install_req = install_requires()
-    print(install_req)
+    #print(install_req)
     setup(
         cmdclass=cmdclass,
         install_requires=install_req,
