@@ -87,3 +87,17 @@ $ conda install -c conda-forge/label/gcc9 gcc_linux-64
 $ conda install -c conda-forge/label/gcc9 gxx_linux-64
 $ conda install -c conda-forge/label/gcc9 mpi4py
 
+### test using python:3.9 image
+sudo docker pull python:3.9
+sudo docker run -it python:3.9 bash
+
+(usually we need an editor...)
+apt-get update
+apt-get install emacs
+
+pip install cmake 
+git clone https://github.com/mfem/PyMFEM.git
+python3 -m pip install --upgrade pip setuptools wheel
+
+python -m pip install ./ --user
+

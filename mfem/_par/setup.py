@@ -9,19 +9,23 @@ print('building paralel version')
 import sys
 import os
 
-
 ddd = os.path.dirname(os.path.abspath(os.path.realpath(__file__)))
 root =  os.path.abspath(os.path.join(ddd, '..', '..'))
 
 sys.path.insert(0, root)
-from  setup_local import *
+from setup_local import *
+
+## remove current directory from path
+if '' in sys.path:
+    sys.path.remove('')
+if os.path.abspath('.') in sys.path:
+    sys.path.remove(os.path.abspath('.'))
 
 ## this forces to use compiler written in setup_local.py
 if cc_par != '': os.environ['CC'] = cc_par
 if cxx_par != '': os.environ['CXX'] = cxx_par
 
-from distutils.core import setup, Extension
-from distutils.core import *
+from distutils.core import Extension, setup
 from distutils      import sysconfig
 
 modules= ["io_stream", "vtk", "sort_pairs", "datacollection",
