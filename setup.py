@@ -1166,6 +1166,12 @@ class Install(_install):
         else:
             if '--user' in sys.argv:
                 path = site.getusersitepackages()
+                if not os.path.exists(path):
+                    try:
+                        print("attempting to make a --user directory", path)
+                        os.makedirs(path)
+                    except BaseException:
+                        pass
                 if os.path.exists(path):
                     path = os.path.dirname(path)
                     path = os.path.dirname(path)

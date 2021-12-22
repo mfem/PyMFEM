@@ -101,3 +101,8 @@ python3 -m pip install --upgrade pip setuptools wheel
 
 python -m pip install ./ --user
 
+### test using python:3.10 image
+sudo docker pull python:3.10
+sudo docker run -it python:3.10 bash
+
+python -m pip install ./ --user --install-option='--mfem-branch=master'
