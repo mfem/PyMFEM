@@ -16,10 +16,10 @@ sys.path.insert(0, root)
 from setup_local import *
 
 ## remove current directory from path
-print("__file__", __file__)
+print("__file__", os.path.abspath(__file__))
 if '' in sys.path:
     sys.path.remove('')
-items = [x for x in sys.path if os.path.abspath(x) == os.path.dirname(__file__)]
+items = [x for x in sys.path if os.path.abspath(x) == os.path.dirname(os.path.abspath(__file__))]
 for x in items:
     sys.path.remove(x)
 print("sys path", sys.path)
