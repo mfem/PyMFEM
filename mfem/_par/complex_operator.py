@@ -66,11 +66,31 @@ class _SwigNonDynamicMeta(type):
 
 import weakref
 
+MFEM_VERSION = _complex_operator.MFEM_VERSION
+
+MFEM_VERSION_STRING = _complex_operator.MFEM_VERSION_STRING
+
+MFEM_VERSION_TYPE = _complex_operator.MFEM_VERSION_TYPE
+
+MFEM_VERSION_TYPE_RELEASE = _complex_operator.MFEM_VERSION_TYPE_RELEASE
+
+MFEM_VERSION_TYPE_DEVELOPMENT = _complex_operator.MFEM_VERSION_TYPE_DEVELOPMENT
+
+MFEM_VERSION_MAJOR = _complex_operator.MFEM_VERSION_MAJOR
+
+MFEM_VERSION_MINOR = _complex_operator.MFEM_VERSION_MINOR
+
+MFEM_VERSION_PATCH = _complex_operator.MFEM_VERSION_PATCH
+
+MFEM_HYPRE_VERSION = _complex_operator.MFEM_HYPRE_VERSION
+
+import mfem._par.hypre
+import mfem._par.globals
 import mfem._par.vector
 import mfem._par.array
 import mfem._par.mem_manager
-import mfem._par.operators
 import mfem._par.sparsemat
+import mfem._par.operators
 import mfem._par.matrix
 import mfem._par.densemat
 class ComplexOperator(mfem._par.operators.Operator):
@@ -186,6 +206,46 @@ class ComplexSparseMatrix(ComplexOperator):
 
 # Register ComplexSparseMatrix in _complex_operator:
 _complex_operator.ComplexSparseMatrix_swigregister(ComplexSparseMatrix)
+
+class ComplexHypreParMatrix(ComplexOperator):
+    r"""Proxy of C++ mfem::ComplexHypreParMatrix class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        r"""__init__(ComplexHypreParMatrix self, HypreParMatrix A_Real, HypreParMatrix A_Imag, bool ownReal, bool ownImag, mfem::ComplexOperator::Convention convention=HERMITIAN) -> ComplexHypreParMatrix"""
+        _complex_operator.ComplexHypreParMatrix_swiginit(self, _complex_operator.new_ComplexHypreParMatrix(*args, **kwargs))
+
+    def real(self, *args):
+        r"""
+        real(ComplexHypreParMatrix self) -> HypreParMatrix
+        real(ComplexHypreParMatrix self) -> HypreParMatrix
+        """
+        return _complex_operator.ComplexHypreParMatrix_real(self, *args)
+    real = _swig_new_instance_method(_complex_operator.ComplexHypreParMatrix_real)
+
+    def imag(self, *args):
+        r"""
+        imag(ComplexHypreParMatrix self) -> HypreParMatrix
+        imag(ComplexHypreParMatrix self) -> HypreParMatrix
+        """
+        return _complex_operator.ComplexHypreParMatrix_imag(self, *args)
+    imag = _swig_new_instance_method(_complex_operator.ComplexHypreParMatrix_imag)
+
+    def GetSystemMatrix(self):
+        r"""GetSystemMatrix(ComplexHypreParMatrix self) -> HypreParMatrix"""
+        return _complex_operator.ComplexHypreParMatrix_GetSystemMatrix(self)
+    GetSystemMatrix = _swig_new_instance_method(_complex_operator.ComplexHypreParMatrix_GetSystemMatrix)
+
+    def GetType(self):
+        r"""GetType(ComplexHypreParMatrix self) -> mfem::Operator::Type"""
+        return _complex_operator.ComplexHypreParMatrix_GetType(self)
+    GetType = _swig_new_instance_method(_complex_operator.ComplexHypreParMatrix_GetType)
+    __swig_destroy__ = _complex_operator.delete_ComplexHypreParMatrix
+
+# Register ComplexHypreParMatrix in _complex_operator:
+_complex_operator.ComplexHypreParMatrix_swigregister(ComplexHypreParMatrix)
 
 
 

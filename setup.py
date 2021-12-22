@@ -996,7 +996,7 @@ def configure_install(self):
         run_swig = False
         build_serial = False
         build_parallel = False
-        skip_install = Treu
+        skip_install = True
 
     if libceed_only:
         clean_swig = False

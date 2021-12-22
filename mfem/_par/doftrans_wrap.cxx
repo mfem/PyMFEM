@@ -5752,7 +5752,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ND_TriDofTransformation_InvTransformDual(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_ND_TriDofTransformation_InvTransformDual__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::ND_TriDofTransformation *arg1 = (mfem::ND_TriDofTransformation *) 0 ;
   double *arg2 = (double *) 0 ;
@@ -5760,19 +5760,14 @@ SWIGINTERN PyObject *_wrap_ND_TriDofTransformation_InvTransformDual(PyObject *SW
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"v",  NULL 
-  };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ND_TriDofTransformation_InvTransformDual", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_TriDofTransformation, 0 |  0 );
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_TriDofTransformation, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_TriDofTransformation_InvTransformDual" "', argument " "1"" of type '" "mfem::ND_TriDofTransformation const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ND_TriDofTransformation * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, 0 |  0 );
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_double, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_TriDofTransformation_InvTransformDual" "', argument " "2"" of type '" "double *""'"); 
   }
@@ -5794,6 +5789,95 @@ SWIGINTERN PyObject *_wrap_ND_TriDofTransformation_InvTransformDual(PyObject *SW
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_TriDofTransformation_InvTransformDual__SWIG_1_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_TriDofTransformation *arg1 = (mfem::ND_TriDofTransformation *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_TriDofTransformation, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_TriDofTransformation_InvTransformDual" "', argument " "1"" of type '" "mfem::ND_TriDofTransformation const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_TriDofTransformation * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_TriDofTransformation_InvTransformDual" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_TriDofTransformation_InvTransformDual" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    try {
+      ((mfem::ND_TriDofTransformation const *)arg1)->InvTransformDual(*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_TriDofTransformation_InvTransformDual(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "ND_TriDofTransformation_InvTransformDual", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_TriDofTransformation, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_double, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_ND_TriDofTransformation_InvTransformDual__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_TriDofTransformation, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_ND_TriDofTransformation_InvTransformDual__SWIG_1_0(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ND_TriDofTransformation_InvTransformDual'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::ND_TriDofTransformation::InvTransformDual(double *) const\n"
+    "    InvTransformDual(mfem::Vector &) const\n");
+  return 0;
 }
 
 
@@ -7143,7 +7227,10 @@ static PyMethodDef SwigMethods[] = {
 		"ND_TriDofTransformation_TransformDual(ND_TriDofTransformation self, DenseMatrix V)\n"
 		"ND_TriDofTransformation_TransformDual(ND_TriDofTransformation self, double * v)\n"
 		""},
-	 { "ND_TriDofTransformation_InvTransformDual", (PyCFunction)(void(*)(void))_wrap_ND_TriDofTransformation_InvTransformDual, METH_VARARGS|METH_KEYWORDS, "ND_TriDofTransformation_InvTransformDual(ND_TriDofTransformation self, double * v)"},
+	 { "ND_TriDofTransformation_InvTransformDual", _wrap_ND_TriDofTransformation_InvTransformDual, METH_VARARGS, "\n"
+		"ND_TriDofTransformation_InvTransformDual(ND_TriDofTransformation self, double * v)\n"
+		"ND_TriDofTransformation_InvTransformDual(ND_TriDofTransformation self, Vector v)\n"
+		""},
 	 { "delete_ND_TriDofTransformation", _wrap_delete_ND_TriDofTransformation, METH_O, "delete_ND_TriDofTransformation(ND_TriDofTransformation self)"},
 	 { "ND_TriDofTransformation_swigregister", ND_TriDofTransformation_swigregister, METH_O, NULL},
 	 { "ND_TetDofTransformation_TransformPrimal", _wrap_ND_TetDofTransformation_TransformPrimal, METH_VARARGS, "\n"
@@ -7262,7 +7349,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"TransformDual(ND_TriDofTransformation self, DenseMatrix V)\n"
 		"TransformDual(ND_TriDofTransformation self, double * v)\n"
 		""},
-	 { "ND_TriDofTransformation_InvTransformDual", (PyCFunction)(void(*)(void))_wrap_ND_TriDofTransformation_InvTransformDual, METH_VARARGS|METH_KEYWORDS, "InvTransformDual(ND_TriDofTransformation self, double * v)"},
+	 { "ND_TriDofTransformation_InvTransformDual", _wrap_ND_TriDofTransformation_InvTransformDual, METH_VARARGS, "\n"
+		"InvTransformDual(ND_TriDofTransformation self, double * v)\n"
+		"InvTransformDual(ND_TriDofTransformation self, Vector v)\n"
+		""},
 	 { "delete_ND_TriDofTransformation", _wrap_delete_ND_TriDofTransformation, METH_O, "delete_ND_TriDofTransformation(ND_TriDofTransformation self)"},
 	 { "ND_TriDofTransformation_swigregister", ND_TriDofTransformation_swigregister, METH_O, NULL},
 	 { "ND_TetDofTransformation_TransformPrimal", _wrap_ND_TetDofTransformation_TransformPrimal, METH_VARARGS, "\n"

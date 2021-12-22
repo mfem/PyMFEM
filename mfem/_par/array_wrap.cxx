@@ -3226,9 +3226,9 @@ SWIGINTERN PyObject *mfem_Array_Sl_int_Sg____getitem__(mfem::Array< int > *self,
             return NULL; 	
         }
         if (idx >= 0){
-          return PyLong_FromLong((* self)[idx]);
+          return PyLong_FromLong(self->operator[](idx));
         } else {
-          return PyLong_FromLong((* self)[len+idx]);	  
+          return PyLong_FromLong(self->operator[](len+idx));
 	}
     }
   }
@@ -3334,9 +3334,9 @@ SWIGINTERN PyObject *mfem_Array_Sl_double_Sg____getitem__(mfem::Array< double > 
             return NULL; 	
         }
         if (idx >= 0){
-          return PyFloat_FromDouble((* self)[idx]);	  
+          return PyFloat_FromDouble(self->operator[](idx));
         } else {
-          return PyFloat_FromDouble((* self)[len+idx]);	  	  
+          return PyFloat_FromDouble(self->operator[](len+idx));
 	}
     }
   }

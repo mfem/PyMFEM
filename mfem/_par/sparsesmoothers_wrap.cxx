@@ -3282,6 +3282,99 @@ SWIG_AsVal_double (PyObject *obj, double *val)
 }
 
 
+#include <float.h>
+
+
+#include <math.h>
+
+
+SWIGINTERNINLINE int
+SWIG_CanCastAsInteger(double *d, double min, double max) {
+  double x = *d;
+  if ((min <= x && x <= max)) {
+   double fx = floor(x);
+   double cx = ceil(x);
+   double rd =  ((x - fx) < 0.5) ? fx : cx; /* simple rint */
+   if ((errno == EDOM) || (errno == ERANGE)) {
+     errno = 0;
+   } else {
+     double summ, reps, diff;
+     if (rd < x) {
+       diff = x - rd;
+     } else if (rd > x) {
+       diff = rd - x;
+     } else {
+       return 1;
+     }
+     summ = rd + x;
+     reps = diff/summ;
+     if (reps < 8*DBL_EPSILON) {
+       *d = rd;
+       return 1;
+     }
+   }
+  }
+  return 0;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_long (PyObject *obj, long* val)
+{
+#if PY_VERSION_HEX < 0x03000000
+  if (PyInt_Check(obj)) {
+    if (val) *val = PyInt_AsLong(obj);
+    return SWIG_OK;
+  } else
+#endif
+  if (PyLong_Check(obj)) {
+    long v = PyLong_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+      return SWIG_OverflowError;
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    long v = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      double d;
+      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
+      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, LONG_MIN, LONG_MAX)) {
+	if (val) *val = (long)(d);
+	return res;
+      }
+    }
+  }
+#endif
+  return SWIG_TypeError;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_bool (PyObject *obj, bool *val)
+{
+  int r;
+  if (!PyBool_Check(obj))
+    return SWIG_ERROR;
+  r = PyObject_IsTrue(obj);
+  if (r == -1)
+    return SWIG_ERROR;
+  if (val) *val = r ? true : false;
+  return SWIG_OK;
+}
+
+
 
 /* ---------------------------------------------------
  * C++ director class methods
@@ -3882,6 +3975,53 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_DSmoother_SetPositiveDiagonal(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::DSmoother *arg1 = (mfem::DSmoother *) 0 ;
+  bool arg2 = (bool) true ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"pos_diag",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:DSmoother_SetPositiveDiagonal", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DSmoother, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DSmoother_SetPositiveDiagonal" "', argument " "1"" of type '" "mfem::DSmoother *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DSmoother * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DSmoother_SetPositiveDiagonal" "', argument " "2"" of type '" "bool""'");
+    } 
+    arg2 = static_cast< bool >(val2);
+  }
+  {
+    try {
+      (arg1)->SetPositiveDiagonal(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_DSmoother_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::DSmoother *arg1 = (mfem::DSmoother *) 0 ;
@@ -4005,6 +4145,7 @@ static PyMethodDef SwigMethods[] = {
 		"DSmoother(int t=0, double s=1., int it=1)\n"
 		"new_DSmoother(SparseMatrix a, int t=0, double s=1., int it=1) -> DSmoother\n"
 		""},
+	 { "DSmoother_SetPositiveDiagonal", (PyCFunction)(void(*)(void))_wrap_DSmoother_SetPositiveDiagonal, METH_VARARGS|METH_KEYWORDS, "DSmoother_SetPositiveDiagonal(DSmoother self, bool pos_diag=True)"},
 	 { "DSmoother_Mult", (PyCFunction)(void(*)(void))_wrap_DSmoother_Mult, METH_VARARGS|METH_KEYWORDS, "DSmoother_Mult(DSmoother self, Vector x, Vector y)"},
 	 { "delete_DSmoother", _wrap_delete_DSmoother, METH_O, "delete_DSmoother(DSmoother self)"},
 	 { "DSmoother_swigregister", DSmoother_swigregister, METH_O, NULL},
@@ -4030,6 +4171,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"DSmoother(int t=0, double s=1., int it=1)\n"
 		"new_DSmoother(SparseMatrix a, int t=0, double s=1., int it=1) -> DSmoother\n"
 		""},
+	 { "DSmoother_SetPositiveDiagonal", (PyCFunction)(void(*)(void))_wrap_DSmoother_SetPositiveDiagonal, METH_VARARGS|METH_KEYWORDS, "SetPositiveDiagonal(DSmoother self, bool pos_diag=True)"},
 	 { "DSmoother_Mult", (PyCFunction)(void(*)(void))_wrap_DSmoother_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(DSmoother self, Vector x, Vector y)"},
 	 { "delete_DSmoother", _wrap_delete_DSmoother, METH_O, "delete_DSmoother(DSmoother self)"},
 	 { "DSmoother_swigregister", DSmoother_swigregister, METH_O, NULL},

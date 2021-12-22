@@ -3028,9 +3028,9 @@ SWIGINTERN PyObject *mfem_Array_Sl_mfem_IntegrationPoint_Sg____getitem__(mfem::A
             return NULL; 	
         }
         if (idx >= 0){
-          return SWIG_NewPointerObj(SWIG_as_voidptr(&(* self)[idx]), SWIGTYPE_p_IntegrationPoint, 1);	  
+          return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](idx))), SWIGTYPE_p_IntegrationPoint, 1);	  
         } else {
-          return SWIG_NewPointerObj(SWIG_as_voidptr(&(* self)[len+idx]), SWIGTYPE_p_IntegrationPoint, 1);
+	  return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](len+idx))), SWIGTYPE_p_IntegrationPoint, 1);
 	}
     }
   }
