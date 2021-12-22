@@ -32,7 +32,7 @@ sudo docker run -it -v $(pwd):/io quay.io/pypa/manylinux2010_x86_64
 yum install openssh-server openssh-clients
 yum install zlib-devel
 #git clone git@github.com:mfem/PyMFEM.git
-git clone https:/github.com/mfem/PyMFEM.git
+git clone https://github.com/mfem/PyMFEM.git
 export PATH=/opt/python/cp36-cp36m/bin:$PATH
 pip install six numpy scipy auditwheel twine cmake
 python3 setup.py install
