@@ -63,9 +63,8 @@ jobs:
           #
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
-          pip3 install six
-          pip3 install auditwheel
-          pip3 install twine
+          pip3 install six auditwheel twine
+
           if [ -f requirements.txt ]; then
              pip3 install -r requirements.txt
           fi	  
@@ -73,6 +72,7 @@ jobs:
           ls -l
           yum install -y zlib-devel
           python3 setup.py install
+
           rm -rf dist/*
           python3 setup.py bdist_wheel
           export LD_LIBRARY_PATH=${CWD}/PyMFEM/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
@@ -83,9 +83,10 @@ jobs:
           mv wheelhouse/* dist/
           ls -l dist/
           python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
-          #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*   	  
+          #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*
+
   make_binary_3_10:
-    needs: vm
+    needs: make_sdist
     strategy:
       matrix:
         pythonpath: ["cp310-cp310"]
@@ -101,25 +102,23 @@ jobs:
           git clone https://github.com/mfem/PyMFEM.git
           cd PyMFEM
           #
-          mkdir external
-          cd external
-          git clone https://github.com/mfem/mfem.git
-          cd ..
-          #
           git checkout test_release
           #
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
-          pip3 install six
-          pip3 install auditwheel
-          pip3 install twine
+          pip3 install six auditwheel twine
+
           if [ -f requirements.txt ]; then
              pip3 install -r requirements.txt
           fi	  
           CWD=$PWD
           ls -l
-          yum install -y zlib-devel
-          python3 setup.py install
+
+          apt-get update
+          apt-get install -y zlib1g-dbg
+
+          python3 -m pip install ./ --verbose
+
           rm -rf dist/*
           python3 setup.py bdist_wheel
           export LD_LIBRARY_PATH=${CWD}/PyMFEM/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
