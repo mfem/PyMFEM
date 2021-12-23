@@ -13,7 +13,8 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "numpy/arrayobject.h"        
+#include "numpy/arrayobject.h"
+#include "../common/pycoefficient.hpp"  
 %}
 
 %init %{

@@ -11,7 +11,8 @@
 #include "mesh/ncmesh.hpp"
 #include "fem/gridfunc.hpp"
 #include "fem/bilinearform.hpp"    
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"
+#include "../common/pycoefficient.hpp"  
 %}
 
 %init %{
@@ -28,6 +29,9 @@
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
 ISTREAM_TYPEMAP(std::istream&)
+
+%import "../common/array_listtuple_typemap.i"
+ARRAY_LISTTUPLE_INPUT_SWIGOBJ(mfem::Refinement)
 
 %immutable embeddings;
 
@@ -54,6 +58,7 @@ namespace mfem{
    %ignore Array<Refinement>::Min;
    %ignore Array<Refinement>::Print;
    %ignore Array<Refinement>::Load;
-
-   %template(RefinementArray) Array<Refinement>;
 }
+%import "../common/array_instantiation_macro.i"
+INSTANTIATE_ARRAY(Refinement)
+

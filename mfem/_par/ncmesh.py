@@ -84,6 +84,7 @@ import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.coefficient
+import mfem._par.symmat
 import mfem._par.sparsemat
 import mfem._par.eltrans
 import mfem._par.fe
@@ -417,17 +418,6 @@ class RefinementArray(object):
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-
-    def __init__(self, *args):
-        r"""
-        __init__(RefinementArray self) -> RefinementArray
-        __init__(RefinementArray self, mfem::MemoryType mt) -> RefinementArray
-        __init__(RefinementArray self, int asize) -> RefinementArray
-        __init__(RefinementArray self, int asize, mfem::MemoryType mt) -> RefinementArray
-        __init__(RefinementArray self, Refinement data_, int asize) -> RefinementArray
-        __init__(RefinementArray self, RefinementArray src) -> RefinementArray
-        """
-        _ncmesh.RefinementArray_swiginit(self, _ncmesh.new_RefinementArray(*args))
     __swig_destroy__ = _ncmesh.delete_RefinementArray
 
     def GetData(self, *args):
@@ -596,6 +586,18 @@ class RefinementArray(object):
         return _ncmesh.RefinementArray_HostReadWrite(self)
     HostReadWrite = _swig_new_instance_method(_ncmesh.RefinementArray_HostReadWrite)
 
+    def __init__(self, *args):
+        r"""
+        __init__(RefinementArray self) -> RefinementArray
+        __init__(RefinementArray self, mfem::MemoryType mt) -> RefinementArray
+        __init__(RefinementArray self, int asize) -> RefinementArray
+        __init__(RefinementArray self, int asize, mfem::MemoryType mt) -> RefinementArray
+        __init__(RefinementArray self, Refinement data_, int asize) -> RefinementArray
+        __init__(RefinementArray self, RefinementArray src) -> RefinementArray
+        __init__(RefinementArray self, void * List_or_Tuple) -> RefinementArray
+        """
+        _ncmesh.RefinementArray_swiginit(self, _ncmesh.new_RefinementArray(*args))
+
     def __setitem__(self, i, v):
         r"""__setitem__(RefinementArray self, int i, Refinement v)"""
 
@@ -603,15 +605,6 @@ class RefinementArray(object):
 
 
         return _ncmesh.RefinementArray___setitem__(self, i, v)
-
-
-    def __getitem__(self, i):
-        r"""__getitem__(RefinementArray self, int const i) -> Refinement"""
-
-        i = int(i)
-
-
-        return _ncmesh.RefinementArray___getitem__(self, i)
 
 
     def Assign(self, *args):
@@ -645,6 +638,11 @@ class RefinementArray(object):
         return iter_array(self)
 
 
+
+    def __getitem__(self, param):
+        r"""__getitem__(RefinementArray self, PyObject * param) -> PyObject *"""
+        return _ncmesh.RefinementArray___getitem__(self, param)
+    __getitem__ = _swig_new_instance_method(_ncmesh.RefinementArray___getitem__)
 
 # Register RefinementArray in _ncmesh:
 _ncmesh.RefinementArray_swigregister(RefinementArray)

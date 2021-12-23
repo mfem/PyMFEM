@@ -18,6 +18,9 @@ import_array();
 %immutable RefPts;
 %immutable GlobGeometryRefiner;
 
+%import "../common/array_listtuple_typemap.i"
+ARRAY_LISTTUPLE_INPUT(mfem::Geometry::Type, PyLong_AsLong)
+
 %include "fem/geom.hpp"
 
 namespace mfem{
@@ -35,7 +38,13 @@ namespace mfem{
    %ignore Array<Geometry::Type>::Min;
    %ignore Array<Geometry::Type>::Print;
    %ignore Array<Geometry::Type>::Load;
-   
-   %template(GeometryTypeArray) Array<Geometry::Type>;
 }
+%template(GeometryTypeArray) mfem::Array<mfem::Geometry::Type>;
+%extend mfem::Array<mfem::Geometry::Type> {
+  const mfem::Geometry::Type  & __getitem__(const int i) const{
+     return (* self)[i];
+ }
+};
+      
+
 

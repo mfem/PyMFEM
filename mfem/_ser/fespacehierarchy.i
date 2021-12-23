@@ -12,7 +12,8 @@
 #include "fem/bilinearform.hpp"    
 #include "fem/fespacehierarchy.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"  
+#include "pyoperator.hpp"
+#include "../common/pycoefficient.hpp"  
 %}
 %init %{
 import_array();

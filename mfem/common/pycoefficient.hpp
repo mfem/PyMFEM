@@ -11,7 +11,8 @@ class PyCoefficientBase : public FunctionCoefficient
    int isTimeDependent;
  public:
    /// Define a time-independent coefficient from a C-function
- PyCoefficientBase(int tdep): FunctionCoefficient(fake_func), isTimeDependent(tdep){}
+   PyCoefficientBase(int tdep): FunctionCoefficient(fake_func), isTimeDependent(tdep){}
+   virtual void SetTime(double t){FunctionCoefficient::SetTime(t);}
    virtual double Eval(ElementTransformation &T,
                        const IntegrationPoint &ip);
    virtual double _EvalPy(Vector &)=0;
@@ -24,6 +25,7 @@ private:
    int isTimeDependent;
 public:
  VectorPyCoefficientBase(int dim,  int tdep, Coefficient *q=NULL): VectorFunctionCoefficient(dim, fake_func_vec, q), isTimeDependent(tdep) { }
+   virtual void SetTime(double t){VectorFunctionCoefficient::SetTime(t);}  
    virtual void Eval(DenseMatrix &M, ElementTransformation &T,
 		     const IntegrationRule &ir); /* do I need this method?? */
    virtual void Eval(Vector &V, ElementTransformation &T,
@@ -37,6 +39,7 @@ private:
    int isTimeDependent;
 public:
    MatrixPyCoefficientBase(int dim,  int tdep): MatrixFunctionCoefficient(dim, fake_func_mat), isTimeDependent(tdep) { }
+   virtual void SetTime(double t){MatrixFunctionCoefficient::SetTime(t);}    
    virtual void Eval(DenseMatrix &K, ElementTransformation &T,
 		     const IntegrationPoint &ip); 
    virtual void _EvalPy(Vector &, DenseMatrix &){};

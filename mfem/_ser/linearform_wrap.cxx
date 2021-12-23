@@ -3099,53 +3099,75 @@ namespace Swig {
 
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
 #define SWIGTYPE_p_RefCoord swig_types[1]
-#define SWIGTYPE_p_char swig_types[2]
-#define SWIGTYPE_p_double swig_types[3]
-#define SWIGTYPE_p_hex_t swig_types[4]
-#define SWIGTYPE_p_int swig_types[5]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[6]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__ArrayT_int_t_p_t swig_types[7]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__DeltaLFIntegrator_p_t swig_types[8]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__LinearFormIntegrator_p_t swig_types[9]
-#define SWIGTYPE_p_mfem__BoundaryFlowIntegrator swig_types[10]
-#define SWIGTYPE_p_mfem__BoundaryLFIntegrator swig_types[11]
-#define SWIGTYPE_p_mfem__BoundaryNormalLFIntegrator swig_types[12]
-#define SWIGTYPE_p_mfem__BoundaryTangentialLFIntegrator swig_types[13]
-#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[14]
-#define SWIGTYPE_p_mfem__DGDirichletLFIntegrator swig_types[15]
-#define SWIGTYPE_p_mfem__DGElasticityDirichletLFIntegrator swig_types[16]
-#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[17]
-#define SWIGTYPE_p_mfem__DeltaLFIntegrator swig_types[18]
-#define SWIGTYPE_p_mfem__DomainLFGradIntegrator swig_types[19]
-#define SWIGTYPE_p_mfem__DomainLFIntegrator swig_types[20]
-#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[21]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[22]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[23]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[24]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[25]
-#define SWIGTYPE_p_mfem__LinearFormIntegrator swig_types[26]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[27]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[28]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[29]
-#define SWIGTYPE_p_mfem__QuadratureLFIntegrator swig_types[30]
-#define SWIGTYPE_p_mfem__Vector swig_types[31]
-#define SWIGTYPE_p_mfem__VectorBoundaryFluxLFIntegrator swig_types[32]
-#define SWIGTYPE_p_mfem__VectorBoundaryLFIntegrator swig_types[33]
-#define SWIGTYPE_p_mfem__VectorDomainLFIntegrator swig_types[34]
-#define SWIGTYPE_p_mfem__VectorFEBoundaryFluxLFIntegrator swig_types[35]
-#define SWIGTYPE_p_mfem__VectorFEBoundaryTangentLFIntegrator swig_types[36]
-#define SWIGTYPE_p_mfem__VectorFEDomainLFCurlIntegrator swig_types[37]
-#define SWIGTYPE_p_mfem__VectorFEDomainLFDivIntegrator swig_types[38]
-#define SWIGTYPE_p_mfem__VectorFEDomainLFIntegrator swig_types[39]
-#define SWIGTYPE_p_mfem__VectorQuadratureLFIntegrator swig_types[40]
-#define SWIGTYPE_p_pri_t swig_types[41]
-#define SWIGTYPE_p_pyr_t swig_types[42]
-#define SWIGTYPE_p_quad_t swig_types[43]
-#define SWIGTYPE_p_seg_t swig_types[44]
-#define SWIGTYPE_p_tet_t swig_types[45]
-#define SWIGTYPE_p_tri_t swig_types[46]
-static swig_type_info *swig_types[48];
-static swig_module_info swig_module = {swig_types, 47, 0, 0, 0, 0};
+#define SWIGTYPE_p_allocator_type swig_types[2]
+#define SWIGTYPE_p_char swig_types[3]
+#define SWIGTYPE_p_difference_type swig_types[4]
+#define SWIGTYPE_p_double swig_types[5]
+#define SWIGTYPE_p_hex_t swig_types[6]
+#define SWIGTYPE_p_int swig_types[7]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[8]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__ArrayT_int_t_p_t swig_types[9]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__DeltaLFIntegrator_p_t swig_types[10]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__LinearFormIntegrator_p_t swig_types[11]
+#define SWIGTYPE_p_mfem__BoundaryFlowIntegrator swig_types[12]
+#define SWIGTYPE_p_mfem__BoundaryLFIntegrator swig_types[13]
+#define SWIGTYPE_p_mfem__BoundaryNormalLFIntegrator swig_types[14]
+#define SWIGTYPE_p_mfem__BoundaryTangentialLFIntegrator swig_types[15]
+#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[16]
+#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[17]
+#define SWIGTYPE_p_mfem__DGDirichletLFIntegrator swig_types[18]
+#define SWIGTYPE_p_mfem__DGElasticityDirichletLFIntegrator swig_types[19]
+#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[20]
+#define SWIGTYPE_p_mfem__DeltaLFIntegrator swig_types[21]
+#define SWIGTYPE_p_mfem__DomainLFGradIntegrator swig_types[22]
+#define SWIGTYPE_p_mfem__DomainLFIntegrator swig_types[23]
+#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[24]
+#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[25]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[26]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[27]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[28]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[29]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[30]
+#define SWIGTYPE_p_mfem__LinearFormIntegrator swig_types[31]
+#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[32]
+#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[33]
+#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[34]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[35]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[36]
+#define SWIGTYPE_p_mfem__QuadratureLFIntegrator swig_types[37]
+#define SWIGTYPE_p_mfem__Refinement swig_types[38]
+#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[39]
+#define SWIGTYPE_p_mfem__Vector swig_types[40]
+#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[41]
+#define SWIGTYPE_p_mfem__VectorBoundaryFluxLFIntegrator swig_types[42]
+#define SWIGTYPE_p_mfem__VectorBoundaryLFIntegrator swig_types[43]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[44]
+#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[45]
+#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[46]
+#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[47]
+#define SWIGTYPE_p_mfem__VectorDomainLFIntegrator swig_types[48]
+#define SWIGTYPE_p_mfem__VectorFEBoundaryFluxLFIntegrator swig_types[49]
+#define SWIGTYPE_p_mfem__VectorFEBoundaryTangentLFIntegrator swig_types[50]
+#define SWIGTYPE_p_mfem__VectorFEDomainLFCurlIntegrator swig_types[51]
+#define SWIGTYPE_p_mfem__VectorFEDomainLFDivIntegrator swig_types[52]
+#define SWIGTYPE_p_mfem__VectorFEDomainLFIntegrator swig_types[53]
+#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[54]
+#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[55]
+#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[56]
+#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[57]
+#define SWIGTYPE_p_mfem__VectorQuadratureLFIntegrator swig_types[58]
+#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[59]
+#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[60]
+#define SWIGTYPE_p_pri_t swig_types[61]
+#define SWIGTYPE_p_pyr_t swig_types[62]
+#define SWIGTYPE_p_quad_t swig_types[63]
+#define SWIGTYPE_p_seg_t swig_types[64]
+#define SWIGTYPE_p_size_type swig_types[65]
+#define SWIGTYPE_p_tet_t swig_types[66]
+#define SWIGTYPE_p_tri_t swig_types[67]
+#define SWIGTYPE_p_value_type swig_types[68]
+static swig_type_info *swig_types[70];
+static swig_module_info swig_module = {swig_types, 69, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3264,7 +3286,8 @@ namespace swig {
 #include <cstring>
 #include <ctime>
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"         
+#include "pyoperator.hpp"
+#include "../common/pycoefficient.hpp"      
 
 
   #define SWIG_From_double   PyFloat_FromDouble 
@@ -4993,15 +5016,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static void *_p_mfem__GridFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::GridFunction *) x));
-}
-static void *_p_mfem__QuadratureFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::QuadratureFunction *) x));
-}
-static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::LinearForm *) x));
-}
 static void *_p_mfem__VectorFEBoundaryTangentLFIntegratorTo_p_mfem__LinearFormIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::LinearFormIntegrator *)  ((mfem::VectorFEBoundaryTangentLFIntegrator *) x));
 }
@@ -5059,9 +5073,68 @@ static void *_p_mfem__VectorQuadratureLFIntegratorTo_p_mfem__LinearFormIntegrato
 static void *_p_mfem__QuadratureLFIntegratorTo_p_mfem__LinearFormIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::LinearFormIntegrator *)  ((mfem::QuadratureLFIntegrator *) x));
 }
+static void *_p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *) (mfem::VectorFunctionCoefficient *) ((mfem::VectorPyCoefficientBase *) x));
+}
+static void *_p_mfem__VectorQuadratureFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorQuadratureFunctionCoefficient *) x));
+}
+static void *_p_mfem__MatrixVectorProductCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::MatrixVectorProductCoefficient *) x));
+}
+static void *_p_mfem__VectorCrossProductCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorCrossProductCoefficient *) x));
+}
+static void *_p_mfem__NormalizedVectorCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::NormalizedVectorCoefficient *) x));
+}
+static void *_p_mfem__ScalarVectorProductCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::ScalarVectorProductCoefficient *) x));
+}
+static void *_p_mfem__VectorSumCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorSumCoefficient *) x));
+}
+static void *_p_mfem__VectorRestrictedCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorRestrictedCoefficient *) x));
+}
+static void *_p_mfem__VectorDeltaCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorDeltaCoefficient *) x));
+}
+static void *_p_mfem__CurlGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::CurlGridFunctionCoefficient *) x));
+}
+static void *_p_mfem__GradientGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::GradientGridFunctionCoefficient *) x));
+}
+static void *_p_mfem__VectorGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorGridFunctionCoefficient *) x));
+}
+static void *_p_mfem__VectorArrayCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorArrayCoefficient *) x));
+}
+static void *_p_mfem__VectorFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorFunctionCoefficient *) x));
+}
+static void *_p_mfem__VectorConstantCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorConstantCoefficient *) x));
+}
+static void *_p_mfem__NodeExtrudeCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::NodeExtrudeCoefficient *) x));
+}
+static void *_p_mfem__GridFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::GridFunction *) x));
+}
+static void *_p_mfem__QuadratureFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::QuadratureFunction *) x));
+}
+static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::LinearForm *) x));
+}
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
@@ -5073,6 +5146,7 @@ static swig_type_info _swigt__p_mfem__ConvectionIntegrator = {"_p_mfem__Convecti
 static swig_type_info _swigt__p_mfem__DGTraceIntegrator = {"_p_mfem__DGTraceIntegrator", "mfem::DGTraceIntegrator *|mfem::ConservativeDGTraceIntegrator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__FiniteElementSpace = {"_p_mfem__FiniteElementSpace", "mfem::FiniteElementSpace *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__IntegrationPoint = {"_p_mfem__IntegrationPoint", "mfem::IntegrationPoint *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__L2_FECollection = {"_p_mfem__L2_FECollection", "mfem::L2_FECollection *|mfem::DG_FECollection *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", "mfem::LinearForm *", 0, 0, (void*)0, 0};
@@ -5098,19 +5172,40 @@ static swig_type_info _swigt__p_mfem__VectorQuadratureLFIntegrator = {"_p_mfem__
 static swig_type_info _swigt__p_mfem__QuadratureLFIntegrator = {"_p_mfem__QuadratureLFIntegrator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__MatrixVectorProductCoefficient = {"_p_mfem__MatrixVectorProductCoefficient", "mfem::MatrixVectorProductCoefficient *|mfem::MatVecCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__OperatorHandle = {"_p_mfem__OperatorHandle", "mfem::OperatorPtr *|mfem::OperatorHandle *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__Refinement = {"_p_mfem__Refinement", "mfem::Refinement *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorCoefficient = {"_p_mfem__VectorCoefficient", "mfem::VectorCoefficient *|mfem::DiagonalMatrixCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__VectorPyCoefficientBase = {"_p_mfem__VectorPyCoefficientBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorQuadratureFunctionCoefficient = {"_p_mfem__VectorQuadratureFunctionCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorCrossProductCoefficient = {"_p_mfem__VectorCrossProductCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__NormalizedVectorCoefficient = {"_p_mfem__NormalizedVectorCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ScalarVectorProductCoefficient = {"_p_mfem__ScalarVectorProductCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorSumCoefficient = {"_p_mfem__VectorSumCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorRestrictedCoefficient = {"_p_mfem__VectorRestrictedCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorDeltaCoefficient = {"_p_mfem__VectorDeltaCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__CurlGridFunctionCoefficient = {"_p_mfem__CurlGridFunctionCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__GradientGridFunctionCoefficient = {"_p_mfem__GradientGridFunctionCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorGridFunctionCoefficient = {"_p_mfem__VectorGridFunctionCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorArrayCoefficient = {"_p_mfem__VectorArrayCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorFunctionCoefficient = {"_p_mfem__VectorFunctionCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorConstantCoefficient = {"_p_mfem__VectorConstantCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__NodeExtrudeCoefficient = {"_p_mfem__NodeExtrudeCoefficient", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_pyr_t = {"_p_pyr_t", "pyr_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_size_type = {"_p_size_type", "size_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_RefCoord,
+  &_swigt__p_allocator_type,
   &_swigt__p_char,
+  &_swigt__p_difference_type,
   &_swigt__p_double,
   &_swigt__p_hex_t,
   &_swigt__p_int,
@@ -5123,6 +5218,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__BoundaryNormalLFIntegrator,
   &_swigt__p_mfem__BoundaryTangentialLFIntegrator,
   &_swigt__p_mfem__ConvectionIntegrator,
+  &_swigt__p_mfem__CurlGridFunctionCoefficient,
   &_swigt__p_mfem__DGDirichletLFIntegrator,
   &_swigt__p_mfem__DGElasticityDirichletLFIntegrator,
   &_swigt__p_mfem__DGTraceIntegrator,
@@ -5130,36 +5226,57 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__DomainLFGradIntegrator,
   &_swigt__p_mfem__DomainLFIntegrator,
   &_swigt__p_mfem__FiniteElementSpace,
+  &_swigt__p_mfem__GradientGridFunctionCoefficient,
   &_swigt__p_mfem__GridFunction,
+  &_swigt__p_mfem__IntegrationPoint,
   &_swigt__p_mfem__IntegrationRule,
   &_swigt__p_mfem__L2_FECollection,
   &_swigt__p_mfem__LinearForm,
   &_swigt__p_mfem__LinearFormIntegrator,
   &_swigt__p_mfem__MatrixVectorProductCoefficient,
+  &_swigt__p_mfem__NodeExtrudeCoefficient,
+  &_swigt__p_mfem__NormalizedVectorCoefficient,
   &_swigt__p_mfem__OperatorHandle,
   &_swigt__p_mfem__QuadratureFunction,
   &_swigt__p_mfem__QuadratureLFIntegrator,
+  &_swigt__p_mfem__Refinement,
+  &_swigt__p_mfem__ScalarVectorProductCoefficient,
   &_swigt__p_mfem__Vector,
+  &_swigt__p_mfem__VectorArrayCoefficient,
   &_swigt__p_mfem__VectorBoundaryFluxLFIntegrator,
   &_swigt__p_mfem__VectorBoundaryLFIntegrator,
+  &_swigt__p_mfem__VectorCoefficient,
+  &_swigt__p_mfem__VectorConstantCoefficient,
+  &_swigt__p_mfem__VectorCrossProductCoefficient,
+  &_swigt__p_mfem__VectorDeltaCoefficient,
   &_swigt__p_mfem__VectorDomainLFIntegrator,
   &_swigt__p_mfem__VectorFEBoundaryFluxLFIntegrator,
   &_swigt__p_mfem__VectorFEBoundaryTangentLFIntegrator,
   &_swigt__p_mfem__VectorFEDomainLFCurlIntegrator,
   &_swigt__p_mfem__VectorFEDomainLFDivIntegrator,
   &_swigt__p_mfem__VectorFEDomainLFIntegrator,
+  &_swigt__p_mfem__VectorFunctionCoefficient,
+  &_swigt__p_mfem__VectorGridFunctionCoefficient,
+  &_swigt__p_mfem__VectorPyCoefficientBase,
+  &_swigt__p_mfem__VectorQuadratureFunctionCoefficient,
   &_swigt__p_mfem__VectorQuadratureLFIntegrator,
+  &_swigt__p_mfem__VectorRestrictedCoefficient,
+  &_swigt__p_mfem__VectorSumCoefficient,
   &_swigt__p_pri_t,
   &_swigt__p_pyr_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
+  &_swigt__p_size_type,
   &_swigt__p_tet_t,
   &_swigt__p_tri_t,
+  &_swigt__p_value_type,
 };
 
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
@@ -5171,6 +5288,7 @@ static swig_cast_info _swigc__p_mfem__ConvectionIntegrator[] = {  {&_swigt__p_mf
 static swig_cast_info _swigc__p_mfem__DGTraceIntegrator[] = {  {&_swigt__p_mfem__DGTraceIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__FiniteElementSpace[] = {  {&_swigt__p_mfem__FiniteElementSpace, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__IntegrationPoint[] = {  {&_swigt__p_mfem__IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2_FECollection[] = {  {&_swigt__p_mfem__L2_FECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LinearForm[] = {  {&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
@@ -5196,19 +5314,40 @@ static swig_cast_info _swigc__p_mfem__QuadratureLFIntegrator[] = {{&_swigt__p_mf
 static swig_cast_info _swigc__p_mfem__LinearFormIntegrator[] = {  {&_swigt__p_mfem__VectorFEBoundaryTangentLFIntegrator, _p_mfem__VectorFEBoundaryTangentLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorFEBoundaryFluxLFIntegrator, _p_mfem__VectorFEBoundaryFluxLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorBoundaryFluxLFIntegrator, _p_mfem__VectorBoundaryFluxLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorFEDomainLFDivIntegrator, _p_mfem__VectorFEDomainLFDivIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorFEDomainLFCurlIntegrator, _p_mfem__VectorFEDomainLFCurlIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorFEDomainLFIntegrator, _p_mfem__VectorFEDomainLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorBoundaryLFIntegrator, _p_mfem__VectorBoundaryLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorDomainLFIntegrator, _p_mfem__VectorDomainLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__BoundaryTangentialLFIntegrator, _p_mfem__BoundaryTangentialLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__BoundaryNormalLFIntegrator, _p_mfem__BoundaryNormalLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__BoundaryLFIntegrator, _p_mfem__BoundaryLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__DomainLFGradIntegrator, _p_mfem__DomainLFGradIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__DomainLFIntegrator, _p_mfem__DomainLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__LinearFormIntegrator, 0, 0, 0},  {&_swigt__p_mfem__DeltaLFIntegrator, _p_mfem__DeltaLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__BoundaryFlowIntegrator, _p_mfem__BoundaryFlowIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__DGDirichletLFIntegrator, _p_mfem__DGDirichletLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__DGElasticityDirichletLFIntegrator, _p_mfem__DGElasticityDirichletLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorQuadratureLFIntegrator, _p_mfem__VectorQuadratureLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__QuadratureLFIntegrator, _p_mfem__QuadratureLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MatrixVectorProductCoefficient[] = {  {&_swigt__p_mfem__MatrixVectorProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__OperatorHandle[] = {  {&_swigt__p_mfem__OperatorHandle, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Refinement[] = {  {&_swigt__p_mfem__Refinement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorPyCoefficientBase[] = {{&_swigt__p_mfem__VectorPyCoefficientBase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorQuadratureFunctionCoefficient[] = {{&_swigt__p_mfem__VectorQuadratureFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorCrossProductCoefficient[] = {{&_swigt__p_mfem__VectorCrossProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__NormalizedVectorCoefficient[] = {{&_swigt__p_mfem__NormalizedVectorCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ScalarVectorProductCoefficient[] = {{&_swigt__p_mfem__ScalarVectorProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorSumCoefficient[] = {{&_swigt__p_mfem__VectorSumCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorRestrictedCoefficient[] = {{&_swigt__p_mfem__VectorRestrictedCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorDeltaCoefficient[] = {{&_swigt__p_mfem__VectorDeltaCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__CurlGridFunctionCoefficient[] = {{&_swigt__p_mfem__CurlGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__GradientGridFunctionCoefficient[] = {{&_swigt__p_mfem__GradientGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorGridFunctionCoefficient[] = {{&_swigt__p_mfem__VectorGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorArrayCoefficient[] = {{&_swigt__p_mfem__VectorArrayCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorFunctionCoefficient[] = {{&_swigt__p_mfem__VectorFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorConstantCoefficient[] = {{&_swigt__p_mfem__VectorConstantCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__NodeExtrudeCoefficient[] = {{&_swigt__p_mfem__NodeExtrudeCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorCoefficient[] = {  {&_swigt__p_mfem__VectorPyCoefficientBase, _p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorQuadratureFunctionCoefficient, _p_mfem__VectorQuadratureFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__MatrixVectorProductCoefficient, _p_mfem__MatrixVectorProductCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorCrossProductCoefficient, _p_mfem__VectorCrossProductCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__NormalizedVectorCoefficient, _p_mfem__NormalizedVectorCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__ScalarVectorProductCoefficient, _p_mfem__ScalarVectorProductCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorSumCoefficient, _p_mfem__VectorSumCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorRestrictedCoefficient, _p_mfem__VectorRestrictedCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorDeltaCoefficient, _p_mfem__VectorDeltaCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__CurlGridFunctionCoefficient, _p_mfem__CurlGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__GradientGridFunctionCoefficient, _p_mfem__GradientGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorGridFunctionCoefficient, _p_mfem__VectorGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorArrayCoefficient, _p_mfem__VectorArrayCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorCoefficient, 0, 0, 0},  {&_swigt__p_mfem__VectorFunctionCoefficient, _p_mfem__VectorFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorConstantCoefficient, _p_mfem__VectorConstantCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__NodeExtrudeCoefficient, _p_mfem__NodeExtrudeCoefficientTo_p_mfem__VectorCoefficient, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pyr_t[] = {  {&_swigt__p_pyr_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_size_type[] = {  {&_swigt__p_size_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_RefCoord,
+  _swigc__p_allocator_type,
   _swigc__p_char,
+  _swigc__p_difference_type,
   _swigc__p_double,
   _swigc__p_hex_t,
   _swigc__p_int,
@@ -5221,6 +5360,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__BoundaryNormalLFIntegrator,
   _swigc__p_mfem__BoundaryTangentialLFIntegrator,
   _swigc__p_mfem__ConvectionIntegrator,
+  _swigc__p_mfem__CurlGridFunctionCoefficient,
   _swigc__p_mfem__DGDirichletLFIntegrator,
   _swigc__p_mfem__DGElasticityDirichletLFIntegrator,
   _swigc__p_mfem__DGTraceIntegrator,
@@ -5228,31 +5368,50 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__DomainLFGradIntegrator,
   _swigc__p_mfem__DomainLFIntegrator,
   _swigc__p_mfem__FiniteElementSpace,
+  _swigc__p_mfem__GradientGridFunctionCoefficient,
   _swigc__p_mfem__GridFunction,
+  _swigc__p_mfem__IntegrationPoint,
   _swigc__p_mfem__IntegrationRule,
   _swigc__p_mfem__L2_FECollection,
   _swigc__p_mfem__LinearForm,
   _swigc__p_mfem__LinearFormIntegrator,
   _swigc__p_mfem__MatrixVectorProductCoefficient,
+  _swigc__p_mfem__NodeExtrudeCoefficient,
+  _swigc__p_mfem__NormalizedVectorCoefficient,
   _swigc__p_mfem__OperatorHandle,
   _swigc__p_mfem__QuadratureFunction,
   _swigc__p_mfem__QuadratureLFIntegrator,
+  _swigc__p_mfem__Refinement,
+  _swigc__p_mfem__ScalarVectorProductCoefficient,
   _swigc__p_mfem__Vector,
+  _swigc__p_mfem__VectorArrayCoefficient,
   _swigc__p_mfem__VectorBoundaryFluxLFIntegrator,
   _swigc__p_mfem__VectorBoundaryLFIntegrator,
+  _swigc__p_mfem__VectorCoefficient,
+  _swigc__p_mfem__VectorConstantCoefficient,
+  _swigc__p_mfem__VectorCrossProductCoefficient,
+  _swigc__p_mfem__VectorDeltaCoefficient,
   _swigc__p_mfem__VectorDomainLFIntegrator,
   _swigc__p_mfem__VectorFEBoundaryFluxLFIntegrator,
   _swigc__p_mfem__VectorFEBoundaryTangentLFIntegrator,
   _swigc__p_mfem__VectorFEDomainLFCurlIntegrator,
   _swigc__p_mfem__VectorFEDomainLFDivIntegrator,
   _swigc__p_mfem__VectorFEDomainLFIntegrator,
+  _swigc__p_mfem__VectorFunctionCoefficient,
+  _swigc__p_mfem__VectorGridFunctionCoefficient,
+  _swigc__p_mfem__VectorPyCoefficientBase,
+  _swigc__p_mfem__VectorQuadratureFunctionCoefficient,
   _swigc__p_mfem__VectorQuadratureLFIntegrator,
+  _swigc__p_mfem__VectorRestrictedCoefficient,
+  _swigc__p_mfem__VectorSumCoefficient,
   _swigc__p_pri_t,
   _swigc__p_pyr_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
+  _swigc__p_size_type,
   _swigc__p_tet_t,
   _swigc__p_tri_t,
+  _swigc__p_value_type,
 };
 
 

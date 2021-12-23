@@ -3100,46 +3100,68 @@ namespace Swig {
 #define SWIGTYPE_p_MPI_Comm swig_types[0]
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[1]
 #define SWIGTYPE_p_RefCoord swig_types[2]
-#define SWIGTYPE_p__HYPRE_ExecutionPolicy swig_types[3]
-#define SWIGTYPE_p__HYPRE_MemoryLocation swig_types[4]
-#define SWIGTYPE_p_char swig_types[5]
-#define SWIGTYPE_p_double swig_types[6]
-#define SWIGTYPE_p_hex_t swig_types[7]
-#define SWIGTYPE_p_int swig_types[8]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[9]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Embedding_t swig_types[10]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t swig_types[11]
-#define SWIGTYPE_p_mfem__CoarseFineTransformations swig_types[12]
-#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[13]
-#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[14]
-#define SWIGTYPE_p_mfem__DenseTensor swig_types[15]
-#define SWIGTYPE_p_mfem__Embedding swig_types[16]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[17]
-#define SWIGTYPE_p_mfem__HypreParVector swig_types[18]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[19]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[20]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[21]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[22]
-#define SWIGTYPE_p_mfem__MemoryT_mfem__Refinement_t swig_types[23]
-#define SWIGTYPE_p_mfem__Mesh swig_types[24]
-#define SWIGTYPE_p_mfem__NCMesh swig_types[25]
-#define SWIGTYPE_p_mfem__NCMesh__MeshId swig_types[26]
-#define SWIGTYPE_p_mfem__NCMesh__NCList swig_types[27]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[28]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[29]
-#define SWIGTYPE_p_mfem__Refinement swig_types[30]
-#define SWIGTYPE_p_mfem__STable swig_types[31]
-#define SWIGTYPE_p_mfem__Table swig_types[32]
-#define SWIGTYPE_p_mfem__Vector swig_types[33]
-#define SWIGTYPE_p_p_mfem__Refinement swig_types[34]
-#define SWIGTYPE_p_pri_t swig_types[35]
-#define SWIGTYPE_p_pyr_t swig_types[36]
-#define SWIGTYPE_p_quad_t swig_types[37]
-#define SWIGTYPE_p_seg_t swig_types[38]
-#define SWIGTYPE_p_tet_t swig_types[39]
-#define SWIGTYPE_p_tri_t swig_types[40]
-static swig_type_info *swig_types[42];
-static swig_module_info swig_module = {swig_types, 41, 0, 0, 0, 0};
+#define SWIGTYPE_p_Refinement swig_types[3]
+#define SWIGTYPE_p__HYPRE_ExecutionPolicy swig_types[4]
+#define SWIGTYPE_p__HYPRE_MemoryLocation swig_types[5]
+#define SWIGTYPE_p_allocator_type swig_types[6]
+#define SWIGTYPE_p_char swig_types[7]
+#define SWIGTYPE_p_difference_type swig_types[8]
+#define SWIGTYPE_p_double swig_types[9]
+#define SWIGTYPE_p_hex_t swig_types[10]
+#define SWIGTYPE_p_int swig_types[11]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[12]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Embedding_t swig_types[13]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t swig_types[14]
+#define SWIGTYPE_p_mfem__CoarseFineTransformations swig_types[15]
+#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[16]
+#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[17]
+#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[18]
+#define SWIGTYPE_p_mfem__DenseTensor swig_types[19]
+#define SWIGTYPE_p_mfem__Embedding swig_types[20]
+#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[21]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[22]
+#define SWIGTYPE_p_mfem__HypreParVector swig_types[23]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[24]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[25]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[26]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[27]
+#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[28]
+#define SWIGTYPE_p_mfem__MemoryT_mfem__Refinement_t swig_types[29]
+#define SWIGTYPE_p_mfem__Mesh swig_types[30]
+#define SWIGTYPE_p_mfem__NCMesh swig_types[31]
+#define SWIGTYPE_p_mfem__NCMesh__MeshId swig_types[32]
+#define SWIGTYPE_p_mfem__NCMesh__NCList swig_types[33]
+#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[34]
+#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[35]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[36]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[37]
+#define SWIGTYPE_p_mfem__Refinement swig_types[38]
+#define SWIGTYPE_p_mfem__STable swig_types[39]
+#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[40]
+#define SWIGTYPE_p_mfem__Table swig_types[41]
+#define SWIGTYPE_p_mfem__Vector swig_types[42]
+#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[43]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[44]
+#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[45]
+#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[46]
+#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[47]
+#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[48]
+#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[49]
+#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[50]
+#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[51]
+#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[52]
+#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[53]
+#define SWIGTYPE_p_p_mfem__Refinement swig_types[54]
+#define SWIGTYPE_p_pri_t swig_types[55]
+#define SWIGTYPE_p_pyr_t swig_types[56]
+#define SWIGTYPE_p_quad_t swig_types[57]
+#define SWIGTYPE_p_seg_t swig_types[58]
+#define SWIGTYPE_p_size_type swig_types[59]
+#define SWIGTYPE_p_tet_t swig_types[60]
+#define SWIGTYPE_p_tri_t swig_types[61]
+#define SWIGTYPE_p_value_type swig_types[62]
+static swig_type_info *swig_types[64];
+static swig_module_info swig_module = {swig_types, 63, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3251,7 +3273,8 @@ namespace swig {
 #include "general/zstr.hpp"
 #include "fem/gridfunc.hpp"
 #include "fem/bilinearform.hpp"  
-#include "numpy/arrayobject.h"      
+#include "numpy/arrayobject.h"
+#include "../common/pycoefficient.hpp"  
 
 
 SWIGINTERNINLINE PyObject*
@@ -3704,17 +3727,63 @@ SWIGINTERNINLINE PyObject*
 
   #define SWIG_From_long   PyInt_FromLong 
 
+SWIGINTERN mfem::Array< mfem::Refinement > *new_mfem_Array_Sl_mfem_Refinement_Sg___SWIG_6(void *List_or_Tuple,mfem::Refinement *_unused){
+    /*
+    This method is wrapped to recived tuple or list to create
+    Array object
+    */
+    mfem::Array <mfem::Refinement>  *arr;
+    arr = new mfem::Array<mfem::Refinement>(*(int*)List_or_Tuple);    
+    return arr;
+  }
 SWIGINTERN void mfem_Array_Sl_mfem_Refinement_Sg____setitem__(mfem::Array< mfem::Refinement > *self,int i,mfem::Refinement const v){
     (* self)[i] = v;
     }
-SWIGINTERN mfem::Refinement const &mfem_Array_Sl_mfem_Refinement_Sg____getitem__(mfem::Array< mfem::Refinement > const *self,int const i){
-    return (* self)[i];
-  }
 SWIGINTERN void mfem_Array_Sl_mfem_Refinement_Sg__Assign__SWIG_1(mfem::Array< mfem::Refinement > *self,mfem::Refinement const &a){
      *self = a;
   }
 SWIGINTERN void mfem_Array_Sl_mfem_Refinement_Sg__FakeToList(mfem::Array< mfem::Refinement > *self){}
 SWIGINTERN void mfem_Array_Sl_mfem_Refinement_Sg____iter__(mfem::Array< mfem::Refinement > *self){}
+SWIGINTERN PyObject *mfem_Array_Sl_mfem_Refinement_Sg____getitem__(mfem::Array< mfem::Refinement > *self,PyObject *param){
+    int len = self->Size();    
+    if (PySlice_Check(param)) {
+        long start = 0, stop = 0, step = 0, slicelength = 0;
+        int check;
+
+	//%#ifdef TARGET_PY3
+   	check = PySlice_GetIndicesEx(param, len, &start, &stop, &step,
+				     &slicelength);
+        //%#else
+   	//check = PySlice_GetIndicesEx((PySliceObject*)param, len, &start, &stop, &step,
+	//			     &slicelength);
+	//%#endif
+
+	if (check == -1) {
+            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<T> failed.");
+            return NULL; 
+	}
+	if (step == 1) {
+	  mfem::Array<mfem::Refinement> *vec;
+	  vec = new mfem::Array<mfem::Refinement>(self->GetData() +  start, slicelength);
+	  return SWIG_NewPointerObj(SWIG_as_voidptr(vec), SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 1);  
+	} else {
+            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<T> with stride>1 not supported.");
+	    return NULL;
+	}
+    } else {
+        PyErr_Clear();
+        long idx = PyInt_AsLong(param);
+        if (PyErr_Occurred()) {
+           PyErr_SetString(PyExc_ValueError, "Argument must be either int or slice");
+            return NULL; 	
+        }
+        if (idx >= 0){
+          return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](idx))), SWIGTYPE_p_Refinement, 1);	  
+        } else {
+	  return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](len+idx))), SWIGTYPE_p_Refinement, 1);
+	}
+    }
+  }
 
 
 /* ---------------------------------------------------
@@ -6685,9 +6754,6 @@ SWIGINTERN PyObject *_wrap_NCMesh_Print(PyObject *SWIGUNUSEDPARM(self), PyObject
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -6733,6 +6799,9 @@ SWIGINTERN PyObject *_wrap_NCMesh_Print(PyObject *SWIGUNUSEDPARM(self), PyObject
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -6748,6 +6817,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -6982,16 +7054,14 @@ fail:
 SWIGINTERN PyObject *_wrap_new_RefinementArray__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::MemoryType arg1 ;
-  int val1 ;
-  int ecode1 = 0 ;
   mfem::Array< mfem::Refinement > *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_RefinementArray" "', argument " "1"" of type '" "mfem::MemoryType""'");
-  } 
-  arg1 = static_cast< mfem::MemoryType >(val1);
+  {
+    PyObject* k = PyObject_GetAttrString(swig_obj[0], "value");
+    int i = (int)PyLong_AsLong(k);
+    arg1 = static_cast< mfem::MemoryType >(i);
+  }
   {
     try {
       result = (mfem::Array< mfem::Refinement > *)new mfem::Array< mfem::Refinement >(arg1); 
@@ -7048,8 +7118,6 @@ SWIGINTERN PyObject *_wrap_new_RefinementArray__SWIG_3(PyObject *SWIGUNUSEDPARM(
   PyObject *resultobj = 0;
   int arg1 ;
   mfem::MemoryType arg2 ;
-  int val2 ;
-  int ecode2 = 0 ;
   mfem::Array< mfem::Refinement > *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
@@ -7059,11 +7127,11 @@ SWIGINTERN PyObject *_wrap_new_RefinementArray__SWIG_3(PyObject *SWIGUNUSEDPARM(
     };  
     arg1 = PyArray_PyIntAsInt(swig_obj[0]);
   }
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_RefinementArray" "', argument " "2"" of type '" "mfem::MemoryType""'");
-  } 
-  arg2 = static_cast< mfem::MemoryType >(val2);
+  {
+    PyObject* k = PyObject_GetAttrString(swig_obj[1], "value");
+    int i = (int)PyLong_AsLong(k);
+    arg2 = static_cast< mfem::MemoryType >(i);
+  }
   {
     try {
       result = (mfem::Array< mfem::Refinement > *)new mfem::Array< mfem::Refinement >(arg1,arg2); 
@@ -7157,102 +7225,6 @@ SWIGINTERN PyObject *_wrap_new_RefinementArray__SWIG_5(PyObject *SWIGUNUSEDPARM(
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_RefinementArray(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_RefinementArray", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 0) {
-    return _wrap_new_RefinementArray__SWIG_0(self, argc, argv);
-  }
-  if (argc == 1) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_RefinementArray__SWIG_5(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    {
-      int res = SWIG_AsVal_int(argv[0], NULL);
-      _v = SWIG_CheckState(res);
-    }
-    if (_v) {
-      return _wrap_new_RefinementArray__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    {
-      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
-        PyErr_Clear();
-        _v = 0;
-      } else {
-        _v = 1;    
-      }
-    }
-    if (_v) {
-      return _wrap_new_RefinementArray__SWIG_2(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Refinement, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        return _wrap_new_RefinementArray__SWIG_4(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    {
-      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
-        PyErr_Clear();
-        _v = 0;
-      } else {
-        _v = 1;    
-      }
-    }
-    if (_v) {
-      {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        return _wrap_new_RefinementArray__SWIG_3(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_RefinementArray'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Array< mfem::Refinement >::Array()\n"
-    "    mfem::Array< mfem::Refinement >::Array(mfem::MemoryType)\n"
-    "    mfem::Array< mfem::Refinement >::Array(int)\n"
-    "    mfem::Array< mfem::Refinement >::Array(int,mfem::MemoryType)\n"
-    "    mfem::Array< mfem::Refinement >::Array(mfem::Refinement *,int)\n"
-    "    mfem::Array< mfem::Refinement >::Array(mfem::Array< mfem::Refinement > const &)\n");
-  return 0;
 }
 
 
@@ -7808,8 +7780,6 @@ SWIGINTERN PyObject *_wrap_RefinementArray_SetSize__SWIG_2(PyObject *SWIGUNUSEDP
   mfem::MemoryType arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
@@ -7823,11 +7793,11 @@ SWIGINTERN PyObject *_wrap_RefinementArray_SetSize__SWIG_2(PyObject *SWIGUNUSEDP
     };  
     arg2 = PyArray_PyIntAsInt(swig_obj[1]);
   }
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "RefinementArray_SetSize" "', argument " "3"" of type '" "mfem::MemoryType""'");
-  } 
-  arg3 = static_cast< mfem::MemoryType >(val3);
+  {
+    PyObject* k = PyObject_GetAttrString(swig_obj[2], "value");
+    int i = (int)PyLong_AsLong(k);
+    arg3 = static_cast< mfem::MemoryType >(i);
+  }
   {
     try {
       (arg1)->SetSize(arg2,arg3); 
@@ -7914,8 +7884,23 @@ SWIGINTERN PyObject *_wrap_RefinementArray_SetSize(PyObject *self, PyObject *arg
       }
       if (_v) {
         {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          _v = 0;
+          PyObject* module = PyImport_ImportModule("enum");
+          if (!module){
+            _v = 0;
+          } else {
+            PyObject* cls = PyObject_GetAttrString(module, "IntEnum");
+            if (!cls){
+              _v = 0;            
+            } else {
+              int check = PyObject_IsInstance(argv[2], cls);
+              if (check) {
+                _v = 1;
+              }
+              Py_DECREF(cls);	 
+            }
+            Py_DECREF(module);
+          }
         }
         if (_v) {
           return _wrap_RefinementArray_SetSize__SWIG_2(self, argc, argv);
@@ -9222,6 +9207,205 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_new_RefinementArray__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  void *arg1 = (void *) 0 ;
+  mfem::Refinement *arg2 = (mfem::Refinement *) 0 ;
+  mfem::Refinement *temp_ptr1 ;
+  int size1 ;
+  bool is_tuple1 = false ;
+  mfem::Array< mfem::Refinement > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    if (!PyList_Check(swig_obj[0])) {
+      if (!PyTuple_Check(swig_obj[0])) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
+        return NULL;
+      } else {
+        is_tuple1 = true;
+      }
+    }
+    size1 = (is_tuple1) ? PyTuple_Size(swig_obj[0]) : PyList_Size(swig_obj[0]);
+    arg1 = (void *) & size1;
+  }
+  {
+    try {
+      result = (mfem::Array< mfem::Refinement > *)new_mfem_Array_Sl_mfem_Refinement_Sg___SWIG_6(arg1,arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, SWIG_POINTER_NEW |  0 );
+  {
+    //PyObject *name = PyUnicode_FromString("__setitem__");  
+    for (int i = 0; i < size1; i++) {
+      PyObject *s = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], i) : PyList_GetItem(swig_obj[0],i);
+      if (SWIG_ConvertPtr(s, (void **) &temp_ptr1,
+          SWIGTYPE_p_mfem__Refinement, 0 |0) == -1) {
+        PyErr_SetString(PyExc_ValueError, "List items must be mfem::Refinement");
+      } else {
+        (* result)[i] =  *temp_ptr1;    
+      }
+    }
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_RefinementArray(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_RefinementArray", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_RefinementArray__SWIG_0(self, argc, argv);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, SWIG_POINTER_NO_NULL | 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_RefinementArray__SWIG_5(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
+    }
+    if (_v) {
+      return _wrap_new_RefinementArray__SWIG_2(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      _v = 0;
+      PyObject* module = PyImport_ImportModule("enum");
+      if (!module){
+        _v = 0;
+      } else {
+        PyObject* cls = PyObject_GetAttrString(module, "IntEnum");
+        if (!cls){
+          _v = 0;            
+        } else {
+          int check = PyObject_IsInstance(argv[0], cls);
+          if (check) {
+            _v = 1;
+          }
+          Py_DECREF(cls);	 
+        }
+        Py_DECREF(module);
+      }
+    }
+    if (_v) {
+      return _wrap_new_RefinementArray__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      _v = 0;
+      if (PyList_Check(argv[0])){
+        _v = 1;
+      }
+      if (PyTuple_Check(argv[0])){
+        _v = 1;
+      }
+    }
+    if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_RefinementArray__SWIG_6(self, argc, argv);
+      }
+      return _wrap_new_RefinementArray__SWIG_6(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Refinement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_new_RefinementArray__SWIG_4(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
+    }
+    if (_v) {
+      {
+        _v = 0;
+        PyObject* module = PyImport_ImportModule("enum");
+        if (!module){
+          _v = 0;
+        } else {
+          PyObject* cls = PyObject_GetAttrString(module, "IntEnum");
+          if (!cls){
+            _v = 0;            
+          } else {
+            int check = PyObject_IsInstance(argv[1], cls);
+            if (check) {
+              _v = 1;
+            }
+            Py_DECREF(cls);	 
+          }
+          Py_DECREF(module);
+        }
+      }
+      if (_v) {
+        return _wrap_new_RefinementArray__SWIG_3(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_RefinementArray'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< mfem::Refinement >::Array()\n"
+    "    mfem::Array< mfem::Refinement >::Array(mfem::MemoryType)\n"
+    "    mfem::Array< mfem::Refinement >::Array(int)\n"
+    "    mfem::Array< mfem::Refinement >::Array(int,mfem::MemoryType)\n"
+    "    mfem::Array< mfem::Refinement >::Array(mfem::Refinement *,int)\n"
+    "    mfem::Array< mfem::Refinement >::Array(mfem::Array< mfem::Refinement > const &)\n"
+    "    mfem::Array< mfem::Refinement >::Array(void *,mfem::Refinement *)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_RefinementArray___setitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
@@ -9277,51 +9461,6 @@ SWIGINTERN PyObject *_wrap_RefinementArray___setitem__(PyObject *SWIGUNUSEDPARM(
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_RefinementArray___getitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"i",  NULL 
-  };
-  mfem::Refinement *result = 0 ;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:RefinementArray___getitem__", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray___getitem__" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(obj1);
-  }
-  {
-    try {
-      result = (mfem::Refinement *) &mfem_Array_Sl_mfem_Refinement_Sg____getitem__((mfem::Array< mfem::Refinement > const *)arg1,arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Refinement, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -9484,6 +9623,46 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_RefinementArray___getitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  PyObject *arg2 = (PyObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"param",  NULL 
+  };
+  PyObject *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:RefinementArray___getitem__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray___getitem__" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  arg2 = obj1;
+  {
+    try {
+      result = (PyObject *)mfem_Array_Sl_mfem_Refinement_Sg____getitem__(arg1,arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = result;
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *RefinementArray_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
@@ -9583,14 +9762,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "NCMesh_PrintMemoryDetail", _wrap_NCMesh_PrintMemoryDetail, METH_O, "NCMesh_PrintMemoryDetail(NCMesh self) -> int"},
 	 { "NCMesh_swigregister", NCMesh_swigregister, METH_O, NULL},
 	 { "NCMesh_swiginit", NCMesh_swiginit, METH_VARARGS, NULL},
-	 { "new_RefinementArray", _wrap_new_RefinementArray, METH_VARARGS, "\n"
-		"RefinementArray()\n"
-		"RefinementArray(mfem::MemoryType mt)\n"
-		"RefinementArray(int asize)\n"
-		"RefinementArray(int asize, mfem::MemoryType mt)\n"
-		"RefinementArray(Refinement data_, int asize)\n"
-		"new_RefinementArray(RefinementArray src) -> RefinementArray\n"
-		""},
 	 { "delete_RefinementArray", _wrap_delete_RefinementArray, METH_O, "delete_RefinementArray(RefinementArray self)"},
 	 { "RefinementArray_GetData", _wrap_RefinementArray_GetData, METH_VARARGS, "\n"
 		"RefinementArray_GetData(RefinementArray self) -> Refinement\n"
@@ -9646,14 +9817,23 @@ static PyMethodDef SwigMethods[] = {
 	 { "RefinementArray_HostWrite", _wrap_RefinementArray_HostWrite, METH_O, "RefinementArray_HostWrite(RefinementArray self) -> Refinement"},
 	 { "RefinementArray_ReadWrite", (PyCFunction)(void(*)(void))_wrap_RefinementArray_ReadWrite, METH_VARARGS|METH_KEYWORDS, "RefinementArray_ReadWrite(RefinementArray self, bool on_dev=True) -> Refinement"},
 	 { "RefinementArray_HostReadWrite", _wrap_RefinementArray_HostReadWrite, METH_O, "RefinementArray_HostReadWrite(RefinementArray self) -> Refinement"},
+	 { "new_RefinementArray", _wrap_new_RefinementArray, METH_VARARGS, "\n"
+		"RefinementArray()\n"
+		"RefinementArray(mfem::MemoryType mt)\n"
+		"RefinementArray(int asize)\n"
+		"RefinementArray(int asize, mfem::MemoryType mt)\n"
+		"RefinementArray(Refinement data_, int asize)\n"
+		"RefinementArray(RefinementArray src)\n"
+		"new_RefinementArray(void * List_or_Tuple) -> RefinementArray\n"
+		""},
 	 { "RefinementArray___setitem__", (PyCFunction)(void(*)(void))_wrap_RefinementArray___setitem__, METH_VARARGS|METH_KEYWORDS, "RefinementArray___setitem__(RefinementArray self, int i, Refinement v)"},
-	 { "RefinementArray___getitem__", (PyCFunction)(void(*)(void))_wrap_RefinementArray___getitem__, METH_VARARGS|METH_KEYWORDS, "RefinementArray___getitem__(RefinementArray self, int const i) -> Refinement"},
 	 { "RefinementArray_Assign", _wrap_RefinementArray_Assign, METH_VARARGS, "\n"
 		"RefinementArray_Assign(RefinementArray self, Refinement arg2)\n"
 		"RefinementArray_Assign(RefinementArray self, Refinement a)\n"
 		""},
 	 { "RefinementArray_FakeToList", _wrap_RefinementArray_FakeToList, METH_O, "RefinementArray_FakeToList(RefinementArray self)"},
 	 { "RefinementArray___iter__", _wrap_RefinementArray___iter__, METH_O, "RefinementArray___iter__(RefinementArray self)"},
+	 { "RefinementArray___getitem__", (PyCFunction)(void(*)(void))_wrap_RefinementArray___getitem__, METH_VARARGS|METH_KEYWORDS, "RefinementArray___getitem__(RefinementArray self, PyObject * param) -> PyObject *"},
 	 { "RefinementArray_swigregister", RefinementArray_swigregister, METH_O, NULL},
 	 { "RefinementArray_swiginit", RefinementArray_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
@@ -9747,14 +9927,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "NCMesh_PrintMemoryDetail", _wrap_NCMesh_PrintMemoryDetail, METH_O, "PrintMemoryDetail(NCMesh self) -> int"},
 	 { "NCMesh_swigregister", NCMesh_swigregister, METH_O, NULL},
 	 { "NCMesh_swiginit", NCMesh_swiginit, METH_VARARGS, NULL},
-	 { "new_RefinementArray", _wrap_new_RefinementArray, METH_VARARGS, "\n"
-		"RefinementArray()\n"
-		"RefinementArray(mfem::MemoryType mt)\n"
-		"RefinementArray(int asize)\n"
-		"RefinementArray(int asize, mfem::MemoryType mt)\n"
-		"RefinementArray(Refinement data_, int asize)\n"
-		"new_RefinementArray(RefinementArray src) -> RefinementArray\n"
-		""},
 	 { "delete_RefinementArray", _wrap_delete_RefinementArray, METH_O, "delete_RefinementArray(RefinementArray self)"},
 	 { "RefinementArray_GetData", _wrap_RefinementArray_GetData, METH_VARARGS, "\n"
 		"GetData(RefinementArray self) -> Refinement\n"
@@ -9810,14 +9982,23 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "RefinementArray_HostWrite", _wrap_RefinementArray_HostWrite, METH_O, "HostWrite(RefinementArray self) -> Refinement"},
 	 { "RefinementArray_ReadWrite", (PyCFunction)(void(*)(void))_wrap_RefinementArray_ReadWrite, METH_VARARGS|METH_KEYWORDS, "ReadWrite(RefinementArray self, bool on_dev=True) -> Refinement"},
 	 { "RefinementArray_HostReadWrite", _wrap_RefinementArray_HostReadWrite, METH_O, "HostReadWrite(RefinementArray self) -> Refinement"},
+	 { "new_RefinementArray", _wrap_new_RefinementArray, METH_VARARGS, "\n"
+		"RefinementArray()\n"
+		"RefinementArray(mfem::MemoryType mt)\n"
+		"RefinementArray(int asize)\n"
+		"RefinementArray(int asize, mfem::MemoryType mt)\n"
+		"RefinementArray(Refinement data_, int asize)\n"
+		"RefinementArray(RefinementArray src)\n"
+		"new_RefinementArray(void * List_or_Tuple) -> RefinementArray\n"
+		""},
 	 { "RefinementArray___setitem__", (PyCFunction)(void(*)(void))_wrap_RefinementArray___setitem__, METH_VARARGS|METH_KEYWORDS, "__setitem__(RefinementArray self, int i, Refinement v)"},
-	 { "RefinementArray___getitem__", (PyCFunction)(void(*)(void))_wrap_RefinementArray___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(RefinementArray self, int const i) -> Refinement"},
 	 { "RefinementArray_Assign", _wrap_RefinementArray_Assign, METH_VARARGS, "\n"
 		"Assign(RefinementArray self, Refinement arg2)\n"
 		"Assign(RefinementArray self, Refinement a)\n"
 		""},
 	 { "RefinementArray_FakeToList", _wrap_RefinementArray_FakeToList, METH_O, "FakeToList(RefinementArray self)"},
 	 { "RefinementArray___iter__", _wrap_RefinementArray___iter__, METH_O, "__iter__(RefinementArray self)"},
+	 { "RefinementArray___getitem__", (PyCFunction)(void(*)(void))_wrap_RefinementArray___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(RefinementArray self, PyObject * param) -> PyObject *"},
 	 { "RefinementArray_swigregister", RefinementArray_swigregister, METH_O, NULL},
 	 { "RefinementArray_swiginit", RefinementArray_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
@@ -9826,6 +10007,54 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
+static void *_p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *) (mfem::VectorFunctionCoefficient *) ((mfem::VectorPyCoefficientBase *) x));
+}
+static void *_p_mfem__VectorQuadratureFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorQuadratureFunctionCoefficient *) x));
+}
+static void *_p_mfem__MatrixVectorProductCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::MatrixVectorProductCoefficient *) x));
+}
+static void *_p_mfem__VectorCrossProductCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorCrossProductCoefficient *) x));
+}
+static void *_p_mfem__NormalizedVectorCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::NormalizedVectorCoefficient *) x));
+}
+static void *_p_mfem__ScalarVectorProductCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::ScalarVectorProductCoefficient *) x));
+}
+static void *_p_mfem__VectorSumCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorSumCoefficient *) x));
+}
+static void *_p_mfem__VectorRestrictedCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorRestrictedCoefficient *) x));
+}
+static void *_p_mfem__VectorDeltaCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorDeltaCoefficient *) x));
+}
+static void *_p_mfem__CurlGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::CurlGridFunctionCoefficient *) x));
+}
+static void *_p_mfem__GradientGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::GradientGridFunctionCoefficient *) x));
+}
+static void *_p_mfem__VectorGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorGridFunctionCoefficient *) x));
+}
+static void *_p_mfem__VectorArrayCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorArrayCoefficient *) x));
+}
+static void *_p_mfem__VectorFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorFunctionCoefficient *) x));
+}
+static void *_p_mfem__VectorConstantCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorConstantCoefficient *) x));
+}
+static void *_p_mfem__NodeExtrudeCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::NodeExtrudeCoefficient *) x));
+}
 static void *_p_mfem__STableTo_p_mfem__Table(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Table *)  ((mfem::STable *) x));
 }
@@ -9844,9 +10073,12 @@ static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(n
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Refinement = {"_p_Refinement", "Refinement *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p__HYPRE_ExecutionPolicy = {"_p__HYPRE_ExecutionPolicy", "enum _HYPRE_ExecutionPolicy *|HYPRE_ExecutionPolicy *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p__HYPRE_MemoryLocation = {"_p__HYPRE_MemoryLocation", "enum _HYPRE_MemoryLocation *|HYPRE_MemoryLocation *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "HYPRE_Real *|HYPRE_Complex *|double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *|HYPRE_BigInt *", 0, 0, (void*)0, 0};
@@ -9859,6 +10091,7 @@ static swig_type_info _swigt__p_mfem__DGTraceIntegrator = {"_p_mfem__DGTraceInte
 static swig_type_info _swigt__p_mfem__DenseTensor = {"_p_mfem__DenseTensor", "mfem::DenseTensor *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Embedding = {"_p_mfem__Embedding", "mfem::Embedding *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__IntegrationPoint = {"_p_mfem__IntegrationPoint", "mfem::IntegrationPoint *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__L2_FECollection = {"_p_mfem__L2_FECollection", "mfem::L2_FECollection *|mfem::DG_FECollection *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__MatrixVectorProductCoefficient = {"_p_mfem__MatrixVectorProductCoefficient", "mfem::MatrixVectorProductCoefficient *|mfem::MatVecCoefficient *", 0, 0, (void*)0, 0};
@@ -9875,21 +10108,42 @@ static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector
 static swig_type_info _swigt__p_mfem__HypreParVector = {"_p_mfem__HypreParVector", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorCoefficient = {"_p_mfem__VectorCoefficient", "mfem::VectorCoefficient *|mfem::DiagonalMatrixCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__VectorPyCoefficientBase = {"_p_mfem__VectorPyCoefficientBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorQuadratureFunctionCoefficient = {"_p_mfem__VectorQuadratureFunctionCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorCrossProductCoefficient = {"_p_mfem__VectorCrossProductCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__NormalizedVectorCoefficient = {"_p_mfem__NormalizedVectorCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ScalarVectorProductCoefficient = {"_p_mfem__ScalarVectorProductCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorSumCoefficient = {"_p_mfem__VectorSumCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorRestrictedCoefficient = {"_p_mfem__VectorRestrictedCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorDeltaCoefficient = {"_p_mfem__VectorDeltaCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__CurlGridFunctionCoefficient = {"_p_mfem__CurlGridFunctionCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__GradientGridFunctionCoefficient = {"_p_mfem__GradientGridFunctionCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorGridFunctionCoefficient = {"_p_mfem__VectorGridFunctionCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorArrayCoefficient = {"_p_mfem__VectorArrayCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorFunctionCoefficient = {"_p_mfem__VectorFunctionCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorConstantCoefficient = {"_p_mfem__VectorConstantCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__NodeExtrudeCoefficient = {"_p_mfem__NodeExtrudeCoefficient", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__Refinement = {"_p_p_mfem__Refinement", "mfem::Refinement **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_pyr_t = {"_p_pyr_t", "pyr_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_size_type = {"_p_size_type", "size_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_MPI_Comm,
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_RefCoord,
+  &_swigt__p_Refinement,
   &_swigt__p__HYPRE_ExecutionPolicy,
   &_swigt__p__HYPRE_MemoryLocation,
+  &_swigt__p_allocator_type,
   &_swigt__p_char,
+  &_swigt__p_difference_type,
   &_swigt__p_double,
   &_swigt__p_hex_t,
   &_swigt__p_int,
@@ -9898,11 +10152,14 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__ArrayT_mfem__Refinement_t,
   &_swigt__p_mfem__CoarseFineTransformations,
   &_swigt__p_mfem__ConvectionIntegrator,
+  &_swigt__p_mfem__CurlGridFunctionCoefficient,
   &_swigt__p_mfem__DGTraceIntegrator,
   &_swigt__p_mfem__DenseTensor,
   &_swigt__p_mfem__Embedding,
+  &_swigt__p_mfem__GradientGridFunctionCoefficient,
   &_swigt__p_mfem__GridFunction,
   &_swigt__p_mfem__HypreParVector,
+  &_swigt__p_mfem__IntegrationPoint,
   &_swigt__p_mfem__IntegrationRule,
   &_swigt__p_mfem__L2_FECollection,
   &_swigt__p_mfem__LinearForm,
@@ -9912,27 +10169,46 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__NCMesh,
   &_swigt__p_mfem__NCMesh__MeshId,
   &_swigt__p_mfem__NCMesh__NCList,
+  &_swigt__p_mfem__NodeExtrudeCoefficient,
+  &_swigt__p_mfem__NormalizedVectorCoefficient,
   &_swigt__p_mfem__OperatorHandle,
   &_swigt__p_mfem__QuadratureFunction,
   &_swigt__p_mfem__Refinement,
   &_swigt__p_mfem__STable,
+  &_swigt__p_mfem__ScalarVectorProductCoefficient,
   &_swigt__p_mfem__Table,
   &_swigt__p_mfem__Vector,
+  &_swigt__p_mfem__VectorArrayCoefficient,
+  &_swigt__p_mfem__VectorCoefficient,
+  &_swigt__p_mfem__VectorConstantCoefficient,
+  &_swigt__p_mfem__VectorCrossProductCoefficient,
+  &_swigt__p_mfem__VectorDeltaCoefficient,
+  &_swigt__p_mfem__VectorFunctionCoefficient,
+  &_swigt__p_mfem__VectorGridFunctionCoefficient,
+  &_swigt__p_mfem__VectorPyCoefficientBase,
+  &_swigt__p_mfem__VectorQuadratureFunctionCoefficient,
+  &_swigt__p_mfem__VectorRestrictedCoefficient,
+  &_swigt__p_mfem__VectorSumCoefficient,
   &_swigt__p_p_mfem__Refinement,
   &_swigt__p_pri_t,
   &_swigt__p_pyr_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
+  &_swigt__p_size_type,
   &_swigt__p_tet_t,
   &_swigt__p_tri_t,
+  &_swigt__p_value_type,
 };
 
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Refinement[] = {  {&_swigt__p_Refinement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p__HYPRE_ExecutionPolicy[] = {  {&_swigt__p__HYPRE_ExecutionPolicy, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p__HYPRE_MemoryLocation[] = {  {&_swigt__p__HYPRE_MemoryLocation, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
@@ -9945,6 +10221,7 @@ static swig_cast_info _swigc__p_mfem__DGTraceIntegrator[] = {  {&_swigt__p_mfem_
 static swig_cast_info _swigc__p_mfem__DenseTensor[] = {  {&_swigt__p_mfem__DenseTensor, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Embedding[] = {  {&_swigt__p_mfem__Embedding, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__IntegrationPoint[] = {  {&_swigt__p_mfem__IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2_FECollection[] = {  {&_swigt__p_mfem__L2_FECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MatrixVectorProductCoefficient[] = {  {&_swigt__p_mfem__MatrixVectorProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
@@ -9961,21 +10238,42 @@ static swig_cast_info _swigc__p_mfem__HypreParVector[] = {{&_swigt__p_mfem__Hypr
 static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__HypreParVector, _p_mfem__HypreParVectorTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorPyCoefficientBase[] = {{&_swigt__p_mfem__VectorPyCoefficientBase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorQuadratureFunctionCoefficient[] = {{&_swigt__p_mfem__VectorQuadratureFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorCrossProductCoefficient[] = {{&_swigt__p_mfem__VectorCrossProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__NormalizedVectorCoefficient[] = {{&_swigt__p_mfem__NormalizedVectorCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ScalarVectorProductCoefficient[] = {{&_swigt__p_mfem__ScalarVectorProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorSumCoefficient[] = {{&_swigt__p_mfem__VectorSumCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorRestrictedCoefficient[] = {{&_swigt__p_mfem__VectorRestrictedCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorDeltaCoefficient[] = {{&_swigt__p_mfem__VectorDeltaCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__CurlGridFunctionCoefficient[] = {{&_swigt__p_mfem__CurlGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__GradientGridFunctionCoefficient[] = {{&_swigt__p_mfem__GradientGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorGridFunctionCoefficient[] = {{&_swigt__p_mfem__VectorGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorArrayCoefficient[] = {{&_swigt__p_mfem__VectorArrayCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorFunctionCoefficient[] = {{&_swigt__p_mfem__VectorFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorConstantCoefficient[] = {{&_swigt__p_mfem__VectorConstantCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__NodeExtrudeCoefficient[] = {{&_swigt__p_mfem__NodeExtrudeCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorCoefficient[] = {  {&_swigt__p_mfem__VectorPyCoefficientBase, _p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorQuadratureFunctionCoefficient, _p_mfem__VectorQuadratureFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__MatrixVectorProductCoefficient, _p_mfem__MatrixVectorProductCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorCrossProductCoefficient, _p_mfem__VectorCrossProductCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__NormalizedVectorCoefficient, _p_mfem__NormalizedVectorCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__ScalarVectorProductCoefficient, _p_mfem__ScalarVectorProductCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorSumCoefficient, _p_mfem__VectorSumCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorRestrictedCoefficient, _p_mfem__VectorRestrictedCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorDeltaCoefficient, _p_mfem__VectorDeltaCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__CurlGridFunctionCoefficient, _p_mfem__CurlGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__GradientGridFunctionCoefficient, _p_mfem__GradientGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorGridFunctionCoefficient, _p_mfem__VectorGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorArrayCoefficient, _p_mfem__VectorArrayCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorCoefficient, 0, 0, 0},  {&_swigt__p_mfem__VectorFunctionCoefficient, _p_mfem__VectorFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorConstantCoefficient, _p_mfem__VectorConstantCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__NodeExtrudeCoefficient, _p_mfem__NodeExtrudeCoefficientTo_p_mfem__VectorCoefficient, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__Refinement[] = {  {&_swigt__p_p_mfem__Refinement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pyr_t[] = {  {&_swigt__p_pyr_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_size_type[] = {  {&_swigt__p_size_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_MPI_Comm,
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_RefCoord,
+  _swigc__p_Refinement,
   _swigc__p__HYPRE_ExecutionPolicy,
   _swigc__p__HYPRE_MemoryLocation,
+  _swigc__p_allocator_type,
   _swigc__p_char,
+  _swigc__p_difference_type,
   _swigc__p_double,
   _swigc__p_hex_t,
   _swigc__p_int,
@@ -9984,11 +10282,14 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__ArrayT_mfem__Refinement_t,
   _swigc__p_mfem__CoarseFineTransformations,
   _swigc__p_mfem__ConvectionIntegrator,
+  _swigc__p_mfem__CurlGridFunctionCoefficient,
   _swigc__p_mfem__DGTraceIntegrator,
   _swigc__p_mfem__DenseTensor,
   _swigc__p_mfem__Embedding,
+  _swigc__p_mfem__GradientGridFunctionCoefficient,
   _swigc__p_mfem__GridFunction,
   _swigc__p_mfem__HypreParVector,
+  _swigc__p_mfem__IntegrationPoint,
   _swigc__p_mfem__IntegrationRule,
   _swigc__p_mfem__L2_FECollection,
   _swigc__p_mfem__LinearForm,
@@ -9998,19 +10299,35 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__NCMesh,
   _swigc__p_mfem__NCMesh__MeshId,
   _swigc__p_mfem__NCMesh__NCList,
+  _swigc__p_mfem__NodeExtrudeCoefficient,
+  _swigc__p_mfem__NormalizedVectorCoefficient,
   _swigc__p_mfem__OperatorHandle,
   _swigc__p_mfem__QuadratureFunction,
   _swigc__p_mfem__Refinement,
   _swigc__p_mfem__STable,
+  _swigc__p_mfem__ScalarVectorProductCoefficient,
   _swigc__p_mfem__Table,
   _swigc__p_mfem__Vector,
+  _swigc__p_mfem__VectorArrayCoefficient,
+  _swigc__p_mfem__VectorCoefficient,
+  _swigc__p_mfem__VectorConstantCoefficient,
+  _swigc__p_mfem__VectorCrossProductCoefficient,
+  _swigc__p_mfem__VectorDeltaCoefficient,
+  _swigc__p_mfem__VectorFunctionCoefficient,
+  _swigc__p_mfem__VectorGridFunctionCoefficient,
+  _swigc__p_mfem__VectorPyCoefficientBase,
+  _swigc__p_mfem__VectorQuadratureFunctionCoefficient,
+  _swigc__p_mfem__VectorRestrictedCoefficient,
+  _swigc__p_mfem__VectorSumCoefficient,
   _swigc__p_p_mfem__Refinement,
   _swigc__p_pri_t,
   _swigc__p_pyr_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
+  _swigc__p_size_type,
   _swigc__p_tet_t,
   _swigc__p_tri_t,
+  _swigc__p_value_type,
 };
 
 

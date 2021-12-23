@@ -3,7 +3,7 @@
 %{
 #include "numpy/arrayobject.h"
 #include "fem/estimators.hpp"
-#include "pycoefficient.hpp"
+#include "../common/pycoefficient.hpp"
   %}
 // initialization required to return numpy array from SWIG
 %init %{

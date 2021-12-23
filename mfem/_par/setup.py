@@ -9,24 +9,31 @@ print('building paralel version')
 import sys
 import os
 
-
 ddd = os.path.dirname(os.path.abspath(os.path.realpath(__file__)))
 root =  os.path.abspath(os.path.join(ddd, '..', '..'))
 
 sys.path.insert(0, root)
-from  setup_local import *
+from setup_local import *
+
+## remove current directory from path
+print("__file__", os.path.abspath(__file__))
+if '' in sys.path:
+    sys.path.remove('')
+items = [x for x in sys.path if os.path.abspath(x) == os.path.dirname(os.path.abspath(__file__))]
+for x in items:
+    sys.path.remove(x)
+print("sys path", sys.path)
 
 ## this forces to use compiler written in setup_local.py
 if cc_par != '': os.environ['CC'] = cc_par
 if cxx_par != '': os.environ['CXX'] = cxx_par
 
-from distutils.core import setup, Extension
-from distutils.core import *
+from distutils.core import Extension, setup
 from distutils      import sysconfig
 
 modules= ["io_stream", "vtk", "sort_pairs", "datacollection",
           "globals", "mem_manager", "device", "hash", "stable3d",
-          "cpointers",
+          "cpointers", "symmat",
           "error", "array", "common_functions",
           "segment", "point", "hexahedron", "quadrilateral",
           "tetrahedron", "triangle", "wedge",
@@ -90,6 +97,12 @@ if add_cuda:
 
 if add_libceed:
     include_dirs.append(libceedinc)
+if add_gslibp:
+    include_dirs.append(gslibpinc)
+    modules.append("gslib")
+    sources["gslib"] = ["gslib_wrap.cxx"]
+    proxy_names["gslib"] = "_gslib"
+    
 
 import six
 if six.PY3:

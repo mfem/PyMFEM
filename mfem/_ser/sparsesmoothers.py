@@ -126,6 +126,11 @@ class DSmoother(SparseSmoother):
         """
         _sparsesmoothers.DSmoother_swiginit(self, _sparsesmoothers.new_DSmoother(*args))
 
+    def SetPositiveDiagonal(self, pos_diag=True):
+        r"""SetPositiveDiagonal(DSmoother self, bool pos_diag=True)"""
+        return _sparsesmoothers.DSmoother_SetPositiveDiagonal(self, pos_diag)
+    SetPositiveDiagonal = _swig_new_instance_method(_sparsesmoothers.DSmoother_SetPositiveDiagonal)
+
     def Mult(self, x, y):
         r"""Mult(DSmoother self, Vector x, Vector y)"""
         return _sparsesmoothers.DSmoother_Mult(self, x, y)

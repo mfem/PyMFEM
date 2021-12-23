@@ -3425,6 +3425,13 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
 }
 
 
+SWIGINTERNINLINE PyObject*
+  SWIG_From_bool  (bool value)
+{
+  return PyBool_FromLong(value ? 1 : 0);
+}
+
+
 #include <limits.h>
 #if !defined(SWIG_NO_LLONG_MAX)
 # if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
@@ -3448,13 +3455,6 @@ SWIG_AsVal_int (PyObject * obj, int *val)
     }
   }  
   return res;
-}
-
-
-SWIGINTERNINLINE PyObject*
-  SWIG_From_bool  (bool value)
-{
-  return PyBool_FromLong(value ? 1 : 0);
 }
 
 SWIGINTERN PyObject *mfem_SparseMatrix_GetIArray(mfem::SparseMatrix const *self){
@@ -4462,13 +4462,11 @@ SWIGINTERN PyObject *_wrap_new_SparseMatrix__SWIG_5(PyObject *SWIGUNUSEDPARM(sel
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = 0 ;
   bool arg2 = (bool) true ;
-  mfem::MemoryType arg3 = (mfem::MemoryType) MemoryType::PRESERVE ;
+  mfem::MemoryType arg3 = (mfem::MemoryType) mfem::MemoryType::PRESERVE ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   bool val2 ;
   int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   mfem::SparseMatrix *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 3)) SWIG_fail;
@@ -4488,11 +4486,11 @@ SWIGINTERN PyObject *_wrap_new_SparseMatrix__SWIG_5(PyObject *SWIGUNUSEDPARM(sel
     arg2 = static_cast< bool >(val2);
   }
   if (swig_obj[2]) {
-    ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-    if (!SWIG_IsOK(ecode3)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SparseMatrix" "', argument " "3"" of type '" "mfem::MemoryType""'");
-    } 
-    arg3 = static_cast< mfem::MemoryType >(val3);
+    {
+      PyObject* k = PyObject_GetAttrString(swig_obj[2], "value");
+      int i = (int)PyLong_AsLong(k);
+      arg3 = static_cast< mfem::MemoryType >(i);
+    }
   }
   {
     try {
@@ -4578,8 +4576,23 @@ SWIGINTERN PyObject *_wrap_new_SparseMatrix(PyObject *self, PyObject *args) {
           return _wrap_new_SparseMatrix__SWIG_5(self, argc, argv);
         }
         {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          _v = 0;
+          PyObject* module = PyImport_ImportModule("enum");
+          if (!module){
+            _v = 0;
+          } else {
+            PyObject* cls = PyObject_GetAttrString(module, "IntEnum");
+            if (!cls){
+              _v = 0;            
+            } else {
+              int check = PyObject_IsInstance(argv[2], cls);
+              if (check) {
+                _v = 1;
+              }
+              Py_DECREF(cls);	 
+            }
+            Py_DECREF(module);
+          }
         }
         if (_v) {
           return _wrap_new_SparseMatrix__SWIG_5(self, argc, argv);
@@ -9379,6 +9392,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Jacobi(PyObject *SWIGUNUSEDPARM(self), P
   mfem::Vector *arg3 = 0 ;
   mfem::Vector *arg4 = 0 ;
   double arg5 ;
+  bool arg6 = (bool) false ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -9389,16 +9403,19 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Jacobi(PyObject *SWIGUNUSEDPARM(self), P
   int res4 = 0 ;
   double val5 ;
   int ecode5 = 0 ;
+  bool val6 ;
+  int ecode6 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"b",  (char *)"x0",  (char *)"x1",  (char *)"sc",  NULL 
+    (char *)"self",  (char *)"b",  (char *)"x0",  (char *)"x1",  (char *)"sc",  (char *)"use_abs_diag",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOO:SparseMatrix_Jacobi", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOO|O:SparseMatrix_Jacobi", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_Jacobi" "', argument " "1"" of type '" "mfem::SparseMatrix const *""'"); 
@@ -9433,9 +9450,16 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Jacobi(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "SparseMatrix_Jacobi" "', argument " "5"" of type '" "double""'");
   } 
   arg5 = static_cast< double >(val5);
+  if (obj5) {
+    ecode6 = SWIG_AsVal_bool(obj5, &val6);
+    if (!SWIG_IsOK(ecode6)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "SparseMatrix_Jacobi" "', argument " "6"" of type '" "bool""'");
+    } 
+    arg6 = static_cast< bool >(val6);
+  }
   {
     try {
-      ((mfem::SparseMatrix const *)arg1)->Jacobi((mfem::Vector const &)*arg2,(mfem::Vector const &)*arg3,*arg4,arg5); 
+      ((mfem::SparseMatrix const *)arg1)->Jacobi((mfem::Vector const &)*arg2,(mfem::Vector const &)*arg3,*arg4,arg5,arg6); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -9459,6 +9483,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_DiagScale(PyObject *SWIGUNUSEDPARM(self)
   mfem::Vector *arg2 = 0 ;
   mfem::Vector *arg3 = 0 ;
   double arg4 = (double) 1.0 ;
+  bool arg5 = (bool) false ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -9467,15 +9492,18 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_DiagScale(PyObject *SWIGUNUSEDPARM(self)
   int res3 = 0 ;
   double val4 ;
   int ecode4 = 0 ;
+  bool val5 ;
+  int ecode5 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"b",  (char *)"x",  (char *)"sc",  NULL 
+    (char *)"self",  (char *)"b",  (char *)"x",  (char *)"sc",  (char *)"use_abs_diag",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:SparseMatrix_DiagScale", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|OO:SparseMatrix_DiagScale", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_DiagScale" "', argument " "1"" of type '" "mfem::SparseMatrix const *""'"); 
@@ -9504,9 +9532,16 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_DiagScale(PyObject *SWIGUNUSEDPARM(self)
     } 
     arg4 = static_cast< double >(val4);
   }
+  if (obj4) {
+    ecode5 = SWIG_AsVal_bool(obj4, &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "SparseMatrix_DiagScale" "', argument " "5"" of type '" "bool""'");
+    } 
+    arg5 = static_cast< bool >(val5);
+  }
   {
     try {
-      ((mfem::SparseMatrix const *)arg1)->DiagScale((mfem::Vector const &)*arg2,*arg3,arg4); 
+      ((mfem::SparseMatrix const *)arg1)->DiagScale((mfem::Vector const &)*arg2,*arg3,arg4,arg5); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -11774,9 +11809,6 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(s
           out_txt2.precision(temp2->getPrecision());
           arg2 = &out_txt2;
         }
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
       } else {
         arg2 = stream2;
       }
@@ -11831,6 +11863,9 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(s
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -11846,6 +11881,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -11926,9 +11964,6 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMatlab__SWIG_0(PyObject *SWIGUNUSED
           out_txt2.precision(temp2->getPrecision());
           arg2 = &out_txt2;
         }
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
       } else {
         arg2 = stream2;
       }
@@ -11975,6 +12010,9 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMatlab__SWIG_0(PyObject *SWIGUNUSED
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -11990,6 +12028,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -12070,9 +12111,6 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMM__SWIG_0(PyObject *SWIGUNUSEDPARM
           out_txt2.precision(temp2->getPrecision());
           arg2 = &out_txt2;
         }
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
       } else {
         arg2 = stream2;
       }
@@ -12119,6 +12157,9 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMM__SWIG_0(PyObject *SWIGUNUSEDPARM
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -12134,6 +12175,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -12212,9 +12256,6 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR__SWIG_0(PyObject *SWIGUNUSEDPAR
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -12260,6 +12301,9 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR__SWIG_0(PyObject *SWIGUNUSEDPAR
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -12275,6 +12319,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -12353,9 +12400,6 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR2__SWIG_0(PyObject *SWIGUNUSEDPA
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -12401,6 +12445,9 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR2__SWIG_0(PyObject *SWIGUNUSEDPA
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -12416,6 +12463,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -12494,9 +12544,6 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPA
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -12542,6 +12589,9 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPA
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -12557,6 +12607,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -14589,9 +14642,6 @@ SWIGINTERN PyObject *_wrap___lshift__(PyObject *SWIGUNUSEDPARM(self), PyObject *
         out_txt1.precision(temp1->getPrecision());
         arg1 = &out_txt1;
       }
-      if (temp1->isTemporary()){
-        delete temp1;
-      }
     } else {
       arg1 = stream1;
     }
@@ -14645,6 +14695,9 @@ SWIGINTERN PyObject *_wrap___lshift__(PyObject *SWIGUNUSEDPARM(self), PyObject *
             delete out_gz1;
           }
         }
+        if (temp1->isTemporary()){
+          delete temp1;
+        }
       }
     }
   }
@@ -14660,6 +14713,9 @@ fail:
           if (out_gz1){
             delete out_gz1;
           }
+        }
+        if (temp1->isTemporary()){
+          delete temp1;
         }
       }
     }
@@ -15211,7 +15267,7 @@ static PyMethodDef SwigMethods[] = {
 		"SparseMatrix(int * i)\n"
 		"SparseMatrix(int * i, bool ownij, bool owna, bool issorted)\n"
 		"SparseMatrix(int nrows, int ncols, int rowsize)\n"
-		"SparseMatrix(SparseMatrix mat, bool copy_graph=True, mfem::MemoryType mt=MemoryType::PRESERVE)\n"
+		"SparseMatrix(SparseMatrix mat, bool copy_graph=True, mfem::MemoryType mt=PRESERVE)\n"
 		"new_SparseMatrix(Vector v) -> SparseMatrix\n"
 		""},
 	 { "SparseMatrix_UseCuSparse", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_UseCuSparse, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_UseCuSparse(SparseMatrix self, bool useCuSparse_=True)"},
@@ -15327,8 +15383,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "SparseMatrix_Gauss_Seidel_forw", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Gauss_Seidel_forw, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_Gauss_Seidel_forw(SparseMatrix self, Vector x, Vector y)"},
 	 { "SparseMatrix_Gauss_Seidel_back", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Gauss_Seidel_back, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_Gauss_Seidel_back(SparseMatrix self, Vector x, Vector y)"},
 	 { "SparseMatrix_GetJacobiScaling", _wrap_SparseMatrix_GetJacobiScaling, METH_O, "SparseMatrix_GetJacobiScaling(SparseMatrix self) -> double"},
-	 { "SparseMatrix_Jacobi", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Jacobi, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_Jacobi(SparseMatrix self, Vector b, Vector x0, Vector x1, double sc)"},
-	 { "SparseMatrix_DiagScale", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_DiagScale, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_DiagScale(SparseMatrix self, Vector b, Vector x, double sc=1.0)"},
+	 { "SparseMatrix_Jacobi", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Jacobi, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_Jacobi(SparseMatrix self, Vector b, Vector x0, Vector x1, double sc, bool use_abs_diag=False)"},
+	 { "SparseMatrix_DiagScale", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_DiagScale, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_DiagScale(SparseMatrix self, Vector b, Vector x, double sc=1.0, bool use_abs_diag=False)"},
 	 { "SparseMatrix_Jacobi2", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Jacobi2, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_Jacobi2(SparseMatrix self, Vector b, Vector x0, Vector x1, double sc=1.0)"},
 	 { "SparseMatrix_Jacobi3", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Jacobi3, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_Jacobi3(SparseMatrix self, Vector b, Vector x0, Vector x1, double sc=1.0)"},
 	 { "SparseMatrix_Finalize", _wrap_SparseMatrix_Finalize, METH_VARARGS, "\n"
@@ -15462,7 +15518,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"SparseMatrix(int * i)\n"
 		"SparseMatrix(int * i, bool ownij, bool owna, bool issorted)\n"
 		"SparseMatrix(int nrows, int ncols, int rowsize)\n"
-		"SparseMatrix(SparseMatrix mat, bool copy_graph=True, mfem::MemoryType mt=MemoryType::PRESERVE)\n"
+		"SparseMatrix(SparseMatrix mat, bool copy_graph=True, mfem::MemoryType mt=PRESERVE)\n"
 		"new_SparseMatrix(Vector v) -> SparseMatrix\n"
 		""},
 	 { "SparseMatrix_UseCuSparse", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_UseCuSparse, METH_VARARGS|METH_KEYWORDS, "UseCuSparse(SparseMatrix self, bool useCuSparse_=True)"},
@@ -15578,8 +15634,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SparseMatrix_Gauss_Seidel_forw", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Gauss_Seidel_forw, METH_VARARGS|METH_KEYWORDS, "Gauss_Seidel_forw(SparseMatrix self, Vector x, Vector y)"},
 	 { "SparseMatrix_Gauss_Seidel_back", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Gauss_Seidel_back, METH_VARARGS|METH_KEYWORDS, "Gauss_Seidel_back(SparseMatrix self, Vector x, Vector y)"},
 	 { "SparseMatrix_GetJacobiScaling", _wrap_SparseMatrix_GetJacobiScaling, METH_O, "GetJacobiScaling(SparseMatrix self) -> double"},
-	 { "SparseMatrix_Jacobi", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Jacobi, METH_VARARGS|METH_KEYWORDS, "Jacobi(SparseMatrix self, Vector b, Vector x0, Vector x1, double sc)"},
-	 { "SparseMatrix_DiagScale", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_DiagScale, METH_VARARGS|METH_KEYWORDS, "DiagScale(SparseMatrix self, Vector b, Vector x, double sc=1.0)"},
+	 { "SparseMatrix_Jacobi", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Jacobi, METH_VARARGS|METH_KEYWORDS, "Jacobi(SparseMatrix self, Vector b, Vector x0, Vector x1, double sc, bool use_abs_diag=False)"},
+	 { "SparseMatrix_DiagScale", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_DiagScale, METH_VARARGS|METH_KEYWORDS, "DiagScale(SparseMatrix self, Vector b, Vector x, double sc=1.0, bool use_abs_diag=False)"},
 	 { "SparseMatrix_Jacobi2", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Jacobi2, METH_VARARGS|METH_KEYWORDS, "Jacobi2(SparseMatrix self, Vector b, Vector x0, Vector x1, double sc=1.0)"},
 	 { "SparseMatrix_Jacobi3", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Jacobi3, METH_VARARGS|METH_KEYWORDS, "Jacobi3(SparseMatrix self, Vector b, Vector x0, Vector x1, double sc=1.0)"},
 	 { "SparseMatrix_Finalize", _wrap_SparseMatrix_Finalize, METH_VARARGS, "\n"

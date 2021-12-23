@@ -74,6 +74,7 @@ import mfem._par.vector
 import mfem._par.coefficient
 import mfem._par.matrix
 import mfem._par.operators
+import mfem._par.symmat
 import mfem._par.intrules
 import mfem._par.sparsemat
 import mfem._par.densemat

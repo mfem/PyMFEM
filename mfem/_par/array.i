@@ -29,9 +29,27 @@ ISTREAM_TYPEMAP(std::istream&)
 
 %import "mem_manager.i"
 
+%import "../common/array_listtuple_typemap.i"
+ARRAY_LISTTUPLE_INPUT(int, PyLong_AsLong)
+ARRAY_LISTTUPLE_INPUT(double, PyFloat_AsDouble)
+
+%import "../common/memorytype_typemap.i"
+ENUM_TO_MEMORYTYPE(mfem::MemoryType mt)
+
 %import "../common/data_size_typemap.i"
-INTPTR_SIZE_IN(int *data_, int asize)
-DOUBLEPTR_SIZE_IN(double *data_, int asize)
+XXXPTR_SIZE_IN(int *data_, int asize, int)
+XXXPTR_SIZE_IN(double *data_, int asize, double)
+
+%pythonappend mfem::Array::Array %{
+  if len(args) == 1 and isinstance(args[0], list):
+      if (len(args[0]) == 2 and hasattr(args[0][0], 'disown') and
+	  not hasattr(args[0][1], 'disown')):
+          ## first element is SwigObject, like <Swig Object of type 'int *'>
+          ## We do not own data in this case.
+          pass
+      else:
+          self.MakeDataOwner()
+%}
 
 //%import "intrules.i"
 //%newobject intArray
@@ -45,12 +63,18 @@ DOUBLEPTR_SIZE_IN(double *data_, int asize)
 
 %include "general/array.hpp"
 %extend mfem::Array{
+  mfem::Array (void *List_or_Tuple, T *_unused){
+    /*
+    This method is wrapped to recived tuple or list to create
+    Array object
+    */
+    mfem::Array <T>  *arr;
+    arr = new mfem::Array<T>(*(int*)List_or_Tuple);    
+    return arr;
+  }
   void __setitem__(int i, const T v) {
     (* self)[i] = v;
     }
-  const T & __getitem__(const int i) const{
-    return (* self)[i];
-  }
   void Assign(const T &a){
      *self = a;
   }   
@@ -61,9 +85,9 @@ namespace mfem{
 %pythonprepend Array::__setitem__ %{
     i = int(i)
 %}
-%pythonprepend Array::__getitem__ %{
-    i = int(i)
-%}  
+  //%pythonprepend Array::__getitem__ %{
+  //    i = int(i)
+  //%}  
 %feature("shadow")Array::FakeToList %{
 def ToList(self):
     return [self[i] for i in range(self.Size())]
@@ -102,8 +126,9 @@ OSTREAM_ADD_DEFAULT_STDOUT_FILE(Array2D, Save)
 #endif
 
 namespace mfem{
-%template(intArray) Array<int>;
-%template(doubleArray) Array<double>;
 %template(doubleSwap) Swap<double>;  
 %template(intSwap) Swap<int>;  
 }
+%import "../common/array_instantiation_macro.i"
+INSTANTIATE_ARRAY_INT
+INSTANTIATE_ARRAY_DOUBLE

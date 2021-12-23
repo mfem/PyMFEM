@@ -3,7 +3,7 @@
 #include "fem/gridfunc.hpp"  
 #include "fem/linearform.hpp"
 #include "fem/bilininteg.hpp"
-#include "pycoefficient.hpp"
+#include "../common/pycoefficient.hpp"
 #include "numpy/arrayobject.h"
 using namespace mfem;
 %}

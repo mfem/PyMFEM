@@ -75,6 +75,7 @@ import mfem._par.fespace
 import mfem._par.coefficient
 import mfem._par.matrix
 import mfem._par.operators
+import mfem._par.symmat
 import mfem._par.intrules
 import mfem._par.sparsemat
 import mfem._par.densemat
@@ -209,7 +210,7 @@ class GeometricMultigrid(Multigrid):
 _multigrid.GeometricMultigrid_swigregister(GeometricMultigrid)
 
 class PyGeometricMultigrid(GeometricMultigrid):
-    r"""Proxy of C++ PyGeometricMultigrid class."""
+    r"""Proxy of C++ mfem::PyGeometricMultigrid class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
