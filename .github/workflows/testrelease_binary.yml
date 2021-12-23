@@ -85,7 +85,7 @@ jobs:
           python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
           #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*   	  
   make_binary_3_10:
-    needs: vm
+    needs: make_sdist
     strategy:
       matrix:
         pythonpath: ["cp310-cp310"]
