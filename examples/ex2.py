@@ -139,7 +139,7 @@ def run(order=1, static_cond=False,
 
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
-    parser = ArgParser(description='Ex1 (Laplace Problem)')
+    parser = ArgParser(description='Ex2 (Linear elasticity)')
     parser.add_argument('-m', '--mesh',
                         default='beam-tri.mesh',
                         action='store', type=str,

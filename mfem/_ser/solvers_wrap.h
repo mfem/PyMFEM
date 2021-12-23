@@ -58,4 +58,61 @@ private:
 };
 
 
+class SwigDirector_PyIterativeSolver : public mfem::PyIterativeSolver, public Swig::Director {
+
+public:
+    SwigDirector_PyIterativeSolver(PyObject *self);
+    virtual mfem::MemoryClass GetMemoryClass() const;
+    virtual void Mult(mfem::Vector const &b, mfem::Vector &x) const;
+    virtual void MultTranspose(mfem::Vector const &b, mfem::Vector &x) const;
+    virtual mfem::Operator &GetGradient(mfem::Vector const &x) const;
+    virtual void AssembleDiagonal(mfem::Vector &diag) const;
+    virtual mfem::Operator const *GetProlongation() const;
+    virtual mfem::Operator const *GetRestriction() const;
+    virtual mfem::Operator const *GetOutputProlongation() const;
+    virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
+    virtual mfem::Operator const *GetOutputRestriction() const;
+    virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
+    virtual void PrintMatlab(std::ostream &out) const;
+    virtual ~SwigDirector_PyIterativeSolver();
+    virtual void SetOperator(mfem::Operator const &op);
+    virtual void SetPrintLevel(int print_lvl);
+    virtual void SetPrintLevel(mfem::IterativeSolver::PrintLevel arg0);
+    virtual void SetPreconditioner(mfem::Solver &pr);
+
+/* Internal director utilities */
+public:
+    bool swig_get_inner(const char *swig_protected_method_name) const {
+      std::map<std::string, bool>::const_iterator iv = swig_inner.find(swig_protected_method_name);
+      return (iv != swig_inner.end() ? iv->second : false);
+    }
+    void swig_set_inner(const char *swig_protected_method_name, bool swig_val) const {
+      swig_inner[swig_protected_method_name] = swig_val;
+    }
+private:
+    mutable std::map<std::string, bool> swig_inner;
+
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+/* VTable implementation */
+    PyObject *swig_get_method(size_t method_index, const char *method_name) const {
+      PyObject *method = vtable[method_index];
+      if (!method) {
+        swig::SwigVar_PyObject name = SWIG_Python_str_FromChar(method_name);
+        method = PyObject_GetAttr(swig_get_self(), name);
+        if (!method) {
+          std::string msg = "Method in class PyIterativeSolver doesn't exist, undefined ";
+          msg += method_name;
+          Swig::DirectorMethodException::raise(msg.c_str());
+        }
+        vtable[method_index] = method;
+      }
+      return method;
+    }
+private:
+    mutable swig::SwigVar_PyObject vtable[15];
+#endif
+
+};
+
+
 #endif

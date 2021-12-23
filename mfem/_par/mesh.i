@@ -16,7 +16,7 @@ mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 		      bool fix_orientation = true);
 // void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
 #include "numpy/arrayobject.h"
-#include "pycoefficient.hpp"
+#include "../common/pycoefficient.hpp"
 #include "../common/io_stream.hpp"
 
 using namespace mfem;
@@ -59,6 +59,9 @@ import_array();
 OSTREAM_TYPEMAP(std::ostream&)
 ISTREAM_TYPEMAP(std::istream&)
 
+%include "std_vector.i"
+%template(vector_int) std::vector<int>;
+%template(vector_Vector) std::vector<mfem::Vector>;
 
 // ignore these constructors, since in python element::type is given by 
 // string (see extend section below).

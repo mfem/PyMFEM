@@ -20,6 +20,8 @@ def get_mpi_datatype(data):
            return MPI.LONG_DOUBLE
         elif s == 8:
            return MPI.DOUBLE
+        elif s == 4:
+           return MPI.FLOAT
         else:
            pass
     elif data.dtype.name.startswith('complex'):              

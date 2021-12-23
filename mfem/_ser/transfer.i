@@ -7,7 +7,8 @@
 #include "mesh/vertex.hpp"
 #include "numpy/arrayobject.h"
 #include "fem/transfer.hpp"
-#include "pyoperator.hpp"  
+#include "pyoperator.hpp"
+#include "../common/pycoefficient.hpp" 
 %}
 
 %init %{

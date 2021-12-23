@@ -3104,10 +3104,11 @@ namespace Swig {
 #define SWIGTYPE_p_char swig_types[1]
 #define SWIGTYPE_p_double swig_types[2]
 #define SWIGTYPE_p_int swig_types[3]
-#define SWIGTYPE_p_mfem__STable3D swig_types[4]
-#define SWIGTYPE_p_mfem__STable3DNode swig_types[5]
-static swig_type_info *swig_types[7];
-static swig_module_info swig_module = {swig_types, 6, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[4]
+#define SWIGTYPE_p_mfem__STable3D swig_types[5]
+#define SWIGTYPE_p_mfem__STable3DNode swig_types[6]
+static swig_type_info *swig_types[8];
+static swig_module_info swig_module = {swig_types, 7, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4266,9 +4267,6 @@ SWIGINTERN PyObject *_wrap_STable3D_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
           out_txt2.precision(temp2->getPrecision());
           arg2 = &out_txt2;
         }
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
       } else {
         arg2 = stream2;
       }
@@ -4321,6 +4319,9 @@ SWIGINTERN PyObject *_wrap_STable3D_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -4336,6 +4337,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -4680,6 +4684,7 @@ static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wF
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__IntegrationPoint = {"_p_mfem__IntegrationPoint", "mfem::IntegrationPoint *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__STable3D = {"_p_mfem__STable3D", "mfem::STable3D *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__STable3DNode = {"_p_mfem__STable3DNode", "mfem::STable3DNode *", 0, 0, (void*)0, 0};
 
@@ -4688,6 +4693,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_char,
   &_swigt__p_double,
   &_swigt__p_int,
+  &_swigt__p_mfem__IntegrationPoint,
   &_swigt__p_mfem__STable3D,
   &_swigt__p_mfem__STable3DNode,
 };
@@ -4696,6 +4702,7 @@ static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__IntegrationPoint[] = {  {&_swigt__p_mfem__IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__STable3D[] = {  {&_swigt__p_mfem__STable3D, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__STable3DNode[] = {  {&_swigt__p_mfem__STable3DNode, 0, 0, 0},{0, 0, 0, 0}};
 
@@ -4704,6 +4711,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_char,
   _swigc__p_double,
   _swigc__p_int,
+  _swigc__p_mfem__IntegrationPoint,
   _swigc__p_mfem__STable3D,
   _swigc__p_mfem__STable3DNode,
 };

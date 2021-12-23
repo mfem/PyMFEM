@@ -3105,10 +3105,11 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__DSTable swig_types[5]
 #define SWIGTYPE_p_mfem__Element swig_types[6]
 #define SWIGTYPE_p_mfem__HashTableT_mfem__Hashed2_t swig_types[7]
-#define SWIGTYPE_p_mfem__Mesh swig_types[8]
-#define SWIGTYPE_p_void swig_types[9]
-static swig_type_info *swig_types[11];
-static swig_module_info swig_module = {swig_types, 10, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[8]
+#define SWIGTYPE_p_mfem__Mesh swig_types[9]
+#define SWIGTYPE_p_void swig_types[10]
+static swig_type_info *swig_types[12];
+static swig_module_info swig_module = {swig_types, 11, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4500,6 +4501,7 @@ static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "
 static swig_type_info _swigt__p_mfem__DSTable = {"_p_mfem__DSTable", "mfem::DSTable *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Element = {"_p_mfem__Element", "mfem::Element *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__HashTableT_mfem__Hashed2_t = {"_p_mfem__HashTableT_mfem__Hashed2_t", "mfem::HashTable< mfem::Hashed2 > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__IntegrationPoint = {"_p_mfem__IntegrationPoint", "mfem::IntegrationPoint *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Mesh = {"_p_mfem__Mesh", "mfem::Mesh *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_void = {"_p_void", "void *", 0, 0, (void*)0, 0};
 
@@ -4512,6 +4514,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__DSTable,
   &_swigt__p_mfem__Element,
   &_swigt__p_mfem__HashTableT_mfem__Hashed2_t,
+  &_swigt__p_mfem__IntegrationPoint,
   &_swigt__p_mfem__Mesh,
   &_swigt__p_void,
 };
@@ -4524,6 +4527,7 @@ static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__Arra
 static swig_cast_info _swigc__p_mfem__DSTable[] = {  {&_swigt__p_mfem__DSTable, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Element[] = {  {&_swigt__p_mfem__Element, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HashTableT_mfem__Hashed2_t[] = {  {&_swigt__p_mfem__HashTableT_mfem__Hashed2_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__IntegrationPoint[] = {  {&_swigt__p_mfem__IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Mesh[] = {  {&_swigt__p_mfem__Mesh, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0, 0}};
 
@@ -4536,6 +4540,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__DSTable,
   _swigc__p_mfem__Element,
   _swigc__p_mfem__HashTableT_mfem__Hashed2_t,
+  _swigc__p_mfem__IntegrationPoint,
   _swigc__p_mfem__Mesh,
   _swigc__p_void,
 };

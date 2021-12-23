@@ -4340,9 +4340,6 @@ SWIGINTERN PyObject *_wrap_GroupTopology_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(s
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -4391,6 +4388,9 @@ SWIGINTERN PyObject *_wrap_GroupTopology_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(s
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -4406,6 +4406,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -5476,9 +5479,6 @@ SWIGINTERN PyObject *_wrap_GroupCommunicator_PrintInfo__SWIG_0(PyObject *SWIGUNU
           out_txt2.precision(temp2->getPrecision());
           arg2 = &out_txt2;
         }
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
       } else {
         arg2 = stream2;
       }
@@ -5528,6 +5528,9 @@ SWIGINTERN PyObject *_wrap_GroupCommunicator_PrintInfo__SWIG_0(PyObject *SWIGUNU
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -5543,6 +5546,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }

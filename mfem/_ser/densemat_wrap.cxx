@@ -11027,9 +11027,6 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(se
           out_txt2.precision(temp2->getPrecision());
           arg2 = &out_txt2;
         }
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
       } else {
         arg2 = stream2;
       }
@@ -11090,6 +11087,9 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(se
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -11105,6 +11105,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -11186,9 +11189,6 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT__SWIG_0(PyObject *SWIGUNUSEDPARM(s
           out_txt2.precision(temp2->getPrecision());
           arg2 = &out_txt2;
         }
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
       } else {
         arg2 = stream2;
       }
@@ -11249,6 +11249,9 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT__SWIG_0(PyObject *SWIGUNUSEDPARM(s
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -11264,6 +11267,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -14437,7 +14443,8 @@ SWIGINTERN PyObject *_wrap_new_LUFactors__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
         return NULL;
       }
       si = PyList_Size(swig_obj[0]);
-      arg1 = (double *) malloc((si)*sizeof(double));
+      //arg1 = (double *) malloc((si)*sizeof(double));
+      arg1 = new double[si];
       for (i = 0; i < si; i++) {
         PyObject *s = PyList_GetItem(swig_obj[0],i);
         if (PyInt_Check(s)) {
@@ -14445,6 +14452,7 @@ SWIGINTERN PyObject *_wrap_new_LUFactors__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
         } else if (PyFloat_Check(s)) {
           arg1[i] = (double)PyFloat_AsDouble(s);
         } else {
+          delete[] arg1;
           PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
           return NULL;
         }
@@ -17191,8 +17199,6 @@ SWIGINTERN PyObject *_wrap_new_DenseTensor__SWIG_3(PyObject *SWIGUNUSEDPARM(self
   int arg2 ;
   int arg3 ;
   mfem::MemoryType arg4 ;
-  int val4 ;
-  int ecode4 = 0 ;
   mfem::DenseTensor *result = 0 ;
   
   if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
@@ -17214,11 +17220,11 @@ SWIGINTERN PyObject *_wrap_new_DenseTensor__SWIG_3(PyObject *SWIGUNUSEDPARM(self
     };  
     arg3 = PyArray_PyIntAsInt(swig_obj[2]);
   }
-  ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_DenseTensor" "', argument " "4"" of type '" "mfem::MemoryType""'");
-  } 
-  arg4 = static_cast< mfem::MemoryType >(val4);
+  {
+    PyObject* k = PyObject_GetAttrString(swig_obj[3], "value");
+    int i = (int)PyLong_AsLong(k);
+    arg4 = static_cast< mfem::MemoryType >(i);
+  }
   {
     try {
       result = (mfem::DenseTensor *)new mfem::DenseTensor(arg1,arg2,arg3,arg4);
@@ -17409,8 +17415,23 @@ SWIGINTERN PyObject *_wrap_new_DenseTensor(PyObject *self, PyObject *args) {
         }
         if (_v) {
           {
-            int res = SWIG_AsVal_int(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            _v = 0;
+            PyObject* module = PyImport_ImportModule("enum");
+            if (!module){
+              _v = 0;
+            } else {
+              PyObject* cls = PyObject_GetAttrString(module, "IntEnum");
+              if (!cls){
+                _v = 0;            
+              } else {
+                int check = PyObject_IsInstance(argv[3], cls);
+                if (check) {
+                  _v = 1;
+                }
+                Py_DECREF(cls);	 
+              }
+              Py_DECREF(module);
+            }
           }
           if (_v) {
             return _wrap_new_DenseTensor__SWIG_3(self, argc, argv);
@@ -17602,7 +17623,7 @@ SWIGINTERN PyObject *_wrap_DenseTensor_SetSize(PyObject *SWIGUNUSEDPARM(self), P
   int arg2 ;
   int arg3 ;
   int arg4 ;
-  mfem::MemoryType arg5 = (mfem::MemoryType) MemoryType::PRESERVE ;
+  mfem::MemoryType arg5 = (mfem::MemoryType) mfem::MemoryType::PRESERVE ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val5 ;
@@ -19836,7 +19857,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "DenseTensor_SizeJ", _wrap_DenseTensor_SizeJ, METH_O, "DenseTensor_SizeJ(DenseTensor self) -> int"},
 	 { "DenseTensor_SizeK", _wrap_DenseTensor_SizeK, METH_O, "DenseTensor_SizeK(DenseTensor self) -> int"},
 	 { "DenseTensor_TotalSize", _wrap_DenseTensor_TotalSize, METH_O, "DenseTensor_TotalSize(DenseTensor self) -> int"},
-	 { "DenseTensor_SetSize", (PyCFunction)(void(*)(void))_wrap_DenseTensor_SetSize, METH_VARARGS|METH_KEYWORDS, "DenseTensor_SetSize(DenseTensor self, int i, int j, int k, mfem::MemoryType mt_=MemoryType::PRESERVE)"},
+	 { "DenseTensor_SetSize", (PyCFunction)(void(*)(void))_wrap_DenseTensor_SetSize, METH_VARARGS|METH_KEYWORDS, "DenseTensor_SetSize(DenseTensor self, int i, int j, int k, mfem::MemoryType mt_=PRESERVE)"},
 	 { "DenseTensor_UseExternalData", (PyCFunction)(void(*)(void))_wrap_DenseTensor_UseExternalData, METH_VARARGS|METH_KEYWORDS, "DenseTensor_UseExternalData(DenseTensor self, double * ext_data, int i, int j, int k)"},
 	 { "DenseTensor___call__", _wrap_DenseTensor___call__, METH_VARARGS, "\n"
 		"DenseTensor___call__(DenseTensor self, int k) -> DenseMatrix\n"
@@ -20165,7 +20186,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "DenseTensor_SizeJ", _wrap_DenseTensor_SizeJ, METH_O, "SizeJ(DenseTensor self) -> int"},
 	 { "DenseTensor_SizeK", _wrap_DenseTensor_SizeK, METH_O, "SizeK(DenseTensor self) -> int"},
 	 { "DenseTensor_TotalSize", _wrap_DenseTensor_TotalSize, METH_O, "TotalSize(DenseTensor self) -> int"},
-	 { "DenseTensor_SetSize", (PyCFunction)(void(*)(void))_wrap_DenseTensor_SetSize, METH_VARARGS|METH_KEYWORDS, "SetSize(DenseTensor self, int i, int j, int k, mfem::MemoryType mt_=MemoryType::PRESERVE)"},
+	 { "DenseTensor_SetSize", (PyCFunction)(void(*)(void))_wrap_DenseTensor_SetSize, METH_VARARGS|METH_KEYWORDS, "SetSize(DenseTensor self, int i, int j, int k, mfem::MemoryType mt_=PRESERVE)"},
 	 { "DenseTensor_UseExternalData", (PyCFunction)(void(*)(void))_wrap_DenseTensor_UseExternalData, METH_VARARGS|METH_KEYWORDS, "UseExternalData(DenseTensor self, double * ext_data, int i, int j, int k)"},
 	 { "DenseTensor___call__", _wrap_DenseTensor___call__, METH_VARARGS, "\n"
 		"__call__(DenseTensor self, int k) -> DenseMatrix\n"

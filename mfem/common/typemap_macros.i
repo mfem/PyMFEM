@@ -132,7 +132,8 @@
         return NULL;
      }
      si = PyList_Size($input);
-     $1 = (double *) malloc((si)*sizeof(double));
+     //$1 = (double *) malloc((si)*sizeof(double));
+     $1 = new double[si];
      for (i = 0; i < si; i++) {
         PyObject *s = PyList_GetItem($input,i);
         if (PyInt_Check(s)) {
@@ -140,8 +141,9 @@
         } else if (PyFloat_Check(s)) {
             $1[i] = (double)PyFloat_AsDouble(s);
         } else {
-            PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
-            return NULL;
+	  delete[] $1;
+	  PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
+	  return NULL;
         }
      }
   }

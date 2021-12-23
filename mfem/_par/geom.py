@@ -292,17 +292,6 @@ class GeometryTypeArray(object):
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-
-    def __init__(self, *args):
-        r"""
-        __init__(GeometryTypeArray self) -> GeometryTypeArray
-        __init__(GeometryTypeArray self, mfem::MemoryType mt) -> GeometryTypeArray
-        __init__(GeometryTypeArray self, int asize) -> GeometryTypeArray
-        __init__(GeometryTypeArray self, int asize, mfem::MemoryType mt) -> GeometryTypeArray
-        __init__(GeometryTypeArray self, mfem::Geometry::Type * data_, int asize) -> GeometryTypeArray
-        __init__(GeometryTypeArray self, GeometryTypeArray src) -> GeometryTypeArray
-        """
-        _geom.GeometryTypeArray_swiginit(self, _geom.new_GeometryTypeArray(*args))
     __swig_destroy__ = _geom.delete_GeometryTypeArray
 
     def GetData(self, *args):
@@ -471,6 +460,18 @@ class GeometryTypeArray(object):
         return _geom.GeometryTypeArray_HostReadWrite(self)
     HostReadWrite = _swig_new_instance_method(_geom.GeometryTypeArray_HostReadWrite)
 
+    def __init__(self, *args):
+        r"""
+        __init__(GeometryTypeArray self) -> GeometryTypeArray
+        __init__(GeometryTypeArray self, mfem::MemoryType mt) -> GeometryTypeArray
+        __init__(GeometryTypeArray self, int asize) -> GeometryTypeArray
+        __init__(GeometryTypeArray self, int asize, mfem::MemoryType mt) -> GeometryTypeArray
+        __init__(GeometryTypeArray self, mfem::Geometry::Type * data_, int asize) -> GeometryTypeArray
+        __init__(GeometryTypeArray self, GeometryTypeArray src) -> GeometryTypeArray
+        __init__(GeometryTypeArray self, void * List_or_Tuple) -> GeometryTypeArray
+        """
+        _geom.GeometryTypeArray_swiginit(self, _geom.new_GeometryTypeArray(*args))
+
     def __setitem__(self, i, v):
         r"""__setitem__(GeometryTypeArray self, int i, mfem::Geometry::Type const v)"""
 
@@ -478,15 +479,6 @@ class GeometryTypeArray(object):
 
 
         return _geom.GeometryTypeArray___setitem__(self, i, v)
-
-
-    def __getitem__(self, i):
-        r"""__getitem__(GeometryTypeArray self, int const i) -> mfem::Geometry::Type const &"""
-
-        i = int(i)
-
-
-        return _geom.GeometryTypeArray___getitem__(self, i)
 
 
     def Assign(self, *args):
@@ -520,6 +512,11 @@ class GeometryTypeArray(object):
         return iter_array(self)
 
 
+
+    def __getitem__(self, i):
+        r"""__getitem__(GeometryTypeArray self, int const i) -> mfem::Geometry::Type const &"""
+        return _geom.GeometryTypeArray___getitem__(self, i)
+    __getitem__ = _swig_new_instance_method(_geom.GeometryTypeArray___getitem__)
 
 # Register GeometryTypeArray in _geom:
 _geom.GeometryTypeArray_swigregister(GeometryTypeArray)

@@ -129,9 +129,12 @@ class IterativeSolver(mfem._ser.operators.Solver):
         return _solvers.IterativeSolver_SetMaxIter(self, max_it)
     SetMaxIter = _swig_new_instance_method(_solvers.IterativeSolver_SetMaxIter)
 
-    def SetPrintLevel(self, print_lvl):
-        r"""SetPrintLevel(IterativeSolver self, int print_lvl)"""
-        return _solvers.IterativeSolver_SetPrintLevel(self, print_lvl)
+    def SetPrintLevel(self, *args):
+        r"""
+        SetPrintLevel(IterativeSolver self, int print_lvl)
+        SetPrintLevel(IterativeSolver self, mfem::IterativeSolver::PrintLevel arg2)
+        """
+        return _solvers.IterativeSolver_SetPrintLevel(self, *args)
     SetPrintLevel = _swig_new_instance_method(_solvers.IterativeSolver_SetPrintLevel)
 
     def GetNumIterations(self):
@@ -140,7 +143,7 @@ class IterativeSolver(mfem._ser.operators.Solver):
     GetNumIterations = _swig_new_instance_method(_solvers.IterativeSolver_GetNumIterations)
 
     def GetConverged(self):
-        r"""GetConverged(IterativeSolver self) -> int"""
+        r"""GetConverged(IterativeSolver self) -> bool"""
         return _solvers.IterativeSolver_GetConverged(self)
     GetConverged = _swig_new_instance_method(_solvers.IterativeSolver_GetConverged)
 
@@ -182,6 +185,11 @@ class OperatorJacobiSmoother(mfem._ser.operators.Solver):
         """
         _solvers.OperatorJacobiSmoother_swiginit(self, _solvers.new_OperatorJacobiSmoother(*args))
     __swig_destroy__ = _solvers.delete_OperatorJacobiSmoother
+
+    def SetPositiveDiagonal(self, pos_diag=True):
+        r"""SetPositiveDiagonal(OperatorJacobiSmoother self, bool pos_diag=True)"""
+        return _solvers.OperatorJacobiSmoother_SetPositiveDiagonal(self, pos_diag)
+    SetPositiveDiagonal = _swig_new_instance_method(_solvers.OperatorJacobiSmoother_SetPositiveDiagonal)
 
     def Mult(self, x, y):
         r"""Mult(OperatorJacobiSmoother self, Vector x, Vector y)"""
@@ -780,6 +788,48 @@ class ProductSolver(mfem._ser.operators.Solver):
 
 # Register ProductSolver in _solvers:
 _solvers.ProductSolver_swigregister(ProductSolver)
+
+class PyIterativeSolver(IterativeSolver):
+    r"""Proxy of C++ mfem::PyIterativeSolver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        r"""__init__(PyIterativeSolver self) -> PyIterativeSolver"""
+        if self.__class__ == PyIterativeSolver:
+            _self = None
+        else:
+            _self = self
+        _solvers.PyIterativeSolver_swiginit(self, _solvers.new_PyIterativeSolver(_self, ))
+
+    def Mult(self, b, x):
+        r"""Mult(PyIterativeSolver self, Vector b, Vector x)"""
+        return _solvers.PyIterativeSolver_Mult(self, b, x)
+    Mult = _swig_new_instance_method(_solvers.PyIterativeSolver_Mult)
+
+    def MultTranspose(self, b, x):
+        r"""MultTranspose(PyIterativeSolver self, Vector b, Vector x)"""
+        return _solvers.PyIterativeSolver_MultTranspose(self, b, x)
+    MultTranspose = _swig_new_instance_method(_solvers.PyIterativeSolver_MultTranspose)
+
+    def SetPreconditioner(self, pr):
+        r"""SetPreconditioner(PyIterativeSolver self, Solver pr)"""
+        return _solvers.PyIterativeSolver_SetPreconditioner(self, pr)
+    SetPreconditioner = _swig_new_instance_method(_solvers.PyIterativeSolver_SetPreconditioner)
+
+    def SetOperator(self, op):
+        r"""SetOperator(PyIterativeSolver self, Operator op)"""
+        return _solvers.PyIterativeSolver_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_solvers.PyIterativeSolver_SetOperator)
+    __swig_destroy__ = _solvers.delete_PyIterativeSolver
+    def __disown__(self):
+        self.this.disown()
+        _solvers.disown_PyIterativeSolver(self)
+        return weakref.proxy(self)
+
+# Register PyIterativeSolver in _solvers:
+_solvers.PyIterativeSolver_swigregister(PyIterativeSolver)
 
 
 

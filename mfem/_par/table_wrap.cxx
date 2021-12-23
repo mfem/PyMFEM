@@ -5400,9 +5400,6 @@ SWIGINTERN PyObject *_wrap_Table_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), P
           out_txt2.precision(temp2->getPrecision());
           arg2 = &out_txt2;
         }
-        if (temp2->isTemporary()){
-          delete temp2;
-        }
       } else {
         arg2 = stream2;
       }
@@ -5460,6 +5457,9 @@ SWIGINTERN PyObject *_wrap_Table_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), P
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -5475,6 +5475,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -5553,9 +5556,6 @@ SWIGINTERN PyObject *_wrap_Table_PrintMatlab__SWIG_0(PyObject *SWIGUNUSEDPARM(se
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -5604,6 +5604,9 @@ SWIGINTERN PyObject *_wrap_Table_PrintMatlab__SWIG_0(PyObject *SWIGUNUSEDPARM(se
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -5619,6 +5622,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -5697,9 +5703,6 @@ SWIGINTERN PyObject *_wrap_Table_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -5748,6 +5751,9 @@ SWIGINTERN PyObject *_wrap_Table_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -5763,6 +5769,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }

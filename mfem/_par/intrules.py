@@ -71,17 +71,6 @@ class IntegrationPointArray(object):
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-
-    def __init__(self, *args):
-        r"""
-        __init__(IntegrationPointArray self) -> IntegrationPointArray
-        __init__(IntegrationPointArray self, mfem::MemoryType mt) -> IntegrationPointArray
-        __init__(IntegrationPointArray self, int asize) -> IntegrationPointArray
-        __init__(IntegrationPointArray self, int asize, mfem::MemoryType mt) -> IntegrationPointArray
-        __init__(IntegrationPointArray self, IntegrationPoint data_, int asize) -> IntegrationPointArray
-        __init__(IntegrationPointArray self, IntegrationPointArray src) -> IntegrationPointArray
-        """
-        _intrules.IntegrationPointArray_swiginit(self, _intrules.new_IntegrationPointArray(*args))
     __swig_destroy__ = _intrules.delete_IntegrationPointArray
 
     def GetData(self, *args):
@@ -250,6 +239,18 @@ class IntegrationPointArray(object):
         return _intrules.IntegrationPointArray_HostReadWrite(self)
     HostReadWrite = _swig_new_instance_method(_intrules.IntegrationPointArray_HostReadWrite)
 
+    def __init__(self, *args):
+        r"""
+        __init__(IntegrationPointArray self) -> IntegrationPointArray
+        __init__(IntegrationPointArray self, mfem::MemoryType mt) -> IntegrationPointArray
+        __init__(IntegrationPointArray self, int asize) -> IntegrationPointArray
+        __init__(IntegrationPointArray self, int asize, mfem::MemoryType mt) -> IntegrationPointArray
+        __init__(IntegrationPointArray self, IntegrationPoint data_, int asize) -> IntegrationPointArray
+        __init__(IntegrationPointArray self, IntegrationPointArray src) -> IntegrationPointArray
+        __init__(IntegrationPointArray self, void * List_or_Tuple) -> IntegrationPointArray
+        """
+        _intrules.IntegrationPointArray_swiginit(self, _intrules.new_IntegrationPointArray(*args))
+
     def __setitem__(self, i, v):
         r"""__setitem__(IntegrationPointArray self, int i, IntegrationPoint v)"""
 
@@ -257,15 +258,6 @@ class IntegrationPointArray(object):
 
 
         return _intrules.IntegrationPointArray___setitem__(self, i, v)
-
-
-    def __getitem__(self, i):
-        r"""__getitem__(IntegrationPointArray self, int const i) -> IntegrationPoint"""
-
-        i = int(i)
-
-
-        return _intrules.IntegrationPointArray___getitem__(self, i)
 
 
     def Assign(self, *args):
@@ -299,6 +291,11 @@ class IntegrationPointArray(object):
         return iter_array(self)
 
 
+
+    def __getitem__(self, param):
+        r"""__getitem__(IntegrationPointArray self, PyObject * param) -> PyObject *"""
+        return _intrules.IntegrationPointArray___getitem__(self, param)
+    __getitem__ = _swig_new_instance_method(_intrules.IntegrationPointArray___getitem__)
 
 # Register IntegrationPointArray in _intrules:
 _intrules.IntegrationPointArray_swigregister(IntegrationPointArray)

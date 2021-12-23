@@ -3,6 +3,7 @@
 #include  "mfem.hpp"
 #include "general/globals.hpp"
 #include "numpy/arrayobject.h"
+#include "../common/pycoefficient.hpp"    
 %}
 
 %init %{

@@ -20,6 +20,7 @@ from setuptools.command.install import install as _install
 from setuptools.command.install_egg_info import install_egg_info as _install_egg_info
 from setuptools.command.install_lib import install_lib as _install_lib
 from setuptools.command.install_scripts import install_scripts as _install_scripts
+import setuptools.command.sdist
 
 try:
     from setuptools._distutils.command.clean import clean as _clean
@@ -39,7 +40,8 @@ except ImportError:
 repo_releases = {"mfem": "https://github.com/mfem/mfem/archive/v4.3.tar.gz",
                  "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
                  "hypre": "https://github.com/hypre-space/hypre/archive/v2.20.0.tar.gz",
-                 "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.9.0.tar.gz", }
+                 "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.9.0.tar.gz",
+                 "gslib": "https://github.com/Nek5000/gslib/archive/refs/tags/v1.0.7.tar.gz"}
 
 repos = {"mfem": "https://github.com/mfem/mfem.git", }
 
@@ -73,13 +75,14 @@ build_mfemp = False
 build_metis = False
 build_hypre = False
 build_libceed = False
+build_gslib = False
 build_parallel = False
 build_serial = False
 
 ext_prefix = ''
 mfems_prefix = ''
 mfemp_prefix = ''
-mfem_source  = ''
+mfem_source = ''
 metis_prefix = ''
 hypre_prefix = ''
 
@@ -92,6 +95,10 @@ strumpack_prefix = ''
 enable_libceed = False
 libceed_prefix = ''
 libceed_only = False
+enable_gslib = False
+gslibs_prefix = ''
+gslibp_prefix = ''
+gslib_only = False
 
 dry_run = -1
 do_bdist_wheel = False
@@ -156,7 +163,8 @@ metadata = {'name': 'mfem',
                             'Programming Language :: Python :: 3.6',
                             'Programming Language :: Python :: 3.7',
                             'Programming Language :: Python :: 3.8',
-                            'Programming Language :: Python :: 3.9', ],
+                            'Programming Language :: Python :: 3.9',
+                            'Programming Language :: Python :: 3.10', ],
             'keywords': [k for k in keywords.split('\n') if k],
             'platforms': [p for p in platforms.split('\n') if p],
             'license': 'BSD-3',
@@ -170,6 +178,7 @@ metadata = {'name': 'mfem',
 
 def abspath(path):
     return os.path.abspath(os.path.expanduser(path))
+
 
 '''
 def install_prefix():
@@ -187,8 +196,8 @@ def install_prefix():
         ))
 
     for path in paths:
-        if verbose:
-            print("testing installation path", path)
+        #if verbose:
+        #    print("testing installation path", path)
         if os.path.exists(path):
             path = os.path.dirname(path)
             path = os.path.dirname(path)
@@ -199,6 +208,7 @@ def install_prefix():
     assert False, "no installation path found"
     return None
 '''
+
 
 def external_install_prefix(verbose=True):
     if '--user' in sys.argv:
@@ -214,8 +224,8 @@ def external_install_prefix(verbose=True):
         ))
 
     for path in paths:
-        if verbose:
-            print("testing installation path", path)
+        # if verbose:
+        #    print("testing installation path", path)
         if os.path.exists(path):
             path = os.path.join(path, 'mfem', 'external')
             return path
@@ -351,6 +361,8 @@ def find_libpath_from_prefix(lib, prefix0):
 ###
 #  build libraries
 ###
+
+
 def cmake_make_hypre():
     '''
     build hypre
@@ -435,7 +447,7 @@ def make_metis(use_int64=False, use_real64=False):
     os.chdir(pwd)
 
 
-def make_libceed(serial=True):
+def make_libceed(serial=False):
     if verbose:
         print("Building libceed")
 
@@ -444,12 +456,37 @@ def make_libceed(serial=True):
         assert False, "libceed is not downloaded"
 
     pwd = chdir(path)
+    make_call(['make', 'clean'])
 
     if enable_cuda:
         command = ['make', 'configure', 'CUDA_DIR='+cuda_prefix]
         make_call(command)
+
     make('libceed')
     make_install('libceed', prefix=libceed_prefix)
+    os.chdir(pwd)
+
+
+def make_gslib(serial=False):
+    if verbose:
+        print("Building gslib")
+
+    path = os.path.join(extdir, 'gslib')
+    if not os.path.exists(path):
+        assert False, "gslib is not downloaded"
+
+    pwd = chdir(path)
+    make_call(['make', 'clean'])
+    if serial:
+        command = ['make', 'CC=' + cc_command, 'MPI=0', 'CFLAGS=-fPIC']
+        make_call(command)
+        command = ['make', 'DESTDIR=' + gslibs_prefix]
+        make_call(command)
+    else:
+        command = ['make', 'CC=' + mpicc_command, 'CFLAGS=-O2 -fPIC']
+        make_call(command)
+        command = ['make', 'DESTDIR=' + gslibp_prefix]
+        make_call(command)
     os.chdir(pwd)
 
 
@@ -465,7 +502,7 @@ def cmake_make_mfem(serial=True):
         os.makedirs(path)
 
     ldflags = os.getenv('LDFLAGS') if os.getenv('LDFLAGS') is not None else ''
-    
+
     cmake_opts = {'DCMAKE_VERBOSE_MAKEFILE': '1',
                   'DBUILD_SHARED_LIBS': '1',
                   'DMFEM_ENABLE_EXAMPLES': '1',
@@ -513,6 +550,14 @@ def cmake_make_mfem(serial=True):
     if enable_libceed:
         cmake_opts['DMFEM_USE_CEED'] = '1'
         cmake_opts['DCEED_DIR'] = libceed_prefix
+    if enable_gslib:
+        if serial:
+            pass
+            #cmake_opts['DMFEM_USE_GSLIB'] = '1'
+            #cmake_opts['DGSLIB_DIR'] = gslibs_prefix
+        else:
+            cmake_opts['DMFEM_USE_GSLIB'] = '1'
+            cmake_opts['DGSLIB_DIR'] = gslibp_prefix
 
     pwd = chdir(path)
     cmake('..', **cmake_opts)
@@ -531,10 +576,10 @@ def write_setup_local():
     '''
     import numpy
 
-    #if build_mfem:
+    # if build_mfem:
     #    mfemser = os.path.join(prefix, 'mfem', 'ser')
     #    mfempar = os.path.join(prefix, 'mfem', 'par')
-    #else:
+    # else:
     mfemser = mfems_prefix
     mfempar = mfemp_prefix
 
@@ -569,7 +614,12 @@ def write_setup_local():
               'add_strumpack': '',
               'add_cuda': '',
               'add_libceed': '',
+              'add_gslib': '',
+              'add_gslibp': '',
+              'add_gslibs': '',
               'libceedinc': os.path.join(libceed_prefix, 'include'),
+              'gslibsinc': os.path.join(gslibs_prefix, 'include'),
+              'gslibpinc': os.path.join(gslibp_prefix, 'include'),
               'cxx11flag': cxx11_flag,
               }
 
@@ -592,10 +642,12 @@ def write_setup_local():
         add_extra('strumpack')
     if enable_cuda:
         add_extra('cuda')
-
     if enable_libceed:
         add_extra('libceed')
-        print("libceedinc", os.path.join(libceed_prefix, 'include'))
+    # if enable_gslib:
+    #    add_extra('gslibs')
+    if enable_gslib:
+        add_extra('gslibp')
 
     pwd = chdir(rootdir)
 
@@ -635,7 +687,6 @@ def generate_wrapper():
             return True
         return os.path.getmtime(ifile) > os.path.getmtime(wfile)
 
-
     mfemser = mfems_prefix
     mfempar = mfemp_prefix
 
@@ -657,7 +708,7 @@ def generate_wrapper():
 
     serflag = ['-I' + os.path.join(mfemser, 'include'),
                '-I' + os.path.join(mfemser, 'include', 'mfem'),
-               '-I' + os.path.abspath(mfem_source)]    
+               '-I' + os.path.abspath(mfem_source)]
     for file in ifiles():
         if not check_new(file):
             continue
@@ -673,7 +724,7 @@ def generate_wrapper():
     import mpi4py
     parflag = ['-I' + os.path.join(mfempar, 'include'),
                '-I' + os.path.join(mfempar, 'include', 'mfem'),
-               '-I' + os.path.abspath(mfem_source),               
+               '-I' + os.path.abspath(mfem_source),
                '-I' + os.path.join(hypre_prefix, 'include'),
                '-I' + os.path.join(metis_prefix, 'include'),
                '-I' + mpi4py.get_include()]
@@ -760,6 +811,7 @@ def print_config():
     print(" build metis : " + ("Yes" if build_metis else "No"))
     print(" build hypre : " + ("Yes" if build_hypre else "No"))
     print(" build libceed : " + ("Yes" if build_libceed else "No"))
+    print(" build gslib : " + ("Yes" if build_gslib else "No"))
     print(" call SWIG wrapper generator: " + ("Yes" if run_swig else "No"))
     print(" build serial wrapper: " + ("Yes" if build_serial else "No"))
     print(" build parallel wrapper : " + ("Yes" if build_parallel else "No"))
@@ -780,8 +832,10 @@ def configure_install(self):
     global prefix, dry_run, verbose, ext_prefix
     global clean_swig, run_swig, swig_only, skip_install
     global build_mfem, build_mfemp, build_parallel, build_serial
+
     global mfem_branch, mfem_source
-    global build_metis, build_hypre, build_libceed
+    global build_metis, build_hypre, build_libceed, build_gslib
+
     global mfems_prefix, mfemp_prefix, metis_prefix, hypre_prefix
     global cc_command, cxx_command, mpicc_command, mpicxx_command
     global metis_64
@@ -789,6 +843,7 @@ def configure_install(self):
     global enable_pumi, pumi_prefix
     global enable_strumpack, strumpack_prefix
     global enable_libceed, libceed_prefix, libceed_only
+    global enable_gslib, gslibs_prefix, gslibp_prefix, gslib_only
 
     verbose = bool(self.verbose) if verbose == -1 else verbose
     dry_run = bool(self.dry_run) if dry_run == -1 else dry_run
@@ -797,12 +852,11 @@ def configure_install(self):
 
     prefix = abspath(self.prefix)
     mfem_source = abspath(self.mfem_source)
-    
+
     skip_ext = bool(self.skip_ext)
     skip_install = bool(self.build_only)
     swig_only = bool(self.swig)
     ext_only = bool(self.ext_only)
-
 
     metis_64 = bool(self.with_metis64)
     enable_pumi = bool(self.with_pumi)
@@ -810,10 +864,11 @@ def configure_install(self):
     enable_cuda = bool(self.with_cuda)
     enable_libceed = bool(self.with_libceed)
     libceed_only = bool(self.libceed_only)
+    enable_gslib = bool(self.with_gslib)
+    gslib_only = bool(self.gslib_only)
 
     build_parallel = bool(self.with_parallel)     # controlls PyMFEM parallel
     build_serial = not bool(self.no_serial)
-
 
     run_swig = swig_only
 
@@ -883,20 +938,30 @@ def configure_install(self):
         metis_prefix = os.path.expanduser(self.metis_prefix)
         build_metis = False
 
-    if enable_libceed:
+    if enable_libceed or libceed_only:
         if self.libceed_prefix != '':
-            #check = find_libpath_from_prefix('metis', self.metis_prefix)
-            #assert check != '', "libmetis.so is not found in the specified <path>/lib or lib64"
             libceed_prefix = os.path.expanduser(self.libceed_prefix)
             build_libceed = False
         else:
             libceed_prefix = mfem_prefix
             build_libceed = True
 
+    if enable_gslib or gslib_only:
+        if self.gslib_prefix != '':
+            build_gslib = False
+            gslibs_prefix = os.path.expanduser(self.gslib_prefix)
+            gslibp_prefix = os.path.expanduser(self.gslib_prefix)
+        else:
+            gslibs_prefix = mfems_prefix
+            gslibp_prefix = mfemp_prefix
+            build_gslib = True
+
     if enable_pumi:
         run_swig = True
+
     if enable_strumpack:
         run_swig = True
+
     if self.pumi_prefix != '':
         pumi_prefix = abspath(self.pumi_prefix)
     else:
@@ -926,16 +991,17 @@ def configure_install(self):
         build_mfem = False
         build_mfemp = False
         build_libceed = False
+        build_gslib = False
 
     if swig_only:
         build_serial = False
-        
+
     if ext_only:
         clean_swig = False
         run_swig = False
         build_serial = False
         build_parallel = False
-        skip_install = Treu
+        skip_install = True
 
     if libceed_only:
         clean_swig = False
@@ -944,8 +1010,22 @@ def configure_install(self):
         build_mfemp = False
         build_metis = False
         build_hypre = False
+        build_gslib = False
         build_serial = False
         build_parallel = False
+        build_libceed = True
+        skip_install = True
+
+    if gslib_only:
+        clean_swig = False
+        run_swig = False
+        build_mfem = False
+        build_mfemp = False
+        build_metis = False
+        build_hypre = False
+        build_serial = False
+        build_libceed = False
+        build_gslib = True
         skip_install = True
 
     global is_configured
@@ -1016,9 +1096,12 @@ class Install(_install):
         ('with-metis64', None, 'use 64bit int in metis'),
         ('with-pumi', None, 'enable pumi (parallel only)'),
         ('pumi-prefix=', None, 'Specify locaiton of pumi'),
-        ('with-libceed', None, 'enable libceed (parallel only)'),
+        ('with-libceed', None, 'enable libceed'),
         ('libceed-prefix=', None, 'Specify locaiton of libceed'),
         ('libceed-only', None, 'Build libceed only'),
+        ('gslib-prefix=', None, 'Specify locaiton of gslib'),
+        ('with-gslib', None, 'enable gslib (parallel only)'),
+        ('gslib-only', None, 'Build gslib only'),
         ('with-strumpack', None, 'enable strumpack (parallel only)'),
         ('strumpack-prefix=', None, 'Specify locaiton of strumpack'),
     ]
@@ -1054,6 +1137,10 @@ class Install(_install):
         self.libceed_prefix = ''
         self.libceed_only = False
 
+        self.with_gslib = False
+        self.gslib_prefix = ''
+        self.gslib_only = False
+
         self.CC = ''
         self.CXX = ''
         self.MPICC = ''
@@ -1071,7 +1158,6 @@ class Install(_install):
             self.prefix = os.path.expanduser(self.prefix)
             prefix = self.prefix
 
-        _install.finalize_options(self)            
         global verbose
         verbose = bool(self.verbose)
         if given_prefix:
@@ -1081,6 +1167,12 @@ class Install(_install):
         else:
             if '--user' in sys.argv:
                 path = site.getusersitepackages()
+                if not os.path.exists(path):
+                    try:
+                        print("attempting to make a --user directory", path)
+                        os.makedirs(path)
+                    except BaseException:
+                        pass
                 if os.path.exists(path):
                     path = os.path.dirname(path)
                     path = os.path.dirname(path)
@@ -1090,6 +1182,10 @@ class Install(_install):
                 self.prefix = path
             else:
                 self.prefix = sys.prefix
+
+        self.user = 0
+        _install.finalize_options(self)
+
         if verbose:
             print("prefix is :", self.prefix)
 
@@ -1127,6 +1223,11 @@ class BuildPy(_build_py):
             if build_libceed:
                 download('libceed')
                 make_libceed()
+            if build_gslib:
+                download('gslib')
+                make_gslib()
+                make_gslib(serial=True)
+
             mfem_downloaded = False
             if build_mfem:
                 download('mfem') if mfem_branch is None else gitclone('mfem')
@@ -1150,8 +1251,11 @@ class BuildPy(_build_py):
             make_mfem_wrapper(serial=True)
         if build_parallel:
             make_mfem_wrapper(serial=False)
+
         if not skip_install:
             _build_py.run(self)
+        else:
+            sys.exit()
 
 
 if haveWheel:
@@ -1285,7 +1389,7 @@ def run_setup():
         cmdclass['bdist_wheel'] = BdistWheel
 
     install_req = install_requires()
-    print(install_req)
+    # print(install_req)
     setup(
         cmdclass=cmdclass,
         install_requires=install_req,

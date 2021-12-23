@@ -83,6 +83,7 @@ import mfem._ser.sort_pairs
 import mfem._ser.ncmesh
 import mfem._ser.gridfunc
 import mfem._ser.coefficient
+import mfem._ser.symmat
 import mfem._ser.sparsemat
 import mfem._ser.eltrans
 import mfem._ser.fe

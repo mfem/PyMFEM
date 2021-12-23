@@ -74,6 +74,7 @@ import mfem._ser.coefficient
 import mfem._ser.globals
 import mfem._ser.matrix
 import mfem._ser.operators
+import mfem._ser.symmat
 import mfem._ser.intrules
 import mfem._ser.sparsemat
 import mfem._ser.densemat
@@ -208,14 +209,16 @@ class ComplexLinearForm(mfem._ser.vector.Vector):
         return _complex_fem.ComplexLinearForm_SetConvention(self, convention)
     SetConvention = _swig_new_instance_method(_complex_fem.ComplexLinearForm_SetConvention)
 
-    def AddDomainIntegrator(self, lfi_real, lfi_imag):
-        r"""AddDomainIntegrator(ComplexLinearForm self, LinearFormIntegrator lfi_real, LinearFormIntegrator lfi_imag)"""
-        val = _complex_fem.ComplexLinearForm_AddDomainIntegrator(self, lfi_real, lfi_imag)
+    def AddDomainIntegrator(self, *args):
+        r"""
+        AddDomainIntegrator(ComplexLinearForm self, LinearFormIntegrator lfi_real, LinearFormIntegrator lfi_imag)
+        AddDomainIntegrator(ComplexLinearForm self, LinearFormIntegrator lfi_real, LinearFormIntegrator lfi_imag, intArray elem_attr_marker)
+        """
+        val = _complex_fem.ComplexLinearForm_AddDomainIntegrator(self, *args)
 
-        self._intg = (lfi_real, lfi_imag)
-        if  hasattr(lfi_real, "thisown"): lfi_real.thisown=0
-        if  hasattr(lfi_imag, "thisown"): lfi_imag.thisown=0
-        lfi_imag.thisown=0
+        self._intg = args
+        if  hasattr(args[0], "thisown"): args[0].thisown=0
+        if  hasattr(args[1], "thisown"): args[1].thisown=0
 
 
         return val
@@ -229,7 +232,7 @@ class ComplexLinearForm(mfem._ser.vector.Vector):
         val = _complex_fem.ComplexLinearForm_AddBoundaryIntegrator(self, *args)
 
         self._intg = args
-        if  hasattr(args[0], "thisown"): args[1].thisown=0
+        if  hasattr(args[0], "thisown"): args[0].thisown=0
         if  hasattr(args[1], "thisown"): args[1].thisown=0
 
 
@@ -244,7 +247,7 @@ class ComplexLinearForm(mfem._ser.vector.Vector):
         val = _complex_fem.ComplexLinearForm_AddBdrFaceIntegrator(self, *args)
 
         self._intg = args
-        if  hasattr(args[0], "thisown"): args[1].thisown=0
+        if  hasattr(args[0], "thisown"): args[0].thisown=0
         if  hasattr(args[1], "thisown"): args[1].thisown=0
 
 
@@ -347,13 +350,16 @@ class SesquilinearForm(object):
         return _complex_fem.SesquilinearForm_imag(self, *args)
     imag = _swig_new_instance_method(_complex_fem.SesquilinearForm_imag)
 
-    def AddDomainIntegrator(self, bfi_real, bfi_imag):
-        r"""AddDomainIntegrator(SesquilinearForm self, BilinearFormIntegrator bfi_real, BilinearFormIntegrator bfi_imag)"""
-        val = _complex_fem.SesquilinearForm_AddDomainIntegrator(self, bfi_real, bfi_imag)
+    def AddDomainIntegrator(self, *args):
+        r"""
+        AddDomainIntegrator(SesquilinearForm self, BilinearFormIntegrator bfi_real, BilinearFormIntegrator bfi_imag)
+        AddDomainIntegrator(SesquilinearForm self, BilinearFormIntegrator bfi_real, BilinearFormIntegrator bfi_imag, intArray elem_marker)
+        """
+        val = _complex_fem.SesquilinearForm_AddDomainIntegrator(self, *args)
 
-        self._intg = (bfi_real, bfi_imag)
-        if hasattr(bfi_real, "thisown"): bfi_real.thisown=0
-        if hasattr(bfi_imag, "thisown"): bfi_imag.thisown=0
+        self._intg = args
+        if  hasattr(args[0], "thisown"): args[0].thisown=0
+        if  hasattr(args[1], "thisown"): args[1].thisown=0
 
 
         return val
@@ -367,7 +373,7 @@ class SesquilinearForm(object):
         val = _complex_fem.SesquilinearForm_AddBoundaryIntegrator(self, *args)
 
         self._intg = args
-        if  hasattr(args[0], "thisown"): args[1].thisown=0
+        if  hasattr(args[0], "thisown"): args[0].thisown=0
         if  hasattr(args[1], "thisown"): args[1].thisown=0
 
 
@@ -394,7 +400,7 @@ class SesquilinearForm(object):
         val = _complex_fem.SesquilinearForm_AddBdrFaceIntegrator(self, *args)
 
         self._intg = args
-        if  hasattr(args[0], "thisown"): args[1].thisown=0
+        if  hasattr(args[0], "thisown"): args[0].thisown=0
         if  hasattr(args[1], "thisown"): args[1].thisown=0
 
 

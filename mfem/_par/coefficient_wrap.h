@@ -19,6 +19,7 @@ class SwigDirector_PyCoefficientBase : public mfem::PyCoefficientBase, public Sw
 
 public:
     SwigDirector_PyCoefficientBase(PyObject *self, int tdep);
+    virtual void SetTime(double t);
     virtual double Eval(mfem::ElementTransformation &T, mfem::IntegrationPoint const &ip);
     virtual ~SwigDirector_PyCoefficientBase();
     virtual double _EvalPy(mfem::Vector &arg0);
@@ -53,7 +54,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[3];
+    mutable swig::SwigVar_PyObject vtable[4];
 #endif
 
 };
@@ -63,6 +64,7 @@ class SwigDirector_VectorPyCoefficientBase : public mfem::VectorPyCoefficientBas
 
 public:
     SwigDirector_VectorPyCoefficientBase(PyObject *self, int dim, int tdep, mfem::Coefficient *q = NULL);
+    virtual void SetTime(double t);
     virtual void Eval(mfem::Vector &V, mfem::ElementTransformation &T, mfem::IntegrationPoint const &ip);
     virtual void Eval(mfem::DenseMatrix &M, mfem::ElementTransformation &T, mfem::IntegrationRule const &ir);
     virtual ~SwigDirector_VectorPyCoefficientBase();
@@ -98,7 +100,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[4];
+    mutable swig::SwigVar_PyObject vtable[5];
 #endif
 
 };
@@ -108,6 +110,7 @@ class SwigDirector_MatrixPyCoefficientBase : public mfem::MatrixPyCoefficientBas
 
 public:
     SwigDirector_MatrixPyCoefficientBase(PyObject *self, int dim, int tdep);
+    virtual void SetTime(double t);
     virtual void Eval(mfem::DenseMatrix &K, mfem::ElementTransformation &T, mfem::IntegrationPoint const &ip);
     virtual void EvalSymmetric(mfem::Vector &K, mfem::ElementTransformation &T, mfem::IntegrationPoint const &ip);
     virtual ~SwigDirector_MatrixPyCoefficientBase();
@@ -143,7 +146,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[4];
+    mutable swig::SwigVar_PyObject vtable[5];
 #endif
 
 };

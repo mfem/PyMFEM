@@ -154,6 +154,14 @@ class DofTransformation(object):
         return _doftrans.DofTransformation_InvTransformPrimal(self, *args)
     InvTransformPrimal = _swig_new_instance_method(_doftrans.DofTransformation_InvTransformPrimal)
 
+    def InvTransformDual(self, *args):
+        r"""
+        InvTransformDual(DofTransformation self, double * v)
+        InvTransformDual(DofTransformation self, Vector v)
+        """
+        return _doftrans.DofTransformation_InvTransformDual(self, *args)
+    InvTransformDual = _swig_new_instance_method(_doftrans.DofTransformation_InvTransformDual)
+
     def TransformDual(self, *args):
         r"""
         TransformDual(DofTransformation self, double * v)
@@ -245,6 +253,14 @@ class VDofTransformation(DofTransformation):
         """
         return _doftrans.VDofTransformation_TransformDual(self, *args)
     TransformDual = _swig_new_instance_method(_doftrans.VDofTransformation_TransformDual)
+
+    def InvTransformDual(self, *args):
+        r"""
+        InvTransformDual(VDofTransformation self, Vector v)
+        InvTransformDual(VDofTransformation self, double * v)
+        """
+        return _doftrans.VDofTransformation_InvTransformDual(self, *args)
+    InvTransformDual = _swig_new_instance_method(_doftrans.VDofTransformation_InvTransformDual)
     __swig_destroy__ = _doftrans.delete_VDofTransformation
 
 # Register VDofTransformation in _doftrans:
@@ -318,6 +334,14 @@ class ND_TriDofTransformation(ND_DofTransformation):
         """
         return _doftrans.ND_TriDofTransformation_TransformDual(self, *args)
     TransformDual = _swig_new_instance_method(_doftrans.ND_TriDofTransformation_TransformDual)
+
+    def InvTransformDual(self, *args):
+        r"""
+        InvTransformDual(ND_TriDofTransformation self, double * v)
+        InvTransformDual(ND_TriDofTransformation self, Vector v)
+        """
+        return _doftrans.ND_TriDofTransformation_InvTransformDual(self, *args)
+    InvTransformDual = _swig_new_instance_method(_doftrans.ND_TriDofTransformation_InvTransformDual)
     __swig_destroy__ = _doftrans.delete_ND_TriDofTransformation
 
 # Register ND_TriDofTransformation in _doftrans:
@@ -356,6 +380,14 @@ class ND_TetDofTransformation(ND_DofTransformation):
         """
         return _doftrans.ND_TetDofTransformation_TransformDual(self, *args)
     TransformDual = _swig_new_instance_method(_doftrans.ND_TetDofTransformation_TransformDual)
+
+    def InvTransformDual(self, *args):
+        r"""
+        InvTransformDual(ND_TetDofTransformation self, Vector v)
+        InvTransformDual(ND_TetDofTransformation self, double * v)
+        """
+        return _doftrans.ND_TetDofTransformation_InvTransformDual(self, *args)
+    InvTransformDual = _swig_new_instance_method(_doftrans.ND_TetDofTransformation_InvTransformDual)
     __swig_destroy__ = _doftrans.delete_ND_TetDofTransformation
 
 # Register ND_TetDofTransformation in _doftrans:
@@ -394,6 +426,14 @@ class ND_WedgeDofTransformation(ND_DofTransformation):
         """
         return _doftrans.ND_WedgeDofTransformation_TransformDual(self, *args)
     TransformDual = _swig_new_instance_method(_doftrans.ND_WedgeDofTransformation_TransformDual)
+
+    def InvTransformDual(self, *args):
+        r"""
+        InvTransformDual(ND_WedgeDofTransformation self, Vector v)
+        InvTransformDual(ND_WedgeDofTransformation self, double * v)
+        """
+        return _doftrans.ND_WedgeDofTransformation_InvTransformDual(self, *args)
+    InvTransformDual = _swig_new_instance_method(_doftrans.ND_WedgeDofTransformation_InvTransformDual)
     __swig_destroy__ = _doftrans.delete_ND_WedgeDofTransformation
 
 # Register ND_WedgeDofTransformation in _doftrans:
