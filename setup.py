@@ -1073,6 +1073,7 @@ def configure_bdist(self):
     '''
     global prefix, dry_run, verbose, run_swig
     global build_mfem, build_parallel, build_serial
+    global mfem_branch, mfem_source
 
     global cc_command, cxx_command, mpicc_command, mpicxx_command
     global enable_pumi, pumi_prefix
@@ -1090,6 +1091,8 @@ def configure_bdist(self):
     global is_configured
     is_configured = True
     do_bdist_wheel = True
+
+    mfem_source = './external/mfem'
 
 
 class Install(_install):
