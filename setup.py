@@ -344,7 +344,7 @@ def gitclone(xxx, use_sha=False, branch='master'):
     os.chdir(repo_xxx)
     if use_sha:
         sha = repos_sha[xxx]
-        command = ['git', 'checkout',  sha]        
+        command = ['git', 'checkout',  sha]
     else:
         command = ['git', 'checkout', branch]
     make_call(command)
@@ -367,7 +367,7 @@ def record_mfem_sha(mfem_source):
     sha_file = os.path.join('mfem', '__sha__.py')
     fid = open(sha_file, 'w')
     if sha is not None:
-       fid.write("mfem = " + sha)
+       fid.write('mfem = "' + sha + '"')
     fid.close()
 
 def cmake(path, **kwargs):
