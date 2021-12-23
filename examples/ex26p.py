@@ -162,10 +162,13 @@ def run(order_refinements=2,
     # 9. Solve the linear system A X = B.
     cg = mfem.CGSolver(MPI.COMM_WORLD)
     cg.SetRelTol(1e-12)
-    cg.SetMaxIter(2000)
+    cg.SetMaxIter(200)
     cg.SetPrintLevel(1)
     cg.SetOperator(A.Ptr())
     cg.SetPreconditioner(M)
+
+    import sys
+    sys.setrecursionlimit(200000)
     cg.Mult(B, X)
 
     # 10. Recover the solution as a finite element grid function.

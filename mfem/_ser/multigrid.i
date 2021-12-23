@@ -3,7 +3,7 @@
    multigrid.i
 
 */
-%module(package="mfem._ser", director=1) multigrid
+%module(package="mfem._ser") multigrid
 %feature("autodoc", "1");
 %{
 #include "linalg/operator.hpp"
@@ -11,6 +11,7 @@
 #include "fem/multigrid.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
+#include "../common/pycoefficient.hpp"  
 %}
 %init %{
 import_array();
@@ -22,48 +23,54 @@ import_array();
 %import "bilinearform.i"
 %import "fespacehierarchy.i"
 %import "../common/exception_director.i"
-   
-%feature("director") mfem::PyGeometricMultigrid;
+%import "../common/object_array_typemap.i"
 
-%pythonprepend PyGeometricMultigrid::AppendBilinearForm %{
+ObjectArrayInput(mfem::Solver *);
+ObjectArrayInput(mfem::Operator *);
+BoolArrayInput(bool);
+
+//%feature("director") mfem::PyGeometricMultigrid;
+
+%pythonprepend mfem::PyGeometricMultigrid::AppendBilinearForm %{
    if not hasattr(self, "_forms"): self._forms = []
    self._forms.append(form)
    form.thisown = 0
 %}
-%pythonprepend PyGeometricMultigrid::AppendEssentialTDofs %{
+%pythonprepend mfem::PyGeometricMultigrid::AppendEssentialTDofs %{
    if not hasattr(self, "_esss"): self._esss = []
    self._esss.append(ess)	    
    ess.thisown = 0
 %}
-%feature("shadow") PyGeometricMultigrid::_pybfs %{
+%feature("shadow") mfem::PyGeometricMultigrid::_pybfs %{
   @property						     
   def bfs(self):
      return self._forms
  %}       
-%feature("shadow") PyGeometricMultigrid::_pyess %{       
+%feature("shadow") mfem::PyGeometricMultigrid::_pyess %{       
   @property						     
   def essentialTrueDofs(self):
      return self._esss
-%}		
-
+%}
 %include "fem/multigrid.hpp"
 
 %inline %{
-class PyGeometricMultigrid : public mfem::GeometricMultigrid
+  namespace mfem{
+class PyGeometricMultigrid : public GeometricMultigrid
 {
 public:
- PyGeometricMultigrid(const mfem::FiniteElementSpaceHierarchy& fespaces_) 
-   : mfem::GeometricMultigrid(fespaces_){}
+ PyGeometricMultigrid(const FiniteElementSpaceHierarchy& fespaces_) 
+   : GeometricMultigrid(fespaces_){}
   
-  void AppendBilinearForm(mfem::BilinearForm *form){
+  void AppendBilinearForm(BilinearForm *form){
     bfs.Append(form);
   }
-  void AppendEssentialTDofs(mfem::Array<int> *ess){
+  void AppendEssentialTDofs(Array<int> *ess){
       essentialTrueDofs.Append(ess);
   }
   void _pybfs(void){}
   void _pyess(void){}  
 };
+  } /* end of namespace */
 %}
 
   

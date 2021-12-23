@@ -69,11 +69,15 @@ MemoryType_HOST_32 = _mem_manager.MemoryType_HOST_32
 MemoryType_HOST_64 = _mem_manager.MemoryType_HOST_64
 MemoryType_HOST_DEBUG = _mem_manager.MemoryType_HOST_DEBUG
 MemoryType_HOST_UMPIRE = _mem_manager.MemoryType_HOST_UMPIRE
+MemoryType_HOST_PINNED = _mem_manager.MemoryType_HOST_PINNED
 MemoryType_MANAGED = _mem_manager.MemoryType_MANAGED
 MemoryType_DEVICE = _mem_manager.MemoryType_DEVICE
 MemoryType_DEVICE_DEBUG = _mem_manager.MemoryType_DEVICE_DEBUG
 MemoryType_DEVICE_UMPIRE = _mem_manager.MemoryType_DEVICE_UMPIRE
+MemoryType_DEVICE_UMPIRE_2 = _mem_manager.MemoryType_DEVICE_UMPIRE_2
 MemoryType_SIZE = _mem_manager.MemoryType_SIZE
+MemoryType_PRESERVE = _mem_manager.MemoryType_PRESERVE
+MemoryType_DEFAULT = _mem_manager.MemoryType_DEFAULT
 MemoryClass_HOST = _mem_manager.MemoryClass_HOST
 MemoryClass_HOST_32 = _mem_manager.MemoryClass_HOST_32
 MemoryClass_HOST_64 = _mem_manager.MemoryClass_HOST_64
@@ -92,6 +96,10 @@ def GetMemoryType(mc):
     return _mem_manager.GetMemoryType(mc)
 GetMemoryType = _mem_manager.GetMemoryType
 
+def MemoryClassContainsType(mc, mt):
+    return _mem_manager.MemoryClassContainsType(mc, mt)
+MemoryClassContainsType = _mem_manager.MemoryClassContainsType
+
 def __mul__(mc1, mc2):
     return _mem_manager.__mul__(mc1, mc2)
 __mul__ = _mem_manager.__mul__
@@ -106,6 +114,16 @@ class MemoryManager(object):
     def Init(self):
         return _mem_manager.MemoryManager_Init(self)
     Init = _swig_new_instance_method(_mem_manager.MemoryManager_Init)
+
+    @staticmethod
+    def GetDualMemoryType(mt):
+        return _mem_manager.MemoryManager_GetDualMemoryType(mt)
+    GetDualMemoryType = _swig_new_static_method(_mem_manager.MemoryManager_GetDualMemoryType)
+
+    @staticmethod
+    def SetDualMemoryType(mt, dual_mt):
+        return _mem_manager.MemoryManager_SetDualMemoryType(mt, dual_mt)
+    SetDualMemoryType = _swig_new_static_method(_mem_manager.MemoryManager_SetDualMemoryType)
 
     def Configure(self, h_mt, d_mt):
         return _mem_manager.MemoryManager_Configure(self, h_mt, d_mt)
@@ -153,6 +171,14 @@ HostMemoryType = cvar.HostMemoryType
 HostMemoryTypeSize = cvar.HostMemoryTypeSize
 DeviceMemoryType = cvar.DeviceMemoryType
 DeviceMemoryTypeSize = cvar.DeviceMemoryTypeSize
+
+def MemoryManager_GetDualMemoryType(mt):
+    return _mem_manager.MemoryManager_GetDualMemoryType(mt)
+MemoryManager_GetDualMemoryType = _mem_manager.MemoryManager_GetDualMemoryType
+
+def MemoryManager_SetDualMemoryType(mt, dual_mt):
+    return _mem_manager.MemoryManager_SetDualMemoryType(mt, dual_mt)
+MemoryManager_SetDualMemoryType = _mem_manager.MemoryManager_SetDualMemoryType
 
 def MemoryManager_GetHostMemoryType():
     return _mem_manager.MemoryManager_GetHostMemoryType()

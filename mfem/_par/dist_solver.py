@@ -79,6 +79,7 @@ import mfem._par.intrules
 import mfem._par.table
 import mfem._par.hash
 import mfem._par.coefficient
+import mfem._par.symmat
 import mfem._par.sparsemat
 import mfem._par.eltrans
 import mfem._par.fe

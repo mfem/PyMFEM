@@ -76,6 +76,7 @@ import mfem._ser.ncmesh
 import mfem._ser.globals
 import mfem._ser.gridfunc
 import mfem._ser.coefficient
+import mfem._ser.symmat
 import mfem._ser.intrules
 import mfem._ser.sparsemat
 import mfem._ser.densemat
@@ -105,6 +106,500 @@ import mfem._ser.linearform
 import mfem._ser.nonlininteg
 import mfem._ser.vertex
 import mfem._ser.vtk
+class SwigPyIterator(object):
+    r"""Proxy of C++ swig::SwigPyIterator class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _mesh.delete_SwigPyIterator
+
+    def value(self):
+        r"""value(SwigPyIterator self) -> PyObject *"""
+        return _mesh.SwigPyIterator_value(self)
+    value = _swig_new_instance_method(_mesh.SwigPyIterator_value)
+
+    def incr(self, n=1):
+        r"""incr(SwigPyIterator self, size_t n=1) -> SwigPyIterator"""
+        return _mesh.SwigPyIterator_incr(self, n)
+    incr = _swig_new_instance_method(_mesh.SwigPyIterator_incr)
+
+    def decr(self, n=1):
+        r"""decr(SwigPyIterator self, size_t n=1) -> SwigPyIterator"""
+        return _mesh.SwigPyIterator_decr(self, n)
+    decr = _swig_new_instance_method(_mesh.SwigPyIterator_decr)
+
+    def distance(self, x):
+        r"""distance(SwigPyIterator self, SwigPyIterator x) -> ptrdiff_t"""
+        return _mesh.SwigPyIterator_distance(self, x)
+    distance = _swig_new_instance_method(_mesh.SwigPyIterator_distance)
+
+    def equal(self, x):
+        r"""equal(SwigPyIterator self, SwigPyIterator x) -> bool"""
+        return _mesh.SwigPyIterator_equal(self, x)
+    equal = _swig_new_instance_method(_mesh.SwigPyIterator_equal)
+
+    def copy(self):
+        r"""copy(SwigPyIterator self) -> SwigPyIterator"""
+        return _mesh.SwigPyIterator_copy(self)
+    copy = _swig_new_instance_method(_mesh.SwigPyIterator_copy)
+
+    def next(self):
+        r"""next(SwigPyIterator self) -> PyObject *"""
+        return _mesh.SwigPyIterator_next(self)
+    next = _swig_new_instance_method(_mesh.SwigPyIterator_next)
+
+    def __next__(self):
+        r"""__next__(SwigPyIterator self) -> PyObject *"""
+        return _mesh.SwigPyIterator___next__(self)
+    __next__ = _swig_new_instance_method(_mesh.SwigPyIterator___next__)
+
+    def previous(self):
+        r"""previous(SwigPyIterator self) -> PyObject *"""
+        return _mesh.SwigPyIterator_previous(self)
+    previous = _swig_new_instance_method(_mesh.SwigPyIterator_previous)
+
+    def advance(self, n):
+        r"""advance(SwigPyIterator self, ptrdiff_t n) -> SwigPyIterator"""
+        return _mesh.SwigPyIterator_advance(self, n)
+    advance = _swig_new_instance_method(_mesh.SwigPyIterator_advance)
+
+    def __eq__(self, x):
+        r"""__eq__(SwigPyIterator self, SwigPyIterator x) -> bool"""
+        return _mesh.SwigPyIterator___eq__(self, x)
+    __eq__ = _swig_new_instance_method(_mesh.SwigPyIterator___eq__)
+
+    def __ne__(self, x):
+        r"""__ne__(SwigPyIterator self, SwigPyIterator x) -> bool"""
+        return _mesh.SwigPyIterator___ne__(self, x)
+    __ne__ = _swig_new_instance_method(_mesh.SwigPyIterator___ne__)
+
+    def __iadd__(self, n):
+        r"""__iadd__(SwigPyIterator self, ptrdiff_t n) -> SwigPyIterator"""
+        return _mesh.SwigPyIterator___iadd__(self, n)
+    __iadd__ = _swig_new_instance_method(_mesh.SwigPyIterator___iadd__)
+
+    def __isub__(self, n):
+        r"""__isub__(SwigPyIterator self, ptrdiff_t n) -> SwigPyIterator"""
+        return _mesh.SwigPyIterator___isub__(self, n)
+    __isub__ = _swig_new_instance_method(_mesh.SwigPyIterator___isub__)
+
+    def __add__(self, n):
+        r"""__add__(SwigPyIterator self, ptrdiff_t n) -> SwigPyIterator"""
+        return _mesh.SwigPyIterator___add__(self, n)
+    __add__ = _swig_new_instance_method(_mesh.SwigPyIterator___add__)
+
+    def __sub__(self, *args):
+        r"""
+        __sub__(SwigPyIterator self, ptrdiff_t n) -> SwigPyIterator
+        __sub__(SwigPyIterator self, SwigPyIterator x) -> ptrdiff_t
+        """
+        return _mesh.SwigPyIterator___sub__(self, *args)
+    __sub__ = _swig_new_instance_method(_mesh.SwigPyIterator___sub__)
+    def __iter__(self):
+        return self
+
+# Register SwigPyIterator in _mesh:
+_mesh.SwigPyIterator_swigregister(SwigPyIterator)
+
+class vector_int(object):
+    r"""Proxy of C++ std::vector< int > class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def iterator(self):
+        r"""iterator(vector_int self) -> SwigPyIterator"""
+        return _mesh.vector_int_iterator(self)
+    iterator = _swig_new_instance_method(_mesh.vector_int_iterator)
+    def __iter__(self):
+        return self.iterator()
+
+    def __nonzero__(self):
+        r"""__nonzero__(vector_int self) -> bool"""
+        return _mesh.vector_int___nonzero__(self)
+    __nonzero__ = _swig_new_instance_method(_mesh.vector_int___nonzero__)
+
+    def __bool__(self):
+        r"""__bool__(vector_int self) -> bool"""
+        return _mesh.vector_int___bool__(self)
+    __bool__ = _swig_new_instance_method(_mesh.vector_int___bool__)
+
+    def __len__(self):
+        r"""__len__(vector_int self) -> std::vector< int >::size_type"""
+        return _mesh.vector_int___len__(self)
+    __len__ = _swig_new_instance_method(_mesh.vector_int___len__)
+
+    def __getslice__(self, i, j):
+        r"""__getslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j) -> vector_int"""
+        return _mesh.vector_int___getslice__(self, i, j)
+    __getslice__ = _swig_new_instance_method(_mesh.vector_int___getslice__)
+
+    def __setslice__(self, *args):
+        r"""
+        __setslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j)
+        __setslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j, vector_int v)
+        """
+        return _mesh.vector_int___setslice__(self, *args)
+    __setslice__ = _swig_new_instance_method(_mesh.vector_int___setslice__)
+
+    def __delslice__(self, i, j):
+        r"""__delslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j)"""
+        return _mesh.vector_int___delslice__(self, i, j)
+    __delslice__ = _swig_new_instance_method(_mesh.vector_int___delslice__)
+
+    def __delitem__(self, *args):
+        r"""
+        __delitem__(vector_int self, std::vector< int >::difference_type i)
+        __delitem__(vector_int self, PySliceObject * slice)
+        """
+        return _mesh.vector_int___delitem__(self, *args)
+    __delitem__ = _swig_new_instance_method(_mesh.vector_int___delitem__)
+
+    def __getitem__(self, *args):
+        r"""
+        __getitem__(vector_int self, PySliceObject * slice) -> vector_int
+        __getitem__(vector_int self, std::vector< int >::difference_type i) -> std::vector< int >::value_type const &
+        """
+        return _mesh.vector_int___getitem__(self, *args)
+    __getitem__ = _swig_new_instance_method(_mesh.vector_int___getitem__)
+
+    def __setitem__(self, *args):
+        r"""
+        __setitem__(vector_int self, PySliceObject * slice, vector_int v)
+        __setitem__(vector_int self, PySliceObject * slice)
+        __setitem__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::value_type const & x)
+        """
+        return _mesh.vector_int___setitem__(self, *args)
+    __setitem__ = _swig_new_instance_method(_mesh.vector_int___setitem__)
+
+    def pop(self):
+        r"""pop(vector_int self) -> std::vector< int >::value_type"""
+        return _mesh.vector_int_pop(self)
+    pop = _swig_new_instance_method(_mesh.vector_int_pop)
+
+    def append(self, x):
+        r"""append(vector_int self, std::vector< int >::value_type const & x)"""
+        return _mesh.vector_int_append(self, x)
+    append = _swig_new_instance_method(_mesh.vector_int_append)
+
+    def empty(self):
+        r"""empty(vector_int self) -> bool"""
+        return _mesh.vector_int_empty(self)
+    empty = _swig_new_instance_method(_mesh.vector_int_empty)
+
+    def size(self):
+        r"""size(vector_int self) -> std::vector< int >::size_type"""
+        return _mesh.vector_int_size(self)
+    size = _swig_new_instance_method(_mesh.vector_int_size)
+
+    def swap(self, v):
+        r"""swap(vector_int self, vector_int v)"""
+        return _mesh.vector_int_swap(self, v)
+    swap = _swig_new_instance_method(_mesh.vector_int_swap)
+
+    def begin(self):
+        r"""begin(vector_int self) -> std::vector< int >::iterator"""
+        return _mesh.vector_int_begin(self)
+    begin = _swig_new_instance_method(_mesh.vector_int_begin)
+
+    def end(self):
+        r"""end(vector_int self) -> std::vector< int >::iterator"""
+        return _mesh.vector_int_end(self)
+    end = _swig_new_instance_method(_mesh.vector_int_end)
+
+    def rbegin(self):
+        r"""rbegin(vector_int self) -> std::vector< int >::reverse_iterator"""
+        return _mesh.vector_int_rbegin(self)
+    rbegin = _swig_new_instance_method(_mesh.vector_int_rbegin)
+
+    def rend(self):
+        r"""rend(vector_int self) -> std::vector< int >::reverse_iterator"""
+        return _mesh.vector_int_rend(self)
+    rend = _swig_new_instance_method(_mesh.vector_int_rend)
+
+    def clear(self):
+        r"""clear(vector_int self)"""
+        return _mesh.vector_int_clear(self)
+    clear = _swig_new_instance_method(_mesh.vector_int_clear)
+
+    def get_allocator(self):
+        r"""get_allocator(vector_int self) -> std::vector< int >::allocator_type"""
+        return _mesh.vector_int_get_allocator(self)
+    get_allocator = _swig_new_instance_method(_mesh.vector_int_get_allocator)
+
+    def pop_back(self):
+        r"""pop_back(vector_int self)"""
+        return _mesh.vector_int_pop_back(self)
+    pop_back = _swig_new_instance_method(_mesh.vector_int_pop_back)
+
+    def erase(self, *args):
+        r"""
+        erase(vector_int self, std::vector< int >::iterator pos) -> std::vector< int >::iterator
+        erase(vector_int self, std::vector< int >::iterator first, std::vector< int >::iterator last) -> std::vector< int >::iterator
+        """
+        return _mesh.vector_int_erase(self, *args)
+    erase = _swig_new_instance_method(_mesh.vector_int_erase)
+
+    def __init__(self, *args):
+        r"""
+        __init__(vector_int self) -> vector_int
+        __init__(vector_int self, vector_int other) -> vector_int
+        __init__(vector_int self, std::vector< int >::size_type size) -> vector_int
+        __init__(vector_int self, std::vector< int >::size_type size, std::vector< int >::value_type const & value) -> vector_int
+        """
+        _mesh.vector_int_swiginit(self, _mesh.new_vector_int(*args))
+
+    def push_back(self, x):
+        r"""push_back(vector_int self, std::vector< int >::value_type const & x)"""
+        return _mesh.vector_int_push_back(self, x)
+    push_back = _swig_new_instance_method(_mesh.vector_int_push_back)
+
+    def front(self):
+        r"""front(vector_int self) -> std::vector< int >::value_type const &"""
+        return _mesh.vector_int_front(self)
+    front = _swig_new_instance_method(_mesh.vector_int_front)
+
+    def back(self):
+        r"""back(vector_int self) -> std::vector< int >::value_type const &"""
+        return _mesh.vector_int_back(self)
+    back = _swig_new_instance_method(_mesh.vector_int_back)
+
+    def assign(self, n, x):
+        r"""assign(vector_int self, std::vector< int >::size_type n, std::vector< int >::value_type const & x)"""
+        return _mesh.vector_int_assign(self, n, x)
+    assign = _swig_new_instance_method(_mesh.vector_int_assign)
+
+    def resize(self, *args):
+        r"""
+        resize(vector_int self, std::vector< int >::size_type new_size)
+        resize(vector_int self, std::vector< int >::size_type new_size, std::vector< int >::value_type const & x)
+        """
+        return _mesh.vector_int_resize(self, *args)
+    resize = _swig_new_instance_method(_mesh.vector_int_resize)
+
+    def insert(self, *args):
+        r"""
+        insert(vector_int self, std::vector< int >::iterator pos, std::vector< int >::value_type const & x) -> std::vector< int >::iterator
+        insert(vector_int self, std::vector< int >::iterator pos, std::vector< int >::size_type n, std::vector< int >::value_type const & x)
+        """
+        return _mesh.vector_int_insert(self, *args)
+    insert = _swig_new_instance_method(_mesh.vector_int_insert)
+
+    def reserve(self, n):
+        r"""reserve(vector_int self, std::vector< int >::size_type n)"""
+        return _mesh.vector_int_reserve(self, n)
+    reserve = _swig_new_instance_method(_mesh.vector_int_reserve)
+
+    def capacity(self):
+        r"""capacity(vector_int self) -> std::vector< int >::size_type"""
+        return _mesh.vector_int_capacity(self)
+    capacity = _swig_new_instance_method(_mesh.vector_int_capacity)
+    __swig_destroy__ = _mesh.delete_vector_int
+
+# Register vector_int in _mesh:
+_mesh.vector_int_swigregister(vector_int)
+
+class vector_Vector(object):
+    r"""Proxy of C++ std::vector< mfem::Vector > class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def iterator(self):
+        r"""iterator(vector_Vector self) -> SwigPyIterator"""
+        return _mesh.vector_Vector_iterator(self)
+    iterator = _swig_new_instance_method(_mesh.vector_Vector_iterator)
+    def __iter__(self):
+        return self.iterator()
+
+    def __nonzero__(self):
+        r"""__nonzero__(vector_Vector self) -> bool"""
+        return _mesh.vector_Vector___nonzero__(self)
+    __nonzero__ = _swig_new_instance_method(_mesh.vector_Vector___nonzero__)
+
+    def __bool__(self):
+        r"""__bool__(vector_Vector self) -> bool"""
+        return _mesh.vector_Vector___bool__(self)
+    __bool__ = _swig_new_instance_method(_mesh.vector_Vector___bool__)
+
+    def __len__(self):
+        r"""__len__(vector_Vector self) -> std::vector< mfem::Vector >::size_type"""
+        return _mesh.vector_Vector___len__(self)
+    __len__ = _swig_new_instance_method(_mesh.vector_Vector___len__)
+
+    def __getslice__(self, i, j):
+        r"""__getslice__(vector_Vector self, std::vector< mfem::Vector >::difference_type i, std::vector< mfem::Vector >::difference_type j) -> vector_Vector"""
+        return _mesh.vector_Vector___getslice__(self, i, j)
+    __getslice__ = _swig_new_instance_method(_mesh.vector_Vector___getslice__)
+
+    def __setslice__(self, *args):
+        r"""
+        __setslice__(vector_Vector self, std::vector< mfem::Vector >::difference_type i, std::vector< mfem::Vector >::difference_type j)
+        __setslice__(vector_Vector self, std::vector< mfem::Vector >::difference_type i, std::vector< mfem::Vector >::difference_type j, vector_Vector v)
+        """
+        return _mesh.vector_Vector___setslice__(self, *args)
+    __setslice__ = _swig_new_instance_method(_mesh.vector_Vector___setslice__)
+
+    def __delslice__(self, i, j):
+        r"""__delslice__(vector_Vector self, std::vector< mfem::Vector >::difference_type i, std::vector< mfem::Vector >::difference_type j)"""
+        return _mesh.vector_Vector___delslice__(self, i, j)
+    __delslice__ = _swig_new_instance_method(_mesh.vector_Vector___delslice__)
+
+    def __delitem__(self, *args):
+        r"""
+        __delitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i)
+        __delitem__(vector_Vector self, PySliceObject * slice)
+        """
+        return _mesh.vector_Vector___delitem__(self, *args)
+    __delitem__ = _swig_new_instance_method(_mesh.vector_Vector___delitem__)
+
+    def __getitem__(self, *args):
+        r"""
+        __getitem__(vector_Vector self, PySliceObject * slice) -> vector_Vector
+        __getitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i) -> Vector
+        """
+        return _mesh.vector_Vector___getitem__(self, *args)
+    __getitem__ = _swig_new_instance_method(_mesh.vector_Vector___getitem__)
+
+    def __setitem__(self, *args):
+        r"""
+        __setitem__(vector_Vector self, PySliceObject * slice, vector_Vector v)
+        __setitem__(vector_Vector self, PySliceObject * slice)
+        __setitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i, Vector x)
+        """
+        return _mesh.vector_Vector___setitem__(self, *args)
+    __setitem__ = _swig_new_instance_method(_mesh.vector_Vector___setitem__)
+
+    def pop(self):
+        r"""pop(vector_Vector self) -> Vector"""
+        return _mesh.vector_Vector_pop(self)
+    pop = _swig_new_instance_method(_mesh.vector_Vector_pop)
+
+    def append(self, x):
+        r"""append(vector_Vector self, Vector x)"""
+        return _mesh.vector_Vector_append(self, x)
+    append = _swig_new_instance_method(_mesh.vector_Vector_append)
+
+    def empty(self):
+        r"""empty(vector_Vector self) -> bool"""
+        return _mesh.vector_Vector_empty(self)
+    empty = _swig_new_instance_method(_mesh.vector_Vector_empty)
+
+    def size(self):
+        r"""size(vector_Vector self) -> std::vector< mfem::Vector >::size_type"""
+        return _mesh.vector_Vector_size(self)
+    size = _swig_new_instance_method(_mesh.vector_Vector_size)
+
+    def swap(self, v):
+        r"""swap(vector_Vector self, vector_Vector v)"""
+        return _mesh.vector_Vector_swap(self, v)
+    swap = _swig_new_instance_method(_mesh.vector_Vector_swap)
+
+    def begin(self):
+        r"""begin(vector_Vector self) -> std::vector< mfem::Vector >::iterator"""
+        return _mesh.vector_Vector_begin(self)
+    begin = _swig_new_instance_method(_mesh.vector_Vector_begin)
+
+    def end(self):
+        r"""end(vector_Vector self) -> std::vector< mfem::Vector >::iterator"""
+        return _mesh.vector_Vector_end(self)
+    end = _swig_new_instance_method(_mesh.vector_Vector_end)
+
+    def rbegin(self):
+        r"""rbegin(vector_Vector self) -> std::vector< mfem::Vector >::reverse_iterator"""
+        return _mesh.vector_Vector_rbegin(self)
+    rbegin = _swig_new_instance_method(_mesh.vector_Vector_rbegin)
+
+    def rend(self):
+        r"""rend(vector_Vector self) -> std::vector< mfem::Vector >::reverse_iterator"""
+        return _mesh.vector_Vector_rend(self)
+    rend = _swig_new_instance_method(_mesh.vector_Vector_rend)
+
+    def clear(self):
+        r"""clear(vector_Vector self)"""
+        return _mesh.vector_Vector_clear(self)
+    clear = _swig_new_instance_method(_mesh.vector_Vector_clear)
+
+    def get_allocator(self):
+        r"""get_allocator(vector_Vector self) -> std::vector< mfem::Vector >::allocator_type"""
+        return _mesh.vector_Vector_get_allocator(self)
+    get_allocator = _swig_new_instance_method(_mesh.vector_Vector_get_allocator)
+
+    def pop_back(self):
+        r"""pop_back(vector_Vector self)"""
+        return _mesh.vector_Vector_pop_back(self)
+    pop_back = _swig_new_instance_method(_mesh.vector_Vector_pop_back)
+
+    def erase(self, *args):
+        r"""
+        erase(vector_Vector self, std::vector< mfem::Vector >::iterator pos) -> std::vector< mfem::Vector >::iterator
+        erase(vector_Vector self, std::vector< mfem::Vector >::iterator first, std::vector< mfem::Vector >::iterator last) -> std::vector< mfem::Vector >::iterator
+        """
+        return _mesh.vector_Vector_erase(self, *args)
+    erase = _swig_new_instance_method(_mesh.vector_Vector_erase)
+
+    def __init__(self, *args):
+        r"""
+        __init__(vector_Vector self) -> vector_Vector
+        __init__(vector_Vector self, vector_Vector other) -> vector_Vector
+        __init__(vector_Vector self, std::vector< mfem::Vector >::size_type size) -> vector_Vector
+        __init__(vector_Vector self, std::vector< mfem::Vector >::size_type size, Vector value) -> vector_Vector
+        """
+        _mesh.vector_Vector_swiginit(self, _mesh.new_vector_Vector(*args))
+
+    def push_back(self, x):
+        r"""push_back(vector_Vector self, Vector x)"""
+        return _mesh.vector_Vector_push_back(self, x)
+    push_back = _swig_new_instance_method(_mesh.vector_Vector_push_back)
+
+    def front(self):
+        r"""front(vector_Vector self) -> Vector"""
+        return _mesh.vector_Vector_front(self)
+    front = _swig_new_instance_method(_mesh.vector_Vector_front)
+
+    def back(self):
+        r"""back(vector_Vector self) -> Vector"""
+        return _mesh.vector_Vector_back(self)
+    back = _swig_new_instance_method(_mesh.vector_Vector_back)
+
+    def assign(self, n, x):
+        r"""assign(vector_Vector self, std::vector< mfem::Vector >::size_type n, Vector x)"""
+        return _mesh.vector_Vector_assign(self, n, x)
+    assign = _swig_new_instance_method(_mesh.vector_Vector_assign)
+
+    def resize(self, *args):
+        r"""
+        resize(vector_Vector self, std::vector< mfem::Vector >::size_type new_size)
+        resize(vector_Vector self, std::vector< mfem::Vector >::size_type new_size, Vector x)
+        """
+        return _mesh.vector_Vector_resize(self, *args)
+    resize = _swig_new_instance_method(_mesh.vector_Vector_resize)
+
+    def insert(self, *args):
+        r"""
+        insert(vector_Vector self, std::vector< mfem::Vector >::iterator pos, Vector x) -> std::vector< mfem::Vector >::iterator
+        insert(vector_Vector self, std::vector< mfem::Vector >::iterator pos, std::vector< mfem::Vector >::size_type n, Vector x)
+        """
+        return _mesh.vector_Vector_insert(self, *args)
+    insert = _swig_new_instance_method(_mesh.vector_Vector_insert)
+
+    def reserve(self, n):
+        r"""reserve(vector_Vector self, std::vector< mfem::Vector >::size_type n)"""
+        return _mesh.vector_Vector_reserve(self, n)
+    reserve = _swig_new_instance_method(_mesh.vector_Vector_reserve)
+
+    def capacity(self):
+        r"""capacity(vector_Vector self) -> std::vector< mfem::Vector >::size_type"""
+        return _mesh.vector_Vector_capacity(self)
+    capacity = _swig_new_instance_method(_mesh.vector_Vector_capacity)
+    __swig_destroy__ = _mesh.delete_vector_Vector
+
+# Register vector_Vector in _mesh:
+_mesh.vector_Vector_swigregister(vector_Vector)
+
 FaceType_Interior = _mesh.FaceType_Interior
 
 FaceType_Boundary = _mesh.FaceType_Boundary
@@ -171,12 +666,12 @@ class Mesh(object):
 
     @staticmethod
     def MakePeriodic(orig_mesh, v2v):
-        r"""MakePeriodic(Mesh orig_mesh, std::vector< int > const & v2v) -> Mesh"""
+        r"""MakePeriodic(Mesh orig_mesh, vector_int v2v) -> Mesh"""
         return _mesh.Mesh_MakePeriodic(orig_mesh, v2v)
     MakePeriodic = _swig_new_static_method(_mesh.Mesh_MakePeriodic)
 
     def CreatePeriodicVertexMapping(self, translations, tol=1e-8):
-        r"""CreatePeriodicVertexMapping(Mesh self, std::vector< mfem::Vector > const & translations, double tol=1e-8) -> std::vector< int >"""
+        r"""CreatePeriodicVertexMapping(Mesh self, vector_Vector translations, double tol=1e-8) -> vector_int"""
         return _mesh.Mesh_CreatePeriodicVertexMapping(self, translations, tol)
     CreatePeriodicVertexMapping = _swig_new_instance_method(_mesh.Mesh_CreatePeriodicVertexMapping)
 
@@ -444,7 +939,7 @@ class Mesh(object):
     GetGlobalNE = _swig_new_instance_method(_mesh.Mesh_GetGlobalNE)
 
     def GetGeometricFactors(self, *args, **kwargs):
-        r"""GetGeometricFactors(Mesh self, IntegrationRule ir, int const flags, mfem::MemoryType d_mt=MemoryType::DEFAULT) -> GeometricFactors"""
+        r"""GetGeometricFactors(Mesh self, IntegrationRule ir, int const flags, mfem::MemoryType d_mt=DEFAULT) -> GeometricFactors"""
         return _mesh.Mesh_GetGeometricFactors(self, *args, **kwargs)
     GetGeometricFactors = _swig_new_instance_method(_mesh.Mesh_GetGeometricFactors)
 
@@ -1348,7 +1843,7 @@ def Mesh_MakeSimplicial(orig_mesh):
 Mesh_MakeSimplicial = _mesh.Mesh_MakeSimplicial
 
 def Mesh_MakePeriodic(orig_mesh, v2v):
-    r"""Mesh_MakePeriodic(Mesh orig_mesh, std::vector< int > const & v2v) -> Mesh"""
+    r"""Mesh_MakePeriodic(Mesh orig_mesh, vector_int v2v) -> Mesh"""
     return _mesh.Mesh_MakePeriodic(orig_mesh, v2v)
 Mesh_MakePeriodic = _mesh.Mesh_MakePeriodic
 
@@ -1389,8 +1884,8 @@ class GeometricFactors(object):
 
     def __init__(self, *args):
         r"""
-        __init__(GeometricFactors self, Mesh mesh, IntegrationRule ir, int flags, mfem::MemoryType d_mt=MemoryType::DEFAULT) -> GeometricFactors
-        __init__(GeometricFactors self, GridFunction nodes, IntegrationRule ir, int flags, mfem::MemoryType d_mt=MemoryType::DEFAULT) -> GeometricFactors
+        __init__(GeometricFactors self, Mesh mesh, IntegrationRule ir, int flags, mfem::MemoryType d_mt=DEFAULT) -> GeometricFactors
+        __init__(GeometricFactors self, GridFunction nodes, IntegrationRule ir, int flags, mfem::MemoryType d_mt=DEFAULT) -> GeometricFactors
         """
         _mesh.GeometricFactors_swiginit(self, _mesh.new_GeometricFactors(*args))
     X = property(_mesh.GeometricFactors_X_get, _mesh.GeometricFactors_X_set, doc=r"""X : mfem::Vector""")

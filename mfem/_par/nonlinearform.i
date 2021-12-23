@@ -6,7 +6,8 @@
 #include "fem/nonlinearform.hpp"
 #include "fem/pfespace.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"               
+#include "pyoperator.hpp"
+#include "../common/pycoefficient.hpp"  
 %}
 
 

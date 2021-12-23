@@ -65,34 +65,29 @@ class _SwigNonDynamicMeta(type):
 
 
 import mfem._ser.mem_manager
+
+def doubleSwap(*args):
+    r"""
+    doubleSwap(doubleArray arg1, doubleArray arg2)
+    doubleSwap(mfem::Array2D< double > & arg1, mfem::Array2D< double > & arg2)
+    doubleSwap(double & a, double & b)
+    """
+    return _array.doubleSwap(*args)
+doubleSwap = _array.doubleSwap
+
+def intSwap(*args):
+    r"""
+    intSwap(intArray arg1, intArray arg2)
+    intSwap(mfem::Array2D< int > & arg1, mfem::Array2D< int > & arg2)
+    intSwap(int & a, int & b)
+    """
+    return _array.intSwap(*args)
+intSwap = _array.intSwap
 class intArray(object):
     r"""Proxy of C++ mfem::Array< int > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-
-    def __init__(self, *args):
-        r"""
-        __init__(intArray self) -> intArray
-        __init__(intArray self, mfem::MemoryType mt) -> intArray
-        __init__(intArray self, int asize) -> intArray
-        __init__(intArray self, int asize, mfem::MemoryType mt) -> intArray
-        __init__(intArray self, int * data_) -> intArray
-        __init__(intArray self, intArray src) -> intArray
-        """
-        _array.intArray_swiginit(self, _array.new_intArray(*args))
-
-        if len(args) == 1 and isinstance(args[0], list):
-            if (len(args[0]) == 2 and hasattr(args[0][0], 'disown') and
-         not hasattr(args[0][1], 'disown')):
-        ## first element is SwigObject, like <Swig Object of type 'int *'>
-        ## We do not own data in this case.
-                pass
-            else:
-                self.MakeDataOwner()
-
-
-
     __swig_destroy__ = _array.delete_intArray
 
     def GetData(self, *args):
@@ -324,6 +319,18 @@ class intArray(object):
         return _array.intArray_HostReadWrite(self)
     HostReadWrite = _swig_new_instance_method(_array.intArray_HostReadWrite)
 
+    def __init__(self, *args):
+        r"""
+        __init__(intArray self) -> intArray
+        __init__(intArray self, mfem::MemoryType mt) -> intArray
+        __init__(intArray self, int asize) -> intArray
+        __init__(intArray self, int asize, mfem::MemoryType mt) -> intArray
+        __init__(intArray self, int * data_) -> intArray
+        __init__(intArray self, intArray src) -> intArray
+        __init__(intArray self, void * List_or_Tuple) -> intArray
+        """
+        _array.intArray_swiginit(self, _array.new_intArray(*args))
+
     def __setitem__(self, i, v):
         r"""__setitem__(intArray self, int i, int const v)"""
 
@@ -331,15 +338,6 @@ class intArray(object):
 
 
         return _array.intArray___setitem__(self, i, v)
-
-
-    def __getitem__(self, i):
-        r"""__getitem__(intArray self, int const i) -> int const &"""
-
-        i = int(i)
-
-
-        return _array.intArray___getitem__(self, i)
 
 
     def Assign(self, *args):
@@ -401,6 +399,11 @@ class intArray(object):
         return _array.intArray_Save(self, *args)
     Save = _swig_new_instance_method(_array.intArray_Save)
 
+    def __getitem__(self, param):
+        r"""__getitem__(intArray self, PyObject * param) -> PyObject *"""
+        return _array.intArray___getitem__(self, param)
+    __getitem__ = _swig_new_instance_method(_array.intArray___getitem__)
+
 # Register intArray in _array:
 _array.intArray_swigregister(intArray)
 
@@ -409,29 +412,6 @@ class doubleArray(object):
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-
-    def __init__(self, *args):
-        r"""
-        __init__(doubleArray self) -> doubleArray
-        __init__(doubleArray self, mfem::MemoryType mt) -> doubleArray
-        __init__(doubleArray self, int asize) -> doubleArray
-        __init__(doubleArray self, int asize, mfem::MemoryType mt) -> doubleArray
-        __init__(doubleArray self, double * data_) -> doubleArray
-        __init__(doubleArray self, doubleArray src) -> doubleArray
-        """
-        _array.doubleArray_swiginit(self, _array.new_doubleArray(*args))
-
-        if len(args) == 1 and isinstance(args[0], list):
-            if (len(args[0]) == 2 and hasattr(args[0][0], 'disown') and
-         not hasattr(args[0][1], 'disown')):
-        ## first element is SwigObject, like <Swig Object of type 'int *'>
-        ## We do not own data in this case.
-                pass
-            else:
-                self.MakeDataOwner()
-
-
-
     __swig_destroy__ = _array.delete_doubleArray
 
     def GetData(self, *args):
@@ -663,6 +643,18 @@ class doubleArray(object):
         return _array.doubleArray_HostReadWrite(self)
     HostReadWrite = _swig_new_instance_method(_array.doubleArray_HostReadWrite)
 
+    def __init__(self, *args):
+        r"""
+        __init__(doubleArray self) -> doubleArray
+        __init__(doubleArray self, mfem::MemoryType mt) -> doubleArray
+        __init__(doubleArray self, int asize) -> doubleArray
+        __init__(doubleArray self, int asize, mfem::MemoryType mt) -> doubleArray
+        __init__(doubleArray self, double * data_) -> doubleArray
+        __init__(doubleArray self, doubleArray src) -> doubleArray
+        __init__(doubleArray self, void * List_or_Tuple) -> doubleArray
+        """
+        _array.doubleArray_swiginit(self, _array.new_doubleArray(*args))
+
     def __setitem__(self, i, v):
         r"""__setitem__(doubleArray self, int i, double const v)"""
 
@@ -670,15 +662,6 @@ class doubleArray(object):
 
 
         return _array.doubleArray___setitem__(self, i, v)
-
-
-    def __getitem__(self, i):
-        r"""__getitem__(doubleArray self, int const i) -> double const &"""
-
-        i = int(i)
-
-
-        return _array.doubleArray___getitem__(self, i)
 
 
     def Assign(self, *args):
@@ -740,26 +723,13 @@ class doubleArray(object):
         return _array.doubleArray_Save(self, *args)
     Save = _swig_new_instance_method(_array.doubleArray_Save)
 
+    def __getitem__(self, param):
+        r"""__getitem__(doubleArray self, PyObject * param) -> PyObject *"""
+        return _array.doubleArray___getitem__(self, param)
+    __getitem__ = _swig_new_instance_method(_array.doubleArray___getitem__)
+
 # Register doubleArray in _array:
 _array.doubleArray_swigregister(doubleArray)
 
-
-def doubleSwap(*args):
-    r"""
-    doubleSwap(doubleArray arg1, doubleArray arg2)
-    doubleSwap(mfem::Array2D< double > & arg1, mfem::Array2D< double > & arg2)
-    doubleSwap(double & a, double & b)
-    """
-    return _array.doubleSwap(*args)
-doubleSwap = _array.doubleSwap
-
-def intSwap(*args):
-    r"""
-    intSwap(intArray arg1, intArray arg2)
-    intSwap(mfem::Array2D< int > & arg1, mfem::Array2D< int > & arg2)
-    intSwap(int & a, int & b)
-    """
-    return _array.intSwap(*args)
-intSwap = _array.intSwap
 
 

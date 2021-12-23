@@ -3107,11 +3107,12 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__DenseMatrix swig_types[7]
 #define SWIGTYPE_p_mfem__Element swig_types[8]
 #define SWIGTYPE_p_mfem__HashTableT_mfem__Hashed2_t swig_types[9]
-#define SWIGTYPE_p_mfem__Linear3DFiniteElement swig_types[10]
-#define SWIGTYPE_p_mfem__Mesh swig_types[11]
-#define SWIGTYPE_p_mfem__Tetrahedron swig_types[12]
-static swig_type_info *swig_types[14];
-static swig_module_info swig_module = {swig_types, 13, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[10]
+#define SWIGTYPE_p_mfem__Linear3DFiniteElement swig_types[11]
+#define SWIGTYPE_p_mfem__Mesh swig_types[12]
+#define SWIGTYPE_p_mfem__Tetrahedron swig_types[13]
+static swig_type_info *swig_types[15];
+static swig_module_info swig_module = {swig_types, 14, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5044,6 +5045,7 @@ static swig_type_info _swigt__p_mfem__DSTable = {"_p_mfem__DSTable", "mfem::DSTa
 static swig_type_info _swigt__p_mfem__DenseMatrix = {"_p_mfem__DenseMatrix", "mfem::DenseMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Element = {"_p_mfem__Element", "mfem::Element *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__HashTableT_mfem__Hashed2_t = {"_p_mfem__HashTableT_mfem__Hashed2_t", "mfem::HashTable< mfem::Hashed2 > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__IntegrationPoint = {"_p_mfem__IntegrationPoint", "mfem::IntegrationPoint *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Linear3DFiniteElement = {"_p_mfem__Linear3DFiniteElement", "mfem::Linear3DFiniteElement *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Mesh = {"_p_mfem__Mesh", "mfem::Mesh *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Tetrahedron = {"_p_mfem__Tetrahedron", "mfem::Tetrahedron *", 0, 0, (void*)0, 0};
@@ -5059,6 +5061,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__DenseMatrix,
   &_swigt__p_mfem__Element,
   &_swigt__p_mfem__HashTableT_mfem__Hashed2_t,
+  &_swigt__p_mfem__IntegrationPoint,
   &_swigt__p_mfem__Linear3DFiniteElement,
   &_swigt__p_mfem__Mesh,
   &_swigt__p_mfem__Tetrahedron,
@@ -5074,6 +5077,7 @@ static swig_cast_info _swigc__p_mfem__DSTable[] = {  {&_swigt__p_mfem__DSTable, 
 static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {  {&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Element[] = {  {&_swigt__p_mfem__Element, 0, 0, 0},  {&_swigt__p_mfem__Tetrahedron, _p_mfem__TetrahedronTo_p_mfem__Element, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HashTableT_mfem__Hashed2_t[] = {  {&_swigt__p_mfem__HashTableT_mfem__Hashed2_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__IntegrationPoint[] = {  {&_swigt__p_mfem__IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Linear3DFiniteElement[] = {  {&_swigt__p_mfem__Linear3DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Mesh[] = {  {&_swigt__p_mfem__Mesh, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Tetrahedron[] = {  {&_swigt__p_mfem__Tetrahedron, 0, 0, 0},{0, 0, 0, 0}};
@@ -5089,6 +5093,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__DenseMatrix,
   _swigc__p_mfem__Element,
   _swigc__p_mfem__HashTableT_mfem__Hashed2_t,
+  _swigc__p_mfem__IntegrationPoint,
   _swigc__p_mfem__Linear3DFiniteElement,
   _swigc__p_mfem__Mesh,
   _swigc__p_mfem__Tetrahedron,

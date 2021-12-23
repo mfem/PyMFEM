@@ -6307,9 +6307,6 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab__SWIG_0(PyObject *SWIGUNUS
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -6369,6 +6366,9 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab__SWIG_0(PyObject *SWIGUNUS
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -6384,6 +6384,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }
@@ -6462,9 +6465,6 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab__SWIG_1(PyObject *SWIGUNUS
         out_txt2.precision(temp2->getPrecision());
         arg2 = &out_txt2;
       }
-      if (temp2->isTemporary()){
-        delete temp2;
-      }
     } else {
       arg2 = stream2;
     }
@@ -6510,6 +6510,9 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab__SWIG_1(PyObject *SWIGUNUS
             delete out_gz2;
           }
         }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -6525,6 +6528,9 @@ fail:
           if (out_gz2){
             delete out_gz2;
           }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
         }
       }
     }

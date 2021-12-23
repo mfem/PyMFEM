@@ -103,6 +103,7 @@ import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.coefficient
+import mfem._par.symmat
 import mfem._par.sparsemat
 import mfem._par.eltrans
 import mfem._par.fe
@@ -233,7 +234,7 @@ class ParNCMesh(mfem._par.ncmesh.NCMesh):
     GetEntityGroupId = _swig_new_instance_method(_pncmesh.ParNCMesh_GetEntityGroupId)
 
     def GetGroup(self, id):
-        r"""GetGroup(ParNCMesh self, mfem::ParNCMesh::GroupId id) -> mfem::ParNCMesh::CommGroup const &"""
+        r"""GetGroup(ParNCMesh self, mfem::ParNCMesh::GroupId id) -> vector_int"""
         return _pncmesh.ParNCMesh_GetGroup(self, id)
     GetGroup = _swig_new_instance_method(_pncmesh.ParNCMesh_GetGroup)
 

@@ -28,7 +28,7 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "pycoefficient.hpp"
+#include "../common/pycoefficient.hpp"
 #include "numpy/arrayobject.h"
 %}
 
@@ -42,6 +42,7 @@ import_array();
 %import "globals.i"
 %import "array.i"
 %import "matrix.i"
+%import "symmat.i"
 %import "intrules.i"
 %import "sparsemat.i"
 %import "densemat.i"
@@ -94,7 +95,7 @@ namespace mfem {
     self._ref_to_vc = vc
 %}
 %pythonappend RestrictedCoefficient::RestrictedCoefficient %{
-    self._ref_to_c = _c
+    self._ref_to_c = c_
 %}
 %pythonappend MatrixRestrictedCoefficient::MatrixRestrictedCoefficient %{
     self._ref_to_mc = mc
@@ -256,7 +257,7 @@ void MatrixPyCoefficientBase::Eval(DenseMatrix &K, ElementTransformation &T,
 
 }  /* end of name space*/
 %}
-%include "pycoefficient.hpp"
+%include "../common/pycoefficient.hpp"
 
 %pythoncode %{
 class PyCoefficient(PyCoefficientBase):

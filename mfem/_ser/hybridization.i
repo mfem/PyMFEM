@@ -3,7 +3,8 @@
 #include "fem/gridfunc.hpp"  
 #include "fem/linearform.hpp"
 #include "fem/hybridization.hpp"
-#include "numpy/arrayobject.h"      
+#include "numpy/arrayobject.h"
+#include "../common/pycoefficient.hpp"  
 %}
 
 %init %{

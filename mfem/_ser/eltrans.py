@@ -110,6 +110,7 @@ class ElementTransformation(object):
     Attribute = property(_eltrans.ElementTransformation_Attribute_get, _eltrans.ElementTransformation_Attribute_set, doc=r"""Attribute : int""")
     ElementNo = property(_eltrans.ElementTransformation_ElementNo_get, _eltrans.ElementTransformation_ElementNo_set, doc=r"""ElementNo : int""")
     ElementType = property(_eltrans.ElementTransformation_ElementType_get, _eltrans.ElementTransformation_ElementType_set, doc=r"""ElementType : int""")
+    mesh = property(_eltrans.ElementTransformation_mesh_get, _eltrans.ElementTransformation_mesh_set, doc=r"""mesh : p.mfem::Mesh""")
 
     def Reset(self):
         r"""Reset(ElementTransformation self)"""

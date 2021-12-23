@@ -9,7 +9,7 @@
   #include <ctime>
   #include "fem/linearform.hpp"
   #include "fem/gridfunc.hpp"
-  #include "pycoefficient.hpp"
+  #include "../common/pycoefficient.hpp"
   #include "numpy/arrayobject.h"
   #include "../common/io_stream.hpp"
   using namespace mfem;

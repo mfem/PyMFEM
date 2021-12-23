@@ -1044,7 +1044,7 @@ class DenseTensor(object):
     TotalSize = _swig_new_instance_method(_densemat.DenseTensor_TotalSize)
 
     def SetSize(self, *args, **kwargs):
-        r"""SetSize(DenseTensor self, int i, int j, int k, mfem::MemoryType mt_=MemoryType::PRESERVE)"""
+        r"""SetSize(DenseTensor self, int i, int j, int k, mfem::MemoryType mt_=PRESERVE)"""
         return _densemat.DenseTensor_SetSize(self, *args, **kwargs)
     SetSize = _swig_new_instance_method(_densemat.DenseTensor_SetSize)
 
