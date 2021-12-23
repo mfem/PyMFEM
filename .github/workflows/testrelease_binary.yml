@@ -71,7 +71,7 @@ jobs:
           CWD=$PWD
           ls -l
           yum install -y zlib-devel
-          python3 -m pip install
+          python3 setup.py install
 
           rm -rf dist/*
           python3 setup.py bdist_wheel
@@ -113,8 +113,11 @@ jobs:
           fi	  
           CWD=$PWD
           ls -l
+
+          apt-get update
           apt-get install -y zlib1g-dbg
-          python3 -m pip install
+
+          python3 -m pip install ./
 
           rm -rf dist/*
           python3 setup.py bdist_wheel
