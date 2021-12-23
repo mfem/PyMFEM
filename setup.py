@@ -36,12 +36,13 @@ except ImportError:
 # from codecs import open
 
 # constants
-repo_releases = {"mfem": "https://github.com/mfem/mfem/archive/v4.3.tar.gz",
+repo_releases = {#"mfem": "https://github.com/mfem/mfem/archive/v4.3.tar.gz",
                  "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
                  "hypre": "https://github.com/hypre-space/hypre/archive/v2.20.0.tar.gz",
                  "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.9.0.tar.gz", }
 
 repos = {"mfem": "https://github.com/mfem/mfem.git", }
+repos_sha = {"mfem": "6f7b29ac1404de7a925cf6ff0075d69569bdd15c"}
 
 rootdir = os.path.abspath(os.path.dirname(__file__))
 extdir = os.path.join(rootdir, 'external')
@@ -117,6 +118,15 @@ def version():
             return mo.group(1)
     raise RuntimeError('Unable to find version string in %s.' % (VERSIONFILE,))
 
+def version():
+    VERSIONFILE = os.path.join('mfem', '__init__.py')
+    initfile_lines = open(VERSIONFILE, 'rt').readlines()
+    VSRE = r"^__version__ = ['\"]([^'\"]*)['\"]"
+    for line in initfile_lines:
+        mo = re.search(VSRE, line, re.M)
+        if mo:
+            return mo.group(1)
+    raise RuntimeError('Unable to find version string in %s.' % (VERSIONFILE,))
 
 def long_description():
     with open(os.path.join(rootdir, 'README.md'), encoding='utf-8') as f:
@@ -308,7 +318,7 @@ def download(xxx):
               os.path.join(extdir, xxx))
 
 
-def gitclone(xxx):
+def gitclone(xxx, use_sha=False, branch='master'):
     cwd = os.getcwd()
     repo_xxx = os.path.join(extdir, xxx)
     if os.path.exists(repo_xxx):
@@ -322,10 +332,33 @@ def gitclone(xxx):
     if not os.path.exists(repo_xxx):
         print(repo_xxx + " does not exist. Check if git clone worked")
     os.chdir(repo_xxx)
-    command = ['git', 'checkout',  mfem_branch]
+    if use_sha:
+        sha = repos_sha[xxx]
+        command = ['git', 'checkout',  sha]        
+    else:
+        command = ['git', 'checkout', branch]
     make_call(command)
     os.chdir(cwd)
 
+def record_mfem_sha(mfem_source):
+    pwd = chdir(mfem_source)
+    command = ['git', 'rev-parse', 'HEAD']
+    try:
+        sha = subprocess.run(command, capture_output=True).stdout.decode().strip()
+    except subprocess.CalledProcessError:
+        print("subprocess failed to read sha...continuing w/o recording SHA")
+        sha = None
+    except BaseException:
+        print("subprocess failed to read sha...continuing w/o recording SHA")
+        sha = None
+
+    chdir(pwd)
+
+    sha_file = os.path.join('mfem', '__sha__.py')
+    fid = open(sha_file, 'w')
+    if sha is not None:
+       fid.write("mfem = " + sha)
+    fid.close()
 
 def cmake(path, **kwargs):
     '''
@@ -738,6 +771,8 @@ def make_mfem_wrapper(serial=True):
     if not os.path.exists(os.path.abspath(mfem_source)):
         assert False, "MFEM source directory. Use --mfem-source=<path>"
 
+    record_mfem_sha(mfem_source)
+    
     write_setup_local()
 
     if serial:
@@ -1129,14 +1164,13 @@ class BuildPy(_build_py):
                 make_libceed()
             mfem_downloaded = False
             if build_mfem:
-                download('mfem') if mfem_branch is None else gitclone('mfem')
+                gitclone('mfem', use_sha=True) if mfem_branch is None else gitclone('mfem', branch=mfem_branch)
                 mfem_downloaded = True
                 cmake_make_mfem(serial=True)
 
             if build_mfemp:
                 if not mfem_downloaded:
-                    download('mfem') if mfem_branch is None else gitclone(
-                        'mfem')
+                    gitclone('mfem', use_sha=True) if mfem_branch is None else gitclone('mfem', branch=mfem_branch)
                 cmake_make_mfem(serial=False)
 
         if clean_swig:
