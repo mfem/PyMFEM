@@ -8,7 +8,7 @@ For other configuration such as parallel version, one has to download
 the package and run setup script. pip download command download tar-gziped
 package.
 
-$ pip download mfem
+$ pip download mfem --no-binary mfem
 
 Once the package is expanded, enter the package directory and
 use the setup.py on the top level. For example, --with-parallel option,

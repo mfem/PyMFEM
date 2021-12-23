@@ -38,7 +38,7 @@ jobs:
     #env: ${{ matrix.env }}
     env: 
        USE_FLAGS: ${{ matrix.env.USE_FLAGS }}
-       CUDA: "11.1"
+       CUDA: "11.5"
        SANDBOX: ~/sandbox
 
     steps:
@@ -64,7 +64,7 @@ jobs:
 
         if [ "${USE_FLAGS:0:1}" = "1" ] ; then
             echo $cuda
-            source ./ci_scripts/add_cuda_11_1.sh;
+            source ./ci_scripts/add_cuda_11_5.sh;
         fi
         if [ "${USE_FLAGS:1:1}" = "1" ] ; then
             sudo apt-get install mpich;

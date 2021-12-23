@@ -93,19 +93,53 @@ def run(mesh_file="",
     #    the exact solution if it is known.
 
     # 8-a. Prepare coefficient in pure Python and numba
+    sdim = mesh.SpaceDimension()
+
     if numba:
-        '''
+        @mfem.jit.scalar()
+        def u0_real_exact(x):
+            alpha = (epsilon * omega - 1j * sigma)
+            kappa = sqrt(mu * omega * alpha)
+            return exp(-1j * kappa * x[dim - 1]).real
+
+        @mfem.jit.scalar()
+        def u0_imag_exact(x):
+            alpha = (epsilon * omega - 1j * sigma)
+            kappa = sqrt(mu * omega * alpha)
+            return exp(-1j * kappa * x[dim - 1]).imag
+
         @mfem.jit.vector()
-        def E_exact(x, out):
-            out[0] = sin(kappa*x[1])
-            out[1] = sin(kappa*x[2])
-            out[2] = sin(kappa*x[0])
+        def u1_real_exact(x, out):
+            alpha = (epsilon * omega - 1j * sigma)
+            kappa = sqrt(mu * omega * alpha)
+            out[0] = exp(-1j * kappa * x[dim - 1]).real
+            out[1] = 0
+            out[2] = 0
+
         @mfem.jit.vector()
-        def f_exact(x, out):
-            out[0] = (1 + kappa**2)*sin(kappa * x[1])
-            out[1] = (1 + kappa**2)*sin(kappa * x[2])
-            out[2] = (1 + kappa**2)*sin(kappa * x[0])
-        '''
+        def u1_imag_exact(x, out):
+            alpha = (epsilon * omega - 1j * sigma)
+            kappa = sqrt(mu * omega * alpha)
+            out[0] = exp(-1j * kappa * x[dim - 1]).imag
+            out[1] = 0
+            out[2] = 0
+
+        @mfem.jit.vector()
+        def u2_real_exact(x, out):
+            alpha = (epsilon * omega - 1j * sigma)
+            kappa = sqrt(mu * omega * alpha)
+            for i in range(dim):
+                out[i] = 0
+            out[dim-1] = exp(-1j * kappa * x[dim - 1]).real
+
+        @mfem.jit.vector()
+        def u2_imag_exact(x, out):
+            alpha = (epsilon * omega - 1j * sigma)
+            kappa = sqrt(mu * omega * alpha)
+            for i in range(dim):
+                out[i] = 0
+            out[dim-1] = exp(-1j * kappa * x[dim - 1]).imag
+
     else:
         def u0_exact(x):
             alpha = (epsilon * omega - 1j * sigma)
@@ -122,21 +156,24 @@ def run(mesh_file="",
         u0_real_exact = cu0_real_exact()
         u0_imag_exact = cu0_imag_exact()
 
-        sdim = mesh.SpaceDimension()
-
         class cu1_real_exact(mfem.VectorPyCoefficient):
             def __init__(self):
                 mfem.VectorPyCoefficient.__init__(self, sdim)
 
             def EvalValue(self, x):
-                return (u0_exact(x).real, 0, 0)
+                ret = x*0
+                ret[0] = u0_exact(x).real
+                return ret
 
         class cu1_imag_exact(mfem.VectorPyCoefficient):
             def __init__(self):
                 mfem.VectorPyCoefficient.__init__(self, sdim)
 
             def EvalValue(self, x):
-                return (u0_exact(x).imag, 0, 0)
+                ret = x*0
+                ret[0] = u0_exact(x).imag
+                return ret
+
         u1_real_exact = cu1_real_exact()
         u1_imag_exact = cu1_imag_exact()
 
@@ -468,11 +505,20 @@ if __name__ == "__main__":
     parser.add_argument("-d", "--device",
                         default="cpu", type=str,
                         help="Device configuration string, see Device::Configure().")
+
+    try:
+        from numba import jit
+        HAS_NUMBA = True
+    except ImportError:
+        HAS_NUMBA = False
     parser.add_argument("-n", "--numba",
-                        default=False, type=bool,
+                        default=int(HAS_NUMBA),
+                        type=int,
+                        action='store',
                         help="Use Number compiled coefficient")
 
     args = parser.parse_args()
+    args.numba = bool(args.numba)
     parser.print_options(args)
 
     meshfile = expanduser(

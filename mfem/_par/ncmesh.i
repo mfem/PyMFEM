@@ -19,6 +19,7 @@ import_array();
 %}
 
 %include "exception.i"
+%import "globals.i"
 %import "mesh.i"
 %import "array.i"
 %import "fem/geom.hpp"

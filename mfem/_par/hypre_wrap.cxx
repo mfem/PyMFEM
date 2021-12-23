@@ -5055,7 +5055,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_HypreParVector_Read(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_HypreParVector_Read__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::HypreParVector *arg1 = (mfem::HypreParVector *) 0 ;
   bool arg2 = (bool) true ;
@@ -5063,21 +5063,16 @@ SWIGINTERN PyObject *_wrap_HypreParVector_Read(PyObject *SWIGUNUSEDPARM(self), P
   int res1 = 0 ;
   bool val2 ;
   int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"on_dev",  NULL 
-  };
   double *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:HypreParVector_Read", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__HypreParVector, 0 |  0 );
+  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__HypreParVector, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HypreParVector_Read" "', argument " "1"" of type '" "mfem::HypreParVector const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::HypreParVector * >(argp1);
-  if (obj1) {
-    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+  if (swig_obj[1]) {
+    ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
     if (!SWIG_IsOK(ecode2)) {
       SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HypreParVector_Read" "', argument " "2"" of type '" "bool""'");
     } 
@@ -5510,6 +5505,112 @@ SWIGINTERN PyObject *_wrap_HypreParVector_Print(PyObject *SWIGUNUSEDPARM(self), 
 fail:
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HypreParVector_Read__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::HypreParVector *arg1 = (mfem::HypreParVector *) 0 ;
+  MPI_Comm arg2 ;
+  char *arg3 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res3 ;
+  char *buf3 = 0 ;
+  int alloc3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__HypreParVector, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HypreParVector_Read" "', argument " "1"" of type '" "mfem::HypreParVector *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::HypreParVector * >(argp1);
+  {
+    MPI_Comm *ptr = (MPI_Comm *)0;
+    int res = SWIG_AsPtr_MPI_Comm(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "HypreParVector_Read" "', argument " "2"" of type '" "MPI_Comm""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  res3 = SWIG_AsCharPtrAndSize(swig_obj[2], &buf3, NULL, &alloc3);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "HypreParVector_Read" "', argument " "3"" of type '" "char const *""'");
+  }
+  arg3 = reinterpret_cast< char * >(buf3);
+  {
+    try {
+      (arg1)->Read(arg2,(char const *)arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  return resultobj;
+fail:
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HypreParVector_Read(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "HypreParVector_Read", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if ((argc >= 1) && (argc <= 2)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__HypreParVector, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      if (argc <= 1) {
+        return _wrap_HypreParVector_Read__SWIG_0_0(self, argc, argv);
+      }
+      {
+        int res = SWIG_AsVal_bool(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_HypreParVector_Read__SWIG_0_0(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__HypreParVector, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_MPI_Comm(argv[1], (MPI_Comm**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_AsCharPtrAndSize(argv[2], 0, NULL, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_HypreParVector_Read__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'HypreParVector_Read'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Read(bool) const\n"
+    "    mfem::HypreParVector::Read(MPI_Comm,char const *)\n");
+  return 0;
 }
 
 
@@ -20720,7 +20821,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "HypreParVector_SetOwnership", (PyCFunction)(void(*)(void))_wrap_HypreParVector_SetOwnership, METH_VARARGS|METH_KEYWORDS, "HypreParVector_SetOwnership(HypreParVector self, int own)"},
 	 { "HypreParVector_GetOwnership", _wrap_HypreParVector_GetOwnership, METH_O, "HypreParVector_GetOwnership(HypreParVector self) -> int"},
 	 { "HypreParVector_GlobalVector", _wrap_HypreParVector_GlobalVector, METH_O, "HypreParVector_GlobalVector(HypreParVector self) -> Vector"},
-	 { "HypreParVector_Read", (PyCFunction)(void(*)(void))_wrap_HypreParVector_Read, METH_VARARGS|METH_KEYWORDS, "HypreParVector_Read(HypreParVector self, bool on_dev=True) -> double const *"},
 	 { "HypreParVector_SetData", (PyCFunction)(void(*)(void))_wrap_HypreParVector_SetData, METH_VARARGS|METH_KEYWORDS, "HypreParVector_SetData(HypreParVector self, double * data_)"},
 	 { "HypreParVector_HypreRead", _wrap_HypreParVector_HypreRead, METH_O, "HypreParVector_HypreRead(HypreParVector self)"},
 	 { "HypreParVector_HypreReadWrite", _wrap_HypreParVector_HypreReadWrite, METH_O, "HypreParVector_HypreReadWrite(HypreParVector self)"},
@@ -20730,6 +20830,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "HypreParVector_WrapMemoryWrite", (PyCFunction)(void(*)(void))_wrap_HypreParVector_WrapMemoryWrite, METH_VARARGS|METH_KEYWORDS, "HypreParVector_WrapMemoryWrite(HypreParVector self, mfem::Memory< double > & mem)"},
 	 { "HypreParVector_Randomize", (PyCFunction)(void(*)(void))_wrap_HypreParVector_Randomize, METH_VARARGS|METH_KEYWORDS, "HypreParVector_Randomize(HypreParVector self, HYPRE_Int seed) -> HYPRE_Int"},
 	 { "HypreParVector_Print", (PyCFunction)(void(*)(void))_wrap_HypreParVector_Print, METH_VARARGS|METH_KEYWORDS, "HypreParVector_Print(HypreParVector self, char const * fname)"},
+	 { "HypreParVector_Read", _wrap_HypreParVector_Read, METH_VARARGS, "\n"
+		"HypreParVector_Read(HypreParVector self, bool on_dev=True) -> double const\n"
+		"HypreParVector_Read(HypreParVector self, MPI_Comm comm, char const * fname)\n"
+		""},
 	 { "delete_HypreParVector", _wrap_delete_HypreParVector, METH_O, "delete_HypreParVector(HypreParVector self)"},
 	 { "HypreParVector_GetPartitioningArray", _wrap_HypreParVector_GetPartitioningArray, METH_O, "HypreParVector_GetPartitioningArray(HypreParVector self) -> PyObject *"},
 	 { "HypreParVector_swigregister", HypreParVector_swigregister, METH_O, NULL},
@@ -21135,7 +21239,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "HypreParVector_SetOwnership", (PyCFunction)(void(*)(void))_wrap_HypreParVector_SetOwnership, METH_VARARGS|METH_KEYWORDS, "SetOwnership(HypreParVector self, int own)"},
 	 { "HypreParVector_GetOwnership", _wrap_HypreParVector_GetOwnership, METH_O, "GetOwnership(HypreParVector self) -> int"},
 	 { "HypreParVector_GlobalVector", _wrap_HypreParVector_GlobalVector, METH_O, "GlobalVector(HypreParVector self) -> Vector"},
-	 { "HypreParVector_Read", (PyCFunction)(void(*)(void))_wrap_HypreParVector_Read, METH_VARARGS|METH_KEYWORDS, "Read(HypreParVector self, bool on_dev=True) -> double const *"},
 	 { "HypreParVector_SetData", (PyCFunction)(void(*)(void))_wrap_HypreParVector_SetData, METH_VARARGS|METH_KEYWORDS, "SetData(HypreParVector self, double * data_)"},
 	 { "HypreParVector_HypreRead", _wrap_HypreParVector_HypreRead, METH_O, "HypreRead(HypreParVector self)"},
 	 { "HypreParVector_HypreReadWrite", _wrap_HypreParVector_HypreReadWrite, METH_O, "HypreReadWrite(HypreParVector self)"},
@@ -21145,6 +21248,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "HypreParVector_WrapMemoryWrite", (PyCFunction)(void(*)(void))_wrap_HypreParVector_WrapMemoryWrite, METH_VARARGS|METH_KEYWORDS, "WrapMemoryWrite(HypreParVector self, mfem::Memory< double > & mem)"},
 	 { "HypreParVector_Randomize", (PyCFunction)(void(*)(void))_wrap_HypreParVector_Randomize, METH_VARARGS|METH_KEYWORDS, "Randomize(HypreParVector self, HYPRE_Int seed) -> HYPRE_Int"},
 	 { "HypreParVector_Print", (PyCFunction)(void(*)(void))_wrap_HypreParVector_Print, METH_VARARGS|METH_KEYWORDS, "Print(HypreParVector self, char const * fname)"},
+	 { "HypreParVector_Read", _wrap_HypreParVector_Read, METH_VARARGS, "\n"
+		"Read(HypreParVector self, bool on_dev=True) -> double const\n"
+		"Read(HypreParVector self, MPI_Comm comm, char const * fname)\n"
+		""},
 	 { "delete_HypreParVector", _wrap_delete_HypreParVector, METH_O, "delete_HypreParVector(HypreParVector self)"},
 	 { "HypreParVector_GetPartitioningArray", _wrap_HypreParVector_GetPartitioningArray, METH_O, "GetPartitioningArray(HypreParVector self) -> PyObject *"},
 	 { "HypreParVector_swigregister", HypreParVector_swigregister, METH_O, NULL},

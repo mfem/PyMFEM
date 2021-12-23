@@ -378,10 +378,6 @@ def ComputePressure(state, dim):
     return pres
 
 def ComputeFlux(state, dim, flux):
-    from mpi4py import MPI
-    num_procs = MPI.COMM_WORLD.size
-    myid = MPI.COMM_WORLD.rank
-
     den = state[0]
     den_vel = state.GetDataArray()[1:1+dim]
     den_energy = state[1 + dim]

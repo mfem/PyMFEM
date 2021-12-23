@@ -192,11 +192,6 @@ class HypreParVector(mfem._par.vector.Vector):
         return _hypre.HypreParVector_GlobalVector(self)
     GlobalVector = _swig_new_instance_method(_hypre.HypreParVector_GlobalVector)
 
-    def Read(self, on_dev=True):
-        r"""Read(HypreParVector self, bool on_dev=True) -> double const *"""
-        return _hypre.HypreParVector_Read(self, on_dev)
-    Read = _swig_new_instance_method(_hypre.HypreParVector_Read)
-
     def SetData(self, data_):
         r"""SetData(HypreParVector self, double * data_)"""
         return _hypre.HypreParVector_SetData(self, data_)
@@ -241,6 +236,14 @@ class HypreParVector(mfem._par.vector.Vector):
         r"""Print(HypreParVector self, char const * fname)"""
         return _hypre.HypreParVector_Print(self, fname)
     Print = _swig_new_instance_method(_hypre.HypreParVector_Print)
+
+    def Read(self, *args):
+        r"""
+        Read(HypreParVector self, bool on_dev=True) -> double const
+        Read(HypreParVector self, MPI_Comm comm, char const * fname)
+        """
+        return _hypre.HypreParVector_Read(self, *args)
+    Read = _swig_new_instance_method(_hypre.HypreParVector_Read)
     __swig_destroy__ = _hypre.delete_HypreParVector
 
     def GetPartitioningArray(self):

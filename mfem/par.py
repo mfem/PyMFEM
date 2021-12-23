@@ -71,6 +71,18 @@ from  mfem._par.io_stream import wFILE, STDOUT
 from  mfem._par.fespacehierarchy import *
 from  mfem._par.multigrid import *
 from  mfem._par.constraints import *
+from  mfem._par.transfer import *
+
+from  mfem._par.fe_base import *
+from  mfem._par.fe_h1 import *
+from  mfem._par.fe_l2 import *
+from  mfem._par.fe_nd import *
+from  mfem._par.fe_rt import *
+from  mfem._par.fe_ser import *
+from  mfem._par.fe_fixed_order import *
+from  mfem._par.fe_pos import *
+from  mfem._par.fe_nurbs import *
+from  mfem._par.doftrans import *
 
 import mfem._par.array as array
 import mfem._par.blockoperator as blockoperator
@@ -90,6 +102,7 @@ import mfem._par.pgridfunc as pgridfunc
 import mfem._par.solvers as solvers
 import mfem._par.vector as vector
 import mfem._par.sparsemat as sparsemat
+import mfem._par.dist_solver as dist_solver
 
 try:
    import mfem._par.pumi as pumi

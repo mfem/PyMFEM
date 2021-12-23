@@ -194,8 +194,14 @@ def run_test(mfem_exes, pymfem_exes, sandbox, serial=True, np=2, verbose=False):
 
     results = []
     fails = []
+    skipped = []
 
     for e1, e2 in zip(mfem_exes, pymfem_exes):
+        if not os.path.exists(e2):
+            print(bcolors.FAIL + "Skipping (no python version): " + bcolors.ENDC +
+                  os.path.basename(e2))
+            skipped.append(os.path.basename(e2))
+            continue
         case = os.path.basename(e1)
         opts = options_dict.get(case, options_def)
         
@@ -221,16 +227,22 @@ def run_test(mfem_exes, pymfem_exes, sandbox, serial=True, np=2, verbose=False):
         os.chdir(path)
 
         # note -u is unbuffered option
-        comm = comm_mpi + [sys.executable,  "-u", e2] + opts
+        comm = comm_mpi + [sys.executable, "-u", e2] + opts
         t2, l2 = run_file(comm, num=5)
 
         flag1 = compare_results(l1, l2, case, verbose=verbose)
         flag2 = compare_outputs(case)
-        flag = flag1 and flag2
-        if flag:
+        flag = True
+        if flag1 and flag2:
             print(os.path.basename(e1) + "  " +
                   bcolors.OKGREEN + "PASS" + bcolors.ENDC)
+        elif not flag1 and flag2:
+            print(os.path.basename(e1) + "  " +
+                  bcolors.OKBLUE +
+                  "PASS(-1): generated files are the same, but terminal output differs" +
+                  bcolors.ENDC)
         else:
+            flag = False
             print(os.path.basename(e1) + "  " +
                   bcolors.FAIL + "FAIL" + bcolors.ENDC)
             fails.append(os.path.basename(e1))
@@ -239,7 +251,7 @@ def run_test(mfem_exes, pymfem_exes, sandbox, serial=True, np=2, verbose=False):
               " (Python) " + str(t2) + " " + str((t2/t1-1)*100) + "%")
 
     os.chdir(cwd)
-    return results, fails
+    return results, fails, skipped
 
 
 def find_mfem_examples(dir, serial=True, example='all'):
@@ -277,7 +289,7 @@ if __name__ == "__main__":
 
     from mfem.common.arg_parser import ArgParser
     parser = ArgParser(description='test')
-    parser.add_argument('-np', default=4,
+    parser.add_argument('-np', default=2,
                         action='store', type=int,
                         help='Number of processes for MPI')
     parser.add_argument('-verbose',
@@ -363,14 +375,14 @@ if __name__ == "__main__":
 
     if tests and mfems_exes:
         print(bcolors.BOLD+"Running Serial Version"+bcolors.ENDC)
-        results, fails = run_test(
+        results, fails, skipped = run_test(
             mfems_exes, pymfems_exes, sandbox, serial=True, verbose=verbose)
     else:
         results = []
         fails = []
     if testp and len(mfemp_exes) != 0:
         print(bcolors.BOLD+"Running Parallel Version"+bcolors.ENDC)
-        resultp, failp = run_test(
+        resultp, failp, skippedp = run_test(
             mfemp_exes, pymfemp_exes, sandbox, serial=False, np=np, verbose=verbose)
     else:
         resultp = []
@@ -382,6 +394,9 @@ if __name__ == "__main__":
         else:
             print("Serial Test \t" + bcolors.FAIL +
                   " ".join(fails) + bcolors.ENDC)
+            sys.exit(1)
+        print("Serial Test Skipped due to the lack of Python vesion \t" + bcolors.FAIL +
+              " ".join(skipped) + bcolors.ENDC)            
 
     if testp and len(resultp) != 0:
         if all(resultp):
@@ -390,3 +405,7 @@ if __name__ == "__main__":
         else:
             print("Parallel Test \t" + bcolors.FAIL +
                   " ".join(failp) + bcolors.ENDC)
+            sys.exit(1)
+
+        print("Parallel Test Skipped due to the lack of Python vesion \t" + bcolors.FAIL +
+              " ".join(skippedp) + bcolors.ENDC)
