@@ -6,7 +6,7 @@ on:
     tags: ["test_*"]
 
 jobs:
-  vm:
+  make_sdist:
     runs-on: ubuntu-latest
     container: quay.io/pypa/manylinux2014_x86_64
     steps:
@@ -37,11 +37,10 @@ jobs:
           ls -l dist/
           python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
           #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*
-  container:
-    needs: vm
+  make_binary_3_6_7_8_9:
+    needs: make_sdist
     strategy:
       matrix:
-        #pythonpath:  ["cp36-cp36m"]
         pythonpath: ["cp36-cp36m", "cp37-cp37m", "cp38-cp38", "cp39-cp39"]
  
     runs-on: ubuntu-latest
@@ -55,7 +54,7 @@ jobs:
           git clone https://github.com/mfem/PyMFEM.git
           cd PyMFEM
           #
-          mkdir external	    
+          mkdir external
           cd external
           git clone https://github.com/mfem/mfem.git
           cd ..
@@ -66,7 +65,7 @@ jobs:
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
           pip3 install six
           pip3 install auditwheel
-          pip3 install twine	
+          pip3 install twine
           if [ -f requirements.txt ]; then
              pip3 install -r requirements.txt
           fi	  
@@ -85,3 +84,50 @@ jobs:
           ls -l dist/
           python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
           #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*   	  
+  make_binary_3_10:
+    needs: vm
+    strategy:
+      matrix:
+        pythonpath: ["cp310-cp310"]
+
+    runs-on: ubuntu-latest
+    container: quay.io/pypa/manylinux_2_24_x86_64
+    #container: node:10.16-jessie
+    steps:
+      - name: build package
+        run: |
+          echo It runs in the container instead of the VM.
+          #
+          git clone https://github.com/mfem/PyMFEM.git
+          cd PyMFEM
+          #
+          mkdir external
+          cd external
+          git clone https://github.com/mfem/mfem.git
+          cd ..
+          #
+          git checkout test_release
+          #
+          ls -l /opt/python/
+          export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
+          pip3 install six
+          pip3 install auditwheel
+          pip3 install twine
+          if [ -f requirements.txt ]; then
+             pip3 install -r requirements.txt
+          fi	  
+          CWD=$PWD
+          ls -l
+          yum install -y zlib-devel
+          python3 setup.py install
+          rm -rf dist/*
+          python3 setup.py bdist_wheel
+          export LD_LIBRARY_PATH=${CWD}/PyMFEM/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
+          rm -rf wheelhouse/*
+          auditwheel repair dist/*.whl
+          rm -rf dist/*
+          #python3 setup.py sdist
+          mv wheelhouse/* dist/
+          ls -l dist/
+          python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
+          #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*
