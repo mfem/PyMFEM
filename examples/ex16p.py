@@ -112,7 +112,7 @@ class ConductionOperator(mfem.PyTimeDependentOperator):
 class InitialTemperature(mfem.PyCoefficient):
     def EvalValue(self, x):
         xx = np.array(x)
-        norm2 = float(np.sum(xx**2))
+        norm2 = np.sqrt(float(np.sum(xx**2)))
         if norm2 < 0.5:
             return 2.0
         return 1.0

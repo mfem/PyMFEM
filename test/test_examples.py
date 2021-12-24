@@ -144,6 +144,7 @@ def do_compare_outputs(dir1, dir2):
         print("py produced: ", files2)
         return False
 
+    fail = False
     for f in files1:
         if os.path.isdir(os.path.join(dir1, f)):
             dir11 = os.path.join(dir1, f)
@@ -177,9 +178,12 @@ def do_compare_outputs(dir1, dir2):
         if mismatch > 3:
            print("Contents does not agree: ", f)
            print("# "+str(mismatch) + " lines do not agree out of "+str(len(l1)))
-           return False
-    print("No difference in generate files (Passed output file check) in " + os.path.basename(dir1))
-    return True
+           fail = True
+           
+    if not fail:
+        print("No difference in generate files (Passed output file check) in " + os.path.basename(dir1))
+        
+    return not fail
 
 def compare_outputs(case):        
     dir1 = os.path.join(sandbox, case, 'exe')
