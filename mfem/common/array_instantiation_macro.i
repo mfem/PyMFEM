@@ -34,10 +34,11 @@
            PyErr_SetString(PyExc_ValueError, "Argument must be either int or slice");
             return NULL; 	
         }
+        int own =  (self -> OwnsData()) ? 0 : 1;
         if (idx >= 0){
-          return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](idx))), $descriptor(XXX *), 1);	  
+          return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](idx))), $descriptor(XXX *), own);
         } else {
-	  return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](len+idx))), $descriptor(XXX *), 1);
+	  return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](len+idx))), $descriptor(XXX *), own);
 	}
     }
   }

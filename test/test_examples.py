@@ -144,6 +144,7 @@ def do_compare_outputs(dir1, dir2):
         print("py produced: ", files2)
         return False
 
+    fail = False
     for f in files1:
         if os.path.isdir(os.path.join(dir1, f)):
             dir11 = os.path.join(dir1, f)
@@ -163,17 +164,26 @@ def do_compare_outputs(dir1, dir2):
         for ll1, ll2 in zip(l1, l2):
             if ll1 != ll2:
                 try:
-                    if ([float(x) for x in ll1.split(' ')] ==
-                        [float(x) for x in ll2.split(' ')]): continue
+                    # compare 4 digits
+                    d1 = ['%s' % float('%.4g' % float(x)) for x in ll1.split(' ')]
+                    d2 = ['%s' % float('%.4g' % float(x)) for x in ll2.split(' ')]
+                    if d1 == d2:
+                        continue
+                    else:
+                        #print("line with difference", d1, d2)
+                        mismatch += 1                        
                 except:
                     print("found a line mismatch :", ll1, ll2)
                     mismatch += 1
         if mismatch > 3:
            print("Contents does not agree: ", f)
-           print("# "+str(mismatch) + "lines do not agree out of "+str(len(l1)))
-           return False
-    print("No difference in generate files (Passed output file check) in " + os.path.basename(dir1))
-    return True
+           print("# "+str(mismatch) + " lines do not agree out of "+str(len(l1)))
+           fail = True
+           
+    if not fail:
+        print("No difference in generate files (Passed output file check) in " + os.path.basename(dir1))
+        
+    return not fail
 
 def compare_outputs(case):        
     dir1 = os.path.join(sandbox, case, 'exe')

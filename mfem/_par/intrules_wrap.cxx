@@ -3020,10 +3020,11 @@ SWIGINTERN PyObject *mfem_Array_Sl_mfem_IntegrationPoint_Sg____getitem__(mfem::A
            PyErr_SetString(PyExc_ValueError, "Argument must be either int or slice");
             return NULL; 	
         }
+        int own =  (self -> OwnsData()) ? 0 : 1;
         if (idx >= 0){
-          return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](idx))), SWIGTYPE_p_IntegrationPoint, 1);	  
+          return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](idx))), SWIGTYPE_p_IntegrationPoint, own);	  
         } else {
-	  return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](len+idx))), SWIGTYPE_p_IntegrationPoint, 1);
+	  return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](len+idx))), SWIGTYPE_p_IntegrationPoint, own);
 	}
     }
   }

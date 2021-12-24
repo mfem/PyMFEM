@@ -73,7 +73,6 @@ pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
 par_ref_levels = 2
 for l in range(par_ref_levels):
     pmesh.UniformRefinement()
-pmesh.ReorientTetMesh()
 
 #  6. Define a finite element space on the mesh. Here we use the Nedelec
 #     finite elements of the specified order.

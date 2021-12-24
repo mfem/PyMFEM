@@ -35,7 +35,7 @@ for k in range(ser_ref_levels):
 pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
 for k in range(par_ref_levels):
     pmesh.UniformRefinement()
-pmesh.ReorientTetMesh()
+
 fec = mfem.ND_FECollection(order, dim)
 fespace = mfem.ParFiniteElementSpace(pmesh, fec)
 size = fespace.GlobalTrueVSize()
