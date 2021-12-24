@@ -73,7 +73,7 @@ for k in range(par_ref_levels):
 
 # 7. Define the discontinuous DG finite element space of the given
 #    polynomial order on the refined mesh.
-fec = mfem.DG_FECollection(order, dim)
+fec = mfem.DG_FECollection(order, dim, mfem.BasisType.GaussLobatto)
 fes = mfem.ParFiniteElementSpace(pmesh, fec)
 
 global_vSize = fes.GlobalTrueVSize()
