@@ -16,7 +16,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.6", "3.7", "3.8", "3.9", "3.10"]
+        #python-version: ["3.6", "3.7", "3.8", "3.9", "3.10"]
+	python-version: ["3.10"]
         #os: [ubuntu-latest]
         os: [ubuntu-20.04]
         # USE_FLAGS :  cuda, parallel, libceed
@@ -58,7 +59,7 @@ jobs:
         mkdir -p ~/sandbox/lib
         PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
-        echo $PYTHONPATH
+        echo "PYTHONPATH:"$PYTHONPATH
 
         if [ -f requirements.txt ]; then
            pip install -r requirements.txt --prefix=~/sandbox
