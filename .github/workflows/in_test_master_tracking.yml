@@ -55,7 +55,7 @@ jobs:
     - name: Install dependencies
       run: |
         #python -m pip install --upgrade pip setuptools wheel
-
+        python -c "import setuptools;print(setuptools.__version__)"
 
         PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages
         mkdir -p $PYTHONLIB
