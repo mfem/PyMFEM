@@ -165,12 +165,14 @@ def do_compare_outputs(dir1, dir2):
                 try:
                     if ([float(x) for x in ll1.split(' ')] ==
                         [float(x) for x in ll2.split(' ')]): continue
+                    else:
+                        mismatch += 1                        
                 except:
                     print("found a line mismatch :", ll1, ll2)
                     mismatch += 1
         if mismatch > 3:
            print("Contents does not agree: ", f)
-           print("# "+str(mismatch) + "lines do not agree out of "+str(len(l1)))
+           print("# "+str(mismatch) + " lines do not agree out of "+str(len(l1)))
            return False
     print("No difference in generate files (Passed output file check) in " + os.path.basename(dir1))
     return True

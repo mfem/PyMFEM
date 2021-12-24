@@ -70,7 +70,6 @@ def run(order=1,
     ref_levels = int(np.floor(np.log(50000./mesh.GetNE())/np.log(2.)/dim))
     for x in range(ref_levels):
         mesh.UniformRefinement()
-    mesh.ReorientTetMesh()
 
     #  4. Define a finite element space on the mesh. Here we use the Nedelec
     #     finite elements of the specified order.
