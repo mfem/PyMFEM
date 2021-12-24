@@ -2816,8 +2816,7 @@ namespace swig {
 #include <iostream>
 #include <stdio.h>  
 #include "../common/io_stream.hpp"
-#include "general/zstr.hpp"  
-#include "general/array.hpp"
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
 
 
@@ -5774,7 +5773,7 @@ SWIGINTERN PyObject *_wrap_intArray_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp2 = new PyMFEM::wFILE(filename, 8, true);
+          temp2 = new PyMFEM::wFILE(filename, 16, true);
           Py_DECREF(str);	 
         }
       }
@@ -5932,7 +5931,7 @@ SWIGINTERN PyObject *_wrap_intArray_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp2 = new PyMFEM::wFILE(filename, 8, true);
+        temp2 = new PyMFEM::wFILE(filename, 16, true);
         Py_DECREF(str);	 
       }
     }
@@ -10196,7 +10195,7 @@ SWIGINTERN PyObject *_wrap_doubleArray_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(se
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp2 = new PyMFEM::wFILE(filename, 8, true);
+          temp2 = new PyMFEM::wFILE(filename, 16, true);
           Py_DECREF(str);	 
         }
       }
@@ -10354,7 +10353,7 @@ SWIGINTERN PyObject *_wrap_doubleArray_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp2 = new PyMFEM::wFILE(filename, 8, true);
+        temp2 = new PyMFEM::wFILE(filename, 16, true);
         Py_DECREF(str);	 
       }
     }

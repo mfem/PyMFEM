@@ -3231,11 +3231,10 @@ namespace swig {
 
 #include <fstream>
 #include <iostream>
-#include "general/zstr.hpp"  
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"  
 #include "../common/io_stream.hpp"  
 #include "pyoperator.hpp"
-#include "linalg/matrix.hpp"  
 
 
 SWIGINTERNINLINE PyObject*
@@ -3799,7 +3798,7 @@ SWIGINTERN PyObject *_wrap_Matrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp2 = new PyMFEM::wFILE(filename, 8, true);
+          temp2 = new PyMFEM::wFILE(filename, 16, true);
           Py_DECREF(str);	 
         }
       }

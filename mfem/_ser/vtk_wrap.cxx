@@ -3915,7 +3915,7 @@ SWIGINTERN PyObject *_wrap_WriteVTKEncodedCompressed(PyObject *SWIGUNUSEDPARM(se
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj0, "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp1 = new PyMFEM::wFILE(filename, 8, true);
+        temp1 = new PyMFEM::wFILE(filename, 16, true);
         Py_DECREF(str);	 
       }
     }

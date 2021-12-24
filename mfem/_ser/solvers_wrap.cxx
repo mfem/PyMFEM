@@ -3980,32 +3980,6 @@ void SwigDirector_PyIterativeSolver::SetPrintLevel(int print_lvl) {
 }
 
 
-void SwigDirector_PyIterativeSolver::SetPrintLevel(mfem::IterativeSolver::PrintLevel arg0) {
-  swig::SwigVar_PyObject obj0;
-  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(new mfem::IterativeSolver::PrintLevel((const mfem::IterativeSolver::PrintLevel &)arg0)), SWIGTYPE_p_mfem__IterativeSolver__PrintLevel, SWIG_POINTER_OWN |  0 );
-  if (!swig_get_self()) {
-    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyIterativeSolver.__init__.");
-  }
-#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
-  const char *const swig_method_name = "SetPrintLevel";
-  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
-  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
-#else
-  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("SetPrintLevel");
-  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0, NULL);
-#endif
-  if (!result) {
-    PyObject *error = PyErr_Occurred();
-    {
-      if (error != NULL) {
-        throw Swig::DirectorMethodException();
-      }
-    }
-  }
-}
-
-
 void SwigDirector_PyIterativeSolver::SetPreconditioner(mfem::Solver &pr) {
   swig::SwigVar_PyObject obj0;
   obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&pr), SWIGTYPE_p_mfem__Solver,  0 );
@@ -4013,7 +3987,7 @@ void SwigDirector_PyIterativeSolver::SetPreconditioner(mfem::Solver &pr) {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyIterativeSolver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 13;
   const char *const swig_method_name = "SetPreconditioner";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
@@ -5658,6 +5632,82 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_OperatorChebyshevSmoother__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
+  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Array< int > *arg3 = 0 ;
+  int arg4 ;
+  double arg5 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  double val5 ;
+  int ecode5 = 0 ;
+  mfem::OperatorChebyshevSmoother *result = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_OperatorChebyshevSmoother" "', argument " "1"" of type '" "mfem::Operator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_OperatorChebyshevSmoother" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_OperatorChebyshevSmoother" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_OperatorChebyshevSmoother" "', argument " "3"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_OperatorChebyshevSmoother" "', argument " "3"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  }
+  ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_OperatorChebyshevSmoother" "', argument " "5"" of type '" "double""'");
+  } 
+  arg5 = static_cast< double >(val5);
+  {
+    try {
+      result = (mfem::OperatorChebyshevSmoother *)new mfem::OperatorChebyshevSmoother((mfem::Operator const *)arg1,(mfem::Vector const &)*arg2,(mfem::Array< int > const &)*arg3,arg4,arg5);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__OperatorChebyshevSmoother, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_OperatorChebyshevSmoother__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
   mfem::Operator *arg1 = 0 ;
   mfem::Vector *arg2 = 0 ;
   mfem::Array< int > *arg3 = 0 ;
@@ -5752,6 +5802,93 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_new_OperatorChebyshevSmoother__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Array< int > *arg3 = 0 ;
+  int arg4 ;
+  int arg5 = (int) 10 ;
+  double arg6 = (double) 1e-8 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  double val6 ;
+  int ecode6 = 0 ;
+  mfem::OperatorChebyshevSmoother *result = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 6)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_OperatorChebyshevSmoother" "', argument " "1"" of type '" "mfem::Operator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_OperatorChebyshevSmoother" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_OperatorChebyshevSmoother" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_OperatorChebyshevSmoother" "', argument " "3"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_OperatorChebyshevSmoother" "', argument " "3"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  }
+  if (swig_obj[4]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[4]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg5 = PyArray_PyIntAsInt(swig_obj[4]);
+    }
+  }
+  if (swig_obj[5]) {
+    ecode6 = SWIG_AsVal_double(swig_obj[5], &val6);
+    if (!SWIG_IsOK(ecode6)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_OperatorChebyshevSmoother" "', argument " "6"" of type '" "double""'");
+    } 
+    arg6 = static_cast< double >(val6);
+  }
+  {
+    try {
+      result = (mfem::OperatorChebyshevSmoother *)new mfem::OperatorChebyshevSmoother((mfem::Operator const *)arg1,(mfem::Vector const &)*arg2,(mfem::Array< int > const &)*arg3,arg4,arg5,arg6);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__OperatorChebyshevSmoother, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_OperatorChebyshevSmoother(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[7] = {
@@ -5781,7 +5918,7 @@ SWIGINTERN PyObject *_wrap_new_OperatorChebyshevSmoother(PyObject *self, PyObjec
           }
           if (_v) {
             if (argc <= 4) {
-              return _wrap_new_OperatorChebyshevSmoother__SWIG_1(self, argc, argv);
+              return _wrap_new_OperatorChebyshevSmoother__SWIG_2(self, argc, argv);
             }
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
@@ -5793,14 +5930,63 @@ SWIGINTERN PyObject *_wrap_new_OperatorChebyshevSmoother(PyObject *self, PyObjec
             }
             if (_v) {
               if (argc <= 5) {
-                return _wrap_new_OperatorChebyshevSmoother__SWIG_1(self, argc, argv);
+                return _wrap_new_OperatorChebyshevSmoother__SWIG_2(self, argc, argv);
               }
               {
                 int res = SWIG_AsVal_double(argv[5], NULL);
                 _v = SWIG_CheckState(res);
               }
               if (_v) {
-                return _wrap_new_OperatorChebyshevSmoother__SWIG_1(self, argc, argv);
+                return _wrap_new_OperatorChebyshevSmoother__SWIG_2(self, argc, argv);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  if ((argc >= 4) && (argc <= 6)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
+              _v = 0;
+            } else {
+              _v = 1;    
+            }
+          }
+          if (_v) {
+            if (argc <= 4) {
+              return _wrap_new_OperatorChebyshevSmoother__SWIG_3(self, argc, argv);
+            }
+            {
+              if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
+                _v = 0;
+              } else {
+                _v = 1;    
+              }
+            }
+            if (_v) {
+              if (argc <= 5) {
+                return _wrap_new_OperatorChebyshevSmoother__SWIG_3(self, argc, argv);
+              }
+              {
+                int res = SWIG_AsVal_double(argv[5], NULL);
+                _v = SWIG_CheckState(res);
+              }
+              if (_v) {
+                return _wrap_new_OperatorChebyshevSmoother__SWIG_3(self, argc, argv);
               }
             }
           }
@@ -5840,12 +6026,47 @@ SWIGINTERN PyObject *_wrap_new_OperatorChebyshevSmoother(PyObject *self, PyObjec
       }
     }
   }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
+              _v = 0;
+            } else {
+              _v = 1;    
+            }
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_double(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              return _wrap_new_OperatorChebyshevSmoother__SWIG_1(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_OperatorChebyshevSmoother'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::OperatorChebyshevSmoother::OperatorChebyshevSmoother(mfem::Operator const &,mfem::Vector const &,mfem::Array< int > const &,int,double)\n"
-    "    mfem::OperatorChebyshevSmoother::OperatorChebyshevSmoother(mfem::Operator const &,mfem::Vector const &,mfem::Array< int > const &,int,int,double)\n");
+    "    mfem::OperatorChebyshevSmoother::OperatorChebyshevSmoother(mfem::Operator const *,mfem::Vector const &,mfem::Array< int > const &,int,double)\n"
+    "    mfem::OperatorChebyshevSmoother::OperatorChebyshevSmoother(mfem::Operator const &,mfem::Vector const &,mfem::Array< int > const &,int,int,double)\n"
+    "    mfem::OperatorChebyshevSmoother::OperatorChebyshevSmoother(mfem::Operator const *,mfem::Vector const &,mfem::Array< int > const &,int,int,double)\n");
   return 0;
 }
 
@@ -13178,6 +13399,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "OperatorJacobiSmoother_swiginit", OperatorJacobiSmoother_swiginit, METH_VARARGS, NULL},
 	 { "new_OperatorChebyshevSmoother", _wrap_new_OperatorChebyshevSmoother, METH_VARARGS, "\n"
 		"OperatorChebyshevSmoother(Operator oper_, Vector d, intArray ess_tdof_list, int order, double max_eig_estimate)\n"
+		"OperatorChebyshevSmoother(Operator oper_, Vector d, intArray ess_tdof_list, int order, double max_eig_estimate)\n"
+		"OperatorChebyshevSmoother(Operator oper_, Vector d, intArray ess_tdof_list, int order, int power_iterations=10, double power_tolerance=1e-8)\n"
 		"new_OperatorChebyshevSmoother(Operator oper_, Vector d, intArray ess_tdof_list, int order, int power_iterations=10, double power_tolerance=1e-8) -> OperatorChebyshevSmoother\n"
 		""},
 	 { "delete_OperatorChebyshevSmoother", _wrap_delete_OperatorChebyshevSmoother, METH_O, "delete_OperatorChebyshevSmoother(OperatorChebyshevSmoother self)"},
@@ -13373,6 +13596,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "OperatorJacobiSmoother_swiginit", OperatorJacobiSmoother_swiginit, METH_VARARGS, NULL},
 	 { "new_OperatorChebyshevSmoother", _wrap_new_OperatorChebyshevSmoother, METH_VARARGS, "\n"
 		"OperatorChebyshevSmoother(Operator oper_, Vector d, intArray ess_tdof_list, int order, double max_eig_estimate)\n"
+		"OperatorChebyshevSmoother(Operator oper_, Vector d, intArray ess_tdof_list, int order, double max_eig_estimate)\n"
+		"OperatorChebyshevSmoother(Operator oper_, Vector d, intArray ess_tdof_list, int order, int power_iterations=10, double power_tolerance=1e-8)\n"
 		"new_OperatorChebyshevSmoother(Operator oper_, Vector d, intArray ess_tdof_list, int order, int power_iterations=10, double power_tolerance=1e-8) -> OperatorChebyshevSmoother\n"
 		""},
 	 { "delete_OperatorChebyshevSmoother", _wrap_delete_OperatorChebyshevSmoother, METH_O, "delete_OperatorChebyshevSmoother(OperatorChebyshevSmoother self)"},

@@ -3237,8 +3237,7 @@ namespace swig {
 
 #include <fstream>
 #include <iostream>
-#include "general/zstr.hpp"
-#include "linalg/sparsemat.hpp"
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
 #include "../common/io_stream.hpp"
@@ -11011,7 +11010,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(se
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp2 = new PyMFEM::wFILE(filename, 8, true);
+          temp2 = new PyMFEM::wFILE(filename, 16, true);
           Py_DECREF(str);	 
         }
       }
@@ -11173,7 +11172,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT__SWIG_0(PyObject *SWIGUNUSEDPARM(s
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp2 = new PyMFEM::wFILE(filename, 8, true);
+          temp2 = new PyMFEM::wFILE(filename, 16, true);
           Py_DECREF(str);	 
         }
       }

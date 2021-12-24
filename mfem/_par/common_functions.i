@@ -2,12 +2,8 @@
 
 %{
 #include <fstream>
-#include "general/zstr.hpp"    
+#include "mfem.hpp"
 #include "../common/io_stream.hpp"            
-#include "linalg/blockmatrix.hpp"
-#include "linalg/sparsemat.hpp"
-#include "linalg/densemat.hpp"
-#include "linalg/hypre.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"     
   %}

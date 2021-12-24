@@ -10798,7 +10798,7 @@ SWIGINTERN PyObject *_wrap_NewmarkSolver_PrintProperties(PyObject *SWIGUNUSEDPAR
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(obj1, "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp2 = new PyMFEM::wFILE(filename, 8, true);
+          temp2 = new PyMFEM::wFILE(filename, 16, true);
           Py_DECREF(str);	 
         }
       }
@@ -11438,7 +11438,7 @@ SWIGINTERN PyObject *_wrap_GeneralizedAlpha2Solver_PrintProperties(PyObject *SWI
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(obj1, "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp2 = new PyMFEM::wFILE(filename, 8, true);
+          temp2 = new PyMFEM::wFILE(filename, 16, true);
           Py_DECREF(str);	 
         }
       }

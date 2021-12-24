@@ -7,10 +7,7 @@
 #include <iostream>
 
 #include "../common/io_stream.hpp"
-#include "mesh/ncmesh.hpp"
-#include "general/zstr.hpp"
-#include "fem/gridfunc.hpp"
-#include "fem/bilinearform.hpp"  
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
 #include "../common/pycoefficient.hpp"  
 %}

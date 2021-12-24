@@ -75,6 +75,7 @@ MFEM_VERSION_MAJOR = _solvers.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _solvers.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _solvers.MFEM_VERSION_PATCH
 MFEM_HYPRE_VERSION = _solvers.MFEM_HYPRE_VERSION
+import mfem._par.globals
 import mfem._par.vector
 import mfem._par.array
 import mfem._par.mem_manager
@@ -237,6 +238,8 @@ class OperatorChebyshevSmoother(mfem._par.operators.Solver):
     def __init__(self, *args):
         r"""
         __init__(OperatorChebyshevSmoother self, Operator oper_, Vector d, intArray ess_tdof_list, int order, double max_eig_estimate) -> OperatorChebyshevSmoother
+        __init__(OperatorChebyshevSmoother self, Operator oper_, Vector d, intArray ess_tdof_list, int order, double max_eig_estimate) -> OperatorChebyshevSmoother
+        __init__(OperatorChebyshevSmoother self, Operator oper_, Vector d, intArray ess_tdof_list, int order, MPI_Comm comm=MPI_COMM_NULL, int power_iterations=10, double power_tolerance=1e-8) -> OperatorChebyshevSmoother
         __init__(OperatorChebyshevSmoother self, Operator oper_, Vector d, intArray ess_tdof_list, int order, MPI_Comm comm=MPI_COMM_NULL, int power_iterations=10, double power_tolerance=1e-8) -> OperatorChebyshevSmoother
         """
         _solvers.OperatorChebyshevSmoother_swiginit(self, _solvers.new_OperatorChebyshevSmoother(*args))

@@ -2,11 +2,19 @@ import sys
 import numpy as np
 from scipy.sparse import csr_matrix
 
-if len(sys.argv) < 2:
-    import mfem.ser as mfem
-elif sys.argv[1] == 'par':
-    import mfem.par as mfem    
+if len(sys.argv) > 1 and sys.argv[1] == '-p':
+    import mfem.par as mfem
+    use_parallel = True
 
+    from mfem.common.mpi_debug import nicePrint as print
+
+    from mpi4py import MPI
+    myid = MPI.COMM_WORLD.rank
+
+else:
+    import mfem.ser as mfem
+    use_parallel = False
+    myid = 0
 
 smat = csr_matrix([[1,2,3,], [0, 0, 1], [2, 0, 0]])
 mmat = mfem.SparseMatrix(smat)

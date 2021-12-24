@@ -66,6 +66,7 @@ class _SwigNonDynamicMeta(type):
 
 import weakref
 
+import mfem._ser.globals
 import mfem._ser.vector
 import mfem._ser.array
 import mfem._ser.mem_manager
@@ -223,6 +224,8 @@ class OperatorChebyshevSmoother(mfem._ser.operators.Solver):
     def __init__(self, *args):
         r"""
         __init__(OperatorChebyshevSmoother self, Operator oper_, Vector d, intArray ess_tdof_list, int order, double max_eig_estimate) -> OperatorChebyshevSmoother
+        __init__(OperatorChebyshevSmoother self, Operator oper_, Vector d, intArray ess_tdof_list, int order, double max_eig_estimate) -> OperatorChebyshevSmoother
+        __init__(OperatorChebyshevSmoother self, Operator oper_, Vector d, intArray ess_tdof_list, int order, int power_iterations=10, double power_tolerance=1e-8) -> OperatorChebyshevSmoother
         __init__(OperatorChebyshevSmoother self, Operator oper_, Vector d, intArray ess_tdof_list, int order, int power_iterations=10, double power_tolerance=1e-8) -> OperatorChebyshevSmoother
         """
         _solvers.OperatorChebyshevSmoother_swiginit(self, _solvers.new_OperatorChebyshevSmoother(*args))

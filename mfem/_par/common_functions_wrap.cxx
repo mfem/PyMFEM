@@ -2828,12 +2828,8 @@ namespace swig {
 
 
 #include <fstream>
-#include "general/zstr.hpp"    
+#include "mfem.hpp"
 #include "../common/io_stream.hpp"            
-#include "linalg/blockmatrix.hpp"
-#include "linalg/sparsemat.hpp"
-#include "linalg/densemat.hpp"
-#include "linalg/hypre.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"     
   
@@ -3863,7 +3859,7 @@ SWIGINTERN PyObject *_wrap___lshift__(PyObject *SWIGUNUSEDPARM(self), PyObject *
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj0, "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp1 = new PyMFEM::wFILE(filename, 8, true);
+        temp1 = new PyMFEM::wFILE(filename, 16, true);
         Py_DECREF(str);	 
       }
     }

@@ -3232,8 +3232,7 @@ namespace swig {
 
 #include <fstream>  
 #include <iostream>
-#include "general/zstr.hpp"      
-#include "linalg/blockmatrix.hpp"
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
 #include "../common/io_stream.hpp"    

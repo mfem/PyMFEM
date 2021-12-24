@@ -23,6 +23,7 @@ import_array();
 #endif
 
 %include "exception.i"
+%import "globals.i"
 %import "vector.i"
 %import "operators.i"
 %import "matrix.i"

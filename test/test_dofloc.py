@@ -19,8 +19,9 @@ else:
     myid = 0
 
 def run_test():
-    #meshfile = expanduser(join(mfem_path, 'data', 'semi_circle.mesh'))
-    meshfile = "../data/amr-quad.mesh"
+
+    dir = os.path.dirname(os.path.abspath(__file__))    
+    meshfile = os.path.join(dir, "../data/amr-quad.mesh")
     mesh = mfem.Mesh(meshfile, 1, 1)
     dim = mesh.Dimension()
     sdim = mesh.SpaceDimension()

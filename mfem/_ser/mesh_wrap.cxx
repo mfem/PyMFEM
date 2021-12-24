@@ -27526,7 +27526,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp2 = new PyMFEM::wFILE(filename, 8, true);
+          temp2 = new PyMFEM::wFILE(filename, 16, true);
           Py_DECREF(str);	 
         }
       }
@@ -27679,7 +27679,7 @@ SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp2 = new PyMFEM::wFILE(filename, 8, true);
+          temp2 = new PyMFEM::wFILE(filename, 16, true);
           Py_DECREF(str);	 
         }
       }
@@ -27894,7 +27894,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp2 = new PyMFEM::wFILE(filename, 8, true);
+        temp2 = new PyMFEM::wFILE(filename, 16, true);
         Py_DECREF(str);	 
       }
     }
@@ -28046,7 +28046,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp2 = new PyMFEM::wFILE(filename, 8, true);
+        temp2 = new PyMFEM::wFILE(filename, 16, true);
         Py_DECREF(str);	 
       }
     }
@@ -28221,7 +28221,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTU__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp2 = new PyMFEM::wFILE(filename, 8, true);
+        temp2 = new PyMFEM::wFILE(filename, 16, true);
         Py_DECREF(str);	 
       }
     }
@@ -28823,7 +28823,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning(PyObject *SWIGUNUSEDPARM(s
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj2, "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp3 = new PyMFEM::wFILE(filename, 8, true);
+        temp3 = new PyMFEM::wFILE(filename, 16, true);
         Py_DECREF(str);	 
       }
     }
@@ -28997,7 +28997,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning(PyObject *SWIGUNUS
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj2, "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp3 = new PyMFEM::wFILE(filename, 8, true);
+        temp3 = new PyMFEM::wFILE(filename, 16, true);
         Py_DECREF(str);	 
       }
     }
@@ -29172,7 +29172,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintSurfaces(PyObject *SWIGUNUSEDPARM(self), Py
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj2, "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp3 = new PyMFEM::wFILE(filename, 8, true);
+        temp3 = new PyMFEM::wFILE(filename, 16, true);
         Py_DECREF(str);	 
       }
     }
@@ -30146,7 +30146,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsByGeometry(PyObject *SWIGUNUSEDPARM
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj2, "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp3 = new PyMFEM::wFILE(filename, 8, true);
+        temp3 = new PyMFEM::wFILE(filename, 16, true);
         Py_DECREF(str);	 
       }
     }
@@ -30325,7 +30325,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics(PyObject *SWIGUNUSEDPARM(se
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(obj3, "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp4 = new PyMFEM::wFILE(filename, 8, true);
+          temp4 = new PyMFEM::wFILE(filename, 16, true);
           Py_DECREF(str);	 
         }
       }
@@ -30478,7 +30478,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp2 = new PyMFEM::wFILE(filename, 8, true);
+          temp2 = new PyMFEM::wFILE(filename, 16, true);
           Py_DECREF(str);	 
         }
       }
@@ -33000,32 +33000,6 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK(PyObject *self, PyObject *args) {
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "Mesh_PrintVTK", 0, 4, argv))) SWIG_fail;
   --argc;
-  if ((argc >= 2) && (argc <= 3)) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        if (argc <= 2) {
-          return _wrap_Mesh_PrintVTK__SWIG_2(self, argc, argv);
-        }
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_Mesh_PrintVTK__SWIG_2(self, argc, argv);
-        }
-      }
-    }
-  }
   if (argc == 2) {
     int _v;
     void *vptr = 0;
@@ -33062,6 +33036,32 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK(PyObject *self, PyObject *args) {
       }
       if (_v) {
         return _wrap_Mesh_PrintVTK__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  if ((argc >= 2) && (argc <= 3)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_Mesh_PrintVTK__SWIG_2(self, argc, argv);
+        }
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_Mesh_PrintVTK__SWIG_2(self, argc, argv);
+        }
       }
     }
   }
@@ -33263,7 +33263,7 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[0], "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp1 = new PyMFEM::wFILE(filename, 8, true);
+        temp1 = new PyMFEM::wFILE(filename, 16, true);
         Py_DECREF(str);	 
       }
     }

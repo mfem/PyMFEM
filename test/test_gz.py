@@ -12,11 +12,12 @@ if len(sys.argv) > 1 and sys.argv[1] == '-p':
     from mfem.common.mpi_debug import nicePrint as print
     from mpi4py import MPI
     myid = MPI.COMM_WORLD.rank
-
+    smyid = '.'+'{:0>6d}'.format(myid)
 else:
     import mfem.ser as mfem
     use_parallel = False
     myid = 0
+    smyid = ''
 
 
 def check(a, b, msg):
@@ -32,7 +33,8 @@ def check_mesh(m1, m2, msg):
 
 def run_test():
     #meshfile = expanduser(join(mfem_path, 'data', 'semi_circle.mesh'))
-    meshfile = "../data/amr-quad.mesh"
+    dir = os.path.dirname(os.path.abspath(__file__))    
+    meshfile = os.path.join(dir, "../data/amr-quad.mesh")
     mesh = mfem.Mesh(meshfile, 1, 1)
     dim = mesh.Dimension()
     sdim = mesh.SpaceDimension()
@@ -47,33 +49,33 @@ def run_test():
 
     odata = gf.GetDataArray().copy()
 
-    gf.Save("out_test_gz.gf")
-    gf2 = mfem.GridFunction(mesh, "out_test_gz.gf")
+    gf.Save("out_test_gz"+smyid+".gf")
+    gf2 = mfem.GridFunction(mesh, "out_test_gz"+smyid+".gf")
     odata2 = gf2.GetDataArray().copy()
     check(odata, odata2, "text file does not agree with original")
 
-    gf.Save("out_test_gz.gz")
+    gf.Save("out_test_gz"+smyid+".gz")
     gf2.Assign(0.0)
-    gf2 = mfem.GridFunction(mesh, "out_test_gz.gz")
+    gf2 = mfem.GridFunction(mesh, "out_test_gz"+smyid+".gz")
     odata2 = gf2.GetDataArray().copy()
     check(odata, odata2, ".gz file does not agree with original")
 
-    gf.Print("out_test_gz.dat")
+    gf.Print("out_test_gz"+smyid+".dat")
     gf2.Assign(0.0)
-    gf2.Load("out_test_gz.dat", gf.Size())
+    gf2.Load("out_test_gz"+smyid+".dat", gf.Size())
     odata2 = gf2.GetDataArray().copy()
     check(odata, odata2, ".dat file does not agree with original")
 
-    gf.Print("out_test_gz.dat.gz")
+    gf.Print("out_test_gz.dat"+smyid+".gz")
     gf2.Assign(0.0)
-    gf2.Load("out_test_gz.dat.gz", gf.Size())
+    gf2.Load("out_test_gz.dat"+smyid+".gz", gf.Size())
     odata2 = gf2.GetDataArray().copy()
     check(odata, odata2, ".dat file does not agree with original (gz)")
 
     import gzip
     import io
-    gf.Print("out_test_gz.dat2.gz")
-    with gzip.open("out_test_gz.dat2.gz", 'rt') as f:
+    gf.Print("out_test_gz.dat2"+smyid+".gz")
+    with gzip.open("out_test_gz.dat2"+smyid+".gz", 'rt') as f:
         sio = io.StringIO(f.read())
     gf3 = mfem.GridFunction(fespace)
     gf3.Load(sio, gf.Size())
@@ -98,29 +100,22 @@ def run_test():
     check_mesh(mesh, mesh2, ".mesh does not agree with original")
 
     mesh2 = mfem.Mesh()
-    mesh.Print("out_test_gz.mesh.gz")
-    mesh2.Load("out_test_gz.mesh.gz")
+    mesh.Print("out_test_gz.mesh"+smyid+".gz")
+    mesh2.Load("out_test_gz.mesh"+smyid+".gz")
 
     check_mesh(mesh, mesh2, ".mesh.gz does not agree with original")
 
     mesh3 = mfem.Mesh()    
-    mesh.PrintGZ("out_test_gz3.mesh")
-    mesh3.Load("out_test_gz3.mesh")
-<<<<<<< HEAD
+    mesh.PrintGZ("out_test_gz3"+smyid+".mesh")
+    mesh3.Load("out_test_gz3"+smyid+".mesh")
 
-    check_mesh(mesh, mesh3, ".mesh (unexplcit GZ) does not agree with original")
-    
 
-    o = io.StringIO()        
-    mesh2 = mfem.Mesh()
-    
-=======
     check_mesh(mesh, mesh3, ".mesh (w/o .gz exntension) does not agree with original")
     
 
     o = io.StringIO()        
     mesh2 = mfem.Mesh()    
->>>>>>> e4ffd7f99651c68daddd00463922df9e66b6beaf
+
     mesh.Print(o)
     mesh2.Load(o)
     check_mesh(mesh, mesh2, ".mesh.gz does not agree with original")

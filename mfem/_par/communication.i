@@ -6,10 +6,7 @@
 #include <iostream>  
 #include <mpi.h>
 #include "../common/io_stream.hpp"
-#include "general/zstr.hpp"  
-#include "config/config.hpp"    
-#include "general/sets.hpp"
-#include "general/communication.hpp"
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
 %}
 
