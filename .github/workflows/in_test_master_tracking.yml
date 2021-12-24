@@ -64,7 +64,7 @@ jobs:
         if [ -f requirements.txt ]; then
            pip install -r requirements.txt --prefix=~/sandbox
         fi
-	which python
+        which python
         python -c "import numpy;print(numpy.__file__)"	
 
         if [ "${USE_FLAGS:0:1}" = "1" ] ; then
