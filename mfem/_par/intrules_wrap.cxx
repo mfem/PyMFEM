@@ -2692,22 +2692,21 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_IntegrationPoint swig_types[0]
-#define SWIGTYPE_p_PyMFEM__wFILE swig_types[1]
-#define SWIGTYPE_p_char swig_types[2]
-#define SWIGTYPE_p_double swig_types[3]
-#define SWIGTYPE_p_int swig_types[4]
-#define SWIGTYPE_p_mfem__ArrayT_double_t swig_types[5]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t swig_types[6]
-#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[7]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[8]
-#define SWIGTYPE_p_mfem__IntegrationRules swig_types[9]
-#define SWIGTYPE_p_mfem__MemoryT_mfem__IntegrationPoint_t swig_types[10]
-#define SWIGTYPE_p_mfem__Quadrature1D swig_types[11]
-#define SWIGTYPE_p_mfem__QuadratureFunctions1D swig_types[12]
-#define SWIGTYPE_p_p_mfem__IntegrationPoint swig_types[13]
-static swig_type_info *swig_types[15];
-static swig_module_info swig_module = {swig_types, 14, 0, 0, 0, 0};
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
+#define SWIGTYPE_p_char swig_types[1]
+#define SWIGTYPE_p_double swig_types[2]
+#define SWIGTYPE_p_int swig_types[3]
+#define SWIGTYPE_p_mfem__ArrayT_double_t swig_types[4]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t swig_types[5]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[6]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[7]
+#define SWIGTYPE_p_mfem__IntegrationRules swig_types[8]
+#define SWIGTYPE_p_mfem__MemoryT_mfem__IntegrationPoint_t swig_types[9]
+#define SWIGTYPE_p_mfem__Quadrature1D swig_types[10]
+#define SWIGTYPE_p_mfem__QuadratureFunctions1D swig_types[11]
+#define SWIGTYPE_p_p_mfem__IntegrationPoint swig_types[12]
+static swig_type_info *swig_types[14];
+static swig_module_info swig_module = {swig_types, 13, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3022,9 +3021,9 @@ SWIGINTERN PyObject *mfem_Array_Sl_mfem_IntegrationPoint_Sg____getitem__(mfem::A
         }
         int own =  (self -> OwnsData()) ? 0 : 1;
         if (idx >= 0){
-          return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](idx))), SWIGTYPE_p_IntegrationPoint, own);	  
+          return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](idx))), SWIGTYPE_p_mfem__IntegrationPoint, own);
         } else {
-	  return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](len+idx))), SWIGTYPE_p_IntegrationPoint, own);
+	  return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](len+idx))), SWIGTYPE_p_mfem__IntegrationPoint, own);
 	}
     }
   }
@@ -8952,7 +8951,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 static void *_p_mfem__IntegrationRuleTo_p_mfem__ArrayT_mfem__IntegrationPoint_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Array< mfem::IntegrationPoint > *)  ((mfem::IntegrationRule *) x));
 }
-static swig_type_info _swigt__p_IntegrationPoint = {"_p_IntegrationPoint", "IntegrationPoint *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
@@ -8968,7 +8966,6 @@ static swig_type_info _swigt__p_mfem__QuadratureFunctions1D = {"_p_mfem__Quadrat
 static swig_type_info _swigt__p_p_mfem__IntegrationPoint = {"_p_p_mfem__IntegrationPoint", "mfem::IntegrationPoint **", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p_IntegrationPoint,
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
   &_swigt__p_double,
@@ -8984,7 +8981,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_p_mfem__IntegrationPoint,
 };
 
-static swig_cast_info _swigc__p_IntegrationPoint[] = {  {&_swigt__p_IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
@@ -9000,7 +8996,6 @@ static swig_cast_info _swigc__p_mfem__QuadratureFunctions1D[] = {  {&_swigt__p_m
 static swig_cast_info _swigc__p_p_mfem__IntegrationPoint[] = {  {&_swigt__p_p_mfem__IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p_IntegrationPoint,
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
   _swigc__p_double,

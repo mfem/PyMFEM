@@ -36,9 +36,9 @@
         }
         int own =  (self -> OwnsData()) ? 0 : 1;
         if (idx >= 0){
-          return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](idx))), $descriptor(XXX *), own);
+          return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](idx))), $descriptor(mfem::XXX *), own);
         } else {
-	  return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](len+idx))), $descriptor(XXX *), own);
+	  return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](len+idx))), $descriptor(mfem::XXX *), own);
 	}
     }
   }
