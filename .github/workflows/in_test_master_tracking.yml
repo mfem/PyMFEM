@@ -56,8 +56,10 @@ jobs:
         #python -m pip install --upgrade pip setuptools wheel
         python -c "import setuptools;print(setuptools.__version__)"
 
-        mkdir -p ~/sandbox/lib
+
         PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages
+        mkdir -p $PYTHONLIB
+	
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
         echo $PYTHONPATH
 
