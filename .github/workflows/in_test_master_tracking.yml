@@ -62,9 +62,10 @@ jobs:
         echo "PYTHONPATH:"$PYTHONPATH
 
         if [ -f requirements.txt ]; then
-           pip install -r requirements.txt --prefix=~/sandbox
+           pip install -r requirements.txt --prefix=~/sandbox --verbose
         fi
-        which python
+
+        python -c "import sys;print(sys.path)"
         python -c "import numpy;print(numpy.__file__)"	
 
         if [ "${USE_FLAGS:0:1}" = "1" ] ; then
