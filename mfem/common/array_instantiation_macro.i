@@ -140,3 +140,21 @@ INSTANTIATE_ARRAY0(XXX, XXX)
   }
  };
 %enddef
+
+%define IGNORE_OBJ_METHODS(XXX)
+%ignore mfem::Array<mfem::XXX>::Union;
+%ignore mfem::Array<mfem::XXX>::Find;
+%ignore mfem::Array<mfem::XXX>::FindSorted;
+%ignore mfem::Array<mfem::XXX>::Sort;
+%ignore mfem::Array<mfem::XXX>::DeleteFirst;
+%ignore mfem::Array<mfem::XXX>::Unique;
+%ignore mfem::Array<mfem::XXX>::PartialSum;
+%ignore mfem::Array<mfem::XXX>::Sum;
+%ignore mfem::Array<mfem::XXX>::IsSorted;
+%ignore mfem::Array<mfem::XXX>::Save;
+%ignore mfem::Array<mfem::XXX>::Max;
+%ignore mfem::Array<mfem::XXX>::Min;
+%ignore mfem::Array<mfem::XXX>::Print;
+%ignore mfem::Array<mfem::XXX>::Load;
+%enddef
+

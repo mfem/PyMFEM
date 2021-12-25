@@ -135,13 +135,13 @@ jobs:
         if [ "${USE_FLAGS}" = "000" ]; then  
            #python ../examples/ex1.py
            #python ../examples/ex9.py
-           python test_examples.py -serial -verbose
+           python run_examples.py -serial -verbose
         fi
         if [ "${USE_FLAGS}" = "010" ]; then
            which mpicc
-           python test_examples.py -parallel -verbose -np 2 -ex ex1p
-           python test_examples.py -parallel -verbose -np 2 -ex ex2p
-           python test_examples.py -parallel -verbose -np 2 -ex ex3p	   
+           python run_examples.py -parallel -verbose -np 2 -ex ex1p
+           python run_examples.py -parallel -verbose -np 2 -ex ex2p
+           python run_examples.py -parallel -verbose -np 2 -ex ex3p	   
         fi
         if [ "${USE_FLAGS}" = "100" ]; then
            python ../examples/ex1.py --pa

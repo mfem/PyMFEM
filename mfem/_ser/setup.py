@@ -74,7 +74,7 @@ extra_compile_args = [cxx11flag, '-DSWIG_TYPE_TABLE=PyMFEM']
 
 import six
 if six.PY3:
-    macros = [('TARGET_PY3', '1'),]
+    macros = [('TARGET_PY3', '1'), ('NPY_NO_DEPRECATED_API', 'NPY_1_7_API_VERSION')]
 else:
     macros = []
     

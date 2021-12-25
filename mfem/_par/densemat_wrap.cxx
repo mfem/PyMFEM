@@ -3591,24 +3591,25 @@ SWIGINTERN void mfem_DenseMatrix_Assign__SWIG_2(mfem::DenseMatrix *self,PyObject
        PyErr_SetString(PyExc_ValueError, "Input data must be ndarray");
        return;
     }
-    int typ = PyArray_TYPE(numpymat);
+    PyArrayObject *numpymat0 = reinterpret_cast<PyArrayObject *>(numpymat);    
+    int typ = PyArray_TYPE(numpymat0);
     if (typ != NPY_DOUBLE){
         PyErr_SetString(PyExc_ValueError, "Input data must be float64");
 	return;
     }
-    int ndim = PyArray_NDIM(numpymat);
+    int ndim = PyArray_NDIM(numpymat0);
     if (ndim != 2){
       PyErr_SetString(PyExc_ValueError, "Input data NDIM must be 2");
       return ;
     }
-    npy_intp *shape = PyArray_DIMS(numpymat);
+    npy_intp *shape = PyArray_DIMS(numpymat0);
     int len = self->Width()*self->Height();
     if (shape[1]*shape[0] != len){    
       PyErr_SetString(PyExc_ValueError, "input data length does not match");
       return ;
     }
     PyObject * tmp1 = 
-       PyArray_Transpose((PyArrayObject *)numpymat, NULL);
+       PyArray_Transpose(numpymat0, NULL);
     PyArrayObject * tmp2 = 
       PyArray_GETCONTIGUOUS((PyArrayObject *)tmp1);
     (* self) = (double *) PyArray_DATA(tmp2);
@@ -3728,17 +3729,18 @@ SWIGINTERN void mfem_DenseTensor_Assign__SWIG_2(mfem::DenseTensor *self,PyObject
        PyErr_SetString(PyExc_ValueError, "Input data must be ndarray");
        return;
     }
-    int typ = PyArray_TYPE(numpymat);
+    PyArrayObject *numpymat0 = reinterpret_cast<PyArrayObject *>(numpymat);
+    int typ = PyArray_TYPE(numpymat0);
     if (typ != NPY_DOUBLE){
         PyErr_SetString(PyExc_ValueError, "Input data must be float64");
 	return;
     }
-    int ndim = PyArray_NDIM(numpymat);
+    int ndim = PyArray_NDIM(numpymat0);
     if (ndim != 3){
       PyErr_SetString(PyExc_ValueError, "Input data NDIM must be 3");
       return ;
     }
-    npy_intp *shape = PyArray_DIMS(numpymat);    
+    npy_intp *shape = PyArray_DIMS(numpymat0);    
     int len = self->SizeI()*self->SizeJ()*self->SizeK();
     if (shape[2]*shape[1]*shape[0] != len){    
       PyErr_SetString(PyExc_ValueError, "input data length does not match");
@@ -3748,7 +3750,7 @@ SWIGINTERN void mfem_DenseTensor_Assign__SWIG_2(mfem::DenseTensor *self,PyObject
     for (int i=0; i < self->SizeI(); i++){
        for (int j=0; j < self->SizeJ(); j++){
           for (int k=0; k < self->SizeK(); k++){      
-	    (* self)(i, j, k) = *(double *) PyArray_GETPTR3((PyArrayObject *)numpymat, i, j, k);
+	    (* self)(i, j, k) = *(double *) PyArray_GETPTR3(numpymat0, i, j, k);
 	}
       }
     }

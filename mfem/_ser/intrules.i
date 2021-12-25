@@ -21,6 +21,7 @@ import_array();
 %import "../common/array_listtuple_typemap.i"
 ARRAY_LISTTUPLE_INPUT_SWIGOBJ(mfem::IntegrationPoint)
 
+ /*
 %ignore mfem::Array<mfem::IntegrationPoint>::Union;
 %ignore mfem::Array<mfem::IntegrationPoint>::Find;
 %ignore mfem::Array<mfem::IntegrationPoint>::FindSorted;
@@ -35,8 +36,10 @@ ARRAY_LISTTUPLE_INPUT_SWIGOBJ(mfem::IntegrationPoint)
 %ignore mfem::Array<mfem::IntegrationPoint>::Min;
 %ignore mfem::Array<mfem::IntegrationPoint>::Print;
 %ignore mfem::Array<mfem::IntegrationPoint>::Load;
+ */
 //%template(IntegrationPointArray) mfem::Array<mfem::IntegrationPoint>;
 %import "../common/array_instantiation_macro.i"
+IGNORE_OBJ_METHODS(IntegrationPoint)
 INSTANTIATE_ARRAY(IntegrationPoint)
 
 %include "fem/intrules.hpp"

@@ -178,23 +178,24 @@ void subtract_vector(const double a, const mfem::Vector &x,
        PyErr_SetString(PyExc_ValueError, "Input data must be ndarray");
        return;
     }
-    int typ = PyArray_TYPE(param);
+    PyArrayObject *param0 = reinterpret_cast<PyArrayObject *>(param);
+    int typ = PyArray_TYPE(param0);
     if (typ != NPY_DOUBLE){
         PyErr_SetString(PyExc_ValueError, "Input data must be float64");
 	return;
     }
-    int ndim = PyArray_NDIM(param);
+    int ndim = PyArray_NDIM(param0);
     if (ndim != 1){
       PyErr_SetString(PyExc_ValueError, "Input data NDIM must be one");
       return ;
     }
-    npy_intp *shape = PyArray_DIMS(param);    
+    npy_intp *shape = PyArray_DIMS(param0);    
     int len = self->Size();
     if (shape[0] != len){    
       PyErr_SetString(PyExc_ValueError, "input data length does not match");
       return ;
     }    
-    (* self) = (double *) PyArray_DATA(param);
+    (* self) = (double *) PyArray_DATA(param0);
   }
 
   void __setitem__(int i, const double v) {

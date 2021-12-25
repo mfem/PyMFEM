@@ -3239,7 +3239,7 @@ SWIGINTERN PyObject *mfem_Element_GetVerticesArray(mfem::Element const *self){
      const int *v = self->GetVertices();
      npy_intp dims[] = {L};
      PyObject *array = PyArray_SimpleNew(1, dims, NPY_INT);
-     int *x    = (int*)PyArray_DATA(array);
+     int *x    = (int*)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      for (n = 0; n < L; n++) {
         x[n] = v[n];
      }

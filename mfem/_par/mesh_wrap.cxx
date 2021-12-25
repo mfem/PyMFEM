@@ -5683,7 +5683,7 @@ SWIGINTERN PyObject *mfem_Mesh_GetAttributeArray(mfem::Mesh const *self){
      int i;
      npy_intp dims[] = {self->GetNE()};
      PyObject *array = PyArray_SimpleNew(1, dims, NPY_INT);
-     int *x    = (int *)PyArray_DATA(array);
+     int *x    = (int *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      for (i = 0; i < self->GetNE() ; i++){
        x[i] = (int)(self->GetElement(i)->GetAttribute());
      }
@@ -5695,7 +5695,7 @@ SWIGINTERN PyObject *mfem_Mesh_GetVertexArray__SWIG_0(mfem::Mesh const *self,int
      const double *v = self->GetVertex(i);
      npy_intp dims[] = {L};
      PyObject *array = PyArray_SimpleNew(1, dims, NPY_DOUBLE);
-     double *x    = (double *)PyArray_DATA(array);
+     double *x    = (double *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      for (n = 0; n < L; n++) {
         x[n] = v[n];
      }
@@ -5708,7 +5708,7 @@ SWIGINTERN PyObject *mfem_Mesh_GetVertexArray__SWIG_1(mfem::Mesh const *self){
 
      npy_intp dims[] = {NV, L};
      PyObject *array = PyArray_SimpleNew(2, dims, NPY_DOUBLE);
-     double *x    = (double *)PyArray_DATA(array);
+     double *x    = (double *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      counter = 0;
 
      for (int i = 0; i < NV; i++) {
@@ -5736,7 +5736,7 @@ SWIGINTERN PyObject *mfem_Mesh_GetBdrAttributeArray(mfem::Mesh const *self){
      int i;
      npy_intp dims[] = {self->GetNBE()};
      PyObject *array = PyArray_SimpleNew(1, dims, NPY_INT);
-     int *x    = (int *)PyArray_DATA(array);
+     int *x    = (int *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      for (i = 0; i < self->GetNBE() ; i++){
        x[i] = (int)(self->GetBdrElement(i)->GetAttribute());
      }
@@ -5750,7 +5750,7 @@ SWIGINTERN PyObject *mfem_Mesh_GetBdrArray(mfem::Mesh const *self,int idx){
      }
      npy_intp dims[] = {c};
      PyObject *array = PyArray_SimpleNew(1, dims, NPY_INT);
-     int *x    = (int *)PyArray_DATA(array);
+     int *x    = (int *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      c = 0;     
      for (i = 0; i < self -> GetNBE() ; i++){
        if (self->GetBdrElement(i)->GetAttribute() == idx){
@@ -5769,7 +5769,7 @@ SWIGINTERN PyObject *mfem_Mesh_GetDomainArray(mfem::Mesh const *self,int idx){
      }
      npy_intp dims[] = {c};
      PyObject *array = PyArray_SimpleNew(1, dims, NPY_INT);
-     int *x    = (int *)PyArray_DATA(array);
+     int *x    = (int *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      c = 0;
      for (i = 0; i < self -> GetNE() ; i++){
        if (self->GetElement(i)->GetAttribute() == idx){
@@ -5787,7 +5787,7 @@ SWIGINTERN PyObject *mfem_Mesh_GetElementCenterArray(mfem::Mesh *self,int idx){
 
      npy_intp dims[] = {v.Size()};
      PyObject *array = PyArray_SimpleNew(1, dims, NPY_DOUBLE);
-     double *x    = (double *)PyArray_DATA(array);
+     double *x    = (double *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      for (i = 0; i < v.Size() ; i++){
 	 x[i] = v[i];
      }
@@ -12982,7 +12982,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddVertex__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
     if (!PyList_Check(swig_obj[1]) && !PyTuple_Check(swig_obj[1])) {
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_double, 0 |0) == -1) {
         if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_vec2, SWIGTYPE_p_mfem__Vector, 0 |0) == -1) {
-          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISFLOAT(swig_obj[1])){
+          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISFLOAT(reinterpret_cast<PyArrayObject *>(swig_obj[1]))){
             PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *double/Vector/numpy float array");
             return NULL;
           } else {
@@ -13110,7 +13110,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddVertex(PyObject *self, PyObject *args) {
             PyErr_Clear();
             if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__Vector, 0 |0) == -1) {
               PyErr_Clear();
-              if (!PyArray_Check(argv[1]) || !PyArray_ISFLOAT(argv[1])){
+              if (!PyArray_Check(argv[1]) || !PyArray_ISFLOAT(reinterpret_cast<PyArrayObject *>(argv[1]))){
                 _v = 0;	      
               } else {
                 _v = 1;  // accept numpy float array
@@ -13280,7 +13280,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddSegment__SWIG_1(PyObject *SWIGUNUSEDPARM(self
     if (!PyList_Check(swig_obj[1]) && !PyTuple_Check(swig_obj[1])) {
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
+          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(swig_obj[1]))){
             PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
@@ -13385,7 +13385,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddSegment(PyObject *self, PyObject *args) {
           if (!PyList_Check(argv[1]) && !PyTuple_Check(argv[1])) {
             PyErr_Clear();
             if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
+              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(argv[1]))){
                 _v = 0;	      
               } else {
                 _v = 1;  // accept numpy int array
@@ -13557,7 +13557,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTriangle__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
     if (!PyList_Check(swig_obj[1]) && !PyTuple_Check(swig_obj[1])) {
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
+          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(swig_obj[1]))){
             PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
@@ -13662,7 +13662,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTriangle(PyObject *self, PyObject *args) {
           if (!PyList_Check(argv[1]) && !PyTuple_Check(argv[1])) {
             PyErr_Clear();
             if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
+              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(argv[1]))){
                 _v = 0;	      
               } else {
                 _v = 1;  // accept numpy int array
@@ -13787,7 +13787,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTri(PyObject *SWIGUNUSEDPARM(self), PyObject 
     if (!PyList_Check(obj1) && !PyTuple_Check(obj1)) {
       if (SWIG_ConvertPtr(obj1, (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(obj1, (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-          if (!PyArray_Check(obj1) || !PyArray_ISINTEGER(obj1)){
+          if (!PyArray_Check(obj1) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(obj1))){
             PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
@@ -13965,7 +13965,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddQuad__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
     if (!PyList_Check(swig_obj[1]) && !PyTuple_Check(swig_obj[1])) {
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
+          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(swig_obj[1]))){
             PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
@@ -14070,7 +14070,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddQuad(PyObject *self, PyObject *args) {
           if (!PyList_Check(argv[1]) && !PyTuple_Check(argv[1])) {
             PyErr_Clear();
             if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
+              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(argv[1]))){
                 _v = 0;	      
               } else {
                 _v = 1;  // accept numpy int array
@@ -14269,7 +14269,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTet__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
     if (!PyList_Check(swig_obj[1]) && !PyTuple_Check(swig_obj[1])) {
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
+          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(swig_obj[1]))){
             PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
@@ -14374,7 +14374,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTet(PyObject *self, PyObject *args) {
           if (!PyList_Check(argv[1]) && !PyTuple_Check(argv[1])) {
             PyErr_Clear();
             if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
+              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(argv[1]))){
                 _v = 0;	      
               } else {
                 _v = 1;  // accept numpy int array
@@ -14587,7 +14587,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddWedge__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
     if (!PyList_Check(swig_obj[1]) && !PyTuple_Check(swig_obj[1])) {
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
+          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(swig_obj[1]))){
             PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
@@ -14692,7 +14692,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddWedge(PyObject *self, PyObject *args) {
           if (!PyList_Check(argv[1]) && !PyTuple_Check(argv[1])) {
             PyErr_Clear();
             if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
+              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(argv[1]))){
                 _v = 0;	      
               } else {
                 _v = 1;  // accept numpy int array
@@ -14918,7 +14918,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddPyramid__SWIG_1(PyObject *SWIGUNUSEDPARM(self
     if (!PyList_Check(swig_obj[1]) && !PyTuple_Check(swig_obj[1])) {
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
+          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(swig_obj[1]))){
             PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
@@ -15023,7 +15023,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddPyramid(PyObject *self, PyObject *args) {
           if (!PyList_Check(argv[1]) && !PyTuple_Check(argv[1])) {
             PyErr_Clear();
             if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
+              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(argv[1]))){
                 _v = 0;	      
               } else {
                 _v = 1;  // accept numpy int array
@@ -15260,7 +15260,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHex__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
     if (!PyList_Check(swig_obj[1]) && !PyTuple_Check(swig_obj[1])) {
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
+          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(swig_obj[1]))){
             PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
@@ -15365,7 +15365,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHex(PyObject *self, PyObject *args) {
           if (!PyList_Check(argv[1]) && !PyTuple_Check(argv[1])) {
             PyErr_Clear();
             if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
+              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(argv[1]))){
                 _v = 0;	      
               } else {
                 _v = 1;  // accept numpy int array
@@ -15539,7 +15539,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsTets(PyObject *SWIGUNUSEDPARM(self), PyO
     if (!PyList_Check(obj1) && !PyTuple_Check(obj1)) {
       if (SWIG_ConvertPtr(obj1, (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(obj1, (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-          if (!PyArray_Check(obj1) || !PyArray_ISINTEGER(obj1)){
+          if (!PyArray_Check(obj1) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(obj1))){
             PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
@@ -15652,7 +15652,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsWedges(PyObject *SWIGUNUSEDPARM(self), P
     if (!PyList_Check(obj1) && !PyTuple_Check(obj1)) {
       if (SWIG_ConvertPtr(obj1, (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(obj1, (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-          if (!PyArray_Check(obj1) || !PyArray_ISINTEGER(obj1)){
+          if (!PyArray_Check(obj1) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(obj1))){
             PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
@@ -15765,7 +15765,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsPyramids(PyObject *SWIGUNUSEDPARM(self),
     if (!PyList_Check(obj1) && !PyTuple_Check(obj1)) {
       if (SWIG_ConvertPtr(obj1, (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(obj1, (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-          if (!PyArray_Check(obj1) || !PyArray_ISINTEGER(obj1)){
+          if (!PyArray_Check(obj1) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(obj1))){
             PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
@@ -16021,7 +16021,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrSegment__SWIG_1(PyObject *SWIGUNUSEDPARM(s
     if (!PyList_Check(swig_obj[1]) && !PyTuple_Check(swig_obj[1])) {
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
+          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(swig_obj[1]))){
             PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
@@ -16126,7 +16126,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrSegment(PyObject *self, PyObject *args) {
           if (!PyList_Check(argv[1]) && !PyTuple_Check(argv[1])) {
             PyErr_Clear();
             if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
+              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(argv[1]))){
                 _v = 0;	      
               } else {
                 _v = 1;  // accept numpy int array
@@ -16298,7 +16298,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrTriangle__SWIG_1(PyObject *SWIGUNUSEDPARM(
     if (!PyList_Check(swig_obj[1]) && !PyTuple_Check(swig_obj[1])) {
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
+          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(swig_obj[1]))){
             PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
@@ -16403,7 +16403,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrTriangle(PyObject *self, PyObject *args) {
           if (!PyList_Check(argv[1]) && !PyTuple_Check(argv[1])) {
             PyErr_Clear();
             if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
+              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(argv[1]))){
                 _v = 0;	      
               } else {
                 _v = 1;  // accept numpy int array
@@ -16592,7 +16592,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuad__SWIG_1(PyObject *SWIGUNUSEDPARM(self
     if (!PyList_Check(swig_obj[1]) && !PyTuple_Check(swig_obj[1])) {
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(swig_obj[1])){
+          if (!PyArray_Check(swig_obj[1]) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(swig_obj[1]))){
             PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
@@ -16697,7 +16697,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuad(PyObject *self, PyObject *args) {
           if (!PyList_Check(argv[1]) && !PyTuple_Check(argv[1])) {
             PyErr_Clear();
             if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(argv[1])){
+              if (!PyArray_Check(argv[1]) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(argv[1]))){
                 _v = 0;	      
               } else {
                 _v = 1;  // accept numpy int array
@@ -16831,7 +16831,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuadAsTriangles(PyObject *SWIGUNUSEDPARM(s
     if (!PyList_Check(obj1) && !PyTuple_Check(obj1)) {
       if (SWIG_ConvertPtr(obj1, (void **) &temp_ptr2, SWIGTYPE_p_int, 0 |0) == -1) {
         if (SWIG_ConvertPtr(obj1, (void **) &temp_arr2, SWIGTYPE_p_mfem__ArrayT_int_t, 0 |0) == -1) {
-          if (!PyArray_Check(obj1) || !PyArray_ISINTEGER(obj1)){
+          if (!PyArray_Check(obj1) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>(obj1))){
             PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
           } else {
@@ -23503,7 +23503,7 @@ SWIGINTERN PyObject *_wrap_Mesh_SetNode(PyObject *SWIGUNUSEDPARM(self), PyObject
     if (!PyList_Check(obj2) && !PyTuple_Check(obj2)) {
       if (SWIG_ConvertPtr(obj2, (void **) &temp_ptr3, SWIGTYPE_p_double, 0 |0) == -1) {
         if (SWIG_ConvertPtr(obj2, (void **) &temp_vec3, SWIGTYPE_p_mfem__Vector, 0 |0) == -1) {
-          if (!PyArray_Check(obj2) || !PyArray_ISFLOAT(obj2)){
+          if (!PyArray_Check(obj2) || !PyArray_ISFLOAT(reinterpret_cast<PyArrayObject *>(obj2))){
             PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *double/Vector/numpy float array");
             return NULL;
           } else {

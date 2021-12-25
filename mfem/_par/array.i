@@ -1,8 +1,7 @@
 %module(package="mfem._par") array
-
 %feature("autodoc", "1");
 
-%rename(Equal) mfem::Array <class T>::operator=;
+//%rename(Equal) mfem::Array <class T>::operator=;
 %{
 #include <fstream>  
 #include <iostream>

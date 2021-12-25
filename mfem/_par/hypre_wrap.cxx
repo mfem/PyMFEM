@@ -3626,7 +3626,7 @@ SWIGINTERN PyObject *mfem_HypreParVector_GetPartitioningArray(mfem::HypreParVect
   PyObject *arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)tmp_arr);
   Py_XDECREF(tmp_arr);
 
-  part_out = (HYPRE_BigInt *) PyArray_DATA(arr1);
+  part_out = (HYPRE_BigInt *) PyArray_DATA(reinterpret_cast<PyArrayObject *>(arr1));
   part_out[0] = part[0];
   part_out[1] = part[1];
   //part_out[2] = part[2];  
@@ -3683,7 +3683,7 @@ SWIGINTERN PyObject *mfem_HypreParMatrix_GetRowPartArray(mfem::HypreParMatrix *s
   PyObject *arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)tmp_arr);
   Py_XDECREF(tmp_arr);
 
-  part_out = (HYPRE_BigInt *) PyArray_DATA(arr1);
+  part_out = (HYPRE_BigInt *) PyArray_DATA(reinterpret_cast<PyArrayObject *>(arr1));
   part_out[0] = part[0];
   part_out[1] = part[1];
   //part_out[2] = part[2];  
@@ -3701,7 +3701,7 @@ SWIGINTERN PyObject *mfem_HypreParMatrix_GetColPartArray(mfem::HypreParMatrix *s
   PyObject *arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)tmp_arr);
   Py_XDECREF(tmp_arr);
 
-  part_out = (HYPRE_BigInt *) PyArray_DATA(arr1);
+  part_out = (HYPRE_BigInt *) PyArray_DATA(reinterpret_cast<PyArrayObject *>(arr1));
   part_out[0] = part[0];
   part_out[1] = part[1];
   //part_out[2] = part[2];  
@@ -3938,9 +3938,9 @@ SWIGINTERN PyObject *mfem_HypreParMatrix_GetCooDataArray(mfem::HypreParMatrix *s
    if (arr1 == NULL) goto alloc_fail;
    if (arr2 == NULL) goto alloc_fail;
    if (arr3 == NULL) goto alloc_fail;
-   irn = (HYPRE_Int *) PyArray_DATA(arr1);
-   jcn = (HYPRE_Int *) PyArray_DATA(arr2);
-   a = (double *) PyArray_DATA(arr3);
+   irn = (HYPRE_Int *) PyArray_DATA(reinterpret_cast<PyArrayObject *> (arr1));
+   jcn = (HYPRE_Int *) PyArray_DATA(reinterpret_cast<PyArrayObject *> (arr2));
+   a = (double *) PyArray_DATA(reinterpret_cast<PyArrayObject *> (arr3));
    //*irn_p = irn;
    //*jcn_p = jcn;
    //*a_p   = a;

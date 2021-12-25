@@ -9,7 +9,7 @@ Test for PyMFEM
   and compare numbers in output.
 
   Usage
-    usage: test.py [-h] [-np NP] [-verbose] [-parallel] [-serial]
+    usage: run_examples.py [-h] [-np NP] [-verbose] [-parallel] [-serial]
                [-clean] [-ex EX] [-mfempdir '../../mfem']
                [-mfemsdir '../../mfem_ser']
     optional arguments:
