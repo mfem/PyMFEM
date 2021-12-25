@@ -17,13 +17,22 @@ from scipy.special import erfc
 import ex18_common
 
 
+def run(problem=1,
+        ref_levels=1,
+        order=3,
+        ode_solver_type=4,
+        t_final=0.5,
+        dt=-0.01,
+        cfl=0.3,
+        visualization=True,
+        vis_steps=50,
+        meshfile=''):
 
     ex18_common.num_equation = 4
     ex18_common.specific_heat_ratio = 1.4
     ex18_common.gas_constant = 1.0
-    ex18_common.problem = args.problem
+    ex18_common.problem = problem
     num_equation = ex18_common.num_equation
-
 
     # 2. Read the mesh from the given mesh file. This example requires a 2D
     #    periodic mesh, such as ../data/periodic-square.mesh.
@@ -63,7 +72,8 @@ import ex18_common
     # Finite element space for a mesh-dim vector quantity (momentum)
     dfes = mfem.FiniteElementSpace(mesh, fec, dim, mfem.Ordering.byNODES)
     # Finite element space for all variables together (total thermodynamic state)
-    vfes = mfem.FiniteElementSpace(mesh, fec, num_equation, mfem.Ordering.byNODES)
+    vfes = mfem.FiniteElementSpace(
+        mesh, fec, num_equation, mfem.Ordering.byNODES)
 
     assert fes.GetOrdering() == mfem.Ordering.byNODES, "Ordering must be byNODES"
     print("Number of unknowns: " + str(vfes.GetVSize()))
@@ -117,7 +127,6 @@ import ex18_common
         print("GLVis visualization paused.")
         print(" Press space (in the GLVis window) to resume it.")
 
-
     # Determine the minimum element size.
     hmin = 0
     if (cfl > 0):
@@ -131,14 +140,17 @@ import ex18_common
         #  maximum char speed at all quadrature points on all faces.
         z = mfem.Vector(A.Width())
         A.Mult(sol, z)
+
         dt = cfl * hmin / ex18_common.max_char_speed / (2*order+1)
 
     # Integrate in time.
     done = False
-    ti = 1
+    ti = 0
     while not done:
         dt_real = min(dt, t_final - t)
+
         t, dt_real = ode_solver.Step(sol, t, dt_real)
+
         if (cfl > 0):
             dt = cfl * hmin / ex18_common.max_char_speed / (2*order+1)
         ti = ti+1
@@ -147,7 +159,6 @@ import ex18_common
             print("time step: " + str(ti) + ", time: " + "{:g}".format(t))
             if (visualization):
                 sout << "solution\n" << mesh << mom << flush
-
 
     #  9. Save the final solution. This output can be viewed later using GLVis:
     #    "glvis -m vortex.mesh -g vortex-1-final.gf".
@@ -162,8 +173,9 @@ import ex18_common
         error = sol.ComputeLpError(2., u0)
         print("Solution error: " + str(error))
 
+
 if __name__ == "__main__":
- 
+
     parser = ArgParser(description='Ex18')
     parser.add_argument('-m', '--mesh',
                         default='periodic-square.mesh',
@@ -199,21 +211,16 @@ if __name__ == "__main__":
                         help="Visualize every n-th timestep.")
 
     args = parser.parse_args()
-    ref_levels = args.refine
-    order = args.order
-    ode_solver_type = args.ode_solver
-    t_final = args.t_final
-    dt = args.time_step
-    cfl = args.cfl_number
-    visualization = args.visualization
-    vis_steps = args.visualization_steps
 
     parser.print_options(args)
 
-    run(order=order,
-        static_cond=static_cond,
-        meshfile=args.mesh,
-        visualization=visualization,
-        device=device,
-        pa=pa)
-    
+    run(problem=args.problem,
+        ref_levels=args.refine,
+        order=args.order,
+        ode_solver_type=args.ode_solver,
+        t_final=args.t_final,
+        dt=args.time_step,
+        cfl=args.cfl_number,
+        visualization=args.visualization,
+        vis_steps=args.visualization_steps,
+        meshfile=args.mesh)
