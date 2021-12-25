@@ -6,16 +6,16 @@
 %module(package="mfem._par") vector
 %feature("autodoc", "1");
 %{
+#include "linalg/vector.hpp"  
 #include <sstream>
 #include <fstream>
 #include <limits>
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "../common/io_stream.hpp"
-#include "general/zstr.hpp"  
+#include "mfem.hpp"    
 #include "numpy/arrayobject.h"
-#include "linalg/vector.hpp"  
+#include "../common/io_stream.hpp"  
 %}
 
 // initialization required to return numpy array from SWIG

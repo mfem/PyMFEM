@@ -6,11 +6,7 @@
 #include <fstream>
 #include <iostream>
 #include "../common/io_stream.hpp"
-#include "general/zstr.hpp"
-#include "general/globals.hpp"
-#include "mesh/ncmesh.hpp"
-#include "fem/gridfunc.hpp"
-#include "fem/bilinearform.hpp"    
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
 #include "../common/pycoefficient.hpp"  
 %}

@@ -78,7 +78,6 @@ public:
     virtual ~SwigDirector_PyIterativeSolver();
     virtual void SetOperator(mfem::Operator const &op);
     virtual void SetPrintLevel(int print_lvl);
-    virtual void SetPrintLevel(mfem::IterativeSolver::PrintLevel arg0);
     virtual void SetPreconditioner(mfem::Solver &pr);
 
 /* Internal director utilities */
@@ -110,7 +109,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[16];
+    mutable swig::SwigVar_PyObject vtable[15];
 #endif
 
 };

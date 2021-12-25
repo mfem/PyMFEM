@@ -10812,7 +10812,7 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_PrintCommPkg__SWIG_0(PyObject *SWIGUNU
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp2 = new PyMFEM::wFILE(filename, 8, true);
+          temp2 = new PyMFEM::wFILE(filename, 16, true);
           Py_DECREF(str);	 
         }
       }
@@ -10962,7 +10962,7 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_PrintHash(PyObject *SWIGUNUSEDPARM(sel
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj1, "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp2 = new PyMFEM::wFILE(filename, 8, true);
+        temp2 = new PyMFEM::wFILE(filename, 16, true);
         Py_DECREF(str);	 
       }
     }

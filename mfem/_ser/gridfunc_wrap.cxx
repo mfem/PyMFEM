@@ -13470,7 +13470,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(se
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp2 = new PyMFEM::wFILE(filename, 8, true);
+        temp2 = new PyMFEM::wFILE(filename, 16, true);
         Py_DECREF(str);	 
       }
     }
@@ -13688,7 +13688,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveVTK(PyObject *SWIGUNUSEDPARM(self), 
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj1, "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp2 = new PyMFEM::wFILE(filename, 8, true);
+        temp2 = new PyMFEM::wFILE(filename, 16, true);
         Py_DECREF(str);	 
       }
     }
@@ -13864,7 +13864,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveSTL(PyObject *SWIGUNUSEDPARM(self), 
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(obj1, "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp2 = new PyMFEM::wFILE(filename, 8, true);
+        temp2 = new PyMFEM::wFILE(filename, 16, true);
         Py_DECREF(str);	 
       }
     }
@@ -14716,58 +14716,6 @@ SWIGINTERN PyObject *_wrap_GridFunction_Save(PyObject *self, PyObject *args) {
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_Save", 0, 3, argv))) SWIG_fail;
   --argc;
-  if ((argc >= 2) && (argc <= 3)) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        if (argc <= 2) {
-          return _wrap_GridFunction_Save__SWIG_2(self, argc, argv);
-        }
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_GridFunction_Save__SWIG_2(self, argc, argv);
-        }
-      }
-    }
-  }
-  if ((argc >= 2) && (argc <= 3)) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        if (argc <= 2) {
-          return _wrap_GridFunction_Save__SWIG_1(self, argc, argv);
-        }
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_GridFunction_Save__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
   if (argc == 2) {
     int _v;
     void *vptr = 0;
@@ -14804,6 +14752,58 @@ SWIGINTERN PyObject *_wrap_GridFunction_Save(PyObject *self, PyObject *args) {
       }
       if (_v) {
         return _wrap_GridFunction_Save__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  if ((argc >= 2) && (argc <= 3)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_GridFunction_Save__SWIG_2(self, argc, argv);
+        }
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_GridFunction_Save__SWIG_2(self, argc, argv);
+        }
+      }
+    }
+  }
+  if ((argc >= 2) && (argc <= 3)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_GridFunction_Save__SWIG_1(self, argc, argv);
+        }
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_GridFunction_Save__SWIG_1(self, argc, argv);
+        }
       }
     }
   }
@@ -14943,7 +14943,7 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[0], "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp1 = new PyMFEM::wFILE(filename, 8, true);
+        temp1 = new PyMFEM::wFILE(filename, 16, true);
         Py_DECREF(str);	 
       }
     }
@@ -16742,7 +16742,7 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_Save__SWIG_0(PyObject *SWIGUNUSEDP
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp2 = new PyMFEM::wFILE(filename, 8, true);
+        temp2 = new PyMFEM::wFILE(filename, 16, true);
         Py_DECREF(str);	 
       }
     }
@@ -16904,32 +16904,6 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_Save(PyObject *self, PyObject *arg
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "QuadratureFunction_Save", 0, 3, argv))) SWIG_fail;
   --argc;
-  if ((argc >= 2) && (argc <= 3)) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__QuadratureFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        if (argc <= 2) {
-          return _wrap_QuadratureFunction_Save__SWIG_1(self, argc, argv);
-        }
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_QuadratureFunction_Save__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
   if (argc == 2) {
     int _v;
     void *vptr = 0;
@@ -16966,6 +16940,32 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_Save(PyObject *self, PyObject *arg
       }
       if (_v) {
         return _wrap_QuadratureFunction_Save__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  if ((argc >= 2) && (argc <= 3)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__QuadratureFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_QuadratureFunction_Save__SWIG_1(self, argc, argv);
+        }
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_QuadratureFunction_Save__SWIG_1(self, argc, argv);
+        }
       }
     }
   }
@@ -17104,7 +17104,7 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[0], "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp1 = new PyMFEM::wFILE(filename, 8, true);
+        temp1 = new PyMFEM::wFILE(filename, 16, true);
         Py_DECREF(str);	 
       }
     }

@@ -5,11 +5,10 @@
 %{
 #include <fstream>
 #include <iostream>
-#include "general/zstr.hpp"  
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"  
 #include "../common/io_stream.hpp"  
 #include "pyoperator.hpp"
-#include "linalg/matrix.hpp"  
 %}
 
 %begin %{

@@ -3,7 +3,6 @@ from __future__ import print_function
 import io
 import gzip
 
-import mfem.ser as mfem
 import numpy as np
 
 import os
@@ -11,7 +10,6 @@ from os.path import expanduser, join
 import sys
 import numpy as np
 import io
-from mfem import path as mfem_path
 
 if len(sys.argv) > 1 and sys.argv[1] == '-p':   
     import mfem.par as mfem

@@ -7625,7 +7625,7 @@ SWIGINTERN PyObject *_wrap_FaceElementTransformations_CheckConsistency(PyObject 
           // if it is string, extract filename as char*
           PyObject* str = PyUnicode_AsEncodedString(obj2, "utf-8", "~E~");	
           const char* filename = PyBytes_AsString(str);
-          temp3 = new PyMFEM::wFILE(filename, 8, true);
+          temp3 = new PyMFEM::wFILE(filename, 16, true);
           Py_DECREF(str);	 
         }
       }

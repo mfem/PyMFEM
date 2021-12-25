@@ -9474,7 +9474,7 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_Save__SWIG_0(PyObject *SWIGUNUSEDP
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp2 = new PyMFEM::wFILE(filename, 8, true);
+        temp2 = new PyMFEM::wFILE(filename, 16, true);
         Py_DECREF(str);	 
       }
     }
@@ -10493,7 +10493,7 @@ SWIGINTERN PyObject *_wrap_QuadratureSpace_Save__SWIG_0(PyObject *SWIGUNUSEDPARM
         // if it is string, extract filename as char*
         PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
         const char* filename = PyBytes_AsString(str);
-        temp2 = new PyMFEM::wFILE(filename, 8, true);
+        temp2 = new PyMFEM::wFILE(filename, 16, true);
         Py_DECREF(str);	 
       }
     }

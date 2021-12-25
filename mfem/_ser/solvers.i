@@ -15,6 +15,7 @@ import_array();
 %}
 
 %include "exception.i"
+%import "globals.i"
 %import "vector.i"
 %import "operators.i"
 %import "matrix.i"

@@ -43,7 +43,7 @@
  	 // if it is string, extract filename as char*
          PyObject* str = PyUnicode_AsEncodedString($input, "utf-8", "~E~");	
          const char* filename = PyBytes_AsString(str);
-         temp = new PyMFEM::wFILE(filename, 8, true);
+         temp = new PyMFEM::wFILE(filename, 16, true);
          Py_DECREF(str);	 
       }
    }
@@ -64,7 +64,7 @@
    }
 }
 
-%typemap(typecheck, precedence=SWIG_TYPECHECK_STRING_ARRAY) T {
+%typemap(typecheck, precedence=SWIG_TYPECHECK_STRING) T {
   void *ptr;
   //std::string *ptr2 = (std::string *)0;
   if (SWIG_ConvertPtr($input, (void **) &ptr, $descriptor(PyMFEM::wFILE *), 0 |0) == -1) {

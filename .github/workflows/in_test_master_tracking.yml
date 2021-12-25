@@ -1,7 +1,7 @@
 name: TestMasterTracking
 
 on:
-  pull_request_target:
+  pull_request:
     types:
       - labeled
   #push:
@@ -17,6 +17,7 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ["3.6", "3.7", "3.8", "3.9", "3.10"]
+        #python-version: ["3.10"]
         #os: [ubuntu-latest]
         os: [ubuntu-20.04]
         # USE_FLAGS :  cuda, parallel, libceed
@@ -56,18 +57,19 @@ jobs:
         #python -m pip install --upgrade pip setuptools wheel
         python -c "import setuptools;print(setuptools.__version__)"
 
-
         PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages
         mkdir -p $PYTHONLIB
 
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
-        echo $PYTHONPATH
+        echo "PYTHONPATH:"$PYTHONPATH
 
         pip install six scipy numpy --verbose
 
         if [ -f requirements.txt ]; then
            pip install -r requirements.txt --prefix=~/sandbox --verbose
         fi
+
+        python -c "import sys;print(sys.path)"
         python -c "import numpy;print(numpy.__file__)"	
 
         if [ "${USE_FLAGS:0:1}" = "1" ] ; then

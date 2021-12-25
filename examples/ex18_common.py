@@ -62,17 +62,20 @@ class FE_Evolution(mfem.TimeDependentOperator):
             for k in range(num_equation):
                 self.state[k] = x[i, k]
             ComputeFlux(state, dim, self.f)
-            
+
             flux_data.append(self.f.GetDataArray().transpose().copy())
-            #flux[i].Print()
-            #print(self.f.GetDataArray())
-            #for d in range(dim):
+            # flux[i].Print()
+            # print(self.f.GetDataArray())
+            # for d in range(dim):
             #    for k in range(num_equation):
             #        flux[i, d, k] = self.f[k, d]
+
+            mcs = ComputeMaxCharSpeed(state, dim)
+            if (mcs > globals()['max_char_speed']):
+                globals()['max_char_speed'] = mcs
+
         flux.Assign(np.stack(flux_data))
-        mcs = ComputeMaxCharSpeed(state, dim)
-        if (mcs > max_char_speed):
-            globals()['max_char_speed'] = mcs
+        #print("max char speed", globals()['max_char_speed'])
 
     def Mult(self, x, y):
         globals()['max_char_speed'] = 0.
@@ -377,6 +380,7 @@ def ComputePressure(state, dim):
 
     return pres
 
+
 def ComputeFlux(state, dim, flux):
     den = state[0]
     den_vel = state.GetDataArray()[1:1+dim]
@@ -404,7 +408,7 @@ def ComputeFluxDotN(state, nor, fluxN):
     fluxN = fluxN.GetDataArray()
 
     den = state[0]
-    den_vel = state.GetDataArray()[1:1+dim]    
+    den_vel = state.GetDataArray()[1:1+dim]
     den_energy = state[1 + dim]
 
     assert StateIsPhysical(state, dim), ""
@@ -424,13 +428,13 @@ def ComputeMaxCharSpeed(state, dim):
     specific_heat_ratio = globals()["specific_heat_ratio"]
 
     den = state[0]
-    den_vel = state.GetDataArray()[1:1+dim]    
-    den_energy = state[1 + dim]
+    den_vel = state.GetDataArray()[1:1+dim]
 
     den_vel2 = np.sum(den_vel**2)
     den_vel2 /= den
 
     pres = ComputePressure(state, dim)
+
     sound = np.sqrt(specific_heat_ratio * pres / den)
     vel = np.sqrt(den_vel2 / den)
 

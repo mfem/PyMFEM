@@ -18,8 +18,9 @@ else:
     use_parallel = False
     myid = 0
     
-def run_test(): 
-    meshfile =expanduser(join(mfem_path, 'data', 'beam-tri.mesh'))
+def run_test():
+    dir = os.path.dirname(os.path.abspath(__file__))        
+    meshfile = os.path.join(dir, '..', 'data', 'beam-tri.mesh')
     mesh = mfem.Mesh(meshfile, 1,1)
     fec = mfem.H1_FECollection(1, 1)
     fespace = mfem.FiniteElementSpace(mesh, fec)

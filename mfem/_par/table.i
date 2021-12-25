@@ -5,7 +5,7 @@
 %{
 #include <fstream>  
 #include <iostream>
-#include "general/zstr.hpp"  
+#include "mfem.hpp"  
 #include "numpy/arrayobject.h"      
 #include "../common/io_stream.hpp"
 #include "general/table.hpp"
