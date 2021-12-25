@@ -63,8 +63,9 @@ jobs:
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
         echo $PYTHONPATH
 
+        pip install six scipy numpy
         if [ -f requirements.txt ]; then
-           pip install -r requirements.txt --prefix=~/sandbox
+           pip install -r requirements.txt --prefix=~/sandbox --verbose
         fi
         python -c "import numpy;print(numpy.__file__)"	
 
