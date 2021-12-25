@@ -79,8 +79,9 @@ jobs:
         if [ "${USE_FLAGS:1:1}" = "1" ] ; then
             sudo apt-get install mpich;
             sudo apt-get install libmpich-dev;
-            pip install mpi4py --no-cache-dir --prefix=~/sandbox;
-
+            #pip install mpi4py --no-cache-dir --prefix=~/sandbox;
+	    
+            python -m pip install git+https://github.com/mpi4py/mpi4py
             python -c "import mpi4py;print(mpi4py.get_include())";	    
         fi
         ls -l $PYTHONLIB	
