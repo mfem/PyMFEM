@@ -63,7 +63,8 @@ jobs:
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
         echo "PYTHONPATH:"$PYTHONPATH
 
-        pip install numpy --verbose
+        pip install six scipy numpy --verbose
+
         if [ -f requirements.txt ]; then
            pip install -r requirements.txt --prefix=~/sandbox --verbose
         fi
