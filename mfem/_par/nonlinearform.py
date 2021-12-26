@@ -265,7 +265,7 @@ class BlockNonlinearForm(mfem._par.operators.Operator):
     def __init__(self, *args):
         r"""
         __init__(BlockNonlinearForm self) -> BlockNonlinearForm
-        __init__(BlockNonlinearForm self, mfem::Array< mfem::FiniteElementSpace * > & f) -> BlockNonlinearForm
+        __init__(BlockNonlinearForm self, FiniteElementSpacePtrArray f) -> BlockNonlinearForm
         """
         _nonlinearform.BlockNonlinearForm_swiginit(self, _nonlinearform.new_BlockNonlinearForm(*args))
 
@@ -278,7 +278,7 @@ class BlockNonlinearForm(mfem._par.operators.Operator):
     FESpace = _swig_new_instance_method(_nonlinearform.BlockNonlinearForm_FESpace)
 
     def SetSpaces(self, f):
-        r"""SetSpaces(BlockNonlinearForm self, mfem::Array< mfem::FiniteElementSpace * > & f)"""
+        r"""SetSpaces(BlockNonlinearForm self, FiniteElementSpacePtrArray f)"""
         return _nonlinearform.BlockNonlinearForm_SetSpaces(self, f)
     SetSpaces = _swig_new_instance_method(_nonlinearform.BlockNonlinearForm_SetSpaces)
 

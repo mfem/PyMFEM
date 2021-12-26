@@ -17,4 +17,7 @@ import_array();
 %import "estimators.i"
 %import "../common/exception.i"
 
+%include "../common/typemap_macros.i"
+LIST_TO_MFEMOBJ_POINTERARRAY_IN(mfem::IntegrationRule const *irs_[],  mfem::IntegrationRule *, true)
+
 %include "mesh/mesh_operators.hpp"  

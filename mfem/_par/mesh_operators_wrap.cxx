@@ -5229,8 +5229,7 @@ SWIGINTERN PyObject *_wrap_CoefficientRefiner_SetIntRule(PyObject *SWIGUNUSEDPAR
   mfem::IntegrationRule **arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  mfem::IntegrationRule **tmp_ptrarray2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
@@ -5243,11 +5242,51 @@ SWIGINTERN PyObject *_wrap_CoefficientRefiner_SetIntRule(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CoefficientRefiner_SetIntRule" "', argument " "1"" of type '" "mfem::CoefficientRefiner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::CoefficientRefiner * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_p_mfem__IntegrationRule, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CoefficientRefiner_SetIntRule" "', argument " "2"" of type '" "mfem::IntegrationRule const *[]""'"); 
-  } 
-  arg2 = reinterpret_cast< mfem::IntegrationRule ** >(argp2);
+  {
+    //  List/Tuple -> mfem::IntegrationRule *
+    
+    int res = 0;
+    if (PyList_Check(obj1)) {
+      int ll = PyList_Size(obj1);
+      arg2 = new mfem::IntegrationRule * [ll];     
+      for (int i = 0; i < ll; i++) {
+        mfem::IntegrationRule * ttt;
+        PyObject *s = PyList_GetItem(obj1,i);
+        res = SWIG_ConvertPtr(s, (void **) &ttt,
+          SWIGTYPE_p_mfem__IntegrationRule,
+          0);
+        if (!SWIG_IsOK(res)) {
+          PyErr_SetString(PyExc_ValueError, "can not comvert to mfem::IntegrationRule *");	 
+          return NULL;
+        }	
+        arg2[i] = ttt;
+      }
+    } else if (PyTuple_Check(obj1)) {
+      int ll = PyTuple_Size(obj1);
+      arg2 = new mfem::IntegrationRule * [ll];          
+      for (int i = 0; i < ll; i++) {
+        mfem::IntegrationRule * ttt;
+        PyObject *s = PyTuple_GetItem(obj1,i);
+        res = SWIG_ConvertPtr(s, (void **) &ttt,
+          SWIGTYPE_p_mfem__IntegrationRule,
+          0);
+        if (!SWIG_IsOK(res)) {
+          PyErr_SetString(PyExc_ValueError, "can not comvert to mfem::IntegrationRule *");
+          return NULL;
+        }	
+        arg2[i] = ttt;
+      }
+    } else {
+      PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
+      return NULL;
+    }
+    
+    tmp_ptrarray2 = arg2;
+    char ref_name[] = "_inputlist_SWIGTYPE_p_mfem__IntegrationRule";
+    PyObject *_ref_str = SWIG_Python_str_FromChar(ref_name);
+    PyObject_SetAttr(obj0, _ref_str, obj1);
+    Py_DecRef(_ref_str);
+  }
   {
     try {
       (arg1)->SetIntRule((mfem::IntegrationRule const *(*))arg2); 
@@ -5262,8 +5301,36 @@ SWIGINTERN PyObject *_wrap_CoefficientRefiner_SetIntRule(PyObject *SWIGUNUSEDPAR
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
+  {
+    if (arg2 != 0){
+      if (true) {
+        PyObject *ref = SWIG_NewPointerObj(SWIG_as_voidptr(tmp_ptrarray2),
+          SWIGTYPE_p_p_mfem__IntegrationRule,
+          true);
+        PyObject *_ref_str = SWIG_Python_str_FromChar("_ptrarray_SWIGTYPE_p_mfem__IntegrationRule");
+        PyObject_SetAttr(obj0, _ref_str, ref);
+        Py_DecRef(_ref_str);
+      } else {
+        delete arg2;      
+      }
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (arg2 != 0){
+      if (true) {
+        PyObject *ref = SWIG_NewPointerObj(SWIG_as_voidptr(tmp_ptrarray2),
+          SWIGTYPE_p_p_mfem__IntegrationRule,
+          true);
+        PyObject *_ref_str = SWIG_Python_str_FromChar("_ptrarray_SWIGTYPE_p_mfem__IntegrationRule");
+        PyObject_SetAttr(obj0, _ref_str, ref);
+        Py_DecRef(_ref_str);
+      } else {
+        delete arg2;      
+      }
+    }
+  }
   return NULL;
 }
 

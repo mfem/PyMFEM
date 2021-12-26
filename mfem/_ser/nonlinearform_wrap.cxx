@@ -4956,7 +4956,7 @@ SWIGINTERN PyObject *_wrap_new_BlockNonlinearForm__SWIG_1(PyObject *SWIGUNUSEDPA
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
   {
-    //  List/Tuple -> mfem::FiniteElementSpace *
+    //  List/Tuple (=[mfem::FiniteElementSpace *,mfem::FiniteElementSpace * ...]) -> mfem:Array<mfem::FiniteElementSpace *)
     int res = 0;
     if (PyList_Check(swig_obj[0])) {
       int ll = PyList_Size(swig_obj[0]);
@@ -4998,7 +4998,6 @@ SWIGINTERN PyObject *_wrap_new_BlockNonlinearForm__SWIG_1(PyObject *SWIGUNUSEDPA
       PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
       return NULL;
     }
-    //arg1 = temp;
   }
   {
     try {
@@ -5239,7 +5238,7 @@ SWIGINTERN PyObject *_wrap_BlockNonlinearForm_SetSpaces(PyObject *SWIGUNUSEDPARM
   }
   arg1 = reinterpret_cast< mfem::BlockNonlinearForm * >(argp1);
   {
-    //  List/Tuple -> mfem::FiniteElementSpace *
+    //  List/Tuple (=[mfem::FiniteElementSpace *,mfem::FiniteElementSpace * ...]) -> mfem:Array<mfem::FiniteElementSpace *)
     int res = 0;
     if (PyList_Check(obj1)) {
       int ll = PyList_Size(obj1);
@@ -5281,7 +5280,6 @@ SWIGINTERN PyObject *_wrap_BlockNonlinearForm_SetSpaces(PyObject *SWIGUNUSEDPARM
       PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
       return NULL;
     }
-    //arg2 = temp;
   }
   {
     try {
@@ -5678,7 +5676,7 @@ SWIGINTERN PyObject *_wrap_BlockNonlinearForm_SetEssentialBC(PyObject *SWIGUNUSE
   }
   arg1 = reinterpret_cast< mfem::BlockNonlinearForm * >(argp1);
   {
-    //  List/Tuple -> mfem::Array<int> *
+    //  List/Tuple (=[mfem::Array<int> *,mfem::Array<int> * ...]) -> mfem:Array<mfem::Array<int> *)
     int res = 0;
     if (PyList_Check(obj1)) {
       int ll = PyList_Size(obj1);
@@ -5720,10 +5718,9 @@ SWIGINTERN PyObject *_wrap_BlockNonlinearForm_SetEssentialBC(PyObject *SWIGUNUSE
       PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
       return NULL;
     }
-    //arg2 = temp;
   }
   {
-    //  List/Tuple -> mfem::Vector *
+    //  List/Tuple (=[mfem::Vector *,mfem::Vector * ...]) -> mfem:Array<mfem::Vector *)
     int res = 0;
     if (PyList_Check(obj2)) {
       int ll = PyList_Size(obj2);
@@ -5765,7 +5762,6 @@ SWIGINTERN PyObject *_wrap_BlockNonlinearForm_SetEssentialBC(PyObject *SWIGUNUSE
       PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
       return NULL;
     }
-    //arg3 = temp;
   }
   {
     try {
@@ -6079,13 +6075,13 @@ static PyMethodDef SwigMethods[] = {
 	 { "NonlinearForm_swiginit", NonlinearForm_swiginit, METH_VARARGS, NULL},
 	 { "new_BlockNonlinearForm", _wrap_new_BlockNonlinearForm, METH_VARARGS, "\n"
 		"BlockNonlinearForm()\n"
-		"new_BlockNonlinearForm(mfem::Array< mfem::FiniteElementSpace * > & f) -> BlockNonlinearForm\n"
+		"new_BlockNonlinearForm(FiniteElementSpacePtrArray f) -> BlockNonlinearForm\n"
 		""},
 	 { "BlockNonlinearForm_FESpace", _wrap_BlockNonlinearForm_FESpace, METH_VARARGS, "\n"
 		"BlockNonlinearForm_FESpace(BlockNonlinearForm self, int k) -> FiniteElementSpace\n"
 		"BlockNonlinearForm_FESpace(BlockNonlinearForm self, int k) -> FiniteElementSpace\n"
 		""},
-	 { "BlockNonlinearForm_SetSpaces", (PyCFunction)(void(*)(void))_wrap_BlockNonlinearForm_SetSpaces, METH_VARARGS|METH_KEYWORDS, "BlockNonlinearForm_SetSpaces(BlockNonlinearForm self, mfem::Array< mfem::FiniteElementSpace * > & f)"},
+	 { "BlockNonlinearForm_SetSpaces", (PyCFunction)(void(*)(void))_wrap_BlockNonlinearForm_SetSpaces, METH_VARARGS|METH_KEYWORDS, "BlockNonlinearForm_SetSpaces(BlockNonlinearForm self, FiniteElementSpacePtrArray f)"},
 	 { "BlockNonlinearForm_GetBlockOffsets", _wrap_BlockNonlinearForm_GetBlockOffsets, METH_O, "BlockNonlinearForm_GetBlockOffsets(BlockNonlinearForm self) -> intArray"},
 	 { "BlockNonlinearForm_GetBlockTrueOffsets", _wrap_BlockNonlinearForm_GetBlockTrueOffsets, METH_O, "BlockNonlinearForm_GetBlockTrueOffsets(BlockNonlinearForm self) -> intArray"},
 	 { "BlockNonlinearForm_AddDomainIntegrator", (PyCFunction)(void(*)(void))_wrap_BlockNonlinearForm_AddDomainIntegrator, METH_VARARGS|METH_KEYWORDS, "BlockNonlinearForm_AddDomainIntegrator(BlockNonlinearForm self, BlockNonlinearFormIntegrator nlfi)"},
@@ -6143,13 +6139,13 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "NonlinearForm_swiginit", NonlinearForm_swiginit, METH_VARARGS, NULL},
 	 { "new_BlockNonlinearForm", _wrap_new_BlockNonlinearForm, METH_VARARGS, "\n"
 		"BlockNonlinearForm()\n"
-		"new_BlockNonlinearForm(mfem::Array< mfem::FiniteElementSpace * > & f) -> BlockNonlinearForm\n"
+		"new_BlockNonlinearForm(FiniteElementSpacePtrArray f) -> BlockNonlinearForm\n"
 		""},
 	 { "BlockNonlinearForm_FESpace", _wrap_BlockNonlinearForm_FESpace, METH_VARARGS, "\n"
 		"FESpace(BlockNonlinearForm self, int k) -> FiniteElementSpace\n"
 		"FESpace(BlockNonlinearForm self, int k) -> FiniteElementSpace\n"
 		""},
-	 { "BlockNonlinearForm_SetSpaces", (PyCFunction)(void(*)(void))_wrap_BlockNonlinearForm_SetSpaces, METH_VARARGS|METH_KEYWORDS, "SetSpaces(BlockNonlinearForm self, mfem::Array< mfem::FiniteElementSpace * > & f)"},
+	 { "BlockNonlinearForm_SetSpaces", (PyCFunction)(void(*)(void))_wrap_BlockNonlinearForm_SetSpaces, METH_VARARGS|METH_KEYWORDS, "SetSpaces(BlockNonlinearForm self, FiniteElementSpacePtrArray f)"},
 	 { "BlockNonlinearForm_GetBlockOffsets", _wrap_BlockNonlinearForm_GetBlockOffsets, METH_O, "GetBlockOffsets(BlockNonlinearForm self) -> intArray"},
 	 { "BlockNonlinearForm_GetBlockTrueOffsets", _wrap_BlockNonlinearForm_GetBlockTrueOffsets, METH_O, "GetBlockTrueOffsets(BlockNonlinearForm self) -> intArray"},
 	 { "BlockNonlinearForm_AddDomainIntegrator", (PyCFunction)(void(*)(void))_wrap_BlockNonlinearForm_AddDomainIntegrator, METH_VARARGS|METH_KEYWORDS, "AddDomainIntegrator(BlockNonlinearForm self, BlockNonlinearFormIntegrator nlfi)"},

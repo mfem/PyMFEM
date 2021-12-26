@@ -174,9 +174,9 @@ def GetEdgeInteriorDofs(self, i):
 %}  
 %include "fem/fespace.hpp"
 
- //amespace mfem{
- //%template(FiniteElementSpaceArray) Array<FiniteElementSpace>;
- //}
+%import "../common/array_instantiation_macro.i"
+IGNORE_OBJ_METHODS(FiniteElementSpace*)
+INSTANTIATE_ARRAY0(FiniteElementSpace*, FiniteElementSpacePtr)
 
 /*
 fem/fespace.hpp:   void Save(std::ostream &out) const;
