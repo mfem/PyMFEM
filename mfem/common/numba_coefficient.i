@@ -410,7 +410,7 @@ try:
                 coeff = VectorNumbaFunction(ff, sdim, vdim, td).GenerateCoefficient(use_0)
                 return coeff
             return dec
-        def matrxi(self, sdim=3, vdim=-1, td=False, params={}):
+        def matrix(self, sdim=3, vdim=-1, td=False, params={}):
             vdim = sdim if vdim==-1 else vdim				   
             def dec(func):
                 l = len(signature(func).parameters)
@@ -434,7 +434,7 @@ try:
                 from numba import cfunc
                 gfunc=self._copy_func_and_apply_params(func, params)
                 ff = cfunc(sig)(gfunc)
-                coeff = MatrxixNumbaFunction(ff, sdim, vdim, td).GenerateCoefficient(use_0)
+                coeff = MatrixNumbaFunction(ff, sdim, vdim, td).GenerateCoefficient(use_0)
                 return coeff
             return dec
     jit = _JIT()
