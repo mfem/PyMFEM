@@ -483,15 +483,6 @@ class GridFunction(mfem._par.vector.Vector):
         return _gridfunc.GridFunction_ComputeFlux(self, blfi, flux, wcoef, subdomain)
     ComputeFlux = _swig_new_instance_method(_gridfunc.GridFunction_ComputeFlux)
 
-    def Assign(self, *args):
-        r"""
-        Assign(GridFunction self, GridFunction rhs) -> GridFunction
-        Assign(GridFunction self, double value) -> GridFunction
-        Assign(GridFunction self, Vector v) -> GridFunction
-        """
-        return _gridfunc.GridFunction_Assign(self, *args)
-    Assign = _swig_new_instance_method(_gridfunc.GridFunction_Assign)
-
     def Update(self):
         r"""Update(GridFunction self)"""
         return _gridfunc.GridFunction_Update(self)

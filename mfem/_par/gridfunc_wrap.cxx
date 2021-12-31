@@ -4341,50 +4341,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_Assign__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::GridFunction *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  mfem::GridFunction *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_Assign" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_Assign" "', argument " "2"" of type '" "mfem::GridFunction const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_Assign" "', argument " "2"" of type '" "mfem::GridFunction const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::GridFunction * >(argp2);
-  {
-    try {
-      result = (mfem::GridFunction *) &(arg1)->operator =((mfem::GridFunction const &)*arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_GridFunction_MakeOwner(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
@@ -13663,151 +13619,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_Assign__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  double arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  mfem::GridFunction *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_Assign" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GridFunction_Assign" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  {
-    try {
-      result = (mfem::GridFunction *) &(arg1)->operator =(arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_Assign__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::Vector *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  mfem::GridFunction *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_Assign" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_Assign" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_Assign" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  {
-    try {
-      result = (mfem::GridFunction *) &(arg1)->operator =((mfem::Vector const &)*arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_Assign(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_Assign", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_GridFunction_Assign__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_GridFunction_Assign__SWIG_2(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        return _wrap_GridFunction_Assign__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_Assign'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::GridFunction::operator =(mfem::GridFunction const &)\n"
-    "    mfem::GridFunction::operator =(double)\n"
-    "    mfem::GridFunction::operator =(mfem::Vector const &)\n");
-  return 0;
-}
-
-
 SWIGINTERN PyObject *_wrap_GridFunction_Update(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
@@ -18670,11 +18481,6 @@ static PyMethodDef SwigMethods[] = {
 		"GridFunction_ComputeElementMaxErrors(GridFunction self, VectorCoefficient exsol, Vector error, mfem::IntegrationRule const *[] irs=0)\n"
 		""},
 	 { "GridFunction_ComputeFlux", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeFlux, METH_VARARGS|METH_KEYWORDS, "GridFunction_ComputeFlux(GridFunction self, BilinearFormIntegrator blfi, GridFunction flux, bool wcoef=True, int subdomain=-1)"},
-	 { "GridFunction_Assign", _wrap_GridFunction_Assign, METH_VARARGS, "\n"
-		"GridFunction_Assign(GridFunction self, GridFunction rhs) -> GridFunction\n"
-		"GridFunction_Assign(GridFunction self, double value) -> GridFunction\n"
-		"GridFunction_Assign(GridFunction self, Vector v) -> GridFunction\n"
-		""},
 	 { "GridFunction_Update", _wrap_GridFunction_Update, METH_O, "GridFunction_Update(GridFunction self)"},
 	 { "GridFunction_FESpace", _wrap_GridFunction_FESpace, METH_VARARGS, "\n"
 		"GridFunction_FESpace(GridFunction self) -> FiniteElementSpace\n"
@@ -18913,11 +18719,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"ComputeElementMaxErrors(GridFunction self, VectorCoefficient exsol, Vector error, mfem::IntegrationRule const *[] irs=0)\n"
 		""},
 	 { "GridFunction_ComputeFlux", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeFlux, METH_VARARGS|METH_KEYWORDS, "ComputeFlux(GridFunction self, BilinearFormIntegrator blfi, GridFunction flux, bool wcoef=True, int subdomain=-1)"},
-	 { "GridFunction_Assign", _wrap_GridFunction_Assign, METH_VARARGS, "\n"
-		"Assign(GridFunction self, GridFunction rhs) -> GridFunction\n"
-		"Assign(GridFunction self, double value) -> GridFunction\n"
-		"Assign(GridFunction self, Vector v) -> GridFunction\n"
-		""},
 	 { "GridFunction_Update", _wrap_GridFunction_Update, METH_O, "Update(GridFunction self)"},
 	 { "GridFunction_FESpace", _wrap_GridFunction_FESpace, METH_VARARGS, "\n"
 		"FESpace(GridFunction self) -> FiniteElementSpace\n"

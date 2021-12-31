@@ -10,25 +10,36 @@
          * mfem.jit.vector decorator as a function call
          * defining constant parameters in functions
          * calling JITed function from JITed coefficient
-
+     
 '''
 from numba import jit, types, carray
 import numba
 import numba_scipy
 import os
-import mfem.ser as mfem
-from mfem.ser import intArray
+import mfem.par as mfem
+from mfem.par import intArray
 from os.path import expanduser, join, dirname
 import numpy as np
 from numpy import sin, cos, exp, sqrt, pi
 import scipy.special
+from mpi4py import MPI
 
+num_procs = MPI.COMM_WORLD.size
+myid = MPI.COMM_WORLD.rank
+smyid = '.'+'{:0>6d}'.format(myid)
 
 prob = ''
 
+def print0(*args, **kwargs):
+    if myid == 0:
+        print(*args, **kwargs)
+    else:
+        pass
+    
 def run(meshfile="",
         order=1,
         ref_levels=0,
+        par_ref_levels=0,        
         visualization=1,
         herm_conv=True,
         device_config='cpu',
@@ -39,7 +50,6 @@ def run(meshfile="",
     device = mfem.Device(device_config)
     device.Print()
 
-    print(prob)
     # 3. Setup the mesh
     if meshfile == '':
         exact_known = True
@@ -90,35 +100,39 @@ def run(meshfile="",
     for l in range(ref_levels):
         mesh.UniformRefinement()
 
+    pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
+    for l in range(par_ref_levels):
+        pmesh.UniformRefinement()
+
     # 6. Set element attributes in order to distinguish elements in the
     #    PML region
-    pml.SetAttributes(mesh)
+    pml.SetAttributes(pmesh)
 
     # 7. Define a finite element space on the mesh. Here we use the Nedelec
     #    finite elements of the specified order.
     fec = mfem.ND_FECollection(order, dim)
-    fespace = mfem.FiniteElementSpace(mesh, fec)
+    fespace = mfem.ParFiniteElementSpace(pmesh, fec)
 
-    size = fespace.GetTrueVSize()
+    size = fespace.GlobalTrueVSize()
 
-    print("Number of finite element unknowns: " + str(size))
+    print0("Number of finite element unknowns: " + str(size))
 
     # 8. Determine the list of true essential boundary dofs. In this example,
     #    the boundary conditions are defined based on the specific mesh and the
     #    problem type.
 
-    battrs = mesh.GetBdrAttributeArray()
+    battrs = pmesh.GetBdrAttributeArray()
 
     if len(battrs) > 0:
         if prob == "lshape" or prob == "fichera":
             ess_bdr0 = [0]*np.max(battrs)
 
-            for j in range(mesh.GetNBE()):
-                bdrgeom = mesh.GetBdrElementBaseGeometry(j)
-                tr = mesh.GetBdrElementTransformation(j)
+            for j in range(pmesh.GetNBE()):
+                bdrgeom = pmesh.GetBdrElementBaseGeometry(j)
+                tr = pmesh.GetBdrElementTransformation(j)
                 center = tr.Transform(mfem.Geometries.GetCenter(bdrgeom))
 
-                k = mesh.GetBdrAttribute(j)
+                k = pmesh.GetBdrAttribute(j)
                 if prob == "lshape":
                     if (center[0] == 1.0 or center[0] == 0.5 or
                             center[1] == 0.5):
@@ -142,6 +156,7 @@ def run(meshfile="",
 
     # 10. Set up the linear form b(.) which corresponds to the right-hand side of
     #     the FEM linear system.
+    # if numba:
     params = {"comp_domain_bdr": comp_domain_bdr,
               "dim": dim,
               "omega": omega,
@@ -149,7 +164,7 @@ def run(meshfile="",
               "prob": prob, 
               "mu": mu}
     f = mfem.jit.vector(sdim=dim, params=params)(source)
-    b = mfem.ComplexLinearForm(fespace, conv)
+    b = mfem.ParComplexLinearForm(fespace, conv)
     if prob == "general":
         b.AddDomainIntegrator(None, mfem.VectorFEDomainLFIntegrator(f))
 
@@ -158,7 +173,7 @@ def run(meshfile="",
 
     # 11. Define the solution vector x as a complex finite element grid function
     #     corresponding to fespace.
-    x = mfem.ComplexGridFunction(fespace)
+    x = mfem.ParComplexGridFunction(fespace)
     x.Assign(0.0)
 
     sig = types.void(types.CPointer(types.double),
@@ -181,7 +196,7 @@ def run(meshfile="",
     #
     #     where J denotes the Jacobian Matrix of the PML Stretching function
 
-    attrs = mesh.GetAttributeArray()
+    attrs = pmesh.GetAttributeArray()
     if len(attrs) > 0:
         attr = [0]*np.max(attrs)
         attrPML = [0]*np.max(attrs)
@@ -198,7 +213,7 @@ def run(meshfile="",
     restr_omeg = mfem.RestrictedCoefficient(omeg, attr)
 
     # Integrators inside the computational domain (excluding the PML region)
-    a = mfem.SesquilinearForm(fespace, conv)
+    a = mfem.ParSesquilinearForm(fespace, conv)
     a.AddDomainIntegrator(mfem.CurlCurlIntegrator(restr_muinv), None)
     a.AddDomainIntegrator(mfem.VectorFEMassIntegrator(restr_omeg), None)
 
@@ -273,7 +288,7 @@ def run(meshfile="",
         absomeg = mfem.ConstantCoefficient(omega**2 * epsilon)
         restr_absomeg = mfem.RestrictedCoefficient(absomeg, attr)
 
-        prec = mfem.BilinearForm(fespace)
+        prec = mfem.ParBilinearForm(fespace)
         prec.AddDomainIntegrator(mfem.CurlCurlIntegrator(restr_muinv))
         prec.AddDomainIntegrator(mfem.VectorFEMassIntegrator(restr_absomeg))
 
@@ -312,16 +327,16 @@ def run(meshfile="",
             prec.FormSystemMatrix(ess_tdof_list, PCOpAh)
 
             # Gauss-Seidel Smoother
-            gs00 = mfem.GSSmoother(PCOpAh.AsSparseMatrix())
-            gs11 = mfem.ScaledOperator(gs00, s)
-            pc_r = gs00
-            pc_i = gs11
+            ams00 = mfem.HypreAMS(PCOpAh.AsHypreParMatrix(), fespace);
+            ams11 = mfem.ScaledOperator(ams00, s)
+            pc_r = ams00
+            pc_i = ams11
 
         BlockDP = mfem.BlockDiagonalPreconditioner(offsets)
         BlockDP.SetDiagonalBlock(0, pc_r)
         BlockDP.SetDiagonalBlock(1, pc_i)
 
-        gmres = mfem.GMRESSolver()
+        gmres = mfem.GMRESSolver(MPI.COMM_WORLD)
         gmres.SetPrintLevel(1)
         gmres.SetKDim(200)
         gmres.SetMaxIter(5000 if pa else 2000)
@@ -350,23 +365,23 @@ def run(meshfile="",
         L2Error_Re = x.real().ComputeL2Error(E_ex_Re, birs, pml.elems)
         L2Error_Im = x.imag().ComputeL2Error(E_ex_Im, birs, pml.elems)
 
-        x_gf0 = mfem.ComplexGridFunction(fespace)
+        x_gf0 = mfem.ParComplexGridFunction(fespace)
         x_gf0.Assign(0.0)
         norm_E_Re = x_gf0.real().ComputeL2Error(E_ex_Re, birs, pml.elems)
         norm_E_Im = x_gf0.imag().ComputeL2Error(E_ex_Im, birs, pml.elems)
 
-        print("")
-        print(" Relative Error (Re part): || E_h - E || / ||E|| = " +
+        print0("")
+        print0(" Relative Error (Re part): || E_h - E || / ||E|| = " +
               "{:g}".format(L2Error_Re / norm_E_Re))
-        print(" Relative Error (Im part): || E_h - E || / ||E|| = " +
+        print0(" Relative Error (Im part): || E_h - E || / ||E|| = " +
               "{:g}".format(L2Error_Im / norm_E_Im))
-        print(" Total Error : " +
+        print0(" Total Error : " +
               "{:g}".format(sqrt(L2Error_Re*L2Error_Re + L2Error_Im*L2Error_Im)))
-        print("")
+        print0("")
 
-    mesh.Print("ex25.mesh", 8)
-    x.real().Save("ex25-sol_r.gf", 8)
-    x.imag().Save("ex25-sol_i.gf", 8)
+    pmesh.Print("mesh"+smyid, 8)
+    x.real().Save("ex25p-sol_r"+smyid, 8)
+    x.imag().Save("ex25p-sol_i"+smyid, 8)
 
     if visualization:
         keys = "keys macF\n" if dim == 3 else "keys amrRljcUUuu\n"
@@ -377,27 +392,30 @@ def run(meshfile="",
 
         sol_sock_re = mfem.socketstream("localhost", 19916)
         sol_sock_re.precision(8)
-        sol_sock_re << "solution\n" << mesh << x.real() << keys
+        sol_sock_re << "parallel " << num_procs << " " << myid << "\n"        
+        sol_sock_re << "solution\n" << pmesh << x.real() << keys
         sol_sock_re << "window_title 'Soluiton real part'"
         sol_sock_re.flush()
 
         sol_sock_im = mfem.socketstream("localhost", 19916)
         sol_sock_im.precision(8)
-        sol_sock_im << "solution\n" << mesh << x.imag() << keys
+        sol_sock_im << "parallel " << num_procs << " " << myid << "\n"                
+        sol_sock_im << "solution\n" << pmesh << x.imag() << keys
         sol_sock_im << "window_title 'Soluiton imag part'"
         sol_sock_im.flush()
 
-        x_t = mfem.GridFunction(fespace)
+        x_t = mfem.ParGridFunction(fespace)
         x_t.Assign(x.real())
 
         sol_sock = mfem.socketstream("localhost", 19916)
         sol_sock.precision(8)
-        sol_sock << "solution\n" << mesh << x_t << keys << "autoscale off\n"
+        sol_sock << "parallel " << num_procs << " " << myid << "\n"                        
+        sol_sock << "solution\n" << pmesh << x_t << keys << "autoscale off\n"
         sol_sock << "window_title 'Harmonic Solution (t = 0.0T)'"
         sol_sock << "pause\n"
         sol_sock.flush()
 
-        print("GLVis visualization paused. Press space (in the GLVis window) to resume it.")
+        print0("GLVis visualization paused. Press space (in the GLVis window) to resume it.")
         num_frames = 32
         i = 0
 
@@ -407,7 +425,7 @@ def run(meshfile="",
             dd = (cos(2.0 * pi * t)*x.real().GetDataArray() +
                   sin(2.0 * pi * t)*x.imag().GetDataArray())
             x_t.Assign(dd)
-            sol_sock << "solution\n" << mesh << x_t
+            sol_sock << "solution\n" << pmesh << x_t
             sol_sock << "window_title '" << oss << "'"
             sol_sock.flush()
 
@@ -428,7 +446,7 @@ class CartesianPML:
             self.comp_dom_bdr[i, 0] = self.dom_bdr[i, 0] + self.length[i, 0]
             self.comp_dom_bdr[i, 1] = self.dom_bdr[i, 1] - self.length[i, 1]
 
-    def SetAttributes(self, mesh):
+    def SetAttributes(self, mesh): # this mesh is not the same mesh pass to __init__
         # Initialize bdr attributes
         self.elems = mfem.intArray(mesh.GetNE())
         
@@ -738,9 +756,12 @@ if __name__ == "__main__":
                         "--problem-type",
                         action='store', type=int, default=4,
                         help=" 0: beam, 1: disc, 2: lshape, 3: fichera, 4: General")
-    parser.add_argument("-ref", "--refine",
-                        action='store', type=int, default=3,
-                        help="Number of times to refine the mesh uniformly.")
+    parser.add_argument( "-rs", "--refinements-serial",
+                        action='store', type=int, default=1,
+                        help="Number of serial refinements")
+    parser.add_argument( "-rp", "--refinements-parallel",
+                        action='store', type=int, default=2,
+                        help="Number of parallel refinements")
     parser.add_argument("-mu", "--permeability",
                         action='store', type=float, default=1.0,
                         help="Permeability of free space (or 1/(spring constant)).")
@@ -768,7 +789,8 @@ if __name__ == "__main__":
                         help="Device configuration string, see Device::Configure().")
 
     args = parser.parse_args()
-    parser.print_options(args)
+    if myid == 0:
+        parser.print_options(args)
 
     probs = {0: "beam", 1: "disc", 2: "lshape", 3: "fichera", 4: "general"}
     globals()["prob"] = probs[args.problem_type]
@@ -777,8 +799,10 @@ if __name__ == "__main__":
     globals()["mu"] = args.permeability
     run(meshfile=args.mesh,
         order=args.order,
-        ref_levels=args.refine,
+        ref_levels=args.refinements_serial,
+        par_ref_levels=args.refinements_parallel,        
         visualization=args.visualization,
         herm_conv=args.no_hermitian,
         device_config=args.device,
         pa=args.partial_assembly)
+

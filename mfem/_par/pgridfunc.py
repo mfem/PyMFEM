@@ -193,16 +193,6 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         return _pgridfunc.ParGridFunction_SetFromTrueDofs(self, tv)
     SetFromTrueDofs = _swig_new_instance_method(_pgridfunc.ParGridFunction_SetFromTrueDofs)
 
-    def Assign(self, *args):
-        r"""
-        Assign(ParGridFunction self, ParGridFunction rhs) -> ParGridFunction
-        Assign(ParGridFunction self, double value) -> ParGridFunction
-        Assign(ParGridFunction self, Vector v) -> ParGridFunction
-        Assign(ParGridFunction self, HypreParVector tv) -> ParGridFunction
-        """
-        return _pgridfunc.ParGridFunction_Assign(self, *args)
-    Assign = _swig_new_instance_method(_pgridfunc.ParGridFunction_Assign)
-
     def GetTrueDofs(self, *args):
         r"""
         GetTrueDofs(ParGridFunction self, Vector tv)

@@ -44,7 +44,7 @@ import_array();
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
 
-%rename(Assign) mfem::GridFunction::operator=;
+//%rename(Assign) mfem::GridFunction::operator=;
 
 %feature("shadow") mfem::GridFunction::GetNodalValues%{
 def GetNodalValues(self, *args):

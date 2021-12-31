@@ -68,7 +68,7 @@ ISTREAM_TYPEMAP(std::istream&)
    $1 = PyList_Check($input) ? 1 : 0;
 }
 */
-%rename(Assign) mfem::ParGridFunction::operator=;
+//%rename(Assign) mfem::ParGridFunction::operator=;
 
 %newobject mfem::ParGridFunction::ParallelAssemble;
 %newobject mfem::ParGridFunction::ParallelAverage;
