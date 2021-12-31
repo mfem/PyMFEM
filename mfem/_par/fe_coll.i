@@ -1,11 +1,5 @@
 %module(package="mfem._par") fe_coll
 %{
-#include "fem/fem.hpp"
-#include "fem/fe_coll.hpp"
-#include "fem/fespace.hpp"
-#include "fem/eltrans.hpp"
-#include "fem/coefficient.hpp"
-#include "fem/intrules.hpp"  
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -13,6 +7,8 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
+#include "mfem.hpp"  
+#include "pyoperator.hpp"  
 #include "numpy/arrayobject.h"
 #include "../common/pycoefficient.hpp"  
 %}

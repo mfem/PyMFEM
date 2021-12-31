@@ -1,9 +1,7 @@
 %module(package="mfem._ser") fe_base
 %{
-#include  "mfem.hpp"
-#include "fem/fe/fe_base.hpp"  
-#include "fem/fe/fe_h1.hpp"
-#include "mesh/hexahedron.hpp"
+#include "mfem.hpp"
+#include "pyoperator.hpp"    
 #include "numpy/arrayobject.h"    
 %}
 

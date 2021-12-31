@@ -56,6 +56,11 @@ def run_test():
     b[1] = 4    
     print(b2.ToList())
     print(b3.ToList())    
+
+    a = mfem.boolArray([True]*3)
+    print(a[1])
+    print(a.ToList())    
+    assert a.Size() == 3, "array size is wrong"
     
     
 if __name__=='__main__':

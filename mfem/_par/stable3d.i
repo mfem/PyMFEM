@@ -4,9 +4,9 @@
 
 %{
 #include <fstream>
-#include "../common/io_stream.hpp"  
-#include  "mfem.hpp"
-#include "general/stable3d.hpp"
+#include  "mfem.hpp"  
+#include "../common/io_stream.hpp"
+#include "pyoperator.hpp"  
 #include "numpy/arrayobject.h"    
 %}
 

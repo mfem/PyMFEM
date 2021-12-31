@@ -62,6 +62,25 @@ void mfem::PyTimeDependentOperatorBase::Mult(const mfem::Vector &x, mfem::Vector
 
 %ignore mfem::Operator::PrintMatlab;
 
+
+/* define OperatorPtrArray and SolverPtrArray */
+%import "../common/array_listtuple_typemap.i"
+ARRAY_LISTTUPLE_INPUT_SWIGOBJ(mfem::Operator *, 1)
+ARRAY_LISTTUPLE_INPUT_SWIGOBJ(mfem::Solver *, 1)
+
+
+%import "../common/data_size_typemap.i"
+XXXPTR_SIZE_IN(mfem::Operator **data_, int asize, mfem::Operator *)
+XXXPTR_SIZE_IN(mfem::Solver **data_, int asize, mfem::Solver *)
+
+
+%import "../common/array_instantiation_macro.i"
+IGNORE_ARRAY_METHODS(mfem::Operator *)
+INSTANTIATE_ARRAY0(Operator *, Operator, 1)
+IGNORE_ARRAY_METHODS(mfem::Solver *)
+INSTANTIATE_ARRAY0(Solver *, Solver, 1)
+
+
 %include "linalg/operator.hpp"
 %include "pyoperator.hpp"
 

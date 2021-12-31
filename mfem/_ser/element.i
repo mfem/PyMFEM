@@ -1,11 +1,12 @@
 %module(package="mfem._ser") element
+
 %{
-#include "mesh/element.hpp"
-#include "general/table.hpp"
-  //#include "fem/intrules.hpp"  
-#include <iostream>
-#include "numpy/arrayobject.h"      
+#include <iostream>  
+#include "mfem.hpp"
+#include "pyoperator.hpp"      
+#include "numpy/arrayobject.h"    
 %}
+
 %init %{
 import_array();
 %}

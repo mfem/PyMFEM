@@ -238,12 +238,12 @@ class BlockNonlinearFormIntegrator(object):
     GetElementEnergy = _swig_new_instance_method(_nonlininteg.BlockNonlinearFormIntegrator_GetElementEnergy)
 
     def AssembleElementVector(self, el, Tr, elfun, elvec):
-        r"""AssembleElementVector(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array< mfem::Vector * > const & elvec)"""
+        r"""AssembleElementVector(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, VectorPtrArray elvec)"""
         return _nonlininteg.BlockNonlinearFormIntegrator_AssembleElementVector(self, el, Tr, elfun, elvec)
     AssembleElementVector = _swig_new_instance_method(_nonlininteg.BlockNonlinearFormIntegrator_AssembleElementVector)
 
     def AssembleFaceVector(self, el1, el2, Tr, elfun, elvect):
-        r"""AssembleFaceVector(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el1, mfem::Array< mfem::FiniteElement const * > const & el2, FaceElementTransformations Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array< mfem::Vector * > const & elvect)"""
+        r"""AssembleFaceVector(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el1, mfem::Array< mfem::FiniteElement const * > const & el2, FaceElementTransformations Tr, mfem::Array< mfem::Vector const * > const & elfun, VectorPtrArray elvect)"""
         return _nonlininteg.BlockNonlinearFormIntegrator_AssembleFaceVector(self, el1, el2, Tr, elfun, elvect)
     AssembleFaceVector = _swig_new_instance_method(_nonlininteg.BlockNonlinearFormIntegrator_AssembleFaceVector)
 
@@ -404,7 +404,7 @@ class IncompressibleNeoHookeanIntegrator(BlockNonlinearFormIntegrator):
     GetElementEnergy = _swig_new_instance_method(_nonlininteg.IncompressibleNeoHookeanIntegrator_GetElementEnergy)
 
     def AssembleElementVector(self, el, Tr, elfun, elvec):
-        r"""AssembleElementVector(IncompressibleNeoHookeanIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array< mfem::Vector * > const & elvec)"""
+        r"""AssembleElementVector(IncompressibleNeoHookeanIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, VectorPtrArray elvec)"""
         return _nonlininteg.IncompressibleNeoHookeanIntegrator_AssembleElementVector(self, el, Tr, elfun, elvec)
     AssembleElementVector = _swig_new_instance_method(_nonlininteg.IncompressibleNeoHookeanIntegrator_AssembleElementVector)
 

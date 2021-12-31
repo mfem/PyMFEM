@@ -122,7 +122,7 @@ class Multigrid(mfem._ser.operators.Solver):
     def __init__(self, *args):
         r"""
         __init__(Multigrid self) -> Multigrid
-        __init__(Multigrid self, mfem::Array< mfem::Operator * > const & operators_, mfem::Array< mfem::Solver * > const & smoothers_, mfem::Array< mfem::Operator * > const & prolongations_, mfem::Array< bool > const & ownedOperators_, mfem::Array< bool > const & ownedSmoothers_, mfem::Array< bool > const & ownedProlongations_) -> Multigrid
+        __init__(Multigrid self, OperatorPtrArray operators_, SolverPtrArray smoothers_, OperatorPtrArray prolongations_, boolArray ownedOperators_, boolArray ownedSmoothers_, boolArray ownedProlongations_) -> Multigrid
         """
         _multigrid.Multigrid_swiginit(self, _multigrid.new_Multigrid(*args))
     __swig_destroy__ = _multigrid.delete_Multigrid

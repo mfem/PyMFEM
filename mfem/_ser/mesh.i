@@ -1,9 +1,6 @@
 %module(package="mfem._ser", directors="0")  mesh
+  
 %{
-#include "mesh/mesh_headers.hpp"
-#include "fem/fem.hpp"
-#include "general/array.hpp"
-#include "general/mem_manager.hpp"
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -11,14 +8,12 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include <vector>  
-//mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
-//		      bool fix_orientation = true);
-// void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
+#include <vector>
+#include "mfem.hpp"  
 #include "numpy/arrayobject.h"
+#include "pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
 #include "../common/io_stream.hpp"
-  //using namespace mfem;
 %}
 
 %begin %{

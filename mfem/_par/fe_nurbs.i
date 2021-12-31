@@ -1,8 +1,7 @@
 %module(package="mfem._par") fe_nurbs
 %{
 #include  "mfem.hpp"
-#include "fem/fe/fe_nurbs.hpp"
-#include "mesh/hexahedron.hpp"
+#include "pyoperator.hpp"      
 #include "numpy/arrayobject.h"    
 %}
 

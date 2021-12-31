@@ -3098,69 +3098,86 @@ namespace Swig {
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
-#define SWIGTYPE_p_char swig_types[1]
-#define SWIGTYPE_p_double swig_types[2]
-#define SWIGTYPE_p_int swig_types[3]
-#define SWIGTYPE_p_mfem__AB1Solver swig_types[4]
-#define SWIGTYPE_p_mfem__AB2Solver swig_types[5]
-#define SWIGTYPE_p_mfem__AB3Solver swig_types[6]
-#define SWIGTYPE_p_mfem__AB4Solver swig_types[7]
-#define SWIGTYPE_p_mfem__AB5Solver swig_types[8]
-#define SWIGTYPE_p_mfem__AM0Solver swig_types[9]
-#define SWIGTYPE_p_mfem__AM1Solver swig_types[10]
-#define SWIGTYPE_p_mfem__AM2Solver swig_types[11]
-#define SWIGTYPE_p_mfem__AM3Solver swig_types[12]
-#define SWIGTYPE_p_mfem__AM4Solver swig_types[13]
-#define SWIGTYPE_p_mfem__AdamsBashforthSolver swig_types[14]
-#define SWIGTYPE_p_mfem__AdamsMoultonSolver swig_types[15]
-#define SWIGTYPE_p_mfem__AverageAccelerationSolver swig_types[16]
-#define SWIGTYPE_p_mfem__BackwardEulerSolver swig_types[17]
-#define SWIGTYPE_p_mfem__CentralDifferenceSolver swig_types[18]
-#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[19]
-#define SWIGTYPE_p_mfem__ESDIRK32Solver swig_types[20]
-#define SWIGTYPE_p_mfem__ESDIRK33Solver swig_types[21]
-#define SWIGTYPE_p_mfem__ExplicitRKSolver swig_types[22]
-#define SWIGTYPE_p_mfem__ForwardEulerSolver swig_types[23]
-#define SWIGTYPE_p_mfem__FoxGoodwinSolver swig_types[24]
-#define SWIGTYPE_p_mfem__GeneralizedAlpha2Solver swig_types[25]
-#define SWIGTYPE_p_mfem__GeneralizedAlphaSolver swig_types[26]
-#define SWIGTYPE_p_mfem__HHTAlphaSolver swig_types[27]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[28]
-#define SWIGTYPE_p_mfem__ImplicitMidpointSolver swig_types[29]
-#define SWIGTYPE_p_mfem__LinearAccelerationSolver swig_types[30]
-#define SWIGTYPE_p_mfem__NewmarkSolver swig_types[31]
-#define SWIGTYPE_p_mfem__ODESolver swig_types[32]
-#define SWIGTYPE_p_mfem__Operator swig_types[33]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[34]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[35]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[36]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[37]
-#define SWIGTYPE_p_mfem__RK2Solver swig_types[38]
-#define SWIGTYPE_p_mfem__RK3SSPSolver swig_types[39]
-#define SWIGTYPE_p_mfem__RK4Solver swig_types[40]
-#define SWIGTYPE_p_mfem__RK6Solver swig_types[41]
-#define SWIGTYPE_p_mfem__RK8Solver swig_types[42]
-#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[43]
-#define SWIGTYPE_p_mfem__SDIRK23Solver swig_types[44]
-#define SWIGTYPE_p_mfem__SDIRK33Solver swig_types[45]
-#define SWIGTYPE_p_mfem__SDIRK34Solver swig_types[46]
-#define SWIGTYPE_p_mfem__SIA1Solver swig_types[47]
-#define SWIGTYPE_p_mfem__SIA2Solver swig_types[48]
-#define SWIGTYPE_p_mfem__SIASolver swig_types[49]
-#define SWIGTYPE_p_mfem__SIAVSolver swig_types[50]
-#define SWIGTYPE_p_mfem__ScaledOperator swig_types[51]
-#define SWIGTYPE_p_mfem__SecondOrderODESolver swig_types[52]
-#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[53]
-#define SWIGTYPE_p_mfem__Solver swig_types[54]
-#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[55]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[56]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[57]
-#define SWIGTYPE_p_mfem__TrapezoidalRuleSolver swig_types[58]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[59]
-#define SWIGTYPE_p_mfem__Vector swig_types[60]
-#define SWIGTYPE_p_mfem__WBZAlphaSolver swig_types[61]
-static swig_type_info *swig_types[63];
-static swig_module_info swig_module = {swig_types, 62, 0, 0, 0, 0};
+#define SWIGTYPE_p_bool swig_types[1]
+#define SWIGTYPE_p_char swig_types[2]
+#define SWIGTYPE_p_double swig_types[3]
+#define SWIGTYPE_p_int swig_types[4]
+#define SWIGTYPE_p_mfem__AB1Solver swig_types[5]
+#define SWIGTYPE_p_mfem__AB2Solver swig_types[6]
+#define SWIGTYPE_p_mfem__AB3Solver swig_types[7]
+#define SWIGTYPE_p_mfem__AB4Solver swig_types[8]
+#define SWIGTYPE_p_mfem__AB5Solver swig_types[9]
+#define SWIGTYPE_p_mfem__AM0Solver swig_types[10]
+#define SWIGTYPE_p_mfem__AM1Solver swig_types[11]
+#define SWIGTYPE_p_mfem__AM2Solver swig_types[12]
+#define SWIGTYPE_p_mfem__AM3Solver swig_types[13]
+#define SWIGTYPE_p_mfem__AM4Solver swig_types[14]
+#define SWIGTYPE_p_mfem__AdamsBashforthSolver swig_types[15]
+#define SWIGTYPE_p_mfem__AdamsMoultonSolver swig_types[16]
+#define SWIGTYPE_p_mfem__AverageAccelerationSolver swig_types[17]
+#define SWIGTYPE_p_mfem__BackwardEulerSolver swig_types[18]
+#define SWIGTYPE_p_mfem__CentralDifferenceSolver swig_types[19]
+#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[20]
+#define SWIGTYPE_p_mfem__ESDIRK32Solver swig_types[21]
+#define SWIGTYPE_p_mfem__ESDIRK33Solver swig_types[22]
+#define SWIGTYPE_p_mfem__ExplicitRKSolver swig_types[23]
+#define SWIGTYPE_p_mfem__ForwardEulerSolver swig_types[24]
+#define SWIGTYPE_p_mfem__FoxGoodwinSolver swig_types[25]
+#define SWIGTYPE_p_mfem__GeneralizedAlpha2Solver swig_types[26]
+#define SWIGTYPE_p_mfem__GeneralizedAlphaSolver swig_types[27]
+#define SWIGTYPE_p_mfem__HHTAlphaSolver swig_types[28]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[29]
+#define SWIGTYPE_p_mfem__ImplicitMidpointSolver swig_types[30]
+#define SWIGTYPE_p_mfem__LinearAccelerationSolver swig_types[31]
+#define SWIGTYPE_p_mfem__NewmarkSolver swig_types[32]
+#define SWIGTYPE_p_mfem__ODESolver swig_types[33]
+#define SWIGTYPE_p_mfem__Operator swig_types[34]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[35]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[36]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[37]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[38]
+#define SWIGTYPE_p_mfem__RK2Solver swig_types[39]
+#define SWIGTYPE_p_mfem__RK3SSPSolver swig_types[40]
+#define SWIGTYPE_p_mfem__RK4Solver swig_types[41]
+#define SWIGTYPE_p_mfem__RK6Solver swig_types[42]
+#define SWIGTYPE_p_mfem__RK8Solver swig_types[43]
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[44]
+#define SWIGTYPE_p_mfem__SDIRK23Solver swig_types[45]
+#define SWIGTYPE_p_mfem__SDIRK33Solver swig_types[46]
+#define SWIGTYPE_p_mfem__SDIRK34Solver swig_types[47]
+#define SWIGTYPE_p_mfem__SIA1Solver swig_types[48]
+#define SWIGTYPE_p_mfem__SIA2Solver swig_types[49]
+#define SWIGTYPE_p_mfem__SIASolver swig_types[50]
+#define SWIGTYPE_p_mfem__SIAVSolver swig_types[51]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[52]
+#define SWIGTYPE_p_mfem__SecondOrderODESolver swig_types[53]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[54]
+#define SWIGTYPE_p_mfem__Solver swig_types[55]
+#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[56]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[57]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[58]
+#define SWIGTYPE_p_mfem__TrapezoidalRuleSolver swig_types[59]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[60]
+#define SWIGTYPE_p_mfem__Vector swig_types[61]
+#define SWIGTYPE_p_mfem__WBZAlphaSolver swig_types[62]
+#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[63]
+#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[64]
+#define SWIGTYPE_p_p_mfem__Operator swig_types[65]
+#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[66]
+#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[67]
+#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[68]
+#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[69]
+#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[70]
+#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[71]
+#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[72]
+#define SWIGTYPE_p_p_mfem__Solver swig_types[73]
+#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[74]
+#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[75]
+#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[76]
+#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[77]
+#define SWIGTYPE_p_p_mfem__Vector swig_types[78]
+static swig_type_info *swig_types[80];
+static swig_module_info swig_module = {swig_types, 79, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -12839,6 +12856,48 @@ static void *_p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__TimeDependentOp
 static void *_p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__TimeDependentOperator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::TimeDependentOperator *)  ((mfem::PyTimeDependentOperatorBase *) x));
 }
+static void *_p_p_mfem__PyTimeDependentOperatorBaseTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase **) x));
+}
+static void *_p_p_mfem__PyOperatorBaseTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::PyOperatorBase **) x));
+}
+static void *_p_p_mfem__SolverTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::Solver **) x));
+}
+static void *_p_p_mfem__RectangularConstrainedOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::RectangularConstrainedOperator **) x));
+}
+static void *_p_p_mfem__ConstrainedOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::ConstrainedOperator **) x));
+}
+static void *_p_p_mfem__TripleProductOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::TripleProductOperator **) x));
+}
+static void *_p_p_mfem__RAPOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::RAPOperator **) x));
+}
+static void *_p_p_mfem__ProductOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::ProductOperator **) x));
+}
+static void *_p_p_mfem__TransposeOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::TransposeOperator **) x));
+}
+static void *_p_p_mfem__ScaledOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::ScaledOperator **) x));
+}
+static void *_p_p_mfem__IdentityOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::IdentityOperator **) x));
+}
+static void *_p_p_mfem__SecondOrderTimeDependentOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::TimeDependentOperator *) ((mfem::SecondOrderTimeDependentOperator **) x));
+}
+static void *_p_p_mfem__TimeDependentAdjointOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::TimeDependentOperator *) ((mfem::TimeDependentAdjointOperator **) x));
+}
+static void *_p_p_mfem__TimeDependentOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::TimeDependentOperator **) x));
+}
 static void *_p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase *) x));
 }
@@ -13053,6 +13112,7 @@ static void *_p_mfem__CentralDifferenceSolverTo_p_mfem__NewmarkSolver(void *x, i
     return (void *)((mfem::NewmarkSolver *)  ((mfem::CentralDifferenceSolver *) x));
 }
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_bool = {"_p_bool", "bool *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
@@ -13086,7 +13146,6 @@ static swig_type_info _swigt__p_mfem__ODESolver = {"_p_mfem__ODESolver", "mfem::
 static swig_type_info _swigt__p_mfem__Operator = {"_p_mfem__Operator", "mfem::Operator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__PyTimeDependentOperatorBase = {"_p_mfem__PyTimeDependentOperatorBase", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__PyOperatorBase = {"_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RectangularConstrainedOperator = {"_p_mfem__RectangularConstrainedOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__ConstrainedOperator = {"_p_mfem__ConstrainedOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__TripleProductOperator = {"_p_mfem__TripleProductOperator", 0, 0, 0, 0, 0};
@@ -13110,13 +13169,31 @@ static swig_type_info _swigt__p_mfem__SIASolver = {"_p_mfem__SIASolver", "mfem::
 static swig_type_info _swigt__p_mfem__SIAVSolver = {"_p_mfem__SIAVSolver", "mfem::SIAVSolver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__SecondOrderODESolver = {"_p_mfem__SecondOrderODESolver", "mfem::SecondOrderODESolver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__SecondOrderTimeDependentOperator = {"_p_mfem__SecondOrderTimeDependentOperator", "mfem::SecondOrderTimeDependentOperator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", "mfem::Solver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__TimeDependentOperator = {"_p_mfem__TimeDependentOperator", "mfem::TimeDependentOperator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__TrapezoidalRuleSolver = {"_p_mfem__TrapezoidalRuleSolver", "mfem::TrapezoidalRuleSolver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__WBZAlphaSolver = {"_p_mfem__WBZAlphaSolver", "mfem::WBZAlphaSolver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_mfem__Operator = {"_p_p_mfem__Operator", "mfem::Operator **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_mfem__PyTimeDependentOperatorBase = {"_p_p_mfem__PyTimeDependentOperatorBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__PyOperatorBase = {"_p_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__RectangularConstrainedOperator = {"_p_p_mfem__RectangularConstrainedOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__ConstrainedOperator = {"_p_p_mfem__ConstrainedOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__TripleProductOperator = {"_p_p_mfem__TripleProductOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__RAPOperator = {"_p_p_mfem__RAPOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__ProductOperator = {"_p_p_mfem__ProductOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__TransposeOperator = {"_p_p_mfem__TransposeOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__ScaledOperator = {"_p_p_mfem__ScaledOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__IdentityOperator = {"_p_p_mfem__IdentityOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__SecondOrderTimeDependentOperator = {"_p_p_mfem__SecondOrderTimeDependentOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__TimeDependentAdjointOperator = {"_p_p_mfem__TimeDependentAdjointOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__TimeDependentOperator = {"_p_p_mfem__TimeDependentOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__Solver = {"_p_p_mfem__Solver", "mfem::Solver **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_mfem__Vector = {"_p_p_mfem__Vector", "mfem::Vector **", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_PyMFEM__wFILE,
+  &_swigt__p_bool,
   &_swigt__p_char,
   &_swigt__p_double,
   &_swigt__p_int,
@@ -13178,9 +13255,26 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__TripleProductOperator,
   &_swigt__p_mfem__Vector,
   &_swigt__p_mfem__WBZAlphaSolver,
+  &_swigt__p_p_mfem__ConstrainedOperator,
+  &_swigt__p_p_mfem__IdentityOperator,
+  &_swigt__p_p_mfem__Operator,
+  &_swigt__p_p_mfem__ProductOperator,
+  &_swigt__p_p_mfem__PyOperatorBase,
+  &_swigt__p_p_mfem__PyTimeDependentOperatorBase,
+  &_swigt__p_p_mfem__RAPOperator,
+  &_swigt__p_p_mfem__RectangularConstrainedOperator,
+  &_swigt__p_p_mfem__ScaledOperator,
+  &_swigt__p_p_mfem__SecondOrderTimeDependentOperator,
+  &_swigt__p_p_mfem__Solver,
+  &_swigt__p_p_mfem__TimeDependentAdjointOperator,
+  &_swigt__p_p_mfem__TimeDependentOperator,
+  &_swigt__p_p_mfem__TransposeOperator,
+  &_swigt__p_p_mfem__TripleProductOperator,
+  &_swigt__p_p_mfem__Vector,
 };
 
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_bool[] = {  {&_swigt__p_bool, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
@@ -13213,7 +13307,6 @@ static swig_cast_info _swigc__p_mfem__NewmarkSolver[] = {  {&_swigt__p_mfem__Lin
 static swig_cast_info _swigc__p_mfem__ODESolver[] = {  {&_swigt__p_mfem__AB5Solver, _p_mfem__AB5SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__AB3Solver, _p_mfem__AB3SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__AB1Solver, _p_mfem__AB1SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__ExplicitRKSolver, _p_mfem__ExplicitRKSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__AM1Solver, _p_mfem__AM1SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__AM3Solver, _p_mfem__AM3SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__SDIRK23Solver, _p_mfem__SDIRK23SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__SDIRK33Solver, _p_mfem__SDIRK33SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__TrapezoidalRuleSolver, _p_mfem__TrapezoidalRuleSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__ESDIRK33Solver, _p_mfem__ESDIRK33SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__GeneralizedAlphaSolver, _p_mfem__GeneralizedAlphaSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__ODESolver, 0, 0, 0},  {&_swigt__p_mfem__RK8Solver, _p_mfem__RK8SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK6Solver, _p_mfem__RK6SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__AB4Solver, _p_mfem__AB4SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__AdamsMoultonSolver, _p_mfem__AdamsMoultonSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__AM0Solver, _p_mfem__AM0SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__AM2Solver, _p_mfem__AM2SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__AM4Solver, _p_mfem__AM4SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__AB2Solver, _p_mfem__AB2SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__AdamsBashforthSolver, _p_mfem__AdamsBashforthSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK4Solver, _p_mfem__RK4SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK3SSPSolver, _p_mfem__RK3SSPSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK2Solver, _p_mfem__RK2SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__ForwardEulerSolver, _p_mfem__ForwardEulerSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__BackwardEulerSolver, _p_mfem__BackwardEulerSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__ImplicitMidpointSolver, _p_mfem__ImplicitMidpointSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__SDIRK34Solver, _p_mfem__SDIRK34SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__ESDIRK32Solver, _p_mfem__ESDIRK32SolverTo_p_mfem__ODESolver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PyOperatorBase[] = {{&_swigt__p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Solver[] = {{&_swigt__p_mfem__Solver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RectangularConstrainedOperator[] = {{&_swigt__p_mfem__RectangularConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ConstrainedOperator[] = {{&_swigt__p_mfem__ConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TripleProductOperator[] = {{&_swigt__p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
@@ -13238,13 +13331,31 @@ static swig_cast_info _swigc__p_mfem__SIASolver[] = {  {&_swigt__p_mfem__SIA2Sol
 static swig_cast_info _swigc__p_mfem__SIAVSolver[] = {  {&_swigt__p_mfem__SIAVSolver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SecondOrderODESolver[] = {  {&_swigt__p_mfem__LinearAccelerationSolver, _p_mfem__LinearAccelerationSolverTo_p_mfem__SecondOrderODESolver, 0, 0},  {&_swigt__p_mfem__FoxGoodwinSolver, _p_mfem__FoxGoodwinSolverTo_p_mfem__SecondOrderODESolver, 0, 0},  {&_swigt__p_mfem__GeneralizedAlpha2Solver, _p_mfem__GeneralizedAlpha2SolverTo_p_mfem__SecondOrderODESolver, 0, 0},  {&_swigt__p_mfem__AverageAccelerationSolver, _p_mfem__AverageAccelerationSolverTo_p_mfem__SecondOrderODESolver, 0, 0},  {&_swigt__p_mfem__SecondOrderODESolver, 0, 0, 0},  {&_swigt__p_mfem__HHTAlphaSolver, _p_mfem__HHTAlphaSolverTo_p_mfem__SecondOrderODESolver, 0, 0},  {&_swigt__p_mfem__WBZAlphaSolver, _p_mfem__WBZAlphaSolverTo_p_mfem__SecondOrderODESolver, 0, 0},  {&_swigt__p_mfem__NewmarkSolver, _p_mfem__NewmarkSolverTo_p_mfem__SecondOrderODESolver, 0, 0},  {&_swigt__p_mfem__CentralDifferenceSolver, _p_mfem__CentralDifferenceSolverTo_p_mfem__SecondOrderODESolver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SecondOrderTimeDependentOperator[] = {  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__Solver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {  {&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},  {&_swigt__p_mfem__TimeDependentAdjointOperator, _p_mfem__TimeDependentAdjointOperatorTo_p_mfem__TimeDependentOperator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__TimeDependentOperator, 0, 0},  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__TimeDependentOperator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TrapezoidalRuleSolver[] = {  {&_swigt__p_mfem__TrapezoidalRuleSolver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__WBZAlphaSolver[] = {  {&_swigt__p_mfem__WBZAlphaSolver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__PyOperatorBase[] = {{&_swigt__p_p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__RectangularConstrainedOperator[] = {{&_swigt__p_p_mfem__RectangularConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__ConstrainedOperator[] = {{&_swigt__p_p_mfem__ConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__TripleProductOperator[] = {{&_swigt__p_p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__RAPOperator[] = {{&_swigt__p_p_mfem__RAPOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__ProductOperator[] = {{&_swigt__p_p_mfem__ProductOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__TransposeOperator[] = {{&_swigt__p_p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__ScaledOperator[] = {{&_swigt__p_p_mfem__ScaledOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__IdentityOperator[] = {{&_swigt__p_p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__SecondOrderTimeDependentOperator[] = {{&_swigt__p_p_mfem__SecondOrderTimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__TimeDependentAdjointOperator[] = {{&_swigt__p_p_mfem__TimeDependentAdjointOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__TimeDependentOperator[] = {{&_swigt__p_p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__Operator[] = {  {&_swigt__p_p_mfem__PyTimeDependentOperatorBase, _p_p_mfem__PyTimeDependentOperatorBaseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__PyOperatorBase, _p_p_mfem__PyOperatorBaseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Solver, _p_p_mfem__SolverTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__RectangularConstrainedOperator, _p_p_mfem__RectangularConstrainedOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ConstrainedOperator, _p_p_mfem__ConstrainedOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TripleProductOperator, _p_p_mfem__TripleProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__RAPOperator, _p_p_mfem__RAPOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ProductOperator, _p_p_mfem__ProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TransposeOperator, _p_p_mfem__TransposeOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ScaledOperator, _p_p_mfem__ScaledOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__IdentityOperator, _p_p_mfem__IdentityOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__SecondOrderTimeDependentOperator, _p_p_mfem__SecondOrderTimeDependentOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TimeDependentAdjointOperator, _p_p_mfem__TimeDependentAdjointOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Operator, 0, 0, 0},  {&_swigt__p_p_mfem__TimeDependentOperator, _p_p_mfem__TimeDependentOperatorTo_p_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__Solver[] = {  {&_swigt__p_p_mfem__Solver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__Vector[] = {  {&_swigt__p_p_mfem__Vector, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_PyMFEM__wFILE,
+  _swigc__p_bool,
   _swigc__p_char,
   _swigc__p_double,
   _swigc__p_int,
@@ -13306,6 +13417,22 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__TripleProductOperator,
   _swigc__p_mfem__Vector,
   _swigc__p_mfem__WBZAlphaSolver,
+  _swigc__p_p_mfem__ConstrainedOperator,
+  _swigc__p_p_mfem__IdentityOperator,
+  _swigc__p_p_mfem__Operator,
+  _swigc__p_p_mfem__ProductOperator,
+  _swigc__p_p_mfem__PyOperatorBase,
+  _swigc__p_p_mfem__PyTimeDependentOperatorBase,
+  _swigc__p_p_mfem__RAPOperator,
+  _swigc__p_p_mfem__RectangularConstrainedOperator,
+  _swigc__p_p_mfem__ScaledOperator,
+  _swigc__p_p_mfem__SecondOrderTimeDependentOperator,
+  _swigc__p_p_mfem__Solver,
+  _swigc__p_p_mfem__TimeDependentAdjointOperator,
+  _swigc__p_p_mfem__TimeDependentOperator,
+  _swigc__p_p_mfem__TransposeOperator,
+  _swigc__p_p_mfem__TripleProductOperator,
+  _swigc__p_p_mfem__Vector,
 };
 
 

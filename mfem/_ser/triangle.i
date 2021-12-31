@@ -1,7 +1,7 @@
 %module(package="mfem._ser") triangle
 %{
-#include  "mfem.hpp"
-#include "mesh/triangle.hpp"
+#include "mfem.hpp"
+#include "pyoperator.hpp"      
 #include "numpy/arrayobject.h"    
 %}
 

@@ -330,7 +330,7 @@ class BlockNonlinearForm(mfem._par.operators.Operator):
 
 
     def SetEssentialBC(self, bdr_attr_is_ess, rhs):
-        r"""SetEssentialBC(BlockNonlinearForm self, mfem::Array< mfem::Array< int > * > const & bdr_attr_is_ess, mfem::Array< mfem::Vector * > & rhs)"""
+        r"""SetEssentialBC(BlockNonlinearForm self, mfem::Array< mfem::Array< int > * > const & bdr_attr_is_ess, VectorPtrArray rhs)"""
         return _nonlinearform.BlockNonlinearForm_SetEssentialBC(self, bdr_attr_is_ess, rhs)
     SetEssentialBC = _swig_new_instance_method(_nonlinearform.BlockNonlinearForm_SetEssentialBC)
 

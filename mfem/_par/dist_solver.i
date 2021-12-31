@@ -1,9 +1,8 @@
 %module(package="mfem._par") dist_solver
 %{
-#include "config/config.hpp"      
-#include "fem/fem.hpp"
-#include "fem/coefficient.hpp"  
+#include "mfem.hpp"      
 #include "miniapps/shifted/dist_solver.hpp"
+#include "pyoperator.hpp"    
 #include "../common/pycoefficient.hpp"  
 #include "numpy/arrayobject.h"    
 %}

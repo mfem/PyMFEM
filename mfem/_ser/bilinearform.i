@@ -111,8 +111,20 @@ namespace mfem {
     %}
 } //end of namespace
 
+/* define BilinearFormPtrArray */
 %include "../common/deprecation.i"
 DEPRECATED_METHOD(mfem::BilinearForm::GetFES())
+
+/* define IntegrationPointArray and IntegrationRulePtrArray */
+%import "../common/array_listtuple_typemap.i"
+ARRAY_LISTTUPLE_INPUT_SWIGOBJ(mfem::BilinearForm *, 1)
+
+%import "../common/data_size_typemap.i"
+XXXPTR_SIZE_IN(mfem::BilinearForm **data_, int asize, mfem::BilinearForm *)
+
+%import "../common/array_instantiation_macro.i"
+IGNORE_ARRAY_METHODS(mfem::BilinearForm *)
+INSTANTIATE_ARRAY0(BilinearForm *, BilinearForm, 1)
 
 %include "fem/bilinearform.hpp"
 

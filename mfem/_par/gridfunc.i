@@ -7,9 +7,9 @@
   #include <cmath>
   #include <cstring>
   #include <ctime>
-  #include "fem/linearform.hpp"
-  #include "fem/gridfunc.hpp"
+  #include "mfem/mfem.hpp"  
   #include "../common/pycoefficient.hpp"
+  #include "pyoperator.hpp"    
   #include "numpy/arrayobject.h"
   #include "../common/io_stream.hpp"
   using namespace mfem;
@@ -61,7 +61,7 @@ def GetNodalValues(self, *args):
     else:
         return $action(self, *args)
 %}
-
+/*
 %typemap(in) const mfem::IntegrationRule *irs[]{
   if (PyList_Check($input)) {
     int size = PyList_Size($input);
@@ -81,11 +81,16 @@ def GetNodalValues(self, *args):
     return NULL;
   }
 }
+
 %typemap(typecheck) const mfem::IntegrationRule *irs[]{
    $1 = PyList_Check($input) ? 1 : 0;
 }
-
+*/
 %include "../common/exception.i"
+
+%include "../common/typemap_macros.i"
+LIST_TO_MFEMOBJ_POINTERARRAY_IN(mfem::IntegrationRule const *irs[],  mfem::IntegrationRule *, 0)
+
 %include "fem/gridfunc.hpp"
 
 namespace mfem{

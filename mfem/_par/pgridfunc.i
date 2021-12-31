@@ -10,12 +10,9 @@
 #include <cmath>
 #include <cstring>  
 #include <mpi.h>
+#include "mfem.hpp"
+#include "pyoperator.hpp"  
 #include "../common/io_stream.hpp"      
-#include  "config/config.hpp"
-#include "mesh/pmesh.hpp"  
-#include "fem/pgridfunc.hpp"
-#include "fem/pfespace.hpp"  
-#include "fem/linearform.hpp"  
 #include "../common/pycoefficient.hpp"  
 #include "numpy/arrayobject.h"
 %}
@@ -47,6 +44,7 @@ ISTREAM_TYPEMAP(std::istream&)
 
 %pointer_class(int, intp);
 
+/*
 %typemap(in) const mfem::IntegrationRule *irs[]{
   if (PyList_Check($input)) {
     int size = PyList_Size($input);
@@ -69,7 +67,7 @@ ISTREAM_TYPEMAP(std::istream&)
 %typemap(typecheck) const mfem::IntegrationRule *irs[]{
    $1 = PyList_Check($input) ? 1 : 0;
 }
-
+*/
 %rename(Assign) mfem::ParGridFunction::operator=;
 
 %newobject mfem::ParGridFunction::ParallelAssemble;
@@ -97,6 +95,8 @@ if (len(args) == 2 and isinstance(args[1], str) and
     return 
 %}
    
+%include "../common/typemap_macros.i"
+LIST_TO_MFEMOBJ_POINTERARRAY_IN(mfem::IntegrationRule const *irs[],  mfem::IntegrationRule *, 0)
 
 %include "fem/pgridfunc.hpp"
 

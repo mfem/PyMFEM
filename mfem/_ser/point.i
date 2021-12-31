@@ -4,7 +4,7 @@
 
 %{
 #include  "mfem.hpp"
-#include "mesh/point.hpp"
+#include "pyoperator.hpp"      
 #include "numpy/arrayobject.h"    
 %}
 

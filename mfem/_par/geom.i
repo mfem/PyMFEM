@@ -1,8 +1,8 @@
 %module(package="mfem._par") geom
 %{
-#include "mfem.hpp"  
-#include "fem/geom.hpp"
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
+#include "pyoperator.hpp"        
 #include "../common/io_stream.hpp"  
 %}
 

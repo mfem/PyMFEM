@@ -1,8 +1,7 @@
 %module(package="mfem._ser")  hybridization
 %{
-#include "fem/gridfunc.hpp"  
-#include "fem/linearform.hpp"
-#include "fem/hybridization.hpp"
+#include "mfem.hpp"  
+#include "pyoperator.hpp"        
 #include "numpy/arrayobject.h"
 #include "../common/pycoefficient.hpp"  
 %}

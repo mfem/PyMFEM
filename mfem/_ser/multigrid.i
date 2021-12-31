@@ -6,9 +6,7 @@
 %module(package="mfem._ser") multigrid
 %feature("autodoc", "1");
 %{
-#include "linalg/operator.hpp"
-#include "linalg/handle.hpp"
-#include "fem/multigrid.hpp"
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
 #include "../common/pycoefficient.hpp"  
@@ -23,12 +21,23 @@ import_array();
 %import "bilinearform.i"
 %import "fespacehierarchy.i"
 %import "../common/exception_director.i"
-%import "../common/object_array_typemap.i"
+//%import "../common/object_array_typemap.i"
+%include "../common/typemap_macros.i"
 
+LIST_TO_MFEMOBJ_ARRAY_IN0(const mfem::Array<mfem::Operator*>&,
+			  mfem::Operator*,
+			  1)
+LIST_TO_MFEMOBJ_ARRAY_IN0(const mfem::Array<mfem::Solver*>&,
+			  mfem::Solver*,
+			  1)
+LIST_TO_MFEMOBJ_ARRAY_IN0(const mfem::Array<bool>&,
+			  bool,
+			  1)
+ /*
 ObjectArrayInput(mfem::Solver *);
 ObjectArrayInput(mfem::Operator *);
 BoolArrayInput(bool);
-
+ */
 //%feature("director") mfem::PyGeometricMultigrid;
 
 %pythonprepend mfem::PyGeometricMultigrid::AppendBilinearForm %{

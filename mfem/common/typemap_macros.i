@@ -173,17 +173,18 @@
 //  This pointer array is NOT deleted if KEEP is true
 //  Otherwise deleted.
 //
-//  When KEEP is true
+//  When KEEP is 1
 //    reference to pointerarray is held by self to avoid GC
 //
-%define LIST_TO_MFEMOBJ_POINTERARRAY_IN(type_name, OBJTYPE, KEEP)
-%typemap(in) type_name (OBJTYPE  *tmp_ptrarray){
+%define LIST_TO_MFEMOBJ_POINTERARRAY_IN(type_name, OBJTYPE, KEEPLINK)
+%typemap(in) type_name (OBJTYPE  *tmp_ptrarray, bool allocated=false){
   //  List/Tuple -> OBJTYPE
   
   int res = 0;
   if (PyList_Check($input)) {
      int ll = PyList_Size($input);
-     $1 = new OBJTYPE [ll];     
+     $1 = new OBJTYPE [ll];
+     allocated = true;
      for (int i = 0; i < ll; i++) {
        OBJTYPE ttt;
        PyObject *s = PyList_GetItem($input,i);
@@ -191,14 +192,15 @@
 			     $descriptor(OBJTYPE),
 			     0);
        if (!SWIG_IsOK(res)) {
-         PyErr_SetString(PyExc_ValueError, "can not comvert to OBJTYPE");	 
+         PyErr_SetString(PyExc_ValueError, "can not convert a list/tuple item to OBJTYPE");	 
 	 return NULL;
        }	
        $1[i] = ttt;
      }
   } else if (PyTuple_Check($input)) {
      int ll = PyTuple_Size($input);
-     $1 = new OBJTYPE [ll];          
+     $1 = new OBJTYPE [ll];
+     allocated = true;     
      for (int i = 0; i < ll; i++) {
        OBJTYPE ttt;
        PyObject *s = PyTuple_GetItem($input,i);
@@ -206,36 +208,47 @@
 			     $descriptor(OBJTYPE),
 			     0);
        if (!SWIG_IsOK(res)) {
-         PyErr_SetString(PyExc_ValueError, "can not comvert to OBJTYPE");
+         PyErr_SetString(PyExc_ValueError, "can not convert a list/tuple item to OBJTYPE");	 
 	 return NULL;
        }	
        $1[i] = ttt;
      }
   } else {
-    PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
-    return NULL;
+      int res = SWIG_ConvertPtr($input, (void **) &tmp_ptrarray, $1_descriptor, SWIG_POINTER_NO_NULL);
+      if (SWIG_CheckState(res)){
+ 	 $1 = tmp_ptrarray;
+      } else {
+         PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple or OBJTYPE *[]");
+	 return NULL;
+      }
   }
 
   tmp_ptrarray = $1;
-  char ref_name[] = "_inputlist_$descriptor(OBJTYPE)";
-  PyObject *_ref_str = SWIG_Python_str_FromChar(ref_name);
-  PyObject_SetAttr($self, _ref_str, $input);
-  Py_DecRef(_ref_str);
+  #if KEEPLINK == 1
+     char ref_name[] = "_inputlist_$descriptor(OBJTYPE)_$argnum";
+     PyObject *_ref_str = SWIG_Python_str_FromChar(ref_name);
+     PyObject_SetAttr($self, _ref_str, $input);
+     Py_DecRef(_ref_str);
+  #endif
 }
 
 %typemap(freearg) type_name{
   if ($1 != 0){
-    if (KEEP) {
-      
+    #if KEEPLINK == 1      
       PyObject *ref = SWIG_NewPointerObj(SWIG_as_voidptr(tmp_ptrarray$argnum),
 					 $descriptor(OBJTYPE *),
 							 true);
-      PyObject *_ref_str = SWIG_Python_str_FromChar("_ptrarray_$descriptor(OBJTYPE)");
+      PyObject *_ref_str = SWIG_Python_str_FromChar("_ptrarray_$descriptor(OBJTYPE)_$argnum");
       PyObject_SetAttr($self, _ref_str, ref);
       Py_DecRef(_ref_str);
-    } else {
-       delete $1;      
-    }
+      if (allocated$argnum){
+      // delete $1;
+      }
+    #else
+      if (allocated$argnum){
+         delete $1;
+      }
+    #endif
   }
 }
 %typemap(typecheck, precedence=SWIG_TYPECHECK_POINTER) (type_name) {
@@ -244,6 +257,11 @@
       $1 = 1;
   }
   if (PyTuple_Check($input)){
+     $1 = 1;
+  }
+  OBJTYPE *ttt;
+  int res = SWIG_ConvertPtr($input, (void **) &ttt, $descriptor($input), SWIG_POINTER_NO_NULL);
+  if (SWIG_CheckState(res)){
      $1 = 1;
   }
 }
@@ -257,13 +275,14 @@
 //  This macor generates temporary mfem::Array<OBJTYPE>
 //  The Array is deleted using freearg.
 //
-%define LIST_TO_MFEMOBJ_ARRAY_IN(type_name, OBJTYPE)
-%typemap(in) type_name (){
+%define LIST_TO_MFEMOBJ_ARRAY_IN0(type_name, OBJTYPE, KEEPLINK)
+%typemap(in) type_name (mfem::Array<OBJTYPE>  *tmp_ptrarray, bool allocated=false){
   //  List/Tuple (=[OBJTYPE,OBJTYPE ...]) -> mfem:Array<OBJTYPE)
   int res = 0;
   if (PyList_Check($input)) {
      int ll = PyList_Size($input);
      $1 = new mfem::Array<OBJTYPE>(ll);
+     allocated = true;     
      for (int i = 0; i < ll; i++) {
        OBJTYPE ttt;
        PyObject *s = PyList_GetItem($input,i);
@@ -281,7 +300,8 @@
      }
   } else if (PyTuple_Check($input)) {
      int ll = PyTuple_Size($input);
-     $1 = new mfem::Array<OBJTYPE>(ll);     
+     $1 = new mfem::Array<OBJTYPE>(ll);
+     allocated = true;
      for (int i = 0; i < ll; i++) {
        OBJTYPE ttt;
        PyObject *s = PyTuple_GetItem($input,i);
@@ -298,14 +318,40 @@
        $1[0][i] = ttt;
      }
   } else {
-    PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
-    return NULL;
+      int res = SWIG_ConvertPtr($input, (void **) &tmp_ptrarray, $1_descriptor, SWIG_POINTER_NO_NULL);
+      if (SWIG_CheckState(res)){
+ 	 $1 = tmp_ptrarray;
+      } else {
+         PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple else or Array<OBJTYPE>");
+	 return NULL;
+      }
   }
+  tmp_ptrarray = $1;
+  #if KEEPLINK == 1
+     char ref_name[] = "_inputlist_$descriptor(OBJTYPE)_$argnum";
+     PyObject *_ref_str = SWIG_Python_str_FromChar(ref_name);
+     PyObject_SetAttr($self, _ref_str, $input);
+     Py_DecRef(_ref_str);
+  #endif
 }
   
 %typemap(freearg) type_name{
-  if ($1 != 0){
-    delete $1;
+  if ($1 != 0){  
+    #if KEEPLINK == 1      
+      PyObject *ref = SWIG_NewPointerObj(SWIG_as_voidptr(tmp_ptrarray$argnum),
+					 $descriptor(OBJTYPE *),
+							 true);
+      PyObject *_ref_str = SWIG_Python_str_FromChar("_ptrarray_$descriptor(OBJTYPE)_$argnum");
+      PyObject_SetAttr($self, _ref_str, ref);
+      Py_DecRef(_ref_str);
+      if (allocated$argnum){
+      // delete $1;
+      }
+    #else
+      if (allocated$argnum){
+         delete $1;
+      }
+    #endif
   }
 }
 %typemap(typecheck, precedence=SWIG_TYPECHECK_POINTER) (type_name) {
@@ -316,6 +362,15 @@
   if (PyTuple_Check($input)){
      $1 = 1;
   }
+  OBJTYPE *ttt;
+  int res = SWIG_ConvertPtr($input, (void **) &ttt, $descriptor($input), SWIG_POINTER_NO_NULL);
+  if (SWIG_CheckState(res)){
+     $1 = 1;
+  }
+
 }
 %enddef
 
+%define LIST_TO_MFEMOBJ_ARRAY_IN(type_name, OBJTYPE)
+LIST_TO_MFEMOBJ_ARRAY_IN0(type_name, OBJTYPE, 0)
+%enddef

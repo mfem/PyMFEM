@@ -1,8 +1,8 @@
 %module(package="mfem._par") estimators
 %{
-#include "config/config.hpp"  
-#include "numpy/arrayobject.h"
-#include "fem/estimators.hpp"  
+#include "mfem.hpp"
+#include "numpy/arrayobject.h"  
+#include "pyoperator.hpp"
 #include "../common/pycoefficient.hpp"  
 %}
 

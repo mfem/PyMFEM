@@ -3,10 +3,9 @@
 
 %{
 #include <iostream>
+#include  "mfem.hpp"
+#include "pyoperator.hpp"   
 #include "../common/io_stream.hpp"      
-#include "mesh/mesh_headers.hpp"
-#include "fem/gridfunc.hpp"  
-#include "general/socketstream.hpp"
 #include "numpy/arrayobject.h"
 #include "../common/pycoefficient.hpp"      
 %}

@@ -171,12 +171,20 @@ def GetEdgeInteriorDofs(self, i):
         self.mesh = args[0]
         self.fec = args[1]
       
-%}  
-%include "fem/fespace.hpp"
+%}
+
+/* define FiniteElementSpacePtrArray */
+%import "../common/array_listtuple_typemap.i"
+ARRAY_LISTTUPLE_INPUT_SWIGOBJ(mfem::FiniteElementSpace *, 1)
+
+%import "../common/data_size_typemap.i"
+XXXPTR_SIZE_IN(mfem::FiniteElementSpace **data_, int asize, mfem::FiniteElementSpace *)
 
 %import "../common/array_instantiation_macro.i"
-IGNORE_OBJ_METHODS(FiniteElementSpace*)
-INSTANTIATE_ARRAY0(FiniteElementSpace*, FiniteElementSpacePtr)
+IGNORE_ARRAY_METHODS(mfem::FiniteElementSpace *)
+INSTANTIATE_ARRAY0(FiniteElementSpace *, FiniteElementSpace, 1)
+
+%include "fem/fespace.hpp"
 
 /*
 fem/fespace.hpp:   void Save(std::ostream &out) const;

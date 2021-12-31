@@ -215,7 +215,7 @@ class ParBlockNonlinearForm(mfem._par.nonlinearform.BlockNonlinearForm):
     SetParSpaces = _swig_new_instance_method(_pnonlinearform.ParBlockNonlinearForm_SetParSpaces)
 
     def SetEssentialBC(self, bdr_attr_is_ess, rhs):
-        r"""SetEssentialBC(ParBlockNonlinearForm self, mfem::Array< mfem::Array< int > * > const & bdr_attr_is_ess, mfem::Array< mfem::Vector * > & rhs)"""
+        r"""SetEssentialBC(ParBlockNonlinearForm self, mfem::Array< mfem::Array< int > * > const & bdr_attr_is_ess, VectorPtrArray rhs)"""
         return _pnonlinearform.ParBlockNonlinearForm_SetEssentialBC(self, bdr_attr_is_ess, rhs)
     SetEssentialBC = _swig_new_instance_method(_pnonlinearform.ParBlockNonlinearForm_SetEssentialBC)
 

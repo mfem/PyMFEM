@@ -1,7 +1,7 @@
 %module(package="mfem._ser") datacollection
 %{
-#include  "mfem.hpp"
-#include "general/globals.hpp"
+#include "mfem.hpp"
+#include "pyoperator.hpp"      
 #include "numpy/arrayobject.h"
 #include "../common/pycoefficient.hpp"    
 %}

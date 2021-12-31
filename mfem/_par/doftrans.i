@@ -1,7 +1,7 @@
 %module(package="mfem._par") doftrans
 %{
 #include  "mfem.hpp"
-#include "fem/doftrans.hpp"
+#include "pyoperator.hpp"      
 #include "numpy/arrayobject.h"    
 %}
 

@@ -2,6 +2,18 @@
 2021 12.xx
         * Improved array interface. ex: Array<T>::__getitem__ accespt slice to return subarray
 	* gslib support is included
+	* ex30.py, ex30p.py were added. CoefficientRefiner::SetIntRule accepts tuple/list
+	* ex25 is added. It demonstrates how to use numba JIT
+	* Fixed IntegrationPonitArray, IntegrationRulePtrArray. They now returns a proper proxy object
+	  when accessed using index
+	      ex: IntegrationPonitArray[0] -> return IntegrationPoint
+                  IntegrationPonitArray[0:3] -> return IntegrationPointArray (this subarray does not own data)
+		  d = IntegrationPonitArray.GetData() -> return IntegrationPoint*
+		  IntegrationPonitArray((d, num)) -> A constructore borrowing data.
+	* Additional Array<T> template instatiation Array<Vector *> Array<FiniteElementSpace *> Array<bool>	  
+	* const IntegrationRule *irs[] in gridfunc.hpp, pgridfunc.hpp, complex_fem.hpp, coefficient.hpp
+	  are wrapped to accept tuple/list of IntegrationRule (see ex25.py)
+	* Warning about old numpy interface (NPY_1_7..... ) is addressed.
 	
 2021 10.xx
         * Fixed an issue due to new fe_xxx.hp
@@ -26,7 +38,7 @@
 2021 08.03
         * added constraints wrapper
 	* added ex28 and a few other serial examples
-	* added director to SecondOrderTimeDependentOperator
+	* added director to SecondOrdeorTimeDependentOperator
 	* added ex23
 
 2021 08.02

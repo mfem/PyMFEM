@@ -25,5 +25,8 @@ import_array();
 %import "operators.i"
 %import "sparsemat.i"
 
+%include "../common/typemap_macros.i"
+LIST_TO_MFEMOBJ_POINTERARRAY_IN(mfem::IntegrationRule const *irs[],  mfem::IntegrationRule *, 0)
+
 %include "../common/complex_fem_ext.i"
 %include "fem/complex_fem.hpp"

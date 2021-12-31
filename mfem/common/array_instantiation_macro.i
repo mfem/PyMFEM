@@ -1,7 +1,12 @@
-%define INSTANTIATE_ARRAY0(XXX, YYY)
+%define INSTANTIATE_ARRAY0(XXX, YYY, USEPTR)
+#if USEPTR == 1
+%template(##YYY##Ptr##Array) mfem::Array<mfem::XXX>;
+#else
 %template(##YYY##Array) mfem::Array<mfem::XXX>;
-%extend mfem::Array<mfem::XXX> { 
-  PyObject * __getitem__(PyObject* param) {
+#endif
+%extend mfem::Array<mfem::XXX> {
+  
+PyObject * __getitem__(PyObject* param) {
     int len = self->Size();    
     if (PySlice_Check(param)) {
         long start = 0, stop = 0, step = 0, slicelength = 0;
@@ -34,19 +39,28 @@
            PyErr_SetString(PyExc_ValueError, "Argument must be either int or slice");
             return NULL; 	
         }
-        int own =  (self -> OwnsData()) ? 0 : 1;
-        if (idx >= 0){
-          return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](idx))), $descriptor(mfem::XXX *), own);
+        int own =  0;
+        swig_type_info *ty = $descriptor(const mfem::YYY *);	
+        #if USEPTR == 1
+        if (idx >= 0){ 
+          return SWIG_NewPointerObj(SWIG_as_voidptr((self->operator[](idx))), ty, own);
         } else {
-	  return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](len+idx))), $descriptor(mfem::XXX *), own);
+	  return SWIG_NewPointerObj(SWIG_as_voidptr((self->operator[](len+idx))), ty, own);
 	}
+        #else
+        if (idx >= 0){
+          return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](idx))), ty, own);
+        } else {
+	  return SWIG_NewPointerObj(SWIG_as_voidptr(&(self->operator[](len+idx))), ty, own);
+	}
+        #endif	
     }
   }
  };
 %enddef
 
 %define INSTANTIATE_ARRAY(XXX)
-INSTANTIATE_ARRAY0(XXX, XXX)  
+INSTANTIATE_ARRAY0(XXX, XXX, 0)  
 %enddef
 
 %define INSTANTIATE_ARRAY_INT
@@ -67,7 +81,7 @@ INSTANTIATE_ARRAY0(XXX, XXX)
         //%#endif
 
 	if (check == -1) {
-            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<T> failed.");
+            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<int> failed.");
             return NULL; 
 	}
 	if (step == 1) {
@@ -75,7 +89,7 @@ INSTANTIATE_ARRAY0(XXX, XXX)
             vec = new mfem::Array<int>(self->GetData() +  start, slicelength);
             return SWIG_NewPointerObj(SWIG_as_voidptr(vec), $descriptor(mfem::Array<int> *), 1);  
 	} else {
-            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<T> with stride>1 not supported.");
+            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<int> with stride>1 not supported.");
 	    return NULL;
 	}
     } else {
@@ -113,7 +127,7 @@ INSTANTIATE_ARRAY0(XXX, XXX)
 	//%#endif
 
 	if (check == -1) {
-            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<T> failed.");
+            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<double> failed.");
             return NULL; 
 	}
 	if (step == 1) {
@@ -121,7 +135,7 @@ INSTANTIATE_ARRAY0(XXX, XXX)
             vec = new mfem::Array<double>(self->GetData() +  start, slicelength);
             return SWIG_NewPointerObj(SWIG_as_voidptr(vec), $descriptor(mfem::Array<double> *), 1);  
 	} else {
-            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<T> with stride>1 not supported.");
+            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<double> with stride>1 not supported.");
 	    return NULL;
 	}
     } else {
@@ -140,21 +154,77 @@ INSTANTIATE_ARRAY0(XXX, XXX)
   }
  };
 %enddef
+  
+%define INSTANTIATE_ARRAY_BOOL
+%template(boolArray) mfem::Array<bool>;
+%extend mfem::Array<bool> { 
+  PyObject * __getitem__(PyObject* param) {
+    int len = self->Size();    
+    if (PySlice_Check(param)) {
+        long start = 0, stop = 0, step = 0, slicelength = 0;
+        int check;
 
-%define IGNORE_OBJ_METHODS(XXX)
-%ignore mfem::Array<mfem::XXX>::Union;
-%ignore mfem::Array<mfem::XXX>::Find;
-%ignore mfem::Array<mfem::XXX>::FindSorted;
-%ignore mfem::Array<mfem::XXX>::Sort;
-%ignore mfem::Array<mfem::XXX>::DeleteFirst;
-%ignore mfem::Array<mfem::XXX>::Unique;
-%ignore mfem::Array<mfem::XXX>::PartialSum;
-%ignore mfem::Array<mfem::XXX>::Sum;
-%ignore mfem::Array<mfem::XXX>::IsSorted;
-%ignore mfem::Array<mfem::XXX>::Save;
-%ignore mfem::Array<mfem::XXX>::Max;
-%ignore mfem::Array<mfem::XXX>::Min;
-%ignore mfem::Array<mfem::XXX>::Print;
-%ignore mfem::Array<mfem::XXX>::Load;
+	//%#ifdef TARGET_PY3
+   	check = PySlice_GetIndicesEx(param, len, &start, &stop, &step,
+				     &slicelength);
+        //%#else
+   	//check = PySlice_GetIndicesEx((PySliceObject*)param, len, &start, &stop, &step,
+	//			     &slicelength);
+	//%#endif
+
+	if (check == -1) {
+            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<bool> failed.");
+            return NULL; 
+	}
+	if (step == 1) {
+            mfem::Array<bool> *vec;
+            vec = new mfem::Array<bool>(self->GetData() +  start, slicelength);
+            return SWIG_NewPointerObj(SWIG_as_voidptr(vec), $descriptor(mfem::Array<bool> *), 1);  
+	} else {
+            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<bool> with stride>1 not supported.");
+	    return NULL;
+	}
+    } else {
+        PyErr_Clear();
+        long idx = PyInt_AsLong(param);
+        if (PyErr_Occurred()) {
+           PyErr_SetString(PyExc_ValueError, "Argument must be either int or slice");
+            return NULL; 	
+        }
+        if (idx >= 0){
+	  if (self->operator[](idx)){
+	    return Py_True;
+	  } else {
+	    return Py_False;	    
+	  }
+        } else {
+	  if (self->operator[](len+idx)){
+	    return Py_True;
+	  } else {
+	    return Py_False;	    
+	  }
+	}
+    }
+  }
+ };
+%enddef
+
+%define IGNORE_ARRAY_METHODS(XXX)
+%ignore mfem::Array<XXX>::Union;
+%ignore mfem::Array<XXX>::Find;
+%ignore mfem::Array<XXX>::FindSorted;
+%ignore mfem::Array<XXX>::Sort;
+%ignore mfem::Array<XXX>::DeleteFirst;
+%ignore mfem::Array<XXX>::Unique;
+%ignore mfem::Array<XXX>::PartialSum;
+%ignore mfem::Array<XXX>::Sum;
+%ignore mfem::Array<XXX>::IsSorted;
+%ignore mfem::Array<XXX>::Save;
+%ignore mfem::Array<XXX>::Max;
+%ignore mfem::Array<XXX>::Min;
+%ignore mfem::Array<XXX>::Print;
+%ignore mfem::Array<XXX>::PrintGZ;
+%ignore mfem::Array<XXX>::SaveGZ;
+%ignore mfem::Array<XXX>::Load;
 %enddef
 

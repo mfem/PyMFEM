@@ -8,9 +8,7 @@
 %}
 
 %{
-  #include "fem/linearform.hpp"
-  #include "fem/gridfunc.hpp"
-  #include "fem/intrules.hpp"
+
   #include <fstream>  
   #include <iostream>
   #include <sstream>
@@ -18,7 +16,9 @@
   #include <cmath>
   #include <cstring>
   #include <ctime>
+  #include "mfem/mfem.hpp"  
   #include "../common/pycoefficient.hpp"
+  #include "pyoperator.hpp"  
   #include "numpy/arrayobject.h"
   #include "../common/io_stream.hpp"
   using namespace mfem;  
@@ -50,7 +50,7 @@ import_array();
 OSTREAM_TYPEMAP(std::ostream&)
 ISTREAM_TYPEMAP(std::istream&)
 
-%rename(Assign) mfem::GridFunction::operator=;
+ //%rename(Assign) mfem::GridFunction::operator=;
 
 %feature("shadow") mfem::GridFunction::GetNodalValues%{
 def GetNodalValues(self, *args):
@@ -68,31 +68,10 @@ def GetNodalValues(self, *args):
         return $action(self, *args)
 %}
 
-
-%typemap(in) const mfem::IntegrationRule *irs[]{
-  if (PyList_Check($input)) {
-    int size = PyList_Size($input);
-    int i = 0;
-    $1 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
-    for (i = 0; i < size; i++) {
-       PyObject *o = PyList_GetItem($input,i);
-       void *temp;       
-       if (SWIG_ConvertPtr(o, &temp,
-	   $descriptor(mfem::IntegrationRule *),SWIG_POINTER_EXCEPTION) == -1){
-           return NULL;
-       }
-       $1[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
-     }
-  } else {
-    PyErr_SetString(PyExc_TypeError,"not a list");
-    return NULL;
-  }
-}
-%typemap(typecheck) const mfem::IntegrationRule *irs[]{
-   $1 = PyList_Check($input) ? 1 : 0;
-}
-
 %include "../common/exception.i"
+
+%include "../common/typemap_macros.i"
+LIST_TO_MFEMOBJ_POINTERARRAY_IN(mfem::IntegrationRule const *irs[],  mfem::IntegrationRule *, 0)
 
 %include "fem/gridfunc.hpp"
 

@@ -13,15 +13,6 @@
 %feature("autodoc", "1");
 /*%module  coefficient*/
 %{
-#include "config/config.hpp"      
-#include "fem/fem.hpp"
-#include "fem/fe_coll.hpp"
-#include "fem/fespace.hpp"
-#include "fem/eltrans.hpp"
-#include "fem/intrules.hpp"
-#include "linalg/vector.hpp"
-#include "fem/coefficient.hpp"
-#include "linalg/densemat.hpp"    
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -29,6 +20,8 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
+#include "mfem.hpp"  
+#include "pyoperator.hpp"    
 #include "../common/pycoefficient.hpp"
 #include "numpy/arrayobject.h"
 %}
@@ -125,31 +118,8 @@ namespace mfem {
     }
 }
 
-%typemap(in) const mfem::IntegrationRule *irs[]{
-  if (PyList_Check($input)) {
-    int size = PyList_Size($input);
-    //std::cout << std::to_string(size) << "\n";
-    int i = 0;
-    $1 = (mfem::IntegrationRule **) malloc((size+1)*sizeof(mfem::IntegrationRule *));
-    for (i = 0; i < size; i++) {
-       //std::cout << std::to_string(i) << "\n";      
-       PyObject *o = PyList_GetItem($input,i);
-       void *temp;
-       if (SWIG_ConvertPtr(o, &temp,
-	   $descriptor(mfem::IntegrationRule *),SWIG_POINTER_EXCEPTION) == -1){
-   	   //std::cout << "Failed to pointer conversion" << "\n";      	 
-           return NULL;
-       }
-       $1[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);
-     }
-  } else {
-    PyErr_SetString(PyExc_TypeError,"not a list");
-    return NULL;
-  }
-}
-%typemap(typecheck) const mfem::IntegrationRule *irs[]{
-   $1 = PyList_Check($input) ? 1 : 0;
-}
+%include "../common/typemap_macros.i"
+LIST_TO_MFEMOBJ_POINTERARRAY_IN(mfem::IntegrationRule const *irs[],  mfem::IntegrationRule *, 0)
 
 %include "../../headers/coefficient.hpp"
 %include "../common/numba_coefficient.i"

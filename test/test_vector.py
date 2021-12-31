@@ -26,7 +26,11 @@ def run_test():
     a[-15:].Print_HYPRE()    
 
     a.Print("vector.dat")
-    a.Print_HYPRE("vector_hypre.dat")    
+    a.Print_HYPRE("vector_hypre.dat")
+
+
+    x = mfem.VectorPtrArray([a]*3)
+    x[2].Print()
     
 if __name__=='__main__':
     run_test()

@@ -209,10 +209,10 @@ def run(order=1,
 
     if solver.GetConverged():
         print("MINRES converged in " + str(solver.GetNumIterations()) +
-              " iterations with a residual norm of " + str(solver.GetFinalNorm()))
+              " iterations with a residual norm of " + "{:g}".format(solver.GetFinalNorm()))
     else:
         print("MINRES did not converge in " + str(solver.GetNumIterations()) +
-              " iterations. Residual norm is " + str(solver.GetFinalNorm()))
+              " iterations. Residual norm is " + "{:g}".format(solver.GetFinalNorm()))
     print("MINRES solver took " + str(solve_time) + "s.")
 
     u = mfem.GridFunction()
@@ -230,8 +230,8 @@ def run(order=1,
     err_u = u.ComputeL2Error(ucoeff, irs)
     err_p = p.ComputeL2Error(pcoeff, irs)
 
-    print("|| u_h - u_ex || / || u_ex || = " + str(err_u / norm_u))
-    print("|| p_h - p_ex || / || p_ex || = " + str(err_p / norm_p))
+    print("|| u_h - u_ex || / || u_ex || = " + "{:g}".format(err_u / norm_u))
+    print("|| p_h - p_ex || / || p_ex || = " + "{:g}".format(err_p / norm_p))
 
     mesh.Print("ex5.mesh", 8)
     u.Save("sol_u.gf", 8)

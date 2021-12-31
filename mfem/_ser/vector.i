@@ -160,6 +160,17 @@ void subtract_vector(const double a, const mfem::Vector &x,
 }
 %}
 
+/* define VectorPtrArray */
+%import "../common/array_listtuple_typemap.i"
+ARRAY_LISTTUPLE_INPUT_SWIGOBJ(mfem::Vector *, 1)
+
+%import "../common/data_size_typemap.i"
+XXXPTR_SIZE_IN(mfem::Vector **data_, int asize, mfem::Vector *)
+
+%import "../common/array_instantiation_macro.i"
+IGNORE_ARRAY_METHODS(mfem::Vector *)
+INSTANTIATE_ARRAY0(Vector *, Vector, 1)
+
 %include "linalg/vector.hpp"
 
 %extend mfem::Vector {

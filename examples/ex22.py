@@ -443,8 +443,7 @@ def run(mesh_file="",
             oss = "Harmonic Solution (t = " + str(t) + " T)"
             dd = (cos(2.0 * pi * t)*u.real().GetDataArray() +
                   sin(2.0 * pi * t)*u.imag().GetDataArray())
-            # we can not load numpy directly...(sorry)
-            u_t.Assign(mfem.Vector(dd))
+            u_t.Assign(dd)
             sol_sock << "solution\n" << mesh << u_t
             sol_sock << "window_title '" << oss << "'"
             sol_sock.flush()

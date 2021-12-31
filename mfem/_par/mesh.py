@@ -1508,7 +1508,7 @@ class Mesh(object):
     def KnotInsert(self, *args):
         r"""
         KnotInsert(Mesh self, mfem::Array< mfem::KnotVector * > & kv)
-        KnotInsert(Mesh self, mfem::Array< mfem::Vector * > & kv)
+        KnotInsert(Mesh self, VectorPtrArray kv)
         """
         return _mesh.Mesh_KnotInsert(self, *args)
     KnotInsert = _swig_new_instance_method(_mesh.Mesh_KnotInsert)

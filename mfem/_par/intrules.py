@@ -245,7 +245,7 @@ class IntegrationPointArray(object):
         __init__(IntegrationPointArray self, mfem::MemoryType mt) -> IntegrationPointArray
         __init__(IntegrationPointArray self, int asize) -> IntegrationPointArray
         __init__(IntegrationPointArray self, int asize, mfem::MemoryType mt) -> IntegrationPointArray
-        __init__(IntegrationPointArray self, IntegrationPoint data_, int asize) -> IntegrationPointArray
+        __init__(IntegrationPointArray self, IntegrationPoint data_) -> IntegrationPointArray
         __init__(IntegrationPointArray self, IntegrationPointArray src) -> IntegrationPointArray
         __init__(IntegrationPointArray self, void * List_or_Tuple) -> IntegrationPointArray
         """
@@ -299,6 +299,240 @@ class IntegrationPointArray(object):
 
 # Register IntegrationPointArray in _intrules:
 _intrules.IntegrationPointArray_swigregister(IntegrationPointArray)
+
+class IntegrationRulePtrArray(object):
+    r"""Proxy of C++ mfem::Array< mfem::IntegrationRule * > class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _intrules.delete_IntegrationRulePtrArray
+
+    def GetData(self, *args):
+        r"""
+        GetData(IntegrationRulePtrArray self) -> IntegrationRule
+        GetData(IntegrationRulePtrArray self) -> mfem::IntegrationRule *const *
+        """
+        return _intrules.IntegrationRulePtrArray_GetData(self, *args)
+    GetData = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_GetData)
+
+    def GetMemory(self, *args):
+        r"""
+        GetMemory(IntegrationRulePtrArray self) -> mfem::Memory< mfem::IntegrationRule * >
+        GetMemory(IntegrationRulePtrArray self) -> mfem::Memory< mfem::IntegrationRule * > const &
+        """
+        return _intrules.IntegrationRulePtrArray_GetMemory(self, *args)
+    GetMemory = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_GetMemory)
+
+    def UseDevice(self):
+        r"""UseDevice(IntegrationRulePtrArray self) -> bool"""
+        return _intrules.IntegrationRulePtrArray_UseDevice(self)
+    UseDevice = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_UseDevice)
+
+    def OwnsData(self):
+        r"""OwnsData(IntegrationRulePtrArray self) -> bool"""
+        return _intrules.IntegrationRulePtrArray_OwnsData(self)
+    OwnsData = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_OwnsData)
+
+    def StealData(self, p):
+        r"""StealData(IntegrationRulePtrArray self, mfem::IntegrationRule *** p)"""
+        return _intrules.IntegrationRulePtrArray_StealData(self, p)
+    StealData = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_StealData)
+
+    def LoseData(self):
+        r"""LoseData(IntegrationRulePtrArray self)"""
+        return _intrules.IntegrationRulePtrArray_LoseData(self)
+    LoseData = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_LoseData)
+
+    def MakeDataOwner(self):
+        r"""MakeDataOwner(IntegrationRulePtrArray self)"""
+        return _intrules.IntegrationRulePtrArray_MakeDataOwner(self)
+    MakeDataOwner = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_MakeDataOwner)
+
+    def Size(self):
+        r"""Size(IntegrationRulePtrArray self) -> int"""
+        return _intrules.IntegrationRulePtrArray_Size(self)
+    Size = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_Size)
+
+    def SetSize(self, *args):
+        r"""
+        SetSize(IntegrationRulePtrArray self, int nsize)
+        SetSize(IntegrationRulePtrArray self, int nsize, IntegrationRule initval)
+        SetSize(IntegrationRulePtrArray self, int nsize, mfem::MemoryType mt)
+        """
+        return _intrules.IntegrationRulePtrArray_SetSize(self, *args)
+    SetSize = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_SetSize)
+
+    def Capacity(self):
+        r"""Capacity(IntegrationRulePtrArray self) -> int"""
+        return _intrules.IntegrationRulePtrArray_Capacity(self)
+    Capacity = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_Capacity)
+
+    def Reserve(self, capacity):
+        r"""Reserve(IntegrationRulePtrArray self, int capacity)"""
+        return _intrules.IntegrationRulePtrArray_Reserve(self, capacity)
+    Reserve = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_Reserve)
+
+    def Append(self, *args):
+        r"""
+        Append(IntegrationRulePtrArray self, IntegrationRule el) -> int
+        Append(IntegrationRulePtrArray self, mfem::IntegrationRule *const * els, int nels) -> int
+        Append(IntegrationRulePtrArray self, IntegrationRulePtrArray els) -> int
+        """
+        return _intrules.IntegrationRulePtrArray_Append(self, *args)
+    Append = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_Append)
+
+    def Prepend(self, el):
+        r"""Prepend(IntegrationRulePtrArray self, IntegrationRule el) -> int"""
+        return _intrules.IntegrationRulePtrArray_Prepend(self, el)
+    Prepend = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_Prepend)
+
+    def Last(self, *args):
+        r"""
+        Last(IntegrationRulePtrArray self) -> IntegrationRule
+        Last(IntegrationRulePtrArray self) -> IntegrationRule
+        """
+        return _intrules.IntegrationRulePtrArray_Last(self, *args)
+    Last = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_Last)
+
+    def DeleteLast(self):
+        r"""DeleteLast(IntegrationRulePtrArray self)"""
+        return _intrules.IntegrationRulePtrArray_DeleteLast(self)
+    DeleteLast = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_DeleteLast)
+
+    def DeleteAll(self):
+        r"""DeleteAll(IntegrationRulePtrArray self)"""
+        return _intrules.IntegrationRulePtrArray_DeleteAll(self)
+    DeleteAll = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_DeleteAll)
+
+    def Copy(self, copy):
+        r"""Copy(IntegrationRulePtrArray self, IntegrationRulePtrArray copy)"""
+        return _intrules.IntegrationRulePtrArray_Copy(self, copy)
+    Copy = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_Copy)
+
+    def MakeRef(self, *args):
+        r"""
+        MakeRef(IntegrationRulePtrArray self, mfem::IntegrationRule ** arg2, int arg3)
+        MakeRef(IntegrationRulePtrArray self, IntegrationRulePtrArray master)
+        """
+        return _intrules.IntegrationRulePtrArray_MakeRef(self, *args)
+    MakeRef = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_MakeRef)
+
+    def GetSubArray(self, offset, sa_size, sa):
+        r"""GetSubArray(IntegrationRulePtrArray self, int offset, int sa_size, IntegrationRulePtrArray sa)"""
+        return _intrules.IntegrationRulePtrArray_GetSubArray(self, offset, sa_size, sa)
+    GetSubArray = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_GetSubArray)
+
+    def begin(self, *args):
+        r"""
+        begin(IntegrationRulePtrArray self) -> IntegrationRule
+        begin(IntegrationRulePtrArray self) -> mfem::IntegrationRule *const *
+        """
+        return _intrules.IntegrationRulePtrArray_begin(self, *args)
+    begin = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_begin)
+
+    def end(self, *args):
+        r"""
+        end(IntegrationRulePtrArray self) -> IntegrationRule
+        end(IntegrationRulePtrArray self) -> mfem::IntegrationRule *const *
+        """
+        return _intrules.IntegrationRulePtrArray_end(self, *args)
+    end = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_end)
+
+    def MemoryUsage(self):
+        r"""MemoryUsage(IntegrationRulePtrArray self) -> long"""
+        return _intrules.IntegrationRulePtrArray_MemoryUsage(self)
+    MemoryUsage = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_MemoryUsage)
+
+    def Read(self, on_dev=True):
+        r"""Read(IntegrationRulePtrArray self, bool on_dev=True) -> mfem::IntegrationRule *const *"""
+        return _intrules.IntegrationRulePtrArray_Read(self, on_dev)
+    Read = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_Read)
+
+    def HostRead(self):
+        r"""HostRead(IntegrationRulePtrArray self) -> mfem::IntegrationRule *const *"""
+        return _intrules.IntegrationRulePtrArray_HostRead(self)
+    HostRead = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_HostRead)
+
+    def Write(self, on_dev=True):
+        r"""Write(IntegrationRulePtrArray self, bool on_dev=True) -> mfem::IntegrationRule **"""
+        return _intrules.IntegrationRulePtrArray_Write(self, on_dev)
+    Write = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_Write)
+
+    def HostWrite(self):
+        r"""HostWrite(IntegrationRulePtrArray self) -> mfem::IntegrationRule **"""
+        return _intrules.IntegrationRulePtrArray_HostWrite(self)
+    HostWrite = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_HostWrite)
+
+    def ReadWrite(self, on_dev=True):
+        r"""ReadWrite(IntegrationRulePtrArray self, bool on_dev=True) -> mfem::IntegrationRule **"""
+        return _intrules.IntegrationRulePtrArray_ReadWrite(self, on_dev)
+    ReadWrite = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_ReadWrite)
+
+    def HostReadWrite(self):
+        r"""HostReadWrite(IntegrationRulePtrArray self) -> mfem::IntegrationRule **"""
+        return _intrules.IntegrationRulePtrArray_HostReadWrite(self)
+    HostReadWrite = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_HostReadWrite)
+
+    def __init__(self, *args):
+        r"""
+        __init__(IntegrationRulePtrArray self) -> IntegrationRulePtrArray
+        __init__(IntegrationRulePtrArray self, mfem::MemoryType mt) -> IntegrationRulePtrArray
+        __init__(IntegrationRulePtrArray self, int asize) -> IntegrationRulePtrArray
+        __init__(IntegrationRulePtrArray self, int asize, mfem::MemoryType mt) -> IntegrationRulePtrArray
+        __init__(IntegrationRulePtrArray self, mfem::IntegrationRule ** data_) -> IntegrationRulePtrArray
+        __init__(IntegrationRulePtrArray self, IntegrationRulePtrArray src) -> IntegrationRulePtrArray
+        __init__(IntegrationRulePtrArray self, void * List_or_Tuple) -> IntegrationRulePtrArray
+        """
+        _intrules.IntegrationRulePtrArray_swiginit(self, _intrules.new_IntegrationRulePtrArray(*args))
+
+    def __setitem__(self, i, v):
+        r"""__setitem__(IntegrationRulePtrArray self, int i, IntegrationRule v)"""
+
+        i = int(i)
+
+
+        return _intrules.IntegrationRulePtrArray___setitem__(self, i, v)
+
+
+    def Assign(self, *args):
+        r"""
+        Assign(IntegrationRulePtrArray self, mfem::IntegrationRule *const * arg2)
+        Assign(IntegrationRulePtrArray self, IntegrationRule a)
+        """
+        return _intrules.IntegrationRulePtrArray_Assign(self, *args)
+    Assign = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_Assign)
+
+    def ToList(self):
+        return [self[i] for i in range(self.Size())]
+
+
+
+    def __iter__(self):
+        class iter_array:
+            def __init__(self, obj):
+                self.obj = obj
+                self.idx = 0
+                self.size = obj.Size()
+            def __iter__(self):
+                self.idx = 0
+            def __next__(self):
+                if self.idx < self.size:
+                    res = self.obj[self.idx]
+                    self.idx += 1
+                    return res
+                else:
+                    raise StopIteration
+        return iter_array(self)
+
+
+
+    def __getitem__(self, param):
+        r"""__getitem__(IntegrationRulePtrArray self, PyObject * param) -> PyObject *"""
+        return _intrules.IntegrationRulePtrArray___getitem__(self, param)
+    __getitem__ = _swig_new_instance_method(_intrules.IntegrationRulePtrArray___getitem__)
+
+# Register IntegrationRulePtrArray in _intrules:
+_intrules.IntegrationRulePtrArray_swigregister(IntegrationRulePtrArray)
 
 class IntegrationPoint(object):
     r"""Proxy of C++ mfem::IntegrationPoint class."""

@@ -107,6 +107,240 @@ import mfem._ser.vtk
 import mfem._ser.doftrans
 import mfem._ser.handle
 import mfem._ser.restriction
+class BilinearFormPtrArray(object):
+    r"""Proxy of C++ mfem::Array< mfem::BilinearForm * > class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _bilinearform.delete_BilinearFormPtrArray
+
+    def GetData(self, *args):
+        r"""
+        GetData(BilinearFormPtrArray self) -> BilinearForm
+        GetData(BilinearFormPtrArray self) -> mfem::BilinearForm *const *
+        """
+        return _bilinearform.BilinearFormPtrArray_GetData(self, *args)
+    GetData = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_GetData)
+
+    def GetMemory(self, *args):
+        r"""
+        GetMemory(BilinearFormPtrArray self) -> mfem::Memory< mfem::BilinearForm * >
+        GetMemory(BilinearFormPtrArray self) -> mfem::Memory< mfem::BilinearForm * > const &
+        """
+        return _bilinearform.BilinearFormPtrArray_GetMemory(self, *args)
+    GetMemory = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_GetMemory)
+
+    def UseDevice(self):
+        r"""UseDevice(BilinearFormPtrArray self) -> bool"""
+        return _bilinearform.BilinearFormPtrArray_UseDevice(self)
+    UseDevice = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_UseDevice)
+
+    def OwnsData(self):
+        r"""OwnsData(BilinearFormPtrArray self) -> bool"""
+        return _bilinearform.BilinearFormPtrArray_OwnsData(self)
+    OwnsData = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_OwnsData)
+
+    def StealData(self, p):
+        r"""StealData(BilinearFormPtrArray self, mfem::BilinearForm *** p)"""
+        return _bilinearform.BilinearFormPtrArray_StealData(self, p)
+    StealData = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_StealData)
+
+    def LoseData(self):
+        r"""LoseData(BilinearFormPtrArray self)"""
+        return _bilinearform.BilinearFormPtrArray_LoseData(self)
+    LoseData = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_LoseData)
+
+    def MakeDataOwner(self):
+        r"""MakeDataOwner(BilinearFormPtrArray self)"""
+        return _bilinearform.BilinearFormPtrArray_MakeDataOwner(self)
+    MakeDataOwner = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_MakeDataOwner)
+
+    def Size(self):
+        r"""Size(BilinearFormPtrArray self) -> int"""
+        return _bilinearform.BilinearFormPtrArray_Size(self)
+    Size = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_Size)
+
+    def SetSize(self, *args):
+        r"""
+        SetSize(BilinearFormPtrArray self, int nsize)
+        SetSize(BilinearFormPtrArray self, int nsize, BilinearForm initval)
+        SetSize(BilinearFormPtrArray self, int nsize, mfem::MemoryType mt)
+        """
+        return _bilinearform.BilinearFormPtrArray_SetSize(self, *args)
+    SetSize = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_SetSize)
+
+    def Capacity(self):
+        r"""Capacity(BilinearFormPtrArray self) -> int"""
+        return _bilinearform.BilinearFormPtrArray_Capacity(self)
+    Capacity = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_Capacity)
+
+    def Reserve(self, capacity):
+        r"""Reserve(BilinearFormPtrArray self, int capacity)"""
+        return _bilinearform.BilinearFormPtrArray_Reserve(self, capacity)
+    Reserve = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_Reserve)
+
+    def Append(self, *args):
+        r"""
+        Append(BilinearFormPtrArray self, BilinearForm el) -> int
+        Append(BilinearFormPtrArray self, mfem::BilinearForm *const * els, int nels) -> int
+        Append(BilinearFormPtrArray self, BilinearFormPtrArray els) -> int
+        """
+        return _bilinearform.BilinearFormPtrArray_Append(self, *args)
+    Append = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_Append)
+
+    def Prepend(self, el):
+        r"""Prepend(BilinearFormPtrArray self, BilinearForm el) -> int"""
+        return _bilinearform.BilinearFormPtrArray_Prepend(self, el)
+    Prepend = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_Prepend)
+
+    def Last(self, *args):
+        r"""
+        Last(BilinearFormPtrArray self) -> BilinearForm
+        Last(BilinearFormPtrArray self) -> BilinearForm
+        """
+        return _bilinearform.BilinearFormPtrArray_Last(self, *args)
+    Last = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_Last)
+
+    def DeleteLast(self):
+        r"""DeleteLast(BilinearFormPtrArray self)"""
+        return _bilinearform.BilinearFormPtrArray_DeleteLast(self)
+    DeleteLast = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_DeleteLast)
+
+    def DeleteAll(self):
+        r"""DeleteAll(BilinearFormPtrArray self)"""
+        return _bilinearform.BilinearFormPtrArray_DeleteAll(self)
+    DeleteAll = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_DeleteAll)
+
+    def Copy(self, copy):
+        r"""Copy(BilinearFormPtrArray self, BilinearFormPtrArray copy)"""
+        return _bilinearform.BilinearFormPtrArray_Copy(self, copy)
+    Copy = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_Copy)
+
+    def MakeRef(self, *args):
+        r"""
+        MakeRef(BilinearFormPtrArray self, mfem::BilinearForm ** arg2, int arg3)
+        MakeRef(BilinearFormPtrArray self, BilinearFormPtrArray master)
+        """
+        return _bilinearform.BilinearFormPtrArray_MakeRef(self, *args)
+    MakeRef = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_MakeRef)
+
+    def GetSubArray(self, offset, sa_size, sa):
+        r"""GetSubArray(BilinearFormPtrArray self, int offset, int sa_size, BilinearFormPtrArray sa)"""
+        return _bilinearform.BilinearFormPtrArray_GetSubArray(self, offset, sa_size, sa)
+    GetSubArray = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_GetSubArray)
+
+    def begin(self, *args):
+        r"""
+        begin(BilinearFormPtrArray self) -> BilinearForm
+        begin(BilinearFormPtrArray self) -> mfem::BilinearForm *const *
+        """
+        return _bilinearform.BilinearFormPtrArray_begin(self, *args)
+    begin = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_begin)
+
+    def end(self, *args):
+        r"""
+        end(BilinearFormPtrArray self) -> BilinearForm
+        end(BilinearFormPtrArray self) -> mfem::BilinearForm *const *
+        """
+        return _bilinearform.BilinearFormPtrArray_end(self, *args)
+    end = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_end)
+
+    def MemoryUsage(self):
+        r"""MemoryUsage(BilinearFormPtrArray self) -> long"""
+        return _bilinearform.BilinearFormPtrArray_MemoryUsage(self)
+    MemoryUsage = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_MemoryUsage)
+
+    def Read(self, on_dev=True):
+        r"""Read(BilinearFormPtrArray self, bool on_dev=True) -> mfem::BilinearForm *const *"""
+        return _bilinearform.BilinearFormPtrArray_Read(self, on_dev)
+    Read = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_Read)
+
+    def HostRead(self):
+        r"""HostRead(BilinearFormPtrArray self) -> mfem::BilinearForm *const *"""
+        return _bilinearform.BilinearFormPtrArray_HostRead(self)
+    HostRead = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_HostRead)
+
+    def Write(self, on_dev=True):
+        r"""Write(BilinearFormPtrArray self, bool on_dev=True) -> mfem::BilinearForm **"""
+        return _bilinearform.BilinearFormPtrArray_Write(self, on_dev)
+    Write = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_Write)
+
+    def HostWrite(self):
+        r"""HostWrite(BilinearFormPtrArray self) -> mfem::BilinearForm **"""
+        return _bilinearform.BilinearFormPtrArray_HostWrite(self)
+    HostWrite = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_HostWrite)
+
+    def ReadWrite(self, on_dev=True):
+        r"""ReadWrite(BilinearFormPtrArray self, bool on_dev=True) -> mfem::BilinearForm **"""
+        return _bilinearform.BilinearFormPtrArray_ReadWrite(self, on_dev)
+    ReadWrite = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_ReadWrite)
+
+    def HostReadWrite(self):
+        r"""HostReadWrite(BilinearFormPtrArray self) -> mfem::BilinearForm **"""
+        return _bilinearform.BilinearFormPtrArray_HostReadWrite(self)
+    HostReadWrite = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_HostReadWrite)
+
+    def __init__(self, *args):
+        r"""
+        __init__(BilinearFormPtrArray self) -> BilinearFormPtrArray
+        __init__(BilinearFormPtrArray self, mfem::MemoryType mt) -> BilinearFormPtrArray
+        __init__(BilinearFormPtrArray self, int asize) -> BilinearFormPtrArray
+        __init__(BilinearFormPtrArray self, int asize, mfem::MemoryType mt) -> BilinearFormPtrArray
+        __init__(BilinearFormPtrArray self, mfem::BilinearForm ** data_) -> BilinearFormPtrArray
+        __init__(BilinearFormPtrArray self, BilinearFormPtrArray src) -> BilinearFormPtrArray
+        __init__(BilinearFormPtrArray self, void * List_or_Tuple) -> BilinearFormPtrArray
+        """
+        _bilinearform.BilinearFormPtrArray_swiginit(self, _bilinearform.new_BilinearFormPtrArray(*args))
+
+    def __setitem__(self, i, v):
+        r"""__setitem__(BilinearFormPtrArray self, int i, BilinearForm v)"""
+
+        i = int(i)
+
+
+        return _bilinearform.BilinearFormPtrArray___setitem__(self, i, v)
+
+
+    def Assign(self, *args):
+        r"""
+        Assign(BilinearFormPtrArray self, mfem::BilinearForm *const * arg2)
+        Assign(BilinearFormPtrArray self, BilinearForm a)
+        """
+        return _bilinearform.BilinearFormPtrArray_Assign(self, *args)
+    Assign = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray_Assign)
+
+    def ToList(self):
+        return [self[i] for i in range(self.Size())]
+
+
+
+    def __iter__(self):
+        class iter_array:
+            def __init__(self, obj):
+                self.obj = obj
+                self.idx = 0
+                self.size = obj.Size()
+            def __iter__(self):
+                self.idx = 0
+            def __next__(self):
+                if self.idx < self.size:
+                    res = self.obj[self.idx]
+                    self.idx += 1
+                    return res
+                else:
+                    raise StopIteration
+        return iter_array(self)
+
+
+
+    def __getitem__(self, param):
+        r"""__getitem__(BilinearFormPtrArray self, PyObject * param) -> PyObject *"""
+        return _bilinearform.BilinearFormPtrArray___getitem__(self, param)
+    __getitem__ = _swig_new_instance_method(_bilinearform.BilinearFormPtrArray___getitem__)
+
+# Register BilinearFormPtrArray in _bilinearform:
+_bilinearform.BilinearFormPtrArray_swigregister(BilinearFormPtrArray)
+
 AssemblyLevel_LEGACY = _bilinearform.AssemblyLevel_LEGACY
 
 AssemblyLevel_LEGACYFULL = _bilinearform.AssemblyLevel_LEGACYFULL

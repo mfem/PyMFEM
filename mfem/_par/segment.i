@@ -1,7 +1,7 @@
 %module(package="mfem._par") segment
 %{
 #include  "mfem.hpp"
-#include "mesh/segment.hpp"
+#include "pyoperator.hpp"      
 #include "numpy/arrayobject.h"    
 %}
 

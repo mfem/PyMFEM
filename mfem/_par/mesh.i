@@ -1,4 +1,5 @@
 %module(package="mfem._par") mesh
+  
 %{
 #include <iostream>
 #include <sstream>
@@ -7,19 +8,20 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "config/config.hpp"      
-#include "mesh/mesh_headers.hpp"
-#include "fem/fem.hpp"
-#include "general/array.hpp"
-
-mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
-		      bool fix_orientation = true);
-// void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
+#include <vector>
+#include "mfem.hpp"  
 #include "numpy/arrayobject.h"
+#include "pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
 #include "../common/io_stream.hpp"
+%}
 
-using namespace mfem;
+  
+%{
+//mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
+//		      bool fix_orientation = true);
+// void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
+//using namespace mfem;
 %}
 
 %begin %{

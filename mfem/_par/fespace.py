@@ -107,6 +107,240 @@ import mfem._par.doftrans
 import mfem._par.handle
 import mfem._par.hypre
 import mfem._par.restriction
+class FiniteElementSpacePtrArray(object):
+    r"""Proxy of C++ mfem::Array< mfem::FiniteElementSpace * > class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _fespace.delete_FiniteElementSpacePtrArray
+
+    def GetData(self, *args):
+        r"""
+        GetData(FiniteElementSpacePtrArray self) -> FiniteElementSpace
+        GetData(FiniteElementSpacePtrArray self) -> mfem::FiniteElementSpace *const *
+        """
+        return _fespace.FiniteElementSpacePtrArray_GetData(self, *args)
+    GetData = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_GetData)
+
+    def GetMemory(self, *args):
+        r"""
+        GetMemory(FiniteElementSpacePtrArray self) -> mfem::Memory< mfem::FiniteElementSpace * >
+        GetMemory(FiniteElementSpacePtrArray self) -> mfem::Memory< mfem::FiniteElementSpace * > const &
+        """
+        return _fespace.FiniteElementSpacePtrArray_GetMemory(self, *args)
+    GetMemory = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_GetMemory)
+
+    def UseDevice(self):
+        r"""UseDevice(FiniteElementSpacePtrArray self) -> bool"""
+        return _fespace.FiniteElementSpacePtrArray_UseDevice(self)
+    UseDevice = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_UseDevice)
+
+    def OwnsData(self):
+        r"""OwnsData(FiniteElementSpacePtrArray self) -> bool"""
+        return _fespace.FiniteElementSpacePtrArray_OwnsData(self)
+    OwnsData = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_OwnsData)
+
+    def StealData(self, p):
+        r"""StealData(FiniteElementSpacePtrArray self, mfem::FiniteElementSpace *** p)"""
+        return _fespace.FiniteElementSpacePtrArray_StealData(self, p)
+    StealData = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_StealData)
+
+    def LoseData(self):
+        r"""LoseData(FiniteElementSpacePtrArray self)"""
+        return _fespace.FiniteElementSpacePtrArray_LoseData(self)
+    LoseData = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_LoseData)
+
+    def MakeDataOwner(self):
+        r"""MakeDataOwner(FiniteElementSpacePtrArray self)"""
+        return _fespace.FiniteElementSpacePtrArray_MakeDataOwner(self)
+    MakeDataOwner = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_MakeDataOwner)
+
+    def Size(self):
+        r"""Size(FiniteElementSpacePtrArray self) -> int"""
+        return _fespace.FiniteElementSpacePtrArray_Size(self)
+    Size = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_Size)
+
+    def SetSize(self, *args):
+        r"""
+        SetSize(FiniteElementSpacePtrArray self, int nsize)
+        SetSize(FiniteElementSpacePtrArray self, int nsize, FiniteElementSpace initval)
+        SetSize(FiniteElementSpacePtrArray self, int nsize, mfem::MemoryType mt)
+        """
+        return _fespace.FiniteElementSpacePtrArray_SetSize(self, *args)
+    SetSize = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_SetSize)
+
+    def Capacity(self):
+        r"""Capacity(FiniteElementSpacePtrArray self) -> int"""
+        return _fespace.FiniteElementSpacePtrArray_Capacity(self)
+    Capacity = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_Capacity)
+
+    def Reserve(self, capacity):
+        r"""Reserve(FiniteElementSpacePtrArray self, int capacity)"""
+        return _fespace.FiniteElementSpacePtrArray_Reserve(self, capacity)
+    Reserve = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_Reserve)
+
+    def Append(self, *args):
+        r"""
+        Append(FiniteElementSpacePtrArray self, FiniteElementSpace el) -> int
+        Append(FiniteElementSpacePtrArray self, mfem::FiniteElementSpace *const * els, int nels) -> int
+        Append(FiniteElementSpacePtrArray self, FiniteElementSpacePtrArray els) -> int
+        """
+        return _fespace.FiniteElementSpacePtrArray_Append(self, *args)
+    Append = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_Append)
+
+    def Prepend(self, el):
+        r"""Prepend(FiniteElementSpacePtrArray self, FiniteElementSpace el) -> int"""
+        return _fespace.FiniteElementSpacePtrArray_Prepend(self, el)
+    Prepend = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_Prepend)
+
+    def Last(self, *args):
+        r"""
+        Last(FiniteElementSpacePtrArray self) -> FiniteElementSpace
+        Last(FiniteElementSpacePtrArray self) -> FiniteElementSpace
+        """
+        return _fespace.FiniteElementSpacePtrArray_Last(self, *args)
+    Last = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_Last)
+
+    def DeleteLast(self):
+        r"""DeleteLast(FiniteElementSpacePtrArray self)"""
+        return _fespace.FiniteElementSpacePtrArray_DeleteLast(self)
+    DeleteLast = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_DeleteLast)
+
+    def DeleteAll(self):
+        r"""DeleteAll(FiniteElementSpacePtrArray self)"""
+        return _fespace.FiniteElementSpacePtrArray_DeleteAll(self)
+    DeleteAll = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_DeleteAll)
+
+    def Copy(self, copy):
+        r"""Copy(FiniteElementSpacePtrArray self, FiniteElementSpacePtrArray copy)"""
+        return _fespace.FiniteElementSpacePtrArray_Copy(self, copy)
+    Copy = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_Copy)
+
+    def MakeRef(self, *args):
+        r"""
+        MakeRef(FiniteElementSpacePtrArray self, mfem::FiniteElementSpace ** arg2, int arg3)
+        MakeRef(FiniteElementSpacePtrArray self, FiniteElementSpacePtrArray master)
+        """
+        return _fespace.FiniteElementSpacePtrArray_MakeRef(self, *args)
+    MakeRef = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_MakeRef)
+
+    def GetSubArray(self, offset, sa_size, sa):
+        r"""GetSubArray(FiniteElementSpacePtrArray self, int offset, int sa_size, FiniteElementSpacePtrArray sa)"""
+        return _fespace.FiniteElementSpacePtrArray_GetSubArray(self, offset, sa_size, sa)
+    GetSubArray = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_GetSubArray)
+
+    def begin(self, *args):
+        r"""
+        begin(FiniteElementSpacePtrArray self) -> FiniteElementSpace
+        begin(FiniteElementSpacePtrArray self) -> mfem::FiniteElementSpace *const *
+        """
+        return _fespace.FiniteElementSpacePtrArray_begin(self, *args)
+    begin = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_begin)
+
+    def end(self, *args):
+        r"""
+        end(FiniteElementSpacePtrArray self) -> FiniteElementSpace
+        end(FiniteElementSpacePtrArray self) -> mfem::FiniteElementSpace *const *
+        """
+        return _fespace.FiniteElementSpacePtrArray_end(self, *args)
+    end = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_end)
+
+    def MemoryUsage(self):
+        r"""MemoryUsage(FiniteElementSpacePtrArray self) -> long"""
+        return _fespace.FiniteElementSpacePtrArray_MemoryUsage(self)
+    MemoryUsage = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_MemoryUsage)
+
+    def Read(self, on_dev=True):
+        r"""Read(FiniteElementSpacePtrArray self, bool on_dev=True) -> mfem::FiniteElementSpace *const *"""
+        return _fespace.FiniteElementSpacePtrArray_Read(self, on_dev)
+    Read = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_Read)
+
+    def HostRead(self):
+        r"""HostRead(FiniteElementSpacePtrArray self) -> mfem::FiniteElementSpace *const *"""
+        return _fespace.FiniteElementSpacePtrArray_HostRead(self)
+    HostRead = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_HostRead)
+
+    def Write(self, on_dev=True):
+        r"""Write(FiniteElementSpacePtrArray self, bool on_dev=True) -> mfem::FiniteElementSpace **"""
+        return _fespace.FiniteElementSpacePtrArray_Write(self, on_dev)
+    Write = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_Write)
+
+    def HostWrite(self):
+        r"""HostWrite(FiniteElementSpacePtrArray self) -> mfem::FiniteElementSpace **"""
+        return _fespace.FiniteElementSpacePtrArray_HostWrite(self)
+    HostWrite = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_HostWrite)
+
+    def ReadWrite(self, on_dev=True):
+        r"""ReadWrite(FiniteElementSpacePtrArray self, bool on_dev=True) -> mfem::FiniteElementSpace **"""
+        return _fespace.FiniteElementSpacePtrArray_ReadWrite(self, on_dev)
+    ReadWrite = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_ReadWrite)
+
+    def HostReadWrite(self):
+        r"""HostReadWrite(FiniteElementSpacePtrArray self) -> mfem::FiniteElementSpace **"""
+        return _fespace.FiniteElementSpacePtrArray_HostReadWrite(self)
+    HostReadWrite = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_HostReadWrite)
+
+    def __init__(self, *args):
+        r"""
+        __init__(FiniteElementSpacePtrArray self) -> FiniteElementSpacePtrArray
+        __init__(FiniteElementSpacePtrArray self, mfem::MemoryType mt) -> FiniteElementSpacePtrArray
+        __init__(FiniteElementSpacePtrArray self, int asize) -> FiniteElementSpacePtrArray
+        __init__(FiniteElementSpacePtrArray self, int asize, mfem::MemoryType mt) -> FiniteElementSpacePtrArray
+        __init__(FiniteElementSpacePtrArray self, mfem::FiniteElementSpace ** data_) -> FiniteElementSpacePtrArray
+        __init__(FiniteElementSpacePtrArray self, FiniteElementSpacePtrArray src) -> FiniteElementSpacePtrArray
+        __init__(FiniteElementSpacePtrArray self, void * List_or_Tuple) -> FiniteElementSpacePtrArray
+        """
+        _fespace.FiniteElementSpacePtrArray_swiginit(self, _fespace.new_FiniteElementSpacePtrArray(*args))
+
+    def __setitem__(self, i, v):
+        r"""__setitem__(FiniteElementSpacePtrArray self, int i, FiniteElementSpace v)"""
+
+        i = int(i)
+
+
+        return _fespace.FiniteElementSpacePtrArray___setitem__(self, i, v)
+
+
+    def Assign(self, *args):
+        r"""
+        Assign(FiniteElementSpacePtrArray self, mfem::FiniteElementSpace *const * arg2)
+        Assign(FiniteElementSpacePtrArray self, FiniteElementSpace a)
+        """
+        return _fespace.FiniteElementSpacePtrArray_Assign(self, *args)
+    Assign = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_Assign)
+
+    def ToList(self):
+        return [self[i] for i in range(self.Size())]
+
+
+
+    def __iter__(self):
+        class iter_array:
+            def __init__(self, obj):
+                self.obj = obj
+                self.idx = 0
+                self.size = obj.Size()
+            def __iter__(self):
+                self.idx = 0
+            def __next__(self):
+                if self.idx < self.size:
+                    res = self.obj[self.idx]
+                    self.idx += 1
+                    return res
+                else:
+                    raise StopIteration
+        return iter_array(self)
+
+
+
+    def __getitem__(self, param):
+        r"""__getitem__(FiniteElementSpacePtrArray self, PyObject * param) -> PyObject *"""
+        return _fespace.FiniteElementSpacePtrArray___getitem__(self, param)
+    __getitem__ = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray___getitem__)
+
+# Register FiniteElementSpacePtrArray in _fespace:
+_fespace.FiniteElementSpacePtrArray_swigregister(FiniteElementSpacePtrArray)
+
 class Ordering(object):
     r"""Proxy of C++ mfem::Ordering class."""
 
@@ -828,239 +1062,5 @@ def UsesTensorBasis(fes):
     r"""UsesTensorBasis(FiniteElementSpace fes) -> bool"""
     return _fespace.UsesTensorBasis(fes)
 UsesTensorBasis = _fespace.UsesTensorBasis
-class FiniteElementSpacePtrArray(object):
-    r"""Proxy of C++ mfem::Array< mfem::FiniteElementSpace * > class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-    __swig_destroy__ = _fespace.delete_FiniteElementSpacePtrArray
-
-    def GetData(self, *args):
-        r"""
-        GetData(FiniteElementSpacePtrArray self) -> FiniteElementSpace
-        GetData(FiniteElementSpacePtrArray self) -> mfem::FiniteElementSpace *const *
-        """
-        return _fespace.FiniteElementSpacePtrArray_GetData(self, *args)
-    GetData = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_GetData)
-
-    def GetMemory(self, *args):
-        r"""
-        GetMemory(FiniteElementSpacePtrArray self) -> mfem::Memory< mfem::FiniteElementSpace * >
-        GetMemory(FiniteElementSpacePtrArray self) -> mfem::Memory< mfem::FiniteElementSpace * > const &
-        """
-        return _fespace.FiniteElementSpacePtrArray_GetMemory(self, *args)
-    GetMemory = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_GetMemory)
-
-    def UseDevice(self):
-        r"""UseDevice(FiniteElementSpacePtrArray self) -> bool"""
-        return _fespace.FiniteElementSpacePtrArray_UseDevice(self)
-    UseDevice = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_UseDevice)
-
-    def OwnsData(self):
-        r"""OwnsData(FiniteElementSpacePtrArray self) -> bool"""
-        return _fespace.FiniteElementSpacePtrArray_OwnsData(self)
-    OwnsData = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_OwnsData)
-
-    def StealData(self, p):
-        r"""StealData(FiniteElementSpacePtrArray self, mfem::FiniteElementSpace *** p)"""
-        return _fespace.FiniteElementSpacePtrArray_StealData(self, p)
-    StealData = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_StealData)
-
-    def LoseData(self):
-        r"""LoseData(FiniteElementSpacePtrArray self)"""
-        return _fespace.FiniteElementSpacePtrArray_LoseData(self)
-    LoseData = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_LoseData)
-
-    def MakeDataOwner(self):
-        r"""MakeDataOwner(FiniteElementSpacePtrArray self)"""
-        return _fespace.FiniteElementSpacePtrArray_MakeDataOwner(self)
-    MakeDataOwner = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_MakeDataOwner)
-
-    def Size(self):
-        r"""Size(FiniteElementSpacePtrArray self) -> int"""
-        return _fespace.FiniteElementSpacePtrArray_Size(self)
-    Size = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_Size)
-
-    def SetSize(self, *args):
-        r"""
-        SetSize(FiniteElementSpacePtrArray self, int nsize)
-        SetSize(FiniteElementSpacePtrArray self, int nsize, FiniteElementSpace initval)
-        SetSize(FiniteElementSpacePtrArray self, int nsize, mfem::MemoryType mt)
-        """
-        return _fespace.FiniteElementSpacePtrArray_SetSize(self, *args)
-    SetSize = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_SetSize)
-
-    def Capacity(self):
-        r"""Capacity(FiniteElementSpacePtrArray self) -> int"""
-        return _fespace.FiniteElementSpacePtrArray_Capacity(self)
-    Capacity = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_Capacity)
-
-    def Reserve(self, capacity):
-        r"""Reserve(FiniteElementSpacePtrArray self, int capacity)"""
-        return _fespace.FiniteElementSpacePtrArray_Reserve(self, capacity)
-    Reserve = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_Reserve)
-
-    def Append(self, *args):
-        r"""
-        Append(FiniteElementSpacePtrArray self, FiniteElementSpace el) -> int
-        Append(FiniteElementSpacePtrArray self, mfem::FiniteElementSpace *const * els, int nels) -> int
-        Append(FiniteElementSpacePtrArray self, FiniteElementSpacePtrArray els) -> int
-        """
-        return _fespace.FiniteElementSpacePtrArray_Append(self, *args)
-    Append = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_Append)
-
-    def Prepend(self, el):
-        r"""Prepend(FiniteElementSpacePtrArray self, FiniteElementSpace el) -> int"""
-        return _fespace.FiniteElementSpacePtrArray_Prepend(self, el)
-    Prepend = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_Prepend)
-
-    def Last(self, *args):
-        r"""
-        Last(FiniteElementSpacePtrArray self) -> FiniteElementSpace
-        Last(FiniteElementSpacePtrArray self) -> FiniteElementSpace
-        """
-        return _fespace.FiniteElementSpacePtrArray_Last(self, *args)
-    Last = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_Last)
-
-    def DeleteLast(self):
-        r"""DeleteLast(FiniteElementSpacePtrArray self)"""
-        return _fespace.FiniteElementSpacePtrArray_DeleteLast(self)
-    DeleteLast = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_DeleteLast)
-
-    def DeleteAll(self):
-        r"""DeleteAll(FiniteElementSpacePtrArray self)"""
-        return _fespace.FiniteElementSpacePtrArray_DeleteAll(self)
-    DeleteAll = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_DeleteAll)
-
-    def Copy(self, copy):
-        r"""Copy(FiniteElementSpacePtrArray self, FiniteElementSpacePtrArray copy)"""
-        return _fespace.FiniteElementSpacePtrArray_Copy(self, copy)
-    Copy = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_Copy)
-
-    def MakeRef(self, *args):
-        r"""
-        MakeRef(FiniteElementSpacePtrArray self, mfem::FiniteElementSpace ** arg2, int arg3)
-        MakeRef(FiniteElementSpacePtrArray self, FiniteElementSpacePtrArray master)
-        """
-        return _fespace.FiniteElementSpacePtrArray_MakeRef(self, *args)
-    MakeRef = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_MakeRef)
-
-    def GetSubArray(self, offset, sa_size, sa):
-        r"""GetSubArray(FiniteElementSpacePtrArray self, int offset, int sa_size, FiniteElementSpacePtrArray sa)"""
-        return _fespace.FiniteElementSpacePtrArray_GetSubArray(self, offset, sa_size, sa)
-    GetSubArray = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_GetSubArray)
-
-    def begin(self, *args):
-        r"""
-        begin(FiniteElementSpacePtrArray self) -> FiniteElementSpace
-        begin(FiniteElementSpacePtrArray self) -> mfem::FiniteElementSpace *const *
-        """
-        return _fespace.FiniteElementSpacePtrArray_begin(self, *args)
-    begin = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_begin)
-
-    def end(self, *args):
-        r"""
-        end(FiniteElementSpacePtrArray self) -> FiniteElementSpace
-        end(FiniteElementSpacePtrArray self) -> mfem::FiniteElementSpace *const *
-        """
-        return _fespace.FiniteElementSpacePtrArray_end(self, *args)
-    end = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_end)
-
-    def MemoryUsage(self):
-        r"""MemoryUsage(FiniteElementSpacePtrArray self) -> long"""
-        return _fespace.FiniteElementSpacePtrArray_MemoryUsage(self)
-    MemoryUsage = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_MemoryUsage)
-
-    def Read(self, on_dev=True):
-        r"""Read(FiniteElementSpacePtrArray self, bool on_dev=True) -> mfem::FiniteElementSpace *const *"""
-        return _fespace.FiniteElementSpacePtrArray_Read(self, on_dev)
-    Read = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_Read)
-
-    def HostRead(self):
-        r"""HostRead(FiniteElementSpacePtrArray self) -> mfem::FiniteElementSpace *const *"""
-        return _fespace.FiniteElementSpacePtrArray_HostRead(self)
-    HostRead = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_HostRead)
-
-    def Write(self, on_dev=True):
-        r"""Write(FiniteElementSpacePtrArray self, bool on_dev=True) -> mfem::FiniteElementSpace **"""
-        return _fespace.FiniteElementSpacePtrArray_Write(self, on_dev)
-    Write = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_Write)
-
-    def HostWrite(self):
-        r"""HostWrite(FiniteElementSpacePtrArray self) -> mfem::FiniteElementSpace **"""
-        return _fespace.FiniteElementSpacePtrArray_HostWrite(self)
-    HostWrite = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_HostWrite)
-
-    def ReadWrite(self, on_dev=True):
-        r"""ReadWrite(FiniteElementSpacePtrArray self, bool on_dev=True) -> mfem::FiniteElementSpace **"""
-        return _fespace.FiniteElementSpacePtrArray_ReadWrite(self, on_dev)
-    ReadWrite = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_ReadWrite)
-
-    def HostReadWrite(self):
-        r"""HostReadWrite(FiniteElementSpacePtrArray self) -> mfem::FiniteElementSpace **"""
-        return _fespace.FiniteElementSpacePtrArray_HostReadWrite(self)
-    HostReadWrite = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_HostReadWrite)
-
-    def __init__(self, *args):
-        r"""
-        __init__(FiniteElementSpacePtrArray self) -> FiniteElementSpacePtrArray
-        __init__(FiniteElementSpacePtrArray self, mfem::MemoryType mt) -> FiniteElementSpacePtrArray
-        __init__(FiniteElementSpacePtrArray self, int asize) -> FiniteElementSpacePtrArray
-        __init__(FiniteElementSpacePtrArray self, int asize, mfem::MemoryType mt) -> FiniteElementSpacePtrArray
-        __init__(FiniteElementSpacePtrArray self, mfem::FiniteElementSpace ** data_, int asize) -> FiniteElementSpacePtrArray
-        __init__(FiniteElementSpacePtrArray self, FiniteElementSpacePtrArray src) -> FiniteElementSpacePtrArray
-        __init__(FiniteElementSpacePtrArray self, void * List_or_Tuple, mfem::FiniteElementSpace ** _unused) -> FiniteElementSpacePtrArray
-        """
-        _fespace.FiniteElementSpacePtrArray_swiginit(self, _fespace.new_FiniteElementSpacePtrArray(*args))
-
-    def __setitem__(self, i, v):
-        r"""__setitem__(FiniteElementSpacePtrArray self, int i, FiniteElementSpace v)"""
-
-        i = int(i)
-
-
-        return _fespace.FiniteElementSpacePtrArray___setitem__(self, i, v)
-
-
-    def Assign(self, *args):
-        r"""
-        Assign(FiniteElementSpacePtrArray self, mfem::FiniteElementSpace *const * arg2)
-        Assign(FiniteElementSpacePtrArray self, FiniteElementSpace a)
-        """
-        return _fespace.FiniteElementSpacePtrArray_Assign(self, *args)
-    Assign = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_Assign)
-
-    def ToList(self):
-        return [self[i] for i in range(self.Size())]
-
-
-
-    def __iter__(self):
-        class iter_array:
-            def __init__(self, obj):
-                self.obj = obj
-                self.idx = 0
-                self.size = obj.Size()
-            def __iter__(self):
-                self.idx = 0
-            def __next__(self):
-                if self.idx < self.size:
-                    res = self.obj[self.idx]
-                    self.idx += 1
-                    return res
-                else:
-                    raise StopIteration
-        return iter_array(self)
-
-
-
-    def __getitem__(self, param):
-        r"""__getitem__(FiniteElementSpacePtrArray self, PyObject * param) -> PyObject *"""
-        return _fespace.FiniteElementSpacePtrArray___getitem__(self, param)
-    __getitem__ = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray___getitem__)
-
-# Register FiniteElementSpacePtrArray in _fespace:
-_fespace.FiniteElementSpacePtrArray_swigregister(FiniteElementSpacePtrArray)
-
 
 
