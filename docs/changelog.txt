@@ -14,6 +14,9 @@
 	* const IntegrationRule *irs[] in gridfunc.hpp, pgridfunc.hpp, complex_fem.hpp, coefficient.hpp
 	  are wrapped to accept tuple/list of IntegrationRule (see ex25.py)
 	* Warning about old numpy interface (NPY_1_7..... ) is addressed.
+	* GridFunction::Assign (renamed verison of operator ==) accept numpy vector
+	* ParGridFunction::Assign (renamed verison of operator ==) accept numpy vector	
+	
 	
 2021 10.xx
         * Fixed an issue due to new fe_xxx.hp

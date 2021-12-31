@@ -543,6 +543,43 @@ class GridFunction(mfem._par.vector.Vector):
         """
         _gridfunc.GridFunction_swiginit(self, _gridfunc.new_GridFunction(*args))
 
+    def Assign(self, *args):
+        r"""
+        Assign(GridFunction self, double const v)
+        Assign(GridFunction self, Vector v)
+        Assign(GridFunction self, GridFunction v)
+        Assign(GridFunction self, PyObject * param)
+        """
+
+        from numpy import ndarray, ascontiguousarray, array
+        keep_link = False
+        if len(args) == 1:
+            if isinstance(args[0], ndarray):
+                if args[0].dtype != 'float64':
+                     raise ValueError('Must be float64 array ' + str(args[0].dtype) +
+        			      ' is given')
+                elif args[0].ndim != 1:
+                    raise ValueError('Ndim must be one') 
+                elif args[0].shape[0] != self.Size():
+                    raise ValueError('Length does not match')
+                else:
+                    args = (ascontiguousarray(args[0]),)
+            elif isinstance(args[0], tuple):
+                args = (array(args[0], dtype = float),)      
+            elif isinstance(args[0], list):	      
+                args = (array(args[0], dtype = float),)      
+            else:
+                pass
+
+
+        val = _gridfunc.GridFunction_Assign(self, *args)
+
+        return self
+
+
+        return val
+
+
     def SaveToFile(self, gf_file, precision):
         r"""SaveToFile(GridFunction self, char const * gf_file, int const precision)"""
         return _gridfunc.GridFunction_SaveToFile(self, gf_file, precision)

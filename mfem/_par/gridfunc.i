@@ -44,7 +44,7 @@ import_array();
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
 
-//%rename(Assign) mfem::GridFunction::operator=;
+ //%rename(Assign) mfem::GridFunction::operator=;
 
 %feature("shadow") mfem::GridFunction::GetNodalValues%{
 def GetNodalValues(self, *args):
@@ -101,7 +101,43 @@ GridFunction(mfem::FiniteElementSpace *fes, const mfem::Vector &v, int offset){
    gf = new mfem::GridFunction(fes, v.GetData() + offset);
    return gf;
 }
- 
+  void Assign(const double v) {
+    (* self) = v;
+  }
+  void Assign(const mfem::Vector &v) {
+    (* self) = v;
+  }
+  void Assign(const mfem::GridFunction &v) {
+    (* self) = v;
+  }  
+  void Assign(PyObject* param) {
+    /* note that these error does not raise error in python
+       type check is actually done in wrapper layer */
+    PyArrayObject *param0 = reinterpret_cast<PyArrayObject *>(param);
+      
+    if (!PyArray_Check(param0)){
+       PyErr_SetString(PyExc_ValueError, "Input data must be ndarray");
+       return;
+    }
+    int typ = PyArray_TYPE(param0);
+    if (typ != NPY_DOUBLE){
+        PyErr_SetString(PyExc_ValueError, "Input data must be float64");
+	return;
+    }
+    int ndim = PyArray_NDIM(param0);
+    if (ndim != 1){
+      PyErr_SetString(PyExc_ValueError, "Input data NDIM must be one");
+      return ;
+    }
+    npy_intp *shape = PyArray_DIMS(param0);    
+    int len = self->Size();
+    if (shape[0] != len){    
+      PyErr_SetString(PyExc_ValueError, "input data length does not match");
+      return ;
+    }    
+    (Vector &)(* self) = (double *) PyArray_DATA(param0);
+  }
+
 void SaveToFile(const char *gf_file, const int precision) const
    {
         std::cerr << "\nWarning Deprecated : Use Save(filename) insteead of SaveToFile \n";  

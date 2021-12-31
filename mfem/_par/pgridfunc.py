@@ -423,6 +423,44 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
 
         _pgridfunc.ParGridFunction_swiginit(self, _pgridfunc.new_ParGridFunction(*args))
 
+    def Assign(self, *args):
+        r"""
+        Assign(ParGridFunction self, HypreParVector v)
+        Assign(ParGridFunction self, ParGridFunction v)
+        Assign(ParGridFunction self, double const v)
+        Assign(ParGridFunction self, Vector v)
+        Assign(ParGridFunction self, PyObject * param)
+        """
+
+        from numpy import ndarray, ascontiguousarray, array
+        keep_link = False
+        if len(args) == 1:
+            if isinstance(args[0], ndarray):
+                if args[0].dtype != 'float64':
+                     raise ValueError('Must be float64 array ' + str(args[0].dtype) +
+        			      ' is given')
+                elif args[0].ndim != 1:
+                    raise ValueError('Ndim must be one') 
+                elif args[0].shape[0] != self.Size():
+                    raise ValueError('Length does not match')
+                else:
+                    args = (ascontiguousarray(args[0]),)
+            elif isinstance(args[0], tuple):
+                args = (array(args[0], dtype = float),)      
+            elif isinstance(args[0], list):	      
+                args = (array(args[0], dtype = float),)      
+            else:
+                pass
+
+
+        val = _pgridfunc.ParGridFunction_Assign(self, *args)
+
+        return self
+
+
+        return val
+
+
     def Save(self, *args):
         r"""
         Save(ParGridFunction self, std::ostream & out)

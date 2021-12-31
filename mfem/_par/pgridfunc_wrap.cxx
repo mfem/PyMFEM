@@ -3850,6 +3850,45 @@ SWIGINTERN mfem::ParGridFunction *new_mfem_ParGridFunction__SWIG_9(mfem::ParFini
    gf = new mfem::ParGridFunction(fes, v.GetData() + offset);
    return gf;
  }
+SWIGINTERN void mfem_ParGridFunction_Assign__SWIG_0(mfem::ParGridFunction *self,mfem::HypreParVector const &v){
+    (* self) = v;
+  }
+SWIGINTERN void mfem_ParGridFunction_Assign__SWIG_1(mfem::ParGridFunction *self,mfem::ParGridFunction const &v){
+    (* self) = v;
+  }
+SWIGINTERN void mfem_ParGridFunction_Assign__SWIG_2(mfem::ParGridFunction *self,double const v){
+    (* self) = v;
+  }
+SWIGINTERN void mfem_ParGridFunction_Assign__SWIG_3(mfem::ParGridFunction *self,mfem::Vector const &v){
+    (* self) = v;
+  }
+SWIGINTERN void mfem_ParGridFunction_Assign__SWIG_4(mfem::ParGridFunction *self,PyObject *param){
+    /* note that these error does not raise error in python
+       type check is actually done in wrapper layer */
+    PyArrayObject *param0 = reinterpret_cast<PyArrayObject *>(param);
+      
+    if (!PyArray_Check(param0)){
+       PyErr_SetString(PyExc_ValueError, "Input data must be ndarray");
+       return;
+    }
+    int typ = PyArray_TYPE(param0);
+    if (typ != NPY_DOUBLE){
+        PyErr_SetString(PyExc_ValueError, "Input data must be float64");
+	return;
+    }
+    int ndim = PyArray_NDIM(param0);
+    if (ndim != 1){
+      PyErr_SetString(PyExc_ValueError, "Input data NDIM must be one");
+      return ;
+    }
+    npy_intp *shape = PyArray_DIMS(param0);    
+    int len = self->Size();
+    if (shape[0] != len){    
+      PyErr_SetString(PyExc_ValueError, "input data length does not match");
+      return ;
+    }    
+    (mfem::Vector &)(* self) = (double *) PyArray_DATA(param0);
+  }
 SWIGINTERN void mfem_ParGridFunction_Save__SWIG_2(mfem::ParGridFunction *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
@@ -11921,6 +11960,296 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ParGridFunction_Assign__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ParGridFunction *arg1 = (mfem::ParGridFunction *) 0 ;
+  mfem::HypreParVector *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParGridFunction_Assign" "', argument " "1"" of type '" "mfem::ParGridFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParGridFunction * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__HypreParVector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParGridFunction_Assign" "', argument " "2"" of type '" "mfem::HypreParVector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParGridFunction_Assign" "', argument " "2"" of type '" "mfem::HypreParVector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::HypreParVector * >(argp2);
+  {
+    try {
+      mfem_ParGridFunction_Assign__SWIG_0(arg1,(mfem::HypreParVector const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParGridFunction_Assign__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ParGridFunction *arg1 = (mfem::ParGridFunction *) 0 ;
+  mfem::ParGridFunction *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParGridFunction_Assign" "', argument " "1"" of type '" "mfem::ParGridFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParGridFunction * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ParGridFunction,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParGridFunction_Assign" "', argument " "2"" of type '" "mfem::ParGridFunction const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParGridFunction_Assign" "', argument " "2"" of type '" "mfem::ParGridFunction const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ParGridFunction * >(argp2);
+  {
+    try {
+      mfem_ParGridFunction_Assign__SWIG_1(arg1,(mfem::ParGridFunction const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParGridFunction_Assign__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ParGridFunction *arg1 = (mfem::ParGridFunction *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParGridFunction_Assign" "', argument " "1"" of type '" "mfem::ParGridFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParGridFunction * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ParGridFunction_Assign" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  {
+    try {
+      mfem_ParGridFunction_Assign__SWIG_2(arg1,arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParGridFunction_Assign__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ParGridFunction *arg1 = (mfem::ParGridFunction *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParGridFunction_Assign" "', argument " "1"" of type '" "mfem::ParGridFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParGridFunction * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParGridFunction_Assign" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParGridFunction_Assign" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    try {
+      mfem_ParGridFunction_Assign__SWIG_3(arg1,(mfem::Vector const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParGridFunction_Assign__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ParGridFunction *arg1 = (mfem::ParGridFunction *) 0 ;
+  PyObject *arg2 = (PyObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParGridFunction_Assign" "', argument " "1"" of type '" "mfem::ParGridFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParGridFunction * >(argp1);
+  arg2 = swig_obj[1];
+  {
+    try {
+      mfem_ParGridFunction_Assign__SWIG_4(arg1,arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParGridFunction_Assign(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "ParGridFunction_Assign", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParGridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__HypreParVector, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_ParGridFunction_Assign__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParGridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ParGridFunction, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_ParGridFunction_Assign__SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParGridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_ParGridFunction_Assign__SWIG_3(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParGridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_ParGridFunction_Assign__SWIG_2(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParGridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      _v = (argv[1] != 0);
+      if (_v) {
+        return _wrap_ParGridFunction_Assign__SWIG_4(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ParGridFunction_Assign'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::ParGridFunction::Assign(mfem::HypreParVector const &)\n"
+    "    mfem::ParGridFunction::Assign(mfem::ParGridFunction const &)\n"
+    "    mfem::ParGridFunction::Assign(double const)\n"
+    "    mfem::ParGridFunction::Assign(mfem::Vector const &)\n"
+    "    mfem::ParGridFunction::Assign(PyObject *)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_ParGridFunction_Save__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::ParGridFunction *arg1 = (mfem::ParGridFunction *) 0 ;
@@ -12625,6 +12954,13 @@ static PyMethodDef SwigMethods[] = {
 		"ParGridFunction(ParMesh pmesh, std::istream & input)\n"
 		"new_ParGridFunction(ParFiniteElementSpace fes, Vector v, int offset) -> ParGridFunction\n"
 		""},
+	 { "ParGridFunction_Assign", _wrap_ParGridFunction_Assign, METH_VARARGS, "\n"
+		"ParGridFunction_Assign(ParGridFunction self, HypreParVector v)\n"
+		"ParGridFunction_Assign(ParGridFunction self, ParGridFunction v)\n"
+		"ParGridFunction_Assign(ParGridFunction self, double const v)\n"
+		"ParGridFunction_Assign(ParGridFunction self, Vector v)\n"
+		"ParGridFunction_Assign(ParGridFunction self, PyObject * param)\n"
+		""},
 	 { "ParGridFunction_Save", _wrap_ParGridFunction_Save, METH_VARARGS, "\n"
 		"ParGridFunction_Save(ParGridFunction self, std::ostream & out)\n"
 		"ParGridFunction_Save(ParGridFunction self, char const * fname, int precision=16)\n"
@@ -12773,6 +13109,13 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"ParGridFunction(ParMesh pmesh, GridFunction gf, int const * partitioning=None)\n"
 		"ParGridFunction(ParMesh pmesh, std::istream & input)\n"
 		"new_ParGridFunction(ParFiniteElementSpace fes, Vector v, int offset) -> ParGridFunction\n"
+		""},
+	 { "ParGridFunction_Assign", _wrap_ParGridFunction_Assign, METH_VARARGS, "\n"
+		"Assign(ParGridFunction self, HypreParVector v)\n"
+		"Assign(ParGridFunction self, ParGridFunction v)\n"
+		"Assign(ParGridFunction self, double const v)\n"
+		"Assign(ParGridFunction self, Vector v)\n"
+		"Assign(ParGridFunction self, PyObject * param)\n"
 		""},
 	 { "ParGridFunction_Save", _wrap_ParGridFunction_Save, METH_VARARGS, "\n"
 		"Save(ParGridFunction self, std::ostream & out)\n"

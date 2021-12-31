@@ -110,7 +110,7 @@ if len(args) == 1:
 		   ' is given')
         elif args[0].ndim != 1:
             raise ValueError('Ndim must be one') 
-        elif args[0].shape[0] != _vector.Vector_Size(self):
+        elif args[0].shape[0] != self.Size():
             raise ValueError('Length does not match')
         else:
             args = (ascontiguousarray(args[0]),)

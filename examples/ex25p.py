@@ -30,16 +30,18 @@ smyid = '.'+'{:0>6d}'.format(myid)
 
 prob = ''
 
+
 def print0(*args, **kwargs):
     if myid == 0:
         print(*args, **kwargs)
     else:
         pass
-    
+
+
 def run(meshfile="",
         order=1,
         ref_levels=0,
-        par_ref_levels=0,        
+        par_ref_levels=0,
         visualization=1,
         herm_conv=True,
         device_config='cpu',
@@ -48,7 +50,8 @@ def run(meshfile="",
     # 2. Enable hardware devices such as GPUs, and programming models such as
     #    CUDA, OCCA, RAJA and OpenMP based on command line options.
     device = mfem.Device(device_config)
-    device.Print()
+    if myid == 0:
+        device.Print()
 
     # 3. Setup the mesh
     if meshfile == '':
@@ -66,7 +69,6 @@ def run(meshfile="",
             exact_known = False
     else:
         exact_known = True
-
 
     meshfile = expanduser(
         join(os.path.dirname(__file__), '..', 'data', meshfile))
@@ -87,7 +89,7 @@ def run(meshfile="",
         length[0, 1] = 0.5
         length[1, 1] = 0.5
         length[2, 1] = 0.5
-    elif prob ==  "beam":
+    elif prob == "beam":
         length[0, 1] = 2.0
     else:
         length[:] = 0.25
@@ -161,7 +163,7 @@ def run(meshfile="",
               "dim": dim,
               "omega": omega,
               "epsilon": epsilon,
-              "prob": prob, 
+              "prob": prob,
               "mu": mu}
     f = mfem.jit.vector(sdim=dim, params=params)(source)
     b = mfem.ParComplexLinearForm(fespace, conv)
@@ -224,7 +226,7 @@ def run(meshfile="",
         diag_func(x, diag)
         for i in range(sdim):
             m[i] = diag[i]
-            
+
     # JIT compiles all functions first. params defines local variables
     # inside the JITed function.
     sig = types.void(types.CPointer(types.double), types.float64[:])
@@ -232,15 +234,15 @@ def run(meshfile="",
     detJ_inv_JT_J_Re = mfem.jit.func(sig, params=params)(detJ_inv_JT_J_Re_f)
     detJ_inv_JT_J_Im = mfem.jit.func(sig, params=params)(detJ_inv_JT_J_Im_f)
     detJ_inv_JT_J_abs = mfem.jit.func(sig, params=params)(detJ_inv_JT_J_abs_f)
-    params = {"StretchFunction": pml.StretchFunction, "dim": dim}    
+    params = {"StretchFunction": pml.StretchFunction, "dim": dim}
     detJ_JT_J_inv_Re = mfem.jit.func(sig, params=params)(detJ_JT_J_inv_Re_f)
     detJ_JT_J_inv_Im = mfem.jit.func(sig, params=params)(detJ_JT_J_inv_Im_f)
     detJ_JT_J_inv_abs = mfem.jit.func(sig, params=params)(detJ_JT_J_inv_abs_f)
-    
+
     pml_c1_Re = mfem.jit.vector(sdim=cdim,
-        params={"diag_func": detJ_inv_JT_J_Re})(dm)
+                                params={"diag_func": detJ_inv_JT_J_Re})(dm)
     pml_c1_Im = mfem.jit.vector(sdim=cdim,
-        params={"diag_func": detJ_inv_JT_J_Im})(dm)
+                                params={"diag_func": detJ_inv_JT_J_Im})(dm)
 
     c1_Re = mfem.ScalarVectorProductCoefficient(muinv, pml_c1_Re)
     c1_Im = mfem.ScalarVectorProductCoefficient(muinv, pml_c1_Im)
@@ -248,9 +250,9 @@ def run(meshfile="",
     restr_c1_Im = mfem.VectorRestrictedCoefficient(c1_Im, attrPML)
 
     pml_c2_Re = mfem.jit.vector(sdim=dim,
-        params={"diag_func": detJ_JT_J_inv_Re})(dm)
+                                params={"diag_func": detJ_JT_J_inv_Re})(dm)
     pml_c2_Im = mfem.jit.vector(sdim=dim,
-        params={"diag_func": detJ_JT_J_inv_Im})(dm)
+                                params={"diag_func": detJ_JT_J_inv_Im})(dm)
     c2_Re = mfem.ScalarVectorProductCoefficient(omeg, pml_c2_Re)
     c2_Im = mfem.ScalarVectorProductCoefficient(omeg, pml_c2_Im)
     restr_c2_Re = mfem.VectorRestrictedCoefficient(c2_Re, attrPML)
@@ -327,7 +329,7 @@ def run(meshfile="",
             prec.FormSystemMatrix(ess_tdof_list, PCOpAh)
 
             # Gauss-Seidel Smoother
-            ams00 = mfem.HypreAMS(PCOpAh.AsHypreParMatrix(), fespace);
+            ams00 = mfem.HypreAMS(PCOpAh.AsHypreParMatrix(), fespace)
             ams11 = mfem.ScaledOperator(ams00, s)
             pc_r = ams00
             pc_i = ams11
@@ -353,9 +355,9 @@ def run(meshfile="",
     # If exact is known compute the error
     if exact_known:
         E_ex_Re = mfem.jit.vector(sdim=dim,
-            params={"exact_solution": exact_solution, "sdim": dim})(E_exact_Re)
-        E_ex_Im = mfem.jit.vector(sdim=dim, 
-            params={"exact_solution": exact_solution, "sdim": dim})(E_exact_Im)
+                                  params={"exact_solution": exact_solution, "sdim": dim})(E_exact_Re)
+        E_ex_Im = mfem.jit.vector(sdim=dim,
+                                  params={"exact_solution": exact_solution, "sdim": dim})(E_exact_Im)
 
         order_quad = max([2, 2 * order + 1])
 
@@ -372,11 +374,11 @@ def run(meshfile="",
 
         print0("")
         print0(" Relative Error (Re part): || E_h - E || / ||E|| = " +
-              "{:g}".format(L2Error_Re / norm_E_Re))
+               "{:g}".format(L2Error_Re / norm_E_Re))
         print0(" Relative Error (Im part): || E_h - E || / ||E|| = " +
-              "{:g}".format(L2Error_Im / norm_E_Im))
+               "{:g}".format(L2Error_Im / norm_E_Im))
         print0(" Total Error : " +
-              "{:g}".format(sqrt(L2Error_Re*L2Error_Re + L2Error_Im*L2Error_Im)))
+               "{:g}".format(sqrt(L2Error_Re*L2Error_Re + L2Error_Im*L2Error_Im)))
         print0("")
 
     pmesh.Print("mesh"+smyid, 8)
@@ -392,14 +394,14 @@ def run(meshfile="",
 
         sol_sock_re = mfem.socketstream("localhost", 19916)
         sol_sock_re.precision(8)
-        sol_sock_re << "parallel " << num_procs << " " << myid << "\n"        
+        sol_sock_re << "parallel " << num_procs << " " << myid << "\n"
         sol_sock_re << "solution\n" << pmesh << x.real() << keys
         sol_sock_re << "window_title 'Soluiton real part'"
         sol_sock_re.flush()
 
         sol_sock_im = mfem.socketstream("localhost", 19916)
         sol_sock_im.precision(8)
-        sol_sock_im << "parallel " << num_procs << " " << myid << "\n"                
+        sol_sock_im << "parallel " << num_procs << " " << myid << "\n"
         sol_sock_im << "solution\n" << pmesh << x.imag() << keys
         sol_sock_im << "window_title 'Soluiton imag part'"
         sol_sock_im.flush()
@@ -409,13 +411,14 @@ def run(meshfile="",
 
         sol_sock = mfem.socketstream("localhost", 19916)
         sol_sock.precision(8)
-        sol_sock << "parallel " << num_procs << " " << myid << "\n"                        
+        sol_sock << "parallel " << num_procs << " " << myid << "\n"
         sol_sock << "solution\n" << pmesh << x_t << keys << "autoscale off\n"
         sol_sock << "window_title 'Harmonic Solution (t = 0.0T)'"
         sol_sock << "pause\n"
         sol_sock.flush()
 
-        print0("GLVis visualization paused. Press space (in the GLVis window) to resume it.")
+        print0(
+            "GLVis visualization paused. Press space (in the GLVis window) to resume it.")
         num_frames = 32
         i = 0
 
@@ -424,7 +427,9 @@ def run(meshfile="",
             oss = "Harmonic Solution (t = " + str(t) + " T)"
             dd = (cos(2.0 * pi * t)*x.real().GetDataArray() +
                   sin(2.0 * pi * t)*x.imag().GetDataArray())
+            # x_t.Assign(mfem.Vector(dd))
             x_t.Assign(dd)
+            sol_sock << "parallel " << num_procs << " " << myid << "\n"
             sol_sock << "solution\n" << pmesh << x_t
             sol_sock << "window_title '" << oss << "'"
             sol_sock.flush()
@@ -446,10 +451,10 @@ class CartesianPML:
             self.comp_dom_bdr[i, 0] = self.dom_bdr[i, 0] + self.length[i, 0]
             self.comp_dom_bdr[i, 1] = self.dom_bdr[i, 1] - self.length[i, 1]
 
-    def SetAttributes(self, mesh): # this mesh is not the same mesh pass to __init__
+    def SetAttributes(self, mesh):  # this mesh is not the same mesh pass to __init__
         # Initialize bdr attributes
         self.elems = mfem.intArray(mesh.GetNE())
-        
+
         for i in range(mesh.GetNBE()):
             mesh.GetBdrElement(i).SetAttribute(i+1)
 
@@ -533,6 +538,7 @@ def source(x, out):
     alpha = -n**2 * r
 
     out[0] = coeff * exp(alpha)
+
 
 def maxwell_solution(x, E, sdim):
     jn = scipy.special.jv
@@ -671,16 +677,17 @@ def E_bdr_data_Im(x, E, sdim, _vdim):
 
 def detJ_JT_J_inv_Re_f(x, D):
     dxs = np.empty(dim, dtype=np.complex128)
-    det = complex(1.0)        
+    det = complex(1.0)
     StretchFunction(x, dxs)
     for i in range(dim):
         det *= dxs[i]
     for i in range(dim):
         D[i] = (det / (dxs[i]**2)).real
 
+
 def detJ_JT_J_inv_Im_f(x, D):
     dxs = np.empty(dim, dtype=np.complex128)
-    det = complex(1.0)    
+    det = complex(1.0)
     StretchFunction(x, dxs)
     for i in range(dim):
         det *= dxs[i]
@@ -756,10 +763,10 @@ if __name__ == "__main__":
                         "--problem-type",
                         action='store', type=int, default=4,
                         help=" 0: beam, 1: disc, 2: lshape, 3: fichera, 4: General")
-    parser.add_argument( "-rs", "--refinements-serial",
+    parser.add_argument("-rs", "--refinements-serial",
                         action='store', type=int, default=1,
                         help="Number of serial refinements")
-    parser.add_argument( "-rp", "--refinements-parallel",
+    parser.add_argument("-rp", "--refinements-parallel",
                         action='store', type=int, default=2,
                         help="Number of parallel refinements")
     parser.add_argument("-mu", "--permeability",
@@ -800,9 +807,8 @@ if __name__ == "__main__":
     run(meshfile=args.mesh,
         order=args.order,
         ref_levels=args.refinements_serial,
-        par_ref_levels=args.refinements_parallel,        
+        par_ref_levels=args.refinements_parallel,
         visualization=args.visualization,
         herm_conv=args.no_hermitian,
         device_config=args.device,
         pa=args.partial_assembly)
-

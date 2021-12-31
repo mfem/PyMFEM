@@ -391,7 +391,7 @@ if __name__ == "__main__":
                         help="Use Number compiled coefficient")
 
     args = parser.parse_args()
-    args.numba = bool(args.numba)    
+    args.numba = bool(args.numba)
     parser.print_options(args)
 
     meshfile = expanduser(

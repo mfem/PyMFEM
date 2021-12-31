@@ -26,6 +26,7 @@ import scipy.special
 
 prob = ''
 
+
 def run(meshfile="",
         order=1,
         ref_levels=0,
@@ -57,7 +58,6 @@ def run(meshfile="",
     else:
         exact_known = True
 
-
     meshfile = expanduser(
         join(os.path.dirname(__file__), '..', 'data', meshfile))
 
@@ -77,7 +77,7 @@ def run(meshfile="",
         length[0, 1] = 0.5
         length[1, 1] = 0.5
         length[2, 1] = 0.5
-    elif prob ==  "beam":
+    elif prob == "beam":
         length[0, 1] = 2.0
     else:
         length[:] = 0.25
@@ -146,7 +146,7 @@ def run(meshfile="",
               "dim": dim,
               "omega": omega,
               "epsilon": epsilon,
-              "prob": prob, 
+              "prob": prob,
               "mu": mu}
     f = mfem.jit.vector(sdim=dim, params=params)(source)
     b = mfem.ComplexLinearForm(fespace, conv)
@@ -209,7 +209,7 @@ def run(meshfile="",
         diag_func(x, diag)
         for i in range(sdim):
             m[i] = diag[i]
-            
+
     # JIT compiles all functions first. params defines local variables
     # inside the JITed function.
     sig = types.void(types.CPointer(types.double), types.float64[:])
@@ -217,15 +217,15 @@ def run(meshfile="",
     detJ_inv_JT_J_Re = mfem.jit.func(sig, params=params)(detJ_inv_JT_J_Re_f)
     detJ_inv_JT_J_Im = mfem.jit.func(sig, params=params)(detJ_inv_JT_J_Im_f)
     detJ_inv_JT_J_abs = mfem.jit.func(sig, params=params)(detJ_inv_JT_J_abs_f)
-    params = {"StretchFunction": pml.StretchFunction, "dim": dim}    
+    params = {"StretchFunction": pml.StretchFunction, "dim": dim}
     detJ_JT_J_inv_Re = mfem.jit.func(sig, params=params)(detJ_JT_J_inv_Re_f)
     detJ_JT_J_inv_Im = mfem.jit.func(sig, params=params)(detJ_JT_J_inv_Im_f)
     detJ_JT_J_inv_abs = mfem.jit.func(sig, params=params)(detJ_JT_J_inv_abs_f)
-    
+
     pml_c1_Re = mfem.jit.vector(sdim=cdim,
-        params={"diag_func": detJ_inv_JT_J_Re})(dm)
+                                params={"diag_func": detJ_inv_JT_J_Re})(dm)
     pml_c1_Im = mfem.jit.vector(sdim=cdim,
-        params={"diag_func": detJ_inv_JT_J_Im})(dm)
+                                params={"diag_func": detJ_inv_JT_J_Im})(dm)
 
     c1_Re = mfem.ScalarVectorProductCoefficient(muinv, pml_c1_Re)
     c1_Im = mfem.ScalarVectorProductCoefficient(muinv, pml_c1_Im)
@@ -233,9 +233,9 @@ def run(meshfile="",
     restr_c1_Im = mfem.VectorRestrictedCoefficient(c1_Im, attrPML)
 
     pml_c2_Re = mfem.jit.vector(sdim=dim,
-        params={"diag_func": detJ_JT_J_inv_Re})(dm)
+                                params={"diag_func": detJ_JT_J_inv_Re})(dm)
     pml_c2_Im = mfem.jit.vector(sdim=dim,
-        params={"diag_func": detJ_JT_J_inv_Im})(dm)
+                                params={"diag_func": detJ_JT_J_inv_Im})(dm)
     c2_Re = mfem.ScalarVectorProductCoefficient(omeg, pml_c2_Re)
     c2_Im = mfem.ScalarVectorProductCoefficient(omeg, pml_c2_Im)
     restr_c2_Re = mfem.VectorRestrictedCoefficient(c2_Re, attrPML)
@@ -338,9 +338,9 @@ def run(meshfile="",
     # If exact is known compute the error
     if exact_known:
         E_ex_Re = mfem.jit.vector(sdim=dim,
-            params={"exact_solution": exact_solution, "sdim": dim})(E_exact_Re)
-        E_ex_Im = mfem.jit.vector(sdim=dim, 
-            params={"exact_solution": exact_solution, "sdim": dim})(E_exact_Im)
+                                  params={"exact_solution": exact_solution, "sdim": dim})(E_exact_Re)
+        E_ex_Im = mfem.jit.vector(sdim=dim,
+                                  params={"exact_solution": exact_solution, "sdim": dim})(E_exact_Im)
 
         order_quad = max([2, 2 * order + 1])
 
@@ -407,6 +407,7 @@ def run(meshfile="",
             dd = (cos(2.0 * pi * t)*x.real().GetDataArray() +
                   sin(2.0 * pi * t)*x.imag().GetDataArray())
             x_t.Assign(dd)
+            # x_t.Assign(mfem.Vector(dd))
             sol_sock << "solution\n" << mesh << x_t
             sol_sock << "window_title '" << oss << "'"
             sol_sock.flush()
@@ -431,7 +432,7 @@ class CartesianPML:
     def SetAttributes(self, mesh):
         # Initialize bdr attributes
         self.elems = mfem.intArray(mesh.GetNE())
-        
+
         for i in range(mesh.GetNBE()):
             mesh.GetBdrElement(i).SetAttribute(i+1)
 
@@ -515,6 +516,7 @@ def source(x, out):
     alpha = -n**2 * r
 
     out[0] = coeff * exp(alpha)
+
 
 def maxwell_solution(x, E, sdim):
     jn = scipy.special.jv
@@ -653,16 +655,17 @@ def E_bdr_data_Im(x, E, sdim, _vdim):
 
 def detJ_JT_J_inv_Re_f(x, D):
     dxs = np.empty(dim, dtype=np.complex128)
-    det = complex(1.0)        
+    det = complex(1.0)
     StretchFunction(x, dxs)
     for i in range(dim):
         det *= dxs[i]
     for i in range(dim):
         D[i] = (det / (dxs[i]**2)).real
 
+
 def detJ_JT_J_inv_Im_f(x, D):
     dxs = np.empty(dim, dtype=np.complex128)
-    det = complex(1.0)    
+    det = complex(1.0)
     StretchFunction(x, dxs)
     for i in range(dim):
         det *= dxs[i]
