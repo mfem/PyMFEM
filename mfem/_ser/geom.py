@@ -523,4 +523,7 @@ _geom.GeometryTypeArray_swigregister(GeometryTypeArray)
 GlobGeometryRefiner = cvar.GlobGeometryRefiner
 
 
+Geometries = Geometry()
+
+
 

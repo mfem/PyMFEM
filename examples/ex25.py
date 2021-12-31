@@ -14,23 +14,22 @@
 '''
 from numba import jit, types, carray
 import numba
+import numba_scipy
 import os
 import mfem.ser as mfem
 from mfem.ser import intArray
 from os.path import expanduser, join, dirname
 import numpy as np
 from numpy import sin, cos, exp, sqrt, pi
-from scipy.special import jv as jn
-from scipy.special import yn
+import scipy.special
+
 
 prob = ''
-
 
 def run(meshfile="",
         order=1,
         ref_levels=0,
         visualization=1,
-        prob=0,
         herm_conv=True,
         device_config='cpu',
         pa=False,
@@ -41,6 +40,7 @@ def run(meshfile="",
     device = mfem.Device(device_config)
     device.Print()
 
+    print(prob)
     # 3. Setup the mesh
     if meshfile == '':
         exact_known = True
@@ -54,12 +54,13 @@ def run(meshfile="",
             meshfile = "fichera.mesh"
         else:
             meshfile = "inline-quad.mesh"
-            exact_known = True
+            exact_known = False
     else:
         exact_known = True
 
+
     meshfile = expanduser(
-        join(os.path.dirname(__file__), '..', 'data', args.mesh))
+        join(os.path.dirname(__file__), '..', 'data', meshfile))
 
     mesh = mfem.Mesh(meshfile, 1, 1)
     dim = mesh.Dimension()
@@ -68,16 +69,16 @@ def run(meshfile="",
     length = np.zeros((dim, 2))
 
     # 4. Setup the Cartesian PML region.
-    if prob == "beam":
+    if prob == "disc":
         length[:] = 0.2
-    elif prob == "disc":
+    elif prob == "lshape":
         length[0, 0] = 0.1
         length[1, 0] = 0.1
-    elif prob == "lshape":
+    elif prob == "fichera":
         length[0, 1] = 0.5
         length[1, 1] = 0.5
         length[2, 1] = 0.5
-    elif prob == "fichera":
+    elif prob ==  "beam":
         length[0, 1] = 2.0
     else:
         length[:] = 0.25
@@ -92,7 +93,7 @@ def run(meshfile="",
 
     # 6. Set element attributes in order to distinguish elements in the
     #    PML region
-    pml.SetAttributes()
+    pml.SetAttributes(mesh)
 
     # 7. Define a finite element space on the mesh. Here we use the Nedelec
     #    finite elements of the specified order.
@@ -108,6 +109,7 @@ def run(meshfile="",
     #    problem type.
 
     battrs = mesh.GetBdrAttributeArray()
+
     if len(battrs) > 0:
         if prob == "lshape" or prob == "fichera":
             ess_bdr0 = [0]*np.max(battrs)
@@ -115,7 +117,7 @@ def run(meshfile="",
             for j in range(mesh.GetNBE()):
                 bdrgeom = mesh.GetBdrElementBaseGeometry(j)
                 tr = mesh.GetBdrElementTransformation(j)
-                center = tr.Transform(Geometries.GetCenter(bdrgeom))
+                center = tr.Transform(mfem.Geometries.GetCenter(bdrgeom))
 
                 k = mesh.GetBdrAttribute(j)
                 if prob == "lshape":
@@ -146,6 +148,7 @@ def run(meshfile="",
               "dim": dim,
               "omega": omega,
               "epsilon": epsilon,
+              "prob": prob, 
               "mu": mu}
     f = mfem.jit.vector(sdim=dim, params=params)(source)
     b = mfem.ComplexLinearForm(fespace, conv)
@@ -203,43 +206,38 @@ def run(meshfile="",
 
     cdim = 1 if dim == 2 else dim
 
-    def dm(x, m):
-        diag = np.empty(dim)
+    def dm(x, m, sdim, _vdim):
+        diag = np.empty(sdim)
         diag_func(x, diag)
-        for i in range(dim):
-            for j in range(dim):
-                if i != j:
-                    m[i*dim+j] = 0.0
-                else:
-                    m[i**2] = diag[i]
-
+        for i in range(sdim):
+            m[i] = diag[i]
+            
     # JIT compiles all functions first. params defines local variables
     # inside the JITed function.
     sig = types.void(types.CPointer(types.double), types.float64[:])
-    params = {"StretchFunction": pml.StretchFunction, "dim": cdim}
+    params = {"StretchFunction": pml.StretchFunction, "dim": dim}
     detJ_inv_JT_J_Re = mfem.jit.func(sig, params=params)(detJ_inv_JT_J_Re_f)
-    detJ_inv_JT_J_Im = mfem.jit.func(sig, params=params)(detJ_inv_JT_J_Im_f)    
+    detJ_inv_JT_J_Im = mfem.jit.func(sig, params=params)(detJ_inv_JT_J_Im_f)
     detJ_inv_JT_J_abs = mfem.jit.func(sig, params=params)(detJ_inv_JT_J_abs_f)
     params = {"StretchFunction": pml.StretchFunction, "dim": dim}    
     detJ_JT_J_inv_Re = mfem.jit.func(sig, params=params)(detJ_JT_J_inv_Re_f)
     detJ_JT_J_inv_Im = mfem.jit.func(sig, params=params)(detJ_JT_J_inv_Im_f)
-    detJ_JT_J_inv_abs = mfem.jit.func(sig, params=params)(detJ_JT_J_inv_abs_f)            
+    detJ_JT_J_inv_abs = mfem.jit.func(sig, params=params)(detJ_JT_J_inv_abs_f)
     
     pml_c1_Re = mfem.jit.vector(sdim=cdim,
-        params={"diag_func": detJ_inv_JT_J_Re, "dim": cdim})(dm)
-    pml_c1_Im = mfem.jit.vector(
-        params={"diag_func": detJ_inv_JT_J_Im, "dim": cdim})(dm)
+        params={"diag_func": detJ_inv_JT_J_Re})(dm)
+    pml_c1_Im = mfem.jit.vector(sdim=cdim,
+        params={"diag_func": detJ_inv_JT_J_Im})(dm)
 
-    print(muinv, pml_c1_Re)    
     c1_Re = mfem.ScalarVectorProductCoefficient(muinv, pml_c1_Re)
     c1_Im = mfem.ScalarVectorProductCoefficient(muinv, pml_c1_Im)
     restr_c1_Re = mfem.VectorRestrictedCoefficient(c1_Re, attrPML)
     restr_c1_Im = mfem.VectorRestrictedCoefficient(c1_Im, attrPML)
 
-    pml_c2_Re = mfem.jit.vector(
-        params={"diag_func": detJ_JT_J_inv_Re, "cdim": dim})(dm)
-    pml_c2_Im = mfem.jit.vector(
-        params={"diag_func": detJ_JT_J_inv_Im, "cdim": dim})(dm)
+    pml_c2_Re = mfem.jit.vector(sdim=dim,
+        params={"diag_func": detJ_JT_J_inv_Re})(dm)
+    pml_c2_Im = mfem.jit.vector(sdim=dim,
+        params={"diag_func": detJ_JT_J_inv_Im})(dm)
     c2_Re = mfem.ScalarVectorProductCoefficient(omeg, pml_c2_Re)
     c2_Im = mfem.ScalarVectorProductCoefficient(omeg, pml_c2_Im)
     restr_c2_Re = mfem.VectorRestrictedCoefficient(c2_Re, attrPML)
@@ -351,7 +349,6 @@ def run(meshfile="",
         birs = [mfem.IntRules.Get(i, order_quad)
                 for i in range(mfem.Geometry.NumGeom)]
 
-        print(E_ex_Re, birs, pml.elems)        
         L2Error_Re = x.real().ComputeL2Error(E_ex_Re, birs, pml.elems)
         L2Error_Im = x.imag().ComputeL2Error(E_ex_Im, birs, pml.elems)
 
@@ -369,6 +366,7 @@ def run(meshfile="",
               "{:g}".format(sqrt(L2Error_Re*L2Error_Re + L2Error_Im*L2Error_Im)))
         print("")
 
+    mesh.Print("ex25.mesh", 8)
     x.real().Save("ex25-sol_r.gf", 8)
     x.imag().Save("ex25-sol_i.gf", 8)
 
@@ -405,7 +403,7 @@ def run(meshfile="",
         num_frames = 32
         i = 0
 
-        while i in range(num_frames):
+        for i in range(num_frames):
             t = (i % num_frames) / num_frames
             oss = "Harmonic Solution (t = " + str(t) + " T)"
             dd = (cos(2.0 * pi * t)*x.real().GetDataArray() +
@@ -418,26 +416,24 @@ def run(meshfile="",
 
 class CartesianPML:
     def __init__(self, mesh, length):
-        self.mesh = mesh
         self.length = length
         self.dim = mesh.Dimension()
-        self.elems = mfem.intArray(mesh.GetNE())
-        self.SetBoundaries()
+        self.SetBoundaries(mesh)
 
-    def SetBoundaries(self):
+    def SetBoundaries(self, mesh):
         self.comp_dom_bdr = np.zeros((self.dim, 2))
         self.dom_bdr = np.zeros((self.dim, 2))
-        pmin, pmax = self.mesh.GetBoundingBox()
+        pmin, pmax = mesh.GetBoundingBox()
         for i in range(self.dim):
             self.dom_bdr[i, 0] = pmin[i]
             self.dom_bdr[i, 1] = pmax[i]
             self.comp_dom_bdr[i, 0] = self.dom_bdr[i, 0] + self.length[i, 0]
             self.comp_dom_bdr[i, 1] = self.dom_bdr[i, 1] - self.length[i, 1]
 
-    def SetAttributes(self):
+    def SetAttributes(self, mesh):
         # Initialize bdr attributes
-        mesh = self.mesh
-
+        self.elems = mfem.intArray(mesh.GetNE())
+        
         for i in range(mesh.GetNBE()):
             mesh.GetBdrElement(i).SetAttribute(i+1)
 
@@ -462,7 +458,7 @@ class CartesianPML:
                     if (coords[comp] > self.comp_dom_bdr[comp, 1] or
                             coords[comp] < self.comp_dom_bdr[comp, 0]):
                         in_pml = True
-                    break
+                        break
 
             if in_pml:
                 self.elems[i] = 0
@@ -482,15 +478,6 @@ class CartesianPML:
                   "mu": mu}
 
         def _StretchFunction(x, dxs):
-            '''
-            x:
-                array
-            dxs:
-                array
-            params:
-                comp_domain_bdr
-                length
-            '''
             zi = 1j
 
             n = 2.0
@@ -531,8 +518,9 @@ def source(x, out):
 
     out[0] = coeff * exp(alpha)
 
-
 def maxwell_solution(x, E, sdim):
+    jn = scipy.special.jv
+    yn = scipy.special.yn
     # Initialize
     for i in range(sdim):
         E[i] = 0.0
@@ -555,11 +543,11 @@ def maxwell_solution(x, E, sdim):
             beta = k * r
 
             # Bessel functions
-            Ho = jn(0, beta) + zi * yn(0, beta)
-            Ho_r = -k * (jn(1, beta) + zi * yn(1, beta))
+            Ho = jn(0.0, beta) + zi * yn(0, beta)
+            Ho_r = -k * (jn(1.0, beta) + zi * yn(1, beta))
             Ho_rr = -k * k * (1.0 / beta *
-                              (jn(1, beta) + zi * yn(1, beta)) -
-                              (jn(2, beta) + zi * yn(2, beta)))
+                              (jn(1., beta) + zi * yn(1, beta)) -
+                              (jn(2., beta) + zi * yn(2, beta)))
 
             # First derivatives
             r_x = x0 / r
@@ -572,19 +560,22 @@ def maxwell_solution(x, E, sdim):
             val_xy = 0.25 * zi * (r_xy * Ho_r + r_x * r_y * Ho_rr)
             E[0] = zi / k * (k * k * val + val_xx)
             E[1] = zi / k * val_xy
-        elif dim == 3:
+        elif sdim == 3:
             x0 = x[0] + shift[0]
             x1 = x[1] + shift[1]
             x2 = x[2] + shift[2]
             r = sqrt(x0 * x0 + x1 * x1 + x2 * x2)
 
+            #print(x0, x1, x2)
             r_x = x0 / r
             r_y = x1 / r
             r_z = x2 / r
+            #print(r_x, r_y, r_z)
             r_xx = (1.0 / r) * (1.0 - r_x * r_x)
             r_yx = -(r_y / r) * r_x
             r_zx = -(r_z / r) * r_x
-
+            #print(r_xx, r_yx, r_zx)
+            #print(k)
             val = exp(zi * k * r) / r
             val_r = val / r * (zi * k * r - 1.0)
             val_rr = val / (r * r) * (-k * k * r * r
@@ -595,6 +586,7 @@ def maxwell_solution(x, E, sdim):
             val_zx = val_rr * r_x * r_z + val_r * r_zx
 
             alpha = zi * k / 4.0 / pi / k / k
+            #print(alpha, val_yx, val_zx)
             E[0] = alpha * (k * k * val + val_xx)
             E[1] = alpha * val_yx
             E[2] = alpha * val_zx
@@ -605,7 +597,7 @@ def maxwell_solution(x, E, sdim):
         if sdim == 3:
             k10 = sqrt(k * k - pi*pi)
             E[1] = -zi * k / pi * sin(pi*x[2])*exp(zi * k10 * x[0])
-        elif dim == 2:
+        elif sdim == 2:
             E[1] = -zi * k / pi * exp(zi * k * x[0])
         else:
             pass
@@ -665,17 +657,16 @@ def E_bdr_data_Im(x, E, sdim, _vdim):
 
 def detJ_JT_J_inv_Re_f(x, D):
     dxs = np.empty(dim, dtype=np.complex128)
-    det = 1.0
+    det = complex(1.0)        
     StretchFunction(x, dxs)
     for i in range(dim):
         det *= dxs[i]
     for i in range(dim):
         D[i] = (det / (dxs[i]**2)).real
 
-
 def detJ_JT_J_inv_Im_f(x, D):
     dxs = np.empty(dim, dtype=np.complex128)
-    det = 1.0
+    det = complex(1.0)    
     StretchFunction(x, dxs)
     for i in range(dim):
         det *= dxs[i]
@@ -685,7 +676,7 @@ def detJ_JT_J_inv_Im_f(x, D):
 
 def detJ_JT_J_inv_abs_f(x, D):
     dxs = np.empty(dim, dtype=np.complex128)
-    det = 1.0
+    det = complex(1.0)
     StretchFunction(x, dxs)
     for i in range(dim):
         det *= dxs[i]
@@ -699,9 +690,9 @@ def detJ_inv_JT_J_Re_f(x, D):
     StretchFunction(x, dxs)
     for i in range(dim):
         det *= dxs[i]
-    # / in the 2D case the coefficient is scalar 1/det(J)
+    # in the 2D case the coefficient is scalar 1/det(J)
     if dim == 2:
-        D = (1.0 / det).real
+        D[0] = (1.0 / det).real
     else:
         for i in range(dim):
             D[i] = (dxs[i]**2 / det).real
@@ -713,9 +704,9 @@ def detJ_inv_JT_J_Im_f(x, D):
     StretchFunction(x, dxs)
     for i in range(dim):
         det *= dxs[i]
-    # / in the 2D case the coefficient is scalar 1/det(J)
+    # in the 2D case the coefficient is scalar 1/det(J)
     if dim == 2:
-        D = (1.0 / det).imag
+        D[0] = (1.0 / det).imag
     else:
         for i in range(dim):
             D[i] = (dxs[i]**2 / det).imag
@@ -727,9 +718,9 @@ def detJ_inv_JT_J_abs_f(x, D):
     StretchFunction(x, dxs)
     for i in range(dim):
         det *= dxs[i]
-    # / in the 2D case the coefficient is scalar 1/det(J)
+    # in the 2D case the coefficient is scalar 1/det(J)
     if dim == 2:
-        D = abs(1.0 / det)
+        D[0] = abs(1.0 / det)
     else:
         for i in range(dim):
             D[i] = abs(dxs[i]**2 / det)
@@ -741,18 +732,18 @@ if __name__ == "__main__":
     parser = ArgParser(
         description='Ex25 (PML)')
     parser.add_argument('-m', '--mesh',
-                        default='inline-quad.mesh',
+                        default="",
                         action='store', type=str,
                         help='Mesh file to use.')
     parser.add_argument('-o', '--order',
                         action='store', default=1, type=int,
                         help="Finite element order (polynomial degree)")
-    parser.add_argument("-p",
+    parser.add_argument("-prob",
                         "--problem-type",
-                        action='store', type=int, default=0,
+                        action='store', type=int, default=4,
                         help=" 0: beam, 1: disc, 2: lshape, 3: fichera, 4: General")
-    parser.add_argument("-r", "--refine",
-                        action='store', type=int, default=0,
+    parser.add_argument("-ref", "--refine",
+                        action='store', type=int, default=3,
                         help="Number of times to refine the mesh uniformly.")
     parser.add_argument("-mu", "--permeability",
                         action='store', type=float, default=1.0,
@@ -763,7 +754,7 @@ if __name__ == "__main__":
     parser.add_argument("-f", "--frequency",
                         action='store',
                         type=float,
-                        default=-1.0,
+                        default=5.0,
                         help="Set the frequency for the exact")
     parser.add_argument("-no-herm", "--no-hermitian",
                         action='store_false',

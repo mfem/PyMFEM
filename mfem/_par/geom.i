@@ -45,4 +45,9 @@ namespace mfem{
  }
 };
 
+%pythoncode %{
+Geometries = Geometry()
+%}
+
+
 
