@@ -178,6 +178,8 @@ class FaceIntegrator(mfem.NonlinearFormIntegrator):
         self.eip2 = mfem.IntegrationPoint()
         super(FaceIntegrator, self).__init__()
 
+        self.fluxNA = np.atleast_2d(self.fluxN.GetDataArray())
+        
     def AssembleFaceVector(self, el1, el2, Tr, elfun, elvect):
         num_equation = globals()['num_equation']
         # Compute the term <F.n(u),[w]> on the interior faces.
@@ -209,6 +211,12 @@ class FaceIntegrator(mfem.NonlinearFormIntegrator):
             intorder += 1
 
         ir = mfem.IntRules.Get(Tr.GetGeometryType(), int(intorder))
+        
+        mat1A = elvect1_mat.GetDataArray()
+        mat2A = elvect2_mat.GetDataArray()
+        shape1A = np.atleast_2d(self.shape1.GetDataArray())
+        shape2A = np.atleast_2d(self.shape2.GetDataArray())
+        
         for i in range(ir.GetNPoints()):
             ip = ir.IntPoint(i)
             Tr.Loc1.Transform(ip, self.eip1)
@@ -237,13 +245,8 @@ class FaceIntegrator(mfem.NonlinearFormIntegrator):
             self.fluxN *= ip.weight
 
             #
-            fluxN = np.atleast_2d(self.fluxN.GetDataArray())
-            shape1 = np.atleast_2d(self.shape1.GetDataArray())
-            shape2 = np.atleast_2d(self.shape2.GetDataArray())
-            mat1 = elvect1_mat.GetDataArray()
-            mat2 = elvect2_mat.GetDataArray()
-            mat1 -= shape1.transpose().dot(fluxN)
-            mat2 += shape2.transpose().dot(fluxN)
+            mat1A -= shape1A.transpose().dot(self.fluxNA)
+            mat2A += shape2A.transpose().dot(self.fluxNA)
             '''
             for k in range(num_equation):
                 for s in range(dof1):
@@ -274,7 +277,8 @@ class RiemannSolver(object):
         ComputeFluxDotN(state1, nor, self.flux1)
         ComputeFluxDotN(state2, nor, self.flux2)
 
-        normag = np.sqrt(np.sum(nor.GetDataArray()**2))
+        #normag = np.sqrt(np.sum(nor.GetDataArray()**2))
+        normag = nor.Norml2()
 
         '''
         for i in range(num_equation):
@@ -292,7 +296,7 @@ def StateIsPhysical(state, dim):
     specific_heat_ratio = globals()["specific_heat_ratio"]
 
     den = state[0]
-    den_vel = state.GetDataArray()[1:1+dim]
+    #den_vel = state.GetDataArray()[1:1+dim]
     den_energy = state[1 + dim]
 
     if (den < 0):
@@ -302,7 +306,8 @@ def StateIsPhysical(state, dim):
         print("Negative energy: " + str(state.GetDataArray()))
         return False
 
-    den_vel2 = np.sum(den_vel**2)/den
+    #den_vel2 = np.sum(den_vel**2)/den
+    den_vel2 = (state[1:1+dim].Norml2())**2/den
     pres = (specific_heat_ratio - 1.0) * (den_energy - 0.5 * den_vel2)
     if (pres <= 0):
         print("Negative pressure: " + str(state.GetDataArray()))
@@ -371,11 +376,12 @@ class InitialCondition(mfem.VectorPyCoefficient):
 
 def ComputePressure(state, dim):
     den = state[0]
-    den_vel = state.GetDataArray()[1:1+dim]
+    #den_vel = state.GetDataArray()[1:1+dim]
     den_energy = state[1 + dim]
 
     specific_heat_ratio = globals()["specific_heat_ratio"]
-    den_vel2 = np.sum(den_vel**2)/den
+    #den_vel2 = np.sum(den_vel**2)/den
+    den_vel2 = (state[1:1+dim].Norml2())**2/den    
     pres = (specific_heat_ratio - 1.0) * (den_energy - 0.5 * den_vel2)
 
     return pres
@@ -415,7 +421,7 @@ def ComputeFluxDotN(state, nor, fluxN):
 
     pres = ComputePressure(state, dim)
 
-    den_velN = np.sum(den_vel * nor)
+    den_velN = den_vel.dot(nor)
 
     fluxN[0] = den_velN
     fluxN[1:1+dim] = den_velN * den_vel / den + pres * nor
@@ -428,11 +434,7 @@ def ComputeMaxCharSpeed(state, dim):
     specific_heat_ratio = globals()["specific_heat_ratio"]
 
     den = state[0]
-    den_vel = state.GetDataArray()[1:1+dim]
-
-    den_vel2 = np.sum(den_vel**2)
-    den_vel2 /= den
-
+    den_vel2 = (state[1:1+dim].Norml2())**2/den
     pres = ComputePressure(state, dim)
 
     sound = np.sqrt(specific_heat_ratio * pres / den)
