@@ -1,8 +1,7 @@
 %module(package="mfem._par") array
-
 %feature("autodoc", "1");
 
-%rename(Equal) mfem::Array <class T>::operator=;
+//%rename(Equal) mfem::Array <class T>::operator=;
 %{
 #include <fstream>  
 #include <iostream>
@@ -27,17 +26,19 @@ OSTREAM_TYPEMAP(std::ostream&)
 ISTREAM_TYPEMAP(std::istream&)
 
 %import "mem_manager.i"
+%import "../common/memorytype_typemap.i"
+ENUM_TO_MEMORYTYPE(mfem::MemoryType mt)
 
+ /*  boolArray, intArray, doubleArray */
 %import "../common/array_listtuple_typemap.i"
 ARRAY_LISTTUPLE_INPUT(int, PyLong_AsLong)
 ARRAY_LISTTUPLE_INPUT(double, PyFloat_AsDouble)
-
-%import "../common/memorytype_typemap.i"
-ENUM_TO_MEMORYTYPE(mfem::MemoryType mt)
+ARRAY_LISTTUPLE_INPUT(bool, PyObject_IsTrue)
 
 %import "../common/data_size_typemap.i"
 XXXPTR_SIZE_IN(int *data_, int asize, int)
 XXXPTR_SIZE_IN(double *data_, int asize, double)
+XXXPTR_SIZE_IN(bool *data_, int asize, bool)
 
 %pythonappend mfem::Array::Array %{
   if len(args) == 1 and isinstance(args[0], list):
@@ -131,3 +132,5 @@ namespace mfem{
 %import "../common/array_instantiation_macro.i"
 INSTANTIATE_ARRAY_INT
 INSTANTIATE_ARRAY_DOUBLE
+IGNORE_ARRAY_METHODS(bool)
+INSTANTIATE_ARRAY_BOOL

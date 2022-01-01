@@ -482,15 +482,6 @@ class GridFunction(mfem._ser.vector.Vector):
         return _gridfunc.GridFunction_ComputeFlux(self, blfi, flux, wcoef, subdomain)
     ComputeFlux = _swig_new_instance_method(_gridfunc.GridFunction_ComputeFlux)
 
-    def Assign(self, *args):
-        r"""
-        Assign(GridFunction self, GridFunction rhs) -> GridFunction
-        Assign(GridFunction self, double value) -> GridFunction
-        Assign(GridFunction self, Vector v) -> GridFunction
-        """
-        return _gridfunc.GridFunction_Assign(self, *args)
-    Assign = _swig_new_instance_method(_gridfunc.GridFunction_Assign)
-
     def Update(self):
         r"""Update(GridFunction self)"""
         return _gridfunc.GridFunction_Update(self)
@@ -550,6 +541,43 @@ class GridFunction(mfem._ser.vector.Vector):
         __init__(GridFunction self, FiniteElementSpace fes, Vector v, int offset) -> GridFunction
         """
         _gridfunc.GridFunction_swiginit(self, _gridfunc.new_GridFunction(*args))
+
+    def Assign(self, *args):
+        r"""
+        Assign(GridFunction self, double const v)
+        Assign(GridFunction self, Vector v)
+        Assign(GridFunction self, GridFunction v)
+        Assign(GridFunction self, PyObject * param)
+        """
+
+        from numpy import ndarray, ascontiguousarray, array
+        keep_link = False
+        if len(args) == 1:
+            if isinstance(args[0], ndarray):
+                if args[0].dtype != 'float64':
+                    raise ValueError('Must be float64 array ' + str(args[0].dtype) +
+        		   ' is given')
+                elif args[0].ndim != 1:
+                    raise ValueError('Ndim must be one') 
+                elif args[0].shape[0] != self.Size():
+                    raise ValueError('Length does not match')
+                else:
+                    args = (ascontiguousarray(args[0]),)
+            elif isinstance(args[0], tuple):
+                args = (array(args[0], dtype = float),)      
+            elif isinstance(args[0], list):	      
+                args = (array(args[0], dtype = float),)      
+            else:
+                pass
+
+
+        val = _gridfunc.GridFunction_Assign(self, *args)
+
+        return self
+
+
+        return val
+
 
     def SaveToFile(self, gf_file, precision):
         r"""SaveToFile(GridFunction self, char const * gf_file, int const precision)"""

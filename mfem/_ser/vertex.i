@@ -1,7 +1,8 @@
 %module(package="mfem._ser") vertex
+  
 %{
-#include  "mfem.hpp"
-#include "mesh/vertex.hpp"
+#include "mfem.hpp"
+#include "pyoperator.hpp"      
 #include "numpy/arrayobject.h"    
 %}
 

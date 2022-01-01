@@ -1,8 +1,7 @@
 %module(package="mfem._ser") fe_nd
 %{
 #include  "mfem.hpp"
-#include "fem/fe/fe_nd.hpp"
-#include "mesh/hexahedron.hpp"
+#include "pyoperator.hpp"      
 #include "numpy/arrayobject.h"    
 %}
 

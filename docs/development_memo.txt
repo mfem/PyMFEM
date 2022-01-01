@@ -91,7 +91,7 @@ $ mpirun -np 4 xterm -e "gdb -x gdb.in python"
 $ mpirun -np 2 xterm -sl 1000 -hold -e "valgrind python model.py -p"
 
 ### profiling
-python -m cProfile -o output ../example/ex18.py
+python -m cProfile -o output ../examples/ex18.py
 
 
 ### test sequence for centos7.9 (prepared during communication Issue#109)

@@ -1,7 +1,7 @@
 %module(package="mfem._par") quadrilateral
 %{
 #include  "mfem.hpp"
-#include "mesh/quadrilateral.hpp"
+#include "pyoperator.hpp"      
 #include "numpy/arrayobject.h"    
 %}
 

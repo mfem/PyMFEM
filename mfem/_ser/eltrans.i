@@ -1,10 +1,8 @@
 %module (package="mfem._ser") eltrans
 
 %{
-#include "mfem.hpp"  
-#include "general/array.hpp"
-#include "fem/intrules.hpp"
-#include "fem/eltrans.hpp"
+#include "mfem.hpp"
+#include "pyoperator.hpp"  
 #include "numpy/arrayobject.h"
 #include "../common/io_stream.hpp"
 %}

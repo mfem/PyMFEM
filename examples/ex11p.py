@@ -220,6 +220,7 @@ if (visualization):
                   ", Lambda = " + str(eigenvalues[i]))
 
         # convert eigenvector from HypreParVector to ParGridFunction
+        print(lobpcg.GetEigenvector(i))
         x.Assign(lobpcg.GetEigenvector(i))
 
         mode_sock.send_text("parallel " + str(num_procs) + " " + str(myid))

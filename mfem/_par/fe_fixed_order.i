@@ -1,8 +1,7 @@
 %module(package="mfem._par") fe_fixed_order
 %{
 #include  "mfem.hpp"
-#include "fem/fe/fe_fixed_order.hpp"
-#include "mesh/hexahedron.hpp"
+#include "pyoperator.hpp"      
 #include "numpy/arrayobject.h"    
 %}
 

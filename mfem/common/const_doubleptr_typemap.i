@@ -14,7 +14,7 @@
   if (!PyList_Check($input) && !PyTuple_Check($input)) {
     if (SWIG_ConvertPtr($input, (void **) &temp_ptr, $descriptor(const double *), 0 |0) == -1) {
        if (SWIG_ConvertPtr($input, (void **) &temp_vec, $descriptor(mfem::Vector *), 0 |0) == -1) {
-           if (!PyArray_Check($input) || !PyArray_ISFLOAT($input)){	 
+	 if (!PyArray_Check($input) || !PyArray_ISFLOAT(reinterpret_cast<PyArrayObject *>($input))){
               PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *double/Vector/numpy float array");
               return NULL;
 	   } else {
@@ -70,7 +70,7 @@
          PyErr_Clear();
          if (SWIG_ConvertPtr($input, (void **) &ptr, $descriptor(mfem::Vector *), 0 |0) == -1) {
             PyErr_Clear();
-            if (!PyArray_Check($input) || !PyArray_ISFLOAT($input)){
+            if (!PyArray_Check($input) || !PyArray_ISFLOAT(reinterpret_cast<PyArrayObject *>($input))){
               $1 = 0;	      
 	    } else {
               $1 = 1;  // accept numpy float array

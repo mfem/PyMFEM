@@ -14,7 +14,7 @@
   if (!PyList_Check($input) && !PyTuple_Check($input)) {
     if (SWIG_ConvertPtr($input, (void **) &temp_ptr, $descriptor(const int *), 0 |0) == -1) {
        if (SWIG_ConvertPtr($input, (void **) &temp_arr, $descriptor(mfem::Array<int> *), 0 |0) == -1) {
-         if (!PyArray_Check($input) || !PyArray_ISINTEGER($input)){	 
+         if (!PyArray_Check($input) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>($input))){
             PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple/const *int/Vector/numpy int array");
             return NULL;
 	 } else {
@@ -74,7 +74,7 @@
       if (!PyList_Check($input) && !PyTuple_Check($input)) {
          PyErr_Clear();
          if (SWIG_ConvertPtr($input, (void **) &ptr, $descriptor(mfem::Array<int> *), 0 |0) == -1) {
-            if (!PyArray_Check($input) || !PyArray_ISINTEGER($input)){
+	   if (!PyArray_Check($input) || !PyArray_ISINTEGER(reinterpret_cast<PyArrayObject *>($input))){
               $1 = 0;	      
 	    } else {
               $1 = 1;  // accept numpy int array

@@ -1,11 +1,12 @@
 %module(package="mfem._par") element
+  
 %{
-#include "mesh/element.hpp"
-#include "general/table.hpp"
-  //#include "fem/intrules.hpp"  
-#include <iostream>
-#include "numpy/arrayobject.h"      
+#include <iostream>  
+#include "mfem.hpp"
+#include "pyoperator.hpp"      
+#include "numpy/arrayobject.h"    
 %}
+
 %init %{
 import_array();
 %}
@@ -29,7 +30,7 @@ import_array();
      const int *v = self->GetVertices();
      npy_intp dims[] = {L};
      PyObject *array = PyArray_SimpleNew(1, dims, NPY_INT);
-     int *x    = (int*)PyArray_DATA(array);
+     int *x    = (int*)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      for (n = 0; n < L; n++) {
         x[n] = v[n];
      }

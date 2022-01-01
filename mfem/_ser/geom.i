@@ -1,8 +1,8 @@
 %module(package="mfem._ser") geom
 %{
 #include "mfem.hpp"
-#include "fem/geom.hpp"
 #include "numpy/arrayobject.h"
+#include "pyoperator.hpp"      
 #include "../common/io_stream.hpp"      
 %}
 
@@ -46,5 +46,7 @@ namespace mfem{
  }
 };
       
-
+%pythoncode %{
+Geometries = Geometry()
+%}
 

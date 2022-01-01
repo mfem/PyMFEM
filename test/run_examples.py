@@ -9,7 +9,7 @@ Test for PyMFEM
   and compare numbers in output.
 
   Usage
-    usage: test.py [-h] [-np NP] [-verbose] [-parallel] [-serial]
+    usage: run_examples.py [-h] [-np NP] [-verbose] [-parallel] [-serial]
                [-clean] [-ex EX] [-mfempdir '../../mfem']
                [-mfemsdir '../../mfem_ser']
     optional arguments:
@@ -405,8 +405,9 @@ if __name__ == "__main__":
             print("Serial Test \t" + bcolors.FAIL +
                   " ".join(fails) + bcolors.ENDC)
             sys.exit(1)
-        print("Serial Test Skipped due to the lack of Python vesion \t" + bcolors.FAIL +
-              " ".join(skipped) + bcolors.ENDC)            
+        if len(skipped) > 0:            
+            print("Serial Test Skipped due to the lack of Python vesion \t" + bcolors.FAIL +
+               " ".join(skipped) + bcolors.ENDC)            
 
     if testp and len(resultp) != 0:
         if all(resultp):
@@ -417,5 +418,6 @@ if __name__ == "__main__":
                   " ".join(failp) + bcolors.ENDC)
             sys.exit(1)
 
-        print("Parallel Test Skipped due to the lack of Python vesion \t" + bcolors.FAIL +
-              " ".join(skippedp) + bcolors.ENDC)
+        if len(skippedp) > 0:
+            print("Parallel Test Skipped due to the lack of Python vesion \t" + bcolors.FAIL +
+                 " ".join(skippedp) + bcolors.ENDC)

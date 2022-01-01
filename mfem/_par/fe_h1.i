@@ -1,8 +1,7 @@
 %module(package="mfem._par") fe_h1
 %{
 #include  "mfem.hpp"
-#include "fem/fe/fe_h1.hpp"
-#include "mesh/hexahedron.hpp"
+#include "pyoperator.hpp"      
 #include "numpy/arrayobject.h"    
 %}
 

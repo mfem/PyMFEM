@@ -2291,7 +2291,31 @@ try:
     from inspect import signature
 
     class _JIT(object):
-        def scalar(self, sdim=3, td=False):
+        def _copy_func_and_apply_params(self, f, params):
+            import copy
+            import types
+            import functools
+
+            """Based on https://stackoverflow.com/a/13503277/2988730 (@unutbu)"""
+            globals = f.__globals__.copy()
+            for k in params:
+                globals[k] = params[k]
+            g = types.FunctionType(f.__code__, globals, name=f.__name__,
+                                   argdefs=f.__defaults__, closure=f.__closure__)
+            g = functools.update_wrapper(g, f)
+            g.__module__ = f.__module__
+            g.__kwdefaults__ = copy.copy(f.__kwdefaults__)
+            return g
+
+        def func(self, sig, params):
+            def dec(func):
+                from numba import jit
+                gfunc=self._copy_func_and_apply_params(func, params)
+                ff = jit(sig)(gfunc)
+                return ff
+            return dec
+
+        def scalar(self, sdim=3, td=False, params={}):
             def dec(func):
                 l = len(signature(func).parameters)
                 if l == 1 and not td:
@@ -2308,11 +2332,12 @@ try:
                     sig = scalar_sig_t
                     use_0 = 0			  			  			  
                 from numba import cfunc
-                ff = cfunc(sig)(func)
+                gfunc=self._copy_func_and_apply_params(func, params)
+                ff = cfunc(sig)(gfunc)
                 coeff = NumbaFunction(ff, sdim, td).GenerateCoefficient(use_0)
                 return coeff
             return dec
-        def vector(self, sdim=3, vdim=-1, td=False):
+        def vector(self, sdim=3, vdim=-1, td=False, params={}):
             vdim = sdim if vdim==-1 else vdim
             def dec(func):
                 l = len(signature(func).parameters)
@@ -2334,11 +2359,12 @@ try:
                 else:
                     assert False, "Unsupported signature type"
                 from numba import cfunc
-                ff = cfunc(sig)(func)
+                gfunc=self._copy_func_and_apply_params(func, params)		      
+                ff = cfunc(sig)(gfunc)
                 coeff = VectorNumbaFunction(ff, sdim, vdim, td).GenerateCoefficient(use_0)
                 return coeff
             return dec
-        def matrxi(self, sdim=3, vdim=-1, td=False):
+        def matrix(self, sdim=3, vdim=-1, td=False, params={}):
             vdim = sdim if vdim==-1 else vdim				   
             def dec(func):
                 l = len(signature(func).parameters)
@@ -2360,8 +2386,9 @@ try:
                 else:
                     assert False, "Unsupported signature type"
                 from numba import cfunc
-                ff = cfunc(sig)(func)
-                coeff = MatrxixNumbaFunction(ff, sdim, vdim, td).GenerateCoefficient(use_0)
+                gfunc=self._copy_func_and_apply_params(func, params)
+                ff = cfunc(sig)(gfunc)
+                coeff = MatrixNumbaFunction(ff, sdim, vdim, td).GenerateCoefficient(use_0)
                 return coeff
             return dec
     jit = _JIT()

@@ -1,9 +1,6 @@
 %module(package="mfem._ser", directors="0")  mesh
+  
 %{
-#include "mesh/mesh_headers.hpp"
-#include "fem/fem.hpp"
-#include "general/array.hpp"
-#include "general/mem_manager.hpp"
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -11,14 +8,12 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include <vector>  
-//mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
-//		      bool fix_orientation = true);
-// void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
+#include <vector>
+#include "mfem.hpp"  
 #include "numpy/arrayobject.h"
+#include "pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
 #include "../common/io_stream.hpp"
-  //using namespace mfem;
 %}
 
 %begin %{
@@ -410,7 +405,7 @@ namespace mfem{
      int i;
      npy_intp dims[] = {self->GetNE()};
      PyObject *array = PyArray_SimpleNew(1, dims, NPY_INT);
-     int *x    = (int *)PyArray_DATA(array);
+     int *x    = (int *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      for (i = 0; i < self->GetNE() ; i++){
        x[i] = (int)(self->GetElement(i)->GetAttribute());
      }
@@ -424,7 +419,7 @@ namespace mfem{
      const double *v = self->GetVertex(i);
      npy_intp dims[] = {L};
      PyObject *array = PyArray_SimpleNew(1, dims, NPY_DOUBLE);
-     double *x    = (double *)PyArray_DATA(array);
+     double *x    = (double *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      for (n = 0; n < L; n++) {
         x[n] = v[n];
      }
@@ -439,7 +434,7 @@ namespace mfem{
 
      npy_intp dims[] = {NV, L};
      PyObject *array = PyArray_SimpleNew(2, dims, NPY_DOUBLE);
-     double *x    = (double *)PyArray_DATA(array);
+     double *x    = (double *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      counter = 0;
 
      for (int i = 0; i < NV; i++) {
@@ -470,7 +465,7 @@ namespace mfem{
      int i;
      npy_intp dims[] = {self->GetNBE()};
      PyObject *array = PyArray_SimpleNew(1, dims, NPY_INT);
-     int *x    = (int *)PyArray_DATA(array);
+     int *x    = (int *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      for (i = 0; i < self->GetNBE() ; i++){
        x[i] = (int)(self->GetBdrElement(i)->GetAttribute());
      }
@@ -486,7 +481,7 @@ namespace mfem{
      }
      npy_intp dims[] = {c};
      PyObject *array = PyArray_SimpleNew(1, dims, NPY_INT);
-     int *x    = (int *)PyArray_DATA(array);
+     int *x    = (int *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      c = 0;
      for (i = 0; i < self -> GetNBE() ; i++){
        if (self->GetBdrElement(i)->GetAttribute() == idx){
@@ -506,7 +501,7 @@ namespace mfem{
      }
      npy_intp dims[] = {c};
      PyObject *array = PyArray_SimpleNew(1, dims, NPY_INT);
-     int *x    = (int *)PyArray_DATA(array);
+     int *x    = (int *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      c = 0;
      for (i = 0; i < self -> GetNE() ; i++){
        if (self->GetElement(i)->GetAttribute() == idx){
@@ -526,7 +521,7 @@ namespace mfem{
 
      npy_intp dims[] = {v.Size()};
      PyObject *array = PyArray_SimpleNew(1, dims, NPY_DOUBLE);
-     double *x    = (double *)PyArray_DATA(array);
+     double *x    = (double *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      for (i = 0; i < v.Size() ; i++){
 	 x[i] = v[i];
      }

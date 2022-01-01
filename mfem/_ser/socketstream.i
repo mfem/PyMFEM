@@ -2,11 +2,11 @@
 %feature("autodoc", "1");
 
 %{
-#include "../common/io_stream.hpp"          
+#include <iostream>
+#include  "mfem.hpp"
+#include "pyoperator.hpp"  
+#include "../common/io_stream.hpp"
 #include "numpy/arrayobject.h"    
-#include "mesh/mesh_headers.hpp"
-#include "fem/gridfunc.hpp"  
-#include "general/socketstream.hpp"
 #include "../common/pycoefficient.hpp"      
 %}
 

@@ -1,10 +1,9 @@
 %module(package="mfem._ser") fe
 
 %{
-#include "config/config.hpp"
-#include "linalg/linalg.hpp"
-#include "fem/intrules.hpp"
-#include "fem/fe.hpp"
+#include <iostream>  
+#include "mfem.hpp"
+#include "pyoperator.hpp"      
 #include "numpy/arrayobject.h"    
 %}
 

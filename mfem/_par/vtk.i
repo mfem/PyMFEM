@@ -1,7 +1,7 @@
 %module(package="mfem._par") vtk
 %{
-#include  "mfem.hpp"
-#include "mesh/vtk.hpp"
+#include "mfem.hpp"
+#include "pyoperator.hpp"  
 #include "numpy/arrayobject.h"    
 #include "../common/io_stream.hpp"   
 %}

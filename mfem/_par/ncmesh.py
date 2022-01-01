@@ -592,7 +592,7 @@ class RefinementArray(object):
         __init__(RefinementArray self, mfem::MemoryType mt) -> RefinementArray
         __init__(RefinementArray self, int asize) -> RefinementArray
         __init__(RefinementArray self, int asize, mfem::MemoryType mt) -> RefinementArray
-        __init__(RefinementArray self, Refinement data_, int asize) -> RefinementArray
+        __init__(RefinementArray self, Refinement data_) -> RefinementArray
         __init__(RefinementArray self, RefinementArray src) -> RefinementArray
         __init__(RefinementArray self, void * List_or_Tuple) -> RefinementArray
         """

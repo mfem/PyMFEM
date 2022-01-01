@@ -84,6 +84,240 @@ def subtract_vector(*args):
     """
     return _vector.subtract_vector(*args)
 subtract_vector = _vector.subtract_vector
+class VectorPtrArray(object):
+    r"""Proxy of C++ mfem::Array< mfem::Vector * > class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _vector.delete_VectorPtrArray
+
+    def GetData(self, *args):
+        r"""
+        GetData(VectorPtrArray self) -> Vector
+        GetData(VectorPtrArray self) -> mfem::Vector *const *
+        """
+        return _vector.VectorPtrArray_GetData(self, *args)
+    GetData = _swig_new_instance_method(_vector.VectorPtrArray_GetData)
+
+    def GetMemory(self, *args):
+        r"""
+        GetMemory(VectorPtrArray self) -> mfem::Memory< mfem::Vector * >
+        GetMemory(VectorPtrArray self) -> mfem::Memory< mfem::Vector * > const &
+        """
+        return _vector.VectorPtrArray_GetMemory(self, *args)
+    GetMemory = _swig_new_instance_method(_vector.VectorPtrArray_GetMemory)
+
+    def UseDevice(self):
+        r"""UseDevice(VectorPtrArray self) -> bool"""
+        return _vector.VectorPtrArray_UseDevice(self)
+    UseDevice = _swig_new_instance_method(_vector.VectorPtrArray_UseDevice)
+
+    def OwnsData(self):
+        r"""OwnsData(VectorPtrArray self) -> bool"""
+        return _vector.VectorPtrArray_OwnsData(self)
+    OwnsData = _swig_new_instance_method(_vector.VectorPtrArray_OwnsData)
+
+    def StealData(self, p):
+        r"""StealData(VectorPtrArray self, mfem::Vector *** p)"""
+        return _vector.VectorPtrArray_StealData(self, p)
+    StealData = _swig_new_instance_method(_vector.VectorPtrArray_StealData)
+
+    def LoseData(self):
+        r"""LoseData(VectorPtrArray self)"""
+        return _vector.VectorPtrArray_LoseData(self)
+    LoseData = _swig_new_instance_method(_vector.VectorPtrArray_LoseData)
+
+    def MakeDataOwner(self):
+        r"""MakeDataOwner(VectorPtrArray self)"""
+        return _vector.VectorPtrArray_MakeDataOwner(self)
+    MakeDataOwner = _swig_new_instance_method(_vector.VectorPtrArray_MakeDataOwner)
+
+    def Size(self):
+        r"""Size(VectorPtrArray self) -> int"""
+        return _vector.VectorPtrArray_Size(self)
+    Size = _swig_new_instance_method(_vector.VectorPtrArray_Size)
+
+    def SetSize(self, *args):
+        r"""
+        SetSize(VectorPtrArray self, int nsize)
+        SetSize(VectorPtrArray self, int nsize, Vector initval)
+        SetSize(VectorPtrArray self, int nsize, mfem::MemoryType mt)
+        """
+        return _vector.VectorPtrArray_SetSize(self, *args)
+    SetSize = _swig_new_instance_method(_vector.VectorPtrArray_SetSize)
+
+    def Capacity(self):
+        r"""Capacity(VectorPtrArray self) -> int"""
+        return _vector.VectorPtrArray_Capacity(self)
+    Capacity = _swig_new_instance_method(_vector.VectorPtrArray_Capacity)
+
+    def Reserve(self, capacity):
+        r"""Reserve(VectorPtrArray self, int capacity)"""
+        return _vector.VectorPtrArray_Reserve(self, capacity)
+    Reserve = _swig_new_instance_method(_vector.VectorPtrArray_Reserve)
+
+    def Append(self, *args):
+        r"""
+        Append(VectorPtrArray self, Vector el) -> int
+        Append(VectorPtrArray self, mfem::Vector *const * els, int nels) -> int
+        Append(VectorPtrArray self, VectorPtrArray els) -> int
+        """
+        return _vector.VectorPtrArray_Append(self, *args)
+    Append = _swig_new_instance_method(_vector.VectorPtrArray_Append)
+
+    def Prepend(self, el):
+        r"""Prepend(VectorPtrArray self, Vector el) -> int"""
+        return _vector.VectorPtrArray_Prepend(self, el)
+    Prepend = _swig_new_instance_method(_vector.VectorPtrArray_Prepend)
+
+    def Last(self, *args):
+        r"""
+        Last(VectorPtrArray self) -> Vector
+        Last(VectorPtrArray self) -> Vector
+        """
+        return _vector.VectorPtrArray_Last(self, *args)
+    Last = _swig_new_instance_method(_vector.VectorPtrArray_Last)
+
+    def DeleteLast(self):
+        r"""DeleteLast(VectorPtrArray self)"""
+        return _vector.VectorPtrArray_DeleteLast(self)
+    DeleteLast = _swig_new_instance_method(_vector.VectorPtrArray_DeleteLast)
+
+    def DeleteAll(self):
+        r"""DeleteAll(VectorPtrArray self)"""
+        return _vector.VectorPtrArray_DeleteAll(self)
+    DeleteAll = _swig_new_instance_method(_vector.VectorPtrArray_DeleteAll)
+
+    def Copy(self, copy):
+        r"""Copy(VectorPtrArray self, VectorPtrArray copy)"""
+        return _vector.VectorPtrArray_Copy(self, copy)
+    Copy = _swig_new_instance_method(_vector.VectorPtrArray_Copy)
+
+    def MakeRef(self, *args):
+        r"""
+        MakeRef(VectorPtrArray self, mfem::Vector ** arg2, int arg3)
+        MakeRef(VectorPtrArray self, VectorPtrArray master)
+        """
+        return _vector.VectorPtrArray_MakeRef(self, *args)
+    MakeRef = _swig_new_instance_method(_vector.VectorPtrArray_MakeRef)
+
+    def GetSubArray(self, offset, sa_size, sa):
+        r"""GetSubArray(VectorPtrArray self, int offset, int sa_size, VectorPtrArray sa)"""
+        return _vector.VectorPtrArray_GetSubArray(self, offset, sa_size, sa)
+    GetSubArray = _swig_new_instance_method(_vector.VectorPtrArray_GetSubArray)
+
+    def begin(self, *args):
+        r"""
+        begin(VectorPtrArray self) -> Vector
+        begin(VectorPtrArray self) -> mfem::Vector *const *
+        """
+        return _vector.VectorPtrArray_begin(self, *args)
+    begin = _swig_new_instance_method(_vector.VectorPtrArray_begin)
+
+    def end(self, *args):
+        r"""
+        end(VectorPtrArray self) -> Vector
+        end(VectorPtrArray self) -> mfem::Vector *const *
+        """
+        return _vector.VectorPtrArray_end(self, *args)
+    end = _swig_new_instance_method(_vector.VectorPtrArray_end)
+
+    def MemoryUsage(self):
+        r"""MemoryUsage(VectorPtrArray self) -> long"""
+        return _vector.VectorPtrArray_MemoryUsage(self)
+    MemoryUsage = _swig_new_instance_method(_vector.VectorPtrArray_MemoryUsage)
+
+    def Read(self, on_dev=True):
+        r"""Read(VectorPtrArray self, bool on_dev=True) -> mfem::Vector *const *"""
+        return _vector.VectorPtrArray_Read(self, on_dev)
+    Read = _swig_new_instance_method(_vector.VectorPtrArray_Read)
+
+    def HostRead(self):
+        r"""HostRead(VectorPtrArray self) -> mfem::Vector *const *"""
+        return _vector.VectorPtrArray_HostRead(self)
+    HostRead = _swig_new_instance_method(_vector.VectorPtrArray_HostRead)
+
+    def Write(self, on_dev=True):
+        r"""Write(VectorPtrArray self, bool on_dev=True) -> mfem::Vector **"""
+        return _vector.VectorPtrArray_Write(self, on_dev)
+    Write = _swig_new_instance_method(_vector.VectorPtrArray_Write)
+
+    def HostWrite(self):
+        r"""HostWrite(VectorPtrArray self) -> mfem::Vector **"""
+        return _vector.VectorPtrArray_HostWrite(self)
+    HostWrite = _swig_new_instance_method(_vector.VectorPtrArray_HostWrite)
+
+    def ReadWrite(self, on_dev=True):
+        r"""ReadWrite(VectorPtrArray self, bool on_dev=True) -> mfem::Vector **"""
+        return _vector.VectorPtrArray_ReadWrite(self, on_dev)
+    ReadWrite = _swig_new_instance_method(_vector.VectorPtrArray_ReadWrite)
+
+    def HostReadWrite(self):
+        r"""HostReadWrite(VectorPtrArray self) -> mfem::Vector **"""
+        return _vector.VectorPtrArray_HostReadWrite(self)
+    HostReadWrite = _swig_new_instance_method(_vector.VectorPtrArray_HostReadWrite)
+
+    def __init__(self, *args):
+        r"""
+        __init__(VectorPtrArray self) -> VectorPtrArray
+        __init__(VectorPtrArray self, mfem::MemoryType mt) -> VectorPtrArray
+        __init__(VectorPtrArray self, int asize) -> VectorPtrArray
+        __init__(VectorPtrArray self, int asize, mfem::MemoryType mt) -> VectorPtrArray
+        __init__(VectorPtrArray self, mfem::Vector ** data_) -> VectorPtrArray
+        __init__(VectorPtrArray self, VectorPtrArray src) -> VectorPtrArray
+        __init__(VectorPtrArray self, void * List_or_Tuple) -> VectorPtrArray
+        """
+        _vector.VectorPtrArray_swiginit(self, _vector.new_VectorPtrArray(*args))
+
+    def __setitem__(self, i, v):
+        r"""__setitem__(VectorPtrArray self, int i, Vector v)"""
+
+        i = int(i)
+
+
+        return _vector.VectorPtrArray___setitem__(self, i, v)
+
+
+    def Assign(self, *args):
+        r"""
+        Assign(VectorPtrArray self, mfem::Vector *const * arg2)
+        Assign(VectorPtrArray self, Vector a)
+        """
+        return _vector.VectorPtrArray_Assign(self, *args)
+    Assign = _swig_new_instance_method(_vector.VectorPtrArray_Assign)
+
+    def ToList(self):
+        return [self[i] for i in range(self.Size())]
+
+
+
+    def __iter__(self):
+        class iter_array:
+            def __init__(self, obj):
+                self.obj = obj
+                self.idx = 0
+                self.size = obj.Size()
+            def __iter__(self):
+                self.idx = 0
+            def __next__(self):
+                if self.idx < self.size:
+                    res = self.obj[self.idx]
+                    self.idx += 1
+                    return res
+                else:
+                    raise StopIteration
+        return iter_array(self)
+
+
+
+    def __getitem__(self, param):
+        r"""__getitem__(VectorPtrArray self, PyObject * param) -> PyObject *"""
+        return _vector.VectorPtrArray___getitem__(self, param)
+    __getitem__ = _swig_new_instance_method(_vector.VectorPtrArray___getitem__)
+
+# Register VectorPtrArray in _vector:
+_vector.VectorPtrArray_swigregister(VectorPtrArray)
+
 
 def CheckFinite(v, n):
     r"""CheckFinite(double const * v, int const n) -> int"""
@@ -496,7 +730,7 @@ class Vector(object):
         		   ' is given')
                 elif args[0].ndim != 1:
                     raise ValueError('Ndim must be one') 
-                elif args[0].shape[0] != _vector.Vector_Size(self):
+                elif args[0].shape[0] != self.Size():
                     raise ValueError('Length does not match')
                 else:
                     args = (ascontiguousarray(args[0]),)
