@@ -3898,6 +3898,22 @@ SWIGINTERN void mfem_FiniteElementSpace_SaveGZ(mfem::FiniteElementSpace *self,ch
 SWIGINTERN void mfem_FiniteElementSpace_Save__SWIG_2(mfem::FiniteElementSpace *self){
   self -> Save(std::cout);
   }
+SWIGINTERN mfem::DofTransformation *mfem_FiniteElementSpace_GetElementDofTransformation(mfem::FiniteElementSpace const *self,int elem){
+    mfem::Array<int> dofs;
+    return self->GetElementDofs(elem, dofs);
+  }
+SWIGINTERN mfem::DofTransformation *mfem_FiniteElementSpace_GetBdrElementDofTransformation(mfem::FiniteElementSpace const *self,int bel){
+    mfem::Array<int> dofs;
+    return self->GetBdrElementDofs(bel, dofs);
+  }
+SWIGINTERN mfem::DofTransformation *mfem_FiniteElementSpace_GetElementVDofTransformation(mfem::FiniteElementSpace const *self,int elem){
+    mfem::Array<int> dofs;    
+    return self->GetElementVDofs(elem, dofs);
+  }
+SWIGINTERN mfem::DofTransformation *mfem_FiniteElementSpace_GetBdrElementVDofTransformation(mfem::FiniteElementSpace const *self,int bel){
+    mfem::Array<int> dofs;        
+    return self->GetBdrElementVDofs(bel, dofs);
+  }
 SWIGINTERN void mfem_QuadratureSpace_Save__SWIG_1(mfem::QuadratureSpace *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
@@ -13724,6 +13740,210 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_FiniteElementSpace_GetElementDofTransformation(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::FiniteElementSpace *arg1 = (mfem::FiniteElementSpace *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"elem",  NULL 
+  };
+  mfem::DofTransformation *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:FiniteElementSpace_GetElementDofTransformation", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FiniteElementSpace_GetElementDofTransformation" "', argument " "1"" of type '" "mfem::FiniteElementSpace const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FiniteElementSpace * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      result = (mfem::DofTransformation *)mfem_FiniteElementSpace_GetElementDofTransformation((mfem::FiniteElementSpace const *)arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DofTransformation, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FiniteElementSpace_GetBdrElementDofTransformation(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::FiniteElementSpace *arg1 = (mfem::FiniteElementSpace *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"bel",  NULL 
+  };
+  mfem::DofTransformation *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:FiniteElementSpace_GetBdrElementDofTransformation", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FiniteElementSpace_GetBdrElementDofTransformation" "', argument " "1"" of type '" "mfem::FiniteElementSpace const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FiniteElementSpace * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      result = (mfem::DofTransformation *)mfem_FiniteElementSpace_GetBdrElementDofTransformation((mfem::FiniteElementSpace const *)arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DofTransformation, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FiniteElementSpace_GetElementVDofTransformation(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::FiniteElementSpace *arg1 = (mfem::FiniteElementSpace *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"elem",  NULL 
+  };
+  mfem::DofTransformation *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:FiniteElementSpace_GetElementVDofTransformation", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FiniteElementSpace_GetElementVDofTransformation" "', argument " "1"" of type '" "mfem::FiniteElementSpace const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FiniteElementSpace * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      result = (mfem::DofTransformation *)mfem_FiniteElementSpace_GetElementVDofTransformation((mfem::FiniteElementSpace const *)arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DofTransformation, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FiniteElementSpace_GetBdrElementVDofTransformation(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::FiniteElementSpace *arg1 = (mfem::FiniteElementSpace *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"bel",  NULL 
+  };
+  mfem::DofTransformation *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:FiniteElementSpace_GetBdrElementVDofTransformation", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FiniteElementSpace_GetBdrElementVDofTransformation" "', argument " "1"" of type '" "mfem::FiniteElementSpace const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FiniteElementSpace * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      result = (mfem::DofTransformation *)mfem_FiniteElementSpace_GetBdrElementVDofTransformation((mfem::FiniteElementSpace const *)arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DofTransformation, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *FiniteElementSpace_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
@@ -14913,6 +15133,10 @@ static PyMethodDef SwigMethods[] = {
 		"FiniteElementSpace_Save(FiniteElementSpace self, char const * file, int precision=16)\n"
 		"FiniteElementSpace_Save(FiniteElementSpace self)\n"
 		""},
+	 { "FiniteElementSpace_GetElementDofTransformation", (PyCFunction)(void(*)(void))_wrap_FiniteElementSpace_GetElementDofTransformation, METH_VARARGS|METH_KEYWORDS, "FiniteElementSpace_GetElementDofTransformation(FiniteElementSpace self, int elem) -> DofTransformation"},
+	 { "FiniteElementSpace_GetBdrElementDofTransformation", (PyCFunction)(void(*)(void))_wrap_FiniteElementSpace_GetBdrElementDofTransformation, METH_VARARGS|METH_KEYWORDS, "FiniteElementSpace_GetBdrElementDofTransformation(FiniteElementSpace self, int bel) -> DofTransformation"},
+	 { "FiniteElementSpace_GetElementVDofTransformation", (PyCFunction)(void(*)(void))_wrap_FiniteElementSpace_GetElementVDofTransformation, METH_VARARGS|METH_KEYWORDS, "FiniteElementSpace_GetElementVDofTransformation(FiniteElementSpace self, int elem) -> DofTransformation"},
+	 { "FiniteElementSpace_GetBdrElementVDofTransformation", (PyCFunction)(void(*)(void))_wrap_FiniteElementSpace_GetBdrElementVDofTransformation, METH_VARARGS|METH_KEYWORDS, "FiniteElementSpace_GetBdrElementVDofTransformation(FiniteElementSpace self, int bel) -> DofTransformation"},
 	 { "FiniteElementSpace_swigregister", FiniteElementSpace_swigregister, METH_O, NULL},
 	 { "FiniteElementSpace_swiginit", FiniteElementSpace_swiginit, METH_VARARGS, NULL},
 	 { "new_QuadratureSpace", _wrap_new_QuadratureSpace, METH_VARARGS, "\n"
@@ -15149,6 +15373,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Save(FiniteElementSpace self, char const * file, int precision=16)\n"
 		"Save(FiniteElementSpace self)\n"
 		""},
+	 { "FiniteElementSpace_GetElementDofTransformation", (PyCFunction)(void(*)(void))_wrap_FiniteElementSpace_GetElementDofTransformation, METH_VARARGS|METH_KEYWORDS, "GetElementDofTransformation(FiniteElementSpace self, int elem) -> DofTransformation"},
+	 { "FiniteElementSpace_GetBdrElementDofTransformation", (PyCFunction)(void(*)(void))_wrap_FiniteElementSpace_GetBdrElementDofTransformation, METH_VARARGS|METH_KEYWORDS, "GetBdrElementDofTransformation(FiniteElementSpace self, int bel) -> DofTransformation"},
+	 { "FiniteElementSpace_GetElementVDofTransformation", (PyCFunction)(void(*)(void))_wrap_FiniteElementSpace_GetElementVDofTransformation, METH_VARARGS|METH_KEYWORDS, "GetElementVDofTransformation(FiniteElementSpace self, int elem) -> DofTransformation"},
+	 { "FiniteElementSpace_GetBdrElementVDofTransformation", (PyCFunction)(void(*)(void))_wrap_FiniteElementSpace_GetBdrElementVDofTransformation, METH_VARARGS|METH_KEYWORDS, "GetBdrElementVDofTransformation(FiniteElementSpace self, int bel) -> DofTransformation"},
 	 { "FiniteElementSpace_swigregister", FiniteElementSpace_swigregister, METH_O, NULL},
 	 { "FiniteElementSpace_swiginit", FiniteElementSpace_swiginit, METH_VARARGS, NULL},
 	 { "new_QuadratureSpace", _wrap_new_QuadratureSpace, METH_VARARGS, "\n"
