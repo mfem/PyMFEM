@@ -9,6 +9,8 @@ import gzip
 import site
 import re
 import shutil
+import configparser
+import itertools
 import subprocess
 from subprocess import DEVNULL
 
@@ -101,6 +103,9 @@ gslibs_prefix = ''
 gslibp_prefix = ''
 gslib_only = False
 
+enable_suitesparse = False
+suitesparse_prefix = 'usr/lib/x86_64-linux-gnu'
+
 dry_run = -1
 do_bdist_wheel = False
 
@@ -149,7 +154,14 @@ def install_requires():
     fid.close()
     return requirements
 
-
+def read_mfem_tplflags(prefix):
+    filename = os.path.join(prefix, 'share', 'mfem', 'config.mk')
+    config = configparser.ConfigParser()
+    with open(filename) as fp:
+        config.read_file(itertools.chain(['[global]'], fp), source=filename)
+    flags = dict(config.items('global'))['mfem_tplflags']
+    return flags
+    
 keywords = """
 scientific computing
 finite element method
@@ -580,9 +592,11 @@ def cmake_make_mfem(serial=True):
 
     if enable_cuda:
         cmake_opts['DMFEM_USE_CUDA'] = '1'
+        
     if enable_libceed:
         cmake_opts['DMFEM_USE_CEED'] = '1'
         cmake_opts['DCEED_DIR'] = libceed_prefix
+        
     if enable_gslib:
         if serial:
             pass
@@ -591,7 +605,15 @@ def cmake_make_mfem(serial=True):
         else:
             cmake_opts['DMFEM_USE_GSLIB'] = '1'
             cmake_opts['DGSLIB_DIR'] = gslibp_prefix
-
+            
+    if enable_suitesparse:
+        if serial:
+            pass
+        else:
+            cmake_opts['DMFEM_USE_SUITESPARSE'] = '1'
+            if suitesparse_prefix != '':
+                 cmake_opts['DSuiteSparse_DIR'] = suitesparse_prefix
+        
     pwd = chdir(path)
     cmake('..', **cmake_opts)
 
@@ -622,6 +644,10 @@ def write_setup_local():
     metislibpath = os.path.dirname(
         find_libpath_from_prefix(
             'metis', metis_prefix))
+
+    mfems_tpl = read_mfem_tplflags(mfems_prefix)
+    mfemp_tpl = read_mfem_tplflags(mfemp_prefix)
+    
     params = {'cxx_ser': cxx_command,
               'cc_ser': cc_command,
               'cxx_par': mpicxx_command,
@@ -643,6 +669,8 @@ def write_setup_local():
               'mfemserincdir': os.path.join(mfemser, 'include', 'mfem'),
               'mfemserlnkdir': os.path.join(mfemser, 'lib'),
               'mfemsrcdir': os.path.join(mfem_source),
+              'mfemstpl': mfems_tpl,
+              'mfemptpl': mfemp_tpl,
               'add_pumi': '',
               'add_strumpack': '',
               'add_cuda': '',
@@ -879,6 +907,7 @@ def configure_install(self):
     global enable_strumpack, strumpack_prefix
     global enable_libceed, libceed_prefix, libceed_only
     global enable_gslib, gslibs_prefix, gslibp_prefix, gslib_only
+    global enable_suitesparse, suitesparse_prefix
 
     verbose = bool(self.verbose) if verbose == -1 else verbose
     dry_run = bool(self.dry_run) if dry_run == -1 else dry_run
@@ -901,6 +930,7 @@ def configure_install(self):
     libceed_only = bool(self.libceed_only)
     enable_gslib = bool(self.with_gslib)
     gslib_only = bool(self.gslib_only)
+    enable_suitesparse = bool(self.with_suitesparse)    
 
     build_parallel = bool(self.with_parallel)     # controlls PyMFEM parallel
     build_serial = not bool(self.no_serial)
@@ -991,6 +1021,9 @@ def configure_install(self):
             gslibp_prefix = mfemp_prefix
             build_gslib = True
 
+    if enable_suitesparse and self.suitesparse_prefix != '':
+        suitesparse_prefix = self.suitesparse_prefix
+        
     if enable_pumi:
         run_swig = True
 
@@ -1134,6 +1167,8 @@ class Install(_install):
         ('with-metis64', None, 'use 64bit int in metis'),
         ('with-pumi', None, 'enable pumi (parallel only)'),
         ('pumi-prefix=', None, 'Specify locaiton of pumi'),
+        ('with-suitesparse', None, 'build MFEM with suitesparse (MFEM_USE_SUITESPARSE=YES) (parallel only)'),
+        ('suitesparse-prefix=', None, 'Specify locaiton of suitesparse (=SuiteSparse_DIR)'),
         ('with-libceed', None, 'enable libceed'),
         ('libceed-prefix=', None, 'Specify locaiton of libceed'),
         ('libceed-only', None, 'Build libceed only'),
@@ -1170,6 +1205,9 @@ class Install(_install):
 
         self.with_strumpack = False
         self.strumpack_prefix = ''
+
+        self.with_suitesparse = False
+        self.suitesparse_prefix = ''        
 
         self.with_libceed = False
         self.libceed_prefix = ''
