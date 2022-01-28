@@ -5,7 +5,8 @@
 %{
 #include <fstream>  
 #include <iostream>
-#include <stdio.h>  
+#include <stdio.h>
+#include <vector>  
 #include "../common/io_stream.hpp"
 #include "mfem.hpp"
 #include "numpy/arrayobject.h"
@@ -60,6 +61,7 @@ XXXPTR_SIZE_IN(bool *data_, int asize, bool)
 %ignore mfem::Array2D::operator=;
 %ignore mfem::Array::operator T *;
 %ignore mfem::Array::operator const T *;
+
 
 %include "general/array.hpp"
 %extend mfem::Array{
@@ -134,3 +136,5 @@ INSTANTIATE_ARRAY_INT
 INSTANTIATE_ARRAY_DOUBLE
 IGNORE_ARRAY_METHODS(bool)
 INSTANTIATE_ARRAY_BOOL
+
+

@@ -39,8 +39,6 @@ import_array();
 
 %import "mem_manager.i"
 
-
-
 %import "../common/handle_template.i"
 
 // instatitate template methods (step 1: Rename Macro )
@@ -58,6 +56,13 @@ IS_RENAME(HypreParMatrix)
 GET_RENAME(HypreParMatrix)
 RESET_RENAME(HypreParMatrix)
 CONVERT_FROM_RENAME(HypreParMatrix)
+
+//CONSTRUCTOR_RENAME(ComplexHypreParMatrix)  
+AS_RENAME(ComplexHypreParMatrix)
+IS_RENAME(ComplexHypreParMatrix)
+GET_RENAME(ComplexHypreParMatrix)
+RESET_RENAME(ComplexHypreParMatrix)
+CONVERT_FROM_RENAME(ComplexHypreParMatrix)
 
 #ifdef MFEM_USE_PETSC
  //CONSTRUCTOR_RENAME(PetscParMatrix)  
@@ -89,6 +94,13 @@ GET_WRAP(HypreParMatrix)
 RESET_WRAP(HypreParMatrix)          
 CONVERT_FROM_WRAP(HypreParMatrix)
 
+//CONSTRUCTOR_WRAP(ComplexHypreParMatrix)  
+AS_WRAP(ComplexHypreParMatrix)
+IS_WRAP(ComplexHypreParMatrix)
+GET_WRAP(ComplexHypreParMatrix)
+RESET_WRAP(ComplexHypreParMatrix)          
+CONVERT_FROM_WRAP(ComplexHypreParMatrix)
+  
 #ifdef MFEM_USE_PETSC
 //CONSTRUCTOR_WRAP(PetscParMatrix)    
 AS_WRAP(PetscParMatrix)

@@ -52,11 +52,6 @@ import_array();
 OSTREAM_TYPEMAP(std::ostream&)
 ISTREAM_TYPEMAP(std::istream&)
 
-%include "std_vector.i"
-%template(vector_int) std::vector<int>;
-%template(vector_Vector) std::vector<mfem::Vector>;
-
-
 // this prevent automatic conversion from int to double so
 // that it select collect overloaded method....
 %typemap(typecheck,precedence=SWIG_TYPECHECK_DOUBLE) double {
