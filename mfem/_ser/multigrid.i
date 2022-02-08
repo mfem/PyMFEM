@@ -24,15 +24,11 @@ import_array();
 //%import "../common/object_array_typemap.i"
 %include "../common/typemap_macros.i"
 
-LIST_TO_MFEMOBJ_ARRAY_IN0(const mfem::Array<mfem::Operator*>&,
-			  mfem::Operator*,
-			  1)
-LIST_TO_MFEMOBJ_ARRAY_IN0(const mfem::Array<mfem::Solver*>&,
-			  mfem::Solver*,
-			  1)
-LIST_TO_MFEMOBJ_ARRAY_IN0(const mfem::Array<bool>&,
-			  bool,
-			  1)
+LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::Operator*>&,
+			   mfem::Operator*)
+LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::Solver*>&,
+			   mfem::Solver*)
+LIST_TO_MFEMOBJ_BOOLARRAY_IN(const mfem::Array<bool>& )
  /*
 ObjectArrayInput(mfem::Solver *);
 ObjectArrayInput(mfem::Operator *);

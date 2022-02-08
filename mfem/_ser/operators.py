@@ -996,6 +996,11 @@ class ScaledOperator(Operator):
         r"""Mult(ScaledOperator self, Vector x, Vector y)"""
         return _operators.ScaledOperator_Mult(self, x, y)
     Mult = _swig_new_instance_method(_operators.ScaledOperator_Mult)
+
+    def MultTranspose(self, x, y):
+        r"""MultTranspose(ScaledOperator self, Vector x, Vector y)"""
+        return _operators.ScaledOperator_MultTranspose(self, x, y)
+    MultTranspose = _swig_new_instance_method(_operators.ScaledOperator_MultTranspose)
     __swig_destroy__ = _operators.delete_ScaledOperator
 
 # Register ScaledOperator in _operators:

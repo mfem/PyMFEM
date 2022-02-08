@@ -19889,6 +19889,66 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ScaledOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ScaledOperator *arg1 = (mfem::ScaledOperator *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ScaledOperator_MultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ScaledOperator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ScaledOperator_MultTranspose" "', argument " "1"" of type '" "mfem::ScaledOperator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ScaledOperator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ScaledOperator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScaledOperator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ScaledOperator_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScaledOperator_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      ((mfem::ScaledOperator const *)arg1)->MultTranspose((mfem::Vector const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_ScaledOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::ScaledOperator *arg1 = (mfem::ScaledOperator *) 0 ;
@@ -22908,6 +22968,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "IsIdentityProlongation", (PyCFunction)(void(*)(void))_wrap_IsIdentityProlongation, METH_VARARGS|METH_KEYWORDS, "IsIdentityProlongation(Operator P) -> bool"},
 	 { "new_ScaledOperator", (PyCFunction)(void(*)(void))_wrap_new_ScaledOperator, METH_VARARGS|METH_KEYWORDS, "new_ScaledOperator(Operator A, double a) -> ScaledOperator"},
 	 { "ScaledOperator_Mult", (PyCFunction)(void(*)(void))_wrap_ScaledOperator_Mult, METH_VARARGS|METH_KEYWORDS, "ScaledOperator_Mult(ScaledOperator self, Vector x, Vector y)"},
+	 { "ScaledOperator_MultTranspose", (PyCFunction)(void(*)(void))_wrap_ScaledOperator_MultTranspose, METH_VARARGS|METH_KEYWORDS, "ScaledOperator_MultTranspose(ScaledOperator self, Vector x, Vector y)"},
 	 { "delete_ScaledOperator", _wrap_delete_ScaledOperator, METH_O, "delete_ScaledOperator(ScaledOperator self)"},
 	 { "ScaledOperator_swigregister", ScaledOperator_swigregister, METH_O, NULL},
 	 { "ScaledOperator_swiginit", ScaledOperator_swiginit, METH_VARARGS, NULL},
@@ -23246,6 +23307,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "IsIdentityProlongation", (PyCFunction)(void(*)(void))_wrap_IsIdentityProlongation, METH_VARARGS|METH_KEYWORDS, "IsIdentityProlongation(Operator P) -> bool"},
 	 { "new_ScaledOperator", (PyCFunction)(void(*)(void))_wrap_new_ScaledOperator, METH_VARARGS|METH_KEYWORDS, "new_ScaledOperator(Operator A, double a) -> ScaledOperator"},
 	 { "ScaledOperator_Mult", (PyCFunction)(void(*)(void))_wrap_ScaledOperator_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(ScaledOperator self, Vector x, Vector y)"},
+	 { "ScaledOperator_MultTranspose", (PyCFunction)(void(*)(void))_wrap_ScaledOperator_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(ScaledOperator self, Vector x, Vector y)"},
 	 { "delete_ScaledOperator", _wrap_delete_ScaledOperator, METH_O, "delete_ScaledOperator(ScaledOperator self)"},
 	 { "ScaledOperator_swigregister", ScaledOperator_swigregister, METH_O, NULL},
 	 { "ScaledOperator_swiginit", ScaledOperator_swiginit, METH_VARARGS, NULL},

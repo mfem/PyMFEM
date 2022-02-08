@@ -4129,6 +4129,32 @@ void SwigDirector_PyIterativeSolver::SetPrintLevel(int print_lvl) {
 }
 
 
+void SwigDirector_PyIterativeSolver::SetPrintLevel(mfem::IterativeSolver::PrintLevel arg0) {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(new mfem::IterativeSolver::PrintLevel((const mfem::IterativeSolver::PrintLevel &)arg0)), SWIGTYPE_p_mfem__IterativeSolver__PrintLevel, SWIG_POINTER_OWN |  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyIterativeSolver.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 14;
+  const char *const swig_method_name = "SetPrintLevel";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("SetPrintLevel");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
 void SwigDirector_PyIterativeSolver::SetPreconditioner(mfem::Solver &pr) {
   swig::SwigVar_PyObject obj0;
   obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&pr), SWIGTYPE_p_mfem__Solver,  0 );
@@ -4136,7 +4162,7 @@ void SwigDirector_PyIterativeSolver::SetPreconditioner(mfem::Solver &pr) {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyIterativeSolver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 15;
   const char *const swig_method_name = "SetPreconditioner";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
