@@ -31,7 +31,7 @@ import_array();
 %import "densemat.i"
 %import "../common/ignore_common_functions.i"
 %import "../common/exception.i"
-
+%import "globals.i"
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
 
