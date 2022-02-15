@@ -25,10 +25,11 @@ import_array();
 %import "../common/exception_director.i"
 %import "../common/object_array_typemap.i"
 
-ObjectArrayInput(mfem::Solver *);
-ObjectArrayInput(mfem::Operator *);
-BoolArrayInput(bool);
-   
+LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::Operator*>&,
+			   mfem::Operator*)
+LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::Solver*>&,
+			   mfem::Solver*)
+LIST_TO_MFEMOBJ_BOOLARRAY_IN(const mfem::Array<bool>& )
 //%feature("director") mfem::PyGeometricMultigrid;
 
 %pythonprepend mfem::PyGeometricMultigrid::AppendBilinearForm %{
