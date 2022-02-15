@@ -5796,7 +5796,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "BlockMatrix_owns_blocks_set", _wrap_BlockMatrix_owns_blocks_set, METH_VARARGS, "BlockMatrix_owns_blocks_set(BlockMatrix self, int owns_blocks)"},
 	 { "BlockMatrix_owns_blocks_get", _wrap_BlockMatrix_owns_blocks_get, METH_O, "BlockMatrix_owns_blocks_get(BlockMatrix self) -> int"},
 	 { "BlockMatrix_PrintMatlab", _wrap_BlockMatrix_PrintMatlab, METH_VARARGS, "\n"
-		"BlockMatrix_PrintMatlab(BlockMatrix self, std::ostream & os=mfem::out)\n"
+		"BlockMatrix_PrintMatlab(BlockMatrix self, std::ostream & os=out)\n"
 		"BlockMatrix_PrintMatlab(BlockMatrix self, char const * file, int precision=16)\n"
 		""},
 	 { "BlockMatrix_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "BlockMatrix_PrintMatlabGZ(BlockMatrix self, char const * file, int precision=16)"},
@@ -5854,7 +5854,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "BlockMatrix_owns_blocks_set", _wrap_BlockMatrix_owns_blocks_set, METH_VARARGS, "BlockMatrix_owns_blocks_set(BlockMatrix self, int owns_blocks)"},
 	 { "BlockMatrix_owns_blocks_get", _wrap_BlockMatrix_owns_blocks_get, METH_O, "BlockMatrix_owns_blocks_get(BlockMatrix self) -> int"},
 	 { "BlockMatrix_PrintMatlab", _wrap_BlockMatrix_PrintMatlab, METH_VARARGS, "\n"
-		"PrintMatlab(BlockMatrix self, std::ostream & os=mfem::out)\n"
+		"PrintMatlab(BlockMatrix self, std::ostream & os=out)\n"
 		"PrintMatlab(BlockMatrix self, char const * file, int precision=16)\n"
 		""},
 	 { "BlockMatrix_PrintMatlabGZ", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_PrintMatlabGZ, METH_VARARGS|METH_KEYWORDS, "PrintMatlabGZ(BlockMatrix self, char const * file, int precision=16)"},

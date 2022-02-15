@@ -270,5 +270,29 @@ class TensorProductPRefinementTransferOperator(mfem._ser.operators.Operator):
 # Register TensorProductPRefinementTransferOperator in _transfer:
 _transfer.TensorProductPRefinementTransferOperator_swigregister(TensorProductPRefinementTransferOperator)
 
+class TrueTransferOperator(mfem._ser.operators.Operator):
+    r"""Proxy of C++ mfem::TrueTransferOperator class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, lFESpace_, hFESpace_):
+        r"""__init__(TrueTransferOperator self, FiniteElementSpace lFESpace_, FiniteElementSpace hFESpace_) -> TrueTransferOperator"""
+        _transfer.TrueTransferOperator_swiginit(self, _transfer.new_TrueTransferOperator(lFESpace_, hFESpace_))
+    __swig_destroy__ = _transfer.delete_TrueTransferOperator
+
+    def Mult(self, x, y):
+        r"""Mult(TrueTransferOperator self, Vector x, Vector y)"""
+        return _transfer.TrueTransferOperator_Mult(self, x, y)
+    Mult = _swig_new_instance_method(_transfer.TrueTransferOperator_Mult)
+
+    def MultTranspose(self, x, y):
+        r"""MultTranspose(TrueTransferOperator self, Vector x, Vector y)"""
+        return _transfer.TrueTransferOperator_MultTranspose(self, x, y)
+    MultTranspose = _swig_new_instance_method(_transfer.TrueTransferOperator_MultTranspose)
+
+# Register TrueTransferOperator in _transfer:
+_transfer.TrueTransferOperator_swigregister(TrueTransferOperator)
+
 
 

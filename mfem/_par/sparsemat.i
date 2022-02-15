@@ -24,6 +24,7 @@ import_array();
 %import "array.i"
 %import "mem_manager.i"
 
+%import "globals.i"
 %import "vector.i"
 %import "operators.i"
 %import "matrix.i"
