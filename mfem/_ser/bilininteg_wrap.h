@@ -50,7 +50,7 @@ public:
     virtual void AssembleElementMatrix2(mfem::FiniteElement const &trial_fe, mfem::FiniteElement const &test_fe, mfem::ElementTransformation &Trans, mfem::DenseMatrix &elmat);
     virtual void AssembleFaceMatrix(mfem::FiniteElement const &el1, mfem::FiniteElement const &el2, mfem::FaceElementTransformations &Trans, mfem::DenseMatrix &elmat);
     virtual void AssembleFaceMatrix(mfem::FiniteElement const &trial_face_fe, mfem::FiniteElement const &test_fe1, mfem::FiniteElement const &test_fe2, mfem::FaceElementTransformations &Trans, mfem::DenseMatrix &elmat);
-    virtual void ComputeElementFlux(mfem::FiniteElement const &el, mfem::ElementTransformation &Trans, mfem::Vector &u, mfem::FiniteElement const &fluxelem, mfem::Vector &flux, bool with_coef = true);
+    virtual void ComputeElementFlux(mfem::FiniteElement const &el, mfem::ElementTransformation &Trans, mfem::Vector &u, mfem::FiniteElement const &fluxelem, mfem::Vector &flux, bool with_coef = true, mfem::IntegrationRule const *ir = NULL);
     virtual double ComputeFluxEnergy(mfem::FiniteElement const &fluxelem, mfem::ElementTransformation &Trans, mfem::Vector &flux, mfem::Vector *d_energy = NULL);
 
 /* Internal director utilities */

@@ -72,6 +72,7 @@ import mfem._ser.vector
 import mfem._ser.operators
 import mfem._ser.matrix
 import mfem._ser.densemat
+import mfem._ser.globals
 
 def RAP_P(A, R, ORAP):
     r"""RAP_P(SparseMatrix A, SparseMatrix R, SparseMatrix ORAP) -> SparseMatrix"""
@@ -152,6 +153,11 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
 
         _sparsemat.SparseMatrix_swiginit(self, _sparsemat.new_SparseMatrix(*args))
 
+    def UseGPUSparse(self, useGPUSparse_=True):
+        r"""UseGPUSparse(SparseMatrix self, bool useGPUSparse_=True)"""
+        return _sparsemat.SparseMatrix_UseGPUSparse(self, useGPUSparse_)
+    UseGPUSparse = _swig_new_instance_method(_sparsemat.SparseMatrix_UseGPUSparse)
+
     def UseCuSparse(self, useCuSparse_=True):
         r"""UseCuSparse(SparseMatrix self, bool useCuSparse_=True)"""
         return _sparsemat.SparseMatrix_UseCuSparse(self, useCuSparse_)
@@ -171,6 +177,11 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
         r"""Clear(SparseMatrix self)"""
         return _sparsemat.SparseMatrix_Clear(self)
     Clear = _swig_new_instance_method(_sparsemat.SparseMatrix_Clear)
+
+    def ClearGPUSparse(self):
+        r"""ClearGPUSparse(SparseMatrix self)"""
+        return _sparsemat.SparseMatrix_ClearGPUSparse(self)
+    ClearGPUSparse = _swig_new_instance_method(_sparsemat.SparseMatrix_ClearGPUSparse)
 
     def ClearCuSparse(self):
         r"""ClearCuSparse(SparseMatrix self)"""
@@ -805,7 +816,7 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
 
     def Print(self, *args):
         r"""
-        Print(SparseMatrix self, std::ostream & out=mfem::out, int width_=4)
+        Print(SparseMatrix self, std::ostream & out=out, int width_=4)
         Print(SparseMatrix self, char const * file, int precision=16)
         """
         return _sparsemat.SparseMatrix_Print(self, *args)
@@ -823,7 +834,7 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
 
     def PrintMM(self, *args):
         r"""
-        PrintMM(SparseMatrix self, std::ostream & out=mfem::out)
+        PrintMM(SparseMatrix self, std::ostream & out=out)
         PrintMM(SparseMatrix self, char const * file, int precision=16)
         """
         return _sparsemat.SparseMatrix_PrintMM(self, *args)

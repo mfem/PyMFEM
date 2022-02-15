@@ -374,6 +374,11 @@ class GridFunction(mfem._ser.vector.Vector):
         return _gridfunc.GridFunction_ComputeL2Error(self, *args)
     ComputeL2Error = _swig_new_instance_method(_gridfunc.GridFunction_ComputeL2Error)
 
+    def ComputeElementGradError(self, ielem, exgrad, irs=0):
+        r"""ComputeElementGradError(GridFunction self, int ielem, VectorCoefficient exgrad, mfem::IntegrationRule const *[] irs=0) -> double"""
+        return _gridfunc.GridFunction_ComputeElementGradError(self, ielem, exgrad, irs)
+    ComputeElementGradError = _swig_new_instance_method(_gridfunc.GridFunction_ComputeElementGradError)
+
     def ComputeGradError(self, exgrad, irs=0):
         r"""ComputeGradError(GridFunction self, VectorCoefficient exgrad, mfem::IntegrationRule const *[] irs=0) -> double"""
         return _gridfunc.GridFunction_ComputeGradError(self, exgrad, irs)
@@ -721,6 +726,14 @@ class QuadratureFunction(mfem._ser.vector.Vector):
         return _gridfunc.QuadratureFunction_GetElementValues(self, *args)
     GetElementValues = _swig_new_instance_method(_gridfunc.QuadratureFunction_GetElementValues)
 
+    def SaveVTU(self, *args):
+        r"""
+        SaveVTU(QuadratureFunction self, std::ostream & out, mfem::VTKFormat format=ASCII, int compression_level=0)
+        SaveVTU(QuadratureFunction self, std::string const & filename, mfem::VTKFormat format=ASCII, int compression_level=0)
+        """
+        return _gridfunc.QuadratureFunction_SaveVTU(self, *args)
+    SaveVTU = _swig_new_instance_method(_gridfunc.QuadratureFunction_SaveVTU)
+
     def Save(self, *args):
         r"""
         Save(QuadratureFunction self, std::ostream & out)
@@ -753,6 +766,21 @@ def ZZErrorEstimator(blfi, u, flux, error_estimates, aniso_flags=None, with_subd
     return _gridfunc.ZZErrorEstimator(blfi, u, flux, error_estimates, aniso_flags, with_subdomains, with_coeff)
 ZZErrorEstimator = _gridfunc.ZZErrorEstimator
 
+def TensorProductLegendre(dim, order, x_in, xmax, xmin, poly, angle=0.0, midpoint=None):
+    r"""TensorProductLegendre(int dim, int order, Vector x_in, Vector xmax, Vector xmin, Vector poly, double angle=0.0, Vector midpoint=None)"""
+    return _gridfunc.TensorProductLegendre(dim, order, x_in, xmax, xmin, poly, angle, midpoint)
+TensorProductLegendre = _gridfunc.TensorProductLegendre
+
+def BoundingBox(face_patch, ufes, order, xmin, xmax, angle, midpoint, iface=-1):
+    r"""BoundingBox(intArray face_patch, FiniteElementSpace ufes, int order, Vector xmin, Vector xmax, double & angle, Vector midpoint, int iface=-1)"""
+    return _gridfunc.BoundingBox(face_patch, ufes, order, xmin, xmax, angle, midpoint, iface)
+BoundingBox = _gridfunc.BoundingBox
+
+def NewZZErrorEstimator(blfi, u, error_estimates, subdomain_reconstruction=True, with_coeff=False, tichonov_coeff=0.0):
+    r"""NewZZErrorEstimator(BilinearFormIntegrator blfi, GridFunction u, Vector error_estimates, bool subdomain_reconstruction=True, bool with_coeff=False, double tichonov_coeff=0.0) -> double"""
+    return _gridfunc.NewZZErrorEstimator(blfi, u, error_estimates, subdomain_reconstruction, with_coeff, tichonov_coeff)
+NewZZErrorEstimator = _gridfunc.NewZZErrorEstimator
+
 def ComputeElementLpDistance(p, i, gf1, gf2):
     r"""ComputeElementLpDistance(double p, int i, GridFunction gf1, GridFunction gf2) -> double"""
     return _gridfunc.ComputeElementLpDistance(p, i, gf1, gf2)
@@ -781,6 +809,11 @@ def Extrude1DGridFunction(mesh, mesh2d, sol, ny):
     r"""Extrude1DGridFunction(Mesh mesh, Mesh mesh2d, GridFunction sol, int const ny) -> GridFunction"""
     return _gridfunc.Extrude1DGridFunction(mesh, mesh2d, sol, ny)
 Extrude1DGridFunction = _gridfunc.Extrude1DGridFunction
+
+def ProlongToMaxOrder(x):
+    r"""ProlongToMaxOrder(GridFunction x) -> GridFunction"""
+    return _gridfunc.ProlongToMaxOrder(x)
+ProlongToMaxOrder = _gridfunc.ProlongToMaxOrder
 
 def __iadd__(self, v):
     ret = _gridfunc.GridFunction_iadd(self, v)

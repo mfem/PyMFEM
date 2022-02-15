@@ -3155,98 +3155,99 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__MeshOperator swig_types[55]
 #define SWIGTYPE_p_mfem__MeshOperatorSequence swig_types[56]
 #define SWIGTYPE_p_mfem__MixedBilinearForm swig_types[57]
-#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[58]
-#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[59]
-#define SWIGTYPE_p_mfem__Operator swig_types[60]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[61]
-#define SWIGTYPE_p_mfem__PWConstCoefficient swig_types[62]
-#define SWIGTYPE_p_mfem__PowerCoefficient swig_types[63]
-#define SWIGTYPE_p_mfem__ProductCoefficient swig_types[64]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[65]
-#define SWIGTYPE_p_mfem__PyCoefficientBase swig_types[66]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[67]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[68]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[69]
-#define SWIGTYPE_p_mfem__QuadratureFunctionCoefficient swig_types[70]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[71]
-#define SWIGTYPE_p_mfem__RatioCoefficient swig_types[72]
-#define SWIGTYPE_p_mfem__Rebalancer swig_types[73]
-#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[74]
-#define SWIGTYPE_p_mfem__Refinement swig_types[75]
-#define SWIGTYPE_p_mfem__RestrictedCoefficient swig_types[76]
-#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[77]
-#define SWIGTYPE_p_mfem__ScaledOperator swig_types[78]
-#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[79]
-#define SWIGTYPE_p_mfem__Solver swig_types[80]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[81]
-#define SWIGTYPE_p_mfem__SumCoefficient swig_types[82]
-#define SWIGTYPE_p_mfem__ThresholdDerefiner swig_types[83]
-#define SWIGTYPE_p_mfem__ThresholdRefiner swig_types[84]
-#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[85]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[86]
-#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[87]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[88]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[89]
-#define SWIGTYPE_p_mfem__Vector swig_types[90]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[91]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[92]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[93]
-#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[94]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[95]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[96]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[97]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[98]
-#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[99]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[100]
-#define SWIGTYPE_p_mfem__VectorRotProductCoefficient swig_types[101]
-#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[102]
-#define SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator swig_types[103]
-#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[104]
-#define SWIGTYPE_p_p_mfem__BilinearForm swig_types[105]
-#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[106]
-#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[107]
-#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[108]
-#define SWIGTYPE_p_p_mfem__DenseSymmetricMatrix swig_types[109]
-#define SWIGTYPE_p_p_mfem__DiscreteLinearOperator swig_types[110]
-#define SWIGTYPE_p_p_mfem__ElementRestriction swig_types[111]
-#define SWIGTYPE_p_p_mfem__FaceRestriction swig_types[112]
-#define SWIGTYPE_p_p_mfem__FiniteElementSpace swig_types[113]
-#define SWIGTYPE_p_p_mfem__GridFunction swig_types[114]
-#define SWIGTYPE_p_p_mfem__H1FaceRestriction swig_types[115]
-#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[116]
-#define SWIGTYPE_p_p_mfem__IntegrationRule swig_types[117]
-#define SWIGTYPE_p_p_mfem__L2ElementRestriction swig_types[118]
-#define SWIGTYPE_p_p_mfem__L2FaceRestriction swig_types[119]
-#define SWIGTYPE_p_p_mfem__LinearForm swig_types[120]
-#define SWIGTYPE_p_p_mfem__Matrix swig_types[121]
-#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[122]
-#define SWIGTYPE_p_p_mfem__MixedBilinearForm swig_types[123]
-#define SWIGTYPE_p_p_mfem__Operator swig_types[124]
-#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[125]
-#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[126]
-#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[127]
-#define SWIGTYPE_p_p_mfem__QuadratureFunction swig_types[128]
-#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[129]
-#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[130]
-#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[131]
-#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[132]
-#define SWIGTYPE_p_p_mfem__Solver swig_types[133]
-#define SWIGTYPE_p_p_mfem__SparseMatrix swig_types[134]
-#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[135]
-#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[136]
-#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[137]
-#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[138]
-#define SWIGTYPE_p_p_mfem__Vector swig_types[139]
-#define SWIGTYPE_p_pri_t swig_types[140]
-#define SWIGTYPE_p_pyr_t swig_types[141]
-#define SWIGTYPE_p_quad_t swig_types[142]
-#define SWIGTYPE_p_seg_t swig_types[143]
-#define SWIGTYPE_p_size_type swig_types[144]
-#define SWIGTYPE_p_tet_t swig_types[145]
-#define SWIGTYPE_p_tri_t swig_types[146]
-#define SWIGTYPE_p_value_type swig_types[147]
-static swig_type_info *swig_types[149];
-static swig_module_info swig_module = {swig_types, 148, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__NewZienkiewiczZhuEstimator swig_types[58]
+#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[59]
+#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[60]
+#define SWIGTYPE_p_mfem__Operator swig_types[61]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[62]
+#define SWIGTYPE_p_mfem__PWConstCoefficient swig_types[63]
+#define SWIGTYPE_p_mfem__PowerCoefficient swig_types[64]
+#define SWIGTYPE_p_mfem__ProductCoefficient swig_types[65]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[66]
+#define SWIGTYPE_p_mfem__PyCoefficientBase swig_types[67]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[68]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[69]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[70]
+#define SWIGTYPE_p_mfem__QuadratureFunctionCoefficient swig_types[71]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[72]
+#define SWIGTYPE_p_mfem__RatioCoefficient swig_types[73]
+#define SWIGTYPE_p_mfem__Rebalancer swig_types[74]
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[75]
+#define SWIGTYPE_p_mfem__Refinement swig_types[76]
+#define SWIGTYPE_p_mfem__RestrictedCoefficient swig_types[77]
+#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[78]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[79]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[80]
+#define SWIGTYPE_p_mfem__Solver swig_types[81]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[82]
+#define SWIGTYPE_p_mfem__SumCoefficient swig_types[83]
+#define SWIGTYPE_p_mfem__ThresholdDerefiner swig_types[84]
+#define SWIGTYPE_p_mfem__ThresholdRefiner swig_types[85]
+#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[86]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[87]
+#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[88]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[89]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[90]
+#define SWIGTYPE_p_mfem__Vector swig_types[91]
+#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[92]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[93]
+#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[94]
+#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[95]
+#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[96]
+#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[97]
+#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[98]
+#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[99]
+#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[100]
+#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[101]
+#define SWIGTYPE_p_mfem__VectorRotProductCoefficient swig_types[102]
+#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[103]
+#define SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator swig_types[104]
+#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[105]
+#define SWIGTYPE_p_p_mfem__BilinearForm swig_types[106]
+#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[107]
+#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[108]
+#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[109]
+#define SWIGTYPE_p_p_mfem__DenseSymmetricMatrix swig_types[110]
+#define SWIGTYPE_p_p_mfem__DiscreteLinearOperator swig_types[111]
+#define SWIGTYPE_p_p_mfem__ElementRestriction swig_types[112]
+#define SWIGTYPE_p_p_mfem__FaceRestriction swig_types[113]
+#define SWIGTYPE_p_p_mfem__FiniteElementSpace swig_types[114]
+#define SWIGTYPE_p_p_mfem__GridFunction swig_types[115]
+#define SWIGTYPE_p_p_mfem__H1FaceRestriction swig_types[116]
+#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[117]
+#define SWIGTYPE_p_p_mfem__IntegrationRule swig_types[118]
+#define SWIGTYPE_p_p_mfem__L2ElementRestriction swig_types[119]
+#define SWIGTYPE_p_p_mfem__L2FaceRestriction swig_types[120]
+#define SWIGTYPE_p_p_mfem__LinearForm swig_types[121]
+#define SWIGTYPE_p_p_mfem__Matrix swig_types[122]
+#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[123]
+#define SWIGTYPE_p_p_mfem__MixedBilinearForm swig_types[124]
+#define SWIGTYPE_p_p_mfem__Operator swig_types[125]
+#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[126]
+#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[127]
+#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[128]
+#define SWIGTYPE_p_p_mfem__QuadratureFunction swig_types[129]
+#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[130]
+#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[131]
+#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[132]
+#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[133]
+#define SWIGTYPE_p_p_mfem__Solver swig_types[134]
+#define SWIGTYPE_p_p_mfem__SparseMatrix swig_types[135]
+#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[136]
+#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[137]
+#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[138]
+#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[139]
+#define SWIGTYPE_p_p_mfem__Vector swig_types[140]
+#define SWIGTYPE_p_pri_t swig_types[141]
+#define SWIGTYPE_p_pyr_t swig_types[142]
+#define SWIGTYPE_p_quad_t swig_types[143]
+#define SWIGTYPE_p_seg_t swig_types[144]
+#define SWIGTYPE_p_size_type swig_types[145]
+#define SWIGTYPE_p_tet_t swig_types[146]
+#define SWIGTYPE_p_tri_t swig_types[147]
+#define SWIGTYPE_p_value_type swig_types[148]
+static swig_type_info *swig_types[150];
+static swig_module_info swig_module = {swig_types, 149, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -6162,6 +6163,9 @@ static void *_p_mfem__AnisotropicErrorEstimatorTo_p_mfem__ErrorEstimator(void *x
 static void *_p_mfem__ZienkiewiczZhuEstimatorTo_p_mfem__ErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::ErrorEstimator *) (mfem::AnisotropicErrorEstimator *) ((mfem::ZienkiewiczZhuEstimator *) x));
 }
+static void *_p_mfem__NewZienkiewiczZhuEstimatorTo_p_mfem__ErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ErrorEstimator *)  ((mfem::NewZienkiewiczZhuEstimator *) x));
+}
 static void *_p_mfem__LpErrorEstimatorTo_p_mfem__ErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::ErrorEstimator *)  ((mfem::LpErrorEstimator *) x));
 }
@@ -6529,6 +6533,7 @@ static swig_type_info _swigt__p_mfem__DGTraceIntegrator = {"_p_mfem__DGTraceInte
 static swig_type_info _swigt__p_mfem__ErrorEstimator = {"_p_mfem__ErrorEstimator", "mfem::ErrorEstimator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__AnisotropicErrorEstimator = {"_p_mfem__AnisotropicErrorEstimator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__ZienkiewiczZhuEstimator = {"_p_mfem__ZienkiewiczZhuEstimator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__NewZienkiewiczZhuEstimator = {"_p_mfem__NewZienkiewiczZhuEstimator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__LpErrorEstimator = {"_p_mfem__LpErrorEstimator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__KellyErrorEstimator = {"_p_mfem__KellyErrorEstimator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__FiniteElementSpace = {"_p_mfem__FiniteElementSpace", "mfem::FiniteElementSpace *", 0, 0, (void*)0, 0};
@@ -6697,6 +6702,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__MeshOperator,
   &_swigt__p_mfem__MeshOperatorSequence,
   &_swigt__p_mfem__MixedBilinearForm,
+  &_swigt__p_mfem__NewZienkiewiczZhuEstimator,
   &_swigt__p_mfem__NodeExtrudeCoefficient,
   &_swigt__p_mfem__NormalizedVectorCoefficient,
   &_swigt__p_mfem__Operator,
@@ -6828,9 +6834,10 @@ static swig_cast_info _swigc__p_mfem__ConvectionIntegrator[] = {  {&_swigt__p_mf
 static swig_cast_info _swigc__p_mfem__DGTraceIntegrator[] = {  {&_swigt__p_mfem__DGTraceIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__AnisotropicErrorEstimator[] = {{&_swigt__p_mfem__AnisotropicErrorEstimator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ZienkiewiczZhuEstimator[] = {{&_swigt__p_mfem__ZienkiewiczZhuEstimator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__NewZienkiewiczZhuEstimator[] = {{&_swigt__p_mfem__NewZienkiewiczZhuEstimator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LpErrorEstimator[] = {{&_swigt__p_mfem__LpErrorEstimator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__KellyErrorEstimator[] = {{&_swigt__p_mfem__KellyErrorEstimator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ErrorEstimator[] = {  {&_swigt__p_mfem__ErrorEstimator, 0, 0, 0},  {&_swigt__p_mfem__AnisotropicErrorEstimator, _p_mfem__AnisotropicErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__ZienkiewiczZhuEstimator, _p_mfem__ZienkiewiczZhuEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__LpErrorEstimator, _p_mfem__LpErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__KellyErrorEstimator, _p_mfem__KellyErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ErrorEstimator[] = {  {&_swigt__p_mfem__ErrorEstimator, 0, 0, 0},  {&_swigt__p_mfem__AnisotropicErrorEstimator, _p_mfem__AnisotropicErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__ZienkiewiczZhuEstimator, _p_mfem__ZienkiewiczZhuEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__NewZienkiewiczZhuEstimator, _p_mfem__NewZienkiewiczZhuEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__LpErrorEstimator, _p_mfem__LpErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__KellyErrorEstimator, _p_mfem__KellyErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__FiniteElementSpace[] = {  {&_swigt__p_mfem__FiniteElementSpace, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationPoint[] = {  {&_swigt__p_mfem__IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
@@ -6997,6 +7004,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__MeshOperator,
   _swigc__p_mfem__MeshOperatorSequence,
   _swigc__p_mfem__MixedBilinearForm,
+  _swigc__p_mfem__NewZienkiewiczZhuEstimator,
   _swigc__p_mfem__NodeExtrudeCoefficient,
   _swigc__p_mfem__NormalizedVectorCoefficient,
   _swigc__p_mfem__Operator,

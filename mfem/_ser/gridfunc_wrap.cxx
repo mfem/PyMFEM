@@ -9828,6 +9828,142 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementGradError(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
+  int arg2 ;
+  mfem::VectorCoefficient *arg3 = (mfem::VectorCoefficient *) 0 ;
+  mfem::IntegrationRule **arg4 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  mfem::IntegrationRule **tmp_ptrarray4 ;
+  bool allocated4 = false ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"ielem",  (char *)"exgrad",  (char *)"irs",  NULL 
+  };
+  double result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:GridFunction_ComputeElementGradError", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeElementGradError" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__VectorCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeElementGradError" "', argument " "3"" of type '" "mfem::VectorCoefficient *""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::VectorCoefficient * >(argp3);
+  if (obj3) {
+    {
+      //  List/Tuple -> mfem::IntegrationRule *
+      
+      int res = 0;
+      if (PyList_Check(obj3)) {
+        int ll = PyList_Size(obj3);
+        arg4 = new mfem::IntegrationRule * [ll];
+        allocated4 = true;
+        for (int i = 0; i < ll; i++) {
+          mfem::IntegrationRule * ttt;
+          PyObject *s = PyList_GetItem(obj3,i);
+          res = SWIG_ConvertPtr(s, (void **) &ttt,
+            SWIGTYPE_p_mfem__IntegrationRule,
+            0);
+          if (!SWIG_IsOK(res)) {
+            PyErr_SetString(PyExc_ValueError, "can not convert a list/tuple item to mfem::IntegrationRule *");	 
+            return NULL;
+          }	
+          arg4[i] = ttt;
+        }
+      } else if (PyTuple_Check(obj3)) {
+        int ll = PyTuple_Size(obj3);
+        arg4 = new mfem::IntegrationRule * [ll];
+        allocated4 = true;     
+        for (int i = 0; i < ll; i++) {
+          mfem::IntegrationRule * ttt;
+          PyObject *s = PyTuple_GetItem(obj3,i);
+          res = SWIG_ConvertPtr(s, (void **) &ttt,
+            SWIGTYPE_p_mfem__IntegrationRule,
+            0);
+          if (!SWIG_IsOK(res)) {
+            PyErr_SetString(PyExc_ValueError, "can not convert a list/tuple item to mfem::IntegrationRule *");	 
+            return NULL;
+          }	
+          arg4[i] = ttt;
+        }
+      } else {
+        int res = SWIG_ConvertPtr(obj3, (void **) &tmp_ptrarray4, SWIGTYPE_p_p_mfem__IntegrationRule, SWIG_POINTER_NO_NULL);
+        if (SWIG_CheckState(res)){
+          arg4 = tmp_ptrarray4;
+        } else {
+          PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple or mfem::IntegrationRule * *[]");
+          return NULL;
+        }
+      }
+      
+      tmp_ptrarray4 = arg4;
+      
+      
+      
+      
+      
+      
+    }
+  }
+  {
+    try {
+      result = (double)((mfem::GridFunction const *)arg1)->ComputeElementGradError(arg2,arg3,(mfem::IntegrationRule const *(*))arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  {
+    if (arg4 != 0){
+      if (allocated4){
+        delete arg4;
+      }
+      
+    }
+  }
+  return resultobj;
+fail:
+  {
+    if (arg4 != 0){
+      if (allocated4){
+        delete arg4;
+      }
+      
+    }
+  }
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_GridFunction_ComputeGradError(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
@@ -18645,6 +18781,361 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_QuadratureFunction_SaveVTU__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::QuadratureFunction *arg1 = (mfem::QuadratureFunction *) 0 ;
+  std::ostream *arg2 = 0 ;
+  mfem::VTKFormat arg3 = (mfem::VTKFormat) mfem::VTKFormat::ASCII ;
+  int arg4 = (int) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out_txt2 ;
+  mfem::ofgzstream *out_gz2 = 0 ;
+  PyObject *string_io2 = 0 ;
+  std::ostringstream *stream2 = 0 ;
+  PyObject *ret2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunction_SaveVTU" "', argument " "1"" of type '" "mfem::QuadratureFunction const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::QuadratureFunction * >(argp1);
+  {
+    //  PyMFEM::wFILE or string argument or StringIO
+    if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      if (!PyString_Check(swig_obj[1]) && !PyUnicode_Check(swig_obj[1])) {
+        // not string, check if it is StringIO
+        PyObject* module = PyImport_ImportModule("io");
+        if (!module){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+          return NULL;
+        }      
+        PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+        if (!cls){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+          return NULL;
+        }      
+        int check = PyObject_IsInstance(swig_obj[1], cls);
+        Py_DECREF(module);
+        if (! check){
+          SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
+          return NULL;
+        }
+        string_io2=swig_obj[1];
+        stream2 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(swig_obj[1], "precision")){
+          PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream2->precision(prec);
+        
+      } else {
+        // if it is string, extract filename as char*
+        PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
+        const char* filename = PyBytes_AsString(str);
+        temp2 = new PyMFEM::wFILE(filename, 16, true);
+        Py_DECREF(str);	 
+      }
+    }
+    
+    if (stream2 == 0){
+      if (temp2->isSTDOUT() == 1) {
+        arg2 = &std::cout;
+      } else if (temp2->isGZ()){
+        out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
+        arg2 = out_gz2;	     
+      } else {
+        out_txt2.open(temp2->getFilename());
+        out_txt2.precision(temp2->getPrecision());
+        arg2 = &out_txt2;
+      }
+    } else {
+      arg2 = stream2;
+    }
+  }
+  if (swig_obj[2]) {
+    ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "QuadratureFunction_SaveVTU" "', argument " "3"" of type '" "mfem::VTKFormat""'");
+    } 
+    arg3 = static_cast< mfem::VTKFormat >(val3);
+  }
+  if (swig_obj[3]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    }
+  }
+  {
+    try {
+      ((mfem::QuadratureFunction const *)arg1)->SaveVTU(*arg2,arg3,arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    if (stream2) {
+      std::string str =  stream2->str();
+      const char* s = str.c_str();
+      const int n = str.length();
+      ret2 = PyObject_CallMethod(string_io2, "write", "s#",
+        s, static_cast<Py_ssize_t>(n));
+      if (PyErr_Occurred()) {
+        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
+        return NULL;
+      }
+      delete stream2;
+      Py_XDECREF(resultobj);   /* Blow away any previous result */
+      resultobj = ret2;    
+    }
+  }
+  {
+    if (!stream2) {
+      if (temp2) {
+        if (temp2->isSTDOUT() != 1) {
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
+      }
+    }
+  }
+  return resultobj;
+fail:
+  {
+    if (!stream2) {
+      if (temp2) {
+        if (temp2->isSTDOUT() != 1) {
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
+      }
+    }
+  }
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_QuadratureFunction_SaveVTU__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::QuadratureFunction *arg1 = (mfem::QuadratureFunction *) 0 ;
+  std::string *arg2 = 0 ;
+  mfem::VTKFormat arg3 = (mfem::VTKFormat) mfem::VTKFormat::ASCII ;
+  int arg4 = (int) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  int val3 ;
+  int ecode3 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunction_SaveVTU" "', argument " "1"" of type '" "mfem::QuadratureFunction const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::QuadratureFunction * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "QuadratureFunction_SaveVTU" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "QuadratureFunction_SaveVTU" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  if (swig_obj[2]) {
+    ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "QuadratureFunction_SaveVTU" "', argument " "3"" of type '" "mfem::VTKFormat""'");
+    } 
+    arg3 = static_cast< mfem::VTKFormat >(val3);
+  }
+  if (swig_obj[3]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    }
+  }
+  {
+    try {
+      ((mfem::QuadratureFunction const *)arg1)->SaveVTU((std::string const &)*arg2,arg3,arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_QuadratureFunction_SaveVTU(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "QuadratureFunction_SaveVTU", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if ((argc >= 2) && (argc <= 4)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__QuadratureFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_QuadratureFunction_SaveVTU__SWIG_1(self, argc, argv);
+        }
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          if (argc <= 3) {
+            return _wrap_QuadratureFunction_SaveVTU__SWIG_1(self, argc, argv);
+          }
+          {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
+              _v = 0;
+            } else {
+              _v = 1;    
+            }
+          }
+          if (_v) {
+            return _wrap_QuadratureFunction_SaveVTU__SWIG_1(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  if ((argc >= 2) && (argc <= 4)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__QuadratureFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        //std::string *ptr2 = (std::string *)0;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          if (!PyString_Check(argv[1]) && !PyUnicode_Check(argv[1])) {
+            // not string
+            _v = 1;	   	
+            PyObject* module = PyImport_ImportModule("io");
+            if (!module){
+              _v = 0;	   
+            }      
+            PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+            if (!cls){
+              _v = 0;	   	   
+            }      
+            int check = PyObject_IsInstance(argv[1], cls);
+            Py_DECREF(module);
+            if (! check){
+              _v = 0;	   	   	   
+            }
+          } else {
+            _v = 1;
+          }
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_QuadratureFunction_SaveVTU__SWIG_0(self, argc, argv);
+        }
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          if (argc <= 3) {
+            return _wrap_QuadratureFunction_SaveVTU__SWIG_0(self, argc, argv);
+          }
+          {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
+              _v = 0;
+            } else {
+              _v = 1;    
+            }
+          }
+          if (_v) {
+            return _wrap_QuadratureFunction_SaveVTU__SWIG_0(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'QuadratureFunction_SaveVTU'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::QuadratureFunction::SaveVTU(std::ostream &,mfem::VTKFormat,int) const\n"
+    "    mfem::QuadratureFunction::SaveVTU(std::string const &,mfem::VTKFormat,int) const\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_QuadratureFunction_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::QuadratureFunction *arg1 = (mfem::QuadratureFunction *) 0 ;
@@ -19222,6 +19713,348 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_TensorProductLegendre(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int arg2 ;
+  mfem::Vector *arg3 = 0 ;
+  mfem::Vector *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  mfem::Vector *arg6 = 0 ;
+  double arg7 = (double) 0.0 ;
+  mfem::Vector *arg8 = (mfem::Vector *) NULL ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  double val7 ;
+  int ecode7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  char * kwnames[] = {
+    (char *)"dim",  (char *)"order",  (char *)"x_in",  (char *)"xmax",  (char *)"xmin",  (char *)"poly",  (char *)"angle",  (char *)"midpoint",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOO|OO:TensorProductLegendre", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "TensorProductLegendre" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TensorProductLegendre" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "TensorProductLegendre" "', argument " "4"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TensorProductLegendre" "', argument " "4"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
+  res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "TensorProductLegendre" "', argument " "5"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TensorProductLegendre" "', argument " "5"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  res6 = SWIG_ConvertPtr(obj5, &argp6, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "TensorProductLegendre" "', argument " "6"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp6) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TensorProductLegendre" "', argument " "6"" of type '" "mfem::Vector &""'"); 
+  }
+  arg6 = reinterpret_cast< mfem::Vector * >(argp6);
+  if (obj6) {
+    ecode7 = SWIG_AsVal_double(obj6, &val7);
+    if (!SWIG_IsOK(ecode7)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "TensorProductLegendre" "', argument " "7"" of type '" "double""'");
+    } 
+    arg7 = static_cast< double >(val7);
+  }
+  if (obj7) {
+    res8 = SWIG_ConvertPtr(obj7, &argp8,SWIGTYPE_p_mfem__Vector, 0 |  0 );
+    if (!SWIG_IsOK(res8)) {
+      SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "TensorProductLegendre" "', argument " "8"" of type '" "mfem::Vector const *""'"); 
+    }
+    arg8 = reinterpret_cast< mfem::Vector * >(argp8);
+  }
+  {
+    try {
+      mfem::TensorProductLegendre(arg1,arg2,(mfem::Vector const &)*arg3,(mfem::Vector const &)*arg4,(mfem::Vector const &)*arg5,*arg6,arg7,(mfem::Vector const *)arg8);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BoundingBox(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< int > *arg1 = 0 ;
+  mfem::FiniteElementSpace *arg2 = (mfem::FiniteElementSpace *) 0 ;
+  int arg3 ;
+  mfem::Vector *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  double *arg6 = 0 ;
+  mfem::Vector *arg7 = 0 ;
+  int arg8 = (int) -1 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  char * kwnames[] = {
+    (char *)"face_patch",  (char *)"ufes",  (char *)"order",  (char *)"xmin",  (char *)"xmax",  (char *)"angle",  (char *)"midpoint",  (char *)"iface",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOOO|O:BoundingBox", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BoundingBox" "', argument " "1"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BoundingBox" "', argument " "1"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BoundingBox" "', argument " "2"" of type '" "mfem::FiniteElementSpace *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElementSpace * >(argp2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "BoundingBox" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BoundingBox" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
+  res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "BoundingBox" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BoundingBox" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  res6 = SWIG_ConvertPtr(obj5, &argp6, SWIGTYPE_p_double,  0 );
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "BoundingBox" "', argument " "6"" of type '" "double &""'"); 
+  }
+  if (!argp6) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BoundingBox" "', argument " "6"" of type '" "double &""'"); 
+  }
+  arg6 = reinterpret_cast< double * >(argp6);
+  res7 = SWIG_ConvertPtr(obj6, &argp7, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "BoundingBox" "', argument " "7"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp7) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BoundingBox" "', argument " "7"" of type '" "mfem::Vector &""'"); 
+  }
+  arg7 = reinterpret_cast< mfem::Vector * >(argp7);
+  if (obj7) {
+    {
+      if ((PyArray_PyIntAsInt(obj7) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg8 = PyArray_PyIntAsInt(obj7);
+    }
+  }
+  {
+    try {
+      mfem::BoundingBox((mfem::Array< int > const &)*arg1,arg2,arg3,*arg4,*arg5,*arg6,*arg7,arg8);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NewZZErrorEstimator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::BilinearFormIntegrator *arg1 = 0 ;
+  mfem::GridFunction *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  bool arg4 = (bool) true ;
+  bool arg5 = (bool) false ;
+  double arg6 = (double) 0.0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  bool val5 ;
+  int ecode5 = 0 ;
+  double val6 ;
+  int ecode6 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  char * kwnames[] = {
+    (char *)"blfi",  (char *)"u",  (char *)"error_estimates",  (char *)"subdomain_reconstruction",  (char *)"with_coeff",  (char *)"tichonov_coeff",  NULL 
+  };
+  double result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|OOO:NewZZErrorEstimator", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__BilinearFormIntegrator,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NewZZErrorEstimator" "', argument " "1"" of type '" "mfem::BilinearFormIntegrator &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NewZZErrorEstimator" "', argument " "1"" of type '" "mfem::BilinearFormIntegrator &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__GridFunction,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NewZZErrorEstimator" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NewZZErrorEstimator" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::GridFunction * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "NewZZErrorEstimator" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NewZZErrorEstimator" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  if (obj3) {
+    ecode4 = SWIG_AsVal_bool(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "NewZZErrorEstimator" "', argument " "4"" of type '" "bool""'");
+    } 
+    arg4 = static_cast< bool >(val4);
+  }
+  if (obj4) {
+    ecode5 = SWIG_AsVal_bool(obj4, &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "NewZZErrorEstimator" "', argument " "5"" of type '" "bool""'");
+    } 
+    arg5 = static_cast< bool >(val5);
+  }
+  if (obj5) {
+    ecode6 = SWIG_AsVal_double(obj5, &val6);
+    if (!SWIG_IsOK(ecode6)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "NewZZErrorEstimator" "', argument " "6"" of type '" "double""'");
+    } 
+    arg6 = static_cast< double >(val6);
+  }
+  {
+    try {
+      result = (double)mfem::NewZZErrorEstimator(*arg1,*arg2,*arg3,arg4,arg5,arg6);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ComputeElementLpDistance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   double arg1 ;
@@ -19547,6 +20380,49 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ProlongToMaxOrder(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"x",  NULL 
+  };
+  mfem::GridFunction *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:ProlongToMaxOrder", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ProlongToMaxOrder" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
+  {
+    try {
+      result = (mfem::GridFunction *)mfem::ProlongToMaxOrder((mfem::GridFunction const *)arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
@@ -19640,6 +20516,7 @@ static PyMethodDef SwigMethods[] = {
 		"GridFunction_ComputeL2Error(GridFunction self, mfem::Coefficient *[] exsol, mfem::IntegrationRule const *[] irs=0) -> double\n"
 		"GridFunction_ComputeL2Error(GridFunction self, VectorCoefficient exsol, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double\n"
 		""},
+	 { "GridFunction_ComputeElementGradError", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeElementGradError, METH_VARARGS|METH_KEYWORDS, "GridFunction_ComputeElementGradError(GridFunction self, int ielem, VectorCoefficient exgrad, mfem::IntegrationRule const *[] irs=0) -> double"},
 	 { "GridFunction_ComputeGradError", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeGradError, METH_VARARGS|METH_KEYWORDS, "GridFunction_ComputeGradError(GridFunction self, VectorCoefficient exgrad, mfem::IntegrationRule const *[] irs=0) -> double"},
 	 { "GridFunction_ComputeCurlError", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeCurlError, METH_VARARGS|METH_KEYWORDS, "GridFunction_ComputeCurlError(GridFunction self, VectorCoefficient excurl, mfem::IntegrationRule const *[] irs=0) -> double"},
 	 { "GridFunction_ComputeDivError", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeDivError, METH_VARARGS|METH_KEYWORDS, "GridFunction_ComputeDivError(GridFunction self, Coefficient exdiv, mfem::IntegrationRule const *[] irs=0) -> double"},
@@ -19767,6 +20644,10 @@ static PyMethodDef SwigMethods[] = {
 		"QuadratureFunction_GetElementValues(QuadratureFunction self, int idx, DenseMatrix values)\n"
 		"QuadratureFunction_GetElementValues(QuadratureFunction self, int idx, DenseMatrix values)\n"
 		""},
+	 { "QuadratureFunction_SaveVTU", _wrap_QuadratureFunction_SaveVTU, METH_VARARGS, "\n"
+		"QuadratureFunction_SaveVTU(QuadratureFunction self, std::ostream & out, mfem::VTKFormat format=ASCII, int compression_level=0)\n"
+		"QuadratureFunction_SaveVTU(QuadratureFunction self, std::string const & filename, mfem::VTKFormat format=ASCII, int compression_level=0)\n"
+		""},
 	 { "QuadratureFunction_Save", _wrap_QuadratureFunction_Save, METH_VARARGS, "\n"
 		"QuadratureFunction_Save(QuadratureFunction self, std::ostream & out)\n"
 		"QuadratureFunction_Save(QuadratureFunction self, char const * file, int precision=16)\n"
@@ -19781,6 +20662,9 @@ static PyMethodDef SwigMethods[] = {
 		"__lshift__(std::ostream & out, QuadratureFunction qf) -> std::ostream &\n"
 		""},
 	 { "ZZErrorEstimator", (PyCFunction)(void(*)(void))_wrap_ZZErrorEstimator, METH_VARARGS|METH_KEYWORDS, "ZZErrorEstimator(BilinearFormIntegrator blfi, GridFunction u, GridFunction flux, Vector error_estimates, intArray aniso_flags=None, int with_subdomains=1, bool with_coeff=False) -> double"},
+	 { "TensorProductLegendre", (PyCFunction)(void(*)(void))_wrap_TensorProductLegendre, METH_VARARGS|METH_KEYWORDS, "TensorProductLegendre(int dim, int order, Vector x_in, Vector xmax, Vector xmin, Vector poly, double angle=0.0, Vector midpoint=None)"},
+	 { "BoundingBox", (PyCFunction)(void(*)(void))_wrap_BoundingBox, METH_VARARGS|METH_KEYWORDS, "BoundingBox(intArray face_patch, FiniteElementSpace ufes, int order, Vector xmin, Vector xmax, double & angle, Vector midpoint, int iface=-1)"},
+	 { "NewZZErrorEstimator", (PyCFunction)(void(*)(void))_wrap_NewZZErrorEstimator, METH_VARARGS|METH_KEYWORDS, "NewZZErrorEstimator(BilinearFormIntegrator blfi, GridFunction u, Vector error_estimates, bool subdomain_reconstruction=True, bool with_coeff=False, double tichonov_coeff=0.0) -> double"},
 	 { "ComputeElementLpDistance", (PyCFunction)(void(*)(void))_wrap_ComputeElementLpDistance, METH_VARARGS|METH_KEYWORDS, "ComputeElementLpDistance(double p, int i, GridFunction gf1, GridFunction gf2) -> double"},
 	 { "new_ExtrudeCoefficient", (PyCFunction)(void(*)(void))_wrap_new_ExtrudeCoefficient, METH_VARARGS|METH_KEYWORDS, "new_ExtrudeCoefficient(Mesh m, Coefficient s, int n_) -> ExtrudeCoefficient"},
 	 { "ExtrudeCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_ExtrudeCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "ExtrudeCoefficient_Eval(ExtrudeCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
@@ -19788,6 +20672,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "ExtrudeCoefficient_swigregister", ExtrudeCoefficient_swigregister, METH_O, NULL},
 	 { "ExtrudeCoefficient_swiginit", ExtrudeCoefficient_swiginit, METH_VARARGS, NULL},
 	 { "Extrude1DGridFunction", (PyCFunction)(void(*)(void))_wrap_Extrude1DGridFunction, METH_VARARGS|METH_KEYWORDS, "Extrude1DGridFunction(Mesh mesh, Mesh mesh2d, GridFunction sol, int const ny) -> GridFunction"},
+	 { "ProlongToMaxOrder", (PyCFunction)(void(*)(void))_wrap_ProlongToMaxOrder, METH_VARARGS|METH_KEYWORDS, "ProlongToMaxOrder(GridFunction x) -> GridFunction"},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -19884,6 +20769,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"ComputeL2Error(GridFunction self, mfem::Coefficient *[] exsol, mfem::IntegrationRule const *[] irs=0) -> double\n"
 		"ComputeL2Error(GridFunction self, VectorCoefficient exsol, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double\n"
 		""},
+	 { "GridFunction_ComputeElementGradError", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeElementGradError, METH_VARARGS|METH_KEYWORDS, "ComputeElementGradError(GridFunction self, int ielem, VectorCoefficient exgrad, mfem::IntegrationRule const *[] irs=0) -> double"},
 	 { "GridFunction_ComputeGradError", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeGradError, METH_VARARGS|METH_KEYWORDS, "ComputeGradError(GridFunction self, VectorCoefficient exgrad, mfem::IntegrationRule const *[] irs=0) -> double"},
 	 { "GridFunction_ComputeCurlError", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeCurlError, METH_VARARGS|METH_KEYWORDS, "ComputeCurlError(GridFunction self, VectorCoefficient excurl, mfem::IntegrationRule const *[] irs=0) -> double"},
 	 { "GridFunction_ComputeDivError", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeDivError, METH_VARARGS|METH_KEYWORDS, "ComputeDivError(GridFunction self, Coefficient exdiv, mfem::IntegrationRule const *[] irs=0) -> double"},
@@ -20011,6 +20897,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"GetElementValues(QuadratureFunction self, int idx, DenseMatrix values)\n"
 		"GetElementValues(QuadratureFunction self, int idx, DenseMatrix values)\n"
 		""},
+	 { "QuadratureFunction_SaveVTU", _wrap_QuadratureFunction_SaveVTU, METH_VARARGS, "\n"
+		"SaveVTU(QuadratureFunction self, std::ostream & out, mfem::VTKFormat format=ASCII, int compression_level=0)\n"
+		"SaveVTU(QuadratureFunction self, std::string const & filename, mfem::VTKFormat format=ASCII, int compression_level=0)\n"
+		""},
 	 { "QuadratureFunction_Save", _wrap_QuadratureFunction_Save, METH_VARARGS, "\n"
 		"Save(QuadratureFunction self, std::ostream & out)\n"
 		"Save(QuadratureFunction self, char const * file, int precision=16)\n"
@@ -20025,6 +20915,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"__lshift__(std::ostream & out, QuadratureFunction qf) -> std::ostream &\n"
 		""},
 	 { "ZZErrorEstimator", (PyCFunction)(void(*)(void))_wrap_ZZErrorEstimator, METH_VARARGS|METH_KEYWORDS, "ZZErrorEstimator(BilinearFormIntegrator blfi, GridFunction u, GridFunction flux, Vector error_estimates, intArray aniso_flags=None, int with_subdomains=1, bool with_coeff=False) -> double"},
+	 { "TensorProductLegendre", (PyCFunction)(void(*)(void))_wrap_TensorProductLegendre, METH_VARARGS|METH_KEYWORDS, "TensorProductLegendre(int dim, int order, Vector x_in, Vector xmax, Vector xmin, Vector poly, double angle=0.0, Vector midpoint=None)"},
+	 { "BoundingBox", (PyCFunction)(void(*)(void))_wrap_BoundingBox, METH_VARARGS|METH_KEYWORDS, "BoundingBox(intArray face_patch, FiniteElementSpace ufes, int order, Vector xmin, Vector xmax, double & angle, Vector midpoint, int iface=-1)"},
+	 { "NewZZErrorEstimator", (PyCFunction)(void(*)(void))_wrap_NewZZErrorEstimator, METH_VARARGS|METH_KEYWORDS, "NewZZErrorEstimator(BilinearFormIntegrator blfi, GridFunction u, Vector error_estimates, bool subdomain_reconstruction=True, bool with_coeff=False, double tichonov_coeff=0.0) -> double"},
 	 { "ComputeElementLpDistance", (PyCFunction)(void(*)(void))_wrap_ComputeElementLpDistance, METH_VARARGS|METH_KEYWORDS, "ComputeElementLpDistance(double p, int i, GridFunction gf1, GridFunction gf2) -> double"},
 	 { "new_ExtrudeCoefficient", (PyCFunction)(void(*)(void))_wrap_new_ExtrudeCoefficient, METH_VARARGS|METH_KEYWORDS, "new_ExtrudeCoefficient(Mesh m, Coefficient s, int n_) -> ExtrudeCoefficient"},
 	 { "ExtrudeCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_ExtrudeCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(ExtrudeCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
@@ -20032,6 +20925,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ExtrudeCoefficient_swigregister", ExtrudeCoefficient_swigregister, METH_O, NULL},
 	 { "ExtrudeCoefficient_swiginit", ExtrudeCoefficient_swiginit, METH_VARARGS, NULL},
 	 { "Extrude1DGridFunction", (PyCFunction)(void(*)(void))_wrap_Extrude1DGridFunction, METH_VARARGS|METH_KEYWORDS, "Extrude1DGridFunction(Mesh mesh, Mesh mesh2d, GridFunction sol, int const ny) -> GridFunction"},
+	 { "ProlongToMaxOrder", (PyCFunction)(void(*)(void))_wrap_ProlongToMaxOrder, METH_VARARGS|METH_KEYWORDS, "ProlongToMaxOrder(GridFunction x) -> GridFunction"},
 	 { NULL, NULL, 0, NULL }
 };
 
