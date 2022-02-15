@@ -1,5 +1,7 @@
 	<<<  Change Log. >>>
-2022 01.xx
+2022 02.15
+        * added %import globals.i in sparsemat.i and common_functions.i. This is needed when
+	  MFEM
 
 2021 12.xx
         * Improved array interface. ex: Array<T>::__getitem__ accespt slice to return subarray
