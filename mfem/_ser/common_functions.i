@@ -16,6 +16,7 @@ import_array();
 %include "../common/exception.i"
 
 %import "array.i"
+%import "globals.i"
 %ignore "";
 %rename("%s") mfem;
 %rename("%s") mfem::Add;
