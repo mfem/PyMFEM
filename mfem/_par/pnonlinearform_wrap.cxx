@@ -4233,14 +4233,15 @@ SWIGINTERN PyObject *_wrap_new_ParBlockNonlinearForm__SWIG_1(PyObject *SWIGUNUSE
       for (int i = 0; i < ll; i++) {
         mfem::ParFiniteElementSpace * ttt;
         PyObject *s = PyList_GetItem(swig_obj[0],i);
-        if (s == Py_None){
-          ttt = NULL;
-        } else {
-          res = SWIG_ConvertPtr(s, (void **) &ttt,
-            SWIGTYPE_p_mfem__ParFiniteElementSpace,
-            0);
-        }
+        //if (s == Py_None){
+        //	 ttt = NULL;
+        //} else {
+        res = SWIG_ConvertPtr(s, (void **) &ttt,
+          SWIGTYPE_p_mfem__ParFiniteElementSpace,
+          0);
+        //}
         if (!SWIG_IsOK(res)) {
+          PyErr_SetString(PyExc_ValueError, "Expecting a list element to be <mfem::ParFiniteElementSpace * *>");	 
           return NULL;
         }	
         arg1[0][i] = ttt;
@@ -4252,14 +4253,15 @@ SWIGINTERN PyObject *_wrap_new_ParBlockNonlinearForm__SWIG_1(PyObject *SWIGUNUSE
       for (int i = 0; i < ll; i++) {
         mfem::ParFiniteElementSpace * ttt;
         PyObject *s = PyTuple_GetItem(swig_obj[0],i);
-        if (s == Py_None){
-          ttt = NULL;
-        } else {
-          res = SWIG_ConvertPtr(s, (void **) &ttt,
-            SWIGTYPE_p_mfem__ParFiniteElementSpace,
-            0);
-        }
+        //if (s == Py_None){
+        //	 ttt = NULL;
+        //} else {
+        res = SWIG_ConvertPtr(s, (void **) &ttt,
+          SWIGTYPE_p_mfem__ParFiniteElementSpace,
+          0);
+        //}
         if (!SWIG_IsOK(res)) {
+          PyErr_SetString(PyExc_ValueError, "Expecting a tuple element to be <mfem::ParFiniteElementSpace * *>");	 	 
           return NULL;
         }	
         arg1[0][i] = ttt;
@@ -4274,12 +4276,6 @@ SWIGINTERN PyObject *_wrap_new_ParBlockNonlinearForm__SWIG_1(PyObject *SWIGUNUSE
       }
     }
     tmp_ptrarray1 = arg1;
-    
-    
-    
-    
-    
-    
   }
   {
     try {
@@ -4300,7 +4296,6 @@ SWIGINTERN PyObject *_wrap_new_ParBlockNonlinearForm__SWIG_1(PyObject *SWIGUNUSE
       if (allocated1){
         delete arg1;
       }
-      
     }
   }
   return resultobj;
@@ -4310,7 +4305,6 @@ fail:
       if (allocated1){
         delete arg1;
       }
-      
     }
   }
   return NULL;
@@ -4339,7 +4333,7 @@ SWIGINTERN PyObject *_wrap_new_ParBlockNonlinearForm(PyObject *self, PyObject *a
         _v = 1;
       }
       mfem::ParFiniteElementSpace * *ttt;
-      int res = SWIG_ConvertPtr(argv[0], (void **) &ttt, SWIGTYPE__input, SWIG_POINTER_NO_NULL);
+      int res = SWIG_ConvertPtr(argv[0], (void **) &ttt, SWIGTYPE_p_mfem__ArrayT_mfem__ParFiniteElementSpace_p_t, SWIG_POINTER_NO_NULL);
       if (SWIG_CheckState(res)){
         _v = 1;
       }
@@ -4525,14 +4519,15 @@ SWIGINTERN PyObject *_wrap_ParBlockNonlinearForm_SetParSpaces(PyObject *SWIGUNUS
       for (int i = 0; i < ll; i++) {
         mfem::ParFiniteElementSpace * ttt;
         PyObject *s = PyList_GetItem(obj1,i);
-        if (s == Py_None){
-          ttt = NULL;
-        } else {
-          res = SWIG_ConvertPtr(s, (void **) &ttt,
-            SWIGTYPE_p_mfem__ParFiniteElementSpace,
-            0);
-        }
+        //if (s == Py_None){
+        //	 ttt = NULL;
+        //} else {
+        res = SWIG_ConvertPtr(s, (void **) &ttt,
+          SWIGTYPE_p_mfem__ParFiniteElementSpace,
+          0);
+        //}
         if (!SWIG_IsOK(res)) {
+          PyErr_SetString(PyExc_ValueError, "Expecting a list element to be <mfem::ParFiniteElementSpace * *>");	 
           return NULL;
         }	
         arg2[0][i] = ttt;
@@ -4544,14 +4539,15 @@ SWIGINTERN PyObject *_wrap_ParBlockNonlinearForm_SetParSpaces(PyObject *SWIGUNUS
       for (int i = 0; i < ll; i++) {
         mfem::ParFiniteElementSpace * ttt;
         PyObject *s = PyTuple_GetItem(obj1,i);
-        if (s == Py_None){
-          ttt = NULL;
-        } else {
-          res = SWIG_ConvertPtr(s, (void **) &ttt,
-            SWIGTYPE_p_mfem__ParFiniteElementSpace,
-            0);
-        }
+        //if (s == Py_None){
+        //	 ttt = NULL;
+        //} else {
+        res = SWIG_ConvertPtr(s, (void **) &ttt,
+          SWIGTYPE_p_mfem__ParFiniteElementSpace,
+          0);
+        //}
         if (!SWIG_IsOK(res)) {
+          PyErr_SetString(PyExc_ValueError, "Expecting a tuple element to be <mfem::ParFiniteElementSpace * *>");	 	 
           return NULL;
         }	
         arg2[0][i] = ttt;
@@ -4566,12 +4562,6 @@ SWIGINTERN PyObject *_wrap_ParBlockNonlinearForm_SetParSpaces(PyObject *SWIGUNUS
       }
     }
     tmp_ptrarray2 = arg2;
-    
-    
-    
-    
-    
-    
   }
   {
     try {
@@ -4592,7 +4582,6 @@ SWIGINTERN PyObject *_wrap_ParBlockNonlinearForm_SetParSpaces(PyObject *SWIGUNUS
       if (allocated2){
         delete arg2;
       }
-      
     }
   }
   return resultobj;
@@ -4602,7 +4591,6 @@ fail:
       if (allocated2){
         delete arg2;
       }
-      
     }
   }
   return NULL;
@@ -4643,14 +4631,15 @@ SWIGINTERN PyObject *_wrap_ParBlockNonlinearForm_SetEssentialBC(PyObject *SWIGUN
       for (int i = 0; i < ll; i++) {
         mfem::Array<int> * ttt;
         PyObject *s = PyList_GetItem(obj1,i);
-        if (s == Py_None){
-          ttt = NULL;
-        } else {
-          res = SWIG_ConvertPtr(s, (void **) &ttt,
-            SWIGTYPE_p_mfem__ArrayT_int_t,
-            0);
-        }
+        //if (s == Py_None){
+        //	 ttt = NULL;
+        //} else {
+        res = SWIG_ConvertPtr(s, (void **) &ttt,
+          SWIGTYPE_p_mfem__ArrayT_int_t,
+          0);
+        //}
         if (!SWIG_IsOK(res)) {
+          PyErr_SetString(PyExc_ValueError, "Expecting a list element to be <mfem::Array<int> * *>");	 
           return NULL;
         }	
         arg2[0][i] = ttt;
@@ -4662,14 +4651,15 @@ SWIGINTERN PyObject *_wrap_ParBlockNonlinearForm_SetEssentialBC(PyObject *SWIGUN
       for (int i = 0; i < ll; i++) {
         mfem::Array<int> * ttt;
         PyObject *s = PyTuple_GetItem(obj1,i);
-        if (s == Py_None){
-          ttt = NULL;
-        } else {
-          res = SWIG_ConvertPtr(s, (void **) &ttt,
-            SWIGTYPE_p_mfem__ArrayT_int_t,
-            0);
-        }
+        //if (s == Py_None){
+        //	 ttt = NULL;
+        //} else {
+        res = SWIG_ConvertPtr(s, (void **) &ttt,
+          SWIGTYPE_p_mfem__ArrayT_int_t,
+          0);
+        //}
         if (!SWIG_IsOK(res)) {
+          PyErr_SetString(PyExc_ValueError, "Expecting a tuple element to be <mfem::Array<int> * *>");	 	 
           return NULL;
         }	
         arg2[0][i] = ttt;
@@ -4684,12 +4674,6 @@ SWIGINTERN PyObject *_wrap_ParBlockNonlinearForm_SetEssentialBC(PyObject *SWIGUN
       }
     }
     tmp_ptrarray2 = arg2;
-    
-    
-    
-    
-    
-    
   }
   {
     //  List/Tuple (=[mfem::Vector *,mfem::Vector * ...]) -> mfem:Array<mfem::Vector *)
@@ -4701,14 +4685,15 @@ SWIGINTERN PyObject *_wrap_ParBlockNonlinearForm_SetEssentialBC(PyObject *SWIGUN
       for (int i = 0; i < ll; i++) {
         mfem::Vector * ttt;
         PyObject *s = PyList_GetItem(obj2,i);
-        if (s == Py_None){
-          ttt = NULL;
-        } else {
-          res = SWIG_ConvertPtr(s, (void **) &ttt,
-            SWIGTYPE_p_mfem__Vector,
-            0);
-        }
+        //if (s == Py_None){
+        //	 ttt = NULL;
+        //} else {
+        res = SWIG_ConvertPtr(s, (void **) &ttt,
+          SWIGTYPE_p_mfem__Vector,
+          0);
+        //}
         if (!SWIG_IsOK(res)) {
+          PyErr_SetString(PyExc_ValueError, "Expecting a list element to be <mfem::Vector * *>");	 
           return NULL;
         }	
         arg3[0][i] = ttt;
@@ -4720,14 +4705,15 @@ SWIGINTERN PyObject *_wrap_ParBlockNonlinearForm_SetEssentialBC(PyObject *SWIGUN
       for (int i = 0; i < ll; i++) {
         mfem::Vector * ttt;
         PyObject *s = PyTuple_GetItem(obj2,i);
-        if (s == Py_None){
-          ttt = NULL;
-        } else {
-          res = SWIG_ConvertPtr(s, (void **) &ttt,
-            SWIGTYPE_p_mfem__Vector,
-            0);
-        }
+        //if (s == Py_None){
+        //	 ttt = NULL;
+        //} else {
+        res = SWIG_ConvertPtr(s, (void **) &ttt,
+          SWIGTYPE_p_mfem__Vector,
+          0);
+        //}
         if (!SWIG_IsOK(res)) {
+          PyErr_SetString(PyExc_ValueError, "Expecting a tuple element to be <mfem::Vector * *>");	 	 
           return NULL;
         }	
         arg3[0][i] = ttt;
@@ -4742,12 +4728,6 @@ SWIGINTERN PyObject *_wrap_ParBlockNonlinearForm_SetEssentialBC(PyObject *SWIGUN
       }
     }
     tmp_ptrarray3 = arg3;
-    
-    
-    
-    
-    
-    
   }
   {
     try {
@@ -4768,7 +4748,6 @@ SWIGINTERN PyObject *_wrap_ParBlockNonlinearForm_SetEssentialBC(PyObject *SWIGUN
       if (allocated2){
         delete arg2;
       }
-      
     }
   }
   {
@@ -4776,7 +4755,6 @@ SWIGINTERN PyObject *_wrap_ParBlockNonlinearForm_SetEssentialBC(PyObject *SWIGUN
       if (allocated3){
         delete arg3;
       }
-      
     }
   }
   return resultobj;
@@ -4786,7 +4764,6 @@ fail:
       if (allocated2){
         delete arg2;
       }
-      
     }
   }
   {
@@ -4794,7 +4771,6 @@ fail:
       if (allocated3){
         delete arg3;
       }
-      
     }
   }
   return NULL;

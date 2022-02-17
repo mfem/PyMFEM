@@ -71,5 +71,28 @@ def GetSharedQuadrilateralDofs(self, group, fi):
     $action(self, group, fi, dofs)
     return dofs.ToList()
 %}
+%feature("shadow") mfem::ParFiniteElementSpace::GetFaceNbrElementVDofs %{
+def GetFaceNbrElementVDofs(self, i):
+    from  .array import intArray
+    vdofs = intArray()
+    $action(self, i, vdofs)
+    return vdofs.ToList()
+%}
 
 %include "fem/pfespace.hpp"
+
+%extend mfem::ParFiniteElementSpace{
+  virtual DofTransformation *GetElementDofTransformation(int elem) const{
+    mfem::Array<int> dofs;
+    return self->GetElementDofs(elem, dofs);
+  }
+  virtual DofTransformation *GetBdrElementDofTransformation(int bel) const {
+    mfem::Array<int> dofs;
+    return self->GetBdrElementDofs(bel, dofs);
+  }
+  virtual DofTransformation *GetFaceNbrVDofTransformation(int elem) const {
+    mfem::Array<int> dofs;    
+    return self->GetFaceNbrElementVDofs(elem, dofs);
+  }
+};
+
