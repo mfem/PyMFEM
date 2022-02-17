@@ -2,7 +2,7 @@
 2022 02.15
         * added %import globals.i in sparsemat.i and common_functions.i. This is needed when
 	  MFEM
-
+    
 2022 01.xx
         * Generalized multigrid constructor typemap. It now accept not only tuple/list but also
 	  Array<bool> Array<Operator *> and Array<Solver *>, like C++ API does.
