@@ -80,8 +80,6 @@ MFEM_VERSION_MINOR = _communication.MFEM_VERSION_MINOR
 
 MFEM_VERSION_PATCH = _communication.MFEM_VERSION_PATCH
 
-MFEM_HYPRE_VERSION = _communication.MFEM_HYPRE_VERSION
-
 import mfem._par.array
 import mfem._par.mem_manager
 import mfem._par.table

@@ -82,8 +82,6 @@ MFEM_VERSION_MINOR = _pumi.MFEM_VERSION_MINOR
 
 MFEM_VERSION_PATCH = _pumi.MFEM_VERSION_PATCH
 
-MFEM_HYPRE_VERSION = _pumi.MFEM_HYPRE_VERSION
-
 import mfem._par.pgridfunc
 import mfem._par.pfespace
 import mfem._par.operators

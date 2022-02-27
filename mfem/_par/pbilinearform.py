@@ -74,7 +74,6 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _pbilinearform.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _pbilinearform.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _pbilinearform.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _pbilinearform.MFEM_VERSION_PATCH
-MFEM_HYPRE_VERSION = _pbilinearform.MFEM_HYPRE_VERSION
 import mfem._par.handle
 import mfem._par.operators
 import mfem._par.mem_manager

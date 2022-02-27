@@ -82,8 +82,6 @@ MFEM_VERSION_MINOR = _coefficient.MFEM_VERSION_MINOR
 
 MFEM_VERSION_PATCH = _coefficient.MFEM_VERSION_PATCH
 
-MFEM_HYPRE_VERSION = _coefficient.MFEM_HYPRE_VERSION
-
 import mfem._par.globals
 import mfem._par.array
 import mfem._par.mem_manager

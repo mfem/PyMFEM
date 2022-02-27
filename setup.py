@@ -37,11 +37,11 @@ except ImportError:
 # from codecs import open
 
 # constants
-repo_releases = {#"mfem": "https://github.com/mfem/mfem/archive/v4.3.tar.gz",
-                 "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
-                 "hypre": "https://github.com/hypre-space/hypre/archive/v2.20.0.tar.gz",
-                 "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.9.0.tar.gz",
-                 "gslib": "https://github.com/Nek5000/gslib/archive/refs/tags/v1.0.7.tar.gz"}
+repo_releases = {  # "mfem": "https://github.com/mfem/mfem/archive/v4.3.tar.gz",
+    "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
+    "hypre": "https://github.com/hypre-space/hypre/archive/v2.24.0.tar.gz",
+    "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.9.0.tar.gz",
+    "gslib": "https://github.com/Nek5000/gslib/archive/refs/tags/v1.0.7.tar.gz"}
 
 repos = {"mfem": "https://github.com/mfem/mfem.git", }
 repos_sha = {"mfem": "c6425db3da406d1053606a627774fcf2479be658"}
@@ -125,6 +125,7 @@ def version():
             return mo.group(1)
     raise RuntimeError('Unable to find version string in %s.' % (VERSIONFILE,))
 
+
 def version():
     VERSIONFILE = os.path.join('mfem', '__init__.py')
     initfile_lines = open(VERSIONFILE, 'rt').readlines()
@@ -134,6 +135,7 @@ def version():
         if mo:
             return mo.group(1)
     raise RuntimeError('Unable to find version string in %s.' % (VERSIONFILE,))
+
 
 def long_description():
     with open(os.path.join(rootdir, 'README.md'), encoding='utf-8') as f:
@@ -350,11 +352,13 @@ def gitclone(xxx, use_sha=False, branch='master'):
     make_call(command)
     os.chdir(cwd)
 
+
 def record_mfem_sha(mfem_source):
     pwd = chdir(mfem_source)
     command = ['git', 'rev-parse', 'HEAD']
     try:
-        sha = subprocess.run(command, capture_output=True).stdout.decode().strip()
+        sha = subprocess.run(
+            command, capture_output=True).stdout.decode().strip()
     except subprocess.CalledProcessError:
         print("subprocess failed to read sha...continuing w/o recording SHA")
         sha = None
@@ -367,8 +371,9 @@ def record_mfem_sha(mfem_source):
     sha_file = os.path.join('mfem', '__sha__.py')
     fid = open(sha_file, 'w')
     if sha is not None:
-       fid.write('mfem = "' + sha + '"')
+        fid.write('mfem = "' + sha + '"')
     fid.close()
+
 
 def cmake(path, **kwargs):
     '''
@@ -417,8 +422,15 @@ def cmake_make_hypre():
                   'DHYPRE_INSTALL_PREFIX': hypre_prefix,
                   'DHYPRE_ENABLE_SHARED': '1',
                   'DCMAKE_INSTALL_PREFIX': hypre_prefix,
-                  'DCMAKE_INSTALL_NAME_DIR': os.path.join(hypre_prefix, 'lib'),
-                  'DCMAKE_C_COMPILER': mpicc_command}
+                  'DCMAKE_INSTALL_NAME_DIR': os.path.join(hypre_prefix, 'lib'), }
+
+    if enable_cuda:
+        # in this case, settitng CMAKE_C_COMPILER
+        # causes "mpi.h" not found error. For now, letting CMAKE
+        # to find MPI
+        cmake_opts['DHYPRE_WITH_CUDA'] = '1'
+    else:
+        cmake_opts['DCMAKE_C_COMPILER'] = mpicc_command
 
     cmake('..', **cmake_opts)
 
@@ -536,18 +548,28 @@ def cmake_make_mfem(serial=True):
 
     ldflags = os.getenv('LDFLAGS') if os.getenv('LDFLAGS') is not None else ''
 
+    rpaths = []
+
+    def add_rpath(p):
+        print("checking this", p)
+        if not p in rpaths:
+            rpaths.append(p)
+
     cmake_opts = {'DCMAKE_VERBOSE_MAKEFILE': '1',
                   'DBUILD_SHARED_LIBS': '1',
                   'DMFEM_ENABLE_EXAMPLES': '1',
                   'DMFEM_ENABLE_MINIAPPS': '1',
                   'DCMAKE_SHARED_LINKER_FLAGS': ldflags,
                   'DMFEM_USE_ZLIB': '1',
-                  'DCMAKE_CXX_FLAGS': cxx11_flag}
+                  'DCMAKE_CXX_FLAGS': cxx11_flag,
+                  'DCMAKE_BUILD_WITH_INSTALL_RPATH': '1'}
 
     if serial:
         cmake_opts['DCMAKE_CXX_COMPILER'] = cxx_command
         cmake_opts['DMFEM_USE_EXCEPTIONS'] = '1'
         cmake_opts['DCMAKE_INSTALL_PREFIX'] = mfems_prefix
+
+        add_rpath(os.path.join(mfems_prefix, 'lib'))
 
     else:
         cmake_opts['DCMAKE_CXX_COMPILER'] = mpicxx_command
@@ -557,7 +579,9 @@ def cmake_make_mfem(serial=True):
         cmake_opts['DMFEM_USE_METIS_5'] = '1'
         cmake_opts['DHYPRE_DIR'] = hypre_prefix
         cmake_opts['DMETIS_DIR'] = metis_prefix
+
         #cmake_opts['DCMAKE_CXX_STANDARD_LIBRARIES'] = "-lHYPRE -lmetis"
+        add_rpath(os.path.join(mfemp_prefix, 'lib'))
 
         hyprelibpath = os.path.dirname(
             find_libpath_from_prefix(
@@ -565,6 +589,9 @@ def cmake_make_mfem(serial=True):
         metislibpath = os.path.dirname(
             find_libpath_from_prefix(
                 'metis', metis_prefix))
+
+        add_rpath(metislibpath)
+        add_rpath(hyprelibpath)
 
         ldflags = "-L" + metislibpath + " " + ldflags
         ldflags = "-L" + hyprelibpath + " " + ldflags
@@ -574,15 +601,24 @@ def cmake_make_mfem(serial=True):
         if enable_strumpack:
             cmake_opts['DMFEM_USE_STRUMPACK'] = '1'
             cmake_opts['DSTRUMPACK_DIR'] = strumpack_prefix
+            libpath = os.path.dirname(
+                find_libpath_from_prefix("STRUMPACK", strumpack_prefix))
+            add_rpath(libpath)
         if enable_pumi:
             cmake_opts['DMFEM_USE_PUMI'] = '1'
             cmake_opts['DPUMI_DIR'] = pumi_prefix
+            libpath = os.path.dirname(
+                find_libpath_from_prefix("pumi", strumpack_prefix))
+            add_rpath(libpath)
 
     if enable_cuda:
         cmake_opts['DMFEM_USE_CUDA'] = '1'
     if enable_libceed:
         cmake_opts['DMFEM_USE_CEED'] = '1'
         cmake_opts['DCEED_DIR'] = libceed_prefix
+        libpath = os.path.dirname(
+            find_libpath_from_prefix("ceed", libceed_prefix))
+        add_rpath(libpath)
     if enable_gslib:
         if serial:
             pass
@@ -591,6 +627,8 @@ def cmake_make_mfem(serial=True):
         else:
             cmake_opts['DMFEM_USE_GSLIB'] = '1'
             cmake_opts['DGSLIB_DIR'] = gslibp_prefix
+
+    cmake_opts['DCMAKE_INSTALL_RPATH'] = ":".join(rpaths)
 
     pwd = chdir(path)
     cmake('..', **cmake_opts)
@@ -823,7 +861,7 @@ def make_mfem_wrapper(serial=True):
         assert False, "MFEM source directory. Use --mfem-source=<path>"
 
     record_mfem_sha(mfem_source)
-    
+
     write_setup_local()
 
     if serial:
@@ -832,7 +870,8 @@ def make_mfem_wrapper(serial=True):
         pwd = chdir(os.path.join(rootdir, 'mfem', '_par'))
 
     python = sys.executable
-    command = [python, 'setup.py', 'build_ext', '--inplace']
+    command = [python, 'setup.py', 'build_ext', '--inplace', '--parallel',
+               str(max((multiprocessing.cpu_count() - 1, 1)))]
     make_call(command)
     os.chdir(pwd)
 
@@ -1268,13 +1307,15 @@ class BuildPy(_build_py):
 
             mfem_downloaded = False
             if build_mfem:
-                gitclone('mfem', use_sha=True) if mfem_branch is None else gitclone('mfem', branch=mfem_branch)
+                gitclone('mfem', use_sha=True) if mfem_branch is None else gitclone(
+                    'mfem', branch=mfem_branch)
                 mfem_downloaded = True
                 cmake_make_mfem(serial=True)
 
             if build_mfemp:
                 if not mfem_downloaded:
-                    gitclone('mfem', use_sha=True) if mfem_branch is None else gitclone('mfem', branch=mfem_branch)
+                    gitclone('mfem', use_sha=True) if mfem_branch is None else gitclone(
+                        'mfem', branch=mfem_branch)
                 cmake_make_mfem(serial=False)
 
         if clean_swig:

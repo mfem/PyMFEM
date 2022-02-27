@@ -82,8 +82,6 @@ MFEM_VERSION_MINOR = _handle.MFEM_VERSION_MINOR
 
 MFEM_VERSION_PATCH = _handle.MFEM_VERSION_PATCH
 
-MFEM_HYPRE_VERSION = _handle.MFEM_HYPRE_VERSION
-
 import mfem._par.operators
 import mfem._par.mem_manager
 import mfem._par.vector

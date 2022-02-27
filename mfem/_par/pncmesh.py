@@ -82,8 +82,6 @@ MFEM_VERSION_MINOR = _pncmesh.MFEM_VERSION_MINOR
 
 MFEM_VERSION_PATCH = _pncmesh.MFEM_VERSION_PATCH
 
-MFEM_HYPRE_VERSION = _pncmesh.MFEM_HYPRE_VERSION
-
 import mfem._par.mesh
 import mfem._par.matrix
 import mfem._par.vector

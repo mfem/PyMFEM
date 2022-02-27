@@ -82,8 +82,6 @@ MFEM_VERSION_MINOR = _constraints.MFEM_VERSION_MINOR
 
 MFEM_VERSION_PATCH = _constraints.MFEM_VERSION_PATCH
 
-MFEM_HYPRE_VERSION = _constraints.MFEM_HYPRE_VERSION
-
 import mfem._par.vector
 import mfem._par.array
 import mfem._par.mem_manager

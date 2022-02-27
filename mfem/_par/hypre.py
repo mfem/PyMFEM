@@ -82,8 +82,6 @@ MFEM_VERSION_MINOR = _hypre.MFEM_VERSION_MINOR
 
 MFEM_VERSION_PATCH = _hypre.MFEM_VERSION_PATCH
 
-MFEM_HYPRE_VERSION = _hypre.MFEM_HYPRE_VERSION
-
 import mfem._par.globals
 import mfem._par.vector
 import mfem._par.array

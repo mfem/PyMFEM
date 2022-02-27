@@ -74,7 +74,6 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _datacollection.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _datacollection.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _datacollection.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _datacollection.MFEM_VERSION_PATCH
-MFEM_HYPRE_VERSION = _datacollection.MFEM_HYPRE_VERSION
 import mfem._par.globals
 import mfem._par.mesh
 import mfem._par.matrix

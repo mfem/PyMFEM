@@ -74,7 +74,6 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _pnonlinearform.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _pnonlinearform.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _pnonlinearform.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _pnonlinearform.MFEM_VERSION_PATCH
-MFEM_HYPRE_VERSION = _pnonlinearform.MFEM_HYPRE_VERSION
 import mfem._par.vector
 import mfem._par.array
 import mfem._par.mem_manager
