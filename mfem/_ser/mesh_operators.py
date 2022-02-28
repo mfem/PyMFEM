@@ -107,6 +107,7 @@ import mfem._ser.linearform
 import mfem._ser.nonlininteg
 import mfem._ser.vertex
 import mfem._ser.vtk
+import mfem._ser.std_vectors
 import mfem._ser.estimators
 import mfem._ser.bilinearform
 class MeshOperator(object):

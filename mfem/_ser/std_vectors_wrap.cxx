@@ -13,7 +13,6 @@
 #define SWIGPYTHON
 #endif
 
-#define SWIG_DIRECTORS
 #define SWIG_PYTHON_DIRECTOR_NO_VTABLE
 
 
@@ -2690,539 +2689,40 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 
   #define SWIG_exception(code, msg) do { SWIG_Error(code, msg); SWIG_fail;; } while(0) 
 
-/* -----------------------------------------------------------------------------
- * director_common.swg
- *
- * This file contains support for director classes which is common between
- * languages.
- * ----------------------------------------------------------------------------- */
-
-/*
-  Use -DSWIG_DIRECTOR_STATIC if you prefer to avoid the use of the
-  'Swig' namespace. This could be useful for multi-modules projects.
-*/
-#ifdef SWIG_DIRECTOR_STATIC
-/* Force anonymous (static) namespace */
-#define Swig
-#endif
-/* -----------------------------------------------------------------------------
- * director.swg
- *
- * This file contains support for director classes so that Python proxy
- * methods can be called from C++.
- * ----------------------------------------------------------------------------- */
-
-#ifndef SWIG_DIRECTOR_PYTHON_HEADER_
-#define SWIG_DIRECTOR_PYTHON_HEADER_
-
-#include <string>
-#include <iostream>
-#include <exception>
-#include <vector>
-#include <map>
-
-
-/*
-  Use -DSWIG_PYTHON_DIRECTOR_NO_VTABLE if you don't want to generate a 'virtual
-  table', and avoid multiple GetAttr calls to retrieve the python
-  methods.
-*/
-
-#ifndef SWIG_PYTHON_DIRECTOR_NO_VTABLE
-#ifndef SWIG_PYTHON_DIRECTOR_VTABLE
-#define SWIG_PYTHON_DIRECTOR_VTABLE
-#endif
-#endif
-
-
-
-/*
-  Use -DSWIG_DIRECTOR_NO_UEH if you prefer to avoid the use of the
-  Undefined Exception Handler provided by swig.
-*/
-#ifndef SWIG_DIRECTOR_NO_UEH
-#ifndef SWIG_DIRECTOR_UEH
-#define SWIG_DIRECTOR_UEH
-#endif
-#endif
-
-
-/*
-  Use -DSWIG_DIRECTOR_NORTTI if you prefer to avoid the use of the
-  native C++ RTTI and dynamic_cast<>. But be aware that directors
-  could stop working when using this option.
-*/
-#ifdef SWIG_DIRECTOR_NORTTI
-/*
-   When we don't use the native C++ RTTI, we implement a minimal one
-   only for Directors.
-*/
-# ifndef SWIG_DIRECTOR_RTDIR
-# define SWIG_DIRECTOR_RTDIR
-
-namespace Swig {
-  class Director;
-  SWIGINTERN std::map<void *, Director *>& get_rtdir_map() {
-    static std::map<void *, Director *> rtdir_map;
-    return rtdir_map;
-  }
-
-  SWIGINTERNINLINE void set_rtdir(void *vptr, Director *rtdir) {
-    get_rtdir_map()[vptr] = rtdir;
-  }
-
-  SWIGINTERNINLINE Director *get_rtdir(void *vptr) {
-    std::map<void *, Director *>::const_iterator pos = get_rtdir_map().find(vptr);
-    Director *rtdir = (pos != get_rtdir_map().end()) ? pos->second : 0;
-    return rtdir;
-  }
-}
-# endif /* SWIG_DIRECTOR_RTDIR */
-
-# define SWIG_DIRECTOR_CAST(ARG) Swig::get_rtdir(static_cast<void *>(ARG))
-# define SWIG_DIRECTOR_RGTR(ARG1, ARG2) Swig::set_rtdir(static_cast<void *>(ARG1), ARG2)
-
-#else
-
-# define SWIG_DIRECTOR_CAST(ARG) dynamic_cast<Swig::Director *>(ARG)
-# define SWIG_DIRECTOR_RGTR(ARG1, ARG2)
-
-#endif /* SWIG_DIRECTOR_NORTTI */
-
-extern "C" {
-  struct swig_type_info;
-}
-
-namespace Swig {
-
-  /* memory handler */
-  struct GCItem {
-    virtual ~GCItem() {}
-
-    virtual int get_own() const {
-      return 0;
-    }
-  };
-
-  struct GCItem_var {
-    GCItem_var(GCItem *item = 0) : _item(item) {
-    }
-
-    GCItem_var& operator=(GCItem *item) {
-      GCItem *tmp = _item;
-      _item = item;
-      delete tmp;
-      return *this;
-    }
-
-    ~GCItem_var() {
-      delete _item;
-    }
-
-    GCItem * operator->() const {
-      return _item;
-    }
-
-  private:
-    GCItem *_item;
-  };
-
-  struct GCItem_Object : GCItem {
-    GCItem_Object(int own) : _own(own) {
-    }
-
-    virtual ~GCItem_Object() {
-    }
-
-    int get_own() const {
-      return _own;
-    }
-
-  private:
-    int _own;
-  };
-
-  template <typename Type>
-  struct GCItem_T : GCItem {
-    GCItem_T(Type *ptr) : _ptr(ptr) {
-    }
-
-    virtual ~GCItem_T() {
-      delete _ptr;
-    }
-
-  private:
-    Type *_ptr;
-  };
-
-  template <typename Type>
-  struct GCArray_T : GCItem {
-    GCArray_T(Type *ptr) : _ptr(ptr) {
-    }
-
-    virtual ~GCArray_T() {
-      delete[] _ptr;
-    }
-
-  private:
-    Type *_ptr;
-  };
-
-  /* base class for director exceptions */
-  class DirectorException : public std::exception {
-  protected:
-    std::string swig_msg;
-  public:
-    DirectorException(PyObject *error, const char *hdr ="", const char *msg ="") : swig_msg(hdr) {
-      SWIG_PYTHON_THREAD_BEGIN_BLOCK;
-      if (msg[0]) {
-        swig_msg += " ";
-        swig_msg += msg;
-      }
-      if (!PyErr_Occurred()) {
-        PyErr_SetString(error, what());
-      }
-      SWIG_PYTHON_THREAD_END_BLOCK;
-    }
-
-    virtual ~DirectorException() throw() {
-    }
-
-    /* Deprecated, use what() instead */
-    const char *getMessage() const {
-      return what();
-    }
-
-    const char *what() const throw() {
-      return swig_msg.c_str();
-    }
-
-    static void raise(PyObject *error, const char *msg) {
-      throw DirectorException(error, msg);
-    }
-
-    static void raise(const char *msg) {
-      raise(PyExc_RuntimeError, msg);
-    }
-  };
-
-  /* type mismatch in the return value from a python method call */
-  class DirectorTypeMismatchException : public DirectorException {
-  public:
-    DirectorTypeMismatchException(PyObject *error, const char *msg="")
-      : DirectorException(error, "SWIG director type mismatch", msg) {
-    }
-
-    DirectorTypeMismatchException(const char *msg="")
-      : DirectorException(PyExc_TypeError, "SWIG director type mismatch", msg) {
-    }
-
-    static void raise(PyObject *error, const char *msg) {
-      throw DirectorTypeMismatchException(error, msg);
-    }
-
-    static void raise(const char *msg) {
-      throw DirectorTypeMismatchException(msg);
-    }
-  };
-
-  /* any python exception that occurs during a director method call */
-  class DirectorMethodException : public DirectorException {
-  public:
-    DirectorMethodException(const char *msg = "")
-      : DirectorException(PyExc_RuntimeError, "SWIG director method error.", msg) {
-    }
-
-    static void raise(const char *msg) {
-      throw DirectorMethodException(msg);
-    }
-  };
-
-  /* attempt to call a pure virtual method via a director method */
-  class DirectorPureVirtualException : public DirectorException {
-  public:
-    DirectorPureVirtualException(const char *msg = "")
-      : DirectorException(PyExc_RuntimeError, "SWIG director pure virtual method called", msg) {
-    }
-
-    static void raise(const char *msg) {
-      throw DirectorPureVirtualException(msg);
-    }
-  };
-
-
-#if defined(SWIG_PYTHON_THREADS)
-/*  __THREAD__ is the old macro to activate some thread support */
-# if !defined(__THREAD__)
-#   define __THREAD__ 1
-# endif
-#endif
-
-#ifdef __THREAD__
-# include "pythread.h"
-  class Guard {
-    PyThread_type_lock &mutex_;
-
-  public:
-    Guard(PyThread_type_lock & mutex) : mutex_(mutex) {
-      PyThread_acquire_lock(mutex_, WAIT_LOCK);
-    }
-
-    ~Guard() {
-      PyThread_release_lock(mutex_);
-    }
-  };
-# define SWIG_GUARD(mutex) Guard _guard(mutex)
-#else
-# define SWIG_GUARD(mutex)
-#endif
-
-  /* director base class */
-  class Director {
-  private:
-    /* pointer to the wrapped python object */
-    PyObject *swig_self;
-    /* flag indicating whether the object is owned by python or c++ */
-    mutable bool swig_disown_flag;
-
-    /* decrement the reference count of the wrapped python object */
-    void swig_decref() const {
-      if (swig_disown_flag) {
-        SWIG_PYTHON_THREAD_BEGIN_BLOCK;
-        Py_DECREF(swig_self);
-        SWIG_PYTHON_THREAD_END_BLOCK;
-      }
-    }
-
-  public:
-    /* wrap a python object. */
-    Director(PyObject *self) : swig_self(self), swig_disown_flag(false) {
-    }
-
-    /* discard our reference at destruction */
-    virtual ~Director() {
-      swig_decref();
-    }
-
-    /* return a pointer to the wrapped python object */
-    PyObject *swig_get_self() const {
-      return swig_self;
-    }
-
-    /* acquire ownership of the wrapped python object (the sense of "disown" is from python) */
-    void swig_disown() const {
-      if (!swig_disown_flag) {
-        swig_disown_flag=true;
-        swig_incref();
-      }
-    }
-
-    /* increase the reference count of the wrapped python object */
-    void swig_incref() const {
-      if (swig_disown_flag) {
-        Py_INCREF(swig_self);
-      }
-    }
-
-    /* methods to implement pseudo protected director members */
-    virtual bool swig_get_inner(const char * /* swig_protected_method_name */) const {
-      return true;
-    }
-
-    virtual void swig_set_inner(const char * /* swig_protected_method_name */, bool /* swig_val */) const {
-    }
-
-  /* ownership management */
-  private:
-    typedef std::map<void *, GCItem_var> swig_ownership_map;
-    mutable swig_ownership_map swig_owner;
-#ifdef __THREAD__
-    static PyThread_type_lock swig_mutex_own;
-#endif
-
-  public:
-    template <typename Type>
-    void swig_acquire_ownership_array(Type *vptr) const {
-      if (vptr) {
-        SWIG_GUARD(swig_mutex_own);
-        swig_owner[vptr] = new GCArray_T<Type>(vptr);
-      }
-    }
-
-    template <typename Type>
-    void swig_acquire_ownership(Type *vptr) const {
-      if (vptr) {
-        SWIG_GUARD(swig_mutex_own);
-        swig_owner[vptr] = new GCItem_T<Type>(vptr);
-      }
-    }
-
-    void swig_acquire_ownership_obj(void *vptr, int own) const {
-      if (vptr && own) {
-        SWIG_GUARD(swig_mutex_own);
-        swig_owner[vptr] = new GCItem_Object(own);
-      }
-    }
-
-    int swig_release_ownership(void *vptr) const {
-      int own = 0;
-      if (vptr) {
-        SWIG_GUARD(swig_mutex_own);
-        swig_ownership_map::iterator iter = swig_owner.find(vptr);
-        if (iter != swig_owner.end()) {
-          own = iter->second->get_own();
-          swig_owner.erase(iter);
-        }
-      }
-      return own;
-    }
-
-    template <typename Type>
-    static PyObject *swig_pyobj_disown(PyObject *pyobj, PyObject *SWIGUNUSEDPARM(args)) {
-      SwigPyObject *sobj = (SwigPyObject *)pyobj;
-      sobj->own = 0;
-      Director *d = SWIG_DIRECTOR_CAST(reinterpret_cast<Type *>(sobj->ptr));
-      if (d)
-        d->swig_disown();
-      return PyWeakref_NewProxy(pyobj, NULL);
-    }
-  };
-
-#ifdef __THREAD__
-  PyThread_type_lock Director::swig_mutex_own = PyThread_allocate_lock();
-#endif
-}
-
-#endif
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE__input swig_types[0]
-#define SWIGTYPE_p_PyMFEM__wFILE swig_types[1]
-#define SWIGTYPE_p_RefCoord swig_types[2]
-#define SWIGTYPE_p_allocator_type swig_types[3]
-#define SWIGTYPE_p_bool swig_types[4]
-#define SWIGTYPE_p_char swig_types[5]
-#define SWIGTYPE_p_difference_type swig_types[6]
-#define SWIGTYPE_p_double swig_types[7]
-#define SWIGTYPE_p_hex_t swig_types[8]
-#define SWIGTYPE_p_int swig_types[9]
-#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[10]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[11]
-#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[12]
-#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[13]
-#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[14]
-#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[15]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[16]
-#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[17]
-#define SWIGTYPE_p_mfem__DenseSymmetricMatrix swig_types[18]
-#define SWIGTYPE_p_mfem__ElementRestriction swig_types[19]
-#define SWIGTYPE_p_mfem__FaceRestriction swig_types[20]
-#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[21]
-#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[22]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[23]
-#define SWIGTYPE_p_mfem__H1FaceRestriction swig_types[24]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[25]
-#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[26]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[27]
-#define SWIGTYPE_p_mfem__L2ElementRestriction swig_types[28]
-#define SWIGTYPE_p_mfem__L2FaceRestriction swig_types[29]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[30]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[31]
-#define SWIGTYPE_p_mfem__Matrix swig_types[32]
-#define SWIGTYPE_p_mfem__MatrixInverse swig_types[33]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[34]
-#define SWIGTYPE_p_mfem__Mesh swig_types[35]
-#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[36]
-#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[37]
-#define SWIGTYPE_p_mfem__Operator swig_types[38]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[39]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[40]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[41]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[42]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[43]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[44]
-#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[45]
-#define SWIGTYPE_p_mfem__Refinement swig_types[46]
-#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[47]
-#define SWIGTYPE_p_mfem__ScaledOperator swig_types[48]
-#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[49]
-#define SWIGTYPE_p_mfem__Solver swig_types[50]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[51]
-#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[52]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[53]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[54]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[55]
-#define SWIGTYPE_p_mfem__Vector swig_types[56]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[57]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[58]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[59]
-#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[60]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[61]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[62]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[63]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[64]
-#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[65]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[66]
-#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[67]
-#define SWIGTYPE_p_p_PyObject swig_types[68]
-#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[69]
-#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[70]
-#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[71]
-#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[72]
-#define SWIGTYPE_p_p_mfem__DenseSymmetricMatrix swig_types[73]
-#define SWIGTYPE_p_p_mfem__ElementRestriction swig_types[74]
-#define SWIGTYPE_p_p_mfem__FaceRestriction swig_types[75]
-#define SWIGTYPE_p_p_mfem__FiniteElementSpace swig_types[76]
-#define SWIGTYPE_p_p_mfem__GridFunction swig_types[77]
-#define SWIGTYPE_p_p_mfem__H1FaceRestriction swig_types[78]
-#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[79]
-#define SWIGTYPE_p_p_mfem__IntegrationRule swig_types[80]
-#define SWIGTYPE_p_p_mfem__L2ElementRestriction swig_types[81]
-#define SWIGTYPE_p_p_mfem__L2FaceRestriction swig_types[82]
-#define SWIGTYPE_p_p_mfem__LinearForm swig_types[83]
-#define SWIGTYPE_p_p_mfem__Matrix swig_types[84]
-#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[85]
-#define SWIGTYPE_p_p_mfem__Operator swig_types[86]
-#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[87]
-#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[88]
-#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[89]
-#define SWIGTYPE_p_p_mfem__QuadratureFunction swig_types[90]
-#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[91]
-#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[92]
-#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[93]
-#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[94]
-#define SWIGTYPE_p_p_mfem__Solver swig_types[95]
-#define SWIGTYPE_p_p_mfem__SparseMatrix swig_types[96]
-#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[97]
-#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[98]
-#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[99]
-#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[100]
-#define SWIGTYPE_p_p_mfem__Vector swig_types[101]
-#define SWIGTYPE_p_pri_t swig_types[102]
-#define SWIGTYPE_p_pyr_t swig_types[103]
-#define SWIGTYPE_p_quad_t swig_types[104]
-#define SWIGTYPE_p_seg_t swig_types[105]
-#define SWIGTYPE_p_size_type swig_types[106]
-#define SWIGTYPE_p_std__allocatorT_int_t swig_types[107]
-#define SWIGTYPE_p_std__allocatorT_mfem__ArrayT_int_t_t swig_types[108]
-#define SWIGTYPE_p_std__allocatorT_mfem__FiniteElementSpace_p_t swig_types[109]
-#define SWIGTYPE_p_std__allocatorT_mfem__Mesh_p_t swig_types[110]
-#define SWIGTYPE_p_std__allocatorT_mfem__SparseMatrix_p_t swig_types[111]
-#define SWIGTYPE_p_std__allocatorT_mfem__Vector_t swig_types[112]
-#define SWIGTYPE_p_std__invalid_argument swig_types[113]
-#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[114]
-#define SWIGTYPE_p_std__vectorT_mfem__ArrayT_int_t_std__allocatorT_mfem__ArrayT_int_t_t_t swig_types[115]
-#define SWIGTYPE_p_std__vectorT_mfem__FiniteElementSpace_p_std__allocatorT_mfem__FiniteElementSpace_p_t_t swig_types[116]
-#define SWIGTYPE_p_std__vectorT_mfem__Mesh_p_std__allocatorT_mfem__Mesh_p_t_t swig_types[117]
-#define SWIGTYPE_p_std__vectorT_mfem__SparseMatrix_p_std__allocatorT_mfem__SparseMatrix_p_t_t swig_types[118]
-#define SWIGTYPE_p_std__vectorT_mfem__Vector_std__allocatorT_mfem__Vector_t_t swig_types[119]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[120]
-#define SWIGTYPE_p_tet_t swig_types[121]
-#define SWIGTYPE_p_tri_t swig_types[122]
-#define SWIGTYPE_p_value_type swig_types[123]
-static swig_type_info *swig_types[125];
-static swig_module_info swig_module = {swig_types, 124, 0, 0, 0, 0};
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
+#define SWIGTYPE_p_allocator_type swig_types[1]
+#define SWIGTYPE_p_bool swig_types[2]
+#define SWIGTYPE_p_char swig_types[3]
+#define SWIGTYPE_p_difference_type swig_types[4]
+#define SWIGTYPE_p_double swig_types[5]
+#define SWIGTYPE_p_int swig_types[6]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[7]
+#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[8]
+#define SWIGTYPE_p_mfem__Mesh swig_types[9]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[10]
+#define SWIGTYPE_p_mfem__Vector swig_types[11]
+#define SWIGTYPE_p_p_PyObject swig_types[12]
+#define SWIGTYPE_p_size_type swig_types[13]
+#define SWIGTYPE_p_std__allocatorT_int_t swig_types[14]
+#define SWIGTYPE_p_std__allocatorT_mfem__ArrayT_int_t_t swig_types[15]
+#define SWIGTYPE_p_std__allocatorT_mfem__FiniteElementSpace_p_t swig_types[16]
+#define SWIGTYPE_p_std__allocatorT_mfem__Mesh_p_t swig_types[17]
+#define SWIGTYPE_p_std__allocatorT_mfem__SparseMatrix_p_t swig_types[18]
+#define SWIGTYPE_p_std__allocatorT_mfem__Vector_t swig_types[19]
+#define SWIGTYPE_p_std__invalid_argument swig_types[20]
+#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[21]
+#define SWIGTYPE_p_std__vectorT_mfem__ArrayT_int_t_std__allocatorT_mfem__ArrayT_int_t_t_t swig_types[22]
+#define SWIGTYPE_p_std__vectorT_mfem__FiniteElementSpace_p_std__allocatorT_mfem__FiniteElementSpace_p_t_t swig_types[23]
+#define SWIGTYPE_p_std__vectorT_mfem__Mesh_p_std__allocatorT_mfem__Mesh_p_t_t swig_types[24]
+#define SWIGTYPE_p_std__vectorT_mfem__SparseMatrix_p_std__allocatorT_mfem__SparseMatrix_p_t_t swig_types[25]
+#define SWIGTYPE_p_std__vectorT_mfem__Vector_std__allocatorT_mfem__Vector_t_t swig_types[26]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[27]
+#define SWIGTYPE_p_value_type swig_types[28]
+static swig_type_info *swig_types[30];
+static swig_module_info swig_module = {swig_types, 29, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5788,14 +5288,6 @@ SWIGINTERN std::vector< mfem::SparseMatrix * >::iterator std_vector_Sl_mfem_Spar
 SWIGINTERN std::vector< mfem::SparseMatrix * >::iterator std_vector_Sl_mfem_SparseMatrix_Sm__Sg__erase__SWIG_1(std::vector< mfem::SparseMatrix * > *self,std::vector< mfem::SparseMatrix * >::iterator first,std::vector< mfem::SparseMatrix * >::iterator last){ return self->erase(first, last); }
 SWIGINTERN std::vector< mfem::SparseMatrix * >::iterator std_vector_Sl_mfem_SparseMatrix_Sm__Sg__insert__SWIG_0(std::vector< mfem::SparseMatrix * > *self,std::vector< mfem::SparseMatrix * >::iterator pos,std::vector< mfem::SparseMatrix * >::value_type x){ return self->insert(pos, x); }
 SWIGINTERN void std_vector_Sl_mfem_SparseMatrix_Sm__Sg__insert__SWIG_1(std::vector< mfem::SparseMatrix * > *self,std::vector< mfem::SparseMatrix * >::iterator pos,std::vector< mfem::SparseMatrix * >::size_type n,std::vector< mfem::SparseMatrix * >::value_type x){ self->insert(pos, n, x); }
-
-
-/* ---------------------------------------------------
- * C++ director class methods
- * --------------------------------------------------- */
-
-#include "std_vectors_wrap.h"
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -5825,9 +5317,6 @@ SWIGINTERN PyObject *_wrap_delete_SwigPyIterator(PyObject *SWIGUNUSEDPARM(self),
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -5874,9 +5363,6 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator_value(PyObject *SWIGUNUSEDPARM(self), 
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -5936,9 +5422,6 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator_incr(PyObject *SWIGUNUSEDPARM(self), P
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -5998,9 +5481,6 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator_decr(PyObject *SWIGUNUSEDPARM(self), P
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -6057,9 +5537,6 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator_distance(PyObject *SWIGUNUSEDPARM(self
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -6116,9 +5593,6 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator_equal(PyObject *SWIGUNUSEDPARM(self), 
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -6157,9 +5631,6 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator_copy(PyObject *SWIGUNUSEDPARM(self), P
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -6206,9 +5677,6 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator_next(PyObject *SWIGUNUSEDPARM(self), P
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -6255,9 +5723,6 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator___next__(PyObject *SWIGUNUSEDPARM(self
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -6304,9 +5769,6 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator_previous(PyObject *SWIGUNUSEDPARM(self
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -6364,9 +5826,6 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator_advance(PyObject *SWIGUNUSEDPARM(self)
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -6419,9 +5878,6 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator___eq__(PyObject *SWIGUNUSEDPARM(self),
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -6476,9 +5932,6 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator___ne__(PyObject *SWIGUNUSEDPARM(self),
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -6538,9 +5991,6 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator___iadd__(PyObject *SWIGUNUSEDPARM(self
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -6598,9 +6048,6 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator___isub__(PyObject *SWIGUNUSEDPARM(self
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -6658,9 +6105,6 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator___add__(PyObject *SWIGUNUSEDPARM(self)
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -6715,9 +6159,6 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator___sub____SWIG_0(PyObject *SWIGUNUSEDPA
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -6767,9 +6208,6 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator___sub____SWIG_1(PyObject *SWIGUNUSEDPA
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -6862,9 +6300,6 @@ SWIGINTERN PyObject *_wrap_vector_int_iterator(PyObject *SWIGUNUSEDPARM(self), P
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -6903,9 +6338,6 @@ SWIGINTERN PyObject *_wrap_vector_int___nonzero__(PyObject *SWIGUNUSEDPARM(self)
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -6944,9 +6376,6 @@ SWIGINTERN PyObject *_wrap_vector_int___bool__(PyObject *SWIGUNUSEDPARM(self), P
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -6985,9 +6414,6 @@ SWIGINTERN PyObject *_wrap_vector_int___len__(PyObject *SWIGUNUSEDPARM(self), Py
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -7052,9 +6478,6 @@ SWIGINTERN PyObject *_wrap_vector_int___getslice__(PyObject *SWIGUNUSEDPARM(self
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -7112,9 +6535,6 @@ SWIGINTERN PyObject *_wrap_vector_int___setslice____SWIG_0(PyObject *SWIGUNUSEDP
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -7185,9 +6605,6 @@ SWIGINTERN PyObject *_wrap_vector_int___setslice____SWIG_1(PyObject *SWIGUNUSEDP
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -7315,9 +6732,6 @@ SWIGINTERN PyObject *_wrap_vector_int___delslice__(PyObject *SWIGUNUSEDPARM(self
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -7367,9 +6781,6 @@ SWIGINTERN PyObject *_wrap_vector_int___delitem____SWIG_0(PyObject *SWIGUNUSEDPA
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -7419,9 +6830,6 @@ SWIGINTERN PyObject *_wrap_vector_int___getitem____SWIG_0(PyObject *SWIGUNUSEDPA
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -7483,9 +6891,6 @@ SWIGINTERN PyObject *_wrap_vector_int___setitem____SWIG_0(PyObject *SWIGUNUSEDPA
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -7536,9 +6941,6 @@ SWIGINTERN PyObject *_wrap_vector_int___setitem____SWIG_1(PyObject *SWIGUNUSEDPA
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -7587,9 +6989,6 @@ SWIGINTERN PyObject *_wrap_vector_int___delitem____SWIG_1(PyObject *SWIGUNUSEDPA
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -7683,9 +7082,6 @@ SWIGINTERN PyObject *_wrap_vector_int___getitem____SWIG_1(PyObject *SWIGUNUSEDPA
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -7789,9 +7185,6 @@ SWIGINTERN PyObject *_wrap_vector_int___setitem____SWIG_2(PyObject *SWIGUNUSEDPA
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -7903,9 +7296,6 @@ SWIGINTERN PyObject *_wrap_vector_int_pop(PyObject *SWIGUNUSEDPARM(self), PyObje
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -7956,9 +7346,6 @@ SWIGINTERN PyObject *_wrap_vector_int_append(PyObject *SWIGUNUSEDPARM(self), PyO
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -7987,9 +7374,6 @@ SWIGINTERN PyObject *_wrap_new_vector_int__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -8031,9 +7415,6 @@ SWIGINTERN PyObject *_wrap_new_vector_int__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -8074,9 +7455,6 @@ SWIGINTERN PyObject *_wrap_vector_int_empty(PyObject *SWIGUNUSEDPARM(self), PyOb
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -8115,9 +7493,6 @@ SWIGINTERN PyObject *_wrap_vector_int_size(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -8169,9 +7544,6 @@ SWIGINTERN PyObject *_wrap_vector_int_swap(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -8210,9 +7582,6 @@ SWIGINTERN PyObject *_wrap_vector_int_begin(PyObject *SWIGUNUSEDPARM(self), PyOb
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -8252,9 +7621,6 @@ SWIGINTERN PyObject *_wrap_vector_int_end(PyObject *SWIGUNUSEDPARM(self), PyObje
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -8294,9 +7660,6 @@ SWIGINTERN PyObject *_wrap_vector_int_rbegin(PyObject *SWIGUNUSEDPARM(self), PyO
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -8336,9 +7699,6 @@ SWIGINTERN PyObject *_wrap_vector_int_rend(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -8377,9 +7737,6 @@ SWIGINTERN PyObject *_wrap_vector_int_clear(PyObject *SWIGUNUSEDPARM(self), PyOb
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -8418,9 +7775,6 @@ SWIGINTERN PyObject *_wrap_vector_int_get_allocator(PyObject *SWIGUNUSEDPARM(sel
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -8457,9 +7811,6 @@ SWIGINTERN PyObject *_wrap_new_vector_int__SWIG_2(PyObject *SWIGUNUSEDPARM(self)
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -8497,9 +7848,6 @@ SWIGINTERN PyObject *_wrap_vector_int_pop_back(PyObject *SWIGUNUSEDPARM(self), P
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -8543,9 +7891,6 @@ SWIGINTERN PyObject *_wrap_vector_int_resize__SWIG_0(PyObject *SWIGUNUSEDPARM(se
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -8596,9 +7941,6 @@ SWIGINTERN PyObject *_wrap_vector_int_erase__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -8664,9 +8006,6 @@ SWIGINTERN PyObject *_wrap_vector_int_erase__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -8763,9 +8102,6 @@ SWIGINTERN PyObject *_wrap_new_vector_int__SWIG_3(PyObject *SWIGUNUSEDPARM(self)
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -8873,9 +8209,6 @@ SWIGINTERN PyObject *_wrap_vector_int_push_back(PyObject *SWIGUNUSEDPARM(self), 
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -8914,9 +8247,6 @@ SWIGINTERN PyObject *_wrap_vector_int_front(PyObject *SWIGUNUSEDPARM(self), PyOb
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -8956,9 +8286,6 @@ SWIGINTERN PyObject *_wrap_vector_int_back(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -9019,9 +8346,6 @@ SWIGINTERN PyObject *_wrap_vector_int_assign(PyObject *SWIGUNUSEDPARM(self), PyO
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -9075,9 +8399,6 @@ SWIGINTERN PyObject *_wrap_vector_int_resize__SWIG_1(PyObject *SWIGUNUSEDPARM(se
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -9190,9 +8511,6 @@ SWIGINTERN PyObject *_wrap_vector_int_insert__SWIG_0(PyObject *SWIGUNUSEDPARM(se
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -9261,9 +8579,6 @@ SWIGINTERN PyObject *_wrap_vector_int_insert__SWIG_1(PyObject *SWIGUNUSEDPARM(se
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -9374,9 +8689,6 @@ SWIGINTERN PyObject *_wrap_vector_int_reserve(PyObject *SWIGUNUSEDPARM(self), Py
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -9415,9 +8727,6 @@ SWIGINTERN PyObject *_wrap_vector_int_capacity(PyObject *SWIGUNUSEDPARM(self), P
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -9455,9 +8764,6 @@ SWIGINTERN PyObject *_wrap_delete_vector_int(PyObject *SWIGUNUSEDPARM(self), PyO
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -9509,9 +8815,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_iterator(PyObject *SWIGUNUSEDPARM(self)
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -9550,9 +8853,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector___nonzero__(PyObject *SWIGUNUSEDPARM(se
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -9591,9 +8891,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector___bool__(PyObject *SWIGUNUSEDPARM(self)
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -9632,9 +8929,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector___len__(PyObject *SWIGUNUSEDPARM(self),
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -9699,9 +8993,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector___getslice__(PyObject *SWIGUNUSEDPARM(s
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -9759,9 +9050,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector___setslice____SWIG_0(PyObject *SWIGUNUS
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -9832,9 +9120,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector___setslice____SWIG_1(PyObject *SWIGUNUS
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -9962,9 +9247,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector___delslice__(PyObject *SWIGUNUSEDPARM(s
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -10014,9 +9296,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector___delitem____SWIG_0(PyObject *SWIGUNUSE
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -10066,9 +9345,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector___getitem____SWIG_0(PyObject *SWIGUNUSE
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -10130,9 +9406,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector___setitem____SWIG_0(PyObject *SWIGUNUSE
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -10183,9 +9456,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector___setitem____SWIG_1(PyObject *SWIGUNUSE
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -10234,9 +9504,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector___delitem____SWIG_1(PyObject *SWIGUNUSE
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -10330,9 +9597,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector___getitem____SWIG_1(PyObject *SWIGUNUSE
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -10437,9 +9701,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector___setitem____SWIG_2(PyObject *SWIGUNUSE
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -10549,9 +9810,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_pop(PyObject *SWIGUNUSEDPARM(self), PyO
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -10603,9 +9861,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_append(PyObject *SWIGUNUSEDPARM(self), 
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -10634,9 +9889,6 @@ SWIGINTERN PyObject *_wrap_new_vector_Vector__SWIG_0(PyObject *SWIGUNUSEDPARM(se
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -10678,9 +9930,6 @@ SWIGINTERN PyObject *_wrap_new_vector_Vector__SWIG_1(PyObject *SWIGUNUSEDPARM(se
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -10721,9 +9970,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_empty(PyObject *SWIGUNUSEDPARM(self), P
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -10762,9 +10008,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_size(PyObject *SWIGUNUSEDPARM(self), Py
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -10816,9 +10059,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_swap(PyObject *SWIGUNUSEDPARM(self), Py
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -10857,9 +10097,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_begin(PyObject *SWIGUNUSEDPARM(self), P
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -10899,9 +10136,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_end(PyObject *SWIGUNUSEDPARM(self), PyO
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -10941,9 +10175,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_rbegin(PyObject *SWIGUNUSEDPARM(self), 
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -10983,9 +10214,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_rend(PyObject *SWIGUNUSEDPARM(self), Py
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -11024,9 +10252,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_clear(PyObject *SWIGUNUSEDPARM(self), P
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -11065,9 +10290,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_get_allocator(PyObject *SWIGUNUSEDPARM(
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -11104,9 +10326,6 @@ SWIGINTERN PyObject *_wrap_new_vector_Vector__SWIG_2(PyObject *SWIGUNUSEDPARM(se
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -11144,9 +10363,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_pop_back(PyObject *SWIGUNUSEDPARM(self)
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -11190,9 +10406,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_resize__SWIG_0(PyObject *SWIGUNUSEDPARM
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -11243,9 +10456,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_erase__SWIG_0(PyObject *SWIGUNUSEDPARM(
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -11311,9 +10521,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_erase__SWIG_1(PyObject *SWIGUNUSEDPARM(
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -11411,9 +10618,6 @@ SWIGINTERN PyObject *_wrap_new_vector_Vector__SWIG_3(PyObject *SWIGUNUSEDPARM(se
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -11520,9 +10724,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_push_back(PyObject *SWIGUNUSEDPARM(self
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -11561,9 +10762,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_front(PyObject *SWIGUNUSEDPARM(self), P
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -11603,9 +10801,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_back(PyObject *SWIGUNUSEDPARM(self), Py
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -11667,9 +10862,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_assign(PyObject *SWIGUNUSEDPARM(self), 
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -11724,9 +10916,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_resize__SWIG_1(PyObject *SWIGUNUSEDPARM
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -11838,9 +11027,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_insert__SWIG_0(PyObject *SWIGUNUSEDPARM
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -11910,9 +11096,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_insert__SWIG_1(PyObject *SWIGUNUSEDPARM
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -12019,9 +11202,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_reserve(PyObject *SWIGUNUSEDPARM(self),
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -12060,9 +11240,6 @@ SWIGINTERN PyObject *_wrap_vector_Vector_capacity(PyObject *SWIGUNUSEDPARM(self)
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -12100,9 +11277,6 @@ SWIGINTERN PyObject *_wrap_delete_vector_Vector(PyObject *SWIGUNUSEDPARM(self), 
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -12154,9 +11328,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_iterator(PyObject *SWIGUNUSEDPARM(sel
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -12195,9 +11366,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray___nonzero__(PyObject *SWIGUNUSEDPARM(
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -12236,9 +11404,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray___bool__(PyObject *SWIGUNUSEDPARM(sel
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -12277,9 +11442,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray___len__(PyObject *SWIGUNUSEDPARM(self
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -12344,9 +11506,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray___getslice__(PyObject *SWIGUNUSEDPARM
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -12404,9 +11563,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray___setslice____SWIG_0(PyObject *SWIGUN
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -12477,9 +11633,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray___setslice____SWIG_1(PyObject *SWIGUN
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -12607,9 +11760,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray___delslice__(PyObject *SWIGUNUSEDPARM
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -12659,9 +11809,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray___delitem____SWIG_0(PyObject *SWIGUNU
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -12711,9 +11858,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray___getitem____SWIG_0(PyObject *SWIGUNU
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -12775,9 +11919,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray___setitem____SWIG_0(PyObject *SWIGUNU
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -12828,9 +11969,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray___setitem____SWIG_1(PyObject *SWIGUNU
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -12879,9 +12017,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray___delitem____SWIG_1(PyObject *SWIGUNU
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -12975,9 +12110,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray___getitem____SWIG_1(PyObject *SWIGUNU
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -13082,9 +12214,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray___setitem____SWIG_2(PyObject *SWIGUNU
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -13194,9 +12323,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_pop(PyObject *SWIGUNUSEDPARM(self), P
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -13248,9 +12374,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_append(PyObject *SWIGUNUSEDPARM(self)
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -13279,9 +12402,6 @@ SWIGINTERN PyObject *_wrap_new_vector_intArray__SWIG_0(PyObject *SWIGUNUSEDPARM(
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -13323,9 +12443,6 @@ SWIGINTERN PyObject *_wrap_new_vector_intArray__SWIG_1(PyObject *SWIGUNUSEDPARM(
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -13366,9 +12483,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_empty(PyObject *SWIGUNUSEDPARM(self),
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -13407,9 +12521,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_size(PyObject *SWIGUNUSEDPARM(self), 
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -13461,9 +12572,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_swap(PyObject *SWIGUNUSEDPARM(self), 
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -13502,9 +12610,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_begin(PyObject *SWIGUNUSEDPARM(self),
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -13544,9 +12649,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_end(PyObject *SWIGUNUSEDPARM(self), P
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -13586,9 +12688,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_rbegin(PyObject *SWIGUNUSEDPARM(self)
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -13628,9 +12727,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_rend(PyObject *SWIGUNUSEDPARM(self), 
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -13669,9 +12765,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_clear(PyObject *SWIGUNUSEDPARM(self),
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -13710,9 +12803,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_get_allocator(PyObject *SWIGUNUSEDPAR
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -13749,9 +12839,6 @@ SWIGINTERN PyObject *_wrap_new_vector_intArray__SWIG_2(PyObject *SWIGUNUSEDPARM(
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -13789,9 +12876,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_pop_back(PyObject *SWIGUNUSEDPARM(sel
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -13835,9 +12919,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_resize__SWIG_0(PyObject *SWIGUNUSEDPA
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -13888,9 +12969,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_erase__SWIG_0(PyObject *SWIGUNUSEDPAR
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -13956,9 +13034,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_erase__SWIG_1(PyObject *SWIGUNUSEDPAR
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -14056,9 +13131,6 @@ SWIGINTERN PyObject *_wrap_new_vector_intArray__SWIG_3(PyObject *SWIGUNUSEDPARM(
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -14165,9 +13237,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_push_back(PyObject *SWIGUNUSEDPARM(se
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -14206,9 +13275,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_front(PyObject *SWIGUNUSEDPARM(self),
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -14248,9 +13314,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_back(PyObject *SWIGUNUSEDPARM(self), 
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -14312,9 +13375,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_assign(PyObject *SWIGUNUSEDPARM(self)
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -14369,9 +13429,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_resize__SWIG_1(PyObject *SWIGUNUSEDPA
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -14483,9 +13540,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_insert__SWIG_0(PyObject *SWIGUNUSEDPA
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -14555,9 +13609,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_insert__SWIG_1(PyObject *SWIGUNUSEDPA
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -14664,9 +13715,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_reserve(PyObject *SWIGUNUSEDPARM(self
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -14705,9 +13753,6 @@ SWIGINTERN PyObject *_wrap_vector_intArray_capacity(PyObject *SWIGUNUSEDPARM(sel
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -14745,9 +13790,6 @@ SWIGINTERN PyObject *_wrap_delete_vector_intArray(PyObject *SWIGUNUSEDPARM(self)
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -14799,9 +13841,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_iterator(PyObject *SWIGUNUS
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -14840,9 +13879,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace___nonzero__(PyObject *SWIGU
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -14881,9 +13917,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace___bool__(PyObject *SWIGUNUS
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -14922,9 +13955,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace___len__(PyObject *SWIGUNUSE
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -14989,9 +14019,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace___getslice__(PyObject *SWIG
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -15049,9 +14076,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace___setslice____SWIG_0(PyObje
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -15122,9 +14146,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace___setslice____SWIG_1(PyObje
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -15252,9 +14273,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace___delslice__(PyObject *SWIG
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -15304,9 +14322,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace___delitem____SWIG_0(PyObjec
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -15356,9 +14371,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace___getitem____SWIG_0(PyObjec
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -15420,9 +14432,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace___setitem____SWIG_0(PyObjec
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -15473,9 +14482,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace___setitem____SWIG_1(PyObjec
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -15524,9 +14530,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace___delitem____SWIG_1(PyObjec
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -15620,9 +14623,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace___getitem____SWIG_1(PyObjec
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -15723,9 +14723,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace___setitem____SWIG_2(PyObjec
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -15836,9 +14833,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_pop(PyObject *SWIGUNUSEDPAR
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -15887,9 +14881,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_append(PyObject *SWIGUNUSED
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -15918,9 +14909,6 @@ SWIGINTERN PyObject *_wrap_new_vector_FiniteElementSpace__SWIG_0(PyObject *SWIGU
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -15962,9 +14950,6 @@ SWIGINTERN PyObject *_wrap_new_vector_FiniteElementSpace__SWIG_1(PyObject *SWIGU
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -16005,9 +14990,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_empty(PyObject *SWIGUNUSEDP
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -16046,9 +15028,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_size(PyObject *SWIGUNUSEDPA
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -16100,9 +15079,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_swap(PyObject *SWIGUNUSEDPA
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -16141,9 +15117,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_begin(PyObject *SWIGUNUSEDP
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -16183,9 +15156,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_end(PyObject *SWIGUNUSEDPAR
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -16225,9 +15195,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_rbegin(PyObject *SWIGUNUSED
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -16267,9 +15234,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_rend(PyObject *SWIGUNUSEDPA
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -16308,9 +15272,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_clear(PyObject *SWIGUNUSEDP
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -16349,9 +15310,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_get_allocator(PyObject *SWI
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -16388,9 +15346,6 @@ SWIGINTERN PyObject *_wrap_new_vector_FiniteElementSpace__SWIG_2(PyObject *SWIGU
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -16428,9 +15383,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_pop_back(PyObject *SWIGUNUS
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -16474,9 +15426,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_resize__SWIG_0(PyObject *SW
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -16527,9 +15476,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_erase__SWIG_0(PyObject *SWI
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -16595,9 +15541,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_erase__SWIG_1(PyObject *SWI
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -16692,9 +15635,6 @@ SWIGINTERN PyObject *_wrap_new_vector_FiniteElementSpace__SWIG_3(PyObject *SWIGU
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -16799,9 +15739,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_push_back(PyObject *SWIGUNU
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -16840,9 +15777,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_front(PyObject *SWIGUNUSEDP
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -16881,9 +15815,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_back(PyObject *SWIGUNUSEDPA
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -16941,9 +15872,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_assign(PyObject *SWIGUNUSED
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -16995,9 +15923,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_resize__SWIG_1(PyObject *SW
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -17107,9 +16032,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_insert__SWIG_0(PyObject *SW
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -17176,9 +16098,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_insert__SWIG_1(PyObject *SW
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -17287,9 +16206,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_reserve(PyObject *SWIGUNUSE
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -17328,9 +16244,6 @@ SWIGINTERN PyObject *_wrap_vector_FiniteElementSpace_capacity(PyObject *SWIGUNUS
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -17368,9 +16281,6 @@ SWIGINTERN PyObject *_wrap_delete_vector_FiniteElementSpace(PyObject *SWIGUNUSED
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -17422,9 +16332,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_iterator(PyObject *SWIGUNUSEDPARM(self), 
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -17463,9 +16370,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh___nonzero__(PyObject *SWIGUNUSEDPARM(self
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -17504,9 +16408,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh___bool__(PyObject *SWIGUNUSEDPARM(self), 
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -17545,9 +16446,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh___len__(PyObject *SWIGUNUSEDPARM(self), P
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -17612,9 +16510,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh___getslice__(PyObject *SWIGUNUSEDPARM(sel
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -17672,9 +16567,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh___setslice____SWIG_0(PyObject *SWIGUNUSED
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -17745,9 +16637,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh___setslice____SWIG_1(PyObject *SWIGUNUSED
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -17875,9 +16764,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh___delslice__(PyObject *SWIGUNUSEDPARM(sel
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -17927,9 +16813,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh___delitem____SWIG_0(PyObject *SWIGUNUSEDP
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -17979,9 +16862,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh___getitem____SWIG_0(PyObject *SWIGUNUSEDP
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -18043,9 +16923,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh___setitem____SWIG_0(PyObject *SWIGUNUSEDP
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -18096,9 +16973,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh___setitem____SWIG_1(PyObject *SWIGUNUSEDP
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -18147,9 +17021,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh___delitem____SWIG_1(PyObject *SWIGUNUSEDP
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -18243,9 +17114,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh___getitem____SWIG_1(PyObject *SWIGUNUSEDP
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -18346,9 +17214,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh___setitem____SWIG_2(PyObject *SWIGUNUSEDP
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -18459,9 +17324,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_pop(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -18510,9 +17372,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_append(PyObject *SWIGUNUSEDPARM(self), Py
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -18541,9 +17400,6 @@ SWIGINTERN PyObject *_wrap_new_vector_Mesh__SWIG_0(PyObject *SWIGUNUSEDPARM(self
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -18585,9 +17441,6 @@ SWIGINTERN PyObject *_wrap_new_vector_Mesh__SWIG_1(PyObject *SWIGUNUSEDPARM(self
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -18628,9 +17481,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_empty(PyObject *SWIGUNUSEDPARM(self), PyO
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -18669,9 +17519,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_size(PyObject *SWIGUNUSEDPARM(self), PyOb
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -18723,9 +17570,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_swap(PyObject *SWIGUNUSEDPARM(self), PyOb
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -18764,9 +17608,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_begin(PyObject *SWIGUNUSEDPARM(self), PyO
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -18806,9 +17647,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_end(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -18848,9 +17686,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_rbegin(PyObject *SWIGUNUSEDPARM(self), Py
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -18890,9 +17725,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_rend(PyObject *SWIGUNUSEDPARM(self), PyOb
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -18931,9 +17763,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_clear(PyObject *SWIGUNUSEDPARM(self), PyO
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -18972,9 +17801,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_get_allocator(PyObject *SWIGUNUSEDPARM(se
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -19011,9 +17837,6 @@ SWIGINTERN PyObject *_wrap_new_vector_Mesh__SWIG_2(PyObject *SWIGUNUSEDPARM(self
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -19051,9 +17874,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_pop_back(PyObject *SWIGUNUSEDPARM(self), 
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -19097,9 +17917,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_resize__SWIG_0(PyObject *SWIGUNUSEDPARM(s
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -19150,9 +17967,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_erase__SWIG_0(PyObject *SWIGUNUSEDPARM(se
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -19218,9 +18032,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_erase__SWIG_1(PyObject *SWIGUNUSEDPARM(se
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -19315,9 +18126,6 @@ SWIGINTERN PyObject *_wrap_new_vector_Mesh__SWIG_3(PyObject *SWIGUNUSEDPARM(self
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -19422,9 +18230,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_push_back(PyObject *SWIGUNUSEDPARM(self),
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -19463,9 +18268,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_front(PyObject *SWIGUNUSEDPARM(self), PyO
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -19504,9 +18306,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_back(PyObject *SWIGUNUSEDPARM(self), PyOb
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -19564,9 +18363,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_assign(PyObject *SWIGUNUSEDPARM(self), Py
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -19618,9 +18414,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_resize__SWIG_1(PyObject *SWIGUNUSEDPARM(s
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -19730,9 +18523,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_insert__SWIG_0(PyObject *SWIGUNUSEDPARM(s
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -19799,9 +18589,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_insert__SWIG_1(PyObject *SWIGUNUSEDPARM(s
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -19910,9 +18697,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_reserve(PyObject *SWIGUNUSEDPARM(self), P
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -19951,9 +18735,6 @@ SWIGINTERN PyObject *_wrap_vector_Mesh_capacity(PyObject *SWIGUNUSEDPARM(self), 
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -19991,9 +18772,6 @@ SWIGINTERN PyObject *_wrap_delete_vector_Mesh(PyObject *SWIGUNUSEDPARM(self), Py
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -20045,9 +18823,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_iterator(PyObject *SWIGUNUSEDPARM
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -20086,9 +18861,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix___nonzero__(PyObject *SWIGUNUSEDP
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -20127,9 +18899,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix___bool__(PyObject *SWIGUNUSEDPARM
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -20168,9 +18937,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix___len__(PyObject *SWIGUNUSEDPARM(
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -20235,9 +19001,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix___getslice__(PyObject *SWIGUNUSED
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -20295,9 +19058,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix___setslice____SWIG_0(PyObject *SW
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -20368,9 +19128,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix___setslice____SWIG_1(PyObject *SW
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -20498,9 +19255,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix___delslice__(PyObject *SWIGUNUSED
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -20550,9 +19304,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix___delitem____SWIG_0(PyObject *SWI
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -20602,9 +19353,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix___getitem____SWIG_0(PyObject *SWI
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -20666,9 +19414,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix___setitem____SWIG_0(PyObject *SWI
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -20719,9 +19464,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix___setitem____SWIG_1(PyObject *SWI
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -20770,9 +19512,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix___delitem____SWIG_1(PyObject *SWI
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -20866,9 +19605,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix___getitem____SWIG_1(PyObject *SWI
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -20969,9 +19705,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix___setitem____SWIG_2(PyObject *SWI
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -21082,9 +19815,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_pop(PyObject *SWIGUNUSEDPARM(self
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -21133,9 +19863,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_append(PyObject *SWIGUNUSEDPARM(s
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -21164,9 +19891,6 @@ SWIGINTERN PyObject *_wrap_new_vector_SparseMatrix__SWIG_0(PyObject *SWIGUNUSEDP
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -21208,9 +19932,6 @@ SWIGINTERN PyObject *_wrap_new_vector_SparseMatrix__SWIG_1(PyObject *SWIGUNUSEDP
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -21251,9 +19972,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_empty(PyObject *SWIGUNUSEDPARM(se
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -21292,9 +20010,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_size(PyObject *SWIGUNUSEDPARM(sel
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -21346,9 +20061,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_swap(PyObject *SWIGUNUSEDPARM(sel
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -21387,9 +20099,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_begin(PyObject *SWIGUNUSEDPARM(se
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -21429,9 +20138,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_end(PyObject *SWIGUNUSEDPARM(self
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -21471,9 +20177,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_rbegin(PyObject *SWIGUNUSEDPARM(s
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -21513,9 +20216,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_rend(PyObject *SWIGUNUSEDPARM(sel
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -21554,9 +20254,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_clear(PyObject *SWIGUNUSEDPARM(se
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -21595,9 +20292,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_get_allocator(PyObject *SWIGUNUSE
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -21634,9 +20328,6 @@ SWIGINTERN PyObject *_wrap_new_vector_SparseMatrix__SWIG_2(PyObject *SWIGUNUSEDP
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -21674,9 +20365,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_pop_back(PyObject *SWIGUNUSEDPARM
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -21720,9 +20408,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_resize__SWIG_0(PyObject *SWIGUNUS
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -21773,9 +20458,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_erase__SWIG_0(PyObject *SWIGUNUSE
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -21841,9 +20523,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_erase__SWIG_1(PyObject *SWIGUNUSE
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -21938,9 +20617,6 @@ SWIGINTERN PyObject *_wrap_new_vector_SparseMatrix__SWIG_3(PyObject *SWIGUNUSEDP
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -22045,9 +20721,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_push_back(PyObject *SWIGUNUSEDPAR
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -22086,9 +20759,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_front(PyObject *SWIGUNUSEDPARM(se
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -22127,9 +20797,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_back(PyObject *SWIGUNUSEDPARM(sel
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -22187,9 +20854,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_assign(PyObject *SWIGUNUSEDPARM(s
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -22241,9 +20905,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_resize__SWIG_1(PyObject *SWIGUNUS
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -22353,9 +21014,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_insert__SWIG_0(PyObject *SWIGUNUS
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -22422,9 +21080,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_insert__SWIG_1(PyObject *SWIGUNUS
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -22533,9 +21188,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_reserve(PyObject *SWIGUNUSEDPARM(
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -22574,9 +21226,6 @@ SWIGINTERN PyObject *_wrap_vector_SparseMatrix_capacity(PyObject *SWIGUNUSEDPARM
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -22614,9 +21263,6 @@ SWIGINTERN PyObject *_wrap_delete_vector_SparseMatrix(PyObject *SWIGUNUSEDPARM(s
     }
 #endif
     
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
     catch (...) {
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
@@ -22741,15 +21387,15 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "vector_Vector___getitem__", _wrap_vector_Vector___getitem__, METH_VARARGS, "\n"
 		"vector_Vector___getitem__(vector_Vector self, PySliceObject * slice) -> vector_Vector\n"
-		"vector_Vector___getitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i) -> Vector\n"
+		"vector_Vector___getitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i) -> std::vector< mfem::Vector >::value_type const &\n"
 		""},
 	 { "vector_Vector___setitem__", _wrap_vector_Vector___setitem__, METH_VARARGS, "\n"
 		"vector_Vector___setitem__(vector_Vector self, PySliceObject * slice, vector_Vector v)\n"
 		"vector_Vector___setitem__(vector_Vector self, PySliceObject * slice)\n"
-		"vector_Vector___setitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i, Vector x)\n"
+		"vector_Vector___setitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i, std::vector< mfem::Vector >::value_type const & x)\n"
 		""},
-	 { "vector_Vector_pop", _wrap_vector_Vector_pop, METH_O, "vector_Vector_pop(vector_Vector self) -> Vector"},
-	 { "vector_Vector_append", (PyCFunction)(void(*)(void))_wrap_vector_Vector_append, METH_VARARGS|METH_KEYWORDS, "vector_Vector_append(vector_Vector self, Vector x)"},
+	 { "vector_Vector_pop", _wrap_vector_Vector_pop, METH_O, "vector_Vector_pop(vector_Vector self) -> std::vector< mfem::Vector >::value_type"},
+	 { "vector_Vector_append", (PyCFunction)(void(*)(void))_wrap_vector_Vector_append, METH_VARARGS|METH_KEYWORDS, "vector_Vector_append(vector_Vector self, std::vector< mfem::Vector >::value_type const & x)"},
 	 { "vector_Vector_empty", _wrap_vector_Vector_empty, METH_O, "vector_Vector_empty(vector_Vector self) -> bool"},
 	 { "vector_Vector_size", _wrap_vector_Vector_size, METH_O, "vector_Vector_size(vector_Vector self) -> std::vector< mfem::Vector >::size_type"},
 	 { "vector_Vector_swap", (PyCFunction)(void(*)(void))_wrap_vector_Vector_swap, METH_VARARGS|METH_KEYWORDS, "vector_Vector_swap(vector_Vector self, vector_Vector v)"},
@@ -22768,19 +21414,19 @@ static PyMethodDef SwigMethods[] = {
 		"vector_Vector()\n"
 		"vector_Vector(vector_Vector other)\n"
 		"vector_Vector(std::vector< mfem::Vector >::size_type size)\n"
-		"new_vector_Vector(std::vector< mfem::Vector >::size_type size, Vector value) -> vector_Vector\n"
+		"new_vector_Vector(std::vector< mfem::Vector >::size_type size, std::vector< mfem::Vector >::value_type const & value) -> vector_Vector\n"
 		""},
-	 { "vector_Vector_push_back", (PyCFunction)(void(*)(void))_wrap_vector_Vector_push_back, METH_VARARGS|METH_KEYWORDS, "vector_Vector_push_back(vector_Vector self, Vector x)"},
-	 { "vector_Vector_front", _wrap_vector_Vector_front, METH_O, "vector_Vector_front(vector_Vector self) -> Vector"},
-	 { "vector_Vector_back", _wrap_vector_Vector_back, METH_O, "vector_Vector_back(vector_Vector self) -> Vector"},
-	 { "vector_Vector_assign", (PyCFunction)(void(*)(void))_wrap_vector_Vector_assign, METH_VARARGS|METH_KEYWORDS, "vector_Vector_assign(vector_Vector self, std::vector< mfem::Vector >::size_type n, Vector x)"},
+	 { "vector_Vector_push_back", (PyCFunction)(void(*)(void))_wrap_vector_Vector_push_back, METH_VARARGS|METH_KEYWORDS, "vector_Vector_push_back(vector_Vector self, std::vector< mfem::Vector >::value_type const & x)"},
+	 { "vector_Vector_front", _wrap_vector_Vector_front, METH_O, "vector_Vector_front(vector_Vector self) -> std::vector< mfem::Vector >::value_type const &"},
+	 { "vector_Vector_back", _wrap_vector_Vector_back, METH_O, "vector_Vector_back(vector_Vector self) -> std::vector< mfem::Vector >::value_type const &"},
+	 { "vector_Vector_assign", (PyCFunction)(void(*)(void))_wrap_vector_Vector_assign, METH_VARARGS|METH_KEYWORDS, "vector_Vector_assign(vector_Vector self, std::vector< mfem::Vector >::size_type n, std::vector< mfem::Vector >::value_type const & x)"},
 	 { "vector_Vector_resize", _wrap_vector_Vector_resize, METH_VARARGS, "\n"
 		"vector_Vector_resize(vector_Vector self, std::vector< mfem::Vector >::size_type new_size)\n"
-		"vector_Vector_resize(vector_Vector self, std::vector< mfem::Vector >::size_type new_size, Vector x)\n"
+		"vector_Vector_resize(vector_Vector self, std::vector< mfem::Vector >::size_type new_size, std::vector< mfem::Vector >::value_type const & x)\n"
 		""},
 	 { "vector_Vector_insert", _wrap_vector_Vector_insert, METH_VARARGS, "\n"
-		"vector_Vector_insert(vector_Vector self, std::vector< mfem::Vector >::iterator pos, Vector x) -> std::vector< mfem::Vector >::iterator\n"
-		"vector_Vector_insert(vector_Vector self, std::vector< mfem::Vector >::iterator pos, std::vector< mfem::Vector >::size_type n, Vector x)\n"
+		"vector_Vector_insert(vector_Vector self, std::vector< mfem::Vector >::iterator pos, std::vector< mfem::Vector >::value_type const & x) -> std::vector< mfem::Vector >::iterator\n"
+		"vector_Vector_insert(vector_Vector self, std::vector< mfem::Vector >::iterator pos, std::vector< mfem::Vector >::size_type n, std::vector< mfem::Vector >::value_type const & x)\n"
 		""},
 	 { "vector_Vector_reserve", (PyCFunction)(void(*)(void))_wrap_vector_Vector_reserve, METH_VARARGS|METH_KEYWORDS, "vector_Vector_reserve(vector_Vector self, std::vector< mfem::Vector >::size_type n)"},
 	 { "vector_Vector_capacity", _wrap_vector_Vector_capacity, METH_O, "vector_Vector_capacity(vector_Vector self) -> std::vector< mfem::Vector >::size_type"},
@@ -22865,15 +21511,15 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "vector_FiniteElementSpace___getitem__", _wrap_vector_FiniteElementSpace___getitem__, METH_VARARGS, "\n"
 		"vector_FiniteElementSpace___getitem__(vector_FiniteElementSpace self, PySliceObject * slice) -> vector_FiniteElementSpace\n"
-		"vector_FiniteElementSpace___getitem__(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::difference_type i) -> FiniteElementSpace\n"
+		"vector_FiniteElementSpace___getitem__(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::difference_type i) -> std::vector< mfem::FiniteElementSpace * >::value_type\n"
 		""},
 	 { "vector_FiniteElementSpace___setitem__", _wrap_vector_FiniteElementSpace___setitem__, METH_VARARGS, "\n"
 		"vector_FiniteElementSpace___setitem__(vector_FiniteElementSpace self, PySliceObject * slice, vector_FiniteElementSpace v)\n"
 		"vector_FiniteElementSpace___setitem__(vector_FiniteElementSpace self, PySliceObject * slice)\n"
-		"vector_FiniteElementSpace___setitem__(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::difference_type i, FiniteElementSpace x)\n"
+		"vector_FiniteElementSpace___setitem__(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::difference_type i, std::vector< mfem::FiniteElementSpace * >::value_type x)\n"
 		""},
-	 { "vector_FiniteElementSpace_pop", _wrap_vector_FiniteElementSpace_pop, METH_O, "vector_FiniteElementSpace_pop(vector_FiniteElementSpace self) -> FiniteElementSpace"},
-	 { "vector_FiniteElementSpace_append", (PyCFunction)(void(*)(void))_wrap_vector_FiniteElementSpace_append, METH_VARARGS|METH_KEYWORDS, "vector_FiniteElementSpace_append(vector_FiniteElementSpace self, FiniteElementSpace x)"},
+	 { "vector_FiniteElementSpace_pop", _wrap_vector_FiniteElementSpace_pop, METH_O, "vector_FiniteElementSpace_pop(vector_FiniteElementSpace self) -> std::vector< mfem::FiniteElementSpace * >::value_type"},
+	 { "vector_FiniteElementSpace_append", (PyCFunction)(void(*)(void))_wrap_vector_FiniteElementSpace_append, METH_VARARGS|METH_KEYWORDS, "vector_FiniteElementSpace_append(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::value_type x)"},
 	 { "vector_FiniteElementSpace_empty", _wrap_vector_FiniteElementSpace_empty, METH_O, "vector_FiniteElementSpace_empty(vector_FiniteElementSpace self) -> bool"},
 	 { "vector_FiniteElementSpace_size", _wrap_vector_FiniteElementSpace_size, METH_O, "vector_FiniteElementSpace_size(vector_FiniteElementSpace self) -> std::vector< mfem::FiniteElementSpace * >::size_type"},
 	 { "vector_FiniteElementSpace_swap", (PyCFunction)(void(*)(void))_wrap_vector_FiniteElementSpace_swap, METH_VARARGS|METH_KEYWORDS, "vector_FiniteElementSpace_swap(vector_FiniteElementSpace self, vector_FiniteElementSpace v)"},
@@ -22892,19 +21538,19 @@ static PyMethodDef SwigMethods[] = {
 		"vector_FiniteElementSpace()\n"
 		"vector_FiniteElementSpace(vector_FiniteElementSpace other)\n"
 		"vector_FiniteElementSpace(std::vector< mfem::FiniteElementSpace * >::size_type size)\n"
-		"new_vector_FiniteElementSpace(std::vector< mfem::FiniteElementSpace * >::size_type size, FiniteElementSpace value) -> vector_FiniteElementSpace\n"
+		"new_vector_FiniteElementSpace(std::vector< mfem::FiniteElementSpace * >::size_type size, std::vector< mfem::FiniteElementSpace * >::value_type value) -> vector_FiniteElementSpace\n"
 		""},
-	 { "vector_FiniteElementSpace_push_back", (PyCFunction)(void(*)(void))_wrap_vector_FiniteElementSpace_push_back, METH_VARARGS|METH_KEYWORDS, "vector_FiniteElementSpace_push_back(vector_FiniteElementSpace self, FiniteElementSpace x)"},
-	 { "vector_FiniteElementSpace_front", _wrap_vector_FiniteElementSpace_front, METH_O, "vector_FiniteElementSpace_front(vector_FiniteElementSpace self) -> FiniteElementSpace"},
-	 { "vector_FiniteElementSpace_back", _wrap_vector_FiniteElementSpace_back, METH_O, "vector_FiniteElementSpace_back(vector_FiniteElementSpace self) -> FiniteElementSpace"},
-	 { "vector_FiniteElementSpace_assign", (PyCFunction)(void(*)(void))_wrap_vector_FiniteElementSpace_assign, METH_VARARGS|METH_KEYWORDS, "vector_FiniteElementSpace_assign(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::size_type n, FiniteElementSpace x)"},
+	 { "vector_FiniteElementSpace_push_back", (PyCFunction)(void(*)(void))_wrap_vector_FiniteElementSpace_push_back, METH_VARARGS|METH_KEYWORDS, "vector_FiniteElementSpace_push_back(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::value_type x)"},
+	 { "vector_FiniteElementSpace_front", _wrap_vector_FiniteElementSpace_front, METH_O, "vector_FiniteElementSpace_front(vector_FiniteElementSpace self) -> std::vector< mfem::FiniteElementSpace * >::value_type"},
+	 { "vector_FiniteElementSpace_back", _wrap_vector_FiniteElementSpace_back, METH_O, "vector_FiniteElementSpace_back(vector_FiniteElementSpace self) -> std::vector< mfem::FiniteElementSpace * >::value_type"},
+	 { "vector_FiniteElementSpace_assign", (PyCFunction)(void(*)(void))_wrap_vector_FiniteElementSpace_assign, METH_VARARGS|METH_KEYWORDS, "vector_FiniteElementSpace_assign(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::size_type n, std::vector< mfem::FiniteElementSpace * >::value_type x)"},
 	 { "vector_FiniteElementSpace_resize", _wrap_vector_FiniteElementSpace_resize, METH_VARARGS, "\n"
 		"vector_FiniteElementSpace_resize(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::size_type new_size)\n"
-		"vector_FiniteElementSpace_resize(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::size_type new_size, FiniteElementSpace x)\n"
+		"vector_FiniteElementSpace_resize(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::size_type new_size, std::vector< mfem::FiniteElementSpace * >::value_type x)\n"
 		""},
 	 { "vector_FiniteElementSpace_insert", _wrap_vector_FiniteElementSpace_insert, METH_VARARGS, "\n"
-		"vector_FiniteElementSpace_insert(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::iterator pos, FiniteElementSpace x) -> std::vector< mfem::FiniteElementSpace * >::iterator\n"
-		"vector_FiniteElementSpace_insert(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::iterator pos, std::vector< mfem::FiniteElementSpace * >::size_type n, FiniteElementSpace x)\n"
+		"vector_FiniteElementSpace_insert(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::iterator pos, std::vector< mfem::FiniteElementSpace * >::value_type x) -> std::vector< mfem::FiniteElementSpace * >::iterator\n"
+		"vector_FiniteElementSpace_insert(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::iterator pos, std::vector< mfem::FiniteElementSpace * >::size_type n, std::vector< mfem::FiniteElementSpace * >::value_type x)\n"
 		""},
 	 { "vector_FiniteElementSpace_reserve", (PyCFunction)(void(*)(void))_wrap_vector_FiniteElementSpace_reserve, METH_VARARGS|METH_KEYWORDS, "vector_FiniteElementSpace_reserve(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::size_type n)"},
 	 { "vector_FiniteElementSpace_capacity", _wrap_vector_FiniteElementSpace_capacity, METH_O, "vector_FiniteElementSpace_capacity(vector_FiniteElementSpace self) -> std::vector< mfem::FiniteElementSpace * >::size_type"},
@@ -22927,15 +21573,15 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "vector_Mesh___getitem__", _wrap_vector_Mesh___getitem__, METH_VARARGS, "\n"
 		"vector_Mesh___getitem__(vector_Mesh self, PySliceObject * slice) -> vector_Mesh\n"
-		"vector_Mesh___getitem__(vector_Mesh self, std::vector< mfem::Mesh * >::difference_type i) -> Mesh\n"
+		"vector_Mesh___getitem__(vector_Mesh self, std::vector< mfem::Mesh * >::difference_type i) -> std::vector< mfem::Mesh * >::value_type\n"
 		""},
 	 { "vector_Mesh___setitem__", _wrap_vector_Mesh___setitem__, METH_VARARGS, "\n"
 		"vector_Mesh___setitem__(vector_Mesh self, PySliceObject * slice, vector_Mesh v)\n"
 		"vector_Mesh___setitem__(vector_Mesh self, PySliceObject * slice)\n"
-		"vector_Mesh___setitem__(vector_Mesh self, std::vector< mfem::Mesh * >::difference_type i, Mesh x)\n"
+		"vector_Mesh___setitem__(vector_Mesh self, std::vector< mfem::Mesh * >::difference_type i, std::vector< mfem::Mesh * >::value_type x)\n"
 		""},
-	 { "vector_Mesh_pop", _wrap_vector_Mesh_pop, METH_O, "vector_Mesh_pop(vector_Mesh self) -> Mesh"},
-	 { "vector_Mesh_append", (PyCFunction)(void(*)(void))_wrap_vector_Mesh_append, METH_VARARGS|METH_KEYWORDS, "vector_Mesh_append(vector_Mesh self, Mesh x)"},
+	 { "vector_Mesh_pop", _wrap_vector_Mesh_pop, METH_O, "vector_Mesh_pop(vector_Mesh self) -> std::vector< mfem::Mesh * >::value_type"},
+	 { "vector_Mesh_append", (PyCFunction)(void(*)(void))_wrap_vector_Mesh_append, METH_VARARGS|METH_KEYWORDS, "vector_Mesh_append(vector_Mesh self, std::vector< mfem::Mesh * >::value_type x)"},
 	 { "vector_Mesh_empty", _wrap_vector_Mesh_empty, METH_O, "vector_Mesh_empty(vector_Mesh self) -> bool"},
 	 { "vector_Mesh_size", _wrap_vector_Mesh_size, METH_O, "vector_Mesh_size(vector_Mesh self) -> std::vector< mfem::Mesh * >::size_type"},
 	 { "vector_Mesh_swap", (PyCFunction)(void(*)(void))_wrap_vector_Mesh_swap, METH_VARARGS|METH_KEYWORDS, "vector_Mesh_swap(vector_Mesh self, vector_Mesh v)"},
@@ -22954,19 +21600,19 @@ static PyMethodDef SwigMethods[] = {
 		"vector_Mesh()\n"
 		"vector_Mesh(vector_Mesh other)\n"
 		"vector_Mesh(std::vector< mfem::Mesh * >::size_type size)\n"
-		"new_vector_Mesh(std::vector< mfem::Mesh * >::size_type size, Mesh value) -> vector_Mesh\n"
+		"new_vector_Mesh(std::vector< mfem::Mesh * >::size_type size, std::vector< mfem::Mesh * >::value_type value) -> vector_Mesh\n"
 		""},
-	 { "vector_Mesh_push_back", (PyCFunction)(void(*)(void))_wrap_vector_Mesh_push_back, METH_VARARGS|METH_KEYWORDS, "vector_Mesh_push_back(vector_Mesh self, Mesh x)"},
-	 { "vector_Mesh_front", _wrap_vector_Mesh_front, METH_O, "vector_Mesh_front(vector_Mesh self) -> Mesh"},
-	 { "vector_Mesh_back", _wrap_vector_Mesh_back, METH_O, "vector_Mesh_back(vector_Mesh self) -> Mesh"},
-	 { "vector_Mesh_assign", (PyCFunction)(void(*)(void))_wrap_vector_Mesh_assign, METH_VARARGS|METH_KEYWORDS, "vector_Mesh_assign(vector_Mesh self, std::vector< mfem::Mesh * >::size_type n, Mesh x)"},
+	 { "vector_Mesh_push_back", (PyCFunction)(void(*)(void))_wrap_vector_Mesh_push_back, METH_VARARGS|METH_KEYWORDS, "vector_Mesh_push_back(vector_Mesh self, std::vector< mfem::Mesh * >::value_type x)"},
+	 { "vector_Mesh_front", _wrap_vector_Mesh_front, METH_O, "vector_Mesh_front(vector_Mesh self) -> std::vector< mfem::Mesh * >::value_type"},
+	 { "vector_Mesh_back", _wrap_vector_Mesh_back, METH_O, "vector_Mesh_back(vector_Mesh self) -> std::vector< mfem::Mesh * >::value_type"},
+	 { "vector_Mesh_assign", (PyCFunction)(void(*)(void))_wrap_vector_Mesh_assign, METH_VARARGS|METH_KEYWORDS, "vector_Mesh_assign(vector_Mesh self, std::vector< mfem::Mesh * >::size_type n, std::vector< mfem::Mesh * >::value_type x)"},
 	 { "vector_Mesh_resize", _wrap_vector_Mesh_resize, METH_VARARGS, "\n"
 		"vector_Mesh_resize(vector_Mesh self, std::vector< mfem::Mesh * >::size_type new_size)\n"
-		"vector_Mesh_resize(vector_Mesh self, std::vector< mfem::Mesh * >::size_type new_size, Mesh x)\n"
+		"vector_Mesh_resize(vector_Mesh self, std::vector< mfem::Mesh * >::size_type new_size, std::vector< mfem::Mesh * >::value_type x)\n"
 		""},
 	 { "vector_Mesh_insert", _wrap_vector_Mesh_insert, METH_VARARGS, "\n"
-		"vector_Mesh_insert(vector_Mesh self, std::vector< mfem::Mesh * >::iterator pos, Mesh x) -> std::vector< mfem::Mesh * >::iterator\n"
-		"vector_Mesh_insert(vector_Mesh self, std::vector< mfem::Mesh * >::iterator pos, std::vector< mfem::Mesh * >::size_type n, Mesh x)\n"
+		"vector_Mesh_insert(vector_Mesh self, std::vector< mfem::Mesh * >::iterator pos, std::vector< mfem::Mesh * >::value_type x) -> std::vector< mfem::Mesh * >::iterator\n"
+		"vector_Mesh_insert(vector_Mesh self, std::vector< mfem::Mesh * >::iterator pos, std::vector< mfem::Mesh * >::size_type n, std::vector< mfem::Mesh * >::value_type x)\n"
 		""},
 	 { "vector_Mesh_reserve", (PyCFunction)(void(*)(void))_wrap_vector_Mesh_reserve, METH_VARARGS|METH_KEYWORDS, "vector_Mesh_reserve(vector_Mesh self, std::vector< mfem::Mesh * >::size_type n)"},
 	 { "vector_Mesh_capacity", _wrap_vector_Mesh_capacity, METH_O, "vector_Mesh_capacity(vector_Mesh self) -> std::vector< mfem::Mesh * >::size_type"},
@@ -22989,15 +21635,15 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "vector_SparseMatrix___getitem__", _wrap_vector_SparseMatrix___getitem__, METH_VARARGS, "\n"
 		"vector_SparseMatrix___getitem__(vector_SparseMatrix self, PySliceObject * slice) -> vector_SparseMatrix\n"
-		"vector_SparseMatrix___getitem__(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::difference_type i) -> SparseMatrix\n"
+		"vector_SparseMatrix___getitem__(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::difference_type i) -> std::vector< mfem::SparseMatrix * >::value_type\n"
 		""},
 	 { "vector_SparseMatrix___setitem__", _wrap_vector_SparseMatrix___setitem__, METH_VARARGS, "\n"
 		"vector_SparseMatrix___setitem__(vector_SparseMatrix self, PySliceObject * slice, vector_SparseMatrix v)\n"
 		"vector_SparseMatrix___setitem__(vector_SparseMatrix self, PySliceObject * slice)\n"
-		"vector_SparseMatrix___setitem__(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::difference_type i, SparseMatrix x)\n"
+		"vector_SparseMatrix___setitem__(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::difference_type i, std::vector< mfem::SparseMatrix * >::value_type x)\n"
 		""},
-	 { "vector_SparseMatrix_pop", _wrap_vector_SparseMatrix_pop, METH_O, "vector_SparseMatrix_pop(vector_SparseMatrix self) -> SparseMatrix"},
-	 { "vector_SparseMatrix_append", (PyCFunction)(void(*)(void))_wrap_vector_SparseMatrix_append, METH_VARARGS|METH_KEYWORDS, "vector_SparseMatrix_append(vector_SparseMatrix self, SparseMatrix x)"},
+	 { "vector_SparseMatrix_pop", _wrap_vector_SparseMatrix_pop, METH_O, "vector_SparseMatrix_pop(vector_SparseMatrix self) -> std::vector< mfem::SparseMatrix * >::value_type"},
+	 { "vector_SparseMatrix_append", (PyCFunction)(void(*)(void))_wrap_vector_SparseMatrix_append, METH_VARARGS|METH_KEYWORDS, "vector_SparseMatrix_append(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::value_type x)"},
 	 { "vector_SparseMatrix_empty", _wrap_vector_SparseMatrix_empty, METH_O, "vector_SparseMatrix_empty(vector_SparseMatrix self) -> bool"},
 	 { "vector_SparseMatrix_size", _wrap_vector_SparseMatrix_size, METH_O, "vector_SparseMatrix_size(vector_SparseMatrix self) -> std::vector< mfem::SparseMatrix * >::size_type"},
 	 { "vector_SparseMatrix_swap", (PyCFunction)(void(*)(void))_wrap_vector_SparseMatrix_swap, METH_VARARGS|METH_KEYWORDS, "vector_SparseMatrix_swap(vector_SparseMatrix self, vector_SparseMatrix v)"},
@@ -23016,19 +21662,19 @@ static PyMethodDef SwigMethods[] = {
 		"vector_SparseMatrix()\n"
 		"vector_SparseMatrix(vector_SparseMatrix other)\n"
 		"vector_SparseMatrix(std::vector< mfem::SparseMatrix * >::size_type size)\n"
-		"new_vector_SparseMatrix(std::vector< mfem::SparseMatrix * >::size_type size, SparseMatrix value) -> vector_SparseMatrix\n"
+		"new_vector_SparseMatrix(std::vector< mfem::SparseMatrix * >::size_type size, std::vector< mfem::SparseMatrix * >::value_type value) -> vector_SparseMatrix\n"
 		""},
-	 { "vector_SparseMatrix_push_back", (PyCFunction)(void(*)(void))_wrap_vector_SparseMatrix_push_back, METH_VARARGS|METH_KEYWORDS, "vector_SparseMatrix_push_back(vector_SparseMatrix self, SparseMatrix x)"},
-	 { "vector_SparseMatrix_front", _wrap_vector_SparseMatrix_front, METH_O, "vector_SparseMatrix_front(vector_SparseMatrix self) -> SparseMatrix"},
-	 { "vector_SparseMatrix_back", _wrap_vector_SparseMatrix_back, METH_O, "vector_SparseMatrix_back(vector_SparseMatrix self) -> SparseMatrix"},
-	 { "vector_SparseMatrix_assign", (PyCFunction)(void(*)(void))_wrap_vector_SparseMatrix_assign, METH_VARARGS|METH_KEYWORDS, "vector_SparseMatrix_assign(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::size_type n, SparseMatrix x)"},
+	 { "vector_SparseMatrix_push_back", (PyCFunction)(void(*)(void))_wrap_vector_SparseMatrix_push_back, METH_VARARGS|METH_KEYWORDS, "vector_SparseMatrix_push_back(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::value_type x)"},
+	 { "vector_SparseMatrix_front", _wrap_vector_SparseMatrix_front, METH_O, "vector_SparseMatrix_front(vector_SparseMatrix self) -> std::vector< mfem::SparseMatrix * >::value_type"},
+	 { "vector_SparseMatrix_back", _wrap_vector_SparseMatrix_back, METH_O, "vector_SparseMatrix_back(vector_SparseMatrix self) -> std::vector< mfem::SparseMatrix * >::value_type"},
+	 { "vector_SparseMatrix_assign", (PyCFunction)(void(*)(void))_wrap_vector_SparseMatrix_assign, METH_VARARGS|METH_KEYWORDS, "vector_SparseMatrix_assign(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::size_type n, std::vector< mfem::SparseMatrix * >::value_type x)"},
 	 { "vector_SparseMatrix_resize", _wrap_vector_SparseMatrix_resize, METH_VARARGS, "\n"
 		"vector_SparseMatrix_resize(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::size_type new_size)\n"
-		"vector_SparseMatrix_resize(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::size_type new_size, SparseMatrix x)\n"
+		"vector_SparseMatrix_resize(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::size_type new_size, std::vector< mfem::SparseMatrix * >::value_type x)\n"
 		""},
 	 { "vector_SparseMatrix_insert", _wrap_vector_SparseMatrix_insert, METH_VARARGS, "\n"
-		"vector_SparseMatrix_insert(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::iterator pos, SparseMatrix x) -> std::vector< mfem::SparseMatrix * >::iterator\n"
-		"vector_SparseMatrix_insert(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::iterator pos, std::vector< mfem::SparseMatrix * >::size_type n, SparseMatrix x)\n"
+		"vector_SparseMatrix_insert(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::iterator pos, std::vector< mfem::SparseMatrix * >::value_type x) -> std::vector< mfem::SparseMatrix * >::iterator\n"
+		"vector_SparseMatrix_insert(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::iterator pos, std::vector< mfem::SparseMatrix * >::size_type n, std::vector< mfem::SparseMatrix * >::value_type x)\n"
 		""},
 	 { "vector_SparseMatrix_reserve", (PyCFunction)(void(*)(void))_wrap_vector_SparseMatrix_reserve, METH_VARARGS|METH_KEYWORDS, "vector_SparseMatrix_reserve(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::size_type n)"},
 	 { "vector_SparseMatrix_capacity", _wrap_vector_SparseMatrix_capacity, METH_O, "vector_SparseMatrix_capacity(vector_SparseMatrix self) -> std::vector< mfem::SparseMatrix * >::size_type"},
@@ -23140,15 +21786,15 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "vector_Vector___getitem__", _wrap_vector_Vector___getitem__, METH_VARARGS, "\n"
 		"__getitem__(vector_Vector self, PySliceObject * slice) -> vector_Vector\n"
-		"__getitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i) -> Vector\n"
+		"__getitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i) -> std::vector< mfem::Vector >::value_type const &\n"
 		""},
 	 { "vector_Vector___setitem__", _wrap_vector_Vector___setitem__, METH_VARARGS, "\n"
 		"__setitem__(vector_Vector self, PySliceObject * slice, vector_Vector v)\n"
 		"__setitem__(vector_Vector self, PySliceObject * slice)\n"
-		"__setitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i, Vector x)\n"
+		"__setitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i, std::vector< mfem::Vector >::value_type const & x)\n"
 		""},
-	 { "vector_Vector_pop", _wrap_vector_Vector_pop, METH_O, "pop(vector_Vector self) -> Vector"},
-	 { "vector_Vector_append", (PyCFunction)(void(*)(void))_wrap_vector_Vector_append, METH_VARARGS|METH_KEYWORDS, "append(vector_Vector self, Vector x)"},
+	 { "vector_Vector_pop", _wrap_vector_Vector_pop, METH_O, "pop(vector_Vector self) -> std::vector< mfem::Vector >::value_type"},
+	 { "vector_Vector_append", (PyCFunction)(void(*)(void))_wrap_vector_Vector_append, METH_VARARGS|METH_KEYWORDS, "append(vector_Vector self, std::vector< mfem::Vector >::value_type const & x)"},
 	 { "vector_Vector_empty", _wrap_vector_Vector_empty, METH_O, "empty(vector_Vector self) -> bool"},
 	 { "vector_Vector_size", _wrap_vector_Vector_size, METH_O, "size(vector_Vector self) -> std::vector< mfem::Vector >::size_type"},
 	 { "vector_Vector_swap", (PyCFunction)(void(*)(void))_wrap_vector_Vector_swap, METH_VARARGS|METH_KEYWORDS, "swap(vector_Vector self, vector_Vector v)"},
@@ -23167,19 +21813,19 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"vector_Vector()\n"
 		"vector_Vector(vector_Vector other)\n"
 		"vector_Vector(std::vector< mfem::Vector >::size_type size)\n"
-		"new_vector_Vector(std::vector< mfem::Vector >::size_type size, Vector value) -> vector_Vector\n"
+		"new_vector_Vector(std::vector< mfem::Vector >::size_type size, std::vector< mfem::Vector >::value_type const & value) -> vector_Vector\n"
 		""},
-	 { "vector_Vector_push_back", (PyCFunction)(void(*)(void))_wrap_vector_Vector_push_back, METH_VARARGS|METH_KEYWORDS, "push_back(vector_Vector self, Vector x)"},
-	 { "vector_Vector_front", _wrap_vector_Vector_front, METH_O, "front(vector_Vector self) -> Vector"},
-	 { "vector_Vector_back", _wrap_vector_Vector_back, METH_O, "back(vector_Vector self) -> Vector"},
-	 { "vector_Vector_assign", (PyCFunction)(void(*)(void))_wrap_vector_Vector_assign, METH_VARARGS|METH_KEYWORDS, "assign(vector_Vector self, std::vector< mfem::Vector >::size_type n, Vector x)"},
+	 { "vector_Vector_push_back", (PyCFunction)(void(*)(void))_wrap_vector_Vector_push_back, METH_VARARGS|METH_KEYWORDS, "push_back(vector_Vector self, std::vector< mfem::Vector >::value_type const & x)"},
+	 { "vector_Vector_front", _wrap_vector_Vector_front, METH_O, "front(vector_Vector self) -> std::vector< mfem::Vector >::value_type const &"},
+	 { "vector_Vector_back", _wrap_vector_Vector_back, METH_O, "back(vector_Vector self) -> std::vector< mfem::Vector >::value_type const &"},
+	 { "vector_Vector_assign", (PyCFunction)(void(*)(void))_wrap_vector_Vector_assign, METH_VARARGS|METH_KEYWORDS, "assign(vector_Vector self, std::vector< mfem::Vector >::size_type n, std::vector< mfem::Vector >::value_type const & x)"},
 	 { "vector_Vector_resize", _wrap_vector_Vector_resize, METH_VARARGS, "\n"
 		"resize(vector_Vector self, std::vector< mfem::Vector >::size_type new_size)\n"
-		"resize(vector_Vector self, std::vector< mfem::Vector >::size_type new_size, Vector x)\n"
+		"resize(vector_Vector self, std::vector< mfem::Vector >::size_type new_size, std::vector< mfem::Vector >::value_type const & x)\n"
 		""},
 	 { "vector_Vector_insert", _wrap_vector_Vector_insert, METH_VARARGS, "\n"
-		"insert(vector_Vector self, std::vector< mfem::Vector >::iterator pos, Vector x) -> std::vector< mfem::Vector >::iterator\n"
-		"insert(vector_Vector self, std::vector< mfem::Vector >::iterator pos, std::vector< mfem::Vector >::size_type n, Vector x)\n"
+		"insert(vector_Vector self, std::vector< mfem::Vector >::iterator pos, std::vector< mfem::Vector >::value_type const & x) -> std::vector< mfem::Vector >::iterator\n"
+		"insert(vector_Vector self, std::vector< mfem::Vector >::iterator pos, std::vector< mfem::Vector >::size_type n, std::vector< mfem::Vector >::value_type const & x)\n"
 		""},
 	 { "vector_Vector_reserve", (PyCFunction)(void(*)(void))_wrap_vector_Vector_reserve, METH_VARARGS|METH_KEYWORDS, "reserve(vector_Vector self, std::vector< mfem::Vector >::size_type n)"},
 	 { "vector_Vector_capacity", _wrap_vector_Vector_capacity, METH_O, "capacity(vector_Vector self) -> std::vector< mfem::Vector >::size_type"},
@@ -23264,15 +21910,15 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "vector_FiniteElementSpace___getitem__", _wrap_vector_FiniteElementSpace___getitem__, METH_VARARGS, "\n"
 		"__getitem__(vector_FiniteElementSpace self, PySliceObject * slice) -> vector_FiniteElementSpace\n"
-		"__getitem__(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::difference_type i) -> FiniteElementSpace\n"
+		"__getitem__(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::difference_type i) -> std::vector< mfem::FiniteElementSpace * >::value_type\n"
 		""},
 	 { "vector_FiniteElementSpace___setitem__", _wrap_vector_FiniteElementSpace___setitem__, METH_VARARGS, "\n"
 		"__setitem__(vector_FiniteElementSpace self, PySliceObject * slice, vector_FiniteElementSpace v)\n"
 		"__setitem__(vector_FiniteElementSpace self, PySliceObject * slice)\n"
-		"__setitem__(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::difference_type i, FiniteElementSpace x)\n"
+		"__setitem__(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::difference_type i, std::vector< mfem::FiniteElementSpace * >::value_type x)\n"
 		""},
-	 { "vector_FiniteElementSpace_pop", _wrap_vector_FiniteElementSpace_pop, METH_O, "pop(vector_FiniteElementSpace self) -> FiniteElementSpace"},
-	 { "vector_FiniteElementSpace_append", (PyCFunction)(void(*)(void))_wrap_vector_FiniteElementSpace_append, METH_VARARGS|METH_KEYWORDS, "append(vector_FiniteElementSpace self, FiniteElementSpace x)"},
+	 { "vector_FiniteElementSpace_pop", _wrap_vector_FiniteElementSpace_pop, METH_O, "pop(vector_FiniteElementSpace self) -> std::vector< mfem::FiniteElementSpace * >::value_type"},
+	 { "vector_FiniteElementSpace_append", (PyCFunction)(void(*)(void))_wrap_vector_FiniteElementSpace_append, METH_VARARGS|METH_KEYWORDS, "append(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::value_type x)"},
 	 { "vector_FiniteElementSpace_empty", _wrap_vector_FiniteElementSpace_empty, METH_O, "empty(vector_FiniteElementSpace self) -> bool"},
 	 { "vector_FiniteElementSpace_size", _wrap_vector_FiniteElementSpace_size, METH_O, "size(vector_FiniteElementSpace self) -> std::vector< mfem::FiniteElementSpace * >::size_type"},
 	 { "vector_FiniteElementSpace_swap", (PyCFunction)(void(*)(void))_wrap_vector_FiniteElementSpace_swap, METH_VARARGS|METH_KEYWORDS, "swap(vector_FiniteElementSpace self, vector_FiniteElementSpace v)"},
@@ -23291,19 +21937,19 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"vector_FiniteElementSpace()\n"
 		"vector_FiniteElementSpace(vector_FiniteElementSpace other)\n"
 		"vector_FiniteElementSpace(std::vector< mfem::FiniteElementSpace * >::size_type size)\n"
-		"new_vector_FiniteElementSpace(std::vector< mfem::FiniteElementSpace * >::size_type size, FiniteElementSpace value) -> vector_FiniteElementSpace\n"
+		"new_vector_FiniteElementSpace(std::vector< mfem::FiniteElementSpace * >::size_type size, std::vector< mfem::FiniteElementSpace * >::value_type value) -> vector_FiniteElementSpace\n"
 		""},
-	 { "vector_FiniteElementSpace_push_back", (PyCFunction)(void(*)(void))_wrap_vector_FiniteElementSpace_push_back, METH_VARARGS|METH_KEYWORDS, "push_back(vector_FiniteElementSpace self, FiniteElementSpace x)"},
-	 { "vector_FiniteElementSpace_front", _wrap_vector_FiniteElementSpace_front, METH_O, "front(vector_FiniteElementSpace self) -> FiniteElementSpace"},
-	 { "vector_FiniteElementSpace_back", _wrap_vector_FiniteElementSpace_back, METH_O, "back(vector_FiniteElementSpace self) -> FiniteElementSpace"},
-	 { "vector_FiniteElementSpace_assign", (PyCFunction)(void(*)(void))_wrap_vector_FiniteElementSpace_assign, METH_VARARGS|METH_KEYWORDS, "assign(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::size_type n, FiniteElementSpace x)"},
+	 { "vector_FiniteElementSpace_push_back", (PyCFunction)(void(*)(void))_wrap_vector_FiniteElementSpace_push_back, METH_VARARGS|METH_KEYWORDS, "push_back(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::value_type x)"},
+	 { "vector_FiniteElementSpace_front", _wrap_vector_FiniteElementSpace_front, METH_O, "front(vector_FiniteElementSpace self) -> std::vector< mfem::FiniteElementSpace * >::value_type"},
+	 { "vector_FiniteElementSpace_back", _wrap_vector_FiniteElementSpace_back, METH_O, "back(vector_FiniteElementSpace self) -> std::vector< mfem::FiniteElementSpace * >::value_type"},
+	 { "vector_FiniteElementSpace_assign", (PyCFunction)(void(*)(void))_wrap_vector_FiniteElementSpace_assign, METH_VARARGS|METH_KEYWORDS, "assign(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::size_type n, std::vector< mfem::FiniteElementSpace * >::value_type x)"},
 	 { "vector_FiniteElementSpace_resize", _wrap_vector_FiniteElementSpace_resize, METH_VARARGS, "\n"
 		"resize(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::size_type new_size)\n"
-		"resize(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::size_type new_size, FiniteElementSpace x)\n"
+		"resize(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::size_type new_size, std::vector< mfem::FiniteElementSpace * >::value_type x)\n"
 		""},
 	 { "vector_FiniteElementSpace_insert", _wrap_vector_FiniteElementSpace_insert, METH_VARARGS, "\n"
-		"insert(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::iterator pos, FiniteElementSpace x) -> std::vector< mfem::FiniteElementSpace * >::iterator\n"
-		"insert(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::iterator pos, std::vector< mfem::FiniteElementSpace * >::size_type n, FiniteElementSpace x)\n"
+		"insert(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::iterator pos, std::vector< mfem::FiniteElementSpace * >::value_type x) -> std::vector< mfem::FiniteElementSpace * >::iterator\n"
+		"insert(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::iterator pos, std::vector< mfem::FiniteElementSpace * >::size_type n, std::vector< mfem::FiniteElementSpace * >::value_type x)\n"
 		""},
 	 { "vector_FiniteElementSpace_reserve", (PyCFunction)(void(*)(void))_wrap_vector_FiniteElementSpace_reserve, METH_VARARGS|METH_KEYWORDS, "reserve(vector_FiniteElementSpace self, std::vector< mfem::FiniteElementSpace * >::size_type n)"},
 	 { "vector_FiniteElementSpace_capacity", _wrap_vector_FiniteElementSpace_capacity, METH_O, "capacity(vector_FiniteElementSpace self) -> std::vector< mfem::FiniteElementSpace * >::size_type"},
@@ -23326,15 +21972,15 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "vector_Mesh___getitem__", _wrap_vector_Mesh___getitem__, METH_VARARGS, "\n"
 		"__getitem__(vector_Mesh self, PySliceObject * slice) -> vector_Mesh\n"
-		"__getitem__(vector_Mesh self, std::vector< mfem::Mesh * >::difference_type i) -> Mesh\n"
+		"__getitem__(vector_Mesh self, std::vector< mfem::Mesh * >::difference_type i) -> std::vector< mfem::Mesh * >::value_type\n"
 		""},
 	 { "vector_Mesh___setitem__", _wrap_vector_Mesh___setitem__, METH_VARARGS, "\n"
 		"__setitem__(vector_Mesh self, PySliceObject * slice, vector_Mesh v)\n"
 		"__setitem__(vector_Mesh self, PySliceObject * slice)\n"
-		"__setitem__(vector_Mesh self, std::vector< mfem::Mesh * >::difference_type i, Mesh x)\n"
+		"__setitem__(vector_Mesh self, std::vector< mfem::Mesh * >::difference_type i, std::vector< mfem::Mesh * >::value_type x)\n"
 		""},
-	 { "vector_Mesh_pop", _wrap_vector_Mesh_pop, METH_O, "pop(vector_Mesh self) -> Mesh"},
-	 { "vector_Mesh_append", (PyCFunction)(void(*)(void))_wrap_vector_Mesh_append, METH_VARARGS|METH_KEYWORDS, "append(vector_Mesh self, Mesh x)"},
+	 { "vector_Mesh_pop", _wrap_vector_Mesh_pop, METH_O, "pop(vector_Mesh self) -> std::vector< mfem::Mesh * >::value_type"},
+	 { "vector_Mesh_append", (PyCFunction)(void(*)(void))_wrap_vector_Mesh_append, METH_VARARGS|METH_KEYWORDS, "append(vector_Mesh self, std::vector< mfem::Mesh * >::value_type x)"},
 	 { "vector_Mesh_empty", _wrap_vector_Mesh_empty, METH_O, "empty(vector_Mesh self) -> bool"},
 	 { "vector_Mesh_size", _wrap_vector_Mesh_size, METH_O, "size(vector_Mesh self) -> std::vector< mfem::Mesh * >::size_type"},
 	 { "vector_Mesh_swap", (PyCFunction)(void(*)(void))_wrap_vector_Mesh_swap, METH_VARARGS|METH_KEYWORDS, "swap(vector_Mesh self, vector_Mesh v)"},
@@ -23353,19 +21999,19 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"vector_Mesh()\n"
 		"vector_Mesh(vector_Mesh other)\n"
 		"vector_Mesh(std::vector< mfem::Mesh * >::size_type size)\n"
-		"new_vector_Mesh(std::vector< mfem::Mesh * >::size_type size, Mesh value) -> vector_Mesh\n"
+		"new_vector_Mesh(std::vector< mfem::Mesh * >::size_type size, std::vector< mfem::Mesh * >::value_type value) -> vector_Mesh\n"
 		""},
-	 { "vector_Mesh_push_back", (PyCFunction)(void(*)(void))_wrap_vector_Mesh_push_back, METH_VARARGS|METH_KEYWORDS, "push_back(vector_Mesh self, Mesh x)"},
-	 { "vector_Mesh_front", _wrap_vector_Mesh_front, METH_O, "front(vector_Mesh self) -> Mesh"},
-	 { "vector_Mesh_back", _wrap_vector_Mesh_back, METH_O, "back(vector_Mesh self) -> Mesh"},
-	 { "vector_Mesh_assign", (PyCFunction)(void(*)(void))_wrap_vector_Mesh_assign, METH_VARARGS|METH_KEYWORDS, "assign(vector_Mesh self, std::vector< mfem::Mesh * >::size_type n, Mesh x)"},
+	 { "vector_Mesh_push_back", (PyCFunction)(void(*)(void))_wrap_vector_Mesh_push_back, METH_VARARGS|METH_KEYWORDS, "push_back(vector_Mesh self, std::vector< mfem::Mesh * >::value_type x)"},
+	 { "vector_Mesh_front", _wrap_vector_Mesh_front, METH_O, "front(vector_Mesh self) -> std::vector< mfem::Mesh * >::value_type"},
+	 { "vector_Mesh_back", _wrap_vector_Mesh_back, METH_O, "back(vector_Mesh self) -> std::vector< mfem::Mesh * >::value_type"},
+	 { "vector_Mesh_assign", (PyCFunction)(void(*)(void))_wrap_vector_Mesh_assign, METH_VARARGS|METH_KEYWORDS, "assign(vector_Mesh self, std::vector< mfem::Mesh * >::size_type n, std::vector< mfem::Mesh * >::value_type x)"},
 	 { "vector_Mesh_resize", _wrap_vector_Mesh_resize, METH_VARARGS, "\n"
 		"resize(vector_Mesh self, std::vector< mfem::Mesh * >::size_type new_size)\n"
-		"resize(vector_Mesh self, std::vector< mfem::Mesh * >::size_type new_size, Mesh x)\n"
+		"resize(vector_Mesh self, std::vector< mfem::Mesh * >::size_type new_size, std::vector< mfem::Mesh * >::value_type x)\n"
 		""},
 	 { "vector_Mesh_insert", _wrap_vector_Mesh_insert, METH_VARARGS, "\n"
-		"insert(vector_Mesh self, std::vector< mfem::Mesh * >::iterator pos, Mesh x) -> std::vector< mfem::Mesh * >::iterator\n"
-		"insert(vector_Mesh self, std::vector< mfem::Mesh * >::iterator pos, std::vector< mfem::Mesh * >::size_type n, Mesh x)\n"
+		"insert(vector_Mesh self, std::vector< mfem::Mesh * >::iterator pos, std::vector< mfem::Mesh * >::value_type x) -> std::vector< mfem::Mesh * >::iterator\n"
+		"insert(vector_Mesh self, std::vector< mfem::Mesh * >::iterator pos, std::vector< mfem::Mesh * >::size_type n, std::vector< mfem::Mesh * >::value_type x)\n"
 		""},
 	 { "vector_Mesh_reserve", (PyCFunction)(void(*)(void))_wrap_vector_Mesh_reserve, METH_VARARGS|METH_KEYWORDS, "reserve(vector_Mesh self, std::vector< mfem::Mesh * >::size_type n)"},
 	 { "vector_Mesh_capacity", _wrap_vector_Mesh_capacity, METH_O, "capacity(vector_Mesh self) -> std::vector< mfem::Mesh * >::size_type"},
@@ -23388,15 +22034,15 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "vector_SparseMatrix___getitem__", _wrap_vector_SparseMatrix___getitem__, METH_VARARGS, "\n"
 		"__getitem__(vector_SparseMatrix self, PySliceObject * slice) -> vector_SparseMatrix\n"
-		"__getitem__(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::difference_type i) -> SparseMatrix\n"
+		"__getitem__(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::difference_type i) -> std::vector< mfem::SparseMatrix * >::value_type\n"
 		""},
 	 { "vector_SparseMatrix___setitem__", _wrap_vector_SparseMatrix___setitem__, METH_VARARGS, "\n"
 		"__setitem__(vector_SparseMatrix self, PySliceObject * slice, vector_SparseMatrix v)\n"
 		"__setitem__(vector_SparseMatrix self, PySliceObject * slice)\n"
-		"__setitem__(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::difference_type i, SparseMatrix x)\n"
+		"__setitem__(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::difference_type i, std::vector< mfem::SparseMatrix * >::value_type x)\n"
 		""},
-	 { "vector_SparseMatrix_pop", _wrap_vector_SparseMatrix_pop, METH_O, "pop(vector_SparseMatrix self) -> SparseMatrix"},
-	 { "vector_SparseMatrix_append", (PyCFunction)(void(*)(void))_wrap_vector_SparseMatrix_append, METH_VARARGS|METH_KEYWORDS, "append(vector_SparseMatrix self, SparseMatrix x)"},
+	 { "vector_SparseMatrix_pop", _wrap_vector_SparseMatrix_pop, METH_O, "pop(vector_SparseMatrix self) -> std::vector< mfem::SparseMatrix * >::value_type"},
+	 { "vector_SparseMatrix_append", (PyCFunction)(void(*)(void))_wrap_vector_SparseMatrix_append, METH_VARARGS|METH_KEYWORDS, "append(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::value_type x)"},
 	 { "vector_SparseMatrix_empty", _wrap_vector_SparseMatrix_empty, METH_O, "empty(vector_SparseMatrix self) -> bool"},
 	 { "vector_SparseMatrix_size", _wrap_vector_SparseMatrix_size, METH_O, "size(vector_SparseMatrix self) -> std::vector< mfem::SparseMatrix * >::size_type"},
 	 { "vector_SparseMatrix_swap", (PyCFunction)(void(*)(void))_wrap_vector_SparseMatrix_swap, METH_VARARGS|METH_KEYWORDS, "swap(vector_SparseMatrix self, vector_SparseMatrix v)"},
@@ -23415,19 +22061,19 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"vector_SparseMatrix()\n"
 		"vector_SparseMatrix(vector_SparseMatrix other)\n"
 		"vector_SparseMatrix(std::vector< mfem::SparseMatrix * >::size_type size)\n"
-		"new_vector_SparseMatrix(std::vector< mfem::SparseMatrix * >::size_type size, SparseMatrix value) -> vector_SparseMatrix\n"
+		"new_vector_SparseMatrix(std::vector< mfem::SparseMatrix * >::size_type size, std::vector< mfem::SparseMatrix * >::value_type value) -> vector_SparseMatrix\n"
 		""},
-	 { "vector_SparseMatrix_push_back", (PyCFunction)(void(*)(void))_wrap_vector_SparseMatrix_push_back, METH_VARARGS|METH_KEYWORDS, "push_back(vector_SparseMatrix self, SparseMatrix x)"},
-	 { "vector_SparseMatrix_front", _wrap_vector_SparseMatrix_front, METH_O, "front(vector_SparseMatrix self) -> SparseMatrix"},
-	 { "vector_SparseMatrix_back", _wrap_vector_SparseMatrix_back, METH_O, "back(vector_SparseMatrix self) -> SparseMatrix"},
-	 { "vector_SparseMatrix_assign", (PyCFunction)(void(*)(void))_wrap_vector_SparseMatrix_assign, METH_VARARGS|METH_KEYWORDS, "assign(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::size_type n, SparseMatrix x)"},
+	 { "vector_SparseMatrix_push_back", (PyCFunction)(void(*)(void))_wrap_vector_SparseMatrix_push_back, METH_VARARGS|METH_KEYWORDS, "push_back(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::value_type x)"},
+	 { "vector_SparseMatrix_front", _wrap_vector_SparseMatrix_front, METH_O, "front(vector_SparseMatrix self) -> std::vector< mfem::SparseMatrix * >::value_type"},
+	 { "vector_SparseMatrix_back", _wrap_vector_SparseMatrix_back, METH_O, "back(vector_SparseMatrix self) -> std::vector< mfem::SparseMatrix * >::value_type"},
+	 { "vector_SparseMatrix_assign", (PyCFunction)(void(*)(void))_wrap_vector_SparseMatrix_assign, METH_VARARGS|METH_KEYWORDS, "assign(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::size_type n, std::vector< mfem::SparseMatrix * >::value_type x)"},
 	 { "vector_SparseMatrix_resize", _wrap_vector_SparseMatrix_resize, METH_VARARGS, "\n"
 		"resize(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::size_type new_size)\n"
-		"resize(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::size_type new_size, SparseMatrix x)\n"
+		"resize(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::size_type new_size, std::vector< mfem::SparseMatrix * >::value_type x)\n"
 		""},
 	 { "vector_SparseMatrix_insert", _wrap_vector_SparseMatrix_insert, METH_VARARGS, "\n"
-		"insert(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::iterator pos, SparseMatrix x) -> std::vector< mfem::SparseMatrix * >::iterator\n"
-		"insert(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::iterator pos, std::vector< mfem::SparseMatrix * >::size_type n, SparseMatrix x)\n"
+		"insert(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::iterator pos, std::vector< mfem::SparseMatrix * >::value_type x) -> std::vector< mfem::SparseMatrix * >::iterator\n"
+		"insert(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::iterator pos, std::vector< mfem::SparseMatrix * >::size_type n, std::vector< mfem::SparseMatrix * >::value_type x)\n"
 		""},
 	 { "vector_SparseMatrix_reserve", (PyCFunction)(void(*)(void))_wrap_vector_SparseMatrix_reserve, METH_VARARGS|METH_KEYWORDS, "reserve(vector_SparseMatrix self, std::vector< mfem::SparseMatrix * >::size_type n)"},
 	 { "vector_SparseMatrix_capacity", _wrap_vector_SparseMatrix_capacity, METH_O, "capacity(vector_SparseMatrix self) -> std::vector< mfem::SparseMatrix * >::size_type"},
@@ -23440,346 +22086,19 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static void *_p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *) (mfem::VectorFunctionCoefficient *) ((mfem::VectorPyCoefficientBase *) x));
-}
-static void *_p_mfem__VectorQuadratureFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorQuadratureFunctionCoefficient *) x));
-}
-static void *_p_mfem__MatrixVectorProductCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::MatrixVectorProductCoefficient *) x));
-}
-static void *_p_mfem__VectorCrossProductCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorCrossProductCoefficient *) x));
-}
-static void *_p_mfem__NormalizedVectorCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::NormalizedVectorCoefficient *) x));
-}
-static void *_p_mfem__ScalarVectorProductCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::ScalarVectorProductCoefficient *) x));
-}
-static void *_p_mfem__VectorSumCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorSumCoefficient *) x));
-}
-static void *_p_mfem__VectorRestrictedCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorRestrictedCoefficient *) x));
-}
-static void *_p_mfem__VectorDeltaCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorDeltaCoefficient *) x));
-}
-static void *_p_mfem__CurlGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::CurlGridFunctionCoefficient *) x));
-}
-static void *_p_mfem__GradientGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::GradientGridFunctionCoefficient *) x));
-}
-static void *_p_mfem__VectorGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorGridFunctionCoefficient *) x));
-}
-static void *_p_mfem__VectorArrayCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorArrayCoefficient *) x));
-}
-static void *_p_mfem__VectorFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorFunctionCoefficient *) x));
-}
-static void *_p_mfem__VectorConstantCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorConstantCoefficient *) x));
-}
-static void *_p_mfem__NodeExtrudeCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::NodeExtrudeCoefficient *) x));
-}
-static void *_p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase *) x));
-}
-static void *_p_mfem__PyOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::PyOperatorBase *) x));
-}
-static void *_p_mfem__MatrixInverseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *) ((mfem::MatrixInverse *) x));
-}
-static void *_p_mfem__DenseMatrixInverseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::MatrixInverse *) ((mfem::DenseMatrixInverse *) x));
-}
-static void *_p_mfem__SolverTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::Solver *) x));
-}
-static void *_p_mfem__AbstractSparseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::AbstractSparseMatrix *) x));
-}
-static void *_p_mfem__DenseSymmetricMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::DenseSymmetricMatrix *) x));
-}
-static void *_p_mfem__DenseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::DenseMatrix *) x));
-}
-static void *_p_mfem__SparseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Matrix *)(mfem::AbstractSparseMatrix *) ((mfem::SparseMatrix *) x));
-}
-static void *_p_mfem__ElementRestrictionTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::ElementRestriction *) x));
-}
-static void *_p_mfem__L2ElementRestrictionTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::L2ElementRestriction *) x));
-}
-static void *_p_mfem__FaceRestrictionTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::FaceRestriction *) x));
-}
-static void *_p_mfem__H1FaceRestrictionTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::FaceRestriction *) ((mfem::H1FaceRestriction *) x));
-}
-static void *_p_mfem__L2FaceRestrictionTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::FaceRestriction *) ((mfem::L2FaceRestriction *) x));
-}
-static void *_p_mfem__MatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::Matrix *) x));
-}
-static void *_p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::RectangularConstrainedOperator *) x));
-}
-static void *_p_mfem__ConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::ConstrainedOperator *) x));
-}
-static void *_p_mfem__TripleProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::TripleProductOperator *) x));
-}
-static void *_p_mfem__RAPOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::RAPOperator *) x));
-}
-static void *_p_mfem__ProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::ProductOperator *) x));
-}
-static void *_p_mfem__TransposeOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::TransposeOperator *) x));
-}
-static void *_p_mfem__ScaledOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::ScaledOperator *) x));
-}
-static void *_p_mfem__IdentityOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::IdentityOperator *) x));
-}
-static void *_p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::SecondOrderTimeDependentOperator *) x));
-}
-static void *_p_mfem__TimeDependentAdjointOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::TimeDependentAdjointOperator *) x));
-}
-static void *_p_mfem__TimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::TimeDependentOperator *) x));
-}
-static void *_p_p_mfem__PyTimeDependentOperatorBaseTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase **) x));
-}
-static void *_p_p_mfem__PyOperatorBaseTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::PyOperatorBase **) x));
-}
-static void *_p_p_mfem__MatrixInverseTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Solver *) ((mfem::MatrixInverse **) x));
-}
-static void *_p_p_mfem__DenseMatrixInverseTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::MatrixInverse *) ((mfem::DenseMatrixInverse **) x));
-}
-static void *_p_p_mfem__SolverTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::Solver **) x));
-}
-static void *_p_p_mfem__AbstractSparseMatrixTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Matrix *) ((mfem::AbstractSparseMatrix **) x));
-}
-static void *_p_p_mfem__DenseSymmetricMatrixTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Matrix *) ((mfem::DenseSymmetricMatrix **) x));
-}
-static void *_p_p_mfem__DenseMatrixTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Matrix *) ((mfem::DenseMatrix **) x));
-}
-static void *_p_p_mfem__SparseMatrixTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Matrix *)(mfem::AbstractSparseMatrix *) ((mfem::SparseMatrix **) x));
-}
-static void *_p_p_mfem__ElementRestrictionTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::ElementRestriction **) x));
-}
-static void *_p_p_mfem__L2ElementRestrictionTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::L2ElementRestriction **) x));
-}
-static void *_p_p_mfem__FaceRestrictionTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::FaceRestriction **) x));
-}
-static void *_p_p_mfem__H1FaceRestrictionTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::FaceRestriction *) ((mfem::H1FaceRestriction **) x));
-}
-static void *_p_p_mfem__L2FaceRestrictionTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::FaceRestriction *) ((mfem::L2FaceRestriction **) x));
-}
-static void *_p_p_mfem__MatrixTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::Matrix **) x));
-}
-static void *_p_p_mfem__RectangularConstrainedOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::RectangularConstrainedOperator **) x));
-}
-static void *_p_p_mfem__ConstrainedOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::ConstrainedOperator **) x));
-}
-static void *_p_p_mfem__TripleProductOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::TripleProductOperator **) x));
-}
-static void *_p_p_mfem__RAPOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::RAPOperator **) x));
-}
-static void *_p_p_mfem__ProductOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::ProductOperator **) x));
-}
-static void *_p_p_mfem__TransposeOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::TransposeOperator **) x));
-}
-static void *_p_p_mfem__ScaledOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::ScaledOperator **) x));
-}
-static void *_p_p_mfem__IdentityOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::IdentityOperator **) x));
-}
-static void *_p_p_mfem__SecondOrderTimeDependentOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::TimeDependentOperator *) ((mfem::SecondOrderTimeDependentOperator **) x));
-}
-static void *_p_p_mfem__TimeDependentAdjointOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::TimeDependentOperator *) ((mfem::TimeDependentAdjointOperator **) x));
-}
-static void *_p_p_mfem__TimeDependentOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::TimeDependentOperator **) x));
-}
-static void *_p_mfem__MatrixInverseTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *)  ((mfem::MatrixInverse *) x));
-}
-static void *_p_mfem__DenseMatrixInverseTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::MatrixInverse *) ((mfem::DenseMatrixInverse *) x));
-}
-static void *_p_p_mfem__MatrixInverseTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver **)  ((mfem::MatrixInverse **) x));
-}
-static void *_p_p_mfem__DenseMatrixInverseTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver **) (mfem::MatrixInverse *) ((mfem::DenseMatrixInverse **) x));
-}
-static void *_p_mfem__GridFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::GridFunction *) x));
-}
-static void *_p_mfem__QuadratureFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::QuadratureFunction *) x));
-}
-static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::LinearForm *) x));
-}
-static void *_p_p_mfem__GridFunctionTo_p_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector **)  ((mfem::GridFunction **) x));
-}
-static void *_p_p_mfem__QuadratureFunctionTo_p_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector **)  ((mfem::QuadratureFunction **) x));
-}
-static void *_p_p_mfem__LinearFormTo_p_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector **)  ((mfem::LinearForm **) x));
-}
-static swig_type_info _swigt___input = {"__input", "$input", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_bool = {"_p_bool", "bool *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "std::vector< mfem::Array< int > >::value_type *|mfem::Array< int > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__ConvectionIntegrator = {"_p_mfem__ConvectionIntegrator", "mfem::ConvectionIntegrator *|mfem::NonconservativeConvectionIntegrator *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__DGTraceIntegrator = {"_p_mfem__DGTraceIntegrator", "mfem::DGTraceIntegrator *|mfem::ConservativeDGTraceIntegrator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__FiniteElementSpace = {"_p_mfem__FiniteElementSpace", "mfem::FiniteElementSpace *|std::vector< mfem::FiniteElementSpace * >::value_type", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__IntegrationPoint = {"_p_mfem__IntegrationPoint", "mfem::IntegrationPoint *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__L2_FECollection = {"_p_mfem__L2_FECollection", "mfem::L2_FECollection *|mfem::DG_FECollection *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__MatrixVectorProductCoefficient = {"_p_mfem__MatrixVectorProductCoefficient", "mfem::MatrixVectorProductCoefficient *|mfem::MatVecCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Mesh = {"_p_mfem__Mesh", "std::vector< mfem::Mesh * >::value_type|mfem::Mesh *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__Operator = {"_p_mfem__Operator", "mfem::Operator *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__PyTimeDependentOperatorBase = {"_p_mfem__PyTimeDependentOperatorBase", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__PyOperatorBase = {"_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__DenseMatrixInverse = {"_p_mfem__DenseMatrixInverse", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__MatrixInverse = {"_p_mfem__MatrixInverse", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__AbstractSparseMatrix = {"_p_mfem__AbstractSparseMatrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__DenseSymmetricMatrix = {"_p_mfem__DenseSymmetricMatrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__DenseMatrix = {"_p_mfem__DenseMatrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ElementRestriction = {"_p_mfem__ElementRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2ElementRestriction = {"_p_mfem__L2ElementRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__FaceRestriction = {"_p_mfem__FaceRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__H1FaceRestriction = {"_p_mfem__H1FaceRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2FaceRestriction = {"_p_mfem__L2FaceRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__Matrix = {"_p_mfem__Matrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__RectangularConstrainedOperator = {"_p_mfem__RectangularConstrainedOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ConstrainedOperator = {"_p_mfem__ConstrainedOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__TripleProductOperator = {"_p_mfem__TripleProductOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__RAPOperator = {"_p_mfem__RAPOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ProductOperator = {"_p_mfem__ProductOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__TransposeOperator = {"_p_mfem__TransposeOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ScaledOperator = {"_p_mfem__ScaledOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__IdentityOperator = {"_p_mfem__IdentityOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__SecondOrderTimeDependentOperator = {"_p_mfem__SecondOrderTimeDependentOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__TimeDependentAdjointOperator = {"_p_mfem__TimeDependentAdjointOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__TimeDependentOperator = {"_p_mfem__TimeDependentOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__OperatorHandle = {"_p_mfem__OperatorHandle", "mfem::OperatorPtr *|mfem::OperatorHandle *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__Refinement = {"_p_mfem__Refinement", "mfem::Refinement *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", "mfem::Solver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__SparseMatrix = {"_p_mfem__SparseMatrix", "std::vector< mfem::SparseMatrix * >::value_type|mfem::SparseMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "std::vector< mfem::Vector >::value_type *|mfem::Vector *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorCoefficient = {"_p_mfem__VectorCoefficient", "mfem::VectorCoefficient *|mfem::DiagonalMatrixCoefficient *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__VectorPyCoefficientBase = {"_p_mfem__VectorPyCoefficientBase", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorQuadratureFunctionCoefficient = {"_p_mfem__VectorQuadratureFunctionCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorCrossProductCoefficient = {"_p_mfem__VectorCrossProductCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__NormalizedVectorCoefficient = {"_p_mfem__NormalizedVectorCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ScalarVectorProductCoefficient = {"_p_mfem__ScalarVectorProductCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorSumCoefficient = {"_p_mfem__VectorSumCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorRestrictedCoefficient = {"_p_mfem__VectorRestrictedCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorDeltaCoefficient = {"_p_mfem__VectorDeltaCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__CurlGridFunctionCoefficient = {"_p_mfem__CurlGridFunctionCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__GradientGridFunctionCoefficient = {"_p_mfem__GradientGridFunctionCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorGridFunctionCoefficient = {"_p_mfem__VectorGridFunctionCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorArrayCoefficient = {"_p_mfem__VectorArrayCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorFunctionCoefficient = {"_p_mfem__VectorFunctionCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorConstantCoefficient = {"_p_mfem__VectorConstantCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__NodeExtrudeCoefficient = {"_p_mfem__NodeExtrudeCoefficient", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_PyObject = {"_p_p_PyObject", "PyObject **", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_p_mfem__FiniteElementSpace = {"_p_p_mfem__FiniteElementSpace", "mfem::FiniteElementSpace **", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_p_mfem__IntegrationRule = {"_p_p_mfem__IntegrationRule", "mfem::IntegrationRule **", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_p_mfem__Operator = {"_p_p_mfem__Operator", "mfem::Operator **", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_p_mfem__PyTimeDependentOperatorBase = {"_p_p_mfem__PyTimeDependentOperatorBase", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__PyOperatorBase = {"_p_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__DenseMatrixInverse = {"_p_p_mfem__DenseMatrixInverse", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__MatrixInverse = {"_p_p_mfem__MatrixInverse", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__AbstractSparseMatrix = {"_p_p_mfem__AbstractSparseMatrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__DenseSymmetricMatrix = {"_p_p_mfem__DenseSymmetricMatrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__DenseMatrix = {"_p_p_mfem__DenseMatrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__SparseMatrix = {"_p_p_mfem__SparseMatrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__ElementRestriction = {"_p_p_mfem__ElementRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__L2ElementRestriction = {"_p_p_mfem__L2ElementRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__FaceRestriction = {"_p_p_mfem__FaceRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__H1FaceRestriction = {"_p_p_mfem__H1FaceRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__L2FaceRestriction = {"_p_p_mfem__L2FaceRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__Matrix = {"_p_p_mfem__Matrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__RectangularConstrainedOperator = {"_p_p_mfem__RectangularConstrainedOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__ConstrainedOperator = {"_p_p_mfem__ConstrainedOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__TripleProductOperator = {"_p_p_mfem__TripleProductOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__RAPOperator = {"_p_p_mfem__RAPOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__ProductOperator = {"_p_p_mfem__ProductOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__TransposeOperator = {"_p_p_mfem__TransposeOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__ScaledOperator = {"_p_p_mfem__ScaledOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__IdentityOperator = {"_p_p_mfem__IdentityOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__SecondOrderTimeDependentOperator = {"_p_p_mfem__SecondOrderTimeDependentOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__TimeDependentAdjointOperator = {"_p_p_mfem__TimeDependentAdjointOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__TimeDependentOperator = {"_p_p_mfem__TimeDependentOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__Solver = {"_p_p_mfem__Solver", "mfem::Solver **", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_p_mfem__Vector = {"_p_p_mfem__Vector", "mfem::Vector **", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_p_mfem__GridFunction = {"_p_p_mfem__GridFunction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__QuadratureFunction = {"_p_p_mfem__QuadratureFunction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__LinearForm = {"_p_p_mfem__LinearForm", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_pyr_t = {"_p_pyr_t", "pyr_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_size_type = {"_p_size_type", "size_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__allocatorT_int_t = {"_p_std__allocatorT_int_t", "std::vector< int >::allocator_type *|std::allocator< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__allocatorT_mfem__ArrayT_int_t_t = {"_p_std__allocatorT_mfem__ArrayT_int_t_t", "std::allocator< mfem::Array< int > > *|std::vector< mfem::Array< int > >::allocator_type *", 0, 0, (void*)0, 0};
@@ -23795,117 +22114,22 @@ static swig_type_info _swigt__p_std__vectorT_mfem__Mesh_p_std__allocatorT_mfem__
 static swig_type_info _swigt__p_std__vectorT_mfem__SparseMatrix_p_std__allocatorT_mfem__SparseMatrix_p_t_t = {"_p_std__vectorT_mfem__SparseMatrix_p_std__allocatorT_mfem__SparseMatrix_p_t_t", "std::vector< mfem::SparseMatrix * > *|std::vector< mfem::SparseMatrix *,std::allocator< mfem::SparseMatrix * > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_mfem__Vector_std__allocatorT_mfem__Vector_t_t = {"_p_std__vectorT_mfem__Vector_std__allocatorT_mfem__Vector_t_t", "std::vector< mfem::Vector > *|std::vector< mfem::Vector,std::allocator< mfem::Vector > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_swig__SwigPyIterator = {"_p_swig__SwigPyIterator", "swig::SwigPyIterator *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt___input,
   &_swigt__p_PyMFEM__wFILE,
-  &_swigt__p_RefCoord,
   &_swigt__p_allocator_type,
   &_swigt__p_bool,
   &_swigt__p_char,
   &_swigt__p_difference_type,
   &_swigt__p_double,
-  &_swigt__p_hex_t,
   &_swigt__p_int,
-  &_swigt__p_mfem__AbstractSparseMatrix,
   &_swigt__p_mfem__ArrayT_int_t,
-  &_swigt__p_mfem__ConstrainedOperator,
-  &_swigt__p_mfem__ConvectionIntegrator,
-  &_swigt__p_mfem__CurlGridFunctionCoefficient,
-  &_swigt__p_mfem__DGTraceIntegrator,
-  &_swigt__p_mfem__DenseMatrix,
-  &_swigt__p_mfem__DenseMatrixInverse,
-  &_swigt__p_mfem__DenseSymmetricMatrix,
-  &_swigt__p_mfem__ElementRestriction,
-  &_swigt__p_mfem__FaceRestriction,
   &_swigt__p_mfem__FiniteElementSpace,
-  &_swigt__p_mfem__GradientGridFunctionCoefficient,
-  &_swigt__p_mfem__GridFunction,
-  &_swigt__p_mfem__H1FaceRestriction,
-  &_swigt__p_mfem__IdentityOperator,
-  &_swigt__p_mfem__IntegrationPoint,
-  &_swigt__p_mfem__IntegrationRule,
-  &_swigt__p_mfem__L2ElementRestriction,
-  &_swigt__p_mfem__L2FaceRestriction,
-  &_swigt__p_mfem__L2_FECollection,
-  &_swigt__p_mfem__LinearForm,
-  &_swigt__p_mfem__Matrix,
-  &_swigt__p_mfem__MatrixInverse,
-  &_swigt__p_mfem__MatrixVectorProductCoefficient,
   &_swigt__p_mfem__Mesh,
-  &_swigt__p_mfem__NodeExtrudeCoefficient,
-  &_swigt__p_mfem__NormalizedVectorCoefficient,
-  &_swigt__p_mfem__Operator,
-  &_swigt__p_mfem__OperatorHandle,
-  &_swigt__p_mfem__ProductOperator,
-  &_swigt__p_mfem__PyOperatorBase,
-  &_swigt__p_mfem__PyTimeDependentOperatorBase,
-  &_swigt__p_mfem__QuadratureFunction,
-  &_swigt__p_mfem__RAPOperator,
-  &_swigt__p_mfem__RectangularConstrainedOperator,
-  &_swigt__p_mfem__Refinement,
-  &_swigt__p_mfem__ScalarVectorProductCoefficient,
-  &_swigt__p_mfem__ScaledOperator,
-  &_swigt__p_mfem__SecondOrderTimeDependentOperator,
-  &_swigt__p_mfem__Solver,
   &_swigt__p_mfem__SparseMatrix,
-  &_swigt__p_mfem__TimeDependentAdjointOperator,
-  &_swigt__p_mfem__TimeDependentOperator,
-  &_swigt__p_mfem__TransposeOperator,
-  &_swigt__p_mfem__TripleProductOperator,
   &_swigt__p_mfem__Vector,
-  &_swigt__p_mfem__VectorArrayCoefficient,
-  &_swigt__p_mfem__VectorCoefficient,
-  &_swigt__p_mfem__VectorConstantCoefficient,
-  &_swigt__p_mfem__VectorCrossProductCoefficient,
-  &_swigt__p_mfem__VectorDeltaCoefficient,
-  &_swigt__p_mfem__VectorFunctionCoefficient,
-  &_swigt__p_mfem__VectorGridFunctionCoefficient,
-  &_swigt__p_mfem__VectorPyCoefficientBase,
-  &_swigt__p_mfem__VectorQuadratureFunctionCoefficient,
-  &_swigt__p_mfem__VectorRestrictedCoefficient,
-  &_swigt__p_mfem__VectorSumCoefficient,
   &_swigt__p_p_PyObject,
-  &_swigt__p_p_mfem__AbstractSparseMatrix,
-  &_swigt__p_p_mfem__ConstrainedOperator,
-  &_swigt__p_p_mfem__DenseMatrix,
-  &_swigt__p_p_mfem__DenseMatrixInverse,
-  &_swigt__p_p_mfem__DenseSymmetricMatrix,
-  &_swigt__p_p_mfem__ElementRestriction,
-  &_swigt__p_p_mfem__FaceRestriction,
-  &_swigt__p_p_mfem__FiniteElementSpace,
-  &_swigt__p_p_mfem__GridFunction,
-  &_swigt__p_p_mfem__H1FaceRestriction,
-  &_swigt__p_p_mfem__IdentityOperator,
-  &_swigt__p_p_mfem__IntegrationRule,
-  &_swigt__p_p_mfem__L2ElementRestriction,
-  &_swigt__p_p_mfem__L2FaceRestriction,
-  &_swigt__p_p_mfem__LinearForm,
-  &_swigt__p_p_mfem__Matrix,
-  &_swigt__p_p_mfem__MatrixInverse,
-  &_swigt__p_p_mfem__Operator,
-  &_swigt__p_p_mfem__ProductOperator,
-  &_swigt__p_p_mfem__PyOperatorBase,
-  &_swigt__p_p_mfem__PyTimeDependentOperatorBase,
-  &_swigt__p_p_mfem__QuadratureFunction,
-  &_swigt__p_p_mfem__RAPOperator,
-  &_swigt__p_p_mfem__RectangularConstrainedOperator,
-  &_swigt__p_p_mfem__ScaledOperator,
-  &_swigt__p_p_mfem__SecondOrderTimeDependentOperator,
-  &_swigt__p_p_mfem__Solver,
-  &_swigt__p_p_mfem__SparseMatrix,
-  &_swigt__p_p_mfem__TimeDependentAdjointOperator,
-  &_swigt__p_p_mfem__TimeDependentOperator,
-  &_swigt__p_p_mfem__TransposeOperator,
-  &_swigt__p_p_mfem__TripleProductOperator,
-  &_swigt__p_p_mfem__Vector,
-  &_swigt__p_pri_t,
-  &_swigt__p_pyr_t,
-  &_swigt__p_quad_t,
-  &_swigt__p_seg_t,
   &_swigt__p_size_type,
   &_swigt__p_std__allocatorT_int_t,
   &_swigt__p_std__allocatorT_mfem__ArrayT_int_t_t,
@@ -23921,117 +22145,22 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__vectorT_mfem__SparseMatrix_p_std__allocatorT_mfem__SparseMatrix_p_t_t,
   &_swigt__p_std__vectorT_mfem__Vector_std__allocatorT_mfem__Vector_t_t,
   &_swigt__p_swig__SwigPyIterator,
-  &_swigt__p_tet_t,
-  &_swigt__p_tri_t,
   &_swigt__p_value_type,
 };
 
-static swig_cast_info _swigc___input[] = {  {&_swigt___input, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_bool[] = {  {&_swigt__p_bool, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ConvectionIntegrator[] = {  {&_swigt__p_mfem__ConvectionIntegrator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__DGTraceIntegrator[] = {  {&_swigt__p_mfem__DGTraceIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__FiniteElementSpace[] = {  {&_swigt__p_mfem__FiniteElementSpace, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__IntegrationPoint[] = {  {&_swigt__p_mfem__IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2_FECollection[] = {  {&_swigt__p_mfem__L2_FECollection, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__MatrixVectorProductCoefficient[] = {  {&_swigt__p_mfem__MatrixVectorProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Mesh[] = {  {&_swigt__p_mfem__Mesh, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__PyOperatorBase[] = {{&_swigt__p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__DenseMatrixInverse[] = {{&_swigt__p_mfem__DenseMatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__MatrixInverse[] = {{&_swigt__p_mfem__MatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__AbstractSparseMatrix[] = {{&_swigt__p_mfem__AbstractSparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__DenseSymmetricMatrix[] = {{&_swigt__p_mfem__DenseSymmetricMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {{&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ElementRestriction[] = {{&_swigt__p_mfem__ElementRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2ElementRestriction[] = {{&_swigt__p_mfem__L2ElementRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__FaceRestriction[] = {{&_swigt__p_mfem__FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__H1FaceRestriction[] = {{&_swigt__p_mfem__H1FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2FaceRestriction[] = {{&_swigt__p_mfem__L2FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Matrix[] = {{&_swigt__p_mfem__Matrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__RectangularConstrainedOperator[] = {{&_swigt__p_mfem__RectangularConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ConstrainedOperator[] = {{&_swigt__p_mfem__ConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__TripleProductOperator[] = {{&_swigt__p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__RAPOperator[] = {{&_swigt__p_mfem__RAPOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ProductOperator[] = {{&_swigt__p_mfem__ProductOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__TransposeOperator[] = {{&_swigt__p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ScaledOperator[] = {{&_swigt__p_mfem__ScaledOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__IdentityOperator[] = {{&_swigt__p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__SecondOrderTimeDependentOperator[] = {{&_swigt__p_mfem__SecondOrderTimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__TimeDependentAdjointOperator[] = {{&_swigt__p_mfem__TimeDependentAdjointOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {{&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseSymmetricMatrix, _p_mfem__DenseSymmetricMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ElementRestriction, _p_mfem__ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2ElementRestriction, _p_mfem__L2ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__FaceRestriction, _p_mfem__FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__H1FaceRestriction, _p_mfem__H1FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2FaceRestriction, _p_mfem__L2FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__RectangularConstrainedOperator, _p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ScaledOperator, _p_mfem__ScaledOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentAdjointOperator, _p_mfem__TimeDependentAdjointOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__OperatorHandle[] = {  {&_swigt__p_mfem__OperatorHandle, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Refinement[] = {  {&_swigt__p_mfem__Refinement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__Solver, 0, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Solver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SparseMatrix[] = {  {&_swigt__p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorPyCoefficientBase[] = {{&_swigt__p_mfem__VectorPyCoefficientBase, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorQuadratureFunctionCoefficient[] = {{&_swigt__p_mfem__VectorQuadratureFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorCrossProductCoefficient[] = {{&_swigt__p_mfem__VectorCrossProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__NormalizedVectorCoefficient[] = {{&_swigt__p_mfem__NormalizedVectorCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ScalarVectorProductCoefficient[] = {{&_swigt__p_mfem__ScalarVectorProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorSumCoefficient[] = {{&_swigt__p_mfem__VectorSumCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorRestrictedCoefficient[] = {{&_swigt__p_mfem__VectorRestrictedCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorDeltaCoefficient[] = {{&_swigt__p_mfem__VectorDeltaCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__CurlGridFunctionCoefficient[] = {{&_swigt__p_mfem__CurlGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__GradientGridFunctionCoefficient[] = {{&_swigt__p_mfem__GradientGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorGridFunctionCoefficient[] = {{&_swigt__p_mfem__VectorGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorArrayCoefficient[] = {{&_swigt__p_mfem__VectorArrayCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorFunctionCoefficient[] = {{&_swigt__p_mfem__VectorFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorConstantCoefficient[] = {{&_swigt__p_mfem__VectorConstantCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__NodeExtrudeCoefficient[] = {{&_swigt__p_mfem__NodeExtrudeCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorCoefficient[] = {  {&_swigt__p_mfem__VectorPyCoefficientBase, _p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorQuadratureFunctionCoefficient, _p_mfem__VectorQuadratureFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__MatrixVectorProductCoefficient, _p_mfem__MatrixVectorProductCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorCrossProductCoefficient, _p_mfem__VectorCrossProductCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__NormalizedVectorCoefficient, _p_mfem__NormalizedVectorCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__ScalarVectorProductCoefficient, _p_mfem__ScalarVectorProductCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorSumCoefficient, _p_mfem__VectorSumCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorRestrictedCoefficient, _p_mfem__VectorRestrictedCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorDeltaCoefficient, _p_mfem__VectorDeltaCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__CurlGridFunctionCoefficient, _p_mfem__CurlGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__GradientGridFunctionCoefficient, _p_mfem__GradientGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorGridFunctionCoefficient, _p_mfem__VectorGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorArrayCoefficient, _p_mfem__VectorArrayCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorCoefficient, 0, 0, 0},  {&_swigt__p_mfem__VectorFunctionCoefficient, _p_mfem__VectorFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorConstantCoefficient, _p_mfem__VectorConstantCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__NodeExtrudeCoefficient, _p_mfem__NodeExtrudeCoefficientTo_p_mfem__VectorCoefficient, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_PyObject[] = {  {&_swigt__p_p_PyObject, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__FiniteElementSpace[] = {  {&_swigt__p_p_mfem__FiniteElementSpace, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__IntegrationRule[] = {  {&_swigt__p_p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__PyOperatorBase[] = {{&_swigt__p_p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__DenseMatrixInverse[] = {{&_swigt__p_p_mfem__DenseMatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__MatrixInverse[] = {{&_swigt__p_p_mfem__MatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__AbstractSparseMatrix[] = {{&_swigt__p_p_mfem__AbstractSparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__DenseSymmetricMatrix[] = {{&_swigt__p_p_mfem__DenseSymmetricMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__DenseMatrix[] = {{&_swigt__p_p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__SparseMatrix[] = {{&_swigt__p_p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__ElementRestriction[] = {{&_swigt__p_p_mfem__ElementRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__L2ElementRestriction[] = {{&_swigt__p_p_mfem__L2ElementRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__FaceRestriction[] = {{&_swigt__p_p_mfem__FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__H1FaceRestriction[] = {{&_swigt__p_p_mfem__H1FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__L2FaceRestriction[] = {{&_swigt__p_p_mfem__L2FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__Matrix[] = {{&_swigt__p_p_mfem__Matrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__RectangularConstrainedOperator[] = {{&_swigt__p_p_mfem__RectangularConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__ConstrainedOperator[] = {{&_swigt__p_p_mfem__ConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__TripleProductOperator[] = {{&_swigt__p_p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__RAPOperator[] = {{&_swigt__p_p_mfem__RAPOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__ProductOperator[] = {{&_swigt__p_p_mfem__ProductOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__TransposeOperator[] = {{&_swigt__p_p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__ScaledOperator[] = {{&_swigt__p_p_mfem__ScaledOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__IdentityOperator[] = {{&_swigt__p_p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__SecondOrderTimeDependentOperator[] = {{&_swigt__p_p_mfem__SecondOrderTimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__TimeDependentAdjointOperator[] = {{&_swigt__p_p_mfem__TimeDependentAdjointOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__TimeDependentOperator[] = {{&_swigt__p_p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__Operator[] = {  {&_swigt__p_p_mfem__PyTimeDependentOperatorBase, _p_p_mfem__PyTimeDependentOperatorBaseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__PyOperatorBase, _p_p_mfem__PyOperatorBaseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Solver, _p_p_mfem__SolverTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__DenseMatrixInverse, _p_p_mfem__DenseMatrixInverseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__MatrixInverse, _p_p_mfem__MatrixInverseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__AbstractSparseMatrix, _p_p_mfem__AbstractSparseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__DenseSymmetricMatrix, _p_p_mfem__DenseSymmetricMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__DenseMatrix, _p_p_mfem__DenseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__SparseMatrix, _p_p_mfem__SparseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ElementRestriction, _p_p_mfem__ElementRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__L2ElementRestriction, _p_p_mfem__L2ElementRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__FaceRestriction, _p_p_mfem__FaceRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__H1FaceRestriction, _p_p_mfem__H1FaceRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__L2FaceRestriction, _p_p_mfem__L2FaceRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Matrix, _p_p_mfem__MatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Operator, 0, 0, 0},  {&_swigt__p_p_mfem__RectangularConstrainedOperator, _p_p_mfem__RectangularConstrainedOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ConstrainedOperator, _p_p_mfem__ConstrainedOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TripleProductOperator, _p_p_mfem__TripleProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__RAPOperator, _p_p_mfem__RAPOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ProductOperator, _p_p_mfem__ProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TransposeOperator, _p_p_mfem__TransposeOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ScaledOperator, _p_p_mfem__ScaledOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__IdentityOperator, _p_p_mfem__IdentityOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__SecondOrderTimeDependentOperator, _p_p_mfem__SecondOrderTimeDependentOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TimeDependentAdjointOperator, _p_p_mfem__TimeDependentAdjointOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TimeDependentOperator, _p_p_mfem__TimeDependentOperatorTo_p_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__Solver[] = {  {&_swigt__p_p_mfem__Solver, 0, 0, 0},  {&_swigt__p_p_mfem__MatrixInverse, _p_p_mfem__MatrixInverseTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__DenseMatrixInverse, _p_p_mfem__DenseMatrixInverseTo_p_p_mfem__Solver, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__GridFunction[] = {{&_swigt__p_p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__QuadratureFunction[] = {{&_swigt__p_p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__LinearForm[] = {{&_swigt__p_p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__Vector[] = {  {&_swigt__p_p_mfem__Vector, 0, 0, 0},  {&_swigt__p_p_mfem__GridFunction, _p_p_mfem__GridFunctionTo_p_p_mfem__Vector, 0, 0},  {&_swigt__p_p_mfem__QuadratureFunction, _p_p_mfem__QuadratureFunctionTo_p_p_mfem__Vector, 0, 0},  {&_swigt__p_p_mfem__LinearForm, _p_p_mfem__LinearFormTo_p_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_pyr_t[] = {  {&_swigt__p_pyr_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_size_type[] = {  {&_swigt__p_size_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__allocatorT_int_t[] = {  {&_swigt__p_std__allocatorT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__allocatorT_mfem__ArrayT_int_t_t[] = {  {&_swigt__p_std__allocatorT_mfem__ArrayT_int_t_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -24047,117 +22176,22 @@ static swig_cast_info _swigc__p_std__vectorT_mfem__Mesh_p_std__allocatorT_mfem__
 static swig_cast_info _swigc__p_std__vectorT_mfem__SparseMatrix_p_std__allocatorT_mfem__SparseMatrix_p_t_t[] = {  {&_swigt__p_std__vectorT_mfem__SparseMatrix_p_std__allocatorT_mfem__SparseMatrix_p_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_mfem__Vector_std__allocatorT_mfem__Vector_t_t[] = {  {&_swigt__p_std__vectorT_mfem__Vector_std__allocatorT_mfem__Vector_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_swig__SwigPyIterator[] = {  {&_swigt__p_swig__SwigPyIterator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc___input,
   _swigc__p_PyMFEM__wFILE,
-  _swigc__p_RefCoord,
   _swigc__p_allocator_type,
   _swigc__p_bool,
   _swigc__p_char,
   _swigc__p_difference_type,
   _swigc__p_double,
-  _swigc__p_hex_t,
   _swigc__p_int,
-  _swigc__p_mfem__AbstractSparseMatrix,
   _swigc__p_mfem__ArrayT_int_t,
-  _swigc__p_mfem__ConstrainedOperator,
-  _swigc__p_mfem__ConvectionIntegrator,
-  _swigc__p_mfem__CurlGridFunctionCoefficient,
-  _swigc__p_mfem__DGTraceIntegrator,
-  _swigc__p_mfem__DenseMatrix,
-  _swigc__p_mfem__DenseMatrixInverse,
-  _swigc__p_mfem__DenseSymmetricMatrix,
-  _swigc__p_mfem__ElementRestriction,
-  _swigc__p_mfem__FaceRestriction,
   _swigc__p_mfem__FiniteElementSpace,
-  _swigc__p_mfem__GradientGridFunctionCoefficient,
-  _swigc__p_mfem__GridFunction,
-  _swigc__p_mfem__H1FaceRestriction,
-  _swigc__p_mfem__IdentityOperator,
-  _swigc__p_mfem__IntegrationPoint,
-  _swigc__p_mfem__IntegrationRule,
-  _swigc__p_mfem__L2ElementRestriction,
-  _swigc__p_mfem__L2FaceRestriction,
-  _swigc__p_mfem__L2_FECollection,
-  _swigc__p_mfem__LinearForm,
-  _swigc__p_mfem__Matrix,
-  _swigc__p_mfem__MatrixInverse,
-  _swigc__p_mfem__MatrixVectorProductCoefficient,
   _swigc__p_mfem__Mesh,
-  _swigc__p_mfem__NodeExtrudeCoefficient,
-  _swigc__p_mfem__NormalizedVectorCoefficient,
-  _swigc__p_mfem__Operator,
-  _swigc__p_mfem__OperatorHandle,
-  _swigc__p_mfem__ProductOperator,
-  _swigc__p_mfem__PyOperatorBase,
-  _swigc__p_mfem__PyTimeDependentOperatorBase,
-  _swigc__p_mfem__QuadratureFunction,
-  _swigc__p_mfem__RAPOperator,
-  _swigc__p_mfem__RectangularConstrainedOperator,
-  _swigc__p_mfem__Refinement,
-  _swigc__p_mfem__ScalarVectorProductCoefficient,
-  _swigc__p_mfem__ScaledOperator,
-  _swigc__p_mfem__SecondOrderTimeDependentOperator,
-  _swigc__p_mfem__Solver,
   _swigc__p_mfem__SparseMatrix,
-  _swigc__p_mfem__TimeDependentAdjointOperator,
-  _swigc__p_mfem__TimeDependentOperator,
-  _swigc__p_mfem__TransposeOperator,
-  _swigc__p_mfem__TripleProductOperator,
   _swigc__p_mfem__Vector,
-  _swigc__p_mfem__VectorArrayCoefficient,
-  _swigc__p_mfem__VectorCoefficient,
-  _swigc__p_mfem__VectorConstantCoefficient,
-  _swigc__p_mfem__VectorCrossProductCoefficient,
-  _swigc__p_mfem__VectorDeltaCoefficient,
-  _swigc__p_mfem__VectorFunctionCoefficient,
-  _swigc__p_mfem__VectorGridFunctionCoefficient,
-  _swigc__p_mfem__VectorPyCoefficientBase,
-  _swigc__p_mfem__VectorQuadratureFunctionCoefficient,
-  _swigc__p_mfem__VectorRestrictedCoefficient,
-  _swigc__p_mfem__VectorSumCoefficient,
   _swigc__p_p_PyObject,
-  _swigc__p_p_mfem__AbstractSparseMatrix,
-  _swigc__p_p_mfem__ConstrainedOperator,
-  _swigc__p_p_mfem__DenseMatrix,
-  _swigc__p_p_mfem__DenseMatrixInverse,
-  _swigc__p_p_mfem__DenseSymmetricMatrix,
-  _swigc__p_p_mfem__ElementRestriction,
-  _swigc__p_p_mfem__FaceRestriction,
-  _swigc__p_p_mfem__FiniteElementSpace,
-  _swigc__p_p_mfem__GridFunction,
-  _swigc__p_p_mfem__H1FaceRestriction,
-  _swigc__p_p_mfem__IdentityOperator,
-  _swigc__p_p_mfem__IntegrationRule,
-  _swigc__p_p_mfem__L2ElementRestriction,
-  _swigc__p_p_mfem__L2FaceRestriction,
-  _swigc__p_p_mfem__LinearForm,
-  _swigc__p_p_mfem__Matrix,
-  _swigc__p_p_mfem__MatrixInverse,
-  _swigc__p_p_mfem__Operator,
-  _swigc__p_p_mfem__ProductOperator,
-  _swigc__p_p_mfem__PyOperatorBase,
-  _swigc__p_p_mfem__PyTimeDependentOperatorBase,
-  _swigc__p_p_mfem__QuadratureFunction,
-  _swigc__p_p_mfem__RAPOperator,
-  _swigc__p_p_mfem__RectangularConstrainedOperator,
-  _swigc__p_p_mfem__ScaledOperator,
-  _swigc__p_p_mfem__SecondOrderTimeDependentOperator,
-  _swigc__p_p_mfem__Solver,
-  _swigc__p_p_mfem__SparseMatrix,
-  _swigc__p_p_mfem__TimeDependentAdjointOperator,
-  _swigc__p_p_mfem__TimeDependentOperator,
-  _swigc__p_p_mfem__TransposeOperator,
-  _swigc__p_p_mfem__TripleProductOperator,
-  _swigc__p_p_mfem__Vector,
-  _swigc__p_pri_t,
-  _swigc__p_pyr_t,
-  _swigc__p_quad_t,
-  _swigc__p_seg_t,
   _swigc__p_size_type,
   _swigc__p_std__allocatorT_int_t,
   _swigc__p_std__allocatorT_mfem__ArrayT_int_t_t,
@@ -24173,8 +22207,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__vectorT_mfem__SparseMatrix_p_std__allocatorT_mfem__SparseMatrix_p_t_t,
   _swigc__p_std__vectorT_mfem__Vector_std__allocatorT_mfem__Vector_t_t,
   _swigc__p_swig__SwigPyIterator,
-  _swigc__p_tet_t,
-  _swigc__p_tri_t,
   _swigc__p_value_type,
 };
 

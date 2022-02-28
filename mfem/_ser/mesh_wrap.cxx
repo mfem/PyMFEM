@@ -3103,242 +3103,244 @@ namespace Swig {
 #define SWIGTYPE__input swig_types[0]
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[1]
 #define SWIGTYPE_p_RefCoord swig_types[2]
-#define SWIGTYPE_p_bool swig_types[3]
-#define SWIGTYPE_p_char swig_types[4]
-#define SWIGTYPE_p_double swig_types[5]
-#define SWIGTYPE_p_f_r_q_const__mfem__Vector_r_mfem__Vector__void swig_types[6]
-#define SWIGTYPE_p_hex_t swig_types[7]
-#define SWIGTYPE_p_int swig_types[8]
-#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[9]
-#define SWIGTYPE_p_mfem__ArrayT_double_t swig_types[10]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[11]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__FaceGeometricFactors_p_t swig_types[12]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__GeometricFactors_p_t swig_types[13]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t swig_types[14]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t swig_types[15]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__KnotVector_p_t swig_types[16]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t swig_types[17]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Vector_p_t swig_types[18]
-#define SWIGTYPE_p_mfem__BiCubic2DFiniteElement swig_types[19]
-#define SWIGTYPE_p_mfem__BiLinear2DFiniteElement swig_types[20]
-#define SWIGTYPE_p_mfem__BiQuad2DFiniteElement swig_types[21]
-#define SWIGTYPE_p_mfem__BiQuadPos2DFiniteElement swig_types[22]
-#define SWIGTYPE_p_mfem__CoarseFineTransformations swig_types[23]
-#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[24]
-#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[25]
-#define SWIGTYPE_p_mfem__CrouzeixRaviartFiniteElement swig_types[26]
-#define SWIGTYPE_p_mfem__CrouzeixRaviartQuadFiniteElement swig_types[27]
-#define SWIGTYPE_p_mfem__Cubic1DFiniteElement swig_types[28]
-#define SWIGTYPE_p_mfem__Cubic2DFiniteElement swig_types[29]
-#define SWIGTYPE_p_mfem__Cubic3DFiniteElement swig_types[30]
-#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[31]
-#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[32]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[33]
-#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[34]
-#define SWIGTYPE_p_mfem__DenseSymmetricMatrix swig_types[35]
-#define SWIGTYPE_p_mfem__Element swig_types[36]
-#define SWIGTYPE_p_mfem__ElementRestriction swig_types[37]
-#define SWIGTYPE_p_mfem__ElementTransformation swig_types[38]
-#define SWIGTYPE_p_mfem__FaceElementTransformations swig_types[39]
-#define SWIGTYPE_p_mfem__FaceGeometricFactors swig_types[40]
-#define SWIGTYPE_p_mfem__FaceRestriction swig_types[41]
-#define SWIGTYPE_p_mfem__FiniteElement swig_types[42]
-#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[43]
-#define SWIGTYPE_p_mfem__GaussBiLinear2DFiniteElement swig_types[44]
-#define SWIGTYPE_p_mfem__GaussBiQuad2DFiniteElement swig_types[45]
-#define SWIGTYPE_p_mfem__GaussLinear2DFiniteElement swig_types[46]
-#define SWIGTYPE_p_mfem__GaussQuad2DFiniteElement swig_types[47]
-#define SWIGTYPE_p_mfem__GeometricFactors swig_types[48]
-#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[49]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[50]
-#define SWIGTYPE_p_mfem__H1FaceRestriction swig_types[51]
-#define SWIGTYPE_p_mfem__H1Pos_HexahedronElement swig_types[52]
-#define SWIGTYPE_p_mfem__H1Pos_QuadrilateralElement swig_types[53]
-#define SWIGTYPE_p_mfem__H1Pos_SegmentElement swig_types[54]
-#define SWIGTYPE_p_mfem__H1Pos_TetrahedronElement swig_types[55]
-#define SWIGTYPE_p_mfem__H1Pos_TriangleElement swig_types[56]
-#define SWIGTYPE_p_mfem__H1Pos_WedgeElement swig_types[57]
-#define SWIGTYPE_p_mfem__H1Ser_QuadrilateralElement swig_types[58]
-#define SWIGTYPE_p_mfem__H1_HexahedronElement swig_types[59]
-#define SWIGTYPE_p_mfem__H1_QuadrilateralElement swig_types[60]
-#define SWIGTYPE_p_mfem__H1_SegmentElement swig_types[61]
-#define SWIGTYPE_p_mfem__H1_TetrahedronElement swig_types[62]
-#define SWIGTYPE_p_mfem__H1_TriangleElement swig_types[63]
-#define SWIGTYPE_p_mfem__H1_WedgeElement swig_types[64]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[65]
-#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[66]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[67]
-#define SWIGTYPE_p_mfem__InverseElementTransformation swig_types[68]
-#define SWIGTYPE_p_mfem__IsoparametricTransformation swig_types[69]
-#define SWIGTYPE_p_mfem__L2ElementRestriction swig_types[70]
-#define SWIGTYPE_p_mfem__L2FaceRestriction swig_types[71]
-#define SWIGTYPE_p_mfem__L2Pos_HexahedronElement swig_types[72]
-#define SWIGTYPE_p_mfem__L2Pos_QuadrilateralElement swig_types[73]
-#define SWIGTYPE_p_mfem__L2Pos_SegmentElement swig_types[74]
-#define SWIGTYPE_p_mfem__L2Pos_TetrahedronElement swig_types[75]
-#define SWIGTYPE_p_mfem__L2Pos_TriangleElement swig_types[76]
-#define SWIGTYPE_p_mfem__L2Pos_WedgeElement swig_types[77]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[78]
-#define SWIGTYPE_p_mfem__L2_HexahedronElement swig_types[79]
-#define SWIGTYPE_p_mfem__L2_QuadrilateralElement swig_types[80]
-#define SWIGTYPE_p_mfem__L2_SegmentElement swig_types[81]
-#define SWIGTYPE_p_mfem__L2_TetrahedronElement swig_types[82]
-#define SWIGTYPE_p_mfem__L2_TriangleElement swig_types[83]
-#define SWIGTYPE_p_mfem__L2_WedgeElement swig_types[84]
-#define SWIGTYPE_p_mfem__Lagrange1DFiniteElement swig_types[85]
-#define SWIGTYPE_p_mfem__LagrangeHexFiniteElement swig_types[86]
-#define SWIGTYPE_p_mfem__Linear1DFiniteElement swig_types[87]
-#define SWIGTYPE_p_mfem__Linear2DFiniteElement swig_types[88]
-#define SWIGTYPE_p_mfem__Linear3DFiniteElement swig_types[89]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[90]
-#define SWIGTYPE_p_mfem__LinearPyramidFiniteElement swig_types[91]
-#define SWIGTYPE_p_mfem__LinearWedgeFiniteElement swig_types[92]
-#define SWIGTYPE_p_mfem__Matrix swig_types[93]
-#define SWIGTYPE_p_mfem__MatrixInverse swig_types[94]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[95]
-#define SWIGTYPE_p_mfem__Mesh swig_types[96]
-#define SWIGTYPE_p_mfem__NCMesh swig_types[97]
-#define SWIGTYPE_p_mfem__ND_HexahedronElement swig_types[98]
-#define SWIGTYPE_p_mfem__ND_QuadrilateralElement swig_types[99]
-#define SWIGTYPE_p_mfem__ND_SegmentElement swig_types[100]
-#define SWIGTYPE_p_mfem__ND_TetrahedronElement swig_types[101]
-#define SWIGTYPE_p_mfem__ND_TriangleElement swig_types[102]
-#define SWIGTYPE_p_mfem__NURBS1DFiniteElement swig_types[103]
-#define SWIGTYPE_p_mfem__NURBS2DFiniteElement swig_types[104]
-#define SWIGTYPE_p_mfem__NURBS3DFiniteElement swig_types[105]
-#define SWIGTYPE_p_mfem__NURBSExtension swig_types[106]
-#define SWIGTYPE_p_mfem__NURBSFiniteElement swig_types[107]
-#define SWIGTYPE_p_mfem__Nedelec1HexFiniteElement swig_types[108]
-#define SWIGTYPE_p_mfem__Nedelec1PyrFiniteElement swig_types[109]
-#define SWIGTYPE_p_mfem__Nedelec1TetFiniteElement swig_types[110]
-#define SWIGTYPE_p_mfem__Nedelec1WdgFiniteElement swig_types[111]
-#define SWIGTYPE_p_mfem__NodalFiniteElement swig_types[112]
-#define SWIGTYPE_p_mfem__NodalTensorFiniteElement swig_types[113]
-#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[114]
-#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[115]
-#define SWIGTYPE_p_mfem__Operator swig_types[116]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[117]
-#define SWIGTYPE_p_mfem__OutStream swig_types[118]
-#define SWIGTYPE_p_mfem__P0HexFiniteElement swig_types[119]
-#define SWIGTYPE_p_mfem__P0PyrFiniteElement swig_types[120]
-#define SWIGTYPE_p_mfem__P0QuadFiniteElement swig_types[121]
-#define SWIGTYPE_p_mfem__P0SegmentFiniteElement swig_types[122]
-#define SWIGTYPE_p_mfem__P0TetFiniteElement swig_types[123]
-#define SWIGTYPE_p_mfem__P0TriangleFiniteElement swig_types[124]
-#define SWIGTYPE_p_mfem__P0WdgFiniteElement swig_types[125]
-#define SWIGTYPE_p_mfem__P1OnQuadFiniteElement swig_types[126]
-#define SWIGTYPE_p_mfem__P1SegmentFiniteElement swig_types[127]
-#define SWIGTYPE_p_mfem__P1TetNonConfFiniteElement swig_types[128]
-#define SWIGTYPE_p_mfem__P2SegmentFiniteElement swig_types[129]
-#define SWIGTYPE_p_mfem__PointFiniteElement swig_types[130]
-#define SWIGTYPE_p_mfem__PositiveFiniteElement swig_types[131]
-#define SWIGTYPE_p_mfem__PositiveTensorFiniteElement swig_types[132]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[133]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[134]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[135]
-#define SWIGTYPE_p_mfem__Quad1DFiniteElement swig_types[136]
-#define SWIGTYPE_p_mfem__Quad2DFiniteElement swig_types[137]
-#define SWIGTYPE_p_mfem__QuadPos1DFiniteElement swig_types[138]
-#define SWIGTYPE_p_mfem__Quadratic3DFiniteElement swig_types[139]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[140]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[141]
-#define SWIGTYPE_p_mfem__RT0HexFiniteElement swig_types[142]
-#define SWIGTYPE_p_mfem__RT0PyrFiniteElement swig_types[143]
-#define SWIGTYPE_p_mfem__RT0QuadFiniteElement swig_types[144]
-#define SWIGTYPE_p_mfem__RT0TetFiniteElement swig_types[145]
-#define SWIGTYPE_p_mfem__RT0TriangleFiniteElement swig_types[146]
-#define SWIGTYPE_p_mfem__RT0WdgFiniteElement swig_types[147]
-#define SWIGTYPE_p_mfem__RT1HexFiniteElement swig_types[148]
-#define SWIGTYPE_p_mfem__RT1QuadFiniteElement swig_types[149]
-#define SWIGTYPE_p_mfem__RT1TriangleFiniteElement swig_types[150]
-#define SWIGTYPE_p_mfem__RT2QuadFiniteElement swig_types[151]
-#define SWIGTYPE_p_mfem__RT2TriangleFiniteElement swig_types[152]
-#define SWIGTYPE_p_mfem__RT_HexahedronElement swig_types[153]
-#define SWIGTYPE_p_mfem__RT_QuadrilateralElement swig_types[154]
-#define SWIGTYPE_p_mfem__RT_TetrahedronElement swig_types[155]
-#define SWIGTYPE_p_mfem__RT_TriangleElement swig_types[156]
-#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[157]
-#define SWIGTYPE_p_mfem__RefinedBiLinear2DFiniteElement swig_types[158]
-#define SWIGTYPE_p_mfem__RefinedLinear1DFiniteElement swig_types[159]
-#define SWIGTYPE_p_mfem__RefinedLinear2DFiniteElement swig_types[160]
-#define SWIGTYPE_p_mfem__RefinedLinear3DFiniteElement swig_types[161]
-#define SWIGTYPE_p_mfem__RefinedTriLinear3DFiniteElement swig_types[162]
-#define SWIGTYPE_p_mfem__Refinement swig_types[163]
-#define SWIGTYPE_p_mfem__RotTriLinearHexFiniteElement swig_types[164]
-#define SWIGTYPE_p_mfem__STable swig_types[165]
-#define SWIGTYPE_p_mfem__ScalarFiniteElement swig_types[166]
-#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[167]
-#define SWIGTYPE_p_mfem__ScaledOperator swig_types[168]
-#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[169]
-#define SWIGTYPE_p_mfem__Solver swig_types[170]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[171]
-#define SWIGTYPE_p_mfem__Table swig_types[172]
-#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[173]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[174]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[175]
-#define SWIGTYPE_p_mfem__TriLinear3DFiniteElement swig_types[176]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[177]
-#define SWIGTYPE_p_mfem__Vector swig_types[178]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[179]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[180]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[181]
-#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[182]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[183]
-#define SWIGTYPE_p_mfem__VectorFiniteElement swig_types[184]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[185]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[186]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[187]
-#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[188]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[189]
-#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[190]
-#define SWIGTYPE_p_mfem__VectorTensorFiniteElement swig_types[191]
-#define SWIGTYPE_p_mfem__Vertex swig_types[192]
-#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[193]
-#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[194]
-#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[195]
-#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[196]
-#define SWIGTYPE_p_p_mfem__DenseSymmetricMatrix swig_types[197]
-#define SWIGTYPE_p_p_mfem__Element swig_types[198]
-#define SWIGTYPE_p_p_mfem__ElementRestriction swig_types[199]
-#define SWIGTYPE_p_p_mfem__FaceRestriction swig_types[200]
-#define SWIGTYPE_p_p_mfem__FiniteElementSpace swig_types[201]
-#define SWIGTYPE_p_p_mfem__GridFunction swig_types[202]
-#define SWIGTYPE_p_p_mfem__H1FaceRestriction swig_types[203]
-#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[204]
-#define SWIGTYPE_p_p_mfem__IntegrationRule swig_types[205]
-#define SWIGTYPE_p_p_mfem__L2ElementRestriction swig_types[206]
-#define SWIGTYPE_p_p_mfem__L2FaceRestriction swig_types[207]
-#define SWIGTYPE_p_p_mfem__LinearForm swig_types[208]
-#define SWIGTYPE_p_p_mfem__Matrix swig_types[209]
-#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[210]
-#define SWIGTYPE_p_p_mfem__Mesh swig_types[211]
-#define SWIGTYPE_p_p_mfem__Operator swig_types[212]
-#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[213]
-#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[214]
-#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[215]
-#define SWIGTYPE_p_p_mfem__QuadratureFunction swig_types[216]
-#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[217]
-#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[218]
-#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[219]
-#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[220]
-#define SWIGTYPE_p_p_mfem__Solver swig_types[221]
-#define SWIGTYPE_p_p_mfem__SparseMatrix swig_types[222]
-#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[223]
-#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[224]
-#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[225]
-#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[226]
-#define SWIGTYPE_p_p_mfem__Vector swig_types[227]
-#define SWIGTYPE_p_pri_t swig_types[228]
-#define SWIGTYPE_p_pyr_t swig_types[229]
-#define SWIGTYPE_p_quad_t swig_types[230]
-#define SWIGTYPE_p_seg_t swig_types[231]
-#define SWIGTYPE_p_std__ostream swig_types[232]
-#define SWIGTYPE_p_std__vectorT_int_t swig_types[233]
-#define SWIGTYPE_p_std__vectorT_mfem__Vector_t swig_types[234]
-#define SWIGTYPE_p_tet_t swig_types[235]
-#define SWIGTYPE_p_tri_t swig_types[236]
-static swig_type_info *swig_types[238];
-static swig_module_info swig_module = {swig_types, 237, 0, 0, 0, 0};
+#define SWIGTYPE_p_allocator_type swig_types[3]
+#define SWIGTYPE_p_bool swig_types[4]
+#define SWIGTYPE_p_char swig_types[5]
+#define SWIGTYPE_p_difference_type swig_types[6]
+#define SWIGTYPE_p_double swig_types[7]
+#define SWIGTYPE_p_f_r_q_const__mfem__Vector_r_mfem__Vector__void swig_types[8]
+#define SWIGTYPE_p_hex_t swig_types[9]
+#define SWIGTYPE_p_int swig_types[10]
+#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[11]
+#define SWIGTYPE_p_mfem__ArrayT_double_t swig_types[12]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[13]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__FaceGeometricFactors_p_t swig_types[14]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__GeometricFactors_p_t swig_types[15]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t swig_types[16]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t swig_types[17]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__KnotVector_p_t swig_types[18]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t swig_types[19]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Vector_p_t swig_types[20]
+#define SWIGTYPE_p_mfem__BiCubic2DFiniteElement swig_types[21]
+#define SWIGTYPE_p_mfem__BiLinear2DFiniteElement swig_types[22]
+#define SWIGTYPE_p_mfem__BiQuad2DFiniteElement swig_types[23]
+#define SWIGTYPE_p_mfem__BiQuadPos2DFiniteElement swig_types[24]
+#define SWIGTYPE_p_mfem__CoarseFineTransformations swig_types[25]
+#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[26]
+#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[27]
+#define SWIGTYPE_p_mfem__CrouzeixRaviartFiniteElement swig_types[28]
+#define SWIGTYPE_p_mfem__CrouzeixRaviartQuadFiniteElement swig_types[29]
+#define SWIGTYPE_p_mfem__Cubic1DFiniteElement swig_types[30]
+#define SWIGTYPE_p_mfem__Cubic2DFiniteElement swig_types[31]
+#define SWIGTYPE_p_mfem__Cubic3DFiniteElement swig_types[32]
+#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[33]
+#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[34]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[35]
+#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[36]
+#define SWIGTYPE_p_mfem__DenseSymmetricMatrix swig_types[37]
+#define SWIGTYPE_p_mfem__Element swig_types[38]
+#define SWIGTYPE_p_mfem__ElementRestriction swig_types[39]
+#define SWIGTYPE_p_mfem__ElementTransformation swig_types[40]
+#define SWIGTYPE_p_mfem__FaceElementTransformations swig_types[41]
+#define SWIGTYPE_p_mfem__FaceGeometricFactors swig_types[42]
+#define SWIGTYPE_p_mfem__FaceRestriction swig_types[43]
+#define SWIGTYPE_p_mfem__FiniteElement swig_types[44]
+#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[45]
+#define SWIGTYPE_p_mfem__GaussBiLinear2DFiniteElement swig_types[46]
+#define SWIGTYPE_p_mfem__GaussBiQuad2DFiniteElement swig_types[47]
+#define SWIGTYPE_p_mfem__GaussLinear2DFiniteElement swig_types[48]
+#define SWIGTYPE_p_mfem__GaussQuad2DFiniteElement swig_types[49]
+#define SWIGTYPE_p_mfem__GeometricFactors swig_types[50]
+#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[51]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[52]
+#define SWIGTYPE_p_mfem__H1FaceRestriction swig_types[53]
+#define SWIGTYPE_p_mfem__H1Pos_HexahedronElement swig_types[54]
+#define SWIGTYPE_p_mfem__H1Pos_QuadrilateralElement swig_types[55]
+#define SWIGTYPE_p_mfem__H1Pos_SegmentElement swig_types[56]
+#define SWIGTYPE_p_mfem__H1Pos_TetrahedronElement swig_types[57]
+#define SWIGTYPE_p_mfem__H1Pos_TriangleElement swig_types[58]
+#define SWIGTYPE_p_mfem__H1Pos_WedgeElement swig_types[59]
+#define SWIGTYPE_p_mfem__H1Ser_QuadrilateralElement swig_types[60]
+#define SWIGTYPE_p_mfem__H1_HexahedronElement swig_types[61]
+#define SWIGTYPE_p_mfem__H1_QuadrilateralElement swig_types[62]
+#define SWIGTYPE_p_mfem__H1_SegmentElement swig_types[63]
+#define SWIGTYPE_p_mfem__H1_TetrahedronElement swig_types[64]
+#define SWIGTYPE_p_mfem__H1_TriangleElement swig_types[65]
+#define SWIGTYPE_p_mfem__H1_WedgeElement swig_types[66]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[67]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[68]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[69]
+#define SWIGTYPE_p_mfem__InverseElementTransformation swig_types[70]
+#define SWIGTYPE_p_mfem__IsoparametricTransformation swig_types[71]
+#define SWIGTYPE_p_mfem__L2ElementRestriction swig_types[72]
+#define SWIGTYPE_p_mfem__L2FaceRestriction swig_types[73]
+#define SWIGTYPE_p_mfem__L2Pos_HexahedronElement swig_types[74]
+#define SWIGTYPE_p_mfem__L2Pos_QuadrilateralElement swig_types[75]
+#define SWIGTYPE_p_mfem__L2Pos_SegmentElement swig_types[76]
+#define SWIGTYPE_p_mfem__L2Pos_TetrahedronElement swig_types[77]
+#define SWIGTYPE_p_mfem__L2Pos_TriangleElement swig_types[78]
+#define SWIGTYPE_p_mfem__L2Pos_WedgeElement swig_types[79]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[80]
+#define SWIGTYPE_p_mfem__L2_HexahedronElement swig_types[81]
+#define SWIGTYPE_p_mfem__L2_QuadrilateralElement swig_types[82]
+#define SWIGTYPE_p_mfem__L2_SegmentElement swig_types[83]
+#define SWIGTYPE_p_mfem__L2_TetrahedronElement swig_types[84]
+#define SWIGTYPE_p_mfem__L2_TriangleElement swig_types[85]
+#define SWIGTYPE_p_mfem__L2_WedgeElement swig_types[86]
+#define SWIGTYPE_p_mfem__Lagrange1DFiniteElement swig_types[87]
+#define SWIGTYPE_p_mfem__LagrangeHexFiniteElement swig_types[88]
+#define SWIGTYPE_p_mfem__Linear1DFiniteElement swig_types[89]
+#define SWIGTYPE_p_mfem__Linear2DFiniteElement swig_types[90]
+#define SWIGTYPE_p_mfem__Linear3DFiniteElement swig_types[91]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[92]
+#define SWIGTYPE_p_mfem__LinearPyramidFiniteElement swig_types[93]
+#define SWIGTYPE_p_mfem__LinearWedgeFiniteElement swig_types[94]
+#define SWIGTYPE_p_mfem__Matrix swig_types[95]
+#define SWIGTYPE_p_mfem__MatrixInverse swig_types[96]
+#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[97]
+#define SWIGTYPE_p_mfem__Mesh swig_types[98]
+#define SWIGTYPE_p_mfem__NCMesh swig_types[99]
+#define SWIGTYPE_p_mfem__ND_HexahedronElement swig_types[100]
+#define SWIGTYPE_p_mfem__ND_QuadrilateralElement swig_types[101]
+#define SWIGTYPE_p_mfem__ND_SegmentElement swig_types[102]
+#define SWIGTYPE_p_mfem__ND_TetrahedronElement swig_types[103]
+#define SWIGTYPE_p_mfem__ND_TriangleElement swig_types[104]
+#define SWIGTYPE_p_mfem__NURBS1DFiniteElement swig_types[105]
+#define SWIGTYPE_p_mfem__NURBS2DFiniteElement swig_types[106]
+#define SWIGTYPE_p_mfem__NURBS3DFiniteElement swig_types[107]
+#define SWIGTYPE_p_mfem__NURBSExtension swig_types[108]
+#define SWIGTYPE_p_mfem__NURBSFiniteElement swig_types[109]
+#define SWIGTYPE_p_mfem__Nedelec1HexFiniteElement swig_types[110]
+#define SWIGTYPE_p_mfem__Nedelec1PyrFiniteElement swig_types[111]
+#define SWIGTYPE_p_mfem__Nedelec1TetFiniteElement swig_types[112]
+#define SWIGTYPE_p_mfem__Nedelec1WdgFiniteElement swig_types[113]
+#define SWIGTYPE_p_mfem__NodalFiniteElement swig_types[114]
+#define SWIGTYPE_p_mfem__NodalTensorFiniteElement swig_types[115]
+#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[116]
+#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[117]
+#define SWIGTYPE_p_mfem__Operator swig_types[118]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[119]
+#define SWIGTYPE_p_mfem__OutStream swig_types[120]
+#define SWIGTYPE_p_mfem__P0HexFiniteElement swig_types[121]
+#define SWIGTYPE_p_mfem__P0PyrFiniteElement swig_types[122]
+#define SWIGTYPE_p_mfem__P0QuadFiniteElement swig_types[123]
+#define SWIGTYPE_p_mfem__P0SegmentFiniteElement swig_types[124]
+#define SWIGTYPE_p_mfem__P0TetFiniteElement swig_types[125]
+#define SWIGTYPE_p_mfem__P0TriangleFiniteElement swig_types[126]
+#define SWIGTYPE_p_mfem__P0WdgFiniteElement swig_types[127]
+#define SWIGTYPE_p_mfem__P1OnQuadFiniteElement swig_types[128]
+#define SWIGTYPE_p_mfem__P1SegmentFiniteElement swig_types[129]
+#define SWIGTYPE_p_mfem__P1TetNonConfFiniteElement swig_types[130]
+#define SWIGTYPE_p_mfem__P2SegmentFiniteElement swig_types[131]
+#define SWIGTYPE_p_mfem__PointFiniteElement swig_types[132]
+#define SWIGTYPE_p_mfem__PositiveFiniteElement swig_types[133]
+#define SWIGTYPE_p_mfem__PositiveTensorFiniteElement swig_types[134]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[135]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[136]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[137]
+#define SWIGTYPE_p_mfem__Quad1DFiniteElement swig_types[138]
+#define SWIGTYPE_p_mfem__Quad2DFiniteElement swig_types[139]
+#define SWIGTYPE_p_mfem__QuadPos1DFiniteElement swig_types[140]
+#define SWIGTYPE_p_mfem__Quadratic3DFiniteElement swig_types[141]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[142]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[143]
+#define SWIGTYPE_p_mfem__RT0HexFiniteElement swig_types[144]
+#define SWIGTYPE_p_mfem__RT0PyrFiniteElement swig_types[145]
+#define SWIGTYPE_p_mfem__RT0QuadFiniteElement swig_types[146]
+#define SWIGTYPE_p_mfem__RT0TetFiniteElement swig_types[147]
+#define SWIGTYPE_p_mfem__RT0TriangleFiniteElement swig_types[148]
+#define SWIGTYPE_p_mfem__RT0WdgFiniteElement swig_types[149]
+#define SWIGTYPE_p_mfem__RT1HexFiniteElement swig_types[150]
+#define SWIGTYPE_p_mfem__RT1QuadFiniteElement swig_types[151]
+#define SWIGTYPE_p_mfem__RT1TriangleFiniteElement swig_types[152]
+#define SWIGTYPE_p_mfem__RT2QuadFiniteElement swig_types[153]
+#define SWIGTYPE_p_mfem__RT2TriangleFiniteElement swig_types[154]
+#define SWIGTYPE_p_mfem__RT_HexahedronElement swig_types[155]
+#define SWIGTYPE_p_mfem__RT_QuadrilateralElement swig_types[156]
+#define SWIGTYPE_p_mfem__RT_TetrahedronElement swig_types[157]
+#define SWIGTYPE_p_mfem__RT_TriangleElement swig_types[158]
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[159]
+#define SWIGTYPE_p_mfem__RefinedBiLinear2DFiniteElement swig_types[160]
+#define SWIGTYPE_p_mfem__RefinedLinear1DFiniteElement swig_types[161]
+#define SWIGTYPE_p_mfem__RefinedLinear2DFiniteElement swig_types[162]
+#define SWIGTYPE_p_mfem__RefinedLinear3DFiniteElement swig_types[163]
+#define SWIGTYPE_p_mfem__RefinedTriLinear3DFiniteElement swig_types[164]
+#define SWIGTYPE_p_mfem__Refinement swig_types[165]
+#define SWIGTYPE_p_mfem__RotTriLinearHexFiniteElement swig_types[166]
+#define SWIGTYPE_p_mfem__STable swig_types[167]
+#define SWIGTYPE_p_mfem__ScalarFiniteElement swig_types[168]
+#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[169]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[170]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[171]
+#define SWIGTYPE_p_mfem__Solver swig_types[172]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[173]
+#define SWIGTYPE_p_mfem__Table swig_types[174]
+#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[175]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[176]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[177]
+#define SWIGTYPE_p_mfem__TriLinear3DFiniteElement swig_types[178]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[179]
+#define SWIGTYPE_p_mfem__Vector swig_types[180]
+#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[181]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[182]
+#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[183]
+#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[184]
+#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[185]
+#define SWIGTYPE_p_mfem__VectorFiniteElement swig_types[186]
+#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[187]
+#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[188]
+#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[189]
+#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[190]
+#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[191]
+#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[192]
+#define SWIGTYPE_p_mfem__VectorTensorFiniteElement swig_types[193]
+#define SWIGTYPE_p_mfem__Vertex swig_types[194]
+#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[195]
+#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[196]
+#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[197]
+#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[198]
+#define SWIGTYPE_p_p_mfem__DenseSymmetricMatrix swig_types[199]
+#define SWIGTYPE_p_p_mfem__Element swig_types[200]
+#define SWIGTYPE_p_p_mfem__ElementRestriction swig_types[201]
+#define SWIGTYPE_p_p_mfem__FaceRestriction swig_types[202]
+#define SWIGTYPE_p_p_mfem__FiniteElementSpace swig_types[203]
+#define SWIGTYPE_p_p_mfem__GridFunction swig_types[204]
+#define SWIGTYPE_p_p_mfem__H1FaceRestriction swig_types[205]
+#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[206]
+#define SWIGTYPE_p_p_mfem__IntegrationRule swig_types[207]
+#define SWIGTYPE_p_p_mfem__L2ElementRestriction swig_types[208]
+#define SWIGTYPE_p_p_mfem__L2FaceRestriction swig_types[209]
+#define SWIGTYPE_p_p_mfem__LinearForm swig_types[210]
+#define SWIGTYPE_p_p_mfem__Matrix swig_types[211]
+#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[212]
+#define SWIGTYPE_p_p_mfem__Mesh swig_types[213]
+#define SWIGTYPE_p_p_mfem__Operator swig_types[214]
+#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[215]
+#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[216]
+#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[217]
+#define SWIGTYPE_p_p_mfem__QuadratureFunction swig_types[218]
+#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[219]
+#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[220]
+#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[221]
+#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[222]
+#define SWIGTYPE_p_p_mfem__Solver swig_types[223]
+#define SWIGTYPE_p_p_mfem__SparseMatrix swig_types[224]
+#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[225]
+#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[226]
+#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[227]
+#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[228]
+#define SWIGTYPE_p_p_mfem__Vector swig_types[229]
+#define SWIGTYPE_p_pri_t swig_types[230]
+#define SWIGTYPE_p_pyr_t swig_types[231]
+#define SWIGTYPE_p_quad_t swig_types[232]
+#define SWIGTYPE_p_seg_t swig_types[233]
+#define SWIGTYPE_p_size_type swig_types[234]
+#define SWIGTYPE_p_std__ostream swig_types[235]
+#define SWIGTYPE_p_tet_t swig_types[236]
+#define SWIGTYPE_p_tri_t swig_types[237]
+#define SWIGTYPE_p_value_type swig_types[238]
+static swig_type_info *swig_types[240];
+static swig_module_info swig_module = {swig_types, 239, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3763,6 +3765,1373 @@ SWIG_AsVal_int (PyObject * obj, int *val)
   return res;
 }
 
+
+namespace swig {
+  template <class Type>
+  struct noconst_traits {
+    typedef Type noconst_type;
+  };
+
+  template <class Type>
+  struct noconst_traits<const Type> {
+    typedef Type noconst_type;
+  };
+
+  /*
+    type categories
+  */
+  struct pointer_category { };
+  struct value_category { };
+
+  /*
+    General traits that provides type_name and type_info
+  */
+  template <class Type> struct traits { };
+
+  template <class Type>
+  inline const char* type_name() {
+    return traits<typename noconst_traits<Type >::noconst_type >::type_name();
+  }
+
+  template <class Type> struct traits_info {
+    static swig_type_info *type_query(std::string name) {
+      name += " *";
+      return SWIG_TypeQuery(name.c_str());
+    }
+    static swig_type_info *type_info() {
+      static swig_type_info *info = type_query(type_name<Type>());
+      return info;
+    }
+  };
+
+  /*
+    Partial specialization for pointers (traits_info)
+  */
+  template <class Type> struct traits_info<Type *> {
+    static swig_type_info *type_query(std::string name) {
+      name += " *";
+      return SWIG_TypeQuery(name.c_str());
+    }
+    static swig_type_info *type_info() {
+      static swig_type_info *info = type_query(type_name<Type>());
+      return info;
+    }
+  };
+
+  template <class Type>
+  inline swig_type_info *type_info() {
+    return traits_info<Type>::type_info();
+  }
+
+  /*
+    Partial specialization for pointers (traits)
+  */
+  template <class Type> struct traits <Type *> {
+    typedef pointer_category category;
+    static std::string make_ptr_name(const char* name) {
+      std::string ptrname = name;
+      ptrname += " *";
+      return ptrname;
+    }
+    static const char* type_name() {
+      static std::string name = make_ptr_name(swig::type_name<Type>());
+      return name.c_str();
+    }
+  };
+
+  template <class Type, class Category>
+  struct traits_as { };
+
+  template <class Type, class Category>
+  struct traits_check { };
+
+}
+
+
+namespace swig {  
+  /*
+    Traits that provides the from method
+  */
+  template <class Type> struct traits_from_ptr {
+    static PyObject *from(Type *val, int owner = 0) {
+      return SWIG_InternalNewPointerObj(val, type_info<Type>(), owner);
+    }
+  };
+
+  template <class Type> struct traits_from {
+    static PyObject *from(const Type& val) {
+      return traits_from_ptr<Type>::from(new Type(val), 1);
+    }
+  };
+
+  template <class Type> struct traits_from<Type *> {
+    static PyObject *from(Type* val) {
+      return traits_from_ptr<Type>::from(val, 0);
+    }
+  };
+
+  template <class Type> struct traits_from<const Type *> {
+    static PyObject *from(const Type* val) {
+      return traits_from_ptr<Type>::from(const_cast<Type*>(val), 0);
+    }
+  };
+
+
+  template <class Type>
+  inline PyObject *from(const Type& val) {
+    return traits_from<Type>::from(val);
+  }
+
+  template <class Type>
+  inline PyObject *from_ptr(Type* val, int owner) {
+    return traits_from_ptr<Type>::from(val, owner);
+  }
+
+  /*
+    Traits that provides the asval/as/check method
+  */
+  template <class Type>
+  struct traits_asptr {   
+    static int asptr(PyObject *obj, Type **val) {
+      int res = SWIG_ERROR;
+      swig_type_info *descriptor = type_info<Type>();
+      if (val) {
+        Type *p = 0;
+        int newmem = 0;
+        res = descriptor ? SWIG_ConvertPtrAndOwn(obj, (void **)&p, descriptor, 0, &newmem) : SWIG_ERROR;
+        if (SWIG_IsOK(res)) {
+          if (newmem & SWIG_CAST_NEW_MEMORY) {
+            res |= SWIG_NEWOBJMASK;
+          }
+          *val = p;
+        }
+      } else {
+        res = descriptor ? SWIG_ConvertPtr(obj, 0, descriptor, 0) : SWIG_ERROR;
+      }
+      return res;
+    }
+  }; 
+
+  template <class Type>
+  inline int asptr(PyObject *obj, Type **vptr) {
+    return traits_asptr<Type>::asptr(obj, vptr);
+  }
+
+  template <class Type> 
+  struct traits_asval {
+    static int asval(PyObject *obj, Type *val) {
+      if (val) {
+	Type *p = 0;
+	int res = traits_asptr<Type>::asptr(obj, &p);
+	if (!SWIG_IsOK(res)) return res;	
+	if (p) {
+	  typedef typename noconst_traits<Type>::noconst_type noconst_type;
+	  *(const_cast<noconst_type*>(val)) = *p;
+	  if (SWIG_IsNewObj(res)){
+	    delete p;
+	    res = SWIG_DelNewMask(res);
+	  }
+	  return res;
+	} else {
+	  return SWIG_ERROR;
+	}
+      } else {
+	return traits_asptr<Type>::asptr(obj, (Type **)(0));
+      }
+    }
+  };
+
+  template <class Type> struct traits_asval<Type*> {
+    static int asval(PyObject *obj, Type **val) {
+      if (val) {
+        typedef typename noconst_traits<Type>::noconst_type noconst_type;
+        noconst_type *p = 0;
+        int res = traits_asptr<noconst_type>::asptr(obj,  &p);
+        if (SWIG_IsOK(res)) {
+          *(const_cast<noconst_type**>(val)) = p;
+	}
+	return res;
+      } else {
+	return traits_asptr<Type>::asptr(obj, (Type **)(0));
+      }
+    }
+  };
+  
+  template <class Type>
+  inline int asval(PyObject *obj, Type *val) {
+    return traits_asval<Type>::asval(obj, val);
+  }
+
+  template <class Type> 
+  struct traits_as<Type, value_category> {
+    static Type as(PyObject *obj) {
+      Type v;
+      int res = asval(obj, &v);
+      if (!obj || !SWIG_IsOK(res)) {
+	if (!PyErr_Occurred()) {
+	  ::SWIG_Error(SWIG_TypeError,  swig::type_name<Type>());
+	}
+	throw std::invalid_argument("bad type");
+      }
+      return v;
+    }
+  };
+
+  template <class Type> 
+  struct traits_as<Type, pointer_category> {
+    static Type as(PyObject *obj) {
+      Type *v = 0;      
+      int res = (obj ? traits_asptr<Type>::asptr(obj, &v) : SWIG_ERROR);
+      if (SWIG_IsOK(res) && v) {
+	if (SWIG_IsNewObj(res)) {
+	  Type r(*v);
+	  delete v;
+	  return r;
+	} else {
+	  return *v;
+	}
+      } else {
+	if (!PyErr_Occurred()) {
+	  SWIG_Error(SWIG_TypeError,  swig::type_name<Type>());
+	}
+	throw std::invalid_argument("bad type");
+      }
+    }
+  };
+
+  template <class Type> 
+  struct traits_as<Type*, pointer_category> {
+    static Type* as(PyObject *obj) {
+      Type *v = 0;      
+      int res = (obj ? traits_asptr<Type>::asptr(obj, &v) : SWIG_ERROR);
+      if (SWIG_IsOK(res)) {
+	return v;
+      } else {
+	if (!PyErr_Occurred()) {
+	  SWIG_Error(SWIG_TypeError,  swig::type_name<Type>());
+	}
+	throw std::invalid_argument("bad type");
+      }
+    }
+  };
+    
+  template <class Type>
+  inline Type as(PyObject *obj) {
+    return traits_as<Type, typename traits<Type>::category>::as(obj);
+  }
+
+  template <class Type> 
+  struct traits_check<Type, value_category> {
+    static bool check(PyObject *obj) {
+      int res = obj ? asval(obj, (Type *)(0)) : SWIG_ERROR;
+      return SWIG_IsOK(res) ? true : false;
+    }
+  };
+
+  template <class Type> 
+  struct traits_check<Type, pointer_category> {
+    static bool check(PyObject *obj) {
+      int res = obj ? asptr(obj, (Type **)(0)) : SWIG_ERROR;
+      return SWIG_IsOK(res) ? true : false;
+    }
+  };
+
+  template <class Type>
+  inline bool check(PyObject *obj) {
+    return traits_check<Type, typename traits<Type>::category>::check(obj);
+  }
+}
+
+
+namespace swig {
+  template <> struct traits< int > {
+    typedef value_category category;
+    static const char* type_name() { return"int"; }
+  };
+  template <>  struct traits_asval< int > {
+    typedef int value_type;
+    static int asval(PyObject *obj, value_type *val) {
+      return SWIG_AsVal_int (obj, val);
+    }
+  };
+  template <>  struct traits_from< int > {
+    typedef int value_type;
+    static PyObject *from(const value_type& val) {
+      return SWIG_From_int  (val);
+    }
+  };
+}
+
+
+#include <stddef.h>
+
+
+#include <functional>
+
+namespace std {
+  template <>
+  struct less <PyObject *>
+  {
+    bool
+    operator()(PyObject * v, PyObject *w) const
+    { 
+      bool res;
+      SWIG_PYTHON_THREAD_BEGIN_BLOCK;
+      res = PyObject_RichCompareBool(v, w, Py_LT) ? true : false;
+      /* This may fall into a case of inconsistent
+               eg. ObjA > ObjX > ObjB
+               but ObjA < ObjB
+      */
+      if( PyErr_Occurred() && PyErr_ExceptionMatches(PyExc_TypeError) )
+      {
+        /* Objects can't be compared, this mostly occurred in Python 3.0 */
+        /* Compare their ptr directly for a workaround */
+        res = (v < w);
+        PyErr_Clear();
+      }
+      SWIG_PYTHON_THREAD_END_BLOCK;
+      return res;
+    }
+  };
+
+  template <>
+  struct less <swig::SwigPtr_PyObject>
+  {
+    bool
+    operator()(const swig::SwigPtr_PyObject& v, const swig::SwigPtr_PyObject& w) const
+    {
+      return std::less<PyObject *>()(v, w);
+    }
+  };
+
+  template <>
+  struct less <swig::SwigVar_PyObject>
+  {
+    bool
+    operator()(const swig::SwigVar_PyObject& v, const swig::SwigVar_PyObject& w) const
+    {
+      return std::less<PyObject *>()(v, w);
+    }
+  };
+
+}
+
+namespace swig {
+  template <> struct traits<PyObject *> {
+    typedef value_category category;
+    static const char* type_name() { return "PyObject *"; }
+  };  
+
+  template <>  struct traits_asval<PyObject * > {   
+    typedef PyObject * value_type;
+    static int asval(PyObject *obj, value_type *val) {
+      if (val) *val = obj;
+      return SWIG_OK;
+    }
+  };
+
+  template <> 
+  struct traits_check<PyObject *, value_category> {
+    static bool check(PyObject *) {
+      return true;
+    }
+  };
+
+  template <>  struct traits_from<PyObject *> {
+    typedef PyObject * value_type;
+    static PyObject *from(const value_type& val) {
+      Py_XINCREF(val);
+      return val;
+    }
+  };
+  
+}
+
+namespace swig {
+  template <class Difference>
+  inline size_t
+  check_index(Difference i, size_t size, bool insert = false) {
+    if ( i < 0 ) {
+      if ((size_t) (-i) <= size)
+	return (size_t) (i + size);
+    } else if ( (size_t) i < size ) {
+      return (size_t) i;
+    } else if (insert && ((size_t) i == size)) {
+      return size;
+    }
+    throw std::out_of_range("index out of range");
+  }
+
+  template <class Difference>
+  void
+  slice_adjust(Difference i, Difference j, Py_ssize_t step, size_t size, Difference &ii, Difference &jj, bool insert = false) {
+    if (step == 0) {
+      throw std::invalid_argument("slice step cannot be zero");
+    } else if (step > 0) {
+      // Required range: 0 <= i < size, 0 <= j < size, i <= j
+      if (i < 0) {
+        ii = 0;
+      } else if (i < (Difference)size) {
+        ii = i;
+      } else if (insert && (i >= (Difference)size)) {
+        ii = (Difference)size;
+      }
+      if (j < 0) {
+        jj = 0;
+      } else {
+        jj = (j < (Difference)size) ? j : (Difference)size;
+      }
+      if (jj < ii)
+        jj = ii;
+    } else {
+      // Required range: -1 <= i < size-1, -1 <= j < size-1, i >= j
+      if (i < -1) {
+        ii = -1;
+      } else if (i < (Difference) size) {
+        ii = i;
+      } else if (i >= (Difference)(size-1)) {
+        ii = (Difference)(size-1);
+      }
+      if (j < -1) {
+        jj = -1;
+      } else {
+        jj = (j < (Difference)size ) ? j : (Difference)(size-1);
+      }
+      if (ii < jj)
+        ii = jj;
+    }
+  }
+
+  template <class Sequence, class Difference>
+  inline typename Sequence::iterator
+  getpos(Sequence* self, Difference i)  {
+    typename Sequence::iterator pos = self->begin();
+    std::advance(pos, check_index(i,self->size()));
+    return pos;
+  }
+
+  template <class Sequence, class Difference>
+  inline typename Sequence::const_iterator
+  cgetpos(const Sequence* self, Difference i)  {
+    typename Sequence::const_iterator pos = self->begin();
+    std::advance(pos, check_index(i,self->size()));
+    return pos;
+  }
+
+  template <class Sequence>
+  inline void
+  erase(Sequence* seq, const typename Sequence::iterator& position) {
+    seq->erase(position);
+  }
+
+  template <class Sequence>
+  struct traits_reserve {
+    static void reserve(Sequence & /*seq*/, typename Sequence::size_type /*n*/) {
+      // This should be specialized for types that support reserve
+    }
+  };
+
+  template <class Sequence, class Difference>
+  inline Sequence*
+  getslice(const Sequence* self, Difference i, Difference j, Py_ssize_t step) {
+    typename Sequence::size_type size = self->size();
+    Difference ii = 0;
+    Difference jj = 0;
+    swig::slice_adjust(i, j, step, size, ii, jj);
+
+    if (step > 0) {
+      typename Sequence::const_iterator sb = self->begin();
+      typename Sequence::const_iterator se = self->begin();
+      std::advance(sb,ii);
+      std::advance(se,jj);
+      if (step == 1) {
+        return new Sequence(sb, se);
+      } else {
+        Sequence *sequence = new Sequence();
+        swig::traits_reserve<Sequence>::reserve(*sequence, (jj - ii + step - 1) / step);
+        typename Sequence::const_iterator it = sb;
+        while (it!=se) {
+          sequence->push_back(*it);
+          for (Py_ssize_t c=0; c<step && it!=se; ++c)
+            it++;
+        }
+        return sequence;
+      } 
+    } else {
+      Sequence *sequence = new Sequence();
+      swig::traits_reserve<Sequence>::reserve(*sequence, (ii - jj - step - 1) / -step);
+      typename Sequence::const_reverse_iterator sb = self->rbegin();
+      typename Sequence::const_reverse_iterator se = self->rbegin();
+      std::advance(sb,size-ii-1);
+      std::advance(se,size-jj-1);
+      typename Sequence::const_reverse_iterator it = sb;
+      while (it!=se) {
+        sequence->push_back(*it);
+        for (Py_ssize_t c=0; c<-step && it!=se; ++c)
+          it++;
+      }
+      return sequence;
+    }
+  }
+
+  template <class Sequence, class Difference, class InputSeq>
+  inline void
+  setslice(Sequence* self, Difference i, Difference j, Py_ssize_t step, const InputSeq& is = InputSeq()) {
+    typename Sequence::size_type size = self->size();
+    Difference ii = 0;
+    Difference jj = 0;
+    swig::slice_adjust(i, j, step, size, ii, jj, true);
+    if (step > 0) {
+      if (step == 1) {
+        size_t ssize = jj - ii;
+        if (ssize <= is.size()) {
+          // expanding/staying the same size
+          swig::traits_reserve<Sequence>::reserve(*self, self->size() - ssize + is.size());
+          typename Sequence::iterator sb = self->begin();
+          typename InputSeq::const_iterator isit = is.begin();
+          std::advance(sb,ii);
+          std::advance(isit, jj - ii);
+          self->insert(std::copy(is.begin(), isit, sb), isit, is.end());
+        } else {
+          // shrinking
+          typename Sequence::iterator sb = self->begin();
+          typename Sequence::iterator se = self->begin();
+          std::advance(sb,ii);
+          std::advance(se,jj);
+          self->erase(sb,se);
+          sb = self->begin();
+          std::advance(sb,ii);
+          self->insert(sb, is.begin(), is.end());
+        }
+      } else {
+        size_t replacecount = (jj - ii + step - 1) / step;
+        if (is.size() != replacecount) {
+          char msg[1024];
+          sprintf(msg, "attempt to assign sequence of size %lu to extended slice of size %lu", (unsigned long)is.size(), (unsigned long)replacecount);
+          throw std::invalid_argument(msg);
+        }
+        typename Sequence::const_iterator isit = is.begin();
+        typename Sequence::iterator it = self->begin();
+        std::advance(it,ii);
+        for (size_t rc=0; rc<replacecount && it != self->end(); ++rc) {
+          *it++ = *isit++;
+          for (Py_ssize_t c=0; c<(step-1) && it != self->end(); ++c)
+            it++;
+        }
+      }
+    } else {
+      size_t replacecount = (ii - jj - step - 1) / -step;
+      if (is.size() != replacecount) {
+        char msg[1024];
+        sprintf(msg, "attempt to assign sequence of size %lu to extended slice of size %lu", (unsigned long)is.size(), (unsigned long)replacecount);
+        throw std::invalid_argument(msg);
+      }
+      typename Sequence::const_iterator isit = is.begin();
+      typename Sequence::reverse_iterator it = self->rbegin();
+      std::advance(it,size-ii-1);
+      for (size_t rc=0; rc<replacecount && it != self->rend(); ++rc) {
+        *it++ = *isit++;
+        for (Py_ssize_t c=0; c<(-step-1) && it != self->rend(); ++c)
+          it++;
+      }
+    }
+  }
+
+  template <class Sequence, class Difference>
+  inline void
+  delslice(Sequence* self, Difference i, Difference j, Py_ssize_t step) {
+    typename Sequence::size_type size = self->size();
+    Difference ii = 0;
+    Difference jj = 0;
+    swig::slice_adjust(i, j, step, size, ii, jj, true);
+    if (step > 0) {
+      typename Sequence::iterator sb = self->begin();
+      std::advance(sb,ii);
+      if (step == 1) {
+        typename Sequence::iterator se = self->begin();
+        std::advance(se,jj);
+        self->erase(sb,se);
+      } else {
+        typename Sequence::iterator it = sb;
+        size_t delcount = (jj - ii + step - 1) / step;
+        while (delcount) {
+          it = self->erase(it);
+          for (Py_ssize_t c=0; c<(step-1) && it != self->end(); ++c)
+            it++;
+          delcount--;
+        }
+      }
+    } else {
+      typename Sequence::reverse_iterator sb = self->rbegin();
+      std::advance(sb,size-ii-1);
+      typename Sequence::reverse_iterator it = sb;
+      size_t delcount = (ii - jj - step - 1) / -step;
+      while (delcount) {
+        it = typename Sequence::reverse_iterator(self->erase((++it).base()));
+        for (Py_ssize_t c=0; c<(-step-1) && it != self->rend(); ++c)
+          it++;
+        delcount--;
+      }
+    }
+  }
+}
+
+
+namespace swig {
+  struct stop_iteration {
+  };
+
+  struct SwigPyIterator {
+  private:
+    SwigPtr_PyObject _seq;
+
+  protected:
+    SwigPyIterator(PyObject *seq) : _seq(seq)
+    {
+    }
+      
+  public:
+    virtual ~SwigPyIterator() {}
+
+    // Access iterator method, required by Python
+    virtual PyObject *value() const = 0;
+
+    // Forward iterator method, required by Python
+    virtual SwigPyIterator *incr(size_t n = 1) = 0;
+    
+    // Backward iterator method, very common in C++, but not required in Python
+    virtual SwigPyIterator *decr(size_t /*n*/ = 1)
+    {
+      throw stop_iteration();
+    }
+
+    // Random access iterator methods, but not required in Python
+    virtual ptrdiff_t distance(const SwigPyIterator &/*x*/) const
+    {
+      throw std::invalid_argument("operation not supported");
+    }
+
+    virtual bool equal (const SwigPyIterator &/*x*/) const
+    {
+      throw std::invalid_argument("operation not supported");
+    }
+    
+    // C++ common/needed methods
+    virtual SwigPyIterator *copy() const = 0;
+
+    PyObject *next()     
+    {
+      SWIG_PYTHON_THREAD_BEGIN_BLOCK; // disable threads       
+      PyObject *obj = value();
+      incr();       
+      SWIG_PYTHON_THREAD_END_BLOCK; // re-enable threads
+      return obj;     
+    }
+
+    /* Make an alias for Python 3.x */
+    PyObject *__next__()
+    {
+      return next();
+    }
+
+    PyObject *previous()
+    {
+      SWIG_PYTHON_THREAD_BEGIN_BLOCK; // disable threads       
+      decr();
+      PyObject *obj = value();
+      SWIG_PYTHON_THREAD_END_BLOCK; // re-enable threads       
+      return obj;
+    }
+
+    SwigPyIterator *advance(ptrdiff_t n)
+    {
+      return  (n > 0) ?  incr(n) : decr(-n);
+    }
+      
+    bool operator == (const SwigPyIterator& x)  const
+    {
+      return equal(x);
+    }
+      
+    bool operator != (const SwigPyIterator& x) const
+    {
+      return ! operator==(x);
+    }
+      
+    SwigPyIterator& operator += (ptrdiff_t n)
+    {
+      return *advance(n);
+    }
+
+    SwigPyIterator& operator -= (ptrdiff_t n)
+    {
+      return *advance(-n);
+    }
+      
+    SwigPyIterator* operator + (ptrdiff_t n) const
+    {
+      return copy()->advance(n);
+    }
+
+    SwigPyIterator* operator - (ptrdiff_t n) const
+    {
+      return copy()->advance(-n);
+    }
+      
+    ptrdiff_t operator - (const SwigPyIterator& x) const
+    {
+      return x.distance(*this);
+    }
+      
+    static swig_type_info* descriptor() {
+      static int init = 0;
+      static swig_type_info* desc = 0;
+      if (!init) {
+	desc = SWIG_TypeQuery("swig::SwigPyIterator *");
+	init = 1;
+      }	
+      return desc;
+    }    
+  };
+
+#if defined(SWIGPYTHON_BUILTIN)
+  inline PyObject* make_output_iterator_builtin (PyObject *pyself)
+  {
+    Py_INCREF(pyself);
+    return pyself;
+  }
+#endif
+}
+
+
+#if defined(__SUNPRO_CC) && defined(_RWSTD_VER)
+#  if !defined(SWIG_NO_STD_NOITERATOR_TRAITS_STL)
+#    define SWIG_STD_NOITERATOR_TRAITS_STL
+#  endif
+#endif
+
+#if !defined(SWIG_STD_NOITERATOR_TRAITS_STL)
+#include <iterator>
+#else
+namespace std {
+  template <class Iterator>
+  struct iterator_traits {
+    typedef ptrdiff_t difference_type;
+    typedef typename Iterator::value_type value_type;
+  };
+
+  template <class Iterator, class Category,class T, class Reference, class Pointer, class Distance>
+  struct iterator_traits<__reverse_bi_iterator<Iterator,Category,T,Reference,Pointer,Distance> > {
+    typedef Distance difference_type;
+    typedef T value_type;
+  };
+
+  template <class T>
+  struct iterator_traits<T*> {
+    typedef T value_type;
+    typedef ptrdiff_t difference_type;
+  };
+
+  template<typename _InputIterator>
+  inline typename iterator_traits<_InputIterator>::difference_type
+  distance(_InputIterator __first, _InputIterator __last)
+  {
+    typename iterator_traits<_InputIterator>::difference_type __n = 0;
+    while (__first != __last) {
+      ++__first; ++__n;
+    }
+    return __n;
+  }
+}
+#endif
+
+
+namespace swig {
+  template<typename OutIterator>
+  class SwigPyIterator_T :  public SwigPyIterator
+  {
+  public:
+    typedef OutIterator out_iterator;
+    typedef typename std::iterator_traits<out_iterator>::value_type value_type;    
+    typedef SwigPyIterator_T<out_iterator> self_type;
+
+    SwigPyIterator_T(out_iterator curr, PyObject *seq)
+      : SwigPyIterator(seq), current(curr)
+    {
+    }
+
+    const out_iterator& get_current() const
+    {
+      return current;
+    }
+
+    
+    bool equal (const SwigPyIterator &iter) const
+    {
+      const self_type *iters = dynamic_cast<const self_type *>(&iter);
+      if (iters) {
+	return (current == iters->get_current());
+      } else {
+	throw std::invalid_argument("bad iterator type");
+      }
+    }
+    
+    ptrdiff_t distance(const SwigPyIterator &iter) const
+    {
+      const self_type *iters = dynamic_cast<const self_type *>(&iter);
+      if (iters) {
+	return std::distance(current, iters->get_current());
+      } else {
+	throw std::invalid_argument("bad iterator type");
+      }
+    }    
+    
+  protected:
+    out_iterator current;
+  };
+  
+  template <class ValueType>
+  struct from_oper 
+  {
+    typedef const ValueType& argument_type;
+    typedef PyObject *result_type;
+    result_type operator()(argument_type v) const
+    {
+      return swig::from(v);
+    }
+  };
+
+  template<typename OutIterator, 
+	   typename ValueType = typename std::iterator_traits<OutIterator>::value_type,
+	   typename FromOper = from_oper<ValueType> >
+  class SwigPyForwardIteratorOpen_T :  public SwigPyIterator_T<OutIterator>
+  {
+  public:
+    FromOper from;
+    typedef OutIterator out_iterator;
+    typedef ValueType value_type;
+    typedef SwigPyIterator_T<out_iterator>  base;
+    typedef SwigPyForwardIteratorOpen_T<OutIterator, ValueType, FromOper> self_type;
+    
+    SwigPyForwardIteratorOpen_T(out_iterator curr, PyObject *seq)
+      : SwigPyIterator_T<OutIterator>(curr, seq)
+    {
+    }
+    
+    PyObject *value() const {
+      return from(static_cast<const value_type&>(*(base::current)));
+    }
+    
+    SwigPyIterator *copy() const
+    {
+      return new self_type(*this);
+    }
+
+    SwigPyIterator *incr(size_t n = 1)
+    {
+      while (n--) {
+	++base::current;
+      }
+      return this;
+    }
+
+  };
+
+  template<typename OutIterator, 
+	   typename ValueType = typename std::iterator_traits<OutIterator>::value_type,
+	   typename FromOper = from_oper<ValueType> >
+  class SwigPyIteratorOpen_T :  public SwigPyForwardIteratorOpen_T<OutIterator, ValueType, FromOper>
+  {
+  public:
+    FromOper from;
+    typedef OutIterator out_iterator;
+    typedef ValueType value_type;
+    typedef SwigPyIterator_T<out_iterator>  base;
+    typedef SwigPyIteratorOpen_T<OutIterator, ValueType, FromOper> self_type;
+    
+    SwigPyIteratorOpen_T(out_iterator curr, PyObject *seq)
+      : SwigPyForwardIteratorOpen_T<OutIterator>(curr, seq)
+    {
+    }
+
+    SwigPyIterator *decr(size_t n = 1)
+    {
+      while (n--) {
+	--base::current;
+      }
+      return this;
+    }
+  };
+
+  template<typename OutIterator, 
+	   typename ValueType = typename std::iterator_traits<OutIterator>::value_type,
+	   typename FromOper = from_oper<ValueType> >
+  class SwigPyForwardIteratorClosed_T :  public SwigPyIterator_T<OutIterator>
+  {
+  public:
+    FromOper from;
+    typedef OutIterator out_iterator;
+    typedef ValueType value_type;
+    typedef SwigPyIterator_T<out_iterator>  base;    
+    typedef SwigPyForwardIteratorClosed_T<OutIterator, ValueType, FromOper> self_type;
+    
+    SwigPyForwardIteratorClosed_T(out_iterator curr, out_iterator first, out_iterator last, PyObject *seq)
+      : SwigPyIterator_T<OutIterator>(curr, seq), begin(first), end(last)
+    {
+    }
+    
+    PyObject *value() const {
+      if (base::current == end) {
+	throw stop_iteration();
+      } else {
+	return from(static_cast<const value_type&>(*(base::current)));
+      }
+    }
+    
+    SwigPyIterator *copy() const
+    {
+      return new self_type(*this);
+    }
+
+    SwigPyIterator *incr(size_t n = 1)
+    {
+      while (n--) {
+	if (base::current == end) {
+	  throw stop_iteration();
+	} else {
+	  ++base::current;
+	}
+      }
+      return this;
+    }
+
+  protected:
+    out_iterator begin;
+    out_iterator end;
+  };
+
+  template<typename OutIterator, 
+	   typename ValueType = typename std::iterator_traits<OutIterator>::value_type,
+	   typename FromOper = from_oper<ValueType> >
+  class SwigPyIteratorClosed_T :  public SwigPyForwardIteratorClosed_T<OutIterator,ValueType,FromOper>
+  {
+  public:
+    FromOper from;
+    typedef OutIterator out_iterator;
+    typedef ValueType value_type;
+    typedef SwigPyIterator_T<out_iterator>  base;
+    typedef SwigPyForwardIteratorClosed_T<OutIterator, ValueType, FromOper> base0;
+    typedef SwigPyIteratorClosed_T<OutIterator, ValueType, FromOper> self_type;
+    
+    SwigPyIteratorClosed_T(out_iterator curr, out_iterator first, out_iterator last, PyObject *seq)
+      : SwigPyForwardIteratorClosed_T<OutIterator,ValueType,FromOper>(curr, first, last, seq)
+    {
+    }
+
+    SwigPyIterator *decr(size_t n = 1)
+    {
+      while (n--) {
+	if (base::current == base0::begin) {
+	  throw stop_iteration();
+	} else {
+	  --base::current;
+	}
+      }
+      return this;
+    }
+  };
+
+
+  template<typename OutIter>
+  inline SwigPyIterator*
+  make_output_forward_iterator(const OutIter& current, const OutIter& begin,const OutIter& end, PyObject *seq = 0)
+  {
+    return new SwigPyForwardIteratorClosed_T<OutIter>(current, begin, end, seq);
+  }
+
+  template<typename OutIter>
+  inline SwigPyIterator*
+  make_output_iterator(const OutIter& current, const OutIter& begin,const OutIter& end, PyObject *seq = 0)
+  {
+    return new SwigPyIteratorClosed_T<OutIter>(current, begin, end, seq);
+  }
+
+  template<typename OutIter>
+  inline SwigPyIterator*
+  make_output_forward_iterator(const OutIter& current, PyObject *seq = 0)
+  {
+    return new SwigPyForwardIteratorOpen_T<OutIter>(current, seq);
+  }
+
+  template<typename OutIter>
+  inline SwigPyIterator*
+  make_output_iterator(const OutIter& current, PyObject *seq = 0)
+  {
+    return new SwigPyIteratorOpen_T<OutIter>(current, seq);
+  }
+
+}
+
+
+namespace swig
+{
+  template <class T>
+  struct SwigPySequence_Ref
+  {
+    SwigPySequence_Ref(PyObject* seq, Py_ssize_t index)
+      : _seq(seq), _index(index)
+    {
+    }
+    
+    operator T () const
+    {
+      swig::SwigVar_PyObject item = PySequence_GetItem(_seq, _index);
+      try {
+	return swig::as<T>(item);
+      } catch (const std::invalid_argument& e) {
+	char msg[1024];
+	sprintf(msg, "in sequence element %d ", (int)_index);
+	if (!PyErr_Occurred()) {
+	  ::SWIG_Error(SWIG_TypeError,  swig::type_name<T>());
+	}
+	SWIG_Python_AddErrorMsg(msg);
+	SWIG_Python_AddErrorMsg(e.what());
+	throw;
+      }
+    }
+
+    SwigPySequence_Ref& operator=(const T& v)
+    {
+      PySequence_SetItem(_seq, _index, swig::from<T>(v));
+      return *this;
+    }
+
+  private:
+    PyObject* _seq;
+    Py_ssize_t _index;
+  };
+
+  template <class T>
+  struct SwigPySequence_ArrowProxy
+  {
+    SwigPySequence_ArrowProxy(const T& x): m_value(x) {}
+    const T* operator->() const { return &m_value; }
+    operator const T*() const { return &m_value; }
+    T m_value;
+  };
+
+  template <class T, class Reference >
+  struct SwigPySequence_InputIterator
+  {
+    typedef SwigPySequence_InputIterator<T, Reference > self;
+
+    typedef std::random_access_iterator_tag iterator_category;
+    typedef Reference reference;
+    typedef T value_type;
+    typedef T* pointer;
+    typedef Py_ssize_t difference_type;
+
+    SwigPySequence_InputIterator()
+    {
+    }
+
+    SwigPySequence_InputIterator(PyObject* seq, Py_ssize_t index)
+      : _seq(seq), _index(index)
+    {
+    }
+
+    reference operator*() const
+    {
+      return reference(_seq, _index);
+    }
+
+    SwigPySequence_ArrowProxy<T>
+    operator->() const {
+      return SwigPySequence_ArrowProxy<T>(operator*());
+    }
+
+    bool operator==(const self& ri) const
+    {
+      return (_index == ri._index) && (_seq == ri._seq);
+    }
+
+    bool operator!=(const self& ri) const
+    {
+      return !(operator==(ri));
+    }
+
+    self& operator ++ ()
+    {
+      ++_index;
+      return *this;
+    }
+
+    self& operator -- ()
+    {
+      --_index;
+      return *this;
+    }
+
+    self& operator += (difference_type n)
+    {
+      _index += n;
+      return *this;
+    }
+
+    self operator +(difference_type n) const
+    {
+      return self(_seq, _index + n);
+    }
+
+    self& operator -= (difference_type n)
+    {
+      _index -= n;
+      return *this;
+    }
+
+    self operator -(difference_type n) const
+    {
+      return self(_seq, _index - n);
+    }
+
+    difference_type operator - (const self& ri) const
+    {
+      return _index - ri._index;
+    }
+
+    bool operator < (const self& ri) const
+    {
+      return _index < ri._index;
+    }
+
+    reference
+    operator[](difference_type n) const
+    {
+      return reference(_seq, _index + n);
+    }
+
+  private:
+    PyObject* _seq;
+    difference_type _index;
+  };
+
+  // STL container wrapper around a Python sequence
+  template <class T>
+  struct SwigPySequence_Cont
+  {
+    typedef SwigPySequence_Ref<T> reference;
+    typedef const SwigPySequence_Ref<T> const_reference;
+    typedef T value_type;
+    typedef T* pointer;
+    typedef Py_ssize_t difference_type;
+    typedef size_t size_type;
+    typedef const pointer const_pointer;
+    typedef SwigPySequence_InputIterator<T, reference> iterator;
+    typedef SwigPySequence_InputIterator<T, const_reference> const_iterator;
+
+    SwigPySequence_Cont(PyObject* seq) : _seq(0)
+    {
+      if (!PySequence_Check(seq)) {
+	throw std::invalid_argument("a sequence is expected");
+      }
+      _seq = seq;
+      Py_INCREF(_seq);
+    }
+
+    ~SwigPySequence_Cont()
+    {
+      Py_XDECREF(_seq);
+    }
+
+    size_type size() const
+    {
+      return static_cast<size_type>(PySequence_Size(_seq));
+    }
+
+    bool empty() const
+    {
+      return size() == 0;
+    }
+
+    iterator begin()
+    {
+      return iterator(_seq, 0);
+    }
+
+    const_iterator begin() const
+    {
+      return const_iterator(_seq, 0);
+    }
+
+    iterator end()
+    {
+      return iterator(_seq, size());
+    }
+
+    const_iterator end() const
+    {
+      return const_iterator(_seq, size());
+    }
+
+    reference operator[](difference_type n)
+    {
+      return reference(_seq, n);
+    }
+
+    const_reference operator[](difference_type n)  const
+    {
+      return const_reference(_seq, n);
+    }
+
+    bool check() const
+    {
+      Py_ssize_t s = size();
+      for (Py_ssize_t i = 0; i < s; ++i) {
+	swig::SwigVar_PyObject item = PySequence_GetItem(_seq, i);
+	if (!swig::check<value_type>(item))
+	  return false;
+      }
+      return true;
+    }
+
+  private:
+    PyObject* _seq;
+  };
+
+}
+
+
+namespace swig {
+  template <class SwigPySeq, class Seq>
+  inline void
+  assign(const SwigPySeq& swigpyseq, Seq* seq) {
+    // seq->assign(swigpyseq.begin(), swigpyseq.end()); // not used as not always implemented
+    typedef typename SwigPySeq::value_type value_type;
+    typename SwigPySeq::const_iterator it = swigpyseq.begin();
+    for (;it != swigpyseq.end(); ++it) {
+      seq->insert(seq->end(),(value_type)(*it));
+    }
+  }
+
+  template <class Seq, class T = typename Seq::value_type >
+  struct traits_asptr_stdseq {
+    typedef Seq sequence;
+    typedef T value_type;
+
+    static int asptr(PyObject *obj, sequence **seq) {
+      if (obj == Py_None || SWIG_Python_GetSwigThis(obj)) {
+	sequence *p;
+	swig_type_info *descriptor = swig::type_info<sequence>();
+	if (descriptor && SWIG_IsOK(::SWIG_ConvertPtr(obj, (void **)&p, descriptor, 0))) {
+	  if (seq) *seq = p;
+	  return SWIG_OLDOBJ;
+	}
+      } else if (PySequence_Check(obj)) {
+	try {
+	  SwigPySequence_Cont<value_type> swigpyseq(obj);
+	  if (seq) {
+	    sequence *pseq = new sequence();
+	    assign(swigpyseq, pseq);
+	    *seq = pseq;
+	    return SWIG_NEWOBJ;
+	  } else {
+	    return swigpyseq.check() ? SWIG_OK : SWIG_ERROR;
+	  }
+	} catch (std::exception& e) {
+	  if (seq) {
+	    if (!PyErr_Occurred()) {
+	      PyErr_SetString(PyExc_TypeError, e.what());
+	    }
+	  }
+	  return SWIG_ERROR;
+	}
+      }
+      return SWIG_ERROR;
+    }
+  };
+
+  template <class Seq, class T = typename Seq::value_type >
+  struct traits_from_stdseq {
+    typedef Seq sequence;
+    typedef T value_type;
+    typedef typename Seq::size_type size_type;
+    typedef typename sequence::const_iterator const_iterator;
+
+    static PyObject *from(const sequence& seq) {
+#ifdef SWIG_PYTHON_EXTRA_NATIVE_CONTAINERS
+      swig_type_info *desc = swig::type_info<sequence>();
+      if (desc && desc->clientdata) {
+	return SWIG_InternalNewPointerObj(new sequence(seq), desc, SWIG_POINTER_OWN);
+      }
+#endif
+      size_type size = seq.size();
+      if (size <= (size_type)INT_MAX) {
+	PyObject *obj = PyTuple_New((Py_ssize_t)size);
+	Py_ssize_t i = 0;
+	for (const_iterator it = seq.begin(); it != seq.end(); ++it, ++i) {
+	  PyTuple_SetItem(obj,i,swig::from<value_type>(*it));
+	}
+	return obj;
+      } else {
+	PyErr_SetString(PyExc_OverflowError,"sequence size not valid in python");
+	return NULL;
+      }
+    }
+  };
+}
+
+
+  namespace swig {
+    template <class T>
+    struct traits_reserve<std::vector<T> > {
+      static void reserve(std::vector<T> &seq, typename std::vector<T>::size_type n) {
+        seq.reserve(n);
+      }
+    };
+
+    template <class T>
+    struct traits_asptr<std::vector<T> >  {
+      static int asptr(PyObject *obj, std::vector<T> **vec) {
+	return traits_asptr_stdseq<std::vector<T> >::asptr(obj, vec);
+      }
+    };
+    
+    template <class T>
+    struct traits_from<std::vector<T> > {
+      static PyObject *from(const std::vector<T>& vec) {
+	return traits_from_stdseq<std::vector<T> >::from(vec);
+      }
+    };
+  }
+
+
+      namespace swig {
+	template <>  struct traits<std::vector< int, std::allocator< int > > > {
+	  typedef pointer_category category;
+	  static const char* type_name() {
+	    return "std::vector<" "int" "," "std::allocator< int >" " >";
+	  }
+	};
+      }
+    
+
+  namespace swig {
+    template <>  struct traits< mfem::Vector > {
+      typedef pointer_category category;
+      static const char* type_name() { return"mfem::Vector"; }
+    };
+  }
+
+
+      namespace swig {
+	template <>  struct traits<std::vector< mfem::Vector, std::allocator< mfem::Vector > > > {
+	  typedef pointer_category category;
+	  static const char* type_name() {
+	    return "std::vector<" "mfem::Vector" "," "std::allocator< mfem::Vector >" " >";
+	  }
+	};
+      }
+    
 
   #define SWIG_From_double   PyFloat_FromDouble 
 
@@ -5116,11 +6485,10 @@ fail:
 SWIGINTERN PyObject *_wrap_Mesh_MakePeriodic(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = 0 ;
-  std::vector< int > *arg2 = 0 ;
+  std::vector< int,std::allocator< int > > *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
@@ -5137,17 +6505,20 @@ SWIGINTERN PyObject *_wrap_Mesh_MakePeriodic(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Mesh_MakePeriodic" "', argument " "1"" of type '" "mfem::Mesh const &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__vectorT_int_t,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_MakePeriodic" "', argument " "2"" of type '" "std::vector< int > const &""'"); 
+  {
+    std::vector< int,std::allocator< int > > *ptr = (std::vector< int,std::allocator< int > > *)0;
+    res2 = swig::asptr(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_MakePeriodic" "', argument " "2"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Mesh_MakePeriodic" "', argument " "2"" of type '" "std::vector< int,std::allocator< int > > const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Mesh_MakePeriodic" "', argument " "2"" of type '" "std::vector< int > const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::vector< int > * >(argp2);
   {
     try {
-      result = mfem::Mesh::MakePeriodic((mfem::Mesh const &)*arg1,(std::vector< int > const &)*arg2);
+      result = mfem::Mesh::MakePeriodic((mfem::Mesh const &)*arg1,(std::vector< int,std::allocator< int > > const &)*arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -5165,8 +6536,10 @@ SWIGINTERN PyObject *_wrap_Mesh_MakePeriodic(PyObject *SWIGUNUSEDPARM(self), PyO
     }	 
   }
   resultobj = SWIG_NewPointerObj((new mfem::Mesh(static_cast< const mfem::Mesh& >(result))), SWIGTYPE_p_mfem__Mesh, SWIG_POINTER_OWN |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -5174,12 +6547,11 @@ fail:
 SWIGINTERN PyObject *_wrap_Mesh_CreatePeriodicVertexMapping(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
-  std::vector< mfem::Vector > *arg2 = 0 ;
+  std::vector< mfem::Vector,std::allocator< mfem::Vector > > *arg2 = 0 ;
   double arg3 = (double) 1e-8 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
   double val3 ;
   int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -5188,7 +6560,7 @@ SWIGINTERN PyObject *_wrap_Mesh_CreatePeriodicVertexMapping(PyObject *SWIGUNUSED
   char * kwnames[] = {
     (char *)"self",  (char *)"translations",  (char *)"tol",  NULL 
   };
-  std::vector< int > result;
+  std::vector< int,std::allocator< int > > result;
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:Mesh_CreatePeriodicVertexMapping", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
@@ -5196,14 +6568,17 @@ SWIGINTERN PyObject *_wrap_Mesh_CreatePeriodicVertexMapping(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_CreatePeriodicVertexMapping" "', argument " "1"" of type '" "mfem::Mesh const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__vectorT_mfem__Vector_t,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_CreatePeriodicVertexMapping" "', argument " "2"" of type '" "std::vector< mfem::Vector > const &""'"); 
+  {
+    std::vector< mfem::Vector,std::allocator< mfem::Vector > > *ptr = (std::vector< mfem::Vector,std::allocator< mfem::Vector > > *)0;
+    res2 = swig::asptr(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_CreatePeriodicVertexMapping" "', argument " "2"" of type '" "std::vector< mfem::Vector,std::allocator< mfem::Vector > > const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Mesh_CreatePeriodicVertexMapping" "', argument " "2"" of type '" "std::vector< mfem::Vector,std::allocator< mfem::Vector > > const &""'"); 
+    }
+    arg2 = ptr;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Mesh_CreatePeriodicVertexMapping" "', argument " "2"" of type '" "std::vector< mfem::Vector > const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::vector< mfem::Vector > * >(argp2);
   if (obj2) {
     ecode3 = SWIG_AsVal_double(obj2, &val3);
     if (!SWIG_IsOK(ecode3)) {
@@ -5213,7 +6588,7 @@ SWIGINTERN PyObject *_wrap_Mesh_CreatePeriodicVertexMapping(PyObject *SWIGUNUSED
   }
   {
     try {
-      result = ((mfem::Mesh const *)arg1)->CreatePeriodicVertexMapping((std::vector< mfem::Vector > const &)*arg2,arg3);
+      result = ((mfem::Mesh const *)arg1)->CreatePeriodicVertexMapping((std::vector< mfem::Vector,std::allocator< mfem::Vector > > const &)*arg2,arg3);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -5230,9 +6605,11 @@ SWIGINTERN PyObject *_wrap_Mesh_CreatePeriodicVertexMapping(PyObject *SWIGUNUSED
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
   }
-  resultobj = SWIG_NewPointerObj((new std::vector< int >(static_cast< const std::vector< int >& >(result))), SWIGTYPE_p_std__vectorT_int_t, SWIG_POINTER_OWN |  0 );
+  resultobj = swig::from(static_cast< std::vector< int,std::allocator< int > > >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -27024,8 +28401,8 @@ static PyMethodDef SwigMethods[] = {
 		"Mesh_MakeRefined(Mesh orig_mesh, intArray ref_factors, int ref_type) -> Mesh\n"
 		""},
 	 { "Mesh_MakeSimplicial", (PyCFunction)(void(*)(void))_wrap_Mesh_MakeSimplicial, METH_VARARGS|METH_KEYWORDS, "Mesh_MakeSimplicial(Mesh orig_mesh) -> Mesh"},
-	 { "Mesh_MakePeriodic", (PyCFunction)(void(*)(void))_wrap_Mesh_MakePeriodic, METH_VARARGS|METH_KEYWORDS, "Mesh_MakePeriodic(Mesh orig_mesh, std::vector< int > const & v2v) -> Mesh"},
-	 { "Mesh_CreatePeriodicVertexMapping", (PyCFunction)(void(*)(void))_wrap_Mesh_CreatePeriodicVertexMapping, METH_VARARGS|METH_KEYWORDS, "Mesh_CreatePeriodicVertexMapping(Mesh self, std::vector< mfem::Vector > const & translations, double tol=1e-8) -> std::vector< int >"},
+	 { "Mesh_MakePeriodic", (PyCFunction)(void(*)(void))_wrap_Mesh_MakePeriodic, METH_VARARGS|METH_KEYWORDS, "Mesh_MakePeriodic(Mesh orig_mesh, vector_int v2v) -> Mesh"},
+	 { "Mesh_CreatePeriodicVertexMapping", (PyCFunction)(void(*)(void))_wrap_Mesh_CreatePeriodicVertexMapping, METH_VARARGS|METH_KEYWORDS, "Mesh_CreatePeriodicVertexMapping(Mesh self, vector_Vector translations, double tol=1e-8) -> vector_int"},
 	 { "Mesh_NewElement", (PyCFunction)(void(*)(void))_wrap_Mesh_NewElement, METH_VARARGS|METH_KEYWORDS, "Mesh_NewElement(Mesh self, int geom) -> Element"},
 	 { "Mesh_AddVertex", _wrap_Mesh_AddVertex, METH_VARARGS, "\n"
 		"Mesh_AddVertex(Mesh self, double x, double y=0.0, double z=0.0) -> int\n"
@@ -27418,8 +28795,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"MakeRefined(Mesh orig_mesh, intArray ref_factors, int ref_type) -> Mesh\n"
 		""},
 	 { "Mesh_MakeSimplicial", (PyCFunction)(void(*)(void))_wrap_Mesh_MakeSimplicial, METH_VARARGS|METH_KEYWORDS, "MakeSimplicial(Mesh orig_mesh) -> Mesh"},
-	 { "Mesh_MakePeriodic", (PyCFunction)(void(*)(void))_wrap_Mesh_MakePeriodic, METH_VARARGS|METH_KEYWORDS, "MakePeriodic(Mesh orig_mesh, std::vector< int > const & v2v) -> Mesh"},
-	 { "Mesh_CreatePeriodicVertexMapping", (PyCFunction)(void(*)(void))_wrap_Mesh_CreatePeriodicVertexMapping, METH_VARARGS|METH_KEYWORDS, "CreatePeriodicVertexMapping(Mesh self, std::vector< mfem::Vector > const & translations, double tol=1e-8) -> std::vector< int >"},
+	 { "Mesh_MakePeriodic", (PyCFunction)(void(*)(void))_wrap_Mesh_MakePeriodic, METH_VARARGS|METH_KEYWORDS, "MakePeriodic(Mesh orig_mesh, vector_int v2v) -> Mesh"},
+	 { "Mesh_CreatePeriodicVertexMapping", (PyCFunction)(void(*)(void))_wrap_Mesh_CreatePeriodicVertexMapping, METH_VARARGS|METH_KEYWORDS, "CreatePeriodicVertexMapping(Mesh self, vector_Vector translations, double tol=1e-8) -> vector_int"},
 	 { "Mesh_NewElement", (PyCFunction)(void(*)(void))_wrap_Mesh_NewElement, METH_VARARGS|METH_KEYWORDS, "NewElement(Mesh self, int geom) -> Element"},
 	 { "Mesh_AddVertex", _wrap_Mesh_AddVertex, METH_VARARGS, "\n"
 		"AddVertex(Mesh self, double x, double y=0.0, double z=0.0) -> int\n"
@@ -28355,8 +29732,10 @@ static void *_p_mfem__H1Ser_QuadrilateralElementTo_p_mfem__FiniteElement(void *x
 static swig_type_info _swigt___input = {"__input", "$input", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_bool = {"_p_bool", "bool *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_f_r_q_const__mfem__Vector_r_mfem__Vector__void = {"_p_f_r_q_const__mfem__Vector_r_mfem__Vector__void", "void (*)(mfem::Vector const &,mfem::Vector &)", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
@@ -28583,19 +29962,21 @@ static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 
 static swig_type_info _swigt__p_pyr_t = {"_p_pyr_t", "pyr_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_size_type = {"_p_size_type", "size_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__ostream = {"_p_std__ostream", "std::ostream *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__OutStream = {"_p_mfem__OutStream", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_std__vectorT_int_t = {"_p_std__vectorT_int_t", "std::vector< int > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__vectorT_mfem__Vector_t = {"_p_std__vectorT_mfem__Vector_t", "std::vector< mfem::Vector > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt___input,
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_RefCoord,
+  &_swigt__p_allocator_type,
   &_swigt__p_bool,
   &_swigt__p_char,
+  &_swigt__p_difference_type,
   &_swigt__p_double,
   &_swigt__p_f_r_q_const__mfem__Vector_r_mfem__Vector__void,
   &_swigt__p_hex_t,
@@ -28823,18 +30204,20 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_pyr_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
+  &_swigt__p_size_type,
   &_swigt__p_std__ostream,
-  &_swigt__p_std__vectorT_int_t,
-  &_swigt__p_std__vectorT_mfem__Vector_t,
   &_swigt__p_tet_t,
   &_swigt__p_tri_t,
+  &_swigt__p_value_type,
 };
 
 static swig_cast_info _swigc___input[] = {  {&_swigt___input, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_bool[] = {  {&_swigt__p_bool, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_f_r_q_const__mfem__Vector_r_mfem__Vector__void[] = {  {&_swigt__p_f_r_q_const__mfem__Vector_r_mfem__Vector__void, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -29061,19 +30444,21 @@ static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 
 static swig_cast_info _swigc__p_pyr_t[] = {  {&_swigt__p_pyr_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_size_type[] = {  {&_swigt__p_size_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__OutStream[] = {{&_swigt__p_mfem__OutStream, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__ostream[] = {  {&_swigt__p_std__ostream, 0, 0, 0},  {&_swigt__p_mfem__OutStream, _p_mfem__OutStreamTo_p_std__ostream, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__vectorT_int_t[] = {  {&_swigt__p_std__vectorT_int_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__vectorT_mfem__Vector_t[] = {  {&_swigt__p_std__vectorT_mfem__Vector_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc___input,
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_RefCoord,
+  _swigc__p_allocator_type,
   _swigc__p_bool,
   _swigc__p_char,
+  _swigc__p_difference_type,
   _swigc__p_double,
   _swigc__p_f_r_q_const__mfem__Vector_r_mfem__Vector__void,
   _swigc__p_hex_t,
@@ -29301,11 +30686,11 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_pyr_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
+  _swigc__p_size_type,
   _swigc__p_std__ostream,
-  _swigc__p_std__vectorT_int_t,
-  _swigc__p_std__vectorT_mfem__Vector_t,
   _swigc__p_tet_t,
   _swigc__p_tri_t,
+  _swigc__p_value_type,
 };
 
 

@@ -116,6 +116,7 @@ import mfem._par.restriction
 import mfem._par.bilininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.std_vectors
 import mfem._par.pgridfunc
 import mfem._par.pfespace
 import mfem._par.pmesh

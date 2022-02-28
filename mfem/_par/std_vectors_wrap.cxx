@@ -13,7 +13,6 @@
 #define SWIGPYTHON
 #endif
 
-#define SWIG_DIRECTORS
 #define SWIG_PYTHON_DIRECTOR_NO_VTABLE
 
 
@@ -2690,582 +2689,40 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 
   #define SWIG_exception(code, msg) do { SWIG_Error(code, msg); SWIG_fail;; } while(0) 
 
-/* -----------------------------------------------------------------------------
- * director_common.swg
- *
- * This file contains support for director classes which is common between
- * languages.
- * ----------------------------------------------------------------------------- */
-
-/*
-  Use -DSWIG_DIRECTOR_STATIC if you prefer to avoid the use of the
-  'Swig' namespace. This could be useful for multi-modules projects.
-*/
-#ifdef SWIG_DIRECTOR_STATIC
-/* Force anonymous (static) namespace */
-#define Swig
-#endif
-/* -----------------------------------------------------------------------------
- * director.swg
- *
- * This file contains support for director classes so that Python proxy
- * methods can be called from C++.
- * ----------------------------------------------------------------------------- */
-
-#ifndef SWIG_DIRECTOR_PYTHON_HEADER_
-#define SWIG_DIRECTOR_PYTHON_HEADER_
-
-#include <string>
-#include <iostream>
-#include <exception>
-#include <vector>
-#include <map>
-
-
-/*
-  Use -DSWIG_PYTHON_DIRECTOR_NO_VTABLE if you don't want to generate a 'virtual
-  table', and avoid multiple GetAttr calls to retrieve the python
-  methods.
-*/
-
-#ifndef SWIG_PYTHON_DIRECTOR_NO_VTABLE
-#ifndef SWIG_PYTHON_DIRECTOR_VTABLE
-#define SWIG_PYTHON_DIRECTOR_VTABLE
-#endif
-#endif
-
-
-
-/*
-  Use -DSWIG_DIRECTOR_NO_UEH if you prefer to avoid the use of the
-  Undefined Exception Handler provided by swig.
-*/
-#ifndef SWIG_DIRECTOR_NO_UEH
-#ifndef SWIG_DIRECTOR_UEH
-#define SWIG_DIRECTOR_UEH
-#endif
-#endif
-
-
-/*
-  Use -DSWIG_DIRECTOR_NORTTI if you prefer to avoid the use of the
-  native C++ RTTI and dynamic_cast<>. But be aware that directors
-  could stop working when using this option.
-*/
-#ifdef SWIG_DIRECTOR_NORTTI
-/*
-   When we don't use the native C++ RTTI, we implement a minimal one
-   only for Directors.
-*/
-# ifndef SWIG_DIRECTOR_RTDIR
-# define SWIG_DIRECTOR_RTDIR
-
-namespace Swig {
-  class Director;
-  SWIGINTERN std::map<void *, Director *>& get_rtdir_map() {
-    static std::map<void *, Director *> rtdir_map;
-    return rtdir_map;
-  }
-
-  SWIGINTERNINLINE void set_rtdir(void *vptr, Director *rtdir) {
-    get_rtdir_map()[vptr] = rtdir;
-  }
-
-  SWIGINTERNINLINE Director *get_rtdir(void *vptr) {
-    std::map<void *, Director *>::const_iterator pos = get_rtdir_map().find(vptr);
-    Director *rtdir = (pos != get_rtdir_map().end()) ? pos->second : 0;
-    return rtdir;
-  }
-}
-# endif /* SWIG_DIRECTOR_RTDIR */
-
-# define SWIG_DIRECTOR_CAST(ARG) Swig::get_rtdir(static_cast<void *>(ARG))
-# define SWIG_DIRECTOR_RGTR(ARG1, ARG2) Swig::set_rtdir(static_cast<void *>(ARG1), ARG2)
-
-#else
-
-# define SWIG_DIRECTOR_CAST(ARG) dynamic_cast<Swig::Director *>(ARG)
-# define SWIG_DIRECTOR_RGTR(ARG1, ARG2)
-
-#endif /* SWIG_DIRECTOR_NORTTI */
-
-extern "C" {
-  struct swig_type_info;
-}
-
-namespace Swig {
-
-  /* memory handler */
-  struct GCItem {
-    virtual ~GCItem() {}
-
-    virtual int get_own() const {
-      return 0;
-    }
-  };
-
-  struct GCItem_var {
-    GCItem_var(GCItem *item = 0) : _item(item) {
-    }
-
-    GCItem_var& operator=(GCItem *item) {
-      GCItem *tmp = _item;
-      _item = item;
-      delete tmp;
-      return *this;
-    }
-
-    ~GCItem_var() {
-      delete _item;
-    }
-
-    GCItem * operator->() const {
-      return _item;
-    }
-
-  private:
-    GCItem *_item;
-  };
-
-  struct GCItem_Object : GCItem {
-    GCItem_Object(int own) : _own(own) {
-    }
-
-    virtual ~GCItem_Object() {
-    }
-
-    int get_own() const {
-      return _own;
-    }
-
-  private:
-    int _own;
-  };
-
-  template <typename Type>
-  struct GCItem_T : GCItem {
-    GCItem_T(Type *ptr) : _ptr(ptr) {
-    }
-
-    virtual ~GCItem_T() {
-      delete _ptr;
-    }
-
-  private:
-    Type *_ptr;
-  };
-
-  template <typename Type>
-  struct GCArray_T : GCItem {
-    GCArray_T(Type *ptr) : _ptr(ptr) {
-    }
-
-    virtual ~GCArray_T() {
-      delete[] _ptr;
-    }
-
-  private:
-    Type *_ptr;
-  };
-
-  /* base class for director exceptions */
-  class DirectorException : public std::exception {
-  protected:
-    std::string swig_msg;
-  public:
-    DirectorException(PyObject *error, const char *hdr ="", const char *msg ="") : swig_msg(hdr) {
-      SWIG_PYTHON_THREAD_BEGIN_BLOCK;
-      if (msg[0]) {
-        swig_msg += " ";
-        swig_msg += msg;
-      }
-      if (!PyErr_Occurred()) {
-        PyErr_SetString(error, what());
-      }
-      SWIG_PYTHON_THREAD_END_BLOCK;
-    }
-
-    virtual ~DirectorException() throw() {
-    }
-
-    /* Deprecated, use what() instead */
-    const char *getMessage() const {
-      return what();
-    }
-
-    const char *what() const throw() {
-      return swig_msg.c_str();
-    }
-
-    static void raise(PyObject *error, const char *msg) {
-      throw DirectorException(error, msg);
-    }
-
-    static void raise(const char *msg) {
-      raise(PyExc_RuntimeError, msg);
-    }
-  };
-
-  /* type mismatch in the return value from a python method call */
-  class DirectorTypeMismatchException : public DirectorException {
-  public:
-    DirectorTypeMismatchException(PyObject *error, const char *msg="")
-      : DirectorException(error, "SWIG director type mismatch", msg) {
-    }
-
-    DirectorTypeMismatchException(const char *msg="")
-      : DirectorException(PyExc_TypeError, "SWIG director type mismatch", msg) {
-    }
-
-    static void raise(PyObject *error, const char *msg) {
-      throw DirectorTypeMismatchException(error, msg);
-    }
-
-    static void raise(const char *msg) {
-      throw DirectorTypeMismatchException(msg);
-    }
-  };
-
-  /* any python exception that occurs during a director method call */
-  class DirectorMethodException : public DirectorException {
-  public:
-    DirectorMethodException(const char *msg = "")
-      : DirectorException(PyExc_RuntimeError, "SWIG director method error.", msg) {
-    }
-
-    static void raise(const char *msg) {
-      throw DirectorMethodException(msg);
-    }
-  };
-
-  /* attempt to call a pure virtual method via a director method */
-  class DirectorPureVirtualException : public DirectorException {
-  public:
-    DirectorPureVirtualException(const char *msg = "")
-      : DirectorException(PyExc_RuntimeError, "SWIG director pure virtual method called", msg) {
-    }
-
-    static void raise(const char *msg) {
-      throw DirectorPureVirtualException(msg);
-    }
-  };
-
-
-#if defined(SWIG_PYTHON_THREADS)
-/*  __THREAD__ is the old macro to activate some thread support */
-# if !defined(__THREAD__)
-#   define __THREAD__ 1
-# endif
-#endif
-
-#ifdef __THREAD__
-# include "pythread.h"
-  class Guard {
-    PyThread_type_lock &mutex_;
-
-  public:
-    Guard(PyThread_type_lock & mutex) : mutex_(mutex) {
-      PyThread_acquire_lock(mutex_, WAIT_LOCK);
-    }
-
-    ~Guard() {
-      PyThread_release_lock(mutex_);
-    }
-  };
-# define SWIG_GUARD(mutex) Guard _guard(mutex)
-#else
-# define SWIG_GUARD(mutex)
-#endif
-
-  /* director base class */
-  class Director {
-  private:
-    /* pointer to the wrapped python object */
-    PyObject *swig_self;
-    /* flag indicating whether the object is owned by python or c++ */
-    mutable bool swig_disown_flag;
-
-    /* decrement the reference count of the wrapped python object */
-    void swig_decref() const {
-      if (swig_disown_flag) {
-        SWIG_PYTHON_THREAD_BEGIN_BLOCK;
-        Py_DECREF(swig_self);
-        SWIG_PYTHON_THREAD_END_BLOCK;
-      }
-    }
-
-  public:
-    /* wrap a python object. */
-    Director(PyObject *self) : swig_self(self), swig_disown_flag(false) {
-    }
-
-    /* discard our reference at destruction */
-    virtual ~Director() {
-      swig_decref();
-    }
-
-    /* return a pointer to the wrapped python object */
-    PyObject *swig_get_self() const {
-      return swig_self;
-    }
-
-    /* acquire ownership of the wrapped python object (the sense of "disown" is from python) */
-    void swig_disown() const {
-      if (!swig_disown_flag) {
-        swig_disown_flag=true;
-        swig_incref();
-      }
-    }
-
-    /* increase the reference count of the wrapped python object */
-    void swig_incref() const {
-      if (swig_disown_flag) {
-        Py_INCREF(swig_self);
-      }
-    }
-
-    /* methods to implement pseudo protected director members */
-    virtual bool swig_get_inner(const char * /* swig_protected_method_name */) const {
-      return true;
-    }
-
-    virtual void swig_set_inner(const char * /* swig_protected_method_name */, bool /* swig_val */) const {
-    }
-
-  /* ownership management */
-  private:
-    typedef std::map<void *, GCItem_var> swig_ownership_map;
-    mutable swig_ownership_map swig_owner;
-#ifdef __THREAD__
-    static PyThread_type_lock swig_mutex_own;
-#endif
-
-  public:
-    template <typename Type>
-    void swig_acquire_ownership_array(Type *vptr) const {
-      if (vptr) {
-        SWIG_GUARD(swig_mutex_own);
-        swig_owner[vptr] = new GCArray_T<Type>(vptr);
-      }
-    }
-
-    template <typename Type>
-    void swig_acquire_ownership(Type *vptr) const {
-      if (vptr) {
-        SWIG_GUARD(swig_mutex_own);
-        swig_owner[vptr] = new GCItem_T<Type>(vptr);
-      }
-    }
-
-    void swig_acquire_ownership_obj(void *vptr, int own) const {
-      if (vptr && own) {
-        SWIG_GUARD(swig_mutex_own);
-        swig_owner[vptr] = new GCItem_Object(own);
-      }
-    }
-
-    int swig_release_ownership(void *vptr) const {
-      int own = 0;
-      if (vptr) {
-        SWIG_GUARD(swig_mutex_own);
-        swig_ownership_map::iterator iter = swig_owner.find(vptr);
-        if (iter != swig_owner.end()) {
-          own = iter->second->get_own();
-          swig_owner.erase(iter);
-        }
-      }
-      return own;
-    }
-
-    template <typename Type>
-    static PyObject *swig_pyobj_disown(PyObject *pyobj, PyObject *SWIGUNUSEDPARM(args)) {
-      SwigPyObject *sobj = (SwigPyObject *)pyobj;
-      sobj->own = 0;
-      Director *d = SWIG_DIRECTOR_CAST(reinterpret_cast<Type *>(sobj->ptr));
-      if (d)
-        d->swig_disown();
-      return PyWeakref_NewProxy(pyobj, NULL);
-    }
-  };
-
-#ifdef __THREAD__
-  PyThread_type_lock Director::swig_mutex_own = PyThread_allocate_lock();
-#endif
-}
-
-#endif
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE__input swig_types[0]
-#define SWIGTYPE_p_CommGroup swig_types[1]
-#define SWIGTYPE_p_GroupId swig_types[2]
-#define SWIGTYPE_p_MPI_Comm swig_types[3]
-#define SWIGTYPE_p_PyMFEM__wFILE swig_types[4]
-#define SWIGTYPE_p_RefCoord swig_types[5]
-#define SWIGTYPE_p__HYPRE_ExecutionPolicy swig_types[6]
-#define SWIGTYPE_p__HYPRE_MemoryLocation swig_types[7]
-#define SWIGTYPE_p_allocator_type swig_types[8]
-#define SWIGTYPE_p_bool swig_types[9]
-#define SWIGTYPE_p_char swig_types[10]
-#define SWIGTYPE_p_difference_type swig_types[11]
-#define SWIGTYPE_p_double swig_types[12]
-#define SWIGTYPE_p_hex_t swig_types[13]
-#define SWIGTYPE_p_int swig_types[14]
-#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[15]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[16]
-#define SWIGTYPE_p_mfem__ConformingProlongationOperator swig_types[17]
-#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[18]
-#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[19]
-#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[20]
-#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[21]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[22]
-#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[23]
-#define SWIGTYPE_p_mfem__DenseSymmetricMatrix swig_types[24]
-#define SWIGTYPE_p_mfem__DeviceConformingProlongationOperator swig_types[25]
-#define SWIGTYPE_p_mfem__ElementRestriction swig_types[26]
-#define SWIGTYPE_p_mfem__FaceRestriction swig_types[27]
-#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[28]
-#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[29]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[30]
-#define SWIGTYPE_p_mfem__H1FaceRestriction swig_types[31]
-#define SWIGTYPE_p_mfem__HypreADS swig_types[32]
-#define SWIGTYPE_p_mfem__HypreAMS swig_types[33]
-#define SWIGTYPE_p_mfem__HypreBoomerAMG swig_types[34]
-#define SWIGTYPE_p_mfem__HypreDiagScale swig_types[35]
-#define SWIGTYPE_p_mfem__HypreEuclid swig_types[36]
-#define SWIGTYPE_p_mfem__HypreFGMRES swig_types[37]
-#define SWIGTYPE_p_mfem__HypreGMRES swig_types[38]
-#define SWIGTYPE_p_mfem__HypreILU swig_types[39]
-#define SWIGTYPE_p_mfem__HypreIdentity swig_types[40]
-#define SWIGTYPE_p_mfem__HyprePCG swig_types[41]
-#define SWIGTYPE_p_mfem__HypreParMatrix swig_types[42]
-#define SWIGTYPE_p_mfem__HypreParVector swig_types[43]
-#define SWIGTYPE_p_mfem__HypreParaSails swig_types[44]
-#define SWIGTYPE_p_mfem__HypreSmoother swig_types[45]
-#define SWIGTYPE_p_mfem__HypreSolver swig_types[46]
-#define SWIGTYPE_p_mfem__HypreTriSolve swig_types[47]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[48]
-#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[49]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[50]
-#define SWIGTYPE_p_mfem__L2ElementRestriction swig_types[51]
-#define SWIGTYPE_p_mfem__L2FaceRestriction swig_types[52]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[53]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[54]
-#define SWIGTYPE_p_mfem__Matrix swig_types[55]
-#define SWIGTYPE_p_mfem__MatrixInverse swig_types[56]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[57]
-#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[58]
-#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[59]
-#define SWIGTYPE_p_mfem__Operator swig_types[60]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[61]
-#define SWIGTYPE_p_mfem__ParFiniteElementSpace swig_types[62]
-#define SWIGTYPE_p_mfem__ParMesh swig_types[63]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[64]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[65]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[66]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[67]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[68]
-#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[69]
-#define SWIGTYPE_p_mfem__Refinement swig_types[70]
-#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[71]
-#define SWIGTYPE_p_mfem__ScaledOperator swig_types[72]
-#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[73]
-#define SWIGTYPE_p_mfem__Solver swig_types[74]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[75]
-#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[76]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[77]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[78]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[79]
-#define SWIGTYPE_p_mfem__Vector swig_types[80]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[81]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[82]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[83]
-#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[84]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[85]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[86]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[87]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[88]
-#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[89]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[90]
-#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[91]
-#define SWIGTYPE_p_p_PyObject swig_types[92]
-#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[93]
-#define SWIGTYPE_p_p_mfem__ConformingProlongationOperator swig_types[94]
-#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[95]
-#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[96]
-#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[97]
-#define SWIGTYPE_p_p_mfem__DenseSymmetricMatrix swig_types[98]
-#define SWIGTYPE_p_p_mfem__DeviceConformingProlongationOperator swig_types[99]
-#define SWIGTYPE_p_p_mfem__ElementRestriction swig_types[100]
-#define SWIGTYPE_p_p_mfem__FaceRestriction swig_types[101]
-#define SWIGTYPE_p_p_mfem__FiniteElementSpace swig_types[102]
-#define SWIGTYPE_p_p_mfem__GridFunction swig_types[103]
-#define SWIGTYPE_p_p_mfem__H1FaceRestriction swig_types[104]
-#define SWIGTYPE_p_p_mfem__HypreADS swig_types[105]
-#define SWIGTYPE_p_p_mfem__HypreAMS swig_types[106]
-#define SWIGTYPE_p_p_mfem__HypreBoomerAMG swig_types[107]
-#define SWIGTYPE_p_p_mfem__HypreDiagScale swig_types[108]
-#define SWIGTYPE_p_p_mfem__HypreEuclid swig_types[109]
-#define SWIGTYPE_p_p_mfem__HypreFGMRES swig_types[110]
-#define SWIGTYPE_p_p_mfem__HypreGMRES swig_types[111]
-#define SWIGTYPE_p_p_mfem__HypreILU swig_types[112]
-#define SWIGTYPE_p_p_mfem__HypreIdentity swig_types[113]
-#define SWIGTYPE_p_p_mfem__HyprePCG swig_types[114]
-#define SWIGTYPE_p_p_mfem__HypreParMatrix swig_types[115]
-#define SWIGTYPE_p_p_mfem__HypreParVector swig_types[116]
-#define SWIGTYPE_p_p_mfem__HypreParaSails swig_types[117]
-#define SWIGTYPE_p_p_mfem__HypreSmoother swig_types[118]
-#define SWIGTYPE_p_p_mfem__HypreSolver swig_types[119]
-#define SWIGTYPE_p_p_mfem__HypreTriSolve swig_types[120]
-#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[121]
-#define SWIGTYPE_p_p_mfem__IntegrationRule swig_types[122]
-#define SWIGTYPE_p_p_mfem__L2ElementRestriction swig_types[123]
-#define SWIGTYPE_p_p_mfem__L2FaceRestriction swig_types[124]
-#define SWIGTYPE_p_p_mfem__LinearForm swig_types[125]
-#define SWIGTYPE_p_p_mfem__Matrix swig_types[126]
-#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[127]
-#define SWIGTYPE_p_p_mfem__Operator swig_types[128]
-#define SWIGTYPE_p_p_mfem__ParFiniteElementSpace swig_types[129]
-#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[130]
-#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[131]
-#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[132]
-#define SWIGTYPE_p_p_mfem__QuadratureFunction swig_types[133]
-#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[134]
-#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[135]
-#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[136]
-#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[137]
-#define SWIGTYPE_p_p_mfem__Solver swig_types[138]
-#define SWIGTYPE_p_p_mfem__SparseMatrix swig_types[139]
-#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[140]
-#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[141]
-#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[142]
-#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[143]
-#define SWIGTYPE_p_p_mfem__Vector swig_types[144]
-#define SWIGTYPE_p_pri_t swig_types[145]
-#define SWIGTYPE_p_pyr_t swig_types[146]
-#define SWIGTYPE_p_quad_t swig_types[147]
-#define SWIGTYPE_p_seg_t swig_types[148]
-#define SWIGTYPE_p_size_type swig_types[149]
-#define SWIGTYPE_p_std__allocatorT_int_t swig_types[150]
-#define SWIGTYPE_p_std__allocatorT_mfem__ArrayT_int_t_t swig_types[151]
-#define SWIGTYPE_p_std__allocatorT_mfem__HypreParMatrix_p_t swig_types[152]
-#define SWIGTYPE_p_std__allocatorT_mfem__ParFiniteElementSpace_p_t swig_types[153]
-#define SWIGTYPE_p_std__allocatorT_mfem__ParMesh_p_t swig_types[154]
-#define SWIGTYPE_p_std__allocatorT_mfem__Vector_t swig_types[155]
-#define SWIGTYPE_p_std__invalid_argument swig_types[156]
-#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[157]
-#define SWIGTYPE_p_std__vectorT_mfem__ArrayT_int_t_std__allocatorT_mfem__ArrayT_int_t_t_t swig_types[158]
-#define SWIGTYPE_p_std__vectorT_mfem__HypreParMatrix_p_std__allocatorT_mfem__HypreParMatrix_p_t_t swig_types[159]
-#define SWIGTYPE_p_std__vectorT_mfem__ParFiniteElementSpace_p_std__allocatorT_mfem__ParFiniteElementSpace_p_t_t swig_types[160]
-#define SWIGTYPE_p_std__vectorT_mfem__ParMesh_p_std__allocatorT_mfem__ParMesh_p_t_t swig_types[161]
-#define SWIGTYPE_p_std__vectorT_mfem__Vector_std__allocatorT_mfem__Vector_t_t swig_types[162]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[163]
-#define SWIGTYPE_p_tet_t swig_types[164]
-#define SWIGTYPE_p_tri_t swig_types[165]
-#define SWIGTYPE_p_value_type swig_types[166]
-static swig_type_info *swig_types[168];
-static swig_module_info swig_module = {swig_types, 167, 0, 0, 0, 0};
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
+#define SWIGTYPE_p_allocator_type swig_types[1]
+#define SWIGTYPE_p_bool swig_types[2]
+#define SWIGTYPE_p_char swig_types[3]
+#define SWIGTYPE_p_difference_type swig_types[4]
+#define SWIGTYPE_p_double swig_types[5]
+#define SWIGTYPE_p_int swig_types[6]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[7]
+#define SWIGTYPE_p_mfem__HypreParMatrix swig_types[8]
+#define SWIGTYPE_p_mfem__ParFiniteElementSpace swig_types[9]
+#define SWIGTYPE_p_mfem__ParMesh swig_types[10]
+#define SWIGTYPE_p_mfem__Vector swig_types[11]
+#define SWIGTYPE_p_p_PyObject swig_types[12]
+#define SWIGTYPE_p_size_type swig_types[13]
+#define SWIGTYPE_p_std__allocatorT_int_t swig_types[14]
+#define SWIGTYPE_p_std__allocatorT_mfem__ArrayT_int_t_t swig_types[15]
+#define SWIGTYPE_p_std__allocatorT_mfem__HypreParMatrix_p_t swig_types[16]
+#define SWIGTYPE_p_std__allocatorT_mfem__ParFiniteElementSpace_p_t swig_types[17]
+#define SWIGTYPE_p_std__allocatorT_mfem__ParMesh_p_t swig_types[18]
+#define SWIGTYPE_p_std__allocatorT_mfem__Vector_t swig_types[19]
+#define SWIGTYPE_p_std__invalid_argument swig_types[20]
+#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[21]
+#define SWIGTYPE_p_std__vectorT_mfem__ArrayT_int_t_std__allocatorT_mfem__ArrayT_int_t_t_t swig_types[22]
+#define SWIGTYPE_p_std__vectorT_mfem__HypreParMatrix_p_std__allocatorT_mfem__HypreParMatrix_p_t_t swig_types[23]
+#define SWIGTYPE_p_std__vectorT_mfem__ParFiniteElementSpace_p_std__allocatorT_mfem__ParFiniteElementSpace_p_t_t swig_types[24]
+#define SWIGTYPE_p_std__vectorT_mfem__ParMesh_p_std__allocatorT_mfem__ParMesh_p_t_t swig_types[25]
+#define SWIGTYPE_p_std__vectorT_mfem__Vector_std__allocatorT_mfem__Vector_t_t swig_types[26]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[27]
+#define SWIGTYPE_p_value_type swig_types[28]
+static swig_type_info *swig_types[30];
+static swig_module_info swig_module = {swig_types, 29, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5831,14 +5288,6 @@ SWIGINTERN std::vector< mfem::HypreParMatrix * >::iterator std_vector_Sl_mfem_Hy
 SWIGINTERN std::vector< mfem::HypreParMatrix * >::iterator std_vector_Sl_mfem_HypreParMatrix_Sm__Sg__erase__SWIG_1(std::vector< mfem::HypreParMatrix * > *self,std::vector< mfem::HypreParMatrix * >::iterator first,std::vector< mfem::HypreParMatrix * >::iterator last){ return self->erase(first, last); }
 SWIGINTERN std::vector< mfem::HypreParMatrix * >::iterator std_vector_Sl_mfem_HypreParMatrix_Sm__Sg__insert__SWIG_0(std::vector< mfem::HypreParMatrix * > *self,std::vector< mfem::HypreParMatrix * >::iterator pos,std::vector< mfem::HypreParMatrix * >::value_type x){ return self->insert(pos, x); }
 SWIGINTERN void std_vector_Sl_mfem_HypreParMatrix_Sm__Sg__insert__SWIG_1(std::vector< mfem::HypreParMatrix * > *self,std::vector< mfem::HypreParMatrix * >::iterator pos,std::vector< mfem::HypreParMatrix * >::size_type n,std::vector< mfem::HypreParMatrix * >::value_type x){ self->insert(pos, n, x); }
-
-
-/* ---------------------------------------------------
- * C++ director class methods
- * --------------------------------------------------- */
-
-#include "std_vectors_wrap.h"
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -5858,16 +5307,19 @@ SWIGINTERN PyObject *_wrap_delete_SwigPyIterator(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< swig::SwigPyIterator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -5901,16 +5353,19 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator_value(PyObject *SWIGUNUSEDPARM(self), 
           SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
           SWIG_fail;
         }
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = result;
   return resultobj;
@@ -5957,16 +5412,19 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator_incr(PyObject *SWIGUNUSEDPARM(self), P
           SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
           SWIG_fail;
         }
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
   return resultobj;
@@ -6013,16 +5471,19 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator_decr(PyObject *SWIGUNUSEDPARM(self), P
           SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
           SWIG_fail;
         }
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
   return resultobj;
@@ -6066,16 +5527,19 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator_distance(PyObject *SWIGUNUSEDPARM(self
         result = ((swig::SwigPyIterator const *)arg1)->distance((swig::SwigPyIterator const &)*arg2);
       } catch(std::invalid_argument &_e) {
         SWIG_Python_Raise(SWIG_NewPointerObj((new std::invalid_argument(static_cast< const std::invalid_argument& >(_e))),SWIGTYPE_p_std__invalid_argument,SWIG_POINTER_OWN), "std::invalid_argument", SWIGTYPE_p_std__invalid_argument); SWIG_fail;
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_ptrdiff_t(static_cast< ptrdiff_t >(result));
   return resultobj;
@@ -6119,16 +5583,19 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator_equal(PyObject *SWIGUNUSEDPARM(self), 
         result = (bool)((swig::SwigPyIterator const *)arg1)->equal((swig::SwigPyIterator const &)*arg2);
       } catch(std::invalid_argument &_e) {
         SWIG_Python_Raise(SWIG_NewPointerObj((new std::invalid_argument(static_cast< const std::invalid_argument& >(_e))),SWIGTYPE_p_std__invalid_argument,SWIG_POINTER_OWN), "std::invalid_argument", SWIGTYPE_p_std__invalid_argument); SWIG_fail;
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -6154,16 +5621,19 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator_copy(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< swig::SwigPyIterator * >(argp1);
   {
     try {
-      result = (swig::SwigPyIterator *)((swig::SwigPyIterator const *)arg1)->copy(); 
+      result = (swig::SwigPyIterator *)((swig::SwigPyIterator const *)arg1)->copy();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -6197,16 +5667,19 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator_next(PyObject *SWIGUNUSEDPARM(self), P
           SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
           SWIG_fail;
         }
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = result;
   return resultobj;
@@ -6240,16 +5713,19 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator___next__(PyObject *SWIGUNUSEDPARM(self
           SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
           SWIG_fail;
         }
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = result;
   return resultobj;
@@ -6283,16 +5759,19 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator_previous(PyObject *SWIGUNUSEDPARM(self
           SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
           SWIG_fail;
         }
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = result;
   return resultobj;
@@ -6337,16 +5816,19 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator_advance(PyObject *SWIGUNUSEDPARM(self)
           SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
           SWIG_fail;
         }
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, 0 |  0 );
   return resultobj;
@@ -6386,16 +5868,19 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator___eq__(PyObject *SWIGUNUSEDPARM(self),
   arg2 = reinterpret_cast< swig::SwigPyIterator * >(argp2);
   {
     try {
-      result = (bool)((swig::SwigPyIterator const *)arg1)->operator ==((swig::SwigPyIterator const &)*arg2); 
+      result = (bool)((swig::SwigPyIterator const *)arg1)->operator ==((swig::SwigPyIterator const &)*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -6437,16 +5922,19 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator___ne__(PyObject *SWIGUNUSEDPARM(self),
   arg2 = reinterpret_cast< swig::SwigPyIterator * >(argp2);
   {
     try {
-      result = (bool)((swig::SwigPyIterator const *)arg1)->operator !=((swig::SwigPyIterator const &)*arg2); 
+      result = (bool)((swig::SwigPyIterator const *)arg1)->operator !=((swig::SwigPyIterator const &)*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -6493,16 +5981,19 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator___iadd__(PyObject *SWIGUNUSEDPARM(self
           SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
           SWIG_fail;
         }
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -6547,16 +6038,19 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator___isub__(PyObject *SWIGUNUSEDPARM(self
           SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
           SWIG_fail;
         }
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -6601,16 +6095,19 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator___add__(PyObject *SWIGUNUSEDPARM(self)
           SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
           SWIG_fail;
         }
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -6652,16 +6149,19 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator___sub____SWIG_0(PyObject *SWIGUNUSEDPA
           SWIG_SetErrorObj(PyExc_StopIteration, SWIG_Py_Void());
           SWIG_fail;
         }
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -6698,16 +6198,19 @@ SWIGINTERN PyObject *_wrap_SwigPyIterator___sub____SWIG_1(PyObject *SWIGUNUSEDPA
   arg2 = reinterpret_cast< swig::SwigPyIterator * >(argp2);
   {
     try {
-      result = ((swig::SwigPyIterator const *)arg1)->operator -((swig::SwigPyIterator const &)*arg2); 
+      result = ((swig::SwigPyIterator const *)arg1)->operator -((swig::SwigPyIterator const &)*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_ptrdiff_t(static_cast< ptrdiff_t >(result));
   return resultobj;
@@ -6787,16 +6290,19 @@ SWIGINTERN PyObject *_wrap_vector_int_iterator(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< std::vector< int > * >(argp1);
   {
     try {
-      result = (swig::SwigPyIterator *)std_vector_Sl_int_Sg__iterator(arg1,arg2); 
+      result = (swig::SwigPyIterator *)std_vector_Sl_int_Sg__iterator(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -6822,16 +6328,19 @@ SWIGINTERN PyObject *_wrap_vector_int___nonzero__(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< std::vector< int > * >(argp1);
   {
     try {
-      result = (bool)std_vector_Sl_int_Sg____nonzero__((std::vector< int > const *)arg1); 
+      result = (bool)std_vector_Sl_int_Sg____nonzero__((std::vector< int > const *)arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -6857,16 +6366,19 @@ SWIGINTERN PyObject *_wrap_vector_int___bool__(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< std::vector< int > * >(argp1);
   {
     try {
-      result = (bool)std_vector_Sl_int_Sg____bool__((std::vector< int > const *)arg1); 
+      result = (bool)std_vector_Sl_int_Sg____bool__((std::vector< int > const *)arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -6892,16 +6404,19 @@ SWIGINTERN PyObject *_wrap_vector_int___len__(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< std::vector< int > * >(argp1);
   {
     try {
-      result = std_vector_Sl_int_Sg____len__((std::vector< int > const *)arg1); 
+      result = std_vector_Sl_int_Sg____len__((std::vector< int > const *)arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
@@ -6953,16 +6468,19 @@ SWIGINTERN PyObject *_wrap_vector_int___getslice__(PyObject *SWIGUNUSEDPARM(self
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -7007,16 +6525,19 @@ SWIGINTERN PyObject *_wrap_vector_int___setslice____SWIG_0(PyObject *SWIGUNUSEDP
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7074,16 +6595,19 @@ SWIGINTERN PyObject *_wrap_vector_int___setslice____SWIG_1(PyObject *SWIGUNUSEDP
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res4)) delete arg4;
@@ -7198,16 +6722,19 @@ SWIGINTERN PyObject *_wrap_vector_int___delslice__(PyObject *SWIGUNUSEDPARM(self
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7244,16 +6771,19 @@ SWIGINTERN PyObject *_wrap_vector_int___delitem____SWIG_0(PyObject *SWIGUNUSEDPA
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7290,16 +6820,19 @@ SWIGINTERN PyObject *_wrap_vector_int___getitem____SWIG_0(PyObject *SWIGUNUSEDPA
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -7348,16 +6881,19 @@ SWIGINTERN PyObject *_wrap_vector_int___setitem____SWIG_0(PyObject *SWIGUNUSEDPA
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res3)) delete arg3;
@@ -7395,16 +6931,19 @@ SWIGINTERN PyObject *_wrap_vector_int___setitem____SWIG_1(PyObject *SWIGUNUSEDPA
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7440,16 +6979,19 @@ SWIGINTERN PyObject *_wrap_vector_int___delitem____SWIG_1(PyObject *SWIGUNUSEDPA
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7530,16 +7072,19 @@ SWIGINTERN PyObject *_wrap_vector_int___getitem____SWIG_1(PyObject *SWIGUNUSEDPA
         result = (std::vector< int >::value_type *) &std_vector_Sl_int_Sg____getitem____SWIG_1((std::vector< int > const *)arg1,arg2);
       } catch(std::out_of_range &_e) {
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_int(static_cast< int >(*result));
   (void)swig::container_owner<swig::traits<std::vector< int >::value_type>::category>::back_reference(resultobj, swig_obj[0]);
@@ -7630,16 +7175,19 @@ SWIGINTERN PyObject *_wrap_vector_int___setitem____SWIG_2(PyObject *SWIGUNUSEDPA
         std_vector_Sl_int_Sg____setitem____SWIG_2(arg1,arg2,(int const &)*arg3);
       } catch(std::out_of_range &_e) {
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7738,16 +7286,19 @@ SWIGINTERN PyObject *_wrap_vector_int_pop(PyObject *SWIGUNUSEDPARM(self), PyObje
         result = (std::vector< int >::value_type)std_vector_Sl_int_Sg__pop(arg1);
       } catch(std::out_of_range &_e) {
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -7785,16 +7336,19 @@ SWIGINTERN PyObject *_wrap_vector_int_append(PyObject *SWIGUNUSEDPARM(self), PyO
   arg2 = &temp2;
   {
     try {
-      std_vector_Sl_int_Sg__append(arg1,(int const &)*arg2); 
+      std_vector_Sl_int_Sg__append(arg1,(int const &)*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7810,16 +7364,19 @@ SWIGINTERN PyObject *_wrap_new_vector_int__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      result = (std::vector< int > *)new std::vector< int >(); 
+      result = (std::vector< int > *)new std::vector< int >();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -7848,16 +7405,19 @@ SWIGINTERN PyObject *_wrap_new_vector_int__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      result = (std::vector< int > *)new std::vector< int >((std::vector< int > const &)*arg1); 
+      result = (std::vector< int > *)new std::vector< int >((std::vector< int > const &)*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, SWIG_POINTER_NEW |  0 );
   if (SWIG_IsNewObj(res1)) delete arg1;
@@ -7885,16 +7445,19 @@ SWIGINTERN PyObject *_wrap_vector_int_empty(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg1 = reinterpret_cast< std::vector< int > * >(argp1);
   {
     try {
-      result = (bool)((std::vector< int > const *)arg1)->empty(); 
+      result = (bool)((std::vector< int > const *)arg1)->empty();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -7920,16 +7483,19 @@ SWIGINTERN PyObject *_wrap_vector_int_size(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< std::vector< int > * >(argp1);
   {
     try {
-      result = ((std::vector< int > const *)arg1)->size(); 
+      result = ((std::vector< int > const *)arg1)->size();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
@@ -7968,16 +7534,19 @@ SWIGINTERN PyObject *_wrap_vector_int_swap(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg2 = reinterpret_cast< std::vector< int > * >(argp2);
   {
     try {
-      (arg1)->swap(*arg2); 
+      (arg1)->swap(*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8003,16 +7572,19 @@ SWIGINTERN PyObject *_wrap_vector_int_begin(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg1 = reinterpret_cast< std::vector< int > * >(argp1);
   {
     try {
-      result = (arg1)->begin(); 
+      result = (arg1)->begin();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< int >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -8039,16 +7611,19 @@ SWIGINTERN PyObject *_wrap_vector_int_end(PyObject *SWIGUNUSEDPARM(self), PyObje
   arg1 = reinterpret_cast< std::vector< int > * >(argp1);
   {
     try {
-      result = (arg1)->end(); 
+      result = (arg1)->end();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< int >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -8075,16 +7650,19 @@ SWIGINTERN PyObject *_wrap_vector_int_rbegin(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< std::vector< int > * >(argp1);
   {
     try {
-      result = (arg1)->rbegin(); 
+      result = (arg1)->rbegin();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< int >::reverse_iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -8111,16 +7689,19 @@ SWIGINTERN PyObject *_wrap_vector_int_rend(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< std::vector< int > * >(argp1);
   {
     try {
-      result = (arg1)->rend(); 
+      result = (arg1)->rend();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< int >::reverse_iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -8146,16 +7727,19 @@ SWIGINTERN PyObject *_wrap_vector_int_clear(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg1 = reinterpret_cast< std::vector< int > * >(argp1);
   {
     try {
-      (arg1)->clear(); 
+      (arg1)->clear();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8181,16 +7765,19 @@ SWIGINTERN PyObject *_wrap_vector_int_get_allocator(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< std::vector< int > * >(argp1);
   {
     try {
-      result = ((std::vector< int > const *)arg1)->get_allocator(); 
+      result = ((std::vector< int > const *)arg1)->get_allocator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj((new std::vector< int >::allocator_type(static_cast< const std::vector< int >::allocator_type& >(result))), SWIGTYPE_p_std__allocatorT_int_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -8214,16 +7801,19 @@ SWIGINTERN PyObject *_wrap_new_vector_int__SWIG_2(PyObject *SWIGUNUSEDPARM(self)
   arg1 = static_cast< std::vector< int >::size_type >(val1);
   {
     try {
-      result = (std::vector< int > *)new std::vector< int >(arg1); 
+      result = (std::vector< int > *)new std::vector< int >(arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -8248,16 +7838,19 @@ SWIGINTERN PyObject *_wrap_vector_int_pop_back(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< std::vector< int > * >(argp1);
   {
     try {
-      (arg1)->pop_back(); 
+      (arg1)->pop_back();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8288,16 +7881,19 @@ SWIGINTERN PyObject *_wrap_vector_int_resize__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   arg2 = static_cast< std::vector< int >::size_type >(val2);
   {
     try {
-      (arg1)->resize(arg2); 
+      (arg1)->resize(arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8335,16 +7931,19 @@ SWIGINTERN PyObject *_wrap_vector_int_erase__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      result = std_vector_Sl_int_Sg__erase__SWIG_0(arg1,arg2); 
+      result = std_vector_Sl_int_Sg__erase__SWIG_0(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< int >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -8397,16 +7996,19 @@ SWIGINTERN PyObject *_wrap_vector_int_erase__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      result = std_vector_Sl_int_Sg__erase__SWIG_1(arg1,arg2,arg3); 
+      result = std_vector_Sl_int_Sg__erase__SWIG_1(arg1,arg2,arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< int >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -8490,16 +8092,19 @@ SWIGINTERN PyObject *_wrap_new_vector_int__SWIG_3(PyObject *SWIGUNUSEDPARM(self)
   arg2 = &temp2;
   {
     try {
-      result = (std::vector< int > *)new std::vector< int >(arg1,(std::vector< int >::value_type const &)*arg2); 
+      result = (std::vector< int > *)new std::vector< int >(arg1,(std::vector< int >::value_type const &)*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -8594,16 +8199,19 @@ SWIGINTERN PyObject *_wrap_vector_int_push_back(PyObject *SWIGUNUSEDPARM(self), 
   arg2 = &temp2;
   {
     try {
-      (arg1)->push_back((std::vector< int >::value_type const &)*arg2); 
+      (arg1)->push_back((std::vector< int >::value_type const &)*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8629,16 +8237,19 @@ SWIGINTERN PyObject *_wrap_vector_int_front(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg1 = reinterpret_cast< std::vector< int > * >(argp1);
   {
     try {
-      result = (std::vector< int >::value_type *) &((std::vector< int > const *)arg1)->front(); 
+      result = (std::vector< int >::value_type *) &((std::vector< int > const *)arg1)->front();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_int(static_cast< int >(*result));
   (void)swig::container_owner<swig::traits<std::vector< int >::value_type>::category>::back_reference(resultobj, swig_obj[0]);
@@ -8665,16 +8276,19 @@ SWIGINTERN PyObject *_wrap_vector_int_back(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< std::vector< int > * >(argp1);
   {
     try {
-      result = (std::vector< int >::value_type *) &((std::vector< int > const *)arg1)->back(); 
+      result = (std::vector< int >::value_type *) &((std::vector< int > const *)arg1)->back();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_int(static_cast< int >(*result));
   (void)swig::container_owner<swig::traits<std::vector< int >::value_type>::category>::back_reference(resultobj, swig_obj[0]);
@@ -8722,16 +8336,19 @@ SWIGINTERN PyObject *_wrap_vector_int_assign(PyObject *SWIGUNUSEDPARM(self), PyO
   arg3 = &temp3;
   {
     try {
-      (arg1)->assign(arg2,(std::vector< int >::value_type const &)*arg3); 
+      (arg1)->assign(arg2,(std::vector< int >::value_type const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8772,16 +8389,19 @@ SWIGINTERN PyObject *_wrap_vector_int_resize__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   arg3 = &temp3;
   {
     try {
-      (arg1)->resize(arg2,(std::vector< int >::value_type const &)*arg3); 
+      (arg1)->resize(arg2,(std::vector< int >::value_type const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8881,16 +8501,19 @@ SWIGINTERN PyObject *_wrap_vector_int_insert__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   arg3 = &temp3;
   {
     try {
-      result = std_vector_Sl_int_Sg__insert__SWIG_0(arg1,arg2,(int const &)*arg3); 
+      result = std_vector_Sl_int_Sg__insert__SWIG_0(arg1,arg2,(int const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< int >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -8946,16 +8569,19 @@ SWIGINTERN PyObject *_wrap_vector_int_insert__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   arg4 = &temp4;
   {
     try {
-      std_vector_Sl_int_Sg__insert__SWIG_1(arg1,arg2,arg3,(int const &)*arg4); 
+      std_vector_Sl_int_Sg__insert__SWIG_1(arg1,arg2,arg3,(int const &)*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9053,16 +8679,19 @@ SWIGINTERN PyObject *_wrap_vector_int_reserve(PyObject *SWIGUNUSEDPARM(self), Py
   arg2 = static_cast< std::vector< int >::size_type >(val2);
   {
     try {
-      (arg1)->reserve(arg2); 
+      (arg1)->reserve(arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9088,16 +8717,19 @@ SWIGINTERN PyObject *_wrap_vector_int_capacity(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< std::vector< int > * >(argp1);
   {
     try {
-      result = ((std::vector< int > const *)arg1)->capacity(); 
+      result = ((std::vector< int > const *)arg1)->capacity();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
@@ -9122,16 +8754,19 @@ SWIGINTERN PyObject *_wrap_delete_vector_int(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< std::vector< int > * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9170,16 +8805,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_iterator(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< std::vector< mfem::Vector > * >(argp1);
   {
     try {
-      result = (swig::SwigPyIterator *)std_vector_Sl_mfem_Vector_Sg__iterator(arg1,arg2); 
+      result = (swig::SwigPyIterator *)std_vector_Sl_mfem_Vector_Sg__iterator(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -9205,16 +8843,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector___nonzero__(PyObject *SWIGUNUSEDPARM(se
   arg1 = reinterpret_cast< std::vector< mfem::Vector > * >(argp1);
   {
     try {
-      result = (bool)std_vector_Sl_mfem_Vector_Sg____nonzero__((std::vector< mfem::Vector > const *)arg1); 
+      result = (bool)std_vector_Sl_mfem_Vector_Sg____nonzero__((std::vector< mfem::Vector > const *)arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -9240,16 +8881,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector___bool__(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< std::vector< mfem::Vector > * >(argp1);
   {
     try {
-      result = (bool)std_vector_Sl_mfem_Vector_Sg____bool__((std::vector< mfem::Vector > const *)arg1); 
+      result = (bool)std_vector_Sl_mfem_Vector_Sg____bool__((std::vector< mfem::Vector > const *)arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -9275,16 +8919,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector___len__(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< std::vector< mfem::Vector > * >(argp1);
   {
     try {
-      result = std_vector_Sl_mfem_Vector_Sg____len__((std::vector< mfem::Vector > const *)arg1); 
+      result = std_vector_Sl_mfem_Vector_Sg____len__((std::vector< mfem::Vector > const *)arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
@@ -9336,16 +8983,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector___getslice__(PyObject *SWIGUNUSEDPARM(s
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__Vector_std__allocatorT_mfem__Vector_t_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -9390,16 +9040,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector___setslice____SWIG_0(PyObject *SWIGUNUS
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9457,16 +9110,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector___setslice____SWIG_1(PyObject *SWIGUNUS
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res4)) delete arg4;
@@ -9581,16 +9237,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector___delslice__(PyObject *SWIGUNUSEDPARM(s
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9627,16 +9286,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector___delitem____SWIG_0(PyObject *SWIGUNUSE
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9673,16 +9335,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector___getitem____SWIG_0(PyObject *SWIGUNUSE
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__Vector_std__allocatorT_mfem__Vector_t_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -9731,16 +9396,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector___setitem____SWIG_0(PyObject *SWIGUNUSE
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res3)) delete arg3;
@@ -9778,16 +9446,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector___setitem____SWIG_1(PyObject *SWIGUNUSE
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9823,16 +9494,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector___delitem____SWIG_1(PyObject *SWIGUNUSE
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9913,16 +9587,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector___getitem____SWIG_1(PyObject *SWIGUNUSE
         result = (std::vector< mfem::Vector >::value_type *) &std_vector_Sl_mfem_Vector_Sg____getitem____SWIG_1((std::vector< mfem::Vector > const *)arg1,arg2);
       } catch(std::out_of_range &_e) {
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
   (void)swig::container_owner<swig::traits<std::vector< mfem::Vector >::value_type>::category>::back_reference(resultobj, swig_obj[0]);
@@ -10014,16 +9691,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector___setitem____SWIG_2(PyObject *SWIGUNUSE
         std_vector_Sl_mfem_Vector_Sg____setitem____SWIG_2(arg1,arg2,(mfem::Vector const &)*arg3);
       } catch(std::out_of_range &_e) {
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10120,16 +9800,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_pop(PyObject *SWIGUNUSEDPARM(self), PyO
         result = std_vector_Sl_mfem_Vector_Sg__pop(arg1);
       } catch(std::out_of_range &_e) {
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj((new std::vector< mfem::Vector >::value_type(static_cast< const std::vector< mfem::Vector >::value_type& >(result))), SWIGTYPE_p_mfem__Vector, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -10168,16 +9851,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_append(PyObject *SWIGUNUSEDPARM(self), 
   arg2 = reinterpret_cast< std::vector< mfem::Vector >::value_type * >(argp2);
   {
     try {
-      std_vector_Sl_mfem_Vector_Sg__append(arg1,(mfem::Vector const &)*arg2); 
+      std_vector_Sl_mfem_Vector_Sg__append(arg1,(mfem::Vector const &)*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10193,16 +9879,19 @@ SWIGINTERN PyObject *_wrap_new_vector_Vector__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      result = (std::vector< mfem::Vector > *)new std::vector< mfem::Vector >(); 
+      result = (std::vector< mfem::Vector > *)new std::vector< mfem::Vector >();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__Vector_std__allocatorT_mfem__Vector_t_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -10231,16 +9920,19 @@ SWIGINTERN PyObject *_wrap_new_vector_Vector__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   }
   {
     try {
-      result = (std::vector< mfem::Vector > *)new std::vector< mfem::Vector >((std::vector< mfem::Vector > const &)*arg1); 
+      result = (std::vector< mfem::Vector > *)new std::vector< mfem::Vector >((std::vector< mfem::Vector > const &)*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__Vector_std__allocatorT_mfem__Vector_t_t, SWIG_POINTER_NEW |  0 );
   if (SWIG_IsNewObj(res1)) delete arg1;
@@ -10268,16 +9960,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_empty(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< std::vector< mfem::Vector > * >(argp1);
   {
     try {
-      result = (bool)((std::vector< mfem::Vector > const *)arg1)->empty(); 
+      result = (bool)((std::vector< mfem::Vector > const *)arg1)->empty();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -10303,16 +9998,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_size(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< std::vector< mfem::Vector > * >(argp1);
   {
     try {
-      result = ((std::vector< mfem::Vector > const *)arg1)->size(); 
+      result = ((std::vector< mfem::Vector > const *)arg1)->size();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
@@ -10351,16 +10049,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_swap(PyObject *SWIGUNUSEDPARM(self), Py
   arg2 = reinterpret_cast< std::vector< mfem::Vector > * >(argp2);
   {
     try {
-      (arg1)->swap(*arg2); 
+      (arg1)->swap(*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10386,16 +10087,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_begin(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< std::vector< mfem::Vector > * >(argp1);
   {
     try {
-      result = (arg1)->begin(); 
+      result = (arg1)->begin();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::Vector >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -10422,16 +10126,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_end(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< std::vector< mfem::Vector > * >(argp1);
   {
     try {
-      result = (arg1)->end(); 
+      result = (arg1)->end();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::Vector >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -10458,16 +10165,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_rbegin(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< std::vector< mfem::Vector > * >(argp1);
   {
     try {
-      result = (arg1)->rbegin(); 
+      result = (arg1)->rbegin();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::Vector >::reverse_iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -10494,16 +10204,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_rend(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< std::vector< mfem::Vector > * >(argp1);
   {
     try {
-      result = (arg1)->rend(); 
+      result = (arg1)->rend();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::Vector >::reverse_iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -10529,16 +10242,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_clear(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< std::vector< mfem::Vector > * >(argp1);
   {
     try {
-      (arg1)->clear(); 
+      (arg1)->clear();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10564,16 +10280,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_get_allocator(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< std::vector< mfem::Vector > * >(argp1);
   {
     try {
-      result = ((std::vector< mfem::Vector > const *)arg1)->get_allocator(); 
+      result = ((std::vector< mfem::Vector > const *)arg1)->get_allocator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj((new std::vector< mfem::Vector >::allocator_type(static_cast< const std::vector< mfem::Vector >::allocator_type& >(result))), SWIGTYPE_p_std__allocatorT_mfem__Vector_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -10597,16 +10316,19 @@ SWIGINTERN PyObject *_wrap_new_vector_Vector__SWIG_2(PyObject *SWIGUNUSEDPARM(se
   arg1 = static_cast< std::vector< mfem::Vector >::size_type >(val1);
   {
     try {
-      result = (std::vector< mfem::Vector > *)new std::vector< mfem::Vector >(arg1); 
+      result = (std::vector< mfem::Vector > *)new std::vector< mfem::Vector >(arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__Vector_std__allocatorT_mfem__Vector_t_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -10631,16 +10353,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_pop_back(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< std::vector< mfem::Vector > * >(argp1);
   {
     try {
-      (arg1)->pop_back(); 
+      (arg1)->pop_back();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10671,16 +10396,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_resize__SWIG_0(PyObject *SWIGUNUSEDPARM
   arg2 = static_cast< std::vector< mfem::Vector >::size_type >(val2);
   {
     try {
-      (arg1)->resize(arg2); 
+      (arg1)->resize(arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10718,16 +10446,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_erase__SWIG_0(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      result = std_vector_Sl_mfem_Vector_Sg__erase__SWIG_0(arg1,arg2); 
+      result = std_vector_Sl_mfem_Vector_Sg__erase__SWIG_0(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::Vector >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -10780,16 +10511,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_erase__SWIG_1(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      result = std_vector_Sl_mfem_Vector_Sg__erase__SWIG_1(arg1,arg2,arg3); 
+      result = std_vector_Sl_mfem_Vector_Sg__erase__SWIG_1(arg1,arg2,arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::Vector >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -10874,16 +10608,19 @@ SWIGINTERN PyObject *_wrap_new_vector_Vector__SWIG_3(PyObject *SWIGUNUSEDPARM(se
   arg2 = reinterpret_cast< std::vector< mfem::Vector >::value_type * >(argp2);
   {
     try {
-      result = (std::vector< mfem::Vector > *)new std::vector< mfem::Vector >(arg1,(std::vector< mfem::Vector >::value_type const &)*arg2); 
+      result = (std::vector< mfem::Vector > *)new std::vector< mfem::Vector >(arg1,(std::vector< mfem::Vector >::value_type const &)*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__Vector_std__allocatorT_mfem__Vector_t_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -10977,16 +10714,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_push_back(PyObject *SWIGUNUSEDPARM(self
   arg2 = reinterpret_cast< std::vector< mfem::Vector >::value_type * >(argp2);
   {
     try {
-      (arg1)->push_back((std::vector< mfem::Vector >::value_type const &)*arg2); 
+      (arg1)->push_back((std::vector< mfem::Vector >::value_type const &)*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11012,16 +10752,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_front(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< std::vector< mfem::Vector > * >(argp1);
   {
     try {
-      result = (std::vector< mfem::Vector >::value_type *) &((std::vector< mfem::Vector > const *)arg1)->front(); 
+      result = (std::vector< mfem::Vector >::value_type *) &((std::vector< mfem::Vector > const *)arg1)->front();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
   (void)swig::container_owner<swig::traits<std::vector< mfem::Vector >::value_type>::category>::back_reference(resultobj, swig_obj[0]);
@@ -11048,16 +10791,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_back(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< std::vector< mfem::Vector > * >(argp1);
   {
     try {
-      result = (std::vector< mfem::Vector >::value_type *) &((std::vector< mfem::Vector > const *)arg1)->back(); 
+      result = (std::vector< mfem::Vector >::value_type *) &((std::vector< mfem::Vector > const *)arg1)->back();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
   (void)swig::container_owner<swig::traits<std::vector< mfem::Vector >::value_type>::category>::back_reference(resultobj, swig_obj[0]);
@@ -11106,16 +10852,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_assign(PyObject *SWIGUNUSEDPARM(self), 
   arg3 = reinterpret_cast< std::vector< mfem::Vector >::value_type * >(argp3);
   {
     try {
-      (arg1)->assign(arg2,(std::vector< mfem::Vector >::value_type const &)*arg3); 
+      (arg1)->assign(arg2,(std::vector< mfem::Vector >::value_type const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11157,16 +10906,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_resize__SWIG_1(PyObject *SWIGUNUSEDPARM
   arg3 = reinterpret_cast< std::vector< mfem::Vector >::value_type * >(argp3);
   {
     try {
-      (arg1)->resize(arg2,(std::vector< mfem::Vector >::value_type const &)*arg3); 
+      (arg1)->resize(arg2,(std::vector< mfem::Vector >::value_type const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11265,16 +11017,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_insert__SWIG_0(PyObject *SWIGUNUSEDPARM
   arg3 = reinterpret_cast< std::vector< mfem::Vector >::value_type * >(argp3);
   {
     try {
-      result = std_vector_Sl_mfem_Vector_Sg__insert__SWIG_0(arg1,arg2,(mfem::Vector const &)*arg3); 
+      result = std_vector_Sl_mfem_Vector_Sg__insert__SWIG_0(arg1,arg2,(mfem::Vector const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::Vector >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -11331,16 +11086,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_insert__SWIG_1(PyObject *SWIGUNUSEDPARM
   arg4 = reinterpret_cast< std::vector< mfem::Vector >::value_type * >(argp4);
   {
     try {
-      std_vector_Sl_mfem_Vector_Sg__insert__SWIG_1(arg1,arg2,arg3,(mfem::Vector const &)*arg4); 
+      std_vector_Sl_mfem_Vector_Sg__insert__SWIG_1(arg1,arg2,arg3,(mfem::Vector const &)*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11434,16 +11192,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_reserve(PyObject *SWIGUNUSEDPARM(self),
   arg2 = static_cast< std::vector< mfem::Vector >::size_type >(val2);
   {
     try {
-      (arg1)->reserve(arg2); 
+      (arg1)->reserve(arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11469,16 +11230,19 @@ SWIGINTERN PyObject *_wrap_vector_Vector_capacity(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< std::vector< mfem::Vector > * >(argp1);
   {
     try {
-      result = ((std::vector< mfem::Vector > const *)arg1)->capacity(); 
+      result = ((std::vector< mfem::Vector > const *)arg1)->capacity();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
@@ -11503,16 +11267,19 @@ SWIGINTERN PyObject *_wrap_delete_vector_Vector(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< std::vector< mfem::Vector > * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11551,16 +11318,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_iterator(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< std::vector< mfem::Array< int > > * >(argp1);
   {
     try {
-      result = (swig::SwigPyIterator *)std_vector_Sl_mfem_Array_Sl_int_Sg__Sg__iterator(arg1,arg2); 
+      result = (swig::SwigPyIterator *)std_vector_Sl_mfem_Array_Sl_int_Sg__Sg__iterator(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -11586,16 +11356,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray___nonzero__(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< std::vector< mfem::Array< int > > * >(argp1);
   {
     try {
-      result = (bool)std_vector_Sl_mfem_Array_Sl_int_Sg__Sg____nonzero__((std::vector< mfem::Array< int > > const *)arg1); 
+      result = (bool)std_vector_Sl_mfem_Array_Sl_int_Sg__Sg____nonzero__((std::vector< mfem::Array< int > > const *)arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -11621,16 +11394,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray___bool__(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< std::vector< mfem::Array< int > > * >(argp1);
   {
     try {
-      result = (bool)std_vector_Sl_mfem_Array_Sl_int_Sg__Sg____bool__((std::vector< mfem::Array< int > > const *)arg1); 
+      result = (bool)std_vector_Sl_mfem_Array_Sl_int_Sg__Sg____bool__((std::vector< mfem::Array< int > > const *)arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -11656,16 +11432,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray___len__(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< std::vector< mfem::Array< int > > * >(argp1);
   {
     try {
-      result = std_vector_Sl_mfem_Array_Sl_int_Sg__Sg____len__((std::vector< mfem::Array< int > > const *)arg1); 
+      result = std_vector_Sl_mfem_Array_Sl_int_Sg__Sg____len__((std::vector< mfem::Array< int > > const *)arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
@@ -11717,16 +11496,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray___getslice__(PyObject *SWIGUNUSEDPARM
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__ArrayT_int_t_std__allocatorT_mfem__ArrayT_int_t_t_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -11771,16 +11553,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray___setslice____SWIG_0(PyObject *SWIGUN
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11838,16 +11623,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray___setslice____SWIG_1(PyObject *SWIGUN
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res4)) delete arg4;
@@ -11962,16 +11750,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray___delslice__(PyObject *SWIGUNUSEDPARM
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12008,16 +11799,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray___delitem____SWIG_0(PyObject *SWIGUNU
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12054,16 +11848,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray___getitem____SWIG_0(PyObject *SWIGUNU
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__ArrayT_int_t_std__allocatorT_mfem__ArrayT_int_t_t_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -12112,16 +11909,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray___setitem____SWIG_0(PyObject *SWIGUNU
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res3)) delete arg3;
@@ -12159,16 +11959,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray___setitem____SWIG_1(PyObject *SWIGUNU
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12204,16 +12007,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray___delitem____SWIG_1(PyObject *SWIGUNU
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12294,16 +12100,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray___getitem____SWIG_1(PyObject *SWIGUNU
         result = (std::vector< mfem::Array< int > >::value_type *) &std_vector_Sl_mfem_Array_Sl_int_Sg__Sg____getitem____SWIG_1((std::vector< mfem::Array< int > > const *)arg1,arg2);
       } catch(std::out_of_range &_e) {
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
   (void)swig::container_owner<swig::traits<std::vector< mfem::Array< int > >::value_type>::category>::back_reference(resultobj, swig_obj[0]);
@@ -12395,16 +12204,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray___setitem____SWIG_2(PyObject *SWIGUNU
         std_vector_Sl_mfem_Array_Sl_int_Sg__Sg____setitem____SWIG_2(arg1,arg2,(mfem::Array< int > const &)*arg3);
       } catch(std::out_of_range &_e) {
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12501,16 +12313,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_pop(PyObject *SWIGUNUSEDPARM(self), P
         result = std_vector_Sl_mfem_Array_Sl_int_Sg__Sg__pop(arg1);
       } catch(std::out_of_range &_e) {
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj((new std::vector< mfem::Array< int > >::value_type(static_cast< const std::vector< mfem::Array< int > >::value_type& >(result))), SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -12549,16 +12364,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_append(PyObject *SWIGUNUSEDPARM(self)
   arg2 = reinterpret_cast< std::vector< mfem::Array< int > >::value_type * >(argp2);
   {
     try {
-      std_vector_Sl_mfem_Array_Sl_int_Sg__Sg__append(arg1,(mfem::Array< int > const &)*arg2); 
+      std_vector_Sl_mfem_Array_Sl_int_Sg__Sg__append(arg1,(mfem::Array< int > const &)*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12574,16 +12392,19 @@ SWIGINTERN PyObject *_wrap_new_vector_intArray__SWIG_0(PyObject *SWIGUNUSEDPARM(
   if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      result = (std::vector< mfem::Array< int > > *)new std::vector< mfem::Array< int > >(); 
+      result = (std::vector< mfem::Array< int > > *)new std::vector< mfem::Array< int > >();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__ArrayT_int_t_std__allocatorT_mfem__ArrayT_int_t_t_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -12612,16 +12433,19 @@ SWIGINTERN PyObject *_wrap_new_vector_intArray__SWIG_1(PyObject *SWIGUNUSEDPARM(
   }
   {
     try {
-      result = (std::vector< mfem::Array< int > > *)new std::vector< mfem::Array< int > >((std::vector< mfem::Array< int > > const &)*arg1); 
+      result = (std::vector< mfem::Array< int > > *)new std::vector< mfem::Array< int > >((std::vector< mfem::Array< int > > const &)*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__ArrayT_int_t_std__allocatorT_mfem__ArrayT_int_t_t_t, SWIG_POINTER_NEW |  0 );
   if (SWIG_IsNewObj(res1)) delete arg1;
@@ -12649,16 +12473,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_empty(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< std::vector< mfem::Array< int > > * >(argp1);
   {
     try {
-      result = (bool)((std::vector< mfem::Array< int > > const *)arg1)->empty(); 
+      result = (bool)((std::vector< mfem::Array< int > > const *)arg1)->empty();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -12684,16 +12511,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_size(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< std::vector< mfem::Array< int > > * >(argp1);
   {
     try {
-      result = ((std::vector< mfem::Array< int > > const *)arg1)->size(); 
+      result = ((std::vector< mfem::Array< int > > const *)arg1)->size();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
@@ -12732,16 +12562,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_swap(PyObject *SWIGUNUSEDPARM(self), 
   arg2 = reinterpret_cast< std::vector< mfem::Array< int > > * >(argp2);
   {
     try {
-      (arg1)->swap(*arg2); 
+      (arg1)->swap(*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12767,16 +12600,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_begin(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< std::vector< mfem::Array< int > > * >(argp1);
   {
     try {
-      result = (arg1)->begin(); 
+      result = (arg1)->begin();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::Array< int > >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -12803,16 +12639,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_end(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< std::vector< mfem::Array< int > > * >(argp1);
   {
     try {
-      result = (arg1)->end(); 
+      result = (arg1)->end();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::Array< int > >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -12839,16 +12678,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_rbegin(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< std::vector< mfem::Array< int > > * >(argp1);
   {
     try {
-      result = (arg1)->rbegin(); 
+      result = (arg1)->rbegin();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::Array< int > >::reverse_iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -12875,16 +12717,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_rend(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< std::vector< mfem::Array< int > > * >(argp1);
   {
     try {
-      result = (arg1)->rend(); 
+      result = (arg1)->rend();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::Array< int > >::reverse_iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -12910,16 +12755,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_clear(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< std::vector< mfem::Array< int > > * >(argp1);
   {
     try {
-      (arg1)->clear(); 
+      (arg1)->clear();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12945,16 +12793,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_get_allocator(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< std::vector< mfem::Array< int > > * >(argp1);
   {
     try {
-      result = ((std::vector< mfem::Array< int > > const *)arg1)->get_allocator(); 
+      result = ((std::vector< mfem::Array< int > > const *)arg1)->get_allocator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj((new std::vector< mfem::Array< int > >::allocator_type(static_cast< const std::vector< mfem::Array< int > >::allocator_type& >(result))), SWIGTYPE_p_std__allocatorT_mfem__ArrayT_int_t_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -12978,16 +12829,19 @@ SWIGINTERN PyObject *_wrap_new_vector_intArray__SWIG_2(PyObject *SWIGUNUSEDPARM(
   arg1 = static_cast< std::vector< mfem::Array< int > >::size_type >(val1);
   {
     try {
-      result = (std::vector< mfem::Array< int > > *)new std::vector< mfem::Array< int > >(arg1); 
+      result = (std::vector< mfem::Array< int > > *)new std::vector< mfem::Array< int > >(arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__ArrayT_int_t_std__allocatorT_mfem__ArrayT_int_t_t_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -13012,16 +12866,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_pop_back(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< std::vector< mfem::Array< int > > * >(argp1);
   {
     try {
-      (arg1)->pop_back(); 
+      (arg1)->pop_back();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13052,16 +12909,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_resize__SWIG_0(PyObject *SWIGUNUSEDPA
   arg2 = static_cast< std::vector< mfem::Array< int > >::size_type >(val2);
   {
     try {
-      (arg1)->resize(arg2); 
+      (arg1)->resize(arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13099,16 +12959,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_erase__SWIG_0(PyObject *SWIGUNUSEDPAR
   }
   {
     try {
-      result = std_vector_Sl_mfem_Array_Sl_int_Sg__Sg__erase__SWIG_0(arg1,arg2); 
+      result = std_vector_Sl_mfem_Array_Sl_int_Sg__Sg__erase__SWIG_0(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::Array< int > >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -13161,16 +13024,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_erase__SWIG_1(PyObject *SWIGUNUSEDPAR
   }
   {
     try {
-      result = std_vector_Sl_mfem_Array_Sl_int_Sg__Sg__erase__SWIG_1(arg1,arg2,arg3); 
+      result = std_vector_Sl_mfem_Array_Sl_int_Sg__Sg__erase__SWIG_1(arg1,arg2,arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::Array< int > >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -13255,16 +13121,19 @@ SWIGINTERN PyObject *_wrap_new_vector_intArray__SWIG_3(PyObject *SWIGUNUSEDPARM(
   arg2 = reinterpret_cast< std::vector< mfem::Array< int > >::value_type * >(argp2);
   {
     try {
-      result = (std::vector< mfem::Array< int > > *)new std::vector< mfem::Array< int > >(arg1,(std::vector< mfem::Array< int > >::value_type const &)*arg2); 
+      result = (std::vector< mfem::Array< int > > *)new std::vector< mfem::Array< int > >(arg1,(std::vector< mfem::Array< int > >::value_type const &)*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__ArrayT_int_t_std__allocatorT_mfem__ArrayT_int_t_t_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -13358,16 +13227,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_push_back(PyObject *SWIGUNUSEDPARM(se
   arg2 = reinterpret_cast< std::vector< mfem::Array< int > >::value_type * >(argp2);
   {
     try {
-      (arg1)->push_back((std::vector< mfem::Array< int > >::value_type const &)*arg2); 
+      (arg1)->push_back((std::vector< mfem::Array< int > >::value_type const &)*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13393,16 +13265,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_front(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< std::vector< mfem::Array< int > > * >(argp1);
   {
     try {
-      result = (std::vector< mfem::Array< int > >::value_type *) &((std::vector< mfem::Array< int > > const *)arg1)->front(); 
+      result = (std::vector< mfem::Array< int > >::value_type *) &((std::vector< mfem::Array< int > > const *)arg1)->front();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
   (void)swig::container_owner<swig::traits<std::vector< mfem::Array< int > >::value_type>::category>::back_reference(resultobj, swig_obj[0]);
@@ -13429,16 +13304,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_back(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< std::vector< mfem::Array< int > > * >(argp1);
   {
     try {
-      result = (std::vector< mfem::Array< int > >::value_type *) &((std::vector< mfem::Array< int > > const *)arg1)->back(); 
+      result = (std::vector< mfem::Array< int > >::value_type *) &((std::vector< mfem::Array< int > > const *)arg1)->back();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
   (void)swig::container_owner<swig::traits<std::vector< mfem::Array< int > >::value_type>::category>::back_reference(resultobj, swig_obj[0]);
@@ -13487,16 +13365,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_assign(PyObject *SWIGUNUSEDPARM(self)
   arg3 = reinterpret_cast< std::vector< mfem::Array< int > >::value_type * >(argp3);
   {
     try {
-      (arg1)->assign(arg2,(std::vector< mfem::Array< int > >::value_type const &)*arg3); 
+      (arg1)->assign(arg2,(std::vector< mfem::Array< int > >::value_type const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13538,16 +13419,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_resize__SWIG_1(PyObject *SWIGUNUSEDPA
   arg3 = reinterpret_cast< std::vector< mfem::Array< int > >::value_type * >(argp3);
   {
     try {
-      (arg1)->resize(arg2,(std::vector< mfem::Array< int > >::value_type const &)*arg3); 
+      (arg1)->resize(arg2,(std::vector< mfem::Array< int > >::value_type const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13646,16 +13530,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_insert__SWIG_0(PyObject *SWIGUNUSEDPA
   arg3 = reinterpret_cast< std::vector< mfem::Array< int > >::value_type * >(argp3);
   {
     try {
-      result = std_vector_Sl_mfem_Array_Sl_int_Sg__Sg__insert__SWIG_0(arg1,arg2,(mfem::Array< int > const &)*arg3); 
+      result = std_vector_Sl_mfem_Array_Sl_int_Sg__Sg__insert__SWIG_0(arg1,arg2,(mfem::Array< int > const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::Array< int > >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -13712,16 +13599,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_insert__SWIG_1(PyObject *SWIGUNUSEDPA
   arg4 = reinterpret_cast< std::vector< mfem::Array< int > >::value_type * >(argp4);
   {
     try {
-      std_vector_Sl_mfem_Array_Sl_int_Sg__Sg__insert__SWIG_1(arg1,arg2,arg3,(mfem::Array< int > const &)*arg4); 
+      std_vector_Sl_mfem_Array_Sl_int_Sg__Sg__insert__SWIG_1(arg1,arg2,arg3,(mfem::Array< int > const &)*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13815,16 +13705,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_reserve(PyObject *SWIGUNUSEDPARM(self
   arg2 = static_cast< std::vector< mfem::Array< int > >::size_type >(val2);
   {
     try {
-      (arg1)->reserve(arg2); 
+      (arg1)->reserve(arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13850,16 +13743,19 @@ SWIGINTERN PyObject *_wrap_vector_intArray_capacity(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< std::vector< mfem::Array< int > > * >(argp1);
   {
     try {
-      result = ((std::vector< mfem::Array< int > > const *)arg1)->capacity(); 
+      result = ((std::vector< mfem::Array< int > > const *)arg1)->capacity();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
@@ -13884,16 +13780,19 @@ SWIGINTERN PyObject *_wrap_delete_vector_intArray(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< std::vector< mfem::Array< int > > * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13932,16 +13831,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_iterator(PyObject *SWIGU
   arg1 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * > * >(argp1);
   {
     try {
-      result = (swig::SwigPyIterator *)std_vector_Sl_mfem_ParFiniteElementSpace_Sm__Sg__iterator(arg1,arg2); 
+      result = (swig::SwigPyIterator *)std_vector_Sl_mfem_ParFiniteElementSpace_Sm__Sg__iterator(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -13967,16 +13869,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace___nonzero__(PyObject *SW
   arg1 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * > * >(argp1);
   {
     try {
-      result = (bool)std_vector_Sl_mfem_ParFiniteElementSpace_Sm__Sg____nonzero__((std::vector< mfem::ParFiniteElementSpace * > const *)arg1); 
+      result = (bool)std_vector_Sl_mfem_ParFiniteElementSpace_Sm__Sg____nonzero__((std::vector< mfem::ParFiniteElementSpace * > const *)arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -14002,16 +13907,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace___bool__(PyObject *SWIGU
   arg1 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * > * >(argp1);
   {
     try {
-      result = (bool)std_vector_Sl_mfem_ParFiniteElementSpace_Sm__Sg____bool__((std::vector< mfem::ParFiniteElementSpace * > const *)arg1); 
+      result = (bool)std_vector_Sl_mfem_ParFiniteElementSpace_Sm__Sg____bool__((std::vector< mfem::ParFiniteElementSpace * > const *)arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -14037,16 +13945,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace___len__(PyObject *SWIGUN
   arg1 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * > * >(argp1);
   {
     try {
-      result = std_vector_Sl_mfem_ParFiniteElementSpace_Sm__Sg____len__((std::vector< mfem::ParFiniteElementSpace * > const *)arg1); 
+      result = std_vector_Sl_mfem_ParFiniteElementSpace_Sm__Sg____len__((std::vector< mfem::ParFiniteElementSpace * > const *)arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
@@ -14098,16 +14009,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace___getslice__(PyObject *S
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__ParFiniteElementSpace_p_std__allocatorT_mfem__ParFiniteElementSpace_p_t_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -14152,16 +14066,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace___setslice____SWIG_0(PyO
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14219,16 +14136,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace___setslice____SWIG_1(PyO
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res4)) delete arg4;
@@ -14343,16 +14263,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace___delslice__(PyObject *S
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14389,16 +14312,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace___delitem____SWIG_0(PyOb
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14435,16 +14361,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace___getitem____SWIG_0(PyOb
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__ParFiniteElementSpace_p_std__allocatorT_mfem__ParFiniteElementSpace_p_t_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -14493,16 +14422,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace___setitem____SWIG_0(PyOb
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res3)) delete arg3;
@@ -14540,16 +14472,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace___setitem____SWIG_1(PyOb
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14585,16 +14520,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace___delitem____SWIG_1(PyOb
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14675,16 +14613,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace___getitem____SWIG_1(PyOb
         result = (std::vector< mfem::ParFiniteElementSpace * >::value_type)std_vector_Sl_mfem_ParFiniteElementSpace_Sm__Sg____getitem____SWIG_1(arg1,arg2);
       } catch(std::out_of_range &_e) {
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   return resultobj;
@@ -14772,16 +14713,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace___setitem____SWIG_2(PyOb
         std_vector_Sl_mfem_ParFiniteElementSpace_Sm__Sg____setitem____SWIG_2(arg1,arg2,arg3);
       } catch(std::out_of_range &_e) {
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14879,16 +14823,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_pop(PyObject *SWIGUNUSED
         result = (std::vector< mfem::ParFiniteElementSpace * >::value_type)std_vector_Sl_mfem_ParFiniteElementSpace_Sm__Sg__pop(arg1);
       } catch(std::out_of_range &_e) {
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   return resultobj;
@@ -14924,16 +14871,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_append(PyObject *SWIGUNU
   arg2 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * >::value_type >(argp2);
   {
     try {
-      std_vector_Sl_mfem_ParFiniteElementSpace_Sm__Sg__append(arg1,arg2); 
+      std_vector_Sl_mfem_ParFiniteElementSpace_Sm__Sg__append(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14949,16 +14899,19 @@ SWIGINTERN PyObject *_wrap_new_vector_ParFiniteElementSpace__SWIG_0(PyObject *SW
   if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      result = (std::vector< mfem::ParFiniteElementSpace * > *)new std::vector< mfem::ParFiniteElementSpace * >(); 
+      result = (std::vector< mfem::ParFiniteElementSpace * > *)new std::vector< mfem::ParFiniteElementSpace * >();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__ParFiniteElementSpace_p_std__allocatorT_mfem__ParFiniteElementSpace_p_t_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -14987,16 +14940,19 @@ SWIGINTERN PyObject *_wrap_new_vector_ParFiniteElementSpace__SWIG_1(PyObject *SW
   }
   {
     try {
-      result = (std::vector< mfem::ParFiniteElementSpace * > *)new std::vector< mfem::ParFiniteElementSpace * >((std::vector< mfem::ParFiniteElementSpace * > const &)*arg1); 
+      result = (std::vector< mfem::ParFiniteElementSpace * > *)new std::vector< mfem::ParFiniteElementSpace * >((std::vector< mfem::ParFiniteElementSpace * > const &)*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__ParFiniteElementSpace_p_std__allocatorT_mfem__ParFiniteElementSpace_p_t_t, SWIG_POINTER_NEW |  0 );
   if (SWIG_IsNewObj(res1)) delete arg1;
@@ -15024,16 +14980,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_empty(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * > * >(argp1);
   {
     try {
-      result = (bool)((std::vector< mfem::ParFiniteElementSpace * > const *)arg1)->empty(); 
+      result = (bool)((std::vector< mfem::ParFiniteElementSpace * > const *)arg1)->empty();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -15059,16 +15018,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_size(PyObject *SWIGUNUSE
   arg1 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * > * >(argp1);
   {
     try {
-      result = ((std::vector< mfem::ParFiniteElementSpace * > const *)arg1)->size(); 
+      result = ((std::vector< mfem::ParFiniteElementSpace * > const *)arg1)->size();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
@@ -15107,16 +15069,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_swap(PyObject *SWIGUNUSE
   arg2 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * > * >(argp2);
   {
     try {
-      (arg1)->swap(*arg2); 
+      (arg1)->swap(*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15142,16 +15107,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_begin(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * > * >(argp1);
   {
     try {
-      result = (arg1)->begin(); 
+      result = (arg1)->begin();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::ParFiniteElementSpace * >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -15178,16 +15146,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_end(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * > * >(argp1);
   {
     try {
-      result = (arg1)->end(); 
+      result = (arg1)->end();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::ParFiniteElementSpace * >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -15214,16 +15185,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_rbegin(PyObject *SWIGUNU
   arg1 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * > * >(argp1);
   {
     try {
-      result = (arg1)->rbegin(); 
+      result = (arg1)->rbegin();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::ParFiniteElementSpace * >::reverse_iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -15250,16 +15224,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_rend(PyObject *SWIGUNUSE
   arg1 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * > * >(argp1);
   {
     try {
-      result = (arg1)->rend(); 
+      result = (arg1)->rend();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::ParFiniteElementSpace * >::reverse_iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -15285,16 +15262,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_clear(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * > * >(argp1);
   {
     try {
-      (arg1)->clear(); 
+      (arg1)->clear();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15320,16 +15300,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_get_allocator(PyObject *
   arg1 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * > * >(argp1);
   {
     try {
-      result = ((std::vector< mfem::ParFiniteElementSpace * > const *)arg1)->get_allocator(); 
+      result = ((std::vector< mfem::ParFiniteElementSpace * > const *)arg1)->get_allocator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj((new std::vector< mfem::ParFiniteElementSpace * >::allocator_type(static_cast< const std::vector< mfem::ParFiniteElementSpace * >::allocator_type& >(result))), SWIGTYPE_p_std__allocatorT_mfem__ParFiniteElementSpace_p_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -15353,16 +15336,19 @@ SWIGINTERN PyObject *_wrap_new_vector_ParFiniteElementSpace__SWIG_2(PyObject *SW
   arg1 = static_cast< std::vector< mfem::ParFiniteElementSpace * >::size_type >(val1);
   {
     try {
-      result = (std::vector< mfem::ParFiniteElementSpace * > *)new std::vector< mfem::ParFiniteElementSpace * >(arg1); 
+      result = (std::vector< mfem::ParFiniteElementSpace * > *)new std::vector< mfem::ParFiniteElementSpace * >(arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__ParFiniteElementSpace_p_std__allocatorT_mfem__ParFiniteElementSpace_p_t_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -15387,16 +15373,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_pop_back(PyObject *SWIGU
   arg1 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * > * >(argp1);
   {
     try {
-      (arg1)->pop_back(); 
+      (arg1)->pop_back();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15427,16 +15416,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_resize__SWIG_0(PyObject 
   arg2 = static_cast< std::vector< mfem::ParFiniteElementSpace * >::size_type >(val2);
   {
     try {
-      (arg1)->resize(arg2); 
+      (arg1)->resize(arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15474,16 +15466,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_erase__SWIG_0(PyObject *
   }
   {
     try {
-      result = std_vector_Sl_mfem_ParFiniteElementSpace_Sm__Sg__erase__SWIG_0(arg1,arg2); 
+      result = std_vector_Sl_mfem_ParFiniteElementSpace_Sm__Sg__erase__SWIG_0(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::ParFiniteElementSpace * >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -15536,16 +15531,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_erase__SWIG_1(PyObject *
   }
   {
     try {
-      result = std_vector_Sl_mfem_ParFiniteElementSpace_Sm__Sg__erase__SWIG_1(arg1,arg2,arg3); 
+      result = std_vector_Sl_mfem_ParFiniteElementSpace_Sm__Sg__erase__SWIG_1(arg1,arg2,arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::ParFiniteElementSpace * >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -15627,16 +15625,19 @@ SWIGINTERN PyObject *_wrap_new_vector_ParFiniteElementSpace__SWIG_3(PyObject *SW
   arg2 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * >::value_type >(argp2);
   {
     try {
-      result = (std::vector< mfem::ParFiniteElementSpace * > *)new std::vector< mfem::ParFiniteElementSpace * >(arg1,arg2); 
+      result = (std::vector< mfem::ParFiniteElementSpace * > *)new std::vector< mfem::ParFiniteElementSpace * >(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__ParFiniteElementSpace_p_std__allocatorT_mfem__ParFiniteElementSpace_p_t_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -15728,16 +15729,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_push_back(PyObject *SWIG
   arg2 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * >::value_type >(argp2);
   {
     try {
-      (arg1)->push_back(arg2); 
+      (arg1)->push_back(arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15763,16 +15767,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_front(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * > * >(argp1);
   {
     try {
-      result = (std::vector< mfem::ParFiniteElementSpace * >::value_type)((std::vector< mfem::ParFiniteElementSpace * > const *)arg1)->front(); 
+      result = (std::vector< mfem::ParFiniteElementSpace * >::value_type)((std::vector< mfem::ParFiniteElementSpace * > const *)arg1)->front();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   return resultobj;
@@ -15798,16 +15805,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_back(PyObject *SWIGUNUSE
   arg1 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * > * >(argp1);
   {
     try {
-      result = (std::vector< mfem::ParFiniteElementSpace * >::value_type)((std::vector< mfem::ParFiniteElementSpace * > const *)arg1)->back(); 
+      result = (std::vector< mfem::ParFiniteElementSpace * >::value_type)((std::vector< mfem::ParFiniteElementSpace * > const *)arg1)->back();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   return resultobj;
@@ -15852,16 +15862,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_assign(PyObject *SWIGUNU
   arg3 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * >::value_type >(argp3);
   {
     try {
-      (arg1)->assign(arg2,arg3); 
+      (arg1)->assign(arg2,arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15900,16 +15913,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_resize__SWIG_1(PyObject 
   arg3 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * >::value_type >(argp3);
   {
     try {
-      (arg1)->resize(arg2,arg3); 
+      (arg1)->resize(arg2,arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16006,16 +16022,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_insert__SWIG_0(PyObject 
   arg3 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * >::value_type >(argp3);
   {
     try {
-      result = std_vector_Sl_mfem_ParFiniteElementSpace_Sm__Sg__insert__SWIG_0(arg1,arg2,arg3); 
+      result = std_vector_Sl_mfem_ParFiniteElementSpace_Sm__Sg__insert__SWIG_0(arg1,arg2,arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::ParFiniteElementSpace * >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -16069,16 +16088,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_insert__SWIG_1(PyObject 
   arg4 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * >::value_type >(argp4);
   {
     try {
-      std_vector_Sl_mfem_ParFiniteElementSpace_Sm__Sg__insert__SWIG_1(arg1,arg2,arg3,arg4); 
+      std_vector_Sl_mfem_ParFiniteElementSpace_Sm__Sg__insert__SWIG_1(arg1,arg2,arg3,arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16174,16 +16196,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_reserve(PyObject *SWIGUN
   arg2 = static_cast< std::vector< mfem::ParFiniteElementSpace * >::size_type >(val2);
   {
     try {
-      (arg1)->reserve(arg2); 
+      (arg1)->reserve(arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16209,16 +16234,19 @@ SWIGINTERN PyObject *_wrap_vector_ParFiniteElementSpace_capacity(PyObject *SWIGU
   arg1 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * > * >(argp1);
   {
     try {
-      result = ((std::vector< mfem::ParFiniteElementSpace * > const *)arg1)->capacity(); 
+      result = ((std::vector< mfem::ParFiniteElementSpace * > const *)arg1)->capacity();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
@@ -16243,16 +16271,19 @@ SWIGINTERN PyObject *_wrap_delete_vector_ParFiniteElementSpace(PyObject *SWIGUNU
   arg1 = reinterpret_cast< std::vector< mfem::ParFiniteElementSpace * > * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16291,16 +16322,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_iterator(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< std::vector< mfem::ParMesh * > * >(argp1);
   {
     try {
-      result = (swig::SwigPyIterator *)std_vector_Sl_mfem_ParMesh_Sm__Sg__iterator(arg1,arg2); 
+      result = (swig::SwigPyIterator *)std_vector_Sl_mfem_ParMesh_Sm__Sg__iterator(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -16326,16 +16360,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh___nonzero__(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< std::vector< mfem::ParMesh * > * >(argp1);
   {
     try {
-      result = (bool)std_vector_Sl_mfem_ParMesh_Sm__Sg____nonzero__((std::vector< mfem::ParMesh * > const *)arg1); 
+      result = (bool)std_vector_Sl_mfem_ParMesh_Sm__Sg____nonzero__((std::vector< mfem::ParMesh * > const *)arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -16361,16 +16398,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh___bool__(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< std::vector< mfem::ParMesh * > * >(argp1);
   {
     try {
-      result = (bool)std_vector_Sl_mfem_ParMesh_Sm__Sg____bool__((std::vector< mfem::ParMesh * > const *)arg1); 
+      result = (bool)std_vector_Sl_mfem_ParMesh_Sm__Sg____bool__((std::vector< mfem::ParMesh * > const *)arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -16396,16 +16436,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh___len__(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< std::vector< mfem::ParMesh * > * >(argp1);
   {
     try {
-      result = std_vector_Sl_mfem_ParMesh_Sm__Sg____len__((std::vector< mfem::ParMesh * > const *)arg1); 
+      result = std_vector_Sl_mfem_ParMesh_Sm__Sg____len__((std::vector< mfem::ParMesh * > const *)arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
@@ -16457,16 +16500,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh___getslice__(PyObject *SWIGUNUSEDPARM(
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__ParMesh_p_std__allocatorT_mfem__ParMesh_p_t_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -16511,16 +16557,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh___setslice____SWIG_0(PyObject *SWIGUNU
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16578,16 +16627,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh___setslice____SWIG_1(PyObject *SWIGUNU
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res4)) delete arg4;
@@ -16702,16 +16754,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh___delslice__(PyObject *SWIGUNUSEDPARM(
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16748,16 +16803,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh___delitem____SWIG_0(PyObject *SWIGUNUS
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16794,16 +16852,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh___getitem____SWIG_0(PyObject *SWIGUNUS
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__ParMesh_p_std__allocatorT_mfem__ParMesh_p_t_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -16852,16 +16913,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh___setitem____SWIG_0(PyObject *SWIGUNUS
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res3)) delete arg3;
@@ -16899,16 +16963,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh___setitem____SWIG_1(PyObject *SWIGUNUS
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16944,16 +17011,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh___delitem____SWIG_1(PyObject *SWIGUNUS
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -17034,16 +17104,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh___getitem____SWIG_1(PyObject *SWIGUNUS
         result = (std::vector< mfem::ParMesh * >::value_type)std_vector_Sl_mfem_ParMesh_Sm__Sg____getitem____SWIG_1(arg1,arg2);
       } catch(std::out_of_range &_e) {
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
   return resultobj;
@@ -17131,16 +17204,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh___setitem____SWIG_2(PyObject *SWIGUNUS
         std_vector_Sl_mfem_ParMesh_Sm__Sg____setitem____SWIG_2(arg1,arg2,arg3);
       } catch(std::out_of_range &_e) {
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -17238,16 +17314,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_pop(PyObject *SWIGUNUSEDPARM(self), Py
         result = (std::vector< mfem::ParMesh * >::value_type)std_vector_Sl_mfem_ParMesh_Sm__Sg__pop(arg1);
       } catch(std::out_of_range &_e) {
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
   return resultobj;
@@ -17283,16 +17362,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_append(PyObject *SWIGUNUSEDPARM(self),
   arg2 = reinterpret_cast< std::vector< mfem::ParMesh * >::value_type >(argp2);
   {
     try {
-      std_vector_Sl_mfem_ParMesh_Sm__Sg__append(arg1,arg2); 
+      std_vector_Sl_mfem_ParMesh_Sm__Sg__append(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -17308,16 +17390,19 @@ SWIGINTERN PyObject *_wrap_new_vector_ParMesh__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      result = (std::vector< mfem::ParMesh * > *)new std::vector< mfem::ParMesh * >(); 
+      result = (std::vector< mfem::ParMesh * > *)new std::vector< mfem::ParMesh * >();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__ParMesh_p_std__allocatorT_mfem__ParMesh_p_t_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -17346,16 +17431,19 @@ SWIGINTERN PyObject *_wrap_new_vector_ParMesh__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   }
   {
     try {
-      result = (std::vector< mfem::ParMesh * > *)new std::vector< mfem::ParMesh * >((std::vector< mfem::ParMesh * > const &)*arg1); 
+      result = (std::vector< mfem::ParMesh * > *)new std::vector< mfem::ParMesh * >((std::vector< mfem::ParMesh * > const &)*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__ParMesh_p_std__allocatorT_mfem__ParMesh_p_t_t, SWIG_POINTER_NEW |  0 );
   if (SWIG_IsNewObj(res1)) delete arg1;
@@ -17383,16 +17471,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_empty(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< std::vector< mfem::ParMesh * > * >(argp1);
   {
     try {
-      result = (bool)((std::vector< mfem::ParMesh * > const *)arg1)->empty(); 
+      result = (bool)((std::vector< mfem::ParMesh * > const *)arg1)->empty();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -17418,16 +17509,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_size(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< std::vector< mfem::ParMesh * > * >(argp1);
   {
     try {
-      result = ((std::vector< mfem::ParMesh * > const *)arg1)->size(); 
+      result = ((std::vector< mfem::ParMesh * > const *)arg1)->size();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
@@ -17466,16 +17560,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_swap(PyObject *SWIGUNUSEDPARM(self), P
   arg2 = reinterpret_cast< std::vector< mfem::ParMesh * > * >(argp2);
   {
     try {
-      (arg1)->swap(*arg2); 
+      (arg1)->swap(*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -17501,16 +17598,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_begin(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< std::vector< mfem::ParMesh * > * >(argp1);
   {
     try {
-      result = (arg1)->begin(); 
+      result = (arg1)->begin();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::ParMesh * >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -17537,16 +17637,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_end(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< std::vector< mfem::ParMesh * > * >(argp1);
   {
     try {
-      result = (arg1)->end(); 
+      result = (arg1)->end();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::ParMesh * >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -17573,16 +17676,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_rbegin(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< std::vector< mfem::ParMesh * > * >(argp1);
   {
     try {
-      result = (arg1)->rbegin(); 
+      result = (arg1)->rbegin();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::ParMesh * >::reverse_iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -17609,16 +17715,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_rend(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< std::vector< mfem::ParMesh * > * >(argp1);
   {
     try {
-      result = (arg1)->rend(); 
+      result = (arg1)->rend();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::ParMesh * >::reverse_iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -17644,16 +17753,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_clear(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< std::vector< mfem::ParMesh * > * >(argp1);
   {
     try {
-      (arg1)->clear(); 
+      (arg1)->clear();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -17679,16 +17791,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_get_allocator(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< std::vector< mfem::ParMesh * > * >(argp1);
   {
     try {
-      result = ((std::vector< mfem::ParMesh * > const *)arg1)->get_allocator(); 
+      result = ((std::vector< mfem::ParMesh * > const *)arg1)->get_allocator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj((new std::vector< mfem::ParMesh * >::allocator_type(static_cast< const std::vector< mfem::ParMesh * >::allocator_type& >(result))), SWIGTYPE_p_std__allocatorT_mfem__ParMesh_p_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -17712,16 +17827,19 @@ SWIGINTERN PyObject *_wrap_new_vector_ParMesh__SWIG_2(PyObject *SWIGUNUSEDPARM(s
   arg1 = static_cast< std::vector< mfem::ParMesh * >::size_type >(val1);
   {
     try {
-      result = (std::vector< mfem::ParMesh * > *)new std::vector< mfem::ParMesh * >(arg1); 
+      result = (std::vector< mfem::ParMesh * > *)new std::vector< mfem::ParMesh * >(arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__ParMesh_p_std__allocatorT_mfem__ParMesh_p_t_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -17746,16 +17864,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_pop_back(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< std::vector< mfem::ParMesh * > * >(argp1);
   {
     try {
-      (arg1)->pop_back(); 
+      (arg1)->pop_back();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -17786,16 +17907,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_resize__SWIG_0(PyObject *SWIGUNUSEDPAR
   arg2 = static_cast< std::vector< mfem::ParMesh * >::size_type >(val2);
   {
     try {
-      (arg1)->resize(arg2); 
+      (arg1)->resize(arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -17833,16 +17957,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_erase__SWIG_0(PyObject *SWIGUNUSEDPARM
   }
   {
     try {
-      result = std_vector_Sl_mfem_ParMesh_Sm__Sg__erase__SWIG_0(arg1,arg2); 
+      result = std_vector_Sl_mfem_ParMesh_Sm__Sg__erase__SWIG_0(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::ParMesh * >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -17895,16 +18022,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_erase__SWIG_1(PyObject *SWIGUNUSEDPARM
   }
   {
     try {
-      result = std_vector_Sl_mfem_ParMesh_Sm__Sg__erase__SWIG_1(arg1,arg2,arg3); 
+      result = std_vector_Sl_mfem_ParMesh_Sm__Sg__erase__SWIG_1(arg1,arg2,arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::ParMesh * >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -17986,16 +18116,19 @@ SWIGINTERN PyObject *_wrap_new_vector_ParMesh__SWIG_3(PyObject *SWIGUNUSEDPARM(s
   arg2 = reinterpret_cast< std::vector< mfem::ParMesh * >::value_type >(argp2);
   {
     try {
-      result = (std::vector< mfem::ParMesh * > *)new std::vector< mfem::ParMesh * >(arg1,arg2); 
+      result = (std::vector< mfem::ParMesh * > *)new std::vector< mfem::ParMesh * >(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__ParMesh_p_std__allocatorT_mfem__ParMesh_p_t_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -18087,16 +18220,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_push_back(PyObject *SWIGUNUSEDPARM(sel
   arg2 = reinterpret_cast< std::vector< mfem::ParMesh * >::value_type >(argp2);
   {
     try {
-      (arg1)->push_back(arg2); 
+      (arg1)->push_back(arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -18122,16 +18258,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_front(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< std::vector< mfem::ParMesh * > * >(argp1);
   {
     try {
-      result = (std::vector< mfem::ParMesh * >::value_type)((std::vector< mfem::ParMesh * > const *)arg1)->front(); 
+      result = (std::vector< mfem::ParMesh * >::value_type)((std::vector< mfem::ParMesh * > const *)arg1)->front();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
   return resultobj;
@@ -18157,16 +18296,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_back(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< std::vector< mfem::ParMesh * > * >(argp1);
   {
     try {
-      result = (std::vector< mfem::ParMesh * >::value_type)((std::vector< mfem::ParMesh * > const *)arg1)->back(); 
+      result = (std::vector< mfem::ParMesh * >::value_type)((std::vector< mfem::ParMesh * > const *)arg1)->back();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
   return resultobj;
@@ -18211,16 +18353,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_assign(PyObject *SWIGUNUSEDPARM(self),
   arg3 = reinterpret_cast< std::vector< mfem::ParMesh * >::value_type >(argp3);
   {
     try {
-      (arg1)->assign(arg2,arg3); 
+      (arg1)->assign(arg2,arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -18259,16 +18404,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_resize__SWIG_1(PyObject *SWIGUNUSEDPAR
   arg3 = reinterpret_cast< std::vector< mfem::ParMesh * >::value_type >(argp3);
   {
     try {
-      (arg1)->resize(arg2,arg3); 
+      (arg1)->resize(arg2,arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -18365,16 +18513,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_insert__SWIG_0(PyObject *SWIGUNUSEDPAR
   arg3 = reinterpret_cast< std::vector< mfem::ParMesh * >::value_type >(argp3);
   {
     try {
-      result = std_vector_Sl_mfem_ParMesh_Sm__Sg__insert__SWIG_0(arg1,arg2,arg3); 
+      result = std_vector_Sl_mfem_ParMesh_Sm__Sg__insert__SWIG_0(arg1,arg2,arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::ParMesh * >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -18428,16 +18579,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_insert__SWIG_1(PyObject *SWIGUNUSEDPAR
   arg4 = reinterpret_cast< std::vector< mfem::ParMesh * >::value_type >(argp4);
   {
     try {
-      std_vector_Sl_mfem_ParMesh_Sm__Sg__insert__SWIG_1(arg1,arg2,arg3,arg4); 
+      std_vector_Sl_mfem_ParMesh_Sm__Sg__insert__SWIG_1(arg1,arg2,arg3,arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -18533,16 +18687,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_reserve(PyObject *SWIGUNUSEDPARM(self)
   arg2 = static_cast< std::vector< mfem::ParMesh * >::size_type >(val2);
   {
     try {
-      (arg1)->reserve(arg2); 
+      (arg1)->reserve(arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -18568,16 +18725,19 @@ SWIGINTERN PyObject *_wrap_vector_ParMesh_capacity(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< std::vector< mfem::ParMesh * > * >(argp1);
   {
     try {
-      result = ((std::vector< mfem::ParMesh * > const *)arg1)->capacity(); 
+      result = ((std::vector< mfem::ParMesh * > const *)arg1)->capacity();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
@@ -18602,16 +18762,19 @@ SWIGINTERN PyObject *_wrap_delete_vector_ParMesh(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< std::vector< mfem::ParMesh * > * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -18650,16 +18813,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_iterator(PyObject *SWIGUNUSEDPA
   arg1 = reinterpret_cast< std::vector< mfem::HypreParMatrix * > * >(argp1);
   {
     try {
-      result = (swig::SwigPyIterator *)std_vector_Sl_mfem_HypreParMatrix_Sm__Sg__iterator(arg1,arg2); 
+      result = (swig::SwigPyIterator *)std_vector_Sl_mfem_HypreParMatrix_Sm__Sg__iterator(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_swig__SwigPyIterator, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -18685,16 +18851,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix___nonzero__(PyObject *SWIGUNUSE
   arg1 = reinterpret_cast< std::vector< mfem::HypreParMatrix * > * >(argp1);
   {
     try {
-      result = (bool)std_vector_Sl_mfem_HypreParMatrix_Sm__Sg____nonzero__((std::vector< mfem::HypreParMatrix * > const *)arg1); 
+      result = (bool)std_vector_Sl_mfem_HypreParMatrix_Sm__Sg____nonzero__((std::vector< mfem::HypreParMatrix * > const *)arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -18720,16 +18889,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix___bool__(PyObject *SWIGUNUSEDPA
   arg1 = reinterpret_cast< std::vector< mfem::HypreParMatrix * > * >(argp1);
   {
     try {
-      result = (bool)std_vector_Sl_mfem_HypreParMatrix_Sm__Sg____bool__((std::vector< mfem::HypreParMatrix * > const *)arg1); 
+      result = (bool)std_vector_Sl_mfem_HypreParMatrix_Sm__Sg____bool__((std::vector< mfem::HypreParMatrix * > const *)arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -18755,16 +18927,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix___len__(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< std::vector< mfem::HypreParMatrix * > * >(argp1);
   {
     try {
-      result = std_vector_Sl_mfem_HypreParMatrix_Sm__Sg____len__((std::vector< mfem::HypreParMatrix * > const *)arg1); 
+      result = std_vector_Sl_mfem_HypreParMatrix_Sm__Sg____len__((std::vector< mfem::HypreParMatrix * > const *)arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
@@ -18816,16 +18991,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix___getslice__(PyObject *SWIGUNUS
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__HypreParMatrix_p_std__allocatorT_mfem__HypreParMatrix_p_t_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -18870,16 +19048,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix___setslice____SWIG_0(PyObject *
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -18937,16 +19118,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix___setslice____SWIG_1(PyObject *
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res4)) delete arg4;
@@ -19061,16 +19245,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix___delslice__(PyObject *SWIGUNUS
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -19107,16 +19294,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix___delitem____SWIG_0(PyObject *S
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -19153,16 +19343,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix___getitem____SWIG_0(PyObject *S
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__HypreParMatrix_p_std__allocatorT_mfem__HypreParMatrix_p_t_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -19211,16 +19404,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix___setitem____SWIG_0(PyObject *S
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   if (SWIG_IsNewObj(res3)) delete arg3;
@@ -19258,16 +19454,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix___setitem____SWIG_1(PyObject *S
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -19303,16 +19502,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix___delitem____SWIG_1(PyObject *S
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
       } catch(std::invalid_argument &_e) {
         SWIG_exception_fail(SWIG_ValueError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -19393,16 +19595,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix___getitem____SWIG_1(PyObject *S
         result = (std::vector< mfem::HypreParMatrix * >::value_type)std_vector_Sl_mfem_HypreParMatrix_Sm__Sg____getitem____SWIG_1(arg1,arg2);
       } catch(std::out_of_range &_e) {
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   return resultobj;
@@ -19490,16 +19695,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix___setitem____SWIG_2(PyObject *S
         std_vector_Sl_mfem_HypreParMatrix_Sm__Sg____setitem____SWIG_2(arg1,arg2,arg3);
       } catch(std::out_of_range &_e) {
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -19597,16 +19805,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_pop(PyObject *SWIGUNUSEDPARM(se
         result = (std::vector< mfem::HypreParMatrix * >::value_type)std_vector_Sl_mfem_HypreParMatrix_Sm__Sg__pop(arg1);
       } catch(std::out_of_range &_e) {
         SWIG_exception_fail(SWIG_IndexError, (&_e)->what());
-      } 
+      }
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   return resultobj;
@@ -19642,16 +19853,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_append(PyObject *SWIGUNUSEDPARM
   arg2 = reinterpret_cast< std::vector< mfem::HypreParMatrix * >::value_type >(argp2);
   {
     try {
-      std_vector_Sl_mfem_HypreParMatrix_Sm__Sg__append(arg1,arg2); 
+      std_vector_Sl_mfem_HypreParMatrix_Sm__Sg__append(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -19667,16 +19881,19 @@ SWIGINTERN PyObject *_wrap_new_vector_HypreParMatrix__SWIG_0(PyObject *SWIGUNUSE
   if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      result = (std::vector< mfem::HypreParMatrix * > *)new std::vector< mfem::HypreParMatrix * >(); 
+      result = (std::vector< mfem::HypreParMatrix * > *)new std::vector< mfem::HypreParMatrix * >();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__HypreParMatrix_p_std__allocatorT_mfem__HypreParMatrix_p_t_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -19705,16 +19922,19 @@ SWIGINTERN PyObject *_wrap_new_vector_HypreParMatrix__SWIG_1(PyObject *SWIGUNUSE
   }
   {
     try {
-      result = (std::vector< mfem::HypreParMatrix * > *)new std::vector< mfem::HypreParMatrix * >((std::vector< mfem::HypreParMatrix * > const &)*arg1); 
+      result = (std::vector< mfem::HypreParMatrix * > *)new std::vector< mfem::HypreParMatrix * >((std::vector< mfem::HypreParMatrix * > const &)*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__HypreParMatrix_p_std__allocatorT_mfem__HypreParMatrix_p_t_t, SWIG_POINTER_NEW |  0 );
   if (SWIG_IsNewObj(res1)) delete arg1;
@@ -19742,16 +19962,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_empty(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< std::vector< mfem::HypreParMatrix * > * >(argp1);
   {
     try {
-      result = (bool)((std::vector< mfem::HypreParMatrix * > const *)arg1)->empty(); 
+      result = (bool)((std::vector< mfem::HypreParMatrix * > const *)arg1)->empty();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -19777,16 +20000,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_size(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< std::vector< mfem::HypreParMatrix * > * >(argp1);
   {
     try {
-      result = ((std::vector< mfem::HypreParMatrix * > const *)arg1)->size(); 
+      result = ((std::vector< mfem::HypreParMatrix * > const *)arg1)->size();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
@@ -19825,16 +20051,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_swap(PyObject *SWIGUNUSEDPARM(s
   arg2 = reinterpret_cast< std::vector< mfem::HypreParMatrix * > * >(argp2);
   {
     try {
-      (arg1)->swap(*arg2); 
+      (arg1)->swap(*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -19860,16 +20089,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_begin(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< std::vector< mfem::HypreParMatrix * > * >(argp1);
   {
     try {
-      result = (arg1)->begin(); 
+      result = (arg1)->begin();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::HypreParMatrix * >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -19896,16 +20128,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_end(PyObject *SWIGUNUSEDPARM(se
   arg1 = reinterpret_cast< std::vector< mfem::HypreParMatrix * > * >(argp1);
   {
     try {
-      result = (arg1)->end(); 
+      result = (arg1)->end();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::HypreParMatrix * >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -19932,16 +20167,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_rbegin(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< std::vector< mfem::HypreParMatrix * > * >(argp1);
   {
     try {
-      result = (arg1)->rbegin(); 
+      result = (arg1)->rbegin();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::HypreParMatrix * >::reverse_iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -19968,16 +20206,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_rend(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< std::vector< mfem::HypreParMatrix * > * >(argp1);
   {
     try {
-      result = (arg1)->rend(); 
+      result = (arg1)->rend();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::HypreParMatrix * >::reverse_iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -20003,16 +20244,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_clear(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< std::vector< mfem::HypreParMatrix * > * >(argp1);
   {
     try {
-      (arg1)->clear(); 
+      (arg1)->clear();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -20038,16 +20282,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_get_allocator(PyObject *SWIGUNU
   arg1 = reinterpret_cast< std::vector< mfem::HypreParMatrix * > * >(argp1);
   {
     try {
-      result = ((std::vector< mfem::HypreParMatrix * > const *)arg1)->get_allocator(); 
+      result = ((std::vector< mfem::HypreParMatrix * > const *)arg1)->get_allocator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj((new std::vector< mfem::HypreParMatrix * >::allocator_type(static_cast< const std::vector< mfem::HypreParMatrix * >::allocator_type& >(result))), SWIGTYPE_p_std__allocatorT_mfem__HypreParMatrix_p_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -20071,16 +20318,19 @@ SWIGINTERN PyObject *_wrap_new_vector_HypreParMatrix__SWIG_2(PyObject *SWIGUNUSE
   arg1 = static_cast< std::vector< mfem::HypreParMatrix * >::size_type >(val1);
   {
     try {
-      result = (std::vector< mfem::HypreParMatrix * > *)new std::vector< mfem::HypreParMatrix * >(arg1); 
+      result = (std::vector< mfem::HypreParMatrix * > *)new std::vector< mfem::HypreParMatrix * >(arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__HypreParMatrix_p_std__allocatorT_mfem__HypreParMatrix_p_t_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -20105,16 +20355,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_pop_back(PyObject *SWIGUNUSEDPA
   arg1 = reinterpret_cast< std::vector< mfem::HypreParMatrix * > * >(argp1);
   {
     try {
-      (arg1)->pop_back(); 
+      (arg1)->pop_back();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -20145,16 +20398,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_resize__SWIG_0(PyObject *SWIGUN
   arg2 = static_cast< std::vector< mfem::HypreParMatrix * >::size_type >(val2);
   {
     try {
-      (arg1)->resize(arg2); 
+      (arg1)->resize(arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -20192,16 +20448,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_erase__SWIG_0(PyObject *SWIGUNU
   }
   {
     try {
-      result = std_vector_Sl_mfem_HypreParMatrix_Sm__Sg__erase__SWIG_0(arg1,arg2); 
+      result = std_vector_Sl_mfem_HypreParMatrix_Sm__Sg__erase__SWIG_0(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::HypreParMatrix * >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -20254,16 +20513,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_erase__SWIG_1(PyObject *SWIGUNU
   }
   {
     try {
-      result = std_vector_Sl_mfem_HypreParMatrix_Sm__Sg__erase__SWIG_1(arg1,arg2,arg3); 
+      result = std_vector_Sl_mfem_HypreParMatrix_Sm__Sg__erase__SWIG_1(arg1,arg2,arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::HypreParMatrix * >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -20345,16 +20607,19 @@ SWIGINTERN PyObject *_wrap_new_vector_HypreParMatrix__SWIG_3(PyObject *SWIGUNUSE
   arg2 = reinterpret_cast< std::vector< mfem::HypreParMatrix * >::value_type >(argp2);
   {
     try {
-      result = (std::vector< mfem::HypreParMatrix * > *)new std::vector< mfem::HypreParMatrix * >(arg1,arg2); 
+      result = (std::vector< mfem::HypreParMatrix * > *)new std::vector< mfem::HypreParMatrix * >(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_mfem__HypreParMatrix_p_std__allocatorT_mfem__HypreParMatrix_p_t_t, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -20446,16 +20711,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_push_back(PyObject *SWIGUNUSEDP
   arg2 = reinterpret_cast< std::vector< mfem::HypreParMatrix * >::value_type >(argp2);
   {
     try {
-      (arg1)->push_back(arg2); 
+      (arg1)->push_back(arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -20481,16 +20749,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_front(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< std::vector< mfem::HypreParMatrix * > * >(argp1);
   {
     try {
-      result = (std::vector< mfem::HypreParMatrix * >::value_type)((std::vector< mfem::HypreParMatrix * > const *)arg1)->front(); 
+      result = (std::vector< mfem::HypreParMatrix * >::value_type)((std::vector< mfem::HypreParMatrix * > const *)arg1)->front();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   return resultobj;
@@ -20516,16 +20787,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_back(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< std::vector< mfem::HypreParMatrix * > * >(argp1);
   {
     try {
-      result = (std::vector< mfem::HypreParMatrix * >::value_type)((std::vector< mfem::HypreParMatrix * > const *)arg1)->back(); 
+      result = (std::vector< mfem::HypreParMatrix * >::value_type)((std::vector< mfem::HypreParMatrix * > const *)arg1)->back();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   return resultobj;
@@ -20570,16 +20844,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_assign(PyObject *SWIGUNUSEDPARM
   arg3 = reinterpret_cast< std::vector< mfem::HypreParMatrix * >::value_type >(argp3);
   {
     try {
-      (arg1)->assign(arg2,arg3); 
+      (arg1)->assign(arg2,arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -20618,16 +20895,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_resize__SWIG_1(PyObject *SWIGUN
   arg3 = reinterpret_cast< std::vector< mfem::HypreParMatrix * >::value_type >(argp3);
   {
     try {
-      (arg1)->resize(arg2,arg3); 
+      (arg1)->resize(arg2,arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -20724,16 +21004,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_insert__SWIG_0(PyObject *SWIGUN
   arg3 = reinterpret_cast< std::vector< mfem::HypreParMatrix * >::value_type >(argp3);
   {
     try {
-      result = std_vector_Sl_mfem_HypreParMatrix_Sm__Sg__insert__SWIG_0(arg1,arg2,arg3); 
+      result = std_vector_Sl_mfem_HypreParMatrix_Sm__Sg__insert__SWIG_0(arg1,arg2,arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(swig::make_output_iterator(static_cast< const std::vector< mfem::HypreParMatrix * >::iterator & >(result)),
     swig::SwigPyIterator::descriptor(),SWIG_POINTER_OWN);
@@ -20787,16 +21070,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_insert__SWIG_1(PyObject *SWIGUN
   arg4 = reinterpret_cast< std::vector< mfem::HypreParMatrix * >::value_type >(argp4);
   {
     try {
-      std_vector_Sl_mfem_HypreParMatrix_Sm__Sg__insert__SWIG_1(arg1,arg2,arg3,arg4); 
+      std_vector_Sl_mfem_HypreParMatrix_Sm__Sg__insert__SWIG_1(arg1,arg2,arg3,arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -20892,16 +21178,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_reserve(PyObject *SWIGUNUSEDPAR
   arg2 = static_cast< std::vector< mfem::HypreParMatrix * >::size_type >(val2);
   {
     try {
-      (arg1)->reserve(arg2); 
+      (arg1)->reserve(arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -20927,16 +21216,19 @@ SWIGINTERN PyObject *_wrap_vector_HypreParMatrix_capacity(PyObject *SWIGUNUSEDPA
   arg1 = reinterpret_cast< std::vector< mfem::HypreParMatrix * > * >(argp1);
   {
     try {
-      result = ((std::vector< mfem::HypreParMatrix * > const *)arg1)->capacity(); 
+      result = ((std::vector< mfem::HypreParMatrix * > const *)arg1)->capacity();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
@@ -20961,16 +21253,19 @@ SWIGINTERN PyObject *_wrap_delete_vector_HypreParMatrix(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< std::vector< mfem::HypreParMatrix * > * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -21018,10 +21313,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "vector_int___nonzero__", _wrap_vector_int___nonzero__, METH_O, "vector_int___nonzero__(vector_int self) -> bool"},
 	 { "vector_int___bool__", _wrap_vector_int___bool__, METH_O, "vector_int___bool__(vector_int self) -> bool"},
 	 { "vector_int___len__", _wrap_vector_int___len__, METH_O, "vector_int___len__(vector_int self) -> std::vector< int >::size_type"},
-	 { "vector_int___getslice__", (PyCFunction)(void(*)(void))_wrap_vector_int___getslice__, METH_VARARGS|METH_KEYWORDS, "vector_int___getslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j) -> std::vector< int,std::allocator< int > > *"},
+	 { "vector_int___getslice__", (PyCFunction)(void(*)(void))_wrap_vector_int___getslice__, METH_VARARGS|METH_KEYWORDS, "vector_int___getslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j) -> vector_int"},
 	 { "vector_int___setslice__", _wrap_vector_int___setslice__, METH_VARARGS, "\n"
 		"vector_int___setslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j)\n"
-		"vector_int___setslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j, std::vector< int,std::allocator< int > > const & v)\n"
+		"vector_int___setslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j, vector_int v)\n"
 		""},
 	 { "vector_int___delslice__", (PyCFunction)(void(*)(void))_wrap_vector_int___delslice__, METH_VARARGS|METH_KEYWORDS, "vector_int___delslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j)"},
 	 { "vector_int___delitem__", _wrap_vector_int___delitem__, METH_VARARGS, "\n"
@@ -21029,11 +21324,11 @@ static PyMethodDef SwigMethods[] = {
 		"vector_int___delitem__(vector_int self, PySliceObject * slice)\n"
 		""},
 	 { "vector_int___getitem__", _wrap_vector_int___getitem__, METH_VARARGS, "\n"
-		"vector_int___getitem__(vector_int self, PySliceObject * slice) -> std::vector< int,std::allocator< int > >\n"
+		"vector_int___getitem__(vector_int self, PySliceObject * slice) -> vector_int\n"
 		"vector_int___getitem__(vector_int self, std::vector< int >::difference_type i) -> std::vector< int >::value_type const &\n"
 		""},
 	 { "vector_int___setitem__", _wrap_vector_int___setitem__, METH_VARARGS, "\n"
-		"vector_int___setitem__(vector_int self, PySliceObject * slice, std::vector< int,std::allocator< int > > const & v)\n"
+		"vector_int___setitem__(vector_int self, PySliceObject * slice, vector_int v)\n"
 		"vector_int___setitem__(vector_int self, PySliceObject * slice)\n"
 		"vector_int___setitem__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::value_type const & x)\n"
 		""},
@@ -21092,15 +21387,15 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "vector_Vector___getitem__", _wrap_vector_Vector___getitem__, METH_VARARGS, "\n"
 		"vector_Vector___getitem__(vector_Vector self, PySliceObject * slice) -> vector_Vector\n"
-		"vector_Vector___getitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i) -> Vector\n"
+		"vector_Vector___getitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i) -> std::vector< mfem::Vector >::value_type const &\n"
 		""},
 	 { "vector_Vector___setitem__", _wrap_vector_Vector___setitem__, METH_VARARGS, "\n"
 		"vector_Vector___setitem__(vector_Vector self, PySliceObject * slice, vector_Vector v)\n"
 		"vector_Vector___setitem__(vector_Vector self, PySliceObject * slice)\n"
-		"vector_Vector___setitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i, Vector x)\n"
+		"vector_Vector___setitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i, std::vector< mfem::Vector >::value_type const & x)\n"
 		""},
-	 { "vector_Vector_pop", _wrap_vector_Vector_pop, METH_O, "vector_Vector_pop(vector_Vector self) -> Vector"},
-	 { "vector_Vector_append", (PyCFunction)(void(*)(void))_wrap_vector_Vector_append, METH_VARARGS|METH_KEYWORDS, "vector_Vector_append(vector_Vector self, Vector x)"},
+	 { "vector_Vector_pop", _wrap_vector_Vector_pop, METH_O, "vector_Vector_pop(vector_Vector self) -> std::vector< mfem::Vector >::value_type"},
+	 { "vector_Vector_append", (PyCFunction)(void(*)(void))_wrap_vector_Vector_append, METH_VARARGS|METH_KEYWORDS, "vector_Vector_append(vector_Vector self, std::vector< mfem::Vector >::value_type const & x)"},
 	 { "vector_Vector_empty", _wrap_vector_Vector_empty, METH_O, "vector_Vector_empty(vector_Vector self) -> bool"},
 	 { "vector_Vector_size", _wrap_vector_Vector_size, METH_O, "vector_Vector_size(vector_Vector self) -> std::vector< mfem::Vector >::size_type"},
 	 { "vector_Vector_swap", (PyCFunction)(void(*)(void))_wrap_vector_Vector_swap, METH_VARARGS|METH_KEYWORDS, "vector_Vector_swap(vector_Vector self, vector_Vector v)"},
@@ -21119,19 +21414,19 @@ static PyMethodDef SwigMethods[] = {
 		"vector_Vector()\n"
 		"vector_Vector(vector_Vector other)\n"
 		"vector_Vector(std::vector< mfem::Vector >::size_type size)\n"
-		"new_vector_Vector(std::vector< mfem::Vector >::size_type size, Vector value) -> vector_Vector\n"
+		"new_vector_Vector(std::vector< mfem::Vector >::size_type size, std::vector< mfem::Vector >::value_type const & value) -> vector_Vector\n"
 		""},
-	 { "vector_Vector_push_back", (PyCFunction)(void(*)(void))_wrap_vector_Vector_push_back, METH_VARARGS|METH_KEYWORDS, "vector_Vector_push_back(vector_Vector self, Vector x)"},
-	 { "vector_Vector_front", _wrap_vector_Vector_front, METH_O, "vector_Vector_front(vector_Vector self) -> Vector"},
-	 { "vector_Vector_back", _wrap_vector_Vector_back, METH_O, "vector_Vector_back(vector_Vector self) -> Vector"},
-	 { "vector_Vector_assign", (PyCFunction)(void(*)(void))_wrap_vector_Vector_assign, METH_VARARGS|METH_KEYWORDS, "vector_Vector_assign(vector_Vector self, std::vector< mfem::Vector >::size_type n, Vector x)"},
+	 { "vector_Vector_push_back", (PyCFunction)(void(*)(void))_wrap_vector_Vector_push_back, METH_VARARGS|METH_KEYWORDS, "vector_Vector_push_back(vector_Vector self, std::vector< mfem::Vector >::value_type const & x)"},
+	 { "vector_Vector_front", _wrap_vector_Vector_front, METH_O, "vector_Vector_front(vector_Vector self) -> std::vector< mfem::Vector >::value_type const &"},
+	 { "vector_Vector_back", _wrap_vector_Vector_back, METH_O, "vector_Vector_back(vector_Vector self) -> std::vector< mfem::Vector >::value_type const &"},
+	 { "vector_Vector_assign", (PyCFunction)(void(*)(void))_wrap_vector_Vector_assign, METH_VARARGS|METH_KEYWORDS, "vector_Vector_assign(vector_Vector self, std::vector< mfem::Vector >::size_type n, std::vector< mfem::Vector >::value_type const & x)"},
 	 { "vector_Vector_resize", _wrap_vector_Vector_resize, METH_VARARGS, "\n"
 		"vector_Vector_resize(vector_Vector self, std::vector< mfem::Vector >::size_type new_size)\n"
-		"vector_Vector_resize(vector_Vector self, std::vector< mfem::Vector >::size_type new_size, Vector x)\n"
+		"vector_Vector_resize(vector_Vector self, std::vector< mfem::Vector >::size_type new_size, std::vector< mfem::Vector >::value_type const & x)\n"
 		""},
 	 { "vector_Vector_insert", _wrap_vector_Vector_insert, METH_VARARGS, "\n"
-		"vector_Vector_insert(vector_Vector self, std::vector< mfem::Vector >::iterator pos, Vector x) -> std::vector< mfem::Vector >::iterator\n"
-		"vector_Vector_insert(vector_Vector self, std::vector< mfem::Vector >::iterator pos, std::vector< mfem::Vector >::size_type n, Vector x)\n"
+		"vector_Vector_insert(vector_Vector self, std::vector< mfem::Vector >::iterator pos, std::vector< mfem::Vector >::value_type const & x) -> std::vector< mfem::Vector >::iterator\n"
+		"vector_Vector_insert(vector_Vector self, std::vector< mfem::Vector >::iterator pos, std::vector< mfem::Vector >::size_type n, std::vector< mfem::Vector >::value_type const & x)\n"
 		""},
 	 { "vector_Vector_reserve", (PyCFunction)(void(*)(void))_wrap_vector_Vector_reserve, METH_VARARGS|METH_KEYWORDS, "vector_Vector_reserve(vector_Vector self, std::vector< mfem::Vector >::size_type n)"},
 	 { "vector_Vector_capacity", _wrap_vector_Vector_capacity, METH_O, "vector_Vector_capacity(vector_Vector self) -> std::vector< mfem::Vector >::size_type"},
@@ -21216,15 +21511,15 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "vector_ParFiniteElementSpace___getitem__", _wrap_vector_ParFiniteElementSpace___getitem__, METH_VARARGS, "\n"
 		"vector_ParFiniteElementSpace___getitem__(vector_ParFiniteElementSpace self, PySliceObject * slice) -> vector_ParFiniteElementSpace\n"
-		"vector_ParFiniteElementSpace___getitem__(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::difference_type i) -> ParFiniteElementSpace\n"
+		"vector_ParFiniteElementSpace___getitem__(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::difference_type i) -> std::vector< mfem::ParFiniteElementSpace * >::value_type\n"
 		""},
 	 { "vector_ParFiniteElementSpace___setitem__", _wrap_vector_ParFiniteElementSpace___setitem__, METH_VARARGS, "\n"
 		"vector_ParFiniteElementSpace___setitem__(vector_ParFiniteElementSpace self, PySliceObject * slice, vector_ParFiniteElementSpace v)\n"
 		"vector_ParFiniteElementSpace___setitem__(vector_ParFiniteElementSpace self, PySliceObject * slice)\n"
-		"vector_ParFiniteElementSpace___setitem__(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::difference_type i, ParFiniteElementSpace x)\n"
+		"vector_ParFiniteElementSpace___setitem__(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::difference_type i, std::vector< mfem::ParFiniteElementSpace * >::value_type x)\n"
 		""},
-	 { "vector_ParFiniteElementSpace_pop", _wrap_vector_ParFiniteElementSpace_pop, METH_O, "vector_ParFiniteElementSpace_pop(vector_ParFiniteElementSpace self) -> ParFiniteElementSpace"},
-	 { "vector_ParFiniteElementSpace_append", (PyCFunction)(void(*)(void))_wrap_vector_ParFiniteElementSpace_append, METH_VARARGS|METH_KEYWORDS, "vector_ParFiniteElementSpace_append(vector_ParFiniteElementSpace self, ParFiniteElementSpace x)"},
+	 { "vector_ParFiniteElementSpace_pop", _wrap_vector_ParFiniteElementSpace_pop, METH_O, "vector_ParFiniteElementSpace_pop(vector_ParFiniteElementSpace self) -> std::vector< mfem::ParFiniteElementSpace * >::value_type"},
+	 { "vector_ParFiniteElementSpace_append", (PyCFunction)(void(*)(void))_wrap_vector_ParFiniteElementSpace_append, METH_VARARGS|METH_KEYWORDS, "vector_ParFiniteElementSpace_append(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::value_type x)"},
 	 { "vector_ParFiniteElementSpace_empty", _wrap_vector_ParFiniteElementSpace_empty, METH_O, "vector_ParFiniteElementSpace_empty(vector_ParFiniteElementSpace self) -> bool"},
 	 { "vector_ParFiniteElementSpace_size", _wrap_vector_ParFiniteElementSpace_size, METH_O, "vector_ParFiniteElementSpace_size(vector_ParFiniteElementSpace self) -> std::vector< mfem::ParFiniteElementSpace * >::size_type"},
 	 { "vector_ParFiniteElementSpace_swap", (PyCFunction)(void(*)(void))_wrap_vector_ParFiniteElementSpace_swap, METH_VARARGS|METH_KEYWORDS, "vector_ParFiniteElementSpace_swap(vector_ParFiniteElementSpace self, vector_ParFiniteElementSpace v)"},
@@ -21243,19 +21538,19 @@ static PyMethodDef SwigMethods[] = {
 		"vector_ParFiniteElementSpace()\n"
 		"vector_ParFiniteElementSpace(vector_ParFiniteElementSpace other)\n"
 		"vector_ParFiniteElementSpace(std::vector< mfem::ParFiniteElementSpace * >::size_type size)\n"
-		"new_vector_ParFiniteElementSpace(std::vector< mfem::ParFiniteElementSpace * >::size_type size, ParFiniteElementSpace value) -> vector_ParFiniteElementSpace\n"
+		"new_vector_ParFiniteElementSpace(std::vector< mfem::ParFiniteElementSpace * >::size_type size, std::vector< mfem::ParFiniteElementSpace * >::value_type value) -> vector_ParFiniteElementSpace\n"
 		""},
-	 { "vector_ParFiniteElementSpace_push_back", (PyCFunction)(void(*)(void))_wrap_vector_ParFiniteElementSpace_push_back, METH_VARARGS|METH_KEYWORDS, "vector_ParFiniteElementSpace_push_back(vector_ParFiniteElementSpace self, ParFiniteElementSpace x)"},
-	 { "vector_ParFiniteElementSpace_front", _wrap_vector_ParFiniteElementSpace_front, METH_O, "vector_ParFiniteElementSpace_front(vector_ParFiniteElementSpace self) -> ParFiniteElementSpace"},
-	 { "vector_ParFiniteElementSpace_back", _wrap_vector_ParFiniteElementSpace_back, METH_O, "vector_ParFiniteElementSpace_back(vector_ParFiniteElementSpace self) -> ParFiniteElementSpace"},
-	 { "vector_ParFiniteElementSpace_assign", (PyCFunction)(void(*)(void))_wrap_vector_ParFiniteElementSpace_assign, METH_VARARGS|METH_KEYWORDS, "vector_ParFiniteElementSpace_assign(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::size_type n, ParFiniteElementSpace x)"},
+	 { "vector_ParFiniteElementSpace_push_back", (PyCFunction)(void(*)(void))_wrap_vector_ParFiniteElementSpace_push_back, METH_VARARGS|METH_KEYWORDS, "vector_ParFiniteElementSpace_push_back(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::value_type x)"},
+	 { "vector_ParFiniteElementSpace_front", _wrap_vector_ParFiniteElementSpace_front, METH_O, "vector_ParFiniteElementSpace_front(vector_ParFiniteElementSpace self) -> std::vector< mfem::ParFiniteElementSpace * >::value_type"},
+	 { "vector_ParFiniteElementSpace_back", _wrap_vector_ParFiniteElementSpace_back, METH_O, "vector_ParFiniteElementSpace_back(vector_ParFiniteElementSpace self) -> std::vector< mfem::ParFiniteElementSpace * >::value_type"},
+	 { "vector_ParFiniteElementSpace_assign", (PyCFunction)(void(*)(void))_wrap_vector_ParFiniteElementSpace_assign, METH_VARARGS|METH_KEYWORDS, "vector_ParFiniteElementSpace_assign(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::size_type n, std::vector< mfem::ParFiniteElementSpace * >::value_type x)"},
 	 { "vector_ParFiniteElementSpace_resize", _wrap_vector_ParFiniteElementSpace_resize, METH_VARARGS, "\n"
 		"vector_ParFiniteElementSpace_resize(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::size_type new_size)\n"
-		"vector_ParFiniteElementSpace_resize(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::size_type new_size, ParFiniteElementSpace x)\n"
+		"vector_ParFiniteElementSpace_resize(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::size_type new_size, std::vector< mfem::ParFiniteElementSpace * >::value_type x)\n"
 		""},
 	 { "vector_ParFiniteElementSpace_insert", _wrap_vector_ParFiniteElementSpace_insert, METH_VARARGS, "\n"
-		"vector_ParFiniteElementSpace_insert(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::iterator pos, ParFiniteElementSpace x) -> std::vector< mfem::ParFiniteElementSpace * >::iterator\n"
-		"vector_ParFiniteElementSpace_insert(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::iterator pos, std::vector< mfem::ParFiniteElementSpace * >::size_type n, ParFiniteElementSpace x)\n"
+		"vector_ParFiniteElementSpace_insert(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::iterator pos, std::vector< mfem::ParFiniteElementSpace * >::value_type x) -> std::vector< mfem::ParFiniteElementSpace * >::iterator\n"
+		"vector_ParFiniteElementSpace_insert(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::iterator pos, std::vector< mfem::ParFiniteElementSpace * >::size_type n, std::vector< mfem::ParFiniteElementSpace * >::value_type x)\n"
 		""},
 	 { "vector_ParFiniteElementSpace_reserve", (PyCFunction)(void(*)(void))_wrap_vector_ParFiniteElementSpace_reserve, METH_VARARGS|METH_KEYWORDS, "vector_ParFiniteElementSpace_reserve(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::size_type n)"},
 	 { "vector_ParFiniteElementSpace_capacity", _wrap_vector_ParFiniteElementSpace_capacity, METH_O, "vector_ParFiniteElementSpace_capacity(vector_ParFiniteElementSpace self) -> std::vector< mfem::ParFiniteElementSpace * >::size_type"},
@@ -21278,15 +21573,15 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "vector_ParMesh___getitem__", _wrap_vector_ParMesh___getitem__, METH_VARARGS, "\n"
 		"vector_ParMesh___getitem__(vector_ParMesh self, PySliceObject * slice) -> vector_ParMesh\n"
-		"vector_ParMesh___getitem__(vector_ParMesh self, std::vector< mfem::ParMesh * >::difference_type i) -> ParMesh\n"
+		"vector_ParMesh___getitem__(vector_ParMesh self, std::vector< mfem::ParMesh * >::difference_type i) -> std::vector< mfem::ParMesh * >::value_type\n"
 		""},
 	 { "vector_ParMesh___setitem__", _wrap_vector_ParMesh___setitem__, METH_VARARGS, "\n"
 		"vector_ParMesh___setitem__(vector_ParMesh self, PySliceObject * slice, vector_ParMesh v)\n"
 		"vector_ParMesh___setitem__(vector_ParMesh self, PySliceObject * slice)\n"
-		"vector_ParMesh___setitem__(vector_ParMesh self, std::vector< mfem::ParMesh * >::difference_type i, ParMesh x)\n"
+		"vector_ParMesh___setitem__(vector_ParMesh self, std::vector< mfem::ParMesh * >::difference_type i, std::vector< mfem::ParMesh * >::value_type x)\n"
 		""},
-	 { "vector_ParMesh_pop", _wrap_vector_ParMesh_pop, METH_O, "vector_ParMesh_pop(vector_ParMesh self) -> ParMesh"},
-	 { "vector_ParMesh_append", (PyCFunction)(void(*)(void))_wrap_vector_ParMesh_append, METH_VARARGS|METH_KEYWORDS, "vector_ParMesh_append(vector_ParMesh self, ParMesh x)"},
+	 { "vector_ParMesh_pop", _wrap_vector_ParMesh_pop, METH_O, "vector_ParMesh_pop(vector_ParMesh self) -> std::vector< mfem::ParMesh * >::value_type"},
+	 { "vector_ParMesh_append", (PyCFunction)(void(*)(void))_wrap_vector_ParMesh_append, METH_VARARGS|METH_KEYWORDS, "vector_ParMesh_append(vector_ParMesh self, std::vector< mfem::ParMesh * >::value_type x)"},
 	 { "vector_ParMesh_empty", _wrap_vector_ParMesh_empty, METH_O, "vector_ParMesh_empty(vector_ParMesh self) -> bool"},
 	 { "vector_ParMesh_size", _wrap_vector_ParMesh_size, METH_O, "vector_ParMesh_size(vector_ParMesh self) -> std::vector< mfem::ParMesh * >::size_type"},
 	 { "vector_ParMesh_swap", (PyCFunction)(void(*)(void))_wrap_vector_ParMesh_swap, METH_VARARGS|METH_KEYWORDS, "vector_ParMesh_swap(vector_ParMesh self, vector_ParMesh v)"},
@@ -21305,19 +21600,19 @@ static PyMethodDef SwigMethods[] = {
 		"vector_ParMesh()\n"
 		"vector_ParMesh(vector_ParMesh other)\n"
 		"vector_ParMesh(std::vector< mfem::ParMesh * >::size_type size)\n"
-		"new_vector_ParMesh(std::vector< mfem::ParMesh * >::size_type size, ParMesh value) -> vector_ParMesh\n"
+		"new_vector_ParMesh(std::vector< mfem::ParMesh * >::size_type size, std::vector< mfem::ParMesh * >::value_type value) -> vector_ParMesh\n"
 		""},
-	 { "vector_ParMesh_push_back", (PyCFunction)(void(*)(void))_wrap_vector_ParMesh_push_back, METH_VARARGS|METH_KEYWORDS, "vector_ParMesh_push_back(vector_ParMesh self, ParMesh x)"},
-	 { "vector_ParMesh_front", _wrap_vector_ParMesh_front, METH_O, "vector_ParMesh_front(vector_ParMesh self) -> ParMesh"},
-	 { "vector_ParMesh_back", _wrap_vector_ParMesh_back, METH_O, "vector_ParMesh_back(vector_ParMesh self) -> ParMesh"},
-	 { "vector_ParMesh_assign", (PyCFunction)(void(*)(void))_wrap_vector_ParMesh_assign, METH_VARARGS|METH_KEYWORDS, "vector_ParMesh_assign(vector_ParMesh self, std::vector< mfem::ParMesh * >::size_type n, ParMesh x)"},
+	 { "vector_ParMesh_push_back", (PyCFunction)(void(*)(void))_wrap_vector_ParMesh_push_back, METH_VARARGS|METH_KEYWORDS, "vector_ParMesh_push_back(vector_ParMesh self, std::vector< mfem::ParMesh * >::value_type x)"},
+	 { "vector_ParMesh_front", _wrap_vector_ParMesh_front, METH_O, "vector_ParMesh_front(vector_ParMesh self) -> std::vector< mfem::ParMesh * >::value_type"},
+	 { "vector_ParMesh_back", _wrap_vector_ParMesh_back, METH_O, "vector_ParMesh_back(vector_ParMesh self) -> std::vector< mfem::ParMesh * >::value_type"},
+	 { "vector_ParMesh_assign", (PyCFunction)(void(*)(void))_wrap_vector_ParMesh_assign, METH_VARARGS|METH_KEYWORDS, "vector_ParMesh_assign(vector_ParMesh self, std::vector< mfem::ParMesh * >::size_type n, std::vector< mfem::ParMesh * >::value_type x)"},
 	 { "vector_ParMesh_resize", _wrap_vector_ParMesh_resize, METH_VARARGS, "\n"
 		"vector_ParMesh_resize(vector_ParMesh self, std::vector< mfem::ParMesh * >::size_type new_size)\n"
-		"vector_ParMesh_resize(vector_ParMesh self, std::vector< mfem::ParMesh * >::size_type new_size, ParMesh x)\n"
+		"vector_ParMesh_resize(vector_ParMesh self, std::vector< mfem::ParMesh * >::size_type new_size, std::vector< mfem::ParMesh * >::value_type x)\n"
 		""},
 	 { "vector_ParMesh_insert", _wrap_vector_ParMesh_insert, METH_VARARGS, "\n"
-		"vector_ParMesh_insert(vector_ParMesh self, std::vector< mfem::ParMesh * >::iterator pos, ParMesh x) -> std::vector< mfem::ParMesh * >::iterator\n"
-		"vector_ParMesh_insert(vector_ParMesh self, std::vector< mfem::ParMesh * >::iterator pos, std::vector< mfem::ParMesh * >::size_type n, ParMesh x)\n"
+		"vector_ParMesh_insert(vector_ParMesh self, std::vector< mfem::ParMesh * >::iterator pos, std::vector< mfem::ParMesh * >::value_type x) -> std::vector< mfem::ParMesh * >::iterator\n"
+		"vector_ParMesh_insert(vector_ParMesh self, std::vector< mfem::ParMesh * >::iterator pos, std::vector< mfem::ParMesh * >::size_type n, std::vector< mfem::ParMesh * >::value_type x)\n"
 		""},
 	 { "vector_ParMesh_reserve", (PyCFunction)(void(*)(void))_wrap_vector_ParMesh_reserve, METH_VARARGS|METH_KEYWORDS, "vector_ParMesh_reserve(vector_ParMesh self, std::vector< mfem::ParMesh * >::size_type n)"},
 	 { "vector_ParMesh_capacity", _wrap_vector_ParMesh_capacity, METH_O, "vector_ParMesh_capacity(vector_ParMesh self) -> std::vector< mfem::ParMesh * >::size_type"},
@@ -21340,15 +21635,15 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "vector_HypreParMatrix___getitem__", _wrap_vector_HypreParMatrix___getitem__, METH_VARARGS, "\n"
 		"vector_HypreParMatrix___getitem__(vector_HypreParMatrix self, PySliceObject * slice) -> vector_HypreParMatrix\n"
-		"vector_HypreParMatrix___getitem__(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::difference_type i) -> HypreParMatrix\n"
+		"vector_HypreParMatrix___getitem__(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::difference_type i) -> std::vector< mfem::HypreParMatrix * >::value_type\n"
 		""},
 	 { "vector_HypreParMatrix___setitem__", _wrap_vector_HypreParMatrix___setitem__, METH_VARARGS, "\n"
 		"vector_HypreParMatrix___setitem__(vector_HypreParMatrix self, PySliceObject * slice, vector_HypreParMatrix v)\n"
 		"vector_HypreParMatrix___setitem__(vector_HypreParMatrix self, PySliceObject * slice)\n"
-		"vector_HypreParMatrix___setitem__(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::difference_type i, HypreParMatrix x)\n"
+		"vector_HypreParMatrix___setitem__(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::difference_type i, std::vector< mfem::HypreParMatrix * >::value_type x)\n"
 		""},
-	 { "vector_HypreParMatrix_pop", _wrap_vector_HypreParMatrix_pop, METH_O, "vector_HypreParMatrix_pop(vector_HypreParMatrix self) -> HypreParMatrix"},
-	 { "vector_HypreParMatrix_append", (PyCFunction)(void(*)(void))_wrap_vector_HypreParMatrix_append, METH_VARARGS|METH_KEYWORDS, "vector_HypreParMatrix_append(vector_HypreParMatrix self, HypreParMatrix x)"},
+	 { "vector_HypreParMatrix_pop", _wrap_vector_HypreParMatrix_pop, METH_O, "vector_HypreParMatrix_pop(vector_HypreParMatrix self) -> std::vector< mfem::HypreParMatrix * >::value_type"},
+	 { "vector_HypreParMatrix_append", (PyCFunction)(void(*)(void))_wrap_vector_HypreParMatrix_append, METH_VARARGS|METH_KEYWORDS, "vector_HypreParMatrix_append(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::value_type x)"},
 	 { "vector_HypreParMatrix_empty", _wrap_vector_HypreParMatrix_empty, METH_O, "vector_HypreParMatrix_empty(vector_HypreParMatrix self) -> bool"},
 	 { "vector_HypreParMatrix_size", _wrap_vector_HypreParMatrix_size, METH_O, "vector_HypreParMatrix_size(vector_HypreParMatrix self) -> std::vector< mfem::HypreParMatrix * >::size_type"},
 	 { "vector_HypreParMatrix_swap", (PyCFunction)(void(*)(void))_wrap_vector_HypreParMatrix_swap, METH_VARARGS|METH_KEYWORDS, "vector_HypreParMatrix_swap(vector_HypreParMatrix self, vector_HypreParMatrix v)"},
@@ -21367,19 +21662,19 @@ static PyMethodDef SwigMethods[] = {
 		"vector_HypreParMatrix()\n"
 		"vector_HypreParMatrix(vector_HypreParMatrix other)\n"
 		"vector_HypreParMatrix(std::vector< mfem::HypreParMatrix * >::size_type size)\n"
-		"new_vector_HypreParMatrix(std::vector< mfem::HypreParMatrix * >::size_type size, HypreParMatrix value) -> vector_HypreParMatrix\n"
+		"new_vector_HypreParMatrix(std::vector< mfem::HypreParMatrix * >::size_type size, std::vector< mfem::HypreParMatrix * >::value_type value) -> vector_HypreParMatrix\n"
 		""},
-	 { "vector_HypreParMatrix_push_back", (PyCFunction)(void(*)(void))_wrap_vector_HypreParMatrix_push_back, METH_VARARGS|METH_KEYWORDS, "vector_HypreParMatrix_push_back(vector_HypreParMatrix self, HypreParMatrix x)"},
-	 { "vector_HypreParMatrix_front", _wrap_vector_HypreParMatrix_front, METH_O, "vector_HypreParMatrix_front(vector_HypreParMatrix self) -> HypreParMatrix"},
-	 { "vector_HypreParMatrix_back", _wrap_vector_HypreParMatrix_back, METH_O, "vector_HypreParMatrix_back(vector_HypreParMatrix self) -> HypreParMatrix"},
-	 { "vector_HypreParMatrix_assign", (PyCFunction)(void(*)(void))_wrap_vector_HypreParMatrix_assign, METH_VARARGS|METH_KEYWORDS, "vector_HypreParMatrix_assign(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::size_type n, HypreParMatrix x)"},
+	 { "vector_HypreParMatrix_push_back", (PyCFunction)(void(*)(void))_wrap_vector_HypreParMatrix_push_back, METH_VARARGS|METH_KEYWORDS, "vector_HypreParMatrix_push_back(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::value_type x)"},
+	 { "vector_HypreParMatrix_front", _wrap_vector_HypreParMatrix_front, METH_O, "vector_HypreParMatrix_front(vector_HypreParMatrix self) -> std::vector< mfem::HypreParMatrix * >::value_type"},
+	 { "vector_HypreParMatrix_back", _wrap_vector_HypreParMatrix_back, METH_O, "vector_HypreParMatrix_back(vector_HypreParMatrix self) -> std::vector< mfem::HypreParMatrix * >::value_type"},
+	 { "vector_HypreParMatrix_assign", (PyCFunction)(void(*)(void))_wrap_vector_HypreParMatrix_assign, METH_VARARGS|METH_KEYWORDS, "vector_HypreParMatrix_assign(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::size_type n, std::vector< mfem::HypreParMatrix * >::value_type x)"},
 	 { "vector_HypreParMatrix_resize", _wrap_vector_HypreParMatrix_resize, METH_VARARGS, "\n"
 		"vector_HypreParMatrix_resize(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::size_type new_size)\n"
-		"vector_HypreParMatrix_resize(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::size_type new_size, HypreParMatrix x)\n"
+		"vector_HypreParMatrix_resize(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::size_type new_size, std::vector< mfem::HypreParMatrix * >::value_type x)\n"
 		""},
 	 { "vector_HypreParMatrix_insert", _wrap_vector_HypreParMatrix_insert, METH_VARARGS, "\n"
-		"vector_HypreParMatrix_insert(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::iterator pos, HypreParMatrix x) -> std::vector< mfem::HypreParMatrix * >::iterator\n"
-		"vector_HypreParMatrix_insert(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::iterator pos, std::vector< mfem::HypreParMatrix * >::size_type n, HypreParMatrix x)\n"
+		"vector_HypreParMatrix_insert(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::iterator pos, std::vector< mfem::HypreParMatrix * >::value_type x) -> std::vector< mfem::HypreParMatrix * >::iterator\n"
+		"vector_HypreParMatrix_insert(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::iterator pos, std::vector< mfem::HypreParMatrix * >::size_type n, std::vector< mfem::HypreParMatrix * >::value_type x)\n"
 		""},
 	 { "vector_HypreParMatrix_reserve", (PyCFunction)(void(*)(void))_wrap_vector_HypreParMatrix_reserve, METH_VARARGS|METH_KEYWORDS, "vector_HypreParMatrix_reserve(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::size_type n)"},
 	 { "vector_HypreParMatrix_capacity", _wrap_vector_HypreParMatrix_capacity, METH_O, "vector_HypreParMatrix_capacity(vector_HypreParMatrix self) -> std::vector< mfem::HypreParMatrix * >::size_type"},
@@ -21417,10 +21712,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "vector_int___nonzero__", _wrap_vector_int___nonzero__, METH_O, "__nonzero__(vector_int self) -> bool"},
 	 { "vector_int___bool__", _wrap_vector_int___bool__, METH_O, "__bool__(vector_int self) -> bool"},
 	 { "vector_int___len__", _wrap_vector_int___len__, METH_O, "__len__(vector_int self) -> std::vector< int >::size_type"},
-	 { "vector_int___getslice__", (PyCFunction)(void(*)(void))_wrap_vector_int___getslice__, METH_VARARGS|METH_KEYWORDS, "__getslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j) -> std::vector< int,std::allocator< int > > *"},
+	 { "vector_int___getslice__", (PyCFunction)(void(*)(void))_wrap_vector_int___getslice__, METH_VARARGS|METH_KEYWORDS, "__getslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j) -> vector_int"},
 	 { "vector_int___setslice__", _wrap_vector_int___setslice__, METH_VARARGS, "\n"
 		"__setslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j)\n"
-		"__setslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j, std::vector< int,std::allocator< int > > const & v)\n"
+		"__setslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j, vector_int v)\n"
 		""},
 	 { "vector_int___delslice__", (PyCFunction)(void(*)(void))_wrap_vector_int___delslice__, METH_VARARGS|METH_KEYWORDS, "__delslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j)"},
 	 { "vector_int___delitem__", _wrap_vector_int___delitem__, METH_VARARGS, "\n"
@@ -21428,11 +21723,11 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"__delitem__(vector_int self, PySliceObject * slice)\n"
 		""},
 	 { "vector_int___getitem__", _wrap_vector_int___getitem__, METH_VARARGS, "\n"
-		"__getitem__(vector_int self, PySliceObject * slice) -> std::vector< int,std::allocator< int > >\n"
+		"__getitem__(vector_int self, PySliceObject * slice) -> vector_int\n"
 		"__getitem__(vector_int self, std::vector< int >::difference_type i) -> std::vector< int >::value_type const &\n"
 		""},
 	 { "vector_int___setitem__", _wrap_vector_int___setitem__, METH_VARARGS, "\n"
-		"__setitem__(vector_int self, PySliceObject * slice, std::vector< int,std::allocator< int > > const & v)\n"
+		"__setitem__(vector_int self, PySliceObject * slice, vector_int v)\n"
 		"__setitem__(vector_int self, PySliceObject * slice)\n"
 		"__setitem__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::value_type const & x)\n"
 		""},
@@ -21491,15 +21786,15 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "vector_Vector___getitem__", _wrap_vector_Vector___getitem__, METH_VARARGS, "\n"
 		"__getitem__(vector_Vector self, PySliceObject * slice) -> vector_Vector\n"
-		"__getitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i) -> Vector\n"
+		"__getitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i) -> std::vector< mfem::Vector >::value_type const &\n"
 		""},
 	 { "vector_Vector___setitem__", _wrap_vector_Vector___setitem__, METH_VARARGS, "\n"
 		"__setitem__(vector_Vector self, PySliceObject * slice, vector_Vector v)\n"
 		"__setitem__(vector_Vector self, PySliceObject * slice)\n"
-		"__setitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i, Vector x)\n"
+		"__setitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i, std::vector< mfem::Vector >::value_type const & x)\n"
 		""},
-	 { "vector_Vector_pop", _wrap_vector_Vector_pop, METH_O, "pop(vector_Vector self) -> Vector"},
-	 { "vector_Vector_append", (PyCFunction)(void(*)(void))_wrap_vector_Vector_append, METH_VARARGS|METH_KEYWORDS, "append(vector_Vector self, Vector x)"},
+	 { "vector_Vector_pop", _wrap_vector_Vector_pop, METH_O, "pop(vector_Vector self) -> std::vector< mfem::Vector >::value_type"},
+	 { "vector_Vector_append", (PyCFunction)(void(*)(void))_wrap_vector_Vector_append, METH_VARARGS|METH_KEYWORDS, "append(vector_Vector self, std::vector< mfem::Vector >::value_type const & x)"},
 	 { "vector_Vector_empty", _wrap_vector_Vector_empty, METH_O, "empty(vector_Vector self) -> bool"},
 	 { "vector_Vector_size", _wrap_vector_Vector_size, METH_O, "size(vector_Vector self) -> std::vector< mfem::Vector >::size_type"},
 	 { "vector_Vector_swap", (PyCFunction)(void(*)(void))_wrap_vector_Vector_swap, METH_VARARGS|METH_KEYWORDS, "swap(vector_Vector self, vector_Vector v)"},
@@ -21518,19 +21813,19 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"vector_Vector()\n"
 		"vector_Vector(vector_Vector other)\n"
 		"vector_Vector(std::vector< mfem::Vector >::size_type size)\n"
-		"new_vector_Vector(std::vector< mfem::Vector >::size_type size, Vector value) -> vector_Vector\n"
+		"new_vector_Vector(std::vector< mfem::Vector >::size_type size, std::vector< mfem::Vector >::value_type const & value) -> vector_Vector\n"
 		""},
-	 { "vector_Vector_push_back", (PyCFunction)(void(*)(void))_wrap_vector_Vector_push_back, METH_VARARGS|METH_KEYWORDS, "push_back(vector_Vector self, Vector x)"},
-	 { "vector_Vector_front", _wrap_vector_Vector_front, METH_O, "front(vector_Vector self) -> Vector"},
-	 { "vector_Vector_back", _wrap_vector_Vector_back, METH_O, "back(vector_Vector self) -> Vector"},
-	 { "vector_Vector_assign", (PyCFunction)(void(*)(void))_wrap_vector_Vector_assign, METH_VARARGS|METH_KEYWORDS, "assign(vector_Vector self, std::vector< mfem::Vector >::size_type n, Vector x)"},
+	 { "vector_Vector_push_back", (PyCFunction)(void(*)(void))_wrap_vector_Vector_push_back, METH_VARARGS|METH_KEYWORDS, "push_back(vector_Vector self, std::vector< mfem::Vector >::value_type const & x)"},
+	 { "vector_Vector_front", _wrap_vector_Vector_front, METH_O, "front(vector_Vector self) -> std::vector< mfem::Vector >::value_type const &"},
+	 { "vector_Vector_back", _wrap_vector_Vector_back, METH_O, "back(vector_Vector self) -> std::vector< mfem::Vector >::value_type const &"},
+	 { "vector_Vector_assign", (PyCFunction)(void(*)(void))_wrap_vector_Vector_assign, METH_VARARGS|METH_KEYWORDS, "assign(vector_Vector self, std::vector< mfem::Vector >::size_type n, std::vector< mfem::Vector >::value_type const & x)"},
 	 { "vector_Vector_resize", _wrap_vector_Vector_resize, METH_VARARGS, "\n"
 		"resize(vector_Vector self, std::vector< mfem::Vector >::size_type new_size)\n"
-		"resize(vector_Vector self, std::vector< mfem::Vector >::size_type new_size, Vector x)\n"
+		"resize(vector_Vector self, std::vector< mfem::Vector >::size_type new_size, std::vector< mfem::Vector >::value_type const & x)\n"
 		""},
 	 { "vector_Vector_insert", _wrap_vector_Vector_insert, METH_VARARGS, "\n"
-		"insert(vector_Vector self, std::vector< mfem::Vector >::iterator pos, Vector x) -> std::vector< mfem::Vector >::iterator\n"
-		"insert(vector_Vector self, std::vector< mfem::Vector >::iterator pos, std::vector< mfem::Vector >::size_type n, Vector x)\n"
+		"insert(vector_Vector self, std::vector< mfem::Vector >::iterator pos, std::vector< mfem::Vector >::value_type const & x) -> std::vector< mfem::Vector >::iterator\n"
+		"insert(vector_Vector self, std::vector< mfem::Vector >::iterator pos, std::vector< mfem::Vector >::size_type n, std::vector< mfem::Vector >::value_type const & x)\n"
 		""},
 	 { "vector_Vector_reserve", (PyCFunction)(void(*)(void))_wrap_vector_Vector_reserve, METH_VARARGS|METH_KEYWORDS, "reserve(vector_Vector self, std::vector< mfem::Vector >::size_type n)"},
 	 { "vector_Vector_capacity", _wrap_vector_Vector_capacity, METH_O, "capacity(vector_Vector self) -> std::vector< mfem::Vector >::size_type"},
@@ -21615,15 +21910,15 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "vector_ParFiniteElementSpace___getitem__", _wrap_vector_ParFiniteElementSpace___getitem__, METH_VARARGS, "\n"
 		"__getitem__(vector_ParFiniteElementSpace self, PySliceObject * slice) -> vector_ParFiniteElementSpace\n"
-		"__getitem__(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::difference_type i) -> ParFiniteElementSpace\n"
+		"__getitem__(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::difference_type i) -> std::vector< mfem::ParFiniteElementSpace * >::value_type\n"
 		""},
 	 { "vector_ParFiniteElementSpace___setitem__", _wrap_vector_ParFiniteElementSpace___setitem__, METH_VARARGS, "\n"
 		"__setitem__(vector_ParFiniteElementSpace self, PySliceObject * slice, vector_ParFiniteElementSpace v)\n"
 		"__setitem__(vector_ParFiniteElementSpace self, PySliceObject * slice)\n"
-		"__setitem__(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::difference_type i, ParFiniteElementSpace x)\n"
+		"__setitem__(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::difference_type i, std::vector< mfem::ParFiniteElementSpace * >::value_type x)\n"
 		""},
-	 { "vector_ParFiniteElementSpace_pop", _wrap_vector_ParFiniteElementSpace_pop, METH_O, "pop(vector_ParFiniteElementSpace self) -> ParFiniteElementSpace"},
-	 { "vector_ParFiniteElementSpace_append", (PyCFunction)(void(*)(void))_wrap_vector_ParFiniteElementSpace_append, METH_VARARGS|METH_KEYWORDS, "append(vector_ParFiniteElementSpace self, ParFiniteElementSpace x)"},
+	 { "vector_ParFiniteElementSpace_pop", _wrap_vector_ParFiniteElementSpace_pop, METH_O, "pop(vector_ParFiniteElementSpace self) -> std::vector< mfem::ParFiniteElementSpace * >::value_type"},
+	 { "vector_ParFiniteElementSpace_append", (PyCFunction)(void(*)(void))_wrap_vector_ParFiniteElementSpace_append, METH_VARARGS|METH_KEYWORDS, "append(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::value_type x)"},
 	 { "vector_ParFiniteElementSpace_empty", _wrap_vector_ParFiniteElementSpace_empty, METH_O, "empty(vector_ParFiniteElementSpace self) -> bool"},
 	 { "vector_ParFiniteElementSpace_size", _wrap_vector_ParFiniteElementSpace_size, METH_O, "size(vector_ParFiniteElementSpace self) -> std::vector< mfem::ParFiniteElementSpace * >::size_type"},
 	 { "vector_ParFiniteElementSpace_swap", (PyCFunction)(void(*)(void))_wrap_vector_ParFiniteElementSpace_swap, METH_VARARGS|METH_KEYWORDS, "swap(vector_ParFiniteElementSpace self, vector_ParFiniteElementSpace v)"},
@@ -21642,19 +21937,19 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"vector_ParFiniteElementSpace()\n"
 		"vector_ParFiniteElementSpace(vector_ParFiniteElementSpace other)\n"
 		"vector_ParFiniteElementSpace(std::vector< mfem::ParFiniteElementSpace * >::size_type size)\n"
-		"new_vector_ParFiniteElementSpace(std::vector< mfem::ParFiniteElementSpace * >::size_type size, ParFiniteElementSpace value) -> vector_ParFiniteElementSpace\n"
+		"new_vector_ParFiniteElementSpace(std::vector< mfem::ParFiniteElementSpace * >::size_type size, std::vector< mfem::ParFiniteElementSpace * >::value_type value) -> vector_ParFiniteElementSpace\n"
 		""},
-	 { "vector_ParFiniteElementSpace_push_back", (PyCFunction)(void(*)(void))_wrap_vector_ParFiniteElementSpace_push_back, METH_VARARGS|METH_KEYWORDS, "push_back(vector_ParFiniteElementSpace self, ParFiniteElementSpace x)"},
-	 { "vector_ParFiniteElementSpace_front", _wrap_vector_ParFiniteElementSpace_front, METH_O, "front(vector_ParFiniteElementSpace self) -> ParFiniteElementSpace"},
-	 { "vector_ParFiniteElementSpace_back", _wrap_vector_ParFiniteElementSpace_back, METH_O, "back(vector_ParFiniteElementSpace self) -> ParFiniteElementSpace"},
-	 { "vector_ParFiniteElementSpace_assign", (PyCFunction)(void(*)(void))_wrap_vector_ParFiniteElementSpace_assign, METH_VARARGS|METH_KEYWORDS, "assign(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::size_type n, ParFiniteElementSpace x)"},
+	 { "vector_ParFiniteElementSpace_push_back", (PyCFunction)(void(*)(void))_wrap_vector_ParFiniteElementSpace_push_back, METH_VARARGS|METH_KEYWORDS, "push_back(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::value_type x)"},
+	 { "vector_ParFiniteElementSpace_front", _wrap_vector_ParFiniteElementSpace_front, METH_O, "front(vector_ParFiniteElementSpace self) -> std::vector< mfem::ParFiniteElementSpace * >::value_type"},
+	 { "vector_ParFiniteElementSpace_back", _wrap_vector_ParFiniteElementSpace_back, METH_O, "back(vector_ParFiniteElementSpace self) -> std::vector< mfem::ParFiniteElementSpace * >::value_type"},
+	 { "vector_ParFiniteElementSpace_assign", (PyCFunction)(void(*)(void))_wrap_vector_ParFiniteElementSpace_assign, METH_VARARGS|METH_KEYWORDS, "assign(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::size_type n, std::vector< mfem::ParFiniteElementSpace * >::value_type x)"},
 	 { "vector_ParFiniteElementSpace_resize", _wrap_vector_ParFiniteElementSpace_resize, METH_VARARGS, "\n"
 		"resize(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::size_type new_size)\n"
-		"resize(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::size_type new_size, ParFiniteElementSpace x)\n"
+		"resize(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::size_type new_size, std::vector< mfem::ParFiniteElementSpace * >::value_type x)\n"
 		""},
 	 { "vector_ParFiniteElementSpace_insert", _wrap_vector_ParFiniteElementSpace_insert, METH_VARARGS, "\n"
-		"insert(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::iterator pos, ParFiniteElementSpace x) -> std::vector< mfem::ParFiniteElementSpace * >::iterator\n"
-		"insert(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::iterator pos, std::vector< mfem::ParFiniteElementSpace * >::size_type n, ParFiniteElementSpace x)\n"
+		"insert(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::iterator pos, std::vector< mfem::ParFiniteElementSpace * >::value_type x) -> std::vector< mfem::ParFiniteElementSpace * >::iterator\n"
+		"insert(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::iterator pos, std::vector< mfem::ParFiniteElementSpace * >::size_type n, std::vector< mfem::ParFiniteElementSpace * >::value_type x)\n"
 		""},
 	 { "vector_ParFiniteElementSpace_reserve", (PyCFunction)(void(*)(void))_wrap_vector_ParFiniteElementSpace_reserve, METH_VARARGS|METH_KEYWORDS, "reserve(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::size_type n)"},
 	 { "vector_ParFiniteElementSpace_capacity", _wrap_vector_ParFiniteElementSpace_capacity, METH_O, "capacity(vector_ParFiniteElementSpace self) -> std::vector< mfem::ParFiniteElementSpace * >::size_type"},
@@ -21677,15 +21972,15 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "vector_ParMesh___getitem__", _wrap_vector_ParMesh___getitem__, METH_VARARGS, "\n"
 		"__getitem__(vector_ParMesh self, PySliceObject * slice) -> vector_ParMesh\n"
-		"__getitem__(vector_ParMesh self, std::vector< mfem::ParMesh * >::difference_type i) -> ParMesh\n"
+		"__getitem__(vector_ParMesh self, std::vector< mfem::ParMesh * >::difference_type i) -> std::vector< mfem::ParMesh * >::value_type\n"
 		""},
 	 { "vector_ParMesh___setitem__", _wrap_vector_ParMesh___setitem__, METH_VARARGS, "\n"
 		"__setitem__(vector_ParMesh self, PySliceObject * slice, vector_ParMesh v)\n"
 		"__setitem__(vector_ParMesh self, PySliceObject * slice)\n"
-		"__setitem__(vector_ParMesh self, std::vector< mfem::ParMesh * >::difference_type i, ParMesh x)\n"
+		"__setitem__(vector_ParMesh self, std::vector< mfem::ParMesh * >::difference_type i, std::vector< mfem::ParMesh * >::value_type x)\n"
 		""},
-	 { "vector_ParMesh_pop", _wrap_vector_ParMesh_pop, METH_O, "pop(vector_ParMesh self) -> ParMesh"},
-	 { "vector_ParMesh_append", (PyCFunction)(void(*)(void))_wrap_vector_ParMesh_append, METH_VARARGS|METH_KEYWORDS, "append(vector_ParMesh self, ParMesh x)"},
+	 { "vector_ParMesh_pop", _wrap_vector_ParMesh_pop, METH_O, "pop(vector_ParMesh self) -> std::vector< mfem::ParMesh * >::value_type"},
+	 { "vector_ParMesh_append", (PyCFunction)(void(*)(void))_wrap_vector_ParMesh_append, METH_VARARGS|METH_KEYWORDS, "append(vector_ParMesh self, std::vector< mfem::ParMesh * >::value_type x)"},
 	 { "vector_ParMesh_empty", _wrap_vector_ParMesh_empty, METH_O, "empty(vector_ParMesh self) -> bool"},
 	 { "vector_ParMesh_size", _wrap_vector_ParMesh_size, METH_O, "size(vector_ParMesh self) -> std::vector< mfem::ParMesh * >::size_type"},
 	 { "vector_ParMesh_swap", (PyCFunction)(void(*)(void))_wrap_vector_ParMesh_swap, METH_VARARGS|METH_KEYWORDS, "swap(vector_ParMesh self, vector_ParMesh v)"},
@@ -21704,19 +21999,19 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"vector_ParMesh()\n"
 		"vector_ParMesh(vector_ParMesh other)\n"
 		"vector_ParMesh(std::vector< mfem::ParMesh * >::size_type size)\n"
-		"new_vector_ParMesh(std::vector< mfem::ParMesh * >::size_type size, ParMesh value) -> vector_ParMesh\n"
+		"new_vector_ParMesh(std::vector< mfem::ParMesh * >::size_type size, std::vector< mfem::ParMesh * >::value_type value) -> vector_ParMesh\n"
 		""},
-	 { "vector_ParMesh_push_back", (PyCFunction)(void(*)(void))_wrap_vector_ParMesh_push_back, METH_VARARGS|METH_KEYWORDS, "push_back(vector_ParMesh self, ParMesh x)"},
-	 { "vector_ParMesh_front", _wrap_vector_ParMesh_front, METH_O, "front(vector_ParMesh self) -> ParMesh"},
-	 { "vector_ParMesh_back", _wrap_vector_ParMesh_back, METH_O, "back(vector_ParMesh self) -> ParMesh"},
-	 { "vector_ParMesh_assign", (PyCFunction)(void(*)(void))_wrap_vector_ParMesh_assign, METH_VARARGS|METH_KEYWORDS, "assign(vector_ParMesh self, std::vector< mfem::ParMesh * >::size_type n, ParMesh x)"},
+	 { "vector_ParMesh_push_back", (PyCFunction)(void(*)(void))_wrap_vector_ParMesh_push_back, METH_VARARGS|METH_KEYWORDS, "push_back(vector_ParMesh self, std::vector< mfem::ParMesh * >::value_type x)"},
+	 { "vector_ParMesh_front", _wrap_vector_ParMesh_front, METH_O, "front(vector_ParMesh self) -> std::vector< mfem::ParMesh * >::value_type"},
+	 { "vector_ParMesh_back", _wrap_vector_ParMesh_back, METH_O, "back(vector_ParMesh self) -> std::vector< mfem::ParMesh * >::value_type"},
+	 { "vector_ParMesh_assign", (PyCFunction)(void(*)(void))_wrap_vector_ParMesh_assign, METH_VARARGS|METH_KEYWORDS, "assign(vector_ParMesh self, std::vector< mfem::ParMesh * >::size_type n, std::vector< mfem::ParMesh * >::value_type x)"},
 	 { "vector_ParMesh_resize", _wrap_vector_ParMesh_resize, METH_VARARGS, "\n"
 		"resize(vector_ParMesh self, std::vector< mfem::ParMesh * >::size_type new_size)\n"
-		"resize(vector_ParMesh self, std::vector< mfem::ParMesh * >::size_type new_size, ParMesh x)\n"
+		"resize(vector_ParMesh self, std::vector< mfem::ParMesh * >::size_type new_size, std::vector< mfem::ParMesh * >::value_type x)\n"
 		""},
 	 { "vector_ParMesh_insert", _wrap_vector_ParMesh_insert, METH_VARARGS, "\n"
-		"insert(vector_ParMesh self, std::vector< mfem::ParMesh * >::iterator pos, ParMesh x) -> std::vector< mfem::ParMesh * >::iterator\n"
-		"insert(vector_ParMesh self, std::vector< mfem::ParMesh * >::iterator pos, std::vector< mfem::ParMesh * >::size_type n, ParMesh x)\n"
+		"insert(vector_ParMesh self, std::vector< mfem::ParMesh * >::iterator pos, std::vector< mfem::ParMesh * >::value_type x) -> std::vector< mfem::ParMesh * >::iterator\n"
+		"insert(vector_ParMesh self, std::vector< mfem::ParMesh * >::iterator pos, std::vector< mfem::ParMesh * >::size_type n, std::vector< mfem::ParMesh * >::value_type x)\n"
 		""},
 	 { "vector_ParMesh_reserve", (PyCFunction)(void(*)(void))_wrap_vector_ParMesh_reserve, METH_VARARGS|METH_KEYWORDS, "reserve(vector_ParMesh self, std::vector< mfem::ParMesh * >::size_type n)"},
 	 { "vector_ParMesh_capacity", _wrap_vector_ParMesh_capacity, METH_O, "capacity(vector_ParMesh self) -> std::vector< mfem::ParMesh * >::size_type"},
@@ -21739,15 +22034,15 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "vector_HypreParMatrix___getitem__", _wrap_vector_HypreParMatrix___getitem__, METH_VARARGS, "\n"
 		"__getitem__(vector_HypreParMatrix self, PySliceObject * slice) -> vector_HypreParMatrix\n"
-		"__getitem__(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::difference_type i) -> HypreParMatrix\n"
+		"__getitem__(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::difference_type i) -> std::vector< mfem::HypreParMatrix * >::value_type\n"
 		""},
 	 { "vector_HypreParMatrix___setitem__", _wrap_vector_HypreParMatrix___setitem__, METH_VARARGS, "\n"
 		"__setitem__(vector_HypreParMatrix self, PySliceObject * slice, vector_HypreParMatrix v)\n"
 		"__setitem__(vector_HypreParMatrix self, PySliceObject * slice)\n"
-		"__setitem__(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::difference_type i, HypreParMatrix x)\n"
+		"__setitem__(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::difference_type i, std::vector< mfem::HypreParMatrix * >::value_type x)\n"
 		""},
-	 { "vector_HypreParMatrix_pop", _wrap_vector_HypreParMatrix_pop, METH_O, "pop(vector_HypreParMatrix self) -> HypreParMatrix"},
-	 { "vector_HypreParMatrix_append", (PyCFunction)(void(*)(void))_wrap_vector_HypreParMatrix_append, METH_VARARGS|METH_KEYWORDS, "append(vector_HypreParMatrix self, HypreParMatrix x)"},
+	 { "vector_HypreParMatrix_pop", _wrap_vector_HypreParMatrix_pop, METH_O, "pop(vector_HypreParMatrix self) -> std::vector< mfem::HypreParMatrix * >::value_type"},
+	 { "vector_HypreParMatrix_append", (PyCFunction)(void(*)(void))_wrap_vector_HypreParMatrix_append, METH_VARARGS|METH_KEYWORDS, "append(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::value_type x)"},
 	 { "vector_HypreParMatrix_empty", _wrap_vector_HypreParMatrix_empty, METH_O, "empty(vector_HypreParMatrix self) -> bool"},
 	 { "vector_HypreParMatrix_size", _wrap_vector_HypreParMatrix_size, METH_O, "size(vector_HypreParMatrix self) -> std::vector< mfem::HypreParMatrix * >::size_type"},
 	 { "vector_HypreParMatrix_swap", (PyCFunction)(void(*)(void))_wrap_vector_HypreParMatrix_swap, METH_VARARGS|METH_KEYWORDS, "swap(vector_HypreParMatrix self, vector_HypreParMatrix v)"},
@@ -21766,19 +22061,19 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"vector_HypreParMatrix()\n"
 		"vector_HypreParMatrix(vector_HypreParMatrix other)\n"
 		"vector_HypreParMatrix(std::vector< mfem::HypreParMatrix * >::size_type size)\n"
-		"new_vector_HypreParMatrix(std::vector< mfem::HypreParMatrix * >::size_type size, HypreParMatrix value) -> vector_HypreParMatrix\n"
+		"new_vector_HypreParMatrix(std::vector< mfem::HypreParMatrix * >::size_type size, std::vector< mfem::HypreParMatrix * >::value_type value) -> vector_HypreParMatrix\n"
 		""},
-	 { "vector_HypreParMatrix_push_back", (PyCFunction)(void(*)(void))_wrap_vector_HypreParMatrix_push_back, METH_VARARGS|METH_KEYWORDS, "push_back(vector_HypreParMatrix self, HypreParMatrix x)"},
-	 { "vector_HypreParMatrix_front", _wrap_vector_HypreParMatrix_front, METH_O, "front(vector_HypreParMatrix self) -> HypreParMatrix"},
-	 { "vector_HypreParMatrix_back", _wrap_vector_HypreParMatrix_back, METH_O, "back(vector_HypreParMatrix self) -> HypreParMatrix"},
-	 { "vector_HypreParMatrix_assign", (PyCFunction)(void(*)(void))_wrap_vector_HypreParMatrix_assign, METH_VARARGS|METH_KEYWORDS, "assign(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::size_type n, HypreParMatrix x)"},
+	 { "vector_HypreParMatrix_push_back", (PyCFunction)(void(*)(void))_wrap_vector_HypreParMatrix_push_back, METH_VARARGS|METH_KEYWORDS, "push_back(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::value_type x)"},
+	 { "vector_HypreParMatrix_front", _wrap_vector_HypreParMatrix_front, METH_O, "front(vector_HypreParMatrix self) -> std::vector< mfem::HypreParMatrix * >::value_type"},
+	 { "vector_HypreParMatrix_back", _wrap_vector_HypreParMatrix_back, METH_O, "back(vector_HypreParMatrix self) -> std::vector< mfem::HypreParMatrix * >::value_type"},
+	 { "vector_HypreParMatrix_assign", (PyCFunction)(void(*)(void))_wrap_vector_HypreParMatrix_assign, METH_VARARGS|METH_KEYWORDS, "assign(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::size_type n, std::vector< mfem::HypreParMatrix * >::value_type x)"},
 	 { "vector_HypreParMatrix_resize", _wrap_vector_HypreParMatrix_resize, METH_VARARGS, "\n"
 		"resize(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::size_type new_size)\n"
-		"resize(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::size_type new_size, HypreParMatrix x)\n"
+		"resize(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::size_type new_size, std::vector< mfem::HypreParMatrix * >::value_type x)\n"
 		""},
 	 { "vector_HypreParMatrix_insert", _wrap_vector_HypreParMatrix_insert, METH_VARARGS, "\n"
-		"insert(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::iterator pos, HypreParMatrix x) -> std::vector< mfem::HypreParMatrix * >::iterator\n"
-		"insert(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::iterator pos, std::vector< mfem::HypreParMatrix * >::size_type n, HypreParMatrix x)\n"
+		"insert(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::iterator pos, std::vector< mfem::HypreParMatrix * >::value_type x) -> std::vector< mfem::HypreParMatrix * >::iterator\n"
+		"insert(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::iterator pos, std::vector< mfem::HypreParMatrix * >::size_type n, std::vector< mfem::HypreParMatrix * >::value_type x)\n"
 		""},
 	 { "vector_HypreParMatrix_reserve", (PyCFunction)(void(*)(void))_wrap_vector_HypreParMatrix_reserve, METH_VARARGS|METH_KEYWORDS, "reserve(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::size_type n)"},
 	 { "vector_HypreParMatrix_capacity", _wrap_vector_HypreParMatrix_capacity, METH_O, "capacity(vector_HypreParMatrix self) -> std::vector< mfem::HypreParMatrix * >::size_type"},
@@ -21791,587 +22086,19 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static void *_p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *) (mfem::VectorFunctionCoefficient *) ((mfem::VectorPyCoefficientBase *) x));
-}
-static void *_p_mfem__VectorQuadratureFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorQuadratureFunctionCoefficient *) x));
-}
-static void *_p_mfem__MatrixVectorProductCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::MatrixVectorProductCoefficient *) x));
-}
-static void *_p_mfem__VectorCrossProductCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorCrossProductCoefficient *) x));
-}
-static void *_p_mfem__NormalizedVectorCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::NormalizedVectorCoefficient *) x));
-}
-static void *_p_mfem__ScalarVectorProductCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::ScalarVectorProductCoefficient *) x));
-}
-static void *_p_mfem__VectorSumCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorSumCoefficient *) x));
-}
-static void *_p_mfem__VectorRestrictedCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorRestrictedCoefficient *) x));
-}
-static void *_p_mfem__VectorDeltaCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorDeltaCoefficient *) x));
-}
-static void *_p_mfem__CurlGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::CurlGridFunctionCoefficient *) x));
-}
-static void *_p_mfem__GradientGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::GradientGridFunctionCoefficient *) x));
-}
-static void *_p_mfem__VectorGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorGridFunctionCoefficient *) x));
-}
-static void *_p_mfem__VectorArrayCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorArrayCoefficient *) x));
-}
-static void *_p_mfem__VectorFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorFunctionCoefficient *) x));
-}
-static void *_p_mfem__VectorConstantCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorConstantCoefficient *) x));
-}
-static void *_p_mfem__NodeExtrudeCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::NodeExtrudeCoefficient *) x));
-}
-static void *_p_mfem__HyprePCGTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HyprePCG *) x));
-}
-static void *_p_mfem__SparseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Matrix *)(mfem::AbstractSparseMatrix *) ((mfem::SparseMatrix *) x));
-}
-static void *_p_mfem__DenseSymmetricMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::DenseSymmetricMatrix *) x));
-}
-static void *_p_mfem__DenseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::DenseMatrix *) x));
-}
-static void *_p_mfem__AbstractSparseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::AbstractSparseMatrix *) x));
-}
-static void *_p_mfem__HypreDiagScaleTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreDiagScale *) x));
-}
-static void *_p_mfem__HypreFGMRESTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreFGMRES *) x));
-}
-static void *_p_mfem__HypreADSTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreADS *) x));
-}
-static void *_p_mfem__HypreEuclidTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreEuclid *) x));
-}
-static void *_p_mfem__HypreBoomerAMGTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreBoomerAMG *) x));
-}
-static void *_p_mfem__TimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::TimeDependentOperator *) x));
-}
-static void *_p_mfem__TimeDependentAdjointOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::TimeDependentAdjointOperator *) x));
-}
-static void *_p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::SecondOrderTimeDependentOperator *) x));
-}
-static void *_p_mfem__IdentityOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::IdentityOperator *) x));
-}
-static void *_p_mfem__ScaledOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::ScaledOperator *) x));
-}
-static void *_p_mfem__TransposeOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::TransposeOperator *) x));
-}
-static void *_p_mfem__ProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::ProductOperator *) x));
-}
-static void *_p_mfem__RAPOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::RAPOperator *) x));
-}
-static void *_p_mfem__TripleProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::TripleProductOperator *) x));
-}
-static void *_p_mfem__ConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::ConstrainedOperator *) x));
-}
-static void *_p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::RectangularConstrainedOperator *) x));
-}
-static void *_p_mfem__ConformingProlongationOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::ConformingProlongationOperator *) x));
-}
-static void *_p_mfem__DeviceConformingProlongationOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::ConformingProlongationOperator *) ((mfem::DeviceConformingProlongationOperator *) x));
-}
-static void *_p_mfem__HypreILUTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreILU *) x));
-}
-static void *_p_mfem__ElementRestrictionTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::ElementRestriction *) x));
-}
-static void *_p_mfem__L2ElementRestrictionTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::L2ElementRestriction *) x));
-}
-static void *_p_mfem__FaceRestrictionTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::FaceRestriction *) x));
-}
-static void *_p_mfem__H1FaceRestrictionTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::FaceRestriction *) ((mfem::H1FaceRestriction *) x));
-}
-static void *_p_mfem__L2FaceRestrictionTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::FaceRestriction *) ((mfem::L2FaceRestriction *) x));
-}
-static void *_p_mfem__HypreGMRESTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreGMRES *) x));
-}
-static void *_p_mfem__SolverTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::Solver *) x));
-}
-static void *_p_mfem__HypreParaSailsTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreParaSails *) x));
-}
-static void *_p_mfem__HypreParMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::HypreParMatrix *) x));
-}
-static void *_p_mfem__MatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::Matrix *) x));
-}
-static void *_p_mfem__HypreIdentityTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreIdentity *) x));
-}
-static void *_p_mfem__DenseMatrixInverseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::MatrixInverse *) ((mfem::DenseMatrixInverse *) x));
-}
-static void *_p_mfem__MatrixInverseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *) ((mfem::MatrixInverse *) x));
-}
-static void *_p_mfem__PyOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::PyOperatorBase *) x));
-}
-static void *_p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase *) x));
-}
-static void *_p_mfem__HypreSolverTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *) ((mfem::HypreSolver *) x));
-}
-static void *_p_mfem__HypreAMSTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreAMS *) x));
-}
-static void *_p_mfem__HypreSmootherTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *) ((mfem::HypreSmoother *) x));
-}
-static void *_p_mfem__HypreTriSolveTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreTriSolve *) x));
-}
-static void *_p_p_mfem__HyprePCGTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HyprePCG **) x));
-}
-static void *_p_p_mfem__SparseMatrixTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Matrix *)(mfem::AbstractSparseMatrix *) ((mfem::SparseMatrix **) x));
-}
-static void *_p_p_mfem__DenseSymmetricMatrixTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Matrix *) ((mfem::DenseSymmetricMatrix **) x));
-}
-static void *_p_p_mfem__DenseMatrixTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Matrix *) ((mfem::DenseMatrix **) x));
-}
-static void *_p_p_mfem__AbstractSparseMatrixTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Matrix *) ((mfem::AbstractSparseMatrix **) x));
-}
-static void *_p_p_mfem__HypreDiagScaleTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreDiagScale **) x));
-}
-static void *_p_p_mfem__HypreFGMRESTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreFGMRES **) x));
-}
-static void *_p_p_mfem__HypreADSTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreADS **) x));
-}
-static void *_p_p_mfem__HypreEuclidTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreEuclid **) x));
-}
-static void *_p_p_mfem__HypreBoomerAMGTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreBoomerAMG **) x));
-}
-static void *_p_p_mfem__TimeDependentOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::TimeDependentOperator **) x));
-}
-static void *_p_p_mfem__TimeDependentAdjointOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::TimeDependentOperator *) ((mfem::TimeDependentAdjointOperator **) x));
-}
-static void *_p_p_mfem__SecondOrderTimeDependentOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::TimeDependentOperator *) ((mfem::SecondOrderTimeDependentOperator **) x));
-}
-static void *_p_p_mfem__IdentityOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::IdentityOperator **) x));
-}
-static void *_p_p_mfem__ScaledOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::ScaledOperator **) x));
-}
-static void *_p_p_mfem__TransposeOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::TransposeOperator **) x));
-}
-static void *_p_p_mfem__ProductOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::ProductOperator **) x));
-}
-static void *_p_p_mfem__RAPOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::RAPOperator **) x));
-}
-static void *_p_p_mfem__TripleProductOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::TripleProductOperator **) x));
-}
-static void *_p_p_mfem__ConstrainedOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::ConstrainedOperator **) x));
-}
-static void *_p_p_mfem__RectangularConstrainedOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::RectangularConstrainedOperator **) x));
-}
-static void *_p_p_mfem__ConformingProlongationOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::ConformingProlongationOperator **) x));
-}
-static void *_p_p_mfem__DeviceConformingProlongationOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::ConformingProlongationOperator *) ((mfem::DeviceConformingProlongationOperator **) x));
-}
-static void *_p_p_mfem__HypreILUTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreILU **) x));
-}
-static void *_p_p_mfem__ElementRestrictionTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::ElementRestriction **) x));
-}
-static void *_p_p_mfem__L2ElementRestrictionTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::L2ElementRestriction **) x));
-}
-static void *_p_p_mfem__FaceRestrictionTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::FaceRestriction **) x));
-}
-static void *_p_p_mfem__H1FaceRestrictionTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::FaceRestriction *) ((mfem::H1FaceRestriction **) x));
-}
-static void *_p_p_mfem__L2FaceRestrictionTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::FaceRestriction *) ((mfem::L2FaceRestriction **) x));
-}
-static void *_p_p_mfem__HypreGMRESTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreGMRES **) x));
-}
-static void *_p_p_mfem__SolverTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::Solver **) x));
-}
-static void *_p_p_mfem__HypreParaSailsTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreParaSails **) x));
-}
-static void *_p_p_mfem__HypreParMatrixTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::HypreParMatrix **) x));
-}
-static void *_p_p_mfem__MatrixTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::Matrix **) x));
-}
-static void *_p_p_mfem__HypreIdentityTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreIdentity **) x));
-}
-static void *_p_p_mfem__DenseMatrixInverseTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::MatrixInverse *) ((mfem::DenseMatrixInverse **) x));
-}
-static void *_p_p_mfem__MatrixInverseTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Solver *) ((mfem::MatrixInverse **) x));
-}
-static void *_p_p_mfem__PyOperatorBaseTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **)  ((mfem::PyOperatorBase **) x));
-}
-static void *_p_p_mfem__PyTimeDependentOperatorBaseTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase **) x));
-}
-static void *_p_p_mfem__HypreSolverTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Solver *) ((mfem::HypreSolver **) x));
-}
-static void *_p_p_mfem__HypreAMSTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreAMS **) x));
-}
-static void *_p_p_mfem__HypreSmootherTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Solver *) ((mfem::HypreSmoother **) x));
-}
-static void *_p_p_mfem__HypreTriSolveTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreTriSolve **) x));
-}
-static void *_p_mfem__HypreGMRESTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreGMRES *) x));
-}
-static void *_p_mfem__HypreParaSailsTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreParaSails *) x));
-}
-static void *_p_mfem__HypreFGMRESTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreFGMRES *) x));
-}
-static void *_p_mfem__HypreTriSolveTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreTriSolve *) x));
-}
-static void *_p_mfem__HypreSolverTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *)  ((mfem::HypreSolver *) x));
-}
-static void *_p_mfem__HypreBoomerAMGTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreBoomerAMG *) x));
-}
-static void *_p_mfem__DenseMatrixInverseTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::MatrixInverse *) ((mfem::DenseMatrixInverse *) x));
-}
-static void *_p_mfem__MatrixInverseTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *)  ((mfem::MatrixInverse *) x));
-}
-static void *_p_mfem__HypreDiagScaleTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreDiagScale *) x));
-}
-static void *_p_mfem__HypreIdentityTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreIdentity *) x));
-}
-static void *_p_mfem__HyprePCGTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HyprePCG *) x));
-}
-static void *_p_mfem__HypreAMSTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreAMS *) x));
-}
-static void *_p_mfem__HypreEuclidTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreEuclid *) x));
-}
-static void *_p_mfem__HypreADSTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreADS *) x));
-}
-static void *_p_mfem__HypreILUTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreILU *) x));
-}
-static void *_p_mfem__HypreSmootherTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *)  ((mfem::HypreSmoother *) x));
-}
-static void *_p_p_mfem__HypreGMRESTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HypreGMRES **) x));
-}
-static void *_p_p_mfem__HypreParaSailsTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HypreParaSails **) x));
-}
-static void *_p_p_mfem__HypreFGMRESTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HypreFGMRES **) x));
-}
-static void *_p_p_mfem__HypreTriSolveTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HypreTriSolve **) x));
-}
-static void *_p_p_mfem__HypreSolverTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver **)  ((mfem::HypreSolver **) x));
-}
-static void *_p_p_mfem__HypreBoomerAMGTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HypreBoomerAMG **) x));
-}
-static void *_p_p_mfem__DenseMatrixInverseTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver **) (mfem::MatrixInverse *) ((mfem::DenseMatrixInverse **) x));
-}
-static void *_p_p_mfem__MatrixInverseTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver **)  ((mfem::MatrixInverse **) x));
-}
-static void *_p_p_mfem__HypreDiagScaleTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HypreDiagScale **) x));
-}
-static void *_p_p_mfem__HypreIdentityTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HypreIdentity **) x));
-}
-static void *_p_p_mfem__HyprePCGTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HyprePCG **) x));
-}
-static void *_p_p_mfem__HypreAMSTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HypreAMS **) x));
-}
-static void *_p_p_mfem__HypreEuclidTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HypreEuclid **) x));
-}
-static void *_p_p_mfem__HypreADSTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HypreADS **) x));
-}
-static void *_p_p_mfem__HypreILUTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HypreILU **) x));
-}
-static void *_p_p_mfem__HypreSmootherTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver **)  ((mfem::HypreSmoother **) x));
-}
-static void *_p_p_mfem__ParFiniteElementSpaceTo_p_p_mfem__FiniteElementSpace(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElementSpace **)  ((mfem::ParFiniteElementSpace **) x));
-}
-static void *_p_mfem__ParFiniteElementSpaceTo_p_mfem__FiniteElementSpace(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElementSpace *)  ((mfem::ParFiniteElementSpace *) x));
-}
-static void *_p_mfem__HypreParVectorTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::HypreParVector *) x));
-}
-static void *_p_mfem__GridFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::GridFunction *) x));
-}
-static void *_p_mfem__QuadratureFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::QuadratureFunction *) x));
-}
-static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::LinearForm *) x));
-}
-static void *_p_p_mfem__HypreParVectorTo_p_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector **)  ((mfem::HypreParVector **) x));
-}
-static void *_p_p_mfem__GridFunctionTo_p_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector **)  ((mfem::GridFunction **) x));
-}
-static void *_p_p_mfem__QuadratureFunctionTo_p_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector **)  ((mfem::QuadratureFunction **) x));
-}
-static void *_p_p_mfem__LinearFormTo_p_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector **)  ((mfem::LinearForm **) x));
-}
-static swig_type_info _swigt___input = {"__input", "$input", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_CommGroup = {"_p_CommGroup", "CommGroup *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_GroupId = {"_p_GroupId", "GroupId *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p__HYPRE_ExecutionPolicy = {"_p__HYPRE_ExecutionPolicy", "enum _HYPRE_ExecutionPolicy *|HYPRE_ExecutionPolicy *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p__HYPRE_MemoryLocation = {"_p__HYPRE_MemoryLocation", "enum _HYPRE_MemoryLocation *|HYPRE_MemoryLocation *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_bool = {"_p_bool", "bool *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_double = {"_p_double", "HYPRE_Real *|HYPRE_Complex *|double *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *|HYPRE_BigInt *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "std::vector< mfem::Array< int > >::value_type *|mfem::Array< int > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__ConvectionIntegrator = {"_p_mfem__ConvectionIntegrator", "mfem::ConvectionIntegrator *|mfem::NonconservativeConvectionIntegrator *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__DGTraceIntegrator = {"_p_mfem__DGTraceIntegrator", "mfem::DGTraceIntegrator *|mfem::ConservativeDGTraceIntegrator *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__FiniteElementSpace = {"_p_mfem__FiniteElementSpace", "mfem::FiniteElementSpace *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__HypreParMatrix = {"_p_mfem__HypreParMatrix", "std::vector< mfem::HypreParMatrix * >::value_type|mfem::HypreParMatrix *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__IntegrationPoint = {"_p_mfem__IntegrationPoint", "mfem::IntegrationPoint *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__L2_FECollection = {"_p_mfem__L2_FECollection", "mfem::L2_FECollection *|mfem::DG_FECollection *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__MatrixVectorProductCoefficient = {"_p_mfem__MatrixVectorProductCoefficient", "mfem::MatrixVectorProductCoefficient *|mfem::MatVecCoefficient *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__Operator = {"_p_mfem__Operator", "mfem::Operator *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__HyprePCG = {"_p_mfem__HyprePCG", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__SparseMatrix = {"_p_mfem__SparseMatrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__DenseSymmetricMatrix = {"_p_mfem__DenseSymmetricMatrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__DenseMatrix = {"_p_mfem__DenseMatrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__AbstractSparseMatrix = {"_p_mfem__AbstractSparseMatrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__Matrix = {"_p_mfem__Matrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreDiagScale = {"_p_mfem__HypreDiagScale", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreFGMRES = {"_p_mfem__HypreFGMRES", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreADS = {"_p_mfem__HypreADS", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreEuclid = {"_p_mfem__HypreEuclid", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreBoomerAMG = {"_p_mfem__HypreBoomerAMG", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__SecondOrderTimeDependentOperator = {"_p_mfem__SecondOrderTimeDependentOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__TimeDependentAdjointOperator = {"_p_mfem__TimeDependentAdjointOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__TimeDependentOperator = {"_p_mfem__TimeDependentOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__IdentityOperator = {"_p_mfem__IdentityOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ScaledOperator = {"_p_mfem__ScaledOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__TransposeOperator = {"_p_mfem__TransposeOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ProductOperator = {"_p_mfem__ProductOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__RAPOperator = {"_p_mfem__RAPOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__TripleProductOperator = {"_p_mfem__TripleProductOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ConstrainedOperator = {"_p_mfem__ConstrainedOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__RectangularConstrainedOperator = {"_p_mfem__RectangularConstrainedOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__DeviceConformingProlongationOperator = {"_p_mfem__DeviceConformingProlongationOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ConformingProlongationOperator = {"_p_mfem__ConformingProlongationOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreILU = {"_p_mfem__HypreILU", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ElementRestriction = {"_p_mfem__ElementRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2ElementRestriction = {"_p_mfem__L2ElementRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__FaceRestriction = {"_p_mfem__FaceRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__H1FaceRestriction = {"_p_mfem__H1FaceRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2FaceRestriction = {"_p_mfem__L2FaceRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreGMRES = {"_p_mfem__HypreGMRES", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreParaSails = {"_p_mfem__HypreParaSails", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreIdentity = {"_p_mfem__HypreIdentity", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__DenseMatrixInverse = {"_p_mfem__DenseMatrixInverse", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__MatrixInverse = {"_p_mfem__MatrixInverse", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__PyOperatorBase = {"_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__PyTimeDependentOperatorBase = {"_p_mfem__PyTimeDependentOperatorBase", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreSolver = {"_p_mfem__HypreSolver", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreAMS = {"_p_mfem__HypreAMS", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreSmoother = {"_p_mfem__HypreSmoother", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__HypreTriSolve = {"_p_mfem__HypreTriSolve", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__OperatorHandle = {"_p_mfem__OperatorHandle", "mfem::OperatorPtr *|mfem::OperatorHandle *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ParFiniteElementSpace = {"_p_mfem__ParFiniteElementSpace", "mfem::ParFiniteElementSpace *|std::vector< mfem::ParFiniteElementSpace * >::value_type", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ParMesh = {"_p_mfem__ParMesh", "std::vector< mfem::ParMesh * >::value_type|mfem::ParMesh *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__Refinement = {"_p_mfem__Refinement", "mfem::Refinement *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", "mfem::Solver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "std::vector< mfem::Vector >::value_type *|mfem::Vector *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__HypreParVector = {"_p_mfem__HypreParVector", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorCoefficient = {"_p_mfem__VectorCoefficient", "mfem::VectorCoefficient *|mfem::DiagonalMatrixCoefficient *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__VectorPyCoefficientBase = {"_p_mfem__VectorPyCoefficientBase", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorQuadratureFunctionCoefficient = {"_p_mfem__VectorQuadratureFunctionCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorCrossProductCoefficient = {"_p_mfem__VectorCrossProductCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__NormalizedVectorCoefficient = {"_p_mfem__NormalizedVectorCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ScalarVectorProductCoefficient = {"_p_mfem__ScalarVectorProductCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorSumCoefficient = {"_p_mfem__VectorSumCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorRestrictedCoefficient = {"_p_mfem__VectorRestrictedCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorDeltaCoefficient = {"_p_mfem__VectorDeltaCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__CurlGridFunctionCoefficient = {"_p_mfem__CurlGridFunctionCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__GradientGridFunctionCoefficient = {"_p_mfem__GradientGridFunctionCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorGridFunctionCoefficient = {"_p_mfem__VectorGridFunctionCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorArrayCoefficient = {"_p_mfem__VectorArrayCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorFunctionCoefficient = {"_p_mfem__VectorFunctionCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorConstantCoefficient = {"_p_mfem__VectorConstantCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__NodeExtrudeCoefficient = {"_p_mfem__NodeExtrudeCoefficient", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_PyObject = {"_p_p_PyObject", "PyObject **", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_p_mfem__FiniteElementSpace = {"_p_p_mfem__FiniteElementSpace", "mfem::FiniteElementSpace **", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_p_mfem__ParFiniteElementSpace = {"_p_p_mfem__ParFiniteElementSpace", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__IntegrationRule = {"_p_p_mfem__IntegrationRule", "mfem::IntegrationRule **", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_p_mfem__Operator = {"_p_p_mfem__Operator", "mfem::Operator **", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_p_mfem__HyprePCG = {"_p_p_mfem__HyprePCG", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__SparseMatrix = {"_p_p_mfem__SparseMatrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__DenseSymmetricMatrix = {"_p_p_mfem__DenseSymmetricMatrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__DenseMatrix = {"_p_p_mfem__DenseMatrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__AbstractSparseMatrix = {"_p_p_mfem__AbstractSparseMatrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__Matrix = {"_p_p_mfem__Matrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__HypreDiagScale = {"_p_p_mfem__HypreDiagScale", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__HypreFGMRES = {"_p_p_mfem__HypreFGMRES", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__HypreADS = {"_p_p_mfem__HypreADS", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__HypreEuclid = {"_p_p_mfem__HypreEuclid", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__HypreBoomerAMG = {"_p_p_mfem__HypreBoomerAMG", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__SecondOrderTimeDependentOperator = {"_p_p_mfem__SecondOrderTimeDependentOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__TimeDependentAdjointOperator = {"_p_p_mfem__TimeDependentAdjointOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__TimeDependentOperator = {"_p_p_mfem__TimeDependentOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__IdentityOperator = {"_p_p_mfem__IdentityOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__ScaledOperator = {"_p_p_mfem__ScaledOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__TransposeOperator = {"_p_p_mfem__TransposeOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__ProductOperator = {"_p_p_mfem__ProductOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__RAPOperator = {"_p_p_mfem__RAPOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__TripleProductOperator = {"_p_p_mfem__TripleProductOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__ConstrainedOperator = {"_p_p_mfem__ConstrainedOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__RectangularConstrainedOperator = {"_p_p_mfem__RectangularConstrainedOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__DeviceConformingProlongationOperator = {"_p_p_mfem__DeviceConformingProlongationOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__ConformingProlongationOperator = {"_p_p_mfem__ConformingProlongationOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__HypreILU = {"_p_p_mfem__HypreILU", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__ElementRestriction = {"_p_p_mfem__ElementRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__L2ElementRestriction = {"_p_p_mfem__L2ElementRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__FaceRestriction = {"_p_p_mfem__FaceRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__H1FaceRestriction = {"_p_p_mfem__H1FaceRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__L2FaceRestriction = {"_p_p_mfem__L2FaceRestriction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__HypreGMRES = {"_p_p_mfem__HypreGMRES", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__HypreParaSails = {"_p_p_mfem__HypreParaSails", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__HypreParMatrix = {"_p_p_mfem__HypreParMatrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__HypreIdentity = {"_p_p_mfem__HypreIdentity", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__DenseMatrixInverse = {"_p_p_mfem__DenseMatrixInverse", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__MatrixInverse = {"_p_p_mfem__MatrixInverse", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__PyOperatorBase = {"_p_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__PyTimeDependentOperatorBase = {"_p_p_mfem__PyTimeDependentOperatorBase", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__HypreSolver = {"_p_p_mfem__HypreSolver", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__HypreAMS = {"_p_p_mfem__HypreAMS", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__HypreSmoother = {"_p_p_mfem__HypreSmoother", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__HypreTriSolve = {"_p_p_mfem__HypreTriSolve", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__Solver = {"_p_p_mfem__Solver", "mfem::Solver **", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_p_mfem__Vector = {"_p_p_mfem__Vector", "mfem::Vector **", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_p_mfem__HypreParVector = {"_p_p_mfem__HypreParVector", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__GridFunction = {"_p_p_mfem__GridFunction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__QuadratureFunction = {"_p_p_mfem__QuadratureFunction", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__LinearForm = {"_p_p_mfem__LinearForm", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_pyr_t = {"_p_pyr_t", "pyr_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_size_type = {"_p_size_type", "size_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__allocatorT_int_t = {"_p_std__allocatorT_int_t", "std::vector< int >::allocator_type *|std::allocator< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__allocatorT_mfem__ArrayT_int_t_t = {"_p_std__allocatorT_mfem__ArrayT_int_t_t", "std::allocator< mfem::Array< int > > *|std::vector< mfem::Array< int > >::allocator_type *", 0, 0, (void*)0, 0};
@@ -22387,160 +22114,22 @@ static swig_type_info _swigt__p_std__vectorT_mfem__ParFiniteElementSpace_p_std__
 static swig_type_info _swigt__p_std__vectorT_mfem__ParMesh_p_std__allocatorT_mfem__ParMesh_p_t_t = {"_p_std__vectorT_mfem__ParMesh_p_std__allocatorT_mfem__ParMesh_p_t_t", "std::vector< mfem::ParMesh *,std::allocator< mfem::ParMesh * > > *|std::vector< mfem::ParMesh * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__vectorT_mfem__Vector_std__allocatorT_mfem__Vector_t_t = {"_p_std__vectorT_mfem__Vector_std__allocatorT_mfem__Vector_t_t", "std::vector< mfem::Vector > *|std::vector< mfem::Vector,std::allocator< mfem::Vector > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_swig__SwigPyIterator = {"_p_swig__SwigPyIterator", "swig::SwigPyIterator *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt___input,
-  &_swigt__p_CommGroup,
-  &_swigt__p_GroupId,
-  &_swigt__p_MPI_Comm,
   &_swigt__p_PyMFEM__wFILE,
-  &_swigt__p_RefCoord,
-  &_swigt__p__HYPRE_ExecutionPolicy,
-  &_swigt__p__HYPRE_MemoryLocation,
   &_swigt__p_allocator_type,
   &_swigt__p_bool,
   &_swigt__p_char,
   &_swigt__p_difference_type,
   &_swigt__p_double,
-  &_swigt__p_hex_t,
   &_swigt__p_int,
-  &_swigt__p_mfem__AbstractSparseMatrix,
   &_swigt__p_mfem__ArrayT_int_t,
-  &_swigt__p_mfem__ConformingProlongationOperator,
-  &_swigt__p_mfem__ConstrainedOperator,
-  &_swigt__p_mfem__ConvectionIntegrator,
-  &_swigt__p_mfem__CurlGridFunctionCoefficient,
-  &_swigt__p_mfem__DGTraceIntegrator,
-  &_swigt__p_mfem__DenseMatrix,
-  &_swigt__p_mfem__DenseMatrixInverse,
-  &_swigt__p_mfem__DenseSymmetricMatrix,
-  &_swigt__p_mfem__DeviceConformingProlongationOperator,
-  &_swigt__p_mfem__ElementRestriction,
-  &_swigt__p_mfem__FaceRestriction,
-  &_swigt__p_mfem__FiniteElementSpace,
-  &_swigt__p_mfem__GradientGridFunctionCoefficient,
-  &_swigt__p_mfem__GridFunction,
-  &_swigt__p_mfem__H1FaceRestriction,
-  &_swigt__p_mfem__HypreADS,
-  &_swigt__p_mfem__HypreAMS,
-  &_swigt__p_mfem__HypreBoomerAMG,
-  &_swigt__p_mfem__HypreDiagScale,
-  &_swigt__p_mfem__HypreEuclid,
-  &_swigt__p_mfem__HypreFGMRES,
-  &_swigt__p_mfem__HypreGMRES,
-  &_swigt__p_mfem__HypreILU,
-  &_swigt__p_mfem__HypreIdentity,
-  &_swigt__p_mfem__HyprePCG,
   &_swigt__p_mfem__HypreParMatrix,
-  &_swigt__p_mfem__HypreParVector,
-  &_swigt__p_mfem__HypreParaSails,
-  &_swigt__p_mfem__HypreSmoother,
-  &_swigt__p_mfem__HypreSolver,
-  &_swigt__p_mfem__HypreTriSolve,
-  &_swigt__p_mfem__IdentityOperator,
-  &_swigt__p_mfem__IntegrationPoint,
-  &_swigt__p_mfem__IntegrationRule,
-  &_swigt__p_mfem__L2ElementRestriction,
-  &_swigt__p_mfem__L2FaceRestriction,
-  &_swigt__p_mfem__L2_FECollection,
-  &_swigt__p_mfem__LinearForm,
-  &_swigt__p_mfem__Matrix,
-  &_swigt__p_mfem__MatrixInverse,
-  &_swigt__p_mfem__MatrixVectorProductCoefficient,
-  &_swigt__p_mfem__NodeExtrudeCoefficient,
-  &_swigt__p_mfem__NormalizedVectorCoefficient,
-  &_swigt__p_mfem__Operator,
-  &_swigt__p_mfem__OperatorHandle,
   &_swigt__p_mfem__ParFiniteElementSpace,
   &_swigt__p_mfem__ParMesh,
-  &_swigt__p_mfem__ProductOperator,
-  &_swigt__p_mfem__PyOperatorBase,
-  &_swigt__p_mfem__PyTimeDependentOperatorBase,
-  &_swigt__p_mfem__QuadratureFunction,
-  &_swigt__p_mfem__RAPOperator,
-  &_swigt__p_mfem__RectangularConstrainedOperator,
-  &_swigt__p_mfem__Refinement,
-  &_swigt__p_mfem__ScalarVectorProductCoefficient,
-  &_swigt__p_mfem__ScaledOperator,
-  &_swigt__p_mfem__SecondOrderTimeDependentOperator,
-  &_swigt__p_mfem__Solver,
-  &_swigt__p_mfem__SparseMatrix,
-  &_swigt__p_mfem__TimeDependentAdjointOperator,
-  &_swigt__p_mfem__TimeDependentOperator,
-  &_swigt__p_mfem__TransposeOperator,
-  &_swigt__p_mfem__TripleProductOperator,
   &_swigt__p_mfem__Vector,
-  &_swigt__p_mfem__VectorArrayCoefficient,
-  &_swigt__p_mfem__VectorCoefficient,
-  &_swigt__p_mfem__VectorConstantCoefficient,
-  &_swigt__p_mfem__VectorCrossProductCoefficient,
-  &_swigt__p_mfem__VectorDeltaCoefficient,
-  &_swigt__p_mfem__VectorFunctionCoefficient,
-  &_swigt__p_mfem__VectorGridFunctionCoefficient,
-  &_swigt__p_mfem__VectorPyCoefficientBase,
-  &_swigt__p_mfem__VectorQuadratureFunctionCoefficient,
-  &_swigt__p_mfem__VectorRestrictedCoefficient,
-  &_swigt__p_mfem__VectorSumCoefficient,
   &_swigt__p_p_PyObject,
-  &_swigt__p_p_mfem__AbstractSparseMatrix,
-  &_swigt__p_p_mfem__ConformingProlongationOperator,
-  &_swigt__p_p_mfem__ConstrainedOperator,
-  &_swigt__p_p_mfem__DenseMatrix,
-  &_swigt__p_p_mfem__DenseMatrixInverse,
-  &_swigt__p_p_mfem__DenseSymmetricMatrix,
-  &_swigt__p_p_mfem__DeviceConformingProlongationOperator,
-  &_swigt__p_p_mfem__ElementRestriction,
-  &_swigt__p_p_mfem__FaceRestriction,
-  &_swigt__p_p_mfem__FiniteElementSpace,
-  &_swigt__p_p_mfem__GridFunction,
-  &_swigt__p_p_mfem__H1FaceRestriction,
-  &_swigt__p_p_mfem__HypreADS,
-  &_swigt__p_p_mfem__HypreAMS,
-  &_swigt__p_p_mfem__HypreBoomerAMG,
-  &_swigt__p_p_mfem__HypreDiagScale,
-  &_swigt__p_p_mfem__HypreEuclid,
-  &_swigt__p_p_mfem__HypreFGMRES,
-  &_swigt__p_p_mfem__HypreGMRES,
-  &_swigt__p_p_mfem__HypreILU,
-  &_swigt__p_p_mfem__HypreIdentity,
-  &_swigt__p_p_mfem__HyprePCG,
-  &_swigt__p_p_mfem__HypreParMatrix,
-  &_swigt__p_p_mfem__HypreParVector,
-  &_swigt__p_p_mfem__HypreParaSails,
-  &_swigt__p_p_mfem__HypreSmoother,
-  &_swigt__p_p_mfem__HypreSolver,
-  &_swigt__p_p_mfem__HypreTriSolve,
-  &_swigt__p_p_mfem__IdentityOperator,
-  &_swigt__p_p_mfem__IntegrationRule,
-  &_swigt__p_p_mfem__L2ElementRestriction,
-  &_swigt__p_p_mfem__L2FaceRestriction,
-  &_swigt__p_p_mfem__LinearForm,
-  &_swigt__p_p_mfem__Matrix,
-  &_swigt__p_p_mfem__MatrixInverse,
-  &_swigt__p_p_mfem__Operator,
-  &_swigt__p_p_mfem__ParFiniteElementSpace,
-  &_swigt__p_p_mfem__ProductOperator,
-  &_swigt__p_p_mfem__PyOperatorBase,
-  &_swigt__p_p_mfem__PyTimeDependentOperatorBase,
-  &_swigt__p_p_mfem__QuadratureFunction,
-  &_swigt__p_p_mfem__RAPOperator,
-  &_swigt__p_p_mfem__RectangularConstrainedOperator,
-  &_swigt__p_p_mfem__ScaledOperator,
-  &_swigt__p_p_mfem__SecondOrderTimeDependentOperator,
-  &_swigt__p_p_mfem__Solver,
-  &_swigt__p_p_mfem__SparseMatrix,
-  &_swigt__p_p_mfem__TimeDependentAdjointOperator,
-  &_swigt__p_p_mfem__TimeDependentOperator,
-  &_swigt__p_p_mfem__TransposeOperator,
-  &_swigt__p_p_mfem__TripleProductOperator,
-  &_swigt__p_p_mfem__Vector,
-  &_swigt__p_pri_t,
-  &_swigt__p_pyr_t,
-  &_swigt__p_quad_t,
-  &_swigt__p_seg_t,
   &_swigt__p_size_type,
   &_swigt__p_std__allocatorT_int_t,
   &_swigt__p_std__allocatorT_mfem__ArrayT_int_t_t,
@@ -22556,160 +22145,22 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__vectorT_mfem__ParMesh_p_std__allocatorT_mfem__ParMesh_p_t_t,
   &_swigt__p_std__vectorT_mfem__Vector_std__allocatorT_mfem__Vector_t_t,
   &_swigt__p_swig__SwigPyIterator,
-  &_swigt__p_tet_t,
-  &_swigt__p_tri_t,
   &_swigt__p_value_type,
 };
 
-static swig_cast_info _swigc___input[] = {  {&_swigt___input, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_CommGroup[] = {  {&_swigt__p_CommGroup, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_GroupId[] = {  {&_swigt__p_GroupId, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p__HYPRE_ExecutionPolicy[] = {  {&_swigt__p__HYPRE_ExecutionPolicy, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p__HYPRE_MemoryLocation[] = {  {&_swigt__p__HYPRE_MemoryLocation, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_bool[] = {  {&_swigt__p_bool, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ConvectionIntegrator[] = {  {&_swigt__p_mfem__ConvectionIntegrator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__DGTraceIntegrator[] = {  {&_swigt__p_mfem__DGTraceIntegrator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__FiniteElementSpace[] = {  {&_swigt__p_mfem__FiniteElementSpace, 0, 0, 0},  {&_swigt__p_mfem__ParFiniteElementSpace, _p_mfem__ParFiniteElementSpaceTo_p_mfem__FiniteElementSpace, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HypreParMatrix[] = {  {&_swigt__p_mfem__HypreParMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__IntegrationPoint[] = {  {&_swigt__p_mfem__IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2_FECollection[] = {  {&_swigt__p_mfem__L2_FECollection, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__MatrixVectorProductCoefficient[] = {  {&_swigt__p_mfem__MatrixVectorProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HyprePCG[] = {{&_swigt__p_mfem__HyprePCG, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__SparseMatrix[] = {{&_swigt__p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__DenseSymmetricMatrix[] = {{&_swigt__p_mfem__DenseSymmetricMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {{&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__AbstractSparseMatrix[] = {{&_swigt__p_mfem__AbstractSparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Matrix[] = {{&_swigt__p_mfem__Matrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreDiagScale[] = {{&_swigt__p_mfem__HypreDiagScale, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreFGMRES[] = {{&_swigt__p_mfem__HypreFGMRES, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreADS[] = {{&_swigt__p_mfem__HypreADS, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreEuclid[] = {{&_swigt__p_mfem__HypreEuclid, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreBoomerAMG[] = {{&_swigt__p_mfem__HypreBoomerAMG, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__SecondOrderTimeDependentOperator[] = {{&_swigt__p_mfem__SecondOrderTimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__TimeDependentAdjointOperator[] = {{&_swigt__p_mfem__TimeDependentAdjointOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {{&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__IdentityOperator[] = {{&_swigt__p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ScaledOperator[] = {{&_swigt__p_mfem__ScaledOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__TransposeOperator[] = {{&_swigt__p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ProductOperator[] = {{&_swigt__p_mfem__ProductOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__RAPOperator[] = {{&_swigt__p_mfem__RAPOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__TripleProductOperator[] = {{&_swigt__p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ConstrainedOperator[] = {{&_swigt__p_mfem__ConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__RectangularConstrainedOperator[] = {{&_swigt__p_mfem__RectangularConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__DeviceConformingProlongationOperator[] = {{&_swigt__p_mfem__DeviceConformingProlongationOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ConformingProlongationOperator[] = {{&_swigt__p_mfem__ConformingProlongationOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreILU[] = {{&_swigt__p_mfem__HypreILU, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ElementRestriction[] = {{&_swigt__p_mfem__ElementRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2ElementRestriction[] = {{&_swigt__p_mfem__L2ElementRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__FaceRestriction[] = {{&_swigt__p_mfem__FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__H1FaceRestriction[] = {{&_swigt__p_mfem__H1FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2FaceRestriction[] = {{&_swigt__p_mfem__L2FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreGMRES[] = {{&_swigt__p_mfem__HypreGMRES, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreParaSails[] = {{&_swigt__p_mfem__HypreParaSails, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreIdentity[] = {{&_swigt__p_mfem__HypreIdentity, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__DenseMatrixInverse[] = {{&_swigt__p_mfem__DenseMatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__MatrixInverse[] = {{&_swigt__p_mfem__MatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__PyOperatorBase[] = {{&_swigt__p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreSolver[] = {{&_swigt__p_mfem__HypreSolver, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreAMS[] = {{&_swigt__p_mfem__HypreAMS, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreSmoother[] = {{&_swigt__p_mfem__HypreSmoother, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreTriSolve[] = {{&_swigt__p_mfem__HypreTriSolve, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__HyprePCG, _p_mfem__HyprePCGTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseSymmetricMatrix, _p_mfem__DenseSymmetricMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreDiagScale, _p_mfem__HypreDiagScaleTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreFGMRES, _p_mfem__HypreFGMRESTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreADS, _p_mfem__HypreADSTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreEuclid, _p_mfem__HypreEuclidTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreBoomerAMG, _p_mfem__HypreBoomerAMGTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentAdjointOperator, _p_mfem__TimeDependentAdjointOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ScaledOperator, _p_mfem__ScaledOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RectangularConstrainedOperator, _p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__DeviceConformingProlongationOperator, _p_mfem__DeviceConformingProlongationOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConformingProlongationOperator, _p_mfem__ConformingProlongationOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreILU, _p_mfem__HypreILUTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ElementRestriction, _p_mfem__ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2ElementRestriction, _p_mfem__L2ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__FaceRestriction, _p_mfem__FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__H1FaceRestriction, _p_mfem__H1FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2FaceRestriction, _p_mfem__L2FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreGMRES, _p_mfem__HypreGMRESTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreParaSails, _p_mfem__HypreParaSailsTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreParMatrix, _p_mfem__HypreParMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreIdentity, _p_mfem__HypreIdentityTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreSolver, _p_mfem__HypreSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreAMS, _p_mfem__HypreAMSTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreSmoother, _p_mfem__HypreSmootherTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreTriSolve, _p_mfem__HypreTriSolveTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__OperatorHandle[] = {  {&_swigt__p_mfem__OperatorHandle, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ParFiniteElementSpace[] = {  {&_swigt__p_mfem__ParFiniteElementSpace, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ParMesh[] = {  {&_swigt__p_mfem__ParMesh, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Refinement[] = {  {&_swigt__p_mfem__Refinement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__HypreGMRES, _p_mfem__HypreGMRESTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreParaSails, _p_mfem__HypreParaSailsTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreFGMRES, _p_mfem__HypreFGMRESTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreTriSolve, _p_mfem__HypreTriSolveTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreSolver, _p_mfem__HypreSolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__Solver, 0, 0, 0},  {&_swigt__p_mfem__HypreBoomerAMG, _p_mfem__HypreBoomerAMGTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreDiagScale, _p_mfem__HypreDiagScaleTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreIdentity, _p_mfem__HypreIdentityTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreAMS, _p_mfem__HypreAMSTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HyprePCG, _p_mfem__HyprePCGTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreEuclid, _p_mfem__HypreEuclidTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreADS, _p_mfem__HypreADSTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreILU, _p_mfem__HypreILUTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreSmoother, _p_mfem__HypreSmootherTo_p_mfem__Solver, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreParVector[] = {{&_swigt__p_mfem__HypreParVector, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__HypreParVector, _p_mfem__HypreParVectorTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorPyCoefficientBase[] = {{&_swigt__p_mfem__VectorPyCoefficientBase, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorQuadratureFunctionCoefficient[] = {{&_swigt__p_mfem__VectorQuadratureFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorCrossProductCoefficient[] = {{&_swigt__p_mfem__VectorCrossProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__NormalizedVectorCoefficient[] = {{&_swigt__p_mfem__NormalizedVectorCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ScalarVectorProductCoefficient[] = {{&_swigt__p_mfem__ScalarVectorProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorSumCoefficient[] = {{&_swigt__p_mfem__VectorSumCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorRestrictedCoefficient[] = {{&_swigt__p_mfem__VectorRestrictedCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorDeltaCoefficient[] = {{&_swigt__p_mfem__VectorDeltaCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__CurlGridFunctionCoefficient[] = {{&_swigt__p_mfem__CurlGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__GradientGridFunctionCoefficient[] = {{&_swigt__p_mfem__GradientGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorGridFunctionCoefficient[] = {{&_swigt__p_mfem__VectorGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorArrayCoefficient[] = {{&_swigt__p_mfem__VectorArrayCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorFunctionCoefficient[] = {{&_swigt__p_mfem__VectorFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorConstantCoefficient[] = {{&_swigt__p_mfem__VectorConstantCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__NodeExtrudeCoefficient[] = {{&_swigt__p_mfem__NodeExtrudeCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorCoefficient[] = {  {&_swigt__p_mfem__VectorPyCoefficientBase, _p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorQuadratureFunctionCoefficient, _p_mfem__VectorQuadratureFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__MatrixVectorProductCoefficient, _p_mfem__MatrixVectorProductCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorCrossProductCoefficient, _p_mfem__VectorCrossProductCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__NormalizedVectorCoefficient, _p_mfem__NormalizedVectorCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__ScalarVectorProductCoefficient, _p_mfem__ScalarVectorProductCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorSumCoefficient, _p_mfem__VectorSumCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorRestrictedCoefficient, _p_mfem__VectorRestrictedCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorDeltaCoefficient, _p_mfem__VectorDeltaCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__CurlGridFunctionCoefficient, _p_mfem__CurlGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__GradientGridFunctionCoefficient, _p_mfem__GradientGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorGridFunctionCoefficient, _p_mfem__VectorGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorArrayCoefficient, _p_mfem__VectorArrayCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorCoefficient, 0, 0, 0},  {&_swigt__p_mfem__VectorFunctionCoefficient, _p_mfem__VectorFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorConstantCoefficient, _p_mfem__VectorConstantCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__NodeExtrudeCoefficient, _p_mfem__NodeExtrudeCoefficientTo_p_mfem__VectorCoefficient, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_PyObject[] = {  {&_swigt__p_p_PyObject, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__ParFiniteElementSpace[] = {{&_swigt__p_p_mfem__ParFiniteElementSpace, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__FiniteElementSpace[] = {  {&_swigt__p_p_mfem__FiniteElementSpace, 0, 0, 0},  {&_swigt__p_p_mfem__ParFiniteElementSpace, _p_p_mfem__ParFiniteElementSpaceTo_p_p_mfem__FiniteElementSpace, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__IntegrationRule[] = {  {&_swigt__p_p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__HyprePCG[] = {{&_swigt__p_p_mfem__HyprePCG, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__SparseMatrix[] = {{&_swigt__p_p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__DenseSymmetricMatrix[] = {{&_swigt__p_p_mfem__DenseSymmetricMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__DenseMatrix[] = {{&_swigt__p_p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__AbstractSparseMatrix[] = {{&_swigt__p_p_mfem__AbstractSparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__Matrix[] = {{&_swigt__p_p_mfem__Matrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__HypreDiagScale[] = {{&_swigt__p_p_mfem__HypreDiagScale, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__HypreFGMRES[] = {{&_swigt__p_p_mfem__HypreFGMRES, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__HypreADS[] = {{&_swigt__p_p_mfem__HypreADS, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__HypreEuclid[] = {{&_swigt__p_p_mfem__HypreEuclid, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__HypreBoomerAMG[] = {{&_swigt__p_p_mfem__HypreBoomerAMG, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__SecondOrderTimeDependentOperator[] = {{&_swigt__p_p_mfem__SecondOrderTimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__TimeDependentAdjointOperator[] = {{&_swigt__p_p_mfem__TimeDependentAdjointOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__TimeDependentOperator[] = {{&_swigt__p_p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__IdentityOperator[] = {{&_swigt__p_p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__ScaledOperator[] = {{&_swigt__p_p_mfem__ScaledOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__TransposeOperator[] = {{&_swigt__p_p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__ProductOperator[] = {{&_swigt__p_p_mfem__ProductOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__RAPOperator[] = {{&_swigt__p_p_mfem__RAPOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__TripleProductOperator[] = {{&_swigt__p_p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__ConstrainedOperator[] = {{&_swigt__p_p_mfem__ConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__RectangularConstrainedOperator[] = {{&_swigt__p_p_mfem__RectangularConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__DeviceConformingProlongationOperator[] = {{&_swigt__p_p_mfem__DeviceConformingProlongationOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__ConformingProlongationOperator[] = {{&_swigt__p_p_mfem__ConformingProlongationOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__HypreILU[] = {{&_swigt__p_p_mfem__HypreILU, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__ElementRestriction[] = {{&_swigt__p_p_mfem__ElementRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__L2ElementRestriction[] = {{&_swigt__p_p_mfem__L2ElementRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__FaceRestriction[] = {{&_swigt__p_p_mfem__FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__H1FaceRestriction[] = {{&_swigt__p_p_mfem__H1FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__L2FaceRestriction[] = {{&_swigt__p_p_mfem__L2FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__HypreGMRES[] = {{&_swigt__p_p_mfem__HypreGMRES, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__HypreParaSails[] = {{&_swigt__p_p_mfem__HypreParaSails, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__HypreParMatrix[] = {{&_swigt__p_p_mfem__HypreParMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__HypreIdentity[] = {{&_swigt__p_p_mfem__HypreIdentity, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__DenseMatrixInverse[] = {{&_swigt__p_p_mfem__DenseMatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__MatrixInverse[] = {{&_swigt__p_p_mfem__MatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__PyOperatorBase[] = {{&_swigt__p_p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__HypreSolver[] = {{&_swigt__p_p_mfem__HypreSolver, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__HypreAMS[] = {{&_swigt__p_p_mfem__HypreAMS, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__HypreSmoother[] = {{&_swigt__p_p_mfem__HypreSmoother, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__HypreTriSolve[] = {{&_swigt__p_p_mfem__HypreTriSolve, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__Operator[] = {  {&_swigt__p_p_mfem__HyprePCG, _p_p_mfem__HyprePCGTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__SparseMatrix, _p_p_mfem__SparseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__DenseSymmetricMatrix, _p_p_mfem__DenseSymmetricMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__DenseMatrix, _p_p_mfem__DenseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__AbstractSparseMatrix, _p_p_mfem__AbstractSparseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Matrix, _p_p_mfem__MatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreDiagScale, _p_p_mfem__HypreDiagScaleTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreFGMRES, _p_p_mfem__HypreFGMRESTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreADS, _p_p_mfem__HypreADSTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreEuclid, _p_p_mfem__HypreEuclidTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreBoomerAMG, _p_p_mfem__HypreBoomerAMGTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__SecondOrderTimeDependentOperator, _p_p_mfem__SecondOrderTimeDependentOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TimeDependentAdjointOperator, _p_p_mfem__TimeDependentAdjointOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TimeDependentOperator, _p_p_mfem__TimeDependentOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__IdentityOperator, _p_p_mfem__IdentityOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ScaledOperator, _p_p_mfem__ScaledOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TransposeOperator, _p_p_mfem__TransposeOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ProductOperator, _p_p_mfem__ProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__RAPOperator, _p_p_mfem__RAPOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TripleProductOperator, _p_p_mfem__TripleProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ConstrainedOperator, _p_p_mfem__ConstrainedOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__RectangularConstrainedOperator, _p_p_mfem__RectangularConstrainedOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Operator, 0, 0, 0},  {&_swigt__p_p_mfem__DeviceConformingProlongationOperator, _p_p_mfem__DeviceConformingProlongationOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ConformingProlongationOperator, _p_p_mfem__ConformingProlongationOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreILU, _p_p_mfem__HypreILUTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ElementRestriction, _p_p_mfem__ElementRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__L2ElementRestriction, _p_p_mfem__L2ElementRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__FaceRestriction, _p_p_mfem__FaceRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__H1FaceRestriction, _p_p_mfem__H1FaceRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__L2FaceRestriction, _p_p_mfem__L2FaceRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreGMRES, _p_p_mfem__HypreGMRESTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreParaSails, _p_p_mfem__HypreParaSailsTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreParMatrix, _p_p_mfem__HypreParMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreIdentity, _p_p_mfem__HypreIdentityTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__DenseMatrixInverse, _p_p_mfem__DenseMatrixInverseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__MatrixInverse, _p_p_mfem__MatrixInverseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__PyOperatorBase, _p_p_mfem__PyOperatorBaseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__PyTimeDependentOperatorBase, _p_p_mfem__PyTimeDependentOperatorBaseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Solver, _p_p_mfem__SolverTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreSolver, _p_p_mfem__HypreSolverTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreAMS, _p_p_mfem__HypreAMSTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreSmoother, _p_p_mfem__HypreSmootherTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreTriSolve, _p_p_mfem__HypreTriSolveTo_p_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__Solver[] = {  {&_swigt__p_p_mfem__HypreGMRES, _p_p_mfem__HypreGMRESTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HypreParaSails, _p_p_mfem__HypreParaSailsTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HypreFGMRES, _p_p_mfem__HypreFGMRESTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HypreTriSolve, _p_p_mfem__HypreTriSolveTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HypreSolver, _p_p_mfem__HypreSolverTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__Solver, 0, 0, 0},  {&_swigt__p_p_mfem__HypreBoomerAMG, _p_p_mfem__HypreBoomerAMGTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__DenseMatrixInverse, _p_p_mfem__DenseMatrixInverseTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__MatrixInverse, _p_p_mfem__MatrixInverseTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HypreDiagScale, _p_p_mfem__HypreDiagScaleTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HypreIdentity, _p_p_mfem__HypreIdentityTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HypreAMS, _p_p_mfem__HypreAMSTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HyprePCG, _p_p_mfem__HyprePCGTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HypreEuclid, _p_p_mfem__HypreEuclidTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HypreADS, _p_p_mfem__HypreADSTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HypreILU, _p_p_mfem__HypreILUTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HypreSmoother, _p_p_mfem__HypreSmootherTo_p_p_mfem__Solver, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__HypreParVector[] = {{&_swigt__p_p_mfem__HypreParVector, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__GridFunction[] = {{&_swigt__p_p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__QuadratureFunction[] = {{&_swigt__p_p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__LinearForm[] = {{&_swigt__p_p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__Vector[] = {  {&_swigt__p_p_mfem__HypreParVector, _p_p_mfem__HypreParVectorTo_p_p_mfem__Vector, 0, 0},  {&_swigt__p_p_mfem__Vector, 0, 0, 0},  {&_swigt__p_p_mfem__GridFunction, _p_p_mfem__GridFunctionTo_p_p_mfem__Vector, 0, 0},  {&_swigt__p_p_mfem__QuadratureFunction, _p_p_mfem__QuadratureFunctionTo_p_p_mfem__Vector, 0, 0},  {&_swigt__p_p_mfem__LinearForm, _p_p_mfem__LinearFormTo_p_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_pyr_t[] = {  {&_swigt__p_pyr_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_size_type[] = {  {&_swigt__p_size_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__allocatorT_int_t[] = {  {&_swigt__p_std__allocatorT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__allocatorT_mfem__ArrayT_int_t_t[] = {  {&_swigt__p_std__allocatorT_mfem__ArrayT_int_t_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -22725,160 +22176,22 @@ static swig_cast_info _swigc__p_std__vectorT_mfem__ParFiniteElementSpace_p_std__
 static swig_cast_info _swigc__p_std__vectorT_mfem__ParMesh_p_std__allocatorT_mfem__ParMesh_p_t_t[] = {  {&_swigt__p_std__vectorT_mfem__ParMesh_p_std__allocatorT_mfem__ParMesh_p_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__vectorT_mfem__Vector_std__allocatorT_mfem__Vector_t_t[] = {  {&_swigt__p_std__vectorT_mfem__Vector_std__allocatorT_mfem__Vector_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_swig__SwigPyIterator[] = {  {&_swigt__p_swig__SwigPyIterator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc___input,
-  _swigc__p_CommGroup,
-  _swigc__p_GroupId,
-  _swigc__p_MPI_Comm,
   _swigc__p_PyMFEM__wFILE,
-  _swigc__p_RefCoord,
-  _swigc__p__HYPRE_ExecutionPolicy,
-  _swigc__p__HYPRE_MemoryLocation,
   _swigc__p_allocator_type,
   _swigc__p_bool,
   _swigc__p_char,
   _swigc__p_difference_type,
   _swigc__p_double,
-  _swigc__p_hex_t,
   _swigc__p_int,
-  _swigc__p_mfem__AbstractSparseMatrix,
   _swigc__p_mfem__ArrayT_int_t,
-  _swigc__p_mfem__ConformingProlongationOperator,
-  _swigc__p_mfem__ConstrainedOperator,
-  _swigc__p_mfem__ConvectionIntegrator,
-  _swigc__p_mfem__CurlGridFunctionCoefficient,
-  _swigc__p_mfem__DGTraceIntegrator,
-  _swigc__p_mfem__DenseMatrix,
-  _swigc__p_mfem__DenseMatrixInverse,
-  _swigc__p_mfem__DenseSymmetricMatrix,
-  _swigc__p_mfem__DeviceConformingProlongationOperator,
-  _swigc__p_mfem__ElementRestriction,
-  _swigc__p_mfem__FaceRestriction,
-  _swigc__p_mfem__FiniteElementSpace,
-  _swigc__p_mfem__GradientGridFunctionCoefficient,
-  _swigc__p_mfem__GridFunction,
-  _swigc__p_mfem__H1FaceRestriction,
-  _swigc__p_mfem__HypreADS,
-  _swigc__p_mfem__HypreAMS,
-  _swigc__p_mfem__HypreBoomerAMG,
-  _swigc__p_mfem__HypreDiagScale,
-  _swigc__p_mfem__HypreEuclid,
-  _swigc__p_mfem__HypreFGMRES,
-  _swigc__p_mfem__HypreGMRES,
-  _swigc__p_mfem__HypreILU,
-  _swigc__p_mfem__HypreIdentity,
-  _swigc__p_mfem__HyprePCG,
   _swigc__p_mfem__HypreParMatrix,
-  _swigc__p_mfem__HypreParVector,
-  _swigc__p_mfem__HypreParaSails,
-  _swigc__p_mfem__HypreSmoother,
-  _swigc__p_mfem__HypreSolver,
-  _swigc__p_mfem__HypreTriSolve,
-  _swigc__p_mfem__IdentityOperator,
-  _swigc__p_mfem__IntegrationPoint,
-  _swigc__p_mfem__IntegrationRule,
-  _swigc__p_mfem__L2ElementRestriction,
-  _swigc__p_mfem__L2FaceRestriction,
-  _swigc__p_mfem__L2_FECollection,
-  _swigc__p_mfem__LinearForm,
-  _swigc__p_mfem__Matrix,
-  _swigc__p_mfem__MatrixInverse,
-  _swigc__p_mfem__MatrixVectorProductCoefficient,
-  _swigc__p_mfem__NodeExtrudeCoefficient,
-  _swigc__p_mfem__NormalizedVectorCoefficient,
-  _swigc__p_mfem__Operator,
-  _swigc__p_mfem__OperatorHandle,
   _swigc__p_mfem__ParFiniteElementSpace,
   _swigc__p_mfem__ParMesh,
-  _swigc__p_mfem__ProductOperator,
-  _swigc__p_mfem__PyOperatorBase,
-  _swigc__p_mfem__PyTimeDependentOperatorBase,
-  _swigc__p_mfem__QuadratureFunction,
-  _swigc__p_mfem__RAPOperator,
-  _swigc__p_mfem__RectangularConstrainedOperator,
-  _swigc__p_mfem__Refinement,
-  _swigc__p_mfem__ScalarVectorProductCoefficient,
-  _swigc__p_mfem__ScaledOperator,
-  _swigc__p_mfem__SecondOrderTimeDependentOperator,
-  _swigc__p_mfem__Solver,
-  _swigc__p_mfem__SparseMatrix,
-  _swigc__p_mfem__TimeDependentAdjointOperator,
-  _swigc__p_mfem__TimeDependentOperator,
-  _swigc__p_mfem__TransposeOperator,
-  _swigc__p_mfem__TripleProductOperator,
   _swigc__p_mfem__Vector,
-  _swigc__p_mfem__VectorArrayCoefficient,
-  _swigc__p_mfem__VectorCoefficient,
-  _swigc__p_mfem__VectorConstantCoefficient,
-  _swigc__p_mfem__VectorCrossProductCoefficient,
-  _swigc__p_mfem__VectorDeltaCoefficient,
-  _swigc__p_mfem__VectorFunctionCoefficient,
-  _swigc__p_mfem__VectorGridFunctionCoefficient,
-  _swigc__p_mfem__VectorPyCoefficientBase,
-  _swigc__p_mfem__VectorQuadratureFunctionCoefficient,
-  _swigc__p_mfem__VectorRestrictedCoefficient,
-  _swigc__p_mfem__VectorSumCoefficient,
   _swigc__p_p_PyObject,
-  _swigc__p_p_mfem__AbstractSparseMatrix,
-  _swigc__p_p_mfem__ConformingProlongationOperator,
-  _swigc__p_p_mfem__ConstrainedOperator,
-  _swigc__p_p_mfem__DenseMatrix,
-  _swigc__p_p_mfem__DenseMatrixInverse,
-  _swigc__p_p_mfem__DenseSymmetricMatrix,
-  _swigc__p_p_mfem__DeviceConformingProlongationOperator,
-  _swigc__p_p_mfem__ElementRestriction,
-  _swigc__p_p_mfem__FaceRestriction,
-  _swigc__p_p_mfem__FiniteElementSpace,
-  _swigc__p_p_mfem__GridFunction,
-  _swigc__p_p_mfem__H1FaceRestriction,
-  _swigc__p_p_mfem__HypreADS,
-  _swigc__p_p_mfem__HypreAMS,
-  _swigc__p_p_mfem__HypreBoomerAMG,
-  _swigc__p_p_mfem__HypreDiagScale,
-  _swigc__p_p_mfem__HypreEuclid,
-  _swigc__p_p_mfem__HypreFGMRES,
-  _swigc__p_p_mfem__HypreGMRES,
-  _swigc__p_p_mfem__HypreILU,
-  _swigc__p_p_mfem__HypreIdentity,
-  _swigc__p_p_mfem__HyprePCG,
-  _swigc__p_p_mfem__HypreParMatrix,
-  _swigc__p_p_mfem__HypreParVector,
-  _swigc__p_p_mfem__HypreParaSails,
-  _swigc__p_p_mfem__HypreSmoother,
-  _swigc__p_p_mfem__HypreSolver,
-  _swigc__p_p_mfem__HypreTriSolve,
-  _swigc__p_p_mfem__IdentityOperator,
-  _swigc__p_p_mfem__IntegrationRule,
-  _swigc__p_p_mfem__L2ElementRestriction,
-  _swigc__p_p_mfem__L2FaceRestriction,
-  _swigc__p_p_mfem__LinearForm,
-  _swigc__p_p_mfem__Matrix,
-  _swigc__p_p_mfem__MatrixInverse,
-  _swigc__p_p_mfem__Operator,
-  _swigc__p_p_mfem__ParFiniteElementSpace,
-  _swigc__p_p_mfem__ProductOperator,
-  _swigc__p_p_mfem__PyOperatorBase,
-  _swigc__p_p_mfem__PyTimeDependentOperatorBase,
-  _swigc__p_p_mfem__QuadratureFunction,
-  _swigc__p_p_mfem__RAPOperator,
-  _swigc__p_p_mfem__RectangularConstrainedOperator,
-  _swigc__p_p_mfem__ScaledOperator,
-  _swigc__p_p_mfem__SecondOrderTimeDependentOperator,
-  _swigc__p_p_mfem__Solver,
-  _swigc__p_p_mfem__SparseMatrix,
-  _swigc__p_p_mfem__TimeDependentAdjointOperator,
-  _swigc__p_p_mfem__TimeDependentOperator,
-  _swigc__p_p_mfem__TransposeOperator,
-  _swigc__p_p_mfem__TripleProductOperator,
-  _swigc__p_p_mfem__Vector,
-  _swigc__p_pri_t,
-  _swigc__p_pyr_t,
-  _swigc__p_quad_t,
-  _swigc__p_seg_t,
   _swigc__p_size_type,
   _swigc__p_std__allocatorT_int_t,
   _swigc__p_std__allocatorT_mfem__ArrayT_int_t_t,
@@ -22894,8 +22207,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__vectorT_mfem__ParMesh_p_std__allocatorT_mfem__ParMesh_p_t_t,
   _swigc__p_std__vectorT_mfem__Vector_std__allocatorT_mfem__Vector_t_t,
   _swigc__p_swig__SwigPyIterator,
-  _swigc__p_tet_t,
-  _swigc__p_tri_t,
   _swigc__p_value_type,
 };
 

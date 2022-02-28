@@ -106,6 +106,7 @@ import mfem._ser.linearform
 import mfem._ser.nonlininteg
 import mfem._ser.vertex
 import mfem._ser.vtk
+import mfem._ser.std_vectors
 class ElementRestriction(mfem._ser.operators.Operator):
     r"""Proxy of C++ mfem::ElementRestriction class."""
 

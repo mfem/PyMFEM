@@ -97,6 +97,7 @@ import mfem._ser.sort_pairs
 import mfem._ser.ncmesh
 import mfem._ser.vertex
 import mfem._ser.vtk
+import mfem._ser.std_vectors
 import mfem._ser.fespace
 import mfem._ser.fe_coll
 import mfem._ser.lininteg

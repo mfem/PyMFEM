@@ -107,6 +107,7 @@ import mfem._par.hypre
 import mfem._par.bilininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.std_vectors
 class ElementRestriction(mfem._par.operators.Operator):
     r"""Proxy of C++ mfem::ElementRestriction class."""
 

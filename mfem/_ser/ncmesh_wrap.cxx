@@ -3100,122 +3100,126 @@ namespace Swig {
 #define SWIGTYPE__input swig_types[0]
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[1]
 #define SWIGTYPE_p_RefCoord swig_types[2]
-#define SWIGTYPE_p_bool swig_types[3]
-#define SWIGTYPE_p_char swig_types[4]
-#define SWIGTYPE_p_double swig_types[5]
-#define SWIGTYPE_p_hex_t swig_types[6]
-#define SWIGTYPE_p_int swig_types[7]
-#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[8]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[9]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Embedding_t swig_types[10]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t swig_types[11]
-#define SWIGTYPE_p_mfem__CoarseFineTransformations swig_types[12]
-#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[13]
-#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[14]
-#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[15]
-#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[16]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[17]
-#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[18]
-#define SWIGTYPE_p_mfem__DenseSymmetricMatrix swig_types[19]
-#define SWIGTYPE_p_mfem__DenseTensor swig_types[20]
-#define SWIGTYPE_p_mfem__ElementRestriction swig_types[21]
-#define SWIGTYPE_p_mfem__Embedding swig_types[22]
-#define SWIGTYPE_p_mfem__FaceRestriction swig_types[23]
-#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[24]
-#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[25]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[26]
-#define SWIGTYPE_p_mfem__H1FaceRestriction swig_types[27]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[28]
-#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[29]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[30]
-#define SWIGTYPE_p_mfem__L2ElementRestriction swig_types[31]
-#define SWIGTYPE_p_mfem__L2FaceRestriction swig_types[32]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[33]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[34]
-#define SWIGTYPE_p_mfem__Matrix swig_types[35]
-#define SWIGTYPE_p_mfem__MatrixInverse swig_types[36]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[37]
-#define SWIGTYPE_p_mfem__MemoryT_mfem__Refinement_t swig_types[38]
-#define SWIGTYPE_p_mfem__Mesh swig_types[39]
-#define SWIGTYPE_p_mfem__NCMesh swig_types[40]
-#define SWIGTYPE_p_mfem__NCMesh__MeshId swig_types[41]
-#define SWIGTYPE_p_mfem__NCMesh__NCList swig_types[42]
-#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[43]
-#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[44]
-#define SWIGTYPE_p_mfem__Operator swig_types[45]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[46]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[47]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[48]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[49]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[50]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[51]
-#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[52]
-#define SWIGTYPE_p_mfem__Refinement swig_types[53]
-#define SWIGTYPE_p_mfem__STable swig_types[54]
-#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[55]
-#define SWIGTYPE_p_mfem__ScaledOperator swig_types[56]
-#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[57]
-#define SWIGTYPE_p_mfem__Solver swig_types[58]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[59]
-#define SWIGTYPE_p_mfem__Table swig_types[60]
-#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[61]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[62]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[63]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[64]
-#define SWIGTYPE_p_mfem__Vector swig_types[65]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[66]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[67]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[68]
-#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[69]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[70]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[71]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[72]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[73]
-#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[74]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[75]
-#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[76]
-#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[77]
-#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[78]
-#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[79]
-#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[80]
-#define SWIGTYPE_p_p_mfem__DenseSymmetricMatrix swig_types[81]
-#define SWIGTYPE_p_p_mfem__ElementRestriction swig_types[82]
-#define SWIGTYPE_p_p_mfem__FaceRestriction swig_types[83]
-#define SWIGTYPE_p_p_mfem__FiniteElementSpace swig_types[84]
-#define SWIGTYPE_p_p_mfem__GridFunction swig_types[85]
-#define SWIGTYPE_p_p_mfem__H1FaceRestriction swig_types[86]
-#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[87]
-#define SWIGTYPE_p_p_mfem__IntegrationRule swig_types[88]
-#define SWIGTYPE_p_p_mfem__L2ElementRestriction swig_types[89]
-#define SWIGTYPE_p_p_mfem__L2FaceRestriction swig_types[90]
-#define SWIGTYPE_p_p_mfem__LinearForm swig_types[91]
-#define SWIGTYPE_p_p_mfem__Matrix swig_types[92]
-#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[93]
-#define SWIGTYPE_p_p_mfem__Operator swig_types[94]
-#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[95]
-#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[96]
-#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[97]
-#define SWIGTYPE_p_p_mfem__QuadratureFunction swig_types[98]
-#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[99]
-#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[100]
-#define SWIGTYPE_p_p_mfem__Refinement swig_types[101]
-#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[102]
-#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[103]
-#define SWIGTYPE_p_p_mfem__Solver swig_types[104]
-#define SWIGTYPE_p_p_mfem__SparseMatrix swig_types[105]
-#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[106]
-#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[107]
-#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[108]
-#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[109]
-#define SWIGTYPE_p_p_mfem__Vector swig_types[110]
-#define SWIGTYPE_p_pri_t swig_types[111]
-#define SWIGTYPE_p_pyr_t swig_types[112]
-#define SWIGTYPE_p_quad_t swig_types[113]
-#define SWIGTYPE_p_seg_t swig_types[114]
-#define SWIGTYPE_p_tet_t swig_types[115]
-#define SWIGTYPE_p_tri_t swig_types[116]
-static swig_type_info *swig_types[118];
-static swig_module_info swig_module = {swig_types, 117, 0, 0, 0, 0};
+#define SWIGTYPE_p_allocator_type swig_types[3]
+#define SWIGTYPE_p_bool swig_types[4]
+#define SWIGTYPE_p_char swig_types[5]
+#define SWIGTYPE_p_difference_type swig_types[6]
+#define SWIGTYPE_p_double swig_types[7]
+#define SWIGTYPE_p_hex_t swig_types[8]
+#define SWIGTYPE_p_int swig_types[9]
+#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[10]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[11]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Embedding_t swig_types[12]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t swig_types[13]
+#define SWIGTYPE_p_mfem__CoarseFineTransformations swig_types[14]
+#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[15]
+#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[16]
+#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[17]
+#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[18]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[19]
+#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[20]
+#define SWIGTYPE_p_mfem__DenseSymmetricMatrix swig_types[21]
+#define SWIGTYPE_p_mfem__DenseTensor swig_types[22]
+#define SWIGTYPE_p_mfem__ElementRestriction swig_types[23]
+#define SWIGTYPE_p_mfem__Embedding swig_types[24]
+#define SWIGTYPE_p_mfem__FaceRestriction swig_types[25]
+#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[26]
+#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[27]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[28]
+#define SWIGTYPE_p_mfem__H1FaceRestriction swig_types[29]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[30]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[31]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[32]
+#define SWIGTYPE_p_mfem__L2ElementRestriction swig_types[33]
+#define SWIGTYPE_p_mfem__L2FaceRestriction swig_types[34]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[35]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[36]
+#define SWIGTYPE_p_mfem__Matrix swig_types[37]
+#define SWIGTYPE_p_mfem__MatrixInverse swig_types[38]
+#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[39]
+#define SWIGTYPE_p_mfem__MemoryT_mfem__Refinement_t swig_types[40]
+#define SWIGTYPE_p_mfem__Mesh swig_types[41]
+#define SWIGTYPE_p_mfem__NCMesh swig_types[42]
+#define SWIGTYPE_p_mfem__NCMesh__MeshId swig_types[43]
+#define SWIGTYPE_p_mfem__NCMesh__NCList swig_types[44]
+#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[45]
+#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[46]
+#define SWIGTYPE_p_mfem__Operator swig_types[47]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[48]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[49]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[50]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[51]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[52]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[53]
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[54]
+#define SWIGTYPE_p_mfem__Refinement swig_types[55]
+#define SWIGTYPE_p_mfem__STable swig_types[56]
+#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[57]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[58]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[59]
+#define SWIGTYPE_p_mfem__Solver swig_types[60]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[61]
+#define SWIGTYPE_p_mfem__Table swig_types[62]
+#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[63]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[64]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[65]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[66]
+#define SWIGTYPE_p_mfem__Vector swig_types[67]
+#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[68]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[69]
+#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[70]
+#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[71]
+#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[72]
+#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[73]
+#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[74]
+#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[75]
+#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[76]
+#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[77]
+#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[78]
+#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[79]
+#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[80]
+#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[81]
+#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[82]
+#define SWIGTYPE_p_p_mfem__DenseSymmetricMatrix swig_types[83]
+#define SWIGTYPE_p_p_mfem__ElementRestriction swig_types[84]
+#define SWIGTYPE_p_p_mfem__FaceRestriction swig_types[85]
+#define SWIGTYPE_p_p_mfem__FiniteElementSpace swig_types[86]
+#define SWIGTYPE_p_p_mfem__GridFunction swig_types[87]
+#define SWIGTYPE_p_p_mfem__H1FaceRestriction swig_types[88]
+#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[89]
+#define SWIGTYPE_p_p_mfem__IntegrationRule swig_types[90]
+#define SWIGTYPE_p_p_mfem__L2ElementRestriction swig_types[91]
+#define SWIGTYPE_p_p_mfem__L2FaceRestriction swig_types[92]
+#define SWIGTYPE_p_p_mfem__LinearForm swig_types[93]
+#define SWIGTYPE_p_p_mfem__Matrix swig_types[94]
+#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[95]
+#define SWIGTYPE_p_p_mfem__Operator swig_types[96]
+#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[97]
+#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[98]
+#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[99]
+#define SWIGTYPE_p_p_mfem__QuadratureFunction swig_types[100]
+#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[101]
+#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[102]
+#define SWIGTYPE_p_p_mfem__Refinement swig_types[103]
+#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[104]
+#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[105]
+#define SWIGTYPE_p_p_mfem__Solver swig_types[106]
+#define SWIGTYPE_p_p_mfem__SparseMatrix swig_types[107]
+#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[108]
+#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[109]
+#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[110]
+#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[111]
+#define SWIGTYPE_p_p_mfem__Vector swig_types[112]
+#define SWIGTYPE_p_pri_t swig_types[113]
+#define SWIGTYPE_p_pyr_t swig_types[114]
+#define SWIGTYPE_p_quad_t swig_types[115]
+#define SWIGTYPE_p_seg_t swig_types[116]
+#define SWIGTYPE_p_size_type swig_types[117]
+#define SWIGTYPE_p_tet_t swig_types[118]
+#define SWIGTYPE_p_tri_t swig_types[119]
+#define SWIGTYPE_p_value_type swig_types[120]
+static swig_type_info *swig_types[122];
+static swig_module_info swig_module = {swig_types, 121, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -10996,8 +11000,10 @@ static void *_p_p_mfem__LinearFormTo_p_p_mfem__Vector(void *x, int *SWIGUNUSEDPA
 static swig_type_info _swigt___input = {"__input", "$input", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_bool = {"_p_bool", "bool *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
@@ -11108,15 +11114,19 @@ static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 
 static swig_type_info _swigt__p_pyr_t = {"_p_pyr_t", "pyr_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_size_type = {"_p_size_type", "size_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt___input,
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_RefCoord,
+  &_swigt__p_allocator_type,
   &_swigt__p_bool,
   &_swigt__p_char,
+  &_swigt__p_difference_type,
   &_swigt__p_double,
   &_swigt__p_hex_t,
   &_swigt__p_int,
@@ -11227,15 +11237,19 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_pyr_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
+  &_swigt__p_size_type,
   &_swigt__p_tet_t,
   &_swigt__p_tri_t,
+  &_swigt__p_value_type,
 };
 
 static swig_cast_info _swigc___input[] = {  {&_swigt___input, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_bool[] = {  {&_swigt__p_bool, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
@@ -11346,15 +11360,19 @@ static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 
 static swig_cast_info _swigc__p_pyr_t[] = {  {&_swigt__p_pyr_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_size_type[] = {  {&_swigt__p_size_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc___input,
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_RefCoord,
+  _swigc__p_allocator_type,
   _swigc__p_bool,
   _swigc__p_char,
+  _swigc__p_difference_type,
   _swigc__p_double,
   _swigc__p_hex_t,
   _swigc__p_int,
@@ -11465,8 +11483,10 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_pyr_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
+  _swigc__p_size_type,
   _swigc__p_tet_t,
   _swigc__p_tri_t,
+  _swigc__p_value_type,
 };
 
 

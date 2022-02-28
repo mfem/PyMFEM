@@ -106,6 +106,7 @@ import mfem._ser.linearform
 import mfem._ser.nonlininteg
 import mfem._ser.vertex
 import mfem._ser.vtk
+import mfem._ser.std_vectors
 FaceType_Interior = _mesh.FaceType_Interior
 
 FaceType_Boundary = _mesh.FaceType_Boundary
@@ -172,12 +173,12 @@ class Mesh(object):
 
     @staticmethod
     def MakePeriodic(orig_mesh, v2v):
-        r"""MakePeriodic(Mesh orig_mesh, std::vector< int > const & v2v) -> Mesh"""
+        r"""MakePeriodic(Mesh orig_mesh, vector_int v2v) -> Mesh"""
         return _mesh.Mesh_MakePeriodic(orig_mesh, v2v)
     MakePeriodic = _swig_new_static_method(_mesh.Mesh_MakePeriodic)
 
     def CreatePeriodicVertexMapping(self, translations, tol=1e-8):
-        r"""CreatePeriodicVertexMapping(Mesh self, std::vector< mfem::Vector > const & translations, double tol=1e-8) -> std::vector< int >"""
+        r"""CreatePeriodicVertexMapping(Mesh self, vector_Vector translations, double tol=1e-8) -> vector_int"""
         return _mesh.Mesh_CreatePeriodicVertexMapping(self, translations, tol)
     CreatePeriodicVertexMapping = _swig_new_instance_method(_mesh.Mesh_CreatePeriodicVertexMapping)
 
@@ -1349,7 +1350,7 @@ def Mesh_MakeSimplicial(orig_mesh):
 Mesh_MakeSimplicial = _mesh.Mesh_MakeSimplicial
 
 def Mesh_MakePeriodic(orig_mesh, v2v):
-    r"""Mesh_MakePeriodic(Mesh orig_mesh, std::vector< int > const & v2v) -> Mesh"""
+    r"""Mesh_MakePeriodic(Mesh orig_mesh, vector_int v2v) -> Mesh"""
     return _mesh.Mesh_MakePeriodic(orig_mesh, v2v)
 Mesh_MakePeriodic = _mesh.Mesh_MakePeriodic
 

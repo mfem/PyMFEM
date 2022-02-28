@@ -42,6 +42,7 @@ import_array();
 %import "sparsemat.i"
 %import "eltrans.i"
 %import "intrules.i"
+
 %import "std_vectors.i"
 
 %feature("notabstract") VectorFunctionCoefficient;
@@ -63,6 +64,7 @@ ISTREAM_TYPEMAP(std::istream&)
     $1 = 0;
   }
 }
+
 // ignore these constructors, since in python element::type is given by 
 // string (see extend section below).
 // %ignore does not work well !?

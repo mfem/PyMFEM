@@ -124,6 +124,7 @@ import mfem._par.restriction
 import mfem._par.bilininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.std_vectors
 import mfem._par.communication
 import mfem._par.sets
 class ParNCMesh(mfem._par.ncmesh.NCMesh):
@@ -232,7 +233,7 @@ class ParNCMesh(mfem._par.ncmesh.NCMesh):
     GetEntityGroupId = _swig_new_instance_method(_pncmesh.ParNCMesh_GetEntityGroupId)
 
     def GetGroup(self, id):
-        r"""GetGroup(ParNCMesh self, mfem::ParNCMesh::GroupId id) -> mfem::ParNCMesh::CommGroup const &"""
+        r"""GetGroup(ParNCMesh self, mfem::ParNCMesh::GroupId id) -> vector_int"""
         return _pncmesh.ParNCMesh_GetGroup(self, id)
     GetGroup = _swig_new_instance_method(_pncmesh.ParNCMesh_GetGroup)
 

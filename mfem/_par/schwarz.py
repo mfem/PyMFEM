@@ -114,6 +114,7 @@ import mfem._par.fe_coll
 import mfem._par.lininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.std_vectors
 import mfem._par.doftrans
 import mfem._par.handle
 import mfem._par.hypre
@@ -170,10 +171,10 @@ class VertexPatchInfo(object):
     __repr__ = _swig_repr
     mynrpatch = property(_schwarz.VertexPatchInfo_mynrpatch_get, _schwarz.VertexPatchInfo_mynrpatch_set, doc=r"""mynrpatch : int""")
     nrpatch = property(_schwarz.VertexPatchInfo_nrpatch_get, _schwarz.VertexPatchInfo_nrpatch_set, doc=r"""nrpatch : int""")
-    vert_contr = property(_schwarz.VertexPatchInfo_vert_contr_get, _schwarz.VertexPatchInfo_vert_contr_set, doc=r"""vert_contr : std::vector<(mfem::Array<(int)>)>""")
-    edge_contr = property(_schwarz.VertexPatchInfo_edge_contr_get, _schwarz.VertexPatchInfo_edge_contr_set, doc=r"""edge_contr : std::vector<(mfem::Array<(int)>)>""")
-    face_contr = property(_schwarz.VertexPatchInfo_face_contr_get, _schwarz.VertexPatchInfo_face_contr_set, doc=r"""face_contr : std::vector<(mfem::Array<(int)>)>""")
-    elem_contr = property(_schwarz.VertexPatchInfo_elem_contr_get, _schwarz.VertexPatchInfo_elem_contr_set, doc=r"""elem_contr : std::vector<(mfem::Array<(int)>)>""")
+    vert_contr = property(_schwarz.VertexPatchInfo_vert_contr_get, _schwarz.VertexPatchInfo_vert_contr_set, doc=r"""vert_contr : std::vector<(mfem::Array<(int)>,std::allocator<(mfem::Array<(int)>)>)>""")
+    edge_contr = property(_schwarz.VertexPatchInfo_edge_contr_get, _schwarz.VertexPatchInfo_edge_contr_set, doc=r"""edge_contr : std::vector<(mfem::Array<(int)>,std::allocator<(mfem::Array<(int)>)>)>""")
+    face_contr = property(_schwarz.VertexPatchInfo_face_contr_get, _schwarz.VertexPatchInfo_face_contr_set, doc=r"""face_contr : std::vector<(mfem::Array<(int)>,std::allocator<(mfem::Array<(int)>)>)>""")
+    elem_contr = property(_schwarz.VertexPatchInfo_elem_contr_get, _schwarz.VertexPatchInfo_elem_contr_set, doc=r"""elem_contr : std::vector<(mfem::Array<(int)>,std::allocator<(mfem::Array<(int)>)>)>""")
     host_rank = property(_schwarz.VertexPatchInfo_host_rank_get, _schwarz.VertexPatchInfo_host_rank_set, doc=r"""host_rank : mfem::Array<(int)>""")
     patch_natural_order_idx = property(_schwarz.VertexPatchInfo_patch_natural_order_idx_get, _schwarz.VertexPatchInfo_patch_natural_order_idx_set, doc=r"""patch_natural_order_idx : mfem::Array<(int)>""")
     patch_global_dofs_ids = property(_schwarz.VertexPatchInfo_patch_global_dofs_ids_get, _schwarz.VertexPatchInfo_patch_global_dofs_ids_set, doc=r"""patch_global_dofs_ids : mfem::Array<(int)>""")
@@ -194,8 +195,8 @@ class PatchDofInfo(object):
     comm = property(_schwarz.PatchDofInfo_comm_get, _schwarz.PatchDofInfo_comm_set, doc=r"""comm : MPI_Comm""")
     nrpatch = property(_schwarz.PatchDofInfo_nrpatch_get, _schwarz.PatchDofInfo_nrpatch_set, doc=r"""nrpatch : int""")
     host_rank = property(_schwarz.PatchDofInfo_host_rank_get, _schwarz.PatchDofInfo_host_rank_set, doc=r"""host_rank : mfem::Array<(int)>""")
-    patch_tdofs = property(_schwarz.PatchDofInfo_patch_tdofs_get, _schwarz.PatchDofInfo_patch_tdofs_set, doc=r"""patch_tdofs : std::vector<(mfem::Array<(int)>)>""")
-    patch_local_tdofs = property(_schwarz.PatchDofInfo_patch_local_tdofs_get, _schwarz.PatchDofInfo_patch_local_tdofs_set, doc=r"""patch_local_tdofs : std::vector<(mfem::Array<(int)>)>""")
+    patch_tdofs = property(_schwarz.PatchDofInfo_patch_tdofs_get, _schwarz.PatchDofInfo_patch_tdofs_set, doc=r"""patch_tdofs : std::vector<(mfem::Array<(int)>,std::allocator<(mfem::Array<(int)>)>)>""")
+    patch_local_tdofs = property(_schwarz.PatchDofInfo_patch_local_tdofs_get, _schwarz.PatchDofInfo_patch_local_tdofs_set, doc=r"""patch_local_tdofs : std::vector<(mfem::Array<(int)>,std::allocator<(mfem::Array<(int)>)>)>""")
 
     def __init__(self, cpmesh_, ref_levels_, fespace):
         r"""__init__(PatchDofInfo self, ParMesh cpmesh_, int ref_levels_, ParFiniteElementSpace fespace) -> PatchDofInfo"""
@@ -212,10 +213,10 @@ class PatchAssembly(object):
     __repr__ = _swig_repr
     comm = property(_schwarz.PatchAssembly_comm_get, _schwarz.PatchAssembly_comm_set, doc=r"""comm : MPI_Comm""")
     nrpatch = property(_schwarz.PatchAssembly_nrpatch_get, _schwarz.PatchAssembly_nrpatch_set, doc=r"""nrpatch : int""")
-    tdof_offsets = property(_schwarz.PatchAssembly_tdof_offsets_get, _schwarz.PatchAssembly_tdof_offsets_set, doc=r"""tdof_offsets : std::vector<(int)>""")
-    patch_other_tdofs = property(_schwarz.PatchAssembly_patch_other_tdofs_get, _schwarz.PatchAssembly_patch_other_tdofs_set, doc=r"""patch_other_tdofs : std::vector<(mfem::Array<(int)>)>""")
-    patch_owned_other_tdofs = property(_schwarz.PatchAssembly_patch_owned_other_tdofs_get, _schwarz.PatchAssembly_patch_owned_other_tdofs_set, doc=r"""patch_owned_other_tdofs : std::vector<(mfem::Array<(int)>)>""")
-    l2gmaps = property(_schwarz.PatchAssembly_l2gmaps_get, _schwarz.PatchAssembly_l2gmaps_set, doc=r"""l2gmaps : std::vector<(mfem::Array<(int)>)>""")
+    tdof_offsets = property(_schwarz.PatchAssembly_tdof_offsets_get, _schwarz.PatchAssembly_tdof_offsets_set, doc=r"""tdof_offsets : std::vector<(int,std::allocator<(int)>)>""")
+    patch_other_tdofs = property(_schwarz.PatchAssembly_patch_other_tdofs_get, _schwarz.PatchAssembly_patch_other_tdofs_set, doc=r"""patch_other_tdofs : std::vector<(mfem::Array<(int)>,std::allocator<(mfem::Array<(int)>)>)>""")
+    patch_owned_other_tdofs = property(_schwarz.PatchAssembly_patch_owned_other_tdofs_get, _schwarz.PatchAssembly_patch_owned_other_tdofs_set, doc=r"""patch_owned_other_tdofs : std::vector<(mfem::Array<(int)>,std::allocator<(mfem::Array<(int)>)>)>""")
+    l2gmaps = property(_schwarz.PatchAssembly_l2gmaps_get, _schwarz.PatchAssembly_l2gmaps_set, doc=r"""l2gmaps : std::vector<(mfem::Array<(int)>,std::allocator<(mfem::Array<(int)>)>)>""")
     PatchMat = property(_schwarz.PatchAssembly_PatchMat_get, _schwarz.PatchAssembly_PatchMat_set, doc=r"""PatchMat : mfem::Array<(p.mfem::SparseMatrix)>""")
     patch_tdof_info = property(_schwarz.PatchAssembly_patch_tdof_info_get, _schwarz.PatchAssembly_patch_tdof_info_set, doc=r"""patch_tdof_info : p.PatchDofInfo""")
     host_rank = property(_schwarz.PatchAssembly_host_rank_get, _schwarz.PatchAssembly_host_rank_set, doc=r"""host_rank : mfem::Array<(int)>""")

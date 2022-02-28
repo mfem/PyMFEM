@@ -98,6 +98,7 @@ import mfem._par.sort_pairs
 import mfem._par.ncmesh
 import mfem._par.vtk
 import mfem._par.vertex
+import mfem._par.std_vectors
 import mfem._par.fe_coll
 import mfem._par.lininteg
 import mfem._par.doftrans

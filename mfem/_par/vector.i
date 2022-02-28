@@ -6,7 +6,6 @@
 %module(package="mfem._par") vector
 %feature("autodoc", "1");
 %{
-#include "linalg/vector.hpp"  
 #include <sstream>
 #include <fstream>
 #include <limits>

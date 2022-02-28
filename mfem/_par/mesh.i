@@ -50,6 +50,9 @@ import_array();
 %import "sparsemat.i"
 %import "eltrans.i"
 %import "intrules.i"
+
+%import "std_vectors.i"
+
 %feature("notabstract") VectorFunctionCoefficient;
 %feature("notabstract") VectorConstantCoefficient;
 %import "coefficient.i"
@@ -60,8 +63,6 @@ import_array();
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
 ISTREAM_TYPEMAP(std::istream&)
-
-
 
 // ignore these constructors, since in python element::type is given by 
 // string (see extend section below).

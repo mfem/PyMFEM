@@ -22,9 +22,9 @@ import_array();
 %include "exception.i"
 
 %import "array.i"
-%import "mesh.i"
-%import "pfespace.i"
-%import "pmesh.i"
+//%import "mesh.i"
+//%import "pfespace.i"
+//%import "pmesh.i"
 
 %include "std_vector.i"
 %template(vector_int) std::vector<int>;

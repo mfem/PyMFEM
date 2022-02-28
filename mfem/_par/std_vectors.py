@@ -64,55 +64,8 @@ class _SwigNonDynamicMeta(type):
     __setattr__ = _swig_setattr_nondynamic_class_variable(type.__setattr__)
 
 
-import weakref
-
 import mfem._par.array
 import mfem._par.mem_manager
-import mfem._par.mesh
-import mfem._par.matrix
-import mfem._par.vector
-import mfem._par.operators
-import mfem._par.sort_pairs
-import mfem._par.ncmesh
-import mfem._par.globals
-import mfem._par.vtk
-import mfem._par.element
-import mfem._par.densemat
-import mfem._par.geom
-import mfem._par.intrules
-import mfem._par.table
-import mfem._par.hash
-import mfem._par.vertex
-import mfem._par.gridfunc
-import mfem._par.coefficient
-import mfem._par.symmat
-import mfem._par.sparsemat
-import mfem._par.eltrans
-import mfem._par.fe
-import mfem._par.fe_base
-import mfem._par.fe_fixed_order
-import mfem._par.fe_h1
-import mfem._par.fe_nd
-import mfem._par.fe_rt
-import mfem._par.fe_l2
-import mfem._par.fe_nurbs
-import mfem._par.fe_pos
-import mfem._par.fe_ser
-import mfem._par.fespace
-import mfem._par.fe_coll
-import mfem._par.lininteg
-import mfem._par.doftrans
-import mfem._par.handle
-import mfem._par.hypre
-import mfem._par.restriction
-import mfem._par.bilininteg
-import mfem._par.linearform
-import mfem._par.nonlininteg
-import mfem._par.pfespace
-import mfem._par.pmesh
-import mfem._par.pncmesh
-import mfem._par.communication
-import mfem._par.sets
 class SwigPyIterator(object):
     r"""Proxy of C++ swig::SwigPyIterator class."""
 
@@ -240,14 +193,14 @@ class vector_int(object):
     __len__ = _swig_new_instance_method(_std_vectors.vector_int___len__)
 
     def __getslice__(self, i, j):
-        r"""__getslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j) -> std::vector< int,std::allocator< int > > *"""
+        r"""__getslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j) -> vector_int"""
         return _std_vectors.vector_int___getslice__(self, i, j)
     __getslice__ = _swig_new_instance_method(_std_vectors.vector_int___getslice__)
 
     def __setslice__(self, *args):
         r"""
         __setslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j)
-        __setslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j, std::vector< int,std::allocator< int > > const & v)
+        __setslice__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::difference_type j, vector_int v)
         """
         return _std_vectors.vector_int___setslice__(self, *args)
     __setslice__ = _swig_new_instance_method(_std_vectors.vector_int___setslice__)
@@ -267,7 +220,7 @@ class vector_int(object):
 
     def __getitem__(self, *args):
         r"""
-        __getitem__(vector_int self, PySliceObject * slice) -> std::vector< int,std::allocator< int > >
+        __getitem__(vector_int self, PySliceObject * slice) -> vector_int
         __getitem__(vector_int self, std::vector< int >::difference_type i) -> std::vector< int >::value_type const &
         """
         return _std_vectors.vector_int___getitem__(self, *args)
@@ -275,7 +228,7 @@ class vector_int(object):
 
     def __setitem__(self, *args):
         r"""
-        __setitem__(vector_int self, PySliceObject * slice, std::vector< int,std::allocator< int > > const & v)
+        __setitem__(vector_int self, PySliceObject * slice, vector_int v)
         __setitem__(vector_int self, PySliceObject * slice)
         __setitem__(vector_int self, std::vector< int >::difference_type i, std::vector< int >::value_type const & x)
         """
@@ -466,7 +419,7 @@ class vector_Vector(object):
     def __getitem__(self, *args):
         r"""
         __getitem__(vector_Vector self, PySliceObject * slice) -> vector_Vector
-        __getitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i) -> Vector
+        __getitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i) -> std::vector< mfem::Vector >::value_type const &
         """
         return _std_vectors.vector_Vector___getitem__(self, *args)
     __getitem__ = _swig_new_instance_method(_std_vectors.vector_Vector___getitem__)
@@ -475,18 +428,18 @@ class vector_Vector(object):
         r"""
         __setitem__(vector_Vector self, PySliceObject * slice, vector_Vector v)
         __setitem__(vector_Vector self, PySliceObject * slice)
-        __setitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i, Vector x)
+        __setitem__(vector_Vector self, std::vector< mfem::Vector >::difference_type i, std::vector< mfem::Vector >::value_type const & x)
         """
         return _std_vectors.vector_Vector___setitem__(self, *args)
     __setitem__ = _swig_new_instance_method(_std_vectors.vector_Vector___setitem__)
 
     def pop(self):
-        r"""pop(vector_Vector self) -> Vector"""
+        r"""pop(vector_Vector self) -> std::vector< mfem::Vector >::value_type"""
         return _std_vectors.vector_Vector_pop(self)
     pop = _swig_new_instance_method(_std_vectors.vector_Vector_pop)
 
     def append(self, x):
-        r"""append(vector_Vector self, Vector x)"""
+        r"""append(vector_Vector self, std::vector< mfem::Vector >::value_type const & x)"""
         return _std_vectors.vector_Vector_append(self, x)
     append = _swig_new_instance_method(_std_vectors.vector_Vector_append)
 
@@ -553,42 +506,42 @@ class vector_Vector(object):
         __init__(vector_Vector self) -> vector_Vector
         __init__(vector_Vector self, vector_Vector other) -> vector_Vector
         __init__(vector_Vector self, std::vector< mfem::Vector >::size_type size) -> vector_Vector
-        __init__(vector_Vector self, std::vector< mfem::Vector >::size_type size, Vector value) -> vector_Vector
+        __init__(vector_Vector self, std::vector< mfem::Vector >::size_type size, std::vector< mfem::Vector >::value_type const & value) -> vector_Vector
         """
         _std_vectors.vector_Vector_swiginit(self, _std_vectors.new_vector_Vector(*args))
 
     def push_back(self, x):
-        r"""push_back(vector_Vector self, Vector x)"""
+        r"""push_back(vector_Vector self, std::vector< mfem::Vector >::value_type const & x)"""
         return _std_vectors.vector_Vector_push_back(self, x)
     push_back = _swig_new_instance_method(_std_vectors.vector_Vector_push_back)
 
     def front(self):
-        r"""front(vector_Vector self) -> Vector"""
+        r"""front(vector_Vector self) -> std::vector< mfem::Vector >::value_type const &"""
         return _std_vectors.vector_Vector_front(self)
     front = _swig_new_instance_method(_std_vectors.vector_Vector_front)
 
     def back(self):
-        r"""back(vector_Vector self) -> Vector"""
+        r"""back(vector_Vector self) -> std::vector< mfem::Vector >::value_type const &"""
         return _std_vectors.vector_Vector_back(self)
     back = _swig_new_instance_method(_std_vectors.vector_Vector_back)
 
     def assign(self, n, x):
-        r"""assign(vector_Vector self, std::vector< mfem::Vector >::size_type n, Vector x)"""
+        r"""assign(vector_Vector self, std::vector< mfem::Vector >::size_type n, std::vector< mfem::Vector >::value_type const & x)"""
         return _std_vectors.vector_Vector_assign(self, n, x)
     assign = _swig_new_instance_method(_std_vectors.vector_Vector_assign)
 
     def resize(self, *args):
         r"""
         resize(vector_Vector self, std::vector< mfem::Vector >::size_type new_size)
-        resize(vector_Vector self, std::vector< mfem::Vector >::size_type new_size, Vector x)
+        resize(vector_Vector self, std::vector< mfem::Vector >::size_type new_size, std::vector< mfem::Vector >::value_type const & x)
         """
         return _std_vectors.vector_Vector_resize(self, *args)
     resize = _swig_new_instance_method(_std_vectors.vector_Vector_resize)
 
     def insert(self, *args):
         r"""
-        insert(vector_Vector self, std::vector< mfem::Vector >::iterator pos, Vector x) -> std::vector< mfem::Vector >::iterator
-        insert(vector_Vector self, std::vector< mfem::Vector >::iterator pos, std::vector< mfem::Vector >::size_type n, Vector x)
+        insert(vector_Vector self, std::vector< mfem::Vector >::iterator pos, std::vector< mfem::Vector >::value_type const & x) -> std::vector< mfem::Vector >::iterator
+        insert(vector_Vector self, std::vector< mfem::Vector >::iterator pos, std::vector< mfem::Vector >::size_type n, std::vector< mfem::Vector >::value_type const & x)
         """
         return _std_vectors.vector_Vector_insert(self, *args)
     insert = _swig_new_instance_method(_std_vectors.vector_Vector_insert)
@@ -862,7 +815,7 @@ class vector_ParFiniteElementSpace(object):
     def __getitem__(self, *args):
         r"""
         __getitem__(vector_ParFiniteElementSpace self, PySliceObject * slice) -> vector_ParFiniteElementSpace
-        __getitem__(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::difference_type i) -> ParFiniteElementSpace
+        __getitem__(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::difference_type i) -> std::vector< mfem::ParFiniteElementSpace * >::value_type
         """
         return _std_vectors.vector_ParFiniteElementSpace___getitem__(self, *args)
     __getitem__ = _swig_new_instance_method(_std_vectors.vector_ParFiniteElementSpace___getitem__)
@@ -871,18 +824,18 @@ class vector_ParFiniteElementSpace(object):
         r"""
         __setitem__(vector_ParFiniteElementSpace self, PySliceObject * slice, vector_ParFiniteElementSpace v)
         __setitem__(vector_ParFiniteElementSpace self, PySliceObject * slice)
-        __setitem__(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::difference_type i, ParFiniteElementSpace x)
+        __setitem__(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::difference_type i, std::vector< mfem::ParFiniteElementSpace * >::value_type x)
         """
         return _std_vectors.vector_ParFiniteElementSpace___setitem__(self, *args)
     __setitem__ = _swig_new_instance_method(_std_vectors.vector_ParFiniteElementSpace___setitem__)
 
     def pop(self):
-        r"""pop(vector_ParFiniteElementSpace self) -> ParFiniteElementSpace"""
+        r"""pop(vector_ParFiniteElementSpace self) -> std::vector< mfem::ParFiniteElementSpace * >::value_type"""
         return _std_vectors.vector_ParFiniteElementSpace_pop(self)
     pop = _swig_new_instance_method(_std_vectors.vector_ParFiniteElementSpace_pop)
 
     def append(self, x):
-        r"""append(vector_ParFiniteElementSpace self, ParFiniteElementSpace x)"""
+        r"""append(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::value_type x)"""
         return _std_vectors.vector_ParFiniteElementSpace_append(self, x)
     append = _swig_new_instance_method(_std_vectors.vector_ParFiniteElementSpace_append)
 
@@ -949,42 +902,42 @@ class vector_ParFiniteElementSpace(object):
         __init__(vector_ParFiniteElementSpace self) -> vector_ParFiniteElementSpace
         __init__(vector_ParFiniteElementSpace self, vector_ParFiniteElementSpace other) -> vector_ParFiniteElementSpace
         __init__(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::size_type size) -> vector_ParFiniteElementSpace
-        __init__(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::size_type size, ParFiniteElementSpace value) -> vector_ParFiniteElementSpace
+        __init__(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::size_type size, std::vector< mfem::ParFiniteElementSpace * >::value_type value) -> vector_ParFiniteElementSpace
         """
         _std_vectors.vector_ParFiniteElementSpace_swiginit(self, _std_vectors.new_vector_ParFiniteElementSpace(*args))
 
     def push_back(self, x):
-        r"""push_back(vector_ParFiniteElementSpace self, ParFiniteElementSpace x)"""
+        r"""push_back(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::value_type x)"""
         return _std_vectors.vector_ParFiniteElementSpace_push_back(self, x)
     push_back = _swig_new_instance_method(_std_vectors.vector_ParFiniteElementSpace_push_back)
 
     def front(self):
-        r"""front(vector_ParFiniteElementSpace self) -> ParFiniteElementSpace"""
+        r"""front(vector_ParFiniteElementSpace self) -> std::vector< mfem::ParFiniteElementSpace * >::value_type"""
         return _std_vectors.vector_ParFiniteElementSpace_front(self)
     front = _swig_new_instance_method(_std_vectors.vector_ParFiniteElementSpace_front)
 
     def back(self):
-        r"""back(vector_ParFiniteElementSpace self) -> ParFiniteElementSpace"""
+        r"""back(vector_ParFiniteElementSpace self) -> std::vector< mfem::ParFiniteElementSpace * >::value_type"""
         return _std_vectors.vector_ParFiniteElementSpace_back(self)
     back = _swig_new_instance_method(_std_vectors.vector_ParFiniteElementSpace_back)
 
     def assign(self, n, x):
-        r"""assign(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::size_type n, ParFiniteElementSpace x)"""
+        r"""assign(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::size_type n, std::vector< mfem::ParFiniteElementSpace * >::value_type x)"""
         return _std_vectors.vector_ParFiniteElementSpace_assign(self, n, x)
     assign = _swig_new_instance_method(_std_vectors.vector_ParFiniteElementSpace_assign)
 
     def resize(self, *args):
         r"""
         resize(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::size_type new_size)
-        resize(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::size_type new_size, ParFiniteElementSpace x)
+        resize(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::size_type new_size, std::vector< mfem::ParFiniteElementSpace * >::value_type x)
         """
         return _std_vectors.vector_ParFiniteElementSpace_resize(self, *args)
     resize = _swig_new_instance_method(_std_vectors.vector_ParFiniteElementSpace_resize)
 
     def insert(self, *args):
         r"""
-        insert(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::iterator pos, ParFiniteElementSpace x) -> std::vector< mfem::ParFiniteElementSpace * >::iterator
-        insert(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::iterator pos, std::vector< mfem::ParFiniteElementSpace * >::size_type n, ParFiniteElementSpace x)
+        insert(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::iterator pos, std::vector< mfem::ParFiniteElementSpace * >::value_type x) -> std::vector< mfem::ParFiniteElementSpace * >::iterator
+        insert(vector_ParFiniteElementSpace self, std::vector< mfem::ParFiniteElementSpace * >::iterator pos, std::vector< mfem::ParFiniteElementSpace * >::size_type n, std::vector< mfem::ParFiniteElementSpace * >::value_type x)
         """
         return _std_vectors.vector_ParFiniteElementSpace_insert(self, *args)
     insert = _swig_new_instance_method(_std_vectors.vector_ParFiniteElementSpace_insert)
@@ -1060,7 +1013,7 @@ class vector_ParMesh(object):
     def __getitem__(self, *args):
         r"""
         __getitem__(vector_ParMesh self, PySliceObject * slice) -> vector_ParMesh
-        __getitem__(vector_ParMesh self, std::vector< mfem::ParMesh * >::difference_type i) -> ParMesh
+        __getitem__(vector_ParMesh self, std::vector< mfem::ParMesh * >::difference_type i) -> std::vector< mfem::ParMesh * >::value_type
         """
         return _std_vectors.vector_ParMesh___getitem__(self, *args)
     __getitem__ = _swig_new_instance_method(_std_vectors.vector_ParMesh___getitem__)
@@ -1069,18 +1022,18 @@ class vector_ParMesh(object):
         r"""
         __setitem__(vector_ParMesh self, PySliceObject * slice, vector_ParMesh v)
         __setitem__(vector_ParMesh self, PySliceObject * slice)
-        __setitem__(vector_ParMesh self, std::vector< mfem::ParMesh * >::difference_type i, ParMesh x)
+        __setitem__(vector_ParMesh self, std::vector< mfem::ParMesh * >::difference_type i, std::vector< mfem::ParMesh * >::value_type x)
         """
         return _std_vectors.vector_ParMesh___setitem__(self, *args)
     __setitem__ = _swig_new_instance_method(_std_vectors.vector_ParMesh___setitem__)
 
     def pop(self):
-        r"""pop(vector_ParMesh self) -> ParMesh"""
+        r"""pop(vector_ParMesh self) -> std::vector< mfem::ParMesh * >::value_type"""
         return _std_vectors.vector_ParMesh_pop(self)
     pop = _swig_new_instance_method(_std_vectors.vector_ParMesh_pop)
 
     def append(self, x):
-        r"""append(vector_ParMesh self, ParMesh x)"""
+        r"""append(vector_ParMesh self, std::vector< mfem::ParMesh * >::value_type x)"""
         return _std_vectors.vector_ParMesh_append(self, x)
     append = _swig_new_instance_method(_std_vectors.vector_ParMesh_append)
 
@@ -1147,42 +1100,42 @@ class vector_ParMesh(object):
         __init__(vector_ParMesh self) -> vector_ParMesh
         __init__(vector_ParMesh self, vector_ParMesh other) -> vector_ParMesh
         __init__(vector_ParMesh self, std::vector< mfem::ParMesh * >::size_type size) -> vector_ParMesh
-        __init__(vector_ParMesh self, std::vector< mfem::ParMesh * >::size_type size, ParMesh value) -> vector_ParMesh
+        __init__(vector_ParMesh self, std::vector< mfem::ParMesh * >::size_type size, std::vector< mfem::ParMesh * >::value_type value) -> vector_ParMesh
         """
         _std_vectors.vector_ParMesh_swiginit(self, _std_vectors.new_vector_ParMesh(*args))
 
     def push_back(self, x):
-        r"""push_back(vector_ParMesh self, ParMesh x)"""
+        r"""push_back(vector_ParMesh self, std::vector< mfem::ParMesh * >::value_type x)"""
         return _std_vectors.vector_ParMesh_push_back(self, x)
     push_back = _swig_new_instance_method(_std_vectors.vector_ParMesh_push_back)
 
     def front(self):
-        r"""front(vector_ParMesh self) -> ParMesh"""
+        r"""front(vector_ParMesh self) -> std::vector< mfem::ParMesh * >::value_type"""
         return _std_vectors.vector_ParMesh_front(self)
     front = _swig_new_instance_method(_std_vectors.vector_ParMesh_front)
 
     def back(self):
-        r"""back(vector_ParMesh self) -> ParMesh"""
+        r"""back(vector_ParMesh self) -> std::vector< mfem::ParMesh * >::value_type"""
         return _std_vectors.vector_ParMesh_back(self)
     back = _swig_new_instance_method(_std_vectors.vector_ParMesh_back)
 
     def assign(self, n, x):
-        r"""assign(vector_ParMesh self, std::vector< mfem::ParMesh * >::size_type n, ParMesh x)"""
+        r"""assign(vector_ParMesh self, std::vector< mfem::ParMesh * >::size_type n, std::vector< mfem::ParMesh * >::value_type x)"""
         return _std_vectors.vector_ParMesh_assign(self, n, x)
     assign = _swig_new_instance_method(_std_vectors.vector_ParMesh_assign)
 
     def resize(self, *args):
         r"""
         resize(vector_ParMesh self, std::vector< mfem::ParMesh * >::size_type new_size)
-        resize(vector_ParMesh self, std::vector< mfem::ParMesh * >::size_type new_size, ParMesh x)
+        resize(vector_ParMesh self, std::vector< mfem::ParMesh * >::size_type new_size, std::vector< mfem::ParMesh * >::value_type x)
         """
         return _std_vectors.vector_ParMesh_resize(self, *args)
     resize = _swig_new_instance_method(_std_vectors.vector_ParMesh_resize)
 
     def insert(self, *args):
         r"""
-        insert(vector_ParMesh self, std::vector< mfem::ParMesh * >::iterator pos, ParMesh x) -> std::vector< mfem::ParMesh * >::iterator
-        insert(vector_ParMesh self, std::vector< mfem::ParMesh * >::iterator pos, std::vector< mfem::ParMesh * >::size_type n, ParMesh x)
+        insert(vector_ParMesh self, std::vector< mfem::ParMesh * >::iterator pos, std::vector< mfem::ParMesh * >::value_type x) -> std::vector< mfem::ParMesh * >::iterator
+        insert(vector_ParMesh self, std::vector< mfem::ParMesh * >::iterator pos, std::vector< mfem::ParMesh * >::size_type n, std::vector< mfem::ParMesh * >::value_type x)
         """
         return _std_vectors.vector_ParMesh_insert(self, *args)
     insert = _swig_new_instance_method(_std_vectors.vector_ParMesh_insert)
@@ -1258,7 +1211,7 @@ class vector_HypreParMatrix(object):
     def __getitem__(self, *args):
         r"""
         __getitem__(vector_HypreParMatrix self, PySliceObject * slice) -> vector_HypreParMatrix
-        __getitem__(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::difference_type i) -> HypreParMatrix
+        __getitem__(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::difference_type i) -> std::vector< mfem::HypreParMatrix * >::value_type
         """
         return _std_vectors.vector_HypreParMatrix___getitem__(self, *args)
     __getitem__ = _swig_new_instance_method(_std_vectors.vector_HypreParMatrix___getitem__)
@@ -1267,18 +1220,18 @@ class vector_HypreParMatrix(object):
         r"""
         __setitem__(vector_HypreParMatrix self, PySliceObject * slice, vector_HypreParMatrix v)
         __setitem__(vector_HypreParMatrix self, PySliceObject * slice)
-        __setitem__(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::difference_type i, HypreParMatrix x)
+        __setitem__(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::difference_type i, std::vector< mfem::HypreParMatrix * >::value_type x)
         """
         return _std_vectors.vector_HypreParMatrix___setitem__(self, *args)
     __setitem__ = _swig_new_instance_method(_std_vectors.vector_HypreParMatrix___setitem__)
 
     def pop(self):
-        r"""pop(vector_HypreParMatrix self) -> HypreParMatrix"""
+        r"""pop(vector_HypreParMatrix self) -> std::vector< mfem::HypreParMatrix * >::value_type"""
         return _std_vectors.vector_HypreParMatrix_pop(self)
     pop = _swig_new_instance_method(_std_vectors.vector_HypreParMatrix_pop)
 
     def append(self, x):
-        r"""append(vector_HypreParMatrix self, HypreParMatrix x)"""
+        r"""append(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::value_type x)"""
         return _std_vectors.vector_HypreParMatrix_append(self, x)
     append = _swig_new_instance_method(_std_vectors.vector_HypreParMatrix_append)
 
@@ -1345,42 +1298,42 @@ class vector_HypreParMatrix(object):
         __init__(vector_HypreParMatrix self) -> vector_HypreParMatrix
         __init__(vector_HypreParMatrix self, vector_HypreParMatrix other) -> vector_HypreParMatrix
         __init__(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::size_type size) -> vector_HypreParMatrix
-        __init__(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::size_type size, HypreParMatrix value) -> vector_HypreParMatrix
+        __init__(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::size_type size, std::vector< mfem::HypreParMatrix * >::value_type value) -> vector_HypreParMatrix
         """
         _std_vectors.vector_HypreParMatrix_swiginit(self, _std_vectors.new_vector_HypreParMatrix(*args))
 
     def push_back(self, x):
-        r"""push_back(vector_HypreParMatrix self, HypreParMatrix x)"""
+        r"""push_back(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::value_type x)"""
         return _std_vectors.vector_HypreParMatrix_push_back(self, x)
     push_back = _swig_new_instance_method(_std_vectors.vector_HypreParMatrix_push_back)
 
     def front(self):
-        r"""front(vector_HypreParMatrix self) -> HypreParMatrix"""
+        r"""front(vector_HypreParMatrix self) -> std::vector< mfem::HypreParMatrix * >::value_type"""
         return _std_vectors.vector_HypreParMatrix_front(self)
     front = _swig_new_instance_method(_std_vectors.vector_HypreParMatrix_front)
 
     def back(self):
-        r"""back(vector_HypreParMatrix self) -> HypreParMatrix"""
+        r"""back(vector_HypreParMatrix self) -> std::vector< mfem::HypreParMatrix * >::value_type"""
         return _std_vectors.vector_HypreParMatrix_back(self)
     back = _swig_new_instance_method(_std_vectors.vector_HypreParMatrix_back)
 
     def assign(self, n, x):
-        r"""assign(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::size_type n, HypreParMatrix x)"""
+        r"""assign(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::size_type n, std::vector< mfem::HypreParMatrix * >::value_type x)"""
         return _std_vectors.vector_HypreParMatrix_assign(self, n, x)
     assign = _swig_new_instance_method(_std_vectors.vector_HypreParMatrix_assign)
 
     def resize(self, *args):
         r"""
         resize(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::size_type new_size)
-        resize(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::size_type new_size, HypreParMatrix x)
+        resize(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::size_type new_size, std::vector< mfem::HypreParMatrix * >::value_type x)
         """
         return _std_vectors.vector_HypreParMatrix_resize(self, *args)
     resize = _swig_new_instance_method(_std_vectors.vector_HypreParMatrix_resize)
 
     def insert(self, *args):
         r"""
-        insert(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::iterator pos, HypreParMatrix x) -> std::vector< mfem::HypreParMatrix * >::iterator
-        insert(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::iterator pos, std::vector< mfem::HypreParMatrix * >::size_type n, HypreParMatrix x)
+        insert(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::iterator pos, std::vector< mfem::HypreParMatrix * >::value_type x) -> std::vector< mfem::HypreParMatrix * >::iterator
+        insert(vector_HypreParMatrix self, std::vector< mfem::HypreParMatrix * >::iterator pos, std::vector< mfem::HypreParMatrix * >::size_type n, std::vector< mfem::HypreParMatrix * >::value_type x)
         """
         return _std_vectors.vector_HypreParMatrix_insert(self, *args)
     insert = _swig_new_instance_method(_std_vectors.vector_HypreParMatrix_insert)

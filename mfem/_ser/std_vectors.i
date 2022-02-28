@@ -21,7 +21,8 @@ import_array();
 
 %include "exception.i"
 %import "array.i"
-%import "mesh.i"
+//%import "mesh.i"
+//%import "vector.i"
 
 %include "std_vector.i"
 %template(vector_int) std::vector<int>;
