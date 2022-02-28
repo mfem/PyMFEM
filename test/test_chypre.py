@@ -17,7 +17,7 @@ def run_test():
 
     def print_hypre(M, txt):
         for i in range(num_proc):
-            MPI.COMM_WORLD.Barrier()                              
+            MPI.COMM_WORLD.Barrier()
             if myid == i:
                 if myid == 0:
                     print(txt)
@@ -34,7 +34,10 @@ def run_test():
     m = m.tocsr()
     m = m*(myid+1)
 
-    M = ToHypreParCSR(m, assert_non_square_no_col_starts=False)
+    M = ToHypreParCSR(m, assert_non_square_no_col_starts=False, verbose=True)
+
+    print("memory class, memory type", mfem.GetHypreMemoryClass(), mfem.GetHypreMemoryType())
+    
     print_hypre(M, 'matrix M')
 
     

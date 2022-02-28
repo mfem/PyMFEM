@@ -76,6 +76,10 @@ use_strumpack = args.strumpack
 if (myid == 0):
     parser.print_options(args)
 
+device = mfem.Device('cpu')
+if myid == 0:
+    device.Print()
+
 # 3. Read the mesh from the given mesh file on all processors. We can handle
 #    triangular, quadrilateral, tetrahedral, hexahedral, surface and volume
 #    meshes with the same code
@@ -220,7 +224,6 @@ if (visualization):
                   ", Lambda = " + str(eigenvalues[i]))
 
         # convert eigenvector from HypreParVector to ParGridFunction
-        print(lobpcg.GetEigenvector(i))
         x.Assign(lobpcg.GetEigenvector(i))
 
         mode_sock.send_text("parallel " + str(num_procs) + " " + str(myid))

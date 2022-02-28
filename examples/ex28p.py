@@ -54,6 +54,9 @@ def run(order=1,
         visit=False,
         visualization=True):
 
+    device = mfem.Device('cpu')
+    if myid == 0: device.Print()
+
     # 2. Build a trapezoidal mesh with a single quadrilateral element, where
     #    'offset' determines how far off it is from a rectangle.
     mesh = build_trapezoid_mesh(offset)
@@ -209,6 +212,12 @@ def run(order=1,
 
 
 if __name__ == "__main__":
+    
+    if mfem.is_HYPRE_USING_CUDA():
+       print("\n".join(["", "As of mfem-4.3 and hypre-2.22.0 (July 2021) this example",
+                        "is NOT supported with the CUDA version of hypre.", ""]))
+       exit(255)
+    
     from mfem.common.arg_parser import ArgParser
 
     parser = ArgParser(

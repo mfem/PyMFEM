@@ -16,6 +16,11 @@ smyid = '{:0>6d}'.format(myid)
 verbose = (myid == 0)
 
 order = 1
+
+device = mfem.Device('cpu')
+if myid == 0:
+    device.Print()
+
 meshfile = expanduser(join(dirname(__file__), '..', 'data', 'star.mesh'))
 mesh = mfem.Mesh(meshfile, 1, 1)
 

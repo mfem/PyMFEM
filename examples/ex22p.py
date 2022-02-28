@@ -45,7 +45,8 @@ def run(mesh_file="",
     # 2. Enable hardware devices such as GPUs, and programming models such as
     #    CUDA, OCCA, RAJA and OpenMP based on command line options.
     device = mfem.Device(device)
-    device.Print()
+    if myid == 0:
+        device.Print()    
 
     # 3. Read the mesh from the given mesh file. We can handle triangular,
     #    quadrilateral, tetrahedral, hexahedral, surface and volume meshes

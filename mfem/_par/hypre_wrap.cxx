@@ -3376,6 +3376,20 @@ int sizeof_HYPRE_Int(){
 int sizeof_HYPRE_BigInt(){
     return sizeof(HYPRE_BigInt);
 }
+bool is_HYPRE_USING_CUDA(){ 
+    #ifdef HYPRE_USING_CUDA
+    return true;
+    #else
+    return false;
+    #endif
+}
+
+
+SWIGINTERNINLINE PyObject*
+  SWIG_From_bool  (bool value)
+{
+  return PyBool_FromLong(value ? 1 : 0);
+}
 
 
 SWIGINTERN int
@@ -4224,6 +4238,31 @@ SWIGINTERN PyObject *_wrap_sizeof_HYPRE_BigInt(PyObject *SWIGUNUSEDPARM(self), P
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_is_HYPRE_USING_CUDA(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "is_HYPRE_USING_CUDA", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (bool)is_HYPRE_USING_CUDA(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
   return NULL;
@@ -20926,6 +20965,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "sizeof_HYPRE_Int", _wrap_sizeof_HYPRE_Int, METH_NOARGS, "sizeof_HYPRE_Int() -> int"},
 	 { "sizeof_HYPRE_BigInt", _wrap_sizeof_HYPRE_BigInt, METH_NOARGS, "sizeof_HYPRE_BigInt() -> int"},
+	 { "is_HYPRE_USING_CUDA", _wrap_is_HYPRE_USING_CUDA, METH_NOARGS, "is_HYPRE_USING_CUDA() -> bool"},
 	 { "GetHypreMemoryClass", _wrap_GetHypreMemoryClass, METH_NOARGS, "GetHypreMemoryClass() -> mfem::MemoryClass"},
 	 { "GetHypreMemoryType", _wrap_GetHypreMemoryType, METH_NOARGS, "GetHypreMemoryType() -> mfem::MemoryType"},
 	 { "new_HypreParVector", _wrap_new_HypreParVector, METH_VARARGS, "\n"
@@ -21346,6 +21386,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "sizeof_HYPRE_Int", _wrap_sizeof_HYPRE_Int, METH_NOARGS, "sizeof_HYPRE_Int() -> int"},
 	 { "sizeof_HYPRE_BigInt", _wrap_sizeof_HYPRE_BigInt, METH_NOARGS, "sizeof_HYPRE_BigInt() -> int"},
+	 { "is_HYPRE_USING_CUDA", _wrap_is_HYPRE_USING_CUDA, METH_NOARGS, "is_HYPRE_USING_CUDA() -> bool"},
 	 { "GetHypreMemoryClass", _wrap_GetHypreMemoryClass, METH_NOARGS, "GetHypreMemoryClass() -> mfem::MemoryClass"},
 	 { "GetHypreMemoryType", _wrap_GetHypreMemoryType, METH_NOARGS, "GetHypreMemoryType() -> mfem::MemoryType"},
 	 { "new_HypreParVector", _wrap_new_HypreParVector, METH_VARARGS, "\n"

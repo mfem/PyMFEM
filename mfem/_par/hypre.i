@@ -51,6 +51,13 @@ int sizeof_HYPRE_Int(){
 int sizeof_HYPRE_BigInt(){
     return sizeof(HYPRE_BigInt);
 }
+bool is_HYPRE_USING_CUDA(){ 
+    #ifdef HYPRE_USING_CUDA
+    return true;
+    #else
+    return false;
+    #endif
+}
 %}
 
 /*

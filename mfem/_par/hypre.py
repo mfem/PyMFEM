@@ -101,6 +101,11 @@ def sizeof_HYPRE_BigInt():
     return _hypre.sizeof_HYPRE_BigInt()
 sizeof_HYPRE_BigInt = _hypre.sizeof_HYPRE_BigInt
 
+def is_HYPRE_USING_CUDA():
+    r"""is_HYPRE_USING_CUDA() -> bool"""
+    return _hypre.is_HYPRE_USING_CUDA()
+is_HYPRE_USING_CUDA = _hypre.is_HYPRE_USING_CUDA
+
 def GetHypreMemoryClass():
     r"""GetHypreMemoryClass() -> mfem::MemoryClass"""
     return _hypre.GetHypreMemoryClass()

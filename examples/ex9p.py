@@ -26,6 +26,10 @@ t_final = 10
 dt = 0.01
 vis_steps = 5
 
+device = mfem.Device('cpu')
+if myid == 0:
+    device.Print()
+
 # 3. Read the serial mesh from the given mesh file on all processors. We can
 #    handle geometrically periodic meshes in this code.
 meshfile = expanduser(join(path, 'data', 'periodic-hexagon.mesh'))

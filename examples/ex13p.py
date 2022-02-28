@@ -11,7 +11,11 @@ import sys
 import mfem.par as mfem
 from mfem.par import intArray, doubleArray
 from os.path import expanduser, join, dirname
+
 from mpi4py import MPI
+num_procs = MPI.COMM_WORLD.size
+myid = MPI.COMM_WORLD.rank
+
 import numpy as np
 from numpy import sin, cos, exp
 
@@ -20,6 +24,10 @@ par_ref_levels = 1
 order = 1
 nev = 5
 visualization = 1
+
+device = mfem.Device('cpu')
+if myid == 0:
+    device.Print()
 
 num_procs = MPI.COMM_WORLD.size
 myid = MPI.COMM_WORLD.rank

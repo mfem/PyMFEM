@@ -88,6 +88,7 @@ metis_prefix = ''
 hypre_prefix = ''
 
 enable_cuda = False
+enable_cuda_hypre = False
 cuda_prefix = ''
 enable_pumi = False
 pumi_prefix = ''
@@ -424,7 +425,7 @@ def cmake_make_hypre():
                   'DCMAKE_INSTALL_PREFIX': hypre_prefix,
                   'DCMAKE_INSTALL_NAME_DIR': os.path.join(hypre_prefix, 'lib'), }
 
-    if enable_cuda:
+    if enable_cuda and enable_cuda_hypre:
         # in this case, settitng CMAKE_C_COMPILER
         # causes "mpi.h" not found error. For now, letting CMAKE
         # to find MPI
@@ -913,7 +914,7 @@ def configure_install(self):
     global mfems_prefix, mfemp_prefix, metis_prefix, hypre_prefix
     global cc_command, cxx_command, mpicc_command, mpicxx_command
     global metis_64
-    global enable_cuda, cuda_prefix
+    global enable_cuda, cuda_prefix, enable_cuda_hypre
     global enable_pumi, pumi_prefix
     global enable_strumpack, strumpack_prefix
     global enable_libceed, libceed_prefix, libceed_only
@@ -936,6 +937,7 @@ def configure_install(self):
     enable_pumi = bool(self.with_pumi)
     enable_strumpack = bool(self.with_strumpack)
     enable_cuda = bool(self.with_cuda)
+    enable_cuda_hypre = bool(self.with_cuda_hypre)
     enable_libceed = bool(self.with_libceed)
     libceed_only = bool(self.libceed_only)
     enable_gslib = bool(self.with_gslib)
@@ -1170,6 +1172,7 @@ class Install(_install):
         ('MPICXX=', None, 'mpic++ compiler'),
 
         ('with-cuda', None, 'enable cuda'),
+        ('with-cuda-hypre', None, 'enable cuda in hypre'),        
         ('with-metis64', None, 'use 64bit int in metis'),
         ('with-pumi', None, 'enable pumi (parallel only)'),
         ('pumi-prefix=', None, 'Specify locaiton of pumi'),
@@ -1202,6 +1205,7 @@ class Install(_install):
         self.hypre_prefix = ''
 
         self.with_cuda = False
+        self.with_cuda_hypre = False
         self.with_metis64 = False
 
         self.with_pumi = False

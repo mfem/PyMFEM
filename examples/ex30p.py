@@ -63,6 +63,9 @@ def run(nc_limit=1,
         osc_threshold=1e-3,
         nc_simplices=True):
 
+    device = mfem.Device('cpu')
+    if myid == 0: device.Print()
+
     mesh = mfem.Mesh(meshfile, 1, 1)
 
     if mesh.NURBSext:

@@ -21,4 +21,24 @@ import_array();
 DEPRECATED_METHOD(mfem::Device::GetMemoryType())
 DEPRECATED_METHOD(mfem::Device::GetMemoryClass())
 
+//  enforce that device class is created only once
+%pythoncode %{
+  singleton_device = None
+%}
+%feature("shadow") mfem::Device::__new__ %{
+    def __new__(cls, *args, **kwargs):
+        if globals()["singleton_device"] is None:  
+             instance =  super(Device, cls).__new__(cls)
+             globals()["singleton_device"] = instance
+        return globals()["singleton_device"]
+%}
+%pythonappend mfem::Device::Device %{
+  globals()["singleton_device"] = self
+%}
+
 %include "general/device.hpp"
+
+%extend mfem::Device{
+  // placeholder to create __new__
+  void __new__(void){}
+};

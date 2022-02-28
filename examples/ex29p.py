@@ -103,6 +103,9 @@ def run(order=3,
         mesh_order=3,
         visualization=True):
 
+    device = mfem.Device('cpu')
+    if myid == 0: device.Print()
+
     # 2. Construct a quadrilateral or triangular mesh with the topology of a
     #    cylindrical surface.
     mesh = GetMesh(mesh_type)
