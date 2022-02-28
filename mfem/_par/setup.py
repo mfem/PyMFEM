@@ -57,7 +57,7 @@ modules= ["io_stream", "vtk", "sort_pairs", "datacollection",
           "plinearform", "pbilinearform", "pnonlinearform",
           "hypre", "restriction", "prestriction",
           "fespacehierarchy", "multigrid", "constraints",
-          "transfer", "dist_solver", "schwarz", "std_vectors"]
+          "transfer", "dist_solver", "std_vectors"]
 
 if add_pumi != '':
     modules.append("pumi")
@@ -97,6 +97,10 @@ if add_cuda:
 
 if add_libceed:
     include_dirs.append(libceedinc)
+
+if add_suitesparse:
+    modules.append("schwarz")
+    
 if add_gslibp:
     include_dirs.append(gslibpinc)
     modules.append("gslib")

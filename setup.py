@@ -715,6 +715,7 @@ def write_setup_local():
               'add_strumpack': '',
               'add_cuda': '',
               'add_libceed': '',
+              'add_suitesparse': '',              
               'add_gslib': '',
               'add_gslibp': '',
               'add_gslibs': '',
@@ -745,6 +746,8 @@ def write_setup_local():
         add_extra('cuda')
     if enable_libceed:
         add_extra('libceed')
+    if enable_suitesparse:
+        add_extra('suitesparse')        
     # if enable_gslib:
     #    add_extra('gslibs')
     if enable_gslib:

@@ -232,7 +232,7 @@ class ParNCMesh(mfem._par.ncmesh.NCMesh):
     GetEntityGroupId = _swig_new_instance_method(_pncmesh.ParNCMesh_GetEntityGroupId)
 
     def GetGroup(self, id):
-        r"""GetGroup(ParNCMesh self, mfem::ParNCMesh::GroupId id) -> vector_int"""
+        r"""GetGroup(ParNCMesh self, mfem::ParNCMesh::GroupId id) -> mfem::ParNCMesh::CommGroup const &"""
         return _pncmesh.ParNCMesh_GetGroup(self, id)
     GetGroup = _swig_new_instance_method(_pncmesh.ParNCMesh_GetGroup)
 

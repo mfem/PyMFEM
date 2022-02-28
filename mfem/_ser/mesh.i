@@ -42,6 +42,8 @@ import_array();
 %import "sparsemat.i"
 %import "eltrans.i"
 %import "intrules.i"
+%import "std_vectors.i"
+
 %feature("notabstract") VectorFunctionCoefficient;
 %feature("notabstract") VectorConstantCoefficient;
 %import "coefficient.i"
