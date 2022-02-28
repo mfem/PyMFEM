@@ -44,7 +44,7 @@ $ python setup.py install --help
 (new) python -m pip install ./ --verbose --install-option="--mfem-branch=master" --install-option="--mfem-source=external/mfem" --install-option="--swig" --install-option="--with-parallel"
 
 * clean up all externals
-$ python3 setup.py clean --all-externals
+$ python setup.py clean --all-externals
 
 * choosing compiler
 $ python setup.py install --parallel --CC=xxx, --CXX=xxx, --MPICC=xxx, --MPICXX=xxx
@@ -54,24 +54,29 @@ $ python setup.py install --mfem-branch="mfem-4.3-dev"
 
 
 * cuda
-$ python3 setup.py install  --prefix=~/sandbox  --verbose --with-cuda
+$ python setup.py install  --prefix=~/sandbox  --verbose --with-cuda
 
+
+build is done in parallel
 * libceed
 ** download libceed and build
-$ python3 setup.py install  --with-libceed --libceed-only
+$ python setup.py install  --with-libceed --libceed-only
 
 ** download/build libceed and build mfem serial (to turn on CEED in MFEM)
-$ python3 setup.py install  --with-libceed --ext-only
+$ python setup.py install  --with-libceed --ext-only
 
 
 Note Cuda support is only partially tested. One may want to build it step-by-step.
 # build MFEM library with cuda
-$ python3 setup.py install  --prefix=~/sandbox  --verbose --ext-only --with-cuda (--with-parallel)
+$ python setup.py install  --prefix=~/sandbox  --verbose --ext-only --with-cuda (--with-parallel)
 # build Wrapper
-$ python3 setup.py install  --prefix=~/sandbox  --verbose --skip-ext --with-cuda
+$ python setup.py install  --prefix=~/sandbox  --verbose --skip-ext --with-cuda
 # One may need to regenerate wrapper
 $ touch mfem/*/*.i
-$ python3 setup.py install  --prefix=~/sandbox  --verbose --swig
+$ python setup.py install  --prefix=~/sandbox  --verbose --swig
+
+* Turn on everything...:D
+$ python setup.py install --with-parallel --with-cuda --with-libceed --with-gslib  --with-cuda-hypre
 
 
 

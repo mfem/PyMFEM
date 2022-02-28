@@ -208,7 +208,7 @@ def run(order=1,
         sol_sock.precision(8)
         sol_sock << "parallel " << num_procs << " " << myid << "\n"
         sol_sock << "solution\n" << mesh << x
-        sol_sock.flush
+        sol_sock.flush()
 
 
 if __name__ == "__main__":
