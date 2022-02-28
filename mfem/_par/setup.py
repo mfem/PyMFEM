@@ -57,7 +57,7 @@ modules= ["io_stream", "vtk", "sort_pairs", "datacollection",
           "plinearform", "pbilinearform", "pnonlinearform",
           "hypre", "restriction", "prestriction",
           "fespacehierarchy", "multigrid", "constraints",
-          "transfer", "dist_solver"]
+          "transfer", "dist_solver", "schwarz", "std_vectors"]
 
 if add_pumi != '':
     modules.append("pumi")
@@ -102,8 +102,13 @@ if add_gslibp:
     modules.append("gslib")
     sources["gslib"] = ["gslib_wrap.cxx"]
     proxy_names["gslib"] = "_gslib"
-    
 
+tpl_include = []    
+for x in mfemptpl.split(' '):
+    if x.startswith("-I"):
+        tpl_include.append(x[2:])
+include_dirs.extend(tpl_include)
+        
 import six
 if six.PY3:
     macros = [('TARGET_PY3', '1'), ('NPY_NO_DEPRECATED_API', 'NPY_1_7_API_VERSION')]

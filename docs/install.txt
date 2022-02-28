@@ -31,6 +31,8 @@ Use -help to see the full list.
 
 $ python setup.py install --help
 
+* build MFEM with suitesparse (only for parallel build)
+(old) $ python3 setup.py install --with-suitesparse --suitesparse-prefix='xxx' --with-parallel
 
 * building external (metis/hypre/mfem)
 (old) $ python3 setup.py install --prefix=~/sandbox --verbose --ext-only --with-parallel
