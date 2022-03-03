@@ -173,12 +173,12 @@ class Mesh(object):
 
     @staticmethod
     def MakePeriodic(orig_mesh, v2v):
-        r"""MakePeriodic(Mesh orig_mesh, std::vector< int,std::allocator< int > > const & v2v) -> Mesh"""
+        r"""MakePeriodic(Mesh orig_mesh, std::vector< int > const & v2v) -> Mesh"""
         return _mesh.Mesh_MakePeriodic(orig_mesh, v2v)
     MakePeriodic = _swig_new_static_method(_mesh.Mesh_MakePeriodic)
 
     def CreatePeriodicVertexMapping(self, translations, tol=1e-8):
-        r"""CreatePeriodicVertexMapping(Mesh self, std::vector< mfem::Vector,std::allocator< mfem::Vector > > const & translations, double tol=1e-8) -> std::vector< int,std::allocator< int > >"""
+        r"""CreatePeriodicVertexMapping(Mesh self, std::vector< mfem::Vector > const & translations, double tol=1e-8) -> std::vector< int >"""
         return _mesh.Mesh_CreatePeriodicVertexMapping(self, translations, tol)
     CreatePeriodicVertexMapping = _swig_new_instance_method(_mesh.Mesh_CreatePeriodicVertexMapping)
 
@@ -1260,6 +1260,11 @@ class Mesh(object):
         return _mesh.Mesh_GetScaledJacobian(self, i, sd)
     GetScaledJacobian = _swig_new_instance_method(_mesh.Mesh_GetScaledJacobian)
 
+    def IsElementOnPlaneArray(self, a, b, c, d):
+        r"""IsElementOnPlaneArray(Mesh self, double a, double b, double c, double d) -> PyObject *"""
+        return _mesh.Mesh_IsElementOnPlaneArray(self, a, b, c, d)
+    IsElementOnPlaneArray = _swig_new_instance_method(_mesh.Mesh_IsElementOnPlaneArray)
+
     def PrintInfo(self, *args):
         r"""
         PrintInfo(Mesh self, std::ostream & out=out)
@@ -1351,7 +1356,7 @@ def Mesh_MakeSimplicial(orig_mesh):
 Mesh_MakeSimplicial = _mesh.Mesh_MakeSimplicial
 
 def Mesh_MakePeriodic(orig_mesh, v2v):
-    r"""Mesh_MakePeriodic(Mesh orig_mesh, std::vector< int,std::allocator< int > > const & v2v) -> Mesh"""
+    r"""Mesh_MakePeriodic(Mesh orig_mesh, std::vector< int > const & v2v) -> Mesh"""
     return _mesh.Mesh_MakePeriodic(orig_mesh, v2v)
 Mesh_MakePeriodic = _mesh.Mesh_MakePeriodic
 

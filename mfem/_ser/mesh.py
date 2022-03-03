@@ -1258,6 +1258,11 @@ class Mesh(object):
         return _mesh.Mesh_GetScaledJacobian(self, i, sd)
     GetScaledJacobian = _swig_new_instance_method(_mesh.Mesh_GetScaledJacobian)
 
+    def IsElementOnPlaneArray(self, a, b, c, d):
+        r"""IsElementOnPlaneArray(Mesh self, double a, double b, double c, double d) -> PyObject *"""
+        return _mesh.Mesh_IsElementOnPlaneArray(self, a, b, c, d)
+    IsElementOnPlaneArray = _swig_new_instance_method(_mesh.Mesh_IsElementOnPlaneArray)
+
     def PrintInfo(self, *args):
         r"""
         PrintInfo(Mesh self, std::ostream & out=out)
