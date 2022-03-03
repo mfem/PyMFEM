@@ -100,6 +100,8 @@ if add_libceed:
 
 if add_suitesparse:
     modules.append("schwarz")
+    sources["schwarz"] = ["schwarz_wrap.cxx"]
+    proxy_names["schwarz"] = "_schwarz"
     
 if add_gslibp:
     include_dirs.append(gslibpinc)
