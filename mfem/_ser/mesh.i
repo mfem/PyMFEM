@@ -526,7 +526,7 @@ namespace mfem{
      }
      return array;
    }
-   
+
   double GetScaledJacobian(int i, int sd=2)
   {
     // compute scaled Jacobian
@@ -565,6 +565,40 @@ namespace mfem{
 	attr = fmin(sJ, attr);
       }
     return attr;
+  }
+
+  PyObject *IsElementOnPlaneArray(double a, double b, double c, double d){
+    /*
+    return Boolean numpy array to indicate which element is on the plane
+    defined by ax + by + cz + d = 0
+    */
+    mfem::Array<int> inodes;
+    int nele = self -> GetNE();
+    double *ptx;
+    npy_intp dims[] = {nele};
+    PyObject *array = PyArray_SimpleNew(1, dims, NPY_BOOL);
+    if (self -> SpaceDimension() != 3  || self -> Dimension() != 3){
+ 	 PyErr_SetString(PyExc_TypeError, "dim and sdim must be 3");
+         return (PyObject *) NULL;
+    }
+    bool *x    = (bool *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
+    bool check, check2;
+    
+    for (int k = 0; k < self -> GetNE(); k++){
+      self-> GetElementVertices(k, inodes);
+      ptx = self -> GetVertex(inodes[0]);    
+      check = (ptx[0]*a + ptx[1]*b + ptx[2]*c + d >=0);
+      x[k] = false;
+      for (int j=0; j < inodes.Size(); j++){
+	ptx = self -> GetVertex(inodes[j]);
+        check2 = (ptx[0]*a + ptx[1]*b + ptx[2]*c + d >=0);
+        if (check != check2){
+	  x[k] = true;
+	  break;
+	}
+      }
+    }
+    return array;
   }
   };  // end of extend
 }     // end of namespace
