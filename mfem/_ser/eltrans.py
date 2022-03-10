@@ -160,6 +160,11 @@ class ElementTransformation(object):
         return _eltrans.ElementTransformation_AdjugateJacobian(self)
     AdjugateJacobian = _swig_new_instance_method(_eltrans.ElementTransformation_AdjugateJacobian)
 
+    def TransposeAdjugateJacobian(self):
+        r"""TransposeAdjugateJacobian(ElementTransformation self) -> DenseMatrix"""
+        return _eltrans.ElementTransformation_TransposeAdjugateJacobian(self)
+    TransposeAdjugateJacobian = _swig_new_instance_method(_eltrans.ElementTransformation_TransposeAdjugateJacobian)
+
     def InverseJacobian(self):
         r"""InverseJacobian(ElementTransformation self) -> DenseMatrix"""
         return _eltrans.ElementTransformation_InverseJacobian(self)

@@ -2041,6 +2041,11 @@ class ConvectionIntegrator(BilinearFormIntegrator):
         return _bilininteg.ConvectionIntegrator_AddMultPA(self, arg2, arg3)
     AddMultPA = _swig_new_instance_method(_bilininteg.ConvectionIntegrator_AddMultPA)
 
+    def AddMultTransposePA(self, x, y):
+        r"""AddMultTransposePA(ConvectionIntegrator self, Vector x, Vector y)"""
+        return _bilininteg.ConvectionIntegrator_AddMultTransposePA(self, x, y)
+    AddMultTransposePA = _swig_new_instance_method(_bilininteg.ConvectionIntegrator_AddMultTransposePA)
+
     @staticmethod
     def GetRule(*args):
         r"""
@@ -2136,9 +2141,9 @@ class VectorMassIntegrator(BilinearFormIntegrator):
         return _bilininteg.VectorMassIntegrator_GetVDim(self)
     GetVDim = _swig_new_instance_method(_bilininteg.VectorMassIntegrator_GetVDim)
 
-    def SetVDim(self, vdim):
-        r"""SetVDim(VectorMassIntegrator self, int vdim)"""
-        return _bilininteg.VectorMassIntegrator_SetVDim(self, vdim)
+    def SetVDim(self, vdim_):
+        r"""SetVDim(VectorMassIntegrator self, int vdim_)"""
+        return _bilininteg.VectorMassIntegrator_SetVDim(self, vdim_)
     SetVDim = _swig_new_instance_method(_bilininteg.VectorMassIntegrator_SetVDim)
 
     def AssembleElementMatrix(self, el, Trans, elmat):

@@ -536,6 +536,11 @@ class LBFGSSolver(NewtonSolver):
         """
         _solvers.LBFGSSolver_swiginit(self, _solvers.new_LBFGSSolver(*args))
 
+    def SetOperator(self, op):
+        r"""SetOperator(LBFGSSolver self, Operator op)"""
+        return _solvers.LBFGSSolver_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_solvers.LBFGSSolver_SetOperator)
+
     def SetHistorySize(self, dim):
         r"""SetHistorySize(LBFGSSolver self, int dim)"""
         return _solvers.LBFGSSolver_SetHistorySize(self, dim)
@@ -778,6 +783,78 @@ class ResidualBCMonitor(IterativeSolverMonitor):
 
 # Register ResidualBCMonitor in _solvers:
 _solvers.ResidualBCMonitor_swigregister(ResidualBCMonitor)
+
+class UMFPackSolver(mfem._par.operators.Solver):
+    r"""Proxy of C++ mfem::UMFPackSolver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    Control = property(_solvers.UMFPackSolver_Control_get, _solvers.UMFPackSolver_Control_set, doc=r"""Control : a(UMFPACK_CONTROL).double""")
+    Info = property(_solvers.UMFPackSolver_Info_get, _solvers.UMFPackSolver_Info_set, doc=r"""Info : a(UMFPACK_INFO).double""")
+
+    def __init__(self, *args):
+        r"""
+        __init__(UMFPackSolver self, bool use_long_ints_=False) -> UMFPackSolver
+        __init__(UMFPackSolver self, SparseMatrix A, bool use_long_ints_=False) -> UMFPackSolver
+        """
+        _solvers.UMFPackSolver_swiginit(self, _solvers.new_UMFPackSolver(*args))
+
+    def SetOperator(self, op):
+        r"""SetOperator(UMFPackSolver self, Operator op)"""
+        return _solvers.UMFPackSolver_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_solvers.UMFPackSolver_SetOperator)
+
+    def SetPrintLevel(self, print_lvl):
+        r"""SetPrintLevel(UMFPackSolver self, int print_lvl)"""
+        return _solvers.UMFPackSolver_SetPrintLevel(self, print_lvl)
+    SetPrintLevel = _swig_new_instance_method(_solvers.UMFPackSolver_SetPrintLevel)
+
+    def Mult(self, b, x):
+        r"""Mult(UMFPackSolver self, Vector b, Vector x)"""
+        return _solvers.UMFPackSolver_Mult(self, b, x)
+    Mult = _swig_new_instance_method(_solvers.UMFPackSolver_Mult)
+
+    def MultTranspose(self, b, x):
+        r"""MultTranspose(UMFPackSolver self, Vector b, Vector x)"""
+        return _solvers.UMFPackSolver_MultTranspose(self, b, x)
+    MultTranspose = _swig_new_instance_method(_solvers.UMFPackSolver_MultTranspose)
+    __swig_destroy__ = _solvers.delete_UMFPackSolver
+
+# Register UMFPackSolver in _solvers:
+_solvers.UMFPackSolver_swigregister(UMFPackSolver)
+
+class KLUSolver(mfem._par.operators.Solver):
+    r"""Proxy of C++ mfem::KLUSolver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        r"""
+        __init__(KLUSolver self) -> KLUSolver
+        __init__(KLUSolver self, SparseMatrix A) -> KLUSolver
+        """
+        _solvers.KLUSolver_swiginit(self, _solvers.new_KLUSolver(*args))
+
+    def SetOperator(self, op):
+        r"""SetOperator(KLUSolver self, Operator op)"""
+        return _solvers.KLUSolver_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_solvers.KLUSolver_SetOperator)
+
+    def Mult(self, b, x):
+        r"""Mult(KLUSolver self, Vector b, Vector x)"""
+        return _solvers.KLUSolver_Mult(self, b, x)
+    Mult = _swig_new_instance_method(_solvers.KLUSolver_Mult)
+
+    def MultTranspose(self, b, x):
+        r"""MultTranspose(KLUSolver self, Vector b, Vector x)"""
+        return _solvers.KLUSolver_MultTranspose(self, b, x)
+    MultTranspose = _swig_new_instance_method(_solvers.KLUSolver_MultTranspose)
+    __swig_destroy__ = _solvers.delete_KLUSolver
+    Common = property(_solvers.KLUSolver_Common_get, _solvers.KLUSolver_Common_set, doc=r"""Common : klu_common""")
+
+# Register KLUSolver in _solvers:
+_solvers.KLUSolver_swigregister(KLUSolver)
 
 class DirectSubBlockSolver(mfem._par.operators.Solver):
     r"""Proxy of C++ mfem::DirectSubBlockSolver class."""

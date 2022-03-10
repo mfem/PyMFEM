@@ -9973,6 +9973,66 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_LBFGSSolver_SetOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::LBFGSSolver *arg1 = (mfem::LBFGSSolver *) 0 ;
+  mfem::Operator *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"op",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:LBFGSSolver_SetOperator", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__LBFGSSolver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LBFGSSolver_SetOperator" "', argument " "1"" of type '" "mfem::LBFGSSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::LBFGSSolver * >(argp1);
+  // default conversion
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    // try to treat it as OperatorPtr
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__OperatorHandle, 0 |  0 );
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LBFGSSolver_SetOperator" "', argument "
+        "2"" of type '" "mfem::Operator const &""'");
+    } else {
+      arg2 = (mfem::Operator *)(((mfem::OperatorHandle const *)argp2)->Ptr());
+    }
+  }else{
+    arg2 = (mfem::Operator *)(argp2);    
+  }
+  {
+    try {
+      (arg1)->SetOperator((mfem::Operator const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_LBFGSSolver_SetHistorySize(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::LBFGSSolver *arg1 = (mfem::LBFGSSolver *) 0 ;
@@ -13542,6 +13602,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "NewtonSolver_swigregister", NewtonSolver_swigregister, METH_O, NULL},
 	 { "NewtonSolver_swiginit", NewtonSolver_swiginit, METH_VARARGS, NULL},
 	 { "new_LBFGSSolver", _wrap_new_LBFGSSolver, METH_NOARGS, "new_LBFGSSolver() -> LBFGSSolver"},
+	 { "LBFGSSolver_SetOperator", (PyCFunction)(void(*)(void))_wrap_LBFGSSolver_SetOperator, METH_VARARGS|METH_KEYWORDS, "LBFGSSolver_SetOperator(LBFGSSolver self, Operator op)"},
 	 { "LBFGSSolver_SetHistorySize", (PyCFunction)(void(*)(void))_wrap_LBFGSSolver_SetHistorySize, METH_VARARGS|METH_KEYWORDS, "LBFGSSolver_SetHistorySize(LBFGSSolver self, int dim)"},
 	 { "LBFGSSolver_Mult", (PyCFunction)(void(*)(void))_wrap_LBFGSSolver_Mult, METH_VARARGS|METH_KEYWORDS, "LBFGSSolver_Mult(LBFGSSolver self, Vector b, Vector x)"},
 	 { "LBFGSSolver_SetPreconditioner", (PyCFunction)(void(*)(void))_wrap_LBFGSSolver_SetPreconditioner, METH_VARARGS|METH_KEYWORDS, "LBFGSSolver_SetPreconditioner(LBFGSSolver self, Solver pr)"},
@@ -13739,6 +13800,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "NewtonSolver_swigregister", NewtonSolver_swigregister, METH_O, NULL},
 	 { "NewtonSolver_swiginit", NewtonSolver_swiginit, METH_VARARGS, NULL},
 	 { "new_LBFGSSolver", _wrap_new_LBFGSSolver, METH_NOARGS, "new_LBFGSSolver() -> LBFGSSolver"},
+	 { "LBFGSSolver_SetOperator", (PyCFunction)(void(*)(void))_wrap_LBFGSSolver_SetOperator, METH_VARARGS|METH_KEYWORDS, "SetOperator(LBFGSSolver self, Operator op)"},
 	 { "LBFGSSolver_SetHistorySize", (PyCFunction)(void(*)(void))_wrap_LBFGSSolver_SetHistorySize, METH_VARARGS|METH_KEYWORDS, "SetHistorySize(LBFGSSolver self, int dim)"},
 	 { "LBFGSSolver_Mult", (PyCFunction)(void(*)(void))_wrap_LBFGSSolver_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(LBFGSSolver self, Vector b, Vector x)"},
 	 { "LBFGSSolver_SetPreconditioner", (PyCFunction)(void(*)(void))_wrap_LBFGSSolver_SetPreconditioner, METH_VARARGS|METH_KEYWORDS, "SetPreconditioner(LBFGSSolver self, Solver pr)"},

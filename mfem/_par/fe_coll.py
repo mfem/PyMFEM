@@ -1545,9 +1545,9 @@ class Local_FECollection(FiniteElementCollection):
         return _fe_coll.Local_FECollection_DofForGeometry(self, GeomType_)
     DofForGeometry = _swig_new_instance_method(_fe_coll.Local_FECollection_DofForGeometry)
 
-    def DofOrderForOrientation(self, GeomType, Or):
-        r"""DofOrderForOrientation(Local_FECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
-        return _fe_coll.Local_FECollection_DofOrderForOrientation(self, GeomType, Or)
+    def DofOrderForOrientation(self, GeomType_, Or):
+        r"""DofOrderForOrientation(Local_FECollection self, mfem::Geometry::Type GeomType_, int Or) -> int const *"""
+        return _fe_coll.Local_FECollection_DofOrderForOrientation(self, GeomType_, Or)
     DofOrderForOrientation = _swig_new_instance_method(_fe_coll.Local_FECollection_DofOrderForOrientation)
 
     def Name(self):

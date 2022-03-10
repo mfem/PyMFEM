@@ -424,5 +424,73 @@ class ND_SegmentElement(mfem._ser.fe_base.VectorTensorFiniteElement):
 # Register ND_SegmentElement in _fe_nd:
 _fe_nd.ND_SegmentElement_swigregister(ND_SegmentElement)
 
+class ND_WedgeElement(mfem._ser.fe_base.VectorFiniteElement):
+    r"""Proxy of C++ mfem::ND_WedgeElement class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        r"""__init__(ND_WedgeElement self, int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> ND_WedgeElement"""
+        _fe_nd.ND_WedgeElement_swiginit(self, _fe_nd.new_ND_WedgeElement(*args, **kwargs))
+
+    def CalcVShape(self, *args):
+        r"""
+        CalcVShape(ND_WedgeElement self, IntegrationPoint ip, DenseMatrix shape)
+        CalcVShape(ND_WedgeElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
+        """
+        return _fe_nd.ND_WedgeElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe_nd.ND_WedgeElement_CalcVShape)
+
+    def CalcCurlShape(self, ip, curl_shape):
+        r"""CalcCurlShape(ND_WedgeElement self, IntegrationPoint ip, DenseMatrix curl_shape)"""
+        return _fe_nd.ND_WedgeElement_CalcCurlShape(self, ip, curl_shape)
+    CalcCurlShape = _swig_new_instance_method(_fe_nd.ND_WedgeElement_CalcCurlShape)
+
+    def GetLocalInterpolation(self, Trans, I):
+        r"""GetLocalInterpolation(ND_WedgeElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
+        return _fe_nd.ND_WedgeElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe_nd.ND_WedgeElement_GetLocalInterpolation)
+
+    def GetLocalRestriction(self, Trans, R):
+        r"""GetLocalRestriction(ND_WedgeElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
+        return _fe_nd.ND_WedgeElement_GetLocalRestriction(self, Trans, R)
+    GetLocalRestriction = _swig_new_instance_method(_fe_nd.ND_WedgeElement_GetLocalRestriction)
+
+    def GetTransferMatrix(self, fe, Trans, I):
+        r"""GetTransferMatrix(ND_WedgeElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
+        return _fe_nd.ND_WedgeElement_GetTransferMatrix(self, fe, Trans, I)
+    GetTransferMatrix = _swig_new_instance_method(_fe_nd.ND_WedgeElement_GetTransferMatrix)
+
+    def ProjectMatrixCoefficient(self, mc, T, dofs):
+        r"""ProjectMatrixCoefficient(ND_WedgeElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"""
+        return _fe_nd.ND_WedgeElement_ProjectMatrixCoefficient(self, mc, T, dofs)
+    ProjectMatrixCoefficient = _swig_new_instance_method(_fe_nd.ND_WedgeElement_ProjectMatrixCoefficient)
+
+    def Project(self, *args):
+        r"""
+        Project(ND_WedgeElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(ND_WedgeElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(ND_WedgeElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
+        Project(ND_WedgeElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(ND_WedgeElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
+        """
+        return _fe_nd.ND_WedgeElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe_nd.ND_WedgeElement_Project)
+
+    def ProjectGrad(self, fe, Trans, grad):
+        r"""ProjectGrad(ND_WedgeElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"""
+        return _fe_nd.ND_WedgeElement_ProjectGrad(self, fe, Trans, grad)
+    ProjectGrad = _swig_new_instance_method(_fe_nd.ND_WedgeElement_ProjectGrad)
+
+    def ProjectCurl(self, fe, Trans, curl):
+        r"""ProjectCurl(ND_WedgeElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"""
+        return _fe_nd.ND_WedgeElement_ProjectCurl(self, fe, Trans, curl)
+    ProjectCurl = _swig_new_instance_method(_fe_nd.ND_WedgeElement_ProjectCurl)
+    __swig_destroy__ = _fe_nd.delete_ND_WedgeElement
+
+# Register ND_WedgeElement in _fe_nd:
+_fe_nd.ND_WedgeElement_swigregister(ND_WedgeElement)
+
 
 

@@ -431,6 +431,11 @@ class Mesh(object):
         return _mesh.Mesh_GetNumFaces(self)
     GetNumFaces = _swig_new_instance_method(_mesh.Mesh_GetNumFaces)
 
+    def GetNumFacesWithGhost(self):
+        r"""GetNumFacesWithGhost(Mesh self) -> int"""
+        return _mesh.Mesh_GetNumFacesWithGhost(self)
+    GetNumFacesWithGhost = _swig_new_instance_method(_mesh.Mesh_GetNumFacesWithGhost)
+
     def GetNFbyType(self, type):
         r"""GetNFbyType(Mesh self, mfem::FaceType type) -> int"""
         return _mesh.Mesh_GetNFbyType(self, type)
@@ -493,6 +498,11 @@ class Mesh(object):
         r"""GetElementData(Mesh self, int geom, intArray elem_vtx, intArray attr)"""
         return _mesh.Mesh_GetElementData(self, geom, elem_vtx, attr)
     GetElementData = _swig_new_instance_method(_mesh.Mesh_GetElementData)
+
+    def HasBoundaryElements(self):
+        r"""HasBoundaryElements(Mesh self) -> bool"""
+        return _mesh.Mesh_HasBoundaryElements(self)
+    HasBoundaryElements = _swig_new_instance_method(_mesh.Mesh_HasBoundaryElements)
 
     def GetBdrElementData(self, geom, bdr_elem_vtx, bdr_attr):
         r"""GetBdrElementData(Mesh self, int geom, intArray bdr_elem_vtx, intArray bdr_attr)"""
@@ -754,6 +764,49 @@ class Mesh(object):
         r"""FaceIsInterior(Mesh self, int FaceNo) -> bool"""
         return _mesh.Mesh_FaceIsInterior(self, FaceNo)
     FaceIsInterior = _swig_new_instance_method(_mesh.Mesh_FaceIsInterior)
+    FaceTopology_Boundary = _mesh.Mesh_FaceTopology_Boundary
+    
+    FaceTopology_Conforming = _mesh.Mesh_FaceTopology_Conforming
+    
+    FaceTopology_Nonconforming = _mesh.Mesh_FaceTopology_Nonconforming
+    
+    FaceTopology_NA = _mesh.Mesh_FaceTopology_NA
+    
+    ElementLocation_Local = _mesh.Mesh_ElementLocation_Local
+    
+    ElementLocation_FaceNbr = _mesh.Mesh_ElementLocation_FaceNbr
+    
+    ElementLocation_NA = _mesh.Mesh_ElementLocation_NA
+    
+    ElementConformity_Coincident = _mesh.Mesh_ElementConformity_Coincident
+    
+    ElementConformity_Superset = _mesh.Mesh_ElementConformity_Superset
+    
+    ElementConformity_Subset = _mesh.Mesh_ElementConformity_Subset
+    
+    ElementConformity_NA = _mesh.Mesh_ElementConformity_NA
+    
+    FaceInfoTag_Boundary = _mesh.Mesh_FaceInfoTag_Boundary
+    
+    FaceInfoTag_LocalConforming = _mesh.Mesh_FaceInfoTag_LocalConforming
+    
+    FaceInfoTag_LocalSlaveNonconforming = _mesh.Mesh_FaceInfoTag_LocalSlaveNonconforming
+    
+    FaceInfoTag_SharedConforming = _mesh.Mesh_FaceInfoTag_SharedConforming
+    
+    FaceInfoTag_SharedSlaveNonconforming = _mesh.Mesh_FaceInfoTag_SharedSlaveNonconforming
+    
+    FaceInfoTag_MasterNonconforming = _mesh.Mesh_FaceInfoTag_MasterNonconforming
+    
+    FaceInfoTag_GhostSlave = _mesh.Mesh_FaceInfoTag_GhostSlave
+    
+    FaceInfoTag_GhostMaster = _mesh.Mesh_FaceInfoTag_GhostMaster
+    
+
+    def GetFaceInformation(self, f):
+        r"""GetFaceInformation(Mesh self, int f) -> mfem::Mesh::FaceInformation"""
+        return _mesh.Mesh_GetFaceInformation(self, f)
+    GetFaceInformation = _swig_new_instance_method(_mesh.Mesh_GetFaceInformation)
 
     def GetFaceElements(self, Face):
         from mfem.par import intp  
@@ -1062,7 +1115,7 @@ class Mesh(object):
 
     def PrintVTU(self, *args):
         r"""
-        PrintVTU(Mesh self, std::ostream & out, int ref=1, mfem::VTKFormat format=ASCII, bool high_order_output=False, int compression_level=0, bool bdr_elements=False)
+        PrintVTU(Mesh self, std::ostream & os, int ref=1, mfem::VTKFormat format=ASCII, bool high_order_output=False, int compression_level=0, bool bdr_elements=False)
         PrintVTU(Mesh self, std::string fname, mfem::VTKFormat format=ASCII, bool high_order_output=False, int compression_level=0, bool bdr=False)
         """
         return _mesh.Mesh_PrintVTU(self, *args)
@@ -1078,9 +1131,9 @@ class Mesh(object):
         return _mesh.Mesh_GetElementColoring(self, colors, el0)
     GetElementColoring = _swig_new_instance_method(_mesh.Mesh_GetElementColoring)
 
-    def PrintWithPartitioning(self, partitioning, out, elem_attr=0):
-        r"""PrintWithPartitioning(Mesh self, int * partitioning, std::ostream & out, int elem_attr=0)"""
-        return _mesh.Mesh_PrintWithPartitioning(self, partitioning, out, elem_attr)
+    def PrintWithPartitioning(self, partitioning, os, elem_attr=0):
+        r"""PrintWithPartitioning(Mesh self, int * partitioning, std::ostream & os, int elem_attr=0)"""
+        return _mesh.Mesh_PrintWithPartitioning(self, partitioning, os, elem_attr)
     PrintWithPartitioning = _swig_new_instance_method(_mesh.Mesh_PrintWithPartitioning)
 
     def PrintElementsWithPartitioning(self, partitioning, out, interior_faces=0):
@@ -1160,7 +1213,7 @@ class Mesh(object):
     PrintElementsByGeometry = _swig_new_static_method(_mesh.Mesh_PrintElementsByGeometry)
 
     def PrintCharacteristics(self, *args, **kwargs):
-        r"""PrintCharacteristics(Mesh self, Vector Vh=None, Vector Vk=None, std::ostream & out=out)"""
+        r"""PrintCharacteristics(Mesh self, Vector Vh=None, Vector Vk=None, std::ostream & os=out)"""
         return _mesh.Mesh_PrintCharacteristics(self, *args, **kwargs)
     PrintCharacteristics = _swig_new_instance_method(_mesh.Mesh_PrintCharacteristics)
 
@@ -1268,7 +1321,7 @@ class Mesh(object):
 
     def PrintInfo(self, *args):
         r"""
-        PrintInfo(Mesh self, std::ostream & out=out)
+        PrintInfo(Mesh self, std::ostream & os=out)
         PrintInfo(Mesh self, char const * file, int precision=16)
         """
         return _mesh.Mesh_PrintInfo(self, *args)
@@ -1281,7 +1334,7 @@ class Mesh(object):
 
     def Print(self, *args):
         r"""
-        Print(Mesh self, std::ostream & out=out)
+        Print(Mesh self, std::ostream & os=out)
         Print(Mesh self, char const * file, int precision=16)
         """
         return _mesh.Mesh_Print(self, *args)
@@ -1294,7 +1347,7 @@ class Mesh(object):
 
     def PrintXG(self, *args):
         r"""
-        PrintXG(Mesh self, std::ostream & out=out)
+        PrintXG(Mesh self, std::ostream & os=out)
         PrintXG(Mesh self, char const * file, int precision=16)
         """
         return _mesh.Mesh_PrintXG(self, *args)
@@ -1307,8 +1360,8 @@ class Mesh(object):
 
     def PrintVTK(self, *args):
         r"""
-        PrintVTK(Mesh self, std::ostream & out)
-        PrintVTK(Mesh self, std::ostream & out, int ref, int field_data=0)
+        PrintVTK(Mesh self, std::ostream & os)
+        PrintVTK(Mesh self, std::ostream & os, int ref, int field_data=0)
         PrintVTK(Mesh self, char const * file, int precision=16)
         """
         return _mesh.Mesh_PrintVTK(self, *args)
@@ -1371,16 +1424,6 @@ def Mesh_PrintElementsByGeometry(dim, num_elems_by_geom, out):
     return _mesh.Mesh_PrintElementsByGeometry(dim, num_elems_by_geom, out)
 Mesh_PrintElementsByGeometry = _mesh.Mesh_PrintElementsByGeometry
 
-
-def __lshift__(*args):
-    r"""
-    __lshift__(std::ostream & os, SparseMatrix mat) -> std::ostream
-    __lshift__(std::ostream & out, GridFunction sol) -> std::ostream
-    __lshift__(std::ostream & out, QuadratureFunction qf) -> std::ostream
-    __lshift__(std::ostream & out, Mesh mesh) -> std::ostream &
-    """
-    return _mesh.__lshift__(*args)
-__lshift__ = _mesh.__lshift__
 class GeometricFactors(object):
     r"""Proxy of C++ mfem::GeometricFactors class."""
 
@@ -1482,5 +1525,16 @@ def ShiftRight(a, b, c):
     r"""ShiftRight(int & a, int & b, int & c)"""
     return _mesh.ShiftRight(a, b, c)
 ShiftRight = _mesh.ShiftRight
+
+def __lshift__(*args):
+    r"""
+    __lshift__(std::ostream & os, SparseMatrix mat) -> std::ostream
+    __lshift__(std::ostream & out, GridFunction sol) -> std::ostream
+    __lshift__(std::ostream & out, QuadratureFunction qf) -> std::ostream
+    __lshift__(std::ostream & out, Mesh mesh) -> std::ostream
+    __lshift__(std::ostream & os, mfem::Mesh::FaceInformation const & info) -> std::ostream &
+    """
+    return _mesh.__lshift__(*args)
+__lshift__ = _mesh.__lshift__
 
 
