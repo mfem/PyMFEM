@@ -2701,13 +2701,14 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_mfem__ArrayT_mfem__SparseMatrix_p_t swig_types[6]
 #define SWIGTYPE_p_mfem__BlockMatrix swig_types[7]
 #define SWIGTYPE_p_mfem__DenseMatrix swig_types[8]
-#define SWIGTYPE_p_mfem__STable swig_types[9]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[10]
-#define SWIGTYPE_p_mfem__Table swig_types[11]
-#define SWIGTYPE_p_mfem__Vector swig_types[12]
-#define SWIGTYPE_p_std__ostream swig_types[13]
-static swig_type_info *swig_types[15];
-static swig_module_info swig_module = {swig_types, 14, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__OutStream swig_types[9]
+#define SWIGTYPE_p_mfem__STable swig_types[10]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[11]
+#define SWIGTYPE_p_mfem__Table swig_types[12]
+#define SWIGTYPE_p_mfem__Vector swig_types[13]
+#define SWIGTYPE_p_std__ostream swig_types[14]
+static swig_type_info *swig_types[16];
+static swig_module_info swig_module = {swig_types, 15, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5341,6 +5342,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 static void *_p_mfem__STableTo_p_mfem__Table(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Table *)  ((mfem::STable *) x));
 }
+static void *_p_mfem__OutStreamTo_p_std__ostream(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((std::ostream *)  ((mfem::OutStream *) x));
+}
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_bool = {"_p_bool", "bool *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
@@ -5355,6 +5359,7 @@ static swig_type_info _swigt__p_mfem__Table = {"_p_mfem__Table", "mfem::Table *"
 static swig_type_info _swigt__p_mfem__STable = {"_p_mfem__STable", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__ostream = {"_p_std__ostream", "std::ostream *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__OutStream = {"_p_mfem__OutStream", 0, 0, 0, 0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_PyMFEM__wFILE,
@@ -5366,6 +5371,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__ArrayT_mfem__SparseMatrix_p_t,
   &_swigt__p_mfem__BlockMatrix,
   &_swigt__p_mfem__DenseMatrix,
+  &_swigt__p_mfem__OutStream,
   &_swigt__p_mfem__STable,
   &_swigt__p_mfem__SparseMatrix,
   &_swigt__p_mfem__Table,
@@ -5386,7 +5392,8 @@ static swig_cast_info _swigc__p_mfem__SparseMatrix[] = {  {&_swigt__p_mfem__Spar
 static swig_cast_info _swigc__p_mfem__STable[] = {{&_swigt__p_mfem__STable, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Table[] = {  {&_swigt__p_mfem__STable, _p_mfem__STableTo_p_mfem__Table, 0, 0},  {&_swigt__p_mfem__Table, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__ostream[] = {  {&_swigt__p_std__ostream, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__OutStream[] = {{&_swigt__p_mfem__OutStream, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__ostream[] = {  {&_swigt__p_std__ostream, 0, 0, 0},  {&_swigt__p_mfem__OutStream, _p_mfem__OutStreamTo_p_std__ostream, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_PyMFEM__wFILE,
@@ -5398,6 +5405,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__ArrayT_mfem__SparseMatrix_p_t,
   _swigc__p_mfem__BlockMatrix,
   _swigc__p_mfem__DenseMatrix,
+  _swigc__p_mfem__OutStream,
   _swigc__p_mfem__STable,
   _swigc__p_mfem__SparseMatrix,
   _swigc__p_mfem__Table,

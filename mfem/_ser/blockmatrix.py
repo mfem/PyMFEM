@@ -72,6 +72,7 @@ import mfem._ser.vector
 import mfem._ser.matrix
 import mfem._ser.operators
 import mfem._ser.sparsemat
+import mfem._ser.globals
 import mfem._ser.densemat
 class BlockMatrix(mfem._ser.matrix.AbstractSparseMatrix):
     r"""Proxy of C++ mfem::BlockMatrix class."""

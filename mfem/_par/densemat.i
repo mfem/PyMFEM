@@ -36,6 +36,18 @@ OSTREAM_TYPEMAP(std::ostream&)
 %ignore mfem::DenseMatrix::operator=;
 %ignore mfem::DenseTensor::operator=;
 
+%pythonprepend mfem::DenseMatrix::DenseMatrix %{
+from numpy import ndarray, ascontiguousarray
+is_ndarray = False
+if len(args) == 1 and isinstance(args[0], ndarray):
+   is_ndarray = True
+%}
+
+%pythonappend mfem::DenseMatrix::DenseMatrix %{
+if is_ndarray:
+   self.Assign(args[0])
+%}
+
 %pythonprepend mfem::DenseMatrix::Assign %{
 from numpy import ndarray, ascontiguousarray
 keep_link = False
@@ -112,6 +124,29 @@ def __getitem__(self, *args):
 %include "linalg/densemat.hpp"
 
 %extend mfem::DenseMatrix {
+  DenseMatrix(PyObject* numpymat){
+    /* note that these error does not raise error in python
+       type check is actually done in wrapper layer */
+    if (!PyArray_Check(numpymat)){
+       PyErr_SetString(PyExc_ValueError, "Input data must be ndarray");
+       return NULL;
+    }
+    PyArrayObject *numpymat0 = reinterpret_cast<PyArrayObject *>(numpymat);
+    int typ = PyArray_TYPE(numpymat0);
+    if (typ != NPY_DOUBLE){
+        PyErr_SetString(PyExc_ValueError, "Input data must be float64");
+	return NULL;
+    }
+    int ndim = PyArray_NDIM(numpymat0);
+    if (ndim != 2){
+      PyErr_SetString(PyExc_ValueError, "Input data NDIM must be 2");
+      return NULL;
+    }
+    npy_intp *shape = PyArray_DIMS(numpymat0);    
+
+    return  new mfem::DenseMatrix(shape[0], shape[1]);
+  }
+  
   void Assign(const double v) {
     (* self) = v;
   }

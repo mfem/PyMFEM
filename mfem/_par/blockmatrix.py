@@ -72,6 +72,7 @@ import mfem._par.vector
 import mfem._par.matrix
 import mfem._par.operators
 import mfem._par.sparsemat
+import mfem._par.globals
 import mfem._par.densemat
 class BlockMatrix(mfem._par.matrix.AbstractSparseMatrix):
     r"""Proxy of C++ mfem::BlockMatrix class."""
@@ -227,7 +228,7 @@ class BlockMatrix(mfem._par.matrix.AbstractSparseMatrix):
 
     def PrintMatlab(self, *args):
         r"""
-        PrintMatlab(BlockMatrix self, std::ostream & os=mfem::out)
+        PrintMatlab(BlockMatrix self, std::ostream & os=out)
         PrintMatlab(BlockMatrix self, char const * file, int precision=16)
         """
         return _blockmatrix.BlockMatrix_PrintMatlab(self, *args)

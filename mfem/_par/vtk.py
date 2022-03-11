@@ -209,4 +209,9 @@ def VTKByteOrder():
     return _vtk.VTKByteOrder()
 VTKByteOrder = _vtk.VTKByteOrder
 
+def WriteBase64WithSizeAndClear(out, buf, compression_level):
+    r"""WriteBase64WithSizeAndClear(std::ostream & out, std::vector< char > & buf, int compression_level)"""
+    return _vtk.WriteBase64WithSizeAndClear(out, buf, compression_level)
+WriteBase64WithSizeAndClear = _vtk.WriteBase64WithSizeAndClear
+
 

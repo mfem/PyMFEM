@@ -22,6 +22,7 @@ import_array();
 %include "exception.i"
 %import "mem_manager.i"
 
+%import "globals.i"
 %import "array.i"
 %import "vector.i"
 %import "operators.i"
@@ -29,7 +30,7 @@ import_array();
 %import "densemat.i"
 %import "../common/ignore_common_functions.i"
 %import "../common/exception.i"
-
+%import "globals.i"
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
 

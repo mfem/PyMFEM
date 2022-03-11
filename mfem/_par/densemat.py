@@ -77,17 +77,6 @@ class DenseMatrix(mfem._par.matrix.Matrix):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
-        r"""
-        __init__(DenseMatrix self) -> DenseMatrix
-        __init__(DenseMatrix self, DenseMatrix arg2) -> DenseMatrix
-        __init__(DenseMatrix self, int s) -> DenseMatrix
-        __init__(DenseMatrix self, int m, int n) -> DenseMatrix
-        __init__(DenseMatrix self, DenseMatrix mat, char ch) -> DenseMatrix
-        __init__(DenseMatrix self, double * d, int h, int w) -> DenseMatrix
-        """
-        _densemat.DenseMatrix_swiginit(self, _densemat.new_DenseMatrix(*args))
-
     def UseExternalData(self, d, h, w):
         r"""UseExternalData(DenseMatrix self, double * d, int h, int w)"""
         return _densemat.DenseMatrix_UseExternalData(self, d, h, w)
@@ -572,6 +561,31 @@ class DenseMatrix(mfem._par.matrix.Matrix):
         return _densemat.DenseMatrix_Swap(self, other)
     Swap = _swig_new_instance_method(_densemat.DenseMatrix_Swap)
     __swig_destroy__ = _densemat.delete_DenseMatrix
+
+    def __init__(self, *args):
+        r"""
+        __init__(DenseMatrix self) -> DenseMatrix
+        __init__(DenseMatrix self, DenseMatrix arg2) -> DenseMatrix
+        __init__(DenseMatrix self, int s) -> DenseMatrix
+        __init__(DenseMatrix self, int m, int n) -> DenseMatrix
+        __init__(DenseMatrix self, DenseMatrix mat, char ch) -> DenseMatrix
+        __init__(DenseMatrix self, double * d, int h, int w) -> DenseMatrix
+        __init__(DenseMatrix self, PyObject * numpymat) -> DenseMatrix
+        """
+
+        from numpy import ndarray, ascontiguousarray
+        is_ndarray = False
+        if len(args) == 1 and isinstance(args[0], ndarray):
+           is_ndarray = True
+
+
+        _densemat.DenseMatrix_swiginit(self, _densemat.new_DenseMatrix(*args))
+
+        if is_ndarray:
+           self.Assign(args[0])
+
+
+
 
     def Assign(self, *args):
         r"""
