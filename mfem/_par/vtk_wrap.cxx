@@ -3880,7 +3880,7 @@ SWIGINTERN PyObject *_wrap_WriteVTKEncodedCompressed(PyObject *SWIGUNUSEDPARM(se
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   char * kwnames[] = {
-    (char *)"out",  (char *)"bytes",  (char *)"nbytes",  (char *)"compression_level",  NULL 
+    (char *)"os",  (char *)"bytes",  (char *)"nbytes",  (char *)"compression_level",  NULL 
   };
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:WriteVTKEncodedCompressed", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
@@ -4119,7 +4119,7 @@ SWIGINTERN PyObject *_wrap_WriteBase64WithSizeAndClear(PyObject *SWIGUNUSEDPARM(
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   char * kwnames[] = {
-    (char *)"out",  (char *)"buf",  (char *)"compression_level",  NULL 
+    (char *)"os",  (char *)"buf",  (char *)"compression_level",  NULL 
   };
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:WriteBase64WithSizeAndClear", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
@@ -4276,10 +4276,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "VTKGeometry_swigregister", VTKGeometry_swigregister, METH_O, NULL},
 	 { "VTKGeometry_swiginit", VTKGeometry_swiginit, METH_VARARGS, NULL},
 	 { "CreateVTKElementConnectivity", (PyCFunction)(void(*)(void))_wrap_CreateVTKElementConnectivity, METH_VARARGS|METH_KEYWORDS, "CreateVTKElementConnectivity(intArray con, mfem::Geometry::Type geom, int ref)"},
-	 { "WriteVTKEncodedCompressed", (PyCFunction)(void(*)(void))_wrap_WriteVTKEncodedCompressed, METH_VARARGS|METH_KEYWORDS, "WriteVTKEncodedCompressed(std::ostream & out, void const * bytes, uint32_t nbytes, int compression_level)"},
+	 { "WriteVTKEncodedCompressed", (PyCFunction)(void(*)(void))_wrap_WriteVTKEncodedCompressed, METH_VARARGS|METH_KEYWORDS, "WriteVTKEncodedCompressed(std::ostream & os, void const * bytes, uint32_t nbytes, int compression_level)"},
 	 { "BarycentricToVTKTriangle", (PyCFunction)(void(*)(void))_wrap_BarycentricToVTKTriangle, METH_VARARGS|METH_KEYWORDS, "BarycentricToVTKTriangle(int * b, int ref) -> int"},
 	 { "VTKByteOrder", _wrap_VTKByteOrder, METH_NOARGS, "VTKByteOrder() -> char const *"},
-	 { "WriteBase64WithSizeAndClear", (PyCFunction)(void(*)(void))_wrap_WriteBase64WithSizeAndClear, METH_VARARGS|METH_KEYWORDS, "WriteBase64WithSizeAndClear(std::ostream & out, std::vector< char > & buf, int compression_level)"},
+	 { "WriteBase64WithSizeAndClear", (PyCFunction)(void(*)(void))_wrap_WriteBase64WithSizeAndClear, METH_VARARGS|METH_KEYWORDS, "WriteBase64WithSizeAndClear(std::ostream & os, std::vector< char > & buf, int compression_level)"},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -4297,10 +4297,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "VTKGeometry_swigregister", VTKGeometry_swigregister, METH_O, NULL},
 	 { "VTKGeometry_swiginit", VTKGeometry_swiginit, METH_VARARGS, NULL},
 	 { "CreateVTKElementConnectivity", (PyCFunction)(void(*)(void))_wrap_CreateVTKElementConnectivity, METH_VARARGS|METH_KEYWORDS, "CreateVTKElementConnectivity(intArray con, mfem::Geometry::Type geom, int ref)"},
-	 { "WriteVTKEncodedCompressed", (PyCFunction)(void(*)(void))_wrap_WriteVTKEncodedCompressed, METH_VARARGS|METH_KEYWORDS, "WriteVTKEncodedCompressed(std::ostream & out, void const * bytes, uint32_t nbytes, int compression_level)"},
+	 { "WriteVTKEncodedCompressed", (PyCFunction)(void(*)(void))_wrap_WriteVTKEncodedCompressed, METH_VARARGS|METH_KEYWORDS, "WriteVTKEncodedCompressed(std::ostream & os, void const * bytes, uint32_t nbytes, int compression_level)"},
 	 { "BarycentricToVTKTriangle", (PyCFunction)(void(*)(void))_wrap_BarycentricToVTKTriangle, METH_VARARGS|METH_KEYWORDS, "BarycentricToVTKTriangle(int * b, int ref) -> int"},
 	 { "VTKByteOrder", _wrap_VTKByteOrder, METH_NOARGS, "VTKByteOrder() -> char const *"},
-	 { "WriteBase64WithSizeAndClear", (PyCFunction)(void(*)(void))_wrap_WriteBase64WithSizeAndClear, METH_VARARGS|METH_KEYWORDS, "WriteBase64WithSizeAndClear(std::ostream & out, std::vector< char > & buf, int compression_level)"},
+	 { "WriteBase64WithSizeAndClear", (PyCFunction)(void(*)(void))_wrap_WriteBase64WithSizeAndClear, METH_VARARGS|METH_KEYWORDS, "WriteBase64WithSizeAndClear(std::ostream & os, std::vector< char > & buf, int compression_level)"},
 	 { NULL, NULL, 0, NULL }
 };
 

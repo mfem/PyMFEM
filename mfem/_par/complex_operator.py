@@ -205,6 +205,50 @@ class ComplexSparseMatrix(ComplexOperator):
 # Register ComplexSparseMatrix in _complex_operator:
 _complex_operator.ComplexSparseMatrix_swigregister(ComplexSparseMatrix)
 
+class ComplexUMFPackSolver(mfem._par.operators.Solver):
+    r"""Proxy of C++ mfem::ComplexUMFPackSolver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    Control = property(_complex_operator.ComplexUMFPackSolver_Control_get, _complex_operator.ComplexUMFPackSolver_Control_set, doc=r"""Control : a(UMFPACK_CONTROL).double""")
+    Info = property(_complex_operator.ComplexUMFPackSolver_Info_get, _complex_operator.ComplexUMFPackSolver_Info_set, doc=r"""Info : a(UMFPACK_INFO).double""")
+
+    def __init__(self, *args):
+        r"""
+        __init__(ComplexUMFPackSolver self, bool use_long_ints_=False, bool transa_=False) -> ComplexUMFPackSolver
+        __init__(ComplexUMFPackSolver self, ComplexSparseMatrix A, bool use_long_ints_=False, bool transa_=False) -> ComplexUMFPackSolver
+        """
+        _complex_operator.ComplexUMFPackSolver_swiginit(self, _complex_operator.new_ComplexUMFPackSolver(*args))
+
+    def SetOperator(self, op):
+        r"""SetOperator(ComplexUMFPackSolver self, Operator op)"""
+        return _complex_operator.ComplexUMFPackSolver_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_complex_operator.ComplexUMFPackSolver_SetOperator)
+
+    def SetPrintLevel(self, print_lvl):
+        r"""SetPrintLevel(ComplexUMFPackSolver self, int print_lvl)"""
+        return _complex_operator.ComplexUMFPackSolver_SetPrintLevel(self, print_lvl)
+    SetPrintLevel = _swig_new_instance_method(_complex_operator.ComplexUMFPackSolver_SetPrintLevel)
+
+    def SetTransposeSolve(self, transa_):
+        r"""SetTransposeSolve(ComplexUMFPackSolver self, bool transa_)"""
+        return _complex_operator.ComplexUMFPackSolver_SetTransposeSolve(self, transa_)
+    SetTransposeSolve = _swig_new_instance_method(_complex_operator.ComplexUMFPackSolver_SetTransposeSolve)
+
+    def Mult(self, b, x):
+        r"""Mult(ComplexUMFPackSolver self, Vector b, Vector x)"""
+        return _complex_operator.ComplexUMFPackSolver_Mult(self, b, x)
+    Mult = _swig_new_instance_method(_complex_operator.ComplexUMFPackSolver_Mult)
+
+    def MultTranspose(self, b, x):
+        r"""MultTranspose(ComplexUMFPackSolver self, Vector b, Vector x)"""
+        return _complex_operator.ComplexUMFPackSolver_MultTranspose(self, b, x)
+    MultTranspose = _swig_new_instance_method(_complex_operator.ComplexUMFPackSolver_MultTranspose)
+    __swig_destroy__ = _complex_operator.delete_ComplexUMFPackSolver
+
+# Register ComplexUMFPackSolver in _complex_operator:
+_complex_operator.ComplexUMFPackSolver_swigregister(ComplexUMFPackSolver)
+
 class ComplexHypreParMatrix(ComplexOperator):
     r"""Proxy of C++ mfem::ComplexHypreParMatrix class."""
 

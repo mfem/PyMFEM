@@ -863,6 +863,11 @@ class NodalTensorFiniteElement(NodalFiniteElement, TensorBasisElement):
         return _fe_base.NodalTensorFiniteElement_GetDofToQuad(self, ir, mode)
     GetDofToQuad = _swig_new_instance_method(_fe_base.NodalTensorFiniteElement_GetDofToQuad)
 
+    def SetMapType(self, map_type_):
+        r"""SetMapType(NodalTensorFiniteElement self, int const map_type_)"""
+        return _fe_base.NodalTensorFiniteElement_SetMapType(self, map_type_)
+    SetMapType = _swig_new_instance_method(_fe_base.NodalTensorFiniteElement_SetMapType)
+
     def GetTransferMatrix(self, fe, Trans, I):
         r"""GetTransferMatrix(NodalTensorFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe_base.NodalTensorFiniteElement_GetTransferMatrix(self, fe, Trans, I)

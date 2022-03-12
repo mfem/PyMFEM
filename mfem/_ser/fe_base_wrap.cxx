@@ -10807,6 +10807,56 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_NodalTensorFiniteElement_SetMapType(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::NodalTensorFiniteElement *arg1 = (mfem::NodalTensorFiniteElement *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"map_type_",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:NodalTensorFiniteElement_SetMapType", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NodalTensorFiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NodalTensorFiniteElement_SetMapType" "', argument " "1"" of type '" "mfem::NodalTensorFiniteElement *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NodalTensorFiniteElement * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      (arg1)->SetMapType(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_NodalTensorFiniteElement_GetTransferMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::NodalTensorFiniteElement *arg1 = (mfem::NodalTensorFiniteElement *) 0 ;
@@ -11644,6 +11694,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "TensorBasisElement_swigregister", TensorBasisElement_swigregister, METH_O, NULL},
 	 { "TensorBasisElement_swiginit", TensorBasisElement_swiginit, METH_VARARGS, NULL},
 	 { "NodalTensorFiniteElement_GetDofToQuad", (PyCFunction)(void(*)(void))_wrap_NodalTensorFiniteElement_GetDofToQuad, METH_VARARGS|METH_KEYWORDS, "NodalTensorFiniteElement_GetDofToQuad(NodalTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"},
+	 { "NodalTensorFiniteElement_SetMapType", (PyCFunction)(void(*)(void))_wrap_NodalTensorFiniteElement_SetMapType, METH_VARARGS|METH_KEYWORDS, "NodalTensorFiniteElement_SetMapType(NodalTensorFiniteElement self, int const map_type_)"},
 	 { "NodalTensorFiniteElement_GetTransferMatrix", (PyCFunction)(void(*)(void))_wrap_NodalTensorFiniteElement_GetTransferMatrix, METH_VARARGS|METH_KEYWORDS, "NodalTensorFiniteElement_GetTransferMatrix(NodalTensorFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
 	 { "delete_NodalTensorFiniteElement", _wrap_delete_NodalTensorFiniteElement, METH_O, "delete_NodalTensorFiniteElement(NodalTensorFiniteElement self)"},
 	 { "NodalTensorFiniteElement_swigregister", NodalTensorFiniteElement_swigregister, METH_O, NULL},
@@ -11817,6 +11868,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "TensorBasisElement_swigregister", TensorBasisElement_swigregister, METH_O, NULL},
 	 { "TensorBasisElement_swiginit", TensorBasisElement_swiginit, METH_VARARGS, NULL},
 	 { "NodalTensorFiniteElement_GetDofToQuad", (PyCFunction)(void(*)(void))_wrap_NodalTensorFiniteElement_GetDofToQuad, METH_VARARGS|METH_KEYWORDS, "GetDofToQuad(NodalTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"},
+	 { "NodalTensorFiniteElement_SetMapType", (PyCFunction)(void(*)(void))_wrap_NodalTensorFiniteElement_SetMapType, METH_VARARGS|METH_KEYWORDS, "SetMapType(NodalTensorFiniteElement self, int const map_type_)"},
 	 { "NodalTensorFiniteElement_GetTransferMatrix", (PyCFunction)(void(*)(void))_wrap_NodalTensorFiniteElement_GetTransferMatrix, METH_VARARGS|METH_KEYWORDS, "GetTransferMatrix(NodalTensorFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
 	 { "delete_NodalTensorFiniteElement", _wrap_delete_NodalTensorFiniteElement, METH_O, "delete_NodalTensorFiniteElement(NodalTensorFiniteElement self)"},
 	 { "NodalTensorFiniteElement_swigregister", NodalTensorFiniteElement_swigregister, METH_O, NULL},

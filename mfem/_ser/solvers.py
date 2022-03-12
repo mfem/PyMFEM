@@ -499,6 +499,11 @@ class LBFGSSolver(NewtonSolver):
         r"""__init__(LBFGSSolver self) -> LBFGSSolver"""
         _solvers.LBFGSSolver_swiginit(self, _solvers.new_LBFGSSolver())
 
+    def SetOperator(self, op):
+        r"""SetOperator(LBFGSSolver self, Operator op)"""
+        return _solvers.LBFGSSolver_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_solvers.LBFGSSolver_SetOperator)
+
     def SetHistorySize(self, dim):
         r"""SetHistorySize(LBFGSSolver self, int dim)"""
         return _solvers.LBFGSSolver_SetHistorySize(self, dim)

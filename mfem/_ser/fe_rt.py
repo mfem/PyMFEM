@@ -361,5 +361,68 @@ class RT_TetrahedronElement(mfem._ser.fe_base.VectorFiniteElement):
 # Register RT_TetrahedronElement in _fe_rt:
 _fe_rt.RT_TetrahedronElement_swigregister(RT_TetrahedronElement)
 
+class RT_WedgeElement(mfem._ser.fe_base.VectorFiniteElement):
+    r"""Proxy of C++ mfem::RT_WedgeElement class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, p):
+        r"""__init__(RT_WedgeElement self, int const p) -> RT_WedgeElement"""
+        _fe_rt.RT_WedgeElement_swiginit(self, _fe_rt.new_RT_WedgeElement(p))
+
+    def CalcVShape(self, *args):
+        r"""
+        CalcVShape(RT_WedgeElement self, IntegrationPoint ip, DenseMatrix shape)
+        CalcVShape(RT_WedgeElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
+        """
+        return _fe_rt.RT_WedgeElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe_rt.RT_WedgeElement_CalcVShape)
+
+    def CalcDivShape(self, ip, divshape):
+        r"""CalcDivShape(RT_WedgeElement self, IntegrationPoint ip, Vector divshape)"""
+        return _fe_rt.RT_WedgeElement_CalcDivShape(self, ip, divshape)
+    CalcDivShape = _swig_new_instance_method(_fe_rt.RT_WedgeElement_CalcDivShape)
+
+    def GetLocalInterpolation(self, Trans, I):
+        r"""GetLocalInterpolation(RT_WedgeElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
+        return _fe_rt.RT_WedgeElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe_rt.RT_WedgeElement_GetLocalInterpolation)
+
+    def GetLocalRestriction(self, Trans, R):
+        r"""GetLocalRestriction(RT_WedgeElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
+        return _fe_rt.RT_WedgeElement_GetLocalRestriction(self, Trans, R)
+    GetLocalRestriction = _swig_new_instance_method(_fe_rt.RT_WedgeElement_GetLocalRestriction)
+
+    def GetTransferMatrix(self, fe, Trans, I):
+        r"""GetTransferMatrix(RT_WedgeElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
+        return _fe_rt.RT_WedgeElement_GetTransferMatrix(self, fe, Trans, I)
+    GetTransferMatrix = _swig_new_instance_method(_fe_rt.RT_WedgeElement_GetTransferMatrix)
+
+    def ProjectMatrixCoefficient(self, mc, T, dofs):
+        r"""ProjectMatrixCoefficient(RT_WedgeElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"""
+        return _fe_rt.RT_WedgeElement_ProjectMatrixCoefficient(self, mc, T, dofs)
+    ProjectMatrixCoefficient = _swig_new_instance_method(_fe_rt.RT_WedgeElement_ProjectMatrixCoefficient)
+
+    def Project(self, *args):
+        r"""
+        Project(RT_WedgeElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(RT_WedgeElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(RT_WedgeElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
+        Project(RT_WedgeElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(RT_WedgeElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
+        """
+        return _fe_rt.RT_WedgeElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe_rt.RT_WedgeElement_Project)
+
+    def ProjectCurl(self, fe, Trans, curl):
+        r"""ProjectCurl(RT_WedgeElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"""
+        return _fe_rt.RT_WedgeElement_ProjectCurl(self, fe, Trans, curl)
+    ProjectCurl = _swig_new_instance_method(_fe_rt.RT_WedgeElement_ProjectCurl)
+    __swig_destroy__ = _fe_rt.delete_RT_WedgeElement
+
+# Register RT_WedgeElement in _fe_rt:
+_fe_rt.RT_WedgeElement_swigregister(RT_WedgeElement)
+
 
 

@@ -167,6 +167,11 @@ class ParMesh(mfem._par.mesh.Mesh):
         return _pmesh.ParMesh_SetAttributes(self)
     SetAttributes = _swig_new_instance_method(_pmesh.ParMesh_SetAttributes)
 
+    def HasBoundaryElements(self):
+        r"""HasBoundaryElements(ParMesh self) -> bool"""
+        return _pmesh.ParMesh_HasBoundaryElements(self)
+    HasBoundaryElements = _swig_new_instance_method(_pmesh.ParMesh_HasBoundaryElements)
+
     def GetComm(self):
         r"""GetComm(ParMesh self) -> MPI_Comm"""
         return _pmesh.ParMesh_GetComm(self)
@@ -324,10 +329,20 @@ class ParMesh(mfem._par.mesh.Mesh):
         return _pmesh.ParMesh_GetFaceToAllElementTable(self)
     GetFaceToAllElementTable = _swig_new_instance_method(_pmesh.ParMesh_GetFaceToAllElementTable)
 
+    def GetFaceElementTransformations(self, FaceNo, mask=31):
+        r"""GetFaceElementTransformations(ParMesh self, int FaceNo, int mask=31) -> FaceElementTransformations"""
+        return _pmesh.ParMesh_GetFaceElementTransformations(self, FaceNo, mask)
+    GetFaceElementTransformations = _swig_new_instance_method(_pmesh.ParMesh_GetFaceElementTransformations)
+
     def GetSharedFaceTransformations(self, sf, fill2=True):
         r"""GetSharedFaceTransformations(ParMesh self, int sf, bool fill2=True) -> FaceElementTransformations"""
         return _pmesh.ParMesh_GetSharedFaceTransformations(self, sf, fill2)
     GetSharedFaceTransformations = _swig_new_instance_method(_pmesh.ParMesh_GetSharedFaceTransformations)
+
+    def GetSharedFaceTransformationsByLocalIndex(self, FaceNo, fill2=True):
+        r"""GetSharedFaceTransformationsByLocalIndex(ParMesh self, int FaceNo, bool fill2=True) -> FaceElementTransformations"""
+        return _pmesh.ParMesh_GetSharedFaceTransformationsByLocalIndex(self, FaceNo, fill2)
+    GetSharedFaceTransformationsByLocalIndex = _swig_new_instance_method(_pmesh.ParMesh_GetSharedFaceTransformationsByLocalIndex)
 
     def GetFaceNbrElementTransformation(self, i):
         r"""GetFaceNbrElementTransformation(ParMesh self, int i) -> ElementTransformation"""
@@ -348,6 +363,11 @@ class ParMesh(mfem._par.mesh.Mesh):
         r"""GetSharedFace(ParMesh self, int sface) -> int"""
         return _pmesh.ParMesh_GetSharedFace(self, sface)
     GetSharedFace = _swig_new_instance_method(_pmesh.ParMesh_GetSharedFace)
+
+    def GetNFbyType(self, type):
+        r"""GetNFbyType(ParMesh self, mfem::FaceType type) -> int"""
+        return _pmesh.ParMesh_GetNFbyType(self, type)
+    GetNFbyType = _swig_new_instance_method(_pmesh.ParMesh_GetNFbyType)
 
     def ReorientTetMesh(self):
         r"""ReorientTetMesh(ParMesh self)"""

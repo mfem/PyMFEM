@@ -263,9 +263,9 @@ class ThresholdRefiner(MeshOperator):
         return _mesh_operators.ThresholdRefiner_PreferConformingRefinement(self)
     PreferConformingRefinement = _swig_new_instance_method(_mesh_operators.ThresholdRefiner_PreferConformingRefinement)
 
-    def SetNCLimit(self, nc_limit):
-        r"""SetNCLimit(ThresholdRefiner self, int nc_limit)"""
-        return _mesh_operators.ThresholdRefiner_SetNCLimit(self, nc_limit)
+    def SetNCLimit(self, nc_limit_):
+        r"""SetNCLimit(ThresholdRefiner self, int nc_limit_)"""
+        return _mesh_operators.ThresholdRefiner_SetNCLimit(self, nc_limit_)
     SetNCLimit = _swig_new_instance_method(_mesh_operators.ThresholdRefiner_SetNCLimit)
 
     def GetNumMarkedElements(self):
@@ -302,14 +302,14 @@ class ThresholdDerefiner(MeshOperator):
         return _mesh_operators.ThresholdDerefiner_SetThreshold(self, thresh)
     SetThreshold = _swig_new_instance_method(_mesh_operators.ThresholdDerefiner_SetThreshold)
 
-    def SetOp(self, op):
-        r"""SetOp(ThresholdDerefiner self, int op)"""
-        return _mesh_operators.ThresholdDerefiner_SetOp(self, op)
+    def SetOp(self, oper):
+        r"""SetOp(ThresholdDerefiner self, int oper)"""
+        return _mesh_operators.ThresholdDerefiner_SetOp(self, oper)
     SetOp = _swig_new_instance_method(_mesh_operators.ThresholdDerefiner_SetOp)
 
-    def SetNCLimit(self, nc_limit):
-        r"""SetNCLimit(ThresholdDerefiner self, int nc_limit)"""
-        return _mesh_operators.ThresholdDerefiner_SetNCLimit(self, nc_limit)
+    def SetNCLimit(self, nc_limit_):
+        r"""SetNCLimit(ThresholdDerefiner self, int nc_limit_)"""
+        return _mesh_operators.ThresholdDerefiner_SetNCLimit(self, nc_limit_)
     SetNCLimit = _swig_new_instance_method(_mesh_operators.ThresholdDerefiner_SetNCLimit)
 
     def Reset(self):

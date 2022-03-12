@@ -46,7 +46,7 @@ repo_releases = {  # "mfem": "https://github.com/mfem/mfem/archive/v4.3.tar.gz",
     "gslib": "https://github.com/Nek5000/gslib/archive/refs/tags/v1.0.7.tar.gz"}
 
 repos = {"mfem": "https://github.com/mfem/mfem.git", }
-repos_sha = {"mfem": "c6425db3da406d1053606a627774fcf2479be658"}
+repos_sha = {"mfem": "2ac3b1f12edd90fb794cf14b745626c9997b3e53"}
 
 rootdir = os.path.abspath(os.path.dirname(__file__))
 extdir = os.path.join(rootdir, 'external')

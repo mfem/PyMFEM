@@ -752,6 +752,7 @@ def __lshift__(*args):
     r"""
     __lshift__(std::ostream & os, SparseMatrix mat) -> std::ostream
     __lshift__(std::ostream & out, Mesh mesh) -> std::ostream
+    __lshift__(std::ostream & os, mfem::Mesh::FaceInformation const & info) -> std::ostream
     __lshift__(std::ostream & out, GridFunction sol) -> std::ostream
     __lshift__(std::ostream & out, QuadratureFunction qf) -> std::ostream &
     """
