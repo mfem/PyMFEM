@@ -498,6 +498,11 @@ class Mesh(object):
         return _mesh.Mesh_GetElementData(self, geom, elem_vtx, attr)
     GetElementData = _swig_new_instance_method(_mesh.Mesh_GetElementData)
 
+    def HasBoundaryElements(self):
+        r"""HasBoundaryElements(Mesh self) -> bool"""
+        return _mesh.Mesh_HasBoundaryElements(self)
+    HasBoundaryElements = _swig_new_instance_method(_mesh.Mesh_HasBoundaryElements)
+
     def GetBdrElementData(self, geom, bdr_elem_vtx, bdr_attr):
         r"""GetBdrElementData(Mesh self, int geom, intArray bdr_elem_vtx, intArray bdr_attr)"""
         return _mesh.Mesh_GetBdrElementData(self, geom, bdr_elem_vtx, bdr_attr)

@@ -3117,55 +3117,61 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__MatrixInverse swig_types[17]
 #define SWIGTYPE_p_mfem__ND_HexahedronElement swig_types[18]
 #define SWIGTYPE_p_mfem__ND_QuadrilateralElement swig_types[19]
-#define SWIGTYPE_p_mfem__ND_SegmentElement swig_types[20]
-#define SWIGTYPE_p_mfem__ND_TetrahedronElement swig_types[21]
-#define SWIGTYPE_p_mfem__ND_TriangleElement swig_types[22]
-#define SWIGTYPE_p_mfem__ND_WedgeElement swig_types[23]
-#define SWIGTYPE_p_mfem__NodalFiniteElement swig_types[24]
-#define SWIGTYPE_p_mfem__NodalTensorFiniteElement swig_types[25]
-#define SWIGTYPE_p_mfem__Operator swig_types[26]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[27]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[28]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[29]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[30]
-#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[31]
-#define SWIGTYPE_p_mfem__ScalarFiniteElement swig_types[32]
-#define SWIGTYPE_p_mfem__ScaledOperator swig_types[33]
-#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[34]
-#define SWIGTYPE_p_mfem__Solver swig_types[35]
-#define SWIGTYPE_p_mfem__TensorBasisElement swig_types[36]
-#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[37]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[38]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[39]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[40]
-#define SWIGTYPE_p_mfem__Vector swig_types[41]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[42]
-#define SWIGTYPE_p_mfem__VectorFiniteElement swig_types[43]
-#define SWIGTYPE_p_mfem__VectorTensorFiniteElement swig_types[44]
-#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[45]
-#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[46]
-#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[47]
-#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[48]
-#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[49]
-#define SWIGTYPE_p_p_mfem__IntegrationRule swig_types[50]
-#define SWIGTYPE_p_p_mfem__Matrix swig_types[51]
-#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[52]
-#define SWIGTYPE_p_p_mfem__Operator swig_types[53]
-#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[54]
-#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[55]
-#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[56]
-#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[57]
-#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[58]
-#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[59]
-#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[60]
-#define SWIGTYPE_p_p_mfem__Solver swig_types[61]
-#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[62]
-#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[63]
-#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[64]
-#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[65]
-#define SWIGTYPE_p_p_mfem__Vector swig_types[66]
-static swig_type_info *swig_types[68];
-static swig_module_info swig_module = {swig_types, 67, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__ND_R1D_PointElement swig_types[20]
+#define SWIGTYPE_p_mfem__ND_R1D_SegmentElement swig_types[21]
+#define SWIGTYPE_p_mfem__ND_R2D_FiniteElement swig_types[22]
+#define SWIGTYPE_p_mfem__ND_R2D_QuadrilateralElement swig_types[23]
+#define SWIGTYPE_p_mfem__ND_R2D_SegmentElement swig_types[24]
+#define SWIGTYPE_p_mfem__ND_R2D_TriangleElement swig_types[25]
+#define SWIGTYPE_p_mfem__ND_SegmentElement swig_types[26]
+#define SWIGTYPE_p_mfem__ND_TetrahedronElement swig_types[27]
+#define SWIGTYPE_p_mfem__ND_TriangleElement swig_types[28]
+#define SWIGTYPE_p_mfem__ND_WedgeElement swig_types[29]
+#define SWIGTYPE_p_mfem__NodalFiniteElement swig_types[30]
+#define SWIGTYPE_p_mfem__NodalTensorFiniteElement swig_types[31]
+#define SWIGTYPE_p_mfem__Operator swig_types[32]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[33]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[34]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[35]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[36]
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[37]
+#define SWIGTYPE_p_mfem__ScalarFiniteElement swig_types[38]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[39]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[40]
+#define SWIGTYPE_p_mfem__Solver swig_types[41]
+#define SWIGTYPE_p_mfem__TensorBasisElement swig_types[42]
+#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[43]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[44]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[45]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[46]
+#define SWIGTYPE_p_mfem__Vector swig_types[47]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[48]
+#define SWIGTYPE_p_mfem__VectorFiniteElement swig_types[49]
+#define SWIGTYPE_p_mfem__VectorTensorFiniteElement swig_types[50]
+#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[51]
+#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[52]
+#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[53]
+#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[54]
+#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[55]
+#define SWIGTYPE_p_p_mfem__IntegrationRule swig_types[56]
+#define SWIGTYPE_p_p_mfem__Matrix swig_types[57]
+#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[58]
+#define SWIGTYPE_p_p_mfem__Operator swig_types[59]
+#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[60]
+#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[61]
+#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[62]
+#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[63]
+#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[64]
+#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[65]
+#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[66]
+#define SWIGTYPE_p_p_mfem__Solver swig_types[67]
+#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[68]
+#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[69]
+#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[70]
+#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[71]
+#define SWIGTYPE_p_p_mfem__Vector swig_types[72]
+static swig_type_info *swig_types[74];
+static swig_module_info swig_module = {swig_types, 73, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -10482,6 +10488,4369 @@ SWIGINTERN PyObject *ND_WedgeElement_swiginit(PyObject *SWIGUNUSEDPARM(self), Py
   return SWIG_Python_InitShadowInstance(args);
 }
 
+SWIGINTERN PyObject *_wrap_new_ND_R1D_PointElement(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"p",  NULL 
+  };
+  mfem::ND_R1D_PointElement *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_ND_R1D_PointElement", kwnames, &obj0)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
+  }
+  {
+    try {
+      result = (mfem::ND_R1D_PointElement *)new mfem::ND_R1D_PointElement(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ND_R1D_PointElement, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_PointElement_CalcVShape__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_PointElement *arg1 = (mfem::ND_R1D_PointElement *) 0 ;
+  mfem::IntegrationPoint *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R1D_PointElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_PointElement_CalcVShape" "', argument " "1"" of type '" "mfem::ND_R1D_PointElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_PointElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_PointElement_CalcVShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_PointElement_CalcVShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_PointElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_PointElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R1D_PointElement const *)arg1)->CalcVShape((mfem::IntegrationPoint const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_PointElement_CalcVShape__SWIG_0_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_PointElement *arg1 = (mfem::ND_R1D_PointElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R1D_PointElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_PointElement_CalcVShape" "', argument " "1"" of type '" "mfem::ND_R1D_PointElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_PointElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_PointElement_CalcVShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_PointElement_CalcVShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_PointElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_PointElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R1D_PointElement const *)arg1)->CalcVShape(*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_PointElement_CalcVShape__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_PointElement *arg1 = (mfem::ND_R1D_PointElement *) 0 ;
+  mfem::IntegrationPoint *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R1D_PointElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_PointElement_CalcVShape" "', argument " "1"" of type '" "mfem::ND_R1D_PointElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_PointElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_PointElement_CalcVShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_PointElement_CalcVShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_PointElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_PointElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R1D_PointElement const *)arg1)->CalcVShape((mfem::IntegrationPoint const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_PointElement_CalcVShape__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_PointElement *arg1 = (mfem::ND_R1D_PointElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R1D_PointElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_PointElement_CalcVShape" "', argument " "1"" of type '" "mfem::ND_R1D_PointElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_PointElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_PointElement_CalcVShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_PointElement_CalcVShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_PointElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_PointElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R1D_PointElement const *)arg1)->CalcVShape(*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_PointElement_CalcVShape(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "ND_R1D_PointElement_CalcVShape", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R1D_PointElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__IntegrationPoint, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R1D_PointElement_CalcVShape__SWIG_0_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R1D_PointElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R1D_PointElement_CalcVShape__SWIG_0_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R1D_PointElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__IntegrationPoint, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R1D_PointElement_CalcVShape__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R1D_PointElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R1D_PointElement_CalcVShape__SWIG_2(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ND_R1D_PointElement_CalcVShape'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    CalcVShape(mfem::IntegrationPoint const &,mfem::DenseMatrix &) const\n"
+    "    CalcVShape(mfem::ElementTransformation &,mfem::DenseMatrix &) const\n"
+    "    mfem::ND_R1D_PointElement::CalcVShape(mfem::IntegrationPoint const &,mfem::DenseMatrix &) const\n"
+    "    mfem::ND_R1D_PointElement::CalcVShape(mfem::ElementTransformation &,mfem::DenseMatrix &) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_ND_R1D_PointElement(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_PointElement *arg1 = (mfem::ND_R1D_PointElement *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R1D_PointElement, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ND_R1D_PointElement" "', argument " "1"" of type '" "mfem::ND_R1D_PointElement *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_PointElement * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *ND_R1D_PointElement_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__ND_R1D_PointElement, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *ND_R1D_PointElement_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_ND_R1D_SegmentElement(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int arg2 = (int) (int)mfem::BasisType::GaussLobatto ;
+  int arg3 = (int) (int)mfem::BasisType::GaussLegendre ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"p",  (char *)"cb_type",  (char *)"ob_type",  NULL 
+  };
+  mfem::ND_R1D_SegmentElement *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OO:new_ND_R1D_SegmentElement", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
+  }
+  if (obj1) {
+    {
+      if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(obj1);
+    }
+  }
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      result = (mfem::ND_R1D_SegmentElement *)new mfem::ND_R1D_SegmentElement(arg1,arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ND_R1D_SegmentElement, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_SegmentElement_CalcVShape__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_SegmentElement *arg1 = (mfem::ND_R1D_SegmentElement *) 0 ;
+  mfem::IntegrationPoint *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_SegmentElement_CalcVShape" "', argument " "1"" of type '" "mfem::ND_R1D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_SegmentElement_CalcVShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_CalcVShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_SegmentElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R1D_SegmentElement const *)arg1)->CalcVShape((mfem::IntegrationPoint const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_SegmentElement_CalcVShape__SWIG_0_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_SegmentElement *arg1 = (mfem::ND_R1D_SegmentElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_SegmentElement_CalcVShape" "', argument " "1"" of type '" "mfem::ND_R1D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_SegmentElement_CalcVShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_CalcVShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_SegmentElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R1D_SegmentElement const *)arg1)->CalcVShape(*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_SegmentElement_CalcPhysCurlShape__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_SegmentElement *arg1 = (mfem::ND_R1D_SegmentElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_SegmentElement_CalcPhysCurlShape" "', argument " "1"" of type '" "mfem::ND_R1D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_SegmentElement_CalcPhysCurlShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_CalcPhysCurlShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_SegmentElement_CalcPhysCurlShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_CalcPhysCurlShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R1D_SegmentElement const *)arg1)->CalcPhysCurlShape(*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_SegmentElement_CalcVShape__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_SegmentElement *arg1 = (mfem::ND_R1D_SegmentElement *) 0 ;
+  mfem::IntegrationPoint *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_SegmentElement_CalcVShape" "', argument " "1"" of type '" "mfem::ND_R1D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_SegmentElement_CalcVShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_CalcVShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_SegmentElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R1D_SegmentElement const *)arg1)->CalcVShape((mfem::IntegrationPoint const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_SegmentElement_CalcVShape__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_SegmentElement *arg1 = (mfem::ND_R1D_SegmentElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_SegmentElement_CalcVShape" "', argument " "1"" of type '" "mfem::ND_R1D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_SegmentElement_CalcVShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_CalcVShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_SegmentElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R1D_SegmentElement const *)arg1)->CalcVShape(*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_SegmentElement_CalcVShape(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "ND_R1D_SegmentElement_CalcVShape", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__IntegrationPoint, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R1D_SegmentElement_CalcVShape__SWIG_0_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R1D_SegmentElement_CalcVShape__SWIG_0_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__IntegrationPoint, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R1D_SegmentElement_CalcVShape__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R1D_SegmentElement_CalcVShape__SWIG_2(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ND_R1D_SegmentElement_CalcVShape'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    CalcVShape(mfem::IntegrationPoint const &,mfem::DenseMatrix &) const\n"
+    "    CalcVShape(mfem::ElementTransformation &,mfem::DenseMatrix &) const\n"
+    "    mfem::ND_R1D_SegmentElement::CalcVShape(mfem::IntegrationPoint const &,mfem::DenseMatrix &) const\n"
+    "    mfem::ND_R1D_SegmentElement::CalcVShape(mfem::ElementTransformation &,mfem::DenseMatrix &) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_SegmentElement_CalcCurlShape(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_SegmentElement *arg1 = (mfem::ND_R1D_SegmentElement *) 0 ;
+  mfem::IntegrationPoint *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"ip",  (char *)"curl_shape",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ND_R1D_SegmentElement_CalcCurlShape", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_SegmentElement_CalcCurlShape" "', argument " "1"" of type '" "mfem::ND_R1D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_SegmentElement_CalcCurlShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_CalcCurlShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_SegmentElement_CalcCurlShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_CalcCurlShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R1D_SegmentElement const *)arg1)->CalcCurlShape((mfem::IntegrationPoint const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_SegmentElement_CalcPhysCurlShape__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_SegmentElement *arg1 = (mfem::ND_R1D_SegmentElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_SegmentElement_CalcPhysCurlShape" "', argument " "1"" of type '" "mfem::ND_R1D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_SegmentElement_CalcPhysCurlShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_CalcPhysCurlShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_SegmentElement_CalcPhysCurlShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_CalcPhysCurlShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R1D_SegmentElement const *)arg1)->CalcPhysCurlShape(*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_SegmentElement_CalcPhysCurlShape(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "ND_R1D_SegmentElement_CalcPhysCurlShape", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R1D_SegmentElement_CalcPhysCurlShape__SWIG_0_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R1D_SegmentElement_CalcPhysCurlShape__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ND_R1D_SegmentElement_CalcPhysCurlShape'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    CalcPhysCurlShape(mfem::ElementTransformation &,mfem::DenseMatrix &) const\n"
+    "    mfem::ND_R1D_SegmentElement::CalcPhysCurlShape(mfem::ElementTransformation &,mfem::DenseMatrix &) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_SegmentElement_GetLocalInterpolation(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_SegmentElement *arg1 = (mfem::ND_R1D_SegmentElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"Trans",  (char *)"I",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ND_R1D_SegmentElement_GetLocalInterpolation", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_SegmentElement_GetLocalInterpolation" "', argument " "1"" of type '" "mfem::ND_R1D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_SegmentElement_GetLocalInterpolation" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_GetLocalInterpolation" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_SegmentElement_GetLocalInterpolation" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_GetLocalInterpolation" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R1D_SegmentElement const *)arg1)->GetLocalInterpolation(*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_SegmentElement_GetLocalRestriction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_SegmentElement *arg1 = (mfem::ND_R1D_SegmentElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"Trans",  (char *)"R",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ND_R1D_SegmentElement_GetLocalRestriction", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_SegmentElement_GetLocalRestriction" "', argument " "1"" of type '" "mfem::ND_R1D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_SegmentElement_GetLocalRestriction" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_GetLocalRestriction" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_SegmentElement_GetLocalRestriction" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_GetLocalRestriction" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R1D_SegmentElement const *)arg1)->GetLocalRestriction(*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_SegmentElement_GetTransferMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_SegmentElement *arg1 = (mfem::ND_R1D_SegmentElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"fe",  (char *)"Trans",  (char *)"I",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:ND_R1D_SegmentElement_GetTransferMatrix", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_SegmentElement_GetTransferMatrix" "', argument " "1"" of type '" "mfem::ND_R1D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_SegmentElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_SegmentElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ND_R1D_SegmentElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::ND_R1D_SegmentElement const *)arg1)->GetTransferMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_SegmentElement_Project__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_SegmentElement *arg1 = (mfem::ND_R1D_SegmentElement *) 0 ;
+  mfem::Coefficient *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::Vector *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_SegmentElement_Project" "', argument " "1"" of type '" "mfem::ND_R1D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_SegmentElement_Project" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_Project" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_SegmentElement_Project" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_Project" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ND_R1D_SegmentElement_Project" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_Project" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
+  {
+    try {
+      ((mfem::ND_R1D_SegmentElement const *)arg1)->Project(*arg2,*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_SegmentElement_Project__SWIG_0_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_SegmentElement *arg1 = (mfem::ND_R1D_SegmentElement *) 0 ;
+  mfem::VectorCoefficient *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::Vector *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_SegmentElement_Project" "', argument " "1"" of type '" "mfem::ND_R1D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_SegmentElement_Project" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_Project" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_SegmentElement_Project" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_Project" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ND_R1D_SegmentElement_Project" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_Project" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
+  {
+    try {
+      ((mfem::ND_R1D_SegmentElement const *)arg1)->Project(*arg2,*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_SegmentElement_Project__SWIG_0_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_SegmentElement *arg1 = (mfem::ND_R1D_SegmentElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_SegmentElement_Project" "', argument " "1"" of type '" "mfem::ND_R1D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_SegmentElement_Project" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_Project" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_SegmentElement_Project" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_Project" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ND_R1D_SegmentElement_Project" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_Project" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::ND_R1D_SegmentElement const *)arg1)->Project((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_SegmentElement_Project__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_SegmentElement *arg1 = (mfem::ND_R1D_SegmentElement *) 0 ;
+  mfem::VectorCoefficient *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::Vector *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_SegmentElement_Project" "', argument " "1"" of type '" "mfem::ND_R1D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_SegmentElement_Project" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_Project" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_SegmentElement_Project" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_Project" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ND_R1D_SegmentElement_Project" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_Project" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
+  {
+    try {
+      ((mfem::ND_R1D_SegmentElement const *)arg1)->Project(*arg2,*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_SegmentElement_ProjectFromNodes(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_SegmentElement *arg1 = (mfem::ND_R1D_SegmentElement *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::Vector *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"vc",  (char *)"Trans",  (char *)"dofs",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:ND_R1D_SegmentElement_ProjectFromNodes", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_SegmentElement_ProjectFromNodes" "', argument " "1"" of type '" "mfem::ND_R1D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_SegmentElement_ProjectFromNodes" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_ProjectFromNodes" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_SegmentElement_ProjectFromNodes" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_ProjectFromNodes" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ND_R1D_SegmentElement_ProjectFromNodes" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_ProjectFromNodes" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
+  {
+    try {
+      ((mfem::ND_R1D_SegmentElement const *)arg1)->ProjectFromNodes(*arg2,*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_SegmentElement_ProjectMatrixCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_SegmentElement *arg1 = (mfem::ND_R1D_SegmentElement *) 0 ;
+  mfem::MatrixCoefficient *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::Vector *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"mc",  (char *)"T",  (char *)"dofs",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:ND_R1D_SegmentElement_ProjectMatrixCoefficient", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_SegmentElement_ProjectMatrixCoefficient" "', argument " "1"" of type '" "mfem::ND_R1D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_SegmentElement_ProjectMatrixCoefficient" "', argument " "2"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_ProjectMatrixCoefficient" "', argument " "2"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::MatrixCoefficient * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_SegmentElement_ProjectMatrixCoefficient" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_ProjectMatrixCoefficient" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ND_R1D_SegmentElement_ProjectMatrixCoefficient" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_ProjectMatrixCoefficient" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
+  {
+    try {
+      ((mfem::ND_R1D_SegmentElement const *)arg1)->ProjectMatrixCoefficient(*arg2,*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_SegmentElement_Project__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_SegmentElement *arg1 = (mfem::ND_R1D_SegmentElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_SegmentElement_Project" "', argument " "1"" of type '" "mfem::ND_R1D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_SegmentElement_Project" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_Project" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_SegmentElement_Project" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_Project" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ND_R1D_SegmentElement_Project" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_Project" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::ND_R1D_SegmentElement const *)arg1)->Project((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_SegmentElement_Project(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "ND_R1D_SegmentElement_Project", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_ND_R1D_SegmentElement_Project__SWIG_0_0(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_ND_R1D_SegmentElement_Project__SWIG_0_1(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_ND_R1D_SegmentElement_Project__SWIG_0_2(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_ND_R1D_SegmentElement_Project__SWIG_1(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_ND_R1D_SegmentElement_Project__SWIG_2(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ND_R1D_SegmentElement_Project'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Project(mfem::Coefficient &,mfem::ElementTransformation &,mfem::Vector &) const\n"
+    "    Project(mfem::VectorCoefficient &,mfem::ElementTransformation &,mfem::Vector &) const\n"
+    "    Project(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::DenseMatrix &) const\n"
+    "    mfem::ND_R1D_SegmentElement::Project(mfem::VectorCoefficient &,mfem::ElementTransformation &,mfem::Vector &) const\n"
+    "    mfem::ND_R1D_SegmentElement::Project(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::DenseMatrix &) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_SegmentElement_ProjectGrad(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_SegmentElement *arg1 = (mfem::ND_R1D_SegmentElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"fe",  (char *)"Trans",  (char *)"grad",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:ND_R1D_SegmentElement_ProjectGrad", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_SegmentElement_ProjectGrad" "', argument " "1"" of type '" "mfem::ND_R1D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_SegmentElement_ProjectGrad" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_ProjectGrad" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_SegmentElement_ProjectGrad" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_ProjectGrad" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ND_R1D_SegmentElement_ProjectGrad" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_ProjectGrad" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::ND_R1D_SegmentElement const *)arg1)->ProjectGrad((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R1D_SegmentElement_ProjectCurl(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_SegmentElement *arg1 = (mfem::ND_R1D_SegmentElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"fe",  (char *)"Trans",  (char *)"curl",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:ND_R1D_SegmentElement_ProjectCurl", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_R1D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R1D_SegmentElement_ProjectCurl" "', argument " "1"" of type '" "mfem::ND_R1D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R1D_SegmentElement_ProjectCurl" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_ProjectCurl" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R1D_SegmentElement_ProjectCurl" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_ProjectCurl" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ND_R1D_SegmentElement_ProjectCurl" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R1D_SegmentElement_ProjectCurl" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::ND_R1D_SegmentElement const *)arg1)->ProjectCurl((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_ND_R1D_SegmentElement(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ND_R1D_SegmentElement *arg1 = (mfem::ND_R1D_SegmentElement *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R1D_SegmentElement, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ND_R1D_SegmentElement" "', argument " "1"" of type '" "mfem::ND_R1D_SegmentElement *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R1D_SegmentElement * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *ND_R1D_SegmentElement_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__ND_R1D_SegmentElement, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *ND_R1D_SegmentElement_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_ND_R2D_SegmentElement(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int arg2 = (int) (int)mfem::BasisType::GaussLobatto ;
+  int arg3 = (int) (int)mfem::BasisType::GaussLegendre ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"p",  (char *)"cb_type",  (char *)"ob_type",  NULL 
+  };
+  mfem::ND_R2D_SegmentElement *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OO:new_ND_R2D_SegmentElement", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
+  }
+  if (obj1) {
+    {
+      if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(obj1);
+    }
+  }
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      result = (mfem::ND_R2D_SegmentElement *)new mfem::ND_R2D_SegmentElement(arg1,arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ND_R2D_SegmentElement, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_SegmentElement_CalcVShape__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_SegmentElement *arg1 = (mfem::ND_R2D_SegmentElement *) 0 ;
+  mfem::IntegrationPoint *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R2D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_SegmentElement_CalcVShape" "', argument " "1"" of type '" "mfem::ND_R2D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_SegmentElement_CalcVShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_SegmentElement_CalcVShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_SegmentElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_SegmentElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R2D_SegmentElement const *)arg1)->CalcVShape((mfem::IntegrationPoint const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_SegmentElement_CalcVShape__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_SegmentElement *arg1 = (mfem::ND_R2D_SegmentElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R2D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_SegmentElement_CalcVShape" "', argument " "1"" of type '" "mfem::ND_R2D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_SegmentElement_CalcVShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_SegmentElement_CalcVShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_SegmentElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_SegmentElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R2D_SegmentElement const *)arg1)->CalcVShape(*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_SegmentElement_CalcVShape(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "ND_R2D_SegmentElement_CalcVShape", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R2D_SegmentElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__IntegrationPoint, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R2D_SegmentElement_CalcVShape__SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R2D_SegmentElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R2D_SegmentElement_CalcVShape__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ND_R2D_SegmentElement_CalcVShape'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::ND_R2D_SegmentElement::CalcVShape(mfem::IntegrationPoint const &,mfem::DenseMatrix &) const\n"
+    "    mfem::ND_R2D_SegmentElement::CalcVShape(mfem::ElementTransformation &,mfem::DenseMatrix &) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_SegmentElement_CalcCurlShape(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_SegmentElement *arg1 = (mfem::ND_R2D_SegmentElement *) 0 ;
+  mfem::IntegrationPoint *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"ip",  (char *)"curl_shape",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ND_R2D_SegmentElement_CalcCurlShape", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_R2D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_SegmentElement_CalcCurlShape" "', argument " "1"" of type '" "mfem::ND_R2D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_SegmentElement_CalcCurlShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_SegmentElement_CalcCurlShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_SegmentElement_CalcCurlShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_SegmentElement_CalcCurlShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R2D_SegmentElement const *)arg1)->CalcCurlShape((mfem::IntegrationPoint const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_SegmentElement_GetLocalInterpolation(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_SegmentElement *arg1 = (mfem::ND_R2D_SegmentElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"Trans",  (char *)"I",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ND_R2D_SegmentElement_GetLocalInterpolation", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_R2D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_SegmentElement_GetLocalInterpolation" "', argument " "1"" of type '" "mfem::ND_R2D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_SegmentElement_GetLocalInterpolation" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_SegmentElement_GetLocalInterpolation" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_SegmentElement_GetLocalInterpolation" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_SegmentElement_GetLocalInterpolation" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R2D_SegmentElement const *)arg1)->GetLocalInterpolation(*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_SegmentElement_GetLocalRestriction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_SegmentElement *arg1 = (mfem::ND_R2D_SegmentElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"Trans",  (char *)"R",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ND_R2D_SegmentElement_GetLocalRestriction", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_R2D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_SegmentElement_GetLocalRestriction" "', argument " "1"" of type '" "mfem::ND_R2D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_SegmentElement_GetLocalRestriction" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_SegmentElement_GetLocalRestriction" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_SegmentElement_GetLocalRestriction" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_SegmentElement_GetLocalRestriction" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R2D_SegmentElement const *)arg1)->GetLocalRestriction(*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_SegmentElement_GetTransferMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_SegmentElement *arg1 = (mfem::ND_R2D_SegmentElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"fe",  (char *)"Trans",  (char *)"I",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:ND_R2D_SegmentElement_GetTransferMatrix", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_R2D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_SegmentElement_GetTransferMatrix" "', argument " "1"" of type '" "mfem::ND_R2D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_SegmentElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_SegmentElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_SegmentElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_SegmentElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ND_R2D_SegmentElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_SegmentElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::ND_R2D_SegmentElement const *)arg1)->GetTransferMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_SegmentElement_Project(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_SegmentElement *arg1 = (mfem::ND_R2D_SegmentElement *) 0 ;
+  mfem::VectorCoefficient *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::Vector *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"vc",  (char *)"Trans",  (char *)"dofs",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:ND_R2D_SegmentElement_Project", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_R2D_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_SegmentElement_Project" "', argument " "1"" of type '" "mfem::ND_R2D_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_SegmentElement_Project" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_SegmentElement_Project" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_SegmentElement_Project" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_SegmentElement_Project" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ND_R2D_SegmentElement_Project" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_SegmentElement_Project" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
+  {
+    try {
+      ((mfem::ND_R2D_SegmentElement const *)arg1)->Project(*arg2,*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_ND_R2D_SegmentElement(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_SegmentElement *arg1 = (mfem::ND_R2D_SegmentElement *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R2D_SegmentElement, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ND_R2D_SegmentElement" "', argument " "1"" of type '" "mfem::ND_R2D_SegmentElement *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_SegmentElement * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *ND_R2D_SegmentElement_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__ND_R2D_SegmentElement, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *ND_R2D_SegmentElement_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_ND_R2D_FiniteElement_CalcVShape__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_FiniteElement *arg1 = (mfem::ND_R2D_FiniteElement *) 0 ;
+  mfem::IntegrationPoint *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R2D_FiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_FiniteElement_CalcVShape" "', argument " "1"" of type '" "mfem::ND_R2D_FiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_FiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_FiniteElement_CalcVShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_CalcVShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_FiniteElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R2D_FiniteElement const *)arg1)->CalcVShape((mfem::IntegrationPoint const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_FiniteElement_CalcVShape__SWIG_0_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_FiniteElement *arg1 = (mfem::ND_R2D_FiniteElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R2D_FiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_FiniteElement_CalcVShape" "', argument " "1"" of type '" "mfem::ND_R2D_FiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_FiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_FiniteElement_CalcVShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_CalcVShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_FiniteElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R2D_FiniteElement const *)arg1)->CalcVShape(*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_FiniteElement_CalcPhysCurlShape__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_FiniteElement *arg1 = (mfem::ND_R2D_FiniteElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R2D_FiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_FiniteElement_CalcPhysCurlShape" "', argument " "1"" of type '" "mfem::ND_R2D_FiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_FiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_FiniteElement_CalcPhysCurlShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_CalcPhysCurlShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_FiniteElement_CalcPhysCurlShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_CalcPhysCurlShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R2D_FiniteElement const *)arg1)->CalcPhysCurlShape(*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_FiniteElement_CalcVShape__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_FiniteElement *arg1 = (mfem::ND_R2D_FiniteElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R2D_FiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_FiniteElement_CalcVShape" "', argument " "1"" of type '" "mfem::ND_R2D_FiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_FiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_FiniteElement_CalcVShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_CalcVShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_FiniteElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R2D_FiniteElement const *)arg1)->CalcVShape(*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_FiniteElement_CalcVShape(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "ND_R2D_FiniteElement_CalcVShape", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R2D_FiniteElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__IntegrationPoint, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R2D_FiniteElement_CalcVShape__SWIG_0_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R2D_FiniteElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R2D_FiniteElement_CalcVShape__SWIG_0_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R2D_FiniteElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R2D_FiniteElement_CalcVShape__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ND_R2D_FiniteElement_CalcVShape'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    CalcVShape(mfem::IntegrationPoint const &,mfem::DenseMatrix &) const\n"
+    "    CalcVShape(mfem::ElementTransformation &,mfem::DenseMatrix &) const\n"
+    "    mfem::ND_R2D_FiniteElement::CalcVShape(mfem::ElementTransformation &,mfem::DenseMatrix &) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_FiniteElement_CalcPhysCurlShape__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_FiniteElement *arg1 = (mfem::ND_R2D_FiniteElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R2D_FiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_FiniteElement_CalcPhysCurlShape" "', argument " "1"" of type '" "mfem::ND_R2D_FiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_FiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_FiniteElement_CalcPhysCurlShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_CalcPhysCurlShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_FiniteElement_CalcPhysCurlShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_CalcPhysCurlShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R2D_FiniteElement const *)arg1)->CalcPhysCurlShape(*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_FiniteElement_CalcPhysCurlShape(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "ND_R2D_FiniteElement_CalcPhysCurlShape", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R2D_FiniteElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R2D_FiniteElement_CalcPhysCurlShape__SWIG_0_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R2D_FiniteElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R2D_FiniteElement_CalcPhysCurlShape__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ND_R2D_FiniteElement_CalcPhysCurlShape'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    CalcPhysCurlShape(mfem::ElementTransformation &,mfem::DenseMatrix &) const\n"
+    "    mfem::ND_R2D_FiniteElement::CalcPhysCurlShape(mfem::ElementTransformation &,mfem::DenseMatrix &) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_FiniteElement_GetLocalInterpolation(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_FiniteElement *arg1 = (mfem::ND_R2D_FiniteElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"Trans",  (char *)"I",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ND_R2D_FiniteElement_GetLocalInterpolation", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_R2D_FiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_FiniteElement_GetLocalInterpolation" "', argument " "1"" of type '" "mfem::ND_R2D_FiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_FiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_FiniteElement_GetLocalInterpolation" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_GetLocalInterpolation" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_FiniteElement_GetLocalInterpolation" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_GetLocalInterpolation" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R2D_FiniteElement const *)arg1)->GetLocalInterpolation(*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_FiniteElement_GetLocalRestriction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_FiniteElement *arg1 = (mfem::ND_R2D_FiniteElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"Trans",  (char *)"R",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ND_R2D_FiniteElement_GetLocalRestriction", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_R2D_FiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_FiniteElement_GetLocalRestriction" "', argument " "1"" of type '" "mfem::ND_R2D_FiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_FiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_FiniteElement_GetLocalRestriction" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_GetLocalRestriction" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_FiniteElement_GetLocalRestriction" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_GetLocalRestriction" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R2D_FiniteElement const *)arg1)->GetLocalRestriction(*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_FiniteElement_GetTransferMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_FiniteElement *arg1 = (mfem::ND_R2D_FiniteElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"fe",  (char *)"Trans",  (char *)"I",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:ND_R2D_FiniteElement_GetTransferMatrix", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_R2D_FiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_FiniteElement_GetTransferMatrix" "', argument " "1"" of type '" "mfem::ND_R2D_FiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_FiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_FiniteElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_FiniteElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ND_R2D_FiniteElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::ND_R2D_FiniteElement const *)arg1)->GetTransferMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_FiniteElement_Project__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_FiniteElement *arg1 = (mfem::ND_R2D_FiniteElement *) 0 ;
+  mfem::VectorCoefficient *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::Vector *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R2D_FiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_FiniteElement_Project" "', argument " "1"" of type '" "mfem::ND_R2D_FiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_FiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_FiniteElement_Project" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_Project" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_FiniteElement_Project" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_Project" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ND_R2D_FiniteElement_Project" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_Project" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
+  {
+    try {
+      ((mfem::ND_R2D_FiniteElement const *)arg1)->Project(*arg2,*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_FiniteElement_Project__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_FiniteElement *arg1 = (mfem::ND_R2D_FiniteElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R2D_FiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_FiniteElement_Project" "', argument " "1"" of type '" "mfem::ND_R2D_FiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_FiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_FiniteElement_Project" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_Project" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_FiniteElement_Project" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_Project" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ND_R2D_FiniteElement_Project" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_Project" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::ND_R2D_FiniteElement const *)arg1)->Project((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_FiniteElement_Project(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "ND_R2D_FiniteElement_Project", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R2D_FiniteElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_ND_R2D_FiniteElement_Project__SWIG_0(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R2D_FiniteElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_ND_R2D_FiniteElement_Project__SWIG_1(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ND_R2D_FiniteElement_Project'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::ND_R2D_FiniteElement::Project(mfem::VectorCoefficient &,mfem::ElementTransformation &,mfem::Vector &) const\n"
+    "    mfem::ND_R2D_FiniteElement::Project(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::DenseMatrix &) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_FiniteElement_ProjectGrad(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_FiniteElement *arg1 = (mfem::ND_R2D_FiniteElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"fe",  (char *)"Trans",  (char *)"grad",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:ND_R2D_FiniteElement_ProjectGrad", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_R2D_FiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_FiniteElement_ProjectGrad" "', argument " "1"" of type '" "mfem::ND_R2D_FiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_FiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_FiniteElement_ProjectGrad" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_ProjectGrad" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_FiniteElement_ProjectGrad" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_ProjectGrad" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ND_R2D_FiniteElement_ProjectGrad" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_FiniteElement_ProjectGrad" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::ND_R2D_FiniteElement const *)arg1)->ProjectGrad((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_ND_R2D_FiniteElement(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_FiniteElement *arg1 = (mfem::ND_R2D_FiniteElement *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R2D_FiniteElement, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ND_R2D_FiniteElement" "', argument " "1"" of type '" "mfem::ND_R2D_FiniteElement *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_FiniteElement * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *ND_R2D_FiniteElement_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__ND_R2D_FiniteElement, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_ND_R2D_TriangleElement(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int arg2 = (int) (int)mfem::BasisType::GaussLobatto ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"p",  (char *)"cb_type",  NULL 
+  };
+  mfem::ND_R2D_TriangleElement *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:new_ND_R2D_TriangleElement", kwnames, &obj0, &obj1)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
+  }
+  if (obj1) {
+    {
+      if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(obj1);
+    }
+  }
+  {
+    try {
+      result = (mfem::ND_R2D_TriangleElement *)new mfem::ND_R2D_TriangleElement(arg1,arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ND_R2D_TriangleElement, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_TriangleElement_CalcVShape__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_TriangleElement *arg1 = (mfem::ND_R2D_TriangleElement *) 0 ;
+  mfem::IntegrationPoint *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R2D_TriangleElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_TriangleElement_CalcVShape" "', argument " "1"" of type '" "mfem::ND_R2D_TriangleElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_TriangleElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_TriangleElement_CalcVShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_TriangleElement_CalcVShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_TriangleElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_TriangleElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R2D_TriangleElement const *)arg1)->CalcVShape((mfem::IntegrationPoint const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_TriangleElement_CalcVShape__SWIG_0_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_TriangleElement *arg1 = (mfem::ND_R2D_TriangleElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R2D_TriangleElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_TriangleElement_CalcVShape" "', argument " "1"" of type '" "mfem::ND_R2D_TriangleElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_TriangleElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_TriangleElement_CalcVShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_TriangleElement_CalcVShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_TriangleElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_TriangleElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R2D_TriangleElement const *)arg1)->CalcVShape(*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_TriangleElement_CalcPhysCurlShape(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_TriangleElement *arg1 = (mfem::ND_R2D_TriangleElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"Trans",  (char *)"curl_shape",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ND_R2D_TriangleElement_CalcPhysCurlShape", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_R2D_TriangleElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_TriangleElement_CalcPhysCurlShape" "', argument " "1"" of type '" "mfem::ND_R2D_TriangleElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_TriangleElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_TriangleElement_CalcPhysCurlShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_TriangleElement_CalcPhysCurlShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_TriangleElement_CalcPhysCurlShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_TriangleElement_CalcPhysCurlShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R2D_TriangleElement const *)arg1)->CalcPhysCurlShape(*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_TriangleElement_CalcVShape__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_TriangleElement *arg1 = (mfem::ND_R2D_TriangleElement *) 0 ;
+  mfem::IntegrationPoint *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R2D_TriangleElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_TriangleElement_CalcVShape" "', argument " "1"" of type '" "mfem::ND_R2D_TriangleElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_TriangleElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_TriangleElement_CalcVShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_TriangleElement_CalcVShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_TriangleElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_TriangleElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R2D_TriangleElement const *)arg1)->CalcVShape((mfem::IntegrationPoint const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_TriangleElement_CalcVShape(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "ND_R2D_TriangleElement_CalcVShape", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R2D_TriangleElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__IntegrationPoint, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R2D_TriangleElement_CalcVShape__SWIG_0_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R2D_TriangleElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R2D_TriangleElement_CalcVShape__SWIG_0_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R2D_TriangleElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__IntegrationPoint, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R2D_TriangleElement_CalcVShape__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ND_R2D_TriangleElement_CalcVShape'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    CalcVShape(mfem::IntegrationPoint const &,mfem::DenseMatrix &) const\n"
+    "    CalcVShape(mfem::ElementTransformation &,mfem::DenseMatrix &) const\n"
+    "    mfem::ND_R2D_TriangleElement::CalcVShape(mfem::IntegrationPoint const &,mfem::DenseMatrix &) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_TriangleElement_CalcCurlShape(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_TriangleElement *arg1 = (mfem::ND_R2D_TriangleElement *) 0 ;
+  mfem::IntegrationPoint *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"ip",  (char *)"curl_shape",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ND_R2D_TriangleElement_CalcCurlShape", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_R2D_TriangleElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_TriangleElement_CalcCurlShape" "', argument " "1"" of type '" "mfem::ND_R2D_TriangleElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_TriangleElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_TriangleElement_CalcCurlShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_TriangleElement_CalcCurlShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_TriangleElement_CalcCurlShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_TriangleElement_CalcCurlShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R2D_TriangleElement const *)arg1)->CalcCurlShape((mfem::IntegrationPoint const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_ND_R2D_TriangleElement(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_TriangleElement *arg1 = (mfem::ND_R2D_TriangleElement *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R2D_TriangleElement, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ND_R2D_TriangleElement" "', argument " "1"" of type '" "mfem::ND_R2D_TriangleElement *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_TriangleElement * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *ND_R2D_TriangleElement_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__ND_R2D_TriangleElement, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *ND_R2D_TriangleElement_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_ND_R2D_QuadrilateralElement(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int arg2 = (int) (int)mfem::BasisType::GaussLobatto ;
+  int arg3 = (int) (int)mfem::BasisType::GaussLegendre ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"p",  (char *)"cb_type",  (char *)"ob_type",  NULL 
+  };
+  mfem::ND_R2D_QuadrilateralElement *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OO:new_ND_R2D_QuadrilateralElement", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
+  }
+  if (obj1) {
+    {
+      if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(obj1);
+    }
+  }
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
+  }
+  {
+    try {
+      result = (mfem::ND_R2D_QuadrilateralElement *)new mfem::ND_R2D_QuadrilateralElement(arg1,arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ND_R2D_QuadrilateralElement, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_QuadrilateralElement_CalcVShape__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_QuadrilateralElement *arg1 = (mfem::ND_R2D_QuadrilateralElement *) 0 ;
+  mfem::IntegrationPoint *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R2D_QuadrilateralElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_QuadrilateralElement_CalcVShape" "', argument " "1"" of type '" "mfem::ND_R2D_QuadrilateralElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_QuadrilateralElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_QuadrilateralElement_CalcVShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_QuadrilateralElement_CalcVShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_QuadrilateralElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_QuadrilateralElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R2D_QuadrilateralElement const *)arg1)->CalcVShape((mfem::IntegrationPoint const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_QuadrilateralElement_CalcVShape__SWIG_0_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_QuadrilateralElement *arg1 = (mfem::ND_R2D_QuadrilateralElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R2D_QuadrilateralElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_QuadrilateralElement_CalcVShape" "', argument " "1"" of type '" "mfem::ND_R2D_QuadrilateralElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_QuadrilateralElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_QuadrilateralElement_CalcVShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_QuadrilateralElement_CalcVShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_QuadrilateralElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_QuadrilateralElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R2D_QuadrilateralElement const *)arg1)->CalcVShape(*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_QuadrilateralElement_CalcPhysCurlShape(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_QuadrilateralElement *arg1 = (mfem::ND_R2D_QuadrilateralElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"Trans",  (char *)"curl_shape",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ND_R2D_QuadrilateralElement_CalcPhysCurlShape", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_R2D_QuadrilateralElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_QuadrilateralElement_CalcPhysCurlShape" "', argument " "1"" of type '" "mfem::ND_R2D_QuadrilateralElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_QuadrilateralElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_QuadrilateralElement_CalcPhysCurlShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_QuadrilateralElement_CalcPhysCurlShape" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_QuadrilateralElement_CalcPhysCurlShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_QuadrilateralElement_CalcPhysCurlShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R2D_QuadrilateralElement const *)arg1)->CalcPhysCurlShape(*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_QuadrilateralElement_CalcVShape__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_QuadrilateralElement *arg1 = (mfem::ND_R2D_QuadrilateralElement *) 0 ;
+  mfem::IntegrationPoint *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R2D_QuadrilateralElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_QuadrilateralElement_CalcVShape" "', argument " "1"" of type '" "mfem::ND_R2D_QuadrilateralElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_QuadrilateralElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_QuadrilateralElement_CalcVShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_QuadrilateralElement_CalcVShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_QuadrilateralElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_QuadrilateralElement_CalcVShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R2D_QuadrilateralElement const *)arg1)->CalcVShape((mfem::IntegrationPoint const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_QuadrilateralElement_CalcVShape(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "ND_R2D_QuadrilateralElement_CalcVShape", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R2D_QuadrilateralElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__IntegrationPoint, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R2D_QuadrilateralElement_CalcVShape__SWIG_0_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R2D_QuadrilateralElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R2D_QuadrilateralElement_CalcVShape__SWIG_0_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ND_R2D_QuadrilateralElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__IntegrationPoint, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_ND_R2D_QuadrilateralElement_CalcVShape__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ND_R2D_QuadrilateralElement_CalcVShape'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    CalcVShape(mfem::IntegrationPoint const &,mfem::DenseMatrix &) const\n"
+    "    CalcVShape(mfem::ElementTransformation &,mfem::DenseMatrix &) const\n"
+    "    mfem::ND_R2D_QuadrilateralElement::CalcVShape(mfem::IntegrationPoint const &,mfem::DenseMatrix &) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_R2D_QuadrilateralElement_CalcCurlShape(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_QuadrilateralElement *arg1 = (mfem::ND_R2D_QuadrilateralElement *) 0 ;
+  mfem::IntegrationPoint *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"ip",  (char *)"curl_shape",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ND_R2D_QuadrilateralElement_CalcCurlShape", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_R2D_QuadrilateralElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_R2D_QuadrilateralElement_CalcCurlShape" "', argument " "1"" of type '" "mfem::ND_R2D_QuadrilateralElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_QuadrilateralElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_R2D_QuadrilateralElement_CalcCurlShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_QuadrilateralElement_CalcCurlShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_R2D_QuadrilateralElement_CalcCurlShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_R2D_QuadrilateralElement_CalcCurlShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::ND_R2D_QuadrilateralElement const *)arg1)->CalcCurlShape((mfem::IntegrationPoint const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_ND_R2D_QuadrilateralElement(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ND_R2D_QuadrilateralElement *arg1 = (mfem::ND_R2D_QuadrilateralElement *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ND_R2D_QuadrilateralElement, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ND_R2D_QuadrilateralElement" "', argument " "1"" of type '" "mfem::ND_R2D_QuadrilateralElement *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_R2D_QuadrilateralElement * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *ND_R2D_QuadrilateralElement_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__ND_R2D_QuadrilateralElement, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *ND_R2D_QuadrilateralElement_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
@@ -10618,6 +14987,99 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_ND_WedgeElement", _wrap_delete_ND_WedgeElement, METH_O, "delete_ND_WedgeElement(ND_WedgeElement self)"},
 	 { "ND_WedgeElement_swigregister", ND_WedgeElement_swigregister, METH_O, NULL},
 	 { "ND_WedgeElement_swiginit", ND_WedgeElement_swiginit, METH_VARARGS, NULL},
+	 { "new_ND_R1D_PointElement", (PyCFunction)(void(*)(void))_wrap_new_ND_R1D_PointElement, METH_VARARGS|METH_KEYWORDS, "new_ND_R1D_PointElement(int p) -> ND_R1D_PointElement"},
+	 { "ND_R1D_PointElement_CalcVShape", _wrap_ND_R1D_PointElement_CalcVShape, METH_VARARGS, "\n"
+		"ND_R1D_PointElement_CalcVShape(ND_R1D_PointElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"ND_R1D_PointElement_CalcVShape(ND_R1D_PointElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		"ND_R1D_PointElement_CalcVShape(ND_R1D_PointElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"ND_R1D_PointElement_CalcVShape(ND_R1D_PointElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "delete_ND_R1D_PointElement", _wrap_delete_ND_R1D_PointElement, METH_O, "delete_ND_R1D_PointElement(ND_R1D_PointElement self)"},
+	 { "ND_R1D_PointElement_swigregister", ND_R1D_PointElement_swigregister, METH_O, NULL},
+	 { "ND_R1D_PointElement_swiginit", ND_R1D_PointElement_swiginit, METH_VARARGS, NULL},
+	 { "new_ND_R1D_SegmentElement", (PyCFunction)(void(*)(void))_wrap_new_ND_R1D_SegmentElement, METH_VARARGS|METH_KEYWORDS, "new_ND_R1D_SegmentElement(int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> ND_R1D_SegmentElement"},
+	 { "ND_R1D_SegmentElement_CalcVShape", _wrap_ND_R1D_SegmentElement_CalcVShape, METH_VARARGS, "\n"
+		"ND_R1D_SegmentElement_CalcVShape(ND_R1D_SegmentElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"ND_R1D_SegmentElement_CalcVShape(ND_R1D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		"ND_R1D_SegmentElement_CalcVShape(ND_R1D_SegmentElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"ND_R1D_SegmentElement_CalcVShape(ND_R1D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "ND_R1D_SegmentElement_CalcCurlShape", (PyCFunction)(void(*)(void))_wrap_ND_R1D_SegmentElement_CalcCurlShape, METH_VARARGS|METH_KEYWORDS, "ND_R1D_SegmentElement_CalcCurlShape(ND_R1D_SegmentElement self, IntegrationPoint ip, DenseMatrix curl_shape)"},
+	 { "ND_R1D_SegmentElement_CalcPhysCurlShape", _wrap_ND_R1D_SegmentElement_CalcPhysCurlShape, METH_VARARGS, "\n"
+		"ND_R1D_SegmentElement_CalcPhysCurlShape(ND_R1D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix curl_shape)\n"
+		"ND_R1D_SegmentElement_CalcPhysCurlShape(ND_R1D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix curl_shape)\n"
+		""},
+	 { "ND_R1D_SegmentElement_GetLocalInterpolation", (PyCFunction)(void(*)(void))_wrap_ND_R1D_SegmentElement_GetLocalInterpolation, METH_VARARGS|METH_KEYWORDS, "ND_R1D_SegmentElement_GetLocalInterpolation(ND_R1D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "ND_R1D_SegmentElement_GetLocalRestriction", (PyCFunction)(void(*)(void))_wrap_ND_R1D_SegmentElement_GetLocalRestriction, METH_VARARGS|METH_KEYWORDS, "ND_R1D_SegmentElement_GetLocalRestriction(ND_R1D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"},
+	 { "ND_R1D_SegmentElement_GetTransferMatrix", (PyCFunction)(void(*)(void))_wrap_ND_R1D_SegmentElement_GetTransferMatrix, METH_VARARGS|METH_KEYWORDS, "ND_R1D_SegmentElement_GetTransferMatrix(ND_R1D_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "ND_R1D_SegmentElement_ProjectFromNodes", (PyCFunction)(void(*)(void))_wrap_ND_R1D_SegmentElement_ProjectFromNodes, METH_VARARGS|METH_KEYWORDS, "ND_R1D_SegmentElement_ProjectFromNodes(ND_R1D_SegmentElement self, Vector vc, mfem::ElementTransformation & Trans, Vector dofs)"},
+	 { "ND_R1D_SegmentElement_ProjectMatrixCoefficient", (PyCFunction)(void(*)(void))_wrap_ND_R1D_SegmentElement_ProjectMatrixCoefficient, METH_VARARGS|METH_KEYWORDS, "ND_R1D_SegmentElement_ProjectMatrixCoefficient(ND_R1D_SegmentElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"},
+	 { "ND_R1D_SegmentElement_Project", _wrap_ND_R1D_SegmentElement_Project, METH_VARARGS, "\n"
+		"ND_R1D_SegmentElement_Project(ND_R1D_SegmentElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"ND_R1D_SegmentElement_Project(ND_R1D_SegmentElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"ND_R1D_SegmentElement_Project(ND_R1D_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"ND_R1D_SegmentElement_Project(ND_R1D_SegmentElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"ND_R1D_SegmentElement_Project(ND_R1D_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		""},
+	 { "ND_R1D_SegmentElement_ProjectGrad", (PyCFunction)(void(*)(void))_wrap_ND_R1D_SegmentElement_ProjectGrad, METH_VARARGS|METH_KEYWORDS, "ND_R1D_SegmentElement_ProjectGrad(ND_R1D_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"},
+	 { "ND_R1D_SegmentElement_ProjectCurl", (PyCFunction)(void(*)(void))_wrap_ND_R1D_SegmentElement_ProjectCurl, METH_VARARGS|METH_KEYWORDS, "ND_R1D_SegmentElement_ProjectCurl(ND_R1D_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"},
+	 { "delete_ND_R1D_SegmentElement", _wrap_delete_ND_R1D_SegmentElement, METH_O, "delete_ND_R1D_SegmentElement(ND_R1D_SegmentElement self)"},
+	 { "ND_R1D_SegmentElement_swigregister", ND_R1D_SegmentElement_swigregister, METH_O, NULL},
+	 { "ND_R1D_SegmentElement_swiginit", ND_R1D_SegmentElement_swiginit, METH_VARARGS, NULL},
+	 { "new_ND_R2D_SegmentElement", (PyCFunction)(void(*)(void))_wrap_new_ND_R2D_SegmentElement, METH_VARARGS|METH_KEYWORDS, "new_ND_R2D_SegmentElement(int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> ND_R2D_SegmentElement"},
+	 { "ND_R2D_SegmentElement_CalcVShape", _wrap_ND_R2D_SegmentElement_CalcVShape, METH_VARARGS, "\n"
+		"ND_R2D_SegmentElement_CalcVShape(ND_R2D_SegmentElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"ND_R2D_SegmentElement_CalcVShape(ND_R2D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "ND_R2D_SegmentElement_CalcCurlShape", (PyCFunction)(void(*)(void))_wrap_ND_R2D_SegmentElement_CalcCurlShape, METH_VARARGS|METH_KEYWORDS, "ND_R2D_SegmentElement_CalcCurlShape(ND_R2D_SegmentElement self, IntegrationPoint ip, DenseMatrix curl_shape)"},
+	 { "ND_R2D_SegmentElement_GetLocalInterpolation", (PyCFunction)(void(*)(void))_wrap_ND_R2D_SegmentElement_GetLocalInterpolation, METH_VARARGS|METH_KEYWORDS, "ND_R2D_SegmentElement_GetLocalInterpolation(ND_R2D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "ND_R2D_SegmentElement_GetLocalRestriction", (PyCFunction)(void(*)(void))_wrap_ND_R2D_SegmentElement_GetLocalRestriction, METH_VARARGS|METH_KEYWORDS, "ND_R2D_SegmentElement_GetLocalRestriction(ND_R2D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"},
+	 { "ND_R2D_SegmentElement_GetTransferMatrix", (PyCFunction)(void(*)(void))_wrap_ND_R2D_SegmentElement_GetTransferMatrix, METH_VARARGS|METH_KEYWORDS, "ND_R2D_SegmentElement_GetTransferMatrix(ND_R2D_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "ND_R2D_SegmentElement_Project", (PyCFunction)(void(*)(void))_wrap_ND_R2D_SegmentElement_Project, METH_VARARGS|METH_KEYWORDS, "ND_R2D_SegmentElement_Project(ND_R2D_SegmentElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)"},
+	 { "delete_ND_R2D_SegmentElement", _wrap_delete_ND_R2D_SegmentElement, METH_O, "delete_ND_R2D_SegmentElement(ND_R2D_SegmentElement self)"},
+	 { "ND_R2D_SegmentElement_swigregister", ND_R2D_SegmentElement_swigregister, METH_O, NULL},
+	 { "ND_R2D_SegmentElement_swiginit", ND_R2D_SegmentElement_swiginit, METH_VARARGS, NULL},
+	 { "ND_R2D_FiniteElement_CalcVShape", _wrap_ND_R2D_FiniteElement_CalcVShape, METH_VARARGS, "\n"
+		"ND_R2D_FiniteElement_CalcVShape(ND_R2D_FiniteElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"ND_R2D_FiniteElement_CalcVShape(ND_R2D_FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		"ND_R2D_FiniteElement_CalcVShape(ND_R2D_FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "ND_R2D_FiniteElement_CalcPhysCurlShape", _wrap_ND_R2D_FiniteElement_CalcPhysCurlShape, METH_VARARGS, "\n"
+		"ND_R2D_FiniteElement_CalcPhysCurlShape(ND_R2D_FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix curl_shape)\n"
+		"ND_R2D_FiniteElement_CalcPhysCurlShape(ND_R2D_FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix curl_shape)\n"
+		""},
+	 { "ND_R2D_FiniteElement_GetLocalInterpolation", (PyCFunction)(void(*)(void))_wrap_ND_R2D_FiniteElement_GetLocalInterpolation, METH_VARARGS|METH_KEYWORDS, "ND_R2D_FiniteElement_GetLocalInterpolation(ND_R2D_FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "ND_R2D_FiniteElement_GetLocalRestriction", (PyCFunction)(void(*)(void))_wrap_ND_R2D_FiniteElement_GetLocalRestriction, METH_VARARGS|METH_KEYWORDS, "ND_R2D_FiniteElement_GetLocalRestriction(ND_R2D_FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"},
+	 { "ND_R2D_FiniteElement_GetTransferMatrix", (PyCFunction)(void(*)(void))_wrap_ND_R2D_FiniteElement_GetTransferMatrix, METH_VARARGS|METH_KEYWORDS, "ND_R2D_FiniteElement_GetTransferMatrix(ND_R2D_FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "ND_R2D_FiniteElement_Project", _wrap_ND_R2D_FiniteElement_Project, METH_VARARGS, "\n"
+		"ND_R2D_FiniteElement_Project(ND_R2D_FiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"ND_R2D_FiniteElement_Project(ND_R2D_FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		""},
+	 { "ND_R2D_FiniteElement_ProjectGrad", (PyCFunction)(void(*)(void))_wrap_ND_R2D_FiniteElement_ProjectGrad, METH_VARARGS|METH_KEYWORDS, "ND_R2D_FiniteElement_ProjectGrad(ND_R2D_FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"},
+	 { "delete_ND_R2D_FiniteElement", _wrap_delete_ND_R2D_FiniteElement, METH_O, "delete_ND_R2D_FiniteElement(ND_R2D_FiniteElement self)"},
+	 { "ND_R2D_FiniteElement_swigregister", ND_R2D_FiniteElement_swigregister, METH_O, NULL},
+	 { "new_ND_R2D_TriangleElement", (PyCFunction)(void(*)(void))_wrap_new_ND_R2D_TriangleElement, METH_VARARGS|METH_KEYWORDS, "new_ND_R2D_TriangleElement(int const p, int const cb_type=GaussLobatto) -> ND_R2D_TriangleElement"},
+	 { "ND_R2D_TriangleElement_CalcPhysCurlShape", (PyCFunction)(void(*)(void))_wrap_ND_R2D_TriangleElement_CalcPhysCurlShape, METH_VARARGS|METH_KEYWORDS, "ND_R2D_TriangleElement_CalcPhysCurlShape(ND_R2D_TriangleElement self, mfem::ElementTransformation & Trans, DenseMatrix curl_shape)"},
+	 { "ND_R2D_TriangleElement_CalcVShape", _wrap_ND_R2D_TriangleElement_CalcVShape, METH_VARARGS, "\n"
+		"ND_R2D_TriangleElement_CalcVShape(ND_R2D_TriangleElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"ND_R2D_TriangleElement_CalcVShape(ND_R2D_TriangleElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		"ND_R2D_TriangleElement_CalcVShape(ND_R2D_TriangleElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		""},
+	 { "ND_R2D_TriangleElement_CalcCurlShape", (PyCFunction)(void(*)(void))_wrap_ND_R2D_TriangleElement_CalcCurlShape, METH_VARARGS|METH_KEYWORDS, "ND_R2D_TriangleElement_CalcCurlShape(ND_R2D_TriangleElement self, IntegrationPoint ip, DenseMatrix curl_shape)"},
+	 { "delete_ND_R2D_TriangleElement", _wrap_delete_ND_R2D_TriangleElement, METH_O, "delete_ND_R2D_TriangleElement(ND_R2D_TriangleElement self)"},
+	 { "ND_R2D_TriangleElement_swigregister", ND_R2D_TriangleElement_swigregister, METH_O, NULL},
+	 { "ND_R2D_TriangleElement_swiginit", ND_R2D_TriangleElement_swiginit, METH_VARARGS, NULL},
+	 { "new_ND_R2D_QuadrilateralElement", (PyCFunction)(void(*)(void))_wrap_new_ND_R2D_QuadrilateralElement, METH_VARARGS|METH_KEYWORDS, "new_ND_R2D_QuadrilateralElement(int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> ND_R2D_QuadrilateralElement"},
+	 { "ND_R2D_QuadrilateralElement_CalcPhysCurlShape", (PyCFunction)(void(*)(void))_wrap_ND_R2D_QuadrilateralElement_CalcPhysCurlShape, METH_VARARGS|METH_KEYWORDS, "ND_R2D_QuadrilateralElement_CalcPhysCurlShape(ND_R2D_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix curl_shape)"},
+	 { "ND_R2D_QuadrilateralElement_CalcVShape", _wrap_ND_R2D_QuadrilateralElement_CalcVShape, METH_VARARGS, "\n"
+		"ND_R2D_QuadrilateralElement_CalcVShape(ND_R2D_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"ND_R2D_QuadrilateralElement_CalcVShape(ND_R2D_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		"ND_R2D_QuadrilateralElement_CalcVShape(ND_R2D_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		""},
+	 { "ND_R2D_QuadrilateralElement_CalcCurlShape", (PyCFunction)(void(*)(void))_wrap_ND_R2D_QuadrilateralElement_CalcCurlShape, METH_VARARGS|METH_KEYWORDS, "ND_R2D_QuadrilateralElement_CalcCurlShape(ND_R2D_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix curl_shape)"},
+	 { "delete_ND_R2D_QuadrilateralElement", _wrap_delete_ND_R2D_QuadrilateralElement, METH_O, "delete_ND_R2D_QuadrilateralElement(ND_R2D_QuadrilateralElement self)"},
+	 { "ND_R2D_QuadrilateralElement_swigregister", ND_R2D_QuadrilateralElement_swigregister, METH_O, NULL},
+	 { "ND_R2D_QuadrilateralElement_swiginit", ND_R2D_QuadrilateralElement_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -10757,6 +15219,99 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_ND_WedgeElement", _wrap_delete_ND_WedgeElement, METH_O, "delete_ND_WedgeElement(ND_WedgeElement self)"},
 	 { "ND_WedgeElement_swigregister", ND_WedgeElement_swigregister, METH_O, NULL},
 	 { "ND_WedgeElement_swiginit", ND_WedgeElement_swiginit, METH_VARARGS, NULL},
+	 { "new_ND_R1D_PointElement", (PyCFunction)(void(*)(void))_wrap_new_ND_R1D_PointElement, METH_VARARGS|METH_KEYWORDS, "new_ND_R1D_PointElement(int p) -> ND_R1D_PointElement"},
+	 { "ND_R1D_PointElement_CalcVShape", _wrap_ND_R1D_PointElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(ND_R1D_PointElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(ND_R1D_PointElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		"CalcVShape(ND_R1D_PointElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(ND_R1D_PointElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "delete_ND_R1D_PointElement", _wrap_delete_ND_R1D_PointElement, METH_O, "delete_ND_R1D_PointElement(ND_R1D_PointElement self)"},
+	 { "ND_R1D_PointElement_swigregister", ND_R1D_PointElement_swigregister, METH_O, NULL},
+	 { "ND_R1D_PointElement_swiginit", ND_R1D_PointElement_swiginit, METH_VARARGS, NULL},
+	 { "new_ND_R1D_SegmentElement", (PyCFunction)(void(*)(void))_wrap_new_ND_R1D_SegmentElement, METH_VARARGS|METH_KEYWORDS, "new_ND_R1D_SegmentElement(int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> ND_R1D_SegmentElement"},
+	 { "ND_R1D_SegmentElement_CalcVShape", _wrap_ND_R1D_SegmentElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(ND_R1D_SegmentElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(ND_R1D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		"CalcVShape(ND_R1D_SegmentElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(ND_R1D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "ND_R1D_SegmentElement_CalcCurlShape", (PyCFunction)(void(*)(void))_wrap_ND_R1D_SegmentElement_CalcCurlShape, METH_VARARGS|METH_KEYWORDS, "CalcCurlShape(ND_R1D_SegmentElement self, IntegrationPoint ip, DenseMatrix curl_shape)"},
+	 { "ND_R1D_SegmentElement_CalcPhysCurlShape", _wrap_ND_R1D_SegmentElement_CalcPhysCurlShape, METH_VARARGS, "\n"
+		"CalcPhysCurlShape(ND_R1D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix curl_shape)\n"
+		"CalcPhysCurlShape(ND_R1D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix curl_shape)\n"
+		""},
+	 { "ND_R1D_SegmentElement_GetLocalInterpolation", (PyCFunction)(void(*)(void))_wrap_ND_R1D_SegmentElement_GetLocalInterpolation, METH_VARARGS|METH_KEYWORDS, "GetLocalInterpolation(ND_R1D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "ND_R1D_SegmentElement_GetLocalRestriction", (PyCFunction)(void(*)(void))_wrap_ND_R1D_SegmentElement_GetLocalRestriction, METH_VARARGS|METH_KEYWORDS, "GetLocalRestriction(ND_R1D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"},
+	 { "ND_R1D_SegmentElement_GetTransferMatrix", (PyCFunction)(void(*)(void))_wrap_ND_R1D_SegmentElement_GetTransferMatrix, METH_VARARGS|METH_KEYWORDS, "GetTransferMatrix(ND_R1D_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "ND_R1D_SegmentElement_ProjectFromNodes", (PyCFunction)(void(*)(void))_wrap_ND_R1D_SegmentElement_ProjectFromNodes, METH_VARARGS|METH_KEYWORDS, "ProjectFromNodes(ND_R1D_SegmentElement self, Vector vc, mfem::ElementTransformation & Trans, Vector dofs)"},
+	 { "ND_R1D_SegmentElement_ProjectMatrixCoefficient", (PyCFunction)(void(*)(void))_wrap_ND_R1D_SegmentElement_ProjectMatrixCoefficient, METH_VARARGS|METH_KEYWORDS, "ProjectMatrixCoefficient(ND_R1D_SegmentElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"},
+	 { "ND_R1D_SegmentElement_Project", _wrap_ND_R1D_SegmentElement_Project, METH_VARARGS, "\n"
+		"Project(ND_R1D_SegmentElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(ND_R1D_SegmentElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(ND_R1D_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"Project(ND_R1D_SegmentElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(ND_R1D_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		""},
+	 { "ND_R1D_SegmentElement_ProjectGrad", (PyCFunction)(void(*)(void))_wrap_ND_R1D_SegmentElement_ProjectGrad, METH_VARARGS|METH_KEYWORDS, "ProjectGrad(ND_R1D_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"},
+	 { "ND_R1D_SegmentElement_ProjectCurl", (PyCFunction)(void(*)(void))_wrap_ND_R1D_SegmentElement_ProjectCurl, METH_VARARGS|METH_KEYWORDS, "ProjectCurl(ND_R1D_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"},
+	 { "delete_ND_R1D_SegmentElement", _wrap_delete_ND_R1D_SegmentElement, METH_O, "delete_ND_R1D_SegmentElement(ND_R1D_SegmentElement self)"},
+	 { "ND_R1D_SegmentElement_swigregister", ND_R1D_SegmentElement_swigregister, METH_O, NULL},
+	 { "ND_R1D_SegmentElement_swiginit", ND_R1D_SegmentElement_swiginit, METH_VARARGS, NULL},
+	 { "new_ND_R2D_SegmentElement", (PyCFunction)(void(*)(void))_wrap_new_ND_R2D_SegmentElement, METH_VARARGS|METH_KEYWORDS, "new_ND_R2D_SegmentElement(int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> ND_R2D_SegmentElement"},
+	 { "ND_R2D_SegmentElement_CalcVShape", _wrap_ND_R2D_SegmentElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(ND_R2D_SegmentElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(ND_R2D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "ND_R2D_SegmentElement_CalcCurlShape", (PyCFunction)(void(*)(void))_wrap_ND_R2D_SegmentElement_CalcCurlShape, METH_VARARGS|METH_KEYWORDS, "CalcCurlShape(ND_R2D_SegmentElement self, IntegrationPoint ip, DenseMatrix curl_shape)"},
+	 { "ND_R2D_SegmentElement_GetLocalInterpolation", (PyCFunction)(void(*)(void))_wrap_ND_R2D_SegmentElement_GetLocalInterpolation, METH_VARARGS|METH_KEYWORDS, "GetLocalInterpolation(ND_R2D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "ND_R2D_SegmentElement_GetLocalRestriction", (PyCFunction)(void(*)(void))_wrap_ND_R2D_SegmentElement_GetLocalRestriction, METH_VARARGS|METH_KEYWORDS, "GetLocalRestriction(ND_R2D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"},
+	 { "ND_R2D_SegmentElement_GetTransferMatrix", (PyCFunction)(void(*)(void))_wrap_ND_R2D_SegmentElement_GetTransferMatrix, METH_VARARGS|METH_KEYWORDS, "GetTransferMatrix(ND_R2D_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "ND_R2D_SegmentElement_Project", (PyCFunction)(void(*)(void))_wrap_ND_R2D_SegmentElement_Project, METH_VARARGS|METH_KEYWORDS, "Project(ND_R2D_SegmentElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)"},
+	 { "delete_ND_R2D_SegmentElement", _wrap_delete_ND_R2D_SegmentElement, METH_O, "delete_ND_R2D_SegmentElement(ND_R2D_SegmentElement self)"},
+	 { "ND_R2D_SegmentElement_swigregister", ND_R2D_SegmentElement_swigregister, METH_O, NULL},
+	 { "ND_R2D_SegmentElement_swiginit", ND_R2D_SegmentElement_swiginit, METH_VARARGS, NULL},
+	 { "ND_R2D_FiniteElement_CalcVShape", _wrap_ND_R2D_FiniteElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(ND_R2D_FiniteElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(ND_R2D_FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		"CalcVShape(ND_R2D_FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "ND_R2D_FiniteElement_CalcPhysCurlShape", _wrap_ND_R2D_FiniteElement_CalcPhysCurlShape, METH_VARARGS, "\n"
+		"CalcPhysCurlShape(ND_R2D_FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix curl_shape)\n"
+		"CalcPhysCurlShape(ND_R2D_FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix curl_shape)\n"
+		""},
+	 { "ND_R2D_FiniteElement_GetLocalInterpolation", (PyCFunction)(void(*)(void))_wrap_ND_R2D_FiniteElement_GetLocalInterpolation, METH_VARARGS|METH_KEYWORDS, "GetLocalInterpolation(ND_R2D_FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "ND_R2D_FiniteElement_GetLocalRestriction", (PyCFunction)(void(*)(void))_wrap_ND_R2D_FiniteElement_GetLocalRestriction, METH_VARARGS|METH_KEYWORDS, "GetLocalRestriction(ND_R2D_FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"},
+	 { "ND_R2D_FiniteElement_GetTransferMatrix", (PyCFunction)(void(*)(void))_wrap_ND_R2D_FiniteElement_GetTransferMatrix, METH_VARARGS|METH_KEYWORDS, "GetTransferMatrix(ND_R2D_FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "ND_R2D_FiniteElement_Project", _wrap_ND_R2D_FiniteElement_Project, METH_VARARGS, "\n"
+		"Project(ND_R2D_FiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(ND_R2D_FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		""},
+	 { "ND_R2D_FiniteElement_ProjectGrad", (PyCFunction)(void(*)(void))_wrap_ND_R2D_FiniteElement_ProjectGrad, METH_VARARGS|METH_KEYWORDS, "ProjectGrad(ND_R2D_FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"},
+	 { "delete_ND_R2D_FiniteElement", _wrap_delete_ND_R2D_FiniteElement, METH_O, "delete_ND_R2D_FiniteElement(ND_R2D_FiniteElement self)"},
+	 { "ND_R2D_FiniteElement_swigregister", ND_R2D_FiniteElement_swigregister, METH_O, NULL},
+	 { "new_ND_R2D_TriangleElement", (PyCFunction)(void(*)(void))_wrap_new_ND_R2D_TriangleElement, METH_VARARGS|METH_KEYWORDS, "new_ND_R2D_TriangleElement(int const p, int const cb_type=GaussLobatto) -> ND_R2D_TriangleElement"},
+	 { "ND_R2D_TriangleElement_CalcPhysCurlShape", (PyCFunction)(void(*)(void))_wrap_ND_R2D_TriangleElement_CalcPhysCurlShape, METH_VARARGS|METH_KEYWORDS, "CalcPhysCurlShape(ND_R2D_TriangleElement self, mfem::ElementTransformation & Trans, DenseMatrix curl_shape)"},
+	 { "ND_R2D_TriangleElement_CalcVShape", _wrap_ND_R2D_TriangleElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(ND_R2D_TriangleElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(ND_R2D_TriangleElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		"CalcVShape(ND_R2D_TriangleElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		""},
+	 { "ND_R2D_TriangleElement_CalcCurlShape", (PyCFunction)(void(*)(void))_wrap_ND_R2D_TriangleElement_CalcCurlShape, METH_VARARGS|METH_KEYWORDS, "CalcCurlShape(ND_R2D_TriangleElement self, IntegrationPoint ip, DenseMatrix curl_shape)"},
+	 { "delete_ND_R2D_TriangleElement", _wrap_delete_ND_R2D_TriangleElement, METH_O, "delete_ND_R2D_TriangleElement(ND_R2D_TriangleElement self)"},
+	 { "ND_R2D_TriangleElement_swigregister", ND_R2D_TriangleElement_swigregister, METH_O, NULL},
+	 { "ND_R2D_TriangleElement_swiginit", ND_R2D_TriangleElement_swiginit, METH_VARARGS, NULL},
+	 { "new_ND_R2D_QuadrilateralElement", (PyCFunction)(void(*)(void))_wrap_new_ND_R2D_QuadrilateralElement, METH_VARARGS|METH_KEYWORDS, "new_ND_R2D_QuadrilateralElement(int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> ND_R2D_QuadrilateralElement"},
+	 { "ND_R2D_QuadrilateralElement_CalcPhysCurlShape", (PyCFunction)(void(*)(void))_wrap_ND_R2D_QuadrilateralElement_CalcPhysCurlShape, METH_VARARGS|METH_KEYWORDS, "CalcPhysCurlShape(ND_R2D_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix curl_shape)"},
+	 { "ND_R2D_QuadrilateralElement_CalcVShape", _wrap_ND_R2D_QuadrilateralElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(ND_R2D_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(ND_R2D_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		"CalcVShape(ND_R2D_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		""},
+	 { "ND_R2D_QuadrilateralElement_CalcCurlShape", (PyCFunction)(void(*)(void))_wrap_ND_R2D_QuadrilateralElement_CalcCurlShape, METH_VARARGS|METH_KEYWORDS, "CalcCurlShape(ND_R2D_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix curl_shape)"},
+	 { "delete_ND_R2D_QuadrilateralElement", _wrap_delete_ND_R2D_QuadrilateralElement, METH_O, "delete_ND_R2D_QuadrilateralElement(ND_R2D_QuadrilateralElement self)"},
+	 { "ND_R2D_QuadrilateralElement_swigregister", ND_R2D_QuadrilateralElement_swigregister, METH_O, NULL},
+	 { "ND_R2D_QuadrilateralElement_swiginit", ND_R2D_QuadrilateralElement_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -10889,38 +15444,56 @@ static void *_p_mfem__MatrixInverseTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPAR
 static void *_p_mfem__DenseMatrixInverseTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Solver *) (mfem::MatrixInverse *) ((mfem::DenseMatrixInverse *) x));
 }
-static void *_p_mfem__ScalarFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *)  ((mfem::ScalarFiniteElement *) x));
+static void *_p_mfem__ND_R2D_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_R2D_SegmentElement *) x));
 }
-static void *_p_mfem__NodalFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *) ((mfem::NodalFiniteElement *) x));
+static void *_p_mfem__ND_R1D_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_R1D_SegmentElement *) x));
 }
-static void *_p_mfem__VectorFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *)  ((mfem::VectorFiniteElement *) x));
+static void *_p_mfem__ND_R1D_PointElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_R1D_PointElement *) x));
 }
-static void *_p_mfem__NodalTensorFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::NodalTensorFiniteElement *) x));
-}
-static void *_p_mfem__VectorTensorFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::VectorTensorFiniteElement *) x));
-}
-static void *_p_mfem__ND_HexahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *)(mfem::VectorTensorFiniteElement *) ((mfem::ND_HexahedronElement *) x));
-}
-static void *_p_mfem__ND_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *)(mfem::VectorTensorFiniteElement *) ((mfem::ND_QuadrilateralElement *) x));
-}
-static void *_p_mfem__ND_TetrahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_TetrahedronElement *) x));
-}
-static void *_p_mfem__ND_TriangleElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_TriangleElement *) x));
+static void *_p_mfem__ND_WedgeElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_WedgeElement *) x));
 }
 static void *_p_mfem__ND_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *)(mfem::VectorTensorFiniteElement *) ((mfem::ND_SegmentElement *) x));
 }
-static void *_p_mfem__ND_WedgeElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_WedgeElement *) x));
+static void *_p_mfem__ND_TriangleElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_TriangleElement *) x));
+}
+static void *_p_mfem__ND_TetrahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_TetrahedronElement *) x));
+}
+static void *_p_mfem__ND_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *)(mfem::VectorTensorFiniteElement *) ((mfem::ND_QuadrilateralElement *) x));
+}
+static void *_p_mfem__ND_HexahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *)(mfem::VectorTensorFiniteElement *) ((mfem::ND_HexahedronElement *) x));
+}
+static void *_p_mfem__VectorTensorFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::VectorTensorFiniteElement *) x));
+}
+static void *_p_mfem__NodalTensorFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::NodalTensorFiniteElement *) x));
+}
+static void *_p_mfem__VectorFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *)  ((mfem::VectorFiniteElement *) x));
+}
+static void *_p_mfem__NodalFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *) ((mfem::NodalFiniteElement *) x));
+}
+static void *_p_mfem__ScalarFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *)  ((mfem::ScalarFiniteElement *) x));
+}
+static void *_p_mfem__ND_R2D_FiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_R2D_FiniteElement *) x));
+}
+static void *_p_mfem__ND_R2D_TriangleElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *)(mfem::ND_R2D_FiniteElement *) ((mfem::ND_R2D_TriangleElement *) x));
+}
+static void *_p_mfem__ND_R2D_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *)(mfem::ND_R2D_FiniteElement *) ((mfem::ND_R2D_QuadrilateralElement *) x));
 }
 static void *_p_mfem__ND_HexahedronElementTo_p_mfem__VectorTensorFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::VectorTensorFiniteElement *)  ((mfem::ND_HexahedronElement *) x));
@@ -10952,6 +15525,24 @@ static void *_p_mfem__ND_SegmentElementTo_p_mfem__VectorFiniteElement(void *x, i
 static void *_p_mfem__ND_WedgeElementTo_p_mfem__VectorFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::VectorFiniteElement *)  ((mfem::ND_WedgeElement *) x));
 }
+static void *_p_mfem__ND_R1D_PointElementTo_p_mfem__VectorFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorFiniteElement *)  ((mfem::ND_R1D_PointElement *) x));
+}
+static void *_p_mfem__ND_R1D_SegmentElementTo_p_mfem__VectorFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorFiniteElement *)  ((mfem::ND_R1D_SegmentElement *) x));
+}
+static void *_p_mfem__ND_R2D_SegmentElementTo_p_mfem__VectorFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorFiniteElement *)  ((mfem::ND_R2D_SegmentElement *) x));
+}
+static void *_p_mfem__ND_R2D_FiniteElementTo_p_mfem__VectorFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorFiniteElement *)  ((mfem::ND_R2D_FiniteElement *) x));
+}
+static void *_p_mfem__ND_R2D_TriangleElementTo_p_mfem__VectorFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorFiniteElement *) (mfem::ND_R2D_FiniteElement *) ((mfem::ND_R2D_TriangleElement *) x));
+}
+static void *_p_mfem__ND_R2D_QuadrilateralElementTo_p_mfem__VectorFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorFiniteElement *) (mfem::ND_R2D_FiniteElement *) ((mfem::ND_R2D_QuadrilateralElement *) x));
+}
 static void *_p_mfem__NodalTensorFiniteElementTo_p_mfem__TensorBasisElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::TensorBasisElement *)  ((mfem::NodalTensorFiniteElement *) x));
 }
@@ -10967,6 +15558,12 @@ static void *_p_mfem__ND_QuadrilateralElementTo_p_mfem__TensorBasisElement(void 
 static void *_p_mfem__ND_SegmentElementTo_p_mfem__TensorBasisElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::TensorBasisElement *) (mfem::VectorTensorFiniteElement *) ((mfem::ND_SegmentElement *) x));
 }
+static void *_p_mfem__ND_R2D_TriangleElementTo_p_mfem__ND_R2D_FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ND_R2D_FiniteElement *)  ((mfem::ND_R2D_TriangleElement *) x));
+}
+static void *_p_mfem__ND_R2D_QuadrilateralElementTo_p_mfem__ND_R2D_FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ND_R2D_FiniteElement *)  ((mfem::ND_R2D_QuadrilateralElement *) x));
+}
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_bool = {"_p_bool", "bool *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
@@ -10976,14 +15573,20 @@ static swig_type_info _swigt__p_mfem__Coefficient = {"_p_mfem__Coefficient", "mf
 static swig_type_info _swigt__p_mfem__DenseMatrix = {"_p_mfem__DenseMatrix", "mfem::DenseMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ElementTransformation = {"_p_mfem__ElementTransformation", "mfem::ElementTransformation *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__FiniteElement = {"_p_mfem__FiniteElement", "mfem::FiniteElement *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__ScalarFiniteElement = {"_p_mfem__ScalarFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__NodalFiniteElement = {"_p_mfem__NodalFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__NodalTensorFiniteElement = {"_p_mfem__NodalTensorFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ScalarFiniteElement = {"_p_mfem__ScalarFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationPoint = {"_p_mfem__IntegrationPoint", "mfem::IntegrationPoint *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__MatrixCoefficient = {"_p_mfem__MatrixCoefficient", "mfem::MatrixCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ND_HexahedronElement = {"_p_mfem__ND_HexahedronElement", "mfem::ND_HexahedronElement *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ND_QuadrilateralElement = {"_p_mfem__ND_QuadrilateralElement", "mfem::ND_QuadrilateralElement *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ND_R1D_PointElement = {"_p_mfem__ND_R1D_PointElement", "mfem::ND_R1D_PointElement *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ND_R1D_SegmentElement = {"_p_mfem__ND_R1D_SegmentElement", "mfem::ND_R1D_SegmentElement *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ND_R2D_FiniteElement = {"_p_mfem__ND_R2D_FiniteElement", "mfem::ND_R2D_FiniteElement *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ND_R2D_QuadrilateralElement = {"_p_mfem__ND_R2D_QuadrilateralElement", "mfem::ND_R2D_QuadrilateralElement *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ND_R2D_SegmentElement = {"_p_mfem__ND_R2D_SegmentElement", "mfem::ND_R2D_SegmentElement *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ND_R2D_TriangleElement = {"_p_mfem__ND_R2D_TriangleElement", "mfem::ND_R2D_TriangleElement *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ND_SegmentElement = {"_p_mfem__ND_SegmentElement", "mfem::ND_SegmentElement *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ND_TetrahedronElement = {"_p_mfem__ND_TetrahedronElement", "mfem::ND_TetrahedronElement *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ND_TriangleElement = {"_p_mfem__ND_TriangleElement", "mfem::ND_TriangleElement *", 0, 0, (void*)0, 0};
@@ -11056,6 +15659,12 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__MatrixInverse,
   &_swigt__p_mfem__ND_HexahedronElement,
   &_swigt__p_mfem__ND_QuadrilateralElement,
+  &_swigt__p_mfem__ND_R1D_PointElement,
+  &_swigt__p_mfem__ND_R1D_SegmentElement,
+  &_swigt__p_mfem__ND_R2D_FiniteElement,
+  &_swigt__p_mfem__ND_R2D_QuadrilateralElement,
+  &_swigt__p_mfem__ND_R2D_SegmentElement,
+  &_swigt__p_mfem__ND_R2D_TriangleElement,
   &_swigt__p_mfem__ND_SegmentElement,
   &_swigt__p_mfem__ND_TetrahedronElement,
   &_swigt__p_mfem__ND_TriangleElement,
@@ -11113,15 +15722,21 @@ static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0
 static swig_cast_info _swigc__p_mfem__Coefficient[] = {  {&_swigt__p_mfem__Coefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {  {&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ElementTransformation[] = {  {&_swigt__p_mfem__ElementTransformation, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ScalarFiniteElement[] = {{&_swigt__p_mfem__ScalarFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NodalFiniteElement[] = {{&_swigt__p_mfem__NodalFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NodalTensorFiniteElement[] = {{&_swigt__p_mfem__NodalTensorFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__FiniteElement[] = {  {&_swigt__p_mfem__FiniteElement, 0, 0, 0},  {&_swigt__p_mfem__ScalarFiniteElement, _p_mfem__ScalarFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NodalFiniteElement, _p_mfem__NodalFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__VectorFiniteElement, _p_mfem__VectorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__VectorTensorFiniteElement, _p_mfem__VectorTensorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_HexahedronElement, _p_mfem__ND_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_QuadrilateralElement, _p_mfem__ND_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_SegmentElement, _p_mfem__ND_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TetrahedronElement, _p_mfem__ND_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TriangleElement, _p_mfem__ND_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_WedgeElement, _p_mfem__ND_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NodalTensorFiniteElement, _p_mfem__NodalTensorFiniteElementTo_p_mfem__FiniteElement, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ScalarFiniteElement[] = {{&_swigt__p_mfem__ScalarFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__FiniteElement[] = {  {&_swigt__p_mfem__ND_QuadrilateralElement, _p_mfem__ND_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TetrahedronElement, _p_mfem__ND_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TriangleElement, _p_mfem__ND_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_SegmentElement, _p_mfem__ND_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_WedgeElement, _p_mfem__ND_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_R1D_PointElement, _p_mfem__ND_R1D_PointElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_R1D_SegmentElement, _p_mfem__ND_R1D_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_R2D_SegmentElement, _p_mfem__ND_R2D_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_R2D_FiniteElement, _p_mfem__ND_R2D_FiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_R2D_TriangleElement, _p_mfem__ND_R2D_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_R2D_QuadrilateralElement, _p_mfem__ND_R2D_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__VectorFiniteElement, _p_mfem__VectorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NodalFiniteElement, _p_mfem__NodalFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__FiniteElement, 0, 0, 0},  {&_swigt__p_mfem__ND_HexahedronElement, _p_mfem__ND_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__VectorTensorFiniteElement, _p_mfem__VectorTensorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NodalTensorFiniteElement, _p_mfem__NodalTensorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ScalarFiniteElement, _p_mfem__ScalarFiniteElementTo_p_mfem__FiniteElement, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationPoint[] = {  {&_swigt__p_mfem__IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MatrixCoefficient[] = {  {&_swigt__p_mfem__MatrixCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ND_HexahedronElement[] = {  {&_swigt__p_mfem__ND_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ND_QuadrilateralElement[] = {  {&_swigt__p_mfem__ND_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ND_R1D_PointElement[] = {  {&_swigt__p_mfem__ND_R1D_PointElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ND_R1D_SegmentElement[] = {  {&_swigt__p_mfem__ND_R1D_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ND_R2D_FiniteElement[] = {  {&_swigt__p_mfem__ND_R2D_FiniteElement, 0, 0, 0},  {&_swigt__p_mfem__ND_R2D_TriangleElement, _p_mfem__ND_R2D_TriangleElementTo_p_mfem__ND_R2D_FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_R2D_QuadrilateralElement, _p_mfem__ND_R2D_QuadrilateralElementTo_p_mfem__ND_R2D_FiniteElement, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ND_R2D_QuadrilateralElement[] = {  {&_swigt__p_mfem__ND_R2D_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ND_R2D_SegmentElement[] = {  {&_swigt__p_mfem__ND_R2D_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ND_R2D_TriangleElement[] = {  {&_swigt__p_mfem__ND_R2D_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ND_SegmentElement[] = {  {&_swigt__p_mfem__ND_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ND_TetrahedronElement[] = {  {&_swigt__p_mfem__ND_TetrahedronElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ND_TriangleElement[] = {  {&_swigt__p_mfem__ND_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
@@ -11148,7 +15763,7 @@ static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__Solver, 0,
 static swig_cast_info _swigc__p_mfem__TensorBasisElement[] = {  {&_swigt__p_mfem__TensorBasisElement, 0, 0, 0},  {&_swigt__p_mfem__NodalTensorFiniteElement, _p_mfem__NodalTensorFiniteElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__VectorTensorFiniteElement, _p_mfem__VectorTensorFiniteElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__ND_HexahedronElement, _p_mfem__ND_HexahedronElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__ND_QuadrilateralElement, _p_mfem__ND_QuadrilateralElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__ND_SegmentElement, _p_mfem__ND_SegmentElementTo_p_mfem__TensorBasisElement, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__VectorCoefficient[] = {  {&_swigt__p_mfem__VectorCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorFiniteElement[] = {  {&_swigt__p_mfem__VectorFiniteElement, 0, 0, 0},  {&_swigt__p_mfem__VectorTensorFiniteElement, _p_mfem__VectorTensorFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_HexahedronElement, _p_mfem__ND_HexahedronElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_QuadrilateralElement, _p_mfem__ND_QuadrilateralElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_SegmentElement, _p_mfem__ND_SegmentElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TetrahedronElement, _p_mfem__ND_TetrahedronElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TriangleElement, _p_mfem__ND_TriangleElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_WedgeElement, _p_mfem__ND_WedgeElementTo_p_mfem__VectorFiniteElement, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorFiniteElement[] = {  {&_swigt__p_mfem__VectorTensorFiniteElement, _p_mfem__VectorTensorFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_HexahedronElement, _p_mfem__ND_HexahedronElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_QuadrilateralElement, _p_mfem__ND_QuadrilateralElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TetrahedronElement, _p_mfem__ND_TetrahedronElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TriangleElement, _p_mfem__ND_TriangleElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_SegmentElement, _p_mfem__ND_SegmentElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_WedgeElement, _p_mfem__ND_WedgeElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_R1D_PointElement, _p_mfem__ND_R1D_PointElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_R1D_SegmentElement, _p_mfem__ND_R1D_SegmentElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_R2D_SegmentElement, _p_mfem__ND_R2D_SegmentElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_R2D_FiniteElement, _p_mfem__ND_R2D_FiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_R2D_TriangleElement, _p_mfem__ND_R2D_TriangleElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_R2D_QuadrilateralElement, _p_mfem__ND_R2D_QuadrilateralElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__VectorFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__VectorTensorFiniteElement[] = {  {&_swigt__p_mfem__VectorTensorFiniteElement, 0, 0, 0},  {&_swigt__p_mfem__ND_HexahedronElement, _p_mfem__ND_HexahedronElementTo_p_mfem__VectorTensorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_QuadrilateralElement, _p_mfem__ND_QuadrilateralElementTo_p_mfem__VectorTensorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_SegmentElement, _p_mfem__ND_SegmentElementTo_p_mfem__VectorTensorFiniteElement, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__IntegrationRule[] = {  {&_swigt__p_p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
@@ -11194,6 +15809,12 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__MatrixInverse,
   _swigc__p_mfem__ND_HexahedronElement,
   _swigc__p_mfem__ND_QuadrilateralElement,
+  _swigc__p_mfem__ND_R1D_PointElement,
+  _swigc__p_mfem__ND_R1D_SegmentElement,
+  _swigc__p_mfem__ND_R2D_FiniteElement,
+  _swigc__p_mfem__ND_R2D_QuadrilateralElement,
+  _swigc__p_mfem__ND_R2D_SegmentElement,
+  _swigc__p_mfem__ND_R2D_TriangleElement,
   _swigc__p_mfem__ND_SegmentElement,
   _swigc__p_mfem__ND_TetrahedronElement,
   _swigc__p_mfem__ND_TriangleElement,

@@ -4,14 +4,22 @@ from os.path import expanduser, join
 import sys
 import numpy as np
 import io
+
 from mfem import path as mfem_path
 
-import mfem.par as mfem
-use_parallel = True
-from mfem.common.mpi_debug import nicePrint
-from mpi4py import MPI
-myid  = MPI.COMM_WORLD.rank
-from mfem.common.parcsr_extra import ToScipyCoo
+if len(sys.argv) > 1 and sys.argv[1] == '-p':   
+    import mfem.par as mfem
+    use_parallel = True
+    from mfem.common.mpi_debug import nicePrint as print
+    from mpi4py import MPI
+    myid  = MPI.COMM_WORLD.rank
+    from mfem.common.parcsr_extra import ToScipyCoo
+    from mfem.common.mpi_debug import nicePrint
+else:
+    import mfem.ser as mfem
+    use_parallel = False
+    myid = 0
+
 
 def get_inv_doftrans(doftrans):
     if doftrans is not None:
@@ -47,6 +55,10 @@ def run_test():
           str(pfes.GetTrueVSize()))
 
     P = pfes.Dof_TrueDof_Matrix()
+
+    diag = mfem.Vector()
+    P.GetDiag(diag)
+    print(diag.GetDataArray())
     P = ToScipyCoo(P).tocsr()
     nicePrint("size", P.indptr.shape, P.shape)
     VDoFtoGTDoF1 = P.indices
@@ -74,5 +86,7 @@ def run_test():
              print("Global TDoFs GetGlobalTDoFNumber:", gtdof2)                  
 if __name__ == "__main__":
 
-    
-    run_test()
+    if not use_parallel:
+        print("this is parallel only, skipping")
+    else:
+        run_test()

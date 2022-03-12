@@ -3,8 +3,10 @@
 %{
 #include <iostream>  
 #include "mfem.hpp"
-#include "pyoperator.hpp"      
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"
+#include "pyoperator.hpp"
+#include "../common/pysolvers.hpp"
+#include "../common/pycoefficient.hpp"
 %}
 
 %init %{

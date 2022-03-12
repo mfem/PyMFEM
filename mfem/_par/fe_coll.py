@@ -528,6 +528,210 @@ class ND_Trace_FECollection(ND_FECollection):
 # Register ND_Trace_FECollection in _fe_coll:
 _fe_coll.ND_Trace_FECollection_swigregister(ND_Trace_FECollection)
 
+class ND_R1D_FECollection(FiniteElementCollection):
+    r"""Proxy of C++ mfem::ND_R1D_FECollection class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        r"""__init__(ND_R1D_FECollection self, int const p, int const dim, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> ND_R1D_FECollection"""
+        _fe_coll.ND_R1D_FECollection_swiginit(self, _fe_coll.new_ND_R1D_FECollection(*args, **kwargs))
+
+    def FiniteElementForGeometry(self, GeomType):
+        r"""FiniteElementForGeometry(ND_R1D_FECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
+        return _fe_coll.ND_R1D_FECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.ND_R1D_FECollection_FiniteElementForGeometry)
+
+    def DofForGeometry(self, GeomType):
+        r"""DofForGeometry(ND_R1D_FECollection self, mfem::Geometry::Type GeomType) -> int"""
+        return _fe_coll.ND_R1D_FECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.ND_R1D_FECollection_DofForGeometry)
+
+    def DofOrderForOrientation(self, GeomType, Or):
+        r"""DofOrderForOrientation(ND_R1D_FECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
+        return _fe_coll.ND_R1D_FECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.ND_R1D_FECollection_DofOrderForOrientation)
+
+    def Name(self):
+        r"""Name(ND_R1D_FECollection self) -> char const *"""
+        return _fe_coll.ND_R1D_FECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.ND_R1D_FECollection_Name)
+
+    def GetContType(self):
+        r"""GetContType(ND_R1D_FECollection self) -> int"""
+        return _fe_coll.ND_R1D_FECollection_GetContType(self)
+    GetContType = _swig_new_instance_method(_fe_coll.ND_R1D_FECollection_GetContType)
+
+    def GetTraceCollection(self):
+        r"""GetTraceCollection(ND_R1D_FECollection self) -> FiniteElementCollection"""
+        return _fe_coll.ND_R1D_FECollection_GetTraceCollection(self)
+    GetTraceCollection = _swig_new_instance_method(_fe_coll.ND_R1D_FECollection_GetTraceCollection)
+    __swig_destroy__ = _fe_coll.delete_ND_R1D_FECollection
+
+# Register ND_R1D_FECollection in _fe_coll:
+_fe_coll.ND_R1D_FECollection_swigregister(ND_R1D_FECollection)
+
+class RT_R1D_FECollection(FiniteElementCollection):
+    r"""Proxy of C++ mfem::RT_R1D_FECollection class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        r"""__init__(RT_R1D_FECollection self, int const p, int const dim, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> RT_R1D_FECollection"""
+        _fe_coll.RT_R1D_FECollection_swiginit(self, _fe_coll.new_RT_R1D_FECollection(*args, **kwargs))
+
+    def FiniteElementForGeometry(self, GeomType):
+        r"""FiniteElementForGeometry(RT_R1D_FECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
+        return _fe_coll.RT_R1D_FECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.RT_R1D_FECollection_FiniteElementForGeometry)
+
+    def DofForGeometry(self, GeomType):
+        r"""DofForGeometry(RT_R1D_FECollection self, mfem::Geometry::Type GeomType) -> int"""
+        return _fe_coll.RT_R1D_FECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.RT_R1D_FECollection_DofForGeometry)
+
+    def DofOrderForOrientation(self, GeomType, Or):
+        r"""DofOrderForOrientation(RT_R1D_FECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
+        return _fe_coll.RT_R1D_FECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.RT_R1D_FECollection_DofOrderForOrientation)
+
+    def Name(self):
+        r"""Name(RT_R1D_FECollection self) -> char const *"""
+        return _fe_coll.RT_R1D_FECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.RT_R1D_FECollection_Name)
+
+    def GetContType(self):
+        r"""GetContType(RT_R1D_FECollection self) -> int"""
+        return _fe_coll.RT_R1D_FECollection_GetContType(self)
+    GetContType = _swig_new_instance_method(_fe_coll.RT_R1D_FECollection_GetContType)
+
+    def GetTraceCollection(self):
+        r"""GetTraceCollection(RT_R1D_FECollection self) -> FiniteElementCollection"""
+        return _fe_coll.RT_R1D_FECollection_GetTraceCollection(self)
+    GetTraceCollection = _swig_new_instance_method(_fe_coll.RT_R1D_FECollection_GetTraceCollection)
+    __swig_destroy__ = _fe_coll.delete_RT_R1D_FECollection
+
+# Register RT_R1D_FECollection in _fe_coll:
+_fe_coll.RT_R1D_FECollection_swigregister(RT_R1D_FECollection)
+
+class ND_R2D_FECollection(FiniteElementCollection):
+    r"""Proxy of C++ mfem::ND_R2D_FECollection class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        r"""__init__(ND_R2D_FECollection self, int const p, int const dim, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> ND_R2D_FECollection"""
+        _fe_coll.ND_R2D_FECollection_swiginit(self, _fe_coll.new_ND_R2D_FECollection(*args, **kwargs))
+
+    def FiniteElementForGeometry(self, GeomType):
+        r"""FiniteElementForGeometry(ND_R2D_FECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
+        return _fe_coll.ND_R2D_FECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.ND_R2D_FECollection_FiniteElementForGeometry)
+
+    def DofForGeometry(self, GeomType):
+        r"""DofForGeometry(ND_R2D_FECollection self, mfem::Geometry::Type GeomType) -> int"""
+        return _fe_coll.ND_R2D_FECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.ND_R2D_FECollection_DofForGeometry)
+
+    def DofOrderForOrientation(self, GeomType, Or):
+        r"""DofOrderForOrientation(ND_R2D_FECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
+        return _fe_coll.ND_R2D_FECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.ND_R2D_FECollection_DofOrderForOrientation)
+
+    def Name(self):
+        r"""Name(ND_R2D_FECollection self) -> char const *"""
+        return _fe_coll.ND_R2D_FECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.ND_R2D_FECollection_Name)
+
+    def GetContType(self):
+        r"""GetContType(ND_R2D_FECollection self) -> int"""
+        return _fe_coll.ND_R2D_FECollection_GetContType(self)
+    GetContType = _swig_new_instance_method(_fe_coll.ND_R2D_FECollection_GetContType)
+
+    def GetTraceCollection(self):
+        r"""GetTraceCollection(ND_R2D_FECollection self) -> FiniteElementCollection"""
+        return _fe_coll.ND_R2D_FECollection_GetTraceCollection(self)
+    GetTraceCollection = _swig_new_instance_method(_fe_coll.ND_R2D_FECollection_GetTraceCollection)
+    __swig_destroy__ = _fe_coll.delete_ND_R2D_FECollection
+
+# Register ND_R2D_FECollection in _fe_coll:
+_fe_coll.ND_R2D_FECollection_swigregister(ND_R2D_FECollection)
+
+class ND_R2D_Trace_FECollection(ND_R2D_FECollection):
+    r"""Proxy of C++ mfem::ND_R2D_Trace_FECollection class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        r"""__init__(ND_R2D_Trace_FECollection self, int const p, int const dim, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> ND_R2D_Trace_FECollection"""
+        _fe_coll.ND_R2D_Trace_FECollection_swiginit(self, _fe_coll.new_ND_R2D_Trace_FECollection(*args, **kwargs))
+    __swig_destroy__ = _fe_coll.delete_ND_R2D_Trace_FECollection
+
+# Register ND_R2D_Trace_FECollection in _fe_coll:
+_fe_coll.ND_R2D_Trace_FECollection_swigregister(ND_R2D_Trace_FECollection)
+
+class RT_R2D_FECollection(FiniteElementCollection):
+    r"""Proxy of C++ mfem::RT_R2D_FECollection class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        r"""__init__(RT_R2D_FECollection self, int const p, int const dim, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> RT_R2D_FECollection"""
+        _fe_coll.RT_R2D_FECollection_swiginit(self, _fe_coll.new_RT_R2D_FECollection(*args))
+
+    def FiniteElementForGeometry(self, GeomType):
+        r"""FiniteElementForGeometry(RT_R2D_FECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
+        return _fe_coll.RT_R2D_FECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.RT_R2D_FECollection_FiniteElementForGeometry)
+
+    def DofForGeometry(self, GeomType):
+        r"""DofForGeometry(RT_R2D_FECollection self, mfem::Geometry::Type GeomType) -> int"""
+        return _fe_coll.RT_R2D_FECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.RT_R2D_FECollection_DofForGeometry)
+
+    def DofOrderForOrientation(self, GeomType, Or):
+        r"""DofOrderForOrientation(RT_R2D_FECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
+        return _fe_coll.RT_R2D_FECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.RT_R2D_FECollection_DofOrderForOrientation)
+
+    def Name(self):
+        r"""Name(RT_R2D_FECollection self) -> char const *"""
+        return _fe_coll.RT_R2D_FECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.RT_R2D_FECollection_Name)
+
+    def GetContType(self):
+        r"""GetContType(RT_R2D_FECollection self) -> int"""
+        return _fe_coll.RT_R2D_FECollection_GetContType(self)
+    GetContType = _swig_new_instance_method(_fe_coll.RT_R2D_FECollection_GetContType)
+
+    def GetTraceCollection(self):
+        r"""GetTraceCollection(RT_R2D_FECollection self) -> FiniteElementCollection"""
+        return _fe_coll.RT_R2D_FECollection_GetTraceCollection(self)
+    GetTraceCollection = _swig_new_instance_method(_fe_coll.RT_R2D_FECollection_GetTraceCollection)
+    __swig_destroy__ = _fe_coll.delete_RT_R2D_FECollection
+
+# Register RT_R2D_FECollection in _fe_coll:
+_fe_coll.RT_R2D_FECollection_swigregister(RT_R2D_FECollection)
+
+class RT_R2D_Trace_FECollection(RT_R2D_FECollection):
+    r"""Proxy of C++ mfem::RT_R2D_Trace_FECollection class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        r"""__init__(RT_R2D_Trace_FECollection self, int const p, int const dim, int const map_type=INTEGRAL, int const ob_type=GaussLegendre) -> RT_R2D_Trace_FECollection"""
+        _fe_coll.RT_R2D_Trace_FECollection_swiginit(self, _fe_coll.new_RT_R2D_Trace_FECollection(*args, **kwargs))
+    __swig_destroy__ = _fe_coll.delete_RT_R2D_Trace_FECollection
+
+# Register RT_R2D_Trace_FECollection in _fe_coll:
+_fe_coll.RT_R2D_Trace_FECollection_swigregister(RT_R2D_Trace_FECollection)
+
 class NURBSFECollection(FiniteElementCollection):
     r"""Proxy of C++ mfem::NURBSFECollection class."""
 
