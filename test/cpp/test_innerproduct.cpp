@@ -24,8 +24,8 @@ int main(int argc, char *argv[]){
 
    v1->Print("hoge");
 
-   v1->Read();
-   v2->Read();   
+   Vector *gv = v1-> GlobalVector();
+
    double dot = InnerProduct(v1, v2);
    std::cout << "dot: "  << dot << "\n";
 }
