@@ -555,7 +555,15 @@ namespace mfem{
     return attr;
   }
   
-  PyObject *IsElementOnPlaneArray(double a, double b, double c, double d){
+  PyObject *IsElementOnPlaneArray(PyObject *aa, PyObject *bb, PyObject *cc, PyObject *dd){  
+    /*
+    return Boolean numpy array to indicate which element is on the plane
+    defined by ax + by + cz + d = 0
+    */
+    double a = PyFloat_AsDouble(aa);    
+    double b = PyFloat_AsDouble(bb);
+    double c = PyFloat_AsDouble(cc);
+    double d = PyFloat_AsDouble(dd);    
     /*
     return Boolean numpy array to indicate which element is on the plane
     defined by ax + by + cz + d = 0

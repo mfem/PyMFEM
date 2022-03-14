@@ -5408,7 +5408,15 @@ SWIGINTERN double mfem_Mesh_GetScaledJacobian(mfem::Mesh *self,int i,int sd=2){
       }
     return attr;
   }
-SWIGINTERN PyObject *mfem_Mesh_IsElementOnPlaneArray(mfem::Mesh *self,double a,double b,double c,double d){
+SWIGINTERN PyObject *mfem_Mesh_IsElementOnPlaneArray(mfem::Mesh *self,PyObject *aa,PyObject *bb,PyObject *cc,PyObject *dd){  
+    /*
+    return Boolean numpy array to indicate which element is on the plane
+    defined by ax + by + cz + d = 0
+    */
+    double a = PyFloat_AsDouble(aa);    
+    double b = PyFloat_AsDouble(bb);
+    double c = PyFloat_AsDouble(cc);
+    double d = PyFloat_AsDouble(dd);    
     /*
     return Boolean numpy array to indicate which element is on the plane
     defined by ax + by + cz + d = 0
@@ -25734,27 +25742,19 @@ fail:
 SWIGINTERN PyObject *_wrap_Mesh_IsElementOnPlaneArray(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
-  double arg2 ;
-  double arg3 ;
-  double arg4 ;
-  double arg5 ;
+  PyObject *arg2 = (PyObject *) 0 ;
+  PyObject *arg3 = (PyObject *) 0 ;
+  PyObject *arg4 = (PyObject *) 0 ;
+  PyObject *arg5 = (PyObject *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  double val3 ;
-  int ecode3 = 0 ;
-  double val4 ;
-  int ecode4 = 0 ;
-  double val5 ;
-  int ecode5 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   PyObject * obj4 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"a",  (char *)"b",  (char *)"c",  (char *)"d",  NULL 
+    (char *)"self",  (char *)"aa",  (char *)"bb",  (char *)"cc",  (char *)"dd",  NULL 
   };
   PyObject *result = 0 ;
   
@@ -25764,26 +25764,10 @@ SWIGINTERN PyObject *_wrap_Mesh_IsElementOnPlaneArray(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_IsElementOnPlaneArray" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
-  ecode2 = SWIG_AsVal_double(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Mesh_IsElementOnPlaneArray" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  ecode3 = SWIG_AsVal_double(obj2, &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Mesh_IsElementOnPlaneArray" "', argument " "3"" of type '" "double""'");
-  } 
-  arg3 = static_cast< double >(val3);
-  ecode4 = SWIG_AsVal_double(obj3, &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Mesh_IsElementOnPlaneArray" "', argument " "4"" of type '" "double""'");
-  } 
-  arg4 = static_cast< double >(val4);
-  ecode5 = SWIG_AsVal_double(obj4, &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "Mesh_IsElementOnPlaneArray" "', argument " "5"" of type '" "double""'");
-  } 
-  arg5 = static_cast< double >(val5);
+  arg2 = obj1;
+  arg3 = obj2;
+  arg4 = obj3;
+  arg5 = obj4;
   {
     try {
       result = (PyObject *)mfem_Mesh_IsElementOnPlaneArray(arg1,arg2,arg3,arg4,arg5);
@@ -29147,7 +29131,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "Mesh_GetDomainArray", (PyCFunction)(void(*)(void))_wrap_Mesh_GetDomainArray, METH_VARARGS|METH_KEYWORDS, "Mesh_GetDomainArray(Mesh self, int idx) -> PyObject *"},
 	 { "Mesh_GetElementCenterArray", (PyCFunction)(void(*)(void))_wrap_Mesh_GetElementCenterArray, METH_VARARGS|METH_KEYWORDS, "Mesh_GetElementCenterArray(Mesh self, int idx) -> PyObject *"},
 	 { "Mesh_GetScaledJacobian", (PyCFunction)(void(*)(void))_wrap_Mesh_GetScaledJacobian, METH_VARARGS|METH_KEYWORDS, "Mesh_GetScaledJacobian(Mesh self, int i, int sd=2) -> double"},
-	 { "Mesh_IsElementOnPlaneArray", (PyCFunction)(void(*)(void))_wrap_Mesh_IsElementOnPlaneArray, METH_VARARGS|METH_KEYWORDS, "Mesh_IsElementOnPlaneArray(Mesh self, double a, double b, double c, double d) -> PyObject *"},
+	 { "Mesh_IsElementOnPlaneArray", (PyCFunction)(void(*)(void))_wrap_Mesh_IsElementOnPlaneArray, METH_VARARGS|METH_KEYWORDS, "Mesh_IsElementOnPlaneArray(Mesh self, PyObject * aa, PyObject * bb, PyObject * cc, PyObject * dd) -> PyObject *"},
 	 { "Mesh_PrintInfo", _wrap_Mesh_PrintInfo, METH_VARARGS, "\n"
 		"Mesh_PrintInfo(Mesh self, std::ostream & os=out)\n"
 		"Mesh_PrintInfo(Mesh self, char const * file, int precision=16)\n"
@@ -29546,7 +29530,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Mesh_GetDomainArray", (PyCFunction)(void(*)(void))_wrap_Mesh_GetDomainArray, METH_VARARGS|METH_KEYWORDS, "GetDomainArray(Mesh self, int idx) -> PyObject *"},
 	 { "Mesh_GetElementCenterArray", (PyCFunction)(void(*)(void))_wrap_Mesh_GetElementCenterArray, METH_VARARGS|METH_KEYWORDS, "GetElementCenterArray(Mesh self, int idx) -> PyObject *"},
 	 { "Mesh_GetScaledJacobian", (PyCFunction)(void(*)(void))_wrap_Mesh_GetScaledJacobian, METH_VARARGS|METH_KEYWORDS, "GetScaledJacobian(Mesh self, int i, int sd=2) -> double"},
-	 { "Mesh_IsElementOnPlaneArray", (PyCFunction)(void(*)(void))_wrap_Mesh_IsElementOnPlaneArray, METH_VARARGS|METH_KEYWORDS, "IsElementOnPlaneArray(Mesh self, double a, double b, double c, double d) -> PyObject *"},
+	 { "Mesh_IsElementOnPlaneArray", (PyCFunction)(void(*)(void))_wrap_Mesh_IsElementOnPlaneArray, METH_VARARGS|METH_KEYWORDS, "IsElementOnPlaneArray(Mesh self, PyObject * aa, PyObject * bb, PyObject * cc, PyObject * dd) -> PyObject *"},
 	 { "Mesh_PrintInfo", _wrap_Mesh_PrintInfo, METH_VARARGS, "\n"
 		"PrintInfo(Mesh self, std::ostream & os=out)\n"
 		"PrintInfo(Mesh self, char const * file, int precision=16)\n"
