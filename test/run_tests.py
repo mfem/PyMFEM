@@ -34,7 +34,7 @@ files = [x for x in files if not x.startswith('test_module.py')]
 files = [x for x in files if not x.startswith('test_memory.py')]
 
 
-def run_test(in_case):
+def run_test(in_case, np):
     for t in files:
         case = t[5:-3]
 
@@ -61,7 +61,7 @@ def run_test(in_case):
         os.chdir(d2)
 
         print("#### running (parallel): " + t)
-        comm = [sys.executable,  "../../../"+t, "-p"]
+        comm = ["mpirun", "-np", np, sys.executable,  "../../../"+t, "-p"]
         p = sp.Popen(comm, stdout=sp.PIPE, stderr=sp.STDOUT, stdin=sp.PIPE)
         lines, errs = p.communicate()
         print(lines.decode())
@@ -75,7 +75,10 @@ if __name__ == "__main__":
     parser.add_argument('-case',
                         action='store', default="all",
                         help='Test one example')
+    parser.add_argument('-np',
+                        action='store', default="2",
+                        help='number of processors')
     args = parser.parse_args()
     parser.print_options(args)
 
-    run_test(args.case)
+    run_test(args.case, args.np)

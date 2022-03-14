@@ -205,6 +205,7 @@ def ToScipyCSR(mat):
     '''
     convert HypreParCSR to Scipy CSR Matrix
     '''
+    import mfem.par as mfem
     merged = mfem.SparseMatrix()
     mat.MergeDiagAndOffd(merged)
 
@@ -553,12 +554,6 @@ def ReadHypreDiag(M):
     '''
     get diagonal element
     '''
-    diag = mfem.Vector()
-    M.GetDiag(diag)            
-    diagvalue = diag.GetDataArray().copy()
-    return diagvalue
-
-    '''
     col_starts = M.GetColPartArray()
 
     num_rows, ilower, iupper, jlower, jupper, irn, jcn, data = M.GetCooDataArray()
@@ -566,7 +561,6 @@ def ReadHypreDiag(M):
     myid = MPI.COMM_WORLD.rank
 
     m = iupper - ilower + 1
-    n = jupper - jlower + 1
     n = M.N()
     from scipy.sparse import coo_matrix, lil_matrix
     try:
@@ -578,9 +572,11 @@ def ReadHypreDiag(M):
               np.min(jcn),  np.max(jcn), (m, n))
         raise
 
-    idx = np.array(idx, dtype=int, copy=False)
+    #idx = np.array(idx, dtype=int, copy=False)
+    idx = np.arange(ilower, min([iupper+1, n]))
     ii = idx[np.logical_and(idx >= ilower, idx <= iupper)]
 
     tmp = mat[ii-ilower, ii].toarray().flatten()
+
     return tmp
-    '''
+
