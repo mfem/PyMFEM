@@ -101,6 +101,7 @@ class OperatorHandle(object):
         r"""
         __init__(OperatorHandle self) -> OperatorHandle
         __init__(OperatorHandle self, mfem::Operator::Type tid) -> OperatorHandle
+        __init__(OperatorHandle self, OperatorHandle other) -> OperatorHandle
         """
         _handle.OperatorHandle_swiginit(self, _handle.new_OperatorHandle(*args))
     __swig_destroy__ = _handle.delete_OperatorHandle

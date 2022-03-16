@@ -3106,54 +3106,52 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[6]
 #define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[7]
 #define SWIGTYPE_p_mfem__DenseMatrix swig_types[8]
-#define SWIGTYPE_p_mfem__DenseMatrixEigensystem swig_types[9]
-#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[10]
-#define SWIGTYPE_p_mfem__DenseMatrixSVD swig_types[11]
-#define SWIGTYPE_p_mfem__DenseTensor swig_types[12]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[13]
-#define SWIGTYPE_p_mfem__LUFactors swig_types[14]
-#define SWIGTYPE_p_mfem__Matrix swig_types[15]
-#define SWIGTYPE_p_mfem__MatrixInverse swig_types[16]
-#define SWIGTYPE_p_mfem__MemoryT_double_t swig_types[17]
-#define SWIGTYPE_p_mfem__Operator swig_types[18]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[19]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[20]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[21]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[22]
-#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[23]
-#define SWIGTYPE_p_mfem__ScaledOperator swig_types[24]
-#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[25]
-#define SWIGTYPE_p_mfem__Solver swig_types[26]
-#define SWIGTYPE_p_mfem__Table swig_types[27]
-#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[28]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[29]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[30]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[31]
-#define SWIGTYPE_p_mfem__Vector swig_types[32]
-#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[33]
-#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[34]
-#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[35]
-#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[36]
-#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[37]
-#define SWIGTYPE_p_p_mfem__Matrix swig_types[38]
-#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[39]
-#define SWIGTYPE_p_p_mfem__Operator swig_types[40]
-#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[41]
-#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[42]
-#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[43]
-#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[44]
-#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[45]
-#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[46]
-#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[47]
-#define SWIGTYPE_p_p_mfem__Solver swig_types[48]
-#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[49]
-#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[50]
-#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[51]
-#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[52]
-#define SWIGTYPE_p_p_mfem__Vector swig_types[53]
-#define SWIGTYPE_p_void swig_types[54]
-static swig_type_info *swig_types[56];
-static swig_module_info swig_module = {swig_types, 55, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[9]
+#define SWIGTYPE_p_mfem__DenseTensor swig_types[10]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[11]
+#define SWIGTYPE_p_mfem__LUFactors swig_types[12]
+#define SWIGTYPE_p_mfem__Matrix swig_types[13]
+#define SWIGTYPE_p_mfem__MatrixInverse swig_types[14]
+#define SWIGTYPE_p_mfem__MemoryT_double_t swig_types[15]
+#define SWIGTYPE_p_mfem__Operator swig_types[16]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[17]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[18]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[19]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[20]
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[21]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[22]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[23]
+#define SWIGTYPE_p_mfem__Solver swig_types[24]
+#define SWIGTYPE_p_mfem__Table swig_types[25]
+#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[26]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[27]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[28]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[29]
+#define SWIGTYPE_p_mfem__Vector swig_types[30]
+#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[31]
+#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[32]
+#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[33]
+#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[34]
+#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[35]
+#define SWIGTYPE_p_p_mfem__Matrix swig_types[36]
+#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[37]
+#define SWIGTYPE_p_p_mfem__Operator swig_types[38]
+#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[39]
+#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[40]
+#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[41]
+#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[42]
+#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[43]
+#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[44]
+#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[45]
+#define SWIGTYPE_p_p_mfem__Solver swig_types[46]
+#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[47]
+#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[48]
+#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[49]
+#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[50]
+#define SWIGTYPE_p_p_mfem__Vector swig_types[51]
+#define SWIGTYPE_p_void swig_types[52]
+static swig_type_info *swig_types[54];
+static swig_module_info swig_module = {swig_types, 53, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -15598,651 +15596,6 @@ SWIGINTERN PyObject *DenseMatrixInverse_swiginit(PyObject *SWIGUNUSEDPARM(self),
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_DenseMatrixEigensystem__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::DenseMatrix *arg1 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::DenseMatrixEigensystem *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__DenseMatrix,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DenseMatrixEigensystem" "', argument " "1"" of type '" "mfem::DenseMatrix &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DenseMatrixEigensystem" "', argument " "1"" of type '" "mfem::DenseMatrix &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
-  {
-    try {
-      result = (mfem::DenseMatrixEigensystem *)new mfem::DenseMatrixEigensystem(*arg1); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DenseMatrixEigensystem, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_DenseMatrixEigensystem__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::DenseMatrixEigensystem *arg1 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::DenseMatrixEigensystem *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__DenseMatrixEigensystem,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DenseMatrixEigensystem" "', argument " "1"" of type '" "mfem::DenseMatrixEigensystem const &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DenseMatrixEigensystem" "', argument " "1"" of type '" "mfem::DenseMatrixEigensystem const &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::DenseMatrixEigensystem * >(argp1);
-  {
-    try {
-      result = (mfem::DenseMatrixEigensystem *)new mfem::DenseMatrixEigensystem((mfem::DenseMatrixEigensystem const &)*arg1); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DenseMatrixEigensystem, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_DenseMatrixEigensystem(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[2] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_DenseMatrixEigensystem", 0, 1, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_DenseMatrixEigensystem__SWIG_0(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__DenseMatrixEigensystem, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_DenseMatrixEigensystem__SWIG_1(self, argc, argv);
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_DenseMatrixEigensystem'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::DenseMatrixEigensystem::DenseMatrixEigensystem(mfem::DenseMatrix &)\n"
-    "    mfem::DenseMatrixEigensystem::DenseMatrixEigensystem(mfem::DenseMatrixEigensystem const &)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_DenseMatrixEigensystem_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::DenseMatrixEigensystem *arg1 = (mfem::DenseMatrixEigensystem *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseMatrixEigensystem, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseMatrixEigensystem_Eval" "', argument " "1"" of type '" "mfem::DenseMatrixEigensystem *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::DenseMatrixEigensystem * >(argp1);
-  {
-    try {
-      (arg1)->Eval(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_DenseMatrixEigensystem_Eigenvalues(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::DenseMatrixEigensystem *arg1 = (mfem::DenseMatrixEigensystem *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  mfem::Vector *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseMatrixEigensystem, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseMatrixEigensystem_Eigenvalues" "', argument " "1"" of type '" "mfem::DenseMatrixEigensystem *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::DenseMatrixEigensystem * >(argp1);
-  {
-    try {
-      result = (mfem::Vector *) &(arg1)->Eigenvalues(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_DenseMatrixEigensystem_Eigenvectors(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::DenseMatrixEigensystem *arg1 = (mfem::DenseMatrixEigensystem *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  mfem::DenseMatrix *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseMatrixEigensystem, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseMatrixEigensystem_Eigenvectors" "', argument " "1"" of type '" "mfem::DenseMatrixEigensystem *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::DenseMatrixEigensystem * >(argp1);
-  {
-    try {
-      result = (mfem::DenseMatrix *) &(arg1)->Eigenvectors(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DenseMatrix, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_DenseMatrixEigensystem_Eigenvalue(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::DenseMatrixEigensystem *arg1 = (mfem::DenseMatrixEigensystem *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"i",  NULL 
-  };
-  double result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:DenseMatrixEigensystem_Eigenvalue", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DenseMatrixEigensystem, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseMatrixEigensystem_Eigenvalue" "', argument " "1"" of type '" "mfem::DenseMatrixEigensystem *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::DenseMatrixEigensystem * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(obj1);
-  }
-  {
-    try {
-      result = (double)(arg1)->Eigenvalue(arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_DenseMatrixEigensystem_Eigenvector(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::DenseMatrixEigensystem *arg1 = (mfem::DenseMatrixEigensystem *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"i",  NULL 
-  };
-  mfem::Vector *result = 0 ;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:DenseMatrixEigensystem_Eigenvector", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DenseMatrixEigensystem, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseMatrixEigensystem_Eigenvector" "', argument " "1"" of type '" "mfem::DenseMatrixEigensystem *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::DenseMatrixEigensystem * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(obj1);
-  }
-  {
-    try {
-      result = (mfem::Vector *) &(arg1)->Eigenvector(arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_DenseMatrixEigensystem(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::DenseMatrixEigensystem *arg1 = (mfem::DenseMatrixEigensystem *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseMatrixEigensystem, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_DenseMatrixEigensystem" "', argument " "1"" of type '" "mfem::DenseMatrixEigensystem *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::DenseMatrixEigensystem * >(argp1);
-  {
-    try {
-      delete arg1; 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *DenseMatrixEigensystem_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__DenseMatrixEigensystem, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
-SWIGINTERN PyObject *DenseMatrixEigensystem_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  return SWIG_Python_InitShadowInstance(args);
-}
-
-SWIGINTERN PyObject *_wrap_new_DenseMatrixSVD__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::DenseMatrix *arg1 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::DenseMatrixSVD *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__DenseMatrix,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DenseMatrixSVD" "', argument " "1"" of type '" "mfem::DenseMatrix &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DenseMatrixSVD" "', argument " "1"" of type '" "mfem::DenseMatrix &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
-  {
-    try {
-      result = (mfem::DenseMatrixSVD *)new mfem::DenseMatrixSVD(*arg1); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DenseMatrixSVD, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_DenseMatrixSVD__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  int arg1 ;
-  int arg2 ;
-  mfem::DenseMatrixSVD *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
-  }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    try {
-      result = (mfem::DenseMatrixSVD *)new mfem::DenseMatrixSVD(arg1,arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DenseMatrixSVD, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_DenseMatrixSVD(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_DenseMatrixSVD", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_DenseMatrixSVD__SWIG_0(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    {
-      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
-        PyErr_Clear();
-        _v = 0;
-      } else {
-        _v = 1;    
-      }
-    }
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        return _wrap_new_DenseMatrixSVD__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_DenseMatrixSVD'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::DenseMatrixSVD::DenseMatrixSVD(mfem::DenseMatrix &)\n"
-    "    mfem::DenseMatrixSVD::DenseMatrixSVD(int,int)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_DenseMatrixSVD_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::DenseMatrixSVD *arg1 = (mfem::DenseMatrixSVD *) 0 ;
-  mfem::DenseMatrix *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"M",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:DenseMatrixSVD_Eval", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DenseMatrixSVD, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseMatrixSVD_Eval" "', argument " "1"" of type '" "mfem::DenseMatrixSVD *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::DenseMatrixSVD * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DenseMatrixSVD_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DenseMatrixSVD_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
-  {
-    try {
-      (arg1)->Eval(*arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_DenseMatrixSVD_Singularvalues(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::DenseMatrixSVD *arg1 = (mfem::DenseMatrixSVD *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  mfem::Vector *result = 0 ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseMatrixSVD, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseMatrixSVD_Singularvalues" "', argument " "1"" of type '" "mfem::DenseMatrixSVD *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::DenseMatrixSVD * >(argp1);
-  {
-    try {
-      result = (mfem::Vector *) &(arg1)->Singularvalues(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_DenseMatrixSVD_Singularvalue(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::DenseMatrixSVD *arg1 = (mfem::DenseMatrixSVD *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"i",  NULL 
-  };
-  double result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:DenseMatrixSVD_Singularvalue", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DenseMatrixSVD, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseMatrixSVD_Singularvalue" "', argument " "1"" of type '" "mfem::DenseMatrixSVD *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::DenseMatrixSVD * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(obj1);
-  }
-  {
-    try {
-      result = (double)(arg1)->Singularvalue(arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_DenseMatrixSVD(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::DenseMatrixSVD *arg1 = (mfem::DenseMatrixSVD *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseMatrixSVD, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_DenseMatrixSVD" "', argument " "1"" of type '" "mfem::DenseMatrixSVD *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::DenseMatrixSVD * >(argp1);
-  {
-    try {
-      delete arg1; 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *DenseMatrixSVD_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__DenseMatrixSVD, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
-SWIGINTERN PyObject *DenseMatrixSVD_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  return SWIG_Python_InitShadowInstance(args);
-}
-
 SWIGINTERN PyObject *_wrap_new_DenseTensor__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
   PyObject *resultobj = 0;
   mfem::DenseTensor *result = 0 ;
@@ -18782,28 +18135,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_DenseMatrixInverse", _wrap_delete_DenseMatrixInverse, METH_O, "delete_DenseMatrixInverse(DenseMatrixInverse self)"},
 	 { "DenseMatrixInverse_swigregister", DenseMatrixInverse_swigregister, METH_O, NULL},
 	 { "DenseMatrixInverse_swiginit", DenseMatrixInverse_swiginit, METH_VARARGS, NULL},
-	 { "new_DenseMatrixEigensystem", _wrap_new_DenseMatrixEigensystem, METH_VARARGS, "\n"
-		"DenseMatrixEigensystem(DenseMatrix m)\n"
-		"new_DenseMatrixEigensystem(DenseMatrixEigensystem other) -> DenseMatrixEigensystem\n"
-		""},
-	 { "DenseMatrixEigensystem_Eval", _wrap_DenseMatrixEigensystem_Eval, METH_O, "DenseMatrixEigensystem_Eval(DenseMatrixEigensystem self)"},
-	 { "DenseMatrixEigensystem_Eigenvalues", _wrap_DenseMatrixEigensystem_Eigenvalues, METH_O, "DenseMatrixEigensystem_Eigenvalues(DenseMatrixEigensystem self) -> Vector"},
-	 { "DenseMatrixEigensystem_Eigenvectors", _wrap_DenseMatrixEigensystem_Eigenvectors, METH_O, "DenseMatrixEigensystem_Eigenvectors(DenseMatrixEigensystem self) -> DenseMatrix"},
-	 { "DenseMatrixEigensystem_Eigenvalue", (PyCFunction)(void(*)(void))_wrap_DenseMatrixEigensystem_Eigenvalue, METH_VARARGS|METH_KEYWORDS, "DenseMatrixEigensystem_Eigenvalue(DenseMatrixEigensystem self, int i) -> double"},
-	 { "DenseMatrixEigensystem_Eigenvector", (PyCFunction)(void(*)(void))_wrap_DenseMatrixEigensystem_Eigenvector, METH_VARARGS|METH_KEYWORDS, "DenseMatrixEigensystem_Eigenvector(DenseMatrixEigensystem self, int i) -> Vector"},
-	 { "delete_DenseMatrixEigensystem", _wrap_delete_DenseMatrixEigensystem, METH_O, "delete_DenseMatrixEigensystem(DenseMatrixEigensystem self)"},
-	 { "DenseMatrixEigensystem_swigregister", DenseMatrixEigensystem_swigregister, METH_O, NULL},
-	 { "DenseMatrixEigensystem_swiginit", DenseMatrixEigensystem_swiginit, METH_VARARGS, NULL},
-	 { "new_DenseMatrixSVD", _wrap_new_DenseMatrixSVD, METH_VARARGS, "\n"
-		"DenseMatrixSVD(DenseMatrix M)\n"
-		"new_DenseMatrixSVD(int h, int w) -> DenseMatrixSVD\n"
-		""},
-	 { "DenseMatrixSVD_Eval", (PyCFunction)(void(*)(void))_wrap_DenseMatrixSVD_Eval, METH_VARARGS|METH_KEYWORDS, "DenseMatrixSVD_Eval(DenseMatrixSVD self, DenseMatrix M)"},
-	 { "DenseMatrixSVD_Singularvalues", _wrap_DenseMatrixSVD_Singularvalues, METH_O, "DenseMatrixSVD_Singularvalues(DenseMatrixSVD self) -> Vector"},
-	 { "DenseMatrixSVD_Singularvalue", (PyCFunction)(void(*)(void))_wrap_DenseMatrixSVD_Singularvalue, METH_VARARGS|METH_KEYWORDS, "DenseMatrixSVD_Singularvalue(DenseMatrixSVD self, int i) -> double"},
-	 { "delete_DenseMatrixSVD", _wrap_delete_DenseMatrixSVD, METH_O, "delete_DenseMatrixSVD(DenseMatrixSVD self)"},
-	 { "DenseMatrixSVD_swigregister", DenseMatrixSVD_swigregister, METH_O, NULL},
-	 { "DenseMatrixSVD_swiginit", DenseMatrixSVD_swiginit, METH_VARARGS, NULL},
 	 { "new_DenseTensor", _wrap_new_DenseTensor, METH_VARARGS, "\n"
 		"DenseTensor()\n"
 		"DenseTensor(int i, int j, int k)\n"
@@ -19116,28 +18447,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_DenseMatrixInverse", _wrap_delete_DenseMatrixInverse, METH_O, "delete_DenseMatrixInverse(DenseMatrixInverse self)"},
 	 { "DenseMatrixInverse_swigregister", DenseMatrixInverse_swigregister, METH_O, NULL},
 	 { "DenseMatrixInverse_swiginit", DenseMatrixInverse_swiginit, METH_VARARGS, NULL},
-	 { "new_DenseMatrixEigensystem", _wrap_new_DenseMatrixEigensystem, METH_VARARGS, "\n"
-		"DenseMatrixEigensystem(DenseMatrix m)\n"
-		"new_DenseMatrixEigensystem(DenseMatrixEigensystem other) -> DenseMatrixEigensystem\n"
-		""},
-	 { "DenseMatrixEigensystem_Eval", _wrap_DenseMatrixEigensystem_Eval, METH_O, "Eval(DenseMatrixEigensystem self)"},
-	 { "DenseMatrixEigensystem_Eigenvalues", _wrap_DenseMatrixEigensystem_Eigenvalues, METH_O, "Eigenvalues(DenseMatrixEigensystem self) -> Vector"},
-	 { "DenseMatrixEigensystem_Eigenvectors", _wrap_DenseMatrixEigensystem_Eigenvectors, METH_O, "Eigenvectors(DenseMatrixEigensystem self) -> DenseMatrix"},
-	 { "DenseMatrixEigensystem_Eigenvalue", (PyCFunction)(void(*)(void))_wrap_DenseMatrixEigensystem_Eigenvalue, METH_VARARGS|METH_KEYWORDS, "Eigenvalue(DenseMatrixEigensystem self, int i) -> double"},
-	 { "DenseMatrixEigensystem_Eigenvector", (PyCFunction)(void(*)(void))_wrap_DenseMatrixEigensystem_Eigenvector, METH_VARARGS|METH_KEYWORDS, "Eigenvector(DenseMatrixEigensystem self, int i) -> Vector"},
-	 { "delete_DenseMatrixEigensystem", _wrap_delete_DenseMatrixEigensystem, METH_O, "delete_DenseMatrixEigensystem(DenseMatrixEigensystem self)"},
-	 { "DenseMatrixEigensystem_swigregister", DenseMatrixEigensystem_swigregister, METH_O, NULL},
-	 { "DenseMatrixEigensystem_swiginit", DenseMatrixEigensystem_swiginit, METH_VARARGS, NULL},
-	 { "new_DenseMatrixSVD", _wrap_new_DenseMatrixSVD, METH_VARARGS, "\n"
-		"DenseMatrixSVD(DenseMatrix M)\n"
-		"new_DenseMatrixSVD(int h, int w) -> DenseMatrixSVD\n"
-		""},
-	 { "DenseMatrixSVD_Eval", (PyCFunction)(void(*)(void))_wrap_DenseMatrixSVD_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(DenseMatrixSVD self, DenseMatrix M)"},
-	 { "DenseMatrixSVD_Singularvalues", _wrap_DenseMatrixSVD_Singularvalues, METH_O, "Singularvalues(DenseMatrixSVD self) -> Vector"},
-	 { "DenseMatrixSVD_Singularvalue", (PyCFunction)(void(*)(void))_wrap_DenseMatrixSVD_Singularvalue, METH_VARARGS|METH_KEYWORDS, "Singularvalue(DenseMatrixSVD self, int i) -> double"},
-	 { "delete_DenseMatrixSVD", _wrap_delete_DenseMatrixSVD, METH_O, "delete_DenseMatrixSVD(DenseMatrixSVD self)"},
-	 { "DenseMatrixSVD_swigregister", DenseMatrixSVD_swigregister, METH_O, NULL},
-	 { "DenseMatrixSVD_swiginit", DenseMatrixSVD_swiginit, METH_VARARGS, NULL},
 	 { "new_DenseTensor", _wrap_new_DenseTensor, METH_VARARGS, "\n"
 		"DenseTensor()\n"
 		"DenseTensor(int i, int j, int k)\n"
@@ -19340,9 +18649,7 @@ static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DenseMatrix = {"_p_mfem__DenseMatrix", "mfem::DenseMatrix *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__DenseMatrixEigensystem = {"_p_mfem__DenseMatrixEigensystem", "mfem::DenseMatrixEigensystem *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DenseMatrixInverse = {"_p_mfem__DenseMatrixInverse", "mfem::DenseMatrixInverse *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__DenseMatrixSVD = {"_p_mfem__DenseMatrixSVD", "mfem::DenseMatrixSVD *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DenseTensor = {"_p_mfem__DenseTensor", "mfem::DenseTensor *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__LUFactors = {"_p_mfem__LUFactors", "mfem::LUFactors *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Matrix = {"_p_mfem__Matrix", "mfem::Matrix *", 0, 0, (void*)0, 0};
@@ -19399,9 +18706,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__ArrayT_int_t,
   &_swigt__p_mfem__ConstrainedOperator,
   &_swigt__p_mfem__DenseMatrix,
-  &_swigt__p_mfem__DenseMatrixEigensystem,
   &_swigt__p_mfem__DenseMatrixInverse,
-  &_swigt__p_mfem__DenseMatrixSVD,
   &_swigt__p_mfem__DenseTensor,
   &_swigt__p_mfem__IdentityOperator,
   &_swigt__p_mfem__LUFactors,
@@ -19454,9 +18759,7 @@ static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {  {&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__DenseMatrixEigensystem[] = {  {&_swigt__p_mfem__DenseMatrixEigensystem, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DenseMatrixInverse[] = {  {&_swigt__p_mfem__DenseMatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__DenseMatrixSVD[] = {  {&_swigt__p_mfem__DenseMatrixSVD, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DenseTensor[] = {  {&_swigt__p_mfem__DenseTensor, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LUFactors[] = {  {&_swigt__p_mfem__LUFactors, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__AbstractSparseMatrix[] = {{&_swigt__p_mfem__AbstractSparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
@@ -19513,9 +18816,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__ArrayT_int_t,
   _swigc__p_mfem__ConstrainedOperator,
   _swigc__p_mfem__DenseMatrix,
-  _swigc__p_mfem__DenseMatrixEigensystem,
   _swigc__p_mfem__DenseMatrixInverse,
-  _swigc__p_mfem__DenseMatrixSVD,
   _swigc__p_mfem__DenseTensor,
   _swigc__p_mfem__IdentityOperator,
   _swigc__p_mfem__LUFactors,

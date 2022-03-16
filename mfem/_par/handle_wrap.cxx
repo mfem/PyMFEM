@@ -3617,6 +3617,42 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_new_OperatorHandle__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::OperatorHandle *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::OperatorHandle *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__OperatorHandle,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_OperatorHandle" "', argument " "1"" of type '" "mfem::OperatorHandle const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_OperatorHandle" "', argument " "1"" of type '" "mfem::OperatorHandle const &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
+  {
+    try {
+      result = (mfem::OperatorHandle *)new mfem::OperatorHandle((mfem::OperatorHandle const &)*arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__OperatorHandle, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_OperatorHandle(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[2] = {
@@ -3627,6 +3663,14 @@ SWIGINTERN PyObject *_wrap_new_OperatorHandle(PyObject *self, PyObject *args) {
   --argc;
   if (argc == 0) {
     return _wrap_new_OperatorHandle__SWIG_0(self, argc, argv);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__OperatorHandle, SWIG_POINTER_NO_NULL | 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_OperatorHandle__SWIG_3(self, argc, argv);
+    }
   }
   if (argc == 1) {
     int _v;
@@ -3643,7 +3687,8 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_OperatorHandle'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::OperatorHandle::OperatorHandle()\n"
-    "    mfem::OperatorHandle::OperatorHandle(mfem::Operator::Type)\n");
+    "    mfem::OperatorHandle::OperatorHandle(mfem::Operator::Type)\n"
+    "    mfem::OperatorHandle::OperatorHandle(mfem::OperatorHandle const &)\n");
   return 0;
 }
 
@@ -6933,7 +6978,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_OperatorHandle", _wrap_new_OperatorHandle, METH_VARARGS, "\n"
 		"OperatorHandle()\n"
-		"new_OperatorHandle(mfem::Operator::Type tid) -> OperatorHandle\n"
+		"OperatorHandle(mfem::Operator::Type tid)\n"
+		"new_OperatorHandle(OperatorHandle other) -> OperatorHandle\n"
 		""},
 	 { "delete_OperatorHandle", _wrap_delete_OperatorHandle, METH_O, "delete_OperatorHandle(OperatorHandle self)"},
 	 { "OperatorHandle_Ptr", _wrap_OperatorHandle_Ptr, METH_O, "OperatorHandle_Ptr(OperatorHandle self) -> Operator"},
@@ -7007,7 +7053,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_OperatorHandle", _wrap_new_OperatorHandle, METH_VARARGS, "\n"
 		"OperatorHandle()\n"
-		"new_OperatorHandle(mfem::Operator::Type tid) -> OperatorHandle\n"
+		"OperatorHandle(mfem::Operator::Type tid)\n"
+		"new_OperatorHandle(OperatorHandle other) -> OperatorHandle\n"
 		""},
 	 { "delete_OperatorHandle", _wrap_delete_OperatorHandle, METH_O, "delete_OperatorHandle(OperatorHandle self)"},
 	 { "OperatorHandle_Ptr", _wrap_OperatorHandle_Ptr, METH_O, "Ptr(OperatorHandle self) -> Operator"},
@@ -8485,7 +8532,7 @@ SWIG_init(void) {
   SWIG_InstallConstants(d,swig_const_table);
   
   SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40400)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.4"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.4.0"));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40400)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
