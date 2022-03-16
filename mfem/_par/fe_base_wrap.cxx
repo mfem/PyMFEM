@@ -4637,76 +4637,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_FiniteElement_GetVDim(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::FiniteElement *arg1 = (mfem::FiniteElement *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  int result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FiniteElement_GetVDim" "', argument " "1"" of type '" "mfem::FiniteElement const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::FiniteElement * >(argp1);
-  {
-    try {
-      result = (int)((mfem::FiniteElement const *)arg1)->GetVDim(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_FiniteElement_GetCurlDim(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::FiniteElement *arg1 = (mfem::FiniteElement *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  int result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FiniteElement_GetCurlDim" "', argument " "1"" of type '" "mfem::FiniteElement const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::FiniteElement * >(argp1);
-  {
-    try {
-      result = (int)((mfem::FiniteElement const *)arg1)->GetCurlDim(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_FiniteElement_GetGeomType(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::FiniteElement *arg1 = (mfem::FiniteElement *) 0 ;
@@ -10911,69 +10841,6 @@ SWIGINTERN PyObject *VectorTensorFiniteElement_swiginit(PyObject *SWIGUNUSEDPARM
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_InvertLinearTrans(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::ElementTransformation *arg1 = 0 ;
-  mfem::IntegrationPoint *arg2 = 0 ;
-  mfem::Vector *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  char * kwnames[] = {
-    (char *)"trans",  (char *)"pt",  (char *)"x",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:InvertLinearTrans", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__ElementTransformation,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "InvertLinearTrans" "', argument " "1"" of type '" "mfem::ElementTransformation &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "InvertLinearTrans" "', argument " "1"" of type '" "mfem::ElementTransformation &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::ElementTransformation * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "InvertLinearTrans" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "InvertLinearTrans" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "InvertLinearTrans" "', argument " "3"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "InvertLinearTrans" "', argument " "3"" of type '" "mfem::Vector &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  {
-    try {
-      mfem::InvertLinearTrans(*arg1,(mfem::IntegrationPoint const &)*arg2,*arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
@@ -11015,8 +10882,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "FunctionSpace_swigregister", FunctionSpace_swigregister, METH_O, NULL},
 	 { "FunctionSpace_swiginit", FunctionSpace_swiginit, METH_VARARGS, NULL},
 	 { "FiniteElement_GetDim", _wrap_FiniteElement_GetDim, METH_O, "FiniteElement_GetDim(FiniteElement self) -> int"},
-	 { "FiniteElement_GetVDim", _wrap_FiniteElement_GetVDim, METH_O, "FiniteElement_GetVDim(FiniteElement self) -> int"},
-	 { "FiniteElement_GetCurlDim", _wrap_FiniteElement_GetCurlDim, METH_O, "FiniteElement_GetCurlDim(FiniteElement self) -> int"},
 	 { "FiniteElement_GetGeomType", _wrap_FiniteElement_GetGeomType, METH_O, "FiniteElement_GetGeomType(FiniteElement self) -> mfem::Geometry::Type"},
 	 { "FiniteElement_GetDof", _wrap_FiniteElement_GetDof, METH_O, "FiniteElement_GetDof(FiniteElement self) -> int"},
 	 { "FiniteElement_GetOrder", _wrap_FiniteElement_GetOrder, METH_O, "FiniteElement_GetOrder(FiniteElement self) -> int"},
@@ -11147,7 +11012,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_VectorTensorFiniteElement", _wrap_delete_VectorTensorFiniteElement, METH_O, "delete_VectorTensorFiniteElement(VectorTensorFiniteElement self)"},
 	 { "VectorTensorFiniteElement_swigregister", VectorTensorFiniteElement_swigregister, METH_O, NULL},
 	 { "VectorTensorFiniteElement_swiginit", VectorTensorFiniteElement_swiginit, METH_VARARGS, NULL},
-	 { "InvertLinearTrans", (PyCFunction)(void(*)(void))_wrap_InvertLinearTrans, METH_VARARGS|METH_KEYWORDS, "InvertLinearTrans(mfem::ElementTransformation & trans, IntegrationPoint pt, Vector x)"},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -11192,8 +11056,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "FunctionSpace_swigregister", FunctionSpace_swigregister, METH_O, NULL},
 	 { "FunctionSpace_swiginit", FunctionSpace_swiginit, METH_VARARGS, NULL},
 	 { "FiniteElement_GetDim", _wrap_FiniteElement_GetDim, METH_O, "GetDim(FiniteElement self) -> int"},
-	 { "FiniteElement_GetVDim", _wrap_FiniteElement_GetVDim, METH_O, "GetVDim(FiniteElement self) -> int"},
-	 { "FiniteElement_GetCurlDim", _wrap_FiniteElement_GetCurlDim, METH_O, "GetCurlDim(FiniteElement self) -> int"},
 	 { "FiniteElement_GetGeomType", _wrap_FiniteElement_GetGeomType, METH_O, "GetGeomType(FiniteElement self) -> mfem::Geometry::Type"},
 	 { "FiniteElement_GetDof", _wrap_FiniteElement_GetDof, METH_O, "GetDof(FiniteElement self) -> int"},
 	 { "FiniteElement_GetOrder", _wrap_FiniteElement_GetOrder, METH_O, "GetOrder(FiniteElement self) -> int"},
@@ -11324,7 +11186,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_VectorTensorFiniteElement", _wrap_delete_VectorTensorFiniteElement, METH_O, "delete_VectorTensorFiniteElement(VectorTensorFiniteElement self)"},
 	 { "VectorTensorFiniteElement_swigregister", VectorTensorFiniteElement_swigregister, METH_O, NULL},
 	 { "VectorTensorFiniteElement_swiginit", VectorTensorFiniteElement_swiginit, METH_VARARGS, NULL},
-	 { "InvertLinearTrans", (PyCFunction)(void(*)(void))_wrap_InvertLinearTrans, METH_VARARGS|METH_KEYWORDS, "InvertLinearTrans(mfem::ElementTransformation & trans, IntegrationPoint pt, Vector x)"},
 	 { NULL, NULL, 0, NULL }
 };
 

@@ -129,11 +129,6 @@ class GridFunction(mfem._par.vector.Vector):
         return _gridfunc.GridFunction_VectorDim(self)
     VectorDim = _swig_new_instance_method(_gridfunc.GridFunction_VectorDim)
 
-    def CurlDim(self):
-        r"""CurlDim(GridFunction self) -> int"""
-        return _gridfunc.GridFunction_CurlDim(self)
-    CurlDim = _swig_new_instance_method(_gridfunc.GridFunction_CurlDim)
-
     def GetTrueVector(self, *args):
         r"""
         GetTrueVector(GridFunction self) -> Vector

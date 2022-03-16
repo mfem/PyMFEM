@@ -3799,92 +3799,6 @@ SWIGINTERN PyObject *mfem_HypreParMatrix_get_local_true_nnz(mfem::HypreParMatrix
    PyList_SetItem(o, 0, PyLong_FromLong((long)nnz));
    PyList_SetItem(o, 1, PyLong_FromLong((long)tnnz));
    return o;   
-   /* 
-   hypre_ParCSRMatrix *matrix =  static_cast<hypre_ParCSRMatrix *>(*self);
-
-
-   MPI_Comm          comm;
-   HYPRE_Int         first_row_index;
-   HYPRE_Int         first_col_diag;
-   hypre_CSRMatrix  *diag;
-   hypre_CSRMatrix  *offd;
-   HYPRE_BigInt     *col_map_offd;
-   HYPRE_Int         num_rows;
-   HYPRE_Int        *row_starts;
-   HYPRE_Int        *col_starts;
-   HYPRE_Complex    *diag_data;
-   HYPRE_Int        *diag_i;
-   HYPRE_Int        *diag_j;
-   HYPRE_Complex    *offd_data;
-   HYPRE_Int        *offd_i;
-   HYPRE_Int        *offd_j;
-   HYPRE_Int         myid, num_procs, i, j;
-   HYPRE_Int         num_nonzeros_offd;
-   PyObject *o = NULL;      
-   HYPRE_Int tnnz = 0;
-   HYPRE_Int nnz;
-   if (!matrix)
-   {
-     return Py_None;    
-   }
-
-   comm = hypre_ParCSRMatrixComm(matrix);
-   diag = hypre_ParCSRMatrixDiag(matrix);
-   offd = hypre_ParCSRMatrixOffd(matrix);
-   nnz =  hypre_CSRMatrixNumNonzeros(diag) + hypre_CSRMatrixNumNonzeros(offd);
-
-   first_row_index = hypre_ParCSRMatrixFirstRowIndex(matrix);
-   first_col_diag  = hypre_ParCSRMatrixFirstColDiag(matrix);
-   diag            = hypre_ParCSRMatrixDiag(matrix);
-   offd            = hypre_ParCSRMatrixOffd(matrix);
-   col_map_offd    = hypre_ParCSRMatrixColMapOffd(matrix);
-   num_rows        = hypre_ParCSRMatrixNumRows(matrix);
-   row_starts      = hypre_ParCSRMatrixRowStarts(matrix);
-   col_starts      = hypre_ParCSRMatrixColStarts(matrix);
-   hypre_MPI_Comm_rank(comm, &myid);
-   hypre_MPI_Comm_size(comm, &num_procs);
-   num_nonzeros_offd = hypre_CSRMatrixNumNonzeros(offd);
-
-   diag_data = hypre_CSRMatrixData(diag);
-   diag_i    = hypre_CSRMatrixI(diag);
-   diag_j    = hypre_CSRMatrixJ(diag);
-   offd_i    = hypre_CSRMatrixI(offd);
-   if (num_nonzeros_offd)
-   {
-      offd_data = hypre_CSRMatrixData(offd);
-      offd_j    = hypre_CSRMatrixJ(offd);
-   }
-   for (i = 0; i < num_rows; i++)
-   {
-      for (j = diag_i[i]; j < diag_i[i+1]; j++)
-      {
-         if ( diag_data )
-	 {
-           if ((double)diag_data[j] != 0){
-    	       tnnz = tnnz + 1;		     
-           }
-         }		     
-		     
-      }
-      if ( num_nonzeros_offd )
-      {
-         for (j = offd_i[i]; j < offd_i[i+1]; j++)
-         {
-            if ( offd_data )
-            {
-	      if ((double)offd_data[j] != 0){
-         	       tnnz = tnnz + 1;		     
-               }
-     	    }
-         }
-      }
-   }
-   o = PyList_New(2);
-   PyList_SetItem(o, 0, PyLong_FromLong((long)nnz));
-   PyList_SetItem(o, 1, PyLong_FromLong((long)tnnz));
-
-   return o;
-   */
 }
 SWIGINTERN PyObject *mfem_HypreParMatrix_GetCooDataArray(mfem::HypreParMatrix *self,HYPRE_Int const base_i=0,HYPRE_Int const base_j=0){
 
@@ -23428,14 +23342,14 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40301)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.3.1"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40301)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40400)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.4"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40400)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40301)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40301)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40301)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40400)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40400)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40400)%100))));
   
   if (import_mpi4py() < 0)
 #if PY_MAJOR_VERSION >= 3
