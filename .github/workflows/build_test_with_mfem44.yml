@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.6", "3.7", "3.8", "3.9"]
+        python-version: ["3.7", "3.8", "3.9"]
         #python-version: ["3.10"]
         #os: [ubuntu-latest]
         os: [ubuntu-20.04]
@@ -119,7 +119,7 @@ jobs:
            python setup.py install --with-cuda --with-parallel
         fi
         if [ "${USE_FLAGS}" = "001" ]; then
-           python setup.py install --prefix=$SANDBOX --with-libceecd --mfem-branch="mfem-4.4-dev"
+           python setup.py install --prefix=$SANDBOX --with-libceed --mfem-branch="mfem-4.4-dev"
         fi
 
     - name: EX1_RUN      
