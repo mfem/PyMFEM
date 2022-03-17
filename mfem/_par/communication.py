@@ -84,6 +84,101 @@ import mfem._par.array
 import mfem._par.mem_manager
 import mfem._par.table
 import mfem._par.sets
+class Mpi(object):
+    r"""Proxy of C++ mfem::Mpi class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+
+    @staticmethod
+    def Init(*args):
+        r"""
+        Init()
+        Init(int & argc, char **& argv)
+        """
+        return _communication.Mpi_Init(*args)
+    Init = _swig_new_static_method(_communication.Mpi_Init)
+
+    @staticmethod
+    def Finalize():
+        r"""Finalize()"""
+        return _communication.Mpi_Finalize()
+    Finalize = _swig_new_static_method(_communication.Mpi_Finalize)
+
+    @staticmethod
+    def IsInitialized():
+        r"""IsInitialized() -> bool"""
+        return _communication.Mpi_IsInitialized()
+    IsInitialized = _swig_new_static_method(_communication.Mpi_IsInitialized)
+
+    @staticmethod
+    def IsFinalized():
+        r"""IsFinalized() -> bool"""
+        return _communication.Mpi_IsFinalized()
+    IsFinalized = _swig_new_static_method(_communication.Mpi_IsFinalized)
+
+    @staticmethod
+    def WorldRank():
+        r"""WorldRank() -> int"""
+        return _communication.Mpi_WorldRank()
+    WorldRank = _swig_new_static_method(_communication.Mpi_WorldRank)
+
+    @staticmethod
+    def WorldSize():
+        r"""WorldSize() -> int"""
+        return _communication.Mpi_WorldSize()
+    WorldSize = _swig_new_static_method(_communication.Mpi_WorldSize)
+
+    @staticmethod
+    def Root():
+        r"""Root() -> bool"""
+        return _communication.Mpi_Root()
+    Root = _swig_new_static_method(_communication.Mpi_Root)
+
+# Register Mpi in _communication:
+_communication.Mpi_swigregister(Mpi)
+
+def Mpi_Init(*args):
+    r"""
+    Mpi_Init()
+    Mpi_Init(int & argc, char **& argv)
+    """
+    return _communication.Mpi_Init(*args)
+Mpi_Init = _communication.Mpi_Init
+
+def Mpi_Finalize():
+    r"""Mpi_Finalize()"""
+    return _communication.Mpi_Finalize()
+Mpi_Finalize = _communication.Mpi_Finalize
+
+def Mpi_IsInitialized():
+    r"""Mpi_IsInitialized() -> bool"""
+    return _communication.Mpi_IsInitialized()
+Mpi_IsInitialized = _communication.Mpi_IsInitialized
+
+def Mpi_IsFinalized():
+    r"""Mpi_IsFinalized() -> bool"""
+    return _communication.Mpi_IsFinalized()
+Mpi_IsFinalized = _communication.Mpi_IsFinalized
+
+def Mpi_WorldRank():
+    r"""Mpi_WorldRank() -> int"""
+    return _communication.Mpi_WorldRank()
+Mpi_WorldRank = _communication.Mpi_WorldRank
+
+def Mpi_WorldSize():
+    r"""Mpi_WorldSize() -> int"""
+    return _communication.Mpi_WorldSize()
+Mpi_WorldSize = _communication.Mpi_WorldSize
+
+def Mpi_Root():
+    r"""Mpi_Root() -> bool"""
+    return _communication.Mpi_Root()
+Mpi_Root = _communication.Mpi_Root
+
 class MPI_Session(object):
     r"""Proxy of C++ mfem::MPI_Session class."""
 
@@ -96,7 +191,6 @@ class MPI_Session(object):
         __init__(MPI_Session self, int & argc, char **& argv) -> MPI_Session
         """
         _communication.MPI_Session_swiginit(self, _communication.new_MPI_Session(*args))
-    __swig_destroy__ = _communication.delete_MPI_Session
 
     def WorldRank(self):
         r"""WorldRank(MPI_Session self) -> int"""
@@ -112,6 +206,7 @@ class MPI_Session(object):
         r"""Root(MPI_Session self) -> bool"""
         return _communication.MPI_Session_Root(self)
     Root = _swig_new_instance_method(_communication.MPI_Session_Root)
+    __swig_destroy__ = _communication.delete_MPI_Session
 
 # Register MPI_Session in _communication:
 _communication.MPI_Session_swigregister(MPI_Session)

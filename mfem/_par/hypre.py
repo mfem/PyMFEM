@@ -105,6 +105,40 @@ def is_HYPRE_USING_CUDA():
     r"""is_HYPRE_USING_CUDA() -> bool"""
     return _hypre.is_HYPRE_USING_CUDA()
 is_HYPRE_USING_CUDA = _hypre.is_HYPRE_USING_CUDA
+class Hypre(object):
+    r"""Proxy of C++ mfem::Hypre class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+
+    @staticmethod
+    def Init():
+        r"""Init()"""
+        return _hypre.Hypre_Init()
+    Init = _swig_new_static_method(_hypre.Hypre_Init)
+
+    @staticmethod
+    def Finalize():
+        r"""Finalize()"""
+        return _hypre.Hypre_Finalize()
+    Finalize = _swig_new_static_method(_hypre.Hypre_Finalize)
+
+# Register Hypre in _hypre:
+_hypre.Hypre_swigregister(Hypre)
+
+def Hypre_Init():
+    r"""Hypre_Init()"""
+    return _hypre.Hypre_Init()
+Hypre_Init = _hypre.Hypre_Init
+
+def Hypre_Finalize():
+    r"""Hypre_Finalize()"""
+    return _hypre.Hypre_Finalize()
+Hypre_Finalize = _hypre.Hypre_Finalize
+
 
 def GetHypreMemoryClass():
     r"""GetHypreMemoryClass() -> mfem::MemoryClass"""
