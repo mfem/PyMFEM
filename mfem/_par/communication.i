@@ -31,6 +31,7 @@ import_array();
 %import "table.i"
 %import "sets.i"
 
+%ignore mfem::MPI_Session;
 %include "general/communication.hpp"
 
 /*

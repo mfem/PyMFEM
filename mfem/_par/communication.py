@@ -179,38 +179,6 @@ def Mpi_Root():
     return _communication.Mpi_Root()
 Mpi_Root = _communication.Mpi_Root
 
-class MPI_Session(object):
-    r"""Proxy of C++ mfem::MPI_Session class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self, *args):
-        r"""
-        __init__(MPI_Session self) -> MPI_Session
-        __init__(MPI_Session self, int & argc, char **& argv) -> MPI_Session
-        """
-        _communication.MPI_Session_swiginit(self, _communication.new_MPI_Session(*args))
-
-    def WorldRank(self):
-        r"""WorldRank(MPI_Session self) -> int"""
-        return _communication.MPI_Session_WorldRank(self)
-    WorldRank = _swig_new_instance_method(_communication.MPI_Session_WorldRank)
-
-    def WorldSize(self):
-        r"""WorldSize(MPI_Session self) -> int"""
-        return _communication.MPI_Session_WorldSize(self)
-    WorldSize = _swig_new_instance_method(_communication.MPI_Session_WorldSize)
-
-    def Root(self):
-        r"""Root(MPI_Session self) -> bool"""
-        return _communication.MPI_Session_Root(self)
-    Root = _swig_new_instance_method(_communication.MPI_Session_Root)
-    __swig_destroy__ = _communication.delete_MPI_Session
-
-# Register MPI_Session in _communication:
-_communication.MPI_Session_swigregister(MPI_Session)
-
 class GroupTopology(object):
     r"""Proxy of C++ mfem::GroupTopology class."""
 
