@@ -41,7 +41,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: master_tracking_branch
+        ref: mfem-4.4-dev
  
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
