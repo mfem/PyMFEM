@@ -71,6 +71,7 @@ import mfem._ser.array
 import mfem._ser.mem_manager
 import mfem._ser.operators
 import mfem._ser.sparsemat
+import mfem._ser.globals
 import mfem._ser.matrix
 import mfem._ser.densemat
 class ComplexOperator(mfem._ser.operators.Operator):

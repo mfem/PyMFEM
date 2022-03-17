@@ -71,6 +71,7 @@ import mfem._par.array
 import mfem._par.mem_manager
 import mfem._par.operators
 import mfem._par.sparsemat
+import mfem._par.globals
 import mfem._par.matrix
 import mfem._par.densemat
 class SparseSmoother(mfem._par.matrix.MatrixInverse):

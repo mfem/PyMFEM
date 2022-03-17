@@ -192,3 +192,24 @@ fem/fespace.hpp:   void Save(std::ostream &out) const;
 */
 OSTREAM_ADD_DEFAULT_STDOUT_FILE(FiniteElementSpace, Save)
 OSTREAM_ADD_DEFAULT_STDOUT_FILE(QuadratureSpace, Save)
+
+
+%extend mfem::FiniteElementSpace{
+  virtual DofTransformation *GetElementDofTransformation(int elem) const{
+    mfem::Array<int> dofs;
+    return self->GetElementDofs(elem, dofs);
+  }
+  virtual DofTransformation *GetBdrElementDofTransformation(int bel) const {
+    mfem::Array<int> dofs;
+    return self->GetBdrElementDofs(bel, dofs);
+  }
+  virtual DofTransformation *GetElementVDofTransformation(int elem) const {
+    mfem::Array<int> dofs;    
+    return self->GetElementVDofs(elem, dofs);
+  }
+  virtual DofTransformation *GetBdrElementVDofTransformation(int bel) const {
+    mfem::Array<int> dofs;        
+    return self->GetBdrElementVDofs(bel, dofs);
+  }
+};
+ 

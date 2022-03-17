@@ -722,6 +722,14 @@ class QuadratureFunction(mfem._par.vector.Vector):
         return _gridfunc.QuadratureFunction_GetElementValues(self, *args)
     GetElementValues = _swig_new_instance_method(_gridfunc.QuadratureFunction_GetElementValues)
 
+    def SaveVTU(self, *args):
+        r"""
+        SaveVTU(QuadratureFunction self, std::ostream & out, mfem::VTKFormat format=ASCII, int compression_level=0)
+        SaveVTU(QuadratureFunction self, std::string const & filename, mfem::VTKFormat format=ASCII, int compression_level=0)
+        """
+        return _gridfunc.QuadratureFunction_SaveVTU(self, *args)
+    SaveVTU = _swig_new_instance_method(_gridfunc.QuadratureFunction_SaveVTU)
+
     def Save(self, *args):
         r"""
         Save(QuadratureFunction self, std::ostream & out)

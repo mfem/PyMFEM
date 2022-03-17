@@ -283,7 +283,7 @@ class TrueTransferOperator(mfem._par.operators.Operator):
     __repr__ = _swig_repr
 
     def __init__(self, lFESpace_, hFESpace_):
-        r"""__init__(TrueTransferOperator self, ParFiniteElementSpace lFESpace_, ParFiniteElementSpace hFESpace_) -> TrueTransferOperator"""
+        r"""__init__(TrueTransferOperator self, FiniteElementSpace lFESpace_, FiniteElementSpace hFESpace_) -> TrueTransferOperator"""
         _transfer.TrueTransferOperator_swiginit(self, _transfer.new_TrueTransferOperator(lFESpace_, hFESpace_))
     __swig_destroy__ = _transfer.delete_TrueTransferOperator
 

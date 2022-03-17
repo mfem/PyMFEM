@@ -24,13 +24,14 @@ import_array();
 %import "array.i"
 %import "mem_manager.i"
 
+%import "globals.i"
 %import "vector.i"
 %import "operators.i"
 %import "matrix.i"
 %import "densemat.i"
 %import "../common/ignore_common_functions.i"
 %import "../common/exception.i"
-
+%import "globals.i"
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
 

@@ -97,6 +97,17 @@ def m_func(ptx, out, sdim, vdim):
     out_array[8] = ptx[2]
     '''
 
+# if dim is know, this provides a simpler way to use matrix coefficient
+@mfem.jit.matrix()
+def m_func2(ptx, out):
+    out_array = farray(out, (3, 3))
+    out_array[0, 0] = ptx[0]
+    out_array[0, 1] = ptx[1]
+    out_array[0, 2] = ptx[2]
+    out_array[1, 1] = ptx[1]
+    out_array[1, 2] = ptx[2]
+    out_array[2, 2] = ptx[2]
+    
 def check(a, b, msg):
     assert len(a) == len(b), msg
     assert np.sum(np.abs(a - b)) == 0, msg
@@ -178,12 +189,14 @@ def run_test():
     print("Checking matrix")
     a1 = mfem.BilinearForm(fespace2)
     a2 = mfem.BilinearForm(fespace2)
+    a3 = mfem.BilinearForm(fespace2)    
     c4 = mfem.MatrixNumbaFunction(m_func, sdim, dim).GenerateCoefficient()
     c5 = m_coeff(dim)
 
     a1.AddDomainIntegrator(mfem.VectorFEMassIntegrator(c4))
     a2.AddDomainIntegrator(mfem.VectorFEMassIntegrator(c5))
-
+    a3.AddDomainIntegrator(mfem.VectorFEMassIntegrator(m_func2))
+    
     start = time.time()
     a1.Assemble()
     end = time.time()
@@ -199,6 +212,14 @@ def run_test():
     M2 = a2.SpMat()
     print("Python time (matrix)", end - start)
 
+    start = time.time()
+    a3.Assemble()
+    end = time.time()
+    a3.Finalize()
+    M3 = a3.SpMat()
+    print("Numba (simpler interface) (matrix)", end - start)
+    
+
     #from mfem.commmon.sparse_utils import sparsemat_to_scipycsr
     #csr1 = sparsemat_to_scipycsr(M1, float)
     #csr2 = sparsemat_to_scipycsr(M2, float)
@@ -211,6 +232,15 @@ def run_test():
           "matrix coefficient does not agree with original")
     check(M1.GetJArray(),
           M2.GetJArray(),
+          "matrix coefficient does not agree with original")
+    check(M1.GetDataArray(),
+          M3.GetDataArray(),
+          "matrix coefficient does not agree with original")
+    check(M1.GetIArray(),
+          M3.GetIArray(),
+          "matrix coefficient does not agree with original")
+    check(M1.GetJArray(),
+          M3.GetJArray(),
           "matrix coefficient does not agree with original")
 
     print("PASSED")
