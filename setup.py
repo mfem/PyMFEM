@@ -161,7 +161,9 @@ def read_mfem_tplflags(prefix):
     filename = os.path.join(prefix, 'share', 'mfem', 'config.mk')
     if not os.path.exists(filename):
         print("NOTE: " + filename + " does not exist.")
-        return dict()
+        print("returning empty string")
+        return ""
+    
     config = configparser.ConfigParser()
     with open(filename) as fp:
         config.read_file(itertools.chain(['[global]'], fp), source=filename)
@@ -690,6 +692,7 @@ def write_setup_local():
 
     mfems_tpl = read_mfem_tplflags(mfems_prefix)
     mfemp_tpl = read_mfem_tplflags(mfemp_prefix)
+    print(mfems_tpl, mfemp_tpl)
     
     params = {'cxx_ser': cxx_command,
               'cc_ser': cc_command,
