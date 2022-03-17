@@ -159,6 +159,9 @@ def install_requires():
 
 def read_mfem_tplflags(prefix):
     filename = os.path.join(prefix, 'share', 'mfem', 'config.mk')
+    if not os.path.exists(filename):
+        print("NOTE: " + filename + " does not exist.")
+        return dict()
     config = configparser.ConfigParser()
     with open(filename) as fp:
         config.read_file(itertools.chain(['[global]'], fp), source=filename)
