@@ -42,11 +42,11 @@ except ImportError:
 repo_releases = {  # "mfem": "https://github.com/mfem/mfem/archive/v4.3.tar.gz",
     "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
     "hypre": "https://github.com/hypre-space/hypre/archive/v2.24.0.tar.gz",
-    "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.9.0.tar.gz",
+    "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.9.1.tar.gz",
     "gslib": "https://github.com/Nek5000/gslib/archive/refs/tags/v1.0.7.tar.gz"}
 
 repos = {"mfem": "https://github.com/mfem/mfem.git", }
-repos_sha = {"mfem": "e8357b8bd51d32aac549902995bcf87a1eb08a75"}
+repos_sha = {"mfem": "d06e506644e60f0761ad3c9cfa8e68b385d6f299"}
 
 rootdir = os.path.abspath(os.path.dirname(__file__))
 extdir = os.path.join(rootdir, 'external')
