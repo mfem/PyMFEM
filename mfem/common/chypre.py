@@ -745,14 +745,14 @@ class CHypreMat(list):
         if self[1] is not None:
             self[1] = ResetHypreDiag(self[1], idx, value=np.imag(value))
 
-    def getDiag(self):
+    def getDiag(self, idx):
         if self[0] is not None:
-            diagvalue = ReadHypreDiag(self[0])
+            diagvalue = ReadHypreDiag(self[0], idx)
         else:
             diagvalue = complex(0.0)
 
         if self[1] is not None:
-            diagvalue = diagvalue + 1j*ReadHypreDiag(self[1])
+            diagvalue = diagvalue + 1j*ReadHypreDiag(self[1], idx)
         else:
             diagvalue = diagvalue + 0j
         return diagvalue

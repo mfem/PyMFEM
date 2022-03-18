@@ -45,7 +45,8 @@ repo_releases = {  # "mfem": "https://github.com/mfem/mfem/archive/v4.3.tar.gz",
     "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.9.0.tar.gz",
     "gslib": "https://github.com/Nek5000/gslib/archive/refs/tags/v1.0.7.tar.gz"}
 
-repos = {"mfem": "https://github.com/mfem/mfem.git", }
+repos = {"mfem": "https://github.com/mfem/mfem.git",
+         "libceed": "https://github.com/CEED/libCEED.git"}
 repos_sha = {"mfem": "6c7a00d278730a3bfeda4a1de859a248f826cc23"}
 
 rootdir = os.path.abspath(os.path.dirname(__file__))
@@ -356,7 +357,7 @@ def gitclone(xxx, use_sha=False, branch='master'):
         shutil.rmtree(repo_xxx)
 
     os.chdir(extdir)
-    command = ['git', 'clone', repos[xxx]]
+    command = ['git', 'clone', repos[xxx], xxx]
     make_call(command)
 
     if not os.path.exists(repo_xxx):
@@ -519,7 +520,10 @@ def make_libceed(serial=False):
         assert False, "libceed is not downloaded"
 
     pwd = chdir(path)
-    make_call(['make', 'clean'])
+    try:
+        make_call(['make', 'clean'])
+    except:
+        pass
 
     if enable_cuda:
         command = ['make', 'configure', 'CUDA_DIR='+cuda_prefix]
@@ -1350,7 +1354,8 @@ class BuildPy(_build_py):
                 download('hypre')
                 cmake_make_hypre()
             if build_libceed:
-                download('libceed')
+                #download('libceed')
+                gitclone('libceed',branch='main')
                 make_libceed()
             if build_gslib:
                 download('gslib')

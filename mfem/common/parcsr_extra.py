@@ -550,7 +550,7 @@ def ResetHypreCol(M, idx):
     return ToHypreParCSR(mat.tocsr(), col_starts=col_starts)
 
 
-def ReadHypreDiag(M):
+def ReadHypreDiag(M, idx):
     '''
     get diagonal element
     '''
@@ -572,11 +572,14 @@ def ReadHypreDiag(M):
               np.min(jcn),  np.max(jcn), (m, n))
         raise
 
-    #idx = np.array(idx, dtype=int, copy=False)
-    idx = np.arange(ilower, min([iupper+1, n]))
+    idx = np.array(idx, dtype=int, copy=False)
     ii = idx[np.logical_and(idx >= ilower, idx <= iupper)]
 
     tmp = mat[ii-ilower, ii].toarray().flatten()
+
+    #idx = np.arange(ilower, min([iupper+1, n]))
+    #ii = idx[np.logical_and(idx >= ilower, idx <= iupper)]
+    #tmp = mat[ii-ilower, ii].toarray().flatten()
 
     return tmp
 
