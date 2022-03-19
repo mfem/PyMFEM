@@ -56,10 +56,15 @@ $ python setup.py install --mfem-branch="mfem-4.3-dev"
 
 
 * cuda
-$ python setup.py install  --prefix=~/sandbox  --verbose --with-cuda
+cuda build supports both serial/parallel. In parallel, hypre cuda build is also
+supported. If you need, use --cuda-arch to specify cuda compute capablility.
+(See table in https://en.wikipedia.org/wiki/CUDA#Supported_GPUs)
 
+$ python setup.py install --with-cuda
+$ python setup.py install --with-cuda --with-cuda-hypre
+$ python setup.py install --with-cuda --with-cuda-hypre --cuda-arch=80 (A100)
+$ python setup.py install --with-cuda --with-cuda-hypre --cuda-arch=75 (Turing)
 
-build is done in parallel
 * libceed
 ** download libceed and build
 $ python setup.py install  --with-libceed --libceed-only

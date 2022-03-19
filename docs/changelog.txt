@@ -1,4 +1,7 @@
 	<<<  Change Log. >>>
+2022 03.
+        * Added --cuda-arch option to specify the compute cuda archtecture
+
 2022 02.27
         * Added Cuda-build HYPRE support. Cuda is controlled by two setup.py options
 	    --with-cuda  :  MFEM_USE_CUDA is on.

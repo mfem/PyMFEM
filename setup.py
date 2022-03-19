@@ -93,6 +93,7 @@ hypre_prefix = ''
 enable_cuda = False
 enable_cuda_hypre = False
 cuda_prefix = ''
+cuda_arch = ''
 enable_pumi = False
 pumi_prefix = ''
 enable_strumpack = False
@@ -448,6 +449,8 @@ def cmake_make_hypre():
         # causes "mpi.h" not found error. For now, letting CMAKE
         # to find MPI
         cmake_opts['DHYPRE_WITH_CUDA'] = '1'
+        if cuda_arch != '':
+            cmake_opts['DCMAKE_CUDA_ARCHITECTURES'] = cuda_arch
     else:
         cmake_opts['DCMAKE_C_COMPILER'] = mpicc_command
 
@@ -635,6 +638,8 @@ def cmake_make_mfem(serial=True):
 
     if enable_cuda:
         cmake_opts['DMFEM_USE_CUDA'] = '1'
+        if cuda_arch != '':
+            cmake_opts['DCMAKE_CUDA_ARCHITECTURES'] = cuda_arch
         
     if enable_libceed:
         cmake_opts['DMFEM_USE_CEED'] = '1'
@@ -956,7 +961,7 @@ def configure_install(self):
     global mfems_prefix, mfemp_prefix, metis_prefix, hypre_prefix
     global cc_command, cxx_command, mpicc_command, mpicxx_command
     global metis_64
-    global enable_cuda, cuda_prefix, enable_cuda_hypre
+    global enable_cuda, cuda_prefix, enable_cuda_hypre, cuda_arch
     global enable_pumi, pumi_prefix
     global enable_strumpack, strumpack_prefix
     global enable_libceed, libceed_prefix, libceed_only
@@ -981,6 +986,8 @@ def configure_install(self):
     enable_strumpack = bool(self.with_strumpack)
     enable_cuda = bool(self.with_cuda)
     enable_cuda_hypre = bool(self.with_cuda_hypre)
+    if self.cuda_arch is not None:
+        cuda_arch = self.cuda_arch
     enable_libceed = bool(self.with_libceed)
     libceed_only = bool(self.libceed_only)
     enable_gslib = bool(self.with_gslib)
@@ -1219,7 +1226,8 @@ class Install(_install):
         ('MPICXX=', None, 'mpic++ compiler'),
 
         ('with-cuda', None, 'enable cuda'),
-        ('with-cuda-hypre', None, 'enable cuda in hypre'),        
+        ('with-cuda-hypre', None, 'enable cuda in hypre'),
+        ('cuda-arch=', None, 'set cuda compute capability. Ex if A100, set to 80'),
         ('with-metis64', None, 'use 64bit int in metis'),
         ('with-pumi', None, 'enable pumi (parallel only)'),
         ('pumi-prefix=', None, 'Specify locaiton of pumi'),
@@ -1255,6 +1263,7 @@ class Install(_install):
 
         self.with_cuda = False
         self.with_cuda_hypre = False
+        self.cuda_arch = None
         self.with_metis64 = False
 
         self.with_pumi = False
