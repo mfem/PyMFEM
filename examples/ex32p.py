@@ -1,22 +1,30 @@
 '''
-   MFEM example 31
+   MFEM example 32
 
    See c++ version in the MFEM library for more detail
 
-   Sample runs:  python ex31.py -m ../data/inline-segment.mesh -o 2
-                 python ex31.py -m ../data/hexagon.mesh -o 2
-                 python ex31.py -m ../data/star.mesh -o 2
-                 python ex31.py -m ../data/fichera.mesh -o 3 -r 1
-                 python ex31.py -m ../data/square-disc-nurbs.mesh -o 3
-                 python ex31.py -m ../data/amr-quad.mesh -o 2 -r 1
-                 python ex31.py -m ../data/amr-hex.mesh -r 1
+   Sample runs:  mpirun -np 4 python ex32p.py -m ../data/hexagon.mesh -o 2
+                 mpirun -np 4 python ex32p.py -m ../data/star.mesh
+                 mpirun -np 4 python ex32p.py -m ../data/square-disc.mesh -o 2 -n 4 -rs 1
+                 mpirun -np 4 python ex32p.py -m ../data/square-disc-nurbs.mesh -rs 3 -o 3
+                 mpirun -np 4 python ex32p.py -m ../data/amr-quad.mesh -o 2 -rs 1
+                 mpirun -np 4 python ex32p.py -m ../data/amr-hex.mesh -rs 1
+                 mpirun -np 4 python ex32p.py -m ../data/fichera.mesh -rs 1
+
 '''
-import mfem.ser as mfem
-from mfem.ser import intArray
+import mfem.par as mfem
+from mfem.par import intArray
 import os
 from os.path import expanduser, join
 import numpy as np
 from numpy import sin, cos, array, pi, sqrt
+
+from mpi4py import MPI
+
+num_procs = MPI.COMM_WORLD.size
+myid = MPI.COMM_WORLD.rank
+smyid = '.'+'{:0>6d}'.format(myid)
+
 
 sqrt1_2 = 1/sqrt(2)
 sqrt2 = sqrt(2)
@@ -378,7 +386,7 @@ def f_exact(x, f):
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
 
-    parser = ArgParser(description='Ex31 (Definite Maxwell Problem)')
+    parser = ArgParser(description='Ex32 (Maxwell Eigenvalue Problem)')
     parser.add_argument('-m', '--mesh',
                         default="inline-quad.mesh",
                         action='store', type=str,
