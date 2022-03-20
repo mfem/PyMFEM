@@ -13,131 +13,171 @@
 
 '''
 import mfem.par as mfem
-from mfem.par import intArray
+from mfem.par import intArray, doubleArray
 import os
 from os.path import expanduser, join
 import numpy as np
 from numpy import sin, cos, array, pi, sqrt
 
-from mpi4py import MPI
+sqrt1_2 = 1/sqrt(2)
+sqrt2 = sqrt(2)
 
+from mpi4py import MPI
 num_procs = MPI.COMM_WORLD.size
 myid = MPI.COMM_WORLD.rank
 smyid = '.'+'{:0>6d}'.format(myid)
 
-
-sqrt1_2 = 1/sqrt(2)
-sqrt2 = sqrt(2)
-
-def run(order=1,
-        refine=2,
-        freq=1,
+def run(nev=5,
+        order=1,
+        rs=2,
+        rp=1,
         meshfile='',
-        visualization=False,
-        numba=False):
+        visualization=False):
 
 
 
+    # 3. Read the (serial) mesh from the given mesh file on all processors. We
+    #    can handle triangular, quadrilateral, tetrahedral, hexahedral, surface
+    #    and volume meshes with the same code.    
     mesh = mfem.Mesh(meshfile, 1, 1)
     dim = mesh.Dimension()
     sdim = mesh.SpaceDimension()
 
-    # 3. Refine the mesh to increase the resolution. In this example we do
+    bbMin, bbMax = mesh.GetBoundingBox()
+
+    # 4. Refine the mesh to increase the resolution. In this example we do
     #    'ref_levels' of uniform refinement (2 by default, or specified on
-    #    the command line with -r)
-    for x in range(refine):
+    #     the command line with -rs)
+    for lev in range(rs):
         mesh.UniformRefinement()
 
-    # 4. Define a finite element space on the mesh. Here we use the Nedelec
-    #    finite elements of the specified order restricted to 1D, 2D, or 3D
-    #    depending on the dimension of the given mesh file.
+    # 5. Define a parallel mesh by a partitioning of the serial mesh. Refine
+    #    this mesh further in parallel to increase the resolution (1 time by
+    #    default, or specified on the command line with -rp). Once the parallel
+
+    pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
+    del mesh
+    for lev in range(rp):
+        pmesh.UniformRefinement()
+        
+    # 6. Define a parallel finite element space on the parallel mesh. Here we
+    #    use the Nedelec finite elements of the specified order.
     if dim == 1:
-        fec = mfem.ND_R1D_FECollection(order, dim)
+        fec_nd = mfem.ND_R1D_FECollection(order, dim)
+        fec_rt = mfem.RT_R1D_FECollection(order-1, dim)
     elif dim == 2:
-        fec = mfem.ND_R2D_FECollection(order, dim)
-    else:
-        fec = mfem.ND_FECollection(order, dim)
+        fec_nd = mfem.ND_R2D_FECollection(order, dim)
+        fec_rt = mfem.RT_R2D_FECollection(order-1, dim)
+    else:        
+        fec_nd = mfem.ND_FECollection(order, dim)
+        fec_rt = mfem.RT_FECollection(order-1, dim)
 
-    fespace = mfem.FiniteElementSpace(mesh, fec)
-    print("Number of H(curl) unknowns: " + str(fespace.GetTrueVSize()))
+    fespace_nd = mfem.ParFiniteElementSpace(pmesh, fec_nd)
+    fespace_rt = mfem.ParFiniteElementSpace(pmesh, fec_rt)
+    
+    size_nd = fespace_nd.GlobalTrueVSize()
+    size_rt = fespace_rt.GlobalTrueVSize()
+    
+    if myid == 0:
+        print("Number of H(Curl) unknowns: " + str(size_nd))
+        print("Number of H(Div) unknowns: " + str(size_nd))
 
-    # 5. Determine the list of true essential boundary dofs. In this example,
-    #    the boundary conditions are defined by marking all the boundary
-    #    attributes from the mesh as essential (Dirichlet) and converting them
-    #    to a list of true dofs.
-    ess_tdof_list = intArray()
-    if mesh.bdr_attributes.Size():
-        ess_bdr = intArray([1]*mesh.bdr_attributes.Max())
-        fespace.GetEssentialTrueDofs(ess_bdr, ess_tdof_list)
+    # 7. Set up the parallel bilinear forms a(.,.) and m(.,.) on the finite
+    #    element space. The first corresponds to the curl curl, while the second
+    #    is a simple mass matrix needed on the right hand side of the
+    #    generalized eigenvalue problem below. The boundary conditions are
+    #    implemented by marking all the boundary attributes from the mesh as
+    #    essential. The corresponding degrees of freedom are eliminated with
+    #    special values on the diagonal to shift the Dirichlet eigenvalues out
+    #    of the computational range. After serial and parallel assembly we
+    #    extract the corresponding parallel matrices A and M.        
 
-    # 5.b Define coefficent to use. Here, we define outside this function.
-    #     We call decoratr function (mfem.jit.xxx) manually. Also, note
-    #     we are passing dim as params, so that numba uses proper dim
-    #     when compiling it.
-    if numba:
-        params = {"dim": dim, "kappa": pi*freq}
-        E = mfem.jit.vector(sdim=3, params=params)(E_exact)
-        CurlE = mfem.jit.vector(sdim=3, params=params)(CurlE_exact)
-        f = mfem.jit.vector(sdim=3, params=params)(f_exact)
-    else:
-        pass  # ToDo provide regular example.
-
-    # 6. Set up the linear form b(.) which corresponds to the right-hand side
-    #    of the FEM linear system, which in this case is (f,phi_i) where f is
-    #    given by the function f_exact and phi_i are the basis functions in
-    #    the finite element fespace.
-
-    b = mfem.LinearForm(fespace)
-    b.AddDomainIntegrator(mfem.VectorFEDomainLFIntegrator(f))
-    b.Assemble()
-
-    # 7. Define the solution vector x as a finite element grid function
-    #    corresponding to fespace. Initialize x by projecting the exact
-    #    solution. Note that only values from the boundary edges will be used
-    #    when eliminating the non-homogeneous boundary condition to modify the
-    #    r.h.s. vector b.
-    sol = mfem.GridFunction(fespace)
-    sol.ProjectCoefficient(E)
-
-    # 8. Set up the bilinear form corresponding to the EM diffusion
-    #    operator curl muinv curl + sigma I, by adding the curl-curl and the
-    #    mass domain integrators.
     mat = array([[2.0, sqrt1_2, 0, ],
                  [sqrt1_2, 2.0, sqrt1_2],
                  [0.0, sqrt1_2, 2.0, ], ])
-    sigmaMat = mfem.DenseMatrix(mat)
+    epsilon_mat = mfem.DenseMatrix(mat)
+    epsilon = mfem. MatrixConstantCoefficient(epsilon_mat)
+    one = mfem.ConstantCoefficient(1.0)
 
-    muinv = mfem.ConstantCoefficient(1.0)
-    sigma = mfem. MatrixConstantCoefficient(sigmaMat)
-    a = mfem.BilinearForm(fespace)
-    a.AddDomainIntegrator(mfem.CurlCurlIntegrator(muinv))
-    a.AddDomainIntegrator(mfem.VectorFEMassIntegrator(sigma))
+    if pmesh.bdr_attributes.Size():
+        ess_bdr = intArray([1]*pmesh.bdr_attributes.Max())
+ 
+    a = mfem.ParBilinearForm(fespace_nd)
+    curlcurl = mfem.CurlCurlIntegrator(one)
+    a.AddDomainIntegrator(curlcurl)
+    
+    mass = mfem.VectorFEMassIntegrator(epsilon)
+    
+    if pmesh.bdr_attributes.Size() == 0 or dim == 1:
+         #  Add a mass term if the mesh has no boundary, e.g. periodic mesh or
+         #  closed surface.
+         a.AddDomainIntegrator(mass)
+         shift = 1.0;
+         if myid == 0:
+            print("Computing eigenvalues shifted by " + str(1.0))
 
-    a.Assemble()
+    a.Assemble();
+    a.EliminateEssentialBCDiag(ess_bdr, 1.0);
+    a.Finalize()
 
-    A = mfem.OperatorPtr()
-    B = mfem.Vector()
-    X = mfem.Vector()
-    a.FormLinearSystem(ess_tdof_list, sol, b, A, X, B)
+    m = mfem.ParBilinearForm(fespace_nd);
+    m.AddDomainIntegrator(mass)
+    m.Assemble();
 
-    # 10. Solve the system A X = B.
-    AM = A.AsSparseMatrix()    
-    M = mfem.GSSmoother(AM)
-    mfem.PCG(A, M, B, X, 1, 500, 1e-12, 0.0)
+    # shift the eigenvalue corresponding to eliminated dofs to a large value
+    m.EliminateEssentialBCDiag(ess_bdr, 2.3e-308)
+    m.Finalize()
 
-    # 12. Recover the solution as a finite element grid function.
-    a.RecoverFEMSolution(X, b, sol)
+    A = a.ParallelAssemble()
+    M = m.ParallelAssemble()
 
-    # 13. Compute and print the CurlE norm of the error.
-    print("|| E_h - E ||_{Hcurl} = " +
-          "{:g}".format(sol.ComputeHCurlError(E, CurlE))+"\n")
+    # 8. Define and configure the AME eigensolver and the AMS preconditioner for
+    #    A to be used within the solver. Set the matrices which define the
+    #    generalized eigenproblem A x = lambda M x.
+    ams = mfem.HypreAMS(A, fespace_nd)
+    ams.SetPrintLevel(0)
+    ams.SetSingularProblem()
 
-    # 14. Save the refined mesh and the solution. This output can be viewed
-    #     later using GLVis: "glvis -m refined.mesh -g sol.gf"
-    mesh.Print('refined.mesh', 8)
-    sol.Save('sol.gf', 8)
+    ame = mfem.HypreAME(MPI.COMM_WORLD)
+    ame.SetNumModes(nev)
+    ame.SetPreconditioner(ams)
+    ame.SetMaxIter(100)
+    ame.SetTol(1e-8)
+    ame.SetPrintLevel(1)
+    ame.SetMassMatrix(M)
+    ame.SetOperator(A)
+    
+    # 9. Compute the eigenmodes and extract the array of eigenvalues. Define
+    #    parallel grid functions to represent each of the eigenmodes returned by
+    #    the solver and their derivatives.
+    eigenvalues = doubleArray()
+    ame.Solve()
+    ame.GetEigenvalues(eigenvalues)
+    x = mfem.ParGridFunction(fespace_nd)
+    dx = mfem.ParGridFunction(fespace_rt)    
+    
+    curl = mfem.ParDiscreteLinearOperator(fespace_nd, fespace_rt)
+    curl.AddDomainInterpolator(mfem.CurlInterpolator());
+    curl.Assemble();
+    curl.Finalize();
 
-    # 15. Send the solution by socket to a GLVis server.
+    # 10. Save the refined mesh and the modes in parallel. This output can be
+    #     viewed later using GLVis: "glvis -np <np> -m mesh -g mode".
+    smyid = '{:0>6d}'.format(myid)
+    mesh_name = "mesh."+smyid
+    pmesh.Print(mesh_name, 8)
+    
+    for i in range(nev):
+        x.Assign(ame.GetEigenvector(i))
+        curl.Mult(x, dx)
+
+        mode_name = "mode_"+str(i).zfill(2)+"."+smyid        
+        mode_deriv_name = "mode_deriv_"+str(i).zfill(2)+"."+smyid
+        
+        x.Save(mode_name, 8)
+        dx.Save(mode_deriv_name, 8)        
+
+    # 13. Send the solution by socket to a GLVis server.    
     if visualization:
 
         solCoef = mfem.VectorGridFunctionCoefficient(sol)
@@ -386,53 +426,43 @@ def f_exact(x, f):
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
 
-    parser = ArgParser(description='Ex32 (Maxwell Eigenvalue Problem)')
+    parser = ArgParser(description='Ex32p (Maxwell Eigenvalue Problem)')
     parser.add_argument('-m', '--mesh',
                         default="inline-quad.mesh",
                         action='store', type=str,
                         help='Mesh file to use.')
-    parser.add_argument('-r', '--refine',
+    parser.add_argument('-rs', '--refine-serial',
                         action='store', default=2, type=int,
-                        help="Number of times to refine the mesh uniformly.")
+                        help="Number of times to refine the mesh uniformly in serial")
+    parser.add_argument('-rp', '--refine-parallel',
+                        action='store', default=1, type=int,
+                        help="Number of times to refine the mesh uniformly in paralle.")
+    
     parser.add_argument('-o', '--order',
                         action='store', default=1, type=int,
-                        help="Finite element order (polynomial degree)")
-    parser.add_argument("-f", "--frequency",
+                        help="Finite element order (polynomial degree) or -1 for isoparametric space.")
+    parser.add_argument("-n", "--num-eigs",
                         action='store',
                         type=float,
-                        default=1.0,
-                        help="Set the frequency for the exact")
+                        default=5,
+                        help="Number of eigen values to compute")
     parser.add_argument('-vis', '--visualization',
                         action='store_true',
                         help='Enable GLVis visualization')
 
-    try:
-        from numba import jit
-        HAS_NUMBA = True
-    except ImportError:
-        assert False, "This example requires numba to run"
-    parser.add_argument("-n", "--numba",
-                        default=int(HAS_NUMBA),
-                        type=int,
-                        help="Use Number compiled coefficient")
-
     args = parser.parse_args()
-    args.numba = bool(args.numba)
     parser.print_options(args)
 
     order = args.order
-    refine = args.refine
-
     meshfile = expanduser(
         join(os.path.dirname(__file__), '..', 'data', args.mesh))
     visualization = args.visualization
-    freq = args.frequency
-    numba = args.numba
 
-    run(freq=freq,
+    run(nev=args.num_eigs,
         order=order,
-        refine=refine,
+        rs=args.refine_serial,
+        rp=args.refine_parallel,
         meshfile=meshfile,
-        visualization=visualization,
-        numba=numba)
+        visualization=visualization)
+
         
