@@ -16,6 +16,8 @@ def run_test():
     num_proc = MPI.COMM_WORLD.size
     myid = MPI.COMM_WORLD.rank
 
+    device = mfem.Device('cuda')
+    
     def print_hypre(M, txt):
         for i in range(num_proc):
             MPI.COMM_WORLD.Barrier()
@@ -49,12 +51,11 @@ def run_test():
     vec1 = CHypreVec(r1, None)
     vec2 = CHypreVec(r2, None)
 
-    print(mfem.InnerProduct(vec1[0], vec2[0]))
-
     if myid == 0:
         print("v1")
     v1 = (vec1-vec1*1j)
     v2 = (vec1+vec1*1j)
+
     nicePrint(v1.GlobalVector())
     nicePrint(v2.GlobalVector())
     nicePrint((v1+v2).GlobalVector())
@@ -74,7 +75,6 @@ def run_test():
         print("v1-v2")
     nicePrint((v1-v2).GlobalVector())
 
-    v1 *= 3
     if myid == 0:
         print("3*v1")
     nicePrint(v1.GlobalVector())
@@ -90,9 +90,19 @@ def run_test():
     v1 *= 1+1j
     nicePrint("v1", v1.GlobalVector())
     nicePrint("v2", v2.GlobalVector())
-    print(v1.dot(v1))
-    print(v1.dot(v2))
+    #print(v1.dot(v1))
+    #print(v1.dot(v2))
+    #if mfem.is_HYPRE_USING_CUDA():
+    #    v1.HypreRead()
 
+    v1[0] += 3.
+    if myid == 0:
+        print("3*v1")
+    #if mfem.is_HYPRE_USING_CUDA():
+    #    v1.HypreRead()
+        
+    nicePrint(v1[0].GetDataArray())
+    nicePrint(v1.GlobalVector())
 
 if __name__ == '__main__':
     if len(sys.argv) > 1 and sys.argv[1] == '-p':

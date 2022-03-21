@@ -191,8 +191,11 @@ if isinstance(args[-1], list):
      # in order to prevent python from freeing the input
      # array, object is kept in ParVector
      self._linked_array = args[-1]
+     self._hypreread_called = False
 %}
-
+%pythonappend mfem::HypreParVector::HypreRead %{
+     self._hypreread_called = True
+%}
 %pythonappend mfem::HypreParMatrix::operator*= %{
 #    val.thisown = 0
     return self

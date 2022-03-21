@@ -20,33 +20,44 @@ int main(int argc, char *argv[]){
    Device device("cuda");
 
    Vector *v10 = new Vector(2);
-   std::cout << "size: "  << v10->Size() << "\n";
-   v10->UseDevice(true);
-   //double *data = v10->HostWrite();
-   double *data = v10->Write();
 
+   v10 -> operator *= (3.0);
+   //std::cout << "size: "  << v10->Size() << "\n";
+   //v10->UseDevice(true);
+   //double *data = v10->HostWrite();
+   //double *data = v10->Write();
+
+   /*
    MFEM_FORALL(j, size,
    {
      data[j] = myid;
    });
-
-   /*
-   double data[size];
-   for (int j=0; j< size; j++){   
-     data[j] = myid;
-   }
    */
+
+   double data1[size], data2[size];;
+   for (int j=0; j< size; j++){   
+     data1[j] = myid;
+     data2[j] = myid;     
+   }
+
    
    HypreParVector *v1, *v2;
-   v1 = new HypreParVector(MPI_COMM_WORLD, num_procs*size, data, col, true);
-   v2 = new HypreParVector(MPI_COMM_WORLD, num_procs*size, data, col, true);
+   v1 = new HypreParVector(MPI_COMM_WORLD, num_procs*size, data1, col);
+   v2 = new HypreParVector(MPI_COMM_WORLD, num_procs*size, data2, col);
 
-   //v1->HypreRead();
-   //v2->HypreRead();
+   v1->HypreRead();
+   v2->HypreRead();
+
+   v1->Vector::Print();
 
    double dot = InnerProduct(v1, v2);
    std::cout << "dot: "  << dot << "\n";
 
+   v1 -> operator *= (3.0);
+   v1 -> operator ()(1) = 5.0;
+   v1->Vector::Print();
+   
+   
    delete v1;
    delete v2;
    

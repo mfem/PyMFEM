@@ -211,10 +211,11 @@ def ToScipyCSR(mat):
 
     from scipy.sparse import csr_matrix
     P = csr_matrix((merged.GetDataArray(), merged.GetJArray(), merged.GetIArray()),
-                   shape= (merged.Height(), merged.Width()))
+                   shape=(merged.Height(), merged.Width()))
     P._linked_mat = merged
     return P
-    
+
+
 def ToScipyCoo(mat):
     '''
     convert HypreParCSR to Scipy Coo Matrix
@@ -239,9 +240,19 @@ def ToScipyCoo(mat):
 
 
 def InnerProductComplex(A, B):
+    def ensure_hypreread(V):
+        if V is None:
+            return
+        if not V._hypreread_called:
+            V.HypreRead()
+
     import mfem.par as mfem
     R_A, I_A = A
     R_B, I_B = B
+
+    for V in (R_A, I_A, R_B, I_B):
+        ensure_hypreread(V)
+
     if I_A is None and I_B is None:
         return mfem.InnerProduct(R_A, R_B)
     elif I_A is None:
@@ -582,4 +593,3 @@ def ReadHypreDiag(M, idx):
     #tmp = mat[ii-ilower, ii].toarray().flatten()
 
     return tmp
-

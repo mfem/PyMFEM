@@ -183,6 +183,7 @@ class HypreParVector(mfem._par.vector.Vector):
         # in order to prevent python from freeing the input
         # array, object is kept in ParVector
            self._linked_array = args[-1]
+           self._hypreread_called = False
 
 
 
@@ -242,8 +243,13 @@ class HypreParVector(mfem._par.vector.Vector):
 
     def HypreRead(self):
         r"""HypreRead(HypreParVector self)"""
-        return _hypre.HypreParVector_HypreRead(self)
-    HypreRead = _swig_new_instance_method(_hypre.HypreParVector_HypreRead)
+        val = _hypre.HypreParVector_HypreRead(self)
+
+        self._hypreread_called = True
+
+
+        return val
+
 
     def HypreReadWrite(self):
         r"""HypreReadWrite(HypreParVector self)"""
