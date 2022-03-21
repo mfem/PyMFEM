@@ -47,7 +47,7 @@ repo_releases = {  # "mfem": "https://github.com/mfem/mfem/archive/v4.3.tar.gz",
 
 repos = {"mfem": "https://github.com/mfem/mfem.git",
          "libceed": "https://github.com/CEED/libCEED.git"}
-repos_sha = {"mfem": "6c7a00d278730a3bfeda4a1de859a248f826cc23"}
+repos_sha = {"mfem": "a1f6902ed72552f3e680d1489f1aa6ade2e0d3b2"}
 
 rootdir = os.path.abspath(os.path.dirname(__file__))
 extdir = os.path.join(rootdir, 'external')
