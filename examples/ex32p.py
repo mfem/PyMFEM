@@ -433,7 +433,7 @@ if __name__ == "__main__":
                         type=float,
                         default=5,
                         help="Number of eigen values to compute")
-    parser.add_argument('-vis', '--visualization',
+    parser.add_argument('-no-vis', '--no-visualization',
                         action='store_true',
                         help='Enable GLVis visualization')
 
@@ -444,7 +444,7 @@ if __name__ == "__main__":
     order = args.order
     meshfile = expanduser(
         join(os.path.dirname(__file__), '..', 'data', args.mesh))
-    visualization = args.visualization
+    visualization = not args.no_visualization
 
     run(nev=args.num_eigs,
         order=order,
