@@ -14,7 +14,7 @@
 '''
 import mfem.par as mfem
 from mfem.par import intArray, doubleArray
-import os
+import os, sys
 from os.path import expanduser, join
 import numpy as np
 from numpy import sin, cos, array, pi, sqrt
@@ -80,7 +80,7 @@ def run(nev=5,
     
     if myid == 0:
         print("Number of H(Curl) unknowns: " + str(size_nd))
-        print("Number of H(Div) unknowns: " + str(size_nd))
+        print("Number of H(Div) unknowns: " + str(size_rt))
 
     # 7. Set up the parallel bilinear forms a(.,.) and m(.,.) on the finite
     #    element space. The first corresponds to the curl curl, while the second
@@ -91,7 +91,7 @@ def run(nev=5,
     #    special values on the diagonal to shift the Dirichlet eigenvalues out
     #    of the computational range. After serial and parallel assembly we
     #    extract the corresponding parallel matrices A and M.        
-
+    shift = 0.0
     mat = array([[2.0, sqrt1_2, 0, ],
                  [sqrt1_2, 2.0, sqrt1_2],
                  [0.0, sqrt1_2, 2.0, ], ])
@@ -177,24 +177,42 @@ def run(nev=5,
         x.Save(mode_name, 8)
         dx.Save(mode_deriv_name, 8)        
 
-    # 13. Send the solution by socket to a GLVis server.    
+    # 11 Visualize data using glvis
     if visualization:
-
-        solCoef = mfem.VectorGridFunctionCoefficient(sol)
-        dsolCoef = mfem.CurlGridFunctionCoefficient(sol)
-
+        # 11. (a) functions to format Glvis window
+        def make_cmd(label, px, py, max_r, i, title = "Eigenmode"):
+            cmd = (" window_title '"+ title + " " +str(i+1) +  '/' + str(nev) + 
+                   " " + label + ", Lambda = " + "{:g}".format(eigenvalues[i] - shift) +
+                   "'" + " valuerange -" + str(max_r) +  ' ' + str(max_r))
+            cmd = (cmd + " keys aa window_geometry " +
+                   str(px) + " " + str(py) + " 400 350")
+            return cmd
+        # 11. (b) fucntion to send data to Glvis
+        def send_data_to_glvis(sock, data, cmd):
+            sock << "parallel " << num_procs << " " << myid << "\n"
+            sock << "solution\n" << pmesh << data
+            sock.flush()
+            sock << cmd
+            sock.endline()
+            MPI.COMM_WORLD.Barrier()
+            
+        def ask_exit():
+           if (myid == 0):
+               from builtins import input
+               c = input("press (q)uit or (c)ontinue --> ")
+           else:
+               c = None
+               c = MPI.COMM_WORLD.bcast(c, root=0)
+           if (c != 'c'):
+               sys.exit()
+                   
+        
         if dim == 1:
-            x_sock = mfem.socketstream("localhost", 19916)
-            y_sock = mfem.socketstream("localhost", 19916)
-            z_sock = mfem.socketstream("localhost", 19916)
-            dy_sock = mfem.socketstream("localhost", 19916)
-            dz_sock = mfem.socketstream("localhost", 19916)
-
-            x_sock.precision(8)
-            y_sock.precision(8)
-            z_sock.precision(8)
-            dy_sock.precision(8)
-            dz_sock.precision(8)
+            mode_x_sock = make_socketstrema()
+            mode_y_sock = make_socketstrema()
+            mode_z_sock = make_socketstrema()
+            mode_dy_sock = make_socketstrema()
+            mode_dz_sock = make_socketstrema()            
 
             xVec = mdfem.Vector([1, 0, 0.])
             yVec = mdfem.Vector([0, 1, 0.])
@@ -206,222 +224,180 @@ def run(nev=5,
 
             fec_h1 = mfem.H1_FECollection(order, dim)
             fec_l2 = mfem.L2_FECollection(order-1, dim)
+            
+            fes_h1 = mfem.ParFiniteElementSpace(pmesh, fec_h1)
+            fes_l2 = mfem.ParFiniteElementSpace(pmesh, fec_l2)
 
-            fes_h1 = mfem.FiniteElementSpace(mesh, fec_h1)
-            fes_l2 = mfem.FiniteElementSpace(mesh, fec_l2)
+            xComp = mfem.ParGridFunction(fes_l2)
+            yComp = mfem.ParGridFunction(fes_h1)
+            zComp = mfem.ParGridFunction(fes_h1)
+            
+            dyComp = mfem.ParGridFunction(fes_l2)
+            dzComp = mfem.ParGridFunction(fes_l2)
 
-            xComp = mfem.GridFunction(fes_l2)
-            yComp = mfem.GridFunction(fes_h1)
-            zComp = mfem.GridFunction(fes_h1)
+            for i in range(nev):
+               if (myid == 0):
+                   print("Eigenmode " + str(i+1) + '/' + str(nev) +
+                         ", Lambda = " +  "{:g}".format(eigenvalues[i]))
 
-            xCoef = mfem.InnerProductCoefficient(xVecCoef, solCoef)
-            yCoef = mfem.InnerProductCoefficient(yVecCoef, solCoef)
-            zCoef = mfem.InnerProductCoefficient(zVecCoef, solCoef)
+               x.Assign(ame.GetEigenvector(i))
+               curl.Mult(x, dx)
 
-            xComp.ProjectCoefficient(xCoef)
-            yComp.ProjectCoefficient(yCoef)
-            zComp.ProjectCoefficient(zCoef)
+               modeCoeff = mfem.VectorGridFunctionCoefficient(x);
+               xCoef = mfem.InnerProductCoefficient(xVecCoef, modeCoef)
+               yCoef = mfem.InnerProductCoefficient(yVecCoef, modeCoef)
+               zCoef = mfem.InnerProductCoefficient(zVecCoef, modeCoef)
 
-            x_sock << "solution\n" << mesh << xComp
-            x_sock.fluxh()
-            x_sock << "window_title 'X component'"
-            x_sock.fluxh()
-            y_sock << "solution\n" << mesh << yComp
-            y_sock.fluxh()
-            y_sock << "window_geometry 403 0 400 350 " << "window_title 'Y component'"
-            y_sock.fluxh()
-            z_sock << "solution\n" << mesh << zComp
-            z_sock.fluxh()
-            z_sock << "window_geometry 806 0 400 350 " << "window_title 'Z component'"
-            z_sock.fluxh()
+               xComp.ProjectCoefficient(xCoef)
+               yComp.ProjectCoefficient(yCoef)
+               zComp.ProjectCoefficient(zCoef)
 
-            dyCoef = mfem.InnerProductCoefficient(yVecCoef, dsolCoef)
-            dzCoef = mfem.InnerProductCoefficient(zVecCoef, dsolCoef)
-            dyComp.ProjectCoefficient(dyCoef)
-            dzComp.ProjectCoefficient(dzCoef)
+               max_x = GetScalarMax(xComp);
+               max_y = GetScalarMax(yComp);
+               max_z = GetScalarMax(zComp);
+               max_r = np.max([max_x, max_y, max_z])
 
-            dy_sock << "solution\n" << mesh << dyComp
-            dy_sock.flush()
-            dy_sock << "window_geometry 403 375 400 350 " << "window_title 'Y component of Curl'"
-            dy_sock.flush()
+               x_cmd = make_cmd('X', 0, 0, max_r, i)
+               y_cmd = make_cmd('Y', 403, 0, max_r, i)
+               z_cmd = make_cmd('Z', 800, 0, max_r, i)
 
-            dy_sock << "solution\n" << mesh << dzComp
-            dy_sock.flush()
-            dy_sock << "window_geometry 403 375 400 350 " << "window_title 'Z component of Curl'"
-            dy_sock.flush()
+               send_data_to_glvis(mode_x_sock, x, x_cmd)
+               send_data_to_glvis(mode_y_sock, y, y_cmd)
+               send_data_to_glvis(mode_z_sock, z, z_cmd)
+               
+               dmodeCoeff = mfem.VectorGridFunctionCoefficient(dx);
+               dyCoef = mfem.InnerProductCoefficient(yVecCoef, dmodeCoef)
+               dzCoef = mfem.InnerProductCoefficient(zVecCoef, dmodeCoef)
+               zCoef = mfem.InnerProductCoefficient(zVecCoef, modeCoef)
 
+               dyComp.ProjectCoefficient(dyCoef)
+               dzComp.ProjectCoefficient(dzCoef)
+               
+               min_d = max_r / bbMax[0] - bbMin[0]
+               max_y = GetScalarMax(dyComp);
+               max_z = GetScalarMax(dzComp);
+               max_r = np.max([max_y, max_z, max_d])
+
+               dy_cmd = make_cmd('Y', 403, 375, max_r, i, title="Curl Eigenmode") 
+               dz_cmd = make_cmd('Z', 800, 375, max_r, i, title="Curl Eigenmode")
+
+               send_data_to_glvis(mode_dy_sock, dyComp, dy_cmd)
+               send_data_to_glvis(mode_dz_sock, dzComp, dz_cmd)                              
+               
+               ask_exit()
+               
         elif dim == 2:
-            xy_sock = mfem.socketstream("localhost", 19916)
-            z_sock = mfem.socketstream("localhost", 19916)
-            dxy_sock = mfem.socketstream("localhost", 19916)
-            dz_sock = mfem.socketstream("localhost", 19916)
+            mode_xy_sock = make_socketstrema()
+            mode_z_sock = make_socketstrema()
+            mode_dxy_sock = make_socketstrema()
+            mode_dz_sock = make_socketstrema()
 
             mat = array([[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]])
             xyMat = mfem.DenseMatrix(mat)
-
+            xyMatCoef = mfem.MatrixConstantCoefficient(xyMat)
             zVec = array([0, 0, 1])
             zVecCoef = mfem.VectorConstantCoefficient(zVec)
 
-            xyCoeff = mfem.MatrixVectorProductCoefficient(xyMatCoef, solCoef)
-            zCeof = mfem.InnerProductCoefficient(zVecCoef, solCoef)
-
             fec_h1 = mfem.H1_FECollection(order, dim)
-            fec_nd = mfem.ND_FECollection(order, dim)
-            fec_rt = mfem.RT_FECollection(order-1, dim)
+            fec_nd_xy = mfem.ND_FECollection(order, dim)
+            fec_rt_xy = mfem.RT_FECollection(order-1, dim)
             fec_l2 = mfem.L2_FECollection(order-1, dim)
 
-            fes_h1 = mfem.FiniteElementSpace(mesh, fec_h1)
-            fes_nd = mfem.FiniteElementSpace(mesh, fec_nd)
-            fes_rt = mfem.FiniteElementSpace(mesh, fec_rt)
-            fes_l2 = mfem.FiniteElementSpace(mesh, fec_l2)
+            fes_h1 = mfem.ParFiniteElementSpace(pmesh, fec_h1)
+            fes_nd = mfem.ParFiniteElementSpace(pmesh, fec_nd_xy)
+            fes_rt = mfem.ParFiniteElementSpace(pmesh, fec_rt_xy)
+            fes_l2 = mfem.ParFiniteElementSpace(pmesh, fec_l2)
 
-            xyComp = mfem.GridFunction(fes_nd)
-            zComp = mfem.GridFunction(fes_h1)
+            xyComp = mfem.ParGridFunction(fes_nd)
+            zComp = mfem.ParGridFunction(fes_h1)
 
-            dxyComp = mfem.GridFunction(fes_rt)
-            zComp = mfem.GridFunction(fes_l2)
+            dxyComp = mfem.ParGridFunction(fes_rt)
+            dzComp = mfem.ParGridFunction(fes_l2)
 
-            xyComp.ProjectCoefficient(xyCoef)
-            zComp.ProjectCoefficient(zCoef)
+            for i in range(nev):
+               if (myid == 0):
+                   print("Eigenmode " + str(i+1) + '/' + str(nev) +
+                         ", Lambda = " +  "{:g}".format(eigenvalues[i]))
 
-            xy_sock.precision(8)
-            xy_sock << "solution\n" << mesh << xyComp
-            xy_sock << "window_title 'XY components'\n"
-            xy_sock.flush()
-            z_sock << "solution\n" << mesh << zComp
-            z_sock << "window_geometry 403 0 400 350 " << "window_title 'Z component'"
-            z_sock.flush()
+               x.Assign(ame.GetEigenvector(i))
+               curl.Mult(x, dx)
 
-            dxyCoef = mfem.MatrixVectorProductCoefficient(xyMatCoef, dsolCoef)
-            dzCoef = mfem.InnerProductCoefficient(zVecCoef, dsolCoef)
+               modeCoef = mfem.VectorGridFunctionCoefficient(x)
 
-            dxyComp.ProjectCoefficient(dxyCoef)
-            dzComp.ProjectCoefficient(dzCoef)
+               xyCoef = mfem.MatrixVectorProductCoefficient(xyMatCoef, modeCoef)
+               zCoef = mfem.InnerProductCoefficient(zVecCoef, modeCoef)
 
-            dxy_sock << "solution\n" << mesh << dxyComp
-            dxy_sock << "window_geometry 0 375 400 350 " << "window_title 'XY components of Curl'"
-            dxy_sock.flush()
-            dz_sock << "solution\n" << mesh << dzComp
-            dz_sock << "window_geometry 403 375 400 350 " << "window_title 'Z component of Curl'"
-            dz_sock.flush()
+               xyComp.ProjectCoefficient(xyCoef)
+               zComp.ProjectCoefficient(zCoef)
 
+               max_v = GetVectorMax(2, xyComp);
+               max_s = GetScalarMax(zComp);
+               max_r = np.max([max_v, max_s])
+               
+               xy_cmd = make_cmd('XY', 0, 0, max_r, i)
+               z_cmd = make_cmd('Z', 403, 0, max_r, i)
+
+               send_data_to_glvis(mode_xy_sock, xyComp, xy_cmd)
+               send_data_to_glvis(mode_z_sock, zComp, z_cmd)
+
+               dmodeCoef = mfem.VectorGridFunctionCoefficient(dx)               
+               dxyCoef = mfem.MatrixVectorProductCoefficient(xyMatCoef, dmodeCoef)
+               dzCoef = mfem.InnerProductCoefficient(zVecCoef, dmodeCoef)
+
+               dxyComp.ProjectCoefficient(dxyCoef)
+               dzComp.ProjectCoefficient(dzCoef)
+
+               min_d = max_r / min([bbMax[0] - bbMin[0],  bbMax[1] - bbMin[1]])
+               max_v = GetVectorMax(2, dxyComp);
+               max_s = GetScalarMax(dzComp);
+               max_r = np.max([max_v, max_s])
+
+               dxy_cmd = make_cmd('XY', 0, 375, max_r, i, title="Curl Eigenmode") 
+               dz_cmd = make_cmd('Z', 403, 375, max_r, i, title="Curl Eigenmode")
+               
+               send_data_to_glvis(mode_dxy_sock, dxyComp, dxy_cmd)
+               send_data_to_glvis(mode_dz_sock, dzComp, dz_cmd)                              
+               
+               ask_exit()
+            
         else:
-            sol_sock = mfem.socketstream("localhost", 19916)
-            dsol_sock = mfem.socketstream("localhost", 19916)
+            mode_sock = make_socketstrema()
+            dmode_sock = make_socketstrema()
 
-            fec_rt = mfem.RT_FECollection(order-1, dim)
-            fes_rt = mfem.FiniteElementSpace(mesh, fec_rt)
+            for i in range(nev):
+               if (myid == 0):
+                   print("Eigenmode " + str(i+1) + '/' + str(nev) +
+                         ", Lambda = " +  "{:g}".format(eigenvalues[i]))
 
-            dsol = mfem.GridFunction(fes_rt)
+               x.Assign(ame.GetEigenvector(i))
+               curl.Mult(x, dx)
 
-            dsol.ProjectCoefficient(dsolCoef)
+               max_v = GetVectorMax(3, x)
+               cmd = make_cmd('', 0, 0, max_v, i)
+               max_v = GetVectorMax(3, dx)               
+               d_cmd = make_cmd('', 0, 375, max_v, i)
+                   
+               send_data_to_glvis(mode_sock, x, cmd)
+               send_data_to_glvis(dmode_sock, dx, d_cmd)
 
-            sol_sock.precision(8)
-            dsol_sock.precision(8)
-            sol_sock << "solution\n" << mesh << sol << "window_title 'Solution'"
-            sol_sock.flush()
-            dsol_sock << "solution\n" << mesh << dsol
-            dsol_sock.flush()
-            dsol_sock << "window_geometry 0 375 400 350 " << "window_title 'Curl of solution'"
-            dsol_sock.flush()
+               ask_exit()
+            
+def GetVectorMax(vdim, x):
+    zeroVec = mfem.Vector(vdim)
+    zeroVec.Assign(0.0)
+    zero = mfem.VectorConstantCoefficient(zeroVec)
+    nrm = x.ComputeMaxError(zero)
+    return nrm
 
+def GetScalarMax(x):
+    zero = mfem.ConstantCoefficient(0.0)
+    nrm = x.ComputeMaxError(zero)
+    return nrm
 
-
-def E_exact(x, E):
-    if dim == 1:
-        E[0] = 1.1 * sin(kappa * x[0] + 0.0 * pi)
-        E[1] = 1.2 * sin(kappa * x[0] + 0.4 * pi)
-        E[2] = 1.3 * sin(kappa * x[0] + 0.9 * pi)
-    elif dim == 2:
-        E[0] = 1.1 * sin(kappa * sqrt1_2 * (x[0] + x[1]) + 0.0 * pi)
-        E[1] = 1.2 * sin(kappa * sqrt1_2 * (x[0] + x[1]) + 0.4 * pi)
-        E[2] = 1.3 * sin(kappa * sqrt1_2 * (x[0] + x[1]) + 0.9 * pi)
-    else:
-        E[0] = 1.1 * sin(kappa * sqrt1_2 * (x[0] + x[1]) + 0.0 * pi)
-        E[1] = 1.2 * sin(kappa * sqrt1_2 * (x[0] + x[1]) + 0.4 * pi)
-        E[2] = 1.3 * sin(kappa * sqrt1_2 * (x[0] + x[1]) + 0.9 * pi)
-        
-        for i in range(3):  E[i] = E[i]*cos(kappa * x[2])
-
-def CurlE_exact(x, dE):
-    if dim == 1:
-        c4 = cos(kappa * x[0] + 0.4 * pi)
-        c9 = cos(kappa * x[0] + 0.9 * pi)
-
-        dE[0] = 0.0
-        dE[1] = -1.3 * c9
-        dE[2] = 1.2 * c4
-        for i in range(3):  dE[i] = dE[i]*kappa
-        
-    elif dim == 2:
-        c0 = cos(kappa * sqrt1_2 * (x[0] + x[1]) + 0.0 * pi)
-        c4 = cos(kappa * sqrt1_2 * (x[0] + x[1]) + 0.4 * pi)
-        c9 = cos(kappa * sqrt1_2 * (x[0] + x[1]) + 0.9 * pi)
-
-        dE[0] = 1.3 * c9
-        dE[1] = -1.3 * c9
-        dE[2] = 1.2 * c4 - 1.1 * c0
-        for i in range(3):  dE[i] = dE[i]*kappa*sqrt1_2        
-
-    else:
-        s0 = sin(kappa * sqrt1_2 * (x[0] + x[1]) + 0.0 * pi)
-        c0 = cos(kappa * sqrt1_2 * (x[0] + x[1]) + 0.0 * pi)
-        s4 = sin(kappa * sqrt1_2 * (x[0] + x[1]) + 0.4 * pi)
-        c4 = cos(kappa * sqrt1_2 * (x[0] + x[1]) + 0.4 * pi)
-        c9 = cos(kappa * sqrt1_2 * (x[0] + x[1]) + 0.9 * pi)
-        sk = sin(kappa * x[2])
-        ck = cos(kappa * x[2])
-
-        dE[0] = 1.2 * s4 * sk + 1.3 * sqrt1_2 * c9 * ck
-        dE[1] = -1.1 * s0 * sk - 1.3 * sqrt1_2 * c9 * ck
-        dE[2] = -sqrt1_2 * (1.1 * c0 - 1.2 * c4) * ck
-        for i in range(3):  dE[i] = dE[i]*kappa               
-
-def f_exact(x, f):
-    if dim == 1:
-        s0 = sin(kappa * x[0] + 0.0 * pi)
-        s4 = sin(kappa * x[0] + 0.4 * pi)
-        s9 = sin(kappa * x[0] + 0.9 * pi)
-
-        f[0] = 2.2 * s0 + 1.2 * sqrt1_2 * s4
-        f[1] = (1.2 * (2.0 + kappa * kappa) * s4 +
-                sqrt1_2 * (1.1 * s0 + 1.3 * s9))
-        f[2] = 1.3 * (2.0 + kappa * kappa) * s9 + 1.2 * sqrt1_2 * s4
-
-    elif dim == 2:
-        s0 = sin(kappa * sqrt1_2 * (x[0] + x[1]) + 0.0 * pi)
-        s4 = sin(kappa * sqrt1_2 * (x[0] + x[1]) + 0.4 * pi)
-        s9 = sin(kappa * sqrt1_2 * (x[0] + x[1]) + 0.9 * pi)
-
-        f[0] = (0.55 * (4.0 + kappa * kappa) * s0 +
-                0.6 * (sqrt2 - kappa * kappa) * s4)
-        f[1] = (0.55 * (sqrt2 - kappa * kappa) * s0 +
-                0.6 * (4.0 + kappa * kappa) * s4 +
-                0.65 * sqrt2 * s9)
-        f[2] = 0.6 * sqrt2 * s4 + 1.3 * (2.0 + kappa * kappa) * s9
-
-    else:
-        s0 = sin(kappa * sqrt1_2 * (x[0] + x[1]) + 0.0 * pi)
-        c0 = cos(kappa * sqrt1_2 * (x[0] + x[1]) + 0.0 * pi)
-        s4 = sin(kappa * sqrt1_2 * (x[0] + x[1]) + 0.4 * pi)
-        c4 = cos(kappa * sqrt1_2 * (x[0] + x[1]) + 0.4 * pi)
-        s9 = sin(kappa * sqrt1_2 * (x[0] + x[1]) + 0.9 * pi)
-        c9 = cos(kappa * sqrt1_2 * (x[0] + x[1]) + 0.9 * pi)
-        sk = sin(kappa * x[2])
-        ck = cos(kappa * x[2])
-
-        f[0] = (0.55 * (4.0 + 3.0 * kappa * kappa) * s0 * ck +
-                0.6 * (sqrt2 - kappa * kappa) * s4 * ck -
-                0.65 * sqrt2 * kappa * kappa * c9 * sk)
-
-        f[1] = (0.55 * (sqrt2 - kappa * kappa) * s0 * ck +
-                0.6 * (4.0 + 3.0 * kappa * kappa) * s4 * ck +
-                0.65 * sqrt2 * s9 * ck -
-                0.65 * sqrt2 * kappa * kappa * c9 * sk)
-
-        f[2] = (0.6 * sqrt2 * s4 * ck -
-                sqrt2 * kappa * kappa * (0.55 * c0 + 0.6 * c4) * sk
-                + 1.3 * (2.0 + kappa * kappa) * s9 * ck)
+def make_socketstrema():
+    sock = mfem.socketstream("localhost", 19916)
+    sock.precision(8)
+    return sock 
 
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser

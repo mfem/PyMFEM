@@ -210,7 +210,7 @@ def run(order=1,
 
             mat = array([[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]])
             xyMat = mfem.DenseMatrix(mat)
-
+            xyMatCoef = mfem.MatrixConstantCoefficient(xyMat)
             zVec = array([0, 0, 1])
             zVecCoef = mfem.VectorConstantCoefficient(zVec)
 
