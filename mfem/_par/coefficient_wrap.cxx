@@ -9842,6 +9842,43 @@ SWIGINTERN PyObject *GradientGridFunctionCoefficient_swiginit(PyObject *SWIGUNUS
   return SWIG_Python_InitShadowInstance(args);
 }
 
+SWIGINTERN PyObject *_wrap_new_CurlGridFunctionCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"gf",  NULL 
+  };
+  mfem::CurlGridFunctionCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_CurlGridFunctionCoefficient", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_CurlGridFunctionCoefficient" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
+  {
+    try {
+      result = (mfem::CurlGridFunctionCoefficient *)new mfem::CurlGridFunctionCoefficient((mfem::GridFunction const *)arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__CurlGridFunctionCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_CurlGridFunctionCoefficient_SetGridFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::CurlGridFunctionCoefficient *arg1 = (mfem::CurlGridFunctionCoefficient *) 0 ;
@@ -10244,6 +10281,10 @@ SWIGINTERN PyObject *CurlGridFunctionCoefficient_swigregister(PyObject *SWIGUNUS
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
   SWIG_TypeNewClientData(SWIGTYPE_p_mfem__CurlGridFunctionCoefficient, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *CurlGridFunctionCoefficient_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
 }
 
 SWIGINTERN PyObject *_wrap_new_DivergenceGridFunctionCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
@@ -14818,6 +14859,46 @@ SWIGINTERN PyObject *SymmetricMatrixCoefficient_swigregister(PyObject *SWIGUNUSE
   return SWIG_Py_Void();
 }
 
+SWIGINTERN PyObject *_wrap_new_SymmetricMatrixConstantCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::DenseSymmetricMatrix *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"m",  NULL 
+  };
+  mfem::SymmetricMatrixConstantCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_SymmetricMatrixConstantCoefficient", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__DenseSymmetricMatrix,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SymmetricMatrixConstantCoefficient" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SymmetricMatrixConstantCoefficient" "', argument " "1"" of type '" "mfem::DenseSymmetricMatrix const &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
+  {
+    try {
+      result = (mfem::SymmetricMatrixConstantCoefficient *)new mfem::SymmetricMatrixConstantCoefficient((mfem::DenseSymmetricMatrix const &)*arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SymmetricMatrixConstantCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_SymmetricMatrixConstantCoefficient_Eval__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::SymmetricMatrixConstantCoefficient *arg1 = (mfem::SymmetricMatrixConstantCoefficient *) 0 ;
@@ -15051,6 +15132,10 @@ SWIGINTERN PyObject *SymmetricMatrixConstantCoefficient_swigregister(PyObject *S
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
   SWIG_TypeNewClientData(SWIGTYPE_p_mfem__SymmetricMatrixConstantCoefficient, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *SymmetricMatrixConstantCoefficient_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
 }
 
 SWIGINTERN PyObject *_wrap_new_SymmetricMatrixFunctionCoefficient__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
@@ -24093,6 +24178,46 @@ SWIGINTERN PyObject *CrossCrossCoefficient_swiginit(PyObject *SWIGUNUSEDPARM(sel
   return SWIG_Python_InitShadowInstance(args);
 }
 
+SWIGINTERN PyObject *_wrap_new_VectorQuadratureFunctionCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::QuadratureFunction *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"qf",  NULL 
+  };
+  mfem::VectorQuadratureFunctionCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_VectorQuadratureFunctionCoefficient", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__QuadratureFunction,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_VectorQuadratureFunctionCoefficient" "', argument " "1"" of type '" "mfem::QuadratureFunction &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VectorQuadratureFunctionCoefficient" "', argument " "1"" of type '" "mfem::QuadratureFunction &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::QuadratureFunction * >(argp1);
+  {
+    try {
+      result = (mfem::VectorQuadratureFunctionCoefficient *)new mfem::VectorQuadratureFunctionCoefficient(*arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_VectorQuadratureFunctionCoefficient_SetComponent(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorQuadratureFunctionCoefficient *arg1 = (mfem::VectorQuadratureFunctionCoefficient *) 0 ;
@@ -24502,6 +24627,10 @@ SWIGINTERN PyObject *VectorQuadratureFunctionCoefficient_swigregister(PyObject *
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
   SWIG_TypeNewClientData(SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *VectorQuadratureFunctionCoefficient_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
 }
 
 SWIGINTERN PyObject *_wrap_new_QuadratureFunctionCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
@@ -28639,6 +28768,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_GradientGridFunctionCoefficient", _wrap_delete_GradientGridFunctionCoefficient, METH_O, "delete_GradientGridFunctionCoefficient(GradientGridFunctionCoefficient self)"},
 	 { "GradientGridFunctionCoefficient_swigregister", GradientGridFunctionCoefficient_swigregister, METH_O, NULL},
 	 { "GradientGridFunctionCoefficient_swiginit", GradientGridFunctionCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_CurlGridFunctionCoefficient", (PyCFunction)(void(*)(void))_wrap_new_CurlGridFunctionCoefficient, METH_VARARGS|METH_KEYWORDS, "new_CurlGridFunctionCoefficient(mfem::GridFunction const * gf) -> CurlGridFunctionCoefficient"},
 	 { "CurlGridFunctionCoefficient_SetGridFunction", (PyCFunction)(void(*)(void))_wrap_CurlGridFunctionCoefficient_SetGridFunction, METH_VARARGS|METH_KEYWORDS, "CurlGridFunctionCoefficient_SetGridFunction(CurlGridFunctionCoefficient self, mfem::GridFunction const * gf)"},
 	 { "CurlGridFunctionCoefficient_GetGridFunction", _wrap_CurlGridFunctionCoefficient_GetGridFunction, METH_O, "CurlGridFunctionCoefficient_GetGridFunction(CurlGridFunctionCoefficient self) -> mfem::GridFunction const *"},
 	 { "CurlGridFunctionCoefficient_Eval", _wrap_CurlGridFunctionCoefficient_Eval, METH_VARARGS, "\n"
@@ -28648,6 +28778,7 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "delete_CurlGridFunctionCoefficient", _wrap_delete_CurlGridFunctionCoefficient, METH_O, "delete_CurlGridFunctionCoefficient(CurlGridFunctionCoefficient self)"},
 	 { "CurlGridFunctionCoefficient_swigregister", CurlGridFunctionCoefficient_swigregister, METH_O, NULL},
+	 { "CurlGridFunctionCoefficient_swiginit", CurlGridFunctionCoefficient_swiginit, METH_VARARGS, NULL},
 	 { "new_DivergenceGridFunctionCoefficient", (PyCFunction)(void(*)(void))_wrap_new_DivergenceGridFunctionCoefficient, METH_VARARGS|METH_KEYWORDS, "new_DivergenceGridFunctionCoefficient(mfem::GridFunction const * gf) -> DivergenceGridFunctionCoefficient"},
 	 { "DivergenceGridFunctionCoefficient_SetGridFunction", (PyCFunction)(void(*)(void))_wrap_DivergenceGridFunctionCoefficient_SetGridFunction, METH_VARARGS|METH_KEYWORDS, "DivergenceGridFunctionCoefficient_SetGridFunction(DivergenceGridFunctionCoefficient self, mfem::GridFunction const * gf)"},
 	 { "DivergenceGridFunctionCoefficient_GetGridFunction", _wrap_DivergenceGridFunctionCoefficient_GetGridFunction, METH_O, "DivergenceGridFunctionCoefficient_GetGridFunction(DivergenceGridFunctionCoefficient self) -> mfem::GridFunction const *"},
@@ -28759,12 +28890,14 @@ static PyMethodDef SwigMethods[] = {
 	 { "SymmetricMatrixCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_SymmetricMatrixCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "SymmetricMatrixCoefficient_Eval(SymmetricMatrixCoefficient self, DenseSymmetricMatrix K, ElementTransformation T, IntegrationPoint ip)"},
 	 { "delete_SymmetricMatrixCoefficient", _wrap_delete_SymmetricMatrixCoefficient, METH_O, "delete_SymmetricMatrixCoefficient(SymmetricMatrixCoefficient self)"},
 	 { "SymmetricMatrixCoefficient_swigregister", SymmetricMatrixCoefficient_swigregister, METH_O, NULL},
+	 { "new_SymmetricMatrixConstantCoefficient", (PyCFunction)(void(*)(void))_wrap_new_SymmetricMatrixConstantCoefficient, METH_VARARGS|METH_KEYWORDS, "new_SymmetricMatrixConstantCoefficient(DenseSymmetricMatrix m) -> SymmetricMatrixConstantCoefficient"},
 	 { "SymmetricMatrixConstantCoefficient_Eval", _wrap_SymmetricMatrixConstantCoefficient_Eval, METH_VARARGS, "\n"
 		"SymmetricMatrixConstantCoefficient_Eval(SymmetricMatrixConstantCoefficient self, DenseSymmetricMatrix K, ElementTransformation T, IntegrationPoint ip)\n"
 		"SymmetricMatrixConstantCoefficient_Eval(SymmetricMatrixConstantCoefficient self, DenseSymmetricMatrix M, ElementTransformation T, IntegrationPoint ip)\n"
 		""},
 	 { "delete_SymmetricMatrixConstantCoefficient", _wrap_delete_SymmetricMatrixConstantCoefficient, METH_O, "delete_SymmetricMatrixConstantCoefficient(SymmetricMatrixConstantCoefficient self)"},
 	 { "SymmetricMatrixConstantCoefficient_swigregister", SymmetricMatrixConstantCoefficient_swigregister, METH_O, NULL},
+	 { "SymmetricMatrixConstantCoefficient_swiginit", SymmetricMatrixConstantCoefficient_swiginit, METH_VARARGS, NULL},
 	 { "new_SymmetricMatrixFunctionCoefficient", _wrap_new_SymmetricMatrixFunctionCoefficient, METH_VARARGS, "\n"
 		"SymmetricMatrixFunctionCoefficient(int dim, std::function< void (mfem::Vector const &,mfem::DenseSymmetricMatrix &) > F, Coefficient q=None)\n"
 		"SymmetricMatrixFunctionCoefficient(DenseSymmetricMatrix m, Coefficient q)\n"
@@ -29005,6 +29138,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_CrossCrossCoefficient", _wrap_delete_CrossCrossCoefficient, METH_O, "delete_CrossCrossCoefficient(CrossCrossCoefficient self)"},
 	 { "CrossCrossCoefficient_swigregister", CrossCrossCoefficient_swigregister, METH_O, NULL},
 	 { "CrossCrossCoefficient_swiginit", CrossCrossCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_VectorQuadratureFunctionCoefficient", (PyCFunction)(void(*)(void))_wrap_new_VectorQuadratureFunctionCoefficient, METH_VARARGS|METH_KEYWORDS, "new_VectorQuadratureFunctionCoefficient(mfem::QuadratureFunction & qf) -> VectorQuadratureFunctionCoefficient"},
 	 { "VectorQuadratureFunctionCoefficient_SetComponent", (PyCFunction)(void(*)(void))_wrap_VectorQuadratureFunctionCoefficient_SetComponent, METH_VARARGS|METH_KEYWORDS, "VectorQuadratureFunctionCoefficient_SetComponent(VectorQuadratureFunctionCoefficient self, int index_, int length_)"},
 	 { "VectorQuadratureFunctionCoefficient_GetQuadFunction", _wrap_VectorQuadratureFunctionCoefficient_GetQuadFunction, METH_O, "VectorQuadratureFunctionCoefficient_GetQuadFunction(VectorQuadratureFunctionCoefficient self) -> mfem::QuadratureFunction const &"},
 	 { "VectorQuadratureFunctionCoefficient_Eval", _wrap_VectorQuadratureFunctionCoefficient_Eval, METH_VARARGS, "\n"
@@ -29014,6 +29148,7 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "delete_VectorQuadratureFunctionCoefficient", _wrap_delete_VectorQuadratureFunctionCoefficient, METH_O, "delete_VectorQuadratureFunctionCoefficient(VectorQuadratureFunctionCoefficient self)"},
 	 { "VectorQuadratureFunctionCoefficient_swigregister", VectorQuadratureFunctionCoefficient_swigregister, METH_O, NULL},
+	 { "VectorQuadratureFunctionCoefficient_swiginit", VectorQuadratureFunctionCoefficient_swiginit, METH_VARARGS, NULL},
 	 { "new_QuadratureFunctionCoefficient", (PyCFunction)(void(*)(void))_wrap_new_QuadratureFunctionCoefficient, METH_VARARGS|METH_KEYWORDS, "new_QuadratureFunctionCoefficient(mfem::QuadratureFunction & qf) -> QuadratureFunctionCoefficient"},
 	 { "QuadratureFunctionCoefficient_GetQuadFunction", _wrap_QuadratureFunctionCoefficient_GetQuadFunction, METH_O, "QuadratureFunctionCoefficient_GetQuadFunction(QuadratureFunctionCoefficient self) -> mfem::QuadratureFunction const &"},
 	 { "QuadratureFunctionCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctionCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "QuadratureFunctionCoefficient_Eval(QuadratureFunctionCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
@@ -29259,6 +29394,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_GradientGridFunctionCoefficient", _wrap_delete_GradientGridFunctionCoefficient, METH_O, "delete_GradientGridFunctionCoefficient(GradientGridFunctionCoefficient self)"},
 	 { "GradientGridFunctionCoefficient_swigregister", GradientGridFunctionCoefficient_swigregister, METH_O, NULL},
 	 { "GradientGridFunctionCoefficient_swiginit", GradientGridFunctionCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_CurlGridFunctionCoefficient", (PyCFunction)(void(*)(void))_wrap_new_CurlGridFunctionCoefficient, METH_VARARGS|METH_KEYWORDS, "new_CurlGridFunctionCoefficient(mfem::GridFunction const * gf) -> CurlGridFunctionCoefficient"},
 	 { "CurlGridFunctionCoefficient_SetGridFunction", (PyCFunction)(void(*)(void))_wrap_CurlGridFunctionCoefficient_SetGridFunction, METH_VARARGS|METH_KEYWORDS, "SetGridFunction(CurlGridFunctionCoefficient self, mfem::GridFunction const * gf)"},
 	 { "CurlGridFunctionCoefficient_GetGridFunction", _wrap_CurlGridFunctionCoefficient_GetGridFunction, METH_O, "GetGridFunction(CurlGridFunctionCoefficient self) -> mfem::GridFunction const *"},
 	 { "CurlGridFunctionCoefficient_Eval", _wrap_CurlGridFunctionCoefficient_Eval, METH_VARARGS, "\n"
@@ -29268,6 +29404,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "delete_CurlGridFunctionCoefficient", _wrap_delete_CurlGridFunctionCoefficient, METH_O, "delete_CurlGridFunctionCoefficient(CurlGridFunctionCoefficient self)"},
 	 { "CurlGridFunctionCoefficient_swigregister", CurlGridFunctionCoefficient_swigregister, METH_O, NULL},
+	 { "CurlGridFunctionCoefficient_swiginit", CurlGridFunctionCoefficient_swiginit, METH_VARARGS, NULL},
 	 { "new_DivergenceGridFunctionCoefficient", (PyCFunction)(void(*)(void))_wrap_new_DivergenceGridFunctionCoefficient, METH_VARARGS|METH_KEYWORDS, "new_DivergenceGridFunctionCoefficient(mfem::GridFunction const * gf) -> DivergenceGridFunctionCoefficient"},
 	 { "DivergenceGridFunctionCoefficient_SetGridFunction", (PyCFunction)(void(*)(void))_wrap_DivergenceGridFunctionCoefficient_SetGridFunction, METH_VARARGS|METH_KEYWORDS, "SetGridFunction(DivergenceGridFunctionCoefficient self, mfem::GridFunction const * gf)"},
 	 { "DivergenceGridFunctionCoefficient_GetGridFunction", _wrap_DivergenceGridFunctionCoefficient_GetGridFunction, METH_O, "GetGridFunction(DivergenceGridFunctionCoefficient self) -> mfem::GridFunction const *"},
@@ -29379,12 +29516,14 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SymmetricMatrixCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_SymmetricMatrixCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(SymmetricMatrixCoefficient self, DenseSymmetricMatrix K, ElementTransformation T, IntegrationPoint ip)"},
 	 { "delete_SymmetricMatrixCoefficient", _wrap_delete_SymmetricMatrixCoefficient, METH_O, "delete_SymmetricMatrixCoefficient(SymmetricMatrixCoefficient self)"},
 	 { "SymmetricMatrixCoefficient_swigregister", SymmetricMatrixCoefficient_swigregister, METH_O, NULL},
+	 { "new_SymmetricMatrixConstantCoefficient", (PyCFunction)(void(*)(void))_wrap_new_SymmetricMatrixConstantCoefficient, METH_VARARGS|METH_KEYWORDS, "new_SymmetricMatrixConstantCoefficient(DenseSymmetricMatrix m) -> SymmetricMatrixConstantCoefficient"},
 	 { "SymmetricMatrixConstantCoefficient_Eval", _wrap_SymmetricMatrixConstantCoefficient_Eval, METH_VARARGS, "\n"
 		"Eval(SymmetricMatrixConstantCoefficient self, DenseSymmetricMatrix K, ElementTransformation T, IntegrationPoint ip)\n"
 		"Eval(SymmetricMatrixConstantCoefficient self, DenseSymmetricMatrix M, ElementTransformation T, IntegrationPoint ip)\n"
 		""},
 	 { "delete_SymmetricMatrixConstantCoefficient", _wrap_delete_SymmetricMatrixConstantCoefficient, METH_O, "delete_SymmetricMatrixConstantCoefficient(SymmetricMatrixConstantCoefficient self)"},
 	 { "SymmetricMatrixConstantCoefficient_swigregister", SymmetricMatrixConstantCoefficient_swigregister, METH_O, NULL},
+	 { "SymmetricMatrixConstantCoefficient_swiginit", SymmetricMatrixConstantCoefficient_swiginit, METH_VARARGS, NULL},
 	 { "new_SymmetricMatrixFunctionCoefficient", _wrap_new_SymmetricMatrixFunctionCoefficient, METH_VARARGS, "\n"
 		"SymmetricMatrixFunctionCoefficient(int dim, std::function< void (mfem::Vector const &,mfem::DenseSymmetricMatrix &) > F, Coefficient q=None)\n"
 		"SymmetricMatrixFunctionCoefficient(DenseSymmetricMatrix m, Coefficient q)\n"
@@ -29625,6 +29764,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_CrossCrossCoefficient", _wrap_delete_CrossCrossCoefficient, METH_O, "delete_CrossCrossCoefficient(CrossCrossCoefficient self)"},
 	 { "CrossCrossCoefficient_swigregister", CrossCrossCoefficient_swigregister, METH_O, NULL},
 	 { "CrossCrossCoefficient_swiginit", CrossCrossCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_VectorQuadratureFunctionCoefficient", (PyCFunction)(void(*)(void))_wrap_new_VectorQuadratureFunctionCoefficient, METH_VARARGS|METH_KEYWORDS, "new_VectorQuadratureFunctionCoefficient(mfem::QuadratureFunction & qf) -> VectorQuadratureFunctionCoefficient"},
 	 { "VectorQuadratureFunctionCoefficient_SetComponent", (PyCFunction)(void(*)(void))_wrap_VectorQuadratureFunctionCoefficient_SetComponent, METH_VARARGS|METH_KEYWORDS, "SetComponent(VectorQuadratureFunctionCoefficient self, int index_, int length_)"},
 	 { "VectorQuadratureFunctionCoefficient_GetQuadFunction", _wrap_VectorQuadratureFunctionCoefficient_GetQuadFunction, METH_O, "GetQuadFunction(VectorQuadratureFunctionCoefficient self) -> mfem::QuadratureFunction const &"},
 	 { "VectorQuadratureFunctionCoefficient_Eval", _wrap_VectorQuadratureFunctionCoefficient_Eval, METH_VARARGS, "\n"
@@ -29634,6 +29774,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "delete_VectorQuadratureFunctionCoefficient", _wrap_delete_VectorQuadratureFunctionCoefficient, METH_O, "delete_VectorQuadratureFunctionCoefficient(VectorQuadratureFunctionCoefficient self)"},
 	 { "VectorQuadratureFunctionCoefficient_swigregister", VectorQuadratureFunctionCoefficient_swigregister, METH_O, NULL},
+	 { "VectorQuadratureFunctionCoefficient_swiginit", VectorQuadratureFunctionCoefficient_swiginit, METH_VARARGS, NULL},
 	 { "new_QuadratureFunctionCoefficient", (PyCFunction)(void(*)(void))_wrap_new_QuadratureFunctionCoefficient, METH_VARARGS|METH_KEYWORDS, "new_QuadratureFunctionCoefficient(mfem::QuadratureFunction & qf) -> QuadratureFunctionCoefficient"},
 	 { "QuadratureFunctionCoefficient_GetQuadFunction", _wrap_QuadratureFunctionCoefficient_GetQuadFunction, METH_O, "GetQuadFunction(QuadratureFunctionCoefficient self) -> mfem::QuadratureFunction const &"},
 	 { "QuadratureFunctionCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_QuadratureFunctionCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(QuadratureFunctionCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},

@@ -102,7 +102,9 @@ namespace mfem {
 %feature("notabstract") mfem::VectorDeltaCoefficient;
 %feature("notabstract") mfem::MatrixFunctionCoefficient;
 %feature("notabstract") mfem::MatrixConstantCoefficient;
-
+%feature("notabstract") mfem::CurlGridFunctionCoefficient;
+%feature("notabstract") mfem::SymmetricMatrixConstantCoefficient;
+%feature("notabstract") mfem::VectorQuadratureFunctionCoefficient;
 
 /*
 %exception {

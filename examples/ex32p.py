@@ -12,9 +12,11 @@
                  mpirun -np 4 python ex32p.py -m ../data/fichera.mesh -rs 1
 
 '''
+from mpi4py import MPI
 import mfem.par as mfem
 from mfem.par import intArray, doubleArray
-import os, sys
+import os
+import sys
 from os.path import expanduser, join
 import numpy as np
 from numpy import sin, cos, array, pi, sqrt
@@ -22,10 +24,10 @@ from numpy import sin, cos, array, pi, sqrt
 sqrt1_2 = 1/sqrt(2)
 sqrt2 = sqrt(2)
 
-from mpi4py import MPI
 num_procs = MPI.COMM_WORLD.size
 myid = MPI.COMM_WORLD.rank
 smyid = '.'+'{:0>6d}'.format(myid)
+
 
 def run(nev=5,
         order=1,
@@ -34,11 +36,9 @@ def run(nev=5,
         meshfile='',
         visualization=False):
 
-
-
     # 3. Read the (serial) mesh from the given mesh file on all processors. We
     #    can handle triangular, quadrilateral, tetrahedral, hexahedral, surface
-    #    and volume meshes with the same code.    
+    #    and volume meshes with the same code.
     mesh = mfem.Mesh(meshfile, 1, 1)
     dim = mesh.Dimension()
     sdim = mesh.SpaceDimension()
@@ -59,7 +59,7 @@ def run(nev=5,
     del mesh
     for lev in range(rp):
         pmesh.UniformRefinement()
-        
+
     # 6. Define a parallel finite element space on the parallel mesh. Here we
     #    use the Nedelec finite elements of the specified order.
     if dim == 1:
@@ -68,16 +68,16 @@ def run(nev=5,
     elif dim == 2:
         fec_nd = mfem.ND_R2D_FECollection(order, dim)
         fec_rt = mfem.RT_R2D_FECollection(order-1, dim)
-    else:        
+    else:
         fec_nd = mfem.ND_FECollection(order, dim)
         fec_rt = mfem.RT_FECollection(order-1, dim)
 
     fespace_nd = mfem.ParFiniteElementSpace(pmesh, fec_nd)
     fespace_rt = mfem.ParFiniteElementSpace(pmesh, fec_rt)
-    
+
     size_nd = fespace_nd.GlobalTrueVSize()
     size_rt = fespace_rt.GlobalTrueVSize()
-    
+
     if myid == 0:
         print("Number of H(Curl) unknowns: " + str(size_nd))
         print("Number of H(Div) unknowns: " + str(size_rt))
@@ -90,7 +90,7 @@ def run(nev=5,
     #    essential. The corresponding degrees of freedom are eliminated with
     #    special values on the diagonal to shift the Dirichlet eigenvalues out
     #    of the computational range. After serial and parallel assembly we
-    #    extract the corresponding parallel matrices A and M.        
+    #    extract the corresponding parallel matrices A and M.
     shift = 0.0
     mat = array([[2.0, sqrt1_2, 0, ],
                  [sqrt1_2, 2.0, sqrt1_2],
@@ -101,28 +101,28 @@ def run(nev=5,
 
     if pmesh.bdr_attributes.Size():
         ess_bdr = intArray([1]*pmesh.bdr_attributes.Max())
- 
+
     a = mfem.ParBilinearForm(fespace_nd)
     curlcurl = mfem.CurlCurlIntegrator(one)
     a.AddDomainIntegrator(curlcurl)
-    
+
     mass = mfem.VectorFEMassIntegrator(epsilon)
-    
+
     if pmesh.bdr_attributes.Size() == 0 or dim == 1:
-         #  Add a mass term if the mesh has no boundary, e.g. periodic mesh or
-         #  closed surface.
-         a.AddDomainIntegrator(mass)
-         shift = 1.0;
-         if myid == 0:
+        #  Add a mass term if the mesh has no boundary, e.g. periodic mesh or
+        #  closed surface.
+        a.AddDomainIntegrator(mass)
+        shift = 1.0
+        if myid == 0:
             print("Computing eigenvalues shifted by " + str(1.0))
 
-    a.Assemble();
-    a.EliminateEssentialBCDiag(ess_bdr, 1.0);
+    a.Assemble()
+    a.EliminateEssentialBCDiag(ess_bdr, 1.0)
     a.Finalize()
 
-    m = mfem.ParBilinearForm(fespace_nd);
+    m = mfem.ParBilinearForm(fespace_nd)
     m.AddDomainIntegrator(mass)
-    m.Assemble();
+    m.Assemble()
 
     # shift the eigenvalue corresponding to eliminated dofs to a large value
     m.EliminateEssentialBCDiag(ess_bdr, 2.3e-308)
@@ -146,7 +146,7 @@ def run(nev=5,
     ame.SetPrintLevel(1)
     ame.SetMassMatrix(M)
     ame.SetOperator(A)
-    
+
     # 9. Compute the eigenmodes and extract the array of eigenvalues. Define
     #    parallel grid functions to represent each of the eigenmodes returned by
     #    the solver and their derivatives.
@@ -154,40 +154,41 @@ def run(nev=5,
     ame.Solve()
     ame.GetEigenvalues(eigenvalues)
     x = mfem.ParGridFunction(fespace_nd)
-    dx = mfem.ParGridFunction(fespace_rt)    
-    
+    dx = mfem.ParGridFunction(fespace_rt)
+
     curl = mfem.ParDiscreteLinearOperator(fespace_nd, fespace_rt)
-    curl.AddDomainInterpolator(mfem.CurlInterpolator());
-    curl.Assemble();
-    curl.Finalize();
+    curl.AddDomainInterpolator(mfem.CurlInterpolator())
+    curl.Assemble()
+    curl.Finalize()
 
     # 10. Save the refined mesh and the modes in parallel. This output can be
     #     viewed later using GLVis: "glvis -np <np> -m mesh -g mode".
     smyid = '{:0>6d}'.format(myid)
     mesh_name = "mesh."+smyid
     pmesh.Print(mesh_name, 8)
-    
+
     for i in range(nev):
         x.Assign(ame.GetEigenvector(i))
         curl.Mult(x, dx)
 
-        mode_name = "mode_"+str(i).zfill(2)+"."+smyid        
+        mode_name = "mode_"+str(i).zfill(2)+"."+smyid
         mode_deriv_name = "mode_deriv_"+str(i).zfill(2)+"."+smyid
-        
+
         x.Save(mode_name, 8)
-        dx.Save(mode_deriv_name, 8)        
+        dx.Save(mode_deriv_name, 8)
 
     # 11 Visualize data using glvis
     if visualization:
         # 11. (a) functions to format Glvis window
-        def make_cmd(label, px, py, max_r, i, title = "Eigenmode"):
-            cmd = (" window_title '"+ title + " " +str(i+1) +  '/' + str(nev) + 
+        def make_cmd(label, px, py, max_r, i, title="Eigenmode"):
+            cmd = (" window_title '" + title + " " + str(i+1) + '/' + str(nev) +
                    " " + label + ", Lambda = " + "{:g}".format(eigenvalues[i] - shift) +
-                   "'" + " valuerange -" + str(max_r) +  ' ' + str(max_r))
+                   "'" + " valuerange -" + str(max_r) + ' ' + str(max_r))
             cmd = (cmd + " keys aa window_geometry " +
                    str(px) + " " + str(py) + " 400 350")
             return cmd
         # 11. (b) fucntion to send data to Glvis
+
         def send_data_to_glvis(sock, data, cmd):
             sock << "parallel " << num_procs << " " << myid << "\n"
             sock << "solution\n" << pmesh << data
@@ -195,24 +196,23 @@ def run(nev=5,
             sock << cmd
             sock.endline()
             MPI.COMM_WORLD.Barrier()
-            
+
         def ask_exit():
-           if (myid == 0):
-               from builtins import input
-               c = input("press (q)uit or (c)ontinue --> ")
-           else:
-               c = None
-               c = MPI.COMM_WORLD.bcast(c, root=0)
-           if (c != 'c'):
-               sys.exit()
-                   
-        
+            if (myid == 0):
+                from builtins import input
+                c = input("press (q)uit or (c)ontinue --> ")
+            else:
+                c = None
+            c = MPI.COMM_WORLD.bcast(c, root=0)
+            if (c != 'c'):
+                sys.exit()
+
         if dim == 1:
             mode_x_sock = make_socketstrema()
             mode_y_sock = make_socketstrema()
             mode_z_sock = make_socketstrema()
             mode_dy_sock = make_socketstrema()
-            mode_dz_sock = make_socketstrema()            
+            mode_dz_sock = make_socketstrema()
 
             xVec = mdfem.Vector([1, 0, 0.])
             yVec = mdfem.Vector([0, 1, 0.])
@@ -224,68 +224,70 @@ def run(nev=5,
 
             fec_h1 = mfem.H1_FECollection(order, dim)
             fec_l2 = mfem.L2_FECollection(order-1, dim)
-            
+
             fes_h1 = mfem.ParFiniteElementSpace(pmesh, fec_h1)
             fes_l2 = mfem.ParFiniteElementSpace(pmesh, fec_l2)
 
             xComp = mfem.ParGridFunction(fes_l2)
             yComp = mfem.ParGridFunction(fes_h1)
             zComp = mfem.ParGridFunction(fes_h1)
-            
+
             dyComp = mfem.ParGridFunction(fes_l2)
             dzComp = mfem.ParGridFunction(fes_l2)
 
             for i in range(nev):
-               if (myid == 0):
-                   print("Eigenmode " + str(i+1) + '/' + str(nev) +
-                         ", Lambda = " +  "{:g}".format(eigenvalues[i]))
+                if (myid == 0):
+                    print("Eigenmode " + str(i+1) + '/' + str(nev) +
+                          ", Lambda = " + "{:g}".format(eigenvalues[i]))
 
-               x.Assign(ame.GetEigenvector(i))
-               curl.Mult(x, dx)
+                x.Assign(ame.GetEigenvector(i))
+                curl.Mult(x, dx)
 
-               modeCoeff = mfem.VectorGridFunctionCoefficient(x);
-               xCoef = mfem.InnerProductCoefficient(xVecCoef, modeCoef)
-               yCoef = mfem.InnerProductCoefficient(yVecCoef, modeCoef)
-               zCoef = mfem.InnerProductCoefficient(zVecCoef, modeCoef)
+                modeCoeff = mfem.VectorGridFunctionCoefficient(x)
+                xCoef = mfem.InnerProductCoefficient(xVecCoef, modeCoef)
+                yCoef = mfem.InnerProductCoefficient(yVecCoef, modeCoef)
+                zCoef = mfem.InnerProductCoefficient(zVecCoef, modeCoef)
 
-               xComp.ProjectCoefficient(xCoef)
-               yComp.ProjectCoefficient(yCoef)
-               zComp.ProjectCoefficient(zCoef)
+                xComp.ProjectCoefficient(xCoef)
+                yComp.ProjectCoefficient(yCoef)
+                zComp.ProjectCoefficient(zCoef)
 
-               max_x = GetScalarMax(xComp);
-               max_y = GetScalarMax(yComp);
-               max_z = GetScalarMax(zComp);
-               max_r = np.max([max_x, max_y, max_z])
+                max_x = GetScalarMax(xComp)
+                max_y = GetScalarMax(yComp)
+                max_z = GetScalarMax(zComp)
+                max_r = np.max([max_x, max_y, max_z])
 
-               x_cmd = make_cmd('X', 0, 0, max_r, i)
-               y_cmd = make_cmd('Y', 403, 0, max_r, i)
-               z_cmd = make_cmd('Z', 800, 0, max_r, i)
+                x_cmd = make_cmd('X', 0, 0, max_r, i)
+                y_cmd = make_cmd('Y', 403, 0, max_r, i)
+                z_cmd = make_cmd('Z', 800, 0, max_r, i)
 
-               send_data_to_glvis(mode_x_sock, x, x_cmd)
-               send_data_to_glvis(mode_y_sock, y, y_cmd)
-               send_data_to_glvis(mode_z_sock, z, z_cmd)
-               
-               dmodeCoeff = mfem.VectorGridFunctionCoefficient(dx);
-               dyCoef = mfem.InnerProductCoefficient(yVecCoef, dmodeCoef)
-               dzCoef = mfem.InnerProductCoefficient(zVecCoef, dmodeCoef)
-               zCoef = mfem.InnerProductCoefficient(zVecCoef, modeCoef)
+                send_data_to_glvis(mode_x_sock, x, x_cmd)
+                send_data_to_glvis(mode_y_sock, y, y_cmd)
+                send_data_to_glvis(mode_z_sock, z, z_cmd)
 
-               dyComp.ProjectCoefficient(dyCoef)
-               dzComp.ProjectCoefficient(dzCoef)
-               
-               min_d = max_r / bbMax[0] - bbMin[0]
-               max_y = GetScalarMax(dyComp);
-               max_z = GetScalarMax(dzComp);
-               max_r = np.max([max_y, max_z, max_d])
+                dmodeCoeff = mfem.VectorGridFunctionCoefficient(dx)
+                dyCoef = mfem.InnerProductCoefficient(yVecCoef, dmodeCoef)
+                dzCoef = mfem.InnerProductCoefficient(zVecCoef, dmodeCoef)
+                zCoef = mfem.InnerProductCoefficient(zVecCoef, modeCoef)
 
-               dy_cmd = make_cmd('Y', 403, 375, max_r, i, title="Curl Eigenmode") 
-               dz_cmd = make_cmd('Z', 800, 375, max_r, i, title="Curl Eigenmode")
+                dyComp.ProjectCoefficient(dyCoef)
+                dzComp.ProjectCoefficient(dzCoef)
 
-               send_data_to_glvis(mode_dy_sock, dyComp, dy_cmd)
-               send_data_to_glvis(mode_dz_sock, dzComp, dz_cmd)                              
-               
-               ask_exit()
-               
+                min_d = max_r / bbMax[0] - bbMin[0]
+                max_y = GetScalarMax(dyComp)
+                max_z = GetScalarMax(dzComp)
+                max_r = np.max([max_y, max_z, max_d])
+
+                dy_cmd = make_cmd('Y', 403, 375, max_r, i,
+                                  title="Curl Eigenmode")
+                dz_cmd = make_cmd('Z', 800, 375, max_r, i,
+                                  title="Curl Eigenmode")
+
+                send_data_to_glvis(mode_dy_sock, dyComp, dy_cmd)
+                send_data_to_glvis(mode_dz_sock, dzComp, dz_cmd)
+
+                ask_exit()
+
         elif dim == 2:
             mode_xy_sock = make_socketstrema()
             mode_z_sock = make_socketstrema()
@@ -315,73 +317,79 @@ def run(nev=5,
             dzComp = mfem.ParGridFunction(fes_l2)
 
             for i in range(nev):
-               if (myid == 0):
-                   print("Eigenmode " + str(i+1) + '/' + str(nev) +
-                         ", Lambda = " +  "{:g}".format(eigenvalues[i]))
+                if (myid == 0):
+                    print("Eigenmode " + str(i+1) + '/' + str(nev) +
+                          ", Lambda = " + "{:g}".format(eigenvalues[i]))
 
-               x.Assign(ame.GetEigenvector(i))
-               curl.Mult(x, dx)
+                x.Assign(ame.GetEigenvector(i))
+                curl.Mult(x, dx)
 
-               modeCoef = mfem.VectorGridFunctionCoefficient(x)
+                modeCoef = mfem.VectorGridFunctionCoefficient(x)
 
-               xyCoef = mfem.MatrixVectorProductCoefficient(xyMatCoef, modeCoef)
-               zCoef = mfem.InnerProductCoefficient(zVecCoef, modeCoef)
+                xyCoef = mfem.MatrixVectorProductCoefficient(
+                    xyMatCoef, modeCoef)
+                zCoef = mfem.InnerProductCoefficient(zVecCoef, modeCoef)
 
-               xyComp.ProjectCoefficient(xyCoef)
-               zComp.ProjectCoefficient(zCoef)
+                xyComp.ProjectCoefficient(xyCoef)
+                zComp.ProjectCoefficient(zCoef)
 
-               max_v = GetVectorMax(2, xyComp);
-               max_s = GetScalarMax(zComp);
-               max_r = np.max([max_v, max_s])
-               
-               xy_cmd = make_cmd('XY', 0, 0, max_r, i)
-               z_cmd = make_cmd('Z', 403, 0, max_r, i)
+                max_v = GetVectorMax(2, xyComp)
+                max_s = GetScalarMax(zComp)
+                max_r = np.max([max_v, max_s])
 
-               send_data_to_glvis(mode_xy_sock, xyComp, xy_cmd)
-               send_data_to_glvis(mode_z_sock, zComp, z_cmd)
+                xy_cmd = make_cmd('XY', 0, 0, max_r, i)
+                z_cmd = make_cmd('Z', 403, 0, max_r, i)
 
-               dmodeCoef = mfem.VectorGridFunctionCoefficient(dx)               
-               dxyCoef = mfem.MatrixVectorProductCoefficient(xyMatCoef, dmodeCoef)
-               dzCoef = mfem.InnerProductCoefficient(zVecCoef, dmodeCoef)
+                send_data_to_glvis(mode_xy_sock, xyComp, xy_cmd)
+                send_data_to_glvis(mode_z_sock, zComp, z_cmd)
 
-               dxyComp.ProjectCoefficient(dxyCoef)
-               dzComp.ProjectCoefficient(dzCoef)
+                dmodeCoef = mfem.VectorGridFunctionCoefficient(dx)
+                dxyCoef = mfem.MatrixVectorProductCoefficient(
+                    xyMatCoef, dmodeCoef)
+                dzCoef = mfem.InnerProductCoefficient(zVecCoef, dmodeCoef)
 
-               min_d = max_r / min([bbMax[0] - bbMin[0],  bbMax[1] - bbMin[1]])
-               max_v = GetVectorMax(2, dxyComp);
-               max_s = GetScalarMax(dzComp);
-               max_r = np.max([max_v, max_s])
+                dxyComp.ProjectCoefficient(dxyCoef)
+                dzComp.ProjectCoefficient(dzCoef)
 
-               dxy_cmd = make_cmd('XY', 0, 375, max_r, i, title="Curl Eigenmode") 
-               dz_cmd = make_cmd('Z', 403, 375, max_r, i, title="Curl Eigenmode")
-               
-               send_data_to_glvis(mode_dxy_sock, dxyComp, dxy_cmd)
-               send_data_to_glvis(mode_dz_sock, dzComp, dz_cmd)                              
-               
-               ask_exit()
-            
+                min_d = max_r / \
+                    min([bbMax[0] - bbMin[0],  bbMax[1] - bbMin[1]])
+                max_v = GetVectorMax(2, dxyComp)
+                max_s = GetScalarMax(dzComp)
+                max_r = np.max([max_v, max_s])
+
+                dxy_cmd = make_cmd('XY', 0, 375, max_r, i,
+                                   title="Curl Eigenmode")
+                dz_cmd = make_cmd('Z', 403, 375, max_r, i,
+                                  title="Curl Eigenmode")
+
+                send_data_to_glvis(mode_dxy_sock, dxyComp, dxy_cmd)
+                send_data_to_glvis(mode_dz_sock, dzComp, dz_cmd)
+
+                ask_exit()
+
         else:
             mode_sock = make_socketstrema()
             dmode_sock = make_socketstrema()
 
             for i in range(nev):
-               if (myid == 0):
-                   print("Eigenmode " + str(i+1) + '/' + str(nev) +
-                         ", Lambda = " +  "{:g}".format(eigenvalues[i]))
+                if (myid == 0):
+                    print("Eigenmode " + str(i+1) + '/' + str(nev) +
+                          ", Lambda = " + "{:g}".format(eigenvalues[i]))
 
-               x.Assign(ame.GetEigenvector(i))
-               curl.Mult(x, dx)
+                x.Assign(ame.GetEigenvector(i))
+                curl.Mult(x, dx)
 
-               max_v = GetVectorMax(3, x)
-               cmd = make_cmd('', 0, 0, max_v, i)
-               max_v = GetVectorMax(3, dx)               
-               d_cmd = make_cmd('', 0, 375, max_v, i)
-                   
-               send_data_to_glvis(mode_sock, x, cmd)
-               send_data_to_glvis(dmode_sock, dx, d_cmd)
+                max_v = GetVectorMax(3, x)
+                cmd = make_cmd('', 0, 0, max_v, i)
+                max_v = GetVectorMax(3, dx)
+                d_cmd = make_cmd('', 0, 375, max_v, i)
 
-               ask_exit()
-            
+                send_data_to_glvis(mode_sock, x, cmd)
+                send_data_to_glvis(dmode_sock, dx, d_cmd)
+
+                ask_exit()
+
+
 def GetVectorMax(vdim, x):
     zeroVec = mfem.Vector(vdim)
     zeroVec.Assign(0.0)
@@ -389,15 +397,18 @@ def GetVectorMax(vdim, x):
     nrm = x.ComputeMaxError(zero)
     return nrm
 
+
 def GetScalarMax(x):
     zero = mfem.ConstantCoefficient(0.0)
     nrm = x.ComputeMaxError(zero)
     return nrm
 
+
 def make_socketstrema():
     sock = mfem.socketstream("localhost", 19916)
     sock.precision(8)
-    return sock 
+    return sock
+
 
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
@@ -413,7 +424,7 @@ if __name__ == "__main__":
     parser.add_argument('-rp', '--refine-parallel',
                         action='store', default=1, type=int,
                         help="Number of times to refine the mesh uniformly in paralle.")
-    
+
     parser.add_argument('-o', '--order',
                         action='store', default=1, type=int,
                         help="Finite element order (polynomial degree) or -1 for isoparametric space.")
@@ -427,7 +438,8 @@ if __name__ == "__main__":
                         help='Enable GLVis visualization')
 
     args = parser.parse_args()
-    parser.print_options(args)
+    if myid == 0:
+        parser.print_options(args)
 
     order = args.order
     meshfile = expanduser(
@@ -440,5 +452,3 @@ if __name__ == "__main__":
         rp=args.refine_parallel,
         meshfile=meshfile,
         visualization=visualization)
-
-        

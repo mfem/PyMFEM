@@ -3,16 +3,17 @@
 
    See c++ version in the MFEM library for more detail
 
-   Sample runs:  python ex31.py -m ../data/inline-segment.mesh -o 2
-                 python ex31.py -m ../data/hexagon.mesh -o 2
-                 python ex31.py -m ../data/star.mesh -o 2
-                 python ex31.py -m ../data/fichera.mesh -o 3 -r 1
-                 python ex31.py -m ../data/square-disc-nurbs.mesh -o 3
-                 python ex31.py -m ../data/amr-quad.mesh -o 2 -r 1
-                 python ex31.py -m ../data/amr-hex.mesh -r 1
+   Sample runs: mpirun -np 4 python ex31p.py -m ../data/hexagon.mesh -o 2
+                mpirun -np 4 python ex31p.py -m ../data/star.mesh 
+                mpirun -np 4 python ex31p.py -m ../data/square-disc.mesh -o 2
+                mpirun -np 4 python ex31p.py -m ../data/fichera.mesh -o 3 -rs 1 -rp 0
+                mpirun -np 4 python ex31p.py -m ../data/square-disc-nurbs.mesh -o 3
+                mpirun -np 4 python ex31p.py -m ../data/amr-quad.mesh -o 2 -rs 1
+                mpirun -np 4 python ex31p.py -m ../data/amr-hex.mesh -rs 1
 '''
-import mfem.ser as mfem
-from mfem.ser import intArray
+from mpi4py import MPI
+import mfem.par as mfem
+from mfem.par import intArray
 import os
 from os.path import expanduser, join
 import numpy as np
@@ -21,27 +22,43 @@ from numpy import sin, cos, array, pi, sqrt
 sqrt1_2 = 1/sqrt(2)
 sqrt2 = sqrt(2)
 
+num_procs = MPI.COMM_WORLD.size
+myid = MPI.COMM_WORLD.rank
+smyid = '.'+'{:0>6d}'.format(myid)
+
 
 def run(order=1,
-        refine=2,
+        rs=2,
+        rp=1,
         freq=1,
         meshfile='',
         visualization=False,
         numba=False):
 
+    # 3. Read the (serial) mesh from the given mesh file on all processors.  We
+    #    can handle triangular, quadrilateral, tetrahedral, hexahedral, surface
+    #    and volume meshes with the same code.
     mesh = mfem.Mesh(meshfile, 1, 1)
     dim = mesh.Dimension()
     sdim = mesh.SpaceDimension()
 
-    # 3. Refine the mesh to increase the resolution. In this example we do
-    #    'ref_levels' of uniform refinement (2 by default, or specified on
-    #    the command line with -r)
-    for x in range(refine):
+    # 4. Refine the serial mesh on all processors to increase the resolution. In
+    #    this example we do 'ref_levels' of uniform refinement (2 by default, or
+    #    specified on the command line with -rs).
+    for x in range(rs):
         mesh.UniformRefinement()
 
-    # 4. Define a finite element space on the mesh. Here we use the Nedelec
-    #    finite elements of the specified order restricted to 1D, 2D, or 3D
-    #    depending on the dimension of the given mesh file.
+    # 5. Define a parallel mesh by a partitioning of the serial mesh. Refine
+    #    this mesh further in parallel to increase the resolution (1 time by
+    #    default, or specified on the command line with -rp). Once the parallel
+    #    mesh is defined, the serial mesh can be deleted.
+    pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
+    del mesh
+    for lev in range(rp):
+        pmesh.UniformRefinement()
+
+    # 6. Define a parallel finite element space on the parallel mesh. Here we
+    #    use the Nedelec finite elements of the specified order.
     if dim == 1:
         fec = mfem.ND_R1D_FECollection(order, dim)
     elif dim == 2:
@@ -49,19 +66,21 @@ def run(order=1,
     else:
         fec = mfem.ND_FECollection(order, dim)
 
-    fespace = mfem.FiniteElementSpace(mesh, fec)
-    print("Number of H(curl) unknowns: " + str(fespace.GetTrueVSize()))
+    fespace = mfem.ParFiniteElementSpace(pmesh, fec)
+    size = fespace.GlobalTrueVSize()
+    if myid == 0:
+        print("Number of H(curl) unknowns: " + str(size))
 
-    # 5. Determine the list of true essential boundary dofs. In this example,
-    #    the boundary conditions are defined by marking all the boundary
-    #    attributes from the mesh as essential (Dirichlet) and converting them
-    #    to a list of true dofs.
+    # 7. Determine the list of true (i.e. parallel conforming) essential
+    #    boundary dofs. In this example, the boundary conditions are defined
+    #    by marking all the boundary attributes from the mesh as essential
+    #    (Dirichlet) and converting them to a list of true dofs.
     ess_tdof_list = intArray()
-    if mesh.bdr_attributes.Size():
-        ess_bdr = intArray([1]*mesh.bdr_attributes.Max())
+    if pmesh.bdr_attributes.Size():
+        ess_bdr = intArray([1]*pmesh.bdr_attributes.Max())
         fespace.GetEssentialTrueDofs(ess_bdr, ess_tdof_list)
 
-    # 5.b Define coefficent to use. Here, we define outside this function.
+    # 7.b Define coefficent to use. Here, we define outside this function.
     #     We call decoratr function (mfem.jit.xxx) manually. Also, note
     #     we are passing dim as params, so that numba uses proper dim
     #     when compiling it.
@@ -73,26 +92,25 @@ def run(order=1,
     else:
         pass  # ToDo provide regular example.
 
-    # 6. Set up the linear form b(.) which corresponds to the right-hand side
-    #    of the FEM linear system, which in this case is (f,phi_i) where f is
-    #    given by the function f_exact and phi_i are the basis functions in
-    #    the finite element fespace.
-
-    b = mfem.LinearForm(fespace)
+    # 8. Set up the parallel linear form b(.) which corresponds to the
+    #    right-hand side of the FEM linear system, which in this case is
+    #    (f,phi_i) where f is given by the function f_exact and phi_i are the
+    #    basis functions in the finite element fespace.
+    b = mfem.ParLinearForm(fespace)
     b.AddDomainIntegrator(mfem.VectorFEDomainLFIntegrator(f))
     b.Assemble()
 
-    # 7. Define the solution vector x as a finite element grid function
+    # 9. Define the solution vector x as a parallel finite element grid function
     #    corresponding to fespace. Initialize x by projecting the exact
     #    solution. Note that only values from the boundary edges will be used
     #    when eliminating the non-homogeneous boundary condition to modify the
     #    r.h.s. vector b.
-    sol = mfem.GridFunction(fespace)
+    sol = mfem.ParGridFunction(fespace)
     sol.ProjectCoefficient(E)
 
-    # 8. Set up the bilinear form corresponding to the EM diffusion
-    #    operator curl muinv curl + sigma I, by adding the curl-curl and the
-    #    mass domain integrators.
+    # 10. Set up the parallel bilinear form corresponding to the EM diffusion
+    #     operator curl muinv curl + sigma I, by adding the curl-curl and the
+    #     mass domain integrators.
     mat = array([[2.0, sqrt1_2, 0, ],
                  [sqrt1_2, 2.0, sqrt1_2],
                  [0.0, sqrt1_2, 2.0, ], ])
@@ -100,10 +118,14 @@ def run(order=1,
 
     muinv = mfem.ConstantCoefficient(1.0)
     sigma = mfem. MatrixConstantCoefficient(sigmaMat)
-    a = mfem.BilinearForm(fespace)
+    a = mfem.ParBilinearForm(fespace)
     a.AddDomainIntegrator(mfem.CurlCurlIntegrator(muinv))
     a.AddDomainIntegrator(mfem.VectorFEMassIntegrator(sigma))
 
+    # 11. Assemble the parallel bilinear form and the corresponding linear
+    #     system, applying any necessary transformations such as: parallel
+    #     assembly, eliminating boundary conditions, applying conforming
+    # b    constraints for non-conforming AMR, etc.
     a.Assemble()
 
     A = mfem.OperatorPtr()
@@ -111,22 +133,34 @@ def run(order=1,
     X = mfem.Vector()
     a.FormLinearSystem(ess_tdof_list, sol, b, A, X, B)
 
-    # 10. Solve the system A X = B.
-    AM = A.AsSparseMatrix()
-    M = mfem.GSSmoother(AM)
-    mfem.PCG(A, M, B, X, 1, 500, 1e-12, 0.0)
+    # 12. Solve the system AX=B using PCG with the AMS preconditioner from hypre
+    AM = A.AsHypreParMatrix()
+    if myid == 0:
+        print("Size of linear system: " + str(AM.GetGlobalNumRows()))
 
-    # 12. Recover the solution as a finite element grid function.
+    ams = mfem.HypreAMS(AM, fespace)
+
+    pcg = mfem.HyprePCG(AM)
+    pcg.SetTol(1e-12)
+    pcg.SetMaxIter(1000)
+    pcg.SetPrintLevel(2)
+    pcg.SetPreconditioner(ams)
+    pcg.Mult(B, X)
+
+    # 13. Recover the parallel grid function corresponding to X. This is the
+    #     local finite element solution on each processor.
     a.RecoverFEMSolution(X, b, sol)
 
-    # 13. Compute and print the CurlE norm of the error.
-    print("|| E_h - E ||_{Hcurl} = " +
-          "{:g}".format(sol.ComputeHCurlError(E, CurlE))+"\n")
+    # 14. Compute and print the CurlE norm of the error.
+    error = sol.ComputeHCurlError(E, CurlE)
+    if myid == 0:
+        print("|| E_h - E ||_{Hcurl} = " + "{:g}".format(error)+"\n")
 
-    # 14. Save the refined mesh and the solution. This output can be viewed
-    #     later using GLVis: "glvis -m refined.mesh -g sol.gf"
-    mesh.Print('refined.mesh', 8)
-    sol.Save('sol.gf', 8)
+    # 15. Save the refined mesh and the solution in parallel. This output can
+    #     be viewed later using GLVis: "glvis -np <np> -m mesh -g sol".
+    smyid = '{:0>6d}'.format(myid)
+    pmesh.Print('mesh.'+smyid, 8)
+    sol.Save('sol.'+smyid, 8)
 
     # 15. Send the solution by socket to a GLVis server.
     if visualization:
@@ -135,11 +169,11 @@ def run(order=1,
         dsolCoef = mfem.CurlGridFunctionCoefficient(sol)
 
         if dim == 1:
-            x_sock = mfem.socketstream("localhost", 19916)
-            y_sock = mfem.socketstream("localhost", 19916)
-            z_sock = mfem.socketstream("localhost", 19916)
-            dy_sock = mfem.socketstream("localhost", 19916)
-            dz_sock = mfem.socketstream("localhost", 19916)
+            x_sock = make_socketstrema()
+            y_sock = make_socketstrema()
+            z_sock = make_socketstrema()
+            dy_sock = make_socketstrema()
+            dz_sock = make_socketstrema()
 
             x_sock.precision(8)
             y_sock.precision(8)
@@ -158,15 +192,15 @@ def run(order=1,
             fec_h1 = mfem.H1_FECollection(order, dim)
             fec_l2 = mfem.L2_FECollection(order-1, dim)
 
-            fes_h1 = mfem.FiniteElementSpace(mesh, fec_h1)
-            fes_l2 = mfem.FiniteElementSpace(mesh, fec_l2)
+            fes_h1 = mfem.ParFiniteElementSpace(pmesh, fec_h1)
+            fes_l2 = mfem.ParFiniteElementSpace(pmesh, fec_l2)
 
-            xComp = mfem.GridFunction(fes_l2)
-            yComp = mfem.GridFunction(fes_h1)
-            zComp = mfem.GridFunction(fes_h1)
+            xComp = mfem.ParGridFunction(fes_l2)
+            yComp = mfem.ParGridFunction(fes_h1)
+            zComp = mfem.ParGridFunction(fes_h1)
 
-            dyComp = mfem.GridFunction(fes_l2)
-            dzComp = mfem.GridFunction(fes_l2)
+            dyComp = mfem.ParGridFunction(fes_l2)
+            dzComp = mfem.ParGridFunction(fes_l2)
 
             xCoef = mfem.InnerProductCoefficient(xVecCoef, solCoef)
             yCoef = mfem.InnerProductCoefficient(yVecCoef, solCoef)
@@ -176,15 +210,15 @@ def run(order=1,
             yComp.ProjectCoefficient(yCoef)
             zComp.ProjectCoefficient(zCoef)
 
-            x_sock << "solution\n" << mesh << xComp
+            x_sock << "solution\n" << pmesh << xComp
             x_sock.flush()
             x_sock << "window_title 'X component'"
             x_sock.flush()
-            y_sock << "solution\n" << mesh << yComp
+            y_sock << "solution\n" << pmesh << yComp
             y_sock.flush()
             y_sock << "window_geometry 403 0 400 350 " << "window_title 'Y component'"
             y_sock.flush()
-            z_sock << "solution\n" << mesh << zComp
+            z_sock << "solution\n" << pmesh << zComp
             z_sock.flush()
             z_sock << "window_geometry 806 0 400 350 " << "window_title 'Z component'"
             z_sock.flush()
@@ -194,21 +228,21 @@ def run(order=1,
             dyComp.ProjectCoefficient(dyCoef)
             dzComp.ProjectCoefficient(dzCoef)
 
-            dy_sock << "solution\n" << mesh << dyComp
+            dy_sock << "solution\n" << pmesh << dyComp
             dy_sock.flush()
             dy_sock << "window_geometry 403 375 400 350 " << "window_title 'Y component of Curl'"
             dy_sock.flush()
 
-            dy_sock << "solution\n" << mesh << dzComp
+            dy_sock << "solution\n" << pmesh << dzComp
             dy_sock.flush()
             dy_sock << "window_geometry 403 375 400 350 " << "window_title 'Z component of Curl'"
             dy_sock.flush()
 
         elif dim == 2:
-            xy_sock = mfem.socketstream("localhost", 19916)
-            z_sock = mfem.socketstream("localhost", 19916)
-            dxy_sock = mfem.socketstream("localhost", 19916)
-            dz_sock = mfem.socketstream("localhost", 19916)
+            xy_sock = make_socketstrema()
+            z_sock = make_socketstrema()
+            dxy_sock = make_socketstrema()
+            dz_sock = make_socketstrema()
 
             mat = array([[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]])
             xyMat = mfem.DenseMatrix(mat)
@@ -224,25 +258,25 @@ def run(order=1,
             fec_rt = mfem.RT_FECollection(order-1, dim)
             fec_l2 = mfem.L2_FECollection(order-1, dim)
 
-            fes_h1 = mfem.FiniteElementSpace(mesh, fec_h1)
-            fes_nd = mfem.FiniteElementSpace(mesh, fec_nd)
-            fes_rt = mfem.FiniteElementSpace(mesh, fec_rt)
-            fes_l2 = mfem.FiniteElementSpace(mesh, fec_l2)
+            fes_h1 = mfem.ParFiniteElementSpace(pmesh, fec_h1)
+            fes_nd = mfem.ParFiniteElementSpace(pmesh, fec_nd)
+            fes_rt = mfem.ParFiniteElementSpace(pmesh, fec_rt)
+            fes_l2 = mfem.ParFiniteElementSpace(pmesh, fec_l2)
 
-            xyComp = mfem.GridFunction(fes_nd)
-            zComp = mfem.GridFunction(fes_h1)
+            xyComp = mfem.ParGridFunction(fes_nd)
+            zComp = mfem.ParGridFunction(fes_h1)
 
-            dxyComp = mfem.GridFunction(fes_rt)
-            dzComp = mfem.GridFunction(fes_l2)
+            dxyComp = mfem.ParGridFunction(fes_rt)
+            dzComp = mfem.ParGridFunction(fes_l2)
 
             xyComp.ProjectCoefficient(xyCoef)
             zComp.ProjectCoefficient(zCoef)
 
             xy_sock.precision(8)
-            xy_sock << "solution\n" << mesh << xyComp
+            xy_sock << "solution\n" << pmesh << xyComp
             xy_sock << "window_title 'XY components'\n"
             xy_sock.flush()
-            z_sock << "solution\n" << mesh << zComp
+            z_sock << "solution\n" << pmesh << zComp
             z_sock << "window_geometry 403 0 400 350 " << "window_title 'Z component'"
             z_sock.flush()
 
@@ -252,32 +286,39 @@ def run(order=1,
             dxyComp.ProjectCoefficient(dxyCoef)
             dzComp.ProjectCoefficient(dzCoef)
 
-            dxy_sock << "solution\n" << mesh << dxyComp
+            dxy_sock << "solution\n" << pmesh << dxyComp
             dxy_sock << "window_geometry 0 375 400 350 " << "window_title 'XY components of Curl'"
             dxy_sock.flush()
-            dz_sock << "solution\n" << mesh << dzComp
+            dz_sock << "solution\n" << pmesh << dzComp
             dz_sock << "window_geometry 403 375 400 350 " << "window_title 'Z component of Curl'"
             dz_sock.flush()
 
         else:
-            sol_sock = mfem.socketstream("localhost", 19916)
-            dsol_sock = mfem.socketstream("localhost", 19916)
+            sol_sock = make_socketstrema()
+            dsol_sock = make_socketstrema()
 
             fec_rt = mfem.RT_FECollection(order-1, dim)
-            fes_rt = mfem.FiniteElementSpace(mesh, fec_rt)
+            fes_rt = mfem.ParFiniteElementSpace(pmesh, fec_rt)
 
-            dsol = mfem.GridFunction(fes_rt)
+            dsol = mfem.ParGridFunction(fes_rt)
 
             dsol.ProjectCoefficient(dsolCoef)
 
             sol_sock.precision(8)
             dsol_sock.precision(8)
-            sol_sock << "solution\n" << mesh << sol << "window_title 'Solution'"
+            sol_sock << "solution\n" << pmesh << sol << "window_title 'Solution'"
             sol_sock.flush()
-            dsol_sock << "solution\n" << mesh << dsol
+            dsol_sock << "solution\n" << pmesh << dsol
             dsol_sock.flush()
             dsol_sock << "window_geometry 0 375 400 350 " << "window_title 'Curl of solution'"
             dsol_sock.flush()
+
+
+def make_socketstrema():
+    sock = mfem.socketstream("localhost", 19916)
+    sock.precision(8)
+    sock << "parallel " << num_procs << " " << myid << "\n"
+    return sock
 
 
 def E_exact(x, E):
@@ -391,9 +432,12 @@ if __name__ == "__main__":
                         default="inline-quad.mesh",
                         action='store', type=str,
                         help='Mesh file to use.')
-    parser.add_argument('-r', '--refine',
+    parser.add_argument('-rs', '--refine-serial',
                         action='store', default=2, type=int,
-                        help="Number of times to refine the mesh uniformly.")
+                        help="Number of times to refine the mesh uniformly in serial")
+    parser.add_argument('-rp', '--refine-parallel',
+                        action='store', default=1, type=int,
+                        help="Number of times to refine the mesh uniformly in paralle.")
     parser.add_argument('-o', '--order',
                         action='store', default=1, type=int,
                         help="Finite element order (polynomial degree)")
@@ -418,7 +462,8 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     args.numba = bool(args.numba)
-    parser.print_options(args)
+    if myid == 0:
+        parser.print_options(args)
 
     order = args.order
 
@@ -430,7 +475,8 @@ if __name__ == "__main__":
 
     run(freq=freq,
         order=order,
-        refine=args.refine,
+        rs=args.refine_serial,
+        rp=args.refine_parallel,
         meshfile=meshfile,
         visualization=visualization,
         numba=numba)
