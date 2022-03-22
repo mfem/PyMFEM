@@ -116,7 +116,6 @@ class CHypreVec(list):
         return part
 
     def __imul__(self, other):
-        print("calling imul")
         if isinstance(other, CHypreVec):
             assert False, "CHypreVec *= vector is not supported. Use dot"
         elif np.iscomplexobj(other):
