@@ -39,7 +39,7 @@ except ImportError:
 # from codecs import open
 
 # constants
-repo_releases = {  # "mfem": "https://github.com/mfem/mfem/archive/v4.3.tar.gz",
+repo_releases = {
     "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
     "hypre": "https://github.com/hypre-space/hypre/archive/v2.24.0.tar.gz",
     "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.10.0.tar.gz",
