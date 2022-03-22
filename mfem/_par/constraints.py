@@ -82,8 +82,6 @@ MFEM_VERSION_MINOR = _constraints.MFEM_VERSION_MINOR
 
 MFEM_VERSION_PATCH = _constraints.MFEM_VERSION_PATCH
 
-MFEM_HYPRE_VERSION = _constraints.MFEM_HYPRE_VERSION
-
 import mfem._par.vector
 import mfem._par.array
 import mfem._par.mem_manager
@@ -122,6 +120,7 @@ import mfem._par.fe_coll
 import mfem._par.lininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.std_vectors
 import mfem._par.doftrans
 import mfem._par.handle
 import mfem._par.hypre

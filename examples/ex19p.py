@@ -80,6 +80,10 @@ def ex19_main(args):
     if myid == 0:
         parser.print_options(args)
 
+    device = mfem.Device('cpu')
+    if myid == 0:            
+        device.Print()
+        
     meshfile = expanduser(join(dirname(__file__), '..', 'data', args.mesh))
     mesh = mfem.Mesh(meshfile, 1, 1)
     dim = mesh.Dimension()
@@ -411,4 +415,9 @@ class ReferenceConfiguration(mfem.VectorPyCoefficient):
 
 
 if __name__ == '__main__':
+    if mfem.is_HYPRE_USING_CUDA():
+       print("\n".join(["", "As of mfem-4.3 and hypre-2.22.0 (July 2021) this example",
+                        "is NOT supported with the CUDA version of hypre.", ""]))
+       exit(255)
+    
     ex19_main(args)

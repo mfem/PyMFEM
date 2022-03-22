@@ -104,6 +104,7 @@ import mfem._par.fe_coll
 import mfem._par.lininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.std_vectors
 import mfem._par.doftrans
 import mfem._par.handle
 import mfem._par.hypre
@@ -197,9 +198,9 @@ class NonlinearForm(mfem._par.operators.Operator):
         return _nonlinearform.NonlinearForm_SetEssentialVDofs(self, ess_vdofs_list)
     SetEssentialVDofs = _swig_new_instance_method(_nonlinearform.NonlinearForm_SetEssentialVDofs)
 
-    def SetEssentialTrueDofs(self, ess_tdof_list):
-        r"""SetEssentialTrueDofs(NonlinearForm self, intArray ess_tdof_list)"""
-        return _nonlinearform.NonlinearForm_SetEssentialTrueDofs(self, ess_tdof_list)
+    def SetEssentialTrueDofs(self, ess_tdof_list_):
+        r"""SetEssentialTrueDofs(NonlinearForm self, intArray ess_tdof_list_)"""
+        return _nonlinearform.NonlinearForm_SetEssentialTrueDofs(self, ess_tdof_list_)
     SetEssentialTrueDofs = _swig_new_instance_method(_nonlinearform.NonlinearForm_SetEssentialTrueDofs)
 
     def GetEssentialTrueDofs(self):

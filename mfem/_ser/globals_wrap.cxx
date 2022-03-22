@@ -3160,7 +3160,7 @@ SWIGINTERN PyObject *_wrap_new_OutStream(PyObject *SWIGUNUSEDPARM(self), PyObjec
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   char * kwnames[] = {
-    (char *)"out",  NULL 
+    (char *)"os",  NULL 
   };
   mfem::OutStream *result = 0 ;
   
@@ -3207,7 +3207,7 @@ SWIGINTERN PyObject *_wrap_OutStream_SetStream(PyObject *SWIGUNUSEDPARM(self), P
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"out",  NULL 
+    (char *)"self",  (char *)"os",  NULL 
   };
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:OutStream_SetStream", kwnames, &obj0, &obj1)) SWIG_fail;

@@ -201,6 +201,21 @@ def ToHypreParCSR(mat, check_partitioning=False, verbose=False,
     return M
 
 
+def ToScipyCSR(mat):
+    '''
+    convert HypreParCSR to Scipy CSR Matrix
+    '''
+    import mfem.par as mfem
+    merged = mfem.SparseMatrix()
+    mat.MergeDiagAndOffd(merged)
+
+    from scipy.sparse import csr_matrix
+    P = csr_matrix((merged.GetDataArray(), merged.GetJArray(), merged.GetIArray()),
+                   shape=(merged.Height(), merged.Width()))
+    P._linked_mat = merged
+    return P
+
+
 def ToScipyCoo(mat):
     '''
     convert HypreParCSR to Scipy Coo Matrix
@@ -225,9 +240,19 @@ def ToScipyCoo(mat):
 
 
 def InnerProductComplex(A, B):
+    def ensure_hypreread(V):
+        if V is None:
+            return
+        if not V._hypreread_called:
+            V.HypreRead()
+
     import mfem.par as mfem
     R_A, I_A = A
     R_B, I_B = B
+
+    for V in (R_A, I_A, R_B, I_B):
+        ensure_hypreread(V)
+
     if I_A is None and I_B is None:
         return mfem.InnerProduct(R_A, R_B)
     elif I_A is None:
@@ -538,7 +563,7 @@ def ResetHypreCol(M, idx):
 
 def ReadHypreDiag(M, idx):
     '''
-    set diagonal element to value (normally 1)
+    get diagonal element
     '''
     col_starts = M.GetColPartArray()
 
@@ -547,7 +572,6 @@ def ReadHypreDiag(M, idx):
     myid = MPI.COMM_WORLD.rank
 
     m = iupper - ilower + 1
-    n = jupper - jlower + 1
     n = M.N()
     from scipy.sparse import coo_matrix, lil_matrix
     try:
@@ -563,4 +587,9 @@ def ReadHypreDiag(M, idx):
     ii = idx[np.logical_and(idx >= ilower, idx <= iupper)]
 
     tmp = mat[ii-ilower, ii].toarray().flatten()
+
+    #idx = np.arange(ilower, min([iupper+1, n]))
+    #ii = idx[np.logical_and(idx >= ilower, idx <= iupper)]
+    #tmp = mat[ii-ilower, ii].toarray().flatten()
+
     return tmp

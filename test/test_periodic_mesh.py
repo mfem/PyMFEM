@@ -30,6 +30,7 @@ def run_test():
     ### 1D Periodic mesh
     orig_mesh = mfem.Mesh_MakeCartesian1D(n)
     translations = (mfem.Vector([1.0]),)
+    #vv =mfem.vector_Vector(translations)
     mapping = orig_mesh.CreatePeriodicVertexMapping(translations)
 
     mesh = mfem.Mesh_MakePeriodic(orig_mesh, mapping)

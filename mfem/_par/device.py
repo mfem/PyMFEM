@@ -65,6 +65,9 @@ class _SwigNonDynamicMeta(type):
 
 
 import mfem._par.mem_manager
+
+singleton_device = None
+
 class Backend(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
@@ -106,6 +109,11 @@ class Device(object):
 
     def __init__(self, *args):
         _device.Device_swiginit(self, _device.new_Device(*args))
+
+        globals()["singleton_device"] = self
+
+
+
     __swig_destroy__ = _device.delete_Device
 
     def Configure(self, device, dev=0):
@@ -190,6 +198,14 @@ class Device(object):
     def GetGPUAwareMPI():
         return _device.Device_GetGPUAwareMPI()
     GetGPUAwareMPI = _swig_new_static_method(_device.Device_GetGPUAwareMPI)
+
+    def __new__(cls, *args, **kwargs):
+        if globals()["singleton_device"] is None:  
+             instance =  super(Device, cls).__new__(cls)
+             globals()["singleton_device"] = instance
+        return globals()["singleton_device"]
+
+
 
 # Register Device in _device:
 _device.Device_swigregister(Device)

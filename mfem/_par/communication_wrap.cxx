@@ -2702,7 +2702,7 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_mfem__GroupCommunicator swig_types[7]
 #define SWIGTYPE_p_mfem__GroupTopology swig_types[8]
 #define SWIGTYPE_p_mfem__ListOfIntegerSets swig_types[9]
-#define SWIGTYPE_p_mfem__MPI_Session swig_types[10]
+#define SWIGTYPE_p_mfem__Mpi swig_types[10]
 #define SWIGTYPE_p_mfem__STable swig_types[11]
 #define SWIGTYPE_p_mfem__Table swig_types[12]
 #define SWIGTYPE_p_p_p_char swig_types[13]
@@ -3215,136 +3215,13 @@ SWIGINTERN void mfem_GroupCommunicator_PrintInfoGZ(mfem::GroupCommunicator *self
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_new_MPI_Session__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+SWIGINTERN PyObject *_wrap_Mpi_Init__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
   PyObject *resultobj = 0;
-  mfem::MPI_Session *result = 0 ;
   
   if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      result = (mfem::MPI_Session *)new mfem::MPI_Session();
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MPI_Session, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_MPI_Session__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  int *arg1 = 0 ;
-  char ***arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  mfem::MPI_Session *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_int,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MPI_Session" "', argument " "1"" of type '" "int &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MPI_Session" "', argument " "1"" of type '" "int &""'"); 
-  }
-  arg1 = reinterpret_cast< int * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_p_p_char,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_MPI_Session" "', argument " "2"" of type '" "char **&""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MPI_Session" "', argument " "2"" of type '" "char **&""'"); 
-  }
-  arg2 = reinterpret_cast< char *** >(argp2);
-  {
-    try {
-      result = (mfem::MPI_Session *)new mfem::MPI_Session(*arg1,*arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MPI_Session, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_MPI_Session(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_MPI_Session", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 0) {
-    return _wrap_new_MPI_Session__SWIG_0(self, argc, argv);
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_int, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_p_p_char, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_new_MPI_Session__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_MPI_Session'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::MPI_Session::MPI_Session()\n"
-    "    mfem::MPI_Session::MPI_Session(int &,char **&)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_MPI_Session(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::MPI_Session *arg1 = (mfem::MPI_Session *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MPI_Session, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_MPI_Session" "', argument " "1"" of type '" "mfem::MPI_Session *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::MPI_Session * >(argp1);
-  {
-    try {
-      delete arg1;
+      mfem::Mpi::Init();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -3365,24 +3242,35 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MPI_Session_WorldRank(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Mpi_Init__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  mfem::MPI_Session *arg1 = (mfem::MPI_Session *) 0 ;
+  int *arg1 = 0 ;
+  char ***arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  int result;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MPI_Session, 0 |  0 );
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_int,  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MPI_Session_WorldRank" "', argument " "1"" of type '" "mfem::MPI_Session const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mpi_Init" "', argument " "1"" of type '" "int &""'"); 
   }
-  arg1 = reinterpret_cast< mfem::MPI_Session * >(argp1);
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Mpi_Init" "', argument " "1"" of type '" "int &""'"); 
+  }
+  arg1 = reinterpret_cast< int * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_p_p_char,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mpi_Init" "', argument " "2"" of type '" "char **&""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Mpi_Init" "', argument " "2"" of type '" "char **&""'"); 
+  }
+  arg2 = reinterpret_cast< char *** >(argp2);
   {
     try {
-      result = (int)((mfem::MPI_Session const *)arg1)->WorldRank();
+      mfem::Mpi::Init(*arg1,*arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -3396,31 +3284,55 @@ SWIGINTERN PyObject *_wrap_MPI_Session_WorldRank(PyObject *SWIGUNUSEDPARM(self),
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
   }
-  resultobj = SWIG_From_int(static_cast< int >(result));
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_MPI_Session_WorldSize(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::MPI_Session *arg1 = (mfem::MPI_Session *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  int result;
+SWIGINTERN PyObject *_wrap_Mpi_Init(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MPI_Session, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MPI_Session_WorldSize" "', argument " "1"" of type '" "mfem::MPI_Session const *""'"); 
+  if (!(argc = SWIG_Python_UnpackTuple(args, "Mpi_Init", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_Mpi_Init__SWIG_0(self, argc, argv);
   }
-  arg1 = reinterpret_cast< mfem::MPI_Session * >(argp1);
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_int, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_p_p_char, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_Mpi_Init__SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Mpi_Init'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Mpi::Init()\n"
+    "    mfem::Mpi::Init(int &,char **&)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mpi_Finalize(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Mpi_Finalize", 0, 0, 0)) SWIG_fail;
   {
     try {
-      result = (int)((mfem::MPI_Session const *)arg1)->WorldSize();
+      mfem::Mpi::Finalize();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -3434,31 +3346,21 @@ SWIGINTERN PyObject *_wrap_MPI_Session_WorldSize(PyObject *SWIGUNUSEDPARM(self),
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
   }
-  resultobj = SWIG_From_int(static_cast< int >(result));
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_MPI_Session_Root(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Mpi_IsInitialized(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  mfem::MPI_Session *arg1 = (mfem::MPI_Session *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   bool result;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MPI_Session, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MPI_Session_Root" "', argument " "1"" of type '" "mfem::MPI_Session const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::MPI_Session * >(argp1);
+  if (!SWIG_Python_UnpackTuple(args, "Mpi_IsInitialized", 0, 0, 0)) SWIG_fail;
   {
     try {
-      result = (bool)((mfem::MPI_Session const *)arg1)->Root();
+      result = (bool)mfem::Mpi::IsInitialized();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -3479,15 +3381,123 @@ fail:
 }
 
 
-SWIGINTERN PyObject *MPI_Session_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__MPI_Session, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
+SWIGINTERN PyObject *_wrap_Mpi_IsFinalized(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Mpi_IsFinalized", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (bool)mfem::Mpi::IsFinalized();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
 }
 
-SWIGINTERN PyObject *MPI_Session_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  return SWIG_Python_InitShadowInstance(args);
+
+SWIGINTERN PyObject *_wrap_Mpi_WorldRank(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Mpi_WorldRank", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (int)mfem::Mpi::WorldRank();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mpi_WorldSize(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Mpi_WorldSize", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (int)mfem::Mpi::WorldSize();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mpi_Root(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Mpi_Root", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (bool)mfem::Mpi::Root();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *Mpi_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__Mpi, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
 }
 
 SWIGINTERN PyObject *_wrap_new_GroupTopology__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
@@ -5850,16 +5860,17 @@ fail:
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
-	 { "new_MPI_Session", _wrap_new_MPI_Session, METH_VARARGS, "\n"
-		"MPI_Session()\n"
-		"new_MPI_Session(int & argc, char **& argv) -> MPI_Session\n"
+	 { "Mpi_Init", _wrap_Mpi_Init, METH_VARARGS, "\n"
+		"Mpi_Init()\n"
+		"Mpi_Init(int & argc, char **& argv)\n"
 		""},
-	 { "delete_MPI_Session", _wrap_delete_MPI_Session, METH_O, "delete_MPI_Session(MPI_Session self)"},
-	 { "MPI_Session_WorldRank", _wrap_MPI_Session_WorldRank, METH_O, "MPI_Session_WorldRank(MPI_Session self) -> int"},
-	 { "MPI_Session_WorldSize", _wrap_MPI_Session_WorldSize, METH_O, "MPI_Session_WorldSize(MPI_Session self) -> int"},
-	 { "MPI_Session_Root", _wrap_MPI_Session_Root, METH_O, "MPI_Session_Root(MPI_Session self) -> bool"},
-	 { "MPI_Session_swigregister", MPI_Session_swigregister, METH_O, NULL},
-	 { "MPI_Session_swiginit", MPI_Session_swiginit, METH_VARARGS, NULL},
+	 { "Mpi_Finalize", _wrap_Mpi_Finalize, METH_NOARGS, "Mpi_Finalize()"},
+	 { "Mpi_IsInitialized", _wrap_Mpi_IsInitialized, METH_NOARGS, "Mpi_IsInitialized() -> bool"},
+	 { "Mpi_IsFinalized", _wrap_Mpi_IsFinalized, METH_NOARGS, "Mpi_IsFinalized() -> bool"},
+	 { "Mpi_WorldRank", _wrap_Mpi_WorldRank, METH_NOARGS, "Mpi_WorldRank() -> int"},
+	 { "Mpi_WorldSize", _wrap_Mpi_WorldSize, METH_NOARGS, "Mpi_WorldSize() -> int"},
+	 { "Mpi_Root", _wrap_Mpi_Root, METH_NOARGS, "Mpi_Root() -> bool"},
+	 { "Mpi_swigregister", Mpi_swigregister, METH_O, NULL},
 	 { "new_GroupTopology", _wrap_new_GroupTopology, METH_VARARGS, "\n"
 		"GroupTopology()\n"
 		"GroupTopology(MPI_Comm comm)\n"
@@ -5919,16 +5930,17 @@ static PyMethodDef SwigMethods[] = {
 static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
-	 { "new_MPI_Session", _wrap_new_MPI_Session, METH_VARARGS, "\n"
-		"MPI_Session()\n"
-		"new_MPI_Session(int & argc, char **& argv) -> MPI_Session\n"
+	 { "Mpi_Init", _wrap_Mpi_Init, METH_VARARGS, "\n"
+		"Init()\n"
+		"Init(int & argc, char **& argv)\n"
 		""},
-	 { "delete_MPI_Session", _wrap_delete_MPI_Session, METH_O, "delete_MPI_Session(MPI_Session self)"},
-	 { "MPI_Session_WorldRank", _wrap_MPI_Session_WorldRank, METH_O, "WorldRank(MPI_Session self) -> int"},
-	 { "MPI_Session_WorldSize", _wrap_MPI_Session_WorldSize, METH_O, "WorldSize(MPI_Session self) -> int"},
-	 { "MPI_Session_Root", _wrap_MPI_Session_Root, METH_O, "Root(MPI_Session self) -> bool"},
-	 { "MPI_Session_swigregister", MPI_Session_swigregister, METH_O, NULL},
-	 { "MPI_Session_swiginit", MPI_Session_swiginit, METH_VARARGS, NULL},
+	 { "Mpi_Finalize", _wrap_Mpi_Finalize, METH_NOARGS, "Finalize()"},
+	 { "Mpi_IsInitialized", _wrap_Mpi_IsInitialized, METH_NOARGS, "IsInitialized() -> bool"},
+	 { "Mpi_IsFinalized", _wrap_Mpi_IsFinalized, METH_NOARGS, "IsFinalized() -> bool"},
+	 { "Mpi_WorldRank", _wrap_Mpi_WorldRank, METH_NOARGS, "WorldRank() -> int"},
+	 { "Mpi_WorldSize", _wrap_Mpi_WorldSize, METH_NOARGS, "WorldSize() -> int"},
+	 { "Mpi_Root", _wrap_Mpi_Root, METH_NOARGS, "Root() -> bool"},
+	 { "Mpi_swigregister", Mpi_swigregister, METH_O, NULL},
 	 { "new_GroupTopology", _wrap_new_GroupTopology, METH_VARARGS, "\n"
 		"GroupTopology()\n"
 		"GroupTopology(MPI_Comm comm)\n"
@@ -6001,7 +6013,7 @@ static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "
 static swig_type_info _swigt__p_mfem__GroupCommunicator = {"_p_mfem__GroupCommunicator", "mfem::GroupCommunicator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GroupTopology = {"_p_mfem__GroupTopology", "mfem::GroupTopology *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ListOfIntegerSets = {"_p_mfem__ListOfIntegerSets", "mfem::ListOfIntegerSets *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__MPI_Session = {"_p_mfem__MPI_Session", "mfem::MPI_Session *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__Mpi = {"_p_mfem__Mpi", "mfem::Mpi *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Table = {"_p_mfem__Table", "mfem::Table *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__STable = {"_p_mfem__STable", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_p_char = {"_p_p_p_char", "char ***", 0, 0, (void*)0, 0};
@@ -6017,7 +6029,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__GroupCommunicator,
   &_swigt__p_mfem__GroupTopology,
   &_swigt__p_mfem__ListOfIntegerSets,
-  &_swigt__p_mfem__MPI_Session,
+  &_swigt__p_mfem__Mpi,
   &_swigt__p_mfem__STable,
   &_swigt__p_mfem__Table,
   &_swigt__p_p_p_char,
@@ -6033,7 +6045,7 @@ static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__Arra
 static swig_cast_info _swigc__p_mfem__GroupCommunicator[] = {  {&_swigt__p_mfem__GroupCommunicator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GroupTopology[] = {  {&_swigt__p_mfem__GroupTopology, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ListOfIntegerSets[] = {  {&_swigt__p_mfem__ListOfIntegerSets, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__MPI_Session[] = {  {&_swigt__p_mfem__MPI_Session, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Mpi[] = {  {&_swigt__p_mfem__Mpi, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__STable[] = {{&_swigt__p_mfem__STable, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Table[] = {  {&_swigt__p_mfem__STable, _p_mfem__STableTo_p_mfem__Table, 0, 0},  {&_swigt__p_mfem__Table, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_p_char[] = {  {&_swigt__p_p_p_char, 0, 0, 0},{0, 0, 0, 0}};
@@ -6049,7 +6061,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__GroupCommunicator,
   _swigc__p_mfem__GroupTopology,
   _swigc__p_mfem__ListOfIntegerSets,
-  _swigc__p_mfem__MPI_Session,
+  _swigc__p_mfem__Mpi,
   _swigc__p_mfem__STable,
   _swigc__p_mfem__Table,
   _swigc__p_p_p_char,
@@ -6788,15 +6800,14 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40301)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.3.1"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40301)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40400)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.4.0"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40400)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40301)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40301)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40301)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(22000)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40400)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40400)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40400)%100))));
   
   import_array();
   

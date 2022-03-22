@@ -68,11 +68,11 @@ class OutStream(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, out):
-        _globals.OutStream_swiginit(self, _globals.new_OutStream(out))
+    def __init__(self, os):
+        _globals.OutStream_swiginit(self, _globals.new_OutStream(os))
 
-    def SetStream(self, out):
-        return _globals.OutStream_SetStream(self, out)
+    def SetStream(self, os):
+        return _globals.OutStream_SetStream(self, os)
     SetStream = _swig_new_instance_method(_globals.OutStream_SetStream)
 
     def Enable(self):

@@ -74,7 +74,6 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _gslib.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _gslib.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _gslib.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _gslib.MFEM_VERSION_PATCH
-MFEM_HYPRE_VERSION = _gslib.MFEM_HYPRE_VERSION
 import mfem._par.vector
 import mfem._par.array
 import mfem._par.mem_manager
@@ -117,5 +116,6 @@ import mfem._par.restriction
 import mfem._par.bilininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.std_vectors
 
 

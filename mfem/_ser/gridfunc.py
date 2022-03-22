@@ -97,6 +97,7 @@ import mfem._ser.sort_pairs
 import mfem._ser.ncmesh
 import mfem._ser.vertex
 import mfem._ser.vtk
+import mfem._ser.std_vectors
 import mfem._ser.fespace
 import mfem._ser.fe_coll
 import mfem._ser.lininteg
@@ -126,6 +127,11 @@ class GridFunction(mfem._ser.vector.Vector):
         r"""VectorDim(GridFunction self) -> int"""
         return _gridfunc.GridFunction_VectorDim(self)
     VectorDim = _swig_new_instance_method(_gridfunc.GridFunction_VectorDim)
+
+    def CurlDim(self):
+        r"""CurlDim(GridFunction self) -> int"""
+        return _gridfunc.GridFunction_CurlDim(self)
+    CurlDim = _swig_new_instance_method(_gridfunc.GridFunction_CurlDim)
 
     def GetTrueVector(self, *args):
         r"""
@@ -750,6 +756,7 @@ def __lshift__(*args):
     r"""
     __lshift__(std::ostream & os, SparseMatrix mat) -> std::ostream
     __lshift__(std::ostream & out, Mesh mesh) -> std::ostream
+    __lshift__(std::ostream & os, mfem::Mesh::FaceInformation const & info) -> std::ostream
     __lshift__(std::ostream & out, GridFunction sol) -> std::ostream
     __lshift__(std::ostream & out, QuadratureFunction qf) -> std::ostream &
     """

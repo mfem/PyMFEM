@@ -9,11 +9,10 @@ on:
 
 jobs:
   build:
-    if: contains(github.event.pull_request.labels.*.name, 'in-test-master-tracking')
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.6", "3.7", "3.8", "3.9"]
+        python-version: ["3.7", "3.8", "3.9"]
         #python-version: ["3.10"]
         #os: [ubuntu-latest]
         os: [ubuntu-20.04]
@@ -42,7 +41,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: master_tracking_branch
+        ref: mfem-4.4-dev
  
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
@@ -120,7 +119,7 @@ jobs:
            python setup.py install --with-cuda --with-parallel
         fi
         if [ "${USE_FLAGS}" = "001" ]; then
-           python setup.py install --prefix=$SANDBOX --with-libceecd --mfem-branch="mfem-4.4-dev"
+           python setup.py install --prefix=$SANDBOX --with-libceed --mfem-branch="mfem-4.4-dev"
         fi
 
     - name: EX1_RUN      
@@ -142,9 +141,7 @@ jobs:
         fi
         if [ "${USE_FLAGS}" = "010" ]; then
            which mpicc
-           python run_examples.py -parallel -verbose -np 2 -ex ex1p
-           python run_examples.py -parallel -verbose -np 2 -ex ex2p
-           python run_examples.py -parallel -verbose -np 2 -ex ex3p	   
+           python run_examples.py -parallel -verbose -np 2
         fi
         if [ "${USE_FLAGS}" = "100" ]; then
            python ../examples/ex1.py --pa

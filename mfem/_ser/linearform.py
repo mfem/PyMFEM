@@ -106,6 +106,7 @@ import mfem._ser.bilininteg
 import mfem._ser.nonlininteg
 import mfem._ser.vertex
 import mfem._ser.vtk
+import mfem._ser.std_vectors
 class LinearForm(mfem._ser.vector.Vector):
     r"""Proxy of C++ mfem::LinearForm class."""
 

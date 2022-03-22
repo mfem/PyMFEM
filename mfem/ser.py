@@ -66,6 +66,7 @@ from  mfem._ser.fe_fixed_order import *
 from  mfem._ser.fe_pos import *
 from  mfem._ser.fe_nurbs import *
 from  mfem._ser.doftrans import *
+from  mfem._ser.std_vectors import *
 
 import mfem._ser.array as array
 import mfem._ser.blockoperator as blockoperator

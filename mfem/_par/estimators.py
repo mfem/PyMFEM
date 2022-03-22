@@ -74,7 +74,6 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _estimators.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _estimators.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _estimators.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _estimators.MFEM_VERSION_PATCH
-MFEM_HYPRE_VERSION = _estimators.MFEM_HYPRE_VERSION
 import mfem._par.array
 import mfem._par.mem_manager
 import mfem._par.vector
@@ -113,6 +112,7 @@ import mfem._par.fe_coll
 import mfem._par.lininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.std_vectors
 import mfem._par.doftrans
 import mfem._par.handle
 import mfem._par.hypre

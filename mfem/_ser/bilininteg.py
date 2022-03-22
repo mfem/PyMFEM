@@ -98,6 +98,7 @@ import mfem._ser.sort_pairs
 import mfem._ser.ncmesh
 import mfem._ser.vertex
 import mfem._ser.vtk
+import mfem._ser.std_vectors
 import mfem._ser.fespace
 import mfem._ser.fe_coll
 import mfem._ser.lininteg
@@ -921,6 +922,11 @@ class MixedWeakDivCrossIntegrator(MixedVectorIntegrator):
         return _bilininteg.MixedWeakDivCrossIntegrator_FiniteElementTypeFailureMessage(self)
     FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedWeakDivCrossIntegrator_FiniteElementTypeFailureMessage)
 
+    def GetTestVDim(self, test_fe):
+        r"""GetTestVDim(MixedWeakDivCrossIntegrator self, FiniteElement test_fe) -> int"""
+        return _bilininteg.MixedWeakDivCrossIntegrator_GetTestVDim(self, test_fe)
+    GetTestVDim = _swig_new_instance_method(_bilininteg.MixedWeakDivCrossIntegrator_GetTestVDim)
+
     def CalcTestShape(self, test_fe, Trans, shape):
         r"""CalcTestShape(MixedWeakDivCrossIntegrator self, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedWeakDivCrossIntegrator_CalcTestShape(self, test_fe, Trans, shape)
@@ -965,10 +971,20 @@ class MixedGradGradIntegrator(MixedVectorIntegrator):
         return _bilininteg.MixedGradGradIntegrator_GetIntegrationOrder(self, trial_fe, test_fe, Trans)
     GetIntegrationOrder = _swig_new_instance_method(_bilininteg.MixedGradGradIntegrator_GetIntegrationOrder)
 
+    def GetTrialVDim(self, trial_fe):
+        r"""GetTrialVDim(MixedGradGradIntegrator self, FiniteElement trial_fe) -> int"""
+        return _bilininteg.MixedGradGradIntegrator_GetTrialVDim(self, trial_fe)
+    GetTrialVDim = _swig_new_instance_method(_bilininteg.MixedGradGradIntegrator_GetTrialVDim)
+
     def CalcTrialShape(self, trial_fe, Trans, shape):
         r"""CalcTrialShape(MixedGradGradIntegrator self, FiniteElement trial_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedGradGradIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
     CalcTrialShape = _swig_new_instance_method(_bilininteg.MixedGradGradIntegrator_CalcTrialShape)
+
+    def GetTestVDim(self, test_fe):
+        r"""GetTestVDim(MixedGradGradIntegrator self, FiniteElement test_fe) -> int"""
+        return _bilininteg.MixedGradGradIntegrator_GetTestVDim(self, test_fe)
+    GetTestVDim = _swig_new_instance_method(_bilininteg.MixedGradGradIntegrator_GetTestVDim)
 
     def CalcTestShape(self, test_fe, Trans, shape):
         r"""CalcTestShape(MixedGradGradIntegrator self, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix shape)"""
@@ -1004,10 +1020,20 @@ class MixedCrossGradGradIntegrator(MixedVectorIntegrator):
         return _bilininteg.MixedCrossGradGradIntegrator_FiniteElementTypeFailureMessage(self)
     FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedCrossGradGradIntegrator_FiniteElementTypeFailureMessage)
 
+    def GetTrialVDim(self, trial_fe):
+        r"""GetTrialVDim(MixedCrossGradGradIntegrator self, FiniteElement trial_fe) -> int"""
+        return _bilininteg.MixedCrossGradGradIntegrator_GetTrialVDim(self, trial_fe)
+    GetTrialVDim = _swig_new_instance_method(_bilininteg.MixedCrossGradGradIntegrator_GetTrialVDim)
+
     def CalcTrialShape(self, trial_fe, Trans, shape):
         r"""CalcTrialShape(MixedCrossGradGradIntegrator self, FiniteElement trial_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedCrossGradGradIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
     CalcTrialShape = _swig_new_instance_method(_bilininteg.MixedCrossGradGradIntegrator_CalcTrialShape)
+
+    def GetTestVDim(self, test_fe):
+        r"""GetTestVDim(MixedCrossGradGradIntegrator self, FiniteElement test_fe) -> int"""
+        return _bilininteg.MixedCrossGradGradIntegrator_GetTestVDim(self, test_fe)
+    GetTestVDim = _swig_new_instance_method(_bilininteg.MixedCrossGradGradIntegrator_GetTestVDim)
 
     def CalcTestShape(self, test_fe, Trans, shape):
         r"""CalcTestShape(MixedCrossGradGradIntegrator self, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix shape)"""
@@ -1048,10 +1074,20 @@ class MixedCurlCurlIntegrator(MixedVectorIntegrator):
         return _bilininteg.MixedCurlCurlIntegrator_FiniteElementTypeFailureMessage(self)
     FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedCurlCurlIntegrator_FiniteElementTypeFailureMessage)
 
+    def GetTrialVDim(self, trial_fe):
+        r"""GetTrialVDim(MixedCurlCurlIntegrator self, FiniteElement trial_fe) -> int"""
+        return _bilininteg.MixedCurlCurlIntegrator_GetTrialVDim(self, trial_fe)
+    GetTrialVDim = _swig_new_instance_method(_bilininteg.MixedCurlCurlIntegrator_GetTrialVDim)
+
     def CalcTrialShape(self, trial_fe, Trans, shape):
         r"""CalcTrialShape(MixedCurlCurlIntegrator self, FiniteElement trial_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedCurlCurlIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
     CalcTrialShape = _swig_new_instance_method(_bilininteg.MixedCurlCurlIntegrator_CalcTrialShape)
+
+    def GetTestVDim(self, test_fe):
+        r"""GetTestVDim(MixedCurlCurlIntegrator self, FiniteElement test_fe) -> int"""
+        return _bilininteg.MixedCurlCurlIntegrator_GetTestVDim(self, test_fe)
+    GetTestVDim = _swig_new_instance_method(_bilininteg.MixedCurlCurlIntegrator_GetTestVDim)
 
     def CalcTestShape(self, test_fe, Trans, shape):
         r"""CalcTestShape(MixedCurlCurlIntegrator self, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix shape)"""
@@ -1087,10 +1123,20 @@ class MixedCrossCurlCurlIntegrator(MixedVectorIntegrator):
         return _bilininteg.MixedCrossCurlCurlIntegrator_FiniteElementTypeFailureMessage(self)
     FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedCrossCurlCurlIntegrator_FiniteElementTypeFailureMessage)
 
+    def GetTrialVDim(self, trial_fe):
+        r"""GetTrialVDim(MixedCrossCurlCurlIntegrator self, FiniteElement trial_fe) -> int"""
+        return _bilininteg.MixedCrossCurlCurlIntegrator_GetTrialVDim(self, trial_fe)
+    GetTrialVDim = _swig_new_instance_method(_bilininteg.MixedCrossCurlCurlIntegrator_GetTrialVDim)
+
     def CalcTrialShape(self, trial_fe, Trans, shape):
         r"""CalcTrialShape(MixedCrossCurlCurlIntegrator self, FiniteElement trial_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedCrossCurlCurlIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
     CalcTrialShape = _swig_new_instance_method(_bilininteg.MixedCrossCurlCurlIntegrator_CalcTrialShape)
+
+    def GetTestVDim(self, test_fe):
+        r"""GetTestVDim(MixedCrossCurlCurlIntegrator self, FiniteElement test_fe) -> int"""
+        return _bilininteg.MixedCrossCurlCurlIntegrator_GetTestVDim(self, test_fe)
+    GetTestVDim = _swig_new_instance_method(_bilininteg.MixedCrossCurlCurlIntegrator_GetTestVDim)
 
     def CalcTestShape(self, test_fe, Trans, shape):
         r"""CalcTestShape(MixedCrossCurlCurlIntegrator self, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix shape)"""
@@ -1126,10 +1172,20 @@ class MixedCrossCurlGradIntegrator(MixedVectorIntegrator):
         return _bilininteg.MixedCrossCurlGradIntegrator_FiniteElementTypeFailureMessage(self)
     FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedCrossCurlGradIntegrator_FiniteElementTypeFailureMessage)
 
+    def GetTrialVDim(self, trial_fe):
+        r"""GetTrialVDim(MixedCrossCurlGradIntegrator self, FiniteElement trial_fe) -> int"""
+        return _bilininteg.MixedCrossCurlGradIntegrator_GetTrialVDim(self, trial_fe)
+    GetTrialVDim = _swig_new_instance_method(_bilininteg.MixedCrossCurlGradIntegrator_GetTrialVDim)
+
     def CalcTrialShape(self, trial_fe, Trans, shape):
         r"""CalcTrialShape(MixedCrossCurlGradIntegrator self, FiniteElement trial_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedCrossCurlGradIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
     CalcTrialShape = _swig_new_instance_method(_bilininteg.MixedCrossCurlGradIntegrator_CalcTrialShape)
+
+    def GetTestVDim(self, test_fe):
+        r"""GetTestVDim(MixedCrossCurlGradIntegrator self, FiniteElement test_fe) -> int"""
+        return _bilininteg.MixedCrossCurlGradIntegrator_GetTestVDim(self, test_fe)
+    GetTestVDim = _swig_new_instance_method(_bilininteg.MixedCrossCurlGradIntegrator_GetTestVDim)
 
     def CalcTestShape(self, test_fe, Trans, shape):
         r"""CalcTestShape(MixedCrossCurlGradIntegrator self, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix shape)"""
@@ -1165,10 +1221,20 @@ class MixedCrossGradCurlIntegrator(MixedVectorIntegrator):
         return _bilininteg.MixedCrossGradCurlIntegrator_FiniteElementTypeFailureMessage(self)
     FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedCrossGradCurlIntegrator_FiniteElementTypeFailureMessage)
 
+    def GetTrialVDim(self, trial_fe):
+        r"""GetTrialVDim(MixedCrossGradCurlIntegrator self, FiniteElement trial_fe) -> int"""
+        return _bilininteg.MixedCrossGradCurlIntegrator_GetTrialVDim(self, trial_fe)
+    GetTrialVDim = _swig_new_instance_method(_bilininteg.MixedCrossGradCurlIntegrator_GetTrialVDim)
+
     def CalcTrialShape(self, trial_fe, Trans, shape):
         r"""CalcTrialShape(MixedCrossGradCurlIntegrator self, FiniteElement trial_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedCrossGradCurlIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
     CalcTrialShape = _swig_new_instance_method(_bilininteg.MixedCrossGradCurlIntegrator_CalcTrialShape)
+
+    def GetTestVDim(self, test_fe):
+        r"""GetTestVDim(MixedCrossGradCurlIntegrator self, FiniteElement test_fe) -> int"""
+        return _bilininteg.MixedCrossGradCurlIntegrator_GetTestVDim(self, test_fe)
+    GetTestVDim = _swig_new_instance_method(_bilininteg.MixedCrossGradCurlIntegrator_GetTestVDim)
 
     def CalcTestShape(self, test_fe, Trans, shape):
         r"""CalcTestShape(MixedCrossGradCurlIntegrator self, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix shape)"""
@@ -1203,6 +1269,11 @@ class MixedWeakCurlCrossIntegrator(MixedVectorIntegrator):
         r"""FiniteElementTypeFailureMessage(MixedWeakCurlCrossIntegrator self) -> char const *"""
         return _bilininteg.MixedWeakCurlCrossIntegrator_FiniteElementTypeFailureMessage(self)
     FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedWeakCurlCrossIntegrator_FiniteElementTypeFailureMessage)
+
+    def GetTestVDim(self, test_fe):
+        r"""GetTestVDim(MixedWeakCurlCrossIntegrator self, FiniteElement test_fe) -> int"""
+        return _bilininteg.MixedWeakCurlCrossIntegrator_GetTestVDim(self, test_fe)
+    GetTestVDim = _swig_new_instance_method(_bilininteg.MixedWeakCurlCrossIntegrator_GetTestVDim)
 
     def CalcTestShape(self, test_fe, Trans, shape):
         r"""CalcTestShape(MixedWeakCurlCrossIntegrator self, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix shape)"""
@@ -1272,6 +1343,11 @@ class MixedCrossGradIntegrator(MixedVectorIntegrator):
         return _bilininteg.MixedCrossGradIntegrator_FiniteElementTypeFailureMessage(self)
     FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedCrossGradIntegrator_FiniteElementTypeFailureMessage)
 
+    def GetTrialVDim(self, trial_fe):
+        r"""GetTrialVDim(MixedCrossGradIntegrator self, FiniteElement trial_fe) -> int"""
+        return _bilininteg.MixedCrossGradIntegrator_GetTrialVDim(self, trial_fe)
+    GetTrialVDim = _swig_new_instance_method(_bilininteg.MixedCrossGradIntegrator_GetTrialVDim)
+
     def CalcTrialShape(self, trial_fe, Trans, shape):
         r"""CalcTrialShape(MixedCrossGradIntegrator self, FiniteElement trial_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedCrossGradIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
@@ -1310,6 +1386,11 @@ class MixedCrossCurlIntegrator(MixedVectorIntegrator):
         r"""FiniteElementTypeFailureMessage(MixedCrossCurlIntegrator self) -> char const *"""
         return _bilininteg.MixedCrossCurlIntegrator_FiniteElementTypeFailureMessage(self)
     FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedCrossCurlIntegrator_FiniteElementTypeFailureMessage)
+
+    def GetTrialVDim(self, trial_fe):
+        r"""GetTrialVDim(MixedCrossCurlIntegrator self, FiniteElement trial_fe) -> int"""
+        return _bilininteg.MixedCrossCurlIntegrator_GetTrialVDim(self, trial_fe)
+    GetTrialVDim = _swig_new_instance_method(_bilininteg.MixedCrossCurlIntegrator_GetTrialVDim)
 
     def CalcTrialShape(self, trial_fe, Trans, shape):
         r"""CalcTrialShape(MixedCrossCurlIntegrator self, FiniteElement trial_fe, ElementTransformation Trans, DenseMatrix shape)"""
@@ -1378,6 +1459,11 @@ class MixedScalarCrossGradIntegrator(MixedScalarVectorIntegrator):
         r"""FiniteElementTypeFailureMessage(MixedScalarCrossGradIntegrator self) -> char const *"""
         return _bilininteg.MixedScalarCrossGradIntegrator_FiniteElementTypeFailureMessage(self)
     FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedScalarCrossGradIntegrator_FiniteElementTypeFailureMessage)
+
+    def GetVDim(self, vector_fe):
+        r"""GetVDim(MixedScalarCrossGradIntegrator self, FiniteElement vector_fe) -> int"""
+        return _bilininteg.MixedScalarCrossGradIntegrator_GetVDim(self, vector_fe)
+    GetVDim = _swig_new_instance_method(_bilininteg.MixedScalarCrossGradIntegrator_GetVDim)
 
     def CalcVShape(self, vector_fe, Trans, shape):
         r"""CalcVShape(MixedScalarCrossGradIntegrator self, FiniteElement vector_fe, ElementTransformation Trans, DenseMatrix shape)"""
@@ -1476,6 +1562,11 @@ class MixedDirectionalDerivativeIntegrator(MixedScalarVectorIntegrator):
         return _bilininteg.MixedDirectionalDerivativeIntegrator_FiniteElementTypeFailureMessage(self)
     FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedDirectionalDerivativeIntegrator_FiniteElementTypeFailureMessage)
 
+    def GetVDim(self, vector_fe):
+        r"""GetVDim(MixedDirectionalDerivativeIntegrator self, FiniteElement vector_fe) -> int"""
+        return _bilininteg.MixedDirectionalDerivativeIntegrator_GetVDim(self, vector_fe)
+    GetVDim = _swig_new_instance_method(_bilininteg.MixedDirectionalDerivativeIntegrator_GetVDim)
+
     def CalcVShape(self, vector_fe, Trans, shape):
         r"""CalcVShape(MixedDirectionalDerivativeIntegrator self, FiniteElement vector_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedDirectionalDerivativeIntegrator_CalcVShape(self, vector_fe, Trans, shape)
@@ -1509,6 +1600,11 @@ class MixedGradDivIntegrator(MixedScalarVectorIntegrator):
         r"""FiniteElementTypeFailureMessage(MixedGradDivIntegrator self) -> char const *"""
         return _bilininteg.MixedGradDivIntegrator_FiniteElementTypeFailureMessage(self)
     FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedGradDivIntegrator_FiniteElementTypeFailureMessage)
+
+    def GetVDim(self, vector_fe):
+        r"""GetVDim(MixedGradDivIntegrator self, FiniteElement vector_fe) -> int"""
+        return _bilininteg.MixedGradDivIntegrator_GetVDim(self, vector_fe)
+    GetVDim = _swig_new_instance_method(_bilininteg.MixedGradDivIntegrator_GetVDim)
 
     def CalcVShape(self, vector_fe, Trans, shape):
         r"""CalcVShape(MixedGradDivIntegrator self, FiniteElement vector_fe, ElementTransformation Trans, DenseMatrix shape)"""
@@ -1549,6 +1645,11 @@ class MixedDivGradIntegrator(MixedScalarVectorIntegrator):
         return _bilininteg.MixedDivGradIntegrator_FiniteElementTypeFailureMessage(self)
     FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedDivGradIntegrator_FiniteElementTypeFailureMessage)
 
+    def GetVDim(self, vector_fe):
+        r"""GetVDim(MixedDivGradIntegrator self, FiniteElement vector_fe) -> int"""
+        return _bilininteg.MixedDivGradIntegrator_GetVDim(self, vector_fe)
+    GetVDim = _swig_new_instance_method(_bilininteg.MixedDivGradIntegrator_GetVDim)
+
     def CalcVShape(self, vector_fe, Trans, shape):
         r"""CalcVShape(MixedDivGradIntegrator self, FiniteElement vector_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedDivGradIntegrator_CalcVShape(self, vector_fe, Trans, shape)
@@ -1587,6 +1688,11 @@ class MixedScalarWeakDivergenceIntegrator(MixedScalarVectorIntegrator):
         r"""FiniteElementTypeFailureMessage(MixedScalarWeakDivergenceIntegrator self) -> char const *"""
         return _bilininteg.MixedScalarWeakDivergenceIntegrator_FiniteElementTypeFailureMessage(self)
     FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedScalarWeakDivergenceIntegrator_FiniteElementTypeFailureMessage)
+
+    def GetVDim(self, vector_fe):
+        r"""GetVDim(MixedScalarWeakDivergenceIntegrator self, FiniteElement vector_fe) -> int"""
+        return _bilininteg.MixedScalarWeakDivergenceIntegrator_GetVDim(self, vector_fe)
+    GetVDim = _swig_new_instance_method(_bilininteg.MixedScalarWeakDivergenceIntegrator_GetVDim)
 
     def CalcVShape(self, vector_fe, Trans, shape):
         r"""CalcVShape(MixedScalarWeakDivergenceIntegrator self, FiniteElement vector_fe, ElementTransformation Trans, DenseMatrix shape)"""
@@ -2040,6 +2146,11 @@ class ConvectionIntegrator(BilinearFormIntegrator):
         return _bilininteg.ConvectionIntegrator_AddMultPA(self, arg2, arg3)
     AddMultPA = _swig_new_instance_method(_bilininteg.ConvectionIntegrator_AddMultPA)
 
+    def AddMultTransposePA(self, x, y):
+        r"""AddMultTransposePA(ConvectionIntegrator self, Vector x, Vector y)"""
+        return _bilininteg.ConvectionIntegrator_AddMultTransposePA(self, x, y)
+    AddMultTransposePA = _swig_new_instance_method(_bilininteg.ConvectionIntegrator_AddMultTransposePA)
+
     @staticmethod
     def GetRule(*args):
         r"""
@@ -2135,9 +2246,9 @@ class VectorMassIntegrator(BilinearFormIntegrator):
         return _bilininteg.VectorMassIntegrator_GetVDim(self)
     GetVDim = _swig_new_instance_method(_bilininteg.VectorMassIntegrator_GetVDim)
 
-    def SetVDim(self, vdim):
-        r"""SetVDim(VectorMassIntegrator self, int vdim)"""
-        return _bilininteg.VectorMassIntegrator_SetVDim(self, vdim)
+    def SetVDim(self, vdim_):
+        r"""SetVDim(VectorMassIntegrator self, int vdim_)"""
+        return _bilininteg.VectorMassIntegrator_SetVDim(self, vdim_)
     SetVDim = _swig_new_instance_method(_bilininteg.VectorMassIntegrator_SetVDim)
 
     def AssembleElementMatrix(self, el, Trans, elmat):

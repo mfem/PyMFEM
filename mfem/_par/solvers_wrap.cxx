@@ -10078,6 +10078,54 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_LBFGSSolver_SetOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::LBFGSSolver *arg1 = (mfem::LBFGSSolver *) 0 ;
+  mfem::Operator *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"op",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:LBFGSSolver_SetOperator", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__LBFGSSolver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LBFGSSolver_SetOperator" "', argument " "1"" of type '" "mfem::LBFGSSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::LBFGSSolver * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Operator,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LBFGSSolver_SetOperator" "', argument " "2"" of type '" "mfem::Operator const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "LBFGSSolver_SetOperator" "', argument " "2"" of type '" "mfem::Operator const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Operator * >(argp2);
+  {
+    try {
+      (arg1)->SetOperator((mfem::Operator const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_LBFGSSolver_SetHistorySize(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::LBFGSSolver *arg1 = (mfem::LBFGSSolver *) 0 ;
@@ -13738,6 +13786,7 @@ static PyMethodDef SwigMethods[] = {
 		"LBFGSSolver()\n"
 		"new_LBFGSSolver(MPI_Comm comm_) -> LBFGSSolver\n"
 		""},
+	 { "LBFGSSolver_SetOperator", (PyCFunction)(void(*)(void))_wrap_LBFGSSolver_SetOperator, METH_VARARGS|METH_KEYWORDS, "LBFGSSolver_SetOperator(LBFGSSolver self, Operator op)"},
 	 { "LBFGSSolver_SetHistorySize", (PyCFunction)(void(*)(void))_wrap_LBFGSSolver_SetHistorySize, METH_VARARGS|METH_KEYWORDS, "LBFGSSolver_SetHistorySize(LBFGSSolver self, int dim)"},
 	 { "LBFGSSolver_Mult", (PyCFunction)(void(*)(void))_wrap_LBFGSSolver_Mult, METH_VARARGS|METH_KEYWORDS, "LBFGSSolver_Mult(LBFGSSolver self, Vector b, Vector x)"},
 	 { "LBFGSSolver_SetPreconditioner", (PyCFunction)(void(*)(void))_wrap_LBFGSSolver_SetPreconditioner, METH_VARARGS|METH_KEYWORDS, "LBFGSSolver_SetPreconditioner(LBFGSSolver self, Solver pr)"},
@@ -13974,6 +14023,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"LBFGSSolver()\n"
 		"new_LBFGSSolver(MPI_Comm comm_) -> LBFGSSolver\n"
 		""},
+	 { "LBFGSSolver_SetOperator", (PyCFunction)(void(*)(void))_wrap_LBFGSSolver_SetOperator, METH_VARARGS|METH_KEYWORDS, "SetOperator(LBFGSSolver self, Operator op)"},
 	 { "LBFGSSolver_SetHistorySize", (PyCFunction)(void(*)(void))_wrap_LBFGSSolver_SetHistorySize, METH_VARARGS|METH_KEYWORDS, "SetHistorySize(LBFGSSolver self, int dim)"},
 	 { "LBFGSSolver_Mult", (PyCFunction)(void(*)(void))_wrap_LBFGSSolver_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(LBFGSSolver self, Vector b, Vector x)"},
 	 { "LBFGSSolver_SetPreconditioner", (PyCFunction)(void(*)(void))_wrap_LBFGSSolver_SetPreconditioner, METH_VARARGS|METH_KEYWORDS, "SetPreconditioner(LBFGSSolver self, Solver pr)"},
@@ -15592,15 +15642,14 @@ SWIG_init(void) {
   
   import_array();
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40301)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.3.1"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40301)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40400)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.4.0"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40400)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40301)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40301)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40301)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(22000)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40400)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40400)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40400)%100))));
   
   if (import_mpi4py() < 0)
 #if PY_MAJOR_VERSION >= 3

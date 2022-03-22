@@ -603,10 +603,11 @@ class CurlGridFunctionCoefficient(VectorCoefficient):
     r"""Proxy of C++ mfem::CurlGridFunctionCoefficient class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
+
+    def __init__(self, gf):
+        r"""__init__(CurlGridFunctionCoefficient self, mfem::GridFunction const * gf) -> CurlGridFunctionCoefficient"""
+        _coefficient.CurlGridFunctionCoefficient_swiginit(self, _coefficient.new_CurlGridFunctionCoefficient(gf))
 
     def SetGridFunction(self, gf):
         r"""SetGridFunction(CurlGridFunctionCoefficient self, mfem::GridFunction const * gf)"""
@@ -1070,10 +1071,11 @@ class SymmetricMatrixConstantCoefficient(SymmetricMatrixCoefficient):
     r"""Proxy of C++ mfem::SymmetricMatrixConstantCoefficient class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
+
+    def __init__(self, m):
+        r"""__init__(SymmetricMatrixConstantCoefficient self, DenseSymmetricMatrix m) -> SymmetricMatrixConstantCoefficient"""
+        _coefficient.SymmetricMatrixConstantCoefficient_swiginit(self, _coefficient.new_SymmetricMatrixConstantCoefficient(m))
 
     def Eval(self, *args):
         r"""
@@ -2021,10 +2023,11 @@ class VectorQuadratureFunctionCoefficient(VectorCoefficient):
     r"""Proxy of C++ mfem::VectorQuadratureFunctionCoefficient class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
+
+    def __init__(self, qf):
+        r"""__init__(VectorQuadratureFunctionCoefficient self, mfem::QuadratureFunction & qf) -> VectorQuadratureFunctionCoefficient"""
+        _coefficient.VectorQuadratureFunctionCoefficient_swiginit(self, _coefficient.new_VectorQuadratureFunctionCoefficient(qf))
 
     def SetComponent(self, index_, length_):
         r"""SetComponent(VectorQuadratureFunctionCoefficient self, int index_, int length_)"""

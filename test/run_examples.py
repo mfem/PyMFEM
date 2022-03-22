@@ -173,7 +173,7 @@ def do_compare_outputs(dir1, dir2):
                         #print("line with difference", d1, d2)
                         mismatch += 1                        
                 except:
-                    print("found a line mismatch :", ll1, ll2)
+                    #print("found a line mismatch :", ll1, ll2)
                     mismatch += 1
         if mismatch > 3:
            print("Contents does not agree: ", f)

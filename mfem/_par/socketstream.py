@@ -108,6 +108,7 @@ import mfem._par.restriction
 import mfem._par.bilininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.std_vectors
 class socketbuf(object):
     r"""Proxy of C++ mfem::socketbuf class."""
 

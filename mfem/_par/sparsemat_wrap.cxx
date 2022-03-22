@@ -7820,6 +7820,40 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_SparseMatrix_EnsureMultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_EnsureMultTranspose" "', argument " "1"" of type '" "mfem::SparseMatrix const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  {
+    try {
+      ((mfem::SparseMatrix const *)arg1)->EnsureMultTranspose(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_SparseMatrix_PartMult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
@@ -10876,7 +10910,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Set(PyObject *SWIGUNUSEDPARM(self), PyOb
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"i",  (char *)"j",  (char *)"a",  NULL 
+    (char *)"self",  (char *)"i",  (char *)"j",  (char *)"val",  NULL 
   };
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:SparseMatrix_Set", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
@@ -15457,6 +15491,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "SparseMatrix_AddMultTranspose", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_AddMultTranspose, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_AddMultTranspose(SparseMatrix self, Vector x, Vector y, double const a=1.0)"},
 	 { "SparseMatrix_BuildTranspose", _wrap_SparseMatrix_BuildTranspose, METH_O, "SparseMatrix_BuildTranspose(SparseMatrix self)"},
 	 { "SparseMatrix_ResetTranspose", _wrap_SparseMatrix_ResetTranspose, METH_O, "SparseMatrix_ResetTranspose(SparseMatrix self)"},
+	 { "SparseMatrix_EnsureMultTranspose", _wrap_SparseMatrix_EnsureMultTranspose, METH_O, "SparseMatrix_EnsureMultTranspose(SparseMatrix self)"},
 	 { "SparseMatrix_PartMult", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PartMult, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_PartMult(SparseMatrix self, intArray rows, Vector x, Vector y)"},
 	 { "SparseMatrix_PartAddMult", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PartAddMult, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_PartAddMult(SparseMatrix self, intArray rows, Vector x, Vector y, double const a=1.0)"},
 	 { "SparseMatrix_BooleanMult", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_BooleanMult, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_BooleanMult(SparseMatrix self, intArray x, intArray y)"},
@@ -15516,7 +15551,7 @@ static PyMethodDef SwigMethods[] = {
 		"SparseMatrix__Set_(SparseMatrix self, int const col, double const a)\n"
 		"SparseMatrix__Set_(SparseMatrix self, int const row, int const col, double const a)\n"
 		""},
-	 { "SparseMatrix_Set", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Set, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_Set(SparseMatrix self, int const i, int const j, double const a)"},
+	 { "SparseMatrix_Set", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Set, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_Set(SparseMatrix self, int const i, int const j, double const val)"},
 	 { "SparseMatrix_SetSubMatrix", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_SetSubMatrix, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_SetSubMatrix(SparseMatrix self, intArray rows, intArray cols, DenseMatrix subm, int skip_zeros=1)"},
 	 { "SparseMatrix_SetSubMatrixTranspose", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_SetSubMatrixTranspose, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_SetSubMatrixTranspose(SparseMatrix self, intArray rows, intArray cols, DenseMatrix subm, int skip_zeros=1)"},
 	 { "SparseMatrix_AddSubMatrix", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_AddSubMatrix, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_AddSubMatrix(SparseMatrix self, intArray rows, intArray cols, DenseMatrix subm, int skip_zeros=1)"},
@@ -15529,7 +15564,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "SparseMatrix_ScaleColumns", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_ScaleColumns, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_ScaleColumns(SparseMatrix self, Vector sr)"},
 	 { "SparseMatrix___iadd__", (PyCFunction)(void(*)(void))_wrap_SparseMatrix___iadd__, METH_VARARGS|METH_KEYWORDS, "SparseMatrix___iadd__(SparseMatrix self, SparseMatrix B) -> SparseMatrix"},
 	 { "SparseMatrix_Add", _wrap_SparseMatrix_Add, METH_VARARGS, "\n"
-		"SparseMatrix_Add(SparseMatrix self, int const i, int const j, double const a)\n"
+		"SparseMatrix_Add(SparseMatrix self, int const i, int const j, double const val)\n"
 		"SparseMatrix_Add(SparseMatrix self, double const a, SparseMatrix B)\n"
 		""},
 	 { "SparseMatrix___imul__", (PyCFunction)(void(*)(void))_wrap_SparseMatrix___imul__, METH_VARARGS|METH_KEYWORDS, "SparseMatrix___imul__(SparseMatrix self, double a) -> SparseMatrix"},
@@ -15710,6 +15745,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SparseMatrix_AddMultTranspose", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_AddMultTranspose, METH_VARARGS|METH_KEYWORDS, "AddMultTranspose(SparseMatrix self, Vector x, Vector y, double const a=1.0)"},
 	 { "SparseMatrix_BuildTranspose", _wrap_SparseMatrix_BuildTranspose, METH_O, "BuildTranspose(SparseMatrix self)"},
 	 { "SparseMatrix_ResetTranspose", _wrap_SparseMatrix_ResetTranspose, METH_O, "ResetTranspose(SparseMatrix self)"},
+	 { "SparseMatrix_EnsureMultTranspose", _wrap_SparseMatrix_EnsureMultTranspose, METH_O, "EnsureMultTranspose(SparseMatrix self)"},
 	 { "SparseMatrix_PartMult", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PartMult, METH_VARARGS|METH_KEYWORDS, "PartMult(SparseMatrix self, intArray rows, Vector x, Vector y)"},
 	 { "SparseMatrix_PartAddMult", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_PartAddMult, METH_VARARGS|METH_KEYWORDS, "PartAddMult(SparseMatrix self, intArray rows, Vector x, Vector y, double const a=1.0)"},
 	 { "SparseMatrix_BooleanMult", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_BooleanMult, METH_VARARGS|METH_KEYWORDS, "BooleanMult(SparseMatrix self, intArray x, intArray y)"},
@@ -15769,7 +15805,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"_Set_(SparseMatrix self, int const col, double const a)\n"
 		"_Set_(SparseMatrix self, int const row, int const col, double const a)\n"
 		""},
-	 { "SparseMatrix_Set", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Set, METH_VARARGS|METH_KEYWORDS, "Set(SparseMatrix self, int const i, int const j, double const a)"},
+	 { "SparseMatrix_Set", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Set, METH_VARARGS|METH_KEYWORDS, "Set(SparseMatrix self, int const i, int const j, double const val)"},
 	 { "SparseMatrix_SetSubMatrix", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_SetSubMatrix, METH_VARARGS|METH_KEYWORDS, "SetSubMatrix(SparseMatrix self, intArray rows, intArray cols, DenseMatrix subm, int skip_zeros=1)"},
 	 { "SparseMatrix_SetSubMatrixTranspose", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_SetSubMatrixTranspose, METH_VARARGS|METH_KEYWORDS, "SetSubMatrixTranspose(SparseMatrix self, intArray rows, intArray cols, DenseMatrix subm, int skip_zeros=1)"},
 	 { "SparseMatrix_AddSubMatrix", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_AddSubMatrix, METH_VARARGS|METH_KEYWORDS, "AddSubMatrix(SparseMatrix self, intArray rows, intArray cols, DenseMatrix subm, int skip_zeros=1)"},
@@ -15782,7 +15818,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SparseMatrix_ScaleColumns", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_ScaleColumns, METH_VARARGS|METH_KEYWORDS, "ScaleColumns(SparseMatrix self, Vector sr)"},
 	 { "SparseMatrix___iadd__", (PyCFunction)(void(*)(void))_wrap_SparseMatrix___iadd__, METH_VARARGS|METH_KEYWORDS, "__iadd__(SparseMatrix self, SparseMatrix B) -> SparseMatrix"},
 	 { "SparseMatrix_Add", _wrap_SparseMatrix_Add, METH_VARARGS, "\n"
-		"Add(SparseMatrix self, int const i, int const j, double const a)\n"
+		"Add(SparseMatrix self, int const i, int const j, double const val)\n"
 		"Add(SparseMatrix self, double const a, SparseMatrix B)\n"
 		""},
 	 { "SparseMatrix___imul__", (PyCFunction)(void(*)(void))_wrap_SparseMatrix___imul__, METH_VARARGS|METH_KEYWORDS, "__imul__(SparseMatrix self, double a) -> SparseMatrix"},

@@ -22,6 +22,10 @@ amr = 0
 order = 2
 always_snap = False
 
+device = mfem.Device('cpu')
+if myid == 0:
+    device.Print()
+
 if elem_type == 1:
     Nvert = 8
     Nelem = 6

@@ -21,8 +21,11 @@ def run(order=1,
         pa=False):
 
     kappa = np.pi*freq
-    mesh = mfem.Mesh(meshfile, 1, 1)
 
+    device = mfem.Device(device)
+    device.Print()
+
+    mesh = mfem.Mesh(meshfile, 1, 1)
     dim = mesh.Dimension()
     sdim = mesh.SpaceDimension()
 
@@ -58,9 +61,6 @@ def run(order=1,
                         (1 + kappa**2)*sin(kappa * x[2]),
                         (1 + kappa**2)*sin(kappa * x[0]))
         f_exact = cf_exact()
-
-    device = mfem.Device(device)
-    device.Print()
 
     #   3. Refine the mesh to increase the resolution. In this example we do
     #      'ref_levels' of uniform refinement. We choose 'ref_levels' to be the

@@ -1,4 +1,17 @@
 	<<<  Change Log. >>>
+2022 03.
+        * Added --cuda-arch option to specify the compute cuda archtecture
+
+2022 02.27
+        * Added Cuda-build HYPRE support. Cuda is controlled by two setup.py options
+	    --with-cuda  :  MFEM_USE_CUDA is on.
+	    --with-cuda-hypre :  HYPRE is built with Cuda.
+        * mfem::Device is forced to be a singleton in Python layer too. This keeps MemoryManager
+	  from being deallocated before other objects are cleaned.
+        * bool mfem::is_HYPRE_USING_CUDA() is added to check if HYPRE is build with Cuda
+	* make sure that parallel examples calls mfem::Device
+	* enabled --parallel option when building extension modules
+
 2022 02.15
         * added %import globals.i in sparsemat.i and common_functions.i. This is needed when
 	  MFEM

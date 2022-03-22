@@ -18,7 +18,7 @@ else:
 def test_course_to_file_map1():
     dir = os.path.dirname(os.path.abspath(__file__))        
     mesh_file = os.path.join(dir, "../data/inline-quad.mesh")
-    device = mfem.Device('cpu')
+
 
     mesh = mfem.Mesh(mesh_file, 1, 1)
 
@@ -59,8 +59,6 @@ def test_course_to_file_map2():
     dir = os.path.dirname(os.path.abspath(__file__))        
     mesh_file = os.path.join(dir, "../data/inline-quad.mesh")
     
-    device = mfem.Device('cpu')
-
     mesh = mfem.Mesh(mesh_file, 1, 1)
 
     els = mfem.intArray([0])
@@ -89,6 +87,8 @@ def test_course_to_file_map2():
         print(txt)
 
 if __name__ == '__main__':
+    device = mfem.Device('cpu')
+    
     test_course_to_file_map1()
     test_course_to_file_map2()
 

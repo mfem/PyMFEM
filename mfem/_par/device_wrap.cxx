@@ -3188,6 +3188,7 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
   return SWIG_OK;
 }
 
+SWIGINTERN void mfem_Device___new__(mfem::Device *self){}
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -4008,6 +4009,43 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Device___new__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Device *arg1 = (mfem::Device *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Device, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Device___new__" "', argument " "1"" of type '" "mfem::Device *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Device * >(argp1);
+  {
+    try {
+      mfem_Device___new__(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *Device_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
@@ -4045,6 +4083,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "Device_GetMemoryClass", _wrap_Device_GetMemoryClass, METH_NOARGS, NULL},
 	 { "Device_SetGPUAwareMPI", (PyCFunction)(void(*)(void))_wrap_Device_SetGPUAwareMPI, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "Device_GetGPUAwareMPI", _wrap_Device_GetGPUAwareMPI, METH_NOARGS, NULL},
+	 { "Device___new__", _wrap_Device___new__, METH_O, NULL},
 	 { "Device_swigregister", Device_swigregister, METH_O, NULL},
 	 { "Device_swiginit", Device_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
@@ -4076,6 +4115,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Device_GetMemoryClass", _wrap_Device_GetMemoryClass, METH_NOARGS, NULL},
 	 { "Device_SetGPUAwareMPI", (PyCFunction)(void(*)(void))_wrap_Device_SetGPUAwareMPI, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "Device_GetGPUAwareMPI", _wrap_Device_GetGPUAwareMPI, METH_NOARGS, NULL},
+	 { "Device___new__", _wrap_Device___new__, METH_O, NULL},
 	 { "Device_swigregister", Device_swigregister, METH_O, NULL},
 	 { "Device_swiginit", Device_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }

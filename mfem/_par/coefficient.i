@@ -52,6 +52,9 @@ import_array();
 %feature("notabstract") VectorDeltaCoefficient;
 %feature("notabstract") MatrixFunctionCoefficient;
 %feature("notabstract") MatrixConstantCoefficient;
+%feature("notabstract") mfem::CurlGridFunctionCoefficient;
+%feature("notabstract") mfem::SymmetricMatrixConstantCoefficient;
+%feature("notabstract") mfem::VectorQuadratureFunctionCoefficient;
 
 namespace mfem {
 %pythonprepend MatrixConstantCoefficient::MatrixConstantCoefficient(const DenseMatrix &m) %{

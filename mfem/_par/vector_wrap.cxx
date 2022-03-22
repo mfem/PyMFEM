@@ -2815,7 +2815,6 @@ namespace swig {
 }
 
 
-#include "linalg/vector.hpp"  
 #include <sstream>
 #include <fstream>
 #include <limits>

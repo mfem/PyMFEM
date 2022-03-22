@@ -424,5 +424,359 @@ class ND_SegmentElement(mfem._ser.fe_base.VectorTensorFiniteElement):
 # Register ND_SegmentElement in _fe_nd:
 _fe_nd.ND_SegmentElement_swigregister(ND_SegmentElement)
 
+class ND_WedgeElement(mfem._ser.fe_base.VectorFiniteElement):
+    r"""Proxy of C++ mfem::ND_WedgeElement class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        r"""__init__(ND_WedgeElement self, int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> ND_WedgeElement"""
+        _fe_nd.ND_WedgeElement_swiginit(self, _fe_nd.new_ND_WedgeElement(*args, **kwargs))
+
+    def CalcVShape(self, *args):
+        r"""
+        CalcVShape(ND_WedgeElement self, IntegrationPoint ip, DenseMatrix shape)
+        CalcVShape(ND_WedgeElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
+        """
+        return _fe_nd.ND_WedgeElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe_nd.ND_WedgeElement_CalcVShape)
+
+    def CalcCurlShape(self, ip, curl_shape):
+        r"""CalcCurlShape(ND_WedgeElement self, IntegrationPoint ip, DenseMatrix curl_shape)"""
+        return _fe_nd.ND_WedgeElement_CalcCurlShape(self, ip, curl_shape)
+    CalcCurlShape = _swig_new_instance_method(_fe_nd.ND_WedgeElement_CalcCurlShape)
+
+    def GetLocalInterpolation(self, Trans, I):
+        r"""GetLocalInterpolation(ND_WedgeElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
+        return _fe_nd.ND_WedgeElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe_nd.ND_WedgeElement_GetLocalInterpolation)
+
+    def GetLocalRestriction(self, Trans, R):
+        r"""GetLocalRestriction(ND_WedgeElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
+        return _fe_nd.ND_WedgeElement_GetLocalRestriction(self, Trans, R)
+    GetLocalRestriction = _swig_new_instance_method(_fe_nd.ND_WedgeElement_GetLocalRestriction)
+
+    def GetTransferMatrix(self, fe, Trans, I):
+        r"""GetTransferMatrix(ND_WedgeElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
+        return _fe_nd.ND_WedgeElement_GetTransferMatrix(self, fe, Trans, I)
+    GetTransferMatrix = _swig_new_instance_method(_fe_nd.ND_WedgeElement_GetTransferMatrix)
+
+    def ProjectMatrixCoefficient(self, mc, T, dofs):
+        r"""ProjectMatrixCoefficient(ND_WedgeElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"""
+        return _fe_nd.ND_WedgeElement_ProjectMatrixCoefficient(self, mc, T, dofs)
+    ProjectMatrixCoefficient = _swig_new_instance_method(_fe_nd.ND_WedgeElement_ProjectMatrixCoefficient)
+
+    def Project(self, *args):
+        r"""
+        Project(ND_WedgeElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(ND_WedgeElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(ND_WedgeElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
+        Project(ND_WedgeElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(ND_WedgeElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
+        """
+        return _fe_nd.ND_WedgeElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe_nd.ND_WedgeElement_Project)
+
+    def ProjectGrad(self, fe, Trans, grad):
+        r"""ProjectGrad(ND_WedgeElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"""
+        return _fe_nd.ND_WedgeElement_ProjectGrad(self, fe, Trans, grad)
+    ProjectGrad = _swig_new_instance_method(_fe_nd.ND_WedgeElement_ProjectGrad)
+
+    def ProjectCurl(self, fe, Trans, curl):
+        r"""ProjectCurl(ND_WedgeElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"""
+        return _fe_nd.ND_WedgeElement_ProjectCurl(self, fe, Trans, curl)
+    ProjectCurl = _swig_new_instance_method(_fe_nd.ND_WedgeElement_ProjectCurl)
+    __swig_destroy__ = _fe_nd.delete_ND_WedgeElement
+
+# Register ND_WedgeElement in _fe_nd:
+_fe_nd.ND_WedgeElement_swigregister(ND_WedgeElement)
+
+class ND_R1D_PointElement(mfem._ser.fe_base.VectorFiniteElement):
+    r"""Proxy of C++ mfem::ND_R1D_PointElement class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, p):
+        r"""__init__(ND_R1D_PointElement self, int p) -> ND_R1D_PointElement"""
+        _fe_nd.ND_R1D_PointElement_swiginit(self, _fe_nd.new_ND_R1D_PointElement(p))
+
+    def CalcVShape(self, *args):
+        r"""
+        CalcVShape(ND_R1D_PointElement self, IntegrationPoint ip, DenseMatrix shape)
+        CalcVShape(ND_R1D_PointElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
+        CalcVShape(ND_R1D_PointElement self, IntegrationPoint ip, DenseMatrix shape)
+        CalcVShape(ND_R1D_PointElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
+        """
+        return _fe_nd.ND_R1D_PointElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe_nd.ND_R1D_PointElement_CalcVShape)
+    __swig_destroy__ = _fe_nd.delete_ND_R1D_PointElement
+
+# Register ND_R1D_PointElement in _fe_nd:
+_fe_nd.ND_R1D_PointElement_swigregister(ND_R1D_PointElement)
+
+class ND_R1D_SegmentElement(mfem._ser.fe_base.VectorFiniteElement):
+    r"""Proxy of C++ mfem::ND_R1D_SegmentElement class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        r"""__init__(ND_R1D_SegmentElement self, int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> ND_R1D_SegmentElement"""
+        _fe_nd.ND_R1D_SegmentElement_swiginit(self, _fe_nd.new_ND_R1D_SegmentElement(*args, **kwargs))
+
+    def CalcVShape(self, *args):
+        r"""
+        CalcVShape(ND_R1D_SegmentElement self, IntegrationPoint ip, DenseMatrix shape)
+        CalcVShape(ND_R1D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
+        CalcVShape(ND_R1D_SegmentElement self, IntegrationPoint ip, DenseMatrix shape)
+        CalcVShape(ND_R1D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
+        """
+        return _fe_nd.ND_R1D_SegmentElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe_nd.ND_R1D_SegmentElement_CalcVShape)
+
+    def CalcCurlShape(self, ip, curl_shape):
+        r"""CalcCurlShape(ND_R1D_SegmentElement self, IntegrationPoint ip, DenseMatrix curl_shape)"""
+        return _fe_nd.ND_R1D_SegmentElement_CalcCurlShape(self, ip, curl_shape)
+    CalcCurlShape = _swig_new_instance_method(_fe_nd.ND_R1D_SegmentElement_CalcCurlShape)
+
+    def CalcPhysCurlShape(self, *args):
+        r"""
+        CalcPhysCurlShape(ND_R1D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix curl_shape)
+        CalcPhysCurlShape(ND_R1D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix curl_shape)
+        """
+        return _fe_nd.ND_R1D_SegmentElement_CalcPhysCurlShape(self, *args)
+    CalcPhysCurlShape = _swig_new_instance_method(_fe_nd.ND_R1D_SegmentElement_CalcPhysCurlShape)
+
+    def GetLocalInterpolation(self, Trans, I):
+        r"""GetLocalInterpolation(ND_R1D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
+        return _fe_nd.ND_R1D_SegmentElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe_nd.ND_R1D_SegmentElement_GetLocalInterpolation)
+
+    def GetLocalRestriction(self, Trans, R):
+        r"""GetLocalRestriction(ND_R1D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
+        return _fe_nd.ND_R1D_SegmentElement_GetLocalRestriction(self, Trans, R)
+    GetLocalRestriction = _swig_new_instance_method(_fe_nd.ND_R1D_SegmentElement_GetLocalRestriction)
+
+    def GetTransferMatrix(self, fe, Trans, I):
+        r"""GetTransferMatrix(ND_R1D_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
+        return _fe_nd.ND_R1D_SegmentElement_GetTransferMatrix(self, fe, Trans, I)
+    GetTransferMatrix = _swig_new_instance_method(_fe_nd.ND_R1D_SegmentElement_GetTransferMatrix)
+
+    def ProjectFromNodes(self, vc, Trans, dofs):
+        r"""ProjectFromNodes(ND_R1D_SegmentElement self, Vector vc, mfem::ElementTransformation & Trans, Vector dofs)"""
+        return _fe_nd.ND_R1D_SegmentElement_ProjectFromNodes(self, vc, Trans, dofs)
+    ProjectFromNodes = _swig_new_instance_method(_fe_nd.ND_R1D_SegmentElement_ProjectFromNodes)
+
+    def ProjectMatrixCoefficient(self, mc, T, dofs):
+        r"""ProjectMatrixCoefficient(ND_R1D_SegmentElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"""
+        return _fe_nd.ND_R1D_SegmentElement_ProjectMatrixCoefficient(self, mc, T, dofs)
+    ProjectMatrixCoefficient = _swig_new_instance_method(_fe_nd.ND_R1D_SegmentElement_ProjectMatrixCoefficient)
+
+    def Project(self, *args):
+        r"""
+        Project(ND_R1D_SegmentElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(ND_R1D_SegmentElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(ND_R1D_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
+        Project(ND_R1D_SegmentElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(ND_R1D_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
+        """
+        return _fe_nd.ND_R1D_SegmentElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe_nd.ND_R1D_SegmentElement_Project)
+
+    def ProjectGrad(self, fe, Trans, grad):
+        r"""ProjectGrad(ND_R1D_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"""
+        return _fe_nd.ND_R1D_SegmentElement_ProjectGrad(self, fe, Trans, grad)
+    ProjectGrad = _swig_new_instance_method(_fe_nd.ND_R1D_SegmentElement_ProjectGrad)
+
+    def ProjectCurl(self, fe, Trans, curl):
+        r"""ProjectCurl(ND_R1D_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"""
+        return _fe_nd.ND_R1D_SegmentElement_ProjectCurl(self, fe, Trans, curl)
+    ProjectCurl = _swig_new_instance_method(_fe_nd.ND_R1D_SegmentElement_ProjectCurl)
+    __swig_destroy__ = _fe_nd.delete_ND_R1D_SegmentElement
+
+# Register ND_R1D_SegmentElement in _fe_nd:
+_fe_nd.ND_R1D_SegmentElement_swigregister(ND_R1D_SegmentElement)
+
+class ND_R2D_SegmentElement(mfem._ser.fe_base.VectorFiniteElement):
+    r"""Proxy of C++ mfem::ND_R2D_SegmentElement class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        r"""__init__(ND_R2D_SegmentElement self, int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> ND_R2D_SegmentElement"""
+        _fe_nd.ND_R2D_SegmentElement_swiginit(self, _fe_nd.new_ND_R2D_SegmentElement(*args, **kwargs))
+
+    def CalcVShape(self, *args):
+        r"""
+        CalcVShape(ND_R2D_SegmentElement self, IntegrationPoint ip, DenseMatrix shape)
+        CalcVShape(ND_R2D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
+        """
+        return _fe_nd.ND_R2D_SegmentElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe_nd.ND_R2D_SegmentElement_CalcVShape)
+
+    def CalcCurlShape(self, ip, curl_shape):
+        r"""CalcCurlShape(ND_R2D_SegmentElement self, IntegrationPoint ip, DenseMatrix curl_shape)"""
+        return _fe_nd.ND_R2D_SegmentElement_CalcCurlShape(self, ip, curl_shape)
+    CalcCurlShape = _swig_new_instance_method(_fe_nd.ND_R2D_SegmentElement_CalcCurlShape)
+
+    def GetLocalInterpolation(self, Trans, I):
+        r"""GetLocalInterpolation(ND_R2D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
+        return _fe_nd.ND_R2D_SegmentElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe_nd.ND_R2D_SegmentElement_GetLocalInterpolation)
+
+    def GetLocalRestriction(self, Trans, R):
+        r"""GetLocalRestriction(ND_R2D_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
+        return _fe_nd.ND_R2D_SegmentElement_GetLocalRestriction(self, Trans, R)
+    GetLocalRestriction = _swig_new_instance_method(_fe_nd.ND_R2D_SegmentElement_GetLocalRestriction)
+
+    def GetTransferMatrix(self, fe, Trans, I):
+        r"""GetTransferMatrix(ND_R2D_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
+        return _fe_nd.ND_R2D_SegmentElement_GetTransferMatrix(self, fe, Trans, I)
+    GetTransferMatrix = _swig_new_instance_method(_fe_nd.ND_R2D_SegmentElement_GetTransferMatrix)
+
+    def Project(self, *args):
+        r"""
+        Project(ND_R2D_SegmentElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(ND_R2D_SegmentElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(ND_R2D_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
+        Project(ND_R2D_SegmentElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
+        """
+        return _fe_nd.ND_R2D_SegmentElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe_nd.ND_R2D_SegmentElement_Project)
+    __swig_destroy__ = _fe_nd.delete_ND_R2D_SegmentElement
+
+# Register ND_R2D_SegmentElement in _fe_nd:
+_fe_nd.ND_R2D_SegmentElement_swigregister(ND_R2D_SegmentElement)
+
+class ND_R2D_FiniteElement(mfem._ser.fe_base.VectorFiniteElement):
+    r"""Proxy of C++ mfem::ND_R2D_FiniteElement class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+
+    def CalcVShape(self, *args):
+        r"""
+        CalcVShape(ND_R2D_FiniteElement self, IntegrationPoint ip, DenseMatrix shape)
+        CalcVShape(ND_R2D_FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
+        CalcVShape(ND_R2D_FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
+        """
+        return _fe_nd.ND_R2D_FiniteElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe_nd.ND_R2D_FiniteElement_CalcVShape)
+
+    def CalcPhysCurlShape(self, *args):
+        r"""
+        CalcPhysCurlShape(ND_R2D_FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix curl_shape)
+        CalcPhysCurlShape(ND_R2D_FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix curl_shape)
+        """
+        return _fe_nd.ND_R2D_FiniteElement_CalcPhysCurlShape(self, *args)
+    CalcPhysCurlShape = _swig_new_instance_method(_fe_nd.ND_R2D_FiniteElement_CalcPhysCurlShape)
+
+    def GetLocalInterpolation(self, Trans, I):
+        r"""GetLocalInterpolation(ND_R2D_FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
+        return _fe_nd.ND_R2D_FiniteElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe_nd.ND_R2D_FiniteElement_GetLocalInterpolation)
+
+    def GetLocalRestriction(self, Trans, R):
+        r"""GetLocalRestriction(ND_R2D_FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
+        return _fe_nd.ND_R2D_FiniteElement_GetLocalRestriction(self, Trans, R)
+    GetLocalRestriction = _swig_new_instance_method(_fe_nd.ND_R2D_FiniteElement_GetLocalRestriction)
+
+    def GetTransferMatrix(self, fe, Trans, I):
+        r"""GetTransferMatrix(ND_R2D_FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
+        return _fe_nd.ND_R2D_FiniteElement_GetTransferMatrix(self, fe, Trans, I)
+    GetTransferMatrix = _swig_new_instance_method(_fe_nd.ND_R2D_FiniteElement_GetTransferMatrix)
+
+    def Project(self, *args):
+        r"""
+        Project(ND_R2D_FiniteElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(ND_R2D_FiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(ND_R2D_FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
+        Project(ND_R2D_FiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(ND_R2D_FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
+        """
+        return _fe_nd.ND_R2D_FiniteElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe_nd.ND_R2D_FiniteElement_Project)
+
+    def ProjectGrad(self, fe, Trans, grad):
+        r"""ProjectGrad(ND_R2D_FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"""
+        return _fe_nd.ND_R2D_FiniteElement_ProjectGrad(self, fe, Trans, grad)
+    ProjectGrad = _swig_new_instance_method(_fe_nd.ND_R2D_FiniteElement_ProjectGrad)
+    __swig_destroy__ = _fe_nd.delete_ND_R2D_FiniteElement
+
+# Register ND_R2D_FiniteElement in _fe_nd:
+_fe_nd.ND_R2D_FiniteElement_swigregister(ND_R2D_FiniteElement)
+
+class ND_R2D_TriangleElement(ND_R2D_FiniteElement):
+    r"""Proxy of C++ mfem::ND_R2D_TriangleElement class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        r"""__init__(ND_R2D_TriangleElement self, int const p, int const cb_type=GaussLobatto) -> ND_R2D_TriangleElement"""
+        _fe_nd.ND_R2D_TriangleElement_swiginit(self, _fe_nd.new_ND_R2D_TriangleElement(*args, **kwargs))
+
+    def CalcPhysCurlShape(self, Trans, curl_shape):
+        r"""CalcPhysCurlShape(ND_R2D_TriangleElement self, mfem::ElementTransformation & Trans, DenseMatrix curl_shape)"""
+        return _fe_nd.ND_R2D_TriangleElement_CalcPhysCurlShape(self, Trans, curl_shape)
+    CalcPhysCurlShape = _swig_new_instance_method(_fe_nd.ND_R2D_TriangleElement_CalcPhysCurlShape)
+
+    def CalcVShape(self, *args):
+        r"""
+        CalcVShape(ND_R2D_TriangleElement self, IntegrationPoint ip, DenseMatrix shape)
+        CalcVShape(ND_R2D_TriangleElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
+        CalcVShape(ND_R2D_TriangleElement self, IntegrationPoint ip, DenseMatrix shape)
+        """
+        return _fe_nd.ND_R2D_TriangleElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe_nd.ND_R2D_TriangleElement_CalcVShape)
+
+    def CalcCurlShape(self, ip, curl_shape):
+        r"""CalcCurlShape(ND_R2D_TriangleElement self, IntegrationPoint ip, DenseMatrix curl_shape)"""
+        return _fe_nd.ND_R2D_TriangleElement_CalcCurlShape(self, ip, curl_shape)
+    CalcCurlShape = _swig_new_instance_method(_fe_nd.ND_R2D_TriangleElement_CalcCurlShape)
+    __swig_destroy__ = _fe_nd.delete_ND_R2D_TriangleElement
+
+# Register ND_R2D_TriangleElement in _fe_nd:
+_fe_nd.ND_R2D_TriangleElement_swigregister(ND_R2D_TriangleElement)
+
+class ND_R2D_QuadrilateralElement(ND_R2D_FiniteElement):
+    r"""Proxy of C++ mfem::ND_R2D_QuadrilateralElement class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        r"""__init__(ND_R2D_QuadrilateralElement self, int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> ND_R2D_QuadrilateralElement"""
+        _fe_nd.ND_R2D_QuadrilateralElement_swiginit(self, _fe_nd.new_ND_R2D_QuadrilateralElement(*args, **kwargs))
+
+    def CalcPhysCurlShape(self, Trans, curl_shape):
+        r"""CalcPhysCurlShape(ND_R2D_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix curl_shape)"""
+        return _fe_nd.ND_R2D_QuadrilateralElement_CalcPhysCurlShape(self, Trans, curl_shape)
+    CalcPhysCurlShape = _swig_new_instance_method(_fe_nd.ND_R2D_QuadrilateralElement_CalcPhysCurlShape)
+
+    def CalcVShape(self, *args):
+        r"""
+        CalcVShape(ND_R2D_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix shape)
+        CalcVShape(ND_R2D_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
+        CalcVShape(ND_R2D_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix shape)
+        """
+        return _fe_nd.ND_R2D_QuadrilateralElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe_nd.ND_R2D_QuadrilateralElement_CalcVShape)
+
+    def CalcCurlShape(self, ip, curl_shape):
+        r"""CalcCurlShape(ND_R2D_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix curl_shape)"""
+        return _fe_nd.ND_R2D_QuadrilateralElement_CalcCurlShape(self, ip, curl_shape)
+    CalcCurlShape = _swig_new_instance_method(_fe_nd.ND_R2D_QuadrilateralElement_CalcCurlShape)
+    __swig_destroy__ = _fe_nd.delete_ND_R2D_QuadrilateralElement
+
+# Register ND_R2D_QuadrilateralElement in _fe_nd:
+_fe_nd.ND_R2D_QuadrilateralElement_swigregister(ND_R2D_QuadrilateralElement)
+
 
 
