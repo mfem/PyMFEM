@@ -92,7 +92,7 @@ def letterbox_entry(legend):
 train = True
 restore_policy = False
 eval  = True
-nbatches = 200
+nbatches = 250
 minimum_budget_problem = False
 save_figs = True
 
@@ -112,7 +112,7 @@ if not minimum_budget_problem:
     prob_config['optimization_type'] = 'dof_threshold'
     prob_config['dof_threshold']     = 5e4
 
-# Neural network configuration
+## Neural network configuration
 model_config = {
     "fcnet_hiddens"    : [128, 128],
     "fcnet_activation" : "swish",
@@ -152,8 +152,8 @@ rl_config = {
 """
 
 homepath = os.path.expanduser("~")
-log_dir = os.getcwd() + '/../logs/'
-output_dir_ = os.getcwd() + '/../output/'
+log_dir = os.getcwd() + '/logs/'
+output_dir_ = os.getcwd() + '/output/'
 
 
 if (restore_policy):
@@ -173,24 +173,28 @@ else:
 ray.shutdown()
 ray.init(ignore_reinit_error=True)
 register_env("my_env", lambda config : Poisson(**prob_config))
-agent = ppo.PPOTrainer(env="my_env", config=config, 
+trainer = ppo.PPOTrainer(env="my_env", config=config, 
                        logger_creator=custom_log_creator(checkpoint_dir))
+
+## Print neural network info
+# policy = trainer.get_policy()
+# policy.model.base_model.summary()
 
 env = Poisson(**prob_config)
 
 if (restore_policy):
-    agent.restore(chkpt_file)
+    trainer.restore(chkpt_file)
 
 if train:
     env.trainingmode = True
     for n in range(nbatches):
         print("training batch %d of %d batches" % (n+1,nbatches))
-        result = agent.train()
+        result = trainer.train()
         episode_score = -result["episode_reward_mean"]
         episode_length = result["episode_len_mean"]
         print ("Mean episode cost:   %.3f" % episode_score)
         print ("Mean episode length: %.3f" % episode_length)
-        checkpoint_path = agent.save(checkpoint_dir)
+        checkpoint_path = trainer.save(checkpoint_dir)
         print(checkpoint_path)
 if eval and not train:
     temp_path = 'Example1a_2022-01-10_16-24-49'
@@ -212,7 +216,7 @@ if (not eval):
 
 
 ## Enact trained policy
-agent.restore(checkpoint_path)
+trainer.restore(checkpoint_path)
 rlactions = []
 obs = env.reset()
 done = False
@@ -221,8 +225,8 @@ rlerrors = [env.global_error]
 rldofs = [env.sum_of_dofs]
 env.trainingmode = False
 while not done:
-    action = agent.compute_single_action(obs,explore=False)
-    # action = agent.compute_single_action(obs,explore=True)
+    action = trainer.compute_single_action(obs,explore=False)
+    # action = trainer.compute_single_action(obs,explore=True)
     obs, reward, done, info = env.step(action)
     if not minimum_budget_problem and done:
        break
