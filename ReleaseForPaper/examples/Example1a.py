@@ -103,14 +103,14 @@ prob_config = {
     'num_unif_ref'      : 1,
     'order'             : 2,
     'optimization_type' : 'error_threshold', 
-    'dof_threshold'     : 1e5,
+    'dof_threshold'     : 5e5,
     'error_threshold'   : 1e-3,
 }
 
 ## Change to minimum error problem
 if not minimum_budget_problem:
     prob_config['optimization_type'] = 'dof_threshold'
-    prob_config['dof_threshold']     = 5e4
+    prob_config['dof_threshold']     = 1e4
 
 ## Neural network configuration
 model_config = {
@@ -123,7 +123,7 @@ config = ppo.DEFAULT_CONFIG.copy()
 # config['batch_mode'] = 'truncate_episodes'
 config['batch_mode'] = 'complete_episodes'
 config['sgd_minibatch_size'] = 100
-config['rollout_fragment_length'] = 40
+config['rollout_fragment_length'] = 50
 config['num_workers'] = 6
 config['train_batch_size'] = config['rollout_fragment_length'] * config['num_workers']
 config['num_gpus'] = 0

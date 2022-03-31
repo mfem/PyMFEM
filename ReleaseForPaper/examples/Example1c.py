@@ -73,6 +73,12 @@ if not minimum_budget_problem:
     prob_config['optimization_type'] = 'dof_threshold'
     prob_config['dof_threshold']     = 1e4
 
+# Neural network configuration
+model_config = {
+    "fcnet_hiddens"    : [128, 128],
+    "fcnet_activation" : "swish",
+}
+
 ## rllib parameters
 config = ppo.DEFAULT_CONFIG.copy()
 # config['batch_mode'] = 'truncate_episodes'
@@ -85,6 +91,7 @@ config['num_gpus'] = 0
 config['gamma'] = 1.0
 config['lr'] = 1e-4
 config['seed'] = 4000
+config['model'] = model_config
 
 """
     STEP 2: Training
