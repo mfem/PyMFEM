@@ -104,7 +104,7 @@ prob_config = {
     'order'             : 2,
     'optimization_type' : 'error_threshold', 
     'dof_threshold'     : 5e5,
-    'error_threshold'   : 1e-3,
+    'error_threshold'   : 1e-4, # previously 1e-3
 }
 
 ## Change to minimum error problem
