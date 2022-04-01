@@ -284,14 +284,16 @@ df = pd.read_csv(csv_path)
 cost = -df.episode_reward_mean.to_numpy()
 
 plt.figure(figsize=(6,6))
-plt.plot(cost, color=palette_list[4], lw=2, label=r'Training curve')
+plt.plot(cost[:-1], color=palette_list[4], lw=2, label=r'Training curve')
 ax1 = plt.gca()
 ax1.set_xlabel("Epoch")
 if minimum_budget_problem:
-    ax1.set_ylabel(r'$\log_2(N_{\rm{dofs}})$')
+    # ax1.set_ylabel(r'$\log_2(N_{\rm{dofs}})$')
+    ax1.set_ylabel(r'mean episode cost')
 else:
-    ax1.set_ylabel(r'$\log_2(E_{\rm{Final}})$')
-ax1.legend()
+    # ax1.set_ylabel(r'$\log_2(E_{\rm{Final}})$')
+    ax1.set_ylabel(r'mean episode cost')
+# ax1.legend()
 plt.savefig('{}/Example1a_fig1.pdf'.format(output_dir),format='pdf', bbox_inches='tight')
 
 ## Make letter-box plot
@@ -305,9 +307,11 @@ plt.fill_between(x2, np.floor(y2[0]), rlepisode_cost, hatch='\\\\\\\\', facecolo
 
 ax2.set_xlabel(r'')
 if minimum_budget_problem:
-    ax2.set_ylabel(r'$\log_2(N_{\rm{dofs}})$')
+    # ax2.set_ylabel(r'$\log_2(N_{\rm{dofs}})$')
+    ax2.set_ylabel(r'cost at final step')
 else:
-    ax2.set_ylabel(r'$\log_2(E_{\rm{Final}})$')
+    # ax2.set_ylabel(r'$\log_2(E_{\rm{Final}})$')
+    ax2.set_ylabel(r'cost at final step')
 lgd = ax2.legend()
 letterbox_entry(lgd)
 sns.despine(ax=ax2, bottom=True)
@@ -328,9 +332,11 @@ plt.fill_between(x3, np.floor(y3[0]), rlepisode_cost, hatch='\\\\\\\\', facecolo
 
 ax3.set_xlabel(r'$\theta$ (constant) in AMR policy')
 if minimum_budget_problem:
-    ax3.set_ylabel(r'$\log_2(N_{\rm{dofs}})$')
+    # ax3.set_ylabel(r'$\log_2(N_{\rm{dofs}})$')
+    ax3.set_ylabel(r'cost at final step')
 else:
-    ax3.set_ylabel(r'$\log_2(E_{\rm{Final}})$')
+    # ax3.set_ylabel(r'$\log_2(E_{\rm{Final}})$')
+    ax3.set_ylabel(r'cost at final step')
 ax3.legend(loc='upper center')
 plt.tight_layout()
 plt.savefig(output_dir+'/Example1a_fig3.pdf',format='pdf', bbox_inches='tight')
