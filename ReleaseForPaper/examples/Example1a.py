@@ -89,8 +89,8 @@ def letterbox_entry(legend):
     STEP 1: Set parameters
 """
 
-train = False
-restore_policy = True
+train = True
+restore_policy = False
 eval  = True
 nbatches = 250
 minimum_budget_problem = False
