@@ -92,7 +92,10 @@ class Poisson(gym.Env):
             self.errors = self.GetLocalErrors()
             num_dofs = self.fespace.GetTrueVSize()
             self.global_error = GlobalError(self.errors)
-            cost = np.log2(1.0 + num_dofs/self.sum_of_dofs)
+            if self.k == 1:
+                cost = np.log2(self.sum_of_dofs + num_dofs)
+            else:
+                cost = np.log2(1.0 + num_dofs/self.sum_of_dofs)
             self.sum_of_dofs += num_dofs
             if self.global_error < self.error_threshold:
                 done = True
@@ -112,7 +115,10 @@ class Poisson(gym.Env):
                 self.AssembleAndSolve()
                 self.errors = self.GetLocalErrors()
                 global_error = GlobalError(self.errors)
-                cost = np.log2(global_error/self.global_error)
+                if self.k == 1:
+                    cost = np.log2(global_error)
+                else:
+                    cost = np.log2(global_error/self.global_error)
                 self.global_error = global_error
                 done = False
         else:
