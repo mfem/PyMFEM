@@ -17,17 +17,18 @@ import seaborn as sns
 
 from ray.tune.logger import UnifiedLogger
 from datetime import datetime
+import json 
 
 def print_config(dir, prob_config = None, rl_config = None):
     if (prob_config is not None):
-        with open(dir+"/prob_config.txt", 'w') as f: 
-            for key, value in prob_config.items(): 
-                f.write('%s:%s\n' % (key, value))
+        with open(dir+"/prob_config.json", 'w') as f: 
+            json.dump(prob_config,f)
+            # for key, value in prob_config.items(): 
+                # f.write('%s:%s\n' % (key, value))
 
     if (rl_config is not None):
-        with open(dir+"/rl_config.txt", 'w') as f: 
-            for key, value in rl_config.items(): 
-                f.write('%s:%s\n' % (key, value))        
+        with open(dir+"/rl_config.json", 'w') as f: 
+            json.dump(prob_config,f)
 
 def mkdir_p(mypath):
     '''Creates a directory. equivalent to using mkdir -p on the command line'''
@@ -89,12 +90,28 @@ def letterbox_entry(legend):
     STEP 1: Set parameters
 """
 
-train = True
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('--train', default=True, action='store_true')
+parser.add_argument('--no-train', dest='train', action='store_false')
+parser.add_argument('--eval', default=True, action='store_true')
+parser.add_argument('--no-eval', dest='eval', action='store_false')
+parser.add_argument('--savedata', default=True, action='store_true')
+parser.add_argument('--no-savedata', dest='savedata', action='store_false')
+parser.add_argument('--plotfigs', default=True, action='store_true')
+parser.add_argument('--no-plotfigs', dest='plotfigs', action='store_false')
+parser.add_argument('--savefigs', default=True, action='store_true')
+parser.add_argument('--no-savefigs', dest='savefigs', action='store_false')
+args = parser.parse_args()
+train=args.train
+eval=args.eval
+save_data=args.savedata
+plot_figs=args.plotfigs
+save_figs=args.savefigs
+
 restore_policy = False
-eval  = True
 nbatches = 250
 minimum_budget_problem = False
-save_figs = True
 
 ## Configuration for minimum budget problem
 prob_config = {
@@ -120,8 +137,8 @@ model_config = {
 
 ## rllib parameters
 config = ppo.DEFAULT_CONFIG.copy()
-# config['batch_mode'] = 'truncate_episodes'
-config['batch_mode'] = 'complete_episodes'
+config['batch_mode'] = 'truncate_episodes'
+# config['batch_mode'] = 'complete_episodes'
 config['sgd_minibatch_size'] = 100
 config['rollout_fragment_length'] = 50
 config['num_workers'] = 6
@@ -157,9 +174,9 @@ output_dir_ = os.getcwd() + '/output/'
 
 
 if (restore_policy):
-    chkpt_num=250
+    chkpt_num=100
     # set the path of the checkpoint
-    temp_path = 'Example1a_2022-03-30_11-35-56'
+    temp_path = 'Example1a_2022-04-13_12-29-02'
     checkpoint_dir = log_dir + temp_path
     chkpt_file=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num)
     output_dir = output_dir_ + temp_path
@@ -175,10 +192,6 @@ ray.init(ignore_reinit_error=True)
 register_env("my_env", lambda config : Poisson(**prob_config))
 trainer = ppo.PPOTrainer(env="my_env", config=config, 
                        logger_creator=custom_log_creator(checkpoint_dir))
-
-## Print neural network info
-# policy = trainer.get_policy()
-# policy.model.base_model.summary()
 
 env = Poisson(**prob_config)
 
@@ -197,8 +210,8 @@ if train:
         checkpoint_path = trainer.save(checkpoint_dir)
         print(checkpoint_path)
 if eval and not train:
-    temp_path = 'Example1a_2022-03-30_11-35-56'
-    chkpt_num=250
+    temp_path = 'Example1a_2022-04-13_12-29-02'
+    chkpt_num=100
     checkpoint_dir = log_dir + temp_path
     checkpoint_path=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num)
     output_dir = output_dir_ + temp_path
@@ -230,7 +243,7 @@ while not done:
     obs, reward, done, info = env.step(action)
     if not minimum_budget_problem and done:
        break
-    rlactions.append(action)
+    rlactions.append(action[0])
     rlepisode_cost -= reward
     print("step = ", env.k)
     print("action = ", action.item())
@@ -267,122 +280,158 @@ for i in range(1, nth):
     errors.append(errors_tmp)
     dofs.append(dofs_tmp)
     print('episode cost = ', episode_cost_tmp)
-    
+
 
 """
-    STEP 4: Plots
+    STEP 4: Save Data
 """
 
-mkdir_p(output_dir)
-print_config(output_dir,prob_config=prob_config, rl_config=rl_config)
-
-## Plot training curve
-root_path, _ = os.path.split(checkpoint_path)
-root_path, _ = os.path.split(root_path)
-csv_path = root_path + '/progress.csv'
-df = pd.read_csv(csv_path)
-cost = -df.episode_reward_mean.to_numpy()
-
-plt.figure(figsize=(6,6))
-plt.plot(cost[:-1], color=palette_list[4], lw=2, label=r'Training curve')
-ax1 = plt.gca()
-ax1.set_xlabel("Epoch")
-if minimum_budget_problem:
-    # ax1.set_ylabel(r'$\log_2(N_{\rm{dofs}})$')
-    ax1.set_ylabel(r'mean episode cost')
-else:
-    # ax1.set_ylabel(r'$\log_2(E_{\rm{Final}})$')
-    ax1.set_ylabel(r'mean episode cost')
-# ax1.legend()
-plt.savefig('{}/Example1a_fig1.pdf'.format(output_dir),format='pdf', bbox_inches='tight')
-
-## Make letter-box plot
-plt.figure(figsize=(6,6))
-ax2 = sns.boxenplot(y=costs, width=.6, color=palette_list[3], label='_nolegend_')
-x2 = ax2.get_xlim()
-plt.hlines(rlepisode_cost, x2[0], x2[1], lw=4, color=palette_list[0], label=r'(AM)$^2$R policy cost')
-y2 = ax2.get_ylim()
-# plt.fill_between(x2, np.floor(y2[0]), rlepisode_cost, color=palette_list[9], label=r'Apparent performance barrier')
-plt.fill_between(x2, np.floor(y2[0]), rlepisode_cost, hatch='\\\\\\\\', facecolor=palette_list[9], label=r'Apparent performance barrier')
-
-ax2.set_xlabel(r'')
-if minimum_budget_problem:
-    # ax2.set_ylabel(r'$\log_2(N_{\rm{dofs}})$')
-    ax2.set_ylabel(r'cost at final step')
-else:
-    # ax2.set_ylabel(r'$\log_2(E_{\rm{Final}})$')
-    ax2.set_ylabel(r'cost at final step')
-lgd = ax2.legend()
-letterbox_entry(lgd)
-sns.despine(ax=ax2, bottom=True)
-ax2.tick_params(bottom=False)
-plt.tight_layout()
-plt.savefig(output_dir+'/Example1a_fig2.pdf',format='pdf', bbox_inches='tight')
-
-## Plot theta vs. cost
-plt.figure(figsize=(6,6))
-ax3 = plt.gca()
-plt.plot(actions[9::10], costs[9::10], 'o', color=palette_list[3], label=r'AMR policies')
-x3 = ax3.get_xlim()
-plt.hlines(rlepisode_cost, x3[0], x3[1], lw=4, color=palette_list[0], label=r'(AM)$^2$R policy')
-y3 = ax3.get_ylim()
-# plt.fill_between(x3, np.floor(y3[0]), rlepisode_cost, color=palette_list[9], label=r'Apparent performance barrier')
-plt.fill_between(x3, np.floor(y3[0]), rlepisode_cost, hatch='\\\\\\\\', facecolor=palette_list[9], label=r'Apparent performance barrier')
+if (save_data or save_figs):
+    mkdir_p(output_dir)
+    print_config(output_dir,prob_config=prob_config, rl_config=rl_config)
 
 
-ax3.set_xlabel(r'$\theta$ (constant) in AMR policy')
-if minimum_budget_problem:
-    # ax3.set_ylabel(r'$\log_2(N_{\rm{dofs}})$')
-    ax3.set_ylabel(r'cost at final step')
-else:
-    # ax3.set_ylabel(r'$\log_2(E_{\rm{Final}})$')
-    ax3.set_ylabel(r'cost at final step')
-ax3.legend(loc='upper center')
-plt.tight_layout()
-plt.savefig(output_dir+'/Example1a_fig3.pdf',format='pdf', bbox_inches='tight')
+if save_data:
+    import json
+    print("Saving data to ", output_dir)
+    root_path, _ = os.path.split(checkpoint_path)
+    root_path, _ = os.path.split(root_path)
+    csv_path = root_path + '/progress.csv'
+    df = pd.read_csv(csv_path)
+    cost = -df.episode_reward_mean.to_numpy()
+    rl_actions = rlactions
+    rl_actions.append(rlepisode_cost)
+    df1 = pd.DataFrame({'cost':cost})
+    df2 = pd.DataFrame({'rlactions':rl_actions,'rldofs':rldofs,'rlerrors':rlerrors})
+    df3 = pd.DataFrame({'actions':actions,'costs':costs,'errors':errors,'dofs':dofs})
+    filename = output_dir+"/training_data.csv"
+    print("Saving training data to: ", filename)    
+    df1.to_csv(filename, index=False)
+    print("Saving RL deployed policy data to: ", filename)    
+    filename = output_dir+"/rl_data.csv"
+    df2.to_csv(filename, index=False)
+    print("Saving deterministic AMR policies data to: ", filename)    
+    filename = output_dir+"/deterministic_amr_data.csv"
+    df3.to_csv(filename, index=False)
 
-## Make convergence plots (1/2)
-plt.figure(figsize=(6,6))
-ax4 = plt.gca()
-alpha = 1.0
-plt.loglog(dofs[9],errors[9],'-o',lw=1.3, color=palette_list[3], alpha=alpha, label=r'AMR policies')
-# plt.loglog(dofs[9][-1],errors[9][-1], marker="o", markersize=10, color=palette_list[3], label='_nolegend_')
-for k in range(19,len(errors),10):
-    plt.loglog(dofs[k],errors[k],'-o',lw=1.3, color=palette_list[3], label='_nolegend_')
-    # plt.loglog(dofs[k][-1],errors[k][-1], marker="o", markersize=10, color=palette_list[3], alpha=alpha, label='_nolegend_')
-plt.loglog(rldofs,rlerrors,'-o',lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
-# plt.loglog(rldofs[-1],rlerrors[-1], marker="o", markersize=10, color=palette_list[0], label='_nolegend_')
-ax4.set_xlabel(r'Degrees of freedom')
-ax4.set_ylabel(r'Relative error')
-ax4.legend()
-plt.savefig(output_dir+'/Example1a_fig4.pdf',format='pdf', bbox_inches='tight')
+"""
+    STEP 5: Plots
+"""
+if plot_figs or save_figs:
 
-## Make convergence plots (2/2)
-cumdofs = []
-cumrldofs = np.cumsum(rldofs)
-for k in range(len(dofs)):
-    cumdofs.append(np.cumsum(dofs[k]))
-plt.figure(figsize=(6,6))
-ax5 = plt.gca()
-plt.loglog(cumdofs[9],errors[9],'-o',lw=1.3, color=palette_list[3], alpha=alpha, label=r'AMR policies')
-# plt.loglog(cumdofs[9][-1],errors[9][-1], marker="o", markersize=10, color=palette_list[3], label='_nolegend_')
-for k in range(19,len(errors),10):
-    plt.loglog(cumdofs[k],errors[k],'-o',lw=1.3, color=palette_list[3], label='_nolegend_')
-    # plt.loglog(cumdofs[k][-1],errors[k][-1], marker="o", markersize=10, color=palette_list[3], alpha=alpha, label='_nolegend_')
-plt.loglog(cumrldofs,rlerrors,'-o',lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
-# plt.loglog(cumrldofs[-1],rlerrors[-1], marker="o", markersize=10, color=palette_list[0], label='_nolegend_')
-ax5.set_xlabel(r'Cumulative degrees of freedom')
-ax5.set_ylabel(r'Relative error')
-ax5.legend()
-plt.savefig(output_dir+'/Example1a_fig5.pdf',format='pdf', bbox_inches='tight')
+    ## Plot training curve
+    root_path, _ = os.path.split(checkpoint_path)
+    root_path, _ = os.path.split(root_path)
+    csv_path = root_path + '/progress.csv'
+    df = pd.read_csv(csv_path)
+    cost = -df.episode_reward_mean.to_numpy()
 
-## Plot action vs. refinement step
-plt.figure(figsize=(6,6))
-ax6 = plt.gca()
-plt.plot(rlactions,'-o',lw=1.3, label=r'(AM)$^2$R policy')
-ax6.set_xlabel(r'Refinement step')
-ax6.set_ylabel(r'$\theta$ in trained (AM)$^2$R policy')
-plt.savefig(output_dir+'/Example1a_fig6.pdf',format='pdf', bbox_inches='tight')
+    plt.figure(figsize=(6,6))
+    plt.plot(cost[:-1], color=palette_list[4], lw=2, label=r'Training curve')
+    ax1 = plt.gca()
+    ax1.set_xlabel("Epoch")
+    if minimum_budget_problem:
+        # ax1.set_ylabel(r'$\log_2(N_{\rm{dofs}})$')
+        ax1.set_ylabel(r'mean episode cost')
+    else:
+        # ax1.set_ylabel(r'$\log_2(E_{\rm{Final}})$')
+        ax1.set_ylabel(r'mean episode cost')
+    # ax1.legend()
+    if save_figs:
+        plt.savefig('{}/Example1a_training-curve.pdf'.format(output_dir),format='pdf', bbox_inches='tight')
+
+    ## Make letter-box plot
+    plt.figure(figsize=(6,6))
+    ax2 = sns.boxenplot(y=costs, width=.6, color=palette_list[3], label='_nolegend_')
+    x2 = ax2.get_xlim()
+    plt.hlines(rlepisode_cost, x2[0], x2[1], lw=4, color=palette_list[0], label=r'(AM)$^2$R policy cost')
+    y2 = ax2.get_ylim()
+    # plt.fill_between(x2, np.floor(y2[0]), rlepisode_cost, color=palette_list[9], label=r'Apparent performance barrier')
+    plt.fill_between(x2, np.floor(y2[0]), rlepisode_cost, hatch='\\\\\\\\', facecolor=palette_list[9], label=r'Apparent performance barrier')
+
+    ax2.set_xlabel(r'')
+    if minimum_budget_problem:
+        # ax2.set_ylabel(r'$\log_2(N_{\rm{dofs}})$')
+        ax2.set_ylabel(r'cost at final step')
+    else:
+        # ax2.set_ylabel(r'$\log_2(E_{\rm{Final}})$')
+        ax2.set_ylabel(r'cost at final step')
+    lgd = ax2.legend()
+    letterbox_entry(lgd)
+    sns.despine(ax=ax2, bottom=True)
+    ax2.tick_params(bottom=False)
+    plt.tight_layout()
+    if save_figs:
+        plt.savefig(output_dir+'/Example1a_rlepisode_cost.pdf',format='pdf', bbox_inches='tight')
+
+    ## Plot theta vs. cost
+    plt.figure(figsize=(6,6))
+    ax3 = plt.gca()
+    plt.plot(actions[9::10], costs[9::10], 'o', color=palette_list[3], label=r'AMR policies')
+    x3 = ax3.get_xlim()
+    plt.hlines(rlepisode_cost, x3[0], x3[1], lw=4, color=palette_list[0], label=r'(AM)$^2$R policy')
+    y3 = ax3.get_ylim()
+    # plt.fill_between(x3, np.floor(y3[0]), rlepisode_cost, color=palette_list[9], label=r'Apparent performance barrier')
+    plt.fill_between(x3, np.floor(y3[0]), rlepisode_cost, hatch='\\\\\\\\', facecolor=palette_list[9], label=r'Apparent performance barrier')
 
 
-plt.show()
+    ax3.set_xlabel(r'$\theta$ (constant) in AMR policy')
+    if minimum_budget_problem:
+        # ax3.set_ylabel(r'$\log_2(N_{\rm{dofs}})$')
+        ax3.set_ylabel(r'cost at final step')
+    else:
+        # ax3.set_ylabel(r'$\log_2(E_{\rm{Final}})$')
+        ax3.set_ylabel(r'cost at final step')
+    ax3.legend(loc='upper center')
+    plt.tight_layout()
+
+    if save_figs:
+        plt.savefig(output_dir+'/Example1a_fig3.pdf',format='pdf', bbox_inches='tight')
+
+    ## Make convergence plots (1/2)
+    plt.figure(figsize=(6,6))
+    ax4 = plt.gca()
+    alpha = 1.0
+    plt.loglog(dofs[9],errors[9],'-o',lw=1.3, color=palette_list[3], alpha=alpha, label=r'AMR policies')
+    # plt.loglog(dofs[9][-1],errors[9][-1], marker="o", markersize=10, color=palette_list[3], label='_nolegend_')
+    for k in range(19,len(errors),10):
+        plt.loglog(dofs[k],errors[k],'-o',lw=1.3, color=palette_list[3], label='_nolegend_')
+        # plt.loglog(dofs[k][-1],errors[k][-1], marker="o", markersize=10, color=palette_list[3], alpha=alpha, label='_nolegend_')
+    plt.loglog(rldofs,rlerrors,'-o',lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
+    # plt.loglog(rldofs[-1],rlerrors[-1], marker="o", markersize=10, color=palette_list[0], label='_nolegend_')
+    ax4.set_xlabel(r'Degrees of freedom')
+    ax4.set_ylabel(r'Relative error')
+    ax4.legend()
+    if save_figs:
+        plt.savefig(output_dir+'/Example1a_fig4.pdf',format='pdf', bbox_inches='tight')
+
+    ## Make convergence plots (2/2)
+    cumdofs = []
+    cumrldofs = np.cumsum(rldofs)
+    for k in range(len(dofs)):
+        cumdofs.append(np.cumsum(dofs[k]))
+    plt.figure(figsize=(6,6))
+    ax5 = plt.gca()
+    plt.loglog(cumdofs[9],errors[9],'-o',lw=1.3, color=palette_list[3], alpha=alpha, label=r'AMR policies')
+    # plt.loglog(cumdofs[9][-1],errors[9][-1], marker="o", markersize=10, color=palette_list[3], label='_nolegend_')
+    for k in range(19,len(errors),10):
+        plt.loglog(cumdofs[k],errors[k],'-o',lw=1.3, color=palette_list[3], label='_nolegend_')
+        # plt.loglog(cumdofs[k][-1],errors[k][-1], marker="o", markersize=10, color=palette_list[3], alpha=alpha, label='_nolegend_')
+    plt.loglog(cumrldofs,rlerrors,'-o',lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
+    # plt.loglog(cumrldofs[-1],rlerrors[-1], marker="o", markersize=10, color=palette_list[0], label='_nolegend_')
+    ax5.set_xlabel(r'Cumulative degrees of freedom')
+    ax5.set_ylabel(r'Relative error')
+    ax5.legend()
+    if save_figs:
+        plt.savefig(output_dir+'/Example1a_fig5.pdf',format='pdf', bbox_inches='tight')
+
+    ## Plot action vs. refinement step
+    plt.figure(figsize=(6,6))
+    ax6 = plt.gca()
+    plt.plot(rlactions,'-o',lw=1.3, label=r'(AM)$^2$R policy')
+    ax6.set_xlabel(r'Refinement step')
+    ax6.set_ylabel(r'$\theta$ in trained (AM)$^2$R policy')
+    if save_figs:
+        plt.savefig(output_dir+'/Example1a_fig6.pdf',format='pdf', bbox_inches='tight')
+
+    plt.show()
