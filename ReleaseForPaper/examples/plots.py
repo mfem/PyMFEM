@@ -53,8 +53,8 @@ def letterbox_entry(legend):
     legend.set_title(legend.get_title().get_text())
 
 
-save_figs = False
-minimum_budget_problem = False
+save_figs = True
+# minimum_budget_problem = False
 
 train_data_file = output_dir+'/training_data.csv'
 rldata_file = output_dir+'/rl_data.csv'
