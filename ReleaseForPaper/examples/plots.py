@@ -17,6 +17,27 @@ assert p.file_path.exists() , "The given directory doesn't exist"
 
 output_dir = str(p.file_path)
 
+if   output_dir.find('Example1a') != -1:
+   print("Loading data from ", output_dir)
+   fig_name_prefix = 'Example1a'
+   ex_type = 1
+elif output_dir.find('Example1b') != -1:
+   print("Loading data from ", output_dir)
+   fig_name_prefix = 'Example1b'
+   ex_type = 2
+elif output_dir.find('Example1c') != -1:
+   print("Loading data from ", output_dir)
+   fig_name_prefix = 'Example1c'
+   ex_type = 3
+elif output_dir.find('Example2c') != -1:
+   print("Loading data from ", output_dir)
+   fig_name_prefix = 'Example2c'
+   ex_type = 4
+else:
+   print("Provided output directory: ", output_dir)
+   print("*** Error: output directory path not a recognized format, quitting.")
+   exit()
+
 with open(output_dir+'/prob_config.json') as f:
    prob_config = json.load(f)
 
@@ -57,12 +78,14 @@ save_figs = True
 # minimum_budget_problem = False
 
 train_data_file = output_dir+'/training_data.csv'
-rldata_file = output_dir+'/rl_data.csv'
-deterministic_amr_data_file = output_dir+'/deterministic_amr_data.csv'
+# rldata_file = output_dir+'/rl_data.csv'
+# deterministic_amr_data_file = output_dir+'/deterministic_amr_data.csv'
+rldata_file = output_dir+'/rl_data_ood.csv'
+deterministic_amr_data_file = output_dir+'/deterministic_amr_data_ood.csv'
+
 
 df = pd.read_csv(train_data_file, index_col=0)
 cost = df.index.to_numpy()
-
 
 df = pd.read_csv(rldata_file, index_col=0)
 rlactions = df.index.to_numpy()
@@ -71,15 +94,12 @@ rlactions = rlactions[:-1]
 rldofs = df.iloc[:, 0].to_numpy()
 rlerrors = df.iloc[:, 1].to_numpy()
 
-
-
 df = pd.read_csv(deterministic_amr_data_file, index_col=0)
 
 actions = df.index.to_numpy()
 costs = df.iloc[:, 0].to_numpy()
 errors = df.iloc[:, 1].to_numpy()
 dofs = df.iloc[:, 2].to_numpy()
-
 
 for i in range(len(dofs)):
    dofs[i] = np.array(eval(dofs[i]))
@@ -97,7 +117,7 @@ else:
    ax1.set_ylabel(r'mean episode cost')
 # ax1.legend()
 if save_figs:
-   plt.savefig('{}/Example1a_training-curve.pdf'.format(output_dir),format='pdf', bbox_inches='tight')
+   plt.savefig(output_dir+'/'+fig_name_prefix+'_training-curve.pdf',format='pdf', bbox_inches='tight')
 
 # ## Make letter-box plot
 plt.figure(figsize=(6,6))
@@ -121,7 +141,7 @@ sns.despine(ax=ax2, bottom=True)
 ax2.tick_params(bottom=False)
 plt.tight_layout()
 if save_figs:
-   plt.savefig(output_dir+'/Example1a_rlepisode_cost.pdf',format='pdf', bbox_inches='tight')
+   plt.savefig(output_dir+'/'+fig_name_prefix+'_rlepisode_cost.pdf',format='pdf', bbox_inches='tight')
 
 ## Plot theta vs. cost
 plt.figure(figsize=(6,6))
@@ -145,7 +165,7 @@ ax3.legend(loc='upper center')
 plt.tight_layout()
 
 if save_figs:
-   plt.savefig(output_dir+'/Example1a_fig3.pdf',format='pdf', bbox_inches='tight')
+   plt.savefig(output_dir+'/'+fig_name_prefix+'_fig3.pdf',format='pdf', bbox_inches='tight')
 
 # ## Make convergence plots (1/2)
 plt.figure(figsize=(6,6))
@@ -162,7 +182,7 @@ ax4.set_xlabel(r'Degrees of freedom')
 ax4.set_ylabel(r'Relative error')
 ax4.legend()
 if save_figs:
-   plt.savefig(output_dir+'/Example1a_fig4.pdf',format='pdf', bbox_inches='tight')
+   plt.savefig(output_dir+'/'+fig_name_prefix+'_fig4.pdf',format='pdf', bbox_inches='tight')
 
 ## Make convergence plots (2/2)
 cumdofs = []
@@ -182,7 +202,7 @@ ax5.set_xlabel(r'Cumulative degrees of freedom')
 ax5.set_ylabel(r'Relative error')
 ax5.legend()
 if save_figs:
-   plt.savefig(output_dir+'/Example1a_fig5.pdf',format='pdf', bbox_inches='tight')
+   plt.savefig(output_dir+'/'+fig_name_prefix+'_fig5.pdf',format='pdf', bbox_inches='tight')
 
 ## Plot action vs. refinement step
 plt.figure(figsize=(6,6))
@@ -191,6 +211,6 @@ plt.plot(rlactions,'-o',lw=1.3, label=r'(AM)$^2$R policy')
 ax6.set_xlabel(r'Refinement step')
 ax6.set_ylabel(r'$\theta$ in trained (AM)$^2$R policy')
 if save_figs:
-   plt.savefig(output_dir+'/Example1a_fig6.pdf',format='pdf', bbox_inches='tight')
+   plt.savefig(output_dir+'/'+fig_name_prefix+'_fig6.pdf',format='pdf', bbox_inches='tight')
 
 plt.show()

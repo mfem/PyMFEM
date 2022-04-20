@@ -123,6 +123,7 @@ prob_config = {
     'optimization_type' : 'error_threshold', 
     'dof_threshold'     : 5e5,
     'error_threshold'   : 1e-4, # previously 1e-3
+    'num_batches'       : nbatches
 }
 
 ## Change to minimum error problem
@@ -164,7 +165,6 @@ rl_config = {
     'model'                     : config['model'],
 }
 
-
 """
     STEP 2: Training
 """
@@ -173,11 +173,10 @@ homepath = os.path.expanduser("~")
 log_dir = os.getcwd() + '/logs/'
 output_dir_ = os.getcwd() + '/output/'
 
-
 if (restore_policy):
-    chkpt_num=100
+    chkpt_num = nbatches
     # set the path of the checkpoint
-    temp_path = 'Example1a_2022-04-13_12-29-02'
+    temp_path = 'Example1a_2022-04-15_10-55-16'
     checkpoint_dir = log_dir + temp_path
     chkpt_file=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num)
     output_dir = output_dir_ + temp_path
@@ -193,7 +192,6 @@ ray.init(ignore_reinit_error=True)
 register_env("my_env", lambda config : Poisson(**prob_config))
 trainer = ppo.PPOTrainer(env="my_env", config=config, 
                        logger_creator=custom_log_creator(checkpoint_dir))
-
 env = Poisson(**prob_config)
 
 if (restore_policy):
@@ -211,13 +209,12 @@ if train:
         checkpoint_path = trainer.save(checkpoint_dir)
         print(checkpoint_path)
 if eval and not train:
-    temp_path = 'Example1a_2022-04-15_09-36-43'
-    chkpt_num=100
+    temp_path = 'Example1a_2022-04-15_10-55-16'
+    chkpt_num = nbatches
     checkpoint_dir = log_dir + temp_path
     # checkpoint_path=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt < 100
     checkpoint_path=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt > 99 and <1000
     output_dir = output_dir_ + temp_path
-
 
 if train:
     print_config(checkpoint_dir,prob_config=prob_config, rl_config=rl_config)
@@ -269,14 +266,14 @@ if eval:
         episode_cost_tmp = 0
         errors_tmp = [env.global_error]
         dofs_tmp = [env.sum_of_dofs]
-        max_steps   = 100
+        max_steps   = 200
         steps_taken = 0
         while not done:
             _, reward, done, info = env.step(action)
             if not minimum_budget_problem and done:
                 break
             if steps_taken > max_steps:
-                print("*** BREAKING EARLY - fixed action took too many steps!")
+                print("*** BREAKING EARLY - fixed action exceeded max step threshold of ", max_steps, "steps.")
                 break
             else:
                 steps_taken += 1
@@ -314,11 +311,11 @@ if save_data:
     filename = output_dir+"/training_data.csv"
     print("Saving training data to: ", filename)    
     df1.to_csv(filename, index=False)
-    print("Saving RL deployed policy data to: ", filename)    
     filename = output_dir+"/rl_data.csv"
+    print("Saving RL deployed policy data to: ", filename)    
     df2.to_csv(filename, index=False)
-    print("Saving deterministic AMR policies data to: ", filename)    
     filename = output_dir+"/deterministic_amr_data.csv"
+    print("Saving deterministic AMR policies data to: ", filename)    
     df3.to_csv(filename, index=False)
 
 """
