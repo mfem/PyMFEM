@@ -74,7 +74,6 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _pfespace.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _pfespace.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _pfespace.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _pfespace.MFEM_VERSION_PATCH
-MFEM_HYPRE_VERSION = _pfespace.MFEM_HYPRE_VERSION
 import mfem._par.operators
 import mfem._par.mem_manager
 import mfem._par.vector
@@ -113,6 +112,7 @@ import mfem._par.fe_coll
 import mfem._par.lininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.std_vectors
 import mfem._par.doftrans
 import mfem._par.handle
 import mfem._par.hypre
@@ -354,10 +354,13 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
         return _pfespace.ParFiniteElementSpace_GetFaceNbrVSize(self)
     GetFaceNbrVSize = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetFaceNbrVSize)
 
-    def GetFaceNbrElementVDofs(self, i, vdofs):
-        r"""GetFaceNbrElementVDofs(ParFiniteElementSpace self, int i, intArray vdofs) -> DofTransformation"""
-        return _pfespace.ParFiniteElementSpace_GetFaceNbrElementVDofs(self, i, vdofs)
-    GetFaceNbrElementVDofs = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetFaceNbrElementVDofs)
+    def GetFaceNbrElementVDofs(self, i):
+        from  .array import intArray
+        vdofs = intArray()
+        _pfespace.ParFiniteElementSpace_GetFaceNbrElementVDofs(self, i, vdofs)
+        return vdofs.ToList()
+
+
 
     def GetFaceNbrFaceVDofs(self, i, vdofs):
         r"""GetFaceNbrFaceVDofs(ParFiniteElementSpace self, int i, intArray vdofs)"""
@@ -439,6 +442,21 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
         r"""TrueVSize(ParFiniteElementSpace self) -> int"""
         return _pfespace.ParFiniteElementSpace_TrueVSize(self)
     TrueVSize = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_TrueVSize)
+
+    def GetElementDofTransformation(self, elem):
+        r"""GetElementDofTransformation(ParFiniteElementSpace self, int elem) -> DofTransformation"""
+        return _pfespace.ParFiniteElementSpace_GetElementDofTransformation(self, elem)
+    GetElementDofTransformation = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetElementDofTransformation)
+
+    def GetBdrElementDofTransformation(self, bel):
+        r"""GetBdrElementDofTransformation(ParFiniteElementSpace self, int bel) -> DofTransformation"""
+        return _pfespace.ParFiniteElementSpace_GetBdrElementDofTransformation(self, bel)
+    GetBdrElementDofTransformation = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetBdrElementDofTransformation)
+
+    def GetFaceNbrVDofTransformation(self, elem):
+        r"""GetFaceNbrVDofTransformation(ParFiniteElementSpace self, int elem) -> DofTransformation"""
+        return _pfespace.ParFiniteElementSpace_GetFaceNbrVDofTransformation(self, elem)
+    GetFaceNbrVDofTransformation = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetFaceNbrVDofTransformation)
 
 # Register ParFiniteElementSpace in _pfespace:
 _pfespace.ParFiniteElementSpace_swigregister(ParFiniteElementSpace)

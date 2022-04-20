@@ -1,10 +1,7 @@
 %module(package="mfem._par") nonlinearform
 %{
 #include <mpi.h>
-#include "fem/linearform.hpp"      
-#include "fem/nonlininteg.hpp"
-#include "fem/nonlinearform.hpp"
-#include "fem/pfespace.hpp"
+#include "mfem.hpp"      
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
 #include "../common/pycoefficient.hpp"  

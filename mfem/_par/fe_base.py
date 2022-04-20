@@ -268,6 +268,16 @@ class FiniteElement(object):
         return _fe_base.FiniteElement_GetDim(self)
     GetDim = _swig_new_instance_method(_fe_base.FiniteElement_GetDim)
 
+    def GetVDim(self):
+        r"""GetVDim(FiniteElement self) -> int"""
+        return _fe_base.FiniteElement_GetVDim(self)
+    GetVDim = _swig_new_instance_method(_fe_base.FiniteElement_GetVDim)
+
+    def GetCurlDim(self):
+        r"""GetCurlDim(FiniteElement self) -> int"""
+        return _fe_base.FiniteElement_GetCurlDim(self)
+    GetCurlDim = _swig_new_instance_method(_fe_base.FiniteElement_GetCurlDim)
+
     def GetGeomType(self):
         r"""GetGeomType(FiniteElement self) -> mfem::Geometry::Type"""
         return _fe_base.FiniteElement_GetGeomType(self)
@@ -863,6 +873,11 @@ class NodalTensorFiniteElement(NodalFiniteElement, TensorBasisElement):
         return _fe_base.NodalTensorFiniteElement_GetDofToQuad(self, ir, mode)
     GetDofToQuad = _swig_new_instance_method(_fe_base.NodalTensorFiniteElement_GetDofToQuad)
 
+    def SetMapType(self, map_type_):
+        r"""SetMapType(NodalTensorFiniteElement self, int const map_type_)"""
+        return _fe_base.NodalTensorFiniteElement_SetMapType(self, map_type_)
+    SetMapType = _swig_new_instance_method(_fe_base.NodalTensorFiniteElement_SetMapType)
+
     def GetTransferMatrix(self, fe, Trans, I):
         r"""GetTransferMatrix(NodalTensorFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe_base.NodalTensorFiniteElement_GetTransferMatrix(self, fe, Trans, I)
@@ -904,5 +919,10 @@ class VectorTensorFiniteElement(VectorFiniteElement, TensorBasisElement):
 # Register VectorTensorFiniteElement in _fe_base:
 _fe_base.VectorTensorFiniteElement_swigregister(VectorTensorFiniteElement)
 
+
+def InvertLinearTrans(trans, pt, x):
+    r"""InvertLinearTrans(mfem::ElementTransformation & trans, IntegrationPoint pt, Vector x)"""
+    return _fe_base.InvertLinearTrans(trans, pt, x)
+InvertLinearTrans = _fe_base.InvertLinearTrans
 
 

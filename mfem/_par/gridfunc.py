@@ -98,6 +98,7 @@ import mfem._par.sort_pairs
 import mfem._par.ncmesh
 import mfem._par.vtk
 import mfem._par.vertex
+import mfem._par.std_vectors
 import mfem._par.fe_coll
 import mfem._par.lininteg
 import mfem._par.doftrans
@@ -127,6 +128,11 @@ class GridFunction(mfem._par.vector.Vector):
         r"""VectorDim(GridFunction self) -> int"""
         return _gridfunc.GridFunction_VectorDim(self)
     VectorDim = _swig_new_instance_method(_gridfunc.GridFunction_VectorDim)
+
+    def CurlDim(self):
+        r"""CurlDim(GridFunction self) -> int"""
+        return _gridfunc.GridFunction_CurlDim(self)
+    CurlDim = _swig_new_instance_method(_gridfunc.GridFunction_CurlDim)
 
     def GetTrueVector(self, *args):
         r"""
@@ -722,6 +728,14 @@ class QuadratureFunction(mfem._par.vector.Vector):
         return _gridfunc.QuadratureFunction_GetElementValues(self, *args)
     GetElementValues = _swig_new_instance_method(_gridfunc.QuadratureFunction_GetElementValues)
 
+    def SaveVTU(self, *args):
+        r"""
+        SaveVTU(QuadratureFunction self, std::ostream & out, mfem::VTKFormat format=ASCII, int compression_level=0)
+        SaveVTU(QuadratureFunction self, std::string const & filename, mfem::VTKFormat format=ASCII, int compression_level=0)
+        """
+        return _gridfunc.QuadratureFunction_SaveVTU(self, *args)
+    SaveVTU = _swig_new_instance_method(_gridfunc.QuadratureFunction_SaveVTU)
+
     def Save(self, *args):
         r"""
         Save(QuadratureFunction self, std::ostream & out)
@@ -743,6 +757,7 @@ def __lshift__(*args):
     r"""
     __lshift__(std::ostream & os, SparseMatrix mat) -> std::ostream
     __lshift__(std::ostream & out, Mesh mesh) -> std::ostream
+    __lshift__(std::ostream & os, mfem::Mesh::FaceInformation const & info) -> std::ostream
     __lshift__(std::ostream & out, GridFunction sol) -> std::ostream
     __lshift__(std::ostream & out, QuadratureFunction qf) -> std::ostream &
     """

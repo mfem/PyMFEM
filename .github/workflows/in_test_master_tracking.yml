@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.6", "3.7", "3.8", "3.9", "3.10"]
+        python-version: ["3.7", "3.8", "3.9"]
         #python-version: ["3.10"]
         #os: [ubuntu-latest]
         os: [ubuntu-20.04]
@@ -65,7 +65,8 @@ jobs:
 
         pip install six numpy --verbose	
         if [ "${{matrix.python-version}}" = "3.10" ] ; then
-            pip install scipy
+            pip install numba numba-scipy --verbose
+            #pip install scipy
         else
             pip install numba numba-scipy --verbose
         fi
@@ -144,9 +145,7 @@ jobs:
         fi
         if [ "${USE_FLAGS}" = "010" ]; then
            which mpicc
-           python run_examples.py -parallel -verbose -np 2 -ex ex1p
-           python run_examples.py -parallel -verbose -np 2 -ex ex2p
-           python run_examples.py -parallel -verbose -np 2 -ex ex3p	   
+           python run_examples.py -parallel -verbose -np 2
         fi
         if [ "${USE_FLAGS}" = "100" ]; then
            python ../examples/ex1.py --pa

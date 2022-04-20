@@ -75,10 +75,10 @@ import mfem._par.densemat
 import mfem._par.operators
 import mfem._par.matrix
 import mfem._par.sparsemat
+import mfem._par.globals
 import mfem._par.fe_base
 import mfem._par.fe_fixed_order
 import mfem._par.element
-import mfem._par.globals
 import mfem._par.table
 import mfem._par.hash
 import mfem._par.fe_h1

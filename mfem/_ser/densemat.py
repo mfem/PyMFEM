@@ -77,17 +77,6 @@ class DenseMatrix(mfem._ser.matrix.Matrix):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
-        r"""
-        __init__(DenseMatrix self) -> DenseMatrix
-        __init__(DenseMatrix self, DenseMatrix arg2) -> DenseMatrix
-        __init__(DenseMatrix self, int s) -> DenseMatrix
-        __init__(DenseMatrix self, int m, int n) -> DenseMatrix
-        __init__(DenseMatrix self, DenseMatrix mat, char ch) -> DenseMatrix
-        __init__(DenseMatrix self, double * d, int h, int w) -> DenseMatrix
-        """
-        _densemat.DenseMatrix_swiginit(self, _densemat.new_DenseMatrix(*args))
-
     def UseExternalData(self, d, h, w):
         r"""UseExternalData(DenseMatrix self, double * d, int h, int w)"""
         return _densemat.DenseMatrix_UseExternalData(self, d, h, w)
@@ -573,6 +562,31 @@ class DenseMatrix(mfem._ser.matrix.Matrix):
     Swap = _swig_new_instance_method(_densemat.DenseMatrix_Swap)
     __swig_destroy__ = _densemat.delete_DenseMatrix
 
+    def __init__(self, *args):
+        r"""
+        __init__(DenseMatrix self) -> DenseMatrix
+        __init__(DenseMatrix self, DenseMatrix arg2) -> DenseMatrix
+        __init__(DenseMatrix self, int s) -> DenseMatrix
+        __init__(DenseMatrix self, int m, int n) -> DenseMatrix
+        __init__(DenseMatrix self, DenseMatrix mat, char ch) -> DenseMatrix
+        __init__(DenseMatrix self, double * d, int h, int w) -> DenseMatrix
+        __init__(DenseMatrix self, PyObject * numpymat) -> DenseMatrix
+        """
+
+        from numpy import ndarray, ascontiguousarray
+        is_ndarray = False
+        if len(args) == 1 and isinstance(args[0], ndarray):
+           is_ndarray = True
+
+
+        _densemat.DenseMatrix_swiginit(self, _densemat.new_DenseMatrix(*args))
+
+        if is_ndarray:
+           self.Assign(args[0])
+
+
+
+
     def Assign(self, *args):
         r"""
         Assign(DenseMatrix self, double const v)
@@ -924,80 +938,6 @@ class DenseMatrixInverse(mfem._ser.matrix.MatrixInverse):
 
 # Register DenseMatrixInverse in _densemat:
 _densemat.DenseMatrixInverse_swigregister(DenseMatrixInverse)
-
-class DenseMatrixEigensystem(object):
-    r"""Proxy of C++ mfem::DenseMatrixEigensystem class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self, *args):
-        r"""
-        __init__(DenseMatrixEigensystem self, DenseMatrix m) -> DenseMatrixEigensystem
-        __init__(DenseMatrixEigensystem self, DenseMatrixEigensystem other) -> DenseMatrixEigensystem
-        """
-        _densemat.DenseMatrixEigensystem_swiginit(self, _densemat.new_DenseMatrixEigensystem(*args))
-
-    def Eval(self):
-        r"""Eval(DenseMatrixEigensystem self)"""
-        return _densemat.DenseMatrixEigensystem_Eval(self)
-    Eval = _swig_new_instance_method(_densemat.DenseMatrixEigensystem_Eval)
-
-    def Eigenvalues(self):
-        r"""Eigenvalues(DenseMatrixEigensystem self) -> Vector"""
-        return _densemat.DenseMatrixEigensystem_Eigenvalues(self)
-    Eigenvalues = _swig_new_instance_method(_densemat.DenseMatrixEigensystem_Eigenvalues)
-
-    def Eigenvectors(self):
-        r"""Eigenvectors(DenseMatrixEigensystem self) -> DenseMatrix"""
-        return _densemat.DenseMatrixEigensystem_Eigenvectors(self)
-    Eigenvectors = _swig_new_instance_method(_densemat.DenseMatrixEigensystem_Eigenvectors)
-
-    def Eigenvalue(self, i):
-        r"""Eigenvalue(DenseMatrixEigensystem self, int i) -> double"""
-        return _densemat.DenseMatrixEigensystem_Eigenvalue(self, i)
-    Eigenvalue = _swig_new_instance_method(_densemat.DenseMatrixEigensystem_Eigenvalue)
-
-    def Eigenvector(self, i):
-        r"""Eigenvector(DenseMatrixEigensystem self, int i) -> Vector"""
-        return _densemat.DenseMatrixEigensystem_Eigenvector(self, i)
-    Eigenvector = _swig_new_instance_method(_densemat.DenseMatrixEigensystem_Eigenvector)
-    __swig_destroy__ = _densemat.delete_DenseMatrixEigensystem
-
-# Register DenseMatrixEigensystem in _densemat:
-_densemat.DenseMatrixEigensystem_swigregister(DenseMatrixEigensystem)
-
-class DenseMatrixSVD(object):
-    r"""Proxy of C++ mfem::DenseMatrixSVD class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self, *args):
-        r"""
-        __init__(DenseMatrixSVD self, DenseMatrix M) -> DenseMatrixSVD
-        __init__(DenseMatrixSVD self, int h, int w) -> DenseMatrixSVD
-        """
-        _densemat.DenseMatrixSVD_swiginit(self, _densemat.new_DenseMatrixSVD(*args))
-
-    def Eval(self, M):
-        r"""Eval(DenseMatrixSVD self, DenseMatrix M)"""
-        return _densemat.DenseMatrixSVD_Eval(self, M)
-    Eval = _swig_new_instance_method(_densemat.DenseMatrixSVD_Eval)
-
-    def Singularvalues(self):
-        r"""Singularvalues(DenseMatrixSVD self) -> Vector"""
-        return _densemat.DenseMatrixSVD_Singularvalues(self)
-    Singularvalues = _swig_new_instance_method(_densemat.DenseMatrixSVD_Singularvalues)
-
-    def Singularvalue(self, i):
-        r"""Singularvalue(DenseMatrixSVD self, int i) -> double"""
-        return _densemat.DenseMatrixSVD_Singularvalue(self, i)
-    Singularvalue = _swig_new_instance_method(_densemat.DenseMatrixSVD_Singularvalue)
-    __swig_destroy__ = _densemat.delete_DenseMatrixSVD
-
-# Register DenseMatrixSVD in _densemat:
-_densemat.DenseMatrixSVD_swigregister(DenseMatrixSVD)
 
 class DenseTensor(object):
     r"""Proxy of C++ mfem::DenseTensor class."""

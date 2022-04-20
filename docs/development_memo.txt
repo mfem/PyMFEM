@@ -83,11 +83,13 @@ The -x flag tells gdb to run the commands given in the specified file.
 
 $ echo "run model.py" > gdb.in
 $ mpirun -np 4 xterm -e "gdb -x gdb.in python"
+$ mpirun -np 4 xterm -e "gdb -ex 'break MPI_Abort' -x gdb.in python" (if MPI kills the process)
 
 ### debugging Valgrind (MPI)
 -sl : length of scroll back
 -hold : do not close xterm after valgrind dies
 
+$ export PYTHONMALLOC=malloc
 $ mpirun -np 2 xterm -sl 1000 -hold -e "valgrind python model.py -p"
 
 ### profiling

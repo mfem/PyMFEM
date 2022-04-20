@@ -82,8 +82,6 @@ MFEM_VERSION_MINOR = _hypre.MFEM_VERSION_MINOR
 
 MFEM_VERSION_PATCH = _hypre.MFEM_VERSION_PATCH
 
-MFEM_HYPRE_VERSION = _hypre.MFEM_HYPRE_VERSION
-
 import mfem._par.globals
 import mfem._par.vector
 import mfem._par.array
@@ -102,6 +100,45 @@ def sizeof_HYPRE_BigInt():
     r"""sizeof_HYPRE_BigInt() -> int"""
     return _hypre.sizeof_HYPRE_BigInt()
 sizeof_HYPRE_BigInt = _hypre.sizeof_HYPRE_BigInt
+
+def is_HYPRE_USING_CUDA():
+    r"""is_HYPRE_USING_CUDA() -> bool"""
+    return _hypre.is_HYPRE_USING_CUDA()
+is_HYPRE_USING_CUDA = _hypre.is_HYPRE_USING_CUDA
+class Hypre(object):
+    r"""Proxy of C++ mfem::Hypre class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+
+    @staticmethod
+    def Init():
+        r"""Init()"""
+        return _hypre.Hypre_Init()
+    Init = _swig_new_static_method(_hypre.Hypre_Init)
+
+    @staticmethod
+    def Finalize():
+        r"""Finalize()"""
+        return _hypre.Hypre_Finalize()
+    Finalize = _swig_new_static_method(_hypre.Hypre_Finalize)
+
+# Register Hypre in _hypre:
+_hypre.Hypre_swigregister(Hypre)
+
+def Hypre_Init():
+    r"""Hypre_Init()"""
+    return _hypre.Hypre_Init()
+Hypre_Init = _hypre.Hypre_Init
+
+def Hypre_Finalize():
+    r"""Hypre_Finalize()"""
+    return _hypre.Hypre_Finalize()
+Hypre_Finalize = _hypre.Hypre_Finalize
+
 
 def GetHypreMemoryClass():
     r"""GetHypreMemoryClass() -> mfem::MemoryClass"""
@@ -146,6 +183,7 @@ class HypreParVector(mfem._par.vector.Vector):
         # in order to prevent python from freeing the input
         # array, object is kept in ParVector
            self._linked_array = args[-1]
+           self._hypreread_called = False
 
 
 
@@ -205,8 +243,13 @@ class HypreParVector(mfem._par.vector.Vector):
 
     def HypreRead(self):
         r"""HypreRead(HypreParVector self)"""
-        return _hypre.HypreParVector_HypreRead(self)
-    HypreRead = _swig_new_instance_method(_hypre.HypreParVector_HypreRead)
+        val = _hypre.HypreParVector_HypreRead(self)
+
+        self._hypreread_called = True
+
+
+        return val
+
 
     def HypreReadWrite(self):
         r"""HypreReadWrite(HypreParVector self)"""

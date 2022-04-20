@@ -194,9 +194,9 @@ def CreateVTKElementConnectivity(con, geom, ref):
     return _vtk.CreateVTKElementConnectivity(con, geom, ref)
 CreateVTKElementConnectivity = _vtk.CreateVTKElementConnectivity
 
-def WriteVTKEncodedCompressed(out, bytes, nbytes, compression_level):
-    r"""WriteVTKEncodedCompressed(std::ostream & out, void const * bytes, uint32_t nbytes, int compression_level)"""
-    return _vtk.WriteVTKEncodedCompressed(out, bytes, nbytes, compression_level)
+def WriteVTKEncodedCompressed(os, bytes, nbytes, compression_level):
+    r"""WriteVTKEncodedCompressed(std::ostream & os, void const * bytes, uint32_t nbytes, int compression_level)"""
+    return _vtk.WriteVTKEncodedCompressed(os, bytes, nbytes, compression_level)
 WriteVTKEncodedCompressed = _vtk.WriteVTKEncodedCompressed
 
 def BarycentricToVTKTriangle(b, ref):
@@ -208,5 +208,10 @@ def VTKByteOrder():
     r"""VTKByteOrder() -> char const *"""
     return _vtk.VTKByteOrder()
 VTKByteOrder = _vtk.VTKByteOrder
+
+def WriteBase64WithSizeAndClear(os, buf, compression_level):
+    r"""WriteBase64WithSizeAndClear(std::ostream & os, std::vector< char > & buf, int compression_level)"""
+    return _vtk.WriteBase64WithSizeAndClear(os, buf, compression_level)
+WriteBase64WithSizeAndClear = _vtk.WriteBase64WithSizeAndClear
 
 

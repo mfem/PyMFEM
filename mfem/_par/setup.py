@@ -57,7 +57,7 @@ modules= ["io_stream", "vtk", "sort_pairs", "datacollection",
           "plinearform", "pbilinearform", "pnonlinearform",
           "hypre", "restriction", "prestriction",
           "fespacehierarchy", "multigrid", "constraints",
-          "transfer", "dist_solver"]
+          "transfer", "dist_solver", "std_vectors", "auxiliary"]
 
 if add_pumi != '':
     modules.append("pumi")
@@ -97,13 +97,24 @@ if add_cuda:
 
 if add_libceed:
     include_dirs.append(libceedinc)
+
+if add_suitesparse:
+    modules.append("schwarz")
+    sources["schwarz"] = ["schwarz_wrap.cxx"]
+    proxy_names["schwarz"] = "_schwarz"
+    
 if add_gslibp:
     include_dirs.append(gslibpinc)
     modules.append("gslib")
     sources["gslib"] = ["gslib_wrap.cxx"]
     proxy_names["gslib"] = "_gslib"
-    
 
+tpl_include = []    
+for x in mfemptpl.split(' '):
+    if x.startswith("-I"):
+        tpl_include.append(x[2:])
+include_dirs.extend(tpl_include)
+        
 import six
 if six.PY3:
     macros = [('TARGET_PY3', '1'), ('NPY_NO_DEPRECATED_API', 'NPY_1_7_API_VERSION')]

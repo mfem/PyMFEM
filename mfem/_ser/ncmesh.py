@@ -106,18 +106,33 @@ import mfem._ser.linearform
 import mfem._ser.nonlininteg
 import mfem._ser.vertex
 import mfem._ser.vtk
+import mfem._ser.std_vectors
 class Refinement(object):
     r"""Proxy of C++ mfem::Refinement class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
+    X = _ncmesh.Refinement_X
+    
+    Y = _ncmesh.Refinement_Y
+    
+    Z = _ncmesh.Refinement_Z
+    
+    XY = _ncmesh.Refinement_XY
+    
+    XZ = _ncmesh.Refinement_XZ
+    
+    YZ = _ncmesh.Refinement_YZ
+    
+    XYZ = _ncmesh.Refinement_XYZ
+    
     index = property(_ncmesh.Refinement_index_get, _ncmesh.Refinement_index_set, doc=r"""index : int""")
     ref_type = property(_ncmesh.Refinement_ref_type_get, _ncmesh.Refinement_ref_type_set, doc=r"""ref_type : char""")
 
     def __init__(self, *args):
         r"""
         __init__(Refinement self) -> Refinement
-        __init__(Refinement self, int index, int type=7) -> Refinement
+        __init__(Refinement self, int index, int type=XYZ) -> Refinement
         """
         _ncmesh.Refinement_swiginit(self, _ncmesh.new_Refinement(*args))
     __swig_destroy__ = _ncmesh.delete_Refinement

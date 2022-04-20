@@ -1,5 +1,38 @@
 	<<<  Change Log. >>>
+2022 03.
+        * Added --cuda-arch option to specify the compute cuda archtecture
+
+2022 02.27
+        * Added Cuda-build HYPRE support. Cuda is controlled by two setup.py options
+	    --with-cuda  :  MFEM_USE_CUDA is on.
+	    --with-cuda-hypre :  HYPRE is built with Cuda.
+        * mfem::Device is forced to be a singleton in Python layer too. This keeps MemoryManager
+	  from being deallocated before other objects are cleaned.
+        * bool mfem::is_HYPRE_USING_CUDA() is added to check if HYPRE is build with Cuda
+	* make sure that parallel examples calls mfem::Device
+	* enabled --parallel option when building extension modules
+
+2022 02.15
+        * added %import globals.i in sparsemat.i and common_functions.i. This is needed when
+	  MFEM
+    
 2022 01.xx
+        * Generalized multigrid constructor typemap. It now accept not only tuple/list but also
+	  Array<bool> Array<Operator *> and Array<Solver *>, like C++ API does.
+	* Following are added to return DoFTransformation
+	     FiniteElementSpace::GetElementDoFTransformation
+             FiniteElementSpace::GetElementVDoFTransformation
+             FiniteElementSpace::GetBdrElementDoFTransformation
+             FiniteElementSpace::GetBdrElementVDoFTransformation
+	 * DenseMatrix constructor using numpy array is added
+             >>> x = mfem.DenseMatrix(np.arange(12.).reshape(3,4))
+             >>> x.Print()
+                 [row +0]
+                 +0.000000e+00 +1.000000e+00 +2.000000e+00 +3.000000e+00
+                 [row +1]
+                 +4.000000e+00 +5.000000e+00 +6.000000e+00 +7.000000e+00
+                 [row +2]
+                 +8.000000e+00 +9.000000e+00 +1.000000e+01 +1.100000e+01
 
 2021 12.xx
         * Improved array interface. ex: Array<T>::__getitem__ accespt slice to return subarray

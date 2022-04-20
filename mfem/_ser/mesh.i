@@ -42,6 +42,9 @@ import_array();
 %import "sparsemat.i"
 %import "eltrans.i"
 %import "intrules.i"
+
+%import "std_vectors.i"
+
 %feature("notabstract") VectorFunctionCoefficient;
 %feature("notabstract") VectorConstantCoefficient;
 %import "coefficient.i"
@@ -52,11 +55,6 @@ import_array();
 OSTREAM_TYPEMAP(std::ostream&)
 ISTREAM_TYPEMAP(std::istream&)
 
-%include "std_vector.i"
-%template(vector_int) std::vector<int>;
-%template(vector_Vector) std::vector<mfem::Vector>;
-
-
 // this prevent automatic conversion from int to double so
 // that it select collect overloaded method....
 %typemap(typecheck,precedence=SWIG_TYPECHECK_DOUBLE) double {
@@ -66,6 +64,7 @@ ISTREAM_TYPEMAP(std::istream&)
     $1 = 0;
   }
 }
+
 // ignore these constructors, since in python element::type is given by 
 // string (see extend section below).
 // %ignore does not work well !?
@@ -527,7 +526,7 @@ namespace mfem{
      }
      return array;
    }
-   
+
   double GetScaledJacobian(int i, int sd=2)
   {
     // compute scaled Jacobian
@@ -566,6 +565,48 @@ namespace mfem{
 	attr = fmin(sJ, attr);
       }
     return attr;
+  }
+
+  PyObject *IsElementOnPlaneArray(PyObject *aa, PyObject *bb, PyObject *cc, PyObject *dd){  
+    /*
+    return Boolean numpy array to indicate which element is on the plane
+    defined by ax + by + cz + d = 0
+    */
+    double a = PyFloat_AsDouble(aa);    
+    double b = PyFloat_AsDouble(bb);
+    double c = PyFloat_AsDouble(cc);
+    double d = PyFloat_AsDouble(dd);    
+    /*
+    return Boolean numpy array to indicate which element is on the plane
+    defined by ax + by + cz + d = 0
+    */
+    mfem::Array<int> inodes;
+    int nele = self -> GetNE();
+    double *ptx;
+    npy_intp dims[] = {nele};
+    PyObject *array = PyArray_SimpleNew(1, dims, NPY_BOOL);
+    if (self -> SpaceDimension() != 3  || self -> Dimension() != 3){
+ 	 PyErr_SetString(PyExc_TypeError, "dim and sdim must be 3");
+         return (PyObject *) NULL;
+    }
+    bool *x    = (bool *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
+    bool check, check2;
+    
+    for (int k = 0; k < self -> GetNE(); k++){
+      self-> GetElementVertices(k, inodes);
+      ptx = self -> GetVertex(inodes[0]);    
+      check = (ptx[0]*a + ptx[1]*b + ptx[2]*c + d >=0);
+      x[k] = false;
+      for (int j=0; j < inodes.Size(); j++){
+	ptx = self -> GetVertex(inodes[j]);
+        check2 = (ptx[0]*a + ptx[1]*b + ptx[2]*c + d >=0);
+        if (check != check2){
+	  x[k] = true;
+	  break;
+	}
+      }
+    }
+    return array;
   }
   };  // end of extend
 }     // end of namespace

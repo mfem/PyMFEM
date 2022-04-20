@@ -67,6 +67,7 @@ class _SwigNonDynamicMeta(type):
 import weakref
 
 import mfem._ser.mem_manager
+import mfem._ser.globals
 import mfem._ser.array
 import mfem._ser.vector
 import mfem._ser.operators
@@ -441,6 +442,11 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
         return _sparsemat.SparseMatrix_ResetTranspose(self)
     ResetTranspose = _swig_new_instance_method(_sparsemat.SparseMatrix_ResetTranspose)
 
+    def EnsureMultTranspose(self):
+        r"""EnsureMultTranspose(SparseMatrix self)"""
+        return _sparsemat.SparseMatrix_EnsureMultTranspose(self)
+    EnsureMultTranspose = _swig_new_instance_method(_sparsemat.SparseMatrix_EnsureMultTranspose)
+
     def PartMult(self, rows, x, y):
         r"""PartMult(SparseMatrix self, intArray rows, Vector x, Vector y)"""
         return _sparsemat.SparseMatrix_PartMult(self, rows, x, y)
@@ -648,9 +654,9 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
         return _sparsemat.SparseMatrix__Set_(self, *args)
     _Set_ = _swig_new_instance_method(_sparsemat.SparseMatrix__Set_)
 
-    def Set(self, i, j, a):
-        r"""Set(SparseMatrix self, int const i, int const j, double const a)"""
-        return _sparsemat.SparseMatrix_Set(self, i, j, a)
+    def Set(self, i, j, val):
+        r"""Set(SparseMatrix self, int const i, int const j, double const val)"""
+        return _sparsemat.SparseMatrix_Set(self, i, j, val)
     Set = _swig_new_instance_method(_sparsemat.SparseMatrix_Set)
 
     def SetSubMatrix(self, rows, cols, subm, skip_zeros=1):
@@ -716,7 +722,7 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
 
     def Add(self, *args):
         r"""
-        Add(SparseMatrix self, int const i, int const j, double const a)
+        Add(SparseMatrix self, int const i, int const j, double const val)
         Add(SparseMatrix self, double const a, SparseMatrix B)
         """
         return _sparsemat.SparseMatrix_Add(self, *args)

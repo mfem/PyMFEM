@@ -74,7 +74,6 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _solvers.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _solvers.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _solvers.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _solvers.MFEM_VERSION_PATCH
-MFEM_HYPRE_VERSION = _solvers.MFEM_HYPRE_VERSION
 import mfem._par.globals
 import mfem._par.vector
 import mfem._par.array
@@ -536,6 +535,11 @@ class LBFGSSolver(NewtonSolver):
         __init__(LBFGSSolver self, MPI_Comm comm_) -> LBFGSSolver
         """
         _solvers.LBFGSSolver_swiginit(self, _solvers.new_LBFGSSolver(*args))
+
+    def SetOperator(self, op):
+        r"""SetOperator(LBFGSSolver self, Operator op)"""
+        return _solvers.LBFGSSolver_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_solvers.LBFGSSolver_SetOperator)
 
     def SetHistorySize(self, dim):
         r"""SetHistorySize(LBFGSSolver self, int dim)"""

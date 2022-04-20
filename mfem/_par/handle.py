@@ -82,8 +82,6 @@ MFEM_VERSION_MINOR = _handle.MFEM_VERSION_MINOR
 
 MFEM_VERSION_PATCH = _handle.MFEM_VERSION_PATCH
 
-MFEM_HYPRE_VERSION = _handle.MFEM_HYPRE_VERSION
-
 import mfem._par.operators
 import mfem._par.mem_manager
 import mfem._par.vector
@@ -103,6 +101,7 @@ class OperatorHandle(object):
         r"""
         __init__(OperatorHandle self) -> OperatorHandle
         __init__(OperatorHandle self, mfem::Operator::Type tid) -> OperatorHandle
+        __init__(OperatorHandle self, OperatorHandle other) -> OperatorHandle
         """
         _handle.OperatorHandle_swiginit(self, _handle.new_OperatorHandle(*args))
     __swig_destroy__ = _handle.delete_OperatorHandle
@@ -244,6 +243,31 @@ class OperatorHandle(object):
         r"""ConvertFromHypreParMatrix(OperatorHandle self, HypreParMatrix A)"""
         return _handle.OperatorHandle_ConvertFromHypreParMatrix(self, A)
     ConvertFromHypreParMatrix = _swig_new_instance_method(_handle.OperatorHandle_ConvertFromHypreParMatrix)
+
+    def AsComplexHypreParMatrix(self):
+        r"""AsComplexHypreParMatrix(OperatorHandle self) -> mfem::ComplexHypreParMatrix *"""
+        return _handle.OperatorHandle_AsComplexHypreParMatrix(self)
+    AsComplexHypreParMatrix = _swig_new_instance_method(_handle.OperatorHandle_AsComplexHypreParMatrix)
+
+    def IsComplexHypreParMatrix(self):
+        r"""IsComplexHypreParMatrix(OperatorHandle self) -> mfem::ComplexHypreParMatrix *"""
+        return _handle.OperatorHandle_IsComplexHypreParMatrix(self)
+    IsComplexHypreParMatrix = _swig_new_instance_method(_handle.OperatorHandle_IsComplexHypreParMatrix)
+
+    def GetComplexHypreParMatrix(self, A):
+        r"""GetComplexHypreParMatrix(OperatorHandle self, mfem::ComplexHypreParMatrix *& A)"""
+        return _handle.OperatorHandle_GetComplexHypreParMatrix(self, A)
+    GetComplexHypreParMatrix = _swig_new_instance_method(_handle.OperatorHandle_GetComplexHypreParMatrix)
+
+    def ResetComplexHypreParMatrix(self, A, own_A=True):
+        r"""ResetComplexHypreParMatrix(OperatorHandle self, mfem::ComplexHypreParMatrix * A, bool own_A=True)"""
+        return _handle.OperatorHandle_ResetComplexHypreParMatrix(self, A, own_A)
+    ResetComplexHypreParMatrix = _swig_new_instance_method(_handle.OperatorHandle_ResetComplexHypreParMatrix)
+
+    def ConvertFromComplexHypreParMatrix(self, A):
+        r"""ConvertFromComplexHypreParMatrix(OperatorHandle self, mfem::ComplexHypreParMatrix * A)"""
+        return _handle.OperatorHandle_ConvertFromComplexHypreParMatrix(self, A)
+    ConvertFromComplexHypreParMatrix = _swig_new_instance_method(_handle.OperatorHandle_ConvertFromComplexHypreParMatrix)
 
     def InitTVectors(self, Po, Ri, Pi, x, b, X, B):
         r"""InitTVectors(OperatorHandle self, Operator Po, Operator Ri, Operator Pi, Vector x, Vector b, Vector X, Vector B)"""

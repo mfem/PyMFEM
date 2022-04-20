@@ -74,7 +74,6 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _plinearform.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _plinearform.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _plinearform.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _plinearform.MFEM_VERSION_PATCH
-MFEM_HYPRE_VERSION = _plinearform.MFEM_HYPRE_VERSION
 import mfem._par.linearform
 import mfem._par.coefficient
 import mfem._par.globals
@@ -117,6 +116,7 @@ import mfem._par.hypre
 import mfem._par.restriction
 import mfem._par.bilininteg
 import mfem._par.nonlininteg
+import mfem._par.std_vectors
 import mfem._par.pfespace
 import mfem._par.pmesh
 import mfem._par.pncmesh

@@ -107,6 +107,7 @@ import mfem._ser.linearform
 import mfem._ser.nonlininteg
 import mfem._ser.vertex
 import mfem._ser.vtk
+import mfem._ser.std_vectors
 class DataCollection(object):
     r"""Proxy of C++ mfem::DataCollection class."""
 
@@ -141,9 +142,9 @@ class DataCollection(object):
         return _datacollection.DataCollection_DeregisterQField(self, field_name)
     DeregisterQField = _swig_new_instance_method(_datacollection.DataCollection_DeregisterQField)
 
-    def HasField(self, name):
-        r"""HasField(DataCollection self, std::string const & name) -> bool"""
-        return _datacollection.DataCollection_HasField(self, name)
+    def HasField(self, field_name):
+        r"""HasField(DataCollection self, std::string const & field_name) -> bool"""
+        return _datacollection.DataCollection_HasField(self, field_name)
     HasField = _swig_new_instance_method(_datacollection.DataCollection_HasField)
 
     def GetField(self, field_name):
@@ -299,7 +300,7 @@ class DataCollection(object):
     Error = _swig_new_instance_method(_datacollection.DataCollection_Error)
 
     def ResetError(self, *args, **kwargs):
-        r"""ResetError(DataCollection self, int err=NO_ERROR)"""
+        r"""ResetError(DataCollection self, int err_state=NO_ERROR)"""
         return _datacollection.DataCollection_ResetError(self, *args, **kwargs)
     ResetError = _swig_new_instance_method(_datacollection.DataCollection_ResetError)
 

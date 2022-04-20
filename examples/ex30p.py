@@ -48,8 +48,8 @@ def singular_coeff(p):
     r0 = 0.7
     r = np.sqrt((x - xc)**2.0 + (y - yc)**2)
     num = - (alpha - alpha**3 * (r**2 - r0**2))
-    denom = r * (alpha**2 * r0**2 + alpha**2 * r**2 -
-                 2 * alpha**2 * r0 * r + 1.0)**2
+    denom = (r * (alpha**2 * r0**2 + alpha**2 * r**2 -
+                 2 * alpha**2 * r0 * r + 1.0))**2
     denom = max([denom, 1e-8])
     return num / denom
 
@@ -62,6 +62,9 @@ def run(nc_limit=1,
         enriched_order=5,
         osc_threshold=1e-3,
         nc_simplices=True):
+
+    device = mfem.Device('cpu')
+    if myid == 0: device.Print()
 
     mesh = mfem.Mesh(meshfile, 1, 1)
 

@@ -82,8 +82,6 @@ MFEM_VERSION_MINOR = _pncmesh.MFEM_VERSION_MINOR
 
 MFEM_VERSION_PATCH = _pncmesh.MFEM_VERSION_PATCH
 
-MFEM_HYPRE_VERSION = _pncmesh.MFEM_HYPRE_VERSION
-
 import mfem._par.mesh
 import mfem._par.matrix
 import mfem._par.vector
@@ -126,6 +124,7 @@ import mfem._par.restriction
 import mfem._par.bilininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.std_vectors
 import mfem._par.communication
 import mfem._par.sets
 class ParNCMesh(mfem._par.ncmesh.NCMesh):

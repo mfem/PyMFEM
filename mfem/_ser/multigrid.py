@@ -105,6 +105,7 @@ import mfem._ser.linearform
 import mfem._ser.nonlininteg
 import mfem._ser.vertex
 import mfem._ser.vtk
+import mfem._ser.std_vectors
 import mfem._ser.doftrans
 import mfem._ser.handle
 import mfem._ser.restriction

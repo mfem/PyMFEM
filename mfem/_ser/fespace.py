@@ -103,6 +103,7 @@ import mfem._ser.linearform
 import mfem._ser.nonlininteg
 import mfem._ser.vertex
 import mfem._ser.vtk
+import mfem._ser.std_vectors
 import mfem._ser.doftrans
 import mfem._ser.handle
 import mfem._ser.restriction
@@ -981,6 +982,26 @@ class FiniteElementSpace(object):
         """
         return _fespace.FiniteElementSpace_Save(self, *args)
     Save = _swig_new_instance_method(_fespace.FiniteElementSpace_Save)
+
+    def GetElementDofTransformation(self, elem):
+        r"""GetElementDofTransformation(FiniteElementSpace self, int elem) -> DofTransformation"""
+        return _fespace.FiniteElementSpace_GetElementDofTransformation(self, elem)
+    GetElementDofTransformation = _swig_new_instance_method(_fespace.FiniteElementSpace_GetElementDofTransformation)
+
+    def GetBdrElementDofTransformation(self, bel):
+        r"""GetBdrElementDofTransformation(FiniteElementSpace self, int bel) -> DofTransformation"""
+        return _fespace.FiniteElementSpace_GetBdrElementDofTransformation(self, bel)
+    GetBdrElementDofTransformation = _swig_new_instance_method(_fespace.FiniteElementSpace_GetBdrElementDofTransformation)
+
+    def GetElementVDofTransformation(self, elem):
+        r"""GetElementVDofTransformation(FiniteElementSpace self, int elem) -> DofTransformation"""
+        return _fespace.FiniteElementSpace_GetElementVDofTransformation(self, elem)
+    GetElementVDofTransformation = _swig_new_instance_method(_fespace.FiniteElementSpace_GetElementVDofTransformation)
+
+    def GetBdrElementVDofTransformation(self, bel):
+        r"""GetBdrElementVDofTransformation(FiniteElementSpace self, int bel) -> DofTransformation"""
+        return _fespace.FiniteElementSpace_GetBdrElementVDofTransformation(self, bel)
+    GetBdrElementVDofTransformation = _swig_new_instance_method(_fespace.FiniteElementSpace_GetBdrElementVDofTransformation)
 
 # Register FiniteElementSpace in _fespace:
 _fespace.FiniteElementSpace_swigregister(FiniteElementSpace)

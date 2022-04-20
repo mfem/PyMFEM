@@ -12,5 +12,7 @@ build
 dist
 test/*
 !test/*.py
+!test/cpp
+!test/cpp/
 *.egg-info
 *.py#

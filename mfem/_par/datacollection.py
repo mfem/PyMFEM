@@ -74,7 +74,6 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _datacollection.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _datacollection.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _datacollection.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _datacollection.MFEM_VERSION_PATCH
-MFEM_HYPRE_VERSION = _datacollection.MFEM_HYPRE_VERSION
 import mfem._par.globals
 import mfem._par.mesh
 import mfem._par.matrix
@@ -117,6 +116,7 @@ import mfem._par.restriction
 import mfem._par.bilininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.std_vectors
 import mfem._par.pgridfunc
 import mfem._par.pfespace
 import mfem._par.pmesh
@@ -157,9 +157,9 @@ class DataCollection(object):
         return _datacollection.DataCollection_DeregisterQField(self, field_name)
     DeregisterQField = _swig_new_instance_method(_datacollection.DataCollection_DeregisterQField)
 
-    def HasField(self, name):
-        r"""HasField(DataCollection self, std::string const & name) -> bool"""
-        return _datacollection.DataCollection_HasField(self, name)
+    def HasField(self, field_name):
+        r"""HasField(DataCollection self, std::string const & field_name) -> bool"""
+        return _datacollection.DataCollection_HasField(self, field_name)
     HasField = _swig_new_instance_method(_datacollection.DataCollection_HasField)
 
     def GetField(self, field_name):
@@ -328,7 +328,7 @@ class DataCollection(object):
     Error = _swig_new_instance_method(_datacollection.DataCollection_Error)
 
     def ResetError(self, *args, **kwargs):
-        r"""ResetError(DataCollection self, int err=NO_ERROR)"""
+        r"""ResetError(DataCollection self, int err_state=NO_ERROR)"""
         return _datacollection.DataCollection_ResetError(self, *args, **kwargs)
     ResetError = _swig_new_instance_method(_datacollection.DataCollection_ResetError)
 

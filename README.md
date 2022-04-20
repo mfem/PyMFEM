@@ -15,10 +15,12 @@ Additionally, the installer supports building MFEM with specific options togethe
 pip install mfem                    # binary install is available only on linux platforms (Py36-39) 
 pip install mfem --no-binary mfem   # install serial MFEM + wrapper
 ```
+
+### Using additional features (MPI, GPU, GPU-Hypre, GSLIB, SuiteSparse)
 The setup script accept various options. TO use it, please download
 the package and run the script manually. For example, this below download
 and build parallel version of MFEM library (linked with Metis and Hypre)
-and install under <prefix>/mfem
+and install under <prefix>/mfem. See also, docs/install.txt
 ```
 $ pip3 download mfem
 (expand tar.gz file and move to the downloaded directory)

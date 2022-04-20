@@ -40,6 +40,11 @@ parser.add_argument('-vis', '--visualization',
                     help='Enable GLVis visualization')
 
 args = parser.parse_args()
+
+device = mfem.Device('cpu')
+if myid == 0:
+    device.Print()
+
 order = args.order
 visualization = args.visualization
 if myid == 0:

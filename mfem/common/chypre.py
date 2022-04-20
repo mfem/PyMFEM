@@ -83,6 +83,24 @@ class CHypreVec(list):
         else:
             return size, 1
 
+    def HypreRead(self):
+        if self[0] is not None:
+            self[0].HypreRead()
+        if self[1] is not None:
+            self[1].HypreRead()
+
+    def HypreReadWrite(self):
+        if self[0] is not None:
+            self[0].HypreReadWrite()
+        if self[1] is not None:
+            self[1].HypreReadWrite()
+
+    def HypreWrite(self):
+        if self[0] is not None:
+            self[0].HypreWrite()
+        if self[1] is not None:
+            self[1].HypreWrite()
+
     def isComplex(self):
         return not (self[1] is None)
 
@@ -104,7 +122,6 @@ class CHypreVec(list):
             #other = complex(other)
             i = other.imag
             r = other.real
-
             if self[0] is not None and self[1] is not None:
                 rr = self[0].GetDataArray() * r - self[1].GetDataArray() * i
                 ii = self[0].GetDataArray() * i + self[1].GetDataArray() * r

@@ -21,12 +21,16 @@ myid = MPI.COMM_WORLD.rank
 
 
 def run(order=1, static_cond=False,
-        meshfile=def_meshfile, visualization=False,
-        use_strumpack=False,
-        device='cpu', pa=False):
+        meshfile=def_meshfile,
+        visualization=False,
+        device='cpu',
+        pa=False):
+
+    algebraic_ceed = False
 
     device = mfem.Device(device)
-    device.Print()
+    if myid == 0:
+        device.Print()
 
     mesh = mfem.Mesh(meshfile, 1, 1)
     dim = mesh.Dimension()
@@ -73,45 +77,38 @@ def run(order=1, static_cond=False,
     x.Assign(0.0)
 
     a = mfem.ParBilinearForm(fespace)
+    if pa:
+        a.SetAssemblyLevel(mfem.AssemblyLevel_PARTIAL)
+        
     a.AddDomainIntegrator(mfem.DiffusionIntegrator(one))
 
     if static_cond:
         a.EnableStaticCondensation()
+
     a.Assemble()
 
-    A = mfem.HypreParMatrix()
+    A = mfem.OperatorPtr()
     B = mfem.Vector()
     X = mfem.Vector()
     a.FormLinearSystem(ess_tdof_list, x, b, A, X, B)
 
-    if (myid == 0):
-        print("Size of linear system: " + str(x.Size()))
-        print("Size of linear system: " + str(A.GetGlobalNumRows()))
-
-    if use_strumpack:
-        import mfem.par.strumpack as strmpk
-        Arow = strmpk.STRUMPACKRowLocMatrix(A)
-        args = ["--sp_hss_min_sep_size", "128", "--sp_enable_hss"]
-        strumpack = strmpk.STRUMPACKSolver(args, MPI.COMM_WORLD)
-        strumpack.SetPrintFactorStatistics(True)
-        strumpack.SetPrintSolveStatistics(False)
-        strumpack.SetKrylovSolver(strmpk.KrylovSolver_DIRECT)
-        strumpack.SetReorderingStrategy(strmpk.ReorderingStrategy_METIS)
-        strumpack.SetMC64Job(strmpk.MC64Job_NONE)
-        # strumpack.SetSymmetricPattern(True)
-        strumpack.SetOperator(Arow)
-        strumpack.SetFromCommandLine()
-        strumpack.Mult(B, X)
-
+    if pa:
+        if mfem.UsesTensorBasis(fespace):
+            if algebraic_ceed:
+                assert False, "not supported"
+                #prec = new ceed::AlgebraicSolver(a, ess_tdof_list);
+            else:
+                prec = mfem.OperatorJacobiSmoother(a, ess_tdof_list)
     else:
-        amg = mfem.HypreBoomerAMG(A)
-        cg = mfem.CGSolver(MPI.COMM_WORLD)
-        cg.SetRelTol(1e-12)
-        cg.SetMaxIter(200)
-        cg.SetPrintLevel(1)
-        cg.SetPreconditioner(amg)
-        cg.SetOperator(A)
-        cg.Mult(B, X)
+        prec = mfem.HypreBoomerAMG()
+        
+    cg = mfem.CGSolver(MPI.COMM_WORLD)
+    cg.SetRelTol(1e-12)
+    cg.SetMaxIter(200)
+    cg.SetPrintLevel(1)
+    cg.SetPreconditioner(prec)
+    cg.SetOperator(A.Ptr())
+    cg.Mult(B, X)
 
     a.RecoverFEMSolution(X, b, x)
 
@@ -121,7 +118,6 @@ def run(order=1, static_cond=False,
 
     pmesh.Print(mesh_name, 8)
     x.Save(sol_name, 8)
-
 
 if __name__ == "__main__":
     parser = ArgParser(description='Ex1 (Laplace Problem)')
@@ -138,9 +134,6 @@ if __name__ == "__main__":
     parser.add_argument('-sc', '--static-condensation',
                         action='store_true',
                         help="Enable static condensation.")
-    parser.add_argument("-sp", "--strumpack",
-                        action='store_true', default=False,
-                        help="Use the STRUMPACK Solver.")
     parser.add_argument("-pa", "--partial-assembly",
                         action='store_true',
                         help="Enable Partial Assembly.")
@@ -158,7 +151,6 @@ if __name__ == "__main__":
     meshfile = expanduser(
         join(os.path.dirname(__file__), '..', 'data', args.mesh))
     visualization = args.visualization
-    use_strumpack = args.strumpack
     device = args.device
     pa = args.partial_assembly
 
@@ -166,6 +158,5 @@ if __name__ == "__main__":
         static_cond=static_cond,
         meshfile=meshfile,
         visualization=visualization,
-        use_strumpack=use_strumpack,
         device=device,
         pa=pa)
