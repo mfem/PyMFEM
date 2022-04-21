@@ -266,7 +266,10 @@ class hpPoisson(RobustAnglePoisson):
         self.AssembleAndSolve()
         self.errors = self.GetLocalErrors()
         global_error = GlobalError(self.errors)
-        cost = np.log2(global_error / self.global_error)
+        if self.k == 1:
+            cost = np.log2(global_error)
+        else:
+            cost = np.log2(global_error/self.global_error)
         self.global_error = global_error
 
         num_dofs = self.fespace.GetTrueVSize()
@@ -277,7 +280,7 @@ class hpPoisson(RobustAnglePoisson):
         if self.sum_of_dofs > self.dof_threshold:
             cost = 0.0
             done = True
-        print("Sum of dofs = ", self.sum_of_dofs, " thresh = ", self.dof_threshold, " done = ", done)
+        # print("Sum of dofs = ", self.sum_of_dofs, " thresh = ", self.dof_threshold, " done = ", done)
 
         obs = self.GetObservation()
         info = {'global_error':self.global_error, 'num_dofs':num_dofs, 'max_local_errors':np.amax(self.errors)}

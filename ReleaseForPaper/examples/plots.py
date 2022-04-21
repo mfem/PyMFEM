@@ -79,10 +79,10 @@ save_figs = True
 
 print("*** Check that correct data was loaded here in plots.py ***")
 train_data_file = output_dir+'/training_data.csv'
-rldata_file = output_dir+'/rl_data.csv'
-deterministic_amr_data_file = output_dir+'/deterministic_amr_data.csv'
-# rldata_file = output_dir+'/rl_data_ood.csv'
-# deterministic_amr_data_file = output_dir+'/deterministic_amr_data_ood.csv'
+# rldata_file = output_dir+'/rl_data.csv'
+# deterministic_amr_data_file = output_dir+'/deterministic_amr_data.csv'
+rldata_file = output_dir+'/rl_data_ood.csv'
+deterministic_amr_data_file = output_dir+'/deterministic_amr_data_ood.csv'
 
 
 df = pd.read_csv(train_data_file, index_col=0)
@@ -221,5 +221,35 @@ ax6.set_xlabel(r'Refinement step')
 ax6.set_ylabel(r'$\theta$ in trained (AM)$^2$R policy')
 if save_figs:
    plt.savefig(output_dir+'/'+fig_name_prefix+'_fig6.pdf',format='pdf', bbox_inches='tight')
+
+
+if ex_type == 4: # example 2c
+
+   tp_data_file = output_dir+'/two_param_amr_data.csv'
+   df = pd.read_csv(tp_data_file)
+
+   plt.figure(figsize=(6,6))
+   ax7 = sns.boxenplot(y=df['costs'], width=.6, color=palette_list[3], label='_nolegend_')
+   x7 = ax7.get_xlim()
+   plt.hlines(rlepisode_cost, x2[0], x2[1], lw=4, color=palette_list[0], label=r'(AM)$^2$R policy cost')
+   y2 = ax7.get_ylim()
+   # plt.fill_between(x2, np.floor(y2[0]), rlepisode_cost, color=palette_list[9], label=r'Apparent performance barrier')
+   plt.fill_between(x2, np.floor(y2[0]), rlepisode_cost, hatch='\\\\\\\\', facecolor=palette_list[9], label=r'Apparent performance barrier')
+
+   ax7.set_xlabel(r'')
+   if minimum_budget_problem:
+      # ax7.set_ylabel(r'$\log_2(N_{\rm{dofs}})$')
+      ax7.set_ylabel(r'cost at final step')
+   else:
+      # ax7.set_ylabel(r'$\log_2(E_{\rm{Final}})$')
+      ax7.set_ylabel(r'cost at final step')
+   lgd = ax7.legend()
+   letterbox_entry(lgd)
+   sns.despine(ax=ax7, bottom=True)
+   ax7.tick_params(bottom=False)
+   plt.tight_layout()
+   if save_figs:
+      plt.savefig(output_dir+'/'+fig_name_prefix+'_rl_vs_two_param.pdf',format='pdf', bbox_inches='tight')
+
 
 plt.show()

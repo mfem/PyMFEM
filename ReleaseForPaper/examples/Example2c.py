@@ -5,6 +5,7 @@
 """
 
 import os
+from sqlite3 import DatabaseError
 import matplotlib.pyplot as plt
 import pandas as pd
 import ray
@@ -112,7 +113,7 @@ plot_figs=args.plotfigs
 save_figs=args.savefigs
 
 restore_policy = False
-nbatches = 100
+nbatches = 250
 minimum_budget_problem = False  # mininum budget == error_threshold == minimize dofs
 
 ## Configuration for minimum budget problem
@@ -181,7 +182,7 @@ output_dir_ = os.getcwd() + '/output/'
 if (restore_policy):
     chkpt_num = nbatches
     # set the path of the checkpoint
-    temp_path = 'Example2c_2022-04-20_14-59-32'
+    temp_path = 'Example2c_2022-04-21_14-04-31'
     checkpoint_dir = log_dir + temp_path
     chkpt_file=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num)
     output_dir = output_dir_ + temp_path
@@ -214,7 +215,7 @@ if train:
     checkpoint_path = trainer.save()
     print(checkpoint_path)
 if eval and not train:
-    temp_path = 'Example2c_2022-04-20_14-59-32'
+    temp_path = 'Example2c_2022-04-21_14-04-31'
     chkpt_num = nbatches
     checkpoint_dir = log_dir + temp_path
     # checkpoint_path=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt < 100
@@ -287,6 +288,16 @@ if eval:
         while not done:
             _, reward, done, info = env.expertStep(action)
             if not minimum_budget_problem and done:
+                # print("DONE - breaking with:")
+                # print()
+                # print("costs = ", costs)
+                # print()
+                # print("episode_cost_tmp = ", episode_cost_tmp)
+                # print()
+                # print("errors_tmp = ", errors_tmp)
+                # print()
+                # print("dofs temp = ", dofs_tmp)
+                # exit()
                 break
             if steps_taken > max_steps:
                 print("*** BREAKING EARLY - fixed action exceeded max step threshold of ", max_steps, "steps.")
@@ -302,30 +313,43 @@ if eval:
         print('episode cost = ', episode_cost_tmp)
 
     # ## Enact AMR policies, using "fixed two parameter sweep" strategy
-    # costs = []
-    # actions = []
-    # nth = 100
-    # errors = []
-    # dofs = []
-    # for i in range(1, nth):
-    #     print(i)
-    #     action = np.array([i/nth])
-    #     actions.append(action.item())
-    #     obs = env.reset(random_angle=False)
-    #     done = False
-    #     episode_cost_tmp = 0
-    #     errors_tmp = [env.global_error]
-    #     dofs_tmp = [env.sum_of_dofs]
-    #     while not done:
-    #         _, reward, done, info = env.step(action)
-    #         if not minimum_budget_problem and done:
-    #             break
-    #         episode_cost_tmp -= reward
-    #         errors_tmp.append(info['global_error'])
-    #         dofs_tmp.append(info['num_dofs'])
-    #     costs.append(episode_cost_tmp)
-    #     errors.append(errors_tmp)
-    #     dofs.append(dofs_tmp)
+    tp_costs = []
+    tp_nth = 10
+    tp_actions = np.zeros(((tp_nth-1)**2,2))
+    tp_errors = []
+    tp_dofs = []
+    index_count = 0
+    for theta in range(1, tp_nth):
+        for rho in range(1, tp_nth):
+            tp_actions[index_count] = np.array([theta/tp_nth, rho/tp_nth]) # note 1D action space
+            action = tp_actions[index_count]
+            print("action = ", tp_actions[index_count])
+            index_count += 1
+            obs = env.reset(random_angle=False)
+            done = False
+            episode_cost_tmp = 0
+            errors_tmp = [env.global_error]
+            dofs_tmp = [env.sum_of_dofs]
+            max_steps   = 40 # or:  num_steps_of_RL_policy
+            steps_taken = 0
+            while not done:
+                _, reward, done, info = env.step(action)
+                if not minimum_budget_problem and done:
+                    break
+                if steps_taken > max_steps:
+                    print("*** BREAKING EARLY - fixed action exceeded max step threshold of ", max_steps, "steps.")
+                    break
+                else:
+                    steps_taken += 1
+                episode_cost_tmp -= reward
+                errors_tmp.append(info['global_error'])
+                dofs_tmp.append(info['num_dofs'])
+            tp_costs.append(episode_cost_tmp)
+            tp_errors.append(errors_tmp)
+            tp_dofs.append(dofs_tmp)
+            print('episode cost = ', episode_cost_tmp)
+
+   
   
 """
     STEP 4: Save Data
@@ -344,18 +368,19 @@ if save_data:
     csv_path = root_path + '/progress.csv'
     df = pd.read_csv(csv_path)
     cost = -df.episode_reward_mean.to_numpy()
+
+    #### training data df
     df1 = pd.DataFrame({'cost':cost})
+    filename = output_dir+"/training_data.csv"
+    print("Saving training data to: ", filename)    
+    df1.to_csv(filename, index=False)
+
+    #### rl action df
     # pad rlactions with one extra row to enable df2 creation
     rlactions = rlactions = rlactions.append({'theta': 999, 'rho': 999}, ignore_index=True)
     df2 = pd.DataFrame({'theta':rlactions.iloc[:,0], 'rho':rlactions.iloc[:,1], 'rldofs':rldofs,'rlerrors':rlerrors})
     # save a single value in every row of new column 'rlepisode_cost'
     df2['rlepisode_cost'] = rlepisode_cost 
-    df3 = pd.DataFrame({'actions':actions,'costs':costs,'errors':errors,'dofs':dofs})
-
-    filename = output_dir+"/training_data.csv"
-    print("Saving training data to: ", filename)    
-    df1.to_csv(filename, index=False)
-
     if args.out_of_dist_eval:
         filename = output_dir+"/rl_data_ood.csv"
     else:
@@ -363,12 +388,29 @@ if save_data:
     print("Saving RL deployed policy data to: ", filename)  
     df2.to_csv(filename, index=False)
 
+    #### expert policy df
+    df3 = pd.DataFrame({'actions':actions,'costs':costs,'errors':errors,'dofs':dofs})
     if args.out_of_dist_eval:
         filename = output_dir+"/deterministic_amr_data_ood.csv"
     else:
         filename = output_dir+"/deterministic_amr_data.csv"
     print("Saving deterministic AMR policies data to: ", filename)    
     df3.to_csv(filename, index=False)
+
+    #### two param policy df
+    print("shapes:")
+    print(tp_actions[:,0].shape)
+    print(tp_actions[:,1].shape)
+    print(len(tp_costs))
+    print(len(tp_errors))
+    print(len(tp_dofs))
+    df4 = pd.DataFrame({'theta':tp_actions[:,0], 'rho':tp_actions[:,1],'costs':tp_costs,'errors':tp_errors,'dofs':tp_dofs})
+    if args.out_of_dist_eval:
+        filename = output_dir+"/two_param_amr_data_ood.csv"
+    else:
+        filename = output_dir+"/two_param_amr_data.csv"
+    print("Saving two parameter AMR policies data to: ", filename)    
+    df4.to_csv(filename, index=False)
 
 """
     STEP 5: Plots
