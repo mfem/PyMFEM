@@ -20,6 +20,7 @@ import seaborn as sns
 from ray.tune.logger import UnifiedLogger
 from datetime import datetime
 import json 
+import csv
 
 def print_config(dir, prob_config = None, rl_config = None):
     if (prob_config is not None):
@@ -104,6 +105,7 @@ parser.add_argument('--no-plotfigs', dest='plotfigs', action='store_false')
 parser.add_argument('--savefigs', default=True, action='store_true')
 parser.add_argument('--no-savefigs', dest='savefigs', action='store_false')
 parser.add_argument('--ood-eval', dest='out_of_dist_eval', default=False, action='store_true')
+parser.add_argument('--marginals', dest='marginals_eval', default=False, action='store_true')
 args = parser.parse_args()
 print("Parsed options = ", args)
 train=args.train
@@ -229,7 +231,7 @@ if train:
     STEP 3: Validation
 """
 
-if eval:
+if eval and not args.marginals_eval:
 
     if args.out_of_dist_eval:
         angle = np.pi * 0.1
@@ -288,16 +290,6 @@ if eval:
         while not done:
             _, reward, done, info = env.expertStep(action)
             if not minimum_budget_problem and done:
-                # print("DONE - breaking with:")
-                # print()
-                # print("costs = ", costs)
-                # print()
-                # print("episode_cost_tmp = ", episode_cost_tmp)
-                # print()
-                # print("errors_tmp = ", errors_tmp)
-                # print()
-                # print("dofs temp = ", dofs_tmp)
-                # exit()
                 break
             if steps_taken > max_steps:
                 print("*** BREAKING EARLY - fixed action exceeded max step threshold of ", max_steps, "steps.")
@@ -349,7 +341,74 @@ if eval:
             tp_dofs.append(dofs_tmp)
             print('episode cost = ', episode_cost_tmp)
 
-   
+if args.marginals_eval:
+    print("Creating data for marginals")
+
+    # angle_vals = np.pi* np.linspace(1/4,3/4,3)    # 3 angles, for debugging
+    # angle_vals = np.pi* np.linspace(1/4,3/4,100)  # 100 angle test
+    angle_vals = np.pi* np.linspace(1/2,1/2,1)    # only do pi/2
+    # angle_vals = np.pi* np.linspace(0,0,1)               # only do 0
+
+    samples_per_param = 4
+
+    headers = ['theta', 'rho', 'angle', 'step', 'num elts', 'num dofs', 'sum dofs', 'error est', 'cost']#, 'L2 Error', 'H1 Error']
+    # headers = ['theta', 'rho',         'N', 'DoFs', 'Total_DoFs', 'Error_Estimate', 'Cost']#, 'L2_Error', 'H1_Error']
+    rows = []
+    for j in range(samples_per_param):
+        for k in range(samples_per_param):
+            for angle in angle_vals:
+                env.set_angle(angle)
+                print("*** Set angle for eval to  ", angle)
+                obs = env.reset(random_angle=False)
+                done = False
+                theta = j / samples_per_param
+                rho = k / samples_per_param
+                action = np.array([theta, rho])
+                episode_cost = 0.0
+                rows.append([action[0].item(), action[1].item(), angle, env.k, env.mesh.GetNE(), env.fespace.GetTrueVSize(), 
+                                        env.sum_of_dofs, env.global_error, episode_cost])
+                steps_taken = 0
+                max_steps = 40
+                while not done:
+                    _, reward, done, info = env.step(action)
+                    episode_cost -= reward 
+                    rows.append([action[0].item(), action[1].item(), angle, env.k, env.mesh.GetNE(), env.fespace.GetTrueVSize(), 
+                                        env.sum_of_dofs, env.global_error, episode_cost])
+                    if not minimum_budget_problem and done:
+                        break
+                    if steps_taken > max_steps:
+                        print("*** BREAKING EARLY - fixed action exceeded max step threshold of ", max_steps, "steps.")
+                        break
+                    else:
+                        steps_taken += 1
+                        
+
+                # if options.save_mesh:
+                #     gfname = 'gf_theta_' + str(theta) + '_rho_' + str(rho) + '_angle_' + str(np.round(angle,5)) + '.gf'
+                #     env.RenderHPmesh(gfname=gfname)
+                #     env.mesh.Save('mesh_step_theta_' + str(theta) + '_rho_' + str(rho) + '_angle_' + str(np.round(angle,5)) + '.mesh')
+                #     # sol_sock = mfem.socketstream("localhost", 19916)
+                #     # sol_sock.precision(8)
+                #     # sol_sock.send_solution(self.mesh, orders)
+                #     # title = "step " + str(self.k)
+                #     # sol_sock.send_text('keys ARjlmp*******' + " window_title '" + title)
+                #     # sol_sock.send_text("valuerange 1.0 8.0 \n")
+                #     # sol_sock.send_text('keys S')
+
+
+    # import time
+    # job_time_id = int(time.time()) 
+    # print("Job time id = ", job_time_id)
+    with open(output_dir+'marginals_temp.csv', 'w') as datafile:
+        write = csv.writer(datafile)
+        write.writerow(headers)
+        write.writerows(rows)
+    
+    print("Marginals data needs more writing and debugging")
+    exit()
+
+
+
   
 """
     STEP 4: Save Data
