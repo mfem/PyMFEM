@@ -327,7 +327,7 @@ if save_data:
     print("Saving training data to: ", filename)    
     df1.to_csv(filename, index=False)
 
-    if ood_dof_threshold:
+    if args.out_of_dist_eval:
         filename = output_dir+"/rl_data_ood.csv"
     else:
         filename = output_dir+"/rl_data.csv"
@@ -337,7 +337,7 @@ if save_data:
     if ood_dof_threshold:
         filename = output_dir+"/deterministic_amr_data_ood.csv"
     else:
-        filename = output_dir+"/deterministic_amr_data.csv.csv"
+        filename = output_dir+"/deterministic_amr_data.csv"
     print("Saving deterministic AMR policies data to: ", filename)    
     df3.to_csv(filename, index=False)
 

@@ -77,22 +77,31 @@ def letterbox_entry(legend):
 save_figs = True
 # minimum_budget_problem = False
 
+print("*** Check that correct data was loaded here in plots.py ***")
 train_data_file = output_dir+'/training_data.csv'
-# rldata_file = output_dir+'/rl_data.csv'
-# deterministic_amr_data_file = output_dir+'/deterministic_amr_data.csv'
-rldata_file = output_dir+'/rl_data_ood.csv'
-deterministic_amr_data_file = output_dir+'/deterministic_amr_data_ood.csv'
+rldata_file = output_dir+'/rl_data.csv'
+deterministic_amr_data_file = output_dir+'/deterministic_amr_data.csv'
+# rldata_file = output_dir+'/rl_data_ood.csv'
+# deterministic_amr_data_file = output_dir+'/deterministic_amr_data_ood.csv'
 
 
 df = pd.read_csv(train_data_file, index_col=0)
 cost = df.index.to_numpy()
 
-df = pd.read_csv(rldata_file, index_col=0)
-rlactions = df.index.to_numpy()
-rlepisode_cost = rlactions[-1]
-rlactions = rlactions[:-1]
-rldofs = df.iloc[:, 0].to_numpy()
-rlerrors = df.iloc[:, 1].to_numpy()
+if ex_type == 4: # example 2c
+   df = pd.read_csv(rldata_file)
+   rlepisode_cost = df['rlepisode_cost'][0]
+   rlactions = df[{'theta', 'rho'}].to_numpy()
+   rlactions = rlactions[:-1,:] # drop last row, which was padded
+   rldofs =  df['rldofs'].to_numpy()
+   rlerrors =  df['rlerrors'].to_numpy()
+else:
+   df = pd.read_csv(rldata_file, index_col=0)
+   rlactions = df.index.to_numpy()
+   rlepisode_cost = rlactions[-1]
+   rlactions = rlactions[:-1]
+   rldofs = df.iloc[:, 0].to_numpy()
+   rlerrors = df.iloc[:, 1].to_numpy()
 
 df = pd.read_csv(deterministic_amr_data_file, index_col=0)
 

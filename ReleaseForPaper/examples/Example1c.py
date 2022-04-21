@@ -181,7 +181,7 @@ output_dir_ = os.getcwd() + '/output/'
 if (restore_policy):
     chkpt_num = nbatches
     # set the path of the checkpoint
-    temp_path = 'Example1c_2022-04-19_11-52-16'
+    temp_path = 'Example1c_2022-04-20_10-36-17'
     checkpoint_dir = log_dir + temp_path
     chkpt_file=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num)
     output_dir = output_dir_ + temp_path
@@ -214,7 +214,7 @@ if train:
     checkpoint_path = trainer.save()
     print(checkpoint_path)
 if eval and not train:
-    temp_path = 'Example1c_2022-04-19_11-52-16'
+    temp_path = 'Example1c_2022-04-20_10-36-17'
     chkpt_num = nbatches
     checkpoint_dir = log_dir + temp_path
     # checkpoint_path=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt < 100
@@ -327,17 +327,17 @@ if save_data:
     print("Saving training data to: ", filename)    
     df1.to_csv(filename, index=False)
 
-    if ood_dof_threshold:
+    if args.out_of_dist_eval:
         filename = output_dir+"/rl_data_ood.csv"
     else:
         filename = output_dir+"/rl_data.csv"
     print("Saving RL deployed policy data to: ", filename)  
     df2.to_csv(filename, index=False)
 
-    if ood_dof_threshold:
+    if args.out_of_dist_eval:
         filename = output_dir+"/deterministic_amr_data_ood.csv"
     else:
-        filename = output_dir+"/deterministic_amr_data.csv.csv"
+        filename = output_dir+"/deterministic_amr_data.csv"
     print("Saving deterministic AMR policies data to: ", filename)    
     df3.to_csv(filename, index=False)
 
