@@ -33,6 +33,10 @@ elif output_dir.find('Example2c') != -1:
    print("Loading data from ", output_dir)
    fig_name_prefix = 'Example2c'
    ex_type = 4
+elif output_dir.find('Example3a') != -1:
+   print("Loading data from ", output_dir)
+   fig_name_prefix = 'Example3a'
+   ex_type = 5
 else:
    print("Provided output directory: ", output_dir)
    print("*** Error: output directory path not a recognized format, quitting.")
@@ -79,10 +83,10 @@ save_figs = True
 
 print("*** Check that correct data was loaded here in plots.py ***")
 train_data_file = output_dir+'/training_data.csv'
-# rldata_file = output_dir+'/rl_data.csv'
-# deterministic_amr_data_file = output_dir+'/deterministic_amr_data.csv'
-rldata_file = output_dir+'/rl_data_ood.csv'
-deterministic_amr_data_file = output_dir+'/deterministic_amr_data_ood.csv'
+rldata_file = output_dir+'/rl_data.csv'
+deterministic_amr_data_file = output_dir+'/deterministic_amr_data.csv'
+# rldata_file = output_dir+'/rl_data_ood.csv'
+# deterministic_amr_data_file = output_dir+'/deterministic_amr_data_ood.csv'
 
 
 df = pd.read_csv(train_data_file, index_col=0)

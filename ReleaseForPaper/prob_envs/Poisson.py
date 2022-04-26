@@ -9,6 +9,7 @@ import mfem.ser as mfem
 from mfem.ser import intArray
 from utils.Statistics import Statistics, GlobalError
 from utils.Solution_LShaped import *
+from utils.Solution_Wavefront import *
 
 from scipy.sparse import csr_matrix
 from scipy.sparse.linalg import dsolve
@@ -37,6 +38,10 @@ class Poisson(gym.Env):
         if (problem_type == 'lshaped'):
             self.BC = mfem.NumbaFunction(LShapedExact, 2).GenerateCoefficient()
             self.RHS = mfem.ConstantCoefficient(0.0)
+            self.coeff = mfem.ConstantCoefficient(1.0)
+        elif (problem_type == 'wavefront'):
+            self.BC =  WavefrontSolutionCoefficient('justright')
+            self.RHS =  WavefrontRHSCoefficient('justright')
             self.coeff = mfem.ConstantCoefficient(1.0)
         else:
             self.BC = mfem.ConstantCoefficient(0.0)
