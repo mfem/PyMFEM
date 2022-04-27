@@ -19,6 +19,11 @@ class WavefrontSolutionCoefficient(mfem.PyCoefficient):
             xc = -0.05
             yc = -0.05
             r0 = 0.7
+        elif self.solntype == 'justright':
+            alpha = 500.0
+            xc = -0.05
+            yc = -0.05
+            r0 = 0.7
         elif self.solntype == 'steep':
             alpha = 1000.0
             xc = -0.05

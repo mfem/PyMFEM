@@ -202,6 +202,13 @@ trainer = ppo.PPOTrainer(env="my_env", config=config,
                     logger_creator=custom_log_creator(checkpoint_dir))
 env = hpPoisson(**prob_config)
 
+obs = env.reset()
+env.render()
+action = np.array([0.1, 0.1])
+obs, reward, done, info = env.step(action)
+env.render()
+exit()
+
 if (restore_policy):
     trainer.restore(chkpt_file)
 
@@ -255,7 +262,7 @@ if eval and not args.marginals_eval:
     env.trainingmode = False
     num_steps_of_RL_policy = 0
     while not done:
-        action = trainer.compute_action(obs,explore=False)
+        action = trainer.compute_single_action(obs,explore=False)
         obs, reward, done, info = env.step(action)
         if not minimum_budget_problem and done:
             break

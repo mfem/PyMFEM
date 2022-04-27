@@ -111,7 +111,7 @@ plot_figs=args.plotfigs
 save_figs=args.savefigs
 
 restore_policy = False
-nbatches = 100
+nbatches = 50
 minimum_budget_problem = False  # mininum budget == error_threshold == minimize dofs
 
 ## Configuration for minimum budget problem
@@ -129,7 +129,8 @@ prob_config = {
 ## Change to minimum error problem
 if not minimum_budget_problem:
     prob_config['optimization_type'] = 'dof_threshold'
-    prob_config['dof_threshold']     = 1e4  # previously 5e4
+    # prob_config['dof_threshold']     = 1e4  # previously 5e4
+    prob_config['dof_threshold']     = 1e5  # previously 5e4
 
 ## Neural network configuration
 model_config = {
@@ -176,7 +177,7 @@ output_dir_ = os.getcwd() + '/output/'
 if (restore_policy):
     chkpt_num = nbatches
     # set the path of the checkpoint
-    temp_path = 'Example1a_2022-04-15_10-55-16'
+    temp_path = 'Example3a_2022-04-26_14-37-25'
     checkpoint_dir = log_dir + temp_path
     if chkpt_num < 100:
         chkpt_file=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num)
@@ -220,13 +221,13 @@ if train:
         checkpoint_path = trainer.save(checkpoint_dir)
         print(checkpoint_path)
 if eval and not train:
-    temp_path = 'Example1a_2022-04-15_10-55-16'
+    temp_path = 'Example3a_2022-04-26_14-37-25'
     chkpt_num = nbatches
     checkpoint_dir = log_dir + temp_path
     if chkpt_num < 100:
         checkpoint_path=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num)
     else:
-        checkpoint_path=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt > 99 and <1000
+        checkpoint_path=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt > 99 and < 1000
     output_dir = output_dir_ + temp_path
 
 if train:

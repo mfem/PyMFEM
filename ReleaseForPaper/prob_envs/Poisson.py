@@ -138,7 +138,8 @@ class Poisson(gym.Env):
     def render(self):
         sol_sock = mfem.socketstream("localhost", 19916)
         sol_sock.precision(8)
-        sol_sock.send_solution(self.mesh,  self.x)
+        prolonged_x = mfem.ProlongToMaxOrder(self.x)
+        sol_sock.send_solution(self.mesh,  prolonged_x)
         title = "step " + str(self.k)
         sol_sock.send_text("window_title '" + title)
 

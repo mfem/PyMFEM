@@ -1,6 +1,6 @@
 """
     
-    EXAMPLE 3-C: hp-refinement policy for wavefront problem with robust angles
+    EXAMPLE 3-C: hp-refinement policy for wavefront problem 
 
 """
 
@@ -12,7 +12,7 @@ import ray
 import ray.rllib.agents.ppo as ppo
 from ray.tune.registry import register_env
 from tensorflow.python.ops.gen_array_ops import lower_bound
-from prob_envs.RobustPoisson import hpPoisson
+from prob_envs.RobustPoisson import hpWavefront
 import numpy as np
 import time
 import seaborn as sns
@@ -115,7 +115,7 @@ plot_figs=args.plotfigs
 save_figs=args.savefigs
 
 restore_policy = False
-nbatches = 250
+nbatches = 10
 minimum_budget_problem = False  # mininum budget == error_threshold == minimize dofs
 
 ## Configuration for minimum budget problem
@@ -127,15 +127,13 @@ prob_config = {
     'optimization_type'     : 'error_threshold', 
     'dof_threshold'         : 5e5,
     'error_threshold'       : 1e-4,
-    'angle_lower'           : np.pi * 0.25,
-    'angle_upper'           : np.pi * 0.75,
     'num_batches'           : nbatches
 }
 
 ## Change to minimum error problem
 if not minimum_budget_problem:
     prob_config['optimization_type'] = 'dof_threshold'
-    prob_config['dof_threshold']     = 1e4
+    prob_config['dof_threshold']     = 1e5
 
 
 
@@ -184,23 +182,34 @@ output_dir_ = os.getcwd() + '/output/'
 if (restore_policy):
     chkpt_num = nbatches
     # set the path of the checkpoint
-    temp_path = 'Example2c_2022-04-21_14-04-31'
+    temp_path = 'Example3c_2022-04-27_12-34-30'
     checkpoint_dir = log_dir + temp_path
-    chkpt_file=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num)
+    if chkpt_num < 100:
+        chkpt_file=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num)
+    else:
+        chkpt_file=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num)
     output_dir = output_dir_ + temp_path
 else:
     timestr = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
-    temp_path = 'Example2c_' + timestr
+    temp_path = 'Example3c_' + timestr
     checkpoint_dir = log_dir + temp_path
     output_dir = output_dir_ + temp_path
 
 ## Train policy
 ray.shutdown()
 ray.init(ignore_reinit_error=True)
-register_env("my_env", lambda config : hpPoisson(**prob_config))
+register_env("my_env", lambda config : hpWavefront(**prob_config))
 trainer = ppo.PPOTrainer(env="my_env", config=config,
                     logger_creator=custom_log_creator(checkpoint_dir))
-env = hpPoisson(**prob_config)
+env = hpWavefront(**prob_config)
+
+
+# obs = env.reset()
+# env.render()
+# action = np.array([0.1, 0.1])
+# obs, reward, done, info = env.step(action)
+# env.render()
+# exit()
 
 if (restore_policy):
     trainer.restore(chkpt_file)
@@ -217,11 +226,13 @@ if train:
     checkpoint_path = trainer.save()
     print(checkpoint_path)
 if eval and not train:
-    temp_path = 'Example2c_2022-04-21_14-04-31'
+    temp_path = 'Example3c_2022-04-27_12-34-30'
     chkpt_num = nbatches
     checkpoint_dir = log_dir + temp_path
-    # checkpoint_path=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt < 100
-    checkpoint_path=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt > 99 and <1000
+    if chkpt_num < 100:
+        checkpoint_path=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num)
+    else:
+        checkpoint_path=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt > 99 and <1000
     output_dir = output_dir_ + temp_path
 
 if train:
@@ -233,12 +244,12 @@ if train:
 
 if eval and not args.marginals_eval:
 
-    if args.out_of_dist_eval:
-        angle = np.pi * 0.1
-    else:
-        angle = np.pi/2
-    env.set_angle(angle)
-    print("*** Set angle for eval to  ", angle)
+    # if args.out_of_dist_eval:
+    #     angle = np.pi * 0.1
+    # else:
+    #     angle = np.pi/2
+    # env.set_angle(angle)
+    # print("*** Set angle for eval to  ", angle)
 
 
 
@@ -247,7 +258,8 @@ if eval and not args.marginals_eval:
     trainer.restore(checkpoint_path)
     cols = ['theta', 'rho']
     rlactions = pd.DataFrame(columns=cols)
-    obs = env.reset(random_angle=False)
+    # obs = env.reset(random_angle=False)
+    obs = env.reset()
     done = False
     rlepisode_cost = 0
     rlerrors = [env.global_error]
@@ -255,7 +267,7 @@ if eval and not args.marginals_eval:
     env.trainingmode = False
     num_steps_of_RL_policy = 0
     while not done:
-        action = trainer.compute_action(obs,explore=False)
+        action = trainer.compute_single_action(obs,explore=False)
         obs, reward, done, info = env.step(action)
         if not minimum_budget_problem and done:
             break
@@ -269,40 +281,41 @@ if eval and not args.marginals_eval:
         rldofs.append(info['num_dofs'])
         rlerrors.append(info['global_error'])
 
-    ## Enact AMR policies, using "expert" strategy
-    costs = []
-    actions = []
-    nth = 100
-    errors = []
-    dofs = []
-    for i in range(1, nth):
-        print(i)
-        action = np.array([i/nth]) # note 1D action space
-        actions.append(action.item())
-        print("action = ", action.item())
-        obs = env.reset(random_angle=False)
-        done = False
-        episode_cost_tmp = 0
-        errors_tmp = [env.global_error]
-        dofs_tmp = [env.sum_of_dofs]
-        max_steps   = 40 # or:  num_steps_of_RL_policy
-        steps_taken = 0
-        while not done:
-            _, reward, done, info = env.expertStep(action)
-            if not minimum_budget_problem and done:
-                break
-            if steps_taken > max_steps:
-                print("*** BREAKING EARLY - fixed action exceeded max step threshold of ", max_steps, "steps.")
-                break
-            else:
-                steps_taken += 1
-            episode_cost_tmp -= reward
-            errors_tmp.append(info['global_error'])
-            dofs_tmp.append(info['num_dofs'])
-        costs.append(episode_cost_tmp)
-        errors.append(errors_tmp)
-        dofs.append(dofs_tmp)
-        print('episode cost = ', episode_cost_tmp)
+    # ## Enact AMR policies, using "expert" strategy
+    # costs = []
+    # actions = []
+    # nth = 100
+    # errors = []
+    # dofs = []
+    # for i in range(1, nth):
+    #     print(i)
+    #     action = np.array([i/nth]) # note 1D action space
+    #     actions.append(action.item())
+    #     print("action = ", action.item())
+    #     # obs = env.reset(random_angle=False)
+    #     obs = env.reset()
+    #     done = False
+    #     episode_cost_tmp = 0
+    #     errors_tmp = [env.global_error]
+    #     dofs_tmp = [env.sum_of_dofs]
+    #     max_steps   = 40 # or:  num_steps_of_RL_policy
+    #     steps_taken = 0
+    #     while not done:
+    #         _, reward, done, info = env.expertStep(action)
+    #         if not minimum_budget_problem and done:
+    #             break
+    #         if steps_taken > max_steps:
+    #             print("*** BREAKING EARLY - fixed action exceeded max step threshold of ", max_steps, "steps.")
+    #             break
+    #         else:
+    #             steps_taken += 1
+    #         episode_cost_tmp -= reward
+    #         errors_tmp.append(info['global_error'])
+    #         dofs_tmp.append(info['num_dofs'])
+    #     costs.append(episode_cost_tmp)
+    #     errors.append(errors_tmp)
+    #     dofs.append(dofs_tmp)
+    #     print('episode cost = ', episode_cost_tmp)
 
     # ## Enact AMR policies, using "fixed two parameter sweep" strategy
     tp_costs = []
@@ -317,7 +330,8 @@ if eval and not args.marginals_eval:
             action = tp_actions[index_count]
             print("action = ", tp_actions[index_count])
             index_count += 1
-            obs = env.reset(random_angle=False)
+            # obs = env.reset(random_angle=False)
+            obs = env.reset()
             done = False
             episode_cost_tmp = 0
             errors_tmp = [env.global_error]
