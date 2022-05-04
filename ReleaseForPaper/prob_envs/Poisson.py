@@ -52,9 +52,10 @@ class Poisson(gym.Env):
         self.error_threshold = kwargs.get('error_threshold',1e-3)
         self.dof_threshold = kwargs.get('dof_threshold',5e4)
 
-        mesh_name = kwargs.get('mesh_name','l-shape-benchmark.mesh')
+        self.mesh_name = kwargs.get('mesh_name','l-shape-benchmark.mesh')
+        
         num_unif_ref = kwargs.get('num_unif_ref',1)
-        self.meshfile = expanduser(join(os.path.dirname(__file__), '../..', 'data', mesh_name))
+        self.meshfile = expanduser(join(os.path.dirname(__file__), '../..', 'data', self.mesh_name))
         mesh = mfem.Mesh(self.meshfile)
         mesh.EnsureNCMesh()
         for _ in range(num_unif_ref):
@@ -136,6 +137,7 @@ class Poisson(gym.Env):
         return obs, -cost, done, info
     
     def render(self):
+        print("Mesh is ", self.mesh)
         sol_sock = mfem.socketstream("localhost", 19916)
         sol_sock.precision(8)
         prolonged_x = mfem.ProlongToMaxOrder(self.x)

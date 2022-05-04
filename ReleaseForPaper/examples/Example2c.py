@@ -104,11 +104,10 @@ parser.add_argument('--plotfigs', default=True, action='store_true')
 parser.add_argument('--no-plotfigs', dest='plotfigs', action='store_false')
 parser.add_argument('--savefigs', default=True, action='store_true')
 parser.add_argument('--no-savefigs', dest='savefigs', action='store_false')
-# parser.add_argument('--ood-eval', dest='out_of_dist_eval', default=False, action='store_true')
 parser.add_argument('--marginals', dest='marginals_eval', default=False, action='store_true')
 parser.add_argument('--angle', dest='angle_eval', type=float, default= np.pi / 2)
 args = parser.parse_args()
-print("Parsed options = ", args)
+print("\n Parsed options = ", args, "\n")
 train=args.train
 eval=args.eval
 save_data=args.savedata
@@ -122,8 +121,8 @@ minimum_budget_problem = False  # mininum budget == error_threshold == minimize 
 
 ## Configuration for minimum budget problem
 prob_config = {
-    'mesh_name'             : 'l-shape-benchmark.mesh',
-    'problem_type'          : 'lshaped',
+    'mesh_name'             : 'star.mesh',       # 'l-shape-benchmark.mesh',
+    'problem_type'          : 'noneoftheabove',  # 'lshaped',
     'num_unif_ref'          : 1,
     'order'                 : 2,
     'optimization_type'     : 'error_threshold', 
@@ -242,15 +241,9 @@ if train:
 
 if eval and not args.marginals_eval:
 
-    # if args.out_of_dist_eval:
-    #     angle = np.pi * 0.1
-    # else:
-    #     angle = np.pi/2
-    env.set_angle(args.angle_eval)
-    print("*** Set angle for eval to  ", args.angle_eval)
-
-
-
+    if prob_config['mesh_name'] == 'l-shape-benchmark.mesh': 
+        env.set_angle(args.angle_eval) # note: set_angle(...) redefines self.initial_mesh
+        print("*** Set angle for eval to  ", args.angle_eval)
 
     ## Enact trained policy
     trainer.restore(checkpoint_path)
@@ -263,6 +256,8 @@ if eval and not args.marginals_eval:
     rldofs = [env.sum_of_dofs]
     env.trainingmode = False
     num_steps_of_RL_policy = 0
+
+
     while not done:
         action = trainer.compute_single_action(obs,explore=False)
         obs, reward, done, info = env.step(action)
@@ -278,6 +273,11 @@ if eval and not args.marginals_eval:
         rldofs.append(info['num_dofs'])
         rlerrors.append(info['global_error'])
 
+    
+    env.RenderMesh()
+    env.RenderHPmesh()
+    print("\nRendering RL policies\n")
+    
     ## Enact AMR policies, using "expert" strategy
     costs = []
     actions = []
@@ -316,13 +316,19 @@ if eval and not args.marginals_eval:
     # ## Enact AMR policies, using "fixed two parameter sweep" strategy
     tp_costs = []
     tp_nth = 10
-    tp_actions = np.zeros(((tp_nth-1)**2,2))
+    # tp_actions = np.zeros(((tp_nth-1)**2,2)) # exclude 0.0, 1.0 as actions
+    tp_actions = np.zeros(((tp_nth+1)**2,2)) # include 0.0, 1.0 as actions
     tp_errors = []
     tp_dofs = []
     index_count = 0
-    for theta in range(1, tp_nth):
-        for rho in range(1, tp_nth):
+
+    # for theta in range(1, tp_nth):      # exclude 0.0, 1.0 as actions
+    #     for rho in range(1, tp_nth):    # exclude 0.0, 1.0 as actions
+    for theta in range(0, tp_nth+1):      # include 0.0, 1.0 as actions
+        for rho in range(0, tp_nth+1):    # include 0.0, 1.0 as actions
             tp_actions[index_count] = np.array([theta/tp_nth, rho/tp_nth]) # note 1D action space
+            if theta/tp_nth == 1 and rho/tp_nth == 1: # avoid some linear algerbra error if action is [1,1]
+                tp_actions[index_count] = np.array([0.99, 0.99])
             action = tp_actions[index_count]
             print("action = ", tp_actions[index_count])
             index_count += 1
@@ -349,6 +355,10 @@ if eval and not args.marginals_eval:
             tp_errors.append(errors_tmp)
             tp_dofs.append(dofs_tmp)
             print('episode cost = ', episode_cost_tmp)
+            if theta == 5 and rho == 5:
+                env.RenderMesh()
+                env.RenderHPmesh()
+                print("\nRendering two parmaeter policy ", tp_actions[index_count-1], "\n")
 
 if args.marginals_eval:
     print("Creating data for marginals")
@@ -425,7 +435,9 @@ if args.marginals_eval:
 
 if (save_data or save_figs):
     mkdir_p(output_dir)
+    print()
     print_config(output_dir,prob_config=prob_config, rl_config=rl_config)
+    print()
 
 
 if save_data:
@@ -449,20 +461,12 @@ if save_data:
     df2 = pd.DataFrame({'theta':rlactions.iloc[:,0], 'rho':rlactions.iloc[:,1], 'rldofs':rldofs,'rlerrors':rlerrors})
     # save a single value in every row of new column 'rlepisode_cost'
     df2['rlepisode_cost'] = rlepisode_cost 
-    # if args.out_of_dist_eval:
-    #     filename = output_dir+"/rl_data_ood.csv"
-    # else:
-    #     filename = output_dir+"/rl_data.csv"
     filename = output_dir+"/rl_data_angle_" + angle_abbrv + ".csv"
     print("Saving RL deployed policy data to: ", filename)  
     df2.to_csv(filename, index=False)
 
     #### expert policy df
     df3 = pd.DataFrame({'actions':actions,'costs':costs,'errors':errors,'dofs':dofs})
-    # if args.out_of_dist_eval:
-    #     filename = output_dir+"/deterministic_amr_data_ood.csv"
-    # else:
-    #     filename = output_dir+"/deterministic_amr_data.csv"
     filename = output_dir+"/deterministic_amr_data_angle_" + angle_abbrv + ".csv"
     print("Saving deterministic AMR policies data to: ", filename)    
     df3.to_csv(filename, index=False)
@@ -475,10 +479,6 @@ if save_data:
     print(len(tp_errors))
     print(len(tp_dofs))
     df4 = pd.DataFrame({'theta':tp_actions[:,0], 'rho':tp_actions[:,1],'costs':tp_costs,'errors':tp_errors,'dofs':tp_dofs})
-    # if args.out_of_dist_eval:
-    #     filename = output_dir+"/two_param_amr_data_ood.csv"
-    # else:
-    #     filename = output_dir+"/two_param_amr_data.csv"
     filename = output_dir+"/two_param_amr_data_angle_" + angle_abbrv + ".csv"
     print("Saving two parameter AMR policies data to: ", filename)    
     df4.to_csv(filename, index=False)

@@ -56,14 +56,16 @@ class RobustAnglePoisson(Poisson):
         super().__init__(**kwargs)
         delattr(self, 'BC')
         self.BC = mfem.NumbaFunction(ReentrantCornerExact, 2, True).GenerateCoefficient()
-        mesh_name = 'l-shape-benchmark.mesh'
+
         self.num_unif_ref = kwargs.get('num_unif_ref',1)
-        self.Lshapedmeshfile = expanduser(join(os.path.dirname(__file__), '../..', 'data', mesh_name))
+        self.Lshapedmeshfile = expanduser(join(os.path.dirname(__file__), '../..', 'data', 'l-shape-benchmark.mesh'))
 
         self.angle = kwargs.get('angle_lower', np.pi * 0.5)
         self.angle_lower = kwargs.get('angle_lower', np.pi * 0.25)
         self.angle_upper = kwargs.get('angle_upper', np.pi * 0.75)
-        self.set_angle(self.angle)
+        if self.mesh_name == 'l-shape-benchmark.mesh':
+            print("Setting env angle to ", self.angle)
+            self.set_angle(self.angle)
 
     def set_angle(self, angle):
         self.angle = angle
@@ -76,6 +78,7 @@ class RobustAnglePoisson(Poisson):
     def reset(self, random_angle=True):
         if random_angle:
             angle = np.random.uniform(self.angle_lower, self.angle_upper, 1).item()
+            print("Resetting env angle to ", angle)
             self.set_angle(angle)
         return super().reset()
 
