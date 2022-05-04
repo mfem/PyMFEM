@@ -104,8 +104,9 @@ parser.add_argument('--plotfigs', default=True, action='store_true')
 parser.add_argument('--no-plotfigs', dest='plotfigs', action='store_false')
 parser.add_argument('--savefigs', default=True, action='store_true')
 parser.add_argument('--no-savefigs', dest='savefigs', action='store_false')
-parser.add_argument('--ood-eval', dest='out_of_dist_eval', default=False, action='store_true')
+# parser.add_argument('--ood-eval', dest='out_of_dist_eval', default=False, action='store_true')
 parser.add_argument('--marginals', dest='marginals_eval', default=False, action='store_true')
+parser.add_argument('--angle', dest='angle_eval', type=float, default= np.pi / 2)
 args = parser.parse_args()
 print("Parsed options = ", args)
 train=args.train
@@ -113,6 +114,7 @@ eval=args.eval
 save_data=args.savedata
 plot_figs=args.plotfigs
 save_figs=args.savefigs
+angle_abbrv = "{:.2f}".format(np.round(args.angle_eval,2)) # to fix filename length
 
 restore_policy = False
 nbatches = 250
@@ -184,7 +186,7 @@ output_dir_ = os.getcwd() + '/output/'
 if (restore_policy):
     chkpt_num = nbatches
     # set the path of the checkpoint
-    temp_path = 'Example2c_2022-04-21_14-04-31'
+    temp_path = 'Example2c_2022-04-21_14-04-31' # dof thresh 1e4; angle training; num_batch 250
     checkpoint_dir = log_dir + temp_path
     chkpt_file=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num)
     output_dir = output_dir_ + temp_path
@@ -202,12 +204,12 @@ trainer = ppo.PPOTrainer(env="my_env", config=config,
                     logger_creator=custom_log_creator(checkpoint_dir))
 env = hpPoisson(**prob_config)
 
-obs = env.reset()
-env.render()
-action = np.array([0.1, 0.1])
-obs, reward, done, info = env.step(action)
-env.render()
-exit()
+# obs = env.reset()
+# env.render()
+# action = np.array([0.1, 0.1])
+# obs, reward, done, info = env.step(action)
+# env.render()
+# exit()
 
 if (restore_policy):
     trainer.restore(chkpt_file)
@@ -224,7 +226,7 @@ if train:
     checkpoint_path = trainer.save()
     print(checkpoint_path)
 if eval and not train:
-    temp_path = 'Example2c_2022-04-21_14-04-31'
+    temp_path = 'Example2c_2022-04-21_14-04-31'  # dof thresh 1e4; angle training; num_batch 250
     chkpt_num = nbatches
     checkpoint_dir = log_dir + temp_path
     # checkpoint_path=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt < 100
@@ -240,12 +242,12 @@ if train:
 
 if eval and not args.marginals_eval:
 
-    if args.out_of_dist_eval:
-        angle = np.pi * 0.1
-    else:
-        angle = np.pi/2
-    env.set_angle(angle)
-    print("*** Set angle for eval to  ", angle)
+    # if args.out_of_dist_eval:
+    #     angle = np.pi * 0.1
+    # else:
+    #     angle = np.pi/2
+    env.set_angle(args.angle_eval)
+    print("*** Set angle for eval to  ", args.angle_eval)
 
 
 
@@ -447,19 +449,21 @@ if save_data:
     df2 = pd.DataFrame({'theta':rlactions.iloc[:,0], 'rho':rlactions.iloc[:,1], 'rldofs':rldofs,'rlerrors':rlerrors})
     # save a single value in every row of new column 'rlepisode_cost'
     df2['rlepisode_cost'] = rlepisode_cost 
-    if args.out_of_dist_eval:
-        filename = output_dir+"/rl_data_ood.csv"
-    else:
-        filename = output_dir+"/rl_data.csv"
+    # if args.out_of_dist_eval:
+    #     filename = output_dir+"/rl_data_ood.csv"
+    # else:
+    #     filename = output_dir+"/rl_data.csv"
+    filename = output_dir+"/rl_data_angle_" + angle_abbrv + ".csv"
     print("Saving RL deployed policy data to: ", filename)  
     df2.to_csv(filename, index=False)
 
     #### expert policy df
     df3 = pd.DataFrame({'actions':actions,'costs':costs,'errors':errors,'dofs':dofs})
-    if args.out_of_dist_eval:
-        filename = output_dir+"/deterministic_amr_data_ood.csv"
-    else:
-        filename = output_dir+"/deterministic_amr_data.csv"
+    # if args.out_of_dist_eval:
+    #     filename = output_dir+"/deterministic_amr_data_ood.csv"
+    # else:
+    #     filename = output_dir+"/deterministic_amr_data.csv"
+    filename = output_dir+"/deterministic_amr_data_angle_" + angle_abbrv + ".csv"
     print("Saving deterministic AMR policies data to: ", filename)    
     df3.to_csv(filename, index=False)
 
@@ -471,10 +475,11 @@ if save_data:
     print(len(tp_errors))
     print(len(tp_dofs))
     df4 = pd.DataFrame({'theta':tp_actions[:,0], 'rho':tp_actions[:,1],'costs':tp_costs,'errors':tp_errors,'dofs':tp_dofs})
-    if args.out_of_dist_eval:
-        filename = output_dir+"/two_param_amr_data_ood.csv"
-    else:
-        filename = output_dir+"/two_param_amr_data.csv"
+    # if args.out_of_dist_eval:
+    #     filename = output_dir+"/two_param_amr_data_ood.csv"
+    # else:
+    #     filename = output_dir+"/two_param_amr_data.csv"
+    filename = output_dir+"/two_param_amr_data_angle_" + angle_abbrv + ".csv"
     print("Saving two parameter AMR policies data to: ", filename)    
     df4.to_csv(filename, index=False)
 
@@ -486,5 +491,5 @@ if plot_figs or save_figs:
 
     import subprocess
     print("Calling plots.py")
-    string_to_call = "python plots.py " + output_dir
+    string_to_call = "python plots.py " + output_dir + " --angle " + angle_abbrv
     subprocess.call(string_to_call, shell=True)

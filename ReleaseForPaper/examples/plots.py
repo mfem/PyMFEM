@@ -10,12 +10,16 @@ from pathlib import Path
 
 parser = argparse.ArgumentParser()
 parser.add_argument("file_path", type=Path)
+parser.add_argument('--angle_abbrv', type=str, required=False)
 
-p = parser.parse_args()
+args = parser.parse_args()
 
-assert p.file_path.exists() , "The given directory doesn't exist"
+assert args.file_path.exists() , "The given directory doesn't exist"
 
-output_dir = str(p.file_path)
+output_dir = str(args.file_path)
+
+if args.angle_abbrv is not None:
+   print("Plotting for angle ", args.angle_abbrv)
 
 if   output_dir.find('Example1a') != -1:
    print("Loading data from ", output_dir)
@@ -30,8 +34,9 @@ elif output_dir.find('Example1c') != -1:
    fig_name_prefix = 'Example1c'
    ex_type = 3
 elif output_dir.find('Example2c') != -1:
+   assert args.angle_abbrv is not None , "Need to provide angle to plots.py for Example 2c"
    print("Loading data from ", output_dir)
-   fig_name_prefix = 'Example2c'
+   fig_name_prefix = 'Example2c_angle_' + args.angle_abbrv
    ex_type = 4
 elif output_dir.find('Example3a') != -1:
    print("Loading data from ", output_dir)
@@ -85,8 +90,10 @@ print("*** Check that correct data was loaded here in plots.py ***")
 train_data_file = output_dir+'/training_data.csv'
 rldata_file = output_dir+'/rl_data.csv'
 deterministic_amr_data_file = output_dir+'/deterministic_amr_data.csv'
-# rldata_file = output_dir+'/rl_data_ood.csv'
-# deterministic_amr_data_file = output_dir+'/deterministic_amr_data_ood.csv'
+if args.angle_abbrv is not None:
+   rldata_file = rldata_file[:-4] + '_angle_' + args.angle_abbrv + '.csv'
+   deterministic_amr_data_file = deterministic_amr_data_file[:-4] + '_angle_' + args.angle_abbrv + '.csv'
+   two_param_data_file = output_dir + '/two_param_amr_data_angle_' + args.angle_abbrv + '.csv'
 
 
 df = pd.read_csv(train_data_file, index_col=0)
@@ -106,6 +113,7 @@ else:
    rlactions = rlactions[:-1]
    rldofs = df.iloc[:, 0].to_numpy()
    rlerrors = df.iloc[:, 1].to_numpy()
+
 
 df = pd.read_csv(deterministic_amr_data_file, index_col=0)
 
@@ -218,11 +226,20 @@ if save_figs:
    plt.savefig(output_dir+'/'+fig_name_prefix+'_fig5.pdf',format='pdf', bbox_inches='tight')
 
 ## Plot action vs. refinement step
+
 plt.figure(figsize=(6,6))
 ax6 = plt.gca()
-plt.plot(rlactions,'-o',lw=1.3, label=r'(AM)$^2$R policy')
+if ex_type == 4: # expand if condition to accomdate any hp problem
+   # print(rlactions[:,0])
+   # plot(x1, y1, 'bo')
+   plt.plot(rlactions[:,0],'-o',lw=1.3, label=r'$\theta$ (h parameter)')
+   plt.plot(rlactions[:,1],'-o',lw=1.3, label=r'$\rho$ (p parameter)')
+   ax6.set_ylabel(r'parameter values in trained (AM)$^2$R policy')
+   ax6.legend(loc='upper right')
+else:
+   plt.plot(rlactions,'-o',lw=1.3, label=r'(AM)$^2$R policy')
+   ax6.set_ylabel(r'$\theta$ in trained (AM)$^2$R policy')
 ax6.set_xlabel(r'Refinement step')
-ax6.set_ylabel(r'$\theta$ in trained (AM)$^2$R policy')
 if save_figs:
    plt.savefig(output_dir+'/'+fig_name_prefix+'_fig6.pdf',format='pdf', bbox_inches='tight')
 
