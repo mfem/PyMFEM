@@ -121,8 +121,8 @@ minimum_budget_problem = False  # mininum budget == error_threshold == minimize 
 
 ## Configuration for minimum budget problem
 prob_config = {
-    'mesh_name'             : 'star.mesh',       # 'l-shape-benchmark.mesh',
-    'problem_type'          : 'noneoftheabove',  # 'lshaped',
+    'mesh_name'             :  'l-shape-benchmark.mesh', #'star.mesh',       #
+    'problem_type'          :  'lshaped', #'noneoftheabove', 
     'num_unif_ref'          : 1,
     'order'                 : 2,
     'optimization_type'     : 'error_threshold', 
@@ -363,12 +363,64 @@ if eval and not args.marginals_eval:
 if args.marginals_eval:
     print("Creating data for marginals")
 
-    # angle_vals = np.pi* np.linspace(1/4,3/4,3)    # 3 angles, for debugging
+    angle_vals = np.pi* np.linspace(1/4,3/4,10)    # 3 angles, for debugging
     # angle_vals = np.pi* np.linspace(1/4,3/4,100)  # 100 angle test
-    angle_vals = np.pi* np.linspace(1/2,1/2,1)    # only do pi/2
+    # angle_vals = np.pi* np.linspace(1/2,1/2,1)    # only do pi/2
     # angle_vals = np.pi* np.linspace(0,0,1)               # only do 0
 
-    samples_per_param = 4
+
+   
+    ##########################################
+    # single RL policy marginals data creation 
+    ##########################################
+    
+    headers = ['theta', 'rho', 'angle', 'step', 'num elts', 'num dofs', 'sum dofs', 'error est', 'cost']#, 'L2 Error', 'H1 Error']
+    rows = []
+ 
+    for angle in angle_vals:
+        trainer.restore(checkpoint_path)
+        env.set_angle(angle)
+        print("*** Set angle for RL eval to  ", angle)
+        obs = env.reset(random_angle=False)
+        env.trainingmode = False
+        done = False
+
+        rlepisode_cost = 0.0
+        steps_taken = 0
+        max_steps = 40
+
+        while not done:
+            action = trainer.compute_single_action(obs,explore=False)
+            rows.append([action[0], action[1], angle, env.k, env.mesh.GetNE(), env.fespace.GetTrueVSize(), 
+                                        env.sum_of_dofs, env.global_error, rlepisode_cost])
+            obs, reward, done, info = env.step(action)
+            if not minimum_budget_problem and done:
+                break
+            if steps_taken > max_steps:
+                print("*** BREAKING EARLY - fixed action exceeded max step threshold of ", max_steps, "steps.")
+                break
+            else:
+                steps_taken += 1
+            rlepisode_cost -= reward
+            # print("step     = ", env.k)
+            # print("action   = [", action[0], ", ", action[1], "]")
+            # print("num elts = ", env.mesh.GetNE())
+            # print("ep. cost = ", rlepisode_cost)
+        
+    
+    #### rl marginals data df and saving
+    df_rl = pd.DataFrame(rows, columns=headers)
+    filename = output_dir+"/marginals/marginals_rl.csv"
+    print("Saving marginals data to: ", filename)    
+    df_rl.to_csv(filename, index=False)
+    print("Exiting")
+    exit()
+
+    ##########################################
+    # two param policy marginals data creation 
+    ##########################################
+   
+    samples_per_param = 10
 
     headers = ['theta', 'rho', 'angle', 'step', 'num elts', 'num dofs', 'sum dofs', 'error est', 'cost']#, 'L2 Error', 'H1 Error']
     # headers = ['theta', 'rho',         'N', 'DoFs', 'Total_DoFs', 'Error_Estimate', 'Cost']#, 'L2_Error', 'H1_Error']
@@ -383,6 +435,7 @@ if args.marginals_eval:
                 theta = j / samples_per_param
                 rho = k / samples_per_param
                 action = np.array([theta, rho])
+                print("Collecting data for action ", action)
                 episode_cost = 0.0
                 rows.append([action[0].item(), action[1].item(), angle, env.k, env.mesh.GetNE(), env.fespace.GetTrueVSize(), 
                                         env.sum_of_dofs, env.global_error, episode_cost])
@@ -418,13 +471,15 @@ if args.marginals_eval:
     # import time
     # job_time_id = int(time.time()) 
     # print("Job time id = ", job_time_id)
-    with open(output_dir+'marginals_temp.csv', 'w') as datafile:
-        write = csv.writer(datafile)
-        write.writerow(headers)
-        write.writerows(rows)
-    
-    print("Marginals data needs more writing and debugging")
+
+    #### tpp marginals data df and saving
+    df_tpp = pd.DataFrame(rows, columns=headers)
+    filename = output_dir+"/marginals_tpp.csv"
+    print("Saving marginals data to: ", filename)    
+    df_tpp.to_csv(filename, index=False)
+    print("Exiting")
     exit()
+
 
 
 
