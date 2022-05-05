@@ -363,10 +363,13 @@ if eval and not args.marginals_eval:
 if args.marginals_eval:
     print("Creating data for marginals")
 
-    angle_vals = np.pi* np.linspace(1/4,3/4,10)    # 3 angles, for debugging
+    # angle_vals = np.pi* np.linspace(1/4,3/4,3)    # 3 angles, for debugging
     # angle_vals = np.pi* np.linspace(1/4,3/4,100)  # 100 angle test
     # angle_vals = np.pi* np.linspace(1/2,1/2,1)    # only do pi/2
-    # angle_vals = np.pi* np.linspace(0,0,1)               # only do 0
+    # angle_vals = np.pi* np.linspace(0,0,1)        # only do 0
+    # angle_vals = np.pi* np.linspace(3/4,95/100,10)    
+    # angle_vals = np.pi* np.linspace(5/100,1/4,10)    
+    angle_vals = np.pi* np.linspace(5/100,95/100,20)    
 
 
    
@@ -411,10 +414,8 @@ if args.marginals_eval:
     #### rl marginals data df and saving
     df_rl = pd.DataFrame(rows, columns=headers)
     filename = output_dir+"/marginals/marginals_rl.csv"
-    print("Saving marginals data to: ", filename)    
+    print("Saving RL marginals data to: ", filename, "\n")    
     df_rl.to_csv(filename, index=False)
-    print("Exiting")
-    exit()
 
     ##########################################
     # two param policy marginals data creation 
@@ -426,16 +427,17 @@ if args.marginals_eval:
     # headers = ['theta', 'rho',         'N', 'DoFs', 'Total_DoFs', 'Error_Estimate', 'Cost']#, 'L2_Error', 'H1_Error']
     rows = []
     for j in range(samples_per_param):
+        print("... working on actions [", j/samples_per_param, ", :] ...")
         for k in range(samples_per_param):
             for angle in angle_vals:
                 env.set_angle(angle)
-                print("*** Set angle for eval to  ", angle)
+                # print("*** Set angle for eval to  ", angle)
                 obs = env.reset(random_angle=False)
                 done = False
                 theta = j / samples_per_param
                 rho = k / samples_per_param
                 action = np.array([theta, rho])
-                print("Collecting data for action ", action)
+                # print("Collecting data for action ", action, " with angle ", angle)
                 episode_cost = 0.0
                 rows.append([action[0].item(), action[1].item(), angle, env.k, env.mesh.GetNE(), env.fespace.GetTrueVSize(), 
                                         env.sum_of_dofs, env.global_error, episode_cost])
@@ -474,7 +476,7 @@ if args.marginals_eval:
 
     #### tpp marginals data df and saving
     df_tpp = pd.DataFrame(rows, columns=headers)
-    filename = output_dir+"/marginals_tpp.csv"
+    filename = output_dir+"/marginals/marginals_tpp.csv"
     print("Saving marginals data to: ", filename)    
     df_tpp.to_csv(filename, index=False)
     print("Exiting")
@@ -512,7 +514,7 @@ if save_data:
 
     #### rl action df
     # pad rlactions with one extra row to enable df2 creation
-    rlactions = rlactions = rlactions.append({'theta': 999, 'rho': 999}, ignore_index=True)
+    rlactions = rlactions.append({'theta': 999, 'rho': 999}, ignore_index=True)
     df2 = pd.DataFrame({'theta':rlactions.iloc[:,0], 'rho':rlactions.iloc[:,1], 'rldofs':rldofs,'rlerrors':rlerrors})
     # save a single value in every row of new column 'rlepisode_cost'
     df2['rlepisode_cost'] = rlepisode_cost 

@@ -22,25 +22,25 @@ output_dir = str(args.file_path)
 #    print("Plotting for angle ", args.angle_abbrv)
 
 if output_dir.find('Example2c') != -1:
-   # assert args.angle_abbrv is not None , "Need to provide angle to plots.py for Example 2c"
-   print("Loading data from ", output_dir)
-   # fig_name_prefix = 'Example2c_angle_' + args.angle_abbrv
-   fig_name_prefix = 'Example2c_marginals_'
-   ex_type = 4
+    # assert args.angle_abbrv is not None , "Need to provide angle to plots.py for Example 2c"
+    print("Loading data from ", output_dir)
+    # fig_name_prefix = 'Example2c_angle_' + args.angle_abbrv
+    fig_name_prefix = 'Example2c_marginals_'
+    ex_type = 4
 else:
-   print("Provided output directory: ", output_dir)
-   print("*** Error: output directory path not a recognized format, quitting.")
-   exit()
+    print("Provided output directory: ", output_dir)
+    print("*** Error: output directory path not a recognized format, quitting.")
+    exit()
 
 with open(output_dir+'/prob_config.json') as f:
-   prob_config = json.load(f)
+    prob_config = json.load(f)
 
 opt_type = prob_config['optimization_type'] 
 
 if opt_type == 'dof_threshold':
-   minimum_budget_problem = False
+    minimum_budget_problem = False
 else:
-   minimum_budget_problem = True
+    minimum_budget_problem = True
 
 
 sns.set()
@@ -54,17 +54,17 @@ plt.rc('text.latex', preamble=r'\usepackage{amsmath} \usepackage{amssymb}')
 palette_list = sns.color_palette(palette="tab10", n_colors=10)
 
 def letterbox_entry(legend):
-   from matplotlib.patches import Patch
-   ax = legend.axes
-
-   handles, labels = ax.get_legend_handles_labels()
-   handles.insert(0, Patch(facecolor=palette_list[3], edgecolor='w'))
-   labels.insert(0, "AMR policy costs")
-
-   legend._legend_box = None
-   legend._init_legend_box(handles, labels)
-   legend._set_loc(legend._loc)
-   legend.set_title(legend.get_title().get_text())
+    from matplotlib.patches import Patch
+    ax = legend.axes
+ 
+    handles, labels = ax.get_legend_handles_labels()
+    handles.insert(0, Patch(facecolor=palette_list[3], edgecolor='w'))
+    labels.insert(0, "AMR policy costs")
+ 
+    legend._legend_box = None
+    legend._init_legend_box(handles, labels)
+    legend._set_loc(legend._loc)
+    legend.set_title(legend.get_title().get_text())
 
 
 save_figs = True
@@ -75,115 +75,128 @@ train_data_file = output_dir+'/training_data.csv'
 
 case = 101
 if case == 101: # marginal distributions for (expert), two policy, and RL polices (100 polices x 100 angles)
+ 
+    f, ax = plt.subplots(nrows=1, ncols=1, sharex=True, sharey=True, figsize=(12,6))  
+ 
+ 
+    #########################################
+    # RL policy df creation or loading
+    #########################################
+ 
+    file_exists = os.path.exists(output_dir+'/marginals/rl_avg_costs.npy')
+    if file_exists:
+       tpp_avg_costs = np.load(output_dir+'/marginals/rl_avg_costs.npy')
+       print("\nLoaded rl_avg_costs.npy\n")
+    else:
+       df = pd.read_csv(output_dir+'/marginals/marginals_rl.csv', index_col=False)
+ 
+       angles = df['angle'].unique()
+       num_angles = len(angles)
+       # if num_angles != 100:
+       #       print("Should have had 100 angles... exiting")
+       #       exit()
+ 
+       rl_avg_costs = np.zeros(1) # 1 indicates only evaluating one RL policy 
+       sum_of_best_costs = 0.0
+       for angle in angles: 
+          df_angle = df.loc[(df['angle'] == angle)].set_index('step')
+          df_best  = df_angle.iloc[df_angle.index.max()]
+          best_cost = df_best['cost']
+          sum_of_best_costs += best_cost
+       avg_cost = sum_of_best_costs/num_angles
+       avg_cost = avg_cost / np.log(2) # convert to log base 2
+       rl_avg_costs[0] = avg_cost
+       np.save(output_dir + '/marginals/rl_avg_costs.npy', rl_avg_costs)
+ 
+ 
+    #########################################
+    # two param policy df creation or loading #    *** tpp replaced dnf ****
+    #########################################
+ 
+    file_exists = os.path.exists(output_dir+'/marginals/tpp_avg_costs.npy')
+    if file_exists:
+        tpp_avg_costs = np.load(output_dir+'/marginals/tpp_avg_costs.npy')
+        print("\nLoaded tpp_avg_costs.npy\n")
+    else:
+        df = pd.read_csv(output_dir+'/marginals/marginals_tpp.csv', index_col=False)     
+        angles = df['angle'].unique()
+        thetas = df['theta'].unique()
+        rhos   = df['rho'].unique()     
+        tpp_avg_costs = np.zeros(100)
+        num_angles = len(angles)
+        num_thetas = len(thetas)
+        num_rhos   = len(rhos)
+        # if num_angles != 100 or num_thetas != 10 or num_rhos != 10:
+        #    print("Something isn't the right size")
+        #    exit()
+       
 
-   f, ax = plt.subplots(nrows=1, ncols=1, sharex=True, sharey=True, figsize=(12,6))  
+        # find two-param policy that achieved best result for each angle
+        df_bestpolicies = pd.DataFrame(columns=['angle','theta','rho'])
+        for angle in angles:
+            df_allperangle    = df.loc[df['angle'] == angle][['theta', 'rho', 'cost']]
+            # print("min is ", df_allperangle['cost'].min())
+            df_bestperangle = df_allperangle.iloc[df_allperangle['cost'].argmin()]
+            df_bestpolicies = df_bestpolicies.append({'angle': angle, 'theta': df_bestperangle['theta'], 'rho': df_bestperangle['rho']}, ignore_index=True)
+        print(df_bestpolicies)
 
-
-
-   #########################################
-   # RL policy df creation or loading
-   #########################################
-
-
-   file_exists = os.path.exists(output_dir+'/marginals/rl_avg_costs.npy')
-   if file_exists:
-      tpp_avg_costs = np.load(output_dir+'/marginals/rl_avg_costs.npy')
-      print("\nLoaded rl_avg_costs.npy\n")
-   else:
-      df = pd.read_csv(output_dir+'/marginals/marginals_rl.csv', index_col=False)
-
-      angles = df['angle'].unique()
-      num_angles = len(angles)
-      # if num_angles != 100:
-      #       print("Should have had 100 angles... exiting")
-      #       exit()
-
-      rl_avg_costs = np.zeros(1) # 1 indicates only evaluating one RL policy 
-      sum_of_best_costs = 0.0
-      for angle in angles: 
-            df_angle = df.loc[(df['angle'] == angle)].set_index('step')
-            df_best  = df_angle.iloc[df_angle.index.max()]
-            best_cost = df_best['cost']
-            sum_of_best_costs += best_cost
-      avg_cost = sum_of_best_costs/num_angles
-      avg_cost = avg_cost / np.log(2) # convert to log base 2
-      rl_avg_costs[0] = avg_cost
-      np.save(output_dir + '/marginals/rl_avg_costs.npy', rl_avg_costs)
-
-
-   #########################################
-   # two param policy df creation or loading #    *** tpp replaced dnf ****
-   #########################################
-
-   file_exists = os.path.exists(output_dir+'/marginals/tpp_avg_costs.npy')
-   if file_exists:
-      tpp_avg_costs = np.load(output_dir+'/marginals/tpp_avg_costs.npy')
-      print("\nLoaded tpp_avg_costs.npy\n")
-   else:
-      df = pd.read_csv(output_dir+'/marginals/marginals_tpp.csv', index_col=False)
-
-      angles = df['angle'].unique()
-      thetas = df['theta'].unique()
-      rhos   = df['rho'].unique()
-
-      tpp_avg_costs = np.zeros(100)
-      num_angles = len(angles)
-      num_thetas = len(thetas)
-      num_rhos   = len(rhos)
-      # if num_angles != 100 or num_thetas != 10 or num_rhos != 10:
-      #    print("Something isn't the right size")
-      #    exit()
-      
-      i=0
-      for theta in thetas:
-         for rho in rhos:
-               sum_of_best_costs = 0.0
-               for angle in angles: 
-                  df_angle = df.loc[(df['theta'] == theta) & (df['rho'] == rho) & (df['angle'] == angle)].set_index('step')
-                  df_best  = df_angle.iloc[df_angle.index.max()]
-                  best_cost = df_best['cost']
-                  sum_of_best_costs += best_cost
-               avg_cost = sum_of_best_costs/num_angles
-               avg_cost = avg_cost / np.log(2) # convert to log base 2
-               tpp_avg_costs[i] = avg_cost
-               i += 1
-      np.save(output_dir + '/marginals/tpp_avg_costs.npy', tpp_avg_costs)
-
-   ###########################
-   # make letterbox plots
-   ###########################
-
-   plotdf = pd.DataFrame(np.zeros((225,2)))  #  NOTE: assumes 25 RL files
-   plotdf.columns = ['policy type', 'avg cost']
-   #  plotdf.iloc[0:100,0] = 'one fixed\n parameter\n "expert" policies'
-   #  plotdf.iloc[0:100,1] = dwf_avg_costs
-   plotdf.iloc[100:200,0] = 'two fixed\n parameters\n policies'
-   plotdf.iloc[100:200,1] = tpp_avg_costs
-   plotdf.iloc[200:201,0] = 'reinforcement\n learning\n trained policies'
-   plotdf.iloc[200:201,1] = rl_avg_costs
-
-   ax = sns.boxenplot(y='policy type', x='avg cost', data=plotdf, orient="h", palette="Set2")
-   # ax.set_xlabel('Marginal distributions of costs (over angles)')
-   ax.set_title('Marginal distributions on L-shaped type domains',fontsize=18)
-   plt.xticks(fontsize=14)
-   plt.yticks(fontsize=14)
-   # ax.set_xlabel(r'$\mathbb{E}_{\omega}[ \log ( E_{\mathrm{Final}} ) ]$',fontsize=16)
-   ax.set_xlabel(r'$\mathbb{E}_{\omega}[ \log_2 ( E_{\mathrm{Final}} ) ]$',fontsize=16)
-   ax.set_ylabel('')
-   # ax.set_xscale('log')
-
-   # # Make plot of avg cost as function of theta
-   # df = pd.read_csv('../hp_sample_data/most_recent_data/dwf_oct29_all_angles.csv', index_col=False)
-   # thetas = df['theta'].unique()
-   # x_ax = thetas
-   # y_ax = dwf_avg_costs
-   # ax.plot(x_ax, y_ax, 'r', linestyle='-', marker='x', label='dwf avg costs')
-   # ax.set_xlabel('Theta value, expert policy')
-   # ax.set_ylabel('Cost')
-
-   #   dwf / dnf: average over angles, this gives an expected cost for each fixed parameter
-   # ax = sns.boxenplot(y='variable', x = 'Error at final mesh', data=mdf, orient="h", palette="Set2")
-
+        # draw scatter plot of best policies
+        # plt.scatter(df_bestpolicies['theta'], df_bestpolicies['rho'], c=df_bestpolicies['angle'], cmap='Reds')
+        # plt.show()
+        # exit()    
+        
+            
+        i=0
+        for theta in thetas:
+            for rho in rhos:
+                sum_of_best_costs = 0.0
+                for angle in angles: 
+                    df_angle = df.loc[(df['theta'] == theta) & (df['rho'] == rho) & (df['angle'] == angle)].set_index('step')
+                    df_best  = df_angle.iloc[df_angle.index.max()]
+                    best_cost = df_best['cost']
+                    sum_of_best_costs += best_cost
+                avg_cost = sum_of_best_costs/num_angles
+                avg_cost = avg_cost / np.log(2) # convert to log base 2
+                tpp_avg_costs[i] = avg_cost
+                i += 1
+        np.save(output_dir + '/marginals/tpp_avg_costs.npy', tpp_avg_costs)
+  
+ 
+    ###########################
+    # make letterbox plots
+    ###########################
+ 
+    plotdf = pd.DataFrame(np.zeros((225,2)))  #  NOTE: assumes 25 RL files
+    plotdf.columns = ['policy type', 'avg cost']
+    #  plotdf.iloc[0:100,0] = 'one fixed\n parameter\n "expert" policies'
+    #  plotdf.iloc[0:100,1] = dwf_avg_costs
+    plotdf.iloc[100:200,0] = 'two fixed\n parameters\n policies'
+    plotdf.iloc[100:200,1] = tpp_avg_costs
+    plotdf.iloc[200:201,0] = 'reinforcement\n learning\n trained policies'
+    plotdf.iloc[200:201,1] = rl_avg_costs
+ 
+    ax = sns.boxenplot(y='policy type', x='avg cost', data=plotdf, orient="h", palette="Set2")
+    # ax.set_xlabel('Marginal distributions of costs (over angles)')
+    ax.set_title('Marginal distributions on L-shaped type domains',fontsize=18)
+    plt.xticks(fontsize=14)
+    plt.yticks(fontsize=14)
+    # ax.set_xlabel(r'$\mathbb{E}_{\omega}[ \log ( E_{\mathrm{Final}} ) ]$',fontsize=16)
+    ax.set_xlabel(r'$\mathbb{E}_{\omega}[ \log_2 ( E_{\mathrm{Final}} ) ]$',fontsize=16)
+    ax.set_ylabel('')
+    # ax.set_xscale('log')
+ 
+    # # Make plot of avg cost as function of theta
+    # df = pd.read_csv('../hp_sample_data/most_recent_data/dwf_oct29_all_angles.csv', index_col=False)
+    # thetas = df['theta'].unique()
+    # x_ax = thetas
+    # y_ax = dwf_avg_costs
+    # ax.plot(x_ax, y_ax, 'r', linestyle='-', marker='x', label='dwf avg costs')
+    # ax.set_xlabel('Theta value, expert policy')
+    # ax.set_ylabel('Cost')
+ 
+    #   dwf / dnf: average over angles, this gives an expected cost for each fixed parameter
+    # ax = sns.boxenplot(y='variable', x = 'Error at final mesh', data=mdf, orient="h", palette="Set2")
+ 
 # rldata_file = output_dir+'/rl_data.csv'
 # deterministic_amr_data_file = output_dir+'/deterministic_amr_data.csv'
 # if args.angle_abbrv is not None:
