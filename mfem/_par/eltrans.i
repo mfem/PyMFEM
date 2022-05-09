@@ -1,12 +1,10 @@
 %module (package="mfem._par") eltrans
 
 %{
-#include "mfem.hpp"    
-#include "general/array.hpp"
-#include "fem/intrules.hpp"
-#include "fem/eltrans.hpp"
+#include "mfem.hpp"
+#include "pyoperator.hpp"  
 #include "numpy/arrayobject.h"
-#include "io_stream.hpp"  
+#include "../common/io_stream.hpp"  
 %}
 
 %init %{

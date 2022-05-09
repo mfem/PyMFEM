@@ -80,43 +80,104 @@ MFEM_VERSION_MINOR = _communication.MFEM_VERSION_MINOR
 
 MFEM_VERSION_PATCH = _communication.MFEM_VERSION_PATCH
 
-MFEM_HYPRE_VERSION = _communication.MFEM_HYPRE_VERSION
-
 import mfem._par.array
 import mfem._par.mem_manager
 import mfem._par.table
 import mfem._par.sets
-class MPI_Session(object):
-    r"""Proxy of C++ mfem::MPI_Session class."""
+class Mpi(object):
+    r"""Proxy of C++ mfem::Mpi class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    @staticmethod
+    def Init(*args):
         r"""
-        __init__(MPI_Session self) -> MPI_Session
-        __init__(MPI_Session self, int & argc, char **& argv) -> MPI_Session
+        Init()
+        Init(int & argc, char **& argv)
         """
-        _communication.MPI_Session_swiginit(self, _communication.new_MPI_Session(*args))
-    __swig_destroy__ = _communication.delete_MPI_Session
+        return _communication.Mpi_Init(*args)
+    Init = _swig_new_static_method(_communication.Mpi_Init)
 
-    def WorldRank(self):
-        r"""WorldRank(MPI_Session self) -> int"""
-        return _communication.MPI_Session_WorldRank(self)
-    WorldRank = _swig_new_instance_method(_communication.MPI_Session_WorldRank)
+    @staticmethod
+    def Finalize():
+        r"""Finalize()"""
+        return _communication.Mpi_Finalize()
+    Finalize = _swig_new_static_method(_communication.Mpi_Finalize)
 
-    def WorldSize(self):
-        r"""WorldSize(MPI_Session self) -> int"""
-        return _communication.MPI_Session_WorldSize(self)
-    WorldSize = _swig_new_instance_method(_communication.MPI_Session_WorldSize)
+    @staticmethod
+    def IsInitialized():
+        r"""IsInitialized() -> bool"""
+        return _communication.Mpi_IsInitialized()
+    IsInitialized = _swig_new_static_method(_communication.Mpi_IsInitialized)
 
-    def Root(self):
-        r"""Root(MPI_Session self) -> bool"""
-        return _communication.MPI_Session_Root(self)
-    Root = _swig_new_instance_method(_communication.MPI_Session_Root)
+    @staticmethod
+    def IsFinalized():
+        r"""IsFinalized() -> bool"""
+        return _communication.Mpi_IsFinalized()
+    IsFinalized = _swig_new_static_method(_communication.Mpi_IsFinalized)
 
-# Register MPI_Session in _communication:
-_communication.MPI_Session_swigregister(MPI_Session)
+    @staticmethod
+    def WorldRank():
+        r"""WorldRank() -> int"""
+        return _communication.Mpi_WorldRank()
+    WorldRank = _swig_new_static_method(_communication.Mpi_WorldRank)
+
+    @staticmethod
+    def WorldSize():
+        r"""WorldSize() -> int"""
+        return _communication.Mpi_WorldSize()
+    WorldSize = _swig_new_static_method(_communication.Mpi_WorldSize)
+
+    @staticmethod
+    def Root():
+        r"""Root() -> bool"""
+        return _communication.Mpi_Root()
+    Root = _swig_new_static_method(_communication.Mpi_Root)
+
+# Register Mpi in _communication:
+_communication.Mpi_swigregister(Mpi)
+
+def Mpi_Init(*args):
+    r"""
+    Mpi_Init()
+    Mpi_Init(int & argc, char **& argv)
+    """
+    return _communication.Mpi_Init(*args)
+Mpi_Init = _communication.Mpi_Init
+
+def Mpi_Finalize():
+    r"""Mpi_Finalize()"""
+    return _communication.Mpi_Finalize()
+Mpi_Finalize = _communication.Mpi_Finalize
+
+def Mpi_IsInitialized():
+    r"""Mpi_IsInitialized() -> bool"""
+    return _communication.Mpi_IsInitialized()
+Mpi_IsInitialized = _communication.Mpi_IsInitialized
+
+def Mpi_IsFinalized():
+    r"""Mpi_IsFinalized() -> bool"""
+    return _communication.Mpi_IsFinalized()
+Mpi_IsFinalized = _communication.Mpi_IsFinalized
+
+def Mpi_WorldRank():
+    r"""Mpi_WorldRank() -> int"""
+    return _communication.Mpi_WorldRank()
+Mpi_WorldRank = _communication.Mpi_WorldRank
+
+def Mpi_WorldSize():
+    r"""Mpi_WorldSize() -> int"""
+    return _communication.Mpi_WorldSize()
+Mpi_WorldSize = _communication.Mpi_WorldSize
+
+def Mpi_Root():
+    r"""Mpi_Root() -> bool"""
+    return _communication.Mpi_Root()
+Mpi_Root = _communication.Mpi_Root
 
 class GroupTopology(object):
     r"""Proxy of C++ mfem::GroupTopology class."""
@@ -211,15 +272,25 @@ class GroupTopology(object):
         r"""Copy(GroupTopology self, GroupTopology copy)"""
         return _communication.GroupTopology_Copy(self, copy)
     Copy = _swig_new_instance_method(_communication.GroupTopology_Copy)
+
+    def Swap(self, other):
+        r"""Swap(GroupTopology self, GroupTopology other)"""
+        return _communication.GroupTopology_Swap(self, other)
+    Swap = _swig_new_instance_method(_communication.GroupTopology_Swap)
     __swig_destroy__ = _communication.delete_GroupTopology
 
     def Save(self, *args):
         r"""
         Save(GroupTopology self, std::ostream & out)
-        Save(GroupTopology self, char const * file, int precision=8)
+        Save(GroupTopology self, char const * file, int precision=16)
         """
         return _communication.GroupTopology_Save(self, *args)
     Save = _swig_new_instance_method(_communication.GroupTopology_Save)
+
+    def SaveGZ(self, file, precision=16):
+        r"""SaveGZ(GroupTopology self, char const * file, int precision=16)"""
+        return _communication.GroupTopology_SaveGZ(self, file, precision)
+    SaveGZ = _swig_new_instance_method(_communication.GroupTopology_SaveGZ)
 
 # Register GroupTopology in _communication:
 _communication.GroupTopology_swigregister(GroupTopology)
@@ -283,10 +354,15 @@ class GroupCommunicator(object):
     def PrintInfo(self, *args):
         r"""
         PrintInfo(GroupCommunicator self, std::ostream & out=mfem::out)
-        PrintInfo(GroupCommunicator self, char const * file, int precision=8)
+        PrintInfo(GroupCommunicator self, char const * file, int precision=16)
         """
         return _communication.GroupCommunicator_PrintInfo(self, *args)
     PrintInfo = _swig_new_instance_method(_communication.GroupCommunicator_PrintInfo)
+
+    def PrintInfoGZ(self, file, precision=16):
+        r"""PrintInfoGZ(GroupCommunicator self, char const * file, int precision=16)"""
+        return _communication.GroupCommunicator_PrintInfoGZ(self, file, precision)
+    PrintInfoGZ = _swig_new_instance_method(_communication.GroupCommunicator_PrintInfoGZ)
 
 # Register GroupCommunicator in _communication:
 _communication.GroupCommunicator_swigregister(GroupCommunicator)

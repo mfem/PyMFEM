@@ -74,7 +74,6 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _pfespace.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _pfespace.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _pfespace.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _pfespace.MFEM_VERSION_PATCH
-MFEM_HYPRE_VERSION = _pfespace.MFEM_HYPRE_VERSION
 import mfem._par.operators
 import mfem._par.mem_manager
 import mfem._par.vector
@@ -83,19 +82,29 @@ import mfem._par.fespace
 import mfem._par.coefficient
 import mfem._par.globals
 import mfem._par.matrix
+import mfem._par.symmat
 import mfem._par.intrules
 import mfem._par.sparsemat
 import mfem._par.densemat
 import mfem._par.eltrans
 import mfem._par.fe
 import mfem._par.geom
+import mfem._par.fe_base
+import mfem._par.fe_fixed_order
+import mfem._par.element
+import mfem._par.table
+import mfem._par.hash
+import mfem._par.fe_h1
+import mfem._par.fe_nd
+import mfem._par.fe_rt
+import mfem._par.fe_l2
+import mfem._par.fe_nurbs
+import mfem._par.fe_pos
+import mfem._par.fe_ser
 import mfem._par.mesh
 import mfem._par.sort_pairs
 import mfem._par.ncmesh
 import mfem._par.vtk
-import mfem._par.element
-import mfem._par.table
-import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.bilininteg
@@ -103,6 +112,8 @@ import mfem._par.fe_coll
 import mfem._par.lininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.std_vectors
+import mfem._par.doftrans
 import mfem._par.handle
 import mfem._par.hypre
 import mfem._par.restriction
@@ -117,8 +128,9 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
     __repr__ = _swig_repr
     num_face_nbr_dofs = property(_pfespace.ParFiniteElementSpace_num_face_nbr_dofs_get, _pfespace.ParFiniteElementSpace_num_face_nbr_dofs_set, doc=r"""num_face_nbr_dofs : int""")
     face_nbr_element_dof = property(_pfespace.ParFiniteElementSpace_face_nbr_element_dof_get, _pfespace.ParFiniteElementSpace_face_nbr_element_dof_set, doc=r"""face_nbr_element_dof : mfem::Table""")
+    face_nbr_element_fos = property(_pfespace.ParFiniteElementSpace_face_nbr_element_fos_get, _pfespace.ParFiniteElementSpace_face_nbr_element_fos_set, doc=r"""face_nbr_element_fos : mfem::Table""")
     face_nbr_ldof = property(_pfespace.ParFiniteElementSpace_face_nbr_ldof_get, _pfespace.ParFiniteElementSpace_face_nbr_ldof_set, doc=r"""face_nbr_ldof : mfem::Table""")
-    face_nbr_glob_dof_map = property(_pfespace.ParFiniteElementSpace_face_nbr_glob_dof_map_get, doc=r"""face_nbr_glob_dof_map : mfem::Array<(HYPRE_Int)>""")
+    face_nbr_glob_dof_map = property(_pfespace.ParFiniteElementSpace_face_nbr_glob_dof_map_get, doc=r"""face_nbr_glob_dof_map : mfem::Array<(HYPRE_BigInt)>""")
     send_face_nbr_ldof = property(_pfespace.ParFiniteElementSpace_send_face_nbr_ldof_get, _pfespace.ParFiniteElementSpace_send_face_nbr_ldof_set, doc=r"""send_face_nbr_ldof : mfem::Table""")
 
     def __init__(self, *args):
@@ -157,22 +169,22 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
     GetDofSign = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetDofSign)
 
     def GetDofOffsets(self):
-        r"""GetDofOffsets(ParFiniteElementSpace self) -> HYPRE_Int *"""
+        r"""GetDofOffsets(ParFiniteElementSpace self) -> HYPRE_BigInt *"""
         return _pfespace.ParFiniteElementSpace_GetDofOffsets(self)
     GetDofOffsets = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetDofOffsets)
 
     def GetTrueDofOffsets(self):
-        r"""GetTrueDofOffsets(ParFiniteElementSpace self) -> HYPRE_Int *"""
+        r"""GetTrueDofOffsets(ParFiniteElementSpace self) -> HYPRE_BigInt *"""
         return _pfespace.ParFiniteElementSpace_GetTrueDofOffsets(self)
     GetTrueDofOffsets = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetTrueDofOffsets)
 
     def GlobalVSize(self):
-        r"""GlobalVSize(ParFiniteElementSpace self) -> HYPRE_Int"""
+        r"""GlobalVSize(ParFiniteElementSpace self) -> HYPRE_BigInt"""
         return _pfespace.ParFiniteElementSpace_GlobalVSize(self)
     GlobalVSize = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GlobalVSize)
 
     def GlobalTrueVSize(self):
-        r"""GlobalTrueVSize(ParFiniteElementSpace self) -> HYPRE_Int"""
+        r"""GlobalTrueVSize(ParFiniteElementSpace self) -> HYPRE_BigInt"""
         return _pfespace.ParFiniteElementSpace_GlobalTrueVSize(self)
     GlobalTrueVSize = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GlobalTrueVSize)
 
@@ -205,28 +217,39 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
 
 
 
+    def GetFE(self, i):
+        r"""GetFE(ParFiniteElementSpace self, int i) -> FiniteElement"""
+        return _pfespace.ParFiniteElementSpace_GetFE(self, i)
+    GetFE = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetFE)
+
     def GetFaceRestriction(self, *args, **kwargs):
-        r"""GetFaceRestriction(ParFiniteElementSpace self, mfem::ElementDofOrdering e_ordering, mfem::FaceType type, mfem::L2FaceValues mul=DoubleValued) -> Operator"""
+        r"""GetFaceRestriction(ParFiniteElementSpace self, mfem::ElementDofOrdering e_ordering, mfem::FaceType type, mfem::L2FaceValues mul=DoubleValued) -> FaceRestriction"""
         return _pfespace.ParFiniteElementSpace_GetFaceRestriction(self, *args, **kwargs)
     GetFaceRestriction = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetFaceRestriction)
 
     def GetSharedEdgeDofs(self, group, ei):
-      from  .array import intArray
-      dofs = intArray()      
-      _pfespace.ParFiniteElementSpace_GetSharedEdgeDofs(self, group, ei, dofs)
-      return dofs.ToList()      
+        from  .array import intArray
+        dofs = intArray() 
+        _pfespace.ParFiniteElementSpace_GetSharedEdgeDofs(self, group, ei, dofs)
+        return dofs.ToList()
 
 
 
-    def GetSharedTriangleDofs(self, group, fi, dofs):
-        r"""GetSharedTriangleDofs(ParFiniteElementSpace self, int group, int fi, intArray dofs)"""
-        return _pfespace.ParFiniteElementSpace_GetSharedTriangleDofs(self, group, fi, dofs)
-    GetSharedTriangleDofs = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetSharedTriangleDofs)
+    def GetSharedTriangleDofs(self, group, fi):
+        from  .array import intArray
+        dofs = intArray()
+        _pfespace.ParFiniteElementSpace_GetSharedTriangleDofs(self, group, fi, dofs)
+        return dofs.ToList()
 
-    def GetSharedQuadrilateralDofs(self, group, fi, dofs):
-        r"""GetSharedQuadrilateralDofs(ParFiniteElementSpace self, int group, int fi, intArray dofs)"""
-        return _pfespace.ParFiniteElementSpace_GetSharedQuadrilateralDofs(self, group, fi, dofs)
-    GetSharedQuadrilateralDofs = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetSharedQuadrilateralDofs)
+
+
+    def GetSharedQuadrilateralDofs(self, group, fi):
+        from  .array import intArray
+        dofs = intArray()
+        _pfespace.ParFiniteElementSpace_GetSharedQuadrilateralDofs(self, group, fi, dofs)
+        return dofs.ToList()
+
+
 
     def Dof_TrueDof_Matrix(self):
         r"""Dof_TrueDof_Matrix(ParFiniteElementSpace self) -> HypreParMatrix"""
@@ -282,22 +305,22 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
     GetLocalTDofNumber = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetLocalTDofNumber)
 
     def GetGlobalTDofNumber(self, ldof):
-        r"""GetGlobalTDofNumber(ParFiniteElementSpace self, int ldof) -> HYPRE_Int"""
+        r"""GetGlobalTDofNumber(ParFiniteElementSpace self, int ldof) -> HYPRE_BigInt"""
         return _pfespace.ParFiniteElementSpace_GetGlobalTDofNumber(self, ldof)
     GetGlobalTDofNumber = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetGlobalTDofNumber)
 
     def GetGlobalScalarTDofNumber(self, sldof):
-        r"""GetGlobalScalarTDofNumber(ParFiniteElementSpace self, int sldof) -> HYPRE_Int"""
+        r"""GetGlobalScalarTDofNumber(ParFiniteElementSpace self, int sldof) -> HYPRE_BigInt"""
         return _pfespace.ParFiniteElementSpace_GetGlobalScalarTDofNumber(self, sldof)
     GetGlobalScalarTDofNumber = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetGlobalScalarTDofNumber)
 
     def GetMyDofOffset(self):
-        r"""GetMyDofOffset(ParFiniteElementSpace self) -> HYPRE_Int"""
+        r"""GetMyDofOffset(ParFiniteElementSpace self) -> HYPRE_BigInt"""
         return _pfespace.ParFiniteElementSpace_GetMyDofOffset(self)
     GetMyDofOffset = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetMyDofOffset)
 
     def GetMyTDofOffset(self):
-        r"""GetMyTDofOffset(ParFiniteElementSpace self) -> HYPRE_Int"""
+        r"""GetMyTDofOffset(ParFiniteElementSpace self) -> HYPRE_BigInt"""
         return _pfespace.ParFiniteElementSpace_GetMyTDofOffset(self)
     GetMyTDofOffset = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetMyTDofOffset)
 
@@ -305,6 +328,16 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
         r"""GetProlongationMatrix(ParFiniteElementSpace self) -> Operator"""
         return _pfespace.ParFiniteElementSpace_GetProlongationMatrix(self)
     GetProlongationMatrix = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetProlongationMatrix)
+
+    def GetRestrictionTransposeOperator(self):
+        r"""GetRestrictionTransposeOperator(ParFiniteElementSpace self) -> Operator"""
+        return _pfespace.ParFiniteElementSpace_GetRestrictionTransposeOperator(self)
+    GetRestrictionTransposeOperator = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetRestrictionTransposeOperator)
+
+    def GetRestrictionOperator(self):
+        r"""GetRestrictionOperator(ParFiniteElementSpace self) -> Operator"""
+        return _pfespace.ParFiniteElementSpace_GetRestrictionOperator(self)
+    GetRestrictionOperator = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetRestrictionOperator)
 
     def GetRestrictionMatrix(self):
         r"""GetRestrictionMatrix(ParFiniteElementSpace self) -> SparseMatrix"""
@@ -321,10 +354,13 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
         return _pfespace.ParFiniteElementSpace_GetFaceNbrVSize(self)
     GetFaceNbrVSize = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetFaceNbrVSize)
 
-    def GetFaceNbrElementVDofs(self, i, vdofs):
-        r"""GetFaceNbrElementVDofs(ParFiniteElementSpace self, int i, intArray vdofs)"""
-        return _pfespace.ParFiniteElementSpace_GetFaceNbrElementVDofs(self, i, vdofs)
-    GetFaceNbrElementVDofs = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetFaceNbrElementVDofs)
+    def GetFaceNbrElementVDofs(self, i):
+        from  .array import intArray
+        vdofs = intArray()
+        _pfespace.ParFiniteElementSpace_GetFaceNbrElementVDofs(self, i, vdofs)
+        return vdofs.ToList()
+
+
 
     def GetFaceNbrFaceVDofs(self, i, vdofs):
         r"""GetFaceNbrFaceVDofs(ParFiniteElementSpace self, int i, intArray vdofs)"""
@@ -342,7 +378,7 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
     GetFaceNbrFaceFE = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetFaceNbrFaceFE)
 
     def GetFaceNbrGlobalDofMap(self):
-        r"""GetFaceNbrGlobalDofMap(ParFiniteElementSpace self) -> HYPRE_Int const *"""
+        r"""GetFaceNbrGlobalDofMap(ParFiniteElementSpace self) -> HYPRE_BigInt const *"""
         return _pfespace.ParFiniteElementSpace_GetFaceNbrGlobalDofMap(self)
     GetFaceNbrGlobalDofMap = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetFaceNbrGlobalDofMap)
 
@@ -376,6 +412,11 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
         return _pfespace.ParFiniteElementSpace_Nonconforming(self)
     Nonconforming = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_Nonconforming)
 
+    def SharedNDTriangleDofs(self):
+        r"""SharedNDTriangleDofs(ParFiniteElementSpace self) -> bool"""
+        return _pfespace.ParFiniteElementSpace_SharedNDTriangleDofs(self)
+    SharedNDTriangleDofs = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_SharedNDTriangleDofs)
+
     def GetTrueTransferOperator(self, coarse_fes, T):
         r"""GetTrueTransferOperator(ParFiniteElementSpace self, FiniteElementSpace coarse_fes, OperatorHandle T)"""
         return _pfespace.ParFiniteElementSpace_GetTrueTransferOperator(self, coarse_fes, T)
@@ -402,6 +443,21 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
         return _pfespace.ParFiniteElementSpace_TrueVSize(self)
     TrueVSize = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_TrueVSize)
 
+    def GetElementDofTransformation(self, elem):
+        r"""GetElementDofTransformation(ParFiniteElementSpace self, int elem) -> DofTransformation"""
+        return _pfespace.ParFiniteElementSpace_GetElementDofTransformation(self, elem)
+    GetElementDofTransformation = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetElementDofTransformation)
+
+    def GetBdrElementDofTransformation(self, bel):
+        r"""GetBdrElementDofTransformation(ParFiniteElementSpace self, int bel) -> DofTransformation"""
+        return _pfespace.ParFiniteElementSpace_GetBdrElementDofTransformation(self, bel)
+    GetBdrElementDofTransformation = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetBdrElementDofTransformation)
+
+    def GetFaceNbrVDofTransformation(self, elem):
+        r"""GetFaceNbrVDofTransformation(ParFiniteElementSpace self, int elem) -> DofTransformation"""
+        return _pfespace.ParFiniteElementSpace_GetFaceNbrVDofTransformation(self, elem)
+    GetFaceNbrVDofTransformation = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetFaceNbrVDofTransformation)
+
 # Register ParFiniteElementSpace in _pfespace:
 _pfespace.ParFiniteElementSpace_swigregister(ParFiniteElementSpace)
 
@@ -411,9 +467,17 @@ class ConformingProlongationOperator(mfem._par.operators.Operator):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, pfes):
-        r"""__init__(ConformingProlongationOperator self, ParFiniteElementSpace pfes) -> ConformingProlongationOperator"""
-        _pfespace.ConformingProlongationOperator_swiginit(self, _pfespace.new_ConformingProlongationOperator(pfes))
+    def __init__(self, *args):
+        r"""
+        __init__(ConformingProlongationOperator self, int lsize, GroupCommunicator gc_, bool local_=False) -> ConformingProlongationOperator
+        __init__(ConformingProlongationOperator self, ParFiniteElementSpace pfes, bool local_=False) -> ConformingProlongationOperator
+        """
+        _pfespace.ConformingProlongationOperator_swiginit(self, _pfespace.new_ConformingProlongationOperator(*args))
+
+    def GetGroupCommunicator(self):
+        r"""GetGroupCommunicator(ConformingProlongationOperator self) -> GroupCommunicator"""
+        return _pfespace.ConformingProlongationOperator_GetGroupCommunicator(self)
+    GetGroupCommunicator = _swig_new_instance_method(_pfespace.ConformingProlongationOperator_GetGroupCommunicator)
 
     def Mult(self, x, y):
         r"""Mult(ConformingProlongationOperator self, Vector x, Vector y)"""
@@ -435,9 +499,12 @@ class DeviceConformingProlongationOperator(ConformingProlongationOperator):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, pfes):
-        r"""__init__(DeviceConformingProlongationOperator self, ParFiniteElementSpace pfes) -> DeviceConformingProlongationOperator"""
-        _pfespace.DeviceConformingProlongationOperator_swiginit(self, _pfespace.new_DeviceConformingProlongationOperator(pfes))
+    def __init__(self, *args):
+        r"""
+        __init__(DeviceConformingProlongationOperator self, GroupCommunicator gc_, SparseMatrix R, bool local_=False) -> DeviceConformingProlongationOperator
+        __init__(DeviceConformingProlongationOperator self, ParFiniteElementSpace pfes, bool local_=False) -> DeviceConformingProlongationOperator
+        """
+        _pfespace.DeviceConformingProlongationOperator_swiginit(self, _pfespace.new_DeviceConformingProlongationOperator(*args))
     __swig_destroy__ = _pfespace.delete_DeviceConformingProlongationOperator
 
     def Mult(self, x, y):

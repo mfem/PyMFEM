@@ -19,6 +19,7 @@ class SwigDirector_NonlinearFormIntegrator : public mfem::NonlinearFormIntegrato
 
 public:
     SwigDirector_NonlinearFormIntegrator(PyObject *self, mfem::IntegrationRule const *ir = NULL);
+    virtual void SetIntRule(mfem::IntegrationRule const *ir);
     virtual void AssembleElementVector(mfem::FiniteElement const &el, mfem::ElementTransformation &Tr, mfem::Vector const &elfun, mfem::Vector &elvect);
     virtual void AssembleFaceVector(mfem::FiniteElement const &el1, mfem::FiniteElement const &el2, mfem::FaceElementTransformations &Tr, mfem::Vector const &elfun, mfem::Vector &elvect);
     virtual void AssembleElementGrad(mfem::FiniteElement const &el, mfem::ElementTransformation &Tr, mfem::Vector const &elfun, mfem::DenseMatrix &elmat);
@@ -26,7 +27,14 @@ public:
     virtual double GetElementEnergy(mfem::FiniteElement const &el, mfem::ElementTransformation &Tr, mfem::Vector const &elfun);
     virtual void AssemblePA(mfem::FiniteElementSpace const &fes);
     virtual void AssemblePA(mfem::FiniteElementSpace const &trial_fes, mfem::FiniteElementSpace const &test_fes);
+    virtual void AssembleGradPA(mfem::Vector const &x, mfem::FiniteElementSpace const &fes);
+    virtual double GetLocalStateEnergyPA(mfem::Vector const &x) const;
     virtual void AddMultPA(mfem::Vector const &x, mfem::Vector &y) const;
+    virtual void AddMultGradPA(mfem::Vector const &x, mfem::Vector &y) const;
+    virtual void AssembleGradDiagonalPA(mfem::Vector &diag) const;
+    virtual bool SupportsCeed() const;
+    virtual void AssembleMF(mfem::FiniteElementSpace const &fes);
+    virtual void AddMultMF(mfem::Vector const &x, mfem::Vector &y) const;
     virtual ~SwigDirector_NonlinearFormIntegrator();
 
 /* Internal director utilities */
@@ -58,7 +66,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[8];
+    mutable swig::SwigVar_PyObject vtable[16];
 #endif
 
 };

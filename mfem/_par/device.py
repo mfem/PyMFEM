@@ -65,6 +65,9 @@ class _SwigNonDynamicMeta(type):
 
 
 import mfem._par.mem_manager
+
+singleton_device = None
+
 class Backend(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
@@ -75,6 +78,7 @@ class Backend(object):
     RAJA_CPU = _device.Backend_RAJA_CPU
     RAJA_OMP = _device.Backend_RAJA_OMP
     RAJA_CUDA = _device.Backend_RAJA_CUDA
+    RAJA_HIP = _device.Backend_RAJA_HIP
     OCCA_CPU = _device.Backend_OCCA_CPU
     OCCA_OMP = _device.Backend_OCCA_OMP
     OCCA_CUDA = _device.Backend_OCCA_CUDA
@@ -105,11 +109,21 @@ class Device(object):
 
     def __init__(self, *args):
         _device.Device_swiginit(self, _device.new_Device(*args))
+
+        globals()["singleton_device"] = self
+
+
+
     __swig_destroy__ = _device.delete_Device
 
     def Configure(self, device, dev=0):
         return _device.Device_Configure(self, device, dev)
     Configure = _swig_new_instance_method(_device.Device_Configure)
+
+    @staticmethod
+    def SetMemoryTypes(h_mt, d_mt):
+        return _device.Device_SetMemoryTypes(h_mt, d_mt)
+    SetMemoryTypes = _swig_new_static_method(_device.Device_SetMemoryTypes)
 
     def Print(self, *args, **kwargs):
         return _device.Device_Print(self, *args, **kwargs)
@@ -134,6 +148,11 @@ class Device(object):
     def IsDisabled():
         return _device.Device_IsDisabled()
     IsDisabled = _swig_new_static_method(_device.Device_IsDisabled)
+
+    @staticmethod
+    def GetId():
+        return _device.Device_GetId()
+    GetId = _swig_new_static_method(_device.Device_GetId)
 
     @staticmethod
     def Allows(b_mask):
@@ -180,8 +199,20 @@ class Device(object):
         return _device.Device_GetGPUAwareMPI()
     GetGPUAwareMPI = _swig_new_static_method(_device.Device_GetGPUAwareMPI)
 
+    def __new__(cls, *args, **kwargs):
+        if globals()["singleton_device"] is None:  
+             instance =  super(Device, cls).__new__(cls)
+             globals()["singleton_device"] = instance
+        return globals()["singleton_device"]
+
+
+
 # Register Device in _device:
 _device.Device_swigregister(Device)
+
+def Device_SetMemoryTypes(h_mt, d_mt):
+    return _device.Device_SetMemoryTypes(h_mt, d_mt)
+Device_SetMemoryTypes = _device.Device_SetMemoryTypes
 
 def Device_IsConfigured():
     return _device.Device_IsConfigured()
@@ -198,6 +229,10 @@ Device_IsEnabled = _device.Device_IsEnabled
 def Device_IsDisabled():
     return _device.Device_IsDisabled()
 Device_IsDisabled = _device.Device_IsDisabled
+
+def Device_GetId():
+    return _device.Device_GetId()
+Device_GetId = _device.Device_GetId
 
 def Device_Allows(b_mask):
     return _device.Device_Allows(b_mask)

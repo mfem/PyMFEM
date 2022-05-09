@@ -1,4 +1,121 @@
 	<<<  Change Log. >>>
+2022 03.
+        * Added --cuda-arch option to specify the compute cuda archtecture
+
+2022 02.27
+        * Added Cuda-build HYPRE support. Cuda is controlled by two setup.py options
+	    --with-cuda  :  MFEM_USE_CUDA is on.
+	    --with-cuda-hypre :  HYPRE is built with Cuda.
+        * mfem::Device is forced to be a singleton in Python layer too. This keeps MemoryManager
+	  from being deallocated before other objects are cleaned.
+        * bool mfem::is_HYPRE_USING_CUDA() is added to check if HYPRE is build with Cuda
+	* make sure that parallel examples calls mfem::Device
+	* enabled --parallel option when building extension modules
+
+2022 02.15
+        * added %import globals.i in sparsemat.i and common_functions.i. This is needed when
+	  MFEM
+    
+2022 01.xx
+        * Generalized multigrid constructor typemap. It now accept not only tuple/list but also
+	  Array<bool> Array<Operator *> and Array<Solver *>, like C++ API does.
+	* Following are added to return DoFTransformation
+	     FiniteElementSpace::GetElementDoFTransformation
+             FiniteElementSpace::GetElementVDoFTransformation
+             FiniteElementSpace::GetBdrElementDoFTransformation
+             FiniteElementSpace::GetBdrElementVDoFTransformation
+	 * DenseMatrix constructor using numpy array is added
+             >>> x = mfem.DenseMatrix(np.arange(12.).reshape(3,4))
+             >>> x.Print()
+                 [row +0]
+                 +0.000000e+00 +1.000000e+00 +2.000000e+00 +3.000000e+00
+                 [row +1]
+                 +4.000000e+00 +5.000000e+00 +6.000000e+00 +7.000000e+00
+                 [row +2]
+                 +8.000000e+00 +9.000000e+00 +1.000000e+01 +1.100000e+01
+
+2021 12.xx
+        * Improved array interface. ex: Array<T>::__getitem__ accespt slice to return subarray
+	* gslib support is included
+	* ex30.py, ex30p.py were added. CoefficientRefiner::SetIntRule accepts tuple/list
+	* ex25 is added. It demonstrates how to use numba JIT
+	* Fixed IntegrationPonitArray, IntegrationRulePtrArray. They now returns a proper proxy object
+	  when accessed using index
+	      ex: IntegrationPonitArray[0] -> return IntegrationPoint
+                  IntegrationPonitArray[0:3] -> return IntegrationPointArray (this subarray does not own data)
+		  d = IntegrationPonitArray.GetData() -> return IntegrationPoint*
+		  IntegrationPonitArray((d, num)) -> A constructore borrowing data.
+	* Additional Array<T> template instatiation Array<Vector *> Array<FiniteElementSpace *> Array<bool>	  
+	* const IntegrationRule *irs[] in gridfunc.hpp, pgridfunc.hpp, complex_fem.hpp, coefficient.hpp
+	  are wrapped to accept tuple/list of IntegrationRule (see ex25.py)
+	* Warning about old numpy interface (NPY_1_7..... ) is addressed.
+	* GridFunction::Assign (renamed verison of operator ==) accept numpy vector
+	* ParGridFunction::Assign (renamed verison of operator ==) accept numpy vector	
+	
+	
+2021 10.xx
+        * Fixed an issue due to new fe_xxx.hp
+	
+2021 08.27
+        * memory leak
+        * DenseTensor::Assign now accept numpy 3D array
+	
+2021 08.08
+        * added ex0p, ex20p, ex21p, ex22p  ex24p, ex26p, ex27p, ex28p
+        * memory handling of complex_fem for parallel version is fixed.
+	
+2021 08.06
+        * ex27 is added
+	* ex26 is added
+	* array((int *, size)) and array((double *, size)) is wrapped. This allows
+	  for changing the contents of exisint Array<T>
+	  
+2021 08.04
+	* added ex24. This one shows partial assembly and numba coefficient
+	
+2021 08.03
+        * added constraints wrapper
+	* added ex28 and a few other serial examples
+	* added director to SecondOrdeorTimeDependentOperator
+	* added ex23
+
+2021 08.02
+        * Added ex21
+	* SwapNodes returns None when mesh object does not have Nodes
+	* added socketstream::good wrapper.
+	* added complex_fem wrapper
+	
+2021 07.31
+        * preparation for MFEM4.3
+	* test_example now compares all output files.
+        * Added ex0, ex20, refreshed many examples
+	* mesh.AddVertex accept numpy float array, mfem.Vector or list
+	* mesh.AddQuad (and other similar routine which
+	  accept const *int vi) accept numpy int32 array, mfem.Array<int> or list
+	
+2021 05.19
+        * Fixed std::istream & wrapping not to return the lenght of data. This fixes
+	  the constructors such as mfem::Mesh(std::stream &)
+	* PrintGZ, SaveGZ, etc are added to the methods to save data to file. As
+	  the name suggest, they turn on compression internally.
+
+2021 05.11
+        * NumbaFunction, VectorNumbaFunction, and MatrixNumbaFunction is added
+	  to use Numba JITed python code for mfem function coefficients.
+
+2021 05.07
+        * vtk.py and datacollection.py was loaded in mfem.ser and mfem.par namespace properly
+	* istream& wrapping was improved in the same way as ostream&
+	* mfem-4.2 does not have Save(const char*, precision) yet. Added it in wrapper code.
+	* Fiexed MixedBilinearForm::AddBdrTraceFaceIntegrator
+	
+2021 04.30
+        * improved std::ostream & wrappring. Methods which takes std::ostream& are
+	wrapped so that it accept either
+	   1) filename    for saving data to file
+	   2) mfem.STDOUT for writing data to stdout
+	   3) StringIO    for in-memory data passing
+	
 2021 02.14
         * WriteToStram is added to mfem::Mesh, mfem::Vector and mfem::GrigFunction
 

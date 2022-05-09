@@ -25,6 +25,7 @@ from  mfem._ser.socketstream import *
 from  mfem._ser.fe_coll import *
 from  mfem._ser.vector import *
 from  mfem._ser.complex_operator import *
+from  mfem._ser.complex_fem import *
 from  mfem._ser.fespace import *
 from  mfem._ser.linearform import *
 from  mfem._ser.bilininteg import *
@@ -47,8 +48,25 @@ from  mfem._ser.element import *
 from  mfem._ser.nonlininteg import *
 from  mfem._ser.nonlinearform import *
 from  mfem._ser.stable3d import *
+from  mfem._ser.vtk import *
+from  mfem._ser.datacollection import *
 from  mfem._ser.io_stream import wFILE, STDOUT
+from  mfem._ser.fespacehierarchy import *
+from  mfem._ser.multigrid import *
+from  mfem._ser.constraints import *
+from  mfem._ser.transfer import *
 
+from  mfem._ser.fe_base import *
+from  mfem._ser.fe_h1 import *
+from  mfem._ser.fe_l2 import *
+from  mfem._ser.fe_nd import *
+from  mfem._ser.fe_rt import *
+from  mfem._ser.fe_ser import *
+from  mfem._ser.fe_fixed_order import *
+from  mfem._ser.fe_pos import *
+from  mfem._ser.fe_nurbs import *
+from  mfem._ser.doftrans import *
+from  mfem._ser.std_vectors import *
 
 import mfem._ser.array as array
 import mfem._ser.blockoperator as blockoperator

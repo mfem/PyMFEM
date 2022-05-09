@@ -1,3 +1,7 @@
+###  Memo for development commands
+###
+###  This is essentially a list of command procedures I (=SS) am using.
+###  (not sure how useful it is for others....;D)
 ###
 
 ### source distribution
@@ -25,17 +29,16 @@ source env/bin/activate
 pip3 install -i  https://test.pypi.org/simple  mfem --no-binary mfem --verbose
 
 
-### docker ...
+### Test linux binary build locally using docker (1) for Python <= 3.9
 
 sudo docker pull quay.io/pypa/manylinux2010_x86_64
 sudo docker run -it -v $(pwd):/io quay.io/pypa/manylinux2010_x86_64
-###  (may not need this) yum install openssh-server openssh-clients
-git clone git@github.com:mfem/PyMFEM.git
+yum install openssh-server openssh-clients
+yum install zlib-devel
+#git clone git@github.com:mfem/PyMFEM.git
+git clone https://github.com/mfem/PyMFEM.git
 export PATH=/opt/python/cp36-cp36m/bin:$PATH
-pip install numpy
-pip install six
-pip install auditwheel
-pip install twine
+pip install six numpy scipy auditwheel twine cmake
 python3 setup.py install
 rm -rf dist/*
 python3 setup.py bdist_wheel
@@ -45,8 +48,84 @@ auditwheel repair dist/mfem-4.2.1.30-cp38-cp38-linux_x86_64.whl
 rm -rf dist/*
 python3 setup.py sdist
 
+### Test linux binary build locally using docker (2) for Python <= 3.10
+
+sudo docker pull quay.io/pypa/manylinux_2_24_x86_64
+sudo docker run -it -v $(pwd):/io quay.io/pypa/manylinux_2_24_x86_64
+apt-get update
+apt-get install openssh-server zlib1g-dbg
+git clone https://github.com/mfem/PyMFEM.git
+export PATH=/opt/python/cp36-cp36m/bin:$PATH
+pip install six numpy scipy auditwheel twine cmake
+python3 setup.py install
+rm -rf dist/*
+python3 setup.py bdist_wheel
+export LD_LIBRARY_PATH=/root/PyMFEM/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
+rm -rf wheelhouse/*
+auditwheel repair dist/mfem-4.2.1.30-cp38-cp38-linux_x86_64.whl
+rm -rf dist/*
+python3 setup.py sdist
+
+
 ### make a test release
 testrelease_binary uses test_release branch and push a package to test PyPI.
 this action triggers when a new tag whose name stats with test_ is
 created.
 
+### debugging
+gdb python
+gdb) run ../examples/ex1p
+gdb) bt    <--- backtrace
+
+### debugging GDB (MPI)
+Open an xterm window for each MPI process, with gdb attached to each python process.
+The -x flag tells gdb to run the commands given in the specified file.
+
+$ echo "run model.py" > gdb.in
+$ mpirun -np 4 xterm -e "gdb -x gdb.in python"
+$ mpirun -np 4 xterm -e "gdb -ex 'break MPI_Abort' -x gdb.in python" (if MPI kills the process)
+
+### debugging Valgrind (MPI)
+-sl : length of scroll back
+-hold : do not close xterm after valgrind dies
+
+$ export PYTHONMALLOC=malloc
+$ mpirun -np 2 xterm -sl 1000 -hold -e "valgrind python model.py -p"
+
+### profiling
+python -m cProfile -o output ../examples/ex18.py
+
+
+### test sequence for centos7.9 (prepared during communication Issue#109)
+$ sudo docker run -it centos:centos7.9.2009
+$ yum install openssh-server openssh-clients git wget
+$ yum groupinstall "Development Tools"
+$ wget https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
+$ bash Anaconda3-2021.11-Linux-x86_64.sh
+$ source .bashrc
+$ pip install cmake 
+$ conda install -c conda-forge/label/gcc9 gcc_linux-64
+$ conda install -c conda-forge/label/gcc9 gxx_linux-64
+$ conda install -c conda-forge/label/gcc9 mpi4py
+
+### test using python:3.9 image
+sudo docker pull python:3.9
+sudo docker run -it python:3.9 bash
+
+(usually we need an editor...)
+apt-get update
+apt-get install emacs
+
+pip install cmake 
+git clone https://github.com/mfem/PyMFEM.git
+python3 -m pip install --upgrade pip setuptools wheel
+
+pip install six numpy scipy
+
+python -m pip install ./ --user
+
+### test using python:3.10 image
+sudo docker pull python:3.10
+sudo docker run -it python:3.10 bash
+
+python -m pip install ./ --user --install-option='--mfem-branch=master'

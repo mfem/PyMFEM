@@ -1,10 +1,10 @@
 %module(package="mfem._ser", directors="1")  bilininteg
 %{
-#include "fem/gridfunc.hpp"  
-#include "fem/linearform.hpp"
-#include "fem/bilininteg.hpp"
-#include "pycoefficient.hpp"
-#include "numpy/arrayobject.h"      
+#include "mfem.hpp"
+#include "pyoperator.hpp"    
+#include "../common/pycoefficient.hpp"
+#include "numpy/arrayobject.h"
+  //using namespace mfem;
 %}
 
 %init %{

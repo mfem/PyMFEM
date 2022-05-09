@@ -68,6 +68,7 @@ import weakref
 
 import mfem._par.array
 import mfem._par.mem_manager
+import mfem._par.globals
 import mfem._par.vector
 import mfem._par.operators
 import mfem._par.matrix
@@ -122,7 +123,7 @@ class SparseMatrix(mfem._par.matrix.AbstractSparseMatrix):
         __init__(SparseMatrix self, int * i) -> SparseMatrix
         __init__(SparseMatrix self, int * i, bool ownij, bool owna, bool issorted) -> SparseMatrix
         __init__(SparseMatrix self, int nrows, int ncols, int rowsize) -> SparseMatrix
-        __init__(SparseMatrix self, SparseMatrix mat, bool copy_graph=True) -> SparseMatrix
+        __init__(SparseMatrix self, SparseMatrix mat, bool copy_graph=True, mfem::MemoryType mt=PRESERVE) -> SparseMatrix
         __init__(SparseMatrix self, Vector v) -> SparseMatrix
         """
 
@@ -152,9 +153,14 @@ class SparseMatrix(mfem._par.matrix.AbstractSparseMatrix):
 
         _sparsemat.SparseMatrix_swiginit(self, _sparsemat.new_SparseMatrix(*args))
 
-    def UseCuSparse(self, _useCuSparse=True):
-        r"""UseCuSparse(SparseMatrix self, bool _useCuSparse=True)"""
-        return _sparsemat.SparseMatrix_UseCuSparse(self, _useCuSparse)
+    def UseGPUSparse(self, useGPUSparse_=True):
+        r"""UseGPUSparse(SparseMatrix self, bool useGPUSparse_=True)"""
+        return _sparsemat.SparseMatrix_UseGPUSparse(self, useGPUSparse_)
+    UseGPUSparse = _swig_new_instance_method(_sparsemat.SparseMatrix_UseGPUSparse)
+
+    def UseCuSparse(self, useCuSparse_=True):
+        r"""UseCuSparse(SparseMatrix self, bool useCuSparse_=True)"""
+        return _sparsemat.SparseMatrix_UseCuSparse(self, useCuSparse_)
     UseCuSparse = _swig_new_instance_method(_sparsemat.SparseMatrix_UseCuSparse)
 
     def MakeRef(self, master):
@@ -171,6 +177,16 @@ class SparseMatrix(mfem._par.matrix.AbstractSparseMatrix):
         r"""Clear(SparseMatrix self)"""
         return _sparsemat.SparseMatrix_Clear(self)
     Clear = _swig_new_instance_method(_sparsemat.SparseMatrix_Clear)
+
+    def ClearGPUSparse(self):
+        r"""ClearGPUSparse(SparseMatrix self)"""
+        return _sparsemat.SparseMatrix_ClearGPUSparse(self)
+    ClearGPUSparse = _swig_new_instance_method(_sparsemat.SparseMatrix_ClearGPUSparse)
+
+    def ClearCuSparse(self):
+        r"""ClearCuSparse(SparseMatrix self)"""
+        return _sparsemat.SparseMatrix_ClearCuSparse(self)
+    ClearCuSparse = _swig_new_instance_method(_sparsemat.SparseMatrix_ClearCuSparse)
 
     def Empty(self):
         r"""Empty(SparseMatrix self) -> bool"""
@@ -425,6 +441,11 @@ class SparseMatrix(mfem._par.matrix.AbstractSparseMatrix):
         return _sparsemat.SparseMatrix_ResetTranspose(self)
     ResetTranspose = _swig_new_instance_method(_sparsemat.SparseMatrix_ResetTranspose)
 
+    def EnsureMultTranspose(self):
+        r"""EnsureMultTranspose(SparseMatrix self)"""
+        return _sparsemat.SparseMatrix_EnsureMultTranspose(self)
+    EnsureMultTranspose = _swig_new_instance_method(_sparsemat.SparseMatrix_EnsureMultTranspose)
+
     def PartMult(self, rows, x, y):
         r"""PartMult(SparseMatrix self, intArray rows, Vector x, Vector y)"""
         return _sparsemat.SparseMatrix_PartMult(self, rows, x, y)
@@ -540,14 +561,14 @@ class SparseMatrix(mfem._par.matrix.AbstractSparseMatrix):
         return _sparsemat.SparseMatrix_GetJacobiScaling(self)
     GetJacobiScaling = _swig_new_instance_method(_sparsemat.SparseMatrix_GetJacobiScaling)
 
-    def Jacobi(self, b, x0, x1, sc):
-        r"""Jacobi(SparseMatrix self, Vector b, Vector x0, Vector x1, double sc)"""
-        return _sparsemat.SparseMatrix_Jacobi(self, b, x0, x1, sc)
+    def Jacobi(self, b, x0, x1, sc, use_abs_diag=False):
+        r"""Jacobi(SparseMatrix self, Vector b, Vector x0, Vector x1, double sc, bool use_abs_diag=False)"""
+        return _sparsemat.SparseMatrix_Jacobi(self, b, x0, x1, sc, use_abs_diag)
     Jacobi = _swig_new_instance_method(_sparsemat.SparseMatrix_Jacobi)
 
-    def DiagScale(self, b, x, sc=1.0):
-        r"""DiagScale(SparseMatrix self, Vector b, Vector x, double sc=1.0)"""
-        return _sparsemat.SparseMatrix_DiagScale(self, b, x, sc)
+    def DiagScale(self, b, x, sc=1.0, use_abs_diag=False):
+        r"""DiagScale(SparseMatrix self, Vector b, Vector x, double sc=1.0, bool use_abs_diag=False)"""
+        return _sparsemat.SparseMatrix_DiagScale(self, b, x, sc, use_abs_diag)
     DiagScale = _swig_new_instance_method(_sparsemat.SparseMatrix_DiagScale)
 
     def Jacobi2(self, b, x0, x1, sc=1.0):
@@ -632,9 +653,9 @@ class SparseMatrix(mfem._par.matrix.AbstractSparseMatrix):
         return _sparsemat.SparseMatrix__Set_(self, *args)
     _Set_ = _swig_new_instance_method(_sparsemat.SparseMatrix__Set_)
 
-    def Set(self, i, j, a):
-        r"""Set(SparseMatrix self, int const i, int const j, double const a)"""
-        return _sparsemat.SparseMatrix_Set(self, i, j, a)
+    def Set(self, i, j, val):
+        r"""Set(SparseMatrix self, int const i, int const j, double const val)"""
+        return _sparsemat.SparseMatrix_Set(self, i, j, val)
     Set = _swig_new_instance_method(_sparsemat.SparseMatrix_Set)
 
     def SetSubMatrix(self, rows, cols, subm, skip_zeros=1):
@@ -700,7 +721,7 @@ class SparseMatrix(mfem._par.matrix.AbstractSparseMatrix):
 
     def Add(self, *args):
         r"""
-        Add(SparseMatrix self, int const i, int const j, double const a)
+        Add(SparseMatrix self, int const i, int const j, double const val)
         Add(SparseMatrix self, double const a, SparseMatrix B)
         """
         return _sparsemat.SparseMatrix_Add(self, *args)
@@ -800,50 +821,80 @@ class SparseMatrix(mfem._par.matrix.AbstractSparseMatrix):
 
     def Print(self, *args):
         r"""
-        Print(SparseMatrix self, std::ostream & out=mfem::out, int width_=4)
-        Print(SparseMatrix self, char const * file, int precision=8)
+        Print(SparseMatrix self, std::ostream & out=out, int width_=4)
+        Print(SparseMatrix self, char const * file, int precision=16)
         """
         return _sparsemat.SparseMatrix_Print(self, *args)
     Print = _swig_new_instance_method(_sparsemat.SparseMatrix_Print)
 
+    def PrintGZ(self, file, precision=16):
+        r"""PrintGZ(SparseMatrix self, char const * file, int precision=16)"""
+        return _sparsemat.SparseMatrix_PrintGZ(self, file, precision)
+    PrintGZ = _swig_new_instance_method(_sparsemat.SparseMatrix_PrintGZ)
+
     def PrintMatlab(self, *args):
         r"""
-        PrintMatlab(SparseMatrix self, std::ostream & out=mfem::out)
-        PrintMatlab(SparseMatrix self, char const * file, int precision=8)
+        PrintMatlab(SparseMatrix self, std::ostream & out=out)
+        PrintMatlab(SparseMatrix self, char const * file, int precision=16)
         """
         return _sparsemat.SparseMatrix_PrintMatlab(self, *args)
     PrintMatlab = _swig_new_instance_method(_sparsemat.SparseMatrix_PrintMatlab)
 
+    def PrintMatlabGZ(self, file, precision=16):
+        r"""PrintMatlabGZ(SparseMatrix self, char const * file, int precision=16)"""
+        return _sparsemat.SparseMatrix_PrintMatlabGZ(self, file, precision)
+    PrintMatlabGZ = _swig_new_instance_method(_sparsemat.SparseMatrix_PrintMatlabGZ)
+
     def PrintMM(self, *args):
         r"""
-        PrintMM(SparseMatrix self, std::ostream & out=mfem::out)
-        PrintMM(SparseMatrix self, char const * file, int precision=8)
+        PrintMM(SparseMatrix self, std::ostream & out=out)
+        PrintMM(SparseMatrix self, char const * file, int precision=16)
         """
         return _sparsemat.SparseMatrix_PrintMM(self, *args)
     PrintMM = _swig_new_instance_method(_sparsemat.SparseMatrix_PrintMM)
 
+    def PrintMMGZ(self, file, precision=16):
+        r"""PrintMMGZ(SparseMatrix self, char const * file, int precision=16)"""
+        return _sparsemat.SparseMatrix_PrintMMGZ(self, file, precision)
+    PrintMMGZ = _swig_new_instance_method(_sparsemat.SparseMatrix_PrintMMGZ)
+
+    def PrintCSRGZ(self, file, precision=16):
+        r"""PrintCSRGZ(SparseMatrix self, char const * file, int precision=16)"""
+        return _sparsemat.SparseMatrix_PrintCSRGZ(self, file, precision)
+    PrintCSRGZ = _swig_new_instance_method(_sparsemat.SparseMatrix_PrintCSRGZ)
+
     def PrintCSR(self, *args):
         r"""
         PrintCSR(SparseMatrix self, std::ostream & out)
-        PrintCSR(SparseMatrix self, char const * file, int precision=8)
+        PrintCSR(SparseMatrix self, char const * file, int precision=16)
         PrintCSR(SparseMatrix self)
         """
         return _sparsemat.SparseMatrix_PrintCSR(self, *args)
     PrintCSR = _swig_new_instance_method(_sparsemat.SparseMatrix_PrintCSR)
 
+    def PrintCSR2GZ(self, file, precision=16):
+        r"""PrintCSR2GZ(SparseMatrix self, char const * file, int precision=16)"""
+        return _sparsemat.SparseMatrix_PrintCSR2GZ(self, file, precision)
+    PrintCSR2GZ = _swig_new_instance_method(_sparsemat.SparseMatrix_PrintCSR2GZ)
+
     def PrintCSR2(self, *args):
         r"""
         PrintCSR2(SparseMatrix self, std::ostream & out)
-        PrintCSR2(SparseMatrix self, char const * file, int precision=8)
+        PrintCSR2(SparseMatrix self, char const * file, int precision=16)
         PrintCSR2(SparseMatrix self)
         """
         return _sparsemat.SparseMatrix_PrintCSR2(self, *args)
     PrintCSR2 = _swig_new_instance_method(_sparsemat.SparseMatrix_PrintCSR2)
 
+    def PrintInfoGZ(self, file, precision=16):
+        r"""PrintInfoGZ(SparseMatrix self, char const * file, int precision=16)"""
+        return _sparsemat.SparseMatrix_PrintInfoGZ(self, file, precision)
+    PrintInfoGZ = _swig_new_instance_method(_sparsemat.SparseMatrix_PrintInfoGZ)
+
     def PrintInfo(self, *args):
         r"""
         PrintInfo(SparseMatrix self, std::ostream & out)
-        PrintInfo(SparseMatrix self, char const * file, int precision=8)
+        PrintInfo(SparseMatrix self, char const * file, int precision=16)
         PrintInfo(SparseMatrix self)
         """
         return _sparsemat.SparseMatrix_PrintInfo(self, *args)

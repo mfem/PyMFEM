@@ -1,9 +1,9 @@
 %module(package="mfem._par", directors="1") nonlininteg
 %{
-#include "fem/nonlininteg.hpp"
-#include "fem/linearform.hpp"      
-#include "pycoefficient.hpp"
-#include "pyoperator.hpp"               
+#include "mfem.hpp"        
+#include "../common/pycoefficient.hpp"
+#include "pyoperator.hpp"
+using namespace mfem;  
 %}
 /*
 %init %{

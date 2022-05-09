@@ -1,4 +1,5 @@
 %module(package="mfem._par") mesh
+  
 %{
 #include <iostream>
 #include <sstream>
@@ -7,18 +8,24 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "config/config.hpp"      
-#include "mesh/mesh_headers.hpp"
-#include "fem/fem.hpp"
-#include "general/array.hpp"
-
-mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
-		      bool fix_orientation = true);
-// void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
+#include <vector>
+#include "mfem.hpp"  
 #include "numpy/arrayobject.h"
-#include "pycoefficient.hpp"
+#include "pyoperator.hpp"
+#include "../common/pycoefficient.hpp"
+#include "../common/io_stream.hpp"
+%}
 
-#include "io_stream.hpp"   
+  
+%{
+//mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
+//		      bool fix_orientation = true);
+// void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
+//using namespace mfem;
+%}
+
+%begin %{
+#define PY_SSIZE_T_CLEAN
 %}
 
 %init %{
@@ -43,6 +50,9 @@ import_array();
 %import "sparsemat.i"
 %import "eltrans.i"
 %import "intrules.i"
+
+%import "std_vectors.i"
+
 %feature("notabstract") VectorFunctionCoefficient;
 %feature("notabstract") VectorConstantCoefficient;
 %import "coefficient.i"
@@ -52,7 +62,7 @@ import_array();
 
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
-
+ISTREAM_TYPEMAP(std::istream&)
 
 // ignore these constructors, since in python element::type is given by 
 // string (see extend section below).
@@ -70,58 +80,15 @@ OSTREAM_TYPEMAP(std::ostream&)
   $1 = 0; // ignore this pattern
 }
 
-// to give vertex array as list
-%typemap(in) (const double *){
-  int i;
-  if (!PyList_Check($input)) {
-    PyErr_SetString(PyExc_ValueError, "Expecting a list");
-    return NULL;
-  }
-  int l = PyList_Size($input);
-  $1 = (double *) malloc((l)*sizeof(double));
-  for (i = 0; i < l; i++) {
-    PyObject *s = PyList_GetItem($input,i);
-    if (PyInt_Check(s)) {
-        $1[i] = (double)PyFloat_AsDouble(s);
-    } else if (PyFloat_Check(s)) {
-        $1[i] = (double)PyFloat_AsDouble(s);
-    } else {
-        free($1);      
-        PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
-        return NULL;
-    }
-  }
-}
-%typemap(typecheck) (const double *) {
-   $1 = PyList_Check($input) ? 1 : 0;
-}
-// to give index array as list
-%typemap(in) (const int *vi){
-  int i;
-  if (!PyList_Check($input)) {
-    PyErr_SetString(PyExc_ValueError, "Expecting a list");
-    return NULL;
-  }
-  int l = PyList_Size($input);
-  $1 = (int *) malloc((l)*sizeof(int));
-  for (i = 0; i < l; i++) {
-    PyObject *s = PyList_GetItem($input,i);
-    if (PyInt_Check(s)) {
-        $1[i] = (int)PyInt_AsLong(s);
-    } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
-        $1[i] = PyArray_PyIntAsInt(s);
-    } else {    
-        free($1);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
-        return NULL;
-    }
-  }
-}
-%typemap(typecheck) (const int *vi) {
-   $1 = PyList_Check($input) ? 1 : 0;
-}
+%import "../common/const_doubleptr_typemap.i"
+CONST_DOUBLEPTR_IN(const double *)
 
-// SwapNodes
+%import "../common/const_intptr_typemap.i"
+CONST_INTPTR_IN(const int *vi)
+
+// SwapNodes (
+//   it return new *GridFunction and own_nodes, also if nodes is NULL
+//   it return None
 %typemap(in) mfem::GridFunction *&nodes (mfem::GridFunction *Pnodes){
 int res2 = 0;
 res2 = SWIG_ConvertPtr($input, (void **) &Pnodes, $descriptor(mfem::GridFunction *), 0);
@@ -129,7 +96,8 @@ if (!SWIG_IsOK(res2)){
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_SwapNodes" "', argument " "2"" of type '" "*mfem::GridFunction""'");      
  }
  $1 = &Pnodes;
- } 
+ }
+ 
 %typemap(in) int &own_nodes_ (int own_nodes){
   own_nodes = (int)PyInt_AsLong($input);
   $1 = &own_nodes;
@@ -137,12 +105,16 @@ if (!SWIG_IsOK(res2)){
 %typemap(argout) (mfem::GridFunction *&nodes){
   Py_XDECREF($result);
   $result = PyList_New(0);
-  %append_output(SWIG_NewPointerObj(SWIG_as_voidptr(*arg2), $descriptor(mfem::GridFunction *), 0 |  0 ));
- }   
+  if (*arg$argnum){
+     // return None if Nodes is NULL    
+     %append_output(Py_None);
+  } else {
+     %append_output(SWIG_NewPointerObj(SWIG_as_voidptr(*arg$argnum), $descriptor(mfem::GridFunction *), 0 |  0 ));
+  }
+ }
 %typemap(argout) int &own_nodes_{
   %append_output(PyLong_FromLong((long)*$1));  
 }
-
 
 // default number is -1, which conflict with error code of PyArray_PyIntAsInt...
 %typemap(typecheck) (int nonconforming = -1) {
@@ -154,7 +126,7 @@ if (!SWIG_IsOK(res2)){
 def GetBdrElementVertices(self, i):
     from  .array import intArray
     ivert = intArray()
-    _mesh.Mesh_GetBdrElementVertices(self, i, ivert)
+    $action(self, i, ivert)
     return ivert.ToList()
 %}
 
@@ -163,7 +135,7 @@ def GetBdrElementAdjacentElement(self, bdr_el):
     from mfem.par import intp
     el = intp()
     info = intp()  
-    _mesh.Mesh_GetBdrElementAdjacentElement(self, bdr_el, el, info)
+    $action(self, bdr_el, el, info)
     return el.value(), info.value()
 %}
 
@@ -171,7 +143,7 @@ def GetBdrElementAdjacentElement(self, bdr_el):
 def GetElementVertices(self, i):
     from  .array import intArray
     ivert = intArray()
-    _mesh.Mesh_GetElementVertices(self, i, ivert)
+    $action(self, i, ivert)
     return ivert.ToList()
 %}
 
@@ -180,7 +152,7 @@ def GetElementEdges(self, i):
     from  .array import intArray
     ia = intArray()
     ib = intArray()      
-    _mesh.Mesh_GetElementEdges(self, i, ia, ib)
+    $action(self, i, ia, ib)
     return ia.ToList(), ib.ToList()      
 %} 
 
@@ -189,7 +161,7 @@ def GetBdrElementEdges(self, i):
     from  .array import intArray
     ia = intArray()
     ib = intArray()      
-    _mesh.Mesh_GetBdrElementEdges(self, i, ia, ib)
+    $action(self, i, ia, ib)
     return ia.ToList(), ib.ToList()
 %} 
 
@@ -198,7 +170,7 @@ def GetFaceEdges(self, i):
     from  .array import intArray
     ia = intArray()
     ib = intArray()      
-    _mesh.Mesh_GetFaceEdges(self, i, ia, ib)
+    $action(self, i, ia, ib)
     return ia.ToList(), ib.ToList()
 %}
 
@@ -206,7 +178,7 @@ def GetFaceEdges(self, i):
 def GetEdgeVertices(self, i):
     from  .array import intArray
     ia = intArray()
-    _mesh.Mesh_GetEdgeVertices(self, i, ia)
+    $action(self, i, ia)
     return ia.ToList()
 %}
 
@@ -214,7 +186,7 @@ def GetEdgeVertices(self, i):
 def GetFaceVertices(self, i):
     from  .array import intArray
     ia = intArray()
-    _mesh.Mesh_GetFaceVertices(self, i, ia)
+    $action(self, i, ia)
     return ia.ToList()
 %}
 
@@ -223,7 +195,7 @@ def GetElementFaces(self, i):
     from  .array import intArray
     ia = intArray()
     ib = intArray()      
-    _mesh.Mesh_GetElementFaces(self, i, ia, ib)
+    $action(self, i, ia, ib)
     return ia.ToList(), ib.ToList()
 %}
 
@@ -232,7 +204,7 @@ def GetBoundingBox(self, ref = 2):
     from  .vector import Vector
     min = Vector()
     max = Vector()      
-    _mesh.Mesh_GetBoundingBox(self, min, max, ref)      
+    $action(self, min, max, ref)      
     return min.GetDataArray().copy(), max.GetDataArray().copy()
 %}
 %feature("shadow") mfem::Mesh::GetFaceElements %{
@@ -247,28 +219,28 @@ def GetFaceElements(self, Face):
 def GetElementTransformation(self, i):
     from mfem.par import IsoparametricTransformation
     Tr = IsoparametricTransformation()
-    _mesh.Mesh_GetElementTransformation(self, i, Tr)
+    $action(self, i, Tr)
     return Tr
 %}
 %feature("shadow") mfem::Mesh::GetBdrElementTransformation %{
 def GetBdrElementTransformation(self, i):
     from mfem.par import IsoparametricTransformation
     Tr = IsoparametricTransformation()
-    _mesh.Mesh_GetBdrElementTransformation(self, i, Tr)
+    $action(self, i, Tr)
     return Tr
 %}
 %feature("shadow") mfem::Mesh::GetFaceTransformation %{
 def GetFaceTransformation(self, i):
     from mfem.par import IsoparametricTransformation
     Tr = IsoparametricTransformation()
-    _mesh.Mesh_GetFaceTransformation(self, i, Tr)
+    $action(self, i, Tr)
     return Tr
 %}
 %feature("shadow") mfem::Mesh::GetEdgeTransformation %{
 def GetEdgeTransformation(self, i):
     from mfem.par import IsoparametricTransformation
     Tr = IsoparametricTransformation()
-    _mesh.Mesh_GetEdgeTransformation(self, i, Tr)
+    $action(self, i, Tr)
     return Tr
 %}
 %feature("shadow") mfem::Mesh::GetFaceInfos %{
@@ -277,7 +249,7 @@ def GetFaceInfos(self, i):
     Elem1 = intp()
     Elem2 = intp()  
   
-    _mesh.Mesh_GetFaceInfos(self, i, Elem1, Elem2)
+    $action(self, i, Elem1, Elem2)
     return Elem1.value(), Elem2.value()
 %}
 %feature("shadow") mfem::Mesh::FindPoints %{
@@ -291,7 +263,7 @@ def FindPoints(self, pp, warn=True, inv_trans=None):
     M.Assign(pp)
     elem_ids = mfem.intArray()
     int_points = mfem.IntegrationPointArray()
-    count = _mesh.Mesh_FindPoints(self, M, elem_ids, int_points, warn, inv_trans)      
+    count = $action(self, M, elem_ids, int_points, warn, inv_trans)      
     elem_ids = elem_ids.ToList()
     return count, elem_ids, int_points
 %}
@@ -308,7 +280,7 @@ def CartesianPartitioning(self, nxyz, return_list=False):
         warnings.warn("CartesianPartitioning argument should be iterable",
 		      DeprecationWarning,)
 
-    r = _mesh.Mesh_CartesianPartitioning(self, dd)
+    r = $action(self, dd)
 
     if not return_list:
         return r
@@ -331,19 +303,19 @@ def CartesianPartitioning(self, nxyz, return_list=False):
 
 namespace mfem{
 %extend Mesh{
-   Mesh(const char *mesh_file, int generate_edges, int refine,
-        bool fix_orientation = true){
-
-        mfem::Mesh *mesh;
-        std::ifstream imesh(mesh_file);
-        if (!imesh)
-        {
-	  std::cerr << "\nCan not open mesh file: " << mesh_file << '\n' << std::endl;
-   	  return NULL;
-        }
-	mesh = new mfem::Mesh(imesh, generate_edges, refine, fix_orientation);
-	return mesh;
-   }
+    //   Mesh(const char *mesh_file, int generate_edges, int refine,
+    //        bool fix_orientation = true){
+    //
+    //        mfem::Mesh *mesh;
+    //        std::ifstream imesh(mesh_file);
+    //        if (!imesh)
+    //        {
+    //	  std::cerr << "\nCan not open mesh file: " << mesh_file << '\n' << std::endl;
+    //   	  return NULL;
+    //        }
+    //	mesh = new mfem::Mesh(imesh, generate_edges, refine, fix_orientation);
+    //	return mesh;
+    //   }
    Mesh(int nx, int ny, int nz, const char *type, bool generate_edges = 0,
         double sx = 1.0, double sy = 1.0, double sz = 1.0,
 	bool sfc_ordering = true){
@@ -424,7 +396,7 @@ namespace mfem{
      int i;
      npy_intp dims[] = {self->GetNE()};
      PyObject *array = PyArray_SimpleNew(1, dims, NPY_INT);
-     int *x    = (int *)PyArray_DATA(array);
+     int *x    = (int *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      for (i = 0; i < self->GetNE() ; i++){
        x[i] = (int)(self->GetElement(i)->GetAttribute());
      }
@@ -437,7 +409,7 @@ namespace mfem{
      const double *v = self->GetVertex(i);
      npy_intp dims[] = {L};
      PyObject *array = PyArray_SimpleNew(1, dims, NPY_DOUBLE);
-     double *x    = (double *)PyArray_DATA(array);
+     double *x    = (double *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      for (n = 0; n < L; n++) {
         x[n] = v[n];
      }
@@ -451,7 +423,7 @@ namespace mfem{
 
      npy_intp dims[] = {NV, L};
      PyObject *array = PyArray_SimpleNew(2, dims, NPY_DOUBLE);
-     double *x    = (double *)PyArray_DATA(array);
+     double *x    = (double *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      counter = 0;
 
      for (int i = 0; i < NV; i++) {
@@ -481,7 +453,7 @@ namespace mfem{
      int i;
      npy_intp dims[] = {self->GetNBE()};
      PyObject *array = PyArray_SimpleNew(1, dims, NPY_INT);
-     int *x    = (int *)PyArray_DATA(array);
+     int *x    = (int *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      for (i = 0; i < self->GetNBE() ; i++){
        x[i] = (int)(self->GetBdrElement(i)->GetAttribute());
      }
@@ -496,7 +468,7 @@ namespace mfem{
      }
      npy_intp dims[] = {c};
      PyObject *array = PyArray_SimpleNew(1, dims, NPY_INT);
-     int *x    = (int *)PyArray_DATA(array);
+     int *x    = (int *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      c = 0;     
      for (i = 0; i < self -> GetNBE() ; i++){
        if (self->GetBdrElement(i)->GetAttribute() == idx){
@@ -516,7 +488,7 @@ namespace mfem{
      }
      npy_intp dims[] = {c};
      PyObject *array = PyArray_SimpleNew(1, dims, NPY_INT);
-     int *x    = (int *)PyArray_DATA(array);
+     int *x    = (int *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      c = 0;
      for (i = 0; i < self -> GetNE() ; i++){
        if (self->GetElement(i)->GetAttribute() == idx){
@@ -536,7 +508,7 @@ namespace mfem{
 
      npy_intp dims[] = {v.Size()};
      PyObject *array = PyArray_SimpleNew(1, dims, NPY_DOUBLE);
-     double *x    = (double *)PyArray_DATA(array);
+     double *x    = (double *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      for (i = 0; i < v.Size() ; i++){
 	 x[i] = v[i];
      }
@@ -581,6 +553,48 @@ namespace mfem{
 	attr = fmin(sJ, attr);
       }
     return attr;
+  }
+  
+  PyObject *IsElementOnPlaneArray(PyObject *aa, PyObject *bb, PyObject *cc, PyObject *dd){  
+    /*
+    return Boolean numpy array to indicate which element is on the plane
+    defined by ax + by + cz + d = 0
+    */
+    double a = PyFloat_AsDouble(aa);    
+    double b = PyFloat_AsDouble(bb);
+    double c = PyFloat_AsDouble(cc);
+    double d = PyFloat_AsDouble(dd);    
+    /*
+    return Boolean numpy array to indicate which element is on the plane
+    defined by ax + by + cz + d = 0
+    */
+    mfem::Array<int> inodes;
+    int nele = self -> GetNE();
+    double *ptx;
+    npy_intp dims[] = {nele};
+    PyObject *array = PyArray_SimpleNew(1, dims, NPY_BOOL);
+    if (self -> SpaceDimension() != 3  || self -> Dimension() != 3){
+ 	 PyErr_SetString(PyExc_TypeError, "dim and sdim must be 3");
+         return (PyObject *) NULL;
+    }
+    bool *x    = (bool *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
+    bool check, check2;
+    
+    for (int k = 0; k < self -> GetNE(); k++){
+      self-> GetElementVertices(k, inodes);
+      ptx = self -> GetVertex(inodes[0]);    
+      check = (ptx[0]*a + ptx[1]*b + ptx[2]*c + d >=0);
+      x[k] = false;
+      for (int j=0; j < inodes.Size(); j++){
+	ptx = self -> GetVertex(inodes[j]);
+        check2 = (ptx[0]*a + ptx[1]*b + ptx[2]*c + d >=0);
+        if (check != check2){
+	  x[k] = true;
+	  break;
+	}
+      }
+    }
+    return array;
   }
   };  // end of extend
 }     // end of namespace

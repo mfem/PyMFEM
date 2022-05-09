@@ -8,6 +8,9 @@
  * interface file instead.
  * ----------------------------------------------------------------------------- */
 
+#define PY_SSIZE_T_CLEAN
+
+
 
 #ifndef SWIGPYTHON
 #define SWIGPYTHON
@@ -2693,20 +2696,23 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
-#define SWIGTYPE_p_char swig_types[1]
-#define SWIGTYPE_p_double swig_types[2]
-#define SWIGTYPE_p_int swig_types[3]
-#define SWIGTYPE_p_mfem__Array2DT_double_t swig_types[4]
-#define SWIGTYPE_p_mfem__Array2DT_int_t swig_types[5]
-#define SWIGTYPE_p_mfem__ArrayT_double_t swig_types[6]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[7]
-#define SWIGTYPE_p_mfem__MemoryT_double_t swig_types[8]
-#define SWIGTYPE_p_mfem__MemoryT_int_t swig_types[9]
-#define SWIGTYPE_p_p_double swig_types[10]
-#define SWIGTYPE_p_p_int swig_types[11]
-#define SWIGTYPE_p_std__istream swig_types[12]
-static swig_type_info *swig_types[14];
-static swig_module_info swig_module = {swig_types, 13, 0, 0, 0, 0};
+#define SWIGTYPE_p_bool swig_types[1]
+#define SWIGTYPE_p_char swig_types[2]
+#define SWIGTYPE_p_double swig_types[3]
+#define SWIGTYPE_p_int swig_types[4]
+#define SWIGTYPE_p_mfem__Array2DT_double_t swig_types[5]
+#define SWIGTYPE_p_mfem__Array2DT_int_t swig_types[6]
+#define SWIGTYPE_p_mfem__ArrayT_bool_t swig_types[7]
+#define SWIGTYPE_p_mfem__ArrayT_double_t swig_types[8]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[9]
+#define SWIGTYPE_p_mfem__MemoryT_bool_t swig_types[10]
+#define SWIGTYPE_p_mfem__MemoryT_double_t swig_types[11]
+#define SWIGTYPE_p_mfem__MemoryT_int_t swig_types[12]
+#define SWIGTYPE_p_p_bool swig_types[13]
+#define SWIGTYPE_p_p_double swig_types[14]
+#define SWIGTYPE_p_p_int swig_types[15]
+static swig_type_info *swig_types[17];
+static swig_module_info swig_module = {swig_types, 16, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2813,8 +2819,8 @@ namespace swig {
 #include <fstream>  
 #include <iostream>
 #include <stdio.h>
-#include "io_stream.hpp"    
-#include "general/array.hpp"  
+#include "../common/io_stream.hpp"
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"    
 
 
@@ -2999,16 +3005,30 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
   return SWIG_OK;
 }
 
+SWIGINTERN mfem::Array< int > *new_mfem_Array_Sl_int_Sg___SWIG_6(void *List_or_Tuple,int *_unused){
+    /*
+    This method is wrapped to recived tuple or list to create
+    Array object
+    */
+    mfem::Array <int>  *arr;
+
+    int size = *(int*)List_or_Tuple;
+    arr = new mfem::Array<int>(size);
+    return arr;
+  }
 SWIGINTERN void mfem_Array_Sl_int_Sg____setitem__(mfem::Array< int > *self,int i,int const v){
-    (* self)[i] = v;
+    if (i >= 0){
+        (* self)[i] = v;
+    } else {
+       int len = self->Size();          
+       (* self)[len+i] = v;      
     }
-SWIGINTERN int const &mfem_Array_Sl_int_Sg____getitem__(mfem::Array< int > const *self,int const i){
-    return (* self)[i];
   }
 SWIGINTERN void mfem_Array_Sl_int_Sg__Assign__SWIG_1(mfem::Array< int > *self,int const &a){
      *self = a;
   }
 SWIGINTERN void mfem_Array_Sl_int_Sg__FakeToList(mfem::Array< int > *self){}
+SWIGINTERN void mfem_Array_Sl_int_Sg____iter__(mfem::Array< int > *self){}
 
 SWIGINTERN swig_type_info*
 SWIG_pchar_descriptor(void)
@@ -3134,7 +3154,7 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
-SWIGINTERN void mfem_Array_Sl_int_Sg__Print__SWIG_1(mfem::Array< int > *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Array_Sl_int_Sg__Print__SWIG_1(mfem::Array< int > *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3145,7 +3165,18 @@ SWIGINTERN void mfem_Array_Sl_int_Sg__Print__SWIG_1(mfem::Array< int > *self,cha
   self -> Print(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_Array_Sl_int_Sg__Save__SWIG_1(mfem::Array< int > *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Array_Sl_int_Sg__PrintGZ(mfem::Array< int > *self,char const *file,int precision=16){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> Print(*ofile);
+  delete ofile;
+  }
+SWIGINTERN void mfem_Array_Sl_int_Sg__Save__SWIG_1(mfem::Array< int > *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3156,23 +3187,89 @@ SWIGINTERN void mfem_Array_Sl_int_Sg__Save__SWIG_1(mfem::Array< int > *self,char
   self -> Save(ofile);
   ofile.close();
   }
+SWIGINTERN void mfem_Array_Sl_int_Sg__SaveGZ(mfem::Array< int > *self,char const *file,int precision=16){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile -> precision(precision);  
+  self -> Save(*ofile);
+  delete ofile;
+  }
 SWIGINTERN void mfem_Array_Sl_int_Sg__Save__SWIG_2(mfem::Array< int > *self){
   self -> Save(std::cout);
+  }
+SWIGINTERN PyObject *mfem_Array_Sl_int_Sg____getitem__(mfem::Array< int > *self,PyObject *param){
+    int len = self->Size();    
+    if (PySlice_Check(param)) {
+        long start = 0, stop = 0, step = 0, slicelength = 0;
+        int check;
+
+	//%#ifdef TARGET_PY3
+   	check = PySlice_GetIndicesEx(param, len, &start, &stop, &step,
+				     &slicelength);
+        //%#else
+   	//check = PySlice_GetIndicesEx((PySliceObject*)param, len, &start, &stop, &step,
+        //				     &slicelength);
+        //%#endif
+
+	if (check == -1) {
+            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<int> failed.");
+            return NULL; 
+	}
+	if (step == 1) {
+            mfem::Array<int> *vec;
+            vec = new mfem::Array<int>(self->GetData() +  start, slicelength);
+            return SWIG_NewPointerObj(SWIG_as_voidptr(vec), SWIGTYPE_p_mfem__ArrayT_int_t, 1);  
+	} else {
+            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<int> with stride>1 not supported.");
+	    return NULL;
+	}
+    } else {
+        PyErr_Clear();
+        long idx = PyInt_AsLong(param);
+        if (PyErr_Occurred()) {
+           PyErr_SetString(PyExc_ValueError, "Argument must be either int or slice");
+            return NULL; 	
+        }
+        if (idx >= 0){
+          return PyLong_FromLong(self->operator[](idx));
+        } else {
+          return PyLong_FromLong(self->operator[](len+idx));
+	}
+    }
   }
 
   #define SWIG_From_double   PyFloat_FromDouble 
 
+SWIGINTERN mfem::Array< double > *new_mfem_Array_Sl_double_Sg___SWIG_6(void *List_or_Tuple,double *_unused){
+    /*
+    This method is wrapped to recived tuple or list to create
+    Array object
+    */
+    mfem::Array <double>  *arr;
+
+    int size = *(int*)List_or_Tuple;
+    arr = new mfem::Array<double>(size);
+    return arr;
+  }
 SWIGINTERN void mfem_Array_Sl_double_Sg____setitem__(mfem::Array< double > *self,int i,double const v){
-    (* self)[i] = v;
+    if (i >= 0){
+        (* self)[i] = v;
+    } else {
+       int len = self->Size();          
+       (* self)[len+i] = v;      
     }
-SWIGINTERN double const &mfem_Array_Sl_double_Sg____getitem__(mfem::Array< double > const *self,int const i){
-    return (* self)[i];
   }
 SWIGINTERN void mfem_Array_Sl_double_Sg__Assign__SWIG_1(mfem::Array< double > *self,double const &a){
      *self = a;
   }
 SWIGINTERN void mfem_Array_Sl_double_Sg__FakeToList(mfem::Array< double > *self){}
-SWIGINTERN void mfem_Array_Sl_double_Sg__Print__SWIG_1(mfem::Array< double > *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Array_Sl_double_Sg____iter__(mfem::Array< double > *self){}
+SWIGINTERN void mfem_Array_Sl_double_Sg__Print__SWIG_1(mfem::Array< double > *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3183,7 +3280,18 @@ SWIGINTERN void mfem_Array_Sl_double_Sg__Print__SWIG_1(mfem::Array< double > *se
   self -> Print(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_Array_Sl_double_Sg__Save__SWIG_1(mfem::Array< double > *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Array_Sl_double_Sg__PrintGZ(mfem::Array< double > *self,char const *file,int precision=16){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile ->precision(precision);  
+  self -> Print(*ofile);
+  delete ofile;
+  }
+SWIGINTERN void mfem_Array_Sl_double_Sg__Save__SWIG_1(mfem::Array< double > *self,char const *file,int precision=16){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3194,12 +3302,552 @@ SWIGINTERN void mfem_Array_Sl_double_Sg__Save__SWIG_1(mfem::Array< double > *sel
   self -> Save(ofile);
   ofile.close();
   }
+SWIGINTERN void mfem_Array_Sl_double_Sg__SaveGZ(mfem::Array< double > *self,char const *file,int precision=16){
+  mfem::ofgzstream *ofile = new mfem::ofgzstream(file, true);
+  
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile -> precision(precision);  
+  self -> Save(*ofile);
+  delete ofile;
+  }
 SWIGINTERN void mfem_Array_Sl_double_Sg__Save__SWIG_2(mfem::Array< double > *self){
   self -> Save(std::cout);
+  }
+SWIGINTERN PyObject *mfem_Array_Sl_double_Sg____getitem__(mfem::Array< double > *self,PyObject *param){
+    int len = self->Size();    
+    if (PySlice_Check(param)) {
+        long start = 0, stop = 0, step = 0, slicelength = 0;
+        int check;
+
+	//%#ifdef TARGET_PY3
+   	check = PySlice_GetIndicesEx(param, len, &start, &stop, &step,
+				     &slicelength);
+        //%#else
+   	//check = PySlice_GetIndicesEx((PySliceObject*)param, len, &start, &stop, &step,
+	//			     &slicelength);
+	//%#endif
+
+	if (check == -1) {
+            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<double> failed.");
+            return NULL; 
+	}
+	if (step == 1) {
+            mfem::Array<double> *vec;
+            vec = new mfem::Array<double>(self->GetData() +  start, slicelength);
+            return SWIG_NewPointerObj(SWIG_as_voidptr(vec), SWIGTYPE_p_mfem__ArrayT_double_t, 1);  
+	} else {
+            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<double> with stride>1 not supported.");
+	    return NULL;
+	}
+    } else {
+        PyErr_Clear();
+        long idx = PyInt_AsLong(param);
+        if (PyErr_Occurred()) {
+           PyErr_SetString(PyExc_ValueError, "Argument must be either int or slice");
+            return NULL; 	
+        }
+        if (idx >= 0){
+          return PyFloat_FromDouble(self->operator[](idx));
+        } else {
+          return PyFloat_FromDouble(self->operator[](len+idx));
+	}
+    }
+  }
+SWIGINTERN mfem::Array< bool > *new_mfem_Array_Sl_bool_Sg___SWIG_6(void *List_or_Tuple,bool *_unused){
+    /*
+    This method is wrapped to recived tuple or list to create
+    Array object
+    */
+    mfem::Array <bool>  *arr;
+
+    int size = *(int*)List_or_Tuple;
+    arr = new mfem::Array<bool>(size);
+    return arr;
+  }
+SWIGINTERN void mfem_Array_Sl_bool_Sg____setitem__(mfem::Array< bool > *self,int i,bool const v){
+    if (i >= 0){
+        (* self)[i] = v;
+    } else {
+       int len = self->Size();          
+       (* self)[len+i] = v;      
+    }
+  }
+SWIGINTERN void mfem_Array_Sl_bool_Sg__Assign__SWIG_1(mfem::Array< bool > *self,bool const &a){
+     *self = a;
+  }
+SWIGINTERN void mfem_Array_Sl_bool_Sg__FakeToList(mfem::Array< bool > *self){}
+SWIGINTERN void mfem_Array_Sl_bool_Sg____iter__(mfem::Array< bool > *self){}
+SWIGINTERN PyObject *mfem_Array_Sl_bool_Sg____getitem__(mfem::Array< bool > *self,PyObject *param){
+    int len = self->Size();    
+    if (PySlice_Check(param)) {
+        long start = 0, stop = 0, step = 0, slicelength = 0;
+        int check;
+
+	//%#ifdef TARGET_PY3
+   	check = PySlice_GetIndicesEx(param, len, &start, &stop, &step,
+				     &slicelength);
+        //%#else
+   	//check = PySlice_GetIndicesEx((PySliceObject*)param, len, &start, &stop, &step,
+	//			     &slicelength);
+	//%#endif
+
+	if (check == -1) {
+            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<bool> failed.");
+            return NULL; 
+	}
+	if (step == 1) {
+            mfem::Array<bool> *vec;
+            vec = new mfem::Array<bool>(self->GetData() +  start, slicelength);
+            return SWIG_NewPointerObj(SWIG_as_voidptr(vec), SWIGTYPE_p_mfem__ArrayT_bool_t, 1);  
+	} else {
+            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<bool> with stride>1 not supported.");
+	    return NULL;
+	}
+    } else {
+        PyErr_Clear();
+        long idx = PyInt_AsLong(param);
+        if (PyErr_Occurred()) {
+           PyErr_SetString(PyExc_ValueError, "Argument must be either int or slice");
+            return NULL; 	
+        }
+        if (idx >= 0){
+	  if (self->operator[](idx)){
+	    return Py_True;
+	  } else {
+	    return Py_False;	    
+	  }
+        } else {
+	  if (self->operator[](len+idx)){
+	    return Py_True;
+	  } else {
+	    return Py_False;	    
+	  }
+	}
+    }
   }
 #ifdef __cplusplus
 extern "C" {
 #endif
+SWIGINTERN PyObject *_wrap_doubleSwap__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< double > *arg1 = 0 ;
+  mfem::Array< double > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__ArrayT_double_t,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleSwap" "', argument " "1"" of type '" "mfem::Array< double > &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "1"" of type '" "mfem::Array< double > &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_double_t,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "doubleSwap" "', argument " "2"" of type '" "mfem::Array< double > &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "2"" of type '" "mfem::Array< double > &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< double > * >(argp2);
+  {
+    try {
+      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< double >(*arg1,*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_doubleSwap__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array2D< double > *arg1 = 0 ;
+  mfem::Array2D< double > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Array2DT_double_t,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleSwap" "', argument " "1"" of type '" "mfem::Array2D< double > &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "1"" of type '" "mfem::Array2D< double > &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array2D< double > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Array2DT_double_t,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "doubleSwap" "', argument " "2"" of type '" "mfem::Array2D< double > &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "2"" of type '" "mfem::Array2D< double > &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array2D< double > * >(argp2);
+  {
+    try {
+      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< double >(*arg1,*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_doubleSwap__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  double *arg1 = 0 ;
+  double *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_double,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleSwap" "', argument " "1"" of type '" "double &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "1"" of type '" "double &""'"); 
+  }
+  arg1 = reinterpret_cast< double * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_double,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "doubleSwap" "', argument " "2"" of type '" "double &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "2"" of type '" "double &""'"); 
+  }
+  arg2 = reinterpret_cast< double * >(argp2);
+  {
+    try {
+      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< double >(*arg1,*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_doubleSwap(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "doubleSwap", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_double_t, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ArrayT_double_t, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_doubleSwap__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Array2DT_double_t, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Array2DT_double_t, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_doubleSwap__SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_double, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_double, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_doubleSwap__SWIG_2(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'doubleSwap'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Swap< double >(mfem::Array< double > &,mfem::Array< double > &)\n"
+    "    mfem::Swap< double >(mfem::Array2D< double > &,mfem::Array2D< double > &)\n"
+    "    mfem::Swap< double >(double &,double &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_intSwap__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< int > *arg1 = 0 ;
+  mfem::Array< int > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intSwap" "', argument " "1"" of type '" "mfem::Array< int > &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "1"" of type '" "mfem::Array< int > &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "intSwap" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
+  {
+    try {
+      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< int >(*arg1,*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_intSwap__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array2D< int > *arg1 = 0 ;
+  mfem::Array2D< int > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Array2DT_int_t,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intSwap" "', argument " "1"" of type '" "mfem::Array2D< int > &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "1"" of type '" "mfem::Array2D< int > &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array2D< int > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Array2DT_int_t,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "intSwap" "', argument " "2"" of type '" "mfem::Array2D< int > &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "2"" of type '" "mfem::Array2D< int > &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array2D< int > * >(argp2);
+  {
+    try {
+      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< int >(*arg1,*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_intSwap__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  int *arg1 = 0 ;
+  int *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_int,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intSwap" "', argument " "1"" of type '" "int &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "1"" of type '" "int &""'"); 
+  }
+  arg1 = reinterpret_cast< int * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_int,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "intSwap" "', argument " "2"" of type '" "int &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "2"" of type '" "int &""'"); 
+  }
+  arg2 = reinterpret_cast< int * >(argp2);
+  {
+    try {
+      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< int >(*arg1,*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_intSwap(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "intSwap", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_intSwap__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Array2DT_int_t, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Array2DT_int_t, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_intSwap__SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_int, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_int, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_intSwap__SWIG_2(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'intSwap'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Swap< int >(mfem::Array< int > &,mfem::Array< int > &)\n"
+    "    mfem::Swap< int >(mfem::Array2D< int > &,mfem::Array2D< int > &)\n"
+    "    mfem::Swap< int >(int &,int &)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_intArray__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
   PyObject *resultobj = 0;
   mfem::Array< int > *result = 0 ;
@@ -3231,16 +3879,14 @@ fail:
 SWIGINTERN PyObject *_wrap_new_intArray__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::MemoryType arg1 ;
-  int val1 ;
-  int ecode1 = 0 ;
   mfem::Array< int > *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_intArray" "', argument " "1"" of type '" "mfem::MemoryType""'");
-  } 
-  arg1 = static_cast< mfem::MemoryType >(val1);
+  {
+    PyObject* k = PyObject_GetAttrString(swig_obj[0], "value");
+    int i = (int)PyLong_AsLong(k);
+    arg1 = static_cast< mfem::MemoryType >(i);
+  }
   {
     try {
       result = (mfem::Array< int > *)new mfem::Array< int >(arg1);
@@ -3302,31 +3948,22 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_intArray__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  int *arg1 = (int *) 0 ;
-  int arg2 ;
+  int arg1 ;
+  mfem::MemoryType arg2 ;
+  int val1 ;
+  int ecode1 = 0 ;
   mfem::Array< int > *result = 0 ;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_intArray" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
   {
-    int i;
-    if (!PyList_Check(swig_obj[0])) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    arg2 = PyList_Size(swig_obj[0]);
-    arg1 = (int *) malloc((arg2)*sizeof(int));
-    for (i = 0; i < arg2; i++) {
-      PyObject *s = PyList_GetItem(swig_obj[0],i);
-      if (PyInt_Check(s)) {
-        arg1[i] = (int)PyInt_AsLong(s);
-      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
-        arg1[i] = PyArray_PyIntAsInt(s);
-      } else {
-        free(arg1);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
-        return NULL;
-      }
-    }
+    PyObject* k = PyObject_GetAttrString(swig_obj[1], "value");
+    int i = (int)PyLong_AsLong(k);
+    arg2 = static_cast< mfem::MemoryType >(i);
   }
   {
     try {
@@ -3352,6 +3989,56 @@ fail:
 
 
 SWIGINTERN PyObject *_wrap_new_intArray__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  int *arg1 = (int *) 0 ;
+  int arg2 ;
+  int *temp_ptr1 ;
+  bool is_tuple1 = false ;
+  PyObject *s11 ;
+  PyObject *s21 ;
+  mfem::Array< int > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    if (!PyList_Check(swig_obj[0])) {
+      if (!PyTuple_Check(swig_obj[0])) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
+        return NULL;
+      } else {
+        is_tuple1 = true;
+      }
+    }
+    s11 = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], 0) : PyList_GetItem(swig_obj[0],0);
+    s21 = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], 1) : PyList_GetItem(swig_obj[0],1);    
+    SWIG_ConvertPtr(s11, (void **) &temp_ptr1,
+      SWIGTYPE_p_int, 0 |0);
+    arg1 = temp_ptr1;
+    arg2 = PyLong_AsLong(s21);    
+  }
+  {
+    try {
+      result = (mfem::Array< int > *)new mfem::Array< int >(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_intArray__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Array< int > *arg1 = 0 ;
   void *argp1 = 0 ;
@@ -3387,70 +4074,6 @@ SWIGINTERN PyObject *_wrap_new_intArray__SWIG_4(PyObject *SWIGUNUSEDPARM(self), 
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_intArray(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[2] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_intArray", 0, 1, argv))) SWIG_fail;
-  --argc;
-  if (argc == 0) {
-    return _wrap_new_intArray__SWIG_0(self, argc, argv);
-  }
-  if (argc == 1) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_intArray__SWIG_4(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    {
-      int res = SWIG_AsVal_int(argv[0], NULL);
-      _v = SWIG_CheckState(res);
-    }
-    if (_v) {
-      return _wrap_new_intArray__SWIG_2(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    {
-      int res = SWIG_AsVal_int(argv[0], NULL);
-      _v = SWIG_CheckState(res);
-    }
-    if (_v) {
-      return _wrap_new_intArray__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    {
-      _v = PyList_Check(argv[0]) ? 1 : 0;
-    }
-    if (_v) {
-      if (argc <= 1) {
-        return _wrap_new_intArray__SWIG_3(self, argc, argv);
-      }
-      return _wrap_new_intArray__SWIG_3(self, argc, argv);
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_intArray'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Array< int >::Array()\n"
-    "    mfem::Array< int >::Array(mfem::MemoryType)\n"
-    "    mfem::Array< int >::Array(int)\n"
-    "    mfem::Array< int >::Array(int *,int)\n"
-    "    mfem::Array< int >::Array(mfem::Array< int > const &)\n");
-  return 0;
 }
 
 
@@ -4048,8 +4671,6 @@ SWIGINTERN PyObject *_wrap_intArray_SetSize__SWIG_2(PyObject *SWIGUNUSEDPARM(sel
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
@@ -4062,11 +4683,11 @@ SWIGINTERN PyObject *_wrap_intArray_SetSize__SWIG_2(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "intArray_SetSize" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "intArray_SetSize" "', argument " "3"" of type '" "mfem::MemoryType""'");
-  } 
-  arg3 = static_cast< mfem::MemoryType >(val3);
+  {
+    PyObject* k = PyObject_GetAttrString(swig_obj[2], "value");
+    int i = (int)PyLong_AsLong(k);
+    arg3 = static_cast< mfem::MemoryType >(i);
+  }
   {
     try {
       (arg1)->SetSize(arg2,arg3);
@@ -4146,8 +4767,23 @@ SWIGINTERN PyObject *_wrap_intArray_SetSize(PyObject *self, PyObject *args) {
       }
       if (_v) {
         {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          _v = 0;
+          PyObject* module = PyImport_ImportModule("enum");
+          if (!module){
+            _v = 0;
+          } else {
+            PyObject* cls = PyObject_GetAttrString(module, "IntEnum");
+            if (!cls){
+              _v = 0;            
+            } else {
+              int check = PyObject_IsInstance(argv[2], cls);
+              if (check) {
+                _v = 1;
+              }
+              Py_DECREF(cls);	 
+            }
+            Py_DECREF(module);
+          }
         }
         if (_v) {
           return _wrap_intArray_SetSize__SWIG_2(self, argc, argv);
@@ -5177,7 +5813,11 @@ SWIGINTERN PyObject *_wrap_intArray_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out2 ;
+  std::ofstream out_txt2 ;
+  mfem::ofgzstream *out_gz2 = 0 ;
+  PyObject *string_io2 = 0 ;
+  std::ostringstream *stream2 = 0 ;
+  PyObject *ret2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
   
@@ -5189,18 +5829,58 @@ SWIGINTERN PyObject *_wrap_intArray_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
   if (swig_obj[1]) {
     {
+      //  PyMFEM::wFILE or string argument or StringIO
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
-        SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
-        return NULL;
-      }  
-      
-      if (temp2->isSTDOUT() == 1) {
-        arg2 = &std::cout;
+        if (!PyString_Check(swig_obj[1]) && !PyUnicode_Check(swig_obj[1])) {
+          // not string, check if it is StringIO
+          PyObject* module = PyImport_ImportModule("io");
+          if (!module){
+            PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+            return NULL;
+          }      
+          PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+          if (!cls){
+            PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+            return NULL;
+          }      
+          int check = PyObject_IsInstance(swig_obj[1], cls);
+          Py_DECREF(module);
+          if (! check){
+            SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
+            return NULL;
+          }
+          string_io2=swig_obj[1];
+          stream2 = new std::ostringstream();
+          int prec = 16;
+          if (PyObject_HasAttrString(swig_obj[1], "precision")){
+            PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+            prec = (int)PyLong_AsLong(attr);
+            //std::cout << "setting prec" << prec << "\n";
+          }
+          stream2->precision(prec);
+          
+        } else {
+          // if it is string, extract filename as char*
+          PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
+          const char* filename = PyBytes_AsString(str);
+          temp2 = new PyMFEM::wFILE(filename, 16, true);
+          Py_DECREF(str);	 
+        }
       }
-      else {
-        out2.open(temp2->getFilename());
-        out2.precision(temp2->getPrecision());
-        arg2 = &out2;
+      
+      if (stream2 == 0){
+        if (temp2->isSTDOUT() == 1) {
+          arg2 = &std::cout;
+        } else if (temp2->isGZ()){
+          out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
+          arg2 = out_gz2;	     
+        } else {
+          out_txt2.open(temp2->getFilename());
+          out_txt2.precision(temp2->getPrecision());
+          arg2 = &out_txt2;
+        }
+      } else {
+        arg2 = stream2;
       }
     }
   }
@@ -5229,18 +5909,54 @@ SWIGINTERN PyObject *_wrap_intArray_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   }
   resultobj = SWIG_Py_Void();
   {
-    if (temp2) {
-      if (temp2->isSTDOUT() != 1) {
-        out2.close();
+    if (stream2) {
+      std::string str =  stream2->str();
+      const char* s = str.c_str();
+      const int n = str.length();
+      ret2 = PyObject_CallMethod(string_io2, "write", "s#",
+        s, static_cast<Py_ssize_t>(n));
+      if (PyErr_Occurred()) {
+        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
+        return NULL;
+      }
+      delete stream2;
+      Py_XDECREF(resultobj);   /* Blow away any previous result */
+      resultobj = ret2;    
+    }
+  }
+  {
+    if (!stream2) {
+      if (temp2) {
+        if (temp2->isSTDOUT() != 1) {
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp2) {
-      if (temp2->isSTDOUT() != 1) {
-        out2.close();
+    if (!stream2) {
+      if (temp2) {
+        if (temp2->isSTDOUT() != 1) {
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -5256,7 +5972,11 @@ SWIGINTERN PyObject *_wrap_intArray_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out2 ;
+  std::ofstream out_txt2 ;
+  mfem::ofgzstream *out_gz2 = 0 ;
+  PyObject *string_io2 = 0 ;
+  std::ostringstream *stream2 = 0 ;
+  PyObject *ret2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
   
@@ -5267,18 +5987,58 @@ SWIGINTERN PyObject *_wrap_intArray_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   }
   arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
   {
+    //  PyMFEM::wFILE or string argument or StringIO
     if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
-      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
-      return NULL;
-    }  
-    
-    if (temp2->isSTDOUT() == 1) {
-      arg2 = &std::cout;
+      if (!PyString_Check(swig_obj[1]) && !PyUnicode_Check(swig_obj[1])) {
+        // not string, check if it is StringIO
+        PyObject* module = PyImport_ImportModule("io");
+        if (!module){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+          return NULL;
+        }      
+        PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+        if (!cls){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+          return NULL;
+        }      
+        int check = PyObject_IsInstance(swig_obj[1], cls);
+        Py_DECREF(module);
+        if (! check){
+          SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
+          return NULL;
+        }
+        string_io2=swig_obj[1];
+        stream2 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(swig_obj[1], "precision")){
+          PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream2->precision(prec);
+        
+      } else {
+        // if it is string, extract filename as char*
+        PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
+        const char* filename = PyBytes_AsString(str);
+        temp2 = new PyMFEM::wFILE(filename, 16, true);
+        Py_DECREF(str);	 
+      }
     }
-    else {
-      out2.open(temp2->getFilename());
-      out2.precision(temp2->getPrecision());
-      arg2 = &out2;
+    
+    if (stream2 == 0){
+      if (temp2->isSTDOUT() == 1) {
+        arg2 = &std::cout;
+      } else if (temp2->isGZ()){
+        out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
+        arg2 = out_gz2;	     
+      } else {
+        out_txt2.open(temp2->getFilename());
+        out_txt2.precision(temp2->getPrecision());
+        arg2 = &out_txt2;
+      }
+    } else {
+      arg2 = stream2;
     }
   }
   if (swig_obj[2]) {
@@ -5306,18 +6066,54 @@ SWIGINTERN PyObject *_wrap_intArray_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   }
   resultobj = SWIG_Py_Void();
   {
-    if (temp2) {
-      if (temp2->isSTDOUT() != 1) {
-        out2.close();
+    if (stream2) {
+      std::string str =  stream2->str();
+      const char* s = str.c_str();
+      const int n = str.length();
+      ret2 = PyObject_CallMethod(string_io2, "write", "s#",
+        s, static_cast<Py_ssize_t>(n));
+      if (PyErr_Occurred()) {
+        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
+        return NULL;
+      }
+      delete stream2;
+      Py_XDECREF(resultobj);   /* Blow away any previous result */
+      resultobj = ret2;    
+    }
+  }
+  {
+    if (!stream2) {
+      if (temp2) {
+        if (temp2->isSTDOUT() != 1) {
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp2) {
-      if (temp2->isSTDOUT() != 1) {
-        out2.close();
+    if (!stream2) {
+      if (temp2) {
+        if (temp2->isSTDOUT() != 1) {
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -5332,8 +6128,11 @@ SWIGINTERN PyObject *_wrap_intArray_Load__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   int arg3 = (int) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ifstream in_txt2 ;
+  mfem::ifgzstream *in_gz2 = 0 ;
+  std::istringstream *stream2 = 0 ;
+  Py_ssize_t len2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
   
@@ -5343,14 +6142,70 @@ SWIGINTERN PyObject *_wrap_intArray_Load__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intArray_Load" "', argument " "1"" of type '" "mfem::Array< int > *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__istream,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "intArray_Load" "', argument " "2"" of type '" "std::istream &""'"); 
+  {
+    //  PyMFEM::wFILE or string argument or StringIO
+    if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      if (!PyString_Check(swig_obj[1]) && !PyUnicode_Check(swig_obj[1])) {
+        // not string, check if it is StringIO
+        PyObject* module = PyImport_ImportModule("io");
+        if (!module){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+          return NULL;
+        }      
+        PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+        if (!cls){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+          return NULL;
+        }      
+        int check = PyObject_IsInstance(swig_obj[1], cls);
+        Py_DECREF(module);
+        if (! check){
+          SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
+          return NULL;
+        }
+        
+        PyObject *input_str = PyObject_CallMethod(swig_obj[1], "getvalue", NULL);
+        if (PyErr_Occurred()) {
+          PyErr_SetString(PyExc_RuntimeError, "Can not read from StringIO");
+          return NULL;
+        }
+        
+        char *buf = nullptr;
+        PyObject *str = PyUnicode_AsUTF8String(input_str);	 
+        PyBytes_AsStringAndSize(str, &buf, &len2);
+        stream2 = new std::istringstream(buf);
+        Py_DECREF(str);
+        Py_DECREF(input_str);	 
+      } else {
+        // if it is string, extract filename as char*
+        PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
+        const char* filename = PyBytes_AsString(str);
+        temp2 = new PyMFEM::wFILE(filename, 8, true);
+        Py_DECREF(str);
+      }
+    }
+    if (stream2 == 0){
+      /*
+            if (temp2->isGZ()){
+        	 in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+               arg2 = in_gz2;
+            } else {
+        	 in_txt2.open(temp2->getFilename(), std::ifstream::in);
+               in_txt2.precision(temp2->getPrecision());
+               arg2 = &in_txt2;
+            }
+           */
+      /* this will auto-detect the input file type */
+      in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+      arg2 = in_gz2;
+      
+      if (temp2->isTemporary()){
+        delete temp2;
+      }
+    } else {
+      arg2 = stream2;
+    }
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intArray_Load" "', argument " "2"" of type '" "std::istream &""'"); 
-  }
-  arg2 = reinterpret_cast< std::istream * >(argp2);
   if (swig_obj[2]) {
     ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
     if (!SWIG_IsOK(ecode3)) {
@@ -5375,8 +6230,28 @@ SWIGINTERN PyObject *_wrap_intArray_Load__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
     }	 
   }
   resultobj = SWIG_Py_Void();
+  {
+    if (!stream2) {
+      if (temp2) {
+        in_txt2.close();
+      }
+      if (in_gz2){
+        delete in_gz2;
+      }
+    }  
+  }
   return resultobj;
 fail:
+  {
+    if (!stream2) {
+      if (temp2) {
+        in_txt2.close();
+      }
+      if (in_gz2){
+        delete in_gz2;
+      }
+    }  
+  }
   return NULL;
 }
 
@@ -5390,8 +6265,11 @@ SWIGINTERN PyObject *_wrap_intArray_Load__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
+  PyMFEM::wFILE *temp3 = 0 ;
+  std::ifstream in_txt3 ;
+  mfem::ifgzstream *in_gz3 = 0 ;
+  std::istringstream *stream3 = 0 ;
+  Py_ssize_t len3 = 0 ;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
@@ -5404,14 +6282,70 @@ SWIGINTERN PyObject *_wrap_intArray_Load__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "intArray_Load" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_std__istream,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "intArray_Load" "', argument " "3"" of type '" "std::istream &""'"); 
+  {
+    //  PyMFEM::wFILE or string argument or StringIO
+    if (SWIG_ConvertPtr(swig_obj[2], (void **) &temp3, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      if (!PyString_Check(swig_obj[2]) && !PyUnicode_Check(swig_obj[2])) {
+        // not string, check if it is StringIO
+        PyObject* module = PyImport_ImportModule("io");
+        if (!module){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+          return NULL;
+        }      
+        PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+        if (!cls){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+          return NULL;
+        }      
+        int check = PyObject_IsInstance(swig_obj[2], cls);
+        Py_DECREF(module);
+        if (! check){
+          SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
+          return NULL;
+        }
+        
+        PyObject *input_str = PyObject_CallMethod(swig_obj[2], "getvalue", NULL);
+        if (PyErr_Occurred()) {
+          PyErr_SetString(PyExc_RuntimeError, "Can not read from StringIO");
+          return NULL;
+        }
+        
+        char *buf = nullptr;
+        PyObject *str = PyUnicode_AsUTF8String(input_str);	 
+        PyBytes_AsStringAndSize(str, &buf, &len3);
+        stream3 = new std::istringstream(buf);
+        Py_DECREF(str);
+        Py_DECREF(input_str);	 
+      } else {
+        // if it is string, extract filename as char*
+        PyObject* str = PyUnicode_AsEncodedString(swig_obj[2], "utf-8", "~E~");	
+        const char* filename = PyBytes_AsString(str);
+        temp3 = new PyMFEM::wFILE(filename, 8, true);
+        Py_DECREF(str);
+      }
+    }
+    if (stream3 == 0){
+      /*
+            if (temp3->isGZ()){
+        	 in_gz3 = new mfem::ifgzstream(temp3->getFilename());
+               arg3 = in_gz3;
+            } else {
+        	 in_txt3.open(temp3->getFilename(), std::ifstream::in);
+               in_txt3.precision(temp3->getPrecision());
+               arg3 = &in_txt3;
+            }
+           */
+      /* this will auto-detect the input file type */
+      in_gz3 = new mfem::ifgzstream(temp3->getFilename());
+      arg3 = in_gz3;
+      
+      if (temp3->isTemporary()){
+        delete temp3;
+      }
+    } else {
+      arg3 = stream3;
+    }
   }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intArray_Load" "', argument " "3"" of type '" "std::istream &""'"); 
-  }
-  arg3 = reinterpret_cast< std::istream * >(argp3);
   {
     try {
       (arg1)->Load(arg2,*arg3);
@@ -5429,8 +6363,28 @@ SWIGINTERN PyObject *_wrap_intArray_Load__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
     }	 
   }
   resultobj = SWIG_Py_Void();
+  {
+    if (!stream3) {
+      if (temp3) {
+        in_txt3.close();
+      }
+      if (in_gz3){
+        delete in_gz3;
+      }
+    }  
+  }
   return resultobj;
 fail:
+  {
+    if (!stream3) {
+      if (temp3) {
+        in_txt3.close();
+      }
+      if (in_gz3){
+        delete in_gz3;
+      }
+    }  
+  }
   return NULL;
 }
 
@@ -5449,9 +6403,34 @@ SWIGINTERN PyObject *_wrap_intArray_Load(PyObject *self, PyObject *args) {
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__istream, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
+      {
+        void *ptr;
+        //std::string *ptr2 = (std::string *)0;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          if (!PyString_Check(argv[1]) && !PyUnicode_Check(argv[1])) {
+            // not string
+            _v = 1;	   	
+            PyObject* module = PyImport_ImportModule("io");
+            if (!module){
+              _v = 0;	   
+            }      
+            PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+            if (!cls){
+              _v = 0;	   	   
+            }      
+            int check = PyObject_IsInstance(argv[1], cls);
+            Py_DECREF(module);
+            if (! check){
+              _v = 0;	   	   	   
+            }
+          } else {
+            _v = 1;
+          }
+        } else {
+          _v = 1;
+        }
+      }
       if (_v) {
         if (argc <= 2) {
           return _wrap_intArray_Load__SWIG_0(self, argc, argv);
@@ -5477,9 +6456,34 @@ SWIGINTERN PyObject *_wrap_intArray_Load(PyObject *self, PyObject *args) {
         _v = SWIG_CheckState(res);
       }
       if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_std__istream, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
+        {
+          void *ptr;
+          //std::string *ptr2 = (std::string *)0;
+          if (SWIG_ConvertPtr(argv[2], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+            PyErr_Clear();
+            if (!PyString_Check(argv[2]) && !PyUnicode_Check(argv[2])) {
+              // not string
+              _v = 1;	   	
+              PyObject* module = PyImport_ImportModule("io");
+              if (!module){
+                _v = 0;	   
+              }      
+              PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+              if (!cls){
+                _v = 0;	   	   
+              }      
+              int check = PyObject_IsInstance(argv[2], cls);
+              Py_DECREF(module);
+              if (! check){
+                _v = 0;	   	   	   
+              }
+            } else {
+              _v = 1;
+            }
+          } else {
+            _v = 1;
+          }
+        }
         if (_v) {
           return _wrap_intArray_Load__SWIG_1(self, argc, argv);
         }
@@ -6323,6 +7327,212 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_new_intArray__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  void *arg1 = (void *) 0 ;
+  int *arg2 = (int *) 0 ;
+  int *temp_ptr1 ;
+  int size1 ;
+  bool is_tuple1 = false ;
+  mfem::Array< int > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    if (!PyList_Check(swig_obj[0])) {
+      if (!PyTuple_Check(swig_obj[0])) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
+        return NULL;
+      } else {
+        is_tuple1 = true;
+      }
+    }
+    size1 = (is_tuple1) ? PyTuple_Size(swig_obj[0]) : PyList_Size(swig_obj[0]);
+    arg1 = (void *) & size1;
+  }
+  {
+    try {
+      result = (mfem::Array< int > *)new_mfem_Array_Sl_int_Sg___SWIG_6(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NEW |  0 );
+  {
+    for (int i = 0; i < size1; i++) {
+      PyObject *s = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], i) : PyList_GetItem(swig_obj[0],i);
+      (* result)[i] =  (int)PyLong_AsLong(s);
+    }
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_intArray(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_intArray", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_intArray__SWIG_0(self, argc, argv);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_intArray__SWIG_5(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      int res = SWIG_AsVal_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      return _wrap_new_intArray__SWIG_2(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      int * temp_ptr;
+      _v = 0;
+      if (PyList_Check(argv[0])){
+        int size = PyList_Size(argv[0]);    
+        if (size == 2){
+          PyObject *s1 = PyList_GetItem(argv[0],0);       
+          if (SWIG_ConvertPtr(s1, (void **) &temp_ptr,
+              SWIGTYPE_p_int, 0 |0) == -1) {
+            //
+          } else {
+            _v = 1;
+          }
+        }
+      }
+      if (PyTuple_Check(argv[0])){
+        int size = PyTuple_Size(argv[0]);        
+        if (size == 2){
+          PyObject *s1 = PyTuple_GetItem(argv[0],0);       
+          if (SWIG_ConvertPtr(s1, (void **) &temp_ptr,
+              SWIGTYPE_p_int, 0 |0) == -1) {
+            //
+          } else {
+            _v = 1;
+          }
+        }
+      }
+    }
+    if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_intArray__SWIG_4(self, argc, argv);
+      }
+      return _wrap_new_intArray__SWIG_4(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      _v = 0;
+      PyObject* module = PyImport_ImportModule("enum");
+      if (!module){
+        _v = 0;
+      } else {
+        PyObject* cls = PyObject_GetAttrString(module, "IntEnum");
+        if (!cls){
+          _v = 0;            
+        } else {
+          int check = PyObject_IsInstance(argv[0], cls);
+          if (check) {
+            _v = 1;
+          }
+          Py_DECREF(cls);	 
+        }
+        Py_DECREF(module);
+      }
+    }
+    if (_v) {
+      return _wrap_new_intArray__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      _v = 0;
+      if (PyList_Check(argv[0])){
+        _v = 1;
+      }
+      if (PyTuple_Check(argv[0])){
+        _v = 1;
+      }
+    }
+    if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_intArray__SWIG_6(self, argc, argv);
+      }
+      return _wrap_new_intArray__SWIG_6(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      int res = SWIG_AsVal_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      {
+        _v = 0;
+        PyObject* module = PyImport_ImportModule("enum");
+        if (!module){
+          _v = 0;
+        } else {
+          PyObject* cls = PyObject_GetAttrString(module, "IntEnum");
+          if (!cls){
+            _v = 0;            
+          } else {
+            int check = PyObject_IsInstance(argv[1], cls);
+            if (check) {
+              _v = 1;
+            }
+            Py_DECREF(cls);	 
+          }
+          Py_DECREF(module);
+        }
+      }
+      if (_v) {
+        return _wrap_new_intArray__SWIG_3(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_intArray'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< int >::Array()\n"
+    "    mfem::Array< int >::Array(mfem::MemoryType)\n"
+    "    mfem::Array< int >::Array(int)\n"
+    "    mfem::Array< int >::Array(int,mfem::MemoryType)\n"
+    "    mfem::Array< int >::Array(int *,int)\n"
+    "    mfem::Array< int >::Array(mfem::Array< int > const &)\n"
+    "    mfem::Array< int >::Array(void *,int *)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_intArray___setitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Array< int > *arg1 = (mfem::Array< int > *) 0 ;
@@ -6374,55 +7584,6 @@ SWIGINTERN PyObject *_wrap_intArray___setitem__(PyObject *SWIGUNUSEDPARM(self), 
     }	 
   }
   resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_intArray___getitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::Array< int > *arg1 = (mfem::Array< int > *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"i",  NULL 
-  };
-  int *result = 0 ;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:intArray___getitem__", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intArray___getitem__" "', argument " "1"" of type '" "mfem::Array< int > const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "intArray___getitem__" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  {
-    try {
-      result = (int *) &mfem_Array_Sl_int_Sg____getitem__((mfem::Array< int > const *)arg1,arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_From_int(static_cast< int >(*result));
   return resultobj;
 fail:
   return NULL;
@@ -6558,11 +7719,48 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_intArray___iter__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< int > *arg1 = (mfem::Array< int > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intArray___iter__" "', argument " "1"" of type '" "mfem::Array< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
+  {
+    try {
+      mfem_Array_Sl_int_Sg____iter__(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_intArray_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Array< int > *arg1 = (mfem::Array< int > *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -6633,11 +7831,30 @@ SWIGINTERN PyObject *_wrap_intArray_Print(PyObject *self, PyObject *args) {
       }
       {
         void *ptr;
+        //std::string *ptr2 = (std::string *)0;
         if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
           PyErr_Clear();
-          _v = 0;
+          if (!PyString_Check(argv[1]) && !PyUnicode_Check(argv[1])) {
+            // not string
+            _v = 1;	   	
+            PyObject* module = PyImport_ImportModule("io");
+            if (!module){
+              _v = 0;	   
+            }      
+            PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+            if (!cls){
+              _v = 0;	   	   
+            }      
+            int check = PyObject_IsInstance(argv[1], cls);
+            Py_DECREF(module);
+            if (! check){
+              _v = 0;	   	   	   
+            }
+          } else {
+            _v = 1;
+          }
         } else {
-          _v = 1;    
+          _v = 1;
         }
       }
       if (_v) {
@@ -6686,11 +7903,73 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_intArray_PrintGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< int > *arg1 = (mfem::Array< int > *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 16 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:intArray_PrintGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intArray_PrintGZ" "', argument " "1"" of type '" "mfem::Array< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "intArray_PrintGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    ecode3 = SWIG_AsVal_int(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "intArray_PrintGZ" "', argument " "3"" of type '" "int""'");
+    } 
+    arg3 = static_cast< int >(val3);
+  }
+  {
+    try {
+      mfem_Array_Sl_int_Sg__PrintGZ(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_intArray_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Array< int > *arg1 = (mfem::Array< int > *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -6720,6 +7999,68 @@ SWIGINTERN PyObject *_wrap_intArray_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   {
     try {
       mfem_Array_Sl_int_Sg__Save__SWIG_1(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_intArray_SaveGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< int > *arg1 = (mfem::Array< int > *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 16 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:intArray_SaveGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intArray_SaveGZ" "', argument " "1"" of type '" "mfem::Array< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "intArray_SaveGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    ecode3 = SWIG_AsVal_int(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "intArray_SaveGZ" "', argument " "3"" of type '" "int""'");
+    } 
+    arg3 = static_cast< int >(val3);
+  }
+  {
+    try {
+      mfem_Array_Sl_int_Sg__SaveGZ(arg1,(char const *)arg2,arg3);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -6824,11 +8165,30 @@ SWIGINTERN PyObject *_wrap_intArray_Save(PyObject *self, PyObject *args) {
     if (_v) {
       {
         void *ptr;
+        //std::string *ptr2 = (std::string *)0;
         if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
           PyErr_Clear();
-          _v = 0;
+          if (!PyString_Check(argv[1]) && !PyUnicode_Check(argv[1])) {
+            // not string
+            _v = 1;	   	
+            PyObject* module = PyImport_ImportModule("io");
+            if (!module){
+              _v = 0;	   
+            }      
+            PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+            if (!cls){
+              _v = 0;	   	   
+            }      
+            int check = PyObject_IsInstance(argv[1], cls);
+            Py_DECREF(module);
+            if (! check){
+              _v = 0;	   	   	   
+            }
+          } else {
+            _v = 1;
+          }
         } else {
-          _v = 1;    
+          _v = 1;
         }
       }
       if (_v) {
@@ -6853,6 +8213,49 @@ fail:
     "    mfem::Array< int >::Save(char const *,int)\n"
     "    mfem::Array< int >::Save()\n");
   return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_intArray___getitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< int > *arg1 = (mfem::Array< int > *) 0 ;
+  PyObject *arg2 = (PyObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"param",  NULL 
+  };
+  PyObject *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:intArray___getitem__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intArray___getitem__" "', argument " "1"" of type '" "mfem::Array< int > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
+  arg2 = obj1;
+  {
+    try {
+      result = (PyObject *)mfem_Array_Sl_int_Sg____getitem__(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = result;
+  return resultobj;
+fail:
+  return NULL;
 }
 
 
@@ -6898,16 +8301,14 @@ fail:
 SWIGINTERN PyObject *_wrap_new_doubleArray__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::MemoryType arg1 ;
-  int val1 ;
-  int ecode1 = 0 ;
   mfem::Array< double > *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_doubleArray" "', argument " "1"" of type '" "mfem::MemoryType""'");
-  } 
-  arg1 = static_cast< mfem::MemoryType >(val1);
+  {
+    PyObject* k = PyObject_GetAttrString(swig_obj[0], "value");
+    int i = (int)PyLong_AsLong(k);
+    arg1 = static_cast< mfem::MemoryType >(i);
+  }
   {
     try {
       result = (mfem::Array< double > *)new mfem::Array< double >(arg1);
@@ -6969,31 +8370,22 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_doubleArray__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  double *arg1 = (double *) 0 ;
-  int arg2 ;
+  int arg1 ;
+  mfem::MemoryType arg2 ;
+  int val1 ;
+  int ecode1 = 0 ;
   mfem::Array< double > *result = 0 ;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_doubleArray" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
   {
-    int i;
-    if (!PyList_Check(swig_obj[0])) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    arg2 = PyList_Size(swig_obj[0]);
-    arg1 = (double *) malloc((arg2)*sizeof(int));
-    for (i = 0; i < arg2; i++) {
-      PyObject *s = PyList_GetItem(swig_obj[0],i);
-      if (PyInt_Check(s)) {
-        arg1[i] = (double)PyFloat_AsDouble(s);
-      } else if (PyFloat_Check(s)) {
-        arg1[i] = (double)PyFloat_AsDouble(s);
-      } else {
-        free(arg1);
-        PyErr_SetString(PyExc_ValueError, "List items must be integer");
-        return NULL;
-      }
-    }
+    PyObject* k = PyObject_GetAttrString(swig_obj[1], "value");
+    int i = (int)PyLong_AsLong(k);
+    arg2 = static_cast< mfem::MemoryType >(i);
   }
   {
     try {
@@ -7019,6 +8411,56 @@ fail:
 
 
 SWIGINTERN PyObject *_wrap_new_doubleArray__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  double *arg1 = (double *) 0 ;
+  int arg2 ;
+  double *temp_ptr1 ;
+  bool is_tuple1 = false ;
+  PyObject *s11 ;
+  PyObject *s21 ;
+  mfem::Array< double > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    if (!PyList_Check(swig_obj[0])) {
+      if (!PyTuple_Check(swig_obj[0])) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
+        return NULL;
+      } else {
+        is_tuple1 = true;
+      }
+    }
+    s11 = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], 0) : PyList_GetItem(swig_obj[0],0);
+    s21 = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], 1) : PyList_GetItem(swig_obj[0],1);    
+    SWIG_ConvertPtr(s11, (void **) &temp_ptr1,
+      SWIGTYPE_p_double, 0 |0);
+    arg1 = temp_ptr1;
+    arg2 = PyLong_AsLong(s21);    
+  }
+  {
+    try {
+      result = (mfem::Array< double > *)new mfem::Array< double >(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_double_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_doubleArray__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Array< double > *arg1 = 0 ;
   void *argp1 = 0 ;
@@ -7054,70 +8496,6 @@ SWIGINTERN PyObject *_wrap_new_doubleArray__SWIG_4(PyObject *SWIGUNUSEDPARM(self
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_doubleArray(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[2] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_doubleArray", 0, 1, argv))) SWIG_fail;
-  --argc;
-  if (argc == 0) {
-    return _wrap_new_doubleArray__SWIG_0(self, argc, argv);
-  }
-  if (argc == 1) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ArrayT_double_t, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_doubleArray__SWIG_4(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    {
-      int res = SWIG_AsVal_int(argv[0], NULL);
-      _v = SWIG_CheckState(res);
-    }
-    if (_v) {
-      return _wrap_new_doubleArray__SWIG_2(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    {
-      int res = SWIG_AsVal_int(argv[0], NULL);
-      _v = SWIG_CheckState(res);
-    }
-    if (_v) {
-      return _wrap_new_doubleArray__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    {
-      _v = PyList_Check(argv[0]) ? 1 : 0;
-    }
-    if (_v) {
-      if (argc <= 1) {
-        return _wrap_new_doubleArray__SWIG_3(self, argc, argv);
-      }
-      return _wrap_new_doubleArray__SWIG_3(self, argc, argv);
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_doubleArray'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Array< double >::Array()\n"
-    "    mfem::Array< double >::Array(mfem::MemoryType)\n"
-    "    mfem::Array< double >::Array(int)\n"
-    "    mfem::Array< double >::Array(double *,int)\n"
-    "    mfem::Array< double >::Array(mfem::Array< double > const &)\n");
-  return 0;
 }
 
 
@@ -7715,8 +9093,6 @@ SWIGINTERN PyObject *_wrap_doubleArray_SetSize__SWIG_2(PyObject *SWIGUNUSEDPARM(
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_double_t, 0 |  0 );
@@ -7729,11 +9105,11 @@ SWIGINTERN PyObject *_wrap_doubleArray_SetSize__SWIG_2(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "doubleArray_SetSize" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "doubleArray_SetSize" "', argument " "3"" of type '" "mfem::MemoryType""'");
-  } 
-  arg3 = static_cast< mfem::MemoryType >(val3);
+  {
+    PyObject* k = PyObject_GetAttrString(swig_obj[2], "value");
+    int i = (int)PyLong_AsLong(k);
+    arg3 = static_cast< mfem::MemoryType >(i);
+  }
   {
     try {
       (arg1)->SetSize(arg2,arg3);
@@ -7792,11 +9168,11 @@ SWIGINTERN PyObject *_wrap_doubleArray_SetSize(PyObject *self, PyObject *args) {
       }
       if (_v) {
         {
-          int res = SWIG_AsVal_int(argv[2], NULL);
+          int res = SWIG_AsVal_double(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
         if (_v) {
-          return _wrap_doubleArray_SetSize__SWIG_2(self, argc, argv);
+          return _wrap_doubleArray_SetSize__SWIG_1(self, argc, argv);
         }
       }
     }
@@ -7813,11 +9189,26 @@ SWIGINTERN PyObject *_wrap_doubleArray_SetSize(PyObject *self, PyObject *args) {
       }
       if (_v) {
         {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          _v = 0;
+          PyObject* module = PyImport_ImportModule("enum");
+          if (!module){
+            _v = 0;
+          } else {
+            PyObject* cls = PyObject_GetAttrString(module, "IntEnum");
+            if (!cls){
+              _v = 0;            
+            } else {
+              int check = PyObject_IsInstance(argv[2], cls);
+              if (check) {
+                _v = 1;
+              }
+              Py_DECREF(cls);	 
+            }
+            Py_DECREF(module);
+          }
         }
         if (_v) {
-          return _wrap_doubleArray_SetSize__SWIG_1(self, argc, argv);
+          return _wrap_doubleArray_SetSize__SWIG_2(self, argc, argv);
         }
       }
     }
@@ -8844,7 +10235,11 @@ SWIGINTERN PyObject *_wrap_doubleArray_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out2 ;
+  std::ofstream out_txt2 ;
+  mfem::ofgzstream *out_gz2 = 0 ;
+  PyObject *string_io2 = 0 ;
+  std::ostringstream *stream2 = 0 ;
+  PyObject *ret2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
   
@@ -8856,18 +10251,58 @@ SWIGINTERN PyObject *_wrap_doubleArray_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
   if (swig_obj[1]) {
     {
+      //  PyMFEM::wFILE or string argument or StringIO
       if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
-        SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
-        return NULL;
-      }  
-      
-      if (temp2->isSTDOUT() == 1) {
-        arg2 = &std::cout;
+        if (!PyString_Check(swig_obj[1]) && !PyUnicode_Check(swig_obj[1])) {
+          // not string, check if it is StringIO
+          PyObject* module = PyImport_ImportModule("io");
+          if (!module){
+            PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+            return NULL;
+          }      
+          PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+          if (!cls){
+            PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+            return NULL;
+          }      
+          int check = PyObject_IsInstance(swig_obj[1], cls);
+          Py_DECREF(module);
+          if (! check){
+            SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
+            return NULL;
+          }
+          string_io2=swig_obj[1];
+          stream2 = new std::ostringstream();
+          int prec = 16;
+          if (PyObject_HasAttrString(swig_obj[1], "precision")){
+            PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+            prec = (int)PyLong_AsLong(attr);
+            //std::cout << "setting prec" << prec << "\n";
+          }
+          stream2->precision(prec);
+          
+        } else {
+          // if it is string, extract filename as char*
+          PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
+          const char* filename = PyBytes_AsString(str);
+          temp2 = new PyMFEM::wFILE(filename, 16, true);
+          Py_DECREF(str);	 
+        }
       }
-      else {
-        out2.open(temp2->getFilename());
-        out2.precision(temp2->getPrecision());
-        arg2 = &out2;
+      
+      if (stream2 == 0){
+        if (temp2->isSTDOUT() == 1) {
+          arg2 = &std::cout;
+        } else if (temp2->isGZ()){
+          out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
+          arg2 = out_gz2;	     
+        } else {
+          out_txt2.open(temp2->getFilename());
+          out_txt2.precision(temp2->getPrecision());
+          arg2 = &out_txt2;
+        }
+      } else {
+        arg2 = stream2;
       }
     }
   }
@@ -8896,18 +10331,54 @@ SWIGINTERN PyObject *_wrap_doubleArray_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   }
   resultobj = SWIG_Py_Void();
   {
-    if (temp2) {
-      if (temp2->isSTDOUT() != 1) {
-        out2.close();
+    if (stream2) {
+      std::string str =  stream2->str();
+      const char* s = str.c_str();
+      const int n = str.length();
+      ret2 = PyObject_CallMethod(string_io2, "write", "s#",
+        s, static_cast<Py_ssize_t>(n));
+      if (PyErr_Occurred()) {
+        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
+        return NULL;
+      }
+      delete stream2;
+      Py_XDECREF(resultobj);   /* Blow away any previous result */
+      resultobj = ret2;    
+    }
+  }
+  {
+    if (!stream2) {
+      if (temp2) {
+        if (temp2->isSTDOUT() != 1) {
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp2) {
-      if (temp2->isSTDOUT() != 1) {
-        out2.close();
+    if (!stream2) {
+      if (temp2) {
+        if (temp2->isSTDOUT() != 1) {
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -8923,7 +10394,11 @@ SWIGINTERN PyObject *_wrap_doubleArray_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out2 ;
+  std::ofstream out_txt2 ;
+  mfem::ofgzstream *out_gz2 = 0 ;
+  PyObject *string_io2 = 0 ;
+  std::ostringstream *stream2 = 0 ;
+  PyObject *ret2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
   
@@ -8934,18 +10409,58 @@ SWIGINTERN PyObject *_wrap_doubleArray_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   }
   arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
   {
+    //  PyMFEM::wFILE or string argument or StringIO
     if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
-      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
-      return NULL;
-    }  
-    
-    if (temp2->isSTDOUT() == 1) {
-      arg2 = &std::cout;
+      if (!PyString_Check(swig_obj[1]) && !PyUnicode_Check(swig_obj[1])) {
+        // not string, check if it is StringIO
+        PyObject* module = PyImport_ImportModule("io");
+        if (!module){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+          return NULL;
+        }      
+        PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+        if (!cls){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+          return NULL;
+        }      
+        int check = PyObject_IsInstance(swig_obj[1], cls);
+        Py_DECREF(module);
+        if (! check){
+          SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
+          return NULL;
+        }
+        string_io2=swig_obj[1];
+        stream2 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(swig_obj[1], "precision")){
+          PyObject *attr = PyObject_GetAttrString(swig_obj[1], "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream2->precision(prec);
+        
+      } else {
+        // if it is string, extract filename as char*
+        PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
+        const char* filename = PyBytes_AsString(str);
+        temp2 = new PyMFEM::wFILE(filename, 16, true);
+        Py_DECREF(str);	 
+      }
     }
-    else {
-      out2.open(temp2->getFilename());
-      out2.precision(temp2->getPrecision());
-      arg2 = &out2;
+    
+    if (stream2 == 0){
+      if (temp2->isSTDOUT() == 1) {
+        arg2 = &std::cout;
+      } else if (temp2->isGZ()){
+        out_gz2 = new mfem::ofgzstream(temp2->getFilename(), true);
+        arg2 = out_gz2;	     
+      } else {
+        out_txt2.open(temp2->getFilename());
+        out_txt2.precision(temp2->getPrecision());
+        arg2 = &out_txt2;
+      }
+    } else {
+      arg2 = stream2;
     }
   }
   if (swig_obj[2]) {
@@ -8973,18 +10488,54 @@ SWIGINTERN PyObject *_wrap_doubleArray_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   }
   resultobj = SWIG_Py_Void();
   {
-    if (temp2) {
-      if (temp2->isSTDOUT() != 1) {
-        out2.close();
+    if (stream2) {
+      std::string str =  stream2->str();
+      const char* s = str.c_str();
+      const int n = str.length();
+      ret2 = PyObject_CallMethod(string_io2, "write", "s#",
+        s, static_cast<Py_ssize_t>(n));
+      if (PyErr_Occurred()) {
+        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
+        return NULL;
+      }
+      delete stream2;
+      Py_XDECREF(resultobj);   /* Blow away any previous result */
+      resultobj = ret2;    
+    }
+  }
+  {
+    if (!stream2) {
+      if (temp2) {
+        if (temp2->isSTDOUT() != 1) {
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp2) {
-      if (temp2->isSTDOUT() != 1) {
-        out2.close();
+    if (!stream2) {
+      if (temp2) {
+        if (temp2->isSTDOUT() != 1) {
+          if (out_txt2.is_open()){
+            out_txt2.close();
+          }
+          if (out_gz2){
+            delete out_gz2;
+          }
+        }
+        if (temp2->isTemporary()){
+          delete temp2;
+        }
       }
     }
   }
@@ -8999,8 +10550,11 @@ SWIGINTERN PyObject *_wrap_doubleArray_Load__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   int arg3 = (int) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ifstream in_txt2 ;
+  mfem::ifgzstream *in_gz2 = 0 ;
+  std::istringstream *stream2 = 0 ;
+  Py_ssize_t len2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
   
@@ -9010,14 +10564,70 @@ SWIGINTERN PyObject *_wrap_doubleArray_Load__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleArray_Load" "', argument " "1"" of type '" "mfem::Array< double > *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__istream,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "doubleArray_Load" "', argument " "2"" of type '" "std::istream &""'"); 
+  {
+    //  PyMFEM::wFILE or string argument or StringIO
+    if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      if (!PyString_Check(swig_obj[1]) && !PyUnicode_Check(swig_obj[1])) {
+        // not string, check if it is StringIO
+        PyObject* module = PyImport_ImportModule("io");
+        if (!module){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+          return NULL;
+        }      
+        PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+        if (!cls){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+          return NULL;
+        }      
+        int check = PyObject_IsInstance(swig_obj[1], cls);
+        Py_DECREF(module);
+        if (! check){
+          SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
+          return NULL;
+        }
+        
+        PyObject *input_str = PyObject_CallMethod(swig_obj[1], "getvalue", NULL);
+        if (PyErr_Occurred()) {
+          PyErr_SetString(PyExc_RuntimeError, "Can not read from StringIO");
+          return NULL;
+        }
+        
+        char *buf = nullptr;
+        PyObject *str = PyUnicode_AsUTF8String(input_str);	 
+        PyBytes_AsStringAndSize(str, &buf, &len2);
+        stream2 = new std::istringstream(buf);
+        Py_DECREF(str);
+        Py_DECREF(input_str);	 
+      } else {
+        // if it is string, extract filename as char*
+        PyObject* str = PyUnicode_AsEncodedString(swig_obj[1], "utf-8", "~E~");	
+        const char* filename = PyBytes_AsString(str);
+        temp2 = new PyMFEM::wFILE(filename, 8, true);
+        Py_DECREF(str);
+      }
+    }
+    if (stream2 == 0){
+      /*
+            if (temp2->isGZ()){
+        	 in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+               arg2 = in_gz2;
+            } else {
+        	 in_txt2.open(temp2->getFilename(), std::ifstream::in);
+               in_txt2.precision(temp2->getPrecision());
+               arg2 = &in_txt2;
+            }
+           */
+      /* this will auto-detect the input file type */
+      in_gz2 = new mfem::ifgzstream(temp2->getFilename());
+      arg2 = in_gz2;
+      
+      if (temp2->isTemporary()){
+        delete temp2;
+      }
+    } else {
+      arg2 = stream2;
+    }
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleArray_Load" "', argument " "2"" of type '" "std::istream &""'"); 
-  }
-  arg2 = reinterpret_cast< std::istream * >(argp2);
   if (swig_obj[2]) {
     ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
     if (!SWIG_IsOK(ecode3)) {
@@ -9042,8 +10652,28 @@ SWIGINTERN PyObject *_wrap_doubleArray_Load__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
     }	 
   }
   resultobj = SWIG_Py_Void();
+  {
+    if (!stream2) {
+      if (temp2) {
+        in_txt2.close();
+      }
+      if (in_gz2){
+        delete in_gz2;
+      }
+    }  
+  }
   return resultobj;
 fail:
+  {
+    if (!stream2) {
+      if (temp2) {
+        in_txt2.close();
+      }
+      if (in_gz2){
+        delete in_gz2;
+      }
+    }  
+  }
   return NULL;
 }
 
@@ -9057,8 +10687,11 @@ SWIGINTERN PyObject *_wrap_doubleArray_Load__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
+  PyMFEM::wFILE *temp3 = 0 ;
+  std::ifstream in_txt3 ;
+  mfem::ifgzstream *in_gz3 = 0 ;
+  std::istringstream *stream3 = 0 ;
+  Py_ssize_t len3 = 0 ;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_double_t, 0 |  0 );
@@ -9071,14 +10704,70 @@ SWIGINTERN PyObject *_wrap_doubleArray_Load__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "doubleArray_Load" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = static_cast< int >(val2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_std__istream,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "doubleArray_Load" "', argument " "3"" of type '" "std::istream &""'"); 
+  {
+    //  PyMFEM::wFILE or string argument or StringIO
+    if (SWIG_ConvertPtr(swig_obj[2], (void **) &temp3, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      if (!PyString_Check(swig_obj[2]) && !PyUnicode_Check(swig_obj[2])) {
+        // not string, check if it is StringIO
+        PyObject* module = PyImport_ImportModule("io");
+        if (!module){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+          return NULL;
+        }      
+        PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+        if (!cls){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+          return NULL;
+        }      
+        int check = PyObject_IsInstance(swig_obj[2], cls);
+        Py_DECREF(module);
+        if (! check){
+          SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
+          return NULL;
+        }
+        
+        PyObject *input_str = PyObject_CallMethod(swig_obj[2], "getvalue", NULL);
+        if (PyErr_Occurred()) {
+          PyErr_SetString(PyExc_RuntimeError, "Can not read from StringIO");
+          return NULL;
+        }
+        
+        char *buf = nullptr;
+        PyObject *str = PyUnicode_AsUTF8String(input_str);	 
+        PyBytes_AsStringAndSize(str, &buf, &len3);
+        stream3 = new std::istringstream(buf);
+        Py_DECREF(str);
+        Py_DECREF(input_str);	 
+      } else {
+        // if it is string, extract filename as char*
+        PyObject* str = PyUnicode_AsEncodedString(swig_obj[2], "utf-8", "~E~");	
+        const char* filename = PyBytes_AsString(str);
+        temp3 = new PyMFEM::wFILE(filename, 8, true);
+        Py_DECREF(str);
+      }
+    }
+    if (stream3 == 0){
+      /*
+            if (temp3->isGZ()){
+        	 in_gz3 = new mfem::ifgzstream(temp3->getFilename());
+               arg3 = in_gz3;
+            } else {
+        	 in_txt3.open(temp3->getFilename(), std::ifstream::in);
+               in_txt3.precision(temp3->getPrecision());
+               arg3 = &in_txt3;
+            }
+           */
+      /* this will auto-detect the input file type */
+      in_gz3 = new mfem::ifgzstream(temp3->getFilename());
+      arg3 = in_gz3;
+      
+      if (temp3->isTemporary()){
+        delete temp3;
+      }
+    } else {
+      arg3 = stream3;
+    }
   }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleArray_Load" "', argument " "3"" of type '" "std::istream &""'"); 
-  }
-  arg3 = reinterpret_cast< std::istream * >(argp3);
   {
     try {
       (arg1)->Load(arg2,*arg3);
@@ -9096,8 +10785,28 @@ SWIGINTERN PyObject *_wrap_doubleArray_Load__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
     }	 
   }
   resultobj = SWIG_Py_Void();
+  {
+    if (!stream3) {
+      if (temp3) {
+        in_txt3.close();
+      }
+      if (in_gz3){
+        delete in_gz3;
+      }
+    }  
+  }
   return resultobj;
 fail:
+  {
+    if (!stream3) {
+      if (temp3) {
+        in_txt3.close();
+      }
+      if (in_gz3){
+        delete in_gz3;
+      }
+    }  
+  }
   return NULL;
 }
 
@@ -9116,9 +10825,34 @@ SWIGINTERN PyObject *_wrap_doubleArray_Load(PyObject *self, PyObject *args) {
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_double_t, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__istream, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
+      {
+        void *ptr;
+        //std::string *ptr2 = (std::string *)0;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          if (!PyString_Check(argv[1]) && !PyUnicode_Check(argv[1])) {
+            // not string
+            _v = 1;	   	
+            PyObject* module = PyImport_ImportModule("io");
+            if (!module){
+              _v = 0;	   
+            }      
+            PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+            if (!cls){
+              _v = 0;	   	   
+            }      
+            int check = PyObject_IsInstance(argv[1], cls);
+            Py_DECREF(module);
+            if (! check){
+              _v = 0;	   	   	   
+            }
+          } else {
+            _v = 1;
+          }
+        } else {
+          _v = 1;
+        }
+      }
       if (_v) {
         if (argc <= 2) {
           return _wrap_doubleArray_Load__SWIG_0(self, argc, argv);
@@ -9144,9 +10878,34 @@ SWIGINTERN PyObject *_wrap_doubleArray_Load(PyObject *self, PyObject *args) {
         _v = SWIG_CheckState(res);
       }
       if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_std__istream, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
+        {
+          void *ptr;
+          //std::string *ptr2 = (std::string *)0;
+          if (SWIG_ConvertPtr(argv[2], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+            PyErr_Clear();
+            if (!PyString_Check(argv[2]) && !PyUnicode_Check(argv[2])) {
+              // not string
+              _v = 1;	   	
+              PyObject* module = PyImport_ImportModule("io");
+              if (!module){
+                _v = 0;	   
+              }      
+              PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+              if (!cls){
+                _v = 0;	   	   
+              }      
+              int check = PyObject_IsInstance(argv[2], cls);
+              Py_DECREF(module);
+              if (! check){
+                _v = 0;	   	   	   
+              }
+            } else {
+              _v = 1;
+            }
+          } else {
+            _v = 1;
+          }
+        }
         if (_v) {
           return _wrap_doubleArray_Load__SWIG_1(self, argc, argv);
         }
@@ -9990,6 +11749,212 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_new_doubleArray__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  void *arg1 = (void *) 0 ;
+  double *arg2 = (double *) 0 ;
+  double *temp_ptr1 ;
+  int size1 ;
+  bool is_tuple1 = false ;
+  mfem::Array< double > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    if (!PyList_Check(swig_obj[0])) {
+      if (!PyTuple_Check(swig_obj[0])) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
+        return NULL;
+      } else {
+        is_tuple1 = true;
+      }
+    }
+    size1 = (is_tuple1) ? PyTuple_Size(swig_obj[0]) : PyList_Size(swig_obj[0]);
+    arg1 = (void *) & size1;
+  }
+  {
+    try {
+      result = (mfem::Array< double > *)new_mfem_Array_Sl_double_Sg___SWIG_6(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_double_t, SWIG_POINTER_NEW |  0 );
+  {
+    for (int i = 0; i < size1; i++) {
+      PyObject *s = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], i) : PyList_GetItem(swig_obj[0],i);
+      (* result)[i] =  (double)PyFloat_AsDouble(s);
+    }
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_doubleArray(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_doubleArray", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_doubleArray__SWIG_0(self, argc, argv);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ArrayT_double_t, SWIG_POINTER_NO_NULL | 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_doubleArray__SWIG_5(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      int res = SWIG_AsVal_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      return _wrap_new_doubleArray__SWIG_2(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      double * temp_ptr;
+      _v = 0;
+      if (PyList_Check(argv[0])){
+        int size = PyList_Size(argv[0]);    
+        if (size == 2){
+          PyObject *s1 = PyList_GetItem(argv[0],0);       
+          if (SWIG_ConvertPtr(s1, (void **) &temp_ptr,
+              SWIGTYPE_p_double, 0 |0) == -1) {
+            //
+          } else {
+            _v = 1;
+          }
+        }
+      }
+      if (PyTuple_Check(argv[0])){
+        int size = PyTuple_Size(argv[0]);        
+        if (size == 2){
+          PyObject *s1 = PyTuple_GetItem(argv[0],0);       
+          if (SWIG_ConvertPtr(s1, (void **) &temp_ptr,
+              SWIGTYPE_p_double, 0 |0) == -1) {
+            //
+          } else {
+            _v = 1;
+          }
+        }
+      }
+    }
+    if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_doubleArray__SWIG_4(self, argc, argv);
+      }
+      return _wrap_new_doubleArray__SWIG_4(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      _v = 0;
+      PyObject* module = PyImport_ImportModule("enum");
+      if (!module){
+        _v = 0;
+      } else {
+        PyObject* cls = PyObject_GetAttrString(module, "IntEnum");
+        if (!cls){
+          _v = 0;            
+        } else {
+          int check = PyObject_IsInstance(argv[0], cls);
+          if (check) {
+            _v = 1;
+          }
+          Py_DECREF(cls);	 
+        }
+        Py_DECREF(module);
+      }
+    }
+    if (_v) {
+      return _wrap_new_doubleArray__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      _v = 0;
+      if (PyList_Check(argv[0])){
+        _v = 1;
+      }
+      if (PyTuple_Check(argv[0])){
+        _v = 1;
+      }
+    }
+    if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_doubleArray__SWIG_6(self, argc, argv);
+      }
+      return _wrap_new_doubleArray__SWIG_6(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      int res = SWIG_AsVal_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      {
+        _v = 0;
+        PyObject* module = PyImport_ImportModule("enum");
+        if (!module){
+          _v = 0;
+        } else {
+          PyObject* cls = PyObject_GetAttrString(module, "IntEnum");
+          if (!cls){
+            _v = 0;            
+          } else {
+            int check = PyObject_IsInstance(argv[1], cls);
+            if (check) {
+              _v = 1;
+            }
+            Py_DECREF(cls);	 
+          }
+          Py_DECREF(module);
+        }
+      }
+      if (_v) {
+        return _wrap_new_doubleArray__SWIG_3(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_doubleArray'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< double >::Array()\n"
+    "    mfem::Array< double >::Array(mfem::MemoryType)\n"
+    "    mfem::Array< double >::Array(int)\n"
+    "    mfem::Array< double >::Array(int,mfem::MemoryType)\n"
+    "    mfem::Array< double >::Array(double *,int)\n"
+    "    mfem::Array< double >::Array(mfem::Array< double > const &)\n"
+    "    mfem::Array< double >::Array(void *,double *)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_doubleArray___setitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Array< double > *arg1 = (mfem::Array< double > *) 0 ;
@@ -10041,55 +12006,6 @@ SWIGINTERN PyObject *_wrap_doubleArray___setitem__(PyObject *SWIGUNUSEDPARM(self
     }	 
   }
   resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_doubleArray___getitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::Array< double > *arg1 = (mfem::Array< double > *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"i",  NULL 
-  };
-  double *result = 0 ;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:doubleArray___getitem__", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_double_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleArray___getitem__" "', argument " "1"" of type '" "mfem::Array< double > const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "doubleArray___getitem__" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  {
-    try {
-      result = (double *) &mfem_Array_Sl_double_Sg____getitem__((mfem::Array< double > const *)arg1,arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_From_double(static_cast< double >(*result));
   return resultobj;
 fail:
   return NULL;
@@ -10225,11 +12141,48 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_doubleArray___iter__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< double > *arg1 = (mfem::Array< double > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleArray___iter__" "', argument " "1"" of type '" "mfem::Array< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
+  {
+    try {
+      mfem_Array_Sl_double_Sg____iter__(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_doubleArray_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Array< double > *arg1 = (mfem::Array< double > *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -10300,11 +12253,30 @@ SWIGINTERN PyObject *_wrap_doubleArray_Print(PyObject *self, PyObject *args) {
       }
       {
         void *ptr;
+        //std::string *ptr2 = (std::string *)0;
         if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
           PyErr_Clear();
-          _v = 0;
+          if (!PyString_Check(argv[1]) && !PyUnicode_Check(argv[1])) {
+            // not string
+            _v = 1;	   	
+            PyObject* module = PyImport_ImportModule("io");
+            if (!module){
+              _v = 0;	   
+            }      
+            PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+            if (!cls){
+              _v = 0;	   	   
+            }      
+            int check = PyObject_IsInstance(argv[1], cls);
+            Py_DECREF(module);
+            if (! check){
+              _v = 0;	   	   	   
+            }
+          } else {
+            _v = 1;
+          }
         } else {
-          _v = 1;    
+          _v = 1;
         }
       }
       if (_v) {
@@ -10353,11 +12325,73 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_doubleArray_PrintGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< double > *arg1 = (mfem::Array< double > *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 16 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:doubleArray_PrintGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleArray_PrintGZ" "', argument " "1"" of type '" "mfem::Array< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "doubleArray_PrintGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    ecode3 = SWIG_AsVal_int(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "doubleArray_PrintGZ" "', argument " "3"" of type '" "int""'");
+    } 
+    arg3 = static_cast< int >(val3);
+  }
+  {
+    try {
+      mfem_Array_Sl_double_Sg__PrintGZ(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_doubleArray_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Array< double > *arg1 = (mfem::Array< double > *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 = (int) 8 ;
+  int arg3 = (int) 16 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -10387,6 +12421,68 @@ SWIGINTERN PyObject *_wrap_doubleArray_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   {
     try {
       mfem_Array_Sl_double_Sg__Save__SWIG_1(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_doubleArray_SaveGZ(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< double > *arg1 = (mfem::Array< double > *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 = (int) 16 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"file",  (char *)"precision",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:doubleArray_SaveGZ", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleArray_SaveGZ" "', argument " "1"" of type '" "mfem::Array< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "doubleArray_SaveGZ" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  if (obj2) {
+    ecode3 = SWIG_AsVal_int(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "doubleArray_SaveGZ" "', argument " "3"" of type '" "int""'");
+    } 
+    arg3 = static_cast< int >(val3);
+  }
+  {
+    try {
+      mfem_Array_Sl_double_Sg__SaveGZ(arg1,(char const *)arg2,arg3);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -10491,11 +12587,30 @@ SWIGINTERN PyObject *_wrap_doubleArray_Save(PyObject *self, PyObject *args) {
     if (_v) {
       {
         void *ptr;
+        //std::string *ptr2 = (std::string *)0;
         if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
           PyErr_Clear();
-          _v = 0;
+          if (!PyString_Check(argv[1]) && !PyUnicode_Check(argv[1])) {
+            // not string
+            _v = 1;	   	
+            PyObject* module = PyImport_ImportModule("io");
+            if (!module){
+              _v = 0;	   
+            }      
+            PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+            if (!cls){
+              _v = 0;	   	   
+            }      
+            int check = PyObject_IsInstance(argv[1], cls);
+            Py_DECREF(module);
+            if (! check){
+              _v = 0;	   	   	   
+            }
+          } else {
+            _v = 1;
+          }
         } else {
-          _v = 1;    
+          _v = 1;
         }
       }
       if (_v) {
@@ -10523,6 +12638,49 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_doubleArray___getitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< double > *arg1 = (mfem::Array< double > *) 0 ;
+  PyObject *arg2 = (PyObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"param",  NULL 
+  };
+  PyObject *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:doubleArray___getitem__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleArray___getitem__" "', argument " "1"" of type '" "mfem::Array< double > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
+  arg2 = obj1;
+  {
+    try {
+      result = (PyObject *)mfem_Array_Sl_double_Sg____getitem__(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = result;
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *doubleArray_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
@@ -10534,35 +12692,252 @@ SWIGINTERN PyObject *doubleArray_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObje
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_doubleSwap__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_boolArray__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
   PyObject *resultobj = 0;
-  mfem::Array< double > *arg1 = 0 ;
-  mfem::Array< double > *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  mfem::Array< bool > *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__ArrayT_double_t,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleSwap" "', argument " "1"" of type '" "mfem::Array< double > &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "1"" of type '" "mfem::Array< double > &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_double_t,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "doubleSwap" "', argument " "2"" of type '" "mfem::Array< double > &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "2"" of type '" "mfem::Array< double > &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Array< double > * >(argp2);
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< double >(*arg1,*arg2);
+      result = (mfem::Array< bool > *)new mfem::Array< bool >();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_bool_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_boolArray__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::MemoryType arg1 ;
+  mfem::Array< bool > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    PyObject* k = PyObject_GetAttrString(swig_obj[0], "value");
+    int i = (int)PyLong_AsLong(k);
+    arg1 = static_cast< mfem::MemoryType >(i);
+  }
+  {
+    try {
+      result = (mfem::Array< bool > *)new mfem::Array< bool >(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_bool_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_boolArray__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  mfem::Array< bool > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_boolArray" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  {
+    try {
+      result = (mfem::Array< bool > *)new mfem::Array< bool >(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_bool_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_boolArray__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  mfem::MemoryType arg2 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  mfem::Array< bool > *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_boolArray" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  {
+    PyObject* k = PyObject_GetAttrString(swig_obj[1], "value");
+    int i = (int)PyLong_AsLong(k);
+    arg2 = static_cast< mfem::MemoryType >(i);
+  }
+  {
+    try {
+      result = (mfem::Array< bool > *)new mfem::Array< bool >(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_bool_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_boolArray__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  bool *arg1 = (bool *) 0 ;
+  int arg2 ;
+  bool *temp_ptr1 ;
+  bool is_tuple1 = false ;
+  PyObject *s11 ;
+  PyObject *s21 ;
+  mfem::Array< bool > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    if (!PyList_Check(swig_obj[0])) {
+      if (!PyTuple_Check(swig_obj[0])) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
+        return NULL;
+      } else {
+        is_tuple1 = true;
+      }
+    }
+    s11 = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], 0) : PyList_GetItem(swig_obj[0],0);
+    s21 = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], 1) : PyList_GetItem(swig_obj[0],1);    
+    SWIG_ConvertPtr(s11, (void **) &temp_ptr1,
+      SWIGTYPE_p_bool, 0 |0);
+    arg1 = temp_ptr1;
+    arg2 = PyLong_AsLong(s21);    
+  }
+  {
+    try {
+      result = (mfem::Array< bool > *)new mfem::Array< bool >(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_bool_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_boolArray__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::Array< bool > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__ArrayT_bool_t,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_boolArray" "', argument " "1"" of type '" "mfem::Array< bool > const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_boolArray" "', argument " "1"" of type '" "mfem::Array< bool > const &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      result = (mfem::Array< bool > *)new mfem::Array< bool >((mfem::Array< bool > const &)*arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_bool_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_boolArray(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_boolArray" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      delete arg1;
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -10583,35 +12958,326 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_doubleSwap__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_boolArray_GetData__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  mfem::Array2D< double > *arg1 = 0 ;
-  mfem::Array2D< double > *arg2 = 0 ;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_GetData" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      result = (bool *)(arg1)->GetData();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_bool, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_GetData__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_GetData" "', argument " "1"" of type '" "mfem::Array< bool > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      result = (bool *)((mfem::Array< bool > const *)arg1)->GetData();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_bool, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_GetData(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "boolArray_GetData", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_bool_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_boolArray_GetData__SWIG_0(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_bool_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_boolArray_GetData__SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'boolArray_GetData'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< bool >::GetData()\n"
+    "    mfem::Array< bool >::GetData() const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_GetMemory__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::Memory< bool > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_GetMemory" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      result = (mfem::Memory< bool > *) &(arg1)->GetMemory();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MemoryT_bool_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_GetMemory__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::Memory< bool > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_GetMemory" "', argument " "1"" of type '" "mfem::Array< bool > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      result = (mfem::Memory< bool > *) &((mfem::Array< bool > const *)arg1)->GetMemory();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MemoryT_bool_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_GetMemory(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "boolArray_GetMemory", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_bool_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_boolArray_GetMemory__SWIG_0(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_bool_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_boolArray_GetMemory__SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'boolArray_GetMemory'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< bool >::GetMemory()\n"
+    "    mfem::Array< bool >::GetMemory() const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_UseDevice(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_UseDevice" "', argument " "1"" of type '" "mfem::Array< bool > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      result = (bool)((mfem::Array< bool > const *)arg1)->UseDevice();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_OwnsData(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_OwnsData" "', argument " "1"" of type '" "mfem::Array< bool > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      result = (bool)((mfem::Array< bool > const *)arg1)->OwnsData();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_StealData(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  bool **arg2 = (bool **) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"p",  NULL 
+  };
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Array2DT_double_t,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:boolArray_StealData", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleSwap" "', argument " "1"" of type '" "mfem::Array2D< double > &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_StealData" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
   }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "1"" of type '" "mfem::Array2D< double > &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Array2D< double > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Array2DT_double_t,  0 );
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_p_bool, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "doubleSwap" "', argument " "2"" of type '" "mfem::Array2D< double > &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "boolArray_StealData" "', argument " "2"" of type '" "bool **""'"); 
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "2"" of type '" "mfem::Array2D< double > &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Array2D< double > * >(argp2);
+  arg2 = reinterpret_cast< bool ** >(argp2);
   {
     try {
-      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< double >(*arg1,*arg2);
+      (arg1)->StealData(arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -10632,35 +13298,23 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_doubleSwap__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_boolArray_LoseData(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  double *arg1 = 0 ;
-  double *arg2 = 0 ;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  PyObject *swig_obj[1] ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_double,  0 );
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleSwap" "', argument " "1"" of type '" "double &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_LoseData" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
   }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "1"" of type '" "double &""'"); 
-  }
-  arg1 = reinterpret_cast< double * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_double,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "doubleSwap" "', argument " "2"" of type '" "double &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "doubleSwap" "', argument " "2"" of type '" "double &""'"); 
-  }
-  arg2 = reinterpret_cast< double * >(argp2);
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
   {
     try {
-      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< double >(*arg1,*arg2);
+      (arg1)->LoseData();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -10681,96 +13335,1923 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_doubleSwap(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_boolArray_MakeDataOwner(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_MakeDataOwner" "', argument " "1"" of type '" "mfem::Array< bool > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      ((mfem::Array< bool > const *)arg1)->MakeDataOwner();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_Size(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_Size" "', argument " "1"" of type '" "mfem::Array< bool > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      result = (int)((mfem::Array< bool > const *)arg1)->Size();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_SetSize__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_SetSize" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "boolArray_SetSize" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try {
+      (arg1)->SetSize(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_SetSize__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  int arg2 ;
+  bool *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  bool temp3 ;
+  bool val3 ;
+  int ecode3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_SetSize" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "boolArray_SetSize" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_bool(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "boolArray_SetSize" "', argument " "3"" of type '" "bool""'");
+  } 
+  temp3 = static_cast< bool >(val3);
+  arg3 = &temp3;
+  {
+    try {
+      (arg1)->SetSize(arg2,(bool const &)*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_SetSize__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  int arg2 ;
+  mfem::MemoryType arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_SetSize" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "boolArray_SetSize" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    PyObject* k = PyObject_GetAttrString(swig_obj[2], "value");
+    int i = (int)PyLong_AsLong(k);
+    arg3 = static_cast< mfem::MemoryType >(i);
+  }
+  {
+    try {
+      (arg1)->SetSize(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_SetSize(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "boolArray_SetSize", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_bool_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_boolArray_SetSize__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_bool_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_bool(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_boolArray_SetSize__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_bool_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          _v = 0;
+          PyObject* module = PyImport_ImportModule("enum");
+          if (!module){
+            _v = 0;
+          } else {
+            PyObject* cls = PyObject_GetAttrString(module, "IntEnum");
+            if (!cls){
+              _v = 0;            
+            } else {
+              int check = PyObject_IsInstance(argv[2], cls);
+              if (check) {
+                _v = 1;
+              }
+              Py_DECREF(cls);	 
+            }
+            Py_DECREF(module);
+          }
+        }
+        if (_v) {
+          return _wrap_boolArray_SetSize__SWIG_2(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'boolArray_SetSize'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< bool >::SetSize(int)\n"
+    "    mfem::Array< bool >::SetSize(int,bool const &)\n"
+    "    mfem::Array< bool >::SetSize(int,mfem::MemoryType)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_Capacity(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_Capacity" "', argument " "1"" of type '" "mfem::Array< bool > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      result = (int)((mfem::Array< bool > const *)arg1)->Capacity();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_Reserve(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"capacity",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:boolArray_Reserve", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_Reserve" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "boolArray_Reserve" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    try {
+      (arg1)->Reserve(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_Append__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  bool *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool temp2 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  int result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_Append" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "boolArray_Append" "', argument " "2"" of type '" "bool""'");
+  } 
+  temp2 = static_cast< bool >(val2);
+  arg2 = &temp2;
+  {
+    try {
+      result = (int)(arg1)->Append((bool const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_Append__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  bool *arg2 = (bool *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  int result;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_Append" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_bool, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "boolArray_Append" "', argument " "2"" of type '" "bool const *""'"); 
+  }
+  arg2 = reinterpret_cast< bool * >(argp2);
+  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "boolArray_Append" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  {
+    try {
+      result = (int)(arg1)->Append((bool const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_Append__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  mfem::Array< bool > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_Append" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_bool_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "boolArray_Append" "', argument " "2"" of type '" "mfem::Array< bool > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "boolArray_Append" "', argument " "2"" of type '" "mfem::Array< bool > const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< bool > * >(argp2);
+  {
+    try {
+      result = (int)(arg1)->Append((mfem::Array< bool > const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_Append(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "boolArray_Append", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_bool_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_bool_t, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_boolArray_Append__SWIG_2(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_bool_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_bool(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_boolArray_Append__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_bool_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_bool, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_boolArray_Append__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'boolArray_Append'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< bool >::Append(bool const &)\n"
+    "    mfem::Array< bool >::Append(bool const *,int)\n"
+    "    mfem::Array< bool >::Append(mfem::Array< bool > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_Prepend(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  bool *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool temp2 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"el",  NULL 
+  };
+  int result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:boolArray_Prepend", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_Prepend" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  ecode2 = SWIG_AsVal_bool(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "boolArray_Prepend" "', argument " "2"" of type '" "bool""'");
+  } 
+  temp2 = static_cast< bool >(val2);
+  arg2 = &temp2;
+  {
+    try {
+      result = (int)(arg1)->Prepend((bool const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_Last__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_Last" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      result = (bool *) &(arg1)->Last();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_bool, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_Last__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_Last" "', argument " "1"" of type '" "mfem::Array< bool > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      result = (bool *) &((mfem::Array< bool > const *)arg1)->Last();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_Last(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "boolArray_Last", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_bool_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_boolArray_Last__SWIG_0(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_bool_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_boolArray_Last__SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'boolArray_Last'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< bool >::Last()\n"
+    "    mfem::Array< bool >::Last() const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_DeleteLast(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_DeleteLast" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      (arg1)->DeleteLast();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_DeleteAll(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_DeleteAll" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      (arg1)->DeleteAll();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_Copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  mfem::Array< bool > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"copy",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:boolArray_Copy", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_Copy" "', argument " "1"" of type '" "mfem::Array< bool > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_bool_t,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "boolArray_Copy" "', argument " "2"" of type '" "mfem::Array< bool > &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "boolArray_Copy" "', argument " "2"" of type '" "mfem::Array< bool > &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< bool > * >(argp2);
+  {
+    try {
+      ((mfem::Array< bool > const *)arg1)->Copy(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_MakeRef__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  bool *arg2 = (bool *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_MakeRef" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_bool, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "boolArray_MakeRef" "', argument " "2"" of type '" "bool *""'"); 
+  }
+  arg2 = reinterpret_cast< bool * >(argp2);
+  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "boolArray_MakeRef" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  {
+    try {
+      (arg1)->MakeRef(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_MakeRef__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  mfem::Array< bool > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_MakeRef" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_bool_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "boolArray_MakeRef" "', argument " "2"" of type '" "mfem::Array< bool > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "boolArray_MakeRef" "', argument " "2"" of type '" "mfem::Array< bool > const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< bool > * >(argp2);
+  {
+    try {
+      (arg1)->MakeRef((mfem::Array< bool > const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_MakeRef(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "boolArray_MakeRef", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_bool_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_bool_t, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_boolArray_MakeRef__SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_bool_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_bool, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_boolArray_MakeRef__SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'boolArray_MakeRef'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< bool >::MakeRef(bool *,int)\n"
+    "    mfem::Array< bool >::MakeRef(mfem::Array< bool > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_GetSubArray(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  mfem::Array< bool > *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"offset",  (char *)"sa_size",  (char *)"sa",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:boolArray_GetSubArray", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_GetSubArray" "', argument " "1"" of type '" "mfem::Array< bool > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "boolArray_GetSubArray" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "boolArray_GetSubArray" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__ArrayT_bool_t,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "boolArray_GetSubArray" "', argument " "4"" of type '" "mfem::Array< bool > &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "boolArray_GetSubArray" "', argument " "4"" of type '" "mfem::Array< bool > &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Array< bool > * >(argp4);
+  {
+    try {
+      ((mfem::Array< bool > const *)arg1)->GetSubArray(arg2,arg3,*arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_Assign__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  bool *arg2 = (bool *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_Assign" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_bool, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "boolArray_Assign" "', argument " "2"" of type '" "bool const *""'"); 
+  }
+  arg2 = reinterpret_cast< bool * >(argp2);
+  {
+    try {
+      (arg1)->Assign((bool const *)arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_begin__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_begin" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      result = (bool *)(arg1)->begin();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_bool, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_end__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_end" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      result = (bool *)(arg1)->end();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_bool, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_begin__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_begin" "', argument " "1"" of type '" "mfem::Array< bool > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      result = (bool *)((mfem::Array< bool > const *)arg1)->begin();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_bool, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_begin(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "boolArray_begin", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_bool_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_boolArray_begin__SWIG_0(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_bool_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_boolArray_begin__SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'boolArray_begin'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< bool >::begin()\n"
+    "    mfem::Array< bool >::begin() const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_end__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_end" "', argument " "1"" of type '" "mfem::Array< bool > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      result = (bool *)((mfem::Array< bool > const *)arg1)->end();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_bool, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_end(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "boolArray_end", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_bool_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_boolArray_end__SWIG_0(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_bool_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_boolArray_end__SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'boolArray_end'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< bool >::end()\n"
+    "    mfem::Array< bool >::end() const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_MemoryUsage(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  long result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_MemoryUsage" "', argument " "1"" of type '" "mfem::Array< bool > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      result = (long)((mfem::Array< bool > const *)arg1)->MemoryUsage();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_Read(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  bool arg2 = (bool) true ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"on_dev",  NULL 
+  };
+  bool *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:boolArray_Read", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_Read" "', argument " "1"" of type '" "mfem::Array< bool > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "boolArray_Read" "', argument " "2"" of type '" "bool""'");
+    } 
+    arg2 = static_cast< bool >(val2);
+  }
+  {
+    try {
+      result = (bool *)((mfem::Array< bool > const *)arg1)->Read(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_bool, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_HostRead(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_HostRead" "', argument " "1"" of type '" "mfem::Array< bool > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      result = (bool *)((mfem::Array< bool > const *)arg1)->HostRead();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_bool, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_Write(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  bool arg2 = (bool) true ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"on_dev",  NULL 
+  };
+  bool *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:boolArray_Write", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_Write" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "boolArray_Write" "', argument " "2"" of type '" "bool""'");
+    } 
+    arg2 = static_cast< bool >(val2);
+  }
+  {
+    try {
+      result = (bool *)(arg1)->Write(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_bool, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_HostWrite(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_HostWrite" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      result = (bool *)(arg1)->HostWrite();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_bool, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_ReadWrite(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  bool arg2 = (bool) true ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"on_dev",  NULL 
+  };
+  bool *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:boolArray_ReadWrite", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_ReadWrite" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "boolArray_ReadWrite" "', argument " "2"" of type '" "bool""'");
+    } 
+    arg2 = static_cast< bool >(val2);
+  }
+  {
+    try {
+      result = (bool *)(arg1)->ReadWrite(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_bool, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray_HostReadWrite(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_HostReadWrite" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      result = (bool *)(arg1)->HostReadWrite();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_bool, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_boolArray__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  void *arg1 = (void *) 0 ;
+  bool *arg2 = (bool *) 0 ;
+  bool *temp_ptr1 ;
+  int size1 ;
+  bool is_tuple1 = false ;
+  mfem::Array< bool > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    if (!PyList_Check(swig_obj[0])) {
+      if (!PyTuple_Check(swig_obj[0])) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
+        return NULL;
+      } else {
+        is_tuple1 = true;
+      }
+    }
+    size1 = (is_tuple1) ? PyTuple_Size(swig_obj[0]) : PyList_Size(swig_obj[0]);
+    arg1 = (void *) & size1;
+  }
+  {
+    try {
+      result = (mfem::Array< bool > *)new_mfem_Array_Sl_bool_Sg___SWIG_6(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_bool_t, SWIG_POINTER_NEW |  0 );
+  {
+    for (int i = 0; i < size1; i++) {
+      PyObject *s = (is_tuple1) ? PyTuple_GetItem(swig_obj[0], i) : PyList_GetItem(swig_obj[0],i);
+      (* result)[i] =  (bool)PyObject_IsTrue(s);
+    }
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_boolArray(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[3] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "doubleSwap", 0, 2, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_boolArray", 0, 2, argv))) SWIG_fail;
   --argc;
-  if (argc == 2) {
+  if (argc == 0) {
+    return _wrap_new_boolArray__SWIG_0(self, argc, argv);
+  }
+  if (argc == 1) {
     int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_double_t, SWIG_POINTER_NO_NULL);
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ArrayT_bool_t, SWIG_POINTER_NO_NULL | 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ArrayT_double_t, SWIG_POINTER_NO_NULL);
+      return _wrap_new_boolArray__SWIG_5(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      int res = SWIG_AsVal_int(argv[0], NULL);
       _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_doubleSwap__SWIG_0(self, argc, argv);
+    }
+    if (_v) {
+      return _wrap_new_boolArray__SWIG_2(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      bool * temp_ptr;
+      _v = 0;
+      if (PyList_Check(argv[0])){
+        int size = PyList_Size(argv[0]);    
+        if (size == 2){
+          PyObject *s1 = PyList_GetItem(argv[0],0);       
+          if (SWIG_ConvertPtr(s1, (void **) &temp_ptr,
+              SWIGTYPE_p_bool, 0 |0) == -1) {
+            //
+          } else {
+            _v = 1;
+          }
+        }
       }
+      if (PyTuple_Check(argv[0])){
+        int size = PyTuple_Size(argv[0]);        
+        if (size == 2){
+          PyObject *s1 = PyTuple_GetItem(argv[0],0);       
+          if (SWIG_ConvertPtr(s1, (void **) &temp_ptr,
+              SWIGTYPE_p_bool, 0 |0) == -1) {
+            //
+          } else {
+            _v = 1;
+          }
+        }
+      }
+    }
+    if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_boolArray__SWIG_4(self, argc, argv);
+      }
+      return _wrap_new_boolArray__SWIG_4(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      _v = 0;
+      PyObject* module = PyImport_ImportModule("enum");
+      if (!module){
+        _v = 0;
+      } else {
+        PyObject* cls = PyObject_GetAttrString(module, "IntEnum");
+        if (!cls){
+          _v = 0;            
+        } else {
+          int check = PyObject_IsInstance(argv[0], cls);
+          if (check) {
+            _v = 1;
+          }
+          Py_DECREF(cls);	 
+        }
+        Py_DECREF(module);
+      }
+    }
+    if (_v) {
+      return _wrap_new_boolArray__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      _v = 0;
+      if (PyList_Check(argv[0])){
+        _v = 1;
+      }
+      if (PyTuple_Check(argv[0])){
+        _v = 1;
+      }
+    }
+    if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_boolArray__SWIG_6(self, argc, argv);
+      }
+      return _wrap_new_boolArray__SWIG_6(self, argc, argv);
     }
   }
   if (argc == 2) {
     int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Array2DT_double_t, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Array2DT_double_t, SWIG_POINTER_NO_NULL);
+    {
+      int res = SWIG_AsVal_int(argv[0], NULL);
       _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_doubleSwap__SWIG_1(self, argc, argv);
-      }
     }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_double, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
     if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_double, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
+      {
+        _v = 0;
+        PyObject* module = PyImport_ImportModule("enum");
+        if (!module){
+          _v = 0;
+        } else {
+          PyObject* cls = PyObject_GetAttrString(module, "IntEnum");
+          if (!cls){
+            _v = 0;            
+          } else {
+            int check = PyObject_IsInstance(argv[1], cls);
+            if (check) {
+              _v = 1;
+            }
+            Py_DECREF(cls);	 
+          }
+          Py_DECREF(module);
+        }
+      }
       if (_v) {
-        return _wrap_doubleSwap__SWIG_2(self, argc, argv);
+        return _wrap_new_boolArray__SWIG_3(self, argc, argv);
       }
     }
   }
   
 fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'doubleSwap'.\n"
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_boolArray'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    mfem::Swap< double >(mfem::Array< double > &,mfem::Array< double > &)\n"
-    "    mfem::Swap< double >(mfem::Array2D< double > &,mfem::Array2D< double > &)\n"
-    "    mfem::Swap< double >(double &,double &)\n");
+    "    mfem::Array< bool >::Array()\n"
+    "    mfem::Array< bool >::Array(mfem::MemoryType)\n"
+    "    mfem::Array< bool >::Array(int)\n"
+    "    mfem::Array< bool >::Array(int,mfem::MemoryType)\n"
+    "    mfem::Array< bool >::Array(bool *,int)\n"
+    "    mfem::Array< bool >::Array(mfem::Array< bool > const &)\n"
+    "    mfem::Array< bool >::Array(void *,bool *)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_intSwap__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_boolArray___setitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  mfem::Array< int > *arg1 = 0 ;
-  mfem::Array< int > *arg2 = 0 ;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  int arg2 ;
+  bool arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  bool val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"v",  NULL 
+  };
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:boolArray___setitem__", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intSwap" "', argument " "1"" of type '" "mfem::Array< int > &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray___setitem__" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
   }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "1"" of type '" "mfem::Array< int > &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "intSwap" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "boolArray___setitem__" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_bool(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "boolArray___setitem__" "', argument " "3"" of type '" "bool""'");
+  } 
+  arg3 = static_cast< bool >(val3);
   {
     try {
-      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< int >(*arg1,*arg2);
+      mfem_Array_Sl_bool_Sg____setitem__(arg1,arg2,arg3);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -10791,35 +15272,31 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_intSwap__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_boolArray_Assign__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  mfem::Array2D< int > *arg1 = 0 ;
-  mfem::Array2D< int > *arg2 = 0 ;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  bool *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  bool temp2 ;
+  bool val2 ;
+  int ecode2 = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Array2DT_int_t,  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intSwap" "', argument " "1"" of type '" "mfem::Array2D< int > &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_Assign" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
   }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "1"" of type '" "mfem::Array2D< int > &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Array2D< int > * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Array2DT_int_t,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "intSwap" "', argument " "2"" of type '" "mfem::Array2D< int > &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "2"" of type '" "mfem::Array2D< int > &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Array2D< int > * >(argp2);
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "boolArray_Assign" "', argument " "2"" of type '" "bool""'");
+  } 
+  temp2 = static_cast< bool >(val2);
+  arg2 = &temp2;
   {
     try {
-      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< int >(*arg1,*arg2);
+      mfem_Array_Sl_bool_Sg__Assign__SWIG_1(arg1,(bool const &)*arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -10840,125 +15317,193 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_intSwap__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  int *arg1 = 0 ;
-  int *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_int,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intSwap" "', argument " "1"" of type '" "int &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "1"" of type '" "int &""'"); 
-  }
-  arg1 = reinterpret_cast< int * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_int,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "intSwap" "', argument " "2"" of type '" "int &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "intSwap" "', argument " "2"" of type '" "int &""'"); 
-  }
-  arg2 = reinterpret_cast< int * >(argp2);
-  {
-    try {
-      mfem::SWIGTEMPLATEDISAMBIGUATOR Swap< int >(*arg1,*arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_intSwap(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_boolArray_Assign(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[3] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "intSwap", 0, 2, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "boolArray_Assign", 0, 2, argv))) SWIG_fail;
   --argc;
   if (argc == 2) {
     int _v;
     void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_bool_t, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
       void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_bool, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_intSwap__SWIG_0(self, argc, argv);
+        return _wrap_boolArray_Assign__SWIG_0(self, argc, argv);
       }
     }
   }
   if (argc == 2) {
     int _v;
     void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Array2DT_int_t, SWIG_POINTER_NO_NULL);
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_bool_t, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Array2DT_int_t, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_intSwap__SWIG_1(self, argc, argv);
+      {
+        int res = SWIG_AsVal_bool(argv[1], NULL);
+        _v = SWIG_CheckState(res);
       }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_int, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_int, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_intSwap__SWIG_2(self, argc, argv);
+        return _wrap_boolArray_Assign__SWIG_1(self, argc, argv);
       }
     }
   }
   
 fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'intSwap'.\n"
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'boolArray_Assign'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    mfem::Swap< int >(mfem::Array< int > &,mfem::Array< int > &)\n"
-    "    mfem::Swap< int >(mfem::Array2D< int > &,mfem::Array2D< int > &)\n"
-    "    mfem::Swap< int >(int &,int &)\n");
+    "    mfem::Array< bool >::Assign(bool const *)\n"
+    "    mfem::Array< bool >::Assign(bool const &)\n");
   return 0;
 }
 
+
+SWIGINTERN PyObject *_wrap_boolArray_FakeToList(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray_FakeToList" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      mfem_Array_Sl_bool_Sg__FakeToList(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray___iter__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray___iter__" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  {
+    try {
+      mfem_Array_Sl_bool_Sg____iter__(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_boolArray___getitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< bool > *arg1 = (mfem::Array< bool > *) 0 ;
+  PyObject *arg2 = (PyObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"param",  NULL 
+  };
+  PyObject *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:boolArray___getitem__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_bool_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "boolArray___getitem__" "', argument " "1"" of type '" "mfem::Array< bool > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
+  arg2 = obj1;
+  {
+    try {
+      result = (PyObject *)mfem_Array_Sl_bool_Sg____getitem__(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = result;
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *boolArray_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__ArrayT_bool_t, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *boolArray_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
-	 { "new_intArray", _wrap_new_intArray, METH_VARARGS, "\n"
-		"intArray()\n"
-		"intArray(mfem::MemoryType mt)\n"
-		"intArray(int asize)\n"
-		"intArray(int * _data)\n"
-		"new_intArray(intArray src) -> intArray\n"
+	 { "doubleSwap", _wrap_doubleSwap, METH_VARARGS, "\n"
+		"doubleSwap(doubleArray arg1, doubleArray arg2)\n"
+		"doubleSwap(mfem::Array2D< double > & arg1, mfem::Array2D< double > & arg2)\n"
+		"doubleSwap(double & a, double & b)\n"
+		""},
+	 { "intSwap", _wrap_intSwap, METH_VARARGS, "\n"
+		"intSwap(intArray arg1, intArray arg2)\n"
+		"intSwap(mfem::Array2D< int > & arg1, mfem::Array2D< int > & arg2)\n"
+		"intSwap(int & a, int & b)\n"
 		""},
 	 { "delete_intArray", _wrap_delete_intArray, METH_O, "delete_intArray(intArray self)"},
 	 { "intArray_GetData", _wrap_intArray_GetData, METH_VARARGS, "\n"
@@ -11030,31 +15575,36 @@ static PyMethodDef SwigMethods[] = {
 	 { "intArray_HostWrite", _wrap_intArray_HostWrite, METH_O, "intArray_HostWrite(intArray self) -> int *"},
 	 { "intArray_ReadWrite", (PyCFunction)(void(*)(void))_wrap_intArray_ReadWrite, METH_VARARGS|METH_KEYWORDS, "intArray_ReadWrite(intArray self, bool on_dev=True) -> int *"},
 	 { "intArray_HostReadWrite", _wrap_intArray_HostReadWrite, METH_O, "intArray_HostReadWrite(intArray self) -> int *"},
+	 { "new_intArray", _wrap_new_intArray, METH_VARARGS, "\n"
+		"intArray()\n"
+		"intArray(mfem::MemoryType mt)\n"
+		"intArray(int asize)\n"
+		"intArray(int asize, mfem::MemoryType mt)\n"
+		"intArray(int * data_)\n"
+		"intArray(intArray src)\n"
+		"new_intArray(void * List_or_Tuple) -> intArray\n"
+		""},
 	 { "intArray___setitem__", (PyCFunction)(void(*)(void))_wrap_intArray___setitem__, METH_VARARGS|METH_KEYWORDS, "intArray___setitem__(intArray self, int i, int const v)"},
-	 { "intArray___getitem__", (PyCFunction)(void(*)(void))_wrap_intArray___getitem__, METH_VARARGS|METH_KEYWORDS, "intArray___getitem__(intArray self, int const i) -> int const &"},
 	 { "intArray_Assign", _wrap_intArray_Assign, METH_VARARGS, "\n"
 		"intArray_Assign(intArray self, int const * arg2)\n"
 		"intArray_Assign(intArray self, int const & a)\n"
 		""},
 	 { "intArray_FakeToList", _wrap_intArray_FakeToList, METH_O, "intArray_FakeToList(intArray self)"},
+	 { "intArray___iter__", _wrap_intArray___iter__, METH_O, "intArray___iter__(intArray self)"},
 	 { "intArray_Print", _wrap_intArray_Print, METH_VARARGS, "\n"
 		"intArray_Print(intArray self, std::ostream & out=mfem::out, int width=4)\n"
-		"intArray_Print(intArray self, char const * file, int precision=8)\n"
+		"intArray_Print(intArray self, char const * file, int precision=16)\n"
 		""},
+	 { "intArray_PrintGZ", (PyCFunction)(void(*)(void))_wrap_intArray_PrintGZ, METH_VARARGS|METH_KEYWORDS, "intArray_PrintGZ(intArray self, char const * file, int precision=16)"},
+	 { "intArray_SaveGZ", (PyCFunction)(void(*)(void))_wrap_intArray_SaveGZ, METH_VARARGS|METH_KEYWORDS, "intArray_SaveGZ(intArray self, char const * file, int precision=16)"},
 	 { "intArray_Save", _wrap_intArray_Save, METH_VARARGS, "\n"
 		"intArray_Save(intArray self, std::ostream & out, int fmt=0)\n"
-		"intArray_Save(intArray self, char const * file, int precision=8)\n"
+		"intArray_Save(intArray self, char const * file, int precision=16)\n"
 		"intArray_Save(intArray self)\n"
 		""},
+	 { "intArray___getitem__", (PyCFunction)(void(*)(void))_wrap_intArray___getitem__, METH_VARARGS|METH_KEYWORDS, "intArray___getitem__(intArray self, PyObject * param) -> PyObject *"},
 	 { "intArray_swigregister", intArray_swigregister, METH_O, NULL},
 	 { "intArray_swiginit", intArray_swiginit, METH_VARARGS, NULL},
-	 { "new_doubleArray", _wrap_new_doubleArray, METH_VARARGS, "\n"
-		"doubleArray()\n"
-		"doubleArray(mfem::MemoryType mt)\n"
-		"doubleArray(int asize)\n"
-		"doubleArray(double * _data)\n"
-		"new_doubleArray(doubleArray src) -> doubleArray\n"
-		""},
 	 { "delete_doubleArray", _wrap_delete_doubleArray, METH_O, "delete_doubleArray(doubleArray self)"},
 	 { "doubleArray_GetData", _wrap_doubleArray_GetData, METH_VARARGS, "\n"
 		"doubleArray_GetData(doubleArray self) -> double\n"
@@ -11125,24 +15675,116 @@ static PyMethodDef SwigMethods[] = {
 	 { "doubleArray_HostWrite", _wrap_doubleArray_HostWrite, METH_O, "doubleArray_HostWrite(doubleArray self) -> double *"},
 	 { "doubleArray_ReadWrite", (PyCFunction)(void(*)(void))_wrap_doubleArray_ReadWrite, METH_VARARGS|METH_KEYWORDS, "doubleArray_ReadWrite(doubleArray self, bool on_dev=True) -> double *"},
 	 { "doubleArray_HostReadWrite", _wrap_doubleArray_HostReadWrite, METH_O, "doubleArray_HostReadWrite(doubleArray self) -> double *"},
+	 { "new_doubleArray", _wrap_new_doubleArray, METH_VARARGS, "\n"
+		"doubleArray()\n"
+		"doubleArray(mfem::MemoryType mt)\n"
+		"doubleArray(int asize)\n"
+		"doubleArray(int asize, mfem::MemoryType mt)\n"
+		"doubleArray(double * data_)\n"
+		"doubleArray(doubleArray src)\n"
+		"new_doubleArray(void * List_or_Tuple) -> doubleArray\n"
+		""},
 	 { "doubleArray___setitem__", (PyCFunction)(void(*)(void))_wrap_doubleArray___setitem__, METH_VARARGS|METH_KEYWORDS, "doubleArray___setitem__(doubleArray self, int i, double const v)"},
-	 { "doubleArray___getitem__", (PyCFunction)(void(*)(void))_wrap_doubleArray___getitem__, METH_VARARGS|METH_KEYWORDS, "doubleArray___getitem__(doubleArray self, int const i) -> double const &"},
 	 { "doubleArray_Assign", _wrap_doubleArray_Assign, METH_VARARGS, "\n"
 		"doubleArray_Assign(doubleArray self, double const * arg2)\n"
 		"doubleArray_Assign(doubleArray self, double const & a)\n"
 		""},
 	 { "doubleArray_FakeToList", _wrap_doubleArray_FakeToList, METH_O, "doubleArray_FakeToList(doubleArray self)"},
+	 { "doubleArray___iter__", _wrap_doubleArray___iter__, METH_O, "doubleArray___iter__(doubleArray self)"},
 	 { "doubleArray_Print", _wrap_doubleArray_Print, METH_VARARGS, "\n"
 		"doubleArray_Print(doubleArray self, std::ostream & out=mfem::out, int width=4)\n"
-		"doubleArray_Print(doubleArray self, char const * file, int precision=8)\n"
+		"doubleArray_Print(doubleArray self, char const * file, int precision=16)\n"
 		""},
+	 { "doubleArray_PrintGZ", (PyCFunction)(void(*)(void))_wrap_doubleArray_PrintGZ, METH_VARARGS|METH_KEYWORDS, "doubleArray_PrintGZ(doubleArray self, char const * file, int precision=16)"},
+	 { "doubleArray_SaveGZ", (PyCFunction)(void(*)(void))_wrap_doubleArray_SaveGZ, METH_VARARGS|METH_KEYWORDS, "doubleArray_SaveGZ(doubleArray self, char const * file, int precision=16)"},
 	 { "doubleArray_Save", _wrap_doubleArray_Save, METH_VARARGS, "\n"
 		"doubleArray_Save(doubleArray self, std::ostream & out, int fmt=0)\n"
-		"doubleArray_Save(doubleArray self, char const * file, int precision=8)\n"
+		"doubleArray_Save(doubleArray self, char const * file, int precision=16)\n"
 		"doubleArray_Save(doubleArray self)\n"
 		""},
+	 { "doubleArray___getitem__", (PyCFunction)(void(*)(void))_wrap_doubleArray___getitem__, METH_VARARGS|METH_KEYWORDS, "doubleArray___getitem__(doubleArray self, PyObject * param) -> PyObject *"},
 	 { "doubleArray_swigregister", doubleArray_swigregister, METH_O, NULL},
 	 { "doubleArray_swiginit", doubleArray_swiginit, METH_VARARGS, NULL},
+	 { "delete_boolArray", _wrap_delete_boolArray, METH_O, "delete_boolArray(boolArray self)"},
+	 { "boolArray_GetData", _wrap_boolArray_GetData, METH_VARARGS, "\n"
+		"boolArray_GetData(boolArray self) -> bool\n"
+		"boolArray_GetData(boolArray self) -> bool const *\n"
+		""},
+	 { "boolArray_GetMemory", _wrap_boolArray_GetMemory, METH_VARARGS, "\n"
+		"boolArray_GetMemory(boolArray self) -> mfem::Memory< bool >\n"
+		"boolArray_GetMemory(boolArray self) -> mfem::Memory< bool > const &\n"
+		""},
+	 { "boolArray_UseDevice", _wrap_boolArray_UseDevice, METH_O, "boolArray_UseDevice(boolArray self) -> bool"},
+	 { "boolArray_OwnsData", _wrap_boolArray_OwnsData, METH_O, "boolArray_OwnsData(boolArray self) -> bool"},
+	 { "boolArray_StealData", (PyCFunction)(void(*)(void))_wrap_boolArray_StealData, METH_VARARGS|METH_KEYWORDS, "boolArray_StealData(boolArray self, bool ** p)"},
+	 { "boolArray_LoseData", _wrap_boolArray_LoseData, METH_O, "boolArray_LoseData(boolArray self)"},
+	 { "boolArray_MakeDataOwner", _wrap_boolArray_MakeDataOwner, METH_O, "boolArray_MakeDataOwner(boolArray self)"},
+	 { "boolArray_Size", _wrap_boolArray_Size, METH_O, "boolArray_Size(boolArray self) -> int"},
+	 { "boolArray_SetSize", _wrap_boolArray_SetSize, METH_VARARGS, "\n"
+		"boolArray_SetSize(boolArray self, int nsize)\n"
+		"boolArray_SetSize(boolArray self, int nsize, bool const & initval)\n"
+		"boolArray_SetSize(boolArray self, int nsize, mfem::MemoryType mt)\n"
+		""},
+	 { "boolArray_Capacity", _wrap_boolArray_Capacity, METH_O, "boolArray_Capacity(boolArray self) -> int"},
+	 { "boolArray_Reserve", (PyCFunction)(void(*)(void))_wrap_boolArray_Reserve, METH_VARARGS|METH_KEYWORDS, "boolArray_Reserve(boolArray self, int capacity)"},
+	 { "boolArray_Append", _wrap_boolArray_Append, METH_VARARGS, "\n"
+		"boolArray_Append(boolArray self, bool const & el) -> int\n"
+		"boolArray_Append(boolArray self, bool const * els, int nels) -> int\n"
+		"boolArray_Append(boolArray self, boolArray els) -> int\n"
+		""},
+	 { "boolArray_Prepend", (PyCFunction)(void(*)(void))_wrap_boolArray_Prepend, METH_VARARGS|METH_KEYWORDS, "boolArray_Prepend(boolArray self, bool const & el) -> int"},
+	 { "boolArray_Last", _wrap_boolArray_Last, METH_VARARGS, "\n"
+		"boolArray_Last(boolArray self) -> bool\n"
+		"boolArray_Last(boolArray self) -> bool const &\n"
+		""},
+	 { "boolArray_DeleteLast", _wrap_boolArray_DeleteLast, METH_O, "boolArray_DeleteLast(boolArray self)"},
+	 { "boolArray_DeleteAll", _wrap_boolArray_DeleteAll, METH_O, "boolArray_DeleteAll(boolArray self)"},
+	 { "boolArray_Copy", (PyCFunction)(void(*)(void))_wrap_boolArray_Copy, METH_VARARGS|METH_KEYWORDS, "boolArray_Copy(boolArray self, boolArray copy)"},
+	 { "boolArray_MakeRef", _wrap_boolArray_MakeRef, METH_VARARGS, "\n"
+		"boolArray_MakeRef(boolArray self, bool * arg2, int arg3)\n"
+		"boolArray_MakeRef(boolArray self, boolArray master)\n"
+		""},
+	 { "boolArray_GetSubArray", (PyCFunction)(void(*)(void))_wrap_boolArray_GetSubArray, METH_VARARGS|METH_KEYWORDS, "boolArray_GetSubArray(boolArray self, int offset, int sa_size, boolArray sa)"},
+	 { "boolArray_begin", _wrap_boolArray_begin, METH_VARARGS, "\n"
+		"boolArray_begin(boolArray self) -> bool\n"
+		"boolArray_begin(boolArray self) -> bool const *\n"
+		""},
+	 { "boolArray_end", _wrap_boolArray_end, METH_VARARGS, "\n"
+		"boolArray_end(boolArray self) -> bool\n"
+		"boolArray_end(boolArray self) -> bool const *\n"
+		""},
+	 { "boolArray_MemoryUsage", _wrap_boolArray_MemoryUsage, METH_O, "boolArray_MemoryUsage(boolArray self) -> long"},
+	 { "boolArray_Read", (PyCFunction)(void(*)(void))_wrap_boolArray_Read, METH_VARARGS|METH_KEYWORDS, "boolArray_Read(boolArray self, bool on_dev=True) -> bool const *"},
+	 { "boolArray_HostRead", _wrap_boolArray_HostRead, METH_O, "boolArray_HostRead(boolArray self) -> bool const *"},
+	 { "boolArray_Write", (PyCFunction)(void(*)(void))_wrap_boolArray_Write, METH_VARARGS|METH_KEYWORDS, "boolArray_Write(boolArray self, bool on_dev=True) -> bool *"},
+	 { "boolArray_HostWrite", _wrap_boolArray_HostWrite, METH_O, "boolArray_HostWrite(boolArray self) -> bool *"},
+	 { "boolArray_ReadWrite", (PyCFunction)(void(*)(void))_wrap_boolArray_ReadWrite, METH_VARARGS|METH_KEYWORDS, "boolArray_ReadWrite(boolArray self, bool on_dev=True) -> bool *"},
+	 { "boolArray_HostReadWrite", _wrap_boolArray_HostReadWrite, METH_O, "boolArray_HostReadWrite(boolArray self) -> bool *"},
+	 { "new_boolArray", _wrap_new_boolArray, METH_VARARGS, "\n"
+		"boolArray()\n"
+		"boolArray(mfem::MemoryType mt)\n"
+		"boolArray(int asize)\n"
+		"boolArray(int asize, mfem::MemoryType mt)\n"
+		"boolArray(bool * data_)\n"
+		"boolArray(boolArray src)\n"
+		"new_boolArray(void * List_or_Tuple) -> boolArray\n"
+		""},
+	 { "boolArray___setitem__", (PyCFunction)(void(*)(void))_wrap_boolArray___setitem__, METH_VARARGS|METH_KEYWORDS, "boolArray___setitem__(boolArray self, int i, bool const v)"},
+	 { "boolArray_Assign", _wrap_boolArray_Assign, METH_VARARGS, "\n"
+		"boolArray_Assign(boolArray self, bool const * arg2)\n"
+		"boolArray_Assign(boolArray self, bool const & a)\n"
+		""},
+	 { "boolArray_FakeToList", _wrap_boolArray_FakeToList, METH_O, "boolArray_FakeToList(boolArray self)"},
+	 { "boolArray___iter__", _wrap_boolArray___iter__, METH_O, "boolArray___iter__(boolArray self)"},
+	 { "boolArray___getitem__", (PyCFunction)(void(*)(void))_wrap_boolArray___getitem__, METH_VARARGS|METH_KEYWORDS, "boolArray___getitem__(boolArray self, PyObject * param) -> PyObject *"},
+	 { "boolArray_swigregister", boolArray_swigregister, METH_O, NULL},
+	 { "boolArray_swiginit", boolArray_swiginit, METH_VARARGS, NULL},
+	 { NULL, NULL, 0, NULL }
+};
+
+static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "doubleSwap", _wrap_doubleSwap, METH_VARARGS, "\n"
 		"doubleSwap(doubleArray arg1, doubleArray arg2)\n"
 		"doubleSwap(mfem::Array2D< double > & arg1, mfem::Array2D< double > & arg2)\n"
@@ -11152,19 +15794,6 @@ static PyMethodDef SwigMethods[] = {
 		"intSwap(intArray arg1, intArray arg2)\n"
 		"intSwap(mfem::Array2D< int > & arg1, mfem::Array2D< int > & arg2)\n"
 		"intSwap(int & a, int & b)\n"
-		""},
-	 { NULL, NULL, 0, NULL }
-};
-
-static PyMethodDef SwigMethods_proxydocs[] = {
-	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
-	 { "new_intArray", _wrap_new_intArray, METH_VARARGS, "\n"
-		"intArray()\n"
-		"intArray(mfem::MemoryType mt)\n"
-		"intArray(int asize)\n"
-		"intArray(int * _data)\n"
-		"new_intArray(intArray src) -> intArray\n"
 		""},
 	 { "delete_intArray", _wrap_delete_intArray, METH_O, "delete_intArray(intArray self)"},
 	 { "intArray_GetData", _wrap_intArray_GetData, METH_VARARGS, "\n"
@@ -11236,31 +15865,36 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "intArray_HostWrite", _wrap_intArray_HostWrite, METH_O, "HostWrite(intArray self) -> int *"},
 	 { "intArray_ReadWrite", (PyCFunction)(void(*)(void))_wrap_intArray_ReadWrite, METH_VARARGS|METH_KEYWORDS, "ReadWrite(intArray self, bool on_dev=True) -> int *"},
 	 { "intArray_HostReadWrite", _wrap_intArray_HostReadWrite, METH_O, "HostReadWrite(intArray self) -> int *"},
+	 { "new_intArray", _wrap_new_intArray, METH_VARARGS, "\n"
+		"intArray()\n"
+		"intArray(mfem::MemoryType mt)\n"
+		"intArray(int asize)\n"
+		"intArray(int asize, mfem::MemoryType mt)\n"
+		"intArray(int * data_)\n"
+		"intArray(intArray src)\n"
+		"new_intArray(void * List_or_Tuple) -> intArray\n"
+		""},
 	 { "intArray___setitem__", (PyCFunction)(void(*)(void))_wrap_intArray___setitem__, METH_VARARGS|METH_KEYWORDS, "__setitem__(intArray self, int i, int const v)"},
-	 { "intArray___getitem__", (PyCFunction)(void(*)(void))_wrap_intArray___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(intArray self, int const i) -> int const &"},
 	 { "intArray_Assign", _wrap_intArray_Assign, METH_VARARGS, "\n"
 		"Assign(intArray self, int const * arg2)\n"
 		"Assign(intArray self, int const & a)\n"
 		""},
 	 { "intArray_FakeToList", _wrap_intArray_FakeToList, METH_O, "FakeToList(intArray self)"},
+	 { "intArray___iter__", _wrap_intArray___iter__, METH_O, "__iter__(intArray self)"},
 	 { "intArray_Print", _wrap_intArray_Print, METH_VARARGS, "\n"
 		"Print(intArray self, std::ostream & out=mfem::out, int width=4)\n"
-		"Print(intArray self, char const * file, int precision=8)\n"
+		"Print(intArray self, char const * file, int precision=16)\n"
 		""},
+	 { "intArray_PrintGZ", (PyCFunction)(void(*)(void))_wrap_intArray_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(intArray self, char const * file, int precision=16)"},
+	 { "intArray_SaveGZ", (PyCFunction)(void(*)(void))_wrap_intArray_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(intArray self, char const * file, int precision=16)"},
 	 { "intArray_Save", _wrap_intArray_Save, METH_VARARGS, "\n"
 		"Save(intArray self, std::ostream & out, int fmt=0)\n"
-		"Save(intArray self, char const * file, int precision=8)\n"
+		"Save(intArray self, char const * file, int precision=16)\n"
 		"Save(intArray self)\n"
 		""},
+	 { "intArray___getitem__", (PyCFunction)(void(*)(void))_wrap_intArray___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(intArray self, PyObject * param) -> PyObject *"},
 	 { "intArray_swigregister", intArray_swigregister, METH_O, NULL},
 	 { "intArray_swiginit", intArray_swiginit, METH_VARARGS, NULL},
-	 { "new_doubleArray", _wrap_new_doubleArray, METH_VARARGS, "\n"
-		"doubleArray()\n"
-		"doubleArray(mfem::MemoryType mt)\n"
-		"doubleArray(int asize)\n"
-		"doubleArray(double * _data)\n"
-		"new_doubleArray(doubleArray src) -> doubleArray\n"
-		""},
 	 { "delete_doubleArray", _wrap_delete_doubleArray, METH_O, "delete_doubleArray(doubleArray self)"},
 	 { "doubleArray_GetData", _wrap_doubleArray_GetData, METH_VARARGS, "\n"
 		"GetData(doubleArray self) -> double\n"
@@ -11331,34 +15965,110 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "doubleArray_HostWrite", _wrap_doubleArray_HostWrite, METH_O, "HostWrite(doubleArray self) -> double *"},
 	 { "doubleArray_ReadWrite", (PyCFunction)(void(*)(void))_wrap_doubleArray_ReadWrite, METH_VARARGS|METH_KEYWORDS, "ReadWrite(doubleArray self, bool on_dev=True) -> double *"},
 	 { "doubleArray_HostReadWrite", _wrap_doubleArray_HostReadWrite, METH_O, "HostReadWrite(doubleArray self) -> double *"},
+	 { "new_doubleArray", _wrap_new_doubleArray, METH_VARARGS, "\n"
+		"doubleArray()\n"
+		"doubleArray(mfem::MemoryType mt)\n"
+		"doubleArray(int asize)\n"
+		"doubleArray(int asize, mfem::MemoryType mt)\n"
+		"doubleArray(double * data_)\n"
+		"doubleArray(doubleArray src)\n"
+		"new_doubleArray(void * List_or_Tuple) -> doubleArray\n"
+		""},
 	 { "doubleArray___setitem__", (PyCFunction)(void(*)(void))_wrap_doubleArray___setitem__, METH_VARARGS|METH_KEYWORDS, "__setitem__(doubleArray self, int i, double const v)"},
-	 { "doubleArray___getitem__", (PyCFunction)(void(*)(void))_wrap_doubleArray___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(doubleArray self, int const i) -> double const &"},
 	 { "doubleArray_Assign", _wrap_doubleArray_Assign, METH_VARARGS, "\n"
 		"Assign(doubleArray self, double const * arg2)\n"
 		"Assign(doubleArray self, double const & a)\n"
 		""},
 	 { "doubleArray_FakeToList", _wrap_doubleArray_FakeToList, METH_O, "FakeToList(doubleArray self)"},
+	 { "doubleArray___iter__", _wrap_doubleArray___iter__, METH_O, "__iter__(doubleArray self)"},
 	 { "doubleArray_Print", _wrap_doubleArray_Print, METH_VARARGS, "\n"
 		"Print(doubleArray self, std::ostream & out=mfem::out, int width=4)\n"
-		"Print(doubleArray self, char const * file, int precision=8)\n"
+		"Print(doubleArray self, char const * file, int precision=16)\n"
 		""},
+	 { "doubleArray_PrintGZ", (PyCFunction)(void(*)(void))_wrap_doubleArray_PrintGZ, METH_VARARGS|METH_KEYWORDS, "PrintGZ(doubleArray self, char const * file, int precision=16)"},
+	 { "doubleArray_SaveGZ", (PyCFunction)(void(*)(void))_wrap_doubleArray_SaveGZ, METH_VARARGS|METH_KEYWORDS, "SaveGZ(doubleArray self, char const * file, int precision=16)"},
 	 { "doubleArray_Save", _wrap_doubleArray_Save, METH_VARARGS, "\n"
 		"Save(doubleArray self, std::ostream & out, int fmt=0)\n"
-		"Save(doubleArray self, char const * file, int precision=8)\n"
+		"Save(doubleArray self, char const * file, int precision=16)\n"
 		"Save(doubleArray self)\n"
 		""},
+	 { "doubleArray___getitem__", (PyCFunction)(void(*)(void))_wrap_doubleArray___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(doubleArray self, PyObject * param) -> PyObject *"},
 	 { "doubleArray_swigregister", doubleArray_swigregister, METH_O, NULL},
 	 { "doubleArray_swiginit", doubleArray_swiginit, METH_VARARGS, NULL},
-	 { "doubleSwap", _wrap_doubleSwap, METH_VARARGS, "\n"
-		"doubleSwap(doubleArray arg1, doubleArray arg2)\n"
-		"doubleSwap(mfem::Array2D< double > & arg1, mfem::Array2D< double > & arg2)\n"
-		"doubleSwap(double & a, double & b)\n"
+	 { "delete_boolArray", _wrap_delete_boolArray, METH_O, "delete_boolArray(boolArray self)"},
+	 { "boolArray_GetData", _wrap_boolArray_GetData, METH_VARARGS, "\n"
+		"GetData(boolArray self) -> bool\n"
+		"GetData(boolArray self) -> bool const *\n"
 		""},
-	 { "intSwap", _wrap_intSwap, METH_VARARGS, "\n"
-		"intSwap(intArray arg1, intArray arg2)\n"
-		"intSwap(mfem::Array2D< int > & arg1, mfem::Array2D< int > & arg2)\n"
-		"intSwap(int & a, int & b)\n"
+	 { "boolArray_GetMemory", _wrap_boolArray_GetMemory, METH_VARARGS, "\n"
+		"GetMemory(boolArray self) -> mfem::Memory< bool >\n"
+		"GetMemory(boolArray self) -> mfem::Memory< bool > const &\n"
 		""},
+	 { "boolArray_UseDevice", _wrap_boolArray_UseDevice, METH_O, "UseDevice(boolArray self) -> bool"},
+	 { "boolArray_OwnsData", _wrap_boolArray_OwnsData, METH_O, "OwnsData(boolArray self) -> bool"},
+	 { "boolArray_StealData", (PyCFunction)(void(*)(void))_wrap_boolArray_StealData, METH_VARARGS|METH_KEYWORDS, "StealData(boolArray self, bool ** p)"},
+	 { "boolArray_LoseData", _wrap_boolArray_LoseData, METH_O, "LoseData(boolArray self)"},
+	 { "boolArray_MakeDataOwner", _wrap_boolArray_MakeDataOwner, METH_O, "MakeDataOwner(boolArray self)"},
+	 { "boolArray_Size", _wrap_boolArray_Size, METH_O, "Size(boolArray self) -> int"},
+	 { "boolArray_SetSize", _wrap_boolArray_SetSize, METH_VARARGS, "\n"
+		"SetSize(boolArray self, int nsize)\n"
+		"SetSize(boolArray self, int nsize, bool const & initval)\n"
+		"SetSize(boolArray self, int nsize, mfem::MemoryType mt)\n"
+		""},
+	 { "boolArray_Capacity", _wrap_boolArray_Capacity, METH_O, "Capacity(boolArray self) -> int"},
+	 { "boolArray_Reserve", (PyCFunction)(void(*)(void))_wrap_boolArray_Reserve, METH_VARARGS|METH_KEYWORDS, "Reserve(boolArray self, int capacity)"},
+	 { "boolArray_Append", _wrap_boolArray_Append, METH_VARARGS, "\n"
+		"Append(boolArray self, bool const & el) -> int\n"
+		"Append(boolArray self, bool const * els, int nels) -> int\n"
+		"Append(boolArray self, boolArray els) -> int\n"
+		""},
+	 { "boolArray_Prepend", (PyCFunction)(void(*)(void))_wrap_boolArray_Prepend, METH_VARARGS|METH_KEYWORDS, "Prepend(boolArray self, bool const & el) -> int"},
+	 { "boolArray_Last", _wrap_boolArray_Last, METH_VARARGS, "\n"
+		"Last(boolArray self) -> bool\n"
+		"Last(boolArray self) -> bool const &\n"
+		""},
+	 { "boolArray_DeleteLast", _wrap_boolArray_DeleteLast, METH_O, "DeleteLast(boolArray self)"},
+	 { "boolArray_DeleteAll", _wrap_boolArray_DeleteAll, METH_O, "DeleteAll(boolArray self)"},
+	 { "boolArray_Copy", (PyCFunction)(void(*)(void))_wrap_boolArray_Copy, METH_VARARGS|METH_KEYWORDS, "Copy(boolArray self, boolArray copy)"},
+	 { "boolArray_MakeRef", _wrap_boolArray_MakeRef, METH_VARARGS, "\n"
+		"MakeRef(boolArray self, bool * arg2, int arg3)\n"
+		"MakeRef(boolArray self, boolArray master)\n"
+		""},
+	 { "boolArray_GetSubArray", (PyCFunction)(void(*)(void))_wrap_boolArray_GetSubArray, METH_VARARGS|METH_KEYWORDS, "GetSubArray(boolArray self, int offset, int sa_size, boolArray sa)"},
+	 { "boolArray_begin", _wrap_boolArray_begin, METH_VARARGS, "\n"
+		"begin(boolArray self) -> bool\n"
+		"begin(boolArray self) -> bool const *\n"
+		""},
+	 { "boolArray_end", _wrap_boolArray_end, METH_VARARGS, "\n"
+		"end(boolArray self) -> bool\n"
+		"end(boolArray self) -> bool const *\n"
+		""},
+	 { "boolArray_MemoryUsage", _wrap_boolArray_MemoryUsage, METH_O, "MemoryUsage(boolArray self) -> long"},
+	 { "boolArray_Read", (PyCFunction)(void(*)(void))_wrap_boolArray_Read, METH_VARARGS|METH_KEYWORDS, "Read(boolArray self, bool on_dev=True) -> bool const *"},
+	 { "boolArray_HostRead", _wrap_boolArray_HostRead, METH_O, "HostRead(boolArray self) -> bool const *"},
+	 { "boolArray_Write", (PyCFunction)(void(*)(void))_wrap_boolArray_Write, METH_VARARGS|METH_KEYWORDS, "Write(boolArray self, bool on_dev=True) -> bool *"},
+	 { "boolArray_HostWrite", _wrap_boolArray_HostWrite, METH_O, "HostWrite(boolArray self) -> bool *"},
+	 { "boolArray_ReadWrite", (PyCFunction)(void(*)(void))_wrap_boolArray_ReadWrite, METH_VARARGS|METH_KEYWORDS, "ReadWrite(boolArray self, bool on_dev=True) -> bool *"},
+	 { "boolArray_HostReadWrite", _wrap_boolArray_HostReadWrite, METH_O, "HostReadWrite(boolArray self) -> bool *"},
+	 { "new_boolArray", _wrap_new_boolArray, METH_VARARGS, "\n"
+		"boolArray()\n"
+		"boolArray(mfem::MemoryType mt)\n"
+		"boolArray(int asize)\n"
+		"boolArray(int asize, mfem::MemoryType mt)\n"
+		"boolArray(bool * data_)\n"
+		"boolArray(boolArray src)\n"
+		"new_boolArray(void * List_or_Tuple) -> boolArray\n"
+		""},
+	 { "boolArray___setitem__", (PyCFunction)(void(*)(void))_wrap_boolArray___setitem__, METH_VARARGS|METH_KEYWORDS, "__setitem__(boolArray self, int i, bool const v)"},
+	 { "boolArray_Assign", _wrap_boolArray_Assign, METH_VARARGS, "\n"
+		"Assign(boolArray self, bool const * arg2)\n"
+		"Assign(boolArray self, bool const & a)\n"
+		""},
+	 { "boolArray_FakeToList", _wrap_boolArray_FakeToList, METH_O, "FakeToList(boolArray self)"},
+	 { "boolArray___iter__", _wrap_boolArray___iter__, METH_O, "__iter__(boolArray self)"},
+	 { "boolArray___getitem__", (PyCFunction)(void(*)(void))_wrap_boolArray___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(boolArray self, PyObject * param) -> PyObject *"},
+	 { "boolArray_swigregister", boolArray_swigregister, METH_O, NULL},
+	 { "boolArray_swiginit", boolArray_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -11366,63 +16076,75 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_bool = {"_p_bool", "bool *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Array2DT_double_t = {"_p_mfem__Array2DT_double_t", "mfem::Array2D< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Array2DT_int_t = {"_p_mfem__Array2DT_int_t", "mfem::Array2D< int > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ArrayT_bool_t = {"_p_mfem__ArrayT_bool_t", "mfem::Array< bool > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_double_t = {"_p_mfem__ArrayT_double_t", "mfem::Array< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__MemoryT_bool_t = {"_p_mfem__MemoryT_bool_t", "mfem::Memory< bool > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__MemoryT_double_t = {"_p_mfem__MemoryT_double_t", "mfem::Memory< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__MemoryT_int_t = {"_p_mfem__MemoryT_int_t", "mfem::Memory< int > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_bool = {"_p_p_bool", "bool **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_double = {"_p_p_double", "double **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_int = {"_p_p_int", "int **", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__istream = {"_p_std__istream", "std::istream *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_PyMFEM__wFILE,
+  &_swigt__p_bool,
   &_swigt__p_char,
   &_swigt__p_double,
   &_swigt__p_int,
   &_swigt__p_mfem__Array2DT_double_t,
   &_swigt__p_mfem__Array2DT_int_t,
+  &_swigt__p_mfem__ArrayT_bool_t,
   &_swigt__p_mfem__ArrayT_double_t,
   &_swigt__p_mfem__ArrayT_int_t,
+  &_swigt__p_mfem__MemoryT_bool_t,
   &_swigt__p_mfem__MemoryT_double_t,
   &_swigt__p_mfem__MemoryT_int_t,
+  &_swigt__p_p_bool,
   &_swigt__p_p_double,
   &_swigt__p_p_int,
-  &_swigt__p_std__istream,
 };
 
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_bool[] = {  {&_swigt__p_bool, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Array2DT_double_t[] = {  {&_swigt__p_mfem__Array2DT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Array2DT_int_t[] = {  {&_swigt__p_mfem__Array2DT_int_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ArrayT_bool_t[] = {  {&_swigt__p_mfem__ArrayT_bool_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_double_t[] = {  {&_swigt__p_mfem__ArrayT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__MemoryT_bool_t[] = {  {&_swigt__p_mfem__MemoryT_bool_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MemoryT_double_t[] = {  {&_swigt__p_mfem__MemoryT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MemoryT_int_t[] = {  {&_swigt__p_mfem__MemoryT_int_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_bool[] = {  {&_swigt__p_p_bool, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_double[] = {  {&_swigt__p_p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_int[] = {  {&_swigt__p_p_int, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__istream[] = {  {&_swigt__p_std__istream, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_PyMFEM__wFILE,
+  _swigc__p_bool,
   _swigc__p_char,
   _swigc__p_double,
   _swigc__p_int,
   _swigc__p_mfem__Array2DT_double_t,
   _swigc__p_mfem__Array2DT_int_t,
+  _swigc__p_mfem__ArrayT_bool_t,
   _swigc__p_mfem__ArrayT_double_t,
   _swigc__p_mfem__ArrayT_int_t,
+  _swigc__p_mfem__MemoryT_bool_t,
   _swigc__p_mfem__MemoryT_double_t,
   _swigc__p_mfem__MemoryT_int_t,
+  _swigc__p_p_bool,
   _swigc__p_p_double,
   _swigc__p_p_int,
-  _swigc__p_std__istream,
 };
 
 

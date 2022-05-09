@@ -1,7 +1,7 @@
 %module(package="mfem._ser") triangle
 %{
-#include  "mfem.hpp"
-#include "mesh/triangle.hpp"
+#include "mfem.hpp"
+#include "pyoperator.hpp"      
 #include "numpy/arrayobject.h"    
 %}
 
@@ -10,6 +10,7 @@ import_array();
 %}
 %include "exception.i"
 %import "fe.i"
+%import "fe_fixed_order.i"
 %import "element.i"
 %include "../common/typemap_macros.i"
 %include "../common/exception.i"

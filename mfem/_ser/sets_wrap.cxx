@@ -2693,14 +2693,16 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
-#define SWIGTYPE_p_char swig_types[1]
-#define SWIGTYPE_p_int swig_types[2]
-#define SWIGTYPE_p_mfem__IntegerSet swig_types[3]
-#define SWIGTYPE_p_mfem__ListOfIntegerSets swig_types[4]
-#define SWIGTYPE_p_mfem__STable swig_types[5]
-#define SWIGTYPE_p_mfem__Table swig_types[6]
-static swig_type_info *swig_types[8];
-static swig_module_info swig_module = {swig_types, 7, 0, 0, 0, 0};
+#define SWIGTYPE_p_bool swig_types[1]
+#define SWIGTYPE_p_char swig_types[2]
+#define SWIGTYPE_p_double swig_types[3]
+#define SWIGTYPE_p_int swig_types[4]
+#define SWIGTYPE_p_mfem__IntegerSet swig_types[5]
+#define SWIGTYPE_p_mfem__ListOfIntegerSets swig_types[6]
+#define SWIGTYPE_p_mfem__STable swig_types[7]
+#define SWIGTYPE_p_mfem__Table swig_types[8]
+static swig_type_info *swig_types[10];
+static swig_module_info swig_module = {swig_types, 9, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3679,7 +3681,9 @@ static void *_p_mfem__STableTo_p_mfem__Table(void *x, int *SWIGUNUSEDPARM(newmem
     return (void *)((mfem::Table *)  ((mfem::STable *) x));
 }
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_bool = {"_p_bool", "bool *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegerSet = {"_p_mfem__IntegerSet", "mfem::IntegerSet *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ListOfIntegerSets = {"_p_mfem__ListOfIntegerSets", "mfem::ListOfIntegerSets *", 0, 0, (void*)0, 0};
@@ -3688,7 +3692,9 @@ static swig_type_info _swigt__p_mfem__STable = {"_p_mfem__STable", 0, 0, 0, 0, 0
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_PyMFEM__wFILE,
+  &_swigt__p_bool,
   &_swigt__p_char,
+  &_swigt__p_double,
   &_swigt__p_int,
   &_swigt__p_mfem__IntegerSet,
   &_swigt__p_mfem__ListOfIntegerSets,
@@ -3697,7 +3703,9 @@ static swig_type_info *swig_type_initial[] = {
 };
 
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_bool[] = {  {&_swigt__p_bool, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegerSet[] = {  {&_swigt__p_mfem__IntegerSet, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ListOfIntegerSets[] = {  {&_swigt__p_mfem__ListOfIntegerSets, 0, 0, 0},{0, 0, 0, 0}};
@@ -3706,7 +3714,9 @@ static swig_cast_info _swigc__p_mfem__Table[] = {  {&_swigt__p_mfem__STable, _p_
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_PyMFEM__wFILE,
+  _swigc__p_bool,
   _swigc__p_char,
+  _swigc__p_double,
   _swigc__p_int,
   _swigc__p_mfem__IntegerSet,
   _swigc__p_mfem__ListOfIntegerSets,

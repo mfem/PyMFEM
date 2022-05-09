@@ -2,8 +2,10 @@
 %{
 #include "fem/nonlininteg.hpp"
 #include "fem/linearform.hpp"  
-#include "pycoefficient.hpp"
-#include "pyoperator.hpp"     
+#include "../common/pycoefficient.hpp"
+#include "pyoperator.hpp"
+#include "fem/ceed/operator.hpp"
+using namespace mfem;  
 %}
 /*
 %init %{

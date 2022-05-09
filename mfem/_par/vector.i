@@ -12,12 +12,15 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "io_stream.hpp"             
+#include "mfem.hpp"    
 #include "numpy/arrayobject.h"
-#include "linalg/vector.hpp"  
+#include "../common/io_stream.hpp"  
 %}
 
 // initialization required to return numpy array from SWIG
+%begin %{
+#define PY_SSIZE_T_CLEAN
+%}
 %init %{
 import_array();
 %}
@@ -33,8 +36,9 @@ import_array();
 
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
+ISTREAM_TYPEMAP(std::istream&)
 
-ARRAY_TO_DOUBLEARRAY_IN(double *_data)
+ARRAY_TO_DOUBLEARRAY_IN(double *data_)
 
 %pythonprepend mfem::Vector::Vector %{
 from numpy import ndarray, ascontiguousarray
@@ -101,7 +105,7 @@ if len(args) == 1:
 			      ' is given')
         elif args[0].ndim != 1:
             raise ValueError('Ndim must be one') 
-        elif args[0].shape[0] != _vector.Vector_Size(self):
+        elif args[0].shape[0] != self.Size():
             raise ValueError('Length does not match')
         else:
             args = (ascontiguousarray(args[0]),)
@@ -150,6 +154,16 @@ void subtract_vector(const double a, const mfem::Vector &x,
 }
 %}
 
+/* define VectorPtrArray */
+%import "../common/array_listtuple_typemap.i"
+ARRAY_LISTTUPLE_INPUT_SWIGOBJ(mfem::Vector *, 1)
+
+%import "../common/data_size_typemap.i"
+XXXPTR_SIZE_IN(mfem::Vector **data_, int asize, mfem::Vector *)
+
+%import "../common/array_instantiation_macro.i"
+IGNORE_ARRAY_METHODS(mfem::Vector *)
+INSTANTIATE_ARRAY0(Vector *, Vector, 1)
 
 %include "linalg/vector.hpp"
 
@@ -163,6 +177,9 @@ void subtract_vector(const double a, const mfem::Vector &x,
   void Assign(const double v) {
     (* self) = v;
   }
+  void Assign(const mfem::Vector &v) {
+    (* self) = v;
+  }
   void Assign(PyObject* param) {
     /* note that these error does not raise error in python
        type check is actually done in wrapper layer */
@@ -170,23 +187,24 @@ void subtract_vector(const double a, const mfem::Vector &x,
        PyErr_SetString(PyExc_ValueError, "Input data must be ndarray");
        return;
     }
-    int typ = PyArray_TYPE(param);
+    PyArrayObject *param0 = reinterpret_cast<PyArrayObject *>(param);
+    int typ = PyArray_TYPE(param0);
     if (typ != NPY_DOUBLE){
         PyErr_SetString(PyExc_ValueError, "Input data must be float64");
 	return;
     }
-    int ndim = PyArray_NDIM(param);
+    int ndim = PyArray_NDIM(param0);
     if (ndim != 1){
       PyErr_SetString(PyExc_ValueError, "Input data NDIM must be one");
       return ;
     }
-    npy_intp *shape = PyArray_DIMS(param);    
+    npy_intp *shape = PyArray_DIMS(param0);    
     int len = self->Size();
     if (shape[0] != len){    
       PyErr_SetString(PyExc_ValueError, "input data length does not match");
       return ;
     }    
-    (* self) = (double *) PyArray_DATA(param);
+    (* self) = (double *) PyArray_DATA(param0);
   }
 
   void __setitem__(int i, const double v) {

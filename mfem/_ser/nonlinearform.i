@@ -6,7 +6,8 @@
 #include "fem/nonlinearform.hpp"
 #include "fem/fespace.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"     
+#include "pyoperator.hpp"
+#include "../common/pycoefficient.hpp"  
 %}
 
 %init %{
@@ -58,7 +59,7 @@ namespace mfem {
 }
 
 LIST_TO_MFEMOBJ_ARRAY_IN(mfem::Array<mfem::FiniteElementSpace *> &f,
-    		        mfem::FiniteElementSpace *)
+			 mfem::FiniteElementSpace *)
 LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::Array<int> *> &bdr_attr_is_ess,
  		        mfem::Array<int> *)
 LIST_TO_MFEMOBJ_ARRAY_IN(mfem::Array<mfem::Vector *> &rhs, mfem::Vector *)

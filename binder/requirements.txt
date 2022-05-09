@@ -1,0 +1,7 @@
+numpy>=1.19.4; python_version<"3.7"
+numpy>=1.20.0; python_version>="3.7"
+scipy>=1.5.2
+six>1.13.0
+matplotlib
+mfem==4.3.0.5
+glvis>=0.3.2

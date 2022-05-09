@@ -69,6 +69,474 @@ import weakref
 import mfem._par.mem_manager
 import mfem._par.vector
 import mfem._par.array
+class OperatorPtrArray(object):
+    r"""Proxy of C++ mfem::Array< mfem::Operator * > class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _operators.delete_OperatorPtrArray
+
+    def GetData(self, *args):
+        r"""
+        GetData(OperatorPtrArray self) -> Operator
+        GetData(OperatorPtrArray self) -> mfem::Operator *const *
+        """
+        return _operators.OperatorPtrArray_GetData(self, *args)
+    GetData = _swig_new_instance_method(_operators.OperatorPtrArray_GetData)
+
+    def GetMemory(self, *args):
+        r"""
+        GetMemory(OperatorPtrArray self) -> mfem::Memory< mfem::Operator * >
+        GetMemory(OperatorPtrArray self) -> mfem::Memory< mfem::Operator * > const &
+        """
+        return _operators.OperatorPtrArray_GetMemory(self, *args)
+    GetMemory = _swig_new_instance_method(_operators.OperatorPtrArray_GetMemory)
+
+    def UseDevice(self):
+        r"""UseDevice(OperatorPtrArray self) -> bool"""
+        return _operators.OperatorPtrArray_UseDevice(self)
+    UseDevice = _swig_new_instance_method(_operators.OperatorPtrArray_UseDevice)
+
+    def OwnsData(self):
+        r"""OwnsData(OperatorPtrArray self) -> bool"""
+        return _operators.OperatorPtrArray_OwnsData(self)
+    OwnsData = _swig_new_instance_method(_operators.OperatorPtrArray_OwnsData)
+
+    def StealData(self, p):
+        r"""StealData(OperatorPtrArray self, mfem::Operator *** p)"""
+        return _operators.OperatorPtrArray_StealData(self, p)
+    StealData = _swig_new_instance_method(_operators.OperatorPtrArray_StealData)
+
+    def LoseData(self):
+        r"""LoseData(OperatorPtrArray self)"""
+        return _operators.OperatorPtrArray_LoseData(self)
+    LoseData = _swig_new_instance_method(_operators.OperatorPtrArray_LoseData)
+
+    def MakeDataOwner(self):
+        r"""MakeDataOwner(OperatorPtrArray self)"""
+        return _operators.OperatorPtrArray_MakeDataOwner(self)
+    MakeDataOwner = _swig_new_instance_method(_operators.OperatorPtrArray_MakeDataOwner)
+
+    def Size(self):
+        r"""Size(OperatorPtrArray self) -> int"""
+        return _operators.OperatorPtrArray_Size(self)
+    Size = _swig_new_instance_method(_operators.OperatorPtrArray_Size)
+
+    def SetSize(self, *args):
+        r"""
+        SetSize(OperatorPtrArray self, int nsize)
+        SetSize(OperatorPtrArray self, int nsize, Operator initval)
+        SetSize(OperatorPtrArray self, int nsize, mfem::MemoryType mt)
+        """
+        return _operators.OperatorPtrArray_SetSize(self, *args)
+    SetSize = _swig_new_instance_method(_operators.OperatorPtrArray_SetSize)
+
+    def Capacity(self):
+        r"""Capacity(OperatorPtrArray self) -> int"""
+        return _operators.OperatorPtrArray_Capacity(self)
+    Capacity = _swig_new_instance_method(_operators.OperatorPtrArray_Capacity)
+
+    def Reserve(self, capacity):
+        r"""Reserve(OperatorPtrArray self, int capacity)"""
+        return _operators.OperatorPtrArray_Reserve(self, capacity)
+    Reserve = _swig_new_instance_method(_operators.OperatorPtrArray_Reserve)
+
+    def Append(self, *args):
+        r"""
+        Append(OperatorPtrArray self, Operator el) -> int
+        Append(OperatorPtrArray self, mfem::Operator *const * els, int nels) -> int
+        Append(OperatorPtrArray self, OperatorPtrArray els) -> int
+        """
+        return _operators.OperatorPtrArray_Append(self, *args)
+    Append = _swig_new_instance_method(_operators.OperatorPtrArray_Append)
+
+    def Prepend(self, el):
+        r"""Prepend(OperatorPtrArray self, Operator el) -> int"""
+        return _operators.OperatorPtrArray_Prepend(self, el)
+    Prepend = _swig_new_instance_method(_operators.OperatorPtrArray_Prepend)
+
+    def Last(self, *args):
+        r"""
+        Last(OperatorPtrArray self) -> Operator
+        Last(OperatorPtrArray self) -> Operator
+        """
+        return _operators.OperatorPtrArray_Last(self, *args)
+    Last = _swig_new_instance_method(_operators.OperatorPtrArray_Last)
+
+    def DeleteLast(self):
+        r"""DeleteLast(OperatorPtrArray self)"""
+        return _operators.OperatorPtrArray_DeleteLast(self)
+    DeleteLast = _swig_new_instance_method(_operators.OperatorPtrArray_DeleteLast)
+
+    def DeleteAll(self):
+        r"""DeleteAll(OperatorPtrArray self)"""
+        return _operators.OperatorPtrArray_DeleteAll(self)
+    DeleteAll = _swig_new_instance_method(_operators.OperatorPtrArray_DeleteAll)
+
+    def Copy(self, copy):
+        r"""Copy(OperatorPtrArray self, OperatorPtrArray copy)"""
+        return _operators.OperatorPtrArray_Copy(self, copy)
+    Copy = _swig_new_instance_method(_operators.OperatorPtrArray_Copy)
+
+    def MakeRef(self, *args):
+        r"""
+        MakeRef(OperatorPtrArray self, mfem::Operator ** arg2, int arg3)
+        MakeRef(OperatorPtrArray self, OperatorPtrArray master)
+        """
+        return _operators.OperatorPtrArray_MakeRef(self, *args)
+    MakeRef = _swig_new_instance_method(_operators.OperatorPtrArray_MakeRef)
+
+    def GetSubArray(self, offset, sa_size, sa):
+        r"""GetSubArray(OperatorPtrArray self, int offset, int sa_size, OperatorPtrArray sa)"""
+        return _operators.OperatorPtrArray_GetSubArray(self, offset, sa_size, sa)
+    GetSubArray = _swig_new_instance_method(_operators.OperatorPtrArray_GetSubArray)
+
+    def begin(self, *args):
+        r"""
+        begin(OperatorPtrArray self) -> Operator
+        begin(OperatorPtrArray self) -> mfem::Operator *const *
+        """
+        return _operators.OperatorPtrArray_begin(self, *args)
+    begin = _swig_new_instance_method(_operators.OperatorPtrArray_begin)
+
+    def end(self, *args):
+        r"""
+        end(OperatorPtrArray self) -> Operator
+        end(OperatorPtrArray self) -> mfem::Operator *const *
+        """
+        return _operators.OperatorPtrArray_end(self, *args)
+    end = _swig_new_instance_method(_operators.OperatorPtrArray_end)
+
+    def MemoryUsage(self):
+        r"""MemoryUsage(OperatorPtrArray self) -> long"""
+        return _operators.OperatorPtrArray_MemoryUsage(self)
+    MemoryUsage = _swig_new_instance_method(_operators.OperatorPtrArray_MemoryUsage)
+
+    def Read(self, on_dev=True):
+        r"""Read(OperatorPtrArray self, bool on_dev=True) -> mfem::Operator *const *"""
+        return _operators.OperatorPtrArray_Read(self, on_dev)
+    Read = _swig_new_instance_method(_operators.OperatorPtrArray_Read)
+
+    def HostRead(self):
+        r"""HostRead(OperatorPtrArray self) -> mfem::Operator *const *"""
+        return _operators.OperatorPtrArray_HostRead(self)
+    HostRead = _swig_new_instance_method(_operators.OperatorPtrArray_HostRead)
+
+    def Write(self, on_dev=True):
+        r"""Write(OperatorPtrArray self, bool on_dev=True) -> mfem::Operator **"""
+        return _operators.OperatorPtrArray_Write(self, on_dev)
+    Write = _swig_new_instance_method(_operators.OperatorPtrArray_Write)
+
+    def HostWrite(self):
+        r"""HostWrite(OperatorPtrArray self) -> mfem::Operator **"""
+        return _operators.OperatorPtrArray_HostWrite(self)
+    HostWrite = _swig_new_instance_method(_operators.OperatorPtrArray_HostWrite)
+
+    def ReadWrite(self, on_dev=True):
+        r"""ReadWrite(OperatorPtrArray self, bool on_dev=True) -> mfem::Operator **"""
+        return _operators.OperatorPtrArray_ReadWrite(self, on_dev)
+    ReadWrite = _swig_new_instance_method(_operators.OperatorPtrArray_ReadWrite)
+
+    def HostReadWrite(self):
+        r"""HostReadWrite(OperatorPtrArray self) -> mfem::Operator **"""
+        return _operators.OperatorPtrArray_HostReadWrite(self)
+    HostReadWrite = _swig_new_instance_method(_operators.OperatorPtrArray_HostReadWrite)
+
+    def __init__(self, *args):
+        r"""
+        __init__(OperatorPtrArray self) -> OperatorPtrArray
+        __init__(OperatorPtrArray self, mfem::MemoryType mt) -> OperatorPtrArray
+        __init__(OperatorPtrArray self, int asize) -> OperatorPtrArray
+        __init__(OperatorPtrArray self, int asize, mfem::MemoryType mt) -> OperatorPtrArray
+        __init__(OperatorPtrArray self, mfem::Operator ** data_) -> OperatorPtrArray
+        __init__(OperatorPtrArray self, OperatorPtrArray src) -> OperatorPtrArray
+        __init__(OperatorPtrArray self, void * List_or_Tuple) -> OperatorPtrArray
+        """
+        _operators.OperatorPtrArray_swiginit(self, _operators.new_OperatorPtrArray(*args))
+
+    def __setitem__(self, i, v):
+        r"""__setitem__(OperatorPtrArray self, int i, Operator v)"""
+
+        i = int(i)
+
+
+        return _operators.OperatorPtrArray___setitem__(self, i, v)
+
+
+    def Assign(self, *args):
+        r"""
+        Assign(OperatorPtrArray self, mfem::Operator *const * arg2)
+        Assign(OperatorPtrArray self, Operator a)
+        """
+        return _operators.OperatorPtrArray_Assign(self, *args)
+    Assign = _swig_new_instance_method(_operators.OperatorPtrArray_Assign)
+
+    def ToList(self):
+        return [self[i] for i in range(self.Size())]
+
+
+
+    def __iter__(self):
+        class iter_array:
+            def __init__(self, obj):
+                self.obj = obj
+                self.idx = 0
+                self.size = obj.Size()
+            def __iter__(self):
+                self.idx = 0
+            def __next__(self):
+                if self.idx < self.size:
+                    res = self.obj[self.idx]
+                    self.idx += 1
+                    return res
+                else:
+                    raise StopIteration
+        return iter_array(self)
+
+
+
+    def __getitem__(self, param):
+        r"""__getitem__(OperatorPtrArray self, PyObject * param) -> PyObject *"""
+        return _operators.OperatorPtrArray___getitem__(self, param)
+    __getitem__ = _swig_new_instance_method(_operators.OperatorPtrArray___getitem__)
+
+# Register OperatorPtrArray in _operators:
+_operators.OperatorPtrArray_swigregister(OperatorPtrArray)
+
+class SolverPtrArray(object):
+    r"""Proxy of C++ mfem::Array< mfem::Solver * > class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _operators.delete_SolverPtrArray
+
+    def GetData(self, *args):
+        r"""
+        GetData(SolverPtrArray self) -> Solver
+        GetData(SolverPtrArray self) -> mfem::Solver *const *
+        """
+        return _operators.SolverPtrArray_GetData(self, *args)
+    GetData = _swig_new_instance_method(_operators.SolverPtrArray_GetData)
+
+    def GetMemory(self, *args):
+        r"""
+        GetMemory(SolverPtrArray self) -> mfem::Memory< mfem::Solver * >
+        GetMemory(SolverPtrArray self) -> mfem::Memory< mfem::Solver * > const &
+        """
+        return _operators.SolverPtrArray_GetMemory(self, *args)
+    GetMemory = _swig_new_instance_method(_operators.SolverPtrArray_GetMemory)
+
+    def UseDevice(self):
+        r"""UseDevice(SolverPtrArray self) -> bool"""
+        return _operators.SolverPtrArray_UseDevice(self)
+    UseDevice = _swig_new_instance_method(_operators.SolverPtrArray_UseDevice)
+
+    def OwnsData(self):
+        r"""OwnsData(SolverPtrArray self) -> bool"""
+        return _operators.SolverPtrArray_OwnsData(self)
+    OwnsData = _swig_new_instance_method(_operators.SolverPtrArray_OwnsData)
+
+    def StealData(self, p):
+        r"""StealData(SolverPtrArray self, mfem::Solver *** p)"""
+        return _operators.SolverPtrArray_StealData(self, p)
+    StealData = _swig_new_instance_method(_operators.SolverPtrArray_StealData)
+
+    def LoseData(self):
+        r"""LoseData(SolverPtrArray self)"""
+        return _operators.SolverPtrArray_LoseData(self)
+    LoseData = _swig_new_instance_method(_operators.SolverPtrArray_LoseData)
+
+    def MakeDataOwner(self):
+        r"""MakeDataOwner(SolverPtrArray self)"""
+        return _operators.SolverPtrArray_MakeDataOwner(self)
+    MakeDataOwner = _swig_new_instance_method(_operators.SolverPtrArray_MakeDataOwner)
+
+    def Size(self):
+        r"""Size(SolverPtrArray self) -> int"""
+        return _operators.SolverPtrArray_Size(self)
+    Size = _swig_new_instance_method(_operators.SolverPtrArray_Size)
+
+    def SetSize(self, *args):
+        r"""
+        SetSize(SolverPtrArray self, int nsize)
+        SetSize(SolverPtrArray self, int nsize, Solver initval)
+        SetSize(SolverPtrArray self, int nsize, mfem::MemoryType mt)
+        """
+        return _operators.SolverPtrArray_SetSize(self, *args)
+    SetSize = _swig_new_instance_method(_operators.SolverPtrArray_SetSize)
+
+    def Capacity(self):
+        r"""Capacity(SolverPtrArray self) -> int"""
+        return _operators.SolverPtrArray_Capacity(self)
+    Capacity = _swig_new_instance_method(_operators.SolverPtrArray_Capacity)
+
+    def Reserve(self, capacity):
+        r"""Reserve(SolverPtrArray self, int capacity)"""
+        return _operators.SolverPtrArray_Reserve(self, capacity)
+    Reserve = _swig_new_instance_method(_operators.SolverPtrArray_Reserve)
+
+    def Append(self, *args):
+        r"""
+        Append(SolverPtrArray self, Solver el) -> int
+        Append(SolverPtrArray self, mfem::Solver *const * els, int nels) -> int
+        Append(SolverPtrArray self, SolverPtrArray els) -> int
+        """
+        return _operators.SolverPtrArray_Append(self, *args)
+    Append = _swig_new_instance_method(_operators.SolverPtrArray_Append)
+
+    def Prepend(self, el):
+        r"""Prepend(SolverPtrArray self, Solver el) -> int"""
+        return _operators.SolverPtrArray_Prepend(self, el)
+    Prepend = _swig_new_instance_method(_operators.SolverPtrArray_Prepend)
+
+    def Last(self, *args):
+        r"""
+        Last(SolverPtrArray self) -> Solver
+        Last(SolverPtrArray self) -> Solver
+        """
+        return _operators.SolverPtrArray_Last(self, *args)
+    Last = _swig_new_instance_method(_operators.SolverPtrArray_Last)
+
+    def DeleteLast(self):
+        r"""DeleteLast(SolverPtrArray self)"""
+        return _operators.SolverPtrArray_DeleteLast(self)
+    DeleteLast = _swig_new_instance_method(_operators.SolverPtrArray_DeleteLast)
+
+    def DeleteAll(self):
+        r"""DeleteAll(SolverPtrArray self)"""
+        return _operators.SolverPtrArray_DeleteAll(self)
+    DeleteAll = _swig_new_instance_method(_operators.SolverPtrArray_DeleteAll)
+
+    def Copy(self, copy):
+        r"""Copy(SolverPtrArray self, SolverPtrArray copy)"""
+        return _operators.SolverPtrArray_Copy(self, copy)
+    Copy = _swig_new_instance_method(_operators.SolverPtrArray_Copy)
+
+    def MakeRef(self, *args):
+        r"""
+        MakeRef(SolverPtrArray self, mfem::Solver ** arg2, int arg3)
+        MakeRef(SolverPtrArray self, SolverPtrArray master)
+        """
+        return _operators.SolverPtrArray_MakeRef(self, *args)
+    MakeRef = _swig_new_instance_method(_operators.SolverPtrArray_MakeRef)
+
+    def GetSubArray(self, offset, sa_size, sa):
+        r"""GetSubArray(SolverPtrArray self, int offset, int sa_size, SolverPtrArray sa)"""
+        return _operators.SolverPtrArray_GetSubArray(self, offset, sa_size, sa)
+    GetSubArray = _swig_new_instance_method(_operators.SolverPtrArray_GetSubArray)
+
+    def begin(self, *args):
+        r"""
+        begin(SolverPtrArray self) -> Solver
+        begin(SolverPtrArray self) -> mfem::Solver *const *
+        """
+        return _operators.SolverPtrArray_begin(self, *args)
+    begin = _swig_new_instance_method(_operators.SolverPtrArray_begin)
+
+    def end(self, *args):
+        r"""
+        end(SolverPtrArray self) -> Solver
+        end(SolverPtrArray self) -> mfem::Solver *const *
+        """
+        return _operators.SolverPtrArray_end(self, *args)
+    end = _swig_new_instance_method(_operators.SolverPtrArray_end)
+
+    def MemoryUsage(self):
+        r"""MemoryUsage(SolverPtrArray self) -> long"""
+        return _operators.SolverPtrArray_MemoryUsage(self)
+    MemoryUsage = _swig_new_instance_method(_operators.SolverPtrArray_MemoryUsage)
+
+    def Read(self, on_dev=True):
+        r"""Read(SolverPtrArray self, bool on_dev=True) -> mfem::Solver *const *"""
+        return _operators.SolverPtrArray_Read(self, on_dev)
+    Read = _swig_new_instance_method(_operators.SolverPtrArray_Read)
+
+    def HostRead(self):
+        r"""HostRead(SolverPtrArray self) -> mfem::Solver *const *"""
+        return _operators.SolverPtrArray_HostRead(self)
+    HostRead = _swig_new_instance_method(_operators.SolverPtrArray_HostRead)
+
+    def Write(self, on_dev=True):
+        r"""Write(SolverPtrArray self, bool on_dev=True) -> mfem::Solver **"""
+        return _operators.SolverPtrArray_Write(self, on_dev)
+    Write = _swig_new_instance_method(_operators.SolverPtrArray_Write)
+
+    def HostWrite(self):
+        r"""HostWrite(SolverPtrArray self) -> mfem::Solver **"""
+        return _operators.SolverPtrArray_HostWrite(self)
+    HostWrite = _swig_new_instance_method(_operators.SolverPtrArray_HostWrite)
+
+    def ReadWrite(self, on_dev=True):
+        r"""ReadWrite(SolverPtrArray self, bool on_dev=True) -> mfem::Solver **"""
+        return _operators.SolverPtrArray_ReadWrite(self, on_dev)
+    ReadWrite = _swig_new_instance_method(_operators.SolverPtrArray_ReadWrite)
+
+    def HostReadWrite(self):
+        r"""HostReadWrite(SolverPtrArray self) -> mfem::Solver **"""
+        return _operators.SolverPtrArray_HostReadWrite(self)
+    HostReadWrite = _swig_new_instance_method(_operators.SolverPtrArray_HostReadWrite)
+
+    def __init__(self, *args):
+        r"""
+        __init__(SolverPtrArray self) -> SolverPtrArray
+        __init__(SolverPtrArray self, mfem::MemoryType mt) -> SolverPtrArray
+        __init__(SolverPtrArray self, int asize) -> SolverPtrArray
+        __init__(SolverPtrArray self, int asize, mfem::MemoryType mt) -> SolverPtrArray
+        __init__(SolverPtrArray self, mfem::Solver ** data_) -> SolverPtrArray
+        __init__(SolverPtrArray self, SolverPtrArray src) -> SolverPtrArray
+        __init__(SolverPtrArray self, void * List_or_Tuple) -> SolverPtrArray
+        """
+        _operators.SolverPtrArray_swiginit(self, _operators.new_SolverPtrArray(*args))
+
+    def __setitem__(self, i, v):
+        r"""__setitem__(SolverPtrArray self, int i, Solver v)"""
+
+        i = int(i)
+
+
+        return _operators.SolverPtrArray___setitem__(self, i, v)
+
+
+    def Assign(self, *args):
+        r"""
+        Assign(SolverPtrArray self, mfem::Solver *const * arg2)
+        Assign(SolverPtrArray self, Solver a)
+        """
+        return _operators.SolverPtrArray_Assign(self, *args)
+    Assign = _swig_new_instance_method(_operators.SolverPtrArray_Assign)
+
+    def ToList(self):
+        return [self[i] for i in range(self.Size())]
+
+
+
+    def __iter__(self):
+        class iter_array:
+            def __init__(self, obj):
+                self.obj = obj
+                self.idx = 0
+                self.size = obj.Size()
+            def __iter__(self):
+                self.idx = 0
+            def __next__(self):
+                if self.idx < self.size:
+                    res = self.obj[self.idx]
+                    self.idx += 1
+                    return res
+                else:
+                    raise StopIteration
+        return iter_array(self)
+
+
+
+    def __getitem__(self, param):
+        r"""__getitem__(SolverPtrArray self, PyObject * param) -> PyObject *"""
+        return _operators.SolverPtrArray___getitem__(self, param)
+    __getitem__ = _swig_new_instance_method(_operators.SolverPtrArray___getitem__)
+
+# Register SolverPtrArray in _operators:
+_operators.SolverPtrArray_swigregister(SolverPtrArray)
+
 class Operator(object):
     r"""Proxy of C++ mfem::Operator class."""
 
@@ -137,6 +605,11 @@ class Operator(object):
         return _operators.Operator_GetGradient(self, x)
     GetGradient = _swig_new_instance_method(_operators.Operator_GetGradient)
 
+    def AssembleDiagonal(self, diag):
+        r"""AssembleDiagonal(Operator self, Vector diag)"""
+        return _operators.Operator_AssembleDiagonal(self, diag)
+    AssembleDiagonal = _swig_new_instance_method(_operators.Operator_AssembleDiagonal)
+
     def GetProlongation(self):
         r"""GetProlongation(Operator self) -> Operator"""
         return _operators.Operator_GetProlongation(self)
@@ -151,6 +624,11 @@ class Operator(object):
         r"""GetOutputProlongation(Operator self) -> Operator"""
         return _operators.Operator_GetOutputProlongation(self)
     GetOutputProlongation = _swig_new_instance_method(_operators.Operator_GetOutputProlongation)
+
+    def GetOutputRestrictionTranspose(self):
+        r"""GetOutputRestrictionTranspose(Operator self) -> Operator"""
+        return _operators.Operator_GetOutputRestrictionTranspose(self)
+    GetOutputRestrictionTranspose = _swig_new_instance_method(_operators.Operator_GetOutputRestrictionTranspose)
 
     def GetOutputRestriction(self):
         r"""GetOutputRestriction(Operator self) -> Operator"""
@@ -219,11 +697,17 @@ class Operator(object):
 
     def PrintMatlab(self, *args):
         r"""
-        PrintMatlab(Operator self, std::ostream & out, int n=0, int m=0)
-        PrintMatlab(Operator self, char const * file, int precision=8)
+        PrintMatlab(Operator self, std::ostream & out, int n, int m=0)
+        PrintMatlab(Operator self, std::ostream & out)
+        PrintMatlab(Operator self, char const * file, int precision=16)
         """
         return _operators.Operator_PrintMatlab(self, *args)
     PrintMatlab = _swig_new_instance_method(_operators.Operator_PrintMatlab)
+
+    def PrintMatlabGZ(self, file, precision=16):
+        r"""PrintMatlabGZ(Operator self, char const * file, int precision=16)"""
+        return _operators.Operator_PrintMatlabGZ(self, file, precision)
+    PrintMatlabGZ = _swig_new_instance_method(_operators.Operator_PrintMatlabGZ)
     def __disown__(self):
         self.this.disown()
         _operators.disown_Operator(self)
@@ -266,9 +750,9 @@ class TimeDependentOperator(Operator):
         return _operators.TimeDependentOperator_GetTime(self)
     GetTime = _swig_new_instance_method(_operators.TimeDependentOperator_GetTime)
 
-    def SetTime(self, _t):
-        r"""SetTime(TimeDependentOperator self, double const _t)"""
-        return _operators.TimeDependentOperator_SetTime(self, _t)
+    def SetTime(self, t_):
+        r"""SetTime(TimeDependentOperator self, double const t_)"""
+        return _operators.TimeDependentOperator_SetTime(self, t_)
     SetTime = _swig_new_instance_method(_operators.TimeDependentOperator_SetTime)
 
     def isExplicit(self):
@@ -363,10 +847,15 @@ class TimeDependentAdjointOperator(TimeDependentOperator):
     r"""Proxy of C++ mfem::TimeDependentAdjointOperator class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
 
     def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
-    __repr__ = _swig_repr
+        r"""__init__(TimeDependentAdjointOperator self, int dim, int adjdim, double t=0., mfem::TimeDependentOperator::Type type=EXPLICIT) -> TimeDependentAdjointOperator"""
+        if self.__class__ == TimeDependentAdjointOperator:
+            _self = None
+        else:
+            _self = self
+        _operators.TimeDependentAdjointOperator_swiginit(self, _operators.new_TimeDependentAdjointOperator(_self, *args, **kwargs))
     __swig_destroy__ = _operators.delete_TimeDependentAdjointOperator
 
     def QuadratureIntegration(self, y, qdot):
@@ -398,6 +887,10 @@ class TimeDependentAdjointOperator(TimeDependentOperator):
         r"""GetAdjointHeight(TimeDependentAdjointOperator self) -> int"""
         return _operators.TimeDependentAdjointOperator_GetAdjointHeight(self)
     GetAdjointHeight = _swig_new_instance_method(_operators.TimeDependentAdjointOperator_GetAdjointHeight)
+    def __disown__(self):
+        self.this.disown()
+        _operators.disown_TimeDependentAdjointOperator(self)
+        return weakref.proxy(self)
 
 # Register TimeDependentAdjointOperator in _operators:
 _operators.TimeDependentAdjointOperator_swigregister(TimeDependentAdjointOperator)
@@ -413,7 +906,11 @@ class SecondOrderTimeDependentOperator(TimeDependentOperator):
         __init__(SecondOrderTimeDependentOperator self, int n=0, double t_=0.0, mfem::TimeDependentOperator::Type type_=EXPLICIT) -> SecondOrderTimeDependentOperator
         __init__(SecondOrderTimeDependentOperator self, int h, int w, double t_=0.0, mfem::TimeDependentOperator::Type type_=EXPLICIT) -> SecondOrderTimeDependentOperator
         """
-        _operators.SecondOrderTimeDependentOperator_swiginit(self, _operators.new_SecondOrderTimeDependentOperator(*args))
+        if self.__class__ == SecondOrderTimeDependentOperator:
+            _self = None
+        else:
+            _self = self
+        _operators.SecondOrderTimeDependentOperator_swiginit(self, _operators.new_SecondOrderTimeDependentOperator(_self, *args))
 
     def Mult(self, *args):
         r"""
@@ -426,11 +923,15 @@ class SecondOrderTimeDependentOperator(TimeDependentOperator):
     def ImplicitSolve(self, *args):
         r"""
         ImplicitSolve(SecondOrderTimeDependentOperator self, double const dt, Vector x, Vector k)
-        ImplicitSolve(SecondOrderTimeDependentOperator self, double const dt0, double const dt1, Vector x, Vector dxdt, Vector k)
+        ImplicitSolve(SecondOrderTimeDependentOperator self, double const fac0, double const fac1, Vector x, Vector dxdt, Vector k)
         """
         return _operators.SecondOrderTimeDependentOperator_ImplicitSolve(self, *args)
     ImplicitSolve = _swig_new_instance_method(_operators.SecondOrderTimeDependentOperator_ImplicitSolve)
     __swig_destroy__ = _operators.delete_SecondOrderTimeDependentOperator
+    def __disown__(self):
+        self.this.disown()
+        _operators.disown_SecondOrderTimeDependentOperator(self)
+        return weakref.proxy(self)
 
 # Register SecondOrderTimeDependentOperator in _operators:
 _operators.SecondOrderTimeDependentOperator_swigregister(SecondOrderTimeDependentOperator)
@@ -509,6 +1010,11 @@ class ScaledOperator(Operator):
         r"""Mult(ScaledOperator self, Vector x, Vector y)"""
         return _operators.ScaledOperator_Mult(self, x, y)
     Mult = _swig_new_instance_method(_operators.ScaledOperator_Mult)
+
+    def MultTranspose(self, x, y):
+        r"""MultTranspose(ScaledOperator self, Vector x, Vector y)"""
+        return _operators.ScaledOperator_MultTranspose(self, x, y)
+    MultTranspose = _swig_new_instance_method(_operators.ScaledOperator_MultTranspose)
     __swig_destroy__ = _operators.delete_ScaledOperator
 
 # Register ScaledOperator in _operators:
@@ -585,6 +1091,11 @@ class RAPOperator(Operator):
         return _operators.RAPOperator_Mult(self, x, y)
     Mult = _swig_new_instance_method(_operators.RAPOperator_Mult)
 
+    def AssembleDiagonal(self, diag):
+        r"""AssembleDiagonal(RAPOperator self, Vector diag)"""
+        return _operators.RAPOperator_AssembleDiagonal(self, diag)
+    AssembleDiagonal = _swig_new_instance_method(_operators.RAPOperator_AssembleDiagonal)
+
     def MultTranspose(self, x, y):
         r"""MultTranspose(RAPOperator self, Vector x, Vector y)"""
         return _operators.RAPOperator_MultTranspose(self, x, y)
@@ -638,10 +1149,15 @@ class ConstrainedOperator(Operator):
         return _operators.ConstrainedOperator_GetMemoryClass(self)
     GetMemoryClass = _swig_new_instance_method(_operators.ConstrainedOperator_GetMemoryClass)
 
-    def SetDiagonalPolicy(self, _diag_policy):
-        r"""SetDiagonalPolicy(ConstrainedOperator self, mfem::Operator::DiagonalPolicy const _diag_policy)"""
-        return _operators.ConstrainedOperator_SetDiagonalPolicy(self, _diag_policy)
+    def SetDiagonalPolicy(self, diag_policy_):
+        r"""SetDiagonalPolicy(ConstrainedOperator self, mfem::Operator::DiagonalPolicy const diag_policy_)"""
+        return _operators.ConstrainedOperator_SetDiagonalPolicy(self, diag_policy_)
     SetDiagonalPolicy = _swig_new_instance_method(_operators.ConstrainedOperator_SetDiagonalPolicy)
+
+    def AssembleDiagonal(self, diag):
+        r"""AssembleDiagonal(ConstrainedOperator self, Vector diag)"""
+        return _operators.ConstrainedOperator_AssembleDiagonal(self, diag)
+    AssembleDiagonal = _swig_new_instance_method(_operators.ConstrainedOperator_AssembleDiagonal)
 
     def EliminateRHS(self, x, b):
         r"""EliminateRHS(ConstrainedOperator self, Vector x, Vector b)"""

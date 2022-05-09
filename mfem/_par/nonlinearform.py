@@ -74,19 +74,29 @@ import mfem._par.fespace
 import mfem._par.coefficient
 import mfem._par.globals
 import mfem._par.matrix
+import mfem._par.symmat
 import mfem._par.intrules
 import mfem._par.sparsemat
 import mfem._par.densemat
 import mfem._par.eltrans
 import mfem._par.fe
 import mfem._par.geom
+import mfem._par.fe_base
+import mfem._par.fe_fixed_order
+import mfem._par.element
+import mfem._par.table
+import mfem._par.hash
+import mfem._par.fe_h1
+import mfem._par.fe_nd
+import mfem._par.fe_rt
+import mfem._par.fe_l2
+import mfem._par.fe_nurbs
+import mfem._par.fe_pos
+import mfem._par.fe_ser
 import mfem._par.mesh
 import mfem._par.sort_pairs
 import mfem._par.ncmesh
 import mfem._par.vtk
-import mfem._par.element
-import mfem._par.table
-import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.bilininteg
@@ -94,6 +104,8 @@ import mfem._par.fe_coll
 import mfem._par.lininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.std_vectors
+import mfem._par.doftrans
 import mfem._par.handle
 import mfem._par.hypre
 import mfem._par.restriction
@@ -151,6 +163,11 @@ class NonlinearForm(mfem._par.operators.Operator):
         return _nonlinearform.NonlinearForm_AddInteriorFaceIntegrator(self, nlfi)
 
 
+    def GetInteriorFaceIntegrators(self):
+        r"""GetInteriorFaceIntegrators(NonlinearForm self) -> mfem::Array< mfem::NonlinearFormIntegrator * > const &"""
+        return _nonlinearform.NonlinearForm_GetInteriorFaceIntegrators(self)
+    GetInteriorFaceIntegrators = _swig_new_instance_method(_nonlinearform.NonlinearForm_GetInteriorFaceIntegrators)
+
     def AddBdrFaceIntegrator(self, *args):
         r"""
         AddBdrFaceIntegrator(NonlinearForm self, NonlinearFormIntegrator nlfi)
@@ -166,6 +183,11 @@ class NonlinearForm(mfem._par.operators.Operator):
         return _nonlinearform.NonlinearForm_AddBdrFaceIntegrator(self, *args)
 
 
+    def GetBdrFaceIntegrators(self):
+        r"""GetBdrFaceIntegrators(NonlinearForm self) -> mfem::Array< mfem::NonlinearFormIntegrator * > const &"""
+        return _nonlinearform.NonlinearForm_GetBdrFaceIntegrators(self)
+    GetBdrFaceIntegrators = _swig_new_instance_method(_nonlinearform.NonlinearForm_GetBdrFaceIntegrators)
+
     def SetEssentialBC(self, bdr_attr_is_ess, rhs=None):
         r"""SetEssentialBC(NonlinearForm self, intArray bdr_attr_is_ess, Vector rhs=None)"""
         return _nonlinearform.NonlinearForm_SetEssentialBC(self, bdr_attr_is_ess, rhs)
@@ -176,9 +198,9 @@ class NonlinearForm(mfem._par.operators.Operator):
         return _nonlinearform.NonlinearForm_SetEssentialVDofs(self, ess_vdofs_list)
     SetEssentialVDofs = _swig_new_instance_method(_nonlinearform.NonlinearForm_SetEssentialVDofs)
 
-    def SetEssentialTrueDofs(self, ess_tdof_list):
-        r"""SetEssentialTrueDofs(NonlinearForm self, intArray ess_tdof_list)"""
-        return _nonlinearform.NonlinearForm_SetEssentialTrueDofs(self, ess_tdof_list)
+    def SetEssentialTrueDofs(self, ess_tdof_list_):
+        r"""SetEssentialTrueDofs(NonlinearForm self, intArray ess_tdof_list_)"""
+        return _nonlinearform.NonlinearForm_SetEssentialTrueDofs(self, ess_tdof_list_)
     SetEssentialTrueDofs = _swig_new_instance_method(_nonlinearform.NonlinearForm_SetEssentialTrueDofs)
 
     def GetEssentialTrueDofs(self):
@@ -244,7 +266,7 @@ class BlockNonlinearForm(mfem._par.operators.Operator):
     def __init__(self, *args):
         r"""
         __init__(BlockNonlinearForm self) -> BlockNonlinearForm
-        __init__(BlockNonlinearForm self, mfem::Array< mfem::FiniteElementSpace * > & f) -> BlockNonlinearForm
+        __init__(BlockNonlinearForm self, FiniteElementSpacePtrArray f) -> BlockNonlinearForm
         """
         _nonlinearform.BlockNonlinearForm_swiginit(self, _nonlinearform.new_BlockNonlinearForm(*args))
 
@@ -257,7 +279,7 @@ class BlockNonlinearForm(mfem._par.operators.Operator):
     FESpace = _swig_new_instance_method(_nonlinearform.BlockNonlinearForm_FESpace)
 
     def SetSpaces(self, f):
-        r"""SetSpaces(BlockNonlinearForm self, mfem::Array< mfem::FiniteElementSpace * > & f)"""
+        r"""SetSpaces(BlockNonlinearForm self, FiniteElementSpacePtrArray f)"""
         return _nonlinearform.BlockNonlinearForm_SetSpaces(self, f)
     SetSpaces = _swig_new_instance_method(_nonlinearform.BlockNonlinearForm_SetSpaces)
 
@@ -309,7 +331,7 @@ class BlockNonlinearForm(mfem._par.operators.Operator):
 
 
     def SetEssentialBC(self, bdr_attr_is_ess, rhs):
-        r"""SetEssentialBC(BlockNonlinearForm self, mfem::Array< mfem::Array< int > * > const & bdr_attr_is_ess, mfem::Array< mfem::Vector * > & rhs)"""
+        r"""SetEssentialBC(BlockNonlinearForm self, mfem::Array< mfem::Array< int > * > const & bdr_attr_is_ess, VectorPtrArray rhs)"""
         return _nonlinearform.BlockNonlinearForm_SetEssentialBC(self, bdr_attr_is_ess, rhs)
     SetEssentialBC = _swig_new_instance_method(_nonlinearform.BlockNonlinearForm_SetEssentialBC)
 

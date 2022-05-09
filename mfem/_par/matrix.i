@@ -5,10 +5,14 @@
 %{
 #include <fstream>
 #include <iostream>
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"  
-#include "io_stream.hpp"  
+#include "../common/io_stream.hpp"  
 #include "pyoperator.hpp"
-#include "linalg/matrix.hpp"  
+%}
+
+%begin %{
+#define PY_SSIZE_T_CLEAN
 %}
 
 %init %{

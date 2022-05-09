@@ -1,6 +1,5 @@
 %module(package="mfem._ser", directors="1")  lininteg
 %{
-#include "fem/lininteg.hpp"  
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -8,7 +7,9 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "pycoefficient.hpp"
+#include "mfem.hpp"    
+#include "pyoperator.hpp"      
+#include "../common/pycoefficient.hpp"
 #include "numpy/arrayobject.h"        
 %}
 

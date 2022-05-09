@@ -25,11 +25,14 @@ public:
     virtual void Mult(mfem::Vector const &x, mfem::Vector &y) const;
     virtual void MultTranspose(mfem::Vector const &x, mfem::Vector &y) const;
     virtual mfem::Operator &GetGradient(mfem::Vector const &x) const;
+    virtual void AssembleDiagonal(mfem::Vector &diag) const;
     virtual mfem::Operator const *GetProlongation() const;
     virtual mfem::Operator const *GetRestriction() const;
     virtual mfem::Operator const *GetOutputProlongation() const;
+    virtual mfem::Operator const *GetOutputRestrictionTranspose() const;
     virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
+    virtual void PrintMatlab(std::ostream &out) const;
     virtual ~SwigDirector_BilinearForm();
     virtual double &Elem(int i, int j);
     virtual double const &Elem(int i, int j) const;
@@ -71,7 +74,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[19];
+    mutable swig::SwigVar_PyObject vtable[22];
 #endif
 
 };

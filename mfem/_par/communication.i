@@ -5,10 +5,8 @@
 #include <fstream>
 #include <iostream>  
 #include <mpi.h>
-#include "io_stream.hpp"      
-#include "config/config.hpp"    
-#include "general/sets.hpp"
-#include "general/communication.hpp"
+#include "../common/io_stream.hpp"
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
 %}
 
@@ -33,6 +31,7 @@ import_array();
 %import "table.i"
 %import "sets.i"
 
+%ignore mfem::MPI_Session;
 %include "general/communication.hpp"
 
 /*

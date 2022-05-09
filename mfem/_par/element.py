@@ -99,6 +99,8 @@ class Element(object):
     
     WEDGE = _element.Element_WEDGE
     
+    PYRAMID = _element.Element_PYRAMID
+    
 
     def GetType(self):
         r"""GetType(Element self) -> mfem::Element::Type"""

@@ -74,9 +74,9 @@ import mfem._par.matrix
 import mfem._par.operators
 import mfem._par.sort_pairs
 import mfem._par.ncmesh
+import mfem._par.globals
 import mfem._par.vtk
 import mfem._par.element
-import mfem._par.globals
 import mfem._par.densemat
 import mfem._par.geom
 import mfem._par.intrules
@@ -85,18 +85,30 @@ import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.coefficient
+import mfem._par.symmat
 import mfem._par.sparsemat
 import mfem._par.eltrans
 import mfem._par.fe
+import mfem._par.fe_base
+import mfem._par.fe_fixed_order
+import mfem._par.fe_h1
+import mfem._par.fe_nd
+import mfem._par.fe_rt
+import mfem._par.fe_l2
+import mfem._par.fe_nurbs
+import mfem._par.fe_pos
+import mfem._par.fe_ser
 import mfem._par.fespace
 import mfem._par.fe_coll
 import mfem._par.lininteg
+import mfem._par.doftrans
 import mfem._par.handle
 import mfem._par.hypre
 import mfem._par.restriction
 import mfem._par.bilininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.std_vectors
 import mfem._par.estimators
 import mfem._par.bilinearform
 class MeshOperator(object):
@@ -251,9 +263,9 @@ class ThresholdRefiner(MeshOperator):
         return _mesh_operators.ThresholdRefiner_PreferConformingRefinement(self)
     PreferConformingRefinement = _swig_new_instance_method(_mesh_operators.ThresholdRefiner_PreferConformingRefinement)
 
-    def SetNCLimit(self, nc_limit):
-        r"""SetNCLimit(ThresholdRefiner self, int nc_limit)"""
-        return _mesh_operators.ThresholdRefiner_SetNCLimit(self, nc_limit)
+    def SetNCLimit(self, nc_limit_):
+        r"""SetNCLimit(ThresholdRefiner self, int nc_limit_)"""
+        return _mesh_operators.ThresholdRefiner_SetNCLimit(self, nc_limit_)
     SetNCLimit = _swig_new_instance_method(_mesh_operators.ThresholdRefiner_SetNCLimit)
 
     def GetNumMarkedElements(self):
@@ -290,14 +302,14 @@ class ThresholdDerefiner(MeshOperator):
         return _mesh_operators.ThresholdDerefiner_SetThreshold(self, thresh)
     SetThreshold = _swig_new_instance_method(_mesh_operators.ThresholdDerefiner_SetThreshold)
 
-    def SetOp(self, op):
-        r"""SetOp(ThresholdDerefiner self, int op)"""
-        return _mesh_operators.ThresholdDerefiner_SetOp(self, op)
+    def SetOp(self, oper):
+        r"""SetOp(ThresholdDerefiner self, int oper)"""
+        return _mesh_operators.ThresholdDerefiner_SetOp(self, oper)
     SetOp = _swig_new_instance_method(_mesh_operators.ThresholdDerefiner_SetOp)
 
-    def SetNCLimit(self, nc_limit):
-        r"""SetNCLimit(ThresholdDerefiner self, int nc_limit)"""
-        return _mesh_operators.ThresholdDerefiner_SetNCLimit(self, nc_limit)
+    def SetNCLimit(self, nc_limit_):
+        r"""SetNCLimit(ThresholdDerefiner self, int nc_limit_)"""
+        return _mesh_operators.ThresholdDerefiner_SetNCLimit(self, nc_limit_)
     SetNCLimit = _swig_new_instance_method(_mesh_operators.ThresholdDerefiner_SetNCLimit)
 
     def Reset(self):
@@ -308,6 +320,78 @@ class ThresholdDerefiner(MeshOperator):
 
 # Register ThresholdDerefiner in _mesh_operators:
 _mesh_operators.ThresholdDerefiner_swigregister(ThresholdDerefiner)
+
+class CoefficientRefiner(MeshOperator):
+    r"""Proxy of C++ mfem::CoefficientRefiner class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, coeff_, order_):
+        r"""__init__(CoefficientRefiner self, Coefficient coeff_, int order_) -> CoefficientRefiner"""
+        _mesh_operators.CoefficientRefiner_swiginit(self, _mesh_operators.new_CoefficientRefiner(coeff_, order_))
+
+    def PreprocessMesh(self, *args):
+        r"""
+        PreprocessMesh(CoefficientRefiner self, Mesh mesh, int max_it) -> int
+        PreprocessMesh(CoefficientRefiner self, Mesh mesh) -> int
+        """
+        return _mesh_operators.CoefficientRefiner_PreprocessMesh(self, *args)
+    PreprocessMesh = _swig_new_instance_method(_mesh_operators.CoefficientRefiner_PreprocessMesh)
+
+    def SetThreshold(self, threshold_):
+        r"""SetThreshold(CoefficientRefiner self, double threshold_)"""
+        return _mesh_operators.CoefficientRefiner_SetThreshold(self, threshold_)
+    SetThreshold = _swig_new_instance_method(_mesh_operators.CoefficientRefiner_SetThreshold)
+
+    def SetMaxElements(self, max_elements_):
+        r"""SetMaxElements(CoefficientRefiner self, long max_elements_)"""
+        return _mesh_operators.CoefficientRefiner_SetMaxElements(self, max_elements_)
+    SetMaxElements = _swig_new_instance_method(_mesh_operators.CoefficientRefiner_SetMaxElements)
+
+    def ResetCoefficient(self, coeff_):
+        r"""ResetCoefficient(CoefficientRefiner self, Coefficient coeff_)"""
+        return _mesh_operators.CoefficientRefiner_ResetCoefficient(self, coeff_)
+    ResetCoefficient = _swig_new_instance_method(_mesh_operators.CoefficientRefiner_ResetCoefficient)
+
+    def SetOrder(self, order_):
+        r"""SetOrder(CoefficientRefiner self, double order_)"""
+        return _mesh_operators.CoefficientRefiner_SetOrder(self, order_)
+    SetOrder = _swig_new_instance_method(_mesh_operators.CoefficientRefiner_SetOrder)
+
+    def SetNCLimit(self, nc_limit_):
+        r"""SetNCLimit(CoefficientRefiner self, int nc_limit_)"""
+        return _mesh_operators.CoefficientRefiner_SetNCLimit(self, nc_limit_)
+    SetNCLimit = _swig_new_instance_method(_mesh_operators.CoefficientRefiner_SetNCLimit)
+
+    def SetIntRule(self, irs_):
+        r"""SetIntRule(CoefficientRefiner self, mfem::IntegrationRule const *[] irs_)"""
+        return _mesh_operators.CoefficientRefiner_SetIntRule(self, irs_)
+    SetIntRule = _swig_new_instance_method(_mesh_operators.CoefficientRefiner_SetIntRule)
+
+    def PrintWarnings(self):
+        r"""PrintWarnings(CoefficientRefiner self)"""
+        return _mesh_operators.CoefficientRefiner_PrintWarnings(self)
+    PrintWarnings = _swig_new_instance_method(_mesh_operators.CoefficientRefiner_PrintWarnings)
+
+    def GetOsc(self):
+        r"""GetOsc(CoefficientRefiner self) -> double"""
+        return _mesh_operators.CoefficientRefiner_GetOsc(self)
+    GetOsc = _swig_new_instance_method(_mesh_operators.CoefficientRefiner_GetOsc)
+
+    def GetLocalOscs(self):
+        r"""GetLocalOscs(CoefficientRefiner self) -> Vector"""
+        return _mesh_operators.CoefficientRefiner_GetLocalOscs(self)
+    GetLocalOscs = _swig_new_instance_method(_mesh_operators.CoefficientRefiner_GetLocalOscs)
+
+    def Reset(self):
+        r"""Reset(CoefficientRefiner self)"""
+        return _mesh_operators.CoefficientRefiner_Reset(self)
+    Reset = _swig_new_instance_method(_mesh_operators.CoefficientRefiner_Reset)
+    __swig_destroy__ = _mesh_operators.delete_CoefficientRefiner
+
+# Register CoefficientRefiner in _mesh_operators:
+_mesh_operators.CoefficientRefiner_swigregister(CoefficientRefiner)
 
 class Rebalancer(MeshOperator):
     r"""Proxy of C++ mfem::Rebalancer class."""

@@ -1,7 +1,8 @@
 %module(package="mfem._par") wedge
+
 %{
-#include  "mfem.hpp"
-#include "mesh/wedge.hpp"
+#include "mfem.hpp"
+#include "pyoperator.hpp"      
 #include "numpy/arrayobject.h"    
 %}
 

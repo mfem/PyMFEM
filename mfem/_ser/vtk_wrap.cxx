@@ -8,6 +8,9 @@
  * interface file instead.
  * ----------------------------------------------------------------------------- */
 
+#define PY_SSIZE_T_CLEAN
+
+
 
 #ifndef SWIGPYTHON
 #define SWIGPYTHON
@@ -3098,12 +3101,62 @@ namespace Swig {
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
-#define SWIGTYPE_p_char swig_types[1]
-#define SWIGTYPE_p_int swig_types[2]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[3]
-#define SWIGTYPE_p_uint32_t swig_types[4]
-static swig_type_info *swig_types[6];
-static swig_module_info swig_module = {swig_types, 5, 0, 0, 0, 0};
+#define SWIGTYPE_p_bool swig_types[1]
+#define SWIGTYPE_p_char swig_types[2]
+#define SWIGTYPE_p_double swig_types[3]
+#define SWIGTYPE_p_int swig_types[4]
+#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[5]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[6]
+#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[7]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[8]
+#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[9]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[10]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[11]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[12]
+#define SWIGTYPE_p_mfem__Matrix swig_types[13]
+#define SWIGTYPE_p_mfem__MatrixInverse swig_types[14]
+#define SWIGTYPE_p_mfem__Operator swig_types[15]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[16]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[17]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[18]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[19]
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[20]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[21]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[22]
+#define SWIGTYPE_p_mfem__Solver swig_types[23]
+#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[24]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[25]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[26]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[27]
+#define SWIGTYPE_p_mfem__VTKGeometry swig_types[28]
+#define SWIGTYPE_p_mfem__Vector swig_types[29]
+#define SWIGTYPE_p_p_int swig_types[30]
+#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[31]
+#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[32]
+#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[33]
+#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[34]
+#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[35]
+#define SWIGTYPE_p_p_mfem__IntegrationRule swig_types[36]
+#define SWIGTYPE_p_p_mfem__Matrix swig_types[37]
+#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[38]
+#define SWIGTYPE_p_p_mfem__Operator swig_types[39]
+#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[40]
+#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[41]
+#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[42]
+#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[43]
+#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[44]
+#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[45]
+#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[46]
+#define SWIGTYPE_p_p_mfem__Solver swig_types[47]
+#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[48]
+#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[49]
+#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[50]
+#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[51]
+#define SWIGTYPE_p_p_mfem__Vector swig_types[52]
+#define SWIGTYPE_p_std__vectorT_char_t swig_types[53]
+#define SWIGTYPE_p_uint32_t swig_types[54]
+static swig_type_info *swig_types[56];
+static swig_module_info swig_module = {swig_types, 55, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3208,15 +3261,22 @@ namespace swig {
 
 
 #include  "mfem.hpp"
-#include "mesh/vtk.hpp"
+#include "pyoperator.hpp"
 #include "numpy/arrayobject.h"    
-#include "io_stream.hpp"
+#include "../common/io_stream.hpp"
 
 
 SWIGINTERNINLINE PyObject*
   SWIG_From_int  (int value)
 {
   return PyInt_FromLong((long) value);
+}
+
+
+SWIGINTERNINLINE PyObject*
+  SWIG_From_bool  (bool value)
+{
+  return PyBool_FromLong(value ? 1 : 0);
 }
 
 
@@ -3426,6 +3486,360 @@ SWIG_FromCharPtr(const char *cptr)
 #ifdef __cplusplus
 extern "C" {
 #endif
+SWIGINTERN int Swig_var_VTKGeometry_PrismMap_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable VTKGeometry_PrismMap is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_VTKGeometry_PrismMap_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(mfem::VTKGeometry::PrismMap), SWIGTYPE_p_int,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_VTKGeometry_VertexPermutation_set(PyObject *_val) {
+  {
+    int const * *inp = 0;
+    int res = SWIG_ConvertPtr(_val, SWIG_as_voidptrptr(&inp), SWIGTYPE_p_p_int,  0 );
+    if (!SWIG_IsOK(res)) {
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""mfem::VTKGeometry::VertexPermutation""' of type '""int const *[mfem::Geometry::NUM_GEOMETRIES]""'");
+    } else if (inp) {
+      size_t ii = 0;
+      for (; ii < (size_t)mfem::Geometry::NUM_GEOMETRIES; ++ii) *(int const * *)&mfem::VTKGeometry::VertexPermutation[ii] = *((int const * *)inp + ii);
+    } else {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""mfem::VTKGeometry::VertexPermutation""' of type '""int const *[mfem::Geometry::NUM_GEOMETRIES]""'");
+    }
+  }
+  return 0;
+fail:
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_VTKGeometry_VertexPermutation_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(mfem::VTKGeometry::VertexPermutation), SWIGTYPE_p_p_int,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN PyObject *_wrap_VTKGeometry_VertexPermutation_get(PyObject *SWIGUNUSEDPARM(self), PyObject *SWIGUNUSEDPARM(args)) {
+  return Swig_var_VTKGeometry_VertexPermutation_get();
+}
+
+
+SWIGINTERN PyObject *_wrap_VTKGeometry_VertexPermutation_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  int res;
+  
+  res = Swig_var_VTKGeometry_VertexPermutation_set(args);
+  return !res ? SWIG_Py_Void() : NULL;
+}
+
+
+SWIGINTERN int Swig_var_VTKGeometry_Map_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable VTKGeometry_Map is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_VTKGeometry_Map_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(mfem::VTKGeometry::Map), SWIGTYPE_p_int,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_VTKGeometry_QuadraticMap_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable VTKGeometry_QuadraticMap is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_VTKGeometry_QuadraticMap_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(mfem::VTKGeometry::QuadraticMap), SWIGTYPE_p_int,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_VTKGeometry_HighOrderMap_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable VTKGeometry_HighOrderMap is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_VTKGeometry_HighOrderMap_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(mfem::VTKGeometry::HighOrderMap), SWIGTYPE_p_int,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN PyObject *_wrap_VTKGeometry_GetMFEMGeometry(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"vtk_geom",  NULL 
+  };
+  mfem::Geometry::Type result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:VTKGeometry_GetMFEMGeometry", kwnames, &obj0)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
+  }
+  {
+    try {
+      result = (mfem::Geometry::Type)mfem::VTKGeometry::GetMFEMGeometry(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_VTKGeometry_IsLagrange(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"vtk_geom",  NULL 
+  };
+  bool result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:VTKGeometry_IsLagrange", kwnames, &obj0)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
+  }
+  {
+    try {
+      result = (bool)mfem::VTKGeometry::IsLagrange(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_VTKGeometry_IsQuadratic(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"vtk_geom",  NULL 
+  };
+  bool result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:VTKGeometry_IsQuadratic", kwnames, &obj0)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
+  }
+  {
+    try {
+      result = (bool)mfem::VTKGeometry::IsQuadratic(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_VTKGeometry_GetOrder(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int arg2 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"vtk_geom",  (char *)"npoints",  NULL 
+  };
+  int result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:VTKGeometry_GetOrder", kwnames, &obj0, &obj1)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      result = (int)mfem::VTKGeometry::GetOrder(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_VTKGeometry(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VTKGeometry *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_VTKGeometry", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::VTKGeometry *)new mfem::VTKGeometry();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VTKGeometry, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_VTKGeometry(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VTKGeometry *arg1 = (mfem::VTKGeometry *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VTKGeometry, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_VTKGeometry" "', argument " "1"" of type '" "mfem::VTKGeometry *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VTKGeometry * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *VTKGeometry_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__VTKGeometry, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *VTKGeometry_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
 SWIGINTERN PyObject *_wrap_CreateVTKElementConnectivity(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Array< int > *arg1 = 0 ;
@@ -3495,7 +3909,11 @@ SWIGINTERN PyObject *_wrap_WriteVTKEncodedCompressed(PyObject *SWIGUNUSEDPARM(se
   uint32_t arg3 ;
   int arg4 ;
   PyMFEM::wFILE *temp1 = 0 ;
-  std::ofstream out1 ;
+  std::ofstream out_txt1 ;
+  mfem::ofgzstream *out_gz1 = 0 ;
+  PyObject *string_io1 = 0 ;
+  std::ostringstream *stream1 = 0 ;
+  PyObject *ret1 = 0 ;
   int res2 ;
   void *argp3 ;
   int res3 = 0 ;
@@ -3504,23 +3922,63 @@ SWIGINTERN PyObject *_wrap_WriteVTKEncodedCompressed(PyObject *SWIGUNUSEDPARM(se
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   char * kwnames[] = {
-    (char *)"out",  (char *)"bytes",  (char *)"nbytes",  (char *)"compression_level",  NULL 
+    (char *)"os",  (char *)"bytes",  (char *)"nbytes",  (char *)"compression_level",  NULL 
   };
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:WriteVTKEncodedCompressed", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
   {
+    //  PyMFEM::wFILE or string argument or StringIO
     if (SWIG_ConvertPtr(obj0, (void **) &temp1, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
-      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
-      return NULL;
-    }  
-    
-    if (temp1->isSTDOUT() == 1) {
-      arg1 = &std::cout;
+      if (!PyString_Check(obj0) && !PyUnicode_Check(obj0)) {
+        // not string, check if it is StringIO
+        PyObject* module = PyImport_ImportModule("io");
+        if (!module){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+          return NULL;
+        }      
+        PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+        if (!cls){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+          return NULL;
+        }      
+        int check = PyObject_IsInstance(obj0, cls);
+        Py_DECREF(module);
+        if (! check){
+          SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
+          return NULL;
+        }
+        string_io1=obj0;
+        stream1 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(obj0, "precision")){
+          PyObject *attr = PyObject_GetAttrString(obj0, "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream1->precision(prec);
+        
+      } else {
+        // if it is string, extract filename as char*
+        PyObject* str = PyUnicode_AsEncodedString(obj0, "utf-8", "~E~");	
+        const char* filename = PyBytes_AsString(str);
+        temp1 = new PyMFEM::wFILE(filename, 16, true);
+        Py_DECREF(str);	 
+      }
     }
-    else {
-      out1.open(temp1->getFilename());
-      out1.precision(temp1->getPrecision());
-      arg1 = &out1;
+    
+    if (stream1 == 0){
+      if (temp1->isSTDOUT() == 1) {
+        arg1 = &std::cout;
+      } else if (temp1->isGZ()){
+        out_gz1 = new mfem::ofgzstream(temp1->getFilename(), true);
+        arg1 = out_gz1;	     
+      } else {
+        out_txt1.open(temp1->getFilename());
+        out_txt1.precision(temp1->getPrecision());
+        arg1 = &out_txt1;
+      }
+    } else {
+      arg1 = stream1;
     }
   }
   res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
@@ -3567,18 +4025,54 @@ SWIGINTERN PyObject *_wrap_WriteVTKEncodedCompressed(PyObject *SWIGUNUSEDPARM(se
   }
   resultobj = SWIG_Py_Void();
   {
-    if (temp1) {
-      if (temp1->isSTDOUT() != 1) {
-        out1.close();
+    if (stream1) {
+      std::string str =  stream1->str();
+      const char* s = str.c_str();
+      const int n = str.length();
+      ret1 = PyObject_CallMethod(string_io1, "write", "s#",
+        s, static_cast<Py_ssize_t>(n));
+      if (PyErr_Occurred()) {
+        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
+        return NULL;
+      }
+      delete stream1;
+      Py_XDECREF(resultobj);   /* Blow away any previous result */
+      resultobj = ret1;    
+    }
+  }
+  {
+    if (!stream1) {
+      if (temp1) {
+        if (temp1->isSTDOUT() != 1) {
+          if (out_txt1.is_open()){
+            out_txt1.close();
+          }
+          if (out_gz1){
+            delete out_gz1;
+          }
+        }
+        if (temp1->isTemporary()){
+          delete temp1;
+        }
       }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp1) {
-      if (temp1->isSTDOUT() != 1) {
-        out1.close();
+    if (!stream1) {
+      if (temp1) {
+        if (temp1->isSTDOUT() != 1) {
+          if (out_txt1.is_open()){
+            out_txt1.close();
+          }
+          if (out_gz1){
+            delete out_gz1;
+          }
+        }
+        if (temp1->isTemporary()){
+          delete temp1;
+        }
       }
     }
   }
@@ -3668,54 +4162,568 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_WriteBase64WithSizeAndClear(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  std::ostream *arg1 = 0 ;
+  std::vector< char > *arg2 = 0 ;
+  int arg3 ;
+  PyMFEM::wFILE *temp1 = 0 ;
+  std::ofstream out_txt1 ;
+  mfem::ofgzstream *out_gz1 = 0 ;
+  PyObject *string_io1 = 0 ;
+  std::ostringstream *stream1 = 0 ;
+  PyObject *ret1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"os",  (char *)"buf",  (char *)"compression_level",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:WriteBase64WithSizeAndClear", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  {
+    //  PyMFEM::wFILE or string argument or StringIO
+    if (SWIG_ConvertPtr(obj0, (void **) &temp1, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      if (!PyString_Check(obj0) && !PyUnicode_Check(obj0)) {
+        // not string, check if it is StringIO
+        PyObject* module = PyImport_ImportModule("io");
+        if (!module){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+          return NULL;
+        }      
+        PyObject* cls = PyObject_GetAttrString(module, "StringIO");
+        if (!cls){
+          PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+          return NULL;
+        }      
+        int check = PyObject_IsInstance(obj0, cls);
+        Py_DECREF(module);
+        if (! check){
+          SWIG_exception(SWIG_ValueError,"First argument must be string/wFILE/IOString");
+          return NULL;
+        }
+        string_io1=obj0;
+        stream1 = new std::ostringstream();
+        int prec = 16;
+        if (PyObject_HasAttrString(obj0, "precision")){
+          PyObject *attr = PyObject_GetAttrString(obj0, "precision");
+          prec = (int)PyLong_AsLong(attr);
+          //std::cout << "setting prec" << prec << "\n";
+        }
+        stream1->precision(prec);
+        
+      } else {
+        // if it is string, extract filename as char*
+        PyObject* str = PyUnicode_AsEncodedString(obj0, "utf-8", "~E~");	
+        const char* filename = PyBytes_AsString(str);
+        temp1 = new PyMFEM::wFILE(filename, 16, true);
+        Py_DECREF(str);	 
+      }
+    }
+    
+    if (stream1 == 0){
+      if (temp1->isSTDOUT() == 1) {
+        arg1 = &std::cout;
+      } else if (temp1->isGZ()){
+        out_gz1 = new mfem::ofgzstream(temp1->getFilename(), true);
+        arg1 = out_gz1;	     
+      } else {
+        out_txt1.open(temp1->getFilename());
+        out_txt1.precision(temp1->getPrecision());
+        arg1 = &out_txt1;
+      }
+    } else {
+      arg1 = stream1;
+    }
+  }
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__vectorT_char_t,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "WriteBase64WithSizeAndClear" "', argument " "2"" of type '" "std::vector< char > &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "WriteBase64WithSizeAndClear" "', argument " "2"" of type '" "std::vector< char > &""'"); 
+  }
+  arg2 = reinterpret_cast< std::vector< char > * >(argp2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      mfem::WriteBase64WithSizeAndClear(*arg1,*arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    if (stream1) {
+      std::string str =  stream1->str();
+      const char* s = str.c_str();
+      const int n = str.length();
+      ret1 = PyObject_CallMethod(string_io1, "write", "s#",
+        s, static_cast<Py_ssize_t>(n));
+      if (PyErr_Occurred()) {
+        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
+        return NULL;
+      }
+      delete stream1;
+      Py_XDECREF(resultobj);   /* Blow away any previous result */
+      resultobj = ret1;    
+    }
+  }
+  {
+    if (!stream1) {
+      if (temp1) {
+        if (temp1->isSTDOUT() != 1) {
+          if (out_txt1.is_open()){
+            out_txt1.close();
+          }
+          if (out_gz1){
+            delete out_gz1;
+          }
+        }
+        if (temp1->isTemporary()){
+          delete temp1;
+        }
+      }
+    }
+  }
+  return resultobj;
+fail:
+  {
+    if (!stream1) {
+      if (temp1) {
+        if (temp1->isSTDOUT() != 1) {
+          if (out_txt1.is_open()){
+            out_txt1.close();
+          }
+          if (out_gz1){
+            delete out_gz1;
+          }
+        }
+        if (temp1->isTemporary()){
+          delete temp1;
+        }
+      }
+    }
+  }
+  return NULL;
+}
+
+
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "VTKGeometry_VertexPermutation_get", _wrap_VTKGeometry_VertexPermutation_get, METH_VARARGS, NULL},
+	 { "VTKGeometry_VertexPermutation_set", _wrap_VTKGeometry_VertexPermutation_set, METH_O, NULL},
+	 { "VTKGeometry_GetMFEMGeometry", (PyCFunction)(void(*)(void))_wrap_VTKGeometry_GetMFEMGeometry, METH_VARARGS|METH_KEYWORDS, "VTKGeometry_GetMFEMGeometry(int vtk_geom) -> mfem::Geometry::Type"},
+	 { "VTKGeometry_IsLagrange", (PyCFunction)(void(*)(void))_wrap_VTKGeometry_IsLagrange, METH_VARARGS|METH_KEYWORDS, "VTKGeometry_IsLagrange(int vtk_geom) -> bool"},
+	 { "VTKGeometry_IsQuadratic", (PyCFunction)(void(*)(void))_wrap_VTKGeometry_IsQuadratic, METH_VARARGS|METH_KEYWORDS, "VTKGeometry_IsQuadratic(int vtk_geom) -> bool"},
+	 { "VTKGeometry_GetOrder", (PyCFunction)(void(*)(void))_wrap_VTKGeometry_GetOrder, METH_VARARGS|METH_KEYWORDS, "VTKGeometry_GetOrder(int vtk_geom, int npoints) -> int"},
+	 { "new_VTKGeometry", _wrap_new_VTKGeometry, METH_NOARGS, "new_VTKGeometry() -> VTKGeometry"},
+	 { "delete_VTKGeometry", _wrap_delete_VTKGeometry, METH_O, "delete_VTKGeometry(VTKGeometry self)"},
+	 { "VTKGeometry_swigregister", VTKGeometry_swigregister, METH_O, NULL},
+	 { "VTKGeometry_swiginit", VTKGeometry_swiginit, METH_VARARGS, NULL},
 	 { "CreateVTKElementConnectivity", (PyCFunction)(void(*)(void))_wrap_CreateVTKElementConnectivity, METH_VARARGS|METH_KEYWORDS, "CreateVTKElementConnectivity(intArray con, mfem::Geometry::Type geom, int ref)"},
-	 { "WriteVTKEncodedCompressed", (PyCFunction)(void(*)(void))_wrap_WriteVTKEncodedCompressed, METH_VARARGS|METH_KEYWORDS, "WriteVTKEncodedCompressed(std::ostream & out, void const * bytes, uint32_t nbytes, int compression_level)"},
+	 { "WriteVTKEncodedCompressed", (PyCFunction)(void(*)(void))_wrap_WriteVTKEncodedCompressed, METH_VARARGS|METH_KEYWORDS, "WriteVTKEncodedCompressed(std::ostream & os, void const * bytes, uint32_t nbytes, int compression_level)"},
 	 { "BarycentricToVTKTriangle", (PyCFunction)(void(*)(void))_wrap_BarycentricToVTKTriangle, METH_VARARGS|METH_KEYWORDS, "BarycentricToVTKTriangle(int * b, int ref) -> int"},
 	 { "VTKByteOrder", _wrap_VTKByteOrder, METH_NOARGS, "VTKByteOrder() -> char const *"},
+	 { "WriteBase64WithSizeAndClear", (PyCFunction)(void(*)(void))_wrap_WriteBase64WithSizeAndClear, METH_VARARGS|METH_KEYWORDS, "WriteBase64WithSizeAndClear(std::ostream & os, std::vector< char > & buf, int compression_level)"},
 	 { NULL, NULL, 0, NULL }
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "VTKGeometry_VertexPermutation_get", _wrap_VTKGeometry_VertexPermutation_get, METH_VARARGS, NULL},
+	 { "VTKGeometry_VertexPermutation_set", _wrap_VTKGeometry_VertexPermutation_set, METH_O, NULL},
+	 { "VTKGeometry_GetMFEMGeometry", (PyCFunction)(void(*)(void))_wrap_VTKGeometry_GetMFEMGeometry, METH_VARARGS|METH_KEYWORDS, "GetMFEMGeometry(int vtk_geom) -> mfem::Geometry::Type"},
+	 { "VTKGeometry_IsLagrange", (PyCFunction)(void(*)(void))_wrap_VTKGeometry_IsLagrange, METH_VARARGS|METH_KEYWORDS, "IsLagrange(int vtk_geom) -> bool"},
+	 { "VTKGeometry_IsQuadratic", (PyCFunction)(void(*)(void))_wrap_VTKGeometry_IsQuadratic, METH_VARARGS|METH_KEYWORDS, "IsQuadratic(int vtk_geom) -> bool"},
+	 { "VTKGeometry_GetOrder", (PyCFunction)(void(*)(void))_wrap_VTKGeometry_GetOrder, METH_VARARGS|METH_KEYWORDS, "GetOrder(int vtk_geom, int npoints) -> int"},
+	 { "new_VTKGeometry", _wrap_new_VTKGeometry, METH_NOARGS, "new_VTKGeometry() -> VTKGeometry"},
+	 { "delete_VTKGeometry", _wrap_delete_VTKGeometry, METH_O, "delete_VTKGeometry(VTKGeometry self)"},
+	 { "VTKGeometry_swigregister", VTKGeometry_swigregister, METH_O, NULL},
+	 { "VTKGeometry_swiginit", VTKGeometry_swiginit, METH_VARARGS, NULL},
 	 { "CreateVTKElementConnectivity", (PyCFunction)(void(*)(void))_wrap_CreateVTKElementConnectivity, METH_VARARGS|METH_KEYWORDS, "CreateVTKElementConnectivity(intArray con, mfem::Geometry::Type geom, int ref)"},
-	 { "WriteVTKEncodedCompressed", (PyCFunction)(void(*)(void))_wrap_WriteVTKEncodedCompressed, METH_VARARGS|METH_KEYWORDS, "WriteVTKEncodedCompressed(std::ostream & out, void const * bytes, uint32_t nbytes, int compression_level)"},
+	 { "WriteVTKEncodedCompressed", (PyCFunction)(void(*)(void))_wrap_WriteVTKEncodedCompressed, METH_VARARGS|METH_KEYWORDS, "WriteVTKEncodedCompressed(std::ostream & os, void const * bytes, uint32_t nbytes, int compression_level)"},
 	 { "BarycentricToVTKTriangle", (PyCFunction)(void(*)(void))_wrap_BarycentricToVTKTriangle, METH_VARARGS|METH_KEYWORDS, "BarycentricToVTKTriangle(int * b, int ref) -> int"},
 	 { "VTKByteOrder", _wrap_VTKByteOrder, METH_NOARGS, "VTKByteOrder() -> char const *"},
+	 { "WriteBase64WithSizeAndClear", (PyCFunction)(void(*)(void))_wrap_WriteBase64WithSizeAndClear, METH_VARARGS|METH_KEYWORDS, "WriteBase64WithSizeAndClear(std::ostream & os, std::vector< char > & buf, int compression_level)"},
 	 { NULL, NULL, 0, NULL }
 };
 
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
+static void *_p_p_mfem__MatrixInverseTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver **)  ((mfem::MatrixInverse **) x));
+}
+static void *_p_p_mfem__DenseMatrixInverseTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver **) (mfem::MatrixInverse *) ((mfem::DenseMatrixInverse **) x));
+}
+static void *_p_mfem__MatrixInverseTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *)  ((mfem::MatrixInverse *) x));
+}
+static void *_p_mfem__DenseMatrixInverseTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::MatrixInverse *) ((mfem::DenseMatrixInverse *) x));
+}
+static void *_p_p_mfem__PyTimeDependentOperatorBaseTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase **) x));
+}
+static void *_p_p_mfem__PyOperatorBaseTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::PyOperatorBase **) x));
+}
+static void *_p_p_mfem__MatrixInverseTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Solver *) ((mfem::MatrixInverse **) x));
+}
+static void *_p_p_mfem__DenseMatrixInverseTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::MatrixInverse *) ((mfem::DenseMatrixInverse **) x));
+}
+static void *_p_p_mfem__SolverTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::Solver **) x));
+}
+static void *_p_p_mfem__AbstractSparseMatrixTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Matrix *) ((mfem::AbstractSparseMatrix **) x));
+}
+static void *_p_p_mfem__DenseMatrixTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Matrix *) ((mfem::DenseMatrix **) x));
+}
+static void *_p_p_mfem__MatrixTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::Matrix **) x));
+}
+static void *_p_p_mfem__RectangularConstrainedOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::RectangularConstrainedOperator **) x));
+}
+static void *_p_p_mfem__ConstrainedOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::ConstrainedOperator **) x));
+}
+static void *_p_p_mfem__TripleProductOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::TripleProductOperator **) x));
+}
+static void *_p_p_mfem__RAPOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::RAPOperator **) x));
+}
+static void *_p_p_mfem__ProductOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::ProductOperator **) x));
+}
+static void *_p_p_mfem__TransposeOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::TransposeOperator **) x));
+}
+static void *_p_p_mfem__ScaledOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::ScaledOperator **) x));
+}
+static void *_p_p_mfem__IdentityOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::IdentityOperator **) x));
+}
+static void *_p_p_mfem__SecondOrderTimeDependentOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::TimeDependentOperator *) ((mfem::SecondOrderTimeDependentOperator **) x));
+}
+static void *_p_p_mfem__TimeDependentAdjointOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::TimeDependentOperator *) ((mfem::TimeDependentAdjointOperator **) x));
+}
+static void *_p_p_mfem__TimeDependentOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::TimeDependentOperator **) x));
+}
+static void *_p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase *) x));
+}
+static void *_p_mfem__PyOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::PyOperatorBase *) x));
+}
+static void *_p_mfem__MatrixInverseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *) ((mfem::MatrixInverse *) x));
+}
+static void *_p_mfem__DenseMatrixInverseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::MatrixInverse *) ((mfem::DenseMatrixInverse *) x));
+}
+static void *_p_mfem__SolverTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::Solver *) x));
+}
+static void *_p_mfem__AbstractSparseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::AbstractSparseMatrix *) x));
+}
+static void *_p_mfem__DenseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::DenseMatrix *) x));
+}
+static void *_p_mfem__MatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::Matrix *) x));
+}
+static void *_p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::RectangularConstrainedOperator *) x));
+}
+static void *_p_mfem__ConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::ConstrainedOperator *) x));
+}
+static void *_p_mfem__TripleProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::TripleProductOperator *) x));
+}
+static void *_p_mfem__RAPOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::RAPOperator *) x));
+}
+static void *_p_mfem__ProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::ProductOperator *) x));
+}
+static void *_p_mfem__TransposeOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::TransposeOperator *) x));
+}
+static void *_p_mfem__ScaledOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::ScaledOperator *) x));
+}
+static void *_p_mfem__IdentityOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::IdentityOperator *) x));
+}
+static void *_p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::SecondOrderTimeDependentOperator *) x));
+}
+static void *_p_mfem__TimeDependentAdjointOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::TimeDependentAdjointOperator *) x));
+}
+static void *_p_mfem__TimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::TimeDependentOperator *) x));
+}
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_bool = {"_p_bool", "bool *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__IntegrationPoint = {"_p_mfem__IntegrationPoint", "mfem::IntegrationPoint *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__Operator = {"_p_mfem__Operator", "mfem::Operator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__PyTimeDependentOperatorBase = {"_p_mfem__PyTimeDependentOperatorBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__PyOperatorBase = {"_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__DenseMatrixInverse = {"_p_mfem__DenseMatrixInverse", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__MatrixInverse = {"_p_mfem__MatrixInverse", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__AbstractSparseMatrix = {"_p_mfem__AbstractSparseMatrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__DenseMatrix = {"_p_mfem__DenseMatrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__Matrix = {"_p_mfem__Matrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RectangularConstrainedOperator = {"_p_mfem__RectangularConstrainedOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ConstrainedOperator = {"_p_mfem__ConstrainedOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__TripleProductOperator = {"_p_mfem__TripleProductOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RAPOperator = {"_p_mfem__RAPOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ProductOperator = {"_p_mfem__ProductOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__TransposeOperator = {"_p_mfem__TransposeOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ScaledOperator = {"_p_mfem__ScaledOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__IdentityOperator = {"_p_mfem__IdentityOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__SecondOrderTimeDependentOperator = {"_p_mfem__SecondOrderTimeDependentOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__TimeDependentAdjointOperator = {"_p_mfem__TimeDependentAdjointOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__TimeDependentOperator = {"_p_mfem__TimeDependentOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", "mfem::Solver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__VTKGeometry = {"_p_mfem__VTKGeometry", "mfem::VTKGeometry *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_int = {"_p_p_int", "int **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_mfem__IntegrationRule = {"_p_p_mfem__IntegrationRule", "mfem::IntegrationRule **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_mfem__Operator = {"_p_p_mfem__Operator", "mfem::Operator **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_mfem__PyTimeDependentOperatorBase = {"_p_p_mfem__PyTimeDependentOperatorBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__PyOperatorBase = {"_p_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__DenseMatrixInverse = {"_p_p_mfem__DenseMatrixInverse", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__MatrixInverse = {"_p_p_mfem__MatrixInverse", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__AbstractSparseMatrix = {"_p_p_mfem__AbstractSparseMatrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__DenseMatrix = {"_p_p_mfem__DenseMatrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__Matrix = {"_p_p_mfem__Matrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__RectangularConstrainedOperator = {"_p_p_mfem__RectangularConstrainedOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__ConstrainedOperator = {"_p_p_mfem__ConstrainedOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__TripleProductOperator = {"_p_p_mfem__TripleProductOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__RAPOperator = {"_p_p_mfem__RAPOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__ProductOperator = {"_p_p_mfem__ProductOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__TransposeOperator = {"_p_p_mfem__TransposeOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__ScaledOperator = {"_p_p_mfem__ScaledOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__IdentityOperator = {"_p_p_mfem__IdentityOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__SecondOrderTimeDependentOperator = {"_p_p_mfem__SecondOrderTimeDependentOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__TimeDependentAdjointOperator = {"_p_p_mfem__TimeDependentAdjointOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__TimeDependentOperator = {"_p_p_mfem__TimeDependentOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__Solver = {"_p_p_mfem__Solver", "mfem::Solver **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_mfem__Vector = {"_p_p_mfem__Vector", "mfem::Vector **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__vectorT_char_t = {"_p_std__vectorT_char_t", "std::vector< char > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_uint32_t = {"_p_uint32_t", "uint32_t *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_PyMFEM__wFILE,
+  &_swigt__p_bool,
   &_swigt__p_char,
+  &_swigt__p_double,
   &_swigt__p_int,
+  &_swigt__p_mfem__AbstractSparseMatrix,
   &_swigt__p_mfem__ArrayT_int_t,
+  &_swigt__p_mfem__ConstrainedOperator,
+  &_swigt__p_mfem__DenseMatrix,
+  &_swigt__p_mfem__DenseMatrixInverse,
+  &_swigt__p_mfem__IdentityOperator,
+  &_swigt__p_mfem__IntegrationPoint,
+  &_swigt__p_mfem__IntegrationRule,
+  &_swigt__p_mfem__Matrix,
+  &_swigt__p_mfem__MatrixInverse,
+  &_swigt__p_mfem__Operator,
+  &_swigt__p_mfem__ProductOperator,
+  &_swigt__p_mfem__PyOperatorBase,
+  &_swigt__p_mfem__PyTimeDependentOperatorBase,
+  &_swigt__p_mfem__RAPOperator,
+  &_swigt__p_mfem__RectangularConstrainedOperator,
+  &_swigt__p_mfem__ScaledOperator,
+  &_swigt__p_mfem__SecondOrderTimeDependentOperator,
+  &_swigt__p_mfem__Solver,
+  &_swigt__p_mfem__TimeDependentAdjointOperator,
+  &_swigt__p_mfem__TimeDependentOperator,
+  &_swigt__p_mfem__TransposeOperator,
+  &_swigt__p_mfem__TripleProductOperator,
+  &_swigt__p_mfem__VTKGeometry,
+  &_swigt__p_mfem__Vector,
+  &_swigt__p_p_int,
+  &_swigt__p_p_mfem__AbstractSparseMatrix,
+  &_swigt__p_p_mfem__ConstrainedOperator,
+  &_swigt__p_p_mfem__DenseMatrix,
+  &_swigt__p_p_mfem__DenseMatrixInverse,
+  &_swigt__p_p_mfem__IdentityOperator,
+  &_swigt__p_p_mfem__IntegrationRule,
+  &_swigt__p_p_mfem__Matrix,
+  &_swigt__p_p_mfem__MatrixInverse,
+  &_swigt__p_p_mfem__Operator,
+  &_swigt__p_p_mfem__ProductOperator,
+  &_swigt__p_p_mfem__PyOperatorBase,
+  &_swigt__p_p_mfem__PyTimeDependentOperatorBase,
+  &_swigt__p_p_mfem__RAPOperator,
+  &_swigt__p_p_mfem__RectangularConstrainedOperator,
+  &_swigt__p_p_mfem__ScaledOperator,
+  &_swigt__p_p_mfem__SecondOrderTimeDependentOperator,
+  &_swigt__p_p_mfem__Solver,
+  &_swigt__p_p_mfem__TimeDependentAdjointOperator,
+  &_swigt__p_p_mfem__TimeDependentOperator,
+  &_swigt__p_p_mfem__TransposeOperator,
+  &_swigt__p_p_mfem__TripleProductOperator,
+  &_swigt__p_p_mfem__Vector,
+  &_swigt__p_std__vectorT_char_t,
   &_swigt__p_uint32_t,
 };
 
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_bool[] = {  {&_swigt__p_bool, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__IntegrationPoint[] = {  {&_swigt__p_mfem__IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__PyOperatorBase[] = {{&_swigt__p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__DenseMatrixInverse[] = {{&_swigt__p_mfem__DenseMatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__MatrixInverse[] = {{&_swigt__p_mfem__MatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__AbstractSparseMatrix[] = {{&_swigt__p_mfem__AbstractSparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {{&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Matrix[] = {{&_swigt__p_mfem__Matrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RectangularConstrainedOperator[] = {{&_swigt__p_mfem__RectangularConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ConstrainedOperator[] = {{&_swigt__p_mfem__ConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TripleProductOperator[] = {{&_swigt__p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RAPOperator[] = {{&_swigt__p_mfem__RAPOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ProductOperator[] = {{&_swigt__p_mfem__ProductOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TransposeOperator[] = {{&_swigt__p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ScaledOperator[] = {{&_swigt__p_mfem__ScaledOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__IdentityOperator[] = {{&_swigt__p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__SecondOrderTimeDependentOperator[] = {{&_swigt__p_mfem__SecondOrderTimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TimeDependentAdjointOperator[] = {{&_swigt__p_mfem__TimeDependentAdjointOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {{&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RectangularConstrainedOperator, _p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ScaledOperator, _p_mfem__ScaledOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentAdjointOperator, _p_mfem__TimeDependentAdjointOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__Solver, 0, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Solver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VTKGeometry[] = {  {&_swigt__p_mfem__VTKGeometry, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_int[] = {  {&_swigt__p_p_int, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__IntegrationRule[] = {  {&_swigt__p_p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__PyOperatorBase[] = {{&_swigt__p_p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__DenseMatrixInverse[] = {{&_swigt__p_p_mfem__DenseMatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__MatrixInverse[] = {{&_swigt__p_p_mfem__MatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__AbstractSparseMatrix[] = {{&_swigt__p_p_mfem__AbstractSparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__DenseMatrix[] = {{&_swigt__p_p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__Matrix[] = {{&_swigt__p_p_mfem__Matrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__RectangularConstrainedOperator[] = {{&_swigt__p_p_mfem__RectangularConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__ConstrainedOperator[] = {{&_swigt__p_p_mfem__ConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__TripleProductOperator[] = {{&_swigt__p_p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__RAPOperator[] = {{&_swigt__p_p_mfem__RAPOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__ProductOperator[] = {{&_swigt__p_p_mfem__ProductOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__TransposeOperator[] = {{&_swigt__p_p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__ScaledOperator[] = {{&_swigt__p_p_mfem__ScaledOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__IdentityOperator[] = {{&_swigt__p_p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__SecondOrderTimeDependentOperator[] = {{&_swigt__p_p_mfem__SecondOrderTimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__TimeDependentAdjointOperator[] = {{&_swigt__p_p_mfem__TimeDependentAdjointOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__TimeDependentOperator[] = {{&_swigt__p_p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__Operator[] = {  {&_swigt__p_p_mfem__PyTimeDependentOperatorBase, _p_p_mfem__PyTimeDependentOperatorBaseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__PyOperatorBase, _p_p_mfem__PyOperatorBaseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Solver, _p_p_mfem__SolverTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__DenseMatrixInverse, _p_p_mfem__DenseMatrixInverseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__MatrixInverse, _p_p_mfem__MatrixInverseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__AbstractSparseMatrix, _p_p_mfem__AbstractSparseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__DenseMatrix, _p_p_mfem__DenseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Matrix, _p_p_mfem__MatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__RectangularConstrainedOperator, _p_p_mfem__RectangularConstrainedOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ConstrainedOperator, _p_p_mfem__ConstrainedOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TripleProductOperator, _p_p_mfem__TripleProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__RAPOperator, _p_p_mfem__RAPOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ProductOperator, _p_p_mfem__ProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Operator, 0, 0, 0},  {&_swigt__p_p_mfem__TransposeOperator, _p_p_mfem__TransposeOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ScaledOperator, _p_p_mfem__ScaledOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__IdentityOperator, _p_p_mfem__IdentityOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__SecondOrderTimeDependentOperator, _p_p_mfem__SecondOrderTimeDependentOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TimeDependentAdjointOperator, _p_p_mfem__TimeDependentAdjointOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TimeDependentOperator, _p_p_mfem__TimeDependentOperatorTo_p_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__Solver[] = {  {&_swigt__p_p_mfem__Solver, 0, 0, 0},  {&_swigt__p_p_mfem__MatrixInverse, _p_p_mfem__MatrixInverseTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__DenseMatrixInverse, _p_p_mfem__DenseMatrixInverseTo_p_p_mfem__Solver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__Vector[] = {  {&_swigt__p_p_mfem__Vector, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__vectorT_char_t[] = {  {&_swigt__p_std__vectorT_char_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_uint32_t[] = {  {&_swigt__p_uint32_t, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_PyMFEM__wFILE,
+  _swigc__p_bool,
   _swigc__p_char,
+  _swigc__p_double,
   _swigc__p_int,
+  _swigc__p_mfem__AbstractSparseMatrix,
   _swigc__p_mfem__ArrayT_int_t,
+  _swigc__p_mfem__ConstrainedOperator,
+  _swigc__p_mfem__DenseMatrix,
+  _swigc__p_mfem__DenseMatrixInverse,
+  _swigc__p_mfem__IdentityOperator,
+  _swigc__p_mfem__IntegrationPoint,
+  _swigc__p_mfem__IntegrationRule,
+  _swigc__p_mfem__Matrix,
+  _swigc__p_mfem__MatrixInverse,
+  _swigc__p_mfem__Operator,
+  _swigc__p_mfem__ProductOperator,
+  _swigc__p_mfem__PyOperatorBase,
+  _swigc__p_mfem__PyTimeDependentOperatorBase,
+  _swigc__p_mfem__RAPOperator,
+  _swigc__p_mfem__RectangularConstrainedOperator,
+  _swigc__p_mfem__ScaledOperator,
+  _swigc__p_mfem__SecondOrderTimeDependentOperator,
+  _swigc__p_mfem__Solver,
+  _swigc__p_mfem__TimeDependentAdjointOperator,
+  _swigc__p_mfem__TimeDependentOperator,
+  _swigc__p_mfem__TransposeOperator,
+  _swigc__p_mfem__TripleProductOperator,
+  _swigc__p_mfem__VTKGeometry,
+  _swigc__p_mfem__Vector,
+  _swigc__p_p_int,
+  _swigc__p_p_mfem__AbstractSparseMatrix,
+  _swigc__p_p_mfem__ConstrainedOperator,
+  _swigc__p_p_mfem__DenseMatrix,
+  _swigc__p_p_mfem__DenseMatrixInverse,
+  _swigc__p_p_mfem__IdentityOperator,
+  _swigc__p_p_mfem__IntegrationRule,
+  _swigc__p_p_mfem__Matrix,
+  _swigc__p_p_mfem__MatrixInverse,
+  _swigc__p_p_mfem__Operator,
+  _swigc__p_p_mfem__ProductOperator,
+  _swigc__p_p_mfem__PyOperatorBase,
+  _swigc__p_p_mfem__PyTimeDependentOperatorBase,
+  _swigc__p_p_mfem__RAPOperator,
+  _swigc__p_p_mfem__RectangularConstrainedOperator,
+  _swigc__p_p_mfem__ScaledOperator,
+  _swigc__p_p_mfem__SecondOrderTimeDependentOperator,
+  _swigc__p_p_mfem__Solver,
+  _swigc__p_p_mfem__TimeDependentAdjointOperator,
+  _swigc__p_p_mfem__TimeDependentOperator,
+  _swigc__p_p_mfem__TransposeOperator,
+  _swigc__p_p_mfem__TripleProductOperator,
+  _swigc__p_p_mfem__Vector,
+  _swigc__p_std__vectorT_char_t,
   _swigc__p_uint32_t,
 };
 
@@ -4455,6 +5463,42 @@ SWIG_init(void) {
   
   import_array();
   
+  SWIG_Python_SetConstant(d, "VTKGeometry_POINT",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::POINT)));
+  SWIG_Python_SetConstant(d, "VTKGeometry_SEGMENT",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::SEGMENT)));
+  SWIG_Python_SetConstant(d, "VTKGeometry_TRIANGLE",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::TRIANGLE)));
+  SWIG_Python_SetConstant(d, "VTKGeometry_SQUARE",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::SQUARE)));
+  SWIG_Python_SetConstant(d, "VTKGeometry_TETRAHEDRON",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::TETRAHEDRON)));
+  SWIG_Python_SetConstant(d, "VTKGeometry_CUBE",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::CUBE)));
+  SWIG_Python_SetConstant(d, "VTKGeometry_PRISM",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::PRISM)));
+  SWIG_Python_SetConstant(d, "VTKGeometry_QUADRATIC_SEGMENT",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::QUADRATIC_SEGMENT)));
+  SWIG_Python_SetConstant(d, "VTKGeometry_QUADRATIC_TRIANGLE",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::QUADRATIC_TRIANGLE)));
+  SWIG_Python_SetConstant(d, "VTKGeometry_BIQUADRATIC_SQUARE",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::BIQUADRATIC_SQUARE)));
+  SWIG_Python_SetConstant(d, "VTKGeometry_QUADRATIC_TETRAHEDRON",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::QUADRATIC_TETRAHEDRON)));
+  SWIG_Python_SetConstant(d, "VTKGeometry_TRIQUADRATIC_CUBE",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::TRIQUADRATIC_CUBE)));
+  SWIG_Python_SetConstant(d, "VTKGeometry_QUADRATIC_PRISM",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::QUADRATIC_PRISM)));
+  SWIG_Python_SetConstant(d, "VTKGeometry_BIQUADRATIC_QUADRATIC_PRISM",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::BIQUADRATIC_QUADRATIC_PRISM)));
+  SWIG_Python_SetConstant(d, "VTKGeometry_LAGRANGE_SEGMENT",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::LAGRANGE_SEGMENT)));
+  SWIG_Python_SetConstant(d, "VTKGeometry_LAGRANGE_TRIANGLE",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::LAGRANGE_TRIANGLE)));
+  SWIG_Python_SetConstant(d, "VTKGeometry_LAGRANGE_SQUARE",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::LAGRANGE_SQUARE)));
+  SWIG_Python_SetConstant(d, "VTKGeometry_LAGRANGE_TETRAHEDRON",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::LAGRANGE_TETRAHEDRON)));
+  SWIG_Python_SetConstant(d, "VTKGeometry_LAGRANGE_CUBE",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::LAGRANGE_CUBE)));
+  SWIG_Python_SetConstant(d, "VTKGeometry_LAGRANGE_PRISM",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::LAGRANGE_PRISM)));
+  globals = SWIG_globals();
+  if (!globals) {
+    PyErr_SetString(PyExc_TypeError, "Failure to create SWIG globals.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  PyDict_SetItemString(md, "cvar", globals);
+  Py_DECREF(globals);
+  SWIG_addvarlink(globals, "VTKGeometry_PrismMap", Swig_var_VTKGeometry_PrismMap_get, Swig_var_VTKGeometry_PrismMap_set);
+  SWIG_addvarlink(globals, "VTKGeometry_VertexPermutation", Swig_var_VTKGeometry_VertexPermutation_get, Swig_var_VTKGeometry_VertexPermutation_set);
+  SWIG_addvarlink(globals, "VTKGeometry_Map", Swig_var_VTKGeometry_Map_get, Swig_var_VTKGeometry_Map_set);
+  SWIG_addvarlink(globals, "VTKGeometry_QuadraticMap", Swig_var_VTKGeometry_QuadraticMap_get, Swig_var_VTKGeometry_QuadraticMap_set);
+  SWIG_addvarlink(globals, "VTKGeometry_HighOrderMap", Swig_var_VTKGeometry_HighOrderMap_get, Swig_var_VTKGeometry_HighOrderMap_set);
   SWIG_Python_SetConstant(d, "VTKFormat_ASCII",SWIG_From_int(static_cast< int >(mfem::VTKFormat::ASCII)));
   SWIG_Python_SetConstant(d, "VTKFormat_BINARY",SWIG_From_int(static_cast< int >(mfem::VTKFormat::BINARY)));
   SWIG_Python_SetConstant(d, "VTKFormat_BINARY32",SWIG_From_int(static_cast< int >(mfem::VTKFormat::BINARY32)));

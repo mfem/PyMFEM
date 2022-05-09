@@ -8,11 +8,12 @@
 %feature("autodoc", "1");
 %{
 #include <fstream>
-#include <iostream>      
-#include "linalg/sparsemat.hpp"
+#include <iostream>
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
-#include "io_stream.hpp"
+#include "../common/io_stream.hpp"
+using namespace mfem;  
 %}
 // initialization required to return numpy array from SWIG
 %init %{
@@ -34,6 +35,18 @@ OSTREAM_TYPEMAP(std::ostream&)
 
 %ignore mfem::DenseMatrix::operator=;
 %ignore mfem::DenseTensor::operator=;
+
+%pythonprepend mfem::DenseMatrix::DenseMatrix %{
+from numpy import ndarray, ascontiguousarray
+is_ndarray = False
+if len(args) == 1 and isinstance(args[0], ndarray):
+   is_ndarray = True
+%}
+
+%pythonappend mfem::DenseMatrix::DenseMatrix %{
+if is_ndarray:
+   self.Assign(args[0])
+%}
 
 %pythonprepend mfem::DenseMatrix::Assign %{
 from numpy import ndarray, ascontiguousarray
@@ -111,6 +124,29 @@ def __getitem__(self, *args):
 %include "linalg/densemat.hpp"
 
 %extend mfem::DenseMatrix {
+  DenseMatrix(PyObject* numpymat){
+    /* note that these error does not raise error in python
+       type check is actually done in wrapper layer */
+    if (!PyArray_Check(numpymat)){
+       PyErr_SetString(PyExc_ValueError, "Input data must be ndarray");
+       return NULL;
+    }
+    PyArrayObject *numpymat0 = reinterpret_cast<PyArrayObject *>(numpymat);
+    int typ = PyArray_TYPE(numpymat0);
+    if (typ != NPY_DOUBLE){
+        PyErr_SetString(PyExc_ValueError, "Input data must be float64");
+	return NULL;
+    }
+    int ndim = PyArray_NDIM(numpymat0);
+    if (ndim != 2){
+      PyErr_SetString(PyExc_ValueError, "Input data NDIM must be 2");
+      return NULL;
+    }
+    npy_intp *shape = PyArray_DIMS(numpymat0);    
+
+    return  new mfem::DenseMatrix(shape[0], shape[1]);
+  }
+  
   void Assign(const double v) {
     (* self) = v;
   }
@@ -124,26 +160,30 @@ def __getitem__(self, *args):
        PyErr_SetString(PyExc_ValueError, "Input data must be ndarray");
        return;
     }
-    int typ = PyArray_TYPE(numpymat);
+    PyArrayObject *numpymat0 = reinterpret_cast<PyArrayObject *>(numpymat);    
+    int typ = PyArray_TYPE(numpymat0);
     if (typ != NPY_DOUBLE){
         PyErr_SetString(PyExc_ValueError, "Input data must be float64");
 	return;
     }
-    int ndim = PyArray_NDIM(numpymat);
+    int ndim = PyArray_NDIM(numpymat0);
     if (ndim != 2){
-      PyErr_SetString(PyExc_ValueError, "Input data NDIM must be two");
+      PyErr_SetString(PyExc_ValueError, "Input data NDIM must be 2");
       return ;
     }
-    npy_intp *shape = PyArray_DIMS(numpymat);
+    npy_intp *shape = PyArray_DIMS(numpymat0);
     int len = self->Width()*self->Height();
     if (shape[1]*shape[0] != len){    
       PyErr_SetString(PyExc_ValueError, "input data length does not match");
       return ;
     }
-    PyArrayObject * tmp = 
-      PyArray_GETCONTIGUOUS((PyArrayObject *)PyArray_Transpose((PyArrayObject *)numpymat, NULL));
-    (* self) = (double *) PyArray_DATA(tmp);
-    Py_XDECREF(tmp);
+    PyObject * tmp1 = 
+       PyArray_Transpose(numpymat0, NULL);
+    PyArrayObject * tmp2 = 
+      PyArray_GETCONTIGUOUS((PyArrayObject *)tmp1);
+    (* self) = (double *) PyArray_DATA(tmp2);
+    Py_XDECREF(tmp1);
+    Py_XDECREF(tmp2);    
   }
   
   const double __getitem__(const int i, const int j) const{
@@ -155,13 +195,53 @@ def __getitem__(self, *args):
   PyObject* GetDataArray(void) const{
      double * A = self->Data();    
      npy_intp dims[] = {self->Width(), self->Height()};
-     return  PyArray_Transpose((PyArrayObject *)PyArray_SimpleNewFromData(2, dims, NPY_DOUBLE, A), NULL);
+     PyObject *tmp1 = PyArray_SimpleNewFromData(2, dims, NPY_DOUBLE, A);
+     PyObject *ret = PyArray_Transpose((PyArrayObject *)tmp1, NULL);
+     Py_XDECREF(tmp1);
+     return ret;
+       //return  PyArray_Transpose((PyArrayObject *)PyArray_SimpleNewFromData(2, dims, NPY_DOUBLE, A), NULL);
   }
 };
 
 %extend mfem::DenseTensor {
   void Assign(const double c) {
     (* self) = c;
+  }
+  void Assign(const mfem::DenseTensor &m) {
+    (* self) = m;
+  }
+  void Assign(PyObject* numpymat) {
+    /* note that these error does not raise error in python
+       type check is actually done in wrapper layer */
+    if (!PyArray_Check(numpymat)){
+       PyErr_SetString(PyExc_ValueError, "Input data must be ndarray");
+       return;
+    }
+    PyArrayObject *numpymat0 = reinterpret_cast<PyArrayObject *>(numpymat);
+    int typ = PyArray_TYPE(numpymat0);
+    if (typ != NPY_DOUBLE){
+        PyErr_SetString(PyExc_ValueError, "Input data must be float64");
+	return;
+    }
+    int ndim = PyArray_NDIM(numpymat0);
+    if (ndim != 3){
+      PyErr_SetString(PyExc_ValueError, "Input data NDIM must be 3");
+      return ;
+    }
+    npy_intp *shape = PyArray_DIMS(numpymat0);    
+    int len = self->SizeI()*self->SizeJ()*self->SizeK();
+    if (shape[2]*shape[1]*shape[0] != len){    
+      PyErr_SetString(PyExc_ValueError, "input data length does not match");
+      return ;
+    }
+
+    for (int i=0; i < self->SizeI(); i++){
+       for (int j=0; j < self->SizeJ(); j++){
+          for (int k=0; k < self->SizeK(); k++){      
+	    (* self)(i, j, k) = *(double *) PyArray_GETPTR3(numpymat0, i, j, k);
+	}
+      }
+    }
   }
   const double __getitem__(const int i, const int j, const int k) const{
     return (* self)(i, j, k);
@@ -178,8 +258,9 @@ def __getitem__(self, *args):
      npy_intp dims[] = {self->SizeK(), self->SizeJ(), self->SizeI()};
      PyObject * obj = PyArray_SimpleNewFromData(3, dims, NPY_DOUBLE, A);
      //obj = PyArray_SwapAxes((PyArrayObject *)obj, 0, 2);
-     obj = PyArray_SwapAxes((PyArrayObject *)obj, 1, 2);
-     return obj;
+     PyObject * ret = PyArray_SwapAxes((PyArrayObject *)obj, 1, 2);
+     Py_XDECREF(obj);     
+     return ret;
   }
 };
 

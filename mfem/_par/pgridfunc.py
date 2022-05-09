@@ -82,8 +82,6 @@ MFEM_VERSION_MINOR = _pgridfunc.MFEM_VERSION_MINOR
 
 MFEM_VERSION_PATCH = _pgridfunc.MFEM_VERSION_PATCH
 
-MFEM_HYPRE_VERSION = _pgridfunc.MFEM_HYPRE_VERSION
-
 import mfem._par.pfespace
 import mfem._par.operators
 import mfem._par.mem_manager
@@ -93,19 +91,29 @@ import mfem._par.fespace
 import mfem._par.coefficient
 import mfem._par.globals
 import mfem._par.matrix
+import mfem._par.symmat
 import mfem._par.intrules
 import mfem._par.sparsemat
 import mfem._par.densemat
 import mfem._par.eltrans
 import mfem._par.fe
 import mfem._par.geom
+import mfem._par.fe_base
+import mfem._par.fe_fixed_order
+import mfem._par.element
+import mfem._par.table
+import mfem._par.hash
+import mfem._par.fe_h1
+import mfem._par.fe_nd
+import mfem._par.fe_rt
+import mfem._par.fe_l2
+import mfem._par.fe_nurbs
+import mfem._par.fe_pos
+import mfem._par.fe_ser
 import mfem._par.mesh
 import mfem._par.sort_pairs
 import mfem._par.ncmesh
 import mfem._par.vtk
-import mfem._par.element
-import mfem._par.table
-import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.bilininteg
@@ -113,6 +121,8 @@ import mfem._par.fe_coll
 import mfem._par.lininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.std_vectors
+import mfem._par.doftrans
 import mfem._par.handle
 import mfem._par.hypre
 import mfem._par.restriction
@@ -182,16 +192,6 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         return _pgridfunc.ParGridFunction_SetFromTrueDofs(self, tv)
     SetFromTrueDofs = _swig_new_instance_method(_pgridfunc.ParGridFunction_SetFromTrueDofs)
 
-    def Assign(self, *args):
-        r"""
-        Assign(ParGridFunction self, ParGridFunction rhs) -> ParGridFunction
-        Assign(ParGridFunction self, double value) -> ParGridFunction
-        Assign(ParGridFunction self, Vector v) -> ParGridFunction
-        Assign(ParGridFunction self, HypreParVector tv) -> ParGridFunction
-        """
-        return _pgridfunc.ParGridFunction_Assign(self, *args)
-    Assign = _swig_new_instance_method(_pgridfunc.ParGridFunction_Assign)
-
     def GetTrueDofs(self, *args):
         r"""
         GetTrueDofs(ParGridFunction self, Vector tv)
@@ -257,12 +257,23 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         return _pgridfunc.ParGridFunction_GetVectorValue(self, *args)
     GetVectorValue = _swig_new_instance_method(_pgridfunc.ParGridFunction_GetVectorValue)
 
+    def GetDerivative(self, comp, der_comp, der):
+        r"""GetDerivative(ParGridFunction self, int comp, int der_comp, ParGridFunction der)"""
+        return _pgridfunc.ParGridFunction_GetDerivative(self, comp, der_comp, der)
+    GetDerivative = _swig_new_instance_method(_pgridfunc.ParGridFunction_GetDerivative)
+
+    def GetElementDofValues(self, el, dof_vals):
+        r"""GetElementDofValues(ParGridFunction self, int el, Vector dof_vals)"""
+        return _pgridfunc.ParGridFunction_GetElementDofValues(self, el, dof_vals)
+    GetElementDofValues = _swig_new_instance_method(_pgridfunc.ParGridFunction_GetElementDofValues)
+
     def ProjectCoefficient(self, *args):
         r"""
         ProjectCoefficient(ParGridFunction self, Coefficient coeff)
         ProjectCoefficient(ParGridFunction self, Coefficient coeff, intArray dofs, int vd=0)
         ProjectCoefficient(ParGridFunction self, VectorCoefficient vcoeff)
         ProjectCoefficient(ParGridFunction self, VectorCoefficient vcoeff, intArray dofs)
+        ProjectCoefficient(ParGridFunction self, VectorCoefficient vcoeff, int attribute)
         ProjectCoefficient(ParGridFunction self, mfem::Coefficient *[] coeff)
         ProjectCoefficient(ParGridFunction self, Coefficient coeff)
         """
@@ -331,9 +342,9 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         return _pgridfunc.ParGridFunction_ComputeDivError(self, exdiv, irs)
     ComputeDivError = _swig_new_instance_method(_pgridfunc.ParGridFunction_ComputeDivError)
 
-    def ComputeDGFaceJumpError(self, exsol, ell_coeff, Nu, irs=0):
-        r"""ComputeDGFaceJumpError(ParGridFunction self, Coefficient exsol, Coefficient ell_coeff, double Nu, mfem::IntegrationRule const *[] irs=0) -> double"""
-        return _pgridfunc.ParGridFunction_ComputeDGFaceJumpError(self, exsol, ell_coeff, Nu, irs)
+    def ComputeDGFaceJumpError(self, exsol, ell_coeff, jump_scaling, irs=0):
+        r"""ComputeDGFaceJumpError(ParGridFunction self, Coefficient exsol, Coefficient ell_coeff, JumpScaling jump_scaling, mfem::IntegrationRule const *[] irs=0) -> double"""
+        return _pgridfunc.ParGridFunction_ComputeDGFaceJumpError(self, exsol, ell_coeff, jump_scaling, irs)
     ComputeDGFaceJumpError = _swig_new_instance_method(_pgridfunc.ParGridFunction_ComputeDGFaceJumpError)
 
     def ComputeH1Error(self, *args):
@@ -383,6 +394,7 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         __init__(ParGridFunction self, ParGridFunction orig) -> ParGridFunction
         __init__(ParGridFunction self, ParFiniteElementSpace pf) -> ParGridFunction
         __init__(ParGridFunction self, ParFiniteElementSpace pf, double * data) -> ParGridFunction
+        __init__(ParGridFunction self, ParFiniteElementSpace pf, Vector base, int base_offset=0) -> ParGridFunction
         __init__(ParGridFunction self, ParFiniteElementSpace pf, GridFunction gf) -> ParGridFunction
         __init__(ParGridFunction self, ParFiniteElementSpace pf, HypreParVector tv) -> ParGridFunction
         __init__(ParGridFunction self, ParMesh pmesh, GridFunction gf, int const * partitioning=None) -> ParGridFunction
@@ -410,21 +422,71 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
 
         _pgridfunc.ParGridFunction_swiginit(self, _pgridfunc.new_ParGridFunction(*args))
 
+    def Assign(self, *args):
+        r"""
+        Assign(ParGridFunction self, HypreParVector v)
+        Assign(ParGridFunction self, ParGridFunction v)
+        Assign(ParGridFunction self, double const v)
+        Assign(ParGridFunction self, Vector v)
+        Assign(ParGridFunction self, PyObject * param)
+        """
+
+        from numpy import ndarray, ascontiguousarray, array
+        keep_link = False
+        if len(args) == 1:
+            if isinstance(args[0], ndarray):
+                if args[0].dtype != 'float64':
+                     raise ValueError('Must be float64 array ' + str(args[0].dtype) +
+        			      ' is given')
+                elif args[0].ndim != 1:
+                    raise ValueError('Ndim must be one') 
+                elif args[0].shape[0] != self.Size():
+                    raise ValueError('Length does not match')
+                else:
+                    args = (ascontiguousarray(args[0]),)
+            elif isinstance(args[0], tuple):
+                args = (array(args[0], dtype = float),)      
+            elif isinstance(args[0], list):	      
+                args = (array(args[0], dtype = float),)      
+            else:
+                pass
+
+
+        val = _pgridfunc.ParGridFunction_Assign(self, *args)
+
+        return self
+
+
+        return val
+
+
     def Save(self, *args):
         r"""
         Save(ParGridFunction self, std::ostream & out)
-        Save(ParGridFunction self, char const * file, int precision=8)
+        Save(ParGridFunction self, char const * fname, int precision=16)
+        Save(ParGridFunction self, char const * file, int precision=16)
         """
         return _pgridfunc.ParGridFunction_Save(self, *args)
     Save = _swig_new_instance_method(_pgridfunc.ParGridFunction_Save)
 
+    def SaveGZ(self, file, precision=16):
+        r"""SaveGZ(ParGridFunction self, char const * file, int precision=16)"""
+        return _pgridfunc.ParGridFunction_SaveGZ(self, file, precision)
+    SaveGZ = _swig_new_instance_method(_pgridfunc.ParGridFunction_SaveGZ)
+
     def SaveAsOne(self, *args):
         r"""
+        SaveAsOne(ParGridFunction self, char const * fname, int precision=16)
         SaveAsOne(ParGridFunction self, std::ostream & out=out)
-        SaveAsOne(ParGridFunction self, char const * file, int precision=8)
+        SaveAsOne(ParGridFunction self, char const * file, int precision=16)
         """
         return _pgridfunc.ParGridFunction_SaveAsOne(self, *args)
     SaveAsOne = _swig_new_instance_method(_pgridfunc.ParGridFunction_SaveAsOne)
+
+    def SaveAsOneGZ(self, file, precision=16):
+        r"""SaveAsOneGZ(ParGridFunction self, char const * file, int precision=16)"""
+        return _pgridfunc.ParGridFunction_SaveAsOneGZ(self, file, precision)
+    SaveAsOneGZ = _swig_new_instance_method(_pgridfunc.ParGridFunction_SaveAsOneGZ)
 
 # Register ParGridFunction in _pgridfunc:
 _pgridfunc.ParGridFunction_swigregister(ParGridFunction)

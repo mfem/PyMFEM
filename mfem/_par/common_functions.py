@@ -72,7 +72,6 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _common_functions.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _common_functions.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _common_functions.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _common_functions.MFEM_VERSION_PATCH
-MFEM_HYPRE_VERSION = _common_functions.MFEM_HYPRE_VERSION
 import mfem._par.globals
 import mfem._par.array
 import mfem._par.mem_manager
@@ -84,14 +83,19 @@ __lshift__ = _common_functions.__lshift__
 
 def Transpose(*args):
     r"""
-    Transpose(mfem::Table const & A, mfem::Table & At, int _ncols_A=-1)
+    Transpose(mfem::Table const & A, mfem::Table & At, int ncols_A_=-1)
     Transpose(mfem::Table const & A) -> mfem::Table
-    Transpose(intArray A, mfem::Table & At, int _ncols_A=-1)
+    Transpose(intArray A, mfem::Table & At, int ncols_A_=-1)
     Transpose(mfem::BlockMatrix const & A) -> mfem::BlockMatrix
     Transpose(mfem::SparseMatrix const & A) -> mfem::SparseMatrix *
     """
     return _common_functions.Transpose(*args)
 Transpose = _common_functions.Transpose
+
+def TransposeMult(A, B):
+    r"""TransposeMult(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B) -> mfem::SparseMatrix *"""
+    return _common_functions.TransposeMult(A, B)
+TransposeMult = _common_functions.TransposeMult
 
 def Mult(*args):
     r"""
@@ -104,6 +108,21 @@ def Mult(*args):
     """
     return _common_functions.Mult(*args)
 Mult = _common_functions.Mult
+
+def Mult_AtDA(A, D, OAtDA=None):
+    r"""Mult_AtDA(mfem::SparseMatrix const & A, mfem::Vector const & D, mfem::SparseMatrix * OAtDA=None) -> mfem::SparseMatrix *"""
+    return _common_functions.Mult_AtDA(A, D, OAtDA)
+Mult_AtDA = _common_functions.Mult_AtDA
+
+def OuterProduct(*args):
+    r"""
+    OuterProduct(mfem::DenseMatrix const & A, mfem::DenseMatrix const & B) -> mfem::DenseMatrix
+    OuterProduct(mfem::DenseMatrix const & A, mfem::SparseMatrix const & B) -> mfem::SparseMatrix
+    OuterProduct(mfem::SparseMatrix const & A, mfem::DenseMatrix const & B) -> mfem::SparseMatrix
+    OuterProduct(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B) -> mfem::SparseMatrix *
+    """
+    return _common_functions.OuterProduct(*args)
+OuterProduct = _common_functions.OuterProduct
 
 def InnerProduct(*args):
     r"""

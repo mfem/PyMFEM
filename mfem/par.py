@@ -34,6 +34,7 @@ from  mfem._par.mesh import *
 from  mfem._par.fe_coll import *
 from  mfem._par.vector import *
 from  mfem._par.complex_operator import *
+from  mfem._par.complex_fem import *
 from  mfem._par.fespace import *
 from  mfem._par.linearform import *
 from  mfem._par.bilininteg import *
@@ -64,7 +65,30 @@ from  mfem._par.pnonlinearform import *
 from  mfem._par.pgridfunc import *
 from  mfem._par.hypre import *
 from  mfem._par.stable3d import *
+from  mfem._par.vtk import *
+from  mfem._par.datacollection import *
 from  mfem._par.io_stream import wFILE, STDOUT
+from  mfem._par.fespacehierarchy import *
+from  mfem._par.multigrid import *
+from  mfem._par.constraints import *
+from  mfem._par.transfer import *
+
+from  mfem._par.fe_base import *
+from  mfem._par.fe_h1 import *
+from  mfem._par.fe_l2 import *
+from  mfem._par.fe_nd import *
+from  mfem._par.fe_rt import *
+from  mfem._par.fe_ser import *
+from  mfem._par.fe_fixed_order import *
+from  mfem._par.fe_pos import *
+from  mfem._par.fe_nurbs import *
+from  mfem._par.doftrans import *
+from  mfem._par.std_vectors import *
+
+try:
+   from  mfem._par.gslib import *
+except:
+   pass
 
 import mfem._par.array as array
 import mfem._par.blockoperator as blockoperator
@@ -84,6 +108,17 @@ import mfem._par.pgridfunc as pgridfunc
 import mfem._par.solvers as solvers
 import mfem._par.vector as vector
 import mfem._par.sparsemat as sparsemat
+
+try:
+    import mfem._par.dist_solver as dist_solver
+except:
+    pass
+
+try:   
+    from mfem._par.schwarz import (SchwarzSmoother,
+                                   ComplexSchwarzSmoother)
+except:
+    pass
 
 try:
    import mfem._par.pumi as pumi

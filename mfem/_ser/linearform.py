@@ -73,12 +73,25 @@ import mfem._ser.mem_manager
 import mfem._ser.matrix
 import mfem._ser.vector
 import mfem._ser.operators
+import mfem._ser.symmat
 import mfem._ser.intrules
 import mfem._ser.sparsemat
 import mfem._ser.densemat
 import mfem._ser.eltrans
 import mfem._ser.fe
 import mfem._ser.geom
+import mfem._ser.fe_base
+import mfem._ser.fe_fixed_order
+import mfem._ser.element
+import mfem._ser.table
+import mfem._ser.hash
+import mfem._ser.fe_h1
+import mfem._ser.fe_nd
+import mfem._ser.fe_rt
+import mfem._ser.fe_l2
+import mfem._ser.fe_nurbs
+import mfem._ser.fe_pos
+import mfem._ser.fe_ser
 import mfem._ser.mesh
 import mfem._ser.sort_pairs
 import mfem._ser.ncmesh
@@ -86,15 +99,14 @@ import mfem._ser.gridfunc
 import mfem._ser.fespace
 import mfem._ser.fe_coll
 import mfem._ser.lininteg
+import mfem._ser.doftrans
 import mfem._ser.handle
 import mfem._ser.restriction
-import mfem._ser.element
-import mfem._ser.table
-import mfem._ser.hash
 import mfem._ser.bilininteg
 import mfem._ser.nonlininteg
 import mfem._ser.vertex
 import mfem._ser.vtk
+import mfem._ser.std_vectors
 class LinearForm(mfem._ser.vector.Vector):
     r"""Proxy of C++ mfem::LinearForm class."""
 
@@ -129,15 +141,19 @@ class LinearForm(mfem._ser.vector.Vector):
         return _linearform.LinearForm_FESpace(self, *args)
     FESpace = _swig_new_instance_method(_linearform.LinearForm_FESpace)
 
-    def AddDomainIntegrator(self, lfi):
-        r"""AddDomainIntegrator(LinearForm self, LinearFormIntegrator lfi)"""
+    def AddDomainIntegrator(self, *args):
+        r"""
+        AddDomainIntegrator(LinearForm self, LinearFormIntegrator lfi)
+        AddDomainIntegrator(LinearForm self, LinearFormIntegrator lfi, intArray elem_marker)
+        """
 
         if not hasattr(self, "_integrators"): self._integrators = []
+        lfi = args[0]
         self._integrators.append(lfi)
         lfi.thisown=0 
 
 
-        return _linearform.LinearForm_AddDomainIntegrator(self, lfi)
+        return _linearform.LinearForm_AddDomainIntegrator(self, *args)
 
 
     def AddBoundaryIntegrator(self, *args):
@@ -170,6 +186,17 @@ class LinearForm(mfem._ser.vector.Vector):
         return _linearform.LinearForm_AddBdrFaceIntegrator(self, *args)
 
 
+    def AddInteriorFaceIntegrator(self, lfi):
+        r"""AddInteriorFaceIntegrator(LinearForm self, LinearFormIntegrator lfi)"""
+
+        if not hasattr(self, "_integrators"): self._integrators = []
+        self._integrators.append(lfi)
+        lfi.thisown=0 
+
+
+        return _linearform.LinearForm_AddInteriorFaceIntegrator(self, lfi)
+
+
     def GetDLFI(self):
         r"""GetDLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"""
         return _linearform.LinearForm_GetDLFI(self)
@@ -189,6 +216,11 @@ class LinearForm(mfem._ser.vector.Vector):
         r"""GetFLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"""
         return _linearform.LinearForm_GetFLFI(self)
     GetFLFI = _swig_new_instance_method(_linearform.LinearForm_GetFLFI)
+
+    def GetIFLFI(self):
+        r"""GetIFLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"""
+        return _linearform.LinearForm_GetIFLFI(self)
+    GetIFLFI = _swig_new_instance_method(_linearform.LinearForm_GetIFLFI)
 
     def GetFLFI_Marker(self):
         r"""GetFLFI_Marker(LinearForm self) -> mfem::Array< mfem::Array< int > * > *"""

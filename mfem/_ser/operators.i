@@ -5,11 +5,11 @@
 %{
 #include <fstream>
 #include <iostream>  
-  
-#include "io_stream.hpp"        
+
+#include "mfem.hpp"
+#include "../common/io_stream.hpp"        
 #include "pyoperator.hpp"
 #include "numpy/arrayobject.h"
-#include "linalg/operator.hpp"  
 %}
 
 %init %{
@@ -48,14 +48,38 @@ void mfem::PyTimeDependentOperatorBase::Mult(const mfem::Vector &x, mfem::Vector
 //%feature("noabstract") mfem::Operator;
 //%feature("noabstract") mfem::TimeDependentOperator;
 %feature("director") mfem::TimeDependentOperator;
+%feature("director") mfem::TimeDependentAdjointOperator;
+%feature("director") mfem::SecondOrderTimeDependentOperator;
 %feature("director") mfem::Operator;
 %feature("director") mfem::Solver;
 
+//%feature("nodirector") mfem::Operator::SetOperator;
 //%feature("nodirector") mfem::Operator::GetGradient;
 //%feature("nodirector") mfem::Operator::GetProlongation;
 //%feature("nodirector") mfem::Operator::GetRestriction;
 //%feature("nodirector") mfem::TimeDependentOperator::GetImplicitGradient;
 //%feature("nodirector") mfem::TimeDependentOperator::GetExplicitGradient;
+
+%ignore mfem::Operator::PrintMatlab;
+
+
+/* define OperatorPtrArray and SolverPtrArray */
+%import "../common/array_listtuple_typemap.i"
+ARRAY_LISTTUPLE_INPUT_SWIGOBJ(mfem::Operator *, 1)
+ARRAY_LISTTUPLE_INPUT_SWIGOBJ(mfem::Solver *, 1)
+
+
+%import "../common/data_size_typemap.i"
+XXXPTR_SIZE_IN(mfem::Operator **data_, int asize, mfem::Operator *)
+XXXPTR_SIZE_IN(mfem::Solver **data_, int asize, mfem::Solver *)
+
+
+%import "../common/array_instantiation_macro.i"
+IGNORE_ARRAY_METHODS(mfem::Operator *)
+INSTANTIATE_ARRAY0(Operator *, Operator, 1)
+IGNORE_ARRAY_METHODS(mfem::Solver *)
+INSTANTIATE_ARRAY0(Solver *, Solver, 1)
+
 
 %include "linalg/operator.hpp"
 %include "pyoperator.hpp"
@@ -82,6 +106,8 @@ class PyTimeDependentOperator(PyTimeDependentOperatorBase):
 /*
   void PrintMatlab(std::ostream & out, int n = 0, int m = 0) const;
 */
+/*
 #ifndef SWIGIMPORTED
 OSTREAM_ADD_DEFAULT_FILE(Operator, PrintMatlab)
 #endif
+*/

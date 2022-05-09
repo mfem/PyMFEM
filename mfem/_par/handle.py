@@ -82,8 +82,6 @@ MFEM_VERSION_MINOR = _handle.MFEM_VERSION_MINOR
 
 MFEM_VERSION_PATCH = _handle.MFEM_VERSION_PATCH
 
-MFEM_HYPRE_VERSION = _handle.MFEM_HYPRE_VERSION
-
 import mfem._par.operators
 import mfem._par.mem_manager
 import mfem._par.vector
@@ -103,6 +101,7 @@ class OperatorHandle(object):
         r"""
         __init__(OperatorHandle self) -> OperatorHandle
         __init__(OperatorHandle self, mfem::Operator::Type tid) -> OperatorHandle
+        __init__(OperatorHandle self, OperatorHandle other) -> OperatorHandle
         """
         _handle.OperatorHandle_swiginit(self, _handle.new_OperatorHandle(*args))
     __swig_destroy__ = _handle.delete_OperatorHandle
@@ -117,9 +116,12 @@ class OperatorHandle(object):
         return _handle.OperatorHandle___deref__(self)
     __deref__ = _swig_new_instance_method(_handle.OperatorHandle___deref__)
 
-    def __ref__(self):
-        r"""__ref__(OperatorHandle self) -> Operator"""
-        return _handle.OperatorHandle___ref__(self)
+    def __ref__(self, *args):
+        r"""
+        __ref__(OperatorHandle self) -> Operator
+        __ref__(OperatorHandle self) -> Operator
+        """
+        return _handle.OperatorHandle___ref__(self, *args)
     __ref__ = _swig_new_instance_method(_handle.OperatorHandle___ref__)
 
     def Type(self):
@@ -148,12 +150,12 @@ class OperatorHandle(object):
     SetType = _swig_new_instance_method(_handle.OperatorHandle_SetType)
 
     def MakeSquareBlockDiag(self, comm, glob_size, row_starts, diag):
-        r"""MakeSquareBlockDiag(OperatorHandle self, MPI_Comm comm, HYPRE_Int glob_size, HYPRE_Int * row_starts, SparseMatrix diag)"""
+        r"""MakeSquareBlockDiag(OperatorHandle self, MPI_Comm comm, HYPRE_BigInt glob_size, HYPRE_BigInt * row_starts, SparseMatrix diag)"""
         return _handle.OperatorHandle_MakeSquareBlockDiag(self, comm, glob_size, row_starts, diag)
     MakeSquareBlockDiag = _swig_new_instance_method(_handle.OperatorHandle_MakeSquareBlockDiag)
 
     def MakeRectangularBlockDiag(self, comm, glob_num_rows, glob_num_cols, row_starts, col_starts, diag):
-        r"""MakeRectangularBlockDiag(OperatorHandle self, MPI_Comm comm, HYPRE_Int glob_num_rows, HYPRE_Int glob_num_cols, HYPRE_Int * row_starts, HYPRE_Int * col_starts, SparseMatrix diag)"""
+        r"""MakeRectangularBlockDiag(OperatorHandle self, MPI_Comm comm, HYPRE_BigInt glob_num_rows, HYPRE_BigInt glob_num_cols, HYPRE_BigInt * row_starts, HYPRE_BigInt * col_starts, SparseMatrix diag)"""
         return _handle.OperatorHandle_MakeRectangularBlockDiag(self, comm, glob_num_rows, glob_num_cols, row_starts, col_starts, diag)
     MakeRectangularBlockDiag = _swig_new_instance_method(_handle.OperatorHandle_MakeRectangularBlockDiag)
 
@@ -166,6 +168,11 @@ class OperatorHandle(object):
         r"""MakeRAP(OperatorHandle self, OperatorHandle Rt, OperatorHandle A, OperatorHandle P)"""
         return _handle.OperatorHandle_MakeRAP(self, Rt, A, P)
     MakeRAP = _swig_new_instance_method(_handle.OperatorHandle_MakeRAP)
+
+    def ConvertFrom(self, A):
+        r"""ConvertFrom(OperatorHandle self, OperatorHandle A)"""
+        return _handle.OperatorHandle_ConvertFrom(self, A)
+    ConvertFrom = _swig_new_instance_method(_handle.OperatorHandle_ConvertFrom)
 
     def EliminateRowsCols(self, A, ess_dof_list):
         r"""EliminateRowsCols(OperatorHandle self, OperatorHandle A, intArray ess_dof_list)"""
@@ -187,33 +194,80 @@ class OperatorHandle(object):
         return _handle.OperatorHandle_EliminateBC(self, A_e, ess_dof_list, X, B)
     EliminateBC = _swig_new_instance_method(_handle.OperatorHandle_EliminateBC)
 
-    def As(self):
-        r"""As(OperatorHandle self) -> HypreParMatrix"""
-        return _handle.OperatorHandle_As(self)
-    As = _swig_new_instance_method(_handle.OperatorHandle_As)
+    def AsSparseMatrix(self):
+        r"""AsSparseMatrix(OperatorHandle self) -> SparseMatrix"""
+        return _handle.OperatorHandle_AsSparseMatrix(self)
+    AsSparseMatrix = _swig_new_instance_method(_handle.OperatorHandle_AsSparseMatrix)
 
-    def Is(self):
-        r"""Is(OperatorHandle self) -> HypreParMatrix"""
-        return _handle.OperatorHandle_Is(self)
-    Is = _swig_new_instance_method(_handle.OperatorHandle_Is)
+    def IsSparseMatrix(self):
+        r"""IsSparseMatrix(OperatorHandle self) -> SparseMatrix"""
+        return _handle.OperatorHandle_IsSparseMatrix(self)
+    IsSparseMatrix = _swig_new_instance_method(_handle.OperatorHandle_IsSparseMatrix)
 
-    def Get(self, A):
-        r"""Get(OperatorHandle self, mfem::HypreParMatrix *& A)"""
-        return _handle.OperatorHandle_Get(self, A)
-    Get = _swig_new_instance_method(_handle.OperatorHandle_Get)
+    def GetSparseMatrix(self, A):
+        r"""GetSparseMatrix(OperatorHandle self, mfem::SparseMatrix *& A)"""
+        return _handle.OperatorHandle_GetSparseMatrix(self, A)
+    GetSparseMatrix = _swig_new_instance_method(_handle.OperatorHandle_GetSparseMatrix)
 
-    def Reset(self, A, own_A=True):
-        r"""Reset(OperatorHandle self, HypreParMatrix A, bool own_A=True)"""
-        return _handle.OperatorHandle_Reset(self, A, own_A)
-    Reset = _swig_new_instance_method(_handle.OperatorHandle_Reset)
+    def ResetSparseMatrix(self, A, own_A=True):
+        r"""ResetSparseMatrix(OperatorHandle self, SparseMatrix A, bool own_A=True)"""
+        return _handle.OperatorHandle_ResetSparseMatrix(self, A, own_A)
+    ResetSparseMatrix = _swig_new_instance_method(_handle.OperatorHandle_ResetSparseMatrix)
 
-    def ConvertFrom(self, *args):
-        r"""
-        ConvertFrom(OperatorHandle self, OperatorHandle A)
-        ConvertFrom(OperatorHandle self, HypreParMatrix A)
-        """
-        return _handle.OperatorHandle_ConvertFrom(self, *args)
-    ConvertFrom = _swig_new_instance_method(_handle.OperatorHandle_ConvertFrom)
+    def ConvertFromSparseMatrix(self, A):
+        r"""ConvertFromSparseMatrix(OperatorHandle self, SparseMatrix A)"""
+        return _handle.OperatorHandle_ConvertFromSparseMatrix(self, A)
+    ConvertFromSparseMatrix = _swig_new_instance_method(_handle.OperatorHandle_ConvertFromSparseMatrix)
+
+    def AsHypreParMatrix(self):
+        r"""AsHypreParMatrix(OperatorHandle self) -> HypreParMatrix"""
+        return _handle.OperatorHandle_AsHypreParMatrix(self)
+    AsHypreParMatrix = _swig_new_instance_method(_handle.OperatorHandle_AsHypreParMatrix)
+
+    def IsHypreParMatrix(self):
+        r"""IsHypreParMatrix(OperatorHandle self) -> HypreParMatrix"""
+        return _handle.OperatorHandle_IsHypreParMatrix(self)
+    IsHypreParMatrix = _swig_new_instance_method(_handle.OperatorHandle_IsHypreParMatrix)
+
+    def GetHypreParMatrix(self, A):
+        r"""GetHypreParMatrix(OperatorHandle self, mfem::HypreParMatrix *& A)"""
+        return _handle.OperatorHandle_GetHypreParMatrix(self, A)
+    GetHypreParMatrix = _swig_new_instance_method(_handle.OperatorHandle_GetHypreParMatrix)
+
+    def ResetHypreParMatrix(self, A, own_A=True):
+        r"""ResetHypreParMatrix(OperatorHandle self, HypreParMatrix A, bool own_A=True)"""
+        return _handle.OperatorHandle_ResetHypreParMatrix(self, A, own_A)
+    ResetHypreParMatrix = _swig_new_instance_method(_handle.OperatorHandle_ResetHypreParMatrix)
+
+    def ConvertFromHypreParMatrix(self, A):
+        r"""ConvertFromHypreParMatrix(OperatorHandle self, HypreParMatrix A)"""
+        return _handle.OperatorHandle_ConvertFromHypreParMatrix(self, A)
+    ConvertFromHypreParMatrix = _swig_new_instance_method(_handle.OperatorHandle_ConvertFromHypreParMatrix)
+
+    def AsComplexHypreParMatrix(self):
+        r"""AsComplexHypreParMatrix(OperatorHandle self) -> mfem::ComplexHypreParMatrix *"""
+        return _handle.OperatorHandle_AsComplexHypreParMatrix(self)
+    AsComplexHypreParMatrix = _swig_new_instance_method(_handle.OperatorHandle_AsComplexHypreParMatrix)
+
+    def IsComplexHypreParMatrix(self):
+        r"""IsComplexHypreParMatrix(OperatorHandle self) -> mfem::ComplexHypreParMatrix *"""
+        return _handle.OperatorHandle_IsComplexHypreParMatrix(self)
+    IsComplexHypreParMatrix = _swig_new_instance_method(_handle.OperatorHandle_IsComplexHypreParMatrix)
+
+    def GetComplexHypreParMatrix(self, A):
+        r"""GetComplexHypreParMatrix(OperatorHandle self, mfem::ComplexHypreParMatrix *& A)"""
+        return _handle.OperatorHandle_GetComplexHypreParMatrix(self, A)
+    GetComplexHypreParMatrix = _swig_new_instance_method(_handle.OperatorHandle_GetComplexHypreParMatrix)
+
+    def ResetComplexHypreParMatrix(self, A, own_A=True):
+        r"""ResetComplexHypreParMatrix(OperatorHandle self, mfem::ComplexHypreParMatrix * A, bool own_A=True)"""
+        return _handle.OperatorHandle_ResetComplexHypreParMatrix(self, A, own_A)
+    ResetComplexHypreParMatrix = _swig_new_instance_method(_handle.OperatorHandle_ResetComplexHypreParMatrix)
+
+    def ConvertFromComplexHypreParMatrix(self, A):
+        r"""ConvertFromComplexHypreParMatrix(OperatorHandle self, mfem::ComplexHypreParMatrix * A)"""
+        return _handle.OperatorHandle_ConvertFromComplexHypreParMatrix(self, A)
+    ConvertFromComplexHypreParMatrix = _swig_new_instance_method(_handle.OperatorHandle_ConvertFromComplexHypreParMatrix)
 
     def InitTVectors(self, Po, Ri, Pi, x, b, X, B):
         r"""InitTVectors(OperatorHandle self, Operator Po, Operator Ri, Operator Pi, Vector x, Vector b, Vector X, Vector B)"""
@@ -260,6 +314,11 @@ class OperatorHandle(object):
         return _handle.OperatorHandle_GetGradient(self, x)
     GetGradient = _swig_new_instance_method(_handle.OperatorHandle_GetGradient)
 
+    def AssembleDiagonal(self, diag):
+        r"""AssembleDiagonal(OperatorHandle self, Vector diag)"""
+        return _handle.OperatorHandle_AssembleDiagonal(self, diag)
+    AssembleDiagonal = _swig_new_instance_method(_handle.OperatorHandle_AssembleDiagonal)
+
     def GetProlongation(self):
         r"""GetProlongation(OperatorHandle self) -> Operator"""
         return _handle.OperatorHandle_GetProlongation(self)
@@ -274,6 +333,11 @@ class OperatorHandle(object):
         r"""GetOutputProlongation(OperatorHandle self) -> Operator"""
         return _handle.OperatorHandle_GetOutputProlongation(self)
     GetOutputProlongation = _swig_new_instance_method(_handle.OperatorHandle_GetOutputProlongation)
+
+    def GetOutputRestrictionTranspose(self):
+        r"""GetOutputRestrictionTranspose(OperatorHandle self) -> Operator"""
+        return _handle.OperatorHandle_GetOutputRestrictionTranspose(self)
+    GetOutputRestrictionTranspose = _swig_new_instance_method(_handle.OperatorHandle_GetOutputRestrictionTranspose)
 
     def GetOutputRestriction(self):
         r"""GetOutputRestriction(OperatorHandle self) -> Operator"""
@@ -310,9 +374,12 @@ class OperatorHandle(object):
         return _handle.OperatorHandle_FormDiscreteOperator(self, A)
     FormDiscreteOperator = _swig_new_instance_method(_handle.OperatorHandle_FormDiscreteOperator)
 
-    def PrintMatlab(self, out, n=0, m=0):
-        r"""PrintMatlab(OperatorHandle self, std::ostream & out, int n=0, int m=0)"""
-        return _handle.OperatorHandle_PrintMatlab(self, out, n, m)
+    def PrintMatlab(self, *args):
+        r"""
+        PrintMatlab(OperatorHandle self, std::ostream & out, int n, int m=0)
+        PrintMatlab(OperatorHandle self, std::ostream & out)
+        """
+        return _handle.OperatorHandle_PrintMatlab(self, *args)
     PrintMatlab = _swig_new_instance_method(_handle.OperatorHandle_PrintMatlab)
 
     def GetType(self):

@@ -1,10 +1,9 @@
 %module(package="mfem._par") plinearform
 %{
-#include "config/config.hpp"
-#include "fem/gridfunc.hpp"
-#include "fem/pgridfunc.hpp"  
-#include "fem/plinearform.hpp"
+#include "mfem.hpp"
+#include "pyoperator.hpp"
 #include "numpy/arrayobject.h"
+#include "../common/pycoefficient.hpp"  
 %}
 
 %include "../common/mfem_config.i"

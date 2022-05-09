@@ -86,45 +86,142 @@ import mfem._par.vtk
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.coefficient
+import mfem._par.symmat
 import mfem._par.sparsemat
 import mfem._par.eltrans
 import mfem._par.fe
+import mfem._par.fe_base
+import mfem._par.fe_fixed_order
+import mfem._par.fe_h1
+import mfem._par.fe_nd
+import mfem._par.fe_rt
+import mfem._par.fe_l2
+import mfem._par.fe_nurbs
+import mfem._par.fe_pos
+import mfem._par.fe_ser
 import mfem._par.fespace
 import mfem._par.fe_coll
 import mfem._par.lininteg
+import mfem._par.doftrans
 import mfem._par.handle
 import mfem._par.hypre
 import mfem._par.bilininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.std_vectors
+class ParNCH1FaceRestriction(mfem._par.restriction.H1FaceRestriction):
+    r"""Proxy of C++ mfem::ParNCH1FaceRestriction class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, fes, ordering, type):
+        r"""__init__(ParNCH1FaceRestriction self, mfem::ParFiniteElementSpace const & fes, mfem::ElementDofOrdering ordering, mfem::FaceType type) -> ParNCH1FaceRestriction"""
+        _prestriction.ParNCH1FaceRestriction_swiginit(self, _prestriction.new_ParNCH1FaceRestriction(fes, ordering, type))
+
+    def Mult(self, x, y):
+        r"""Mult(ParNCH1FaceRestriction self, Vector x, Vector y)"""
+        return _prestriction.ParNCH1FaceRestriction_Mult(self, x, y)
+    Mult = _swig_new_instance_method(_prestriction.ParNCH1FaceRestriction_Mult)
+
+    def AddMultTranspose(self, x, y):
+        r"""AddMultTranspose(ParNCH1FaceRestriction self, Vector x, Vector y)"""
+        return _prestriction.ParNCH1FaceRestriction_AddMultTranspose(self, x, y)
+    AddMultTranspose = _swig_new_instance_method(_prestriction.ParNCH1FaceRestriction_AddMultTranspose)
+    __swig_destroy__ = _prestriction.delete_ParNCH1FaceRestriction
+
+# Register ParNCH1FaceRestriction in _prestriction:
+_prestriction.ParNCH1FaceRestriction_swigregister(ParNCH1FaceRestriction)
+
 class ParL2FaceRestriction(mfem._par.restriction.L2FaceRestriction):
     r"""Proxy of C++ mfem::ParL2FaceRestriction class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args, **kwargs):
-        r"""__init__(ParL2FaceRestriction self, mfem::ParFiniteElementSpace const & arg2, mfem::ElementDofOrdering arg3, mfem::FaceType type, mfem::L2FaceValues m=DoubleValued) -> ParL2FaceRestriction"""
-        _prestriction.ParL2FaceRestriction_swiginit(self, _prestriction.new_ParL2FaceRestriction(*args, **kwargs))
+    def __init__(self, *args):
+        r"""__init__(ParL2FaceRestriction self, mfem::ParFiniteElementSpace const & fes, mfem::ElementDofOrdering ordering, mfem::FaceType type, mfem::L2FaceValues m=DoubleValued) -> ParL2FaceRestriction"""
+        _prestriction.ParL2FaceRestriction_swiginit(self, _prestriction.new_ParL2FaceRestriction(*args))
 
     def Mult(self, x, y):
         r"""Mult(ParL2FaceRestriction self, Vector x, Vector y)"""
         return _prestriction.ParL2FaceRestriction_Mult(self, x, y)
     Mult = _swig_new_instance_method(_prestriction.ParL2FaceRestriction_Mult)
 
-    def FillI(self, mat, face_mat):
-        r"""FillI(ParL2FaceRestriction self, SparseMatrix mat, SparseMatrix face_mat)"""
-        return _prestriction.ParL2FaceRestriction_FillI(self, mat, face_mat)
+    def FillI(self, *args):
+        r"""
+        FillI(ParL2FaceRestriction self, SparseMatrix mat, bool const keep_nbr_block=False)
+        FillI(ParL2FaceRestriction self, SparseMatrix mat, SparseMatrix face_mat)
+        """
+        return _prestriction.ParL2FaceRestriction_FillI(self, *args)
     FillI = _swig_new_instance_method(_prestriction.ParL2FaceRestriction_FillI)
 
-    def FillJAndData(self, ea_data, mat, face_mat):
-        r"""FillJAndData(ParL2FaceRestriction self, Vector ea_data, SparseMatrix mat, SparseMatrix face_mat)"""
-        return _prestriction.ParL2FaceRestriction_FillJAndData(self, ea_data, mat, face_mat)
+    def FillJAndData(self, *args):
+        r"""
+        FillJAndData(ParL2FaceRestriction self, Vector ea_data, SparseMatrix mat, SparseMatrix face_mat)
+        FillJAndData(ParL2FaceRestriction self, Vector fea_data, SparseMatrix mat, bool const keep_nbr_block=False)
+        """
+        return _prestriction.ParL2FaceRestriction_FillJAndData(self, *args)
     FillJAndData = _swig_new_instance_method(_prestriction.ParL2FaceRestriction_FillJAndData)
+
+    def DoubleValuedConformingMult(self, x, y):
+        r"""DoubleValuedConformingMult(ParL2FaceRestriction self, Vector x, Vector y)"""
+        return _prestriction.ParL2FaceRestriction_DoubleValuedConformingMult(self, x, y)
+    DoubleValuedConformingMult = _swig_new_instance_method(_prestriction.ParL2FaceRestriction_DoubleValuedConformingMult)
     __swig_destroy__ = _prestriction.delete_ParL2FaceRestriction
 
 # Register ParL2FaceRestriction in _prestriction:
 _prestriction.ParL2FaceRestriction_swigregister(ParL2FaceRestriction)
+
+class ParNCL2FaceRestriction(mfem._par.restriction.NCL2FaceRestriction, ParL2FaceRestriction):
+    r"""Proxy of C++ mfem::ParNCL2FaceRestriction class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args, **kwargs):
+        r"""__init__(ParNCL2FaceRestriction self, mfem::ParFiniteElementSpace const & fes, mfem::ElementDofOrdering ordering, mfem::FaceType type, mfem::L2FaceValues m=DoubleValued) -> ParNCL2FaceRestriction"""
+        _prestriction.ParNCL2FaceRestriction_swiginit(self, _prestriction.new_ParNCL2FaceRestriction(*args, **kwargs))
+
+    def Mult(self, x, y):
+        r"""Mult(ParNCL2FaceRestriction self, Vector x, Vector y)"""
+        return _prestriction.ParNCL2FaceRestriction_Mult(self, x, y)
+    Mult = _swig_new_instance_method(_prestriction.ParNCL2FaceRestriction_Mult)
+
+    def AddMultTranspose(self, x, y):
+        r"""AddMultTranspose(ParNCL2FaceRestriction self, Vector x, Vector y)"""
+        return _prestriction.ParNCL2FaceRestriction_AddMultTranspose(self, x, y)
+    AddMultTranspose = _swig_new_instance_method(_prestriction.ParNCL2FaceRestriction_AddMultTranspose)
+
+    def FillI(self, *args):
+        r"""
+        FillI(ParNCL2FaceRestriction self, SparseMatrix mat, bool const keep_nbr_block=False)
+        FillI(ParNCL2FaceRestriction self, SparseMatrix mat, SparseMatrix face_mat)
+        """
+        return _prestriction.ParNCL2FaceRestriction_FillI(self, *args)
+    FillI = _swig_new_instance_method(_prestriction.ParNCL2FaceRestriction_FillI)
+
+    def FillJAndData(self, *args):
+        r"""
+        FillJAndData(ParNCL2FaceRestriction self, Vector fea_data, SparseMatrix mat, SparseMatrix face_mat)
+        FillJAndData(ParNCL2FaceRestriction self, Vector fea_data, SparseMatrix mat, bool const keep_nbr_block=False)
+        """
+        return _prestriction.ParNCL2FaceRestriction_FillJAndData(self, *args)
+    FillJAndData = _swig_new_instance_method(_prestriction.ParNCL2FaceRestriction_FillJAndData)
+
+    def SingleValuedNonconformingMult(self, x, y):
+        r"""SingleValuedNonconformingMult(ParNCL2FaceRestriction self, Vector x, Vector y)"""
+        return _prestriction.ParNCL2FaceRestriction_SingleValuedNonconformingMult(self, x, y)
+    SingleValuedNonconformingMult = _swig_new_instance_method(_prestriction.ParNCL2FaceRestriction_SingleValuedNonconformingMult)
+
+    def DoubleValuedNonconformingMult(self, x, y):
+        r"""DoubleValuedNonconformingMult(ParNCL2FaceRestriction self, Vector x, Vector y)"""
+        return _prestriction.ParNCL2FaceRestriction_DoubleValuedNonconformingMult(self, x, y)
+    DoubleValuedNonconformingMult = _swig_new_instance_method(_prestriction.ParNCL2FaceRestriction_DoubleValuedNonconformingMult)
+    __swig_destroy__ = _prestriction.delete_ParNCL2FaceRestriction
+
+# Register ParNCL2FaceRestriction in _prestriction:
+_prestriction.ParNCL2FaceRestriction_swigregister(ParNCL2FaceRestriction)
 
 
 

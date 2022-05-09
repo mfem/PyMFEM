@@ -65,27 +65,29 @@ class _SwigNonDynamicMeta(type):
 
 
 import mfem._ser.mem_manager
+
+def doubleSwap(*args):
+    r"""
+    doubleSwap(doubleArray arg1, doubleArray arg2)
+    doubleSwap(mfem::Array2D< double > & arg1, mfem::Array2D< double > & arg2)
+    doubleSwap(double & a, double & b)
+    """
+    return _array.doubleSwap(*args)
+doubleSwap = _array.doubleSwap
+
+def intSwap(*args):
+    r"""
+    intSwap(intArray arg1, intArray arg2)
+    intSwap(mfem::Array2D< int > & arg1, mfem::Array2D< int > & arg2)
+    intSwap(int & a, int & b)
+    """
+    return _array.intSwap(*args)
+intSwap = _array.intSwap
 class intArray(object):
     r"""Proxy of C++ mfem::Array< int > class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-
-    def __init__(self, *args):
-        r"""
-        __init__(intArray self) -> intArray
-        __init__(intArray self, mfem::MemoryType mt) -> intArray
-        __init__(intArray self, int asize) -> intArray
-        __init__(intArray self, int * _data) -> intArray
-        __init__(intArray self, intArray src) -> intArray
-        """
-        _array.intArray_swiginit(self, _array.new_intArray(*args))
-
-        if len(args) == 1 and isinstance(args[0], list):
-            self.MakeDataOwner()
-
-
-
     __swig_destroy__ = _array.delete_intArray
 
     def GetData(self, *args):
@@ -317,15 +319,26 @@ class intArray(object):
         return _array.intArray_HostReadWrite(self)
     HostReadWrite = _swig_new_instance_method(_array.intArray_HostReadWrite)
 
+    def __init__(self, *args):
+        r"""
+        __init__(intArray self) -> intArray
+        __init__(intArray self, mfem::MemoryType mt) -> intArray
+        __init__(intArray self, int asize) -> intArray
+        __init__(intArray self, int asize, mfem::MemoryType mt) -> intArray
+        __init__(intArray self, int * data_) -> intArray
+        __init__(intArray self, intArray src) -> intArray
+        __init__(intArray self, void * List_or_Tuple) -> intArray
+        """
+        _array.intArray_swiginit(self, _array.new_intArray(*args))
+
     def __setitem__(self, i, v):
         r"""__setitem__(intArray self, int i, int const v)"""
-        return _array.intArray___setitem__(self, i, v)
-    __setitem__ = _swig_new_instance_method(_array.intArray___setitem__)
 
-    def __getitem__(self, i):
-        r"""__getitem__(intArray self, int const i) -> int const &"""
-        return _array.intArray___getitem__(self, i)
-    __getitem__ = _swig_new_instance_method(_array.intArray___getitem__)
+        i = int(i)
+
+
+        return _array.intArray___setitem__(self, i, v)
+
 
     def Assign(self, *args):
         r"""
@@ -340,22 +353,56 @@ class intArray(object):
 
 
 
+    def __iter__(self):
+        class iter_array:
+            def __init__(self, obj):
+                self.obj = obj
+                self.idx = 0
+                self.size = obj.Size()
+            def __iter__(self):
+                self.idx = 0
+            def __next__(self):
+                if self.idx < self.size:
+                    res = self.obj[self.idx]
+                    self.idx += 1
+                    return res
+                else:
+                    raise StopIteration
+        return iter_array(self)
+
+
+
     def Print(self, *args):
         r"""
         Print(intArray self, std::ostream & out=mfem::out, int width=4)
-        Print(intArray self, char const * file, int precision=8)
+        Print(intArray self, char const * file, int precision=16)
         """
         return _array.intArray_Print(self, *args)
     Print = _swig_new_instance_method(_array.intArray_Print)
 
+    def PrintGZ(self, file, precision=16):
+        r"""PrintGZ(intArray self, char const * file, int precision=16)"""
+        return _array.intArray_PrintGZ(self, file, precision)
+    PrintGZ = _swig_new_instance_method(_array.intArray_PrintGZ)
+
+    def SaveGZ(self, file, precision=16):
+        r"""SaveGZ(intArray self, char const * file, int precision=16)"""
+        return _array.intArray_SaveGZ(self, file, precision)
+    SaveGZ = _swig_new_instance_method(_array.intArray_SaveGZ)
+
     def Save(self, *args):
         r"""
         Save(intArray self, std::ostream & out, int fmt=0)
-        Save(intArray self, char const * file, int precision=8)
+        Save(intArray self, char const * file, int precision=16)
         Save(intArray self)
         """
         return _array.intArray_Save(self, *args)
     Save = _swig_new_instance_method(_array.intArray_Save)
+
+    def __getitem__(self, param):
+        r"""__getitem__(intArray self, PyObject * param) -> PyObject *"""
+        return _array.intArray___getitem__(self, param)
+    __getitem__ = _swig_new_instance_method(_array.intArray___getitem__)
 
 # Register intArray in _array:
 _array.intArray_swigregister(intArray)
@@ -365,22 +412,6 @@ class doubleArray(object):
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-
-    def __init__(self, *args):
-        r"""
-        __init__(doubleArray self) -> doubleArray
-        __init__(doubleArray self, mfem::MemoryType mt) -> doubleArray
-        __init__(doubleArray self, int asize) -> doubleArray
-        __init__(doubleArray self, double * _data) -> doubleArray
-        __init__(doubleArray self, doubleArray src) -> doubleArray
-        """
-        _array.doubleArray_swiginit(self, _array.new_doubleArray(*args))
-
-        if len(args) == 1 and isinstance(args[0], list):
-            self.MakeDataOwner()
-
-
-
     __swig_destroy__ = _array.delete_doubleArray
 
     def GetData(self, *args):
@@ -612,15 +643,26 @@ class doubleArray(object):
         return _array.doubleArray_HostReadWrite(self)
     HostReadWrite = _swig_new_instance_method(_array.doubleArray_HostReadWrite)
 
+    def __init__(self, *args):
+        r"""
+        __init__(doubleArray self) -> doubleArray
+        __init__(doubleArray self, mfem::MemoryType mt) -> doubleArray
+        __init__(doubleArray self, int asize) -> doubleArray
+        __init__(doubleArray self, int asize, mfem::MemoryType mt) -> doubleArray
+        __init__(doubleArray self, double * data_) -> doubleArray
+        __init__(doubleArray self, doubleArray src) -> doubleArray
+        __init__(doubleArray self, void * List_or_Tuple) -> doubleArray
+        """
+        _array.doubleArray_swiginit(self, _array.new_doubleArray(*args))
+
     def __setitem__(self, i, v):
         r"""__setitem__(doubleArray self, int i, double const v)"""
-        return _array.doubleArray___setitem__(self, i, v)
-    __setitem__ = _swig_new_instance_method(_array.doubleArray___setitem__)
 
-    def __getitem__(self, i):
-        r"""__getitem__(doubleArray self, int const i) -> double const &"""
-        return _array.doubleArray___getitem__(self, i)
-    __getitem__ = _swig_new_instance_method(_array.doubleArray___getitem__)
+        i = int(i)
+
+
+        return _array.doubleArray___setitem__(self, i, v)
+
 
     def Assign(self, *args):
         r"""
@@ -635,43 +677,293 @@ class doubleArray(object):
 
 
 
+    def __iter__(self):
+        class iter_array:
+            def __init__(self, obj):
+                self.obj = obj
+                self.idx = 0
+                self.size = obj.Size()
+            def __iter__(self):
+                self.idx = 0
+            def __next__(self):
+                if self.idx < self.size:
+                    res = self.obj[self.idx]
+                    self.idx += 1
+                    return res
+                else:
+                    raise StopIteration
+        return iter_array(self)
+
+
+
     def Print(self, *args):
         r"""
         Print(doubleArray self, std::ostream & out=mfem::out, int width=4)
-        Print(doubleArray self, char const * file, int precision=8)
+        Print(doubleArray self, char const * file, int precision=16)
         """
         return _array.doubleArray_Print(self, *args)
     Print = _swig_new_instance_method(_array.doubleArray_Print)
 
+    def PrintGZ(self, file, precision=16):
+        r"""PrintGZ(doubleArray self, char const * file, int precision=16)"""
+        return _array.doubleArray_PrintGZ(self, file, precision)
+    PrintGZ = _swig_new_instance_method(_array.doubleArray_PrintGZ)
+
+    def SaveGZ(self, file, precision=16):
+        r"""SaveGZ(doubleArray self, char const * file, int precision=16)"""
+        return _array.doubleArray_SaveGZ(self, file, precision)
+    SaveGZ = _swig_new_instance_method(_array.doubleArray_SaveGZ)
+
     def Save(self, *args):
         r"""
         Save(doubleArray self, std::ostream & out, int fmt=0)
-        Save(doubleArray self, char const * file, int precision=8)
+        Save(doubleArray self, char const * file, int precision=16)
         Save(doubleArray self)
         """
         return _array.doubleArray_Save(self, *args)
     Save = _swig_new_instance_method(_array.doubleArray_Save)
 
+    def __getitem__(self, param):
+        r"""__getitem__(doubleArray self, PyObject * param) -> PyObject *"""
+        return _array.doubleArray___getitem__(self, param)
+    __getitem__ = _swig_new_instance_method(_array.doubleArray___getitem__)
+
 # Register doubleArray in _array:
 _array.doubleArray_swigregister(doubleArray)
 
+class boolArray(object):
+    r"""Proxy of C++ mfem::Array< bool > class."""
 
-def doubleSwap(*args):
-    r"""
-    doubleSwap(doubleArray arg1, doubleArray arg2)
-    doubleSwap(mfem::Array2D< double > & arg1, mfem::Array2D< double > & arg2)
-    doubleSwap(double & a, double & b)
-    """
-    return _array.doubleSwap(*args)
-doubleSwap = _array.doubleSwap
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _array.delete_boolArray
 
-def intSwap(*args):
-    r"""
-    intSwap(intArray arg1, intArray arg2)
-    intSwap(mfem::Array2D< int > & arg1, mfem::Array2D< int > & arg2)
-    intSwap(int & a, int & b)
-    """
-    return _array.intSwap(*args)
-intSwap = _array.intSwap
+    def GetData(self, *args):
+        r"""
+        GetData(boolArray self) -> bool
+        GetData(boolArray self) -> bool const *
+        """
+        return _array.boolArray_GetData(self, *args)
+    GetData = _swig_new_instance_method(_array.boolArray_GetData)
+
+    def GetMemory(self, *args):
+        r"""
+        GetMemory(boolArray self) -> mfem::Memory< bool >
+        GetMemory(boolArray self) -> mfem::Memory< bool > const &
+        """
+        return _array.boolArray_GetMemory(self, *args)
+    GetMemory = _swig_new_instance_method(_array.boolArray_GetMemory)
+
+    def UseDevice(self):
+        r"""UseDevice(boolArray self) -> bool"""
+        return _array.boolArray_UseDevice(self)
+    UseDevice = _swig_new_instance_method(_array.boolArray_UseDevice)
+
+    def OwnsData(self):
+        r"""OwnsData(boolArray self) -> bool"""
+        return _array.boolArray_OwnsData(self)
+    OwnsData = _swig_new_instance_method(_array.boolArray_OwnsData)
+
+    def StealData(self, p):
+        r"""StealData(boolArray self, bool ** p)"""
+        return _array.boolArray_StealData(self, p)
+    StealData = _swig_new_instance_method(_array.boolArray_StealData)
+
+    def LoseData(self):
+        r"""LoseData(boolArray self)"""
+        return _array.boolArray_LoseData(self)
+    LoseData = _swig_new_instance_method(_array.boolArray_LoseData)
+
+    def MakeDataOwner(self):
+        r"""MakeDataOwner(boolArray self)"""
+        return _array.boolArray_MakeDataOwner(self)
+    MakeDataOwner = _swig_new_instance_method(_array.boolArray_MakeDataOwner)
+
+    def Size(self):
+        r"""Size(boolArray self) -> int"""
+        return _array.boolArray_Size(self)
+    Size = _swig_new_instance_method(_array.boolArray_Size)
+
+    def SetSize(self, *args):
+        r"""
+        SetSize(boolArray self, int nsize)
+        SetSize(boolArray self, int nsize, bool const & initval)
+        SetSize(boolArray self, int nsize, mfem::MemoryType mt)
+        """
+        return _array.boolArray_SetSize(self, *args)
+    SetSize = _swig_new_instance_method(_array.boolArray_SetSize)
+
+    def Capacity(self):
+        r"""Capacity(boolArray self) -> int"""
+        return _array.boolArray_Capacity(self)
+    Capacity = _swig_new_instance_method(_array.boolArray_Capacity)
+
+    def Reserve(self, capacity):
+        r"""Reserve(boolArray self, int capacity)"""
+        return _array.boolArray_Reserve(self, capacity)
+    Reserve = _swig_new_instance_method(_array.boolArray_Reserve)
+
+    def Append(self, *args):
+        r"""
+        Append(boolArray self, bool const & el) -> int
+        Append(boolArray self, bool const * els, int nels) -> int
+        Append(boolArray self, boolArray els) -> int
+        """
+        return _array.boolArray_Append(self, *args)
+    Append = _swig_new_instance_method(_array.boolArray_Append)
+
+    def Prepend(self, el):
+        r"""Prepend(boolArray self, bool const & el) -> int"""
+        return _array.boolArray_Prepend(self, el)
+    Prepend = _swig_new_instance_method(_array.boolArray_Prepend)
+
+    def Last(self, *args):
+        r"""
+        Last(boolArray self) -> bool
+        Last(boolArray self) -> bool const &
+        """
+        return _array.boolArray_Last(self, *args)
+    Last = _swig_new_instance_method(_array.boolArray_Last)
+
+    def DeleteLast(self):
+        r"""DeleteLast(boolArray self)"""
+        return _array.boolArray_DeleteLast(self)
+    DeleteLast = _swig_new_instance_method(_array.boolArray_DeleteLast)
+
+    def DeleteAll(self):
+        r"""DeleteAll(boolArray self)"""
+        return _array.boolArray_DeleteAll(self)
+    DeleteAll = _swig_new_instance_method(_array.boolArray_DeleteAll)
+
+    def Copy(self, copy):
+        r"""Copy(boolArray self, boolArray copy)"""
+        return _array.boolArray_Copy(self, copy)
+    Copy = _swig_new_instance_method(_array.boolArray_Copy)
+
+    def MakeRef(self, *args):
+        r"""
+        MakeRef(boolArray self, bool * arg2, int arg3)
+        MakeRef(boolArray self, boolArray master)
+        """
+        return _array.boolArray_MakeRef(self, *args)
+    MakeRef = _swig_new_instance_method(_array.boolArray_MakeRef)
+
+    def GetSubArray(self, offset, sa_size, sa):
+        r"""GetSubArray(boolArray self, int offset, int sa_size, boolArray sa)"""
+        return _array.boolArray_GetSubArray(self, offset, sa_size, sa)
+    GetSubArray = _swig_new_instance_method(_array.boolArray_GetSubArray)
+
+    def begin(self, *args):
+        r"""
+        begin(boolArray self) -> bool
+        begin(boolArray self) -> bool const *
+        """
+        return _array.boolArray_begin(self, *args)
+    begin = _swig_new_instance_method(_array.boolArray_begin)
+
+    def end(self, *args):
+        r"""
+        end(boolArray self) -> bool
+        end(boolArray self) -> bool const *
+        """
+        return _array.boolArray_end(self, *args)
+    end = _swig_new_instance_method(_array.boolArray_end)
+
+    def MemoryUsage(self):
+        r"""MemoryUsage(boolArray self) -> long"""
+        return _array.boolArray_MemoryUsage(self)
+    MemoryUsage = _swig_new_instance_method(_array.boolArray_MemoryUsage)
+
+    def Read(self, on_dev=True):
+        r"""Read(boolArray self, bool on_dev=True) -> bool const *"""
+        return _array.boolArray_Read(self, on_dev)
+    Read = _swig_new_instance_method(_array.boolArray_Read)
+
+    def HostRead(self):
+        r"""HostRead(boolArray self) -> bool const *"""
+        return _array.boolArray_HostRead(self)
+    HostRead = _swig_new_instance_method(_array.boolArray_HostRead)
+
+    def Write(self, on_dev=True):
+        r"""Write(boolArray self, bool on_dev=True) -> bool *"""
+        return _array.boolArray_Write(self, on_dev)
+    Write = _swig_new_instance_method(_array.boolArray_Write)
+
+    def HostWrite(self):
+        r"""HostWrite(boolArray self) -> bool *"""
+        return _array.boolArray_HostWrite(self)
+    HostWrite = _swig_new_instance_method(_array.boolArray_HostWrite)
+
+    def ReadWrite(self, on_dev=True):
+        r"""ReadWrite(boolArray self, bool on_dev=True) -> bool *"""
+        return _array.boolArray_ReadWrite(self, on_dev)
+    ReadWrite = _swig_new_instance_method(_array.boolArray_ReadWrite)
+
+    def HostReadWrite(self):
+        r"""HostReadWrite(boolArray self) -> bool *"""
+        return _array.boolArray_HostReadWrite(self)
+    HostReadWrite = _swig_new_instance_method(_array.boolArray_HostReadWrite)
+
+    def __init__(self, *args):
+        r"""
+        __init__(boolArray self) -> boolArray
+        __init__(boolArray self, mfem::MemoryType mt) -> boolArray
+        __init__(boolArray self, int asize) -> boolArray
+        __init__(boolArray self, int asize, mfem::MemoryType mt) -> boolArray
+        __init__(boolArray self, bool * data_) -> boolArray
+        __init__(boolArray self, boolArray src) -> boolArray
+        __init__(boolArray self, void * List_or_Tuple) -> boolArray
+        """
+        _array.boolArray_swiginit(self, _array.new_boolArray(*args))
+
+    def __setitem__(self, i, v):
+        r"""__setitem__(boolArray self, int i, bool const v)"""
+
+        i = int(i)
+
+
+        return _array.boolArray___setitem__(self, i, v)
+
+
+    def Assign(self, *args):
+        r"""
+        Assign(boolArray self, bool const * arg2)
+        Assign(boolArray self, bool const & a)
+        """
+        return _array.boolArray_Assign(self, *args)
+    Assign = _swig_new_instance_method(_array.boolArray_Assign)
+
+    def ToList(self):
+        return [self[i] for i in range(self.Size())]
+
+
+
+    def __iter__(self):
+        class iter_array:
+            def __init__(self, obj):
+                self.obj = obj
+                self.idx = 0
+                self.size = obj.Size()
+            def __iter__(self):
+                self.idx = 0
+            def __next__(self):
+                if self.idx < self.size:
+                    res = self.obj[self.idx]
+                    self.idx += 1
+                    return res
+                else:
+                    raise StopIteration
+        return iter_array(self)
+
+
+
+    def __getitem__(self, param):
+        r"""__getitem__(boolArray self, PyObject * param) -> PyObject *"""
+        return _array.boolArray___getitem__(self, param)
+    __getitem__ = _swig_new_instance_method(_array.boolArray___getitem__)
+
+# Register boolArray in _array:
+_array.boolArray_swigregister(boolArray)
+
 
 

@@ -64,6 +64,7 @@ class _SwigNonDynamicMeta(type):
     __setattr__ = _swig_setattr_nondynamic_class_variable(type.__setattr__)
 
 
+import mfem._ser.globals
 import mfem._ser.array
 import mfem._ser.mem_manager
 
@@ -77,6 +78,11 @@ def __lshift__(os, mat):
     return _common_functions.__lshift__(os, mat)
 __lshift__ = _common_functions.__lshift__
 
+def TransposeMult(A, B):
+    r"""TransposeMult(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B) -> mfem::SparseMatrix *"""
+    return _common_functions.TransposeMult(A, B)
+TransposeMult = _common_functions.TransposeMult
+
 def RAP(*args):
     r"""
     RAP(mfem::SparseMatrix const & A, mfem::DenseMatrix & P) -> mfem::DenseMatrix
@@ -86,6 +92,11 @@ def RAP(*args):
     """
     return _common_functions.RAP(*args)
 RAP = _common_functions.RAP
+
+def Mult_AtDA(A, D, OAtDA=None):
+    r"""Mult_AtDA(mfem::SparseMatrix const & A, mfem::Vector const & D, mfem::SparseMatrix * OAtDA=None) -> mfem::SparseMatrix *"""
+    return _common_functions.Mult_AtDA(A, D, OAtDA)
+Mult_AtDA = _common_functions.Mult_AtDA
 
 def Add(*args):
     r"""
@@ -100,11 +111,21 @@ def Add(*args):
     return _common_functions.Add(*args)
 Add = _common_functions.Add
 
+def OuterProduct(*args):
+    r"""
+    OuterProduct(mfem::DenseMatrix const & A, mfem::DenseMatrix const & B) -> mfem::DenseMatrix
+    OuterProduct(mfem::DenseMatrix const & A, mfem::SparseMatrix const & B) -> mfem::SparseMatrix
+    OuterProduct(mfem::SparseMatrix const & A, mfem::DenseMatrix const & B) -> mfem::SparseMatrix
+    OuterProduct(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B) -> mfem::SparseMatrix *
+    """
+    return _common_functions.OuterProduct(*args)
+OuterProduct = _common_functions.OuterProduct
+
 def Transpose(*args):
     r"""
-    Transpose(mfem::Table const & A, mfem::Table & At, int _ncols_A=-1)
+    Transpose(mfem::Table const & A, mfem::Table & At, int ncols_A_=-1)
     Transpose(mfem::Table const & A) -> mfem::Table
-    Transpose(intArray A, mfem::Table & At, int _ncols_A=-1)
+    Transpose(intArray A, mfem::Table & At, int ncols_A_=-1)
     Transpose(mfem::SparseMatrix const & A) -> mfem::SparseMatrix
     Transpose(mfem::BlockMatrix const & A) -> mfem::BlockMatrix *
     """

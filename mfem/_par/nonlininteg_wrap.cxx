@@ -3094,164 +3094,307 @@ namespace Swig {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_MPI_Comm swig_types[0]
-#define SWIGTYPE_p_PyMFEM__wFILE swig_types[1]
-#define SWIGTYPE_p_RefCoord swig_types[2]
-#define SWIGTYPE_p_char swig_types[3]
-#define SWIGTYPE_p_hex_t swig_types[4]
-#define SWIGTYPE_p_int swig_types[5]
-#define SWIGTYPE_p_mfem__Array2DT_mfem__DenseMatrix_p_t swig_types[6]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__FiniteElement_const_p_t swig_types[7]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Vector_const_p_t swig_types[8]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Vector_p_t swig_types[9]
-#define SWIGTYPE_p_mfem__BiCubic2DFiniteElement swig_types[10]
-#define SWIGTYPE_p_mfem__BiCubic3DFiniteElement swig_types[11]
-#define SWIGTYPE_p_mfem__BiLinear2DFiniteElement swig_types[12]
-#define SWIGTYPE_p_mfem__BiLinear3DFiniteElement swig_types[13]
-#define SWIGTYPE_p_mfem__BiQuad2DFiniteElement swig_types[14]
-#define SWIGTYPE_p_mfem__BiQuadPos2DFiniteElement swig_types[15]
-#define SWIGTYPE_p_mfem__BiQuadratic3DFiniteElement swig_types[16]
-#define SWIGTYPE_p_mfem__BlockNonlinearFormIntegrator swig_types[17]
-#define SWIGTYPE_p_mfem__Coefficient swig_types[18]
-#define SWIGTYPE_p_mfem__ConstantCoefficient swig_types[19]
-#define SWIGTYPE_p_mfem__CrouzeixRaviartFiniteElement swig_types[20]
-#define SWIGTYPE_p_mfem__CrouzeixRaviartQuadFiniteElement swig_types[21]
-#define SWIGTYPE_p_mfem__Cubic1DFiniteElement swig_types[22]
-#define SWIGTYPE_p_mfem__Cubic2DFiniteElement swig_types[23]
-#define SWIGTYPE_p_mfem__Cubic3DFiniteElement swig_types[24]
-#define SWIGTYPE_p_mfem__DeltaCoefficient swig_types[25]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[26]
-#define SWIGTYPE_p_mfem__DeterminantCoefficient swig_types[27]
-#define SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient swig_types[28]
-#define SWIGTYPE_p_mfem__ElementTransformation swig_types[29]
-#define SWIGTYPE_p_mfem__ExtrudeCoefficient swig_types[30]
-#define SWIGTYPE_p_mfem__FaceElementTransformations swig_types[31]
-#define SWIGTYPE_p_mfem__FiniteElement swig_types[32]
-#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[33]
-#define SWIGTYPE_p_mfem__FunctionCoefficient swig_types[34]
-#define SWIGTYPE_p_mfem__GaussBiLinear2DFiniteElement swig_types[35]
-#define SWIGTYPE_p_mfem__GaussBiQuad2DFiniteElement swig_types[36]
-#define SWIGTYPE_p_mfem__GaussLinear2DFiniteElement swig_types[37]
-#define SWIGTYPE_p_mfem__GaussQuad2DFiniteElement swig_types[38]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[39]
-#define SWIGTYPE_p_mfem__GridFunctionCoefficient swig_types[40]
-#define SWIGTYPE_p_mfem__H1Pos_HexahedronElement swig_types[41]
-#define SWIGTYPE_p_mfem__H1Pos_QuadrilateralElement swig_types[42]
-#define SWIGTYPE_p_mfem__H1Pos_SegmentElement swig_types[43]
-#define SWIGTYPE_p_mfem__H1Pos_TetrahedronElement swig_types[44]
-#define SWIGTYPE_p_mfem__H1Pos_TriangleElement swig_types[45]
-#define SWIGTYPE_p_mfem__H1Pos_WedgeElement swig_types[46]
-#define SWIGTYPE_p_mfem__H1Ser_QuadrilateralElement swig_types[47]
-#define SWIGTYPE_p_mfem__H1_HexahedronElement swig_types[48]
-#define SWIGTYPE_p_mfem__H1_QuadrilateralElement swig_types[49]
-#define SWIGTYPE_p_mfem__H1_SegmentElement swig_types[50]
-#define SWIGTYPE_p_mfem__H1_TetrahedronElement swig_types[51]
-#define SWIGTYPE_p_mfem__H1_TriangleElement swig_types[52]
-#define SWIGTYPE_p_mfem__H1_WedgeElement swig_types[53]
-#define SWIGTYPE_p_mfem__HyperelasticModel swig_types[54]
-#define SWIGTYPE_p_mfem__HyperelasticNLFIntegrator swig_types[55]
-#define SWIGTYPE_p_mfem__HypreParVector swig_types[56]
-#define SWIGTYPE_p_mfem__IncompressibleNeoHookeanIntegrator swig_types[57]
-#define SWIGTYPE_p_mfem__InnerProductCoefficient swig_types[58]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[59]
-#define SWIGTYPE_p_mfem__InverseHarmonicModel swig_types[60]
-#define SWIGTYPE_p_mfem__IsoparametricTransformation swig_types[61]
-#define SWIGTYPE_p_mfem__L2Pos_HexahedronElement swig_types[62]
-#define SWIGTYPE_p_mfem__L2Pos_QuadrilateralElement swig_types[63]
-#define SWIGTYPE_p_mfem__L2Pos_SegmentElement swig_types[64]
-#define SWIGTYPE_p_mfem__L2Pos_TetrahedronElement swig_types[65]
-#define SWIGTYPE_p_mfem__L2Pos_TriangleElement swig_types[66]
-#define SWIGTYPE_p_mfem__L2Pos_WedgeElement swig_types[67]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[68]
-#define SWIGTYPE_p_mfem__L2_HexahedronElement swig_types[69]
-#define SWIGTYPE_p_mfem__L2_QuadrilateralElement swig_types[70]
-#define SWIGTYPE_p_mfem__L2_SegmentElement swig_types[71]
-#define SWIGTYPE_p_mfem__L2_TetrahedronElement swig_types[72]
-#define SWIGTYPE_p_mfem__L2_TriangleElement swig_types[73]
-#define SWIGTYPE_p_mfem__L2_WedgeElement swig_types[74]
-#define SWIGTYPE_p_mfem__Lagrange1DFiniteElement swig_types[75]
-#define SWIGTYPE_p_mfem__LagrangeHexFiniteElement swig_types[76]
-#define SWIGTYPE_p_mfem__Linear1DFiniteElement swig_types[77]
-#define SWIGTYPE_p_mfem__Linear2DFiniteElement swig_types[78]
-#define SWIGTYPE_p_mfem__Linear3DFiniteElement swig_types[79]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[80]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[81]
-#define SWIGTYPE_p_mfem__ND_HexahedronElement swig_types[82]
-#define SWIGTYPE_p_mfem__ND_QuadrilateralElement swig_types[83]
-#define SWIGTYPE_p_mfem__ND_SegmentElement swig_types[84]
-#define SWIGTYPE_p_mfem__ND_TetrahedronElement swig_types[85]
-#define SWIGTYPE_p_mfem__ND_TriangleElement swig_types[86]
-#define SWIGTYPE_p_mfem__NURBS1DFiniteElement swig_types[87]
-#define SWIGTYPE_p_mfem__NURBS2DFiniteElement swig_types[88]
-#define SWIGTYPE_p_mfem__NURBS3DFiniteElement swig_types[89]
-#define SWIGTYPE_p_mfem__NURBSFiniteElement swig_types[90]
-#define SWIGTYPE_p_mfem__Nedelec1HexFiniteElement swig_types[91]
-#define SWIGTYPE_p_mfem__Nedelec1TetFiniteElement swig_types[92]
-#define SWIGTYPE_p_mfem__NeoHookeanModel swig_types[93]
-#define SWIGTYPE_p_mfem__NodalFiniteElement swig_types[94]
-#define SWIGTYPE_p_mfem__NodalTensorFiniteElement swig_types[95]
-#define SWIGTYPE_p_mfem__NonlinearFormIntegrator swig_types[96]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[97]
-#define SWIGTYPE_p_mfem__P0HexFiniteElement swig_types[98]
-#define SWIGTYPE_p_mfem__P0QuadFiniteElement swig_types[99]
-#define SWIGTYPE_p_mfem__P0SegmentFiniteElement swig_types[100]
-#define SWIGTYPE_p_mfem__P0TetFiniteElement swig_types[101]
-#define SWIGTYPE_p_mfem__P0TriangleFiniteElement swig_types[102]
-#define SWIGTYPE_p_mfem__P0WedgeFiniteElement swig_types[103]
-#define SWIGTYPE_p_mfem__P1OnQuadFiniteElement swig_types[104]
-#define SWIGTYPE_p_mfem__P1SegmentFiniteElement swig_types[105]
-#define SWIGTYPE_p_mfem__P1TetNonConfFiniteElement swig_types[106]
-#define SWIGTYPE_p_mfem__P2SegmentFiniteElement swig_types[107]
-#define SWIGTYPE_p_mfem__PWConstCoefficient swig_types[108]
-#define SWIGTYPE_p_mfem__PointFiniteElement swig_types[109]
-#define SWIGTYPE_p_mfem__PositiveFiniteElement swig_types[110]
-#define SWIGTYPE_p_mfem__PositiveTensorFiniteElement swig_types[111]
-#define SWIGTYPE_p_mfem__PowerCoefficient swig_types[112]
-#define SWIGTYPE_p_mfem__ProductCoefficient swig_types[113]
-#define SWIGTYPE_p_mfem__PyCoefficientBase swig_types[114]
-#define SWIGTYPE_p_mfem__Quad1DFiniteElement swig_types[115]
-#define SWIGTYPE_p_mfem__Quad2DFiniteElement swig_types[116]
-#define SWIGTYPE_p_mfem__QuadPos1DFiniteElement swig_types[117]
-#define SWIGTYPE_p_mfem__Quadratic3DFiniteElement swig_types[118]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[119]
-#define SWIGTYPE_p_mfem__QuadratureFunctionCoefficient swig_types[120]
-#define SWIGTYPE_p_mfem__RT0HexFiniteElement swig_types[121]
-#define SWIGTYPE_p_mfem__RT0QuadFiniteElement swig_types[122]
-#define SWIGTYPE_p_mfem__RT0TetFiniteElement swig_types[123]
-#define SWIGTYPE_p_mfem__RT0TriangleFiniteElement swig_types[124]
-#define SWIGTYPE_p_mfem__RT1HexFiniteElement swig_types[125]
-#define SWIGTYPE_p_mfem__RT1QuadFiniteElement swig_types[126]
-#define SWIGTYPE_p_mfem__RT1TriangleFiniteElement swig_types[127]
-#define SWIGTYPE_p_mfem__RT2QuadFiniteElement swig_types[128]
-#define SWIGTYPE_p_mfem__RT2TriangleFiniteElement swig_types[129]
-#define SWIGTYPE_p_mfem__RT_HexahedronElement swig_types[130]
-#define SWIGTYPE_p_mfem__RT_QuadrilateralElement swig_types[131]
-#define SWIGTYPE_p_mfem__RT_TetrahedronElement swig_types[132]
-#define SWIGTYPE_p_mfem__RT_TriangleElement swig_types[133]
-#define SWIGTYPE_p_mfem__RatioCoefficient swig_types[134]
-#define SWIGTYPE_p_mfem__RefinedBiLinear2DFiniteElement swig_types[135]
-#define SWIGTYPE_p_mfem__RefinedLinear1DFiniteElement swig_types[136]
-#define SWIGTYPE_p_mfem__RefinedLinear2DFiniteElement swig_types[137]
-#define SWIGTYPE_p_mfem__RefinedLinear3DFiniteElement swig_types[138]
-#define SWIGTYPE_p_mfem__RefinedTriLinear3DFiniteElement swig_types[139]
-#define SWIGTYPE_p_mfem__RestrictedCoefficient swig_types[140]
-#define SWIGTYPE_p_mfem__RotTriLinearHexFiniteElement swig_types[141]
-#define SWIGTYPE_p_mfem__ScalarFiniteElement swig_types[142]
-#define SWIGTYPE_p_mfem__SumCoefficient swig_types[143]
-#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[144]
-#define SWIGTYPE_p_mfem__TriLinear3DFiniteElement swig_types[145]
-#define SWIGTYPE_p_mfem__Vector swig_types[146]
-#define SWIGTYPE_p_mfem__VectorConvectionNLFIntegrator swig_types[147]
-#define SWIGTYPE_p_mfem__VectorFiniteElement swig_types[148]
-#define SWIGTYPE_p_mfem__VectorRotProductCoefficient swig_types[149]
-#define SWIGTYPE_p_mfem__VectorTensorFiniteElement swig_types[150]
-#define SWIGTYPE_p_pri_t swig_types[151]
-#define SWIGTYPE_p_quad_t swig_types[152]
-#define SWIGTYPE_p_seg_t swig_types[153]
-#define SWIGTYPE_p_tet_t swig_types[154]
-#define SWIGTYPE_p_tri_t swig_types[155]
-static swig_type_info *swig_types[157];
-static swig_module_info swig_module = {swig_types, 156, 0, 0, 0, 0};
+#define SWIGTYPE__input swig_types[0]
+#define SWIGTYPE_p_MPI_Comm swig_types[1]
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[2]
+#define SWIGTYPE_p_RefCoord swig_types[3]
+#define SWIGTYPE_p__HYPRE_ExecutionPolicy swig_types[4]
+#define SWIGTYPE_p__HYPRE_MemoryLocation swig_types[5]
+#define SWIGTYPE_p_allocator_type swig_types[6]
+#define SWIGTYPE_p_bool swig_types[7]
+#define SWIGTYPE_p_ceed__Operator swig_types[8]
+#define SWIGTYPE_p_char swig_types[9]
+#define SWIGTYPE_p_difference_type swig_types[10]
+#define SWIGTYPE_p_double swig_types[11]
+#define SWIGTYPE_p_hex_t swig_types[12]
+#define SWIGTYPE_p_int swig_types[13]
+#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[14]
+#define SWIGTYPE_p_mfem__Array2DT_mfem__DenseMatrix_p_t swig_types[15]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[16]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__FiniteElement_const_p_t swig_types[17]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Vector_const_p_t swig_types[18]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Vector_p_t swig_types[19]
+#define SWIGTYPE_p_mfem__BiCubic2DFiniteElement swig_types[20]
+#define SWIGTYPE_p_mfem__BiLinear2DFiniteElement swig_types[21]
+#define SWIGTYPE_p_mfem__BiQuad2DFiniteElement swig_types[22]
+#define SWIGTYPE_p_mfem__BiQuadPos2DFiniteElement swig_types[23]
+#define SWIGTYPE_p_mfem__BlockNonlinearFormIntegrator swig_types[24]
+#define SWIGTYPE_p_mfem__Coefficient swig_types[25]
+#define SWIGTYPE_p_mfem__ConstantCoefficient swig_types[26]
+#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[27]
+#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[28]
+#define SWIGTYPE_p_mfem__ConvectiveVectorConvectionNLFIntegrator swig_types[29]
+#define SWIGTYPE_p_mfem__CrouzeixRaviartFiniteElement swig_types[30]
+#define SWIGTYPE_p_mfem__CrouzeixRaviartQuadFiniteElement swig_types[31]
+#define SWIGTYPE_p_mfem__Cubic1DFiniteElement swig_types[32]
+#define SWIGTYPE_p_mfem__Cubic2DFiniteElement swig_types[33]
+#define SWIGTYPE_p_mfem__Cubic3DFiniteElement swig_types[34]
+#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[35]
+#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[36]
+#define SWIGTYPE_p_mfem__DeltaCoefficient swig_types[37]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[38]
+#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[39]
+#define SWIGTYPE_p_mfem__DenseSymmetricMatrix swig_types[40]
+#define SWIGTYPE_p_mfem__DeterminantCoefficient swig_types[41]
+#define SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient swig_types[42]
+#define SWIGTYPE_p_mfem__ElementRestriction swig_types[43]
+#define SWIGTYPE_p_mfem__ElementTransformation swig_types[44]
+#define SWIGTYPE_p_mfem__ExtrudeCoefficient swig_types[45]
+#define SWIGTYPE_p_mfem__FaceElementTransformations swig_types[46]
+#define SWIGTYPE_p_mfem__FaceRestriction swig_types[47]
+#define SWIGTYPE_p_mfem__FiniteElement swig_types[48]
+#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[49]
+#define SWIGTYPE_p_mfem__FunctionCoefficient swig_types[50]
+#define SWIGTYPE_p_mfem__GaussBiLinear2DFiniteElement swig_types[51]
+#define SWIGTYPE_p_mfem__GaussBiQuad2DFiniteElement swig_types[52]
+#define SWIGTYPE_p_mfem__GaussLinear2DFiniteElement swig_types[53]
+#define SWIGTYPE_p_mfem__GaussQuad2DFiniteElement swig_types[54]
+#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[55]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[56]
+#define SWIGTYPE_p_mfem__GridFunctionCoefficient swig_types[57]
+#define SWIGTYPE_p_mfem__H1FaceRestriction swig_types[58]
+#define SWIGTYPE_p_mfem__H1Pos_HexahedronElement swig_types[59]
+#define SWIGTYPE_p_mfem__H1Pos_QuadrilateralElement swig_types[60]
+#define SWIGTYPE_p_mfem__H1Pos_SegmentElement swig_types[61]
+#define SWIGTYPE_p_mfem__H1Pos_TetrahedronElement swig_types[62]
+#define SWIGTYPE_p_mfem__H1Pos_TriangleElement swig_types[63]
+#define SWIGTYPE_p_mfem__H1Pos_WedgeElement swig_types[64]
+#define SWIGTYPE_p_mfem__H1Ser_QuadrilateralElement swig_types[65]
+#define SWIGTYPE_p_mfem__H1_HexahedronElement swig_types[66]
+#define SWIGTYPE_p_mfem__H1_QuadrilateralElement swig_types[67]
+#define SWIGTYPE_p_mfem__H1_SegmentElement swig_types[68]
+#define SWIGTYPE_p_mfem__H1_TetrahedronElement swig_types[69]
+#define SWIGTYPE_p_mfem__H1_TriangleElement swig_types[70]
+#define SWIGTYPE_p_mfem__H1_WedgeElement swig_types[71]
+#define SWIGTYPE_p_mfem__HyperelasticModel swig_types[72]
+#define SWIGTYPE_p_mfem__HyperelasticNLFIntegrator swig_types[73]
+#define SWIGTYPE_p_mfem__HypreADS swig_types[74]
+#define SWIGTYPE_p_mfem__HypreAMS swig_types[75]
+#define SWIGTYPE_p_mfem__HypreBoomerAMG swig_types[76]
+#define SWIGTYPE_p_mfem__HypreDiagScale swig_types[77]
+#define SWIGTYPE_p_mfem__HypreEuclid swig_types[78]
+#define SWIGTYPE_p_mfem__HypreFGMRES swig_types[79]
+#define SWIGTYPE_p_mfem__HypreGMRES swig_types[80]
+#define SWIGTYPE_p_mfem__HypreILU swig_types[81]
+#define SWIGTYPE_p_mfem__HypreIdentity swig_types[82]
+#define SWIGTYPE_p_mfem__HyprePCG swig_types[83]
+#define SWIGTYPE_p_mfem__HypreParMatrix swig_types[84]
+#define SWIGTYPE_p_mfem__HypreParVector swig_types[85]
+#define SWIGTYPE_p_mfem__HypreParaSails swig_types[86]
+#define SWIGTYPE_p_mfem__HypreSmoother swig_types[87]
+#define SWIGTYPE_p_mfem__HypreSolver swig_types[88]
+#define SWIGTYPE_p_mfem__HypreTriSolve swig_types[89]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[90]
+#define SWIGTYPE_p_mfem__IncompressibleNeoHookeanIntegrator swig_types[91]
+#define SWIGTYPE_p_mfem__InnerProductCoefficient swig_types[92]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[93]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[94]
+#define SWIGTYPE_p_mfem__InverseHarmonicModel swig_types[95]
+#define SWIGTYPE_p_mfem__IsoparametricTransformation swig_types[96]
+#define SWIGTYPE_p_mfem__L2ElementRestriction swig_types[97]
+#define SWIGTYPE_p_mfem__L2FaceRestriction swig_types[98]
+#define SWIGTYPE_p_mfem__L2Pos_HexahedronElement swig_types[99]
+#define SWIGTYPE_p_mfem__L2Pos_QuadrilateralElement swig_types[100]
+#define SWIGTYPE_p_mfem__L2Pos_SegmentElement swig_types[101]
+#define SWIGTYPE_p_mfem__L2Pos_TetrahedronElement swig_types[102]
+#define SWIGTYPE_p_mfem__L2Pos_TriangleElement swig_types[103]
+#define SWIGTYPE_p_mfem__L2Pos_WedgeElement swig_types[104]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[105]
+#define SWIGTYPE_p_mfem__L2_HexahedronElement swig_types[106]
+#define SWIGTYPE_p_mfem__L2_QuadrilateralElement swig_types[107]
+#define SWIGTYPE_p_mfem__L2_SegmentElement swig_types[108]
+#define SWIGTYPE_p_mfem__L2_TetrahedronElement swig_types[109]
+#define SWIGTYPE_p_mfem__L2_TriangleElement swig_types[110]
+#define SWIGTYPE_p_mfem__L2_WedgeElement swig_types[111]
+#define SWIGTYPE_p_mfem__Lagrange1DFiniteElement swig_types[112]
+#define SWIGTYPE_p_mfem__LagrangeHexFiniteElement swig_types[113]
+#define SWIGTYPE_p_mfem__Linear1DFiniteElement swig_types[114]
+#define SWIGTYPE_p_mfem__Linear2DFiniteElement swig_types[115]
+#define SWIGTYPE_p_mfem__Linear3DFiniteElement swig_types[116]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[117]
+#define SWIGTYPE_p_mfem__LinearPyramidFiniteElement swig_types[118]
+#define SWIGTYPE_p_mfem__LinearWedgeFiniteElement swig_types[119]
+#define SWIGTYPE_p_mfem__Matrix swig_types[120]
+#define SWIGTYPE_p_mfem__MatrixInverse swig_types[121]
+#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[122]
+#define SWIGTYPE_p_mfem__NCL2FaceRestriction swig_types[123]
+#define SWIGTYPE_p_mfem__ND_HexahedronElement swig_types[124]
+#define SWIGTYPE_p_mfem__ND_QuadrilateralElement swig_types[125]
+#define SWIGTYPE_p_mfem__ND_R1D_PointElement swig_types[126]
+#define SWIGTYPE_p_mfem__ND_R1D_SegmentElement swig_types[127]
+#define SWIGTYPE_p_mfem__ND_R2D_FiniteElement swig_types[128]
+#define SWIGTYPE_p_mfem__ND_R2D_QuadrilateralElement swig_types[129]
+#define SWIGTYPE_p_mfem__ND_R2D_SegmentElement swig_types[130]
+#define SWIGTYPE_p_mfem__ND_R2D_TriangleElement swig_types[131]
+#define SWIGTYPE_p_mfem__ND_SegmentElement swig_types[132]
+#define SWIGTYPE_p_mfem__ND_TetrahedronElement swig_types[133]
+#define SWIGTYPE_p_mfem__ND_TriangleElement swig_types[134]
+#define SWIGTYPE_p_mfem__ND_WedgeElement swig_types[135]
+#define SWIGTYPE_p_mfem__NURBS1DFiniteElement swig_types[136]
+#define SWIGTYPE_p_mfem__NURBS2DFiniteElement swig_types[137]
+#define SWIGTYPE_p_mfem__NURBS3DFiniteElement swig_types[138]
+#define SWIGTYPE_p_mfem__NURBSFiniteElement swig_types[139]
+#define SWIGTYPE_p_mfem__Nedelec1HexFiniteElement swig_types[140]
+#define SWIGTYPE_p_mfem__Nedelec1PyrFiniteElement swig_types[141]
+#define SWIGTYPE_p_mfem__Nedelec1TetFiniteElement swig_types[142]
+#define SWIGTYPE_p_mfem__Nedelec1WdgFiniteElement swig_types[143]
+#define SWIGTYPE_p_mfem__NeoHookeanModel swig_types[144]
+#define SWIGTYPE_p_mfem__NodalFiniteElement swig_types[145]
+#define SWIGTYPE_p_mfem__NodalTensorFiniteElement swig_types[146]
+#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[147]
+#define SWIGTYPE_p_mfem__NonlinearFormIntegrator swig_types[148]
+#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[149]
+#define SWIGTYPE_p_mfem__Operator swig_types[150]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[151]
+#define SWIGTYPE_p_mfem__P0HexFiniteElement swig_types[152]
+#define SWIGTYPE_p_mfem__P0PyrFiniteElement swig_types[153]
+#define SWIGTYPE_p_mfem__P0QuadFiniteElement swig_types[154]
+#define SWIGTYPE_p_mfem__P0SegmentFiniteElement swig_types[155]
+#define SWIGTYPE_p_mfem__P0TetFiniteElement swig_types[156]
+#define SWIGTYPE_p_mfem__P0TriangleFiniteElement swig_types[157]
+#define SWIGTYPE_p_mfem__P0WdgFiniteElement swig_types[158]
+#define SWIGTYPE_p_mfem__P1OnQuadFiniteElement swig_types[159]
+#define SWIGTYPE_p_mfem__P1SegmentFiniteElement swig_types[160]
+#define SWIGTYPE_p_mfem__P1TetNonConfFiniteElement swig_types[161]
+#define SWIGTYPE_p_mfem__P2SegmentFiniteElement swig_types[162]
+#define SWIGTYPE_p_mfem__PWConstCoefficient swig_types[163]
+#define SWIGTYPE_p_mfem__PointFiniteElement swig_types[164]
+#define SWIGTYPE_p_mfem__PositiveFiniteElement swig_types[165]
+#define SWIGTYPE_p_mfem__PositiveTensorFiniteElement swig_types[166]
+#define SWIGTYPE_p_mfem__PowerCoefficient swig_types[167]
+#define SWIGTYPE_p_mfem__ProductCoefficient swig_types[168]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[169]
+#define SWIGTYPE_p_mfem__PyCoefficientBase swig_types[170]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[171]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[172]
+#define SWIGTYPE_p_mfem__Quad1DFiniteElement swig_types[173]
+#define SWIGTYPE_p_mfem__Quad2DFiniteElement swig_types[174]
+#define SWIGTYPE_p_mfem__QuadPos1DFiniteElement swig_types[175]
+#define SWIGTYPE_p_mfem__Quadratic3DFiniteElement swig_types[176]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[177]
+#define SWIGTYPE_p_mfem__QuadratureFunctionCoefficient swig_types[178]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[179]
+#define SWIGTYPE_p_mfem__RT0HexFiniteElement swig_types[180]
+#define SWIGTYPE_p_mfem__RT0PyrFiniteElement swig_types[181]
+#define SWIGTYPE_p_mfem__RT0QuadFiniteElement swig_types[182]
+#define SWIGTYPE_p_mfem__RT0TetFiniteElement swig_types[183]
+#define SWIGTYPE_p_mfem__RT0TriangleFiniteElement swig_types[184]
+#define SWIGTYPE_p_mfem__RT0WdgFiniteElement swig_types[185]
+#define SWIGTYPE_p_mfem__RT1HexFiniteElement swig_types[186]
+#define SWIGTYPE_p_mfem__RT1QuadFiniteElement swig_types[187]
+#define SWIGTYPE_p_mfem__RT1TriangleFiniteElement swig_types[188]
+#define SWIGTYPE_p_mfem__RT2QuadFiniteElement swig_types[189]
+#define SWIGTYPE_p_mfem__RT2TriangleFiniteElement swig_types[190]
+#define SWIGTYPE_p_mfem__RT_HexahedronElement swig_types[191]
+#define SWIGTYPE_p_mfem__RT_QuadrilateralElement swig_types[192]
+#define SWIGTYPE_p_mfem__RT_R1D_SegmentElement swig_types[193]
+#define SWIGTYPE_p_mfem__RT_R2D_FiniteElement swig_types[194]
+#define SWIGTYPE_p_mfem__RT_R2D_QuadrilateralElement swig_types[195]
+#define SWIGTYPE_p_mfem__RT_R2D_SegmentElement swig_types[196]
+#define SWIGTYPE_p_mfem__RT_R2D_TriangleElement swig_types[197]
+#define SWIGTYPE_p_mfem__RT_TetrahedronElement swig_types[198]
+#define SWIGTYPE_p_mfem__RT_TriangleElement swig_types[199]
+#define SWIGTYPE_p_mfem__RT_WedgeElement swig_types[200]
+#define SWIGTYPE_p_mfem__RatioCoefficient swig_types[201]
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[202]
+#define SWIGTYPE_p_mfem__RefinedBiLinear2DFiniteElement swig_types[203]
+#define SWIGTYPE_p_mfem__RefinedLinear1DFiniteElement swig_types[204]
+#define SWIGTYPE_p_mfem__RefinedLinear2DFiniteElement swig_types[205]
+#define SWIGTYPE_p_mfem__RefinedLinear3DFiniteElement swig_types[206]
+#define SWIGTYPE_p_mfem__RefinedTriLinear3DFiniteElement swig_types[207]
+#define SWIGTYPE_p_mfem__Refinement swig_types[208]
+#define SWIGTYPE_p_mfem__RestrictedCoefficient swig_types[209]
+#define SWIGTYPE_p_mfem__RotTriLinearHexFiniteElement swig_types[210]
+#define SWIGTYPE_p_mfem__ScalarFiniteElement swig_types[211]
+#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[212]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[213]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[214]
+#define SWIGTYPE_p_mfem__SkewSymmetricVectorConvectionNLFIntegrator swig_types[215]
+#define SWIGTYPE_p_mfem__Solver swig_types[216]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[217]
+#define SWIGTYPE_p_mfem__SumCoefficient swig_types[218]
+#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[219]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[220]
+#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[221]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[222]
+#define SWIGTYPE_p_mfem__TriLinear3DFiniteElement swig_types[223]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[224]
+#define SWIGTYPE_p_mfem__Vector swig_types[225]
+#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[226]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[227]
+#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[228]
+#define SWIGTYPE_p_mfem__VectorConvectionNLFIntegrator swig_types[229]
+#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[230]
+#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[231]
+#define SWIGTYPE_p_mfem__VectorFiniteElement swig_types[232]
+#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[233]
+#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[234]
+#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[235]
+#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[236]
+#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[237]
+#define SWIGTYPE_p_mfem__VectorRotProductCoefficient swig_types[238]
+#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[239]
+#define SWIGTYPE_p_mfem__VectorTensorFiniteElement swig_types[240]
+#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[241]
+#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[242]
+#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[243]
+#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[244]
+#define SWIGTYPE_p_p_mfem__DenseSymmetricMatrix swig_types[245]
+#define SWIGTYPE_p_p_mfem__ElementRestriction swig_types[246]
+#define SWIGTYPE_p_p_mfem__FaceRestriction swig_types[247]
+#define SWIGTYPE_p_p_mfem__FiniteElementSpace swig_types[248]
+#define SWIGTYPE_p_p_mfem__GridFunction swig_types[249]
+#define SWIGTYPE_p_p_mfem__H1FaceRestriction swig_types[250]
+#define SWIGTYPE_p_p_mfem__HypreADS swig_types[251]
+#define SWIGTYPE_p_p_mfem__HypreAMS swig_types[252]
+#define SWIGTYPE_p_p_mfem__HypreBoomerAMG swig_types[253]
+#define SWIGTYPE_p_p_mfem__HypreDiagScale swig_types[254]
+#define SWIGTYPE_p_p_mfem__HypreEuclid swig_types[255]
+#define SWIGTYPE_p_p_mfem__HypreFGMRES swig_types[256]
+#define SWIGTYPE_p_p_mfem__HypreGMRES swig_types[257]
+#define SWIGTYPE_p_p_mfem__HypreILU swig_types[258]
+#define SWIGTYPE_p_p_mfem__HypreIdentity swig_types[259]
+#define SWIGTYPE_p_p_mfem__HyprePCG swig_types[260]
+#define SWIGTYPE_p_p_mfem__HypreParMatrix swig_types[261]
+#define SWIGTYPE_p_p_mfem__HypreParVector swig_types[262]
+#define SWIGTYPE_p_p_mfem__HypreParaSails swig_types[263]
+#define SWIGTYPE_p_p_mfem__HypreSmoother swig_types[264]
+#define SWIGTYPE_p_p_mfem__HypreSolver swig_types[265]
+#define SWIGTYPE_p_p_mfem__HypreTriSolve swig_types[266]
+#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[267]
+#define SWIGTYPE_p_p_mfem__IntegrationRule swig_types[268]
+#define SWIGTYPE_p_p_mfem__L2ElementRestriction swig_types[269]
+#define SWIGTYPE_p_p_mfem__L2FaceRestriction swig_types[270]
+#define SWIGTYPE_p_p_mfem__LinearForm swig_types[271]
+#define SWIGTYPE_p_p_mfem__Matrix swig_types[272]
+#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[273]
+#define SWIGTYPE_p_p_mfem__NCL2FaceRestriction swig_types[274]
+#define SWIGTYPE_p_p_mfem__Operator swig_types[275]
+#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[276]
+#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[277]
+#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[278]
+#define SWIGTYPE_p_p_mfem__QuadratureFunction swig_types[279]
+#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[280]
+#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[281]
+#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[282]
+#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[283]
+#define SWIGTYPE_p_p_mfem__Solver swig_types[284]
+#define SWIGTYPE_p_p_mfem__SparseMatrix swig_types[285]
+#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[286]
+#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[287]
+#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[288]
+#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[289]
+#define SWIGTYPE_p_p_mfem__Vector swig_types[290]
+#define SWIGTYPE_p_pri_t swig_types[291]
+#define SWIGTYPE_p_pyr_t swig_types[292]
+#define SWIGTYPE_p_quad_t swig_types[293]
+#define SWIGTYPE_p_seg_t swig_types[294]
+#define SWIGTYPE_p_size_type swig_types[295]
+#define SWIGTYPE_p_tet_t swig_types[296]
+#define SWIGTYPE_p_tri_t swig_types[297]
+#define SWIGTYPE_p_value_type swig_types[298]
+static swig_type_info *swig_types[300];
+static swig_module_info swig_module = {swig_types, 299, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3355,10 +3498,10 @@ namespace swig {
 }
 
 
-#include "fem/nonlininteg.hpp"
-#include "fem/linearform.hpp"      
-#include "pycoefficient.hpp"
-#include "pyoperator.hpp"               
+#include "mfem.hpp"        
+#include "../common/pycoefficient.hpp"
+#include "pyoperator.hpp"
+using namespace mfem;  
 
 
 SWIGINTERN int
@@ -3407,7 +3550,107 @@ SWIG_AsVal_double (PyObject *obj, double *val)
 }
 
 
+#include <float.h>
+
+
+#include <math.h>
+
+
+SWIGINTERNINLINE int
+SWIG_CanCastAsInteger(double *d, double min, double max) {
+  double x = *d;
+  if ((min <= x && x <= max)) {
+   double fx = floor(x);
+   double cx = ceil(x);
+   double rd =  ((x - fx) < 0.5) ? fx : cx; /* simple rint */
+   if ((errno == EDOM) || (errno == ERANGE)) {
+     errno = 0;
+   } else {
+     double summ, reps, diff;
+     if (rd < x) {
+       diff = x - rd;
+     } else if (rd > x) {
+       diff = rd - x;
+     } else {
+       return 1;
+     }
+     summ = rd + x;
+     reps = diff/summ;
+     if (reps < 8*DBL_EPSILON) {
+       *d = rd;
+       return 1;
+     }
+   }
+  }
+  return 0;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_long (PyObject *obj, long* val)
+{
+#if PY_VERSION_HEX < 0x03000000
+  if (PyInt_Check(obj)) {
+    if (val) *val = PyInt_AsLong(obj);
+    return SWIG_OK;
+  } else
+#endif
+  if (PyLong_Check(obj)) {
+    long v = PyLong_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+      return SWIG_OverflowError;
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    long v = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      double d;
+      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
+      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, LONG_MIN, LONG_MAX)) {
+	if (val) *val = (long)(d);
+	return res;
+      }
+    }
+  }
+#endif
+  return SWIG_TypeError;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_bool (PyObject *obj, bool *val)
+{
+  int r;
+  if (!PyBool_Check(obj))
+    return SWIG_ERROR;
+  r = PyObject_IsTrue(obj);
+  if (r == -1)
+    return SWIG_ERROR;
+  if (val) *val = r ? true : false;
+  return SWIG_OK;
+}
+
+
   #define SWIG_From_double   PyFloat_FromDouble 
+
+
+SWIGINTERNINLINE PyObject*
+  SWIG_From_bool  (bool value)
+{
+  return PyBool_FromLong(value ? 1 : 0);
+}
 
 
 
@@ -3424,6 +3667,32 @@ SwigDirector_NonlinearFormIntegrator::SwigDirector_NonlinearFormIntegrator(PyObj
 
 
 
+void SwigDirector_NonlinearFormIntegrator::SetIntRule(mfem::IntegrationRule const *ir) {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(ir), SWIGTYPE_p_mfem__IntegrationRule,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 0;
+  const char *const swig_method_name = "SetIntRule";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("SetIntRule");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
 void SwigDirector_NonlinearFormIntegrator::AssembleElementVector(mfem::FiniteElement const &el, mfem::ElementTransformation &Tr, mfem::Vector const &elfun, mfem::Vector &elvect) {
   swig::SwigVar_PyObject obj0;
   obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&el), SWIGTYPE_p_mfem__FiniteElement,  0 );
@@ -3437,7 +3706,7 @@ void SwigDirector_NonlinearFormIntegrator::AssembleElementVector(mfem::FiniteEle
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 0;
+  const size_t swig_method_index = 1;
   const char *const swig_method_name = "AssembleElementVector";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3, NULL);
@@ -3471,7 +3740,7 @@ void SwigDirector_NonlinearFormIntegrator::AssembleFaceVector(mfem::FiniteElemen
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 1;
+  const size_t swig_method_index = 2;
   const char *const swig_method_name = "AssembleFaceVector";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3,(PyObject *)obj4, NULL);
@@ -3503,7 +3772,7 @@ void SwigDirector_NonlinearFormIntegrator::AssembleElementGrad(mfem::FiniteEleme
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char *const swig_method_name = "AssembleElementGrad";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3, NULL);
@@ -3537,7 +3806,7 @@ void SwigDirector_NonlinearFormIntegrator::AssembleFaceGrad(mfem::FiniteElement 
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char *const swig_method_name = "AssembleFaceGrad";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3,(PyObject *)obj4, NULL);
@@ -3569,7 +3838,7 @@ double SwigDirector_NonlinearFormIntegrator::GetElementEnergy(mfem::FiniteElemen
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char *const swig_method_name = "GetElementEnergy";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
@@ -3602,7 +3871,7 @@ void SwigDirector_NonlinearFormIntegrator::AssemblePA(mfem::FiniteElementSpace c
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char *const swig_method_name = "AssemblePA";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
@@ -3630,7 +3899,7 @@ void SwigDirector_NonlinearFormIntegrator::AssemblePA(mfem::FiniteElementSpace c
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char *const swig_method_name = "AssemblePA";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
@@ -3649,6 +3918,69 @@ void SwigDirector_NonlinearFormIntegrator::AssemblePA(mfem::FiniteElementSpace c
 }
 
 
+void SwigDirector_NonlinearFormIntegrator::AssembleGradPA(mfem::Vector const &x, mfem::FiniteElementSpace const &fes) {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&fes), SWIGTYPE_p_mfem__FiniteElementSpace,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 8;
+  const char *const swig_method_name = "AssembleGradPA";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("AssembleGradPA");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0,(PyObject *)obj1, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
+double SwigDirector_NonlinearFormIntegrator::GetLocalStateEnergyPA(mfem::Vector const &x) const {
+  double c_result = SwigValueInit< double >() ;
+  
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 9;
+  const char *const swig_method_name = "GetLocalStateEnergyPA";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("GetLocalStateEnergyPA");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  double swig_val;
+  int swig_res = SWIG_AsVal_double(result, &swig_val);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""double""'");
+  }
+  c_result = static_cast< double >(swig_val);
+  return (double) c_result;
+}
+
+
 void SwigDirector_NonlinearFormIntegrator::AddMultPA(mfem::Vector const &x, mfem::Vector &y) const {
   swig::SwigVar_PyObject obj0;
   obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
@@ -3658,12 +3990,154 @@ void SwigDirector_NonlinearFormIntegrator::AddMultPA(mfem::Vector const &x, mfem
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 10;
   const char *const swig_method_name = "AddMultPA";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
 #else
   swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("AddMultPA");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0,(PyObject *)obj1, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
+void SwigDirector_NonlinearFormIntegrator::AddMultGradPA(mfem::Vector const &x, mfem::Vector &y) const {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&y), SWIGTYPE_p_mfem__Vector,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 11;
+  const char *const swig_method_name = "AddMultGradPA";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("AddMultGradPA");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0,(PyObject *)obj1, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
+void SwigDirector_NonlinearFormIntegrator::AssembleGradDiagonalPA(mfem::Vector &diag) const {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&diag), SWIGTYPE_p_mfem__Vector,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 12;
+  const char *const swig_method_name = "AssembleGradDiagonalPA";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("AssembleGradDiagonalPA");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
+bool SwigDirector_NonlinearFormIntegrator::SupportsCeed() const {
+  bool c_result = SwigValueInit< bool >() ;
+  
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 13;
+  const char *const swig_method_name = "SupportsCeed";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject args = PyTuple_New(0);
+  swig::SwigVar_PyObject result = PyObject_Call(method, (PyObject *) args, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("SupportsCeed");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  bool swig_val;
+  int swig_res = SWIG_AsVal_bool(result, &swig_val);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""bool""'");
+  }
+  c_result = static_cast< bool >(swig_val);
+  return (bool) c_result;
+}
+
+
+void SwigDirector_NonlinearFormIntegrator::AssembleMF(mfem::FiniteElementSpace const &fes) {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&fes), SWIGTYPE_p_mfem__FiniteElementSpace,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 14;
+  const char *const swig_method_name = "AssembleMF";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("AssembleMF");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
+void SwigDirector_NonlinearFormIntegrator::AddMultMF(mfem::Vector const &x, mfem::Vector &y) const {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&y), SWIGTYPE_p_mfem__Vector,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call NonlinearFormIntegrator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 15;
+  const char *const swig_method_name = "AddMultMF";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("AddMultMF");
   swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0,(PyObject *)obj1, NULL);
 #endif
   if (!result) {
@@ -3739,6 +4213,8 @@ SWIGINTERN PyObject *_wrap_NonlinearFormIntegrator_SetIntRule(PyObject *SWIGUNUS
   char * kwnames[] = {
     (char *)"self",  (char *)"ir",  NULL 
   };
+  Swig::Director *director = 0;
+  bool upcall = false;
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:NonlinearFormIntegrator_SetIntRule", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NonlinearFormIntegrator, 0 |  0 );
@@ -3751,13 +4227,23 @@ SWIGINTERN PyObject *_wrap_NonlinearFormIntegrator_SetIntRule(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NonlinearFormIntegrator_SetIntRule" "', argument " "2"" of type '" "mfem::IntegrationRule const *""'"); 
   }
   arg2 = reinterpret_cast< mfem::IntegrationRule * >(argp2);
-  {
-    try {
-      (arg1)->SetIntRule((mfem::IntegrationRule const *)arg2); 
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          (arg1)->mfem::NonlinearFormIntegrator::SetIntRule((mfem::IntegrationRule const *)arg2);
+        } else {
+          (arg1)->SetIntRule((mfem::IntegrationRule const *)arg2);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -3777,7 +4263,7 @@ SWIGINTERN PyObject *_wrap_NonlinearFormIntegrator_SetIntegrationRule(PyObject *
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"irule",  NULL 
+    (char *)"self",  (char *)"ir",  NULL 
   };
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:NonlinearFormIntegrator_SetIntegrationRule", kwnames, &obj0, &obj1)) SWIG_fail;
@@ -3803,6 +4289,74 @@ SWIGINTERN PyObject *_wrap_NonlinearFormIntegrator_SetIntegrationRule(PyObject *
     }    
   }
   resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NonlinearFormIntegrator_SetPAMemoryType(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::NonlinearFormIntegrator *arg1 = (mfem::NonlinearFormIntegrator *) 0 ;
+  mfem::MemoryType arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"mt",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:NonlinearFormIntegrator_SetPAMemoryType", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NonlinearFormIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NonlinearFormIntegrator_SetPAMemoryType" "', argument " "1"" of type '" "mfem::NonlinearFormIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NonlinearFormIntegrator * >(argp1);
+  {
+    PyObject* k = PyObject_GetAttrString(obj1, "value");
+    int i = (int)PyLong_AsLong(k);
+    arg2 = static_cast< mfem::MemoryType >(i);
+  }
+  {
+    try {
+      (arg1)->SetPAMemoryType(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NonlinearFormIntegrator_GetIntegrationRule(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::NonlinearFormIntegrator *arg1 = (mfem::NonlinearFormIntegrator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::IntegrationRule *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NonlinearFormIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NonlinearFormIntegrator_GetIntegrationRule" "', argument " "1"" of type '" "mfem::NonlinearFormIntegrator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NonlinearFormIntegrator * >(argp1);
+  {
+    try {
+      result = (mfem::IntegrationRule *)((mfem::NonlinearFormIntegrator const *)arg1)->GetIntegrationRule(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -4436,6 +4990,129 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_NonlinearFormIntegrator_AssembleGradPA(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::NonlinearFormIntegrator *arg1 = (mfem::NonlinearFormIntegrator *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::FiniteElementSpace *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"fes",  NULL 
+  };
+  Swig::Director *director = 0;
+  bool upcall = false;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:NonlinearFormIntegrator_AssembleGradPA", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NonlinearFormIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NonlinearFormIntegrator_AssembleGradPA" "', argument " "1"" of type '" "mfem::NonlinearFormIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NonlinearFormIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NonlinearFormIntegrator_AssembleGradPA" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NonlinearFormIntegrator_AssembleGradPA" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__FiniteElementSpace,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "NonlinearFormIntegrator_AssembleGradPA" "', argument " "3"" of type '" "mfem::FiniteElementSpace const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NonlinearFormIntegrator_AssembleGradPA" "', argument " "3"" of type '" "mfem::FiniteElementSpace const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::FiniteElementSpace * >(argp3);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          (arg1)->mfem::NonlinearFormIntegrator::AssembleGradPA((mfem::Vector const &)*arg2,(mfem::FiniteElementSpace const &)*arg3);
+        } else {
+          (arg1)->AssembleGradPA((mfem::Vector const &)*arg2,(mfem::FiniteElementSpace const &)*arg3);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NonlinearFormIntegrator_GetLocalStateEnergyPA(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::NonlinearFormIntegrator *arg1 = (mfem::NonlinearFormIntegrator *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  NULL 
+  };
+  Swig::Director *director = 0;
+  bool upcall = false;
+  double result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:NonlinearFormIntegrator_GetLocalStateEnergyPA", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NonlinearFormIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NonlinearFormIntegrator_GetLocalStateEnergyPA" "', argument " "1"" of type '" "mfem::NonlinearFormIntegrator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NonlinearFormIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NonlinearFormIntegrator_GetLocalStateEnergyPA" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NonlinearFormIntegrator_GetLocalStateEnergyPA" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          result = (double)((mfem::NonlinearFormIntegrator const *)arg1)->mfem::NonlinearFormIntegrator::GetLocalStateEnergyPA((mfem::Vector const &)*arg2);
+        } else {
+          result = (double)((mfem::NonlinearFormIntegrator const *)arg1)->GetLocalStateEnergyPA((mfem::Vector const &)*arg2);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_NonlinearFormIntegrator_AddMultPA(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::NonlinearFormIntegrator *arg1 = (mfem::NonlinearFormIntegrator *) 0 ;
@@ -4497,6 +5174,322 @@ SWIGINTERN PyObject *_wrap_NonlinearFormIntegrator_AddMultPA(PyObject *SWIGUNUSE
     SWIG_fail;
   }
   resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NonlinearFormIntegrator_AddMultGradPA(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::NonlinearFormIntegrator *arg1 = (mfem::NonlinearFormIntegrator *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
+  Swig::Director *director = 0;
+  bool upcall = false;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:NonlinearFormIntegrator_AddMultGradPA", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NonlinearFormIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NonlinearFormIntegrator_AddMultGradPA" "', argument " "1"" of type '" "mfem::NonlinearFormIntegrator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NonlinearFormIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NonlinearFormIntegrator_AddMultGradPA" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NonlinearFormIntegrator_AddMultGradPA" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "NonlinearFormIntegrator_AddMultGradPA" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NonlinearFormIntegrator_AddMultGradPA" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          ((mfem::NonlinearFormIntegrator const *)arg1)->mfem::NonlinearFormIntegrator::AddMultGradPA((mfem::Vector const &)*arg2,*arg3);
+        } else {
+          ((mfem::NonlinearFormIntegrator const *)arg1)->AddMultGradPA((mfem::Vector const &)*arg2,*arg3);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NonlinearFormIntegrator_AssembleGradDiagonalPA(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::NonlinearFormIntegrator *arg1 = (mfem::NonlinearFormIntegrator *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"diag",  NULL 
+  };
+  Swig::Director *director = 0;
+  bool upcall = false;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:NonlinearFormIntegrator_AssembleGradDiagonalPA", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NonlinearFormIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NonlinearFormIntegrator_AssembleGradDiagonalPA" "', argument " "1"" of type '" "mfem::NonlinearFormIntegrator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NonlinearFormIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NonlinearFormIntegrator_AssembleGradDiagonalPA" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NonlinearFormIntegrator_AssembleGradDiagonalPA" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          ((mfem::NonlinearFormIntegrator const *)arg1)->mfem::NonlinearFormIntegrator::AssembleGradDiagonalPA(*arg2);
+        } else {
+          ((mfem::NonlinearFormIntegrator const *)arg1)->AssembleGradDiagonalPA(*arg2);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NonlinearFormIntegrator_SupportsCeed(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::NonlinearFormIntegrator *arg1 = (mfem::NonlinearFormIntegrator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  Swig::Director *director = 0;
+  bool upcall = false;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NonlinearFormIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NonlinearFormIntegrator_SupportsCeed" "', argument " "1"" of type '" "mfem::NonlinearFormIntegrator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NonlinearFormIntegrator * >(argp1);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  try {
+    {
+      try {
+        if (upcall) {
+          result = (bool)((mfem::NonlinearFormIntegrator const *)arg1)->mfem::NonlinearFormIntegrator::SupportsCeed();
+        } else {
+          result = (bool)((mfem::NonlinearFormIntegrator const *)arg1)->SupportsCeed();
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NonlinearFormIntegrator_AssembleMF(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::NonlinearFormIntegrator *arg1 = (mfem::NonlinearFormIntegrator *) 0 ;
+  mfem::FiniteElementSpace *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"fes",  NULL 
+  };
+  Swig::Director *director = 0;
+  bool upcall = false;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:NonlinearFormIntegrator_AssembleMF", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NonlinearFormIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NonlinearFormIntegrator_AssembleMF" "', argument " "1"" of type '" "mfem::NonlinearFormIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NonlinearFormIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElementSpace,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NonlinearFormIntegrator_AssembleMF" "', argument " "2"" of type '" "mfem::FiniteElementSpace const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NonlinearFormIntegrator_AssembleMF" "', argument " "2"" of type '" "mfem::FiniteElementSpace const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElementSpace * >(argp2);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          (arg1)->mfem::NonlinearFormIntegrator::AssembleMF((mfem::FiniteElementSpace const &)*arg2);
+        } else {
+          (arg1)->AssembleMF((mfem::FiniteElementSpace const &)*arg2);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NonlinearFormIntegrator_AddMultMF(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::NonlinearFormIntegrator *arg1 = (mfem::NonlinearFormIntegrator *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
+  Swig::Director *director = 0;
+  bool upcall = false;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:NonlinearFormIntegrator_AddMultMF", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NonlinearFormIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NonlinearFormIntegrator_AddMultMF" "', argument " "1"" of type '" "mfem::NonlinearFormIntegrator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NonlinearFormIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NonlinearFormIntegrator_AddMultMF" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NonlinearFormIntegrator_AddMultMF" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "NonlinearFormIntegrator_AddMultMF" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NonlinearFormIntegrator_AddMultMF" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          ((mfem::NonlinearFormIntegrator const *)arg1)->mfem::NonlinearFormIntegrator::AddMultMF((mfem::Vector const &)*arg2,*arg3);
+        } else {
+          ((mfem::NonlinearFormIntegrator const *)arg1)->AddMultMF((mfem::Vector const &)*arg2,*arg3);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NonlinearFormIntegrator_GetCeedOp(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::NonlinearFormIntegrator *arg1 = (mfem::NonlinearFormIntegrator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  ceed::Operator *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NonlinearFormIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NonlinearFormIntegrator_GetCeedOp" "', argument " "1"" of type '" "mfem::NonlinearFormIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NonlinearFormIntegrator * >(argp1);
+  {
+    try {
+      result = (ceed::Operator *) &(arg1)->GetCeedOp(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ceed__Operator, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -5079,7 +6072,7 @@ SWIGINTERN PyObject *_wrap_HyperelasticModel_SetTransformation(PyObject *SWIGUNU
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"_Ttr",  NULL 
+    (char *)"self",  (char *)"Ttr_",  NULL 
   };
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:HyperelasticModel_SetTransformation", kwnames, &obj0, &obj1)) SWIG_fail;
@@ -6211,7 +7204,7 @@ SWIGINTERN PyObject *_wrap_new_IncompressibleNeoHookeanIntegrator(PyObject *SWIG
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   char * kwnames[] = {
-    (char *)"_mu",  NULL 
+    (char *)"mu_",  NULL 
   };
   mfem::IncompressibleNeoHookeanIntegrator *result = 0 ;
   
@@ -6978,6 +7971,49 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_VectorConvectionNLFIntegrator_AssembleMF(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::VectorConvectionNLFIntegrator *arg1 = (mfem::VectorConvectionNLFIntegrator *) 0 ;
+  mfem::FiniteElementSpace *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"fes",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:VectorConvectionNLFIntegrator_AssembleMF", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorConvectionNLFIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorConvectionNLFIntegrator_AssembleMF" "', argument " "1"" of type '" "mfem::VectorConvectionNLFIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorConvectionNLFIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElementSpace,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorConvectionNLFIntegrator_AssembleMF" "', argument " "2"" of type '" "mfem::FiniteElementSpace const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorConvectionNLFIntegrator_AssembleMF" "', argument " "2"" of type '" "mfem::FiniteElementSpace const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElementSpace * >(argp2);
+  {
+    try {
+      (arg1)->AssembleMF((mfem::FiniteElementSpace const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_VectorConvectionNLFIntegrator_AddMultPA(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorConvectionNLFIntegrator *arg1 = (mfem::VectorConvectionNLFIntegrator *) 0 ;
@@ -7033,6 +8069,61 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_VectorConvectionNLFIntegrator_AddMultMF(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::VectorConvectionNLFIntegrator *arg1 = (mfem::VectorConvectionNLFIntegrator *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:VectorConvectionNLFIntegrator_AddMultMF", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorConvectionNLFIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorConvectionNLFIntegrator_AddMultMF" "', argument " "1"" of type '" "mfem::VectorConvectionNLFIntegrator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorConvectionNLFIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorConvectionNLFIntegrator_AddMultMF" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorConvectionNLFIntegrator_AddMultMF" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorConvectionNLFIntegrator_AddMultMF" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorConvectionNLFIntegrator_AddMultMF" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      ((mfem::VectorConvectionNLFIntegrator const *)arg1)->AddMultMF((mfem::Vector const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_VectorConvectionNLFIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::VectorConvectionNLFIntegrator *arg1 = (mfem::VectorConvectionNLFIntegrator *) 0 ;
@@ -7073,12 +8164,414 @@ SWIGINTERN PyObject *VectorConvectionNLFIntegrator_swiginit(PyObject *SWIGUNUSED
   return SWIG_Python_InitShadowInstance(args);
 }
 
+SWIGINTERN PyObject *_wrap_new_ConvectiveVectorConvectionNLFIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Coefficient *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::ConvectiveVectorConvectionNLFIntegrator *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ConvectiveVectorConvectionNLFIntegrator" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ConvectiveVectorConvectionNLFIntegrator" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
+  {
+    try {
+      result = (mfem::ConvectiveVectorConvectionNLFIntegrator *)new mfem::ConvectiveVectorConvectionNLFIntegrator(*arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ConvectiveVectorConvectionNLFIntegrator, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_ConvectiveVectorConvectionNLFIntegrator__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  mfem::ConvectiveVectorConvectionNLFIntegrator *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::ConvectiveVectorConvectionNLFIntegrator *)new mfem::ConvectiveVectorConvectionNLFIntegrator(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ConvectiveVectorConvectionNLFIntegrator, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_ConvectiveVectorConvectionNLFIntegrator(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_ConvectiveVectorConvectionNLFIntegrator", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_ConvectiveVectorConvectionNLFIntegrator__SWIG_1(self, argc, argv);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_ConvectiveVectorConvectionNLFIntegrator__SWIG_0(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_ConvectiveVectorConvectionNLFIntegrator'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::ConvectiveVectorConvectionNLFIntegrator::ConvectiveVectorConvectionNLFIntegrator(mfem::Coefficient &)\n"
+    "    mfem::ConvectiveVectorConvectionNLFIntegrator::ConvectiveVectorConvectionNLFIntegrator()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ConvectiveVectorConvectionNLFIntegrator_AssembleElementGrad(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ConvectiveVectorConvectionNLFIntegrator *arg1 = (mfem::ConvectiveVectorConvectionNLFIntegrator *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::Vector *arg4 = 0 ;
+  mfem::DenseMatrix *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"el",  (char *)"trans",  (char *)"elfun",  (char *)"elmat",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOO:ConvectiveVectorConvectionNLFIntegrator_AssembleElementGrad", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ConvectiveVectorConvectionNLFIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ConvectiveVectorConvectionNLFIntegrator_AssembleElementGrad" "', argument " "1"" of type '" "mfem::ConvectiveVectorConvectionNLFIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ConvectiveVectorConvectionNLFIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ConvectiveVectorConvectionNLFIntegrator_AssembleElementGrad" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ConvectiveVectorConvectionNLFIntegrator_AssembleElementGrad" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ConvectiveVectorConvectionNLFIntegrator_AssembleElementGrad" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ConvectiveVectorConvectionNLFIntegrator_AssembleElementGrad" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ConvectiveVectorConvectionNLFIntegrator_AssembleElementGrad" "', argument " "4"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ConvectiveVectorConvectionNLFIntegrator_AssembleElementGrad" "', argument " "4"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
+  res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "ConvectiveVectorConvectionNLFIntegrator_AssembleElementGrad" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ConvectiveVectorConvectionNLFIntegrator_AssembleElementGrad" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
+  {
+    try {
+      (arg1)->AssembleElementGrad((mfem::FiniteElement const &)*arg2,*arg3,(mfem::Vector const &)*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_ConvectiveVectorConvectionNLFIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ConvectiveVectorConvectionNLFIntegrator *arg1 = (mfem::ConvectiveVectorConvectionNLFIntegrator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ConvectiveVectorConvectionNLFIntegrator, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ConvectiveVectorConvectionNLFIntegrator" "', argument " "1"" of type '" "mfem::ConvectiveVectorConvectionNLFIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ConvectiveVectorConvectionNLFIntegrator * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *ConvectiveVectorConvectionNLFIntegrator_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__ConvectiveVectorConvectionNLFIntegrator, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *ConvectiveVectorConvectionNLFIntegrator_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_SkewSymmetricVectorConvectionNLFIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Coefficient *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::SkewSymmetricVectorConvectionNLFIntegrator *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SkewSymmetricVectorConvectionNLFIntegrator" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SkewSymmetricVectorConvectionNLFIntegrator" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
+  {
+    try {
+      result = (mfem::SkewSymmetricVectorConvectionNLFIntegrator *)new mfem::SkewSymmetricVectorConvectionNLFIntegrator(*arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SkewSymmetricVectorConvectionNLFIntegrator, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_SkewSymmetricVectorConvectionNLFIntegrator__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  mfem::SkewSymmetricVectorConvectionNLFIntegrator *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::SkewSymmetricVectorConvectionNLFIntegrator *)new mfem::SkewSymmetricVectorConvectionNLFIntegrator(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SkewSymmetricVectorConvectionNLFIntegrator, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_SkewSymmetricVectorConvectionNLFIntegrator(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_SkewSymmetricVectorConvectionNLFIntegrator", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_SkewSymmetricVectorConvectionNLFIntegrator__SWIG_1(self, argc, argv);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_SkewSymmetricVectorConvectionNLFIntegrator__SWIG_0(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_SkewSymmetricVectorConvectionNLFIntegrator'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::SkewSymmetricVectorConvectionNLFIntegrator::SkewSymmetricVectorConvectionNLFIntegrator(mfem::Coefficient &)\n"
+    "    mfem::SkewSymmetricVectorConvectionNLFIntegrator::SkewSymmetricVectorConvectionNLFIntegrator()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_SkewSymmetricVectorConvectionNLFIntegrator_AssembleElementGrad(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::SkewSymmetricVectorConvectionNLFIntegrator *arg1 = (mfem::SkewSymmetricVectorConvectionNLFIntegrator *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::Vector *arg4 = 0 ;
+  mfem::DenseMatrix *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"el",  (char *)"trans",  (char *)"elfun",  (char *)"elmat",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOO:SkewSymmetricVectorConvectionNLFIntegrator_AssembleElementGrad", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SkewSymmetricVectorConvectionNLFIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SkewSymmetricVectorConvectionNLFIntegrator_AssembleElementGrad" "', argument " "1"" of type '" "mfem::SkewSymmetricVectorConvectionNLFIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SkewSymmetricVectorConvectionNLFIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SkewSymmetricVectorConvectionNLFIntegrator_AssembleElementGrad" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SkewSymmetricVectorConvectionNLFIntegrator_AssembleElementGrad" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "SkewSymmetricVectorConvectionNLFIntegrator_AssembleElementGrad" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SkewSymmetricVectorConvectionNLFIntegrator_AssembleElementGrad" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "SkewSymmetricVectorConvectionNLFIntegrator_AssembleElementGrad" "', argument " "4"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SkewSymmetricVectorConvectionNLFIntegrator_AssembleElementGrad" "', argument " "4"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
+  res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "SkewSymmetricVectorConvectionNLFIntegrator_AssembleElementGrad" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SkewSymmetricVectorConvectionNLFIntegrator_AssembleElementGrad" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
+  {
+    try {
+      (arg1)->AssembleElementGrad((mfem::FiniteElement const &)*arg2,*arg3,(mfem::Vector const &)*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_SkewSymmetricVectorConvectionNLFIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SkewSymmetricVectorConvectionNLFIntegrator *arg1 = (mfem::SkewSymmetricVectorConvectionNLFIntegrator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__SkewSymmetricVectorConvectionNLFIntegrator, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SkewSymmetricVectorConvectionNLFIntegrator" "', argument " "1"" of type '" "mfem::SkewSymmetricVectorConvectionNLFIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SkewSymmetricVectorConvectionNLFIntegrator * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *SkewSymmetricVectorConvectionNLFIntegrator_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__SkewSymmetricVectorConvectionNLFIntegrator, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *SkewSymmetricVectorConvectionNLFIntegrator_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_NonlinearFormIntegrator", (PyCFunction)(void(*)(void))_wrap_new_NonlinearFormIntegrator, METH_VARARGS|METH_KEYWORDS, "new_NonlinearFormIntegrator(PyObject * _self, IntegrationRule ir=None) -> NonlinearFormIntegrator"},
 	 { "NonlinearFormIntegrator_SetIntRule", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_SetIntRule, METH_VARARGS|METH_KEYWORDS, "NonlinearFormIntegrator_SetIntRule(NonlinearFormIntegrator self, IntegrationRule ir)"},
-	 { "NonlinearFormIntegrator_SetIntegrationRule", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_SetIntegrationRule, METH_VARARGS|METH_KEYWORDS, "NonlinearFormIntegrator_SetIntegrationRule(NonlinearFormIntegrator self, IntegrationRule irule)"},
+	 { "NonlinearFormIntegrator_SetIntegrationRule", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_SetIntegrationRule, METH_VARARGS|METH_KEYWORDS, "NonlinearFormIntegrator_SetIntegrationRule(NonlinearFormIntegrator self, IntegrationRule ir)"},
+	 { "NonlinearFormIntegrator_SetPAMemoryType", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_SetPAMemoryType, METH_VARARGS|METH_KEYWORDS, "NonlinearFormIntegrator_SetPAMemoryType(NonlinearFormIntegrator self, mfem::MemoryType mt)"},
+	 { "NonlinearFormIntegrator_GetIntegrationRule", _wrap_NonlinearFormIntegrator_GetIntegrationRule, METH_O, "NonlinearFormIntegrator_GetIntegrationRule(NonlinearFormIntegrator self) -> IntegrationRule"},
 	 { "NonlinearFormIntegrator_AssembleElementVector", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_AssembleElementVector, METH_VARARGS|METH_KEYWORDS, "NonlinearFormIntegrator_AssembleElementVector(NonlinearFormIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elfun, Vector elvect)"},
 	 { "NonlinearFormIntegrator_AssembleFaceVector", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_AssembleFaceVector, METH_VARARGS|METH_KEYWORDS, "NonlinearFormIntegrator_AssembleFaceVector(NonlinearFormIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elfun, Vector elvect)"},
 	 { "NonlinearFormIntegrator_AssembleElementGrad", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_AssembleElementGrad, METH_VARARGS|METH_KEYWORDS, "NonlinearFormIntegrator_AssembleElementGrad(NonlinearFormIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elfun, DenseMatrix elmat)"},
@@ -7088,14 +8581,22 @@ static PyMethodDef SwigMethods[] = {
 		"NonlinearFormIntegrator_AssemblePA(NonlinearFormIntegrator self, FiniteElementSpace fes)\n"
 		"NonlinearFormIntegrator_AssemblePA(NonlinearFormIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)\n"
 		""},
+	 { "NonlinearFormIntegrator_AssembleGradPA", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_AssembleGradPA, METH_VARARGS|METH_KEYWORDS, "NonlinearFormIntegrator_AssembleGradPA(NonlinearFormIntegrator self, Vector x, FiniteElementSpace fes)"},
+	 { "NonlinearFormIntegrator_GetLocalStateEnergyPA", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_GetLocalStateEnergyPA, METH_VARARGS|METH_KEYWORDS, "NonlinearFormIntegrator_GetLocalStateEnergyPA(NonlinearFormIntegrator self, Vector x) -> double"},
 	 { "NonlinearFormIntegrator_AddMultPA", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_AddMultPA, METH_VARARGS|METH_KEYWORDS, "NonlinearFormIntegrator_AddMultPA(NonlinearFormIntegrator self, Vector x, Vector y)"},
+	 { "NonlinearFormIntegrator_AddMultGradPA", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_AddMultGradPA, METH_VARARGS|METH_KEYWORDS, "NonlinearFormIntegrator_AddMultGradPA(NonlinearFormIntegrator self, Vector x, Vector y)"},
+	 { "NonlinearFormIntegrator_AssembleGradDiagonalPA", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_AssembleGradDiagonalPA, METH_VARARGS|METH_KEYWORDS, "NonlinearFormIntegrator_AssembleGradDiagonalPA(NonlinearFormIntegrator self, Vector diag)"},
+	 { "NonlinearFormIntegrator_SupportsCeed", _wrap_NonlinearFormIntegrator_SupportsCeed, METH_O, "NonlinearFormIntegrator_SupportsCeed(NonlinearFormIntegrator self) -> bool"},
+	 { "NonlinearFormIntegrator_AssembleMF", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_AssembleMF, METH_VARARGS|METH_KEYWORDS, "NonlinearFormIntegrator_AssembleMF(NonlinearFormIntegrator self, FiniteElementSpace fes)"},
+	 { "NonlinearFormIntegrator_AddMultMF", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_AddMultMF, METH_VARARGS|METH_KEYWORDS, "NonlinearFormIntegrator_AddMultMF(NonlinearFormIntegrator self, Vector x, Vector y)"},
+	 { "NonlinearFormIntegrator_GetCeedOp", _wrap_NonlinearFormIntegrator_GetCeedOp, METH_O, "NonlinearFormIntegrator_GetCeedOp(NonlinearFormIntegrator self) -> ceed::Operator &"},
 	 { "delete_NonlinearFormIntegrator", _wrap_delete_NonlinearFormIntegrator, METH_O, "delete_NonlinearFormIntegrator(NonlinearFormIntegrator self)"},
 	 { "disown_NonlinearFormIntegrator", (PyCFunction)(void(*)(void))_wrap_disown_NonlinearFormIntegrator, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "NonlinearFormIntegrator_swigregister", NonlinearFormIntegrator_swigregister, METH_O, NULL},
 	 { "NonlinearFormIntegrator_swiginit", NonlinearFormIntegrator_swiginit, METH_VARARGS, NULL},
 	 { "BlockNonlinearFormIntegrator_GetElementEnergy", (PyCFunction)(void(*)(void))_wrap_BlockNonlinearFormIntegrator_GetElementEnergy, METH_VARARGS|METH_KEYWORDS, "BlockNonlinearFormIntegrator_GetElementEnergy(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun) -> double"},
-	 { "BlockNonlinearFormIntegrator_AssembleElementVector", (PyCFunction)(void(*)(void))_wrap_BlockNonlinearFormIntegrator_AssembleElementVector, METH_VARARGS|METH_KEYWORDS, "BlockNonlinearFormIntegrator_AssembleElementVector(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array< mfem::Vector * > const & elvec)"},
-	 { "BlockNonlinearFormIntegrator_AssembleFaceVector", (PyCFunction)(void(*)(void))_wrap_BlockNonlinearFormIntegrator_AssembleFaceVector, METH_VARARGS|METH_KEYWORDS, "BlockNonlinearFormIntegrator_AssembleFaceVector(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el1, mfem::Array< mfem::FiniteElement const * > const & el2, FaceElementTransformations Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array< mfem::Vector * > const & elvect)"},
+	 { "BlockNonlinearFormIntegrator_AssembleElementVector", (PyCFunction)(void(*)(void))_wrap_BlockNonlinearFormIntegrator_AssembleElementVector, METH_VARARGS|METH_KEYWORDS, "BlockNonlinearFormIntegrator_AssembleElementVector(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, VectorPtrArray elvec)"},
+	 { "BlockNonlinearFormIntegrator_AssembleFaceVector", (PyCFunction)(void(*)(void))_wrap_BlockNonlinearFormIntegrator_AssembleFaceVector, METH_VARARGS|METH_KEYWORDS, "BlockNonlinearFormIntegrator_AssembleFaceVector(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el1, mfem::Array< mfem::FiniteElement const * > const & el2, FaceElementTransformations Tr, mfem::Array< mfem::Vector const * > const & elfun, VectorPtrArray elvect)"},
 	 { "BlockNonlinearFormIntegrator_AssembleElementGrad", (PyCFunction)(void(*)(void))_wrap_BlockNonlinearFormIntegrator_AssembleElementGrad, METH_VARARGS|METH_KEYWORDS, "BlockNonlinearFormIntegrator_AssembleElementGrad(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array2D< mfem::DenseMatrix * > const & elmats)"},
 	 { "BlockNonlinearFormIntegrator_AssembleFaceGrad", (PyCFunction)(void(*)(void))_wrap_BlockNonlinearFormIntegrator_AssembleFaceGrad, METH_VARARGS|METH_KEYWORDS, "BlockNonlinearFormIntegrator_AssembleFaceGrad(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el1, mfem::Array< mfem::FiniteElement const * > const & el2, FaceElementTransformations Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array2D< mfem::DenseMatrix * > const & elmats)"},
 	 { "delete_BlockNonlinearFormIntegrator", _wrap_delete_BlockNonlinearFormIntegrator, METH_O, "delete_BlockNonlinearFormIntegrator(BlockNonlinearFormIntegrator self)"},
@@ -7103,7 +8604,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "BlockNonlinearFormIntegrator_swigregister", BlockNonlinearFormIntegrator_swigregister, METH_O, NULL},
 	 { "BlockNonlinearFormIntegrator_swiginit", BlockNonlinearFormIntegrator_swiginit, METH_VARARGS, NULL},
 	 { "delete_HyperelasticModel", _wrap_delete_HyperelasticModel, METH_O, "delete_HyperelasticModel(HyperelasticModel self)"},
-	 { "HyperelasticModel_SetTransformation", (PyCFunction)(void(*)(void))_wrap_HyperelasticModel_SetTransformation, METH_VARARGS|METH_KEYWORDS, "HyperelasticModel_SetTransformation(HyperelasticModel self, ElementTransformation _Ttr)"},
+	 { "HyperelasticModel_SetTransformation", (PyCFunction)(void(*)(void))_wrap_HyperelasticModel_SetTransformation, METH_VARARGS|METH_KEYWORDS, "HyperelasticModel_SetTransformation(HyperelasticModel self, ElementTransformation Ttr_)"},
 	 { "HyperelasticModel_EvalW", (PyCFunction)(void(*)(void))_wrap_HyperelasticModel_EvalW, METH_VARARGS|METH_KEYWORDS, "HyperelasticModel_EvalW(HyperelasticModel self, DenseMatrix Jpt) -> double"},
 	 { "HyperelasticModel_EvalP", (PyCFunction)(void(*)(void))_wrap_HyperelasticModel_EvalP, METH_VARARGS|METH_KEYWORDS, "HyperelasticModel_EvalP(HyperelasticModel self, DenseMatrix Jpt, DenseMatrix P)"},
 	 { "HyperelasticModel_AssembleH", (PyCFunction)(void(*)(void))_wrap_HyperelasticModel_AssembleH, METH_VARARGS|METH_KEYWORDS, "HyperelasticModel_AssembleH(HyperelasticModel self, DenseMatrix Jpt, DenseMatrix DS, double const weight, DenseMatrix A)"},
@@ -7116,8 +8617,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "InverseHarmonicModel_swigregister", InverseHarmonicModel_swigregister, METH_O, NULL},
 	 { "InverseHarmonicModel_swiginit", InverseHarmonicModel_swiginit, METH_VARARGS, NULL},
 	 { "new_NeoHookeanModel", _wrap_new_NeoHookeanModel, METH_VARARGS, "\n"
-		"NeoHookeanModel(double _mu, double _K, double _g=1.0)\n"
-		"new_NeoHookeanModel(Coefficient _mu, Coefficient _K, Coefficient _g=None) -> NeoHookeanModel\n"
+		"NeoHookeanModel(double mu_, double K_, double g_=1.0)\n"
+		"new_NeoHookeanModel(Coefficient mu_, Coefficient K_, Coefficient g_=None) -> NeoHookeanModel\n"
 		""},
 	 { "NeoHookeanModel_EvalW", (PyCFunction)(void(*)(void))_wrap_NeoHookeanModel_EvalW, METH_VARARGS|METH_KEYWORDS, "NeoHookeanModel_EvalW(NeoHookeanModel self, DenseMatrix J) -> double"},
 	 { "NeoHookeanModel_EvalP", (PyCFunction)(void(*)(void))_wrap_NeoHookeanModel_EvalP, METH_VARARGS|METH_KEYWORDS, "NeoHookeanModel_EvalP(NeoHookeanModel self, DenseMatrix J, DenseMatrix P)"},
@@ -7132,9 +8633,9 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_HyperelasticNLFIntegrator", _wrap_delete_HyperelasticNLFIntegrator, METH_O, "delete_HyperelasticNLFIntegrator(HyperelasticNLFIntegrator self)"},
 	 { "HyperelasticNLFIntegrator_swigregister", HyperelasticNLFIntegrator_swigregister, METH_O, NULL},
 	 { "HyperelasticNLFIntegrator_swiginit", HyperelasticNLFIntegrator_swiginit, METH_VARARGS, NULL},
-	 { "new_IncompressibleNeoHookeanIntegrator", (PyCFunction)(void(*)(void))_wrap_new_IncompressibleNeoHookeanIntegrator, METH_VARARGS|METH_KEYWORDS, "new_IncompressibleNeoHookeanIntegrator(Coefficient _mu) -> IncompressibleNeoHookeanIntegrator"},
+	 { "new_IncompressibleNeoHookeanIntegrator", (PyCFunction)(void(*)(void))_wrap_new_IncompressibleNeoHookeanIntegrator, METH_VARARGS|METH_KEYWORDS, "new_IncompressibleNeoHookeanIntegrator(Coefficient mu_) -> IncompressibleNeoHookeanIntegrator"},
 	 { "IncompressibleNeoHookeanIntegrator_GetElementEnergy", (PyCFunction)(void(*)(void))_wrap_IncompressibleNeoHookeanIntegrator_GetElementEnergy, METH_VARARGS|METH_KEYWORDS, "IncompressibleNeoHookeanIntegrator_GetElementEnergy(IncompressibleNeoHookeanIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun) -> double"},
-	 { "IncompressibleNeoHookeanIntegrator_AssembleElementVector", (PyCFunction)(void(*)(void))_wrap_IncompressibleNeoHookeanIntegrator_AssembleElementVector, METH_VARARGS|METH_KEYWORDS, "IncompressibleNeoHookeanIntegrator_AssembleElementVector(IncompressibleNeoHookeanIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array< mfem::Vector * > const & elvec)"},
+	 { "IncompressibleNeoHookeanIntegrator_AssembleElementVector", (PyCFunction)(void(*)(void))_wrap_IncompressibleNeoHookeanIntegrator_AssembleElementVector, METH_VARARGS|METH_KEYWORDS, "IncompressibleNeoHookeanIntegrator_AssembleElementVector(IncompressibleNeoHookeanIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, VectorPtrArray elvec)"},
 	 { "IncompressibleNeoHookeanIntegrator_AssembleElementGrad", (PyCFunction)(void(*)(void))_wrap_IncompressibleNeoHookeanIntegrator_AssembleElementGrad, METH_VARARGS|METH_KEYWORDS, "IncompressibleNeoHookeanIntegrator_AssembleElementGrad(IncompressibleNeoHookeanIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array2D< mfem::DenseMatrix * > const & elmats)"},
 	 { "delete_IncompressibleNeoHookeanIntegrator", _wrap_delete_IncompressibleNeoHookeanIntegrator, METH_O, "delete_IncompressibleNeoHookeanIntegrator(IncompressibleNeoHookeanIntegrator self)"},
 	 { "IncompressibleNeoHookeanIntegrator_swigregister", IncompressibleNeoHookeanIntegrator_swigregister, METH_O, NULL},
@@ -7151,10 +8652,28 @@ static PyMethodDef SwigMethods[] = {
 		"VectorConvectionNLFIntegrator_AssemblePA(VectorConvectionNLFIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)\n"
 		"VectorConvectionNLFIntegrator_AssemblePA(VectorConvectionNLFIntegrator self, FiniteElementSpace fes)\n"
 		""},
+	 { "VectorConvectionNLFIntegrator_AssembleMF", (PyCFunction)(void(*)(void))_wrap_VectorConvectionNLFIntegrator_AssembleMF, METH_VARARGS|METH_KEYWORDS, "VectorConvectionNLFIntegrator_AssembleMF(VectorConvectionNLFIntegrator self, FiniteElementSpace fes)"},
 	 { "VectorConvectionNLFIntegrator_AddMultPA", (PyCFunction)(void(*)(void))_wrap_VectorConvectionNLFIntegrator_AddMultPA, METH_VARARGS|METH_KEYWORDS, "VectorConvectionNLFIntegrator_AddMultPA(VectorConvectionNLFIntegrator self, Vector x, Vector y)"},
+	 { "VectorConvectionNLFIntegrator_AddMultMF", (PyCFunction)(void(*)(void))_wrap_VectorConvectionNLFIntegrator_AddMultMF, METH_VARARGS|METH_KEYWORDS, "VectorConvectionNLFIntegrator_AddMultMF(VectorConvectionNLFIntegrator self, Vector x, Vector y)"},
 	 { "delete_VectorConvectionNLFIntegrator", _wrap_delete_VectorConvectionNLFIntegrator, METH_O, "delete_VectorConvectionNLFIntegrator(VectorConvectionNLFIntegrator self)"},
 	 { "VectorConvectionNLFIntegrator_swigregister", VectorConvectionNLFIntegrator_swigregister, METH_O, NULL},
 	 { "VectorConvectionNLFIntegrator_swiginit", VectorConvectionNLFIntegrator_swiginit, METH_VARARGS, NULL},
+	 { "new_ConvectiveVectorConvectionNLFIntegrator", _wrap_new_ConvectiveVectorConvectionNLFIntegrator, METH_VARARGS, "\n"
+		"ConvectiveVectorConvectionNLFIntegrator(Coefficient q)\n"
+		"new_ConvectiveVectorConvectionNLFIntegrator() -> ConvectiveVectorConvectionNLFIntegrator\n"
+		""},
+	 { "ConvectiveVectorConvectionNLFIntegrator_AssembleElementGrad", (PyCFunction)(void(*)(void))_wrap_ConvectiveVectorConvectionNLFIntegrator_AssembleElementGrad, METH_VARARGS|METH_KEYWORDS, "ConvectiveVectorConvectionNLFIntegrator_AssembleElementGrad(ConvectiveVectorConvectionNLFIntegrator self, FiniteElement el, ElementTransformation trans, Vector elfun, DenseMatrix elmat)"},
+	 { "delete_ConvectiveVectorConvectionNLFIntegrator", _wrap_delete_ConvectiveVectorConvectionNLFIntegrator, METH_O, "delete_ConvectiveVectorConvectionNLFIntegrator(ConvectiveVectorConvectionNLFIntegrator self)"},
+	 { "ConvectiveVectorConvectionNLFIntegrator_swigregister", ConvectiveVectorConvectionNLFIntegrator_swigregister, METH_O, NULL},
+	 { "ConvectiveVectorConvectionNLFIntegrator_swiginit", ConvectiveVectorConvectionNLFIntegrator_swiginit, METH_VARARGS, NULL},
+	 { "new_SkewSymmetricVectorConvectionNLFIntegrator", _wrap_new_SkewSymmetricVectorConvectionNLFIntegrator, METH_VARARGS, "\n"
+		"SkewSymmetricVectorConvectionNLFIntegrator(Coefficient q)\n"
+		"new_SkewSymmetricVectorConvectionNLFIntegrator() -> SkewSymmetricVectorConvectionNLFIntegrator\n"
+		""},
+	 { "SkewSymmetricVectorConvectionNLFIntegrator_AssembleElementGrad", (PyCFunction)(void(*)(void))_wrap_SkewSymmetricVectorConvectionNLFIntegrator_AssembleElementGrad, METH_VARARGS|METH_KEYWORDS, "SkewSymmetricVectorConvectionNLFIntegrator_AssembleElementGrad(SkewSymmetricVectorConvectionNLFIntegrator self, FiniteElement el, ElementTransformation trans, Vector elfun, DenseMatrix elmat)"},
+	 { "delete_SkewSymmetricVectorConvectionNLFIntegrator", _wrap_delete_SkewSymmetricVectorConvectionNLFIntegrator, METH_O, "delete_SkewSymmetricVectorConvectionNLFIntegrator(SkewSymmetricVectorConvectionNLFIntegrator self)"},
+	 { "SkewSymmetricVectorConvectionNLFIntegrator_swigregister", SkewSymmetricVectorConvectionNLFIntegrator_swigregister, METH_O, NULL},
+	 { "SkewSymmetricVectorConvectionNLFIntegrator_swiginit", SkewSymmetricVectorConvectionNLFIntegrator_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -7163,7 +8682,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_NonlinearFormIntegrator", (PyCFunction)(void(*)(void))_wrap_new_NonlinearFormIntegrator, METH_VARARGS|METH_KEYWORDS, "new_NonlinearFormIntegrator(PyObject * _self, IntegrationRule ir=None) -> NonlinearFormIntegrator"},
 	 { "NonlinearFormIntegrator_SetIntRule", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_SetIntRule, METH_VARARGS|METH_KEYWORDS, "SetIntRule(NonlinearFormIntegrator self, IntegrationRule ir)"},
-	 { "NonlinearFormIntegrator_SetIntegrationRule", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_SetIntegrationRule, METH_VARARGS|METH_KEYWORDS, "SetIntegrationRule(NonlinearFormIntegrator self, IntegrationRule irule)"},
+	 { "NonlinearFormIntegrator_SetIntegrationRule", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_SetIntegrationRule, METH_VARARGS|METH_KEYWORDS, "SetIntegrationRule(NonlinearFormIntegrator self, IntegrationRule ir)"},
+	 { "NonlinearFormIntegrator_SetPAMemoryType", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_SetPAMemoryType, METH_VARARGS|METH_KEYWORDS, "SetPAMemoryType(NonlinearFormIntegrator self, mfem::MemoryType mt)"},
+	 { "NonlinearFormIntegrator_GetIntegrationRule", _wrap_NonlinearFormIntegrator_GetIntegrationRule, METH_O, "GetIntegrationRule(NonlinearFormIntegrator self) -> IntegrationRule"},
 	 { "NonlinearFormIntegrator_AssembleElementVector", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_AssembleElementVector, METH_VARARGS|METH_KEYWORDS, "AssembleElementVector(NonlinearFormIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elfun, Vector elvect)"},
 	 { "NonlinearFormIntegrator_AssembleFaceVector", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_AssembleFaceVector, METH_VARARGS|METH_KEYWORDS, "AssembleFaceVector(NonlinearFormIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elfun, Vector elvect)"},
 	 { "NonlinearFormIntegrator_AssembleElementGrad", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_AssembleElementGrad, METH_VARARGS|METH_KEYWORDS, "AssembleElementGrad(NonlinearFormIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elfun, DenseMatrix elmat)"},
@@ -7173,14 +8694,22 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"AssemblePA(NonlinearFormIntegrator self, FiniteElementSpace fes)\n"
 		"AssemblePA(NonlinearFormIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)\n"
 		""},
+	 { "NonlinearFormIntegrator_AssembleGradPA", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_AssembleGradPA, METH_VARARGS|METH_KEYWORDS, "AssembleGradPA(NonlinearFormIntegrator self, Vector x, FiniteElementSpace fes)"},
+	 { "NonlinearFormIntegrator_GetLocalStateEnergyPA", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_GetLocalStateEnergyPA, METH_VARARGS|METH_KEYWORDS, "GetLocalStateEnergyPA(NonlinearFormIntegrator self, Vector x) -> double"},
 	 { "NonlinearFormIntegrator_AddMultPA", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_AddMultPA, METH_VARARGS|METH_KEYWORDS, "AddMultPA(NonlinearFormIntegrator self, Vector x, Vector y)"},
+	 { "NonlinearFormIntegrator_AddMultGradPA", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_AddMultGradPA, METH_VARARGS|METH_KEYWORDS, "AddMultGradPA(NonlinearFormIntegrator self, Vector x, Vector y)"},
+	 { "NonlinearFormIntegrator_AssembleGradDiagonalPA", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_AssembleGradDiagonalPA, METH_VARARGS|METH_KEYWORDS, "AssembleGradDiagonalPA(NonlinearFormIntegrator self, Vector diag)"},
+	 { "NonlinearFormIntegrator_SupportsCeed", _wrap_NonlinearFormIntegrator_SupportsCeed, METH_O, "SupportsCeed(NonlinearFormIntegrator self) -> bool"},
+	 { "NonlinearFormIntegrator_AssembleMF", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_AssembleMF, METH_VARARGS|METH_KEYWORDS, "AssembleMF(NonlinearFormIntegrator self, FiniteElementSpace fes)"},
+	 { "NonlinearFormIntegrator_AddMultMF", (PyCFunction)(void(*)(void))_wrap_NonlinearFormIntegrator_AddMultMF, METH_VARARGS|METH_KEYWORDS, "AddMultMF(NonlinearFormIntegrator self, Vector x, Vector y)"},
+	 { "NonlinearFormIntegrator_GetCeedOp", _wrap_NonlinearFormIntegrator_GetCeedOp, METH_O, "GetCeedOp(NonlinearFormIntegrator self) -> ceed::Operator &"},
 	 { "delete_NonlinearFormIntegrator", _wrap_delete_NonlinearFormIntegrator, METH_O, "delete_NonlinearFormIntegrator(NonlinearFormIntegrator self)"},
 	 { "disown_NonlinearFormIntegrator", (PyCFunction)(void(*)(void))_wrap_disown_NonlinearFormIntegrator, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "NonlinearFormIntegrator_swigregister", NonlinearFormIntegrator_swigregister, METH_O, NULL},
 	 { "NonlinearFormIntegrator_swiginit", NonlinearFormIntegrator_swiginit, METH_VARARGS, NULL},
 	 { "BlockNonlinearFormIntegrator_GetElementEnergy", (PyCFunction)(void(*)(void))_wrap_BlockNonlinearFormIntegrator_GetElementEnergy, METH_VARARGS|METH_KEYWORDS, "GetElementEnergy(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun) -> double"},
-	 { "BlockNonlinearFormIntegrator_AssembleElementVector", (PyCFunction)(void(*)(void))_wrap_BlockNonlinearFormIntegrator_AssembleElementVector, METH_VARARGS|METH_KEYWORDS, "AssembleElementVector(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array< mfem::Vector * > const & elvec)"},
-	 { "BlockNonlinearFormIntegrator_AssembleFaceVector", (PyCFunction)(void(*)(void))_wrap_BlockNonlinearFormIntegrator_AssembleFaceVector, METH_VARARGS|METH_KEYWORDS, "AssembleFaceVector(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el1, mfem::Array< mfem::FiniteElement const * > const & el2, FaceElementTransformations Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array< mfem::Vector * > const & elvect)"},
+	 { "BlockNonlinearFormIntegrator_AssembleElementVector", (PyCFunction)(void(*)(void))_wrap_BlockNonlinearFormIntegrator_AssembleElementVector, METH_VARARGS|METH_KEYWORDS, "AssembleElementVector(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, VectorPtrArray elvec)"},
+	 { "BlockNonlinearFormIntegrator_AssembleFaceVector", (PyCFunction)(void(*)(void))_wrap_BlockNonlinearFormIntegrator_AssembleFaceVector, METH_VARARGS|METH_KEYWORDS, "AssembleFaceVector(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el1, mfem::Array< mfem::FiniteElement const * > const & el2, FaceElementTransformations Tr, mfem::Array< mfem::Vector const * > const & elfun, VectorPtrArray elvect)"},
 	 { "BlockNonlinearFormIntegrator_AssembleElementGrad", (PyCFunction)(void(*)(void))_wrap_BlockNonlinearFormIntegrator_AssembleElementGrad, METH_VARARGS|METH_KEYWORDS, "AssembleElementGrad(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array2D< mfem::DenseMatrix * > const & elmats)"},
 	 { "BlockNonlinearFormIntegrator_AssembleFaceGrad", (PyCFunction)(void(*)(void))_wrap_BlockNonlinearFormIntegrator_AssembleFaceGrad, METH_VARARGS|METH_KEYWORDS, "AssembleFaceGrad(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el1, mfem::Array< mfem::FiniteElement const * > const & el2, FaceElementTransformations Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array2D< mfem::DenseMatrix * > const & elmats)"},
 	 { "delete_BlockNonlinearFormIntegrator", _wrap_delete_BlockNonlinearFormIntegrator, METH_O, "delete_BlockNonlinearFormIntegrator(BlockNonlinearFormIntegrator self)"},
@@ -7188,7 +8717,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "BlockNonlinearFormIntegrator_swigregister", BlockNonlinearFormIntegrator_swigregister, METH_O, NULL},
 	 { "BlockNonlinearFormIntegrator_swiginit", BlockNonlinearFormIntegrator_swiginit, METH_VARARGS, NULL},
 	 { "delete_HyperelasticModel", _wrap_delete_HyperelasticModel, METH_O, "delete_HyperelasticModel(HyperelasticModel self)"},
-	 { "HyperelasticModel_SetTransformation", (PyCFunction)(void(*)(void))_wrap_HyperelasticModel_SetTransformation, METH_VARARGS|METH_KEYWORDS, "SetTransformation(HyperelasticModel self, ElementTransformation _Ttr)"},
+	 { "HyperelasticModel_SetTransformation", (PyCFunction)(void(*)(void))_wrap_HyperelasticModel_SetTransformation, METH_VARARGS|METH_KEYWORDS, "SetTransformation(HyperelasticModel self, ElementTransformation Ttr_)"},
 	 { "HyperelasticModel_EvalW", (PyCFunction)(void(*)(void))_wrap_HyperelasticModel_EvalW, METH_VARARGS|METH_KEYWORDS, "EvalW(HyperelasticModel self, DenseMatrix Jpt) -> double"},
 	 { "HyperelasticModel_EvalP", (PyCFunction)(void(*)(void))_wrap_HyperelasticModel_EvalP, METH_VARARGS|METH_KEYWORDS, "EvalP(HyperelasticModel self, DenseMatrix Jpt, DenseMatrix P)"},
 	 { "HyperelasticModel_AssembleH", (PyCFunction)(void(*)(void))_wrap_HyperelasticModel_AssembleH, METH_VARARGS|METH_KEYWORDS, "AssembleH(HyperelasticModel self, DenseMatrix Jpt, DenseMatrix DS, double const weight, DenseMatrix A)"},
@@ -7201,8 +8730,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "InverseHarmonicModel_swigregister", InverseHarmonicModel_swigregister, METH_O, NULL},
 	 { "InverseHarmonicModel_swiginit", InverseHarmonicModel_swiginit, METH_VARARGS, NULL},
 	 { "new_NeoHookeanModel", _wrap_new_NeoHookeanModel, METH_VARARGS, "\n"
-		"NeoHookeanModel(double _mu, double _K, double _g=1.0)\n"
-		"new_NeoHookeanModel(Coefficient _mu, Coefficient _K, Coefficient _g=None) -> NeoHookeanModel\n"
+		"NeoHookeanModel(double mu_, double K_, double g_=1.0)\n"
+		"new_NeoHookeanModel(Coefficient mu_, Coefficient K_, Coefficient g_=None) -> NeoHookeanModel\n"
 		""},
 	 { "NeoHookeanModel_EvalW", (PyCFunction)(void(*)(void))_wrap_NeoHookeanModel_EvalW, METH_VARARGS|METH_KEYWORDS, "EvalW(NeoHookeanModel self, DenseMatrix J) -> double"},
 	 { "NeoHookeanModel_EvalP", (PyCFunction)(void(*)(void))_wrap_NeoHookeanModel_EvalP, METH_VARARGS|METH_KEYWORDS, "EvalP(NeoHookeanModel self, DenseMatrix J, DenseMatrix P)"},
@@ -7217,9 +8746,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_HyperelasticNLFIntegrator", _wrap_delete_HyperelasticNLFIntegrator, METH_O, "delete_HyperelasticNLFIntegrator(HyperelasticNLFIntegrator self)"},
 	 { "HyperelasticNLFIntegrator_swigregister", HyperelasticNLFIntegrator_swigregister, METH_O, NULL},
 	 { "HyperelasticNLFIntegrator_swiginit", HyperelasticNLFIntegrator_swiginit, METH_VARARGS, NULL},
-	 { "new_IncompressibleNeoHookeanIntegrator", (PyCFunction)(void(*)(void))_wrap_new_IncompressibleNeoHookeanIntegrator, METH_VARARGS|METH_KEYWORDS, "new_IncompressibleNeoHookeanIntegrator(Coefficient _mu) -> IncompressibleNeoHookeanIntegrator"},
+	 { "new_IncompressibleNeoHookeanIntegrator", (PyCFunction)(void(*)(void))_wrap_new_IncompressibleNeoHookeanIntegrator, METH_VARARGS|METH_KEYWORDS, "new_IncompressibleNeoHookeanIntegrator(Coefficient mu_) -> IncompressibleNeoHookeanIntegrator"},
 	 { "IncompressibleNeoHookeanIntegrator_GetElementEnergy", (PyCFunction)(void(*)(void))_wrap_IncompressibleNeoHookeanIntegrator_GetElementEnergy, METH_VARARGS|METH_KEYWORDS, "GetElementEnergy(IncompressibleNeoHookeanIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun) -> double"},
-	 { "IncompressibleNeoHookeanIntegrator_AssembleElementVector", (PyCFunction)(void(*)(void))_wrap_IncompressibleNeoHookeanIntegrator_AssembleElementVector, METH_VARARGS|METH_KEYWORDS, "AssembleElementVector(IncompressibleNeoHookeanIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array< mfem::Vector * > const & elvec)"},
+	 { "IncompressibleNeoHookeanIntegrator_AssembleElementVector", (PyCFunction)(void(*)(void))_wrap_IncompressibleNeoHookeanIntegrator_AssembleElementVector, METH_VARARGS|METH_KEYWORDS, "AssembleElementVector(IncompressibleNeoHookeanIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, VectorPtrArray elvec)"},
 	 { "IncompressibleNeoHookeanIntegrator_AssembleElementGrad", (PyCFunction)(void(*)(void))_wrap_IncompressibleNeoHookeanIntegrator_AssembleElementGrad, METH_VARARGS|METH_KEYWORDS, "AssembleElementGrad(IncompressibleNeoHookeanIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array2D< mfem::DenseMatrix * > const & elmats)"},
 	 { "delete_IncompressibleNeoHookeanIntegrator", _wrap_delete_IncompressibleNeoHookeanIntegrator, METH_O, "delete_IncompressibleNeoHookeanIntegrator(IncompressibleNeoHookeanIntegrator self)"},
 	 { "IncompressibleNeoHookeanIntegrator_swigregister", IncompressibleNeoHookeanIntegrator_swigregister, METH_O, NULL},
@@ -7236,30 +8765,291 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"AssemblePA(VectorConvectionNLFIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)\n"
 		"AssemblePA(VectorConvectionNLFIntegrator self, FiniteElementSpace fes)\n"
 		""},
+	 { "VectorConvectionNLFIntegrator_AssembleMF", (PyCFunction)(void(*)(void))_wrap_VectorConvectionNLFIntegrator_AssembleMF, METH_VARARGS|METH_KEYWORDS, "AssembleMF(VectorConvectionNLFIntegrator self, FiniteElementSpace fes)"},
 	 { "VectorConvectionNLFIntegrator_AddMultPA", (PyCFunction)(void(*)(void))_wrap_VectorConvectionNLFIntegrator_AddMultPA, METH_VARARGS|METH_KEYWORDS, "AddMultPA(VectorConvectionNLFIntegrator self, Vector x, Vector y)"},
+	 { "VectorConvectionNLFIntegrator_AddMultMF", (PyCFunction)(void(*)(void))_wrap_VectorConvectionNLFIntegrator_AddMultMF, METH_VARARGS|METH_KEYWORDS, "AddMultMF(VectorConvectionNLFIntegrator self, Vector x, Vector y)"},
 	 { "delete_VectorConvectionNLFIntegrator", _wrap_delete_VectorConvectionNLFIntegrator, METH_O, "delete_VectorConvectionNLFIntegrator(VectorConvectionNLFIntegrator self)"},
 	 { "VectorConvectionNLFIntegrator_swigregister", VectorConvectionNLFIntegrator_swigregister, METH_O, NULL},
 	 { "VectorConvectionNLFIntegrator_swiginit", VectorConvectionNLFIntegrator_swiginit, METH_VARARGS, NULL},
+	 { "new_ConvectiveVectorConvectionNLFIntegrator", _wrap_new_ConvectiveVectorConvectionNLFIntegrator, METH_VARARGS, "\n"
+		"ConvectiveVectorConvectionNLFIntegrator(Coefficient q)\n"
+		"new_ConvectiveVectorConvectionNLFIntegrator() -> ConvectiveVectorConvectionNLFIntegrator\n"
+		""},
+	 { "ConvectiveVectorConvectionNLFIntegrator_AssembleElementGrad", (PyCFunction)(void(*)(void))_wrap_ConvectiveVectorConvectionNLFIntegrator_AssembleElementGrad, METH_VARARGS|METH_KEYWORDS, "AssembleElementGrad(ConvectiveVectorConvectionNLFIntegrator self, FiniteElement el, ElementTransformation trans, Vector elfun, DenseMatrix elmat)"},
+	 { "delete_ConvectiveVectorConvectionNLFIntegrator", _wrap_delete_ConvectiveVectorConvectionNLFIntegrator, METH_O, "delete_ConvectiveVectorConvectionNLFIntegrator(ConvectiveVectorConvectionNLFIntegrator self)"},
+	 { "ConvectiveVectorConvectionNLFIntegrator_swigregister", ConvectiveVectorConvectionNLFIntegrator_swigregister, METH_O, NULL},
+	 { "ConvectiveVectorConvectionNLFIntegrator_swiginit", ConvectiveVectorConvectionNLFIntegrator_swiginit, METH_VARARGS, NULL},
+	 { "new_SkewSymmetricVectorConvectionNLFIntegrator", _wrap_new_SkewSymmetricVectorConvectionNLFIntegrator, METH_VARARGS, "\n"
+		"SkewSymmetricVectorConvectionNLFIntegrator(Coefficient q)\n"
+		"new_SkewSymmetricVectorConvectionNLFIntegrator() -> SkewSymmetricVectorConvectionNLFIntegrator\n"
+		""},
+	 { "SkewSymmetricVectorConvectionNLFIntegrator_AssembleElementGrad", (PyCFunction)(void(*)(void))_wrap_SkewSymmetricVectorConvectionNLFIntegrator_AssembleElementGrad, METH_VARARGS|METH_KEYWORDS, "AssembleElementGrad(SkewSymmetricVectorConvectionNLFIntegrator self, FiniteElement el, ElementTransformation trans, Vector elfun, DenseMatrix elmat)"},
+	 { "delete_SkewSymmetricVectorConvectionNLFIntegrator", _wrap_delete_SkewSymmetricVectorConvectionNLFIntegrator, METH_O, "delete_SkewSymmetricVectorConvectionNLFIntegrator(SkewSymmetricVectorConvectionNLFIntegrator self)"},
+	 { "SkewSymmetricVectorConvectionNLFIntegrator_swigregister", SkewSymmetricVectorConvectionNLFIntegrator_swigregister, METH_O, NULL},
+	 { "SkewSymmetricVectorConvectionNLFIntegrator_swiginit", SkewSymmetricVectorConvectionNLFIntegrator_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
+static void *_p_p_mfem__HyprePCGTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HyprePCG **) x));
+}
+static void *_p_p_mfem__SparseMatrixTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Matrix *)(mfem::AbstractSparseMatrix *) ((mfem::SparseMatrix **) x));
+}
+static void *_p_p_mfem__DenseMatrixTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Matrix *) ((mfem::DenseMatrix **) x));
+}
+static void *_p_p_mfem__DenseSymmetricMatrixTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Matrix *) ((mfem::DenseSymmetricMatrix **) x));
+}
+static void *_p_p_mfem__AbstractSparseMatrixTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Matrix *) ((mfem::AbstractSparseMatrix **) x));
+}
+static void *_p_p_mfem__HypreDiagScaleTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreDiagScale **) x));
+}
+static void *_p_p_mfem__HypreFGMRESTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreFGMRES **) x));
+}
+static void *_p_p_mfem__HypreADSTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreADS **) x));
+}
+static void *_p_p_mfem__HypreEuclidTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreEuclid **) x));
+}
+static void *_p_p_mfem__HypreBoomerAMGTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreBoomerAMG **) x));
+}
+static void *_p_p_mfem__TimeDependentOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::TimeDependentOperator **) x));
+}
+static void *_p_p_mfem__TimeDependentAdjointOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::TimeDependentOperator *) ((mfem::TimeDependentAdjointOperator **) x));
+}
+static void *_p_p_mfem__SecondOrderTimeDependentOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::TimeDependentOperator *) ((mfem::SecondOrderTimeDependentOperator **) x));
+}
+static void *_p_p_mfem__IdentityOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::IdentityOperator **) x));
+}
+static void *_p_p_mfem__ScaledOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::ScaledOperator **) x));
+}
+static void *_p_p_mfem__TransposeOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::TransposeOperator **) x));
+}
+static void *_p_p_mfem__ProductOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::ProductOperator **) x));
+}
+static void *_p_p_mfem__RAPOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::RAPOperator **) x));
+}
+static void *_p_p_mfem__TripleProductOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::TripleProductOperator **) x));
+}
+static void *_p_p_mfem__ConstrainedOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::ConstrainedOperator **) x));
+}
+static void *_p_p_mfem__RectangularConstrainedOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::RectangularConstrainedOperator **) x));
+}
+static void *_p_p_mfem__HypreILUTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreILU **) x));
+}
+static void *_p_p_mfem__ElementRestrictionTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::ElementRestriction **) x));
+}
+static void *_p_p_mfem__L2ElementRestrictionTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::L2ElementRestriction **) x));
+}
+static void *_p_p_mfem__FaceRestrictionTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::FaceRestriction **) x));
+}
+static void *_p_p_mfem__H1FaceRestrictionTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::FaceRestriction *) ((mfem::H1FaceRestriction **) x));
+}
+static void *_p_p_mfem__L2FaceRestrictionTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::FaceRestriction *) ((mfem::L2FaceRestriction **) x));
+}
+static void *_p_p_mfem__NCL2FaceRestrictionTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::FaceRestriction *)(mfem::L2FaceRestriction *) ((mfem::NCL2FaceRestriction **) x));
+}
+static void *_p_p_mfem__HypreGMRESTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreGMRES **) x));
+}
+static void *_p_p_mfem__SolverTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::Solver **) x));
+}
+static void *_p_p_mfem__HypreParaSailsTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreParaSails **) x));
+}
+static void *_p_p_mfem__HypreParMatrixTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::HypreParMatrix **) x));
+}
+static void *_p_p_mfem__MatrixTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::Matrix **) x));
+}
+static void *_p_p_mfem__HypreIdentityTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreIdentity **) x));
+}
+static void *_p_p_mfem__DenseMatrixInverseTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::MatrixInverse *) ((mfem::DenseMatrixInverse **) x));
+}
+static void *_p_p_mfem__MatrixInverseTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Solver *) ((mfem::MatrixInverse **) x));
+}
+static void *_p_p_mfem__PyOperatorBaseTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::PyOperatorBase **) x));
+}
+static void *_p_p_mfem__PyTimeDependentOperatorBaseTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase **) x));
+}
+static void *_p_p_mfem__HypreSolverTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Solver *) ((mfem::HypreSolver **) x));
+}
+static void *_p_p_mfem__HypreAMSTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreAMS **) x));
+}
+static void *_p_p_mfem__HypreSmootherTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Solver *) ((mfem::HypreSmoother **) x));
+}
+static void *_p_p_mfem__HypreTriSolveTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreTriSolve **) x));
+}
+static void *_p_mfem__HyprePCGTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HyprePCG *) x));
+}
+static void *_p_mfem__SparseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Matrix *)(mfem::AbstractSparseMatrix *) ((mfem::SparseMatrix *) x));
+}
+static void *_p_mfem__DenseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::DenseMatrix *) x));
+}
+static void *_p_mfem__DenseSymmetricMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::DenseSymmetricMatrix *) x));
+}
+static void *_p_mfem__AbstractSparseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::AbstractSparseMatrix *) x));
+}
+static void *_p_mfem__HypreDiagScaleTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreDiagScale *) x));
+}
+static void *_p_mfem__HypreFGMRESTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreFGMRES *) x));
+}
+static void *_p_mfem__HypreADSTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreADS *) x));
+}
+static void *_p_mfem__HypreEuclidTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreEuclid *) x));
+}
+static void *_p_mfem__HypreBoomerAMGTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreBoomerAMG *) x));
+}
+static void *_p_mfem__TimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::TimeDependentOperator *) x));
+}
+static void *_p_mfem__TimeDependentAdjointOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::TimeDependentAdjointOperator *) x));
+}
+static void *_p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::SecondOrderTimeDependentOperator *) x));
+}
+static void *_p_mfem__IdentityOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::IdentityOperator *) x));
+}
+static void *_p_mfem__ScaledOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::ScaledOperator *) x));
+}
+static void *_p_mfem__TransposeOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::TransposeOperator *) x));
+}
+static void *_p_mfem__ProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::ProductOperator *) x));
+}
+static void *_p_mfem__RAPOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::RAPOperator *) x));
+}
+static void *_p_mfem__TripleProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::TripleProductOperator *) x));
+}
+static void *_p_mfem__ConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::ConstrainedOperator *) x));
+}
+static void *_p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::RectangularConstrainedOperator *) x));
+}
+static void *_p_mfem__HypreILUTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreILU *) x));
+}
+static void *_p_mfem__ElementRestrictionTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::ElementRestriction *) x));
+}
+static void *_p_mfem__L2ElementRestrictionTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::L2ElementRestriction *) x));
+}
+static void *_p_mfem__FaceRestrictionTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::FaceRestriction *) x));
+}
+static void *_p_mfem__H1FaceRestrictionTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::FaceRestriction *) ((mfem::H1FaceRestriction *) x));
+}
+static void *_p_mfem__L2FaceRestrictionTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::FaceRestriction *) ((mfem::L2FaceRestriction *) x));
+}
+static void *_p_mfem__NCL2FaceRestrictionTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::FaceRestriction *)(mfem::L2FaceRestriction *) ((mfem::NCL2FaceRestriction *) x));
+}
+static void *_p_mfem__HypreGMRESTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreGMRES *) x));
+}
+static void *_p_mfem__SolverTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::Solver *) x));
+}
+static void *_p_mfem__HypreParaSailsTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreParaSails *) x));
+}
+static void *_p_mfem__HypreParMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::HypreParMatrix *) x));
+}
+static void *_p_mfem__MatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::Matrix *) x));
+}
+static void *_p_mfem__HypreIdentityTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreIdentity *) x));
+}
+static void *_p_mfem__DenseMatrixInverseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::MatrixInverse *) ((mfem::DenseMatrixInverse *) x));
+}
+static void *_p_mfem__MatrixInverseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *) ((mfem::MatrixInverse *) x));
+}
+static void *_p_mfem__PyOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::PyOperatorBase *) x));
+}
+static void *_p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase *) x));
+}
+static void *_p_mfem__HypreSolverTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *) ((mfem::HypreSolver *) x));
+}
+static void *_p_mfem__HypreAMSTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreAMS *) x));
+}
+static void *_p_mfem__HypreSmootherTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *) ((mfem::HypreSmoother *) x));
+}
+static void *_p_mfem__HypreTriSolveTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::HypreSolver *) ((mfem::HypreTriSolve *) x));
+}
 static void *_p_mfem__InverseHarmonicModelTo_p_mfem__HyperelasticModel(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::HyperelasticModel *)  ((mfem::InverseHarmonicModel *) x));
 }
 static void *_p_mfem__NeoHookeanModelTo_p_mfem__HyperelasticModel(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::HyperelasticModel *)  ((mfem::NeoHookeanModel *) x));
-}
-static void *_p_mfem__HyperelasticNLFIntegratorTo_p_mfem__NonlinearFormIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::NonlinearFormIntegrator *)  ((mfem::HyperelasticNLFIntegrator *) x));
-}
-static void *_p_mfem__VectorConvectionNLFIntegratorTo_p_mfem__NonlinearFormIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::NonlinearFormIntegrator *)  ((mfem::VectorConvectionNLFIntegrator *) x));
-}
-static void *_p_mfem__IncompressibleNeoHookeanIntegratorTo_p_mfem__BlockNonlinearFormIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::BlockNonlinearFormIntegrator *)  ((mfem::IncompressibleNeoHookeanIntegrator *) x));
 }
 static void *_p_mfem__PyCoefficientBaseTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Coefficient *) (mfem::FunctionCoefficient *) ((mfem::PyCoefficientBase *) x));
@@ -7315,47 +9105,230 @@ static void *_p_mfem__QuadratureFunctionCoefficientTo_p_mfem__Coefficient(void *
 static void *_p_mfem__ExtrudeCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Coefficient *)  ((mfem::ExtrudeCoefficient *) x));
 }
-static void *_p_mfem__L2_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::NodalTensorFiniteElement *) ((mfem::L2_SegmentElement *) x));
+static void *_p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *) (mfem::VectorFunctionCoefficient *) ((mfem::VectorPyCoefficientBase *) x));
 }
-static void *_p_mfem__H1Pos_WedgeElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::H1Pos_WedgeElement *) x));
+static void *_p_mfem__VectorQuadratureFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorQuadratureFunctionCoefficient *) x));
 }
-static void *_p_mfem__BiCubic3DFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::H1_WedgeElement *) ((mfem::BiCubic3DFiniteElement *) x));
+static void *_p_mfem__MatrixVectorProductCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::MatrixVectorProductCoefficient *) x));
 }
-static void *_p_mfem__BiQuadratic3DFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::H1_WedgeElement *) ((mfem::BiQuadratic3DFiniteElement *) x));
+static void *_p_mfem__VectorCrossProductCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorCrossProductCoefficient *) x));
 }
-static void *_p_mfem__BiLinear3DFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::H1_WedgeElement *) ((mfem::BiLinear3DFiniteElement *) x));
+static void *_p_mfem__NormalizedVectorCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::NormalizedVectorCoefficient *) x));
+}
+static void *_p_mfem__ScalarVectorProductCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::ScalarVectorProductCoefficient *) x));
+}
+static void *_p_mfem__VectorSumCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorSumCoefficient *) x));
+}
+static void *_p_mfem__VectorRestrictedCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorRestrictedCoefficient *) x));
+}
+static void *_p_mfem__VectorDeltaCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorDeltaCoefficient *) x));
+}
+static void *_p_mfem__CurlGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::CurlGridFunctionCoefficient *) x));
+}
+static void *_p_mfem__GradientGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::GradientGridFunctionCoefficient *) x));
+}
+static void *_p_mfem__VectorGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorGridFunctionCoefficient *) x));
+}
+static void *_p_mfem__VectorArrayCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorArrayCoefficient *) x));
+}
+static void *_p_mfem__VectorFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorFunctionCoefficient *) x));
+}
+static void *_p_mfem__VectorConstantCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorConstantCoefficient *) x));
+}
+static void *_p_mfem__NodeExtrudeCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::NodeExtrudeCoefficient *) x));
+}
+static void *_p_mfem__HypreParVectorTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::HypreParVector *) x));
+}
+static void *_p_mfem__GridFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::GridFunction *) x));
+}
+static void *_p_mfem__QuadratureFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::QuadratureFunction *) x));
+}
+static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::LinearForm *) x));
+}
+static void *_p_p_mfem__HypreParVectorTo_p_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector **)  ((mfem::HypreParVector **) x));
+}
+static void *_p_p_mfem__GridFunctionTo_p_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector **)  ((mfem::GridFunction **) x));
+}
+static void *_p_p_mfem__QuadratureFunctionTo_p_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector **)  ((mfem::QuadratureFunction **) x));
+}
+static void *_p_p_mfem__LinearFormTo_p_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector **)  ((mfem::LinearForm **) x));
+}
+static void *_p_mfem__IsoparametricTransformationTo_p_mfem__ElementTransformation(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ElementTransformation *)  ((mfem::IsoparametricTransformation *) x));
+}
+static void *_p_mfem__FaceElementTransformationsTo_p_mfem__ElementTransformation(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ElementTransformation *) (mfem::IsoparametricTransformation *) ((mfem::FaceElementTransformations *) x));
+}
+static void *_p_mfem__HypreGMRESTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreGMRES *) x));
+}
+static void *_p_mfem__HypreParaSailsTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreParaSails *) x));
+}
+static void *_p_mfem__HypreFGMRESTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreFGMRES *) x));
+}
+static void *_p_mfem__HypreTriSolveTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreTriSolve *) x));
+}
+static void *_p_mfem__HypreSolverTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *)  ((mfem::HypreSolver *) x));
+}
+static void *_p_mfem__HypreBoomerAMGTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreBoomerAMG *) x));
+}
+static void *_p_mfem__DenseMatrixInverseTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::MatrixInverse *) ((mfem::DenseMatrixInverse *) x));
+}
+static void *_p_mfem__MatrixInverseTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *)  ((mfem::MatrixInverse *) x));
+}
+static void *_p_mfem__HypreDiagScaleTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreDiagScale *) x));
+}
+static void *_p_mfem__HypreIdentityTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreIdentity *) x));
+}
+static void *_p_mfem__HyprePCGTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HyprePCG *) x));
+}
+static void *_p_mfem__HypreAMSTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreAMS *) x));
+}
+static void *_p_mfem__HypreEuclidTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreEuclid *) x));
+}
+static void *_p_mfem__HypreADSTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreADS *) x));
+}
+static void *_p_mfem__HypreILUTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::HypreSolver *) ((mfem::HypreILU *) x));
+}
+static void *_p_mfem__HypreSmootherTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *)  ((mfem::HypreSmoother *) x));
+}
+static void *_p_p_mfem__HypreGMRESTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HypreGMRES **) x));
+}
+static void *_p_p_mfem__HypreParaSailsTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HypreParaSails **) x));
+}
+static void *_p_p_mfem__HypreFGMRESTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HypreFGMRES **) x));
+}
+static void *_p_p_mfem__HypreTriSolveTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HypreTriSolve **) x));
+}
+static void *_p_p_mfem__HypreSolverTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver **)  ((mfem::HypreSolver **) x));
+}
+static void *_p_p_mfem__HypreBoomerAMGTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HypreBoomerAMG **) x));
+}
+static void *_p_p_mfem__DenseMatrixInverseTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver **) (mfem::MatrixInverse *) ((mfem::DenseMatrixInverse **) x));
+}
+static void *_p_p_mfem__MatrixInverseTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver **)  ((mfem::MatrixInverse **) x));
+}
+static void *_p_p_mfem__HypreDiagScaleTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HypreDiagScale **) x));
+}
+static void *_p_p_mfem__HypreIdentityTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HypreIdentity **) x));
+}
+static void *_p_p_mfem__HyprePCGTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HyprePCG **) x));
+}
+static void *_p_p_mfem__HypreAMSTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HypreAMS **) x));
+}
+static void *_p_p_mfem__HypreEuclidTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HypreEuclid **) x));
+}
+static void *_p_p_mfem__HypreADSTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HypreADS **) x));
+}
+static void *_p_p_mfem__HypreILUTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver **) (mfem::HypreSolver *) ((mfem::HypreILU **) x));
+}
+static void *_p_p_mfem__HypreSmootherTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver **)  ((mfem::HypreSmoother **) x));
+}
+static void *_p_mfem__ConvectiveVectorConvectionNLFIntegratorTo_p_mfem__VectorConvectionNLFIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorConvectionNLFIntegrator *)  ((mfem::ConvectiveVectorConvectionNLFIntegrator *) x));
+}
+static void *_p_mfem__SkewSymmetricVectorConvectionNLFIntegratorTo_p_mfem__VectorConvectionNLFIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorConvectionNLFIntegrator *)  ((mfem::SkewSymmetricVectorConvectionNLFIntegrator *) x));
+}
+static void *_p_mfem__IncompressibleNeoHookeanIntegratorTo_p_mfem__BlockNonlinearFormIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::BlockNonlinearFormIntegrator *)  ((mfem::IncompressibleNeoHookeanIntegrator *) x));
+}
+static void *_p_mfem__HyperelasticNLFIntegratorTo_p_mfem__NonlinearFormIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::NonlinearFormIntegrator *)  ((mfem::HyperelasticNLFIntegrator *) x));
+}
+static void *_p_mfem__VectorConvectionNLFIntegratorTo_p_mfem__NonlinearFormIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::NonlinearFormIntegrator *)  ((mfem::VectorConvectionNLFIntegrator *) x));
+}
+static void *_p_mfem__ConvectiveVectorConvectionNLFIntegratorTo_p_mfem__NonlinearFormIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::NonlinearFormIntegrator *) (mfem::VectorConvectionNLFIntegrator *) ((mfem::ConvectiveVectorConvectionNLFIntegrator *) x));
+}
+static void *_p_mfem__SkewSymmetricVectorConvectionNLFIntegratorTo_p_mfem__NonlinearFormIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::NonlinearFormIntegrator *) (mfem::VectorConvectionNLFIntegrator *) ((mfem::SkewSymmetricVectorConvectionNLFIntegrator *) x));
+}
+static void *_p_mfem__ND_R1D_PointElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_R1D_PointElement *) x));
+}
+static void *_p_mfem__ND_WedgeElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_WedgeElement *) x));
+}
+static void *_p_mfem__ND_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *)(mfem::VectorTensorFiniteElement *) ((mfem::ND_SegmentElement *) x));
+}
+static void *_p_mfem__ND_TriangleElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_TriangleElement *) x));
+}
+static void *_p_mfem__ND_TetrahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_TetrahedronElement *) x));
+}
+static void *_p_mfem__ND_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *)(mfem::VectorTensorFiniteElement *) ((mfem::ND_QuadrilateralElement *) x));
+}
+static void *_p_mfem__ND_HexahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *)(mfem::VectorTensorFiniteElement *) ((mfem::ND_HexahedronElement *) x));
 }
 static void *_p_mfem__H1_WedgeElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::H1_WedgeElement *) x));
-}
-static void *_p_mfem__H1Pos_TetrahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::H1Pos_TetrahedronElement *) x));
-}
-static void *_p_mfem__H1Pos_TriangleElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::H1Pos_TriangleElement *) x));
 }
 static void *_p_mfem__H1_TetrahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::H1_TetrahedronElement *) x));
 }
 static void *_p_mfem__H1_TriangleElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::H1_TriangleElement *) x));
-}
-static void *_p_mfem__H1Pos_HexahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::H1Pos_HexahedronElement *) x));
-}
-static void *_p_mfem__H1Ser_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *) ((mfem::H1Ser_QuadrilateralElement *) x));
-}
-static void *_p_mfem__H1Pos_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::H1Pos_QuadrilateralElement *) x));
-}
-static void *_p_mfem__H1Pos_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::H1Pos_SegmentElement *) x));
 }
 static void *_p_mfem__H1_HexahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::NodalTensorFiniteElement *) ((mfem::H1_HexahedronElement *) x));
@@ -7366,17 +9339,14 @@ static void *_p_mfem__H1_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, i
 static void *_p_mfem__H1_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::NodalTensorFiniteElement *) ((mfem::H1_SegmentElement *) x));
 }
-static void *_p_mfem__VectorTensorFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::VectorTensorFiniteElement *) x));
-}
-static void *_p_mfem__PositiveTensorFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::PositiveTensorFiniteElement *) x));
-}
-static void *_p_mfem__NodalTensorFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::NodalTensorFiniteElement *) x));
-}
 static void *_p_mfem__RotTriLinearHexFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::RotTriLinearHexFiniteElement *) x));
+}
+static void *_p_mfem__RT0PyrFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::RT0PyrFiniteElement *) x));
+}
+static void *_p_mfem__RT0WdgFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::RT0WdgFiniteElement *) x));
 }
 static void *_p_mfem__RT0TetFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::RT0TetFiniteElement *) x));
@@ -7386,6 +9356,12 @@ static void *_p_mfem__RT1HexFiniteElementTo_p_mfem__FiniteElement(void *x, int *
 }
 static void *_p_mfem__RT0HexFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::RT0HexFiniteElement *) x));
+}
+static void *_p_mfem__Nedelec1PyrFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::Nedelec1PyrFiniteElement *) x));
+}
+static void *_p_mfem__Nedelec1WdgFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::Nedelec1WdgFiniteElement *) x));
 }
 static void *_p_mfem__Nedelec1TetFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::Nedelec1TetFiniteElement *) x));
@@ -7411,6 +9387,12 @@ static void *_p_mfem__RefinedLinear1DFiniteElementTo_p_mfem__FiniteElement(void 
 static void *_p_mfem__LagrangeHexFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::LagrangeHexFiniteElement *) x));
 }
+static void *_p_mfem__P0PyrFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::P0PyrFiniteElement *) x));
+}
+static void *_p_mfem__P0WdgFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::P0WdgFiniteElement *) x));
+}
 static void *_p_mfem__P0HexFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::P0HexFiniteElement *) x));
 }
@@ -7435,11 +9417,11 @@ static void *_p_mfem__RT2QuadFiniteElementTo_p_mfem__FiniteElement(void *x, int 
 static void *_p_mfem__RT2TriangleFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::RT2TriangleFiniteElement *) x));
 }
+static void *_p_mfem__RT1QuadFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::RT1QuadFiniteElement *) x));
+}
 static void *_p_mfem__Quad2DFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::Quad2DFiniteElement *) x));
-}
-static void *_p_mfem__QuadPos1DFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::QuadPos1DFiniteElement *) x));
 }
 static void *_p_mfem__Quad1DFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::Quad1DFiniteElement *) x));
@@ -7465,11 +9447,14 @@ static void *_p_mfem__Linear1DFiniteElementTo_p_mfem__FiniteElement(void *x, int
 static void *_p_mfem__PointFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::PointFiniteElement *) x));
 }
+static void *_p_mfem__VectorTensorFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::VectorTensorFiniteElement *) x));
+}
+static void *_p_mfem__NodalTensorFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::NodalTensorFiniteElement *) x));
+}
 static void *_p_mfem__VectorFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *)  ((mfem::VectorFiniteElement *) x));
-}
-static void *_p_mfem__PositiveFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *) ((mfem::PositiveFiniteElement *) x));
 }
 static void *_p_mfem__NodalFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *) ((mfem::NodalFiniteElement *) x));
@@ -7482,9 +9467,6 @@ static void *_p_mfem__GaussQuad2DFiniteElementTo_p_mfem__FiniteElement(void *x, 
 }
 static void *_p_mfem__BiQuad2DFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::BiQuad2DFiniteElement *) x));
-}
-static void *_p_mfem__BiQuadPos2DFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::BiQuadPos2DFiniteElement *) x));
 }
 static void *_p_mfem__GaussBiQuad2DFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::GaussBiQuad2DFiniteElement *) x));
@@ -7500,6 +9482,12 @@ static void *_p_mfem__Cubic2DFiniteElementTo_p_mfem__FiniteElement(void *x, int 
 }
 static void *_p_mfem__Cubic3DFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::Cubic3DFiniteElement *) x));
+}
+static void *_p_mfem__LinearWedgeFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::LinearWedgeFiniteElement *) x));
+}
+static void *_p_mfem__LinearPyramidFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::LinearPyramidFiniteElement *) x));
 }
 static void *_p_mfem__P0TriangleFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::P0TriangleFiniteElement *) x));
@@ -7534,44 +9522,20 @@ static void *_p_mfem__RT0QuadFiniteElementTo_p_mfem__FiniteElement(void *x, int 
 static void *_p_mfem__RT1TriangleFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::RT1TriangleFiniteElement *) x));
 }
-static void *_p_mfem__RT1QuadFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::RT1QuadFiniteElement *) x));
+static void *_p_mfem__ND_R1D_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_R1D_SegmentElement *) x));
 }
-static void *_p_mfem__L2Pos_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::L2Pos_SegmentElement *) x));
+static void *_p_mfem__ND_R2D_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_R2D_SegmentElement *) x));
 }
-static void *_p_mfem__L2_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::NodalTensorFiniteElement *) ((mfem::L2_QuadrilateralElement *) x));
+static void *_p_mfem__ND_R2D_FiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_R2D_FiniteElement *) x));
 }
-static void *_p_mfem__L2Pos_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::L2Pos_QuadrilateralElement *) x));
+static void *_p_mfem__ND_R2D_TriangleElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *)(mfem::ND_R2D_FiniteElement *) ((mfem::ND_R2D_TriangleElement *) x));
 }
-static void *_p_mfem__L2_HexahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::NodalTensorFiniteElement *) ((mfem::L2_HexahedronElement *) x));
-}
-static void *_p_mfem__L2Pos_HexahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::L2Pos_HexahedronElement *) x));
-}
-static void *_p_mfem__L2_TriangleElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::L2_TriangleElement *) x));
-}
-static void *_p_mfem__L2Pos_TriangleElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::L2Pos_TriangleElement *) x));
-}
-static void *_p_mfem__L2_TetrahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::L2_TetrahedronElement *) x));
-}
-static void *_p_mfem__L2Pos_TetrahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::L2Pos_TetrahedronElement *) x));
-}
-static void *_p_mfem__L2_WedgeElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::L2_WedgeElement *) x));
-}
-static void *_p_mfem__P0WedgeFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::L2_WedgeElement *) ((mfem::P0WedgeFiniteElement *) x));
-}
-static void *_p_mfem__L2Pos_WedgeElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::L2Pos_WedgeElement *) x));
+static void *_p_mfem__ND_R2D_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *)(mfem::ND_R2D_FiniteElement *) ((mfem::ND_R2D_QuadrilateralElement *) x));
 }
 static void *_p_mfem__RT_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *)(mfem::VectorTensorFiniteElement *) ((mfem::RT_QuadrilateralElement *) x));
@@ -7585,20 +9549,41 @@ static void *_p_mfem__RT_TriangleElementTo_p_mfem__FiniteElement(void *x, int *S
 static void *_p_mfem__RT_TetrahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::RT_TetrahedronElement *) x));
 }
-static void *_p_mfem__ND_HexahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *)(mfem::VectorTensorFiniteElement *) ((mfem::ND_HexahedronElement *) x));
+static void *_p_mfem__RT_WedgeElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::RT_WedgeElement *) x));
 }
-static void *_p_mfem__ND_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *)(mfem::VectorTensorFiniteElement *) ((mfem::ND_QuadrilateralElement *) x));
+static void *_p_mfem__RT_R1D_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::RT_R1D_SegmentElement *) x));
 }
-static void *_p_mfem__ND_TetrahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_TetrahedronElement *) x));
+static void *_p_mfem__RT_R2D_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::RT_R2D_SegmentElement *) x));
 }
-static void *_p_mfem__ND_TriangleElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_TriangleElement *) x));
+static void *_p_mfem__RT_R2D_FiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::RT_R2D_FiniteElement *) x));
 }
-static void *_p_mfem__ND_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_SegmentElement *) x));
+static void *_p_mfem__RT_R2D_TriangleElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *)(mfem::RT_R2D_FiniteElement *) ((mfem::RT_R2D_TriangleElement *) x));
+}
+static void *_p_mfem__RT_R2D_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *)(mfem::RT_R2D_FiniteElement *) ((mfem::RT_R2D_QuadrilateralElement *) x));
+}
+static void *_p_mfem__L2_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::NodalTensorFiniteElement *) ((mfem::L2_SegmentElement *) x));
+}
+static void *_p_mfem__L2_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::NodalTensorFiniteElement *) ((mfem::L2_QuadrilateralElement *) x));
+}
+static void *_p_mfem__L2_HexahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::NodalTensorFiniteElement *) ((mfem::L2_HexahedronElement *) x));
+}
+static void *_p_mfem__L2_TriangleElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::L2_TriangleElement *) x));
+}
+static void *_p_mfem__L2_TetrahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::L2_TetrahedronElement *) x));
+}
+static void *_p_mfem__L2_WedgeElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::L2_WedgeElement *) x));
 }
 static void *_p_mfem__NURBSFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *) ((mfem::NURBSFiniteElement *) x));
@@ -7612,31 +9597,73 @@ static void *_p_mfem__NURBS2DFiniteElementTo_p_mfem__FiniteElement(void *x, int 
 static void *_p_mfem__NURBS3DFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NURBSFiniteElement *) ((mfem::NURBS3DFiniteElement *) x));
 }
-static void *_p_mfem__IsoparametricTransformationTo_p_mfem__ElementTransformation(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ElementTransformation *)  ((mfem::IsoparametricTransformation *) x));
+static void *_p_mfem__PositiveFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *) ((mfem::PositiveFiniteElement *) x));
 }
-static void *_p_mfem__FaceElementTransformationsTo_p_mfem__ElementTransformation(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ElementTransformation *) (mfem::IsoparametricTransformation *) ((mfem::FaceElementTransformations *) x));
+static void *_p_mfem__PositiveTensorFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::PositiveTensorFiniteElement *) x));
 }
-static void *_p_mfem__HypreParVectorTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::HypreParVector *) x));
+static void *_p_mfem__BiQuadPos2DFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::BiQuadPos2DFiniteElement *) x));
 }
-static void *_p_mfem__GridFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::GridFunction *) x));
+static void *_p_mfem__QuadPos1DFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::QuadPos1DFiniteElement *) x));
 }
-static void *_p_mfem__QuadratureFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::QuadratureFunction *) x));
+static void *_p_mfem__H1Pos_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::H1Pos_SegmentElement *) x));
 }
-static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::LinearForm *) x));
+static void *_p_mfem__H1Pos_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::H1Pos_QuadrilateralElement *) x));
 }
+static void *_p_mfem__H1Pos_HexahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::H1Pos_HexahedronElement *) x));
+}
+static void *_p_mfem__H1Pos_TriangleElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::H1Pos_TriangleElement *) x));
+}
+static void *_p_mfem__H1Pos_TetrahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::H1Pos_TetrahedronElement *) x));
+}
+static void *_p_mfem__H1Pos_WedgeElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::H1Pos_WedgeElement *) x));
+}
+static void *_p_mfem__L2Pos_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::L2Pos_SegmentElement *) x));
+}
+static void *_p_mfem__L2Pos_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::L2Pos_QuadrilateralElement *) x));
+}
+static void *_p_mfem__L2Pos_HexahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::L2Pos_HexahedronElement *) x));
+}
+static void *_p_mfem__L2Pos_TriangleElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::L2Pos_TriangleElement *) x));
+}
+static void *_p_mfem__L2Pos_TetrahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::L2Pos_TetrahedronElement *) x));
+}
+static void *_p_mfem__L2Pos_WedgeElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::L2Pos_WedgeElement *) x));
+}
+static void *_p_mfem__H1Ser_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *) ((mfem::H1Ser_QuadrilateralElement *) x));
+}
+static swig_type_info _swigt___input = {"__input", "$input", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p__HYPRE_ExecutionPolicy = {"_p__HYPRE_ExecutionPolicy", "enum _HYPRE_ExecutionPolicy *|HYPRE_ExecutionPolicy *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p__HYPRE_MemoryLocation = {"_p__HYPRE_MemoryLocation", "enum _HYPRE_MemoryLocation *|HYPRE_MemoryLocation *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_bool = {"_p_bool", "bool *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_ceed__Operator = {"_p_ceed__Operator", "ceed::Operator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_double = {"_p_double", "HYPRE_Real *|HYPRE_Complex *|double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *|HYPRE_BigInt *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Array2DT_mfem__DenseMatrix_p_t = {"_p_mfem__Array2DT_mfem__DenseMatrix_p_t", "mfem::Array2D< mfem::DenseMatrix * > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__FiniteElement_const_p_t = {"_p_mfem__ArrayT_mfem__FiniteElement_const_p_t", "mfem::Array< mfem::FiniteElement const * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__Vector_const_p_t = {"_p_mfem__ArrayT_mfem__Vector_const_p_t", "mfem::Array< mfem::Vector const * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__Vector_p_t = {"_p_mfem__ArrayT_mfem__Vector_p_t", "mfem::Array< mfem::Vector * > *", 0, 0, (void*)0, 0};
@@ -7660,12 +9687,18 @@ static swig_type_info _swigt__p_mfem__ConstantCoefficient = {"_p_mfem__ConstantC
 static swig_type_info _swigt__p_mfem__DeterminantCoefficient = {"_p_mfem__DeterminantCoefficient", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__QuadratureFunctionCoefficient = {"_p_mfem__QuadratureFunctionCoefficient", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__ExtrudeCoefficient = {"_p_mfem__ExtrudeCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ConvectionIntegrator = {"_p_mfem__ConvectionIntegrator", "mfem::ConvectionIntegrator *|mfem::NonconservativeConvectionIntegrator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ConvectiveVectorConvectionNLFIntegrator = {"_p_mfem__ConvectiveVectorConvectionNLFIntegrator", "mfem::ConvectiveVectorConvectionNLFIntegrator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__DGTraceIntegrator = {"_p_mfem__DGTraceIntegrator", "mfem::DGTraceIntegrator *|mfem::ConservativeDGTraceIntegrator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DenseMatrix = {"_p_mfem__DenseMatrix", "mfem::DenseMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ElementTransformation = {"_p_mfem__ElementTransformation", "mfem::ElementTransformation *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IsoparametricTransformation = {"_p_mfem__IsoparametricTransformation", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__FaceElementTransformations = {"_p_mfem__FaceElementTransformations", "mfem::FaceElementTransformations *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__FiniteElement = {"_p_mfem__FiniteElement", "mfem::FiniteElement *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__P0TetFiniteElement = {"_p_mfem__P0TetFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__P0HexFiniteElement = {"_p_mfem__P0HexFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__P0WdgFiniteElement = {"_p_mfem__P0WdgFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__P0PyrFiniteElement = {"_p_mfem__P0PyrFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__LagrangeHexFiniteElement = {"_p_mfem__LagrangeHexFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RefinedLinear1DFiniteElement = {"_p_mfem__RefinedLinear1DFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RefinedLinear2DFiniteElement = {"_p_mfem__RefinedLinear2DFiniteElement", 0, 0, 0, 0, 0};
@@ -7674,39 +9707,37 @@ static swig_type_info _swigt__p_mfem__RefinedBiLinear2DFiniteElement = {"_p_mfem
 static swig_type_info _swigt__p_mfem__RefinedTriLinear3DFiniteElement = {"_p_mfem__RefinedTriLinear3DFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Nedelec1HexFiniteElement = {"_p_mfem__Nedelec1HexFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Nedelec1TetFiniteElement = {"_p_mfem__Nedelec1TetFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__Nedelec1WdgFiniteElement = {"_p_mfem__Nedelec1WdgFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__Nedelec1PyrFiniteElement = {"_p_mfem__Nedelec1PyrFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT0HexFiniteElement = {"_p_mfem__RT0HexFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT1HexFiniteElement = {"_p_mfem__RT1HexFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT0TetFiniteElement = {"_p_mfem__RT0TetFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RT0WdgFiniteElement = {"_p_mfem__RT0WdgFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RT0PyrFiniteElement = {"_p_mfem__RT0PyrFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RotTriLinearHexFiniteElement = {"_p_mfem__RotTriLinearHexFiniteElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__NodalTensorFiniteElement = {"_p_mfem__NodalTensorFiniteElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__PositiveTensorFiniteElement = {"_p_mfem__PositiveTensorFiniteElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorTensorFiniteElement = {"_p_mfem__VectorTensorFiniteElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__H1_SegmentElement = {"_p_mfem__H1_SegmentElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__H1_QuadrilateralElement = {"_p_mfem__H1_QuadrilateralElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__H1_HexahedronElement = {"_p_mfem__H1_HexahedronElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__H1Pos_SegmentElement = {"_p_mfem__H1Pos_SegmentElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2_SegmentElement = {"_p_mfem__L2_SegmentElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__H1Pos_WedgeElement = {"_p_mfem__H1Pos_WedgeElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__BiCubic3DFiniteElement = {"_p_mfem__BiCubic3DFiniteElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__BiQuadratic3DFiniteElement = {"_p_mfem__BiQuadratic3DFiniteElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__BiLinear3DFiniteElement = {"_p_mfem__BiLinear3DFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ND_R1D_PointElement = {"_p_mfem__ND_R1D_PointElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ND_WedgeElement = {"_p_mfem__ND_WedgeElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ND_SegmentElement = {"_p_mfem__ND_SegmentElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ND_TriangleElement = {"_p_mfem__ND_TriangleElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ND_TetrahedronElement = {"_p_mfem__ND_TetrahedronElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ND_QuadrilateralElement = {"_p_mfem__ND_QuadrilateralElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ND_HexahedronElement = {"_p_mfem__ND_HexahedronElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__H1_WedgeElement = {"_p_mfem__H1_WedgeElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__H1Pos_TetrahedronElement = {"_p_mfem__H1Pos_TetrahedronElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__H1Pos_TriangleElement = {"_p_mfem__H1Pos_TriangleElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__H1_TetrahedronElement = {"_p_mfem__H1_TetrahedronElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__H1_TriangleElement = {"_p_mfem__H1_TriangleElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__H1Pos_HexahedronElement = {"_p_mfem__H1Pos_HexahedronElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__H1Ser_QuadrilateralElement = {"_p_mfem__H1Ser_QuadrilateralElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__H1Pos_QuadrilateralElement = {"_p_mfem__H1Pos_QuadrilateralElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__P0TetFiniteElement = {"_p_mfem__P0TetFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__H1_HexahedronElement = {"_p_mfem__H1_HexahedronElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__H1_QuadrilateralElement = {"_p_mfem__H1_QuadrilateralElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__H1_SegmentElement = {"_p_mfem__H1_SegmentElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__P1TetNonConfFiniteElement = {"_p_mfem__P1TetNonConfFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Lagrange1DFiniteElement = {"_p_mfem__Lagrange1DFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__P2SegmentFiniteElement = {"_p_mfem__P2SegmentFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__P1SegmentFiniteElement = {"_p_mfem__P1SegmentFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT2QuadFiniteElement = {"_p_mfem__RT2QuadFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT2TriangleFiniteElement = {"_p_mfem__RT2TriangleFiniteElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__Cubic2DFiniteElement = {"_p_mfem__Cubic2DFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RT1QuadFiniteElement = {"_p_mfem__RT1QuadFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Cubic3DFiniteElement = {"_p_mfem__Cubic3DFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__LinearWedgeFiniteElement = {"_p_mfem__LinearWedgeFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__LinearPyramidFiniteElement = {"_p_mfem__LinearPyramidFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__P0TriangleFiniteElement = {"_p_mfem__P0TriangleFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__P0QuadFiniteElement = {"_p_mfem__P0QuadFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Linear3DFiniteElement = {"_p_mfem__Linear3DFiniteElement", 0, 0, 0, 0, 0};
@@ -7717,17 +9748,17 @@ static swig_type_info _swigt__p_mfem__CrouzeixRaviartQuadFiniteElement = {"_p_mf
 static swig_type_info _swigt__p_mfem__P0SegmentFiniteElement = {"_p_mfem__P0SegmentFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT0TriangleFiniteElement = {"_p_mfem__RT0TriangleFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT0QuadFiniteElement = {"_p_mfem__RT0QuadFiniteElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__RT1TriangleFiniteElement = {"_p_mfem__RT1TriangleFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__Cubic2DFiniteElement = {"_p_mfem__Cubic2DFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Cubic1DFiniteElement = {"_p_mfem__Cubic1DFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__BiCubic2DFiniteElement = {"_p_mfem__BiCubic2DFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__GaussBiQuad2DFiniteElement = {"_p_mfem__GaussBiQuad2DFiniteElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__BiQuadPos2DFiniteElement = {"_p_mfem__BiQuadPos2DFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__BiQuad2DFiniteElement = {"_p_mfem__BiQuad2DFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__GaussQuad2DFiniteElement = {"_p_mfem__GaussQuad2DFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__ScalarFiniteElement = {"_p_mfem__ScalarFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__NodalFiniteElement = {"_p_mfem__NodalFiniteElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__PositiveFiniteElement = {"_p_mfem__PositiveFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__VectorFiniteElement = {"_p_mfem__VectorFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__NodalTensorFiniteElement = {"_p_mfem__NodalTensorFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorTensorFiniteElement = {"_p_mfem__VectorTensorFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__PointFiniteElement = {"_p_mfem__PointFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Linear1DFiniteElement = {"_p_mfem__Linear1DFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Linear2DFiniteElement = {"_p_mfem__Linear2DFiniteElement", 0, 0, 0, 0, 0};
@@ -7736,90 +9767,236 @@ static swig_type_info _swigt__p_mfem__GaussLinear2DFiniteElement = {"_p_mfem__Ga
 static swig_type_info _swigt__p_mfem__GaussBiLinear2DFiniteElement = {"_p_mfem__GaussBiLinear2DFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__P1OnQuadFiniteElement = {"_p_mfem__P1OnQuadFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Quad1DFiniteElement = {"_p_mfem__Quad1DFiniteElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__QuadPos1DFiniteElement = {"_p_mfem__QuadPos1DFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Quad2DFiniteElement = {"_p_mfem__Quad2DFiniteElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__RT1QuadFiniteElement = {"_p_mfem__RT1QuadFiniteElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2Pos_SegmentElement = {"_p_mfem__L2Pos_SegmentElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2_QuadrilateralElement = {"_p_mfem__L2_QuadrilateralElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2Pos_QuadrilateralElement = {"_p_mfem__L2Pos_QuadrilateralElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2_HexahedronElement = {"_p_mfem__L2_HexahedronElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2Pos_HexahedronElement = {"_p_mfem__L2Pos_HexahedronElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2_TriangleElement = {"_p_mfem__L2_TriangleElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2Pos_TriangleElement = {"_p_mfem__L2Pos_TriangleElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2_TetrahedronElement = {"_p_mfem__L2_TetrahedronElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2Pos_TetrahedronElement = {"_p_mfem__L2Pos_TetrahedronElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2_WedgeElement = {"_p_mfem__L2_WedgeElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__P0WedgeFiniteElement = {"_p_mfem__P0WedgeFiniteElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2Pos_WedgeElement = {"_p_mfem__L2Pos_WedgeElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RT1TriangleFiniteElement = {"_p_mfem__RT1TriangleFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ND_R1D_SegmentElement = {"_p_mfem__ND_R1D_SegmentElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ND_R2D_SegmentElement = {"_p_mfem__ND_R2D_SegmentElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ND_R2D_FiniteElement = {"_p_mfem__ND_R2D_FiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ND_R2D_TriangleElement = {"_p_mfem__ND_R2D_TriangleElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ND_R2D_QuadrilateralElement = {"_p_mfem__ND_R2D_QuadrilateralElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT_QuadrilateralElement = {"_p_mfem__RT_QuadrilateralElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT_HexahedronElement = {"_p_mfem__RT_HexahedronElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT_TriangleElement = {"_p_mfem__RT_TriangleElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT_TetrahedronElement = {"_p_mfem__RT_TetrahedronElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ND_HexahedronElement = {"_p_mfem__ND_HexahedronElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ND_QuadrilateralElement = {"_p_mfem__ND_QuadrilateralElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ND_TetrahedronElement = {"_p_mfem__ND_TetrahedronElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ND_TriangleElement = {"_p_mfem__ND_TriangleElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ND_SegmentElement = {"_p_mfem__ND_SegmentElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RT_WedgeElement = {"_p_mfem__RT_WedgeElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RT_R1D_SegmentElement = {"_p_mfem__RT_R1D_SegmentElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RT_R2D_SegmentElement = {"_p_mfem__RT_R2D_SegmentElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RT_R2D_FiniteElement = {"_p_mfem__RT_R2D_FiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RT_R2D_TriangleElement = {"_p_mfem__RT_R2D_TriangleElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RT_R2D_QuadrilateralElement = {"_p_mfem__RT_R2D_QuadrilateralElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2_SegmentElement = {"_p_mfem__L2_SegmentElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2_QuadrilateralElement = {"_p_mfem__L2_QuadrilateralElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2_HexahedronElement = {"_p_mfem__L2_HexahedronElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2_TriangleElement = {"_p_mfem__L2_TriangleElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2_TetrahedronElement = {"_p_mfem__L2_TetrahedronElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2_WedgeElement = {"_p_mfem__L2_WedgeElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__NURBSFiniteElement = {"_p_mfem__NURBSFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__NURBS1DFiniteElement = {"_p_mfem__NURBS1DFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__NURBS2DFiniteElement = {"_p_mfem__NURBS2DFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__NURBS3DFiniteElement = {"_p_mfem__NURBS3DFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__PositiveFiniteElement = {"_p_mfem__PositiveFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__PositiveTensorFiniteElement = {"_p_mfem__PositiveTensorFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__BiQuadPos2DFiniteElement = {"_p_mfem__BiQuadPos2DFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__QuadPos1DFiniteElement = {"_p_mfem__QuadPos1DFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__H1Pos_SegmentElement = {"_p_mfem__H1Pos_SegmentElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__H1Pos_QuadrilateralElement = {"_p_mfem__H1Pos_QuadrilateralElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__H1Pos_HexahedronElement = {"_p_mfem__H1Pos_HexahedronElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__H1Pos_TriangleElement = {"_p_mfem__H1Pos_TriangleElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__H1Pos_TetrahedronElement = {"_p_mfem__H1Pos_TetrahedronElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__H1Pos_WedgeElement = {"_p_mfem__H1Pos_WedgeElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2Pos_SegmentElement = {"_p_mfem__L2Pos_SegmentElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2Pos_QuadrilateralElement = {"_p_mfem__L2Pos_QuadrilateralElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2Pos_HexahedronElement = {"_p_mfem__L2Pos_HexahedronElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2Pos_TriangleElement = {"_p_mfem__L2Pos_TriangleElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2Pos_TetrahedronElement = {"_p_mfem__L2Pos_TetrahedronElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2Pos_WedgeElement = {"_p_mfem__L2Pos_WedgeElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__H1Ser_QuadrilateralElement = {"_p_mfem__H1Ser_QuadrilateralElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__FiniteElementSpace = {"_p_mfem__FiniteElementSpace", "mfem::FiniteElementSpace *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__HyperelasticModel = {"_p_mfem__HyperelasticModel", "mfem::HyperelasticModel *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__HyperelasticNLFIntegrator = {"_p_mfem__HyperelasticNLFIntegrator", "mfem::HyperelasticNLFIntegrator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IncompressibleNeoHookeanIntegrator = {"_p_mfem__IncompressibleNeoHookeanIntegrator", "mfem::IncompressibleNeoHookeanIntegrator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__IntegrationPoint = {"_p_mfem__IntegrationPoint", "mfem::IntegrationPoint *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__InverseHarmonicModel = {"_p_mfem__InverseHarmonicModel", "mfem::InverseHarmonicModel *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__L2_FECollection = {"_p_mfem__L2_FECollection", "mfem::L2_FECollection *|mfem::DG_FECollection *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__MatrixVectorProductCoefficient = {"_p_mfem__MatrixVectorProductCoefficient", "mfem::MatrixVectorProductCoefficient *|mfem::MatVecCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__NeoHookeanModel = {"_p_mfem__NeoHookeanModel", "mfem::NeoHookeanModel *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__NonlinearFormIntegrator = {"_p_mfem__NonlinearFormIntegrator", "mfem::NonlinearFormIntegrator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__Operator = {"_p_mfem__Operator", "mfem::Operator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__HyprePCG = {"_p_mfem__HyprePCG", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__Matrix = {"_p_mfem__Matrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__SparseMatrix = {"_p_mfem__SparseMatrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__DenseSymmetricMatrix = {"_p_mfem__DenseSymmetricMatrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__AbstractSparseMatrix = {"_p_mfem__AbstractSparseMatrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__HypreDiagScale = {"_p_mfem__HypreDiagScale", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__HypreFGMRES = {"_p_mfem__HypreFGMRES", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__HypreADS = {"_p_mfem__HypreADS", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__HypreEuclid = {"_p_mfem__HypreEuclid", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__HypreBoomerAMG = {"_p_mfem__HypreBoomerAMG", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__SecondOrderTimeDependentOperator = {"_p_mfem__SecondOrderTimeDependentOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__TimeDependentAdjointOperator = {"_p_mfem__TimeDependentAdjointOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__TimeDependentOperator = {"_p_mfem__TimeDependentOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__IdentityOperator = {"_p_mfem__IdentityOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ScaledOperator = {"_p_mfem__ScaledOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__TransposeOperator = {"_p_mfem__TransposeOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ProductOperator = {"_p_mfem__ProductOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RAPOperator = {"_p_mfem__RAPOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__TripleProductOperator = {"_p_mfem__TripleProductOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RectangularConstrainedOperator = {"_p_mfem__RectangularConstrainedOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ConstrainedOperator = {"_p_mfem__ConstrainedOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__HypreILU = {"_p_mfem__HypreILU", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ElementRestriction = {"_p_mfem__ElementRestriction", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2ElementRestriction = {"_p_mfem__L2ElementRestriction", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__FaceRestriction = {"_p_mfem__FaceRestriction", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__H1FaceRestriction = {"_p_mfem__H1FaceRestriction", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2FaceRestriction = {"_p_mfem__L2FaceRestriction", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__NCL2FaceRestriction = {"_p_mfem__NCL2FaceRestriction", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__HypreGMRES = {"_p_mfem__HypreGMRES", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__HypreParaSails = {"_p_mfem__HypreParaSails", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__HypreParMatrix = {"_p_mfem__HypreParMatrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__HypreIdentity = {"_p_mfem__HypreIdentity", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__DenseMatrixInverse = {"_p_mfem__DenseMatrixInverse", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__MatrixInverse = {"_p_mfem__MatrixInverse", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__PyOperatorBase = {"_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__PyTimeDependentOperatorBase = {"_p_mfem__PyTimeDependentOperatorBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__HypreSolver = {"_p_mfem__HypreSolver", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__HypreAMS = {"_p_mfem__HypreAMS", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__HypreSmoother = {"_p_mfem__HypreSmoother", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__HypreTriSolve = {"_p_mfem__HypreTriSolve", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__OperatorHandle = {"_p_mfem__OperatorHandle", "mfem::OperatorPtr *|mfem::OperatorHandle *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__Refinement = {"_p_mfem__Refinement", "mfem::Refinement *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__SkewSymmetricVectorConvectionNLFIntegrator = {"_p_mfem__SkewSymmetricVectorConvectionNLFIntegrator", "mfem::SkewSymmetricVectorConvectionNLFIntegrator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", "mfem::Solver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__HypreParVector = {"_p_mfem__HypreParVector", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorCoefficient = {"_p_mfem__VectorCoefficient", "mfem::VectorCoefficient *|mfem::DiagonalMatrixCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__VectorPyCoefficientBase = {"_p_mfem__VectorPyCoefficientBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorQuadratureFunctionCoefficient = {"_p_mfem__VectorQuadratureFunctionCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorCrossProductCoefficient = {"_p_mfem__VectorCrossProductCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__NormalizedVectorCoefficient = {"_p_mfem__NormalizedVectorCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ScalarVectorProductCoefficient = {"_p_mfem__ScalarVectorProductCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorSumCoefficient = {"_p_mfem__VectorSumCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorRestrictedCoefficient = {"_p_mfem__VectorRestrictedCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorDeltaCoefficient = {"_p_mfem__VectorDeltaCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__CurlGridFunctionCoefficient = {"_p_mfem__CurlGridFunctionCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__GradientGridFunctionCoefficient = {"_p_mfem__GradientGridFunctionCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorGridFunctionCoefficient = {"_p_mfem__VectorGridFunctionCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorArrayCoefficient = {"_p_mfem__VectorArrayCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorFunctionCoefficient = {"_p_mfem__VectorFunctionCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorConstantCoefficient = {"_p_mfem__VectorConstantCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__NodeExtrudeCoefficient = {"_p_mfem__NodeExtrudeCoefficient", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__VectorConvectionNLFIntegrator = {"_p_mfem__VectorConvectionNLFIntegrator", "mfem::VectorConvectionNLFIntegrator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_mfem__FiniteElementSpace = {"_p_p_mfem__FiniteElementSpace", "mfem::FiniteElementSpace **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_mfem__IntegrationRule = {"_p_p_mfem__IntegrationRule", "mfem::IntegrationRule **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_mfem__Operator = {"_p_p_mfem__Operator", "mfem::Operator **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_mfem__HyprePCG = {"_p_p_mfem__HyprePCG", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__Matrix = {"_p_p_mfem__Matrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__SparseMatrix = {"_p_p_mfem__SparseMatrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__DenseMatrix = {"_p_p_mfem__DenseMatrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__DenseSymmetricMatrix = {"_p_p_mfem__DenseSymmetricMatrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__AbstractSparseMatrix = {"_p_p_mfem__AbstractSparseMatrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__HypreDiagScale = {"_p_p_mfem__HypreDiagScale", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__HypreFGMRES = {"_p_p_mfem__HypreFGMRES", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__HypreADS = {"_p_p_mfem__HypreADS", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__HypreEuclid = {"_p_p_mfem__HypreEuclid", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__HypreBoomerAMG = {"_p_p_mfem__HypreBoomerAMG", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__SecondOrderTimeDependentOperator = {"_p_p_mfem__SecondOrderTimeDependentOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__TimeDependentAdjointOperator = {"_p_p_mfem__TimeDependentAdjointOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__TimeDependentOperator = {"_p_p_mfem__TimeDependentOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__IdentityOperator = {"_p_p_mfem__IdentityOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__ScaledOperator = {"_p_p_mfem__ScaledOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__TransposeOperator = {"_p_p_mfem__TransposeOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__ProductOperator = {"_p_p_mfem__ProductOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__RAPOperator = {"_p_p_mfem__RAPOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__TripleProductOperator = {"_p_p_mfem__TripleProductOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__RectangularConstrainedOperator = {"_p_p_mfem__RectangularConstrainedOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__ConstrainedOperator = {"_p_p_mfem__ConstrainedOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__HypreILU = {"_p_p_mfem__HypreILU", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__ElementRestriction = {"_p_p_mfem__ElementRestriction", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__L2ElementRestriction = {"_p_p_mfem__L2ElementRestriction", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__FaceRestriction = {"_p_p_mfem__FaceRestriction", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__H1FaceRestriction = {"_p_p_mfem__H1FaceRestriction", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__L2FaceRestriction = {"_p_p_mfem__L2FaceRestriction", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__NCL2FaceRestriction = {"_p_p_mfem__NCL2FaceRestriction", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__HypreGMRES = {"_p_p_mfem__HypreGMRES", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__HypreParaSails = {"_p_p_mfem__HypreParaSails", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__HypreParMatrix = {"_p_p_mfem__HypreParMatrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__HypreIdentity = {"_p_p_mfem__HypreIdentity", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__DenseMatrixInverse = {"_p_p_mfem__DenseMatrixInverse", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__MatrixInverse = {"_p_p_mfem__MatrixInverse", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__PyOperatorBase = {"_p_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__PyTimeDependentOperatorBase = {"_p_p_mfem__PyTimeDependentOperatorBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__HypreSolver = {"_p_p_mfem__HypreSolver", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__HypreAMS = {"_p_p_mfem__HypreAMS", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__HypreSmoother = {"_p_p_mfem__HypreSmoother", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__HypreTriSolve = {"_p_p_mfem__HypreTriSolve", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__Solver = {"_p_p_mfem__Solver", "mfem::Solver **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_mfem__Vector = {"_p_p_mfem__Vector", "mfem::Vector **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_mfem__HypreParVector = {"_p_p_mfem__HypreParVector", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__GridFunction = {"_p_p_mfem__GridFunction", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__QuadratureFunction = {"_p_p_mfem__QuadratureFunction", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__LinearForm = {"_p_p_mfem__LinearForm", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_pyr_t = {"_p_pyr_t", "pyr_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_size_type = {"_p_size_type", "size_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt___input,
   &_swigt__p_MPI_Comm,
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_RefCoord,
+  &_swigt__p__HYPRE_ExecutionPolicy,
+  &_swigt__p__HYPRE_MemoryLocation,
+  &_swigt__p_allocator_type,
+  &_swigt__p_bool,
+  &_swigt__p_ceed__Operator,
   &_swigt__p_char,
+  &_swigt__p_difference_type,
+  &_swigt__p_double,
   &_swigt__p_hex_t,
   &_swigt__p_int,
+  &_swigt__p_mfem__AbstractSparseMatrix,
   &_swigt__p_mfem__Array2DT_mfem__DenseMatrix_p_t,
+  &_swigt__p_mfem__ArrayT_int_t,
   &_swigt__p_mfem__ArrayT_mfem__FiniteElement_const_p_t,
   &_swigt__p_mfem__ArrayT_mfem__Vector_const_p_t,
   &_swigt__p_mfem__ArrayT_mfem__Vector_p_t,
   &_swigt__p_mfem__BiCubic2DFiniteElement,
-  &_swigt__p_mfem__BiCubic3DFiniteElement,
   &_swigt__p_mfem__BiLinear2DFiniteElement,
-  &_swigt__p_mfem__BiLinear3DFiniteElement,
   &_swigt__p_mfem__BiQuad2DFiniteElement,
   &_swigt__p_mfem__BiQuadPos2DFiniteElement,
-  &_swigt__p_mfem__BiQuadratic3DFiniteElement,
   &_swigt__p_mfem__BlockNonlinearFormIntegrator,
   &_swigt__p_mfem__Coefficient,
   &_swigt__p_mfem__ConstantCoefficient,
+  &_swigt__p_mfem__ConstrainedOperator,
+  &_swigt__p_mfem__ConvectionIntegrator,
+  &_swigt__p_mfem__ConvectiveVectorConvectionNLFIntegrator,
   &_swigt__p_mfem__CrouzeixRaviartFiniteElement,
   &_swigt__p_mfem__CrouzeixRaviartQuadFiniteElement,
   &_swigt__p_mfem__Cubic1DFiniteElement,
   &_swigt__p_mfem__Cubic2DFiniteElement,
   &_swigt__p_mfem__Cubic3DFiniteElement,
+  &_swigt__p_mfem__CurlGridFunctionCoefficient,
+  &_swigt__p_mfem__DGTraceIntegrator,
   &_swigt__p_mfem__DeltaCoefficient,
   &_swigt__p_mfem__DenseMatrix,
+  &_swigt__p_mfem__DenseMatrixInverse,
+  &_swigt__p_mfem__DenseSymmetricMatrix,
   &_swigt__p_mfem__DeterminantCoefficient,
   &_swigt__p_mfem__DivergenceGridFunctionCoefficient,
+  &_swigt__p_mfem__ElementRestriction,
   &_swigt__p_mfem__ElementTransformation,
   &_swigt__p_mfem__ExtrudeCoefficient,
   &_swigt__p_mfem__FaceElementTransformations,
+  &_swigt__p_mfem__FaceRestriction,
   &_swigt__p_mfem__FiniteElement,
   &_swigt__p_mfem__FiniteElementSpace,
   &_swigt__p_mfem__FunctionCoefficient,
@@ -7827,8 +10004,10 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__GaussBiQuad2DFiniteElement,
   &_swigt__p_mfem__GaussLinear2DFiniteElement,
   &_swigt__p_mfem__GaussQuad2DFiniteElement,
+  &_swigt__p_mfem__GradientGridFunctionCoefficient,
   &_swigt__p_mfem__GridFunction,
   &_swigt__p_mfem__GridFunctionCoefficient,
+  &_swigt__p_mfem__H1FaceRestriction,
   &_swigt__p_mfem__H1Pos_HexahedronElement,
   &_swigt__p_mfem__H1Pos_QuadrilateralElement,
   &_swigt__p_mfem__H1Pos_SegmentElement,
@@ -7844,12 +10023,31 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__H1_WedgeElement,
   &_swigt__p_mfem__HyperelasticModel,
   &_swigt__p_mfem__HyperelasticNLFIntegrator,
+  &_swigt__p_mfem__HypreADS,
+  &_swigt__p_mfem__HypreAMS,
+  &_swigt__p_mfem__HypreBoomerAMG,
+  &_swigt__p_mfem__HypreDiagScale,
+  &_swigt__p_mfem__HypreEuclid,
+  &_swigt__p_mfem__HypreFGMRES,
+  &_swigt__p_mfem__HypreGMRES,
+  &_swigt__p_mfem__HypreILU,
+  &_swigt__p_mfem__HypreIdentity,
+  &_swigt__p_mfem__HyprePCG,
+  &_swigt__p_mfem__HypreParMatrix,
   &_swigt__p_mfem__HypreParVector,
+  &_swigt__p_mfem__HypreParaSails,
+  &_swigt__p_mfem__HypreSmoother,
+  &_swigt__p_mfem__HypreSolver,
+  &_swigt__p_mfem__HypreTriSolve,
+  &_swigt__p_mfem__IdentityOperator,
   &_swigt__p_mfem__IncompressibleNeoHookeanIntegrator,
   &_swigt__p_mfem__InnerProductCoefficient,
+  &_swigt__p_mfem__IntegrationPoint,
   &_swigt__p_mfem__IntegrationRule,
   &_swigt__p_mfem__InverseHarmonicModel,
   &_swigt__p_mfem__IsoparametricTransformation,
+  &_swigt__p_mfem__L2ElementRestriction,
+  &_swigt__p_mfem__L2FaceRestriction,
   &_swigt__p_mfem__L2Pos_HexahedronElement,
   &_swigt__p_mfem__L2Pos_QuadrilateralElement,
   &_swigt__p_mfem__L2Pos_SegmentElement,
@@ -7869,29 +10067,47 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__Linear2DFiniteElement,
   &_swigt__p_mfem__Linear3DFiniteElement,
   &_swigt__p_mfem__LinearForm,
+  &_swigt__p_mfem__LinearPyramidFiniteElement,
+  &_swigt__p_mfem__LinearWedgeFiniteElement,
+  &_swigt__p_mfem__Matrix,
+  &_swigt__p_mfem__MatrixInverse,
   &_swigt__p_mfem__MatrixVectorProductCoefficient,
+  &_swigt__p_mfem__NCL2FaceRestriction,
   &_swigt__p_mfem__ND_HexahedronElement,
   &_swigt__p_mfem__ND_QuadrilateralElement,
+  &_swigt__p_mfem__ND_R1D_PointElement,
+  &_swigt__p_mfem__ND_R1D_SegmentElement,
+  &_swigt__p_mfem__ND_R2D_FiniteElement,
+  &_swigt__p_mfem__ND_R2D_QuadrilateralElement,
+  &_swigt__p_mfem__ND_R2D_SegmentElement,
+  &_swigt__p_mfem__ND_R2D_TriangleElement,
   &_swigt__p_mfem__ND_SegmentElement,
   &_swigt__p_mfem__ND_TetrahedronElement,
   &_swigt__p_mfem__ND_TriangleElement,
+  &_swigt__p_mfem__ND_WedgeElement,
   &_swigt__p_mfem__NURBS1DFiniteElement,
   &_swigt__p_mfem__NURBS2DFiniteElement,
   &_swigt__p_mfem__NURBS3DFiniteElement,
   &_swigt__p_mfem__NURBSFiniteElement,
   &_swigt__p_mfem__Nedelec1HexFiniteElement,
+  &_swigt__p_mfem__Nedelec1PyrFiniteElement,
   &_swigt__p_mfem__Nedelec1TetFiniteElement,
+  &_swigt__p_mfem__Nedelec1WdgFiniteElement,
   &_swigt__p_mfem__NeoHookeanModel,
   &_swigt__p_mfem__NodalFiniteElement,
   &_swigt__p_mfem__NodalTensorFiniteElement,
+  &_swigt__p_mfem__NodeExtrudeCoefficient,
   &_swigt__p_mfem__NonlinearFormIntegrator,
+  &_swigt__p_mfem__NormalizedVectorCoefficient,
+  &_swigt__p_mfem__Operator,
   &_swigt__p_mfem__OperatorHandle,
   &_swigt__p_mfem__P0HexFiniteElement,
+  &_swigt__p_mfem__P0PyrFiniteElement,
   &_swigt__p_mfem__P0QuadFiniteElement,
   &_swigt__p_mfem__P0SegmentFiniteElement,
   &_swigt__p_mfem__P0TetFiniteElement,
   &_swigt__p_mfem__P0TriangleFiniteElement,
-  &_swigt__p_mfem__P0WedgeFiniteElement,
+  &_swigt__p_mfem__P0WdgFiniteElement,
   &_swigt__p_mfem__P1OnQuadFiniteElement,
   &_swigt__p_mfem__P1SegmentFiniteElement,
   &_swigt__p_mfem__P1TetNonConfFiniteElement,
@@ -7902,17 +10118,23 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__PositiveTensorFiniteElement,
   &_swigt__p_mfem__PowerCoefficient,
   &_swigt__p_mfem__ProductCoefficient,
+  &_swigt__p_mfem__ProductOperator,
   &_swigt__p_mfem__PyCoefficientBase,
+  &_swigt__p_mfem__PyOperatorBase,
+  &_swigt__p_mfem__PyTimeDependentOperatorBase,
   &_swigt__p_mfem__Quad1DFiniteElement,
   &_swigt__p_mfem__Quad2DFiniteElement,
   &_swigt__p_mfem__QuadPos1DFiniteElement,
   &_swigt__p_mfem__Quadratic3DFiniteElement,
   &_swigt__p_mfem__QuadratureFunction,
   &_swigt__p_mfem__QuadratureFunctionCoefficient,
+  &_swigt__p_mfem__RAPOperator,
   &_swigt__p_mfem__RT0HexFiniteElement,
+  &_swigt__p_mfem__RT0PyrFiniteElement,
   &_swigt__p_mfem__RT0QuadFiniteElement,
   &_swigt__p_mfem__RT0TetFiniteElement,
   &_swigt__p_mfem__RT0TriangleFiniteElement,
+  &_swigt__p_mfem__RT0WdgFiniteElement,
   &_swigt__p_mfem__RT1HexFiniteElement,
   &_swigt__p_mfem__RT1QuadFiniteElement,
   &_swigt__p_mfem__RT1TriangleFiniteElement,
@@ -7920,39 +10142,130 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__RT2TriangleFiniteElement,
   &_swigt__p_mfem__RT_HexahedronElement,
   &_swigt__p_mfem__RT_QuadrilateralElement,
+  &_swigt__p_mfem__RT_R1D_SegmentElement,
+  &_swigt__p_mfem__RT_R2D_FiniteElement,
+  &_swigt__p_mfem__RT_R2D_QuadrilateralElement,
+  &_swigt__p_mfem__RT_R2D_SegmentElement,
+  &_swigt__p_mfem__RT_R2D_TriangleElement,
   &_swigt__p_mfem__RT_TetrahedronElement,
   &_swigt__p_mfem__RT_TriangleElement,
+  &_swigt__p_mfem__RT_WedgeElement,
   &_swigt__p_mfem__RatioCoefficient,
+  &_swigt__p_mfem__RectangularConstrainedOperator,
   &_swigt__p_mfem__RefinedBiLinear2DFiniteElement,
   &_swigt__p_mfem__RefinedLinear1DFiniteElement,
   &_swigt__p_mfem__RefinedLinear2DFiniteElement,
   &_swigt__p_mfem__RefinedLinear3DFiniteElement,
   &_swigt__p_mfem__RefinedTriLinear3DFiniteElement,
+  &_swigt__p_mfem__Refinement,
   &_swigt__p_mfem__RestrictedCoefficient,
   &_swigt__p_mfem__RotTriLinearHexFiniteElement,
   &_swigt__p_mfem__ScalarFiniteElement,
+  &_swigt__p_mfem__ScalarVectorProductCoefficient,
+  &_swigt__p_mfem__ScaledOperator,
+  &_swigt__p_mfem__SecondOrderTimeDependentOperator,
+  &_swigt__p_mfem__SkewSymmetricVectorConvectionNLFIntegrator,
+  &_swigt__p_mfem__Solver,
+  &_swigt__p_mfem__SparseMatrix,
   &_swigt__p_mfem__SumCoefficient,
+  &_swigt__p_mfem__TimeDependentAdjointOperator,
+  &_swigt__p_mfem__TimeDependentOperator,
   &_swigt__p_mfem__TransformedCoefficient,
+  &_swigt__p_mfem__TransposeOperator,
   &_swigt__p_mfem__TriLinear3DFiniteElement,
+  &_swigt__p_mfem__TripleProductOperator,
   &_swigt__p_mfem__Vector,
+  &_swigt__p_mfem__VectorArrayCoefficient,
+  &_swigt__p_mfem__VectorCoefficient,
+  &_swigt__p_mfem__VectorConstantCoefficient,
   &_swigt__p_mfem__VectorConvectionNLFIntegrator,
+  &_swigt__p_mfem__VectorCrossProductCoefficient,
+  &_swigt__p_mfem__VectorDeltaCoefficient,
   &_swigt__p_mfem__VectorFiniteElement,
+  &_swigt__p_mfem__VectorFunctionCoefficient,
+  &_swigt__p_mfem__VectorGridFunctionCoefficient,
+  &_swigt__p_mfem__VectorPyCoefficientBase,
+  &_swigt__p_mfem__VectorQuadratureFunctionCoefficient,
+  &_swigt__p_mfem__VectorRestrictedCoefficient,
   &_swigt__p_mfem__VectorRotProductCoefficient,
+  &_swigt__p_mfem__VectorSumCoefficient,
   &_swigt__p_mfem__VectorTensorFiniteElement,
+  &_swigt__p_p_mfem__AbstractSparseMatrix,
+  &_swigt__p_p_mfem__ConstrainedOperator,
+  &_swigt__p_p_mfem__DenseMatrix,
+  &_swigt__p_p_mfem__DenseMatrixInverse,
+  &_swigt__p_p_mfem__DenseSymmetricMatrix,
+  &_swigt__p_p_mfem__ElementRestriction,
+  &_swigt__p_p_mfem__FaceRestriction,
+  &_swigt__p_p_mfem__FiniteElementSpace,
+  &_swigt__p_p_mfem__GridFunction,
+  &_swigt__p_p_mfem__H1FaceRestriction,
+  &_swigt__p_p_mfem__HypreADS,
+  &_swigt__p_p_mfem__HypreAMS,
+  &_swigt__p_p_mfem__HypreBoomerAMG,
+  &_swigt__p_p_mfem__HypreDiagScale,
+  &_swigt__p_p_mfem__HypreEuclid,
+  &_swigt__p_p_mfem__HypreFGMRES,
+  &_swigt__p_p_mfem__HypreGMRES,
+  &_swigt__p_p_mfem__HypreILU,
+  &_swigt__p_p_mfem__HypreIdentity,
+  &_swigt__p_p_mfem__HyprePCG,
+  &_swigt__p_p_mfem__HypreParMatrix,
+  &_swigt__p_p_mfem__HypreParVector,
+  &_swigt__p_p_mfem__HypreParaSails,
+  &_swigt__p_p_mfem__HypreSmoother,
+  &_swigt__p_p_mfem__HypreSolver,
+  &_swigt__p_p_mfem__HypreTriSolve,
+  &_swigt__p_p_mfem__IdentityOperator,
+  &_swigt__p_p_mfem__IntegrationRule,
+  &_swigt__p_p_mfem__L2ElementRestriction,
+  &_swigt__p_p_mfem__L2FaceRestriction,
+  &_swigt__p_p_mfem__LinearForm,
+  &_swigt__p_p_mfem__Matrix,
+  &_swigt__p_p_mfem__MatrixInverse,
+  &_swigt__p_p_mfem__NCL2FaceRestriction,
+  &_swigt__p_p_mfem__Operator,
+  &_swigt__p_p_mfem__ProductOperator,
+  &_swigt__p_p_mfem__PyOperatorBase,
+  &_swigt__p_p_mfem__PyTimeDependentOperatorBase,
+  &_swigt__p_p_mfem__QuadratureFunction,
+  &_swigt__p_p_mfem__RAPOperator,
+  &_swigt__p_p_mfem__RectangularConstrainedOperator,
+  &_swigt__p_p_mfem__ScaledOperator,
+  &_swigt__p_p_mfem__SecondOrderTimeDependentOperator,
+  &_swigt__p_p_mfem__Solver,
+  &_swigt__p_p_mfem__SparseMatrix,
+  &_swigt__p_p_mfem__TimeDependentAdjointOperator,
+  &_swigt__p_p_mfem__TimeDependentOperator,
+  &_swigt__p_p_mfem__TransposeOperator,
+  &_swigt__p_p_mfem__TripleProductOperator,
+  &_swigt__p_p_mfem__Vector,
   &_swigt__p_pri_t,
+  &_swigt__p_pyr_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
+  &_swigt__p_size_type,
   &_swigt__p_tet_t,
   &_swigt__p_tri_t,
+  &_swigt__p_value_type,
 };
 
+static swig_cast_info _swigc___input[] = {  {&_swigt___input, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p__HYPRE_ExecutionPolicy[] = {  {&_swigt__p__HYPRE_ExecutionPolicy, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p__HYPRE_MemoryLocation[] = {  {&_swigt__p__HYPRE_MemoryLocation, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_bool[] = {  {&_swigt__p_bool, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ceed__Operator[] = {  {&_swigt__p_ceed__Operator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_type, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Array2DT_mfem__DenseMatrix_p_t[] = {  {&_swigt__p_mfem__Array2DT_mfem__DenseMatrix_p_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__FiniteElement_const_p_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__FiniteElement_const_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__Vector_const_p_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__Vector_const_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__Vector_p_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__Vector_p_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -7976,11 +10289,17 @@ static swig_cast_info _swigc__p_mfem__DeterminantCoefficient[] = {{&_swigt__p_mf
 static swig_cast_info _swigc__p_mfem__QuadratureFunctionCoefficient[] = {{&_swigt__p_mfem__QuadratureFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ExtrudeCoefficient[] = {{&_swigt__p_mfem__ExtrudeCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Coefficient[] = {  {&_swigt__p_mfem__PyCoefficientBase, _p_mfem__PyCoefficientBaseTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__VectorRotProductCoefficient, _p_mfem__VectorRotProductCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__InnerProductCoefficient, _p_mfem__InnerProductCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__PowerCoefficient, _p_mfem__PowerCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__RatioCoefficient, _p_mfem__RatioCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__ProductCoefficient, _p_mfem__ProductCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__SumCoefficient, _p_mfem__SumCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__DivergenceGridFunctionCoefficient, _p_mfem__DivergenceGridFunctionCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__RestrictedCoefficient, _p_mfem__RestrictedCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__DeltaCoefficient, _p_mfem__DeltaCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__TransformedCoefficient, _p_mfem__TransformedCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__GridFunctionCoefficient, _p_mfem__GridFunctionCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__FunctionCoefficient, _p_mfem__FunctionCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__Coefficient, 0, 0, 0},  {&_swigt__p_mfem__PWConstCoefficient, _p_mfem__PWConstCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__ConstantCoefficient, _p_mfem__ConstantCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__DeterminantCoefficient, _p_mfem__DeterminantCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__QuadratureFunctionCoefficient, _p_mfem__QuadratureFunctionCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__ExtrudeCoefficient, _p_mfem__ExtrudeCoefficientTo_p_mfem__Coefficient, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ConvectionIntegrator[] = {  {&_swigt__p_mfem__ConvectionIntegrator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ConvectiveVectorConvectionNLFIntegrator[] = {  {&_swigt__p_mfem__ConvectiveVectorConvectionNLFIntegrator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__DGTraceIntegrator[] = {  {&_swigt__p_mfem__DGTraceIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {  {&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IsoparametricTransformation[] = {{&_swigt__p_mfem__IsoparametricTransformation, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ElementTransformation[] = {  {&_swigt__p_mfem__ElementTransformation, 0, 0, 0},  {&_swigt__p_mfem__IsoparametricTransformation, _p_mfem__IsoparametricTransformationTo_p_mfem__ElementTransformation, 0, 0},  {&_swigt__p_mfem__FaceElementTransformations, _p_mfem__FaceElementTransformationsTo_p_mfem__ElementTransformation, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__FaceElementTransformations[] = {  {&_swigt__p_mfem__FaceElementTransformations, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__P0TetFiniteElement[] = {{&_swigt__p_mfem__P0TetFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__P0HexFiniteElement[] = {{&_swigt__p_mfem__P0HexFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__P0WdgFiniteElement[] = {{&_swigt__p_mfem__P0WdgFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__P0PyrFiniteElement[] = {{&_swigt__p_mfem__P0PyrFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LagrangeHexFiniteElement[] = {{&_swigt__p_mfem__LagrangeHexFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RefinedLinear1DFiniteElement[] = {{&_swigt__p_mfem__RefinedLinear1DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RefinedLinear2DFiniteElement[] = {{&_swigt__p_mfem__RefinedLinear2DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
@@ -7989,39 +10308,37 @@ static swig_cast_info _swigc__p_mfem__RefinedBiLinear2DFiniteElement[] = {{&_swi
 static swig_cast_info _swigc__p_mfem__RefinedTriLinear3DFiniteElement[] = {{&_swigt__p_mfem__RefinedTriLinear3DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Nedelec1HexFiniteElement[] = {{&_swigt__p_mfem__Nedelec1HexFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Nedelec1TetFiniteElement[] = {{&_swigt__p_mfem__Nedelec1TetFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Nedelec1WdgFiniteElement[] = {{&_swigt__p_mfem__Nedelec1WdgFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Nedelec1PyrFiniteElement[] = {{&_swigt__p_mfem__Nedelec1PyrFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT0HexFiniteElement[] = {{&_swigt__p_mfem__RT0HexFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT1HexFiniteElement[] = {{&_swigt__p_mfem__RT1HexFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT0TetFiniteElement[] = {{&_swigt__p_mfem__RT0TetFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RT0WdgFiniteElement[] = {{&_swigt__p_mfem__RT0WdgFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RT0PyrFiniteElement[] = {{&_swigt__p_mfem__RT0PyrFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RotTriLinearHexFiniteElement[] = {{&_swigt__p_mfem__RotTriLinearHexFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__NodalTensorFiniteElement[] = {{&_swigt__p_mfem__NodalTensorFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__PositiveTensorFiniteElement[] = {{&_swigt__p_mfem__PositiveTensorFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorTensorFiniteElement[] = {{&_swigt__p_mfem__VectorTensorFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__H1_SegmentElement[] = {{&_swigt__p_mfem__H1_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__H1_QuadrilateralElement[] = {{&_swigt__p_mfem__H1_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__H1_HexahedronElement[] = {{&_swigt__p_mfem__H1_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__H1Pos_SegmentElement[] = {{&_swigt__p_mfem__H1Pos_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2_SegmentElement[] = {{&_swigt__p_mfem__L2_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__H1Pos_WedgeElement[] = {{&_swigt__p_mfem__H1Pos_WedgeElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__BiCubic3DFiniteElement[] = {{&_swigt__p_mfem__BiCubic3DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__BiQuadratic3DFiniteElement[] = {{&_swigt__p_mfem__BiQuadratic3DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__BiLinear3DFiniteElement[] = {{&_swigt__p_mfem__BiLinear3DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ND_R1D_PointElement[] = {{&_swigt__p_mfem__ND_R1D_PointElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ND_WedgeElement[] = {{&_swigt__p_mfem__ND_WedgeElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ND_SegmentElement[] = {{&_swigt__p_mfem__ND_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ND_TriangleElement[] = {{&_swigt__p_mfem__ND_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ND_TetrahedronElement[] = {{&_swigt__p_mfem__ND_TetrahedronElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ND_QuadrilateralElement[] = {{&_swigt__p_mfem__ND_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ND_HexahedronElement[] = {{&_swigt__p_mfem__ND_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1_WedgeElement[] = {{&_swigt__p_mfem__H1_WedgeElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__H1Pos_TetrahedronElement[] = {{&_swigt__p_mfem__H1Pos_TetrahedronElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__H1Pos_TriangleElement[] = {{&_swigt__p_mfem__H1Pos_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1_TetrahedronElement[] = {{&_swigt__p_mfem__H1_TetrahedronElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1_TriangleElement[] = {{&_swigt__p_mfem__H1_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__H1Pos_HexahedronElement[] = {{&_swigt__p_mfem__H1Pos_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__H1Ser_QuadrilateralElement[] = {{&_swigt__p_mfem__H1Ser_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__H1Pos_QuadrilateralElement[] = {{&_swigt__p_mfem__H1Pos_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__P0TetFiniteElement[] = {{&_swigt__p_mfem__P0TetFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__H1_HexahedronElement[] = {{&_swigt__p_mfem__H1_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__H1_QuadrilateralElement[] = {{&_swigt__p_mfem__H1_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__H1_SegmentElement[] = {{&_swigt__p_mfem__H1_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__P1TetNonConfFiniteElement[] = {{&_swigt__p_mfem__P1TetNonConfFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Lagrange1DFiniteElement[] = {{&_swigt__p_mfem__Lagrange1DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__P2SegmentFiniteElement[] = {{&_swigt__p_mfem__P2SegmentFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__P1SegmentFiniteElement[] = {{&_swigt__p_mfem__P1SegmentFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT2QuadFiniteElement[] = {{&_swigt__p_mfem__RT2QuadFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT2TriangleFiniteElement[] = {{&_swigt__p_mfem__RT2TriangleFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Cubic2DFiniteElement[] = {{&_swigt__p_mfem__Cubic2DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RT1QuadFiniteElement[] = {{&_swigt__p_mfem__RT1QuadFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Cubic3DFiniteElement[] = {{&_swigt__p_mfem__Cubic3DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__LinearWedgeFiniteElement[] = {{&_swigt__p_mfem__LinearWedgeFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__LinearPyramidFiniteElement[] = {{&_swigt__p_mfem__LinearPyramidFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__P0TriangleFiniteElement[] = {{&_swigt__p_mfem__P0TriangleFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__P0QuadFiniteElement[] = {{&_swigt__p_mfem__P0QuadFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Linear3DFiniteElement[] = {{&_swigt__p_mfem__Linear3DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
@@ -8032,17 +10349,17 @@ static swig_cast_info _swigc__p_mfem__CrouzeixRaviartQuadFiniteElement[] = {{&_s
 static swig_cast_info _swigc__p_mfem__P0SegmentFiniteElement[] = {{&_swigt__p_mfem__P0SegmentFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT0TriangleFiniteElement[] = {{&_swigt__p_mfem__RT0TriangleFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT0QuadFiniteElement[] = {{&_swigt__p_mfem__RT0QuadFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__RT1TriangleFiniteElement[] = {{&_swigt__p_mfem__RT1TriangleFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Cubic2DFiniteElement[] = {{&_swigt__p_mfem__Cubic2DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Cubic1DFiniteElement[] = {{&_swigt__p_mfem__Cubic1DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__BiCubic2DFiniteElement[] = {{&_swigt__p_mfem__BiCubic2DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GaussBiQuad2DFiniteElement[] = {{&_swigt__p_mfem__GaussBiQuad2DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__BiQuadPos2DFiniteElement[] = {{&_swigt__p_mfem__BiQuadPos2DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__BiQuad2DFiniteElement[] = {{&_swigt__p_mfem__BiQuad2DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GaussQuad2DFiniteElement[] = {{&_swigt__p_mfem__GaussQuad2DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ScalarFiniteElement[] = {{&_swigt__p_mfem__ScalarFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NodalFiniteElement[] = {{&_swigt__p_mfem__NodalFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__PositiveFiniteElement[] = {{&_swigt__p_mfem__PositiveFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__VectorFiniteElement[] = {{&_swigt__p_mfem__VectorFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__NodalTensorFiniteElement[] = {{&_swigt__p_mfem__NodalTensorFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorTensorFiniteElement[] = {{&_swigt__p_mfem__VectorTensorFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PointFiniteElement[] = {{&_swigt__p_mfem__PointFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Linear1DFiniteElement[] = {{&_swigt__p_mfem__Linear1DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Linear2DFiniteElement[] = {{&_swigt__p_mfem__Linear2DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
@@ -8051,91 +10368,237 @@ static swig_cast_info _swigc__p_mfem__GaussLinear2DFiniteElement[] = {{&_swigt__
 static swig_cast_info _swigc__p_mfem__GaussBiLinear2DFiniteElement[] = {{&_swigt__p_mfem__GaussBiLinear2DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__P1OnQuadFiniteElement[] = {{&_swigt__p_mfem__P1OnQuadFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Quad1DFiniteElement[] = {{&_swigt__p_mfem__Quad1DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__QuadPos1DFiniteElement[] = {{&_swigt__p_mfem__QuadPos1DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Quad2DFiniteElement[] = {{&_swigt__p_mfem__Quad2DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__RT1QuadFiniteElement[] = {{&_swigt__p_mfem__RT1QuadFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2Pos_SegmentElement[] = {{&_swigt__p_mfem__L2Pos_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2_QuadrilateralElement[] = {{&_swigt__p_mfem__L2_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2Pos_QuadrilateralElement[] = {{&_swigt__p_mfem__L2Pos_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2_HexahedronElement[] = {{&_swigt__p_mfem__L2_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2Pos_HexahedronElement[] = {{&_swigt__p_mfem__L2Pos_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2_TriangleElement[] = {{&_swigt__p_mfem__L2_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2Pos_TriangleElement[] = {{&_swigt__p_mfem__L2Pos_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2_TetrahedronElement[] = {{&_swigt__p_mfem__L2_TetrahedronElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2Pos_TetrahedronElement[] = {{&_swigt__p_mfem__L2Pos_TetrahedronElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2_WedgeElement[] = {{&_swigt__p_mfem__L2_WedgeElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__P0WedgeFiniteElement[] = {{&_swigt__p_mfem__P0WedgeFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2Pos_WedgeElement[] = {{&_swigt__p_mfem__L2Pos_WedgeElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RT1TriangleFiniteElement[] = {{&_swigt__p_mfem__RT1TriangleFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ND_R1D_SegmentElement[] = {{&_swigt__p_mfem__ND_R1D_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ND_R2D_SegmentElement[] = {{&_swigt__p_mfem__ND_R2D_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ND_R2D_FiniteElement[] = {{&_swigt__p_mfem__ND_R2D_FiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ND_R2D_TriangleElement[] = {{&_swigt__p_mfem__ND_R2D_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ND_R2D_QuadrilateralElement[] = {{&_swigt__p_mfem__ND_R2D_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT_QuadrilateralElement[] = {{&_swigt__p_mfem__RT_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT_HexahedronElement[] = {{&_swigt__p_mfem__RT_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT_TriangleElement[] = {{&_swigt__p_mfem__RT_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT_TetrahedronElement[] = {{&_swigt__p_mfem__RT_TetrahedronElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ND_HexahedronElement[] = {{&_swigt__p_mfem__ND_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ND_QuadrilateralElement[] = {{&_swigt__p_mfem__ND_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ND_TetrahedronElement[] = {{&_swigt__p_mfem__ND_TetrahedronElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ND_TriangleElement[] = {{&_swigt__p_mfem__ND_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ND_SegmentElement[] = {{&_swigt__p_mfem__ND_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RT_WedgeElement[] = {{&_swigt__p_mfem__RT_WedgeElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RT_R1D_SegmentElement[] = {{&_swigt__p_mfem__RT_R1D_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RT_R2D_SegmentElement[] = {{&_swigt__p_mfem__RT_R2D_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RT_R2D_FiniteElement[] = {{&_swigt__p_mfem__RT_R2D_FiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RT_R2D_TriangleElement[] = {{&_swigt__p_mfem__RT_R2D_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RT_R2D_QuadrilateralElement[] = {{&_swigt__p_mfem__RT_R2D_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2_SegmentElement[] = {{&_swigt__p_mfem__L2_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2_QuadrilateralElement[] = {{&_swigt__p_mfem__L2_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2_HexahedronElement[] = {{&_swigt__p_mfem__L2_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2_TriangleElement[] = {{&_swigt__p_mfem__L2_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2_TetrahedronElement[] = {{&_swigt__p_mfem__L2_TetrahedronElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2_WedgeElement[] = {{&_swigt__p_mfem__L2_WedgeElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NURBSFiniteElement[] = {{&_swigt__p_mfem__NURBSFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NURBS1DFiniteElement[] = {{&_swigt__p_mfem__NURBS1DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NURBS2DFiniteElement[] = {{&_swigt__p_mfem__NURBS2DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NURBS3DFiniteElement[] = {{&_swigt__p_mfem__NURBS3DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__FiniteElement[] = {  {&_swigt__p_mfem__P0HexFiniteElement, _p_mfem__P0HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__LagrangeHexFiniteElement, _p_mfem__LagrangeHexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear1DFiniteElement, _p_mfem__RefinedLinear1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear2DFiniteElement, _p_mfem__RefinedLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear3DFiniteElement, _p_mfem__RefinedLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedBiLinear2DFiniteElement, _p_mfem__RefinedBiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedTriLinear3DFiniteElement, _p_mfem__RefinedTriLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Nedelec1HexFiniteElement, _p_mfem__Nedelec1HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Nedelec1TetFiniteElement, _p_mfem__Nedelec1TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0HexFiniteElement, _p_mfem__RT0HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1HexFiniteElement, _p_mfem__RT1HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0TetFiniteElement, _p_mfem__RT0TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RotTriLinearHexFiniteElement, _p_mfem__RotTriLinearHexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NodalTensorFiniteElement, _p_mfem__NodalTensorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PositiveTensorFiniteElement, _p_mfem__PositiveTensorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__VectorTensorFiniteElement, _p_mfem__VectorTensorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_SegmentElement, _p_mfem__H1_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_QuadrilateralElement, _p_mfem__H1_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_HexahedronElement, _p_mfem__H1_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_SegmentElement, _p_mfem__H1Pos_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_SegmentElement, _p_mfem__L2_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_WedgeElement, _p_mfem__H1Pos_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiCubic3DFiniteElement, _p_mfem__BiCubic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuadratic3DFiniteElement, _p_mfem__BiQuadratic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiLinear3DFiniteElement, _p_mfem__BiLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_WedgeElement, _p_mfem__H1_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_TetrahedronElement, _p_mfem__H1Pos_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_TriangleElement, _p_mfem__H1Pos_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_TetrahedronElement, _p_mfem__H1_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_TriangleElement, _p_mfem__H1_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_HexahedronElement, _p_mfem__H1Pos_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Ser_QuadrilateralElement, _p_mfem__H1Ser_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_QuadrilateralElement, _p_mfem__H1Pos_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0TetFiniteElement, _p_mfem__P0TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1TetNonConfFiniteElement, _p_mfem__P1TetNonConfFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Lagrange1DFiniteElement, _p_mfem__Lagrange1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P2SegmentFiniteElement, _p_mfem__P2SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1SegmentFiniteElement, _p_mfem__P1SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT2QuadFiniteElement, _p_mfem__RT2QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT2TriangleFiniteElement, _p_mfem__RT2TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Cubic2DFiniteElement, _p_mfem__Cubic2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Cubic3DFiniteElement, _p_mfem__Cubic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0TriangleFiniteElement, _p_mfem__P0TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0QuadFiniteElement, _p_mfem__P0QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear3DFiniteElement, _p_mfem__Linear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quadratic3DFiniteElement, _p_mfem__Quadratic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__TriLinear3DFiniteElement, _p_mfem__TriLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__CrouzeixRaviartFiniteElement, _p_mfem__CrouzeixRaviartFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__CrouzeixRaviartQuadFiniteElement, _p_mfem__CrouzeixRaviartQuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0SegmentFiniteElement, _p_mfem__P0SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0TriangleFiniteElement, _p_mfem__RT0TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0QuadFiniteElement, _p_mfem__RT0QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1TriangleFiniteElement, _p_mfem__RT1TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__FiniteElement, 0, 0, 0},  {&_swigt__p_mfem__Cubic1DFiniteElement, _p_mfem__Cubic1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiCubic2DFiniteElement, _p_mfem__BiCubic2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussBiQuad2DFiniteElement, _p_mfem__GaussBiQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuadPos2DFiniteElement, _p_mfem__BiQuadPos2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuad2DFiniteElement, _p_mfem__BiQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussQuad2DFiniteElement, _p_mfem__GaussQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ScalarFiniteElement, _p_mfem__ScalarFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NodalFiniteElement, _p_mfem__NodalFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PositiveFiniteElement, _p_mfem__PositiveFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__VectorFiniteElement, _p_mfem__VectorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PointFiniteElement, _p_mfem__PointFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear1DFiniteElement, _p_mfem__Linear1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear2DFiniteElement, _p_mfem__Linear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiLinear2DFiniteElement, _p_mfem__BiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussLinear2DFiniteElement, _p_mfem__GaussLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussBiLinear2DFiniteElement, _p_mfem__GaussBiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1OnQuadFiniteElement, _p_mfem__P1OnQuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quad1DFiniteElement, _p_mfem__Quad1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__QuadPos1DFiniteElement, _p_mfem__QuadPos1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quad2DFiniteElement, _p_mfem__Quad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1QuadFiniteElement, _p_mfem__RT1QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_SegmentElement, _p_mfem__L2Pos_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_QuadrilateralElement, _p_mfem__L2_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_QuadrilateralElement, _p_mfem__L2Pos_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_HexahedronElement, _p_mfem__L2_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_HexahedronElement, _p_mfem__L2Pos_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_TriangleElement, _p_mfem__L2_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_TriangleElement, _p_mfem__L2Pos_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_TetrahedronElement, _p_mfem__L2_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_TetrahedronElement, _p_mfem__L2Pos_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_WedgeElement, _p_mfem__L2_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0WedgeFiniteElement, _p_mfem__P0WedgeFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_WedgeElement, _p_mfem__L2Pos_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_QuadrilateralElement, _p_mfem__RT_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_HexahedronElement, _p_mfem__RT_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_TriangleElement, _p_mfem__RT_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_TetrahedronElement, _p_mfem__RT_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_HexahedronElement, _p_mfem__ND_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_QuadrilateralElement, _p_mfem__ND_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TetrahedronElement, _p_mfem__ND_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TriangleElement, _p_mfem__ND_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_SegmentElement, _p_mfem__ND_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBSFiniteElement, _p_mfem__NURBSFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS1DFiniteElement, _p_mfem__NURBS1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS2DFiniteElement, _p_mfem__NURBS2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS3DFiniteElement, _p_mfem__NURBS3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__PositiveFiniteElement[] = {{&_swigt__p_mfem__PositiveFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__PositiveTensorFiniteElement[] = {{&_swigt__p_mfem__PositiveTensorFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__BiQuadPos2DFiniteElement[] = {{&_swigt__p_mfem__BiQuadPos2DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__QuadPos1DFiniteElement[] = {{&_swigt__p_mfem__QuadPos1DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__H1Pos_SegmentElement[] = {{&_swigt__p_mfem__H1Pos_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__H1Pos_QuadrilateralElement[] = {{&_swigt__p_mfem__H1Pos_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__H1Pos_HexahedronElement[] = {{&_swigt__p_mfem__H1Pos_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__H1Pos_TriangleElement[] = {{&_swigt__p_mfem__H1Pos_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__H1Pos_TetrahedronElement[] = {{&_swigt__p_mfem__H1Pos_TetrahedronElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__H1Pos_WedgeElement[] = {{&_swigt__p_mfem__H1Pos_WedgeElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2Pos_SegmentElement[] = {{&_swigt__p_mfem__L2Pos_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2Pos_QuadrilateralElement[] = {{&_swigt__p_mfem__L2Pos_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2Pos_HexahedronElement[] = {{&_swigt__p_mfem__L2Pos_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2Pos_TriangleElement[] = {{&_swigt__p_mfem__L2Pos_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2Pos_TetrahedronElement[] = {{&_swigt__p_mfem__L2Pos_TetrahedronElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2Pos_WedgeElement[] = {{&_swigt__p_mfem__L2Pos_WedgeElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__H1Ser_QuadrilateralElement[] = {{&_swigt__p_mfem__H1Ser_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__FiniteElement[] = {  {&_swigt__p_mfem__P0TetFiniteElement, _p_mfem__P0TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0HexFiniteElement, _p_mfem__P0HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0WdgFiniteElement, _p_mfem__P0WdgFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0PyrFiniteElement, _p_mfem__P0PyrFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__LagrangeHexFiniteElement, _p_mfem__LagrangeHexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear1DFiniteElement, _p_mfem__RefinedLinear1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear2DFiniteElement, _p_mfem__RefinedLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear3DFiniteElement, _p_mfem__RefinedLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedBiLinear2DFiniteElement, _p_mfem__RefinedBiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedTriLinear3DFiniteElement, _p_mfem__RefinedTriLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Nedelec1HexFiniteElement, _p_mfem__Nedelec1HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Nedelec1TetFiniteElement, _p_mfem__Nedelec1TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Nedelec1WdgFiniteElement, _p_mfem__Nedelec1WdgFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Nedelec1PyrFiniteElement, _p_mfem__Nedelec1PyrFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0HexFiniteElement, _p_mfem__RT0HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1HexFiniteElement, _p_mfem__RT1HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0TetFiniteElement, _p_mfem__RT0TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0WdgFiniteElement, _p_mfem__RT0WdgFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0PyrFiniteElement, _p_mfem__RT0PyrFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RotTriLinearHexFiniteElement, _p_mfem__RotTriLinearHexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_R1D_PointElement, _p_mfem__ND_R1D_PointElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_WedgeElement, _p_mfem__ND_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_SegmentElement, _p_mfem__ND_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TriangleElement, _p_mfem__ND_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TetrahedronElement, _p_mfem__ND_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_QuadrilateralElement, _p_mfem__ND_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_HexahedronElement, _p_mfem__ND_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_WedgeElement, _p_mfem__H1_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_TetrahedronElement, _p_mfem__H1_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_TriangleElement, _p_mfem__H1_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_HexahedronElement, _p_mfem__H1_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_QuadrilateralElement, _p_mfem__H1_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_SegmentElement, _p_mfem__H1_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1TetNonConfFiniteElement, _p_mfem__P1TetNonConfFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Lagrange1DFiniteElement, _p_mfem__Lagrange1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P2SegmentFiniteElement, _p_mfem__P2SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1SegmentFiniteElement, _p_mfem__P1SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT2QuadFiniteElement, _p_mfem__RT2QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT2TriangleFiniteElement, _p_mfem__RT2TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1QuadFiniteElement, _p_mfem__RT1QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Cubic3DFiniteElement, _p_mfem__Cubic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__LinearWedgeFiniteElement, _p_mfem__LinearWedgeFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__LinearPyramidFiniteElement, _p_mfem__LinearPyramidFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0TriangleFiniteElement, _p_mfem__P0TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0QuadFiniteElement, _p_mfem__P0QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear3DFiniteElement, _p_mfem__Linear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quadratic3DFiniteElement, _p_mfem__Quadratic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__TriLinear3DFiniteElement, _p_mfem__TriLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__CrouzeixRaviartFiniteElement, _p_mfem__CrouzeixRaviartFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__CrouzeixRaviartQuadFiniteElement, _p_mfem__CrouzeixRaviartQuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0SegmentFiniteElement, _p_mfem__P0SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0TriangleFiniteElement, _p_mfem__RT0TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0QuadFiniteElement, _p_mfem__RT0QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__FiniteElement, 0, 0, 0},  {&_swigt__p_mfem__Cubic2DFiniteElement, _p_mfem__Cubic2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Cubic1DFiniteElement, _p_mfem__Cubic1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiCubic2DFiniteElement, _p_mfem__BiCubic2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussBiQuad2DFiniteElement, _p_mfem__GaussBiQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuad2DFiniteElement, _p_mfem__BiQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussQuad2DFiniteElement, _p_mfem__GaussQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ScalarFiniteElement, _p_mfem__ScalarFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NodalFiniteElement, _p_mfem__NodalFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__VectorFiniteElement, _p_mfem__VectorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NodalTensorFiniteElement, _p_mfem__NodalTensorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__VectorTensorFiniteElement, _p_mfem__VectorTensorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PointFiniteElement, _p_mfem__PointFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear1DFiniteElement, _p_mfem__Linear1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear2DFiniteElement, _p_mfem__Linear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiLinear2DFiniteElement, _p_mfem__BiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussLinear2DFiniteElement, _p_mfem__GaussLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussBiLinear2DFiniteElement, _p_mfem__GaussBiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1OnQuadFiniteElement, _p_mfem__P1OnQuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quad1DFiniteElement, _p_mfem__Quad1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quad2DFiniteElement, _p_mfem__Quad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1TriangleFiniteElement, _p_mfem__RT1TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_R1D_SegmentElement, _p_mfem__ND_R1D_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_R2D_SegmentElement, _p_mfem__ND_R2D_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_R2D_FiniteElement, _p_mfem__ND_R2D_FiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_R2D_TriangleElement, _p_mfem__ND_R2D_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_R2D_QuadrilateralElement, _p_mfem__ND_R2D_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_QuadrilateralElement, _p_mfem__RT_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_HexahedronElement, _p_mfem__RT_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_TriangleElement, _p_mfem__RT_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_TetrahedronElement, _p_mfem__RT_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_WedgeElement, _p_mfem__RT_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_R1D_SegmentElement, _p_mfem__RT_R1D_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_R2D_SegmentElement, _p_mfem__RT_R2D_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_R2D_FiniteElement, _p_mfem__RT_R2D_FiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_R2D_TriangleElement, _p_mfem__RT_R2D_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_R2D_QuadrilateralElement, _p_mfem__RT_R2D_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_SegmentElement, _p_mfem__L2_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_QuadrilateralElement, _p_mfem__L2_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_HexahedronElement, _p_mfem__L2_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_TriangleElement, _p_mfem__L2_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_TetrahedronElement, _p_mfem__L2_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_WedgeElement, _p_mfem__L2_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBSFiniteElement, _p_mfem__NURBSFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS1DFiniteElement, _p_mfem__NURBS1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS2DFiniteElement, _p_mfem__NURBS2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS3DFiniteElement, _p_mfem__NURBS3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PositiveFiniteElement, _p_mfem__PositiveFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PositiveTensorFiniteElement, _p_mfem__PositiveTensorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuadPos2DFiniteElement, _p_mfem__BiQuadPos2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__QuadPos1DFiniteElement, _p_mfem__QuadPos1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_SegmentElement, _p_mfem__H1Pos_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_QuadrilateralElement, _p_mfem__H1Pos_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_HexahedronElement, _p_mfem__H1Pos_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_TriangleElement, _p_mfem__H1Pos_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_TetrahedronElement, _p_mfem__H1Pos_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_WedgeElement, _p_mfem__H1Pos_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_SegmentElement, _p_mfem__L2Pos_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_QuadrilateralElement, _p_mfem__L2Pos_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_HexahedronElement, _p_mfem__L2Pos_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_TriangleElement, _p_mfem__L2Pos_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_TetrahedronElement, _p_mfem__L2Pos_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_WedgeElement, _p_mfem__L2Pos_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Ser_QuadrilateralElement, _p_mfem__H1Ser_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__FiniteElementSpace[] = {  {&_swigt__p_mfem__FiniteElementSpace, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HyperelasticModel[] = {  {&_swigt__p_mfem__HyperelasticModel, 0, 0, 0},  {&_swigt__p_mfem__InverseHarmonicModel, _p_mfem__InverseHarmonicModelTo_p_mfem__HyperelasticModel, 0, 0},  {&_swigt__p_mfem__NeoHookeanModel, _p_mfem__NeoHookeanModelTo_p_mfem__HyperelasticModel, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HyperelasticNLFIntegrator[] = {  {&_swigt__p_mfem__HyperelasticNLFIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IncompressibleNeoHookeanIntegrator[] = {  {&_swigt__p_mfem__IncompressibleNeoHookeanIntegrator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__IntegrationPoint[] = {  {&_swigt__p_mfem__IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__InverseHarmonicModel[] = {  {&_swigt__p_mfem__InverseHarmonicModel, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2_FECollection[] = {  {&_swigt__p_mfem__L2_FECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MatrixVectorProductCoefficient[] = {  {&_swigt__p_mfem__MatrixVectorProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NeoHookeanModel[] = {  {&_swigt__p_mfem__NeoHookeanModel, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__NonlinearFormIntegrator[] = {  {&_swigt__p_mfem__NonlinearFormIntegrator, 0, 0, 0},  {&_swigt__p_mfem__HyperelasticNLFIntegrator, _p_mfem__HyperelasticNLFIntegratorTo_p_mfem__NonlinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorConvectionNLFIntegrator, _p_mfem__VectorConvectionNLFIntegratorTo_p_mfem__NonlinearFormIntegrator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__NonlinearFormIntegrator[] = {  {&_swigt__p_mfem__SkewSymmetricVectorConvectionNLFIntegrator, _p_mfem__SkewSymmetricVectorConvectionNLFIntegratorTo_p_mfem__NonlinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__NonlinearFormIntegrator, 0, 0, 0},  {&_swigt__p_mfem__HyperelasticNLFIntegrator, _p_mfem__HyperelasticNLFIntegratorTo_p_mfem__NonlinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorConvectionNLFIntegrator, _p_mfem__VectorConvectionNLFIntegratorTo_p_mfem__NonlinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__ConvectiveVectorConvectionNLFIntegrator, _p_mfem__ConvectiveVectorConvectionNLFIntegratorTo_p_mfem__NonlinearFormIntegrator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__HyprePCG[] = {{&_swigt__p_mfem__HyprePCG, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Matrix[] = {{&_swigt__p_mfem__Matrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__SparseMatrix[] = {{&_swigt__p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__DenseSymmetricMatrix[] = {{&_swigt__p_mfem__DenseSymmetricMatrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__AbstractSparseMatrix[] = {{&_swigt__p_mfem__AbstractSparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__HypreDiagScale[] = {{&_swigt__p_mfem__HypreDiagScale, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__HypreFGMRES[] = {{&_swigt__p_mfem__HypreFGMRES, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__HypreADS[] = {{&_swigt__p_mfem__HypreADS, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__HypreEuclid[] = {{&_swigt__p_mfem__HypreEuclid, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__HypreBoomerAMG[] = {{&_swigt__p_mfem__HypreBoomerAMG, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__SecondOrderTimeDependentOperator[] = {{&_swigt__p_mfem__SecondOrderTimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TimeDependentAdjointOperator[] = {{&_swigt__p_mfem__TimeDependentAdjointOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {{&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__IdentityOperator[] = {{&_swigt__p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ScaledOperator[] = {{&_swigt__p_mfem__ScaledOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TransposeOperator[] = {{&_swigt__p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ProductOperator[] = {{&_swigt__p_mfem__ProductOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RAPOperator[] = {{&_swigt__p_mfem__RAPOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TripleProductOperator[] = {{&_swigt__p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RectangularConstrainedOperator[] = {{&_swigt__p_mfem__RectangularConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ConstrainedOperator[] = {{&_swigt__p_mfem__ConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__HypreILU[] = {{&_swigt__p_mfem__HypreILU, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ElementRestriction[] = {{&_swigt__p_mfem__ElementRestriction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2ElementRestriction[] = {{&_swigt__p_mfem__L2ElementRestriction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__FaceRestriction[] = {{&_swigt__p_mfem__FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__H1FaceRestriction[] = {{&_swigt__p_mfem__H1FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2FaceRestriction[] = {{&_swigt__p_mfem__L2FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__NCL2FaceRestriction[] = {{&_swigt__p_mfem__NCL2FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__HypreGMRES[] = {{&_swigt__p_mfem__HypreGMRES, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__HypreParaSails[] = {{&_swigt__p_mfem__HypreParaSails, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__HypreParMatrix[] = {{&_swigt__p_mfem__HypreParMatrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__HypreIdentity[] = {{&_swigt__p_mfem__HypreIdentity, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__DenseMatrixInverse[] = {{&_swigt__p_mfem__DenseMatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__MatrixInverse[] = {{&_swigt__p_mfem__MatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__PyOperatorBase[] = {{&_swigt__p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__HypreSolver[] = {{&_swigt__p_mfem__HypreSolver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__HypreAMS[] = {{&_swigt__p_mfem__HypreAMS, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__HypreSmoother[] = {{&_swigt__p_mfem__HypreSmoother, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__HypreTriSolve[] = {{&_swigt__p_mfem__HypreTriSolve, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__HyprePCG, _p_mfem__HyprePCGTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseSymmetricMatrix, _p_mfem__DenseSymmetricMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreDiagScale, _p_mfem__HypreDiagScaleTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreFGMRES, _p_mfem__HypreFGMRESTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreADS, _p_mfem__HypreADSTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreEuclid, _p_mfem__HypreEuclidTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreBoomerAMG, _p_mfem__HypreBoomerAMGTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentAdjointOperator, _p_mfem__TimeDependentAdjointOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ScaledOperator, _p_mfem__ScaledOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__RectangularConstrainedOperator, _p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreILU, _p_mfem__HypreILUTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ElementRestriction, _p_mfem__ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2ElementRestriction, _p_mfem__L2ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__FaceRestriction, _p_mfem__FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__H1FaceRestriction, _p_mfem__H1FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2FaceRestriction, _p_mfem__L2FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__NCL2FaceRestriction, _p_mfem__NCL2FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreGMRES, _p_mfem__HypreGMRESTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreParaSails, _p_mfem__HypreParaSailsTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreParMatrix, _p_mfem__HypreParMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreIdentity, _p_mfem__HypreIdentityTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreSolver, _p_mfem__HypreSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreAMS, _p_mfem__HypreAMSTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreSmoother, _p_mfem__HypreSmootherTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreTriSolve, _p_mfem__HypreTriSolveTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__OperatorHandle[] = {  {&_swigt__p_mfem__OperatorHandle, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Refinement[] = {  {&_swigt__p_mfem__Refinement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__SkewSymmetricVectorConvectionNLFIntegrator[] = {  {&_swigt__p_mfem__SkewSymmetricVectorConvectionNLFIntegrator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__HypreGMRES, _p_mfem__HypreGMRESTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreParaSails, _p_mfem__HypreParaSailsTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreFGMRES, _p_mfem__HypreFGMRESTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreTriSolve, _p_mfem__HypreTriSolveTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreSolver, _p_mfem__HypreSolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__Solver, 0, 0, 0},  {&_swigt__p_mfem__HypreBoomerAMG, _p_mfem__HypreBoomerAMGTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreDiagScale, _p_mfem__HypreDiagScaleTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreIdentity, _p_mfem__HypreIdentityTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreAMS, _p_mfem__HypreAMSTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HyprePCG, _p_mfem__HyprePCGTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreEuclid, _p_mfem__HypreEuclidTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreADS, _p_mfem__HypreADSTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreILU, _p_mfem__HypreILUTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreSmoother, _p_mfem__HypreSmootherTo_p_mfem__Solver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HypreParVector[] = {{&_swigt__p_mfem__HypreParVector, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__HypreParVector, _p_mfem__HypreParVectorTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorConvectionNLFIntegrator[] = {  {&_swigt__p_mfem__VectorConvectionNLFIntegrator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorPyCoefficientBase[] = {{&_swigt__p_mfem__VectorPyCoefficientBase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorQuadratureFunctionCoefficient[] = {{&_swigt__p_mfem__VectorQuadratureFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorCrossProductCoefficient[] = {{&_swigt__p_mfem__VectorCrossProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__NormalizedVectorCoefficient[] = {{&_swigt__p_mfem__NormalizedVectorCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ScalarVectorProductCoefficient[] = {{&_swigt__p_mfem__ScalarVectorProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorSumCoefficient[] = {{&_swigt__p_mfem__VectorSumCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorRestrictedCoefficient[] = {{&_swigt__p_mfem__VectorRestrictedCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorDeltaCoefficient[] = {{&_swigt__p_mfem__VectorDeltaCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__CurlGridFunctionCoefficient[] = {{&_swigt__p_mfem__CurlGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__GradientGridFunctionCoefficient[] = {{&_swigt__p_mfem__GradientGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorGridFunctionCoefficient[] = {{&_swigt__p_mfem__VectorGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorArrayCoefficient[] = {{&_swigt__p_mfem__VectorArrayCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorFunctionCoefficient[] = {{&_swigt__p_mfem__VectorFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorConstantCoefficient[] = {{&_swigt__p_mfem__VectorConstantCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__NodeExtrudeCoefficient[] = {{&_swigt__p_mfem__NodeExtrudeCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorCoefficient[] = {  {&_swigt__p_mfem__VectorPyCoefficientBase, _p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorQuadratureFunctionCoefficient, _p_mfem__VectorQuadratureFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__MatrixVectorProductCoefficient, _p_mfem__MatrixVectorProductCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorCrossProductCoefficient, _p_mfem__VectorCrossProductCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__NormalizedVectorCoefficient, _p_mfem__NormalizedVectorCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__ScalarVectorProductCoefficient, _p_mfem__ScalarVectorProductCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorSumCoefficient, _p_mfem__VectorSumCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorRestrictedCoefficient, _p_mfem__VectorRestrictedCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorDeltaCoefficient, _p_mfem__VectorDeltaCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__CurlGridFunctionCoefficient, _p_mfem__CurlGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__GradientGridFunctionCoefficient, _p_mfem__GradientGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorGridFunctionCoefficient, _p_mfem__VectorGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorArrayCoefficient, _p_mfem__VectorArrayCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorCoefficient, 0, 0, 0},  {&_swigt__p_mfem__VectorFunctionCoefficient, _p_mfem__VectorFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorConstantCoefficient, _p_mfem__VectorConstantCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__NodeExtrudeCoefficient, _p_mfem__NodeExtrudeCoefficientTo_p_mfem__VectorCoefficient, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorConvectionNLFIntegrator[] = {  {&_swigt__p_mfem__SkewSymmetricVectorConvectionNLFIntegrator, _p_mfem__SkewSymmetricVectorConvectionNLFIntegratorTo_p_mfem__VectorConvectionNLFIntegrator, 0, 0},  {&_swigt__p_mfem__VectorConvectionNLFIntegrator, 0, 0, 0},  {&_swigt__p_mfem__ConvectiveVectorConvectionNLFIntegrator, _p_mfem__ConvectiveVectorConvectionNLFIntegratorTo_p_mfem__VectorConvectionNLFIntegrator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__FiniteElementSpace[] = {  {&_swigt__p_p_mfem__FiniteElementSpace, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__IntegrationRule[] = {  {&_swigt__p_p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__HyprePCG[] = {{&_swigt__p_p_mfem__HyprePCG, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__Matrix[] = {{&_swigt__p_p_mfem__Matrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__SparseMatrix[] = {{&_swigt__p_p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__DenseMatrix[] = {{&_swigt__p_p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__DenseSymmetricMatrix[] = {{&_swigt__p_p_mfem__DenseSymmetricMatrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__AbstractSparseMatrix[] = {{&_swigt__p_p_mfem__AbstractSparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__HypreDiagScale[] = {{&_swigt__p_p_mfem__HypreDiagScale, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__HypreFGMRES[] = {{&_swigt__p_p_mfem__HypreFGMRES, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__HypreADS[] = {{&_swigt__p_p_mfem__HypreADS, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__HypreEuclid[] = {{&_swigt__p_p_mfem__HypreEuclid, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__HypreBoomerAMG[] = {{&_swigt__p_p_mfem__HypreBoomerAMG, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__SecondOrderTimeDependentOperator[] = {{&_swigt__p_p_mfem__SecondOrderTimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__TimeDependentAdjointOperator[] = {{&_swigt__p_p_mfem__TimeDependentAdjointOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__TimeDependentOperator[] = {{&_swigt__p_p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__IdentityOperator[] = {{&_swigt__p_p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__ScaledOperator[] = {{&_swigt__p_p_mfem__ScaledOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__TransposeOperator[] = {{&_swigt__p_p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__ProductOperator[] = {{&_swigt__p_p_mfem__ProductOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__RAPOperator[] = {{&_swigt__p_p_mfem__RAPOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__TripleProductOperator[] = {{&_swigt__p_p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__RectangularConstrainedOperator[] = {{&_swigt__p_p_mfem__RectangularConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__ConstrainedOperator[] = {{&_swigt__p_p_mfem__ConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__HypreILU[] = {{&_swigt__p_p_mfem__HypreILU, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__ElementRestriction[] = {{&_swigt__p_p_mfem__ElementRestriction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__L2ElementRestriction[] = {{&_swigt__p_p_mfem__L2ElementRestriction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__FaceRestriction[] = {{&_swigt__p_p_mfem__FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__H1FaceRestriction[] = {{&_swigt__p_p_mfem__H1FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__L2FaceRestriction[] = {{&_swigt__p_p_mfem__L2FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__NCL2FaceRestriction[] = {{&_swigt__p_p_mfem__NCL2FaceRestriction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__HypreGMRES[] = {{&_swigt__p_p_mfem__HypreGMRES, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__HypreParaSails[] = {{&_swigt__p_p_mfem__HypreParaSails, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__HypreParMatrix[] = {{&_swigt__p_p_mfem__HypreParMatrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__HypreIdentity[] = {{&_swigt__p_p_mfem__HypreIdentity, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__DenseMatrixInverse[] = {{&_swigt__p_p_mfem__DenseMatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__MatrixInverse[] = {{&_swigt__p_p_mfem__MatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__PyOperatorBase[] = {{&_swigt__p_p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__HypreSolver[] = {{&_swigt__p_p_mfem__HypreSolver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__HypreAMS[] = {{&_swigt__p_p_mfem__HypreAMS, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__HypreSmoother[] = {{&_swigt__p_p_mfem__HypreSmoother, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__HypreTriSolve[] = {{&_swigt__p_p_mfem__HypreTriSolve, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__Operator[] = {  {&_swigt__p_p_mfem__HyprePCG, _p_p_mfem__HyprePCGTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Matrix, _p_p_mfem__MatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__SparseMatrix, _p_p_mfem__SparseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__DenseMatrix, _p_p_mfem__DenseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__DenseSymmetricMatrix, _p_p_mfem__DenseSymmetricMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__AbstractSparseMatrix, _p_p_mfem__AbstractSparseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreDiagScale, _p_p_mfem__HypreDiagScaleTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreFGMRES, _p_p_mfem__HypreFGMRESTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreADS, _p_p_mfem__HypreADSTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreEuclid, _p_p_mfem__HypreEuclidTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreBoomerAMG, _p_p_mfem__HypreBoomerAMGTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__SecondOrderTimeDependentOperator, _p_p_mfem__SecondOrderTimeDependentOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TimeDependentAdjointOperator, _p_p_mfem__TimeDependentAdjointOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TimeDependentOperator, _p_p_mfem__TimeDependentOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__IdentityOperator, _p_p_mfem__IdentityOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ScaledOperator, _p_p_mfem__ScaledOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TransposeOperator, _p_p_mfem__TransposeOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ProductOperator, _p_p_mfem__ProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__RAPOperator, _p_p_mfem__RAPOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TripleProductOperator, _p_p_mfem__TripleProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Operator, 0, 0, 0},  {&_swigt__p_p_mfem__RectangularConstrainedOperator, _p_p_mfem__RectangularConstrainedOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ConstrainedOperator, _p_p_mfem__ConstrainedOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreILU, _p_p_mfem__HypreILUTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ElementRestriction, _p_p_mfem__ElementRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__L2ElementRestriction, _p_p_mfem__L2ElementRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__FaceRestriction, _p_p_mfem__FaceRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__H1FaceRestriction, _p_p_mfem__H1FaceRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__L2FaceRestriction, _p_p_mfem__L2FaceRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__NCL2FaceRestriction, _p_p_mfem__NCL2FaceRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreGMRES, _p_p_mfem__HypreGMRESTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreParaSails, _p_p_mfem__HypreParaSailsTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreParMatrix, _p_p_mfem__HypreParMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreIdentity, _p_p_mfem__HypreIdentityTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__DenseMatrixInverse, _p_p_mfem__DenseMatrixInverseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__MatrixInverse, _p_p_mfem__MatrixInverseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__PyOperatorBase, _p_p_mfem__PyOperatorBaseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__PyTimeDependentOperatorBase, _p_p_mfem__PyTimeDependentOperatorBaseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Solver, _p_p_mfem__SolverTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreSolver, _p_p_mfem__HypreSolverTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreAMS, _p_p_mfem__HypreAMSTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreSmoother, _p_p_mfem__HypreSmootherTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__HypreTriSolve, _p_p_mfem__HypreTriSolveTo_p_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__Solver[] = {  {&_swigt__p_p_mfem__HypreGMRES, _p_p_mfem__HypreGMRESTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HypreParaSails, _p_p_mfem__HypreParaSailsTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HypreFGMRES, _p_p_mfem__HypreFGMRESTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HypreTriSolve, _p_p_mfem__HypreTriSolveTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HypreSolver, _p_p_mfem__HypreSolverTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__Solver, 0, 0, 0},  {&_swigt__p_p_mfem__HypreBoomerAMG, _p_p_mfem__HypreBoomerAMGTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__DenseMatrixInverse, _p_p_mfem__DenseMatrixInverseTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__MatrixInverse, _p_p_mfem__MatrixInverseTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HypreDiagScale, _p_p_mfem__HypreDiagScaleTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HypreIdentity, _p_p_mfem__HypreIdentityTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HypreAMS, _p_p_mfem__HypreAMSTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HyprePCG, _p_p_mfem__HyprePCGTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HypreEuclid, _p_p_mfem__HypreEuclidTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HypreADS, _p_p_mfem__HypreADSTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HypreILU, _p_p_mfem__HypreILUTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__HypreSmoother, _p_p_mfem__HypreSmootherTo_p_p_mfem__Solver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__HypreParVector[] = {{&_swigt__p_p_mfem__HypreParVector, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__GridFunction[] = {{&_swigt__p_p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__QuadratureFunction[] = {{&_swigt__p_p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__LinearForm[] = {{&_swigt__p_p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__Vector[] = {  {&_swigt__p_p_mfem__HypreParVector, _p_p_mfem__HypreParVectorTo_p_p_mfem__Vector, 0, 0},  {&_swigt__p_p_mfem__Vector, 0, 0, 0},  {&_swigt__p_p_mfem__GridFunction, _p_p_mfem__GridFunctionTo_p_p_mfem__Vector, 0, 0},  {&_swigt__p_p_mfem__QuadratureFunction, _p_p_mfem__QuadratureFunctionTo_p_p_mfem__Vector, 0, 0},  {&_swigt__p_p_mfem__LinearForm, _p_p_mfem__LinearFormTo_p_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_pyr_t[] = {  {&_swigt__p_pyr_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_size_type[] = {  {&_swigt__p_size_type, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc___input,
   _swigc__p_MPI_Comm,
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_RefCoord,
+  _swigc__p__HYPRE_ExecutionPolicy,
+  _swigc__p__HYPRE_MemoryLocation,
+  _swigc__p_allocator_type,
+  _swigc__p_bool,
+  _swigc__p_ceed__Operator,
   _swigc__p_char,
+  _swigc__p_difference_type,
+  _swigc__p_double,
   _swigc__p_hex_t,
   _swigc__p_int,
+  _swigc__p_mfem__AbstractSparseMatrix,
   _swigc__p_mfem__Array2DT_mfem__DenseMatrix_p_t,
+  _swigc__p_mfem__ArrayT_int_t,
   _swigc__p_mfem__ArrayT_mfem__FiniteElement_const_p_t,
   _swigc__p_mfem__ArrayT_mfem__Vector_const_p_t,
   _swigc__p_mfem__ArrayT_mfem__Vector_p_t,
   _swigc__p_mfem__BiCubic2DFiniteElement,
-  _swigc__p_mfem__BiCubic3DFiniteElement,
   _swigc__p_mfem__BiLinear2DFiniteElement,
-  _swigc__p_mfem__BiLinear3DFiniteElement,
   _swigc__p_mfem__BiQuad2DFiniteElement,
   _swigc__p_mfem__BiQuadPos2DFiniteElement,
-  _swigc__p_mfem__BiQuadratic3DFiniteElement,
   _swigc__p_mfem__BlockNonlinearFormIntegrator,
   _swigc__p_mfem__Coefficient,
   _swigc__p_mfem__ConstantCoefficient,
+  _swigc__p_mfem__ConstrainedOperator,
+  _swigc__p_mfem__ConvectionIntegrator,
+  _swigc__p_mfem__ConvectiveVectorConvectionNLFIntegrator,
   _swigc__p_mfem__CrouzeixRaviartFiniteElement,
   _swigc__p_mfem__CrouzeixRaviartQuadFiniteElement,
   _swigc__p_mfem__Cubic1DFiniteElement,
   _swigc__p_mfem__Cubic2DFiniteElement,
   _swigc__p_mfem__Cubic3DFiniteElement,
+  _swigc__p_mfem__CurlGridFunctionCoefficient,
+  _swigc__p_mfem__DGTraceIntegrator,
   _swigc__p_mfem__DeltaCoefficient,
   _swigc__p_mfem__DenseMatrix,
+  _swigc__p_mfem__DenseMatrixInverse,
+  _swigc__p_mfem__DenseSymmetricMatrix,
   _swigc__p_mfem__DeterminantCoefficient,
   _swigc__p_mfem__DivergenceGridFunctionCoefficient,
+  _swigc__p_mfem__ElementRestriction,
   _swigc__p_mfem__ElementTransformation,
   _swigc__p_mfem__ExtrudeCoefficient,
   _swigc__p_mfem__FaceElementTransformations,
+  _swigc__p_mfem__FaceRestriction,
   _swigc__p_mfem__FiniteElement,
   _swigc__p_mfem__FiniteElementSpace,
   _swigc__p_mfem__FunctionCoefficient,
@@ -8143,8 +10606,10 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__GaussBiQuad2DFiniteElement,
   _swigc__p_mfem__GaussLinear2DFiniteElement,
   _swigc__p_mfem__GaussQuad2DFiniteElement,
+  _swigc__p_mfem__GradientGridFunctionCoefficient,
   _swigc__p_mfem__GridFunction,
   _swigc__p_mfem__GridFunctionCoefficient,
+  _swigc__p_mfem__H1FaceRestriction,
   _swigc__p_mfem__H1Pos_HexahedronElement,
   _swigc__p_mfem__H1Pos_QuadrilateralElement,
   _swigc__p_mfem__H1Pos_SegmentElement,
@@ -8160,12 +10625,31 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__H1_WedgeElement,
   _swigc__p_mfem__HyperelasticModel,
   _swigc__p_mfem__HyperelasticNLFIntegrator,
+  _swigc__p_mfem__HypreADS,
+  _swigc__p_mfem__HypreAMS,
+  _swigc__p_mfem__HypreBoomerAMG,
+  _swigc__p_mfem__HypreDiagScale,
+  _swigc__p_mfem__HypreEuclid,
+  _swigc__p_mfem__HypreFGMRES,
+  _swigc__p_mfem__HypreGMRES,
+  _swigc__p_mfem__HypreILU,
+  _swigc__p_mfem__HypreIdentity,
+  _swigc__p_mfem__HyprePCG,
+  _swigc__p_mfem__HypreParMatrix,
   _swigc__p_mfem__HypreParVector,
+  _swigc__p_mfem__HypreParaSails,
+  _swigc__p_mfem__HypreSmoother,
+  _swigc__p_mfem__HypreSolver,
+  _swigc__p_mfem__HypreTriSolve,
+  _swigc__p_mfem__IdentityOperator,
   _swigc__p_mfem__IncompressibleNeoHookeanIntegrator,
   _swigc__p_mfem__InnerProductCoefficient,
+  _swigc__p_mfem__IntegrationPoint,
   _swigc__p_mfem__IntegrationRule,
   _swigc__p_mfem__InverseHarmonicModel,
   _swigc__p_mfem__IsoparametricTransformation,
+  _swigc__p_mfem__L2ElementRestriction,
+  _swigc__p_mfem__L2FaceRestriction,
   _swigc__p_mfem__L2Pos_HexahedronElement,
   _swigc__p_mfem__L2Pos_QuadrilateralElement,
   _swigc__p_mfem__L2Pos_SegmentElement,
@@ -8185,29 +10669,47 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__Linear2DFiniteElement,
   _swigc__p_mfem__Linear3DFiniteElement,
   _swigc__p_mfem__LinearForm,
+  _swigc__p_mfem__LinearPyramidFiniteElement,
+  _swigc__p_mfem__LinearWedgeFiniteElement,
+  _swigc__p_mfem__Matrix,
+  _swigc__p_mfem__MatrixInverse,
   _swigc__p_mfem__MatrixVectorProductCoefficient,
+  _swigc__p_mfem__NCL2FaceRestriction,
   _swigc__p_mfem__ND_HexahedronElement,
   _swigc__p_mfem__ND_QuadrilateralElement,
+  _swigc__p_mfem__ND_R1D_PointElement,
+  _swigc__p_mfem__ND_R1D_SegmentElement,
+  _swigc__p_mfem__ND_R2D_FiniteElement,
+  _swigc__p_mfem__ND_R2D_QuadrilateralElement,
+  _swigc__p_mfem__ND_R2D_SegmentElement,
+  _swigc__p_mfem__ND_R2D_TriangleElement,
   _swigc__p_mfem__ND_SegmentElement,
   _swigc__p_mfem__ND_TetrahedronElement,
   _swigc__p_mfem__ND_TriangleElement,
+  _swigc__p_mfem__ND_WedgeElement,
   _swigc__p_mfem__NURBS1DFiniteElement,
   _swigc__p_mfem__NURBS2DFiniteElement,
   _swigc__p_mfem__NURBS3DFiniteElement,
   _swigc__p_mfem__NURBSFiniteElement,
   _swigc__p_mfem__Nedelec1HexFiniteElement,
+  _swigc__p_mfem__Nedelec1PyrFiniteElement,
   _swigc__p_mfem__Nedelec1TetFiniteElement,
+  _swigc__p_mfem__Nedelec1WdgFiniteElement,
   _swigc__p_mfem__NeoHookeanModel,
   _swigc__p_mfem__NodalFiniteElement,
   _swigc__p_mfem__NodalTensorFiniteElement,
+  _swigc__p_mfem__NodeExtrudeCoefficient,
   _swigc__p_mfem__NonlinearFormIntegrator,
+  _swigc__p_mfem__NormalizedVectorCoefficient,
+  _swigc__p_mfem__Operator,
   _swigc__p_mfem__OperatorHandle,
   _swigc__p_mfem__P0HexFiniteElement,
+  _swigc__p_mfem__P0PyrFiniteElement,
   _swigc__p_mfem__P0QuadFiniteElement,
   _swigc__p_mfem__P0SegmentFiniteElement,
   _swigc__p_mfem__P0TetFiniteElement,
   _swigc__p_mfem__P0TriangleFiniteElement,
-  _swigc__p_mfem__P0WedgeFiniteElement,
+  _swigc__p_mfem__P0WdgFiniteElement,
   _swigc__p_mfem__P1OnQuadFiniteElement,
   _swigc__p_mfem__P1SegmentFiniteElement,
   _swigc__p_mfem__P1TetNonConfFiniteElement,
@@ -8218,17 +10720,23 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__PositiveTensorFiniteElement,
   _swigc__p_mfem__PowerCoefficient,
   _swigc__p_mfem__ProductCoefficient,
+  _swigc__p_mfem__ProductOperator,
   _swigc__p_mfem__PyCoefficientBase,
+  _swigc__p_mfem__PyOperatorBase,
+  _swigc__p_mfem__PyTimeDependentOperatorBase,
   _swigc__p_mfem__Quad1DFiniteElement,
   _swigc__p_mfem__Quad2DFiniteElement,
   _swigc__p_mfem__QuadPos1DFiniteElement,
   _swigc__p_mfem__Quadratic3DFiniteElement,
   _swigc__p_mfem__QuadratureFunction,
   _swigc__p_mfem__QuadratureFunctionCoefficient,
+  _swigc__p_mfem__RAPOperator,
   _swigc__p_mfem__RT0HexFiniteElement,
+  _swigc__p_mfem__RT0PyrFiniteElement,
   _swigc__p_mfem__RT0QuadFiniteElement,
   _swigc__p_mfem__RT0TetFiniteElement,
   _swigc__p_mfem__RT0TriangleFiniteElement,
+  _swigc__p_mfem__RT0WdgFiniteElement,
   _swigc__p_mfem__RT1HexFiniteElement,
   _swigc__p_mfem__RT1QuadFiniteElement,
   _swigc__p_mfem__RT1TriangleFiniteElement,
@@ -8236,30 +10744,112 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__RT2TriangleFiniteElement,
   _swigc__p_mfem__RT_HexahedronElement,
   _swigc__p_mfem__RT_QuadrilateralElement,
+  _swigc__p_mfem__RT_R1D_SegmentElement,
+  _swigc__p_mfem__RT_R2D_FiniteElement,
+  _swigc__p_mfem__RT_R2D_QuadrilateralElement,
+  _swigc__p_mfem__RT_R2D_SegmentElement,
+  _swigc__p_mfem__RT_R2D_TriangleElement,
   _swigc__p_mfem__RT_TetrahedronElement,
   _swigc__p_mfem__RT_TriangleElement,
+  _swigc__p_mfem__RT_WedgeElement,
   _swigc__p_mfem__RatioCoefficient,
+  _swigc__p_mfem__RectangularConstrainedOperator,
   _swigc__p_mfem__RefinedBiLinear2DFiniteElement,
   _swigc__p_mfem__RefinedLinear1DFiniteElement,
   _swigc__p_mfem__RefinedLinear2DFiniteElement,
   _swigc__p_mfem__RefinedLinear3DFiniteElement,
   _swigc__p_mfem__RefinedTriLinear3DFiniteElement,
+  _swigc__p_mfem__Refinement,
   _swigc__p_mfem__RestrictedCoefficient,
   _swigc__p_mfem__RotTriLinearHexFiniteElement,
   _swigc__p_mfem__ScalarFiniteElement,
+  _swigc__p_mfem__ScalarVectorProductCoefficient,
+  _swigc__p_mfem__ScaledOperator,
+  _swigc__p_mfem__SecondOrderTimeDependentOperator,
+  _swigc__p_mfem__SkewSymmetricVectorConvectionNLFIntegrator,
+  _swigc__p_mfem__Solver,
+  _swigc__p_mfem__SparseMatrix,
   _swigc__p_mfem__SumCoefficient,
+  _swigc__p_mfem__TimeDependentAdjointOperator,
+  _swigc__p_mfem__TimeDependentOperator,
   _swigc__p_mfem__TransformedCoefficient,
+  _swigc__p_mfem__TransposeOperator,
   _swigc__p_mfem__TriLinear3DFiniteElement,
+  _swigc__p_mfem__TripleProductOperator,
   _swigc__p_mfem__Vector,
+  _swigc__p_mfem__VectorArrayCoefficient,
+  _swigc__p_mfem__VectorCoefficient,
+  _swigc__p_mfem__VectorConstantCoefficient,
   _swigc__p_mfem__VectorConvectionNLFIntegrator,
+  _swigc__p_mfem__VectorCrossProductCoefficient,
+  _swigc__p_mfem__VectorDeltaCoefficient,
   _swigc__p_mfem__VectorFiniteElement,
+  _swigc__p_mfem__VectorFunctionCoefficient,
+  _swigc__p_mfem__VectorGridFunctionCoefficient,
+  _swigc__p_mfem__VectorPyCoefficientBase,
+  _swigc__p_mfem__VectorQuadratureFunctionCoefficient,
+  _swigc__p_mfem__VectorRestrictedCoefficient,
   _swigc__p_mfem__VectorRotProductCoefficient,
+  _swigc__p_mfem__VectorSumCoefficient,
   _swigc__p_mfem__VectorTensorFiniteElement,
+  _swigc__p_p_mfem__AbstractSparseMatrix,
+  _swigc__p_p_mfem__ConstrainedOperator,
+  _swigc__p_p_mfem__DenseMatrix,
+  _swigc__p_p_mfem__DenseMatrixInverse,
+  _swigc__p_p_mfem__DenseSymmetricMatrix,
+  _swigc__p_p_mfem__ElementRestriction,
+  _swigc__p_p_mfem__FaceRestriction,
+  _swigc__p_p_mfem__FiniteElementSpace,
+  _swigc__p_p_mfem__GridFunction,
+  _swigc__p_p_mfem__H1FaceRestriction,
+  _swigc__p_p_mfem__HypreADS,
+  _swigc__p_p_mfem__HypreAMS,
+  _swigc__p_p_mfem__HypreBoomerAMG,
+  _swigc__p_p_mfem__HypreDiagScale,
+  _swigc__p_p_mfem__HypreEuclid,
+  _swigc__p_p_mfem__HypreFGMRES,
+  _swigc__p_p_mfem__HypreGMRES,
+  _swigc__p_p_mfem__HypreILU,
+  _swigc__p_p_mfem__HypreIdentity,
+  _swigc__p_p_mfem__HyprePCG,
+  _swigc__p_p_mfem__HypreParMatrix,
+  _swigc__p_p_mfem__HypreParVector,
+  _swigc__p_p_mfem__HypreParaSails,
+  _swigc__p_p_mfem__HypreSmoother,
+  _swigc__p_p_mfem__HypreSolver,
+  _swigc__p_p_mfem__HypreTriSolve,
+  _swigc__p_p_mfem__IdentityOperator,
+  _swigc__p_p_mfem__IntegrationRule,
+  _swigc__p_p_mfem__L2ElementRestriction,
+  _swigc__p_p_mfem__L2FaceRestriction,
+  _swigc__p_p_mfem__LinearForm,
+  _swigc__p_p_mfem__Matrix,
+  _swigc__p_p_mfem__MatrixInverse,
+  _swigc__p_p_mfem__NCL2FaceRestriction,
+  _swigc__p_p_mfem__Operator,
+  _swigc__p_p_mfem__ProductOperator,
+  _swigc__p_p_mfem__PyOperatorBase,
+  _swigc__p_p_mfem__PyTimeDependentOperatorBase,
+  _swigc__p_p_mfem__QuadratureFunction,
+  _swigc__p_p_mfem__RAPOperator,
+  _swigc__p_p_mfem__RectangularConstrainedOperator,
+  _swigc__p_p_mfem__ScaledOperator,
+  _swigc__p_p_mfem__SecondOrderTimeDependentOperator,
+  _swigc__p_p_mfem__Solver,
+  _swigc__p_p_mfem__SparseMatrix,
+  _swigc__p_p_mfem__TimeDependentAdjointOperator,
+  _swigc__p_p_mfem__TimeDependentOperator,
+  _swigc__p_p_mfem__TransposeOperator,
+  _swigc__p_p_mfem__TripleProductOperator,
+  _swigc__p_p_mfem__Vector,
   _swigc__p_pri_t,
+  _swigc__p_pyr_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
+  _swigc__p_size_type,
   _swigc__p_tet_t,
   _swigc__p_tri_t,
+  _swigc__p_value_type,
 };
 
 

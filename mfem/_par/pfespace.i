@@ -7,7 +7,8 @@
 #include "fem/restriction.hpp"
 #include "fem/prestriction.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"  
+#include "pyoperator.hpp"
+#include "../common/pycoefficient.hpp"    
 %}
 
 %include "../common/mfem_config.i"
@@ -42,40 +43,56 @@ import_array();
    $1 = PyInt_Check($input) ? 1 : 0;
 }
 
-%feature("shadow") mfem::ParFiniteElementSpace::GetBdrElementDofs %{
-def GetBdrElementDofs(self, i):
-    from  .array import intArray
-    vdofs = intArray()
-    _pfespace.ParFiniteElementSpace_GetBdrElementDofs(self, i, vdofs)
-    return vdofs.ToList()
-%}
-%feature("shadow") mfem::ParFiniteElementSpace::GetElementDofs %{
-def GetElementDofs(self, i):
-    from  .array import intArray
-    vdofs = intArray()
-    _pfespace.ParFiniteElementSpace_GetElementDofs(self, i, vdofs)
-    return vdofs.ToList()
-%}
-%feature("shadow") mfem::ParFiniteElementSpace::GetFaceDofs %{
-def GetFaceDofs(self, i):
-    from  .array import intArray
-    vdofs = intArray()
-    _pfespace.ParFiniteElementSpace_GetFaceDofs(self, i, vdofs)
-    return vdofs.ToList()
-%}
 %feature("shadow") mfem::ParFiniteElementSpace::GetSharedEdgeDofs %{
-  def GetSharedEdgeDofs(self, group, ei):
+def GetSharedEdgeDofs(self, group, ei):
     from  .array import intArray
-    dofs = intArray()      
-    _pfespace.ParFiniteElementSpace_GetSharedEdgeDofs(self, group, ei, dofs)
-    return dofs.ToList()      
+    dofs = intArray() 
+    $action(self, group, ei, dofs)
+    return dofs.ToList()
 %}
 %feature("shadow") mfem::ParFiniteElementSpace::GetSharedFaceDofs %{
-  def GetSharedFaceDofs(self, group, fi):
+def GetSharedFaceDofs(self, group, fi):
     from  .array import intArray
-    dofs = intArray()      
-    _pfespace.ParFiniteElementSpace_GetSharedFaceDofs(self, group, fi, dofs)
-    return dofs.ToList()      
+    dofs = intArray()
+    $action(self, group, fi, dofs)
+    return dofs.ToList()
+%}
+%feature("shadow") mfem::ParFiniteElementSpace::GetSharedTriangleDofs %{
+def GetSharedTriangleDofs(self, group, fi):
+    from  .array import intArray
+    dofs = intArray()
+    $action(self, group, fi, dofs)
+    return dofs.ToList()
+%}
+%feature("shadow") mfem::ParFiniteElementSpace::GetSharedQuadrilateralDofs %{
+def GetSharedQuadrilateralDofs(self, group, fi):
+    from  .array import intArray
+    dofs = intArray()
+    $action(self, group, fi, dofs)
+    return dofs.ToList()
+%}
+%feature("shadow") mfem::ParFiniteElementSpace::GetFaceNbrElementVDofs %{
+def GetFaceNbrElementVDofs(self, i):
+    from  .array import intArray
+    vdofs = intArray()
+    $action(self, i, vdofs)
+    return vdofs.ToList()
 %}
 
 %include "fem/pfespace.hpp"
+
+%extend mfem::ParFiniteElementSpace{
+  virtual DofTransformation *GetElementDofTransformation(int elem) const{
+    mfem::Array<int> dofs;
+    return self->GetElementDofs(elem, dofs);
+  }
+  virtual DofTransformation *GetBdrElementDofTransformation(int bel) const {
+    mfem::Array<int> dofs;
+    return self->GetBdrElementDofs(bel, dofs);
+  }
+  virtual DofTransformation *GetFaceNbrVDofTransformation(int elem) const {
+    mfem::Array<int> dofs;    
+    return self->GetFaceNbrElementVDofs(elem, dofs);
+  }
+};
+

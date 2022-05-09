@@ -6,27 +6,32 @@
 #include <limits>
 #include <cmath>
 #include <cstring>
-#include "linalg/handle.hpp"    
-#include "linalg/sparsemat.hpp"  
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
-#include "io_stream.hpp"    
+#include "../common/io_stream.hpp"
+using namespace mfem;
   %}
 // initialization required to return numpy array from SWIG
+%begin %{
+#define PY_SSIZE_T_CLEAN
+%}
 %init %{
 import_array();
 %}
+
 %include "exception.i"
 %import "array.i"
 %import "mem_manager.i"
 
+%import "globals.i"
 %import "vector.i"
 %import "operators.i"
 %import "matrix.i"
 %import "densemat.i"
 %import "../common/ignore_common_functions.i"
 %import "../common/exception.i"
-
+%import "globals.i"
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
 

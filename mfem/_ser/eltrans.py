@@ -77,6 +77,18 @@ import mfem._ser.fe
 import mfem._ser.geom
 import mfem._ser.intrules
 import mfem._ser.sparsemat
+import mfem._ser.fe_base
+import mfem._ser.fe_fixed_order
+import mfem._ser.element
+import mfem._ser.table
+import mfem._ser.hash
+import mfem._ser.fe_h1
+import mfem._ser.fe_nd
+import mfem._ser.fe_rt
+import mfem._ser.fe_l2
+import mfem._ser.fe_nurbs
+import mfem._ser.fe_pos
+import mfem._ser.fe_ser
 class ElementTransformation(object):
     r"""Proxy of C++ mfem::ElementTransformation class."""
 
@@ -98,6 +110,7 @@ class ElementTransformation(object):
     Attribute = property(_eltrans.ElementTransformation_Attribute_get, _eltrans.ElementTransformation_Attribute_set, doc=r"""Attribute : int""")
     ElementNo = property(_eltrans.ElementTransformation_ElementNo_get, _eltrans.ElementTransformation_ElementNo_set, doc=r"""ElementNo : int""")
     ElementType = property(_eltrans.ElementTransformation_ElementType_get, _eltrans.ElementTransformation_ElementType_set, doc=r"""ElementType : int""")
+    mesh = property(_eltrans.ElementTransformation_mesh_get, _eltrans.ElementTransformation_mesh_set, doc=r"""mesh : p.mfem::Mesh""")
 
     def Reset(self):
         r"""Reset(ElementTransformation self)"""
@@ -146,6 +159,11 @@ class ElementTransformation(object):
         r"""AdjugateJacobian(ElementTransformation self) -> DenseMatrix"""
         return _eltrans.ElementTransformation_AdjugateJacobian(self)
     AdjugateJacobian = _swig_new_instance_method(_eltrans.ElementTransformation_AdjugateJacobian)
+
+    def TransposeAdjugateJacobian(self):
+        r"""TransposeAdjugateJacobian(ElementTransformation self) -> DenseMatrix"""
+        return _eltrans.ElementTransformation_TransposeAdjugateJacobian(self)
+    TransposeAdjugateJacobian = _swig_new_instance_method(_eltrans.ElementTransformation_TransposeAdjugateJacobian)
 
     def InverseJacobian(self):
         r"""InverseJacobian(ElementTransformation self) -> DenseMatrix"""

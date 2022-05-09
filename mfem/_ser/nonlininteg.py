@@ -74,12 +74,25 @@ import mfem._ser.fespace
 import mfem._ser.coefficient
 import mfem._ser.globals
 import mfem._ser.matrix
+import mfem._ser.symmat
 import mfem._ser.intrules
 import mfem._ser.sparsemat
 import mfem._ser.densemat
 import mfem._ser.eltrans
 import mfem._ser.fe
 import mfem._ser.geom
+import mfem._ser.fe_base
+import mfem._ser.fe_fixed_order
+import mfem._ser.element
+import mfem._ser.table
+import mfem._ser.hash
+import mfem._ser.fe_h1
+import mfem._ser.fe_nd
+import mfem._ser.fe_rt
+import mfem._ser.fe_l2
+import mfem._ser.fe_nurbs
+import mfem._ser.fe_pos
+import mfem._ser.fe_ser
 import mfem._ser.mesh
 import mfem._ser.sort_pairs
 import mfem._ser.ncmesh
@@ -88,11 +101,10 @@ import mfem._ser.bilininteg
 import mfem._ser.fe_coll
 import mfem._ser.lininteg
 import mfem._ser.linearform
-import mfem._ser.element
-import mfem._ser.table
-import mfem._ser.hash
 import mfem._ser.vertex
 import mfem._ser.vtk
+import mfem._ser.std_vectors
+import mfem._ser.doftrans
 import mfem._ser.handle
 import mfem._ser.restriction
 class NonlinearFormIntegrator(object):
@@ -114,10 +126,20 @@ class NonlinearFormIntegrator(object):
         return _nonlininteg.NonlinearFormIntegrator_SetIntRule(self, ir)
     SetIntRule = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_SetIntRule)
 
-    def SetIntegrationRule(self, irule):
-        r"""SetIntegrationRule(NonlinearFormIntegrator self, IntegrationRule irule)"""
-        return _nonlininteg.NonlinearFormIntegrator_SetIntegrationRule(self, irule)
+    def SetIntegrationRule(self, ir):
+        r"""SetIntegrationRule(NonlinearFormIntegrator self, IntegrationRule ir)"""
+        return _nonlininteg.NonlinearFormIntegrator_SetIntegrationRule(self, ir)
     SetIntegrationRule = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_SetIntegrationRule)
+
+    def SetPAMemoryType(self, mt):
+        r"""SetPAMemoryType(NonlinearFormIntegrator self, mfem::MemoryType mt)"""
+        return _nonlininteg.NonlinearFormIntegrator_SetPAMemoryType(self, mt)
+    SetPAMemoryType = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_SetPAMemoryType)
+
+    def GetIntegrationRule(self):
+        r"""GetIntegrationRule(NonlinearFormIntegrator self) -> IntegrationRule"""
+        return _nonlininteg.NonlinearFormIntegrator_GetIntegrationRule(self)
+    GetIntegrationRule = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_GetIntegrationRule)
 
     def AssembleElementVector(self, el, Tr, elfun, elvect):
         r"""AssembleElementVector(NonlinearFormIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elfun, Vector elvect)"""
@@ -152,10 +174,50 @@ class NonlinearFormIntegrator(object):
         return _nonlininteg.NonlinearFormIntegrator_AssemblePA(self, *args)
     AssemblePA = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_AssemblePA)
 
+    def AssembleGradPA(self, x, fes):
+        r"""AssembleGradPA(NonlinearFormIntegrator self, Vector x, FiniteElementSpace fes)"""
+        return _nonlininteg.NonlinearFormIntegrator_AssembleGradPA(self, x, fes)
+    AssembleGradPA = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_AssembleGradPA)
+
+    def GetLocalStateEnergyPA(self, x):
+        r"""GetLocalStateEnergyPA(NonlinearFormIntegrator self, Vector x) -> double"""
+        return _nonlininteg.NonlinearFormIntegrator_GetLocalStateEnergyPA(self, x)
+    GetLocalStateEnergyPA = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_GetLocalStateEnergyPA)
+
     def AddMultPA(self, x, y):
         r"""AddMultPA(NonlinearFormIntegrator self, Vector x, Vector y)"""
         return _nonlininteg.NonlinearFormIntegrator_AddMultPA(self, x, y)
     AddMultPA = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_AddMultPA)
+
+    def AddMultGradPA(self, x, y):
+        r"""AddMultGradPA(NonlinearFormIntegrator self, Vector x, Vector y)"""
+        return _nonlininteg.NonlinearFormIntegrator_AddMultGradPA(self, x, y)
+    AddMultGradPA = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_AddMultGradPA)
+
+    def AssembleGradDiagonalPA(self, diag):
+        r"""AssembleGradDiagonalPA(NonlinearFormIntegrator self, Vector diag)"""
+        return _nonlininteg.NonlinearFormIntegrator_AssembleGradDiagonalPA(self, diag)
+    AssembleGradDiagonalPA = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_AssembleGradDiagonalPA)
+
+    def SupportsCeed(self):
+        r"""SupportsCeed(NonlinearFormIntegrator self) -> bool"""
+        return _nonlininteg.NonlinearFormIntegrator_SupportsCeed(self)
+    SupportsCeed = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_SupportsCeed)
+
+    def AssembleMF(self, fes):
+        r"""AssembleMF(NonlinearFormIntegrator self, FiniteElementSpace fes)"""
+        return _nonlininteg.NonlinearFormIntegrator_AssembleMF(self, fes)
+    AssembleMF = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_AssembleMF)
+
+    def AddMultMF(self, x, y):
+        r"""AddMultMF(NonlinearFormIntegrator self, Vector x, Vector y)"""
+        return _nonlininteg.NonlinearFormIntegrator_AddMultMF(self, x, y)
+    AddMultMF = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_AddMultMF)
+
+    def GetCeedOp(self):
+        r"""GetCeedOp(NonlinearFormIntegrator self) -> ceed::Operator &"""
+        return _nonlininteg.NonlinearFormIntegrator_GetCeedOp(self)
+    GetCeedOp = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_GetCeedOp)
     __swig_destroy__ = _nonlininteg.delete_NonlinearFormIntegrator
     def __disown__(self):
         self.this.disown()
@@ -177,12 +239,12 @@ class BlockNonlinearFormIntegrator(object):
     GetElementEnergy = _swig_new_instance_method(_nonlininteg.BlockNonlinearFormIntegrator_GetElementEnergy)
 
     def AssembleElementVector(self, el, Tr, elfun, elvec):
-        r"""AssembleElementVector(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array< mfem::Vector * > const & elvec)"""
+        r"""AssembleElementVector(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, VectorPtrArray elvec)"""
         return _nonlininteg.BlockNonlinearFormIntegrator_AssembleElementVector(self, el, Tr, elfun, elvec)
     AssembleElementVector = _swig_new_instance_method(_nonlininteg.BlockNonlinearFormIntegrator_AssembleElementVector)
 
     def AssembleFaceVector(self, el1, el2, Tr, elfun, elvect):
-        r"""AssembleFaceVector(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el1, mfem::Array< mfem::FiniteElement const * > const & el2, FaceElementTransformations Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array< mfem::Vector * > const & elvect)"""
+        r"""AssembleFaceVector(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el1, mfem::Array< mfem::FiniteElement const * > const & el2, FaceElementTransformations Tr, mfem::Array< mfem::Vector const * > const & elfun, VectorPtrArray elvect)"""
         return _nonlininteg.BlockNonlinearFormIntegrator_AssembleFaceVector(self, el1, el2, Tr, elfun, elvect)
     AssembleFaceVector = _swig_new_instance_method(_nonlininteg.BlockNonlinearFormIntegrator_AssembleFaceVector)
 
@@ -214,9 +276,9 @@ class HyperelasticModel(object):
     __repr__ = _swig_repr
     __swig_destroy__ = _nonlininteg.delete_HyperelasticModel
 
-    def SetTransformation(self, _Ttr):
-        r"""SetTransformation(HyperelasticModel self, ElementTransformation _Ttr)"""
-        return _nonlininteg.HyperelasticModel_SetTransformation(self, _Ttr)
+    def SetTransformation(self, Ttr_):
+        r"""SetTransformation(HyperelasticModel self, ElementTransformation Ttr_)"""
+        return _nonlininteg.HyperelasticModel_SetTransformation(self, Ttr_)
     SetTransformation = _swig_new_instance_method(_nonlininteg.HyperelasticModel_SetTransformation)
 
     def EvalW(self, Jpt):
@@ -274,8 +336,8 @@ class NeoHookeanModel(HyperelasticModel):
 
     def __init__(self, *args):
         r"""
-        __init__(NeoHookeanModel self, double _mu, double _K, double _g=1.0) -> NeoHookeanModel
-        __init__(NeoHookeanModel self, Coefficient _mu, Coefficient _K, Coefficient _g=None) -> NeoHookeanModel
+        __init__(NeoHookeanModel self, double mu_, double K_, double g_=1.0) -> NeoHookeanModel
+        __init__(NeoHookeanModel self, Coefficient mu_, Coefficient K_, Coefficient g_=None) -> NeoHookeanModel
         """
         _nonlininteg.NeoHookeanModel_swiginit(self, _nonlininteg.new_NeoHookeanModel(*args))
 
@@ -333,9 +395,9 @@ class IncompressibleNeoHookeanIntegrator(BlockNonlinearFormIntegrator):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, _mu):
-        r"""__init__(IncompressibleNeoHookeanIntegrator self, Coefficient _mu) -> IncompressibleNeoHookeanIntegrator"""
-        _nonlininteg.IncompressibleNeoHookeanIntegrator_swiginit(self, _nonlininteg.new_IncompressibleNeoHookeanIntegrator(_mu))
+    def __init__(self, mu_):
+        r"""__init__(IncompressibleNeoHookeanIntegrator self, Coefficient mu_) -> IncompressibleNeoHookeanIntegrator"""
+        _nonlininteg.IncompressibleNeoHookeanIntegrator_swiginit(self, _nonlininteg.new_IncompressibleNeoHookeanIntegrator(mu_))
 
     def GetElementEnergy(self, el, Tr, elfun):
         r"""GetElementEnergy(IncompressibleNeoHookeanIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun) -> double"""
@@ -343,7 +405,7 @@ class IncompressibleNeoHookeanIntegrator(BlockNonlinearFormIntegrator):
     GetElementEnergy = _swig_new_instance_method(_nonlininteg.IncompressibleNeoHookeanIntegrator_GetElementEnergy)
 
     def AssembleElementVector(self, el, Tr, elfun, elvec):
-        r"""AssembleElementVector(IncompressibleNeoHookeanIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array< mfem::Vector * > const & elvec)"""
+        r"""AssembleElementVector(IncompressibleNeoHookeanIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, VectorPtrArray elvec)"""
         return _nonlininteg.IncompressibleNeoHookeanIntegrator_AssembleElementVector(self, el, Tr, elfun, elvec)
     AssembleElementVector = _swig_new_instance_method(_nonlininteg.IncompressibleNeoHookeanIntegrator_AssembleElementVector)
 
@@ -394,10 +456,20 @@ class VectorConvectionNLFIntegrator(NonlinearFormIntegrator):
         return _nonlininteg.VectorConvectionNLFIntegrator_AssemblePA(self, *args)
     AssemblePA = _swig_new_instance_method(_nonlininteg.VectorConvectionNLFIntegrator_AssemblePA)
 
+    def AssembleMF(self, fes):
+        r"""AssembleMF(VectorConvectionNLFIntegrator self, FiniteElementSpace fes)"""
+        return _nonlininteg.VectorConvectionNLFIntegrator_AssembleMF(self, fes)
+    AssembleMF = _swig_new_instance_method(_nonlininteg.VectorConvectionNLFIntegrator_AssembleMF)
+
     def AddMultPA(self, x, y):
         r"""AddMultPA(VectorConvectionNLFIntegrator self, Vector x, Vector y)"""
         return _nonlininteg.VectorConvectionNLFIntegrator_AddMultPA(self, x, y)
     AddMultPA = _swig_new_instance_method(_nonlininteg.VectorConvectionNLFIntegrator_AddMultPA)
+
+    def AddMultMF(self, x, y):
+        r"""AddMultMF(VectorConvectionNLFIntegrator self, Vector x, Vector y)"""
+        return _nonlininteg.VectorConvectionNLFIntegrator_AddMultMF(self, x, y)
+    AddMultMF = _swig_new_instance_method(_nonlininteg.VectorConvectionNLFIntegrator_AddMultMF)
     __swig_destroy__ = _nonlininteg.delete_VectorConvectionNLFIntegrator
 
 # Register VectorConvectionNLFIntegrator in _nonlininteg:
@@ -407,6 +479,50 @@ def VectorConvectionNLFIntegrator_GetRule(fe, T):
     r"""VectorConvectionNLFIntegrator_GetRule(FiniteElement fe, ElementTransformation T) -> IntegrationRule"""
     return _nonlininteg.VectorConvectionNLFIntegrator_GetRule(fe, T)
 VectorConvectionNLFIntegrator_GetRule = _nonlininteg.VectorConvectionNLFIntegrator_GetRule
+
+class ConvectiveVectorConvectionNLFIntegrator(VectorConvectionNLFIntegrator):
+    r"""Proxy of C++ mfem::ConvectiveVectorConvectionNLFIntegrator class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        r"""
+        __init__(ConvectiveVectorConvectionNLFIntegrator self, Coefficient q) -> ConvectiveVectorConvectionNLFIntegrator
+        __init__(ConvectiveVectorConvectionNLFIntegrator self) -> ConvectiveVectorConvectionNLFIntegrator
+        """
+        _nonlininteg.ConvectiveVectorConvectionNLFIntegrator_swiginit(self, _nonlininteg.new_ConvectiveVectorConvectionNLFIntegrator(*args))
+
+    def AssembleElementGrad(self, el, trans, elfun, elmat):
+        r"""AssembleElementGrad(ConvectiveVectorConvectionNLFIntegrator self, FiniteElement el, ElementTransformation trans, Vector elfun, DenseMatrix elmat)"""
+        return _nonlininteg.ConvectiveVectorConvectionNLFIntegrator_AssembleElementGrad(self, el, trans, elfun, elmat)
+    AssembleElementGrad = _swig_new_instance_method(_nonlininteg.ConvectiveVectorConvectionNLFIntegrator_AssembleElementGrad)
+    __swig_destroy__ = _nonlininteg.delete_ConvectiveVectorConvectionNLFIntegrator
+
+# Register ConvectiveVectorConvectionNLFIntegrator in _nonlininteg:
+_nonlininteg.ConvectiveVectorConvectionNLFIntegrator_swigregister(ConvectiveVectorConvectionNLFIntegrator)
+
+class SkewSymmetricVectorConvectionNLFIntegrator(VectorConvectionNLFIntegrator):
+    r"""Proxy of C++ mfem::SkewSymmetricVectorConvectionNLFIntegrator class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        r"""
+        __init__(SkewSymmetricVectorConvectionNLFIntegrator self, Coefficient q) -> SkewSymmetricVectorConvectionNLFIntegrator
+        __init__(SkewSymmetricVectorConvectionNLFIntegrator self) -> SkewSymmetricVectorConvectionNLFIntegrator
+        """
+        _nonlininteg.SkewSymmetricVectorConvectionNLFIntegrator_swiginit(self, _nonlininteg.new_SkewSymmetricVectorConvectionNLFIntegrator(*args))
+
+    def AssembleElementGrad(self, el, trans, elfun, elmat):
+        r"""AssembleElementGrad(SkewSymmetricVectorConvectionNLFIntegrator self, FiniteElement el, ElementTransformation trans, Vector elfun, DenseMatrix elmat)"""
+        return _nonlininteg.SkewSymmetricVectorConvectionNLFIntegrator_AssembleElementGrad(self, el, trans, elfun, elmat)
+    AssembleElementGrad = _swig_new_instance_method(_nonlininteg.SkewSymmetricVectorConvectionNLFIntegrator_AssembleElementGrad)
+    __swig_destroy__ = _nonlininteg.delete_SkewSymmetricVectorConvectionNLFIntegrator
+
+# Register SkewSymmetricVectorConvectionNLFIntegrator in _nonlininteg:
+_nonlininteg.SkewSymmetricVectorConvectionNLFIntegrator_swigregister(SkewSymmetricVectorConvectionNLFIntegrator)
 
 
 

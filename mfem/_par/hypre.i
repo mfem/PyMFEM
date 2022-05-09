@@ -10,9 +10,10 @@
 #include "fem/pfespace.hpp"    
 #include "config/config.hpp"        
 #include "linalg/hypre.hpp"
+#include "linalg/hypre_parcsr.hpp"  
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
-#include "io_stream.hpp"    
+#include "../common/io_stream.hpp"
 %}
 
 %include "../common/mfem_config.i"
@@ -42,9 +43,20 @@ OSTREAM_TYPEMAP(std::ostream&)
 
 %import "../common/hypre_int.i"
 
+
 %inline %{
 int sizeof_HYPRE_Int(){
     return sizeof(HYPRE_Int);
+}
+int sizeof_HYPRE_BigInt(){
+    return sizeof(HYPRE_BigInt);
+}
+bool is_HYPRE_USING_CUDA(){ 
+    #ifdef HYPRE_USING_CUDA
+    return true;
+    #else
+    return false;
+    #endif
 }
 %}
 
@@ -54,18 +66,18 @@ int sizeof_HYPRE_Int(){
                   HYPRE_Int *col);
 
 */
-%typemap(in) (double *_data,  HYPRE_Int *col)(PyArrayObject * tmp_arr1_ = NULL,  PyArrayObject * tmp_arr2_ = NULL){
+%typemap(in) (double *data_,  HYPRE_BigInt *col)(PyArrayObject * tmp_arr1_ = NULL,  PyArrayObject * tmp_arr2_ = NULL){
   //HypreParVec constructer requires outside object alive
   //   We keep reference to such outside numpy array in ProxyClass
   tmp_arr1_ = (PyArrayObject *)PyList_GetItem($input,0);
   tmp_arr2_ = (PyArrayObject *)PyList_GetItem($input,1);
   
   $1 = (double *) PyArray_DATA(tmp_arr1_);
-  $2 = (HYPRE_Int *) PyArray_DATA(tmp_arr2_);
+  $2 = (HYPRE_BigInt *) PyArray_DATA(tmp_arr2_);
 }
-%typemap(freearg) (double *_data,  HYPRE_Int *col){
+%typemap(freearg) (double *data_,  HYPRE_BigInt *col){
 }
-%typemap(typecheck )(double *_data,  HYPRE_Int *col){
+%typemap(typecheck )(double *data_,  HYPRE_BigInt *col){
   /* check if list of 2 numpy array or not */
   if (!PyList_Check($input)) $1 = 0;
   else {
@@ -90,10 +102,10 @@ int sizeof_HYPRE_Int(){
  */
 
 %typemap(in) (int *I,
-	      HYPRE_Int *J,
+	      HYPRE_BigInt *J,
               double *data,
-	      HYPRE_Int *rows,
-	      HYPRE_Int *cols)
+	      HYPRE_BigInt *rows,
+	      HYPRE_BigInt *cols)
              (PyArrayObject *tmp_arr1_ = NULL,
 	      PyArrayObject *tmp_arr2_ = NULL,
 	      PyArrayObject *tmp_arr3_ = NULL,
@@ -109,17 +121,17 @@ int sizeof_HYPRE_Int(){
      tmp_arr5_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,4));
   }
   $1 = (int *) PyArray_DATA(tmp_arr1_);
-  $2 = (HYPRE_Int *) PyArray_DATA(tmp_arr2_);
+  $2 = (HYPRE_BigInt *) PyArray_DATA(tmp_arr2_);
   $3 = (double *) PyArray_DATA(tmp_arr3_);
-  $4 = (HYPRE_Int *) PyArray_DATA(tmp_arr4_);
+  $4 = (HYPRE_BigInt *) PyArray_DATA(tmp_arr4_);
   if (list_len_ == 4){
     $5 = $4;
   } else {
-    $5 = (HYPRE_Int *) PyArray_DATA(tmp_arr5_);
+    $5 = (HYPRE_BigInt *) PyArray_DATA(tmp_arr5_);
   }
 }
-%typemap(freearg) (int *I, HYPRE_Int *J,
-		   double *data, HYPRE_Int *rows, HYPRE_Int *cols){
+%typemap(freearg) (int *I, HYPRE_BigInt *J,
+		   double *data, HYPRE_BigInt *rows, HYPRE_BigInt *cols){
   Py_XDECREF(tmp_arr1_$argnum);
   Py_XDECREF(tmp_arr2_$argnum);  
   Py_XDECREF(tmp_arr3_$argnum);
@@ -129,9 +141,9 @@ int sizeof_HYPRE_Int(){
   }
 }
 
-%typemap(typecheck ) (int *I, HYPRE_Int *J,
-                      double *data, HYPRE_Int *rows,
-		      HYPRE_Int *cols){
+%typemap(typecheck ) (int *I, HYPRE_BigInt *J,
+                      double *data, HYPRE_BigInt *rows,
+		      HYPRE_BigInt *cols){
   /* check if list of 5 numpy array or not */
   if (!PyList_Check($input)) $1 = 0;
   else {
@@ -179,8 +191,11 @@ if isinstance(args[-1], list):
      # in order to prevent python from freeing the input
      # array, object is kept in ParVector
      self._linked_array = args[-1]
+     self._hypreread_called = False
 %}
-
+%pythonappend mfem::HypreParVector::HypreRead %{
+     self._hypreread_called = True
+%}
 %pythonappend mfem::HypreParMatrix::operator*= %{
 #    val.thisown = 0
     return self
@@ -217,19 +232,19 @@ HypreParMatrix.__repr__ = parmat__repr__
 PyObject* GetPartitioningArray()
 {
   // assumed partitioning mode only
-  npy_intp dims[] = {3};
-  int typenum =  (sizeof(HYPRE_Int) == 4) ? NPY_INT32 : NPY_INT64;
-  HYPRE_Int *part_out;
+  npy_intp dims[] = {2};
+  int typenum =  (sizeof(HYPRE_BigInt) == 4) ? NPY_INT32 : NPY_INT64;
+  HYPRE_BigInt *part_out;
   
-  HYPRE_Int *part = self -> Partitioning();
+  HYPRE_BigInt *part = self -> Partitioning();
   PyObject *tmp_arr = PyArray_ZEROS(1, dims, typenum, 0);
   PyObject *arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)tmp_arr);
   Py_XDECREF(tmp_arr);
 
-  part_out = (HYPRE_Int *) PyArray_DATA(arr1);
+  part_out = (HYPRE_BigInt *) PyArray_DATA(reinterpret_cast<PyArrayObject *>(arr1));
   part_out[0] = part[0];
   part_out[1] = part[1];
-  part_out[2] = part[2];  
+  //part_out[2] = part[2];  
 
   return arr1;
 }
@@ -238,38 +253,38 @@ PyObject* GetPartitioningArray()
 PyObject* GetRowPartArray()
 {
   // assumed partitioning mode only
-  npy_intp dims[] = {3};
-  int typenum =  (sizeof(HYPRE_Int) == 4) ? NPY_INT32 : NPY_INT64;
-  HYPRE_Int *part_out;
+  npy_intp dims[] = {2};
+  int typenum =  (sizeof(HYPRE_BigInt) == 4) ? NPY_INT32 : NPY_INT64;
+  HYPRE_BigInt *part_out;
   
-  HYPRE_Int *part = self -> RowPart();
+  HYPRE_BigInt *part = self -> RowPart();
   PyObject *tmp_arr = PyArray_ZEROS(1, dims, typenum, 0);
   PyObject *arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)tmp_arr);
   Py_XDECREF(tmp_arr);
 
-  part_out = (HYPRE_Int *) PyArray_DATA(arr1);
+  part_out = (HYPRE_BigInt *) PyArray_DATA(reinterpret_cast<PyArrayObject *>(arr1));
   part_out[0] = part[0];
   part_out[1] = part[1];
-  part_out[2] = part[2];  
+  //part_out[2] = part[2];  
 
   return arr1;
 }
 PyObject* GetColPartArray()
 {
   // assumed partitioning mode only
-  npy_intp dims[] = {3};
-  int typenum =  (sizeof(HYPRE_Int) == 4) ? NPY_INT32 : NPY_INT64;
-  HYPRE_Int *part_out;
+  npy_intp dims[] = {2};
+  int typenum =  (sizeof(HYPRE_BigInt) == 4) ? NPY_INT32 : NPY_INT64;
+  HYPRE_BigInt *part_out;
   
-  HYPRE_Int *part = self -> ColPart();
+  HYPRE_BigInt *part = self -> ColPart();
   PyObject *tmp_arr = PyArray_ZEROS(1, dims, typenum, 0);
   PyObject *arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)tmp_arr);
   Py_XDECREF(tmp_arr);
 
-  part_out = (HYPRE_Int *) PyArray_DATA(arr1);
+  part_out = (HYPRE_BigInt *) PyArray_DATA(reinterpret_cast<PyArrayObject *>(arr1));
   part_out[0] = part[0];
   part_out[1] = part[1];
-  part_out[2] = part[2];  
+  //part_out[2] = part[2];  
 
   return arr1;
 }
@@ -277,106 +292,43 @@ HYPRE_Int get_local_nnz()//mfem::HypreParMatrix *pmatrix)
 {
   //hypre_ParCSRMatrix *matrix =  static_cast<hypre_ParCSRMatrix *>(*pmatrix);
    hypre_ParCSRMatrix *matrix =  static_cast<hypre_ParCSRMatrix *>(*self);
-   MPI_Comm          comm;
-   hypre_CSRMatrix  *diag;
-   hypre_CSRMatrix  *offd;
+   //MPI_Comm          comm;
    if (!matrix)
    {
       /*hypre_error_in_arg(1);*/
      return 0;
    }
-   comm = hypre_ParCSRMatrixComm(matrix);
-   diag            = hypre_ParCSRMatrixDiag(matrix);
-   offd            = hypre_ParCSRMatrixOffd(matrix);
-   return hypre_CSRMatrixNumNonzeros(diag) + hypre_CSRMatrixNumNonzeros(offd);
+   //comm = hypre_ParCSRMatrixComm(matrix);
+   hypre_CSRMatrix *diag = hypre_ParCSRMatrixDiag(matrix);
+   hypre_CSRMatrix *offd = hypre_ParCSRMatrixOffd(matrix);
+   
+   const int diag_nnz = mfem::internal::to_int(diag->num_nonzeros);
+   const int offd_nnz = mfem::internal::to_int(offd->num_nonzeros);   
+   return (HYPRE_Int)(diag_nnz + offd_nnz);
 }
 PyObject* get_local_true_nnz()
 {
    hypre_ParCSRMatrix *matrix =  static_cast<hypre_ParCSRMatrix *>(*self);
+   
+   mfem::SparseMatrix merged;
+   self -> MergeDiagAndOffd(merged);
+   
+   int * I = merged.GetI();
+   int * J = merged.GetJ();   
+   double *Data = merged.GetData();
 
-
-   MPI_Comm          comm;
-   HYPRE_Int         first_row_index;
-   HYPRE_Int         first_col_diag;
-   hypre_CSRMatrix  *diag;
-   hypre_CSRMatrix  *offd;
-   HYPRE_Int        *col_map_offd;
-   HYPRE_Int         num_rows;
-   HYPRE_Int        *row_starts;
-   HYPRE_Int        *col_starts;
-   HYPRE_Complex    *diag_data;
-   HYPRE_Int        *diag_i;
-   HYPRE_Int        *diag_j;
-   HYPRE_Complex    *offd_data;
-   HYPRE_Int        *offd_i;
-   HYPRE_Int        *offd_j;
-   HYPRE_Int         myid, num_procs, i, j;
-   HYPRE_Int         num_nonzeros_offd;
-   PyObject *o = NULL;      
-   HYPRE_Int tnnz = 0;
-   HYPRE_Int nnz;
-   if (!matrix)
-   {
-      /*hypre_error_in_arg(1);*/
-     return Py_None;    
+   HYPRE_BigInt nnz = merged.NumNonZeroElems();
+   HYPRE_BigInt tnnz = 0;
+   
+   for (int k = 0; k<nnz; k++){
+     if (Data[k] != 0.0){
+       tnnz = tnnz + 1;
+     }
    }
-
-   comm = hypre_ParCSRMatrixComm(matrix);
-   diag = hypre_ParCSRMatrixDiag(matrix);
-   offd = hypre_ParCSRMatrixOffd(matrix);
-   nnz =  hypre_CSRMatrixNumNonzeros(diag) + hypre_CSRMatrixNumNonzeros(offd);
-
-   first_row_index = hypre_ParCSRMatrixFirstRowIndex(matrix);
-   first_col_diag  = hypre_ParCSRMatrixFirstColDiag(matrix);
-   diag            = hypre_ParCSRMatrixDiag(matrix);
-   offd            = hypre_ParCSRMatrixOffd(matrix);
-   col_map_offd    = hypre_ParCSRMatrixColMapOffd(matrix);
-   num_rows        = hypre_ParCSRMatrixNumRows(matrix);
-   row_starts      = hypre_ParCSRMatrixRowStarts(matrix);
-   col_starts      = hypre_ParCSRMatrixColStarts(matrix);
-   hypre_MPI_Comm_rank(comm, &myid);
-   hypre_MPI_Comm_size(comm, &num_procs);
-   num_nonzeros_offd = hypre_CSRMatrixNumNonzeros(offd);
-
-   diag_data = hypre_CSRMatrixData(diag);
-   diag_i    = hypre_CSRMatrixI(diag);
-   diag_j    = hypre_CSRMatrixJ(diag);
-   offd_i    = hypre_CSRMatrixI(offd);
-   if (num_nonzeros_offd)
-   {
-      offd_data = hypre_CSRMatrixData(offd);
-      offd_j    = hypre_CSRMatrixJ(offd);
-   }
-   for (i = 0; i < num_rows; i++)
-   {
-      for (j = diag_i[i]; j < diag_i[i+1]; j++)
-      {
-         if ( diag_data )
-	 {
-           if ((double)diag_data[j] != 0){
-    	       tnnz = tnnz + 1;		     
-           }
-         }		     
-		     
-      }
-      if ( num_nonzeros_offd )
-      {
-         for (j = offd_i[i]; j < offd_i[i+1]; j++)
-         {
-            if ( offd_data )
-            {
-	      if ((double)offd_data[j] != 0){
-         	       tnnz = tnnz + 1;		     
-               }
-     	    }
-         }
-      }
-   }
-   o = PyList_New(2);
+   PyObject *o = PyList_New(2);
    PyList_SetItem(o, 0, PyLong_FromLong((long)nnz));
    PyList_SetItem(o, 1, PyLong_FromLong((long)tnnz));
-
-   return o;
+   return o;   
 }
   
 /* MakeMatrixCoordinateFormat */
@@ -384,6 +336,127 @@ PyObject* get_local_true_nnz()
 PyObject* GetCooDataArray(const HYPRE_Int           base_i = 0,
 			  const HYPRE_Int           base_j = 0)
 {
+
+   int ii, jj;
+   int innz=0;
+   PyObject *arr1 = NULL, *arr2 = NULL, *arr3 = NULL, *o = NULL;
+   
+   hypre_ParCSRMatrix *matrix =  static_cast<hypre_ParCSRMatrix *>(*self);
+   if (!matrix)
+   {
+     return Py_None;    
+   }
+   HYPRE_Int myid;
+   MPI_Comm  comm = hypre_ParCSRMatrixComm(matrix);
+   hypre_MPI_Comm_rank(comm, &myid);
+   
+   hypre_CSRMatrix *diag = hypre_ParCSRMatrixDiag(matrix);
+   hypre_CSRMatrix *offd = hypre_ParCSRMatrixOffd(matrix);
+   const int diag_nnz = mfem::internal::to_int(diag->num_nonzeros);
+   const int offd_nnz = mfem::internal::to_int(offd->num_nonzeros);   
+   
+   HYPRE_Int         first_row_index;
+   HYPRE_Int         first_col_diag;
+   first_row_index = hypre_ParCSRMatrixFirstRowIndex(matrix);
+   first_col_diag  = hypre_ParCSRMatrixFirstColDiag(matrix);
+
+   mfem::SparseMatrix merged;
+   self -> MergeDiagAndOffd(merged);
+   
+   HYPRE_BigInt *cpart = self -> ColPart();
+   HYPRE_BigInt *rpart = self -> RowPart();
+   int num_rows = self -> Height();
+   int * I = merged.GetI();
+   int * J = merged.GetJ();   
+   double *Data = merged.GetData();
+
+   HYPRE_BigInt tnnz = 0;   
+   for (int k = 0; k<diag_nnz + offd_nnz; k++){
+     if (Data[k] != 0.0){
+       tnnz = tnnz + 1;
+     }
+   }
+   
+   npy_intp dims[] = {tnnz};
+   int typenum =  (sizeof(HYPRE_Int) == 4) ? NPY_INT32 : NPY_INT64;
+
+   PyObject *tmp_arr1 = PyArray_ZEROS(1, dims, typenum, 0);
+   PyObject *tmp_arr2 = PyArray_ZEROS(1, dims, typenum, 0);
+   PyObject *tmp_arr3 = PyArray_ZEROS(1, dims, NPY_DOUBLE, 0);
+   if (tmp_arr1 == NULL) goto alloc_fail;
+   if (tmp_arr2 == NULL) goto alloc_fail;
+   if (tmp_arr3 == NULL) goto alloc_fail;
+
+
+   arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)tmp_arr1);
+   arr2 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)tmp_arr2);
+   arr3 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)tmp_arr3);
+   Py_XDECREF(tmp_arr1);
+   Py_XDECREF(tmp_arr2);
+   Py_XDECREF(tmp_arr3);
+   
+   if (arr1 == NULL) goto alloc_fail;
+   if (arr2 == NULL) goto alloc_fail;
+   if (arr3 == NULL) goto alloc_fail;
+
+   HYPRE_Int* irn;
+   HYPRE_Int* jcn;
+   double* a;
+   
+   irn = (HYPRE_Int *) PyArray_DATA(reinterpret_cast<PyArrayObject *> (arr1));
+   jcn = (HYPRE_Int *) PyArray_DATA(reinterpret_cast<PyArrayObject *> (arr2));
+   a = (double *) PyArray_DATA(reinterpret_cast<PyArrayObject *> (arr3));
+
+   for (int i = 0; i < num_rows; i++) {
+      ii = first_row_index + i + base_i;
+      for (int j = I[i]; j < I[i+1]; j++) {
+         jj = J[j] + base_j;
+  	 if ((double)Data[j] != 0.){	      
+            irn[innz]= ii;
+            jcn[innz] = jj;
+            a[innz] = (double)Data[j];
+	    innz = innz + 1;
+	 }
+      }
+   }
+   
+   HYPRE_Int         ilower, iupper, jlower, jupper;   
+   //#ifdef HYPRE_NO_GLOBAL_PARTITION
+   if (HYPRE_AssumedPartitionCheck()){
+     //std::cout << "no_global_partition\n";
+      ilower = rpart[0]+base_i;
+      iupper = rpart[1]+base_i - 1;
+      jlower = cpart[0]+base_j;
+      jupper = cpart[1]+base_j - 1;
+   } else {
+      ilower = rpart[myid]  +base_i;
+      iupper = rpart[myid+1]+base_i - 1;
+      jlower = cpart[myid]  +base_j;
+      jupper = cpart[myid+1]+base_j - 1;
+   }
+
+   o = PyList_New(8);
+   PyList_SetItem(o, 0, PyLong_FromLong((long)num_rows));
+   PyList_SetItem(o, 1, PyLong_FromLong((long)ilower));
+   PyList_SetItem(o, 2, PyLong_FromLong((long)iupper));
+   PyList_SetItem(o, 3, PyLong_FromLong((long)jlower));
+   PyList_SetItem(o, 4, PyLong_FromLong((long)jupper));  
+   PyList_SetItem(o, 5, arr1);
+   PyList_SetItem(o, 6, arr2);
+   PyList_SetItem(o, 7, arr3);
+  
+   return o;
+
+   alloc_fail:
+     Py_XDECREF(arr1);
+     Py_XDECREF(arr2);
+     Py_XDECREF(arr3);
+     Py_XDECREF(o);     
+     return Py_None;
+
+
+     
+   /*   
   //hypre_ParCSRMatrix *matrix =  static_cast<hypre_ParCSRMatrix *>(*pmatrix);
    hypre_ParCSRMatrix *matrix =  static_cast<hypre_ParCSRMatrix *>(*self);
 
@@ -393,7 +466,7 @@ PyObject* GetCooDataArray(const HYPRE_Int           base_i = 0,
    HYPRE_Int         first_col_diag;
    hypre_CSRMatrix  *diag;
    hypre_CSRMatrix  *offd;
-   HYPRE_Int        *col_map_offd;
+   HYPRE_BigInt        *col_map_offd;
    HYPRE_Int         num_rows;
    HYPRE_Int        *row_starts;
    HYPRE_Int        *col_starts;
@@ -405,7 +478,7 @@ PyObject* GetCooDataArray(const HYPRE_Int           base_i = 0,
    HYPRE_Int        *offd_j;
    HYPRE_Int         myid, num_procs, i, j, I, J;
    HYPRE_Int         num_nonzeros_offd;
-   HYPRE_Int         ilower, iupper, jlower, jupper;
+
    
    HYPRE_Int innz = 0;
    HYPRE_Int nnz;
@@ -413,7 +486,6 @@ PyObject* GetCooDataArray(const HYPRE_Int           base_i = 0,
    PyObject *arr1 = NULL, *arr2 = NULL, *arr3 = NULL, *o = NULL;   
    if (!matrix)
    {
-      /*hypre_error_in_arg(1);*/
      return Py_None;    
    }
 
@@ -444,9 +516,7 @@ PyObject* GetCooDataArray(const HYPRE_Int           base_i = 0,
       offd_j    = hypre_CSRMatrixJ(offd);
    }
 
-   //#ifdef HYPRE_NO_GLOBAL_PARTITION
    if (HYPRE_AssumedPartitionCheck()){
-     //std::cout << "no_global_partition\n";
       ilower = row_starts[0]+base_i;
       iupper = row_starts[1]+base_i - 1;
       jlower = col_starts[0]+base_j;
@@ -510,9 +580,9 @@ PyObject* GetCooDataArray(const HYPRE_Int           base_i = 0,
    if (arr1 == NULL) goto alloc_fail;
    if (arr2 == NULL) goto alloc_fail;
    if (arr3 == NULL) goto alloc_fail;
-   irn = (HYPRE_Int *) PyArray_DATA(arr1);
-   jcn = (HYPRE_Int *) PyArray_DATA(arr2);
-   a = (double *) PyArray_DATA(arr3);
+   irn = (HYPRE_Int *) PyArray_DATA(reinterpret_cast<PyArrayObject *> (arr1));
+   jcn = (HYPRE_Int *) PyArray_DATA(reinterpret_cast<PyArrayObject *> (arr2));
+   a = (double *) PyArray_DATA(reinterpret_cast<PyArrayObject *> (arr3));
    //*irn_p = irn;
    //*jcn_p = jcn;
    //*a_p   = a;
@@ -569,6 +639,7 @@ PyObject* GetCooDataArray(const HYPRE_Int           base_i = 0,
      Py_XDECREF(arr3);
      Py_XDECREF(o);     
      return Py_None;
+  */
 }
 }  
 

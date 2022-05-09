@@ -72,6 +72,7 @@ import mfem._par.vector
 import mfem._par.matrix
 import mfem._par.operators
 import mfem._par.sparsemat
+import mfem._par.globals
 import mfem._par.densemat
 class BlockMatrix(mfem._par.matrix.AbstractSparseMatrix):
     r"""Proxy of C++ mfem::BlockMatrix class."""
@@ -227,11 +228,16 @@ class BlockMatrix(mfem._par.matrix.AbstractSparseMatrix):
 
     def PrintMatlab(self, *args):
         r"""
-        PrintMatlab(BlockMatrix self, std::ostream & os=mfem::out)
-        PrintMatlab(BlockMatrix self, char const * file, int precision=8)
+        PrintMatlab(BlockMatrix self, std::ostream & os=out)
+        PrintMatlab(BlockMatrix self, char const * file, int precision=16)
         """
         return _blockmatrix.BlockMatrix_PrintMatlab(self, *args)
     PrintMatlab = _swig_new_instance_method(_blockmatrix.BlockMatrix_PrintMatlab)
+
+    def PrintMatlabGZ(self, file, precision=16):
+        r"""PrintMatlabGZ(BlockMatrix self, char const * file, int precision=16)"""
+        return _blockmatrix.BlockMatrix_PrintMatlabGZ(self, file, precision)
+    PrintMatlabGZ = _swig_new_instance_method(_blockmatrix.BlockMatrix_PrintMatlabGZ)
 
 # Register BlockMatrix in _blockmatrix:
 _blockmatrix.BlockMatrix_swigregister(BlockMatrix)

@@ -74,9 +74,9 @@ import mfem._par.mem_manager
 import mfem._par.operators
 import mfem._par.sort_pairs
 import mfem._par.ncmesh
+import mfem._par.globals
 import mfem._par.vtk
 import mfem._par.element
-import mfem._par.globals
 import mfem._par.densemat
 import mfem._par.geom
 import mfem._par.intrules
@@ -85,18 +85,30 @@ import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.coefficient
+import mfem._par.symmat
 import mfem._par.sparsemat
 import mfem._par.eltrans
 import mfem._par.fe
+import mfem._par.fe_base
+import mfem._par.fe_fixed_order
+import mfem._par.fe_h1
+import mfem._par.fe_nd
+import mfem._par.fe_rt
+import mfem._par.fe_l2
+import mfem._par.fe_nurbs
+import mfem._par.fe_pos
+import mfem._par.fe_ser
 import mfem._par.fespace
 import mfem._par.fe_coll
 import mfem._par.lininteg
+import mfem._par.doftrans
 import mfem._par.handle
 import mfem._par.hypre
 import mfem._par.restriction
 import mfem._par.bilininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.std_vectors
 class socketbuf(object):
     r"""Proxy of C++ mfem::socketbuf class."""
 
@@ -205,6 +217,11 @@ class socketstream(object):
         r"""flush(socketstream self)"""
         return _socketstream.socketstream_flush(self)
     flush = _swig_new_instance_method(_socketstream.socketstream_flush)
+
+    def good(self):
+        r"""good(socketstream self) -> bool"""
+        return _socketstream.socketstream_good(self)
+    good = _swig_new_instance_method(_socketstream.socketstream_good)
 
     def __lshift__(self, *args):
         r"""

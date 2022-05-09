@@ -1,8 +1,9 @@
-%module(package="mfem._ser") datacollection
+%module(package="mfem._par") datacollection
 %{
-#include  "mfem.hpp"
-#include "general/globals.hpp"
+#include "mfem.hpp"
+#include "pyoperator.hpp"    
 #include "numpy/arrayobject.h"
+#include "../common/pycoefficient.hpp"      
 %}
 
 %include "../common/mfem_config.i"

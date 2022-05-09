@@ -66,6 +66,7 @@ class _SwigNonDynamicMeta(type):
 
 import weakref
 
+import mfem._par.globals
 import mfem._par.mesh
 import mfem._par.matrix
 import mfem._par.vector
@@ -75,7 +76,6 @@ import mfem._par.operators
 import mfem._par.sort_pairs
 import mfem._par.vtk
 import mfem._par.element
-import mfem._par.globals
 import mfem._par.densemat
 import mfem._par.geom
 import mfem._par.intrules
@@ -84,30 +84,56 @@ import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.coefficient
+import mfem._par.symmat
 import mfem._par.sparsemat
 import mfem._par.eltrans
 import mfem._par.fe
+import mfem._par.fe_base
+import mfem._par.fe_fixed_order
+import mfem._par.fe_h1
+import mfem._par.fe_nd
+import mfem._par.fe_rt
+import mfem._par.fe_l2
+import mfem._par.fe_nurbs
+import mfem._par.fe_pos
+import mfem._par.fe_ser
 import mfem._par.fespace
 import mfem._par.fe_coll
 import mfem._par.lininteg
+import mfem._par.doftrans
 import mfem._par.handle
 import mfem._par.hypre
 import mfem._par.restriction
 import mfem._par.bilininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.std_vectors
 class Refinement(object):
     r"""Proxy of C++ mfem::Refinement class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
+    X = _ncmesh.Refinement_X
+    
+    Y = _ncmesh.Refinement_Y
+    
+    Z = _ncmesh.Refinement_Z
+    
+    XY = _ncmesh.Refinement_XY
+    
+    XZ = _ncmesh.Refinement_XZ
+    
+    YZ = _ncmesh.Refinement_YZ
+    
+    XYZ = _ncmesh.Refinement_XYZ
+    
     index = property(_ncmesh.Refinement_index_get, _ncmesh.Refinement_index_set, doc=r"""index : int""")
     ref_type = property(_ncmesh.Refinement_ref_type_get, _ncmesh.Refinement_ref_type_set, doc=r"""ref_type : char""")
 
     def __init__(self, *args):
         r"""
         __init__(Refinement self) -> Refinement
-        __init__(Refinement self, int index, int type=7) -> Refinement
+        __init__(Refinement self, int index, int type=XYZ) -> Refinement
         """
         _ncmesh.Refinement_swiginit(self, _ncmesh.new_Refinement(*args))
     __swig_destroy__ = _ncmesh.delete_Refinement
@@ -121,12 +147,14 @@ class Embedding(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
     parent = property(_ncmesh.Embedding_parent_get, _ncmesh.Embedding_parent_set, doc=r"""parent : int""")
-    matrix = property(_ncmesh.Embedding_matrix_get, _ncmesh.Embedding_matrix_set, doc=r"""matrix : int""")
+    geom = property(_ncmesh.Embedding_geom_get, _ncmesh.Embedding_geom_set, doc=r"""geom : unsigned int""")
+    matrix = property(_ncmesh.Embedding_matrix_get, _ncmesh.Embedding_matrix_set, doc=r"""matrix : unsigned int""")
+    ghost = property(_ncmesh.Embedding_ghost_get, _ncmesh.Embedding_ghost_set, doc=r"""ghost : unsigned int""")
 
     def __init__(self, *args):
         r"""
         __init__(Embedding self) -> Embedding
-        __init__(Embedding self, int elem, int matrix=0) -> Embedding
+        __init__(Embedding self, int elem, mfem::Geometry::Type geom, int matrix=0, bool ghost=False) -> Embedding
         """
         _ncmesh.Embedding_swiginit(self, _ncmesh.new_Embedding(*args))
     __swig_destroy__ = _ncmesh.delete_Embedding
@@ -139,13 +167,13 @@ class CoarseFineTransformations(object):
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    point_matrices = property(_ncmesh.CoarseFineTransformations_point_matrices_get, _ncmesh.CoarseFineTransformations_point_matrices_set, doc=r"""point_matrices : a(mfem::Geometry::NumGeom).mfem::DenseTensor""")
     embeddings = property(_ncmesh.CoarseFineTransformations_embeddings_get, doc=r"""embeddings : mfem::Array<(mfem::Embedding)>""")
+    point_matrices = property(_ncmesh.CoarseFineTransformations_point_matrices_get, _ncmesh.CoarseFineTransformations_point_matrices_set, doc=r"""point_matrices : a(mfem::Geometry::NumGeom).mfem::DenseTensor""")
 
-    def GetCoarseToFineMap(self, fine_mesh, coarse_to_fine, coarse_to_ref_type, ref_type_to_matrix, ref_type_to_geom):
-        r"""GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine, intArray coarse_to_ref_type, Table ref_type_to_matrix, GeometryTypeArray ref_type_to_geom)"""
-        return _ncmesh.CoarseFineTransformations_GetCoarseToFineMap(self, fine_mesh, coarse_to_fine, coarse_to_ref_type, ref_type_to_matrix, ref_type_to_geom)
-    GetCoarseToFineMap = _swig_new_instance_method(_ncmesh.CoarseFineTransformations_GetCoarseToFineMap)
+    def MakeCoarseToFineTable(self, coarse_to_fine, want_ghosts=False):
+        r"""MakeCoarseToFineTable(CoarseFineTransformations self, Table coarse_to_fine, bool want_ghosts=False)"""
+        return _ncmesh.CoarseFineTransformations_MakeCoarseToFineTable(self, coarse_to_fine, want_ghosts)
+    MakeCoarseToFineTable = _swig_new_instance_method(_ncmesh.CoarseFineTransformations_MakeCoarseToFineTable)
 
     def Clear(self):
         r"""Clear(CoarseFineTransformations self)"""
@@ -162,6 +190,11 @@ class CoarseFineTransformations(object):
         return _ncmesh.CoarseFineTransformations_MemoryUsage(self)
     MemoryUsage = _swig_new_instance_method(_ncmesh.CoarseFineTransformations_MemoryUsage)
 
+    def GetCoarseToFineMap(self, fine_mesh, coarse_to_fine):
+        r"""GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine)"""
+        return _ncmesh.CoarseFineTransformations_GetCoarseToFineMap(self, fine_mesh, coarse_to_fine)
+    GetCoarseToFineMap = _swig_new_instance_method(_ncmesh.CoarseFineTransformations_GetCoarseToFineMap)
+
     def __init__(self):
         r"""__init__(CoarseFineTransformations self) -> CoarseFineTransformations"""
         _ncmesh.CoarseFineTransformations_swiginit(self, _ncmesh.new_CoarseFineTransformations())
@@ -170,6 +203,11 @@ class CoarseFineTransformations(object):
 # Register CoarseFineTransformations in _ncmesh:
 _ncmesh.CoarseFineTransformations_swigregister(CoarseFineTransformations)
 
+
+def Swap(a, b):
+    r"""Swap(CoarseFineTransformations a, CoarseFineTransformations b)"""
+    return _ncmesh.Swap(a, b)
+Swap = _ncmesh.Swap
 class NCMesh(object):
     r"""Proxy of C++ mfem::NCMesh class."""
 
@@ -178,7 +216,8 @@ class NCMesh(object):
 
     def __init__(self, *args):
         r"""
-        __init__(NCMesh self, Mesh mesh, std::istream * vertex_parents=None) -> NCMesh
+        __init__(NCMesh self, Mesh mesh) -> NCMesh
+        __init__(NCMesh self, std::istream & input, int version, int & curved, int & is_nc) -> NCMesh
         __init__(NCMesh self, NCMesh other) -> NCMesh
         """
         _ncmesh.NCMesh_swiginit(self, _ncmesh.new_NCMesh(*args))
@@ -208,6 +247,11 @@ class NCMesh(object):
         r"""GetNFaces(NCMesh self) -> int"""
         return _ncmesh.NCMesh_GetNFaces(self)
     GetNFaces = _swig_new_instance_method(_ncmesh.NCMesh_GetNFaces)
+
+    def GetNGhostElements(self):
+        r"""GetNGhostElements(NCMesh self) -> int"""
+        return _ncmesh.NCMesh_GetNGhostElements(self)
+    GetNGhostElements = _swig_new_instance_method(_ncmesh.NCMesh_GetNGhostElements)
 
     def Refine(self, refinements):
         r"""Refine(NCMesh self, RefinementArray refinements)"""
@@ -341,20 +385,20 @@ class NCMesh(object):
         return _ncmesh.NCMesh_GetElementFacesAttributes(self, i, faces, fattr)
     GetElementFacesAttributes = _swig_new_instance_method(_ncmesh.NCMesh_GetElementFacesAttributes)
 
-    def LoadVertexParents(self, input):
-        r"""LoadVertexParents(NCMesh self, std::istream & input)"""
-        return _ncmesh.NCMesh_LoadVertexParents(self, input)
-    LoadVertexParents = _swig_new_instance_method(_ncmesh.NCMesh_LoadVertexParents)
+    def Print(self, out):
+        r"""Print(NCMesh self, std::ostream & out)"""
+        return _ncmesh.NCMesh_Print(self, out)
+    Print = _swig_new_instance_method(_ncmesh.NCMesh_Print)
 
-    def LoadCoarseElements(self, input):
-        r"""LoadCoarseElements(NCMesh self, std::istream & input)"""
-        return _ncmesh.NCMesh_LoadCoarseElements(self, input)
-    LoadCoarseElements = _swig_new_instance_method(_ncmesh.NCMesh_LoadCoarseElements)
+    def IsLegacyLoaded(self):
+        r"""IsLegacyLoaded(NCMesh self) -> bool"""
+        return _ncmesh.NCMesh_IsLegacyLoaded(self)
+    IsLegacyLoaded = _swig_new_instance_method(_ncmesh.NCMesh_IsLegacyLoaded)
 
-    def SetVertexPositions(self, vertices):
-        r"""SetVertexPositions(NCMesh self, mfem::Array< mfem::Vertex > const & vertices)"""
-        return _ncmesh.NCMesh_SetVertexPositions(self, vertices)
-    SetVertexPositions = _swig_new_instance_method(_ncmesh.NCMesh_SetVertexPositions)
+    def LegacyToNewVertexOrdering(self, order):
+        r"""LegacyToNewVertexOrdering(NCMesh self, intArray order)"""
+        return _ncmesh.NCMesh_LegacyToNewVertexOrdering(self, order)
+    LegacyToNewVertexOrdering = _swig_new_instance_method(_ncmesh.NCMesh_LegacyToNewVertexOrdering)
 
     def Trim(self):
         r"""Trim(NCMesh self)"""
@@ -370,32 +414,6 @@ class NCMesh(object):
         r"""PrintMemoryDetail(NCMesh self) -> int"""
         return _ncmesh.NCMesh_PrintMemoryDetail(self)
     PrintMemoryDetail = _swig_new_instance_method(_ncmesh.NCMesh_PrintMemoryDetail)
-
-    def PrintVertexParents(self, *args):
-        r"""
-        PrintVertexParents(NCMesh self, std::ostream & out)
-        PrintVertexParents(NCMesh self, char const * file, int precision=8)
-        PrintVertexParents(NCMesh self)
-        """
-        return _ncmesh.NCMesh_PrintVertexParents(self, *args)
-    PrintVertexParents = _swig_new_instance_method(_ncmesh.NCMesh_PrintVertexParents)
-
-    def PrintCoarseElements(self, *args):
-        r"""
-        PrintCoarseElements(NCMesh self, std::ostream & out)
-        PrintCoarseElements(NCMesh self, char const * file, int precision=8)
-        PrintCoarseElements(NCMesh self)
-        """
-        return _ncmesh.NCMesh_PrintCoarseElements(self, *args)
-    PrintCoarseElements = _swig_new_instance_method(_ncmesh.NCMesh_PrintCoarseElements)
-
-    def PrintStats(self, *args):
-        r"""
-        PrintStats(NCMesh self, std::ostream & out=out)
-        PrintStats(NCMesh self, char const * file, int precision=8)
-        """
-        return _ncmesh.NCMesh_PrintStats(self, *args)
-    PrintStats = _swig_new_instance_method(_ncmesh.NCMesh_PrintStats)
 
 # Register NCMesh in _ncmesh:
 _ncmesh.NCMesh_swigregister(NCMesh)
@@ -415,22 +433,6 @@ class RefinementArray(object):
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-
-    def __init__(self, *args):
-        r"""
-        __init__(RefinementArray self) -> RefinementArray
-        __init__(RefinementArray self, mfem::MemoryType mt) -> RefinementArray
-        __init__(RefinementArray self, int asize) -> RefinementArray
-        __init__(RefinementArray self, Refinement _data, int asize) -> RefinementArray
-        __init__(RefinementArray self, RefinementArray src) -> RefinementArray
-        """
-        _ncmesh.RefinementArray_swiginit(self, _ncmesh.new_RefinementArray(*args))
-
-        if len(args) == 1 and isinstance(args[0], list):
-            self.MakeDataOwner()
-
-
-
     __swig_destroy__ = _ncmesh.delete_RefinementArray
 
     def GetData(self, *args):
@@ -599,15 +601,26 @@ class RefinementArray(object):
         return _ncmesh.RefinementArray_HostReadWrite(self)
     HostReadWrite = _swig_new_instance_method(_ncmesh.RefinementArray_HostReadWrite)
 
+    def __init__(self, *args):
+        r"""
+        __init__(RefinementArray self) -> RefinementArray
+        __init__(RefinementArray self, mfem::MemoryType mt) -> RefinementArray
+        __init__(RefinementArray self, int asize) -> RefinementArray
+        __init__(RefinementArray self, int asize, mfem::MemoryType mt) -> RefinementArray
+        __init__(RefinementArray self, Refinement data_) -> RefinementArray
+        __init__(RefinementArray self, RefinementArray src) -> RefinementArray
+        __init__(RefinementArray self, void * List_or_Tuple) -> RefinementArray
+        """
+        _ncmesh.RefinementArray_swiginit(self, _ncmesh.new_RefinementArray(*args))
+
     def __setitem__(self, i, v):
         r"""__setitem__(RefinementArray self, int i, Refinement v)"""
-        return _ncmesh.RefinementArray___setitem__(self, i, v)
-    __setitem__ = _swig_new_instance_method(_ncmesh.RefinementArray___setitem__)
 
-    def __getitem__(self, i):
-        r"""__getitem__(RefinementArray self, int const i) -> Refinement"""
-        return _ncmesh.RefinementArray___getitem__(self, i)
-    __getitem__ = _swig_new_instance_method(_ncmesh.RefinementArray___getitem__)
+        i = int(i)
+
+
+        return _ncmesh.RefinementArray___setitem__(self, i, v)
+
 
     def Assign(self, *args):
         r"""
@@ -621,6 +634,30 @@ class RefinementArray(object):
         return [self[i] for i in range(self.Size())]
 
 
+
+    def __iter__(self):
+        class iter_array:
+            def __init__(self, obj):
+                self.obj = obj
+                self.idx = 0
+                self.size = obj.Size()
+            def __iter__(self):
+                self.idx = 0
+            def __next__(self):
+                if self.idx < self.size:
+                    res = self.obj[self.idx]
+                    self.idx += 1
+                    return res
+                else:
+                    raise StopIteration
+        return iter_array(self)
+
+
+
+    def __getitem__(self, param):
+        r"""__getitem__(RefinementArray self, PyObject * param) -> PyObject *"""
+        return _ncmesh.RefinementArray___getitem__(self, param)
+    __getitem__ = _swig_new_instance_method(_ncmesh.RefinementArray___getitem__)
 
 # Register RefinementArray in _ncmesh:
 _ncmesh.RefinementArray_swigregister(RefinementArray)

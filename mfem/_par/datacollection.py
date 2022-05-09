@@ -74,7 +74,6 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _datacollection.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _datacollection.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _datacollection.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _datacollection.MFEM_VERSION_PATCH
-MFEM_HYPRE_VERSION = _datacollection.MFEM_HYPRE_VERSION
 import mfem._par.globals
 import mfem._par.mesh
 import mfem._par.matrix
@@ -94,18 +93,30 @@ import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.coefficient
+import mfem._par.symmat
 import mfem._par.sparsemat
 import mfem._par.eltrans
 import mfem._par.fe
+import mfem._par.fe_base
+import mfem._par.fe_fixed_order
+import mfem._par.fe_h1
+import mfem._par.fe_nd
+import mfem._par.fe_rt
+import mfem._par.fe_l2
+import mfem._par.fe_nurbs
+import mfem._par.fe_pos
+import mfem._par.fe_ser
 import mfem._par.fespace
 import mfem._par.fe_coll
 import mfem._par.lininteg
+import mfem._par.doftrans
 import mfem._par.handle
 import mfem._par.hypre
 import mfem._par.restriction
 import mfem._par.bilininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.std_vectors
 import mfem._par.pgridfunc
 import mfem._par.pfespace
 import mfem._par.pmesh
@@ -146,9 +157,9 @@ class DataCollection(object):
         return _datacollection.DataCollection_DeregisterQField(self, field_name)
     DeregisterQField = _swig_new_instance_method(_datacollection.DataCollection_DeregisterQField)
 
-    def HasField(self, name):
-        r"""HasField(DataCollection self, std::string const & name) -> bool"""
-        return _datacollection.DataCollection_HasField(self, name)
+    def HasField(self, field_name):
+        r"""HasField(DataCollection self, std::string const & field_name) -> bool"""
+        return _datacollection.DataCollection_HasField(self, field_name)
     HasField = _swig_new_instance_method(_datacollection.DataCollection_HasField)
 
     def GetField(self, field_name):
@@ -317,7 +328,7 @@ class DataCollection(object):
     Error = _swig_new_instance_method(_datacollection.DataCollection_Error)
 
     def ResetError(self, *args, **kwargs):
-        r"""ResetError(DataCollection self, int err=NO_ERROR)"""
+        r"""ResetError(DataCollection self, int err_state=NO_ERROR)"""
         return _datacollection.DataCollection_ResetError(self, *args, **kwargs)
     ResetError = _swig_new_instance_method(_datacollection.DataCollection_ResetError)
 
@@ -336,7 +347,7 @@ class VisItFieldInfo(object):
     def __init__(self, *args):
         r"""
         __init__(VisItFieldInfo self) -> VisItFieldInfo
-        __init__(VisItFieldInfo self, std::string _association, int _num_components, int _lod=1) -> VisItFieldInfo
+        __init__(VisItFieldInfo self, std::string association_, int num_components_, int lod_=1) -> VisItFieldInfo
         """
         _datacollection.VisItFieldInfo_swiginit(self, _datacollection.new_VisItFieldInfo(*args))
     __swig_destroy__ = _datacollection.delete_VisItFieldInfo
@@ -453,6 +464,11 @@ class ParaViewDataCollection(DataCollection):
         r"""SetHighOrderOutput(ParaViewDataCollection self, bool high_order_output_)"""
         return _datacollection.ParaViewDataCollection_SetHighOrderOutput(self, high_order_output_)
     SetHighOrderOutput = _swig_new_instance_method(_datacollection.ParaViewDataCollection_SetHighOrderOutput)
+
+    def UseRestartMode(self, restart_mode_):
+        r"""UseRestartMode(ParaViewDataCollection self, bool restart_mode_)"""
+        return _datacollection.ParaViewDataCollection_UseRestartMode(self, restart_mode_)
+    UseRestartMode = _swig_new_instance_method(_datacollection.ParaViewDataCollection_UseRestartMode)
 
     def Load(self, cycle_=0):
         r"""Load(ParaViewDataCollection self, int cycle_=0)"""

@@ -13,14 +13,6 @@
 %feature("autodoc", "1");
 /*%module  coefficient*/
 %{
-#include "fem/fem.hpp"
-#include "fem/fe_coll.hpp"
-#include "fem/fespace.hpp"
-#include "fem/eltrans.hpp"
-#include "fem/intrules.hpp"
-#include "linalg/vector.hpp"
-#include "fem/coefficient.hpp"
-#include "linalg/densemat.hpp"    
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -28,7 +20,9 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "pycoefficient.hpp"
+#include "mfem.hpp"  
+#include "pyoperator.hpp"    
+#include "../common/pycoefficient.hpp"
 #include "numpy/arrayobject.h"
 %}
 
@@ -42,6 +36,7 @@ import_array();
 %import "globals.i"
 %import "array.i"
 %import "matrix.i"
+%import "symmat.i"
 %import "intrules.i"
 %import "sparsemat.i"
 %import "densemat.i"
@@ -94,7 +89,7 @@ namespace mfem {
     self._ref_to_vc = vc
 %}
 %pythonappend RestrictedCoefficient::RestrictedCoefficient %{
-    self._ref_to_c = _c
+    self._ref_to_c = c_
 %}
 %pythonappend MatrixRestrictedCoefficient::MatrixRestrictedCoefficient %{
     self._ref_to_mc = mc
@@ -107,7 +102,9 @@ namespace mfem {
 %feature("notabstract") mfem::VectorDeltaCoefficient;
 %feature("notabstract") mfem::MatrixFunctionCoefficient;
 %feature("notabstract") mfem::MatrixConstantCoefficient;
-
+%feature("notabstract") mfem::CurlGridFunctionCoefficient;
+%feature("notabstract") mfem::SymmetricMatrixConstantCoefficient;
+%feature("notabstract") mfem::VectorQuadratureFunctionCoefficient;
 
 /*
 %exception {
@@ -125,34 +122,11 @@ namespace mfem {
     }
 }
 */
-
-%typemap(in) const mfem::IntegrationRule *irs[]{
-  if (PyList_Check($input)) {
-    int size = PyList_Size($input);
-    //std::cout << std::to_string(size) << "\n";
-    int i = 0;
-    $1 = (mfem::IntegrationRule **) malloc((size+1)*sizeof(mfem::IntegrationRule *));
-    for (i = 0; i < size; i++) {
-       //std::cout << std::to_string(i) << "\n";      
-       PyObject *o = PyList_GetItem($input,i);
-       void *temp;
-       if (SWIG_ConvertPtr(o, &temp,
-	   $descriptor(mfem::IntegrationRule *),SWIG_POINTER_EXCEPTION) == -1){
-   	   //std::cout << "Failed to pointer conversion" << "\n";      	 
-           return NULL;
-       }
-       $1[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);
-     }
-  } else {
-    PyErr_SetString(PyExc_TypeError,"not a list");
-    return NULL;
-  }
-}
-%typemap(typecheck) const mfem::IntegrationRule *irs[]{
-   $1 = PyList_Check($input) ? 1 : 0;
-}
+%include "../common/typemap_macros.i"
+LIST_TO_MFEMOBJ_POINTERARRAY_IN(mfem::IntegrationRule const *irs[],  mfem::IntegrationRule *, 0)
 
 %include "../../headers/coefficient.hpp"
+%include "../common/numba_coefficient.i"
 
 %feature("director") mfem::VectorPyCoefficientBase;
 %feature("director") mfem::PyCoefficientBase;
@@ -170,6 +144,7 @@ void fake_func_vec(const mfem::Vector &x, mfem::Vector &Ht)
      Ht(1) = 0.0;
      Ht(2) = 0.0;
 }
+
 void fake_func_mat(const mfem::Vector &x, mfem::DenseMatrix &Kt)
 {
   Kt(0,0) = 1.0;
@@ -254,7 +229,7 @@ void MatrixPyCoefficientBase::Eval(DenseMatrix &K, ElementTransformation &T,
 
 }  /* end of name space*/
 %}
-%include "pycoefficient.hpp"
+%include "../common/pycoefficient.hpp"
 
 %pythoncode %{
 class PyCoefficient(PyCoefficientBase):
@@ -275,7 +250,7 @@ class PyCoefficientT(PyCoefficientBase):
 	 
 class VectorPyCoefficient(VectorPyCoefficientBase):
    def __init__(self, dim):
-       self.sdim = dim
+       self.vdim = dim
        VectorPyCoefficientBase.__init__(self, dim, 0)
    def _EvalPy(self, x, V):
        v = self.EvalValue(x.GetDataArray())
@@ -290,7 +265,7 @@ class VectorPyCoefficient(VectorPyCoefficientBase):
   
 class VectorPyCoefficientT(VectorPyCoefficientBase):
    def __init__(self, dim):
-       self.sdim = dim  
+       self.vdim = dim  
        VectorPyCoefficientBase.__init__(self, dim, 1)
    def _EvalPy(self, x, V):
        v = self.EvalValue(x.GetDataArray(), 0)
@@ -305,7 +280,7 @@ class VectorPyCoefficientT(VectorPyCoefficientBase):
 
 class MatrixPyCoefficient(MatrixPyCoefficientBase):
    def __init__(self, dim):
-       self.sdim = dim
+       self.vdim = dim
        MatrixPyCoefficientBase.__init__(self, dim, 0)
    def _EvalPy(self, x, K):
        k = self.EvalValue(x.GetDataArray())
@@ -316,7 +291,7 @@ class MatrixPyCoefficient(MatrixPyCoefficientBase):
   
 class MatrixPyCoefficientT(MatrixPyCoefficientBase):
    def __init__(self, dim):
-       self.sdim = dim  
+       self.vdim = dim  
        MatrixPyCoefficientBase.__init__(self, dim, 1)
    def _EvalPyT(self, x, t, K):
        k = self.EvalValue(x.GetDataArray(), t)

@@ -3,7 +3,7 @@
 %{
 #include <fstream>  
 #include <iostream>
-#include "io_stream.hpp"      
+#include "../common/io_stream.hpp"      
 #include "config/config.hpp"  
 #include "linalg/hypre.hpp"
 #include "linalg/handle.hpp"  
@@ -21,10 +21,12 @@
 %include "exception.i"
 %import "../common/exception.i"
 
+ /*
 #ifdef MFEM_USE_MPI
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);
 #endif
+ */
 
 %init %{
 import_array();
@@ -32,14 +34,24 @@ import_array();
 
 %import "operators.i"
 
+ /*
 #ifdef MFEM_USE_MPI
 %import "hypre.i"
 #endif
+ */
 #ifdef MFEM_USE_PETSC
 %include "petsc.i"
 #endif
 
 %import "mem_manager.i"
+%import "../common/handle_template.i"
+
+// instatitate template methods (step 1: Rename Macro )
+AS_RENAME(SparseMatrix)
+IS_RENAME(SparseMatrix)
+GET_RENAME(SparseMatrix)
+RESET_RENAME(SparseMatrix)
+CONVERT_FROM_RENAME(SparseMatrix)
 
 %include "linalg/handle.hpp"
 
@@ -47,47 +59,12 @@ import_array();
 OperatorPtr=OperatorHandle  
 %}
 
-// instatitate template methods (step 1: Macro definition)
-%define OPERATORHANDLE_WRAP(T)
-%template(OperatorHandle) mfem::OperatorHandle::OperatorHandle<T >;
-%enddef
-%define AS_WRAP(T)
-%template(As) mfem::OperatorHandle::As<T >;
-%enddef
-%define IS_WRAP(T)
-%template(Is) mfem::OperatorHandle::Is<T >;
-%enddef
-%define GET_WRAP(T)
-%template(Get) mfem::OperatorHandle::Get<T >;
-%enddef
-%define RESET_WRAP(T)
-%template(Reset) mfem::OperatorHandle::Reset<T >;
-%enddef
-%define CONVERT_FROM_WRAP(T)
-%template(ConvertFrom) mfem::OperatorHandle::ConvertFrom<T >;
-%enddef
-
 // instatitate template methods (step 2: Instantiation)
-#ifdef MFEM_USE_MPI
-AS_WRAP(mfem::HypreParMatrix)
-IS_WRAP(mfem::HypreParMatrix)
-GET_WRAP(mfem::HypreParMatrix)
-RESET_WRAP(mfem::HypreParMatrix)          
-CONVERT_FROM_WRAP(mfem::HypreParMatrix)
-#endif
-  
-#ifdef MFEM_USE_PETSC
-AS_WRAP(mfem::PetscParMatrix)
-IS_WRAP(mfem::PetscParMatrix)
-GET_WRAP(mfem::PetscParMatrix)
-RESET_WRAP(mfem::PetscParMatrix)          
-CONVERT_FROM_WRAP(mfem::PetscParMatrix)
-#endif
 
-AS_WRAP(mfem::SparseMatrix)
-IS_WRAP(mfem::SparseMatrix)
-GET_WRAP(mfem::SparseMatrix)
-RESET_WRAP(mfem::SparseMatrix)          
-CONVERT_FROM_WRAP(mfem::SparseMatrix)
+AS_WRAP(SparseMatrix)
+IS_WRAP(SparseMatrix)
+GET_WRAP(SparseMatrix)
+RESET_WRAP(SparseMatrix)          
+CONVERT_FROM_WRAP(SparseMatrix)
 
 

@@ -10,13 +10,11 @@
 #include <cmath>
 #include <cstring>  
 #include <mpi.h>
-#include "io_stream.hpp"     
-#include "config/config.hpp"
-#include "mesh/pmesh.hpp"
-#include "mesh/pumi.hpp"
-#include "fem/linearform.hpp"
-#include "general/communication.hpp"  
+#include "mfem.hpp"
+#include "pyoperator.hpp"
+#include "../common/io_stream.hpp"     
 #include "numpy/arrayobject.h"
+#include "../common/pycoefficient.hpp"    
 %}
 
 %include "../common/mfem_config.i"
@@ -37,12 +35,13 @@ import_array();
  //%import "cpointers.i"
 %import "mesh.i"
 %import "pncmesh.i"
+%import "hypre.i"
 %import "communication.i"
 %import "../common/exception.i"
 
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)
-
+ISTREAM_TYPEMAP(std::istream&)
 
 %immutable face_nbr_elements;
 %immutable face_nbr_vertices;
@@ -56,10 +55,10 @@ def GroupFace(self, group, i, *args):
         from mfem.par import intp    
         face = intp()
         o = intp()
-        _pmesh.Mesh_ParGroupFace(self, group, i, face, o)      
+        $action(self, group, i, face, o)      
         return face.value(), o.value()
     else:
-        return _pmesh.ParMesh_GroupFace(self, group, i, *args)            
+        return $action(self, group, i, *args)            
 %}
 	  
 %feature("shadow") mfem::ParMesh::GroupEdge %{
@@ -68,10 +67,10 @@ def GroupEdge(self, group, i, *args):
         from mfem.par import intp  
         edge = intp()
         o = intp()  
-        _pmesh.ParMesh_GroupEdge(self, group, i, edge, o)
+        $action(self, group, i, edge, o)
         return edge.value(), o.value()
     else:
-        return _pmesh.ParMesh_GroupEdge(self, group, i, *args)      
+        return $action(self, group, i, *args)      
 %}
 
 
@@ -79,17 +78,18 @@ def GroupEdge(self, group, i, *args):
 
 namespace mfem{
 %extend ParMesh{
-ParMesh(MPI_Comm comm, const char *mesh_file){
-    mfem::ParMesh *mesh;
-    std::ifstream imesh(mesh_file);
-    if (!imesh)
-    {
-    std::cerr << "\nCan not open mesh file: " << mesh_file << '\n' << std::endl;
-    return NULL;
-    }
-    mesh = new mfem::ParMesh(comm, imesh);
-    return mesh;
-    }
+     //     
+     //ParMesh(MPI_Comm comm, const char *mesh_file){
+     //mfem::ParMesh *mesh;
+     //std::ifstream imesh(mesh_file);
+     //if (!imesh)
+     //{
+     //std::cerr << "\nCan not open mesh file: " << mesh_file << '\n' << std::endl;
+     //return NULL;
+     //}
+     //mesh = new mfem::ParMesh(comm, imesh);
+     //return mesh;
+     //}
 ParMesh(MPI_Comm comm, apf::Mesh2* pumi_mesh){
     mfem::ParMesh *mesh;
     if (!pumi_mesh)

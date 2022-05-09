@@ -82,8 +82,6 @@ MFEM_VERSION_MINOR = _pncmesh.MFEM_VERSION_MINOR
 
 MFEM_VERSION_PATCH = _pncmesh.MFEM_VERSION_PATCH
 
-MFEM_HYPRE_VERSION = _pncmesh.MFEM_HYPRE_VERSION
-
 import mfem._par.mesh
 import mfem._par.matrix
 import mfem._par.vector
@@ -92,9 +90,9 @@ import mfem._par.mem_manager
 import mfem._par.operators
 import mfem._par.sort_pairs
 import mfem._par.ncmesh
+import mfem._par.globals
 import mfem._par.vtk
 import mfem._par.element
-import mfem._par.globals
 import mfem._par.densemat
 import mfem._par.geom
 import mfem._par.intrules
@@ -103,18 +101,30 @@ import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.coefficient
+import mfem._par.symmat
 import mfem._par.sparsemat
 import mfem._par.eltrans
 import mfem._par.fe
+import mfem._par.fe_base
+import mfem._par.fe_fixed_order
+import mfem._par.fe_h1
+import mfem._par.fe_nd
+import mfem._par.fe_rt
+import mfem._par.fe_l2
+import mfem._par.fe_nurbs
+import mfem._par.fe_pos
+import mfem._par.fe_ser
 import mfem._par.fespace
 import mfem._par.fe_coll
 import mfem._par.lininteg
+import mfem._par.doftrans
 import mfem._par.handle
 import mfem._par.hypre
 import mfem._par.restriction
 import mfem._par.bilininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
+import mfem._par.std_vectors
 import mfem._par.communication
 import mfem._par.sets
 class ParNCMesh(mfem._par.ncmesh.NCMesh):
@@ -126,6 +136,7 @@ class ParNCMesh(mfem._par.ncmesh.NCMesh):
     def __init__(self, *args):
         r"""
         __init__(ParNCMesh self, MPI_Comm comm, NCMesh ncmesh, int * part=None) -> ParNCMesh
+        __init__(ParNCMesh self, MPI_Comm comm, std::istream & input, int version, int & curved, int & is_nc) -> ParNCMesh
         __init__(ParNCMesh self, ParNCMesh other) -> ParNCMesh
         """
         _pncmesh.ParNCMesh_swiginit(self, _pncmesh.new_ParNCMesh(*args))
@@ -150,6 +161,11 @@ class ParNCMesh(mfem._par.ncmesh.NCMesh):
         r"""Derefine(ParNCMesh self, intArray derefs)"""
         return _pncmesh.ParNCMesh_Derefine(self, derefs)
     Derefine = _swig_new_instance_method(_pncmesh.ParNCMesh_Derefine)
+
+    def GetFineToCoarsePartitioning(self, derefs, new_ranks):
+        r"""GetFineToCoarsePartitioning(ParNCMesh self, intArray derefs, intArray new_ranks)"""
+        return _pncmesh.ParNCMesh_GetFineToCoarsePartitioning(self, derefs, new_ranks)
+    GetFineToCoarsePartitioning = _swig_new_instance_method(_pncmesh.ParNCMesh_GetFineToCoarsePartitioning)
 
     def Rebalance(self, custom_partition=None):
         r"""Rebalance(ParNCMesh self, intArray custom_partition=None)"""
@@ -217,7 +233,7 @@ class ParNCMesh(mfem._par.ncmesh.NCMesh):
     GetEntityGroupId = _swig_new_instance_method(_pncmesh.ParNCMesh_GetEntityGroupId)
 
     def GetGroup(self, id):
-        r"""GetGroup(ParNCMesh self, mfem::ParNCMesh::GroupId id) -> mfem::ParNCMesh::CommGroup const &"""
+        r"""GetGroup(ParNCMesh self, mfem::ParNCMesh::GroupId id) -> vector_int"""
         return _pncmesh.ParNCMesh_GetGroup(self, id)
     GetGroup = _swig_new_instance_method(_pncmesh.ParNCMesh_GetGroup)
 

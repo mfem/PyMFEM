@@ -71,6 +71,7 @@ import mfem._ser.array
 import mfem._ser.mem_manager
 import mfem._ser.operators
 import mfem._ser.sparsemat
+import mfem._ser.globals
 import mfem._ser.matrix
 import mfem._ser.densemat
 class SparseSmoother(mfem._ser.matrix.MatrixInverse):
@@ -125,6 +126,11 @@ class DSmoother(SparseSmoother):
         __init__(DSmoother self, SparseMatrix a, int t=0, double s=1., int it=1) -> DSmoother
         """
         _sparsesmoothers.DSmoother_swiginit(self, _sparsesmoothers.new_DSmoother(*args))
+
+    def SetPositiveDiagonal(self, pos_diag=True):
+        r"""SetPositiveDiagonal(DSmoother self, bool pos_diag=True)"""
+        return _sparsesmoothers.DSmoother_SetPositiveDiagonal(self, pos_diag)
+    SetPositiveDiagonal = _swig_new_instance_method(_sparsesmoothers.DSmoother_SetPositiveDiagonal)
 
     def Mult(self, x, y):
         r"""Mult(DSmoother self, Vector x, Vector y)"""

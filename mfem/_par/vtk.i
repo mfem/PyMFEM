@@ -1,11 +1,13 @@
 %module(package="mfem._par") vtk
 %{
-#include  "mfem.hpp"
-#include "mesh/vtk.hpp"
+#include "mfem.hpp"
+#include "pyoperator.hpp"  
 #include "numpy/arrayobject.h"    
-#include "io_stream.hpp"   
+#include "../common/io_stream.hpp"   
 %}
-
+%begin %{
+#define PY_SSIZE_T_CLEAN
+%}
 %init %{
 import_array();
 %}

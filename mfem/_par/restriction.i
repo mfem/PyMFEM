@@ -3,7 +3,8 @@
 #include  "mfem.hpp"
 #include  "fem/restriction.hpp"
 #include "numpy/arrayobject.h" 
-#include "pyoperator.hpp"     
+#include "pyoperator.hpp"
+#include "../common/pycoefficient.hpp"  
 %}
 
 %init %{

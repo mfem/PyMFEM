@@ -1,7 +1,8 @@
 %module(package="mfem._ser") hexahedron
+  
 %{
 #include  "mfem.hpp"
-#include "mesh/hexahedron.hpp"
+#include "pyoperator.hpp"      
 #include "numpy/arrayobject.h"    
 %}
 
@@ -10,6 +11,7 @@ import_array();
 %}
 %include "exception.i"
 %import "fe.i"
+%import "fe_fixed_order.i"
 %import "element.i"
 %include "../common/typemap_macros.i"
 %include "../common/exception.i"
