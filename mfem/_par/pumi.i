@@ -17,6 +17,7 @@
 #include <ctime>
 #include "../common/io_stream.hpp"         
 #include "numpy/arrayobject.h"
+#include "pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
 
 %}
