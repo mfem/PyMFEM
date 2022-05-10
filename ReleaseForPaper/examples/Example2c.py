@@ -116,20 +116,20 @@ save_figs=args.savefigs
 angle_abbrv = "{:.2f}".format(np.round(args.angle_eval,2)) # to fix filename length
 
 restore_policy = False
-nbatches = 250
+nbatches = 100 #250
 minimum_budget_problem = False  # mininum budget == error_threshold == minimize dofs
 
 ## Configuration for minimum budget problem
 prob_config = {
-    'mesh_name'             :  'l-shape-benchmark.mesh', #'star.mesh',       #
+    'mesh_name'             :  'circle_3_4.mesh', # 'l-shape-benchmark.mesh', 'star.mesh', 'circle_3_4.mesh'
     'problem_type'          :  'lshaped', #'noneoftheabove', 
     'num_unif_ref'          : 1,
     'order'                 : 2,
     'optimization_type'     : 'error_threshold', 
     'dof_threshold'         : 5e5,
     'error_threshold'       : 1e-4,
-    'angle_lower'           : np.pi * 0.25,
-    'angle_upper'           : np.pi * 0.75,
+    'angle_lower'           : np.pi * 0.1, # np.pi * 0.25,
+    'angle_upper'           : np.pi * 1.9, # np.pi * 0.75,
     'num_batches'           : nbatches
 }
 
@@ -185,7 +185,12 @@ output_dir_ = os.getcwd() + '/output/'
 if (restore_policy):
     chkpt_num = nbatches
     # set the path of the checkpoint
-    temp_path = 'Example2c_2022-04-21_14-04-31' # dof thresh 1e4; angle training; num_batch 250
+    # temp_path = 'Example2c_2022-05-06_19-33-30/' # dof thresh 1e4; L-shape mesh; pi/4 - 3pi/4 angle training; num_batch 250
+    # temp_path = 'Example2c_2022-05-09_14-23-16/' # dof thresh 1e4; pacman mesh; 0.5 - 1.5 pi angle training; num_batch 100
+    temp_path = 'Example2c_2022-05-09_17-32-28/' # dof thresh 1e4; pacman mesh; 0.1 - 1.9 pi angle training; num_batch 100
+    
+
+    
     checkpoint_dir = log_dir + temp_path
     chkpt_file=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num)
     output_dir = output_dir_ + temp_path
@@ -225,7 +230,9 @@ if train:
     checkpoint_path = trainer.save()
     print(checkpoint_path)
 if eval and not train:
-    temp_path = 'Example2c_2022-04-21_14-04-31'  # dof thresh 1e4; angle training; num_batch 250
+    # temp_path = 'Example2c_2022-05-06_19-33-30/' # dof thresh 1e4; L-shape mesh; pi/4 - 3pi/4 angle training; num_batch 250
+    # temp_path = 'Example2c_2022-05-09_14-23-16/' # dof thresh 1e4; pacman mesh; 0.5 - 1.5 pi angle training; num_batch 100
+    temp_path = 'Example2c_2022-05-09_17-32-28/' # dof thresh 1e4; pacman mesh; 0.1 - 1.9 pi angle training; num_batch 100
     chkpt_num = nbatches
     checkpoint_dir = log_dir + temp_path
     # checkpoint_path=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt < 100
@@ -241,7 +248,7 @@ if train:
 
 if eval and not args.marginals_eval:
 
-    if prob_config['mesh_name'] == 'l-shape-benchmark.mesh': 
+    if prob_config['mesh_name'] == 'l-shape-benchmark.mesh' or prob_config['mesh_name'] == 'circle_3_4.mesh': 
         env.set_angle(args.angle_eval) # note: set_angle(...) redefines self.initial_mesh
         print("*** Set angle for eval to  ", args.angle_eval)
 
@@ -272,11 +279,21 @@ if eval and not args.marginals_eval:
         print("episode cost = ", rlepisode_cost)
         rldofs.append(info['num_dofs'])
         rlerrors.append(info['global_error'])
+        # print()
+        # np.set_printoptions(precision=16)
+        # print(env.k)
+        # print(np.sort(env.errors))
+        # env.RenderHPmesh()
+        # if env.k > 6:
+        #     exit()
 
+    # print("*** done with RL eval - exiting")
+    # exit()
     
-    env.RenderMesh()
-    env.RenderHPmesh()
-    print("\nRendering RL policies\n")
+    # env.RenderMesh()
+    # env.RenderHPmesh()
+    # print("\nRendering RL policies and exiting\n")
+    # exit()
     
     ## Enact AMR policies, using "expert" strategy
     costs = []
@@ -317,15 +334,18 @@ if eval and not args.marginals_eval:
     tp_costs = []
     tp_nth = 10
     # tp_actions = np.zeros(((tp_nth-1)**2,2)) # exclude 0.0, 1.0 as actions
-    tp_actions = np.zeros(((tp_nth+1)**2,2)) # include 0.0, 1.0 as actions
+    # tp_actions = np.zeros(((tp_nth+1)**2,2)) # include 0.0, 1.0 as actions
+    tp_actions = np.zeros(((tp_nth)**2,2)) # include 0.0 but not 1.0 as actions
     tp_errors = []
     tp_dofs = []
     index_count = 0
 
     # for theta in range(1, tp_nth):      # exclude 0.0, 1.0 as actions
     #     for rho in range(1, tp_nth):    # exclude 0.0, 1.0 as actions
-    for theta in range(0, tp_nth+1):      # include 0.0, 1.0 as actions
-        for rho in range(0, tp_nth+1):    # include 0.0, 1.0 as actions
+    # for theta in range(0, tp_nth+1):    # include 0.0, 1.0 as actions
+    #     for rho in range(0, tp_nth+1):  # include 0.0, 1.0 as actions
+    for theta in range(0, tp_nth):        # include 0.0 but not 1.0 as actions
+        for rho in range(0, tp_nth):      # include 0.0 but not 1.0 as actions
             tp_actions[index_count] = np.array([theta/tp_nth, rho/tp_nth]) # note 1D action space
             if theta/tp_nth == 1 and rho/tp_nth == 1: # avoid some linear algerbra error if action is [1,1]
                 tp_actions[index_count] = np.array([0.99, 0.99])
@@ -362,15 +382,19 @@ if eval and not args.marginals_eval:
 
 if args.marginals_eval:
     print("Creating data for marginals")
+    mkdir_p(output_dir+"marginals/")
 
     # angle_vals = np.pi* np.linspace(1/4,3/4,3)    # 3 angles, for debugging
     # angle_vals = np.pi* np.linspace(1/4,3/4,100)  # 100 angle test
     # angle_vals = np.pi* np.linspace(1/2,1/2,1)    # only do pi/2
     # angle_vals = np.pi* np.linspace(0,0,1)        # only do 0
     # angle_vals = np.pi* np.linspace(3/4,95/100,10)    
-    # angle_vals = np.pi* np.linspace(5/100,1/4,10)    
-    angle_vals = np.pi* np.linspace(5/100,95/100,20)    
-
+    # # angle_vals = np.pi* np.linspace(5/100,1/4,10)    
+    # angle_vals = np.pi* np.linspace(5/100,95/100,20)  
+    # angle_vals = np.pi* np.linspace(0,1,21) # from 0 to pi in increments of 0.05 * pi
+    # angle_vals = np.pi* np.linspace(1/4,3/4,21)  # pi/4 to 3pi/4 only
+    angle_vals = np.pi* np.linspace(0.1, 1.9, 21)  # .1 to 1.9 pi
+    print("Evaluating marginals with angle values = ", angle_vals)
 
    
     ##########################################
@@ -413,7 +437,7 @@ if args.marginals_eval:
     
     #### rl marginals data df and saving
     df_rl = pd.DataFrame(rows, columns=headers)
-    filename = output_dir+"/marginals/marginals_rl.csv"
+    filename = output_dir+"marginals/marginals_rl.csv"
     print("Saving RL marginals data to: ", filename, "\n")    
     df_rl.to_csv(filename, index=False)
 
@@ -476,7 +500,7 @@ if args.marginals_eval:
 
     #### tpp marginals data df and saving
     df_tpp = pd.DataFrame(rows, columns=headers)
-    filename = output_dir+"/marginals/marginals_tpp.csv"
+    filename = output_dir+"marginals/marginals_tpp.csv"
     print("Saving marginals data to: ", filename)    
     df_tpp.to_csv(filename, index=False)
     print("Exiting")
@@ -519,25 +543,19 @@ if save_data:
     # save a single value in every row of new column 'rlepisode_cost'
     df2['rlepisode_cost'] = rlepisode_cost 
     filename = output_dir+"/rl_data_angle_" + angle_abbrv + ".csv"
-    print("Saving RL deployed policy data to: ", filename)  
+    print("\nSaving RL deployed policy data to: ", filename)  
     df2.to_csv(filename, index=False)
 
     #### expert policy df
     df3 = pd.DataFrame({'actions':actions,'costs':costs,'errors':errors,'dofs':dofs})
     filename = output_dir+"/deterministic_amr_data_angle_" + angle_abbrv + ".csv"
-    print("Saving deterministic AMR policies data to: ", filename)    
+    print("\nSaving deterministic AMR policies data to: ", filename)    
     df3.to_csv(filename, index=False)
 
     #### two param policy df
-    print("shapes:")
-    print(tp_actions[:,0].shape)
-    print(tp_actions[:,1].shape)
-    print(len(tp_costs))
-    print(len(tp_errors))
-    print(len(tp_dofs))
     df4 = pd.DataFrame({'theta':tp_actions[:,0], 'rho':tp_actions[:,1],'costs':tp_costs,'errors':tp_errors,'dofs':tp_dofs})
     filename = output_dir+"/two_param_amr_data_angle_" + angle_abbrv + ".csv"
-    print("Saving two parameter AMR policies data to: ", filename)    
+    print("\nSaving two parameter AMR policies data to: ", filename)    
     df4.to_csv(filename, index=False)
 
 """

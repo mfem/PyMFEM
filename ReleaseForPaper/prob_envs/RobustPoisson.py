@@ -57,8 +57,9 @@ class RobustAnglePoisson(Poisson):
         delattr(self, 'BC')
         self.BC = mfem.NumbaFunction(ReentrantCornerExact, 2, True).GenerateCoefficient()
 
-        self.num_unif_ref = kwargs.get('num_unif_ref',1)
+        self.num_unif_ref = kwargs.get('num_unif_ref',1)        
         self.Lshapedmeshfile = expanduser(join(os.path.dirname(__file__), '../..', 'data', 'l-shape-benchmark.mesh'))
+        self.circlemeshfile = expanduser(join(os.path.dirname(__file__), '../..', 'data', 'circle_3_4.mesh'))
 
         self.angle = kwargs.get('angle_lower', np.pi * 0.5)
         self.angle_lower = kwargs.get('angle_lower', np.pi * 0.25)
@@ -70,7 +71,14 @@ class RobustAnglePoisson(Poisson):
     def set_angle(self, angle):
         self.angle = angle
         self.BC.SetTime(self.angle)
-        self.initial_mesh = ReentrantCornerMesh(self.angle, self.Lshapedmeshfile)
+
+        if self.mesh_name =='l-shape-benchmark.mesh':
+            self.initial_mesh = ReentrantCornerMesh(self.angle, self.Lshapedmeshfile)
+        elif self.mesh_name =='circle_3_4.mesh':
+            self.initial_mesh = ReentrantCornerMesh(self.angle, self.circlemeshfile)
+        else:
+            print("Something went wrong - see set_angle routine; exiting")
+            exit()
         for _ in range(self.num_unif_ref):
             self.initial_mesh.UniformRefinement()
         self.initial_mesh.EnsureNCMesh()
@@ -78,7 +86,7 @@ class RobustAnglePoisson(Poisson):
     def reset(self, random_angle=True):
         if random_angle:
             angle = np.random.uniform(self.angle_lower, self.angle_upper, 1).item()
-            print("Resetting env angle to ", angle)
+            # print("Resetting env angle to ", angle)
             self.set_angle(angle)
         return super().reset()
 
@@ -312,13 +320,13 @@ class hpWavefront(Poisson): # all functions copied from hpPoisson subclass but d
         self.action_space = spaces.Box(low=0.0, high=0.999, shape=(2,), dtype=np.float32)
 
     # p-refine for 'max' refinement strategy: 
-    #   inputs theta and rho are in [0,1]
+    #   action items theta and rao are in [0,1]
+    #   inputs to Prefein theta and rho_times_theta are in [0,1] with rho_times_theta <= theta by construction
     #   1) collect elements with errors >= theta * (max error)
-    #   2) from that collection, p-refine if and only if error >= rho * (max error)
+    #   2) from that collection, p-refine if and only if error > rho_times_theta * (max error)
     #   effectively: 
-    #      if (theta <= rho): p-refine all elements with error >= rho * (max error)
-    #      else:              p-refine all elements with error >= theta * (max error)  
-    def Prefine(self, theta, rho):   
+    #      p-refine all elements with error in  (rho_times_theta * (max error), theta * (max_error)]
+    def Prefine(self, theta, rho_times_theta):   
         mark_to_p_refine = []
         threshold = theta * np.max(self.errors)
         for i in range(self.mesh.GetNE()):
@@ -326,7 +334,7 @@ class hpWavefront(Poisson): # all functions copied from hpPoisson subclass but d
                 mark_to_p_refine.append((i, self.errors[i]))
         mark_to_p_refine.sort(key=lambda x:x[1], reverse=True)
         for i in range(len(mark_to_p_refine)):
-            if mark_to_p_refine[i][1] > rho * np.max(self.errors):
+            if mark_to_p_refine[i][1] > rho_times_theta * np.max(self.errors):
                 current_element = mark_to_p_refine[i][0]
                 current_order = self.fespace.GetElementOrder(current_element)
                 self.fespace.SetElementOrder(current_element, current_order + 1)
@@ -391,9 +399,9 @@ class hpWavefront(Poisson): # all functions copied from hpPoisson subclass but d
     def UpdateMesh(self, action):
         action = np.clip(action, 0.0, 1.0)
         theta = action[0].item() 
-        rho = action[1] * theta 
+        rho_times_theta = action[1] * theta 
         # self.refinement_strategy == 'max'
-        self.Prefine(theta, rho)
+        self.Prefine(theta, rho_times_theta)
         self.Refine(theta)
         self.CloseMesh()
     

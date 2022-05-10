@@ -73,94 +73,88 @@ save_figs = True
 print("*** Check that correct data was loaded here in marginal_plots.py ***")
 train_data_file = output_dir+'/training_data.csv'
 
-case = 101
+
+#########################################
+# RL policy df creation or loading
+#########################################
+
+file_exists = os.path.exists(output_dir+'/marginals/rl_avg_costs.npy')
+if file_exists:
+    rl_avg_costs = np.load(output_dir+'/marginals/rl_avg_costs.npy')
+    print("\nLoaded rl_avg_costs.npy\n")
+else:
+    df = pd.read_csv(output_dir+'/marginals/marginals_rl.csv', index_col=False)
+
+    angles = df['angle'].unique()
+    num_angles = len(angles)
+    # if num_angles != 100:
+    #       print("Should have had 100 angles... exiting")
+    #       exit()
+
+    rl_avg_costs = np.zeros(1) # 1 indicates only evaluating one RL policy 
+    sum_of_best_costs = 0.0
+    for angle in angles: 
+        df_angle = df.loc[(df['angle'] == angle)].set_index('step')
+        df_best  = df_angle.iloc[df_angle.index.max()]
+        best_cost = df_best['cost']
+        sum_of_best_costs += best_cost
+    avg_cost = sum_of_best_costs/num_angles
+    avg_cost = avg_cost / np.log(2) # convert to log base 2
+    rl_avg_costs[0] = avg_cost
+    np.save(output_dir + '/marginals/rl_avg_costs.npy', rl_avg_costs)
+
+
+#########################################
+# two param policy df creation or loading #    *** tpp replaced dnf ****
+#########################################
+
+file_exists = os.path.exists(output_dir+'/marginals/tpp_avg_costs.npy')
+if file_exists:
+    tpp_avg_costs = np.load(output_dir+'/marginals/tpp_avg_costs.npy')
+    print("\nLoaded tpp_avg_costs.npy\n")
+else:
+    df = pd.read_csv(output_dir+'/marginals/marginals_tpp.csv', index_col=False)     
+    angles = df['angle'].unique()
+    thetas = df['theta'].unique()
+    rhos   = df['rho'].unique()     
+    tpp_avg_costs = np.zeros(100)
+    num_angles = len(angles)
+    num_thetas = len(thetas)
+    num_rhos   = len(rhos)
+    # if num_angles != 100 or num_thetas != 10 or num_rhos != 10:
+    #    print("Something isn't the right size")
+    #    exit()
+     
+        
+    i=0
+    for theta in thetas:
+        for rho in rhos:
+            sum_of_best_costs = 0.0
+            for angle in angles: 
+                df_angle = df.loc[(df['theta'] == theta) & (df['rho'] == rho) & (df['angle'] == angle)].set_index('step')
+                df_best  = df_angle.iloc[df_angle.index.max()]
+                best_cost = df_best['cost']
+                sum_of_best_costs += best_cost
+            avg_cost = sum_of_best_costs/num_angles
+            avg_cost = avg_cost / np.log(2) # convert to log base 2
+            tpp_avg_costs[i] = avg_cost
+            i += 1
+    np.save(output_dir + '/marginals/tpp_avg_costs.npy', tpp_avg_costs)
+
+
+#########################################
+# expert policy df creation or loading
+#########################################
+
+print("*** haven't implemented expert policy marginals yet *** ")
+
+
+case = 102
 if case == 101: # marginal distributions for (expert), two policy, and RL polices (100 polices x 100 angles)
  
-    f, ax = plt.subplots(nrows=1, ncols=1, sharex=True, sharey=True, figsize=(12,6))  
+    f1, ax1 = plt.subplots(nrows=1, ncols=1, sharex=True, sharey=True, figsize=(12,6))  
  
  
-    #########################################
-    # RL policy df creation or loading
-    #########################################
- 
-    file_exists = os.path.exists(output_dir+'/marginals/rl_avg_costs.npy')
-    if file_exists:
-       tpp_avg_costs = np.load(output_dir+'/marginals/rl_avg_costs.npy')
-       print("\nLoaded rl_avg_costs.npy\n")
-    else:
-       df = pd.read_csv(output_dir+'/marginals/marginals_rl.csv', index_col=False)
- 
-       angles = df['angle'].unique()
-       num_angles = len(angles)
-       # if num_angles != 100:
-       #       print("Should have had 100 angles... exiting")
-       #       exit()
- 
-       rl_avg_costs = np.zeros(1) # 1 indicates only evaluating one RL policy 
-       sum_of_best_costs = 0.0
-       for angle in angles: 
-          df_angle = df.loc[(df['angle'] == angle)].set_index('step')
-          df_best  = df_angle.iloc[df_angle.index.max()]
-          best_cost = df_best['cost']
-          sum_of_best_costs += best_cost
-       avg_cost = sum_of_best_costs/num_angles
-       avg_cost = avg_cost / np.log(2) # convert to log base 2
-       rl_avg_costs[0] = avg_cost
-       np.save(output_dir + '/marginals/rl_avg_costs.npy', rl_avg_costs)
- 
- 
-    #########################################
-    # two param policy df creation or loading #    *** tpp replaced dnf ****
-    #########################################
- 
-    file_exists = os.path.exists(output_dir+'/marginals/tpp_avg_costs.npy')
-    if file_exists:
-        tpp_avg_costs = np.load(output_dir+'/marginals/tpp_avg_costs.npy')
-        print("\nLoaded tpp_avg_costs.npy\n")
-    else:
-        df = pd.read_csv(output_dir+'/marginals/marginals_tpp.csv', index_col=False)     
-        angles = df['angle'].unique()
-        thetas = df['theta'].unique()
-        rhos   = df['rho'].unique()     
-        tpp_avg_costs = np.zeros(100)
-        num_angles = len(angles)
-        num_thetas = len(thetas)
-        num_rhos   = len(rhos)
-        # if num_angles != 100 or num_thetas != 10 or num_rhos != 10:
-        #    print("Something isn't the right size")
-        #    exit()
-       
-
-        # find two-param policy that achieved best result for each angle
-        df_bestpolicies = pd.DataFrame(columns=['angle','theta','rho'])
-        for angle in angles:
-            df_allperangle    = df.loc[df['angle'] == angle][['theta', 'rho', 'cost']]
-            # print("min is ", df_allperangle['cost'].min())
-            df_bestperangle = df_allperangle.iloc[df_allperangle['cost'].argmin()]
-            df_bestpolicies = df_bestpolicies.append({'angle': angle, 'theta': df_bestperangle['theta'], 'rho': df_bestperangle['rho']}, ignore_index=True)
-        print(df_bestpolicies)
-
-        # draw scatter plot of best policies
-        # plt.scatter(df_bestpolicies['theta'], df_bestpolicies['rho'], c=df_bestpolicies['angle'], cmap='Reds')
-        # plt.show()
-        # exit()    
-        
-            
-        i=0
-        for theta in thetas:
-            for rho in rhos:
-                sum_of_best_costs = 0.0
-                for angle in angles: 
-                    df_angle = df.loc[(df['theta'] == theta) & (df['rho'] == rho) & (df['angle'] == angle)].set_index('step')
-                    df_best  = df_angle.iloc[df_angle.index.max()]
-                    best_cost = df_best['cost']
-                    sum_of_best_costs += best_cost
-                avg_cost = sum_of_best_costs/num_angles
-                avg_cost = avg_cost / np.log(2) # convert to log base 2
-                tpp_avg_costs[i] = avg_cost
-                i += 1
-        np.save(output_dir + '/marginals/tpp_avg_costs.npy', tpp_avg_costs)
-  
  
     ###########################
     # make letterbox plots
@@ -175,27 +169,27 @@ if case == 101: # marginal distributions for (expert), two policy, and RL police
     plotdf.iloc[200:201,0] = 'reinforcement\n learning\n trained policies'
     plotdf.iloc[200:201,1] = rl_avg_costs
  
-    ax = sns.boxenplot(y='policy type', x='avg cost', data=plotdf, orient="h", palette="Set2")
-    # ax.set_xlabel('Marginal distributions of costs (over angles)')
-    ax.set_title('Marginal distributions on L-shaped type domains',fontsize=18)
+    ax1 = sns.boxenplot(y='policy type', x='avg cost', data=plotdf, orient="h", palette="Set2")
+    # ax1.set_xlabel('Marginal distributions of costs (over angles)')
+    ax1.set_title('Marginal distributions on L-shaped type domains',fontsize=18)
     plt.xticks(fontsize=14)
     plt.yticks(fontsize=14)
-    # ax.set_xlabel(r'$\mathbb{E}_{\omega}[ \log ( E_{\mathrm{Final}} ) ]$',fontsize=16)
-    ax.set_xlabel(r'$\mathbb{E}_{\omega}[ \log_2 ( E_{\mathrm{Final}} ) ]$',fontsize=16)
-    ax.set_ylabel('')
-    # ax.set_xscale('log')
+    # ax1.set_xlabel(r'$\mathbb{E}_{\omega}[ \log ( E_{\mathrm{Final}} ) ]$',fontsize=16)
+    ax1.set_xlabel(r'$\mathbb{E}_{\omega}[ \log_2 ( E_{\mathrm{Final}} ) ]$',fontsize=16)
+    ax1.set_ylabel('')
+    # ax1.set_xscale('log')
  
     # # Make plot of avg cost as function of theta
     # df = pd.read_csv('../hp_sample_data/most_recent_data/dwf_oct29_all_angles.csv', index_col=False)
     # thetas = df['theta'].unique()
     # x_ax = thetas
     # y_ax = dwf_avg_costs
-    # ax.plot(x_ax, y_ax, 'r', linestyle='-', marker='x', label='dwf avg costs')
-    # ax.set_xlabel('Theta value, expert policy')
-    # ax.set_ylabel('Cost')
+    # ax2.plot(x_ax, y_ax, 'r', linestyle='-', marker='x', label='dwf avg costs')
+    # ax2.set_xlabel('Theta value, expert policy')
+    # ax2.set_ylabel('Cost')
  
     #   dwf / dnf: average over angles, this gives an expected cost for each fixed parameter
-    # ax = sns.boxenplot(y='variable', x = 'Error at final mesh', data=mdf, orient="h", palette="Set2")
+    # ax3 = sns.boxenplot(y='variable', x = 'Error at final mesh', data=mdf, orient="h", palette="Set2")
  
 # rldata_file = output_dir+'/rl_data.csv'
 # deterministic_amr_data_file = output_dir+'/deterministic_amr_data.csv'
@@ -234,5 +228,71 @@ if case == 101: # marginal distributions for (expert), two policy, and RL police
 # for i in range(len(dofs)):
 #    dofs[i] = np.array(eval(dofs[i]))
 #    errors[i] = np.array(eval(errors[i]))
+
+
+
+# draw scatter plot of best policies
+# plt.scatter(df_bestpolicies['theta'], df_bestpolicies['rho'], c=df_bestpolicies['angle'], cmap='Reds')
+# plt.show()
+# exit()   
+
+if case == 102: # Plot fixed angle action vs. refinement step WITH best two-parameter action overlay
+
+    numrows = 3
+    numcols = 7
+
+    plt.rcParams["font.family"] = "Times New Roman"
+    plt.rc('text', usetex=True)
+
+    f2, ax2 = plt.subplots(nrows=numrows, ncols=numcols, sharex=True, sharey=True, figsize=(12,6))  
+
+
+    df_rl = pd.read_csv(output_dir+'/marginals/marginals_rl.csv', index_col=False)
+    angles = df_rl['angle'].unique()
+    num_angles = len(angles)
+
+    df_tpp = pd.read_csv(output_dir+'/marginals/marginals_tpp.csv', index_col=False)   
+    assert len(df_tpp['angle'].unique() == num_angles) # check same number of angles tested in both datasets 
+
+    # find two-param policy that achieved best result for each angle
+    df_bestpolicies = pd.DataFrame(columns=['angle','theta','rho'])
+    for angle in angles:
+        df_allperangle  = df_tpp.loc[df_tpp['angle'] == angle][['theta', 'rho', 'cost']]
+        df_bestperangle = df_allperangle.iloc[df_allperangle['cost'].argmin()]
+        df_bestpolicies = df_bestpolicies.append({'angle': angle, 'theta': df_bestperangle['theta'], 'rho': df_bestperangle['rho']}, ignore_index=True)
+    print("Best two parameter policies: \n", df_bestpolicies)
+
+
+    for i in range(numrows): # num of rows
+        for j in range(numcols): 
+            index = i*numcols + j
+            makelegend=False
+            # if index == 7:
+            #     makelegend=True
+            #     index=6
+
+            rlactions = df_rl[df_rl['angle'] == angles[index]][['theta', 'rho']].to_numpy()
+            ax2[i][j].plot(rlactions[:,0],'-o',lw=1.3, c=palette_list[0], label=r'$\theta$ (h parameter)')
+            ax2[i][j].plot(rlactions[:,1],'-o',lw=1.3, c=palette_list[1], label=r'$\rho$ (p parameter)')
+            # ax2[i][j].plot()
+            
+            tpp_best_theta = df_bestpolicies[df_bestpolicies['angle'] == angles[index]]['theta'].to_numpy().item() * np.ones(rlactions.shape[0]) 
+            tpp_best_rho   = df_bestpolicies[df_bestpolicies['angle'] == angles[index]]['rho'].to_numpy().item()   * np.ones(rlactions.shape[0]) 
+            ax2[i][j].plot(tpp_best_theta,'-x',lw=1.3, c=palette_list[0], label=r'$\theta$ (h parameter)')
+            ax2[i][j].plot(tpp_best_rho,  '-x',lw=1.3, c=palette_list[1], label=r'$\rho$ (p parameter)')
+
+            if makelegend:
+                ax[i][j].legend()
+
+
+
+# rlactions = df_rl[df_rl['angle'] == 0.0][['theta', 'rho']].to_numpy()
+# plt.plot(rlactions[:,0],'-o',lw=1.3, label=r'$\theta$ (h parameter)')
+# plt.plot(rlactions[:,1],'-o',lw=1.3, label=r'$\rho$ (p parameter)')
+# ax2.set_ylabel(r'parameter values in trained (AM)$^2$R policy')
+# ax2.legend(loc='upper right')
+# ax2.set_xlabel(r'Refinement step')
+# plt.savefig(output_dir+'/'+fig_name_prefix+'_fig6.pdf',format='pdf', bbox_inches='tight')
+
 
 plt.show()

@@ -246,8 +246,10 @@ if save_figs:
 
 if ex_type == 4: # example 2c
 
-   tp_data_file = output_dir+'/two_param_amr_data.csv'
-   df = pd.read_csv(tp_data_file)
+   # tp_data_file = output_dir+'/two_param_amr_data.csv'
+   # if args.angle_abbrv is not None:
+   #    tp_data_file = output_dir + '/two_param_amr_data_angle_' + args.angle_abbrv + '.csv'
+   df = pd.read_csv(two_param_data_file)
 
    plt.figure(figsize=(6,6))
    ax7 = sns.boxenplot(y=df['costs'], width=.6, color=palette_list[3], label='_nolegend_')

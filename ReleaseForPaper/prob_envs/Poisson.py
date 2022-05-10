@@ -160,7 +160,8 @@ class Poisson(gym.Env):
         self.ess_bdr.Assign(1)
         self.x.ProjectBdrCoefficient(self.BC, self.ess_bdr)
         self.flux_fespace = mfem.FiniteElementSpace(self.mesh, fec, dim)
-        self.estimator =  mfem.LSZienkiewiczZhuEstimator(integ, self.x)
+        self.estimator = mfem.LSZienkiewiczZhuEstimator(integ, self.x)
+        # self.estimator = mfem.LpErrorEstimator(2, self.BC, self.x)
 
     def GetObservation(self):
         num_dofs = self.fespace.GetTrueVSize()
