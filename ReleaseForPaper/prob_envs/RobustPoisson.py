@@ -53,10 +53,17 @@ class RobustThresholdPoisson(Poisson):
 class RobustAnglePoisson(Poisson):
 
     def __init__(self,**kwargs):
-        super().__init__(**kwargs)
-        delattr(self, 'BC')
-        self.BC = mfem.NumbaFunction(ReentrantCornerExact, 2, True).GenerateCoefficient()
-
+        super().__init__(**kwargs)  
+        problem_type = kwargs.get('problem_type','lshaped')
+        if (problem_type == 'lshaped'):
+            delattr(self, 'BC')
+            self.BC = mfem.NumbaFunction(ReentrantCornerExact, 2, True).GenerateCoefficient()
+        elif (problem_type == 'wavefront'):
+            print("*** Should not be using RobustAnglePoisson class with wavefront problem - exiting ***")
+            exit()
+        else:
+            delattr(self, 'BC')
+            self.BC = mfem.ConstantCoefficient(0.0)
         self.num_unif_ref = kwargs.get('num_unif_ref',1)        
         self.Lshapedmeshfile = expanduser(join(os.path.dirname(__file__), '../..', 'data', 'l-shape-benchmark.mesh'))
         self.circlemeshfile = expanduser(join(os.path.dirname(__file__), '../..', 'data', 'circle_3_4.mesh'))
@@ -64,11 +71,11 @@ class RobustAnglePoisson(Poisson):
         self.angle = kwargs.get('angle_lower', np.pi * 0.5)
         self.angle_lower = kwargs.get('angle_lower', np.pi * 0.25)
         self.angle_upper = kwargs.get('angle_upper', np.pi * 0.75)
-        if self.mesh_name == 'l-shape-benchmark.mesh':
-            print("Setting env angle to ", self.angle)
+        if (problem_type == 'lshaped'):
             self.set_angle(self.angle)
 
     def set_angle(self, angle):
+        # print("Setting env angle to ", self.angle, flush=True)
         self.angle = angle
         self.BC.SetTime(self.angle)
 

@@ -31,7 +31,7 @@ def print_config(dir, prob_config = None, rl_config = None):
 
     if (rl_config is not None):
         with open(dir+"/rl_config.json", 'w') as f: 
-            json.dump(prob_config,f)
+            json.dump(rl_config,f)
 
 def mkdir_p(mypath):
     '''Creates a directory. equivalent to using mkdir -p on the command line'''
@@ -116,20 +116,20 @@ save_figs=args.savefigs
 angle_abbrv = "{:.2f}".format(np.round(args.angle_eval,2)) # to fix filename length
 
 restore_policy = False
-nbatches = 100 #250
+nbatches = 250 
 minimum_budget_problem = False  # mininum budget == error_threshold == minimize dofs
 
 ## Configuration for minimum budget problem
 prob_config = {
-    'mesh_name'             :  'circle_3_4.mesh', # 'l-shape-benchmark.mesh', 'star.mesh', 'circle_3_4.mesh'
-    'problem_type'          :  'lshaped', #'noneoftheabove', 
-    'num_unif_ref'          : 1,
+    'mesh_name'             : 'circle_3_4.mesh', # 'star.mesh', 'circle_3_4.mesh', 'l-shape-benchmark.mesh'
+    'problem_type'          : 'lshaped', # 'lshaped', #'noneoftheabove', 'wavefront'
+    'num_unif_ref'          : 0, # 1 # use 0 for circle_3_4.mesh; 1 for l-shape-benchmark.mesh
     'order'                 : 2,
     'optimization_type'     : 'error_threshold', 
     'dof_threshold'         : 5e5,
     'error_threshold'       : 1e-4,
     'angle_lower'           : np.pi * 0.1, # np.pi * 0.25,
-    'angle_upper'           : np.pi * 1.9, # np.pi * 0.75,
+    'angle_upper'           : np.pi * 0.9, # np.pi * 0.75,
     'num_batches'           : nbatches
 }
 
@@ -186,9 +186,12 @@ if (restore_policy):
     chkpt_num = nbatches
     # set the path of the checkpoint
     # temp_path = 'Example2c_2022-05-06_19-33-30/' # dof thresh 1e4; L-shape mesh; pi/4 - 3pi/4 angle training; num_batch 250
-    # temp_path = 'Example2c_2022-05-09_14-23-16/' # dof thresh 1e4; pacman mesh; 0.5 - 1.5 pi angle training; num_batch 100
-    temp_path = 'Example2c_2022-05-09_17-32-28/' # dof thresh 1e4; pacman mesh; 0.1 - 1.9 pi angle training; num_batch 100
-    
+    # DIDN'T SET ANGLE DURING TRAINING: temp_path = 'Example2c_2022-05-09_14-23-16/' # dof thresh 1e4; pacman mesh; 0.5 - 1.5 pi angle training; num_batch 100
+    # DIDN'T SET ANGLE DURING TRAINING: temp_path = 'Example2c_2022-05-09_17-32-28/' # dof thresh 1e4; pacman mesh; 0.1 - 1.9 pi angle training; num_batch 100; not well-trained!!!
+    # temp_path = 'Example2c_2022-05-10_14-45-01/' # dof thresh 1e4; pacman mesh; 0.1 - 1.9 pi angle training; num_batch 100; fixed bug with init; not well-trained!
+    # temp_path = 'Example2c_2022-05-10_16-15-52/' # dof thresh 1e4; pacman mesh; 0.5 - 1.5 pi angle training; num_batch 250; fixed bug with init
+    temp_path = 'Example2c_2022-05-11_12-07-27/' # dof thresh 1e4; L-shape mesh; 0.49 - 0.51 pi angle training; num_batch 250; fixed bug with init
+
 
     
     checkpoint_dir = log_dir + temp_path
@@ -231,8 +234,12 @@ if train:
     print(checkpoint_path)
 if eval and not train:
     # temp_path = 'Example2c_2022-05-06_19-33-30/' # dof thresh 1e4; L-shape mesh; pi/4 - 3pi/4 angle training; num_batch 250
-    # temp_path = 'Example2c_2022-05-09_14-23-16/' # dof thresh 1e4; pacman mesh; 0.5 - 1.5 pi angle training; num_batch 100
-    temp_path = 'Example2c_2022-05-09_17-32-28/' # dof thresh 1e4; pacman mesh; 0.1 - 1.9 pi angle training; num_batch 100
+    # DIDN'T SET ANGLE DURING TRAINING: temp_path = 'Example2c_2022-05-09_14-23-16/' # dof thresh 1e4; pacman mesh; 0.5 - 1.5 pi angle training; num_batch 100
+    # DIDN'T SET ANGLE DURING TRAINING: temp_path = 'Example2c_2022-05-09_17-32-28/' # dof thresh 1e4; pacman mesh; 0.1 - 1.9 pi angle training; num_batch 100
+    # temp_path = 'Example2c_2022-05-10_14-45-01/' # dof thresh 1e4; pacman mesh; 0.1 - 1.9 pi angle training; num_batch 100; fixed bug with init; not well-trained!
+    # temp_path = 'Example2c_2022-05-10_16-15-52/' # dof thresh 1e4; pacman mesh; 0.5 - 1.5 pi angle training; num_batch 250; fixed bug with init
+    temp_path = 'Example2c_2022-05-11_12-07-27/' # dof thresh 1e4; L-shape mesh; 0.49 - 0.51 pi angle training; num_batch 250; fixed bug with init
+    
     chkpt_num = nbatches
     checkpoint_dir = log_dir + temp_path
     # checkpoint_path=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt < 100
@@ -248,7 +255,7 @@ if train:
 
 if eval and not args.marginals_eval:
 
-    if prob_config['mesh_name'] == 'l-shape-benchmark.mesh' or prob_config['mesh_name'] == 'circle_3_4.mesh': 
+    if prob_config['problem_type'] == 'lshaped':
         env.set_angle(args.angle_eval) # note: set_angle(...) redefines self.initial_mesh
         print("*** Set angle for eval to  ", args.angle_eval)
 
@@ -282,7 +289,7 @@ if eval and not args.marginals_eval:
         # print()
         # np.set_printoptions(precision=16)
         # print(env.k)
-        # print(np.sort(env.errors))
+        # env.render()
         # env.RenderHPmesh()
         # if env.k > 6:
         #     exit()
@@ -290,45 +297,52 @@ if eval and not args.marginals_eval:
     # print("*** done with RL eval - exiting")
     # exit()
     
+    # env.render() # WARNING: Rendering outside the RL loop won't show correct solution
     # env.RenderMesh()
     # env.RenderHPmesh()
     # print("\nRendering RL policies and exiting\n")
     # exit()
     
-    ## Enact AMR policies, using "expert" strategy
-    costs = []
-    actions = []
-    nth = 100
-    errors = []
-    dofs = []
-    for i in range(1, nth):
-        print(i)
-        action = np.array([i/nth]) # note 1D action space
-        actions.append(action.item())
-        print("action = ", action.item())
-        obs = env.reset(random_angle=False)
-        done = False
-        episode_cost_tmp = 0
-        errors_tmp = [env.global_error]
-        dofs_tmp = [env.sum_of_dofs]
-        max_steps   = 40 # or:  num_steps_of_RL_policy
-        steps_taken = 0
-        while not done:
-            _, reward, done, info = env.expertStep(action)
-            if not minimum_budget_problem and done:
-                break
-            if steps_taken > max_steps:
-                print("*** BREAKING EARLY - fixed action exceeded max step threshold of ", max_steps, "steps.")
-                break
-            else:
-                steps_taken += 1
-            episode_cost_tmp -= reward
-            errors_tmp.append(info['global_error'])
-            dofs_tmp.append(info['num_dofs'])
-        costs.append(episode_cost_tmp)
-        errors.append(errors_tmp)
-        dofs.append(dofs_tmp)
-        print('episode cost = ', episode_cost_tmp)
+
+    if prob_config['problem_type'] == 'lshaped':
+        ## Enact AMR policies, using "expert" strategy
+        costs = []
+        actions = []
+        nth = 100
+        errors = []
+        dofs = []
+        for i in range(1, nth):
+            print(i)
+            action = np.array([i/nth]) # note 1D action space
+            actions.append(action.item())
+            print("action = ", action.item())
+            obs = env.reset(random_angle=False)
+            done = False
+            episode_cost_tmp = 0
+            errors_tmp = [env.global_error]
+            dofs_tmp = [env.sum_of_dofs]
+            max_steps   = 40 # or:  num_steps_of_RL_policy
+            steps_taken = 0
+            while not done:
+                _, reward, done, info = env.expertStep(action)
+                if not minimum_budget_problem and done:
+                    # env.render()
+                    # env.RenderHPmesh()
+                    # exit()
+                    break
+                if steps_taken > max_steps:
+                    print("*** BREAKING EARLY - fixed action exceeded max step threshold of ", max_steps, "steps.")
+                    break
+                else:
+                    steps_taken += 1
+                episode_cost_tmp -= reward
+                errors_tmp.append(info['global_error'])
+                dofs_tmp.append(info['num_dofs'])
+
+            costs.append(episode_cost_tmp)
+            errors.append(errors_tmp)
+            dofs.append(dofs_tmp)
+            print('episode cost = ', episode_cost_tmp)
 
     # ## Enact AMR policies, using "fixed two parameter sweep" strategy
     tp_costs = []
@@ -376,7 +390,7 @@ if eval and not args.marginals_eval:
             tp_dofs.append(dofs_tmp)
             print('episode cost = ', episode_cost_tmp)
             if theta == 5 and rho == 5:
-                env.RenderMesh()
+                env.render()
                 env.RenderHPmesh()
                 print("\nRendering two parmaeter policy ", tp_actions[index_count-1], "\n")
 
@@ -393,7 +407,8 @@ if args.marginals_eval:
     # angle_vals = np.pi* np.linspace(5/100,95/100,20)  
     # angle_vals = np.pi* np.linspace(0,1,21) # from 0 to pi in increments of 0.05 * pi
     # angle_vals = np.pi* np.linspace(1/4,3/4,21)  # pi/4 to 3pi/4 only
-    angle_vals = np.pi* np.linspace(0.1, 1.9, 21)  # .1 to 1.9 pi
+    # angle_vals = np.pi* np.linspace(0.1, 1.9, 21)  # .1 to 1.9 pi
+    angle_vals = np.pi* np.linspace(0.1, 0.9, 21)  # .1 to .9 pi
     print("Evaluating marginals with angle values = ", angle_vals)
 
    
@@ -493,20 +508,58 @@ if args.marginals_eval:
                 #     # sol_sock.send_text("valuerange 1.0 8.0 \n")
                 #     # sol_sock.send_text('keys S')
 
-
-    # import time
-    # job_time_id = int(time.time()) 
-    # print("Job time id = ", job_time_id)
-
     #### tpp marginals data df and saving
     df_tpp = pd.DataFrame(rows, columns=headers)
     filename = output_dir+"marginals/marginals_tpp.csv"
-    print("Saving marginals data to: ", filename)    
+    print("Saving two parameter poilcy marginals data to: ", filename)    
     df_tpp.to_csv(filename, index=False)
-    print("Exiting")
-    exit()
+
+    ##########################################
+    # expert policy marginals data creation 
+    ##########################################
+   
+    
+    if prob_config['problem_type'] == 'lshaped':
+        samples_per_param = 10
+
+        headers = ['theta', 'angle', 'step', 'num elts', 'num dofs', 'sum dofs', 'error est', 'cost']#, 'L2 Error', 'H1 Error']
+        # headers = ['theta', 'rho',         'N', 'DoFs', 'Total_DoFs', 'Error_Estimate', 'Cost']#, 'L2_Error', 'H1_Error']
+        rows = []
+        for j in range(samples_per_param):
+            print("... working on expert action ", j/samples_per_param, " ...")
+            for angle in angle_vals:
+                env.set_angle(angle)
+                obs = env.reset(random_angle=False)
+                done = False
+                theta = j / samples_per_param
+                action = np.array([theta]) # note 1D action space
+                episode_cost = 0.0
+                rows.append([action[0].item(), angle, env.k, env.mesh.GetNE(), env.fespace.GetTrueVSize(), 
+                                        env.sum_of_dofs, env.global_error, episode_cost])
+                steps_taken = 0
+                max_steps = 40
+                while not done:
+                    _, reward, done, info = env.expertStep(action)
+                    episode_cost -= reward 
+                    rows.append([action[0].item(), angle, env.k, env.mesh.GetNE(), env.fespace.GetTrueVSize(), 
+                                            env.sum_of_dofs, env.global_error, episode_cost])
+                    if not minimum_budget_problem and done:
+                        break
+                    if steps_taken > max_steps:
+                        print("*** BREAKING EARLY - fixed action exceeded max step threshold of ", max_steps, "steps.")
+                        break
+                    else:
+                        steps_taken += 1
 
 
+        #### tpp marginals data df and saving
+        df_exp = pd.DataFrame(rows, columns=headers)
+        filename = output_dir+"marginals/marginals_exp.csv"
+        print("Saving expert poilcy marginals data to: ", filename)    
+        df_exp.to_csv(filename, index=False)
+
+        print("Exiting")
+        exit()
 
 
   
@@ -547,10 +600,12 @@ if save_data:
     df2.to_csv(filename, index=False)
 
     #### expert policy df
-    df3 = pd.DataFrame({'actions':actions,'costs':costs,'errors':errors,'dofs':dofs})
-    filename = output_dir+"/deterministic_amr_data_angle_" + angle_abbrv + ".csv"
-    print("\nSaving deterministic AMR policies data to: ", filename)    
-    df3.to_csv(filename, index=False)
+    
+    if prob_config['problem_type'] == 'lshaped':
+        df3 = pd.DataFrame({'actions':actions,'costs':costs,'errors':errors,'dofs':dofs})
+        filename = output_dir+"/deterministic_amr_data_angle_" + angle_abbrv + ".csv"
+        print("\nSaving deterministic AMR policies data to: ", filename)    
+        df3.to_csv(filename, index=False)
 
     #### two param policy df
     df4 = pd.DataFrame({'theta':tp_actions[:,0], 'rho':tp_actions[:,1],'costs':tp_costs,'errors':tp_errors,'dofs':tp_dofs})

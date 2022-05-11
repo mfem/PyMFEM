@@ -33,7 +33,6 @@ class Poisson(gym.Env):
         super().__init__()
         self.nc_limit = 1 # maximum number of hanging nodes per element = 2^nc_limit - 1 
         self.order = kwargs.get('order',2)
-        
         problem_type = kwargs.get('problem_type','lshaped')
         if (problem_type == 'lshaped'):
             self.BC = mfem.NumbaFunction(LShapedExact, 2).GenerateCoefficient()
@@ -137,7 +136,7 @@ class Poisson(gym.Env):
         return obs, -cost, done, info
     
     def render(self):
-        print("Mesh is ", self.mesh)
+        print("Mesh is ", self.mesh_name)
         sol_sock = mfem.socketstream("localhost", 19916)
         sol_sock.precision(8)
         prolonged_x = mfem.ProlongToMaxOrder(self.x)

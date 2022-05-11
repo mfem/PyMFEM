@@ -116,11 +116,11 @@ else:
     df = pd.read_csv(output_dir+'/marginals/marginals_tpp.csv', index_col=False)     
     angles = df['angle'].unique()
     thetas = df['theta'].unique()
-    rhos   = df['rho'].unique()     
-    tpp_avg_costs = np.zeros(100)
+    rhos   = df['rho'].unique()    
     num_angles = len(angles)
     num_thetas = len(thetas)
     num_rhos   = len(rhos)
+    tpp_avg_costs = np.zeros(num_thetas * num_rhos)
     # if num_angles != 100 or num_thetas != 10 or num_rhos != 10:
     #    print("Something isn't the right size")
     #    exit()
@@ -129,6 +129,7 @@ else:
     i=0
     for theta in thetas:
         for rho in rhos:
+            print(i, " ", theta, " ", rho)
             sum_of_best_costs = 0.0
             for angle in angles: 
                 df_angle = df.loc[(df['theta'] == theta) & (df['rho'] == rho) & (df['angle'] == angle)].set_index('step')
@@ -146,7 +147,38 @@ else:
 # expert policy df creation or loading
 #########################################
 
-print("*** haven't implemented expert policy marginals yet *** ")
+file_exists = os.path.exists(output_dir+'/marginals/exp_avg_costs.npy')
+if file_exists:
+    exp_avg_costs = np.load(output_dir+'/marginals/exp_avg_costs.npy')
+    print("\nLoaded exp_avg_costs.npy\n")
+else:
+    df = pd.read_csv(output_dir+'/marginals/marginals_exp.csv', index_col=False)   
+    angles = df['angle'].unique()
+    thetas = df['theta'].unique()
+    num_thetas = len(thetas)
+    num_angles = len(angles)
+    exp_avg_costs = np.zeros(num_thetas)
+
+    # if num_thetas != 100:
+    #     print("Should have had 100 theta values... exiting")
+    #     exit()
+    # if num_angles != 100:
+    #     print("Should have had 100 angles... exiting")
+    #     exit()
+
+    i=0
+    for theta in thetas:
+        sum_of_best_costs = 0.0
+        for angle in angles: 
+            df_angle = df.loc[(df['theta'] == theta) & (df['angle'] == angle)].set_index('step')
+            df_best = df_angle.iloc[df_angle.index.max()]
+            best_cost = df_best['cost']
+            sum_of_best_costs += best_cost
+        avg_cost = sum_of_best_costs/num_angles
+        avg_cost = avg_cost / np.log(2) # convert to log base 2
+        exp_avg_costs[i] = avg_cost
+        i += 1
+    np.save(output_dir + '/marginals/exp_avg_costs.npy', exp_avg_costs)
 
 
 case = 102
@@ -160,14 +192,21 @@ if case == 101: # marginal distributions for (expert), two policy, and RL police
     # make letterbox plots
     ###########################
  
-    plotdf = pd.DataFrame(np.zeros((225,2)))  #  NOTE: assumes 25 RL files
+    num_exp = len(exp_avg_costs)
+    num_tpp = len(tpp_avg_costs)
+    num_rlp = len(rl_avg_costs)
+    num_total = num_exp + num_tpp + num_rlp
+    plotdf = pd.DataFrame(np.zeros((num_total,2)))  #  NOTE: assumes 25 RL files
     plotdf.columns = ['policy type', 'avg cost']
-    #  plotdf.iloc[0:100,0] = 'one fixed\n parameter\n "expert" policies'
-    #  plotdf.iloc[0:100,1] = dwf_avg_costs
-    plotdf.iloc[100:200,0] = 'two fixed\n parameters\n policies'
-    plotdf.iloc[100:200,1] = tpp_avg_costs
-    plotdf.iloc[200:201,0] = 'reinforcement\n learning\n trained policies'
-    plotdf.iloc[200:201,1] = rl_avg_costs
+    plotdf.iloc[0:num_exp,0] = 'one fixed\n parameter\n "expert" policies'
+    plotdf.iloc[0:num_exp,1] = exp_avg_costs
+    plotdf.iloc[num_exp:num_exp+num_tpp,0] = 'two fixed\n parameters\n policies'
+    plotdf.iloc[num_exp:num_exp+num_tpp,1] = tpp_avg_costs
+    plotdf.iloc[num_exp+num_tpp:num_total,0] = 'reinforcement\n learning\n trained policies'
+    plotdf.iloc[num_exp+num_tpp:num_total,1] = rl_avg_costs
+
+    print("The best expert policy was at index ", exp_avg_costs.argmin())
+    print("The best expert policy was at index ", tpp_avg_costs.argmin())
  
     ax1 = sns.boxenplot(y='policy type', x='avg cost', data=plotdf, orient="h", palette="Set2")
     # ax1.set_xlabel('Marginal distributions of costs (over angles)')
@@ -238,18 +277,28 @@ if case == 101: # marginal distributions for (expert), two policy, and RL police
 
 if case == 102: # Plot fixed angle action vs. refinement step WITH best two-parameter action overlay
 
-    numrows = 3
-    numcols = 7
+    # numrows = 3
+    # numcols = 7
+
+    numrows = 1
+    numcols = 5
+
 
     plt.rcParams["font.family"] = "Times New Roman"
     plt.rc('text', usetex=True)
 
-    f2, ax2 = plt.subplots(nrows=numrows, ncols=numcols, sharex=True, sharey=True, figsize=(12,6))  
-
+    f2, ax2 = plt.subplots(nrows=numrows, ncols=numcols, sharex=True, sharey=True, figsize=(12,3), squeeze=False)  
+    # f2, ax2 = plt.subplots(nrows=numrows, ncols=numcols, sharex=True, sharey=True, figsize=(12,6), squeeze=False)  
 
     df_rl = pd.read_csv(output_dir+'/marginals/marginals_rl.csv', index_col=False)
     angles = df_rl['angle'].unique()
+
+    if numcols == 5:
+        angles = np.array([angles[0], angles[5], angles[10], angles[15], angles[20]])
+
     num_angles = len(angles)
+    min_angle = np.round(angles.min(), 2)
+    max_angle = np.round(angles.max(), 2)
 
     df_tpp = pd.read_csv(output_dir+'/marginals/marginals_tpp.csv', index_col=False)   
     assert len(df_tpp['angle'].unique() == num_angles) # check same number of angles tested in both datasets 
@@ -280,9 +329,19 @@ if case == 102: # Plot fixed angle action vs. refinement step WITH best two-para
             tpp_best_rho   = df_bestpolicies[df_bestpolicies['angle'] == angles[index]]['rho'].to_numpy().item()   * np.ones(rlactions.shape[0]) 
             ax2[i][j].plot(tpp_best_theta,'-x',lw=1.3, c=palette_list[0], label=r'$\theta$ (h parameter)')
             ax2[i][j].plot(tpp_best_rho,  '-x',lw=1.3, c=palette_list[1], label=r'$\rho$ (p parameter)')
+            ax2[i][j].set_title('angle ' + str(np.round(angles[index]/np.pi,2))+ r'$\pi$')
 
             if makelegend:
                 ax[i][j].legend()
+
+
+    f2.suptitle('RL vs two-parameter actions for angles ' + str(min_angle) + '-' + str(max_angle) + '\n blue = theta (h); orange = rho (p); outputdir = ' + str(output_dir[-14:]).replace("_"," "), fontsize=18, y=1.2)
+    # ttl = f2.suptitle(...)
+    # ttl.set_position([.5, 1.01])
+    plt.savefig(output_dir+'/marginals/fig_102.pdf',format='pdf', bbox_inches='tight')
+    filename = output_dir+'/marginals/fig_102.pdf'
+    import subprocess
+    subprocess.call(["open", filename])
 
 
 
@@ -295,4 +354,4 @@ if case == 102: # Plot fixed angle action vs. refinement step WITH best two-para
 # plt.savefig(output_dir+'/'+fig_name_prefix+'_fig6.pdf',format='pdf', bbox_inches='tight')
 
 
-plt.show()
+# plt.show()
