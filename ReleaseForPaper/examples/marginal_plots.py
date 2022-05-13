@@ -181,7 +181,7 @@ else:
     np.save(output_dir + '/marginals/exp_avg_costs.npy', exp_avg_costs)
 
 
-case = 102
+case = 101
 if case == 101: # marginal distributions for (expert), two policy, and RL polices (100 polices x 100 angles)
  
     f1, ax1 = plt.subplots(nrows=1, ncols=1, sharex=True, sharey=True, figsize=(12,6))  
@@ -205,8 +205,8 @@ if case == 101: # marginal distributions for (expert), two policy, and RL police
     plotdf.iloc[num_exp+num_tpp:num_total,0] = 'reinforcement\n learning\n trained policies'
     plotdf.iloc[num_exp+num_tpp:num_total,1] = rl_avg_costs
 
-    print("The best expert policy was at index ", exp_avg_costs.argmin())
-    print("The best expert policy was at index ", tpp_avg_costs.argmin())
+    print("The best expert    policy was at index ", exp_avg_costs.argmin())
+    print("The best two param policy was at index ", tpp_avg_costs.argmin())
  
     ax1 = sns.boxenplot(y='policy type', x='avg cost', data=plotdf, orient="h", palette="Set2")
     # ax1.set_xlabel('Marginal distributions of costs (over angles)')
@@ -217,6 +217,11 @@ if case == 101: # marginal distributions for (expert), two policy, and RL police
     ax1.set_xlabel(r'$\mathbb{E}_{\omega}[ \log_2 ( E_{\mathrm{Final}} ) ]$',fontsize=16)
     ax1.set_ylabel('')
     # ax1.set_xscale('log')
+
+    plt.savefig(output_dir+'/marginals/fig_101.pdf',format='pdf', bbox_inches='tight')
+    filename = output_dir+'/marginals/fig_101.pdf'
+    import subprocess
+    subprocess.call(["open", filename])
  
     # # Make plot of avg cost as function of theta
     # df = pd.read_csv('../hp_sample_data/most_recent_data/dwf_oct29_all_angles.csv', index_col=False)
@@ -275,6 +280,8 @@ if case == 101: # marginal distributions for (expert), two policy, and RL police
 # plt.show()
 # exit()   
 
+
+case = 102
 if case == 102: # Plot fixed angle action vs. refinement step WITH best two-parameter action overlay
 
     # numrows = 3

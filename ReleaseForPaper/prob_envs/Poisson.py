@@ -76,6 +76,7 @@ class Poisson(gym.Env):
 
         self.global_errors = [ [] for _ in range(4)]
         self.trainingmode = True
+        self.overshootallowed = False
 
     
     def reset(self):
@@ -113,7 +114,8 @@ class Poisson(gym.Env):
         elif self.optimization_type == 'dof_threshold':
             num_dofs = self.fespace.GetTrueVSize()
             self.sum_of_dofs += num_dofs
-            if self.sum_of_dofs > self.dof_threshold:
+            overshoot_factor = 1.05 if self.overshootallowed else 1.0
+            if self.sum_of_dofs > overshoot_factor * self.dof_threshold:
                 cost = 0.0
                 done = True
             else:

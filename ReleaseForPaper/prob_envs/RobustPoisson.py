@@ -436,7 +436,7 @@ class hpWavefront(Poisson): # all functions copied from hpPoisson subclass but d
         sol_sock.precision(8)
         sol_sock.send_solution(self.mesh, orders)
         title = "step " + str(self.k)
-        sol_sock.send_text('keys ARjlmp*******' + " window_title '" + title)
+        sol_sock.send_text('keys ARjlmp*****' + " window_title '" + title)
         sol_sock.send_text("valuerange 1.0 8.0 \n")
         if gfname:
             orders.Save(str(gfname), 8)  # second input is "precision"

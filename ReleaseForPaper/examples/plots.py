@@ -10,6 +10,7 @@ from pathlib import Path
 
 parser = argparse.ArgumentParser()
 parser.add_argument("file_path", type=Path)
+parser.add_argument('--mesh_abbrv', type=str, required=False)
 parser.add_argument('--angle_abbrv', type=str, required=False)
 
 args = parser.parse_args()
@@ -35,8 +36,9 @@ elif output_dir.find('Example1c') != -1:
    ex_type = 3
 elif output_dir.find('Example2c') != -1:
    assert args.angle_abbrv is not None , "Need to provide angle to plots.py for Example 2c"
+   assert args.mesh_abbrv is not None, "Need to provide mesh name to plots.py for Example 2c: "
    print("Loading data from ", output_dir)
-   fig_name_prefix = 'Example2c_angle_' + args.angle_abbrv
+   fig_name_prefix = 'Example2c_' + args.mesh_abbrv + '_angle_' + args.angle_abbrv
    ex_type = 4
 elif output_dir.find('Example3a') != -1:
    print("Loading data from ", output_dir)
@@ -84,16 +86,23 @@ def letterbox_entry(legend):
 
 
 save_figs = True
-# minimum_budget_problem = False
+have_expert_policy = True
 
 print("*** Check that correct data was loaded here in plots.py ***")
 train_data_file = output_dir+'/training_data.csv'
 rldata_file = output_dir+'/rl_data.csv'
-deterministic_amr_data_file = output_dir+'/deterministic_amr_data.csv'
+expert_file = output_dir+'/expert_data.csv'
+# expert_file = output_dir+'/deterministic_amr_data.csv'
 if args.angle_abbrv is not None:
-   rldata_file = rldata_file[:-4] + '_angle_' + args.angle_abbrv + '.csv'
-   deterministic_amr_data_file = deterministic_amr_data_file[:-4] + '_angle_' + args.angle_abbrv + '.csv'
-   two_param_data_file = output_dir + '/two_param_amr_data_angle_' + args.angle_abbrv + '.csv'
+   rldata_file = rldata_file[:-4] + '_' + args.mesh_abbrv + '_angle_' + args.angle_abbrv + '.csv'
+   expert_file = expert_file[:-4] + '_' + args.mesh_abbrv + '_angle_' + args.angle_abbrv + '.csv'
+   twopar_file = output_dir + '/tpp_data_' + args.mesh_abbrv + '_angle_' + args.angle_abbrv + '.csv'
+   print("RL data file = \n   ", rldata_file)
+   print("two param data file = \n   ", twopar_file)
+   if args.angle_abbrv == 'nan':
+      print("expert data file = \n   ", expert_file)
+      have_expert_policy = False
+
 
 
 df = pd.read_csv(train_data_file, index_col=0)
@@ -102,30 +111,34 @@ cost = df.index.to_numpy()
 if ex_type == 4: # example 2c
    df = pd.read_csv(rldata_file)
    rlepisode_cost = df['rlepisode_cost'][0]
-   rlactions = df[{'theta', 'rho'}].to_numpy()
-   rlactions = rlactions[:-1,:] # drop last row, which was padded
+   rlactions_theta = df['theta'].to_numpy()
+   rlactions_rho   = df['rho'].to_numpy()
+   rlactions_theta = rlactions_theta[:-1] # drop last entry, which was padded
+   rlactions_rho = rlactions_rho[:-1] # drop last entry, which was padded
    rldofs =  df['rldofs'].to_numpy()
    rlerrors =  df['rlerrors'].to_numpy()
 else:
    df = pd.read_csv(rldata_file, index_col=0)
    rlactions = df.index.to_numpy()
    rlepisode_cost = rlactions[-1]
-   rlactions = rlactions[:-1]
+   rlactions = rlactions[:-1] # drop last entry, which was padded
    rldofs = df.iloc[:, 0].to_numpy()
    rlerrors = df.iloc[:, 1].to_numpy()
 
+if have_expert_policy:
+   df = pd.read_csv(expert_file, index_col=0)
+   actions = df.index.to_numpy()
+   costs = df.iloc[:, 0].to_numpy()
+   errors = df.iloc[:, 1].to_numpy()
+   dofs = df.iloc[:, 2].to_numpy()
+   for i in range(len(dofs)):
+      dofs[i] = np.array(eval(dofs[i]))
+      errors[i] = np.array(eval(errors[i]))
 
-df = pd.read_csv(deterministic_amr_data_file, index_col=0)
 
-actions = df.index.to_numpy()
-costs = df.iloc[:, 0].to_numpy()
-errors = df.iloc[:, 1].to_numpy()
-dofs = df.iloc[:, 2].to_numpy()
-
-for i in range(len(dofs)):
-   dofs[i] = np.array(eval(dofs[i]))
-   errors[i] = np.array(eval(errors[i]))
-
+##########
+# make fig training-curve
+##########
 plt.figure(figsize=(6,6))
 plt.plot(cost[:-1], color=palette_list[4], lw=2, label=r'Training curve')
 ax1 = plt.gca()
@@ -140,102 +153,36 @@ else:
 if save_figs:
    plt.savefig(output_dir+'/'+fig_name_prefix+'_training-curve.pdf',format='pdf', bbox_inches='tight')
 
-# ## Make letter-box plot
-plt.figure(figsize=(6,6))
-ax2 = sns.boxenplot(y=costs, width=.6, color=palette_list[3], label='_nolegend_')
-x2 = ax2.get_xlim()
-plt.hlines(rlepisode_cost, x2[0], x2[1], lw=4, color=palette_list[0], label=r'(AM)$^2$R policy cost')
-y2 = ax2.get_ylim()
-# plt.fill_between(x2, np.floor(y2[0]), rlepisode_cost, color=palette_list[9], label=r'Apparent performance barrier')
-plt.fill_between(x2, np.floor(y2[0]), rlepisode_cost, hatch='\\\\\\\\', facecolor=palette_list[9], label=r'Apparent performance barrier')
 
-ax2.set_xlabel(r'')
-if minimum_budget_problem:
-   # ax2.set_ylabel(r'$\log_2(N_{\rm{dofs}})$')
-   ax2.set_ylabel(r'cost at final step')
-else:
-   # ax2.set_ylabel(r'$\log_2(E_{\rm{Final}})$')
-   ax2.set_ylabel(r'cost at final step')
-lgd = ax2.legend()
-letterbox_entry(lgd)
-sns.despine(ax=ax2, bottom=True)
-ax2.tick_params(bottom=False)
-plt.tight_layout()
-if save_figs:
-   plt.savefig(output_dir+'/'+fig_name_prefix+'_rlepisode_cost.pdf',format='pdf', bbox_inches='tight')
-
-## Plot theta vs. cost
-plt.figure(figsize=(6,6))
-ax3 = plt.gca()
-plt.plot(actions[9::10], costs[9::10], 'o', color=palette_list[3], label=r'AMR policies')
-x3 = ax3.get_xlim()
-plt.hlines(rlepisode_cost, x3[0], x3[1], lw=4, color=palette_list[0], label=r'(AM)$^2$R policy')
-y3 = ax3.get_ylim()
-# plt.fill_between(x3, np.floor(y3[0]), rlepisode_cost, color=palette_list[9], label=r'Apparent performance barrier')
-plt.fill_between(x3, np.floor(y3[0]), rlepisode_cost, hatch='\\\\\\\\', facecolor=palette_list[9], label=r'Apparent performance barrier')
-
-
-ax3.set_xlabel(r'$\theta$ (constant) in AMR policy')
-if minimum_budget_problem:
-   # ax3.set_ylabel(r'$\log_2(N_{\rm{dofs}})$')
-   ax3.set_ylabel(r'cost at final step')
-else:
-   # ax3.set_ylabel(r'$\log_2(E_{\rm{Final}})$')
-   ax3.set_ylabel(r'cost at final step')
-ax3.legend(loc='upper center')
-plt.tight_layout()
-
-if save_figs:
-   plt.savefig(output_dir+'/'+fig_name_prefix+'_fig3.pdf',format='pdf', bbox_inches='tight')
-
-# ## Make convergence plots (1/2)
-plt.figure(figsize=(6,6))
-ax4 = plt.gca()
-alpha = 1.0
-plt.loglog(dofs[9],errors[9],'-o',lw=1.3, color=palette_list[3], alpha=alpha, label=r'AMR policies')
-# plt.loglog(dofs[9][-1],errors[9][-1], marker="o", markersize=10, color=palette_list[3], label='_nolegend_')
-for k in range(19,len(errors),10):
-   plt.loglog(dofs[k],errors[k],'-o',lw=1.3, color=palette_list[3], label='_nolegend_')
-   plt.loglog(dofs[k][-1],errors[k][-1], marker="o", markersize=10, color=palette_list[3], alpha=alpha, label='_nolegend_')
-plt.loglog(rldofs,rlerrors,'-o',lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
-plt.loglog(rldofs[-1],rlerrors[-1], marker="o", markersize=10, color=palette_list[0], label='_nolegend_')
-ax4.set_xlabel(r'Degrees of freedom')
-ax4.set_ylabel(r'Relative error')
-ax4.legend()
-if save_figs:
-   plt.savefig(output_dir+'/'+fig_name_prefix+'_fig4.pdf',format='pdf', bbox_inches='tight')
-
-## Make convergence plots (2/2)
-cumdofs = []
-cumrldofs = np.cumsum(rldofs)
-for k in range(len(dofs)):
-   cumdofs.append(np.cumsum(dofs[k]))
-plt.figure(figsize=(6,6))
-ax5 = plt.gca()
-plt.loglog(cumdofs[9],errors[9],'-o',lw=1.3, color=palette_list[3], alpha=alpha, label=r'AMR policies')
-# plt.loglog(cumdofs[9][-1],errors[9][-1], marker="o", markersize=10, color=palette_list[3], label='_nolegend_')
-for k in range(19,len(errors),10):
-   plt.loglog(cumdofs[k],errors[k],'-o',lw=1.3, color=palette_list[3], label='_nolegend_')
-   # plt.loglog(cumdofs[k][-1],errors[k][-1], marker="o", markersize=10, color=palette_list[3], alpha=alpha, label='_nolegend_')
-plt.loglog(cumrldofs,rlerrors,'-o',lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
-# plt.loglog(cumrldofs[-1],rlerrors[-1], marker="o", markersize=10, color=palette_list[0], label='_nolegend_')
-ax5.set_xlabel(r'Cumulative degrees of freedom')
-ax5.set_ylabel(r'Relative error')
-ax5.legend()
-if save_figs:
-   plt.savefig(output_dir+'/'+fig_name_prefix+'_fig5.pdf',format='pdf', bbox_inches='tight')
-
+##########
+# make fig6
+##########
 ## Plot action vs. refinement step
-
 plt.figure(figsize=(6,6))
 ax6 = plt.gca()
 if ex_type == 4: # expand if condition to accomdate any hp problem
    # print(rlactions[:,0])
    # plot(x1, y1, 'bo')
-   plt.plot(rlactions[:,0],'-o',lw=1.3, label=r'$\theta$ (h parameter)')
-   plt.plot(rlactions[:,1],'-o',lw=1.3, label=r'$\rho$ (p parameter)')
+   plt.plot(rlactions_theta,'-o',lw=1.3, color=palette_list[0], label=r'$\theta$ (h parameter)')
+   plt.plot(rlactions_rho,'-o',lw=1.3, color=palette_list[1], label=r'$\rho$ (p parameter)')
    ax6.set_ylabel(r'parameter values in trained (AM)$^2$R policy')
    ax6.legend(loc='upper right')
+
+   # # overlay best two parameter policy
+   # df_tpp = pd.read_csv(twopar_file)
+   # tpp_best_theta = df_tpp.iloc[df_tpp['costs'].argmin()]['theta'] * 1.002 * np.ones(len(rlactions_theta))
+   # tpp_best_rho = df_tpp.iloc[df_tpp['costs'].argmin()]['rho'] * 0.998 * np.ones(len(rlactions_rho))
+   # plt.plot(tpp_best_theta,'-x',lw=1.3, color=palette_list[0], label=r'optimal fixed $\theta$')
+   # plt.plot(tpp_best_rho,'-x',lw=1.3, color=palette_list[1], label=r'optimal fixed $\rho$')
+
+   # overlay best two parameter policy according to meshes seen in training: theta = 0.6, rho = 0.5
+   df_tpp = pd.read_csv(twopar_file)
+   tpp_ep_cost = df_tpp[df_tpp['theta'] == 0.6][df_tpp['rho'] == 0.5]['costs'].to_numpy().item()
+   print("Best tpp ep cost = ", tpp_ep_cost)
+   print("RL cost = ", rlepisode_cost)
+   plt.plot(0.6 * np.ones(len(rlactions_theta)),'-x',lw=1.3, color=palette_list[0], label=r'optimal fixed $\theta$')
+   plt.plot(0.5 * np.ones(len(rlactions_rho)),'-x',lw=1.3, color=palette_list[1], label=r'optimal fixed $\rho$')
+
 else:
    plt.plot(rlactions,'-o',lw=1.3, label=r'(AM)$^2$R policy')
    ax6.set_ylabel(r'$\theta$ in trained (AM)$^2$R policy')
@@ -244,20 +191,118 @@ if save_figs:
    plt.savefig(output_dir+'/'+fig_name_prefix+'_fig6.pdf',format='pdf', bbox_inches='tight')
 
 
+
+if have_expert_policy:
+   ##########
+   # make fig3
+   ##########
+   ## Plot expert theta vs. cost
+   plt.figure(figsize=(6,6))
+   ax3 = plt.gca()
+   plt.plot(actions[9::10], costs[9::10], 'o', color=palette_list[3], label=r'AMR policies')
+   x3 = ax3.get_xlim()
+   plt.hlines(rlepisode_cost, x3[0], x3[1], lw=4, color=palette_list[0], label=r'(AM)$^2$R policy')
+   y3 = ax3.get_ylim()
+   # plt.fill_between(x3, np.floor(y3[0]), rlepisode_cost, color=palette_list[9], label=r'Apparent performance barrier')
+   plt.fill_between(x3, np.floor(y3[0]), rlepisode_cost, hatch='\\\\\\\\', facecolor=palette_list[9], label=r'Apparent performance barrier')
+   ax3.set_xlabel(r'$\theta$ (constant) in AMR policy')
+   if minimum_budget_problem:
+      # ax3.set_ylabel(r'$\log_2(N_{\rm{dofs}})$')
+      ax3.set_ylabel(r'cost at final step')
+   else:
+      # ax3.set_ylabel(r'$\log_2(E_{\rm{Final}})$')
+      ax3.set_ylabel(r'cost at final step')
+   ax3.legend(loc='upper center')
+   plt.tight_layout()
+
+   if save_figs:
+      plt.savefig(output_dir+'/'+fig_name_prefix+'_fig3.pdf',format='pdf', bbox_inches='tight')
+
+   ##########
+   # make fig4
+   ##########
+   # ## Make convergence plots (1/2)
+   plt.figure(figsize=(6,6))
+   ax4 = plt.gca()
+   alpha = 1.0
+   plt.loglog(dofs[9],errors[9],'-o',lw=1.3, color=palette_list[3], alpha=alpha, label=r'AMR policies')
+   # plt.loglog(dofs[9][-1],errors[9][-1], marker="o", markersize=10, color=palette_list[3], label='_nolegend_')
+   for k in range(19,len(errors),10):
+      plt.loglog(dofs[k],errors[k],'-o',lw=1.3, color=palette_list[3], label='_nolegend_')
+      plt.loglog(dofs[k][-1],errors[k][-1], marker="o", markersize=10, color=palette_list[3], alpha=alpha, label='_nolegend_')
+   plt.loglog(rldofs,rlerrors,'-o',lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
+   plt.loglog(rldofs[-1],rlerrors[-1], marker="o", markersize=10, color=palette_list[0], label='_nolegend_')
+   ax4.set_xlabel(r'Degrees of freedom')
+   ax4.set_ylabel(r'Relative error')
+   ax4.legend()
+   if save_figs:
+      plt.savefig(output_dir+'/'+fig_name_prefix+'_fig4.pdf',format='pdf', bbox_inches='tight')
+
+   ##########
+   # make fig5
+   ##########
+   ## Make convergence plots (2/2)
+   cumdofs = []
+   cumrldofs = np.cumsum(rldofs)
+   for k in range(len(dofs)):
+      cumdofs.append(np.cumsum(dofs[k]))
+   plt.figure(figsize=(6,6))
+   ax5 = plt.gca()
+   plt.loglog(cumdofs[9],errors[9],'-o',lw=1.3, color=palette_list[3], alpha=alpha, label=r'AMR policies')
+   # plt.loglog(cumdofs[9][-1],errors[9][-1], marker="o", markersize=10, color=palette_list[3], label='_nolegend_')
+   for k in range(19,len(errors),10):
+      plt.loglog(cumdofs[k],errors[k],'-o',lw=1.3, color=palette_list[3], label='_nolegend_')
+      # plt.loglog(cumdofs[k][-1],errors[k][-1], marker="o", markersize=10, color=palette_list[3], alpha=alpha, label='_nolegend_')
+   plt.loglog(cumrldofs,rlerrors,'-o',lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
+   # plt.loglog(cumrldofs[-1],rlerrors[-1], marker="o", markersize=10, color=palette_list[0], label='_nolegend_')
+   ax5.set_xlabel(r'Cumulative degrees of freedom')
+   ax5.set_ylabel(r'Relative error')
+   ax5.legend()
+   if save_figs:
+      plt.savefig(output_dir+'/'+fig_name_prefix+'_fig5.pdf',format='pdf', bbox_inches='tight')
+
+   ##########
+   # make fig rlepisode_cost
+   ##########
+   # ## Make letter-box plot of RL vs expert policies
+   plt.figure(figsize=(6,6))
+   ax2 = sns.boxenplot(y=costs, width=.6, color=palette_list[3], label='_nolegend_')
+   x2 = ax2.get_xlim()
+   plt.hlines(rlepisode_cost, x2[0], x2[1], lw=4, color=palette_list[0], label=r'(AM)$^2$R policy cost')
+   y2 = ax2.get_ylim()
+   # plt.fill_between(x2, np.floor(y2[0]), rlepisode_cost, color=palette_list[9], label=r'Apparent performance barrier')
+   plt.fill_between(x2, np.floor(y2[0]), rlepisode_cost, hatch='\\\\\\\\', facecolor=palette_list[9], label=r'Apparent performance barrier')
+
+   ax2.set_xlabel(r'')
+   if minimum_budget_problem:
+      # ax2.set_ylabel(r'$\log_2(N_{\rm{dofs}})$')
+      ax2.set_ylabel(r'cost at final step')
+   else:
+      # ax2.set_ylabel(r'$\log_2(E_{\rm{Final}})$')
+      ax2.set_ylabel(r'cost at final step')
+   lgd = ax2.legend()
+   letterbox_entry(lgd)
+   sns.despine(ax=ax2, bottom=True)
+   ax2.tick_params(bottom=False)
+   plt.tight_layout()
+   if save_figs:
+      plt.savefig(output_dir+'/'+fig_name_prefix+'_rlepisode_cost.pdf',format='pdf', bbox_inches='tight')
+
+
 if ex_type == 4: # example 2c
 
-   # tp_data_file = output_dir+'/two_param_amr_data.csv'
-   # if args.angle_abbrv is not None:
-   #    tp_data_file = output_dir + '/two_param_amr_data_angle_' + args.angle_abbrv + '.csv'
-   df = pd.read_csv(two_param_data_file)
+   ##########
+   # make fig rl_vs_two_param
+   ##########
+   df = pd.read_csv(twopar_file)
 
    plt.figure(figsize=(6,6))
    ax7 = sns.boxenplot(y=df['costs'], width=.6, color=palette_list[3], label='_nolegend_')
    x7 = ax7.get_xlim()
-   plt.hlines(rlepisode_cost, x2[0], x2[1], lw=4, color=palette_list[0], label=r'(AM)$^2$R policy cost')
+   plt.hlines(rlepisode_cost, x7[0], x7[1], lw=4, color=palette_list[0], label=r'(AM)$^2$R policy cost')
    y2 = ax7.get_ylim()
-   # plt.fill_between(x2, np.floor(y2[0]), rlepisode_cost, color=palette_list[9], label=r'Apparent performance barrier')
-   plt.fill_between(x2, np.floor(y2[0]), rlepisode_cost, hatch='\\\\\\\\', facecolor=palette_list[9], label=r'Apparent performance barrier')
+   # plt.fill_between(x7, np.floor(y2[0]), rlepisode_cost, color=palette_list[9], label=r'Apparent performance barrier')
+   plt.fill_between(x7, np.floor(y2[0]), rlepisode_cost, hatch='\\\\\\\\', facecolor=palette_list[9], label=r'Apparent performance barrier')
 
    ax7.set_xlabel(r'')
    if minimum_budget_problem:

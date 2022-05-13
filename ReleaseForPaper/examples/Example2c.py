@@ -113,7 +113,7 @@ eval=args.eval
 save_data=args.savedata
 plot_figs=args.plotfigs
 save_figs=args.savefigs
-angle_abbrv = "{:.2f}".format(np.round(args.angle_eval,2)) # to fix filename length
+angle_abbrv = "{:.2f}".format(np.round(args.angle_eval,2)) # to keep filename length short
 
 restore_policy = False
 nbatches = 250 
@@ -121,9 +121,9 @@ minimum_budget_problem = False  # mininum budget == error_threshold == minimize 
 
 ## Configuration for minimum budget problem
 prob_config = {
-    'mesh_name'             : 'circle_3_4.mesh', # 'star.mesh', 'circle_3_4.mesh', 'l-shape-benchmark.mesh'
-    'problem_type'          : 'lshaped', # 'lshaped', #'noneoftheabove', 'wavefront'
-    'num_unif_ref'          : 0, # 1 # use 0 for circle_3_4.mesh; 1 for l-shape-benchmark.mesh
+    'mesh_name'             : 'fichera.mesh', #'fichera.mesh', # 'star.mesh', # 'l-shape-benchmark.mesh', 'star.mesh', 'circle_3_4.mesh', 
+    'problem_type'          : 'default', #'lshaped', 'wavefront', 'default' = laplace u = 1 with 0 BC
+    'num_unif_ref'          : 0, # 0,  # use 0 for circle_3_4.mesh; 1 for l-shape-benchmark.mesh
     'order'                 : 2,
     'optimization_type'     : 'error_threshold', 
     'dof_threshold'         : 5e5,
@@ -136,7 +136,7 @@ prob_config = {
 ## Change to minimum error problem
 if not minimum_budget_problem:
     prob_config['optimization_type'] = 'dof_threshold'
-    prob_config['dof_threshold']     = 1e4
+    prob_config['dof_threshold']     = 5e4
 
 
 
@@ -148,8 +148,8 @@ model_config = {
 
 ## rllib parameters
 config = ppo.DEFAULT_CONFIG.copy()
-# config['batch_mode'] = 'truncate_episodes'
-config['batch_mode'] = 'complete_episodes'
+config['batch_mode'] = 'truncate_episodes'
+# config['batch_mode'] = 'complete_episodes'
 config['sgd_minibatch_size'] = 100
 config['rollout_fragment_length'] = 50
 config['num_workers'] = 10
@@ -174,6 +174,29 @@ rl_config = {
     'model'                     : config['model'],
 }
 
+if prob_config['mesh_name'] == 'l-shape-benchmark.mesh':
+    mesh_abbrv  = 'lshape'
+elif prob_config['mesh_name'] == 'circle_3_4.mesh':
+    mesh_abbrv  = 'pacman'
+elif prob_config['mesh_name'] == 'star.mesh':
+    mesh_abbrv  = 'star'
+    angle_abbrv = 'nan'
+elif prob_config['mesh_name'] == 'fichera.mesh':
+    mesh_abbrv  = 'fichera'
+    angle_abbrv = 'nan'
+elif prob_config['mesh_name'] == 'staircase.mesh':
+    mesh_abbrv = 'stair'
+    angle_abbrv = 'nan'
+elif prob_config['mesh_name'] == 'staircase_tri.mesh':
+    mesh_abbrv = 'stairtri1'
+    angle_abbrv = 'nan'
+elif prob_config['mesh_name'] == 'staircase_tri2.mesh':
+    mesh_abbrv = 'stairtri2'
+    angle_abbrv = 'nan'
+else:
+    mesh_abbrv = prob_config['mesh_name']
+    angle_abbrv = 'nan'
+
 """
     STEP 2: Training
 """
@@ -185,13 +208,11 @@ output_dir_ = os.getcwd() + '/output/'
 if (restore_policy):
     chkpt_num = nbatches
     # set the path of the checkpoint
-    # temp_path = 'Example2c_2022-05-06_19-33-30/' # dof thresh 1e4; L-shape mesh; pi/4 - 3pi/4 angle training; num_batch 250
-    # DIDN'T SET ANGLE DURING TRAINING: temp_path = 'Example2c_2022-05-09_14-23-16/' # dof thresh 1e4; pacman mesh; 0.5 - 1.5 pi angle training; num_batch 100
-    # DIDN'T SET ANGLE DURING TRAINING: temp_path = 'Example2c_2022-05-09_17-32-28/' # dof thresh 1e4; pacman mesh; 0.1 - 1.9 pi angle training; num_batch 100; not well-trained!!!
     # temp_path = 'Example2c_2022-05-10_14-45-01/' # dof thresh 1e4; pacman mesh; 0.1 - 1.9 pi angle training; num_batch 100; fixed bug with init; not well-trained!
     # temp_path = 'Example2c_2022-05-10_16-15-52/' # dof thresh 1e4; pacman mesh; 0.5 - 1.5 pi angle training; num_batch 250; fixed bug with init
-    temp_path = 'Example2c_2022-05-11_12-07-27/' # dof thresh 1e4; L-shape mesh; 0.49 - 0.51 pi angle training; num_batch 250; fixed bug with init
-
+    # temp_path = 'Example2c_2022-05-11_12-07-27/' # dof thresh 1e4; L-shape mesh; 0.49 - 0.51 pi angle training; num_batch 250; fixed bug with init
+    # temp_path = 'Example2c_2022-05-11_19-11-37' # dof thresh 1e4; pacman mesh; 0.1 - 0.9 pi angle training; num batch 250; num_unif_ref = 0
+    temp_path = 'Example2c_2022-05-12_12-41-20' # dof thresh 1e4; pacman mesh; 0.1 - 0.9 pi angle training; num batch 250; num_unif_ref = 0; truncate episodes
 
     
     checkpoint_dir = log_dir + temp_path
@@ -233,18 +254,20 @@ if train:
     checkpoint_path = trainer.save()
     print(checkpoint_path)
 if eval and not train:
-    # temp_path = 'Example2c_2022-05-06_19-33-30/' # dof thresh 1e4; L-shape mesh; pi/4 - 3pi/4 angle training; num_batch 250
-    # DIDN'T SET ANGLE DURING TRAINING: temp_path = 'Example2c_2022-05-09_14-23-16/' # dof thresh 1e4; pacman mesh; 0.5 - 1.5 pi angle training; num_batch 100
-    # DIDN'T SET ANGLE DURING TRAINING: temp_path = 'Example2c_2022-05-09_17-32-28/' # dof thresh 1e4; pacman mesh; 0.1 - 1.9 pi angle training; num_batch 100
     # temp_path = 'Example2c_2022-05-10_14-45-01/' # dof thresh 1e4; pacman mesh; 0.1 - 1.9 pi angle training; num_batch 100; fixed bug with init; not well-trained!
     # temp_path = 'Example2c_2022-05-10_16-15-52/' # dof thresh 1e4; pacman mesh; 0.5 - 1.5 pi angle training; num_batch 250; fixed bug with init
-    temp_path = 'Example2c_2022-05-11_12-07-27/' # dof thresh 1e4; L-shape mesh; 0.49 - 0.51 pi angle training; num_batch 250; fixed bug with init
-    
+    # temp_path = 'Example2c_2022-05-11_12-07-27/' # dof thresh 1e4; L-shape mesh; 0.49 - 0.51 pi angle training; num_batch 250; fixed bug with init
+    # temp_path = 'Example2c_2022-05-11_19-11-37' # dof thresh 1e4; pacman mesh; 0.1 - 0.9 pi angle training; num batch 250; num_unif_ref = 0
+    temp_path = 'Example2c_2022-05-12_12-41-20' # dof thresh 1e4; pacman mesh; 0.1 - 0.9 pi angle training; num batch 250; num_unif_ref = 0; truncate episodes
+
     chkpt_num = nbatches
     checkpoint_dir = log_dir + temp_path
     # checkpoint_path=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt < 100
     checkpoint_path=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt > 99 and <1000
     output_dir = output_dir_ + temp_path
+    env.overshootallowed = True
+    if env.overshootallowed:
+        print("\n *** Allowing 5% overshoot of DoF threshold (for RL policy eval) *** \n")
 
 if train:
     print_config(checkpoint_dir,prob_config=prob_config, rl_config=rl_config)
@@ -279,21 +302,20 @@ if eval and not args.marginals_eval:
             break
         rlactions = rlactions.append({'theta': action[0], 'rho':action[1]}, ignore_index=True)
         rlepisode_cost -= reward
-        print("step = ", env.k)
+        print("RL step = ", env.k)
+        num_steps_of_RL_policy = env.k
         print("theta action = ", action[0].item())
         print("rho   action = ", action[1].item())
-        print("Num. Elems. = ", env.mesh.GetNE())
+        print("num dofs     = ", info['num_dofs'])
         print("episode cost = ", rlepisode_cost)
         rldofs.append(info['num_dofs'])
         rlerrors.append(info['global_error'])
-        # print()
-        # np.set_printoptions(precision=16)
-        # print(env.k)
-        # env.render()
-        # env.RenderHPmesh()
-        # if env.k > 6:
-        #     exit()
-
+        # if env.k > 8:
+        #     print("Rendering step ", env.k)
+        #     # env.render()
+        #     env.RenderMesh()
+        #     env.RenderHPmesh()
+            
     # print("*** done with RL eval - exiting")
     # exit()
     
@@ -302,7 +324,13 @@ if eval and not args.marginals_eval:
     # env.RenderHPmesh()
     # print("\nRendering RL policies and exiting\n")
     # exit()
-    
+
+    if env.overshootallowed:
+        # env.overshootallowed = False
+        # print("\n *** Disabled allowing 5% overshoot of DoF threshold *** \n")
+        env.overshootallowed = True
+        print("\n *** STILL ALLOWING 5% overshoot of DoF threshold *** \n")
+
 
     if prob_config['problem_type'] == 'lshaped':
         ## Enact AMR policies, using "expert" strategy
@@ -315,13 +343,12 @@ if eval and not args.marginals_eval:
             print(i)
             action = np.array([i/nth]) # note 1D action space
             actions.append(action.item())
-            print("action = ", action.item())
             obs = env.reset(random_angle=False)
             done = False
             episode_cost_tmp = 0
             errors_tmp = [env.global_error]
             dofs_tmp = [env.sum_of_dofs]
-            max_steps   = 40 # or:  num_steps_of_RL_policy
+            max_steps   = 40 # num_steps_of_RL_policy #40 # or:  num_steps_of_RL_policy
             steps_taken = 0
             while not done:
                 _, reward, done, info = env.expertStep(action)
@@ -342,7 +369,7 @@ if eval and not args.marginals_eval:
             costs.append(episode_cost_tmp)
             errors.append(errors_tmp)
             dofs.append(dofs_tmp)
-            print('episode cost = ', episode_cost_tmp)
+            print("expert action ", action.item(), " had episode cost = :", episode_cost_tmp)
 
     # ## Enact AMR policies, using "fixed two parameter sweep" strategy
     tp_costs = []
@@ -364,7 +391,7 @@ if eval and not args.marginals_eval:
             if theta/tp_nth == 1 and rho/tp_nth == 1: # avoid some linear algerbra error if action is [1,1]
                 tp_actions[index_count] = np.array([0.99, 0.99])
             action = tp_actions[index_count]
-            print("action = ", tp_actions[index_count])
+            print("two param action = ", tp_actions[index_count])
             index_count += 1
             obs = env.reset(random_angle=False)
             done = False
@@ -388,15 +415,15 @@ if eval and not args.marginals_eval:
             tp_costs.append(episode_cost_tmp)
             tp_errors.append(errors_tmp)
             tp_dofs.append(dofs_tmp)
-            print('episode cost = ', episode_cost_tmp)
-            if theta == 5 and rho == 5:
-                env.render()
-                env.RenderHPmesh()
-                print("\nRendering two parmaeter policy ", tp_actions[index_count-1], "\n")
+            print('two param episode cost = ', episode_cost_tmp)
+            # if theta == 5 and rho == 5:
+            #     env.render()
+            #     env.RenderHPmesh()
+            #     print("\nRendering two parmaeter policy ", tp_actions[index_count-1], "\n")
 
 if args.marginals_eval:
     print("Creating data for marginals")
-    mkdir_p(output_dir+"marginals/")
+    mkdir_p(output_dir+"/marginals/")
 
     # angle_vals = np.pi* np.linspace(1/4,3/4,3)    # 3 angles, for debugging
     # angle_vals = np.pi* np.linspace(1/4,3/4,100)  # 100 angle test
@@ -406,9 +433,9 @@ if args.marginals_eval:
     # # angle_vals = np.pi* np.linspace(5/100,1/4,10)    
     # angle_vals = np.pi* np.linspace(5/100,95/100,20)  
     # angle_vals = np.pi* np.linspace(0,1,21) # from 0 to pi in increments of 0.05 * pi
-    # angle_vals = np.pi* np.linspace(1/4,3/4,21)  # pi/4 to 3pi/4 only
+    angle_vals = np.pi* np.linspace(1/4,3/4,21)  # pi/4 to 3pi/4 only
     # angle_vals = np.pi* np.linspace(0.1, 1.9, 21)  # .1 to 1.9 pi
-    angle_vals = np.pi* np.linspace(0.1, 0.9, 21)  # .1 to .9 pi
+    # angle_vals = np.pi* np.linspace(0.1, 0.9, 21)  # .1 to .9 pi
     print("Evaluating marginals with angle values = ", angle_vals)
 
    
@@ -452,7 +479,7 @@ if args.marginals_eval:
     
     #### rl marginals data df and saving
     df_rl = pd.DataFrame(rows, columns=headers)
-    filename = output_dir+"marginals/marginals_rl.csv"
+    filename = output_dir+"/marginals/marginals_rl.csv"
     print("Saving RL marginals data to: ", filename, "\n")    
     df_rl.to_csv(filename, index=False)
 
@@ -510,7 +537,7 @@ if args.marginals_eval:
 
     #### tpp marginals data df and saving
     df_tpp = pd.DataFrame(rows, columns=headers)
-    filename = output_dir+"marginals/marginals_tpp.csv"
+    filename = output_dir+"/marginals/marginals_tpp.csv"
     print("Saving two parameter poilcy marginals data to: ", filename)    
     df_tpp.to_csv(filename, index=False)
 
@@ -554,7 +581,7 @@ if args.marginals_eval:
 
         #### tpp marginals data df and saving
         df_exp = pd.DataFrame(rows, columns=headers)
-        filename = output_dir+"marginals/marginals_exp.csv"
+        filename = output_dir+"/marginals/marginals_exp.csv"
         print("Saving expert poilcy marginals data to: ", filename)    
         df_exp.to_csv(filename, index=False)
 
@@ -595,7 +622,7 @@ if save_data:
     df2 = pd.DataFrame({'theta':rlactions.iloc[:,0], 'rho':rlactions.iloc[:,1], 'rldofs':rldofs,'rlerrors':rlerrors})
     # save a single value in every row of new column 'rlepisode_cost'
     df2['rlepisode_cost'] = rlepisode_cost 
-    filename = output_dir+"/rl_data_angle_" + angle_abbrv + ".csv"
+    filename = output_dir+"/rl_data_" + mesh_abbrv + "_angle_" + angle_abbrv + ".csv"
     print("\nSaving RL deployed policy data to: ", filename)  
     df2.to_csv(filename, index=False)
 
@@ -603,13 +630,13 @@ if save_data:
     
     if prob_config['problem_type'] == 'lshaped':
         df3 = pd.DataFrame({'actions':actions,'costs':costs,'errors':errors,'dofs':dofs})
-        filename = output_dir+"/deterministic_amr_data_angle_" + angle_abbrv + ".csv"
-        print("\nSaving deterministic AMR policies data to: ", filename)    
+        filename = output_dir+"/expert_data_" + mesh_abbrv + "_angle_" + angle_abbrv + ".csv"
+        print("\nSaving expert AMR policies data to: ", filename)    
         df3.to_csv(filename, index=False)
 
     #### two param policy df
     df4 = pd.DataFrame({'theta':tp_actions[:,0], 'rho':tp_actions[:,1],'costs':tp_costs,'errors':tp_errors,'dofs':tp_dofs})
-    filename = output_dir+"/two_param_amr_data_angle_" + angle_abbrv + ".csv"
+    filename = output_dir + "/tpp_data_" + mesh_abbrv + "_angle_" + angle_abbrv + ".csv"
     print("\nSaving two parameter AMR policies data to: ", filename)    
     df4.to_csv(filename, index=False)
 
@@ -621,5 +648,5 @@ if plot_figs or save_figs:
 
     import subprocess
     print("Calling plots.py")
-    string_to_call = "python plots.py " + output_dir + " --angle " + angle_abbrv
+    string_to_call = "python plots.py " + output_dir + " --angle " + angle_abbrv + " --mesh " + mesh_abbrv
     subprocess.call(string_to_call, shell=True)
