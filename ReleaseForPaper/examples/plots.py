@@ -182,11 +182,12 @@ if ex_type == 4: # expand if condition to accomdate any hp problem
    print("RL cost = ", rlepisode_cost)
    plt.plot(0.6 * np.ones(len(rlactions_theta)),'-x',lw=1.3, color=palette_list[0], label=r'optimal fixed $\theta$')
    plt.plot(0.5 * np.ones(len(rlactions_rho)),'-x',lw=1.3, color=palette_list[1], label=r'optimal fixed $\rho$')
+   ax6.set_xlabel('mesh = ' + args.mesh_abbrv + ' tpp cost = ' +  str(np.round(tpp_ep_cost,2)) + ' RL cost = ' + str(np.round(rlepisode_cost, 2)))
 
 else:
    plt.plot(rlactions,'-o',lw=1.3, label=r'(AM)$^2$R policy')
    ax6.set_ylabel(r'$\theta$ in trained (AM)$^2$R policy')
-ax6.set_xlabel(r'Refinement step')
+   ax6.set_xlabel(r'Refinement step')
 if save_figs:
    plt.savefig(output_dir+'/'+fig_name_prefix+'_fig6.pdf',format='pdf', bbox_inches='tight')
 

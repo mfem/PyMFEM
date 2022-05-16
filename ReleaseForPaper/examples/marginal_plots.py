@@ -127,6 +127,7 @@ else:
      
         
     i=0
+    # temprows = []
     for theta in thetas:
         for rho in rhos:
             print(i, " ", theta, " ", rho)
@@ -140,6 +141,7 @@ else:
             avg_cost = avg_cost / np.log(2) # convert to log base 2
             tpp_avg_costs[i] = avg_cost
             i += 1
+            # temprows.append([theta, rho, avg_cost])
     np.save(output_dir + '/marginals/tpp_avg_costs.npy', tpp_avg_costs)
 
 

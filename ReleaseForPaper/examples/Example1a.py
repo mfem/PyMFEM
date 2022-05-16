@@ -28,7 +28,7 @@ def print_config(dir, prob_config = None, rl_config = None):
 
     if (rl_config is not None):
         with open(dir+"/rl_config.json", 'w') as f: 
-            json.dump(prob_config,f)
+            json.dump(rl_config,f)
 
 def mkdir_p(mypath):
     '''Creates a directory. equivalent to using mkdir -p on the command line'''
@@ -111,7 +111,7 @@ plot_figs=args.plotfigs
 save_figs=args.savefigs
 
 restore_policy = False
-nbatches = 100
+nbatches = 250
 minimum_budget_problem = True  # mininum budget == error_threshold == minimize dofs
 
 ## Configuration for minimum budget problem
@@ -143,7 +143,7 @@ config['batch_mode'] = 'truncate_episodes'
 # config['batch_mode'] = 'complete_episodes'
 config['sgd_minibatch_size'] = 100
 config['rollout_fragment_length'] = 50
-config['num_workers'] = 6
+config['num_workers'] = 10
 config['train_batch_size'] = config['rollout_fragment_length'] * config['num_workers']
 config['num_gpus'] = 0
 config['gamma'] = 1.0

@@ -106,6 +106,7 @@ parser.add_argument('--savefigs', default=True, action='store_true')
 parser.add_argument('--no-savefigs', dest='savefigs', action='store_false')
 parser.add_argument('--marginals', dest='marginals_eval', default=False, action='store_true')
 parser.add_argument('--angle', dest='angle_eval', type=float, default= np.pi / 2)
+parser.add_argument('--mesh', dest='command_line_mesh', type=str, default= 'l-shape-benchmark.mesh')
 args = parser.parse_args()
 print("\n Parsed options = ", args, "\n")
 train=args.train
@@ -121,9 +122,9 @@ minimum_budget_problem = False  # mininum budget == error_threshold == minimize 
 
 ## Configuration for minimum budget problem
 prob_config = {
-    'mesh_name'             : 'fichera.mesh', #'fichera.mesh', # 'star.mesh', # 'l-shape-benchmark.mesh', 'star.mesh', 'circle_3_4.mesh', 
-    'problem_type'          : 'default', #'lshaped', 'wavefront', 'default' = laplace u = 1 with 0 BC
-    'num_unif_ref'          : 0, # 0,  # use 0 for circle_3_4.mesh; 1 for l-shape-benchmark.mesh
+    'mesh_name'             : args.command_line_mesh, #'staircase.mesh', #'fichera.mesh', # 'star.mesh', # 'l-shape-benchmark.mesh', 'star.mesh', 'circle_3_4.mesh', 
+    'problem_type'          : 'lshaped', #'default', # 'wavefront', 'default' = laplace u = 1 with 0 BC
+    'num_unif_ref'          : 1, # 0,  # use 0 for circle_3_4.mesh; 1 for l-shape-benchmark.mesh
     'order'                 : 2,
     'optimization_type'     : 'error_threshold', 
     'dof_threshold'         : 5e5,
@@ -136,7 +137,7 @@ prob_config = {
 ## Change to minimum error problem
 if not minimum_budget_problem:
     prob_config['optimization_type'] = 'dof_threshold'
-    prob_config['dof_threshold']     = 5e4
+    prob_config['dof_threshold']     = 1e4
 
 
 
@@ -192,6 +193,9 @@ elif prob_config['mesh_name'] == 'staircase_tri.mesh':
     angle_abbrv = 'nan'
 elif prob_config['mesh_name'] == 'staircase_tri2.mesh':
     mesh_abbrv = 'stairtri2'
+    angle_abbrv = 'nan'
+elif prob_config['mesh_name'] == 'square-disc.mesh':
+    mesh_abbrv = 'squaredisc'
     angle_abbrv = 'nan'
 else:
     mesh_abbrv = prob_config['mesh_name']
@@ -315,9 +319,19 @@ if eval and not args.marginals_eval:
         #     # env.render()
         #     env.RenderMesh()
         #     env.RenderHPmesh()
+        save_mesh = True
+        if save_mesh:
+            mkdir_p(output_dir+"/meshes_and_gfs/")
+            gfname = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + angle_abbrv + '.gf'
+            env.RenderHPmesh(gfname=gfname)
+            env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + angle_abbrv + '.mesh')
+            # two_steps_earlier_filename = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + angle_abbrv + '_step_' + str(env.k - 2) 
+            # if env.k > 2:
+            #     os.remove(two_steps_earlier_filename + '.mesh')
+            #     os.remove(two_steps_earlier_filename + '.gf')
             
-    # print("*** done with RL eval - exiting")
-    # exit()
+    print("*** done with RL eval - exiting")
+    exit()
     
     # env.render() # WARNING: Rendering outside the RL loop won't show correct solution
     # env.RenderMesh()
