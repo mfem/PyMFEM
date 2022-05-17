@@ -86,7 +86,7 @@ def letterbox_entry(legend):
 
 
 save_figs = True
-have_expert_policy = True
+have_expert_policy = False
 
 print("*** Check that correct data was loaded here in plots.py ***")
 train_data_file = output_dir+'/training_data.csv'
@@ -163,11 +163,9 @@ ax6 = plt.gca()
 if ex_type == 4: # expand if condition to accomdate any hp problem
    # print(rlactions[:,0])
    # plot(x1, y1, 'bo')
-   plt.plot(rlactions_theta,'-o',lw=1.3, color=palette_list[0], label=r'$\theta$ (h parameter)')
-   plt.plot(rlactions_rho,'-o',lw=1.3, color=palette_list[1], label=r'$\rho$ (p parameter)')
-   ax6.set_ylabel(r'parameter values in trained (AM)$^2$R policy')
-   ax6.legend(loc='upper right')
-
+   plt.plot(rlactions_theta,'-o',ms=12.0, lw=4.0, ls='solid', color=palette_list[0], label=r'$\theta$ (h parameter)')
+   plt.plot(rlactions_rho,  '-^',ms=12.0, lw=4.0, ls='solid', color=palette_list[1], label=r'$\rho$ (p parameter)')
+   
    # # overlay best two parameter policy
    # df_tpp = pd.read_csv(twopar_file)
    # tpp_best_theta = df_tpp.iloc[df_tpp['costs'].argmin()]['theta'] * 1.002 * np.ones(len(rlactions_theta))
@@ -175,14 +173,26 @@ if ex_type == 4: # expand if condition to accomdate any hp problem
    # plt.plot(tpp_best_theta,'-x',lw=1.3, color=palette_list[0], label=r'optimal fixed $\theta$')
    # plt.plot(tpp_best_rho,'-x',lw=1.3, color=palette_list[1], label=r'optimal fixed $\rho$')
 
-   # overlay best two parameter policy according to meshes seen in training: theta = 0.6, rho = 0.5
+   # # overlay best two parameter policy according to meshes seen in training: theta = 0.6, rho = 0.5
    df_tpp = pd.read_csv(twopar_file)
    tpp_ep_cost = df_tpp[df_tpp['theta'] == 0.6][df_tpp['rho'] == 0.5]['costs'].to_numpy().item()
    print("Best tpp ep cost = ", tpp_ep_cost)
    print("RL cost = ", rlepisode_cost)
-   plt.plot(0.6 * np.ones(len(rlactions_theta)),'-x',lw=1.3, color=palette_list[0], label=r'optimal fixed $\theta$')
-   plt.plot(0.5 * np.ones(len(rlactions_rho)),'-x',lw=1.3, color=palette_list[1], label=r'optimal fixed $\rho$')
-   ax6.set_xlabel('mesh = ' + args.mesh_abbrv + ' tpp cost = ' +  str(np.round(tpp_ep_cost,2)) + ' RL cost = ' + str(np.round(rlepisode_cost, 2)))
+   # plt.plot(0.6 * np.ones(len(rlactions_theta)),'-x',lw=1.3, color=palette_list[0], label=r'optimal fixed $\theta$')
+   # plt.plot(0.5 * np.ones(len(rlactions_rho)),'-x',lw=1.3, color=palette_list[1], label=r'optimal fixed $\rho$')
+
+   
+   ax6.set_xlim(-0.5, 12.5)
+   ax6.set_ylim(0.0, 0.8)
+   plt.xticks(fontsize=30)
+   plt.yticks(fontsize=30)
+   policy_comp_string = 'mesh = ' + args.mesh_abbrv + ' angle = ' + args.angle_abbrv  + ' tpp cost = ' +  str(np.round(tpp_ep_cost,2)) + ' RL cost = ' + str(np.round(rlepisode_cost, 2))
+   text_file = open("policy_comp.txt", "a")
+   n = text_file.write(policy_comp_string + "\n")
+   text_file.close()
+   # ax6.set_xlabel('mesh = ' + args.mesh_abbrv + ' tpp cost = ' +  str(np.round(tpp_ep_cost,2)) + ' RL cost = ' + str(np.round(rlepisode_cost, 2)))
+   # ax6.set_ylabel(r'parameter values in trained (AM)$^2$R policy')
+   # ax6.legend(loc='upper right')
 
 else:
    plt.plot(rlactions,'-o',lw=1.3, label=r'(AM)$^2$R policy')
@@ -321,4 +331,4 @@ if ex_type == 4: # example 2c
       plt.savefig(output_dir+'/'+fig_name_prefix+'_rl_vs_two_param.pdf',format='pdf', bbox_inches='tight')
 
 
-plt.show()
+# plt.show()

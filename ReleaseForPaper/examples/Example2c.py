@@ -106,7 +106,7 @@ parser.add_argument('--savefigs', default=True, action='store_true')
 parser.add_argument('--no-savefigs', dest='savefigs', action='store_false')
 parser.add_argument('--marginals', dest='marginals_eval', default=False, action='store_true')
 parser.add_argument('--angle', dest='angle_eval', type=float, default= np.pi / 2)
-parser.add_argument('--mesh', dest='command_line_mesh', type=str, default= 'l-shape-benchmark.mesh')
+parser.add_argument('--meshnum', dest='command_line_mesh', type=int, default=0)
 args = parser.parse_args()
 print("\n Parsed options = ", args, "\n")
 train=args.train
@@ -122,7 +122,7 @@ minimum_budget_problem = False  # mininum budget == error_threshold == minimize 
 
 ## Configuration for minimum budget problem
 prob_config = {
-    'mesh_name'             : args.command_line_mesh, #'staircase.mesh', #'fichera.mesh', # 'star.mesh', # 'l-shape-benchmark.mesh', 'star.mesh', 'circle_3_4.mesh', 
+    'mesh_name'             : 'l-shape-benchmark.mesh', #'staircase.mesh', #'fichera.mesh', # 'star.mesh', # 'l-shape-benchmark.mesh', 'star.mesh', 'circle_3_4.mesh', 
     'problem_type'          : 'lshaped', #'default', # 'wavefront', 'default' = laplace u = 1 with 0 BC
     'num_unif_ref'          : 1, # 0,  # use 0 for circle_3_4.mesh; 1 for l-shape-benchmark.mesh
     'order'                 : 2,
@@ -174,6 +174,33 @@ rl_config = {
     'seed'                      : config['seed'],
     'model'                     : config['model'],
 }
+
+# if command_line_mesh == 0, prob_config is not altered by this block
+if args.command_line_mesh == 1:
+    prob_config['mesh_name'] = 'circle_3_4.mesh'
+    prob_config['num_unif_ref'] = 0
+if args.command_line_mesh == 2:
+    prob_config['mesh_name'] = 'star.mesh'
+    prob_config['problem_type'] = 'default'
+    prob_config['num_unif_ref'] = 0
+if args.command_line_mesh == 3:
+    prob_config['mesh_name'] = 'staircase.mesh'
+    prob_config['problem_type'] = 'default'
+    prob_config['num_unif_ref'] = 0
+if args.command_line_mesh == 4:
+    prob_config['mesh_name'] = 'staircase_tri2.mesh'
+    prob_config['problem_type'] = 'default'
+    prob_config['num_unif_ref'] = 0
+if args.command_line_mesh == 5:
+    prob_config['mesh_name'] = 'staircase_tri.mesh'
+    prob_config['problem_type'] = 'default'
+    prob_config['num_unif_ref'] = 0
+if args.command_line_mesh == 6:
+    prob_config['mesh_name'] = 'fichera.mesh'
+    prob_config['problem_type']  = 'default'
+    prob_config['num_unif_ref']  = 0
+    prob_config['dof_threshold'] = 5e4  # note higher dof threshold for Fichera mesh
+    
 
 if prob_config['mesh_name'] == 'l-shape-benchmark.mesh':
     mesh_abbrv  = 'lshape'
@@ -322,16 +349,12 @@ if eval and not args.marginals_eval:
         save_mesh = True
         if save_mesh:
             mkdir_p(output_dir+"/meshes_and_gfs/")
-            gfname = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + angle_abbrv + '.gf'
+            gfname = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '.gf'
             env.RenderHPmesh(gfname=gfname)
-            env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + angle_abbrv + '.mesh')
-            # two_steps_earlier_filename = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + angle_abbrv + '_step_' + str(env.k - 2) 
-            # if env.k > 2:
-            #     os.remove(two_steps_earlier_filename + '.mesh')
-            #     os.remove(two_steps_earlier_filename + '.gf')
+            env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '.mesh')
             
-    print("*** done with RL eval - exiting")
-    exit()
+    # print("*** done with RL eval - exiting")
+    # exit()
     
     # env.render() # WARNING: Rendering outside the RL loop won't show correct solution
     # env.RenderMesh()
@@ -346,7 +369,13 @@ if eval and not args.marginals_eval:
         print("\n *** STILL ALLOWING 5% overshoot of DoF threshold *** \n")
 
 
-    if prob_config['problem_type'] == 'lshaped':
+    #############
+    # Evaluate "expert AMR policies, if L-shaped problem type
+    ########### 
+
+    print("\n\n *** skipping expert AMR policies - hard coded temporarily; remove `and false` in two places below *** \n\n")
+
+    if prob_config['problem_type'] == 'lshaped' and False:
         ## Enact AMR policies, using "expert" strategy
         costs = []
         actions = []
@@ -385,12 +414,15 @@ if eval and not args.marginals_eval:
             dofs.append(dofs_tmp)
             print("expert action ", action.item(), " had episode cost = :", episode_cost_tmp)
 
-    # ## Enact AMR policies, using "fixed two parameter sweep" strategy
+    #############
+    # Enact fixed "two parameter" AMR policies
+    ########### 
     tp_costs = []
     tp_nth = 10
     # tp_actions = np.zeros(((tp_nth-1)**2,2)) # exclude 0.0, 1.0 as actions
     # tp_actions = np.zeros(((tp_nth+1)**2,2)) # include 0.0, 1.0 as actions
     tp_actions = np.zeros(((tp_nth)**2,2)) # include 0.0 but not 1.0 as actions
+    tp_actions = np.zeros((1,2)) # include only theta = 0.6, rho = 0.5
     tp_errors = []
     tp_dofs = []
     index_count = 0
@@ -399,8 +431,10 @@ if eval and not args.marginals_eval:
     #     for rho in range(1, tp_nth):    # exclude 0.0, 1.0 as actions
     # for theta in range(0, tp_nth+1):    # include 0.0, 1.0 as actions
     #     for rho in range(0, tp_nth+1):  # include 0.0, 1.0 as actions
-    for theta in range(0, tp_nth):        # include 0.0 but not 1.0 as actions
-        for rho in range(0, tp_nth):      # include 0.0 but not 1.0 as actions
+    # for theta in range(0, tp_nth):        # include 0.0 but not 1.0 as actions
+    #     for rho in range(0, tp_nth):      # include 0.0 but not 1.0 as actions
+    for theta in range(6, 7):        # include only theta = 0.6, rho = 0.5
+        for rho in range(5, 6):      # include only theta = 0.6, rho = 0.5
             tp_actions[index_count] = np.array([theta/tp_nth, rho/tp_nth]) # note 1D action space
             if theta/tp_nth == 1 and rho/tp_nth == 1: # avoid some linear algerbra error if action is [1,1]
                 tp_actions[index_count] = np.array([0.99, 0.99])
@@ -642,7 +676,7 @@ if save_data:
 
     #### expert policy df
     
-    if prob_config['problem_type'] == 'lshaped':
+    if prob_config['problem_type'] == 'lshaped' and False:
         df3 = pd.DataFrame({'actions':actions,'costs':costs,'errors':errors,'dofs':dofs})
         filename = output_dir+"/expert_data_" + mesh_abbrv + "_angle_" + angle_abbrv + ".csv"
         print("\nSaving expert AMR policies data to: ", filename)    
@@ -661,6 +695,6 @@ if save_data:
 if plot_figs or save_figs:
 
     import subprocess
-    print("Calling plots.py")
     string_to_call = "python plots.py " + output_dir + " --angle " + angle_abbrv + " --mesh " + mesh_abbrv
+    print("\n Calling " + string_to_call + "\n")
     subprocess.call(string_to_call, shell=True)
