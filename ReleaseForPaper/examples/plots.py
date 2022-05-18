@@ -86,7 +86,7 @@ def letterbox_entry(legend):
 
 
 save_figs = True
-have_expert_policy = False
+have_expert_policy = True
 
 print("*** Check that correct data was loaded here in plots.py ***")
 train_data_file = output_dir+'/training_data.csv'

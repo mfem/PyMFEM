@@ -314,7 +314,7 @@ if save_data:
     filename = output_dir+"/rl_data.csv"
     print("Saving RL deployed policy data to: ", filename)    
     df2.to_csv(filename, index=False)
-    filename = output_dir+"/deterministic_amr_data.csv"
+    filename = output_dir+"/expert_data.csv"
     print("Saving deterministic AMR policies data to: ", filename)    
     df3.to_csv(filename, index=False)
 
