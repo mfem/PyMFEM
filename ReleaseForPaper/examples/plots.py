@@ -86,7 +86,7 @@ def letterbox_entry(legend):
 
 
 save_figs = True
-have_expert_policy = True
+have_expert_policy = False
 
 print("*** Check that correct data was loaded here in plots.py ***")
 train_data_file = output_dir+'/training_data.csv'
@@ -173,9 +173,9 @@ if ex_type == 4: # expand if condition to accomdate any hp problem
    # plt.plot(tpp_best_theta,'-x',lw=1.3, color=palette_list[0], label=r'optimal fixed $\theta$')
    # plt.plot(tpp_best_rho,'-x',lw=1.3, color=palette_list[1], label=r'optimal fixed $\rho$')
 
-   # # overlay best two parameter policy according to meshes seen in training: theta = 0.6, rho = 0.5
+   # # overlay best two parameter policy according to meshes seen in training: theta = 0.6, rho = 0.4
    df_tpp = pd.read_csv(twopar_file)
-   tpp_ep_cost = df_tpp[df_tpp['theta'] == 0.6][df_tpp['rho'] == 0.5]['costs'].to_numpy().item()
+   tpp_ep_cost = df_tpp[df_tpp['theta'] == 0.6][df_tpp['rho'] == 0.4]['costs'].to_numpy().item()
    print("Best tpp ep cost = ", tpp_ep_cost)
    print("RL cost = ", rlepisode_cost)
    # plt.plot(0.6 * np.ones(len(rlactions_theta)),'-x',lw=1.3, color=palette_list[0], label=r'optimal fixed $\theta$')

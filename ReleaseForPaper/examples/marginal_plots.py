@@ -98,9 +98,11 @@ else:
         df_best  = df_angle.iloc[df_angle.index.max()]
         best_cost = df_best['cost']
         sum_of_best_costs += best_cost
+        print("   cost for angle ", angle, " = ", best_cost)
     avg_cost = sum_of_best_costs/num_angles
-    avg_cost = avg_cost / np.log(2) # convert to log base 2
+    # avg_cost = avg_cost / np.log(2) # convert to log base 2 # don't need to do this - already took log_2
     rl_avg_costs[0] = avg_cost
+    print("*** RL avg cost = ", avg_cost, "\n")
     np.save(output_dir + '/marginals/rl_avg_costs.npy', rl_avg_costs)
 
 
@@ -130,7 +132,6 @@ else:
     # temprows = []
     for theta in thetas:
         for rho in rhos:
-            print(i, " ", theta, " ", rho)
             sum_of_best_costs = 0.0
             for angle in angles: 
                 df_angle = df.loc[(df['theta'] == theta) & (df['rho'] == rho) & (df['angle'] == angle)].set_index('step')
@@ -138,8 +139,9 @@ else:
                 best_cost = df_best['cost']
                 sum_of_best_costs += best_cost
             avg_cost = sum_of_best_costs/num_angles
-            avg_cost = avg_cost / np.log(2) # convert to log base 2
+            # avg_cost = avg_cost / np.log(2) # convert to log base 2 # don't need to do this - already took log_2
             tpp_avg_costs[i] = avg_cost
+            print(i, " ", theta, " ", rho, " ", avg_cost)
             i += 1
             # temprows.append([theta, rho, avg_cost])
     np.save(output_dir + '/marginals/tpp_avg_costs.npy', tpp_avg_costs)
@@ -177,7 +179,7 @@ else:
             best_cost = df_best['cost']
             sum_of_best_costs += best_cost
         avg_cost = sum_of_best_costs/num_angles
-        avg_cost = avg_cost / np.log(2) # convert to log base 2
+        # avg_cost = avg_cost / np.log(2) # convert to log base 2 # don't need to do this - already took log_2
         exp_avg_costs[i] = avg_cost
         i += 1
     np.save(output_dir + '/marginals/exp_avg_costs.npy', exp_avg_costs)

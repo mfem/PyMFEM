@@ -296,7 +296,7 @@ if eval and not train:
     # checkpoint_path=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt < 100
     checkpoint_path=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt > 99 and <1000
     output_dir = output_dir_ + temp_path
-    env.overshootallowed = True
+    env.overshootallowed = False
     if env.overshootallowed:
         print("\n *** Allowing 5% overshoot of DoF threshold (for RL policy eval) *** \n")
 
@@ -422,7 +422,7 @@ if eval and not args.marginals_eval:
     # tp_actions = np.zeros(((tp_nth-1)**2,2)) # exclude 0.0, 1.0 as actions
     # tp_actions = np.zeros(((tp_nth+1)**2,2)) # include 0.0, 1.0 as actions
     tp_actions = np.zeros(((tp_nth)**2,2)) # include 0.0 but not 1.0 as actions
-    tp_actions = np.zeros((1,2)) # include only theta = 0.6, rho = 0.5
+    tp_actions = np.zeros((1,2)) # include only theta = 0.6, rho = 0.5 or 0.4
     tp_errors = []
     tp_dofs = []
     index_count = 0
@@ -433,8 +433,10 @@ if eval and not args.marginals_eval:
     #     for rho in range(0, tp_nth+1):  # include 0.0, 1.0 as actions
     # for theta in range(0, tp_nth):        # include 0.0 but not 1.0 as actions
     #     for rho in range(0, tp_nth):      # include 0.0 but not 1.0 as actions
-    for theta in range(6, 7):        # include only theta = 0.6, rho = 0.5
-        for rho in range(5, 6):      # include only theta = 0.6, rho = 0.5
+    # for theta in range(6, 7):        # include only theta = 0.6, rho = 0.5
+    #     for rho in range(5, 6):      # include only theta = 0.6, rho = 0.5
+    for theta in range(6, 7):        # include only theta = 0.6, rho = 0.4
+        for rho in range(4, 5):      # include only theta = 0.6, rho = 0.4
             tp_actions[index_count] = np.array([theta/tp_nth, rho/tp_nth]) # note 1D action space
             if theta/tp_nth == 1 and rho/tp_nth == 1: # avoid some linear algerbra error if action is [1,1]
                 tp_actions[index_count] = np.array([0.99, 0.99])
@@ -481,9 +483,9 @@ if args.marginals_eval:
     # # angle_vals = np.pi* np.linspace(5/100,1/4,10)    
     # angle_vals = np.pi* np.linspace(5/100,95/100,20)  
     # angle_vals = np.pi* np.linspace(0,1,21) # from 0 to pi in increments of 0.05 * pi
-    angle_vals = np.pi* np.linspace(1/4,3/4,21)  # pi/4 to 3pi/4 only
+    # angle_vals = np.pi* np.linspace(1/4,3/4,21)  # pi/4 to 3pi/4 only
     # angle_vals = np.pi* np.linspace(0.1, 1.9, 21)  # .1 to 1.9 pi
-    # angle_vals = np.pi* np.linspace(0.1, 0.9, 21)  # .1 to .9 pi
+    angle_vals = np.pi* np.linspace(0.1, 0.9, 21)  # .1 to .9 pi
     print("Evaluating marginals with angle values = ", angle_vals)
 
    
