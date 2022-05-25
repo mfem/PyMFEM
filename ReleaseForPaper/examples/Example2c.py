@@ -244,6 +244,8 @@ if (restore_policy):
     # temp_path = 'Example2c_2022-05-11_12-07-27/' # dof thresh 1e4; L-shape mesh; 0.49 - 0.51 pi angle training; num_batch 250; fixed bug with init
     # temp_path = 'Example2c_2022-05-11_19-11-37' # dof thresh 1e4; pacman mesh; 0.1 - 0.9 pi angle training; num batch 250; num_unif_ref = 0
     temp_path = 'Example2c_2022-05-12_12-41-20' # dof thresh 1e4; pacman mesh; 0.1 - 0.9 pi angle training; num batch 250; num_unif_ref = 0; truncate episodes
+    # temp_path = 'Example2c_2022-05-25_14-54-17' # dof thresh 1e4; pacman mesh; 0.01 - 0.99 pi angle training; num batch 250; num_unif_ref = 0; truncate episodes
+    
 
     
     checkpoint_dir = log_dir + temp_path
@@ -290,6 +292,7 @@ if eval and not train:
     # temp_path = 'Example2c_2022-05-11_12-07-27/' # dof thresh 1e4; L-shape mesh; 0.49 - 0.51 pi angle training; num_batch 250; fixed bug with init
     # temp_path = 'Example2c_2022-05-11_19-11-37' # dof thresh 1e4; pacman mesh; 0.1 - 0.9 pi angle training; num batch 250; num_unif_ref = 0
     temp_path = 'Example2c_2022-05-12_12-41-20' # dof thresh 1e4; pacman mesh; 0.1 - 0.9 pi angle training; num batch 250; num_unif_ref = 0; truncate episodes
+    # temp_path = 'Example2c_2022-05-25_14-54-17' # dof thresh 1e4; pacman mesh; 0.01 - 0.99 pi angle training; num batch 250; num_unif_ref = 0; truncate episodes
 
     chkpt_num = nbatches
     checkpoint_dir = log_dir + temp_path
@@ -346,7 +349,7 @@ if eval and not args.marginals_eval:
         #     # env.render()
         #     env.RenderMesh()
         #     env.RenderHPmesh()
-        save_mesh = True
+        save_mesh = False
         if save_mesh:
             mkdir_p(output_dir+"/meshes_and_gfs/")
             gfname = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '.gf'
@@ -363,10 +366,10 @@ if eval and not args.marginals_eval:
     # exit()
 
     if env.overshootallowed:
-        # env.overshootallowed = False
-        # print("\n *** Disabled allowing 5% overshoot of DoF threshold *** \n")
-        env.overshootallowed = True
-        print("\n *** STILL ALLOWING 5% overshoot of DoF threshold *** \n")
+        env.overshootallowed = False
+        print("\n *** Disabled allowing 5% overshoot of DoF threshold *** \n")
+        # env.overshootallowed = True
+        # print("\n *** STILL ALLOWING 5% overshoot of DoF threshold *** \n")
 
 
     #############
@@ -421,7 +424,7 @@ if eval and not args.marginals_eval:
     tp_nth = 10
     # tp_actions = np.zeros(((tp_nth-1)**2,2)) # exclude 0.0, 1.0 as actions
     # tp_actions = np.zeros(((tp_nth+1)**2,2)) # include 0.0, 1.0 as actions
-    tp_actions = np.zeros(((tp_nth)**2,2)) # include 0.0 but not 1.0 as actions
+    # tp_actions = np.zeros(((tp_nth)**2,2)) # include 0.0 but not 1.0 as actions
     tp_actions = np.zeros((1,2)) # include only theta = 0.6, rho = 0.5 or 0.4
     tp_errors = []
     tp_dofs = []
