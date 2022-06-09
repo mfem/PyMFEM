@@ -4,7 +4,14 @@ import pandas as pd
 from pylab import *
 import seaborn as sns
 from seaborn.palettes import color_palette
-from prob_envs.StationaryProblem import StationaryProblem
+from prob_envs.Poisson import Poisson
+
+def SaveErrorsToFile(env, df_ErrorHistory, error_file_name):
+      num_dofs = env.fespace.GetTrueVSize()
+      df_tmp = pd.DataFrame({str(num_dofs):env.errors})
+      df_ErrorHistory = pd.concat([df_ErrorHistory,df_tmp], axis=1)
+      df_ErrorHistory.to_csv(error_file_name, index=False)
+      return df_ErrorHistory
 
 sns.set()
 # sns.set_context("notebook")
@@ -18,39 +25,38 @@ plt.rc('font', family='serif')
 plt.rc('text.latex', preamble=r'\usepackage{amsmath} \usepackage{amssymb}')
 
 #### PARAMETERS
-fig = 'a' # 'a' or 'b'
+fig = 'b' # 'a' or 'b'
 num_refs = 6
 num_unif_ref = 1
+order = 1
 recompute = True
 save_fig = True
 ####
 
 if fig == 'a':
-      file_name = "./RLModule/out/H10errors_sinsin.csv"
+      file_name = "./ReleaseForPaper/out/H10errors_sinsin.csv"
       prob_config = {
-            'estimator_type'    : 'exact',
             'problem_type'      : 'sinsin',
             'mesh_name'         : 'inline-quad_2by2.mesh',
             'num_unif_ref'      : num_unif_ref,
-            'order'             : 1,
-            'error_file_name'   : file_name
+            'order'             : order,
       }
 else:
-      file_name = "./RLModule/out/H10errors_LShaped.csv"
+      file_name = "./ReleaseForPaper/out/H10errors_LShaped.csv"
       prob_config = {
-            'estimator_type'    : 'exact',
             'problem_type'      : 'lshaped',
             'mesh_name'         : 'l-shape-benchmark.mesh',
             'num_unif_ref'      : num_unif_ref,
-            'order'             : 1,
-            'error_file_name'   : file_name
+            'order'             : order,
       }
 
 if recompute:
-      env = StationaryProblem(**prob_config)
-      env.reset(save_errors=True)
+      env = Poisson(**prob_config)
+      env.reset()
+      df_ErrorHistory = pd.DataFrame()
       for _ in range(num_refs):
-            env.step(0.0)
+            env.step(0.5)
+            df_ErrorHistory = SaveErrorsToFile(env, df_ErrorHistory, file_name)
             print(np.sum(env.errors**2))
 
 dofs = []
@@ -59,11 +65,9 @@ for i, col in enumerate(df.columns):
       dofs.append(float(col))
       num_dofs = float(col)
       num_non_zeros = len(df[col]) - df[col].isna().sum()
-      # df[col] *= df[col]
-      df[col] *= num_non_zeros
-      # df[col] *= num_non_zeros
-      # df[col] = - np.log(df[col]) / np.log(num_non_zeros**2)
-      # df[col] = np.log(df[col]) / np.log(num_dofs)
+      # df[col] *= df[col] * num_non_zeros**(1+order)
+      # df[col] *= num_non_zeros**((1+order)/2)
+      df[col] = np.log(num_non_zeros*df[col]**2) / np.log(num_dofs) + 2*order
       df.rename(columns={col:str(i)}, inplace=True)
 
 dofs = np.array(dofs)
@@ -84,8 +88,8 @@ ax = sns.boxenplot(data=df, width=.6,
                   # palette="coolwarm"
                   # palette="Spectral"
                   )
-if fig != 'a':
-      ax.set_yscale('log')
+# if fig != 'a':
+#       ax.set_yscale('log')
 ax.set_ylabel(r'Local element errors (normalized)')
 ax.set_xlabel(r'Refinement')
 
@@ -107,9 +111,9 @@ print('conv. rate of maxes   = ', 2 * np.log(maxes[-1]/maxes[-2])/np.log(dofs[-2
 
 if save_fig:
       if fig == 'a':
-            plt.savefig('./RLModule/figures/fig1a_H10Errors_sinsin.pdf')
+            plt.savefig('./ReleaseForPaper/figures/fig1a_H10Errors_sinsin.pdf')
       else:
-            plt.savefig('./RLModule/figures/fig1b_H10Errors_LShaped.pdf')
+            plt.savefig('./ReleaseForPaper/figures/fig1b_H10Errors_LShaped.pdf')
 plt.show()
 
 # print(np.log(env.global_errors[1][-1]/env.global_errors[1][-5])/np.log(env.global_errors[0][-5]/env.global_errors[0][-1]))

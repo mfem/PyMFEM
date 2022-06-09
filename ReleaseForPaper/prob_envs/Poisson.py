@@ -10,6 +10,7 @@ from mfem.ser import intArray
 from utils.Statistics import Statistics, GlobalError
 from utils.Solution_LShaped import *
 from utils.Solution_Wavefront import *
+from utils.Solution_SinSin import *
 
 from scipy.sparse import csr_matrix
 from scipy.sparse.linalg import dsolve
@@ -42,6 +43,11 @@ class Poisson(gym.Env):
             self.BC =  WavefrontSolutionCoefficient('justright')
             self.RHS =  WavefrontRHSCoefficient('justright')
             self.coeff = mfem.ConstantCoefficient(1.0)
+        elif (problem_type == 'sinsin'):
+            self.BC = mfem.NumbaFunction(SinSinExact, 2).GenerateCoefficient()
+            self.RHS = mfem.NumbaFunction(SinSinExactLaplace, 2).GenerateCoefficient()
+            self.GradSoln = mfem.VectorNumbaFunction(SinSinExactGrad, 2, 2).GenerateCoefficient()
+            self.coeff = mfem.ConstantCoefficient(1.0)
         else:
             self.BC = mfem.ConstantCoefficient(0.0)
             self.RHS = mfem.ConstantCoefficient(1.0)
@@ -67,7 +73,6 @@ class Poisson(gym.Env):
                                             high= np.array([1.0, np.inf, np.inf]))
         # self.observation_space = spaces.Box(low=-np.inf, high=np.inf, shape=(3,))
         # self.observation_space = spaces.Box(low=-np.inf, high=np.inf, shape=(5,))
-        self.error_file_name = kwargs.get('error_file_name','./ReleaseForPaper/out/errors.csv')
 
         self.zero = mfem.ConstantCoefficient(0.0)
         self.zero_vector = mfem.Vector(self.dim)
@@ -161,8 +166,8 @@ class Poisson(gym.Env):
         self.ess_bdr.Assign(1)
         self.x.ProjectBdrCoefficient(self.BC, self.ess_bdr)
         self.flux_fespace = mfem.FiniteElementSpace(self.mesh, fec, dim)
-        self.estimator = mfem.LSZienkiewiczZhuEstimator(integ, self.x)
         # self.estimator = mfem.LpErrorEstimator(2, self.BC, self.x)
+        self.estimator = mfem.LSZienkiewiczZhuEstimator(integ, self.x)
 
     def GetObservation(self):
         num_dofs = self.fespace.GetTrueVSize()
