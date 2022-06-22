@@ -13,9 +13,12 @@ stats = namedtuple('Statistics',
 ########################
 # local error statistics
 ########################
-def Statistics(eta, num_dofs=np.e):
-    # zeta = np.log(len(eta)*np.abs(eta)**2)/np.log(len(eta))
-    zeta = np.log(len(eta)*np.abs(eta)**2)/np.log(num_dofs)
+def Statistics(eta, num_dofs, p=None, d=2):  # prev num_dofs = np.e; p=order; d=dimension 2 or 3
+    if p is None:
+        zeta = np.log(len(eta)*np.abs(eta)**2)/np.log(num_dofs)
+        # zeta = np.log(len(eta)*np.abs(eta)**2)/np.log(len(eta))
+    else:
+        zeta = np.sqrt(len(eta)) * np.power(num_dofs, p/d) * eta
     description = describe(zeta,bias=False)
     nels = description.nobs
     min = description.minmax[0]

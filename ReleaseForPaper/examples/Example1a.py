@@ -111,7 +111,7 @@ plot_figs=args.plotfigs
 save_figs=args.savefigs
 
 restore_policy = False
-nbatches = 250
+nbatches = 10
 minimum_budget_problem = True  # mininum budget == error_threshold == minimize dofs
 
 ## Configuration for minimum budget problem
@@ -123,7 +123,8 @@ prob_config = {
     'optimization_type' : 'error_threshold', 
     'dof_threshold'     : 5e5,
     'error_threshold'   : 1e-4, # previously 1e-3
-    'num_batches'       : nbatches
+    'num_batches'       : nbatches,
+    'ee_normalizer'     : 'fixed-order',  # 'fixed-order' for h-ref only or 'variable-order' for hp-ref (or h-ref)
 }
 
 ## Change to minimum error problem

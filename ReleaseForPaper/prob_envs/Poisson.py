@@ -83,6 +83,8 @@ class Poisson(gym.Env):
         self.trainingmode = True
         self.overshootallowed = False
 
+        self.ee_normalizer = kwargs.get('ee_normalizer', 'variable-order')
+
     
     def reset(self):
         self.k = 0
@@ -171,7 +173,16 @@ class Poisson(gym.Env):
 
     def GetObservation(self):
         num_dofs = self.fespace.GetTrueVSize()
-        stats = Statistics(self.errors, num_dofs=num_dofs)
+        if self.ee_normalizer == 'variable-order':
+            stats = Statistics(self.errors, num_dofs)
+        elif self.ee_normalizer == 'fixed-order':
+            stats = Statistics(self.errors, num_dofs, p=self.order)
+            if self.mesh.Dimension() != 2:
+                print("***** \n ***** \n Consider passing d=self.mesh.Dimension() since dim != 2\n ***** \n *****")
+        else:
+            print("ee_normalizer must be set to 'variable-order' or 'fixed-order' in prob_config\n Exiting.")
+            exit()
+        
         if self.optimization_type == 'error_threshold':
             # budget = -np.log( abs(self.error_threshold - self.global_error)/self.global_error + 1e-16)
             budget = self.error_threshold/self.global_error
@@ -219,7 +230,7 @@ class Poisson(gym.Env):
         sol_sock.send_text('keys ARjlmp*******' + " window_title '" + title)
 
     def UpdateMesh(self, action):
-        action = np.clip(action, 0.0, 1.0)
+        action = np.clip(action, 0.0, 0.999)
         theta = action.item() # refinement threshold
         self.Refine(theta)
 
