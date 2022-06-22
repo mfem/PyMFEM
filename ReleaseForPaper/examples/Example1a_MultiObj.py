@@ -112,7 +112,6 @@ save_figs=args.savefigs
 
 restore_policy = False
 nbatches = 250
-problem_type = 0; # 0 == multi-objective; 1 == minimum dof; 2 == minimum error (other numbers default to multi-objective)
 
 ## Configuration for multi objective problem
 prob_config = {
@@ -127,13 +126,11 @@ prob_config = {
 }
 
 ## Change to minimum error or minimum dof problem
-if problem_type == 1: # minimum dof
-    prob_config['optimization_type'] = 'error_threshold'
+if prob_config['optimization_type'] == 'error_threshold': # minimum dof
     prob_config['dof_threshold']     = 5e5
     prob_config['error_threshold']   = 1e-4
 
-elif problem_type == 2: #minimum error
-    prob_config['optimization_type'] = 'dof_threshold'
+elif prob_config['optimization_type'] == 'dof_threshold': #minimum error
     prob_config['dof_threshold']     = 1e4
     prob_config['error_threshold']   = 1e-4
 
@@ -244,7 +241,7 @@ if eval:
         action = trainer.compute_single_action(obs,explore=False)
         # action = trainer.compute_single_action(obs,explore=True)
         obs, reward, done, info = env.step(action)
-        if problem_type != 1 and done:
+        if prob_config['optimization_type'] == 'dof_threshold' and done:
             break
         rlactions.append(action[0])
         rlepisode_cost -= reward
@@ -274,9 +271,13 @@ if eval:
         dofs_tmp = [env.sum_of_dofs]
         max_steps   = 200
         steps_taken = 0
+        
+        if num_iterations > max_steps:
+            max_steps = num_iterations;
+        
         while not done:
             _, reward, done, info = env.step(action)
-            if problem_type != 1 and done:
+            if prob_config['optimization_type'] == 'dof_threshold' and done:
                 break
             if steps_taken > max_steps:
                 print("*** BREAKING EARLY - fixed action exceeded max step threshold of ", max_steps, "steps.")
