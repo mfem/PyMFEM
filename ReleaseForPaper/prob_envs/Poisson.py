@@ -219,7 +219,7 @@ class Poisson(gym.Env):
         sol_sock.send_text('keys ARjlmp*******' + " window_title '" + title)
 
     def UpdateMesh(self, action):
-        action = np.clip(action, 0.0, 1.0)
+        action = np.clip(action, 0.0, 0.999)
         theta = action.item() # refinement threshold
         self.Refine(theta)
 
