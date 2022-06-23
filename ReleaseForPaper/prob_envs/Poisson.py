@@ -171,26 +171,49 @@ class Poisson(gym.Env):
         # self.estimator = mfem.LpErrorEstimator(2, self.BC, self.x)
         self.estimator = mfem.LSZienkiewiczZhuEstimator(integ, self.x)
 
+    # def GetObservation(self):
+    #     num_dofs = self.fespace.GetTrueVSize()
+    #     if self.ee_normalizer == 'variable-order':
+    #         stats = Statistics(self.errors, num_dofs)
+    #     elif self.ee_normalizer == 'fixed-order':
+    #         stats = Statistics(self.errors, num_dofs, p=self.order)
+    #         if self.mesh.Dimension() != 2:
+    #             print("***** \n ***** \n Consider passing d=self.mesh.Dimension() since dim != 2\n ***** \n *****")
+    #     else:
+    #         print("ee_normalizer must be set to 'variable-order' or 'fixed-order' in prob_config\n Exiting.")
+    #         exit()
+        
+    #     if self.optimization_type == 'error_threshold':
+    #         # budget = -np.log( abs(self.error_threshold - self.global_error)/self.global_error + 1e-16)
+    #         budget = self.error_threshold/self.global_error
+    #     else:
+    #         # budget = np.log( self.sum_of_dofs / (abs(self.dof_threshold - self.sum_of_dofs) + 1e-12 ))
+    #         budget = self.sum_of_dofs/self.dof_threshold
+        
+    #     obs = [budget, stats.mean, stats.variance]
+    #     return np.array(obs)
+
     def GetObservation(self):
+        d = 2
+        p = self.order
+        eta = self.errors
         num_dofs = self.fespace.GetTrueVSize()
         if self.ee_normalizer == 'variable-order':
-            stats = Statistics(self.errors, num_dofs)
-        elif self.ee_normalizer == 'fixed-order':
-            stats = Statistics(self.errors, num_dofs, p=self.order)
-            if self.mesh.Dimension() != 2:
-                print("***** \n ***** \n Consider passing d=self.mesh.Dimension() since dim != 2\n ***** \n *****")
+            zeta = -np.log(len(eta)**(1/2) * np.abs(eta))/np.log(num_dofs)
+            mean = np.mean(zeta)
+            sd = np.sqrt(np.var(zeta,ddof=1))
         else:
-            print("ee_normalizer must be set to 'variable-order' or 'fixed-order' in prob_config\n Exiting.")
-            exit()
+            zeta = np.sqrt(len(eta)) * num_dofs**(p/d) * eta
+            mean = np.clip(np.sqrt(np.mean(zeta**2)),0,100)
+            sd = np.clip(np.sqrt(np.var(zeta,ddof=1)),0,100)
         
         if self.optimization_type == 'error_threshold':
-            # budget = -np.log( abs(self.error_threshold - self.global_error)/self.global_error + 1e-16)
             budget = self.error_threshold/self.global_error
         else:
-            # budget = np.log( self.sum_of_dofs / (abs(self.dof_threshold - self.sum_of_dofs) + 1e-12 ))
             budget = self.sum_of_dofs/self.dof_threshold
         
-        obs = [budget, stats.mean, stats.variance]
+        sd = np.sqrt(np.var(zeta,ddof=1))
+        obs = [budget, mean, sd]
         return np.array(obs)
 
     def AssembleAndSolve(self):

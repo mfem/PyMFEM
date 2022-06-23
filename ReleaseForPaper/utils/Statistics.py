@@ -18,7 +18,8 @@ def Statistics(eta, num_dofs, p=None, d=2):  # prev num_dofs = np.e; p=order; d=
         zeta = np.log(len(eta)*np.abs(eta)**2)/np.log(num_dofs)
         # zeta = np.log(len(eta)*np.abs(eta)**2)/np.log(len(eta))
     else:
-        zeta = np.sqrt(len(eta)) * np.power(num_dofs, p/d) * eta
+        zeta = np.sqrt(len(eta)) * num_dofs**(p/d) * eta
+        # zeta = np.sqrt(len(eta)) * np.power(num_dofs, p/d) * eta
     description = describe(zeta,bias=False)
     nels = description.nobs
     min = description.minmax[0]
