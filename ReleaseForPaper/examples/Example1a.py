@@ -111,7 +111,7 @@ plot_figs=args.plotfigs
 save_figs=args.savefigs
 
 restore_policy = False
-nbatches = 10
+nbatches = 150
 minimum_budget_problem = True  # mininum budget == error_threshold == minimize dofs
 
 ## Configuration for minimum budget problem
