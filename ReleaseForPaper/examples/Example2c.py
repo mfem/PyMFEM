@@ -131,7 +131,8 @@ prob_config = {
     'error_threshold'       : 1e-4,
     'angle_lower'           : np.pi * 0.1, # np.pi * 0.25,
     'angle_upper'           : np.pi * 0.9, # np.pi * 0.75,
-    'num_batches'           : nbatches
+    'num_batches'           : nbatches,
+    'ee_normalizer'         : 'variable-order',  # 'fixed-order' for h-ref only or 'variable-order' for hp-ref (or h-ref)
 }
 
 ## Change to minimum error problem
@@ -434,12 +435,12 @@ if eval and not args.marginals_eval:
     #     for rho in range(1, tp_nth):    # exclude 0.0, 1.0 as actions
     # for theta in range(0, tp_nth+1):    # include 0.0, 1.0 as actions
     #     for rho in range(0, tp_nth+1):  # include 0.0, 1.0 as actions
-    # for theta in range(0, tp_nth):        # include 0.0 but not 1.0 as actions
-    #     for rho in range(0, tp_nth):      # include 0.0 but not 1.0 as actions
+    for theta in range(0, tp_nth):        # include 0.0 but not 1.0 as actions
+        for rho in range(0, tp_nth):      # include 0.0 but not 1.0 as actions
     # for theta in range(6, 7):        # include only theta = 0.6, rho = 0.5
     #     for rho in range(5, 6):      # include only theta = 0.6, rho = 0.5
-    for theta in range(6, 7):        # include only theta = 0.6, rho = 0.4
-        for rho in range(4, 5):      # include only theta = 0.6, rho = 0.4
+    # for theta in range(6, 7):        # include only theta = 0.6, rho = 0.4
+    #     for rho in range(4, 5):      # include only theta = 0.6, rho = 0.4
             tp_actions[index_count] = np.array([theta/tp_nth, rho/tp_nth]) # note 1D action space
             if theta/tp_nth == 1 and rho/tp_nth == 1: # avoid some linear algerbra error if action is [1,1]
                 tp_actions[index_count] = np.array([0.99, 0.99])

@@ -269,6 +269,9 @@ if have_expert_policy:
    ax5.set_xlabel(r'Cumulative degrees of freedom')
    ax5.set_ylabel(r'Relative error')
    ax5.legend()
+   # for i in range(9,len(errors),10):
+   #    print("Cum dofs = ", cumdofs[i][-1])
+   # print("cumrldofs = ", cumrldofs[-1])
    if save_figs:
       plt.savefig(output_dir+'/'+fig_name_prefix+'_fig5.pdf',format='pdf', bbox_inches='tight')
 
