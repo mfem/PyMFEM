@@ -25,6 +25,7 @@ import_array();
 %import "intrules.i"
 %import "coefficient.i"
 %import "../common/exception_director.i"
+%import "fespace.i"
 
 %include "../common/lininteg_ext.i"
 
