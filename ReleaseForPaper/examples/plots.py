@@ -214,8 +214,8 @@ if have_expert_policy:
    x3 = ax3.get_xlim()
    plt.hlines(rlepisode_cost, x3[0], x3[1], lw=4, color=palette_list[0], label=r'(AM)$^2$R policy')
    y3 = ax3.get_ylim()
-   # plt.fill_between(x3, np.floor(y3[0]), rlepisode_cost, color=palette_list[9], label=r'Apparent performance barrier')
-   plt.fill_between(x3, np.floor(y3[0]), rlepisode_cost, hatch='\\\\\\\\', facecolor=palette_list[9], label=r'Apparent performance barrier')
+   # note: factor 0.1 below makes hatch area have height = 10% of the range of the y3 axis
+   plt.fill_between(x3, y3[0] - 0.1 * (y3[1]-y3[0]), rlepisode_cost, hatch='\\\\\\\\', facecolor=palette_list[9], label=r'Apparent performance barrier')
    ax3.set_xlabel(r'$\theta$ (constant) in AMR policy')
    if minimum_budget_problem:
       # ax3.set_ylabel(r'$\log_2(N_{\rm{dofs}})$')
@@ -281,8 +281,8 @@ if have_expert_policy:
    x2 = ax2.get_xlim()
    plt.hlines(rlepisode_cost, x2[0], x2[1], lw=4, color=palette_list[0], label=r'(AM)$^2$R policy cost')
    y2 = ax2.get_ylim()
-   # plt.fill_between(x2, np.floor(y2[0]), rlepisode_cost, color=palette_list[9], label=r'Apparent performance barrier')
-   plt.fill_between(x2, np.floor(y2[0]), rlepisode_cost, hatch='\\\\\\\\', facecolor=palette_list[9], label=r'Apparent performance barrier')
+   # note: factor 0.1 below makes hatch area have height = 10% of the range of the y2 axis
+   plt.fill_between(x2, y3[0] - 0.1 * (y2[1]-y2[0]), rlepisode_cost, hatch='\\\\\\\\', facecolor=palette_list[9], label=r'Apparent performance barrier')
 
    ax2.set_xlabel(r'')
    if minimum_budget_problem:

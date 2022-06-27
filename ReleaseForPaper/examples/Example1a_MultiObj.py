@@ -111,7 +111,7 @@ plot_figs=args.plotfigs
 save_figs=args.savefigs
 
 restore_policy = False
-nbatches = 250
+nbatches = 10
 
 ## Configuration for multi objective problem
 prob_config = {
@@ -120,8 +120,8 @@ prob_config = {
     'num_unif_ref'      : 1,
     'order'             : 2,
     'optimization_type' : 'multi_objective', 
-    'alpha'             : 0.5
-    'num_iterations'    : 10
+    'alpha'             : 0.5,
+    'num_iterations'    : 10,
     'num_batches'       : nbatches
 }
 
@@ -185,7 +185,7 @@ if (restore_policy):
     output_dir = output_dir_ + temp_path
 else:
     timestr = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
-    temp_path = 'Example1a_' + timestr
+    temp_path = 'Example1a_MO_' + timestr
     checkpoint_dir = log_dir + temp_path
     output_dir = output_dir_ + temp_path
 
@@ -269,18 +269,15 @@ if eval:
         episode_cost_tmp = 0
         errors_tmp = [env.global_error]
         dofs_tmp = [env.sum_of_dofs]
-        max_steps   = 200
+        # max_steps   = prob_config['num_iterations']
         steps_taken = 0
-        
-        if num_iterations > max_steps:
-            max_steps = num_iterations;
         
         while not done:
             _, reward, done, info = env.step(action)
             if prob_config['optimization_type'] == 'dof_threshold' and done:
                 break
-            if steps_taken > max_steps:
-                print("*** BREAKING EARLY - fixed action exceeded max step threshold of ", max_steps, "steps.")
+            if steps_taken > prob_config['num_iterations']:
+                print("*** fixed action exceeded max step threshold of ", prob_config['num_iterations'], "steps.")
                 break
             else:
                 steps_taken += 1

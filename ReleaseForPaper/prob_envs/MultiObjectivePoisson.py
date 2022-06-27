@@ -1,4 +1,4 @@
-import Poisson
+from prob_envs.Poisson import Poisson
 import numpy as np
 from utils.Statistics import Statistics, GlobalError
 
@@ -36,7 +36,9 @@ class MultiObjPoisson(Poisson):
             self.global_error = global_error
 
             if self.k >= self.num_iterations:
-                done = True;
+                done = True
+            else:
+                done = False
 
             if done == False:
                 obs = self.GetObservation()
