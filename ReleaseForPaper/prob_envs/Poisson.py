@@ -198,25 +198,22 @@ class Poisson(gym.Env):
         p = self.order
         eta = self.errors
         num_dofs = self.fespace.GetTrueVSize()
-        clipmax = 1e7
-        if self.ee_normalizer == 'variable-order':
-            zeta = -np.log(len(eta)**(1/2) * np.abs(eta))/np.log(num_dofs)
-            mean = np.mean(zeta)
-        else:
-            zeta = np.sqrt(len(eta)) * num_dofs**(p/d) * eta
-            mean = np.clip(np.sqrt(np.mean(zeta**2)),0,clipmax) # actually the sqrt of the second moment, not the mean (Euclidean mean)
-
-        if mean > 0.99*clipmax:
-            print(" ========> Got mean = ", mean, ", close to clipmax = ", clipmax)
-        
         if self.optimization_type == 'error_threshold':
             budget = self.error_threshold/self.global_error
         else:
             budget = self.sum_of_dofs/self.dof_threshold
+
+        if self.ee_normalizer == 'variable-order': # hp case
+            zeta = -np.log(len(eta)**(1/2) * np.abs(eta))/np.log(num_dofs)
+            mean = np.mean(zeta)
+            sd = np.sqrt(np.var(zeta, ddof=0)) # default ddof = 0 (variance normalized by 1/(N-ddof))
+            obs = [budget, mean, sd]
+        else:
+            zeta = np.sqrt(len(eta)) * num_dofs**(p/d) * eta
+            mean = np.sqrt(np.mean(zeta**2)) # technically the Euclidean mean: the sqrt of the second moment
+            sd = np.sqrt(np.var(zeta, ddof=0)) # default ddof = 0 (variance normalized by 1/(N-ddof))
+            obs = [budget, np.log2(1+mean), np.log2(1+sd)]
         
-        sd = np.clip(np.sqrt(np.var(zeta,ddof=1)),0,clipmax)
-        # obs = [budget, mean, sd]
-        obs = [budget, np.log2(mean), np.log2(sd)]
         return np.array(obs)
 
     def AssembleAndSolve(self):
