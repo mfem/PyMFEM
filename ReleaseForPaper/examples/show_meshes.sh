@@ -1,9 +1,3 @@
-
-
-
-
-
-
 ~/Documents/software/glvis/glvis -m rl_mesh_pacman_angle_0.31.mesh -g rl_mesh_pacman_angle_0.31.gf --keys ARjlm************PPPPPPPPPP\)\)\)\)\)\)\)\)\)\)'~7' < visrange.txt 
 ~/Documents/software/glvis/glvis -m rl_mesh_pacman_angle_0.94.mesh -g rl_mesh_pacman_angle_0.94.gf --keys ARjlm************PPPPPPPPPP\)\)\)\)\)\)\)\)\)\)'~7' < visrange.txt 
 ~/Documents/software/glvis/glvis -m rl_mesh_pacman_angle_1.57.mesh -g rl_mesh_pacman_angle_1.57.gf --keys ARjlm************PPPPPPPPPP\)\)\)\)\)\)\)\)\)\)'~7' < visrange.txt
