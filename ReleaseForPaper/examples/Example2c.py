@@ -427,8 +427,8 @@ if eval and not args.marginals_eval:
     tp_nth = 10
     # tp_actions = np.zeros(((tp_nth-1)**2,2)) # exclude 0.0, 1.0 as actions
     # tp_actions = np.zeros(((tp_nth+1)**2,2)) # include 0.0, 1.0 as actions
-    tp_actions = np.zeros(((tp_nth)**2,2)) # include 0.0 but not 1.0 as actions
-    # tp_actions = np.zeros((1,2)) # include only theta = 0.6, rho = 0.5 or 0.4
+    # tp_actions = np.zeros(((tp_nth)**2,2)) # include 0.0 but not 1.0 as actions
+    tp_actions = np.zeros((1,2)) # include only theta = [one fixed value], rho = [one fixed value]
     tp_errors = []
     tp_dofs = []
     index_count = 0
@@ -437,12 +437,14 @@ if eval and not args.marginals_eval:
     #     for rho in range(1, tp_nth):    # exclude 0.0, 1.0 as actions
     # for theta in range(0, tp_nth+1):    # include 0.0, 1.0 as actions
     #     for rho in range(0, tp_nth+1):  # include 0.0, 1.0 as actions
-    for theta in range(0, tp_nth):        # include 0.0 but not 1.0 as actions
-        for rho in range(0, tp_nth):      # include 0.0 but not 1.0 as actions
+    # for theta in range(0, tp_nth):        # include 0.0 but not 1.0 as actions
+    #     for rho in range(0, tp_nth):      # include 0.0 but not 1.0 as actions
     # for theta in range(6, 7):        # include only theta = 0.6, rho = 0.5
     #     for rho in range(5, 6):      # include only theta = 0.6, rho = 0.5
     # for theta in range(6, 7):        # include only theta = 0.6, rho = 0.4
     #     for rho in range(4, 5):      # include only theta = 0.6, rho = 0.4
+    for theta in range(5, 6):        # include only theta = 0.5, rho = 0.6
+        for rho in range(6, 7):      # include only theta = 0.5, rho = 0.6
             tp_actions[index_count] = np.array([theta/tp_nth, rho/tp_nth]) # note 1D action space
             if theta/tp_nth == 1 and rho/tp_nth == 1: # avoid some linear algerbra error if action is [1,1]
                 tp_actions[index_count] = np.array([0.99, 0.99])
