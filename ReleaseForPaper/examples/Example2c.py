@@ -352,7 +352,7 @@ if eval and not args.marginals_eval:
         #     # env.render()
         #     env.RenderMesh()
         #     env.RenderHPmesh()
-        save_mesh = False
+        save_mesh = True
         if save_mesh:
             mkdir_p(output_dir+"/meshes_and_gfs/")
             gfname = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '.gf'
