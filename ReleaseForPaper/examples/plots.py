@@ -196,7 +196,7 @@ if ex_type == 4: # expand this "if" condition to accomdate any hp problem
    text_file.close()
    # ax6.set_xlabel('mesh = ' + args.mesh_abbrv + ' tpp cost = ' +  str(np.round(tpp_ep_cost,2)) + ' RL cost = ' + str(np.round(rlepisode_cost, 2)))
    # ax6.set_ylabel(r'parameter values in trained (AM)$^2$R policy')
-   # ax6.legend(loc='upper right')
+   # ax6.legend(loc='lower left', prop={'size': 26})
 
 else:
    plt.plot(rlactions,'-o',lw=1.3, label=r'(AM)$^2$R policy')
