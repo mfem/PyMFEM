@@ -102,6 +102,7 @@ parser.add_argument('--plotfigs', default=True, action='store_true')
 parser.add_argument('--no-plotfigs', dest='plotfigs', action='store_false')
 parser.add_argument('--savefigs', default=True, action='store_true')
 parser.add_argument('--no-savefigs', dest='savefigs', action='store_false')
+parser.add_argument('--alpha', default = 0.5, type = float)
 args = parser.parse_args()
 print("Parsed options = ", args)
 train=args.train
@@ -111,7 +112,7 @@ plot_figs=args.plotfigs
 save_figs=args.savefigs
 
 restore_policy = False
-nbatches = 10
+nbatches = 150
 
 ## Configuration for multi objective problem
 prob_config = {
@@ -120,7 +121,7 @@ prob_config = {
     'num_unif_ref'      : 1,
     'order'             : 2,
     'optimization_type' : 'multi_objective', 
-    'alpha'             : 0.5,
+    'alpha'             : args.alpha,
     'num_iterations'    : 10,
     'num_batches'       : nbatches
 }
@@ -185,7 +186,8 @@ if (restore_policy):
     output_dir = output_dir_ + temp_path
 else:
     timestr = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
-    temp_path = 'Example1a_MO_' + timestr
+    alpha_str = str(args.alpha).replace('.','_') + '_'
+    temp_path = 'Example1a_MO_alpha' + alpha_str + timestr
     checkpoint_dir = log_dir + temp_path
     output_dir = output_dir_ + temp_path
 

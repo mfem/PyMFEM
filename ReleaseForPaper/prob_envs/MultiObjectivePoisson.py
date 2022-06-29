@@ -1,7 +1,7 @@
 from prob_envs.Poisson import Poisson
 import numpy as np
 from utils.Statistics import Statistics, GlobalError
-
+from gym import spaces
 
 class MultiObjPoisson(Poisson):
     '''
@@ -14,6 +14,7 @@ class MultiObjPoisson(Poisson):
         self.optimization_type = kwargs.get('optimization_type','multi_objective')
         self.alpha = kwargs.get('alpha', 0.5) # default is to weight each objective equally
         self.num_iterations = kwargs.get('num_iterations', 10) # decide what a good default number of iterations is
+        self.observation_space = spaces.Box(low = np.array([-np.inf,-np.inf]), high= np.array([np.inf, np.inf]))
 
     def step(self, action):
         if self.optimization_type == 'multi_objective':
@@ -52,13 +53,12 @@ class MultiObjPoisson(Poisson):
         else: 
             return super().step(self, action)
 
-        def GetObservation(self):
-            if self.optimization_type == 'multi_objective':
-                num_dofs = self.fespace.GetTrueVSize()
-                stats = Statistics(self.errors, num_dofs=num_dofs)
+    def GetObservation(self):
+        if self.optimization_type == 'multi_objective':
+            num_dofs = self.fespace.GetTrueVSize()
+            stats = Statistics(self.errors, num_dofs=num_dofs)
+            obs = [stats.mean, stats.variance]
+            return np.array(obs)
 
-                obs = [stats.mean, stats.variance]
-                return np.array(obs)
-
-            else: 
-                return super().GetObservation(self)
+        else:
+            return super().GetObservation(self)
