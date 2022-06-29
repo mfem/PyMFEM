@@ -86,7 +86,9 @@ def letterbox_entry(legend):
 
 
 save_figs = True
-have_expert_policy = True
+have_expert_policy = False
+if fig_name_prefix == 'Example1a':
+   have_expert_policy = True
 
 print("*** Check that correct data was loaded here in plots.py ***")
 train_data_file = output_dir+'/training_data.csv'
@@ -155,12 +157,12 @@ if save_figs:
 
 
 ##########
-# make fig6
+# make fig6: Plot action vs. refinement step
 ##########
-## Plot action vs. refinement step
+
 plt.figure(figsize=(6,6))
 ax6 = plt.gca()
-if ex_type == 4: # expand if condition to accomdate any hp problem
+if ex_type == 4: # expand this "if" condition to accomdate any hp problem
    # print(rlactions[:,0])
    # plot(x1, y1, 'bo')
    plt.plot(rlactions_theta,'-o',ms=12.0, lw=4.0, ls='solid', color=palette_list[0], label=r'$\theta$ (h parameter)')
@@ -175,14 +177,16 @@ if ex_type == 4: # expand if condition to accomdate any hp problem
 
    # # overlay best two parameter policy according to meshes seen in training: theta = 0.6, rho = 0.4
    df_tpp = pd.read_csv(twopar_file)
-   tpp_ep_cost = df_tpp[df_tpp['theta'] == 0.6][df_tpp['rho'] == 0.4]['costs'].to_numpy().item()
-   print("Best tpp ep cost = ", tpp_ep_cost)
+   best_theta = df_tpp.iloc[df_tpp['costs'].argmin()]['theta']
+   best_rho   = df_tpp.iloc[df_tpp['costs'].argmin()]['rho']
+   tpp_ep_cost = df_tpp[df_tpp['theta'] == best_theta][df_tpp['rho'] == best_rho]['costs'].to_numpy().item()
+   print("Best tpp ep cost = ", tpp_ep_cost, " occured at (theta, rho)=(",best_theta, ", ",best_rho,")")
    print("RL cost = ", rlepisode_cost)
    # plt.plot(0.6 * np.ones(len(rlactions_theta)),'-x',lw=1.3, color=palette_list[0], label=r'optimal fixed $\theta$')
    # plt.plot(0.5 * np.ones(len(rlactions_rho)),'-x',lw=1.3, color=palette_list[1], label=r'optimal fixed $\rho$')
 
    
-   ax6.set_xlim(-0.5, 12.5)
+   ax6.set_xlim(-0.5, 14.5) # forces x axis to have ticks from 0 to 14
    ax6.set_ylim(0.0, 0.8)
    plt.xticks(fontsize=30)
    plt.yticks(fontsize=30)
@@ -241,8 +245,8 @@ if have_expert_policy:
    for k in range(19,len(errors),10):
       plt.loglog(dofs[k],errors[k],'-o',lw=1.3, color=palette_list[3], label='_nolegend_')
       plt.loglog(dofs[k][-1],errors[k][-1], marker="o", markersize=10, color=palette_list[3], alpha=alpha, label='_nolegend_')
-   plt.loglog(rldofs,rlerrors,'-o',lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
-   plt.loglog(rldofs[-1],rlerrors[-1], marker="o", markersize=10, color=palette_list[0], label='_nolegend_')
+   plt.loglog(rldofs,rlerrors,marker="^",lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
+   plt.loglog(rldofs[-1],rlerrors[-1], marker="^", markersize=10, color=palette_list[0], label='_nolegend_')
    ax4.set_xlabel(r'Degrees of freedom')
    ax4.set_ylabel(r'Relative error')
    ax4.legend()
@@ -264,7 +268,7 @@ if have_expert_policy:
    for k in range(19,len(errors),10):
       plt.loglog(cumdofs[k],errors[k],'-o',lw=1.3, color=palette_list[3], label='_nolegend_')
       # plt.loglog(cumdofs[k][-1],errors[k][-1], marker="o", markersize=10, color=palette_list[3], alpha=alpha, label='_nolegend_')
-   plt.loglog(cumrldofs,rlerrors,'-o',lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
+   plt.loglog(cumrldofs,rlerrors,marker="^",lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
    # plt.loglog(cumrldofs[-1],rlerrors[-1], marker="o", markersize=10, color=palette_list[0], label='_nolegend_')
    ax5.set_xlabel(r'Cumulative degrees of freedom')
    ax5.set_ylabel(r'Relative error')
