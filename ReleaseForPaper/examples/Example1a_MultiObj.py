@@ -102,6 +102,8 @@ parser.add_argument('--plotfigs', default=True, action='store_true')
 parser.add_argument('--no-plotfigs', dest='plotfigs', action='store_false')
 parser.add_argument('--savefigs', default=True, action='store_true')
 parser.add_argument('--no-savefigs', dest='savefigs', action='store_false')
+parser.add_argument('--observe_alpha', default = True, action='store_true')
+parser.add_argument('--no_observe_alpha', dest='observe_alpha', action='store_false')
 parser.add_argument('--alpha', default = 0.5, type = float)
 args = parser.parse_args()
 print("Parsed options = ", args)
@@ -121,8 +123,9 @@ prob_config = {
     'num_unif_ref'      : 1,
     'order'             : 2,
     'optimization_type' : 'multi_objective', 
-    'dof_threshold'	: 5e5,
+    'dof_threshold'	    : 5e5,
     'alpha'             : args.alpha,
+    'observe_alpha'     : args.observe_alpha,
     'num_iterations'    : 10,
     'num_batches'       : nbatches
 }
