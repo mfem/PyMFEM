@@ -121,6 +121,7 @@ prob_config = {
     'num_unif_ref'      : 1,
     'order'             : 2,
     'optimization_type' : 'multi_objective', 
+    'dof_threshold'	: 5e5,
     'alpha'             : args.alpha,
     'num_iterations'    : 10,
     'num_batches'       : nbatches
@@ -128,7 +129,6 @@ prob_config = {
 
 ## Change to minimum error or minimum dof problem
 if prob_config['optimization_type'] == 'error_threshold': # minimum dof
-    prob_config['dof_threshold']     = 5e5
     prob_config['error_threshold']   = 1e-4
 
 elif prob_config['optimization_type'] == 'dof_threshold': #minimum error

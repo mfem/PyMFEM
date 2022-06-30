@@ -36,7 +36,7 @@ class MultiObjPoisson(Poisson):
             self.sum_of_dofs += num_dofs
             self.global_error = global_error
 
-            if self.k >= self.num_iterations:
+            if self.k >= self.num_iterations or self.sum_of_dofs >= self.dof_threshold:
                 done = True
             else:
                 done = False
