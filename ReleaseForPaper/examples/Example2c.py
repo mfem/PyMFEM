@@ -107,6 +107,7 @@ parser.add_argument('--no-savefigs', dest='savefigs', action='store_false')
 parser.add_argument('--marginals', dest='marginals_eval', default=False, action='store_true')
 parser.add_argument('--angle', dest='angle_eval', type=float, default= np.pi / 2)
 parser.add_argument('--meshnum', dest='command_line_mesh', type=int, default=0)
+parser.add_argument('--savemesh', default=False, action='store_true')
 args = parser.parse_args()
 print("\n Parsed options = ", args, "\n")
 train=args.train
@@ -114,11 +115,13 @@ eval=args.eval
 save_data=args.savedata
 plot_figs=args.plotfigs
 save_figs=args.savefigs
+save_mesh=args.savemesh
 angle_abbrv = "{:.2f}".format(np.round(args.angle_eval,2)) # to keep filename length short
 
 restore_policy = False
 nbatches = 250 
 minimum_budget_problem = False  # mininum budget == error_threshold == minimize dofs
+
 
 ## Configuration for minimum budget problem
 prob_config = {
@@ -332,6 +335,13 @@ if eval and not args.marginals_eval:
     num_steps_of_RL_policy = 0
 
 
+    if save_mesh:
+        mkdir_p(output_dir+"/meshes_and_gfs/")
+        env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '_initial.mesh')
+        print("==> Saved initial mesh to ", output_dir, "/meshes_and_gfs/")
+        exit()
+            
+
     while not done:
         action = trainer.compute_single_action(obs,explore=False)
         obs, reward, done, info = env.step(action)
@@ -352,14 +362,13 @@ if eval and not args.marginals_eval:
         #     # env.render()
         #     env.RenderMesh()
         #     env.RenderHPmesh()
-        save_mesh = True
         if save_mesh:
             mkdir_p(output_dir+"/meshes_and_gfs/")
             gfname = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '.gf'
             env.RenderHPmesh(gfname=gfname)
             env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '.mesh')
             
-    # print("*** done with RL eval - exiting")
+    # print("***\n ==> done with RL eval - exiting\n***")
     # exit()
     
     # env.render() # WARNING: Rendering outside the RL loop won't show correct solution
@@ -443,8 +452,8 @@ if eval and not args.marginals_eval:
     #     for rho in range(5, 6):      # include only theta = 0.6, rho = 0.5
     # for theta in range(6, 7):        # include only theta = 0.6, rho = 0.4
     #     for rho in range(4, 5):      # include only theta = 0.6, rho = 0.4
-    for theta in range(5, 6):        # include only theta = 0.5, rho = 0.6
-        for rho in range(6, 7):      # include only theta = 0.5, rho = 0.6
+    for theta in range(6, 7):        # include only theta = 0.6, rho = 0.3
+        for rho in range(3, 4):      # include only theta = 0.6, rho = 0.3
             tp_actions[index_count] = np.array([theta/tp_nth, rho/tp_nth]) # note 1D action space
             if theta/tp_nth == 1 and rho/tp_nth == 1: # avoid some linear algerbra error if action is [1,1]
                 tp_actions[index_count] = np.array([0.99, 0.99])
@@ -637,7 +646,7 @@ if args.marginals_eval:
                         steps_taken += 1
 
 
-        #### tpp marginals data df and saving
+        #### expert marginals data df and saving
         df_exp = pd.DataFrame(rows, columns=headers)
         filename = output_dir+"/marginals/marginals_exp.csv"
         print("Saving expert poilcy marginals data to: ", filename)    
