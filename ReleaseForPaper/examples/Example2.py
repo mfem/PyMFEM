@@ -5,7 +5,6 @@
 """
 
 import os
-from sqlite3 import DatabaseError
 import matplotlib.pyplot as plt
 import pandas as pd
 import ray
@@ -14,13 +13,11 @@ from ray.tune.registry import register_env
 from tensorflow.python.ops.gen_array_ops import lower_bound
 from prob_envs.RobustPoisson import hpPoisson
 import numpy as np
-import time
 import seaborn as sns
 
 from ray.tune.logger import UnifiedLogger
 from datetime import datetime
 import json 
-import csv
 
 def print_config(dir, prob_config = None, rl_config = None):
     if (prob_config is not None):
@@ -264,7 +261,7 @@ else:
 
 ## Train policy
 ray.shutdown()
-ray.init(ignore_reinit_error=True)
+ray.init(ignore_reinit_error=True,log_to_driver=False)
 register_env("my_env", lambda config : hpPoisson(**prob_config))
 trainer = ppo.PPOTrainer(env="my_env", config=config,
                     logger_creator=custom_log_creator(checkpoint_dir))
@@ -292,17 +289,10 @@ if train:
     checkpoint_path = trainer.save()
     print(checkpoint_path)
 if eval and not train:
-    # temp_path = 'Example2c_2022-05-10_14-45-01/' # dof thresh 1e4; pacman mesh; 0.1 - 1.9 pi angle training; num_batch 100; fixed bug with init; not well-trained!
-    # temp_path = 'Example2c_2022-05-10_16-15-52/' # dof thresh 1e4; pacman mesh; 0.5 - 1.5 pi angle training; num_batch 250; fixed bug with init
-    # temp_path = 'Example2c_2022-05-11_12-07-27/' # dof thresh 1e4; L-shape mesh; 0.49 - 0.51 pi angle training; num_batch 250; fixed bug with init
-    # temp_path = 'Example2c_2022-05-11_19-11-37' # dof thresh 1e4; pacman mesh; 0.1 - 0.9 pi angle training; num batch 250; num_unif_ref = 0
-    # temp_path = 'Example2c_2022-05-12_12-41-20' # dof thresh 1e4; pacman mesh; 0.1 - 0.9 pi angle training; num batch 250; num_unif_ref = 0; truncate episodes
-    temp_path = 'Example2c_2022-06-27_16-11-05' # same as 2022-05-12_12-41-20 but with new getObs = (budget, log(mean), log(sd)) w/ ee_norm=variable
-    # temp_path = 'Example2c_2022-05-25_14-54-17' # dof thresh 1e4; pacman mesh; 0.01 - 0.99 pi angle training; num batch 250; num_unif_ref = 0; truncate episodes
+    temp_path = 'Example2c_2022-06-27_16-11-05'
 
     chkpt_num = nbatches
     checkpoint_dir = log_dir + temp_path
-    # checkpoint_path=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt < 100
     checkpoint_path=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt > 99 and <1000
     output_dir = output_dir_ + temp_path
     env.overshootallowed = False
@@ -357,31 +347,15 @@ if eval and not args.marginals_eval:
         print("episode cost = ", rlepisode_cost)
         rldofs.append(info['num_dofs'])
         rlerrors.append(info['global_error'])
-        # if env.k > 8:
-        #     print("Rendering step ", env.k)
-        #     # env.render()
-        #     env.RenderMesh()
-        #     env.RenderHPmesh()
         if save_mesh:
             mkdir_p(output_dir+"/meshes_and_gfs/")
             gfname = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '.gf'
             env.RenderHPmesh(gfname=gfname)
             env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '.mesh')
-            
-    # print("***\n ==> done with RL eval - exiting\n***")
-    # exit()
-    
-    # env.render() # WARNING: Rendering outside the RL loop won't show correct solution
-    # env.RenderMesh()
-    # env.RenderHPmesh()
-    # print("\nRendering RL policies and exiting\n")
-    # exit()
 
     if env.overshootallowed:
         env.overshootallowed = False
         print("\n *** Disabled allowing 5% overshoot of DoF threshold *** \n")
-        # env.overshootallowed = True
-        # print("\n *** STILL ALLOWING 5% overshoot of DoF threshold *** \n")
 
 
     #############

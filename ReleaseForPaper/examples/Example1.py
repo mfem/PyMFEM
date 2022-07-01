@@ -23,8 +23,6 @@ def print_config(dir, prob_config = None, rl_config = None):
     if (prob_config is not None):
         with open(dir+"/prob_config.json", 'w') as f: 
             json.dump(prob_config,f)
-            # for key, value in prob_config.items(): 
-                # f.write('%s:%s\n' % (key, value))
 
     if (rl_config is not None):
         with open(dir+"/rl_config.json", 'w') as f: 
@@ -58,14 +56,9 @@ def custom_log_creator(custom_path):
 
 
 sns.set()
-# sns.set_context("notebook")
-# sns.set_context("paper")
-# sns.set_context("paper", font_scale=1.5)
 sns.set_context("talk", font_scale=3)
-# sns.set_style("ticks")
 custom_params = {"axes.spines.right": False, "axes.spines.top": False}
 sns.set_theme(style="ticks", rc=custom_params)
-# sns.set_theme(style="white", rc=custom_params)
 
 plt.rc('text', usetex=True)
 plt.rc('font', family='serif')
@@ -102,6 +95,8 @@ parser.add_argument('--plotfigs', default=True, action='store_true')
 parser.add_argument('--no-plotfigs', dest='plotfigs', action='store_false')
 parser.add_argument('--savefigs', default=True, action='store_true')
 parser.add_argument('--no-savefigs', dest='savefigs', action='store_false')
+parser.add_argument('--nbatches', dest='num_batches', type=int, default=150)
+parser.add_argument('--demo', dest='demo', action='store_true')
 args = parser.parse_args()
 print("Parsed options = ", args)
 train=args.train
@@ -109,9 +104,9 @@ eval=args.eval
 save_data=args.savedata
 plot_figs=args.plotfigs
 save_figs=args.savefigs
+nbatches = args.num_batches
 
 restore_policy = False
-nbatches = 150
 minimum_budget_problem = True  # mininum budget == error_threshold == minimize dofs
 
 ## Configuration for minimum budget problem
@@ -141,7 +136,6 @@ model_config = {
 ## rllib parameters
 config = ppo.DEFAULT_CONFIG.copy()
 config['batch_mode'] = 'truncate_episodes'
-# config['batch_mode'] = 'complete_episodes'
 config['sgd_minibatch_size'] = 100
 config['rollout_fragment_length'] = 50
 config['num_workers'] = 10
@@ -151,6 +145,12 @@ config['gamma'] = 1.0
 config['lr'] = 1e-4
 config['seed'] = 4000
 config['model'] = model_config
+
+if args.demo:
+    config['sgd_minibatch_size'] = 50
+    config['rollout_fragment_length'] = 50
+    config['num_workers'] = 1
+    config['train_batch_size'] = config['rollout_fragment_length'] * config['num_workers']
 
 # for limited printing of rl_config
 rl_config = {
@@ -170,9 +170,8 @@ rl_config = {
     STEP 2: Training
 """
 
-homepath = os.path.expanduser("~")
-log_dir = os.getcwd() + '/logs/'
-output_dir_ = os.getcwd() + '/output/'
+log_dir = '~/capsule/results/logs/'
+output_dir_ = '~/capsule/results/output/'
 
 if (restore_policy):
     chkpt_num = nbatches
@@ -189,7 +188,7 @@ else:
 
 ## Train policy
 ray.shutdown()
-ray.init(ignore_reinit_error=True)
+ray.init(ignore_reinit_error=True,log_to_driver=False)
 register_env("my_env", lambda config : Poisson(**prob_config))
 trainer = ppo.PPOTrainer(env="my_env", config=config, 
                        logger_creator=custom_log_creator(checkpoint_dir))
