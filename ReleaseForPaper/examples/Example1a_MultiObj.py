@@ -123,7 +123,7 @@ prob_config = {
     'num_unif_ref'      : 1,
     'order'             : 2,
     'optimization_type' : 'multi_objective', 
-    'dof_threshold'	    : 5e5,
+    'dof_threshold'     : 1e5,
     'alpha'             : args.alpha,
     'observe_alpha'     : args.observe_alpha,
     'num_iterations'    : 10,
@@ -337,3 +337,8 @@ if plot_figs or save_figs:
     print("Calling plots.py")
     string_to_call = "python plots.py " + output_dir
     subprocess.call(string_to_call, shell=True)
+
+    # print name of output_dir to file for plotting with slurm scritps
+    file = open("output_dir4plots.txt","a")
+    file.write("\n" + output_dir)
+    file.close() 

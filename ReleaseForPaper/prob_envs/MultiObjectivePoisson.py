@@ -13,7 +13,9 @@ class MultiObjPoisson(Poisson):
         super().__init__(**kwargs)
         self.optimization_type = kwargs.get('optimization_type','multi_objective')
         self.alpha = kwargs.get('alpha', 0.5) # default is to weight each objective equally
+        self.observe_alpha = kwargs.get('observe_alpha', True)
         self.num_iterations = kwargs.get('num_iterations', 10) # decide what a good default number of iterations is
+
         if self.observe_alpha == True:
             self.observation_space = spaces.Box(low = np.array([-np.inf,-np.inf, 0.0]), high= np.array([np.inf, np.inf, 1.0]))
         else:
@@ -57,11 +59,15 @@ class MultiObjPoisson(Poisson):
             return super().step(self, action)
 
     def GetObservation(self):
+        # print("get observation")
         if self.optimization_type == 'multi_objective':
             if self.observe_alpha == True:
                 num_dofs = self.fespace.GetTrueVSize()
                 stats = Statistics(self.errors, num_dofs=num_dofs)
                 obs = [stats.mean, stats.variance, self.alpha]
+                # print("obs = {}".format(obs))
+                # print("obs shape = {}".format(np.array(obs).shape))
+                # print("alpha type = {}".format(type(self.alpha)))
                 return np.array(obs)
             else:
                 num_dofs = self.fespace.GetTrueVSize()
@@ -78,5 +84,5 @@ class MultiObjPoisson(Poisson):
                 # set random alpha value
                 self.alpha = np.random.uniform(low = 0, high = 1)
         
-        super().reset(self)
+        super().reset()
 
