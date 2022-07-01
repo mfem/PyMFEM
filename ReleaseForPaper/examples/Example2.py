@@ -1,6 +1,6 @@
 """
     
-    EXAMPLE 2-C: hp-refinement policy for L-shaped domain problem with robust angles
+    EXAMPLE 2: hp-refinement policy for L-shaped domain problem with robust angles
 
 """
 

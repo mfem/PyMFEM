@@ -5,50 +5,6 @@ from utils.ReentrantCorner import *
 import os
 from os.path import expanduser, join
 from mfem.ser import intArray
-from utils.Statistics import GlobalError
-
-class RobustThresholdPoisson(Poisson):
-
-    def __init__(self,**kwargs):
-        super().__init__(**kwargs)
-        self.dof_threshold_lower = kwargs.get('dof_threshold_lower',1e3)
-        self.dof_threshold_upper = kwargs.get('dof_threshold_upper',1e4)
-        self.error_threshold_lower = kwargs.get('error_threshold_lower',1e-2)
-        self.error_threshold_upper = kwargs.get('error_threshold_upper',1e-3)
-        self.observation_space = spaces.Box(low=np.array([0.0,-np.inf,-np.inf,0.0]), high=np.array([1.0,np.inf,np.inf,np.inf]), dtype=np.float32)
-        # self.observation_space = spaces.Box(low=np.array([0.0,0.0]), high=np.array([1.0,np.inf]), dtype=np.float32)
-    
-    def reset(self, random_threshold=True):
-        if random_threshold:
-            if self.optimization_type == 'error_threshold':
-                self.error_threshold = np.random.uniform(low=self.error_threshold_lower, high=self.error_threshold_upper)
-            else:
-                self.dof_threshold = np.random.uniform(low=self.dof_threshold_lower, high=self.dof_threshold_upper)
-        obs = super().reset()
-        return obs
-    
-    def set_error_threshold(self, error_threshold):
-        self.error_threshold = error_threshold
-
-    def set_dof_threshold(self, dof_threshold):
-        self.dof_threshold = dof_threshold
-
-    def GetObservation(self):
-        obs = super().GetObservation()
-        if self.optimization_type == 'error_threshold':
-            # obs = np.array([obs[0], -np.log2(self.error_threshold)])
-            obs = np.append(obs, -np.log2(self.error_threshold))
-        else:
-            # obs = np.array([obs[0], np.log2(self.dof_threshold)])
-            obs = np.append(obs, np.log2(self.dof_threshold))
-        return obs
-
-    # def step(self, action):
-    #     obs, reward, done, info = super().step(action)
-    #     if done == True and self.optimization_type == 'dof_threshold' and self.trainingmode:
-    #         # reward -= np.log2(self.dof_threshold/self.dof_threshold_lower)
-    #         reward -= self.order/self.mesh.Dimension() * np.log2(self.dof_threshold/self.dof_threshold_lower)
-    #     return obs, reward, done, info
 
 class RobustAnglePoisson(Poisson):
 
@@ -93,7 +49,6 @@ class RobustAnglePoisson(Poisson):
     def reset(self, random_angle=True):
         if random_angle:
             angle = np.random.uniform(self.angle_lower, self.angle_upper, 1).item()
-            # print("Resetting env angle to ", angle)
             self.set_angle(angle)
         return super().reset()
 
@@ -128,25 +83,9 @@ class hpPoisson(RobustAnglePoisson):
         self.x.Update()
         self.x.Assign(0.0)
         self.x.ProjectBdrCoefficient(self.BC, self.ess_bdr)
-        # self.fespace.UpdatesFinished()
         self.a.Update()
         self.b.Update()
 
-    # # p-refine when using quantile or Dorfler refinement strategy
-    #
-    # def PrefineQ(self, p_refine_list): 
-    #     for j in range(len(p_refine_list)):
-    #         current_order = self.fespace.GetElementOrder(p_refine_list[j])
-    #         self.fespace.SetElementOrder(p_refine_list[j], current_order + 1)
-    #     self.fespace.Update(False)
-    #     self.x.Update()
-    #     self.x.Assign(0.0)
-    #     self.x.ProjectBdrCoefficient(self.BC, self.ess_bdr)
-    #     # self.fespace.UpdatesFinished()
-    #     self.a.Update()
-    #     self.b.Update()
-
-    
     def CloseMesh(self, delta_p = 1):
         # Loop through all elements in mesh until the maximum difference in polynomial
         # orders across all edges is no more than delta_p
@@ -185,7 +124,6 @@ class hpPoisson(RobustAnglePoisson):
         action = np.clip(action, 0.0, 1.0)
         theta = action[0].item() 
         rho = action[1] * theta 
-        # self.refinement_strategy == 'max'
         self.Prefine(theta, rho)
         self.Refine(theta)
         self.CloseMesh()
@@ -234,8 +172,6 @@ class hpPoisson(RobustAnglePoisson):
         for i in range(self.mesh.GetNE()):
             element_error_list.append((i, self.errors[i]))
         element_error_list.sort(key=lambda x:x[1], reverse=True)
-        # cutoff_number = math.ceil(action * (self.mesh.GetNE() - 1))
-        # cutoff_error = element_error_list[cutoff_number][1]*(1-1e-4)
 
         for i in range(self.mesh.GetNE()):
             vertex_coords = self.GetElementVertices(i)
@@ -264,7 +200,6 @@ class hpPoisson(RobustAnglePoisson):
         self.x.Update()
         self.x.Assign(0.0)
         self.x.ProjectBdrCoefficient(self.BC, self.ess_bdr)
-        # self.fespace.UpdatesFinished()
         self.a.Update()
         self.b.Update()
 
@@ -275,7 +210,6 @@ class hpPoisson(RobustAnglePoisson):
         self.x.Update()
         self.x.Assign(0.0)
         self.x.ProjectBdrCoefficient(self.BC, self.ess_bdr)
-        # self.fespace.UpdatesFinished()
         self.a.Update()
         self.b.Update()
 
@@ -283,7 +217,7 @@ class hpPoisson(RobustAnglePoisson):
 
         self.AssembleAndSolve()
         self.errors = self.GetLocalErrors()
-        global_error = GlobalError(self.errors)
+        global_error = self.GetGlobalError()
         if self.k == 1:
             cost = np.log2(global_error)
         else:
@@ -298,7 +232,6 @@ class hpPoisson(RobustAnglePoisson):
         if self.sum_of_dofs > self.dof_threshold:
             cost = 0.0
             done = True
-        # print("Sum of dofs = ", self.sum_of_dofs, " thresh = ", self.dof_threshold, " done = ", done)
 
         obs = self.GetObservation()
         info = {'global_error':self.global_error, 'num_dofs':num_dofs, 'max_local_errors':np.amax(self.errors)}
@@ -306,166 +239,3 @@ class hpPoisson(RobustAnglePoisson):
         self.k += 1
 
         return obs, -cost, done, info
-
-        # print("theta=", thetaDet, " ==> dof count    = ", self.sum_of_dofs)
-        # print("theta=", thetaDet, " ==> episode cost = ", episode_cost)
-        # print("theta=", thetaDet, " ==> global error = ", self.global_error)
-        # print("")
-
-        # if self.sum_of_dofs >= self.dof_threshold: # this will exit the while loop so save in rows
-        #    self.rows.append([thetaDet, self.k, self.mesh.GetNE(), self.fespace.GetTrueVSize(), self.sum_of_dofs, self.global_error, episode_cost])
-
-        # input()
-
-
-
-
-class hpWavefront(Poisson): # all functions copied from hpPoisson subclass but don't want to subclass RobustAngle
-
-    def __init__(self,**kwargs):
-        super().__init__(**kwargs)
-        self.action_space = spaces.Box(low=0.0, high=0.999, shape=(2,), dtype=np.float32)
-
-    # p-refine for 'max' refinement strategy: 
-    #   action items theta and rao are in [0,1]
-    #   inputs to Prefein theta and rho_times_theta are in [0,1] with rho_times_theta <= theta by construction
-    #   1) collect elements with errors >= theta * (max error)
-    #   2) from that collection, p-refine if and only if error > rho_times_theta * (max error)
-    #   effectively: 
-    #      p-refine all elements with error in  (rho_times_theta * (max error), theta * (max_error)]
-    def Prefine(self, theta, rho_times_theta):   
-        mark_to_p_refine = []
-        threshold = theta * np.max(self.errors)
-        for i in range(self.mesh.GetNE()):
-            if threshold >= self.errors[i]:
-                mark_to_p_refine.append((i, self.errors[i]))
-        mark_to_p_refine.sort(key=lambda x:x[1], reverse=True)
-        for i in range(len(mark_to_p_refine)):
-            if mark_to_p_refine[i][1] > rho_times_theta * np.max(self.errors):
-                current_element = mark_to_p_refine[i][0]
-                current_order = self.fespace.GetElementOrder(current_element)
-                self.fespace.SetElementOrder(current_element, current_order + 1)
-        
-        self.fespace.Update(False)
-        self.x.Update()
-        self.x.Assign(0.0)
-        self.x.ProjectBdrCoefficient(self.BC, self.ess_bdr)
-        # self.fespace.UpdatesFinished()
-        self.a.Update()
-        self.b.Update()
-
-    # # p-refine when using quantile or Dorfler refinement strategy
-    #
-    # def PrefineQ(self, p_refine_list): 
-    #     for j in range(len(p_refine_list)):
-    #         current_order = self.fespace.GetElementOrder(p_refine_list[j])
-    #         self.fespace.SetElementOrder(p_refine_list[j], current_order + 1)
-    #     self.fespace.Update(False)
-    #     self.x.Update()
-    #     self.x.Assign(0.0)
-    #     self.x.ProjectBdrCoefficient(self.BC, self.ess_bdr)
-    #     # self.fespace.UpdatesFinished()
-    #     self.a.Update()
-    #     self.b.Update()
-
-    
-    def CloseMesh(self, delta_p = 1):
-        # Loop through all elements in mesh until the maximum difference in polynomial
-        # orders across all edges is no more than delta_p
-        neighbor_table = self.mesh.ElementToElementTable()
-        while True:
-            mesh_closed = True
-            elements_to_p_refine = []
-            for i in range(self.mesh.GetNE()):
-                neighbor_row = neighbor_table.GetRow(i)
-                row_size = neighbor_table.RowSize(i)
-                neighbor_array = intArray(row_size)
-                neighbor_array.Assign(neighbor_row)
-                for l in range(row_size):
-                    neighbor_order = self.fespace.GetElementOrder(neighbor_array[l])
-                    if neighbor_order - self.fespace.GetElementOrder(i) > delta_p:
-                        elements_to_p_refine.append(i)
-                        mesh_closed = False
-            p_refine_elements = np.unique(elements_to_p_refine).tolist()
-            for k in range(len(p_refine_elements)):
-                current_element = p_refine_elements[k]
-                current_order = self.fespace.GetElementOrder(current_element)
-                self.fespace.SetElementOrder(current_element, current_order + 1)
-            if mesh_closed:
-                break
-
-        self.fespace.Update(False)
-        self.x.Update()
-        self.x.Assign(0.0)
-        self.x.ProjectBdrCoefficient(self.BC, self.ess_bdr)
-        # self.fespace.UpdatesFinished()
-        self.a.Update()
-        self.b.Update()
-
-    # overriding UpdateMesh in Poisson (grand)-parent class
-    def UpdateMesh(self, action):
-        action = np.clip(action, 0.0, 1.0)
-        theta = action[0].item() 
-        rho_times_theta = action[1] * theta 
-        # self.refinement_strategy == 'max'
-        self.Prefine(theta, rho_times_theta)
-        self.Refine(theta)
-        self.CloseMesh()
-    
-    def GetElementVertices(self, k):
-        Tr = self.mesh.GetElementTransformation(k)
-        physical_pts = np.zeros((4,2))
-        reference_pt = mfem.IntegrationPoint()
-        for i in range(2):
-            for j in range(2):
-                reference_pt.Set(float(i),float(j),0.0,0.0)
-                physical_pts[i+2*j,:] = Tr.Transform(reference_pt)
-        return physical_pts
-
-
-    def RenderHPmesh(self, gfname=None):
-        ordersfec = mfem.L2_FECollection(0, self.dim)
-        ordersfes = mfem.FiniteElementSpace(self.mesh, ordersfec)
-        orders = mfem.GridFunction(ordersfes)
-        for i in range(0, self.mesh.GetNE()):
-            elem_dofs = 0
-            elem_dofs = ordersfes.GetElementDofs(i)
-            # orders[elem_dofs[0]] = self.errors[i]
-            orders[elem_dofs[0]] = self.fespace.GetElementOrder(i)
-        sol_sock = mfem.socketstream("localhost", 19916)
-        sol_sock.precision(8)
-        sol_sock.send_solution(self.mesh, orders)
-        title = "step " + str(self.k)
-        sol_sock.send_text('keys ARjlmp*****' + " window_title '" + title)
-        sol_sock.send_text("valuerange 1.0 8.0 \n")
-        if gfname:
-            orders.Save(str(gfname), 8)  # second input is "precision"
-
-
-
-
-#################
-#################
-#################
-
-# other marking strategy routines
-
-        # theta = action[0].item()
-        # if self.mode == 'hp':
-        #     rho = action[1].item() 
-        #     rho = theta * rho
-        # if self.mode == 'hp':
-        #     if self.refinement_strategy == 'quantile':
-        #         h_refine_list, p_refine_list = self.MarkForRefinement(theta, rho)
-        #         self.PrefineQ(p_refine_list)
-        #         self.RefineQ(h_refine_list)
-        #     if self.refinement_strategy == 'max':
-        #         self.Prefine(theta, rho)
-        #         self.Refine(theta)
-        #     if self.refinement_strategy == 'dorfler':
-        #         h_refine_list, p_refine_list = self.DorflerMark(theta, rho)
-        #         self.PrefineQ(p_refine_list)
-        #         self.RefineQ(h_refine_list)
-        #     self.CloseMesh()
-        # if self.mode == 'h':
-        #     self.Refine(theta)

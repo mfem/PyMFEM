@@ -1,6 +1,6 @@
 """
     
-    EXAMPLE 1-A: h-refinement policy for L-shaped domain problem
+    EXAMPLE 1: h-refinement policy for L-shaped domain problem
 
 """
 

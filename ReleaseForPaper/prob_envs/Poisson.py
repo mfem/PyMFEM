@@ -4,16 +4,15 @@ from os.path import expanduser, join
 import gym
 from gym import spaces
 import numpy as np
-from tensorflow.python.ops.gen_array_ops import Const
 import mfem.ser as mfem
 from mfem.ser import intArray
-from utils.Statistics import Statistics, GlobalError
 from utils.Solution_LShaped import *
 from utils.Solution_Wavefront import *
 from utils.Solution_SinSin import *
 
 from scipy.sparse import csr_matrix
 from scipy.sparse.linalg import dsolve
+
 def SolveSparseSystem(A,b,x):
    A_I = A.GetIArray()
    A_J = A.GetJArray()
@@ -26,7 +25,6 @@ def SolveSparseSystem(A,b,x):
    Y = dsolve.spsolve(SpA, npX, use_umfpack=False)
    for j in range(n):
       x[j] = Y[j]
-
 
 class Poisson(gym.Env):
 
@@ -71,8 +69,6 @@ class Poisson(gym.Env):
         self.action_space = spaces.Box(low=0.0, high=0.999, shape=(1,), dtype=np.float32)
         self.observation_space = spaces.Box(low = np.array([0.0,-np.inf,-np.inf]), 
                                             high= np.array([1.0, np.inf, np.inf]))
-        # self.observation_space = spaces.Box(low=-np.inf, high=np.inf, shape=(3,))
-        # self.observation_space = spaces.Box(low=-np.inf, high=np.inf, shape=(5,))
 
         self.zero = mfem.ConstantCoefficient(0.0)
         self.zero_vector = mfem.Vector(self.dim)
@@ -92,7 +88,7 @@ class Poisson(gym.Env):
         self.Setup()
         self.AssembleAndSolve()
         self.errors = self.GetLocalErrors()
-        self.global_error = max(GlobalError(self.errors),1e-12)
+        self.global_error = max(self.GetGlobalError(),1e-12)
         self.sum_of_dofs = self.fespace.GetTrueVSize()
         obs = self.GetObservation()
         return obs
@@ -104,7 +100,7 @@ class Poisson(gym.Env):
             self.AssembleAndSolve()
             self.errors = self.GetLocalErrors()
             num_dofs = self.fespace.GetTrueVSize()
-            self.global_error = GlobalError(self.errors)
+            self.global_error = self.GetGlobalError()
             if self.k == 1:
                 cost = np.log2(self.sum_of_dofs + num_dofs)
             else:
@@ -128,7 +124,7 @@ class Poisson(gym.Env):
             else:
                 self.AssembleAndSolve()
                 self.errors = self.GetLocalErrors()
-                global_error = GlobalError(self.errors)
+                global_error = self.GetGlobalError()
                 if self.k == 1:
                     cost = np.log2(global_error)
                 else:
@@ -168,30 +164,7 @@ class Poisson(gym.Env):
         self.ess_bdr.Assign(1)
         self.x.ProjectBdrCoefficient(self.BC, self.ess_bdr)
         self.flux_fespace = mfem.FiniteElementSpace(self.mesh, fec, dim)
-        # self.estimator = mfem.LpErrorEstimator(2, self.BC, self.x)
         self.estimator = mfem.LSZienkiewiczZhuEstimator(integ, self.x)
-
-    # def GetObservation(self):
-    #     num_dofs = self.fespace.GetTrueVSize()
-    #     if self.ee_normalizer == 'variable-order':
-    #         stats = Statistics(self.errors, num_dofs)
-    #     elif self.ee_normalizer == 'fixed-order':
-    #         stats = Statistics(self.errors, num_dofs, p=self.order)
-    #         if self.mesh.Dimension() != 2:
-    #             print("***** \n ***** \n Consider passing d=self.mesh.Dimension() since dim != 2\n ***** \n *****")
-    #     else:
-    #         print("ee_normalizer must be set to 'variable-order' or 'fixed-order' in prob_config\n Exiting.")
-    #         exit()
-        
-    #     if self.optimization_type == 'error_threshold':
-    #         # budget = -np.log( abs(self.error_threshold - self.global_error)/self.global_error + 1e-16)
-    #         budget = self.error_threshold/self.global_error
-    #     else:
-    #         # budget = np.log( self.sum_of_dofs / (abs(self.dof_threshold - self.sum_of_dofs) + 1e-12 ))
-    #         budget = self.sum_of_dofs/self.dof_threshold
-        
-    #     obs = [budget, stats.mean, stats.variance]
-    #     return np.array(obs)
 
     def GetObservation(self):
         d = 2
@@ -230,8 +203,6 @@ class Poisson(gym.Env):
         B = mfem.Vector();  X = mfem.Vector()
         self.a.FormLinearSystem(ess_tdof_list, self.x, self.b, A, X, B, 1)
         AA = mfem.OperatorHandle2SparseMatrix(A)
-        # M = mfem.GSSmoother(AA)
-        # mfem.PCG(AA, M, B, X, -1, 2000, 1e-12, 0.0)
         AA.Threshold(0.0, False)
         SolveSparseSystem(AA,B,X)
         self.a.RecoverFEMSolution(X,self.b,self.x)
@@ -245,6 +216,9 @@ class Poisson(gym.Env):
             self.mfem_errors[i] /= self.solution_norm
             errors[i] = self.mfem_errors[i]
         return errors
+
+    def GetGlobalError(self):
+        return np.sqrt(np.sum(np.abs(self.errors)**2))
 
     def RenderMesh(self):
         sol_sock = mfem.socketstream("localhost", 19916)
