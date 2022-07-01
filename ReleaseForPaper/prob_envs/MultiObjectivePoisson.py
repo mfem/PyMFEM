@@ -13,8 +13,13 @@ class MultiObjPoisson(Poisson):
         super().__init__(**kwargs)
         self.optimization_type = kwargs.get('optimization_type','multi_objective')
         self.alpha = kwargs.get('alpha', 0.5) # default is to weight each objective equally
+        self.observe_alpha = kwargs.get('observe_alpha', True)
         self.num_iterations = kwargs.get('num_iterations', 10) # decide what a good default number of iterations is
-        self.observation_space = spaces.Box(low = np.array([-np.inf,-np.inf]), high= np.array([np.inf, np.inf]))
+
+        if self.observe_alpha == True:
+            self.observation_space = spaces.Box(low = np.array([-np.inf,-np.inf, 0.0]), high= np.array([np.inf, np.inf, 1.0]))
+        else:
+            self.observation_space = spaces.Box(low = np.array([-np.inf,-np.inf]), high= np.array([np.inf, np.inf]))
 
     def step(self, action):
         if self.optimization_type == 'multi_objective':
@@ -36,7 +41,7 @@ class MultiObjPoisson(Poisson):
             self.sum_of_dofs += num_dofs
             self.global_error = global_error
 
-            if self.k >= self.num_iterations:
+            if self.k >= self.num_iterations or self.sum_of_dofs >= self.dof_threshold:
                 done = True
             else:
                 done = False
@@ -54,11 +59,30 @@ class MultiObjPoisson(Poisson):
             return super().step(self, action)
 
     def GetObservation(self):
+        # print("get observation")
         if self.optimization_type == 'multi_objective':
-            num_dofs = self.fespace.GetTrueVSize()
-            stats = Statistics(self.errors, num_dofs=num_dofs)
-            obs = [stats.mean, stats.variance]
-            return np.array(obs)
+            if self.observe_alpha == True:
+                num_dofs = self.fespace.GetTrueVSize()
+                stats = Statistics(self.errors, num_dofs=num_dofs)
+                obs = [stats.mean, stats.variance, self.alpha]
+                # print("obs = {}".format(obs))
+                # print("obs shape = {}".format(np.array(obs).shape))
+                # print("alpha type = {}".format(type(self.alpha)))
+                return np.array(obs)
+            else:
+                num_dofs = self.fespace.GetTrueVSize()
+                stats = Statistics(self.errors, num_dofs=num_dofs)
+                obs = [stats.mean, stats.variance]
+                return np.array(obs)
 
         else:
             return super().GetObservation(self)
+
+    def reset(self):
+        if self.optimization_type == 'multi_objective':
+            if self.observe_alpha == True: 
+                # set random alpha value
+                self.alpha = np.random.uniform(low = 0, high = 1)
+        
+        super().reset()
+

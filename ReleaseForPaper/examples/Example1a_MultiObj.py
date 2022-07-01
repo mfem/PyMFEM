@@ -102,6 +102,8 @@ parser.add_argument('--plotfigs', default=True, action='store_true')
 parser.add_argument('--no-plotfigs', dest='plotfigs', action='store_false')
 parser.add_argument('--savefigs', default=True, action='store_true')
 parser.add_argument('--no-savefigs', dest='savefigs', action='store_false')
+parser.add_argument('--observe_alpha', default = True, action='store_true')
+parser.add_argument('--no_observe_alpha', dest='observe_alpha', action='store_false')
 parser.add_argument('--alpha', default = 0.5, type = float)
 args = parser.parse_args()
 print("Parsed options = ", args)
@@ -121,14 +123,15 @@ prob_config = {
     'num_unif_ref'      : 1,
     'order'             : 2,
     'optimization_type' : 'multi_objective', 
+    'dof_threshold'     : 1e5,
     'alpha'             : args.alpha,
+    'observe_alpha'     : args.observe_alpha,
     'num_iterations'    : 10,
     'num_batches'       : nbatches
 }
 
 ## Change to minimum error or minimum dof problem
 if prob_config['optimization_type'] == 'error_threshold': # minimum dof
-    prob_config['dof_threshold']     = 5e5
     prob_config['error_threshold']   = 1e-4
 
 elif prob_config['optimization_type'] == 'dof_threshold': #minimum error
@@ -334,3 +337,8 @@ if plot_figs or save_figs:
     print("Calling plots.py")
     string_to_call = "python plots.py " + output_dir
     subprocess.call(string_to_call, shell=True)
+
+    # print name of output_dir to file for plotting with slurm scritps
+    file = open("output_dir4plots.txt","a")
+    file.write("\n" + output_dir)
+    file.close() 
