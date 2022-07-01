@@ -86,7 +86,9 @@ def letterbox_entry(legend):
 
 
 save_figs = True
-have_expert_policy = True
+have_expert_policy = False
+if fig_name_prefix == 'Example1a':
+   have_expert_policy = True
 
 print("*** Check that correct data was loaded here in plots.py ***")
 train_data_file = output_dir+'/training_data.csv'
@@ -142,25 +144,27 @@ if have_expert_policy:
 plt.figure(figsize=(6,6))
 plt.plot(cost[:-1], color=palette_list[4], lw=2, label=r'Training curve')
 ax1 = plt.gca()
-ax1.set_xlabel("Epoch")
+ax1.set_xlabel("Number of training batches", fontsize=22)
 if minimum_budget_problem:
    # ax1.set_ylabel(r'$\log_2(N_{\rm{dofs}})$')
-   ax1.set_ylabel(r'mean episode cost')
+   ax1.set_ylabel(r'Mean episode cost $\left(\mathbb{E}_{\theta\sim\pi}\left[ \log_2(J_k)\right]\right)$', fontsize=22)
 else:
    # ax1.set_ylabel(r'$\log_2(E_{\rm{Final}})$')
-   ax1.set_ylabel(r'mean episode cost')
+   ax1.set_ylabel(r'Mean episode cost $\left(\mathbb{E}_{\theta\sim\pi}\left[ \log_2(\eta_k)\right]\right)$', fontsize=22)
 # ax1.legend()
+ax1.tick_params(axis='x', labelsize=22)
+ax1.tick_params(axis='y', labelsize=22)
 if save_figs:
    plt.savefig(output_dir+'/'+fig_name_prefix+'_training-curve.pdf',format='pdf', bbox_inches='tight')
 
 
 ##########
-# make fig6
+# make fig6: Plot action vs. refinement step
 ##########
-## Plot action vs. refinement step
+
 plt.figure(figsize=(6,6))
 ax6 = plt.gca()
-if ex_type == 4: # expand if condition to accomdate any hp problem
+if ex_type == 4: # expand this "if" condition to accomdate any hp problem
    # print(rlactions[:,0])
    # plot(x1, y1, 'bo')
    plt.plot(rlactions_theta,'-o',ms=12.0, lw=4.0, ls='solid', color=palette_list[0], label=r'$\theta$ (h parameter)')
@@ -175,14 +179,16 @@ if ex_type == 4: # expand if condition to accomdate any hp problem
 
    # # overlay best two parameter policy according to meshes seen in training: theta = 0.6, rho = 0.4
    df_tpp = pd.read_csv(twopar_file)
-   tpp_ep_cost = df_tpp[df_tpp['theta'] == 0.6][df_tpp['rho'] == 0.4]['costs'].to_numpy().item()
-   print("Best tpp ep cost = ", tpp_ep_cost)
+   best_theta = df_tpp.iloc[df_tpp['costs'].argmin()]['theta']
+   best_rho   = df_tpp.iloc[df_tpp['costs'].argmin()]['rho']
+   tpp_ep_cost = df_tpp[df_tpp['theta'] == best_theta][df_tpp['rho'] == best_rho]['costs'].to_numpy().item()
+   print("Best tpp ep cost = ", tpp_ep_cost, " occured at (theta, rho)=(",best_theta, ", ",best_rho,")")
    print("RL cost = ", rlepisode_cost)
    # plt.plot(0.6 * np.ones(len(rlactions_theta)),'-x',lw=1.3, color=palette_list[0], label=r'optimal fixed $\theta$')
    # plt.plot(0.5 * np.ones(len(rlactions_rho)),'-x',lw=1.3, color=palette_list[1], label=r'optimal fixed $\rho$')
 
    
-   ax6.set_xlim(-0.5, 12.5)
+   ax6.set_xlim(-0.5, 14.5) # forces x axis to have ticks from 0 to 14
    ax6.set_ylim(0.0, 0.8)
    plt.xticks(fontsize=30)
    plt.yticks(fontsize=30)
@@ -192,12 +198,14 @@ if ex_type == 4: # expand if condition to accomdate any hp problem
    text_file.close()
    # ax6.set_xlabel('mesh = ' + args.mesh_abbrv + ' tpp cost = ' +  str(np.round(tpp_ep_cost,2)) + ' RL cost = ' + str(np.round(rlepisode_cost, 2)))
    # ax6.set_ylabel(r'parameter values in trained (AM)$^2$R policy')
-   # ax6.legend(loc='upper right')
+   # ax6.legend(loc='lower left', prop={'size': 26})
 
 else:
    plt.plot(rlactions,'-o',lw=1.3, label=r'(AM)$^2$R policy')
-   ax6.set_ylabel(r'$\theta$ in trained (AM)$^2$R policy')
-   ax6.set_xlabel(r'Refinement step')
+   ax6.set_ylabel(r'$\theta$ selected by trained (AM)$^2$R policy', fontsize=22)
+   ax6.set_xlabel(r'Refinement iteration $(k)$', fontsize=22)
+   ax6.tick_params(axis='x', labelsize=22)
+   ax6.tick_params(axis='y', labelsize=22)
 if save_figs:
    plt.savefig(output_dir+'/'+fig_name_prefix+'_fig6.pdf',format='pdf', bbox_inches='tight')
 
@@ -216,14 +224,14 @@ if have_expert_policy:
    y3 = ax3.get_ylim()
    # note: factor 0.1 below makes hatch area have height = 10% of the range of the y3 axis
    plt.fill_between(x3, y3[0] - 0.1 * (y3[1]-y3[0]), rlepisode_cost, hatch='\\\\\\\\', facecolor=palette_list[9], label=r'Apparent performance barrier')
-   ax3.set_xlabel(r'$\theta$ (constant) in AMR policy')
+   ax3.set_xlabel(r'Fixed parameter in AMR policy ($\theta$)', fontsize=22)
    if minimum_budget_problem:
-      # ax3.set_ylabel(r'$\log_2(N_{\rm{dofs}})$')
-      ax3.set_ylabel(r'cost at final step')
+      ax3.set_ylabel(r'Final error $\left(\log_2(\eta_k)\right)$', fontsize=22)
    else:
-      # ax3.set_ylabel(r'$\log_2(E_{\rm{Final}})$')
-      ax3.set_ylabel(r'cost at final step')
-   ax3.legend(loc='upper center')
+      ax3.set_ylabel(r'Cost at final step $(\log_2(J_k))$', fontsize=22)
+   ax3.tick_params(axis='x', labelsize=22)
+   ax3.tick_params(axis='y', labelsize=22)
+   ax3.legend(loc='upper left', prop={'size': 14})
    plt.tight_layout()
 
    if save_figs:
@@ -241,11 +249,13 @@ if have_expert_policy:
    for k in range(19,len(errors),10):
       plt.loglog(dofs[k],errors[k],'-o',lw=1.3, color=palette_list[3], label='_nolegend_')
       plt.loglog(dofs[k][-1],errors[k][-1], marker="o", markersize=10, color=palette_list[3], alpha=alpha, label='_nolegend_')
-   plt.loglog(rldofs,rlerrors,'-o',lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
-   plt.loglog(rldofs[-1],rlerrors[-1], marker="o", markersize=10, color=palette_list[0], label='_nolegend_')
-   ax4.set_xlabel(r'Degrees of freedom')
-   ax4.set_ylabel(r'Relative error')
-   ax4.legend()
+   plt.loglog(rldofs,rlerrors,marker="^",lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
+   plt.loglog(rldofs[-1],rlerrors[-1], marker="^", markersize=10, color=palette_list[0], label='_nolegend_')
+   ax4.set_xlabel(r'Degrees of freedom (ndofs$(\mathcal{T}_k)$)', fontsize=22)
+   ax4.set_ylabel(r'Global error estimate $(\eta_k)$', fontsize=22)
+   ax4.tick_params(axis='x', labelsize=22)
+   ax4.tick_params(axis='y', labelsize=22)
+   ax4.legend(loc='upper right', prop={'size': 14})
    if save_figs:
       plt.savefig(output_dir+'/'+fig_name_prefix+'_fig4.pdf',format='pdf', bbox_inches='tight')
 
@@ -264,11 +274,16 @@ if have_expert_policy:
    for k in range(19,len(errors),10):
       plt.loglog(cumdofs[k],errors[k],'-o',lw=1.3, color=palette_list[3], label='_nolegend_')
       # plt.loglog(cumdofs[k][-1],errors[k][-1], marker="o", markersize=10, color=palette_list[3], alpha=alpha, label='_nolegend_')
-   plt.loglog(cumrldofs,rlerrors,'-o',lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
+   plt.loglog(cumrldofs,rlerrors,marker="^",lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
    # plt.loglog(cumrldofs[-1],rlerrors[-1], marker="o", markersize=10, color=palette_list[0], label='_nolegend_')
-   ax5.set_xlabel(r'Cumulative degrees of freedom')
-   ax5.set_ylabel(r'Relative error')
-   ax5.legend()
+   ax5.set_xlabel(r'Cumulative degrees of freedom $(J_k)$', fontsize=22)
+   ax5.set_ylabel(r'Global error estimate $(\eta_k)$', fontsize=22)
+   ax5.tick_params(axis='x', labelsize=22)
+   ax5.tick_params(axis='y', labelsize=22)
+   ax5.legend(loc='upper right', prop={'size': 14})
+   # for i in range(9,len(errors),10):
+   #    print("Cum dofs = ", cumdofs[i][-1])
+   # print("cumrldofs = ", cumrldofs[-1])
    if save_figs:
       plt.savefig(output_dir+'/'+fig_name_prefix+'_fig5.pdf',format='pdf', bbox_inches='tight')
 
@@ -282,17 +297,16 @@ if have_expert_policy:
    plt.hlines(rlepisode_cost, x2[0], x2[1], lw=4, color=palette_list[0], label=r'(AM)$^2$R policy cost')
    y2 = ax2.get_ylim()
    # note: factor 0.1 below makes hatch area have height = 10% of the range of the y2 axis
-   plt.fill_between(x2, y3[0] - 0.1 * (y2[1]-y2[0]), rlepisode_cost, hatch='\\\\\\\\', facecolor=palette_list[9], label=r'Apparent performance barrier')
+   plt.fill_between(x2, y2[0] - 0.1 * (y2[1]-y2[0]), rlepisode_cost, hatch='\\\\\\\\', facecolor=palette_list[9], label=r'Apparent performance barrier')
 
    ax2.set_xlabel(r'')
    if minimum_budget_problem:
-      # ax2.set_ylabel(r'$\log_2(N_{\rm{dofs}})$')
-      ax2.set_ylabel(r'cost at final step')
+      ax2.set_ylabel(r'Final error $\left(\log_2(\eta_k)\right)$', fontsize=22)
    else:
-      # ax2.set_ylabel(r'$\log_2(E_{\rm{Final}})$')
-      ax2.set_ylabel(r'cost at final step')
-   lgd = ax2.legend()
-   letterbox_entry(lgd)
+      ax2.set_ylabel(r'Cost at final step $(\log_2(J_k))$', fontsize=22)
+   ax2.tick_params(axis='y', labelsize=22)
+   # lgd = ax2.legend(loc='upper right', prop={'size': 20})
+   # letterbox_entry(lgd)
    sns.despine(ax=ax2, bottom=True)
    ax2.tick_params(bottom=False)
    plt.tight_layout()

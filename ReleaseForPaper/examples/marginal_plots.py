@@ -355,6 +355,34 @@ if case == 102: # Plot fixed angle action vs. refinement step WITH best two-para
     subprocess.call(["open", filename])
 
 
+case = 103
+if case == 103: # Alternate comparison of marginals plots, (two param vs RL only)
+    plt.figure(figsize=(6,6))
+    ax2 = sns.boxenplot(y=tpp_avg_costs, width=.6, color=palette_list[3], label='_nolegend_')
+    x2 = ax2.get_xlim()
+    plt.hlines(rl_avg_costs, x2[0], x2[1], lw=4, color=palette_list[0], label=r'(AM)$^2$R policy cost')
+    y2 = ax2.get_ylim()
+    # note: factor 0.1 below makes hatch area have height = 10% of the range of the y2 axis
+    # plt.fill_between(x2, y3[0] - 0.1 * (y2[1]-y2[0]), rlepisode_cost, hatch='\\\\\\\\', facecolor=palette_list[9], label=r'Apparent performance barrier')
+
+
+    ax2.set_ylim(y2[0]-2.0, y2[1]) # forces y axis to leave space for legend at bottom
+
+    ax2.set_xlabel(r'')
+    ax2.set_ylabel(r'Average final error $\left(\mathbb{E}_{\omega}\left[ \log_2(\eta_k)\right]\right)$', fontsize=26)
+    ax2.tick_params(axis='y', labelsize=26)
+    lgd = ax2.legend(loc='lower center', prop={'size': 22})
+    letterbox_entry(lgd)
+    sns.despine(ax=ax2, bottom=True)
+    ax2.tick_params(bottom=False)
+
+    plt.tight_layout()
+
+    plt.savefig(output_dir+'/marginals/Ex2c_marginals_letterbox.pdf',format='pdf', bbox_inches='tight')
+    filename = output_dir+'/marginals/Ex2c_marginals_letterbox.pdf'
+    import subprocess
+    subprocess.call(["open", filename])
+
 
 # rlactions = df_rl[df_rl['angle'] == 0.0][['theta', 'rho']].to_numpy()
 # plt.plot(rlactions[:,0],'-o',lw=1.3, label=r'$\theta$ (h parameter)')

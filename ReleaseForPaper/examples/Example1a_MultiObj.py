@@ -102,6 +102,9 @@ parser.add_argument('--plotfigs', default=True, action='store_true')
 parser.add_argument('--no-plotfigs', dest='plotfigs', action='store_false')
 parser.add_argument('--savefigs', default=True, action='store_true')
 parser.add_argument('--no-savefigs', dest='savefigs', action='store_false')
+parser.add_argument('--observe_alpha', default = True, action='store_true')
+parser.add_argument('--no_observe_alpha', dest='observe_alpha', action='store_false')
+parser.add_argument('--alpha', default = 0.5, type = float)
 args = parser.parse_args()
 print("Parsed options = ", args)
 train=args.train
@@ -111,7 +114,7 @@ plot_figs=args.plotfigs
 save_figs=args.savefigs
 
 restore_policy = False
-nbatches = 10
+nbatches = 150
 
 ## Configuration for multi objective problem
 prob_config = {
@@ -120,14 +123,15 @@ prob_config = {
     'num_unif_ref'      : 1,
     'order'             : 2,
     'optimization_type' : 'multi_objective', 
-    'alpha'             : 0.5,
+    'dof_threshold'     : 1e5,
+    'alpha'             : args.alpha,
+    'observe_alpha'     : args.observe_alpha,
     'num_iterations'    : 10,
     'num_batches'       : nbatches
 }
 
 ## Change to minimum error or minimum dof problem
 if prob_config['optimization_type'] == 'error_threshold': # minimum dof
-    prob_config['dof_threshold']     = 5e5
     prob_config['error_threshold']   = 1e-4
 
 elif prob_config['optimization_type'] == 'dof_threshold': #minimum error
@@ -185,7 +189,8 @@ if (restore_policy):
     output_dir = output_dir_ + temp_path
 else:
     timestr = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
-    temp_path = 'Example1a_MO_' + timestr
+    alpha_str = str(args.alpha).replace('.','_') + '_'
+    temp_path = 'Example1a_MO_alpha' + alpha_str + timestr
     checkpoint_dir = log_dir + temp_path
     output_dir = output_dir_ + temp_path
 
@@ -332,3 +337,8 @@ if plot_figs or save_figs:
     print("Calling plots.py")
     string_to_call = "python plots.py " + output_dir
     subprocess.call(string_to_call, shell=True)
+
+    # print name of output_dir to file for plotting with slurm scritps
+    file = open("output_dir4plots.txt","a")
+    file.write("\n" + output_dir)
+    file.close() 

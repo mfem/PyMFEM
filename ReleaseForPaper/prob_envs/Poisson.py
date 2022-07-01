@@ -203,16 +203,19 @@ class Poisson(gym.Env):
         else:
             budget = self.sum_of_dofs/self.dof_threshold
 
-        if self.ee_normalizer == 'variable-order': # hp case
+        if self.ee_normalizer == 'variable-order': # hp case (or h case, optionally)
             zeta = -np.log(len(eta)**(1/2) * np.abs(eta))/np.log(num_dofs)
             mean = np.mean(zeta)
             sd = np.sqrt(np.var(zeta, ddof=0)) # default ddof = 0 (variance normalized by 1/(N-ddof))
             obs = [budget, mean, sd]
-        else:
+        elif self.ee_normalizer == 'fixed-order': # only makes sense in h case
             zeta = np.sqrt(len(eta)) * num_dofs**(p/d) * eta
             mean = np.sqrt(np.mean(zeta**2)) # technically the Euclidean mean: the sqrt of the second moment
             sd = np.sqrt(np.var(zeta, ddof=0)) # default ddof = 0 (variance normalized by 1/(N-ddof))
             obs = [budget, np.log2(1+mean), np.log2(1+sd)]
+        else:
+            print("==> Setting for ee_normalizer must be fixed-order or variable-order\n Exiting")
+            exit()
         
         return np.array(obs)
 
