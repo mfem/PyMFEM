@@ -54,9 +54,13 @@ sns.set_context("talk", font_scale=3)
 custom_params = {"axes.spines.right": False, "axes.spines.top": False}
 sns.set_theme(style="ticks", rc=custom_params)
 
-plt.rc('text', usetex=True)
-plt.rc('font', family='serif')
-plt.rc('text.latex', preamble=r'\usepackage{amsmath} \usepackage{amssymb}')
+try:
+   plt.rc('text', usetex=True)
+   plt.rc('font', family='serif')
+   plt.rc('text.latex', preamble=r'\usepackage{amsmath} \usepackage{amssymb}')
+except:
+   print("LaTeX not installed")
+
 palette_list = sns.color_palette(palette="tab10", n_colors=10)
 
 def letterbox_entry(legend):
