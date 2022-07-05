@@ -176,13 +176,13 @@ output_dir_ = '~/capsule/results/output/'
 if (restore_policy):
     chkpt_num = nbatches
     # set the path of the checkpoint
-    temp_path = 'Example1a_2022-04-15_10-55-16'
+    temp_path = 'Example1_2022-04-15_10-55-16'
     checkpoint_dir = log_dir + temp_path
     chkpt_file=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num)
     output_dir = output_dir_ + temp_path
 else:
     timestr = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
-    temp_path = 'Example1a_' + timestr
+    temp_path = 'Example1_' + timestr
     checkpoint_dir = log_dir + temp_path
     output_dir = output_dir_ + temp_path
 
@@ -209,7 +209,7 @@ if train:
         checkpoint_path = trainer.save(checkpoint_dir)
         print(checkpoint_path)
 if eval and not train:
-    temp_path = 'Example1a_2022-04-15_10-55-16'
+    temp_path = 'Example1_2022-04-15_10-55-16'
     chkpt_num = nbatches
     checkpoint_dir = log_dir + temp_path
     # checkpoint_path=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt < 100
@@ -254,13 +254,15 @@ if eval:
     costs = []
     actions = []
     nth = 100
+    if args.demo:
+        nth = 10
     errors = []
     dofs = []
     for i in range(1, nth):
         print(i)
         action = np.array([i/nth])
         actions.append(action.item())
-        print("action = ", action.item())
+        print("policy with constant theta = ", action.item())
         env.reset()
         done = False
         episode_cost_tmp = 0
