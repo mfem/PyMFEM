@@ -369,7 +369,7 @@ if case == 103: # Alternate comparison of marginals plots, (two param vs RL only
     ax2.set_ylim(y2[0]-2.0, y2[1]) # forces y axis to leave space for legend at bottom
 
     ax2.set_xlabel(r'')
-    ax2.set_ylabel(r'Average final error $\left(\mathbb{E}_{\omega}\left[ \log_2(\eta_k)\right]\right)$', fontsize=26)
+    ax2.set_ylabel(r'Average final $\log_2$(error) $\left(\mathbb{E}_{\omega}\left[ \log_2(\eta_k)\right]\right)$', fontsize=22)
     ax2.tick_params(axis='y', labelsize=26)
     lgd = ax2.legend(loc='lower center', prop={'size': 22})
     letterbox_entry(lgd)
