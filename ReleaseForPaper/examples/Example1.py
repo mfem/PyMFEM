@@ -89,11 +89,11 @@ parser.add_argument('--train', default=True, action='store_true')
 parser.add_argument('--no-train', dest='train', action='store_false')
 parser.add_argument('--eval', default=True, action='store_true')
 parser.add_argument('--no-eval', dest='eval', action='store_false')
-parser.add_argument('--savedata', default=False, action='store_true')
+parser.add_argument('--savedata', default=True, action='store_true')
 parser.add_argument('--no-savedata', dest='savedata', action='store_false')
-parser.add_argument('--plotfigs', default=False, action='store_true')
+parser.add_argument('--plotfigs', default=True, action='store_true')
 parser.add_argument('--no-plotfigs', dest='plotfigs', action='store_false')
-parser.add_argument('--savefigs', default=False, action='store_true')
+parser.add_argument('--savefigs', default=True, action='store_true')
 parser.add_argument('--no-savefigs', dest='savefigs', action='store_false')
 parser.add_argument('--nbatches', dest='num_batches', type=int, default=150)
 parser.add_argument('--demo', dest='demo', action='store_true')
@@ -170,8 +170,9 @@ rl_config = {
     STEP 2: Training
 """
 
-log_dir = '/path/to/logs/'
-output_dir_ = '/path/to/output/'
+homepath = os.path.expanduser("~")
+log_dir = homepath + '/capsule/results/logs/'
+output_dir_ = homepath + '/capsule/results/output/'
 
 if (restore_policy):
     chkpt_num = nbatches
