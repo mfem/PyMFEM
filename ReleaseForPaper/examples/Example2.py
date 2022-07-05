@@ -23,8 +23,6 @@ def print_config(dir, prob_config = None, rl_config = None):
     if (prob_config is not None):
         with open(dir+"/prob_config.json", 'w') as f: 
             json.dump(prob_config,f)
-            # for key, value in prob_config.items(): 
-                # f.write('%s:%s\n' % (key, value))
 
     if (rl_config is not None):
         with open(dir+"/rl_config.json", 'w') as f: 
@@ -57,14 +55,9 @@ def custom_log_creator(custom_path):
     return logger_creator
 
 sns.set()
-# sns.set_context("notebook")
-# sns.set_context("paper")
-# sns.set_context("paper", font_scale=1.5)
 sns.set_context("talk", font_scale=3)
-# sns.set_style("ticks")
 custom_params = {"axes.spines.right": False, "axes.spines.top": False}
 sns.set_theme(style="ticks", rc=custom_params)
-# sns.set_theme(style="white", rc=custom_params)
 
 plt.rc('text', usetex=True)
 plt.rc('font', family='serif')
@@ -234,28 +227,19 @@ else:
 """
 
 homepath = os.path.expanduser("~")
-log_dir = os.getcwd() + '/logs/'
-output_dir_ = os.getcwd() + '/output/'
+log_dir = homepath + '/logs/'
+output_dir_ = homepath + '/output/'
 
 if (restore_policy):
     chkpt_num = nbatches
     # set the path of the checkpoint
-    # temp_path = 'Example2c_2022-05-10_14-45-01/' # dof thresh 1e4; pacman mesh; 0.1 - 1.9 pi angle training; num_batch 100; fixed bug with init; not well-trained!
-    # temp_path = 'Example2c_2022-05-10_16-15-52/' # dof thresh 1e4; pacman mesh; 0.5 - 1.5 pi angle training; num_batch 250; fixed bug with init
-    # temp_path = 'Example2c_2022-05-11_12-07-27/' # dof thresh 1e4; L-shape mesh; 0.49 - 0.51 pi angle training; num_batch 250; fixed bug with init
-    # temp_path = 'Example2c_2022-05-11_19-11-37' # dof thresh 1e4; pacman mesh; 0.1 - 0.9 pi angle training; num batch 250; num_unif_ref = 0
-    # temp_path = 'Example2c_2022-05-12_12-41-20' # dof thresh 1e4; pacman mesh; 0.1 - 0.9 pi angle training; num batch 250; num_unif_ref = 0; truncate episodes
-    temp_path = 'Example2c_2022-06-27_16-11-05' # same as 2022-05-12_12-41-20 but with new getObs = (budget, log(mean), log(sd)) w/ ee_norm=variable
-    # temp_path = 'Example2c_2022-05-25_14-54-17' # dof thresh 1e4; pacman mesh; 0.01 - 0.99 pi angle training; num batch 250; num_unif_ref = 0; truncate episodes
-    
-
-    
+    temp_path = 'set_me'
     checkpoint_dir = log_dir + temp_path
     chkpt_file=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num)
     output_dir = output_dir_ + temp_path
 else:
     timestr = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
-    temp_path = 'Example2c_' + timestr
+    temp_path = 'Example2_' + timestr
     checkpoint_dir = log_dir + temp_path
     output_dir = output_dir_ + temp_path
 
@@ -266,13 +250,6 @@ register_env("my_env", lambda config : hpPoisson(**prob_config))
 trainer = ppo.PPOTrainer(env="my_env", config=config,
                     logger_creator=custom_log_creator(checkpoint_dir))
 env = hpPoisson(**prob_config)
-
-# obs = env.reset()
-# env.render()
-# action = np.array([0.1, 0.1])
-# obs, reward, done, info = env.step(action)
-# env.render()
-# exit()
 
 if (restore_policy):
     trainer.restore(chkpt_file)
@@ -289,7 +266,7 @@ if train:
     checkpoint_path = trainer.save()
     print(checkpoint_path)
 if eval and not train:
-    temp_path = 'Example2c_2022-06-27_16-11-05'
+    temp_path = 'Example2_2022-06-27_16-11-05'
 
     chkpt_num = nbatches
     checkpoint_dir = log_dir + temp_path

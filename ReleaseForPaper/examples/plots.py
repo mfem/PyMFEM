@@ -22,28 +22,16 @@ output_dir = str(args.file_path)
 if args.angle_abbrv is not None:
    print("Plotting for angle ", args.angle_abbrv)
 
-if   output_dir.find('Example1a') != -1:
+if   output_dir.find('Example1') != -1:
    print("Loading data from ", output_dir)
-   fig_name_prefix = 'Example1a'
+   fig_name_prefix = 'Example1'
    ex_type = 1
-elif output_dir.find('Example1b') != -1:
+elif output_dir.find('Example2') != -1:
+   assert args.angle_abbrv is not None , "Need to provide angle to plots.py for Example 2
+   assert args.mesh_abbrv is not None, "Need to provide mesh name to plots.py for Example 2 "
    print("Loading data from ", output_dir)
-   fig_name_prefix = 'Example1b'
-   ex_type = 2
-elif output_dir.find('Example1c') != -1:
-   print("Loading data from ", output_dir)
-   fig_name_prefix = 'Example1c'
-   ex_type = 3
-elif output_dir.find('Example2c') != -1:
-   assert args.angle_abbrv is not None , "Need to provide angle to plots.py for Example 2c"
-   assert args.mesh_abbrv is not None, "Need to provide mesh name to plots.py for Example 2c: "
-   print("Loading data from ", output_dir)
-   fig_name_prefix = 'Example2c_' + args.mesh_abbrv + '_angle_' + args.angle_abbrv
+   fig_name_prefix = 'Example2_' + args.mesh_abbrv + '_angle_' + args.angle_abbrv
    ex_type = 4
-elif output_dir.find('Example3a') != -1:
-   print("Loading data from ", output_dir)
-   fig_name_prefix = 'Example3a'
-   ex_type = 5
 else:
    print("Provided output directory: ", output_dir)
    print("*** Error: output directory path not a recognized format, quitting.")
@@ -87,7 +75,7 @@ def letterbox_entry(legend):
 
 save_figs = True
 have_expert_policy = False
-if fig_name_prefix == 'Example1a':
+if fig_name_prefix == 'Example1':
    have_expert_policy = True
 
 print("*** Check that correct data was loaded here in plots.py ***")
@@ -110,7 +98,7 @@ if args.angle_abbrv is not None:
 df = pd.read_csv(train_data_file, index_col=0)
 cost = df.index.to_numpy()
 
-if ex_type == 4: # example 2c
+if ex_type == 4: # example 2
    df = pd.read_csv(rldata_file)
    rlepisode_cost = df['rlepisode_cost'][0]
    rlactions_theta = df['theta'].to_numpy()
@@ -314,8 +302,7 @@ if have_expert_policy:
       plt.savefig(output_dir+'/'+fig_name_prefix+'_rlepisode_cost.pdf',format='pdf', bbox_inches='tight')
 
 
-if ex_type == 4: # example 2c
-
+if ex_type == 4: # example 2
    ##########
    # make fig rl_vs_two_param
    ##########

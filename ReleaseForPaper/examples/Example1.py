@@ -177,7 +177,7 @@ output_dir_ = homepath + '/capsule/results/output/'
 if (restore_policy):
     chkpt_num = nbatches
     # set the path of the checkpoint
-    temp_path = 'Example1_2022-04-15_10-55-16'
+    temp_path = 'set_me'
     checkpoint_dir = log_dir + temp_path
     chkpt_file=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num)
     output_dir = output_dir_ + temp_path
