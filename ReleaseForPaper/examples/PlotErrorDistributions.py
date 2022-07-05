@@ -25,13 +25,13 @@ plt.rc('font', family='serif')
 plt.rc('text.latex', preamble=r'\usepackage{amsmath} \usepackage{amssymb}')
 
 #### PARAMETERS
-fig = 'a' # 'a' or 'b'
+fig = 'b' # 'a' or 'b'
 num_refs = 6
 num_unif_ref = 1
 order = 1
 recompute = True
 save_fig = True
-theta = 0.0
+theta = 0.5
 ####
 
 if fig == 'a':
@@ -55,6 +55,7 @@ if recompute:
       env = Poisson(**prob_config)
       env.reset()
       df_ErrorHistory = pd.DataFrame()
+      df_ErrorHistory = SaveErrorsToFile(env, df_ErrorHistory, file_name)
       for _ in range(num_refs):
             env.step(theta)
             df_ErrorHistory = SaveErrorsToFile(env, df_ErrorHistory, file_name)
@@ -68,7 +69,7 @@ for i, col in enumerate(df.columns):
       num_non_zeros = len(df[col]) - df[col].isna().sum()
       # df[col] *= num_non_zeros**((1+order)/2)
       # df[col] *= num_non_zeros**(1/2) * num_dofs**(order/2)
-      df[col] = -np.log(num_non_zeros*df[col]**2) / np.log(num_dofs)
+      df[col] = -np.log(num_non_zeros**(1/2)*df[col]) / np.log(num_dofs)
       df.rename(columns={col:str(i)}, inplace=True)
 
 dofs = np.array(dofs)
@@ -89,11 +90,11 @@ ax = sns.boxenplot(data=df, width=.6,
                   # palette="coolwarm"
                   # palette="Spectral"
                   )
-if fig != 'a':
-      ax.set_yscale('log')
+# if fig != 'a':
+#       ax.set_yscale('log')
 ax.set_ylabel(r'$\{\zeta_T \colon T\in\mathcal{T}_k\}$')
 # ax.set_ylabel(r'Local error estimate exponents $\{\zeta_T \colon T\in\mathcal{T}_k\}$')
-# ax.set_ylabel(r'$\{\overline{\eta}_T \colon T\in\mathcal{T}_k\}$')
+# ax.set_ylabel(r'$\{\widetilde{\eta}_T \colon T\in\mathcal{T}_k\}$')
 # ax.set_ylabel(r'Normalized local error estimates $\{\overline{\eta}_T \colon T\in\mathcal{T}_k\}$')
 ax.set_xlabel(r'Refinement $k$')
 
