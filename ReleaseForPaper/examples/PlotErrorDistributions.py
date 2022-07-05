@@ -25,7 +25,7 @@ plt.rc('font', family='serif')
 plt.rc('text.latex', preamble=r'\usepackage{amsmath} \usepackage{amssymb}')
 
 #### PARAMETERS
-fig = 'a' # 'a' or 'b'
+fig = 'b' # 'a' or 'b'
 num_refs = 6
 num_unif_ref = 1
 order = 1
@@ -69,7 +69,7 @@ for i, col in enumerate(df.columns):
       num_non_zeros = len(df[col]) - df[col].isna().sum()
       # df[col] *= num_non_zeros**((1+order)/2)
       # df[col] *= num_non_zeros**(1/2) * num_dofs**(order/2)
-      df[col] = -np.log(num_non_zeros*df[col]**2) / np.log(num_dofs)
+      df[col] = -np.log(num_non_zeros**(1/2)*df[col]) / np.log(num_dofs)
       df.rename(columns={col:str(i)}, inplace=True)
 
 dofs = np.array(dofs)
@@ -90,8 +90,8 @@ ax = sns.boxenplot(data=df, width=.6,
                   # palette="coolwarm"
                   # palette="Spectral"
                   )
-if fig != 'a':
-      ax.set_yscale('log')
+# if fig != 'a':
+#       ax.set_yscale('log')
 ax.set_ylabel(r'$\{\zeta_T \colon T\in\mathcal{T}_k\}$')
 # ax.set_ylabel(r'Local error estimate exponents $\{\zeta_T \colon T\in\mathcal{T}_k\}$')
 # ax.set_ylabel(r'$\{\widetilde{\eta}_T \colon T\in\mathcal{T}_k\}$')
