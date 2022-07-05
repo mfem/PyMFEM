@@ -93,7 +93,7 @@ parser.add_argument('--savedata', default=False, action='store_true')
 parser.add_argument('--no-savedata', dest='savedata', action='store_false')
 parser.add_argument('--plotfigs', default=False, action='store_true')
 parser.add_argument('--no-plotfigs', dest='plotfigs', action='store_false')
-parser.add_argument('--savefigs', default=True, action='store_true')
+parser.add_argument('--savefigs', default=False, action='store_true')
 parser.add_argument('--no-savefigs', dest='savefigs', action='store_false')
 parser.add_argument('--nbatches', dest='num_batches', type=int, default=150)
 parser.add_argument('--demo', dest='demo', action='store_true')
@@ -170,8 +170,8 @@ rl_config = {
     STEP 2: Training
 """
 
-log_dir = '~/capsule/results/logs/'
-output_dir_ = '~/capsule/results/output/'
+log_dir = '/path/to/logs/'
+output_dir_ = '/path/to/output/'
 
 if (restore_policy):
     chkpt_num = nbatches
@@ -212,7 +212,6 @@ if eval and not train:
     temp_path = 'Example1_2022-04-15_10-55-16'
     chkpt_num = nbatches
     checkpoint_dir = log_dir + temp_path
-    # checkpoint_path=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt < 100
     checkpoint_path=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt > 99 and <1000
     output_dir = output_dir_ + temp_path
 
