@@ -69,7 +69,7 @@ for i, col in enumerate(df.columns):
       num_non_zeros = len(df[col]) - df[col].isna().sum()
       # df[col] *= num_non_zeros**((1+order)/2)
       # df[col] *= num_non_zeros**(1/2) * num_dofs**(order/2)
-      df[col] = -np.log(num_non_zeros*df[col]**2) / np.log(num_dofs)
+      df[col] = -np.log(num_non_zeros**(1/2)*df[col]) / np.log(num_dofs)
       df.rename(columns={col:str(i)}, inplace=True)
 
 dofs = np.array(dofs)
