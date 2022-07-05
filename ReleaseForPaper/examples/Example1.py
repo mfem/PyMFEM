@@ -91,9 +91,9 @@ parser.add_argument('--eval', default=True, action='store_true')
 parser.add_argument('--no-eval', dest='eval', action='store_false')
 parser.add_argument('--savedata', default=True, action='store_true')
 parser.add_argument('--no-savedata', dest='savedata', action='store_false')
-parser.add_argument('--plotfigs', default=True, action='store_true')
+parser.add_argument('--plotfigs', default=False, action='store_true')
 parser.add_argument('--no-plotfigs', dest='plotfigs', action='store_false')
-parser.add_argument('--savefigs', default=True, action='store_true')
+parser.add_argument('--savefigs', default=False, action='store_true')
 parser.add_argument('--no-savefigs', dest='savefigs', action='store_false')
 parser.add_argument('--nbatches', dest='num_batches', type=int, default=150)
 parser.add_argument('--demo', dest='demo', action='store_true')
@@ -324,6 +324,7 @@ if save_data:
     STEP 5: Plots
 """
 
+# Creating figures will require installing LaTeX
 if plot_figs or save_figs:
 
     import subprocess
