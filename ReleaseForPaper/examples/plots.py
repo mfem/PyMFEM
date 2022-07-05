@@ -27,7 +27,7 @@ if   output_dir.find('Example1') != -1:
    fig_name_prefix = 'Example1'
    ex_type = 1
 elif output_dir.find('Example2') != -1:
-   assert args.angle_abbrv is not None , "Need to provide angle to plots.py for Example 2
+   assert args.angle_abbrv is not None , "Need to provide angle to plots.py for Example 2 "
    assert args.mesh_abbrv is not None, "Need to provide mesh name to plots.py for Example 2 "
    print("Loading data from ", output_dir)
    fig_name_prefix = 'Example2_' + args.mesh_abbrv + '_angle_' + args.angle_abbrv
