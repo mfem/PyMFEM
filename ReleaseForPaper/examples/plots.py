@@ -235,9 +235,9 @@ if have_expert_policy:
    plt.fill_between(x3, y3[0] - 0.1 * (y3[1]-y3[0]), rlepisode_cost, hatch='\\\\\\\\', facecolor=palette_list[9], label=r'Apparent performance barrier')
    ax3.set_xlabel(r'Fixed parameter in AMR policy ($\theta$)', fontsize=22)
    if minimum_budget_problem:
-      ax3.set_ylabel(r'Final error $\left(\log_2(\eta_k)\right)$', fontsize=22)
-   else:
       ax3.set_ylabel(r'Cost at final step $(\log_2(J_k))$', fontsize=22)
+   else:
+      ax3.set_ylabel(r'Final error $\left(\log_2(\eta_k)\right)$', fontsize=22)
    ax3.tick_params(axis='x', labelsize=22)
    ax3.tick_params(axis='y', labelsize=22)
    ax3.legend(loc='upper left', prop={'size': 14})
@@ -318,9 +318,9 @@ if have_expert_policy:
 
    ax2.set_xlabel(r'')
    if minimum_budget_problem:
-      ax2.set_ylabel(r'Final error $\left(\log_2(\eta_k)\right)$', fontsize=22)
-   else:
       ax2.set_ylabel(r'Cost at final step $(\log_2(J_k))$', fontsize=22)
+   else:
+      ax2.set_ylabel(r'Final error $\left(\log_2(\eta_k)\right)$', fontsize=22)
    ax2.tick_params(axis='y', labelsize=22)
    # lgd = ax2.legend(loc='upper right', prop={'size': 20})
    # letterbox_entry(lgd)
