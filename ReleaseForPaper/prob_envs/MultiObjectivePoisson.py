@@ -11,15 +11,20 @@ class MultiObjPoisson(Poisson):
 
     def __init__(self,**kwargs):
         super().__init__(**kwargs)
-        self.optimization_type = kwargs.get('optimization_type','multi_objective')
-        self.alpha = kwargs.get('alpha', 0.5) # default is to weight each objective equally
-        self.observe_alpha = kwargs.get('observe_alpha', True)
-        self.num_iterations = kwargs.get('num_iterations', 10) # decide what a good default number of iterations is
+        self.optimization_type  = kwargs.get('optimization_type','multi_objective')
+        self.alpha              = kwargs.get('alpha', 0.5)              # default is to weight each objective equally
+        self.observe_alpha      = kwargs.get('observe_alpha', True)     # observe alpha, so policy will depend on alpha
+        self.observe_budget     = kwargs.get('observe_budget', True)    # observe budget = (current step #)/(total number of steps)
+        self.num_iterations     = kwargs.get('num_iterations', 10)      # decide what a good default number of iterations is
 
-        if self.observe_alpha == True:
-            self.observation_space = spaces.Box(low = np.array([-np.inf,-np.inf, 0.0]), high= np.array([np.inf, np.inf, 1.0]))
-        else:
+        # define range of expected values for the observations
+        if self.observe_alpha == True and self.observe_budget == True:
+            self.observation_space = spaces.Box(low = np.array([-np.inf,-np.inf, 0.0, 0.0]), high= np.array([np.inf, np.inf, 1.0, 1.0]))
+        elif self.observe_alpha == False and self.observe_budget == False:
             self.observation_space = spaces.Box(low = np.array([-np.inf,-np.inf]), high= np.array([np.inf, np.inf]))
+        else: 
+            # this is the case where only one of observe_alpha and observe_budget are True
+            self.observation_space = spaces.Box(low = np.array([-np.inf,-np.inf, 0.0]), high= np.array([np.inf, np.inf, 1.0]))
 
     def step(self, action):
         if self.optimization_type == 'multi_objective':
@@ -59,22 +64,20 @@ class MultiObjPoisson(Poisson):
             return super().step(self, action)
 
     def GetObservation(self):
-        # print("get observation")
         if self.optimization_type == 'multi_objective':
-            if self.observe_alpha == True:
-                num_dofs = self.fespace.GetTrueVSize()
-                stats = Statistics(self.errors, num_dofs=num_dofs)
-                obs = [stats.mean, stats.variance, self.alpha]
-                # print("obs = {}".format(obs))
-                # print("obs shape = {}".format(np.array(obs).shape))
-                # print("alpha type = {}".format(type(self.alpha)))
-                return np.array(obs)
-            else:
-                num_dofs = self.fespace.GetTrueVSize()
-                stats = Statistics(self.errors, num_dofs=num_dofs)
-                obs = [stats.mean, stats.variance]
-                return np.array(obs)
+            num_dofs = self.fespace.GetTrueVSize()
+            stats = Statistics(self.errors, num_dofs=num_dofs)
 
+            # define observation, which depends on observe_alpha and observe_budget
+            obs = [stats.mean, stats.variance]
+            if self.observe_alpha == True: 
+                obs.append(self.alpha)
+
+            if self.observe_budget == True:
+                budget = self.k/self.num_iterations
+                obs.append(budget)
+
+            return np.array(obs)
         else:
             return super().GetObservation(self)
 
