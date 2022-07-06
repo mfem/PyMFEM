@@ -27,9 +27,16 @@ if   output_dir.find('Example1a_MO') != -1:
    fig_name_prefix = 'Example1a_MO'
    ex_type = 6
 
-   # determine value of alpha from directory name
-   alpha_str = output_dir.split('alpha')[1].split('_')
-   alpha_str = alpha_str[0] + '.' + alpha_str[1]
+   # determine if alpha was fixed 
+   if output_dir.find('alpha') != -1:
+       alpha_fixed = True
+       
+       # determine value of alpha from directory name 
+       alpha_str = output_dir.split('alpha')[1].split('_')
+       alpha_str = alpha_str[0] + '.' + alpha_str[1]
+
+   else:
+       alpha_fixed = False
 
 elif output_dir.find('Example1a') != -1:
    print("Loading data from ", output_dir)
@@ -296,8 +303,9 @@ if have_expert_policy:
    if save_figs:
       plt.savefig(output_dir+'/'+fig_name_prefix+'_fig5.pdf',format='pdf', bbox_inches='tight')
 
-   if ex_type == 6: # example 1a MO; save final error and cumulative dofs
+   if ex_type == 6 and alpha_fixed: # example 1a MO with fixed alpha; save final error and cumulative dofs
       #dofs = cumrldofs[-1], errors = rlerrors[-1]
+
       alpha_data_str = alpha_str + ', ' + str(cumrldofs[-1]) + ', ' + str(rlerrors[-1]) + "\n"
       print("writing alpha to file")
       alpha_file = open("const_alpha_data.txt", "a")
