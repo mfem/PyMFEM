@@ -189,8 +189,12 @@ if (restore_policy):
     output_dir = output_dir_ + temp_path
 else:
     timestr = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
-    alpha_str = str(args.alpha).replace('.','_') + '_'
-    temp_path = 'Example1a_MO_alpha' + alpha_str + timestr
+
+    if args.observe_alpha == True:
+        temp_path = 'Example1a_MO_' + timestr
+    else: 
+        alpha_str = str(args.alpha).replace('.','_') + '_'
+        temp_path = 'Example1a_MO_alpha' + alpha_str + timestr
     checkpoint_dir = log_dir + temp_path
     output_dir = output_dir_ + temp_path
 

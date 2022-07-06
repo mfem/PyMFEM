@@ -84,5 +84,5 @@ class MultiObjPoisson(Poisson):
                 # set random alpha value
                 self.alpha = np.random.uniform(low = 0, high = 1)
         
-        super().reset()
+        return super().reset()
 

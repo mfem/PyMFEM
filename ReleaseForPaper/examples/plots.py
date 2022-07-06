@@ -22,7 +22,16 @@ output_dir = str(args.file_path)
 if args.angle_abbrv is not None:
    print("Plotting for angle ", args.angle_abbrv)
 
-if   output_dir.find('Example1a') != -1:
+if   output_dir.find('Example1a_MO') != -1:
+   print("Loading data from ", output_dir)
+   fig_name_prefix = 'Example1a_MO'
+   ex_type = 6
+
+   # determine value of alpha from directory name
+   alpha_str = output_dir.split('alpha')[1].split('_')
+   alpha_str = alpha_str[0] + '.' + alpha_str[1]
+
+elif output_dir.find('Example1a') != -1:
    print("Loading data from ", output_dir)
    fig_name_prefix = 'Example1a'
    ex_type = 1
@@ -87,7 +96,7 @@ def letterbox_entry(legend):
 
 save_figs = True
 have_expert_policy = False
-if fig_name_prefix == 'Example1a':
+if fig_name_prefix == 'Example1a' or fig_name_prefix == 'Example1a_MO':
    have_expert_policy = True
 
 print("*** Check that correct data was loaded here in plots.py ***")
@@ -286,6 +295,14 @@ if have_expert_policy:
    # print("cumrldofs = ", cumrldofs[-1])
    if save_figs:
       plt.savefig(output_dir+'/'+fig_name_prefix+'_fig5.pdf',format='pdf', bbox_inches='tight')
+
+   if ex_type == 6: # example 1a MO; save final error and cumulative dofs
+      #dofs = cumrldofs[-1], errors = rlerrors[-1]
+      alpha_data_str = alpha_str + ', ' + str(cumrldofs[-1]) + ', ' + str(rlerrors[-1]) + "\n"
+      print("writing alpha to file")
+      alpha_file = open("const_alpha_data.txt", "a")
+      alpha_file.write(alpha_data_str)
+      alpha_file.close()
 
    ##########
    # make fig rlepisode_cost
