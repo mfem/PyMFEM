@@ -19,7 +19,15 @@ input_file = str(args.file_path)
 
 
 # check that const_alpha_data.txt is the input file
-assert input_file.find("const_alpha_data.txt") != -1, "Error, no file const_alpha_data.txt"
+assert input_file.find("const_alpha_data") != -1, "Error, no file const_alpha_data"
+
+# determine experiment type, if any
+if input_file.find("exp2.") != -1:
+    exp_fla = 2
+elif input_file.find("exp4.") != -1:
+    exp_flag = 4
+else:
+    exp_flag = 0
 
 file = open(input_file, "r")
 lines = file.readlines()
@@ -41,14 +49,24 @@ ax5 = plt.gca()
 
 # determine spacing for labels
 y_spacing     = 1.08*np.ones(n)
-y_spacing[-2] = 1
-y_spacing[-1] = 0.92
-y_spacing[1]  = 1.12
-y_spacing[3]  = 1.12
-
 x_spacing     = np.ones(n)
-x_spacing[n-3:n] = 1.1
 
+if exp_flag == 2:
+    y_spacing[-2] = 1
+    y_spacing[-1] = 0.92
+    y_spacing[1]  = 1.12
+    y_spacing[3]  = 1.12
+
+    x_spacing[n-3:n] = 1.1
+
+elif exp_flag == 4:
+    x_spacing[1] = 1.1
+    y_spacing[1] = 1
+
+    y_spacing[4] = 1.12
+
+    x_spacing[10] = 1.1
+    y_spacing[10] = 1.1
 # plot data for each alpha
 for i in range(1, n+1):
     data     = lines[i].split(', ')
@@ -62,7 +80,12 @@ for i in range(1, n+1):
 
 plt.xscale('log')
 plt.yscale('log')
+
+# plot title
 plt.title(r'Example 1a with Multi-Objective Cost and Fixed $\alpha$', fontdict = {'fontsize':24})
+if exp_flag == 4:
+    plt.title(r'Example 1a with MO Cost, Fixed $\alpha$, and Observed Budget', fontdict = {'fontsize':24})
+
 ax5.set_xlabel(r'Cumulative degrees of freedom $(J_k)$', fontsize=22)
 ax5.set_ylabel(r'Global error estimate $(\eta_k)$', fontsize=22)
 ax5.tick_params(axis='x', which = 'major', labelsize=22)
@@ -73,4 +96,5 @@ ax5.set_yticks([10**-2, 10**-3])
 
 
 if args.save_figs:
-  plt.savefig('plot_const_alpha.pdf', format='pdf', bbox_inches='tight')
+    plot_name = 'plot_' + input_file.split('.')[0] + '.pdf' 
+    plt.savefig(plot_name, format='pdf', bbox_inches='tight')
