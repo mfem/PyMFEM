@@ -12,6 +12,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument("file_path", type=Path)
 parser.add_argument("--save_figs", default=True, action = 'store_true')
 parser.add_argument('--no_save_figs', dest='savefigs', action='store_false')
+parser.add_argument('--colorbar', default= True, action = 'store_true')
+parser.add_argument('--no_colorbar', dest='colorbar', action='store_false') # label each alpha instead of using colorbar
 
 args = parser.parse_args()
 assert args.file_path.exists() , "The given file doesn't exist"
@@ -47,36 +49,44 @@ plt.rc('text.latex', preamble=r'\usepackage{amsmath} \usepackage{amssymb}')
 plt.figure(figsize=(6,6))
 ax5 = plt.gca()
 
-# determine spacing for labels
-y_spacing     = 1.08*np.ones(n)
-x_spacing     = np.ones(n)
+if colorbar == False:
+	# determine spacing for labels
+	y_spacing     = 1.08*np.ones(n)
+	x_spacing     = np.ones(n)
 
-if exp_flag == 2:
-    y_spacing[-2] = 1
-    y_spacing[-1] = 0.92
-    y_spacing[1]  = 1.12
-    y_spacing[3]  = 1.12
+	if exp_flag == 2:
+	    y_spacing[-2] = 1
+	    y_spacing[-1] = 0.92
+	    y_spacing[1]  = 1.12
+	    y_spacing[3]  = 1.12
 
-    x_spacing[n-3:n] = 1.1
+	    x_spacing[n-3:n] = 1.1
 
-elif exp_flag == 4:
-    x_spacing[1] = 1.1
-    y_spacing[1] = 1
+	elif exp_flag == 4:
+	    x_spacing[1] = 1.1
+	    y_spacing[1] = 1
 
-    y_spacing[4] = 1.12
+	    y_spacing[4] = 1.12
 
-    x_spacing[10] = 1.1
-    y_spacing[10] = 1.1
+	    x_spacing[10] = 1.1
+	    y_spacing[10] = 1.1
+
 # plot data for each alpha
+alpha = np.zeros(n); cum_dofs = np.zeros(n); error = np.zeros(n);
 for i in range(1, n+1):
     data     = lines[i].split(', ')
 
-    alpha    =       data[0]
-    cum_dofs = float(data[1])
-    error    = float(data[2])
+    alpha   [i-1] =       data[0]
+    cum_dofs[i-1] = float(data[1])
+    error   [i-1] = float(data[2])
+    
+    if colorbar == False:
+    	plt.loglog(cum_dofs, error, '.k')
+    	plt.annotate(r"$\alpha$ = " + alpha[i-1], (cum_dofs[i-1]*x_spacing[i-1], error[i-1]*y_spacing[i-1]))
 
-    plt.loglog(cum_dofs, error, '.k')
-    plt.annotate(r"$\alpha$ = " + alpha, (cum_dofs*x_spacing[i-1], error*y_spacing[i-1]))
+if colorbar == True:
+	plt.scatter(cum_dofs, error, c = alpha)
+	plt.colorbar(label = "alpha")
 
 plt.xscale('log')
 plt.yscale('log')
