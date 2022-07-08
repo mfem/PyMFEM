@@ -102,9 +102,14 @@ parser.add_argument('--plotfigs', default=True, action='store_true')
 parser.add_argument('--no-plotfigs', dest='plotfigs', action='store_false')
 parser.add_argument('--savefigs', default=True, action='store_true')
 parser.add_argument('--no-savefigs', dest='savefigs', action='store_false')
+
 parser.add_argument('--observe_alpha', default = True, action='store_true')
 parser.add_argument('--no_observe_alpha', dest='observe_alpha', action='store_false')
-parser.add_argument('--alpha', default = 0.5, type = float)
+parser.add_argument('--alpha', default = 0.5, type = float) # only applies if observe_alpha = False
+
+parser.add_argument('--observe_budget', default = True, action='store_true')
+parser.add_argument('--no_observe_budget', dest='observe_budget', action='store_false')
+
 args = parser.parse_args()
 print("Parsed options = ", args)
 train=args.train
@@ -126,6 +131,7 @@ prob_config = {
     'dof_threshold'     : 1e5,
     'alpha'             : args.alpha,
     'observe_alpha'     : args.observe_alpha,
+    'observe_budget'    : args.observe_budget,
     'num_iterations'    : 10,
     'num_batches'       : nbatches
 }
@@ -189,10 +195,19 @@ if (restore_policy):
     output_dir = output_dir_ + temp_path
 else:
     timestr = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
-    alpha_str = str(args.alpha).replace('.','_') + '_'
-    temp_path = 'Example1a_MO_alpha' + alpha_str + timestr
+
+    if prob_config['optimization_type'] == 'multi_objective':
+        if args.observe_alpha == True:
+            temp_path = 'Example1a_MO_' + timestr
+        else: 
+            alpha_str = str(args.alpha).replace('.','_') + '_'
+            temp_path = 'Example1a_MO_alpha' + alpha_str + timestr
+        
+    else:
+        temp_path = 'Example1a_' + timestr
+
     checkpoint_dir = log_dir + temp_path
-    output_dir = output_dir_ + temp_path
+    output_dir = output_dir_ + temp_path   
 
 ## Train policy
 ray.shutdown()
@@ -301,11 +316,10 @@ if eval:
 
 if (save_data or save_figs):
     mkdir_p(output_dir)
-    print_config(output_dir,prob_config=prob_config, rl_config=rl_config)
+    print_config(output_dir, prob_config=prob_config, rl_config=rl_config)
 
 
 if save_data:
-    import json
     print("Saving data to ", output_dir)
     root_path, _ = os.path.split(checkpoint_path)
     root_path, _ = os.path.split(root_path)
