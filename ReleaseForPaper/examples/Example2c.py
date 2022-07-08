@@ -203,7 +203,7 @@ if args.command_line_mesh == 6:
     prob_config['mesh_name'] = 'fichera.mesh'
     prob_config['problem_type']  = 'default'
     prob_config['num_unif_ref']  = 0
-    prob_config['dof_threshold'] = 5e4  # note higher dof threshold for Fichera mesh
+    prob_config['dof_threshold'] = 5e5  # note higher dof threshold for Fichera mesh
     
 
 if prob_config['mesh_name'] == 'l-shape-benchmark.mesh':
@@ -339,7 +339,7 @@ if eval and not args.marginals_eval:
         mkdir_p(output_dir+"/meshes_and_gfs/")
         env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '_initial.mesh')
         print("==> Saved initial mesh to ", output_dir, "/meshes_and_gfs/")
-        exit()
+        # exit()
             
 
     while not done:
@@ -487,6 +487,12 @@ if eval and not args.marginals_eval:
             #     env.render()
             #     env.RenderHPmesh()
             #     print("\nRendering two parmaeter policy ", tp_actions[index_count-1], "\n")
+            if save_mesh and prob_config['mesh_name'] == 'fichera.mesh':
+                mkdir_p(output_dir+"/meshes_and_gfs/")
+                gfname = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '_tpp.gf'
+                env.RenderHPmesh(gfname=gfname)
+                env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '_tpp.mesh')
+  
 
 if args.marginals_eval:
     print("Creating data for marginals")
