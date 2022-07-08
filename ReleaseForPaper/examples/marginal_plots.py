@@ -144,6 +144,9 @@ else:
             print(i, " ", theta, " ", rho, " ", avg_cost)
             i += 1
             # temprows.append([theta, rho, avg_cost])
+    # trc_df = pd.DataFrame(temprows)
+    # trc_df.columns = ['theta', 'rho', 'avgcost']
+
     np.save(output_dir + '/marginals/tpp_avg_costs.npy', tpp_avg_costs)
 
 
