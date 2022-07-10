@@ -24,7 +24,19 @@ output_dir = str(args.file_path)
 
 df = pd.read_csv(output_dir+'/marginals/trc_df.csv', index_col=False)
 
+
+sns.set()
+sns.set_context("talk", font_scale=3)
+custom_params = {"axes.spines.right": False, "axes.spines.top": False}
+sns.set_theme(style="ticks", rc=custom_params)
+
+plt.rc('text', usetex=True)
+plt.rc('font', family='serif')
+plt.rc('text.latex', preamble=r'\usepackage{amsmath} \usepackage{amssymb}')
+
+
 fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
+
 
 # Make data.
 X = df['theta'].to_numpy()
@@ -52,13 +64,13 @@ fig.colorbar(surf, shrink=0.5, aspect=10)
 ax.set_xlabel(r'$\theta$', fontsize=20)
 ax.set_ylabel(r'$\rho$', fontsize=20)
 ax.zaxis.set_rotate_label(False) 
-ax.set_zlabel('Average final cost', fontsize=20, rotation = 90)
-plt.xticks(fontsize=12)
-plt.yticks(fontsize=12)
+ax.set_zlabel(r'Average final cost', fontsize=20, rotation = 90)
+plt.xticks(fontsize=16)
+plt.yticks(fontsize=16)
 
 ax.set_zlim(np.min(Z), np.max(Z))
 # change fontsize
-for t in ax.zaxis.get_major_ticks(): t.label.set_fontsize(10)
+for t in ax.zaxis.get_major_ticks(): t.label.set_fontsize(16)
 
 
 # ax.zaxis.set_major_locator(LinearLocator(10))

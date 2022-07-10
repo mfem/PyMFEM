@@ -33,3 +33,5 @@
 ~/Documents/software/glvis/glvis -m rl_mesh_fichera_angle_nan_initial.mesh   --keys aaab\)\)\)\)\)\)\)\)\)\)\)\)*6666666666666666666666666666666666666666666666666666666666666666666666666666666666666888888888888888888888888888888888888888888888888888888888888
 ~/Documents/software/glvis/glvis -m rl_mesh_fichera_angle_nan.mesh -g rl_mesh_fichera_angle_nan.gf --keys mb\)\)\)\)\)\)\)\)\)\)\)\)*6666666666666666666666666666666666666666666666666666666666666666666666666666666666666888888888888888888888888888888888888888888888888888888888888PPPPPPPPPPPPPPPPPPPPPPP'~7' < visrange_3d.txt &
 ~/Documents/software/glvis/glvis -m rl_mesh_fichera_angle_nan_tpp.mesh -g rl_mesh_fichera_angle_nan_tpp.gf --keys mb\)\)\)\)\)\)\)\)\)\)\)\)*6666666666666666666666666666666666666666666666666666666666666666666666666666666666666888888888888888888888888888888888888888888888888888888888888PPPPPPPPPPPPPPPPPPPPPPP'~7' < visrange_3d.txt &
+
+~/Documents/software/glvis/glvis -m inline-quad.mesh  --keys me\)\)\)\)\)\)\)\)\)\)\)\)*
