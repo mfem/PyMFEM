@@ -105,10 +105,11 @@ parser.add_argument('--no-savefigs', dest='savefigs', action='store_false')
 
 parser.add_argument('--observe_alpha', default = True, action='store_true')
 parser.add_argument('--no_observe_alpha', dest='observe_alpha', action='store_false')
-parser.add_argument('--alpha', default = 0.5, type = float) # only applies if observe_alpha = False
+parser.add_argument('--alpha', default = 0.5, type = float) # alpha for cost function if no_observe_alpha, also the alpha used for evaluation
 
 parser.add_argument('--observe_budget', default = True, action='store_true')
 parser.add_argument('--no_observe_budget', dest='observe_budget', action='store_false')
+
 
 args = parser.parse_args()
 print("Parsed options = ", args)
@@ -119,7 +120,7 @@ plot_figs=args.plotfigs
 save_figs=args.savefigs
 
 restore_policy = False
-nbatches = 150
+nbatches = 250
 
 ## Configuration for multi objective problem
 prob_config = {
@@ -160,7 +161,7 @@ config['num_workers'] = 10
 config['train_batch_size'] = config['rollout_fragment_length'] * config['num_workers']
 config['num_gpus'] = 0
 config['gamma'] = 1.0
-config['lr'] = 1e-4
+config['lr'] = 5e-6
 config['seed'] = 4000
 config['model'] = model_config
 
@@ -231,12 +232,21 @@ if train:
         print ("Mean episode length: %.3f" % episode_length)
         checkpoint_path = trainer.save(checkpoint_dir)
         print(checkpoint_path)
+
 if eval and not train:
-    temp_path = 'Example1a_2022-04-15_10-55-16'
+    if prob_config['optimization_type'] == 'multi_objective':
+        temp_path = 'Example1a_MO_2022-07-11_06-56-00'
+    else:
+        temp_path = 'Example1a_2022-04-15_10-55-16'
+
     chkpt_num = nbatches
     checkpoint_dir = log_dir + temp_path
-    # checkpoint_path=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt < 100
-    checkpoint_path = checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt > 99 and <1000
+    if chkpt_num < 100:
+        checkpoint_path=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt < 100
+    elif chkpt_num < 100:
+        checkpoint_path = checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt > 99 and <1000
+    else:
+        print("error, cannot load policy to evaluate")
     output_dir = output_dir_ + temp_path
 
 if train:
@@ -252,6 +262,13 @@ if eval:
     trainer.restore(checkpoint_path)
     rlactions = []
     obs = env.reset()
+
+    if prob_config['optimization_type'] == 'multi_objective' and args.observe_alpha == True:
+        # evaluate policy for given value of alpha (defualt alpha = 0.5)
+
+        print("Evaluating policy with alpha = {}".format(args.alpha))
+        obs[2] = args.alpha # manually set alpha in observation to args.alpha
+
     done = False
     rlepisode_cost = 0
     rlerrors = [env.global_error]
