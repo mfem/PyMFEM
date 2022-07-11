@@ -41,10 +41,13 @@ if second_file:
 # determine experiment type, if any
 if input_file.find("exp2.") != -1:
     exp_flag = 2
+    label1 = 'no budget'
 elif input_file.find("exp4.") != -1:
     exp_flag = 4
+    label1 = 'with budget'
 else:
     exp_flag = 0
+    label1 = str(exp_flag)
 
 file = open(input_file, "r")
 lines = file.readlines()
@@ -54,6 +57,16 @@ if second_file:
     file2 = open(input_file2, "r")
     lines2 = file2.readlines()
     n2 = len(lines2) - 1
+
+    if input_file2.find("exp2.") != -1:
+        exp_flag2 = 2
+        label2 = 'no budget'
+    elif input_file2.find("exp4.") != -1:
+        exp_flag2 = 4
+        label2 = 'with budget'
+    else:
+        exp_flag2 = 0
+        label2 = str(exp_flag2)
 
 # create figure
 sns.set()
@@ -115,10 +128,10 @@ if second_file == True:
         cum_dofs2[i-1] = float(data2[1])
         error2   [i-1] = float(data2[2])
 
-    plt.scatter(cum_dofs2, error2, c = alpha2, marker = 's')
+    plt.scatter(cum_dofs2, error2, c = alpha2, marker = 's', label = label2)
 
 if colorbar == True:
-	plt.scatter(cum_dofs, error, c = alpha)
+	plt.scatter(cum_dofs, error, c = alpha, label = label1)
 	plt.colorbar().set_label(label = r'$\alpha$',size=20,weight='bold')
     
 plt.xscale('log')
@@ -137,6 +150,8 @@ ax5.tick_params(axis='y', labelsize=22)
 # ax5.legend(loc='upper right', prop={'size': 14})
 ax5.set_yticks([10**-2, 10**-3])
 
+if second_file == True:
+    plt.legend()
 
 if args.save_figs:
     name = input_file.split('.')[0]
