@@ -61,10 +61,10 @@ surf = ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=cm.coolwarm,
 fig.colorbar(surf, shrink=0.5, aspect=10)
 
 # Customize the z axis.
-ax.set_xlabel(r'$\theta$', fontsize=20)
-ax.set_ylabel(r'$\rho$', fontsize=20)
+ax.set_xlabel(r'$\theta$', fontsize=20, labelpad=10)
+ax.set_ylabel(r'$\rho$', fontsize=20, labelpad=10)
 ax.zaxis.set_rotate_label(False) 
-ax.set_zlabel(r'Average final cost', fontsize=20, rotation = 90)
+ax.set_zlabel(r'$\mathbb{E}_\omega[\log_2\eta_k | \rho,\theta]$', fontsize=20, rotation = 90, labelpad=10)
 plt.xticks(fontsize=16)
 plt.yticks(fontsize=16)
 
@@ -80,5 +80,6 @@ for t in ax.zaxis.get_major_ticks(): t.label.set_fontsize(16)
 # Add a color bar, which maps values to colors.
 # fig.colorbar(surf, shrink=0.5, aspect=5)
 
-plt.savefig('viz_2d_avg_costs.png',format='png', bbox_inches='tight')
+ax.view_init(azim=45)
+plt.savefig('viz_2d_avg_costs.png',format='png', dpi=300)
 plt.show()
