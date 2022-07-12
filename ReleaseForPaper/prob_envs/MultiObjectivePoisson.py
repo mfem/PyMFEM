@@ -85,7 +85,7 @@ class MultiObjPoisson(Poisson):
         if self.optimization_type == 'multi_objective':
             if self.observe_alpha == True: 
                 # set random alpha value
-                self.alpha = np.random.uniform(low = 0, high = 1)
+                self.alpha = np.random.uniform(low = 0.4, high = 0.6)
         
         return super().reset()
 

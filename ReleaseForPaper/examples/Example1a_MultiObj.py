@@ -243,7 +243,7 @@ if eval and not train:
     checkpoint_dir = log_dir + temp_path
     if chkpt_num < 100:
         checkpoint_path=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt < 100
-    elif chkpt_num < 100:
+    elif chkpt_num >= 100:
         checkpoint_path = checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt > 99 and <1000
     else:
         print("error, cannot load policy to evaluate")
@@ -267,6 +267,7 @@ if eval:
         # evaluate policy for given value of alpha (defualt alpha = 0.5)
 
         print("Evaluating policy with alpha = {}".format(args.alpha))
+        env.alpha = args.alpha
         obs[2] = args.alpha # manually set alpha in observation to args.alpha
 
     done = False
@@ -288,7 +289,17 @@ if eval:
         print("episode cost = ", rlepisode_cost)
         rldofs.append(info['num_dofs'])
         rlerrors.append(info['global_error'])
-        
+
+    if train == False and prob_config['optimization_type'] == 'multi_objective' and args.observe_alpha == True:
+        # save final errors in file
+        file_name = "alpha_policy_data.txt"
+        file_location = output_dir_ + file_name
+        file = open(file_location, "a")
+
+        cum_rldofs = np.cumsum(rldofs)
+        file_string = str(args.alpha) + ", " + str(cum_rldofs[-1]) + ", " + str(rlerrors[-1]) + "\n"
+        file.write(file_string)
+        file.close()        
 
     ## Enact AMR policies
     costs = []
