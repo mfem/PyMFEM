@@ -1,6 +1,6 @@
 """
     
-    EXAMPLE 1-A multi-objective: h-refinement policy for L-shaped domain problem with multi-objective cost function
+    EXAMPLE 2-c multi-objective: h-refinement policy for L-shaped domain with missing angle problem with multi-objective cost function
 
 """
 
@@ -10,7 +10,7 @@ import pandas as pd
 import ray
 import ray.rllib.agents.ppo as ppo
 from ray.tune.registry import register_env
-from prob_envs.MultiObjectivePoisson import MultiObjPoisson
+from prob_envs.MultiObjectivePoisson import Angle_MultiObjPoisson
 import numpy as np
 import time
 import seaborn as sns
@@ -102,6 +102,9 @@ parser.add_argument('--plotfigs', default=True, action='store_true')
 parser.add_argument('--no-plotfigs', dest='plotfigs', action='store_false')
 parser.add_argument('--savefigs', default=True, action='store_true')
 parser.add_argument('--no-savefigs', dest='savefigs', action='store_false')
+parser.add_argument('--savemesh', default=False, action='store_true')
+
+parser.add_argument('--angle', default = 0.5*np.pi, type = float)
 
 parser.add_argument('--observe_alpha', default = True, action='store_true')
 parser.add_argument('--no_observe_alpha', dest='observe_alpha', action='store_false')
@@ -136,6 +139,8 @@ prob_config = {
     'num_iterations'    : 10,
     'num_batches'       : nbatches
 }
+
+mesh_abbrv = prob_config['problem_type']
 
 ## Change to minimum error or minimum dof problem
 if prob_config['optimization_type'] == 'error_threshold': # minimum dof
@@ -196,16 +201,17 @@ if (restore_policy):
     output_dir = output_dir_ + temp_path
 else:
     timestr = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
+    angle_abbrv = "{:.2f}".format(np.round(args.angle,2)) # to keep filename length short
 
     if prob_config['optimization_type'] == 'multi_objective':
         if args.observe_alpha == True:
-            temp_path = 'Example1a_MO_' + timestr
+            temp_path = 'Example2c_MO_ang_' + angle_abbrv + "_" + timestr
         else: 
             alpha_str = str(args.alpha).replace('.','_') + '_'
-            temp_path = 'Example1a_MO_alpha' + alpha_str + timestr
+            temp_path = 'Example2c_MO_alpha' + alpha_str + "_ang_" + angle_abbrv + "_" + timestr
         
     else:
-        temp_path = 'Example1a_' + timestr
+        temp_path = 'Example2c_' + "_ang_" + angle_abbrv + "_" + timestr
 
     checkpoint_dir = log_dir + temp_path
     output_dir = output_dir_ + temp_path   
@@ -213,10 +219,10 @@ else:
 ## Train policy
 ray.shutdown()
 ray.init(ignore_reinit_error=True)
-register_env("my_env", lambda config : MultiObjPoisson(**prob_config))
+register_env("my_env", lambda config : Angle_MultiObjPoisson(**prob_config))
 trainer = ppo.PPOTrainer(env="my_env", config=config, 
                        logger_creator=custom_log_creator(checkpoint_dir))
-env = MultiObjPoisson(**prob_config)
+env = Angle_MultiObjPoisson(**prob_config)
 
 if (restore_policy):
     trainer.restore(chkpt_file)
@@ -243,7 +249,7 @@ if eval and not train:
     checkpoint_dir = log_dir + temp_path
     if chkpt_num < 100:
         checkpoint_path=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt < 100
-    elif chkpt_num >= 100:
+    elif chkpt_num > 100:
         checkpoint_path = checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt > 99 and <1000
     else:
         print("error, cannot load policy to evaluate")
@@ -258,10 +264,14 @@ if train:
 
 if eval:
 
+    if prob_config['problem_type'] == 'lshaped':
+        env.set_angle(args.angle_eval) # note: set_angle(...) redefines self.initial_mesh
+        print("*** Set angle for eval to  ", args.angle)
+
     ## Enact trained policy
     trainer.restore(checkpoint_path)
     rlactions = []
-    obs = env.reset()
+    obs = env.reset(random_angle=False)
 
     if prob_config['optimization_type'] == 'multi_objective' and args.observe_alpha == True:
         # evaluate policy for given value of alpha (defualt alpha = 0.5)
@@ -275,36 +285,46 @@ if eval:
     rlerrors = [env.global_error]
     rldofs = [env.sum_of_dofs]
     env.trainingmode = False
+
+    if args.save_mesh:
+        mkdir_p(output_dir+"/meshes_and_gfs/")
+        env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '_initial.mesh')
+        print("==> Saved initial mesh to ", output_dir, "/meshes_and_gfs/")
+
     while not done:
-        action = trainer.compute_single_action(obs,explore=False)
-        # action = trainer.compute_single_action(obs,explore=True)
+        action = trainer.compute_single_action(obs, explore=False)
         obs, reward, done, info = env.step(action)
         if prob_config['optimization_type'] == 'dof_threshold' and done:
             break
         rlactions.append(action[0])
         rlepisode_cost -= reward
+
+        # print episode results
         print("step = ", env.k)
         print("action = ", action.item())
         print("Num. Elems. = ", env.mesh.GetNE())
         print("episode cost = ", rlepisode_cost)
+
         rldofs.append(info['num_dofs'])
         rlerrors.append(info['global_error'])
 
+        if save_mesh:
+            mkdir_p(output_dir+"/meshes_and_gfs/")
+            gfname = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '.gf'
+            env.RenderHPmesh(gfname=gfname)
+            env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '.mesh')
+
     if train == False and prob_config['optimization_type'] == 'multi_objective' and args.observe_alpha == True:
         # save final errors in file
-        file_name = "alpha_policy_data.txt"
+        file_name = "alpha_policy_data_2c.txt"
         file_location = output_dir_ + file_name
         file = open(file_location, "a")
 
         cum_rldofs = np.cumsum(rldofs)
         file_string = str(args.alpha) + ", " + str(cum_rldofs[-1]) + ", " + str(rlerrors[-1]) + "\n"
         file.write(file_string)
-<<<<<<< HEAD
         file.close()
         
-=======
-        file.close()        
->>>>>>> ca450f1b424eafc1a269521a381feb95d9e6b037
 
     ## Enact AMR policies
     costs = []
@@ -317,7 +337,7 @@ if eval:
         action = np.array([i/nth])
         actions.append(action.item())
         print("action = ", action.item())
-        env.reset()
+        env.reset(random_angle=False)
         done = False
         episode_cost_tmp = 0
         errors_tmp = [env.global_error]
@@ -364,13 +384,16 @@ if save_data:
     df1 = pd.DataFrame({'cost':cost})
     df2 = pd.DataFrame({'rlactions':rl_actions,'rldofs':rldofs,'rlerrors':rlerrors})
     df3 = pd.DataFrame({'actions':actions,'costs':costs,'errors':errors,'dofs':dofs})
+
     filename = output_dir+"/training_data.csv"
     print("Saving training data to: ", filename)    
     df1.to_csv(filename, index=False)
-    filename = output_dir+"/rl_data.csv"
+
+    filename = output_dir+"/rl_data_" + mesh_abbrv + "_angle_" + angle_abbrv + ".csv"
     print("Saving RL deployed policy data to: ", filename)    
     df2.to_csv(filename, index=False)
-    filename = output_dir+"/expert_data.csv"
+
+    filename = output_dir+"/expert_data_" + mesh_abbrv + "_angle_" + angle_abbrv + ".csv"
     print("Saving deterministic AMR policies data to: ", filename)    
     df3.to_csv(filename, index=False)
 
@@ -382,7 +405,7 @@ if plot_figs or save_figs:
 
     import subprocess
     print("Calling plots.py")
-    string_to_call = "python plots.py " + output_dir
+    string_to_call = "python plots.py " + output_dir + " --angle " + angle_abbrv + " --mesh " + mesh_abbrv
     subprocess.call(string_to_call, shell=True)
 
     # print name of output_dir to file for plotting with slurm scritps
