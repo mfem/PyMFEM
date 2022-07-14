@@ -2,6 +2,13 @@ from prob_envs.Poisson import Poisson
 import numpy as np
 from utils.Statistics import Statistics, GlobalError
 from gym import spaces
+from utils.ReentrantCorner import *
+from mfem.ser import intArray
+from os.path import expanduser, join
+from utils.Solution_LShaped import *
+from utils.Solution_Wavefront import *
+from utils.Solution_SinSin import *
+import os
 
 class MultiObjPoisson(Poisson):
     '''

@@ -136,7 +136,7 @@ prob_config = {
     'alpha'             : args.alpha,
     'observe_alpha'     : args.observe_alpha,
     'observe_budget'    : args.observe_budget,
-    'num_iterations'    : 10,
+    'num_iterations'    : 15,
     'num_batches'       : nbatches
 }
 
@@ -241,7 +241,8 @@ if train:
 
 if eval and not train:
     if prob_config['optimization_type'] == 'multi_objective':
-        temp_path = 'Example1a_MO_2022-07-11_06-56-00'
+#        temp_path = 'Example1a_MO_2022-07-11_06-56-00'
+        temp_path = 'Example1a_MO_2022-07-13_11-56-00'
     else:
         temp_path = 'Example1a_2022-04-15_10-55-16'
 
@@ -265,7 +266,7 @@ if train:
 if eval:
 
     if prob_config['problem_type'] == 'lshaped':
-        env.set_angle(args.angle_eval) # note: set_angle(...) redefines self.initial_mesh
+        env.set_angle(args.angle) # note: set_angle(...) redefines self.initial_mesh
         print("*** Set angle for eval to  ", args.angle)
 
     ## Enact trained policy
@@ -286,7 +287,7 @@ if eval:
     rldofs = [env.sum_of_dofs]
     env.trainingmode = False
 
-    if args.save_mesh:
+    if args.savemesh:
         mkdir_p(output_dir+"/meshes_and_gfs/")
         env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '_initial.mesh')
         print("==> Saved initial mesh to ", output_dir, "/meshes_and_gfs/")
@@ -308,7 +309,7 @@ if eval:
         rldofs.append(info['num_dofs'])
         rlerrors.append(info['global_error'])
 
-        if save_mesh:
+        if args.savemesh:
             mkdir_p(output_dir+"/meshes_and_gfs/")
             gfname = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '.gf'
             env.RenderHPmesh(gfname=gfname)
@@ -321,7 +322,7 @@ if eval:
         file = open(file_location, "a")
 
         cum_rldofs = np.cumsum(rldofs)
-        file_string = str(args.alpha) + ", " + str(cum_rldofs[-1]) + ", " + str(rlerrors[-1]) + "\n"
+        file_string = str(args.alpha) + ", " + str(args.angle) + ", " + str(cum_rldofs[-1]) + ", " + str(rlerrors[-1]) + "\n"
         file.write(file_string)
         file.close()
         
