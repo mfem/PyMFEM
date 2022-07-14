@@ -285,19 +285,14 @@ if eval:
 
     if train == False and prob_config['optimization_type'] == 'multi_objective' and args.observe_alpha == True:
         # save final errors in file
-        file_name = "alpha_policy_data.txt"
+        file_name = "alpha_policy_data_1a.txt"
         file_location = output_dir_ + file_name
         file = open(file_location, "a")
 
         cum_rldofs = np.cumsum(rldofs)
         file_string = str(args.alpha) + ", " + str(cum_rldofs[-1]) + ", " + str(rlerrors[-1]) + "\n"
         file.write(file_string)
-<<<<<<< HEAD
-        file.close()
-        
-=======
         file.close()        
->>>>>>> ca450f1b424eafc1a269521a381feb95d9e6b037
 
     ## Enact AMR policies
     costs = []
