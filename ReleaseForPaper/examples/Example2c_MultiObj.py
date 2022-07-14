@@ -4,13 +4,14 @@
 
 """
 
+import argparse
 import os
 import matplotlib.pyplot as plt
 import pandas as pd
 import ray
 import ray.rllib.agents.ppo as ppo
 from ray.tune.registry import register_env
-from prob_envs.MultiObjectivePoisson import Angle_MultiObjPoisson
+from prob_envs.MultiObjectivePoisson import hp_Angle_MultiObjPoisson
 import numpy as np
 import time
 import seaborn as sns
@@ -90,7 +91,6 @@ def letterbox_entry(legend):
     STEP 1: Set parameters
 """
 
-import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('--train', default=True, action='store_true')
 parser.add_argument('--no-train', dest='train', action='store_false')
@@ -123,7 +123,7 @@ plot_figs=args.plotfigs
 save_figs=args.savefigs
 
 restore_policy = False
-nbatches = 250
+nbatches = 300
 
 ## Configuration for multi objective problem
 prob_config = {
@@ -219,10 +219,10 @@ else:
 ## Train policy
 ray.shutdown()
 ray.init(ignore_reinit_error=True)
-register_env("my_env", lambda config : Angle_MultiObjPoisson(**prob_config))
+register_env("my_env", lambda config : hp_Angle_MultiObjPoisson(**prob_config))
 trainer = ppo.PPOTrainer(env="my_env", config=config, 
                        logger_creator=custom_log_creator(checkpoint_dir))
-env = Angle_MultiObjPoisson(**prob_config)
+env = hp_Angle_MultiObjPoisson(**prob_config)
 
 if (restore_policy):
     trainer.restore(chkpt_file)
@@ -271,16 +271,9 @@ if eval:
 
     ## Enact trained policy
     trainer.restore(checkpoint_path)
-    rlactions = []
-    obs = env.reset(random_angle=False)
-
-    if prob_config['optimization_type'] == 'multi_objective' and args.observe_alpha == True:
-        # evaluate policy for given value of alpha (defualt alpha = 0.5)
-
-        print("Evaluating policy with alpha = {}".format(args.alpha))
-        env.alpha = args.alpha
-        obs[2] = args.alpha # manually set alpha in observation to args.alpha
-
+    cols = ['theta', 'rho']
+    rlactions = pd.DataFrame(columns=cols)
+    obs = env.reset(random_angle=False, new_alpha = False)
     done = False
     rlepisode_cost = 0
     rlerrors = [env.global_error]
@@ -297,12 +290,13 @@ if eval:
         obs, reward, done, info = env.step(action)
         if prob_config['optimization_type'] == 'dof_threshold' and done:
             break
-        rlactions.append(action[0])
+        rlactions = rlactions.append({'theta': action[0], 'rho':action[1]}, ignore_index=True)
         rlepisode_cost -= reward
 
         # print episode results
         print("step = ", env.k)
-        print("action = ", action.item())
+        print("theta action = ", action[0].item())
+        print("rho   action = ", action[1].item())
         print("Num. Elems. = ", env.mesh.GetNE())
         print("episode cost = ", rlepisode_cost)
 
@@ -327,41 +321,69 @@ if eval:
         file.close()
         
 
-    ## Enact AMR policies
-    costs = []
-    actions = []
-    nth = 100
-    errors = []
-    dofs = []
-    for i in range(1, nth):
-        print(i)
-        action = np.array([i/nth])
-        actions.append(action.item())
-        print("action = ", action.item())
-        env.reset(random_angle=False)
-        done = False
-        episode_cost_tmp = 0
-        errors_tmp = [env.global_error]
-        dofs_tmp = [env.sum_of_dofs]
-        # max_steps   = prob_config['num_iterations']
-        steps_taken = 0
-        
-        while not done:
-            _, reward, done, info = env.step(action)
-            if prob_config['optimization_type'] == 'dof_threshold' and done:
-                break
-            if steps_taken > prob_config['num_iterations']:
-                print("*** fixed action exceeded max step threshold of ", prob_config['num_iterations'], "steps.")
-                break
-            else:
-                steps_taken += 1
-            episode_cost_tmp -= reward
-            errors_tmp.append(info['global_error'])
-            dofs_tmp.append(info['num_dofs'])
-        costs.append(episode_cost_tmp)
-        errors.append(errors_tmp)
-        dofs.append(dofs_tmp)
-        print('episode cost = ', episode_cost_tmp)
+    #############
+    # Enact fixed "two parameter" AMR policies
+    ########### 
+    tp_costs = []
+    tp_nth = 10
+    # tp_actions = np.zeros(((tp_nth-1)**2,2)) # exclude 0.0, 1.0 as actions
+    # tp_actions = np.zeros(((tp_nth+1)**2,2)) # include 0.0, 1.0 as actions
+    tp_actions = np.zeros(((tp_nth)**2,2)) # include 0.0 but not 1.0 as actions
+    # tp_actions = np.zeros((1,2)) # include only theta = [one fixed value], rho = [one fixed value]
+    tp_errors = []
+    tp_dofs = []
+    index_count = 0
+
+    # for theta in range(1, tp_nth):      # exclude 0.0, 1.0 as actions
+    #     for rho in range(1, tp_nth):    # exclude 0.0, 1.0 as actions
+    # for theta in range(0, tp_nth+1):    # include 0.0, 1.0 as actions
+    #     for rho in range(0, tp_nth+1):  # include 0.0, 1.0 as actions
+    for theta in range(0, tp_nth):        # include 0.0 but not 1.0 as actions
+        for rho in range(0, tp_nth):      # include 0.0 but not 1.0 as actions
+    # for theta in range(6, 7):        # include only theta = 0.6, rho = 0.5
+    #     for rho in range(5, 6):      # include only theta = 0.6, rho = 0.5
+    # for theta in range(6, 7):        # include only theta = 0.6, rho = 0.4
+    #     for rho in range(4, 5):      # include only theta = 0.6, rho = 0.4
+    # for theta in range(6, 7):        # include only theta = 0.6, rho = 0.3
+    #     for rho in range(3, 4):      # include only theta = 0.6, rho = 0.3
+            tp_actions[index_count] = np.array([theta/tp_nth, rho/tp_nth]) # note 1D action space
+            if theta/tp_nth == 1 and rho/tp_nth == 1: # avoid some linear algerbra error if action is [1,1]
+                tp_actions[index_count] = np.array([0.99, 0.99])
+            action = tp_actions[index_count]
+            print("two param action = ", tp_actions[index_count])
+            index_count += 1
+            obs = env.reset(random_angle=False, new_alpha = False)
+            done = False
+            episode_cost_tmp = 0
+            errors_tmp = [env.global_error]
+            dofs_tmp = [env.sum_of_dofs]
+            max_steps   = 40 # or:  num_steps_of_RL_policy
+            steps_taken = 0
+            while not done:
+                _, reward, done, info = env.step(action)
+                if not minimum_budget_problem and done:
+                    break
+                if steps_taken > max_steps:
+                    print("*** BREAKING EARLY - fixed action exceeded max step threshold of ", max_steps, "steps.")
+                    break
+                else:
+                    steps_taken += 1
+                episode_cost_tmp -= reward
+                errors_tmp.append(info['global_error'])
+                dofs_tmp.append(info['num_dofs'])
+            tp_costs.append(episode_cost_tmp)
+            tp_errors.append(errors_tmp)
+            tp_dofs.append(dofs_tmp)
+            print('two param episode cost = ', episode_cost_tmp)
+            # if theta == 5 and rho == 5:
+            #     env.render()
+            #     env.RenderHPmesh()
+            #     print("\nRendering two parmaeter policy ", tp_actions[index_count-1], "\n")
+            if save_mesh and prob_config['mesh_name'] == 'fichera.mesh':
+                mkdir_p(output_dir+"/meshes_and_gfs/")
+                gfname = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '_tpp.gf'
+                env.RenderHPmesh(gfname=gfname)
+                env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '_tpp.mesh')
 
 
 """
@@ -380,23 +402,36 @@ if save_data:
     csv_path = root_path + '/progress.csv'
     df = pd.read_csv(csv_path)
     cost = -df.episode_reward_mean.to_numpy()
-    rl_actions = rlactions
-    rl_actions.append(rlepisode_cost)
-    df1 = pd.DataFrame({'cost':cost})
-    df2 = pd.DataFrame({'rlactions':rl_actions,'rldofs':rldofs,'rlerrors':rlerrors})
-    df3 = pd.DataFrame({'actions':actions,'costs':costs,'errors':errors,'dofs':dofs})
 
+    #### training data df
+    df1 = pd.DataFrame({'cost':cost})
     filename = output_dir+"/training_data.csv"
     print("Saving training data to: ", filename)    
     df1.to_csv(filename, index=False)
 
+    #### rl action df
+    # pad rlactions with one extra row to enable df2 creation
+    rlactions = rlactions.append({'theta': 999, 'rho': 999}, ignore_index=True)
+    df2 = pd.DataFrame({'theta':rlactions.iloc[:,0], 'rho':rlactions.iloc[:,1], 'rldofs':rldofs,'rlerrors':rlerrors})
+    # save a single value in every row of new column 'rlepisode_cost'
+    df2['rlepisode_cost'] = rlepisode_cost 
     filename = output_dir+"/rl_data_" + mesh_abbrv + "_angle_" + angle_abbrv + ".csv"
-    print("Saving RL deployed policy data to: ", filename)    
+    print("\nSaving RL deployed policy data to: ", filename)  
     df2.to_csv(filename, index=False)
 
-    filename = output_dir+"/expert_data_" + mesh_abbrv + "_angle_" + angle_abbrv + ".csv"
-    print("Saving deterministic AMR policies data to: ", filename)    
-    df3.to_csv(filename, index=False)
+    #### expert policy df
+    
+    if prob_config['problem_type'] == 'lshaped' and False:
+        df3 = pd.DataFrame({'actions':actions,'costs':costs,'errors':errors,'dofs':dofs})
+        filename = output_dir+"/expert_data_" + mesh_abbrv + "_angle_" + angle_abbrv + ".csv"
+        print("\nSaving expert AMR policies data to: ", filename)    
+        df3.to_csv(filename, index=False)
+
+    #### two param policy df
+    df4 = pd.DataFrame({'theta':tp_actions[:,0], 'rho':tp_actions[:,1],'costs':tp_costs,'errors':tp_errors,'dofs':tp_dofs})
+    filename = output_dir + "/tpp_data_" + mesh_abbrv + "_angle_" + angle_abbrv + ".csv"
+    print("\nSaving two parameter AMR policies data to: ", filename)    
+    df4.to_csv(filename, index=False)
 
 """
     STEP 5: Plots

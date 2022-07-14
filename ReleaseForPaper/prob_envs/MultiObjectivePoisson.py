@@ -88,10 +88,10 @@ class MultiObjPoisson(Poisson):
         else:
             return super().GetObservation(self)
 
-    def reset(self):
+    def reset(self, new_alpha = True):
         # choose new random alpha if alpha is included as an observation
         if self.optimization_type == 'multi_objective':
-            if self.observe_alpha == True: 
+            if self.observe_alpha == True and new_alpha = True: 
                 # set random alpha value
                 self.alpha = np.random.uniform(low = 0.4, high = 0.6)
         
@@ -137,15 +137,108 @@ class Angle_MultiObjPoisson(MultiObjPoisson):
             self.initial_mesh.UniformRefinement()
         self.initial_mesh.EnsureNCMesh()
 
-    def reset(self, random_angle=True):
-        # choose new random alpha if alpha is included as an observation
-        if self.optimization_type == 'multi_objective':
-            if self.observe_alpha == True: 
-                # set random alpha value
-                self.alpha = np.random.uniform(low = 0.4, high = 0.6)
+    def reset(self, random_angle=True, new_alpha = True):
 
         if random_angle:
             angle = np.random.uniform(self.angle_lower, self.angle_upper, 1).item()
             # print("Resetting env angle to ", angle)
             self.set_angle(angle)
-        return super().reset()
+        return super().reset(new_alpha = new_alpha)
+
+class hp_Angle_MultiObjPoisson(Angle_MultiObjPoisson):
+
+    def __init__(self,**kwargs):
+        super().__init__(**kwargs)  
+        self.action_space = spaces.Box(low = np.array([0.0, 0.0]), high = np.array([0.999, 0.999]), shape=(2,), dtype = np.float32)
+
+    def Prefine(self, theta, rho):   
+        mark_to_p_refine = []
+        threshold = theta * np.max(self.errors)
+        for i in range(self.mesh.GetNE()):
+            if threshold >= self.errors[i]:
+                mark_to_p_refine.append((i, self.errors[i]))
+        mark_to_p_refine.sort(key=lambda x:x[1], reverse=True)
+        for i in range(len(mark_to_p_refine)):
+            if mark_to_p_refine[i][1] > rho * np.max(self.errors):
+                current_element = mark_to_p_refine[i][0]
+                current_order = self.fespace.GetElementOrder(current_element)
+                self.fespace.SetElementOrder(current_element, current_order + 1)
+        
+        self.fespace.Update(False)
+        self.x.Update()
+        self.x.Assign(0.0)
+        self.x.ProjectBdrCoefficient(self.BC, self.ess_bdr)
+        # self.fespace.UpdatesFinished()
+        self.a.Update()
+        self.b.Update()
+
+    def CloseMesh(self, delta_p = 1):
+        # Loop through all elements in mesh until the maximum difference in polynomial
+        # orders across all edges is no more than delta_p
+        neighbor_table = self.mesh.ElementToElementTable()
+        while True:
+            mesh_closed = True
+            elements_to_p_refine = []
+            for i in range(self.mesh.GetNE()):
+                neighbor_row = neighbor_table.GetRow(i)
+                row_size = neighbor_table.RowSize(i)
+                neighbor_array = intArray(row_size)
+                neighbor_array.Assign(neighbor_row)
+                for l in range(row_size):
+                    neighbor_order = self.fespace.GetElementOrder(neighbor_array[l])
+                    if neighbor_order - self.fespace.GetElementOrder(i) > delta_p:
+                        elements_to_p_refine.append(i)
+                        mesh_closed = False
+            p_refine_elements = np.unique(elements_to_p_refine).tolist()
+            for k in range(len(p_refine_elements)):
+                current_element = p_refine_elements[k]
+                current_order = self.fespace.GetElementOrder(current_element)
+                self.fespace.SetElementOrder(current_element, current_order + 1)
+            if mesh_closed:
+                break
+
+        self.fespace.Update(False)
+        self.x.Update()
+        self.x.Assign(0.0)
+        self.x.ProjectBdrCoefficient(self.BC, self.ess_bdr)
+        # self.fespace.UpdatesFinished()
+        self.a.Update()
+        self.b.Update()
+
+    # overriding UpdateMesh in Poisson (grand)-parent class
+    def UpdateMesh(self, action):
+        action = np.clip(action, 0.0, 1.0)
+        theta = action[0].item() 
+        rho = action[1] * theta 
+        # self.refinement_strategy == 'max'
+        self.Prefine(theta, rho)
+        self.Refine(theta)
+        self.CloseMesh()
+    
+    def GetElementVertices(self, k):
+        Tr = self.mesh.GetElementTransformation(k)
+        physical_pts = np.zeros((4,2))
+        reference_pt = mfem.IntegrationPoint()
+        for i in range(2):
+            for j in range(2):
+                reference_pt.Set(float(i),float(j),0.0,0.0)
+                physical_pts[i+2*j,:] = Tr.Transform(reference_pt)
+        return physical_pts
+
+    def RenderHPmesh(self, gfname=None):
+        ordersfec = mfem.L2_FECollection(0, self.dim)
+        ordersfes = mfem.FiniteElementSpace(self.mesh, ordersfec)
+        orders = mfem.GridFunction(ordersfes)
+        for i in range(0, self.mesh.GetNE()):
+            elem_dofs = 0
+            elem_dofs = ordersfes.GetElementDofs(i)
+            # orders[elem_dofs[0]] = self.errors[i]
+            orders[elem_dofs[0]] = self.fespace.GetElementOrder(i)
+        sol_sock = mfem.socketstream("localhost", 19916)
+        sol_sock.precision(8)
+        sol_sock.send_solution(self.mesh, orders)
+        title = "step " + str(self.k)
+        sol_sock.send_text('keys ARjlmp*******' + " window_title '" + title)
+        sol_sock.send_text("valuerange 1.0 8.0 \n")
+        if gfname:
+            orders.Save(str(gfname), 8)  # second input is "precision"

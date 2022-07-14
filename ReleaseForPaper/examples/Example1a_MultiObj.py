@@ -261,14 +261,7 @@ if eval:
     ## Enact trained policy
     trainer.restore(checkpoint_path)
     rlactions = []
-    obs = env.reset()
-
-    if prob_config['optimization_type'] == 'multi_objective' and args.observe_alpha == True:
-        # evaluate policy for given value of alpha (defualt alpha = 0.5)
-
-        print("Evaluating policy with alpha = {}".format(args.alpha))
-        env.alpha = args.alpha
-        obs[2] = args.alpha # manually set alpha in observation to args.alpha
+    obs = env.reset(new_alpha = False)
 
     done = False
     rlepisode_cost = 0
@@ -317,7 +310,7 @@ if eval:
         action = np.array([i/nth])
         actions.append(action.item())
         print("action = ", action.item())
-        env.reset()
+        env.reset(new_alpha = False)
         done = False
         episode_cost_tmp = 0
         errors_tmp = [env.global_error]
