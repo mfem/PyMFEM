@@ -17,8 +17,8 @@ output_file_name 	= "fixed_theta_1a_AMR_data.txt"
 num_iterations 		= 10
 
 # values of alpha and theta to test
-alphas = range(0, 1.1, 0.1)
-thetas = range(0.1, 1, 0.1)
+alphas = 0.1*np.array(range(0, 11, 1))
+thetas = 0.1*np.array(range(1, 10, 1))
 
 # define environment
 prob_config = {
@@ -28,9 +28,9 @@ prob_config = {
     'order'             : 2,
     'optimization_type' : 'multi_objective', 
     'dof_threshold'     : 1e5,
-    'alpha'             : args.alpha,
-    'observe_alpha'     : args.observe_alpha,
-    'observe_budget'    : args.observe_budget,
+    'alpha'             : 0.5,
+    'observe_alpha'     : False,
+    'observe_budget'    : True,
     'num_iterations'    : 10
 }
 ray.shutdown()
@@ -41,7 +41,7 @@ env = MultiObjPoisson(**prob_config)
 env.trainingmode = False
 
 # open output file
-output_file = open(output_file_name)
+output_file = open(output_file_name, "a")
 output_file.write("alpha, theta, cum_dofs, error\n")
 
 # initialize variables
@@ -51,8 +51,8 @@ errors = []
 dofs = []
 
 for alpha in alphas:
-	for theta in thetas:
-		# run fixed-theta AMR
+    for theta in thetas:
+        # run fixed-theta AMR
         action = np.array([theta])
         actions.append(action.item())
         print("action = ", action.item())
@@ -80,11 +80,11 @@ for alpha in alphas:
         print('episode cost = ', episode_cost_tmp)
 
         # find final cumulative degrees of freedom
-        cum_dofs = np.cumsum(dofs[-1])
+        cum_dofs = np.cumsum(dofs[-1])[-1]
 
-		# print results to file
-		result_str = str(alpha) + ", " + str(theta) + ", " + str(cum_dofs) + ", " + str(errors[-1]) + "\n"
-		output_file.write(result_str, "a")
+        # print results to file
+        result_str = str(alpha) + ", " + str(theta) + ", " + str(cum_dofs) + ", " + str(errors[-1][-1]) + "\n"
+        output_file.write(result_str)
 
 # close output file
 output_file.close()
