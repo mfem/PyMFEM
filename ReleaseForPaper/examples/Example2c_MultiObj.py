@@ -137,7 +137,9 @@ prob_config = {
     'observe_alpha'     : args.observe_alpha,
     'observe_budget'    : args.observe_budget,
     'num_iterations'    : 15,
-    'num_batches'       : nbatches
+    'num_batches'       : nbatches,
+    'angle_lower'       : 0.5*np.pi,
+    'angle_upper'       : 1.5*np.pi
 }
 
 mesh_abbrv = prob_config['problem_type']
@@ -242,12 +244,13 @@ if train:
 if eval and not train:
     if prob_config['optimization_type'] == 'multi_objective':
 #        temp_path = 'Example1a_MO_2022-07-11_06-56-00'
-        temp_path = 'Example1a_MO_2022-07-13_11-56-00'
+# exp set 10        temp_path = 'Example2c_MO_ang_1.57_2022-07-19_12-59-03'
+        temp_path = 'Example2c_MO_ang_1.57_2022-07-22_13-07-54' # experiment set 12
     else:
         temp_path = 'Example1a_2022-04-15_10-55-16'
 
     chkpt_num = nbatches
-    checkpoint_dir = log_dir + temp_path
+    checkpoint_dir = log_dir + temp_path 
     if chkpt_num < 100:
         checkpoint_path=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt < 100
     elif chkpt_num > 100:
@@ -357,14 +360,13 @@ if eval:
             episode_cost_tmp = 0
             errors_tmp = [env.global_error]
             dofs_tmp = [env.sum_of_dofs]
-            max_steps   = 40 # or:  num_steps_of_RL_policy
             steps_taken = 0
             while not done:
                 _, reward, done, info = env.step(action)
-                if not minimum_budget_problem and done:
+                if not prob_config['optimization_type'] == 'dof_threshold' and done:
                     break
-                if steps_taken > max_steps:
-                    print("*** BREAKING EARLY - fixed action exceeded max step threshold of ", max_steps, "steps.")
+                if steps_taken > prob_config['num_iterations']:
+                    print("*** BREAKING EARLY - fixed action exceeded max step threshold of ", prob_config['num_iterations'], "steps.")
                     break
                 else:
                     steps_taken += 1
@@ -379,7 +381,7 @@ if eval:
             #     env.render()
             #     env.RenderHPmesh()
             #     print("\nRendering two parmaeter policy ", tp_actions[index_count-1], "\n")
-            if save_mesh and prob_config['mesh_name'] == 'fichera.mesh':
+            if args.savemesh and prob_config['mesh_name'] == 'fichera.mesh':
                 mkdir_p(output_dir+"/meshes_and_gfs/")
                 gfname = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '_tpp.gf'
                 env.RenderHPmesh(gfname=gfname)

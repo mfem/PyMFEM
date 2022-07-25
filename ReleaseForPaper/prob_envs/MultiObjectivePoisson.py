@@ -91,7 +91,7 @@ class MultiObjPoisson(Poisson):
     def reset(self, new_alpha = True):
         # choose new random alpha if alpha is included as an observation
         if self.optimization_type == 'multi_objective':
-            if self.observe_alpha == True and new_alpha = True: 
+            if self.observe_alpha == True and new_alpha == True: 
                 # set random alpha value
                 self.alpha = np.random.uniform(low = 0.4, high = 0.6)
         

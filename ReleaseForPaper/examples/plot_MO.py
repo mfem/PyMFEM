@@ -22,13 +22,14 @@ assert args.file_path.exists() , "The given file doesn't exist"
 input_file = str(args.file_path)
 
 # Check for second file to be plotted
-if args.second_file.exists():
+try:
+    assert args.second_file.exists(), "The second file doesn't exist"
     second_file = True
     input_file2 = str(args.second_file)
     
     # only allow second file with colorbar option
     assert colorbar == True, "Two files may only be plotted with the colorbar option"
-else:
+except:
     second_file = False
 
 
@@ -145,7 +146,7 @@ if exp_flag == 4:
 ax5.set_xlabel(r'Cumulative degrees of freedom $(J_k)$', fontsize=22)
 ax5.set_ylabel(r'Global error estimate $(\eta_k)$', fontsize=22)
 ax5.tick_params(axis='x', which = 'major', labelsize=22)
-ax5.tick_params(axis='x', which = 'minor', labelsize=15)
+ax5.tick_params(axis='x', which = 'minor', labelsize=12)
 ax5.tick_params(axis='y', labelsize=22)
 # ax5.legend(loc='upper right', prop={'size': 14})
 ax5.set_yticks([10**-2, 10**-3])
@@ -157,8 +158,8 @@ if args.save_figs:
     name = input_file.split('.')[0]
     if second_file:
         name2 = input_file2.split('.')[0].split('const_alpha_data')[1]
-        plot_name = 'plot_' + name + name2 + '.pdf'  
+        plot_name = 'plot_' + name + name2 + '.png'  
     else:
-        plot_name = 'plot_' + name + '.pdf'
+        plot_name = 'plot_' + name + '.png'
     
-    plt.savefig(plot_name, format='pdf', bbox_inches='tight')
+    plt.savefig(plot_name, format='png', bbox_inches='tight')

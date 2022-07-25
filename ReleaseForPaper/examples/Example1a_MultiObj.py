@@ -102,6 +102,7 @@ parser.add_argument('--plotfigs', default=True, action='store_true')
 parser.add_argument('--no-plotfigs', dest='plotfigs', action='store_false')
 parser.add_argument('--savefigs', default=True, action='store_true')
 parser.add_argument('--no-savefigs', dest='savefigs', action='store_false')
+parser.add_argument('--savemesh', default=False, action='store_true')
 
 parser.add_argument('--observe_alpha', default = True, action='store_true')
 parser.add_argument('--no_observe_alpha', dest='observe_alpha', action='store_false')
@@ -201,8 +202,8 @@ else:
         if args.observe_alpha == True:
             temp_path = 'Example1a_MO_' + timestr
         else: 
-            alpha_str = str(args.alpha).replace('.','_') + '_'
-            temp_path = 'Example1a_MO_alpha' + alpha_str + timestr
+            alpha_str = str(args.alpha).replace('.','_') 
+            temp_path = 'Example1a_MO_alpha' + alpha_str + '_' + timestr
         
     else:
         temp_path = 'Example1a_' + timestr
@@ -268,6 +269,17 @@ if eval:
     rlerrors = [env.global_error]
     rldofs = [env.sum_of_dofs]
     env.trainingmode = False
+
+    if args.savemesh:
+        mkdir_p(output_dir+"/meshes_and_gfs/")
+
+        if args.observe_alpha == True or prob_config['optimization_type'] != 'multi_objective':
+            env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + '_initial.mesh')
+        else: 
+            env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + "_alpha_" + alpha_str + '_initial.mesh')
+
+        print("==> Saved initial mesh to ", output_dir, "/meshes_and_gfs/")
+
     while not done:
         action = trainer.compute_single_action(obs,explore=False)
         # action = trainer.compute_single_action(obs,explore=True)
@@ -282,6 +294,15 @@ if eval:
         print("episode cost = ", rlepisode_cost)
         rldofs.append(info['num_dofs'])
         rlerrors.append(info['global_error'])
+
+        if args.savemesh:
+            #gfname = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + "_alpha_" + alpha_str + '.gf'
+            env.render()
+
+            if args.observe_alpha == True or prob_config['optimization_type'] != 'multi_objective':
+                env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + '.mesh')
+            else: 
+                env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + "_alpha_" + alpha_str + '.mesh')
 
     if train == False and prob_config['optimization_type'] == 'multi_objective' and args.observe_alpha == True:
         # save final errors in file
