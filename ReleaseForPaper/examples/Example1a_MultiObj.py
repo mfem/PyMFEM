@@ -107,6 +107,7 @@ parser.add_argument('--savemesh', default=False, action='store_true')
 parser.add_argument('--observe_alpha', default = True, action='store_true')
 parser.add_argument('--no_observe_alpha', dest='observe_alpha', action='store_false')
 parser.add_argument('--alpha', default = 0.5, type = float) # alpha for cost function if no_observe_alpha, also the alpha used for evaluation
+parser.add_argument('--eval_alphas', default = False, action='store_true') # evaluate trained policy on alphas in {0.1, 0.2, ..., 0.9}
 
 parser.add_argument('--observe_budget', default = True, action='store_true')
 parser.add_argument('--no_observe_budget', dest='observe_budget', action='store_false')
@@ -121,7 +122,7 @@ plot_figs=args.plotfigs
 save_figs=args.savefigs
 
 restore_policy = False
-nbatches = 250
+nbatches = 1500
 
 ## Configuration for multi objective problem
 prob_config = {
@@ -230,13 +231,21 @@ if train:
         episode_score = -result["episode_reward_mean"]
         episode_length = result["episode_len_mean"]
         print ("Mean episode cost:   %.3f" % episode_score)
-        print ("Mean episode length: %.3f" % episode_length)
+        #print ("Mean episode length: %.3f" % episode_length)
         checkpoint_path = trainer.save(checkpoint_dir)
         print(checkpoint_path)
 
 if eval and not train:
     if prob_config['optimization_type'] == 'multi_objective':
-        temp_path = 'Example1a_MO_2022-07-11_06-56-00'
+        # temp_path = 'Example1a_MO_2022-07-11_06-56-00'    # experiment set 8
+        # temp_path = 'Example1a_MO_2022-07-28_08-10-58'    # experiment set 17
+        # temp_path = 'Example1a_MO_2022-07-28_12-46-24'    # experiment set 18
+        # temp_path = 'Example1a_MO_2022-07-28_14-22-54'    # experiment set 19
+        # temp_path = 'Example1a_MO_2022-07-29_07-23-24'    # experiment set 20
+        #temp_path = 'Example1a_MO_2022-07-29_13-16-49'     # experiment set 22
+        # temp_path = 'Example1a_MO_2022-07-29_08-54-14'    # experiment set 21
+        # temp_path = 'Example1a_MO_2022-08-01_07-46-52'    # experiment set 23
+        temp_path = 'Example1a_MO_2022-08-01_09-30-28'      # experiment set 24
     else:
         temp_path = 'Example1a_2022-04-15_10-55-16'
 
@@ -244,8 +253,10 @@ if eval and not train:
     checkpoint_dir = log_dir + temp_path
     if chkpt_num < 100:
         checkpoint_path=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt < 100
-    elif chkpt_num >= 100:
+    elif chkpt_num >= 100 and chkpt_num <1000:
         checkpoint_path = checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt > 99 and <1000
+    elif chkpt_num >=1000:
+        checkpoint_path = checkpoint_dir+'/checkpoint_00'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt > 999 and <10000
     else:
         print("error, cannot load policy to evaluate")
     output_dir = output_dir_ + temp_path
@@ -257,10 +268,31 @@ if train:
     STEP 3: Validation
 """
 
-if eval:
+# determine which, if any, alphas to evaluate
+if eval and not args.eval_alphas:
+    alphas_to_eval = [args.alpha]
+
+elif eval and args.eval_alphas:
+    alphas_to_eval = 0.1*np.array(range(1, 10, 1))
+else:
+    alphas_to_eval = []
+
+# boolean to keep track of saving mesh, so we don't waste time doing this more than once
+saved_initial_mesh = False; 
+
+# open file for saving evaluation results
+mkdir_p(output_dir)
+file_name = "/alpha_policy_data_1a.txt"
+file_location = output_dir + file_name
+file = open(file_location, "a")
+
+for alpha in alphas_to_eval:
+    # set alpha
+    env.alpha = alpha
+    alpha_str = str(alpha).replace('.','_') 
 
     ## Enact trained policy
-    trainer.restore(checkpoint_path)
+    trainer.restore(checkpoint_path) 
     rlactions = []
     obs = env.reset(new_alpha = False)
 
@@ -270,15 +302,12 @@ if eval:
     rldofs = [env.sum_of_dofs]
     env.trainingmode = False
 
-    if args.savemesh:
+    if args.savemesh and not saved_initial_mesh:
         mkdir_p(output_dir+"/meshes_and_gfs/")
-
-        if args.observe_alpha == True or prob_config['optimization_type'] != 'multi_objective':
-            env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + '_initial.mesh')
-        else: 
-            env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + "_alpha_" + alpha_str + '_initial.mesh')
+        env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + '_initial.mesh')
 
         print("==> Saved initial mesh to ", output_dir, "/meshes_and_gfs/")
+        saved_initial_mesh = True;
 
     while not done:
         action = trainer.compute_single_action(obs,explore=False)
@@ -298,22 +327,13 @@ if eval:
         if args.savemesh:
             #gfname = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + "_alpha_" + alpha_str + '.gf'
             env.render()
+            env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + "_alpha_" + alpha_str + '.mesh')
 
-            if args.observe_alpha == True or prob_config['optimization_type'] != 'multi_objective':
-                env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + '.mesh')
-            else: 
-                env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + "_alpha_" + alpha_str + '.mesh')
-
-    if train == False and prob_config['optimization_type'] == 'multi_objective' and args.observe_alpha == True:
-        # save final errors in file
-        file_name = "alpha_policy_data_1a.txt"
-        file_location = output_dir_ + file_name
-        file = open(file_location, "a")
-
-        cum_rldofs = np.cumsum(rldofs)
-        file_string = str(args.alpha) + ", " + str(cum_rldofs[-1]) + ", " + str(rlerrors[-1]) + "\n"
-        file.write(file_string)
-        file.close()        
+    # save final errors in file for each alpha
+    cum_rldofs = np.cumsum(rldofs)
+    file_string = str(alpha) + ", " + str(cum_rldofs[-1]) + ", " + str(rlerrors[-1]) + "\n"
+    file.write(file_string)
+            
 
     ## Enact AMR policies
     costs = []
@@ -350,7 +370,7 @@ if eval:
         errors.append(errors_tmp)
         dofs.append(dofs_tmp)
         print('episode cost = ', episode_cost_tmp)
-
+file.close()
 
 """
     STEP 4: Save Data
