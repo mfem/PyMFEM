@@ -23,6 +23,7 @@ import_array();
 %import "eltrans.i"
 %import "intrules.i"
 %import "coefficient.i"
+%import "fespace.i"
 
 
 %exception {
