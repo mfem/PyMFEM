@@ -4,7 +4,7 @@
 #include "fem/linearform.hpp"  
 #include "../common/pycoefficient.hpp"
 #include "pyoperator.hpp"
-#include "fem/ceed/operator.hpp"
+#include "fem/ceed/interface/operator.hpp"
 using namespace mfem;  
 %}
 /*

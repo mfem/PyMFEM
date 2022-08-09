@@ -223,7 +223,7 @@ class VectorPtrArray(object):
     end = _swig_new_instance_method(_vector.VectorPtrArray_end)
 
     def MemoryUsage(self):
-        r"""MemoryUsage(VectorPtrArray self) -> long"""
+        r"""MemoryUsage(VectorPtrArray self) -> std::size_t"""
         return _vector.VectorPtrArray_MemoryUsage(self)
     MemoryUsage = _swig_new_instance_method(_vector.VectorPtrArray_MemoryUsage)
 
@@ -591,6 +591,11 @@ class Vector(object):
         r"""Randomize(Vector self, int seed=0)"""
         return _vector.Vector_Randomize(self, seed)
     Randomize = _swig_new_instance_method(_vector.Vector_Randomize)
+
+    def SetGlobalSeed(self, gseed):
+        r"""SetGlobalSeed(Vector self, int gseed)"""
+        return _vector.Vector_SetGlobalSeed(self, gseed)
+    SetGlobalSeed = _swig_new_instance_method(_vector.Vector_SetGlobalSeed)
 
     def Norml2(self):
         r"""Norml2(Vector self) -> double"""

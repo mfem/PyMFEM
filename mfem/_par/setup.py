@@ -57,7 +57,8 @@ modules= ["io_stream", "vtk", "sort_pairs", "datacollection",
           "plinearform", "pbilinearform", "pnonlinearform",
           "hypre", "restriction", "prestriction",
           "fespacehierarchy", "multigrid", "constraints",
-          "transfer", "dist_solver", "std_vectors", "auxiliary"]
+          "transfer", "dist_solver", "std_vectors", "auxiliary",
+          "tmop", "tmop_amr", "tmop_tools"]
 
 if add_pumi != '':
     modules.append("pumi")

@@ -52,7 +52,8 @@ modules= ["io_stream", "vtk", "sort_pairs", "datacollection",
           "matrix", "operators", "ncmesh", "eltrans", "geom",
           "nonlininteg", "nonlinearform", "restriction",
           "fespacehierarchy", "multigrid", "constraints",
-          "transfer", "std_vectors"]
+          "transfer", "std_vectors",
+          "tmop", "tmop_amr", "tmop_tools"]
 
 sources = {name: [name + "_wrap.cxx"] for name in modules}
 proxy_names = {name: '_'+name for name in modules}

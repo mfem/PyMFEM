@@ -205,7 +205,7 @@ class IntegrationPointArray(object):
     end = _swig_new_instance_method(_intrules.IntegrationPointArray_end)
 
     def MemoryUsage(self):
-        r"""MemoryUsage(IntegrationPointArray self) -> long"""
+        r"""MemoryUsage(IntegrationPointArray self) -> std::size_t"""
         return _intrules.IntegrationPointArray_MemoryUsage(self)
     MemoryUsage = _swig_new_instance_method(_intrules.IntegrationPointArray_MemoryUsage)
 
@@ -439,7 +439,7 @@ class IntegrationRulePtrArray(object):
     end = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_end)
 
     def MemoryUsage(self):
-        r"""MemoryUsage(IntegrationRulePtrArray self) -> long"""
+        r"""MemoryUsage(IntegrationRulePtrArray self) -> std::size_t"""
         return _intrules.IntegrationRulePtrArray_MemoryUsage(self)
     MemoryUsage = _swig_new_instance_method(_intrules.IntegrationRulePtrArray_MemoryUsage)
 

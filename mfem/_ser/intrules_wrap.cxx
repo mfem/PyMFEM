@@ -2836,6 +2836,55 @@ SWIGINTERNINLINE PyObject*
   #define SWIG_From_long   PyInt_FromLong 
 
 
+SWIGINTERNINLINE PyObject* 
+SWIG_From_unsigned_SS_long  (unsigned long value)
+{
+  return (value > LONG_MAX) ?
+    PyLong_FromUnsignedLong(value) : PyInt_FromLong(static_cast< long >(value));
+}
+
+
+#include <limits.h>
+#if !defined(SWIG_NO_LLONG_MAX)
+# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
+#   define LLONG_MAX __LONG_LONG_MAX__
+#   define LLONG_MIN (-LLONG_MAX - 1LL)
+#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
+# endif
+#endif
+
+
+#if defined(LLONG_MAX) && !defined(SWIG_LONG_LONG_AVAILABLE)
+#  define SWIG_LONG_LONG_AVAILABLE
+#endif
+
+
+#ifdef SWIG_LONG_LONG_AVAILABLE
+SWIGINTERNINLINE PyObject* 
+SWIG_From_unsigned_SS_long_SS_long  (unsigned long long value)
+{
+  return (value > LONG_MAX) ?
+    PyLong_FromUnsignedLongLong(value) : PyInt_FromLong(static_cast< long >(value));
+}
+#endif
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_size_t  (size_t value)
+{    
+#ifdef SWIG_LONG_LONG_AVAILABLE
+  if (sizeof(size_t) <= sizeof(unsigned long)) {
+#endif
+    return SWIG_From_unsigned_SS_long  (static_cast< unsigned long >(value));
+#ifdef SWIG_LONG_LONG_AVAILABLE
+  } else {
+    /* assume sizeof(size_t) <= sizeof(unsigned long long) */
+    return SWIG_From_unsigned_SS_long_SS_long  (static_cast< unsigned long long >(value));
+  }
+#endif
+}
+
+
 SWIGINTERN int
 SWIG_AsVal_double (PyObject *obj, double *val)
 {
@@ -5155,7 +5204,7 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_MemoryUsage(PyObject *SWIGUNUSE
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  long result;
+  std::size_t result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -5166,7 +5215,7 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_MemoryUsage(PyObject *SWIGUNUSE
   arg1 = reinterpret_cast< mfem::Array< mfem::IntegrationPoint > * >(argp1);
   {
     try {
-      result = (long)((mfem::Array< mfem::IntegrationPoint > const *)arg1)->MemoryUsage();
+      result = ((mfem::Array< mfem::IntegrationPoint > const *)arg1)->MemoryUsage();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -5180,7 +5229,7 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_MemoryUsage(PyObject *SWIGUNUSE
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
   }
-  resultobj = SWIG_From_long(static_cast< long >(result));
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
   return NULL;
@@ -7991,7 +8040,7 @@ SWIGINTERN PyObject *_wrap_IntegrationRulePtrArray_MemoryUsage(PyObject *SWIGUNU
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  long result;
+  std::size_t result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -8002,7 +8051,7 @@ SWIGINTERN PyObject *_wrap_IntegrationRulePtrArray_MemoryUsage(PyObject *SWIGUNU
   arg1 = reinterpret_cast< mfem::Array< mfem::IntegrationRule * > * >(argp1);
   {
     try {
-      result = (long)((mfem::Array< mfem::IntegrationRule * > const *)arg1)->MemoryUsage();
+      result = ((mfem::Array< mfem::IntegrationRule * > const *)arg1)->MemoryUsage();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -8016,7 +8065,7 @@ SWIGINTERN PyObject *_wrap_IntegrationRulePtrArray_MemoryUsage(PyObject *SWIGUNU
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
   }
-  resultobj = SWIG_From_long(static_cast< long >(result));
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
   return NULL;
@@ -11636,7 +11685,7 @@ static PyMethodDef SwigMethods[] = {
 		"IntegrationPointArray_end(IntegrationPointArray self) -> IntegrationPoint\n"
 		"IntegrationPointArray_end(IntegrationPointArray self) -> IntegrationPoint\n"
 		""},
-	 { "IntegrationPointArray_MemoryUsage", _wrap_IntegrationPointArray_MemoryUsage, METH_O, "IntegrationPointArray_MemoryUsage(IntegrationPointArray self) -> long"},
+	 { "IntegrationPointArray_MemoryUsage", _wrap_IntegrationPointArray_MemoryUsage, METH_O, "IntegrationPointArray_MemoryUsage(IntegrationPointArray self) -> std::size_t"},
 	 { "IntegrationPointArray_Read", (PyCFunction)(void(*)(void))_wrap_IntegrationPointArray_Read, METH_VARARGS|METH_KEYWORDS, "IntegrationPointArray_Read(IntegrationPointArray self, bool on_dev=True) -> IntegrationPoint"},
 	 { "IntegrationPointArray_HostRead", _wrap_IntegrationPointArray_HostRead, METH_O, "IntegrationPointArray_HostRead(IntegrationPointArray self) -> IntegrationPoint"},
 	 { "IntegrationPointArray_Write", (PyCFunction)(void(*)(void))_wrap_IntegrationPointArray_Write, METH_VARARGS|METH_KEYWORDS, "IntegrationPointArray_Write(IntegrationPointArray self, bool on_dev=True) -> IntegrationPoint"},
@@ -11710,7 +11759,7 @@ static PyMethodDef SwigMethods[] = {
 		"IntegrationRulePtrArray_end(IntegrationRulePtrArray self) -> IntegrationRule\n"
 		"IntegrationRulePtrArray_end(IntegrationRulePtrArray self) -> mfem::IntegrationRule *const *\n"
 		""},
-	 { "IntegrationRulePtrArray_MemoryUsage", _wrap_IntegrationRulePtrArray_MemoryUsage, METH_O, "IntegrationRulePtrArray_MemoryUsage(IntegrationRulePtrArray self) -> long"},
+	 { "IntegrationRulePtrArray_MemoryUsage", _wrap_IntegrationRulePtrArray_MemoryUsage, METH_O, "IntegrationRulePtrArray_MemoryUsage(IntegrationRulePtrArray self) -> std::size_t"},
 	 { "IntegrationRulePtrArray_Read", (PyCFunction)(void(*)(void))_wrap_IntegrationRulePtrArray_Read, METH_VARARGS|METH_KEYWORDS, "IntegrationRulePtrArray_Read(IntegrationRulePtrArray self, bool on_dev=True) -> mfem::IntegrationRule *const *"},
 	 { "IntegrationRulePtrArray_HostRead", _wrap_IntegrationRulePtrArray_HostRead, METH_O, "IntegrationRulePtrArray_HostRead(IntegrationRulePtrArray self) -> mfem::IntegrationRule *const *"},
 	 { "IntegrationRulePtrArray_Write", (PyCFunction)(void(*)(void))_wrap_IntegrationRulePtrArray_Write, METH_VARARGS|METH_KEYWORDS, "IntegrationRulePtrArray_Write(IntegrationRulePtrArray self, bool on_dev=True) -> mfem::IntegrationRule **"},
@@ -11869,7 +11918,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"end(IntegrationPointArray self) -> IntegrationPoint\n"
 		"end(IntegrationPointArray self) -> IntegrationPoint\n"
 		""},
-	 { "IntegrationPointArray_MemoryUsage", _wrap_IntegrationPointArray_MemoryUsage, METH_O, "MemoryUsage(IntegrationPointArray self) -> long"},
+	 { "IntegrationPointArray_MemoryUsage", _wrap_IntegrationPointArray_MemoryUsage, METH_O, "MemoryUsage(IntegrationPointArray self) -> std::size_t"},
 	 { "IntegrationPointArray_Read", (PyCFunction)(void(*)(void))_wrap_IntegrationPointArray_Read, METH_VARARGS|METH_KEYWORDS, "Read(IntegrationPointArray self, bool on_dev=True) -> IntegrationPoint"},
 	 { "IntegrationPointArray_HostRead", _wrap_IntegrationPointArray_HostRead, METH_O, "HostRead(IntegrationPointArray self) -> IntegrationPoint"},
 	 { "IntegrationPointArray_Write", (PyCFunction)(void(*)(void))_wrap_IntegrationPointArray_Write, METH_VARARGS|METH_KEYWORDS, "Write(IntegrationPointArray self, bool on_dev=True) -> IntegrationPoint"},
@@ -11943,7 +11992,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"end(IntegrationRulePtrArray self) -> IntegrationRule\n"
 		"end(IntegrationRulePtrArray self) -> mfem::IntegrationRule *const *\n"
 		""},
-	 { "IntegrationRulePtrArray_MemoryUsage", _wrap_IntegrationRulePtrArray_MemoryUsage, METH_O, "MemoryUsage(IntegrationRulePtrArray self) -> long"},
+	 { "IntegrationRulePtrArray_MemoryUsage", _wrap_IntegrationRulePtrArray_MemoryUsage, METH_O, "MemoryUsage(IntegrationRulePtrArray self) -> std::size_t"},
 	 { "IntegrationRulePtrArray_Read", (PyCFunction)(void(*)(void))_wrap_IntegrationRulePtrArray_Read, METH_VARARGS|METH_KEYWORDS, "Read(IntegrationRulePtrArray self, bool on_dev=True) -> mfem::IntegrationRule *const *"},
 	 { "IntegrationRulePtrArray_HostRead", _wrap_IntegrationRulePtrArray_HostRead, METH_O, "HostRead(IntegrationRulePtrArray self) -> mfem::IntegrationRule *const *"},
 	 { "IntegrationRulePtrArray_Write", (PyCFunction)(void(*)(void))_wrap_IntegrationRulePtrArray_Write, METH_VARARGS|METH_KEYWORDS, "Write(IntegrationRulePtrArray self, bool on_dev=True) -> mfem::IntegrationRule **"},
