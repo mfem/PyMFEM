@@ -11,6 +11,7 @@ import ray
 import ray.rllib.agents.ppo as ppo
 from ray.tune.registry import register_env
 from prob_envs.MultiObjectivePoisson import MultiObjPoisson
+from MO_eval import *
 import numpy as np
 import time
 import seaborn as sns
@@ -225,6 +226,7 @@ if (restore_policy):
 
 if train:
     env.trainingmode = True
+    MO_eval_loss = []
     for n in range(nbatches):
         print("training batch %d of %d batches" % (n+1,nbatches))
         result = trainer.train()
@@ -232,6 +234,12 @@ if train:
         episode_length = result["episode_len_mean"]
         print ("Mean episode cost:   %.3f" % episode_score)
         #print ("Mean episode length: %.3f" % episode_length)
+
+        # do MO-eval every 20 batches
+        if n % 20 == 0:
+            MO_eval_loss.append(MO_eval(env, trainer))
+            print("Multi-objective eval loss: %.3f" % MO_eval_loss[-1])
+
         checkpoint_path = trainer.save(checkpoint_dir)
         print(checkpoint_path)
 
@@ -278,7 +286,7 @@ else:
     alphas_to_eval = []
 
 # boolean to keep track of saving mesh, so we don't waste time doing this more than once
-saved_initial_mesh = False; 
+saved_initial_mesh = False;  
 
 # open file for saving evaluation results
 mkdir_p(output_dir)
@@ -310,7 +318,7 @@ for alpha in alphas_to_eval:
         saved_initial_mesh = True;
 
     while not done:
-        action = trainer.compute_single_action(obs,explore=False)
+        action = trainer.compute_single_action(obs, explore = False)
         # action = trainer.compute_single_action(obs,explore=True)
         obs, reward, done, info = env.step(action)
         if prob_config['optimization_type'] == 'dof_threshold' and done:
@@ -324,10 +332,10 @@ for alpha in alphas_to_eval:
         rldofs.append(info['num_dofs'])
         rlerrors.append(info['global_error'])
 
-        if args.savemesh:
-            #gfname = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + "_alpha_" + alpha_str + '.gf'
-            env.render()
-            env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + "_alpha_" + alpha_str + '.mesh')
+    if args.savemesh:
+        #gfname = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + "_alpha_" + alpha_str + '.gf'
+        env.render()
+        env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + "_alpha_" + alpha_str + '.mesh')
 
     # save final errors in file for each alpha
     cum_rldofs = np.cumsum(rldofs)
@@ -393,6 +401,7 @@ if save_data:
     df1 = pd.DataFrame({'cost':cost})
     df2 = pd.DataFrame({'rlactions':rl_actions,'rldofs':rldofs,'rlerrors':rlerrors})
     df3 = pd.DataFrame({'actions':actions,'costs':costs,'errors':errors,'dofs':dofs})
+    df4 = pd.DataFrame({'MO_eval_loss':MO_eval_loss})
     filename = output_dir+"/training_data.csv"
     print("Saving training data to: ", filename)    
     df1.to_csv(filename, index=False)
@@ -402,6 +411,9 @@ if save_data:
     filename = output_dir+"/expert_data.csv"
     print("Saving deterministic AMR policies data to: ", filename)    
     df3.to_csv(filename, index=False)
+    filename = output_dir + "/MO_eval.csv"
+    print("Saving multi-objective eval loss to: ", filename)
+    df4.to_csv(filename, index=False)
 
 """
     STEP 5: Plots

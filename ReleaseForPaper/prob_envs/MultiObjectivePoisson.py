@@ -70,6 +70,7 @@ class MultiObjPoisson(Poisson):
         else: 
             return super().step(self, action)
 
+
     def GetObservation(self):
         if self.optimization_type == 'multi_objective':
             num_dofs = self.fespace.GetTrueVSize()
@@ -144,6 +145,7 @@ class Angle_MultiObjPoisson(MultiObjPoisson):
             # print("Resetting env angle to ", angle)
             self.set_angle(angle)
         return super().reset(new_alpha = new_alpha)
+
 
 class hp_Angle_MultiObjPoisson(Angle_MultiObjPoisson):
 
