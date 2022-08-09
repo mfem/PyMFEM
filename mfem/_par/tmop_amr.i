@@ -6,6 +6,10 @@
 #include "../common/pycoefficient.hpp"  
 %}
 
+%init %{
+import_array();
+%}
+
 %include "../common/mfem_config.i"
 
 #ifdef MFEM_USE_MPI
@@ -17,6 +21,7 @@
 %import "../common/exception_director.i"
 
 %import tmop.i
+%import estimators.i
 %import nonlinearform.i
 %import pnonlinearform.i
 

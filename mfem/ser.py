@@ -84,5 +84,5 @@ import mfem._ser.solvers as solvers
 import mfem._ser.vector as vector
 import mfem._ser.sparsemat as sparsemat
 
-
+import mfem._ser.tmop_modules as tmop
 

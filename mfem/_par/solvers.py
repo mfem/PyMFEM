@@ -837,6 +837,38 @@ class ProductSolver(mfem._par.operators.Solver):
 # Register ProductSolver in _solvers:
 _solvers.ProductSolver_swigregister(ProductSolver)
 
+class OrthoSolver(mfem._par.operators.Solver):
+    r"""Proxy of C++ mfem::OrthoSolver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        r"""
+        __init__(OrthoSolver self) -> OrthoSolver
+        __init__(OrthoSolver self, MPI_Comm mycomm_) -> OrthoSolver
+        """
+        _solvers.OrthoSolver_swiginit(self, _solvers.new_OrthoSolver(*args))
+
+    def SetSolver(self, s):
+        r"""SetSolver(OrthoSolver self, Solver s)"""
+        return _solvers.OrthoSolver_SetSolver(self, s)
+    SetSolver = _swig_new_instance_method(_solvers.OrthoSolver_SetSolver)
+
+    def SetOperator(self, op):
+        r"""SetOperator(OrthoSolver self, Operator op)"""
+        return _solvers.OrthoSolver_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_solvers.OrthoSolver_SetOperator)
+
+    def Mult(self, b, x):
+        r"""Mult(OrthoSolver self, Vector b, Vector x)"""
+        return _solvers.OrthoSolver_Mult(self, b, x)
+    Mult = _swig_new_instance_method(_solvers.OrthoSolver_Mult)
+    __swig_destroy__ = _solvers.delete_OrthoSolver
+
+# Register OrthoSolver in _solvers:
+_solvers.OrthoSolver_swigregister(OrthoSolver)
+
 class AuxSpaceSmoother(mfem._par.operators.Solver):
     r"""Proxy of C++ mfem::AuxSpaceSmoother class."""
 

@@ -1984,8 +1984,13 @@ class DiscreteAdaptTC(TargetConstructor):
 
     def SetAdaptivityEvaluator(self, ae):
         r"""SetAdaptivityEvaluator(DiscreteAdaptTC self, AdaptivityEvaluator ae)"""
-        return _tmop.DiscreteAdaptTC_SetAdaptivityEvaluator(self, ae)
-    SetAdaptivityEvaluator = _swig_new_instance_method(_tmop.DiscreteAdaptTC_SetAdaptivityEvaluator)
+        val = _tmop.DiscreteAdaptTC_SetAdaptivityEvaluator(self, ae)
+
+        ae.thisown = 0
+
+
+        return val
+
 
     def GetTspecPert1H(self):
         r"""GetTspecPert1H(DiscreteAdaptTC self) -> Vector"""

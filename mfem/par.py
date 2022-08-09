@@ -109,6 +109,10 @@ import mfem._par.solvers as solvers
 import mfem._par.vector as vector
 import mfem._par.sparsemat as sparsemat
 
+import mfem._par.tmop_modules as tmop
+
+
+
 try:
     import mfem._par.dist_solver as dist_solver
 except:

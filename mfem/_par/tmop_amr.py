@@ -118,8 +118,9 @@ import mfem._par.restriction
 import mfem._par.bilininteg
 import mfem._par.linearform
 import mfem._par.nonlininteg
-import mfem._par.nonlinearform
+import mfem._par.estimators
 import mfem._par.bilinearform
+import mfem._par.nonlinearform
 import mfem._par.pnonlinearform
 import mfem._par.blockoperator
 import mfem._par.pfespace
@@ -128,7 +129,7 @@ import mfem._par.pncmesh
 import mfem._par.communication
 import mfem._par.sets
 import mfem._par.pgridfunc
-class TMOPRefinerEstimator(object):
+class TMOPRefinerEstimator(mfem._par.estimators.AnisotropicErrorEstimator):
     r"""Proxy of C++ mfem::TMOPRefinerEstimator class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
@@ -172,7 +173,7 @@ class TMOPRefinerEstimator(object):
 # Register TMOPRefinerEstimator in _tmop_amr:
 _tmop_amr.TMOPRefinerEstimator_swigregister(TMOPRefinerEstimator)
 
-class TMOPDeRefinerEstimator(object):
+class TMOPDeRefinerEstimator(mfem._par.estimators.ErrorEstimator):
     r"""Proxy of C++ mfem::TMOPDeRefinerEstimator class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")

@@ -403,6 +403,11 @@ class VectorDomainLFGradIntegrator(DeltaLFIntegrator):
         r"""__init__(VectorDomainLFGradIntegrator self, VectorCoefficient QF) -> VectorDomainLFGradIntegrator"""
         _lininteg.VectorDomainLFGradIntegrator_swiginit(self, _lininteg.new_VectorDomainLFGradIntegrator(QF))
 
+        self._coeff = QF
+
+
+
+
     def SupportsDevice(self):
         r"""SupportsDevice(VectorDomainLFGradIntegrator self) -> bool"""
         return _lininteg.VectorDomainLFGradIntegrator_SupportsDevice(self)

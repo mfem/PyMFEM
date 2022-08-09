@@ -3,7 +3,12 @@
 #include "mfem.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
-#include "../common/pycoefficient.hpp"  
+#include "../common/pycoefficient.hpp"
+#include "../common/pysolvers.hpp"  
+%}
+
+%init %{
+import_array();
 %}
 
 %include "../common/mfem_config.i"
@@ -21,5 +26,6 @@
 %import tmop.i
 %import bilinearform.i
 %import pbilinearform.i
+%import solvers.i
 
 %include "fem/tmop_tools.hpp"

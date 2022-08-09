@@ -66,6 +66,14 @@ class _SwigNonDynamicMeta(type):
 
 import weakref
 
+MFEM_VERSION = _tmop.MFEM_VERSION
+MFEM_VERSION_STRING = _tmop.MFEM_VERSION_STRING
+MFEM_VERSION_TYPE = _tmop.MFEM_VERSION_TYPE
+MFEM_VERSION_TYPE_RELEASE = _tmop.MFEM_VERSION_TYPE_RELEASE
+MFEM_VERSION_TYPE_DEVELOPMENT = _tmop.MFEM_VERSION_TYPE_DEVELOPMENT
+MFEM_VERSION_MAJOR = _tmop.MFEM_VERSION_MAJOR
+MFEM_VERSION_MINOR = _tmop.MFEM_VERSION_MINOR
+MFEM_VERSION_PATCH = _tmop.MFEM_VERSION_PATCH
 import mfem._ser.intrules
 import mfem._ser.array
 import mfem._ser.mem_manager
@@ -1927,8 +1935,13 @@ class DiscreteAdaptTC(TargetConstructor):
 
     def SetAdaptivityEvaluator(self, ae):
         r"""SetAdaptivityEvaluator(DiscreteAdaptTC self, AdaptivityEvaluator ae)"""
-        return _tmop.DiscreteAdaptTC_SetAdaptivityEvaluator(self, ae)
-    SetAdaptivityEvaluator = _swig_new_instance_method(_tmop.DiscreteAdaptTC_SetAdaptivityEvaluator)
+        val = _tmop.DiscreteAdaptTC_SetAdaptivityEvaluator(self, ae)
+
+        ae.thisown = 0
+
+
+        return val
+
 
     def GetTspecPert1H(self):
         r"""GetTspecPert1H(DiscreteAdaptTC self) -> Vector"""

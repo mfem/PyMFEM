@@ -66,6 +66,14 @@ class _SwigNonDynamicMeta(type):
 
 import weakref
 
+MFEM_VERSION = _tmop_amr.MFEM_VERSION
+MFEM_VERSION_STRING = _tmop_amr.MFEM_VERSION_STRING
+MFEM_VERSION_TYPE = _tmop_amr.MFEM_VERSION_TYPE
+MFEM_VERSION_TYPE_RELEASE = _tmop_amr.MFEM_VERSION_TYPE_RELEASE
+MFEM_VERSION_TYPE_DEVELOPMENT = _tmop_amr.MFEM_VERSION_TYPE_DEVELOPMENT
+MFEM_VERSION_MAJOR = _tmop_amr.MFEM_VERSION_MAJOR
+MFEM_VERSION_MINOR = _tmop_amr.MFEM_VERSION_MINOR
+MFEM_VERSION_PATCH = _tmop_amr.MFEM_VERSION_PATCH
 import mfem._ser.tmop
 import mfem._ser.intrules
 import mfem._ser.array
@@ -111,7 +119,8 @@ import mfem._ser.linearform
 import mfem._ser.nonlininteg
 import mfem._ser.nonlinearform
 import mfem._ser.bilinearform
-class TMOPRefinerEstimator(object):
+import mfem._ser.estimators
+class TMOPRefinerEstimator(mfem._ser.estimators.AnisotropicErrorEstimator):
     r"""Proxy of C++ mfem::TMOPRefinerEstimator class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
@@ -155,7 +164,7 @@ class TMOPRefinerEstimator(object):
 # Register TMOPRefinerEstimator in _tmop_amr:
 _tmop_amr.TMOPRefinerEstimator_swigregister(TMOPRefinerEstimator)
 
-class TMOPDeRefinerEstimator(object):
+class TMOPDeRefinerEstimator(mfem._ser.estimators.ErrorEstimator):
     r"""Proxy of C++ mfem::TMOPDeRefinerEstimator class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")

@@ -125,6 +125,7 @@ import mfem._par.pmesh
 import mfem._par.pncmesh
 import mfem._par.communication
 import mfem._par.sets
+import mfem._par.solvers
 class AdvectorCG(mfem._par.tmop.AdaptivityEvaluator):
     r"""Proxy of C++ mfem::AdvectorCG class."""
 
@@ -216,7 +217,7 @@ class ParAdvectorCGOper(mfem._par.operators.TimeDependentOperator):
 # Register ParAdvectorCGOper in _tmop_tools:
 _tmop_tools.ParAdvectorCGOper_swigregister(ParAdvectorCGOper)
 
-class TMOPNewtonSolver(object):
+class TMOPNewtonSolver(mfem._par.solvers.LBFGSSolver):
     r"""Proxy of C++ mfem::TMOPNewtonSolver class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")

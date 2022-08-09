@@ -556,7 +556,7 @@ def make_gslib(serial=False):
     if serial:
         command = ['make', 'CC=' + cc_command, 'MPI=0', 'CFLAGS=-fPIC']
         make_call(command)
-        command = ['make', 'DESTDIR=' + gslibs_prefix]
+        command = ['make', 'MPI=0', 'DESTDIR=' + gslibs_prefix]
         make_call(command)
     else:
         command = ['make', 'CC=' + mpicc_command, 'CFLAGS=-O2 -fPIC']
@@ -655,9 +655,8 @@ def cmake_make_mfem(serial=True):
 
     if enable_gslib:
         if serial:
-            pass
-            #cmake_opts['DMFEM_USE_GSLIB'] = '1'
-            #cmake_opts['DGSLIB_DIR'] = gslibs_prefix
+            cmake_opts['DMFEM_USE_GSLIB'] = '1'
+            cmake_opts['DGSLIB_DIR'] = gslibs_prefix
         else:
             cmake_opts['DMFEM_USE_GSLIB'] = '1'
             cmake_opts['DGSLIB_DIR'] = gslibp_prefix
@@ -767,8 +766,8 @@ def write_setup_local():
         add_extra('libceed')
     if enable_suitesparse:
         add_extra('suitesparse')
-    # if enable_gslib:
-    #    add_extra('gslibs')
+    if enable_gslib:
+        add_extra('gslibs')
     if enable_gslib:
         add_extra('gslibp')
 
@@ -1243,7 +1242,7 @@ class Install(_install):
         ('libceed-prefix=', None, 'Specify locaiton of libceed'),
         ('libceed-only', None, 'Build libceed only'),
         ('gslib-prefix=', None, 'Specify locaiton of gslib'),
-        ('with-gslib', None, 'enable gslib (parallel only)'),
+        ('with-gslib', None, 'enable gslib'),
         ('gslib-only', None, 'Build gslib only'),
         ('with-strumpack', None, 'enable strumpack (parallel only)'),
         ('strumpack-prefix=', None, 'Specify locaiton of strumpack'),
@@ -1377,8 +1376,9 @@ class BuildPy(_build_py):
                 make_libceed()
             if build_gslib:
                 download('gslib')
-                make_gslib()
-                make_gslib(serial=True)
+                make_gslib(serial=True)                  
+                if build_parallel:
+                    make_gslib()
 
             mfem_downloaded = False
             if build_mfem:
