@@ -40,7 +40,9 @@ except ImportError:
 
 # constants
 repo_releases = {
-    "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
+    "gklib":"https://github.com/KarypisLab/GKlib.git",
+    "metis":"https://github.com/KarypisLab/METIS/archive/refs/tags/v5.1.1-DistDGL-v0.5.tar.gz",
+#    "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
     "hypre": "https://github.com/hypre-space/hypre/archive/v2.24.0.tar.gz",
     "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.10.0.tar.gz",
     "gslib": "https://github.com/Nek5000/gslib/archive/refs/tags/v1.0.7.tar.gz"}
