@@ -1,6 +1,7 @@
 #
-#   based on meshOptMWE.cpp from Ketan Mittel
+#   based on meshOptMWE.cpp from Ketan Mittal
 #
+# python test_tmop.py -m ../data/square01.mesh -o 2 -rs 2 -mid 80 -tid 5 -ni 50 -qo 4 -vl 2 -ae 0
 
 import os
 from os.path import expanduser, join
