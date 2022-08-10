@@ -421,7 +421,7 @@ def find_libpath_from_prefix(lib, prefix0):
     soname = 'lib' + lib + dylibext
     aname = 'lib' + lib + '.a'
     
-    print(os.path.listdir(os.path.join(prefix0, 'lib')))
+    print(os.listdir(os.path.join(prefix0, 'lib')))
           
     path = os.path.join(prefix0, 'lib', soname)
     if not os.path.exists(path):
