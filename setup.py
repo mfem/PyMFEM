@@ -421,7 +421,14 @@ def find_libpath_from_prefix(lib, prefix0):
     if not os.path.exists(path):
         path = os.path.join(prefix0, 'lib64', soname)
         if not os.path.exists(path):
+            pass
+    aname = 'lib' + lib + '.a'
+    path = os.path.join(prefix0, 'lib', aname)
+    if not os.path.exists(path):
+        path = os.path.join(prefix0, 'lib64', aname)
+        if not os.path.exists(path):
             return ''
+        
     return path
 
 ###
@@ -449,6 +456,7 @@ def cmake_make_hypre():
                   'DBUILD_SHARED_LIBS': '1',
                   'DHYPRE_INSTALL_PREFIX': hypre_prefix,
                   'DHYPRE_ENABLE_SHARED': '1',
+                  'DCMAKE_C_FLAGS': '-fPIC',
                   'DCMAKE_INSTALL_PREFIX': hypre_prefix,
                   'DCMAKE_INSTALL_NAME_DIR': os.path.join(hypre_prefix, 'lib'), }
 
@@ -474,6 +482,10 @@ def make_metis(use_int64=False, use_real64=False):
     '''
     build GKlib/metis
     '''
+    
+    '''
+    build/install GKlib
+    '''
     if verbose:
         print("Building gklib")
 
@@ -481,21 +493,34 @@ def make_metis(use_int64=False, use_real64=False):
     if not os.path.exists(path):
         assert False, "gklib is not downloaded"
 
+
+    path = os.path.join(path, 'cmbuild')
+    if os.path.exists(path):
+        print("working directory already exists!")
+    else:
+        os.makedirs(path)
     pwd = chdir(path)
-    command = ['make', 'prefix=' + metis_prefix, 'cc=' + cc_command]
-    make_call(command)
+    
+    cmake_opts = {'DCMAKE_VERBOSE_MAKEFILE': '1',
+                  'DBUILD_SHARED_LIBS': '1',
+                  'DCMAKE_INSTALL_PREFIX': metis_prefix}
+    cmake('..', **cmake_opts)
+    make('gklib')
     make_install('gklib')
+    #command = ['make', 'prefix=' + metis_prefix, 'cc=' + cc_command]
     os.chdir(pwd)
 
+    '''
+    build/install metis
+    '''
     path = os.path.join(extdir, 'metis')
     if not os.path.exists(path):
         assert False, "metis is not downloaded"
 
     pwd = chdir(path)
 
-    sed_command = find_command('sed')
-    if sed_command is None:
-        assert False, "sed is not foudn"
+    gklibpath = os.path.dirname( find_libpath_from_prefix(
+                'GKlib', metis_prefix))
 
     options = ['gklib_path='+metis_prefix]
     if use_int64:
@@ -505,13 +530,30 @@ def make_metis(use_int64=False, use_real64=False):
         options.append('r64=1')
 
     command = ['make', 'config', 'shared=1'] + options
+    #command = ['make', 'config'] + options
     command = command + ['prefix=' + metis_prefix, 'cc=' + cc_command]
-
     make_call(command)
+
+    chdir('build')
+    cmake_opts = {'DCMAKE_VERBOSE_MAKEFILE': '1',
+                  'DGKLIB_PATH': metis_prefix, 
+                  'DSHARED': '1',
+                  'DCMAKE_C_COMPILER': cc_command,
+                  'DCMAKE_C_STANDARD_LIBRARIES': '-lGKlib',
+                  'DCMAKE_INSTALL_RPATH':gklibpath,
+                  'DCMAKE_BUILD_WITH_INSTALL_RPATH': '1',
+                  'DCMAKE_INSTALL_PREFIX': metis_prefix}
+    cmake('..', **cmake_opts)
+    chdir(path)
     make('metis')
     make_install('metis')
 
     if platform == "darwin":
+        command = ['install_name_tool',
+                   '-id',
+                   os.path.join(metis_prefix, 'lib', 'libGKlib.dylib'),
+                   os.path.join(metis_prefix, 'lib', 'libGKlib.dylib'), ]
+        make_call(command)
         command = ['install_name_tool',
                    '-id',
                    os.path.join(metis_prefix, 'lib', 'libmetis.dylib'),
@@ -1514,7 +1556,7 @@ class Clean(_clean):
                 command = ['make', 'clean']
                 subprocess.check_call(command)
         if self.all_exts or self.hypre:
-            for xxx in ('metis', 'hypre', 'mfem'):
+            for xxx in ('metis', 'hypre', 'mfem', 'gslib', 'gklib'):
                 path = os.path.join(extdir, xxx)
                 if os.path.exists(path):
                     shutil.rmtree(path)
