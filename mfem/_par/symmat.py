@@ -156,7 +156,7 @@ class DenseSymmetricMatrix(mfem._par.matrix.Matrix):
     __imul__ = _swig_new_instance_method(_symmat.DenseSymmetricMatrix___imul__)
 
     def MemoryUsage(self):
-        r"""MemoryUsage(DenseSymmetricMatrix self) -> long"""
+        r"""MemoryUsage(DenseSymmetricMatrix self) -> std::size_t"""
         return _symmat.DenseSymmetricMatrix_MemoryUsage(self)
     MemoryUsage = _swig_new_instance_method(_symmat.DenseSymmetricMatrix_MemoryUsage)
 

@@ -3146,109 +3146,110 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__L2ElementRestriction swig_types[46]
 #define SWIGTYPE_p_mfem__L2FaceRestriction swig_types[47]
 #define SWIGTYPE_p_mfem__L2_FECollection swig_types[48]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[49]
-#define SWIGTYPE_p_mfem__LpErrorEstimator swig_types[50]
-#define SWIGTYPE_p_mfem__Matrix swig_types[51]
-#define SWIGTYPE_p_mfem__MatrixInverse swig_types[52]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[53]
-#define SWIGTYPE_p_mfem__Mesh swig_types[54]
-#define SWIGTYPE_p_mfem__MeshOperator swig_types[55]
-#define SWIGTYPE_p_mfem__MeshOperatorSequence swig_types[56]
-#define SWIGTYPE_p_mfem__MixedBilinearForm swig_types[57]
-#define SWIGTYPE_p_mfem__NCL2FaceRestriction swig_types[58]
-#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[59]
-#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[60]
-#define SWIGTYPE_p_mfem__Operator swig_types[61]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[62]
-#define SWIGTYPE_p_mfem__PWConstCoefficient swig_types[63]
-#define SWIGTYPE_p_mfem__PowerCoefficient swig_types[64]
-#define SWIGTYPE_p_mfem__ProductCoefficient swig_types[65]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[66]
-#define SWIGTYPE_p_mfem__PyCoefficientBase swig_types[67]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[68]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[69]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[70]
-#define SWIGTYPE_p_mfem__QuadratureFunctionCoefficient swig_types[71]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[72]
-#define SWIGTYPE_p_mfem__RatioCoefficient swig_types[73]
-#define SWIGTYPE_p_mfem__Rebalancer swig_types[74]
-#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[75]
-#define SWIGTYPE_p_mfem__Refinement swig_types[76]
-#define SWIGTYPE_p_mfem__RestrictedCoefficient swig_types[77]
-#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[78]
-#define SWIGTYPE_p_mfem__ScaledOperator swig_types[79]
-#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[80]
-#define SWIGTYPE_p_mfem__Solver swig_types[81]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[82]
-#define SWIGTYPE_p_mfem__SumCoefficient swig_types[83]
-#define SWIGTYPE_p_mfem__ThresholdDerefiner swig_types[84]
-#define SWIGTYPE_p_mfem__ThresholdRefiner swig_types[85]
-#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[86]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[87]
-#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[88]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[89]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[90]
-#define SWIGTYPE_p_mfem__Vector swig_types[91]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[92]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[93]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[94]
-#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[95]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[96]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[97]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[98]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[99]
-#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[100]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[101]
-#define SWIGTYPE_p_mfem__VectorRotProductCoefficient swig_types[102]
-#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[103]
-#define SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator swig_types[104]
-#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[105]
-#define SWIGTYPE_p_p_mfem__BilinearForm swig_types[106]
-#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[107]
-#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[108]
-#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[109]
-#define SWIGTYPE_p_p_mfem__DenseSymmetricMatrix swig_types[110]
-#define SWIGTYPE_p_p_mfem__DiscreteLinearOperator swig_types[111]
-#define SWIGTYPE_p_p_mfem__ElementRestriction swig_types[112]
-#define SWIGTYPE_p_p_mfem__FaceRestriction swig_types[113]
-#define SWIGTYPE_p_p_mfem__FiniteElementSpace swig_types[114]
-#define SWIGTYPE_p_p_mfem__GridFunction swig_types[115]
-#define SWIGTYPE_p_p_mfem__H1FaceRestriction swig_types[116]
-#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[117]
-#define SWIGTYPE_p_p_mfem__IntegrationRule swig_types[118]
-#define SWIGTYPE_p_p_mfem__L2ElementRestriction swig_types[119]
-#define SWIGTYPE_p_p_mfem__L2FaceRestriction swig_types[120]
-#define SWIGTYPE_p_p_mfem__LinearForm swig_types[121]
-#define SWIGTYPE_p_p_mfem__Matrix swig_types[122]
-#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[123]
-#define SWIGTYPE_p_p_mfem__MixedBilinearForm swig_types[124]
-#define SWIGTYPE_p_p_mfem__NCL2FaceRestriction swig_types[125]
-#define SWIGTYPE_p_p_mfem__Operator swig_types[126]
-#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[127]
-#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[128]
-#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[129]
-#define SWIGTYPE_p_p_mfem__QuadratureFunction swig_types[130]
-#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[131]
-#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[132]
-#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[133]
-#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[134]
-#define SWIGTYPE_p_p_mfem__Solver swig_types[135]
-#define SWIGTYPE_p_p_mfem__SparseMatrix swig_types[136]
-#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[137]
-#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[138]
-#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[139]
-#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[140]
-#define SWIGTYPE_p_p_mfem__Vector swig_types[141]
-#define SWIGTYPE_p_pri_t swig_types[142]
-#define SWIGTYPE_p_pyr_t swig_types[143]
-#define SWIGTYPE_p_quad_t swig_types[144]
-#define SWIGTYPE_p_seg_t swig_types[145]
-#define SWIGTYPE_p_size_type swig_types[146]
-#define SWIGTYPE_p_tet_t swig_types[147]
-#define SWIGTYPE_p_tri_t swig_types[148]
-#define SWIGTYPE_p_value_type swig_types[149]
-static swig_type_info *swig_types[151];
-static swig_module_info swig_module = {swig_types, 150, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__LSZienkiewiczZhuEstimator swig_types[49]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[50]
+#define SWIGTYPE_p_mfem__LpErrorEstimator swig_types[51]
+#define SWIGTYPE_p_mfem__Matrix swig_types[52]
+#define SWIGTYPE_p_mfem__MatrixInverse swig_types[53]
+#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[54]
+#define SWIGTYPE_p_mfem__Mesh swig_types[55]
+#define SWIGTYPE_p_mfem__MeshOperator swig_types[56]
+#define SWIGTYPE_p_mfem__MeshOperatorSequence swig_types[57]
+#define SWIGTYPE_p_mfem__MixedBilinearForm swig_types[58]
+#define SWIGTYPE_p_mfem__NCL2FaceRestriction swig_types[59]
+#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[60]
+#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[61]
+#define SWIGTYPE_p_mfem__Operator swig_types[62]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[63]
+#define SWIGTYPE_p_mfem__PWConstCoefficient swig_types[64]
+#define SWIGTYPE_p_mfem__PowerCoefficient swig_types[65]
+#define SWIGTYPE_p_mfem__ProductCoefficient swig_types[66]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[67]
+#define SWIGTYPE_p_mfem__PyCoefficientBase swig_types[68]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[69]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[70]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[71]
+#define SWIGTYPE_p_mfem__QuadratureFunctionCoefficient swig_types[72]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[73]
+#define SWIGTYPE_p_mfem__RatioCoefficient swig_types[74]
+#define SWIGTYPE_p_mfem__Rebalancer swig_types[75]
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[76]
+#define SWIGTYPE_p_mfem__Refinement swig_types[77]
+#define SWIGTYPE_p_mfem__RestrictedCoefficient swig_types[78]
+#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[79]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[80]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[81]
+#define SWIGTYPE_p_mfem__Solver swig_types[82]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[83]
+#define SWIGTYPE_p_mfem__SumCoefficient swig_types[84]
+#define SWIGTYPE_p_mfem__ThresholdDerefiner swig_types[85]
+#define SWIGTYPE_p_mfem__ThresholdRefiner swig_types[86]
+#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[87]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[88]
+#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[89]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[90]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[91]
+#define SWIGTYPE_p_mfem__Vector swig_types[92]
+#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[93]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[94]
+#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[95]
+#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[96]
+#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[97]
+#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[98]
+#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[99]
+#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[100]
+#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[101]
+#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[102]
+#define SWIGTYPE_p_mfem__VectorRotProductCoefficient swig_types[103]
+#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[104]
+#define SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator swig_types[105]
+#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[106]
+#define SWIGTYPE_p_p_mfem__BilinearForm swig_types[107]
+#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[108]
+#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[109]
+#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[110]
+#define SWIGTYPE_p_p_mfem__DenseSymmetricMatrix swig_types[111]
+#define SWIGTYPE_p_p_mfem__DiscreteLinearOperator swig_types[112]
+#define SWIGTYPE_p_p_mfem__ElementRestriction swig_types[113]
+#define SWIGTYPE_p_p_mfem__FaceRestriction swig_types[114]
+#define SWIGTYPE_p_p_mfem__FiniteElementSpace swig_types[115]
+#define SWIGTYPE_p_p_mfem__GridFunction swig_types[116]
+#define SWIGTYPE_p_p_mfem__H1FaceRestriction swig_types[117]
+#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[118]
+#define SWIGTYPE_p_p_mfem__IntegrationRule swig_types[119]
+#define SWIGTYPE_p_p_mfem__L2ElementRestriction swig_types[120]
+#define SWIGTYPE_p_p_mfem__L2FaceRestriction swig_types[121]
+#define SWIGTYPE_p_p_mfem__LinearForm swig_types[122]
+#define SWIGTYPE_p_p_mfem__Matrix swig_types[123]
+#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[124]
+#define SWIGTYPE_p_p_mfem__MixedBilinearForm swig_types[125]
+#define SWIGTYPE_p_p_mfem__NCL2FaceRestriction swig_types[126]
+#define SWIGTYPE_p_p_mfem__Operator swig_types[127]
+#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[128]
+#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[129]
+#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[130]
+#define SWIGTYPE_p_p_mfem__QuadratureFunction swig_types[131]
+#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[132]
+#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[133]
+#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[134]
+#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[135]
+#define SWIGTYPE_p_p_mfem__Solver swig_types[136]
+#define SWIGTYPE_p_p_mfem__SparseMatrix swig_types[137]
+#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[138]
+#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[139]
+#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[140]
+#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[141]
+#define SWIGTYPE_p_p_mfem__Vector swig_types[142]
+#define SWIGTYPE_p_pri_t swig_types[143]
+#define SWIGTYPE_p_pyr_t swig_types[144]
+#define SWIGTYPE_p_quad_t swig_types[145]
+#define SWIGTYPE_p_seg_t swig_types[146]
+#define SWIGTYPE_p_size_type swig_types[147]
+#define SWIGTYPE_p_tet_t swig_types[148]
+#define SWIGTYPE_p_tri_t swig_types[149]
+#define SWIGTYPE_p_value_type swig_types[150]
+static swig_type_info *swig_types[152];
+static swig_module_info swig_module = {swig_types, 151, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3497,7 +3498,71 @@ SWIG_AsVal_long (PyObject *obj, long* val)
 }
 
 
-  #define SWIG_From_long   PyInt_FromLong 
+#include <limits.h>
+#if !defined(SWIG_NO_LLONG_MAX)
+# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
+#   define LLONG_MAX __LONG_LONG_MAX__
+#   define LLONG_MIN (-LLONG_MAX - 1LL)
+#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
+# endif
+#endif
+
+
+#if defined(LLONG_MAX) && !defined(SWIG_LONG_LONG_AVAILABLE)
+#  define SWIG_LONG_LONG_AVAILABLE
+#endif
+
+
+#ifdef SWIG_LONG_LONG_AVAILABLE
+SWIGINTERN int
+SWIG_AsVal_long_SS_long (PyObject *obj, long long *val)
+{
+  int res = SWIG_TypeError;
+  if (PyLong_Check(obj)) {
+    long long v = PyLong_AsLongLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+      res = SWIG_OverflowError;
+    }
+  } else {
+    long v;
+    res = SWIG_AsVal_long (obj,&v);
+    if (SWIG_IsOK(res)) {
+      if (val) *val = v;
+      return res;
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    const double mant_max = 1LL << DBL_MANT_DIG;
+    const double mant_min = -mant_max;
+    double d;
+    res = SWIG_AsVal_double (obj,&d);
+    if (SWIG_IsOK(res) && !SWIG_CanCastAsInteger(&d, mant_min, mant_max))
+      return SWIG_OverflowError;
+    if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, mant_min, mant_max)) {
+      if (val) *val = (long long)(d);
+      return SWIG_AddCast(res);
+    }
+    res = SWIG_TypeError;
+  }
+#endif
+  return res;
+}
+#endif
+
+
+#ifdef SWIG_LONG_LONG_AVAILABLE
+SWIGINTERNINLINE PyObject* 
+SWIG_From_long_SS_long  (long long value)
+{
+  return ((value < LONG_MIN) || (value > LONG_MAX)) ?
+    PyLong_FromLongLong(value) : PyInt_FromLong(static_cast< long >(value));
+}
+#endif
 
 
   #define SWIG_From_double   PyFloat_FromDouble 
@@ -4431,10 +4496,10 @@ fail:
 SWIGINTERN PyObject *_wrap_ThresholdRefiner_SetMaxElements(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ThresholdRefiner *arg1 = (mfem::ThresholdRefiner *) 0 ;
-  long arg2 ;
+  long long arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  long val2 ;
+  long long val2 ;
   int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
@@ -4448,11 +4513,11 @@ SWIGINTERN PyObject *_wrap_ThresholdRefiner_SetMaxElements(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ThresholdRefiner_SetMaxElements" "', argument " "1"" of type '" "mfem::ThresholdRefiner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ThresholdRefiner * >(argp1);
-  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  ecode2 = SWIG_AsVal_long_SS_long(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ThresholdRefiner_SetMaxElements" "', argument " "2"" of type '" "long""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ThresholdRefiner_SetMaxElements" "', argument " "2"" of type '" "long long""'");
   } 
-  arg2 = static_cast< long >(val2);
+  arg2 = static_cast< long long >(val2);
   {
     try {
       (arg1)->SetMaxElements(arg2);
@@ -4615,7 +4680,7 @@ SWIGINTERN PyObject *_wrap_ThresholdRefiner_GetNumMarkedElements(PyObject *SWIGU
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  long result;
+  long long result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -4626,7 +4691,7 @@ SWIGINTERN PyObject *_wrap_ThresholdRefiner_GetNumMarkedElements(PyObject *SWIGU
   arg1 = reinterpret_cast< mfem::ThresholdRefiner * >(argp1);
   {
     try {
-      result = (long)((mfem::ThresholdRefiner const *)arg1)->GetNumMarkedElements();
+      result = (long long)((mfem::ThresholdRefiner const *)arg1)->GetNumMarkedElements();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -4643,7 +4708,7 @@ SWIGINTERN PyObject *_wrap_ThresholdRefiner_GetNumMarkedElements(PyObject *SWIGU
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
   }
-  resultobj = SWIG_From_long(static_cast< long >(result));
+  resultobj = SWIG_From_long_SS_long(static_cast< long long >(result));
   return resultobj;
 fail:
   return NULL;
@@ -5341,10 +5406,10 @@ fail:
 SWIGINTERN PyObject *_wrap_CoefficientRefiner_SetMaxElements(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::CoefficientRefiner *arg1 = (mfem::CoefficientRefiner *) 0 ;
-  long arg2 ;
+  long long arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  long val2 ;
+  long long val2 ;
   int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
@@ -5358,11 +5423,11 @@ SWIGINTERN PyObject *_wrap_CoefficientRefiner_SetMaxElements(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CoefficientRefiner_SetMaxElements" "', argument " "1"" of type '" "mfem::CoefficientRefiner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::CoefficientRefiner * >(argp1);
-  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  ecode2 = SWIG_AsVal_long_SS_long(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CoefficientRefiner_SetMaxElements" "', argument " "2"" of type '" "long""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CoefficientRefiner_SetMaxElements" "', argument " "2"" of type '" "long long""'");
   } 
-  arg2 = static_cast< long >(val2);
+  arg2 = static_cast< long long >(val2);
   {
     try {
       (arg1)->SetMaxElements(arg2);
@@ -5446,11 +5511,9 @@ fail:
 SWIGINTERN PyObject *_wrap_CoefficientRefiner_SetOrder(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::CoefficientRefiner *arg1 = (mfem::CoefficientRefiner *) 0 ;
-  double arg2 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
@@ -5463,11 +5526,12 @@ SWIGINTERN PyObject *_wrap_CoefficientRefiner_SetOrder(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CoefficientRefiner_SetOrder" "', argument " "1"" of type '" "mfem::CoefficientRefiner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::CoefficientRefiner * >(argp1);
-  ecode2 = SWIG_AsVal_double(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CoefficientRefiner_SetOrder" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
   {
     try {
       (arg1)->SetOrder(arg2);
@@ -6041,11 +6105,11 @@ static PyMethodDef SwigMethods[] = {
 	 { "ThresholdRefiner_SetTotalErrorGoal", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetTotalErrorGoal, METH_VARARGS|METH_KEYWORDS, "ThresholdRefiner_SetTotalErrorGoal(ThresholdRefiner self, double err_goal)"},
 	 { "ThresholdRefiner_SetTotalErrorFraction", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetTotalErrorFraction, METH_VARARGS|METH_KEYWORDS, "ThresholdRefiner_SetTotalErrorFraction(ThresholdRefiner self, double fraction)"},
 	 { "ThresholdRefiner_SetLocalErrorGoal", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetLocalErrorGoal, METH_VARARGS|METH_KEYWORDS, "ThresholdRefiner_SetLocalErrorGoal(ThresholdRefiner self, double err_goal)"},
-	 { "ThresholdRefiner_SetMaxElements", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetMaxElements, METH_VARARGS|METH_KEYWORDS, "ThresholdRefiner_SetMaxElements(ThresholdRefiner self, long max_elem)"},
+	 { "ThresholdRefiner_SetMaxElements", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetMaxElements, METH_VARARGS|METH_KEYWORDS, "ThresholdRefiner_SetMaxElements(ThresholdRefiner self, long long max_elem)"},
 	 { "ThresholdRefiner_PreferNonconformingRefinement", _wrap_ThresholdRefiner_PreferNonconformingRefinement, METH_O, "ThresholdRefiner_PreferNonconformingRefinement(ThresholdRefiner self)"},
 	 { "ThresholdRefiner_PreferConformingRefinement", _wrap_ThresholdRefiner_PreferConformingRefinement, METH_O, "ThresholdRefiner_PreferConformingRefinement(ThresholdRefiner self)"},
 	 { "ThresholdRefiner_SetNCLimit", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetNCLimit, METH_VARARGS|METH_KEYWORDS, "ThresholdRefiner_SetNCLimit(ThresholdRefiner self, int nc_limit_)"},
-	 { "ThresholdRefiner_GetNumMarkedElements", _wrap_ThresholdRefiner_GetNumMarkedElements, METH_O, "ThresholdRefiner_GetNumMarkedElements(ThresholdRefiner self) -> long"},
+	 { "ThresholdRefiner_GetNumMarkedElements", _wrap_ThresholdRefiner_GetNumMarkedElements, METH_O, "ThresholdRefiner_GetNumMarkedElements(ThresholdRefiner self) -> long long"},
 	 { "ThresholdRefiner_GetThreshold", _wrap_ThresholdRefiner_GetThreshold, METH_O, "ThresholdRefiner_GetThreshold(ThresholdRefiner self) -> double"},
 	 { "ThresholdRefiner_Reset", _wrap_ThresholdRefiner_Reset, METH_O, "ThresholdRefiner_Reset(ThresholdRefiner self)"},
 	 { "delete_ThresholdRefiner", _wrap_delete_ThresholdRefiner, METH_O, "delete_ThresholdRefiner(ThresholdRefiner self)"},
@@ -6065,9 +6129,9 @@ static PyMethodDef SwigMethods[] = {
 		"CoefficientRefiner_PreprocessMesh(CoefficientRefiner self, Mesh mesh) -> int\n"
 		""},
 	 { "CoefficientRefiner_SetThreshold", (PyCFunction)(void(*)(void))_wrap_CoefficientRefiner_SetThreshold, METH_VARARGS|METH_KEYWORDS, "CoefficientRefiner_SetThreshold(CoefficientRefiner self, double threshold_)"},
-	 { "CoefficientRefiner_SetMaxElements", (PyCFunction)(void(*)(void))_wrap_CoefficientRefiner_SetMaxElements, METH_VARARGS|METH_KEYWORDS, "CoefficientRefiner_SetMaxElements(CoefficientRefiner self, long max_elements_)"},
+	 { "CoefficientRefiner_SetMaxElements", (PyCFunction)(void(*)(void))_wrap_CoefficientRefiner_SetMaxElements, METH_VARARGS|METH_KEYWORDS, "CoefficientRefiner_SetMaxElements(CoefficientRefiner self, long long max_elements_)"},
 	 { "CoefficientRefiner_ResetCoefficient", (PyCFunction)(void(*)(void))_wrap_CoefficientRefiner_ResetCoefficient, METH_VARARGS|METH_KEYWORDS, "CoefficientRefiner_ResetCoefficient(CoefficientRefiner self, Coefficient coeff_)"},
-	 { "CoefficientRefiner_SetOrder", (PyCFunction)(void(*)(void))_wrap_CoefficientRefiner_SetOrder, METH_VARARGS|METH_KEYWORDS, "CoefficientRefiner_SetOrder(CoefficientRefiner self, double order_)"},
+	 { "CoefficientRefiner_SetOrder", (PyCFunction)(void(*)(void))_wrap_CoefficientRefiner_SetOrder, METH_VARARGS|METH_KEYWORDS, "CoefficientRefiner_SetOrder(CoefficientRefiner self, int order_)"},
 	 { "CoefficientRefiner_SetNCLimit", (PyCFunction)(void(*)(void))_wrap_CoefficientRefiner_SetNCLimit, METH_VARARGS|METH_KEYWORDS, "CoefficientRefiner_SetNCLimit(CoefficientRefiner self, int nc_limit_)"},
 	 { "CoefficientRefiner_SetIntRule", (PyCFunction)(void(*)(void))_wrap_CoefficientRefiner_SetIntRule, METH_VARARGS|METH_KEYWORDS, "CoefficientRefiner_SetIntRule(CoefficientRefiner self, mfem::IntegrationRule const *[] irs_)"},
 	 { "CoefficientRefiner_PrintWarnings", _wrap_CoefficientRefiner_PrintWarnings, METH_O, "CoefficientRefiner_PrintWarnings(CoefficientRefiner self)"},
@@ -6111,11 +6175,11 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ThresholdRefiner_SetTotalErrorGoal", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetTotalErrorGoal, METH_VARARGS|METH_KEYWORDS, "SetTotalErrorGoal(ThresholdRefiner self, double err_goal)"},
 	 { "ThresholdRefiner_SetTotalErrorFraction", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetTotalErrorFraction, METH_VARARGS|METH_KEYWORDS, "SetTotalErrorFraction(ThresholdRefiner self, double fraction)"},
 	 { "ThresholdRefiner_SetLocalErrorGoal", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetLocalErrorGoal, METH_VARARGS|METH_KEYWORDS, "SetLocalErrorGoal(ThresholdRefiner self, double err_goal)"},
-	 { "ThresholdRefiner_SetMaxElements", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetMaxElements, METH_VARARGS|METH_KEYWORDS, "SetMaxElements(ThresholdRefiner self, long max_elem)"},
+	 { "ThresholdRefiner_SetMaxElements", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetMaxElements, METH_VARARGS|METH_KEYWORDS, "SetMaxElements(ThresholdRefiner self, long long max_elem)"},
 	 { "ThresholdRefiner_PreferNonconformingRefinement", _wrap_ThresholdRefiner_PreferNonconformingRefinement, METH_O, "PreferNonconformingRefinement(ThresholdRefiner self)"},
 	 { "ThresholdRefiner_PreferConformingRefinement", _wrap_ThresholdRefiner_PreferConformingRefinement, METH_O, "PreferConformingRefinement(ThresholdRefiner self)"},
 	 { "ThresholdRefiner_SetNCLimit", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetNCLimit, METH_VARARGS|METH_KEYWORDS, "SetNCLimit(ThresholdRefiner self, int nc_limit_)"},
-	 { "ThresholdRefiner_GetNumMarkedElements", _wrap_ThresholdRefiner_GetNumMarkedElements, METH_O, "GetNumMarkedElements(ThresholdRefiner self) -> long"},
+	 { "ThresholdRefiner_GetNumMarkedElements", _wrap_ThresholdRefiner_GetNumMarkedElements, METH_O, "GetNumMarkedElements(ThresholdRefiner self) -> long long"},
 	 { "ThresholdRefiner_GetThreshold", _wrap_ThresholdRefiner_GetThreshold, METH_O, "GetThreshold(ThresholdRefiner self) -> double"},
 	 { "ThresholdRefiner_Reset", _wrap_ThresholdRefiner_Reset, METH_O, "Reset(ThresholdRefiner self)"},
 	 { "delete_ThresholdRefiner", _wrap_delete_ThresholdRefiner, METH_O, "delete_ThresholdRefiner(ThresholdRefiner self)"},
@@ -6135,9 +6199,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"PreprocessMesh(CoefficientRefiner self, Mesh mesh) -> int\n"
 		""},
 	 { "CoefficientRefiner_SetThreshold", (PyCFunction)(void(*)(void))_wrap_CoefficientRefiner_SetThreshold, METH_VARARGS|METH_KEYWORDS, "SetThreshold(CoefficientRefiner self, double threshold_)"},
-	 { "CoefficientRefiner_SetMaxElements", (PyCFunction)(void(*)(void))_wrap_CoefficientRefiner_SetMaxElements, METH_VARARGS|METH_KEYWORDS, "SetMaxElements(CoefficientRefiner self, long max_elements_)"},
+	 { "CoefficientRefiner_SetMaxElements", (PyCFunction)(void(*)(void))_wrap_CoefficientRefiner_SetMaxElements, METH_VARARGS|METH_KEYWORDS, "SetMaxElements(CoefficientRefiner self, long long max_elements_)"},
 	 { "CoefficientRefiner_ResetCoefficient", (PyCFunction)(void(*)(void))_wrap_CoefficientRefiner_ResetCoefficient, METH_VARARGS|METH_KEYWORDS, "ResetCoefficient(CoefficientRefiner self, Coefficient coeff_)"},
-	 { "CoefficientRefiner_SetOrder", (PyCFunction)(void(*)(void))_wrap_CoefficientRefiner_SetOrder, METH_VARARGS|METH_KEYWORDS, "SetOrder(CoefficientRefiner self, double order_)"},
+	 { "CoefficientRefiner_SetOrder", (PyCFunction)(void(*)(void))_wrap_CoefficientRefiner_SetOrder, METH_VARARGS|METH_KEYWORDS, "SetOrder(CoefficientRefiner self, int order_)"},
 	 { "CoefficientRefiner_SetNCLimit", (PyCFunction)(void(*)(void))_wrap_CoefficientRefiner_SetNCLimit, METH_VARARGS|METH_KEYWORDS, "SetNCLimit(CoefficientRefiner self, int nc_limit_)"},
 	 { "CoefficientRefiner_SetIntRule", (PyCFunction)(void(*)(void))_wrap_CoefficientRefiner_SetIntRule, METH_VARARGS|METH_KEYWORDS, "SetIntRule(CoefficientRefiner self, mfem::IntegrationRule const *[] irs_)"},
 	 { "CoefficientRefiner_PrintWarnings", _wrap_CoefficientRefiner_PrintWarnings, METH_O, "PrintWarnings(CoefficientRefiner self)"},
@@ -6163,6 +6227,9 @@ static void *_p_mfem__AnisotropicErrorEstimatorTo_p_mfem__ErrorEstimator(void *x
 }
 static void *_p_mfem__ZienkiewiczZhuEstimatorTo_p_mfem__ErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::ErrorEstimator *) (mfem::AnisotropicErrorEstimator *) ((mfem::ZienkiewiczZhuEstimator *) x));
+}
+static void *_p_mfem__LSZienkiewiczZhuEstimatorTo_p_mfem__ErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ErrorEstimator *)  ((mfem::LSZienkiewiczZhuEstimator *) x));
 }
 static void *_p_mfem__LpErrorEstimatorTo_p_mfem__ErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::ErrorEstimator *)  ((mfem::LpErrorEstimator *) x));
@@ -6537,6 +6604,7 @@ static swig_type_info _swigt__p_mfem__DGTraceIntegrator = {"_p_mfem__DGTraceInte
 static swig_type_info _swigt__p_mfem__ErrorEstimator = {"_p_mfem__ErrorEstimator", "mfem::ErrorEstimator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__AnisotropicErrorEstimator = {"_p_mfem__AnisotropicErrorEstimator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__ZienkiewiczZhuEstimator = {"_p_mfem__ZienkiewiczZhuEstimator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__LSZienkiewiczZhuEstimator = {"_p_mfem__LSZienkiewiczZhuEstimator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__LpErrorEstimator = {"_p_mfem__LpErrorEstimator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__KellyErrorEstimator = {"_p_mfem__KellyErrorEstimator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__FiniteElementSpace = {"_p_mfem__FiniteElementSpace", "mfem::FiniteElementSpace *", 0, 0, (void*)0, 0};
@@ -6698,6 +6766,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__L2ElementRestriction,
   &_swigt__p_mfem__L2FaceRestriction,
   &_swigt__p_mfem__L2_FECollection,
+  &_swigt__p_mfem__LSZienkiewiczZhuEstimator,
   &_swigt__p_mfem__LinearForm,
   &_swigt__p_mfem__LpErrorEstimator,
   &_swigt__p_mfem__Matrix,
@@ -6840,9 +6909,10 @@ static swig_cast_info _swigc__p_mfem__ConvectionIntegrator[] = {  {&_swigt__p_mf
 static swig_cast_info _swigc__p_mfem__DGTraceIntegrator[] = {  {&_swigt__p_mfem__DGTraceIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__AnisotropicErrorEstimator[] = {{&_swigt__p_mfem__AnisotropicErrorEstimator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ZienkiewiczZhuEstimator[] = {{&_swigt__p_mfem__ZienkiewiczZhuEstimator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__LSZienkiewiczZhuEstimator[] = {{&_swigt__p_mfem__LSZienkiewiczZhuEstimator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LpErrorEstimator[] = {{&_swigt__p_mfem__LpErrorEstimator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__KellyErrorEstimator[] = {{&_swigt__p_mfem__KellyErrorEstimator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ErrorEstimator[] = {  {&_swigt__p_mfem__ErrorEstimator, 0, 0, 0},  {&_swigt__p_mfem__AnisotropicErrorEstimator, _p_mfem__AnisotropicErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__ZienkiewiczZhuEstimator, _p_mfem__ZienkiewiczZhuEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__LpErrorEstimator, _p_mfem__LpErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__KellyErrorEstimator, _p_mfem__KellyErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ErrorEstimator[] = {  {&_swigt__p_mfem__ErrorEstimator, 0, 0, 0},  {&_swigt__p_mfem__AnisotropicErrorEstimator, _p_mfem__AnisotropicErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__ZienkiewiczZhuEstimator, _p_mfem__ZienkiewiczZhuEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__LSZienkiewiczZhuEstimator, _p_mfem__LSZienkiewiczZhuEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__LpErrorEstimator, _p_mfem__LpErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__KellyErrorEstimator, _p_mfem__KellyErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__FiniteElementSpace[] = {  {&_swigt__p_mfem__FiniteElementSpace, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationPoint[] = {  {&_swigt__p_mfem__IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
@@ -7002,6 +7072,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__L2ElementRestriction,
   _swigc__p_mfem__L2FaceRestriction,
   _swigc__p_mfem__L2_FECollection,
+  _swigc__p_mfem__LSZienkiewiczZhuEstimator,
   _swigc__p_mfem__LinearForm,
   _swigc__p_mfem__LpErrorEstimator,
   _swigc__p_mfem__Matrix,

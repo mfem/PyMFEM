@@ -426,7 +426,7 @@ class GeometryTypeArray(object):
     end = _swig_new_instance_method(_geom.GeometryTypeArray_end)
 
     def MemoryUsage(self):
-        r"""MemoryUsage(GeometryTypeArray self) -> long"""
+        r"""MemoryUsage(GeometryTypeArray self) -> std::size_t"""
         return _geom.GeometryTypeArray_MemoryUsage(self)
     MemoryUsage = _swig_new_instance_method(_geom.GeometryTypeArray_MemoryUsage)
 

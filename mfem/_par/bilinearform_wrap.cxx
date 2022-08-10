@@ -6363,6 +6363,41 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_BilinearForm_HasSpMat(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_HasSpMat" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
+  {
+    try {
+      result = (bool)(arg1)->HasSpMat(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_BilinearForm_LoseMat(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
@@ -6497,6 +6532,41 @@ fail:
     "    mfem::BilinearForm::SpMatElim() const\n"
     "    mfem::BilinearForm::SpMatElim()\n");
   return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_BilinearForm_HasSpMatElim(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_HasSpMatElim" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
+  {
+    try {
+      result = (bool)(arg1)->HasSpMatElim(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
 }
 
 
@@ -7321,6 +7391,54 @@ SWIGINTERN PyObject *_wrap_BilinearForm_GetOutputRestriction(PyObject *SWIGUNUSE
   if (director) {
     SWIG_AcquirePtr(resultobj, director->swig_release_ownership(SWIG_as_voidptr(result)));
   }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BilinearForm_SerialRAP(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
+  mfem::OperatorHandle *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"A",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:BilinearForm_SerialRAP", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_SerialRAP" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__OperatorHandle,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_SerialRAP" "', argument " "2"" of type '" "mfem::OperatorHandle &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_SerialRAP" "', argument " "2"" of type '" "mfem::OperatorHandle &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::OperatorHandle * >(argp2);
+  {
+    try {
+      (arg1)->SerialRAP(*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -13379,11 +13497,13 @@ static PyMethodDef SwigMethods[] = {
 		"BilinearForm_SpMat(BilinearForm self) -> SparseMatrix\n"
 		"BilinearForm_SpMat(BilinearForm self) -> SparseMatrix\n"
 		""},
+	 { "BilinearForm_HasSpMat", _wrap_BilinearForm_HasSpMat, METH_O, "BilinearForm_HasSpMat(BilinearForm self) -> bool"},
 	 { "BilinearForm_LoseMat", _wrap_BilinearForm_LoseMat, METH_O, "BilinearForm_LoseMat(BilinearForm self) -> SparseMatrix"},
 	 { "BilinearForm_SpMatElim", _wrap_BilinearForm_SpMatElim, METH_VARARGS, "\n"
 		"BilinearForm_SpMatElim(BilinearForm self) -> SparseMatrix\n"
 		"BilinearForm_SpMatElim(BilinearForm self) -> SparseMatrix\n"
 		""},
+	 { "BilinearForm_HasSpMatElim", _wrap_BilinearForm_HasSpMatElim, METH_O, "BilinearForm_HasSpMatElim(BilinearForm self) -> bool"},
 	 { "BilinearForm_AddDomainIntegrator", _wrap_BilinearForm_AddDomainIntegrator, METH_VARARGS, "\n"
 		"BilinearForm_AddDomainIntegrator(BilinearForm self, BilinearFormIntegrator bfi)\n"
 		"BilinearForm_AddDomainIntegrator(BilinearForm self, BilinearFormIntegrator bfi, intArray elem_marker)\n"
@@ -13404,6 +13524,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "BilinearForm_GetOutputProlongation", _wrap_BilinearForm_GetOutputProlongation, METH_O, "BilinearForm_GetOutputProlongation(BilinearForm self) -> Operator"},
 	 { "BilinearForm_GetOutputRestrictionTranspose", _wrap_BilinearForm_GetOutputRestrictionTranspose, METH_O, "BilinearForm_GetOutputRestrictionTranspose(BilinearForm self) -> Operator"},
 	 { "BilinearForm_GetOutputRestriction", _wrap_BilinearForm_GetOutputRestriction, METH_O, "BilinearForm_GetOutputRestriction(BilinearForm self) -> Operator"},
+	 { "BilinearForm_SerialRAP", (PyCFunction)(void(*)(void))_wrap_BilinearForm_SerialRAP, METH_VARARGS|METH_KEYWORDS, "BilinearForm_SerialRAP(BilinearForm self, OperatorHandle A)"},
 	 { "BilinearForm_RecoverFEMSolution", (PyCFunction)(void(*)(void))_wrap_BilinearForm_RecoverFEMSolution, METH_VARARGS|METH_KEYWORDS, "BilinearForm_RecoverFEMSolution(BilinearForm self, Vector X, Vector b, Vector x)"},
 	 { "BilinearForm_ComputeElementMatrices", _wrap_BilinearForm_ComputeElementMatrices, METH_O, "BilinearForm_ComputeElementMatrices(BilinearForm self)"},
 	 { "BilinearForm_FreeElementMatrices", _wrap_BilinearForm_FreeElementMatrices, METH_O, "BilinearForm_FreeElementMatrices(BilinearForm self)"},
@@ -13586,11 +13707,13 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"SpMat(BilinearForm self) -> SparseMatrix\n"
 		"SpMat(BilinearForm self) -> SparseMatrix\n"
 		""},
+	 { "BilinearForm_HasSpMat", _wrap_BilinearForm_HasSpMat, METH_O, "HasSpMat(BilinearForm self) -> bool"},
 	 { "BilinearForm_LoseMat", _wrap_BilinearForm_LoseMat, METH_O, "LoseMat(BilinearForm self) -> SparseMatrix"},
 	 { "BilinearForm_SpMatElim", _wrap_BilinearForm_SpMatElim, METH_VARARGS, "\n"
 		"SpMatElim(BilinearForm self) -> SparseMatrix\n"
 		"SpMatElim(BilinearForm self) -> SparseMatrix\n"
 		""},
+	 { "BilinearForm_HasSpMatElim", _wrap_BilinearForm_HasSpMatElim, METH_O, "HasSpMatElim(BilinearForm self) -> bool"},
 	 { "BilinearForm_AddDomainIntegrator", _wrap_BilinearForm_AddDomainIntegrator, METH_VARARGS, "\n"
 		"AddDomainIntegrator(BilinearForm self, BilinearFormIntegrator bfi)\n"
 		"AddDomainIntegrator(BilinearForm self, BilinearFormIntegrator bfi, intArray elem_marker)\n"
@@ -13611,6 +13734,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "BilinearForm_GetOutputProlongation", _wrap_BilinearForm_GetOutputProlongation, METH_O, "GetOutputProlongation(BilinearForm self) -> Operator"},
 	 { "BilinearForm_GetOutputRestrictionTranspose", _wrap_BilinearForm_GetOutputRestrictionTranspose, METH_O, "GetOutputRestrictionTranspose(BilinearForm self) -> Operator"},
 	 { "BilinearForm_GetOutputRestriction", _wrap_BilinearForm_GetOutputRestriction, METH_O, "GetOutputRestriction(BilinearForm self) -> Operator"},
+	 { "BilinearForm_SerialRAP", (PyCFunction)(void(*)(void))_wrap_BilinearForm_SerialRAP, METH_VARARGS|METH_KEYWORDS, "SerialRAP(BilinearForm self, OperatorHandle A)"},
 	 { "BilinearForm_RecoverFEMSolution", (PyCFunction)(void(*)(void))_wrap_BilinearForm_RecoverFEMSolution, METH_VARARGS|METH_KEYWORDS, "RecoverFEMSolution(BilinearForm self, Vector X, Vector b, Vector x)"},
 	 { "BilinearForm_ComputeElementMatrices", _wrap_BilinearForm_ComputeElementMatrices, METH_O, "ComputeElementMatrices(BilinearForm self)"},
 	 { "BilinearForm_FreeElementMatrices", _wrap_BilinearForm_FreeElementMatrices, METH_O, "FreeElementMatrices(BilinearForm self)"},

@@ -97,6 +97,8 @@ class VTKGeometry(object):
     
     PRISM = _vtk.VTKGeometry_PRISM
     
+    PYRAMID = _vtk.VTKGeometry_PYRAMID
+    
     QUADRATIC_SEGMENT = _vtk.VTKGeometry_QUADRATIC_SEGMENT
     
     QUADRATIC_TRIANGLE = _vtk.VTKGeometry_QUADRATIC_TRIANGLE
@@ -111,6 +113,8 @@ class VTKGeometry(object):
     
     BIQUADRATIC_QUADRATIC_PRISM = _vtk.VTKGeometry_BIQUADRATIC_QUADRATIC_PRISM
     
+    QUADRATIC_PYRAMID = _vtk.VTKGeometry_QUADRATIC_PYRAMID
+    
     LAGRANGE_SEGMENT = _vtk.VTKGeometry_LAGRANGE_SEGMENT
     
     LAGRANGE_TRIANGLE = _vtk.VTKGeometry_LAGRANGE_TRIANGLE
@@ -122,6 +126,8 @@ class VTKGeometry(object):
     LAGRANGE_CUBE = _vtk.VTKGeometry_LAGRANGE_CUBE
     
     LAGRANGE_PRISM = _vtk.VTKGeometry_LAGRANGE_PRISM
+    
+    LAGRANGE_PYRAMID = _vtk.VTKGeometry_LAGRANGE_PYRAMID
     
     VertexPermutation = property(_vtk.VTKGeometry_VertexPermutation_get, _vtk.VTKGeometry_VertexPermutation_set, doc=r"""VertexPermutation : a(mfem::Geometry::NUM_GEOMETRIES).p.q(const).int""")
 

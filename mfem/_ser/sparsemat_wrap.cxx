@@ -4843,6 +4843,64 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_SparseMatrix_OverrideSize(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"height_",  (char *)"width_",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:SparseMatrix_OverrideSize", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_OverrideSize" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      (arg1)->OverrideSize(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_SparseMatrix_UseGPUSparse(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
@@ -9848,6 +9906,69 @@ fail:
     "    mfem::SparseMatrix::EliminateRowCol(int,mfem::Operator::DiagonalPolicy)\n"
     "    mfem::SparseMatrix::EliminateRowCol(int,mfem::SparseMatrix &,mfem::Operator::DiagonalPolicy)\n");
   return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateBC(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
+  mfem::Array< int > *arg2 = 0 ;
+  mfem::Operator::DiagonalPolicy arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"ess_dofs",  (char *)"diag_policy",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:SparseMatrix_EliminateBC", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_EliminateBC" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SparseMatrix_EliminateBC" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SparseMatrix_EliminateBC" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "SparseMatrix_EliminateBC" "', argument " "3"" of type '" "mfem::Operator::DiagonalPolicy""'");
+  } 
+  arg3 = static_cast< mfem::Operator::DiagonalPolicy >(val3);
+  {
+    try {
+      (arg1)->EliminateBC((mfem::Array< int > const &)*arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
 }
 
 
@@ -16203,6 +16324,7 @@ static PyMethodDef SwigMethods[] = {
 		"SparseMatrix(SparseMatrix mat, bool copy_graph=True, mfem::MemoryType mt=PRESERVE)\n"
 		"new_SparseMatrix(Vector v) -> SparseMatrix\n"
 		""},
+	 { "SparseMatrix_OverrideSize", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_OverrideSize, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_OverrideSize(SparseMatrix self, int height_, int width_)"},
 	 { "SparseMatrix_UseGPUSparse", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_UseGPUSparse, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_UseGPUSparse(SparseMatrix self, bool useGPUSparse_=True)"},
 	 { "SparseMatrix_UseCuSparse", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_UseCuSparse, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_UseCuSparse(SparseMatrix self, bool useCuSparse_=True)"},
 	 { "SparseMatrix_MakeRef", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_MakeRef, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_MakeRef(SparseMatrix self, SparseMatrix master)"},
@@ -16314,6 +16436,7 @@ static PyMethodDef SwigMethods[] = {
 		"SparseMatrix_EliminateRowCol(SparseMatrix self, int rc, mfem::Operator::DiagonalPolicy dpolicy=DIAG_ONE)\n"
 		"SparseMatrix_EliminateRowCol(SparseMatrix self, int rc, SparseMatrix Ae, mfem::Operator::DiagonalPolicy dpolicy=DIAG_ONE)\n"
 		""},
+	 { "SparseMatrix_EliminateBC", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_EliminateBC, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_EliminateBC(SparseMatrix self, intArray ess_dofs, mfem::Operator::DiagonalPolicy diag_policy)"},
 	 { "SparseMatrix_SetDiagIdentity", _wrap_SparseMatrix_SetDiagIdentity, METH_O, "SparseMatrix_SetDiagIdentity(SparseMatrix self)"},
 	 { "SparseMatrix_EliminateZeroRows", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_EliminateZeroRows, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_EliminateZeroRows(SparseMatrix self, double const threshold=1e-12)"},
 	 { "SparseMatrix_Gauss_Seidel_forw", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Gauss_Seidel_forw, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_Gauss_Seidel_forw(SparseMatrix self, Vector x, Vector y)"},
@@ -16453,6 +16576,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"SparseMatrix(SparseMatrix mat, bool copy_graph=True, mfem::MemoryType mt=PRESERVE)\n"
 		"new_SparseMatrix(Vector v) -> SparseMatrix\n"
 		""},
+	 { "SparseMatrix_OverrideSize", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_OverrideSize, METH_VARARGS|METH_KEYWORDS, "OverrideSize(SparseMatrix self, int height_, int width_)"},
 	 { "SparseMatrix_UseGPUSparse", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_UseGPUSparse, METH_VARARGS|METH_KEYWORDS, "UseGPUSparse(SparseMatrix self, bool useGPUSparse_=True)"},
 	 { "SparseMatrix_UseCuSparse", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_UseCuSparse, METH_VARARGS|METH_KEYWORDS, "UseCuSparse(SparseMatrix self, bool useCuSparse_=True)"},
 	 { "SparseMatrix_MakeRef", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_MakeRef, METH_VARARGS|METH_KEYWORDS, "MakeRef(SparseMatrix self, SparseMatrix master)"},
@@ -16564,6 +16688,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"EliminateRowCol(SparseMatrix self, int rc, mfem::Operator::DiagonalPolicy dpolicy=DIAG_ONE)\n"
 		"EliminateRowCol(SparseMatrix self, int rc, SparseMatrix Ae, mfem::Operator::DiagonalPolicy dpolicy=DIAG_ONE)\n"
 		""},
+	 { "SparseMatrix_EliminateBC", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_EliminateBC, METH_VARARGS|METH_KEYWORDS, "EliminateBC(SparseMatrix self, intArray ess_dofs, mfem::Operator::DiagonalPolicy diag_policy)"},
 	 { "SparseMatrix_SetDiagIdentity", _wrap_SparseMatrix_SetDiagIdentity, METH_O, "SetDiagIdentity(SparseMatrix self)"},
 	 { "SparseMatrix_EliminateZeroRows", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_EliminateZeroRows, METH_VARARGS|METH_KEYWORDS, "EliminateZeroRows(SparseMatrix self, double const threshold=1e-12)"},
 	 { "SparseMatrix_Gauss_Seidel_forw", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_Gauss_Seidel_forw, METH_VARARGS|METH_KEYWORDS, "Gauss_Seidel_forw(SparseMatrix self, Vector x, Vector y)"},

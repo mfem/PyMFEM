@@ -3112,138 +3112,142 @@ namespace Swig {
 #define SWIGTYPE_p_int swig_types[12]
 #define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[13]
 #define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[14]
-#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[15]
-#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[16]
-#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[17]
-#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[18]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[19]
-#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[20]
-#define SWIGTYPE_p_mfem__DenseSymmetricMatrix swig_types[21]
-#define SWIGTYPE_p_mfem__ElementRestriction swig_types[22]
-#define SWIGTYPE_p_mfem__FaceRestriction swig_types[23]
-#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[24]
-#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[25]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[26]
-#define SWIGTYPE_p_mfem__H1FaceRestriction swig_types[27]
-#define SWIGTYPE_p_mfem__HypreADS swig_types[28]
-#define SWIGTYPE_p_mfem__HypreAMS swig_types[29]
-#define SWIGTYPE_p_mfem__HypreBoomerAMG swig_types[30]
-#define SWIGTYPE_p_mfem__HypreDiagScale swig_types[31]
-#define SWIGTYPE_p_mfem__HypreEuclid swig_types[32]
-#define SWIGTYPE_p_mfem__HypreFGMRES swig_types[33]
-#define SWIGTYPE_p_mfem__HypreGMRES swig_types[34]
-#define SWIGTYPE_p_mfem__HypreILU swig_types[35]
-#define SWIGTYPE_p_mfem__HypreIdentity swig_types[36]
-#define SWIGTYPE_p_mfem__HyprePCG swig_types[37]
-#define SWIGTYPE_p_mfem__HypreParMatrix swig_types[38]
-#define SWIGTYPE_p_mfem__HypreParVector swig_types[39]
-#define SWIGTYPE_p_mfem__HypreParaSails swig_types[40]
-#define SWIGTYPE_p_mfem__HypreSmoother swig_types[41]
-#define SWIGTYPE_p_mfem__HypreSolver swig_types[42]
-#define SWIGTYPE_p_mfem__HypreTriSolve swig_types[43]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[44]
-#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[45]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[46]
-#define SWIGTYPE_p_mfem__L2ElementRestriction swig_types[47]
-#define SWIGTYPE_p_mfem__L2FaceRestriction swig_types[48]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[49]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[50]
-#define SWIGTYPE_p_mfem__Matrix swig_types[51]
-#define SWIGTYPE_p_mfem__MatrixInverse swig_types[52]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[53]
-#define SWIGTYPE_p_mfem__NCL2FaceRestriction swig_types[54]
-#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[55]
-#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[56]
-#define SWIGTYPE_p_mfem__Operator swig_types[57]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[58]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[59]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[60]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[61]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[62]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[63]
-#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[64]
-#define SWIGTYPE_p_mfem__Refinement swig_types[65]
-#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[66]
-#define SWIGTYPE_p_mfem__ScaledOperator swig_types[67]
-#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[68]
-#define SWIGTYPE_p_mfem__Solver swig_types[69]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[70]
-#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[71]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[72]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[73]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[74]
-#define SWIGTYPE_p_mfem__Vector swig_types[75]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[76]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[77]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[78]
-#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[79]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[80]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[81]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[82]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[83]
-#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[84]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[85]
-#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[86]
-#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[87]
-#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[88]
-#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[89]
-#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[90]
-#define SWIGTYPE_p_p_mfem__DenseSymmetricMatrix swig_types[91]
-#define SWIGTYPE_p_p_mfem__ElementRestriction swig_types[92]
-#define SWIGTYPE_p_p_mfem__FaceRestriction swig_types[93]
-#define SWIGTYPE_p_p_mfem__FiniteElementSpace swig_types[94]
-#define SWIGTYPE_p_p_mfem__GridFunction swig_types[95]
-#define SWIGTYPE_p_p_mfem__H1FaceRestriction swig_types[96]
-#define SWIGTYPE_p_p_mfem__HypreADS swig_types[97]
-#define SWIGTYPE_p_p_mfem__HypreAMS swig_types[98]
-#define SWIGTYPE_p_p_mfem__HypreBoomerAMG swig_types[99]
-#define SWIGTYPE_p_p_mfem__HypreDiagScale swig_types[100]
-#define SWIGTYPE_p_p_mfem__HypreEuclid swig_types[101]
-#define SWIGTYPE_p_p_mfem__HypreFGMRES swig_types[102]
-#define SWIGTYPE_p_p_mfem__HypreGMRES swig_types[103]
-#define SWIGTYPE_p_p_mfem__HypreILU swig_types[104]
-#define SWIGTYPE_p_p_mfem__HypreIdentity swig_types[105]
-#define SWIGTYPE_p_p_mfem__HyprePCG swig_types[106]
-#define SWIGTYPE_p_p_mfem__HypreParMatrix swig_types[107]
-#define SWIGTYPE_p_p_mfem__HypreParVector swig_types[108]
-#define SWIGTYPE_p_p_mfem__HypreParaSails swig_types[109]
-#define SWIGTYPE_p_p_mfem__HypreSmoother swig_types[110]
-#define SWIGTYPE_p_p_mfem__HypreSolver swig_types[111]
-#define SWIGTYPE_p_p_mfem__HypreTriSolve swig_types[112]
-#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[113]
-#define SWIGTYPE_p_p_mfem__IntegrationRule swig_types[114]
-#define SWIGTYPE_p_p_mfem__L2ElementRestriction swig_types[115]
-#define SWIGTYPE_p_p_mfem__L2FaceRestriction swig_types[116]
-#define SWIGTYPE_p_p_mfem__LinearForm swig_types[117]
-#define SWIGTYPE_p_p_mfem__Matrix swig_types[118]
-#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[119]
-#define SWIGTYPE_p_p_mfem__NCL2FaceRestriction swig_types[120]
-#define SWIGTYPE_p_p_mfem__Operator swig_types[121]
-#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[122]
-#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[123]
-#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[124]
-#define SWIGTYPE_p_p_mfem__QuadratureFunction swig_types[125]
-#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[126]
-#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[127]
-#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[128]
-#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[129]
-#define SWIGTYPE_p_p_mfem__Solver swig_types[130]
-#define SWIGTYPE_p_p_mfem__SparseMatrix swig_types[131]
-#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[132]
-#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[133]
-#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[134]
-#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[135]
-#define SWIGTYPE_p_p_mfem__Vector swig_types[136]
-#define SWIGTYPE_p_pri_t swig_types[137]
-#define SWIGTYPE_p_pyr_t swig_types[138]
-#define SWIGTYPE_p_quad_t swig_types[139]
-#define SWIGTYPE_p_seg_t swig_types[140]
-#define SWIGTYPE_p_size_type swig_types[141]
-#define SWIGTYPE_p_tet_t swig_types[142]
-#define SWIGTYPE_p_tri_t swig_types[143]
-#define SWIGTYPE_p_value_type swig_types[144]
-static swig_type_info *swig_types[146];
-static swig_module_info swig_module = {swig_types, 145, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__ArrayT_unsigned_int_t swig_types[15]
+#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[16]
+#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[17]
+#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[18]
+#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[19]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[20]
+#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[21]
+#define SWIGTYPE_p_mfem__DenseSymmetricMatrix swig_types[22]
+#define SWIGTYPE_p_mfem__ElementRestriction swig_types[23]
+#define SWIGTYPE_p_mfem__FaceRestriction swig_types[24]
+#define SWIGTYPE_p_mfem__FindPointsGSLIB swig_types[25]
+#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[26]
+#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[27]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[28]
+#define SWIGTYPE_p_mfem__H1FaceRestriction swig_types[29]
+#define SWIGTYPE_p_mfem__HypreADS swig_types[30]
+#define SWIGTYPE_p_mfem__HypreAMS swig_types[31]
+#define SWIGTYPE_p_mfem__HypreBoomerAMG swig_types[32]
+#define SWIGTYPE_p_mfem__HypreDiagScale swig_types[33]
+#define SWIGTYPE_p_mfem__HypreEuclid swig_types[34]
+#define SWIGTYPE_p_mfem__HypreFGMRES swig_types[35]
+#define SWIGTYPE_p_mfem__HypreGMRES swig_types[36]
+#define SWIGTYPE_p_mfem__HypreILU swig_types[37]
+#define SWIGTYPE_p_mfem__HypreIdentity swig_types[38]
+#define SWIGTYPE_p_mfem__HyprePCG swig_types[39]
+#define SWIGTYPE_p_mfem__HypreParMatrix swig_types[40]
+#define SWIGTYPE_p_mfem__HypreParVector swig_types[41]
+#define SWIGTYPE_p_mfem__HypreParaSails swig_types[42]
+#define SWIGTYPE_p_mfem__HypreSmoother swig_types[43]
+#define SWIGTYPE_p_mfem__HypreSolver swig_types[44]
+#define SWIGTYPE_p_mfem__HypreTriSolve swig_types[45]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[46]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[47]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[48]
+#define SWIGTYPE_p_mfem__L2ElementRestriction swig_types[49]
+#define SWIGTYPE_p_mfem__L2FaceRestriction swig_types[50]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[51]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[52]
+#define SWIGTYPE_p_mfem__Matrix swig_types[53]
+#define SWIGTYPE_p_mfem__MatrixInverse swig_types[54]
+#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[55]
+#define SWIGTYPE_p_mfem__Mesh swig_types[56]
+#define SWIGTYPE_p_mfem__NCL2FaceRestriction swig_types[57]
+#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[58]
+#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[59]
+#define SWIGTYPE_p_mfem__Operator swig_types[60]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[61]
+#define SWIGTYPE_p_mfem__OversetFindPointsGSLIB swig_types[62]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[63]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[64]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[65]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[66]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[67]
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[68]
+#define SWIGTYPE_p_mfem__Refinement swig_types[69]
+#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[70]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[71]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[72]
+#define SWIGTYPE_p_mfem__Solver swig_types[73]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[74]
+#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[75]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[76]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[77]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[78]
+#define SWIGTYPE_p_mfem__Vector swig_types[79]
+#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[80]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[81]
+#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[82]
+#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[83]
+#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[84]
+#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[85]
+#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[86]
+#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[87]
+#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[88]
+#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[89]
+#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[90]
+#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[91]
+#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[92]
+#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[93]
+#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[94]
+#define SWIGTYPE_p_p_mfem__DenseSymmetricMatrix swig_types[95]
+#define SWIGTYPE_p_p_mfem__ElementRestriction swig_types[96]
+#define SWIGTYPE_p_p_mfem__FaceRestriction swig_types[97]
+#define SWIGTYPE_p_p_mfem__FiniteElementSpace swig_types[98]
+#define SWIGTYPE_p_p_mfem__GridFunction swig_types[99]
+#define SWIGTYPE_p_p_mfem__H1FaceRestriction swig_types[100]
+#define SWIGTYPE_p_p_mfem__HypreADS swig_types[101]
+#define SWIGTYPE_p_p_mfem__HypreAMS swig_types[102]
+#define SWIGTYPE_p_p_mfem__HypreBoomerAMG swig_types[103]
+#define SWIGTYPE_p_p_mfem__HypreDiagScale swig_types[104]
+#define SWIGTYPE_p_p_mfem__HypreEuclid swig_types[105]
+#define SWIGTYPE_p_p_mfem__HypreFGMRES swig_types[106]
+#define SWIGTYPE_p_p_mfem__HypreGMRES swig_types[107]
+#define SWIGTYPE_p_p_mfem__HypreILU swig_types[108]
+#define SWIGTYPE_p_p_mfem__HypreIdentity swig_types[109]
+#define SWIGTYPE_p_p_mfem__HyprePCG swig_types[110]
+#define SWIGTYPE_p_p_mfem__HypreParMatrix swig_types[111]
+#define SWIGTYPE_p_p_mfem__HypreParVector swig_types[112]
+#define SWIGTYPE_p_p_mfem__HypreParaSails swig_types[113]
+#define SWIGTYPE_p_p_mfem__HypreSmoother swig_types[114]
+#define SWIGTYPE_p_p_mfem__HypreSolver swig_types[115]
+#define SWIGTYPE_p_p_mfem__HypreTriSolve swig_types[116]
+#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[117]
+#define SWIGTYPE_p_p_mfem__IntegrationRule swig_types[118]
+#define SWIGTYPE_p_p_mfem__L2ElementRestriction swig_types[119]
+#define SWIGTYPE_p_p_mfem__L2FaceRestriction swig_types[120]
+#define SWIGTYPE_p_p_mfem__LinearForm swig_types[121]
+#define SWIGTYPE_p_p_mfem__Matrix swig_types[122]
+#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[123]
+#define SWIGTYPE_p_p_mfem__NCL2FaceRestriction swig_types[124]
+#define SWIGTYPE_p_p_mfem__Operator swig_types[125]
+#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[126]
+#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[127]
+#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[128]
+#define SWIGTYPE_p_p_mfem__QuadratureFunction swig_types[129]
+#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[130]
+#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[131]
+#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[132]
+#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[133]
+#define SWIGTYPE_p_p_mfem__Solver swig_types[134]
+#define SWIGTYPE_p_p_mfem__SparseMatrix swig_types[135]
+#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[136]
+#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[137]
+#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[138]
+#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[139]
+#define SWIGTYPE_p_p_mfem__Vector swig_types[140]
+#define SWIGTYPE_p_pri_t swig_types[141]
+#define SWIGTYPE_p_pyr_t swig_types[142]
+#define SWIGTYPE_p_quad_t swig_types[143]
+#define SWIGTYPE_p_seg_t swig_types[144]
+#define SWIGTYPE_p_size_type swig_types[145]
+#define SWIGTYPE_p_tet_t swig_types[146]
+#define SWIGTYPE_p_tri_t swig_types[147]
+#define SWIGTYPE_p_value_type swig_types[148]
+static swig_type_info *swig_types[150];
+static swig_module_info swig_module = {swig_types, 149, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3409,6 +3413,176 @@ SWIG_FromCharPtr(const char *cptr)
 #include "mpi4py/mpi4py.h"
 
 
+SWIGINTERN int
+SWIG_AsPtr_MPI_Comm (PyObject * input, MPI_Comm **p) {
+  if (input == Py_None) {
+    if (p) *p = NULL;
+    return SWIG_OK;
+  } else if (PyObject_TypeCheck(input,&PyMPIComm_Type)) {
+    if (p) *p = PyMPIComm_Get(input);
+    return SWIG_OK;
+  } else {
+    void *argp = NULL;
+    int res = SWIG_ConvertPtr(input,&argp,SWIGTYPE_p_MPI_Comm, 0);
+    if (!SWIG_IsOK(res)) return res;
+    if (!argp) return SWIG_ValueError;
+    if (p) *p = static_cast< MPI_Comm* >(argp);
+    return SWIG_OK;
+  }
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_double (PyObject *obj, double *val)
+{
+  int res = SWIG_TypeError;
+  if (PyFloat_Check(obj)) {
+    if (val) *val = PyFloat_AsDouble(obj);
+    return SWIG_OK;
+#if PY_VERSION_HEX < 0x03000000
+  } else if (PyInt_Check(obj)) {
+    if (val) *val = (double) PyInt_AsLong(obj);
+    return SWIG_OK;
+#endif
+  } else if (PyLong_Check(obj)) {
+    double v = PyLong_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    double d = PyFloat_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = d;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      long v = PyLong_AsLong(obj);
+      if (!PyErr_Occurred()) {
+	if (val) *val = v;
+	return SWIG_AddCast(SWIG_AddCast(SWIG_OK));
+      } else {
+	PyErr_Clear();
+      }
+    }
+  }
+#endif
+  return res;
+}
+
+
+#include <limits.h>
+#if !defined(SWIG_NO_LLONG_MAX)
+# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
+#   define LLONG_MAX __LONG_LONG_MAX__
+#   define LLONG_MIN (-LLONG_MAX - 1LL)
+#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
+# endif
+#endif
+
+
+#include <float.h>
+
+
+#include <math.h>
+
+
+SWIGINTERNINLINE int
+SWIG_CanCastAsInteger(double *d, double min, double max) {
+  double x = *d;
+  if ((min <= x && x <= max)) {
+   double fx = floor(x);
+   double cx = ceil(x);
+   double rd =  ((x - fx) < 0.5) ? fx : cx; /* simple rint */
+   if ((errno == EDOM) || (errno == ERANGE)) {
+     errno = 0;
+   } else {
+     double summ, reps, diff;
+     if (rd < x) {
+       diff = x - rd;
+     } else if (rd > x) {
+       diff = rd - x;
+     } else {
+       return 1;
+     }
+     summ = rd + x;
+     reps = diff/summ;
+     if (reps < 8*DBL_EPSILON) {
+       *d = rd;
+       return 1;
+     }
+   }
+  }
+  return 0;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_long (PyObject *obj, long* val)
+{
+#if PY_VERSION_HEX < 0x03000000
+  if (PyInt_Check(obj)) {
+    if (val) *val = PyInt_AsLong(obj);
+    return SWIG_OK;
+  } else
+#endif
+  if (PyLong_Check(obj)) {
+    long v = PyLong_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+      return SWIG_OverflowError;
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    long v = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      double d;
+      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
+      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, LONG_MIN, LONG_MAX)) {
+	if (val) *val = (long)(d);
+	return res;
+      }
+    }
+  }
+#endif
+  return SWIG_TypeError;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_int (PyObject * obj, int *val)
+{
+  long v;
+  int res = SWIG_AsVal_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v < INT_MIN || v > INT_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = static_cast< int >(v);
+    }
+  }  
+  return res;
+}
+
+
 
 /* ---------------------------------------------------
  * C++ director class methods
@@ -3419,15 +3593,1847 @@ SWIG_FromCharPtr(const char *cptr)
 #ifdef __cplusplus
 extern "C" {
 #endif
+SWIGINTERN PyObject *_wrap_new_FindPointsGSLIB__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  mfem::FindPointsGSLIB *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::FindPointsGSLIB *)new mfem::FindPointsGSLIB(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FindPointsGSLIB, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_FindPointsGSLIB__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  MPI_Comm arg1 ;
+  mfem::FindPointsGSLIB *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    MPI_Comm *ptr = (MPI_Comm *)0;
+    int res = SWIG_AsPtr_MPI_Comm(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_FindPointsGSLIB" "', argument " "1"" of type '" "MPI_Comm""'"); 
+    }
+    arg1 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      result = (mfem::FindPointsGSLIB *)new mfem::FindPointsGSLIB(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FindPointsGSLIB, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_FindPointsGSLIB(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_FindPointsGSLIB", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_FindPointsGSLIB__SWIG_0(self, argc, argv);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_AsPtr_MPI_Comm(argv[0], (MPI_Comm**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_FindPointsGSLIB__SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_FindPointsGSLIB'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::FindPointsGSLIB::FindPointsGSLIB()\n"
+    "    mfem::FindPointsGSLIB::FindPointsGSLIB(MPI_Comm)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_FindPointsGSLIB(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::FindPointsGSLIB *arg1 = (mfem::FindPointsGSLIB *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FindPointsGSLIB, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_FindPointsGSLIB" "', argument " "1"" of type '" "mfem::FindPointsGSLIB *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FindPointsGSLIB * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FindPointsGSLIB_Setup(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::FindPointsGSLIB *arg1 = (mfem::FindPointsGSLIB *) 0 ;
+  mfem::Mesh *arg2 = 0 ;
+  double arg3 = (double) (double)0.1 ;
+  double arg4 = (double) (double)1.0e-12 ;
+  int arg5 = (int) (int)256 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"m",  (char *)"bb_t",  (char *)"newt_tol",  (char *)"npt_max",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OOO:FindPointsGSLIB_Setup", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__FindPointsGSLIB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FindPointsGSLIB_Setup" "', argument " "1"" of type '" "mfem::FindPointsGSLIB *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FindPointsGSLIB * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Mesh,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FindPointsGSLIB_Setup" "', argument " "2"" of type '" "mfem::Mesh &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FindPointsGSLIB_Setup" "', argument " "2"" of type '" "mfem::Mesh &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Mesh * >(argp2);
+  if (obj2) {
+    ecode3 = SWIG_AsVal_double(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "FindPointsGSLIB_Setup" "', argument " "3"" of type '" "double""'");
+    } 
+    arg3 = static_cast< double >(val3);
+  }
+  if (obj3) {
+    ecode4 = SWIG_AsVal_double(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "FindPointsGSLIB_Setup" "', argument " "4"" of type '" "double""'");
+    } 
+    arg4 = static_cast< double >(val4);
+  }
+  if (obj4) {
+    {
+      if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg5 = PyArray_PyIntAsInt(obj4);
+    }
+  }
+  {
+    try {
+      (arg1)->Setup(*arg2,arg3,arg4,arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FindPointsGSLIB_FindPoints__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::FindPointsGSLIB *arg1 = (mfem::FindPointsGSLIB *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FindPointsGSLIB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FindPointsGSLIB_FindPoints" "', argument " "1"" of type '" "mfem::FindPointsGSLIB *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FindPointsGSLIB * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FindPointsGSLIB_FindPoints" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FindPointsGSLIB_FindPoints" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    try {
+      (arg1)->FindPoints((mfem::Vector const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FindPointsGSLIB_FindPoints__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::FindPointsGSLIB *arg1 = (mfem::FindPointsGSLIB *) 0 ;
+  mfem::Mesh *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  double arg4 = (double) (double)0.1 ;
+  double arg5 = (double) (double)1.0e-12 ;
+  int arg6 = (int) (int)256 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  double val5 ;
+  int ecode5 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 6)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FindPointsGSLIB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FindPointsGSLIB_FindPoints" "', argument " "1"" of type '" "mfem::FindPointsGSLIB *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FindPointsGSLIB * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Mesh,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FindPointsGSLIB_FindPoints" "', argument " "2"" of type '" "mfem::Mesh &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FindPointsGSLIB_FindPoints" "', argument " "2"" of type '" "mfem::Mesh &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Mesh * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "FindPointsGSLIB_FindPoints" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FindPointsGSLIB_FindPoints" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  if (swig_obj[3]) {
+    ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "FindPointsGSLIB_FindPoints" "', argument " "4"" of type '" "double""'");
+    } 
+    arg4 = static_cast< double >(val4);
+  }
+  if (swig_obj[4]) {
+    ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "FindPointsGSLIB_FindPoints" "', argument " "5"" of type '" "double""'");
+    } 
+    arg5 = static_cast< double >(val5);
+  }
+  if (swig_obj[5]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[5]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg6 = PyArray_PyIntAsInt(swig_obj[5]);
+    }
+  }
+  {
+    try {
+      (arg1)->FindPoints(*arg2,(mfem::Vector const &)*arg3,arg4,arg5,arg6); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FindPointsGSLIB_FindPoints(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[7] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "FindPointsGSLIB_FindPoints", 0, 6, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__FindPointsGSLIB, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_FindPointsGSLIB_FindPoints__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  if ((argc >= 3) && (argc <= 6)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__FindPointsGSLIB, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Mesh, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          if (argc <= 3) {
+            return _wrap_FindPointsGSLIB_FindPoints__SWIG_1(self, argc, argv);
+          }
+          {
+            int res = SWIG_AsVal_double(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            if (argc <= 4) {
+              return _wrap_FindPointsGSLIB_FindPoints__SWIG_1(self, argc, argv);
+            }
+            {
+              int res = SWIG_AsVal_double(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              if (argc <= 5) {
+                return _wrap_FindPointsGSLIB_FindPoints__SWIG_1(self, argc, argv);
+              }
+              {
+                if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
+                  _v = 0;
+                } else {
+                  _v = 1;    
+                }
+              }
+              if (_v) {
+                return _wrap_FindPointsGSLIB_FindPoints__SWIG_1(self, argc, argv);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'FindPointsGSLIB_FindPoints'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::FindPointsGSLIB::FindPoints(mfem::Vector const &)\n"
+    "    mfem::FindPointsGSLIB::FindPoints(mfem::Mesh &,mfem::Vector const &,double const,double const,int const)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_FindPointsGSLIB_Interpolate__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::FindPointsGSLIB *arg1 = (mfem::FindPointsGSLIB *) 0 ;
+  mfem::GridFunction *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FindPointsGSLIB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FindPointsGSLIB_Interpolate" "', argument " "1"" of type '" "mfem::FindPointsGSLIB *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FindPointsGSLIB * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FindPointsGSLIB_Interpolate" "', argument " "2"" of type '" "mfem::GridFunction const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FindPointsGSLIB_Interpolate" "', argument " "2"" of type '" "mfem::GridFunction const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::GridFunction * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "FindPointsGSLIB_Interpolate" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FindPointsGSLIB_Interpolate" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      (arg1)->Interpolate((mfem::GridFunction const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FindPointsGSLIB_Interpolate__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::FindPointsGSLIB *arg1 = (mfem::FindPointsGSLIB *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::GridFunction *arg3 = 0 ;
+  mfem::Vector *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FindPointsGSLIB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FindPointsGSLIB_Interpolate" "', argument " "1"" of type '" "mfem::FindPointsGSLIB *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FindPointsGSLIB * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FindPointsGSLIB_Interpolate" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FindPointsGSLIB_Interpolate" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "FindPointsGSLIB_Interpolate" "', argument " "3"" of type '" "mfem::GridFunction const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FindPointsGSLIB_Interpolate" "', argument " "3"" of type '" "mfem::GridFunction const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "FindPointsGSLIB_Interpolate" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FindPointsGSLIB_Interpolate" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
+  {
+    try {
+      (arg1)->Interpolate((mfem::Vector const &)*arg2,(mfem::GridFunction const &)*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FindPointsGSLIB_Interpolate__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::FindPointsGSLIB *arg1 = (mfem::FindPointsGSLIB *) 0 ;
+  mfem::Mesh *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  mfem::GridFunction *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FindPointsGSLIB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FindPointsGSLIB_Interpolate" "', argument " "1"" of type '" "mfem::FindPointsGSLIB *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FindPointsGSLIB * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Mesh,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FindPointsGSLIB_Interpolate" "', argument " "2"" of type '" "mfem::Mesh &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FindPointsGSLIB_Interpolate" "', argument " "2"" of type '" "mfem::Mesh &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Mesh * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "FindPointsGSLIB_Interpolate" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FindPointsGSLIB_Interpolate" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "FindPointsGSLIB_Interpolate" "', argument " "4"" of type '" "mfem::GridFunction const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FindPointsGSLIB_Interpolate" "', argument " "4"" of type '" "mfem::GridFunction const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::GridFunction * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "FindPointsGSLIB_Interpolate" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FindPointsGSLIB_Interpolate" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  {
+    try {
+      (arg1)->Interpolate(*arg2,(mfem::Vector const &)*arg3,(mfem::GridFunction const &)*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FindPointsGSLIB_Interpolate(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[6] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "FindPointsGSLIB_Interpolate", 0, 5, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__FindPointsGSLIB, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_FindPointsGSLIB_Interpolate__SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__FindPointsGSLIB, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_FindPointsGSLIB_Interpolate__SWIG_1(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__FindPointsGSLIB, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Mesh, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL | 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_FindPointsGSLIB_Interpolate__SWIG_2(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'FindPointsGSLIB_Interpolate'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::FindPointsGSLIB::Interpolate(mfem::GridFunction const &,mfem::Vector &)\n"
+    "    mfem::FindPointsGSLIB::Interpolate(mfem::Vector const &,mfem::GridFunction const &,mfem::Vector &)\n"
+    "    mfem::FindPointsGSLIB::Interpolate(mfem::Mesh &,mfem::Vector const &,mfem::GridFunction const &,mfem::Vector &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_FindPointsGSLIB_SetL2AvgType(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::FindPointsGSLIB *arg1 = (mfem::FindPointsGSLIB *) 0 ;
+  mfem::FindPointsGSLIB::AvgType arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"avgtype_",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:FindPointsGSLIB_SetL2AvgType", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__FindPointsGSLIB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FindPointsGSLIB_SetL2AvgType" "', argument " "1"" of type '" "mfem::FindPointsGSLIB *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FindPointsGSLIB * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FindPointsGSLIB_SetL2AvgType" "', argument " "2"" of type '" "mfem::FindPointsGSLIB::AvgType""'");
+  } 
+  arg2 = static_cast< mfem::FindPointsGSLIB::AvgType >(val2);
+  {
+    try {
+      (arg1)->SetL2AvgType(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FindPointsGSLIB_SetDefaultInterpolationValue(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::FindPointsGSLIB *arg1 = (mfem::FindPointsGSLIB *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"interp_value_",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:FindPointsGSLIB_SetDefaultInterpolationValue", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__FindPointsGSLIB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FindPointsGSLIB_SetDefaultInterpolationValue" "', argument " "1"" of type '" "mfem::FindPointsGSLIB *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FindPointsGSLIB * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FindPointsGSLIB_SetDefaultInterpolationValue" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  {
+    try {
+      (arg1)->SetDefaultInterpolationValue(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FindPointsGSLIB_FreeData(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::FindPointsGSLIB *arg1 = (mfem::FindPointsGSLIB *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FindPointsGSLIB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FindPointsGSLIB_FreeData" "', argument " "1"" of type '" "mfem::FindPointsGSLIB *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FindPointsGSLIB * >(argp1);
+  {
+    try {
+      (arg1)->FreeData(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FindPointsGSLIB_GetCode(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::FindPointsGSLIB *arg1 = (mfem::FindPointsGSLIB *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Array< unsigned int > *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FindPointsGSLIB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FindPointsGSLIB_GetCode" "', argument " "1"" of type '" "mfem::FindPointsGSLIB const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FindPointsGSLIB * >(argp1);
+  {
+    try {
+      result = (mfem::Array< unsigned int > *) &((mfem::FindPointsGSLIB const *)arg1)->GetCode(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_unsigned_int_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FindPointsGSLIB_GetElem(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::FindPointsGSLIB *arg1 = (mfem::FindPointsGSLIB *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Array< unsigned int > *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FindPointsGSLIB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FindPointsGSLIB_GetElem" "', argument " "1"" of type '" "mfem::FindPointsGSLIB const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FindPointsGSLIB * >(argp1);
+  {
+    try {
+      result = (mfem::Array< unsigned int > *) &((mfem::FindPointsGSLIB const *)arg1)->GetElem(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_unsigned_int_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FindPointsGSLIB_GetProc(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::FindPointsGSLIB *arg1 = (mfem::FindPointsGSLIB *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Array< unsigned int > *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FindPointsGSLIB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FindPointsGSLIB_GetProc" "', argument " "1"" of type '" "mfem::FindPointsGSLIB const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FindPointsGSLIB * >(argp1);
+  {
+    try {
+      result = (mfem::Array< unsigned int > *) &((mfem::FindPointsGSLIB const *)arg1)->GetProc(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_unsigned_int_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FindPointsGSLIB_GetReferencePosition(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::FindPointsGSLIB *arg1 = (mfem::FindPointsGSLIB *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Vector *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FindPointsGSLIB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FindPointsGSLIB_GetReferencePosition" "', argument " "1"" of type '" "mfem::FindPointsGSLIB const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FindPointsGSLIB * >(argp1);
+  {
+    try {
+      result = (mfem::Vector *) &((mfem::FindPointsGSLIB const *)arg1)->GetReferencePosition(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FindPointsGSLIB_GetDist(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::FindPointsGSLIB *arg1 = (mfem::FindPointsGSLIB *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Vector *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FindPointsGSLIB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FindPointsGSLIB_GetDist" "', argument " "1"" of type '" "mfem::FindPointsGSLIB const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FindPointsGSLIB * >(argp1);
+  {
+    try {
+      result = (mfem::Vector *) &((mfem::FindPointsGSLIB const *)arg1)->GetDist(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FindPointsGSLIB_GetGSLIBElem(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::FindPointsGSLIB *arg1 = (mfem::FindPointsGSLIB *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Array< unsigned int > *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FindPointsGSLIB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FindPointsGSLIB_GetGSLIBElem" "', argument " "1"" of type '" "mfem::FindPointsGSLIB const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FindPointsGSLIB * >(argp1);
+  {
+    try {
+      result = (mfem::Array< unsigned int > *) &((mfem::FindPointsGSLIB const *)arg1)->GetGSLIBElem(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_unsigned_int_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FindPointsGSLIB_GetGSLIBReferencePosition(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::FindPointsGSLIB *arg1 = (mfem::FindPointsGSLIB *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Vector *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FindPointsGSLIB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FindPointsGSLIB_GetGSLIBReferencePosition" "', argument " "1"" of type '" "mfem::FindPointsGSLIB const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FindPointsGSLIB * >(argp1);
+  {
+    try {
+      result = (mfem::Vector *) &((mfem::FindPointsGSLIB const *)arg1)->GetGSLIBReferencePosition(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *FindPointsGSLIB_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__FindPointsGSLIB, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *FindPointsGSLIB_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_OversetFindPointsGSLIB__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  mfem::OversetFindPointsGSLIB *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::OversetFindPointsGSLIB *)new mfem::OversetFindPointsGSLIB(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__OversetFindPointsGSLIB, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_OversetFindPointsGSLIB__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  MPI_Comm arg1 ;
+  mfem::OversetFindPointsGSLIB *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    MPI_Comm *ptr = (MPI_Comm *)0;
+    int res = SWIG_AsPtr_MPI_Comm(swig_obj[0], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_OversetFindPointsGSLIB" "', argument " "1"" of type '" "MPI_Comm""'"); 
+    }
+    arg1 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    try {
+      result = (mfem::OversetFindPointsGSLIB *)new mfem::OversetFindPointsGSLIB(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__OversetFindPointsGSLIB, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_OversetFindPointsGSLIB(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_OversetFindPointsGSLIB", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_OversetFindPointsGSLIB__SWIG_0(self, argc, argv);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_AsPtr_MPI_Comm(argv[0], (MPI_Comm**)(0));
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_OversetFindPointsGSLIB__SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_OversetFindPointsGSLIB'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::OversetFindPointsGSLIB::OversetFindPointsGSLIB()\n"
+    "    mfem::OversetFindPointsGSLIB::OversetFindPointsGSLIB(MPI_Comm)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_OversetFindPointsGSLIB_Setup(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::OversetFindPointsGSLIB *arg1 = (mfem::OversetFindPointsGSLIB *) 0 ;
+  mfem::Mesh *arg2 = 0 ;
+  int arg3 ;
+  mfem::GridFunction *arg4 = (mfem::GridFunction *) NULL ;
+  double arg5 = (double) (double)0.1 ;
+  double arg6 = (double) (double)1.0e-12 ;
+  int arg7 = (int) (int)256 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  double val5 ;
+  int ecode5 = 0 ;
+  double val6 ;
+  int ecode6 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"m",  (char *)"meshid",  (char *)"gfmax",  (char *)"bb_t",  (char *)"newt_tol",  (char *)"npt_max",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|OOOO:OversetFindPointsGSLIB_Setup", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__OversetFindPointsGSLIB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OversetFindPointsGSLIB_Setup" "', argument " "1"" of type '" "mfem::OversetFindPointsGSLIB *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OversetFindPointsGSLIB * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Mesh,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OversetFindPointsGSLIB_Setup" "', argument " "2"" of type '" "mfem::Mesh &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OversetFindPointsGSLIB_Setup" "', argument " "2"" of type '" "mfem::Mesh &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Mesh * >(argp2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  if (obj3) {
+    res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "OversetFindPointsGSLIB_Setup" "', argument " "4"" of type '" "mfem::GridFunction *""'"); 
+    }
+    arg4 = reinterpret_cast< mfem::GridFunction * >(argp4);
+  }
+  if (obj4) {
+    ecode5 = SWIG_AsVal_double(obj4, &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "OversetFindPointsGSLIB_Setup" "', argument " "5"" of type '" "double""'");
+    } 
+    arg5 = static_cast< double >(val5);
+  }
+  if (obj5) {
+    ecode6 = SWIG_AsVal_double(obj5, &val6);
+    if (!SWIG_IsOK(ecode6)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "OversetFindPointsGSLIB_Setup" "', argument " "6"" of type '" "double""'");
+    } 
+    arg6 = static_cast< double >(val6);
+  }
+  if (obj6) {
+    {
+      if ((PyArray_PyIntAsInt(obj6) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg7 = PyArray_PyIntAsInt(obj6);
+    }
+  }
+  {
+    try {
+      (arg1)->Setup(*arg2,arg3,arg4,arg5,arg6,arg7); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OversetFindPointsGSLIB_FindPoints(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::OversetFindPointsGSLIB *arg1 = (mfem::OversetFindPointsGSLIB *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Array< unsigned int > *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"point_pos",  (char *)"point_id",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:OversetFindPointsGSLIB_FindPoints", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__OversetFindPointsGSLIB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OversetFindPointsGSLIB_FindPoints" "', argument " "1"" of type '" "mfem::OversetFindPointsGSLIB *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OversetFindPointsGSLIB * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OversetFindPointsGSLIB_FindPoints" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OversetFindPointsGSLIB_FindPoints" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_unsigned_int_t,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "OversetFindPointsGSLIB_FindPoints" "', argument " "3"" of type '" "mfem::Array< unsigned int > &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OversetFindPointsGSLIB_FindPoints" "', argument " "3"" of type '" "mfem::Array< unsigned int > &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Array< unsigned int > * >(argp3);
+  {
+    try {
+      (arg1)->FindPoints((mfem::Vector const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OversetFindPointsGSLIB_Interpolate__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::OversetFindPointsGSLIB *arg1 = (mfem::OversetFindPointsGSLIB *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Array< unsigned int > *arg3 = 0 ;
+  mfem::GridFunction *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OversetFindPointsGSLIB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "1"" of type '" "mfem::OversetFindPointsGSLIB *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OversetFindPointsGSLIB * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_unsigned_int_t,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "3"" of type '" "mfem::Array< unsigned int > &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "3"" of type '" "mfem::Array< unsigned int > &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Array< unsigned int > * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "4"" of type '" "mfem::GridFunction const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "4"" of type '" "mfem::GridFunction const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::GridFunction * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  {
+    try {
+      (arg1)->Interpolate((mfem::Vector const &)*arg2,*arg3,(mfem::GridFunction const &)*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OversetFindPointsGSLIB_Interpolate__SWIG_1_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::OversetFindPointsGSLIB *arg1 = (mfem::OversetFindPointsGSLIB *) 0 ;
+  mfem::GridFunction *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OversetFindPointsGSLIB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "1"" of type '" "mfem::OversetFindPointsGSLIB *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OversetFindPointsGSLIB * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "2"" of type '" "mfem::GridFunction const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "2"" of type '" "mfem::GridFunction const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::GridFunction * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      (arg1)->Interpolate((mfem::GridFunction const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OversetFindPointsGSLIB_Interpolate__SWIG_1_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::OversetFindPointsGSLIB *arg1 = (mfem::OversetFindPointsGSLIB *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::GridFunction *arg3 = 0 ;
+  mfem::Vector *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OversetFindPointsGSLIB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "1"" of type '" "mfem::OversetFindPointsGSLIB *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OversetFindPointsGSLIB * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "3"" of type '" "mfem::GridFunction const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "3"" of type '" "mfem::GridFunction const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
+  {
+    try {
+      (arg1)->Interpolate((mfem::Vector const &)*arg2,(mfem::GridFunction const &)*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OversetFindPointsGSLIB_Interpolate__SWIG_1_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::OversetFindPointsGSLIB *arg1 = (mfem::OversetFindPointsGSLIB *) 0 ;
+  mfem::Mesh *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  mfem::GridFunction *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OversetFindPointsGSLIB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "1"" of type '" "mfem::OversetFindPointsGSLIB *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OversetFindPointsGSLIB * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Mesh,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "2"" of type '" "mfem::Mesh &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "2"" of type '" "mfem::Mesh &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Mesh * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "4"" of type '" "mfem::GridFunction const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "4"" of type '" "mfem::GridFunction const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::GridFunction * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OversetFindPointsGSLIB_Interpolate" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  {
+    try {
+      (arg1)->Interpolate(*arg2,(mfem::Vector const &)*arg3,(mfem::GridFunction const &)*arg4,*arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OversetFindPointsGSLIB_Interpolate(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[6] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "OversetFindPointsGSLIB_Interpolate", 0, 5, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__OversetFindPointsGSLIB, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_OversetFindPointsGSLIB_Interpolate__SWIG_1_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__OversetFindPointsGSLIB, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_OversetFindPointsGSLIB_Interpolate__SWIG_1_1(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__OversetFindPointsGSLIB, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ArrayT_unsigned_int_t, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL | 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_OversetFindPointsGSLIB_Interpolate__SWIG_0(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__OversetFindPointsGSLIB, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Mesh, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL | 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_OversetFindPointsGSLIB_Interpolate__SWIG_1_2(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'OversetFindPointsGSLIB_Interpolate'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::OversetFindPointsGSLIB::Interpolate(mfem::Vector const &,mfem::Array< unsigned int > &,mfem::GridFunction const &,mfem::Vector &)\n"
+    "    Interpolate(mfem::GridFunction const &,mfem::Vector &)\n"
+    "    Interpolate(mfem::Vector const &,mfem::GridFunction const &,mfem::Vector &)\n"
+    "    Interpolate(mfem::Mesh &,mfem::Vector const &,mfem::GridFunction const &,mfem::Vector &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_OversetFindPointsGSLIB(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OversetFindPointsGSLIB *arg1 = (mfem::OversetFindPointsGSLIB *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OversetFindPointsGSLIB, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_OversetFindPointsGSLIB" "', argument " "1"" of type '" "mfem::OversetFindPointsGSLIB *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OversetFindPointsGSLIB * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *OversetFindPointsGSLIB_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__OversetFindPointsGSLIB, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *OversetFindPointsGSLIB_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "new_FindPointsGSLIB", _wrap_new_FindPointsGSLIB, METH_VARARGS, "\n"
+		"FindPointsGSLIB()\n"
+		"new_FindPointsGSLIB(MPI_Comm comm_) -> FindPointsGSLIB\n"
+		""},
+	 { "delete_FindPointsGSLIB", _wrap_delete_FindPointsGSLIB, METH_O, "delete_FindPointsGSLIB(FindPointsGSLIB self)"},
+	 { "FindPointsGSLIB_Setup", (PyCFunction)(void(*)(void))_wrap_FindPointsGSLIB_Setup, METH_VARARGS|METH_KEYWORDS, "FindPointsGSLIB_Setup(FindPointsGSLIB self, Mesh m, double const bb_t=0.1, double const newt_tol=1.0e-12, int const npt_max=256)"},
+	 { "FindPointsGSLIB_FindPoints", _wrap_FindPointsGSLIB_FindPoints, METH_VARARGS, "\n"
+		"FindPointsGSLIB_FindPoints(FindPointsGSLIB self, Vector point_pos)\n"
+		"FindPointsGSLIB_FindPoints(FindPointsGSLIB self, Mesh m, Vector point_pos, double const bb_t=0.1, double const newt_tol=1.0e-12, int const npt_max=256)\n"
+		""},
+	 { "FindPointsGSLIB_Interpolate", _wrap_FindPointsGSLIB_Interpolate, METH_VARARGS, "\n"
+		"FindPointsGSLIB_Interpolate(FindPointsGSLIB self, GridFunction field_in, Vector field_out)\n"
+		"FindPointsGSLIB_Interpolate(FindPointsGSLIB self, Vector point_pos, GridFunction field_in, Vector field_out)\n"
+		"FindPointsGSLIB_Interpolate(FindPointsGSLIB self, Mesh m, Vector point_pos, GridFunction field_in, Vector field_out)\n"
+		""},
+	 { "FindPointsGSLIB_SetL2AvgType", (PyCFunction)(void(*)(void))_wrap_FindPointsGSLIB_SetL2AvgType, METH_VARARGS|METH_KEYWORDS, "FindPointsGSLIB_SetL2AvgType(FindPointsGSLIB self, mfem::FindPointsGSLIB::AvgType avgtype_)"},
+	 { "FindPointsGSLIB_SetDefaultInterpolationValue", (PyCFunction)(void(*)(void))_wrap_FindPointsGSLIB_SetDefaultInterpolationValue, METH_VARARGS|METH_KEYWORDS, "FindPointsGSLIB_SetDefaultInterpolationValue(FindPointsGSLIB self, double interp_value_)"},
+	 { "FindPointsGSLIB_FreeData", _wrap_FindPointsGSLIB_FreeData, METH_O, "FindPointsGSLIB_FreeData(FindPointsGSLIB self)"},
+	 { "FindPointsGSLIB_GetCode", _wrap_FindPointsGSLIB_GetCode, METH_O, "FindPointsGSLIB_GetCode(FindPointsGSLIB self) -> mfem::Array< unsigned int > const &"},
+	 { "FindPointsGSLIB_GetElem", _wrap_FindPointsGSLIB_GetElem, METH_O, "FindPointsGSLIB_GetElem(FindPointsGSLIB self) -> mfem::Array< unsigned int > const &"},
+	 { "FindPointsGSLIB_GetProc", _wrap_FindPointsGSLIB_GetProc, METH_O, "FindPointsGSLIB_GetProc(FindPointsGSLIB self) -> mfem::Array< unsigned int > const &"},
+	 { "FindPointsGSLIB_GetReferencePosition", _wrap_FindPointsGSLIB_GetReferencePosition, METH_O, "FindPointsGSLIB_GetReferencePosition(FindPointsGSLIB self) -> Vector"},
+	 { "FindPointsGSLIB_GetDist", _wrap_FindPointsGSLIB_GetDist, METH_O, "FindPointsGSLIB_GetDist(FindPointsGSLIB self) -> Vector"},
+	 { "FindPointsGSLIB_GetGSLIBElem", _wrap_FindPointsGSLIB_GetGSLIBElem, METH_O, "FindPointsGSLIB_GetGSLIBElem(FindPointsGSLIB self) -> mfem::Array< unsigned int > const &"},
+	 { "FindPointsGSLIB_GetGSLIBReferencePosition", _wrap_FindPointsGSLIB_GetGSLIBReferencePosition, METH_O, "FindPointsGSLIB_GetGSLIBReferencePosition(FindPointsGSLIB self) -> Vector"},
+	 { "FindPointsGSLIB_swigregister", FindPointsGSLIB_swigregister, METH_O, NULL},
+	 { "FindPointsGSLIB_swiginit", FindPointsGSLIB_swiginit, METH_VARARGS, NULL},
+	 { "new_OversetFindPointsGSLIB", _wrap_new_OversetFindPointsGSLIB, METH_VARARGS, "\n"
+		"OversetFindPointsGSLIB()\n"
+		"new_OversetFindPointsGSLIB(MPI_Comm comm_) -> OversetFindPointsGSLIB\n"
+		""},
+	 { "OversetFindPointsGSLIB_Setup", (PyCFunction)(void(*)(void))_wrap_OversetFindPointsGSLIB_Setup, METH_VARARGS|METH_KEYWORDS, "OversetFindPointsGSLIB_Setup(OversetFindPointsGSLIB self, Mesh m, int const meshid, GridFunction gfmax=None, double const bb_t=0.1, double const newt_tol=1.0e-12, int const npt_max=256)"},
+	 { "OversetFindPointsGSLIB_FindPoints", (PyCFunction)(void(*)(void))_wrap_OversetFindPointsGSLIB_FindPoints, METH_VARARGS|METH_KEYWORDS, "OversetFindPointsGSLIB_FindPoints(OversetFindPointsGSLIB self, Vector point_pos, mfem::Array< unsigned int > & point_id)"},
+	 { "OversetFindPointsGSLIB_Interpolate", _wrap_OversetFindPointsGSLIB_Interpolate, METH_VARARGS, "\n"
+		"OversetFindPointsGSLIB_Interpolate(OversetFindPointsGSLIB self, Vector point_pos, mfem::Array< unsigned int > & point_id, GridFunction field_in, Vector field_out)\n"
+		"OversetFindPointsGSLIB_Interpolate(OversetFindPointsGSLIB self, GridFunction field_in, Vector field_out)\n"
+		"OversetFindPointsGSLIB_Interpolate(OversetFindPointsGSLIB self, Vector point_pos, GridFunction field_in, Vector field_out)\n"
+		"OversetFindPointsGSLIB_Interpolate(OversetFindPointsGSLIB self, Mesh m, Vector point_pos, GridFunction field_in, Vector field_out)\n"
+		""},
+	 { "delete_OversetFindPointsGSLIB", _wrap_delete_OversetFindPointsGSLIB, METH_O, "delete_OversetFindPointsGSLIB(OversetFindPointsGSLIB self)"},
+	 { "OversetFindPointsGSLIB_swigregister", OversetFindPointsGSLIB_swigregister, METH_O, NULL},
+	 { "OversetFindPointsGSLIB_swiginit", OversetFindPointsGSLIB_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "new_FindPointsGSLIB", _wrap_new_FindPointsGSLIB, METH_VARARGS, "\n"
+		"FindPointsGSLIB()\n"
+		"new_FindPointsGSLIB(MPI_Comm comm_) -> FindPointsGSLIB\n"
+		""},
+	 { "delete_FindPointsGSLIB", _wrap_delete_FindPointsGSLIB, METH_O, "delete_FindPointsGSLIB(FindPointsGSLIB self)"},
+	 { "FindPointsGSLIB_Setup", (PyCFunction)(void(*)(void))_wrap_FindPointsGSLIB_Setup, METH_VARARGS|METH_KEYWORDS, "Setup(FindPointsGSLIB self, Mesh m, double const bb_t=0.1, double const newt_tol=1.0e-12, int const npt_max=256)"},
+	 { "FindPointsGSLIB_FindPoints", _wrap_FindPointsGSLIB_FindPoints, METH_VARARGS, "\n"
+		"FindPoints(FindPointsGSLIB self, Vector point_pos)\n"
+		"FindPoints(FindPointsGSLIB self, Mesh m, Vector point_pos, double const bb_t=0.1, double const newt_tol=1.0e-12, int const npt_max=256)\n"
+		""},
+	 { "FindPointsGSLIB_Interpolate", _wrap_FindPointsGSLIB_Interpolate, METH_VARARGS, "\n"
+		"Interpolate(FindPointsGSLIB self, GridFunction field_in, Vector field_out)\n"
+		"Interpolate(FindPointsGSLIB self, Vector point_pos, GridFunction field_in, Vector field_out)\n"
+		"Interpolate(FindPointsGSLIB self, Mesh m, Vector point_pos, GridFunction field_in, Vector field_out)\n"
+		""},
+	 { "FindPointsGSLIB_SetL2AvgType", (PyCFunction)(void(*)(void))_wrap_FindPointsGSLIB_SetL2AvgType, METH_VARARGS|METH_KEYWORDS, "SetL2AvgType(FindPointsGSLIB self, mfem::FindPointsGSLIB::AvgType avgtype_)"},
+	 { "FindPointsGSLIB_SetDefaultInterpolationValue", (PyCFunction)(void(*)(void))_wrap_FindPointsGSLIB_SetDefaultInterpolationValue, METH_VARARGS|METH_KEYWORDS, "SetDefaultInterpolationValue(FindPointsGSLIB self, double interp_value_)"},
+	 { "FindPointsGSLIB_FreeData", _wrap_FindPointsGSLIB_FreeData, METH_O, "FreeData(FindPointsGSLIB self)"},
+	 { "FindPointsGSLIB_GetCode", _wrap_FindPointsGSLIB_GetCode, METH_O, "GetCode(FindPointsGSLIB self) -> mfem::Array< unsigned int > const &"},
+	 { "FindPointsGSLIB_GetElem", _wrap_FindPointsGSLIB_GetElem, METH_O, "GetElem(FindPointsGSLIB self) -> mfem::Array< unsigned int > const &"},
+	 { "FindPointsGSLIB_GetProc", _wrap_FindPointsGSLIB_GetProc, METH_O, "GetProc(FindPointsGSLIB self) -> mfem::Array< unsigned int > const &"},
+	 { "FindPointsGSLIB_GetReferencePosition", _wrap_FindPointsGSLIB_GetReferencePosition, METH_O, "GetReferencePosition(FindPointsGSLIB self) -> Vector"},
+	 { "FindPointsGSLIB_GetDist", _wrap_FindPointsGSLIB_GetDist, METH_O, "GetDist(FindPointsGSLIB self) -> Vector"},
+	 { "FindPointsGSLIB_GetGSLIBElem", _wrap_FindPointsGSLIB_GetGSLIBElem, METH_O, "GetGSLIBElem(FindPointsGSLIB self) -> mfem::Array< unsigned int > const &"},
+	 { "FindPointsGSLIB_GetGSLIBReferencePosition", _wrap_FindPointsGSLIB_GetGSLIBReferencePosition, METH_O, "GetGSLIBReferencePosition(FindPointsGSLIB self) -> Vector"},
+	 { "FindPointsGSLIB_swigregister", FindPointsGSLIB_swigregister, METH_O, NULL},
+	 { "FindPointsGSLIB_swiginit", FindPointsGSLIB_swiginit, METH_VARARGS, NULL},
+	 { "new_OversetFindPointsGSLIB", _wrap_new_OversetFindPointsGSLIB, METH_VARARGS, "\n"
+		"OversetFindPointsGSLIB()\n"
+		"new_OversetFindPointsGSLIB(MPI_Comm comm_) -> OversetFindPointsGSLIB\n"
+		""},
+	 { "OversetFindPointsGSLIB_Setup", (PyCFunction)(void(*)(void))_wrap_OversetFindPointsGSLIB_Setup, METH_VARARGS|METH_KEYWORDS, "Setup(OversetFindPointsGSLIB self, Mesh m, int const meshid, GridFunction gfmax=None, double const bb_t=0.1, double const newt_tol=1.0e-12, int const npt_max=256)"},
+	 { "OversetFindPointsGSLIB_FindPoints", (PyCFunction)(void(*)(void))_wrap_OversetFindPointsGSLIB_FindPoints, METH_VARARGS|METH_KEYWORDS, "FindPoints(OversetFindPointsGSLIB self, Vector point_pos, mfem::Array< unsigned int > & point_id)"},
+	 { "OversetFindPointsGSLIB_Interpolate", _wrap_OversetFindPointsGSLIB_Interpolate, METH_VARARGS, "\n"
+		"Interpolate(OversetFindPointsGSLIB self, Vector point_pos, mfem::Array< unsigned int > & point_id, GridFunction field_in, Vector field_out)\n"
+		"Interpolate(OversetFindPointsGSLIB self, GridFunction field_in, Vector field_out)\n"
+		"Interpolate(OversetFindPointsGSLIB self, Vector point_pos, GridFunction field_in, Vector field_out)\n"
+		"Interpolate(OversetFindPointsGSLIB self, Mesh m, Vector point_pos, GridFunction field_in, Vector field_out)\n"
+		""},
+	 { "delete_OversetFindPointsGSLIB", _wrap_delete_OversetFindPointsGSLIB, METH_O, "delete_OversetFindPointsGSLIB(OversetFindPointsGSLIB self)"},
+	 { "OversetFindPointsGSLIB_swigregister", OversetFindPointsGSLIB_swigregister, METH_O, NULL},
+	 { "OversetFindPointsGSLIB_swiginit", OversetFindPointsGSLIB_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -3830,6 +5836,9 @@ static void *_p_p_mfem__HypreILUTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM
 static void *_p_p_mfem__HypreSmootherTo_p_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Solver **)  ((mfem::HypreSmoother **) x));
 }
+static void *_p_mfem__OversetFindPointsGSLIBTo_p_mfem__FindPointsGSLIB(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FindPointsGSLIB *)  ((mfem::OversetFindPointsGSLIB *) x));
+}
 static void *_p_mfem__HypreParVectorTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Vector *)  ((mfem::HypreParVector *) x));
 }
@@ -3868,14 +5877,17 @@ static swig_type_info _swigt__p_double = {"_p_double", "HYPRE_Real *|HYPRE_Compl
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *|HYPRE_BigInt *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ArrayT_unsigned_int_t = {"_p_mfem__ArrayT_unsigned_int_t", "mfem::Array< unsigned int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ConvectionIntegrator = {"_p_mfem__ConvectionIntegrator", "mfem::ConvectionIntegrator *|mfem::NonconservativeConvectionIntegrator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DGTraceIntegrator = {"_p_mfem__DGTraceIntegrator", "mfem::DGTraceIntegrator *|mfem::ConservativeDGTraceIntegrator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__FindPointsGSLIB = {"_p_mfem__FindPointsGSLIB", "mfem::FindPointsGSLIB *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__FiniteElementSpace = {"_p_mfem__FiniteElementSpace", "mfem::FiniteElementSpace *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationPoint = {"_p_mfem__IntegrationPoint", "mfem::IntegrationPoint *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__L2_FECollection = {"_p_mfem__L2_FECollection", "mfem::L2_FECollection *|mfem::DG_FECollection *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__MatrixVectorProductCoefficient = {"_p_mfem__MatrixVectorProductCoefficient", "mfem::MatrixVectorProductCoefficient *|mfem::MatVecCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__Mesh = {"_p_mfem__Mesh", "mfem::Mesh *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Operator = {"_p_mfem__Operator", "mfem::Operator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__HyprePCG = {"_p_mfem__HyprePCG", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Matrix = {"_p_mfem__Matrix", 0, 0, 0, 0, 0};
@@ -3919,6 +5931,7 @@ static swig_type_info _swigt__p_mfem__HypreAMS = {"_p_mfem__HypreAMS", 0, 0, 0, 
 static swig_type_info _swigt__p_mfem__HypreSmoother = {"_p_mfem__HypreSmoother", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__HypreTriSolve = {"_p_mfem__HypreTriSolve", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__OperatorHandle = {"_p_mfem__OperatorHandle", "mfem::OperatorPtr *|mfem::OperatorHandle *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__OversetFindPointsGSLIB = {"_p_mfem__OversetFindPointsGSLIB", "mfem::OversetFindPointsGSLIB *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Refinement = {"_p_mfem__Refinement", "mfem::Refinement *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", "mfem::Solver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
@@ -4016,6 +6029,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_int,
   &_swigt__p_mfem__AbstractSparseMatrix,
   &_swigt__p_mfem__ArrayT_int_t,
+  &_swigt__p_mfem__ArrayT_unsigned_int_t,
   &_swigt__p_mfem__ConstrainedOperator,
   &_swigt__p_mfem__ConvectionIntegrator,
   &_swigt__p_mfem__CurlGridFunctionCoefficient,
@@ -4025,6 +6039,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__DenseSymmetricMatrix,
   &_swigt__p_mfem__ElementRestriction,
   &_swigt__p_mfem__FaceRestriction,
+  &_swigt__p_mfem__FindPointsGSLIB,
   &_swigt__p_mfem__FiniteElementSpace,
   &_swigt__p_mfem__GradientGridFunctionCoefficient,
   &_swigt__p_mfem__GridFunction,
@@ -4055,11 +6070,13 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__Matrix,
   &_swigt__p_mfem__MatrixInverse,
   &_swigt__p_mfem__MatrixVectorProductCoefficient,
+  &_swigt__p_mfem__Mesh,
   &_swigt__p_mfem__NCL2FaceRestriction,
   &_swigt__p_mfem__NodeExtrudeCoefficient,
   &_swigt__p_mfem__NormalizedVectorCoefficient,
   &_swigt__p_mfem__Operator,
   &_swigt__p_mfem__OperatorHandle,
+  &_swigt__p_mfem__OversetFindPointsGSLIB,
   &_swigt__p_mfem__ProductOperator,
   &_swigt__p_mfem__PyOperatorBase,
   &_swigt__p_mfem__PyTimeDependentOperatorBase,
@@ -4162,14 +6179,17 @@ static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ArrayT_unsigned_int_t[] = {  {&_swigt__p_mfem__ArrayT_unsigned_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ConvectionIntegrator[] = {  {&_swigt__p_mfem__ConvectionIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DGTraceIntegrator[] = {  {&_swigt__p_mfem__DGTraceIntegrator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__FindPointsGSLIB[] = {  {&_swigt__p_mfem__FindPointsGSLIB, 0, 0, 0},  {&_swigt__p_mfem__OversetFindPointsGSLIB, _p_mfem__OversetFindPointsGSLIBTo_p_mfem__FindPointsGSLIB, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__FiniteElementSpace[] = {  {&_swigt__p_mfem__FiniteElementSpace, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationPoint[] = {  {&_swigt__p_mfem__IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2_FECollection[] = {  {&_swigt__p_mfem__L2_FECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MatrixVectorProductCoefficient[] = {  {&_swigt__p_mfem__MatrixVectorProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Mesh[] = {  {&_swigt__p_mfem__Mesh, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HyprePCG[] = {{&_swigt__p_mfem__HyprePCG, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Matrix[] = {{&_swigt__p_mfem__Matrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SparseMatrix[] = {{&_swigt__p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
@@ -4213,6 +6233,7 @@ static swig_cast_info _swigc__p_mfem__HypreSmoother[] = {{&_swigt__p_mfem__Hypre
 static swig_cast_info _swigc__p_mfem__HypreTriSolve[] = {{&_swigt__p_mfem__HypreTriSolve, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__HyprePCG, _p_mfem__HyprePCGTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseSymmetricMatrix, _p_mfem__DenseSymmetricMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreDiagScale, _p_mfem__HypreDiagScaleTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreFGMRES, _p_mfem__HypreFGMRESTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreADS, _p_mfem__HypreADSTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreEuclid, _p_mfem__HypreEuclidTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreBoomerAMG, _p_mfem__HypreBoomerAMGTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentAdjointOperator, _p_mfem__TimeDependentAdjointOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ScaledOperator, _p_mfem__ScaledOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__RectangularConstrainedOperator, _p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreILU, _p_mfem__HypreILUTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ElementRestriction, _p_mfem__ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2ElementRestriction, _p_mfem__L2ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__FaceRestriction, _p_mfem__FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__H1FaceRestriction, _p_mfem__H1FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2FaceRestriction, _p_mfem__L2FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__NCL2FaceRestriction, _p_mfem__NCL2FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreGMRES, _p_mfem__HypreGMRESTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreParaSails, _p_mfem__HypreParaSailsTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreParMatrix, _p_mfem__HypreParMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreIdentity, _p_mfem__HypreIdentityTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreSolver, _p_mfem__HypreSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreAMS, _p_mfem__HypreAMSTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreSmoother, _p_mfem__HypreSmootherTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__HypreTriSolve, _p_mfem__HypreTriSolveTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__OperatorHandle[] = {  {&_swigt__p_mfem__OperatorHandle, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__OversetFindPointsGSLIB[] = {  {&_swigt__p_mfem__OversetFindPointsGSLIB, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Refinement[] = {  {&_swigt__p_mfem__Refinement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__HypreGMRES, _p_mfem__HypreGMRESTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreParaSails, _p_mfem__HypreParaSailsTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreFGMRES, _p_mfem__HypreFGMRESTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreTriSolve, _p_mfem__HypreTriSolveTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreSolver, _p_mfem__HypreSolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__Solver, 0, 0, 0},  {&_swigt__p_mfem__HypreBoomerAMG, _p_mfem__HypreBoomerAMGTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreDiagScale, _p_mfem__HypreDiagScaleTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreIdentity, _p_mfem__HypreIdentityTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreAMS, _p_mfem__HypreAMSTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HyprePCG, _p_mfem__HyprePCGTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreEuclid, _p_mfem__HypreEuclidTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreADS, _p_mfem__HypreADSTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreILU, _p_mfem__HypreILUTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__HypreSmoother, _p_mfem__HypreSmootherTo_p_mfem__Solver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HypreParVector[] = {{&_swigt__p_mfem__HypreParVector, 0, 0, 0},{0, 0, 0, 0}};
@@ -4310,6 +6331,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_int,
   _swigc__p_mfem__AbstractSparseMatrix,
   _swigc__p_mfem__ArrayT_int_t,
+  _swigc__p_mfem__ArrayT_unsigned_int_t,
   _swigc__p_mfem__ConstrainedOperator,
   _swigc__p_mfem__ConvectionIntegrator,
   _swigc__p_mfem__CurlGridFunctionCoefficient,
@@ -4319,6 +6341,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__DenseSymmetricMatrix,
   _swigc__p_mfem__ElementRestriction,
   _swigc__p_mfem__FaceRestriction,
+  _swigc__p_mfem__FindPointsGSLIB,
   _swigc__p_mfem__FiniteElementSpace,
   _swigc__p_mfem__GradientGridFunctionCoefficient,
   _swigc__p_mfem__GridFunction,
@@ -4349,11 +6372,13 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__Matrix,
   _swigc__p_mfem__MatrixInverse,
   _swigc__p_mfem__MatrixVectorProductCoefficient,
+  _swigc__p_mfem__Mesh,
   _swigc__p_mfem__NCL2FaceRestriction,
   _swigc__p_mfem__NodeExtrudeCoefficient,
   _swigc__p_mfem__NormalizedVectorCoefficient,
   _swigc__p_mfem__Operator,
   _swigc__p_mfem__OperatorHandle,
+  _swigc__p_mfem__OversetFindPointsGSLIB,
   _swigc__p_mfem__ProductOperator,
   _swigc__p_mfem__PyOperatorBase,
   _swigc__p_mfem__PyTimeDependentOperatorBase,
@@ -5175,14 +7200,14 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40400)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.4.0"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40400)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40401)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.4.1"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40401)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40400)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40400)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40400)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40401)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40401)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40401)%100))));
   
   if (import_mpi4py() < 0)
 #if PY_MAJOR_VERSION >= 3
@@ -5194,6 +7219,9 @@ SWIG_init(void) {
   
   import_array();
   
+  SWIG_Python_SetConstant(d, "FindPointsGSLIB_NONE",SWIG_From_int(static_cast< int >(mfem::FindPointsGSLIB::NONE)));
+  SWIG_Python_SetConstant(d, "FindPointsGSLIB_ARITHMETIC",SWIG_From_int(static_cast< int >(mfem::FindPointsGSLIB::ARITHMETIC)));
+  SWIG_Python_SetConstant(d, "FindPointsGSLIB_HARMONIC",SWIG_From_int(static_cast< int >(mfem::FindPointsGSLIB::HARMONIC)));
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else

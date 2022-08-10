@@ -186,7 +186,7 @@ class CoarseFineTransformations(object):
     IsInitialized = _swig_new_instance_method(_ncmesh.CoarseFineTransformations_IsInitialized)
 
     def MemoryUsage(self):
-        r"""MemoryUsage(CoarseFineTransformations self) -> long"""
+        r"""MemoryUsage(CoarseFineTransformations self) -> std::size_t"""
         return _ncmesh.CoarseFineTransformations_MemoryUsage(self)
     MemoryUsage = _swig_new_instance_method(_ncmesh.CoarseFineTransformations_MemoryUsage)
 
@@ -406,7 +406,7 @@ class NCMesh(object):
     Trim = _swig_new_instance_method(_ncmesh.NCMesh_Trim)
 
     def MemoryUsage(self):
-        r"""MemoryUsage(NCMesh self) -> long"""
+        r"""MemoryUsage(NCMesh self) -> std::size_t"""
         return _ncmesh.NCMesh_MemoryUsage(self)
     MemoryUsage = _swig_new_instance_method(_ncmesh.NCMesh_MemoryUsage)
 
@@ -567,7 +567,7 @@ class RefinementArray(object):
     end = _swig_new_instance_method(_ncmesh.RefinementArray_end)
 
     def MemoryUsage(self):
-        r"""MemoryUsage(RefinementArray self) -> long"""
+        r"""MemoryUsage(RefinementArray self) -> std::size_t"""
         return _ncmesh.RefinementArray_MemoryUsage(self)
     MemoryUsage = _swig_new_instance_method(_ncmesh.RefinementArray_MemoryUsage)
 

@@ -3784,6 +3784,45 @@ SWIGINTERNINLINE PyObject*
 
   #define SWIG_From_long   PyInt_FromLong 
 
+
+SWIGINTERNINLINE PyObject* 
+SWIG_From_unsigned_SS_long  (unsigned long value)
+{
+  return (value > LONG_MAX) ?
+    PyLong_FromUnsignedLong(value) : PyInt_FromLong(static_cast< long >(value));
+}
+
+
+#if defined(LLONG_MAX) && !defined(SWIG_LONG_LONG_AVAILABLE)
+#  define SWIG_LONG_LONG_AVAILABLE
+#endif
+
+
+#ifdef SWIG_LONG_LONG_AVAILABLE
+SWIGINTERNINLINE PyObject* 
+SWIG_From_unsigned_SS_long_SS_long  (unsigned long long value)
+{
+  return (value > LONG_MAX) ?
+    PyLong_FromUnsignedLongLong(value) : PyInt_FromLong(static_cast< long >(value));
+}
+#endif
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_size_t  (size_t value)
+{    
+#ifdef SWIG_LONG_LONG_AVAILABLE
+  if (sizeof(size_t) <= sizeof(unsigned long)) {
+#endif
+    return SWIG_From_unsigned_SS_long  (static_cast< unsigned long >(value));
+#ifdef SWIG_LONG_LONG_AVAILABLE
+  } else {
+    /* assume sizeof(size_t) <= sizeof(unsigned long long) */
+    return SWIG_From_unsigned_SS_long_SS_long  (static_cast< unsigned long long >(value));
+  }
+#endif
+}
+
 SWIGINTERN mfem::Array< mfem::Refinement > *new_mfem_Array_Sl_mfem_Refinement_Sg___SWIG_6(void *List_or_Tuple,mfem::Refinement *_unused){
     /*
     This method is wrapped to recived tuple or list to create
@@ -4800,7 +4839,7 @@ SWIGINTERN PyObject *_wrap_CoarseFineTransformations_MemoryUsage(PyObject *SWIGU
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  long result;
+  std::size_t result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -4811,7 +4850,7 @@ SWIGINTERN PyObject *_wrap_CoarseFineTransformations_MemoryUsage(PyObject *SWIGU
   arg1 = reinterpret_cast< mfem::CoarseFineTransformations * >(argp1);
   {
     try {
-      result = (long)((mfem::CoarseFineTransformations const *)arg1)->MemoryUsage();
+      result = ((mfem::CoarseFineTransformations const *)arg1)->MemoryUsage();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -4828,7 +4867,7 @@ SWIGINTERN PyObject *_wrap_CoarseFineTransformations_MemoryUsage(PyObject *SWIGU
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
   }
-  resultobj = SWIG_From_long(static_cast< long >(result));
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
   return NULL;
@@ -7349,7 +7388,7 @@ SWIGINTERN PyObject *_wrap_NCMesh_MemoryUsage(PyObject *SWIGUNUSEDPARM(self), Py
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  long result;
+  std::size_t result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -7360,7 +7399,7 @@ SWIGINTERN PyObject *_wrap_NCMesh_MemoryUsage(PyObject *SWIGUNUSEDPARM(self), Py
   arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
   {
     try {
-      result = (long)((mfem::NCMesh const *)arg1)->MemoryUsage();
+      result = ((mfem::NCMesh const *)arg1)->MemoryUsage();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -7377,7 +7416,7 @@ SWIGINTERN PyObject *_wrap_NCMesh_MemoryUsage(PyObject *SWIGUNUSEDPARM(self), Py
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
   }
-  resultobj = SWIG_From_long(static_cast< long >(result));
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
   return NULL;
@@ -9580,7 +9619,7 @@ SWIGINTERN PyObject *_wrap_RefinementArray_MemoryUsage(PyObject *SWIGUNUSEDPARM(
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  long result;
+  std::size_t result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -9591,7 +9630,7 @@ SWIGINTERN PyObject *_wrap_RefinementArray_MemoryUsage(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
   {
     try {
-      result = (long)((mfem::Array< mfem::Refinement > const *)arg1)->MemoryUsage();
+      result = ((mfem::Array< mfem::Refinement > const *)arg1)->MemoryUsage();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -9608,7 +9647,7 @@ SWIGINTERN PyObject *_wrap_RefinementArray_MemoryUsage(PyObject *SWIGUNUSEDPARM(
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
   }
-  resultobj = SWIG_From_long(static_cast< long >(result));
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
   return NULL;
@@ -10464,7 +10503,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "CoarseFineTransformations_MakeCoarseToFineTable", (PyCFunction)(void(*)(void))_wrap_CoarseFineTransformations_MakeCoarseToFineTable, METH_VARARGS|METH_KEYWORDS, "CoarseFineTransformations_MakeCoarseToFineTable(CoarseFineTransformations self, Table coarse_to_fine, bool want_ghosts=False)"},
 	 { "CoarseFineTransformations_Clear", _wrap_CoarseFineTransformations_Clear, METH_O, "CoarseFineTransformations_Clear(CoarseFineTransformations self)"},
 	 { "CoarseFineTransformations_IsInitialized", _wrap_CoarseFineTransformations_IsInitialized, METH_O, "CoarseFineTransformations_IsInitialized(CoarseFineTransformations self) -> bool"},
-	 { "CoarseFineTransformations_MemoryUsage", _wrap_CoarseFineTransformations_MemoryUsage, METH_O, "CoarseFineTransformations_MemoryUsage(CoarseFineTransformations self) -> long"},
+	 { "CoarseFineTransformations_MemoryUsage", _wrap_CoarseFineTransformations_MemoryUsage, METH_O, "CoarseFineTransformations_MemoryUsage(CoarseFineTransformations self) -> std::size_t"},
 	 { "CoarseFineTransformations_GetCoarseToFineMap", (PyCFunction)(void(*)(void))_wrap_CoarseFineTransformations_GetCoarseToFineMap, METH_VARARGS|METH_KEYWORDS, "CoarseFineTransformations_GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine)"},
 	 { "new_CoarseFineTransformations", _wrap_new_CoarseFineTransformations, METH_NOARGS, "new_CoarseFineTransformations() -> CoarseFineTransformations"},
 	 { "delete_CoarseFineTransformations", _wrap_delete_CoarseFineTransformations, METH_O, "delete_CoarseFineTransformations(CoarseFineTransformations self)"},
@@ -10513,7 +10552,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "NCMesh_IsLegacyLoaded", _wrap_NCMesh_IsLegacyLoaded, METH_O, "NCMesh_IsLegacyLoaded(NCMesh self) -> bool"},
 	 { "NCMesh_LegacyToNewVertexOrdering", (PyCFunction)(void(*)(void))_wrap_NCMesh_LegacyToNewVertexOrdering, METH_VARARGS|METH_KEYWORDS, "NCMesh_LegacyToNewVertexOrdering(NCMesh self, intArray order)"},
 	 { "NCMesh_Trim", _wrap_NCMesh_Trim, METH_O, "NCMesh_Trim(NCMesh self)"},
-	 { "NCMesh_MemoryUsage", _wrap_NCMesh_MemoryUsage, METH_O, "NCMesh_MemoryUsage(NCMesh self) -> long"},
+	 { "NCMesh_MemoryUsage", _wrap_NCMesh_MemoryUsage, METH_O, "NCMesh_MemoryUsage(NCMesh self) -> std::size_t"},
 	 { "NCMesh_PrintMemoryDetail", _wrap_NCMesh_PrintMemoryDetail, METH_O, "NCMesh_PrintMemoryDetail(NCMesh self) -> int"},
 	 { "NCMesh_swigregister", NCMesh_swigregister, METH_O, NULL},
 	 { "NCMesh_swiginit", NCMesh_swiginit, METH_VARARGS, NULL},
@@ -10565,7 +10604,7 @@ static PyMethodDef SwigMethods[] = {
 		"RefinementArray_end(RefinementArray self) -> Refinement\n"
 		"RefinementArray_end(RefinementArray self) -> Refinement\n"
 		""},
-	 { "RefinementArray_MemoryUsage", _wrap_RefinementArray_MemoryUsage, METH_O, "RefinementArray_MemoryUsage(RefinementArray self) -> long"},
+	 { "RefinementArray_MemoryUsage", _wrap_RefinementArray_MemoryUsage, METH_O, "RefinementArray_MemoryUsage(RefinementArray self) -> std::size_t"},
 	 { "RefinementArray_Read", (PyCFunction)(void(*)(void))_wrap_RefinementArray_Read, METH_VARARGS|METH_KEYWORDS, "RefinementArray_Read(RefinementArray self, bool on_dev=True) -> Refinement"},
 	 { "RefinementArray_HostRead", _wrap_RefinementArray_HostRead, METH_O, "RefinementArray_HostRead(RefinementArray self) -> Refinement"},
 	 { "RefinementArray_Write", (PyCFunction)(void(*)(void))_wrap_RefinementArray_Write, METH_VARARGS|METH_KEYWORDS, "RefinementArray_Write(RefinementArray self, bool on_dev=True) -> Refinement"},
@@ -10629,7 +10668,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "CoarseFineTransformations_MakeCoarseToFineTable", (PyCFunction)(void(*)(void))_wrap_CoarseFineTransformations_MakeCoarseToFineTable, METH_VARARGS|METH_KEYWORDS, "MakeCoarseToFineTable(CoarseFineTransformations self, Table coarse_to_fine, bool want_ghosts=False)"},
 	 { "CoarseFineTransformations_Clear", _wrap_CoarseFineTransformations_Clear, METH_O, "Clear(CoarseFineTransformations self)"},
 	 { "CoarseFineTransformations_IsInitialized", _wrap_CoarseFineTransformations_IsInitialized, METH_O, "IsInitialized(CoarseFineTransformations self) -> bool"},
-	 { "CoarseFineTransformations_MemoryUsage", _wrap_CoarseFineTransformations_MemoryUsage, METH_O, "MemoryUsage(CoarseFineTransformations self) -> long"},
+	 { "CoarseFineTransformations_MemoryUsage", _wrap_CoarseFineTransformations_MemoryUsage, METH_O, "MemoryUsage(CoarseFineTransformations self) -> std::size_t"},
 	 { "CoarseFineTransformations_GetCoarseToFineMap", (PyCFunction)(void(*)(void))_wrap_CoarseFineTransformations_GetCoarseToFineMap, METH_VARARGS|METH_KEYWORDS, "GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine)"},
 	 { "new_CoarseFineTransformations", _wrap_new_CoarseFineTransformations, METH_NOARGS, "new_CoarseFineTransformations() -> CoarseFineTransformations"},
 	 { "delete_CoarseFineTransformations", _wrap_delete_CoarseFineTransformations, METH_O, "delete_CoarseFineTransformations(CoarseFineTransformations self)"},
@@ -10678,7 +10717,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "NCMesh_IsLegacyLoaded", _wrap_NCMesh_IsLegacyLoaded, METH_O, "IsLegacyLoaded(NCMesh self) -> bool"},
 	 { "NCMesh_LegacyToNewVertexOrdering", (PyCFunction)(void(*)(void))_wrap_NCMesh_LegacyToNewVertexOrdering, METH_VARARGS|METH_KEYWORDS, "LegacyToNewVertexOrdering(NCMesh self, intArray order)"},
 	 { "NCMesh_Trim", _wrap_NCMesh_Trim, METH_O, "Trim(NCMesh self)"},
-	 { "NCMesh_MemoryUsage", _wrap_NCMesh_MemoryUsage, METH_O, "MemoryUsage(NCMesh self) -> long"},
+	 { "NCMesh_MemoryUsage", _wrap_NCMesh_MemoryUsage, METH_O, "MemoryUsage(NCMesh self) -> std::size_t"},
 	 { "NCMesh_PrintMemoryDetail", _wrap_NCMesh_PrintMemoryDetail, METH_O, "PrintMemoryDetail(NCMesh self) -> int"},
 	 { "NCMesh_swigregister", NCMesh_swigregister, METH_O, NULL},
 	 { "NCMesh_swiginit", NCMesh_swiginit, METH_VARARGS, NULL},
@@ -10730,7 +10769,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"end(RefinementArray self) -> Refinement\n"
 		"end(RefinementArray self) -> Refinement\n"
 		""},
-	 { "RefinementArray_MemoryUsage", _wrap_RefinementArray_MemoryUsage, METH_O, "MemoryUsage(RefinementArray self) -> long"},
+	 { "RefinementArray_MemoryUsage", _wrap_RefinementArray_MemoryUsage, METH_O, "MemoryUsage(RefinementArray self) -> std::size_t"},
 	 { "RefinementArray_Read", (PyCFunction)(void(*)(void))_wrap_RefinementArray_Read, METH_VARARGS|METH_KEYWORDS, "Read(RefinementArray self, bool on_dev=True) -> Refinement"},
 	 { "RefinementArray_HostRead", _wrap_RefinementArray_HostRead, METH_O, "HostRead(RefinementArray self) -> Refinement"},
 	 { "RefinementArray_Write", (PyCFunction)(void(*)(void))_wrap_RefinementArray_Write, METH_VARARGS|METH_KEYWORDS, "Write(RefinementArray self, bool on_dev=True) -> Refinement"},

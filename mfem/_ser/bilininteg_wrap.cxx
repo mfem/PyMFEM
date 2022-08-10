@@ -3366,89 +3366,86 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__SparseMatrix swig_types[266]
 #define SWIGTYPE_p_mfem__SumCoefficient swig_types[267]
 #define SWIGTYPE_p_mfem__SumIntegrator swig_types[268]
-#define SWIGTYPE_p_mfem__SymmetricMatrixCoefficient swig_types[269]
-#define SWIGTYPE_p_mfem__SymmetricMatrixConstantCoefficient swig_types[270]
-#define SWIGTYPE_p_mfem__SymmetricMatrixFunctionCoefficient swig_types[271]
-#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[272]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[273]
-#define SWIGTYPE_p_mfem__TraceJumpIntegrator swig_types[274]
-#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[275]
-#define SWIGTYPE_p_mfem__TransposeIntegrator swig_types[276]
-#define SWIGTYPE_p_mfem__TransposeMatrixCoefficient swig_types[277]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[278]
-#define SWIGTYPE_p_mfem__TriLinear3DFiniteElement swig_types[279]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[280]
-#define SWIGTYPE_p_mfem__Vector swig_types[281]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[282]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[283]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[284]
-#define SWIGTYPE_p_mfem__VectorConvectionNLFIntegrator swig_types[285]
-#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[286]
-#define SWIGTYPE_p_mfem__VectorCrossProductInterpolator swig_types[287]
-#define SWIGTYPE_p_mfem__VectorCurlCurlIntegrator swig_types[288]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[289]
-#define SWIGTYPE_p_mfem__VectorDiffusionIntegrator swig_types[290]
-#define SWIGTYPE_p_mfem__VectorDivergenceIntegrator swig_types[291]
-#define SWIGTYPE_p_mfem__VectorFECurlIntegrator swig_types[292]
-#define SWIGTYPE_p_mfem__VectorFEDivergenceIntegrator swig_types[293]
-#define SWIGTYPE_p_mfem__VectorFEMassIntegrator swig_types[294]
-#define SWIGTYPE_p_mfem__VectorFEWeakDivergenceIntegrator swig_types[295]
-#define SWIGTYPE_p_mfem__VectorFiniteElement swig_types[296]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[297]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[298]
-#define SWIGTYPE_p_mfem__VectorInnerProductInterpolator swig_types[299]
-#define SWIGTYPE_p_mfem__VectorMassIntegrator swig_types[300]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[301]
-#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[302]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[303]
-#define SWIGTYPE_p_mfem__VectorRotProductCoefficient swig_types[304]
-#define SWIGTYPE_p_mfem__VectorScalarProductInterpolator swig_types[305]
-#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[306]
-#define SWIGTYPE_p_mfem__VectorTensorFiniteElement swig_types[307]
-#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[308]
-#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[309]
-#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[310]
-#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[311]
-#define SWIGTYPE_p_p_mfem__DenseSymmetricMatrix swig_types[312]
-#define SWIGTYPE_p_p_mfem__ElementRestriction swig_types[313]
-#define SWIGTYPE_p_p_mfem__FaceRestriction swig_types[314]
-#define SWIGTYPE_p_p_mfem__FiniteElementSpace swig_types[315]
-#define SWIGTYPE_p_p_mfem__GridFunction swig_types[316]
-#define SWIGTYPE_p_p_mfem__H1FaceRestriction swig_types[317]
-#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[318]
-#define SWIGTYPE_p_p_mfem__IntegrationRule swig_types[319]
-#define SWIGTYPE_p_p_mfem__L2ElementRestriction swig_types[320]
-#define SWIGTYPE_p_p_mfem__L2FaceRestriction swig_types[321]
-#define SWIGTYPE_p_p_mfem__LinearForm swig_types[322]
-#define SWIGTYPE_p_p_mfem__Matrix swig_types[323]
-#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[324]
-#define SWIGTYPE_p_p_mfem__NCL2FaceRestriction swig_types[325]
-#define SWIGTYPE_p_p_mfem__Operator swig_types[326]
-#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[327]
-#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[328]
-#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[329]
-#define SWIGTYPE_p_p_mfem__QuadratureFunction swig_types[330]
-#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[331]
-#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[332]
-#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[333]
-#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[334]
-#define SWIGTYPE_p_p_mfem__Solver swig_types[335]
-#define SWIGTYPE_p_p_mfem__SparseMatrix swig_types[336]
-#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[337]
-#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[338]
-#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[339]
-#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[340]
-#define SWIGTYPE_p_p_mfem__Vector swig_types[341]
-#define SWIGTYPE_p_pri_t swig_types[342]
-#define SWIGTYPE_p_pyr_t swig_types[343]
-#define SWIGTYPE_p_quad_t swig_types[344]
-#define SWIGTYPE_p_seg_t swig_types[345]
-#define SWIGTYPE_p_size_type swig_types[346]
-#define SWIGTYPE_p_tet_t swig_types[347]
-#define SWIGTYPE_p_tri_t swig_types[348]
-#define SWIGTYPE_p_value_type swig_types[349]
-static swig_type_info *swig_types[351];
-static swig_module_info swig_module = {swig_types, 350, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[269]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[270]
+#define SWIGTYPE_p_mfem__TraceJumpIntegrator swig_types[271]
+#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[272]
+#define SWIGTYPE_p_mfem__TransposeIntegrator swig_types[273]
+#define SWIGTYPE_p_mfem__TransposeMatrixCoefficient swig_types[274]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[275]
+#define SWIGTYPE_p_mfem__TriLinear3DFiniteElement swig_types[276]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[277]
+#define SWIGTYPE_p_mfem__Vector swig_types[278]
+#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[279]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[280]
+#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[281]
+#define SWIGTYPE_p_mfem__VectorConvectionNLFIntegrator swig_types[282]
+#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[283]
+#define SWIGTYPE_p_mfem__VectorCrossProductInterpolator swig_types[284]
+#define SWIGTYPE_p_mfem__VectorCurlCurlIntegrator swig_types[285]
+#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[286]
+#define SWIGTYPE_p_mfem__VectorDiffusionIntegrator swig_types[287]
+#define SWIGTYPE_p_mfem__VectorDivergenceIntegrator swig_types[288]
+#define SWIGTYPE_p_mfem__VectorFECurlIntegrator swig_types[289]
+#define SWIGTYPE_p_mfem__VectorFEDivergenceIntegrator swig_types[290]
+#define SWIGTYPE_p_mfem__VectorFEMassIntegrator swig_types[291]
+#define SWIGTYPE_p_mfem__VectorFEWeakDivergenceIntegrator swig_types[292]
+#define SWIGTYPE_p_mfem__VectorFiniteElement swig_types[293]
+#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[294]
+#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[295]
+#define SWIGTYPE_p_mfem__VectorInnerProductInterpolator swig_types[296]
+#define SWIGTYPE_p_mfem__VectorMassIntegrator swig_types[297]
+#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[298]
+#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[299]
+#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[300]
+#define SWIGTYPE_p_mfem__VectorRotProductCoefficient swig_types[301]
+#define SWIGTYPE_p_mfem__VectorScalarProductInterpolator swig_types[302]
+#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[303]
+#define SWIGTYPE_p_mfem__VectorTensorFiniteElement swig_types[304]
+#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[305]
+#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[306]
+#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[307]
+#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[308]
+#define SWIGTYPE_p_p_mfem__DenseSymmetricMatrix swig_types[309]
+#define SWIGTYPE_p_p_mfem__ElementRestriction swig_types[310]
+#define SWIGTYPE_p_p_mfem__FaceRestriction swig_types[311]
+#define SWIGTYPE_p_p_mfem__FiniteElementSpace swig_types[312]
+#define SWIGTYPE_p_p_mfem__GridFunction swig_types[313]
+#define SWIGTYPE_p_p_mfem__H1FaceRestriction swig_types[314]
+#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[315]
+#define SWIGTYPE_p_p_mfem__IntegrationRule swig_types[316]
+#define SWIGTYPE_p_p_mfem__L2ElementRestriction swig_types[317]
+#define SWIGTYPE_p_p_mfem__L2FaceRestriction swig_types[318]
+#define SWIGTYPE_p_p_mfem__LinearForm swig_types[319]
+#define SWIGTYPE_p_p_mfem__Matrix swig_types[320]
+#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[321]
+#define SWIGTYPE_p_p_mfem__NCL2FaceRestriction swig_types[322]
+#define SWIGTYPE_p_p_mfem__Operator swig_types[323]
+#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[324]
+#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[325]
+#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[326]
+#define SWIGTYPE_p_p_mfem__QuadratureFunction swig_types[327]
+#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[328]
+#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[329]
+#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[330]
+#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[331]
+#define SWIGTYPE_p_p_mfem__Solver swig_types[332]
+#define SWIGTYPE_p_p_mfem__SparseMatrix swig_types[333]
+#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[334]
+#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[335]
+#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[336]
+#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[337]
+#define SWIGTYPE_p_p_mfem__Vector swig_types[338]
+#define SWIGTYPE_p_pri_t swig_types[339]
+#define SWIGTYPE_p_pyr_t swig_types[340]
+#define SWIGTYPE_p_quad_t swig_types[341]
+#define SWIGTYPE_p_seg_t swig_types[342]
+#define SWIGTYPE_p_size_type swig_types[343]
+#define SWIGTYPE_p_tet_t swig_types[344]
+#define SWIGTYPE_p_tri_t swig_types[345]
+#define SWIGTYPE_p_value_type swig_types[346]
+static swig_type_info *swig_types[348];
+static swig_module_info swig_module = {swig_types, 347, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4695,7 +4692,7 @@ void SwigDirector_BilinearFormIntegrator::AssembleFaceMatrix(mfem::FiniteElement
 }
 
 
-void SwigDirector_BilinearFormIntegrator::ComputeElementFlux(mfem::FiniteElement const &el, mfem::ElementTransformation &Trans, mfem::Vector &u, mfem::FiniteElement const &fluxelem, mfem::Vector &flux, bool with_coef) {
+void SwigDirector_BilinearFormIntegrator::ComputeElementFlux(mfem::FiniteElement const &el, mfem::ElementTransformation &Trans, mfem::Vector &u, mfem::FiniteElement const &fluxelem, mfem::Vector &flux, bool with_coef, mfem::IntegrationRule const *ir) {
   swig::SwigVar_PyObject obj0;
   obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&el), SWIGTYPE_p_mfem__FiniteElement,  0 );
   swig::SwigVar_PyObject obj1;
@@ -4708,6 +4705,8 @@ void SwigDirector_BilinearFormIntegrator::ComputeElementFlux(mfem::FiniteElement
   obj4 = SWIG_NewPointerObj(SWIG_as_voidptr(&flux), SWIGTYPE_p_mfem__Vector,  0 );
   swig::SwigVar_PyObject obj5;
   obj5 = SWIG_From_bool(static_cast< bool >(with_coef));
+  swig::SwigVar_PyObject obj6;
+  obj6 = SWIG_NewPointerObj(SWIG_as_voidptr(ir), SWIGTYPE_p_mfem__IntegrationRule,  0 );
   if (!swig_get_self()) {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearFormIntegrator.__init__.");
   }
@@ -4715,10 +4714,10 @@ void SwigDirector_BilinearFormIntegrator::ComputeElementFlux(mfem::FiniteElement
   const size_t swig_method_index = 30;
   const char *const swig_method_name = "ComputeElementFlux";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
-  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3,(PyObject *)obj4,(PyObject *)obj5, NULL);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3,(PyObject *)obj4,(PyObject *)obj5,(PyObject *)obj6, NULL);
 #else
   swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("ComputeElementFlux");
-  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3,(PyObject *)obj4,(PyObject *)obj5, NULL);
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3,(PyObject *)obj4,(PyObject *)obj5,(PyObject *)obj6, NULL);
 #endif
   if (!result) {
     PyObject *error = PyErr_Occurred();
@@ -7139,6 +7138,7 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_ComputeElementFlux(PyObject *S
   mfem::FiniteElement *arg5 = 0 ;
   mfem::Vector *arg6 = 0 ;
   bool arg7 = (bool) true ;
+  mfem::IntegrationRule *arg8 = (mfem::IntegrationRule *) NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -7153,6 +7153,8 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_ComputeElementFlux(PyObject *S
   int res6 = 0 ;
   bool val7 ;
   int ecode7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -7160,13 +7162,14 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_ComputeElementFlux(PyObject *S
   PyObject * obj4 = 0 ;
   PyObject * obj5 = 0 ;
   PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"el",  (char *)"Trans",  (char *)"u",  (char *)"fluxelem",  (char *)"flux",  (char *)"with_coef",  NULL 
+    (char *)"self",  (char *)"el",  (char *)"Trans",  (char *)"u",  (char *)"fluxelem",  (char *)"flux",  (char *)"with_coef",  (char *)"ir",  NULL 
   };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOO|O:BilinearFormIntegrator_ComputeElementFlux", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOO|OO:BilinearFormIntegrator_ComputeElementFlux", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearFormIntegrator_ComputeElementFlux" "', argument " "1"" of type '" "mfem::BilinearFormIntegrator *""'"); 
@@ -7219,15 +7222,22 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_ComputeElementFlux(PyObject *S
     } 
     arg7 = static_cast< bool >(val7);
   }
+  if (obj7) {
+    res8 = SWIG_ConvertPtr(obj7, &argp8,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
+    if (!SWIG_IsOK(res8)) {
+      SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "BilinearFormIntegrator_ComputeElementFlux" "', argument " "8"" of type '" "mfem::IntegrationRule const *""'"); 
+    }
+    arg8 = reinterpret_cast< mfem::IntegrationRule * >(argp8);
+  }
   director = SWIG_DIRECTOR_CAST(arg1);
   upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
         if (upcall) {
-          (arg1)->mfem::BilinearFormIntegrator::ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6,arg7);
+          (arg1)->mfem::BilinearFormIntegrator::ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6,arg7,(mfem::IntegrationRule const *)arg8);
         } else {
-          (arg1)->ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6,arg7);
+          (arg1)->ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6,arg7,(mfem::IntegrationRule const *)arg8);
         }
       }
 #ifdef  MFEM_USE_EXCEPTIONS
@@ -23480,58 +23490,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_DiffusionIntegrator__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::SymmetricMatrixCoefficient *arg1 = 0 ;
-  mfem::IntegrationRule *arg2 = (mfem::IntegrationRule *) nullptr ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  mfem::DiffusionIntegrator *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__SymmetricMatrixCoefficient,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DiffusionIntegrator" "', argument " "1"" of type '" "mfem::SymmetricMatrixCoefficient &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DiffusionIntegrator" "', argument " "1"" of type '" "mfem::SymmetricMatrixCoefficient &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::SymmetricMatrixCoefficient * >(argp1);
-  if (swig_obj[1]) {
-    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_DiffusionIntegrator" "', argument " "2"" of type '" "mfem::IntegrationRule const *""'"); 
-    }
-    arg2 = reinterpret_cast< mfem::IntegrationRule * >(argp2);
-  }
-  {
-    try {
-      result = (mfem::DiffusionIntegrator *)new mfem::DiffusionIntegrator(*arg1,(mfem::IntegrationRule const *)arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DiffusionIntegrator, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_new_DiffusionIntegrator(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[3] = {
@@ -23603,23 +23561,6 @@ SWIGINTERN PyObject *_wrap_new_DiffusionIntegrator(PyObject *self, PyObject *arg
       }
     }
   }
-  if ((argc >= 1) && (argc <= 2)) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SymmetricMatrixCoefficient, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      if (argc <= 1) {
-        return _wrap_new_DiffusionIntegrator__SWIG_4(self, argc, argv);
-      }
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__IntegrationRule, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_new_DiffusionIntegrator__SWIG_4(self, argc, argv);
-      }
-    }
-  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_DiffusionIntegrator'.\n"
@@ -23627,8 +23568,7 @@ fail:
     "    mfem::DiffusionIntegrator::DiffusionIntegrator(mfem::IntegrationRule const *)\n"
     "    mfem::DiffusionIntegrator::DiffusionIntegrator(mfem::Coefficient &,mfem::IntegrationRule const *)\n"
     "    mfem::DiffusionIntegrator::DiffusionIntegrator(mfem::VectorCoefficient &,mfem::IntegrationRule const *)\n"
-    "    mfem::DiffusionIntegrator::DiffusionIntegrator(mfem::MatrixCoefficient &,mfem::IntegrationRule const *)\n"
-    "    mfem::DiffusionIntegrator::DiffusionIntegrator(mfem::SymmetricMatrixCoefficient &,mfem::IntegrationRule const *)\n");
+    "    mfem::DiffusionIntegrator::DiffusionIntegrator(mfem::MatrixCoefficient &,mfem::IntegrationRule const *)\n");
   return 0;
 }
 
@@ -23900,6 +23840,7 @@ SWIGINTERN PyObject *_wrap_DiffusionIntegrator_ComputeElementFlux(PyObject *SWIG
   mfem::FiniteElement *arg5 = 0 ;
   mfem::Vector *arg6 = 0 ;
   bool arg7 = (bool) true ;
+  mfem::IntegrationRule *arg8 = (mfem::IntegrationRule *) NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -23914,6 +23855,8 @@ SWIGINTERN PyObject *_wrap_DiffusionIntegrator_ComputeElementFlux(PyObject *SWIG
   int res6 = 0 ;
   bool val7 ;
   int ecode7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -23921,11 +23864,12 @@ SWIGINTERN PyObject *_wrap_DiffusionIntegrator_ComputeElementFlux(PyObject *SWIG
   PyObject * obj4 = 0 ;
   PyObject * obj5 = 0 ;
   PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"el",  (char *)"Trans",  (char *)"u",  (char *)"fluxelem",  (char *)"flux",  (char *)"with_coef",  NULL 
+    (char *)"self",  (char *)"el",  (char *)"Trans",  (char *)"u",  (char *)"fluxelem",  (char *)"flux",  (char *)"with_coef",  (char *)"ir",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOO|O:DiffusionIntegrator_ComputeElementFlux", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOO|OO:DiffusionIntegrator_ComputeElementFlux", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DiffusionIntegrator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DiffusionIntegrator_ComputeElementFlux" "', argument " "1"" of type '" "mfem::DiffusionIntegrator *""'"); 
@@ -23978,9 +23922,16 @@ SWIGINTERN PyObject *_wrap_DiffusionIntegrator_ComputeElementFlux(PyObject *SWIG
     } 
     arg7 = static_cast< bool >(val7);
   }
+  if (obj7) {
+    res8 = SWIG_ConvertPtr(obj7, &argp8,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
+    if (!SWIG_IsOK(res8)) {
+      SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "DiffusionIntegrator_ComputeElementFlux" "', argument " "8"" of type '" "mfem::IntegrationRule const *""'"); 
+    }
+    arg8 = reinterpret_cast< mfem::IntegrationRule * >(argp8);
+  }
   {
     try {
-      (arg1)->ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6,arg7);
+      (arg1)->ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6,arg7,(mfem::IntegrationRule const *)arg8);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -24842,6 +24793,47 @@ SWIGINTERN PyObject *_wrap_DiffusionIntegrator_SupportsCeed(PyObject *SWIGUNUSED
     }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DiffusionIntegrator_GetCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DiffusionIntegrator *arg1 = (mfem::DiffusionIntegrator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Coefficient *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DiffusionIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DiffusionIntegrator_GetCoefficient" "', argument " "1"" of type '" "mfem::DiffusionIntegrator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DiffusionIntegrator * >(argp1);
+  {
+    try {
+      result = (mfem::Coefficient *)((mfem::DiffusionIntegrator const *)arg1)->GetCoefficient();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -25967,6 +25959,47 @@ SWIGINTERN PyObject *_wrap_MassIntegrator_SupportsCeed(PyObject *SWIGUNUSEDPARM(
     }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MassIntegrator_GetCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::MassIntegrator *arg1 = (mfem::MassIntegrator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Coefficient *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MassIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MassIntegrator_GetCoefficient" "', argument " "1"" of type '" "mfem::MassIntegrator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::MassIntegrator * >(argp1);
+  {
+    try {
+      result = (mfem::Coefficient *)((mfem::MassIntegrator const *)arg1)->GetCoefficient();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -30518,58 +30551,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_CurlCurlIntegrator__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::SymmetricMatrixCoefficient *arg1 = 0 ;
-  mfem::IntegrationRule *arg2 = (mfem::IntegrationRule *) NULL ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  mfem::CurlCurlIntegrator *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__SymmetricMatrixCoefficient,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_CurlCurlIntegrator" "', argument " "1"" of type '" "mfem::SymmetricMatrixCoefficient &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_CurlCurlIntegrator" "', argument " "1"" of type '" "mfem::SymmetricMatrixCoefficient &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::SymmetricMatrixCoefficient * >(argp1);
-  if (swig_obj[1]) {
-    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_CurlCurlIntegrator" "', argument " "2"" of type '" "mfem::IntegrationRule const *""'"); 
-    }
-    arg2 = reinterpret_cast< mfem::IntegrationRule * >(argp2);
-  }
-  {
-    try {
-      result = (mfem::CurlCurlIntegrator *)new mfem::CurlCurlIntegrator(*arg1,(mfem::IntegrationRule const *)arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__CurlCurlIntegrator, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_new_CurlCurlIntegrator(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[3] = {
@@ -30632,23 +30613,6 @@ SWIGINTERN PyObject *_wrap_new_CurlCurlIntegrator(PyObject *self, PyObject *args
       }
     }
   }
-  if ((argc >= 1) && (argc <= 2)) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SymmetricMatrixCoefficient, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      if (argc <= 1) {
-        return _wrap_new_CurlCurlIntegrator__SWIG_4(self, argc, argv);
-      }
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__IntegrationRule, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_new_CurlCurlIntegrator__SWIG_4(self, argc, argv);
-      }
-    }
-  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_CurlCurlIntegrator'.\n"
@@ -30656,8 +30620,7 @@ fail:
     "    mfem::CurlCurlIntegrator::CurlCurlIntegrator()\n"
     "    mfem::CurlCurlIntegrator::CurlCurlIntegrator(mfem::Coefficient &,mfem::IntegrationRule const *)\n"
     "    mfem::CurlCurlIntegrator::CurlCurlIntegrator(mfem::DiagonalMatrixCoefficient &,mfem::IntegrationRule const *)\n"
-    "    mfem::CurlCurlIntegrator::CurlCurlIntegrator(mfem::MatrixCoefficient &,mfem::IntegrationRule const *)\n"
-    "    mfem::CurlCurlIntegrator::CurlCurlIntegrator(mfem::SymmetricMatrixCoefficient &,mfem::IntegrationRule const *)\n");
+    "    mfem::CurlCurlIntegrator::CurlCurlIntegrator(mfem::MatrixCoefficient &,mfem::IntegrationRule const *)\n");
   return 0;
 }
 
@@ -30749,6 +30712,7 @@ SWIGINTERN PyObject *_wrap_CurlCurlIntegrator_ComputeElementFlux(PyObject *SWIGU
   mfem::FiniteElement *arg5 = 0 ;
   mfem::Vector *arg6 = 0 ;
   bool arg7 ;
+  mfem::IntegrationRule *arg8 = (mfem::IntegrationRule *) NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -30763,6 +30727,8 @@ SWIGINTERN PyObject *_wrap_CurlCurlIntegrator_ComputeElementFlux(PyObject *SWIGU
   int res6 = 0 ;
   bool val7 ;
   int ecode7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -30770,11 +30736,12 @@ SWIGINTERN PyObject *_wrap_CurlCurlIntegrator_ComputeElementFlux(PyObject *SWIGU
   PyObject * obj4 = 0 ;
   PyObject * obj5 = 0 ;
   PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"el",  (char *)"Trans",  (char *)"u",  (char *)"fluxelem",  (char *)"flux",  (char *)"with_coef",  NULL 
+    (char *)"self",  (char *)"el",  (char *)"Trans",  (char *)"u",  (char *)"fluxelem",  (char *)"flux",  (char *)"with_coef",  (char *)"ir",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOOO:CurlCurlIntegrator_ComputeElementFlux", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOOO|O:CurlCurlIntegrator_ComputeElementFlux", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__CurlCurlIntegrator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CurlCurlIntegrator_ComputeElementFlux" "', argument " "1"" of type '" "mfem::CurlCurlIntegrator *""'"); 
@@ -30825,9 +30792,16 @@ SWIGINTERN PyObject *_wrap_CurlCurlIntegrator_ComputeElementFlux(PyObject *SWIGU
     SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "CurlCurlIntegrator_ComputeElementFlux" "', argument " "7"" of type '" "bool""'");
   } 
   arg7 = static_cast< bool >(val7);
+  if (obj7) {
+    res8 = SWIG_ConvertPtr(obj7, &argp8,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
+    if (!SWIG_IsOK(res8)) {
+      SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "CurlCurlIntegrator_ComputeElementFlux" "', argument " "8"" of type '" "mfem::IntegrationRule const *""'"); 
+    }
+    arg8 = reinterpret_cast< mfem::IntegrationRule * >(argp8);
+  }
   {
     try {
-      (arg1)->ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6,arg7);
+      (arg1)->ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6,arg7,(mfem::IntegrationRule const *)arg8);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -31275,6 +31249,47 @@ SWIGINTERN PyObject *_wrap_CurlCurlIntegrator_AssembleDiagonalPA(PyObject *SWIGU
     }	 
   }
   resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CurlCurlIntegrator_GetCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::CurlCurlIntegrator *arg1 = (mfem::CurlCurlIntegrator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Coefficient *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__CurlCurlIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CurlCurlIntegrator_GetCoefficient" "', argument " "1"" of type '" "mfem::CurlCurlIntegrator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CurlCurlIntegrator * >(argp1);
+  {
+    try {
+      result = (mfem::Coefficient *)((mfem::CurlCurlIntegrator const *)arg1)->GetCoefficient();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -31917,87 +31932,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_VectorFEMassIntegrator__SWIG_7(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::SymmetricMatrixCoefficient *arg1 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::VectorFEMassIntegrator *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__SymmetricMatrixCoefficient,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_VectorFEMassIntegrator" "', argument " "1"" of type '" "mfem::SymmetricMatrixCoefficient &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VectorFEMassIntegrator" "', argument " "1"" of type '" "mfem::SymmetricMatrixCoefficient &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::SymmetricMatrixCoefficient * >(argp1);
-  {
-    try {
-      result = (mfem::VectorFEMassIntegrator *)new mfem::VectorFEMassIntegrator(*arg1);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorFEMassIntegrator, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_VectorFEMassIntegrator__SWIG_8(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::SymmetricMatrixCoefficient *arg1 = (mfem::SymmetricMatrixCoefficient *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::VectorFEMassIntegrator *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__SymmetricMatrixCoefficient, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_VectorFEMassIntegrator" "', argument " "1"" of type '" "mfem::SymmetricMatrixCoefficient *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::SymmetricMatrixCoefficient * >(argp1);
-  {
-    try {
-      result = (mfem::VectorFEMassIntegrator *)new mfem::VectorFEMassIntegrator(arg1);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorFEMassIntegrator, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_new_VectorFEMassIntegrator(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[2] = {
@@ -32063,24 +31997,6 @@ SWIGINTERN PyObject *_wrap_new_VectorFEMassIntegrator(PyObject *self, PyObject *
       return _wrap_new_VectorFEMassIntegrator__SWIG_6(self, argc, argv);
     }
   }
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SymmetricMatrixCoefficient, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_VectorFEMassIntegrator__SWIG_7(self, argc, argv);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SymmetricMatrixCoefficient, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_VectorFEMassIntegrator__SWIG_8(self, argc, argv);
-    }
-  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_VectorFEMassIntegrator'.\n"
@@ -32091,9 +32007,7 @@ fail:
     "    mfem::VectorFEMassIntegrator::VectorFEMassIntegrator(mfem::DiagonalMatrixCoefficient *)\n"
     "    mfem::VectorFEMassIntegrator::VectorFEMassIntegrator(mfem::DiagonalMatrixCoefficient &)\n"
     "    mfem::VectorFEMassIntegrator::VectorFEMassIntegrator(mfem::MatrixCoefficient *)\n"
-    "    mfem::VectorFEMassIntegrator::VectorFEMassIntegrator(mfem::MatrixCoefficient &)\n"
-    "    mfem::VectorFEMassIntegrator::VectorFEMassIntegrator(mfem::SymmetricMatrixCoefficient &)\n"
-    "    mfem::VectorFEMassIntegrator::VectorFEMassIntegrator(mfem::SymmetricMatrixCoefficient *)\n");
+    "    mfem::VectorFEMassIntegrator::VectorFEMassIntegrator(mfem::MatrixCoefficient &)\n");
   return 0;
 }
 
@@ -32630,6 +32544,72 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_VectorFEMassIntegrator_AddMultTransposePA(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::VectorFEMassIntegrator *arg1 = (mfem::VectorFEMassIntegrator *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:VectorFEMassIntegrator_AddMultTransposePA", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorFEMassIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorFEMassIntegrator_AddMultTransposePA" "', argument " "1"" of type '" "mfem::VectorFEMassIntegrator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorFEMassIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorFEMassIntegrator_AddMultTransposePA" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorFEMassIntegrator_AddMultTransposePA" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorFEMassIntegrator_AddMultTransposePA" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorFEMassIntegrator_AddMultTransposePA" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      ((mfem::VectorFEMassIntegrator const *)arg1)->AddMultTransposePA((mfem::Vector const &)*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_VectorFEMassIntegrator_AssembleDiagonalPA(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorFEMassIntegrator *arg1 = (mfem::VectorFEMassIntegrator *) 0 ;
@@ -32678,6 +32658,47 @@ SWIGINTERN PyObject *_wrap_VectorFEMassIntegrator_AssembleDiagonalPA(PyObject *S
     }	 
   }
   resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_VectorFEMassIntegrator_GetCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorFEMassIntegrator *arg1 = (mfem::VectorFEMassIntegrator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Coefficient *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorFEMassIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorFEMassIntegrator_GetCoefficient" "', argument " "1"" of type '" "mfem::VectorFEMassIntegrator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorFEMassIntegrator * >(argp1);
+  {
+    try {
+      result = (mfem::Coefficient *)((mfem::VectorFEMassIntegrator const *)arg1)->GetCoefficient();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -33499,11 +33520,14 @@ fail:
 SWIGINTERN PyObject *_wrap_new_DivDivIntegrator__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Coefficient *arg1 = 0 ;
+  mfem::IntegrationRule *arg2 = (mfem::IntegrationRule *) NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
   mfem::DivDivIntegrator *result = 0 ;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DivDivIntegrator" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
@@ -33512,9 +33536,16 @@ SWIGINTERN PyObject *_wrap_new_DivDivIntegrator__SWIG_1(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DivDivIntegrator" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
+  if (swig_obj[1]) {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_DivDivIntegrator" "', argument " "2"" of type '" "mfem::IntegrationRule const *""'"); 
+    }
+    arg2 = reinterpret_cast< mfem::IntegrationRule * >(argp2);
+  }
   {
     try {
-      result = (mfem::DivDivIntegrator *)new mfem::DivDivIntegrator(*arg1);
+      result = (mfem::DivDivIntegrator *)new mfem::DivDivIntegrator(*arg1,(mfem::IntegrationRule const *)arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -33540,22 +33571,30 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_DivDivIntegrator(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[2] = {
+  PyObject *argv[3] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_DivDivIntegrator", 0, 1, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_DivDivIntegrator", 0, 2, argv))) SWIG_fail;
   --argc;
   if (argc == 0) {
     return _wrap_new_DivDivIntegrator__SWIG_0(self, argc, argv);
   }
-  if (argc == 1) {
+  if ((argc >= 1) && (argc <= 2)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_new_DivDivIntegrator__SWIG_1(self, argc, argv);
+      if (argc <= 1) {
+        return _wrap_new_DivDivIntegrator__SWIG_1(self, argc, argv);
+      }
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__IntegrationRule, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_DivDivIntegrator__SWIG_1(self, argc, argv);
+      }
     }
   }
   
@@ -33563,7 +33602,7 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_DivDivIntegrator'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::DivDivIntegrator::DivDivIntegrator()\n"
-    "    mfem::DivDivIntegrator::DivDivIntegrator(mfem::Coefficient &)\n");
+    "    mfem::DivDivIntegrator::DivDivIntegrator(mfem::Coefficient &,mfem::IntegrationRule const *)\n");
   return 0;
 }
 
@@ -33640,6 +33679,47 @@ SWIGINTERN PyObject *_wrap_DivDivIntegrator_AssembleElementMatrix(PyObject *SWIG
     }	 
   }
   resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DivDivIntegrator_GetCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DivDivIntegrator *arg1 = (mfem::DivDivIntegrator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Coefficient *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DivDivIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DivDivIntegrator_GetCoefficient" "', argument " "1"" of type '" "mfem::DivDivIntegrator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DivDivIntegrator * >(argp1);
+  {
+    try {
+      result = (mfem::Coefficient *)((mfem::DivDivIntegrator const *)arg1)->GetCoefficient();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -35122,6 +35202,7 @@ SWIGINTERN PyObject *_wrap_ElasticityIntegrator_ComputeElementFlux(PyObject *SWI
   mfem::FiniteElement *arg5 = 0 ;
   mfem::Vector *arg6 = 0 ;
   bool arg7 = (bool) true ;
+  mfem::IntegrationRule *arg8 = (mfem::IntegrationRule *) NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -35136,6 +35217,8 @@ SWIGINTERN PyObject *_wrap_ElasticityIntegrator_ComputeElementFlux(PyObject *SWI
   int res6 = 0 ;
   bool val7 ;
   int ecode7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -35143,11 +35226,12 @@ SWIGINTERN PyObject *_wrap_ElasticityIntegrator_ComputeElementFlux(PyObject *SWI
   PyObject * obj4 = 0 ;
   PyObject * obj5 = 0 ;
   PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"el",  (char *)"Trans",  (char *)"u",  (char *)"fluxelem",  (char *)"flux",  (char *)"with_coef",  NULL 
+    (char *)"self",  (char *)"el",  (char *)"Trans",  (char *)"u",  (char *)"fluxelem",  (char *)"flux",  (char *)"with_coef",  (char *)"ir",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOO|O:ElasticityIntegrator_ComputeElementFlux", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOO|OO:ElasticityIntegrator_ComputeElementFlux", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ElasticityIntegrator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ElasticityIntegrator_ComputeElementFlux" "', argument " "1"" of type '" "mfem::ElasticityIntegrator *""'"); 
@@ -35200,9 +35284,16 @@ SWIGINTERN PyObject *_wrap_ElasticityIntegrator_ComputeElementFlux(PyObject *SWI
     } 
     arg7 = static_cast< bool >(val7);
   }
+  if (obj7) {
+    res8 = SWIG_ConvertPtr(obj7, &argp8,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
+    if (!SWIG_IsOK(res8)) {
+      SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "ElasticityIntegrator_ComputeElementFlux" "', argument " "8"" of type '" "mfem::IntegrationRule const *""'"); 
+    }
+    arg8 = reinterpret_cast< mfem::IntegrationRule * >(argp8);
+  }
   {
     try {
-      (arg1)->ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6,arg7);
+      (arg1)->ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6,arg7,(mfem::IntegrationRule const *)arg8);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -42678,7 +42769,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "BilinearFormIntegrator_AssembleFaceVector", (PyCFunction)(void(*)(void))_wrap_BilinearFormIntegrator_AssembleFaceVector, METH_VARARGS|METH_KEYWORDS, "BilinearFormIntegrator_AssembleFaceVector(BilinearFormIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elfun, Vector elvect)"},
 	 { "BilinearFormIntegrator_AssembleElementGrad", (PyCFunction)(void(*)(void))_wrap_BilinearFormIntegrator_AssembleElementGrad, METH_VARARGS|METH_KEYWORDS, "BilinearFormIntegrator_AssembleElementGrad(BilinearFormIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elfun, DenseMatrix elmat)"},
 	 { "BilinearFormIntegrator_AssembleFaceGrad", (PyCFunction)(void(*)(void))_wrap_BilinearFormIntegrator_AssembleFaceGrad, METH_VARARGS|METH_KEYWORDS, "BilinearFormIntegrator_AssembleFaceGrad(BilinearFormIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elfun, DenseMatrix elmat)"},
-	 { "BilinearFormIntegrator_ComputeElementFlux", (PyCFunction)(void(*)(void))_wrap_BilinearFormIntegrator_ComputeElementFlux, METH_VARARGS|METH_KEYWORDS, "BilinearFormIntegrator_ComputeElementFlux(BilinearFormIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef=True)"},
+	 { "BilinearFormIntegrator_ComputeElementFlux", (PyCFunction)(void(*)(void))_wrap_BilinearFormIntegrator_ComputeElementFlux, METH_VARARGS|METH_KEYWORDS, "BilinearFormIntegrator_ComputeElementFlux(BilinearFormIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef=True, IntegrationRule ir=None)"},
 	 { "BilinearFormIntegrator_ComputeFluxEnergy", (PyCFunction)(void(*)(void))_wrap_BilinearFormIntegrator_ComputeFluxEnergy, METH_VARARGS|METH_KEYWORDS, "BilinearFormIntegrator_ComputeFluxEnergy(BilinearFormIntegrator self, FiniteElement fluxelem, ElementTransformation Trans, Vector flux, Vector d_energy=None) -> double"},
 	 { "delete_BilinearFormIntegrator", _wrap_delete_BilinearFormIntegrator, METH_O, "delete_BilinearFormIntegrator(BilinearFormIntegrator self)"},
 	 { "disown_BilinearFormIntegrator", (PyCFunction)(void(*)(void))_wrap_disown_BilinearFormIntegrator, METH_VARARGS|METH_KEYWORDS, NULL},
@@ -43077,13 +43168,12 @@ static PyMethodDef SwigMethods[] = {
 		"DiffusionIntegrator(IntegrationRule ir=None)\n"
 		"DiffusionIntegrator(Coefficient q, IntegrationRule ir=None)\n"
 		"DiffusionIntegrator(VectorCoefficient q, IntegrationRule ir=None)\n"
-		"DiffusionIntegrator(MatrixCoefficient q, IntegrationRule ir=None)\n"
-		"new_DiffusionIntegrator(SymmetricMatrixCoefficient q, IntegrationRule ir=None) -> DiffusionIntegrator\n"
+		"new_DiffusionIntegrator(MatrixCoefficient q, IntegrationRule ir=None) -> DiffusionIntegrator\n"
 		""},
 	 { "DiffusionIntegrator_AssembleElementMatrix", (PyCFunction)(void(*)(void))_wrap_DiffusionIntegrator_AssembleElementMatrix, METH_VARARGS|METH_KEYWORDS, "DiffusionIntegrator_AssembleElementMatrix(DiffusionIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"},
 	 { "DiffusionIntegrator_AssembleElementMatrix2", (PyCFunction)(void(*)(void))_wrap_DiffusionIntegrator_AssembleElementMatrix2, METH_VARARGS|METH_KEYWORDS, "DiffusionIntegrator_AssembleElementMatrix2(DiffusionIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix elmat)"},
 	 { "DiffusionIntegrator_AssembleElementVector", (PyCFunction)(void(*)(void))_wrap_DiffusionIntegrator_AssembleElementVector, METH_VARARGS|METH_KEYWORDS, "DiffusionIntegrator_AssembleElementVector(DiffusionIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elfun, Vector elvect)"},
-	 { "DiffusionIntegrator_ComputeElementFlux", (PyCFunction)(void(*)(void))_wrap_DiffusionIntegrator_ComputeElementFlux, METH_VARARGS|METH_KEYWORDS, "DiffusionIntegrator_ComputeElementFlux(DiffusionIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef=True)"},
+	 { "DiffusionIntegrator_ComputeElementFlux", (PyCFunction)(void(*)(void))_wrap_DiffusionIntegrator_ComputeElementFlux, METH_VARARGS|METH_KEYWORDS, "DiffusionIntegrator_ComputeElementFlux(DiffusionIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef=True, IntegrationRule ir=None)"},
 	 { "DiffusionIntegrator_ComputeFluxEnergy", (PyCFunction)(void(*)(void))_wrap_DiffusionIntegrator_ComputeFluxEnergy, METH_VARARGS|METH_KEYWORDS, "DiffusionIntegrator_ComputeFluxEnergy(DiffusionIntegrator self, FiniteElement fluxelem, ElementTransformation Trans, Vector flux, Vector d_energy=None) -> double"},
 	 { "DiffusionIntegrator_AssembleMF", (PyCFunction)(void(*)(void))_wrap_DiffusionIntegrator_AssembleMF, METH_VARARGS|METH_KEYWORDS, "DiffusionIntegrator_AssembleMF(DiffusionIntegrator self, FiniteElementSpace fes)"},
 	 { "DiffusionIntegrator_AssemblePA", _wrap_DiffusionIntegrator_AssemblePA, METH_VARARGS, "\n"
@@ -43099,6 +43189,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "DiffusionIntegrator_AddMultTransposePA", (PyCFunction)(void(*)(void))_wrap_DiffusionIntegrator_AddMultTransposePA, METH_VARARGS|METH_KEYWORDS, "DiffusionIntegrator_AddMultTransposePA(DiffusionIntegrator self, Vector arg2, Vector arg3)"},
 	 { "DiffusionIntegrator_GetRule", (PyCFunction)(void(*)(void))_wrap_DiffusionIntegrator_GetRule, METH_VARARGS|METH_KEYWORDS, "DiffusionIntegrator_GetRule(FiniteElement trial_fe, FiniteElement test_fe) -> IntegrationRule"},
 	 { "DiffusionIntegrator_SupportsCeed", _wrap_DiffusionIntegrator_SupportsCeed, METH_O, "DiffusionIntegrator_SupportsCeed(DiffusionIntegrator self) -> bool"},
+	 { "DiffusionIntegrator_GetCoefficient", _wrap_DiffusionIntegrator_GetCoefficient, METH_O, "DiffusionIntegrator_GetCoefficient(DiffusionIntegrator self) -> Coefficient"},
 	 { "delete_DiffusionIntegrator", _wrap_delete_DiffusionIntegrator, METH_O, "delete_DiffusionIntegrator(DiffusionIntegrator self)"},
 	 { "DiffusionIntegrator_swigregister", DiffusionIntegrator_swigregister, METH_O, NULL},
 	 { "DiffusionIntegrator_swiginit", DiffusionIntegrator_swiginit, METH_VARARGS, NULL},
@@ -43122,6 +43213,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "MassIntegrator_AddMultTransposePA", (PyCFunction)(void(*)(void))_wrap_MassIntegrator_AddMultTransposePA, METH_VARARGS|METH_KEYWORDS, "MassIntegrator_AddMultTransposePA(MassIntegrator self, Vector arg2, Vector arg3)"},
 	 { "MassIntegrator_GetRule", (PyCFunction)(void(*)(void))_wrap_MassIntegrator_GetRule, METH_VARARGS|METH_KEYWORDS, "MassIntegrator_GetRule(FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans) -> IntegrationRule"},
 	 { "MassIntegrator_SupportsCeed", _wrap_MassIntegrator_SupportsCeed, METH_O, "MassIntegrator_SupportsCeed(MassIntegrator self) -> bool"},
+	 { "MassIntegrator_GetCoefficient", _wrap_MassIntegrator_GetCoefficient, METH_O, "MassIntegrator_GetCoefficient(MassIntegrator self) -> Coefficient"},
 	 { "delete_MassIntegrator", _wrap_delete_MassIntegrator, METH_O, "delete_MassIntegrator(MassIntegrator self)"},
 	 { "MassIntegrator_swigregister", MassIntegrator_swigregister, METH_O, NULL},
 	 { "MassIntegrator_swiginit", MassIntegrator_swiginit, METH_VARARGS, NULL},
@@ -43228,11 +43320,10 @@ static PyMethodDef SwigMethods[] = {
 		"CurlCurlIntegrator()\n"
 		"CurlCurlIntegrator(Coefficient q, IntegrationRule ir=None)\n"
 		"CurlCurlIntegrator(VectorCoefficient dq, IntegrationRule ir=None)\n"
-		"CurlCurlIntegrator(MatrixCoefficient mq, IntegrationRule ir=None)\n"
-		"new_CurlCurlIntegrator(SymmetricMatrixCoefficient smq, IntegrationRule ir=None) -> CurlCurlIntegrator\n"
+		"new_CurlCurlIntegrator(MatrixCoefficient mq, IntegrationRule ir=None) -> CurlCurlIntegrator\n"
 		""},
 	 { "CurlCurlIntegrator_AssembleElementMatrix", (PyCFunction)(void(*)(void))_wrap_CurlCurlIntegrator_AssembleElementMatrix, METH_VARARGS|METH_KEYWORDS, "CurlCurlIntegrator_AssembleElementMatrix(CurlCurlIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"},
-	 { "CurlCurlIntegrator_ComputeElementFlux", (PyCFunction)(void(*)(void))_wrap_CurlCurlIntegrator_ComputeElementFlux, METH_VARARGS|METH_KEYWORDS, "CurlCurlIntegrator_ComputeElementFlux(CurlCurlIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef)"},
+	 { "CurlCurlIntegrator_ComputeElementFlux", (PyCFunction)(void(*)(void))_wrap_CurlCurlIntegrator_ComputeElementFlux, METH_VARARGS|METH_KEYWORDS, "CurlCurlIntegrator_ComputeElementFlux(CurlCurlIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef, IntegrationRule ir=None)"},
 	 { "CurlCurlIntegrator_ComputeFluxEnergy", (PyCFunction)(void(*)(void))_wrap_CurlCurlIntegrator_ComputeFluxEnergy, METH_VARARGS|METH_KEYWORDS, "CurlCurlIntegrator_ComputeFluxEnergy(CurlCurlIntegrator self, FiniteElement fluxelem, ElementTransformation Trans, Vector flux, Vector d_energy=None) -> double"},
 	 { "CurlCurlIntegrator_AssemblePA", _wrap_CurlCurlIntegrator_AssemblePA, METH_VARARGS, "\n"
 		"CurlCurlIntegrator_AssemblePA(CurlCurlIntegrator self, FiniteElementSpace fes)\n"
@@ -43241,6 +43332,7 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "CurlCurlIntegrator_AddMultPA", (PyCFunction)(void(*)(void))_wrap_CurlCurlIntegrator_AddMultPA, METH_VARARGS|METH_KEYWORDS, "CurlCurlIntegrator_AddMultPA(CurlCurlIntegrator self, Vector x, Vector y)"},
 	 { "CurlCurlIntegrator_AssembleDiagonalPA", (PyCFunction)(void(*)(void))_wrap_CurlCurlIntegrator_AssembleDiagonalPA, METH_VARARGS|METH_KEYWORDS, "CurlCurlIntegrator_AssembleDiagonalPA(CurlCurlIntegrator self, Vector diag)"},
+	 { "CurlCurlIntegrator_GetCoefficient", _wrap_CurlCurlIntegrator_GetCoefficient, METH_O, "CurlCurlIntegrator_GetCoefficient(CurlCurlIntegrator self) -> Coefficient"},
 	 { "delete_CurlCurlIntegrator", _wrap_delete_CurlCurlIntegrator, METH_O, "delete_CurlCurlIntegrator(CurlCurlIntegrator self)"},
 	 { "CurlCurlIntegrator_swigregister", CurlCurlIntegrator_swigregister, METH_O, NULL},
 	 { "CurlCurlIntegrator_swiginit", CurlCurlIntegrator_swiginit, METH_VARARGS, NULL},
@@ -43260,9 +43352,7 @@ static PyMethodDef SwigMethods[] = {
 		"VectorFEMassIntegrator(VectorCoefficient dq_)\n"
 		"VectorFEMassIntegrator(VectorCoefficient dq)\n"
 		"VectorFEMassIntegrator(MatrixCoefficient mq_)\n"
-		"VectorFEMassIntegrator(MatrixCoefficient mq)\n"
-		"VectorFEMassIntegrator(SymmetricMatrixCoefficient smq)\n"
-		"new_VectorFEMassIntegrator(SymmetricMatrixCoefficient smq) -> VectorFEMassIntegrator\n"
+		"new_VectorFEMassIntegrator(MatrixCoefficient mq) -> VectorFEMassIntegrator\n"
 		""},
 	 { "VectorFEMassIntegrator_AssembleElementMatrix", (PyCFunction)(void(*)(void))_wrap_VectorFEMassIntegrator_AssembleElementMatrix, METH_VARARGS|METH_KEYWORDS, "VectorFEMassIntegrator_AssembleElementMatrix(VectorFEMassIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"},
 	 { "VectorFEMassIntegrator_AssembleElementMatrix2", (PyCFunction)(void(*)(void))_wrap_VectorFEMassIntegrator_AssembleElementMatrix2, METH_VARARGS|METH_KEYWORDS, "VectorFEMassIntegrator_AssembleElementMatrix2(VectorFEMassIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix elmat)"},
@@ -43273,7 +43363,9 @@ static PyMethodDef SwigMethods[] = {
 		"VectorFEMassIntegrator_AssemblePA(VectorFEMassIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)\n"
 		""},
 	 { "VectorFEMassIntegrator_AddMultPA", (PyCFunction)(void(*)(void))_wrap_VectorFEMassIntegrator_AddMultPA, METH_VARARGS|METH_KEYWORDS, "VectorFEMassIntegrator_AddMultPA(VectorFEMassIntegrator self, Vector x, Vector y)"},
+	 { "VectorFEMassIntegrator_AddMultTransposePA", (PyCFunction)(void(*)(void))_wrap_VectorFEMassIntegrator_AddMultTransposePA, METH_VARARGS|METH_KEYWORDS, "VectorFEMassIntegrator_AddMultTransposePA(VectorFEMassIntegrator self, Vector x, Vector y)"},
 	 { "VectorFEMassIntegrator_AssembleDiagonalPA", (PyCFunction)(void(*)(void))_wrap_VectorFEMassIntegrator_AssembleDiagonalPA, METH_VARARGS|METH_KEYWORDS, "VectorFEMassIntegrator_AssembleDiagonalPA(VectorFEMassIntegrator self, Vector diag)"},
+	 { "VectorFEMassIntegrator_GetCoefficient", _wrap_VectorFEMassIntegrator_GetCoefficient, METH_O, "VectorFEMassIntegrator_GetCoefficient(VectorFEMassIntegrator self) -> Coefficient"},
 	 { "delete_VectorFEMassIntegrator", _wrap_delete_VectorFEMassIntegrator, METH_O, "delete_VectorFEMassIntegrator(VectorFEMassIntegrator self)"},
 	 { "VectorFEMassIntegrator_swigregister", VectorFEMassIntegrator_swigregister, METH_O, NULL},
 	 { "VectorFEMassIntegrator_swiginit", VectorFEMassIntegrator_swiginit, METH_VARARGS, NULL},
@@ -43296,9 +43388,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "VectorDivergenceIntegrator_swiginit", VectorDivergenceIntegrator_swiginit, METH_VARARGS, NULL},
 	 { "new_DivDivIntegrator", _wrap_new_DivDivIntegrator, METH_VARARGS, "\n"
 		"DivDivIntegrator()\n"
-		"new_DivDivIntegrator(Coefficient q) -> DivDivIntegrator\n"
+		"new_DivDivIntegrator(Coefficient q, IntegrationRule ir=None) -> DivDivIntegrator\n"
 		""},
 	 { "DivDivIntegrator_AssembleElementMatrix", (PyCFunction)(void(*)(void))_wrap_DivDivIntegrator_AssembleElementMatrix, METH_VARARGS|METH_KEYWORDS, "DivDivIntegrator_AssembleElementMatrix(DivDivIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"},
+	 { "DivDivIntegrator_GetCoefficient", _wrap_DivDivIntegrator_GetCoefficient, METH_O, "DivDivIntegrator_GetCoefficient(DivDivIntegrator self) -> Coefficient"},
 	 { "delete_DivDivIntegrator", _wrap_delete_DivDivIntegrator, METH_O, "delete_DivDivIntegrator(DivDivIntegrator self)"},
 	 { "DivDivIntegrator_swigregister", DivDivIntegrator_swigregister, METH_O, NULL},
 	 { "DivDivIntegrator_swiginit", DivDivIntegrator_swiginit, METH_VARARGS, NULL},
@@ -43332,7 +43425,7 @@ static PyMethodDef SwigMethods[] = {
 		"new_ElasticityIntegrator(Coefficient m, double q_l, double q_m) -> ElasticityIntegrator\n"
 		""},
 	 { "ElasticityIntegrator_AssembleElementMatrix", (PyCFunction)(void(*)(void))_wrap_ElasticityIntegrator_AssembleElementMatrix, METH_VARARGS|METH_KEYWORDS, "ElasticityIntegrator_AssembleElementMatrix(ElasticityIntegrator self, FiniteElement arg2, ElementTransformation arg3, DenseMatrix arg4)"},
-	 { "ElasticityIntegrator_ComputeElementFlux", (PyCFunction)(void(*)(void))_wrap_ElasticityIntegrator_ComputeElementFlux, METH_VARARGS|METH_KEYWORDS, "ElasticityIntegrator_ComputeElementFlux(ElasticityIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef=True)"},
+	 { "ElasticityIntegrator_ComputeElementFlux", (PyCFunction)(void(*)(void))_wrap_ElasticityIntegrator_ComputeElementFlux, METH_VARARGS|METH_KEYWORDS, "ElasticityIntegrator_ComputeElementFlux(ElasticityIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef=True, IntegrationRule ir=None)"},
 	 { "ElasticityIntegrator_ComputeFluxEnergy", (PyCFunction)(void(*)(void))_wrap_ElasticityIntegrator_ComputeFluxEnergy, METH_VARARGS|METH_KEYWORDS, "ElasticityIntegrator_ComputeFluxEnergy(ElasticityIntegrator self, FiniteElement fluxelem, ElementTransformation Trans, Vector flux, Vector d_energy=None) -> double"},
 	 { "delete_ElasticityIntegrator", _wrap_delete_ElasticityIntegrator, METH_O, "delete_ElasticityIntegrator(ElasticityIntegrator self)"},
 	 { "ElasticityIntegrator_swigregister", ElasticityIntegrator_swigregister, METH_O, NULL},
@@ -43534,7 +43627,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "BilinearFormIntegrator_AssembleFaceVector", (PyCFunction)(void(*)(void))_wrap_BilinearFormIntegrator_AssembleFaceVector, METH_VARARGS|METH_KEYWORDS, "AssembleFaceVector(BilinearFormIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elfun, Vector elvect)"},
 	 { "BilinearFormIntegrator_AssembleElementGrad", (PyCFunction)(void(*)(void))_wrap_BilinearFormIntegrator_AssembleElementGrad, METH_VARARGS|METH_KEYWORDS, "AssembleElementGrad(BilinearFormIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elfun, DenseMatrix elmat)"},
 	 { "BilinearFormIntegrator_AssembleFaceGrad", (PyCFunction)(void(*)(void))_wrap_BilinearFormIntegrator_AssembleFaceGrad, METH_VARARGS|METH_KEYWORDS, "AssembleFaceGrad(BilinearFormIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elfun, DenseMatrix elmat)"},
-	 { "BilinearFormIntegrator_ComputeElementFlux", (PyCFunction)(void(*)(void))_wrap_BilinearFormIntegrator_ComputeElementFlux, METH_VARARGS|METH_KEYWORDS, "ComputeElementFlux(BilinearFormIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef=True)"},
+	 { "BilinearFormIntegrator_ComputeElementFlux", (PyCFunction)(void(*)(void))_wrap_BilinearFormIntegrator_ComputeElementFlux, METH_VARARGS|METH_KEYWORDS, "ComputeElementFlux(BilinearFormIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef=True, IntegrationRule ir=None)"},
 	 { "BilinearFormIntegrator_ComputeFluxEnergy", (PyCFunction)(void(*)(void))_wrap_BilinearFormIntegrator_ComputeFluxEnergy, METH_VARARGS|METH_KEYWORDS, "ComputeFluxEnergy(BilinearFormIntegrator self, FiniteElement fluxelem, ElementTransformation Trans, Vector flux, Vector d_energy=None) -> double"},
 	 { "delete_BilinearFormIntegrator", _wrap_delete_BilinearFormIntegrator, METH_O, "delete_BilinearFormIntegrator(BilinearFormIntegrator self)"},
 	 { "disown_BilinearFormIntegrator", (PyCFunction)(void(*)(void))_wrap_disown_BilinearFormIntegrator, METH_VARARGS|METH_KEYWORDS, NULL},
@@ -43933,13 +44026,12 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"DiffusionIntegrator(IntegrationRule ir=None)\n"
 		"DiffusionIntegrator(Coefficient q, IntegrationRule ir=None)\n"
 		"DiffusionIntegrator(VectorCoefficient q, IntegrationRule ir=None)\n"
-		"DiffusionIntegrator(MatrixCoefficient q, IntegrationRule ir=None)\n"
-		"new_DiffusionIntegrator(SymmetricMatrixCoefficient q, IntegrationRule ir=None) -> DiffusionIntegrator\n"
+		"new_DiffusionIntegrator(MatrixCoefficient q, IntegrationRule ir=None) -> DiffusionIntegrator\n"
 		""},
 	 { "DiffusionIntegrator_AssembleElementMatrix", (PyCFunction)(void(*)(void))_wrap_DiffusionIntegrator_AssembleElementMatrix, METH_VARARGS|METH_KEYWORDS, "AssembleElementMatrix(DiffusionIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"},
 	 { "DiffusionIntegrator_AssembleElementMatrix2", (PyCFunction)(void(*)(void))_wrap_DiffusionIntegrator_AssembleElementMatrix2, METH_VARARGS|METH_KEYWORDS, "AssembleElementMatrix2(DiffusionIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix elmat)"},
 	 { "DiffusionIntegrator_AssembleElementVector", (PyCFunction)(void(*)(void))_wrap_DiffusionIntegrator_AssembleElementVector, METH_VARARGS|METH_KEYWORDS, "AssembleElementVector(DiffusionIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elfun, Vector elvect)"},
-	 { "DiffusionIntegrator_ComputeElementFlux", (PyCFunction)(void(*)(void))_wrap_DiffusionIntegrator_ComputeElementFlux, METH_VARARGS|METH_KEYWORDS, "ComputeElementFlux(DiffusionIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef=True)"},
+	 { "DiffusionIntegrator_ComputeElementFlux", (PyCFunction)(void(*)(void))_wrap_DiffusionIntegrator_ComputeElementFlux, METH_VARARGS|METH_KEYWORDS, "ComputeElementFlux(DiffusionIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef=True, IntegrationRule ir=None)"},
 	 { "DiffusionIntegrator_ComputeFluxEnergy", (PyCFunction)(void(*)(void))_wrap_DiffusionIntegrator_ComputeFluxEnergy, METH_VARARGS|METH_KEYWORDS, "ComputeFluxEnergy(DiffusionIntegrator self, FiniteElement fluxelem, ElementTransformation Trans, Vector flux, Vector d_energy=None) -> double"},
 	 { "DiffusionIntegrator_AssembleMF", (PyCFunction)(void(*)(void))_wrap_DiffusionIntegrator_AssembleMF, METH_VARARGS|METH_KEYWORDS, "AssembleMF(DiffusionIntegrator self, FiniteElementSpace fes)"},
 	 { "DiffusionIntegrator_AssemblePA", _wrap_DiffusionIntegrator_AssemblePA, METH_VARARGS, "\n"
@@ -43955,6 +44047,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "DiffusionIntegrator_AddMultTransposePA", (PyCFunction)(void(*)(void))_wrap_DiffusionIntegrator_AddMultTransposePA, METH_VARARGS|METH_KEYWORDS, "AddMultTransposePA(DiffusionIntegrator self, Vector arg2, Vector arg3)"},
 	 { "DiffusionIntegrator_GetRule", (PyCFunction)(void(*)(void))_wrap_DiffusionIntegrator_GetRule, METH_VARARGS|METH_KEYWORDS, "GetRule(FiniteElement trial_fe, FiniteElement test_fe) -> IntegrationRule"},
 	 { "DiffusionIntegrator_SupportsCeed", _wrap_DiffusionIntegrator_SupportsCeed, METH_O, "SupportsCeed(DiffusionIntegrator self) -> bool"},
+	 { "DiffusionIntegrator_GetCoefficient", _wrap_DiffusionIntegrator_GetCoefficient, METH_O, "GetCoefficient(DiffusionIntegrator self) -> Coefficient"},
 	 { "delete_DiffusionIntegrator", _wrap_delete_DiffusionIntegrator, METH_O, "delete_DiffusionIntegrator(DiffusionIntegrator self)"},
 	 { "DiffusionIntegrator_swigregister", DiffusionIntegrator_swigregister, METH_O, NULL},
 	 { "DiffusionIntegrator_swiginit", DiffusionIntegrator_swiginit, METH_VARARGS, NULL},
@@ -43978,6 +44071,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "MassIntegrator_AddMultTransposePA", (PyCFunction)(void(*)(void))_wrap_MassIntegrator_AddMultTransposePA, METH_VARARGS|METH_KEYWORDS, "AddMultTransposePA(MassIntegrator self, Vector arg2, Vector arg3)"},
 	 { "MassIntegrator_GetRule", (PyCFunction)(void(*)(void))_wrap_MassIntegrator_GetRule, METH_VARARGS|METH_KEYWORDS, "GetRule(FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans) -> IntegrationRule"},
 	 { "MassIntegrator_SupportsCeed", _wrap_MassIntegrator_SupportsCeed, METH_O, "SupportsCeed(MassIntegrator self) -> bool"},
+	 { "MassIntegrator_GetCoefficient", _wrap_MassIntegrator_GetCoefficient, METH_O, "GetCoefficient(MassIntegrator self) -> Coefficient"},
 	 { "delete_MassIntegrator", _wrap_delete_MassIntegrator, METH_O, "delete_MassIntegrator(MassIntegrator self)"},
 	 { "MassIntegrator_swigregister", MassIntegrator_swigregister, METH_O, NULL},
 	 { "MassIntegrator_swiginit", MassIntegrator_swiginit, METH_VARARGS, NULL},
@@ -44084,11 +44178,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"CurlCurlIntegrator()\n"
 		"CurlCurlIntegrator(Coefficient q, IntegrationRule ir=None)\n"
 		"CurlCurlIntegrator(VectorCoefficient dq, IntegrationRule ir=None)\n"
-		"CurlCurlIntegrator(MatrixCoefficient mq, IntegrationRule ir=None)\n"
-		"new_CurlCurlIntegrator(SymmetricMatrixCoefficient smq, IntegrationRule ir=None) -> CurlCurlIntegrator\n"
+		"new_CurlCurlIntegrator(MatrixCoefficient mq, IntegrationRule ir=None) -> CurlCurlIntegrator\n"
 		""},
 	 { "CurlCurlIntegrator_AssembleElementMatrix", (PyCFunction)(void(*)(void))_wrap_CurlCurlIntegrator_AssembleElementMatrix, METH_VARARGS|METH_KEYWORDS, "AssembleElementMatrix(CurlCurlIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"},
-	 { "CurlCurlIntegrator_ComputeElementFlux", (PyCFunction)(void(*)(void))_wrap_CurlCurlIntegrator_ComputeElementFlux, METH_VARARGS|METH_KEYWORDS, "ComputeElementFlux(CurlCurlIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef)"},
+	 { "CurlCurlIntegrator_ComputeElementFlux", (PyCFunction)(void(*)(void))_wrap_CurlCurlIntegrator_ComputeElementFlux, METH_VARARGS|METH_KEYWORDS, "ComputeElementFlux(CurlCurlIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef, IntegrationRule ir=None)"},
 	 { "CurlCurlIntegrator_ComputeFluxEnergy", (PyCFunction)(void(*)(void))_wrap_CurlCurlIntegrator_ComputeFluxEnergy, METH_VARARGS|METH_KEYWORDS, "ComputeFluxEnergy(CurlCurlIntegrator self, FiniteElement fluxelem, ElementTransformation Trans, Vector flux, Vector d_energy=None) -> double"},
 	 { "CurlCurlIntegrator_AssemblePA", _wrap_CurlCurlIntegrator_AssemblePA, METH_VARARGS, "\n"
 		"AssemblePA(CurlCurlIntegrator self, FiniteElementSpace fes)\n"
@@ -44097,6 +44190,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "CurlCurlIntegrator_AddMultPA", (PyCFunction)(void(*)(void))_wrap_CurlCurlIntegrator_AddMultPA, METH_VARARGS|METH_KEYWORDS, "AddMultPA(CurlCurlIntegrator self, Vector x, Vector y)"},
 	 { "CurlCurlIntegrator_AssembleDiagonalPA", (PyCFunction)(void(*)(void))_wrap_CurlCurlIntegrator_AssembleDiagonalPA, METH_VARARGS|METH_KEYWORDS, "AssembleDiagonalPA(CurlCurlIntegrator self, Vector diag)"},
+	 { "CurlCurlIntegrator_GetCoefficient", _wrap_CurlCurlIntegrator_GetCoefficient, METH_O, "GetCoefficient(CurlCurlIntegrator self) -> Coefficient"},
 	 { "delete_CurlCurlIntegrator", _wrap_delete_CurlCurlIntegrator, METH_O, "delete_CurlCurlIntegrator(CurlCurlIntegrator self)"},
 	 { "CurlCurlIntegrator_swigregister", CurlCurlIntegrator_swigregister, METH_O, NULL},
 	 { "CurlCurlIntegrator_swiginit", CurlCurlIntegrator_swiginit, METH_VARARGS, NULL},
@@ -44116,9 +44210,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"VectorFEMassIntegrator(VectorCoefficient dq_)\n"
 		"VectorFEMassIntegrator(VectorCoefficient dq)\n"
 		"VectorFEMassIntegrator(MatrixCoefficient mq_)\n"
-		"VectorFEMassIntegrator(MatrixCoefficient mq)\n"
-		"VectorFEMassIntegrator(SymmetricMatrixCoefficient smq)\n"
-		"new_VectorFEMassIntegrator(SymmetricMatrixCoefficient smq) -> VectorFEMassIntegrator\n"
+		"new_VectorFEMassIntegrator(MatrixCoefficient mq) -> VectorFEMassIntegrator\n"
 		""},
 	 { "VectorFEMassIntegrator_AssembleElementMatrix", (PyCFunction)(void(*)(void))_wrap_VectorFEMassIntegrator_AssembleElementMatrix, METH_VARARGS|METH_KEYWORDS, "AssembleElementMatrix(VectorFEMassIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"},
 	 { "VectorFEMassIntegrator_AssembleElementMatrix2", (PyCFunction)(void(*)(void))_wrap_VectorFEMassIntegrator_AssembleElementMatrix2, METH_VARARGS|METH_KEYWORDS, "AssembleElementMatrix2(VectorFEMassIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix elmat)"},
@@ -44129,7 +44221,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"AssemblePA(VectorFEMassIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)\n"
 		""},
 	 { "VectorFEMassIntegrator_AddMultPA", (PyCFunction)(void(*)(void))_wrap_VectorFEMassIntegrator_AddMultPA, METH_VARARGS|METH_KEYWORDS, "AddMultPA(VectorFEMassIntegrator self, Vector x, Vector y)"},
+	 { "VectorFEMassIntegrator_AddMultTransposePA", (PyCFunction)(void(*)(void))_wrap_VectorFEMassIntegrator_AddMultTransposePA, METH_VARARGS|METH_KEYWORDS, "AddMultTransposePA(VectorFEMassIntegrator self, Vector x, Vector y)"},
 	 { "VectorFEMassIntegrator_AssembleDiagonalPA", (PyCFunction)(void(*)(void))_wrap_VectorFEMassIntegrator_AssembleDiagonalPA, METH_VARARGS|METH_KEYWORDS, "AssembleDiagonalPA(VectorFEMassIntegrator self, Vector diag)"},
+	 { "VectorFEMassIntegrator_GetCoefficient", _wrap_VectorFEMassIntegrator_GetCoefficient, METH_O, "GetCoefficient(VectorFEMassIntegrator self) -> Coefficient"},
 	 { "delete_VectorFEMassIntegrator", _wrap_delete_VectorFEMassIntegrator, METH_O, "delete_VectorFEMassIntegrator(VectorFEMassIntegrator self)"},
 	 { "VectorFEMassIntegrator_swigregister", VectorFEMassIntegrator_swigregister, METH_O, NULL},
 	 { "VectorFEMassIntegrator_swiginit", VectorFEMassIntegrator_swiginit, METH_VARARGS, NULL},
@@ -44152,9 +44246,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "VectorDivergenceIntegrator_swiginit", VectorDivergenceIntegrator_swiginit, METH_VARARGS, NULL},
 	 { "new_DivDivIntegrator", _wrap_new_DivDivIntegrator, METH_VARARGS, "\n"
 		"DivDivIntegrator()\n"
-		"new_DivDivIntegrator(Coefficient q) -> DivDivIntegrator\n"
+		"new_DivDivIntegrator(Coefficient q, IntegrationRule ir=None) -> DivDivIntegrator\n"
 		""},
 	 { "DivDivIntegrator_AssembleElementMatrix", (PyCFunction)(void(*)(void))_wrap_DivDivIntegrator_AssembleElementMatrix, METH_VARARGS|METH_KEYWORDS, "AssembleElementMatrix(DivDivIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"},
+	 { "DivDivIntegrator_GetCoefficient", _wrap_DivDivIntegrator_GetCoefficient, METH_O, "GetCoefficient(DivDivIntegrator self) -> Coefficient"},
 	 { "delete_DivDivIntegrator", _wrap_delete_DivDivIntegrator, METH_O, "delete_DivDivIntegrator(DivDivIntegrator self)"},
 	 { "DivDivIntegrator_swigregister", DivDivIntegrator_swigregister, METH_O, NULL},
 	 { "DivDivIntegrator_swiginit", DivDivIntegrator_swiginit, METH_VARARGS, NULL},
@@ -44188,7 +44283,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"new_ElasticityIntegrator(Coefficient m, double q_l, double q_m) -> ElasticityIntegrator\n"
 		""},
 	 { "ElasticityIntegrator_AssembleElementMatrix", (PyCFunction)(void(*)(void))_wrap_ElasticityIntegrator_AssembleElementMatrix, METH_VARARGS|METH_KEYWORDS, "AssembleElementMatrix(ElasticityIntegrator self, FiniteElement arg2, ElementTransformation arg3, DenseMatrix arg4)"},
-	 { "ElasticityIntegrator_ComputeElementFlux", (PyCFunction)(void(*)(void))_wrap_ElasticityIntegrator_ComputeElementFlux, METH_VARARGS|METH_KEYWORDS, "ComputeElementFlux(ElasticityIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef=True)"},
+	 { "ElasticityIntegrator_ComputeElementFlux", (PyCFunction)(void(*)(void))_wrap_ElasticityIntegrator_ComputeElementFlux, METH_VARARGS|METH_KEYWORDS, "ComputeElementFlux(ElasticityIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef=True, IntegrationRule ir=None)"},
 	 { "ElasticityIntegrator_ComputeFluxEnergy", (PyCFunction)(void(*)(void))_wrap_ElasticityIntegrator_ComputeFluxEnergy, METH_VARARGS|METH_KEYWORDS, "ComputeFluxEnergy(ElasticityIntegrator self, FiniteElement fluxelem, ElementTransformation Trans, Vector flux, Vector d_energy=None) -> double"},
 	 { "delete_ElasticityIntegrator", _wrap_delete_ElasticityIntegrator, METH_O, "delete_ElasticityIntegrator(ElasticityIntegrator self)"},
 	 { "ElasticityIntegrator_swigregister", ElasticityIntegrator_swigregister, METH_O, NULL},
@@ -44659,12 +44754,6 @@ static void *_p_mfem__QuadratureFunctionCoefficientTo_p_mfem__Coefficient(void *
 }
 static void *_p_mfem__ExtrudeCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Coefficient *)  ((mfem::ExtrudeCoefficient *) x));
-}
-static void *_p_mfem__SymmetricMatrixConstantCoefficientTo_p_mfem__SymmetricMatrixCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::SymmetricMatrixCoefficient *)  ((mfem::SymmetricMatrixConstantCoefficient *) x));
-}
-static void *_p_mfem__SymmetricMatrixFunctionCoefficientTo_p_mfem__SymmetricMatrixCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::SymmetricMatrixCoefficient *)  ((mfem::SymmetricMatrixFunctionCoefficient *) x));
 }
 static void *_p_mfem__GridFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Vector *)  ((mfem::GridFunction *) x));
@@ -45974,9 +46063,6 @@ static swig_type_info _swigt__p_mfem__ScalarProductInterpolator = {"_p_mfem__Sca
 static swig_type_info _swigt__p_mfem__ScalarVectorProductInterpolator = {"_p_mfem__ScalarVectorProductInterpolator", "mfem::ScalarVectorProductInterpolator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", "mfem::Solver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__SumIntegrator = {"_p_mfem__SumIntegrator", "mfem::SumIntegrator *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__SymmetricMatrixCoefficient = {"_p_mfem__SymmetricMatrixCoefficient", "mfem::SymmetricMatrixCoefficient *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__SymmetricMatrixConstantCoefficient = {"_p_mfem__SymmetricMatrixConstantCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__SymmetricMatrixFunctionCoefficient = {"_p_mfem__SymmetricMatrixFunctionCoefficient", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__TraceJumpIntegrator = {"_p_mfem__TraceJumpIntegrator", "mfem::TraceJumpIntegrator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__TransposeIntegrator = {"_p_mfem__TransposeIntegrator", "mfem::TransposeIntegrator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
@@ -46322,9 +46408,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__SparseMatrix,
   &_swigt__p_mfem__SumCoefficient,
   &_swigt__p_mfem__SumIntegrator,
-  &_swigt__p_mfem__SymmetricMatrixCoefficient,
-  &_swigt__p_mfem__SymmetricMatrixConstantCoefficient,
-  &_swigt__p_mfem__SymmetricMatrixFunctionCoefficient,
   &_swigt__p_mfem__TimeDependentAdjointOperator,
   &_swigt__p_mfem__TimeDependentOperator,
   &_swigt__p_mfem__TraceJumpIntegrator,
@@ -46678,9 +46761,6 @@ static swig_cast_info _swigc__p_mfem__ScalarProductInterpolator[] = {  {&_swigt_
 static swig_cast_info _swigc__p_mfem__ScalarVectorProductInterpolator[] = {  {&_swigt__p_mfem__ScalarVectorProductInterpolator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__Solver, 0, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Solver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SumIntegrator[] = {  {&_swigt__p_mfem__SumIntegrator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__SymmetricMatrixConstantCoefficient[] = {{&_swigt__p_mfem__SymmetricMatrixConstantCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__SymmetricMatrixFunctionCoefficient[] = {{&_swigt__p_mfem__SymmetricMatrixFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__SymmetricMatrixCoefficient[] = {  {&_swigt__p_mfem__SymmetricMatrixCoefficient, 0, 0, 0},  {&_swigt__p_mfem__SymmetricMatrixConstantCoefficient, _p_mfem__SymmetricMatrixConstantCoefficientTo_p_mfem__SymmetricMatrixCoefficient, 0, 0},  {&_swigt__p_mfem__SymmetricMatrixFunctionCoefficient, _p_mfem__SymmetricMatrixFunctionCoefficientTo_p_mfem__SymmetricMatrixCoefficient, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TraceJumpIntegrator[] = {  {&_swigt__p_mfem__TraceJumpIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TransposeIntegrator[] = {  {&_swigt__p_mfem__TransposeIntegrator, 0, 0, 0},  {&_swigt__p_mfem__ConservativeConvectionIntegrator, _p_mfem__ConservativeConvectionIntegratorTo_p_mfem__TransposeIntegrator, 0, 0},  {&_swigt__p_mfem__NonconservativeDGTraceIntegrator, _p_mfem__NonconservativeDGTraceIntegratorTo_p_mfem__TransposeIntegrator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
@@ -47026,9 +47106,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__SparseMatrix,
   _swigc__p_mfem__SumCoefficient,
   _swigc__p_mfem__SumIntegrator,
-  _swigc__p_mfem__SymmetricMatrixCoefficient,
-  _swigc__p_mfem__SymmetricMatrixConstantCoefficient,
-  _swigc__p_mfem__SymmetricMatrixFunctionCoefficient,
   _swigc__p_mfem__TimeDependentAdjointOperator,
   _swigc__p_mfem__TimeDependentOperator,
   _swigc__p_mfem__TraceJumpIntegrator,

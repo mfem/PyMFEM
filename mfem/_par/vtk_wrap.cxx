@@ -5404,6 +5404,7 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "VTKGeometry_TETRAHEDRON",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::TETRAHEDRON)));
   SWIG_Python_SetConstant(d, "VTKGeometry_CUBE",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::CUBE)));
   SWIG_Python_SetConstant(d, "VTKGeometry_PRISM",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::PRISM)));
+  SWIG_Python_SetConstant(d, "VTKGeometry_PYRAMID",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::PYRAMID)));
   SWIG_Python_SetConstant(d, "VTKGeometry_QUADRATIC_SEGMENT",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::QUADRATIC_SEGMENT)));
   SWIG_Python_SetConstant(d, "VTKGeometry_QUADRATIC_TRIANGLE",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::QUADRATIC_TRIANGLE)));
   SWIG_Python_SetConstant(d, "VTKGeometry_BIQUADRATIC_SQUARE",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::BIQUADRATIC_SQUARE)));
@@ -5411,12 +5412,14 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "VTKGeometry_TRIQUADRATIC_CUBE",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::TRIQUADRATIC_CUBE)));
   SWIG_Python_SetConstant(d, "VTKGeometry_QUADRATIC_PRISM",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::QUADRATIC_PRISM)));
   SWIG_Python_SetConstant(d, "VTKGeometry_BIQUADRATIC_QUADRATIC_PRISM",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::BIQUADRATIC_QUADRATIC_PRISM)));
+  SWIG_Python_SetConstant(d, "VTKGeometry_QUADRATIC_PYRAMID",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::QUADRATIC_PYRAMID)));
   SWIG_Python_SetConstant(d, "VTKGeometry_LAGRANGE_SEGMENT",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::LAGRANGE_SEGMENT)));
   SWIG_Python_SetConstant(d, "VTKGeometry_LAGRANGE_TRIANGLE",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::LAGRANGE_TRIANGLE)));
   SWIG_Python_SetConstant(d, "VTKGeometry_LAGRANGE_SQUARE",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::LAGRANGE_SQUARE)));
   SWIG_Python_SetConstant(d, "VTKGeometry_LAGRANGE_TETRAHEDRON",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::LAGRANGE_TETRAHEDRON)));
   SWIG_Python_SetConstant(d, "VTKGeometry_LAGRANGE_CUBE",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::LAGRANGE_CUBE)));
   SWIG_Python_SetConstant(d, "VTKGeometry_LAGRANGE_PRISM",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::LAGRANGE_PRISM)));
+  SWIG_Python_SetConstant(d, "VTKGeometry_LAGRANGE_PYRAMID",SWIG_From_int(static_cast< int >(mfem::VTKGeometry::LAGRANGE_PYRAMID)));
   globals = SWIG_globals();
   if (!globals) {
     PyErr_SetString(PyExc_TypeError, "Failure to create SWIG globals.");

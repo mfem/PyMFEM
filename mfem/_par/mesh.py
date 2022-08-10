@@ -442,12 +442,12 @@ class Mesh(object):
     GetNFbyType = _swig_new_instance_method(_mesh.Mesh_GetNFbyType)
 
     def ReduceInt(self, value):
-        r"""ReduceInt(Mesh self, int value) -> long"""
+        r"""ReduceInt(Mesh self, int value) -> long long"""
         return _mesh.Mesh_ReduceInt(self, value)
     ReduceInt = _swig_new_instance_method(_mesh.Mesh_ReduceInt)
 
     def GetGlobalNE(self):
-        r"""GetGlobalNE(Mesh self) -> long"""
+        r"""GetGlobalNE(Mesh self) -> long long"""
         return _mesh.Mesh_GetGlobalNE(self)
     GetGlobalNE = _swig_new_instance_method(_mesh.Mesh_GetGlobalNE)
 
@@ -456,9 +456,9 @@ class Mesh(object):
         return _mesh.Mesh_GetGeometricFactors(self, *args, **kwargs)
     GetGeometricFactors = _swig_new_instance_method(_mesh.Mesh_GetGeometricFactors)
 
-    def GetFaceGeometricFactors(self, ir, flags, type):
-        r"""GetFaceGeometricFactors(Mesh self, IntegrationRule ir, int const flags, mfem::FaceType type) -> FaceGeometricFactors"""
-        return _mesh.Mesh_GetFaceGeometricFactors(self, ir, flags, type)
+    def GetFaceGeometricFactors(self, *args, **kwargs):
+        r"""GetFaceGeometricFactors(Mesh self, IntegrationRule ir, int const flags, mfem::FaceType type, mfem::MemoryType d_mt=DEFAULT) -> FaceGeometricFactors"""
+        return _mesh.Mesh_GetFaceGeometricFactors(self, *args, **kwargs)
     GetFaceGeometricFactors = _swig_new_instance_method(_mesh.Mesh_GetFaceGeometricFactors)
 
     def DeleteGeometricFactors(self):
@@ -1471,9 +1471,9 @@ class FaceGeometricFactors(object):
     NORMALS = _mesh.FaceGeometricFactors_NORMALS
     
 
-    def __init__(self, mesh, ir, flags, type):
-        r"""__init__(FaceGeometricFactors self, Mesh mesh, IntegrationRule ir, int flags, mfem::FaceType type) -> FaceGeometricFactors"""
-        _mesh.FaceGeometricFactors_swiginit(self, _mesh.new_FaceGeometricFactors(mesh, ir, flags, type))
+    def __init__(self, *args, **kwargs):
+        r"""__init__(FaceGeometricFactors self, Mesh mesh, IntegrationRule ir, int flags, mfem::FaceType type, mfem::MemoryType d_mt=DEFAULT) -> FaceGeometricFactors"""
+        _mesh.FaceGeometricFactors_swiginit(self, _mesh.new_FaceGeometricFactors(*args, **kwargs))
     X = property(_mesh.FaceGeometricFactors_X_get, _mesh.FaceGeometricFactors_X_set, doc=r"""X : mfem::Vector""")
     J = property(_mesh.FaceGeometricFactors_J_get, _mesh.FaceGeometricFactors_J_set, doc=r"""J : mfem::Vector""")
     detJ = property(_mesh.FaceGeometricFactors_detJ_get, _mesh.FaceGeometricFactors_detJ_set, doc=r"""detJ : mfem::Vector""")
