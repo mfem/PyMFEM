@@ -727,8 +727,8 @@ def cmake_make_mfem(serial=True):
 
     txt = 'serial' if serial else 'parallel'
           
-    #make('mfem_' + txt)
-    #make_install('mfem_' + txt)
+    make('mfem_' + txt)
+    make_install('mfem_' + txt)
 
     os.chdir(pwd)
 
