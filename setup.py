@@ -419,12 +419,16 @@ def find_libpath_from_prefix(lib, prefix0):
     prefix0 = abspath(prefix0)
     print("find_libpath_from_prefix", lib, prefix0)    
     soname = 'lib' + lib + dylibext
+    aname = 'lib' + lib + '.a'
+    
+    print(os.path.listdir(os.path.join(prefix0, 'lib'))
+          
     path = os.path.join(prefix0, 'lib', soname)
     if not os.path.exists(path):
         path = os.path.join(prefix0, 'lib64', soname)
         if not os.path.exists(path):
             pass
-    aname = 'lib' + lib + '.a'
+
     path = os.path.join(prefix0, 'lib', aname)
     if not os.path.exists(path):
         path = os.path.join(prefix0, 'lib64', aname)
@@ -719,8 +723,9 @@ def cmake_make_mfem(serial=True):
     cmake('..', **cmake_opts)
 
     txt = 'serial' if serial else 'parallel'
-    make('mfem_' + txt)
-    make_install('mfem_' + txt)
+          
+    #make('mfem_' + txt)
+    #make_install('mfem_' + txt)
 
     os.chdir(pwd)
 
