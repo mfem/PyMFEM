@@ -96,24 +96,17 @@ jobs:
         echo $PYTHONPATH
         echo $SANDBOX
 
-        #  clone mfem master
-        mkdir external
-        cd external
-        git clone https://github.com/mfem/mfem.git
-        cd ..
-
-        git status
-
         if [ "${USE_FLAGS}" = "000" ]; then
            python setup.py clean --swig
+           python setup.py install --ext-only --with-gslib --mfem-branch='master'
            python setup.py install --swig --with-gslib
-           python setup.py install --with-gslib  
+           python setup.py install --skip-ext --with-gslib
         fi
         if [ "${USE_FLAGS}" = "010" ]; then
            python setup.py clean --swig
-           python setup.py install --swig --with-gslib --with-parallel
-           python setup.py install --with-gslib  --with-parallel --prefix=$SANDBOX
-           python setup.py install --with-parallel --prefix=$SANDBOX
+           python setup.py install --ext-only --with-gslib --with-parallel --mfem-branch='master'
+           python setup.py install --swig --with-gslib  --with-parallel
+           python setup.py install --skip-ext --with-parallel --with-gslib --prefix=$SANDBOX
         fi
 
     - name: RUN_EXAMPLES
