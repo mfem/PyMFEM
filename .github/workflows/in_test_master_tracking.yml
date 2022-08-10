@@ -110,20 +110,20 @@ jobs:
         git status
 
         if [ "${USE_FLAGS}" = "000" ]; then  
-           python setup.py install --user
+           python setup.py install --user --mfem-branch='master'
         fi
         if [ "${USE_FLAGS}" = "010" ]; then
-           python setup.py install --with-parallel --prefix=$SANDBOX
+           python setup.py install --with-parallel --prefix=$SANDBOX --mfem-branch='master'
         fi
         if [ "${USE_FLAGS}" = "100" ]; then
            ls -l /usr/local/cuda-${CUDA}/include
-           python setup.py install --with-cuda --prefix=$SANDBOX
+           python setup.py install --with-cuda --prefix=$SANDBOX --mfem-branch='master'
         fi
         if [ "${USE_FLAGS}" = "110" ]; then
-           python setup.py install --with-cuda --with-parallel
+           python setup.py install --with-cuda --with-parallel --mfem-branch='master'
         fi
         if [ "${USE_FLAGS}" = "001" ]; then
-           python setup.py install --prefix=$SANDBOX --with-libceed	
+           python setup.py install --prefix=$SANDBOX --with-libceed --mfem-branch='master'
         fi
 
     - name: RUN_EXAMPLES
