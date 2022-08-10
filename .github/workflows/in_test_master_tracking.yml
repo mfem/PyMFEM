@@ -126,7 +126,7 @@ jobs:
            python setup.py install --prefix=$SANDBOX --with-libceed	
         fi
 
-    - name: EX1_RUN      
+    - name: RUN_EXAMPLES
       run: |
 
         export PATH=/usr/local/cuda-${CUDA}/bin:$PATH
