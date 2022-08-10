@@ -414,8 +414,10 @@ def cmake(path, **kwargs):
 
 
 def find_libpath_from_prefix(lib, prefix0):
+    print("find_libpath_from_prefix", lib, prefix0)    
     prefix0 = os.path.expanduser(prefix0)
     prefix0 = abspath(prefix0)
+    print("find_libpath_from_prefix", lib, prefix0)    
     soname = 'lib' + lib + dylibext
     path = os.path.join(prefix0, 'lib', soname)
     if not os.path.exists(path):
