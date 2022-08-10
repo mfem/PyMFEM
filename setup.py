@@ -1377,7 +1377,7 @@ class BuildPy(_build_py):
             if build_gslib:
                 download('gslib')
                 make_gslib(serial=True)                  
-                if build_parallel:
+                if build_hypre:
                     make_gslib()
 
             mfem_downloaded = False

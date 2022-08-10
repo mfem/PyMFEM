@@ -1,12 +1,23 @@
 #
 #   based on meshOptMWE.cpp from Ketan Mittel
 #
-
+import sys
 import os
 from os.path import expanduser, join
 import numpy as np
 
-import mfem.ser as mfem
+if len(sys.argv) > 1 and sys.argv[1] == '-p':
+    import mfem.par as mfem
+    use_parallel = True
+    from mfem.common.mpi_debug import nicePrint as print
+    from mpi4py import MPI
+    myid = MPI.COMM_WORLD.rank
+    sys.argv = [sys.argv[0]] + sys.argv[2:]
+
+else:
+    import mfem.ser as mfem
+    use_parallel = False
+    myid = 0
 
 class discrete_size_2d(mfem.PyCoefficient):
     def EvalValue(self, x):
