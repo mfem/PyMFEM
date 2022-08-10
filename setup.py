@@ -414,28 +414,31 @@ def cmake(path, **kwargs):
 
 
 def find_libpath_from_prefix(lib, prefix0):
-    print("find_libpath_from_prefix", lib, prefix0)    
+
     prefix0 = os.path.expanduser(prefix0)
     prefix0 = abspath(prefix0)
-    print("find_libpath_from_prefix", lib, prefix0)    
+
     soname = 'lib' + lib + dylibext
     aname = 'lib' + lib + '.a'
-    
-    print(os.listdir(os.path.join(prefix0, 'lib')))
           
     path = os.path.join(prefix0, 'lib', soname)
-    if not os.path.exists(path):
+    if os.path.exists(path):
+        return path
+    else:
         path = os.path.join(prefix0, 'lib64', soname)
-        if not os.path.exists(path):
-            pass
+        if os.path.exists(path):
+            return path
 
     path = os.path.join(prefix0, 'lib', aname)
-    if not os.path.exists(path):
+    if os.path.exists(path):
+        return path
+    else:
         path = os.path.join(prefix0, 'lib64', aname)
-        if not os.path.exists(path):
-            return ''
-        
-    return path
+        if os.path.exists(path):
+            return path
+    print("Failed to find library by find_libpath_from_prefix", lib, prefix0)
+    print(os.listdir(os.path.join(prefix0, 'lib')))    
+    return ''
 
 ###
 #  build libraries
