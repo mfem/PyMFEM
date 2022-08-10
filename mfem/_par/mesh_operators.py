@@ -249,7 +249,7 @@ class ThresholdRefiner(MeshOperator):
     SetLocalErrorGoal = _swig_new_instance_method(_mesh_operators.ThresholdRefiner_SetLocalErrorGoal)
 
     def SetMaxElements(self, max_elem):
-        r"""SetMaxElements(ThresholdRefiner self, long max_elem)"""
+        r"""SetMaxElements(ThresholdRefiner self, long long max_elem)"""
         return _mesh_operators.ThresholdRefiner_SetMaxElements(self, max_elem)
     SetMaxElements = _swig_new_instance_method(_mesh_operators.ThresholdRefiner_SetMaxElements)
 
@@ -269,7 +269,7 @@ class ThresholdRefiner(MeshOperator):
     SetNCLimit = _swig_new_instance_method(_mesh_operators.ThresholdRefiner_SetNCLimit)
 
     def GetNumMarkedElements(self):
-        r"""GetNumMarkedElements(ThresholdRefiner self) -> long"""
+        r"""GetNumMarkedElements(ThresholdRefiner self) -> long long"""
         return _mesh_operators.ThresholdRefiner_GetNumMarkedElements(self)
     GetNumMarkedElements = _swig_new_instance_method(_mesh_operators.ThresholdRefiner_GetNumMarkedElements)
 
@@ -345,7 +345,7 @@ class CoefficientRefiner(MeshOperator):
     SetThreshold = _swig_new_instance_method(_mesh_operators.CoefficientRefiner_SetThreshold)
 
     def SetMaxElements(self, max_elements_):
-        r"""SetMaxElements(CoefficientRefiner self, long max_elements_)"""
+        r"""SetMaxElements(CoefficientRefiner self, long long max_elements_)"""
         return _mesh_operators.CoefficientRefiner_SetMaxElements(self, max_elements_)
     SetMaxElements = _swig_new_instance_method(_mesh_operators.CoefficientRefiner_SetMaxElements)
 
@@ -355,7 +355,7 @@ class CoefficientRefiner(MeshOperator):
     ResetCoefficient = _swig_new_instance_method(_mesh_operators.CoefficientRefiner_ResetCoefficient)
 
     def SetOrder(self, order_):
-        r"""SetOrder(CoefficientRefiner self, double order_)"""
+        r"""SetOrder(CoefficientRefiner self, int order_)"""
         return _mesh_operators.CoefficientRefiner_SetOrder(self, order_)
     SetOrder = _swig_new_instance_method(_mesh_operators.CoefficientRefiner_SetOrder)
 

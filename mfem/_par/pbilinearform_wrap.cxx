@@ -4026,6 +4026,77 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ParBilinearForm_ParallelRAP(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ParBilinearForm *arg1 = (mfem::ParBilinearForm *) 0 ;
+  mfem::SparseMatrix *arg2 = 0 ;
+  mfem::OperatorHandle *arg3 = 0 ;
+  bool arg4 = (bool) false ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"loc_A",  (char *)"A",  (char *)"steal_loc_A",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:ParBilinearForm_ParallelRAP", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParBilinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParBilinearForm_ParallelRAP" "', argument " "1"" of type '" "mfem::ParBilinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParBilinearForm * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__SparseMatrix,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParBilinearForm_ParallelRAP" "', argument " "2"" of type '" "mfem::SparseMatrix &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParBilinearForm_ParallelRAP" "', argument " "2"" of type '" "mfem::SparseMatrix &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::SparseMatrix * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__OperatorHandle,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParBilinearForm_ParallelRAP" "', argument " "3"" of type '" "mfem::OperatorHandle &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParBilinearForm_ParallelRAP" "', argument " "3"" of type '" "mfem::OperatorHandle &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::OperatorHandle * >(argp3);
+  if (obj3) {
+    ecode4 = SWIG_AsVal_bool(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "ParBilinearForm_ParallelRAP" "', argument " "4"" of type '" "bool""'");
+    } 
+    arg4 = static_cast< bool >(val4);
+  }
+  {
+    try {
+      (arg1)->ParallelRAP(*arg2,*arg3,arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ParBilinearForm_ParallelAssemble__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::ParBilinearForm *arg1 = (mfem::ParBilinearForm *) 0 ;
@@ -6737,6 +6808,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "ParBilinearForm_SetOperatorType", (PyCFunction)(void(*)(void))_wrap_ParBilinearForm_SetOperatorType, METH_VARARGS|METH_KEYWORDS, "ParBilinearForm_SetOperatorType(ParBilinearForm self, mfem::Operator::Type tid)"},
 	 { "ParBilinearForm_Assemble", (PyCFunction)(void(*)(void))_wrap_ParBilinearForm_Assemble, METH_VARARGS|METH_KEYWORDS, "ParBilinearForm_Assemble(ParBilinearForm self, int skip_zeros=1)"},
 	 { "ParBilinearForm_AssembleDiagonal", (PyCFunction)(void(*)(void))_wrap_ParBilinearForm_AssembleDiagonal, METH_VARARGS|METH_KEYWORDS, "ParBilinearForm_AssembleDiagonal(ParBilinearForm self, Vector diag)"},
+	 { "ParBilinearForm_ParallelRAP", (PyCFunction)(void(*)(void))_wrap_ParBilinearForm_ParallelRAP, METH_VARARGS|METH_KEYWORDS, "ParBilinearForm_ParallelRAP(ParBilinearForm self, SparseMatrix loc_A, OperatorHandle A, bool steal_loc_A=False)"},
 	 { "ParBilinearForm_ParallelAssembleElim", _wrap_ParBilinearForm_ParallelAssembleElim, METH_VARARGS, "\n"
 		"ParBilinearForm_ParallelAssembleElim(ParBilinearForm self) -> HypreParMatrix\n"
 		"ParBilinearForm_ParallelAssembleElim(ParBilinearForm self, OperatorHandle A_elim)\n"
@@ -6823,6 +6895,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ParBilinearForm_SetOperatorType", (PyCFunction)(void(*)(void))_wrap_ParBilinearForm_SetOperatorType, METH_VARARGS|METH_KEYWORDS, "SetOperatorType(ParBilinearForm self, mfem::Operator::Type tid)"},
 	 { "ParBilinearForm_Assemble", (PyCFunction)(void(*)(void))_wrap_ParBilinearForm_Assemble, METH_VARARGS|METH_KEYWORDS, "Assemble(ParBilinearForm self, int skip_zeros=1)"},
 	 { "ParBilinearForm_AssembleDiagonal", (PyCFunction)(void(*)(void))_wrap_ParBilinearForm_AssembleDiagonal, METH_VARARGS|METH_KEYWORDS, "AssembleDiagonal(ParBilinearForm self, Vector diag)"},
+	 { "ParBilinearForm_ParallelRAP", (PyCFunction)(void(*)(void))_wrap_ParBilinearForm_ParallelRAP, METH_VARARGS|METH_KEYWORDS, "ParallelRAP(ParBilinearForm self, SparseMatrix loc_A, OperatorHandle A, bool steal_loc_A=False)"},
 	 { "ParBilinearForm_ParallelAssembleElim", _wrap_ParBilinearForm_ParallelAssembleElim, METH_VARARGS, "\n"
 		"ParallelAssembleElim(ParBilinearForm self) -> HypreParMatrix\n"
 		"ParallelAssembleElim(ParBilinearForm self, OperatorHandle A_elim)\n"
@@ -8825,14 +8898,14 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40400)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.4.0"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40400)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40401)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.4.1"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40401)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40400)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40400)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40400)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40401)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40401)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40401)%100))));
   
   if (import_mpi4py() < 0)
 #if PY_MAJOR_VERSION >= 3

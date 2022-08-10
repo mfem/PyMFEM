@@ -285,7 +285,7 @@ class intArray(object):
     end = _swig_new_instance_method(_array.intArray_end)
 
     def MemoryUsage(self):
-        r"""MemoryUsage(intArray self) -> long"""
+        r"""MemoryUsage(intArray self) -> std::size_t"""
         return _array.intArray_MemoryUsage(self)
     MemoryUsage = _swig_new_instance_method(_array.intArray_MemoryUsage)
 
@@ -609,7 +609,7 @@ class doubleArray(object):
     end = _swig_new_instance_method(_array.doubleArray_end)
 
     def MemoryUsage(self):
-        r"""MemoryUsage(doubleArray self) -> long"""
+        r"""MemoryUsage(doubleArray self) -> std::size_t"""
         return _array.doubleArray_MemoryUsage(self)
     MemoryUsage = _swig_new_instance_method(_array.doubleArray_MemoryUsage)
 
@@ -870,7 +870,7 @@ class boolArray(object):
     end = _swig_new_instance_method(_array.boolArray_end)
 
     def MemoryUsage(self):
-        r"""MemoryUsage(boolArray self) -> long"""
+        r"""MemoryUsage(boolArray self) -> std::size_t"""
         return _array.boolArray_MemoryUsage(self)
     MemoryUsage = _swig_new_instance_method(_array.boolArray_MemoryUsage)
 

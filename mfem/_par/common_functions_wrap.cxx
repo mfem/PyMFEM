@@ -2701,30 +2701,33 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[6]
 #define SWIGTYPE_p_mfem__ArrayT_mfem__SparseMatrix_p_t swig_types[7]
 #define SWIGTYPE_p_mfem__BlockMatrix swig_types[8]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[9]
-#define SWIGTYPE_p_mfem__HypreADS swig_types[10]
-#define SWIGTYPE_p_mfem__HypreAMS swig_types[11]
-#define SWIGTYPE_p_mfem__HypreBoomerAMG swig_types[12]
-#define SWIGTYPE_p_mfem__HypreDiagScale swig_types[13]
-#define SWIGTYPE_p_mfem__HypreEuclid swig_types[14]
-#define SWIGTYPE_p_mfem__HypreFGMRES swig_types[15]
-#define SWIGTYPE_p_mfem__HypreGMRES swig_types[16]
-#define SWIGTYPE_p_mfem__HypreILU swig_types[17]
-#define SWIGTYPE_p_mfem__HypreIdentity swig_types[18]
-#define SWIGTYPE_p_mfem__HyprePCG swig_types[19]
-#define SWIGTYPE_p_mfem__HypreParMatrix swig_types[20]
-#define SWIGTYPE_p_mfem__HypreParVector swig_types[21]
-#define SWIGTYPE_p_mfem__HypreParaSails swig_types[22]
-#define SWIGTYPE_p_mfem__HypreSolver swig_types[23]
-#define SWIGTYPE_p_mfem__HypreTriSolve swig_types[24]
-#define SWIGTYPE_p_mfem__OutStream swig_types[25]
-#define SWIGTYPE_p_mfem__STable swig_types[26]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[27]
-#define SWIGTYPE_p_mfem__Table swig_types[28]
-#define SWIGTYPE_p_mfem__Vector swig_types[29]
-#define SWIGTYPE_p_std__ostream swig_types[30]
-static swig_type_info *swig_types[32];
-static swig_module_info swig_module = {swig_types, 31, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__CholeskyFactors swig_types[9]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[10]
+#define SWIGTYPE_p_mfem__Factors swig_types[11]
+#define SWIGTYPE_p_mfem__HypreADS swig_types[12]
+#define SWIGTYPE_p_mfem__HypreAMS swig_types[13]
+#define SWIGTYPE_p_mfem__HypreBoomerAMG swig_types[14]
+#define SWIGTYPE_p_mfem__HypreDiagScale swig_types[15]
+#define SWIGTYPE_p_mfem__HypreEuclid swig_types[16]
+#define SWIGTYPE_p_mfem__HypreFGMRES swig_types[17]
+#define SWIGTYPE_p_mfem__HypreGMRES swig_types[18]
+#define SWIGTYPE_p_mfem__HypreILU swig_types[19]
+#define SWIGTYPE_p_mfem__HypreIdentity swig_types[20]
+#define SWIGTYPE_p_mfem__HyprePCG swig_types[21]
+#define SWIGTYPE_p_mfem__HypreParMatrix swig_types[22]
+#define SWIGTYPE_p_mfem__HypreParVector swig_types[23]
+#define SWIGTYPE_p_mfem__HypreParaSails swig_types[24]
+#define SWIGTYPE_p_mfem__HypreSolver swig_types[25]
+#define SWIGTYPE_p_mfem__HypreTriSolve swig_types[26]
+#define SWIGTYPE_p_mfem__LUFactors swig_types[27]
+#define SWIGTYPE_p_mfem__OutStream swig_types[28]
+#define SWIGTYPE_p_mfem__STable swig_types[29]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[30]
+#define SWIGTYPE_p_mfem__Table swig_types[31]
+#define SWIGTYPE_p_mfem__Vector swig_types[32]
+#define SWIGTYPE_p_std__ostream swig_types[33]
+static swig_type_info *swig_types[35];
+static swig_module_info swig_module = {swig_types, 34, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5936,6 +5939,12 @@ static void *_p_mfem__STableTo_p_mfem__Table(void *x, int *SWIGUNUSEDPARM(newmem
 static void *_p_mfem__OutStreamTo_p_std__ostream(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((std::ostream *)  ((mfem::OutStream *) x));
 }
+static void *_p_mfem__LUFactorsTo_p_mfem__Factors(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Factors *)  ((mfem::LUFactors *) x));
+}
+static void *_p_mfem__CholeskyFactorsTo_p_mfem__Factors(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Factors *)  ((mfem::CholeskyFactors *) x));
+}
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_bool = {"_p_bool", "bool *", 0, 0, (void*)0, 0};
@@ -5946,6 +5955,9 @@ static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__SparseMatrix_p_t = {"_p_mfem__ArrayT_mfem__SparseMatrix_p_t", "mfem::Array< mfem::SparseMatrix * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__BlockMatrix = {"_p_mfem__BlockMatrix", "mfem::BlockMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DenseMatrix = {"_p_mfem__DenseMatrix", "mfem::DenseMatrix *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__Factors = {"_p_mfem__Factors", "mfem::Factors *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__LUFactors = {"_p_mfem__LUFactors", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__CholeskyFactors = {"_p_mfem__CholeskyFactors", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__HypreParMatrix = {"_p_mfem__HypreParMatrix", "mfem::HypreParMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__HypreParVector = {"_p_mfem__HypreParVector", "mfem::HypreParVector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__HypreSolver = {"_p_mfem__HypreSolver", "mfem::HypreSolver *", 0, 0, (void*)0, 0};
@@ -5978,7 +5990,9 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__ArrayT_int_t,
   &_swigt__p_mfem__ArrayT_mfem__SparseMatrix_p_t,
   &_swigt__p_mfem__BlockMatrix,
+  &_swigt__p_mfem__CholeskyFactors,
   &_swigt__p_mfem__DenseMatrix,
+  &_swigt__p_mfem__Factors,
   &_swigt__p_mfem__HypreADS,
   &_swigt__p_mfem__HypreAMS,
   &_swigt__p_mfem__HypreBoomerAMG,
@@ -5994,6 +6008,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__HypreParaSails,
   &_swigt__p_mfem__HypreSolver,
   &_swigt__p_mfem__HypreTriSolve,
+  &_swigt__p_mfem__LUFactors,
   &_swigt__p_mfem__OutStream,
   &_swigt__p_mfem__STable,
   &_swigt__p_mfem__SparseMatrix,
@@ -6012,6 +6027,9 @@ static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__Arra
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__SparseMatrix_p_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__SparseMatrix_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__BlockMatrix[] = {  {&_swigt__p_mfem__BlockMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {  {&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__LUFactors[] = {{&_swigt__p_mfem__LUFactors, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__CholeskyFactors[] = {{&_swigt__p_mfem__CholeskyFactors, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Factors[] = {  {&_swigt__p_mfem__Factors, 0, 0, 0},  {&_swigt__p_mfem__LUFactors, _p_mfem__LUFactorsTo_p_mfem__Factors, 0, 0},  {&_swigt__p_mfem__CholeskyFactors, _p_mfem__CholeskyFactorsTo_p_mfem__Factors, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HypreParMatrix[] = {  {&_swigt__p_mfem__HypreParMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HypreParVector[] = {  {&_swigt__p_mfem__HypreParVector, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HypreFGMRES[] = {{&_swigt__p_mfem__HypreFGMRES, 0, 0, 0},{0, 0, 0, 0}};
@@ -6044,7 +6062,9 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__ArrayT_int_t,
   _swigc__p_mfem__ArrayT_mfem__SparseMatrix_p_t,
   _swigc__p_mfem__BlockMatrix,
+  _swigc__p_mfem__CholeskyFactors,
   _swigc__p_mfem__DenseMatrix,
+  _swigc__p_mfem__Factors,
   _swigc__p_mfem__HypreADS,
   _swigc__p_mfem__HypreAMS,
   _swigc__p_mfem__HypreBoomerAMG,
@@ -6060,6 +6080,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__HypreParaSails,
   _swigc__p_mfem__HypreSolver,
   _swigc__p_mfem__HypreTriSolve,
+  _swigc__p_mfem__LUFactors,
   _swigc__p_mfem__OutStream,
   _swigc__p_mfem__STable,
   _swigc__p_mfem__SparseMatrix,
@@ -6801,14 +6822,14 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40400)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.4.0"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40400)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40401)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.4.1"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40401)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40400)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40400)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40400)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40401)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40401)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40401)%100))));
   
   if (import_mpi4py() < 0)
 #if PY_MAJOR_VERSION >= 3

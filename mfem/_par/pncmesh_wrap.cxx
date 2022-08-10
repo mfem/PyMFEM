@@ -4992,6 +4992,45 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
 }
 
 
+SWIGINTERNINLINE PyObject* 
+SWIG_From_unsigned_SS_long  (unsigned long value)
+{
+  return (value > LONG_MAX) ?
+    PyLong_FromUnsignedLong(value) : PyInt_FromLong(static_cast< long >(value));
+}
+
+
+#if defined(LLONG_MAX) && !defined(SWIG_LONG_LONG_AVAILABLE)
+#  define SWIG_LONG_LONG_AVAILABLE
+#endif
+
+
+#ifdef SWIG_LONG_LONG_AVAILABLE
+SWIGINTERNINLINE PyObject* 
+SWIG_From_unsigned_SS_long_SS_long  (unsigned long long value)
+{
+  return (value > LONG_MAX) ?
+    PyLong_FromUnsignedLongLong(value) : PyInt_FromLong(static_cast< long >(value));
+}
+#endif
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_size_t  (size_t value)
+{    
+#ifdef SWIG_LONG_LONG_AVAILABLE
+  if (sizeof(size_t) <= sizeof(unsigned long)) {
+#endif
+    return SWIG_From_unsigned_SS_long  (static_cast< unsigned long >(value));
+#ifdef SWIG_LONG_LONG_AVAILABLE
+  } else {
+    /* assume sizeof(size_t) <= sizeof(unsigned long long) */
+    return SWIG_From_unsigned_SS_long_SS_long  (static_cast< unsigned long long >(value));
+  }
+#endif
+}
+
+
 
 /* ---------------------------------------------------
  * C++ director class methods
@@ -6734,7 +6773,7 @@ SWIGINTERN PyObject *_wrap_ParNCMesh_MemoryUsage(PyObject *SWIGUNUSEDPARM(self),
   char * kwnames[] = {
     (char *)"self",  (char *)"with_base",  NULL 
   };
-  long result;
+  std::size_t result;
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:ParNCMesh_MemoryUsage", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
@@ -6751,7 +6790,7 @@ SWIGINTERN PyObject *_wrap_ParNCMesh_MemoryUsage(PyObject *SWIGUNUSEDPARM(self),
   }
   {
     try {
-      result = (long)((mfem::ParNCMesh const *)arg1)->MemoryUsage(arg2); 
+      result = ((mfem::ParNCMesh const *)arg1)->MemoryUsage(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -6762,7 +6801,7 @@ SWIGINTERN PyObject *_wrap_ParNCMesh_MemoryUsage(PyObject *SWIGUNUSEDPARM(self),
     //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
     //    catch (std::exception &e) { SWIG_fail; }    
   }
-  resultobj = SWIG_From_long(static_cast< long >(result));
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
   return NULL;
@@ -7022,7 +7061,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "ParNCMesh_GetDerefineOldRanks", _wrap_ParNCMesh_GetDerefineOldRanks, METH_O, "ParNCMesh_GetDerefineOldRanks(ParNCMesh self) -> intArray"},
 	 { "ParNCMesh_GetBoundaryClosure", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_GetBoundaryClosure, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_GetBoundaryClosure(ParNCMesh self, intArray bdr_attr_is_ess, intArray bdr_vertices, intArray bdr_edges)"},
 	 { "ParNCMesh_Trim", _wrap_ParNCMesh_Trim, METH_O, "ParNCMesh_Trim(ParNCMesh self)"},
-	 { "ParNCMesh_MemoryUsage", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_MemoryUsage, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_MemoryUsage(ParNCMesh self, bool with_base=True) -> long"},
+	 { "ParNCMesh_MemoryUsage", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_MemoryUsage, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_MemoryUsage(ParNCMesh self, bool with_base=True) -> std::size_t"},
 	 { "ParNCMesh_PrintMemoryDetail", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_PrintMemoryDetail, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_PrintMemoryDetail(ParNCMesh self, bool with_base=True) -> int"},
 	 { "ParNCMesh_GetDebugMesh", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_GetDebugMesh, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_GetDebugMesh(ParNCMesh self, Mesh debug_mesh)"},
 	 { "ParNCMesh_swigregister", ParNCMesh_swigregister, METH_O, NULL},
@@ -7070,7 +7109,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ParNCMesh_GetDerefineOldRanks", _wrap_ParNCMesh_GetDerefineOldRanks, METH_O, "GetDerefineOldRanks(ParNCMesh self) -> intArray"},
 	 { "ParNCMesh_GetBoundaryClosure", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_GetBoundaryClosure, METH_VARARGS|METH_KEYWORDS, "GetBoundaryClosure(ParNCMesh self, intArray bdr_attr_is_ess, intArray bdr_vertices, intArray bdr_edges)"},
 	 { "ParNCMesh_Trim", _wrap_ParNCMesh_Trim, METH_O, "Trim(ParNCMesh self)"},
-	 { "ParNCMesh_MemoryUsage", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_MemoryUsage, METH_VARARGS|METH_KEYWORDS, "MemoryUsage(ParNCMesh self, bool with_base=True) -> long"},
+	 { "ParNCMesh_MemoryUsage", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_MemoryUsage, METH_VARARGS|METH_KEYWORDS, "MemoryUsage(ParNCMesh self, bool with_base=True) -> std::size_t"},
 	 { "ParNCMesh_PrintMemoryDetail", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_PrintMemoryDetail, METH_VARARGS|METH_KEYWORDS, "PrintMemoryDetail(ParNCMesh self, bool with_base=True) -> int"},
 	 { "ParNCMesh_GetDebugMesh", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_GetDebugMesh, METH_VARARGS|METH_KEYWORDS, "GetDebugMesh(ParNCMesh self, Mesh debug_mesh)"},
 	 { "ParNCMesh_swigregister", ParNCMesh_swigregister, METH_O, NULL},
@@ -8874,14 +8913,14 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40400)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.4.0"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40400)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40401)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.4.1"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40401)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40400)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40400)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40400)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40401)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40401)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40401)%100))));
   
   if (import_mpi4py() < 0)
 #if PY_MAJOR_VERSION >= 3

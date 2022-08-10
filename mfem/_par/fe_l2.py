@@ -138,6 +138,21 @@ class L2_QuadrilateralElement(mfem._par.fe_base.NodalTensorFiniteElement):
         r"""ProjectCurl(L2_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"""
         return _fe_l2.L2_QuadrilateralElement_ProjectCurl(self, fe, Trans, curl)
     ProjectCurl = _swig_new_instance_method(_fe_l2.L2_QuadrilateralElement_ProjectCurl)
+
+    def ProjectDiv(self, fe, Trans, div):
+        r"""ProjectDiv(L2_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix div)"""
+        return _fe_l2.L2_QuadrilateralElement_ProjectDiv(self, fe, Trans, div)
+    ProjectDiv = _swig_new_instance_method(_fe_l2.L2_QuadrilateralElement_ProjectDiv)
+
+    def Project(self, *args):
+        r"""
+        Project(L2_QuadrilateralElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(L2_QuadrilateralElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(L2_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
+        Project(L2_QuadrilateralElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)
+        """
+        return _fe_l2.L2_QuadrilateralElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe_l2.L2_QuadrilateralElement_Project)
     __swig_destroy__ = _fe_l2.delete_L2_QuadrilateralElement
 
 # Register L2_QuadrilateralElement in _fe_l2:
@@ -167,6 +182,21 @@ class L2_HexahedronElement(mfem._par.fe_base.NodalTensorFiniteElement):
         r"""ProjectDelta(L2_HexahedronElement self, int vertex, Vector dofs)"""
         return _fe_l2.L2_HexahedronElement_ProjectDelta(self, vertex, dofs)
     ProjectDelta = _swig_new_instance_method(_fe_l2.L2_HexahedronElement_ProjectDelta)
+
+    def ProjectDiv(self, fe, Trans, div):
+        r"""ProjectDiv(L2_HexahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix div)"""
+        return _fe_l2.L2_HexahedronElement_ProjectDiv(self, fe, Trans, div)
+    ProjectDiv = _swig_new_instance_method(_fe_l2.L2_HexahedronElement_ProjectDiv)
+
+    def Project(self, *args):
+        r"""
+        Project(L2_HexahedronElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(L2_HexahedronElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(L2_HexahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
+        Project(L2_HexahedronElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)
+        """
+        return _fe_l2.L2_HexahedronElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe_l2.L2_HexahedronElement_Project)
     __swig_destroy__ = _fe_l2.delete_L2_HexahedronElement
 
 # Register L2_HexahedronElement in _fe_l2:

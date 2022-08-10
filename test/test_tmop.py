@@ -2,12 +2,23 @@
 #   based on meshOptMWE.cpp from Ketan Mittal
 #
 # python test_tmop.py -m ../data/square01.mesh -o 2 -rs 2 -mid 80 -tid 5 -ni 50 -qo 4 -vl 2 -ae 0
-
+import sys
 import os
 from os.path import expanduser, join
 import numpy as np
 
-import mfem.ser as mfem
+if len(sys.argv) > 1 and sys.argv[1] == '-p':
+    import mfem.par as mfem
+    use_parallel = True
+    from mfem.common.mpi_debug import nicePrint as print
+    from mpi4py import MPI
+    myid = MPI.COMM_WORLD.rank
+    sys.argv = [sys.argv[0]] + sys.argv[2:]
+
+else:
+    import mfem.ser as mfem
+    use_parallel = False
+    myid = 0
 
 class discrete_size_2d(mfem.PyCoefficient):
     def EvalValue(self, x):

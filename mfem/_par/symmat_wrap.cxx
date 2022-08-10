@@ -3314,6 +3314,55 @@ SWIG_AsVal_double (PyObject *obj, double *val)
   #define SWIG_From_long   PyInt_FromLong 
 
 
+SWIGINTERNINLINE PyObject* 
+SWIG_From_unsigned_SS_long  (unsigned long value)
+{
+  return (value > LONG_MAX) ?
+    PyLong_FromUnsignedLong(value) : PyInt_FromLong(static_cast< long >(value));
+}
+
+
+#include <limits.h>
+#if !defined(SWIG_NO_LLONG_MAX)
+# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
+#   define LLONG_MAX __LONG_LONG_MAX__
+#   define LLONG_MIN (-LLONG_MAX - 1LL)
+#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
+# endif
+#endif
+
+
+#if defined(LLONG_MAX) && !defined(SWIG_LONG_LONG_AVAILABLE)
+#  define SWIG_LONG_LONG_AVAILABLE
+#endif
+
+
+#ifdef SWIG_LONG_LONG_AVAILABLE
+SWIGINTERNINLINE PyObject* 
+SWIG_From_unsigned_SS_long_SS_long  (unsigned long long value)
+{
+  return (value > LONG_MAX) ?
+    PyLong_FromUnsignedLongLong(value) : PyInt_FromLong(static_cast< long >(value));
+}
+#endif
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_size_t  (size_t value)
+{    
+#ifdef SWIG_LONG_LONG_AVAILABLE
+  if (sizeof(size_t) <= sizeof(unsigned long)) {
+#endif
+    return SWIG_From_unsigned_SS_long  (static_cast< unsigned long >(value));
+#ifdef SWIG_LONG_LONG_AVAILABLE
+  } else {
+    /* assume sizeof(size_t) <= sizeof(unsigned long long) */
+    return SWIG_From_unsigned_SS_long_SS_long  (static_cast< unsigned long long >(value));
+  }
+#endif
+}
+
+
 #include <float.h>
 
 
@@ -4533,7 +4582,7 @@ SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_MemoryUsage(PyObject *SWIGUNUSED
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  long result;
+  std::size_t result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -4544,7 +4593,7 @@ SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_MemoryUsage(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< mfem::DenseSymmetricMatrix * >(argp1);
   {
     try {
-      result = (long)((mfem::DenseSymmetricMatrix const *)arg1)->MemoryUsage(); 
+      result = ((mfem::DenseSymmetricMatrix const *)arg1)->MemoryUsage(); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -4555,7 +4604,7 @@ SWIGINTERN PyObject *_wrap_DenseSymmetricMatrix_MemoryUsage(PyObject *SWIGUNUSED
     //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
     //    catch (std::exception &e) { SWIG_fail; }    
   }
-  resultobj = SWIG_From_long(static_cast< long >(result));
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
   return NULL;
@@ -5345,7 +5394,7 @@ static PyMethodDef SwigMethods[] = {
 		"DenseSymmetricMatrix_Elem(DenseSymmetricMatrix self, int i, int j) -> double const &\n"
 		""},
 	 { "DenseSymmetricMatrix___imul__", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix___imul__, METH_VARARGS|METH_KEYWORDS, "DenseSymmetricMatrix___imul__(DenseSymmetricMatrix self, double c) -> DenseSymmetricMatrix"},
-	 { "DenseSymmetricMatrix_MemoryUsage", _wrap_DenseSymmetricMatrix_MemoryUsage, METH_O, "DenseSymmetricMatrix_MemoryUsage(DenseSymmetricMatrix self) -> long"},
+	 { "DenseSymmetricMatrix_MemoryUsage", _wrap_DenseSymmetricMatrix_MemoryUsage, METH_O, "DenseSymmetricMatrix_MemoryUsage(DenseSymmetricMatrix self) -> std::size_t"},
 	 { "DenseSymmetricMatrix_Read", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix_Read, METH_VARARGS|METH_KEYWORDS, "DenseSymmetricMatrix_Read(DenseSymmetricMatrix self, bool on_dev=True) -> double const *"},
 	 { "DenseSymmetricMatrix_HostRead", _wrap_DenseSymmetricMatrix_HostRead, METH_O, "DenseSymmetricMatrix_HostRead(DenseSymmetricMatrix self) -> double const *"},
 	 { "DenseSymmetricMatrix_Write", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix_Write, METH_VARARGS|METH_KEYWORDS, "DenseSymmetricMatrix_Write(DenseSymmetricMatrix self, bool on_dev=True) -> double *"},
@@ -5394,7 +5443,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Elem(DenseSymmetricMatrix self, int i, int j) -> double const &\n"
 		""},
 	 { "DenseSymmetricMatrix___imul__", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix___imul__, METH_VARARGS|METH_KEYWORDS, "__imul__(DenseSymmetricMatrix self, double c) -> DenseSymmetricMatrix"},
-	 { "DenseSymmetricMatrix_MemoryUsage", _wrap_DenseSymmetricMatrix_MemoryUsage, METH_O, "MemoryUsage(DenseSymmetricMatrix self) -> long"},
+	 { "DenseSymmetricMatrix_MemoryUsage", _wrap_DenseSymmetricMatrix_MemoryUsage, METH_O, "MemoryUsage(DenseSymmetricMatrix self) -> std::size_t"},
 	 { "DenseSymmetricMatrix_Read", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix_Read, METH_VARARGS|METH_KEYWORDS, "Read(DenseSymmetricMatrix self, bool on_dev=True) -> double const *"},
 	 { "DenseSymmetricMatrix_HostRead", _wrap_DenseSymmetricMatrix_HostRead, METH_O, "HostRead(DenseSymmetricMatrix self) -> double const *"},
 	 { "DenseSymmetricMatrix_Write", (PyCFunction)(void(*)(void))_wrap_DenseSymmetricMatrix_Write, METH_VARARGS|METH_KEYWORDS, "Write(DenseSymmetricMatrix self, bool on_dev=True) -> double *"},

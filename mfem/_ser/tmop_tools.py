@@ -140,30 +140,6 @@ class AdvectorCG(mfem._ser.tmop.AdaptivityEvaluator):
 # Register AdvectorCG in _tmop_tools:
 _tmop_tools.AdvectorCG_swigregister(AdvectorCG)
 
-class InterpolatorFP(mfem._ser.tmop.AdaptivityEvaluator):
-    r"""Proxy of C++ mfem::InterpolatorFP class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self):
-        r"""__init__(InterpolatorFP self) -> InterpolatorFP"""
-        _tmop_tools.InterpolatorFP_swiginit(self, _tmop_tools.new_InterpolatorFP())
-
-    def SetInitialField(self, init_nodes, init_field):
-        r"""SetInitialField(InterpolatorFP self, Vector init_nodes, Vector init_field)"""
-        return _tmop_tools.InterpolatorFP_SetInitialField(self, init_nodes, init_field)
-    SetInitialField = _swig_new_instance_method(_tmop_tools.InterpolatorFP_SetInitialField)
-
-    def ComputeAtNewPosition(self, new_nodes, new_field):
-        r"""ComputeAtNewPosition(InterpolatorFP self, Vector new_nodes, Vector new_field)"""
-        return _tmop_tools.InterpolatorFP_ComputeAtNewPosition(self, new_nodes, new_field)
-    ComputeAtNewPosition = _swig_new_instance_method(_tmop_tools.InterpolatorFP_ComputeAtNewPosition)
-    __swig_destroy__ = _tmop_tools.delete_InterpolatorFP
-
-# Register InterpolatorFP in _tmop_tools:
-_tmop_tools.InterpolatorFP_swigregister(InterpolatorFP)
-
 class SerialAdvectorCGOper(mfem._ser.operators.TimeDependentOperator):
     r"""Proxy of C++ mfem::SerialAdvectorCGOper class."""
 

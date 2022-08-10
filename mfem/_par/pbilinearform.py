@@ -156,6 +156,11 @@ class ParBilinearForm(mfem._par.bilinearform.BilinearForm):
         return _pbilinearform.ParBilinearForm_AssembleDiagonal(self, diag)
     AssembleDiagonal = _swig_new_instance_method(_pbilinearform.ParBilinearForm_AssembleDiagonal)
 
+    def ParallelRAP(self, loc_A, A, steal_loc_A=False):
+        r"""ParallelRAP(ParBilinearForm self, SparseMatrix loc_A, OperatorHandle A, bool steal_loc_A=False)"""
+        return _pbilinearform.ParBilinearForm_ParallelRAP(self, loc_A, A, steal_loc_A)
+    ParallelRAP = _swig_new_instance_method(_pbilinearform.ParBilinearForm_ParallelRAP)
+
     def ParallelAssembleElim(self, *args):
         r"""
         ParallelAssembleElim(ParBilinearForm self) -> HypreParMatrix
