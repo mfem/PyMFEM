@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    if: contains(github.event.pull_request.labels.*.name, 'in-test-wrapper_generation')
+    if: contains(github.event.pull_request.labels.*.name, 'in-test-wrapper-generation')
     strategy:
       fail-fast: false
       matrix:
