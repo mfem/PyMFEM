@@ -73,8 +73,8 @@ jobs:
         python -c "import sys;print(sys.path)"
         python -c "import numpy;print(numpy.__file__)"	
 
+        rm $(which swig)
         which swig
-        swig -version
         pip install swig
         which swig
         swig -version
