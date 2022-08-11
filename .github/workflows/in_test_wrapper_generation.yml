@@ -73,6 +73,12 @@ jobs:
         python -c "import sys;print(sys.path)"
         python -c "import numpy;print(numpy.__file__)"	
 
+        which swig
+	swig --version
+	pip install swig
+        which swig
+	swig --version
+
         if [ "${USE_FLAGS:0:1}" = "1" ] ; then
             echo $cuda
             source ./ci_scripts/add_cuda_11_5.sh;

@@ -143,8 +143,7 @@ pip install six numpy scipy auditwheel twine cmake swig mpi4py
 git clone https://github.com/mfem/PyMFEM.git
 
 # testing it without swig
-python setup.py install --ext-only --with-parallel --mfem-branch='master'
-python setup.py install --skip-ext --with-parallel 
+python setup.py install --with-parallel --mfem-branch='master'
 
 # testing it with swig
 git checkout tmop_support
