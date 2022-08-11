@@ -77,8 +77,8 @@ jobs:
         which swig
         pip install swig --prefix=~/sandbox
         which swig
-	$(which swig) -version
-	ls -l $(which swig)
+        $(which swig) -version
+        ls -l $(which swig)
         swig -version
 
         if [ "${USE_FLAGS:0:1}" = "1" ] ; then
