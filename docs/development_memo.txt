@@ -38,7 +38,7 @@ yum install zlib-devel
 #git clone git@github.com:mfem/PyMFEM.git
 git clone https://github.com/mfem/PyMFEM.git
 export PATH=/opt/python/cp36-cp36m/bin:$PATH
-pip install six numpy scipy auditwheel twine cmake
+pip install six numpy scipy auditwheel twine cmake swig
 python3 setup.py install
 rm -rf dist/*
 python3 setup.py bdist_wheel
@@ -129,3 +129,25 @@ sudo docker pull python:3.10
 sudo docker run -it python:3.10 bash
 
 python -m pip install ./ --user --install-option='--mfem-branch=master'
+
+
+### test using python:3.9 image wit parallel
+sudo docker pull python:3.9
+sudo docker run -it python:3.9 bash
+
+(usually we need an editor...)
+apt-get update
+apt-get install libmpich-dev
+
+pip install six numpy scipy auditwheel twine cmake swig mpi4py
+git clone https://github.com/mfem/PyMFEM.git
+
+git checkout tmop_support
+python setup.py clean --swig
+python setup.py install --ext-only --with-gslib --with-parallel --mfem-branch='master'
+python setup.py install --swig --with-gslib --with-parallel 
+python setup.py install --skip-ext --with-gslib --with-parallel
+
+
+
+
