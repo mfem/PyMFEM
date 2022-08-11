@@ -142,6 +142,11 @@ apt-get install libmpich-dev
 pip install six numpy scipy auditwheel twine cmake swig mpi4py
 git clone https://github.com/mfem/PyMFEM.git
 
+# testing it without swig
+python setup.py install --ext-only --with-parallel --mfem-branch='master'
+python setup.py install --skip-ext --with-parallel 
+
+# testing it with swig
 git checkout tmop_support
 python setup.py clean --swig
 python setup.py install --ext-only --with-gslib --with-parallel --mfem-branch='master'
