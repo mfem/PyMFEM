@@ -279,9 +279,9 @@ def make_call(command, target=''):
     if dry_run:
         return
     kwargs = {}
-    if not verbose:
-        kwargs['stdout'] = DEVNULL
-        kwargs['stderr'] = DEVNULL
+    #if not verbose:
+    #    kwargs['stdout'] = DEVNULL
+    #    kwargs['stderr'] = DEVNULL
     try:
         subprocess.check_call(command, **kwargs)
     except subprocess.CalledProcessError:

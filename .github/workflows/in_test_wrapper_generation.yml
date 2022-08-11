@@ -73,13 +73,11 @@ jobs:
         python -c "import sys;print(sys.path)"
         python -c "import numpy;print(numpy.__file__)"	
 
-        #sudo rm $(which swig)
-        which swig
+
+        which swig  # this default is 4.0.1 
         pip install swig --prefix=~/sandbox
         export PATH=/usr/local/cuda-${CUDA}/bin:~/sandbox/bin:$PATH	
         which swig
-        $(which swig) -version
-        ls -l $(which swig)
         swig -version
 
         if [ "${USE_FLAGS:0:1}" = "1" ] ; then
@@ -92,7 +90,7 @@ jobs:
             pip install mpi4py --prefix=~/sandbox
             #pip install mpi4py --no-cache-dir --prefix=~/sandbox;
             #python -m pip install git+https://github.com/mpi4py/mpi4py
-            #python -c "import mpi4py;print(mpi4py.get_include())";	    
+            python -c "import mpi4py;print(mpi4py.get_include())";	    
         fi
         ls -l $PYTHONLIB	
         
