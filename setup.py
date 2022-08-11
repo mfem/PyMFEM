@@ -436,8 +436,8 @@ def find_libpath_from_prefix(lib, prefix0):
         path = os.path.join(prefix0, 'lib64', aname)
         if os.path.exists(path):
             return path
-    print("Failed to find library by find_libpath_from_prefix", lib, prefix0)
-    print(os.listdir(os.path.join(prefix0, 'lib')))    
+    print("Can not find library by find_libpath_from_prefix (continue)", lib, prefix0)
+
     return ''
 
 ###
