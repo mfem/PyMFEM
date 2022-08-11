@@ -74,10 +74,10 @@ jobs:
         python -c "import numpy;print(numpy.__file__)"	
 
         which swig
-        swig --version
+        swig -version
         pip install swig
         which swig
-        swig --version
+        swig -version
 
         if [ "${USE_FLAGS:0:1}" = "1" ] ; then
             echo $cuda
