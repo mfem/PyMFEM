@@ -34,7 +34,7 @@ from distutils      import sysconfig
 modules= ["io_stream", "vtk", "sort_pairs", "datacollection",
           "cpointers", "symmat",
           "globals", "mem_manager", "device", "hash", "stable3d",
-          "error", "array", "common_functions", "socketstream", "handle",
+          "error", "auxiliary", "array", "common_functions", "socketstream", "handle",
           "fe_base", "fe_fixed_order", "fe_h1", "fe_l2",
           "fe_nd", "fe_nurbs", "fe_pos", "fe_rt", "fe_ser", "doftrans",
           "segment", "point", "hexahedron", "quadrilateral",
