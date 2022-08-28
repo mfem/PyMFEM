@@ -112,7 +112,7 @@ jobs:
         if [ "${USE_FLAGS}" = "010" ]; then
            python setup.py clean --swig
            python setup.py install --ext-only --with-gslib --with-parallel --mfem-branch='master' --prefix=$SANDBOX
-           python setup.py install --swig --with-gslib  --with-parallel
+           python setup.py install --swig --with-gslib  --with-parallel --prefix=$SANDBOX
            python setup.py install --skip-ext --with-parallel --with-gslib --prefix=$SANDBOX
         fi
 
