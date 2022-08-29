@@ -89,7 +89,7 @@ def run(args):
                               
     # 9. Save the starting (prior to the optimization) mesh to a file. This
     #    output can be viewed later using GLVis: "glvis -m perturbed.mesh".
-    mesh.Print("purturbed.mesh")
+    mesh.Print("perturbed.mesh")
 
     # 10. Store the starting (prior to the optimization) positions.
     x0 = mfem.GridFunction(fespace)
