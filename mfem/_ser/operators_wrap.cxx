@@ -3296,6 +3296,55 @@ SWIGINTERNINLINE PyObject*
   #define SWIG_From_long   PyInt_FromLong 
 
 
+SWIGINTERNINLINE PyObject* 
+SWIG_From_unsigned_SS_long  (unsigned long value)
+{
+  return (value > LONG_MAX) ?
+    PyLong_FromUnsignedLong(value) : PyInt_FromLong(static_cast< long >(value));
+}
+
+
+#include <limits.h>
+#if !defined(SWIG_NO_LLONG_MAX)
+# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
+#   define LLONG_MAX __LONG_LONG_MAX__
+#   define LLONG_MIN (-LLONG_MAX - 1LL)
+#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
+# endif
+#endif
+
+
+#if defined(LLONG_MAX) && !defined(SWIG_LONG_LONG_AVAILABLE)
+#  define SWIG_LONG_LONG_AVAILABLE
+#endif
+
+
+#ifdef SWIG_LONG_LONG_AVAILABLE
+SWIGINTERNINLINE PyObject* 
+SWIG_From_unsigned_SS_long_SS_long  (unsigned long long value)
+{
+  return (value > LONG_MAX) ?
+    PyLong_FromUnsignedLongLong(value) : PyInt_FromLong(static_cast< long >(value));
+}
+#endif
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_size_t  (size_t value)
+{    
+#ifdef SWIG_LONG_LONG_AVAILABLE
+  if (sizeof(size_t) <= sizeof(unsigned long)) {
+#endif
+    return SWIG_From_unsigned_SS_long  (static_cast< unsigned long >(value));
+#ifdef SWIG_LONG_LONG_AVAILABLE
+  } else {
+    /* assume sizeof(size_t) <= sizeof(unsigned long long) */
+    return SWIG_From_unsigned_SS_long_SS_long  (static_cast< unsigned long long >(value));
+  }
+#endif
+}
+
+
 SWIGINTERN int
 SWIG_AsVal_double (PyObject *obj, double *val)
 {
@@ -3582,16 +3631,6 @@ SWIGINTERN PyObject *mfem_Array_Sl_mfem_Solver_Sm__Sg____getitem__(mfem::Array< 
 
     }
   }
-
-#include <limits.h>
-#if !defined(SWIG_NO_LLONG_MAX)
-# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
-#   define LLONG_MAX __LONG_LONG_MAX__
-#   define LLONG_MIN (-LLONG_MAX - 1LL)
-#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
-# endif
-#endif
-
 
 SWIGINTERN int
 SWIG_AsVal_int (PyObject * obj, int *val)
@@ -10670,7 +10709,7 @@ SWIGINTERN PyObject *_wrap_OperatorPtrArray_MemoryUsage(PyObject *SWIGUNUSEDPARM
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  long result;
+  std::size_t result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -10681,7 +10720,7 @@ SWIGINTERN PyObject *_wrap_OperatorPtrArray_MemoryUsage(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< mfem::Array< mfem::Operator * > * >(argp1);
   {
     try {
-      result = (long)((mfem::Array< mfem::Operator * > const *)arg1)->MemoryUsage();
+      result = ((mfem::Array< mfem::Operator * > const *)arg1)->MemoryUsage();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -10698,7 +10737,7 @@ SWIGINTERN PyObject *_wrap_OperatorPtrArray_MemoryUsage(PyObject *SWIGUNUSEDPARM
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
   }
-  resultobj = SWIG_From_long(static_cast< long >(result));
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
   return NULL;
@@ -13656,7 +13695,7 @@ SWIGINTERN PyObject *_wrap_SolverPtrArray_MemoryUsage(PyObject *SWIGUNUSEDPARM(s
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  long result;
+  std::size_t result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -13667,7 +13706,7 @@ SWIGINTERN PyObject *_wrap_SolverPtrArray_MemoryUsage(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< mfem::Array< mfem::Solver * > * >(argp1);
   {
     try {
-      result = (long)((mfem::Array< mfem::Solver * > const *)arg1)->MemoryUsage();
+      result = ((mfem::Array< mfem::Solver * > const *)arg1)->MemoryUsage();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -13684,7 +13723,7 @@ SWIGINTERN PyObject *_wrap_SolverPtrArray_MemoryUsage(PyObject *SWIGUNUSEDPARM(s
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
   }
-  resultobj = SWIG_From_long(static_cast< long >(result));
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
   return NULL;
@@ -23264,7 +23303,7 @@ static PyMethodDef SwigMethods[] = {
 		"OperatorPtrArray_end(OperatorPtrArray self) -> Operator\n"
 		"OperatorPtrArray_end(OperatorPtrArray self) -> mfem::Operator *const *\n"
 		""},
-	 { "OperatorPtrArray_MemoryUsage", _wrap_OperatorPtrArray_MemoryUsage, METH_O, "OperatorPtrArray_MemoryUsage(OperatorPtrArray self) -> long"},
+	 { "OperatorPtrArray_MemoryUsage", _wrap_OperatorPtrArray_MemoryUsage, METH_O, "OperatorPtrArray_MemoryUsage(OperatorPtrArray self) -> std::size_t"},
 	 { "OperatorPtrArray_Read", (PyCFunction)(void(*)(void))_wrap_OperatorPtrArray_Read, METH_VARARGS|METH_KEYWORDS, "OperatorPtrArray_Read(OperatorPtrArray self, bool on_dev=True) -> mfem::Operator *const *"},
 	 { "OperatorPtrArray_HostRead", _wrap_OperatorPtrArray_HostRead, METH_O, "OperatorPtrArray_HostRead(OperatorPtrArray self) -> mfem::Operator *const *"},
 	 { "OperatorPtrArray_Write", (PyCFunction)(void(*)(void))_wrap_OperatorPtrArray_Write, METH_VARARGS|METH_KEYWORDS, "OperatorPtrArray_Write(OperatorPtrArray self, bool on_dev=True) -> mfem::Operator **"},
@@ -23338,7 +23377,7 @@ static PyMethodDef SwigMethods[] = {
 		"SolverPtrArray_end(SolverPtrArray self) -> Solver\n"
 		"SolverPtrArray_end(SolverPtrArray self) -> mfem::Solver *const *\n"
 		""},
-	 { "SolverPtrArray_MemoryUsage", _wrap_SolverPtrArray_MemoryUsage, METH_O, "SolverPtrArray_MemoryUsage(SolverPtrArray self) -> long"},
+	 { "SolverPtrArray_MemoryUsage", _wrap_SolverPtrArray_MemoryUsage, METH_O, "SolverPtrArray_MemoryUsage(SolverPtrArray self) -> std::size_t"},
 	 { "SolverPtrArray_Read", (PyCFunction)(void(*)(void))_wrap_SolverPtrArray_Read, METH_VARARGS|METH_KEYWORDS, "SolverPtrArray_Read(SolverPtrArray self, bool on_dev=True) -> mfem::Solver *const *"},
 	 { "SolverPtrArray_HostRead", _wrap_SolverPtrArray_HostRead, METH_O, "SolverPtrArray_HostRead(SolverPtrArray self) -> mfem::Solver *const *"},
 	 { "SolverPtrArray_Write", (PyCFunction)(void(*)(void))_wrap_SolverPtrArray_Write, METH_VARARGS|METH_KEYWORDS, "SolverPtrArray_Write(SolverPtrArray self, bool on_dev=True) -> mfem::Solver **"},
@@ -23597,7 +23636,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"end(OperatorPtrArray self) -> Operator\n"
 		"end(OperatorPtrArray self) -> mfem::Operator *const *\n"
 		""},
-	 { "OperatorPtrArray_MemoryUsage", _wrap_OperatorPtrArray_MemoryUsage, METH_O, "MemoryUsage(OperatorPtrArray self) -> long"},
+	 { "OperatorPtrArray_MemoryUsage", _wrap_OperatorPtrArray_MemoryUsage, METH_O, "MemoryUsage(OperatorPtrArray self) -> std::size_t"},
 	 { "OperatorPtrArray_Read", (PyCFunction)(void(*)(void))_wrap_OperatorPtrArray_Read, METH_VARARGS|METH_KEYWORDS, "Read(OperatorPtrArray self, bool on_dev=True) -> mfem::Operator *const *"},
 	 { "OperatorPtrArray_HostRead", _wrap_OperatorPtrArray_HostRead, METH_O, "HostRead(OperatorPtrArray self) -> mfem::Operator *const *"},
 	 { "OperatorPtrArray_Write", (PyCFunction)(void(*)(void))_wrap_OperatorPtrArray_Write, METH_VARARGS|METH_KEYWORDS, "Write(OperatorPtrArray self, bool on_dev=True) -> mfem::Operator **"},
@@ -23671,7 +23710,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"end(SolverPtrArray self) -> Solver\n"
 		"end(SolverPtrArray self) -> mfem::Solver *const *\n"
 		""},
-	 { "SolverPtrArray_MemoryUsage", _wrap_SolverPtrArray_MemoryUsage, METH_O, "MemoryUsage(SolverPtrArray self) -> long"},
+	 { "SolverPtrArray_MemoryUsage", _wrap_SolverPtrArray_MemoryUsage, METH_O, "MemoryUsage(SolverPtrArray self) -> std::size_t"},
 	 { "SolverPtrArray_Read", (PyCFunction)(void(*)(void))_wrap_SolverPtrArray_Read, METH_VARARGS|METH_KEYWORDS, "Read(SolverPtrArray self, bool on_dev=True) -> mfem::Solver *const *"},
 	 { "SolverPtrArray_HostRead", _wrap_SolverPtrArray_HostRead, METH_O, "HostRead(SolverPtrArray self) -> mfem::Solver *const *"},
 	 { "SolverPtrArray_Write", (PyCFunction)(void(*)(void))_wrap_SolverPtrArray_Write, METH_VARARGS|METH_KEYWORDS, "Write(SolverPtrArray self, bool on_dev=True) -> mfem::Solver **"},

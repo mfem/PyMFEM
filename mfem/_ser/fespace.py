@@ -246,7 +246,7 @@ class FiniteElementSpacePtrArray(object):
     end = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_end)
 
     def MemoryUsage(self):
-        r"""MemoryUsage(FiniteElementSpacePtrArray self) -> long"""
+        r"""MemoryUsage(FiniteElementSpacePtrArray self) -> std::size_t"""
         return _fespace.FiniteElementSpacePtrArray_MemoryUsage(self)
     MemoryUsage = _swig_new_instance_method(_fespace.FiniteElementSpacePtrArray_MemoryUsage)
 

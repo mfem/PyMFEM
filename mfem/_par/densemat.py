@@ -522,7 +522,7 @@ class DenseMatrix(mfem._par.matrix.Matrix):
     TestInversion = _swig_new_instance_method(_densemat.DenseMatrix_TestInversion)
 
     def MemoryUsage(self):
-        r"""MemoryUsage(DenseMatrix self) -> long"""
+        r"""MemoryUsage(DenseMatrix self) -> std::size_t"""
         return _densemat.DenseMatrix_MemoryUsage(self)
     MemoryUsage = _swig_new_instance_method(_densemat.DenseMatrix_MemoryUsage)
 
@@ -799,12 +799,49 @@ def AddMult_a_VVt(a, v, VVt):
     r"""AddMult_a_VVt(double const a, Vector v, DenseMatrix VVt)"""
     return _densemat.AddMult_a_VVt(a, v, VVt)
 AddMult_a_VVt = _densemat.AddMult_a_VVt
-class LUFactors(object):
+class Factors(object):
+    r"""Proxy of C++ mfem::Factors class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    data = property(_densemat.Factors_data_get, _densemat.Factors_data_set, doc=r"""data : p.double""")
+
+    def __init__(self, *args):
+        r"""
+        __init__(Factors self) -> Factors
+        __init__(Factors self, double * data_) -> Factors
+        """
+        _densemat.Factors_swiginit(self, _densemat.new_Factors(*args))
+
+    def Factor(self, m, TOL=0.0):
+        r"""Factor(Factors self, int m, double TOL=0.0) -> bool"""
+        return _densemat.Factors_Factor(self, m, TOL)
+    Factor = _swig_new_instance_method(_densemat.Factors_Factor)
+
+    def Det(self, m):
+        r"""Det(Factors self, int m) -> double"""
+        return _densemat.Factors_Det(self, m)
+    Det = _swig_new_instance_method(_densemat.Factors_Det)
+
+    def Solve(self, m, n, X):
+        r"""Solve(Factors self, int m, int n, double * X)"""
+        return _densemat.Factors_Solve(self, m, n, X)
+    Solve = _swig_new_instance_method(_densemat.Factors_Solve)
+
+    def GetInverseMatrix(self, m, X):
+        r"""GetInverseMatrix(Factors self, int m, double * X)"""
+        return _densemat.Factors_GetInverseMatrix(self, m, X)
+    GetInverseMatrix = _swig_new_instance_method(_densemat.Factors_GetInverseMatrix)
+    __swig_destroy__ = _densemat.delete_Factors
+
+# Register Factors in _densemat:
+_densemat.Factors_swigregister(Factors)
+
+class LUFactors(Factors):
     r"""Proxy of C++ mfem::LUFactors class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    data = property(_densemat.LUFactors_data_get, _densemat.LUFactors_data_set, doc=r"""data : p.double""")
     ipiv = property(_densemat.LUFactors_ipiv_get, _densemat.LUFactors_ipiv_set, doc=r"""ipiv : p.int""")
     ipiv_base = _densemat.LUFactors_ipiv_base
     
@@ -886,6 +923,68 @@ def LUFactors_SubMult(m, n, r, A21, X1, X2):
     return _densemat.LUFactors_SubMult(m, n, r, A21, X1, X2)
 LUFactors_SubMult = _densemat.LUFactors_SubMult
 
+class CholeskyFactors(Factors):
+    r"""Proxy of C++ mfem::CholeskyFactors class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        r"""
+        __init__(CholeskyFactors self) -> CholeskyFactors
+        __init__(CholeskyFactors self, double * data_) -> CholeskyFactors
+        """
+        _densemat.CholeskyFactors_swiginit(self, _densemat.new_CholeskyFactors(*args))
+
+    def Factor(self, m, TOL=0.0):
+        r"""Factor(CholeskyFactors self, int m, double TOL=0.0) -> bool"""
+        return _densemat.CholeskyFactors_Factor(self, m, TOL)
+    Factor = _swig_new_instance_method(_densemat.CholeskyFactors_Factor)
+
+    def Det(self, m):
+        r"""Det(CholeskyFactors self, int m) -> double"""
+        return _densemat.CholeskyFactors_Det(self, m)
+    Det = _swig_new_instance_method(_densemat.CholeskyFactors_Det)
+
+    def LMult(self, m, n, X):
+        r"""LMult(CholeskyFactors self, int m, int n, double * X)"""
+        return _densemat.CholeskyFactors_LMult(self, m, n, X)
+    LMult = _swig_new_instance_method(_densemat.CholeskyFactors_LMult)
+
+    def UMult(self, m, n, X):
+        r"""UMult(CholeskyFactors self, int m, int n, double * X)"""
+        return _densemat.CholeskyFactors_UMult(self, m, n, X)
+    UMult = _swig_new_instance_method(_densemat.CholeskyFactors_UMult)
+
+    def LSolve(self, m, n, X):
+        r"""LSolve(CholeskyFactors self, int m, int n, double * X)"""
+        return _densemat.CholeskyFactors_LSolve(self, m, n, X)
+    LSolve = _swig_new_instance_method(_densemat.CholeskyFactors_LSolve)
+
+    def USolve(self, m, n, X):
+        r"""USolve(CholeskyFactors self, int m, int n, double * X)"""
+        return _densemat.CholeskyFactors_USolve(self, m, n, X)
+    USolve = _swig_new_instance_method(_densemat.CholeskyFactors_USolve)
+
+    def Solve(self, m, n, X):
+        r"""Solve(CholeskyFactors self, int m, int n, double * X)"""
+        return _densemat.CholeskyFactors_Solve(self, m, n, X)
+    Solve = _swig_new_instance_method(_densemat.CholeskyFactors_Solve)
+
+    def RightSolve(self, m, n, X):
+        r"""RightSolve(CholeskyFactors self, int m, int n, double * X)"""
+        return _densemat.CholeskyFactors_RightSolve(self, m, n, X)
+    RightSolve = _swig_new_instance_method(_densemat.CholeskyFactors_RightSolve)
+
+    def GetInverseMatrix(self, m, X):
+        r"""GetInverseMatrix(CholeskyFactors self, int m, double * X)"""
+        return _densemat.CholeskyFactors_GetInverseMatrix(self, m, X)
+    GetInverseMatrix = _swig_new_instance_method(_densemat.CholeskyFactors_GetInverseMatrix)
+    __swig_destroy__ = _densemat.delete_CholeskyFactors
+
+# Register CholeskyFactors in _densemat:
+_densemat.CholeskyFactors_swigregister(CholeskyFactors)
+
 class DenseMatrixInverse(mfem._par.matrix.MatrixInverse):
     r"""Proxy of C++ mfem::DenseMatrixInverse class."""
 
@@ -894,9 +993,9 @@ class DenseMatrixInverse(mfem._par.matrix.MatrixInverse):
 
     def __init__(self, *args):
         r"""
-        __init__(DenseMatrixInverse self) -> DenseMatrixInverse
-        __init__(DenseMatrixInverse self, DenseMatrix mat) -> DenseMatrixInverse
-        __init__(DenseMatrixInverse self, DenseMatrix mat) -> DenseMatrixInverse
+        __init__(DenseMatrixInverse self, bool spd_=False) -> DenseMatrixInverse
+        __init__(DenseMatrixInverse self, DenseMatrix mat, bool spd_=False) -> DenseMatrixInverse
+        __init__(DenseMatrixInverse self, DenseMatrix mat, bool spd_=False) -> DenseMatrixInverse
         """
         _densemat.DenseMatrixInverse_swiginit(self, _densemat.new_DenseMatrixInverse(*args))
 
@@ -1035,7 +1134,7 @@ class DenseTensor(object):
     Clear = _swig_new_instance_method(_densemat.DenseTensor_Clear)
 
     def MemoryUsage(self):
-        r"""MemoryUsage(DenseTensor self) -> long"""
+        r"""MemoryUsage(DenseTensor self) -> std::size_t"""
         return _densemat.DenseTensor_MemoryUsage(self)
     MemoryUsage = _swig_new_instance_method(_densemat.DenseTensor_MemoryUsage)
 

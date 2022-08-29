@@ -3435,6 +3435,45 @@ SWIG_AsVal_int (PyObject * obj, int *val)
   #define SWIG_From_long   PyInt_FromLong 
 
 
+SWIGINTERNINLINE PyObject* 
+SWIG_From_unsigned_SS_long  (unsigned long value)
+{
+  return (value > LONG_MAX) ?
+    PyLong_FromUnsignedLong(value) : PyInt_FromLong(static_cast< long >(value));
+}
+
+
+#if defined(LLONG_MAX) && !defined(SWIG_LONG_LONG_AVAILABLE)
+#  define SWIG_LONG_LONG_AVAILABLE
+#endif
+
+
+#ifdef SWIG_LONG_LONG_AVAILABLE
+SWIGINTERNINLINE PyObject* 
+SWIG_From_unsigned_SS_long_SS_long  (unsigned long long value)
+{
+  return (value > LONG_MAX) ?
+    PyLong_FromUnsignedLongLong(value) : PyInt_FromLong(static_cast< long >(value));
+}
+#endif
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_size_t  (size_t value)
+{    
+#ifdef SWIG_LONG_LONG_AVAILABLE
+  if (sizeof(size_t) <= sizeof(unsigned long)) {
+#endif
+    return SWIG_From_unsigned_SS_long  (static_cast< unsigned long >(value));
+#ifdef SWIG_LONG_LONG_AVAILABLE
+  } else {
+    /* assume sizeof(size_t) <= sizeof(unsigned long long) */
+    return SWIG_From_unsigned_SS_long_SS_long  (static_cast< unsigned long long >(value));
+  }
+#endif
+}
+
+
 SWIGINTERN int
 SWIG_AsVal_bool (PyObject *obj, bool *val)
 {
@@ -7231,7 +7270,7 @@ SWIGINTERN PyObject *_wrap_GeometryTypeArray_MemoryUsage(PyObject *SWIGUNUSEDPAR
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  long result;
+  std::size_t result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -7242,7 +7281,7 @@ SWIGINTERN PyObject *_wrap_GeometryTypeArray_MemoryUsage(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< mfem::Array< mfem::Geometry::Type > * >(argp1);
   {
     try {
-      result = (long)((mfem::Array< mfem::Geometry::Type > const *)arg1)->MemoryUsage(); 
+      result = ((mfem::Array< mfem::Geometry::Type > const *)arg1)->MemoryUsage(); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -7253,7 +7292,7 @@ SWIGINTERN PyObject *_wrap_GeometryTypeArray_MemoryUsage(PyObject *SWIGUNUSEDPAR
     //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
     //    catch (std::exception &e) { SWIG_fail; }    
   }
-  resultobj = SWIG_From_long(static_cast< long >(result));
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
   return NULL;
@@ -8071,7 +8110,7 @@ static PyMethodDef SwigMethods[] = {
 		"GeometryTypeArray_end(GeometryTypeArray self) -> mfem::Geometry::Type\n"
 		"GeometryTypeArray_end(GeometryTypeArray self) -> mfem::Geometry::Type const *\n"
 		""},
-	 { "GeometryTypeArray_MemoryUsage", _wrap_GeometryTypeArray_MemoryUsage, METH_O, "GeometryTypeArray_MemoryUsage(GeometryTypeArray self) -> long"},
+	 { "GeometryTypeArray_MemoryUsage", _wrap_GeometryTypeArray_MemoryUsage, METH_O, "GeometryTypeArray_MemoryUsage(GeometryTypeArray self) -> std::size_t"},
 	 { "GeometryTypeArray_Read", (PyCFunction)(void(*)(void))_wrap_GeometryTypeArray_Read, METH_VARARGS|METH_KEYWORDS, "GeometryTypeArray_Read(GeometryTypeArray self, bool on_dev=True) -> mfem::Geometry::Type const *"},
 	 { "GeometryTypeArray_HostRead", _wrap_GeometryTypeArray_HostRead, METH_O, "GeometryTypeArray_HostRead(GeometryTypeArray self) -> mfem::Geometry::Type const *"},
 	 { "GeometryTypeArray_Write", (PyCFunction)(void(*)(void))_wrap_GeometryTypeArray_Write, METH_VARARGS|METH_KEYWORDS, "GeometryTypeArray_Write(GeometryTypeArray self, bool on_dev=True) -> mfem::Geometry::Type *"},
@@ -8202,7 +8241,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"end(GeometryTypeArray self) -> mfem::Geometry::Type\n"
 		"end(GeometryTypeArray self) -> mfem::Geometry::Type const *\n"
 		""},
-	 { "GeometryTypeArray_MemoryUsage", _wrap_GeometryTypeArray_MemoryUsage, METH_O, "MemoryUsage(GeometryTypeArray self) -> long"},
+	 { "GeometryTypeArray_MemoryUsage", _wrap_GeometryTypeArray_MemoryUsage, METH_O, "MemoryUsage(GeometryTypeArray self) -> std::size_t"},
 	 { "GeometryTypeArray_Read", (PyCFunction)(void(*)(void))_wrap_GeometryTypeArray_Read, METH_VARARGS|METH_KEYWORDS, "Read(GeometryTypeArray self, bool on_dev=True) -> mfem::Geometry::Type const *"},
 	 { "GeometryTypeArray_HostRead", _wrap_GeometryTypeArray_HostRead, METH_O, "HostRead(GeometryTypeArray self) -> mfem::Geometry::Type const *"},
 	 { "GeometryTypeArray_Write", (PyCFunction)(void(*)(void))_wrap_GeometryTypeArray_Write, METH_VARARGS|METH_KEYWORDS, "Write(GeometryTypeArray self, bool on_dev=True) -> mfem::Geometry::Type *"},

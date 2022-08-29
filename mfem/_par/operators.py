@@ -208,7 +208,7 @@ class OperatorPtrArray(object):
     end = _swig_new_instance_method(_operators.OperatorPtrArray_end)
 
     def MemoryUsage(self):
-        r"""MemoryUsage(OperatorPtrArray self) -> long"""
+        r"""MemoryUsage(OperatorPtrArray self) -> std::size_t"""
         return _operators.OperatorPtrArray_MemoryUsage(self)
     MemoryUsage = _swig_new_instance_method(_operators.OperatorPtrArray_MemoryUsage)
 
@@ -442,7 +442,7 @@ class SolverPtrArray(object):
     end = _swig_new_instance_method(_operators.SolverPtrArray_end)
 
     def MemoryUsage(self):
-        r"""MemoryUsage(SolverPtrArray self) -> long"""
+        r"""MemoryUsage(SolverPtrArray self) -> std::size_t"""
         return _operators.SolverPtrArray_MemoryUsage(self)
     MemoryUsage = _swig_new_instance_method(_operators.SolverPtrArray_MemoryUsage)
 

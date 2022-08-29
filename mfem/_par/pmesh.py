@@ -188,12 +188,12 @@ class ParMesh(mfem._par.mesh.Mesh):
     GetMyRank = _swig_new_instance_method(_pmesh.ParMesh_GetMyRank)
 
     def GetLocalElementNum(self, global_element_num):
-        r"""GetLocalElementNum(ParMesh self, long global_element_num) -> int"""
+        r"""GetLocalElementNum(ParMesh self, long long global_element_num) -> int"""
         return _pmesh.ParMesh_GetLocalElementNum(self, global_element_num)
     GetLocalElementNum = _swig_new_instance_method(_pmesh.ParMesh_GetLocalElementNum)
 
     def GetGlobalElementNum(self, local_element_num):
-        r"""GetGlobalElementNum(ParMesh self, int local_element_num) -> long"""
+        r"""GetGlobalElementNum(ParMesh self, int local_element_num) -> long long"""
         return _pmesh.ParMesh_GetGlobalElementNum(self, local_element_num)
     GetGlobalElementNum = _swig_new_instance_method(_pmesh.ParMesh_GetGlobalElementNum)
 
@@ -299,6 +299,14 @@ class ParMesh(mfem._par.mesh.Mesh):
         return _pmesh.ParMesh_SetCurvature(self, order, discont, space_dim, ordering)
     SetCurvature = _swig_new_instance_method(_pmesh.ParMesh_SetCurvature)
 
+    def SetNodalFESpace(self, *args):
+        r"""
+        SetNodalFESpace(ParMesh self, FiniteElementSpace nfes)
+        SetNodalFESpace(ParMesh self, mfem::ParFiniteElementSpace * npfes)
+        """
+        return _pmesh.ParMesh_SetNodalFESpace(self, *args)
+    SetNodalFESpace = _swig_new_instance_method(_pmesh.ParMesh_SetNodalFESpace)
+
     def GetNFaceNeighbors(self):
         r"""GetNFaceNeighbors(ParMesh self) -> int"""
         return _pmesh.ParMesh_GetNFaceNeighbors(self)
@@ -375,7 +383,7 @@ class ParMesh(mfem._par.mesh.Mesh):
     ReorientTetMesh = _swig_new_instance_method(_pmesh.ParMesh_ReorientTetMesh)
 
     def ReduceInt(self, value):
-        r"""ReduceInt(ParMesh self, int value) -> long"""
+        r"""ReduceInt(ParMesh self, int value) -> long long"""
         return _pmesh.ParMesh_ReduceInt(self, value)
     ReduceInt = _swig_new_instance_method(_pmesh.ParMesh_ReduceInt)
 
@@ -387,10 +395,25 @@ class ParMesh(mfem._par.mesh.Mesh):
         return _pmesh.ParMesh_Rebalance(self, *args)
     Rebalance = _swig_new_instance_method(_pmesh.ParMesh_Rebalance)
 
+    def SetPrintShared(self, _print):
+        r"""SetPrintShared(ParMesh self, bool _print)"""
+        return _pmesh.ParMesh_SetPrintShared(self, _print)
+    SetPrintShared = _swig_new_instance_method(_pmesh.ParMesh_SetPrintShared)
+
     def Save(self, fname, precision=16):
         r"""Save(ParMesh self, char const * fname, int precision=16)"""
         return _pmesh.ParMesh_Save(self, fname, precision)
     Save = _swig_new_instance_method(_pmesh.ParMesh_Save)
+
+    def PrintAsSerial(self, *args, **kwargs):
+        r"""PrintAsSerial(ParMesh self, std::ostream & out=out)"""
+        return _pmesh.ParMesh_PrintAsSerial(self, *args, **kwargs)
+    PrintAsSerial = _swig_new_instance_method(_pmesh.ParMesh_PrintAsSerial)
+
+    def GetSerialMesh(self, save_rank):
+        r"""GetSerialMesh(ParMesh self, int save_rank) -> Mesh"""
+        return _pmesh.ParMesh_GetSerialMesh(self, save_rank)
+    GetSerialMesh = _swig_new_instance_method(_pmesh.ParMesh_GetSerialMesh)
 
     def SaveAsOne(self, fname, precision=16):
         r"""SaveAsOne(ParMesh self, char const * fname, int precision=16)"""

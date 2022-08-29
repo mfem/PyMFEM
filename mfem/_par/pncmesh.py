@@ -288,7 +288,7 @@ class ParNCMesh(mfem._par.ncmesh.NCMesh):
     Trim = _swig_new_instance_method(_pncmesh.ParNCMesh_Trim)
 
     def MemoryUsage(self, with_base=True):
-        r"""MemoryUsage(ParNCMesh self, bool with_base=True) -> long"""
+        r"""MemoryUsage(ParNCMesh self, bool with_base=True) -> std::size_t"""
         return _pncmesh.ParNCMesh_MemoryUsage(self, with_base)
     MemoryUsage = _swig_new_instance_method(_pncmesh.ParNCMesh_MemoryUsage)
 

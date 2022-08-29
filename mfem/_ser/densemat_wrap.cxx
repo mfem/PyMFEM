@@ -3104,54 +3104,56 @@ namespace Swig {
 #define SWIGTYPE_p_int swig_types[4]
 #define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[5]
 #define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[6]
-#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[7]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[8]
-#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[9]
-#define SWIGTYPE_p_mfem__DenseTensor swig_types[10]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[11]
-#define SWIGTYPE_p_mfem__LUFactors swig_types[12]
-#define SWIGTYPE_p_mfem__Matrix swig_types[13]
-#define SWIGTYPE_p_mfem__MatrixInverse swig_types[14]
-#define SWIGTYPE_p_mfem__MemoryT_double_t swig_types[15]
-#define SWIGTYPE_p_mfem__Operator swig_types[16]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[17]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[18]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[19]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[20]
-#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[21]
-#define SWIGTYPE_p_mfem__ScaledOperator swig_types[22]
-#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[23]
-#define SWIGTYPE_p_mfem__Solver swig_types[24]
-#define SWIGTYPE_p_mfem__Table swig_types[25]
-#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[26]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[27]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[28]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[29]
-#define SWIGTYPE_p_mfem__Vector swig_types[30]
-#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[31]
-#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[32]
-#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[33]
-#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[34]
-#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[35]
-#define SWIGTYPE_p_p_mfem__Matrix swig_types[36]
-#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[37]
-#define SWIGTYPE_p_p_mfem__Operator swig_types[38]
-#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[39]
-#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[40]
-#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[41]
-#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[42]
-#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[43]
-#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[44]
-#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[45]
-#define SWIGTYPE_p_p_mfem__Solver swig_types[46]
-#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[47]
-#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[48]
-#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[49]
-#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[50]
-#define SWIGTYPE_p_p_mfem__Vector swig_types[51]
-#define SWIGTYPE_p_void swig_types[52]
-static swig_type_info *swig_types[54];
-static swig_module_info swig_module = {swig_types, 53, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__CholeskyFactors swig_types[7]
+#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[8]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[9]
+#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[10]
+#define SWIGTYPE_p_mfem__DenseTensor swig_types[11]
+#define SWIGTYPE_p_mfem__Factors swig_types[12]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[13]
+#define SWIGTYPE_p_mfem__LUFactors swig_types[14]
+#define SWIGTYPE_p_mfem__Matrix swig_types[15]
+#define SWIGTYPE_p_mfem__MatrixInverse swig_types[16]
+#define SWIGTYPE_p_mfem__MemoryT_double_t swig_types[17]
+#define SWIGTYPE_p_mfem__Operator swig_types[18]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[19]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[20]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[21]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[22]
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[23]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[24]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[25]
+#define SWIGTYPE_p_mfem__Solver swig_types[26]
+#define SWIGTYPE_p_mfem__Table swig_types[27]
+#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[28]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[29]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[30]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[31]
+#define SWIGTYPE_p_mfem__Vector swig_types[32]
+#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[33]
+#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[34]
+#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[35]
+#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[36]
+#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[37]
+#define SWIGTYPE_p_p_mfem__Matrix swig_types[38]
+#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[39]
+#define SWIGTYPE_p_p_mfem__Operator swig_types[40]
+#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[41]
+#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[42]
+#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[43]
+#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[44]
+#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[45]
+#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[46]
+#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[47]
+#define SWIGTYPE_p_p_mfem__Solver swig_types[48]
+#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[49]
+#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[50]
+#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[51]
+#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[52]
+#define SWIGTYPE_p_p_mfem__Vector swig_types[53]
+#define SWIGTYPE_p_void swig_types[54]
+static swig_type_info *swig_types[56];
+static swig_module_info swig_module = {swig_types, 55, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3583,6 +3585,45 @@ SWIGINTERNINLINE PyObject*
 
 
   #define SWIG_From_long   PyInt_FromLong 
+
+
+SWIGINTERNINLINE PyObject* 
+SWIG_From_unsigned_SS_long  (unsigned long value)
+{
+  return (value > LONG_MAX) ?
+    PyLong_FromUnsignedLong(value) : PyInt_FromLong(static_cast< long >(value));
+}
+
+
+#if defined(LLONG_MAX) && !defined(SWIG_LONG_LONG_AVAILABLE)
+#  define SWIG_LONG_LONG_AVAILABLE
+#endif
+
+
+#ifdef SWIG_LONG_LONG_AVAILABLE
+SWIGINTERNINLINE PyObject* 
+SWIG_From_unsigned_SS_long_SS_long  (unsigned long long value)
+{
+  return (value > LONG_MAX) ?
+    PyLong_FromUnsignedLongLong(value) : PyInt_FromLong(static_cast< long >(value));
+}
+#endif
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_size_t  (size_t value)
+{    
+#ifdef SWIG_LONG_LONG_AVAILABLE
+  if (sizeof(size_t) <= sizeof(unsigned long)) {
+#endif
+    return SWIG_From_unsigned_SS_long  (static_cast< unsigned long >(value));
+#ifdef SWIG_LONG_LONG_AVAILABLE
+  } else {
+    /* assume sizeof(size_t) <= sizeof(unsigned long long) */
+    return SWIG_From_unsigned_SS_long_SS_long  (static_cast< unsigned long long >(value));
+  }
+#endif
+}
 
 
 SWIGINTERN int
@@ -11253,7 +11294,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_MemoryUsage(PyObject *SWIGUNUSEDPARM(self
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  long result;
+  std::size_t result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -11264,7 +11305,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_MemoryUsage(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
     try {
-      result = (long)((mfem::DenseMatrix const *)arg1)->MemoryUsage();
+      result = ((mfem::DenseMatrix const *)arg1)->MemoryUsage();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -11281,7 +11322,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_MemoryUsage(PyObject *SWIGUNUSEDPARM(self
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
   }
-  resultobj = SWIG_From_long(static_cast< long >(result));
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
   return NULL;
@@ -14368,9 +14409,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_LUFactors_data_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Factors_data_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  mfem::LUFactors *arg1 = (mfem::LUFactors *) 0 ;
+  mfem::Factors *arg1 = (mfem::Factors *) 0 ;
   double *arg2 = (double *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -14378,15 +14419,15 @@ SWIGINTERN PyObject *_wrap_LUFactors_data_set(PyObject *SWIGUNUSEDPARM(self), Py
   int res2 = 0 ;
   PyObject *swig_obj[2] ;
   
-  if (!SWIG_Python_UnpackTuple(args, "LUFactors_data_set", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__LUFactors, 0 |  0 );
+  if (!SWIG_Python_UnpackTuple(args, "Factors_data_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Factors, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LUFactors_data_set" "', argument " "1"" of type '" "mfem::LUFactors *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Factors_data_set" "', argument " "1"" of type '" "mfem::Factors *""'"); 
   }
-  arg1 = reinterpret_cast< mfem::LUFactors * >(argp1);
+  arg1 = reinterpret_cast< mfem::Factors * >(argp1);
   res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_double, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LUFactors_data_set" "', argument " "2"" of type '" "double *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Factors_data_set" "', argument " "2"" of type '" "double *""'"); 
   }
   arg2 = reinterpret_cast< double * >(argp2);
   if (arg1) (arg1)->data = arg2;
@@ -14397,9 +14438,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_LUFactors_data_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Factors_data_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  mfem::LUFactors *arg1 = (mfem::LUFactors *) 0 ;
+  mfem::Factors *arg1 = (mfem::Factors *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
@@ -14407,11 +14448,11 @@ SWIGINTERN PyObject *_wrap_LUFactors_data_get(PyObject *SWIGUNUSEDPARM(self), Py
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__LUFactors, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Factors, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LUFactors_data_get" "', argument " "1"" of type '" "mfem::LUFactors *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Factors_data_get" "', argument " "1"" of type '" "mfem::Factors *""'"); 
   }
-  arg1 = reinterpret_cast< mfem::LUFactors * >(argp1);
+  arg1 = reinterpret_cast< mfem::Factors * >(argp1);
   result = (double *) ((arg1)->data);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
   return resultobj;
@@ -14419,6 +14460,432 @@ fail:
   return NULL;
 }
 
+
+SWIGINTERN PyObject *_wrap_new_Factors__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  mfem::Factors *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::Factors *)new mfem::Factors();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Factors, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Factors__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  double *arg1 = (double *) 0 ;
+  mfem::Factors *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    int i, si;
+    if (SWIG_ConvertPtr(swig_obj[0], (void **) &arg1, SWIGTYPE_p_double, 0|0) != -1){
+      
+    }
+    else if (PyArray_Check(swig_obj[0])){
+      arg1 = (double *) PyArray_DATA((PyArrayObject *)swig_obj[0]);
+      //     arg1 = (double *) PyArray_DATA(swig_obj[0]);
+    }
+    else {
+      if (!PyList_Check(swig_obj[0])) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list");
+        return NULL;
+      }
+      si = PyList_Size(swig_obj[0]);
+      //arg1 = (double *) malloc((si)*sizeof(double));
+      arg1 = new double[si];
+      for (i = 0; i < si; i++) {
+        PyObject *s = PyList_GetItem(swig_obj[0],i);
+        if (PyInt_Check(s)) {
+          arg1[i] = (double)PyFloat_AsDouble(s);
+        } else if (PyFloat_Check(s)) {
+          arg1[i] = (double)PyFloat_AsDouble(s);
+        } else {
+          delete[] arg1;
+          PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
+          return NULL;
+        }
+      }
+    }
+    
+  }
+  {
+    try {
+      result = (mfem::Factors *)new mfem::Factors(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Factors, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Factors(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_Factors", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_Factors__SWIG_0(self, argc, argv);
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      if (SWIG_ConvertPtr(argv[0], (void **) &_v, SWIGTYPE_p_double, 1) != -1){
+        _v = 1;
+      }
+      else if (PyList_Check(argv[0])){
+        _v = 1;
+      }
+      else if (PyArray_Check(argv[0])){
+        _v = 1;
+      }
+      else {
+        _v = 0;
+      }
+    }
+    if (_v) {
+      return _wrap_new_Factors__SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_Factors'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Factors::Factors()\n"
+    "    mfem::Factors::Factors(double *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Factors_Factor(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Factors *arg1 = (mfem::Factors *) 0 ;
+  int arg2 ;
+  double arg3 = (double) 0.0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"m",  (char *)"TOL",  NULL 
+  };
+  bool result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:Factors_Factor", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Factors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Factors_Factor" "', argument " "1"" of type '" "mfem::Factors *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Factors * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  if (obj2) {
+    ecode3 = SWIG_AsVal_double(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Factors_Factor" "', argument " "3"" of type '" "double""'");
+    } 
+    arg3 = static_cast< double >(val3);
+  }
+  {
+    try {
+      result = (bool)(arg1)->Factor(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Factors_Det(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Factors *arg1 = (mfem::Factors *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"m",  NULL 
+  };
+  double result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Factors_Det", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Factors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Factors_Det" "', argument " "1"" of type '" "mfem::Factors const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Factors * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      result = (double)((mfem::Factors const *)arg1)->Det(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Factors_Solve(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Factors *arg1 = (mfem::Factors *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  double *arg4 = (double *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"m",  (char *)"n",  (char *)"X",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:Factors_Solve", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Factors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Factors_Solve" "', argument " "1"" of type '" "mfem::Factors const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Factors * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "Factors_Solve" "', argument " "4"" of type '" "double *""'"); 
+  }
+  arg4 = reinterpret_cast< double * >(argp4);
+  {
+    try {
+      ((mfem::Factors const *)arg1)->Solve(arg2,arg3,arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Factors_GetInverseMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Factors *arg1 = (mfem::Factors *) 0 ;
+  int arg2 ;
+  double *arg3 = (double *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"m",  (char *)"X",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:Factors_GetInverseMatrix", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Factors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Factors_GetInverseMatrix" "', argument " "1"" of type '" "mfem::Factors const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Factors * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Factors_GetInverseMatrix" "', argument " "3"" of type '" "double *""'"); 
+  }
+  arg3 = reinterpret_cast< double * >(argp3);
+  {
+    try {
+      ((mfem::Factors const *)arg1)->GetInverseMatrix(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_Factors(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Factors *arg1 = (mfem::Factors *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Factors, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Factors" "', argument " "1"" of type '" "mfem::Factors *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Factors * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *Factors_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__Factors, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *Factors_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
 
 SWIGINTERN PyObject *_wrap_LUFactors_ipiv_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
@@ -15534,14 +16001,785 @@ SWIGINTERN PyObject *LUFactors_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_DenseMatrixInverse__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+SWIGINTERN PyObject *_wrap_new_CholeskyFactors__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
   PyObject *resultobj = 0;
-  mfem::DenseMatrixInverse *result = 0 ;
+  mfem::CholeskyFactors *result = 0 ;
   
   if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
   {
     try {
-      result = (mfem::DenseMatrixInverse *)new mfem::DenseMatrixInverse();
+      result = (mfem::CholeskyFactors *)new mfem::CholeskyFactors();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__CholeskyFactors, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_CholeskyFactors__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  double *arg1 = (double *) 0 ;
+  mfem::CholeskyFactors *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    int i, si;
+    if (SWIG_ConvertPtr(swig_obj[0], (void **) &arg1, SWIGTYPE_p_double, 0|0) != -1){
+      
+    }
+    else if (PyArray_Check(swig_obj[0])){
+      arg1 = (double *) PyArray_DATA((PyArrayObject *)swig_obj[0]);
+      //     arg1 = (double *) PyArray_DATA(swig_obj[0]);
+    }
+    else {
+      if (!PyList_Check(swig_obj[0])) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list");
+        return NULL;
+      }
+      si = PyList_Size(swig_obj[0]);
+      //arg1 = (double *) malloc((si)*sizeof(double));
+      arg1 = new double[si];
+      for (i = 0; i < si; i++) {
+        PyObject *s = PyList_GetItem(swig_obj[0],i);
+        if (PyInt_Check(s)) {
+          arg1[i] = (double)PyFloat_AsDouble(s);
+        } else if (PyFloat_Check(s)) {
+          arg1[i] = (double)PyFloat_AsDouble(s);
+        } else {
+          delete[] arg1;
+          PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
+          return NULL;
+        }
+      }
+    }
+    
+  }
+  {
+    try {
+      result = (mfem::CholeskyFactors *)new mfem::CholeskyFactors(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__CholeskyFactors, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_CholeskyFactors(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_CholeskyFactors", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_CholeskyFactors__SWIG_0(self, argc, argv);
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      if (SWIG_ConvertPtr(argv[0], (void **) &_v, SWIGTYPE_p_double, 1) != -1){
+        _v = 1;
+      }
+      else if (PyList_Check(argv[0])){
+        _v = 1;
+      }
+      else if (PyArray_Check(argv[0])){
+        _v = 1;
+      }
+      else {
+        _v = 0;
+      }
+    }
+    if (_v) {
+      return _wrap_new_CholeskyFactors__SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_CholeskyFactors'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::CholeskyFactors::CholeskyFactors()\n"
+    "    mfem::CholeskyFactors::CholeskyFactors(double *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_CholeskyFactors_Factor(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::CholeskyFactors *arg1 = (mfem::CholeskyFactors *) 0 ;
+  int arg2 ;
+  double arg3 = (double) 0.0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"m",  (char *)"TOL",  NULL 
+  };
+  bool result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:CholeskyFactors_Factor", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__CholeskyFactors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CholeskyFactors_Factor" "', argument " "1"" of type '" "mfem::CholeskyFactors *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CholeskyFactors * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  if (obj2) {
+    ecode3 = SWIG_AsVal_double(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "CholeskyFactors_Factor" "', argument " "3"" of type '" "double""'");
+    } 
+    arg3 = static_cast< double >(val3);
+  }
+  {
+    try {
+      result = (bool)(arg1)->Factor(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CholeskyFactors_Det(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::CholeskyFactors *arg1 = (mfem::CholeskyFactors *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"m",  NULL 
+  };
+  double result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:CholeskyFactors_Det", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__CholeskyFactors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CholeskyFactors_Det" "', argument " "1"" of type '" "mfem::CholeskyFactors const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CholeskyFactors * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      result = (double)((mfem::CholeskyFactors const *)arg1)->Det(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CholeskyFactors_LMult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::CholeskyFactors *arg1 = (mfem::CholeskyFactors *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  double *arg4 = (double *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"m",  (char *)"n",  (char *)"X",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:CholeskyFactors_LMult", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__CholeskyFactors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CholeskyFactors_LMult" "', argument " "1"" of type '" "mfem::CholeskyFactors const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CholeskyFactors * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CholeskyFactors_LMult" "', argument " "4"" of type '" "double *""'"); 
+  }
+  arg4 = reinterpret_cast< double * >(argp4);
+  {
+    try {
+      ((mfem::CholeskyFactors const *)arg1)->LMult(arg2,arg3,arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CholeskyFactors_UMult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::CholeskyFactors *arg1 = (mfem::CholeskyFactors *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  double *arg4 = (double *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"m",  (char *)"n",  (char *)"X",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:CholeskyFactors_UMult", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__CholeskyFactors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CholeskyFactors_UMult" "', argument " "1"" of type '" "mfem::CholeskyFactors const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CholeskyFactors * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CholeskyFactors_UMult" "', argument " "4"" of type '" "double *""'"); 
+  }
+  arg4 = reinterpret_cast< double * >(argp4);
+  {
+    try {
+      ((mfem::CholeskyFactors const *)arg1)->UMult(arg2,arg3,arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CholeskyFactors_LSolve(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::CholeskyFactors *arg1 = (mfem::CholeskyFactors *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  double *arg4 = (double *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"m",  (char *)"n",  (char *)"X",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:CholeskyFactors_LSolve", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__CholeskyFactors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CholeskyFactors_LSolve" "', argument " "1"" of type '" "mfem::CholeskyFactors const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CholeskyFactors * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CholeskyFactors_LSolve" "', argument " "4"" of type '" "double *""'"); 
+  }
+  arg4 = reinterpret_cast< double * >(argp4);
+  {
+    try {
+      ((mfem::CholeskyFactors const *)arg1)->LSolve(arg2,arg3,arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CholeskyFactors_USolve(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::CholeskyFactors *arg1 = (mfem::CholeskyFactors *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  double *arg4 = (double *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"m",  (char *)"n",  (char *)"X",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:CholeskyFactors_USolve", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__CholeskyFactors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CholeskyFactors_USolve" "', argument " "1"" of type '" "mfem::CholeskyFactors const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CholeskyFactors * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CholeskyFactors_USolve" "', argument " "4"" of type '" "double *""'"); 
+  }
+  arg4 = reinterpret_cast< double * >(argp4);
+  {
+    try {
+      ((mfem::CholeskyFactors const *)arg1)->USolve(arg2,arg3,arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CholeskyFactors_Solve(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::CholeskyFactors *arg1 = (mfem::CholeskyFactors *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  double *arg4 = (double *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"m",  (char *)"n",  (char *)"X",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:CholeskyFactors_Solve", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__CholeskyFactors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CholeskyFactors_Solve" "', argument " "1"" of type '" "mfem::CholeskyFactors const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CholeskyFactors * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CholeskyFactors_Solve" "', argument " "4"" of type '" "double *""'"); 
+  }
+  arg4 = reinterpret_cast< double * >(argp4);
+  {
+    try {
+      ((mfem::CholeskyFactors const *)arg1)->Solve(arg2,arg3,arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CholeskyFactors_RightSolve(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::CholeskyFactors *arg1 = (mfem::CholeskyFactors *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  double *arg4 = (double *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"m",  (char *)"n",  (char *)"X",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:CholeskyFactors_RightSolve", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__CholeskyFactors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CholeskyFactors_RightSolve" "', argument " "1"" of type '" "mfem::CholeskyFactors const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CholeskyFactors * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CholeskyFactors_RightSolve" "', argument " "4"" of type '" "double *""'"); 
+  }
+  arg4 = reinterpret_cast< double * >(argp4);
+  {
+    try {
+      ((mfem::CholeskyFactors const *)arg1)->RightSolve(arg2,arg3,arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CholeskyFactors_GetInverseMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::CholeskyFactors *arg1 = (mfem::CholeskyFactors *) 0 ;
+  int arg2 ;
+  double *arg3 = (double *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"m",  (char *)"X",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:CholeskyFactors_GetInverseMatrix", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__CholeskyFactors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CholeskyFactors_GetInverseMatrix" "', argument " "1"" of type '" "mfem::CholeskyFactors const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CholeskyFactors * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CholeskyFactors_GetInverseMatrix" "', argument " "3"" of type '" "double *""'"); 
+  }
+  arg3 = reinterpret_cast< double * >(argp3);
+  {
+    try {
+      ((mfem::CholeskyFactors const *)arg1)->GetInverseMatrix(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_CholeskyFactors(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::CholeskyFactors *arg1 = (mfem::CholeskyFactors *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__CholeskyFactors, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_CholeskyFactors" "', argument " "1"" of type '" "mfem::CholeskyFactors *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CholeskyFactors * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *CholeskyFactors_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__CholeskyFactors, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *CholeskyFactors_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_DenseMatrixInverse__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  bool arg1 = (bool) false ;
+  bool val1 ;
+  int ecode1 = 0 ;
+  mfem::DenseMatrixInverse *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 1)) SWIG_fail;
+  if (swig_obj[0]) {
+    ecode1 = SWIG_AsVal_bool(swig_obj[0], &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_DenseMatrixInverse" "', argument " "1"" of type '" "bool""'");
+    } 
+    arg1 = static_cast< bool >(val1);
+  }
+  {
+    try {
+      result = (mfem::DenseMatrixInverse *)new mfem::DenseMatrixInverse(arg1);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -15568,11 +16806,14 @@ fail:
 SWIGINTERN PyObject *_wrap_new_DenseMatrixInverse__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::DenseMatrix *arg1 = 0 ;
+  bool arg2 = (bool) false ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
   mfem::DenseMatrixInverse *result = 0 ;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DenseMatrixInverse" "', argument " "1"" of type '" "mfem::DenseMatrix const &""'"); 
@@ -15581,9 +16822,16 @@ SWIGINTERN PyObject *_wrap_new_DenseMatrixInverse__SWIG_1(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DenseMatrixInverse" "', argument " "1"" of type '" "mfem::DenseMatrix const &""'"); 
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
+  if (swig_obj[1]) {
+    ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_DenseMatrixInverse" "', argument " "2"" of type '" "bool""'");
+    } 
+    arg2 = static_cast< bool >(val2);
+  }
   {
     try {
-      result = (mfem::DenseMatrixInverse *)new mfem::DenseMatrixInverse((mfem::DenseMatrix const &)*arg1);
+      result = (mfem::DenseMatrixInverse *)new mfem::DenseMatrixInverse((mfem::DenseMatrix const &)*arg1,arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -15610,19 +16858,29 @@ fail:
 SWIGINTERN PyObject *_wrap_new_DenseMatrixInverse__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::DenseMatrix *arg1 = (mfem::DenseMatrix *) 0 ;
+  bool arg2 = (bool) false ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
   mfem::DenseMatrixInverse *result = 0 ;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DenseMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DenseMatrixInverse" "', argument " "1"" of type '" "mfem::DenseMatrix const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
+  if (swig_obj[1]) {
+    ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_DenseMatrixInverse" "', argument " "2"" of type '" "bool""'");
+    } 
+    arg2 = static_cast< bool >(val2);
+  }
   {
     try {
-      result = (mfem::DenseMatrixInverse *)new mfem::DenseMatrixInverse((mfem::DenseMatrix const *)arg1);
+      result = (mfem::DenseMatrixInverse *)new mfem::DenseMatrixInverse((mfem::DenseMatrix const *)arg1,arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -15648,39 +16906,67 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_DenseMatrixInverse(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[2] = {
+  PyObject *argv[3] = {
     0
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_DenseMatrixInverse", 0, 1, argv))) SWIG_fail;
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_DenseMatrixInverse", 0, 2, argv))) SWIG_fail;
   --argc;
-  if (argc == 0) {
-    return _wrap_new_DenseMatrixInverse__SWIG_0(self, argc, argv);
+  if ((argc >= 0) && (argc <= 1)) {
+    int _v;
+    if (argc <= 0) {
+      return _wrap_new_DenseMatrixInverse__SWIG_0(self, argc, argv);
+    }
+    {
+      int res = SWIG_AsVal_bool(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      return _wrap_new_DenseMatrixInverse__SWIG_0(self, argc, argv);
+    }
   }
-  if (argc == 1) {
+  if ((argc >= 1) && (argc <= 2)) {
     int _v;
     int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL | 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_new_DenseMatrixInverse__SWIG_1(self, argc, argv);
+      if (argc <= 1) {
+        return _wrap_new_DenseMatrixInverse__SWIG_1(self, argc, argv);
+      }
+      {
+        int res = SWIG_AsVal_bool(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_new_DenseMatrixInverse__SWIG_1(self, argc, argv);
+      }
     }
   }
-  if (argc == 1) {
+  if ((argc >= 1) && (argc <= 2)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__DenseMatrix, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_new_DenseMatrixInverse__SWIG_2(self, argc, argv);
+      if (argc <= 1) {
+        return _wrap_new_DenseMatrixInverse__SWIG_2(self, argc, argv);
+      }
+      {
+        int res = SWIG_AsVal_bool(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_new_DenseMatrixInverse__SWIG_2(self, argc, argv);
+      }
     }
   }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_DenseMatrixInverse'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    mfem::DenseMatrixInverse::DenseMatrixInverse()\n"
-    "    mfem::DenseMatrixInverse::DenseMatrixInverse(mfem::DenseMatrix const &)\n"
-    "    mfem::DenseMatrixInverse::DenseMatrixInverse(mfem::DenseMatrix const *)\n");
+    "    mfem::DenseMatrixInverse::DenseMatrixInverse(bool)\n"
+    "    mfem::DenseMatrixInverse::DenseMatrixInverse(mfem::DenseMatrix const &,bool)\n"
+    "    mfem::DenseMatrixInverse::DenseMatrixInverse(mfem::DenseMatrix const *,bool)\n");
   return 0;
 }
 
@@ -17875,7 +19161,7 @@ SWIGINTERN PyObject *_wrap_DenseTensor_MemoryUsage(PyObject *SWIGUNUSEDPARM(self
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  long result;
+  std::size_t result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -17886,7 +19172,7 @@ SWIGINTERN PyObject *_wrap_DenseTensor_MemoryUsage(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< mfem::DenseTensor * >(argp1);
   {
     try {
-      result = (long)((mfem::DenseTensor const *)arg1)->MemoryUsage();
+      result = ((mfem::DenseTensor const *)arg1)->MemoryUsage();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -17903,7 +19189,7 @@ SWIGINTERN PyObject *_wrap_DenseTensor_MemoryUsage(PyObject *SWIGUNUSEDPARM(self
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
   }
-  resultobj = SWIG_From_long(static_cast< long >(result));
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
   return NULL;
@@ -19070,7 +20356,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "DenseMatrix_Threshold", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_Threshold, METH_VARARGS|METH_KEYWORDS, "DenseMatrix_Threshold(DenseMatrix self, double eps)"},
 	 { "DenseMatrix_CheckFinite", _wrap_DenseMatrix_CheckFinite, METH_O, "DenseMatrix_CheckFinite(DenseMatrix self) -> int"},
 	 { "DenseMatrix_TestInversion", _wrap_DenseMatrix_TestInversion, METH_O, "DenseMatrix_TestInversion(DenseMatrix self)"},
-	 { "DenseMatrix_MemoryUsage", _wrap_DenseMatrix_MemoryUsage, METH_O, "DenseMatrix_MemoryUsage(DenseMatrix self) -> long"},
+	 { "DenseMatrix_MemoryUsage", _wrap_DenseMatrix_MemoryUsage, METH_O, "DenseMatrix_MemoryUsage(DenseMatrix self) -> std::size_t"},
 	 { "DenseMatrix_Read", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_Read, METH_VARARGS|METH_KEYWORDS, "DenseMatrix_Read(DenseMatrix self, bool on_dev=True) -> double const *"},
 	 { "DenseMatrix_HostRead", _wrap_DenseMatrix_HostRead, METH_O, "DenseMatrix_HostRead(DenseMatrix self) -> double const *"},
 	 { "DenseMatrix_Write", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_Write, METH_VARARGS|METH_KEYWORDS, "DenseMatrix_Write(DenseMatrix self, bool on_dev=True) -> double *"},
@@ -19134,8 +20420,19 @@ static PyMethodDef SwigMethods[] = {
 	 { "AddMultVVt", (PyCFunction)(void(*)(void))_wrap_AddMultVVt, METH_VARARGS|METH_KEYWORDS, "AddMultVVt(Vector v, DenseMatrix VWt)"},
 	 { "AddMult_a_VWt", (PyCFunction)(void(*)(void))_wrap_AddMult_a_VWt, METH_VARARGS|METH_KEYWORDS, "AddMult_a_VWt(double const a, Vector v, Vector w, DenseMatrix VWt)"},
 	 { "AddMult_a_VVt", (PyCFunction)(void(*)(void))_wrap_AddMult_a_VVt, METH_VARARGS|METH_KEYWORDS, "AddMult_a_VVt(double const a, Vector v, DenseMatrix VVt)"},
-	 { "LUFactors_data_set", _wrap_LUFactors_data_set, METH_VARARGS, "LUFactors_data_set(LUFactors self, double * data)"},
-	 { "LUFactors_data_get", _wrap_LUFactors_data_get, METH_O, "LUFactors_data_get(LUFactors self) -> double *"},
+	 { "Factors_data_set", _wrap_Factors_data_set, METH_VARARGS, "Factors_data_set(Factors self, double * data)"},
+	 { "Factors_data_get", _wrap_Factors_data_get, METH_O, "Factors_data_get(Factors self) -> double *"},
+	 { "new_Factors", _wrap_new_Factors, METH_VARARGS, "\n"
+		"Factors()\n"
+		"new_Factors(double * data_) -> Factors\n"
+		""},
+	 { "Factors_Factor", (PyCFunction)(void(*)(void))_wrap_Factors_Factor, METH_VARARGS|METH_KEYWORDS, "Factors_Factor(Factors self, int m, double TOL=0.0) -> bool"},
+	 { "Factors_Det", (PyCFunction)(void(*)(void))_wrap_Factors_Det, METH_VARARGS|METH_KEYWORDS, "Factors_Det(Factors self, int m) -> double"},
+	 { "Factors_Solve", (PyCFunction)(void(*)(void))_wrap_Factors_Solve, METH_VARARGS|METH_KEYWORDS, "Factors_Solve(Factors self, int m, int n, double * X)"},
+	 { "Factors_GetInverseMatrix", (PyCFunction)(void(*)(void))_wrap_Factors_GetInverseMatrix, METH_VARARGS|METH_KEYWORDS, "Factors_GetInverseMatrix(Factors self, int m, double * X)"},
+	 { "delete_Factors", _wrap_delete_Factors, METH_O, "delete_Factors(Factors self)"},
+	 { "Factors_swigregister", Factors_swigregister, METH_O, NULL},
+	 { "Factors_swiginit", Factors_swiginit, METH_VARARGS, NULL},
 	 { "LUFactors_ipiv_set", _wrap_LUFactors_ipiv_set, METH_VARARGS, "LUFactors_ipiv_set(LUFactors self, int * ipiv)"},
 	 { "LUFactors_ipiv_get", _wrap_LUFactors_ipiv_get, METH_O, "LUFactors_ipiv_get(LUFactors self) -> int *"},
 	 { "new_LUFactors", _wrap_new_LUFactors, METH_VARARGS, "\n"
@@ -19157,10 +20454,26 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_LUFactors", _wrap_delete_LUFactors, METH_O, "delete_LUFactors(LUFactors self)"},
 	 { "LUFactors_swigregister", LUFactors_swigregister, METH_O, NULL},
 	 { "LUFactors_swiginit", LUFactors_swiginit, METH_VARARGS, NULL},
+	 { "new_CholeskyFactors", _wrap_new_CholeskyFactors, METH_VARARGS, "\n"
+		"CholeskyFactors()\n"
+		"new_CholeskyFactors(double * data_) -> CholeskyFactors\n"
+		""},
+	 { "CholeskyFactors_Factor", (PyCFunction)(void(*)(void))_wrap_CholeskyFactors_Factor, METH_VARARGS|METH_KEYWORDS, "CholeskyFactors_Factor(CholeskyFactors self, int m, double TOL=0.0) -> bool"},
+	 { "CholeskyFactors_Det", (PyCFunction)(void(*)(void))_wrap_CholeskyFactors_Det, METH_VARARGS|METH_KEYWORDS, "CholeskyFactors_Det(CholeskyFactors self, int m) -> double"},
+	 { "CholeskyFactors_LMult", (PyCFunction)(void(*)(void))_wrap_CholeskyFactors_LMult, METH_VARARGS|METH_KEYWORDS, "CholeskyFactors_LMult(CholeskyFactors self, int m, int n, double * X)"},
+	 { "CholeskyFactors_UMult", (PyCFunction)(void(*)(void))_wrap_CholeskyFactors_UMult, METH_VARARGS|METH_KEYWORDS, "CholeskyFactors_UMult(CholeskyFactors self, int m, int n, double * X)"},
+	 { "CholeskyFactors_LSolve", (PyCFunction)(void(*)(void))_wrap_CholeskyFactors_LSolve, METH_VARARGS|METH_KEYWORDS, "CholeskyFactors_LSolve(CholeskyFactors self, int m, int n, double * X)"},
+	 { "CholeskyFactors_USolve", (PyCFunction)(void(*)(void))_wrap_CholeskyFactors_USolve, METH_VARARGS|METH_KEYWORDS, "CholeskyFactors_USolve(CholeskyFactors self, int m, int n, double * X)"},
+	 { "CholeskyFactors_Solve", (PyCFunction)(void(*)(void))_wrap_CholeskyFactors_Solve, METH_VARARGS|METH_KEYWORDS, "CholeskyFactors_Solve(CholeskyFactors self, int m, int n, double * X)"},
+	 { "CholeskyFactors_RightSolve", (PyCFunction)(void(*)(void))_wrap_CholeskyFactors_RightSolve, METH_VARARGS|METH_KEYWORDS, "CholeskyFactors_RightSolve(CholeskyFactors self, int m, int n, double * X)"},
+	 { "CholeskyFactors_GetInverseMatrix", (PyCFunction)(void(*)(void))_wrap_CholeskyFactors_GetInverseMatrix, METH_VARARGS|METH_KEYWORDS, "CholeskyFactors_GetInverseMatrix(CholeskyFactors self, int m, double * X)"},
+	 { "delete_CholeskyFactors", _wrap_delete_CholeskyFactors, METH_O, "delete_CholeskyFactors(CholeskyFactors self)"},
+	 { "CholeskyFactors_swigregister", CholeskyFactors_swigregister, METH_O, NULL},
+	 { "CholeskyFactors_swiginit", CholeskyFactors_swiginit, METH_VARARGS, NULL},
 	 { "new_DenseMatrixInverse", _wrap_new_DenseMatrixInverse, METH_VARARGS, "\n"
-		"DenseMatrixInverse()\n"
-		"DenseMatrixInverse(DenseMatrix mat)\n"
-		"new_DenseMatrixInverse(DenseMatrix mat) -> DenseMatrixInverse\n"
+		"DenseMatrixInverse(bool spd_=False)\n"
+		"DenseMatrixInverse(DenseMatrix mat, bool spd_=False)\n"
+		"new_DenseMatrixInverse(DenseMatrix mat, bool spd_=False) -> DenseMatrixInverse\n"
 		""},
 	 { "DenseMatrixInverse_Size", _wrap_DenseMatrixInverse_Size, METH_O, "DenseMatrixInverse_Size(DenseMatrixInverse self) -> int"},
 	 { "DenseMatrixInverse_Factor", _wrap_DenseMatrixInverse_Factor, METH_VARARGS, "\n"
@@ -19210,7 +20523,7 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "DenseTensor_AddMult", (PyCFunction)(void(*)(void))_wrap_DenseTensor_AddMult, METH_VARARGS|METH_KEYWORDS, "DenseTensor_AddMult(DenseTensor self, mfem::Table const & elem_dof, Vector x, Vector y)"},
 	 { "DenseTensor_Clear", _wrap_DenseTensor_Clear, METH_O, "DenseTensor_Clear(DenseTensor self)"},
-	 { "DenseTensor_MemoryUsage", _wrap_DenseTensor_MemoryUsage, METH_O, "DenseTensor_MemoryUsage(DenseTensor self) -> long"},
+	 { "DenseTensor_MemoryUsage", _wrap_DenseTensor_MemoryUsage, METH_O, "DenseTensor_MemoryUsage(DenseTensor self) -> std::size_t"},
 	 { "DenseTensor_Read", (PyCFunction)(void(*)(void))_wrap_DenseTensor_Read, METH_VARARGS|METH_KEYWORDS, "DenseTensor_Read(DenseTensor self, bool on_dev=True) -> double const *"},
 	 { "DenseTensor_HostRead", _wrap_DenseTensor_HostRead, METH_O, "DenseTensor_HostRead(DenseTensor self) -> double const *"},
 	 { "DenseTensor_Write", (PyCFunction)(void(*)(void))_wrap_DenseTensor_Write, METH_VARARGS|METH_KEYWORDS, "DenseTensor_Write(DenseTensor self, bool on_dev=True) -> double *"},
@@ -19378,7 +20691,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "DenseMatrix_Threshold", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_Threshold, METH_VARARGS|METH_KEYWORDS, "Threshold(DenseMatrix self, double eps)"},
 	 { "DenseMatrix_CheckFinite", _wrap_DenseMatrix_CheckFinite, METH_O, "CheckFinite(DenseMatrix self) -> int"},
 	 { "DenseMatrix_TestInversion", _wrap_DenseMatrix_TestInversion, METH_O, "TestInversion(DenseMatrix self)"},
-	 { "DenseMatrix_MemoryUsage", _wrap_DenseMatrix_MemoryUsage, METH_O, "MemoryUsage(DenseMatrix self) -> long"},
+	 { "DenseMatrix_MemoryUsage", _wrap_DenseMatrix_MemoryUsage, METH_O, "MemoryUsage(DenseMatrix self) -> std::size_t"},
 	 { "DenseMatrix_Read", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_Read, METH_VARARGS|METH_KEYWORDS, "Read(DenseMatrix self, bool on_dev=True) -> double const *"},
 	 { "DenseMatrix_HostRead", _wrap_DenseMatrix_HostRead, METH_O, "HostRead(DenseMatrix self) -> double const *"},
 	 { "DenseMatrix_Write", (PyCFunction)(void(*)(void))_wrap_DenseMatrix_Write, METH_VARARGS|METH_KEYWORDS, "Write(DenseMatrix self, bool on_dev=True) -> double *"},
@@ -19442,8 +20755,19 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "AddMultVVt", (PyCFunction)(void(*)(void))_wrap_AddMultVVt, METH_VARARGS|METH_KEYWORDS, "AddMultVVt(Vector v, DenseMatrix VWt)"},
 	 { "AddMult_a_VWt", (PyCFunction)(void(*)(void))_wrap_AddMult_a_VWt, METH_VARARGS|METH_KEYWORDS, "AddMult_a_VWt(double const a, Vector v, Vector w, DenseMatrix VWt)"},
 	 { "AddMult_a_VVt", (PyCFunction)(void(*)(void))_wrap_AddMult_a_VVt, METH_VARARGS|METH_KEYWORDS, "AddMult_a_VVt(double const a, Vector v, DenseMatrix VVt)"},
-	 { "LUFactors_data_set", _wrap_LUFactors_data_set, METH_VARARGS, "LUFactors_data_set(LUFactors self, double * data)"},
-	 { "LUFactors_data_get", _wrap_LUFactors_data_get, METH_O, "LUFactors_data_get(LUFactors self) -> double *"},
+	 { "Factors_data_set", _wrap_Factors_data_set, METH_VARARGS, "Factors_data_set(Factors self, double * data)"},
+	 { "Factors_data_get", _wrap_Factors_data_get, METH_O, "Factors_data_get(Factors self) -> double *"},
+	 { "new_Factors", _wrap_new_Factors, METH_VARARGS, "\n"
+		"Factors()\n"
+		"new_Factors(double * data_) -> Factors\n"
+		""},
+	 { "Factors_Factor", (PyCFunction)(void(*)(void))_wrap_Factors_Factor, METH_VARARGS|METH_KEYWORDS, "Factor(Factors self, int m, double TOL=0.0) -> bool"},
+	 { "Factors_Det", (PyCFunction)(void(*)(void))_wrap_Factors_Det, METH_VARARGS|METH_KEYWORDS, "Det(Factors self, int m) -> double"},
+	 { "Factors_Solve", (PyCFunction)(void(*)(void))_wrap_Factors_Solve, METH_VARARGS|METH_KEYWORDS, "Solve(Factors self, int m, int n, double * X)"},
+	 { "Factors_GetInverseMatrix", (PyCFunction)(void(*)(void))_wrap_Factors_GetInverseMatrix, METH_VARARGS|METH_KEYWORDS, "GetInverseMatrix(Factors self, int m, double * X)"},
+	 { "delete_Factors", _wrap_delete_Factors, METH_O, "delete_Factors(Factors self)"},
+	 { "Factors_swigregister", Factors_swigregister, METH_O, NULL},
+	 { "Factors_swiginit", Factors_swiginit, METH_VARARGS, NULL},
 	 { "LUFactors_ipiv_set", _wrap_LUFactors_ipiv_set, METH_VARARGS, "LUFactors_ipiv_set(LUFactors self, int * ipiv)"},
 	 { "LUFactors_ipiv_get", _wrap_LUFactors_ipiv_get, METH_O, "LUFactors_ipiv_get(LUFactors self) -> int *"},
 	 { "new_LUFactors", _wrap_new_LUFactors, METH_VARARGS, "\n"
@@ -19465,10 +20789,26 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_LUFactors", _wrap_delete_LUFactors, METH_O, "delete_LUFactors(LUFactors self)"},
 	 { "LUFactors_swigregister", LUFactors_swigregister, METH_O, NULL},
 	 { "LUFactors_swiginit", LUFactors_swiginit, METH_VARARGS, NULL},
+	 { "new_CholeskyFactors", _wrap_new_CholeskyFactors, METH_VARARGS, "\n"
+		"CholeskyFactors()\n"
+		"new_CholeskyFactors(double * data_) -> CholeskyFactors\n"
+		""},
+	 { "CholeskyFactors_Factor", (PyCFunction)(void(*)(void))_wrap_CholeskyFactors_Factor, METH_VARARGS|METH_KEYWORDS, "Factor(CholeskyFactors self, int m, double TOL=0.0) -> bool"},
+	 { "CholeskyFactors_Det", (PyCFunction)(void(*)(void))_wrap_CholeskyFactors_Det, METH_VARARGS|METH_KEYWORDS, "Det(CholeskyFactors self, int m) -> double"},
+	 { "CholeskyFactors_LMult", (PyCFunction)(void(*)(void))_wrap_CholeskyFactors_LMult, METH_VARARGS|METH_KEYWORDS, "LMult(CholeskyFactors self, int m, int n, double * X)"},
+	 { "CholeskyFactors_UMult", (PyCFunction)(void(*)(void))_wrap_CholeskyFactors_UMult, METH_VARARGS|METH_KEYWORDS, "UMult(CholeskyFactors self, int m, int n, double * X)"},
+	 { "CholeskyFactors_LSolve", (PyCFunction)(void(*)(void))_wrap_CholeskyFactors_LSolve, METH_VARARGS|METH_KEYWORDS, "LSolve(CholeskyFactors self, int m, int n, double * X)"},
+	 { "CholeskyFactors_USolve", (PyCFunction)(void(*)(void))_wrap_CholeskyFactors_USolve, METH_VARARGS|METH_KEYWORDS, "USolve(CholeskyFactors self, int m, int n, double * X)"},
+	 { "CholeskyFactors_Solve", (PyCFunction)(void(*)(void))_wrap_CholeskyFactors_Solve, METH_VARARGS|METH_KEYWORDS, "Solve(CholeskyFactors self, int m, int n, double * X)"},
+	 { "CholeskyFactors_RightSolve", (PyCFunction)(void(*)(void))_wrap_CholeskyFactors_RightSolve, METH_VARARGS|METH_KEYWORDS, "RightSolve(CholeskyFactors self, int m, int n, double * X)"},
+	 { "CholeskyFactors_GetInverseMatrix", (PyCFunction)(void(*)(void))_wrap_CholeskyFactors_GetInverseMatrix, METH_VARARGS|METH_KEYWORDS, "GetInverseMatrix(CholeskyFactors self, int m, double * X)"},
+	 { "delete_CholeskyFactors", _wrap_delete_CholeskyFactors, METH_O, "delete_CholeskyFactors(CholeskyFactors self)"},
+	 { "CholeskyFactors_swigregister", CholeskyFactors_swigregister, METH_O, NULL},
+	 { "CholeskyFactors_swiginit", CholeskyFactors_swiginit, METH_VARARGS, NULL},
 	 { "new_DenseMatrixInverse", _wrap_new_DenseMatrixInverse, METH_VARARGS, "\n"
-		"DenseMatrixInverse()\n"
-		"DenseMatrixInverse(DenseMatrix mat)\n"
-		"new_DenseMatrixInverse(DenseMatrix mat) -> DenseMatrixInverse\n"
+		"DenseMatrixInverse(bool spd_=False)\n"
+		"DenseMatrixInverse(DenseMatrix mat, bool spd_=False)\n"
+		"new_DenseMatrixInverse(DenseMatrix mat, bool spd_=False) -> DenseMatrixInverse\n"
 		""},
 	 { "DenseMatrixInverse_Size", _wrap_DenseMatrixInverse_Size, METH_O, "Size(DenseMatrixInverse self) -> int"},
 	 { "DenseMatrixInverse_Factor", _wrap_DenseMatrixInverse_Factor, METH_VARARGS, "\n"
@@ -19518,7 +20858,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "DenseTensor_AddMult", (PyCFunction)(void(*)(void))_wrap_DenseTensor_AddMult, METH_VARARGS|METH_KEYWORDS, "AddMult(DenseTensor self, mfem::Table const & elem_dof, Vector x, Vector y)"},
 	 { "DenseTensor_Clear", _wrap_DenseTensor_Clear, METH_O, "Clear(DenseTensor self)"},
-	 { "DenseTensor_MemoryUsage", _wrap_DenseTensor_MemoryUsage, METH_O, "MemoryUsage(DenseTensor self) -> long"},
+	 { "DenseTensor_MemoryUsage", _wrap_DenseTensor_MemoryUsage, METH_O, "MemoryUsage(DenseTensor self) -> std::size_t"},
 	 { "DenseTensor_Read", (PyCFunction)(void(*)(void))_wrap_DenseTensor_Read, METH_VARARGS|METH_KEYWORDS, "Read(DenseTensor self, bool on_dev=True) -> double const *"},
 	 { "DenseTensor_HostRead", _wrap_DenseTensor_HostRead, METH_O, "HostRead(DenseTensor self) -> double const *"},
 	 { "DenseTensor_Write", (PyCFunction)(void(*)(void))_wrap_DenseTensor_Write, METH_VARARGS|METH_KEYWORDS, "Write(DenseTensor self, bool on_dev=True) -> double *"},
@@ -19568,6 +20908,12 @@ static void *_p_mfem__AbstractSparseMatrixTo_p_mfem__Matrix(void *x, int *SWIGUN
 }
 static void *_p_mfem__DenseMatrixTo_p_mfem__Matrix(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Matrix *)  ((mfem::DenseMatrix *) x));
+}
+static void *_p_mfem__LUFactorsTo_p_mfem__Factors(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Factors *)  ((mfem::LUFactors *) x));
+}
+static void *_p_mfem__CholeskyFactorsTo_p_mfem__Factors(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Factors *)  ((mfem::CholeskyFactors *) x));
 }
 static void *_p_p_mfem__PyTimeDependentOperatorBaseTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator **) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase **) x));
@@ -19689,9 +21035,11 @@ static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__CholeskyFactors = {"_p_mfem__CholeskyFactors", "mfem::CholeskyFactors *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DenseMatrix = {"_p_mfem__DenseMatrix", "mfem::DenseMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DenseMatrixInverse = {"_p_mfem__DenseMatrixInverse", "mfem::DenseMatrixInverse *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DenseTensor = {"_p_mfem__DenseTensor", "mfem::DenseTensor *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__Factors = {"_p_mfem__Factors", "mfem::Factors *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__LUFactors = {"_p_mfem__LUFactors", "mfem::LUFactors *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Matrix = {"_p_mfem__Matrix", "mfem::Matrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__AbstractSparseMatrix = {"_p_mfem__AbstractSparseMatrix", 0, 0, 0, 0, 0};
@@ -19745,10 +21093,12 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_int,
   &_swigt__p_mfem__AbstractSparseMatrix,
   &_swigt__p_mfem__ArrayT_int_t,
+  &_swigt__p_mfem__CholeskyFactors,
   &_swigt__p_mfem__ConstrainedOperator,
   &_swigt__p_mfem__DenseMatrix,
   &_swigt__p_mfem__DenseMatrixInverse,
   &_swigt__p_mfem__DenseTensor,
+  &_swigt__p_mfem__Factors,
   &_swigt__p_mfem__IdentityOperator,
   &_swigt__p_mfem__LUFactors,
   &_swigt__p_mfem__Matrix,
@@ -19799,9 +21149,11 @@ static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0,
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__CholeskyFactors[] = {  {&_swigt__p_mfem__CholeskyFactors, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {  {&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DenseMatrixInverse[] = {  {&_swigt__p_mfem__DenseMatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DenseTensor[] = {  {&_swigt__p_mfem__DenseTensor, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Factors[] = {  {&_swigt__p_mfem__Factors, 0, 0, 0},  {&_swigt__p_mfem__LUFactors, _p_mfem__LUFactorsTo_p_mfem__Factors, 0, 0},  {&_swigt__p_mfem__CholeskyFactors, _p_mfem__CholeskyFactorsTo_p_mfem__Factors, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LUFactors[] = {  {&_swigt__p_mfem__LUFactors, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__AbstractSparseMatrix[] = {{&_swigt__p_mfem__AbstractSparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Matrix[] = {  {&_swigt__p_mfem__Matrix, 0, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Matrix, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Matrix, 0, 0},{0, 0, 0, 0}};
@@ -19855,10 +21207,12 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_int,
   _swigc__p_mfem__AbstractSparseMatrix,
   _swigc__p_mfem__ArrayT_int_t,
+  _swigc__p_mfem__CholeskyFactors,
   _swigc__p_mfem__ConstrainedOperator,
   _swigc__p_mfem__DenseMatrix,
   _swigc__p_mfem__DenseMatrixInverse,
   _swigc__p_mfem__DenseTensor,
+  _swigc__p_mfem__Factors,
   _swigc__p_mfem__IdentityOperator,
   _swigc__p_mfem__LUFactors,
   _swigc__p_mfem__Matrix,

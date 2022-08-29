@@ -2916,6 +2916,55 @@ SWIGINTERNINLINE PyObject*
   #define SWIG_From_long   PyInt_FromLong 
 
 
+SWIGINTERNINLINE PyObject* 
+SWIG_From_unsigned_SS_long  (unsigned long value)
+{
+  return (value > LONG_MAX) ?
+    PyLong_FromUnsignedLong(value) : PyInt_FromLong(static_cast< long >(value));
+}
+
+
+#include <limits.h>
+#if !defined(SWIG_NO_LLONG_MAX)
+# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
+#   define LLONG_MAX __LONG_LONG_MAX__
+#   define LLONG_MIN (-LLONG_MAX - 1LL)
+#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
+# endif
+#endif
+
+
+#if defined(LLONG_MAX) && !defined(SWIG_LONG_LONG_AVAILABLE)
+#  define SWIG_LONG_LONG_AVAILABLE
+#endif
+
+
+#ifdef SWIG_LONG_LONG_AVAILABLE
+SWIGINTERNINLINE PyObject* 
+SWIG_From_unsigned_SS_long_SS_long  (unsigned long long value)
+{
+  return (value > LONG_MAX) ?
+    PyLong_FromUnsignedLongLong(value) : PyInt_FromLong(static_cast< long >(value));
+}
+#endif
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_size_t  (size_t value)
+{    
+#ifdef SWIG_LONG_LONG_AVAILABLE
+  if (sizeof(size_t) <= sizeof(unsigned long)) {
+#endif
+    return SWIG_From_unsigned_SS_long  (static_cast< unsigned long >(value));
+#ifdef SWIG_LONG_LONG_AVAILABLE
+  } else {
+    /* assume sizeof(size_t) <= sizeof(unsigned long long) */
+    return SWIG_From_unsigned_SS_long_SS_long  (static_cast< unsigned long long >(value));
+  }
+#endif
+}
+
+
 #include <float.h>
 
 
@@ -3077,16 +3126,6 @@ SWIGINTERN PyObject *mfem_Array_Sl_mfem_Vector_Sm__Sg____getitem__(mfem::Array< 
   }
 
   #define SWIG_From_double   PyFloat_FromDouble 
-
-
-#include <limits.h>
-#if !defined(SWIG_NO_LLONG_MAX)
-# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
-#   define LLONG_MAX __LONG_LONG_MAX__
-#   define LLONG_MIN (-LLONG_MAX - 1LL)
-#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
-# endif
-#endif
 
 
 SWIGINTERN int
@@ -6004,7 +6043,7 @@ SWIGINTERN PyObject *_wrap_VectorPtrArray_MemoryUsage(PyObject *SWIGUNUSEDPARM(s
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  long result;
+  std::size_t result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -6015,7 +6054,7 @@ SWIGINTERN PyObject *_wrap_VectorPtrArray_MemoryUsage(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< mfem::Array< mfem::Vector * > * >(argp1);
   {
     try {
-      result = (long)((mfem::Array< mfem::Vector * > const *)arg1)->MemoryUsage();
+      result = ((mfem::Array< mfem::Vector * > const *)arg1)->MemoryUsage();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -6029,7 +6068,7 @@ SWIGINTERN PyObject *_wrap_VectorPtrArray_MemoryUsage(PyObject *SWIGUNUSEDPARM(s
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
   }
-  resultobj = SWIG_From_long(static_cast< long >(result));
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
   return NULL;
@@ -11818,6 +11857,53 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Vector_SetGlobalSeed(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Vector *arg1 = (mfem::Vector *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"gseed",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Vector_SetGlobalSeed", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vector_SetGlobalSeed" "', argument " "1"" of type '" "mfem::Vector *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Vector * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      (arg1)->SetGlobalSeed(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Vector_Norml2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Vector *arg1 = (mfem::Vector *) 0 ;
@@ -13857,7 +13943,7 @@ static PyMethodDef SwigMethods[] = {
 		"VectorPtrArray_end(VectorPtrArray self) -> Vector\n"
 		"VectorPtrArray_end(VectorPtrArray self) -> mfem::Vector *const *\n"
 		""},
-	 { "VectorPtrArray_MemoryUsage", _wrap_VectorPtrArray_MemoryUsage, METH_O, "VectorPtrArray_MemoryUsage(VectorPtrArray self) -> long"},
+	 { "VectorPtrArray_MemoryUsage", _wrap_VectorPtrArray_MemoryUsage, METH_O, "VectorPtrArray_MemoryUsage(VectorPtrArray self) -> std::size_t"},
 	 { "VectorPtrArray_Read", (PyCFunction)(void(*)(void))_wrap_VectorPtrArray_Read, METH_VARARGS|METH_KEYWORDS, "VectorPtrArray_Read(VectorPtrArray self, bool on_dev=True) -> mfem::Vector *const *"},
 	 { "VectorPtrArray_HostRead", _wrap_VectorPtrArray_HostRead, METH_O, "VectorPtrArray_HostRead(VectorPtrArray self) -> mfem::Vector *const *"},
 	 { "VectorPtrArray_Write", (PyCFunction)(void(*)(void))_wrap_VectorPtrArray_Write, METH_VARARGS|METH_KEYWORDS, "VectorPtrArray_Write(VectorPtrArray self, bool on_dev=True) -> mfem::Vector **"},
@@ -13983,6 +14069,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "Vector_SetSubVectorComplement", (PyCFunction)(void(*)(void))_wrap_Vector_SetSubVectorComplement, METH_VARARGS|METH_KEYWORDS, "Vector_SetSubVectorComplement(Vector self, intArray dofs, double const val)"},
 	 { "Vector_PrintHash", (PyCFunction)(void(*)(void))_wrap_Vector_PrintHash, METH_VARARGS|METH_KEYWORDS, "Vector_PrintHash(Vector self, std::ostream & out)"},
 	 { "Vector_Randomize", (PyCFunction)(void(*)(void))_wrap_Vector_Randomize, METH_VARARGS|METH_KEYWORDS, "Vector_Randomize(Vector self, int seed=0)"},
+	 { "Vector_SetGlobalSeed", (PyCFunction)(void(*)(void))_wrap_Vector_SetGlobalSeed, METH_VARARGS|METH_KEYWORDS, "Vector_SetGlobalSeed(Vector self, int gseed)"},
 	 { "Vector_Norml2", _wrap_Vector_Norml2, METH_O, "Vector_Norml2(Vector self) -> double"},
 	 { "Vector_Normlinf", _wrap_Vector_Normlinf, METH_O, "Vector_Normlinf(Vector self) -> double"},
 	 { "Vector_Norml1", _wrap_Vector_Norml1, METH_O, "Vector_Norml1(Vector self) -> double"},
@@ -14100,7 +14187,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"end(VectorPtrArray self) -> Vector\n"
 		"end(VectorPtrArray self) -> mfem::Vector *const *\n"
 		""},
-	 { "VectorPtrArray_MemoryUsage", _wrap_VectorPtrArray_MemoryUsage, METH_O, "MemoryUsage(VectorPtrArray self) -> long"},
+	 { "VectorPtrArray_MemoryUsage", _wrap_VectorPtrArray_MemoryUsage, METH_O, "MemoryUsage(VectorPtrArray self) -> std::size_t"},
 	 { "VectorPtrArray_Read", (PyCFunction)(void(*)(void))_wrap_VectorPtrArray_Read, METH_VARARGS|METH_KEYWORDS, "Read(VectorPtrArray self, bool on_dev=True) -> mfem::Vector *const *"},
 	 { "VectorPtrArray_HostRead", _wrap_VectorPtrArray_HostRead, METH_O, "HostRead(VectorPtrArray self) -> mfem::Vector *const *"},
 	 { "VectorPtrArray_Write", (PyCFunction)(void(*)(void))_wrap_VectorPtrArray_Write, METH_VARARGS|METH_KEYWORDS, "Write(VectorPtrArray self, bool on_dev=True) -> mfem::Vector **"},
@@ -14226,6 +14313,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Vector_SetSubVectorComplement", (PyCFunction)(void(*)(void))_wrap_Vector_SetSubVectorComplement, METH_VARARGS|METH_KEYWORDS, "SetSubVectorComplement(Vector self, intArray dofs, double const val)"},
 	 { "Vector_PrintHash", (PyCFunction)(void(*)(void))_wrap_Vector_PrintHash, METH_VARARGS|METH_KEYWORDS, "PrintHash(Vector self, std::ostream & out)"},
 	 { "Vector_Randomize", (PyCFunction)(void(*)(void))_wrap_Vector_Randomize, METH_VARARGS|METH_KEYWORDS, "Randomize(Vector self, int seed=0)"},
+	 { "Vector_SetGlobalSeed", (PyCFunction)(void(*)(void))_wrap_Vector_SetGlobalSeed, METH_VARARGS|METH_KEYWORDS, "SetGlobalSeed(Vector self, int gseed)"},
 	 { "Vector_Norml2", _wrap_Vector_Norml2, METH_O, "Norml2(Vector self) -> double"},
 	 { "Vector_Normlinf", _wrap_Vector_Normlinf, METH_O, "Normlinf(Vector self) -> double"},
 	 { "Vector_Norml1", _wrap_Vector_Norml1, METH_O, "Norml1(Vector self) -> double"},

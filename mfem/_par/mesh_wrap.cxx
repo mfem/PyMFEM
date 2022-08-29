@@ -5193,6 +5193,21 @@ namespace swig {
   #define SWIG_From_double   PyFloat_FromDouble 
 
 
+#if defined(LLONG_MAX) && !defined(SWIG_LONG_LONG_AVAILABLE)
+#  define SWIG_LONG_LONG_AVAILABLE
+#endif
+
+
+#ifdef SWIG_LONG_LONG_AVAILABLE
+SWIGINTERNINLINE PyObject* 
+SWIG_From_long_SS_long  (long long value)
+{
+  return ((value < LONG_MIN) || (value > LONG_MAX)) ?
+    PyLong_FromLongLong(value) : PyInt_FromLong(static_cast< long >(value));
+}
+#endif
+
+
   #define SWIG_From_long   PyInt_FromLong 
 
 
@@ -12777,7 +12792,7 @@ SWIGINTERN PyObject *_wrap_Mesh_ReduceInt(PyObject *SWIGUNUSEDPARM(self), PyObje
   char * kwnames[] = {
     (char *)"self",  (char *)"value",  NULL 
   };
-  long result;
+  long long result;
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Mesh_ReduceInt", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
@@ -12793,7 +12808,7 @@ SWIGINTERN PyObject *_wrap_Mesh_ReduceInt(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   {
     try {
-      result = (long)((mfem::Mesh const *)arg1)->ReduceInt(arg2); 
+      result = (long long)((mfem::Mesh const *)arg1)->ReduceInt(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -12804,7 +12819,7 @@ SWIGINTERN PyObject *_wrap_Mesh_ReduceInt(PyObject *SWIGUNUSEDPARM(self), PyObje
     //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
     //    catch (std::exception &e) { SWIG_fail; }    
   }
-  resultobj = SWIG_From_long(static_cast< long >(result));
+  resultobj = SWIG_From_long_SS_long(static_cast< long long >(result));
   return resultobj;
 fail:
   return NULL;
@@ -12817,7 +12832,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetGlobalNE(PyObject *SWIGUNUSEDPARM(self), PyOb
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  long result;
+  long long result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -12828,7 +12843,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetGlobalNE(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
     try {
-      result = (long)((mfem::Mesh const *)arg1)->GetGlobalNE(); 
+      result = (long long)((mfem::Mesh const *)arg1)->GetGlobalNE(); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -12839,7 +12854,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetGlobalNE(PyObject *SWIGUNUSEDPARM(self), PyOb
     //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
     //    catch (std::exception &e) { SWIG_fail; }    
   }
-  resultobj = SWIG_From_long(static_cast< long >(result));
+  resultobj = SWIG_From_long_SS_long(static_cast< long long >(result));
   return resultobj;
 fail:
   return NULL;
@@ -12920,22 +12935,26 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceGeometricFactors(PyObject *SWIGUNUSEDPARM
   mfem::IntegrationRule *arg2 = 0 ;
   int arg3 ;
   mfem::FaceType arg4 ;
+  mfem::MemoryType arg5 = (mfem::MemoryType) mfem::MemoryType::DEFAULT ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   int val4 ;
   int ecode4 = 0 ;
+  int val5 ;
+  int ecode5 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
   char * kwnames[] = {
-    (char *)"self",  (char *)"ir",  (char *)"flags",  (char *)"type",  NULL 
+    (char *)"self",  (char *)"ir",  (char *)"flags",  (char *)"type",  (char *)"d_mt",  NULL 
   };
   mfem::FaceGeometricFactors *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:Mesh_GetFaceGeometricFactors", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO|O:Mesh_GetFaceGeometricFactors", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_GetFaceGeometricFactors" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
@@ -12960,9 +12979,16 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceGeometricFactors(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Mesh_GetFaceGeometricFactors" "', argument " "4"" of type '" "mfem::FaceType""'");
   } 
   arg4 = static_cast< mfem::FaceType >(val4);
+  if (obj4) {
+    ecode5 = SWIG_AsVal_int(obj4, &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "Mesh_GetFaceGeometricFactors" "', argument " "5"" of type '" "mfem::MemoryType""'");
+    } 
+    arg5 = static_cast< mfem::MemoryType >(val5);
+  }
   {
     try {
-      result = (mfem::FaceGeometricFactors *)(arg1)->GetFaceGeometricFactors((mfem::IntegrationRule const &)*arg2,arg3,arg4); 
+      result = (mfem::FaceGeometricFactors *)(arg1)->GetFaceGeometricFactors((mfem::IntegrationRule const &)*arg2,arg3,arg4,arg5); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -26096,22 +26122,26 @@ SWIGINTERN PyObject *_wrap_new_FaceGeometricFactors(PyObject *SWIGUNUSEDPARM(sel
   mfem::IntegrationRule *arg2 = 0 ;
   int arg3 ;
   mfem::FaceType arg4 ;
+  mfem::MemoryType arg5 = (mfem::MemoryType) mfem::MemoryType::DEFAULT ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   int val4 ;
   int ecode4 = 0 ;
+  int val5 ;
+  int ecode5 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
   char * kwnames[] = {
-    (char *)"mesh",  (char *)"ir",  (char *)"flags",  (char *)"type",  NULL 
+    (char *)"mesh",  (char *)"ir",  (char *)"flags",  (char *)"type",  (char *)"d_mt",  NULL 
   };
   mfem::FaceGeometricFactors *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:new_FaceGeometricFactors", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO|O:new_FaceGeometricFactors", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_FaceGeometricFactors" "', argument " "1"" of type '" "mfem::Mesh const *""'"); 
@@ -26136,9 +26166,16 @@ SWIGINTERN PyObject *_wrap_new_FaceGeometricFactors(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_FaceGeometricFactors" "', argument " "4"" of type '" "mfem::FaceType""'");
   } 
   arg4 = static_cast< mfem::FaceType >(val4);
+  if (obj4) {
+    ecode5 = SWIG_AsVal_int(obj4, &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_FaceGeometricFactors" "', argument " "5"" of type '" "mfem::MemoryType""'");
+    } 
+    arg5 = static_cast< mfem::MemoryType >(val5);
+  }
   {
     try {
-      result = (mfem::FaceGeometricFactors *)new mfem::FaceGeometricFactors((mfem::Mesh const *)arg1,(mfem::IntegrationRule const &)*arg2,arg3,arg4); 
+      result = (mfem::FaceGeometricFactors *)new mfem::FaceGeometricFactors((mfem::Mesh const *)arg1,(mfem::IntegrationRule const &)*arg2,arg3,arg4,arg5); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -27304,10 +27341,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "Mesh_GetNumFaces", _wrap_Mesh_GetNumFaces, METH_O, "Mesh_GetNumFaces(Mesh self) -> int"},
 	 { "Mesh_GetNumFacesWithGhost", _wrap_Mesh_GetNumFacesWithGhost, METH_O, "Mesh_GetNumFacesWithGhost(Mesh self) -> int"},
 	 { "Mesh_GetNFbyType", (PyCFunction)(void(*)(void))_wrap_Mesh_GetNFbyType, METH_VARARGS|METH_KEYWORDS, "Mesh_GetNFbyType(Mesh self, mfem::FaceType type) -> int"},
-	 { "Mesh_ReduceInt", (PyCFunction)(void(*)(void))_wrap_Mesh_ReduceInt, METH_VARARGS|METH_KEYWORDS, "Mesh_ReduceInt(Mesh self, int value) -> long"},
-	 { "Mesh_GetGlobalNE", _wrap_Mesh_GetGlobalNE, METH_O, "Mesh_GetGlobalNE(Mesh self) -> long"},
+	 { "Mesh_ReduceInt", (PyCFunction)(void(*)(void))_wrap_Mesh_ReduceInt, METH_VARARGS|METH_KEYWORDS, "Mesh_ReduceInt(Mesh self, int value) -> long long"},
+	 { "Mesh_GetGlobalNE", _wrap_Mesh_GetGlobalNE, METH_O, "Mesh_GetGlobalNE(Mesh self) -> long long"},
 	 { "Mesh_GetGeometricFactors", (PyCFunction)(void(*)(void))_wrap_Mesh_GetGeometricFactors, METH_VARARGS|METH_KEYWORDS, "Mesh_GetGeometricFactors(Mesh self, IntegrationRule ir, int const flags, mfem::MemoryType d_mt=DEFAULT) -> GeometricFactors"},
-	 { "Mesh_GetFaceGeometricFactors", (PyCFunction)(void(*)(void))_wrap_Mesh_GetFaceGeometricFactors, METH_VARARGS|METH_KEYWORDS, "Mesh_GetFaceGeometricFactors(Mesh self, IntegrationRule ir, int const flags, mfem::FaceType type) -> FaceGeometricFactors"},
+	 { "Mesh_GetFaceGeometricFactors", (PyCFunction)(void(*)(void))_wrap_Mesh_GetFaceGeometricFactors, METH_VARARGS|METH_KEYWORDS, "Mesh_GetFaceGeometricFactors(Mesh self, IntegrationRule ir, int const flags, mfem::FaceType type, mfem::MemoryType d_mt=DEFAULT) -> FaceGeometricFactors"},
 	 { "Mesh_DeleteGeometricFactors", _wrap_Mesh_DeleteGeometricFactors, METH_O, "Mesh_DeleteGeometricFactors(Mesh self)"},
 	 { "Mesh_EulerNumber", _wrap_Mesh_EulerNumber, METH_O, "Mesh_EulerNumber(Mesh self) -> int"},
 	 { "Mesh_EulerNumber2D", _wrap_Mesh_EulerNumber2D, METH_O, "Mesh_EulerNumber2D(Mesh self) -> int"},
@@ -27566,7 +27603,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "FaceGeometricFactors_computed_factors_get", _wrap_FaceGeometricFactors_computed_factors_get, METH_O, "FaceGeometricFactors_computed_factors_get(FaceGeometricFactors self) -> int"},
 	 { "FaceGeometricFactors_type_set", _wrap_FaceGeometricFactors_type_set, METH_VARARGS, "FaceGeometricFactors_type_set(FaceGeometricFactors self, mfem::FaceType type)"},
 	 { "FaceGeometricFactors_type_get", _wrap_FaceGeometricFactors_type_get, METH_O, "FaceGeometricFactors_type_get(FaceGeometricFactors self) -> mfem::FaceType"},
-	 { "new_FaceGeometricFactors", (PyCFunction)(void(*)(void))_wrap_new_FaceGeometricFactors, METH_VARARGS|METH_KEYWORDS, "new_FaceGeometricFactors(Mesh mesh, IntegrationRule ir, int flags, mfem::FaceType type) -> FaceGeometricFactors"},
+	 { "new_FaceGeometricFactors", (PyCFunction)(void(*)(void))_wrap_new_FaceGeometricFactors, METH_VARARGS|METH_KEYWORDS, "new_FaceGeometricFactors(Mesh mesh, IntegrationRule ir, int flags, mfem::FaceType type, mfem::MemoryType d_mt=DEFAULT) -> FaceGeometricFactors"},
 	 { "FaceGeometricFactors_X_set", _wrap_FaceGeometricFactors_X_set, METH_VARARGS, "FaceGeometricFactors_X_set(FaceGeometricFactors self, Vector X)"},
 	 { "FaceGeometricFactors_X_get", _wrap_FaceGeometricFactors_X_get, METH_O, "FaceGeometricFactors_X_get(FaceGeometricFactors self) -> Vector"},
 	 { "FaceGeometricFactors_J_set", _wrap_FaceGeometricFactors_J_set, METH_VARARGS, "FaceGeometricFactors_J_set(FaceGeometricFactors self, Vector J)"},
@@ -27703,10 +27740,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Mesh_GetNumFaces", _wrap_Mesh_GetNumFaces, METH_O, "GetNumFaces(Mesh self) -> int"},
 	 { "Mesh_GetNumFacesWithGhost", _wrap_Mesh_GetNumFacesWithGhost, METH_O, "GetNumFacesWithGhost(Mesh self) -> int"},
 	 { "Mesh_GetNFbyType", (PyCFunction)(void(*)(void))_wrap_Mesh_GetNFbyType, METH_VARARGS|METH_KEYWORDS, "GetNFbyType(Mesh self, mfem::FaceType type) -> int"},
-	 { "Mesh_ReduceInt", (PyCFunction)(void(*)(void))_wrap_Mesh_ReduceInt, METH_VARARGS|METH_KEYWORDS, "ReduceInt(Mesh self, int value) -> long"},
-	 { "Mesh_GetGlobalNE", _wrap_Mesh_GetGlobalNE, METH_O, "GetGlobalNE(Mesh self) -> long"},
+	 { "Mesh_ReduceInt", (PyCFunction)(void(*)(void))_wrap_Mesh_ReduceInt, METH_VARARGS|METH_KEYWORDS, "ReduceInt(Mesh self, int value) -> long long"},
+	 { "Mesh_GetGlobalNE", _wrap_Mesh_GetGlobalNE, METH_O, "GetGlobalNE(Mesh self) -> long long"},
 	 { "Mesh_GetGeometricFactors", (PyCFunction)(void(*)(void))_wrap_Mesh_GetGeometricFactors, METH_VARARGS|METH_KEYWORDS, "GetGeometricFactors(Mesh self, IntegrationRule ir, int const flags, mfem::MemoryType d_mt=DEFAULT) -> GeometricFactors"},
-	 { "Mesh_GetFaceGeometricFactors", (PyCFunction)(void(*)(void))_wrap_Mesh_GetFaceGeometricFactors, METH_VARARGS|METH_KEYWORDS, "GetFaceGeometricFactors(Mesh self, IntegrationRule ir, int const flags, mfem::FaceType type) -> FaceGeometricFactors"},
+	 { "Mesh_GetFaceGeometricFactors", (PyCFunction)(void(*)(void))_wrap_Mesh_GetFaceGeometricFactors, METH_VARARGS|METH_KEYWORDS, "GetFaceGeometricFactors(Mesh self, IntegrationRule ir, int const flags, mfem::FaceType type, mfem::MemoryType d_mt=DEFAULT) -> FaceGeometricFactors"},
 	 { "Mesh_DeleteGeometricFactors", _wrap_Mesh_DeleteGeometricFactors, METH_O, "DeleteGeometricFactors(Mesh self)"},
 	 { "Mesh_EulerNumber", _wrap_Mesh_EulerNumber, METH_O, "EulerNumber(Mesh self) -> int"},
 	 { "Mesh_EulerNumber2D", _wrap_Mesh_EulerNumber2D, METH_O, "EulerNumber2D(Mesh self) -> int"},
@@ -27965,7 +28002,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "FaceGeometricFactors_computed_factors_get", _wrap_FaceGeometricFactors_computed_factors_get, METH_O, "FaceGeometricFactors_computed_factors_get(FaceGeometricFactors self) -> int"},
 	 { "FaceGeometricFactors_type_set", _wrap_FaceGeometricFactors_type_set, METH_VARARGS, "FaceGeometricFactors_type_set(FaceGeometricFactors self, mfem::FaceType type)"},
 	 { "FaceGeometricFactors_type_get", _wrap_FaceGeometricFactors_type_get, METH_O, "FaceGeometricFactors_type_get(FaceGeometricFactors self) -> mfem::FaceType"},
-	 { "new_FaceGeometricFactors", (PyCFunction)(void(*)(void))_wrap_new_FaceGeometricFactors, METH_VARARGS|METH_KEYWORDS, "new_FaceGeometricFactors(Mesh mesh, IntegrationRule ir, int flags, mfem::FaceType type) -> FaceGeometricFactors"},
+	 { "new_FaceGeometricFactors", (PyCFunction)(void(*)(void))_wrap_new_FaceGeometricFactors, METH_VARARGS|METH_KEYWORDS, "new_FaceGeometricFactors(Mesh mesh, IntegrationRule ir, int flags, mfem::FaceType type, mfem::MemoryType d_mt=DEFAULT) -> FaceGeometricFactors"},
 	 { "FaceGeometricFactors_X_set", _wrap_FaceGeometricFactors_X_set, METH_VARARGS, "FaceGeometricFactors_X_set(FaceGeometricFactors self, Vector X)"},
 	 { "FaceGeometricFactors_X_get", _wrap_FaceGeometricFactors_X_get, METH_O, "FaceGeometricFactors_X_get(FaceGeometricFactors self) -> Vector"},
 	 { "FaceGeometricFactors_J_set", _wrap_FaceGeometricFactors_J_set, METH_VARARGS, "FaceGeometricFactors_J_set(FaceGeometricFactors self, Vector J)"},

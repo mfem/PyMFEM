@@ -159,9 +159,9 @@ class ParLinearForm(mfem._par.linearform.LinearForm):
         return _plinearform.ParLinearForm_MakeRef(self, *args)
     MakeRef = _swig_new_instance_method(_plinearform.ParLinearForm_MakeRef)
 
-    def Assemble(self):
-        r"""Assemble(ParLinearForm self)"""
-        return _plinearform.ParLinearForm_Assemble(self)
+    def Assemble(self, use_device=True):
+        r"""Assemble(ParLinearForm self, bool use_device=True)"""
+        return _plinearform.ParLinearForm_Assemble(self, use_device)
     Assemble = _swig_new_instance_method(_plinearform.ParLinearForm_Assemble)
 
     def AssembleSharedFaces(self):

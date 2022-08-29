@@ -197,6 +197,11 @@ class LinearForm(mfem._par.vector.Vector):
         return _linearform.LinearForm_GetDLFI(self)
     GetDLFI = _swig_new_instance_method(_linearform.LinearForm_GetDLFI)
 
+    def GetDLFI_Marker(self):
+        r"""GetDLFI_Marker(LinearForm self) -> mfem::Array< mfem::Array< int > * > *"""
+        return _linearform.LinearForm_GetDLFI_Marker(self)
+    GetDLFI_Marker = _swig_new_instance_method(_linearform.LinearForm_GetDLFI_Marker)
+
     def GetDLFI_Delta(self):
         r"""GetDLFI_Delta(LinearForm self) -> mfem::Array< mfem::DeltaLFIntegrator * > *"""
         return _linearform.LinearForm_GetDLFI_Delta(self)
@@ -222,10 +227,15 @@ class LinearForm(mfem._par.vector.Vector):
         return _linearform.LinearForm_GetFLFI_Marker(self)
     GetFLFI_Marker = _swig_new_instance_method(_linearform.LinearForm_GetFLFI_Marker)
 
-    def Assemble(self):
-        r"""Assemble(LinearForm self)"""
-        return _linearform.LinearForm_Assemble(self)
+    def Assemble(self, use_device=True):
+        r"""Assemble(LinearForm self, bool use_device=True)"""
+        return _linearform.LinearForm_Assemble(self, use_device)
     Assemble = _swig_new_instance_method(_linearform.LinearForm_Assemble)
+
+    def SupportsDevice(self):
+        r"""SupportsDevice(LinearForm self) -> bool"""
+        return _linearform.LinearForm_SupportsDevice(self)
+    SupportsDevice = _swig_new_instance_method(_linearform.LinearForm_SupportsDevice)
 
     def AssembleDelta(self):
         r"""AssembleDelta(LinearForm self)"""

@@ -2992,6 +2992,45 @@ SWIGINTERNINLINE PyObject*
   #define SWIG_From_long   PyInt_FromLong 
 
 
+SWIGINTERNINLINE PyObject* 
+SWIG_From_unsigned_SS_long  (unsigned long value)
+{
+  return (value > LONG_MAX) ?
+    PyLong_FromUnsignedLong(value) : PyInt_FromLong(static_cast< long >(value));
+}
+
+
+#if defined(LLONG_MAX) && !defined(SWIG_LONG_LONG_AVAILABLE)
+#  define SWIG_LONG_LONG_AVAILABLE
+#endif
+
+
+#ifdef SWIG_LONG_LONG_AVAILABLE
+SWIGINTERNINLINE PyObject* 
+SWIG_From_unsigned_SS_long_SS_long  (unsigned long long value)
+{
+  return (value > LONG_MAX) ?
+    PyLong_FromUnsignedLongLong(value) : PyInt_FromLong(static_cast< long >(value));
+}
+#endif
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_size_t  (size_t value)
+{    
+#ifdef SWIG_LONG_LONG_AVAILABLE
+  if (sizeof(size_t) <= sizeof(unsigned long)) {
+#endif
+    return SWIG_From_unsigned_SS_long  (static_cast< unsigned long >(value));
+#ifdef SWIG_LONG_LONG_AVAILABLE
+  } else {
+    /* assume sizeof(size_t) <= sizeof(unsigned long long) */
+    return SWIG_From_unsigned_SS_long_SS_long  (static_cast< unsigned long long >(value));
+  }
+#endif
+}
+
+
 SWIGINTERN int
 SWIG_AsVal_bool (PyObject *obj, bool *val)
 {
@@ -7028,7 +7067,7 @@ SWIGINTERN PyObject *_wrap_intArray_MemoryUsage(PyObject *SWIGUNUSEDPARM(self), 
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  long result;
+  std::size_t result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -7039,7 +7078,7 @@ SWIGINTERN PyObject *_wrap_intArray_MemoryUsage(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
   {
     try {
-      result = (long)((mfem::Array< int > const *)arg1)->MemoryUsage();
+      result = ((mfem::Array< int > const *)arg1)->MemoryUsage();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -7053,7 +7092,7 @@ SWIGINTERN PyObject *_wrap_intArray_MemoryUsage(PyObject *SWIGUNUSEDPARM(self), 
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
   }
-  resultobj = SWIG_From_long(static_cast< long >(result));
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
   return NULL;
@@ -11450,7 +11489,7 @@ SWIGINTERN PyObject *_wrap_doubleArray_MemoryUsage(PyObject *SWIGUNUSEDPARM(self
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  long result;
+  std::size_t result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -11461,7 +11500,7 @@ SWIGINTERN PyObject *_wrap_doubleArray_MemoryUsage(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
   {
     try {
-      result = (long)((mfem::Array< double > const *)arg1)->MemoryUsage();
+      result = ((mfem::Array< double > const *)arg1)->MemoryUsage();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -11475,7 +11514,7 @@ SWIGINTERN PyObject *_wrap_doubleArray_MemoryUsage(PyObject *SWIGUNUSEDPARM(self
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
   }
-  resultobj = SWIG_From_long(static_cast< long >(result));
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
   return NULL;
@@ -14710,7 +14749,7 @@ SWIGINTERN PyObject *_wrap_boolArray_MemoryUsage(PyObject *SWIGUNUSEDPARM(self),
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  long result;
+  std::size_t result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -14721,7 +14760,7 @@ SWIGINTERN PyObject *_wrap_boolArray_MemoryUsage(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< mfem::Array< bool > * >(argp1);
   {
     try {
-      result = (long)((mfem::Array< bool > const *)arg1)->MemoryUsage();
+      result = ((mfem::Array< bool > const *)arg1)->MemoryUsage();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -14735,7 +14774,7 @@ SWIGINTERN PyObject *_wrap_boolArray_MemoryUsage(PyObject *SWIGUNUSEDPARM(self),
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
   }
-  resultobj = SWIG_From_long(static_cast< long >(result));
+  resultobj = SWIG_From_size_t(static_cast< size_t >(result));
   return resultobj;
 fail:
   return NULL;
@@ -15568,7 +15607,7 @@ static PyMethodDef SwigMethods[] = {
 		"intArray_end(intArray self) -> int\n"
 		"intArray_end(intArray self) -> int const *\n"
 		""},
-	 { "intArray_MemoryUsage", _wrap_intArray_MemoryUsage, METH_O, "intArray_MemoryUsage(intArray self) -> long"},
+	 { "intArray_MemoryUsage", _wrap_intArray_MemoryUsage, METH_O, "intArray_MemoryUsage(intArray self) -> std::size_t"},
 	 { "intArray_Read", (PyCFunction)(void(*)(void))_wrap_intArray_Read, METH_VARARGS|METH_KEYWORDS, "intArray_Read(intArray self, bool on_dev=True) -> int const *"},
 	 { "intArray_HostRead", _wrap_intArray_HostRead, METH_O, "intArray_HostRead(intArray self) -> int const *"},
 	 { "intArray_Write", (PyCFunction)(void(*)(void))_wrap_intArray_Write, METH_VARARGS|METH_KEYWORDS, "intArray_Write(intArray self, bool on_dev=True) -> int *"},
@@ -15668,7 +15707,7 @@ static PyMethodDef SwigMethods[] = {
 		"doubleArray_end(doubleArray self) -> double\n"
 		"doubleArray_end(doubleArray self) -> double const *\n"
 		""},
-	 { "doubleArray_MemoryUsage", _wrap_doubleArray_MemoryUsage, METH_O, "doubleArray_MemoryUsage(doubleArray self) -> long"},
+	 { "doubleArray_MemoryUsage", _wrap_doubleArray_MemoryUsage, METH_O, "doubleArray_MemoryUsage(doubleArray self) -> std::size_t"},
 	 { "doubleArray_Read", (PyCFunction)(void(*)(void))_wrap_doubleArray_Read, METH_VARARGS|METH_KEYWORDS, "doubleArray_Read(doubleArray self, bool on_dev=True) -> double const *"},
 	 { "doubleArray_HostRead", _wrap_doubleArray_HostRead, METH_O, "doubleArray_HostRead(doubleArray self) -> double const *"},
 	 { "doubleArray_Write", (PyCFunction)(void(*)(void))_wrap_doubleArray_Write, METH_VARARGS|METH_KEYWORDS, "doubleArray_Write(doubleArray self, bool on_dev=True) -> double *"},
@@ -15753,7 +15792,7 @@ static PyMethodDef SwigMethods[] = {
 		"boolArray_end(boolArray self) -> bool\n"
 		"boolArray_end(boolArray self) -> bool const *\n"
 		""},
-	 { "boolArray_MemoryUsage", _wrap_boolArray_MemoryUsage, METH_O, "boolArray_MemoryUsage(boolArray self) -> long"},
+	 { "boolArray_MemoryUsage", _wrap_boolArray_MemoryUsage, METH_O, "boolArray_MemoryUsage(boolArray self) -> std::size_t"},
 	 { "boolArray_Read", (PyCFunction)(void(*)(void))_wrap_boolArray_Read, METH_VARARGS|METH_KEYWORDS, "boolArray_Read(boolArray self, bool on_dev=True) -> bool const *"},
 	 { "boolArray_HostRead", _wrap_boolArray_HostRead, METH_O, "boolArray_HostRead(boolArray self) -> bool const *"},
 	 { "boolArray_Write", (PyCFunction)(void(*)(void))_wrap_boolArray_Write, METH_VARARGS|METH_KEYWORDS, "boolArray_Write(boolArray self, bool on_dev=True) -> bool *"},
@@ -15858,7 +15897,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"end(intArray self) -> int\n"
 		"end(intArray self) -> int const *\n"
 		""},
-	 { "intArray_MemoryUsage", _wrap_intArray_MemoryUsage, METH_O, "MemoryUsage(intArray self) -> long"},
+	 { "intArray_MemoryUsage", _wrap_intArray_MemoryUsage, METH_O, "MemoryUsage(intArray self) -> std::size_t"},
 	 { "intArray_Read", (PyCFunction)(void(*)(void))_wrap_intArray_Read, METH_VARARGS|METH_KEYWORDS, "Read(intArray self, bool on_dev=True) -> int const *"},
 	 { "intArray_HostRead", _wrap_intArray_HostRead, METH_O, "HostRead(intArray self) -> int const *"},
 	 { "intArray_Write", (PyCFunction)(void(*)(void))_wrap_intArray_Write, METH_VARARGS|METH_KEYWORDS, "Write(intArray self, bool on_dev=True) -> int *"},
@@ -15958,7 +15997,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"end(doubleArray self) -> double\n"
 		"end(doubleArray self) -> double const *\n"
 		""},
-	 { "doubleArray_MemoryUsage", _wrap_doubleArray_MemoryUsage, METH_O, "MemoryUsage(doubleArray self) -> long"},
+	 { "doubleArray_MemoryUsage", _wrap_doubleArray_MemoryUsage, METH_O, "MemoryUsage(doubleArray self) -> std::size_t"},
 	 { "doubleArray_Read", (PyCFunction)(void(*)(void))_wrap_doubleArray_Read, METH_VARARGS|METH_KEYWORDS, "Read(doubleArray self, bool on_dev=True) -> double const *"},
 	 { "doubleArray_HostRead", _wrap_doubleArray_HostRead, METH_O, "HostRead(doubleArray self) -> double const *"},
 	 { "doubleArray_Write", (PyCFunction)(void(*)(void))_wrap_doubleArray_Write, METH_VARARGS|METH_KEYWORDS, "Write(doubleArray self, bool on_dev=True) -> double *"},
@@ -16043,7 +16082,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"end(boolArray self) -> bool\n"
 		"end(boolArray self) -> bool const *\n"
 		""},
-	 { "boolArray_MemoryUsage", _wrap_boolArray_MemoryUsage, METH_O, "MemoryUsage(boolArray self) -> long"},
+	 { "boolArray_MemoryUsage", _wrap_boolArray_MemoryUsage, METH_O, "MemoryUsage(boolArray self) -> std::size_t"},
 	 { "boolArray_Read", (PyCFunction)(void(*)(void))_wrap_boolArray_Read, METH_VARARGS|METH_KEYWORDS, "Read(boolArray self, bool on_dev=True) -> bool const *"},
 	 { "boolArray_HostRead", _wrap_boolArray_HostRead, METH_O, "HostRead(boolArray self) -> bool const *"},
 	 { "boolArray_Write", (PyCFunction)(void(*)(void))_wrap_boolArray_Write, METH_VARARGS|METH_KEYWORDS, "Write(boolArray self, bool on_dev=True) -> bool *"},

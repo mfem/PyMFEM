@@ -313,6 +313,11 @@ class BilinearForm(mfem._par.matrix.Matrix):
         return val
 
 
+    def HasSpMat(self):
+        r"""HasSpMat(BilinearForm self) -> bool"""
+        return _bilinearform.BilinearForm_HasSpMat(self)
+    HasSpMat = _swig_new_instance_method(_bilinearform.BilinearForm_HasSpMat)
+
     def LoseMat(self):
         r"""LoseMat(BilinearForm self) -> SparseMatrix"""
         return _bilinearform.BilinearForm_LoseMat(self)
@@ -325,6 +330,11 @@ class BilinearForm(mfem._par.matrix.Matrix):
         """
         return _bilinearform.BilinearForm_SpMatElim(self, *args)
     SpMatElim = _swig_new_instance_method(_bilinearform.BilinearForm_SpMatElim)
+
+    def HasSpMatElim(self):
+        r"""HasSpMatElim(BilinearForm self) -> bool"""
+        return _bilinearform.BilinearForm_HasSpMatElim(self)
+    HasSpMatElim = _swig_new_instance_method(_bilinearform.BilinearForm_HasSpMatElim)
 
     def AddDomainIntegrator(self, *args):
         r"""
@@ -420,6 +430,11 @@ class BilinearForm(mfem._par.matrix.Matrix):
         r"""GetOutputRestriction(BilinearForm self) -> Operator"""
         return _bilinearform.BilinearForm_GetOutputRestriction(self)
     GetOutputRestriction = _swig_new_instance_method(_bilinearform.BilinearForm_GetOutputRestriction)
+
+    def SerialRAP(self, A):
+        r"""SerialRAP(BilinearForm self, OperatorHandle A)"""
+        return _bilinearform.BilinearForm_SerialRAP(self, A)
+    SerialRAP = _swig_new_instance_method(_bilinearform.BilinearForm_SerialRAP)
 
     def RecoverFEMSolution(self, X, b, x):
         r"""RecoverFEMSolution(BilinearForm self, Vector X, Vector b, Vector x)"""

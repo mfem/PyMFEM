@@ -40,14 +40,20 @@ except ImportError:
 
 # constants
 repo_releases = {
-    "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
+    "gklib": "https://github.com/KarypisLab/GKlib/archive/refs/tags/METIS-v5.1.1-DistDGL-0.5.tar.gz",
+    "metis": "https://github.com/KarypisLab/METIS/archive/refs/tags/v5.1.1-DistDGL-v0.5.tar.gz",
+    #    "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
     "hypre": "https://github.com/hypre-space/hypre/archive/v2.24.0.tar.gz",
     "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.10.0.tar.gz",
     "gslib": "https://github.com/Nek5000/gslib/archive/refs/tags/v1.0.7.tar.gz"}
 
 repos = {"mfem": "https://github.com/mfem/mfem.git",
-         "libceed": "https://github.com/CEED/libCEED.git"}
-repos_sha = {"mfem": "a1f6902ed72552f3e680d1489f1aa6ade2e0d3b2"}
+         "libceed": "https://github.com/CEED/libCEED.git",
+         "gklib": "https://github.com/KarypisLab/GKlib",
+         "metis": "https://github.com/KarypisLab/METIS", }
+repos_sha = {"mfem": "a1f6902ed72552f3e680d1489f1aa6ade2e0d3b2",
+             "gklib": "a7f8172703cf6e999dd0710eb279bba513da4fec",
+             "metis": "94c03a6e2d1860128c2d0675cbbb86ad4f261256"}
 
 rootdir = os.path.abspath(os.path.dirname(__file__))
 extdir = os.path.join(rootdir, 'external')
@@ -159,19 +165,21 @@ def install_requires():
     fid.close()
     return requirements
 
+
 def read_mfem_tplflags(prefix):
     filename = os.path.join(prefix, 'share', 'mfem', 'config.mk')
     if not os.path.exists(filename):
         print("NOTE: " + filename + " does not exist.")
         print("returning empty string")
         return ""
-    
+
     config = configparser.ConfigParser()
     with open(filename) as fp:
         config.read_file(itertools.chain(['[global]'], fp), source=filename)
     flags = dict(config.items('global'))['mfem_tplflags']
     return flags
-    
+
+
 keywords = """
 scientific computing
 finite element method
@@ -406,15 +414,31 @@ def cmake(path, **kwargs):
 
 
 def find_libpath_from_prefix(lib, prefix0):
+
     prefix0 = os.path.expanduser(prefix0)
     prefix0 = abspath(prefix0)
+
     soname = 'lib' + lib + dylibext
+    aname = 'lib' + lib + '.a'
+          
     path = os.path.join(prefix0, 'lib', soname)
-    if not os.path.exists(path):
+    if os.path.exists(path):
+        return path
+    else:
         path = os.path.join(prefix0, 'lib64', soname)
-        if not os.path.exists(path):
-            return ''
-    return path
+        if os.path.exists(path):
+            return path
+
+    path = os.path.join(prefix0, 'lib', aname)
+    if os.path.exists(path):
+        return path
+    else:
+        path = os.path.join(prefix0, 'lib64', aname)
+        if os.path.exists(path):
+            return path
+    print("Can not find library by find_libpath_from_prefix (continue)", lib, prefix0)
+
+    return ''
 
 ###
 #  build libraries
@@ -441,6 +465,7 @@ def cmake_make_hypre():
                   'DBUILD_SHARED_LIBS': '1',
                   'DHYPRE_INSTALL_PREFIX': hypre_prefix,
                   'DHYPRE_ENABLE_SHARED': '1',
+                  'DCMAKE_C_FLAGS': '-fPIC',
                   'DCMAKE_INSTALL_PREFIX': hypre_prefix,
                   'DCMAKE_INSTALL_NAME_DIR': os.path.join(hypre_prefix, 'lib'), }
 
@@ -464,48 +489,80 @@ def cmake_make_hypre():
 
 def make_metis(use_int64=False, use_real64=False):
     '''
-    build metis
+    build GKlib/metis
+    '''
+    
+    '''
+    build/install GKlib
     '''
     if verbose:
-        print("Building metis")
+        print("Building gklib")
 
+    path = os.path.join(extdir, 'gklib')
+    if not os.path.exists(path):
+        assert False, "gklib is not downloaded"
+
+
+    path = os.path.join(path, 'cmbuild')
+    if os.path.exists(path):
+        print("working directory already exists!")
+    else:
+        os.makedirs(path)
+    pwd = chdir(path)
+    
+    cmake_opts = {'DCMAKE_VERBOSE_MAKEFILE': '1',
+                  'DBUILD_SHARED_LIBS': '1',
+                  'DCMAKE_INSTALL_PREFIX': metis_prefix}
+    cmake('..', **cmake_opts)
+    make('gklib')
+    make_install('gklib')
+    #command = ['make', 'prefix=' + metis_prefix, 'cc=' + cc_command]
+    os.chdir(pwd)
+
+    '''
+    build/install metis
+    '''
     path = os.path.join(extdir, 'metis')
     if not os.path.exists(path):
         assert False, "metis is not downloaded"
 
     pwd = chdir(path)
 
-    sed_command = find_command('sed')
-    if sed_command is None:
-        assert False, "sed is not foudn"
+    gklibpath = os.path.dirname( find_libpath_from_prefix(
+                'GKlib', metis_prefix))
 
+    options = ['gklib_path='+metis_prefix]
     if use_int64:
-        command = [sed_command, '-i',
-                   's/#define IDXTYPEWIDTH 32/#define IDXTYPEWIDTH 64/g',
-                   'include/metis.h']
-    else:
-        command = [sed_command, '-i',
-                   's/#define IDXTYPEWIDTH 64/#define IDXTYPEWIDTH 32/g',
-                   'include/metis.h']
+        options.append('i64=1')
 
     if use_real64:
-        command = [sed_command, '-i',
-                   's/#define REALTYPEWIDTH 32/#define REALTYPEWIDTH 64/g',
-                   'include/metis.h']
-    else:
-        command = [sed_command, '-i',
-                   's/#define REALTYPEWIDTH 64/#define REALTYPEWIDTH 32/g',
-                   'include/metis.h']
+        options.append('r64=1')
+
+    command = ['make', 'config', 'shared=1'] + options
+    #command = ['make', 'config'] + options
+    command = command + ['prefix=' + metis_prefix, 'cc=' + cc_command]
     make_call(command)
 
-    command = ['make', 'config', 'shared=1',
-               'prefix=' + metis_prefix,
-               'cc=' + cc_command]
-    make_call(command)
+    chdir('build')
+    cmake_opts = {'DCMAKE_VERBOSE_MAKEFILE': '1',
+                  'DGKLIB_PATH': metis_prefix, 
+                  'DSHARED': '1',
+                  'DCMAKE_C_COMPILER': cc_command,
+                  'DCMAKE_C_STANDARD_LIBRARIES': '-lGKlib',
+                  'DCMAKE_INSTALL_RPATH':gklibpath,
+                  'DCMAKE_BUILD_WITH_INSTALL_RPATH': '1',
+                  'DCMAKE_INSTALL_PREFIX': metis_prefix}
+    cmake('..', **cmake_opts)
+    chdir(path)
     make('metis')
     make_install('metis')
 
     if platform == "darwin":
+        command = ['install_name_tool',
+                   '-id',
+                   os.path.join(metis_prefix, 'lib', 'libGKlib.dylib'),
+                   os.path.join(metis_prefix, 'lib', 'libGKlib.dylib'), ]
+        make_call(command)
         command = ['install_name_tool',
                    '-id',
                    os.path.join(metis_prefix, 'lib', 'libmetis.dylib'),
@@ -550,7 +607,7 @@ def make_gslib(serial=False):
     if serial:
         command = ['make', 'CC=' + cc_command, 'MPI=0', 'CFLAGS=-fPIC']
         make_call(command)
-        command = ['make', 'DESTDIR=' + gslibs_prefix]
+        command = ['make', 'MPI=0', 'DESTDIR=' + gslibs_prefix]
         make_call(command)
     else:
         command = ['make', 'CC=' + mpicc_command, 'CFLAGS=-O2 -fPIC']
@@ -605,7 +662,6 @@ def cmake_make_mfem(serial=True):
         cmake_opts['DHYPRE_DIR'] = hypre_prefix
         cmake_opts['DMETIS_DIR'] = metis_prefix
 
-        #cmake_opts['DCMAKE_CXX_STANDARD_LIBRARIES'] = "-lHYPRE -lmetis"
         add_rpath(os.path.join(mfemp_prefix, 'lib'))
 
         hyprelibpath = os.path.dirname(
@@ -618,8 +674,8 @@ def cmake_make_mfem(serial=True):
         add_rpath(metislibpath)
         add_rpath(hyprelibpath)
 
-        ldflags = "-L" + metislibpath + " " + ldflags
-        ldflags = "-L" + hyprelibpath + " " + ldflags
+        ldflags = "-L" + metislibpath + " -lmetis -lGKlib " + ldflags
+        ldflags = "-L" + hyprelibpath + " -lHYPRE " + ldflags
         cmake_opts['DCMAKE_SHARED_LINKER_FLAGS'] = ldflags
         cmake_opts['DCMAKE_EXE_LINKER_FLAGS'] = ldflags
 
@@ -640,7 +696,7 @@ def cmake_make_mfem(serial=True):
         cmake_opts['DMFEM_USE_CUDA'] = '1'
         if cuda_arch != '':
             cmake_opts['DCMAKE_CUDA_ARCHITECTURES'] = cuda_arch
-        
+
     if enable_libceed:
         cmake_opts['DMFEM_USE_CEED'] = '1'
         cmake_opts['DCEED_DIR'] = libceed_prefix
@@ -650,28 +706,27 @@ def cmake_make_mfem(serial=True):
 
     if enable_gslib:
         if serial:
-            pass
-            #cmake_opts['DMFEM_USE_GSLIB'] = '1'
-            #cmake_opts['DGSLIB_DIR'] = gslibs_prefix
+            cmake_opts['DMFEM_USE_GSLIB'] = '1'
+            cmake_opts['DGSLIB_DIR'] = gslibs_prefix
         else:
             cmake_opts['DMFEM_USE_GSLIB'] = '1'
             cmake_opts['DGSLIB_DIR'] = gslibp_prefix
-            
+
     if enable_suitesparse:
         if serial:
             pass
         else:
             cmake_opts['DMFEM_USE_SUITESPARSE'] = '1'
             if suitesparse_prefix != '':
-                 cmake_opts['DSuiteSparse_DIR'] = suitesparse_prefix
-        
+                cmake_opts['DSuiteSparse_DIR'] = suitesparse_prefix
 
     cmake_opts['DCMAKE_INSTALL_RPATH'] = ":".join(rpaths)
-    
+
     pwd = chdir(path)
     cmake('..', **cmake_opts)
 
     txt = 'serial' if serial else 'parallel'
+          
     make('mfem_' + txt)
     make_install('mfem_' + txt)
 
@@ -702,7 +757,7 @@ def write_setup_local():
     mfems_tpl = read_mfem_tplflags(mfems_prefix)
     mfemp_tpl = read_mfem_tplflags(mfemp_prefix)
     print(mfems_tpl, mfemp_tpl)
-    
+
     params = {'cxx_ser': cxx_command,
               'cc_ser': cc_command,
               'cxx_par': mpicxx_command,
@@ -730,7 +785,7 @@ def write_setup_local():
               'add_strumpack': '',
               'add_cuda': '',
               'add_libceed': '',
-              'add_suitesparse': '',              
+              'add_suitesparse': '',
               'add_gslib': '',
               'add_gslibp': '',
               'add_gslibs': '',
@@ -762,9 +817,9 @@ def write_setup_local():
     if enable_libceed:
         add_extra('libceed')
     if enable_suitesparse:
-        add_extra('suitesparse')        
-    # if enable_gslib:
-    #    add_extra('gslibs')
+        add_extra('suitesparse')
+    if enable_gslib:
+        add_extra('gslibs')
     if enable_gslib:
         add_extra('gslibp')
 
@@ -992,7 +1047,7 @@ def configure_install(self):
     libceed_only = bool(self.libceed_only)
     enable_gslib = bool(self.with_gslib)
     gslib_only = bool(self.gslib_only)
-    enable_suitesparse = bool(self.with_suitesparse)    
+    enable_suitesparse = bool(self.with_suitesparse)
 
     build_parallel = bool(self.with_parallel)     # controlls PyMFEM parallel
     build_serial = not bool(self.no_serial)
@@ -1085,7 +1140,7 @@ def configure_install(self):
 
     if enable_suitesparse and self.suitesparse_prefix != '':
         suitesparse_prefix = self.suitesparse_prefix
-        
+
     if enable_pumi:
         run_swig = True
 
@@ -1231,13 +1286,15 @@ class Install(_install):
         ('with-metis64', None, 'use 64bit int in metis'),
         ('with-pumi', None, 'enable pumi (parallel only)'),
         ('pumi-prefix=', None, 'Specify locaiton of pumi'),
-        ('with-suitesparse', None, 'build MFEM with suitesparse (MFEM_USE_SUITESPARSE=YES) (parallel only)'),
-        ('suitesparse-prefix=', None, 'Specify locaiton of suitesparse (=SuiteSparse_DIR)'),
+        ('with-suitesparse', None,
+         'build MFEM with suitesparse (MFEM_USE_SUITESPARSE=YES) (parallel only)'),
+        ('suitesparse-prefix=', None,
+         'Specify locaiton of suitesparse (=SuiteSparse_DIR)'),
         ('with-libceed', None, 'enable libceed'),
         ('libceed-prefix=', None, 'Specify locaiton of libceed'),
         ('libceed-only', None, 'Build libceed only'),
         ('gslib-prefix=', None, 'Specify locaiton of gslib'),
-        ('with-gslib', None, 'enable gslib (parallel only)'),
+        ('with-gslib', None, 'enable gslib'),
         ('gslib-only', None, 'Build gslib only'),
         ('with-strumpack', None, 'enable strumpack (parallel only)'),
         ('strumpack-prefix=', None, 'Specify locaiton of strumpack'),
@@ -1273,7 +1330,7 @@ class Install(_install):
         self.strumpack_prefix = ''
 
         self.with_suitesparse = False
-        self.suitesparse_prefix = ''        
+        self.suitesparse_prefix = ''
 
         self.with_libceed = False
         self.libceed_prefix = ''
@@ -1357,19 +1414,23 @@ class BuildPy(_build_py):
     def run(self):
         if not swig_only:
             if build_metis:
-                download('metis')
+                gitclone('gklib', use_sha=True)
+                gitclone('metis', use_sha=True)
+                # download('metis')
+                # download('gklib')
                 make_metis(use_int64=metis_64)
             if build_hypre:
                 download('hypre')
                 cmake_make_hypre()
             if build_libceed:
                 download('libceed')
-                #gitclone('libceed',branch='main')
+                # gitclone('libceed',branch='main')
                 make_libceed()
             if build_gslib:
                 download('gslib')
-                make_gslib()
-                make_gslib(serial=True)
+                make_gslib(serial=True)                  
+                if build_hypre:
+                    make_gslib()
 
             mfem_downloaded = False
             if build_mfem:
@@ -1505,7 +1566,7 @@ class Clean(_clean):
                 command = ['make', 'clean']
                 subprocess.check_call(command)
         if self.all_exts or self.hypre:
-            for xxx in ('metis', 'hypre', 'mfem'):
+            for xxx in ('metis', 'hypre', 'mfem', 'gslib', 'gklib'):
                 path = os.path.join(extdir, xxx)
                 if os.path.exists(path):
                     shutil.rmtree(path)

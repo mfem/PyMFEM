@@ -235,9 +235,9 @@ class BilinearFormIntegrator(mfem._par.nonlininteg.NonlinearFormIntegrator):
         return _bilininteg.BilinearFormIntegrator_AssembleFaceGrad(self, el1, el2, Tr, elfun, elmat)
     AssembleFaceGrad = _swig_new_instance_method(_bilininteg.BilinearFormIntegrator_AssembleFaceGrad)
 
-    def ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef=True):
-        r"""ComputeElementFlux(BilinearFormIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef=True)"""
-        return _bilininteg.BilinearFormIntegrator_ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef)
+    def ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef=True, ir=None):
+        r"""ComputeElementFlux(BilinearFormIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef=True, IntegrationRule ir=None)"""
+        return _bilininteg.BilinearFormIntegrator_ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef, ir)
     ComputeElementFlux = _swig_new_instance_method(_bilininteg.BilinearFormIntegrator_ComputeElementFlux)
 
     def ComputeFluxEnergy(self, fluxelem, Trans, flux, d_energy=None):
@@ -1870,7 +1870,6 @@ class DiffusionIntegrator(BilinearFormIntegrator):
         __init__(DiffusionIntegrator self, Coefficient q, IntegrationRule ir=None) -> DiffusionIntegrator
         __init__(DiffusionIntegrator self, VectorCoefficient q, IntegrationRule ir=None) -> DiffusionIntegrator
         __init__(DiffusionIntegrator self, MatrixCoefficient q, IntegrationRule ir=None) -> DiffusionIntegrator
-        __init__(DiffusionIntegrator self, SymmetricMatrixCoefficient q, IntegrationRule ir=None) -> DiffusionIntegrator
         """
         _bilininteg.DiffusionIntegrator_swiginit(self, _bilininteg.new_DiffusionIntegrator(*args))
 
@@ -1894,9 +1893,9 @@ class DiffusionIntegrator(BilinearFormIntegrator):
         return _bilininteg.DiffusionIntegrator_AssembleElementVector(self, el, Tr, elfun, elvect)
     AssembleElementVector = _swig_new_instance_method(_bilininteg.DiffusionIntegrator_AssembleElementVector)
 
-    def ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef=True):
-        r"""ComputeElementFlux(DiffusionIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef=True)"""
-        return _bilininteg.DiffusionIntegrator_ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef)
+    def ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef=True, ir=None):
+        r"""ComputeElementFlux(DiffusionIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef=True, IntegrationRule ir=None)"""
+        return _bilininteg.DiffusionIntegrator_ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef, ir)
     ComputeElementFlux = _swig_new_instance_method(_bilininteg.DiffusionIntegrator_ComputeElementFlux)
 
     def ComputeFluxEnergy(self, fluxelem, Trans, flux, d_energy=None):
@@ -1958,6 +1957,11 @@ class DiffusionIntegrator(BilinearFormIntegrator):
         r"""SupportsCeed(DiffusionIntegrator self) -> bool"""
         return _bilininteg.DiffusionIntegrator_SupportsCeed(self)
     SupportsCeed = _swig_new_instance_method(_bilininteg.DiffusionIntegrator_SupportsCeed)
+
+    def GetCoefficient(self):
+        r"""GetCoefficient(DiffusionIntegrator self) -> Coefficient"""
+        return _bilininteg.DiffusionIntegrator_GetCoefficient(self)
+    GetCoefficient = _swig_new_instance_method(_bilininteg.DiffusionIntegrator_GetCoefficient)
     __swig_destroy__ = _bilininteg.delete_DiffusionIntegrator
 
 # Register DiffusionIntegrator in _bilininteg:
@@ -2050,6 +2054,11 @@ class MassIntegrator(BilinearFormIntegrator):
         r"""SupportsCeed(MassIntegrator self) -> bool"""
         return _bilininteg.MassIntegrator_SupportsCeed(self)
     SupportsCeed = _swig_new_instance_method(_bilininteg.MassIntegrator_SupportsCeed)
+
+    def GetCoefficient(self):
+        r"""GetCoefficient(MassIntegrator self) -> Coefficient"""
+        return _bilininteg.MassIntegrator_GetCoefficient(self)
+    GetCoefficient = _swig_new_instance_method(_bilininteg.MassIntegrator_GetCoefficient)
     __swig_destroy__ = _bilininteg.delete_MassIntegrator
 
 # Register MassIntegrator in _bilininteg:
@@ -2447,7 +2456,6 @@ class CurlCurlIntegrator(BilinearFormIntegrator):
         __init__(CurlCurlIntegrator self, Coefficient q, IntegrationRule ir=None) -> CurlCurlIntegrator
         __init__(CurlCurlIntegrator self, VectorCoefficient dq, IntegrationRule ir=None) -> CurlCurlIntegrator
         __init__(CurlCurlIntegrator self, MatrixCoefficient mq, IntegrationRule ir=None) -> CurlCurlIntegrator
-        __init__(CurlCurlIntegrator self, SymmetricMatrixCoefficient smq, IntegrationRule ir=None) -> CurlCurlIntegrator
         """
         _bilininteg.CurlCurlIntegrator_swiginit(self, _bilininteg.new_CurlCurlIntegrator(*args))
 
@@ -2461,9 +2469,9 @@ class CurlCurlIntegrator(BilinearFormIntegrator):
         return _bilininteg.CurlCurlIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
     AssembleElementMatrix = _swig_new_instance_method(_bilininteg.CurlCurlIntegrator_AssembleElementMatrix)
 
-    def ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef):
-        r"""ComputeElementFlux(CurlCurlIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef)"""
-        return _bilininteg.CurlCurlIntegrator_ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef)
+    def ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef, ir=None):
+        r"""ComputeElementFlux(CurlCurlIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef, IntegrationRule ir=None)"""
+        return _bilininteg.CurlCurlIntegrator_ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef, ir)
     ComputeElementFlux = _swig_new_instance_method(_bilininteg.CurlCurlIntegrator_ComputeElementFlux)
 
     def ComputeFluxEnergy(self, fluxelem, Trans, flux, d_energy=None):
@@ -2489,6 +2497,11 @@ class CurlCurlIntegrator(BilinearFormIntegrator):
         r"""AssembleDiagonalPA(CurlCurlIntegrator self, Vector diag)"""
         return _bilininteg.CurlCurlIntegrator_AssembleDiagonalPA(self, diag)
     AssembleDiagonalPA = _swig_new_instance_method(_bilininteg.CurlCurlIntegrator_AssembleDiagonalPA)
+
+    def GetCoefficient(self):
+        r"""GetCoefficient(CurlCurlIntegrator self) -> Coefficient"""
+        return _bilininteg.CurlCurlIntegrator_GetCoefficient(self)
+    GetCoefficient = _swig_new_instance_method(_bilininteg.CurlCurlIntegrator_GetCoefficient)
     __swig_destroy__ = _bilininteg.delete_CurlCurlIntegrator
 
 # Register CurlCurlIntegrator in _bilininteg:
@@ -2541,8 +2554,6 @@ class VectorFEMassIntegrator(BilinearFormIntegrator):
         __init__(VectorFEMassIntegrator self, VectorCoefficient dq) -> VectorFEMassIntegrator
         __init__(VectorFEMassIntegrator self, MatrixCoefficient mq_) -> VectorFEMassIntegrator
         __init__(VectorFEMassIntegrator self, MatrixCoefficient mq) -> VectorFEMassIntegrator
-        __init__(VectorFEMassIntegrator self, SymmetricMatrixCoefficient smq) -> VectorFEMassIntegrator
-        __init__(VectorFEMassIntegrator self, SymmetricMatrixCoefficient smq) -> VectorFEMassIntegrator
         """
         _bilininteg.VectorFEMassIntegrator_swiginit(self, _bilininteg.new_VectorFEMassIntegrator(*args))
 
@@ -2576,10 +2587,20 @@ class VectorFEMassIntegrator(BilinearFormIntegrator):
         return _bilininteg.VectorFEMassIntegrator_AddMultPA(self, x, y)
     AddMultPA = _swig_new_instance_method(_bilininteg.VectorFEMassIntegrator_AddMultPA)
 
+    def AddMultTransposePA(self, x, y):
+        r"""AddMultTransposePA(VectorFEMassIntegrator self, Vector x, Vector y)"""
+        return _bilininteg.VectorFEMassIntegrator_AddMultTransposePA(self, x, y)
+    AddMultTransposePA = _swig_new_instance_method(_bilininteg.VectorFEMassIntegrator_AddMultTransposePA)
+
     def AssembleDiagonalPA(self, diag):
         r"""AssembleDiagonalPA(VectorFEMassIntegrator self, Vector diag)"""
         return _bilininteg.VectorFEMassIntegrator_AssembleDiagonalPA(self, diag)
     AssembleDiagonalPA = _swig_new_instance_method(_bilininteg.VectorFEMassIntegrator_AssembleDiagonalPA)
+
+    def GetCoefficient(self):
+        r"""GetCoefficient(VectorFEMassIntegrator self) -> Coefficient"""
+        return _bilininteg.VectorFEMassIntegrator_GetCoefficient(self)
+    GetCoefficient = _swig_new_instance_method(_bilininteg.VectorFEMassIntegrator_GetCoefficient)
     __swig_destroy__ = _bilininteg.delete_VectorFEMassIntegrator
 
 # Register VectorFEMassIntegrator in _bilininteg:
@@ -2652,7 +2673,7 @@ class DivDivIntegrator(BilinearFormIntegrator):
     def __init__(self, *args):
         r"""
         __init__(DivDivIntegrator self) -> DivDivIntegrator
-        __init__(DivDivIntegrator self, Coefficient q) -> DivDivIntegrator
+        __init__(DivDivIntegrator self, Coefficient q, IntegrationRule ir=None) -> DivDivIntegrator
         """
         _bilininteg.DivDivIntegrator_swiginit(self, _bilininteg.new_DivDivIntegrator(*args))
 
@@ -2665,6 +2686,11 @@ class DivDivIntegrator(BilinearFormIntegrator):
         r"""AssembleElementMatrix(DivDivIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.DivDivIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
     AssembleElementMatrix = _swig_new_instance_method(_bilininteg.DivDivIntegrator_AssembleElementMatrix)
+
+    def GetCoefficient(self):
+        r"""GetCoefficient(DivDivIntegrator self) -> Coefficient"""
+        return _bilininteg.DivDivIntegrator_GetCoefficient(self)
+    GetCoefficient = _swig_new_instance_method(_bilininteg.DivDivIntegrator_GetCoefficient)
     __swig_destroy__ = _bilininteg.delete_DivDivIntegrator
 
 # Register DivDivIntegrator in _bilininteg:
@@ -2769,9 +2795,9 @@ class ElasticityIntegrator(BilinearFormIntegrator):
         return _bilininteg.ElasticityIntegrator_AssembleElementMatrix(self, arg2, arg3, arg4)
     AssembleElementMatrix = _swig_new_instance_method(_bilininteg.ElasticityIntegrator_AssembleElementMatrix)
 
-    def ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef=True):
-        r"""ComputeElementFlux(ElasticityIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef=True)"""
-        return _bilininteg.ElasticityIntegrator_ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef)
+    def ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef=True, ir=None):
+        r"""ComputeElementFlux(ElasticityIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef=True, IntegrationRule ir=None)"""
+        return _bilininteg.ElasticityIntegrator_ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef, ir)
     ComputeElementFlux = _swig_new_instance_method(_bilininteg.ElasticityIntegrator_ComputeElementFlux)
 
     def ComputeFluxEnergy(self, fluxelem, Trans, flux, d_energy=None):
