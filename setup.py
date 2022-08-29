@@ -15,6 +15,7 @@ import subprocess
 from subprocess import DEVNULL
 
 import multiprocessing
+from multiprocessing import Pool
 
 from setuptools import setup, find_packages
 from setuptools.command.build_py import build_py as _build_py
@@ -369,15 +370,16 @@ def gitclone(xxx, use_sha=False, branch='master'):
     command = ['git', 'clone', repos[xxx], xxx]
     make_call(command)
 
-    if not os.path.exists(repo_xxx):
-        print(repo_xxx + " does not exist. Check if git clone worked")
-    os.chdir(repo_xxx)
-    if use_sha:
-        sha = repos_sha[xxx]
-        command = ['git', 'checkout',  sha]
-    else:
-        command = ['git', 'checkout', branch]
-    make_call(command)
+    if not dry_run:
+        if not os.path.exists(repo_xxx):
+            print(repo_xxx + " does not exist. Check if git clone worked")
+        os.chdir(repo_xxx)
+        if use_sha:
+           sha = repos_sha[xxx]
+           command = ['git', 'checkout',  sha]
+        else:
+           command = ['git', 'checkout', branch]
+        make_call(command)
     os.chdir(cwd)
 
 
@@ -499,7 +501,7 @@ def make_metis(use_int64=False, use_real64=False):
         print("Building gklib")
 
     path = os.path.join(extdir, 'gklib')
-    if not os.path.exists(path):
+    if not dry_run and not os.path.exists(path):
         assert False, "gklib is not downloaded"
 
 
@@ -523,9 +525,12 @@ def make_metis(use_int64=False, use_real64=False):
     build/install metis
     '''
     path = os.path.join(extdir, 'metis')
-    if not os.path.exists(path):
+    if not dry_run and not os.path.exists(path):
         assert False, "metis is not downloaded"
-
+    elif not os.path.exists(path):
+        os.makedirs(path)
+        os.makedirs(os.path.join(path, 'build') )        
+        
     pwd = chdir(path)
 
     gklibpath = os.path.dirname( find_libpath_from_prefix(
@@ -633,7 +638,6 @@ def cmake_make_mfem(serial=True):
     rpaths = []
 
     def add_rpath(p):
-        print("checking this", p)
         if not p in rpaths:
             rpaths.append(p)
 
@@ -837,7 +841,6 @@ def write_setup_local():
 
     os.chdir(pwd)
 
-
 def generate_wrapper():
     '''
     run swig.
@@ -861,6 +864,8 @@ def generate_wrapper():
             return True
         return os.path.getmtime(ifile) > os.path.getmtime(wfile)
 
+
+    
     mfemser = mfems_prefix
     mfempar = mfemp_prefix
 
@@ -883,11 +888,18 @@ def generate_wrapper():
     serflag = ['-I' + os.path.join(mfemser, 'include'),
                '-I' + os.path.join(mfemser, 'include', 'mfem'),
                '-I' + os.path.abspath(mfem_source)]
-    for file in ifiles():
-        if not check_new(file):
+
+
+    commands = []
+    for filename in ifiles():
+        if not check_new(filename):
             continue
-        command = [swig_command] + swigflag + serflag + [file]
-        make_call(command)
+        command = [swig_command] + swigflag + serflag + [filename]
+        commands.append(command)
+        
+    mp_pool = Pool(max((multiprocessing.cpu_count() - 1, 1)))
+    with mp_pool:
+        mp_pool.map(make_call, commands)
 
     if not build_parallel:
         os.chdir(pwd)
@@ -908,32 +920,45 @@ def generate_wrapper():
     if enable_strumpack:
         parflag.append('-I' + os.path.join(strumpack_prefix, 'include'))
 
-    for file in ifiles():
+
+
+    commands = []
+    for filename in ifiles():    
         #        pumi.i does not depends on pumi specific header so this should
         #        work
         #        if file == 'pumi.i':# and not enable_pumi:
         #            continue
-        if file == 'strumpack.i' and not enable_strumpack:
+        if filename == 'strumpack.i' and not enable_strumpack:
             continue
-        if not check_new(file):
+        if not check_new(filename):
             continue
-        command = [swig_command] + swigflag + parflag + [file]
-        make_call(command)
+        command = [swig_command] + swigflag + parflag + [filename]
+        commands.append(command)        
+
+    mp_pool = Pool(max((multiprocessing.cpu_count() - 1, 1)))
+    with mp_pool:
+        mp_pool.map(make_call, commands)
 
     os.chdir(pwd)
 
 
 def clean_wrapper():
-
+    from pathlib import Path
+    
     pwd = chdir(os.path.join(rootdir, 'mfem', '_ser'))
-
     wfiles = [x for x in os.listdir() if x.endswith('_wrap.cxx')]
     remove_files(wfiles)
-
+    ifiles = [x for x in os.listdir() if x.endswith('.i')]    
+    for x in ifiles:
+        Path(x).touch()
+        
     chdir(os.path.join(rootdir, 'mfem', '_par'))
     wfiles = [x for x in os.listdir() if x.endswith('_wrap.cxx')]
     remove_files(wfiles)
-
+    ifiles = [x for x in os.listdir() if x.endswith('.i')]
+    for x in ifiles:
+        Path(x).touch()
+    
     chdir(pwd)
 
 
@@ -1007,7 +1032,7 @@ def configure_install(self):
     called when install workflow is used
     '''
     global prefix, dry_run, verbose, ext_prefix
-    global clean_swig, run_swig, swig_only, skip_install
+    global clean_swig, run_swig, swig_only, skip_install, skip_swig
     global build_mfem, build_mfemp, build_parallel, build_serial
 
     global mfem_branch, mfem_source
@@ -1033,6 +1058,8 @@ def configure_install(self):
 
     skip_ext = bool(self.skip_ext)
     skip_install = bool(self.build_only)
+    skip_swig = bool(self.skip_swig)    
+    
     swig_only = bool(self.swig)
     ext_only = bool(self.ext_only)
 
@@ -1063,6 +1090,8 @@ def configure_install(self):
         except ImportError:
             assert False, "Can not import mpi4py"
 
+    need_run_swig = False  
+    
     if self.mfem_prefix != '':
         mfem_prefix = abspath(self.mfem_prefix)
         mfems_prefix = abspath(self.mfem_prefix)
@@ -1085,8 +1114,9 @@ def configure_install(self):
             clean_swig = False
             run_swig = False
         else:
-            clean_swig = True
-            run_swig = True
+            if not self.skip_swig:            
+                clean_swig = True
+                run_swig = True
         if swig_only:
             clean_swig = False
 
@@ -1107,6 +1137,9 @@ def configure_install(self):
 
     if self.mfem_branch != '':
         mfem_branch = self.mfem_branch
+        if not self.skip_swig:            
+           clean_swig = True
+           run_swig = True
 
     if self.hypre_prefix != '':
         check = find_libpath_from_prefix('HYPRE', self.hypre_prefix)
@@ -1121,6 +1154,10 @@ def configure_install(self):
         build_metis = False
 
     if enable_libceed or libceed_only:
+        if enable_libceed and not self.skip_swig:
+            clean_swig = True
+            run_swig = True
+            
         if self.libceed_prefix != '':
             libceed_prefix = os.path.expanduser(self.libceed_prefix)
             build_libceed = False
@@ -1129,6 +1166,10 @@ def configure_install(self):
             build_libceed = True
 
     if enable_gslib or gslib_only:
+        if enable_gslib and not self.skip_swig:
+            clean_swig = True
+            run_swig = True
+        
         if self.gslib_prefix != '':
             build_gslib = False
             gslibs_prefix = os.path.expanduser(self.gslib_prefix)
@@ -1139,12 +1180,17 @@ def configure_install(self):
             build_gslib = True
 
     if enable_suitesparse and self.suitesparse_prefix != '':
+        if enable_suitesparse and not self.skip_swig:
+            clean_swig = True
+            run_swig = True
         suitesparse_prefix = self.suitesparse_prefix
 
-    if enable_pumi:
+    if enable_pumi and not self.skip_swig:
+        clean_swig = True
         run_swig = True
 
-    if enable_strumpack:
+    if enable_strumpack and not self.skip_swig:
+        clean_swig = True
         run_swig = True
 
     if self.pumi_prefix != '':
@@ -1158,6 +1204,10 @@ def configure_install(self):
         strumpack_prefix = mfem_prefix
 
     if enable_cuda:
+        if enable_cuda and not self.skip_swig:
+           clean_swig = True
+           run_swig = True
+        
         nvcc = find_command('nvcc')
         cuda_prefix = os.path.dirname(os.path.dirname(nvcc))
 
@@ -1271,8 +1321,8 @@ class Install(_install):
         ('metis-prefix=', None, 'Specify locaiton of metis' +
          'libmetis.so must exits under <metis-prefix>/lib'),
         ('swig', None, 'Run Swig and exit'),
+        ('skip-swig', None, 'Skip running swig (used when wrapper is generated for the MFEM C++ library to be used'),        
         ('ext-only', None, 'Build metis, hypre, mfem(C++) only'),
-
         ('skip-ext', None, 'Skip building metis, hypre, mfem(C++) only'),
         ('build-only', None, 'Skip final install stage to prefix'),
         ('CC=', None, 'c compiler'),
@@ -1303,6 +1353,7 @@ class Install(_install):
     def initialize_options(self):
         _install.initialize_options(self)
         self.swig = False
+        self.skip_swig = False
         self.ext_only = False
 
         self.skip_ext = False
