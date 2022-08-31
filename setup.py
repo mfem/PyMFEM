@@ -719,12 +719,22 @@ def cmake_make_mfem(serial=True):
             cmake_opts['DGSLIB_DIR'] = gslibp_prefix
 
     if enable_suitesparse:
-#        if serial:
+        if serial:
+            cmake_opts['DMFEM_USE_METIS_5'] = '1'
+            cmake_opts['DMETIS_DIR'] = metis_prefix
+            metislibpath = os.path.dirname(
+            find_libpath_from_prefix(
+                   'metis', metis_prefix))
+            add_rpath(metislibpath)            
+            ldflags = "-L" + metislibpath + " -lmetis -lGKlib " + ldflags
+            cmake_opts['DCMAKE_SHARED_LINKER_FLAGS'] = ldflags
+            cmake_opts['DCMAKE_EXE_LINKER_FLAGS'] = ldflags
+            
 #            pass
 #        else:
-            cmake_opts['DMFEM_USE_SUITESPARSE'] = '1'
-            if suitesparse_prefix != '':
-                cmake_opts['DSuiteSparse_DIR'] = suitesparse_prefix
+        cmake_opts['DMFEM_USE_SUITESPARSE'] = '1'
+        if suitesparse_prefix != '':
+            cmake_opts['DSuiteSparse_DIR'] = suitesparse_prefix
 
     if blas_libraries != "":
         cmake_opts['DBLAS_LIBRARIES'] = blas_libraries
