@@ -55,7 +55,7 @@ sudo docker run -it -v $(pwd):/io quay.io/pypa/manylinux_2_24_x86_64
 apt-get update
 apt-get install openssh-server zlib1g-dbg
 git clone https://github.com/mfem/PyMFEM.git
-export PATH=/opt/python/cp36-cp36m/bin:$PATH
+export PATH=/opt/python/cp38-cp38/bin:$PATH
 pip install six numpy scipy auditwheel twine cmake
 python3 setup.py install
 rm -rf dist/*
