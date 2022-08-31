@@ -1404,7 +1404,7 @@ class Install(_install):
         self.with_suitesparse = False
         self.suitesparse_prefix = ''
         self.blas_libraries="",
-        self.lapack_libraries="",
+        self.lapack_libraries=""
 
         self.with_libceed = False
         self.libceed_prefix = ''
