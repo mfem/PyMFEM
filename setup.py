@@ -114,7 +114,9 @@ gslibp_prefix = ''
 gslib_only = False
 
 enable_suitesparse = False
-suitesparse_prefix = 'usr/lib/x86_64-linux-gnu'
+suitesparse_prefix = ""
+blas_libraries = ""
+lapack_libraries = ""
 
 dry_run = -1
 do_bdist_wheel = False
@@ -724,6 +726,11 @@ def cmake_make_mfem(serial=True):
             if suitesparse_prefix != '':
                 cmake_opts['DSuiteSparse_DIR'] = suitesparse_prefix
 
+    if blas_libraries != "":
+        cmake_opts['DBLAS_LIBRARIES'] = blas_libraries
+    if lapack_libraries != "":
+        cmake_opts['DLAPACK_LIBRARIES'] = lapack_libraries
+        
     cmake_opts['DCMAKE_INSTALL_RPATH'] = ":".join(rpaths)
 
     pwd = chdir(path)
@@ -1024,6 +1031,12 @@ def print_config():
     print(" c++ compiler : " + cxx_command)
     print(" mpi-c compiler : " + mpicc_command)
     print(" mpi-c++ compiler : " + mpicxx_command)
+
+    if blas_libraries != "":
+        print(" BLAS libraries : " + blas_libraries)
+    if lapack_libraries != "":
+        print(" Lapack libraries : " + lapack_libraries)
+        
     print("")
 
 
@@ -1047,6 +1060,7 @@ def configure_install(self):
     global enable_libceed, libceed_prefix, libceed_only
     global enable_gslib, gslibs_prefix, gslibp_prefix, gslib_only
     global enable_suitesparse, suitesparse_prefix
+    global blas_libraries, lapack_libraries
 
     verbose = bool(self.verbose) if verbose == -1 else verbose
     dry_run = bool(self.dry_run) if dry_run == -1 else dry_run
@@ -1220,6 +1234,11 @@ def configure_install(self):
     if self.MPICXX != '':
         mpicxx_command = self.MPICXX
 
+    if self.blas_libraries != "":
+        blas_libraries = self.blas_libraries
+    if self.lapack_libraries != "":
+        lapack_libraries = self.lapack_libraries
+        
     if skip_ext:
         build_metis = False
         build_hypre = False
@@ -1348,6 +1367,8 @@ class Install(_install):
         ('gslib-only', None, 'Build gslib only'),
         ('with-strumpack', None, 'enable strumpack (parallel only)'),
         ('strumpack-prefix=', None, 'Specify locaiton of strumpack'),
+        ('blas-libraries=', None, 'Specify locaiton of Blas library (used to build MFEM)'),
+        ('lapack-libraries=', None, 'Specify locaiton of Lapack library (used to build MFEM)'),
     ]
 
     def initialize_options(self):
@@ -1382,6 +1403,8 @@ class Install(_install):
 
         self.with_suitesparse = False
         self.suitesparse_prefix = ''
+        self.blas_libraries="",
+        self.lapack_libraries="",
 
         self.with_libceed = False
         self.libceed_prefix = ''

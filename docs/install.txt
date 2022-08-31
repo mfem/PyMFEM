@@ -2,13 +2,33 @@
 
 Default pip install installs serial MFEM + wrapper
 
+$ pip install mfem
+or
 $ pip install mfem --no-binary mfem
 
-For other configuration such as parallel version, one has to download
-the package and run setup script. pip download command download tar-gziped
-package.
+For other configuration such as parallel version, one can either use --install-option
+flags with pip or download the package as follows and run setup script, manually.
 
 $ pip download mfem --no-binary mfem
+
+In order to see the full list of options, use
+
+$ python setup.py install --help
+
+
+
+## Specify compilers
+--CC                                 c compiler
+--CXX                                c++ compiler
+--MPICC                              mpic compiler
+--MPICXX                             mpic++ compiler
+
+$ python setup.py install --parallel --CC=xxx, --CXX=xxx, --MPICC=xxx, --MPICXX=xxx
+
+
+
+
++++ Old guid +++
 
 Once the package is expanded, enter the package directory and
 use the setup.py on the top level. For example, --with-parallel option,
