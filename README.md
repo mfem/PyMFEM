@@ -37,8 +37,14 @@ $ pip download mfem --no-binary mfem (expand tar.gz file and move to the downloa
 $ python setup.py install --with-parallel # it download and build metis/hypre/mfem
 
 ```
+### Build with MFEM master in Github
+```
+$ pip install mfem --install-option="--with-parallel" --install-option="mfem-branch=master"[--verbose]
+(or)
+$ python setup.py install  --with-parallel --mfem-branch='master'
 
-Choosing compiler
+```
+### Choosing compiler
 ```
 $ python setup.py install --with-parallel --CC=icc --CXX=icpc --MPICC=mpiicc --MPICXX=mpiicpc
 ```

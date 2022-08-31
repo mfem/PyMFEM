@@ -320,8 +320,8 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
 
     def ComputeL2Error(self, *args):
         r"""
-        ComputeL2Error(ParGridFunction self, mfem::Coefficient *[] exsol, mfem::IntegrationRule const *[] irs=0) -> double
-        ComputeL2Error(ParGridFunction self, Coefficient exsol, mfem::IntegrationRule const *[] irs=0) -> double
+        ComputeL2Error(ParGridFunction self, mfem::Coefficient *[] exsol, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double
+        ComputeL2Error(ParGridFunction self, Coefficient exsol, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double
         ComputeL2Error(ParGridFunction self, VectorCoefficient exsol, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double
         """
         return _pgridfunc.ParGridFunction_ComputeL2Error(self, *args)
@@ -376,7 +376,7 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
 
     def ComputeLpError(self, *args):
         r"""
-        ComputeLpError(ParGridFunction self, double const p, Coefficient exsol, Coefficient weight=None, mfem::IntegrationRule const *[] irs=0) -> double
+        ComputeLpError(ParGridFunction self, double const p, Coefficient exsol, Coefficient weight=None, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double
         ComputeLpError(ParGridFunction self, double const p, VectorCoefficient exsol, Coefficient weight=None, VectorCoefficient v_weight=None, mfem::IntegrationRule const *[] irs=0) -> double
         """
         return _pgridfunc.ParGridFunction_ComputeLpError(self, *args)

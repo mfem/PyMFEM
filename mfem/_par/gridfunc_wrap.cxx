@@ -8997,136 +8997,20 @@ fail:
 SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::Coefficient *arg2 = 0 ;
-  mfem::IntegrationRule **arg3 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  mfem::IntegrationRule **tmp_ptrarray3 ;
-  bool allocated3 = false ;
-  double result;
-  
-  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeL2Error" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeL2Error" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeL2Error" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
-  if (swig_obj[2]) {
-    {
-      //  List/Tuple -> mfem::IntegrationRule *
-      
-      int res = 0;
-      if (PyList_Check(swig_obj[2])) {
-        int ll = PyList_Size(swig_obj[2]);
-        arg3 = new mfem::IntegrationRule * [ll];
-        allocated3 = true;
-        for (int i = 0; i < ll; i++) {
-          mfem::IntegrationRule * ttt;
-          PyObject *s = PyList_GetItem(swig_obj[2],i);
-          res = SWIG_ConvertPtr(s, (void **) &ttt,
-            SWIGTYPE_p_mfem__IntegrationRule,
-            0);
-          if (!SWIG_IsOK(res)) {
-            PyErr_SetString(PyExc_ValueError, "can not convert a list/tuple item to mfem::IntegrationRule *");	 
-            return NULL;
-          }	
-          arg3[i] = ttt;
-        }
-      } else if (PyTuple_Check(swig_obj[2])) {
-        int ll = PyTuple_Size(swig_obj[2]);
-        arg3 = new mfem::IntegrationRule * [ll];
-        allocated3 = true;     
-        for (int i = 0; i < ll; i++) {
-          mfem::IntegrationRule * ttt;
-          PyObject *s = PyTuple_GetItem(swig_obj[2],i);
-          res = SWIG_ConvertPtr(s, (void **) &ttt,
-            SWIGTYPE_p_mfem__IntegrationRule,
-            0);
-          if (!SWIG_IsOK(res)) {
-            PyErr_SetString(PyExc_ValueError, "can not convert a list/tuple item to mfem::IntegrationRule *");	 
-            return NULL;
-          }	
-          arg3[i] = ttt;
-        }
-      } else {
-        int res = SWIG_ConvertPtr(swig_obj[2], (void **) &tmp_ptrarray3, SWIGTYPE_p_p_mfem__IntegrationRule, SWIG_POINTER_NO_NULL);
-        if (SWIG_CheckState(res)){
-          arg3 = tmp_ptrarray3;
-        } else {
-          PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple or mfem::IntegrationRule * *[]");
-          return NULL;
-        }
-      }
-      
-      tmp_ptrarray3 = arg3;
-      
-      
-      
-      
-      
-      
-    }
-  }
-  {
-    try {
-      result = (double)((mfem::GridFunction const *)arg1)->ComputeL2Error(*arg2,(mfem::IntegrationRule const *(*))arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  {
-    if (arg3 != 0){
-      if (allocated3){
-        delete arg3;
-      }
-      
-    }
-  }
-  return resultobj;
-fail:
-  {
-    if (arg3 != 0){
-      if (allocated3){
-        delete arg3;
-      }
-      
-    }
-  }
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::Coefficient **arg2 ;
   mfem::IntegrationRule **arg3 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
+  mfem::Array< int > *arg4 = (mfem::Array< int > *) NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   mfem::IntegrationRule **tmp_ptrarray3 ;
   bool allocated3 = false ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
   double result;
   
-  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeL2Error" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -9193,138 +9077,16 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error__SWIG_1(PyObject *SWIGUNU
       
     }
   }
-  {
-    try {
-      result = (double)((mfem::GridFunction const *)arg1)->ComputeL2Error(arg2,(mfem::IntegrationRule const *(*))arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  {
-    if (arg3 != 0){
-      if (allocated3){
-        delete arg3;
-      }
-      
-    }
-  }
-  return resultobj;
-fail:
-  {
-    if (arg3 != 0){
-      if (allocated3){
-        delete arg3;
-      }
-      
-    }
-  }
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::VectorCoefficient *arg2 = 0 ;
-  mfem::IntegrationRule **arg3 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
-  mfem::Array< int > *arg4 = (mfem::Array< int > *) NULL ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  mfem::IntegrationRule **tmp_ptrarray3 ;
-  bool allocated3 = false ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  double result;
-  
-  if ((nobjs < 2) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeL2Error" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeL2Error" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeL2Error" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
-  if (swig_obj[2]) {
-    {
-      //  List/Tuple -> mfem::IntegrationRule *
-      
-      int res = 0;
-      if (PyList_Check(swig_obj[2])) {
-        int ll = PyList_Size(swig_obj[2]);
-        arg3 = new mfem::IntegrationRule * [ll];
-        allocated3 = true;
-        for (int i = 0; i < ll; i++) {
-          mfem::IntegrationRule * ttt;
-          PyObject *s = PyList_GetItem(swig_obj[2],i);
-          res = SWIG_ConvertPtr(s, (void **) &ttt,
-            SWIGTYPE_p_mfem__IntegrationRule,
-            0);
-          if (!SWIG_IsOK(res)) {
-            PyErr_SetString(PyExc_ValueError, "can not convert a list/tuple item to mfem::IntegrationRule *");	 
-            return NULL;
-          }	
-          arg3[i] = ttt;
-        }
-      } else if (PyTuple_Check(swig_obj[2])) {
-        int ll = PyTuple_Size(swig_obj[2]);
-        arg3 = new mfem::IntegrationRule * [ll];
-        allocated3 = true;     
-        for (int i = 0; i < ll; i++) {
-          mfem::IntegrationRule * ttt;
-          PyObject *s = PyTuple_GetItem(swig_obj[2],i);
-          res = SWIG_ConvertPtr(s, (void **) &ttt,
-            SWIGTYPE_p_mfem__IntegrationRule,
-            0);
-          if (!SWIG_IsOK(res)) {
-            PyErr_SetString(PyExc_ValueError, "can not convert a list/tuple item to mfem::IntegrationRule *");	 
-            return NULL;
-          }	
-          arg3[i] = ttt;
-        }
-      } else {
-        int res = SWIG_ConvertPtr(swig_obj[2], (void **) &tmp_ptrarray3, SWIGTYPE_p_p_mfem__IntegrationRule, SWIG_POINTER_NO_NULL);
-        if (SWIG_CheckState(res)){
-          arg3 = tmp_ptrarray3;
-        } else {
-          PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple or mfem::IntegrationRule * *[]");
-          return NULL;
-        }
-      }
-      
-      tmp_ptrarray3 = arg3;
-      
-      
-      
-      
-      
-      
-    }
-  }
   if (swig_obj[3]) {
     res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
     if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_ComputeL2Error" "', argument " "4"" of type '" "mfem::Array< int > *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_ComputeL2Error" "', argument " "4"" of type '" "mfem::Array< int > const *""'"); 
     }
     arg4 = reinterpret_cast< mfem::Array< int > * >(argp4);
   }
   {
     try {
-      result = (double)((mfem::GridFunction const *)arg1)->ComputeL2Error(*arg2,(mfem::IntegrationRule const *(*))arg3,arg4); 
+      result = (double)((mfem::GridFunction const *)arg1)->ComputeL2Error(arg2,(mfem::IntegrationRule const *(*))arg3,(mfem::Array< int > const *)arg4); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -9355,132 +9117,6 @@ fail:
     }
   }
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_ComputeL2Error", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if ((argc >= 2) && (argc <= 3)) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        if (argc <= 2) {
-          return _wrap_GridFunction_ComputeL2Error__SWIG_0(self, argc, argv);
-        }
-        {
-          _v = 0;
-          if (PyList_Check(argv[2])){
-            _v = 1;
-          }
-          if (PyTuple_Check(argv[2])){
-            _v = 1;
-          }
-          mfem::IntegrationRule * *ttt;
-          int res = SWIG_ConvertPtr(argv[2], (void **) &ttt, SWIGTYPE__input, SWIG_POINTER_NO_NULL);
-          if (SWIG_CheckState(res)){
-            _v = 1;
-          }
-        }
-        if (_v) {
-          return _wrap_GridFunction_ComputeL2Error__SWIG_0(self, argc, argv);
-        }
-      }
-    }
-  }
-  if ((argc >= 2) && (argc <= 3)) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_p_mfem__Coefficient, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        if (argc <= 2) {
-          return _wrap_GridFunction_ComputeL2Error__SWIG_1(self, argc, argv);
-        }
-        {
-          _v = 0;
-          if (PyList_Check(argv[2])){
-            _v = 1;
-          }
-          if (PyTuple_Check(argv[2])){
-            _v = 1;
-          }
-          mfem::IntegrationRule * *ttt;
-          int res = SWIG_ConvertPtr(argv[2], (void **) &ttt, SWIGTYPE__input, SWIG_POINTER_NO_NULL);
-          if (SWIG_CheckState(res)){
-            _v = 1;
-          }
-        }
-        if (_v) {
-          return _wrap_GridFunction_ComputeL2Error__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if ((argc >= 2) && (argc <= 4)) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        if (argc <= 2) {
-          return _wrap_GridFunction_ComputeL2Error__SWIG_2(self, argc, argv);
-        }
-        {
-          _v = 0;
-          if (PyList_Check(argv[2])){
-            _v = 1;
-          }
-          if (PyTuple_Check(argv[2])){
-            _v = 1;
-          }
-          mfem::IntegrationRule * *ttt;
-          int res = SWIG_ConvertPtr(argv[2], (void **) &ttt, SWIGTYPE__input, SWIG_POINTER_NO_NULL);
-          if (SWIG_CheckState(res)){
-            _v = 1;
-          }
-        }
-        if (_v) {
-          if (argc <= 3) {
-            return _wrap_GridFunction_ComputeL2Error__SWIG_2(self, argc, argv);
-          }
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            return _wrap_GridFunction_ComputeL2Error__SWIG_2(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_ComputeL2Error'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::GridFunction::ComputeL2Error(mfem::Coefficient &,mfem::IntegrationRule const *[]) const\n"
-    "    mfem::GridFunction::ComputeL2Error(mfem::Coefficient *[],mfem::IntegrationRule const *[]) const\n"
-    "    mfem::GridFunction::ComputeL2Error(mfem::VectorCoefficient &,mfem::IntegrationRule const *[],mfem::Array< int > *) const\n");
-  return 0;
 }
 
 
@@ -9611,6 +9247,406 @@ fail:
     }
   }
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
+  mfem::Coefficient *arg2 = 0 ;
+  mfem::IntegrationRule **arg3 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
+  mfem::Array< int > *arg4 = (mfem::Array< int > *) NULL ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  mfem::IntegrationRule **tmp_ptrarray3 ;
+  bool allocated3 = false ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  double result;
+  
+  if ((nobjs < 2) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeL2Error" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeL2Error" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeL2Error" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
+  if (swig_obj[2]) {
+    {
+      //  List/Tuple -> mfem::IntegrationRule *
+      
+      int res = 0;
+      if (PyList_Check(swig_obj[2])) {
+        int ll = PyList_Size(swig_obj[2]);
+        arg3 = new mfem::IntegrationRule * [ll];
+        allocated3 = true;
+        for (int i = 0; i < ll; i++) {
+          mfem::IntegrationRule * ttt;
+          PyObject *s = PyList_GetItem(swig_obj[2],i);
+          res = SWIG_ConvertPtr(s, (void **) &ttt,
+            SWIGTYPE_p_mfem__IntegrationRule,
+            0);
+          if (!SWIG_IsOK(res)) {
+            PyErr_SetString(PyExc_ValueError, "can not convert a list/tuple item to mfem::IntegrationRule *");	 
+            return NULL;
+          }	
+          arg3[i] = ttt;
+        }
+      } else if (PyTuple_Check(swig_obj[2])) {
+        int ll = PyTuple_Size(swig_obj[2]);
+        arg3 = new mfem::IntegrationRule * [ll];
+        allocated3 = true;     
+        for (int i = 0; i < ll; i++) {
+          mfem::IntegrationRule * ttt;
+          PyObject *s = PyTuple_GetItem(swig_obj[2],i);
+          res = SWIG_ConvertPtr(s, (void **) &ttt,
+            SWIGTYPE_p_mfem__IntegrationRule,
+            0);
+          if (!SWIG_IsOK(res)) {
+            PyErr_SetString(PyExc_ValueError, "can not convert a list/tuple item to mfem::IntegrationRule *");	 
+            return NULL;
+          }	
+          arg3[i] = ttt;
+        }
+      } else {
+        int res = SWIG_ConvertPtr(swig_obj[2], (void **) &tmp_ptrarray3, SWIGTYPE_p_p_mfem__IntegrationRule, SWIG_POINTER_NO_NULL);
+        if (SWIG_CheckState(res)){
+          arg3 = tmp_ptrarray3;
+        } else {
+          PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple or mfem::IntegrationRule * *[]");
+          return NULL;
+        }
+      }
+      
+      tmp_ptrarray3 = arg3;
+      
+      
+      
+      
+      
+      
+    }
+  }
+  if (swig_obj[3]) {
+    res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_ComputeL2Error" "', argument " "4"" of type '" "mfem::Array< int > const *""'"); 
+    }
+    arg4 = reinterpret_cast< mfem::Array< int > * >(argp4);
+  }
+  {
+    try {
+      result = (double)((mfem::GridFunction const *)arg1)->ComputeL2Error(*arg2,(mfem::IntegrationRule const *(*))arg3,(mfem::Array< int > const *)arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  {
+    if (arg3 != 0){
+      if (allocated3){
+        delete arg3;
+      }
+      
+    }
+  }
+  return resultobj;
+fail:
+  {
+    if (arg3 != 0){
+      if (allocated3){
+        delete arg3;
+      }
+      
+    }
+  }
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
+  mfem::VectorCoefficient *arg2 = 0 ;
+  mfem::IntegrationRule **arg3 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
+  mfem::Array< int > *arg4 = (mfem::Array< int > *) NULL ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  mfem::IntegrationRule **tmp_ptrarray3 ;
+  bool allocated3 = false ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  double result;
+  
+  if ((nobjs < 2) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeL2Error" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeL2Error" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeL2Error" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
+  if (swig_obj[2]) {
+    {
+      //  List/Tuple -> mfem::IntegrationRule *
+      
+      int res = 0;
+      if (PyList_Check(swig_obj[2])) {
+        int ll = PyList_Size(swig_obj[2]);
+        arg3 = new mfem::IntegrationRule * [ll];
+        allocated3 = true;
+        for (int i = 0; i < ll; i++) {
+          mfem::IntegrationRule * ttt;
+          PyObject *s = PyList_GetItem(swig_obj[2],i);
+          res = SWIG_ConvertPtr(s, (void **) &ttt,
+            SWIGTYPE_p_mfem__IntegrationRule,
+            0);
+          if (!SWIG_IsOK(res)) {
+            PyErr_SetString(PyExc_ValueError, "can not convert a list/tuple item to mfem::IntegrationRule *");	 
+            return NULL;
+          }	
+          arg3[i] = ttt;
+        }
+      } else if (PyTuple_Check(swig_obj[2])) {
+        int ll = PyTuple_Size(swig_obj[2]);
+        arg3 = new mfem::IntegrationRule * [ll];
+        allocated3 = true;     
+        for (int i = 0; i < ll; i++) {
+          mfem::IntegrationRule * ttt;
+          PyObject *s = PyTuple_GetItem(swig_obj[2],i);
+          res = SWIG_ConvertPtr(s, (void **) &ttt,
+            SWIGTYPE_p_mfem__IntegrationRule,
+            0);
+          if (!SWIG_IsOK(res)) {
+            PyErr_SetString(PyExc_ValueError, "can not convert a list/tuple item to mfem::IntegrationRule *");	 
+            return NULL;
+          }	
+          arg3[i] = ttt;
+        }
+      } else {
+        int res = SWIG_ConvertPtr(swig_obj[2], (void **) &tmp_ptrarray3, SWIGTYPE_p_p_mfem__IntegrationRule, SWIG_POINTER_NO_NULL);
+        if (SWIG_CheckState(res)){
+          arg3 = tmp_ptrarray3;
+        } else {
+          PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple or mfem::IntegrationRule * *[]");
+          return NULL;
+        }
+      }
+      
+      tmp_ptrarray3 = arg3;
+      
+      
+      
+      
+      
+      
+    }
+  }
+  if (swig_obj[3]) {
+    res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_ComputeL2Error" "', argument " "4"" of type '" "mfem::Array< int > const *""'"); 
+    }
+    arg4 = reinterpret_cast< mfem::Array< int > * >(argp4);
+  }
+  {
+    try {
+      result = (double)((mfem::GridFunction const *)arg1)->ComputeL2Error(*arg2,(mfem::IntegrationRule const *(*))arg3,(mfem::Array< int > const *)arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  {
+    if (arg3 != 0){
+      if (allocated3){
+        delete arg3;
+      }
+      
+    }
+  }
+  return resultobj;
+fail:
+  {
+    if (arg3 != 0){
+      if (allocated3){
+        delete arg3;
+      }
+      
+    }
+  }
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_ComputeL2Error", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if ((argc >= 2) && (argc <= 4)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_p_mfem__Coefficient, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_GridFunction_ComputeL2Error__SWIG_0(self, argc, argv);
+        }
+        {
+          _v = 0;
+          if (PyList_Check(argv[2])){
+            _v = 1;
+          }
+          if (PyTuple_Check(argv[2])){
+            _v = 1;
+          }
+          mfem::IntegrationRule * *ttt;
+          int res = SWIG_ConvertPtr(argv[2], (void **) &ttt, SWIGTYPE__input, SWIG_POINTER_NO_NULL);
+          if (SWIG_CheckState(res)){
+            _v = 1;
+          }
+        }
+        if (_v) {
+          if (argc <= 3) {
+            return _wrap_GridFunction_ComputeL2Error__SWIG_0(self, argc, argv);
+          }
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_GridFunction_ComputeL2Error__SWIG_0(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  if ((argc >= 2) && (argc <= 4)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_GridFunction_ComputeL2Error__SWIG_1(self, argc, argv);
+        }
+        {
+          _v = 0;
+          if (PyList_Check(argv[2])){
+            _v = 1;
+          }
+          if (PyTuple_Check(argv[2])){
+            _v = 1;
+          }
+          mfem::IntegrationRule * *ttt;
+          int res = SWIG_ConvertPtr(argv[2], (void **) &ttt, SWIGTYPE__input, SWIG_POINTER_NO_NULL);
+          if (SWIG_CheckState(res)){
+            _v = 1;
+          }
+        }
+        if (_v) {
+          if (argc <= 3) {
+            return _wrap_GridFunction_ComputeL2Error__SWIG_1(self, argc, argv);
+          }
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_GridFunction_ComputeL2Error__SWIG_1(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  if ((argc >= 2) && (argc <= 4)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_GridFunction_ComputeL2Error__SWIG_2(self, argc, argv);
+        }
+        {
+          _v = 0;
+          if (PyList_Check(argv[2])){
+            _v = 1;
+          }
+          if (PyTuple_Check(argv[2])){
+            _v = 1;
+          }
+          mfem::IntegrationRule * *ttt;
+          int res = SWIG_ConvertPtr(argv[2], (void **) &ttt, SWIGTYPE__input, SWIG_POINTER_NO_NULL);
+          if (SWIG_CheckState(res)){
+            _v = 1;
+          }
+        }
+        if (_v) {
+          if (argc <= 3) {
+            return _wrap_GridFunction_ComputeL2Error__SWIG_2(self, argc, argv);
+          }
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_GridFunction_ComputeL2Error__SWIG_2(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_ComputeL2Error'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::GridFunction::ComputeL2Error(mfem::Coefficient *[],mfem::IntegrationRule const *[],mfem::Array< int > const *) const\n"
+    "    mfem::GridFunction::ComputeL2Error(mfem::Coefficient &,mfem::IntegrationRule const *[],mfem::Array< int > const *) const\n"
+    "    mfem::GridFunction::ComputeL2Error(mfem::VectorCoefficient &,mfem::IntegrationRule const *[],mfem::Array< int > const *) const\n");
+  return 0;
 }
 
 
@@ -11555,7 +11591,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeW11Error(PyObject *SWIGUNUSEDPARM
   if (obj4) {
     res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
     if (!SWIG_IsOK(res5)) {
-      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_ComputeW11Error" "', argument " "5"" of type '" "mfem::Array< int > *""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_ComputeW11Error" "', argument " "5"" of type '" "mfem::Array< int > const *""'"); 
     }
     arg5 = reinterpret_cast< mfem::Array< int > * >(argp5);
   }
@@ -11617,7 +11653,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeW11Error(PyObject *SWIGUNUSEDPARM
   }
   {
     try {
-      result = (double)((mfem::GridFunction const *)arg1)->ComputeW11Error(arg2,arg3,arg4,arg5,(mfem::IntegrationRule const *(*))arg6); 
+      result = (double)((mfem::GridFunction const *)arg1)->ComputeW11Error(arg2,arg3,arg4,(mfem::Array< int > const *)arg5,(mfem::IntegrationRule const *(*))arg6); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -11861,6 +11897,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError__SWIG_0(PyObject *SWIGUNU
   mfem::Coefficient *arg3 = 0 ;
   mfem::Coefficient *arg4 = (mfem::Coefficient *) NULL ;
   mfem::IntegrationRule **arg5 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
+  mfem::Array< int > *arg6 = (mfem::Array< int > *) NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   double val2 ;
@@ -11871,9 +11908,11 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError__SWIG_0(PyObject *SWIGUNU
   int res4 = 0 ;
   mfem::IntegrationRule **tmp_ptrarray5 ;
   bool allocated5 = false ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
   double result;
   
-  if ((nobjs < 3) || (nobjs > 5)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 6)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeLpError" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -11955,9 +11994,16 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError__SWIG_0(PyObject *SWIGUNU
       
     }
   }
+  if (swig_obj[5]) {
+    res6 = SWIG_ConvertPtr(swig_obj[5], &argp6,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+    if (!SWIG_IsOK(res6)) {
+      SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "GridFunction_ComputeLpError" "', argument " "6"" of type '" "mfem::Array< int > const *""'"); 
+    }
+    arg6 = reinterpret_cast< mfem::Array< int > * >(argp6);
+  }
   {
     try {
-      result = (double)((mfem::GridFunction const *)arg1)->ComputeLpError(arg2,*arg3,arg4,(mfem::IntegrationRule const *(*))arg5); 
+      result = (double)((mfem::GridFunction const *)arg1)->ComputeLpError(arg2,*arg3,arg4,(mfem::IntegrationRule const *(*))arg5,(mfem::Array< int > const *)arg6); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -12680,7 +12726,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError(PyObject *self, PyObject 
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_ComputeLpError", 0, 6, argv))) SWIG_fail;
   --argc;
-  if ((argc >= 3) && (argc <= 5)) {
+  if ((argc >= 3) && (argc <= 6)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
@@ -12720,7 +12766,15 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError(PyObject *self, PyObject 
               }
             }
             if (_v) {
-              return _wrap_GridFunction_ComputeLpError__SWIG_0(self, argc, argv);
+              if (argc <= 5) {
+                return _wrap_GridFunction_ComputeLpError__SWIG_0(self, argc, argv);
+              }
+              void *vptr = 0;
+              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
+              _v = SWIG_CheckState(res);
+              if (_v) {
+                return _wrap_GridFunction_ComputeLpError__SWIG_0(self, argc, argv);
+              }
             }
           }
         }
@@ -12786,7 +12840,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError(PyObject *self, PyObject 
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_ComputeLpError'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    mfem::GridFunction::ComputeLpError(double const,mfem::Coefficient &,mfem::Coefficient *,mfem::IntegrationRule const *[]) const\n"
+    "    mfem::GridFunction::ComputeLpError(double const,mfem::Coefficient &,mfem::Coefficient *,mfem::IntegrationRule const *[],mfem::Array< int > const *) const\n"
     "    mfem::GridFunction::ComputeLpError(double const,mfem::VectorCoefficient &,mfem::Coefficient *,mfem::VectorCoefficient *,mfem::IntegrationRule const *[]) const\n");
   return 0;
 }
@@ -19543,12 +19597,12 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "GridFunction_ProjectBdrCoefficientNormal", (PyCFunction)(void(*)(void))_wrap_GridFunction_ProjectBdrCoefficientNormal, METH_VARARGS|METH_KEYWORDS, "GridFunction_ProjectBdrCoefficientNormal(GridFunction self, VectorCoefficient vcoeff, intArray bdr_attr)"},
 	 { "GridFunction_ProjectBdrCoefficientTangent", (PyCFunction)(void(*)(void))_wrap_GridFunction_ProjectBdrCoefficientTangent, METH_VARARGS|METH_KEYWORDS, "GridFunction_ProjectBdrCoefficientTangent(GridFunction self, VectorCoefficient vcoeff, intArray bdr_attr)"},
+	 { "GridFunction_ComputeElementGradError", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeElementGradError, METH_VARARGS|METH_KEYWORDS, "GridFunction_ComputeElementGradError(GridFunction self, int ielem, VectorCoefficient exgrad, mfem::IntegrationRule const *[] irs=0) -> double"},
 	 { "GridFunction_ComputeL2Error", _wrap_GridFunction_ComputeL2Error, METH_VARARGS, "\n"
-		"GridFunction_ComputeL2Error(GridFunction self, Coefficient exsol, mfem::IntegrationRule const *[] irs=0) -> double\n"
-		"GridFunction_ComputeL2Error(GridFunction self, mfem::Coefficient *[] exsol, mfem::IntegrationRule const *[] irs=0) -> double\n"
+		"GridFunction_ComputeL2Error(GridFunction self, mfem::Coefficient *[] exsol, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double\n"
+		"GridFunction_ComputeL2Error(GridFunction self, Coefficient exsol, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double\n"
 		"GridFunction_ComputeL2Error(GridFunction self, VectorCoefficient exsol, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double\n"
 		""},
-	 { "GridFunction_ComputeElementGradError", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeElementGradError, METH_VARARGS|METH_KEYWORDS, "GridFunction_ComputeElementGradError(GridFunction self, int ielem, VectorCoefficient exgrad, mfem::IntegrationRule const *[] irs=0) -> double"},
 	 { "GridFunction_ComputeGradError", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeGradError, METH_VARARGS|METH_KEYWORDS, "GridFunction_ComputeGradError(GridFunction self, VectorCoefficient exgrad, mfem::IntegrationRule const *[] irs=0) -> double"},
 	 { "GridFunction_ComputeCurlError", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeCurlError, METH_VARARGS|METH_KEYWORDS, "GridFunction_ComputeCurlError(GridFunction self, VectorCoefficient excurl, mfem::IntegrationRule const *[] irs=0) -> double"},
 	 { "GridFunction_ComputeDivError", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeDivError, METH_VARARGS|METH_KEYWORDS, "GridFunction_ComputeDivError(GridFunction self, Coefficient exdiv, mfem::IntegrationRule const *[] irs=0) -> double"},
@@ -19573,7 +19627,7 @@ static PyMethodDef SwigMethods[] = {
 		"GridFunction_ComputeL1Error(GridFunction self, VectorCoefficient exsol, mfem::IntegrationRule const *[] irs=0) -> double\n"
 		""},
 	 { "GridFunction_ComputeLpError", _wrap_GridFunction_ComputeLpError, METH_VARARGS, "\n"
-		"GridFunction_ComputeLpError(GridFunction self, double const p, Coefficient exsol, Coefficient weight=None, mfem::IntegrationRule const *[] irs=0) -> double\n"
+		"GridFunction_ComputeLpError(GridFunction self, double const p, Coefficient exsol, Coefficient weight=None, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double\n"
 		"GridFunction_ComputeLpError(GridFunction self, double const p, VectorCoefficient exsol, Coefficient weight=None, VectorCoefficient v_weight=None, mfem::IntegrationRule const *[] irs=0) -> double\n"
 		""},
 	 { "GridFunction_ComputeElementLpErrors", _wrap_GridFunction_ComputeElementLpErrors, METH_VARARGS, "\n"
@@ -19797,12 +19851,12 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "GridFunction_ProjectBdrCoefficientNormal", (PyCFunction)(void(*)(void))_wrap_GridFunction_ProjectBdrCoefficientNormal, METH_VARARGS|METH_KEYWORDS, "ProjectBdrCoefficientNormal(GridFunction self, VectorCoefficient vcoeff, intArray bdr_attr)"},
 	 { "GridFunction_ProjectBdrCoefficientTangent", (PyCFunction)(void(*)(void))_wrap_GridFunction_ProjectBdrCoefficientTangent, METH_VARARGS|METH_KEYWORDS, "ProjectBdrCoefficientTangent(GridFunction self, VectorCoefficient vcoeff, intArray bdr_attr)"},
+	 { "GridFunction_ComputeElementGradError", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeElementGradError, METH_VARARGS|METH_KEYWORDS, "ComputeElementGradError(GridFunction self, int ielem, VectorCoefficient exgrad, mfem::IntegrationRule const *[] irs=0) -> double"},
 	 { "GridFunction_ComputeL2Error", _wrap_GridFunction_ComputeL2Error, METH_VARARGS, "\n"
-		"ComputeL2Error(GridFunction self, Coefficient exsol, mfem::IntegrationRule const *[] irs=0) -> double\n"
-		"ComputeL2Error(GridFunction self, mfem::Coefficient *[] exsol, mfem::IntegrationRule const *[] irs=0) -> double\n"
+		"ComputeL2Error(GridFunction self, mfem::Coefficient *[] exsol, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double\n"
+		"ComputeL2Error(GridFunction self, Coefficient exsol, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double\n"
 		"ComputeL2Error(GridFunction self, VectorCoefficient exsol, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double\n"
 		""},
-	 { "GridFunction_ComputeElementGradError", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeElementGradError, METH_VARARGS|METH_KEYWORDS, "ComputeElementGradError(GridFunction self, int ielem, VectorCoefficient exgrad, mfem::IntegrationRule const *[] irs=0) -> double"},
 	 { "GridFunction_ComputeGradError", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeGradError, METH_VARARGS|METH_KEYWORDS, "ComputeGradError(GridFunction self, VectorCoefficient exgrad, mfem::IntegrationRule const *[] irs=0) -> double"},
 	 { "GridFunction_ComputeCurlError", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeCurlError, METH_VARARGS|METH_KEYWORDS, "ComputeCurlError(GridFunction self, VectorCoefficient excurl, mfem::IntegrationRule const *[] irs=0) -> double"},
 	 { "GridFunction_ComputeDivError", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeDivError, METH_VARARGS|METH_KEYWORDS, "ComputeDivError(GridFunction self, Coefficient exdiv, mfem::IntegrationRule const *[] irs=0) -> double"},
@@ -19827,7 +19881,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"ComputeL1Error(GridFunction self, VectorCoefficient exsol, mfem::IntegrationRule const *[] irs=0) -> double\n"
 		""},
 	 { "GridFunction_ComputeLpError", _wrap_GridFunction_ComputeLpError, METH_VARARGS, "\n"
-		"ComputeLpError(GridFunction self, double const p, Coefficient exsol, Coefficient weight=None, mfem::IntegrationRule const *[] irs=0) -> double\n"
+		"ComputeLpError(GridFunction self, double const p, Coefficient exsol, Coefficient weight=None, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double\n"
 		"ComputeLpError(GridFunction self, double const p, VectorCoefficient exsol, Coefficient weight=None, VectorCoefficient v_weight=None, mfem::IntegrationRule const *[] irs=0) -> double\n"
 		""},
 	 { "GridFunction_ComputeElementLpErrors", _wrap_GridFunction_ComputeElementLpErrors, METH_VARARGS, "\n"

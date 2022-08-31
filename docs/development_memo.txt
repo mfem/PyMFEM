@@ -33,8 +33,7 @@ pip3 install -i  https://test.pypi.org/simple  mfem --no-binary mfem --verbose
 
 sudo docker pull quay.io/pypa/manylinux2014_x86_64
 sudo docker run -it -v $(pwd):/io quay.io/pypa/manylinux2014_x86_64
-yum install openssh-server openssh-clients
-yum install zlib-devel
+yum install openssh-server openssh-clients zlib-devel
 #git clone git@github.com:mfem/PyMFEM.git
 git clone https://github.com/mfem/PyMFEM.git
 export PATH=/opt/python/cp38-cp38/bin:$PATH
@@ -44,7 +43,7 @@ rm -rf dist/*
 python3 setup.py bdist_wheel
 export LD_LIBRARY_PATH=/root/PyMFEM/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
 rm -rf wheelhouse/*
-auditwheel repair dist/mfem-4.2.1.30-cp38-cp38-linux_x86_64.whl
+auditwheel repair dist/mfem-*-linux_x86_64.whl
 rm -rf dist/*
 mv wheelhouse/* dist/
 python3 setup.py sdist
@@ -63,7 +62,7 @@ rm -rf dist/*
 python3 setup.py bdist_wheel
 export LD_LIBRARY_PATH=/root/PyMFEM/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
 rm -rf wheelhouse/*
-auditwheel repair dist/mfem-4.2.1.30-cp38-cp38-linux_x86_64.whl
+auditwheel repair dist/mfem-*-linux_x86_64.whl
 rm -rf dist/*
 mv wheelhouse/* dist/
 python3 setup.py sdist

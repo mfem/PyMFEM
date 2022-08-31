@@ -371,19 +371,19 @@ class GridFunction(mfem._ser.vector.Vector):
         return _gridfunc.GridFunction_ProjectBdrCoefficientTangent(self, vcoeff, bdr_attr)
     ProjectBdrCoefficientTangent = _swig_new_instance_method(_gridfunc.GridFunction_ProjectBdrCoefficientTangent)
 
-    def ComputeL2Error(self, *args):
-        r"""
-        ComputeL2Error(GridFunction self, Coefficient exsol, mfem::IntegrationRule const *[] irs=0) -> double
-        ComputeL2Error(GridFunction self, mfem::Coefficient *[] exsol, mfem::IntegrationRule const *[] irs=0) -> double
-        ComputeL2Error(GridFunction self, VectorCoefficient exsol, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double
-        """
-        return _gridfunc.GridFunction_ComputeL2Error(self, *args)
-    ComputeL2Error = _swig_new_instance_method(_gridfunc.GridFunction_ComputeL2Error)
-
     def ComputeElementGradError(self, ielem, exgrad, irs=0):
         r"""ComputeElementGradError(GridFunction self, int ielem, VectorCoefficient exgrad, mfem::IntegrationRule const *[] irs=0) -> double"""
         return _gridfunc.GridFunction_ComputeElementGradError(self, ielem, exgrad, irs)
     ComputeElementGradError = _swig_new_instance_method(_gridfunc.GridFunction_ComputeElementGradError)
+
+    def ComputeL2Error(self, *args):
+        r"""
+        ComputeL2Error(GridFunction self, mfem::Coefficient *[] exsol, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double
+        ComputeL2Error(GridFunction self, Coefficient exsol, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double
+        ComputeL2Error(GridFunction self, VectorCoefficient exsol, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double
+        """
+        return _gridfunc.GridFunction_ComputeL2Error(self, *args)
+    ComputeL2Error = _swig_new_instance_method(_gridfunc.GridFunction_ComputeL2Error)
 
     def ComputeGradError(self, exgrad, irs=0):
         r"""ComputeGradError(GridFunction self, VectorCoefficient exgrad, mfem::IntegrationRule const *[] irs=0) -> double"""
@@ -450,7 +450,7 @@ class GridFunction(mfem._ser.vector.Vector):
 
     def ComputeLpError(self, *args):
         r"""
-        ComputeLpError(GridFunction self, double const p, Coefficient exsol, Coefficient weight=None, mfem::IntegrationRule const *[] irs=0) -> double
+        ComputeLpError(GridFunction self, double const p, Coefficient exsol, Coefficient weight=None, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double
         ComputeLpError(GridFunction self, double const p, VectorCoefficient exsol, Coefficient weight=None, VectorCoefficient v_weight=None, mfem::IntegrationRule const *[] irs=0) -> double
         """
         return _gridfunc.GridFunction_ComputeLpError(self, *args)
