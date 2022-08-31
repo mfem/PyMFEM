@@ -26,7 +26,7 @@ When using PIP, each option needs to be passed using --install-option.
 
 $ python setup.py install --with-parallel --CC=xxx, --CXX=xxx, --MPICC=xxx, --MPICXX=xxx
 
-## Suitesparse (This option turns on building metis)
+## Suitesparse (This option turns on building metis in serial)
 --with-suitesparse
 --suitesparse-prefix=<location>
 
