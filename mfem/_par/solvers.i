@@ -37,6 +37,13 @@ import_array();
 %include "linalg/solvers.hpp"
 %include "../common/pysolvers.hpp"
 
+#ifdef MFEM_USE_SUITESPARSE
+%rename($ignore, %$isfunction) "";
+%rename($ignore, %$isclass) "";
+%include <umfpack.h>
+%include <klu.h>
+#endif
+
 %inline %{
 namespace mfem{
   void PyIterativeSolver::Mult(const Vector &b, Vector &x) const{

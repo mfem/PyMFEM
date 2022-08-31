@@ -907,7 +907,7 @@ def generate_wrapper():
                '-I' + os.path.join(mfemser, 'include', 'mfem'),
                '-I' + os.path.abspath(mfem_source)]
     if enable_suitesparse:
-        parflag.append('-I' + os.path.join(suitesparse_prefix, 'include', 'suitesparse'))
+        serflag.append('-I' + os.path.join(suitesparse_prefix, 'include', 'suitesparse'))
 
     commands = []
     for filename in ifiles():
@@ -941,7 +941,7 @@ def generate_wrapper():
     if enable_suitesparse:
         parflag.append('-I' + os.path.join(suitesparse_prefix, 'include', 'suitesparse'))
 
-    commands = []
+
     for filename in ifiles():    
         #        pumi.i does not depends on pumi specific header so this should
         #        work
