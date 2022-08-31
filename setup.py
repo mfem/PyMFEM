@@ -52,7 +52,7 @@ repos = {"mfem": "https://github.com/mfem/mfem.git",
          "libceed": "https://github.com/CEED/libCEED.git",
          "gklib": "https://github.com/KarypisLab/GKlib",
          "metis": "https://github.com/KarypisLab/METIS", }
-repos_sha = {"mfem": "a1f6902ed72552f3e680d1489f1aa6ade2e0d3b2",
+repos_sha = {"mfem": "4edfc95acc2a300ff3344b8c947bf451bdf19d5d",
              "gklib": "a7f8172703cf6e999dd0710eb279bba513da4fec",
              "metis": "94c03a6e2d1860128c2d0675cbbb86ad4f261256"}
 
@@ -1365,7 +1365,7 @@ class Install(_install):
         self.mfemp_prefix = ''
         self.mfem_source = './external/mfem'
         self.mfem_prefix_no_swig = ''
-        self.mfem_branch = 'master'
+        self.mfem_branch = ''
         self.metis_prefix = ''
         self.hypre_prefix = ''
 
