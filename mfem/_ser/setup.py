@@ -70,6 +70,9 @@ if add_cuda:
     include_dirs.append(cudainc)
 if add_libceed:
     include_dirs.append(libceedinc)
+if add_suitesparse:
+    if suitesparseinc != "":
+        include_dirs.append(suitesparseinc)
 
 extra_compile_args = [cxx11flag, '-DSWIG_TYPE_TABLE=PyMFEM']
 
