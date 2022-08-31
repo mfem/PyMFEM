@@ -664,26 +664,17 @@ def cmake_make_mfem(serial=True):
         cmake_opts['DMFEM_USE_EXCEPTIONS'] = '0'
         cmake_opts['DCMAKE_INSTALL_PREFIX'] = mfemp_prefix
         cmake_opts['DMFEM_USE_MPI'] = '1'
-        cmake_opts['DMFEM_USE_METIS_5'] = '1'
         cmake_opts['DHYPRE_DIR'] = hypre_prefix
-        cmake_opts['DMETIS_DIR'] = metis_prefix
 
         add_rpath(os.path.join(mfemp_prefix, 'lib'))
 
         hyprelibpath = os.path.dirname(
             find_libpath_from_prefix(
                 'HYPRE', hypre_prefix))
-        metislibpath = os.path.dirname(
-            find_libpath_from_prefix(
-                'metis', metis_prefix))
 
-        add_rpath(metislibpath)
         add_rpath(hyprelibpath)
 
-        ldflags = "-L" + metislibpath + " -lmetis -lGKlib " + ldflags
         ldflags = "-L" + hyprelibpath + " -lHYPRE " + ldflags
-        cmake_opts['DCMAKE_SHARED_LINKER_FLAGS'] = ldflags
-        cmake_opts['DCMAKE_EXE_LINKER_FLAGS'] = ldflags
 
         if enable_strumpack:
             cmake_opts['DMFEM_USE_STRUMPACK'] = '1'
@@ -698,6 +689,22 @@ def cmake_make_mfem(serial=True):
                 find_libpath_from_prefix("pumi", strumpack_prefix))
             add_rpath(libpath)
 
+    if enable_suitesparse:
+        enable_metis = True
+        
+    if enable_metis:
+        cmake_opts['DMFEM_USE_METIS_5'] = '1'
+        cmake_opts['DMETIS_DIR'] = metis_prefix
+        metislibpath = os.path.dirname(
+        find_libpath_from_prefix(
+                   'metis', metis_prefix))
+        add_rpath(metislibpath)            
+        ldflags = "-L" + metislibpath + " -lmetis -lGKlib " + ldflags
+
+    if ldflags != '':
+       cmake_opts['DCMAKE_SHARED_LINKER_FLAGS'] = ldflags
+       cmake_opts['DCMAKE_EXE_LINKER_FLAGS'] = ldflags
+        
     if enable_cuda:
         cmake_opts['DMFEM_USE_CUDA'] = '1'
         if cuda_arch != '':
@@ -719,19 +726,6 @@ def cmake_make_mfem(serial=True):
             cmake_opts['DGSLIB_DIR'] = gslibp_prefix
 
     if enable_suitesparse:
-        if serial:
-            cmake_opts['DMFEM_USE_METIS_5'] = '1'
-            cmake_opts['DMETIS_DIR'] = metis_prefix
-            metislibpath = os.path.dirname(
-            find_libpath_from_prefix(
-                   'metis', metis_prefix))
-            add_rpath(metislibpath)            
-            ldflags = "-L" + metislibpath + " -lmetis -lGKlib " + ldflags
-            cmake_opts['DCMAKE_SHARED_LINKER_FLAGS'] = ldflags
-            cmake_opts['DCMAKE_EXE_LINKER_FLAGS'] = ldflags
-            
-#            pass
-#        else:
         cmake_opts['DMFEM_USE_SUITESPARSE'] = '1'
         if suitesparse_prefix != '':
             cmake_opts['DSuiteSparse_DIR'] = suitesparse_prefix
