@@ -47,12 +47,14 @@ $ python setup.py install  --with-parallel --mfem-branch='master'
 ### Choosing compiler
 ```
 $ python setup.py install --with-parallel --CC=icc --CXX=icpc --MPICC=mpiicc --MPICXX=mpiicpc
+
+### Other options
 ```
 For other configurations, see docs/install.txt or help
 ```
 $ python setup.py install --help
 ```
-## Install from github master
+## Install from github source
 ```
 git clone https://github.com/mfem/PyMFEM.git
 cd PyMFEM
