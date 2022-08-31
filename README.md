@@ -10,10 +10,19 @@ Installer (setup.py) builds both MFEM and binding together.
 By default, "pip install mfem" downloads and builds the serial version of MFEM and PyMFEM.
 Additionally, the installer supports building MFEM with specific options together with other external libraries, including MPI version.
 
+## Requirement
+```
+six, numpy, swig
+mpi4py (for --with-parallel)
+
+```
 ## Install
 ```
 pip install mfem                    # binary install is available only on linux platforms (Py36-39) 
 pip install mfem --no-binary mfem   # install serial MFEM + wrapper
+
+pip install mfem --install-option="--mfem-branch=master" --install-option="--with-gslib" --verbose
+
 ```
 
 ### Using additional features (MPI, GPU, GPU-Hypre, GSLIB, SuiteSparse)

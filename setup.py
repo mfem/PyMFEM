@@ -1365,7 +1365,7 @@ class Install(_install):
         self.mfemp_prefix = ''
         self.mfem_source = './external/mfem'
         self.mfem_prefix_no_swig = ''
-        self.mfem_branch = ''
+        self.mfem_branch = 'master'
         self.metis_prefix = ''
         self.hypre_prefix = ''
 
