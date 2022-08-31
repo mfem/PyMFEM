@@ -812,12 +812,19 @@ def write_setup_local():
     except ImportError:
         params['mpi4pyinc'] = ''
 
-    def add_extra(xxx):
+    def add_extra(xxx, inc_sub=None):
         params['add_' + xxx] = '1'
-        params[xxx +
-               'inc'] = os.path.join(globals()[xxx +
+        if inc_sub is None:
+            params[xxx +
+                  'inc'] = os.path.join(globals()[xxx +
                                                '_prefix'], 'include')
+        else:
+            params[xxx +
+                  'inc'] = os.path.join(globals()[xxx +
+                                                  '_prefix'], 'include', inc_sub)
+            
         params[xxx + 'lib'] = os.path.join(globals()[xxx + '_prefix'], 'lib')
+        
 
     if enable_pumi:
         add_extra('pumi')
@@ -828,7 +835,7 @@ def write_setup_local():
     if enable_libceed:
         add_extra('libceed')
     if enable_suitesparse:
-        add_extra('suitesparse')
+        add_extra('suitesparse', inc_sub='suitesparse')
     if enable_gslib:
         add_extra('gslibs')
     if enable_gslib:
