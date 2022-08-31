@@ -906,7 +906,8 @@ def generate_wrapper():
     serflag = ['-I' + os.path.join(mfemser, 'include'),
                '-I' + os.path.join(mfemser, 'include', 'mfem'),
                '-I' + os.path.abspath(mfem_source)]
-
+    if enable_suitesparse:
+        parflag.append('-I' + os.path.join(suitesparse_prefix, 'include', 'suitesparse'))
 
     commands = []
     for filename in ifiles():
@@ -937,8 +938,8 @@ def generate_wrapper():
         parflag.append('-I' + os.path.join(pumi_prefix, 'include'))
     if enable_strumpack:
         parflag.append('-I' + os.path.join(strumpack_prefix, 'include'))
-
-
+    if enable_suitesparse:
+        parflag.append('-I' + os.path.join(suitesparse_prefix, 'include', 'suitesparse'))
 
     commands = []
     for filename in ifiles():    
