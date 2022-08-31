@@ -719,9 +719,9 @@ def cmake_make_mfem(serial=True):
             cmake_opts['DGSLIB_DIR'] = gslibp_prefix
 
     if enable_suitesparse:
-        if serial:
-            pass
-        else:
+#        if serial:
+#            pass
+#        else:
             cmake_opts['DMFEM_USE_SUITESPARSE'] = '1'
             if suitesparse_prefix != '':
                 cmake_opts['DSuiteSparse_DIR'] = suitesparse_prefix
