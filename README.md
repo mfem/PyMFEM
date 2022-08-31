@@ -18,23 +18,26 @@ mpi4py (for --with-parallel)
 ```
 ## Install
 ```
-pip install mfem                    # binary install is available only on linux platforms (Py36-39) 
-pip install mfem --no-binary mfem   # install serial MFEM + wrapper
-
-pip install mfem --install-option="--mfem-branch=master" --install-option="--with-gslib" --verbose
+pip install mfem                    # binary install is available only on linux platforms (Py36-310) 
+pip install mfem --no-binary mfem   # install serial MFEM + wrapper from source
 
 ```
 
 ### Using additional features (MPI, GPU, GPU-Hypre, GSLIB, SuiteSparse)
-The setup script accept various options. TO use it, please download
-the package and run the script manually. For example, this below download
+The setup script accept various options. TO use it, one can either use --install-option flag
+with pip, or download the package manually and run the script. For example, this below download
 and build parallel version of MFEM library (linked with Metis and Hypre)
 and install under <prefix>/mfem. See also, docs/install.txt
 ```
-$ pip3 download mfem
-(expand tar.gz file and move to the downloaded directory)
+### Using pip
+$ pip install mfem --install-option="--with-parallel" [--verbose]
+
+### Runnig setup.py
+$ pip download mfem --no-binary mfem (expand tar.gz file and move to the downloaded directory)
 $ python setup.py install --with-parallel # it download and build metis/hypre/mfem
+
 ```
+
 Choosing compiler
 ```
 $ python setup.py install --with-parallel --CC=icc --CXX=icpc --MPICC=mpiicc --MPICXX=mpiicpc
@@ -47,8 +50,7 @@ $ python setup.py install --help
 ```
 git clone https://github.com/mfem/PyMFEM.git
 cd PyMFEM
-python setup.py install --mfem-branch=master  # build both MFEM and PyMFEM
-  
+python setup.py install # build both MFEM and PyMFEM
 cd test
 python test_examples.py -serial
 ```  

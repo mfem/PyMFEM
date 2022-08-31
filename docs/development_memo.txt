@@ -31,14 +31,14 @@ pip3 install -i  https://test.pypi.org/simple  mfem --no-binary mfem --verbose
 
 ### Test linux binary build locally using docker (1) for Python <= 3.9
 
-sudo docker pull quay.io/pypa/manylinux2010_x86_64
-sudo docker run -it -v $(pwd):/io quay.io/pypa/manylinux2010_x86_64
+sudo docker pull quay.io/pypa/manylinux2014_x86_64
+sudo docker run -it -v $(pwd):/io quay.io/pypa/manylinux2014_x86_64
 yum install openssh-server openssh-clients
 yum install zlib-devel
 #git clone git@github.com:mfem/PyMFEM.git
 git clone https://github.com/mfem/PyMFEM.git
-export PATH=/opt/python/cp36-cp36m/bin:$PATH
-pip install six numpy scipy auditwheel twine cmake swig
+export PATH=/opt/python/cp38-cp38/bin:$PATH
+pip install six numpy  auditwheel twine cmake swig
 python3 setup.py install
 rm -rf dist/*
 python3 setup.py bdist_wheel
@@ -46,6 +46,7 @@ export LD_LIBRARY_PATH=/root/PyMFEM/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
 rm -rf wheelhouse/*
 auditwheel repair dist/mfem-4.2.1.30-cp38-cp38-linux_x86_64.whl
 rm -rf dist/*
+mv wheelhouse/* dist/
 python3 setup.py sdist
 
 ### Test linux binary build locally using docker (2) for Python <= 3.10
@@ -56,7 +57,7 @@ apt-get update
 apt-get install openssh-server zlib1g-dbg
 git clone https://github.com/mfem/PyMFEM.git
 export PATH=/opt/python/cp38-cp38/bin:$PATH
-pip install six numpy scipy auditwheel twine cmake
+pip install six numpy scipy auditwheel twine cmake swig
 python3 setup.py install
 rm -rf dist/*
 python3 setup.py bdist_wheel
@@ -64,6 +65,7 @@ export LD_LIBRARY_PATH=/root/PyMFEM/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
 rm -rf wheelhouse/*
 auditwheel repair dist/mfem-4.2.1.30-cp38-cp38-linux_x86_64.whl
 rm -rf dist/*
+mv wheelhouse/* dist/
 python3 setup.py sdist
 
 
