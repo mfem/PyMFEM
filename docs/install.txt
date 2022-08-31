@@ -15,7 +15,8 @@ In order to see the full list of options, use
 
 $ python setup.py install --help
 
-
+In below, for the brevity, examples are mostly shown using "python setup.py install".
+When using PIP, each option needs to be passed using --install-option. 
 
 ## Specify compilers
 --CC                                 c compiler
@@ -23,8 +24,17 @@ $ python setup.py install --help
 --MPICC                              mpic compiler
 --MPICXX                             mpic++ compiler
 
-$ python setup.py install --parallel --CC=xxx, --CXX=xxx, --MPICC=xxx, --MPICXX=xxx
+$ python setup.py install --with-parallel --CC=xxx, --CXX=xxx, --MPICC=xxx, --MPICXX=xxx
 
+## Suitesparse (This option turns on building metis)
+--with-suitesparse
+--suitesparse-prefix=<location>
+
+
+## Blas and Lapack
+<location> is used for CMAKE call to buid MFEM
+--blas_-libraries=<location>
+--lapack-libraries=<location>
 
 
 

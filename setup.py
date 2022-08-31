@@ -1149,7 +1149,7 @@ def configure_install(self):
         build_mfem = True
         build_mfemp = build_parallel
         build_hypre = build_parallel
-        build_metis = build_parallel
+        build_metis = build_parallel or enable_suitesparse
 
         if ext_prefix == '':
             ext_prefix = external_install_prefix()
