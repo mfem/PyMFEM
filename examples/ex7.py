@@ -145,7 +145,13 @@ if umf_solver is None:
    M = mfem.GSSmoother(AA)
    mfem.PCG(AA, M, B, X, 1, 200, 1e-12, 0.0)
 else:
-   umf_solver.Control[mfem.UMFPACK_ORDERING] = mfem.UMFPACK_ORDERING_METIS
+   obj = umf_solver.Control
+   import ctypes
+
+   mem = (ctypes.c_double * mfem.UMFPACK_CONTROL).from_address(int(obj))
+   pointer = ctypes.pointer(mem)
+   pointer.contents[mfem.UMFPACK_ORDERING] = mfem.UMFPACK_ORDERING_METIS    
+   #umf_solver.Control[mfem.UMFPACK_ORDERING] = mfem.UMFPACK_ORDERING_METIS
    umf_solver.SetOperator(A);
    umf_solver.Mult(B, X);
 #endif
