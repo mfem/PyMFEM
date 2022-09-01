@@ -1261,6 +1261,7 @@ def configure_install(self):
 
     if swig_only:
         build_serial = False
+        clean_swig = False
 
     if ext_only:
         clean_swig = False
