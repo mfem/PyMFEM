@@ -61,7 +61,7 @@ def getInfo(self):
     pointer = ctypes.pointer(mem)
     return pointer.contents
 UMFPackSolver.Info = property(getInfo)
-
+%}
 #endif
 
 %inline %{
