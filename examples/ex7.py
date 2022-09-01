@@ -146,7 +146,7 @@ if umf_solver is None:
    mfem.PCG(AA, M, B, X, 1, 200, 1e-12, 0.0)
 else:
    umf_solver.Control[mfem.UMFPACK_ORDERING] = mfem.UMFPACK_ORDERING_METIS    
-   umf_solver.SetOperator(A);
+   umf_solver.SetOperator(AA);
    umf_solver.Mult(B, X);
 
 # 10. Recover the solution as a finite element grid function.
