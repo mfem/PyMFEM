@@ -941,8 +941,8 @@ def generate_wrapper():
     if enable_suitesparse:
         parflag.append('-I' + os.path.join(suitesparse_prefix, 'include', 'suitesparse'))
 
-
-    for filename in ifiles():    
+    commands = []
+    for filename in ifiles():
         #        pumi.i does not depends on pumi specific header so this should
         #        work
         #        if file == 'pumi.i':# and not enable_pumi:
@@ -952,7 +952,7 @@ def generate_wrapper():
         if not check_new(filename):
             continue
         command = [swig_command] + swigflag + parflag + [filename]
-        commands.append(command)        
+        commands.append(command)
 
     mp_pool = Pool(max((multiprocessing.cpu_count() - 1, 1)))
     with mp_pool:
