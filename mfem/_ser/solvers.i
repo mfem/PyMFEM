@@ -39,7 +39,7 @@ import_array();
 %include <umfpack.h>
 %include <klu.h>
 
-// access to UMFPackSolver.Control
+// access to UMFPackSolver.Control and Info
 %pythoncode %{
 UMFPackSolver._Control = UMFPackSolver.Control
 def getControl(self):
@@ -49,7 +49,6 @@ def getControl(self):
     return pointer.contents
 UMFPackSolver.Control = property(getControl)
 
-// access to UMFPackSolver.Info
 UMFPackSolver._Info = UMFPackSolver.Info
 def getInfo(self):
     import ctypes
