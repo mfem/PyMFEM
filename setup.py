@@ -651,6 +651,7 @@ def cmake_make_mfem(serial=True):
                   'DMFEM_USE_ZLIB': '1',
                   'DCMAKE_CXX_FLAGS': cxx11_flag,
                   'DCMAKE_BUILD_WITH_INSTALL_RPATH': '1'}
+    
 
     if serial:
         cmake_opts['DCMAKE_CXX_COMPILER'] = cxx_command
@@ -658,7 +659,10 @@ def cmake_make_mfem(serial=True):
         cmake_opts['DCMAKE_INSTALL_PREFIX'] = mfems_prefix
 
         add_rpath(os.path.join(mfems_prefix, 'lib'))
-
+        if enable_suitesparse:
+            enable_metis = True
+        else: 
+            enable_metis = False
     else:
         cmake_opts['DCMAKE_CXX_COMPILER'] = mpicxx_command
         cmake_opts['DMFEM_USE_EXCEPTIONS'] = '0'
@@ -688,10 +692,8 @@ def cmake_make_mfem(serial=True):
             libpath = os.path.dirname(
                 find_libpath_from_prefix("pumi", strumpack_prefix))
             add_rpath(libpath)
-
-    if enable_suitesparse:
         enable_metis = True
-        
+
     if enable_metis:
         cmake_opts['DMFEM_USE_METIS_5'] = '1'
         cmake_opts['DMETIS_DIR'] = metis_prefix
