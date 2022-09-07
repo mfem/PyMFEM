@@ -988,8 +988,11 @@ def clean_wrapper():
     chdir(pwd)
 
 
-def clean_so():
-    command = ['python', 'setup.py', 'clean']
+def clean_so(all=None):
+
+    command = ["python", "setup.py", "clean"]
+    if all == 1:
+        command.append("--all")
     
     pwd = chdir(os.path.join(rootdir, 'mfem', '_ser'))
     for f in os.listdir():
@@ -1675,7 +1678,7 @@ class Clean(_clean):
         if self.swig:
             clean_wrapper()
 
-        clean_so()
+        clean_so(all=self.all)
 
         os.chdir(rootdir)
         _clean.run(self)
