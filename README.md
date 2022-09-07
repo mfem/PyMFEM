@@ -36,6 +36,9 @@ $ pip install mfem --install-option="--with-parallel" [--verbose]
 $ pip download mfem --no-binary mfem (expand tar.gz file and move to the downloaded directory)
 $ python setup.py install --with-parallel # it download and build metis/hypre/mfem
 
+### cleaning
+$ python setup.py clean --all # clean external dependencies + wrapper code
+
 ```
 ### Build with MFEM master in Github
 ```

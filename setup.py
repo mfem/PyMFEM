@@ -1670,7 +1670,7 @@ class Clean(_clean):
                 os, chdir(path)
                 command = ['make', 'clean']
                 subprocess.check_call(command)
-        if self.all_exts or self.hypre:
+        if self.all_exts or self.all:
             for xxx in ('metis', 'hypre', 'mfem', 'gslib', 'gklib'):
                 path = os.path.join(extdir, xxx)
                 if os.path.exists(path):
