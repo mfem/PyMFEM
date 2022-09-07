@@ -465,13 +465,14 @@ def cmake_make_hypre():
 
     pwd = chdir(path)
 
-    cmake_opts = {'DCMAKE_VERBOSE_MAKEFILE': '1',
-                  'DBUILD_SHARED_LIBS': '1',
+    cmake_opts = {'DBUILD_SHARED_LIBS': '1',
                   'DHYPRE_INSTALL_PREFIX': hypre_prefix,
                   'DHYPRE_ENABLE_SHARED': '1',
                   'DCMAKE_C_FLAGS': '-fPIC',
                   'DCMAKE_INSTALL_PREFIX': hypre_prefix,
                   'DCMAKE_INSTALL_NAME_DIR': os.path.join(hypre_prefix, 'lib'), }
+    if verbose:
+        cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] ='1'
 
     if enable_cuda and enable_cuda_hypre:
         # in this case, settitng CMAKE_C_COMPILER
@@ -514,9 +515,11 @@ def make_metis(use_int64=False, use_real64=False):
         os.makedirs(path)
     pwd = chdir(path)
     
-    cmake_opts = {'DCMAKE_VERBOSE_MAKEFILE': '1',
-                  'DBUILD_SHARED_LIBS': '1',
+    cmake_opts = {'DBUILD_SHARED_LIBS': '1',
                   'DCMAKE_INSTALL_PREFIX': metis_prefix}
+    if verbose:
+        cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] ='1'
+    
     cmake('..', **cmake_opts)
     make('gklib')
     make_install('gklib')
@@ -551,14 +554,16 @@ def make_metis(use_int64=False, use_real64=False):
     make_call(command)
 
     chdir('build')
-    cmake_opts = {'DCMAKE_VERBOSE_MAKEFILE': '1',
-                  'DGKLIB_PATH': metis_prefix, 
+    cmake_opts = {'DGKLIB_PATH': metis_prefix, 
                   'DSHARED': '1',
                   'DCMAKE_C_COMPILER': cc_command,
                   'DCMAKE_C_STANDARD_LIBRARIES': '-lGKlib',
                   'DCMAKE_INSTALL_RPATH':gklibpath,
                   'DCMAKE_BUILD_WITH_INSTALL_RPATH': '1',
                   'DCMAKE_INSTALL_PREFIX': metis_prefix}
+    if verbose:
+        cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] ='1'
+    
     cmake('..', **cmake_opts)
     chdir(path)
     make('metis')
@@ -643,15 +648,15 @@ def cmake_make_mfem(serial=True):
         if not p in rpaths:
             rpaths.append(p)
 
-    cmake_opts = {'DCMAKE_VERBOSE_MAKEFILE': '1',
-                  'DBUILD_SHARED_LIBS': '1',
+    cmake_opts = {'DBUILD_SHARED_LIBS': '1',
                   'DMFEM_ENABLE_EXAMPLES': '1',
                   'DMFEM_ENABLE_MINIAPPS': '1',
                   'DCMAKE_SHARED_LINKER_FLAGS': ldflags,
                   'DMFEM_USE_ZLIB': '1',
                   'DCMAKE_CXX_FLAGS': cxx11_flag,
                   'DCMAKE_BUILD_WITH_INSTALL_RPATH': '1'}
-    
+    if verbose:
+        cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] ='1'
 
     if serial:
         cmake_opts['DCMAKE_CXX_COMPILER'] = cxx_command
@@ -984,19 +989,24 @@ def clean_wrapper():
 
 
 def clean_so():
+    command = ['python', 'setup.py', 'clean']
+    
     pwd = chdir(os.path.join(rootdir, 'mfem', '_ser'))
     for f in os.listdir():
         if f.endswith('.so'):
             os.remove(f)
         if f.endswith('.dylib'):
             os.remove(f)
-
+    make_call(command)
+    
     chdir(os.path.join(rootdir, 'mfem', '_par'))
     for f in os.listdir():
         if f.endswith('.so'):
             os.remove(f)
         if f.endswith('.dylib'):
             os.remove(f)
+    make_call(command)
+    
     chdir(pwd)
 
 
@@ -1046,6 +1056,8 @@ def print_config():
     print(" mpi-c compiler : " + mpicc_command)
     print(" mpi-c++ compiler : " + mpicxx_command)
 
+    print(" verbose : " + ("Yes" if verbose else "No"))
+
     if blas_libraries != "":
         print(" BLAS libraries : " + blas_libraries)
     if lapack_libraries != "":
@@ -1080,7 +1092,7 @@ def configure_install(self):
     dry_run = bool(self.dry_run) if dry_run == -1 else dry_run
     if dry_run:
         verbose = True
-
+    
     prefix = abspath(self.prefix)
     mfem_source = abspath(self.mfem_source)
 
@@ -1435,6 +1447,7 @@ class Install(_install):
         self.MPICXX = ''
 
     def finalize_options(self):
+
         if (bool(self.ext_only) and bool(self.skip_ext)):
             assert False, "skip-ext and ext-only can not use together"
 
@@ -1473,7 +1486,7 @@ class Install(_install):
 
         self.user = 0
         _install.finalize_options(self)
-
+        
         if verbose:
             print("prefix is :", self.prefix)
 
