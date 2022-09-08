@@ -280,8 +280,12 @@ def find_command(name):
     from shutil import which
     return which(name)
 
+swig_command = (find_command('swig') if os.getenv("SWIG") is None
+                    else os.getenv("SWIG"))
+if swig_command is None:
+    assert False, "SWIG is not installed (hint: pip install swig)"
 
-def make_call(command, target=''):
+def make_call(command, target='', force_verbose=False):
     '''
     call command
     '''
@@ -290,9 +294,12 @@ def make_call(command, target=''):
     if dry_run:
         return
     kwargs = {}
-    #if not verbose:
-    #    kwargs['stdout'] = DEVNULL
-    #    kwargs['stderr'] = DEVNULL
+
+    myverbose = verbose or force_verbose
+    if not verbose:
+        kwargs['stdout'] = DEVNULL
+        kwargs['stderr'] = DEVNULL
+        
     try:
         subprocess.check_call(command, **kwargs)
     except subprocess.CalledProcessError:
@@ -327,7 +334,7 @@ def make(target):
     make : add -j option automatically
     '''
     command = ['make', '-j', str(max((multiprocessing.cpu_count() - 1, 1)))]
-    make_call(command, target=target)
+    make_call(command, target=target, force_verbose=True)
 
 
 def make_install(target, prefix=None):
@@ -901,11 +908,6 @@ def generate_wrapper():
     make_call(command2)
     os.chdir(pwd)
 
-    swig_command = (find_command('swig') if os.getenv("SWIG") is None
-                    else os.getenv("SWIG"))
-    if swig_command is None:
-        assert False, "SWIG is not installed"
-
     swigflag = '-Wall -c++ -python -fastproxy -olddefs -keyword'.split(' ')
 
     pwd = chdir(os.path.join(rootdir, 'mfem', '_ser'))
@@ -1034,7 +1036,7 @@ def make_mfem_wrapper(serial=True):
     python = sys.executable
     command = [python, 'setup.py', 'build_ext', '--inplace', '--parallel',
                str(max((multiprocessing.cpu_count() - 1, 1)))]
-    make_call(command)
+    make_call(command, force_verbose=True)
     os.chdir(pwd)
 
 
@@ -1060,6 +1062,7 @@ def print_config():
     print(" mpi-c++ compiler : " + mpicxx_command)
 
     print(" verbose : " + ("Yes" if verbose else "No"))
+    print(" SWIG : " + swig_command)
 
     if blas_libraries != "":
         print(" BLAS libraries : " + blas_libraries)
@@ -1091,7 +1094,7 @@ def configure_install(self):
     global enable_suitesparse, suitesparse_prefix
     global blas_libraries, lapack_libraries
 
-    verbose = bool(self.verbose) if verbose == -1 else verbose
+    verbose = bool(self.vv) if verbose == -1 else verbose
     dry_run = bool(self.dry_run) if dry_run == -1 else dry_run
     if dry_run:
         verbose = True
@@ -1122,8 +1125,9 @@ def configure_install(self):
     build_parallel = bool(self.with_parallel)     # controlls PyMFEM parallel
     build_serial = not bool(self.no_serial)
 
-    run_swig = swig_only
-
+    clean_swig = True
+    run_swig = True
+    
     if build_serial:
         build_serial = (not swig_only and not ext_only)
 
@@ -1133,8 +1137,6 @@ def configure_install(self):
         except ImportError:
             assert False, "Can not import mpi4py"
 
-    need_run_swig = False  
-    
     if self.mfem_prefix != '':
         mfem_prefix = abspath(self.mfem_prefix)
         mfems_prefix = abspath(self.mfem_prefix)
@@ -1153,13 +1155,6 @@ def configure_install(self):
         hypre_prefix = mfem_prefix
         metis_prefix = mfem_prefix
 
-        if self.mfem_prefix_no_swig != '':
-            clean_swig = False
-            run_swig = False
-        else:
-            if not self.skip_swig:            
-                clean_swig = True
-                run_swig = True
         if swig_only:
             clean_swig = False
 
@@ -1180,9 +1175,6 @@ def configure_install(self):
 
     if self.mfem_branch != '':
         mfem_branch = self.mfem_branch
-        if not self.skip_swig:            
-           clean_swig = True
-           run_swig = True
 
     if self.hypre_prefix != '':
         check = find_libpath_from_prefix('HYPRE', self.hypre_prefix)
@@ -1197,10 +1189,6 @@ def configure_install(self):
         build_metis = False
 
     if enable_libceed or libceed_only:
-        if enable_libceed and not self.skip_swig:
-            clean_swig = True
-            run_swig = True
-            
         if self.libceed_prefix != '':
             libceed_prefix = os.path.expanduser(self.libceed_prefix)
             build_libceed = False
@@ -1209,10 +1197,6 @@ def configure_install(self):
             build_libceed = True
 
     if enable_gslib or gslib_only:
-        if enable_gslib and not self.skip_swig:
-            clean_swig = True
-            run_swig = True
-        
         if self.gslib_prefix != '':
             build_gslib = False
             gslibs_prefix = os.path.expanduser(self.gslib_prefix)
@@ -1223,18 +1207,7 @@ def configure_install(self):
             build_gslib = True
 
     if enable_suitesparse and self.suitesparse_prefix != '':
-        if enable_suitesparse and not self.skip_swig:
-            clean_swig = True
-            run_swig = True
         suitesparse_prefix = self.suitesparse_prefix
-
-    if enable_pumi and not self.skip_swig:
-        clean_swig = True
-        run_swig = True
-
-    if enable_strumpack and not self.skip_swig:
-        clean_swig = True
-        run_swig = True
 
     if self.pumi_prefix != '':
         pumi_prefix = abspath(self.pumi_prefix)
@@ -1247,10 +1220,6 @@ def configure_install(self):
         strumpack_prefix = mfem_prefix
 
     if enable_cuda:
-        if enable_cuda and not self.skip_swig:
-           clean_swig = True
-           run_swig = True
-        
         nvcc = find_command('nvcc')
         cuda_prefix = os.path.dirname(os.path.dirname(nvcc))
 
@@ -1275,6 +1244,10 @@ def configure_install(self):
         build_mfemp = False
         build_libceed = False
         build_gslib = False
+        
+    if self.skip_swig:
+       clean_swig = False
+       run_swig = False
 
     if swig_only:
         build_serial = False
@@ -1349,6 +1322,7 @@ class Install(_install):
     called when pyton setup.py install
     '''
     user_options = _install.user_options + [
+        ('vv', None, 'More verbose output (CMAKE_VERBOSE_MAKEFILE etc)'),
         ('with-parallel', None, 'Installed both serial and parallel version'),
         ('no-serial', None, 'Skip building the serial wrapper'),
         ('mfem-prefix=', None, 'Specify locaiton of mfem' +
@@ -1360,7 +1334,6 @@ class Install(_install):
         ('mfems-prefix=', None, 'Specify locaiton of serial mfem ' +
          'libmfem.so must exits under <mfems-prefix>/lib. ',
          'Need to use it with mfem-prefix'),
-        ('mfem-prefix-no-swig', None, 'skip running swig when mfem-prefix is chosen'),
         ('mfem-branch=', None, 'Specify branch of mfem' +
          'MFEM is cloned and built using the specfied branch '),
         ('mfem-source=', None, 'Specify mfem source location' +
@@ -1415,7 +1388,6 @@ class Install(_install):
         self.mfems_prefix = ''
         self.mfemp_prefix = ''
         self.mfem_source = './external/mfem'
-        self.mfem_prefix_no_swig = ''
         self.mfem_branch = ''
         self.metis_prefix = ''
         self.hypre_prefix = ''
@@ -1448,7 +1420,8 @@ class Install(_install):
         self.CXX = ''
         self.MPICC = ''
         self.MPICXX = ''
-
+        self.vv = False
+        
     def finalize_options(self):
 
         if (bool(self.ext_only) and bool(self.skip_ext)):
@@ -1463,7 +1436,7 @@ class Install(_install):
             prefix = self.prefix
 
         global verbose
-        verbose = bool(self.verbose)
+        verbose = bool(self.vv)
         if given_prefix:
             global ext_prefix
             self.prefix = prefix
@@ -1533,7 +1506,7 @@ class BuildPy(_build_py):
                 make_libceed()
             if build_gslib:
                 download('gslib')
-                make_gslib(serial=True)                  
+                make_gslib(serial=True)
                 if build_hypre:
                     make_gslib()
 

@@ -36,7 +36,10 @@ $ pip install mfem --install-option="--with-parallel" [--verbose]
 $ pip download mfem --no-binary mfem (expand tar.gz file and move to the downloaded directory)
 $ python setup.py install --with-parallel # it download and build metis/hypre/mfem
 
-### cleaning
+### Verbose output
+$ python setup.py install --vv # SWIG output and CMAKE_VERBOSE_MAKEFILE is on
+
+### Cleaning
 $ python setup.py clean --all # clean external dependencies + wrapper code
 
 ```
