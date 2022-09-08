@@ -289,14 +289,14 @@ def make_call(command, target='', force_verbose=False):
     '''
     call command
     '''
-    if dry_run or verbose:
-        print("calling ... " + " ".join(command))
+    print("calling ... " + " ".join(command))
+    
     if dry_run:
         return
     kwargs = {}
 
     myverbose = verbose or force_verbose
-    if not verbose:
+    if not myverbose:
         kwargs['stdout'] = DEVNULL
         kwargs['stderr'] = DEVNULL
         
@@ -976,6 +976,11 @@ def clean_wrapper():
     pwd = chdir(os.path.join(rootdir, 'mfem', '_ser'))
     wfiles = [x for x in os.listdir() if x.endswith('_wrap.cxx')]
     remove_files(wfiles)
+    wfiles = [x for x in os.listdir() if x.endswith('_wrap.h')]    
+    remove_files(wfiles)
+    #wfiles = [x for x in os.listdir() if x.endswith('.py') and not x.startswith('__')]
+    #remove_files(wfiles)    
+    
     ifiles = [x for x in os.listdir() if x.endswith('.i')]    
     for x in ifiles:
         Path(x).touch()
@@ -983,12 +988,15 @@ def clean_wrapper():
     chdir(os.path.join(rootdir, 'mfem', '_par'))
     wfiles = [x for x in os.listdir() if x.endswith('_wrap.cxx')]
     remove_files(wfiles)
+    wfiles = [x for x in os.listdir() if x.endswith('_wrap.h')]
+    remove_files(wfiles)
+    #wfiles = [x for x in os.listdir() if x.endswith('.py') and not x.startswith('__')]
+    #remove_files(wfiles)    
     ifiles = [x for x in os.listdir() if x.endswith('.i')]
     for x in ifiles:
         Path(x).touch()
     
     chdir(pwd)
-
 
 def clean_so(all=None):
 
