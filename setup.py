@@ -280,17 +280,19 @@ def find_command(name):
     from shutil import which
     return which(name)
 
+
 swig_command = (find_command('swig') if os.getenv("SWIG") is None
-                    else os.getenv("SWIG"))
+                else os.getenv("SWIG"))
 if swig_command is None:
     assert False, "SWIG is not installed (hint: pip install swig)"
+
 
 def make_call(command, target='', force_verbose=False):
     '''
     call command
     '''
     print("calling ... " + " ".join(command))
-    
+
     if dry_run:
         return
     kwargs = {}
@@ -299,7 +301,7 @@ def make_call(command, target='', force_verbose=False):
     if not myverbose:
         kwargs['stdout'] = DEVNULL
         kwargs['stderr'] = DEVNULL
-        
+
     try:
         subprocess.check_call(command, **kwargs)
     except subprocess.CalledProcessError:
@@ -384,10 +386,10 @@ def gitclone(xxx, use_sha=False, branch='master'):
             print(repo_xxx + " does not exist. Check if git clone worked")
         os.chdir(repo_xxx)
         if use_sha:
-           sha = repos_sha[xxx]
-           command = ['git', 'checkout',  sha]
+            sha = repos_sha[xxx]
+            command = ['git', 'checkout',  sha]
         else:
-           command = ['git', 'checkout', branch]
+            command = ['git', 'checkout', branch]
         make_call(command)
     os.chdir(cwd)
 
@@ -431,7 +433,7 @@ def find_libpath_from_prefix(lib, prefix0):
 
     soname = 'lib' + lib + dylibext
     aname = 'lib' + lib + '.a'
-          
+
     path = os.path.join(prefix0, 'lib', soname)
     if os.path.exists(path):
         return path
@@ -479,7 +481,7 @@ def cmake_make_hypre():
                   'DCMAKE_INSTALL_PREFIX': hypre_prefix,
                   'DCMAKE_INSTALL_NAME_DIR': os.path.join(hypre_prefix, 'lib'), }
     if verbose:
-        cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] ='1'
+        cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
 
     if enable_cuda and enable_cuda_hypre:
         # in this case, settitng CMAKE_C_COMPILER
@@ -503,7 +505,7 @@ def make_metis(use_int64=False, use_real64=False):
     '''
     build GKlib/metis
     '''
-    
+
     '''
     build/install GKlib
     '''
@@ -514,19 +516,18 @@ def make_metis(use_int64=False, use_real64=False):
     if not dry_run and not os.path.exists(path):
         assert False, "gklib is not downloaded"
 
-
     path = os.path.join(path, 'cmbuild')
     if os.path.exists(path):
         print("working directory already exists!")
     else:
         os.makedirs(path)
     pwd = chdir(path)
-    
+
     cmake_opts = {'DBUILD_SHARED_LIBS': '1',
                   'DCMAKE_INSTALL_PREFIX': metis_prefix}
     if verbose:
-        cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] ='1'
-    
+        cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
+
     cmake('..', **cmake_opts)
     make('gklib')
     make_install('gklib')
@@ -541,12 +542,12 @@ def make_metis(use_int64=False, use_real64=False):
         assert False, "metis is not downloaded"
     elif not os.path.exists(path):
         os.makedirs(path)
-        os.makedirs(os.path.join(path, 'build') )        
-        
+        os.makedirs(os.path.join(path, 'build'))
+
     pwd = chdir(path)
 
-    gklibpath = os.path.dirname( find_libpath_from_prefix(
-                'GKlib', metis_prefix))
+    gklibpath = os.path.dirname(find_libpath_from_prefix(
+        'GKlib', metis_prefix))
 
     options = ['gklib_path='+metis_prefix]
     if use_int64:
@@ -561,16 +562,16 @@ def make_metis(use_int64=False, use_real64=False):
     make_call(command)
 
     chdir('build')
-    cmake_opts = {'DGKLIB_PATH': metis_prefix, 
+    cmake_opts = {'DGKLIB_PATH': metis_prefix,
                   'DSHARED': '1',
                   'DCMAKE_C_COMPILER': cc_command,
                   'DCMAKE_C_STANDARD_LIBRARIES': '-lGKlib',
-                  'DCMAKE_INSTALL_RPATH':gklibpath,
+                  'DCMAKE_INSTALL_RPATH': gklibpath,
                   'DCMAKE_BUILD_WITH_INSTALL_RPATH': '1',
                   'DCMAKE_INSTALL_PREFIX': metis_prefix}
     if verbose:
-        cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] ='1'
-    
+        cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
+
     cmake('..', **cmake_opts)
     chdir(path)
     make('metis')
@@ -663,7 +664,7 @@ def cmake_make_mfem(serial=True):
                   'DCMAKE_CXX_FLAGS': cxx11_flag,
                   'DCMAKE_BUILD_WITH_INSTALL_RPATH': '1'}
     if verbose:
-        cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] ='1'
+        cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
 
     if serial:
         cmake_opts['DCMAKE_CXX_COMPILER'] = cxx_command
@@ -673,7 +674,7 @@ def cmake_make_mfem(serial=True):
         add_rpath(os.path.join(mfems_prefix, 'lib'))
         if enable_suitesparse:
             enable_metis = True
-        else: 
+        else:
             enable_metis = False
     else:
         cmake_opts['DCMAKE_CXX_COMPILER'] = mpicxx_command
@@ -710,15 +711,15 @@ def cmake_make_mfem(serial=True):
         cmake_opts['DMFEM_USE_METIS_5'] = '1'
         cmake_opts['DMETIS_DIR'] = metis_prefix
         metislibpath = os.path.dirname(
-        find_libpath_from_prefix(
-                   'metis', metis_prefix))
-        add_rpath(metislibpath)            
+            find_libpath_from_prefix(
+                'metis', metis_prefix))
+        add_rpath(metislibpath)
         ldflags = "-L" + metislibpath + " -lmetis -lGKlib " + ldflags
 
     if ldflags != '':
-       cmake_opts['DCMAKE_SHARED_LINKER_FLAGS'] = ldflags
-       cmake_opts['DCMAKE_EXE_LINKER_FLAGS'] = ldflags
-        
+        cmake_opts['DCMAKE_SHARED_LINKER_FLAGS'] = ldflags
+        cmake_opts['DCMAKE_EXE_LINKER_FLAGS'] = ldflags
+
     if enable_cuda:
         cmake_opts['DMFEM_USE_CUDA'] = '1'
         if cuda_arch != '':
@@ -748,14 +749,14 @@ def cmake_make_mfem(serial=True):
         cmake_opts['DBLAS_LIBRARIES'] = blas_libraries
     if lapack_libraries != "":
         cmake_opts['DLAPACK_LIBRARIES'] = lapack_libraries
-        
+
     cmake_opts['DCMAKE_INSTALL_RPATH'] = ":".join(rpaths)
 
     pwd = chdir(path)
     cmake('..', **cmake_opts)
 
     txt = 'serial' if serial else 'parallel'
-          
+
     make('mfem_' + txt)
     make_install('mfem_' + txt)
 
@@ -834,15 +835,14 @@ def write_setup_local():
         params['add_' + xxx] = '1'
         if inc_sub is None:
             params[xxx +
-                  'inc'] = os.path.join(globals()[xxx +
-                                               '_prefix'], 'include')
+                   'inc'] = os.path.join(globals()[xxx +
+                                                   '_prefix'], 'include')
         else:
             params[xxx +
-                  'inc'] = os.path.join(globals()[xxx +
-                                                  '_prefix'], 'include', inc_sub)
-            
+                   'inc'] = os.path.join(globals()[xxx +
+                                                   '_prefix'], 'include', inc_sub)
+
         params[xxx + 'lib'] = os.path.join(globals()[xxx + '_prefix'], 'lib')
-        
 
     if enable_pumi:
         add_extra('pumi')
@@ -872,6 +872,7 @@ def write_setup_local():
     fid.close()
 
     os.chdir(pwd)
+
 
 def generate_wrapper():
     '''
@@ -903,10 +904,9 @@ def generate_wrapper():
         make_call(command1)
         make_call(command2)
         os.chdir(pwd)
-    
+
     mfemser = mfems_prefix
     mfempar = mfemp_prefix
-
 
     swigflag = '-Wall -c++ -python -fastproxy -olddefs -keyword'.split(' ')
 
@@ -916,7 +916,8 @@ def generate_wrapper():
                '-I' + os.path.join(mfemser, 'include', 'mfem'),
                '-I' + os.path.abspath(mfem_source)]
     if enable_suitesparse:
-        serflag.append('-I' + os.path.join(suitesparse_prefix, 'include', 'suitesparse'))
+        serflag.append('-I' + os.path.join(suitesparse_prefix,
+                                           'include', 'suitesparse'))
 
     for filename in ['lininteg.i', 'bilininteg.i']:
         command = [swig_command] + swigflag + serflag + [filename]
@@ -929,7 +930,7 @@ def generate_wrapper():
             continue
         command = [swig_command] + swigflag + serflag + [filename]
         commands.append(command)
-        
+
     mp_pool = Pool(max((multiprocessing.cpu_count() - 1, 1)))
     with mp_pool:
         mp_pool.map(make_call, commands)
@@ -953,7 +954,8 @@ def generate_wrapper():
     if enable_strumpack:
         parflag.append('-I' + os.path.join(strumpack_prefix, 'include'))
     if enable_suitesparse:
-        parflag.append('-I' + os.path.join(suitesparse_prefix, 'include', 'suitesparse'))
+        parflag.append('-I' + os.path.join(suitesparse_prefix,
+                                           'include', 'suitesparse'))
 
     commands = []
     for filename in ifiles():
@@ -977,44 +979,45 @@ def generate_wrapper():
 
 def clean_wrapper():
     from pathlib import Path
-    
+
     pwd = chdir(os.path.join(rootdir, 'mfem', '_ser'))
     wfiles = [x for x in os.listdir() if x.endswith('_wrap.cxx')]
     remove_files(wfiles)
-    wfiles = [x for x in os.listdir() if x.endswith('_wrap.h')]    
+    wfiles = [x for x in os.listdir() if x.endswith('_wrap.h')]
     remove_files(wfiles)
     #wfiles = [x for x in os.listdir() if x.endswith('.py')]
-    #wfiles.remove("__init__.py")
-    #wfiles.remove("setup.py")
-    #wfiles.remove("tmop_modules.py")        
-    remove_files(wfiles)    
-    
-    ifiles = [x for x in os.listdir() if x.endswith('.i')]    
+    # wfiles.remove("__init__.py")
+    # wfiles.remove("setup.py")
+    # wfiles.remove("tmop_modules.py")
+    # remove_files(wfiles)
+
+    ifiles = [x for x in os.listdir() if x.endswith('.i')]
     for x in ifiles:
         Path(x).touch()
-        
+
     chdir(os.path.join(rootdir, 'mfem', '_par'))
     wfiles = [x for x in os.listdir() if x.endswith('_wrap.cxx')]
     remove_files(wfiles)
     wfiles = [x for x in os.listdir() if x.endswith('_wrap.h')]
     remove_files(wfiles)
     #wfiles = [x for x in os.listdir() if x.endswith('.py')]
-    #wfiles.remove("__init__.py")
-    #wfiles.remove("setup.py")
-    #wfiles.remove("tmop_modules.py")    
-    #remove_files(wfiles)    
+    # wfiles.remove("__init__.py")
+    # wfiles.remove("setup.py")
+    # wfiles.remove("tmop_modules.py")
+    # remove_files(wfiles)
     ifiles = [x for x in os.listdir() if x.endswith('.i')]
     for x in ifiles:
         Path(x).touch()
-    
+
     chdir(pwd)
+
 
 def clean_so(all=None):
 
     command = ["python", "setup.py", "clean"]
     if all == 1:
         command.append("--all")
-    
+
     pwd = chdir(os.path.join(rootdir, 'mfem', '_ser'))
     for f in os.listdir():
         if f.endswith('.so'):
@@ -1022,7 +1025,7 @@ def clean_so(all=None):
         if f.endswith('.dylib'):
             os.remove(f)
     make_call(command)
-    
+
     chdir(os.path.join(rootdir, 'mfem', '_par'))
     for f in os.listdir():
         if f.endswith('.so'):
@@ -1030,7 +1033,7 @@ def clean_so(all=None):
         if f.endswith('.dylib'):
             os.remove(f)
     make_call(command)
-    
+
     chdir(pwd)
 
 
@@ -1087,7 +1090,7 @@ def print_config():
         print(" BLAS libraries : " + blas_libraries)
     if lapack_libraries != "":
         print(" Lapack libraries : " + lapack_libraries)
-        
+
     print("")
 
 
@@ -1117,14 +1120,14 @@ def configure_install(self):
     dry_run = bool(self.dry_run) if dry_run == -1 else dry_run
     if dry_run:
         verbose = True
-    
+
     prefix = abspath(self.prefix)
     mfem_source = abspath(self.mfem_source)
 
     skip_ext = bool(self.skip_ext)
     skip_install = bool(self.build_only)
-    skip_swig = bool(self.skip_swig)    
-    
+    skip_swig = bool(self.skip_swig)
+
     swig_only = bool(self.swig)
     ext_only = bool(self.ext_only)
 
@@ -1146,7 +1149,7 @@ def configure_install(self):
 
     clean_swig = True
     run_swig = True
-    
+
     if build_serial:
         build_serial = (not swig_only and not ext_only)
 
@@ -1255,7 +1258,7 @@ def configure_install(self):
         blas_libraries = self.blas_libraries
     if self.lapack_libraries != "":
         lapack_libraries = self.lapack_libraries
-        
+
     if skip_ext:
         build_metis = False
         build_hypre = False
@@ -1263,10 +1266,10 @@ def configure_install(self):
         build_mfemp = False
         build_libceed = False
         build_gslib = False
-        
+
     if self.skip_swig:
-       clean_swig = False
-       run_swig = False
+        clean_swig = False
+        run_swig = False
 
     if swig_only:
         build_serial = False
@@ -1362,7 +1365,8 @@ class Install(_install):
         ('metis-prefix=', None, 'Specify locaiton of metis' +
          'libmetis.so must exits under <metis-prefix>/lib'),
         ('swig', None, 'Run Swig and exit'),
-        ('skip-swig', None, 'Skip running swig (used when wrapper is generated for the MFEM C++ library to be used'),        
+        ('skip-swig', None,
+         'Skip running swig (used when wrapper is generated for the MFEM C++ library to be used'),
         ('ext-only', None, 'Build metis, hypre, mfem(C++) only'),
         ('skip-ext', None, 'Skip building metis, hypre, mfem(C++) only'),
         ('build-only', None, 'Skip final install stage to prefix'),
@@ -1390,7 +1394,8 @@ class Install(_install):
         ('with-strumpack', None, 'enable strumpack (parallel only)'),
         ('strumpack-prefix=', None, 'Specify locaiton of strumpack'),
         ('blas-libraries=', None, 'Specify locaiton of Blas library (used to build MFEM)'),
-        ('lapack-libraries=', None, 'Specify locaiton of Lapack library (used to build MFEM)'),
+        ('lapack-libraries=', None,
+         'Specify locaiton of Lapack library (used to build MFEM)'),
     ]
 
     def initialize_options(self):
@@ -1424,8 +1429,8 @@ class Install(_install):
 
         self.with_suitesparse = False
         self.suitesparse_prefix = ''
-        self.blas_libraries=""
-        self.lapack_libraries=""
+        self.blas_libraries = ""
+        self.lapack_libraries = ""
 
         self.with_libceed = False
         self.libceed_prefix = ''
@@ -1440,7 +1445,7 @@ class Install(_install):
         self.MPICC = ''
         self.MPICXX = ''
         self.vv = False
-        
+
     def finalize_options(self):
 
         if (bool(self.ext_only) and bool(self.skip_ext)):
@@ -1481,7 +1486,7 @@ class Install(_install):
 
         self.user = 0
         _install.finalize_options(self)
-        
+
         if verbose:
             print("prefix is :", self.prefix)
 
