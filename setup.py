@@ -1672,14 +1672,14 @@ class Clean(_clean):
                 path = os.path.join(extdir, xxx)
                 if os.path.exists(path):
                     shutil.rmtree(path)
-        if self.swig:
+                    
+        if self.swig or self.all:
             clean_wrapper()
 
         clean_so(all=self.all)
 
         os.chdir(rootdir)
         _clean.run(self)
-
 
 #cdatafiles = [os.path.join('data', f) for f in os.listdir('data')]
 
