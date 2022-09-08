@@ -896,17 +896,17 @@ def generate_wrapper():
             return True
         return os.path.getmtime(ifile) > os.path.getmtime(wfile)
 
-
+    def update_integrator_exts():
+        pwd = chdir(os.path.join(rootdir, 'mfem', 'common'))
+        command1 = [sys.executable, "generate_lininteg_ext.py"]
+        command2 = [sys.executable, "generate_bilininteg_ext.py"]
+        make_call(command1)
+        make_call(command2)
+        os.chdir(pwd)
     
     mfemser = mfems_prefix
     mfempar = mfemp_prefix
 
-    pwd = chdir(os.path.join(rootdir, 'mfem', 'common'))
-    command1 = [sys.executable, "generate_lininteg_ext.py"]
-    command2 = [sys.executable, "generate_bilininteg_ext.py"]
-    make_call(command1)
-    make_call(command2)
-    os.chdir(pwd)
 
     swigflag = '-Wall -c++ -python -fastproxy -olddefs -keyword'.split(' ')
 
@@ -917,6 +917,11 @@ def generate_wrapper():
                '-I' + os.path.abspath(mfem_source)]
     if enable_suitesparse:
         serflag.append('-I' + os.path.join(suitesparse_prefix, 'include', 'suitesparse'))
+
+    for filename in ['lininteg.i', 'bilininteg.i']:
+        command = [swig_command] + swigflag + serflag + [filename]
+        make_call(command)
+    update_integrator_exts()
 
     commands = []
     for filename in ifiles():
@@ -978,8 +983,11 @@ def clean_wrapper():
     remove_files(wfiles)
     wfiles = [x for x in os.listdir() if x.endswith('_wrap.h')]    
     remove_files(wfiles)
-    #wfiles = [x for x in os.listdir() if x.endswith('.py') and not x.startswith('__')]
-    #remove_files(wfiles)    
+    #wfiles = [x for x in os.listdir() if x.endswith('.py')]
+    #wfiles.remove("__init__.py")
+    #wfiles.remove("setup.py")
+    #wfiles.remove("tmop_modules.py")        
+    remove_files(wfiles)    
     
     ifiles = [x for x in os.listdir() if x.endswith('.i')]    
     for x in ifiles:
@@ -990,7 +998,10 @@ def clean_wrapper():
     remove_files(wfiles)
     wfiles = [x for x in os.listdir() if x.endswith('_wrap.h')]
     remove_files(wfiles)
-    #wfiles = [x for x in os.listdir() if x.endswith('.py') and not x.startswith('__')]
+    #wfiles = [x for x in os.listdir() if x.endswith('.py')]
+    #wfiles.remove("__init__.py")
+    #wfiles.remove("setup.py")
+    #wfiles.remove("tmop_modules.py")    
     #remove_files(wfiles)    
     ifiles = [x for x in os.listdir() if x.endswith('.i')]
     for x in ifiles:
