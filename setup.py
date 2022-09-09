@@ -52,7 +52,8 @@ repos = {"mfem": "https://github.com/mfem/mfem.git",
          "libceed": "https://github.com/CEED/libCEED.git",
          "gklib": "https://github.com/KarypisLab/GKlib",
          "metis": "https://github.com/KarypisLab/METIS", }
-repos_sha = {"mfem": "4edfc95acc2a300ff3344b8c947bf451bdf19d5d",
+repos_sha = {#"mfem": "4edfc95acc2a300ff3344b8c947bf451bdf19d5d",
+             "mfem": "a1f6902ed72552f3e680d1489f1aa6ade2e0d3b2",   # version 4.4
              "gklib": "a7f8172703cf6e999dd0710eb279bba513da4fec",
              "metis": "94c03a6e2d1860128c2d0675cbbb86ad4f261256"}
 
@@ -980,31 +981,38 @@ def generate_wrapper():
 def clean_wrapper():
     from pathlib import Path
 
+    # serial
     pwd = chdir(os.path.join(rootdir, 'mfem', '_ser'))
     wfiles = [x for x in os.listdir() if x.endswith('_wrap.cxx')]
     remove_files(wfiles)
+    
     wfiles = [x for x in os.listdir() if x.endswith('_wrap.h')]
     remove_files(wfiles)
-    #wfiles = [x for x in os.listdir() if x.endswith('.py')]
-    # wfiles.remove("__init__.py")
-    # wfiles.remove("setup.py")
-    # wfiles.remove("tmop_modules.py")
-    # remove_files(wfiles)
+    
+    wfiles = [x for x in os.listdir() if x.endswith('.py')]
+    wfiles.remove("__init__.py")
+    wfiles.remove("setup.py")
+    wfiles.remove("tmop_modules.py")
+    remove_files(wfiles)
 
     ifiles = [x for x in os.listdir() if x.endswith('.i')]
     for x in ifiles:
         Path(x).touch()
 
+    # parallel
     chdir(os.path.join(rootdir, 'mfem', '_par'))
     wfiles = [x for x in os.listdir() if x.endswith('_wrap.cxx')]
+    
     remove_files(wfiles)
     wfiles = [x for x in os.listdir() if x.endswith('_wrap.h')]
     remove_files(wfiles)
-    #wfiles = [x for x in os.listdir() if x.endswith('.py')]
-    # wfiles.remove("__init__.py")
-    # wfiles.remove("setup.py")
-    # wfiles.remove("tmop_modules.py")
-    # remove_files(wfiles)
+    
+    wfiles = [x for x in os.listdir() if x.endswith('.py')]
+    wfiles.remove("__init__.py")
+    wfiles.remove("setup.py")
+    wfiles.remove("tmop_modules.py")
+    remove_files(wfiles)
+    
     ifiles = [x for x in os.listdir() if x.endswith('.i')]
     for x in ifiles:
         Path(x).touch()
