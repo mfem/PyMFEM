@@ -42,8 +42,9 @@ except ImportError:
 # constants
 repo_releases = {
     "gklib": "https://github.com/KarypisLab/GKlib/archive/refs/tags/METIS-v5.1.1-DistDGL-0.5.tar.gz",
-    "metis": "https://github.com/KarypisLab/METIS/archive/refs/tags/v5.1.1-DistDGL-v0.5.tar.gz",
-    #    "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
+    # "metis": "https://github.com/KarypisLab/METIS/archive/refs/tags/v5.1.1-DistDGL-v0.5.tar.gz",
+    # "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
+    "metis": "https://github.com/mfem/tpls/raw/gh-pages/metis-5.1.0.tar.gz",
     "hypre": "https://github.com/hypre-space/hypre/archive/v2.24.0.tar.gz",
     "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.10.0.tar.gz",
     "gslib": "https://github.com/Nek5000/gslib/archive/refs/tags/v1.0.7.tar.gz"}
@@ -52,9 +53,9 @@ repos = {"mfem": "https://github.com/mfem/mfem.git",
          "libceed": "https://github.com/CEED/libCEED.git",
          "gklib": "https://github.com/KarypisLab/GKlib",
          "metis": "https://github.com/KarypisLab/METIS", }
-repos_sha = {#"mfem": "4edfc95acc2a300ff3344b8c947bf451bdf19d5d",
-             "mfem": "a1f6902ed72552f3e680d1489f1aa6ade2e0d3b2",   # version 4.4
-             "gklib": "a7f8172703cf6e999dd0710eb279bba513da4fec",
+repos_sha = {  # "mfem": "4edfc95acc2a300ff3344b8c947bf451bdf19d5d",
+    "mfem": "a1f6902ed72552f3e680d1489f1aa6ade2e0d3b2",   # version 4.4
+    "gklib": "a7f8172703cf6e999dd0710eb279bba513da4fec",
              "metis": "94c03a6e2d1860128c2d0675cbbb86ad4f261256"}
 
 rootdir = os.path.abspath(os.path.dirname(__file__))
@@ -71,6 +72,7 @@ elif platform == "win32":
     # Windows...
     assert False, "Windows is not supported yet. Contribution is welcome"
 
+use_metis_gklib = False
 
 ### global variables
 is_configured = False
@@ -502,7 +504,7 @@ def cmake_make_hypre():
     os.chdir(pwd)
 
 
-def make_metis(use_int64=False, use_real64=False):
+def make_metis_gklib(use_int64=False, use_real64=False):
     '''
     build GKlib/metis
     '''
@@ -584,6 +586,58 @@ def make_metis(use_int64=False, use_real64=False):
                    os.path.join(metis_prefix, 'lib', 'libGKlib.dylib'),
                    os.path.join(metis_prefix, 'lib', 'libGKlib.dylib'), ]
         make_call(command)
+        command = ['install_name_tool',
+                   '-id',
+                   os.path.join(metis_prefix, 'lib', 'libmetis.dylib'),
+                   os.path.join(metis_prefix, 'lib', 'libmetis.dylib'), ]
+        make_call(command)
+    os.chdir(pwd)
+
+
+def make_metis(use_int64=False, use_real64=False):
+    '''
+    build metis
+    '''
+    if verbose:
+        print("Building metis")
+
+    path = os.path.join(extdir, 'metis')
+    if not os.path.exists(path):
+        assert False, "metis is not downloaded"
+
+    pwd = chdir(path)
+
+    sed_command = find_command('sed')
+    if sed_command is None:
+        assert False, "sed is not foudn"
+
+    if use_int64:
+        command = [sed_command, '-i',
+                   's/#define IDXTYPEWIDTH 32/#define IDXTYPEWIDTH 64/g',
+                   'include/metis.h']
+    else:
+        command = [sed_command, '-i',
+                   's/#define IDXTYPEWIDTH 64/#define IDXTYPEWIDTH 32/g',
+                   'include/metis.h']
+
+    if use_real64:
+        command = [sed_command, '-i',
+                   's/#define REALTYPEWIDTH 32/#define REALTYPEWIDTH 64/g',
+                   'include/metis.h']
+    else:
+        command = [sed_command, '-i',
+                   's/#define REALTYPEWIDTH 64/#define REALTYPEWIDTH 32/g',
+                   'include/metis.h']
+    make_call(command)
+
+    command = ['make', 'config', 'shared=1',
+               'prefix=' + metis_prefix,
+               'cc=' + cc_command]
+    make_call(command)
+    make('metis')
+    make_install('metis')
+
+    if platform == "darwin":
         command = ['install_name_tool',
                    '-id',
                    os.path.join(metis_prefix, 'lib', 'libmetis.dylib'),
@@ -715,7 +769,11 @@ def cmake_make_mfem(serial=True):
             find_libpath_from_prefix(
                 'metis', metis_prefix))
         add_rpath(metislibpath)
-        ldflags = "-L" + metislibpath + " -lmetis -lGKlib " + ldflags
+
+        if use_metis_gklib:
+            ldflags = "-L" + metislibpath + " -lmetis -lGKlib " + ldflags
+        else:
+            ldflags = "-L" + metislibpath + " -lmetis " + ldflags
 
     if ldflags != '':
         cmake_opts['DCMAKE_SHARED_LINKER_FLAGS'] = ldflags
@@ -985,10 +1043,10 @@ def clean_wrapper():
     pwd = chdir(os.path.join(rootdir, 'mfem', '_ser'))
     wfiles = [x for x in os.listdir() if x.endswith('_wrap.cxx')]
     remove_files(wfiles)
-    
+
     wfiles = [x for x in os.listdir() if x.endswith('_wrap.h')]
     remove_files(wfiles)
-    
+
     wfiles = [x for x in os.listdir() if x.endswith('.py')]
     wfiles.remove("__init__.py")
     wfiles.remove("setup.py")
@@ -1002,17 +1060,17 @@ def clean_wrapper():
     # parallel
     chdir(os.path.join(rootdir, 'mfem', '_par'))
     wfiles = [x for x in os.listdir() if x.endswith('_wrap.cxx')]
-    
+
     remove_files(wfiles)
     wfiles = [x for x in os.listdir() if x.endswith('_wrap.h')]
     remove_files(wfiles)
-    
+
     wfiles = [x for x in os.listdir() if x.endswith('.py')]
     wfiles.remove("__init__.py")
     wfiles.remove("setup.py")
     wfiles.remove("tmop_modules.py")
     remove_files(wfiles)
-    
+
     ifiles = [x for x in os.listdir() if x.endswith('.i')]
     for x in ifiles:
         Path(x).touch()
@@ -1524,11 +1582,14 @@ class BuildPy(_build_py):
     def run(self):
         if not swig_only:
             if build_metis:
-                gitclone('gklib', use_sha=True)
-                gitclone('metis', use_sha=True)
-                # download('metis')
-                # download('gklib')
-                make_metis(use_int64=metis_64)
+                if use_metis_gklib:
+                    gitclone('gklib', use_sha=True)
+                    gitclone('metis', use_sha=True)
+                    make_metis(use_int64=metis_64)
+                else:
+                    download('metis')
+                    make_metis(use_int64=metis_64)
+
             if build_hypre:
                 download('hypre')
                 cmake_make_hypre()
@@ -1676,11 +1737,11 @@ class Clean(_clean):
                 command = ['make', 'clean']
                 subprocess.check_call(command)
         if self.all_exts or self.all:
-            for xxx in ('metis', 'hypre', 'mfem', 'gslib', 'gklib'):
+            for xxx in ('metis', 'hypre', 'mfem', 'gslib', 'gklib', 'libceed'):
                 path = os.path.join(extdir, xxx)
                 if os.path.exists(path):
                     shutil.rmtree(path)
-                    
+
         if self.swig or self.all:
             clean_wrapper()
 
