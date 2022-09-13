@@ -15,6 +15,8 @@ parser.add_argument("--save_figs", default=True, action = 'store_true')
 parser.add_argument('--no_save_figs', dest='savefigs', action='store_false')
 parser.add_argument('--colorbar', default= True, action = 'store_true')
 parser.add_argument('--no_colorbar', dest='colorbar', action='store_false') # label each alpha instead of using colorbar
+parser.add_argument('--parameter_sweep', default = False, action = 'store_true')
+
 
 args = parser.parse_args()
 colorbar = args.colorbar
@@ -32,20 +34,27 @@ try:
 except:
     second_file = False
 
-
+'''
 # check that const_alpha_data.txt is the input file
 assert input_file.find("const_alpha_data") != -1, "Error, no file const_alpha_data"
 if second_file:
     assert input_file2.find("const_alpha_data") != -1, "Error, no second file const_alpha_data"
+'''
+assert input_file.find("const_alpha_data") != -1 or input_file.find("alpha_policy_data") != -1, "Error, no file const_alpha_data or alpha_policy_data"
+if second_file:
+    assert input_file2.find("const_alpha_data") != -1 or input_file.find("alpha_policy_data") != -1, "Error, no second file const_alpha_data or alpha_policy_data"
 
 
 # determine experiment type, if any
 if input_file.find("exp2.") != -1:
     exp_flag = 2
-    label1 = 'no budget'
+    label1 = r'fixed $\alpha$, no budget'
 elif input_file.find("exp4.") != -1:
     exp_flag = 4
-    label1 = 'with budget'
+    label1 = r'fixed $\alpha$, with budget'
+elif input_file.find("exp25.") != -1:
+    exp_flag = 25
+    label1 = r'observed $\alpha \in (0,1)$'
 else:
     exp_flag = 0
     label1 = str(exp_flag)
@@ -61,10 +70,13 @@ if second_file:
 
     if input_file2.find("exp2.") != -1:
         exp_flag2 = 2
-        label2 = 'no budget'
+        label2 = r'fixed $\alpha$, no budget'
     elif input_file2.find("exp4.") != -1:
         exp_flag2 = 4
-        label2 = 'with budget'
+        label2 = r'fixed $\alpha$, with budget'
+    elif input_file2.find("exp25.") != -1:
+        exp_flag2 = 25
+        label2 = r'observed $\alpha \in (0,1)$'
     else:
         exp_flag2 = 0
         label2 = str(exp_flag2)
@@ -110,7 +122,7 @@ alpha = np.zeros(n); cum_dofs = np.zeros(n); error = np.zeros(n);
 for i in range(1, n+1):
     data     = lines[i].split(', ')
 
-    alpha   [i-1] =       data[0]
+    alpha   [i-1] = float(data[0])
     cum_dofs[i-1] = float(data[1])
     error   [i-1] = float(data[2])
     
@@ -118,6 +130,8 @@ for i in range(1, n+1):
     if colorbar == False:
     	plt.loglog(cum_dofs, error, '.k')
     	plt.annotate(r"$\alpha$ = " + alpha[i-1], (cum_dofs[i-1]*x_spacing[i-1], error[i-1]*y_spacing[i-1]))
+if colorbar:
+        plt.scatter(cum_dofs, error, c = alpha, label = label1)
 
 if second_file == True:
     alpha2 = np.zeros(n2); cum_dofs2 = np.zeros(n2); error2 = np.zeros(n2);
@@ -131,17 +145,47 @@ if second_file == True:
 
     plt.scatter(cum_dofs2, error2, c = alpha2, marker = 's', label = label2)
 
+
+# plot results for fixed theta cases for a range of thetas
+if args.parameter_sweep:
+    ps_file_name = 'fixed_theta_1a_AMR_data.txt'
+    #assert ps_file_name.exists() , "The parameter sweep file does not exist."
+
+    # read in data
+    file = open(ps_file_name, "r")
+    lines = file.readlines()
+    theta    = np.zeros(9)
+    cum_dofs = np.zeros(9)
+    error    = np.zeros(9)
+    for i in range(1,10):
+        data = lines[i].split(', ')
+
+        theta   [i-1] = data[1]
+        cum_dofs[i-1] = data[2]
+        error   [i-1] = data[3]
+    plt.scatter(cum_dofs, error, c=theta, marker = '*', label='Fixed-theta results')
+    file.close()
+
 if colorbar == True:
-	plt.scatter(cum_dofs, error, c = alpha, label = label1)
-	plt.colorbar().set_label(label = r'$\alpha$',size=20,weight='bold')
-    
+    if args.parameter_sweep == False:
+        plt.colorbar().set_label(label = r'$\alpha$',size=20,weight='bold')
+    else:
+        plt.colorbar().set_label(label = r'$\alpha$ or $\theta$',size=20,weight='bold')
+
+if second_file or args.parameter_sweep:
+    plt.legend()
+
 plt.xscale('log')
 plt.yscale('log')
 
 # plot title
 plt.title(r'Example 1a with Multi-Objective Cost and Fixed $\alpha$', fontdict = {'fontsize':24})
-if exp_flag == 4:
+if exp_flag == 2:
+    plt.title(r'Example 1a with Multi-Objective Cost and Fixed $\alpha$', fontdict = {'fontsize':24})
+elif exp_flag == 4:
     plt.title(r'Example 1a with MO Cost, Fixed $\alpha$, and Observed Budget', fontdict = {'fontsize':24})
+elif exp_flag == 25:
+    plt.title(r'Example 1a with Multi-Objective Cost', fontdict = {'fontsize':24})
 
 ax5.set_xlabel(r'Cumulative degrees of freedom $(J_k)$', fontsize=22)
 ax5.set_ylabel(r'Global error estimate $(\eta_k)$', fontsize=22)
@@ -151,15 +195,16 @@ ax5.tick_params(axis='y', labelsize=22)
 # ax5.legend(loc='upper right', prop={'size': 14})
 ax5.set_yticks([10**-2, 10**-3])
 
-if second_file == True:
-    plt.legend()
 
 if args.save_figs:
-    name = input_file.split('.')[0]
+    directory = '/'.join(input_file.split('/')[:-1]) + '/'
+    name = input_file.split('/')[-1].split('.')[0]
     if second_file:
         name2 = input_file2.split('.')[0].split('const_alpha_data')[1]
         plot_name = 'plot_' + name + name2 + '.png'  
+    elif args.parameter_sweep: 
+        plot_name = 'plot_' + name + '_ps' + '.png'
     else:
         plot_name = 'plot_' + name + '.png'
     
-    plt.savefig(plot_name, format='png', bbox_inches='tight')
+    plt.savefig(directory + plot_name, format='png', bbox_inches='tight')
