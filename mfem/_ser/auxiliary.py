@@ -118,6 +118,11 @@ class EulerSystem(mfem._ser.operators.TimeDependentOperator):
         r"""__init__(EulerSystem self, FiniteElementSpace vfes_, Operator A_, SparseMatrix Aflux_, double specific_heat_ratio_, int num_equation_) -> EulerSystem"""
         _auxiliary.EulerSystem_swiginit(self, _auxiliary.new_EulerSystem(vfes_, A_, Aflux_, specific_heat_ratio_, num_equation_))
 
+    def GetMaxWavespeed(self, x):
+        r"""GetMaxWavespeed(EulerSystem self, Vector x) -> float"""
+        return _auxiliary.EulerSystem_GetMaxWavespeed(self, x)
+    GetMaxWavespeed = _swig_new_instance_method(_auxiliary.EulerSystem_GetMaxWavespeed)
+
     def Mult(self, x, y):
         r"""Mult(EulerSystem self, Vector x, Vector y)"""
         return _auxiliary.EulerSystem_Mult(self, x, y)
@@ -176,6 +181,31 @@ class FaceIntegrator(mfem._ser.nonlininteg.NonlinearFormIntegrator):
 
 # Register FaceIntegrator in _auxiliary:
 _auxiliary.FaceIntegrator_swigregister(FaceIntegrator)
+
+class NeumannBCFaceIntegrator(mfem._ser.nonlininteg.NonlinearFormIntegrator):
+    r"""Proxy of C++ NeumannBCFaceIntegrator class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    rsolver = property(_auxiliary.NeumannBCFaceIntegrator_rsolver_get, _auxiliary.NeumannBCFaceIntegrator_rsolver_set, doc=r"""rsolver : RiemannSolver""")
+    num_equation = property(_auxiliary.NeumannBCFaceIntegrator_num_equation_get, _auxiliary.NeumannBCFaceIntegrator_num_equation_set, doc=r"""num_equation : int""")
+    shape = property(_auxiliary.NeumannBCFaceIntegrator_shape_get, _auxiliary.NeumannBCFaceIntegrator_shape_set, doc=r"""shape : mfem::Vector""")
+    funval = property(_auxiliary.NeumannBCFaceIntegrator_funval_get, _auxiliary.NeumannBCFaceIntegrator_funval_set, doc=r"""funval : mfem::Vector""")
+    nor = property(_auxiliary.NeumannBCFaceIntegrator_nor_get, _auxiliary.NeumannBCFaceIntegrator_nor_set, doc=r"""nor : mfem::Vector""")
+    fluxN = property(_auxiliary.NeumannBCFaceIntegrator_fluxN_get, _auxiliary.NeumannBCFaceIntegrator_fluxN_set, doc=r"""fluxN : mfem::Vector""")
+
+    def __init__(self, rsolver_, dim, num_equation_):
+        r"""__init__(NeumannBCFaceIntegrator self, RiemannSolver rsolver_, int const dim, double num_equation_) -> NeumannBCFaceIntegrator"""
+        _auxiliary.NeumannBCFaceIntegrator_swiginit(self, _auxiliary.new_NeumannBCFaceIntegrator(rsolver_, dim, num_equation_))
+
+    def AssembleFaceVector(self, el1, el2, Tr, elfun, elvect):
+        r"""AssembleFaceVector(NeumannBCFaceIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elfun, Vector elvect)"""
+        return _auxiliary.NeumannBCFaceIntegrator_AssembleFaceVector(self, el1, el2, Tr, elfun, elvect)
+    AssembleFaceVector = _swig_new_instance_method(_auxiliary.NeumannBCFaceIntegrator_AssembleFaceVector)
+    __swig_destroy__ = _auxiliary.delete_NeumannBCFaceIntegrator
+
+# Register NeumannBCFaceIntegrator in _auxiliary:
+_auxiliary.NeumannBCFaceIntegrator_swigregister(NeumannBCFaceIntegrator)
 
 
 def StateIsPhysical(state, dim):
