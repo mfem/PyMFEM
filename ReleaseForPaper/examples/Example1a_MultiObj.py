@@ -11,6 +11,7 @@ import ray
 import ray.rllib.agents.ppo as ppo
 from ray.tune.registry import register_env
 from prob_envs.MultiObjectivePoisson import MultiObjPoisson
+from prob_envs.MultiObjectivePoisson import ADF_MultiObjPoisson
 from MO_eval import *
 import numpy as np
 import time
@@ -132,13 +133,27 @@ prob_config = {
     'num_unif_ref'      : 1,
     'order'             : 2,
     'optimization_type' : 'multi_objective', 
+    'cost_function'     : 'ADF', # ADF for annealing desirability function, alpha for linear combination of costs
     'dof_threshold'     : 1e5,
     'alpha'             : args.alpha,
     'observe_alpha'     : args.observe_alpha,
     'observe_budget'    : args.observe_budget,
     'num_iterations'    : 10,
-    'num_batches'       : nbatches
+    'num_batches'       : nbatches,
+    'tau_min'           : np.log2(10**-4),
+    'M_warm'            : 50, # number of batches in warming phase
+    'M_anneal'          : 30, # number of batches per tau in annealing phase
+    'N_anneal'          : 20  # number of target errors (tau) to train on
 }
+
+# if using ADF algorithm, the number of batches is defined by the values
+# of M_warm, M_anneal, and N_anneal
+if prob_config['cost_function'] == 'ADF':
+    M_warm   = prob_config['M_warm']; 
+    M_anneal = prob_config['M_anneal']; 
+    N_anneal = prob_config['N_anneal'];
+    nbatches = M_warm + M_anneal * N_anneal
+    prob_config['num_batches'] = nbatches
 
 ## Change to minimum error or minimum dof problem
 if prob_config['optimization_type'] == 'error_threshold': # minimum dof
@@ -216,10 +231,19 @@ else:
 ## Train policy
 ray.shutdown()
 ray.init(ignore_reinit_error=True)
-register_env("my_env", lambda config : MultiObjPoisson(**prob_config))
-trainer = ppo.PPOTrainer(env="my_env", config=config, 
-                       logger_creator=custom_log_creator(checkpoint_dir))
-env = MultiObjPoisson(**prob_config)
+if prob_config['cost_function'] == 'alpha':
+    register_env("my_env", lambda config : MultiObjPoisson(**prob_config))
+    trainer = ppo.PPOTrainer(env="my_env", config=config, 
+                           logger_creator=custom_log_creator(checkpoint_dir))
+    env = MultiObjPoisson(**prob_config)
+
+elif prob_config['cost_function'] == 'ADF':
+    register_env("my_env", lambda config : ADF_MultiObjPoisson(**prob_config))
+    trainer = ppo.PPOTrainer(env="my_env", config=config, 
+                           logger_creator=custom_log_creator(checkpoint_dir))
+    env = ADF_MultiObjPoisson(**prob_config)
+else:
+    print("Error: invalid choice of cost function")
 
 if (restore_policy):
     trainer.restore(chkpt_file)
@@ -227,21 +251,29 @@ if (restore_policy):
 if train:
     env.trainingmode = True
     MO_eval_loss = []
+    counter = 1;
     for n in range(nbatches):
-        print("training batch %d of %d batches" % (n+1,nbatches))
+        if prob_config['cost_function'] == 'ADF':
+            # change delta to delta_anneal once the warming phase is complete
+            if (n+1) == prob_config['M_warm']:
+                env.delta = env.delta_anneal
+
+
+            # reset tau every M_anneal batch if we are in the annealing phase
+            if n >= prob_config['M_warm']:
+                if counter == M_anneal + 1:
+                    env.reset(new_tau = True)
+                    counter = 1;
+
+        print("training batch %d of %d batches" % (n+1, nbatches))
         result = trainer.train()
         episode_score = -result["episode_reward_mean"]
         episode_length = result["episode_len_mean"]
         print ("Mean episode cost:   %.3f" % episode_score)
-        #print ("Mean episode length: %.3f" % episode_length)
-
-        # do MO-eval every 20 batches
-        if n % 20 == 0:
-            MO_eval_loss.append(MO_eval(env, trainer))
-            print("Multi-objective eval loss: %.3f" % MO_eval_loss[-1])
 
         checkpoint_path = trainer.save(checkpoint_dir)
         print(checkpoint_path)
+        counter = counter + 1;
 
 if eval and not train:
     if prob_config['optimization_type'] == 'multi_objective':

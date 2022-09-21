@@ -94,7 +94,119 @@ class MultiObjPoisson(Poisson):
         if self.optimization_type == 'multi_objective':
             if self.observe_alpha == True and new_alpha == True: 
                 # set random alpha value
-                self.alpha = np.random.uniform(low = 0.4, high = 0.6)
+                self.alpha = np.random.uniform(low = 0., high = 1.)
+        
+        return super().reset()
+
+class ADF_MultiObjPoisson(Poisson):
+    '''
+    This class inherits from the Poisson class, but allows for cost functions which are given by
+    cost = (cost due to cumulative dofs) * |tau - (cost due to final error)|/delta, 
+    where tau is a target error and delta is a positive parameter that defines a sort of "width".
+    '''
+
+    def __init__(self,**kwargs):
+        super().__init__(**kwargs)
+        self.optimization_type  = kwargs.get('optimization_type','multi_objective')
+        self.observe_budget     = kwargs.get('observe_budget', True)    # observe budget = (current step #)/(total number of steps)
+        self.num_iterations     = kwargs.get('num_iterations', 10)      # decide what a good default number of iterations is
+        self.tau_min            = kwargs.get('tau_min', np.log2(10**-4))         # minimium target error to train for
+        self.N_anneal           = kwargs.get('N_anneal', 50)            # number of target errors between tau_min and tau_max to train for
+
+        # define range of expected values for the observations
+        if self.observe_budget == True:
+            # observation space includes mean, variance, tau, budget
+            self.observation_space = spaces.Box(low = np.array([-np.inf,-np.inf, -np.inf, 0.0]), high= np.array([np.inf, np.inf, np.inf, 1.0]))
+        else: 
+            # observation space includes mean, variance, tau
+            self.observation_space = spaces.Box(low = np.array([-np.inf,-np.inf, -np.inf]), high= np.array([np.inf, np.inf, np.inf]))
+
+        # determine tau_max from initial mesh error
+        #self.AssembleAndSolve()
+        #self.errors = self.GetLocalErrors()
+        #global_error = GlobalError(self.errors)
+        # set Tau to an arbitrary value so that we can call super().reset()
+        self.mesh = mfem.Mesh(self.initial_mesh)
+        self.Setup()
+        self.AssembleAndSolve()
+        self.errors = self.GetLocalErrors()
+        self.global_error = max(GlobalError(self.errors),1e-12)
+        error_init = np.log2(self.global_error)
+    
+        self.tau_max = self.tau_min + self.N_anneal/(self.N_anneal + 1)*(error_init - self.tau_min)
+
+        # define widths, delta_warm and delta_anneal
+        self.delta_warm   = (self.tau_max - self.tau_min)/2
+        self.delta_anneal = (self.tau_max - self.tau_min)/10
+
+        # initialize tau and delta to tau_max and delta_warm, respectively
+        self.tau   = self.tau_max
+        self.delta = self.delta_warm
+
+    def step(self, action):
+        if self.optimization_type == 'multi_objective':
+            self.k += 1 # increment the step index
+            self.UpdateMesh(action)
+
+            # find errors and num dofs
+            self.AssembleAndSolve()
+            self.errors = self.GetLocalErrors()
+            num_dofs = self.fespace.GetTrueVSize()
+            global_error = GlobalError(self.errors)
+
+            # update cost = alpha*(dof cost) + (1-alpha)*(error cost)
+            if self.k == 1:
+                dofs_cost = np.log2(self.sum_of_dofs + num_dofs);
+                error_cost = np.log2(global_error);
+            else: 
+                dofs_cost  = np.log2(1.0 + num_dofs/self.sum_of_dofs)
+                error_cost = np.log2(global_error/self.global_error)
+
+            cost = dofs_cost * np.abs(self.tau - error_cost)/self.delta
+
+            self.sum_of_dofs += num_dofs
+            self.global_error = global_error
+
+            if self.k >= self.num_iterations or self.sum_of_dofs >= self.dof_threshold:
+                done = True
+            else:
+                done = False
+
+            if done == False:
+                obs = self.GetObservation()
+            else:
+                obs = np.zeros_like(self.GetObservation())
+
+            info = {'global_error':self.global_error, 'num_dofs':num_dofs, 'max_local_errors':np.amax(self.errors)}
+            return obs, -cost, done, info
+
+        # if using a single objective, use the parent class
+        else: 
+            return super().step(self, action)
+
+    def GetObservation(self):
+        if self.optimization_type == 'multi_objective':
+            num_dofs = self.fespace.GetTrueVSize()
+            stats = Statistics(self.errors, num_dofs=num_dofs)
+
+            # define observation, which depends on observe_alpha and observe_budget
+            obs = [stats.mean, stats.variance]
+            obs.append(self.tau)
+
+            if self.observe_budget == True:
+                budget = self.k/self.num_iterations
+                obs.append(budget)
+
+            return np.array(obs)
+        else:
+            return super().GetObservation(self)
+
+    def reset(self, new_tau = False):
+        # choose new random alpha if alpha is included as an observation
+        if self.optimization_type == 'multi_objective':
+            if new_tau == True: 
+                # increment tau in annealing phase
+                self.tau = self.tau - (self.tau_max - self.tau_min)/self.N_anneal
         
         return super().reset()
 
@@ -145,6 +257,8 @@ class Angle_MultiObjPoisson(MultiObjPoisson):
             # print("Resetting env angle to ", angle)
             self.set_angle(angle)
         return super().reset(new_alpha = new_alpha)
+
+
 
 
 class hp_Angle_MultiObjPoisson(Angle_MultiObjPoisson):
