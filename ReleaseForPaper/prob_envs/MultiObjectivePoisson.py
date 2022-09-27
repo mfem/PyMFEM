@@ -143,11 +143,12 @@ class ADF_MultiObjPoisson(Poisson):
         self.tau   = self.tau_max
         self.delta = self.delta_warm
 
+
     def step(self, action):
         if self.optimization_type == 'multi_objective':
             self.k += 1 # increment the step index
             self.UpdateMesh(action)
-
+            #print('Theta = {}'.format(action))
             # find errors and num dofs
             self.AssembleAndSolve()
             self.errors = self.GetLocalErrors()
@@ -155,21 +156,24 @@ class ADF_MultiObjPoisson(Poisson):
             global_error = GlobalError(self.errors)
 
             # update cost = alpha*(dof cost) + (1-alpha)*(error cost)
-            if self.k == 1:
+            if True:
                 dofs_cost = np.log2(self.sum_of_dofs + num_dofs);
                 error_cost = np.log2(global_error);
             else: 
                 dofs_cost  = np.log2(1.0 + num_dofs/self.sum_of_dofs)
                 error_cost = np.log2(global_error/self.global_error)
 
-            cost = dofs_cost * np.abs(self.tau - error_cost)/self.delta
+           # cost = dofs_cost * np.abs(self.tau - error_cost)/self.delta
 
             self.sum_of_dofs += num_dofs
             self.global_error = global_error
 
             if self.k >= self.num_iterations or self.sum_of_dofs >= self.dof_threshold:
+                cost = dofs_cost * np.abs(self.tau - error_cost)/self.delta
                 done = True
+                #print("dofs cost = {}, F_2 = {}".format(dofs_cost, np.abs(self.tau - error_cost)/self.delta))
             else:
+                cost = 0
                 done = False
 
             if done == False:
@@ -207,7 +211,7 @@ class ADF_MultiObjPoisson(Poisson):
             if new_tau == True: 
                 # increment tau in annealing phase
                 self.tau = self.tau - (self.tau_max - self.tau_min)/self.N_anneal
-        
+                print("reset tau") 
         return super().reset()
 
 class Angle_MultiObjPoisson(MultiObjPoisson):

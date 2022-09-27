@@ -143,7 +143,7 @@ prob_config = {
     'tau_min'           : np.log2(10**-4),
     'M_warm'            : 50, # number of batches in warming phase
     'M_anneal'          : 30, # number of batches per tau in annealing phase
-    'N_anneal'          : 20  # number of target errors (tau) to train on
+    'N_anneal'          : 2  # number of target errors (tau) to train on
 }
 
 # if using ADF algorithm, the number of batches is defined by the values
@@ -253,6 +253,7 @@ if train:
     MO_eval_loss = []
     counter = 1;
     for n in range(nbatches):
+        print("Tau = {}".format(env.tau))
         if prob_config['cost_function'] == 'ADF':
             # change delta to delta_anneal once the warming phase is complete
             if (n+1) == prob_config['M_warm']:
@@ -261,10 +262,10 @@ if train:
 
             # reset tau every M_anneal batch if we are in the annealing phase
             if n >= prob_config['M_warm']:
-                if counter == M_anneal + 1:
+                if (n - prob_config['M_warm'])%M_anneal == 0:
                     env.reset(new_tau = True)
                     counter = 1;
-
+                counter = counter + 1;
         print("training batch %d of %d batches" % (n+1, nbatches))
         result = trainer.train()
         episode_score = -result["episode_reward_mean"]
@@ -273,7 +274,6 @@ if train:
 
         checkpoint_path = trainer.save(checkpoint_dir)
         print(checkpoint_path)
-        counter = counter + 1;
 
 if eval and not train:
     if prob_config['optimization_type'] == 'multi_objective':
