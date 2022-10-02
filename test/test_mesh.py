@@ -105,10 +105,6 @@ def run_test3(mfem):
     print(np.vstack(m1.GetVertexArray()))
     print(np.vstack(m2.GetVertexArray()))
 
-    ptr = mfem.MeshPtrArray((m1, m2))
-    print(ptr[0])
-    print(ptr.GetData())
-
     print("test if it fails (1)")
     try:
         m3 = mfem.Mesh_MakeMerged("error")
@@ -127,7 +123,8 @@ def run_test3(mfem):
     print("test if this one is ok (3)")        
     m3 = mfem.Mesh_MakeMerged((m1, m2))
     assert m3.GetNV() == m1.GetNV() + m2.GetNV(), "merge did not work"
-    m3.Print('merged_mesh2.mesh')
+    print("test (3) ok")
+    #m3.Print('merged_mesh2.mesh')
     
 if __name__=='__main__':
     if len(sys.argv) > 1 and sys.argv[1] == '-p':   
