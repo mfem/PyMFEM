@@ -94,8 +94,34 @@ and --mfem-prefix
 --skip-ext : skip building external libraries.
 --ext-only : build exteranl libraries and exit.
 
+During the development, often we update depenencies (such as MFEM) and edit *.i file.
 
-+++ Old guid +++
+First clean everything.
+
+$ python setup.py clean --all
+
+Then, build externals alone
+$ python setup.py install --with-parallel --ext-only --mfem-branch="master"
+
+Then, genrate swig wrappers.
+$ python setup.py install --with-parallel --swig --mfem-branch="master"
+
+If you are not happy with the wrapper (*.cxx and *.py), you edit *.i and redo
+the same. When you are happy, build the wrapper. --swig does not clean the
+existing wrapper. So, it will only update wrapper for updated *.i
+
+When building a wrapper, you can use --skip-ext option. By default, it will re-run
+swig to generate entire wrapper codes.
+$ python setup.py install --with-parallel --skip-ext --mfem-branch="master"
+
+If you are sure, you could use --skip-swig option, so that it compiles the wrapper
+codes without re-generating it.
+$ python setup.py install --with-parallel --skip-ext --skip-swig --mfem-branch="master"
+
+
+
+
++++ Old guide +++
 
 Once the package is expanded, enter the package directory and
 use the setup.py on the top level. For example, --with-parallel option,
