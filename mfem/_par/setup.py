@@ -118,11 +118,7 @@ for x in mfemptpl.split(' '):
         tpl_include.append(x[2:])
 include_dirs.extend(tpl_include)
         
-import six
-if six.PY3:
-    macros = [('TARGET_PY3', '1'), ('NPY_NO_DEPRECATED_API', 'NPY_1_7_API_VERSION')]
-else:
-    macros = []
+macros = [('TARGET_PY3', '1'), ('NPY_NO_DEPRECATED_API', 'NPY_1_7_API_VERSION')]
         
 ext_modules = [Extension(proxy_names[modules[0]],
                         sources=sources[modules[0]],

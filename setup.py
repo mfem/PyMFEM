@@ -838,13 +838,14 @@ def write_setup_local():
 
     hyprelibpath = os.path.dirname(
         find_libpath_from_prefix(
-            'HYPRE', hypre_prefix))
+            'HYPRE', hypre_prefix)) if build_hypre else ''
     metislibpath = os.path.dirname(
         find_libpath_from_prefix(
-            'metis', metis_prefix))
+            'metis', metis_prefix)) if build_metis else ''
 
     mfems_tpl = read_mfem_tplflags(mfems_prefix)
-    mfemp_tpl = read_mfem_tplflags(mfemp_prefix)
+    mfemp_tpl = read_mfem_tplflags(mfemp_prefix) if build_parallel else ''
+
     print(mfems_tpl, mfemp_tpl)
 
     params = {'cxx_ser': cxx_command,
