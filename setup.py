@@ -17,6 +17,11 @@ from subprocess import DEVNULL
 import multiprocessing
 from multiprocessing import Pool
 
+# force fork instead of spawn on MacOS to avoid race condition on mfem/__init__.py
+import platform
+if platform.system() == "Darwin":
+    multiprocessing.set_start_method("fork")
+
 from setuptools import setup, find_packages
 from setuptools.command.build_py import build_py as _build_py
 from setuptools.command.install import install as _install
