@@ -70,8 +70,14 @@ proxy_names = {name: '_'+name for name in modules}
 
 import numpy
 numpyinc = numpy.get_include()
-import mpi4py
-mpi4pyinc = mpi4py.get_include()
+
+try:
+    import mpi4py
+    mpi4pyinc = mpi4py.get_include()
+except ImportError:
+    if 'clean' not in sys.argv:
+        raise
+    mpi4pyinc = ''
 
 libraries    = ['mfem', 'HYPRE', 'metis']
 include_dirs = [mfembuilddir, mfemincdir, mfemsrcdir,
