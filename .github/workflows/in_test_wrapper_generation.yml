@@ -1,4 +1,4 @@
-name: TestWrapperGeneration
+name: Test_with_MFEM_release
 
 on:
   pull_request:
@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    if: contains(github.event.pull_request.labels.*.name, 'in-test-wrapper-generation')
+    if: contains(github.event.pull_request.labels.*.name, 'in-test-with-MFEM-release')
     strategy:
       fail-fast: false
       matrix:
@@ -73,7 +73,6 @@ jobs:
         python -c "import sys;print(sys.path)"
         python -c "import numpy;print(numpy.__file__)"	
 
-
         which swig  # this default is 4.0.1 
         pip install swig --prefix=~/sandbox
         export PATH=/usr/local/cuda-${CUDA}/bin:~/sandbox/bin:$PATH	
@@ -104,16 +103,14 @@ jobs:
         echo $SANDBOX
 
         if [ "${USE_FLAGS}" = "000" ]; then
+           # test workflow to manually run swig
            python setup.py clean --swig
-           python setup.py install --ext-only --with-gslib --mfem-branch='master'
+           python setup.py install --ext-only --with-gslib
            python setup.py install --swig --with-gslib
-           python setup.py install --skip-ext --with-gslib
+           python setup.py install --skip-ext --skip-swig --with-gslib 
         fi
         if [ "${USE_FLAGS}" = "010" ]; then
-           python setup.py clean --swig
-           python setup.py install --ext-only --with-gslib --with-parallel --mfem-branch='master' --prefix=$SANDBOX
-           python setup.py install --swig --with-gslib  --with-parallel --prefix=$SANDBOX
-           python setup.py install --skip-ext --with-parallel --with-gslib --prefix=$SANDBOX
+           python setup.py install --with-gslib --with-parallel --prefix=$SANDBOX
         fi
 
     - name: RUN_EXAMPLES

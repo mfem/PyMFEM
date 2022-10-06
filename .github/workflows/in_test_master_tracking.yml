@@ -1,4 +1,4 @@
-name: TestMasterTracking
+name: Test_with_master
 
 on:
   pull_request:
@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    if: contains(github.event.pull_request.labels.*.name, 'in-test-master-tracking')
+    if: contains(github.event.pull_request.labels.*.name, 'in-test-with-MFEM-master')
     strategy:
       fail-fast: false
       matrix:
@@ -78,6 +78,12 @@ jobs:
         python -c "import sys;print(sys.path)"
         python -c "import numpy;print(numpy.__file__)"	
 
+        which swig  # this default is 4.0.1 
+        pip install swig --prefix=~/sandbox
+        export PATH=/usr/local/cuda-${CUDA}/bin:~/sandbox/bin:$PATH	
+        which swig
+        swig -version
+
         if [ "${USE_FLAGS:0:1}" = "1" ] ; then
             echo $cuda
             source ./ci_scripts/add_cuda_11_5.sh;
@@ -100,14 +106,6 @@ jobs:
         echo $PATH
         echo $PYTHONPATH
         echo $SANDBOX
-
-        #  clone mfem master
-        #mkdir external
-        #cd external
-        #git clone https://github.com/mfem/mfem.git
-        #cd ..
-
-        git status
 
         if [ "${USE_FLAGS}" = "000" ]; then  
            python setup.py install --user --mfem-branch='master'
