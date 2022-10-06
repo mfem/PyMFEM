@@ -150,18 +150,6 @@ def version():
             return mo.group(1)
     raise RuntimeError('Unable to find version string in %s.' % (VERSIONFILE,))
 
-
-def version():
-    VERSIONFILE = os.path.join('mfem', '__init__.py')
-    initfile_lines = open(VERSIONFILE, 'rt').readlines()
-    VSRE = r"^__version__ = ['\"]([^'\"]*)['\"]"
-    for line in initfile_lines:
-        mo = re.search(VSRE, line, re.M)
-        if mo:
-            return mo.group(1)
-    raise RuntimeError('Unable to find version string in %s.' % (VERSIONFILE,))
-
-
 def long_description():
     with open(os.path.join(rootdir, 'README.md'), encoding='utf-8') as f:
         return f.read()
@@ -229,37 +217,6 @@ metadata = {'name': 'mfem',
 
 def abspath(path):
     return os.path.abspath(os.path.expanduser(path))
-
-
-'''
-def install_prefix():
-    """Return the installation directory, or None"""
-    if '--user' in sys.argv:
-        paths = (site.getusersitepackages(),)
-    else:
-        py_version = '%s.%s' % (sys.version_info[0], sys.version_info[1])
-        paths = (s % (py_version) for s in (
-            sys.prefix + '/lib/python%s/dist-packages/',
-            sys.prefix + '/lib/python%s/site-packages/',
-            sys.prefix + '/local/lib/python%s/dist-packages/',
-            sys.prefix + '/local/lib/python%s/site-packages/',
-            '/Library/Python/%s/site-packages/',
-        ))
-
-    for path in paths:
-        #if verbose:
-        #    print("testing installation path", path)
-        if os.path.exists(path):
-            path = os.path.dirname(path)
-            path = os.path.dirname(path)
-            path = os.path.dirname(path)
-            if verbose:
-                print("found this one", path)
-            return path
-    assert False, "no installation path found"
-    return None
-'''
-
 
 def external_install_prefix(verbose=True):
     if '--user' in sys.argv:
@@ -1535,8 +1492,8 @@ class Install(_install):
         verbose = bool(self.vv)
         if given_prefix:
             global ext_prefix
-            self.prefix = prefix
-            ext_prefix = prefix
+            self.prefix = abspath(prefix)
+            ext_prefix = abspath(prefix)
         else:
             if '--user' in sys.argv:
                 path = site.getusersitepackages()

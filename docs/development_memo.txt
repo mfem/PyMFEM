@@ -113,17 +113,14 @@ $ conda install -c conda-forge/label/gcc9 mpi4py
 sudo docker pull python:3.9
 sudo docker run -it python:3.9 bash
 
-(usually we need an editor...)
-apt-get update
-apt-get install emacs
-
-pip install cmake 
-git clone https://github.com/mfem/PyMFEM.git
-python3 -m pip install --upgrade pip setuptools wheel
-
-pip install six numpy scipy
-
-python -m pip install ./ --user
+# git clone https://github.com/mfem/PyMFEM.git
+# cd PyMFEM
+# git checkout next
+# pip install SWIG cmake six
+# pip install numba-scipy (<== install numpy, scipy, numba all together)
+# python3 setup.py install --mfem-branch=master
+# cd test
+# python run_examples.py -serial -verbose
 
 ### test using python:3.10 image
 sudo docker pull python:3.10
