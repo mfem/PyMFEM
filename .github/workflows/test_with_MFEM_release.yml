@@ -52,7 +52,7 @@ jobs:
     - name: RUN_TEST
       if: always()
       run:
-        A=$(python -c "import sys;sys.exit(1)")
+        python -c "import sys;sys.exit(1)"
         touch test/sandbox.tar.gz
         echo $?
         exit $?
