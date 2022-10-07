@@ -53,7 +53,8 @@ jobs:
       if: always()
       continue-on-error: true
       run:
-        exitcode=$(python -c "import sys;print('1')")
+        #exitcode=$(python -c "import sys;print('1')")
+	exitcode='1'
         touch test/sandbox.tar.gz
         echo $exitcode
         exit $exitcode
