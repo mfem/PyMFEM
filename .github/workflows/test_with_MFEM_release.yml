@@ -53,14 +53,14 @@ jobs:
       if: always()
       continue-on-error: true
       run:
-        #python -c "import sys;sys.exit(0)"
+        exitcode=$(python -c "import sys;print('1')")
         touch test/sandbox.tar.gz
-        echo $?
-        exit 1
+        echo $exitcode
+        exit $exitcode
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
-      if: always()
+      if: failure()
       with:
           name: test_results
           path: test/sandbox.tar.gz
