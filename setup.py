@@ -135,7 +135,7 @@ mpicxx_command = 'mpic++' if os.getenv(
 cxx11_flag = '-std=c++11' if os.getenv(
     "CXX11FLAG") is None else os.getenv("CXX11FLAG")
 
-use_unverifed_SLL = False if os.getenv("unverifedSLL") is None else os.getenv("unverifiedSLL")
+use_unverifed_SSL = False if os.getenv("unverifedSSL") is None else os.getenv("unverifiedSSL")
 
 # meta data
 
@@ -320,7 +320,7 @@ def download(xxx):
     url is given by repos above
     '''
     from urllib import request
-    import sll
+    import ssl
     import tarfile
 
     if os.path.exists(os.path.join(extdir, xxx)):
@@ -329,7 +329,7 @@ def download(xxx):
     url = repo_releases[xxx]
     print("Downloading :", url)
 
-    if use_unverifed_SLL:
+    if use_unverifed_SSL:
         ssl._create_default_https_context = ssl._create_unverified_context
 
     ftpstream = request.urlopen(url)
@@ -1407,7 +1407,7 @@ class Install(_install):
         ('CXX=', None, 'c++ compiler'),
         ('MPICC=', None, 'mpic compiler'),
         ('MPICXX=', None, 'mpic++ compiler'),
-        ('unverifiedSLL', None, 'use unverified SSL context for downloading'),
+        ('unverifiedSSL', None, 'use unverified SSL context for downloading'),
         ('with-cuda', None, 'enable cuda'),
         ('with-cuda-hypre', None, 'enable cuda in hypre'),
         ('cuda-arch=', None, 'set cuda compute capability. Ex if A100, set to 80'),
@@ -1479,7 +1479,7 @@ class Install(_install):
         self.MPICXX = ''
         self.vv = False
 
-        self.unverifiedSLL = False
+        self.unverifiedSSL = False
 
     def finalize_options(self):
 
@@ -1522,8 +1522,8 @@ class Install(_install):
         self.user = 0
         _install.finalize_options(self)
 
-        global use_unverifed_SLL
-        use_unverifed_SLL = self.unverifiedSLL
+        global use_unverifed_SSL
+        use_unverifed_SSL = self.unverifiedSSL
 
         if verbose:
             print("prefix is :", self.prefix)
