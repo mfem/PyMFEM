@@ -132,3 +132,12 @@ jobs:
            which mpicc
            python run_examples.py -parallel -verbose -np 2
         fi
+        tar -cvzf sandbox.tar.gz sandbox
+	cd ..
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+          name: test_results
+          path: test/sandbox.tar.gz
+          retention-days: 1
