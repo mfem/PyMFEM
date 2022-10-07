@@ -53,7 +53,7 @@ jobs:
       if: always()
       continue-on-error: true
       run:
-        python -c "import sys;sys.exit(0)"
+        #python -c "import sys;sys.exit(0)"
         touch test/sandbox.tar.gz
         echo $?
         exit 1
