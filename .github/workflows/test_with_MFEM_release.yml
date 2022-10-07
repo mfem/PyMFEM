@@ -133,7 +133,7 @@ jobs:
            python run_examples.py -parallel -verbose -np 2
         fi
         tar -cvzf sandbox.tar.gz sandbox
-	cd ..
+        cd ..
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
