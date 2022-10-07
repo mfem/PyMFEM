@@ -48,15 +48,17 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
 
-
-    - name: RUN_TEST
-      if: always()
-      continue-on-error: true
+    - name: Make Error
       run: |
-        exitcode=$(python -c "import sys;exit(1)")
-        touch test/sandbox.tar.gz
-        echo $exitcode
-        #exit $exitcode
+          cd test
+	  mkdir -p sandbox
+	  touch sandbox/test.txt
+          python -c "import sys;sys.exit(1)"
+    
+    - name: Generate Artifact
+      if: always()
+      run: |
+        tar -cvzf sandbox.tar.gz test/sandbox      
 
     - name: Generate artifact name
       if: always()    
@@ -69,8 +71,8 @@ jobs:
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
-      if: always()
+      if: failure()      
       with:
           name: ${{ steps.generate-name.outputs.artifact }}      
-          path: test/sandbox.tar.gz
-          retention-days: 1
+          path: sandbox.tar.gz
+          retention-days: 1	  
