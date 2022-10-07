@@ -56,7 +56,7 @@ jobs:
         exitcode=$(python -c "import sys;print(1)")
         touch test/sandbox.tar.gz
         echo $A
-        exit $exitcode
+        #exit $exitcode
 
     - name: Generate artifact name
       if: always()    
