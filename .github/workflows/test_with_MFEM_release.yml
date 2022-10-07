@@ -53,17 +53,21 @@ jobs:
       if: always()
       continue-on-error: true
       run: |
-        A=$(python -c "import sys;sys.exit(1)")
-        echo $?		
-        exitcode='1'
+        exitcode=$(python -c "import sys;print(1)")
         touch test/sandbox.tar.gz
         echo $A
         exit $exitcode
+
+    - name: Generate artifact name
+      if: always()    
+      id: generate-name
+      run: |
+          echo "::set-output name=artifact::test_result_${{ github.run_id }}.zip"
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       if: failure()
       with:
-          name: test_results
+          name: ${{ steps.generate-name.outputs.artifact }}      
           path: test/sandbox.tar.gz
           retention-days: 1
