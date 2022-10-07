@@ -1523,7 +1523,7 @@ class Install(_install):
         _install.finalize_options(self)
 
         global use_unverifed_SLL
-        use_unverifed_SLL = self.unverifedSLL
+        use_unverifed_SLL = self.unverifiedSLL
 
         if verbose:
             print("prefix is :", self.prefix)
