@@ -1407,7 +1407,7 @@ class Install(_install):
         ('CXX=', None, 'c++ compiler'),
         ('MPICC=', None, 'mpic compiler'),
         ('MPICXX=', None, 'mpic++ compiler'),
-        ('unverfiedSLL', None, 'use unverified SSL context for downloading'),
+        ('unverifiedSLL', None, 'use unverified SSL context for downloading'),
         ('with-cuda', None, 'enable cuda'),
         ('with-cuda-hypre', None, 'enable cuda in hypre'),
         ('cuda-arch=', None, 'set cuda compute capability. Ex if A100, set to 80'),
@@ -1479,7 +1479,7 @@ class Install(_install):
         self.MPICXX = ''
         self.vv = False
 
-        self.unverfiedSLL = False
+        self.unverifiedSLL = False
 
     def finalize_options(self):
 
