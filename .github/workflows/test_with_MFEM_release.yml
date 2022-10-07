@@ -53,7 +53,8 @@ jobs:
       if: always()
       run:
         A=$(python -c "import sys;sys.exit(1)")
-        touch test/sandbox.tar.gz	
+        touch test/sandbox.tar.gz
+	echo $A
         exit $A
 
     - name: Upload Artifact
