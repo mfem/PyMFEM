@@ -62,7 +62,8 @@ Note: this option builds libceed
 --MPICXX                             mpic++ compiler
 
 (example)
-$ python setup.py install --with-parallel --CC=icc, --CXX=icpp, --MPICC=mpiicc, --MPICXX=mpiicpp
+Using Intel compiler
+$ python setup.py install --with-parallel --CC=icc, --CXX=icpc, --MPICC=mpiicc, --MPICXX=mpiicpc
 
 ## Building MFEM with specific version
 By default, setup.py build MFEM with specific SHA (which is usually the released latest version).
@@ -124,47 +125,4 @@ $ python setup.py install --with-parallel --skip-ext --skip-swig --mfem-branch="
    This addresses error relating SSL certificate. Typical error message is
    "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:xxx)>"
 
-+++ Old guide +++
-
-Once the package is expanded, enter the package directory and
-use the setup.py on the top level. For example, --with-parallel option,
-it build MFEM in both serial and parallel and build wrapper. It also
-download Metis and Hypre for parallel MFEM.
-
-Note: python3 setup.py instal is deprecated. A recommended way is to use
-python -m pip install. Translation is straighforward.
-
-(old) python setup.py install --with-parallel
-(new) python -m pip install ./ --install-option="--with-parallel"
-
-One can also specify the MFEM installed in other location using
---mfem-prefix=<xxxx>. This will regenerate the SWIG wrapper. Or
-you can use --mfem-prefix-no-swig=<xxxx> to reuse the wrapper code
-distributed with this package
-
-setup.py allows various options. Some examples are listed below.
-Use -help to see the full list.
-
-$ python setup.py install --help
-
-
-* building external (metis/hypre/mfem)
-(old) $ python3 setup.py install --prefix=~/sandbox --verbose --ext-only --with-parallel
-
-* building PyMFEM (after --ext-only)
-(old) python3 setup.py install --prefix=~/sandbox --verbose --skip-ext --with-parallel
-(new) python -m pip install ./ --verbose --install-option="--mfem-branch=master" --install-option="--mfem-source=external/mfem" --install-option="--skip-ext" --install-option="--with-parallel"
-
-* run swig
-(old) python3 setup.py install --prefix=~/sandbox --verbose --skip-ext --with-parallel --swig
-(new) python -m pip install ./ --verbose --install-option="--mfem-branch=master" --install-option="--mfem-source=external/mfem" --install-option="--swig" --install-option="--with-parallel"
-
-* clean up all externals
-$ python setup.py clean --all-externals
-
-* choosing compiler
-$ python setup.py install --parallel --CC=xxx, --CXX=xxx, --MPICC=xxx, --MPICXX=xxx
-
-* build with a specific mfem branch
-$ python setup.py install --mfem-branch="mfem-4.3-dev"
 

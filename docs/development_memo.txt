@@ -116,7 +116,7 @@ sudo docker run -it python:3.9 bash
 # git clone https://github.com/mfem/PyMFEM.git
 # cd PyMFEM
 # git checkout next
-# pip install SWIG cmake six
+# pip install SWIG cmake
 # pip install numba-scipy (<== install numpy, scipy, numba all together)
 # python3 setup.py install --mfem-branch=master
 # cd test
