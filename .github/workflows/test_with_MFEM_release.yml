@@ -53,10 +53,11 @@ jobs:
       if: always()
       continue-on-error: true
       run: |
-        #exitcode=$(python -c "import sys;print('1')")
+        A=$(python -c "import sys;sys.exit(1)")
+        echo $?		
         exitcode='1'
         touch test/sandbox.tar.gz
-        echo $exitcode
+        echo $A
         exit $exitcode
 
     - name: Upload Artifact
