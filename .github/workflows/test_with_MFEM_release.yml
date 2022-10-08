@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    if: contains(github.event.pull_request.labels.*.name, 'in-test-wrapper-generation')
+    if: contains(github.event.pull_request.labels.*.name, 'in-test-with-mfem-release')
     strategy:
       fail-fast: false
       matrix:
@@ -132,3 +132,25 @@ jobs:
            which mpicc
            python run_examples.py -parallel -verbose -np 2
         fi
+
+    - name: Generate Artifact
+      if: always()
+      run: |
+        tar -cvzf sandbox.tar.gz test/sandbox      
+
+    - name: Generate artifact name
+      if: always()    
+      id: generate-name
+      run: |
+          txt=$(python -c "import datetime;print(datetime.datetime.now().strftime('%H_%M_%S_%f'))")
+          name="test_result_"${txt}"_"${{ github.run_id }}".tar.gz"
+          echo $name
+          echo "::set-output name=artifact::${name}"
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      if: failure()      
+      with:
+          name: ${{ steps.generate-name.outputs.artifact }}      
+          path: sandbox.tar.gz
+          retention-days: 1 

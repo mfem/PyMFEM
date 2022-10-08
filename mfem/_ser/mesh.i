@@ -360,6 +360,43 @@ namespace mfem{
      }
      return mesh;       
    }
+
+   static PyObject * MakeMerged(PyObject *tuple_or_list){
+     PyObject *input = tuple_or_list;
+     bool is_tuple = false;
+
+     if (PyList_Check(input)) {
+       is_tuple = false;
+     }
+     else if (PyTuple_Check(input)) {
+       is_tuple = true;
+     }
+     else {
+       PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
+       return NULL;
+     }
+
+     int size = (is_tuple) ? PyTuple_Size(input) : PyList_Size(input);
+
+     mfem::Mesh *mesh_array[size];
+     mfem::Mesh *tmp_ptr;
+
+     swig_type_info *ty = $descriptor(const mfem::Mesh *);
+
+     for (int i = 0; i < size; i++) {
+       PyObject *s = is_tuple ? PyTuple_GetItem(input, i) : PyList_GetItem(input,i);
+       if (!SWIG_IsOK(SWIG_ConvertPtr(s, (void **)&tmp_ptr, ty, 0|0))) {
+	 PyErr_SetString(PyExc_ValueError, "List items must be mfem::Mesh *");
+         return NULL;
+       } else {
+	 mesh_array[i] = tmp_ptr;
+       }
+     }
+     mfem::Mesh *mesh = new mfem::Mesh(mesh_array, size);
+     int own = 1;
+     return SWIG_NewPointerObj(SWIG_as_voidptr(mesh), ty, own);
+   }
+
    void PrintToFile(const char *mesh_file, const int precision) const
    {
         std::cerr << "\nWarning Deprecated : Use Print(filename) insteead of SaveToFile \n";     
@@ -417,35 +454,25 @@ namespace mfem{
      int n;
      const double *v = self->GetVertex(i);
      npy_intp dims[] = {L};
-     PyObject *array = PyArray_SimpleNew(1, dims, NPY_DOUBLE);
-     double *x    = (double *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
-     for (n = 0; n < L; n++) {
-        x[n] = v[n];
-     }
-     return array;
+     return  PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (double *)v);
    }
-   
+
    PyObject* GetVertexArray() const
    {
      int L = self->SpaceDimension();
      int NV = self->GetNV();          
-     int n, counter;
+     const double *data;
+     npy_intp dims[] = {L};
 
-     npy_intp dims[] = {NV, L};
-     PyObject *array = PyArray_SimpleNew(2, dims, NPY_DOUBLE);
-     double *x    = (double *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
-     counter = 0;
-
+     PyObject *list = PyTuple_New(NV);
      for (int i = 0; i < NV; i++) {
-          const double *v = self->GetVertex(i);       
-          for (n = 0; n < L; n++) {
-              x[counter] = v[n];
-	      counter++;
-          }
+          data = self->GetVertex(i);
+          PyObject *array = PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (double *)data);
+          PyTuple_SetItem(list, i, array);
      }
-     return array;
+     return list;
    }
-   
+
    PyObject* GetBdrElementFace(int i) const
    {
      int a;

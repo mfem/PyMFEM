@@ -10,36 +10,61 @@ Installer (setup.py) builds both MFEM and binding together.
 By default, "pip install mfem" downloads and builds the serial version of MFEM and PyMFEM.
 Additionally, the installer supports building MFEM with specific options together with other external libraries, including MPI version.
 
+## Requirement
+```
+six, numpy, swig
+mpi4py (for --with-parallel)
+
+```
 ## Install
 ```
-pip install mfem                    # binary install is available only on linux platforms (Py36-39) 
-pip install mfem --no-binary mfem   # install serial MFEM + wrapper
+pip install mfem                    # binary install is available only on linux platforms (Py36-310) 
+pip install mfem --no-binary mfem   # install serial MFEM + wrapper from source
+
 ```
 
 ### Using additional features (MPI, GPU, GPU-Hypre, GSLIB, SuiteSparse)
-The setup script accept various options. TO use it, please download
-the package and run the script manually. For example, this below download
+The setup script accept various options. TO use it, one can either use --install-option flag
+with pip, or download the package manually and run the script. For example, this below download
 and build parallel version of MFEM library (linked with Metis and Hypre)
 and install under <prefix>/mfem. See also, docs/install.txt
 ```
-$ pip3 download mfem
-(expand tar.gz file and move to the downloaded directory)
+### Using pip
+$ pip install mfem --install-option="--with-parallel" [--verbose]
+
+### Runnig setup.py
+$ pip download mfem --no-binary mfem (expand tar.gz file and move to the downloaded directory)
 $ python setup.py install --with-parallel # it download and build metis/hypre/mfem
+
+### Verbose output
+$ python setup.py install --vv # SWIG output and CMAKE_VERBOSE_MAKEFILE is on
+
+### Cleaning
+$ python setup.py clean --all # clean external dependencies + wrapper code
+
 ```
-Choosing compiler
+### Build with MFEM master in Github
+```
+$ pip install mfem --install-option="--with-parallel" --install-option="mfem-branch=master"[--verbose]
+(or)
+$ python setup.py install  --with-parallel --mfem-branch='master'
+
+```
+### Choosing compiler
 ```
 $ python setup.py install --with-parallel --CC=icc --CXX=icpc --MPICC=mpiicc --MPICXX=mpiicpc
+
+### Other options
 ```
 For other configurations, see docs/install.txt or help
 ```
 $ python setup.py install --help
 ```
-## Install from github master
+## Install from github source
 ```
 git clone https://github.com/mfem/PyMFEM.git
 cd PyMFEM
-python setup.py install --mfem-branch=master  # build both MFEM and PyMFEM
-  
+python setup.py install # build both MFEM and PyMFEM
 cd test
 python test_examples.py -serial
 ```  

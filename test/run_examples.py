@@ -164,9 +164,9 @@ def do_compare_outputs(dir1, dir2):
         for ll1, ll2 in zip(l1, l2):
             if ll1 != ll2:
                 try:
-                    # compare 4 digits
-                    d1 = ['%s' % float('%.4g' % float(x)) for x in ll1.split(' ')]
-                    d2 = ['%s' % float('%.4g' % float(x)) for x in ll2.split(' ')]
+                    # compare 3 digits
+                    d1 = ['%s' % float('%.3g' % float(x)) for x in ll1.split(' ')]
+                    d2 = ['%s' % float('%.3g' % float(x)) for x in ll2.split(' ')]
                     if d1 == d2:
                         continue
                     else:
