@@ -113,6 +113,7 @@ $ conda install -c conda-forge/label/gcc9 mpi4py
 sudo docker pull python:3.9
 sudo docker run -it python:3.9 bash
 
+
 # git clone https://github.com/mfem/PyMFEM.git
 # cd PyMFEM
 # git checkout next
@@ -121,6 +122,11 @@ sudo docker run -it python:3.9 bash
 # python3 setup.py install --mfem-branch=master
 # cd test
 # python run_examples.py -serial -verbose
+
+for parallel
+# apt-get install libopenmpi-dev libscalapack-openmpi-dev
+# pip install mpi4py --install-option="CC=mpicc" --install-option="CXX=mpicxx"
+# python3 setup.py install --with-parallel --mfem-branch=master
 
 ### test using python:3.10 image
 sudo docker pull python:3.10
