@@ -1351,6 +1351,7 @@ def configure_bdist(self):
     global prefix, dry_run, verbose, run_swig
     global build_mfem, build_parallel, build_serial
     global mfem_branch, mfem_source
+    global mfems_prefix, mfemp_prefix, hypre_prefix, metis_prefix
 
     global cc_command, cxx_command, mpicc_command, mpicxx_command
     global enable_pumi, pumi_prefix
@@ -1370,7 +1371,13 @@ def configure_bdist(self):
     do_bdist_wheel = True
 
     mfem_source = './external/mfem'
+    ext_prefix = external_install_prefix()
+    hypre_prefix = os.path.join(ext_prefix)
+    metis_prefix = os.path.join(ext_prefix)
 
+    mfem_prefix = ext_prefix
+    mfems_prefix = os.path.join(ext_prefix, 'ser')
+    mfemp_prefix = os.path.join(ext_prefix, 'par')
 
 class Install(_install):
     '''
