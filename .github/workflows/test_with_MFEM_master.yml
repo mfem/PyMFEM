@@ -1,4 +1,4 @@
-name: Test_with_master
+name: Test_with_MFEM_master
 
 on:
   pull_request:

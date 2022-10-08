@@ -16,8 +16,11 @@ import os
 from os.path import expanduser, join
 import numpy as np
 
-import mfem.par as mfem
-
+try:
+    import mpi4py
+    import mfem.par as mfem
+except:
+    import mfem.ser as mfem
 
 def run(order=3,
         meshfile1='',

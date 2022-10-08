@@ -68,6 +68,11 @@ from  mfem._ser.fe_nurbs import *
 from  mfem._ser.doftrans import *
 from  mfem._ser.std_vectors import *
 
+try:
+   from  mfem._ser.gslib import *
+except:
+   pass
+
 import mfem._ser.array as array
 import mfem._ser.blockoperator as blockoperator
 import mfem._ser.coefficient as coefficient
