@@ -51,8 +51,8 @@ jobs:
     - name: Make Error
       run: |
           cd test
-	  mkdir -p sandbox
-	  touch sandbox/test.txt
+          mkdir -p sandbox
+          touch sandbox/test.txt
           python -c "import sys;sys.exit(1)"
     
     - name: Generate Artifact
