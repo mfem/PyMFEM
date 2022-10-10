@@ -17,7 +17,7 @@ from subprocess import DEVNULL
 import multiprocessing
 from multiprocessing import Pool
 # force fork instead of spawn on MacOS to avoid race condition on mfem/__init__.py
-if platform  == "darwin":
+if platform == "darwin":
     multiprocessing.set_start_method("fork")
 
 from setuptools import setup, find_packages
@@ -135,7 +135,8 @@ mpicxx_command = 'mpic++' if os.getenv(
 cxx11_flag = '-std=c++11' if os.getenv(
     "CXX11FLAG") is None else os.getenv("CXX11FLAG")
 
-use_unverifed_SSL = False if os.getenv("unverifedSSL") is None else os.getenv("unverifiedSSL")
+use_unverifed_SSL = False if os.getenv(
+    "unverifedSSL") is None else os.getenv("unverifiedSSL")
 
 # meta data
 
@@ -149,6 +150,7 @@ def version():
         if mo:
             return mo.group(1)
     raise RuntimeError('Unable to find version string in %s.' % (VERSIONFILE,))
+
 
 def long_description():
     with open(os.path.join(rootdir, 'README.md'), encoding='utf-8') as f:
@@ -218,7 +220,10 @@ metadata = {'name': 'mfem',
 def abspath(path):
     return os.path.abspath(os.path.expanduser(path))
 
+
 def external_install_prefix(verbose=True):
+    if verbose:
+        print("running external_install_prefix with this parameters", sys.argv, sys.prefix, site.getusersitepackages())
     if '--user' in sys.argv:
         paths = (site.getusersitepackages(),)
     else:
@@ -931,8 +936,34 @@ def generate_wrapper():
         make_call(command2)
         os.chdir(pwd)
 
+    def update_header_exists(mfem_source):
+        import re
+
+        print("updating the list of existing headers")
+        list_of_headers = []
+        L = len(mfem_source.split(os.sep))
+        for (dirpath, dirnames, filenames) in os.walk(mfem_source):
+            for filename in filenames:
+                if filename.endswith('.hpp'):
+                    dirs = dirpath.split(os.sep)[L:]
+                    dirs.append(filename[:-4])
+                    tmp = '_'.join(dirs)
+                    xx = re.split('_|-', tmp)
+                    new_name = 'FILE_EXISTS_'+'_'.join([x.upper() for x in xx])
+                    if new_name not in list_of_headers:
+                        list_of_headers.append(new_name)
+
+        pwd = chdir(os.path.join(rootdir, 'mfem', 'common'))
+        fid = open('existing_mfem_headers.i', 'w')
+        for x in list_of_headers:
+            fid.write("#define " + x + "\n")
+        fid.close()
+        os.chdir(pwd)
+
     mfemser = mfems_prefix
     mfempar = mfemp_prefix
+
+    update_header_exists(mfem_source)
 
     swigflag = '-Wall -c++ -python -fastproxy -olddefs -keyword'.split(' ')
 
@@ -1378,6 +1409,7 @@ def configure_bdist(self):
     mfem_prefix = ext_prefix
     mfems_prefix = os.path.join(ext_prefix, 'ser')
     mfemp_prefix = os.path.join(ext_prefix, 'par')
+
 
 class Install(_install):
     '''
