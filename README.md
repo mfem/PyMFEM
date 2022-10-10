@@ -12,8 +12,7 @@ Additionally, the installer supports building MFEM with specific options togethe
 
 ## Requirement
 ```
-six, numpy, swig
-mpi4py (for --with-parallel)
+numpy, swig  + mpi4py (for --with-parallel)
 
 ```
 ## Install
@@ -62,9 +61,16 @@ $ python setup.py install --help
 ```
 ## Install from github source
 ```
+# Clone this repo
 git clone https://github.com/mfem/PyMFEM.git
+
+# Build & Install
+pip install ./PyMFEM --verbosel # build both MFEM and PyMFEM
+  *or*
 cd PyMFEM
 python setup.py install # build both MFEM and PyMFEM
+
+# Run test
 cd test
 python test_examples.py -serial
 ```  
