@@ -137,7 +137,7 @@ tpc = ax1.tripcolor(triang, sol, shading='gouraud')
 fig1.colorbar(tpc)
 plt.show()
 ```
-![](https://raw.githubusercontent.com/mfem/PyMFEM/pip_install_dev/docs/example_image.png)
+![](https://raw.githubusercontent.com/mfem/PyMFEM/master/docs/example_image.png)
 
 
 ## License
