@@ -223,7 +223,7 @@ def abspath(path):
 
 def external_install_prefix(verbose=True):
     if verbose:
-        print("running external_install_prefix with this parameters", sys.argv, sys.prefix)
+        print("running external_install_prefix with this parameters", sys.argv, sys.prefix, site.getusersitepackages())
     if '--user' in sys.argv:
         paths = (site.getusersitepackages(),)
     else:
