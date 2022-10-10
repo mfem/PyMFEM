@@ -1,4 +1,4 @@
-%module(package="mfem._ser") qspace
+%module(package="mfem._par") qspace
 %{
 #include "mfem.hpp"
 #include "../common/io_stream.hpp"  
@@ -21,9 +21,14 @@ import_array();
 %include "../common/typemap_macros.i"
 %include "../common/exception.i"
 
+%import "../common/io_stream_typemap.i"
+OSTREAM_TYPEMAP(std::ostream&)
+ISTREAM_TYPEMAP(std::istream&)
+
 %include "fem/qspace.hpp"
 
-#endif
+OSTREAM_ADD_DEFAULT_STDOUT_FILE(QuadratureSpace, Save)
 
+#endif
 
 

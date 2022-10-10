@@ -23,6 +23,9 @@ namespace mfem {
 %pythonappend VectorDomainLFIntegrator::VectorDomainLFIntegrator %{
     self._coeff = QF
 %}
+%pythonappend VectorDomainLFGradIntegrator::VectorDomainLFGradIntegrator %{
+    self._coeff = QF
+%}
 %pythonappend VectorBoundaryLFIntegrator::VectorBoundaryLFIntegrator %{
     self._coeff = QG
 %}
@@ -52,6 +55,9 @@ namespace mfem {
 %}
 %pythonappend DGElasticityDirichletLFIntegrator::DGElasticityDirichletLFIntegrator %{
     self._coeff = uD_
+%}
+%pythonappend WhiteGaussianNoiseDomainLFIntegrator::WhiteGaussianNoiseDomainLFIntegrator %{
+    self._coeff = args
 %}
 %pythonappend VectorQuadratureLFIntegrator::VectorQuadratureLFIntegrator %{
     self._coeff = args
