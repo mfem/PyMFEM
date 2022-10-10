@@ -109,7 +109,7 @@ def get_extensions():
               "hypre", "restriction", "prestriction",
               "fespacehierarchy", "multigrid", "constraints",
               "transfer", "dist_solver", "std_vectors", "auxiliary",
-              "tmop", "tmop_amr", "tmop_tools"]
+              "tmop", "tmop_amr", "tmop_tools", "qspace"]
 
     if add_pumi == '1':
         from setup_local import puminc, pumilib
