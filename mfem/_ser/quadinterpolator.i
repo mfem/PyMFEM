@@ -1,4 +1,4 @@
-%module(package="mfem._ser") qspace
+%module(package="mfem._ser") quadinterpolator
 %{
 #include "mfem.hpp"
 #include "../common/io_stream.hpp"  
@@ -8,7 +8,7 @@
 %}
 
 %include "../common/existing_mfem_headers.i"
-#ifdef FILE_EXISTS_FEM_QSPACE
+#ifdef FILE_EXISTS_FEM_QUADINTERPOLATOR
 
 %init %{
 import_array();
@@ -18,18 +18,12 @@ import_array();
 %import "fe_fixed_order.i"
 %import "element.i"
 %import "mesh.i"
+%import "qspace.i"
 %include "../common/typemap_macros.i"
 %include "../common/exception.i"
 
-%import "../common/io_stream_typemap.i"
-OSTREAM_TYPEMAP(std::ostream&)
-ISTREAM_TYPEMAP(std::istream&)
+%import "../common/numpy_int_typemap.i"
 
-%include "fem/qspace.hpp"
-
-OSTREAM_ADD_DEFAULT_STDOUT_FILE(QuadratureSpace, Save)
+%include "fem/quadinterpolator.hpp"
 
 #endif
-
-
-
