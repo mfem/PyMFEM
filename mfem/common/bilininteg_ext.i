@@ -227,10 +227,6 @@ namespace mfem {
     self._coeff = args
 %}
 
-%pythonappend MixedCurlIntegrator::MixedCurlIntegrator %{
-    self._coeff = args
-%}
-
 %pythonappend VectorFEMassIntegrator::VectorFEMassIntegrator %{
     self._coeff = args
 %}
