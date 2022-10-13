@@ -99,7 +99,8 @@ x.ProjectCoefficient(f_exact)
 %inline %{
 classe FunctionCoefficeintExtra : public mfem::FunctionCoefficient{
 
-
+ private:
+  *dataset = double[];
 
 
  public:
