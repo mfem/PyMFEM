@@ -97,6 +97,36 @@ x.ProjectCoefficient(f_exact)
 %}
 
 %inline %{
+classe FunctionCoefficeintExtra : public mfem::FunctionCoefficient{
+
+
+
+
+ public:
+  void SetParams(mfem::Coefficient *coeff[], int num_coeff,
+		 mfem::VectorCoefficient *vcoeff[], int num_vcoeff)
+		 mfem::MatrixCoefficient *mcoeff[], int num_mcoeff){
+  }
+  double * PrepParams(){
+  }
+  virtual double Eval(ElementTransformation &T,
+		      const IntegrationPoint &ip){
+      double x[3];
+      Vector transip(x, 3);
+
+      T.Transform(ip, transip);
+
+      if (Function)
+      {
+         return Function(transip);
+      }
+      else
+      {
+         return TDFunction(transip, GetTime());
+      }
+  }
+};
+ 
 class NumbaFunctionBase{
  protected:
     void *address_;

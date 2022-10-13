@@ -64,6 +64,9 @@ $ python setup.py install --help
 # Clone this repo
 git clone https://github.com/mfem/PyMFEM.git
 
+# (Optional) Clean dependencies
+cd PyMFEM; python setup.py clean --all;cd ..
+
 # Build & Install
 pip install ./PyMFEM --verbosel # build both MFEM and PyMFEM
   *or*
