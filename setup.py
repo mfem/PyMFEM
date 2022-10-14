@@ -222,10 +222,17 @@ def abspath(path):
 
 
 def external_install_prefix(verbose=True):
+
+    if hasattr(site, "getusersitepackages"):
+        usersite = site.getusersitepackages()
+    else:
+        usersite = site.USER_SITE
+        
     if verbose:
-        print("running external_install_prefix with this parameters", sys.argv, sys.prefix, site.getusersitepackages())
+        print("running external_install_prefix with this parameters", sys.argv, sys.prefix, usersite)
+        
     if '--user' in sys.argv:
-        paths = (site.getusersitepackages(),)
+        paths = (usersite,)
     else:
         py_version = '%s.%s' % (sys.version_info[0], sys.version_info[1])
         paths = (s % (py_version) for s in (
@@ -807,12 +814,8 @@ def write_setup_local():
     mfemser = mfems_prefix
     mfempar = mfemp_prefix
 
-    hyprelibpath = os.path.dirname(
-        find_libpath_from_prefix(
-            'HYPRE', hypre_prefix)) if build_hypre else ''
-    metislibpath = os.path.dirname(
-        find_libpath_from_prefix(
-            'metis', metis_prefix)) if build_metis else ''
+    hyprelibpath = os.path.dirname(find_libpath_from_prefix('HYPRE', hypre_prefix))
+    metislibpath = os.path.dirname(find_libpath_from_prefix('metis', metis_prefix))
 
     mfems_tpl = read_mfem_tplflags(mfems_prefix)
     mfemp_tpl = read_mfem_tplflags(mfemp_prefix) if build_parallel else ''

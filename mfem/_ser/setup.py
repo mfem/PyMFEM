@@ -93,8 +93,9 @@ def get_extensions():
               "nonlininteg", "nonlinearform", "restriction",
               "fespacehierarchy", "multigrid", "constraints",
               "transfer", "std_vectors",
-              "tmop", "tmop_amr", "tmop_tools", "qspace"]
-
+              "tmop", "tmop_amr", "tmop_tools", "qspace", "qfunction",
+              "quadinterpolator", "quadinterpolator_face"]
+    
     if add_cuda == '1':
         from setup_local import cudainc        
         include_dirs.append(cudainc)

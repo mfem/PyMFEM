@@ -101,7 +101,8 @@ classe FunctionCoefficeintExtra : public mfem::FunctionCoefficient{
  private:
   mfem::Array<double> data;
 
-
+ private:
+  *dataset = double[];
 
  public:
   void SetParams(mfem::Coefficient *coeff[], int num_coeff,

@@ -73,6 +73,9 @@ from  mfem._par.multigrid import *
 from  mfem._par.constraints import *
 from  mfem._par.transfer import *
 from  mfem._par.qspace import *
+from  mfem._par.qfunction import *
+from  mfem._par.quadinterpolator import *
+from  mfem._par.quadinterpolator_face import *
 
 from  mfem._par.fe_base import *
 from  mfem._par.fe_h1 import *
