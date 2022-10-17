@@ -136,10 +136,11 @@ class ADF_MultiObjPoisson(Poisson):
         self.tau_max = self.tau_min + self.N_anneal/(self.N_anneal + 1)*(error_init - self.tau_min)
 
         # define widths, delta_warm and delta_anneal
-        self.delta_warm   = (self.tau_max - self.tau_min)/2
-        self.delta_anneal = (self.tau_max - self.tau_min)/10
+        self.delta_warm   = (self.tau_max - self.tau_min)/0.5
+        self.delta_anneal = (self.tau_max - self.tau_min)/2
 
         # initialize tau and delta to tau_max and delta_warm, respectively
+        print("tau set in init")
         self.tau   = self.tau_max
         self.delta = self.delta_warm
 
@@ -170,6 +171,7 @@ class ADF_MultiObjPoisson(Poisson):
 
             if self.k >= self.num_iterations or self.sum_of_dofs >= self.dof_threshold:
                 cost = dofs_cost * np.abs(self.tau - error_cost)/self.delta
+                print("Tau used is {}".format(self.tau))
                 done = True
                 #print("dofs cost = {}, F_2 = {}".format(dofs_cost, np.abs(self.tau - error_cost)/self.delta))
             else:
@@ -212,6 +214,7 @@ class ADF_MultiObjPoisson(Poisson):
                 # increment tau in annealing phase
                 self.tau = self.tau - (self.tau_max - self.tau_min)/self.N_anneal
                 print("reset tau") 
+                print("new tau should be {}".format(self.tau))
         return super().reset()
 
 class Angle_MultiObjPoisson(MultiObjPoisson):

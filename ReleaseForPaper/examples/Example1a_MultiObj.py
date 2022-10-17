@@ -117,14 +117,15 @@ parser.add_argument('--no_observe_budget', dest='observe_budget', action='store_
 
 args = parser.parse_args()
 print("Parsed options = ", args)
-train=args.train
-eval=args.eval
-save_data=args.savedata
-plot_figs=args.plotfigs
-save_figs=args.savefigs
+
+train       = args.train
+eval        = args.eval
+save_data   = args.savedata
+plot_figs   = args.plotfigs
+save_figs   = args.savefigs
 
 restore_policy = False
-nbatches = 1500
+nbatches       = 1500
 
 ## Configuration for multi objective problem
 prob_config = {
@@ -141,9 +142,9 @@ prob_config = {
     'num_iterations'    : 10,
     'num_batches'       : nbatches,
     'tau_min'           : np.log2(10**-4),
-    'M_warm'            : 50, # number of batches in warming phase
-    'M_anneal'          : 30, # number of batches per tau in annealing phase
-    'N_anneal'          : 2  # number of target errors (tau) to train on
+    'M_warm'            : 20, # number of batches in warming phase
+    'M_anneal'          : 20, # number of batches per tau in annealing phase
+    'N_anneal'          : 5  # number of target errors (tau) to train on
 }
 
 # if using ADF algorithm, the number of batches is defined by the values
@@ -154,6 +155,12 @@ if prob_config['cost_function'] == 'ADF':
     N_anneal = prob_config['N_anneal'];
     nbatches = M_warm + M_anneal * N_anneal
     prob_config['num_batches'] = nbatches
+
+    ADF_bool   = True 
+    alpha_bool = False 
+elif prob_config['cost_function'] == 'alpha':
+    ADF_bool   = False 
+    alpha_bool = True
 
 ## Change to minimum error or minimum dof problem
 if prob_config['optimization_type'] == 'error_threshold': # minimum dof
@@ -216,11 +223,15 @@ else:
     timestr = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
 
     if prob_config['optimization_type'] == 'multi_objective':
-        if args.observe_alpha == True:
-            temp_path = 'Example1a_MO_' + timestr
-        else: 
-            alpha_str = str(args.alpha).replace('.','_') 
-            temp_path = 'Example1a_MO_alpha' + alpha_str + '_' + timestr
+        if ADF_bool:
+            temp_path = 'Example1a_ADF_' + timestr
+
+        elif alpha_bool:
+            if args.observe_alpha == True:
+                temp_path = 'Example1a_MO_' + timestr
+            else: 
+                alpha_str = str(args.alpha).replace('.','_') 
+                temp_path = 'Example1a_MO_alpha' + alpha_str + '_' + timestr
         
     else:
         temp_path = 'Example1a_' + timestr
@@ -231,13 +242,13 @@ else:
 ## Train policy
 ray.shutdown()
 ray.init(ignore_reinit_error=True)
-if prob_config['cost_function'] == 'alpha':
+if alpha_bool:
     register_env("my_env", lambda config : MultiObjPoisson(**prob_config))
     trainer = ppo.PPOTrainer(env="my_env", config=config, 
                            logger_creator=custom_log_creator(checkpoint_dir))
     env = MultiObjPoisson(**prob_config)
 
-elif prob_config['cost_function'] == 'ADF':
+elif ADF_bool:
     register_env("my_env", lambda config : ADF_MultiObjPoisson(**prob_config))
     trainer = ppo.PPOTrainer(env="my_env", config=config, 
                            logger_creator=custom_log_creator(checkpoint_dir))
@@ -251,21 +262,21 @@ if (restore_policy):
 if train:
     env.trainingmode = True
     MO_eval_loss = []
-    counter = 1;
+
     for n in range(nbatches):
-        print("Tau = {}".format(env.tau))
-        if prob_config['cost_function'] == 'ADF':
+        if ADF_bool:
+            #print("Tau = {}".format(env.tau))
+
             # change delta to delta_anneal once the warming phase is complete
             if (n+1) == prob_config['M_warm']:
                 env.delta = env.delta_anneal
 
-
-            # reset tau every M_anneal batch if we are in the annealing phase
+            # reset tau every M_anneal batches if we are in the annealing phase
             if n >= prob_config['M_warm']:
                 if (n - prob_config['M_warm'])%M_anneal == 0:
                     env.reset(new_tau = True)
-                    counter = 1;
-                counter = counter + 1;
+                    print("should be reseting tau")
+
         print("training batch %d of %d batches" % (n+1, nbatches))
         result = trainer.train()
         episode_score = -result["episode_reward_mean"]
@@ -309,32 +320,53 @@ if train:
 """
 
 # determine which, if any, alphas to evaluate
-if eval and not args.eval_alphas:
-    alphas_to_eval = [args.alpha]
+if alpha_bool:
+    if eval and not args.eval_alphas:
+        params_to_eval = [args.alpha]
 
-elif eval and args.eval_alphas:
-    alphas_to_eval = 0.1*np.array(range(1, 10, 1))
-else:
-    alphas_to_eval = []
+    elif eval and args.eval_alphas:
+        params_to_eval = 0.1*np.array(range(1, 10, 1))
+    else:
+        params_to_eval = []
+
+# determine which errors/taus to evaluate on (tau is the 2log of the target error)
+elif ADF_bool:
+    if eval:
+        min_error = 2**(env.tau_min)
+        max_error = 2**(env.tau_max)
+        step_size = (max_error - min_error)/10
+        params_to_eval = min_error + step_size*np.array(range(0,11,1))
+    else:
+        params_to_eval = []
 
 # boolean to keep track of saving mesh, so we don't waste time doing this more than once
 saved_initial_mesh = False;  
 
 # open file for saving evaluation results
 mkdir_p(output_dir)
-file_name = "/alpha_policy_data_1a.txt"
+if alpha_bool:
+    file_name = "/alpha_policy_data_1a.txt"
+elif ADF_bool:
+    file_name = "/ADF_policy_data_1a.txt"
 file_location = output_dir + file_name
 file = open(file_location, "a")
 
-for alpha in alphas_to_eval:
-    # set alpha
-    env.alpha = alpha
-    alpha_str = str(alpha).replace('.','_') 
-
+for param in params_to_eval:
     ## Enact trained policy
     trainer.restore(checkpoint_path) 
     rlactions = []
-    obs = env.reset(new_alpha = False)
+
+    if alpha_bool:
+        # set alpha
+        env.alpha = param
+        alpha_str = str(param).replace('.','_') 
+        obs = env.reset(new_alpha = False)
+    elif ADF_bool:
+        # set tau
+        env.tau = np.log2(param)
+        tau_str = str(param).replace('.','_')
+        obs = env.reset(new_tau = False)
+    
 
     done = False
     rlepisode_cost = 0
@@ -367,49 +399,58 @@ for alpha in alphas_to_eval:
     if args.savemesh:
         #gfname = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + "_alpha_" + alpha_str + '.gf'
         env.render()
-        env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + "_alpha_" + alpha_str + '.mesh')
+        if alpha_bool:
+            env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + "_alpha_" + alpha_str + '.mesh')
+        elif ADF_bool:
+            env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + "_tau_" + tau_str + '.mesh')
 
-    # save final errors in file for each alpha
+    # save final errors in file for each alpha/tau
     cum_rldofs = np.cumsum(rldofs)
-    file_string = str(alpha) + ", " + str(cum_rldofs[-1]) + ", " + str(rlerrors[-1]) + "\n"
+    if alpha_bool:
+        file_string = str(env.alpha) + ", " + str(cum_rldofs[-1]) + ", " + str(rlerrors[-1]) + "\n"
+    elif ADF_bool:
+        file_string = str(env.tau) + ", " + str(cum_rldofs[-1]) + ", " + str(rlerrors[-1]) + "\n"
     file.write(file_string)
             
 
-    ## Enact AMR policies
-    costs = []
-    actions = []
-    nth = 100
-    errors = []
-    dofs = []
-    for i in range(1, nth):
-        print(i)
-        action = np.array([i/nth])
-        actions.append(action.item())
-        print("action = ", action.item())
+## Enact AMR policies
+costs = []
+actions = []
+nth = 100
+errors = []
+dofs = []
+for i in range(1, nth):
+    print(i)
+    action = np.array([i/nth])
+    actions.append(action.item())
+    print("action = ", action.item())
+    if alpha_bool:
         env.reset(new_alpha = False)
-        done = False
-        episode_cost_tmp = 0
-        errors_tmp = [env.global_error]
-        dofs_tmp = [env.sum_of_dofs]
-        # max_steps   = prob_config['num_iterations']
-        steps_taken = 0
-        
-        while not done:
-            _, reward, done, info = env.step(action)
-            if prob_config['optimization_type'] == 'dof_threshold' and done:
-                break
-            if steps_taken > prob_config['num_iterations']:
-                print("*** fixed action exceeded max step threshold of ", prob_config['num_iterations'], "steps.")
-                break
-            else:
-                steps_taken += 1
-            episode_cost_tmp -= reward
-            errors_tmp.append(info['global_error'])
-            dofs_tmp.append(info['num_dofs'])
-        costs.append(episode_cost_tmp)
-        errors.append(errors_tmp)
-        dofs.append(dofs_tmp)
-        print('episode cost = ', episode_cost_tmp)
+    elif ADF_bool:
+        env.reset(new_tau = False)
+    done = False
+    episode_cost_tmp = 0
+    errors_tmp = [env.global_error]
+    dofs_tmp = [env.sum_of_dofs]
+    # max_steps   = prob_config['num_iterations']
+    steps_taken = 0
+    
+    while not done:
+        _, reward, done, info = env.step(action)
+        if prob_config['optimization_type'] == 'dof_threshold' and done:
+            break
+        if steps_taken > prob_config['num_iterations']:
+            print("*** fixed action exceeded max step threshold of ", prob_config['num_iterations'], "steps.")
+            break
+        else:
+            steps_taken += 1
+        episode_cost_tmp -= reward
+        errors_tmp.append(info['global_error'])
+        dofs_tmp.append(info['num_dofs'])
+    costs.append(episode_cost_tmp)
+    errors.append(errors_tmp)
+    dofs.append(dofs_tmp)
+    print('episode cost = ', episode_cost_tmp)
 file.close()
 
 """
