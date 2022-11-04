@@ -47,8 +47,6 @@ ISTREAM_TYPEMAP(std::istream&)
 %immutable face_nbr_vertices;
 %immutable gtopo;
 
-%pointer_class(int, intp);
-
 %feature("shadow") mfem::ParMesh::GroupFace %{
 def GroupFace(self, group, i, *args):
     if len(args) == 0:

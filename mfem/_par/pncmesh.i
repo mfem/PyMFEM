@@ -35,8 +35,6 @@ import_array();
 OSTREAM_TYPEMAP(std::ostream&)
 ISTREAM_TYPEMAP(std::istream&)
 
-%pointer_class(int, intp);
-
 %include "mesh/pncmesh.hpp"
 
 /*

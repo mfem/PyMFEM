@@ -15,6 +15,4 @@ import_array();
 %import "bilininteg.i"
 %import "hypre.i"
 
-%pointer_class(int, intp);
-
 %include "fem/hybridization.hpp"

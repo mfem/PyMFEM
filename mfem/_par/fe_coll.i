@@ -29,8 +29,6 @@ import_array();
 %import "eltrans.i"
 %import "lininteg.i"
 
-%pointer_class(int, intp);
-
 %include "fem/fe_coll.hpp"
 %pythoncode %{
   DG_FECollection = L2_FECollection

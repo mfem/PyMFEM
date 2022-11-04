@@ -27,7 +27,6 @@ import_array();
 %import "../common/exception.i"
 
 %newobject mfem::ParBilinearForm::ParallelAssemble;
-%pointer_class(int, intp);
 
 %include "fem/pbilinearform.hpp"
 

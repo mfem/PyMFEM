@@ -25,6 +25,6 @@ import_array();
 %import "../common/exception.i"
 
 %newobject mfem::ParLinearForm::ParallelAssemble;
-%pointer_class(int, intp);
+
 %include "fem/plinearform.hpp"
 
