@@ -56,8 +56,9 @@ repos = {"mfem": "https://github.com/mfem/mfem.git",
          "libceed": "https://github.com/CEED/libCEED.git",
          "gklib": "https://github.com/KarypisLab/GKlib",
          "metis": "https://github.com/KarypisLab/METIS", }
-repos_sha = {  # "mfem": "4edfc95acc2a300ff3344b8c947bf451bdf19d5d",
-    "mfem": "a1f6902ed72552f3e680d1489f1aa6ade2e0d3b2",   # version 4.4
+repos_sha = {
+#    "mfem": "a1f6902ed72552f3e680d1489f1aa6ade2e0d3b2",   # version 4.4
+    "mfem": "b7a4b61b5ce80b326a002aebccf7da7ad2432556",   # version 4.5
     "gklib": "a7f8172703cf6e999dd0710eb279bba513da4fec",
              "metis": "94c03a6e2d1860128c2d0675cbbb86ad4f261256"}
 
