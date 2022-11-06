@@ -227,10 +227,11 @@ def external_install_prefix(verbose=True):
         usersite = site.getusersitepackages()
     else:
         usersite = site.USER_SITE
-        
+
     if verbose:
-        print("running external_install_prefix with this parameters", sys.argv, sys.prefix, usersite)
-        
+        print("running external_install_prefix with this parameters",
+              sys.argv, sys.prefix, usersite)
+
     if '--user' in sys.argv:
         paths = (usersite,)
     else:
@@ -682,6 +683,8 @@ def cmake_make_mfem(serial=True):
         os.makedirs(path)
 
     ldflags = os.getenv('LDFLAGS') if os.getenv('LDFLAGS') is not None else ''
+    metisflags = ''
+    hypreflags = ''
 
     rpaths = []
 
@@ -696,8 +699,8 @@ def cmake_make_mfem(serial=True):
                   'DMFEM_USE_ZLIB': '1',
                   'DCMAKE_CXX_FLAGS': cxx11_flag,
                   'DCMAKE_BUILD_WITH_INSTALL_RPATH': '1'}
-    if verbose:
-        cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
+    #if verbose:
+    cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
 
     if serial:
         cmake_opts['DCMAKE_CXX_COMPILER'] = cxx_command
@@ -715,6 +718,7 @@ def cmake_make_mfem(serial=True):
         cmake_opts['DCMAKE_INSTALL_PREFIX'] = mfemp_prefix
         cmake_opts['DMFEM_USE_MPI'] = '1'
         cmake_opts['DHYPRE_DIR'] = hypre_prefix
+        cmake_opts['DHYPRE_INCLUDE_DIRS'] = os.path.join(hypre_prefix, "include")
 
         add_rpath(os.path.join(mfemp_prefix, 'lib'))
 
@@ -724,7 +728,7 @@ def cmake_make_mfem(serial=True):
 
         add_rpath(hyprelibpath)
 
-        ldflags = "-L" + hyprelibpath + " -lHYPRE " + ldflags
+        hypreflags = "-L" + hyprelibpath + " -lHYPRE "
 
         if enable_strumpack:
             cmake_opts['DMFEM_USE_STRUMPACK'] = '1'
@@ -743,19 +747,25 @@ def cmake_make_mfem(serial=True):
     if enable_metis:
         cmake_opts['DMFEM_USE_METIS_5'] = '1'
         cmake_opts['DMETIS_DIR'] = metis_prefix
+        cmake_opts['DMETIS_INCLUDE_DIRS'] = os.path.join(metis_prefix, "include")
         metislibpath = os.path.dirname(
             find_libpath_from_prefix(
                 'metis', metis_prefix))
         add_rpath(metislibpath)
 
         if use_metis_gklib:
-            ldflags = "-L" + metislibpath + " -lmetis -lGKlib " + ldflags
+            metisflags = "-L" + metislibpath + " -lmetis -lGKlib "
         else:
-            ldflags = "-L" + metislibpath + " -lmetis " + ldflags
+            metisflags = "-L" + metislibpath + " -lmetis "
 
     if ldflags != '':
         cmake_opts['DCMAKE_SHARED_LINKER_FLAGS'] = ldflags
         cmake_opts['DCMAKE_EXE_LINKER_FLAGS'] = ldflags
+
+    if metisflags != '':
+        cmake_opts['DMETIS_LIBRARIES'] = metisflags
+    if hypreflags != '':
+        cmake_opts['DHYPRE_LIBRARIES'] = hypreflags
 
     if enable_cuda:
         cmake_opts['DMFEM_USE_CUDA'] = '1'
@@ -814,8 +824,10 @@ def write_setup_local():
     mfemser = mfems_prefix
     mfempar = mfemp_prefix
 
-    hyprelibpath = os.path.dirname(find_libpath_from_prefix('HYPRE', hypre_prefix))
-    metislibpath = os.path.dirname(find_libpath_from_prefix('metis', metis_prefix))
+    hyprelibpath = os.path.dirname(
+        find_libpath_from_prefix('HYPRE', hypre_prefix))
+    metislibpath = os.path.dirname(
+        find_libpath_from_prefix('metis', metis_prefix))
 
     mfems_tpl = read_mfem_tplflags(mfems_prefix)
     mfemp_tpl = read_mfem_tplflags(mfemp_prefix) if build_parallel else ''
