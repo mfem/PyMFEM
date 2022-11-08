@@ -119,6 +119,9 @@ gslibs_prefix = ''
 gslibp_prefix = ''
 gslib_only = False
 
+enable_petsc = False
+petsc_prefix = ""
+
 enable_suitesparse = False
 suitesparse_prefix = ""
 blas_libraries = ""
@@ -782,6 +785,15 @@ def cmake_make_mfem(serial=True):
         if suitesparse_prefix != '':
             cmake_opts['DSuiteSparse_DIR'] = suitesparse_prefix
 
+    if not serial and enable_petsc:
+        cmake_opts['DMFEM_USE_PETSC'] = '1' 
+        cmake_opts['DPETSC_DIR'] = petsc_prefix
+        petsclibpath = os.path.dirname(
+            find_libpath_from_prefix(
+                'petsc', petsc_prefix))
+        cmake_opts['DPETSC_LIBRARIES'] = "-L" + petsclibpath + " -lpetsc"
+        cmake_opts["DPETSC_EXECUTABLE_RUNS"]="YES"
+
     if blas_libraries != "":
         cmake_opts['DBLAS_LIBRARIES'] = blas_libraries
     if lapack_libraries != "":
@@ -1145,6 +1157,8 @@ def print_config():
 
     print(" hypre prefix", hypre_prefix)
     print(" metis prefix", metis_prefix)
+    if enable_petsc:
+        print(" petsc prefix", petsc_prefix)
     print(" c compiler : " + cc_command)
     print(" c++ compiler : " + cxx_command)
     print(" mpi-c compiler : " + mpicc_command)
@@ -1181,6 +1195,7 @@ def configure_install(self):
     global enable_libceed, libceed_prefix, libceed_only
     global enable_gslib, gslibs_prefix, gslibp_prefix, gslib_only
     global enable_suitesparse, suitesparse_prefix
+    global enable_petsc, petsc_prefix
     global blas_libraries, lapack_libraries
 
     verbose = bool(self.vv) if verbose == -1 else verbose
@@ -1210,6 +1225,7 @@ def configure_install(self):
     enable_gslib = bool(self.with_gslib)
     gslib_only = bool(self.gslib_only)
     enable_suitesparse = bool(self.with_suitesparse)
+    enable_petsc = bool(self.with_petsc)
 
     build_parallel = bool(self.with_parallel)     # controlls PyMFEM parallel
     build_serial = not bool(self.no_serial)
@@ -1307,6 +1323,11 @@ def configure_install(self):
         strumpack_prefix = abspath(self.strumpack_prefix)
     else:
         strumpack_prefix = mfem_prefix
+        
+    if self.petsc_prefix != '':
+        petsc_prefix = abspath(self.petsc_prefix)
+    else:
+        assert not enable_petsc, "Petsc is enabled but prefix is not given"
 
     if enable_cuda:
         nvcc = find_command('nvcc')
@@ -1455,22 +1476,24 @@ class Install(_install):
         ('cuda-arch=', None, 'set cuda compute capability. Ex if A100, set to 80'),
         ('with-metis64', None, 'use 64bit int in metis'),
         ('with-pumi', None, 'enable pumi (parallel only)'),
-        ('pumi-prefix=', None, 'Specify locaiton of pumi'),
+        ('pumi-prefix=', None, 'locaiton of pumi'),
         ('with-suitesparse', None,
          'build MFEM with suitesparse (MFEM_USE_SUITESPARSE=YES) (parallel only)'),
         ('suitesparse-prefix=', None,
          'Specify locaiton of suitesparse (=SuiteSparse_DIR)'),
         ('with-libceed', None, 'enable libceed'),
-        ('libceed-prefix=', None, 'Specify locaiton of libceed'),
+        ('libceed-prefix=', None, 'locaiton of libceed'),
         ('libceed-only', None, 'Build libceed only'),
-        ('gslib-prefix=', None, 'Specify locaiton of gslib'),
+        ('gslib-prefix=', None, 'locaiton of gslib'),
         ('with-gslib', None, 'enable gslib'),
         ('gslib-only', None, 'Build gslib only'),
         ('with-strumpack', None, 'enable strumpack (parallel only)'),
-        ('strumpack-prefix=', None, 'Specify locaiton of strumpack'),
-        ('blas-libraries=', None, 'Specify locaiton of Blas library (used to build MFEM)'),
+        ('strumpack-prefix=', None, 'locaiton of strumpack'),
+        ('blas-libraries=', None, 'locaiton of Blas library (used to build MFEM)'),
         ('lapack-libraries=', None,
-         'Specify locaiton of Lapack library (used to build MFEM)'),
+         'locaiton of Lapack library (used to build MFEM)'),
+        ('with-petsc', None, 'enable petsc (default = on if import petsc works)'),
+        ('petsc-prefilx=', None, 'location of petsc'),
     ]
 
     def initialize_options(self):
@@ -1510,6 +1533,14 @@ class Install(_install):
         self.with_libceed = False
         self.libceed_prefix = ''
         self.libceed_only = False
+
+        try:
+            import petsc
+            self.petsc_prefix = petsc.get_petsc_dir()
+            self.with_petsc = True
+        except ImportError:
+            self.with_petsc = False
+            self.petsc_prefix = ""
 
         self.with_gslib = False
         self.gslib_prefix = ''
