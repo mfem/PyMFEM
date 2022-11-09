@@ -88,6 +88,31 @@ def letterbox_entry(legend):
     legend._set_loc(legend._loc)
     legend.set_title(legend.get_title().get_text())
 
+# define global variables for tau and delta
+@ray.remote
+class ADF_Parameters:
+   #def __init__(self):
+      
+
+    def set_initial_parameters(self, tau_init, tau_inc, delta_warm, delta_anneal):
+        self.tau = tau_init
+        self.tau_inc = tau_inc
+
+        self.delta = delta_warm
+        self.delta_anneal = delta_anneal
+
+    def get_delta(self):
+        return self.delta
+    def update_delta(self):
+      self.delta = self.delta #self.delta_anneal
+
+    def update_tau(self):
+      self.tau -= self.tau_inc
+    def get_tau(self):
+        return self.tau
+    def set_tau(self, new_tau):
+        self.tau = new_tau
+
 """
     STEP 1: Set parameters
 """
@@ -142,9 +167,10 @@ prob_config = {
     'num_iterations'    : 10,
     'num_batches'       : nbatches,
     'tau_min'           : np.log2(10**-4),
-    'M_warm'            : 20, # number of batches in warming phase
+    'M_warm'            : 50, # number of batches in warming phase
     'M_anneal'          : 20, # number of batches per tau in annealing phase
-    'N_anneal'          : 5  # number of target errors (tau) to train on
+    'N_anneal'          : 10,  # number of target errors (tau) to train on
+    'batch_size'        : 100 # number of episodes per batch
 }
 
 # if using ADF algorithm, the number of batches is defined by the values
@@ -178,15 +204,15 @@ model_config = {
 
 ## rllib parameters
 config = ppo.DEFAULT_CONFIG.copy()
-config['batch_mode'] = 'truncate_episodes'
-# config['batch_mode'] = 'complete_episodes'
+# config['batch_mode'] = 'truncate_episodes'
+config['batch_mode'] = 'complete_episodes'
 config['sgd_minibatch_size'] = 100
 config['rollout_fragment_length'] = 50
 config['num_workers'] = 10
 config['train_batch_size'] = config['rollout_fragment_length'] * config['num_workers']
 config['num_gpus'] = 0
 config['gamma'] = 1.0
-config['lr'] = 5e-6
+config['lr'] = 1e-5
 config['seed'] = 4000
 config['model'] = model_config
 
@@ -242,6 +268,7 @@ else:
 ## Train policy
 ray.shutdown()
 ray.init(ignore_reinit_error=True)
+
 if alpha_bool:
     register_env("my_env", lambda config : MultiObjPoisson(**prob_config))
     trainer = ppo.PPOTrainer(env="my_env", config=config, 
@@ -249,6 +276,9 @@ if alpha_bool:
     env = MultiObjPoisson(**prob_config)
 
 elif ADF_bool:
+    # initialize parameter class
+    ADF_params = ADF_Parameters.options(name = "parameters").remote()
+
     register_env("my_env", lambda config : ADF_MultiObjPoisson(**prob_config))
     trainer = ppo.PPOTrainer(env="my_env", config=config, 
                            logger_creator=custom_log_creator(checkpoint_dir))
@@ -257,7 +287,12 @@ else:
     print("Error: invalid choice of cost function")
 
 if (restore_policy):
-    trainer.restore(chkpt_file)
+   trainer.restore(chkpt_file)
+
+# initialize tau and delta in ADF_Parameter class
+if ADF_bool:
+    tau_max, tau_step, delta_warm, delta_anneal = env.FindParameters()
+    ADF_params.set_initial_parameters.remote(tau_max, tau_step, delta_warm, delta_anneal)
 
 if train:
     env.trainingmode = True
@@ -265,17 +300,18 @@ if train:
 
     for n in range(nbatches):
         if ADF_bool:
-            #print("Tau = {}".format(env.tau))
+            if n == M_warm:
+                # we've finished the warming phase; update tau and delta
+                ADF_params.update_tau.remote();
+                ADF_params.update_delta.remote();
 
-            # change delta to delta_anneal once the warming phase is complete
-            if (n+1) == prob_config['M_warm']:
-                env.delta = env.delta_anneal
+                print("Updated delta to {}".format(ray.get(ADF_params.get_delta.remote())))
 
-            # reset tau every M_anneal batches if we are in the annealing phase
-            if n >= prob_config['M_warm']:
-                if (n - prob_config['M_warm'])%M_anneal == 0:
-                    env.reset(new_tau = True)
-                    print("should be reseting tau")
+            elif n> M_warm and (n - M_warm) % M_anneal == 0:
+                ADF_params.update_tau.remote()
+
+                print("Updated tau to {}".format(ray.get(ADF_params.get_tau.remote())))
+
 
         print("training batch %d of %d batches" % (n+1, nbatches))
         result = trainer.train()
@@ -332,8 +368,8 @@ if alpha_bool:
 # determine which errors/taus to evaluate on (tau is the 2log of the target error)
 elif ADF_bool:
     if eval:
-        min_error = 2**(env.tau_min)
-        max_error = 2**(env.tau_max)
+        min_error = env.tau_min
+        max_error = tau_max
         step_size = (max_error - min_error)/10
         params_to_eval = min_error + step_size*np.array(range(0,11,1))
     else:
@@ -363,9 +399,9 @@ for param in params_to_eval:
         obs = env.reset(new_alpha = False)
     elif ADF_bool:
         # set tau
-        env.tau = np.log2(param)
+        ADF_params.set_tau.remote(param)
         tau_str = str(param).replace('.','_')
-        obs = env.reset(new_tau = False)
+        obs = env.reset()
     
 
     done = False
@@ -409,7 +445,7 @@ for param in params_to_eval:
     if alpha_bool:
         file_string = str(env.alpha) + ", " + str(cum_rldofs[-1]) + ", " + str(rlerrors[-1]) + "\n"
     elif ADF_bool:
-        file_string = str(env.tau) + ", " + str(cum_rldofs[-1]) + ", " + str(rlerrors[-1]) + "\n"
+        file_string = str(ray.get(ADF_params.get_tau.remote())) + ", " + str(cum_rldofs[-1]) + ", " + str(rlerrors[-1]) + "\n"
     file.write(file_string)
             
 
@@ -427,7 +463,7 @@ for i in range(1, nth):
     if alpha_bool:
         env.reset(new_alpha = False)
     elif ADF_bool:
-        env.reset(new_tau = False)
+        env.reset()
     done = False
     episode_cost_tmp = 0
     errors_tmp = [env.global_error]

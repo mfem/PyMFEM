@@ -9,6 +9,7 @@ from utils.Solution_LShaped import *
 from utils.Solution_Wavefront import *
 from utils.Solution_SinSin import *
 import os
+import ray
 
 class MultiObjPoisson(Poisson):
     '''
@@ -110,9 +111,12 @@ class ADF_MultiObjPoisson(Poisson):
         self.optimization_type  = kwargs.get('optimization_type','multi_objective')
         self.observe_budget     = kwargs.get('observe_budget', True)    # observe budget = (current step #)/(total number of steps)
         self.num_iterations     = kwargs.get('num_iterations', 10)      # decide what a good default number of iterations is
-        self.tau_min            = kwargs.get('tau_min', np.log2(10**-4))         # minimium target error to train for
+        self.tau_min            = kwargs.get('tau_min', np.log2(10**-4))# minimium target error to train for
         self.N_anneal           = kwargs.get('N_anneal', 50)            # number of target errors between tau_min and tau_max to train for
-
+        self.M_warm             = kwargs.get('M_warm',   50)            # number of batches in warming phase
+        self.M_anneal           = kwargs.get('M_anneal', 20)            # number of batches for each tau in annealing phase
+        self.batch_size         = kwargs.get('batch_size', 100)         # number of episodes per batch
+        
         # define range of expected values for the observations
         if self.observe_budget == True:
             # observation space includes mean, variance, tau, budget
@@ -121,29 +125,23 @@ class ADF_MultiObjPoisson(Poisson):
             # observation space includes mean, variance, tau
             self.observation_space = spaces.Box(low = np.array([-np.inf,-np.inf, -np.inf]), high= np.array([np.inf, np.inf, np.inf]))
 
-        # determine tau_max from initial mesh error
-        #self.AssembleAndSolve()
-        #self.errors = self.GetLocalErrors()
-        #global_error = GlobalError(self.errors)
-        # set Tau to an arbitrary value so that we can call super().reset()
+        self.ADF_Params = ray.get_actor("parameters")
+
+    def FindParameters(self):
         self.mesh = mfem.Mesh(self.initial_mesh)
         self.Setup()
         self.AssembleAndSolve()
         self.errors = self.GetLocalErrors()
         self.global_error = max(GlobalError(self.errors),1e-12)
         error_init = np.log2(self.global_error)
-    
-        self.tau_max = self.tau_min + self.N_anneal/(self.N_anneal + 1)*(error_init - self.tau_min)
 
-        # define widths, delta_warm and delta_anneal
-        self.delta_warm   = (self.tau_max - self.tau_min)/0.5
-        self.delta_anneal = (self.tau_max - self.tau_min)/2
+        tau_max = np.log2(0.9) + error_init; # set tau_max to log(0.9 * initial error) using log rule
+        # tau_max      = self.tau_min + self.N_anneal/(self.N_anneal + 1)*(error_init - self.tau_min)
+        tau_step     = (tau_max - self.tau_min)/self.N_anneal
+        delta_warm   = (tau_max - self.tau_min)/2
+        delta_anneal = (tau_max - self.tau_min)/10
 
-        # initialize tau and delta to tau_max and delta_warm, respectively
-        print("tau set in init")
-        self.tau   = self.tau_max
-        self.delta = self.delta_warm
-
+        return tau_max, tau_step, delta_warm, delta_anneal
 
     def step(self, action):
         if self.optimization_type == 'multi_objective':
@@ -170,12 +168,12 @@ class ADF_MultiObjPoisson(Poisson):
             self.global_error = global_error
 
             if self.k >= self.num_iterations or self.sum_of_dofs >= self.dof_threshold:
-                cost = dofs_cost * np.abs(self.tau - error_cost)/self.delta
-                print("Tau used is {}".format(self.tau))
+                cost = dofs_cost * np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
                 done = True
                 #print("dofs cost = {}, F_2 = {}".format(dofs_cost, np.abs(self.tau - error_cost)/self.delta))
+                #print("tau used = {}".format(ray.get(self.ADF_Params.get_tau.remote())))
             else:
-                cost = 0
+                cost = 0;
                 done = False
 
             if done == False:
@@ -193,11 +191,10 @@ class ADF_MultiObjPoisson(Poisson):
     def GetObservation(self):
         if self.optimization_type == 'multi_objective':
             num_dofs = self.fespace.GetTrueVSize()
-            stats = Statistics(self.errors, num_dofs=num_dofs)
+            stats = Statistics(self.errors, num_dofs = num_dofs)
 
             # define observation, which depends on observe_alpha and observe_budget
-            obs = [stats.mean, stats.variance]
-            obs.append(self.tau)
+            obs = [stats.mean, stats.variance, ray.get(self.ADF_Params.get_tau.remote())]
 
             if self.observe_budget == True:
                 budget = self.k/self.num_iterations
@@ -207,14 +204,7 @@ class ADF_MultiObjPoisson(Poisson):
         else:
             return super().GetObservation(self)
 
-    def reset(self, new_tau = False):
-        # choose new random alpha if alpha is included as an observation
-        if self.optimization_type == 'multi_objective':
-            if new_tau == True: 
-                # increment tau in annealing phase
-                self.tau = self.tau - (self.tau_max - self.tau_min)/self.N_anneal
-                print("reset tau") 
-                print("new tau should be {}".format(self.tau))
+    def reset(self):
         return super().reset()
 
 class Angle_MultiObjPoisson(MultiObjPoisson):
