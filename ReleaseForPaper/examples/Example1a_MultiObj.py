@@ -96,22 +96,34 @@ class ADF_Parameters:
 
     def set_initial_parameters(self, tau_init, tau_inc, delta_warm, delta_anneal):
         self.tau = tau_init
+        self.tau_max = tau_init
+        self.tau_init = tau_init
         self.tau_inc = tau_inc
 
         self.delta = delta_warm
         self.delta_anneal = delta_anneal
 
+        # keep track of largest tau used so far
+        self.last_tau = self.tau
     def get_delta(self):
         return self.delta
     def update_delta(self):
       self.delta = self.delta #self.delta_anneal
 
     def update_tau(self):
-      self.tau -= self.tau_inc
+      self.tau = self.last_tau - self.tau_inc
+      self.last_tau = self.tau
     def get_tau(self):
         return self.tau
+    def get_tau_init(self):
+        return self.tau_init
     def set_tau(self, new_tau):
         self.tau = new_tau
+    def set_rand_tau(self):
+        # set tau back to a tau we have visited (or almost visited) before
+        # this random tau is uniformly distributed between the most recently trained tau
+        # and the initial tau, tau_max.
+        self.tau = np.random.uniform(low = self.last_tau, high = self.tau_max)
 
 """
     STEP 1: Set parameters
@@ -167,9 +179,10 @@ prob_config = {
     'num_iterations'    : 10,
     'num_batches'       : nbatches,
     'tau_min'           : np.log2(10**-4),
-    'M_warm'            : 50, # number of batches in warming phase
-    'M_anneal'          : 20, # number of batches per tau in annealing phase
-    'N_anneal'          : 10,  # number of target errors (tau) to train on
+    'M_warm'            : 3000, # number of batches in warming phase
+    'M_anneal'          : 10, # number of batches per tau in annealing phase
+    'N_anneal'          : 0,  # number of target errors (tau) to train on
+    'M_retrain'         : 2,  # number of batches for retraining before each new tau
     'batch_size'        : 100 # number of episodes per batch
 }
 
@@ -179,7 +192,8 @@ if prob_config['cost_function'] == 'ADF':
     M_warm   = prob_config['M_warm']; 
     M_anneal = prob_config['M_anneal']; 
     N_anneal = prob_config['N_anneal'];
-    nbatches = M_warm + M_anneal * N_anneal
+    M_retrain = prob_config['M_retrain']
+    nbatches = M_warm + (M_anneal + M_retrain) * N_anneal # the +M_retrain corresponds to an extra training batch to retrain on taus we've already seen
     prob_config['num_batches'] = nbatches
 
     ADF_bool   = True 
@@ -300,6 +314,8 @@ if train:
 
     for n in range(nbatches):
         if ADF_bool:
+            # uncomment for ADF approach 
+            '''
             if n == M_warm:
                 # we've finished the warming phase; update tau and delta
                 ADF_params.update_tau.remote();
@@ -307,13 +323,17 @@ if train:
 
                 print("Updated delta to {}".format(ray.get(ADF_params.get_delta.remote())))
 
-            elif n> M_warm and (n - M_warm) % M_anneal == 0:
+            elif n> M_warm and (n - M_warm) % (M_anneal + M_retrain) == 0:
                 ADF_params.update_tau.remote()
 
                 print("Updated tau to {}".format(ray.get(ADF_params.get_tau.remote())))
-
-
+            elif n > M_warm and (n - M_warm + 1) % (M_anneal + M_retrain) == 0:
+                # retrain on old tau
+                ADF_params.set_rand_tau.remote()
+                print("retraining on randomly sampled tau = {}".format(ray.get(ADF_params.get_tau.remote())))
+            '''
         print("training batch %d of %d batches" % (n+1, nbatches))
+        print("tau = {}".format(ray.get(ADF_params.get_tau.remote())))
         result = trainer.train()
         episode_score = -result["episode_reward_mean"]
         episode_length = result["episode_len_mean"]

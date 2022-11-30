@@ -127,6 +127,10 @@ class ADF_MultiObjPoisson(Poisson):
 
         self.ADF_Params = ray.get_actor("parameters")
 
+        # arbitrarily set tau_max to start (this should be reset once we call FindParameters)
+        self.reset_tau = False;
+        self.tau_max = 0.1
+        
     def FindParameters(self):
         self.mesh = mfem.Mesh(self.initial_mesh)
         self.Setup()
@@ -141,9 +145,13 @@ class ADF_MultiObjPoisson(Poisson):
         delta_warm   = (tau_max - self.tau_min)/2
         delta_anneal = (tau_max - self.tau_min)/10
 
+        self.tau_max = tau_max; 
+        self.reset_tau = True;
+        print('reset tau set to True')
         return tau_max, tau_step, delta_warm, delta_anneal
 
     def step(self, action):
+        self.reset_tau = True;
         if self.optimization_type == 'multi_objective':
             self.k += 1 # increment the step index
             self.UpdateMesh(action)
@@ -205,6 +213,12 @@ class ADF_MultiObjPoisson(Poisson):
             return super().GetObservation(self)
 
     def reset(self):
+        if self.reset_tau:
+        # reset tau to random value between tau_min and tau_max
+            tau = np.random.uniform(low = self.tau_min, high = ray.get(self.ADF_Params.get_tau_init.remote()))
+            #print("Tau_min = {}, Tau_max = {}.".format(self.tau_min, ray.get(self.ADF_Params.get_tau_init.remote())))
+            self.ADF_Params.set_tau.remote(tau) 
+            #print("Reset tau to {}".format(tau))
         return super().reset()
 
 class Angle_MultiObjPoisson(MultiObjPoisson):
