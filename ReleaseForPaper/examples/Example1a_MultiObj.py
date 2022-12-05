@@ -231,7 +231,7 @@ config['lr'] = 1e-5
 config['seed'] = 4000
 config['model'] = model_config
 
-# set up epsilon greedy exploration
+# # set up epsilon greedy exploration
 schedule_object = ray.rllib.utils.schedules.constant_schedule.ConstantSchedule(value = 0.1, framework = 'tf')
 action_space = spaces.Box(low=0.0, high=0.999, shape=(1,), dtype=np.float32)
 '''config['explore'] = ray.rllib.utils.exploration.epsilon_greedy.EpsilonGreedy(policy_config   = config, 
@@ -241,14 +241,14 @@ action_space = spaces.Box(low=0.0, high=0.999, shape=(1,), dtype=np.float32)
                                                                              framework       = 'tf', 
                                                                              epsilon_schedule = schedule_object)
 '''
-config["explore"] = True,
-config["exploration_config"] = {
+config['explore'] = True
+config['exploration_config'] = {
    # Exploration sub-class by name or full path to module+class
    # (e.g. “ray.rllib.utils.exploration.epsilon_greedy.EpsilonGreedy”)
-   "type"               : "EpsilonGreedy",
+   'type'               : 'EpsilonGreedy',
    # Parameters for the Exploration class' constructor:
-   # "epsilon_schedule" : schedule_object,
-   "action_space"       : action_space
+   'epsilon_schedule'   : schedule_object,
+   'action_space'       : action_space
    }
 
 # for limited printing of rl_config
