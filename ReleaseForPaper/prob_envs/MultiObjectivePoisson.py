@@ -146,8 +146,8 @@ class ADF_MultiObjPoisson(Poisson):
         delta_anneal = (tau_max - self.tau_min)/10
 
         self.tau_max = tau_max; 
-        self.reset_tau = True;
-        print('reset tau set to True')
+        #self.reset_tau = True;
+        #print('reset tau set to True')
         return tau_max, tau_step, delta_warm, delta_anneal
 
     def step(self, action):

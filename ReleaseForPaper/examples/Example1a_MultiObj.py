@@ -16,6 +16,7 @@ from MO_eval import *
 import numpy as np
 import time
 import seaborn as sns
+from gym import spaces
 
 from ray.tune.logger import UnifiedLogger
 from datetime import datetime
@@ -179,9 +180,9 @@ prob_config = {
     'num_iterations'    : 10,
     'num_batches'       : nbatches,
     'tau_min'           : np.log2(10**-4),
-    'M_warm'            : 3000, # number of batches in warming phase
-    'M_anneal'          : 10, # number of batches per tau in annealing phase
-    'N_anneal'          : 0,  # number of target errors (tau) to train on
+    'M_warm'            : 50, # number of batches in warming phase
+    'M_anneal'          : 20, # number of batches per tau in annealing phase
+    'N_anneal'          : 20,  # number of target errors (tau) to train on
     'M_retrain'         : 2,  # number of batches for retraining before each new tau
     'batch_size'        : 100 # number of episodes per batch
 }
@@ -229,6 +230,26 @@ config['gamma'] = 1.0
 config['lr'] = 1e-5
 config['seed'] = 4000
 config['model'] = model_config
+
+# set up epsilon greedy exploration
+schedule_object = ray.rllib.utils.schedules.constant_schedule.ConstantSchedule(value = 0.1, framework = 'tf')
+action_space = spaces.Box(low=0.0, high=0.999, shape=(1,), dtype=np.float32)
+'''config['explore'] = ray.rllib.utils.exploration.epsilon_greedy.EpsilonGreedy(policy_config   = config, 
+                                                                             model           = model_config, 
+                                                                             num_workers     = config['num_workers'], 
+                                                                             action_space    = action_space, 
+                                                                             framework       = 'tf', 
+                                                                             epsilon_schedule = schedule_object)
+'''
+config["explore"] = True,
+config["exploration_config"] = {
+   # Exploration sub-class by name or full path to module+class
+   # (e.g. “ray.rllib.utils.exploration.epsilon_greedy.EpsilonGreedy”)
+   "type"               : "EpsilonGreedy",
+   # Parameters for the Exploration class' constructor:
+   # "epsilon_schedule" : schedule_object,
+   "action_space"       : action_space
+   }
 
 # for limited printing of rl_config
 rl_config = {
@@ -315,7 +336,7 @@ if train:
     for n in range(nbatches):
         if ADF_bool:
             # uncomment for ADF approach 
-            '''
+            
             if n == M_warm:
                 # we've finished the warming phase; update tau and delta
                 ADF_params.update_tau.remote();
@@ -331,7 +352,7 @@ if train:
                 # retrain on old tau
                 ADF_params.set_rand_tau.remote()
                 print("retraining on randomly sampled tau = {}".format(ray.get(ADF_params.get_tau.remote())))
-            '''
+            
         print("training batch %d of %d batches" % (n+1, nbatches))
         print("tau = {}".format(ray.get(ADF_params.get_tau.remote())))
         result = trainer.train()
