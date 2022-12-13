@@ -77,11 +77,18 @@ def f_exact(x, out):
 # passing GridFunctin or VectorGridFunction coefficient
 # (Er, Ei) means complex number (GF for real and imaginary parts)
 # density is double.
-@mfem.jit.vector(dependencies=((Er, Ei), density))
+@mfem.jit.vector(dependencies=((Er, Ei), density), return_complex=True)
 def f_exact(x, out, E=None):
     out[0] = (1 + kappa**2)*sin(kappa * x[1])
     out[1] = (1 + kappa**2)*sin(kappa * x[2])
     out[2] = (1 + kappa**2)*sin(kappa * x[0])
+
+if return_complex=True, use .real and. imag as real and imaginary part
+coefficient
+   f_exact.real
+   f_exact.imag
+otherwise
+   f_exact is coefficient
 
 Then, decorated function can be used as function coefficient
 x.ProjectCoefficient(f_exact)       
@@ -240,17 +247,18 @@ class NumbaFunction : public NumbaFunctionBase {
        NumbaFunctionBase(input, sdim, td){}
 
     double call0(const mfem::Vector &x){
-      return ((double (*)(double *, int, ...))address_)(x.GetData(), data);
+      return ((double (*)(double *, void **, int))address_)(x.GetData(), data);
     }
     double call(const mfem::Vector &x){
-      return ((double (*)(double *, int, int, ...))address_)(x.GetData(), sdim_, 1, data);
+      return ((double (*)(double *, void**, int, int))address_)(x.GetData(), data, sdim_);
     }
     double call0t(const mfem::Vector &x, double t){
-      return ((double (*)(double *, double, int, ...))address_)(x.GetData(), t, data);
+      return ((double (*)(double *, double, int))address_)(x.GetData(), t, data);
     }
     double callt(const mfem::Vector &x, double t){
-      return ((double (*)(double *, double, int, int, ...))address_)(x.GetData(), t, data, sdim_);
+      return ((double (*)(double *, double, int, int))address_)(x.GetData(), t, data, sdim_);
     }
+    
 
     // FunctionCoefficient
     mfem::FunctionCoefficient* GenerateCoefficient(int use_0=0){
