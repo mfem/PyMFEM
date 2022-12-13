@@ -98,9 +98,14 @@ def f_exact(x, out):
 # passing Scalar/Vector/Matrix coefficient including GridFunctionCoefficients
 # (Er, Ei) means complex number (GF for real and imaginary parts)
 # density is double.
+<<<<<<< HEAD
 
 @mfem.jit.vector(sdim, dependencies=((Er, Ei), density), complex=True)
 def f_exact(x, E, density, out):
+=======
+@mfem.jit.vector(dependencies=((Er, Ei), density), return_complex=True)
+def f_exact(x, out, E=None):
+>>>>>>> 4d4d254 ((WIP)....)
     out[0] = (1 + kappa**2)*sin(kappa * x[1])
     out[1] = (1 + kappa**2)*sin(kappa * x[2])
     out[2] = (1 + kappa**2)*sin(kappa * x[0])
@@ -112,6 +117,7 @@ coefficient
 otherwise
    f_exact is coefficient
 
+<<<<<<< HEAD
 # vectorr coefficient
 @mfem.jit.matrix(3, shape = (3,3))
 def f_exact(x, out):
@@ -124,6 +130,8 @@ def f_exact(x, out):
     out[2] = (1 + kappa**2)*sin(kappa * x[0])
 
 
+=======
+>>>>>>> 4d4d254 ((WIP)....)
 Then, decorated function can be used as function coefficient
 x.ProjectCoefficient(f_exact)       
 
@@ -200,6 +208,7 @@ class NumbaFunction : public NumbaFunctionBase {
        NumbaFunctionBase(input, sdim, td){}
 
     double call0(const mfem::Vector &x){
+<<<<<<< HEAD
       return ((double (*)(double *))address_)(x.GetData());
     }
     double call(const mfem::Vector &x){
@@ -210,7 +219,20 @@ class NumbaFunction : public NumbaFunctionBase {
     }
     double callt(const mfem::Vector &x, double t){
       return ((double (*)(double *, double, int))address_)(x.GetData(), t, sdim_);
+=======
+      return ((double (*)(double *, void **, int))address_)(x.GetData(), data);
     }
+    double call(const mfem::Vector &x){
+      return ((double (*)(double *, void**, int, int))address_)(x.GetData(), data, sdim_);
+    }
+    double call0t(const mfem::Vector &x, double t){
+      return ((double (*)(double *, double, int))address_)(x.GetData(), t, data);
+    }
+    double callt(const mfem::Vector &x, double t){
+      return ((double (*)(double *, double, int, int))address_)(x.GetData(), t, data, sdim_);
+>>>>>>> 4d4d254 ((WIP)....)
+    }
+    
 
     // FunctionCoefficient
     mfem::FunctionCoefficient* GenerateCoefficient(int use_0=0){
