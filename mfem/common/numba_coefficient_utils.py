@@ -104,40 +104,49 @@ def _process_dependencies(dependencies):
     iscomplex = []
     sizes = []
     kinds = []
+    s_coeffs = []
+    v_coeffs = []
+    m_coeffs = []        
     for x in dependencies:
         if isinstance(x, tuple):
             iscomplex.append(True)
-            xx = x[0] if x[0] is not None else x[1]
-            if xx is None:
-                assert False, "dependency is None"
+            xx = x[0]
+            if xx[0] is None or xx[1] is None:
+                assert False, "dependency has to have both real imaginary parts defined"
             if isinstacne(xx], Coefficient):
-                sizes.append(2)
                 kinds.append(0)
+                s_coeffs.append(x[0])
+                s_coeffs.append(x[1])                
             elif isinstacne(xx, VectorCoefficient):
-                sizes.append(xx.GetVdim()*2)
-                kinds.append(1)                
+                assert x[0].GetVdim() == x[1].GetVdim() "real and imaginary has to have the same vdim"
+                kinds.append(1)
+                v_coeffs.append(x[0])
+                v_coeffs.append(x[1])                
             elif isinstacne(xx, MatrixCoefficient):
-                sizes.append(xx.GetHeight()*xx.GetWidth()*2)
+                assert x[0].Height() == x[1].Height() "real and imaginary has to have the same vdim"
+                assert x[0].Width() == x[1].Width() "real and imaginary has to have the same vdim"
                 kinds.append(2)
+                m_coeffs.append(x[0])
+                m_coeffs.append(x[1])                
             else:
                 assert False, "unknown coefficient type" + str(type(xx))
         else:
             iscomplex.append(False)
-            xx = x[0] if x[0] is not None else x[1]
-            if xx is None:
-                assert False, "dependency is None"
-            if isinstacne(xx], Coefficient):
+            if isinstacne(x, Coefficient):
                 sizes.append(1)
-                kinds.append(0)                
-            elif isinstacne(xx, VectorCoefficient):
-                sizes.append(xx.GetVdim())
+                kinds.append(0)
+                s_coeffs.append(x)                
+            elif isinstacne(x, VectorCoefficient):
+                sizes.append(x.GetVdim())
                 kinds.append(1)
-            elif isinstacne(xx, MatrixCoefficient):
-                sizes.append(xx.GetHeight()*xx.GetWidth())
-                kinds.append(2)            
+                v_coeffs.append(x)
+            elif isinstacne(x, MatrixCoefficient):
+                sizes.append(x.GetHeight()*xx.GetWidth())
+                kinds.append(2)
+                m_coeffs.append(x)                
             else:
                 assert False, "unknown coefficient type" + str(type(xx))
-    return iscomplex, sizes, kinds
+    return iscomplex, sizes, kinds, s_coeffs, v_coeffs, m_coeffs
 
 def get_setting(iscomplex=False, dependencies=None):
     setting = {}
@@ -146,11 +155,13 @@ def get_setting(iscomplex=False, dependencies=None):
     else:
         setting['output'] = 1
 
-    iscomplex, sizes, kinds = _process_dependencies(dependencies):
+    iscomplex, sizes, kinds, s_coeffs, v_coeffs, m_coeffs = _process_dependencies(dependencies)
 
     setting['iscomplex'] = iscomplex
     setting['kinds'] = kinds
-    setting['sizes'] = sizes
+    setting['s_coeffs'] = s_coeffs
+    setting['v_coeffs'] = v_coeffs
+    setting['m_coeffs'] = m_coeffs
     return setting
 
 

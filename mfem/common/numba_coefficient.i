@@ -68,9 +68,16 @@ c = MatrixNumbaFunction(m_func, sdim, ndim, True).GenerateCoefficient()
 #     2) dependecy support
 #     3) complex function (a coefficient which returns complex)
 #
+(usage)
+sdim = mesh.SpaceDimension()
+@scalar(sdim, td=False, params={}, complex=False, dependencies=None)
+@vector(sdim, shape=None, td=False, params={}, complex=False, dependencies=None)
+@matrix(sdim, shape=None, td=False, params={}, complex=False, dependencies=None)
 
+(examples)
 # scalar coefficient
-@mfem.jit.scalar(sdim=3)
+sdim = mesh.SpaceDimension()
+@mfem.jit.scalar(sdim)
 def c12(ptx):
     return ptx[0] * ptx[sdim-1]  ### note sdim is defined when this is compiled
 
@@ -80,7 +87,7 @@ def c12(ptx, E, density):
 
 
 # vectorr coefficient
-@mfem.jit.vector(shape = (3,))
+@mfem.jit.vector(sdim, shape = (3,))
 def f_exact(x, out):
     out_array = carray(out, (shape[0],))
     out[0] = (1 + kappa**2)*sin(kappa * x[1])
@@ -91,7 +98,7 @@ def f_exact(x, out):
 # (Er, Ei) means complex number (GF for real and imaginary parts)
 # density is double.
 
-@mfem.jit.vector(dependencies=((Er, Ei), density), complex=True)
+@mfem.jit.vector(sdim, dependencies=((Er, Ei), density), complex=True)
 def f_exact(x, E, density, out):
     out[0] = (1 + kappa**2)*sin(kappa * x[1])
     out[1] = (1 + kappa**2)*sin(kappa * x[2])
@@ -105,7 +112,7 @@ otherwise
    f_exact is coefficient
 
 # vectorr coefficient
-@mfem.jit.matrix(shape = (3,3))
+@mfem.jit.matrix(3, shape = (3,3))
 def f_exact(x, out):
     out_array = carray(out, (shape[0], shape[1]))  
     for i in range(ndim):
@@ -365,6 +372,9 @@ classe FunctionCoefficeintExtraBase:
   int num_coeffs;
   int num_vcoeffs;
   int num_mcoeffs;
+  int num_dep = 0;
+  int kinds[16];       // for now upto 16 coefficients
+  int iscomplex[16];   // for now upto 16 coefficients
   mfem::Coefficient *coeff;
   mfem::VectorCoefficient *vcoeff[];
   mfem::MatrizCoefficient *mcoeff[];
@@ -399,50 +409,204 @@ classe FunctionCoefficeintExtraBase:
     obj.SetDataCount(in_num_coeffs + in_num_vcoeffs + in_num_mcoeffs);
 
     MFEM_ASSERT(size < 256, "dependency dim must be less than 256");
+    MFEM_ASSERT(in_num_coeffs + in_num_vcoeffs + in_num_mcoeffs) < 16, "dependency must be upto 16");
   }
 
-  double * PrepParams(){ElementTransformation &T,
-                        const IntegrationPoint &ip){
+  void PrepParams(ElementTransformation &T,
+		  const IntegrationPoint &ip){
 
     int vdim, h, w = 0;
     int idx = 0;
-
+    int idx2 = 0;
+    int inc = 0;
     double *data = obj.GetData();
 
-    for (int i = 0; i < num_coeffs; i++){
-      data[idx] = coeff[i].Eval(T, ip);
-      idx++;
+    int s_counter = 0;
+    int v_counter = 0;
+    int m_counter = 0;
+    
+    for (int i = 0; i < num_dep; i++){
+        switch(kinds[i]){
+	case 0:// scalar
+           data[idx] = coeff[s_counter].Eval(T, ip);
+	   s_counter ++;
+	   idx ++;
+	   if (iscomplex[i] == 1){
+               data[idx] = coeff[s_counter].Eval(T, ip);
+   	       s_counter ++;
+	       idx ++
+	   }
+	   break;
+	case 1:// vector
+           vdim = vcoeff[i].GetVdim();
+           mfem::Vector V(vdim);
+	   vcoeff[v_counter].Eval(V, T, ip);
+	   
+           idx2 = idx;
+	   for (int j = 0; j < vdim; ++){
+	     data[idx2] =  V[j];
+	     idx2 ++;
+   	     if (iscomplex[i] == 1){
+	       idx2++;
+	     }
+	   }
+	   inc = vdim;
+	   v_counter ++;
+	   if (iscomplex[i] == 1){	   
+	      vcoeff[v_counter].Eval(V, T, ip);
+              idx2 = idx+1;	      
+	      for (int j = 0; j < vdim; ++){
+	          data[idx2] =  V[j];
+		  idx2 ++;
+		  idx2 ++;		  
+	      }
+	      v_counter ++;
+	      inc = inc + vdim;
+	   }
+	   idx = idx + inc;
+	   break;
+	case 2:// matrix
+ 	   w = coeff[v_counter].Width();
+  	   h = coeff[v_counter].Height();
+           mfem::DenseMatrix M(h, w);	  
+	   mcoeff[m_counter].Eval(V, T, ip);
+
+           idx2 = idx;	  
+           for (int jj = 0; jj < w; jj++){
+ 	      for (int ii = 0; ii < h; ii++){
+  	         data[idx2] =  M(ii, jj);
+	         idx2 ++;
+   	         if (iscomplex[i] == 1){
+	            idx2++;
+	         }
+	      }
+	   }
+	   inc = h*w;
+	   m_counter ++;
+	   if (iscomplex[i] == 1){
+  	      mcoeff[m_counter].Eval(V, T, ip);	     
+              idx2 = idx+1;
+	      for (int jj = 0; jj < w; jj++){
+		for (int ii = 0; ii < h; ii++){
+		  data[idx2] =  M(ii, jj);
+		  idx2 ++;
+		  if (iscomplex[i] == 1){
+	            idx2++;
+		  }
+		}
+	      }
+	      m_counter ++;
+	      inc = inc + h*w;
+	   }
+	   idx = idx + inc;	   
+           break;
+	}
     }
-    for (int i = 0; i < num_vcoeffs; i++){
-      vdim = vcoeff[i].GetVdim();
-      mfem::Vector V(vdim, &data[idx]);
-      data[idx] = vcoeff[i].Eval(V, T, ip);
-      idx += size;
-    }
-    for (int i = 0; i < num_mcoeffs; i++){
-      h = mcoeff[i].GetHeight();
-      w = mcoeff[i].GetWidth();
-      mfem::DenseMatrix M(&data[idx], h, w);
-      data[idx] = mcoeff[i].Eval(M, T, ip);
-      idx += h*w;
-    }
+  }
+  void SetKinds(PyObject *kinds_){
+  if (PyList_Check(kinds_)) {
+     int ll = PyList_Size(kinds_);
+     if (ll > 16){
+       PyErr_SetString(PyExc_ValueError, "Dependecy must be less than 16");
+       return 
+     }
+     for (int i = 0; i < ll; i++) {
+        PyObject *s = PyList_GetItem(kinds_, i);
+        kinds[i] = (int)PyInt_AsLong(s);
+     }
+     num_dep = ll;
+  } else if (PyTuple_Check(kinds_)) {
+     int ll = PyTuple_Size(kinds_);
+     for (int i = 0; i < ll; i++) {
+        PyObject *s = PyTuple_GetItem(kinds_,i);
+        kinds[i] = (int)PyInt_AsLong(s);
+     }
+     if (ll > 16){
+       PyErr_SetString(PyExc_ValueError, "Dependecy must be less than 16");
+       return 
+     }
+     num_dep = ll;     
+  } else {
+    PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
+  }
+  }
+  void SetIsComplex(PyObject *isComplex_){
+  if (PyList_Check(isComplex_)) {
+     int ll = PyList_Size(isComplex_);
+     if (ll > 16){
+       PyErr_SetString(PyExc_ValueError, "Dependecy must be less than 16");
+       return 
+     }
+     for (int i = 0; i < ll; i++) {
+        PyObject *s = PyList_GetItem(isComplex_, i);
+        isComplex[i] = (int)PyInt_AsLong(s);
+     }
+     num_dep = ll;
+  } else if (PyTuple_Check(isComplex_)) {
+     int ll = PyTuple_Size(kinds_);
+     for (int i = 0; i < ll; i++) {
+        PyObject *s = PyTuple_GetItem(isComplex_,i);
+        isComplex[i] = (int)PyInt_AsLong(s);
+     }
+     num_dep = ll;     
+     if (ll > 16){
+       PyErr_SetString(PyExc_ValueError, "Dependecy must be less than 16");
+       return 
+     }
+  } else {
+    PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
+  }
   }
 };
 
 classe FunctionCoefficeintExtra : public mfem::FunctionCoefficient,
-  public FunctionCoefficeintExtra {
+  public FunctionCoefficeintExtraBase {
  public:
   FunctionCoefficeintExtra(std::function<double(const Vector &)> F,
 			   NumbaFunctionBase *in_obj)
     : FunctionCoefficient(std::move(F)), obj(in_obj){}
  FunctionCoefficientExtra(std::function<double(const Vector &, double)> TDF,
-			  NumbaFunctionBase *in_obj)
+ 			   NumbaFunctionBase *in_obj)
    : FunctionCoefficient(std::move(TDF)), obj(in_obj){}
   
  virtual double Eval(ElementTransformation &T,
 		      const IntegrationPoint &ip){
    PrepParams(T, ip);
    return mfem::FunctionCoefficient::Eval(T, ip);
+};
+classe VectorFunctionCoefficeintExtra : public mfem::VectorFunctionCoefficient,
+  public FunctionCoefficeintExtraBase {
+ public:
+ VectorFunctionCoefficeintExtra(int dim,
+				std::function<double(const Vector &, DenseMatrix &)> F,
+   			        NumbaFunctionBase *in_obj)
+   : VectorFunctionCoefficient(dim, std::move(F)), obj(in_obj){}
+ VectorFunctionCoefficientExtra(int dim,
+				std::function<double(const Vector &, double, DenseMatrix &)> TDF,
+    			        NumbaFunctionBase *in_obj)
+    : VectorFunctionCoefficient(dim, std::move(TDF)), obj(in_obj){}
+  
+  virtual double Eval(Vector &V, ElementTransformation &T,
+		      const IntegrationPoint &ip){
+   PrepParams(T, ip);
+   return mfem::VectorFunctionCoefficient::Eval(V, T, ip);
+};
+classe MatrixFunctionCoefficeintExtra : public mfem::MatrixFunctionCoefficient,
+  public FunctionCoefficeintExtraBase {
+ public:
+ MatrixFunctionCoefficeintExtra(int dim,
+				std::function<double(const Vector &, DenseMatrix &)> F,
+   			        NumbaFunctionBase *in_obj)
+   : MatrixFunctionCoefficient(dim, std::move(F)), obj(in_obj){}
+ MatrixFunctionCoefficientExtra(int dim,
+				std::function<double(const Vector &, double, DenseMatrix &)> TDF,
+   			        NumbaFunctionBase *in_obj)
+    : MatrixFunctionCoefficient(dim, std::move(TDF)), obj(in_obj){}
+  
+  virtual double Eval(DenseMatrix &K, ElementTransformation &T,
+		      const IntegrationPoint &ip){
+   PrepParams(T, ip);
+   return mfem::MatrixFunctionCoefficient::Eval(K, T, ip);
 };
 
 //  NumberFunction Implementation 2 (this is used for mfem.jit )
@@ -452,10 +616,10 @@ class NumbaFunction2 : public NumbaFunctionBase {
     std::function<double(const mfem::Vector &, double t)> obj2;
 
  public:
-    NumbaFunction(PyObject *input):
+    NumbaFunction2(PyObject *input):
        NumbaFunctionBase(input, 3, false){}
     
-    NumbaFunction(PyObject *input, bool td):
+    NumbaFunction2(PyObject *input, bool td):
        NumbaFunctionBase(input, 3, td){}
 
     double call(const mfem::Vector &x){
@@ -495,26 +659,224 @@ class NumbaFunction2 : public NumbaFunctionBase {
       if (td_) {
 	  switch(mode){
 	  case 0:
-	    obj2 = std::bind(&NumbaFunction::callt, this, _1, _2);
+	    obj2 = std::bind(&NumbaFunction2::callt, this, _1, _2);
+	    break;
 	  case 1:
-	    obj2 = std::bind(&NumbaFunction::calltr, this, _1, _2);
+	    obj2 = std::bind(&NumbaFunction2::calltr, this, _1, _2);
+	    break;	    
 	  case 2:
-	    obj2 = std::bind(&NumbaFunction::callti, this, _1, _2);	    
+	    obj2 = std::bind(&NumbaFunction2::callti, this, _1, _2);
+	    break;	    
           }
+          return new mfem::FunctionCoefficientExtra(obj2, this);	  	  
       } else {
 	  switch(mode){
 	  case 0:
-	    obj2 = std::bind(&NumbaFunction::call, this, _1);
+	    obj1 = std::bind(&NumbaFunction2::call, this, _1);
+	    break;	    	    
 	  case 1:
-	    obj2 = std::bind(&NumbaFunction::callr, this, _1);
+	    obj1 = std::bind(&NumbaFunction2::callr, this, _1);
+	    break;	    	    
 	  case 2:
-	    obj2 = std::bind(&NumbaFunction::calli, this, _1);	    
+	    obj1 = std::bind(&NumbaFunction2::calli, this, _1);
+	    break;	    
           }
+          return new mfem::FunctionCoefficientExtra(obj1, this);	  
       }    
-      return new mfem::FunctionCoefficientExtra(obj1, this);
+
     }
 };
- 
+// VectorFunctionCoefficient     
+class VectorNumbaFunction2 : public NumbaFunctionBase {
+ private:
+  std::function<void(const mfem::Vector &, mfem::Vector &)> obj1;
+  std::function<void(const mfem::Vector &, double, mfem::Vector &)> obj2;
+  int vdim_;
+  std::complex<double> *outc == nulptr;
+ public: 
+    VectorNumbaFunction2(PyObject *input, int vdim):
+       NumbaFunctionBase(input, 3, false), vdim_(vdim){}
+    
+    VectorNumbaFunction2(PyObject *input, int vdim, bool td):
+       NumbaFunctionBase(input, 3, td), vdim_(vdim){}
+
+    ~VectorNumbaFunction2(){delete [] outc};
+
+    void call(const mfem::Vector &x, mfem::Vector &out){
+      out = 0.0;
+      return ((void (*) (double *, double *))address_)(x.GetData(), 
+						       out.GetData());
+       
+    }
+    void callt(const mfem::Vector &x, double t, mfem::Vector &out){
+      out = 0.0;      
+      return ((void (*) (double *, double,  double *))address_)(x.GetData(),
+						                t,
+								out.GetData());
+    }
+    void callr(const mfem::Vector &x, mfem::Vector &out){
+      out = 0.0;
+      ((void (*) (double *, double *))address_)(x.GetData(), out.GetData());
+      for for (int i = 0; i < vdim_; i++) {
+	out[i] = outc[i].real;
+      }
+    }
+    void calltr(const mfem::Vector &x, double t, mfem::Vector &out){
+      out = 0.0;      
+      ((void (*) (double *, double,  std::complex<double> *))address_)(x.GetData(), t, outc);
+      for for (int i = 0; i < vdim_; i++) {
+	out[i] = outc[i].real;
+      }
+    }
+    void calli(const mfem::Vector &x, mfem::Vector &out){
+      out = 0.0;
+      ((void (*) (double *, double *))address_)(x.GetData(), outc);
+      for for (int i = 0; i < vdim_; i++) {
+	out[i] = outc[i].imag;
+      }
+       
+    }
+    void callti(const mfem::Vector &x, double t, mfem::Vector &out){
+      out = 0.0;
+      ((void (*) (double *, double,  std::complex<double> *))address_)(x.GetData(), t, outc);
+      for for (int i = 0; i < vdim_; i++) {
+	out[i] = outc[i].imag;
+      }
+    }
+    
+
+    mfem::VectorFunctionCoefficient* GenerateCoefficient(int mode=0){
+      using std::placeholders::_1;
+      using std::placeholders::_2;
+      using std::placeholders::_3;
+      if (td_) {
+	  switch(mode){
+	  case 0:
+	    obj1 = std::bind(&VectorNumbaFunction2::callt, this, _1, _2, _3);
+	    break;
+	  case 1:
+	    obj1 = std::bind(&VectorNumbaFunction2::calltr, this, _1, _2, _3);
+            outc = new complex<double>[vdim_];
+	    break;	    
+	  case 2:
+	    obj1 = std::bind(&VectorNumbaFunction2::callti, this, _1, _2, _3);
+            outc = new complex<double>[vdim_];
+	    break;	    
+          }
+          return new mfem::VectorFunctionCoefficientExtra(vdim_, obj1, this);	  	  
+      } else {
+	  switch(mode){
+	  case 0:
+	    obj2 = std::bind(&VectorNumbaFunction2::call, this, _1, _2);
+	    break;	    	    
+	  case 1:
+	    obj2 = std::bind(&VectorNumbaFunction2::callr, this, _1, _2);
+            outc = new complex<double>[vdim_];
+	    break;	    	    
+	  case 2:
+	    obj2 = std::bind(&VectorNumbaFunction2::calli, this, _1, _2);
+            outc = new complex<double>[vdim_];
+	    break;		    
+          }
+          return new mfem::VectorFunctionCoefficientExtra(vdim_, obj2, this);	  
+      }    
+
+      
+   }
+};
+// MatrixFunctionCoefficient
+class MatrixNumbaFunction2 : NumbaFunctionBase {
+ private:
+  std::function<void(const mfem::Vector &, mfem::DenseMatrix &)> obj1;
+  std::function<void(const mfem::Vector &, double, mfem::DenseMatrix &)> obj2;
+  int vdim_;
+    
+ public:
+    MatrixNumbaFunction2(PyObject *input, int vdim)
+       NumbaFunctionBase(input, 3, false), vim_(vdim){}
+    MatrixNumbaFunction2(PyObject *input, int vdim, bool td):
+       NumbaFunctionBase(input, 3, td), vdim_(vdim){}
+    ~MatrixNumbaFunction2(){delete [] outc};
+
+    void call(const mfem::Vector &x, mfem::DenseMatrix &out){
+      out = 0.0;
+      return ((void (*) (double *, double *))address_)(x.GetData(), 
+						       out.GetData());
+       
+    }
+    void callt(const mfem::Vector &x, double t, mfem::DenseMatrix &out){
+      out = 0.0;      
+      return ((void (*) (double *, double,  double *))address_)(x.GetData(),
+						                t,
+								out.GetData());
+    }
+    void callr(const mfem::Vector &x, mfem::DenseMatrix &out){
+      out = 0.0;
+      ((void (*) (double *, double *))address_)(x.GetData(), out.GetData());
+      for for (int i = 0; i < vdim_; i++) {
+	out[i] = outc[i].real;
+      }
+    }
+    void calltr(const mfem::Vector &x, double t, mfem::DenseMatrix &out){
+      out = 0.0;      
+      ((void (*) (double *, double,  std::complex<double> *))address_)(x.GetData(), t, outc);
+      for for (int i = 0; i < vdim_; i++) {
+	out[i] = outc[i].real;
+      }
+    }
+    void calli(const mfem::Vector &x, mfem::DenseMatrix &out){
+      out = 0.0;
+      ((void (*) (double *, double *))address_)(x.GetData(), outc);
+      for for (int i = 0; i < vdim_; i++) {
+	out[i] = outc[i].imag;
+      }
+       
+    }
+    void callti(const mfem::Vector &x, double t, mfem::DenseMatrix &out){
+      out = 0.0;
+      ((void (*) (double *, double,  std::complex<double> *))address_)(x.GetData(), t, outc);
+      for for (int i = 0; i < vdim_; i++) {
+	out[i] = outc[i].imag;
+      }
+    }
+   
+    mfem::MatrixFunctionCoefficient* GenerateCoefficient(int mode=0){
+      using std::placeholders::_1;
+      using std::placeholders::_2;
+      using std::placeholders::_3;
+      if (td_) {
+	  switch(mode){
+	  case 0:
+	    obj1 = std::bind(&MatrixNumbaFunction2::callt, this, _1, _2, _3);
+	    break;
+	  case 1:
+	    obj1 = std::bind(&MatrixNumbaFunction2::calltr, this, _1, _2, _3);
+            outc = new complex<double>[vdim_];
+	    break;
+	  case 2:
+	    obj1 = std::bind(&MatrixNumbaFunction2::callti, this, _1, _2, _3);
+            outc = new complex<double>[vdim_];
+	    break;
+          }
+          return new mfem::MatrixFunctionCoefficientExtra(vdim_, obj1, this);	  	  
+      } else {
+	  switch(mode){
+	  case 0:
+	    obj2 = std::bind(&MatrixNumbaFunction2::call, this, _1, _2);
+	    break;
+	  case 1:
+	    obj2 = std::bind(&MatrixNumbaFunction2::callr, this, _1, _2);
+            outc = new complex<double>[dim_];
+	    break;
+	  case 2:
+	    obj2 = std::bind(&MatrixNumbaFunction2::calli, this, _1, _2);
+            outc = new complex<double>[dim_];
+	    break;
+          }
+          return new mfem::MatrixFunctionCoefficientExtra(vdim_, obj2, this);	  
+      }    
+    }
+};
  
 %}
 
@@ -522,8 +884,8 @@ class NumbaFunction2 : public NumbaFunctionBase {
 %newobject VectorNumbaFunction::GenerateCoefficient;
 %newobject MatrixNumbaFunction::GenerateCoefficient;
 %newobject NumbaFunction2::GenerateCoefficient;
-//%newobject VectorNumbaFunction::GenerateCoefficient;
-//%newobject MatrixNumbaFunction::GenerateCoefficient;
+%newobject VectorNumbaFunction2::GenerateCoefficient;
+%newobject MatrixNumbaFunction2::GenerateCoefficient;
 
 %pythoncode %{
 
@@ -598,7 +960,6 @@ try:
             def dec(func):
 	        from numba import cfunc, njit
 			
-                #l = len(signature(func).parameters) - len(dependencies)
 	        setting = get_setting(complex, dependencies)
 
 		sig = generate_signature_scalar(setting)
@@ -615,20 +976,29 @@ try:
                                         types.CPointer(types.double))
 
 	        exec(generate_caller_scaler(settings))  # this defines _caller_func
-	        callar_params = {'inner_func': ff}
-                caller_func = self._copy_func_and_apply_params(_caller_func, caller_params)		      
+	        callar_params = {"inner_func": _caller_func}
+                caller_func = self._copy_func_and_apply_params(_caller_func, caller_params)
                 ff = cfunc(caller_sig)(caller_func)		      
                  
-
  	        if complex:
                      coeff = ComplexCoefficient()
-	             coeff.real = NumbaFunction2(ff, td).GenerateCoefficient(1);
-		     coeff.imag = NumbaFunction2(ff, td).GenerateCoefficient(2);		       
+	             coeff.real = NumbaFunction2(ff, td).GenerateCoefficient(1)
+		     coeff.imag = NumbaFunction2(ff, td).GenerateCoefficient(2)
+	             coeffs = (coeff.real, coeff.imag)
                 else:
-                     coeff = NumbaFunction(ff, sdim, td).GenerateCoefficient(0)
+   		     coeff = NumbaFunction(ff, td).GenerateCoefficient(0)
+	             coeffs = (coeff, )
+
+                for c in coeffs:
+	             c.SetParams(setting["s_coeffs"], len(setting["s_coeffs"]),
+		                 setting["v_coeffs"], len(setting["v_coeffs"]),
+				 setting["m_coeffs"], len(setting["m_coeffs"]),)
+		     c.SetIsComplex(setting["iscomplex"])
+                     c.SetKinds(setting["kinds"])			
                 return coeff
             return dec
-       def vector(self, sdim=3, shape=None, td=False, params=None, complex=False, dependencies=None):
+			
+        def vector(self, sdim, shape=None, td=False, params=None, complex=False, dependencies=None):
             shape = (sdim, ) if shape is None else shape
             if dependencies is None:
                 dependencies = []
@@ -636,61 +1006,106 @@ try:
                 params = {}
             params["sdim"] = sdim
             params["shape"] = shape
+
             def dec(func):
-                l = len(signature(func).parameters)
-                if l == 2 and not td:
-                    sig = types.void(types.CPointer(types.double),
-                                     types.CPointer(types.double),)
-                    use_0 = 1
-                elif l == 4 and not td:
-                    sig = vector_sig
-                    use_0 = 0			  
-                elif l == 3 and td:
-                    sig = types.void(types.CPointer(types.double),
-                                     types.CPointer(types.double),
-                                     types.double)
-                    use_0 = 1			  			  
-                elif l == 5 and td:
-                    sig = vector_sig_t
-                    use_0 = 0			  			  			  
+	        from numba import cfunc, njit
+
+                #l = len(signature(func).parameters) - len(dependencies)
+	        setting = get_setting(complex, dependencies)
+
+		sig = generate_signature_array(setting)
+			
+                gfunc=self._copy_func_and_apply_params(func, params)
+                ff = ngit(sig)(gfunc)
+  
+                if td
+                    caller_sig = types.double(types.CPointer(types.double),
+					      types.double,
+					      types.CPointer(types.double),
+					      types.CPointer(types.double))
+		else:
+                    caller_sig = types.double(types.CPointer(types.double),
+					      types.CPointer(types.double),
+					      types.CPointer(types.double))	      
+  
+	        exec(generate_caller_array(settings))  # this defines _caller_func
+	        callar_params = {'inner_func': _caller_func}
+                caller_func = self._copy_func_and_apply_params(_caller_func, caller_params)
+                ff = cfunc(caller_sig)(caller_func)		      
+
+		      
+ 	        if complex:
+                     coeff = ComplexCoefficient()
+		     coeff.real = VectorNumbaFunction2(ff, shape[0], td).GenerateCoefficient(1)
+		     coeff.imag = VectorNumbaFunction2(ff, shape[0], td).GenerateCoefficient(2)
+	             coeffs = (coeff.real, coeff.imag)
                 else:
-                    assert False, "Unsupported signature type"
-                from numba import cfunc
-                gfunc=self._copy_func_and_apply_params(func, params)		      
-                ff = cfunc(sig)(gfunc)
-                coeff = VectorNumbaFunction(ff, sdim, vdim, td).GenerateCoefficient(use_0)
+		     coeff = VectorNumbaFunction2(ff, shape[0], td).GenerateCoefficient(0)
+	             coeffs = (coeff, )
+
+                for c in coeffs:
+	             c.SetParams(setting["s_coeffs"], len(setting["s_coeffs"]),
+		                 setting["v_coeffs"], len(setting["v_coeffs"]),
+				 setting["m_coeffs"], len(setting["m_coeffs"]),)
+		     c.SetIsComplex(setting["iscomplex"])
+                     c.SetKinds(setting["kinds"])			
                 return coeff
             return dec
-      def matrix(self, sdim=3, shape=None, td=False, params=None, complex=False, dependencies=None):
-            shape = (sdim, sdim) if shape is None else shape
+
+        def matrix(self, sdim, shape=None, td=False, params=None, complex=False, dependencies=None):
+            shape = (sdim, sdim) if shape is None else
+	    assert shape[0] == shape[1], "must be squre matrix"
+
             if dependencies is None:
                 dependencies = []
             if params is None:
                 params = {}
-					   
+            params["sdim"] = sdim
+            params["shape"] = shape
+
             def dec(func):
-                l = len(signature(func).parameters)
-                if l == 2 and not td:
-                    sig = types.void(types.CPointer(types.double),
-                                     types.CPointer(types.double),)
-                    use_0 = 1
-                elif l == 4 and not td:
-                    sig = matrix_sig
-                    use_0 = 0			  
-                elif l == 3 and td:
-                    sig = types.void(types.CPointer(types.double),
-                                     types.CPointer(types.double),
-                                     types.double)
-                    use_0 = 1			  			  
-                elif l == 5 and td:
-                    sig = matrix_sig_t
-                    use_0 = 0			  			  			  
-                else:
-                    assert False, "Unsupported signature type"
-                from numba import cfunc
+	        from numba import cfunc, njit
+
+                #l = len(signature(func).parameters) - len(dependencies)
+					   
+	        setting = get_setting(complex, dependencies)
+
+		sig = generate_signature_array(setting)
+			
                 gfunc=self._copy_func_and_apply_params(func, params)
-                ff = cfunc(sig)(gfunc)
-                coeff = MatrixNumbaFunction(ff, sdim, vdim, td).GenerateCoefficient(use_0)
+                ff = ngit(sig)(gfunc)
+  
+                if td
+                    caller_sig = types.double(types.CPointer(types.double),
+					      types.double,
+					      types.CPointer(types.double),
+					      types.CPointer(types.double))
+		else:
+                    caller_sig = types.double(types.CPointer(types.double),
+					      types.CPointer(types.double),
+					      types.CPointer(types.double))	      
+  
+	        exec(generate_caller_array(settings))  # this defines _caller_func
+		      callar_params = {"inner_func": _caller_func}
+                caller_func = self._copy_func_and_apply_params(_caller_func, caller_params)
+                ff = cfunc(caller_sig)(caller_func)		      
+
+		      
+ 	        if complex:
+                     coeff = ComplexCoefficient()
+		     coeff.real = MatrixNumbaFunction2(ff, shape[0], td).GenerateCoefficient(1)
+		     coeff.imag = MatrixNumbaFunction2(ff, shape[0]], td).GenerateCoefficient(2)
+	             coeffs = (coeff.real, coeff.imag)
+                else:
+		     coeff = MatrixectorNumbaFunction2(ff, shape[0], td).GenerateCoefficient(0)
+	             coeffs = (coeff, )
+
+                for c in coeffs:
+	             c.SetParams(setting["s_coeffs"], len(setting["s_coeffs"]),
+		                 setting["v_coeffs"], len(setting["v_coeffs"]),
+				 setting["m_coeffs"], len(setting["m_coeffs"]),)
+		     c.SetIsComplex(setting["iscomplex"])
+                     c.SetKinds(setting["kinds"])			
                 return coeff
             return dec
     jit = _JIT()
