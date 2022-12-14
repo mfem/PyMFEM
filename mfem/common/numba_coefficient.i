@@ -429,12 +429,13 @@ classe FunctionCoefficeintExtraBase:
         switch(kinds[i]){
 	case 0:// scalar
            data[idx] = coeff[s_counter].Eval(T, ip);
+	   idx ++;	   
 	   s_counter ++;
-	   idx ++;
+	   
 	   if (iscomplex[i] == 1){
                data[idx] = coeff[s_counter].Eval(T, ip);
+	       idx ++	       
    	       s_counter ++;
-	       idx ++
 	   }
 	   break;
 	case 1:// vector
@@ -442,28 +443,20 @@ classe FunctionCoefficeintExtraBase:
            mfem::Vector V(vdim);
 	   vcoeff[v_counter].Eval(V, T, ip);
 	   
-           idx2 = idx;
 	   for (int j = 0; j < vdim; ++){
-	     data[idx2] =  V[j];
-	     idx2 ++;
-   	     if (iscomplex[i] == 1){
-	       idx2++;
-	     }
+	     data[idx] =  V[j];
+	     idx ++;
 	   }
-	   inc = vdim;
 	   v_counter ++;
+	   
 	   if (iscomplex[i] == 1){	   
 	      vcoeff[v_counter].Eval(V, T, ip);
-              idx2 = idx+1;	      
 	      for (int j = 0; j < vdim; ++){
-	          data[idx2] =  V[j];
-		  idx2 ++;
-		  idx2 ++;		  
+	          data[idx] =  V[j];
+		  idx ++;
 	      }
 	      v_counter ++;
-	      inc = inc + vdim;
 	   }
-	   idx = idx + inc;
 	   break;
 	case 2:// matrix
  	   w = coeff[v_counter].Width();
@@ -471,34 +464,24 @@ classe FunctionCoefficeintExtraBase:
            mfem::DenseMatrix M(h, w);	  
 	   mcoeff[m_counter].Eval(V, T, ip);
 
-           idx2 = idx;	  
            for (int jj = 0; jj < w; jj++){
  	      for (int ii = 0; ii < h; ii++){
-  	         data[idx2] =  M(ii, jj);
-	         idx2 ++;
-   	         if (iscomplex[i] == 1){
-	            idx2++;
-	         }
+  	         data[idx] =  M(ii, jj);
+	         idx ++;
 	      }
 	   }
-	   inc = h*w;
 	   m_counter ++;
+	   
 	   if (iscomplex[i] == 1){
   	      mcoeff[m_counter].Eval(V, T, ip);	     
-              idx2 = idx+1;
 	      for (int jj = 0; jj < w; jj++){
 		for (int ii = 0; ii < h; ii++){
-		  data[idx2] =  M(ii, jj);
-		  idx2 ++;
-		  if (iscomplex[i] == 1){
-	            idx2++;
-		  }
+		  data[idx] =  M(ii, jj);
+		  idx ++;
 		}
 	      }
 	      m_counter ++;
-	      inc = inc + h*w;
 	   }
-	   idx = idx + inc;	   
            break;
 	}
     }
