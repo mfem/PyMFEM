@@ -464,7 +464,7 @@ class NumbaFunction2 : public NumbaFunctionBase {
     double callt(const mfem::Vector &x, double t){
       return ((double (*)(double *, double, double *))address_)(x.GetData(), t, data);
     }
-    // complex return realpart
+    // complex real part
     double callr(const mfem::Vector &x){
       std::complex<double> ret;
       ret = ((std::complex<double> (*)(double *, double *))address_)(x.GetData(), data);
@@ -475,7 +475,7 @@ class NumbaFunction2 : public NumbaFunctionBase {
       ret = ((std::complex<double> (*)(double *, double, double *))address_)(x.GetData(), t, data);
       return ret.real;      
     }
-    // complex imag realpart
+    // complex imag part
     double calli(const mfem::Vector &x){
       std::complex<double> ret;
       ret = ((std::complex<double> (*)(double *, double *))address_)(x.GetData(), data);
@@ -527,113 +527,12 @@ class NumbaFunction2 : public NumbaFunctionBase {
 
 %pythoncode %{
 
-def generate_caller_scaler(settings):
-    '''
-    generate a callder function on the fly
-
-    ex)
-    if setting is {"input": (2, 1), "output": 2}
-
-    def _caller(ptx, data):
-        arr0 = data[0]+1j*data[0+1]
-        arr2 = data[2]
-        params = (arr0,arr2,)
-        return (inner_func(ptx, *params))
-
-    here inner_func is a function user provided.
-
-    '''
-    text = ['def _caller(ptx, data):']
-    count = 0
-
-    params_line = '    params = ('        
-    for s in settings["input"]:
-        if s == 2:
-            t = '    arr'+str(count) + ' = data[' + str(count) + ']+1j*data[' + str(count) +'+1]'
-            params_line += 'arr'+str(count)+','
-            count = count + 2
-        else:
-            t = '    arr'+str(count) + ' = data[' + str(count) + ']'
-            params_line += 'arr'+str(count)+','
-            count = count + 1
-        text.append(t)
-    params_line += ')'
-
-    text.append(params_line)
-    text.append("    return (inner_func(ptx, *params))")
-    return '\n'.join(text)
-	      
-def generate_signature_scalar(setting):
-    '''
-    generate a signature to numba-compile a user scalar function
-
-    ex)
-    if setting is {"input": (2, 1), "output": 2}
-  
-    output : types.complex128(CPointer(types.double), types.complex128,types.double,)
-
-    '''
-
-    sig = ''
-    if setting['output'] == 1:
-        sig += 'types.float64(CPointer(types.double, '
-    else:
-        sig += 'types.complex128(CPointer(types.double), '
-
-    for s in setting['input']:
-        if s == 1:
-            sig += 'types.double,'
-        else:
-            sig += 'types.complex128,'
-
-    sig = sig + ")"
-    return sig
-
-def generate_signature_array(setting):
-    '''
-    generate a signature to numba-compile a user vector/matrix function
-
-    ex)
-    if setting is {"input": (2, 1), "output": 2}
-  
-    output : types.void(CPointer(types.double), types.complex128, types.double, 
-                        CPointer(types.complex128))
-
-    '''
-
-    sig = ''
-    sig += 'types.void(CPointer(types.double, '
-    for s in setting['input']:
-        if s == 1:
-            sig += 'types.double,'
-        else:
-            sig += 'types.complex128,'
-
-    if setting['output'] == 1:
-        sig += 'CPointer(types.double), '
-    else:
-        sig += 'CPointer(types.complex128), '
-
-
-    sig = sig + ")"
-    return sig
-	      
-def get_setting(iscomplex=False, dependencies=None):
-    setting = {}
-    if iscomplex:
-        setting['output'] = 2
-    else:
-        setting['output'] = 1
-
-    input = []
-    for x in dependencis:
-        if isinstance(x, tuple)
-            input.append(2)
-        else:
-            input.append(1)
-
-    setting["input"] = input
-    return setting
+from mfem.commmon.numba_coefficient_utils import (generate_caller_scaler,
+						  generate_caller_array,
+						  generate_signature_scalar,
+						  generate_signature_array,
+						  get_setting)
+						  
 
 try:
     from numba import cfunc, types, carray
@@ -654,6 +553,8 @@ try:
   
     matrix_sig = vector_sig
     matrix_sig_t = vector_sig_t
+
+
       
     from inspect import signature
 
