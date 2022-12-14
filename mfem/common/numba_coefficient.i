@@ -67,6 +67,7 @@ c = MatrixNumbaFunction(m_func, sdim, ndim, True).GenerateCoefficient()
 #     1) a simpler interface using mfem.jit decorator
 #     2) dependecy support
 #     3) complex function (a coefficient which returns complex)
+#     4) ptx and out are already processed using carray (no need to call it)
 #
 (usage)
 sdim = mesh.SpaceDimension()
@@ -77,19 +78,19 @@ sdim = mesh.SpaceDimension()
 (examples)
 # scalar coefficient
 sdim = mesh.SpaceDimension()
+
 @mfem.jit.scalar(sdim)
 def c12(ptx):
     return ptx[0] * ptx[sdim-1]  ### note sdim is defined when this is compiled
 
 @mfem.jit.scalar(dependencies=((Er, Ei), density), complex=True))
 def c12(ptx, E, density):
-    return ptx[0] * (density * E.real + 1j*density.E.imag
+    return ptx[0] * (density * E[0].real + 1j*density.E[0].imag
 
 
 # vectorr coefficient
 @mfem.jit.vector(sdim, shape = (3,))
 def f_exact(x, out):
-    out_array = carray(out, (shape[0],))
     out[0] = (1 + kappa**2)*sin(kappa * x[1])
     out[1] = (1 + kappa**2)*sin(kappa * x[2])
     out[2] = (1 + kappa**2)*sin(kappa * x[0])
@@ -114,7 +115,6 @@ otherwise
 # vectorr coefficient
 @mfem.jit.matrix(3, shape = (3,3))
 def f_exact(x, out):
-    out_array = carray(out, (shape[0], shape[1]))  
     for i in range(ndim):
         for j in range(ndim):
             out_array[i, j] = i*m + j
@@ -987,7 +987,7 @@ try:
                                         types.CPointer(types.double))
 
 	        exec(generate_caller_scaler(settings))  # this defines _caller_func
-	        callar_params = {"inner_func": _caller_func}
+	        callar_params = {"inner_func": _caller_func,  "sdim": sdim}}
                 caller_func = self._copy_func_and_apply_params(_caller_func, caller_params)
                 ff = cfunc(caller_sig)(caller_func)		      
                  
@@ -1040,7 +1040,7 @@ try:
 					      types.CPointer(types.double))	      
   
 	        exec(generate_caller_array(settings))  # this defines _caller_func
-	        callar_params = {'inner_func': _caller_func}
+	        callar_params = {'inner_func': _caller_func,  "sdim": sdim}}
                 caller_func = self._copy_func_and_apply_params(_caller_func, caller_params)
                 ff = cfunc(caller_sig)(caller_func)		      
 
@@ -1097,7 +1097,7 @@ try:
 					      types.CPointer(types.double))	      
   
 	        exec(generate_caller_array(settings))  # this defines _caller_func
-		      callar_params = {"inner_func": _caller_func}
+		      callar_params = {"inner_func": _caller_func, "sdim": sdim}
                 caller_func = self._copy_func_and_apply_params(_caller_func, caller_params)
                 ff = cfunc(caller_sig)(caller_func)		      
 
