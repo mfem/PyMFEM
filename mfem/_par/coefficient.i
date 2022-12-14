@@ -124,7 +124,7 @@ namespace mfem {
 %include "../common/typemap_macros.i"
 LIST_TO_MFEMOBJ_POINTERARRAY_IN(mfem::IntegrationRule const *irs[],  mfem::IntegrationRule *, 0)
 
-%include "../../headers/coefficient.hpp"
+%include "fem/coefficient.hpp"
 %include "../common/numba_coefficient.i"
 
 %feature("director") mfem::VectorPyCoefficientBase;

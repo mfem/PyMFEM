@@ -37,7 +37,7 @@ import_array();
 %import "element.i"
 %import "vertex.i"
 %import "vtk.i"
-%import "mesh/mesquite.hpp"
+ //%import "mesh/mesquite.hpp"
 %import "densemat.i"
 %import "sparsemat.i"
 %import "eltrans.i"
