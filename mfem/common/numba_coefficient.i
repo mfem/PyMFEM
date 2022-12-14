@@ -98,10 +98,9 @@ x.ProjectCoefficient(f_exact)
 
 %inline %{
 classe FunctionCoefficeintExtra : public mfem::FunctionCoefficient{
+
  private:
   mfem::Array<double> data;
-
-
 
  public:
   void SetParams(mfem::Coefficient *coeff[], int num_coeff,
@@ -126,11 +125,13 @@ classe FunctionCoefficeintExtra : public mfem::FunctionCoefficient{
          return TDFunction(transip, GetTime());
       }
   }
+
   FunctionCoefficeintExtra::~FunctionCoefficeintExtra(){
     if (data){
       ~data;
     }
   }
+
 };
  
 class NumbaFunctionBase{
