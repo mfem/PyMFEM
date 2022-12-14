@@ -146,6 +146,7 @@ class NumbaFunctionBase{
     int  sdim_;
     bool td_;
     double data[256];
+    double *data_ptr[16];
     int datacount=0;
  public:
     NumbaFunctionBase(PyObject *input, int sdim, bool td): sdim_(sdim), td_(td){
@@ -176,6 +177,10 @@ class NumbaFunctionBase{
     double *GetData(){
       return data;
     }
+    double **GetPointer(){
+      return data_ptr;
+    }
+    
     void SetDataCount(int x){
       return datacount=x;
     }
@@ -365,9 +370,9 @@ class MatrixNumbaFunction : NumbaFunctionBase {
 };
 
 //
-//  FunctionCoefficeintExtra  (hold list of coefficients which is used as a parameter for function coefficient)
+//  NumbaCoefficeintBase  (hold list of coefficients which is used as a parameter for function coefficient)
 //
-classe FunctionCoefficeintExtraBase:
+classe NumbaCoefficeintBase:
  private:
   int num_coeffs;
   int num_vcoeffs;
@@ -380,9 +385,11 @@ classe FunctionCoefficeintExtraBase:
   mfem::MatrizCoefficient *mcoeff[];
 
  protected:
-  NumbaFunctionBase *obj);
+  NumbaFunctionBase *obj;
 
  public:
+    NumbaCoefficeintBase(NumbaFunctionBase *in_obj): obj(in_obj){}
+
   int ParamSize(){
     return size;
   }
@@ -417,25 +424,32 @@ classe FunctionCoefficeintExtraBase:
 
     int vdim, h, w = 0;
     int idx = 0;
-    int idx2 = 0;
     int inc = 0;
     double *data = obj.GetData();
-
+    double **data_ptr=obj.GetPointer();
+    
     int s_counter = 0;
     int v_counter = 0;
     int m_counter = 0;
-    
+    int counter = 0;
     for (int i = 0; i < num_dep; i++){
         switch(kinds[i]){
 	case 0:// scalar
            data[idx] = coeff[s_counter].Eval(T, ip);
+	   data_ptr[counter] = &data[idx];
+	     
 	   idx ++;	   
 	   s_counter ++;
+	   counter ++;
+
 	   
 	   if (iscomplex[i] == 1){
                data[idx] = coeff[s_counter].Eval(T, ip);
+   	       data_ptr[counter] = &data[idx];
+		 
 	       idx ++	       
    	       s_counter ++;
+   	       counter ++;	       
 	   }
 	   break;
 	case 1:// vector
@@ -443,19 +457,24 @@ classe FunctionCoefficeintExtraBase:
            mfem::Vector V(vdim);
 	   vcoeff[v_counter].Eval(V, T, ip);
 	   
+	   data_ptr[counter] = &data[idx];	   
 	   for (int j = 0; j < vdim; ++){
 	     data[idx] =  V[j];
 	     idx ++;
 	   }
 	   v_counter ++;
+	   counter ++;
 	   
 	   if (iscomplex[i] == 1){	   
 	      vcoeff[v_counter].Eval(V, T, ip);
+
+	      data_ptr[counter] = &data[idx];	   	      
 	      for (int j = 0; j < vdim; ++){
 	          data[idx] =  V[j];
 		  idx ++;
 	      }
 	      v_counter ++;
+    	      counter ++;	      
 	   }
 	   break;
 	case 2:// matrix
@@ -464,6 +483,7 @@ classe FunctionCoefficeintExtraBase:
            mfem::DenseMatrix M(h, w);	  
 	   mcoeff[m_counter].Eval(V, T, ip);
 
+	   data_ptr[counter] = &data[idx];
            for (int jj = 0; jj < w; jj++){
  	      for (int ii = 0; ii < h; ii++){
   	         data[idx] =  M(ii, jj);
@@ -471,9 +491,11 @@ classe FunctionCoefficeintExtraBase:
 	      }
 	   }
 	   m_counter ++;
+ 	   counter ++;
 	   
 	   if (iscomplex[i] == 1){
-  	      mcoeff[m_counter].Eval(V, T, ip);	     
+  	      mcoeff[m_counter].Eval(V, T, ip);
+	      data_ptr[counter] = &data[idx];	      
 	      for (int jj = 0; jj < w; jj++){
 		for (int ii = 0; ii < h; ii++){
 		  data[idx] =  M(ii, jj);
@@ -481,6 +503,7 @@ classe FunctionCoefficeintExtraBase:
 		}
 	      }
 	      m_counter ++;
+    	      counter ++;	      	      
 	   }
            break;
 	}
@@ -540,69 +563,66 @@ classe FunctionCoefficeintExtraBase:
     PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
   }
   }
+  virtual ~NumbaCoefficeintBase(){delete obj;}
 };
 
-classe FunctionCoefficeintExtra : public mfem::FunctionCoefficient,
-  public FunctionCoefficeintExtraBase {
+classe ScalaNumbaCoefficeint : public mfem::FunctionCoefficient,
+  public NumbaCoefficeintBase {
  public:
-  FunctionCoefficeintExtra(std::function<double(const Vector &)> F,
+  ScalarNumbaCoefficeint(std::function<double(const Vector &)> F,
 			   NumbaFunctionBase *in_obj)
-    : FunctionCoefficient(std::move(F)), obj(in_obj){}
- FunctionCoefficientExtra(std::function<double(const Vector &, double)> TDF,
+    : FunctionCoefficient(std::move(F)), NumbaCoefficeintBase(in_obj){}
+  ScalarNumbaCoefficient(std::function<double(const Vector &, double)> TDF,
  			   NumbaFunctionBase *in_obj)
-   : FunctionCoefficient(std::move(TDF)), obj(in_obj){}
+   : FunctionCoefficient(std::move(TDF)), NumbaCoefficeintBase(in_obj){}
   
  virtual double Eval(ElementTransformation &T,
 		      const IntegrationPoint &ip){
    PrepParams(T, ip);
    return mfem::FunctionCoefficient::Eval(T, ip);
 };
-classe VectorFunctionCoefficeintExtra : public mfem::VectorFunctionCoefficient,
-  public FunctionCoefficeintExtraBase {
+classe VectorNumbaCoefficeint : public mfem::VectorFunctionCoefficient,
+  public NumbaCoefficeintBase {
  public:
- VectorFunctionCoefficeintExtra(int dim,
-				std::function<double(const Vector &, DenseMatrix &)> F,
-   			        NumbaFunctionBase *in_obj)
-   : VectorFunctionCoefficient(dim, std::move(F)), obj(in_obj){}
- VectorFunctionCoefficientExtra(int dim,
-				std::function<double(const Vector &, double, DenseMatrix &)> TDF,
-    			        NumbaFunctionBase *in_obj)
-    : VectorFunctionCoefficient(dim, std::move(TDF)), obj(in_obj){}
+ VectorNumbaCoefficeint(int dim, std::function<double(const Vector &, DenseMatrix &)> F,
+		        NumbaFunctionBase *in_obj)
+   : VectorFunctionCoefficient(dim, std::move(F)), NumbaCoefficeintBase(in_obj){}
+ VectorNumbaCoefficient(int dim, std::function<double(const Vector &, double, DenseMatrix &)> TDF,
+   		        NumbaFunctionBase *in_obj)
+    : VectorFunctionCoefficient(dim, std::move(TDF)), NumbaCoefficeintBase(in_obj){}
   
   virtual double Eval(Vector &V, ElementTransformation &T,
 		      const IntegrationPoint &ip){
    PrepParams(T, ip);
    return mfem::VectorFunctionCoefficient::Eval(V, T, ip);
 };
-classe MatrixFunctionCoefficeintExtra : public mfem::MatrixFunctionCoefficient,
-  public FunctionCoefficeintExtraBase {
+classe MatrixNumbaCoefficeint : public mfem::MatrixFunctionCoefficient,
+  public NumbaCoefficeintBase {
  public:
- MatrixFunctionCoefficeintExtra(int dim,
-				std::function<double(const Vector &, DenseMatrix &)> F,
-   			        NumbaFunctionBase *in_obj)
-   : MatrixFunctionCoefficient(dim, std::move(F)), obj(in_obj){}
- MatrixFunctionCoefficientExtra(int dim,
-				std::function<double(const Vector &, double, DenseMatrix &)> TDF,
-   			        NumbaFunctionBase *in_obj)
-    : MatrixFunctionCoefficient(dim, std::move(TDF)), obj(in_obj){}
+ MatrixNumbaCoefficeint(int dim, std::function<double(const Vector &, DenseMatrix &)> F,
+   			NumbaFunctionBase *in_obj)
+   : MatrixFunctionCoefficient(dim, std::move(F)), NumbaCoefficeintBase(in_obj){}
+ MatrixNumbaCoefficient(int dim, std::function<double(const Vector &, double, DenseMatrix &)> TDF,
+   			NumbaFunctionBase *in_obj)
+    : MatrixFunctionCoefficient(dim, std::move(TDF)), NumbaCoefficeintBase(in_obj){}
   
   virtual double Eval(DenseMatrix &K, ElementTransformation &T,
 		      const IntegrationPoint &ip){
-   PrepParams(T, ip);
-   return mfem::MatrixFunctionCoefficient::Eval(K, T, ip);
+    PrepParams(T, ip);
+    return mfem::MatrixFunctionCoefficient::Eval(K, T, ip);
 };
 
 //  NumberFunction Implementation 2 (this is used for mfem.jit )
-class NumbaFunction2 : public NumbaFunctionBase {
+class ScalarNumbaFunction2 : public NumbaFunctionBase {
  private:
     std::function<double(const mfem::Vector &)> obj1;
     std::function<double(const mfem::Vector &, double t)> obj2;
 
  public:
-    NumbaFunction2(PyObject *input):
+    ScalarNumbaFunction2(PyObject *input):
        NumbaFunctionBase(input, 3, false){}
     
-    NumbaFunction2(PyObject *input, bool td):
+    ScalarNumbaFunction2(PyObject *input, bool td):
        NumbaFunctionBase(input, 3, td){}
 
     double call(const mfem::Vector &x){
@@ -633,12 +653,14 @@ class NumbaFunction2 : public NumbaFunctionBase {
       ret = ((std::complex<double> (*)(double *, double, double*, int))address_)(x.GetData(), t, data);
       return ret.imag;      
     }
-    
+};
     // FunctionCoefficient
     // mode   (0: real, 1: complex real part, 2: complex imag part)
-    mfem::FunctionCoefficient* GenerateCoefficient(int mode=0){
+ScalarNumbaCoefficient* GenerateScalarNumbaCoefficient(PyObject *numba_func,  bool td, int mode){    
       using std::placeholders::_1;
       using std::placeholders::_2;
+
+      ScalarNumbaFunction2 *func_wrap = new ScalarNumbaFunction2(numba_func, td);            
       if (td_) {
 	  switch(mode){
 	  case 0:
@@ -651,7 +673,7 @@ class NumbaFunction2 : public NumbaFunctionBase {
 	    obj2 = std::bind(&NumbaFunction2::callti, this, _1, _2);
 	    break;	    
           }
-          return new mfem::FunctionCoefficientExtra(obj2, this);	  	  
+          return ScalarNumbaCoefficient(obj2, func_wrap);	  
       } else {
 	  switch(mode){
 	  case 0:
@@ -664,11 +686,9 @@ class NumbaFunction2 : public NumbaFunctionBase {
 	    obj1 = std::bind(&NumbaFunction2::calli, this, _1);
 	    break;	    
           }
-          return new mfem::FunctionCoefficientExtra(obj1, this);	  
+          return ScalarNumbaCoefficient(obj1, func_wrap);
       }    
-
-    }
-};
+}
 // VectorFunctionCoefficient     
 class VectorNumbaFunction2 : public NumbaFunctionBase {
  private:
@@ -726,12 +746,17 @@ class VectorNumbaFunction2 : public NumbaFunctionBase {
 	out[i] = outc[i].imag;
       }
     }
-    
-
-    mfem::VectorFunctionCoefficient* GenerateCoefficient(int mode=0){
+    void create_outc(){
+       outc = new complex<double>[vdim_];
+    }
+};
+ 
+VectorNumbaCoefficient* GenerateVectorNumbaCoefficient(PyObject *numba_func, int vdim, bool td, int mode){
       using std::placeholders::_1;
       using std::placeholders::_2;
       using std::placeholders::_3;
+      
+      VectorNumbaFunction2 *func_wrap = new VectorNumbaFunction2(numba_func, vdim, td);      
       if (td_) {
 	  switch(mode){
 	  case 0:
@@ -739,14 +764,14 @@ class VectorNumbaFunction2 : public NumbaFunctionBase {
 	    break;
 	  case 1:
 	    obj1 = std::bind(&VectorNumbaFunction2::calltr, this, _1, _2, _3);
-            outc = new complex<double>[vdim_];
+            func_wrap->create_outc();	    	    
 	    break;	    
 	  case 2:
 	    obj1 = std::bind(&VectorNumbaFunction2::callti, this, _1, _2, _3);
-            outc = new complex<double>[vdim_];
+            func_wrap->create_outc();	    	    	    
 	    break;	    
           }
-          return new mfem::VectorFunctionCoefficientExtra(vdim_, obj1, this);	  	  
+          return new VectorNumbaCoefficientExtra(vdim_, obj1, func_wrap);	  	  
       } else {
 	  switch(mode){
 	  case 0:
@@ -754,26 +779,24 @@ class VectorNumbaFunction2 : public NumbaFunctionBase {
 	    break;	    	    
 	  case 1:
 	    obj2 = std::bind(&VectorNumbaFunction2::callr, this, _1, _2);
-            outc = new complex<double>[vdim_];
+            func_wrap->create_outc();	    	    	    	    
 	    break;	    	    
 	  case 2:
 	    obj2 = std::bind(&VectorNumbaFunction2::calli, this, _1, _2);
-            outc = new complex<double>[vdim_];
+            func_wrap->create_outc();	    	    	    	    	    
 	    break;		    
           }
-          return new mfem::VectorFunctionCoefficientExtra(vdim_, obj2, this);	  
+          return new VectorNumbaCoefficient(vdim_, obj2, func_wrap);	  
       }    
+}
 
-      
-   }
-};
 // MatrixFunctionCoefficient
 class MatrixNumbaFunction2 : NumbaFunctionBase {
  private:
   std::function<void(const mfem::Vector &, mfem::DenseMatrix &)> obj1;
   std::function<void(const mfem::Vector &, double, mfem::DenseMatrix &)> obj2;
   int vdim_;
-    
+  complex<double> *outc;
  public:
     MatrixNumbaFunction2(PyObject *input, int vdim)
        NumbaFunctionBase(input, 3, false), vim_(vdim){}
@@ -822,53 +845,58 @@ class MatrixNumbaFunction2 : NumbaFunctionBase {
 	out[i] = outc[i].imag;
       }
     }
-   
-    mfem::MatrixFunctionCoefficient* GenerateCoefficient(int mode=0){
-      using std::placeholders::_1;
-      using std::placeholders::_2;
-      using std::placeholders::_3;
-      if (td_) {
-	  switch(mode){
-	  case 0:
-	    obj1 = std::bind(&MatrixNumbaFunction2::callt, this, _1, _2, _3);
-	    break;
-	  case 1:
-	    obj1 = std::bind(&MatrixNumbaFunction2::calltr, this, _1, _2, _3);
-            outc = new complex<double>[vdim_];
-	    break;
-	  case 2:
-	    obj1 = std::bind(&MatrixNumbaFunction2::callti, this, _1, _2, _3);
-            outc = new complex<double>[vdim_];
-	    break;
-          }
-          return new mfem::MatrixFunctionCoefficientExtra(vdim_, obj1, this);	  	  
-      } else {
-	  switch(mode){
-	  case 0:
-	    obj2 = std::bind(&MatrixNumbaFunction2::call, this, _1, _2);
-	    break;
-	  case 1:
-	    obj2 = std::bind(&MatrixNumbaFunction2::callr, this, _1, _2);
-            outc = new complex<double>[dim_];
-	    break;
-	  case 2:
-	    obj2 = std::bind(&MatrixNumbaFunction2::calli, this, _1, _2);
-            outc = new complex<double>[dim_];
-	    break;
-          }
-          return new mfem::MatrixFunctionCoefficientExtra(vdim_, obj2, this);	  
-      }    
+    void create_outc(){
+       outc = new complex<double>[vdim_];
     }
 };
+   
+MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int vdim, bool td, int mode){
+  using std::placeholders::_1;
+  using std::placeholders::_2;
+  using std::placeholders::_3;
+
+  MatrixNumbaFunction2 *func_wrap = new MatrixNumbaFunction2(numba_func, vdim, td);
+  if (td_) {
+	  switch(mode){
+	  case 0:
+	    obj1 = std::bind(&MatrixNumbaFunction2::callt, func_wrap, _1, _2, _3);
+	    break;
+	  case 1:
+	    obj1 = std::bind(&MatrixNumbaFunction2::calltr, func_wrap, _1, _2, _3);
+            func_wrap->create_outc();	    
+	    break;
+	  case 2:
+	    obj1 = std::bind(&MatrixNumbaFunction2::callti, func_wrap, _1, _2, _3);
+            func_wrap->create_outc();
+	    break;
+          }
+          return new MatrixNumbaCoefficient(vdim_, obj1, func_wrap);	  	  
+   } else {
+	  switch(mode){
+	  case 0:
+	    obj2 = std::bind(&MatrixNumbaFunction2::call, func_wrap, _1, _2);
+	    break;
+	  case 1:
+	    obj2 = std::bind(&MatrixNumbaFunction2::callr, func_wrap, _1, _2);
+            func_wrap->create_outc();	    
+	    break;
+	  case 2:
+	    obj2 = std::bind(&MatrixNumbaFunction2::calli, func_wrap, _1, _2);
+            func_wrap->create_outc();	    	    
+	    break;
+          }
+          return new MatrixNumbaCoefficient(vdim_, obj2, func_wrap);	  
+      }    
+}
  
 %}
 
 %newobject NumbaFunction::GenerateCoefficient;
 %newobject VectorNumbaFunction::GenerateCoefficient;
 %newobject MatrixNumbaFunction::GenerateCoefficient;
-%newobject NumbaFunction2::GenerateCoefficient;
-%newobject VectorNumbaFunction2::GenerateCoefficient;
-%newobject MatrixNumbaFunction2::GenerateCoefficient;
+%newobject GenerateScalarNumbaCoefficient;
+%newobject GenerateVectorNumbaCoefficient;
+%newobject GenerateMatrixNumbaCoefficient;
 
 %pythoncode %{
 
@@ -943,7 +971,7 @@ try:
             def dec(func):
 	        from numba import cfunc, njit
 			
-	        setting = get_setting(complex, dependencies)
+		setting = get_setting(1, complex, dependencies)
 
 		sig = generate_signature_scalar(setting)
 			
@@ -965,11 +993,11 @@ try:
                  
  	        if complex:
                      coeff = ComplexCoefficient()
-	             coeff.real = NumbaFunction2(ff, td).GenerateCoefficient(1)
-		     coeff.imag = NumbaFunction2(ff, td).GenerateCoefficient(2)
+		     coeff.real = GenerateScalarNumbaCoefficient(ff, td, 1)
+		     coeff.imag = GenerateScalarNumbaCoefficient(ff, td, 2)		       
 	             coeffs = (coeff.real, coeff.imag)
                 else:
-   		     coeff = NumbaFunction(ff, td).GenerateCoefficient(0)
+		     coeff = GenerateScalarNumbaCoefficient(ff, td, 0)		       
 	             coeffs = (coeff, )
 
                 for c in coeffs:
@@ -994,7 +1022,7 @@ try:
 	        from numba import cfunc, njit
 
                 #l = len(signature(func).parameters) - len(dependencies)
-	        setting = get_setting(complex, dependencies)
+		setting = get_setting(shape[0], complex, dependencies)
 
 		sig = generate_signature_array(setting)
 			
@@ -1019,11 +1047,11 @@ try:
 		      
  	        if complex:
                      coeff = ComplexCoefficient()
-		     coeff.real = VectorNumbaFunction2(ff, shape[0], td).GenerateCoefficient(1)
-		     coeff.imag = VectorNumbaFunction2(ff, shape[0], td).GenerateCoefficient(2)
+	             coeff.real = GenerateVectorNumbaCoefficient(ff, shape[0], td, 1)
+		     coeff.imag = GenerateVectorNumbaCoefficient(ff, shape[0], td, 2)
 	             coeffs = (coeff.real, coeff.imag)
                 else:
-		     coeff = VectorNumbaFunction2(ff, shape[0], td).GenerateCoefficient(0)
+		     coeff =  GenerateVectorNumbaCoefficient(ff, shape[0], td, 0)
 	             coeffs = (coeff, )
 
                 for c in coeffs:
@@ -1051,7 +1079,7 @@ try:
 
                 #l = len(signature(func).parameters) - len(dependencies)
 					   
-	        setting = get_setting(complex, dependencies)
+		setting = get_setting((shape[0],shape[1]), complex, dependencies)
 
 		sig = generate_signature_array(setting)
 			
@@ -1076,11 +1104,11 @@ try:
 		      
  	        if complex:
                      coeff = ComplexCoefficient()
-		     coeff.real = MatrixNumbaFunction2(ff, shape[0], td).GenerateCoefficient(1)
-		     coeff.imag = MatrixNumbaFunction2(ff, shape[0]], td).GenerateCoefficient(2)
+	             coeff.real = GenerateMatrixNumbaCoefficient(ff, shape[0], td, 1)
+		     coeff.imag = GenerateMatrixNumbaCoefficient(ff, shape[0], td, 2)
 	             coeffs = (coeff.real, coeff.imag)
                 else:
-		     coeff = MatrixectorNumbaFunction2(ff, shape[0], td).GenerateCoefficient(0)
+   		     coeff = GenerateMatrixNumbaCoefficient(ff, shape[0], td, 0)
 	             coeffs = (coeff, )
 
                 for c in coeffs:

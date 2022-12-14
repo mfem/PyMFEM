@@ -8,34 +8,129 @@ def generate_caller_scaler(settings):
     generate a callder function on the fly
 
     ex)
-    if setting is {"input": (2, 1), "output": 2}
+    if setting is
+        {"iscomplex": (True, False), "kinds": (1, 0),
+                       "output": True, size: (10, 1)}
 
     def _caller(ptx, data):
-        arr0 = data[0]+1j*data[0+1]
-        arr2 = data[2]
-        params = (arr0,arr2,)
+        ptx = numba.carray(ptx, (sdim,), np.float64)      # for position
+        arr0r = numba.carray(data[0], (10,), np.float64)
+        arr0i = numba.carray(data[1], (10,), np.float64)
+        arr0 = arr0r+1j*arr0i
+
+        arr1 = numba.carray(data[0], (1,), np.float64)
+
+        params = (arr0, arr1)
         return (inner_func(ptx, *params))
 
     here inner_func is a function user provided.
 
     '''
     text = ['def _caller(ptx, data):']
+    text.append("    ptx = numba.carray(ptx, (sdim,), np.float64)"]
     count = 0
-
     params_line = '    params = ('
-    for s in settings["input"]:
-        if s == 2:
-            t = '    arr' + \
-                str(count) + ' = data[' + str(count) + \
-                    ']+1j*data[' + str(count) + '+1]'
+
+    for s, kind, size in zip(setting['iscomplex'], setting['kinds'], setting("size")):
+        if s:
+            t1 = '    arrr' + \
+                str(count) + ' = numba.carray[data[' + \
+                    str(count) + "], ("+str(size) + "), np.float64)"
+            t2 = '    arri' + \
+                str(count) + ' = numba.carray[data[' + \
+                    str(count+1) + "], ("+str(size) + "), np.float64)"
+            t3 = '    arr'+str(count) + ' = arrr' + \
+                               str(count) + "+1j*arri" + str(count)
+
+            text.extend((t1, t2, t3))
             params_line += 'arr'+str(count)+','
             count = count + 2
         else:
-            t = '    arr'+str(count) + ' = data[' + str(count) + ']'
+            t = '    arr' + \
+                str(count) + ' = numba.carray[data[' + \
+                    str(count) + "], ("+str(size) + "), np.float64)"
+            text.append(t)
+
             params_line += 'arr'+str(count)+','
             count = count + 1
-        text.append(t)
+
     params_line += ')'
+
+    text.append(params_line)
+    text.append("    return (inner_func(ptx, *params))")
+    return '\n'.join(text)
+
+
+def generate_caller_array(settings):
+    '''
+    generate a callder function on the fly
+
+    ex)
+    if setting is
+        {"iscomplex": (True, False), "kinds": (1, 0),
+                       "output": True, size: ((3, 3), 1), outsize: (2, 2) }
+
+    def _caller(ptx, data):
+        ptx = numba.carray(ptx, (sdim,), np.float64)      # for position
+        arr0r = numba.carray(data[0], (3, 3), np.float64)
+        arr0i = numba.carray(data[1], (3, 3), np.float64)
+        arr0 = arr0r+1j*arr0i
+
+        arr1 = numba.carray(data[0], (1,), np.float64)
+
+        outr = numba.carray(data[0], (2, 2), np.float64)
+        outi = numba.carray(data[1], (2, 2), np.float64)
+        out = outr+1j*outi
+
+        params = (arr0, arr1, out)
+        return (inner_func(ptx, *params))
+
+    here inner_func is a function user provided.
+
+    '''
+    text = ['def _caller(ptx, data):']
+    text.append("    ptx = numba.carray(ptx, (sdim,), np.float64)"]
+    count = 0
+    params_line = '    params = ('
+
+    for s, kind, size in zip(setting['iscomplex'], setting['kinds'], setting("size")):
+        if s:
+            if not isinstances(size, tuple):
+                size = (size, )
+            t1 = '    arrr' + \
+                str(count) + ' = numba.carray[data[' + \
+                    str(count) + "], "+str(size) + ", np.float64)"
+            t2 = '    arri' + \
+                str(count) + ' = numba.carray[data[' + \
+                    str(count+1) + "], "+str(size) + ", np.float64)"
+            t3 = '    arr'+str(count) + ' = arrr' + \
+                               str(count) + "+1j*arri" + str(count)
+
+            text.extend((t1, t2, t3))
+            params_line += 'arr'+str(count)+','
+            count = count + 2
+        else:
+            t = '    arr' + \
+                str(count) + ' = numba.carray[data[' + \
+                    str(count) + "], ("+str(size) + "), np.float64)"
+            text.append(t)
+
+            params_line += 'arr'+str(count)+','
+            count = count + 1
+
+    if output:
+       t1 = '    outr = numba.carray[data[' + \
+           str(count) + "], "+str(outsize) + ", np.float64)"
+       t2 = '    outi = numba.carray[data[' + \
+           str(count+1) + "], "+str(outsize) + ", np.float64)"
+       t3 = '    out = outr+1j*outi'
+       text.extend((t1, t2, t3))
+    else:
+       t1 = '    out = numba.carray[data[' + \
+           str(count) + "], "+str(outsize) + ", np.float64)"
+       text.append(t)
+
+    params_line += 'out)'
 
     text.append(params_line)
     text.append("    return (inner_func(ptx, *params))")
@@ -47,24 +142,35 @@ def generate_signature_scalar(setting):
     generate a signature to numba-compile a user scalar function
 
     ex)
-    if setting is {"input": (2, 1), "output": 2}
+    when user function is
+        func(ptx, complex_array, float_scalar)
 
-    output : types.complex128(CPointer(types.double),
-                              types.complex128,types.double,)
+    setting is
+        {"iscomplex": (2, 1), "kinds": (1, 0), "output": 2}
+
+    output is
+         types.complex128(types.double[:], types.complex128[:], types.double,)
+
+    user function is
 
     '''
-
     sig = ''
     if setting['output'] == 1:
-        sig += 'types.float64(CPointer(types.double, '
+        sig += 'types.float64(types.double[:], '
     else:
-        sig += 'types.complex128(CPointer(types.double), '
+        sig += 'types.complex128(types.double[:], '
 
-    for s in setting['input']:
-        if s == 1:
-            sig += 'types.double,'
+    for s, kind, in zip(setting['iscomplex'], setting['kinds'],):
+        if s:
+            if kind == 0:
+                sig += 'types.complex128,'
+            else:
+                sig += 'types.complex128[:], '
         else:
-            sig += 'types.complex128,'
+            if kind == 0:
+                sig += 'types.double,'
+            else:
+                sig += 'types.double[:], '
 
     sig = sig + ")"
     return sig
@@ -72,27 +178,39 @@ def generate_signature_scalar(setting):
 
 def generate_signature_array(setting):
     '''
-    generate a signature to numba-compile a user vector/matrix function
+    generate a signature to numba-compile a user scalar function
 
     ex)
-    if setting is {"input": (2, 1), "output": 2}
+    when user function is
+        func(ptx, complex_array, float_scalar, complex_output_array_)
 
-    output : types.void(CPointer(types.double), types.complex128, types.double,
-                        CPointer(types.complex128))
+    setting is
+        {"iscomplex": (2, 1), "kinds": (1, 0), "output": 2}
+
+    output is
+         types.void(types.double[:], types.complex128[:],
+                    types.double, types.complex128[:])
+
+    user function is
 
     '''
-    sig = ''
-    sig += 'types.void(CPointer(types.double, '
-    for s in setting['input']:
-        if s == 1:
-            sig += 'types.double,'
+    sig = 'types.void(types.double[:], '
+    for s, kind, in zip(setting['iscomplex'], setting['kinds'],):
+        if s:
+            if kind == 0:
+                sig += 'types.complex128,'
+            else:
+                sig += 'types.complex128[:], '
         else:
-            sig += 'types.complex128,'
+            if kind == 0:
+                sig += 'types.double,'
+            else:
+                sig += 'types.double[:], '
 
-    if setting['output'] == 1:
-        sig += 'CPointer(types.double), '
+    if setting['output']:
+        sig += 'types.complex128[:], '
     else:
-        sig += 'CPointer(types.complex128), '
+        sig += 'types.double[:], '
 
     sig = sig + ")"
     return sig
@@ -157,12 +275,12 @@ def _process_dependencies(dependencies):
 
     return iscomplex, sizes, kinds, s_coeffs, v_coeffs, m_coeffs
 
-def get_setting(iscomplex=False, dependencies=None):
+def get_setting(outsize, iscomplex=False, dependencies=None):
     setting = {}
     if iscomplex:
-        setting['output'] = 2
+        setting['output'] = True
     else:
-        setting['output'] = 1
+        setting['output'] = False
 
     iscomplex, sizes, kinds, s_coeffs, v_coeffs, m_coeffs = _process_dependencies(dependencies)
 
@@ -171,4 +289,6 @@ def get_setting(iscomplex=False, dependencies=None):
     setting['s_coeffs'] = s_coeffs
     setting['v_coeffs'] = v_coeffs
     setting['m_coeffs'] = m_coeffs
+    setting['outsize'] = outsize
+
     return setting
