@@ -80,9 +80,10 @@ class NumbaCoefficientBase
   int num_dep = 0;
   int kinds[16];       // for now upto 16 coefficients
   int iscomplex[16];   // for now upto 16 coefficients
-  mfem::Coefficient *coeff[16];
-  mfem::VectorCoefficient *vcoeff[16];
-  mfem::MatrixCoefficient *mcoeff[16];
+
+  mfem::Array<mfem::Coefficient *>  *pcoeffs = nullptr;
+  mfem::Array<mfem::VectorCoefficient *>  *pvcoeffs = nullptr;
+  mfem::Array<mfem::MatrixCoefficient *>  *pmcoeffs = nullptr;
 
  protected:
   NumbaFunctionBase *obj;
@@ -90,14 +91,22 @@ class NumbaCoefficientBase
  public:
     NumbaCoefficientBase(NumbaFunctionBase *in_obj): obj(in_obj){}
 
-  void SetParams(mfem::Coefficient *in_coeff[], int in_num_coeffs,
-		 mfem::VectorCoefficient *in_vcoeff[], int in_num_vcoeffs,
-		 mfem::MatrixCoefficient *in_mcoeff[], int in_num_mcoeffs);
+  //void SetParams(mfem::Coefficient *in_coeff[], int in_num_coeffs,
+  //		 mfem::VectorCoefficient *in_vcoeff[], int in_num_vcoeffs,
+  // 	 mfem::MatrixCoefficient *in_mcoeff[], int in_num_mcoeffs);
+  void SetParams(const mfem::Array<mfem::Coefficient *>&,
+		 const mfem::Array<mfem::VectorCoefficient *>&,
+		 const mfem::Array<mfem::MatrixCoefficient *>&);
   void PrepParams(mfem::ElementTransformation &T,
 		  const mfem::IntegrationPoint &ip);
   void SetKinds(PyObject *kinds_);
   void SetIsComplex(PyObject *isComplex_);
-  virtual ~NumbaCoefficientBase(){delete obj;}
+  virtual ~NumbaCoefficientBase(){
+    delete obj;
+    delete pcoeffs;
+    delete pvcoeffs;
+    delete pmcoeffs;
+  }
 };
 
 class ScalarNumbaCoefficient : public mfem::FunctionCoefficient,  public NumbaCoefficientBase

@@ -48,13 +48,18 @@ class m_coeff(mfem.MatrixPyCoefficient):
                          [0.0, p[1], p[2]],
                          [0.0, 0.0, p[2]]])
 
+
 @cfunc("float64(float64, float64, float64)")
 def s_func0(x, y, z):
     return x
 
+
 def s_func1(x, y, z):
     return x
+
+
 s_func0 = cfunc("float64(float64, float64, float64)")(s_func1)
+
 
 @cfunc(mfem.scalar_sig, cache=False)
 def s_func(ptx, sdim):
@@ -98,16 +103,25 @@ def m_func(ptx, out, sdim, vdim):
     '''
 
 # if dim is know, this provides a simpler way to use matrix coefficient
+
+
 @mfem.jit.matrix()
 def m_func2(ptx, out):
-    out_array = farray(out, (3, 3))
-    out_array[0, 0] = ptx[0]
-    out_array[0, 1] = ptx[1]
-    out_array[0, 2] = ptx[2]
-    out_array[1, 1] = ptx[1]
-    out_array[1, 2] = ptx[2]
-    out_array[2, 2] = ptx[2]
-    
+    #out_array = farray(out, (3, 3))
+    #out_array[0, 0] = ptx[0]
+    #out_array[0, 1] = ptx[1]
+    #out_array[0, 2] = ptx[2]
+    #out_array[1, 1] = ptx[1]
+    #out_array[1, 2] = ptx[2]
+    #out_array[2, 2] = ptx[2]
+    out[0, 0] = ptx[0]
+    out[0, 1] = ptx[1]
+    out[0, 2] = ptx[2]
+    out[1, 1] = ptx[1]
+    out[1, 2] = ptx[2]
+    out[2, 2] = ptx[2]
+
+
 def check(a, b, msg):
     assert len(a) == len(b), msg
     assert np.sum(np.abs(a - b)) == 0, msg
@@ -141,8 +155,9 @@ def run_test():
     c1 = mfem.NumbaFunction(s_func, sdim).GenerateCoefficient()
 
     @mfem.jit.scalar(sdim)
-    def c11(ptx, _sdim):
+    def c11(ptx):
         return s_func0(ptx[0], ptx[1],  ptx[2])
+
     @mfem.jit.scalar()
     def c12(ptx):
         return s_func0(ptx[0], ptx[1],  ptx[2])
@@ -189,14 +204,24 @@ def run_test():
     print("Checking matrix")
     a1 = mfem.BilinearForm(fespace2)
     a2 = mfem.BilinearForm(fespace2)
-    a3 = mfem.BilinearForm(fespace2)    
+    a3 = mfem.BilinearForm(fespace2)
     c4 = mfem.MatrixNumbaFunction(m_func, sdim, dim).GenerateCoefficient()
     c5 = m_coeff(dim)
 
     a1.AddDomainIntegrator(mfem.VectorFEMassIntegrator(c4))
     a2.AddDomainIntegrator(mfem.VectorFEMassIntegrator(c5))
-    a3.AddDomainIntegrator(mfem.VectorFEMassIntegrator(m_func2))
-    
+    # a3.AddDomainIntegrator(mfem.VectorFEMassIntegrator(m_func2))
+
+    @mfem.jit.matrix(sdim=3, dependencies=(c5,))
+    def m_func3(ptx, c5, out):
+        out[0, 0] = c5[0, 0]
+        out[0, 1] = c5[0, 1]
+        out[0, 2] = c5[0, 2]
+        out[1, 1] = c5[1, 1]
+        out[1, 2] = c5[1, 2]
+        out[2, 2] = c5[2, 2]
+    a3.AddDomainIntegrator(mfem.VectorFEMassIntegrator(m_func3))
+
     start = time.time()
     a1.Assemble()
     end = time.time()
@@ -218,7 +243,6 @@ def run_test():
     a3.Finalize()
     M3 = a3.SpMat()
     print("Numba (simpler interface) (matrix)", end - start)
-    
 
     #from mfem.commmon.sparse_utils import sparsemat_to_scipycsr
     #csr1 = sparsemat_to_scipycsr(M1, float)
