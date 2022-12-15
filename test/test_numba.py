@@ -205,22 +205,32 @@ def run_test():
     a1 = mfem.BilinearForm(fespace2)
     a2 = mfem.BilinearForm(fespace2)
     a3 = mfem.BilinearForm(fespace2)
+    a4 = mfem.BilinearForm(fespace2)    
     c4 = mfem.MatrixNumbaFunction(m_func, sdim, dim).GenerateCoefficient()
     c5 = m_coeff(dim)
 
     a1.AddDomainIntegrator(mfem.VectorFEMassIntegrator(c4))
     a2.AddDomainIntegrator(mfem.VectorFEMassIntegrator(c5))
-    # a3.AddDomainIntegrator(mfem.VectorFEMassIntegrator(m_func2))
+    a3.AddDomainIntegrator(mfem.VectorFEMassIntegrator(m_func2))
 
-    @mfem.jit.matrix(sdim=3, dependencies=(c5,))
-    def m_func3(ptx, c5, out):
-        out[0, 0] = c5[0, 0]
-        out[0, 1] = c5[0, 1]
-        out[0, 2] = c5[0, 2]
-        out[1, 1] = c5[1, 1]
-        out[1, 2] = c5[1, 2]
-        out[2, 2] = c5[2, 2]
-    a3.AddDomainIntegrator(mfem.VectorFEMassIntegrator(m_func3))
+    @mfem.jit.matrix(sdim=3, dependencies=(c4, c4), complex=True)
+    def m_func3(ptx, c4, c5, out):
+        out[0, 0] = c5[0, 0]*1j
+        out[0, 1] = c5[0, 1]*1j
+        out[0, 2] = c5[0, 2]*1j
+        out[1, 1] = c5[1, 1]*1j
+        out[1, 2] = c5[1, 2]*1j
+        out[2, 2] = c5[2, 2]*1j
+    @mfem.jit.matrix(sdim=3, dependencies=((m_func3.real, m_func3.imag), c4))
+    def m_func4(ptx, m_func3, c5, out):
+        out[0, 0] = m_func3[0, 0].imag
+        out[0, 1] = m_func3[0, 1].imag
+        out[0, 2] = m_func3[0, 2].imag
+        out[1, 1] = m_func3[1, 1].imag
+        out[1, 2] = m_func3[1, 2].imag
+        out[2, 2] = m_func3[2, 2].imag
+        
+    a4.AddDomainIntegrator(mfem.VectorFEMassIntegrator(m_func4))
 
     start = time.time()
     a1.Assemble()
@@ -243,6 +253,12 @@ def run_test():
     a3.Finalize()
     M3 = a3.SpMat()
     print("Numba (simpler interface) (matrix)", end - start)
+    start = time.time()
+    a4.Assemble()
+    end = time.time()
+    a4.Finalize()
+    M4 = a4.SpMat()
+    print("Numba (simpler interface) (matrix)", end - start)
 
     #from mfem.commmon.sparse_utils import sparsemat_to_scipycsr
     #csr1 = sparsemat_to_scipycsr(M1, float)
@@ -260,13 +276,23 @@ def run_test():
     check(M1.GetDataArray(),
           M3.GetDataArray(),
           "matrix coefficient does not agree with original")
+    check(M1.GetDataArray(),
+          M4.GetDataArray(),
+          "matrix coefficient does not agree with original")
     check(M1.GetIArray(),
           M3.GetIArray(),
+          "matrix coefficient does not agree with original")
+    check(M1.GetIArray(),
+          M4.GetIArray(),
           "matrix coefficient does not agree with original")
     check(M1.GetJArray(),
           M3.GetJArray(),
           "matrix coefficient does not agree with original")
+    check(M1.GetJArray(),
+          M4.GetJArray(),
+          "matrix coefficient does not agree with original")
 
+    print(m_func3)
     print("PASSED")
 
 

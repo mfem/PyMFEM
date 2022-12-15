@@ -863,12 +863,12 @@ class MatrixNumbaFunction2 : public NumbaFunctionBase {
 
 };
 
-MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int vdim, bool td, int mode){
+MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int width, int height, bool td, int mode){
   using std::placeholders::_1;
   using std::placeholders::_2;
   using std::placeholders::_3;
 
-  MatrixNumbaFunction2 *func_wrap = new MatrixNumbaFunction2(numba_func, vdim, td);
+  MatrixNumbaFunction2 *func_wrap = new MatrixNumbaFunction2(numba_func, width*height, td);
   if (td) {
           switch(mode){
           case 0:
@@ -883,7 +883,7 @@ MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int
             func_wrap->create_outc();
             break;
           }
-          return new MatrixNumbaCoefficient(vdim, func_wrap->get_obj2(), func_wrap);
+          return new MatrixNumbaCoefficient(width, func_wrap->get_obj2(), func_wrap);
    } else {
           switch(mode){
           case 0:
@@ -898,7 +898,7 @@ MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int
             func_wrap->create_outc();
             break;
           }
-          return new MatrixNumbaCoefficient(vdim, func_wrap->get_obj1(), func_wrap);
+          return new MatrixNumbaCoefficient(width, func_wrap->get_obj1(), func_wrap);
       }
 }
 %}
@@ -991,12 +991,17 @@ try:
                 gfunc=self._copy_func_and_apply_params(func, params)
                 ff = njit(sig)(gfunc)
 
+                if complex:
+                    outtype = types.complex128
+                else:
+                    outtype = types.double
+
                 if td:
-                    caller_sig = types.double(types.CPointer(types.double),
+                    caller_sig = outtype(types.CPointer(types.double),
                                        types.double,
                                        types.CPointer(types.voidptr))
                 else:
-                    caller_sig = types.double(types.CPointer(types.double),
+                    caller_sig = outtype(types.CPointer(types.double),
                                         types.CPointer(types.voidptr))
 
 
@@ -1043,15 +1048,20 @@ try:
                 gfunc=self._copy_func_and_apply_params(func, params)
                 ff = njit(sig)(gfunc)
 
+                if complex:
+                    outtype = types.complex128
+                else:
+                    outtype = types.double
+
                 if td:
                     caller_sig = types.void(types.CPointer(types.double),
                                             types.double,
                                             types.CPointer(types.voidptr),
-                                            types.CPointer(types.double))
+                                            types.CPointer(outtype))
                 else:
                     caller_sig = types.void(types.CPointer(types.double),
                                             types.CPointer(types.voidptr),
-                                            types.CPointer(types.double))
+                                            types.CPointer(outtype))
 
                 exec(generate_caller_scalar(setting), globals(), locals())
                 caller_params = {"inner_func": ff, "sdim": sdim, "np":np,
@@ -1098,15 +1108,19 @@ try:
                 gfunc=self._copy_func_and_apply_params(func, params)
                 ff = njit(sig)(gfunc)
 
+                if complex:
+                    outtype = types.complex128
+                else:
+                    outtype = types.double
                 if td:
                     caller_sig = types.void(types.CPointer(types.double),
                                             types.double,
                                             types.CPointer(types.voidptr),
-                                            types.CPointer(types.double))
+                                            types.CPointer(outtype))
                 else:
                     caller_sig = types.void(types.CPointer(types.double),
                                             types.CPointer(types.voidptr),
-                                            types.CPointer(types.double))
+                                            types.CPointer(outtype))
 
                 exec(generate_caller_array(setting), globals(), locals())  # this defines _caller
                 caller_params = {"inner_func": ff, "sdim": sdim, "np":np,
@@ -1116,11 +1130,11 @@ try:
 
                 if complex:
                      coeff = ComplexCoefficient()
-                     coeff.real = GenerateMatrixNumbaCoefficient(ff, shape[0], td, 1)
-                     coeff.imag = GenerateMatrixNumbaCoefficient(ff, shape[0], td, 2)
+                     coeff.real = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 1)
+                     coeff.imag = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 2)
                      coeffs = (coeff.real, coeff.imag)
                 else:
-                     coeff = GenerateMatrixNumbaCoefficient(ff, shape[0], td, 0)
+                     coeff = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 0)
                      coeffs = (coeff, )
 
                 for c in coeffs:

@@ -93,7 +93,7 @@ def generate_caller_array(setting):
 
     for s, kind, size in zip(setting['iscomplex'], setting['kinds'], setting["sizes"]):
         if s:
-            if not isinstances(size, tuple):
+            if not isinstance(size, tuple):
                 size = (size, )
             t1 = '    arrr' + \
                 str(count) + ' = farray(data[' + \
