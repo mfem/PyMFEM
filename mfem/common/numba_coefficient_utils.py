@@ -27,7 +27,7 @@ def generate_caller_scalar(settings):
 
     '''
     text = ['def _caller(ptx, data):']
-    text.append("    ptx = numba.carray(ptx, (sdim,), np.float64)"]
+    text.append("    ptx = numba.carray(ptx, (sdim,), np.float64)")
     count = 0
     params_line = '    params = ('
 
@@ -35,12 +35,12 @@ def generate_caller_scalar(settings):
         if s:
             t1 = '    arrr' + \
                 str(count) + ' = numba.carray[data[' + \
-                    str(count) + "], ("+str(size) + "), np.float64)"
+                str(count) + "], ("+str(size) + "), np.float64)"
             t2 = '    arri' + \
                 str(count) + ' = numba.carray[data[' + \
-                    str(count+1) + "], ("+str(size) + "), np.float64)"
+                str(count+1) + "], ("+str(size) + "), np.float64)"
             t3 = '    arr'+str(count) + ' = arrr' + \
-                               str(count) + "+1j*arri" + str(count)
+                str(count) + "+1j*arri" + str(count)
 
             text.extend((t1, t2, t3))
             params_line += 'arr'+str(count)+','
@@ -48,7 +48,7 @@ def generate_caller_scalar(settings):
         else:
             t = '    arr' + \
                 str(count) + ' = numba.carray[data[' + \
-                    str(count) + "], ("+str(size) + "), np.float64)"
+                str(count) + "], ("+str(size) + "), np.float64)"
             text.append(t)
 
             params_line += 'arr'+str(count)+','
@@ -89,7 +89,7 @@ def generate_caller_array(settings):
 
     '''
     text = ['def _caller(ptx, data):']
-    text.append("    ptx = numba.carray(ptx, (sdim,), np.float64)"]
+    text.append("    ptx = numba.carray(ptx, (sdim,), np.float64)")
     count = 0
     params_line = '    params = ('
 
@@ -99,12 +99,12 @@ def generate_caller_array(settings):
                 size = (size, )
             t1 = '    arrr' + \
                 str(count) + ' = numba.carray[data[' + \
-                    str(count) + "], "+str(size) + ", np.float64)"
+                str(count) + "], "+str(size) + ", np.float64)"
             t2 = '    arri' + \
                 str(count) + ' = numba.carray[data[' + \
-                    str(count+1) + "], "+str(size) + ", np.float64)"
+                str(count+1) + "], "+str(size) + ", np.float64)"
             t3 = '    arr'+str(count) + ' = arrr' + \
-                               str(count) + "+1j*arri" + str(count)
+                str(count) + "+1j*arri" + str(count)
 
             text.extend((t1, t2, t3))
             params_line += 'arr'+str(count)+','
@@ -112,23 +112,23 @@ def generate_caller_array(settings):
         else:
             t = '    arr' + \
                 str(count) + ' = numba.carray[data[' + \
-                    str(count) + "], ("+str(size) + "), np.float64)"
+                str(count) + "], ("+str(size) + "), np.float64)"
             text.append(t)
 
             params_line += 'arr'+str(count)+','
             count = count + 1
 
     if output:
-       t1 = '    outr = numba.carray[data[' + \
-           str(count) + "], "+str(outsize) + ", np.float64)"
-       t2 = '    outi = numba.carray[data[' + \
-           str(count+1) + "], "+str(outsize) + ", np.float64)"
-       t3 = '    out = outr+1j*outi'
-       text.extend((t1, t2, t3))
+        t1 = '    outr = numba.carray[data[' + \
+            str(count) + "], "+str(outsize) + ", np.float64)"
+        t2 = '    outi = numba.carray[data[' + \
+            str(count+1) + "], "+str(outsize) + ", np.float64)"
+        t3 = '    out = outr+1j*outi'
+        text.extend((t1, t2, t3))
     else:
-       t1 = '    out = numba.carray[data[' + \
-           str(count) + "], "+str(outsize) + ", np.float64)"
-       text.append(t)
+        t1 = '    out = numba.carray[data[' + \
+            str(count) + "], "+str(outsize) + ", np.float64)"
+        text.append(t)
 
     params_line += 'out)'
 
@@ -218,16 +218,14 @@ def generate_signature_array(setting):
 
 def _process_dependencies(dependencies):
     from mfem import mfem_mode
-    if mfem_mode == 'serial'
-        import mfem.ser import (Coefficient
-        import
-                                VectorCoefficient,
-                                MatrixCoefficient)
+    if mfem_mode == 'serial':
+        from mfem.ser import (Coefficient,
+                              VectorCoefficient,
+                              MatrixCoefficient)
     else:
-        import mfem.par import (Coefficient
-        import
-                                VectorCoefficient,
-                                MatrixCoefficient)
+        from mfem.par import (Coefficient,
+                              VectorCoefficient,
+                              MatrixCoefficient)
     iscomplex = []
     sizes = []
     kinds = []
@@ -240,40 +238,44 @@ def _process_dependencies(dependencies):
             xx = x[0]
             if x[0] is None or x[1] is None:
                 assert False, "dependency has to have both real imaginary parts defined"
-            if isinstacne(xx, VectorCoefficient):
-                assert x[0].GetVdim() == x[1].GetVdim() "real and imaginary has to have the same vdim"
-            if isinstacne(xx, MatrixCoefficient):
-                assert x[0].Height() == x[0].Width() "matrix must be square"
-                assert x[0].Height() == x[1].Height() "real and imaginary has to have the same vdim"
-                assert x[0].Width() == x[1].Width() "real and imaginary has to have the same vdim"
+            if isinstance(xx, VectorCoefficient):
+                assert x[0].GetVdim() == x[1].GetVdim(
+                ), "real and imaginary has to have the same vdim"
+            if isinstance(xx, MatrixCoefficient):
+                h1, w1 = x[0].Height(), x[0].Width()
+                h2, w2 = x[1].Height(), x[1].Width()
+                assert h1 == w1, "matrix must be square"
+                assert h1 == h2, "real and imaginary has to have the same vdim"
+                assert w1 == w2, "real and imaginary has to have the same vdim"
         else:
             iscomplex.append(False)
             xx = x
-            if isinstacne(xx, MatrixCoefficient):
-                assert xx.Height() == xx.Width() "matrix must be square"
+            if isinstance(xx, MatrixCoefficient):
+                assert xx.Height() == xx.Width(), "matrix must be square"
 
-        if isinstacne(xx], Coefficient):
-                kinds.append(0)
-                sizes.append(1)
-                s_coeffs.append(xx)
-                if iscomplex[-1]:
-                    s_coeffs.append(x[1])
-        elif isinstacne(x, VectorCoefficient):
-                kinds.append(1)
-                sizes.append(xx.GetVdim())
-                v_coeffs.append(xx)
-                if iscomplex[-1]:
-                    v_coeffs.append(x[1])
-        elif isinstacne(xx, MatrixCoefficient):
-                kinds.append(2)
-                sizes.append(xx.GetHeight()*xx.GetWidth())
-                m_coeffs.append(xx)
-                if iscomplex[-1]:
-                    m_coeffs.append(x[1])
+        if isinstance(xx, Coefficient):
+            kinds.append(0)
+            sizes.append(1)
+            s_coeffs.append(xx)
+            if iscomplex[-1]:
+                s_coeffs.append(x[1])
+        elif isinstance(x, VectorCoefficient):
+            kinds.append(1)
+            sizes.append(xx.GetVdim())
+            v_coeffs.append(xx)
+            if iscomplex[-1]:
+                v_coeffs.append(x[1])
+        elif isinstance(xx, MatrixCoefficient):
+            kinds.append(2)
+            sizes.append(xx.GetHeight()*xx.GetWidth())
+            m_coeffs.append(xx)
+            if iscomplex[-1]:
+                m_coeffs.append(x[1])
         else:
             assert False, "unknown coefficient type" + str(type(xx))
 
     return iscomplex, sizes, kinds, s_coeffs, v_coeffs, m_coeffs
+
 
 def get_setting(outsize, iscomplex=False, dependencies=None):
     setting = {}
@@ -282,7 +284,8 @@ def get_setting(outsize, iscomplex=False, dependencies=None):
     else:
         setting['output'] = False
 
-    iscomplex, sizes, kinds, s_coeffs, v_coeffs, m_coeffs = _process_dependencies(dependencies)
+    iscomplex, sizes, kinds, s_coeffs, v_coeffs, m_coeffs = _process_dependencies(
+        dependencies)
 
     setting['iscomplex'] = iscomplex
     setting['kinds'] = kinds
