@@ -117,10 +117,10 @@ class ScalarNumbaCoefficient : public mfem::FunctionCoefficient,  public NumbaCo
 class VectorNumbaCoefficient : public mfem::VectorFunctionCoefficient,  public NumbaCoefficientBase
 {
  public:
-  VectorNumbaCoefficient(int dim, std::function<double(const mfem::Vector &, mfem::Vector &)> F,
+  VectorNumbaCoefficient(int dim, std::function<void(const mfem::Vector &, mfem::Vector &)> F,
 		        NumbaFunctionBase *in_obj)
    : VectorFunctionCoefficient(dim, std::move(F)), NumbaCoefficientBase(in_obj){}
-  VectorNumbaCoefficient(int dim, std::function<double(const mfem::Vector &, double, mfem::Vector &)> TDF,
+  VectorNumbaCoefficient(int dim, std::function<void(const mfem::Vector &, double, mfem::Vector &)> TDF,
    		        NumbaFunctionBase *in_obj)
     : VectorFunctionCoefficient(dim, std::move(TDF)), NumbaCoefficientBase(in_obj){}
   
@@ -132,10 +132,10 @@ class VectorNumbaCoefficient : public mfem::VectorFunctionCoefficient,  public N
 class MatrixNumbaCoefficient : public mfem::MatrixFunctionCoefficient,  public NumbaCoefficientBase
 {
  public:
-  MatrixNumbaCoefficient(int dim, std::function<double(const mfem::Vector &, mfem::DenseMatrix &)> F,
+  MatrixNumbaCoefficient(int dim, std::function<void(const mfem::Vector &, mfem::DenseMatrix &)> F,
    			NumbaFunctionBase *in_obj)
    : MatrixFunctionCoefficient(dim, std::move(F)), NumbaCoefficientBase(in_obj){}
-  MatrixNumbaCoefficient(int dim, std::function<double(const mfem::Vector &, double, mfem::DenseMatrix &)> TDF,
+  MatrixNumbaCoefficient(int dim, std::function<void(const mfem::Vector &, double, mfem::DenseMatrix &)> TDF,
    			NumbaFunctionBase *in_obj)
     : MatrixFunctionCoefficient(dim, std::move(TDF)), NumbaCoefficientBase(in_obj){}
   
