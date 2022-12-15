@@ -3,7 +3,7 @@
 '''
 
 
-def generate_caller_scaler(settings):
+def generate_caller_scalar(settings):
     '''
     generate a callder function on the fly
 

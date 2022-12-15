@@ -140,16 +140,7 @@ x.ProjectCoefficient(f_exact)
 %}
 
 %inline %{
-class NumbaFunctionBase{
- protected:
-    void *address_;
-    int  sdim_;
-    bool td_;
-    double data[256];
-    double *data_ptr[16];
-    int datacount=0;
- public:
-    NumbaFunctionBase(PyObject *input, int sdim, bool td): sdim_(sdim), td_(td){
+void NumbaFunctionBase::SetUserFunction(PyObject *input){
        PyObject* module = PyImport_ImportModule("numba.core.ccallback");
        if (!module){
            PyErr_SetString(PyExc_RuntimeError, "Can not load numba.core.ccallback module");
@@ -169,23 +160,7 @@ class NumbaFunctionBase{
        void *ptr = PyLong_AsVoidPtr(address); 
        Py_DECREF(address);
        address_ = ptr;
-    }
-    double print_add(){
-       std::cout << address_ << '\n';
-       return 0;
-    }
-    double *GetData(){
-      return data;
-    }
-    double **GetPointer(){
-      return data_ptr;
-    }
-    
-    void SetDataCount(int x){
-      return datacount=x;
-    }
-    virtual ~NumbaFunctionBase(){}    
-};
+}
 
 class NumbaFunction : public NumbaFunctionBase {
  private:
@@ -370,40 +345,19 @@ class MatrixNumbaFunction : NumbaFunctionBase {
 };
 
 //
-//  NumbaCoefficeintBase  (hold list of coefficients which is used as a parameter for function coefficient)
+//  NumbaCoefficientBase  (hold list of coefficients which is used as a parameter for function coefficient)
 //
-classe NumbaCoefficeintBase:
- private:
-  int num_coeffs;
-  int num_vcoeffs;
-  int num_mcoeffs;
-  int num_dep = 0;
-  int kinds[16];       // for now upto 16 coefficients
-  int iscomplex[16];   // for now upto 16 coefficients
-  mfem::Coefficient *coeff;
-  mfem::VectorCoefficient *vcoeff[];
-  mfem::MatrizCoefficient *mcoeff[];
-
- protected:
-  NumbaFunctionBase *obj;
-
- public:
-    NumbaCoefficeintBase(NumbaFunctionBase *in_obj): obj(in_obj){}
-
-  int ParamSize(){
-    return size;
-  }
-  void SetParams(mfem::Coefficient *in_coeff[], int in_num_coeffs,
-		 mfem::VectorCoefficient *in_vcoeff[], int in_num_vcoeffs,
-		 mfem::MatrixCoefficient *in_mcoeff[], int in_num_mcoeffs){
+void NumbaCoefficientBase::SetParams(mfem::Coefficient *in_coeff[], int in_num_coeffs,
+				     mfem::VectorCoefficient *in_vcoeff[], int in_num_vcoeffs,
+				     mfem::MatrixCoefficient *in_mcoeff[], int in_num_mcoeffs){
     int size = 0;
 
     size += in_num_coeffs;
     for (int i = 0; i < in_num_vcoeffs; i++){
-      size += vcoeff[i].GetVdim();
+      size += vcoeff[i] -> GetVdim();
     }
     for (int i = 0; i < in_num_mcoeffs; i++){
-      size += mcoeff[i].GetHeight() * mcoeff[i].GetWidth();
+      size += mcoeff[i] -> GetHeight() * mcoeff[i] -> GetWidth();
     }
     coeff = in_coeff;
     vcoeff = in_vcoeff;
@@ -419,8 +373,8 @@ classe NumbaCoefficeintBase:
     MFEM_ASSERT(in_num_coeffs + in_num_vcoeffs + in_num_mcoeffs) < 16, "dependency must be upto 16");
   }
 
-  void PrepParams(ElementTransformation &T,
-		  const IntegrationPoint &ip){
+void NumbaCoefficientBase::PrepParams(mfem::ElementTransformation &T,
+			       const mfem::IntegrationPoint &ip){
 
     int vdim, h, w = 0;
     int idx = 0;
@@ -508,8 +462,8 @@ classe NumbaCoefficeintBase:
            break;
 	}
     }
-  }
-  void SetKinds(PyObject *kinds_){
+}
+void NumbaCoefficientBase::SetKinds(PyObject *kinds_){
   if (PyList_Check(kinds_)) {
      int ll = PyList_Size(kinds_);
      if (ll > 16){
@@ -535,8 +489,8 @@ classe NumbaCoefficeintBase:
   } else {
     PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
   }
-  }
-  void SetIsComplex(PyObject *isComplex_){
+}
+void NumbaCoefficientBase::SetIsComplex(PyObject *isComplex_){
   if (PyList_Check(isComplex_)) {
      int ll = PyList_Size(isComplex_);
      if (ll > 16){
@@ -562,55 +516,28 @@ classe NumbaCoefficeintBase:
   } else {
     PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
   }
-  }
-  virtual ~NumbaCoefficeintBase(){delete obj;}
-};
+}
 
-classe ScalaNumbaCoefficeint : public mfem::FunctionCoefficient,
-  public NumbaCoefficeintBase {
- public:
-  ScalarNumbaCoefficeint(std::function<double(const Vector &)> F,
-			   NumbaFunctionBase *in_obj)
-    : FunctionCoefficient(std::move(F)), NumbaCoefficeintBase(in_obj){}
-  ScalarNumbaCoefficient(std::function<double(const Vector &, double)> TDF,
- 			   NumbaFunctionBase *in_obj)
-   : FunctionCoefficient(std::move(TDF)), NumbaCoefficeintBase(in_obj){}
-  
- virtual double Eval(ElementTransformation &T,
-		      const IntegrationPoint &ip){
+
+virtual void ScalarNumbaCoefficient::Eval(mfem::ElementTransformation &T,
+					      const mfem::IntegrationPoint &ip){
    PrepParams(T, ip);
    return mfem::FunctionCoefficient::Eval(T, ip);
-};
-classe VectorNumbaCoefficeint : public mfem::VectorFunctionCoefficient,
-  public NumbaCoefficeintBase {
- public:
- VectorNumbaCoefficeint(int dim, std::function<double(const Vector &, DenseMatrix &)> F,
-		        NumbaFunctionBase *in_obj)
-   : VectorFunctionCoefficient(dim, std::move(F)), NumbaCoefficeintBase(in_obj){}
- VectorNumbaCoefficient(int dim, std::function<double(const Vector &, double, DenseMatrix &)> TDF,
-   		        NumbaFunctionBase *in_obj)
-    : VectorFunctionCoefficient(dim, std::move(TDF)), NumbaCoefficeintBase(in_obj){}
-  
-  virtual double Eval(Vector &V, ElementTransformation &T,
-		      const IntegrationPoint &ip){
+}
+
+virtual void VectorNumbaCoefficient::Eval(mfem::Vector &V,
+					      mfem::ElementTransformation &T,
+					      const mfem::IntegrationPoint &ip){
    PrepParams(T, ip);
    return mfem::VectorFunctionCoefficient::Eval(V, T, ip);
-};
-classe MatrixNumbaCoefficeint : public mfem::MatrixFunctionCoefficient,
-  public NumbaCoefficeintBase {
- public:
- MatrixNumbaCoefficeint(int dim, std::function<double(const Vector &, DenseMatrix &)> F,
-   			NumbaFunctionBase *in_obj)
-   : MatrixFunctionCoefficient(dim, std::move(F)), NumbaCoefficeintBase(in_obj){}
- MatrixNumbaCoefficient(int dim, std::function<double(const Vector &, double, DenseMatrix &)> TDF,
-   			NumbaFunctionBase *in_obj)
-    : MatrixFunctionCoefficient(dim, std::move(TDF)), NumbaCoefficeintBase(in_obj){}
-  
-  virtual double Eval(DenseMatrix &K, ElementTransformation &T,
-		      const IntegrationPoint &ip){
+  }
+
+virtual void MatrixNumbaCoefficient :: Eval(mfem::DenseMatrix &K,
+					      mfem::ElementTransformation &T,
+		                              const mfem::IntegrationPoint &ip){
     PrepParams(T, ip);
     return mfem::MatrixFunctionCoefficient::Eval(K, T, ip);
-};
+  }
 
 //  NumberFunction Implementation 2 (this is used for mfem.jit )
 class ScalarNumbaFunction2 : public NumbaFunctionBase {
@@ -653,7 +580,8 @@ class ScalarNumbaFunction2 : public NumbaFunctionBase {
       ret = ((std::complex<double> (*)(double *, double, double*, int))address_)(x.GetData(), t, data);
       return ret.imag;      
     }
-};
+}; 
+
     // FunctionCoefficient
     // mode   (0: real, 1: complex real part, 2: complex imag part)
 ScalarNumbaCoefficient* GenerateScalarNumbaCoefficient(PyObject *numba_func,  bool td, int mode){    
@@ -695,13 +623,13 @@ class VectorNumbaFunction2 : public NumbaFunctionBase {
   std::function<void(const mfem::Vector &, mfem::Vector &)> obj1;
   std::function<void(const mfem::Vector &, double, mfem::Vector &)> obj2;
   int vdim_;
-  std::complex<double> *outc == nulptr;
+  std::complex<double> *outc = nulptr;
  public: 
-    VectorNumbaFunction2(PyObject *input, int vdim):
-       NumbaFunctionBase(input, 3, false), vdim_(vdim){}
+    VectorNumbaFunction2(PyObject *input, int vdim)
+       : NumbaFunctionBase(input, 3, false), vdim_(vdim){}
     
-    VectorNumbaFunction2(PyObject *input, int vdim, bool td):
-       NumbaFunctionBase(input, 3, td), vdim_(vdim){}
+    VectorNumbaFunction2(PyObject *input, int vdim, bool td)
+       : NumbaFunctionBase(input, 3, td), vdim_(vdim){}
 
     ~VectorNumbaFunction2(){delete [] outc};
 
@@ -799,9 +727,9 @@ class MatrixNumbaFunction2 : NumbaFunctionBase {
   complex<double> *outc;
  public:
     MatrixNumbaFunction2(PyObject *input, int vdim)
-       NumbaFunctionBase(input, 3, false), vim_(vdim){}
-    MatrixNumbaFunction2(PyObject *input, int vdim, bool td):
-       NumbaFunctionBase(input, 3, td), vdim_(vdim){}
+      : NumbaFunctionBase(input, 3, false), vim_(vdim){}
+    MatrixNumbaFunction2(PyObject *input, int vdim, bool td)
+      : NumbaFunctionBase(input, 3, td), vdim_(vdim){}
     ~MatrixNumbaFunction2(){delete [] outc};
 
     void call(const mfem::Vector &x, mfem::DenseMatrix &out){
@@ -888,7 +816,6 @@ MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int
           return new MatrixNumbaCoefficient(vdim_, obj2, func_wrap);	  
       }    
 }
- 
 %}
 
 %newobject NumbaFunction::GenerateCoefficient;
@@ -900,7 +827,7 @@ MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int
 
 %pythoncode %{
 
-from mfem.commmon.numba_coefficient_utils import (generate_caller_scaler,
+from mfem.commmon.numba_coefficient_utils import (generate_caller_scalar,
 						  generate_caller_array,
 						  generate_signature_scalar,
 						  generate_signature_array,
@@ -986,7 +913,7 @@ try:
                     caller_sig = types.double(types.CPointer(types.double),
                                         types.CPointer(types.double))
 
-	        exec(generate_caller_scaler(settings))  # this defines _caller_func
+	        exec(generate_caller_scalar(settings))  # this defines _caller_func
 	        callar_params = {"inner_func": _caller_func,  "sdim": sdim}}
                 caller_func = self._copy_func_and_apply_params(_caller_func, caller_params)
                 ff = cfunc(caller_sig)(caller_func)		      
@@ -1124,4 +1051,5 @@ except ImportError:
     pass
 except BaseError:
     assert False, "Failed setting Numba signatures by an error other than ImportError"
+
 %}
