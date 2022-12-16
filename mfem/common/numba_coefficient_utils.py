@@ -26,7 +26,11 @@ def generate_caller_scalar(setting):
     here inner_func is a function user provided.
 
     '''
-    text = ['def _caller(ptx, data):']
+    if setting['td']:
+        text = ['def _caller(ptx, t, data):']
+    else:
+        text = ['def _caller(ptx, data):']
+
     text.append("    ptx = farray(ptx, (sdim,), np.float64)")
     count = 0
     params_line = '    params = ('
@@ -57,7 +61,10 @@ def generate_caller_scalar(setting):
     params_line += ')'
 
     text.append(params_line)
-    text.append("    return (inner_func(ptx, *params))")
+    if setting["td"]:
+        text.append("    return (inner_func(ptx, t, *params))")
+    else:
+        text.append("    return (inner_func(ptx, *params))")
     return '\n'.join(text)
 
 
@@ -86,7 +93,10 @@ def generate_caller_array(setting):
     here inner_func is a function user provided.
 
     '''
-    text = ['def _caller(ptx, data, out_):']
+    if setting['td']:
+        text = ['def _caller(ptx, t, data, out_):']
+    else:
+        text = ['def _caller(ptx, data, out_):']
     text.append("    ptx = farray(ptx, (sdim,), np.float64)")
     count = 0
     params_line = '    params = ('
@@ -126,7 +136,10 @@ def generate_caller_array(setting):
     params_line += 'out, )'
 
     text.append(params_line)
-    text.append("    return (inner_func(ptx, *params))")
+    if setting["td"]:
+        text.append("    return (inner_func(ptx, t, *params))")
+    else:
+        text.append("    return (inner_func(ptx, *params))")
     return '\n'.join(text)
 
 
@@ -152,6 +165,9 @@ def generate_signature_scalar(setting):
         sig += 'types.complex128(types.double[:], '
     else:
         sig += 'types.float64(types.double[:], '
+
+    if setting['td']:
+        sig += 'types.double, '
 
     for s, kind, in zip(setting['iscomplex'], setting['kinds'],):
         if s:
@@ -192,6 +208,9 @@ def generate_signature_array(setting):
 
     '''
     sig = 'types.void(types.double[:], '
+    if setting['td']:
+        sig += 'types.double, '
+
     for s, kind, in zip(setting['iscomplex'], setting['kinds'],):
         if s:
             if kind == 0:
@@ -245,7 +264,7 @@ def _process_dependencies(dependencies):
             if x[0] is None or x[1] is None:
                 assert False, "dependency has to have both real imaginary parts defined"
             if isinstance(xx, VectorCoefficient):
-                assert x[0].GetVdim() == x[1].GetVdim(
+                assert x[0].GetVDim() == x[1].GetVDim(
                 ), "real and imaginary has to have the same vdim"
             if isinstance(xx, MatrixCoefficient):
                 h1, w1 = x[0].GetHeight(), x[0].GetWidth()
@@ -267,7 +286,7 @@ def _process_dependencies(dependencies):
                 s_coeffs.append(x[1])
         elif isinstance(x, VectorCoefficient):
             kinds.append(1)
-            sizes.append(xx.GetVdim())
+            sizes.append(xx.GetVDim())
             v_coeffs.append(xx)
             if iscomplex[-1]:
                 v_coeffs.append(x[1])
@@ -283,7 +302,7 @@ def _process_dependencies(dependencies):
     return iscomplex, sizes, kinds, s_coeffs, v_coeffs, m_coeffs
 
 
-def get_setting(outsize, iscomplex=False, dependencies=None):
+def get_setting(outsize, iscomplex=False, dependencies=None, td=False):
     setting = {}
     if iscomplex:
         setting['output'] = True
@@ -304,5 +323,6 @@ def get_setting(outsize, iscomplex=False, dependencies=None):
     else:
         setting['outkind'] = 0
     setting['sizes'] = sizes
+    setting['td'] = td
 
     return setting

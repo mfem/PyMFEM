@@ -158,8 +158,8 @@ def run_test():
     def c11(ptx):
         return s_func0(ptx[0], ptx[1],  ptx[2])
 
-    @mfem.jit.scalar()
-    def c12(ptx):
+    @mfem.jit.scalar(td=True)
+    def c12(ptx, t):
         return s_func0(ptx[0], ptx[1],  ptx[2])
 
     c2 = s_coeff()
@@ -185,6 +185,12 @@ def run_test():
     c3 = mfem.VectorNumbaFunction(v_func, sdim, dim).GenerateCoefficient()
     c4 = v_coeff(dim)
 
+    @mfem.jit.vector(sdim=3, dependencies=(c3, c3), td=True,  complex=True)
+    def v_func4(ptx, t, c3, c4, out):
+        out[0] = c3[0]
+        out[1] = c4[1]
+        out[2] = c3[2]
+
     gf.Assign(0.0)
     start = time.time()
     gf.ProjectCoefficient(c3)
@@ -199,13 +205,21 @@ def run_test():
     data2 = gf.GetDataArray().copy()
     print("Python time (vector)", end - start)
 
+    gf.Assign(0.0)
+    start = time.time()
+    gf.ProjectCoefficient(v_func4.real)
+    end = time.time()
+    data3 = gf.GetDataArray().copy()
+    print("Numba2 time (vector)", end - start)
+
     check(data1, data2, "vector coefficient does not agree with original")
+    check(data1, data3, "vector coefficient does not agree with original")
 
     print("Checking matrix")
     a1 = mfem.BilinearForm(fespace2)
     a2 = mfem.BilinearForm(fespace2)
     a3 = mfem.BilinearForm(fespace2)
-    a4 = mfem.BilinearForm(fespace2)    
+    a4 = mfem.BilinearForm(fespace2)
     c4 = mfem.MatrixNumbaFunction(m_func, sdim, dim).GenerateCoefficient()
     c5 = m_coeff(dim)
 
@@ -221,15 +235,16 @@ def run_test():
         out[1, 1] = c5[1, 1]*1j
         out[1, 2] = c5[1, 2]*1j
         out[2, 2] = c5[2, 2]*1j
-    @mfem.jit.matrix(sdim=3, dependencies=((m_func3.real, m_func3.imag), c4))
-    def m_func4(ptx, m_func3, c5, out):
+
+    @mfem.jit.matrix(sdim=3, dependencies=((m_func3.real, m_func3.imag), c4), td=True)
+    def m_func4(ptx, t, m_func3, c5, out):
         out[0, 0] = m_func3[0, 0].imag
         out[0, 1] = m_func3[0, 1].imag
         out[0, 2] = m_func3[0, 2].imag
         out[1, 1] = m_func3[1, 1].imag
         out[1, 2] = m_func3[1, 2].imag
         out[2, 2] = m_func3[2, 2].imag
-        
+
     a4.AddDomainIntegrator(mfem.VectorFEMassIntegrator(m_func4))
 
     start = time.time()

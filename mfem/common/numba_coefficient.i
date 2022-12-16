@@ -708,7 +708,7 @@ class VectorNumbaFunction2 : public NumbaFunctionBase {
     }
     void callr(const mfem::Vector &x, mfem::Vector &out){
       out = 0.0;
-      ((void (*) (double *, void **, double *))address_)(x.GetData(), (void **)data_ptr, out.GetData());
+      ((void (*) (double *, void **, std::complex<double> *))address_)(x.GetData(), (void **)data_ptr, outc);
       for (int i = 0; i < vdim_; i++) {
         out[i] = outc[i].real();
       }
@@ -730,7 +730,7 @@ class VectorNumbaFunction2 : public NumbaFunctionBase {
     }
     void callti(const mfem::Vector &x, double t, mfem::Vector &out){
       out = 0.0;
-      ((void (*) (double *, double, void**,  std::complex<double> *))address_)(x.GetData(), t, (void**)data_ptr,  outc);
+      ((void (*) (double *, double, void**, std::complex<double> *))address_)(x.GetData(), t, (void**)data_ptr,  outc);
       for (int i = 0; i < vdim_; i++) {
         out[i] = outc[i].imag();
       }
@@ -867,7 +867,7 @@ MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int
   using std::placeholders::_1;
   using std::placeholders::_2;
   using std::placeholders::_3;
-
+  //mfem::DenseMatrix &m = mfem::DenseMatrix(width, height);
   MatrixNumbaFunction2 *func_wrap = new MatrixNumbaFunction2(numba_func, width*height, td);
   if (td) {
           switch(mode){
@@ -883,7 +883,7 @@ MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int
             func_wrap->create_outc();
             break;
           }
-          return new MatrixNumbaCoefficient(width, func_wrap->get_obj2(), func_wrap);
+            return new MatrixNumbaCoefficient(width, func_wrap->get_obj2(), func_wrap);
    } else {
           switch(mode){
           case 0:
@@ -984,7 +984,7 @@ try:
             def dec(func):
                 from numba import cfunc, njit
 
-                setting = get_setting(1, complex, dependencies)
+                setting = get_setting(1, complex, dependencies, td)
 
                 sig = generate_signature_scalar(setting)
 
@@ -1041,7 +1041,7 @@ try:
             def dec(func):
                 from numba import cfunc, njit
 
-                setting = get_setting(shape[0], complex, dependencies)
+                setting = get_setting(shape, complex, dependencies, td)
 
                 sig = generate_signature_array(setting)
 
@@ -1063,7 +1063,7 @@ try:
                                             types.CPointer(types.voidptr),
                                             types.CPointer(outtype))
 
-                exec(generate_caller_scalar(setting), globals(), locals())
+                exec(generate_caller_array(setting), globals(), locals())
                 caller_params = {"inner_func": ff, "sdim": sdim, "np":np,
                                  "carray":carray, "farray":farray}
                 caller_func = self._copy_func_and_apply_params(locals()["_caller"], caller_params)
@@ -1101,7 +1101,7 @@ try:
             def dec(func):
                 from numba import cfunc, njit
 
-                setting = get_setting((shape[0],shape[1]), complex, dependencies)
+                setting = get_setting(shape, complex, dependencies, td)
 
                 sig = generate_signature_array(setting)
 
