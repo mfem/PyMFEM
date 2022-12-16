@@ -1033,7 +1033,7 @@ try:
             return dec
 
         def vector(self, sdim=3, shape=None, td=False, params=None,
-                   complex=False, dependencies=None, newinterface=True):
+                   complex=False, dependencies=None, newinterface=False):
             shape = (sdim, ) if shape is None else shape
             if dependencies is None:
                 dependencies = []
@@ -1100,7 +1100,7 @@ try:
             return dec
 
         def matrix(self, sdim=3, shape=None, td=False, params=None,
-                   complex=False, dependencies=None, newinterface=True):
+                   complex=False, dependencies=None, newinterface=False):
             shape = (sdim, sdim) if shape is None else shape
             assert shape[0] == shape[1], "must be squre matrix"
 
