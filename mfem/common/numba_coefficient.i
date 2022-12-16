@@ -1,6 +1,6 @@
 /*
 #
-#  using numba JIT function for mfem::FunctionCoefficient
+#  USING numba JIT function for mfem::FunctionCoefficient
 #
 (1) Using NumberFunction object  ---
 (2) Using mfem.jit decorator (recommended)
@@ -71,9 +71,9 @@ c = MatrixNumbaFunction(m_func, sdim, ndim, True).GenerateCoefficient()
 #
 (usage)
 sdim = mesh.SpaceDimension()
-@scalar(sdim, td=False, params={}, complex=False, dependencies=None)
-@vector(sdim, shape=None, td=False, params={}, complex=False, dependencies=None)
-@matrix(sdim, shape=None, td=False, params={}, complex=False, dependencies=None)
+@scalar(sdim, td=False, params={}, complex=False, dependencies=None, newinterface=True)
+@vector(sdim, shape=None, td=False, params={}, complex=False, dependencies=None, newinterface=True)
+@matrix(sdim, shape=None, td=False, params={}, complex=False, dependencies=None, newinterface=True)
 
 (examples)
 # scalar coefficient
@@ -710,6 +710,7 @@ class VectorNumbaFunction2 : public NumbaFunctionBase {
       out = 0.0;
       ((void (*) (double *, void **, std::complex<double> *))address_)(x.GetData(), (void **)data_ptr, outc);
       for (int i = 0; i < vdim_; i++) {
+
         out[i] = outc[i].real();
       }
     }
@@ -914,8 +915,10 @@ MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int
 
 from mfem.common.numba_coefficient_utils import (generate_caller_scalar,
                                                  generate_caller_array,
+                                                 generate_caller_array_oldstyle,
                                                  generate_signature_scalar,
                                                  generate_signature_array,
+                                                 generate_signature_array_oldstyle,
                                                  get_setting)
 
 
@@ -1029,7 +1032,8 @@ try:
                 return coeff
             return dec
 
-        def vector(self, sdim=3, shape=None, td=False, params=None, complex=False, dependencies=None):
+        def vector(self, sdim=3, shape=None, td=False, params=None,
+                   complex=False, dependencies=None, newinterface=True):
             shape = (sdim, ) if shape is None else shape
             if dependencies is None:
                 dependencies = []
@@ -1043,7 +1047,10 @@ try:
 
                 setting = get_setting(shape, complex, dependencies, td)
 
-                sig = generate_signature_array(setting)
+                if newinterface:
+                    sig = generate_signature_array(setting)
+                else:
+                    sig = generate_signature_array_oldstyle(setting)
 
                 gfunc=self._copy_func_and_apply_params(func, params)
                 ff = njit(sig)(gfunc)
@@ -1063,7 +1070,12 @@ try:
                                             types.CPointer(types.voidptr),
                                             types.CPointer(outtype))
 
-                exec(generate_caller_array(setting), globals(), locals())
+                if newinterface:
+                    caller_text = generate_caller_array(setting)
+                else:
+                    caller_text = generate_caller_array_oldstyle(setting)
+
+                exec(caller_text, globals(), locals())
                 caller_params = {"inner_func": ff, "sdim": sdim, "np":np,
                                  "carray":carray, "farray":farray}
                 caller_func = self._copy_func_and_apply_params(locals()["_caller"], caller_params)
@@ -1087,7 +1099,8 @@ try:
                 return coeff
             return dec
 
-        def matrix(self, sdim=3, shape=None, td=False, params=None, complex=False, dependencies=None):
+        def matrix(self, sdim=3, shape=None, td=False, params=None,
+                   complex=False, dependencies=None, newinterface=True):
             shape = (sdim, sdim) if shape is None else shape
             assert shape[0] == shape[1], "must be squre matrix"
 
@@ -1103,7 +1116,10 @@ try:
 
                 setting = get_setting(shape, complex, dependencies, td)
 
-                sig = generate_signature_array(setting)
+                if newinterface:
+                    sig = generate_signature_array(setting)
+                else:
+                    sig = generate_signature_array_oldstyle(setting)
 
                 gfunc=self._copy_func_and_apply_params(func, params)
                 ff = njit(sig)(gfunc)
@@ -1122,7 +1138,13 @@ try:
                                             types.CPointer(types.voidptr),
                                             types.CPointer(outtype))
 
-                exec(generate_caller_array(setting), globals(), locals())  # this defines _caller
+                if newinterface:
+                    caller_text = generate_caller_array(setting)
+                else:
+                    caller_text = generate_caller_array_oldstyle(setting)
+
+                exec(caller_text, globals(), locals())
+
                 caller_params = {"inner_func": ff, "sdim": sdim, "np":np,
                                  "carray":carray, "farray":farray}
                 caller_func = self._copy_func_and_apply_params(locals()["_caller"], caller_params)

@@ -106,7 +106,7 @@ def m_func(ptx, out, sdim, vdim):
 
 
 @mfem.jit.matrix()
-def m_func2(ptx, out):
+def m_func2(p,):
     #out_array = farray(out, (3, 3))
     #out_array[0, 0] = ptx[0]
     #out_array[0, 1] = ptx[1]
@@ -114,12 +114,9 @@ def m_func2(ptx, out):
     #out_array[1, 1] = ptx[1]
     #out_array[1, 2] = ptx[2]
     #out_array[2, 2] = ptx[2]
-    out[0, 0] = ptx[0]
-    out[0, 1] = ptx[1]
-    out[0, 2] = ptx[2]
-    out[1, 1] = ptx[1]
-    out[1, 2] = ptx[2]
-    out[2, 2] = ptx[2]
+    return np.array([[p[0], p[1], p[2]],
+                     [0.0, p[1], p[2]],
+                     [0.0, 0.0, p[2]]])
 
 
 def check(a, b, msg):
@@ -185,35 +182,81 @@ def run_test():
     c3 = mfem.VectorNumbaFunction(v_func, sdim, dim).GenerateCoefficient()
     c4 = v_coeff(dim)
 
-    @mfem.jit.vector(sdim=3, dependencies=(c3, c3), td=True,  complex=True)
-    def v_func4(ptx, t, c3, c4, out):
-        out[0] = c3[0]
-        out[1] = c4[1]
-        out[2] = c3[2]
+    # @mfem.jit.vector(sdim=3, dependencies=(c3, c3), td=True,  complex=True)
+    # def v_func4(ptx, t, c3, c4):
+    #    return np.array([c3[0],c4[1],c3[2]], dtype=np.complex128)
+    @mfem.jit.vector(sdim=3, dependencies=(c3, ), td=True,  complex=True)
+    def v_func4(ptx, t, c3, ):
+        return np.array([c3[0], c3[1], c3[2]], dtype=np.complex128)
+    # @mfem.jit.vector(sdim=3, complex=True)
+    # def v_func4(ptx,  ):
+    #    return np.array([ptx[0],ptx[1],ptx[2]], dtype=np.complex128)
 
     gf.Assign(0.0)
     start = time.time()
-    gf.ProjectCoefficient(c3)
+    for i in range(10):
+        gf.ProjectCoefficient(c3)
     end = time.time()
     data1 = gf.GetDataArray().copy()
     print("Numba time (vector)", end - start)
 
     gf.Assign(0.0)
     start = time.time()
-    gf.ProjectCoefficient(c4)
+    for i in range(10):
+        gf.ProjectCoefficient(c4)
     end = time.time()
     data2 = gf.GetDataArray().copy()
     print("Python time (vector)", end - start)
 
     gf.Assign(0.0)
     start = time.time()
-    gf.ProjectCoefficient(v_func4.real)
+    # gf.ProjectCoefficient(v_func4.real)
+    for i in range(10):
+        gf.ProjectCoefficient(v_func4.real)
     end = time.time()
     data3 = gf.GetDataArray().copy()
     print("Numba2 time (vector)", end - start)
 
     check(data1, data2, "vector coefficient does not agree with original")
     check(data1, data3, "vector coefficient does not agree with original")
+
+    print("speed comparision with C++")
+
+    @mfem.jit.vector(sdim=3, newinterface=False)
+    def v_func4_old(ptx, out):
+        out[0] = 1
+        out[1] = 2.
+        out[2] = 3
+
+    @mfem.jit.vector(sdim=3)
+    def v_func4_new(ptx):
+        return np.array([1, 2, 3.])
+
+    gf.Assign(0.0)
+    start = time.time()
+    for i in range(10):
+        gf.ProjectCoefficient(v_func4_old)
+    end = time.time()
+    data3 = gf.GetDataArray().copy()
+    print("Numba time (vector) - old interface", end - start)
+
+    gf.Assign(0.0)
+    start = time.time()
+    for i in range(10):
+        gf.ProjectCoefficient(v_func4_new)
+    end = time.time()
+    data3 = gf.GetDataArray().copy()
+    print("Numba time (vector) - new interface", end - start)
+
+    val = mfem.Vector([1, 2, 3])
+    cc = mfem.VectorConstantCoefficient(val)
+    gf.Assign(0.0)
+    start = time.time()
+    for i in range(10):
+        gf.ProjectCoefficient(cc)
+    end = time.time()
+    data3 = gf.GetDataArray().copy()
+    print("C++ constant coefficient", end - start)
 
     print("Checking matrix")
     a1 = mfem.BilinearForm(fespace2)
@@ -228,22 +271,15 @@ def run_test():
     a3.AddDomainIntegrator(mfem.VectorFEMassIntegrator(m_func2))
 
     @mfem.jit.matrix(sdim=3, dependencies=(c4, c4), complex=True)
-    def m_func3(ptx, c4, c5, out):
-        out[0, 0] = c5[0, 0]*1j
-        out[0, 1] = c5[0, 1]*1j
-        out[0, 2] = c5[0, 2]*1j
-        out[1, 1] = c5[1, 1]*1j
-        out[1, 2] = c5[1, 2]*1j
-        out[2, 2] = c5[2, 2]*1j
+    def m_func3(ptx, c4, c5):
+        ret = np.array([[c5[0, 0], c5[0, 1], c5[0, 2]],
+                       [0.0,      c5[1, 1], c5[1, 2]],
+                       [0.0,      0.0,      c5[2, 2]]])
+        return ret*1j
 
     @mfem.jit.matrix(sdim=3, dependencies=((m_func3.real, m_func3.imag), c4), td=True)
-    def m_func4(ptx, t, m_func3, c5, out):
-        out[0, 0] = m_func3[0, 0].imag
-        out[0, 1] = m_func3[0, 1].imag
-        out[0, 2] = m_func3[0, 2].imag
-        out[1, 1] = m_func3[1, 1].imag
-        out[1, 2] = m_func3[1, 2].imag
-        out[2, 2] = m_func3[2, 2].imag
+    def m_func4(ptx, t, m_func3, c5):
+        return m_func3.imag
 
     a4.AddDomainIntegrator(mfem.VectorFEMassIntegrator(m_func4))
 
