@@ -71,9 +71,20 @@ c = MatrixNumbaFunction(m_func, sdim, ndim, True).GenerateCoefficient()
 #
 (usage)
 sdim = mesh.SpaceDimension()
-@scalar(sdim, td=False, params={}, complex=False, dependencies=None, newinterface=True)
-@vector(sdim, shape=None, td=False, params={}, complex=False, dependencies=None, newinterface=True)
-@matrix(sdim, shape=None, td=False, params={}, complex=False, dependencies=None, newinterface=True)
+@scalar(sdim, td=False, params={}, complex=False, dependency=None, interface='simple')
+@vector(sdim, shape=None, td=False, params={}, complex=False, dependency=None, interface='simple')
+@matrix(sdim, shape=None, td=False, params={}, complex=False, dependency=None, interface='simple')
+
+sdim: space dimenstion
+shape: shape of return value
+td: time-dependence (False: stationary, True: time-dependent
+complex: complex coefficient
+depenency: dependency to other coefficient
+interface: calling proceture
+   'simple': vector/matric function returns the result by value more pythonic.
+   'c++style': vector/matric function returns the result by parameter like C++
+    other options: one can pass a tuple of (caller, signature) pair to create a custom
+                   interface
 
 (examples)
 # scalar coefficient
@@ -83,7 +94,7 @@ sdim = mesh.SpaceDimension()
 def c12(ptx):
     return ptx[0] * ptx[sdim-1]  ### note sdim is defined when this is compiled
 
-@mfem.jit.scalar(dependencies=((Er, Ei), density), complex=True))
+@mfem.jit.scalar(dependency=((Er, Ei), density), complex=True))
 def c12(ptx, E, density):
     return ptx[0] * (density * E[0].real + 1j*density.E[0].imag
 
@@ -99,7 +110,7 @@ def f_exact(x, out):
 # (Er, Ei) means complex number (GF for real and imaginary parts)
 # density is double.
 
-@mfem.jit.vector(sdim, dependencies=((Er, Ei), density), complex=True)
+@mfem.jit.vector(sdim, dependency=((Er, Ei), density), complex=True)
 def f_exact(x, E, density, out):
     out[0] = (1 + kappa**2)*sin(kappa * x[1])
     out[1] = (1 + kappa**2)*sin(kappa * x[2])
@@ -977,9 +988,10 @@ try:
                 return ff
             return dec
 
-        def scalar(self, sdim=3, td=False, params={}, complex=False, dependencies=None):
-            if dependencies is None:
-                dependencies = []
+        def scalar(self, sdim=3, td=False, params={}, complex=False, dependency=None,
+                   interface="default"):
+            if dependency is None:
+                dependency = []
             if params is None:
                 params = {}
             params["sdim"] = sdim
@@ -987,9 +999,14 @@ try:
             def dec(func):
                 from numba import cfunc, njit
 
-                setting = get_setting(1, complex, dependencies, td)
+                setting = get_setting(1, complex, dependency, td)
 
-                sig = generate_signature_scalar(setting)
+                if interface=="default":
+                    sig = generate_signature_scalar(setting)
+                elif interface=="simple":
+                    sig = generate_signature_scalar(setting)
+                else:
+                    sig = interface[1](setting)
 
                 gfunc=self._copy_func_and_apply_params(func, params)
                 ff = njit(sig)(gfunc)
@@ -1007,8 +1024,14 @@ try:
                     caller_sig = outtype(types.CPointer(types.double),
                                         types.CPointer(types.voidptr))
 
+                if interface=="default":
+                     caller_txt = generate_caller_scalar(setting)
+                elif interface=="simple":
+                     caller_txt = generate_caller_scalar(setting)
+                else:
+                  caller_txt = interface[0](setting)
 
-                exec(generate_caller_scalar(setting), globals(), locals())
+                exec(caller_txt, globals(), locals())
                 caller_params = {"inner_func": ff,  "sdim": sdim,
                                  "carray":carray, "farray":farray}
                 caller_func = self._copy_func_and_apply_params(locals()["_caller"], caller_params)
@@ -1033,10 +1056,10 @@ try:
             return dec
 
         def vector(self, sdim=3, shape=None, td=False, params=None,
-                   complex=False, dependencies=None, newinterface=False):
+                   complex=False, dependency=None, interface="simple"):
             shape = (sdim, ) if shape is None else shape
-            if dependencies is None:
-                dependencies = []
+            if dependency is None:
+                dependency = []
             if params is None:
                 params = {}
             params["sdim"] = sdim
@@ -1045,12 +1068,14 @@ try:
             def dec(func):
                 from numba import cfunc, njit
 
-                setting = get_setting(shape, complex, dependencies, td)
+                setting = get_setting(shape, complex, dependency, td)
 
-                if newinterface:
+                if interface == "simple":
                     sig = generate_signature_array(setting)
-                else:
+                elif interface == "c++style":
                     sig = generate_signature_array_oldstyle(setting)
+                else:
+                    sig = interface[1](setting)
 
                 gfunc=self._copy_func_and_apply_params(func, params)
                 ff = njit(sig)(gfunc)
@@ -1070,10 +1095,12 @@ try:
                                             types.CPointer(types.voidptr),
                                             types.CPointer(outtype))
 
-                if newinterface:
+                if interface == "simple":
                     caller_text = generate_caller_array(setting)
-                else:
+                elif interface == "c++style":
                     caller_text = generate_caller_array_oldstyle(setting)
+                else:
+                    caller_text = interface[0](setting)
 
                 exec(caller_text, globals(), locals())
                 caller_params = {"inner_func": ff, "sdim": sdim, "np":np,
@@ -1100,12 +1127,12 @@ try:
             return dec
 
         def matrix(self, sdim=3, shape=None, td=False, params=None,
-                   complex=False, dependencies=None, newinterface=False):
+                   complex=False, dependency=None, interface="simple"):
             shape = (sdim, sdim) if shape is None else shape
             assert shape[0] == shape[1], "must be squre matrix"
 
-            if dependencies is None:
-                dependencies = []
+            if dependency is None:
+                dependency = []
             if params is None:
                 params = {}
             params["sdim"] = sdim
@@ -1114,12 +1141,14 @@ try:
             def dec(func):
                 from numba import cfunc, njit
 
-                setting = get_setting(shape, complex, dependencies, td)
+                setting = get_setting(shape, complex, dependency, td)
 
-                if newinterface:
+                if interface == "simple":
                     sig = generate_signature_array(setting)
-                else:
+                elif interface == "c++style":
                     sig = generate_signature_array_oldstyle(setting)
+                else:
+                    sig = interface[1](setting)
 
                 gfunc=self._copy_func_and_apply_params(func, params)
                 ff = njit(sig)(gfunc)
@@ -1138,10 +1167,12 @@ try:
                                             types.CPointer(types.voidptr),
                                             types.CPointer(outtype))
 
-                if newinterface:
+                if interface == "simple":
                     caller_text = generate_caller_array(setting)
-                else:
+                elif interface == "c++style":
                     caller_text = generate_caller_array_oldstyle(setting)
+                else:
+                    caller_text = interface[0](setting)
 
                 exec(caller_text, globals(), locals())
 

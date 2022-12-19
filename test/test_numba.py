@@ -105,7 +105,7 @@ def m_func(ptx, out, sdim, vdim):
 # if dim is know, this provides a simpler way to use matrix coefficient
 
 
-@mfem.jit.matrix()
+@mfem.jit.matrix(sdim=3)
 def m_func2(p,):
     #out_array = farray(out, (3, 3))
     #out_array[0, 0] = ptx[0]
@@ -182,10 +182,7 @@ def run_test():
     c3 = mfem.VectorNumbaFunction(v_func, sdim, dim).GenerateCoefficient()
     c4 = v_coeff(dim)
 
-    # @mfem.jit.vector(sdim=3, dependencies=(c3, c3), td=True,  complex=True)
-    # def v_func4(ptx, t, c3, c4):
-    #    return np.array([c3[0],c4[1],c3[2]], dtype=np.complex128)
-    @mfem.jit.vector(sdim=3, dependencies=(c3, ), td=True,  complex=True)
+    @mfem.jit.vector(sdim=3, dependency=(c3, ), td=True,  complex=True)
     def v_func4(ptx, t, c3, ):
         return np.array([c3[0], c3[1], c3[2]], dtype=np.complex128)
     # @mfem.jit.vector(sdim=3, complex=True)
@@ -222,7 +219,7 @@ def run_test():
 
     print("speed comparision with C++")
 
-    @mfem.jit.vector(sdim=3, newinterface=False)
+    @mfem.jit.vector(sdim=3, interface="c++style")
     def v_func4_old(ptx, out):
         out[0] = 1
         out[1] = 2.
@@ -270,16 +267,25 @@ def run_test():
     a2.AddDomainIntegrator(mfem.VectorFEMassIntegrator(c5))
     a3.AddDomainIntegrator(mfem.VectorFEMassIntegrator(m_func2))
 
-    @mfem.jit.matrix(sdim=3, dependencies=(c4, c4), complex=True)
+    @mfem.jit.matrix(sdim=3, dependency=(c4, c4), complex=True)
     def m_func3(ptx, c4, c5):
         ret = np.array([[c5[0, 0], c5[0, 1], c5[0, 2]],
-                       [0.0,      c5[1, 1], c5[1, 2]],
-                       [0.0,      0.0,      c5[2, 2]]])
+                        [0.0,      c5[1, 1], c5[1, 2]],
+                        [0.0,      0.0,      c5[2, 2]]])
         return ret*1j
 
-    @mfem.jit.matrix(sdim=3, dependencies=((m_func3.real, m_func3.imag), c4), td=True)
+    @mfem.jit.matrix(sdim=3, dependency=((m_func3.real, m_func3.imag), c4), td=True)
     def m_func4(ptx, t, m_func3, c5):
         return m_func3.imag
+
+    @mfem.jit.matrix(sdim=3, complex=False)
+    def m_func5(p):
+        x = p[0]
+        y = p[1]
+        return np.array([[1., 0., 0.], [0., 1., 0.], [0., 0., 1.]])
+
+        # _out_ =
+        # return np.array(_out_)
 
     a4.AddDomainIntegrator(mfem.VectorFEMassIntegrator(m_func4))
 
