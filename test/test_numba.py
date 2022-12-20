@@ -155,7 +155,7 @@ def run_test():
     def c11(ptx):
         return s_func0(ptx[0], ptx[1],  ptx[2])
 
-    @mfem.jit.scalar(td=True)
+    @mfem.jit.scalar(td=True, debug=True)
     def c12(ptx, t):
         return s_func0(ptx[0], ptx[1],  ptx[2])
 
@@ -219,7 +219,7 @@ def run_test():
 
     print("speed comparision with C++")
 
-    @mfem.jit.vector(sdim=3, interface="c++style")
+    @mfem.jit.vector(sdim=3, interface="c++style", debug=True)
     def v_func4_old(ptx, out):
         out[0] = 1
         out[1] = 2.
@@ -278,7 +278,7 @@ def run_test():
     def m_func4(ptx, t, m_func3, c5):
         return m_func3.imag
 
-    @mfem.jit.matrix(sdim=3, complex=False)
+    @mfem.jit.matrix(sdim=3, complex=False, debug=True)
     def m_func5(p):
         x = p[0]
         y = p[1]

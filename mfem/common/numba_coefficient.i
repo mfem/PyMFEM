@@ -71,9 +71,12 @@ c = MatrixNumbaFunction(m_func, sdim, ndim, True).GenerateCoefficient()
 #
 (usage)
 sdim = mesh.SpaceDimension()
-@scalar(sdim, td=False, params={}, complex=False, dependency=None, interface='simple')
-@vector(sdim, shape=None, td=False, params={}, complex=False, dependency=None, interface='simple')
-@matrix(sdim, shape=None, td=False, params={}, complex=False, dependency=None, interface='simple')
+@scalar(sdim, td=False, params={}, complex=False, dependency=None, interface='simple',
+        debug=False)
+@vector(sdim, shape=None, td=False, params={}, complex=False, dependency=None, 
+        interface='simple', debug=False)
+@matrix(sdim, shape=None, td=False, params={}, complex=False, dependency=None, 
+        interface='simple', debug=False)
 
 sdim: space dimenstion
 shape: shape of return value
@@ -85,6 +88,7 @@ interface: calling proceture
    'c++style': vector/matric function returns the result by parameter like C++
     other options: one can pass a tuple of (caller, signature) pair to create a custom
                    interface
+debug: extra debug print
 
 (examples)
 # scalar coefficient
@@ -989,7 +993,7 @@ try:
             return dec
 
         def scalar(self, sdim=3, td=False, params={}, complex=False, dependency=None,
-                   interface="default"):
+                   interface="default", debug=False):
             if dependency is None:
                 dependency = []
             if params is None:
@@ -1007,6 +1011,9 @@ try:
                     sig = generate_signature_scalar(setting)
                 else:
                     sig = interface[1](setting)
+
+                if debug:
+                    print("(DEBUG) signature for function:", sig)
 
                 gfunc=self._copy_func_and_apply_params(func, params)
                 ff = njit(sig)(gfunc)
@@ -1030,6 +1037,9 @@ try:
                      caller_txt = generate_caller_scalar(setting)
                 else:
                   caller_txt = interface[0](setting)
+
+                if debug:
+                     print("(DEBUG) generated caller function:", caller_txt)
 
                 exec(caller_txt, globals(), locals())
                 caller_params = {"inner_func": ff,  "sdim": sdim,
@@ -1056,7 +1066,7 @@ try:
             return dec
 
         def vector(self, sdim=3, shape=None, td=False, params=None,
-                   complex=False, dependency=None, interface="simple"):
+                   complex=False, dependency=None, interface="simple", debug=False):
             shape = (sdim, ) if shape is None else shape
             if dependency is None:
                 dependency = []
@@ -1077,6 +1087,9 @@ try:
                 else:
                     sig = interface[1](setting)
 
+                if debug:
+                    print("(DEBUG) signature for function:", sig)
+
                 gfunc=self._copy_func_and_apply_params(func, params)
                 ff = njit(sig)(gfunc)
 
@@ -1096,13 +1109,16 @@ try:
                                             types.CPointer(outtype))
 
                 if interface == "simple":
-                    caller_text = generate_caller_array(setting)
+                    caller_txt = generate_caller_array(setting)
                 elif interface == "c++style":
-                    caller_text = generate_caller_array_oldstyle(setting)
+                    caller_txt = generate_caller_array_oldstyle(setting)
                 else:
-                    caller_text = interface[0](setting)
+                    caller_txt = interface[0](setting)
 
-                exec(caller_text, globals(), locals())
+                if debug:
+                     print("(DEBUG) generated caller function:", caller_txt)
+
+                exec(caller_txt, globals(), locals())
                 caller_params = {"inner_func": ff, "sdim": sdim, "np":np,
                                  "carray":carray, "farray":farray}
                 caller_func = self._copy_func_and_apply_params(locals()["_caller"], caller_params)
@@ -1127,7 +1143,7 @@ try:
             return dec
 
         def matrix(self, sdim=3, shape=None, td=False, params=None,
-                   complex=False, dependency=None, interface="simple"):
+                   complex=False, dependency=None, interface="simple", debug=False):
             shape = (sdim, sdim) if shape is None else shape
             assert shape[0] == shape[1], "must be squre matrix"
 
@@ -1150,6 +1166,9 @@ try:
                 else:
                     sig = interface[1](setting)
 
+                if debug:
+                    print("(DEBUG) signature for function:", sig)
+
                 gfunc=self._copy_func_and_apply_params(func, params)
                 ff = njit(sig)(gfunc)
 
@@ -1168,13 +1187,16 @@ try:
                                             types.CPointer(outtype))
 
                 if interface == "simple":
-                    caller_text = generate_caller_array(setting)
+                    caller_txt = generate_caller_array(setting)
                 elif interface == "c++style":
-                    caller_text = generate_caller_array_oldstyle(setting)
+                    caller_txt = generate_caller_array_oldstyle(setting)
                 else:
-                    caller_text = interface[0](setting)
+                    caller_txt = interface[0](setting)
 
-                exec(caller_text, globals(), locals())
+                if debug:
+                     print("(DEBUG) generated caller function:", caller_txt)
+
+                exec(caller_txt, globals(), locals())
 
                 caller_params = {"inner_func": ff, "sdim": sdim, "np":np,
                                  "carray":carray, "farray":farray}
