@@ -182,8 +182,8 @@ def run_test():
     c3 = mfem.VectorNumbaFunction(v_func, sdim, dim).GenerateCoefficient()
     c4 = v_coeff(dim)
 
-    @mfem.jit.vector(sdim=3, dependency=(c3, ), td=True,  complex=True)
-    def v_func4(ptx, t, c3, ):
+    @mfem.jit.vector(sdim=3, dependency=(c3, c11), td=True,  complex=True)
+    def v_func4(ptx, t, c3, c11):
         return np.array([c3[0], c3[1], c3[2]], dtype=np.complex128)
     # @mfem.jit.vector(sdim=3, complex=True)
     # def v_func4(ptx,  ):

@@ -36,15 +36,22 @@ def generate_caller_scalar(setting):
     params_line = '    params = ('
 
     for s, kind, size in zip(setting['iscomplex'], setting['kinds'], setting["sizes"]):
+        if not isinstance(size, tuple):
+            size = (size, )
+
         if s:
             t1 = '    arrr' + \
                 str(count) + ' = farray(data[' + \
-                str(count) + "], ("+str(size) + "), np.float64)"
+                str(count) + "], "+str(size) + ", np.float64)"
             t2 = '    arri' + \
                 str(count) + ' = farray(data[' + \
-                str(count+1) + "], ("+str(size) + "), np.float64)"
+                str(count+1) + "], "+str(size) + ", np.float64)"
             t3 = '    arr'+str(count) + ' = arrr' + \
                 str(count) + "+1j*arri" + str(count)
+
+            if len(size)==1 and size[0] == 1:
+                t1 += '[0]'
+                t2 += '[0]'
 
             text.extend((t1, t2, t3))
             params_line += 'arr'+str(count)+','
@@ -52,7 +59,11 @@ def generate_caller_scalar(setting):
         else:
             t = '    arr' + \
                 str(count) + ' = farray(data[' + \
-                str(count) + "], ("+str(size) + "), np.float64)"
+                str(count) + "], "+str(size) + ", np.float64)"
+
+            if len(size)==1 and size[0] == 1:
+                t += '[0]'
+
             text.append(t)
 
             params_line += 'arr'+str(count)+','
@@ -95,15 +106,21 @@ def generate_caller_array_oldstyle(setting):
     params_line = '    params = ('
 
     for s, kind, size in zip(setting['iscomplex'], setting['kinds'], setting["sizes"]):
+        if not isinstance(size, tuple):
+            size = (size, )
+
         if s:
-            if not isinstance(size, tuple):
-                size = (size, )
             t1 = '    arrr' + \
                 str(count) + ' = farray(data[' + \
                 str(count) + "], "+str(size) + ", np.float64)"
             t2 = '    arri' + \
                 str(count) + ' = farray(data[' + \
                 str(count+1) + "], "+str(size) + ", np.float64)"
+
+            if len(size)==1 and size[0] == 1:
+                t1 += '[0]'
+                t2 += '[0]'
+
             t3 = '    arr'+str(count) + ' = arrr' + \
                 str(count) + "+1j*arri" + str(count)
 
@@ -113,7 +130,11 @@ def generate_caller_array_oldstyle(setting):
         else:
             t = '    arr' + \
                 str(count) + ' = farray(data[' + \
-                str(count) + "], ("+str(size) + "), np.float64)"
+                str(count) + "], "+str(size) + ", np.float64)"
+
+            if len(size)==1 and size[0] == 1:
+                t += '[0]'
+
             text.append(t)
 
             params_line += 'arr'+str(count)+','
@@ -174,15 +195,21 @@ def generate_caller_array(setting):
     params_line = '    params = ('
 
     for s, kind, size in zip(setting['iscomplex'], setting['kinds'], setting["sizes"]):
+        if not isinstance(size, tuple):
+            size = (size, )
+
         if s:
-            if not isinstance(size, tuple):
-                size = (size, )
             t1 = '    arrr' + \
                 str(count) + ' = farray(data[' + \
                 str(count) + "], "+str(size) + ", np.float64)"
             t2 = '    arri' + \
                 str(count) + ' = farray(data[' + \
                 str(count+1) + "], "+str(size) + ", np.float64)"
+
+            if len(size)==1 and size[0] == 1:
+                t1 += '[0]'
+                t2 += '[0]'
+
             t3 = '    arr'+str(count) + ' = arrr' + \
                 str(count) + "+1j*arri" + str(count)
 
@@ -192,7 +219,11 @@ def generate_caller_array(setting):
         else:
             t = '    arr' + \
                 str(count) + ' = farray(data[' + \
-                str(count) + "], ("+str(size) + "), np.float64)"
+                str(count) + "], "+str(size) + ", np.float64)"
+
+            if len(size)==1 and size[0] == 1:
+                t += '[0]'
+
             text.append(t)
 
             params_line += 'arr'+str(count)+','
