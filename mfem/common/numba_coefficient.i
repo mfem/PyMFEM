@@ -73,9 +73,9 @@ c = MatrixNumbaFunction(m_func, sdim, ndim, True).GenerateCoefficient()
 sdim = mesh.SpaceDimension()
 @scalar(sdim, td=False, params={}, complex=False, dependency=None, interface='simple',
         debug=False)
-@vector(sdim, shape=None, td=False, params={}, complex=False, dependency=None, 
+@vector(sdim, shape=None, td=False, params={}, complex=False, dependency=None,
         interface='simple', debug=False)
-@matrix(sdim, shape=None, td=False, params={}, complex=False, dependency=None, 
+@matrix(sdim, shape=None, td=False, params={}, complex=False, dependency=None,
         interface='simple', debug=False)
 
 sdim: space dimenstion
@@ -85,7 +85,7 @@ complex: complex coefficient
 depenency: dependency to other coefficient
 interface: calling proceture
    'simple': vector/matric function returns the result by value more pythonic.
-   'c++style': vector/matric function returns the result by parameter like C++
+   'c++': vector/matric function returns the result by parameter like C++
     other options: one can pass a tuple of (caller, signature) pair to create a custom
                    interface
 debug: extra debug print
@@ -1065,8 +1065,10 @@ try:
                 return coeff
             return dec
 
-        def vector(self, sdim=3, shape=None, td=False, params=None,
+        def vector(self, sdim=3, vdim=None, shape=None, td=False, params=None,
                    complex=False, dependency=None, interface="simple", debug=False):
+            if vdim is not None:
+                shape = (vdim, )
             shape = (sdim, ) if shape is None else shape
             if dependency is None:
                 dependency = []
@@ -1082,7 +1084,7 @@ try:
 
                 if interface == "simple":
                     sig = generate_signature_array(setting)
-                elif interface == "c++style":
+                elif interface == "c++":
                     sig = generate_signature_array_oldstyle(setting)
                 else:
                     sig = interface[1](setting)
@@ -1110,7 +1112,7 @@ try:
 
                 if interface == "simple":
                     caller_txt = generate_caller_array(setting)
-                elif interface == "c++style":
+                elif interface == "c++":
                     caller_txt = generate_caller_array_oldstyle(setting)
                 else:
                     caller_txt = interface[0](setting)
@@ -1119,8 +1121,13 @@ try:
                      print("(DEBUG) generated caller function:", caller_txt)
 
                 exec(caller_txt, globals(), locals())
-                caller_params = {"inner_func": ff, "sdim": sdim, "np":np,
+
+                caller_params = {"inner_func": ff, "sdim": sdim, "np":np, "shape":shape,
                                  "carray":carray, "farray":farray}
+
+                if vdim is not None:
+                    caller_params["vdim"] = vdim
+
                 caller_func = self._copy_func_and_apply_params(locals()["_caller"], caller_params)
                 ff = cfunc(caller_sig)(caller_func)
 
@@ -1161,7 +1168,7 @@ try:
 
                 if interface == "simple":
                     sig = generate_signature_array(setting)
-                elif interface == "c++style":
+                elif interface == "c++":
                     sig = generate_signature_array_oldstyle(setting)
                 else:
                     sig = interface[1](setting)
@@ -1188,7 +1195,7 @@ try:
 
                 if interface == "simple":
                     caller_txt = generate_caller_array(setting)
-                elif interface == "c++style":
+                elif interface == "c++":
                     caller_txt = generate_caller_array_oldstyle(setting)
                 else:
                     caller_txt = interface[0](setting)
@@ -1198,7 +1205,7 @@ try:
 
                 exec(caller_txt, globals(), locals())
 
-                caller_params = {"inner_func": ff, "sdim": sdim, "np":np,
+                caller_params = {"inner_func": ff, "sdim": sdim, "np":np, "shape":shape,
                                  "carray":carray, "farray":farray}
                 caller_func = self._copy_func_and_apply_params(locals()["_caller"], caller_params)
                 ff = cfunc(caller_sig)(caller_func)

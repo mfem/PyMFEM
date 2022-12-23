@@ -40,7 +40,7 @@ def run(order=1,
                              sin(kappa*x[2]),
                              sin(kappa*x[0])))
 
-        @mfem.jit.vector(interface="c++style")
+        @mfem.jit.vector(interface="c++")
         def f_exact(x, out):
             out[0] = (1 + kappa**2)*sin(kappa * x[1])
             out[1] = (1 + kappa**2)*sin(kappa * x[2])
