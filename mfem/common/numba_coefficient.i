@@ -81,7 +81,7 @@ sdim = mesh.SpaceDimension()
 sdim: space dimenstion
 shape: shape of return value
 td: time-dependence (False: stationary, True: time-dependent
-complex: complex coefficient
+complex: complex coefficient. if ture, it returns a tuple of coefficient
 depenency: dependency to other coefficient
 interface: calling proceture
    'simple': vector/matric function returns the result by value more pythonic.
@@ -962,10 +962,10 @@ try:
 
     from inspect import signature
 
-    class ComplexCoefficient(object):
-        def __init__(self):
-            self.real = None
-            self.imag = None
+    def IsNumbaCoefficient(obj):
+        return (isinstance(obj, ScalarNumbaCoefficient) or
+                isinstance(obj, VectorNumbaCoefficient) or
+                isinstance(obj, MatrixNumbaCoefficient))
 
     class _JIT(object):
         def _copy_func_and_apply_params(self, f, params):
@@ -1048,10 +1048,10 @@ try:
                 ff = cfunc(caller_sig)(caller_func)
 
                 if complex:
-                     coeff = ComplexCoefficient()
                      coeff.real = GenerateScalarNumbaCoefficient(ff, td, 1)
                      coeff.imag = GenerateScalarNumbaCoefficient(ff, td, 2)
                      coeffs = (coeff.real, coeff.imag)
+                     coeff = coeffs
                 else:
                      coeff = GenerateScalarNumbaCoefficient(ff, td, 0)
                      coeffs = (coeff, )
@@ -1132,10 +1132,10 @@ try:
                 ff = cfunc(caller_sig)(caller_func)
 
                 if complex:
-                     coeff = ComplexCoefficient()
                      coeff.real = GenerateVectorNumbaCoefficient(ff, shape[0], td, 1)
                      coeff.imag = GenerateVectorNumbaCoefficient(ff, shape[0], td, 2)
                      coeffs = (coeff.real, coeff.imag)
+                     coeff = coeffs
                 else:
                      coeff =  GenerateVectorNumbaCoefficient(ff, shape[0], td, 0)
                      coeffs = (coeff, )
@@ -1211,10 +1211,10 @@ try:
                 ff = cfunc(caller_sig)(caller_func)
 
                 if complex:
-                     coeff = ComplexCoefficient()
                      coeff.real = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 1)
                      coeff.imag = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 2)
                      coeffs = (coeff.real, coeff.imag)
+                     coeff = coeffs
                 else:
                      coeff = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 0)
                      coeffs = (coeff, )

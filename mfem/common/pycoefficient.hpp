@@ -25,7 +25,7 @@ private:
    int isTimeDependent;
 public:
  VectorPyCoefficientBase(int dim,  int tdep, Coefficient *q=NULL): VectorFunctionCoefficient(dim, fake_func_vec, q), isTimeDependent(tdep) { }
-   virtual void SetTime(double t){VectorFunctionCoefficient::SetTime(t);}  
+   virtual void SetTime(double t){VectorFunctionCoefficient::SetTime(t);}
    virtual void Eval(DenseMatrix &M, ElementTransformation &T,
 		     const IntegrationRule &ir); /* do I need this method?? */
    virtual void Eval(Vector &V, ElementTransformation &T,
@@ -39,9 +39,9 @@ private:
    int isTimeDependent;
 public:
    MatrixPyCoefficientBase(int dim,  int tdep): MatrixFunctionCoefficient(dim, fake_func_mat), isTimeDependent(tdep) { }
-   virtual void SetTime(double t){MatrixFunctionCoefficient::SetTime(t);}    
+   virtual void SetTime(double t){MatrixFunctionCoefficient::SetTime(t);}
    virtual void Eval(DenseMatrix &K, ElementTransformation &T,
-		     const IntegrationPoint &ip); 
+		     const IntegrationPoint &ip);
    virtual void _EvalPy(Vector &, DenseMatrix &){};
    virtual void _EvalPyT(Vector &, double, DenseMatrix &){};
    virtual ~MatrixPyCoefficientBase() { }
@@ -68,7 +68,7 @@ class NumbaFunctionBase
   double *GetData(){ return data; }
   double **GetPointer(){return data_ptr;}
   void SetDataCount(int x){datacount=x;}
-  virtual ~NumbaFunctionBase(){}    
+  virtual ~NumbaFunctionBase(){}
 };
 
 class NumbaCoefficientBase
@@ -112,13 +112,14 @@ class NumbaCoefficientBase
 class ScalarNumbaCoefficient : public mfem::FunctionCoefficient,  public NumbaCoefficientBase
 {
  public:
+  int GetNDim(){return 0;}
   ScalarNumbaCoefficient(std::function<double(const mfem::Vector &)> F,
 			   NumbaFunctionBase *in_obj)
     : FunctionCoefficient(std::move(F)), NumbaCoefficientBase(in_obj){}
   ScalarNumbaCoefficient(std::function<double(const mfem::Vector &, double)> TDF,
  			   NumbaFunctionBase *in_obj)
    : FunctionCoefficient(std::move(TDF)), NumbaCoefficientBase(in_obj){}
-  
+
   virtual double Eval(mfem::ElementTransformation &T,
 		      const mfem::IntegrationPoint &ip);
 };
@@ -126,13 +127,14 @@ class ScalarNumbaCoefficient : public mfem::FunctionCoefficient,  public NumbaCo
 class VectorNumbaCoefficient : public mfem::VectorFunctionCoefficient,  public NumbaCoefficientBase
 {
  public:
+  int GetNDim(){return 1;}
   VectorNumbaCoefficient(int dim, std::function<void(const mfem::Vector &, mfem::Vector &)> F,
 		        NumbaFunctionBase *in_obj)
    : VectorFunctionCoefficient(dim, std::move(F)), NumbaCoefficientBase(in_obj){}
   VectorNumbaCoefficient(int dim, std::function<void(const mfem::Vector &, double, mfem::Vector &)> TDF,
    		        NumbaFunctionBase *in_obj)
     : VectorFunctionCoefficient(dim, std::move(TDF)), NumbaCoefficientBase(in_obj){}
-  
+
  virtual void Eval(mfem::Vector &V,
 		   mfem::ElementTransformation &T,
 		   const mfem::IntegrationPoint &ip);
@@ -141,13 +143,14 @@ class VectorNumbaCoefficient : public mfem::VectorFunctionCoefficient,  public N
 class MatrixNumbaCoefficient : public mfem::MatrixFunctionCoefficient,  public NumbaCoefficientBase
 {
  public:
+  int GetNDim(){return 2;}
   MatrixNumbaCoefficient(int dim, std::function<void(const mfem::Vector &, mfem::DenseMatrix &)> F,
    			NumbaFunctionBase *in_obj)
    : MatrixFunctionCoefficient(dim, std::move(F)), NumbaCoefficientBase(in_obj){}
   MatrixNumbaCoefficient(int dim, std::function<void(const mfem::Vector &, double, mfem::DenseMatrix &)> TDF,
    			NumbaFunctionBase *in_obj)
     : MatrixFunctionCoefficient(dim, std::move(TDF)), NumbaCoefficientBase(in_obj){}
-  
+
   virtual void Eval(mfem::DenseMatrix &K,
 		    mfem::ElementTransformation &T,
 		    const mfem::IntegrationPoint &ip);
