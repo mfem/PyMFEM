@@ -9,7 +9,7 @@ def generate_caller_scalar(setting):
 
     ex)
     if setting is
-        {"iscomplex": (True, False), "kinds": (1, 0),
+        {"isdepcomplex": (True, False), "kinds": (1, 0),
                        "output": True, size: (10, 1)}
 
     def _caller(ptx, data):
@@ -35,7 +35,7 @@ def generate_caller_scalar(setting):
     count = 0
     params_line = '    params = ('
 
-    for s, kind, size in zip(setting['iscomplex'], setting['kinds'], setting["sizes"]):
+    for s, kind, size in zip(setting['isdepcomplex'], setting['kinds'], setting["sizes"]):
         if not isinstance(size, tuple):
             size = (size, )
 
@@ -84,7 +84,7 @@ def generate_caller_array_oldstyle(setting):
     generate a callder function on the fly
     ex)
     if setting is
-        {"iscomplex": (True, False), "kinds": (1, 0),
+        {"isdepcomplex": (True, False), "kinds": (1, 0),
                        "output": True, size: ((3, 3), 1), outsize: (2, 2) }
     def _caller(ptx, data, out_):
         ptx = farray(ptx, (sdim,), np.float64)      # for position
@@ -105,7 +105,7 @@ def generate_caller_array_oldstyle(setting):
     count = 0
     params_line = '    params = ('
 
-    for s, kind, size in zip(setting['iscomplex'], setting['kinds'], setting["sizes"]):
+    for s, kind, size in zip(setting['isdepcomplex'], setting['kinds'], setting["sizes"]):
         if not isinstance(size, tuple):
             size = (size, )
 
@@ -163,7 +163,7 @@ def generate_caller_array(setting):
 
     ex)
     if setting is
-        {"iscomplex": (True, False), "kinds": (1, 0),
+        {"isdepcomplex": (True, False), "kinds": (1, 0),
                        "output": True, size: ((3, 3), 1), outsize: (2, 2) }
 
     def _caller(ptx, data, out_):
@@ -194,7 +194,7 @@ def generate_caller_array(setting):
     count = 0
     params_line = '    params = ('
 
-    for s, kind, size in zip(setting['iscomplex'], setting['kinds'], setting["sizes"]):
+    for s, kind, size in zip(setting['isdepcomplex'], setting['kinds'], setting["sizes"]):
         if not isinstance(size, tuple):
             size = (size, )
 
@@ -265,7 +265,7 @@ def generate_signature_scalar(setting):
         func(ptx, complex_array, float_scalar)
 
     setting is
-        {"iscomplex": (2, 1), "kinds": (1, 0), "output": 2}
+        {"isdepcomplex": (2, 1), "kinds": (1, 0), "output": 2}
 
     output is
          types.complex128(types.double[:], types.complex128[:], types.double,)
@@ -282,7 +282,7 @@ def generate_signature_scalar(setting):
     if setting['td']:
         sig += 'types.double, '
 
-    for s, kind, in zip(setting['iscomplex'], setting['kinds'],):
+    for s, kind, in zip(setting['isdepcomplex'], setting['kinds'],):
         if s:
             if kind == 0:
                 sig += 'types.complex128,'
@@ -311,7 +311,7 @@ def generate_signature_array_oldstyle(setting):
         func(ptx, complex_array, float_scalar, complex_output_array_)
 
     setting is
-        {"iscomplex": (2, 1), "kinds": (1, 0), "output": 2, "outkind": 2}
+        {"isdepcomplex": (2, 1), "kinds": (1, 0), "output": 2, "outkind": 2}
 
     output is
          types.void(types.double[:], types.complex128[::],
@@ -324,7 +324,7 @@ def generate_signature_array_oldstyle(setting):
     if setting['td']:
         sig += 'types.double, '
 
-    for s, kind, in zip(setting['iscomplex'], setting['kinds'],):
+    for s, kind, in zip(setting['isdepcomplex'], setting['kinds'],):
         if s:
             if kind == 0:
                 sig += 'types.complex128,'
@@ -363,7 +363,7 @@ def generate_signature_array(setting):
         func(ptx, complex_array, float_scalar)
 
     setting is
-        {"iscomplex": (2, 1), "kinds": (1, 0), "output": 2}
+        {"isdepcomplex": (2, 1), "kinds": (1, 0), "output": 2}
 
     output is
          types.complex128[:, :](types.double[:], types.complex128[:], types.double,)
@@ -385,7 +385,7 @@ def generate_signature_array(setting):
     if setting['td']:
         sig += 'types.double, '
 
-    for s, kind, in zip(setting['iscomplex'], setting['kinds'],):
+    for s, kind, in zip(setting['isdepcomplex'], setting['kinds'],):
         if s:
             if kind == 0:
                 sig += 'types.complex128,'
@@ -410,11 +410,14 @@ def _process_dependencies(dependencies):
     if mfem_mode == 'serial':
         from mfem.ser import (Coefficient,
                               VectorCoefficient,
-                              MatrixCoefficient)
+                              MatrixCoefficient,
+                              IsNumbaCoefficient)
     else:
         from mfem.par import (Coefficient,
                               VectorCoefficient,
-                              MatrixCoefficient)
+                              MatrixCoefficient,
+                              IsNumbaCoefficient)                              
+        
     iscomplex = []
     sizes = []
     kinds = []
@@ -473,10 +476,10 @@ def get_setting(outsize, iscomplex=False, dependencies=None, td=False):
     else:
         setting['output'] = False
 
-    iscomplex, sizes, kinds, s_coeffs, v_coeffs, m_coeffs = _process_dependencies(
+    isdepcomplex, sizes, kinds, s_coeffs, v_coeffs, m_coeffs = _process_dependencies(
         dependencies)
 
-    setting['iscomplex'] = iscomplex
+    setting['isdepcomplex'] = isdepcomplex
     setting['kinds'] = kinds
     setting['s_coeffs'] = s_coeffs
     setting['v_coeffs'] = v_coeffs

@@ -209,7 +209,7 @@ def run_test():
     start = time.time()
     # gf.ProjectCoefficient(v_func4.real)
     for i in range(10):
-        gf.ProjectCoefficient(v_func4.real)
+        gf.ProjectCoefficient(v_func4[0])
     end = time.time()
     data3 = gf.GetDataArray().copy()
     print("Numba2 time (vector)", end - start)
@@ -219,7 +219,7 @@ def run_test():
 
     print("speed comparision with C++")
 
-    @mfem.jit.vector(sdim=3, interface="c++style", debug=True)
+    @mfem.jit.vector(sdim=3, interface="c++", debug=True)
     def v_func4_old(ptx, out):
         out[0] = 1
         out[1] = 2.
@@ -274,7 +274,7 @@ def run_test():
                         [0.0,      0.0,      c5[2, 2]]])
         return ret*1j
 
-    @mfem.jit.matrix(sdim=3, dependency=((m_func3.real, m_func3.imag), c4), td=True)
+    @mfem.jit.matrix(sdim=3, dependency=(m_func3, c4), td=True)
     def m_func4(ptx, t, m_func3, c5):
         return m_func3.imag
 

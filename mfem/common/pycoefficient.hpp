@@ -79,7 +79,8 @@ class NumbaCoefficientBase
   int num_mcoeffs;
   int num_dep = 0;
   int kinds[16];       // for now upto 16 coefficients
-  int iscomplex[16];   // for now upto 16 coefficients
+  int isdepcomplex[16];   // for now upto 16 coefficients
+  int isoutcomplex;   // if output is complex
 
   mfem::Array<mfem::Coefficient *>  *pcoeffs = nullptr;
   mfem::Array<mfem::VectorCoefficient *>  *pvcoeffs = nullptr;
@@ -100,7 +101,9 @@ class NumbaCoefficientBase
   void PrepParams(mfem::ElementTransformation &T,
 		  const mfem::IntegrationPoint &ip);
   void SetKinds(PyObject *kinds_);
-  void SetIsComplex(PyObject *isComplex_);
+  void SetIsDepComplex(PyObject *isComplex_);
+  void SetOutComplex(bool in_){isoutcomplex=in_;}
+  bool IsOutComplex(){return isoutcomplex;}  
   virtual ~NumbaCoefficientBase(){
     delete obj;
     delete pcoeffs;

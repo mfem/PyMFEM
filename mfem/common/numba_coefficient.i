@@ -453,8 +453,7 @@ void NumbaCoefficientBase::PrepParams(mfem::ElementTransformation &T,
            s_counter ++;
            counter ++;
 
-
-           if (iscomplex[i] == 1){
+           if (isdepcomplex[i] == 1){
                data[idx] = coeffs[s_counter]->Eval(T, ip);
                data_ptr[counter] = &data[idx];
 
@@ -478,7 +477,7 @@ void NumbaCoefficientBase::PrepParams(mfem::ElementTransformation &T,
            v_counter ++;
            counter ++;
 
-           if (iscomplex[i] == 1){
+           if (isdepcomplex[i] == 1){
               vcoeffs[v_counter]->Eval(V, T, ip);
 
               data_ptr[counter] = &data[idx];
@@ -508,7 +507,7 @@ void NumbaCoefficientBase::PrepParams(mfem::ElementTransformation &T,
            m_counter ++;
            counter ++;
 
-           if (iscomplex[i] == 1){
+           if (isdepcomplex[i] == 1){
               mcoeffs[m_counter]->Eval(M, T, ip);
               data_ptr[counter] = &data[idx];
               for (int jj = 0; jj < w; jj++){
@@ -552,7 +551,7 @@ void NumbaCoefficientBase::SetKinds(PyObject *kinds_){
     PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
   }
 }
-void NumbaCoefficientBase::SetIsComplex(PyObject *isComplex_){
+void NumbaCoefficientBase::SetIsDepComplex(PyObject *isComplex_){
   if (PyList_Check(isComplex_)) {
      int ll = PyList_Size(isComplex_);
      if (ll > 16){
@@ -561,14 +560,14 @@ void NumbaCoefficientBase::SetIsComplex(PyObject *isComplex_){
      }
      for (int i = 0; i < ll; i++) {
         PyObject *s = PyList_GetItem(isComplex_, i);
-        iscomplex[i] = (int)PyInt_AsLong(s);
+        isdepcomplex[i] = (int)PyInt_AsLong(s);
      }
      num_dep = ll;
   } else if (PyTuple_Check(isComplex_)) {
      int ll = PyTuple_Size(isComplex_);
      for (int i = 0; i < ll; i++) {
         PyObject *s = PyTuple_GetItem(isComplex_,i);
-        iscomplex[i] = (int)PyInt_AsLong(s);
+        isdepcomplex[i] = (int)PyInt_AsLong(s);
      }
      num_dep = ll;
      if (ll > 16){
@@ -606,7 +605,8 @@ class ScalarNumbaFunction2 : public NumbaFunctionBase {
  private:
   std::function<double(const mfem::Vector &)> obj1;
   std::function<double(const mfem::Vector &, double t)> obj2;
-
+  std::complex<double> ret;
+  
  public:
     ScalarNumbaFunction2(PyObject *input):
        NumbaFunctionBase(input, 3, false){}
@@ -629,13 +629,11 @@ class ScalarNumbaFunction2 : public NumbaFunctionBase {
       return ret.real();
     }
     double calltr(const mfem::Vector &x, double t){
-      std::complex<double> ret;
       ret = ((std::complex<double> (*)(double *, double, void**))address_)(x.GetData(), t, (void **)data_ptr);
       return ret.real();
     }
     // complex imag part
     double calli(const mfem::Vector &x){
-      std::complex<double> ret;
       ret = ((std::complex<double> (*)(double *, void**))address_)(x.GetData(), (void **)data_ptr);
       return ret.imag();
     }
@@ -644,6 +642,10 @@ class ScalarNumbaFunction2 : public NumbaFunctionBase {
       ret = ((std::complex<double> (*)(double *, double, void **))address_)(x.GetData(), t, (void **)data_ptr);
       return ret.imag();
     }
+    double get_imaginary(){
+      return ret.imag();      
+    }
+    
     void set_obj1(std::function<double(const mfem::Vector &)> obj1_){
       obj1 = obj1_;
     };
@@ -751,6 +753,12 @@ class VectorNumbaFunction2 : public NumbaFunctionBase {
         out[i] = outc[i].imag();
       }
     }
+    double get_imaginary(mfem::Vector &out){
+      for (int i = 0; i < vdim_; i++) {
+        out[i] = outc[i].imag();
+      }
+    }
+    
     void create_outc(){
       outc = new std::complex<double>[vdim_];
     }
@@ -865,6 +873,12 @@ class MatrixNumbaFunction2 : public NumbaFunctionBase {
         outptr[i] = outc[i].imag();
       }
     }
+    double get_imaginary(mfem::Vector &out){
+      for (int i = 0; i < vdim_; i++) {
+        out[i] = outc[i].imag();
+      }
+    }
+    
     void create_outc(){
       outc = new std::complex<double>[vdim_];
     }
@@ -993,7 +1007,7 @@ try:
             return dec
 
         def scalar(self, sdim=3, td=False, params={}, complex=False, dependency=None,
-                   interface="default", debug=False):
+                   interface="simple", debug=False):
             if dependency is None:
                 dependency = []
             if params is None:
@@ -1005,7 +1019,7 @@ try:
 
                 setting = get_setting(1, complex, dependency, td)
 
-                if interface=="default":
+                if interface=="c++":
                     sig = generate_signature_scalar(setting)
                 elif interface=="simple":
                     sig = generate_signature_scalar(setting)
@@ -1031,7 +1045,7 @@ try:
                     caller_sig = outtype(types.CPointer(types.double),
                                         types.CPointer(types.voidptr))
 
-                if interface=="default":
+                if interface=="c++":
                      caller_txt = generate_caller_scalar(setting)
                 elif interface=="simple":
                      caller_txt = generate_caller_scalar(setting)
@@ -1048,9 +1062,9 @@ try:
                 ff = cfunc(caller_sig)(caller_func)
 
                 if complex:
-                     coeff.real = GenerateScalarNumbaCoefficient(ff, td, 1)
-                     coeff.imag = GenerateScalarNumbaCoefficient(ff, td, 2)
-                     coeffs = (coeff.real, coeff.imag)
+                     real = GenerateScalarNumbaCoefficient(ff, td, 1)
+                     imag = GenerateScalarNumbaCoefficient(ff, td, 2)
+                     coeffs = (real, imag)
                      coeff = coeffs
                 else:
                      coeff = GenerateScalarNumbaCoefficient(ff, td, 0)
@@ -1060,7 +1074,7 @@ try:
                      c.SetParams(setting["s_coeffs"],
                                  setting["v_coeffs"],
                                  setting["m_coeffs"],)
-                     c.SetIsComplex(setting["iscomplex"])
+                     c.SetIsDepComplex(setting["isdepcomplex"])
                      c.SetKinds(setting["kinds"])
                 return coeff
             return dec
@@ -1132,9 +1146,9 @@ try:
                 ff = cfunc(caller_sig)(caller_func)
 
                 if complex:
-                     coeff.real = GenerateVectorNumbaCoefficient(ff, shape[0], td, 1)
-                     coeff.imag = GenerateVectorNumbaCoefficient(ff, shape[0], td, 2)
-                     coeffs = (coeff.real, coeff.imag)
+                     real = GenerateVectorNumbaCoefficient(ff, shape[0], td, 1)
+                     imag = GenerateVectorNumbaCoefficient(ff, shape[0], td, 2)
+                     coeffs = (real, imag)
                      coeff = coeffs
                 else:
                      coeff =  GenerateVectorNumbaCoefficient(ff, shape[0], td, 0)
@@ -1144,7 +1158,7 @@ try:
                      c.SetParams(setting["s_coeffs"],
                                  setting["v_coeffs"],
                                  setting["m_coeffs"], )
-                     c.SetIsComplex(setting["iscomplex"])
+                     c.SetIsDepComplex(setting["isdepcomplex"])
                      c.SetKinds(setting["kinds"])
                 return coeff
             return dec
@@ -1211,9 +1225,9 @@ try:
                 ff = cfunc(caller_sig)(caller_func)
 
                 if complex:
-                     coeff.real = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 1)
-                     coeff.imag = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 2)
-                     coeffs = (coeff.real, coeff.imag)
+                     real = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 1)
+                     imag = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 2)
+                     coeffs = (real, imag)
                      coeff = coeffs
                 else:
                      coeff = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 0)
@@ -1223,7 +1237,7 @@ try:
                      c.SetParams(setting["s_coeffs"],
                                  setting["v_coeffs"],
                                  setting["m_coeffs"])
-                     c.SetIsComplex(setting["iscomplex"])
+                     c.SetIsDepComplex(setting["isdepcomplex"])
                      c.SetKinds(setting["kinds"])
                 return coeff
             return dec
