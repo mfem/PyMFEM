@@ -392,9 +392,9 @@ class MatrixNumbaFunction : NumbaFunctionBase {
 
     int size = 0;
 
-    int num_coeffs = in_coeffs.Size();
-    int num_vcoeffs = in_vcoeffs.Size();
-    int num_mcoeffs = in_mcoeffs.Size();
+    num_coeffs = in_coeffs.Size();
+    num_vcoeffs = in_vcoeffs.Size();
+    num_mcoeffs = in_mcoeffs.Size();
 
     if ((num_coeffs + num_vcoeffs + num_mcoeffs) > 16){
         throw std::invalid_argument("dependency dim must be up to 16");
@@ -437,9 +437,9 @@ class MatrixNumbaFunction : NumbaFunctionBase {
         throw std::invalid_argument("dependency dim must be less than 256");
     }
 
-    int num_ncoeffs = in_nscoeffs.Size();
-    int num_nvcoeffs = in_nvcoeffs.Size();
-    int num_nmcoeffs = in_nmcoeffs.Size();
+    num_ncoeffs = in_nscoeffs.Size();
+    num_nvcoeffs = in_nvcoeffs.Size();
+    num_nmcoeffs = in_nmcoeffs.Size();
 
     pncoeffs = new mfem::Array<NumbaCoefficientBase *>(num_ncoeffs);
     mfem::Array<NumbaCoefficientBase *>& ncoeffs = *pncoeffs;
@@ -458,8 +458,25 @@ class MatrixNumbaFunction : NumbaFunctionBase {
     for (int i = 0; i < num_nmcoeffs; i++){
       nmcoeffs[i] = static_cast<NumbaCoefficientBase *>(in_nmcoeffs[i]);
     }
+
  }
 
+void NumbaCoefficientBase::SetTimeInDependency(double t){
+    mfem::Array<mfem::Coefficient *>& coeffs = *pcoeffs;
+    mfem::Array<mfem::VectorCoefficient *>& vcoeffs = *pvcoeffs;
+    mfem::Array<mfem::MatrixCoefficient *>& mcoeffs = *pmcoeffs;
+
+    for (int i = 0; i < num_coeffs; i++){
+      coeffs[i]->SetTime(t);
+    }
+    for (int i = 0; i < num_vcoeffs; i++){
+      vcoeffs[i]->SetTime(t);
+    }
+    for (int i = 0; i < num_mcoeffs; i++){
+      mcoeffs[i]->SetTime(t);
+    }
+
+}
 void NumbaCoefficientBase::PrepParams(mfem::ElementTransformation &T,
                                const mfem::IntegrationPoint &ip){
 
