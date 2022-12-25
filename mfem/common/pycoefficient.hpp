@@ -99,9 +99,11 @@ class NumbaCoefficientBase
 
  protected:
   NumbaFunctionBase *obj;
+  int sdim;
 
  public:
-  NumbaCoefficientBase(NumbaFunctionBase *in_obj): obj(in_obj){}
+  NumbaCoefficientBase(NumbaFunctionBase *in_obj, int in_sdim):
+    sdim(in_sdim), obj(in_obj){}
   template<typename T1, typename T2, typename T3>
   void SetParams(const mfem::Array<mfem::Coefficient *>&,
 		 const mfem::Array<mfem::VectorCoefficient *>&,
@@ -114,6 +116,7 @@ class NumbaCoefficientBase
   void SetKinds(PyObject *kinds_);
   void SetIsDepComplex(PyObject *isComplex_);
   void SetOutComplex(bool in_){isoutcomplex=in_;}
+  int SpaceDimension(){return sdim;}
   bool IsOutComplex(){return isoutcomplex;}
   virtual ~NumbaCoefficientBase(){
     delete obj;
@@ -128,11 +131,11 @@ class ScalarNumbaCoefficient : public mfem::FunctionCoefficient,  public NumbaCo
  public:
   int GetNDim(){return 0;}
   ScalarNumbaCoefficient(std::function<double(const mfem::Vector &)> F,
-			   NumbaFunctionBase *in_obj)
-    : FunctionCoefficient(std::move(F)), NumbaCoefficientBase(in_obj){}
+			 NumbaFunctionBase *in_obj, int in_sdim)
+    : FunctionCoefficient(std::move(F)), NumbaCoefficientBase(in_obj, in_sdim){}
   ScalarNumbaCoefficient(std::function<double(const mfem::Vector &, double)> TDF,
- 			   NumbaFunctionBase *in_obj)
-   : FunctionCoefficient(std::move(TDF)), NumbaCoefficientBase(in_obj){}
+			 NumbaFunctionBase *in_obj, int in_sdim)
+    : FunctionCoefficient(std::move(TDF)), NumbaCoefficientBase(in_obj, in_sdim){}
 
   virtual double Eval(mfem::ElementTransformation &T,
 		      const mfem::IntegrationPoint &ip);
@@ -144,11 +147,11 @@ class VectorNumbaCoefficient : public mfem::VectorFunctionCoefficient,  public N
  public:
   int GetNDim(){return 1;}
   VectorNumbaCoefficient(int dim, std::function<void(const mfem::Vector &, mfem::Vector &)> F,
-		        NumbaFunctionBase *in_obj)
-   : VectorFunctionCoefficient(dim, std::move(F)), NumbaCoefficientBase(in_obj){}
+			 NumbaFunctionBase *in_obj, int in_sdim)
+    : VectorFunctionCoefficient(dim, std::move(F)), NumbaCoefficientBase(in_obj, in_sdim){}
   VectorNumbaCoefficient(int dim, std::function<void(const mfem::Vector &, double, mfem::Vector &)> TDF,
-   		        NumbaFunctionBase *in_obj)
-    : VectorFunctionCoefficient(dim, std::move(TDF)), NumbaCoefficientBase(in_obj){}
+			 NumbaFunctionBase *in_obj, int in_sdim)
+    : VectorFunctionCoefficient(dim, std::move(TDF)), NumbaCoefficientBase(in_obj, in_sdim){}
 
  virtual void Eval(mfem::Vector &V,
 		   mfem::ElementTransformation &T,
@@ -160,11 +163,11 @@ class MatrixNumbaCoefficient : public mfem::MatrixFunctionCoefficient,  public N
  public:
   int GetNDim(){return 2;}
   MatrixNumbaCoefficient(int dim, std::function<void(const mfem::Vector &, mfem::DenseMatrix &)> F,
-   			NumbaFunctionBase *in_obj)
-   : MatrixFunctionCoefficient(dim, std::move(F)), NumbaCoefficientBase(in_obj){}
+			 NumbaFunctionBase *in_obj, int in_sdim)
+    : MatrixFunctionCoefficient(dim, std::move(F)), NumbaCoefficientBase(in_obj, in_sdim){}
   MatrixNumbaCoefficient(int dim, std::function<void(const mfem::Vector &, double, mfem::DenseMatrix &)> TDF,
-   			NumbaFunctionBase *in_obj)
-    : MatrixFunctionCoefficient(dim, std::move(TDF)), NumbaCoefficientBase(in_obj){}
+			 NumbaFunctionBase *in_obj, int in_sdim)
+    : MatrixFunctionCoefficient(dim, std::move(TDF)), NumbaCoefficientBase(in_obj, in_sdim){}
 
   virtual void Eval(mfem::DenseMatrix &K,
 		    mfem::ElementTransformation &T,

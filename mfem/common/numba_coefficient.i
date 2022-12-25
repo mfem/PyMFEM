@@ -735,7 +735,7 @@ class ScalarNumbaFunction2 : public NumbaFunctionBase {
 
     // FunctionCoefficient
     // mode   (0: real, 1: complex real part, 2: complex imag part)
-ScalarNumbaCoefficient* GenerateScalarNumbaCoefficient(PyObject *numba_func,  bool td, int mode){
+ScalarNumbaCoefficient* GenerateScalarNumbaCoefficient(PyObject *numba_func,  bool td, int mode, int sdim){
       using std::placeholders::_1;
       using std::placeholders::_2;
 
@@ -752,7 +752,7 @@ ScalarNumbaCoefficient* GenerateScalarNumbaCoefficient(PyObject *numba_func,  bo
             func_wrap->set_obj2(std::bind(&ScalarNumbaFunction2::callti, func_wrap, _1, _2));
             break;
           }
-          return new ScalarNumbaCoefficient(func_wrap->get_obj2(), func_wrap);
+          return new ScalarNumbaCoefficient(func_wrap->get_obj2(), func_wrap, sdim);
       } else {
           switch(mode){
           case 0:
@@ -765,7 +765,7 @@ ScalarNumbaCoefficient* GenerateScalarNumbaCoefficient(PyObject *numba_func,  bo
             func_wrap->set_obj1(std::bind(&ScalarNumbaFunction2::calli, func_wrap, _1));
             break;
           }
-          return new ScalarNumbaCoefficient(func_wrap->get_obj1(), func_wrap);
+          return new ScalarNumbaCoefficient(func_wrap->get_obj1(), func_wrap, sdim);
       }
 }
 // VectorFunctionCoefficient
@@ -848,7 +848,7 @@ class VectorNumbaFunction2 : public NumbaFunctionBase {
     std::function<void(const mfem::Vector &, mfem::Vector &)> get_obj1(){return obj1;}
     std::function<void(const mfem::Vector &, double, mfem::Vector &)> get_obj2(){return obj2;}
 };
-VectorNumbaCoefficient* GenerateVectorNumbaCoefficient(PyObject *numba_func, int vdim, bool td, int mode){
+VectorNumbaCoefficient* GenerateVectorNumbaCoefficient(PyObject *numba_func, int vdim, bool td, int mode, int sdim){
       using std::placeholders::_1;
       using std::placeholders::_2;
       using std::placeholders::_3;
@@ -868,7 +868,7 @@ VectorNumbaCoefficient* GenerateVectorNumbaCoefficient(PyObject *numba_func, int
             func_wrap->create_outc();
             break;
           }
-          return new VectorNumbaCoefficient(vdim, func_wrap->get_obj2(), func_wrap);
+          return new VectorNumbaCoefficient(vdim, func_wrap->get_obj2(), func_wrap, sdim);
       } else {
           switch(mode){
           case 0:
@@ -883,7 +883,7 @@ VectorNumbaCoefficient* GenerateVectorNumbaCoefficient(PyObject *numba_func, int
             func_wrap->create_outc();
             break;
           }
-          return new VectorNumbaCoefficient(vdim, func_wrap->get_obj1(), func_wrap);
+          return new VectorNumbaCoefficient(vdim, func_wrap->get_obj1(), func_wrap, sdim);
       }
 }
 
@@ -970,7 +970,7 @@ class MatrixNumbaFunction2 : public NumbaFunctionBase {
 
 };
 
-MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int width, int height, bool td, int mode){
+MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int width, int height, bool td, int mode, int sdim){
   using std::placeholders::_1;
   using std::placeholders::_2;
   using std::placeholders::_3;
@@ -990,7 +990,7 @@ MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int
             func_wrap->create_outc();
             break;
           }
-            return new MatrixNumbaCoefficient(width, func_wrap->get_obj2(), func_wrap);
+          return new MatrixNumbaCoefficient(width, func_wrap->get_obj2(), func_wrap, sdim);
    } else {
           switch(mode){
           case 0:
@@ -1005,7 +1005,7 @@ MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int
             func_wrap->create_outc();
             break;
           }
-          return new MatrixNumbaCoefficient(width, func_wrap->get_obj1(), func_wrap);
+          return new MatrixNumbaCoefficient(width, func_wrap->get_obj1(), func_wrap, sdim);
       }
 }
 
@@ -1149,14 +1149,14 @@ try:
                 ff = cfunc(caller_sig)(caller_func)
 
                 if complex:
-                     coeff = GenerateScalarNumbaCoefficient(ff, td, 1)
+                     coeff = GenerateScalarNumbaCoefficient(ff, td, 1, sdim)
                      coeff.SetOutComplex(setting["output"])
 
-                     coeff.real = GenerateScalarNumbaCoefficient(ff, td, 1)
-                     coeff.imag = GenerateScalarNumbaCoefficient(ff, td, 2)
+                     coeff.real = GenerateScalarNumbaCoefficient(ff, td, 1, sdim)
+                     coeff.imag = GenerateScalarNumbaCoefficient(ff, td, 2, sdim)
                      coeffs = (coeff, coeff.real, coeff.imag)
                 else:
-                     coeff = GenerateScalarNumbaCoefficient(ff, td, 0)
+                     coeff = GenerateScalarNumbaCoefficient(ff, td, 0, sdim)
                      coeff.SetOutComplex(setting["output"])
                      coeffs = (coeff, )
 
@@ -1241,14 +1241,14 @@ try:
                 ff = cfunc(caller_sig)(caller_func)
 
                 if complex:
-                     coeff = GenerateVectorNumbaCoefficient(ff, shape[0], td, 1)
+                     coeff = GenerateVectorNumbaCoefficient(ff, shape[0], td, 1, sdim)
                      coeff.SetOutComplex(setting["output"])
 
-                     coeff.real = GenerateVectorNumbaCoefficient(ff, shape[0], td, 1)
-                     coeff.imag = GenerateVectorNumbaCoefficient(ff, shape[0], td, 2)
+                     coeff.real = GenerateVectorNumbaCoefficient(ff, shape[0], td, 1, sdim)
+                     coeff.imag = GenerateVectorNumbaCoefficient(ff, shape[0], td, 2, sdim)
                      coeffs = (coeff, coeff.real, coeff.imag)
                 else:
-                     coeff =  GenerateVectorNumbaCoefficient(ff, shape[0], td, 0)
+                     coeff =  GenerateVectorNumbaCoefficient(ff, shape[0], td, 0, sdim)
                      coeff.SetOutComplex(setting["output"])
                      coeffs = (coeff, )
 
@@ -1328,15 +1328,15 @@ try:
                 ff = cfunc(caller_sig)(caller_func)
 
                 if complex:
-                     coeff = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 1)
+                     coeff = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 1, sdim)
                      coeff.SetOutComplex(setting["output"])
 
-                     coeff.real = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 1)
-                     coeff.imag = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 2)
+                     coeff.real = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 1, sdim)
+                     coeff.imag = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 2, sdim)
                      coeffs = (coeff, coeff.real, coeff.imag)
 
                 else:
-                     coeff = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 0)
+                     coeff = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 0, sdim)
                      coeff.SetOutComplex(setting["output"])
                      coeffs = (coeff, )
 
