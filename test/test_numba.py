@@ -207,9 +207,8 @@ def run_test():
 
     gf.Assign(0.0)
     start = time.time()
-    # gf.ProjectCoefficient(v_func4.real)
     for i in range(10):
-        gf.ProjectCoefficient(v_func4[0])
+        gf.ProjectCoefficient(v_func4.real)
     end = time.time()
     data3 = gf.GetDataArray().copy()
     print("Numba2 time (vector)", end - start)
@@ -260,6 +259,8 @@ def run_test():
     a2 = mfem.BilinearForm(fespace2)
     a3 = mfem.BilinearForm(fespace2)
     a4 = mfem.BilinearForm(fespace2)
+    a5 = mfem.BilinearForm(fespace2)
+
     c4 = mfem.MatrixNumbaFunction(m_func, sdim, dim).GenerateCoefficient()
     c5 = m_coeff(dim)
 
@@ -275,7 +276,11 @@ def run_test():
         return ret*1j
 
     @mfem.jit.matrix(sdim=3, dependency=(m_func3, c4), td=True)
-    def m_func4(ptx, t, m_func3, c5):
+    def m_func4_complex(ptx, t, m_func3, c5):
+        return m_func3.imag
+
+    @mfem.jit.matrix(sdim=3, dependency=((m_func3.real, m_func3.imag), c4), td=True)
+    def m_func4_split(ptx, t, m_func3, c5):
         return m_func3.imag
 
     @mfem.jit.matrix(sdim=3, complex=False, debug=True)
@@ -287,7 +292,8 @@ def run_test():
         # _out_ =
         # return np.array(_out_)
 
-    a4.AddDomainIntegrator(mfem.VectorFEMassIntegrator(m_func4))
+    a4.AddDomainIntegrator(mfem.VectorFEMassIntegrator(m_func4_complex))
+    a5.AddDomainIntegrator(mfem.VectorFEMassIntegrator(m_func4_split))
 
     start = time.time()
     a1.Assemble()
@@ -310,44 +316,40 @@ def run_test():
     a3.Finalize()
     M3 = a3.SpMat()
     print("Numba (simpler interface) (matrix)", end - start)
+
     start = time.time()
     a4.Assemble()
     end = time.time()
     a4.Finalize()
     M4 = a4.SpMat()
-    print("Numba (simpler interface) (matrix)", end - start)
+    print("Numba (complex dependency as complex) (matrix)", end - start)
+
+    start = time.time()
+    a5.Assemble()
+    end = time.time()
+    a5.Finalize()
+    M5 = a5.SpMat()
+    print("Numba (complex dependency as decomposed) (matrix)", end - start)
 
     #from mfem.commmon.sparse_utils import sparsemat_to_scipycsr
     #csr1 = sparsemat_to_scipycsr(M1, float)
     #csr2 = sparsemat_to_scipycsr(M2, float)
 
-    check(M1.GetDataArray(),
-          M2.GetDataArray(),
-          "matrix coefficient does not agree with original")
-    check(M1.GetIArray(),
-          M2.GetIArray(),
-          "matrix coefficient does not agree with original")
-    check(M1.GetJArray(),
-          M2.GetJArray(),
-          "matrix coefficient does not agree with original")
-    check(M1.GetDataArray(),
-          M3.GetDataArray(),
-          "matrix coefficient does not agree with original")
-    check(M1.GetDataArray(),
-          M4.GetDataArray(),
-          "matrix coefficient does not agree with original")
-    check(M1.GetIArray(),
-          M3.GetIArray(),
-          "matrix coefficient does not agree with original")
-    check(M1.GetIArray(),
-          M4.GetIArray(),
-          "matrix coefficient does not agree with original")
-    check(M1.GetJArray(),
-          M3.GetJArray(),
-          "matrix coefficient does not agree with original")
-    check(M1.GetJArray(),
-          M4.GetJArray(),
-          "matrix coefficient does not agree with original")
+    def compare_mat(M1o, M2o):
+        check(M1o.GetDataArray(),
+              M2o.GetDataArray(),
+              "matrix coefficient does not agree with original")
+        check(M1o.GetIArray(),
+              M2o.GetIArray(),
+              "matrix coefficient does not agree with original")
+        check(M1o.GetJArray(),
+              M2o.GetJArray(),
+              "matrix coefficient does not agree with original")
+
+    compare_mat(M1, M2)
+    compare_mat(M1, M3)
+    compare_mat(M1, M4)
+    compare_mat(M1, M5)
 
     print(m_func3)
     print("PASSED")

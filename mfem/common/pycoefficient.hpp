@@ -1,5 +1,7 @@
 #include "fem/coefficient.hpp"
 
+#define assertm(exp, msg) assert(((void)msg, exp))
+
 double fake_func(const mfem::Vector &);
 void fake_func_vec(const mfem::Vector &, mfem::Vector &);
 void fake_func_mat(const mfem::Vector &, mfem::DenseMatrix &);
@@ -68,15 +70,21 @@ class NumbaFunctionBase
   double *GetData(){ return data; }
   double **GetPointer(){return data_ptr;}
   void SetDataCount(int x){datacount=x;}
+  virtual double GetScalarImaginary(){std::cout << "Should not come here" <<"\n"; }
+  virtual void GetArrayImaginary(mfem::Vector &){std::cout << "Should not come here" <<"\n"; }
+  virtual void GetArrayImaginary(mfem::DenseMatrix &){std::cout << "Should not come here" <<"\n"; }
   virtual ~NumbaFunctionBase(){}
 };
 
 class NumbaCoefficientBase
 {
  private:
-  int num_coeffs;
-  int num_vcoeffs;
-  int num_mcoeffs;
+  int num_coeffs = 0;
+  int num_vcoeffs = 0;
+  int num_mcoeffs = 0;
+  int num_ncoeffs = 0;
+  int num_nvcoeffs = 0;
+  int num_nmcoeffs = 0;
   int num_dep = 0;
   int kinds[16];       // for now upto 16 coefficients
   int isdepcomplex[16];   // for now upto 16 coefficients
@@ -85,25 +93,28 @@ class NumbaCoefficientBase
   mfem::Array<mfem::Coefficient *>  *pcoeffs = nullptr;
   mfem::Array<mfem::VectorCoefficient *>  *pvcoeffs = nullptr;
   mfem::Array<mfem::MatrixCoefficient *>  *pmcoeffs = nullptr;
+  mfem::Array<NumbaCoefficientBase *>  *pncoeffs = nullptr;
+  mfem::Array<NumbaCoefficientBase *>  *pnvcoeffs = nullptr;
+  mfem::Array<NumbaCoefficientBase *>  *pnmcoeffs = nullptr;
 
  protected:
   NumbaFunctionBase *obj;
 
  public:
-    NumbaCoefficientBase(NumbaFunctionBase *in_obj): obj(in_obj){}
-
-  //void SetParams(mfem::Coefficient *in_coeff[], int in_num_coeffs,
-  //		 mfem::VectorCoefficient *in_vcoeff[], int in_num_vcoeffs,
-  // 	 mfem::MatrixCoefficient *in_mcoeff[], int in_num_mcoeffs);
+  NumbaCoefficientBase(NumbaFunctionBase *in_obj): obj(in_obj){}
+  template<typename T1, typename T2, typename T3>
   void SetParams(const mfem::Array<mfem::Coefficient *>&,
 		 const mfem::Array<mfem::VectorCoefficient *>&,
-		 const mfem::Array<mfem::MatrixCoefficient *>&);
+		 const mfem::Array<mfem::MatrixCoefficient *>&,
+		 const mfem::Array<T1 *>&,
+		 const mfem::Array<T2 *>&,
+		 const mfem::Array<T3 *>&);
   void PrepParams(mfem::ElementTransformation &T,
 		  const mfem::IntegrationPoint &ip);
   void SetKinds(PyObject *kinds_);
   void SetIsDepComplex(PyObject *isComplex_);
   void SetOutComplex(bool in_){isoutcomplex=in_;}
-  bool IsOutComplex(){return isoutcomplex;}  
+  bool IsOutComplex(){return isoutcomplex;}
   virtual ~NumbaCoefficientBase(){
     delete obj;
     delete pcoeffs;
@@ -125,6 +136,7 @@ class ScalarNumbaCoefficient : public mfem::FunctionCoefficient,  public NumbaCo
 
   virtual double Eval(mfem::ElementTransformation &T,
 		      const mfem::IntegrationPoint &ip);
+  
 };
 
 class VectorNumbaCoefficient : public mfem::VectorFunctionCoefficient,  public NumbaCoefficientBase

@@ -162,6 +162,12 @@ LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::VectorCoefficient*>&,
                          mfem::VectorCoefficient*)
 LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::MatrixCoefficient*>&,
                          mfem::MatrixCoefficient*)
+LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<ScalarNumbaCoefficient*>&,
+                         ScalarNumbaCoefficient*)
+LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<VectorNumbaCoefficient*>&,
+                         VectorNumbaCoefficient*)
+LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<MatrixNumbaCoefficient*>&,
+                         MatrixNumbaCoefficient*)
 
 
 %inline %{
@@ -372,9 +378,17 @@ class MatrixNumbaFunction : NumbaFunctionBase {
 //
 //  NumbaCoefficientBase  (hold list of coefficients which is used as a parameter for function coefficient)
 //
- void NumbaCoefficientBase::SetParams(const mfem::Array<mfem::Coefficient *>& in_coeffs,
-                                      const mfem::Array<mfem::VectorCoefficient *>& in_vcoeffs,
-                                      const mfem::Array<mfem::MatrixCoefficient *>& in_mcoeffs){
+ template<>
+   void NumbaCoefficientBase::SetParams(const mfem::Array<mfem::Coefficient *>& in_coeffs,
+                                        const mfem::Array<mfem::VectorCoefficient *>& in_vcoeffs,
+                                        const mfem::Array<mfem::MatrixCoefficient *>& in_mcoeffs,
+                                        const mfem::Array<ScalarNumbaCoefficient *>&  in_nscoeffs,
+                                        const mfem::Array<VectorNumbaCoefficient *>&  in_nvcoeffs,
+                                        const mfem::Array<MatrixNumbaCoefficient *>&  in_nmcoeffs){
+
+    static_assert(std::is_base_of<NumbaCoefficientBase, ScalarNumbaCoefficient>::value);
+    static_assert(std::is_base_of<NumbaCoefficientBase, VectorNumbaCoefficient>::value);
+    static_assert(std::is_base_of<NumbaCoefficientBase, MatrixNumbaCoefficient>::value);
 
     int size = 0;
 
@@ -423,7 +437,28 @@ class MatrixNumbaFunction : NumbaFunctionBase {
         throw std::invalid_argument("dependency dim must be less than 256");
     }
 
-  }
+    int num_ncoeffs = in_nscoeffs.Size();
+    int num_nvcoeffs = in_nvcoeffs.Size();
+    int num_nmcoeffs = in_nmcoeffs.Size();
+
+    pncoeffs = new mfem::Array<NumbaCoefficientBase *>(num_ncoeffs);
+    mfem::Array<NumbaCoefficientBase *>& ncoeffs = *pncoeffs;
+    for (int i = 0; i < num_ncoeffs; i++){
+      ncoeffs[i] = static_cast<NumbaCoefficientBase *>(in_nscoeffs[i]);
+    }
+
+    pnvcoeffs = new mfem::Array<NumbaCoefficientBase *>(num_nvcoeffs);
+    mfem::Array<NumbaCoefficientBase *>& nvcoeffs = *pnvcoeffs;
+    for (int i = 0; i < num_nvcoeffs; i++){
+      nvcoeffs[i] = static_cast<NumbaCoefficientBase *>(in_nvcoeffs[i]);
+    }
+
+    pnmcoeffs = new mfem::Array<NumbaCoefficientBase *>(num_nmcoeffs);
+    mfem::Array<NumbaCoefficientBase *>& nmcoeffs = *pnmcoeffs;
+    for (int i = 0; i < num_nmcoeffs; i++){
+      nmcoeffs[i] = static_cast<NumbaCoefficientBase *>(in_nmcoeffs[i]);
+    }
+ }
 
 void NumbaCoefficientBase::PrepParams(mfem::ElementTransformation &T,
                                const mfem::IntegrationPoint &ip){
@@ -436,11 +471,19 @@ void NumbaCoefficientBase::PrepParams(mfem::ElementTransformation &T,
     int s_counter = 0;
     int v_counter = 0;
     int m_counter = 0;
+    int ns_counter = 0;
+    int nv_counter = 0;
+    int nm_counter = 0;
+
+
     int counter = 0;
 
     mfem::Array<mfem::Coefficient *>& coeffs = *pcoeffs;
     mfem::Array<mfem::VectorCoefficient *>& vcoeffs = *pvcoeffs;
     mfem::Array<mfem::MatrixCoefficient *>& mcoeffs = *pmcoeffs;
+    mfem::Array<NumbaCoefficientBase *>& ncoeffs = *pncoeffs;
+    mfem::Array<NumbaCoefficientBase *>& nvcoeffs = *pnvcoeffs;
+    mfem::Array<NumbaCoefficientBase *>& nmcoeffs = *pnmcoeffs;
 
     for (int i = 0; i < num_dep; i++){
         switch(kinds[i]){
@@ -460,6 +503,14 @@ void NumbaCoefficientBase::PrepParams(mfem::ElementTransformation &T,
                idx ++;
                s_counter ++;
                counter ++;
+           }
+           if (isdepcomplex[i] == 2){
+             data[idx] = dynamic_cast<ScalarNumbaCoefficient *>(ncoeffs[ns_counter])->obj-> GetScalarImaginary();
+              data_ptr[counter] = &data[idx];
+
+              idx ++;
+              ns_counter ++;
+              counter ++;
            }
            break;
           }
@@ -486,6 +537,17 @@ void NumbaCoefficientBase::PrepParams(mfem::ElementTransformation &T,
                   idx ++;
               }
               v_counter ++;
+              counter ++;
+           }
+           if (isdepcomplex[i] == 2){
+              dynamic_cast<VectorNumbaCoefficient *>(nvcoeffs[nv_counter])->obj-> GetArrayImaginary(V);
+
+              data_ptr[counter] = &data[idx];
+              for (int j = 0; j < vdim; j++){
+                  data[idx] =  V[j];
+                  idx ++;
+              }
+              nv_counter ++;
               counter ++;
            }
            break;
@@ -519,6 +581,21 @@ void NumbaCoefficientBase::PrepParams(mfem::ElementTransformation &T,
               m_counter ++;
               counter ++;
            }
+
+           if (isdepcomplex[i] == 2){
+              dynamic_cast<MatrixNumbaCoefficient *>(nmcoeffs[nm_counter])->obj-> GetArrayImaginary(M);
+
+              data_ptr[counter] = &data[idx];
+              for (int jj = 0; jj < w; jj++){
+                for (int ii = 0; ii < h; ii++){
+                  data[idx] =  M(ii, jj);
+                  idx ++;
+                }
+              }
+              nm_counter ++;
+              counter ++;
+           }
+
            break;
           }
         }
@@ -606,7 +683,7 @@ class ScalarNumbaFunction2 : public NumbaFunctionBase {
   std::function<double(const mfem::Vector &)> obj1;
   std::function<double(const mfem::Vector &, double t)> obj2;
   std::complex<double> ret;
-  
+
  public:
     ScalarNumbaFunction2(PyObject *input):
        NumbaFunctionBase(input, 3, false){}
@@ -642,10 +719,10 @@ class ScalarNumbaFunction2 : public NumbaFunctionBase {
       ret = ((std::complex<double> (*)(double *, double, void **))address_)(x.GetData(), t, (void **)data_ptr);
       return ret.imag();
     }
-    double get_imaginary(){
-      return ret.imag();      
+    double GetScalarImaginary(){
+      return ret.imag();
     }
-    
+
     void set_obj1(std::function<double(const mfem::Vector &)> obj1_){
       obj1 = obj1_;
     };
@@ -753,12 +830,12 @@ class VectorNumbaFunction2 : public NumbaFunctionBase {
         out[i] = outc[i].imag();
       }
     }
-    double get_imaginary(mfem::Vector &out){
+    void GetArrayImaginary(mfem::Vector &out){
       for (int i = 0; i < vdim_; i++) {
         out[i] = outc[i].imag();
       }
     }
-    
+
     void create_outc(){
       outc = new std::complex<double>[vdim_];
     }
@@ -873,12 +950,12 @@ class MatrixNumbaFunction2 : public NumbaFunctionBase {
         outptr[i] = outc[i].imag();
       }
     }
-    double get_imaginary(mfem::Vector &out){
+    void GetArrayImaginary(mfem::DenseMatrix &out){
+      double *outptr = out.GetData();
       for (int i = 0; i < vdim_; i++) {
-        out[i] = outc[i].imag();
+        outptr[i] = outc[i].imag();
       }
     }
-    
     void create_outc(){
       outc = new std::complex<double>[vdim_];
     }
@@ -930,6 +1007,16 @@ MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int
           }
           return new MatrixNumbaCoefficient(width, func_wrap->get_obj1(), func_wrap);
       }
+}
+
+void SetNumbaCoefficientDependency(NumbaCoefficientBase &obj,
+                                   const mfem::Array<mfem::Coefficient *>& a1,
+                                   const mfem::Array<mfem::VectorCoefficient *>& a2,
+                                   const mfem::Array<mfem::MatrixCoefficient *>& a3,
+                                   const mfem::Array<ScalarNumbaCoefficient *>& a4,
+                                   const mfem::Array<VectorNumbaCoefficient *>& a5,
+                                   const mfem::Array<MatrixNumbaCoefficient *>& a6){
+   obj.SetParams(a1,a2, a3, a4, a5, a6);
 }
 %}
 
@@ -1062,20 +1149,28 @@ try:
                 ff = cfunc(caller_sig)(caller_func)
 
                 if complex:
-                     real = GenerateScalarNumbaCoefficient(ff, td, 1)
-                     imag = GenerateScalarNumbaCoefficient(ff, td, 2)
-                     coeffs = (real, imag)
-                     coeff = coeffs
+                     coeff = GenerateScalarNumbaCoefficient(ff, td, 1)
+                     coeff.SetOutComplex(setting["output"])
+
+                     coeff.real = GenerateScalarNumbaCoefficient(ff, td, 1)
+                     coeff.imag = GenerateScalarNumbaCoefficient(ff, td, 2)
+                     coeffs = (coeff, coeff.real, coeff.imag)
                 else:
                      coeff = GenerateScalarNumbaCoefficient(ff, td, 0)
+                     coeff.SetOutComplex(setting["output"])
                      coeffs = (coeff, )
 
                 for c in coeffs:
-                     c.SetParams(setting["s_coeffs"],
-                                 setting["v_coeffs"],
-                                 setting["m_coeffs"],)
                      c.SetIsDepComplex(setting["isdepcomplex"])
                      c.SetKinds(setting["kinds"])
+                     SetNumbaCoefficientDependency(c,
+                                                   setting["s_coeffs"],
+                                                   setting["v_coeffs"],
+                                                   setting["m_coeffs"],
+                                                   setting["ns_coeffs"],
+                                                   setting["nv_coeffs"],
+                                                   setting["nm_coeffs"])
+
                 return coeff
             return dec
 
@@ -1146,20 +1241,28 @@ try:
                 ff = cfunc(caller_sig)(caller_func)
 
                 if complex:
-                     real = GenerateVectorNumbaCoefficient(ff, shape[0], td, 1)
-                     imag = GenerateVectorNumbaCoefficient(ff, shape[0], td, 2)
-                     coeffs = (real, imag)
-                     coeff = coeffs
+                     coeff = GenerateVectorNumbaCoefficient(ff, shape[0], td, 1)
+                     coeff.SetOutComplex(setting["output"])
+
+                     coeff.real = GenerateVectorNumbaCoefficient(ff, shape[0], td, 1)
+                     coeff.imag = GenerateVectorNumbaCoefficient(ff, shape[0], td, 2)
+                     coeffs = (coeff, coeff.real, coeff.imag)
                 else:
                      coeff =  GenerateVectorNumbaCoefficient(ff, shape[0], td, 0)
+                     coeff.SetOutComplex(setting["output"])
                      coeffs = (coeff, )
 
                 for c in coeffs:
-                     c.SetParams(setting["s_coeffs"],
-                                 setting["v_coeffs"],
-                                 setting["m_coeffs"], )
                      c.SetIsDepComplex(setting["isdepcomplex"])
                      c.SetKinds(setting["kinds"])
+                     SetNumbaCoefficientDependency(c,
+                                                   setting["s_coeffs"],
+                                                   setting["v_coeffs"],
+                                                   setting["m_coeffs"],
+                                                   setting["ns_coeffs"],
+                                                   setting["nv_coeffs"],
+                                                   setting["nm_coeffs"])
+
                 return coeff
             return dec
 
@@ -1225,20 +1328,28 @@ try:
                 ff = cfunc(caller_sig)(caller_func)
 
                 if complex:
-                     real = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 1)
-                     imag = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 2)
-                     coeffs = (real, imag)
-                     coeff = coeffs
+                     coeff = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 1)
+                     coeff.SetOutComplex(setting["output"])
+
+                     coeff.real = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 1)
+                     coeff.imag = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 2)
+                     coeffs = (coeff, coeff.real, coeff.imag)
+
                 else:
                      coeff = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 0)
+                     coeff.SetOutComplex(setting["output"])
                      coeffs = (coeff, )
 
                 for c in coeffs:
-                     c.SetParams(setting["s_coeffs"],
-                                 setting["v_coeffs"],
-                                 setting["m_coeffs"])
                      c.SetIsDepComplex(setting["isdepcomplex"])
                      c.SetKinds(setting["kinds"])
+                     SetNumbaCoefficientDependency(c,
+                                                   setting["s_coeffs"],
+                                                   setting["v_coeffs"],
+                                                   setting["m_coeffs"],
+                                                   setting["ns_coeffs"],
+                                                   setting["nv_coeffs"],
+                                                   setting["nm_coeffs"])
                 return coeff
             return dec
     jit = _JIT()

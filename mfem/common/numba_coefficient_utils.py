@@ -49,7 +49,7 @@ def generate_caller_scalar(setting):
             t3 = '    arr'+str(count) + ' = arrr' + \
                 str(count) + "+1j*arri" + str(count)
 
-            if len(size)==1 and size[0] == 1:
+            if len(size) == 1 and size[0] == 1:
                 t1 += '[0]'
                 t2 += '[0]'
 
@@ -61,7 +61,7 @@ def generate_caller_scalar(setting):
                 str(count) + ' = farray(data[' + \
                 str(count) + "], "+str(size) + ", np.float64)"
 
-            if len(size)==1 and size[0] == 1:
+            if len(size) == 1 and size[0] == 1:
                 t += '[0]'
 
             text.append(t)
@@ -117,7 +117,7 @@ def generate_caller_array_oldstyle(setting):
                 str(count) + ' = farray(data[' + \
                 str(count+1) + "], "+str(size) + ", np.float64)"
 
-            if len(size)==1 and size[0] == 1:
+            if len(size) == 1 and size[0] == 1:
                 t1 += '[0]'
                 t2 += '[0]'
 
@@ -132,7 +132,7 @@ def generate_caller_array_oldstyle(setting):
                 str(count) + ' = farray(data[' + \
                 str(count) + "], "+str(size) + ", np.float64)"
 
-            if len(size)==1 and size[0] == 1:
+            if len(size) == 1 and size[0] == 1:
                 t += '[0]'
 
             text.append(t)
@@ -206,7 +206,7 @@ def generate_caller_array(setting):
                 str(count) + ' = farray(data[' + \
                 str(count+1) + "], "+str(size) + ", np.float64)"
 
-            if len(size)==1 and size[0] == 1:
+            if len(size) == 1 and size[0] == 1:
                 t1 += '[0]'
                 t2 += '[0]'
 
@@ -221,7 +221,7 @@ def generate_caller_array(setting):
                 str(count) + ' = farray(data[' + \
                 str(count) + "], "+str(size) + ", np.float64)"
 
-            if len(size)==1 and size[0] == 1:
+            if len(size) == 1 and size[0] == 1:
                 t += '[0]'
 
             text.append(t)
@@ -405,7 +405,7 @@ def generate_signature_array(setting):
     return sig
 
 
-def _process_dependencies(dependencies):
+def _process_dependencies(dependencies, setting):
     from mfem import mfem_mode
     if mfem_mode == 'serial':
         from mfem.ser import (Coefficient,
@@ -416,17 +416,20 @@ def _process_dependencies(dependencies):
         from mfem.par import (Coefficient,
                               VectorCoefficient,
                               MatrixCoefficient,
-                              IsNumbaCoefficient)                              
-        
+                              IsNumbaCoefficient)
+
     iscomplex = []
     sizes = []
     kinds = []
     s_coeffs = []
     v_coeffs = []
     m_coeffs = []
+    ns_coeffs = []
+    nv_coeffs = []
+    nm_coeffs = []
     for x in dependencies:
         if isinstance(x, tuple):
-            iscomplex.append(True)
+            iscomplex.append(1)
             xx = x[0]
             if x[0] is None or x[1] is None:
                 assert False, "dependency has to have both real imaginary parts defined"
@@ -440,8 +443,15 @@ def _process_dependencies(dependencies):
                 assert h1 == h2, "real and imaginary has to have the same vdim"
                 assert w1 == w2, "real and imaginary has to have the same vdim"
         else:
-            iscomplex.append(False)
             xx = x
+            if IsNumbaCoefficient(xx):
+                if xx.IsOutComplex():
+                    iscomplex.append(2)
+                else:
+                    iscomplex.append(0)
+            else:
+                iscomplex.append(0)
+
             if isinstance(xx, MatrixCoefficient):
                 assert xx.GetHeight() == xx.GetWidth(), "matrix must be square"
 
@@ -449,24 +459,43 @@ def _process_dependencies(dependencies):
             kinds.append(0)
             sizes.append(1)
             s_coeffs.append(xx)
-            if iscomplex[-1]:
-                s_coeffs.append(x[1])
+            if iscomplex[-1] > 0:
+                if IsNumbaCoefficient(xx) and not isinstance(x, tuple):
+                    ns_coeffs.append(xx)
+                else:
+                    s_coeffs.append(x[1])
+
         elif isinstance(x, VectorCoefficient):
             kinds.append(1)
             sizes.append(xx.GetVDim())
             v_coeffs.append(xx)
-            if iscomplex[-1]:
-                v_coeffs.append(x[1])
+            if iscomplex[-1] > 0:
+                if IsNumbaCoefficient(xx) and not isinstance(x, tuple):
+                    nv_coeffs.append(xx)
+                else:
+                    v_coeffs.append(x[1])
+
         elif isinstance(xx, MatrixCoefficient):
             kinds.append(2)
             sizes.append((xx.GetHeight(), xx.GetWidth()))
             m_coeffs.append(xx)
-            if iscomplex[-1]:
-                m_coeffs.append(x[1])
+            if iscomplex[-1] > 0:
+                if IsNumbaCoefficient(xx) and not isinstance(x, tuple):
+                    nm_coeffs.append(xx)
+                else:
+                    m_coeffs.append(x[1])
+
         else:
             assert False, "unknown coefficient type" + str(type(xx))
 
-    return iscomplex, sizes, kinds, s_coeffs, v_coeffs, m_coeffs
+    setting['s_coeffs'] = s_coeffs
+    setting['v_coeffs'] = v_coeffs
+    setting['m_coeffs'] = m_coeffs
+    setting['ns_coeffs'] = ns_coeffs
+    setting['nv_coeffs'] = nv_coeffs
+    setting['nm_coeffs'] = nm_coeffs
+
+    return iscomplex, sizes, kinds
 
 
 def get_setting(outsize, iscomplex=False, dependencies=None, td=False):
@@ -476,14 +505,10 @@ def get_setting(outsize, iscomplex=False, dependencies=None, td=False):
     else:
         setting['output'] = False
 
-    isdepcomplex, sizes, kinds, s_coeffs, v_coeffs, m_coeffs = _process_dependencies(
-        dependencies)
+    isdepcomplex, sizes, kinds = _process_dependencies(dependencies, setting)
 
     setting['isdepcomplex'] = isdepcomplex
     setting['kinds'] = kinds
-    setting['s_coeffs'] = s_coeffs
-    setting['v_coeffs'] = v_coeffs
-    setting['m_coeffs'] = m_coeffs
     setting['outsize'] = outsize
     if isinstance(outsize, tuple):
         setting['outkind'] = len(outsize)
