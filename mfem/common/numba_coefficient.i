@@ -975,6 +975,7 @@ MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int
   using std::placeholders::_2;
   using std::placeholders::_3;
   //mfem::DenseMatrix &m = mfem::DenseMatrix(width, height);
+
   MatrixNumbaFunction2 *func_wrap = new MatrixNumbaFunction2(numba_func, width*height, td);
   if (td) {
           switch(mode){
@@ -1093,7 +1094,7 @@ try:
                 return ff
             return dec
 
-        def scalar(self, sdim=3, td=False, params={}, complex=False, dependency=None,
+        def scalar(self, sdim=3, td=False, params=None, complex=False, dependency=None,
                    interface="simple", debug=False):
             if dependency is None:
                 dependency = []
