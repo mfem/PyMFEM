@@ -268,29 +268,30 @@ def run_test():
     a2.AddDomainIntegrator(mfem.VectorFEMassIntegrator(c5))
     a3.AddDomainIntegrator(mfem.VectorFEMassIntegrator(m_func2))
 
-    @mfem.jit.matrix(sdim=3, dependency=(c4, c4), complex=True)
-    def m_func3(ptx, c4, c5):
+    @mfem.jit.matrix(sdim=3, dependency=(c4, c4), complex=True, td=True)
+    def m_func3(ptx, t, c4, c5):
         ret = np.array([[c5[0, 0], c5[0, 1], c5[0, 2]],
                         [0.0,      c5[1, 1], c5[1, 2]],
                         [0.0,      0.0,      c5[2, 2]]])
-        return ret*1j
+        return (t/3.0)*ret*1j
 
-    @mfem.jit.matrix(sdim=3, dependency=(m_func3, c4), td=True)
-    def m_func4_complex(ptx, t, m_func3, c5):
+    @mfem.jit.matrix(sdim=3, dependency=(m_func3, c4))
+    def m_func4_complex(ptx, m_func3, c5):
         return m_func3.imag
 
     @mfem.jit.matrix(sdim=3, dependency=((m_func3.real, m_func3.imag), c4), td=True)
     def m_func4_split(ptx, t, m_func3, c5):
-        return m_func3.imag
+        return m_func3.imag*(t/3.0)
 
+    '''
     @mfem.jit.matrix(sdim=3, complex=False, debug=True)
     def m_func5(p):
         x = p[0]
         y = p[1]
         return np.array([[1., 0., 0.], [0., 1., 0.], [0., 0., 1.]])
-
-        # _out_ =
-        # return np.array(_out_)
+    '''
+    # _out_ =
+    # return np.array(_out_)
 
     a4.AddDomainIntegrator(mfem.VectorFEMassIntegrator(m_func4_complex))
     a5.AddDomainIntegrator(mfem.VectorFEMassIntegrator(m_func4_split))
@@ -318,6 +319,7 @@ def run_test():
     print("Numba (simpler interface) (matrix)", end - start)
 
     start = time.time()
+    m_func4_complex.SetTime(3.0)
     a4.Assemble()
     end = time.time()
     a4.Finalize()
@@ -325,6 +327,7 @@ def run_test():
     print("Numba (complex dependency as complex) (matrix)", end - start)
 
     start = time.time()
+    m_func4_split.SetTime(3.0)
     a5.Assemble()
     end = time.time()
     a5.Finalize()
@@ -351,7 +354,7 @@ def run_test():
     compare_mat(M1, M4)
     compare_mat(M1, M5)
 
-    print(m_func3)
+    # print(m_func3.SpaceDimension())
     print("PASSED")
 
 
