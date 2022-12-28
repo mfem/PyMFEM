@@ -718,7 +718,6 @@ class ScalarNumbaFunction2 : public NumbaFunctionBase {
     }
     // complex real part
     double callr(const mfem::Vector &x){
-      std::complex<double> ret;
       ret = ((std::complex<double> (*)(double *, void**))address_)(x.GetData(), (void **)data_ptr);
       return ret.real();
     }
@@ -732,7 +731,6 @@ class ScalarNumbaFunction2 : public NumbaFunctionBase {
       return ret.imag();
     }
     double callti(const mfem::Vector &x, double t){
-      std::complex<double> ret;
       ret = ((std::complex<double> (*)(double *, double, void **))address_)(x.GetData(), t, (void **)data_ptr);
       return ret.imag();
     }
@@ -1158,7 +1156,7 @@ try:
                   caller_txt = interface[0](setting)
 
                 if debug:
-                     print("(DEBUG) generated caller function:", caller_txt)
+                     print("(DEBUG) generated caller function:\n", caller_txt)
 
                 exec(caller_txt, globals(), locals())
                 caller_params = {"inner_func": ff,  "sdim": sdim,
@@ -1245,7 +1243,7 @@ try:
                     caller_txt = interface[0](setting)
 
                 if debug:
-                     print("(DEBUG) generated caller function:", caller_txt)
+                     print("(DEBUG) generated caller function:\n", caller_txt)
 
                 exec(caller_txt, globals(), locals())
 
@@ -1336,7 +1334,7 @@ try:
                     caller_txt = interface[0](setting)
 
                 if debug:
-                     print("(DEBUG) generated caller function:", caller_txt)
+                     print("(DEBUG) generated caller function:\n", caller_txt)
 
                 exec(caller_txt, globals(), locals())
 
