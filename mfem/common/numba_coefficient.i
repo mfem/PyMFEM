@@ -1186,7 +1186,7 @@ try:
                                                    setting["ns_coeffs"],
                                                    setting["nv_coeffs"],
                                                    setting["nm_coeffs"])
-
+                     c._dependency_link = dependency
                 return coeff
             return dec
 
@@ -1278,7 +1278,7 @@ try:
                                                    setting["ns_coeffs"],
                                                    setting["nv_coeffs"],
                                                    setting["nm_coeffs"])
-
+                     c._dependency_link = dependency
                 return coeff
             return dec
 
@@ -1366,6 +1366,7 @@ try:
                                                    setting["ns_coeffs"],
                                                    setting["nv_coeffs"],
                                                    setting["nm_coeffs"])
+                     c._dependency_link = dependency
                 return coeff
             return dec
     jit = _JIT()
