@@ -465,7 +465,7 @@ def _process_dependencies(dependencies, setting):
                 else:
                     s_coeffs.append(x[1])
 
-        elif isinstance(x, VectorCoefficient):
+        elif isinstance(xx, VectorCoefficient):
             kinds.append(1)
             sizes.append(xx.GetVDim())
             v_coeffs.append(xx)
