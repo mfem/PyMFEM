@@ -428,7 +428,7 @@ def _process_dependencies(dependencies, setting):
     nv_coeffs = []
     nm_coeffs = []
     for x in dependencies:
-        if isinstance(x, tuple):
+        if isinstance(x, tuple) and x[1] is not None:
             iscomplex.append(1)
             xx = x[0]
             if x[0] is None or x[1] is None:
@@ -443,6 +443,9 @@ def _process_dependencies(dependencies, setting):
                 assert h1 == h2, "real and imaginary has to have the same vdim"
                 assert w1 == w2, "real and imaginary has to have the same vdim"
         else:
+            if isinstance(x, tuple):
+                # treat complex without imaginary part as real
+                x = x[0]
             xx = x
             if IsNumbaCoefficient(xx):
                 if xx.IsOutComplex():
