@@ -8,7 +8,7 @@
 
       In particular it shows.
          * mfem.jit.vector decorator as a function call
-         * defining constant parameters in functions
+         * defining constant parameters in functions using a params keyword
          * calling JITed function from JITed coefficient
 
 '''
@@ -148,7 +148,9 @@ def run(meshfile="",
               "epsilon": epsilon,
               "prob": prob,
               "mu": mu}
-    f = mfem.jit.vector(sdim=dim, params=params)(source)
+    f = mfem.jit.vector(sdim=dim,
+                        interface="c++",
+                        params=params)(source)
     b = mfem.ComplexLinearForm(fespace, conv)
     if prob == "general":
         b.AddDomainIntegrator(None, mfem.VectorFEDomainLFIntegrator(f))
@@ -161,14 +163,16 @@ def run(meshfile="",
     x = mfem.ComplexGridFunction(fespace)
     x.Assign(0.0)
 
-    sig = types.void(types.CPointer(types.double),
+    sig = types.void(types.double[:],
                      types.complex128[:], types.intc)
     exact_solution = mfem.jit.func(sig, params=params)(maxwell_solution)
 
     params = {'comp_domain_bdr': comp_domain_bdr,
               'exact_solution': exact_solution}
-    E_Re = mfem.jit.vector(sdim=dim, params=params)(E_bdr_data_Re)
-    E_Im = mfem.jit.vector(sdim=dim, params=params)(E_bdr_data_Im)
+    E_Re = mfem.jit.vector(sdim=dim, interface="c++",
+                           params=params)(E_bdr_data_Re)
+    E_Im = mfem.jit.vector(sdim=dim, interface="c++",
+                           params=params)(E_bdr_data_Im)
     x.ProjectBdrCoefficientTangent(E_Re, E_Im, ess_bdr)
 
     # 12. Set up the sesquilinear form a(.,.)
@@ -204,7 +208,8 @@ def run(meshfile="",
 
     cdim = 1 if dim == 2 else dim
 
-    def dm(x, m, sdim, _vdim):
+    def dm(x, m):
+        # sdim is given as a compile type constant
         diag = np.empty(sdim)
         diag_func(x, diag)
         for i in range(sdim):
@@ -212,7 +217,7 @@ def run(meshfile="",
 
     # JIT compiles all functions first. params defines local variables
     # inside the JITed function.
-    sig = types.void(types.CPointer(types.double), types.float64[:])
+    sig = types.void(types.double[:], types.float64[:])
     params = {"StretchFunction": pml.StretchFunction, "dim": dim}
     detJ_inv_JT_J_Re = mfem.jit.func(sig, params=params)(detJ_inv_JT_J_Re_f)
     detJ_inv_JT_J_Im = mfem.jit.func(sig, params=params)(detJ_inv_JT_J_Im_f)
@@ -222,9 +227,9 @@ def run(meshfile="",
     detJ_JT_J_inv_Im = mfem.jit.func(sig, params=params)(detJ_JT_J_inv_Im_f)
     detJ_JT_J_inv_abs = mfem.jit.func(sig, params=params)(detJ_JT_J_inv_abs_f)
 
-    pml_c1_Re = mfem.jit.vector(sdim=cdim,
+    pml_c1_Re = mfem.jit.vector(sdim=cdim, interface="c++",
                                 params={"diag_func": detJ_inv_JT_J_Re})(dm)
-    pml_c1_Im = mfem.jit.vector(sdim=cdim,
+    pml_c1_Im = mfem.jit.vector(sdim=cdim, interface="c++",
                                 params={"diag_func": detJ_inv_JT_J_Im})(dm)
 
     c1_Re = mfem.ScalarVectorProductCoefficient(muinv, pml_c1_Re)
@@ -232,9 +237,9 @@ def run(meshfile="",
     restr_c1_Re = mfem.VectorRestrictedCoefficient(c1_Re, attrPML)
     restr_c1_Im = mfem.VectorRestrictedCoefficient(c1_Im, attrPML)
 
-    pml_c2_Re = mfem.jit.vector(sdim=dim,
+    pml_c2_Re = mfem.jit.vector(sdim=dim, interface="c++",
                                 params={"diag_func": detJ_JT_J_inv_Re})(dm)
-    pml_c2_Im = mfem.jit.vector(sdim=dim,
+    pml_c2_Im = mfem.jit.vector(sdim=dim, interface="c++",
                                 params={"diag_func": detJ_JT_J_inv_Im})(dm)
     c2_Re = mfem.ScalarVectorProductCoefficient(omeg, pml_c2_Re)
     c2_Im = mfem.ScalarVectorProductCoefficient(omeg, pml_c2_Im)
@@ -278,12 +283,14 @@ def run(meshfile="",
         prec.AddDomainIntegrator(mfem.VectorFEMassIntegrator(restr_absomeg))
 
         pml_c1_abs = mfem.jit.vector(
-            params={"diag_func": detJ_inv_JT_J_abs, "dim": cdim})(dm)
+            params={"diag_func": detJ_inv_JT_J_abs, "dim": cdim,},
+            interface="c++")(dm)
         c1_abs = mfem.ScalarVectorProductCoefficient(muinv, pml_c1_abs)
         restr_c1_abs = mfem.VectorRestrictedCoefficient(c1_abs, attrPML)
 
         pml_c2_abs = mfem.jit.vector(
-            params={"diag_func": detJ_JT_J_inv_abs, "dim": dim})(dm)
+            params={"diag_func": detJ_JT_J_inv_abs, "dim": dim},
+            interface="c++")(dm)
         c2_abs = mfem.ScalarVectorProductCoefficient(absomeg, pml_c2_abs)
         restr_c2_abs = mfem.VectorRestrictedCoefficient(c2_abs, attrPML)
 
@@ -468,7 +475,7 @@ class CartesianPML:
         self.StretchFunction = self._GenerateStretchFunction()
 
     def _GenerateStretchFunction(self):
-        sig = types.void(types.CPointer(types.double), types.complex128[:])
+        sig = types.void(types.double[:], types.complex128[:])
         params = {"comp_domain_bdr": self.comp_dom_bdr,
                   "dim": self.dim,
                   "length": self.length,
@@ -617,7 +624,7 @@ def E_exact_Im(x, E):
         E[i] = E_[i].imag
 
 
-def E_bdr_data_Re(x, E, sdim, _vdim):
+def E_bdr_data_Re(x, E):
     for i in range(sdim):
         E[i] = 0.0
     in_pml = False
@@ -635,7 +642,7 @@ def E_bdr_data_Re(x, E, sdim, _vdim):
             E[i] = E_[i].real
 
 
-def E_bdr_data_Im(x, E, sdim, _vdim):
+def E_bdr_data_Im(x, E):
     for i in range(sdim):
         E[i] = 0.0
     in_pml = False

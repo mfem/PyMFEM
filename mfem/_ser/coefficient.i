@@ -45,65 +45,18 @@ import_array();
 %import "../common/exception_director.i"
 
 %ignore Function;
-//%ignore DeltaCoefficient;
-namespace mfem {
-%pythonprepend MatrixConstantCoefficient::MatrixConstantCoefficient(const DenseMatrix &m) %{
-   try:
-      import numpy as np
-      value = np.array(m, copy=False, dtype=float)
-      can_np_array = True
-   except:
-      can_np_array = False
 
-   if can_np_array:
-      v = mfem._ser.vector.Vector(np.transpose(value).flatten())
-      m = mfem._ser.densemat.DenseMatrix(v.GetData(), value.shape[0], value.shape[1])       
-      self._value = (v,m)
-   else:
-      pass 
-%}
-%pythonprepend VectorConstantCoefficient::VectorConstantCoefficient(const Vector &v) %{
-   try:
-      import numpy as np
-      value = np.array(v, copy=False, dtype=float).flatten()
-      can_np_array = True
-   except:
-      can_np_array = False
-
-   if can_np_array:
-      v = mfem._ser.vector.Vector(value)
-      self._value = v
-   else:
-      pass 
-%}
-%pythonprepend DeltaCoefficient::SetWeight %{
-    w.thisown=0 
-%}
-%pythonprepend VectorArrayCoefficient::Set %{ 
-    c.thisown=0 
-%}
-%pythonprepend MatrixArrayCoefficient::Set %{ 
-    c.thisown=0 
-%}
-%pythonappend VectorRestrictedCoefficient::VectorRestrictedCoefficient %{
-    self._ref_to_vc = vc
-%}
-%pythonappend RestrictedCoefficient::RestrictedCoefficient %{
-    self._ref_to_c = c_
-%}
-%pythonappend MatrixRestrictedCoefficient::MatrixRestrictedCoefficient %{
-    self._ref_to_mc = mc
-%}
-  
-}
+%include "../common/coefficient_common.i"
 
 %feature("notabstract") mfem::VectorFunctionCoefficient;
 %feature("notabstract") mfem::VectorConstantCoefficient;
 %feature("notabstract") mfem::VectorDeltaCoefficient;
+%feature("notabstract") mfem::MatrixArrayCoefficient;
 %feature("notabstract") mfem::MatrixFunctionCoefficient;
 %feature("notabstract") mfem::MatrixConstantCoefficient;
 %feature("notabstract") mfem::CurlGridFunctionCoefficient;
 %feature("notabstract") mfem::SymmetricMatrixConstantCoefficient;
+%feature("notabstract") mfem::SymmetricMatrixFunctionCoefficient;
 %feature("notabstract") mfem::VectorQuadratureFunctionCoefficient;
 
 /*
