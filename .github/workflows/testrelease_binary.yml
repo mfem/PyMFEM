@@ -29,6 +29,7 @@ jobs:
           pip3 install six
           pip3 install auditwheel
           pip3 install twine
+          pip3 install numpy==1.21.6
           if [ -f requirements.txt ]; then
              pip3 install -r requirements.txt
           fi	  
@@ -37,11 +38,11 @@ jobs:
           ls -l dist/
           python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
           #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*
-  make_binary_3_6_7_8_9:
+  make_binary_3_7_8_9:
     needs: make_sdist
     strategy:
       matrix:
-        pythonpath: ["cp36-cp36m", "cp37-cp37m", "cp38-cp38", "cp39-cp39"]
+        pythonpath: ["cp37-cp37m", "cp38-cp38", "cp39-cp39"]
  
     runs-on: ubuntu-latest
     container: quay.io/pypa/manylinux2014_x86_64
