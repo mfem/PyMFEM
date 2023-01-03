@@ -32,15 +32,15 @@ def run(order=1,
     if numba:
         #
         #  mfem.jit supports two interface. interface=simple allows for
-        #  returning a numpy array. 
+        #  returning a numpy array.
         #
-        @mfem.jit.vector(interface="simple")
+        @mfem.jit.vector(vdim=3, interface="simple")
         def E_exact(x):
             return np.array((sin(kappa*x[1]),
                              sin(kappa*x[2]),
                              sin(kappa*x[0])))
 
-        @mfem.jit.vector(interface="c++")
+        @mfem.jit.vector(vdim=3, interface="c++")
         def f_exact(x, out):
             out[0] = (1 + kappa**2)*sin(kappa * x[1])
             out[1] = (1 + kappa**2)*sin(kappa * x[2])

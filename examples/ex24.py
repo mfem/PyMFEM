@@ -88,24 +88,24 @@ def run(order=1,
                 return sin(x[0]) * sin(x[1])
             return 0.0
 
-        @mfem.jit.vector(sdim=sdim, shape=(dim,))
+        @mfem.jit.vector(shape=(sdim,))
         def gradp_coef(x):
             out = np.zeros(shape, dtype=np.float)
-            if sdim == 3:
+            if dim == 3:
                 out[0] = cos(x[0]) * sin(x[1]) * sin(x[2])
                 out[1] = sin(x[0]) * cos(x[1]) * sin(x[2])
                 out[2] = sin(x[0]) * sin(x[1]) * cos(x[2])
-            elif sdim == 2:
+            elif dim == 2:
                 out[0] = cos(x[0]) * sin(x[1])
                 out[1] = sin(x[0]) * cos(x[1])
-                if shape[0] == 3:
+                if len(x) == 3:
                     out[2] = 0.0
             return out
 
-        @mfem.jit.vector(sdim=sdim, vdim=dim, interface="c++")
+        @mfem.jit.vector(vdim=sdim, interface="c++")
         def v_coef(x, out):
             out = np.zeros(shape, dtype=np.float)
-            if shape[0] == 3:
+            if dim == 3:
                 out[0] = sin(kappa * x[1])
                 out[1] = sin(kappa * x[2])
                 out[2] = sin(kappa * x[0])
@@ -123,14 +123,14 @@ def run(order=1,
                 return -2.0 * sin(x[0]) * sin(x[1])
             return 0.0
 
-        @mfem.jit.vector(sdim=sdim, shape=(dim,), interface="c++")
+        @mfem.jit.vector(shape=(sdim,), interface="c++")
         def curlv_coef(x, out):
-            if shape[0] == 3:
+            if dim == 3:
                 out[0] = -kappa * cos(kappa * x[2])
                 out[1] = -kappa * cos(kappa * x[0])
                 out[2] = -kappa * cos(kappa * x[1])
             else:
-                for i in range(shape[0]):
+                for i in range(len(out)):
                     out[i] = 0.0
 
         @mfem.jit.scalar()

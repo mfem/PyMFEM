@@ -110,19 +110,19 @@ def run(mesh_file="",
 
         # mfem.jit.vector can either turn numpy array (defualt) or pass
         # the result using the second argment (interface="c++")
-        @mfem.jit.vector()
+        @mfem.jit.vector(vdim=sdim)
         def u1_real_exact(x):
             alpha = (epsilon * omega - 1j * sigma)
             kappa = sqrt(mu * omega * alpha)
             return np.array([exp(-1j * kappa * x[dim - 1]).real, 0.0, 0.0])
 
-        @mfem.jit.vector()
+        @mfem.jit.vector(vdim=sdim)
         def u1_imag_exact(x):
             alpha = (epsilon * omega - 1j * sigma)
             kappa = sqrt(mu * omega * alpha)
             return np.array([exp(-1j * kappa * x[dim - 1]).imag, 0.0, 0.0])
 
-        @mfem.jit.vector(interface="c++")
+        @mfem.jit.vector(vdim=sdim, interface="c++")
         def u2_real_exact(x, out):
             alpha = (epsilon * omega - 1j * sigma)
             kappa = sqrt(mu * omega * alpha)
@@ -130,7 +130,7 @@ def run(mesh_file="",
                 out[i] = 0
             out[dim-1] = exp(-1j * kappa * x[dim - 1]).real
 
-        @mfem.jit.vector(interface="c++")
+        @mfem.jit.vector(vdim=sdim, interface="c++")
         def u2_imag_exact(x, out):
             alpha = (epsilon * omega - 1j * sigma)
             kappa = sqrt(mu * omega * alpha)

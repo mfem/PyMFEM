@@ -1,4 +1,14 @@
 	<<<  Change Log. >>>
+2023 01.
+        * Improved mfem.jit decorator to create Numba JITed coefficient.
+	  (note, this involves an incompatible API change)
+
+           - parameter is passed as a numpy-like array to a user function (not as
+	     a CPointer object).
+	   - automatically creates two coefficients which return real and imaginary
+	     part, repsectively, when complex=True.
+	   - user function can use other MFEM coefficient as a variable (using dependency keyword)
+
 2022 03.
         * Added --cuda-arch option to specify the compute cuda archtecture
 

@@ -70,16 +70,18 @@ c = MatrixNumbaFunction(m_func, sdim, ndim, True).GenerateCoefficient()
 #     4) ptx and out are already processed using carray (no need to call it)
 #
 (usage)
-sdim = mesh.SpaceDimension()
-@scalar(sdim, td=False, params={}, complex=False, dependency=None, interface='simple',
-        debug=False)
-@vector(sdim, shape=None, td=False, params={}, complex=False, dependency=None,
-        interface='simple', debug=False)
-@matrix(sdim, shape=None, td=False, params={}, complex=False, dependency=None,
-        interface='simple', debug=False)
+@scalar(td=False, params={}, complex=False, dependency=None, interface='simple',
+        sdim=None, debug=False)
+@vector(vdim=None, shape=None, td=False, params={}, complex=False, dependency=None,
+        interface='simple', sdim=None, debug=False)
+@matrix(height=None, width=None, shape=None, td=False, params={}, complex=False, dependency=None,
+        interface='simple', sdim=None, debug=False)
 
-sdim: space dimenstion
 shape: shape of return value
+vdim: vector dimensiton of vector coefficient
+width and height: matrix size of matrix coefficient
+
+
 td: time-dependence (False: stationary, True: time-dependent
 complex: complex coefficient. if ture, it returns a tuple of coefficient
 depenency: dependency to other coefficient
@@ -88,13 +90,12 @@ interface: calling proceture
    'c++': vector/matric function returns the result by parameter like C++
     other options: one can pass a tuple of (caller, signature) pair to create a custom
                    interface
+sdim: space dimenstion (optional. if it is given, sdim can be used in the user function)
 debug: extra debug print
 
 (examples)
 # scalar coefficient
-sdim = mesh.SpaceDimension()
-
-@mfem.jit.scalar(sdim)
+@mfem.jit.scalar()
 def c12(ptx):
     return ptx[0] * ptx[sdim-1]  ### note sdim is defined when this is compiled
 
@@ -104,7 +105,7 @@ def c12(ptx, E, density):
 
 
 # vectorr coefficient
-@mfem.jit.vector(sdim, shape = (3,))
+@mfem.jit.vector(shape = (3,))
 def f_exact(x, out):
     out[0] = (1 + kappa**2)*sin(kappa * x[1])
     out[1] = (1 + kappa**2)*sin(kappa * x[2])
@@ -114,7 +115,7 @@ def f_exact(x, out):
 # (Er, Ei) means complex number (GF for real and imaginary parts)
 # density is double.
 
-@mfem.jit.vector(sdim, dependency=((Er, Ei), density), complex=True)
+@mfem.jit.vector(dependency=((Er, Ei), density), complex=True)
 def f_exact(x, E, density, out):
     out[0] = (1 + kappa**2)*sin(kappa * x[1])
     out[1] = (1 + kappa**2)*sin(kappa * x[2])
@@ -683,6 +684,7 @@ double ScalarNumbaCoefficient::Eval(mfem::ElementTransformation &T,
 void VectorNumbaCoefficient::Eval(mfem::Vector &V,
                                   mfem::ElementTransformation &T,
                                   const mfem::IntegrationPoint &ip){
+   V.SetSize(vdim);
    PrepParams(T, ip);
    return mfem::VectorFunctionCoefficient::Eval(V, T, ip);
   }
@@ -690,6 +692,7 @@ void VectorNumbaCoefficient::Eval(mfem::Vector &V,
 void MatrixNumbaCoefficient :: Eval(mfem::DenseMatrix &K,
                                     mfem::ElementTransformation &T,
                                     const mfem::IntegrationPoint &ip){
+    K.SetSize(height, width);
     PrepParams(T, ip);
     return mfem::MatrixFunctionCoefficient::Eval(K, T, ip);
   }
@@ -711,27 +714,48 @@ class ScalarNumbaFunction2 : public NumbaFunctionBase {
     ~ScalarNumbaFunction2(){}
 
     double call(const mfem::Vector &x){
-      return ((double (*)(double *, void **))address_)(x.GetData(), (void **)data_ptr);
+      int sdim = x.Size();
+      return ((double (*)(double *, int, void **))address_)(x.GetData(),
+                                                            sdim,
+                                                            (void **)data_ptr);
     }
     double callt(const mfem::Vector &x, double t){
-      return ((double (*)(double *, double, void **))address_)(x.GetData(), t, (void **)data_ptr);
+      int sdim = x.Size();
+      return ((double (*)(double *, int, double, void **))address_)(x.GetData(),
+                                                                    sdim,
+                                                                    t,
+                                                                    (void **)data_ptr);
     }
     // complex real part
     double callr(const mfem::Vector &x){
-      ret = ((std::complex<double> (*)(double *, void**))address_)(x.GetData(), (void **)data_ptr);
+      int sdim = x.Size();
+      ret = ((std::complex<double> (*)(double *, int, void**))address_)(x.GetData(),
+                                                                        sdim,
+                                                                        (void **)data_ptr);
       return ret.real();
     }
     double calltr(const mfem::Vector &x, double t){
-      ret = ((std::complex<double> (*)(double *, double, void**))address_)(x.GetData(), t, (void **)data_ptr);
+      int sdim = x.Size();
+      ret = ((std::complex<double> (*)(double *, int, double, void**))address_)(x.GetData(),
+                                                                                sdim,
+                                                                                t,
+                                                                                (void **)data_ptr);
       return ret.real();
     }
     // complex imag part
     double calli(const mfem::Vector &x){
-      ret = ((std::complex<double> (*)(double *, void**))address_)(x.GetData(), (void **)data_ptr);
+      int sdim = x.Size();
+      ret = ((std::complex<double> (*)(double *, int,  void**))address_)(x.GetData(),
+                                                                         sdim,
+                                                                         (void **)data_ptr);
       return ret.imag();
     }
     double callti(const mfem::Vector &x, double t){
-      ret = ((std::complex<double> (*)(double *, double, void **))address_)(x.GetData(), t, (void **)data_ptr);
+      int sdim = x.Size();
+      ret = ((std::complex<double> (*)(double *, int, double, void **))address_)(x.GetData(),
+                                                                                 sdim,
+                                                                                 t,
+                                                                                 (void **)data_ptr);
       return ret.imag();
     }
     double GetScalarImaginary(){
@@ -750,7 +774,7 @@ class ScalarNumbaFunction2 : public NumbaFunctionBase {
 
     // FunctionCoefficient
     // mode   (0: real, 1: complex real part, 2: complex imag part)
-ScalarNumbaCoefficient* GenerateScalarNumbaCoefficient(PyObject *numba_func,  bool td, int mode, int sdim){
+ScalarNumbaCoefficient* GenerateScalarNumbaCoefficient(PyObject *numba_func,  bool td, int mode){
       using std::placeholders::_1;
       using std::placeholders::_2;
 
@@ -767,7 +791,7 @@ ScalarNumbaCoefficient* GenerateScalarNumbaCoefficient(PyObject *numba_func,  bo
             func_wrap->set_obj2(std::bind(&ScalarNumbaFunction2::callti, func_wrap, _1, _2));
             break;
           }
-          return new ScalarNumbaCoefficient(func_wrap->get_obj2(), func_wrap, sdim);
+          return new ScalarNumbaCoefficient(func_wrap->get_obj2(), func_wrap);
       } else {
           switch(mode){
           case 0:
@@ -780,7 +804,7 @@ ScalarNumbaCoefficient* GenerateScalarNumbaCoefficient(PyObject *numba_func,  bo
             func_wrap->set_obj1(std::bind(&ScalarNumbaFunction2::calli, func_wrap, _1));
             break;
           }
-          return new ScalarNumbaCoefficient(func_wrap->get_obj1(), func_wrap, sdim);
+          return new ScalarNumbaCoefficient(func_wrap->get_obj1(), func_wrap);
       }
 }
 // VectorFunctionCoefficient
@@ -802,45 +826,66 @@ class VectorNumbaFunction2 : public NumbaFunctionBase {
     }
 
     void call(const mfem::Vector &x, mfem::Vector &out){
+      int sdim = x.Size();
       out = 0.0;
-      return ((void (*) (double *, void **, double *))address_)(x.GetData(),
-                                                                (void **)data_ptr,
-                                                       out.GetData());
+      return ((void (*) (double *, int, void **, double *))address_)(x.GetData(),
+                                                                     sdim,
+                                                                     (void **)data_ptr,
+                                                                     out.GetData());
 
     }
     void callt(const mfem::Vector &x, double t, mfem::Vector &out){
+      int sdim = x.Size();
       out = 0.0;
-      return ((void (*) (double *, double,  void**, double *))address_)(x.GetData(),
-                                                                        t,
-                                                                        (void **)data_ptr,
-                                                                        out.GetData());
+      return ((void (*) (double *, int, double,  void**, double *))address_)(x.GetData(),
+                                                                             sdim,
+                                                                             t,
+                                                                             (void **)data_ptr,
+                                                                             out.GetData());
     }
     void callr(const mfem::Vector &x, mfem::Vector &out){
+      int sdim = x.Size();
       out = 0.0;
-      ((void (*) (double *, void **, std::complex<double> *))address_)(x.GetData(), (void **)data_ptr, outc);
+      ((void (*) (double *, int, void **, std::complex<double> *))address_)(x.GetData(),
+                                                                            sdim,
+                                                                            (void **)data_ptr, outc);
       for (int i = 0; i < vdim_; i++) {
 
         out[i] = outc[i].real();
       }
     }
     void calltr(const mfem::Vector &x, double t, mfem::Vector &out){
+      int sdim = x.Size();
       out = 0.0;
-      ((void (*) (double *, double, void**,  std::complex<double> *))address_)(x.GetData(), t, (void **)data_ptr, outc);
+      ((void (*) (double *, int, double, void**,  std::complex<double> *))address_)(x.GetData(),
+                                                                                    sdim,
+                                                                                    t,
+                                                                                    (void **)data_ptr,
+                                                                                    outc);
       for (int i = 0; i < vdim_; i++) {
         out[i] = outc[i].real();
       }
     }
     void calli(const mfem::Vector &x, mfem::Vector &out){
+      int sdim = x.Size();
       out = 0.0;
-      ((void (*) (double *, void**, std::complex<double> *))address_)(x.GetData(), (void **)data_ptr, outc);
+      ((void (*) (double *, int, void**, std::complex<double> *))address_)(x.GetData(),
+                                                                           sdim,
+                                                                           (void **)data_ptr,
+                                                                           outc);
       for (int i = 0; i < vdim_; i++) {
         out[i] = outc[i].imag();
       }
 
     }
     void callti(const mfem::Vector &x, double t, mfem::Vector &out){
+      int sdim = x.Size();
       out = 0.0;
-      ((void (*) (double *, double, void**, std::complex<double> *))address_)(x.GetData(), t, (void**)data_ptr,  outc);
+      ((void (*) (double *, int, double, void**, std::complex<double> *))address_)(x.GetData(),
+                                                                                   sdim,
+                                                                                   t,
+                                                                                   (void **)data_ptr,
+                                                                                   outc);
       for (int i = 0; i < vdim_; i++) {
         out[i] = outc[i].imag();
       }
@@ -863,7 +908,7 @@ class VectorNumbaFunction2 : public NumbaFunctionBase {
     std::function<void(const mfem::Vector &, mfem::Vector &)> get_obj1(){return obj1;}
     std::function<void(const mfem::Vector &, double, mfem::Vector &)> get_obj2(){return obj2;}
 };
-VectorNumbaCoefficient* GenerateVectorNumbaCoefficient(PyObject *numba_func, int vdim, bool td, int mode, int sdim){
+VectorNumbaCoefficient* GenerateVectorNumbaCoefficient(PyObject *numba_func, int vdim, bool td, int mode){
       using std::placeholders::_1;
       using std::placeholders::_2;
       using std::placeholders::_3;
@@ -883,7 +928,7 @@ VectorNumbaCoefficient* GenerateVectorNumbaCoefficient(PyObject *numba_func, int
             func_wrap->create_outc();
             break;
           }
-          return new VectorNumbaCoefficient(vdim, func_wrap->get_obj2(), func_wrap, sdim);
+          return new VectorNumbaCoefficient(vdim, func_wrap->get_obj2(), func_wrap);
       } else {
           switch(mode){
           case 0:
@@ -898,7 +943,7 @@ VectorNumbaCoefficient* GenerateVectorNumbaCoefficient(PyObject *numba_func, int
             func_wrap->create_outc();
             break;
           }
-          return new VectorNumbaCoefficient(vdim, func_wrap->get_obj1(), func_wrap, sdim);
+          return new VectorNumbaCoefficient(vdim, func_wrap->get_obj1(), func_wrap);
       }
 }
 
@@ -919,38 +964,55 @@ class MatrixNumbaFunction2 : public NumbaFunctionBase {
     }
 
     void call(const mfem::Vector &x, mfem::DenseMatrix &out){
+      int sdim = x.Size();
       out = 0.0;
-      return ((void (*) (double *, void**, double *))address_)(x.GetData(),
-                                                               (void **)data_ptr,
-                                                               out.GetData());
+      return ((void (*) (double *, int, void**, double *))address_)(x.GetData(),
+                                                                    sdim,
+                                                                    (void **)data_ptr,
+                                                                    out.GetData());
 
     }
     void callt(const mfem::Vector &x, double t, mfem::DenseMatrix &out){
+      int sdim = x.Size();
       out = 0.0;
-      return ((void (*) (double *, double, void**, double *))address_)(x.GetData(),
-                                                                       t,
-                                                                       (void **)data_ptr,
-                                                                       out.GetData());
+      return ((void (*) (double *, int, double, void**, double *))address_)(x.GetData(),
+                                                                            sdim,
+                                                                            t,
+                                                                            (void **)data_ptr,
+                                                                            out.GetData());
     }
     void callr(const mfem::Vector &x, mfem::DenseMatrix &out){
+      int sdim = x.Size();
       out = 0.0;
-      ((void (*) (double *, void**, std::complex<double> *))address_)(x.GetData(), (void**)data_ptr, outc);
+      ((void (*) (double *, int, void**, std::complex<double> *))address_)(x.GetData(),
+                                                                           sdim,
+                                                                           (void**)data_ptr,
+                                                                           outc);
       double *outptr = out.GetData();
       for (int i = 0; i < vdim_; i++) {
         outptr[i] = outc[i].real();
       }
     }
     void calltr(const mfem::Vector &x, double t, mfem::DenseMatrix &out){
+      int sdim = x.Size();
       out = 0.0;
-      ((void (*) (double *, double, void**,  std::complex<double> *))address_)(x.GetData(), t, (void **)data_ptr, outc);
+      ((void (*) (double *, int, double, void**,  std::complex<double> *))address_)(x.GetData(),
+                                                                                    sdim,
+                                                                                    t,
+                                                                                    (void **)data_ptr,
+                                                                                    outc);
       double *outptr = out.GetData();
       for (int i = 0; i < vdim_; i++) {
         outptr[i] = outc[i].real();
       }
     }
     void calli(const mfem::Vector &x, mfem::DenseMatrix &out){
+      int sdim = x.Size();
       out = 0.0;
-      ((void (*) (double *, void**, std::complex<double> *))address_)(x.GetData(), (void **)data_ptr, outc);
+      ((void (*) (double *, int, void**, std::complex<double> *))address_)(x.GetData(),
+                                                                           sdim,
+                                                                           (void **)data_ptr,
+                                                                           outc);
       double *outptr = out.GetData();
       for (int i = 0; i < vdim_; i++) {
         outptr[i] = outc[i].imag();
@@ -958,8 +1020,13 @@ class MatrixNumbaFunction2 : public NumbaFunctionBase {
 
     }
     void callti(const mfem::Vector &x, double t, mfem::DenseMatrix &out){
+      int sdim = x.Size();
       out = 0.0;
-      ((void (*) (double *, double, void**,  std::complex<double> *))address_)(x.GetData(), t, (void **)data_ptr, outc);
+      ((void (*) (double *, int, double, void**,  std::complex<double> *))address_)(x.GetData(),
+                                                                                    sdim,
+                                                                                    t,
+                                                                                    (void **)data_ptr,
+                                                                                    outc);
       double *outptr = out.GetData();
       for (int i = 0; i < vdim_; i++) {
         outptr[i] = outc[i].imag();
@@ -985,10 +1052,11 @@ class MatrixNumbaFunction2 : public NumbaFunctionBase {
 
 };
 
-MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int width, int height, bool td, int mode, int sdim){
+MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int width, int height, bool td, int mode){
   using std::placeholders::_1;
   using std::placeholders::_2;
   using std::placeholders::_3;
+
   //mfem::DenseMatrix &m = mfem::DenseMatrix(width, height);
 
   MatrixNumbaFunction2 *func_wrap = new MatrixNumbaFunction2(numba_func, width*height, td);
@@ -1006,7 +1074,7 @@ MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int
             func_wrap->create_outc();
             break;
           }
-          return new MatrixNumbaCoefficient(width, func_wrap->get_obj2(), func_wrap, sdim);
+          return new MatrixNumbaCoefficient(width, func_wrap->get_obj2(), func_wrap);
    } else {
           switch(mode){
           case 0:
@@ -1021,7 +1089,7 @@ MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int
             func_wrap->create_outc();
             break;
           }
-          return new MatrixNumbaCoefficient(width, func_wrap->get_obj1(), func_wrap, sdim);
+          return new MatrixNumbaCoefficient(width, func_wrap->get_obj1(), func_wrap);
       }
 }
 
@@ -1109,8 +1177,8 @@ try:
                 return ff
             return dec
 
-        def scalar(self, sdim=3, td=False, params=None, complex=False, dependency=None,
-                   interface="simple", debug=False):
+        def scalar(self, td=False, params=None, complex=False, dependency=None,
+                   interface="simple", sdim=None, debug=False):
             if dependency is None:
                 dependency = []
             if params is None:
@@ -1142,10 +1210,12 @@ try:
 
                 if td:
                     caller_sig = outtype(types.CPointer(types.double),
-                                       types.double,
-                                       types.CPointer(types.voidptr))
+                                         types.int32,
+                                         types.double,
+                                         types.CPointer(types.voidptr))
                 else:
                     caller_sig = outtype(types.CPointer(types.double),
+                                         types.int32,
                                         types.CPointer(types.voidptr))
 
                 if interface=="c++":
@@ -1159,20 +1229,19 @@ try:
                      print("(DEBUG) generated caller function:\n", caller_txt)
 
                 exec(caller_txt, globals(), locals())
-                caller_params = {"inner_func": ff,  "sdim": sdim,
-                                 "carray":carray, "farray":farray}
+                caller_params = {"inner_func": ff, "carray":carray, "farray":farray}
                 caller_func = self._copy_func_and_apply_params(locals()["_caller"], caller_params)
                 ff = cfunc(caller_sig)(caller_func)
 
                 if complex:
-                     coeff = GenerateScalarNumbaCoefficient(ff, td, 1, sdim)
+                     coeff = GenerateScalarNumbaCoefficient(ff, td, 1)
                      coeff.SetOutComplex(setting["output"])
 
-                     coeff.real = GenerateScalarNumbaCoefficient(ff, td, 1, sdim)
-                     coeff.imag = GenerateScalarNumbaCoefficient(ff, td, 2, sdim)
+                     coeff.real = GenerateScalarNumbaCoefficient(ff, td, 1)
+                     coeff.imag = GenerateScalarNumbaCoefficient(ff, td, 2)
                      coeffs = (coeff, coeff.real, coeff.imag)
                 else:
-                     coeff = GenerateScalarNumbaCoefficient(ff, td, 0, sdim)
+                     coeff = GenerateScalarNumbaCoefficient(ff, td, 0)
                      coeff.SetOutComplex(setting["output"])
                      coeffs = (coeff, )
 
@@ -1190,17 +1259,28 @@ try:
                 return coeff
             return dec
 
-        def vector(self, sdim=3, vdim=None, shape=None, td=False, params=None,
-                   complex=False, dependency=None, interface="simple", debug=False):
-            if vdim is not None:
+        def vector(self, vdim=None, shape=None, td=False, params=None,
+                   complex=False, dependency=None, interface="simple", sdim=None, debug=False):
+
+            assert (vdim is not None or shape is not None), "vdim or shape must be given"
+
+            if vdim is not None and shape is None:
                 shape = (vdim, )
-            shape = (sdim, ) if shape is None else shape
+            if vdim is None and shape is not None:
+                vdim = shape[0]
+
+            assert vdim == shape[0], "vdim and shape are not consistent"
+
             if dependency is None:
                 dependency = []
             if params is None:
                 params = {}
-            params["sdim"] = sdim
             params["shape"] = shape
+            params["vdim"] = vdim
+
+            if sdim is not None:
+                # optional parameter to use sdim in a user function
+                params["sdim"] = sdim
 
             def dec(func):
                 from numba import cfunc, njit
@@ -1227,11 +1307,13 @@ try:
 
                 if td:
                     caller_sig = types.void(types.CPointer(types.double),
+                                            types.int32,
                                             types.double,
                                             types.CPointer(types.voidptr),
                                             types.CPointer(outtype))
                 else:
                     caller_sig = types.void(types.CPointer(types.double),
+                                            types.int32,
                                             types.CPointer(types.voidptr),
                                             types.CPointer(outtype))
 
@@ -1247,7 +1329,7 @@ try:
 
                 exec(caller_txt, globals(), locals())
 
-                caller_params = {"inner_func": ff, "sdim": sdim, "np":np, "shape":shape,
+                caller_params = {"inner_func": ff, "np":np, "shape":shape,
                                  "carray":carray, "farray":farray}
 
                 if vdim is not None:
@@ -1257,14 +1339,14 @@ try:
                 ff = cfunc(caller_sig)(caller_func)
 
                 if complex:
-                     coeff = GenerateVectorNumbaCoefficient(ff, shape[0], td, 1, sdim)
+                     coeff = GenerateVectorNumbaCoefficient(ff, shape[0], td, 1)
                      coeff.SetOutComplex(setting["output"])
 
-                     coeff.real = GenerateVectorNumbaCoefficient(ff, shape[0], td, 1, sdim)
-                     coeff.imag = GenerateVectorNumbaCoefficient(ff, shape[0], td, 2, sdim)
+                     coeff.real = GenerateVectorNumbaCoefficient(ff, shape[0], td, 1)
+                     coeff.imag = GenerateVectorNumbaCoefficient(ff, shape[0], td, 2)
                      coeffs = (coeff, coeff.real, coeff.imag)
                 else:
-                     coeff =  GenerateVectorNumbaCoefficient(ff, shape[0], td, 0, sdim)
+                     coeff =  GenerateVectorNumbaCoefficient(ff, shape[0], td, 0)
                      coeff.SetOutComplex(setting["output"])
                      coeffs = (coeff, )
 
@@ -1282,17 +1364,35 @@ try:
                 return coeff
             return dec
 
-        def matrix(self, sdim=3, shape=None, td=False, params=None,
-                   complex=False, dependency=None, interface="simple", debug=False):
-            shape = (sdim, sdim) if shape is None else shape
-            assert shape[0] == shape[1], "must be squre matrix"
+        def matrix(self, height=None, width=None, shape=None, td=False, params=None,
+                   complex=False, dependency=None, interface="simple", sdim=None, debug=False):
 
+            if (width is None and heigth is not None or
+                width is not None and heigth is None) :
+                assert False, "height and width must be used together"
+
+            assert (width is not None or shape is not None), "w/h or shape must be given"
+
+            if width is not None and shape is None:
+                shape = (width, height)
+            if vdim is None and shape is not None:
+                width = shape[0]
+                height = shape[1]
+            assert height == shape[0], "height and shape[0] are not consistent"
+            assert width == shape[1], "width and shape[1] are not consistent"
+
+            if shape[0] != shape[1]:
+                import warnings
+                warning.warn("Rectangular matrix coefficient is experimental", UserWarning)
+		  
             if dependency is None:
                 dependency = []
             if params is None:
                 params = {}
             params["sdim"] = sdim
             params["shape"] = shape
+            params["width"] = width
+            params["height"] = height
 
             def dec(func):
                 from numba import cfunc, njit
@@ -1318,11 +1418,13 @@ try:
                     outtype = types.double
                 if td:
                     caller_sig = types.void(types.CPointer(types.double),
+                                            types.int32,
                                             types.double,
                                             types.CPointer(types.voidptr),
                                             types.CPointer(outtype))
                 else:
                     caller_sig = types.void(types.CPointer(types.double),
+                                            types.int32,
                                             types.CPointer(types.voidptr),
                                             types.CPointer(outtype))
 
@@ -1338,21 +1440,21 @@ try:
 
                 exec(caller_txt, globals(), locals())
 
-                caller_params = {"inner_func": ff, "sdim": sdim, "np":np, "shape":shape,
+                caller_params = {"inner_func": ff, "np":np, "shape":shape,
                                  "carray":carray, "farray":farray}
                 caller_func = self._copy_func_and_apply_params(locals()["_caller"], caller_params)
                 ff = cfunc(caller_sig)(caller_func)
 
                 if complex:
-                     coeff = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 1, sdim)
+                     coeff = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 1)
                      coeff.SetOutComplex(setting["output"])
 
-                     coeff.real = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 1, sdim)
-                     coeff.imag = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 2, sdim)
+                     coeff.real = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 1)
+                     coeff.imag = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 2)
                      coeffs = (coeff, coeff.real, coeff.imag)
 
                 else:
-                     coeff = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 0, sdim)
+                     coeff = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 0)
                      coeff.SetOutComplex(setting["output"])
                      coeffs = (coeff, )
 

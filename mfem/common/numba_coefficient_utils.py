@@ -12,7 +12,7 @@ def generate_caller_scalar(setting):
         {"isdepcomplex": (True, False), "kinds": (1, 0),
                        "output": True, size: (10, 1)}
 
-    def _caller(ptx, data):
+    def _caller(ptx, sdim, data):
         ptx = farray(ptx, (sdim,), np.float64)      # for position
         arr0r = farray(data[0], (10,), np.float64)
         arr0i = farray(data[1], (10,), np.float64)
@@ -27,9 +27,9 @@ def generate_caller_scalar(setting):
 
     '''
     if setting['td']:
-        text = ['def _caller(ptx, t, data):']
+        text = ['def _caller(ptx, sdim, t, data):']
     else:
-        text = ['def _caller(ptx, data):']
+        text = ['def _caller(ptx, sdim, data):']
 
     text.append("    ptx = farray(ptx, (sdim,), np.float64)")
     count = 0
@@ -49,7 +49,8 @@ def generate_caller_scalar(setting):
             t3 = '    arr'+str(count) + ' = arrr' + \
                 str(count) + "+1j*arri" + str(count)
 
-            if len(size) == 1 and size[0] == 1:
+            #if len(size) == 1 and size[0] == 1:
+            if kind == 0:
                 t1 += '[0]'
                 t2 += '[0]'
 
@@ -61,7 +62,8 @@ def generate_caller_scalar(setting):
                 str(count) + ' = farray(data[' + \
                 str(count) + "], "+str(size) + ", np.float64)"
 
-            if len(size) == 1 and size[0] == 1:
+            #if len(size) == 1 and size[0] == 1:
+            if kind == 0:            
                 t += '[0]'
 
             text.append(t)
@@ -86,7 +88,7 @@ def generate_caller_array_oldstyle(setting):
     if setting is
         {"isdepcomplex": (True, False), "kinds": (1, 0),
                        "output": True, size: ((3, 3), 1), outsize: (2, 2) }
-    def _caller(ptx, data, out_):
+    def _caller(ptx, sdim, data, out_):
         ptx = farray(ptx, (sdim,), np.float64)      # for position
         arr0r = farray(data[0], (3, 3), np.float64)
         arr0i = farray(data[1], (3, 3), np.float64)
@@ -98,9 +100,9 @@ def generate_caller_array_oldstyle(setting):
     here inner_func is a function user provided.
     '''
     if setting['td']:
-        text = ['def _caller(ptx, t, data, out_):']
+        text = ['def _caller(ptx, sdim, t, data, out_):']
     else:
-        text = ['def _caller(ptx, data, out_):']
+        text = ['def _caller(ptx, sdim, data, out_):']
     text.append("    ptx = farray(ptx, (sdim,), np.float64)")
     count = 0
     params_line = '    params = ('
@@ -117,7 +119,8 @@ def generate_caller_array_oldstyle(setting):
                 str(count) + ' = farray(data[' + \
                 str(count+1) + "], "+str(size) + ", np.float64)"
 
-            if len(size) == 1 and size[0] == 1:
+            #if len(size) == 1 and size[0] == 1:
+            if kind == 0:                
                 t1 += '[0]'
                 t2 += '[0]'
 
@@ -132,7 +135,8 @@ def generate_caller_array_oldstyle(setting):
                 str(count) + ' = farray(data[' + \
                 str(count) + "], "+str(size) + ", np.float64)"
 
-            if len(size) == 1 and size[0] == 1:
+            #if len(size) == 1 and size[0] == 1:
+            if kind == 0:                                        
                 t += '[0]'
 
             text.append(t)
@@ -159,14 +163,14 @@ def generate_caller_array_oldstyle(setting):
 
 def generate_caller_array(setting):
     '''
-    generate a callder function on the fly
+    generate a following callder function from setting
 
     ex)
     if setting is
         {"isdepcomplex": (True, False), "kinds": (1, 0),
                        "output": True, size: ((3, 3), 1), outsize: (2, 2) }
 
-    def _caller(ptx, data, out_):
+    def _caller(ptx, sdim, data, out_):
         ptx = farray(ptx, (sdim,), np.float64)      # for position
         arr0r = farray(data[0], (3, 3), np.float64)
         arr0i = farray(data[1], (3, 3), np.float64)
@@ -187,9 +191,9 @@ def generate_caller_array(setting):
 
     '''
     if setting['td']:
-        text = ['def _caller(ptx, t, data, out_):']
+        text = ['def _caller(ptx, sdim, t, data, out_):']
     else:
-        text = ['def _caller(ptx, data, out_):']
+        text = ['def _caller(ptx, sdim, data, out_):']
     text.append("    ptx = farray(ptx, (sdim,), np.float64)")
     count = 0
     params_line = '    params = ('
@@ -206,7 +210,8 @@ def generate_caller_array(setting):
                 str(count) + ' = farray(data[' + \
                 str(count+1) + "], "+str(size) + ", np.float64)"
 
-            if len(size) == 1 and size[0] == 1:
+            #if len(size) == 1 and size[0] == 1:
+            if kind == 0:                                
                 t1 += '[0]'
                 t2 += '[0]'
 
@@ -221,7 +226,8 @@ def generate_caller_array(setting):
                 str(count) + ' = farray(data[' + \
                 str(count) + "], "+str(size) + ", np.float64)"
 
-            if len(size) == 1 and size[0] == 1:
+            #if len(size) == 1 and size[0] == 1:
+            if kind == 0:                                                
                 t += '[0]'
 
             text.append(t)

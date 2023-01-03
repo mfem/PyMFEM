@@ -47,6 +47,37 @@ import_array();
 
 %ignore Function;
 
+namespace mfem {
+%pythonprepend MatrixConstantCoefficient::MatrixConstantCoefficient(const DenseMatrix &m) %{
+   try:
+      import numpy as np
+      value = np.array(m, copy=False, dtype=float)
+      can_np_array = True
+   except:
+      can_np_array = False
+
+   if can_np_array:
+      v = mfem._par.vector.Vector(np.transpose(value).flatten())
+      m = mfem._par.densemat.DenseMatrix(v.GetData(), value.shape[0], value.shape[1])       
+      self._value = (v,m)
+   else:
+      pass 
+%}
+%pythonprepend VectorConstantCoefficient::VectorConstantCoefficient(const Vector &v) %{
+   try:
+      import numpy as np
+      value = np.array(v, copy=False, dtype=float).flatten()
+      can_np_array = True
+   except:
+      can_np_array = False
+
+   if can_np_array:
+      v = mfem._par.vector.Vector(value)
+      self._value = v
+   else:
+      pass 
+%}
+}
 %include "../common/coefficient_common.i"
 
 %feature("notabstract") mfem::VectorFunctionCoefficient;
@@ -200,18 +231,18 @@ class PyCoefficientT(PyCoefficientBase):
        return self.EvalValue(x.GetDataArray(), t)
    def EvalValue(self, x, t):
        return 0.0
-	 
+         
 class VectorPyCoefficient(VectorPyCoefficientBase):
    def __init__(self, dim):
        self.vdim = dim
        VectorPyCoefficientBase.__init__(self, dim, 0)
    def _EvalPy(self, x, V):
        v = self.EvalValue(x.GetDataArray())
-       V.Assign(v)	 
+       V.Assign(v)       
 
    def _EvalPyT(self, x, t, V):
        v = self.EvalValue(x.GetDataArray())
-       V.Assign(v)	 	 
+       V.Assign(v)               
 
    def EvalValue(self, x):
        return [0,0,0]
@@ -226,7 +257,7 @@ class VectorPyCoefficientT(VectorPyCoefficientBase):
 
    def _EvalPyT(self, x, t, V):
        v = self.EvalValue(x.GetDataArray(), t)
-       V.Assign(v)	 	 	 
+       V.Assign(v)                       
 
    def EvalValue(self, x, t):
        return [0.0,0.0,0.0]
@@ -237,7 +268,7 @@ class MatrixPyCoefficient(MatrixPyCoefficientBase):
        MatrixPyCoefficientBase.__init__(self, dim, 0)
    def _EvalPy(self, x, K):
        k = self.EvalValue(x.GetDataArray())
-       K.Assign(k)	 	 	 	 	 	 
+       K.Assign(k)                                               
 
    def EvalValue(self, x):
        return np.array([[0,0,0], [0,0,0], [0,0,0]])
@@ -248,10 +279,10 @@ class MatrixPyCoefficientT(MatrixPyCoefficientBase):
        MatrixPyCoefficientBase.__init__(self, dim, 1)
    def _EvalPyT(self, x, t, K):
        k = self.EvalValue(x.GetDataArray(), t)
-       K.Assign(k)	 	 	 	 	 	 
+       K.Assign(k)                                               
 
    def EvalValue(self, x, t):
        return np.array([[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]])
-	 
+         
 %}
 

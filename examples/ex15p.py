@@ -83,12 +83,13 @@ t_final = args.t_final
 visualization = args.visualization
 if myid == 0:
     parser.print_options(args)
-    
+
 alpha = 0.02
 
 device = mfem.Device('cpu')
 if myid == 0:
     device.Print()
+
 
 def front(x, y, z, t, dim):
     r = sqrt(x**2 + y**2 + z**2)
