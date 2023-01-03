@@ -172,12 +172,14 @@ class MatrixNumbaCoefficient : public mfem::MatrixFunctionCoefficient,  public N
 {
  public:
   int GetNDim(){return 2;}
-  MatrixNumbaCoefficient(int dim, std::function<void(const mfem::Vector &, mfem::DenseMatrix &)> F,
+  MatrixNumbaCoefficient(int h, int w,
+			 std::function<void(const mfem::Vector &, mfem::DenseMatrix &)> F,
 			 NumbaFunctionBase *in_obj)
-    : MatrixFunctionCoefficient(dim, std::move(F)), NumbaCoefficientBase(in_obj){}    
-  MatrixNumbaCoefficient(int dim, std::function<void(const mfem::Vector &, double, mfem::DenseMatrix &)> TDF,
+    : MatrixFunctionCoefficient(w, std::move(F)), NumbaCoefficientBase(in_obj){height=h; width=w;}    
+  MatrixNumbaCoefficient(int h, int w,
+			 std::function<void(const mfem::Vector &, double, mfem::DenseMatrix &)> TDF,
 			 NumbaFunctionBase *in_obj)
-    : MatrixFunctionCoefficient(dim, std::move(TDF)), NumbaCoefficientBase(in_obj){}    
+    : MatrixFunctionCoefficient(w, std::move(TDF)), NumbaCoefficientBase(in_obj){height=h; width=w;}
 
   virtual void SetTime(double t){
       mfem::MatrixFunctionCoefficient::SetTime(t);

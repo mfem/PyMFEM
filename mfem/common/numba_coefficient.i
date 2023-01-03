@@ -1052,7 +1052,7 @@ class MatrixNumbaFunction2 : public NumbaFunctionBase {
 
 };
 
-MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int width, int height, bool td, int mode){
+MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int height,  int width, bool td, int mode){
   using std::placeholders::_1;
   using std::placeholders::_2;
   using std::placeholders::_3;
@@ -1074,7 +1074,7 @@ MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int
             func_wrap->create_outc();
             break;
           }
-          return new MatrixNumbaCoefficient(width, func_wrap->get_obj2(), func_wrap);
+          return new MatrixNumbaCoefficient(height, width, func_wrap->get_obj2(), func_wrap);
    } else {
           switch(mode){
           case 0:
@@ -1089,7 +1089,7 @@ MatrixNumbaCoefficient* GenerateMatrixNumbaCoefficient(PyObject *numba_func, int
             func_wrap->create_outc();
             break;
           }
-          return new MatrixNumbaCoefficient(width, func_wrap->get_obj1(), func_wrap);
+          return new MatrixNumbaCoefficient(height, width, func_wrap->get_obj1(), func_wrap);
       }
 }
 
@@ -1367,8 +1367,8 @@ try:
         def matrix(self, height=None, width=None, shape=None, td=False, params=None,
                    complex=False, dependency=None, interface="simple", sdim=None, debug=False):
 
-            if (width is None and heigth is not None or
-                width is not None and heigth is None) :
+            if (width is None and height is not None or
+                width is not None and height is None) :
                 assert False, "height and width must be used together"
 
             assert (width is not None or shape is not None), "w/h or shape must be given"
