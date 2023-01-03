@@ -1375,7 +1375,7 @@ try:
 
             if width is not None and shape is None:
                 shape = (width, height)
-            if vdim is None and shape is not None:
+            if height is None and width is None and shape is not None:
                 width = shape[0]
                 height = shape[1]
             assert height == shape[0], "height and shape[0] are not consistent"
