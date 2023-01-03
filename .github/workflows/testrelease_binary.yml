@@ -24,7 +24,7 @@ jobs:
           git clone https://github.com/mfem/mfem.git
           cd ..
           #
-          export PATH=/opt/python/cp36-cp36m/bin:$PATH	  
+          export PATH=/opt/python/cp37-cp37m/bin:$PATH
           pip3 install wheel	  
           pip3 install six
           pip3 install auditwheel
