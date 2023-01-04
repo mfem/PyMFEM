@@ -31,7 +31,7 @@ jobs:
           export PATH=/opt/python/cp37-cp37m/bin:$PATH
           echo $(python -c "import setuptools;print(setuptools.__version__)")
           pip3 install setuptools==65.5.1
-          pip3 install wheel six auditwheel
+          pip3 install wheel six auditwheel twine
           pip3 install numpy==1.21.6
           #if [ -f requirements.txt ]; then
           #   pip3 install -r requirements.txt
