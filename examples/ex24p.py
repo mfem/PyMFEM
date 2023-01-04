@@ -98,29 +98,29 @@ def run(order=1,
                 return sin(x[0]) * sin(x[1])
             return 0.0
 
-        @mfem.jit.vector(sdim=sdim, vdim=dim)
-        def gradp_coef(x, out, sdim_, dim_):
-            if sdim_ == 3:
+        @mfem.jit.vector(sdim=sdim, shape=(sdim,), interface="c++")
+        def gradp_coef(x, out):
+            if dim == 3:
                 out[0] = cos(x[0]) * sin(x[1]) * sin(x[2])
                 out[1] = sin(x[0]) * cos(x[1]) * sin(x[2])
                 out[2] = sin(x[0]) * sin(x[1]) * cos(x[2])
-            elif sdim_ == 2:
+            else:
                 out[0] = cos(x[0]) * sin(x[1])
                 out[1] = sin(x[0]) * cos(x[1])
-                if dim_ == 3:
+                if sdim == 3:
                     out[2] = 0.0
 
-        @mfem.jit.vector(sdim=sdim, vdim=dim)
-        def v_coef(x, out, sdim_, dim_):
-            if sdim_ == 3:
+        @mfem.jit.vector(sdim=sdim, shape=(sdim,))
+        def v_coef(x):
+            out = np.zeros(sdim)
+            if dim == 3:
                 out[0] = sin(kappa * x[1])
                 out[1] = sin(kappa * x[2])
                 out[2] = sin(kappa * x[0])
             else:
                 out[0] = sin(kappa * x[1])
                 out[1] = sin(kappa * x[0])
-                if dim_ == 3:
-                    out[2] = 0.0
+            return out
 
         @mfem.jit.scalar()
         def cdiv_gradp_coeff(x):
@@ -130,15 +130,14 @@ def run(order=1,
                 return -2.0 * sin(x[0]) * sin(x[1])
             return 0.0
 
-        @mfem.jit.vector(sdim=sdim, vdim=dim)
-        def curlv_coef(x, out, sdim_, dim_):
-            if sdim_ == 3:
+        @mfem.jit.vector(sdim=sdim, shape=(dim,))
+        def curlv_coef(x):
+            out = np.zeros(shape)
+            if shape[0] == 3:
                 out[0] = -kappa * cos(kappa * x[2])
                 out[1] = -kappa * cos(kappa * x[0])
                 out[2] = -kappa * cos(kappa * x[1])
-            else:
-                for i in range(dim_):
-                    out[i] = 0.0
+            return out
 
         @mfem.jit.scalar()
         def divgradp_coef(x):

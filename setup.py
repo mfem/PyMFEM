@@ -807,6 +807,9 @@ def cmake_make_mfem(serial=True):
     make('mfem_' + txt)
     make_install('mfem_' + txt)
 
+    from shutil import copytree
+    copytree("../data", os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "data"))
+    
     os.chdir(pwd)
 
 
@@ -1397,7 +1400,7 @@ def configure_bdist(self):
     global prefix, dry_run, verbose, run_swig
     global build_mfem, build_parallel, build_serial
     global mfem_branch, mfem_source
-    global mfems_prefix, mfemp_prefix, hypre_prefix, metis_prefix
+    global mfems_prefix, mfemp_prefix, hypre_prefix, metis_prefix, ext_prefix
 
     global cc_command, cxx_command, mpicc_command, mpicxx_command
     global enable_pumi, pumi_prefix
@@ -1408,7 +1411,9 @@ def configure_bdist(self):
 
     prefix = abspath(self.bdist_dir)
 
-    run_swig = False
+    run_swig = True
+
+    build_mfem = True
     build_parallel = False
     build_serial = True
 
@@ -1417,9 +1422,10 @@ def configure_bdist(self):
     do_bdist_wheel = True
 
     mfem_source = './external/mfem'
-    ext_prefix = external_install_prefix()
-    hypre_prefix = os.path.join(ext_prefix)
-    metis_prefix = os.path.join(ext_prefix)
+    ext_prefix = os.path.join(prefix, 'mfem', 'external')
+    print("ext_prefix", ext_prefix)
+    hypre_prefix = ext_prefix
+    metis_prefix = ext_prefix
 
     mfem_prefix = ext_prefix
     mfems_prefix = os.path.join(ext_prefix, 'ser')
@@ -1675,6 +1681,7 @@ if haveWheel:
             _bdist_wheel.finalize_options(self)
 
         def run(self):
+            print("Engering BdistWheel::Run")
             if not is_configured:
                 print('running config')
                 configure_bdist(self)
@@ -1776,7 +1783,7 @@ class Clean(_clean):
         os.chdir(rootdir)
         _clean.run(self)
 
-#cdatafiles = [os.path.join('data', f) for f in os.listdir('data')]
+
 
 
 def run_setup():
@@ -1791,6 +1798,7 @@ def run_setup():
         cmdclass['bdist_wheel'] = BdistWheel
 
     install_req = install_requires()
+    
     # print(install_req)
     setup(
         cmdclass=cmdclass,

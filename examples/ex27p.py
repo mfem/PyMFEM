@@ -326,7 +326,8 @@ def run(order=1,
         visualization=True):
 
     device = mfem.Device('cpu')
-    if myid == 0: device.Print()
+    if myid == 0:
+        device.Print()
 
     if kappa < 0 and not h1:
         kappa = (order+1.0)**2
