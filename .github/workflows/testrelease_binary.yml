@@ -35,9 +35,11 @@ jobs:
           pip3 install auditwheel
           pip3 install twine
           pip3 install numpy==1.21.6
-          if [ -f requirements.txt ]; then
-             pip3 install -r requirements.txt
-          fi
+          pip3 install numba-scipy
+          pip3 install swig==4.0.2
+          #if [ -f requirements.txt ]; then
+          #   pip3 install -r requirements.txt
+          #fi
           rm -rf dist/*
           python3 setup.py sdist
           ls -l dist/
@@ -73,9 +75,12 @@ jobs:
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
           pip3 install six auditwheel twine
 
-          if [ -f requirements.txt ]; then
-             pip3 install -r requirements.txt
-          fi
+          pip3 install numpy==1.21.6
+          pip3 install numba-scipy
+          pip3 install swig==4.0.2
+          #if [ -f requirements.txt ]; then
+          #   pip3 install -r requirements.txt
+          #fi
           CWD=$PWD
           ls -l
           yum install -y zlib-devel
