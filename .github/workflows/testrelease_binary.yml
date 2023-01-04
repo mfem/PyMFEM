@@ -15,25 +15,28 @@ jobs:
           echo This job does not specify a container.
           echo It runs directly on the virtual machine.
           #
+          echo "!!!!!"
+          echo ${GITHUB_REF#refs/heads/}
+          echo "!!!!!"
           git clone https://github.com/mfem/PyMFEM.git
-          cd PyMFEM	  
+          cd PyMFEM
           git checkout test_release
           #
-          mkdir external	  
+          mkdir external
           cd external
           git clone https://github.com/mfem/mfem.git
           cd ..
           #
           export PATH=/opt/python/cp37-cp37m/bin:$PATH
           pip3 install -U setuptools
-          pip3 install wheel	  
+          pip3 install wheel
           pip3 install six
           pip3 install auditwheel
           pip3 install twine
           pip3 install numpy==1.21.6
           if [ -f requirements.txt ]; then
              pip3 install -r requirements.txt
-          fi	  
+          fi
           rm -rf dist/*
           python3 setup.py sdist
           ls -l dist/
@@ -44,7 +47,7 @@ jobs:
     strategy:
       matrix:
         pythonpath: ["cp37-cp37m", "cp38-cp38", "cp39-cp39"]
- 
+
     runs-on: ubuntu-latest
     container: quay.io/pypa/manylinux2014_x86_64
     #container: node:10.16-jessie
@@ -60,8 +63,8 @@ jobs:
           cd external
           git clone https://github.com/mfem/mfem.git
           cd ..
-          #	  
-          git checkout test_release	  
+          #
+          git checkout test_release
           #
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
@@ -69,7 +72,7 @@ jobs:
 
           if [ -f requirements.txt ]; then
              pip3 install -r requirements.txt
-          fi	  
+          fi
           CWD=$PWD
           ls -l
           yum install -y zlib-devel
@@ -112,7 +115,7 @@ jobs:
 
           if [ -f requirements.txt ]; then
              pip3 install -r requirements.txt
-          fi	  
+          fi
           CWD=$PWD
           ls -l
 
