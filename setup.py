@@ -20,6 +20,7 @@ from multiprocessing import Pool
 if platform == "darwin":
     multiprocessing.set_start_method("fork")
 
+import setuptools
 from setuptools import setup, find_packages
 from setuptools.command.build_py import build_py as _build_py
 from setuptools.command.install import install as _install
