@@ -108,11 +108,13 @@ jobs:
       - name: build package
         run: |
           echo It runs in the container instead of the VM.
+          REF=$(echo ${GITHUB_REF#refs/heads/})
+          echo "!!!!!!: "$REF
           #
           git clone https://github.com/mfem/PyMFEM.git
           cd PyMFEM
           #
-          git checkout test_release
+          git checkout $REF
           #
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
