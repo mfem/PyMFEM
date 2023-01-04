@@ -29,14 +29,10 @@ jobs:
           cd ..
           #
           export PATH=/opt/python/cp37-cp37m/bin:$PATH
-          pip3 install -U setuptools
-          pip3 install wheel
-          pip3 install six
-          pip3 install auditwheel
-          pip3 install twine
+          echo $(python -c "import setuptools;print(setuptools.__version__)")
+          pip3 install setuptools==65.5.1
+          pip3 install wheel six auditwheel
           pip3 install numpy==1.21.6
-          pip3 install numba-scipy
-          pip3 install swig==4.0.2
           #if [ -f requirements.txt ]; then
           #   pip3 install -r requirements.txt
           #fi
@@ -73,6 +69,8 @@ jobs:
           #
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
+          echo $(python -c "import setuptools;print(setuptools.__version__)")
+          pip3 install setuptools==65.5.1
           pip3 install six auditwheel twine
 
           pip3 install numpy==1.21.6
