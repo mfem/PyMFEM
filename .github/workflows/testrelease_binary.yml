@@ -16,11 +16,12 @@ jobs:
           echo It runs directly on the virtual machine.
           #
           echo "!!!!!"
-          echo ${GITHUB_REF#refs/heads/}
+          REF=$(echo ${GITHUB_REF#refs/heads/})
+          echo $REF
           echo "!!!!!"
           git clone https://github.com/mfem/PyMFEM.git
           cd PyMFEM
-          git checkout test_release
+          git checkout $REF
           #
           mkdir external
           cd external
@@ -55,6 +56,8 @@ jobs:
       - name: build package
         run: |
           echo It runs in the container instead of the VM.
+          REF=$(echo ${GITHUB_REF#refs/heads/})
+          echo "!!!!!!: "$REF
           #
           git clone https://github.com/mfem/PyMFEM.git
           cd PyMFEM
@@ -64,7 +67,7 @@ jobs:
           git clone https://github.com/mfem/mfem.git
           cd ..
           #
-          git checkout test_release
+          git checkout $REF
           #
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
