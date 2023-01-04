@@ -16,11 +16,12 @@ jobs:
           echo It runs directly on the virtual machine.
           #
           echo "!!!!!"
-          echo ${GITHUB_REF#refs/heads/}
+          REF=$(echo ${GITHUB_REF#refs/heads/})
+          echo $REF
           echo "!!!!!"
           git clone https://github.com/mfem/PyMFEM.git
           cd PyMFEM
-          git checkout test_release
+          git checkout $REF
           #
           mkdir external
           cd external
@@ -28,15 +29,13 @@ jobs:
           cd ..
           #
           export PATH=/opt/python/cp37-cp37m/bin:$PATH
-          pip3 install -U setuptools
-          pip3 install wheel
-          pip3 install six
-          pip3 install auditwheel
-          pip3 install twine
+          echo $(python -c "import setuptools;print(setuptools.__version__)")
+          pip3 install setuptools==65.5.1
+          pip3 install wheel six auditwheel twine
           pip3 install numpy==1.21.6
-          if [ -f requirements.txt ]; then
-             pip3 install -r requirements.txt
-          fi
+          #if [ -f requirements.txt ]; then
+          #   pip3 install -r requirements.txt
+          #fi
           rm -rf dist/*
           python3 setup.py sdist
           ls -l dist/
@@ -55,6 +54,8 @@ jobs:
       - name: build package
         run: |
           echo It runs in the container instead of the VM.
+          REF=$(echo ${GITHUB_REF#refs/heads/})
+          echo "!!!!!!: "$REF
           #
           git clone https://github.com/mfem/PyMFEM.git
           cd PyMFEM
@@ -64,15 +65,19 @@ jobs:
           git clone https://github.com/mfem/mfem.git
           cd ..
           #
-          git checkout test_release
+          git checkout $REF
           #
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
+          echo $(python -c "import setuptools;print(setuptools.__version__)")
+          pip3 install setuptools==65.5.1
           pip3 install six auditwheel twine
 
-          if [ -f requirements.txt ]; then
-             pip3 install -r requirements.txt
-          fi
+          pip3 install numpy==1.21.6
+          pip3 install numba-scipy
+          #if [ -f requirements.txt ]; then
+          #   pip3 install -r requirements.txt
+          #fi
           CWD=$PWD
           ls -l
           yum install -y zlib-devel
@@ -111,8 +116,9 @@ jobs:
           #
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
+          pip3 install setuptools==65.5.1
           pip3 install six auditwheel twine
-
+          pip3 install numba-scipy
           if [ -f requirements.txt ]; then
              pip3 install -r requirements.txt
           fi
