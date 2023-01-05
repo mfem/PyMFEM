@@ -105,9 +105,9 @@ jobs:
         if [ "${USE_FLAGS}" = "000" ]; then
            # test workflow to manually run swig
            python setup.py clean --swig
-           python setup.py install --ext-only --with-gslib
-           python setup.py install --swig --with-gslib
-           python setup.py install --skip-ext --skip-swig --with-gslib 
+           python setup.py install --ext-only --with-gslib --mfem-branch=coefficient-unneeded-using
+           python setup.py install --swig --with-gslib --mfem-branch=coefficient-unneeded-using
+           python setup.py install --skip-ext --skip-swig --with-gslib --mfem-branch=coefficient-unneeded-using
         fi
         if [ "${USE_FLAGS}" = "010" ]; then
            python setup.py install --with-gslib --with-parallel --prefix=$SANDBOX
