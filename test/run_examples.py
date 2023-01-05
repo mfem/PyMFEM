@@ -352,10 +352,10 @@ if __name__ == "__main__":
     mfempdir = args.mfempdir
     mfemsdir = args.mfemsdir
 
-    if not os.path.exists(os.path.join(mfempdir, "data")):
-        assert False, "data file does not exist in the package directory"
-    if not os.path.exists(os.path.join(mfempdir, "data")):
-        assert False, "data file does not exist in the package directory"
+    if not os.path.exists(os.path.join(mfemsdir, "data")) and tests:
+        assert False, "data file (under ser dir) does not exist in the package directory"
+    if not os.path.exists(os.path.join(mfempdir, "data")) and testp:
+        assert False, "data file (under par dir) does not exist in the package directory"
 
             
     sandbox = os.path.abspath(os.path.expanduser(args.sandbox))
