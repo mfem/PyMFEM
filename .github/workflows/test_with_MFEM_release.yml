@@ -38,12 +38,12 @@ jobs:
        SANDBOX: ~/sandbox
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 #      with:
 #        ref: master_tracking_branch
  
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -145,7 +145,8 @@ jobs:
           txt=$(python -c "import datetime;print(datetime.datetime.now().strftime('%H_%M_%S_%f'))")
           name="test_result_"${txt}"_"${{ github.run_id }}".tar.gz"
           echo $name
-          echo "::set-output name=artifact::${name}"
+          #  (deprecated) echo "::set-output name=artifact::${name}"
+          echo "artifact=${name}" >> $GITHUB_OUTPUT
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
