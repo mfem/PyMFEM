@@ -240,7 +240,12 @@ def external_install_prefix(verbose=True):
     elif prefix != '':
         # when prefix is given...let's borrow pip._internal to find the location ;D
         import pip._internal.locations
-        return pip._internal.locations.get_scheme("mfem", prefix=prefix).purelib
+        path = pip._internal.locations.get_scheme("mfem", prefix=prefix).purelib
+        if not os.path.exists(path):
+            os.makedirs(path)
+        path = os.path.join(path, 'mfem', 'external')
+        return path
+
     else:
         py_version = '%s.%s' % (sys.version_info[0], sys.version_info[1])
         paths = (s % (py_version) for s in (
