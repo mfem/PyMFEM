@@ -229,11 +229,18 @@ def external_install_prefix(verbose=True):
         usersite = site.USER_SITE
 
     if verbose:
-        print("running external_install_prefix with this parameters",
-              sys.argv, sys.prefix, usersite)
+        print("running external_install_prefix with the following parameters")
+        print("   sys.argv :", sys.argv)
+        print("   sys.prefix :", sys.prefix)
+        print("   usersite :", usersite)
+        print("   prefix :", prefix)
 
     if '--user' in sys.argv:
         paths = (usersite,)
+    elif prefix != '':
+        # when prefix is given...let's borrow pip._internal to find the location ;D
+        import pip._internal.locations
+        return pip._internal.locations.get_scheme("mfem", prefix=prefix).purelib
     else:
         py_version = '%s.%s' % (sys.version_info[0], sys.version_info[1])
         paths = (s % (py_version) for s in (
@@ -1558,9 +1565,9 @@ class Install(_install):
         global verbose
         verbose = bool(self.vv)
         if given_prefix:
-            global ext_prefix
+            #global ext_prefix
             self.prefix = abspath(prefix)
-            ext_prefix = abspath(prefix)
+            #ext_prefix = abspath(prefix)
         else:
             if '--user' in sys.argv:
                 path = site.getusersitepackages()
