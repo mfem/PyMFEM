@@ -75,11 +75,11 @@ jobs:
 
           pip3 install numpy==1.21.6
           pip3 install numba-scipy
-          #if [ -f requirements.txt ]; then
-          #   pip3 install -r requirements.txt
-          #fi
+          if [ -f requirements.txt ]; then
+             pip3 install -r requirements.txt
+          fi
+
           CWD=$PWD
-          ls -l
           yum install -y zlib-devel
 
           python3 setup.py install
