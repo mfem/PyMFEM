@@ -1428,9 +1428,9 @@ def configure_bdist(self):
 
     prefix = abspath(self.bdist_dir)
 
-    run_swig = True
+    run_swig = False
 
-    build_mfem = True
+    build_mfem = False
     build_parallel = False
     build_serial = True
 
