@@ -70,7 +70,7 @@ jobs:
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
           echo $(python -c "import setuptools;print(setuptools.__version__)")
-          pip3 install setuptools==65.5.1
+          #pip3 install setuptools==65.5.1
           pip3 install six auditwheel twine
 
           pip3 install numpy==1.21.6
@@ -83,11 +83,13 @@ jobs:
           yum install -y zlib-devel
 
           python3 setup.py install
-          # python3 -m pip install ./ --verbose	  (this seems okay too)
+          # python3 -m pip install ./ --verbose   (this seems okay too)
           rm -rf dist/*
-          python3 setup.py bdist_wheel
 
-          export LD_LIBRARY_PATH=${CWD}/PyMFEM/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
+
+          export LD_LIBRARY_PATH=${CWD}/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
+          python3 setup.py bdist_wheel --skip-build
+
           rm -rf wheelhouse/*
           auditwheel repair dist/*.whl
           rm -rf dist/*
@@ -135,9 +137,9 @@ jobs:
           python3 -m pip install ./ --verbose
 
           rm -rf dist/*
-          python3 setup.py bdist_wheel
 
-          export LD_LIBRARY_PATH=${CWD}/PyMFEM/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
+          export LD_LIBRARY_PATH=${CWD}/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
+          python3 setup.py bdist_wheel --skip-build
 
           rm -rf wheelhouse/*
           auditwheel repair dist/*.whl

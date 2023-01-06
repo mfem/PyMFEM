@@ -1435,7 +1435,11 @@ def configure_bdist(self):
 
     build_mfem = False
     build_parallel = False
-    build_serial = True
+
+    if self.skip_build == 1:
+        build_serial = False
+    else:
+        build_serial = True
 
     global is_configured
     is_configured = True
