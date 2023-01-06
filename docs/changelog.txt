@@ -9,6 +9,8 @@
 	     part, repsectively, when complex=True.
 	   - user function can use other MFEM coefficient as a variable (using dependency keyword)
 
+        * Initial support of PETSc + MFEM
+
 2022 03.
         * Added --cuda-arch option to specify the compute cuda archtecture
 

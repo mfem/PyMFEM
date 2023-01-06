@@ -124,8 +124,6 @@ $ python setup.py install --with-parallel --skip-ext --skip-swig --mfem-branch="
 $ pip install petsc
 $ python setup.py install --with-parallel --with-petsc 
 
-
-
 ## Other options
 --unverifiedSSL :
    This addresses error relating SSL certificate. Typical error message is
