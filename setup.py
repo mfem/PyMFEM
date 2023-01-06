@@ -29,9 +29,9 @@ from setuptools.command.install_scripts import install_scripts as _install_scrip
 import setuptools.command.sdist
 
 # this stops working after setuptools (56)
-#try:
+# try:
 #    from setuptools._distutils.command.clean import clean as _clean
-#except ImportError:
+# except ImportError:
 from distutils.command.clean import clean as _clean
 
 try:
@@ -58,7 +58,7 @@ repos = {"mfem": "https://github.com/mfem/mfem.git",
          "gklib": "https://github.com/KarypisLab/GKlib",
          "metis": "https://github.com/KarypisLab/METIS", }
 repos_sha = {
-#    "mfem": "a1f6902ed72552f3e680d1489f1aa6ade2e0d3b2",   # version 4.4
+    #    "mfem": "a1f6902ed72552f3e680d1489f1aa6ade2e0d3b2",   # version 4.4
     "mfem": "b7a4b61b5ce80b326a002aebccf7da7ad2432556",   # version 4.5
     "gklib": "a7f8172703cf6e999dd0710eb279bba513da4fec",
              "metis": "94c03a6e2d1860128c2d0675cbbb86ad4f261256"}
@@ -244,7 +244,8 @@ def external_install_prefix(verbose=True):
     elif prefix != '':
         # when prefix is given...let's borrow pip._internal to find the location ;D
         import pip._internal.locations
-        path = pip._internal.locations.get_scheme("mfem", prefix=prefix).purelib
+        path = pip._internal.locations.get_scheme(
+            "mfem", prefix=prefix).purelib
         if not os.path.exists(path):
             os.makedirs(path)
         path = os.path.join(path, 'mfem', 'external')
@@ -715,7 +716,7 @@ def cmake_make_mfem(serial=True):
                   'DMFEM_USE_ZLIB': '1',
                   'DCMAKE_CXX_FLAGS': cxx11_flag,
                   'DCMAKE_BUILD_WITH_INSTALL_RPATH': '1'}
-    #if verbose:
+    # if verbose:
     cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
 
     if serial:
@@ -734,7 +735,8 @@ def cmake_make_mfem(serial=True):
         cmake_opts['DCMAKE_INSTALL_PREFIX'] = mfemp_prefix
         cmake_opts['DMFEM_USE_MPI'] = '1'
         cmake_opts['DHYPRE_DIR'] = hypre_prefix
-        cmake_opts['DHYPRE_INCLUDE_DIRS'] = os.path.join(hypre_prefix, "include")
+        cmake_opts['DHYPRE_INCLUDE_DIRS'] = os.path.join(
+            hypre_prefix, "include")
 
         add_rpath(os.path.join(mfemp_prefix, 'lib'))
 
@@ -763,7 +765,8 @@ def cmake_make_mfem(serial=True):
     if enable_metis:
         cmake_opts['DMFEM_USE_METIS_5'] = '1'
         cmake_opts['DMETIS_DIR'] = metis_prefix
-        cmake_opts['DMETIS_INCLUDE_DIRS'] = os.path.join(metis_prefix, "include")
+        cmake_opts['DMETIS_INCLUDE_DIRS'] = os.path.join(
+            metis_prefix, "include")
         metislibpath = os.path.dirname(
             find_libpath_from_prefix(
                 'metis', metis_prefix))
@@ -809,13 +812,15 @@ def cmake_make_mfem(serial=True):
             cmake_opts['DSuiteSparse_DIR'] = suitesparse_prefix
 
     if not serial and enable_petsc:
-        cmake_opts['DMFEM_USE_PETSC'] = '1' 
+        cmake_opts['DMFEM_USE_PETSC'] = '1'
         cmake_opts['DPETSC_DIR'] = petsc_prefix
         petsclibpath = os.path.dirname(
             find_libpath_from_prefix(
                 'petsc', petsc_prefix))
         cmake_opts['DPETSC_LIBRARIES'] = "-L" + petsclibpath + " -lpetsc"
-        cmake_opts["DPETSC_EXECUTABLE_RUNS"]="YES"
+        cmake_opts['DPETSC_INCLUDES'] = os.path.join(petsc_prefix, 'include')
+        cmake_opts['DPETSC_ARCH'] = ""
+        cmake_opts["DPETSC_EXECUTABLE_RUNS"] = "YES"
 
     if blas_libraries != "":
         cmake_opts['DBLAS_LIBRARIES'] = blas_libraries
@@ -833,12 +838,14 @@ def cmake_make_mfem(serial=True):
     make_install('mfem_' + txt)
 
     os.chdir(pwd)
- 
+
     from shutil import copytree
     print("current working directory", os.getcwd())
     print(os.listdir("data"))
-    print("copying mesh data for testing", "../data", cmake_opts['DCMAKE_INSTALL_PREFIX'])
+    print("copying mesh data for testing", "../data",
+          cmake_opts['DCMAKE_INSTALL_PREFIX'])
     copytree("data", os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "data"))
+
 
 def write_setup_local():
     '''
@@ -895,6 +902,7 @@ def write_setup_local():
               'add_gslib': '',
               'add_gslibp': '',
               'add_gslibs': '',
+              'add_petsc': '',
               'libceedinc': os.path.join(libceed_prefix, 'include'),
               'gslibsinc': os.path.join(gslibs_prefix, 'include'),
               'gslibpinc': os.path.join(gslibp_prefix, 'include'),
@@ -934,6 +942,8 @@ def write_setup_local():
         add_extra('gslibs')
     if enable_gslib:
         add_extra('gslibp')
+    if enable_petsc:
+        add_extra('petsc')
 
     pwd = chdir(rootdir)
 
@@ -1055,6 +1065,8 @@ def generate_wrapper():
         parflag.append('-I' + os.path.join(pumi_prefix, 'include'))
     if enable_strumpack:
         parflag.append('-I' + os.path.join(strumpack_prefix, 'include'))
+    if enable_petsc:
+        parflag.append('-I' + os.path.join(petsc_prefix, 'include'))
     if enable_suitesparse:
         parflag.append('-I' + os.path.join(suitesparse_prefix,
                                            'include', 'suitesparse'))
@@ -1353,7 +1365,7 @@ def configure_install(self):
         strumpack_prefix = abspath(self.strumpack_prefix)
     else:
         strumpack_prefix = mfem_prefix
-        
+
     if self.petsc_prefix != '':
         petsc_prefix = abspath(self.petsc_prefix)
     else:
@@ -1830,8 +1842,6 @@ class Clean(_clean):
         _clean.run(self)
 
 
-
-
 def run_setup():
     setup_args = metadata.copy()
     cmdclass = {'build_py': BuildPy,
@@ -1844,7 +1854,7 @@ def run_setup():
         cmdclass['bdist_wheel'] = BdistWheel
 
     install_req = install_requires()
-    
+
     # print(install_req)
     setup(
         cmdclass=cmdclass,
