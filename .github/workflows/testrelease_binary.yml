@@ -83,17 +83,15 @@ jobs:
           yum install -y zlib-devel
 
           python3 setup.py install
+          # python3 -m pip install ./ --verbose	  (this seems okay too)
           rm -rf dist/*
           python3 setup.py bdist_wheel
 
-          #python3 -m pip install ./ --verbose
-
-          export LD_LIBRARY_PATH=$(python -c "import os, mfem;print(os.path.dirname(mfem.__file__)+'/external/ser/lib')"):$LD_LIBRARY_PATH
           export LD_LIBRARY_PATH=${CWD}/PyMFEM/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
           rm -rf wheelhouse/*
           auditwheel repair dist/*.whl
           rm -rf dist/*
-          #python3 setup.py sdist
+
           mv wheelhouse/* dist/
           ls -l dist/
           python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
@@ -140,11 +138,11 @@ jobs:
           python3 setup.py bdist_wheel
 
           export LD_LIBRARY_PATH=${CWD}/PyMFEM/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
-          export LD_LIBRARY_PATH=$(python -c "import os, mfem;print(os.path.dirname(mfem.__file__)+'/external/ser/lib')"):$LD_LIBRARY_PATH
+
           rm -rf wheelhouse/*
           auditwheel repair dist/*.whl
           rm -rf dist/*
-          #python3 setup.py sdist
+
           mv wheelhouse/* dist/
           ls -l dist/
           python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
