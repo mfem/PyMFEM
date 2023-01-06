@@ -28,10 +28,11 @@ from setuptools.command.install_lib import install_lib as _install_lib
 from setuptools.command.install_scripts import install_scripts as _install_scripts
 import setuptools.command.sdist
 
-try:
-    from setuptools._distutils.command.clean import clean as _clean
-except ImportError:
-    from distutils.command.clean import clean as _clean
+# this stops working after setuptools (56)
+#try:
+#    from setuptools._distutils.command.clean import clean as _clean
+#except ImportError:
+from distutils.command.clean import clean as _clean
 
 try:
     from wheel.bdist_wheel import bdist_wheel as _bdist_wheel
