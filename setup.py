@@ -823,8 +823,8 @@ def cmake_make_mfem(serial=True):
 
  
     from shutil import copytree, rmtree
-    print("current working directory", os.getcwd())
-    print(os.listdir("../data"))
+    #print("current working directory", os.getcwd())
+    #print(os.listdir("../data"))
     print("copying mesh data for testing", "../data", cmake_opts['DCMAKE_INSTALL_PREFIX'])
     path = os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "data")
     if os.path.exists(path):
@@ -1435,7 +1435,7 @@ def configure_bdist(self):
 
     build_mfem = False
     build_parallel = False
-    build_serial = True
+    build_serial = False
 
     global is_configured
     is_configured = True
