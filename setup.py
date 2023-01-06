@@ -222,7 +222,7 @@ def abspath(path):
     return os.path.abspath(os.path.expanduser(path))
 
 
-def external_install_prefix(verbose=True):
+def external_install_prefix(verbose=True, ignore_prefix=False):
 
     if hasattr(site, "getusersitepackages"):
         usersite = site.getusersitepackages()
@@ -238,7 +238,7 @@ def external_install_prefix(verbose=True):
 
     if '--user' in sys.argv:
         paths = (usersite,)
-    elif prefix != '':
+    else:
         # when prefix is given...let's borrow pip._internal to find the location ;D
         import pip._internal.locations
         path = pip._internal.locations.get_scheme("mfem", prefix=prefix).purelib
@@ -246,7 +246,7 @@ def external_install_prefix(verbose=True):
             os.makedirs(path)
         path = os.path.join(path, 'mfem', 'external')
         return path
-
+    '''
     else:
         py_version = '%s.%s' % (sys.version_info[0], sys.version_info[1])
         paths = (s % (py_version) for s in (
@@ -256,7 +256,7 @@ def external_install_prefix(verbose=True):
             sys.prefix + '/local/lib/python%s/site-packages/',
             '/Library/Python/%s/site-packages/',
         ))
-
+    
     for path in paths:
         # if verbose:
         #    print("testing installation path", path)
@@ -265,7 +265,7 @@ def external_install_prefix(verbose=True):
             return path
     assert False, "no installation path found"
     return None
-
+    '''
 
 def find_command(name):
     from shutil import which
