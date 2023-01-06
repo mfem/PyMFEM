@@ -837,15 +837,16 @@ def cmake_make_mfem(serial=True):
     make('mfem_' + txt)
     make_install('mfem_' + txt)
 
-    os.chdir(pwd)
-
-    from shutil import copytree
-    print("current working directory", os.getcwd())
-    print(os.listdir("data"))
-    print("copying mesh data for testing", "../data",
-          cmake_opts['DCMAKE_INSTALL_PREFIX'])
-    copytree("data", os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "data"))
-
+    from shutil import copytree, rmtree
+    #print("current working directory", os.getcwd())
+    #print(os.listdir("../data"))
+    print("copying mesh data for testing", "../data", cmake_opts['DCMAKE_INSTALL_PREFIX'])
+    path = os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "data")
+    if os.path.exists(path):
+        rmtree(path)       
+    copytree("../data", path)
+ 
+    os.chdir(pwd)    
 
 def write_setup_local():
     '''
@@ -1459,11 +1460,11 @@ def configure_bdist(self):
 
     prefix = abspath(self.bdist_dir)
 
-    run_swig = True
+    run_swig = False
 
-    build_mfem = True
+    build_mfem = False
     build_parallel = False
-    build_serial = True
+    build_serial = False
 
     global is_configured
     is_configured = True
