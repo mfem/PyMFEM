@@ -222,7 +222,7 @@ def abspath(path):
     return os.path.abspath(os.path.expanduser(path))
 
 
-def external_install_prefix(verbose=True, ignore_prefix=False):
+def external_install_prefix(verbose=True):
 
     if hasattr(site, "getusersitepackages"):
         usersite = site.getusersitepackages()
