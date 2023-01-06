@@ -70,9 +70,9 @@ def run(order=1,
         else:
             h += 0.5 * k_ * q * q
         return h
-    
+
     device = mfem.Device('cpu')
-    if myid == 0:        
+    if myid == 0:
         device.Print()
 
     # 2. Create and Initialize the Symplectic Integration Solver

@@ -46,15 +46,6 @@ import_array();
 %import "../common/exception_director.i"
 
 %ignore Function;
-//%ignore DeltaCoefficient;
-%feature("notabstract") VectorFunctionCoefficient;
-%feature("notabstract") VectorConstantCoefficient;
-%feature("notabstract") VectorDeltaCoefficient;
-%feature("notabstract") MatrixFunctionCoefficient;
-%feature("notabstract") MatrixConstantCoefficient;
-%feature("notabstract") mfem::CurlGridFunctionCoefficient;
-%feature("notabstract") mfem::SymmetricMatrixConstantCoefficient;
-%feature("notabstract") mfem::VectorQuadratureFunctionCoefficient;
 
 namespace mfem {
 %pythonprepend MatrixConstantCoefficient::MatrixConstantCoefficient(const DenseMatrix &m) %{
@@ -86,25 +77,19 @@ namespace mfem {
    else:
       pass 
 %}
-%pythonprepend DeltaCoefficient::SetWeight %{
-    w.thisown=0 
-%}
-%pythonprepend VectorArrayCoefficient::Set %{ 
-    c.thisown=0 
-%}
-%pythonprepend MatrixArrayCoefficient::Set %{ 
-    c.thisown=0 
-%}
-%pythonappend VectorRestrictedCoefficient::VectorRestrictedCoefficient %{
-    self._ref_to_vc = vc
-%}
-%pythonappend RestrictedCoefficient::RestrictedCoefficient %{
-    self._ref_to_c = c_
-%}
-%pythonappend MatrixRestrictedCoefficient::MatrixRestrictedCoefficient %{
-    self._ref_to_mc = mc
-%}
 }
+%include "../common/coefficient_common.i"
+
+%feature("notabstract") mfem::VectorFunctionCoefficient;
+%feature("notabstract") mfem::VectorConstantCoefficient;
+%feature("notabstract") mfem::VectorDeltaCoefficient;
+%feature("notabstract") mfem::MatrixArrayCoefficient;
+%feature("notabstract") mfem::MatrixFunctionCoefficient;
+%feature("notabstract") mfem::MatrixConstantCoefficient;
+%feature("notabstract") mfem::CurlGridFunctionCoefficient;
+%feature("notabstract") mfem::SymmetricMatrixConstantCoefficient;
+%feature("notabstract") mfem::SymmetricMatrixFunctionCoefficient;
+%feature("notabstract") mfem::VectorQuadratureFunctionCoefficient;
 
 %exception {
     try { $action }
@@ -124,7 +109,7 @@ namespace mfem {
 %include "../common/typemap_macros.i"
 LIST_TO_MFEMOBJ_POINTERARRAY_IN(mfem::IntegrationRule const *irs[],  mfem::IntegrationRule *, 0)
 
-%include "../../headers/coefficient.hpp"
+%include "fem/coefficient.hpp"
 %include "../common/numba_coefficient.i"
 
 %feature("director") mfem::VectorPyCoefficientBase;
@@ -246,18 +231,18 @@ class PyCoefficientT(PyCoefficientBase):
        return self.EvalValue(x.GetDataArray(), t)
    def EvalValue(self, x, t):
        return 0.0
-	 
+         
 class VectorPyCoefficient(VectorPyCoefficientBase):
    def __init__(self, dim):
        self.vdim = dim
        VectorPyCoefficientBase.__init__(self, dim, 0)
    def _EvalPy(self, x, V):
        v = self.EvalValue(x.GetDataArray())
-       V.Assign(v)	 
+       V.Assign(v)       
 
    def _EvalPyT(self, x, t, V):
        v = self.EvalValue(x.GetDataArray())
-       V.Assign(v)	 	 
+       V.Assign(v)               
 
    def EvalValue(self, x):
        return [0,0,0]
@@ -272,7 +257,7 @@ class VectorPyCoefficientT(VectorPyCoefficientBase):
 
    def _EvalPyT(self, x, t, V):
        v = self.EvalValue(x.GetDataArray(), t)
-       V.Assign(v)	 	 	 
+       V.Assign(v)                       
 
    def EvalValue(self, x, t):
        return [0.0,0.0,0.0]
@@ -283,7 +268,7 @@ class MatrixPyCoefficient(MatrixPyCoefficientBase):
        MatrixPyCoefficientBase.__init__(self, dim, 0)
    def _EvalPy(self, x, K):
        k = self.EvalValue(x.GetDataArray())
-       K.Assign(k)	 	 	 	 	 	 
+       K.Assign(k)                                               
 
    def EvalValue(self, x):
        return np.array([[0,0,0], [0,0,0], [0,0,0]])
@@ -294,10 +279,10 @@ class MatrixPyCoefficientT(MatrixPyCoefficientBase):
        MatrixPyCoefficientBase.__init__(self, dim, 1)
    def _EvalPyT(self, x, t, K):
        k = self.EvalValue(x.GetDataArray(), t)
-       K.Assign(k)	 	 	 	 	 	 
+       K.Assign(k)                                               
 
    def EvalValue(self, x, t):
        return np.array([[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]])
-	 
+         
 %}
 

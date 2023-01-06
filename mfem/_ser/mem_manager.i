@@ -9,6 +9,7 @@
 import_array();
 %}
 %include "exception.i"
+%import "globals.i"
 %include "../common/typemap_macros.i"
 %include "../common/exception.i"
 %include "../common/enum_class.i"

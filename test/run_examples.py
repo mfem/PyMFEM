@@ -43,6 +43,11 @@ import time
 import shutil
 import re
 
+try:
+    import mfem
+except ImportError:
+    assert False, "MFEM is not installed"
+
 skip_test = ['']
 # skip_test = ['ex15p']  #skip this since it takes too long on my Mac..;D
 
@@ -295,6 +300,12 @@ def print_help(self):
 
 
 if __name__ == "__main__":
+
+    def_mfemsdir = os.path.join(
+        os.path.dirname(mfem.__file__), "external", "ser")
+    def_mfempdir = os.path.join(
+        os.path.dirname(mfem.__file__), "external", "par")
+
     script_path = sys.path[0]  # the location of this file
 
     from mfem.common.arg_parser import ArgParser
@@ -319,11 +330,11 @@ if __name__ == "__main__":
                         help='Test one example')
     parser.add_argument('-mfempdir',
                         action='store',
-                        default="../external/mfem/cmbuild_par",
+                        default=def_mfempdir,
                         help='mfem (parallel) directory')
     parser.add_argument('-mfemsdir',
                         action='store',
-                        default="../external/mfem/cmbuild_ser",
+                        default=def_mfemsdir,                        
                         help='mfem (serial) directory')
     parser.add_argument('-sandbox',
                         action='store', default="./sandbox",
@@ -340,6 +351,13 @@ if __name__ == "__main__":
     example = args.ex
     mfempdir = args.mfempdir
     mfemsdir = args.mfemsdir
+
+    if not os.path.exists(os.path.join(mfemsdir, "data")) and tests:
+        assert False, "data file (under ser dir) does not exist in the package directory"
+    if not os.path.exists(os.path.join(mfempdir, "data")) and testp:
+        assert False, "data file (under par dir) does not exist in the package directory"
+
+            
     sandbox = os.path.abspath(os.path.expanduser(args.sandbox))
     
     if clean:

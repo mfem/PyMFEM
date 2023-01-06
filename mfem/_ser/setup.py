@@ -94,7 +94,8 @@ def get_extensions():
               "fespacehierarchy", "multigrid", "constraints",
               "transfer", "std_vectors",
               "tmop", "tmop_amr", "tmop_tools", "qspace", "qfunction",
-              "quadinterpolator", "quadinterpolator_face"]
+              "quadinterpolator", "quadinterpolator_face",
+              "submesh", "transfermap"]
     
     if add_cuda == '1':
         from setup_local import cudainc        

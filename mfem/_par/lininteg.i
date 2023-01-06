@@ -18,6 +18,7 @@ import_array();
 %}
 
  //%include "fem/coefficient.hpp"
+%import "globals.i"
 %import "fe.i"
 %import "vector.i"
 %import "eltrans.i"

@@ -2,7 +2,8 @@
 %{
 #include "mfem.hpp"      
 #include "miniapps/shifted/dist_solver.hpp"
-#include "pyoperator.hpp"    
+#include "pyoperator.hpp"
+#include "../common/pysolvers.hpp"
 #include "../common/pycoefficient.hpp"  
 #include "numpy/arrayobject.h"    
 %}
@@ -23,6 +24,7 @@ import_array();
 %import "coefficient.i"
 %import "pgridfunc.i"
 %import "pmesh.i"
+%import "solvers.i"
 
 %include "miniapps/shifted/dist_solver.hpp"
 
