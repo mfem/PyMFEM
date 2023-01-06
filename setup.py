@@ -1435,7 +1435,7 @@ def configure_bdist(self):
 
     build_mfem = False
     build_parallel = False
-    build_serial = False
+    build_serial = True
 
     global is_configured
     is_configured = True
