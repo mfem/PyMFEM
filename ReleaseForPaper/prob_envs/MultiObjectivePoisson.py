@@ -141,6 +141,8 @@ class ADF_MultiObjPoisson(Poisson):
 
         tau_max = np.log2(0.9) + error_init; # set tau_max to log(0.9 * initial error) using log rule
         # tau_max      = self.tau_min + self.N_anneal/(self.N_anneal + 1)*(error_init - self.tau_min)
+        # for debugging purposes, set tau_max to log(2*10^-3)
+        tau_max = np.log2(5*10**(-3));
         tau_step     = (tau_max - self.tau_min)/self.N_anneal
         delta_warm   = (tau_max - self.tau_min)/2
         delta_anneal = (tau_max - self.tau_min)/10
@@ -151,7 +153,7 @@ class ADF_MultiObjPoisson(Poisson):
         return tau_max, tau_step, delta_warm, delta_anneal
 
     def step(self, action):
-        self.reset_tau = True;
+        # self.reset_tau = True;
         if self.optimization_type == 'multi_objective':
             self.k += 1 # increment the step index
             self.UpdateMesh(action)
@@ -219,6 +221,7 @@ class ADF_MultiObjPoisson(Poisson):
             #print("Tau_min = {}, Tau_max = {}.".format(self.tau_min, ray.get(self.ADF_Params.get_tau_init.remote())))
             self.ADF_Params.set_tau.remote(tau) 
             #print("Reset tau to {}".format(tau))
+            print("setting random tau")
         return super().reset()
 
 class Angle_MultiObjPoisson(MultiObjPoisson):
