@@ -15,18 +15,14 @@ jobs:
           echo This job does not specify a container.
           echo It runs directly on the virtual machine.
           #
+          git clone https://github.com/mfem/PyMFEM.git
+          cd PyMFEM
+          #
           echo "!!!!!"
           REF=$(echo ${GITHUB_REF#refs/heads/})
           echo $REF
           echo "!!!!!"
-          git clone https://github.com/mfem/PyMFEM.git
-          cd PyMFEM
           git checkout $REF
-          #
-          mkdir external
-          cd external
-          git clone https://github.com/mfem/mfem.git
-          cd ..
           #
           export PATH=/opt/python/cp37-cp37m/bin:$PATH
 
@@ -54,23 +50,16 @@ jobs:
       - name: build package
         run: |
           echo It runs in the container instead of the VM.
-          REF=$(echo ${GITHUB_REF#refs/heads/})
-          echo "!!!!!!: "$REF
           #
           git clone https://github.com/mfem/PyMFEM.git
           cd PyMFEM
           #
-          #mkdir external
-          #cd external
-          #git clone https://github.com/mfem/mfem.git
-          #cd ..
-          #
+          REF=$(echo ${GITHUB_REF#refs/heads/})
+          echo "!!!!!!: "$REF
           git checkout $REF
           #
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
-          #echo $(python -c "import setuptools;print(setuptools.__version__)")
-          #pip3 install setuptools==65.5.1
           pip3 install six auditwheel twine
 
           pip3 install numpy==1.21.6
@@ -116,17 +105,17 @@ jobs:
       - name: build package
         run: |
           echo It runs in the container instead of the VM.
-          REF=$(echo ${GITHUB_REF#refs/heads/})
-          echo "!!!!!!: "$REF
           #
           git clone https://github.com/mfem/PyMFEM.git
           cd PyMFEM
           #
+          REF=$(echo ${GITHUB_REF#refs/heads/})
+          echo "!!!!!!: "$REF
           git checkout $REF
           #
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
-          #pip3 install setuptools==65.5.1
+
           pip3 install six auditwheel twine
           pip3 install numba-scipy
           if [ -f requirements.txt ]; then
