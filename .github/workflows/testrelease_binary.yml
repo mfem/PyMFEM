@@ -83,6 +83,8 @@ jobs:
           yum install -y zlib-devel
           yum install -y chrpath
 
+          mkdir dist
+
           # build wheel and check it
           python3 -m pip wheel ./ --verbose --no-deps
           pip3 install *.whl
@@ -137,6 +139,8 @@ jobs:
           apt-get install -y zlib1g-dbg
           apt-get install -y chrpath
 
+          mkdir dist
+
           # build wheel and check it
           python3 -m pip wheel ./ --verbose --no-deps
           pip3 install *.whl
@@ -150,6 +154,7 @@ jobs:
           rm -rf wheelhouse/*
           auditwheel repair *.whl
           rm -rf dist/*
+
           mv wheelhouse/* dist/
 
           ls -l dist/
