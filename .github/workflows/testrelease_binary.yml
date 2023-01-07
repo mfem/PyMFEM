@@ -60,16 +60,16 @@ jobs:
           git clone https://github.com/mfem/PyMFEM.git
           cd PyMFEM
           #
-          mkdir external
-          cd external
-          git clone https://github.com/mfem/mfem.git
-          cd ..
+          #mkdir external
+          #cd external
+          #git clone https://github.com/mfem/mfem.git
+          #cd ..
           #
           git checkout $REF
           #
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
-          echo $(python -c "import setuptools;print(setuptools.__version__)")
+          #echo $(python -c "import setuptools;print(setuptools.__version__)")
           #pip3 install setuptools==65.5.1
           pip3 install six auditwheel twine
 
@@ -81,9 +81,15 @@ jobs:
 
           CWD=$PWD
           yum install -y zlib-devel
+          yum install -y chrpath          
 
+          # build and check
+          python3 -m pip install ./ -verbose
+          cd test
+          python run_examples.py -serial -verbose -ex ex1
+          
+          
           python3 setup.py install
-          # python3 -m pip install ./ --verbose   (this seems okay too)
           rm -rf dist/*
 
 

@@ -70,6 +70,7 @@ def get_extensions():
         add_pumi = ''
         add_gslibp = ''
         cxx11flag = ''
+        build_mfem = 0
 
     libraries = ['mfem', 'HYPRE', 'metis']
 

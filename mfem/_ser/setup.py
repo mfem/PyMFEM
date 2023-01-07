@@ -57,6 +57,7 @@ def get_extensions():
         add_suitesparse = ''
         add_gslibs = ''
         cxx11flag = ''
+        build_mfem = 0
 
     libraries = ['mfem']
 
