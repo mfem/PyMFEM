@@ -29,9 +29,9 @@ from setuptools.command.install_scripts import install_scripts as _install_scrip
 import setuptools.command.sdist
 
 # this stops working after setuptools (56)
-#try:
+# try:
 #    from setuptools._distutils.command.clean import clean as _clean
-#except ImportError:
+# except ImportError:
 from distutils.command.clean import clean as _clean
 
 try:
@@ -58,10 +58,9 @@ repos = {"mfem": "https://github.com/mfem/mfem.git",
          "gklib": "https://github.com/KarypisLab/GKlib",
          "metis": "https://github.com/KarypisLab/METIS", }
 repos_sha = {
-#    "mfem": "a1f6902ed72552f3e680d1489f1aa6ade2e0d3b2",   # version 4.4
     "mfem": "b7a4b61b5ce80b326a002aebccf7da7ad2432556",   # version 4.5
     "gklib": "a7f8172703cf6e999dd0710eb279bba513da4fec",
-             "metis": "94c03a6e2d1860128c2d0675cbbb86ad4f261256"}
+    "metis": "94c03a6e2d1860128c2d0675cbbb86ad4f261256", }
 
 rootdir = os.path.abspath(os.path.dirname(__file__))
 extdir = os.path.join(rootdir, 'external')
@@ -241,7 +240,8 @@ def external_install_prefix(verbose=True):
     else:
         # when prefix is given...let's borrow pip._internal to find the location ;D
         import pip._internal.locations
-        path = pip._internal.locations.get_scheme("mfem", prefix=prefix).purelib
+        path = pip._internal.locations.get_scheme(
+            "mfem", prefix=prefix).purelib
         if not os.path.exists(path):
             os.makedirs(path)
         path = os.path.join(path, 'mfem', 'external')
@@ -266,6 +266,7 @@ def external_install_prefix(verbose=True):
     assert False, "no installation path found"
     return None
     '''
+
 
 def find_command(name):
     from shutil import which
@@ -712,7 +713,7 @@ def cmake_make_mfem(serial=True):
                   'DMFEM_USE_ZLIB': '1',
                   'DCMAKE_CXX_FLAGS': cxx11_flag,
                   'DCMAKE_BUILD_WITH_INSTALL_RPATH': '1'}
-    #if verbose:
+    # if verbose:
     cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
 
     if serial:
@@ -731,7 +732,8 @@ def cmake_make_mfem(serial=True):
         cmake_opts['DCMAKE_INSTALL_PREFIX'] = mfemp_prefix
         cmake_opts['DMFEM_USE_MPI'] = '1'
         cmake_opts['DHYPRE_DIR'] = hypre_prefix
-        cmake_opts['DHYPRE_INCLUDE_DIRS'] = os.path.join(hypre_prefix, "include")
+        cmake_opts['DHYPRE_INCLUDE_DIRS'] = os.path.join(
+            hypre_prefix, "include")
 
         add_rpath(os.path.join(mfemp_prefix, 'lib'))
 
@@ -760,7 +762,8 @@ def cmake_make_mfem(serial=True):
     if enable_metis:
         cmake_opts['DMFEM_USE_METIS_5'] = '1'
         cmake_opts['DMETIS_DIR'] = metis_prefix
-        cmake_opts['DMETIS_INCLUDE_DIRS'] = os.path.join(metis_prefix, "include")
+        cmake_opts['DMETIS_INCLUDE_DIRS'] = os.path.join(
+            metis_prefix, "include")
         metislibpath = os.path.dirname(
             find_libpath_from_prefix(
                 'metis', metis_prefix))
@@ -820,18 +823,24 @@ def cmake_make_mfem(serial=True):
     make('mfem_' + txt)
     make_install('mfem_' + txt)
 
-
- 
     from shutil import copytree, rmtree
-    #print("current working directory", os.getcwd())
-    #print(os.listdir("../data"))
-    print("copying mesh data for testing", "../data", cmake_opts['DCMAKE_INSTALL_PREFIX'])
+
+    print("copying mesh data for testing", "../data",
+          cmake_opts['DCMAKE_INSTALL_PREFIX'])
     path = os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "data")
     if os.path.exists(path):
-        rmtree(path)       
+        rmtree(path)
     copytree("../data", path)
- 
-    os.chdir(pwd)    
+
+    if do_bdist_wheel:
+        ex_dir = os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "examples")
+        for x in os.listdir(ex_dir):
+            path = os.path.join(ex_dir, x)
+            command = ['chrpath', '-r', "$ORIGIN/../lib", path]
+            make_call(command, force_verbose=True)
+
+    os.chdir(pwd)
+
 
 def write_setup_local():
     '''
@@ -892,6 +901,7 @@ def write_setup_local():
               'gslibsinc': os.path.join(gslibs_prefix, 'include'),
               'gslibpinc': os.path.join(gslibp_prefix, 'include'),
               'cxx11flag': cxx11_flag,
+              'build_mfem': '1' if build_mfem else '0'
               }
 
     try:
@@ -1431,15 +1441,16 @@ def configure_bdist(self):
 
     prefix = abspath(self.bdist_dir)
 
-    run_swig = False
-
-    build_mfem = False
     build_parallel = False
 
     if self.skip_build == 1:
+        build_mfem = False
         build_serial = False
+        run_swig = False
     else:
+        build_mfem = True
         build_serial = True
+        run_swig = True
 
     global is_configured
     is_configured = True
@@ -1693,7 +1704,8 @@ class BuildPy(_build_py):
 if haveWheel:
     class BdistWheel(_bdist_wheel):
         '''
-        Wheel build performs serial+paralell
+        Wheel build performs SWIG + Serial in Default.
+        --skip-build option skip building entirely.
         '''
 
         def finalize_options(self):
@@ -1808,8 +1820,6 @@ class Clean(_clean):
         _clean.run(self)
 
 
-
-
 def run_setup():
     setup_args = metadata.copy()
     cmdclass = {'build_py': BuildPy,
@@ -1822,7 +1832,7 @@ def run_setup():
         cmdclass['bdist_wheel'] = BdistWheel
 
     install_req = install_requires()
-    
+
     # print(install_req)
     setup(
         cmdclass=cmdclass,
