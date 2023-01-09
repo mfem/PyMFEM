@@ -4,8 +4,8 @@
    See c++ version in the MFEM library for more detail
 '''
 
-from mfem.ser import intArray, doubleArray
-import mfem.ser as mfem
+from mfem.par import intArray, doubleArray
+import mfem.par as mfem
 import os
 import sys
 from os.path import expanduser, join
@@ -17,8 +17,10 @@ try:
 except ImportError:
     assert False, "This example requires numba to run"
 
-num_procs = 1
-myid = 0
+from mpi4py import MPI
+num_procs = MPI.COMM_WORLD.size
+myid = MPI.COMM_WORLD.rank
+smyid = '.'+'{:0>6d}'.format(myid)
 
 
 class ConvectionDiffusionTDO(mfem.PyTimeDependentOperator):
@@ -27,16 +29,16 @@ class ConvectionDiffusionTDO(mfem.PyTimeDependentOperator):
         mfem.PyTimeDependentOperator.__init__(self, fes.GetTrueVSize())
 
         # Mass form
-        self.Mform = mfem.BilinearForm(fes)
+        self.Mform = mfem.ParBilinearForm(fes)
         # Stiffness form. Might include diffusion, convection or both.
-        self.Kform = mfem.BilinearForm(fes)
+        self.Kform = mfem.ParBilinearForm(fes)
         # RHS form
-        self.bform = mfem.LinearForm(fes)
+        self.bform = mfem.ParLinearForm(fes)
         # Essential true dof array. Relevant for eliminating boundary conditions
         # when using an H1 space.
         self.ess_tdofs_ = intArray(ess_tdofs)
         # Mass matrix solver
-        self.M_solver = mfem.CGSolver()
+        self.M_solver = mfem.CGSolver(fes.GetComm())
 
         # Mass opeperator
         self.M = mfem.OperatorHandle()
@@ -45,7 +47,7 @@ class ConvectionDiffusionTDO(mfem.PyTimeDependentOperator):
 
         d = mfem.ConstantCoefficient(-kappa)
 
-        @mfem.jit.vector(vdim=fes.GetMesh().Dimension())
+        @mfem.jit.vector(vdim=fes.GetParMesh().Dimension())
         def velocity_profile(c):
             q = zeros(3)
             A = 1.0
@@ -81,8 +83,7 @@ class ConvectionDiffusionTDO(mfem.PyTimeDependentOperator):
             self.Mform.FormSystemMatrix(self.ess_tdofs_, self.M)
 
             self.bform.Assemble()
-            #self.b = self.b.SpMat()
-            self.b = self.bform
+            self.b = self.bform.ParallelAssemble()
 
         self.M_solver.iterative_mode = False
         self.M_solver.SetRelTol(1e-8)
@@ -90,7 +91,8 @@ class ConvectionDiffusionTDO(mfem.PyTimeDependentOperator):
         self.M_solver.SetMaxIter(100)
         self.M_solver.SetPrintLevel(0)
 
-        self.M_prec = mfem.GSSmoother()
+        self.M_prec = mfem.HypreSmoother()
+        self.M_prec.SetType(mfem.HypreSmoother.Jacobi)
 
         self.M_solver.SetPreconditioner(self.M_prec)
         self.M_solver.SetOperator(self.M.Ptr())
@@ -113,7 +115,10 @@ def run(dt=1e-5,
         visualization=True,
         vis_steps=10):
 
-    parent_mesh = mfem.Mesh("multidomain-hex.mesh")
+    serial_mesh = mfem.Mesh("multidomain-hex.mesh")
+    parent_mesh = mfem.ParMesh(MPI.COMM_WORLD, serial_mesh)
+
+    del serial_mesh
 
     parent_mesh.UniformRefinement()
 
@@ -124,11 +129,11 @@ def run(dt=1e-5,
     # 9 boundary attributes.
     cylinder_domain_attributes = intArray([1])
 
-    cylinder_submesh = mfem.SubMesh.CreateFromDomain(parent_mesh,
-                                                     cylinder_domain_attributes)
+    cylinder_submesh = mfem.ParSubMesh.CreateFromDomain(parent_mesh,
+                                                        cylinder_domain_attributes)
 
     print(cylinder_submesh)
-    fes_cylinder = mfem.FiniteElementSpace(cylinder_submesh, fec)
+    fes_cylinder = mfem.ParFiniteElementSpace(cylinder_submesh, fec)
 
     inflow_attributes = intArray([0] *
                                  cylinder_submesh.bdr_attributes.Max())
@@ -155,7 +160,7 @@ def run(dt=1e-5,
 
     cd_tdo = ConvectionDiffusionTDO(fes_cylinder, ess_tdofs)
 
-    temperature_cylinder_gf = mfem.GridFunction(fes_cylinder)
+    temperature_cylinder_gf = mfem.ParGridFunction(fes_cylinder)
     temperature_cylinder_gf.Assign(0.0)
 
     temperature_cylinder = mfem.Vector()
@@ -166,10 +171,10 @@ def run(dt=1e-5,
 
     outer_domain_attributes = intArray([2])
 
-    block_submesh = mfem.SubMesh.CreateFromDomain(parent_mesh,
-                                                  outer_domain_attributes)
+    block_submesh = mfem.ParSubMesh.CreateFromDomain(parent_mesh,
+                                                     outer_domain_attributes)
 
-    fes_block = mfem.FiniteElementSpace(block_submesh, fec)
+    fes_block = mfem.ParFiniteElementSpace(block_submesh, fec)
 
     block_wall_attributes = mfem.intArray(
         [0]*block_submesh.bdr_attributes.Max())
@@ -186,7 +191,7 @@ def run(dt=1e-5,
 
     d_tdo = ConvectionDiffusionTDO(fes_block, ess_tdofs, 0.0, 1.0)
 
-    temperature_block_gf = mfem.GridFunction(fes_block)
+    temperature_block_gf = mfem.ParGridFunction(fes_block)
     temperature_block_gf.Assign(0.0)
 
     one = mfem.ConstantCoefficient(1.0)
@@ -200,8 +205,8 @@ def run(dt=1e-5,
 
     cylinder_surface_attributes = intArray([9])
 
-    cylinder_surface_submesh = mfem.SubMesh.CreateFromBoundary(parent_mesh,
-                                                               cylinder_surface_attributes)
+    cylinder_surface_submesh = mfem.ParSubMesh.CreateFromBoundary(parent_mesh,
+                                                                  cylinder_surface_attributes)
 
     if visualization:
         cyl_sol_sock = mfem.socketstream("localhost", 19916)
@@ -214,7 +219,7 @@ def run(dt=1e-5,
         block_sol_sock << "parallel " << num_procs << " " << myid << "\n"
         block_sol_sock.send_solution(block_submesh, temperature_block_gf)
 
-    temperature_block_to_cylinder_map = mfem.SubMesh.CreateTransferMap(
+    temperature_block_to_cylinder_map = mfem.ParSubMesh.CreateTransferMap(
         temperature_block_gf,
         temperature_cylinder_gf)
 
@@ -226,7 +231,6 @@ def run(dt=1e-5,
             last_step = True
 
         # Advance the diffusion equation on the outer block to the next time step
-        # (note) in Python, we need to receive new t and dt
         t, dt = d_ode_solver.Step(temperature_block, t, dt)
 
         # Transfer the solution from the inner surface of the outer block to
