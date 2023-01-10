@@ -54,8 +54,11 @@ class MultiObjPoisson(Poisson):
             self.sum_of_dofs += num_dofs
             self.global_error = global_error
 
-            if self.k >= self.num_iterations or self.sum_of_dofs >= self.dof_threshold:
+            if self.k >= self.num_iterations:
                 done = True
+            elif self.sum_of_dofs >= self.dof_threshold:
+                done = True
+                print("*** dof threshold was exceeded ***")
             else:
                 done = False
 
@@ -128,7 +131,7 @@ class ADF_MultiObjPoisson(Poisson):
         self.ADF_Params = ray.get_actor("parameters")
 
         # arbitrarily set tau_max to start (this should be reset once we call FindParameters)
-        self.reset_tau = False;
+        self.reset_tau = False
         self.tau_max = 0.1
         
     def FindParameters(self):
@@ -141,7 +144,10 @@ class ADF_MultiObjPoisson(Poisson):
 
         tau_max = np.log2(0.9) + error_init; # set tau_max to log(0.9 * initial error) using log rule
         # tau_max      = self.tau_min + self.N_anneal/(self.N_anneal + 1)*(error_init - self.tau_min)
-        tau_step     = (tau_max - self.tau_min)/self.N_anneal
+        if self.N_anneal != 0:
+            tau_step  = (tau_max - self.tau_min)/self.N_anneal
+        else:
+            tau_step = 0
         delta_warm   = (tau_max - self.tau_min)/2
         delta_anneal = (tau_max - self.tau_min)/10
 
@@ -151,7 +157,7 @@ class ADF_MultiObjPoisson(Poisson):
         return tau_max, tau_step, delta_warm, delta_anneal
 
     def step(self, action):
-        self.reset_tau = True;
+        self.reset_tau = False  # maybe want this to be True if adjusting Tau **************
         if self.optimization_type == 'multi_objective':
             self.k += 1 # increment the step index
             self.UpdateMesh(action)
@@ -176,12 +182,25 @@ class ADF_MultiObjPoisson(Poisson):
             self.global_error = global_error
 
             if self.k >= self.num_iterations or self.sum_of_dofs >= self.dof_threshold:
+                ## the cost computation in the next line penalizes the difference of the logs of the error:
+                # cost = dofs_cost * np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
+
+                ## the cost computation in next line penalizes the log of the difference of the error
                 cost = dofs_cost * np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
                 done = True
-                #print("dofs cost = {}, F_2 = {}".format(dofs_cost, np.abs(self.tau - error_cost)/self.delta))
-                #print("tau used = {}".format(ray.get(self.ADF_Params.get_tau.remote())))
+                # if self.sum_of_dofs >= self.dof_threshold:
+                #     print("*** dof threshold was exceeded: penalizing cost ***")
+                #     cost = 100*cost
+                #     print("cost is ", cost)
+                # tau_used = ray.get(self.ADF_Params.get_tau.remote())
+                # print("tau used = {}".format(tau_used))
+                # print("dofs cost = {}, F_2 = {}".format(dofs_cost, np.abs(tau_used - error_cost)/self.delta))
+                # print("sum of dofs at stop  = {}".format(self.sum_of_dofs), flush=True)
+                # print("global error at stop = {}".format(self.global_error), flush=True)
+                print("at stop: error=", np.round(self.global_error,4), "cumdofs=", self.sum_of_dofs, "cost=", cost, 
+                        "tau diff=", np.round(ray.get(self.ADF_Params.get_tau.remote()) - error_cost,4), "tau=", np.round(ray.get(self.ADF_Params.get_tau.remote()), 4) ,"delta=", np.round(ray.get(self.ADF_Params.get_delta.remote()),4))
             else:
-                cost = 0;
+                cost = 0
                 done = False
 
             if done == False:
