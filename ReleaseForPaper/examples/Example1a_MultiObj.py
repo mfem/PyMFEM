@@ -92,7 +92,7 @@ def letterbox_entry(legend):
 # define global variables for tau and delta
 @ray.remote
 class ADF_Parameters:
-   #def __init__(self):
+    #def __init__(self):
       
 
     def set_initial_parameters(self, tau_init, tau_inc, delta_warm, delta_anneal):
@@ -109,11 +109,11 @@ class ADF_Parameters:
     def get_delta(self):
         return self.delta
     def update_delta(self):
-      self.delta = self.delta #self.delta_anneal
+        self.delta = self.delta #self.delta_anneal
 
     def update_tau(self):
-      self.tau = self.last_tau - self.tau_inc
-      self.last_tau = self.tau
+        self.tau = self.last_tau - self.tau_inc
+        self.last_tau = self.tau
     def get_tau(self):
         return self.tau
     def get_tau_init(self):
@@ -163,7 +163,7 @@ plot_figs   = args.plotfigs
 save_figs   = args.savefigs
 
 restore_policy = False
-nbatches       = 1500
+nbatches       = 10
 
 ## Configuration for multi objective problem
 prob_config = {
@@ -173,17 +173,17 @@ prob_config = {
     'order'             : 2,
     'optimization_type' : 'multi_objective', 
     'cost_function'     : 'ADF', # ADF for annealing desirability function, alpha for linear combination of costs
-    'dof_threshold'     : 1e5,
+    'dof_threshold'     : 1e3,
     'alpha'             : args.alpha,
     'observe_alpha'     : args.observe_alpha,
     'observe_budget'    : args.observe_budget,
-    'num_iterations'    : 10,
+    'num_iterations'    : 2,
     'num_batches'       : nbatches,
-    'tau_min'           : np.log2(10**-4),
-    'M_warm'            : 50, # number of batches in warming phase
-    'M_anneal'          : 20, # number of batches per tau in annealing phase
-    'N_anneal'          : 20,  # number of target errors (tau) to train on
-    'M_retrain'         : 2,  # number of batches for retraining before each new tau
+    'tau_min'           : np.log2(5e-2), # np.log2(10**-3), #np.log2(10**-4),
+    'M_warm'            : 10, # number of batches in warming phase
+    'M_anneal'          : 0,  #5, # number of batches per tau in annealing phase
+    'N_anneal'          : 0,  #20,  # number of target errors (tau) to train on
+    'M_retrain'         : 0,  #2,  # number of batches for retraining before each new tau
     'batch_size'        : 100 # number of episodes per batch
 }
 
@@ -234,22 +234,15 @@ config['model'] = model_config
 # # set up epsilon greedy exploration
 schedule_object = ray.rllib.utils.schedules.constant_schedule.ConstantSchedule(value = 0.1, framework = 'tf')
 action_space = spaces.Box(low=0.0, high=0.999, shape=(1,), dtype=np.float32)
-'''config['explore'] = ray.rllib.utils.exploration.epsilon_greedy.EpsilonGreedy(policy_config   = config, 
-                                                                             model           = model_config, 
-                                                                             num_workers     = config['num_workers'], 
-                                                                             action_space    = action_space, 
-                                                                             framework       = 'tf', 
-                                                                             epsilon_schedule = schedule_object)
-'''
-config['explore'] = True
-config['exploration_config'] = {
-   # Exploration sub-class by name or full path to module+class
-   # (e.g. “ray.rllib.utils.exploration.epsilon_greedy.EpsilonGreedy”)
-   'type'               : 'EpsilonGreedy',
-   # Parameters for the Exploration class' constructor:
-   'epsilon_schedule'   : schedule_object,
-   'action_space'       : action_space
-   }
+# config['explore'] = True
+# config['exploration_config'] = {
+#    # Exploration sub-class by name or full path to module+class
+#    # (e.g. “ray.rllib.utils.exploration.epsilon_greedy.EpsilonGreedy”)
+#    'type'               : 'EpsilonGreedy',
+#    # Parameters for the Exploration class' constructor:
+#    'epsilon_schedule'   : schedule_object,
+#    'action_space'       : action_space
+#    }
 
 # for limited printing of rl_config
 rl_config = {
@@ -318,6 +311,9 @@ elif ADF_bool:
     trainer = ppo.PPOTrainer(env="my_env", config=config, 
                            logger_creator=custom_log_creator(checkpoint_dir))
     env = ADF_MultiObjPoisson(**prob_config)
+    print("env = ", env)
+    print("prob config = ", prob_config)
+
 else:
     print("Error: invalid choice of cost function")
 
@@ -327,20 +323,24 @@ if (restore_policy):
 # initialize tau and delta in ADF_Parameter class
 if ADF_bool:
     tau_max, tau_step, delta_warm, delta_anneal = env.FindParameters()
-    ADF_params.set_initial_parameters.remote(tau_max, tau_step, delta_warm, delta_anneal)
+    print("found params: ", tau_max, tau_step, delta_warm, delta_anneal)
+    # ADF_params.set_initial_parameters.remote(tau_max, tau_step, delta_warm, delta_anneal)
+    print("WARNING: setting initial tau as tau_min in line below; should be tau_max")
+    ADF_params.set_initial_parameters.remote(prob_config['tau_min'], tau_step, delta_warm, delta_anneal)
 
 if train:
     env.trainingmode = True
     MO_eval_loss = []
 
     for n in range(nbatches):
+        # print("  ==> commented out code below to update tau during training <==")
         if ADF_bool:
             # uncomment for ADF approach 
             
             if n == M_warm:
                 # we've finished the warming phase; update tau and delta
-                ADF_params.update_tau.remote();
-                ADF_params.update_delta.remote();
+                ADF_params.update_tau.remote()
+                ADF_params.update_delta.remote()
 
                 print("Updated delta to {}".format(ray.get(ADF_params.get_delta.remote())))
 
@@ -370,12 +370,15 @@ if eval and not train:
         # temp_path = 'Example1a_MO_2022-07-28_12-46-24'    # experiment set 18
         # temp_path = 'Example1a_MO_2022-07-28_14-22-54'    # experiment set 19
         # temp_path = 'Example1a_MO_2022-07-29_07-23-24'    # experiment set 20
-        #temp_path = 'Example1a_MO_2022-07-29_13-16-49'     # experiment set 22
+        # temp_path = 'Example1a_MO_2022-07-29_13-16-49'    # experiment set 22
         # temp_path = 'Example1a_MO_2022-07-29_08-54-14'    # experiment set 21
         # temp_path = 'Example1a_MO_2022-08-01_07-46-52'    # experiment set 23
-        temp_path = 'Example1a_MO_2022-08-01_09-30-28'      # experiment set 24
+        temp_path = 'Example1a_MO_2022-08-01_09-30-28'    # experiment set 24
+        # temp_path = 'Example1a_ADF_2023-01-09_10-30-36'
     else:
-        temp_path = 'Example1a_2022-04-15_10-55-16'
+        print("*** need to set path for eval *** exiting")
+        exit()
+        # temp_path = 'Example1a_2022-04-15_10-55-16'
 
     chkpt_num = nbatches
     checkpoint_dir = log_dir + temp_path
@@ -391,6 +394,8 @@ if eval and not train:
 
 if train:
     print_config(checkpoint_dir, prob_config=prob_config, rl_config=rl_config)
+
+print("****\n WARNING: see above in code where initial tau is set as tau_min; should be tau_max\n****")
 
 """
     STEP 3: Validation
@@ -493,7 +498,7 @@ for param in params_to_eval:
 ## Enact AMR policies
 costs = []
 actions = []
-nth = 100
+nth = 100 # number of fixed policies to try
 errors = []
 dofs = []
 for i in range(1, nth):

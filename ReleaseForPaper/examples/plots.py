@@ -218,6 +218,7 @@ if ex_type == 4: # expand this "if" condition to accomdate any hp problem
 
 else:
    plt.plot(rlactions,'-o',lw=1.3, label=r'(AM)$^2$R policy')
+   ax6.set_ylim(0.0, 1.0)
    ax6.set_ylabel(r'$\theta$ selected by trained (AM)$^2$R policy', fontsize=22)
    ax6.set_xlabel(r'Refinement iteration $(k)$', fontsize=22)
    ax6.tick_params(axis='x', labelsize=22)
