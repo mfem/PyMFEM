@@ -238,6 +238,7 @@ class ADF_MultiObjPoisson(Poisson):
             #print("Tau_min = {}, Tau_max = {}.".format(self.tau_min, ray.get(self.ADF_Params.get_tau_init.remote())))
             self.ADF_Params.set_tau.remote(tau) 
             #print("Reset tau to {}".format(tau))
+            print("setting random tau")
         return super().reset()
 
 class Angle_MultiObjPoisson(MultiObjPoisson):

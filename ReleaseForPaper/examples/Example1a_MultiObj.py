@@ -167,8 +167,8 @@ nbatches       = 10
 
 ## Configuration for multi objective problem
 prob_config = {
-    'mesh_name'         : 'l-shape-benchmark.mesh',
-    'problem_type'      : 'lshaped',
+    'mesh_name'         : 'star.mesh',
+    'problem_type'      : 'default',
     'num_unif_ref'      : 1,
     'order'             : 2,
     'optimization_type' : 'multi_objective', 
@@ -219,20 +219,25 @@ model_config = {
 
 ## rllib parameters
 config = ppo.DEFAULT_CONFIG.copy()
-# config['batch_mode'] = 'truncate_episodes'
-config['batch_mode'] = 'complete_episodes'
-config['sgd_minibatch_size'] = 100
+# config['batch_mode']            = 'truncate_episodes'
+config['batch_mode']              = 'complete_episodes'
+config['sgd_minibatch_size']      = 100
 config['rollout_fragment_length'] = 50
-config['num_workers'] = 10
-config['train_batch_size'] = config['rollout_fragment_length'] * config['num_workers']
-config['num_gpus'] = 0
-config['gamma'] = 1.0
-config['lr'] = 1e-5
-config['seed'] = 4000
-config['model'] = model_config
+config['num_workers']             = 10
+config['train_batch_size']        = config['rollout_fragment_length'] * config['num_workers']
+config['num_gpus']                = 0
+config['gamma']                   = 1.0
+config['lr']                      = 1e-5
+config['seed']                    = 4000
+config['model']                   = model_config
+config['entropy_coeff']           = 0.05
+
+# set up learning rate schedule
+# lr_schedule = ray.rllib.utils.schedules.linear_schedule.LinearSchedule(initial_p = 10**-4, final_p = 10**-5, schedule_timesteps = nbatches, framework = 'tf') 
+#config['lr_schedule'] = lr_schedule
 
 # # set up epsilon greedy exploration
-schedule_object = ray.rllib.utils.schedules.constant_schedule.ConstantSchedule(value = 0.1, framework = 'tf')
+schedule_object = ray.rllib.utils.schedules.constant_schedule.ConstantSchedule(value = 0.04, framework = 'tf')
 action_space = spaces.Box(low=0.0, high=0.999, shape=(1,), dtype=np.float32)
 # config['explore'] = True
 # config['exploration_config'] = {
@@ -316,6 +321,7 @@ elif ADF_bool:
 
 else:
     print("Error: invalid choice of cost function")
+
 
 if (restore_policy):
    trainer.restore(chkpt_file)
@@ -421,9 +427,6 @@ elif ADF_bool:
     else:
         params_to_eval = []
 
-# boolean to keep track of saving mesh, so we don't waste time doing this more than once
-saved_initial_mesh = False;  
-
 # open file for saving evaluation results
 mkdir_p(output_dir)
 if alpha_bool:
@@ -432,6 +435,15 @@ elif ADF_bool:
     file_name = "/ADF_policy_data_1a.txt"
 file_location = output_dir + file_name
 file = open(file_location, "a")
+
+# boolean to keep track of saving mesh, so we don't waste time doing this more than once
+if args.savemesh:
+    saved_initial_mesh = False;
+    mkdir_p(output_dir+"/meshes_and_gfs/")
+    env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + '_initial.mesh')
+
+    print("==> Saved initial mesh to ", output_dir, "/meshes_and_gfs/")
+    saved_initial_mesh = True;
 
 for param in params_to_eval:
     ## Enact trained policy
@@ -449,19 +461,11 @@ for param in params_to_eval:
         tau_str = str(param).replace('.','_')
         obs = env.reset()
     
-
     done = False
     rlepisode_cost = 0
     rlerrors = [env.global_error]
     rldofs = [env.sum_of_dofs]
     env.trainingmode = False
-
-    if args.savemesh and not saved_initial_mesh:
-        mkdir_p(output_dir+"/meshes_and_gfs/")
-        env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + '_initial.mesh')
-
-        print("==> Saved initial mesh to ", output_dir, "/meshes_and_gfs/")
-        saved_initial_mesh = True;
 
     while not done:
         action = trainer.compute_single_action(obs, explore = False)
