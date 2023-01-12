@@ -163,26 +163,26 @@ plot_figs   = args.plotfigs
 save_figs   = args.savefigs
 
 restore_policy = False
-nbatches       = 10
+nbatches       = 20
 
 ## Configuration for multi objective problem
 prob_config = {
-    'mesh_name'         : 'star.mesh',
-    'problem_type'      : 'default',
+    'mesh_name'         : 'l-shape-benchmark.mesh', #'star.mesh',
+    'problem_type'      : 'lshaped', #'default',
     'num_unif_ref'      : 1,
     'order'             : 2,
     'optimization_type' : 'multi_objective', 
     'cost_function'     : 'ADF', # ADF for annealing desirability function, alpha for linear combination of costs
-    'dof_threshold'     : 1e3,
+    'dof_threshold'     : 5e4,
     'alpha'             : args.alpha,
     'observe_alpha'     : args.observe_alpha,
     'observe_budget'    : args.observe_budget,
-    'num_iterations'    : 2,
+    'num_iterations'    : 20,
     'num_batches'       : nbatches,
-    'tau_min'           : np.log2(5e-2), # np.log2(10**-3), #np.log2(10**-4),
-    'M_warm'            : 10, # number of batches in warming phase
-    'M_anneal'          : 0,  #5, # number of batches per tau in annealing phase
-    'N_anneal'          : 0,  #20,  # number of target errors (tau) to train on
+    'tau_min'           : np.log2(1e-3), # np.log2(1e-3), #np.log2(1e-4),
+    'M_warm'            : 20, # number of batches in warming phase
+    'M_anneal'          : 20,  #5, # number of batches per tau in annealing phase
+    'N_anneal'          : 0,  #20,  # number of target errors (tau) to train on (not counting intitial tau)
     'M_retrain'         : 0,  #2,  # number of batches for retraining before each new tau
     'batch_size'        : 100 # number of episodes per batch
 }
@@ -331,8 +331,13 @@ if ADF_bool:
     tau_max, tau_step, delta_warm, delta_anneal = env.FindParameters()
     print("found params: ", tau_max, tau_step, delta_warm, delta_anneal)
     # ADF_params.set_initial_parameters.remote(tau_max, tau_step, delta_warm, delta_anneal)
-    print("WARNING: setting initial tau as tau_min in line below; should be tau_max")
-    ADF_params.set_initial_parameters.remote(prob_config['tau_min'], tau_step, delta_warm, delta_anneal)
+
+    # print("WARNING: setting initial tau as tau_min in line below; should be tau_max")
+    # ADF_params.set_initial_parameters.remote(prob_config['tau_min'], tau_step, delta_warm, delta_anneal)
+
+    print("\n\n\nWARNING: hard coding tau min / max\n\n")
+    print("assiging params: ", np.log2(1e-3), (np.log2(1e-3)-np.log2(1e-4)), delta_warm, delta_anneal)
+    ADF_params.set_initial_parameters.remote(np.log2(1e-3), (np.log2(1e-3)-np.log2(1e-4)), delta_warm, delta_anneal)
 
 if train:
     env.trainingmode = True
@@ -348,16 +353,16 @@ if train:
                 ADF_params.update_tau.remote()
                 ADF_params.update_delta.remote()
 
-                print("Updated delta to {}".format(ray.get(ADF_params.get_delta.remote())))
+                print("\n\nUpdated delta to {}".format(ray.get(ADF_params.get_delta.remote())))
 
             elif n> M_warm and (n - M_warm) % (M_anneal + M_retrain) == 0:
                 ADF_params.update_tau.remote()
 
-                print("Updated tau to {}".format(ray.get(ADF_params.get_tau.remote())))
+                print("\n\nUpdated tau to {}".format(ray.get(ADF_params.get_tau.remote())))
             elif n > M_warm and (n - M_warm + 1) % (M_anneal + M_retrain) == 0:
                 # retrain on old tau
                 ADF_params.set_rand_tau.remote()
-                print("retraining on randomly sampled tau = {}".format(ray.get(ADF_params.get_tau.remote())))
+                print("\n\nretraining on randomly sampled tau = {}".format(ray.get(ADF_params.get_tau.remote())))
             
         print("training batch %d of %d batches" % (n+1, nbatches))
         print("tau = {}".format(ray.get(ADF_params.get_tau.remote())))
@@ -370,6 +375,7 @@ if train:
         print(checkpoint_path)
 
 if eval and not train:
+    MO_eval_loss = []
     if prob_config['optimization_type'] == 'multi_objective':
         # temp_path = 'Example1a_MO_2022-07-11_06-56-00'    # experiment set 8
         # temp_path = 'Example1a_MO_2022-07-28_08-10-58'    # experiment set 17
@@ -379,8 +385,8 @@ if eval and not train:
         # temp_path = 'Example1a_MO_2022-07-29_13-16-49'    # experiment set 22
         # temp_path = 'Example1a_MO_2022-07-29_08-54-14'    # experiment set 21
         # temp_path = 'Example1a_MO_2022-08-01_07-46-52'    # experiment set 23
-        temp_path = 'Example1a_MO_2022-08-01_09-30-28'    # experiment set 24
-        # temp_path = 'Example1a_ADF_2023-01-09_10-30-36'
+        # temp_path = 'Example1a_MO_2022-08-01_09-30-28'    # experiment set 24
+        temp_path = 'Example1a_ADF_2023-01-12_11-15-50/'
     else:
         print("*** need to set path for eval *** exiting")
         exit()
@@ -407,6 +413,8 @@ print("****\n WARNING: see above in code where initial tau is set as tau_min; sh
     STEP 3: Validation
 """
 
+print("\n\n\n Validation phase - RL policy tests \n\n\n")
+
 # determine which, if any, alphas to evaluate
 if alpha_bool:
     if eval and not args.eval_alphas:
@@ -420,10 +428,12 @@ if alpha_bool:
 # determine which errors/taus to evaluate on (tau is the 2log of the target error)
 elif ADF_bool:
     if eval:
-        min_error = env.tau_min
-        max_error = tau_max
-        step_size = (max_error - min_error)/10
-        params_to_eval = min_error + step_size*np.array(range(0,11,1))
+        params_to_eval = np.array([np.log2(1e-3), np.log2(1e-4)])
+        print("\n *** params to eval =", params_to_eval, "\n")
+        # min_error = env.tau_min
+        # max_error = tau_max
+        # step_size = (max_error - min_error)/10
+        # params_to_eval = min_error + step_size*np.array(range(0,11,1))
     else:
         params_to_eval = []
 
@@ -475,12 +485,14 @@ for param in params_to_eval:
             break
         rlactions.append(action[0])
         rlepisode_cost -= reward
-        print("step = ", env.k)
-        print("action = ", action.item())
-        print("Num. Elems. = ", env.mesh.GetNE())
-        print("episode cost = ", rlepisode_cost)
+        print("RL step =", env.k, 
+              "action =", action.item(),
+              "num elts=", env.mesh.GetNE(),
+              "episode cost =", rlepisode_cost)
         rldofs.append(info['num_dofs'])
         rlerrors.append(info['global_error'])
+
+    print("")
 
     if args.savemesh:
         #gfname = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + "_alpha_" + alpha_str + '.gf'
@@ -498,6 +510,7 @@ for param in params_to_eval:
         file_string = str(ray.get(ADF_params.get_tau.remote())) + ", " + str(cum_rldofs[-1]) + ", " + str(rlerrors[-1]) + "\n"
     file.write(file_string)
             
+print("\n\n\n Validation phase - Fixed theta policy tests \n\n\n")
 
 ## Enact AMR policies
 costs = []
