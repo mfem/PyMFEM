@@ -335,7 +335,9 @@ if ADF_bool:
     # print("WARNING: setting initial tau as tau_min in line below; should be tau_max")
     # ADF_params.set_initial_parameters.remote(prob_config['tau_min'], tau_step, delta_warm, delta_anneal)
 
-    print("\n\n\nWARNING: hard coding tau min / max\n\n")
+    print("\n\n\n ****** WARNING: hard coding initial parameters \n\n") # ***************
+
+    delta_warm = delta_anneal = 1
     print("assiging params: ", np.log2(1e-3), (np.log2(1e-3)-np.log2(1e-4)), delta_warm, delta_anneal)
     ADF_params.set_initial_parameters.remote(np.log2(1e-3), (np.log2(1e-3)-np.log2(1e-4)), delta_warm, delta_anneal)
 
@@ -602,3 +604,5 @@ if plot_figs or save_figs:
     file = open("output_dir4plots.txt","a")
     file.write("\n" + output_dir)
     file.close() 
+
+print("\n\n\n ****** WARNING: hard coding initial parameters \n\n")

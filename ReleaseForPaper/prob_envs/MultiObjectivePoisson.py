@@ -186,10 +186,18 @@ class ADF_MultiObjPoisson(Poisson):
                 # cost = dofs_cost * np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
 
                 ## the cost computation in next line penalizes the log of the difference of the error
-                cost = dofs_cost * np.log2(np.abs(current_target_error - self.global_error))/ray.get(self.ADF_Params.get_delta.remote())
+                ##   and: dof penalty additive (equivalently, multiply cumulative dof count inside log2)
+                # cost = dofs_cost + np.log2(np.abs(current_target_error - self.global_error))/ray.get(self.ADF_Params.get_delta.remote())
+                
+                ## the cost computation in next line penalizes the log of the difference of the error
+                ##   and: dof penalty additive (equivalently, multiply cumulative dof count inside log2)
+                ##   and: budget penalty additive
+                # budget_cost = np.log2(1 + self.k/self.num_iterations)
+                budget_cost = 2*np.log2(1 + self.k/self.num_iterations)
+                cost = budget_cost + dofs_cost + np.log2(np.abs(current_target_error - self.global_error))/ray.get(self.ADF_Params.get_delta.remote())
                 done = True
                 # if self.sum_of_dofs >= self.dof_threshold:
-                #     print("*** dof threshold was exceeded: penalizing cost ***")
+                #     print("*** dof threshold was exceeded ***")
                 #     cost = 100*cost
                 #     print("cost is ", cost)
                 # tau_used = ray.get(self.ADF_Params.get_tau.remote())
