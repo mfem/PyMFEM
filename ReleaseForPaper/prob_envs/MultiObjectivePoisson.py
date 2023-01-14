@@ -179,9 +179,25 @@ class ADF_MultiObjPoisson(Poisson):
 
             self.sum_of_dofs += num_dofs
             self.global_error = global_error
-            current_target_error = 2 ** ray.get(self.ADF_Params.get_tau.remote())
+            current_target_error = np.power(2, float(ray.get(self.ADF_Params.get_tau.remote())))
 
-            if self.k >= self.num_iterations or self.sum_of_dofs >= self.dof_threshold:
+            quit_reason = 'n/a'
+            done = False
+            if self.sum_of_dofs >= self.dof_threshold:
+                done = True
+                quit_reason = 'dof'
+            elif self.k >= self.num_iterations:
+                done = True
+                quit_reason = 'its'
+            elif self.global_error < current_target_error:
+                done = True
+                quit_reason = 'err'
+
+            ## computing cost at every step not just when done
+            ## the cost computation in the next line penalizes the difference of the logs of the error:
+            cost = dofs_cost * np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
+
+            if done:
                 ## the cost computation in the next line penalizes the difference of the logs of the error:
                 # cost = dofs_cost * np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
 
@@ -193,23 +209,29 @@ class ADF_MultiObjPoisson(Poisson):
                 ##   and: dof penalty additive (equivalently, multiply cumulative dof count inside log2)
                 ##   and: budget penalty additive
                 # budget_cost = np.log2(1 + self.k/self.num_iterations)
-                budget_cost = 2*np.log2(1 + self.k/self.num_iterations)
-                cost = budget_cost + dofs_cost + np.log2(np.abs(current_target_error - self.global_error))/ray.get(self.ADF_Params.get_delta.remote())
-                done = True
-                # if self.sum_of_dofs >= self.dof_threshold:
-                #     print("*** dof threshold was exceeded ***")
+                # budget_cost = 2*np.log2(1 + self.k/self.num_iterations)
+                # cost = budget_cost + dofs_cost + np.log2(np.abs(current_target_error - self.global_error))/ray.get(self.ADF_Params.get_delta.remote())
+                
+                # done = True # don't need this line any more
+
+                # if quit_reason == 'dof':
                 #     cost = 100*cost
-                #     print("cost is ", cost)
+                #     # print("*** dof threshold was exceeded; penalizing cost ***")
+                # elif quit_reason == 'its':
+                #     # print("*** iteration count was exceeded; penalizing cost ***")
+                #     cost = 100*cost
+
                 # tau_used = ray.get(self.ADF_Params.get_tau.remote())
                 # print("tau used = {}".format(tau_used))
                 # print("dofs cost = {}, F_2 = {}".format(dofs_cost, np.abs(tau_used - error_cost)/self.delta))
                 # print("sum of dofs at stop  = {}".format(self.sum_of_dofs), flush=True)
                 # print("global error at stop = {}".format(self.global_error), flush=True)
                 print("@stop:",
+                        "why=", quit_reason,
                         "step=", self.k,
-                        "err=", np.round(self.global_error,4), 
-                        "tgt=", np.round(2 ** ray.get(self.ADF_Params.get_tau.remote()), 4),
-                        "tau=", np.round(ray.get(self.ADF_Params.get_tau.remote()), 4),
+                        "err=", np.round(self.global_error, 4), 
+                        "tgt=", np.round(current_target_error, 4),
+                        # "tau=", np.round(ray.get(self.ADF_Params.get_tau.remote()), 4),
                         "dlt=", np.round(ray.get(self.ADF_Params.get_delta.remote()),4),
                         "dof=", self.sum_of_dofs, 
                         "thr=", self.dof_threshold,
@@ -217,9 +239,9 @@ class ADF_MultiObjPoisson(Poisson):
                         "$$$=", cost, 
                         # "tau diff=", np.round(ray.get(self.ADF_Params.get_tau.remote()) - error_cost,4),                         
                         )
-            else:
-                cost = 0
-                done = False
+            # else:
+            #     cost = 0
+            #     done = False
 
             if done == False:
                 obs = self.GetObservation()

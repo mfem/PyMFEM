@@ -163,7 +163,7 @@ plot_figs   = args.plotfigs
 save_figs   = args.savefigs
 
 restore_policy = False
-nbatches       = 20
+nbatches       = 30
 
 ## Configuration for multi objective problem
 prob_config = {
@@ -180,7 +180,7 @@ prob_config = {
     'num_iterations'    : 20,
     'num_batches'       : nbatches,
     'tau_min'           : np.log2(1e-3), # np.log2(1e-3), #np.log2(1e-4),
-    'M_warm'            : 20, # number of batches in warming phase
+    'M_warm'            : 30, # number of batches in warming phase
     'M_anneal'          : 20,  #5, # number of batches per tau in annealing phase
     'N_anneal'          : 0,  #20,  # number of target errors (tau) to train on (not counting intitial tau)
     'M_retrain'         : 0,  #2,  # number of batches for retraining before each new tau
@@ -239,7 +239,7 @@ config['entropy_coeff']           = 0.05
 # # set up epsilon greedy exploration
 schedule_object = ray.rllib.utils.schedules.constant_schedule.ConstantSchedule(value = 0.04, framework = 'tf')
 action_space = spaces.Box(low=0.0, high=0.999, shape=(1,), dtype=np.float32)
-# config['explore'] = True
+config['explore'] = True
 # config['exploration_config'] = {
 #    # Exploration sub-class by name or full path to module+class
 #    # (e.g. “ray.rllib.utils.exploration.epsilon_greedy.EpsilonGreedy”)
@@ -430,7 +430,8 @@ if alpha_bool:
 # determine which errors/taus to evaluate on (tau is the 2log of the target error)
 elif ADF_bool:
     if eval:
-        params_to_eval = np.array([np.log2(1e-3), np.log2(1e-4)])
+        # params_to_eval = np.array([np.log2(1e-3), np.log2(1e-4)])
+        params_to_eval = np.array([np.log2(1e-3)])
         print("\n *** params to eval =", params_to_eval, "\n")
         # min_error = env.tau_min
         # max_error = tau_max
@@ -480,8 +481,8 @@ for param in params_to_eval:
     env.trainingmode = False
 
     while not done:
-        action = trainer.compute_single_action(obs, explore = False)
-        # action = trainer.compute_single_action(obs,explore=True)
+        # action = trainer.compute_single_action(obs, explore = False)
+        action = trainer.compute_single_action(obs,explore=True)
         obs, reward, done, info = env.step(action)
         if prob_config['optimization_type'] == 'dof_threshold' and done:
             break
