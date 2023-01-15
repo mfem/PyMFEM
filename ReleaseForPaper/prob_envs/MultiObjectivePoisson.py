@@ -37,7 +37,6 @@ class MultiObjPoisson(Poisson):
     def step(self, action):
         if self.optimization_type == 'multi_objective':
             self.k += 1 # increment the step index
-            self.UpdateMesh(action)
 
             # find errors and num dofs
             self.AssembleAndSolve()
@@ -159,6 +158,7 @@ class ADF_MultiObjPoisson(Poisson):
         self.reset_tau = False  # maybe want this to be True if adjusting Tau **************
         if self.optimization_type == 'multi_objective':
             self.k += 1 # increment the step index
+
             self.UpdateMesh(action)
             #print('Theta = {}'.format(action))
             # find errors and num dofs
@@ -169,8 +169,8 @@ class ADF_MultiObjPoisson(Poisson):
 
             # update cost = alpha*(dof cost) + (1-alpha)*(error cost)
             if True:
-                dofs_cost = np.log2(self.sum_of_dofs + num_dofs);
-                error_cost = np.log2(global_error);
+                dofs_cost = np.log2(self.sum_of_dofs + num_dofs)
+                error_cost = np.log2(global_error)
             else: 
                 dofs_cost  = np.log2(1.0 + num_dofs/self.sum_of_dofs)
                 error_cost = np.log2(global_error/self.global_error)
@@ -183,6 +183,8 @@ class ADF_MultiObjPoisson(Poisson):
 
             quit_reason = 'n/a'
             done = False
+            cost = 0
+
             if self.sum_of_dofs >= self.dof_threshold:
                 done = True
                 quit_reason = 'dof'
@@ -195,11 +197,14 @@ class ADF_MultiObjPoisson(Poisson):
 
             ## computing cost at every step not just when done
             ## the cost computation in the next line penalizes the difference of the logs of the error:
-            cost = dofs_cost * np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
+            # cost = dofs_cost * np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
 
             if done:
                 ## the cost computation in the next line penalizes the difference of the logs of the error:
                 # cost = dofs_cost * np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
+
+                ## the cost computation in the next line weights by number of steps also:
+                cost = self.k * dofs_cost * np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
 
                 ## the cost computation in next line penalizes the log of the difference of the error
                 ##   and: dof penalty additive (equivalently, multiply cumulative dof count inside log2)
@@ -220,6 +225,10 @@ class ADF_MultiObjPoisson(Poisson):
                 # elif quit_reason == 'its':
                 #     # print("*** iteration count was exceeded; penalizing cost ***")
                 #     cost = 100*cost
+
+                # if quit_reason == 'err':
+                #     cost = 0.01 * cost
+                #     # print("*** did better than desired; reducing cost")
 
                 # tau_used = ray.get(self.ADF_Params.get_tau.remote())
                 # print("tau used = {}".format(tau_used))

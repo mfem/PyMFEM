@@ -163,7 +163,7 @@ plot_figs   = args.plotfigs
 save_figs   = args.savefigs
 
 restore_policy = False
-nbatches       = 30
+nbatches       = 100
 
 ## Configuration for multi objective problem
 prob_config = {
@@ -177,10 +177,10 @@ prob_config = {
     'alpha'             : args.alpha,
     'observe_alpha'     : args.observe_alpha,
     'observe_budget'    : args.observe_budget,
-    'num_iterations'    : 20,
+    'num_iterations'    : 15,
     'num_batches'       : nbatches,
-    'tau_min'           : np.log2(1e-3), # np.log2(1e-3), #np.log2(1e-4),
-    'M_warm'            : 30, # number of batches in warming phase
+    'tau_min'           : np.log2(5e-2), #np.log2(1e-2), # np.log2(1e-3), #np.log2(1e-4),
+    'M_warm'            : 100, # number of batches in warming phase
     'M_anneal'          : 20,  #5, # number of batches per tau in annealing phase
     'N_anneal'          : 0,  #20,  # number of target errors (tau) to train on (not counting intitial tau)
     'M_retrain'         : 0,  #2,  # number of batches for retraining before each new tau
@@ -338,8 +338,12 @@ if ADF_bool:
     print("\n\n\n ****** WARNING: hard coding initial parameters \n\n") # ***************
 
     delta_warm = delta_anneal = 1
-    print("assiging params: ", np.log2(1e-3), (np.log2(1e-3)-np.log2(1e-4)), delta_warm, delta_anneal)
-    ADF_params.set_initial_parameters.remote(np.log2(1e-3), (np.log2(1e-3)-np.log2(1e-4)), delta_warm, delta_anneal)
+    print("assiging params: ", prob_config['tau_min'], prob_config['tau_min']/2, delta_warm, delta_anneal)
+    ADF_params.set_initial_parameters.remote(prob_config['tau_min'], prob_config['tau_min']/2, delta_warm, delta_anneal)
+    # print("assiging params: ", np.log2(1e-2), (np.log2(1e-2)-np.log2(1e-3)), delta_warm, delta_anneal)
+    # ADF_params.set_initial_parameters.remote(np.log2(1e-2), (np.log2(1e-2)-np.log2(1e-3)), delta_warm, delta_anneal)
+    # print("assiging params: ", np.log2(1e-3), (np.log2(1e-3)-np.log2(1e-4)), delta_warm, delta_anneal)
+    # ADF_params.set_initial_parameters.remote(np.log2(1e-3), (np.log2(1e-3)-np.log2(1e-4)), delta_warm, delta_anneal)
 
 if train:
     env.trainingmode = True
@@ -388,7 +392,7 @@ if eval and not train:
         # temp_path = 'Example1a_MO_2022-07-29_08-54-14'    # experiment set 21
         # temp_path = 'Example1a_MO_2022-08-01_07-46-52'    # experiment set 23
         # temp_path = 'Example1a_MO_2022-08-01_09-30-28'    # experiment set 24
-        temp_path = 'Example1a_ADF_2023-01-12_11-15-50/'
+        temp_path = 'Example1a_ADF_2023-01-14_22-18-21'
     else:
         print("*** need to set path for eval *** exiting")
         exit()
@@ -431,7 +435,7 @@ if alpha_bool:
 elif ADF_bool:
     if eval:
         # params_to_eval = np.array([np.log2(1e-3), np.log2(1e-4)])
-        params_to_eval = np.array([np.log2(1e-3)])
+        params_to_eval = np.array([prob_config['tau_min']])
         print("\n *** params to eval =", params_to_eval, "\n")
         # min_error = env.tau_min
         # max_error = tau_max
@@ -489,10 +493,12 @@ for param in params_to_eval:
         rlactions.append(action[0])
         rlepisode_cost -= reward
         print("RL step =", env.k, 
-              "action =", action.item(),
-              "num elts=", env.mesh.GetNE(),
-              "episode cost =", rlepisode_cost)
-        rldofs.append(info['num_dofs'])
+              "axn =", np.round(float(action.item()),3),
+              "dof=", info['num_dofs'], 
+              # dofs at this step = env.mesh.GetNE(),
+              "err=", np.round(info['global_error'],6),
+              "cum cost=", rlepisode_cost)
+        rldofs.append(info['num_dofs']) 
         rlerrors.append(info['global_error'])
 
     print("")
