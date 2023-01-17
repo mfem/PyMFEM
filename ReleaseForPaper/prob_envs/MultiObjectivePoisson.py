@@ -127,13 +127,13 @@ class ADF_MultiObjPoisson(Poisson):
             self.observation_space = spaces.Box(low = np.array([-np.inf,-np.inf, -np.inf]), high= np.array([np.inf, np.inf, np.inf]))
 
         self.ADF_Params = ray.get_actor("parameters")
+        self.mesh = mfem.Mesh(self.initial_mesh)
 
         # arbitrarily set tau_max to start (this should be reset once we call FindParameters)
         self.reset_tau = False
-        self.tau_max = 0.1
+        self.tau_max = 5e-2
         
     def FindParameters(self):
-        self.mesh = mfem.Mesh(self.initial_mesh)
         self.Setup()
         self.AssembleAndSolve()
         self.errors = self.GetLocalErrors()

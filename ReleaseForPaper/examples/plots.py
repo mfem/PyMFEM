@@ -372,4 +372,43 @@ if ex_type == 4: # example 2c
       plt.savefig(output_dir+'/'+fig_name_prefix+'_rl_vs_two_param.pdf',format='pdf', bbox_inches='tight')
 
 
+
+##########
+# make fig 8: ADF comparison: Plot dofs vs error with target labeled
+##########
+
+have_adf_data = True
+print("*** Making ADF figure from ADF_policy_data_1a.txt ")
+adfdata_file = output_dir+'/ADF_policy_data_1a.txt'
+
+plt.figure(figsize=(6,6))
+ax8 = plt.gca()
+
+df = pd.read_csv(adfdata_file, header=None, names=['tau','cumdofs','error','steps'])
+
+adfcumdofs = df['cumdofs']
+adferrors = df['error']
+
+
+
+plt.loglog(cumdofs[9],errors[9],'-o',lw=1.3, color=palette_list[3], alpha=alpha, label=r'AMR policies')
+for k in range(19,len(errors),10):
+   plt.loglog(cumdofs[k],errors[k],'-o',lw=1.3, color=palette_list[3], label='_nolegend_')
+
+plt.loglog(adfcumdofs, adferrors,'-o',lw=1.3, color=palette_list[0], alpha=alpha, label=r'ADF policy')
+# plt.loglog(cumrldofs,rlerrors,marker="^",lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
+# plt.loglog(cumrldofs[-1],rlerrors[-1], marker="o", markersize=10, color=palette_list[0], label='_nolegend_')
+ax8.set_xlabel(r'Cumulative degrees of freedom $(J_k)$', fontsize=22)
+ax8.set_ylabel(r'Global error estimate $(\eta_k)$', fontsize=22)
+ax8.tick_params(axis='x', labelsize=22)
+ax8.tick_params(axis='y', labelsize=22)
+ax8.legend(loc='upper right', prop={'size': 14})
+# for i in range(9,len(errors),10):
+#    print("Cum dofs = ", cumdofs[i][-1])
+# print("cumrldofs = ", cumrldofs[-1])
+if save_figs:
+   plt.savefig(output_dir+'/'+fig_name_prefix+'_fig8.pdf',format='pdf', bbox_inches='tight')
+
+
+
 # plt.show()
