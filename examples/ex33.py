@@ -40,8 +40,24 @@ def run(alpha=0.5,
 
    power_of_laplace = floor(alpha)
    exponent_to_approximate = alpha - power_of_laplace
+
+   if exponent_to_approximate > 1e-12:
+       print("Approximating the fractional exponent " + 
+             str(exponent_to_approximate))
+       ComputePartialFractionApproximation(exponent_to_approximate,
+                                          coeffs,
+                                          poles)
+
+       # If the example is build without LAPACK, the exponent_to_approximate
+       # might be modified by the function call above.
+       alpha = exponent_to_approximate + power_of_laplace;
+       integer_order = False
+   else:
+       print("Treating integer order PDE.")       
+       integer_order = True;
+
    
-   integer_order = True
+
 
 
     
