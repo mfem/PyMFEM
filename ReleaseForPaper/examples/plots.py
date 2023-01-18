@@ -154,6 +154,8 @@ if have_expert_policy:
       errors[i] = np.array(eval(errors[i]))
 
 
+
+
 ##########
 # make fig training-curve
 ##########
@@ -390,10 +392,14 @@ adfcumdofs = df['cumdofs']
 adferrors = df['error']
 
 
+ns = len(cumdofs[9])  
+plt.loglog(cumdofs[9][0:ns],errors[9][0:ns],'-o',lw=1.3, color=palette_list[3], alpha=alpha, label=cumdofs[9][-1])
+plt.loglog(cumdofs[19][0:ns],errors[19][0:ns],'-o',lw=1.3, color=palette_list[4], alpha=alpha, label=cumdofs[19][-1])
+plt.loglog(cumdofs[29][0:ns],errors[29][0:ns],'-o',lw=1.3, color=palette_list[5], alpha=alpha, label=cumdofs[29][-1])
 
-plt.loglog(cumdofs[9],errors[9],'-o',lw=1.3, color=palette_list[3], alpha=alpha, label=r'AMR policies')
-for k in range(19,len(errors),10):
-   plt.loglog(cumdofs[k],errors[k],'-o',lw=1.3, color=palette_list[3], label='_nolegend_')
+# plt.loglog(cumdofs[9],errors[9],'-o',lw=1.3, color=palette_list[3], alpha=alpha, label=r'AMR policies')
+# for k in range(19,len(errors),10):
+#    plt.loglog(cumdofs[k],errors[k],'-o',lw=1.3, color=palette_list[3], label='_nolegend_')
 
 plt.loglog(adfcumdofs, adferrors,'-o',lw=1.3, color=palette_list[0], alpha=alpha, label=r'ADF policy')
 # plt.loglog(cumrldofs,rlerrors,marker="^",lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
@@ -411,4 +417,43 @@ if save_figs:
 
 
 
-# plt.show()
+
+##########
+# make fig 9: ADF comparison: RL vs fixed, small bar graphs
+##########
+
+have_adf_data = True
+print("*** Making ADF vs fixed policy figures from adf_vs_fxd.csv")
+adf_vs_fxd_file = output_dir+'/adf_vs_fxd.csv'
+
+df9 = pd.read_csv(adf_vs_fxd_file)
+
+num_tgts = len(df9['target'].unique())
+
+sns.set() # style="whitegrid"
+
+f9, ax9 = plt.subplots(nrows=num_tgts, ncols=2, sharex=True, sharey=False, figsize = (12,12), squeeze=False)
+
+for i in range(num_tgts): # num of rows
+   tgt = df9['target'].unique()[i]
+   tgtdf = df9[df9['target'] == tgt][::10].copy()
+
+   # temphues = 20 * np.ones(100)  # hue for fixed params (= 20)
+   # temphues[0] = 0  # hue for RL policy (= 0)
+
+   def hueassign(row):
+      if row['theta'] < 0:
+         return 'RL'
+      else:
+         return 'fixed'
+   tgtdf['hues'] = tgtdf.apply(hueassign, axis=1)
+
+   a = sns.barplot(data = tgtdf, x="theta", y="dofs", hue="hues", ax=ax9[i][0]) # first column
+   a.legend_.remove()
+   b = sns.barplot(data = tgtdf, x="theta", y="steps", hue="hues", ax=ax9[i][1]) # second column
+   b.legend_.remove()
+
+if save_figs:
+   plt.savefig(output_dir+'/'+fig_name_prefix+'_fig9.pdf',format='pdf', bbox_inches='tight')
+
+plt.show()

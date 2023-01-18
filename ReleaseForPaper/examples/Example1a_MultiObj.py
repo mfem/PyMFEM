@@ -173,7 +173,7 @@ prob_config = {
     'order'             : 2,
     'optimization_type' : 'multi_objective', 
     'cost_function'     : 'ADF', # ADF for annealing desirability function, alpha for linear combination of costs
-    'dof_threshold'     : 5e4,
+    'dof_threshold'     : 1e5,
     'alpha'             : args.alpha,
     'observe_alpha'     : args.observe_alpha,
     'observe_budget'    : args.observe_budget,
@@ -181,8 +181,8 @@ prob_config = {
     'num_batches'       : nbatches,
     'tau_min'           : np.log2(1e-6), #np.log2(1e-2), # np.log2(1e-3), #np.log2(1e-4),
     'M_warm'            : 50, # number of batches in warming phase
-    'M_anneal'          : 30,  #5, # number of batches per tau in annealing phase
-    'N_anneal'          : 3,  #20,  # number of target errors (tau) to train on (not counting intitial tau)
+    'M_anneal'          : 50,  #5, # number of batches per tau in annealing phase
+    'N_anneal'          : 3,  #20,  # number of target errors to train on (not counting intitial target)
     'M_retrain'         : 0,  #2,  # number of batches for retraining before each new tau
     'batch_size'        : 100 # number of episodes per batch
 }
@@ -397,7 +397,7 @@ if eval and not train:
         # temp_path = 'Example1a_MO_2022-07-29_08-54-14'    # experiment set 21
         # temp_path = 'Example1a_MO_2022-08-01_07-46-52'    # experiment set 23
         # temp_path = 'Example1a_MO_2022-08-01_09-30-28'    # experiment set 24
-        temp_path = 'Example1a_ADF_2023-01-16_00-04-27'
+        temp_path = 'Example1a_ADF_2023-01-17_13-27-58'     # well-trained ADF from 5e-2 to 8e-5
     else:
         print("*** need to set path for eval *** exiting")
         exit()
@@ -439,7 +439,7 @@ if alpha_bool:
 # determine which errors/taus to evaluate on (tau is the 2log of the target error)
 elif ADF_bool:
     if eval:
-        tau_max = np.log2(5e-2)
+        tau_max = (np.log2(5e-2) + np.log2(1e-2))/2
         tau_step = np.log2(5e-2) - np.log2(1e-2)
         params_to_eval = np.array([tau_max - i * tau_step for i in range(5)])
         # params_to_eval = np.array([prob_config['tau_min']])
@@ -471,6 +471,8 @@ if args.savemesh:
 
     print("==> Saved initial mesh to ", output_dir, "/meshes_and_gfs/")
     saved_initial_mesh = True;
+
+adf_vs_fixed_df = pd.DataFrame(columns=['target', 'theta', 'steps', 'dofs'])
 
 for param in params_to_eval:
     ## Enact trained policy
@@ -530,47 +532,51 @@ for param in params_to_eval:
     file = open(file_location, "a")
     file.write(file_string)
     file.close()
-            
-print("\n\n\n Validation phase - Fixed theta policy tests \n\n\n")
 
-## Enact AMR policies
-costs = []
-actions = []
-nth = 100 # number of fixed policies to try
-errors = []
-dofs = []
-for i in range(1, nth):
-    print(i)
-    action = np.array([i/nth])
-    actions.append(action.item())
-    print("action = ", action.item())
-    if alpha_bool:
-        env.reset(new_alpha = False)
-    elif ADF_bool:
-        env.reset()
-    done = False
-    episode_cost_tmp = 0
-    errors_tmp = [env.global_error]
-    dofs_tmp = [env.sum_of_dofs]
-    # max_steps   = prob_config['num_iterations']
-    steps_taken = 0
+    # save RL data to dataframe
+    adf_vs_fixed_df = adf_vs_fixed_df.append(
+        {'target':np.round(np.power(2,param),4), 'theta': -1, 'steps': env.k, 'dofs': env.sum_of_dofs},
+        ignore_index=True)
     
-    while not done:
-        _, reward, done, info = env.step(action)
-        if prob_config['optimization_type'] == 'dof_threshold' and done:
-            break
-        if steps_taken > prob_config['num_iterations']:
-            print("*** fixed action exceeded max step threshold of ", prob_config['num_iterations'], "steps.")
-            break
-        else:
-            steps_taken += 1
-        episode_cost_tmp -= reward
-        errors_tmp.append(info['global_error'])
-        dofs_tmp.append(info['num_dofs'])
-    costs.append(episode_cost_tmp)
-    errors.append(errors_tmp)
-    dofs.append(dofs_tmp)
-    print('episode cost = ', episode_cost_tmp)
+            
+    print("\n\n\n Validation phase - Fixed theta policy tests \n (** moved inside params_to_eval loop **) \n\n\n")
+
+
+    ## Enact AMR policies
+    costs = []
+    actions = []
+    nth = 100 # number of fixed policies to try
+    errors = []
+    dofs = []
+    for i in range(1, nth):
+        print(i)
+        action = np.array([i/nth])
+        actions.append(action.item())
+        print("action = ", action.item())
+        if alpha_bool:
+            env.reset(new_alpha = False)
+        elif ADF_bool:
+            env.reset()
+        done = False
+        episode_cost_tmp = 0
+        errors_tmp = [env.global_error]
+        dofs_tmp = [env.sum_of_dofs]
+        
+        while not done:
+            _, reward, done, info = env.step(action)
+            episode_cost_tmp -= reward
+            errors_tmp.append(info['global_error'])
+            dofs_tmp.append(info['num_dofs'])
+        costs.append(episode_cost_tmp)
+        errors.append(errors_tmp)
+        dofs.append(dofs_tmp)
+        print('episode cost = ', episode_cost_tmp)
+        adf_vs_fixed_df = adf_vs_fixed_df.append(
+            {'target':np.round(np.power(2,param),4), 
+            'theta': action[0],
+            'steps': env.k,
+            'dofs': env.sum_of_dofs},
+            ignore_index=True)
 
 
 """
@@ -607,6 +613,9 @@ if save_data:
     filename = output_dir + "/MO_eval.csv"
     print("Saving multi-objective eval loss to: ", filename)
     df4.to_csv(filename, index=False)
+    filename = output_dir + "/adf_vs_fxd.csv"
+    print("Saving ADF vs fixed data to:", filename)
+    adf_vs_fixed_df.to_csv(filename, index=False)
 
 """
     STEP 5: Plots
