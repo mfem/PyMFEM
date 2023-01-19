@@ -450,10 +450,21 @@ for i in range(num_tgts): # num of rows
 
    a = sns.barplot(data = tgtdf, x="theta", y="dofs", hue="hues", ax=ax9[i][0]) # first column
    a.legend_.remove()
+   ax9[i][0].set_title('Error target ='+str(tgt), fontsize=12)
+   if i == num_tgts-1:
+      ax9[i][0].set_xlabel('theta value')
+   else:
+      ax9[i][0].set_xlabel('')
+
    b = sns.barplot(data = tgtdf, x="theta", y="steps", hue="hues", ax=ax9[i][1]) # second column
    b.legend_.remove()
+   ax9[i][1].set_title('Error target ='+str(tgt), fontsize=12)
+   if i == num_tgts-1:
+      ax9[i][1].set_xlabel('theta value')
+   else:
+      ax9[i][1].set_xlabel('')
 
 if save_figs:
-   plt.savefig(output_dir+'/'+fig_name_prefix+'_fig9.pdf',format='pdf', bbox_inches='tight')
+   plt.savefig(output_dir+'/'+fig_name_prefix+'_fig9.pdf',format='pdf') # bbox_inches='tight'
 
 plt.show()

@@ -535,7 +535,7 @@ for param in params_to_eval:
 
     # save RL data to dataframe
     adf_vs_fixed_df = adf_vs_fixed_df.append(
-        {'target':np.round(np.power(2,param),4), 'theta': -1, 'steps': env.k, 'dofs': env.sum_of_dofs},
+        {'target':np.round(np.power(2,param),8), 'theta': -1, 'steps': env.k, 'dofs': env.sum_of_dofs},
         ignore_index=True)
     
             
@@ -572,7 +572,7 @@ for param in params_to_eval:
         dofs.append(dofs_tmp)
         print('episode cost = ', episode_cost_tmp)
         adf_vs_fixed_df = adf_vs_fixed_df.append(
-            {'target':np.round(np.power(2,param),4), 
+            {'target':np.round(np.power(2,param),8), 
             'theta': action[0],
             'steps': env.k,
             'dofs': env.sum_of_dofs},
