@@ -23,7 +23,7 @@ if args.angle_abbrv is not None:
    print("Plotting for angle ", args.angle_abbrv)
 
 if   output_dir.find('Example1a_MO') != -1:
-   print("Loading data from ", output_dir)
+   print("\nLoading data from ", output_dir)
    fig_name_prefix = 'Example1a_MO'
    ex_type = 6
 
@@ -375,96 +375,135 @@ if ex_type == 4: # example 2c
 
 
 
-##########
-# make fig 8: ADF comparison: Plot dofs vs error with target labeled
-##########
-
-have_adf_data = True
-print("*** Making ADF figure from ADF_policy_data_1a.txt ")
-adfdata_file = output_dir+'/ADF_policy_data_1a.txt'
-
-plt.figure(figsize=(6,6))
-ax8 = plt.gca()
-
-df = pd.read_csv(adfdata_file, header=None, names=['tau','cumdofs','error','steps'])
-
-adfcumdofs = df['cumdofs']
-adferrors = df['error']
-
-
-ns = len(cumdofs[9])  
-plt.loglog(cumdofs[9][0:ns],errors[9][0:ns],'-o',lw=1.3, color=palette_list[3], alpha=alpha, label=cumdofs[9][-1])
-plt.loglog(cumdofs[19][0:ns],errors[19][0:ns],'-o',lw=1.3, color=palette_list[4], alpha=alpha, label=cumdofs[19][-1])
-plt.loglog(cumdofs[29][0:ns],errors[29][0:ns],'-o',lw=1.3, color=palette_list[5], alpha=alpha, label=cumdofs[29][-1])
-
-# plt.loglog(cumdofs[9],errors[9],'-o',lw=1.3, color=palette_list[3], alpha=alpha, label=r'AMR policies')
-# for k in range(19,len(errors),10):
-#    plt.loglog(cumdofs[k],errors[k],'-o',lw=1.3, color=palette_list[3], label='_nolegend_')
-
-plt.loglog(adfcumdofs, adferrors,'-o',lw=1.3, color=palette_list[0], alpha=alpha, label=r'ADF policy')
-# plt.loglog(cumrldofs,rlerrors,marker="^",lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
-# plt.loglog(cumrldofs[-1],rlerrors[-1], marker="o", markersize=10, color=palette_list[0], label='_nolegend_')
-ax8.set_xlabel(r'Cumulative degrees of freedom $(J_k)$', fontsize=22)
-ax8.set_ylabel(r'Global error estimate $(\eta_k)$', fontsize=22)
-ax8.tick_params(axis='x', labelsize=22)
-ax8.tick_params(axis='y', labelsize=22)
-ax8.legend(loc='upper right', prop={'size': 14})
-# for i in range(9,len(errors),10):
-#    print("Cum dofs = ", cumdofs[i][-1])
-# print("cumrldofs = ", cumrldofs[-1])
-if save_figs:
-   plt.savefig(output_dir+'/'+fig_name_prefix+'_fig8.pdf',format='pdf', bbox_inches='tight')
-
-
-
 
 ##########
 # make fig 9: ADF comparison: RL vs fixed, small bar graphs
 ##########
 
+# have_adf_data = True
+# print("*** Making ADF vs fixed policy figures from adf_vs_fxd.csv")
+# adf_vs_fxd_file = output_dir+'/adf_vs_fxd.csv'
+
+# df9 = pd.read_csv(adf_vs_fxd_file)
+
+# num_tgts = len(df9['target'].unique())
+
+# sns.set() # style="whitegrid"
+
+# f9, ax9 = plt.subplots(nrows=num_tgts, ncols=2, sharex=True, sharey=False, figsize = (12,12), squeeze=False)
+
+# for i in range(num_tgts): # num of rows
+#    tgt = df9['target'].unique()[i]
+#    tgtdf = df9[df9['target'] == tgt][::10].copy()
+
+#    # temphues = 20 * np.ones(100)  # hue for fixed params (= 20)
+#    # temphues[0] = 0  # hue for RL policy (= 0)
+
+#    def hueassign(row):
+#       if row['theta'] < 0:
+#          return 'RL'
+#       else:
+#          return 'fixed'
+#    tgtdf['hues'] = tgtdf.apply(hueassign, axis=1)
+
+#    a = sns.barplot(data = tgtdf, x="theta", y="dofs", hue="hues", ax=ax9[i][0]) # first column
+#    a.legend_.remove()
+#    ax9[i][0].set_title('Error target ='+str(tgt), fontsize=12)
+#    if i == num_tgts-1:
+#       ax9[i][0].set_xlabel('theta value')
+#    else:
+#       ax9[i][0].set_xlabel('')
+
+#    b = sns.barplot(data = tgtdf, x="theta", y="steps", hue="hues", ax=ax9[i][1]) # second column
+#    b.legend_.remove()
+#    ax9[i][1].set_title('Error target ='+str(tgt), fontsize=12)
+#    if i == num_tgts-1:
+#       ax9[i][1].set_xlabel('theta value')
+#    else:
+#       ax9[i][1].set_xlabel('')
+
+# if save_figs:
+#    plt.savefig(output_dir+'/'+fig_name_prefix+'_fig9.pdf',format='pdf') # bbox_inches='tight'
+
+
+##########
+# make fig 10: Show RL actions for each evaluated target
+##########
+
 have_adf_data = True
-print("*** Making ADF vs fixed policy figures from adf_vs_fxd.csv")
+print("*** Making figures of RL actions for each error target")
+
 adf_vs_fxd_file = output_dir+'/adf_vs_fxd.csv'
+df10 = pd.read_csv(adf_vs_fxd_file)
+all_tgts = df10['target'].unique()
+num_tgts = len(all_tgts)
 
-df9 = pd.read_csv(adf_vs_fxd_file)
+sns.set(style="whitegrid")
 
-num_tgts = len(df9['target'].unique())
-
-sns.set() # style="whitegrid"
-
-f9, ax9 = plt.subplots(nrows=num_tgts, ncols=2, sharex=True, sharey=False, figsize = (12,12), squeeze=False)
+f10, ax10 = plt.subplots(nrows=num_tgts, ncols=1, sharex=True, sharey=True, figsize = (6,10), squeeze=False)
 
 for i in range(num_tgts): # num of rows
-   tgt = df9['target'].unique()[i]
-   tgtdf = df9[df9['target'] == tgt][::10].copy()
-
-   # temphues = 20 * np.ones(100)  # hue for fixed params (= 20)
-   # temphues[0] = 0  # hue for RL policy (= 0)
-
-   def hueassign(row):
-      if row['theta'] < 0:
-         return 'RL'
-      else:
-         return 'fixed'
-   tgtdf['hues'] = tgtdf.apply(hueassign, axis=1)
-
-   a = sns.barplot(data = tgtdf, x="theta", y="dofs", hue="hues", ax=ax9[i][0]) # first column
-   a.legend_.remove()
-   ax9[i][0].set_title('Error target ='+str(tgt), fontsize=12)
-   if i == num_tgts-1:
-      ax9[i][0].set_xlabel('theta value')
-   else:
-      ax9[i][0].set_xlabel('')
-
-   b = sns.barplot(data = tgtdf, x="theta", y="steps", hue="hues", ax=ax9[i][1]) # second column
-   b.legend_.remove()
-   ax9[i][1].set_title('Error target ='+str(tgt), fontsize=12)
-   if i == num_tgts-1:
-      ax9[i][1].set_xlabel('theta value')
-   else:
-      ax9[i][1].set_xlabel('')
+   tgtdf = pd.read_csv(output_dir + '/rl_data_tgt_' + str(all_tgts[i]) + '.csv', index_col=0)
+   rl_tgt_axns = tgtdf.index.to_numpy()
+   sns.lineplot(data=rl_tgt_axns, ax = ax10[i][0], marker='o', lw=1.3) # label=r'(AM)$^2$R policy'
+   ax10[i][0].set_ylabel(r'$\theta$', fontsize=22)
+   ax10[i][0].set_xlabel(r'Refinement iteration $(k)$', fontsize=22)
+   ax10[i][0].tick_params(axis='x', labelsize=12)
+   ax10[i][0].tick_params(axis='y', labelsize=12)
+   ax10[i][0].set_xlim(-0.5, len(rl_tgt_axns)+0.5) # forces x axis to have ticks from 0 to max
+   ax10[i][0].set_ylim(0.0, 1.0)
+   ax10[i][0].set_title('Error target ='+str(all_tgts[i]), fontsize=12)
 
 if save_figs:
-   plt.savefig(output_dir+'/'+fig_name_prefix+'_fig9.pdf',format='pdf') # bbox_inches='tight'
+   plt.savefig(output_dir+'/'+fig_name_prefix+'_fig10.pdf',format='pdf') # bbox_inches='tight'
+
 
 plt.show()
+
+
+
+
+
+#
+# commented out - probably don't need
+#
+##########
+# make fig 8: ADF comparison: Plot dofs vs error with target labeled
+##########
+
+# have_adf_data = True
+# print("*** Making ADF figure from ADF_policy_data_1a.txt ")
+# adfdata_file = output_dir+'/ADF_policy_data_1a.txt'
+
+# plt.figure(figsize=(6,6))
+# ax8 = plt.gca()
+
+# df = pd.read_csv(adfdata_file, header=None, names=['tau','cumdofs','error','steps'])
+
+# adfcumdofs = df['cumdofs']
+# adferrors = df['error']
+
+
+# ns = len(cumdofs[9])  
+# plt.loglog(cumdofs[9][0:ns],errors[9][0:ns],'-o',lw=1.3, color=palette_list[3], alpha=alpha, label=cumdofs[9][-1])
+# plt.loglog(cumdofs[19][0:ns],errors[19][0:ns],'-o',lw=1.3, color=palette_list[4], alpha=alpha, label=cumdofs[19][-1])
+# plt.loglog(cumdofs[29][0:ns],errors[29][0:ns],'-o',lw=1.3, color=palette_list[5], alpha=alpha, label=cumdofs[29][-1])
+
+# # plt.loglog(cumdofs[9],errors[9],'-o',lw=1.3, color=palette_list[3], alpha=alpha, label=r'AMR policies')
+# # for k in range(19,len(errors),10):
+# #    plt.loglog(cumdofs[k],errors[k],'-o',lw=1.3, color=palette_list[3], label='_nolegend_')
+
+# plt.loglog(adfcumdofs, adferrors,'-o',lw=1.3, color=palette_list[0], alpha=alpha, label=r'ADF policy')
+# # plt.loglog(cumrldofs,rlerrors,marker="^",lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
+# # plt.loglog(cumrldofs[-1],rlerrors[-1], marker="o", markersize=10, color=palette_list[0], label='_nolegend_')
+# ax8.set_xlabel(r'Cumulative degrees of freedom $(J_k)$', fontsize=22)
+# ax8.set_ylabel(r'Global error estimate $(\eta_k)$', fontsize=22)
+# ax8.tick_params(axis='x', labelsize=22)
+# ax8.tick_params(axis='y', labelsize=22)
+# ax8.legend(loc='upper right', prop={'size': 14})
+# # for i in range(9,len(errors),10):
+# #    print("Cum dofs = ", cumdofs[i][-1])
+# # print("cumrldofs = ", cumrldofs[-1])
+# if save_figs:
+#    plt.savefig(output_dir+'/'+fig_name_prefix+'_fig8.pdf',format='pdf', bbox_inches='tight')
+
