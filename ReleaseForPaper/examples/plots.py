@@ -380,50 +380,50 @@ if ex_type == 4: # example 2c
 # make fig 9: ADF comparison: RL vs fixed, small bar graphs
 ##########
 
-# have_adf_data = True
-# print("*** Making ADF vs fixed policy figures from adf_vs_fxd.csv")
-# adf_vs_fxd_file = output_dir+'/adf_vs_fxd.csv'
+have_adf_data = True
+print("*** Making ADF vs fixed policy figures from adf_vs_fxd.csv")
+adf_vs_fxd_file = output_dir+'/adf_vs_fxd.csv'
 
-# df9 = pd.read_csv(adf_vs_fxd_file)
+df9 = pd.read_csv(adf_vs_fxd_file)
 
-# num_tgts = len(df9['target'].unique())
+num_tgts = len(df9['target'].unique())
 
-# sns.set() # style="whitegrid"
+sns.set() # style="whitegrid"
 
-# f9, ax9 = plt.subplots(nrows=num_tgts, ncols=2, sharex=True, sharey=False, figsize = (12,12), squeeze=False)
+f9, ax9 = plt.subplots(nrows=num_tgts, ncols=2, sharex=True, sharey=False, figsize = (12,12), squeeze=False)
 
-# for i in range(num_tgts): # num of rows
-#    tgt = df9['target'].unique()[i]
-#    tgtdf = df9[df9['target'] == tgt][::10].copy()
+for i in range(num_tgts): # num of rows
+   tgt = df9['target'].unique()[i]
+   tgtdf = df9[df9['target'] == tgt][::10].copy()
 
-#    # temphues = 20 * np.ones(100)  # hue for fixed params (= 20)
-#    # temphues[0] = 0  # hue for RL policy (= 0)
+   # temphues = 20 * np.ones(100)  # hue for fixed params (= 20)
+   # temphues[0] = 0  # hue for RL policy (= 0)
 
-#    def hueassign(row):
-#       if row['theta'] < 0:
-#          return 'RL'
-#       else:
-#          return 'fixed'
-#    tgtdf['hues'] = tgtdf.apply(hueassign, axis=1)
+   def hueassign(row):
+      if row['theta'] < 0:
+         return 'RL'
+      else:
+         return 'fixed'
+   tgtdf['hues'] = tgtdf.apply(hueassign, axis=1)
 
-#    a = sns.barplot(data = tgtdf, x="theta", y="dofs", hue="hues", ax=ax9[i][0]) # first column
-#    a.legend_.remove()
-#    ax9[i][0].set_title('Error target ='+str(tgt), fontsize=12)
-#    if i == num_tgts-1:
-#       ax9[i][0].set_xlabel('theta value')
-#    else:
-#       ax9[i][0].set_xlabel('')
+   a = sns.barplot(data = tgtdf, x="theta", y="dofs", hue="hues", ax=ax9[i][0]) # first column
+   a.legend_.remove()
+   ax9[i][0].set_title('Error target ='+str(tgt), fontsize=12)
+   if i == num_tgts-1:
+      ax9[i][0].set_xlabel('theta value')
+   else:
+      ax9[i][0].set_xlabel('')
 
-#    b = sns.barplot(data = tgtdf, x="theta", y="steps", hue="hues", ax=ax9[i][1]) # second column
-#    b.legend_.remove()
-#    ax9[i][1].set_title('Error target ='+str(tgt), fontsize=12)
-#    if i == num_tgts-1:
-#       ax9[i][1].set_xlabel('theta value')
-#    else:
-#       ax9[i][1].set_xlabel('')
+   b = sns.barplot(data = tgtdf, x="theta", y="steps", hue="hues", ax=ax9[i][1]) # second column
+   b.legend_.remove()
+   ax9[i][1].set_title('Error target ='+str(tgt), fontsize=12)
+   if i == num_tgts-1:
+      ax9[i][1].set_xlabel('theta value')
+   else:
+      ax9[i][1].set_xlabel('')
 
-# if save_figs:
-#    plt.savefig(output_dir+'/'+fig_name_prefix+'_fig9.pdf',format='pdf') # bbox_inches='tight'
+if save_figs:
+   plt.savefig(output_dir+'/'+fig_name_prefix+'_fig9.pdf',format='pdf') # bbox_inches='tight'
 
 
 ##########
