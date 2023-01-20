@@ -439,7 +439,7 @@ if alpha_bool:
 # determine which errors/taus to evaluate on (tau is the 2log of the target error)
 elif ADF_bool:
     if eval:
-        tau_max = (np.log2(5e-2) + np.log2(1e-2))/2
+        tau_max = np.log2(5e-2)
         tau_step = np.log2(5e-2) - np.log2(1e-2)
         params_to_eval = np.array([tau_max - i * tau_step for i in range(5)])
         # params_to_eval = np.array([prob_config['tau_min']])
@@ -472,7 +472,7 @@ if args.savemesh:
     print("==> Saved initial mesh to ", output_dir, "/meshes_and_gfs/")
     saved_initial_mesh = True;
 
-adf_vs_fixed_df = pd.DataFrame(columns=['target', 'theta', 'steps', 'dofs'])
+adf_vs_fixed_df = pd.DataFrame(columns=['target', 'theta', 'steps', 'dofs', 'why'])
 
 for param in params_to_eval:
     ## Enact trained policy
@@ -495,6 +495,7 @@ for param in params_to_eval:
     rlerrors = [env.global_error]
     rldofs = [env.sum_of_dofs]
     env.trainingmode = False
+    quit_reason = 'notdone'
 
     while not done:
         # action = trainer.compute_single_action(obs, explore = False)
@@ -512,6 +513,7 @@ for param in params_to_eval:
               "cum cost=", rlepisode_cost)
         rldofs.append(info['num_dofs']) 
         rlerrors.append(info['global_error'])
+        quit_reason = info['why']
 
     print("")
 
@@ -535,7 +537,7 @@ for param in params_to_eval:
 
     # save RL data to dataframe
     adf_vs_fixed_df = adf_vs_fixed_df.append(
-        {'target':np.round(np.power(2,param),8), 'theta': -1, 'steps': env.k, 'dofs': env.sum_of_dofs},
+        {'target':np.round(np.power(2,param),8), 'theta': -1, 'steps': env.k, 'dofs': env.sum_of_dofs, 'why': quit_reason},
         ignore_index=True)
     
             
@@ -549,7 +551,7 @@ for param in params_to_eval:
     errors = []
     dofs = []
     for i in range(1, nth):
-        print(i)
+        quit_reason = 'notdone'
         action = np.array([i/nth])
         actions.append(action.item())
         print("action = ", action.item())
@@ -567,6 +569,7 @@ for param in params_to_eval:
             episode_cost_tmp -= reward
             errors_tmp.append(info['global_error'])
             dofs_tmp.append(info['num_dofs'])
+            quit_reason = info['why']
         costs.append(episode_cost_tmp)
         errors.append(errors_tmp)
         dofs.append(dofs_tmp)
@@ -575,7 +578,8 @@ for param in params_to_eval:
             {'target':np.round(np.power(2,param),8), 
             'theta': action[0],
             'steps': env.k,
-            'dofs': env.sum_of_dofs},
+            'dofs': env.sum_of_dofs,
+            'why': quit_reason},
             ignore_index=True)
 
 

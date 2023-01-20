@@ -181,7 +181,7 @@ class ADF_MultiObjPoisson(Poisson):
             self.global_error = global_error
             current_target_error = np.power(2, float(ray.get(self.ADF_Params.get_tau.remote())))
 
-            quit_reason = 'n/a'
+            quit_reason = 'notdone'
             done = False
             cost = 0
 
@@ -257,7 +257,7 @@ class ADF_MultiObjPoisson(Poisson):
             else:
                 obs = np.zeros_like(self.GetObservation())
 
-            info = {'global_error':self.global_error, 'num_dofs':num_dofs, 'max_local_errors':np.amax(self.errors)}
+            info = {'global_error':self.global_error, 'num_dofs':num_dofs, 'max_local_errors':np.amax(self.errors), 'why':quit_reason}
             return obs, -cost, done, info
 
         # if using a single objective, use the parent class
@@ -273,7 +273,9 @@ class ADF_MultiObjPoisson(Poisson):
             obs = [stats.mean, stats.variance, ray.get(self.ADF_Params.get_tau.remote())]
 
             if self.observe_budget == True:
-                budget = self.k/self.num_iterations
+                # budget = self.k/self.num_iterations ## old version - budget in terms of steps
+                current_target_error = np.power(2, float(ray.get(self.ADF_Params.get_tau.remote())))
+                budget = current_target_error/self.global_error
                 obs.append(budget)
 
             return np.array(obs)
