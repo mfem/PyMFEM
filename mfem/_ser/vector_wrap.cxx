@@ -11831,6 +11831,53 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Vector_SetGlobalSeed(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Vector *arg1 = (mfem::Vector *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"gseed",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Vector_SetGlobalSeed", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vector_SetGlobalSeed" "', argument " "1"" of type '" "mfem::Vector *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Vector * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      (arg1)->SetGlobalSeed(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Vector_Norml2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Vector *arg1 = (mfem::Vector *) 0 ;
@@ -13996,6 +14043,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "Vector_SetSubVectorComplement", (PyCFunction)(void(*)(void))_wrap_Vector_SetSubVectorComplement, METH_VARARGS|METH_KEYWORDS, "Vector_SetSubVectorComplement(Vector self, intArray dofs, double const val)"},
 	 { "Vector_PrintHash", (PyCFunction)(void(*)(void))_wrap_Vector_PrintHash, METH_VARARGS|METH_KEYWORDS, "Vector_PrintHash(Vector self, std::ostream & out)"},
 	 { "Vector_Randomize", (PyCFunction)(void(*)(void))_wrap_Vector_Randomize, METH_VARARGS|METH_KEYWORDS, "Vector_Randomize(Vector self, int seed=0)"},
+	 { "Vector_SetGlobalSeed", (PyCFunction)(void(*)(void))_wrap_Vector_SetGlobalSeed, METH_VARARGS|METH_KEYWORDS, "Vector_SetGlobalSeed(Vector self, int gseed)"},
 	 { "Vector_Norml2", _wrap_Vector_Norml2, METH_O, "Vector_Norml2(Vector self) -> double"},
 	 { "Vector_Normlinf", _wrap_Vector_Normlinf, METH_O, "Vector_Normlinf(Vector self) -> double"},
 	 { "Vector_Norml1", _wrap_Vector_Norml1, METH_O, "Vector_Norml1(Vector self) -> double"},
@@ -14239,6 +14287,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Vector_SetSubVectorComplement", (PyCFunction)(void(*)(void))_wrap_Vector_SetSubVectorComplement, METH_VARARGS|METH_KEYWORDS, "SetSubVectorComplement(Vector self, intArray dofs, double const val)"},
 	 { "Vector_PrintHash", (PyCFunction)(void(*)(void))_wrap_Vector_PrintHash, METH_VARARGS|METH_KEYWORDS, "PrintHash(Vector self, std::ostream & out)"},
 	 { "Vector_Randomize", (PyCFunction)(void(*)(void))_wrap_Vector_Randomize, METH_VARARGS|METH_KEYWORDS, "Randomize(Vector self, int seed=0)"},
+	 { "Vector_SetGlobalSeed", (PyCFunction)(void(*)(void))_wrap_Vector_SetGlobalSeed, METH_VARARGS|METH_KEYWORDS, "SetGlobalSeed(Vector self, int gseed)"},
 	 { "Vector_Norml2", _wrap_Vector_Norml2, METH_O, "Norml2(Vector self) -> double"},
 	 { "Vector_Normlinf", _wrap_Vector_Normlinf, METH_O, "Normlinf(Vector self) -> double"},
 	 { "Vector_Norml1", _wrap_Vector_Norml1, METH_O, "Norml1(Vector self) -> double"},

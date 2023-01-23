@@ -67,7 +67,6 @@ class _SwigNonDynamicMeta(type):
 import mfem._ser.globals
 import mfem._ser.array
 import mfem._ser.mem_manager
-import mfem._ser.globals
 
 def InnerProduct(x, y):
     r"""InnerProduct(mfem::Vector const & x, mfem::Vector const & y) -> double"""

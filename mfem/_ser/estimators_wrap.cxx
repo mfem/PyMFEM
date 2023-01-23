@@ -3143,187 +3143,191 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__ElasticityIntegrator swig_types[43]
 #define SWIGTYPE_p_mfem__ElementRestriction swig_types[44]
 #define SWIGTYPE_p_mfem__ErrorEstimator swig_types[45]
-#define SWIGTYPE_p_mfem__ExtrudeCoefficient swig_types[46]
-#define SWIGTYPE_p_mfem__FaceRestriction swig_types[47]
-#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[48]
-#define SWIGTYPE_p_mfem__FunctionCoefficient swig_types[49]
-#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[50]
-#define SWIGTYPE_p_mfem__GradientIntegrator swig_types[51]
-#define SWIGTYPE_p_mfem__GradientInterpolator swig_types[52]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[53]
-#define SWIGTYPE_p_mfem__GridFunctionCoefficient swig_types[54]
-#define SWIGTYPE_p_mfem__GroupConvectionIntegrator swig_types[55]
-#define SWIGTYPE_p_mfem__H1FaceRestriction swig_types[56]
-#define SWIGTYPE_p_mfem__IdentityInterpolator swig_types[57]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[58]
-#define SWIGTYPE_p_mfem__InnerProductCoefficient swig_types[59]
-#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[60]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[61]
-#define SWIGTYPE_p_mfem__InverseIntegrator swig_types[62]
-#define SWIGTYPE_p_mfem__KellyErrorEstimator swig_types[63]
-#define SWIGTYPE_p_mfem__L2ElementRestriction swig_types[64]
-#define SWIGTYPE_p_mfem__L2FaceRestriction swig_types[65]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[66]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[67]
-#define SWIGTYPE_p_mfem__LpErrorEstimator swig_types[68]
-#define SWIGTYPE_p_mfem__LumpedIntegrator swig_types[69]
-#define SWIGTYPE_p_mfem__MassIntegrator swig_types[70]
-#define SWIGTYPE_p_mfem__Matrix swig_types[71]
-#define SWIGTYPE_p_mfem__MatrixInverse swig_types[72]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[73]
-#define SWIGTYPE_p_mfem__MixedBilinearForm swig_types[74]
-#define SWIGTYPE_p_mfem__MixedCrossCurlCurlIntegrator swig_types[75]
-#define SWIGTYPE_p_mfem__MixedCrossCurlGradIntegrator swig_types[76]
-#define SWIGTYPE_p_mfem__MixedCrossCurlIntegrator swig_types[77]
-#define SWIGTYPE_p_mfem__MixedCrossGradCurlIntegrator swig_types[78]
-#define SWIGTYPE_p_mfem__MixedCrossGradGradIntegrator swig_types[79]
-#define SWIGTYPE_p_mfem__MixedCrossGradIntegrator swig_types[80]
-#define SWIGTYPE_p_mfem__MixedCrossProductIntegrator swig_types[81]
-#define SWIGTYPE_p_mfem__MixedCurlCurlIntegrator swig_types[82]
-#define SWIGTYPE_p_mfem__MixedDirectionalDerivativeIntegrator swig_types[83]
-#define SWIGTYPE_p_mfem__MixedDivGradIntegrator swig_types[84]
-#define SWIGTYPE_p_mfem__MixedDotProductIntegrator swig_types[85]
-#define SWIGTYPE_p_mfem__MixedGradDivIntegrator swig_types[86]
-#define SWIGTYPE_p_mfem__MixedGradGradIntegrator swig_types[87]
-#define SWIGTYPE_p_mfem__MixedScalarCrossCurlIntegrator swig_types[88]
-#define SWIGTYPE_p_mfem__MixedScalarCrossGradIntegrator swig_types[89]
-#define SWIGTYPE_p_mfem__MixedScalarCrossProductIntegrator swig_types[90]
-#define SWIGTYPE_p_mfem__MixedScalarCurlIntegrator swig_types[91]
-#define SWIGTYPE_p_mfem__MixedScalarDerivativeIntegrator swig_types[92]
-#define SWIGTYPE_p_mfem__MixedScalarDivergenceIntegrator swig_types[93]
-#define SWIGTYPE_p_mfem__MixedScalarIntegrator swig_types[94]
-#define SWIGTYPE_p_mfem__MixedScalarMassIntegrator swig_types[95]
-#define SWIGTYPE_p_mfem__MixedScalarVectorIntegrator swig_types[96]
-#define SWIGTYPE_p_mfem__MixedScalarWeakCrossProductIntegrator swig_types[97]
-#define SWIGTYPE_p_mfem__MixedScalarWeakCurlCrossIntegrator swig_types[98]
-#define SWIGTYPE_p_mfem__MixedScalarWeakCurlIntegrator swig_types[99]
-#define SWIGTYPE_p_mfem__MixedScalarWeakDerivativeIntegrator swig_types[100]
-#define SWIGTYPE_p_mfem__MixedScalarWeakDivergenceIntegrator swig_types[101]
-#define SWIGTYPE_p_mfem__MixedScalarWeakGradientIntegrator swig_types[102]
-#define SWIGTYPE_p_mfem__MixedVectorCurlIntegrator swig_types[103]
-#define SWIGTYPE_p_mfem__MixedVectorDivergenceIntegrator swig_types[104]
-#define SWIGTYPE_p_mfem__MixedVectorGradientIntegrator swig_types[105]
-#define SWIGTYPE_p_mfem__MixedVectorIntegrator swig_types[106]
-#define SWIGTYPE_p_mfem__MixedVectorMassIntegrator swig_types[107]
-#define SWIGTYPE_p_mfem__MixedVectorProductIntegrator swig_types[108]
-#define SWIGTYPE_p_mfem__MixedVectorWeakCurlIntegrator swig_types[109]
-#define SWIGTYPE_p_mfem__MixedVectorWeakDivergenceIntegrator swig_types[110]
-#define SWIGTYPE_p_mfem__MixedWeakCurlCrossIntegrator swig_types[111]
-#define SWIGTYPE_p_mfem__MixedWeakDivCrossIntegrator swig_types[112]
-#define SWIGTYPE_p_mfem__MixedWeakGradDotIntegrator swig_types[113]
-#define SWIGTYPE_p_mfem__NCL2FaceRestriction swig_types[114]
-#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[115]
-#define SWIGTYPE_p_mfem__NonconservativeDGTraceIntegrator swig_types[116]
-#define SWIGTYPE_p_mfem__NormalInterpolator swig_types[117]
-#define SWIGTYPE_p_mfem__NormalTraceJumpIntegrator swig_types[118]
-#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[119]
-#define SWIGTYPE_p_mfem__Operator swig_types[120]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[121]
-#define SWIGTYPE_p_mfem__PWConstCoefficient swig_types[122]
-#define SWIGTYPE_p_mfem__PowerCoefficient swig_types[123]
-#define SWIGTYPE_p_mfem__ProductCoefficient swig_types[124]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[125]
-#define SWIGTYPE_p_mfem__PyCoefficientBase swig_types[126]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[127]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[128]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[129]
-#define SWIGTYPE_p_mfem__QuadratureFunctionCoefficient swig_types[130]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[131]
-#define SWIGTYPE_p_mfem__RatioCoefficient swig_types[132]
-#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[133]
-#define SWIGTYPE_p_mfem__Refinement swig_types[134]
-#define SWIGTYPE_p_mfem__RestrictedCoefficient swig_types[135]
-#define SWIGTYPE_p_mfem__ScalarCrossProductInterpolator swig_types[136]
-#define SWIGTYPE_p_mfem__ScalarProductInterpolator swig_types[137]
-#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[138]
-#define SWIGTYPE_p_mfem__ScalarVectorProductInterpolator swig_types[139]
-#define SWIGTYPE_p_mfem__ScaledOperator swig_types[140]
-#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[141]
-#define SWIGTYPE_p_mfem__Solver swig_types[142]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[143]
-#define SWIGTYPE_p_mfem__SumCoefficient swig_types[144]
-#define SWIGTYPE_p_mfem__SumIntegrator swig_types[145]
-#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[146]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[147]
-#define SWIGTYPE_p_mfem__TraceJumpIntegrator swig_types[148]
-#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[149]
-#define SWIGTYPE_p_mfem__TransposeIntegrator swig_types[150]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[151]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[152]
-#define SWIGTYPE_p_mfem__Vector swig_types[153]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[154]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[155]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[156]
-#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[157]
-#define SWIGTYPE_p_mfem__VectorCrossProductInterpolator swig_types[158]
-#define SWIGTYPE_p_mfem__VectorCurlCurlIntegrator swig_types[159]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[160]
-#define SWIGTYPE_p_mfem__VectorDiffusionIntegrator swig_types[161]
-#define SWIGTYPE_p_mfem__VectorDivergenceIntegrator swig_types[162]
-#define SWIGTYPE_p_mfem__VectorFECurlIntegrator swig_types[163]
-#define SWIGTYPE_p_mfem__VectorFEDivergenceIntegrator swig_types[164]
-#define SWIGTYPE_p_mfem__VectorFEMassIntegrator swig_types[165]
-#define SWIGTYPE_p_mfem__VectorFEWeakDivergenceIntegrator swig_types[166]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[167]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[168]
-#define SWIGTYPE_p_mfem__VectorInnerProductInterpolator swig_types[169]
-#define SWIGTYPE_p_mfem__VectorMassIntegrator swig_types[170]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[171]
-#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[172]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[173]
-#define SWIGTYPE_p_mfem__VectorRotProductCoefficient swig_types[174]
-#define SWIGTYPE_p_mfem__VectorScalarProductInterpolator swig_types[175]
-#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[176]
-#define SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator swig_types[177]
-#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[178]
-#define SWIGTYPE_p_p_mfem__BilinearForm swig_types[179]
-#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[180]
-#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[181]
-#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[182]
-#define SWIGTYPE_p_p_mfem__DenseSymmetricMatrix swig_types[183]
-#define SWIGTYPE_p_p_mfem__DiscreteLinearOperator swig_types[184]
-#define SWIGTYPE_p_p_mfem__ElementRestriction swig_types[185]
-#define SWIGTYPE_p_p_mfem__FaceRestriction swig_types[186]
-#define SWIGTYPE_p_p_mfem__FiniteElementSpace swig_types[187]
-#define SWIGTYPE_p_p_mfem__GridFunction swig_types[188]
-#define SWIGTYPE_p_p_mfem__H1FaceRestriction swig_types[189]
-#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[190]
-#define SWIGTYPE_p_p_mfem__IntegrationRule swig_types[191]
-#define SWIGTYPE_p_p_mfem__L2ElementRestriction swig_types[192]
-#define SWIGTYPE_p_p_mfem__L2FaceRestriction swig_types[193]
-#define SWIGTYPE_p_p_mfem__LinearForm swig_types[194]
-#define SWIGTYPE_p_p_mfem__Matrix swig_types[195]
-#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[196]
-#define SWIGTYPE_p_p_mfem__MixedBilinearForm swig_types[197]
-#define SWIGTYPE_p_p_mfem__NCL2FaceRestriction swig_types[198]
-#define SWIGTYPE_p_p_mfem__Operator swig_types[199]
-#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[200]
-#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[201]
-#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[202]
-#define SWIGTYPE_p_p_mfem__QuadratureFunction swig_types[203]
-#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[204]
-#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[205]
-#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[206]
-#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[207]
-#define SWIGTYPE_p_p_mfem__Solver swig_types[208]
-#define SWIGTYPE_p_p_mfem__SparseMatrix swig_types[209]
-#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[210]
-#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[211]
-#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[212]
-#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[213]
-#define SWIGTYPE_p_p_mfem__Vector swig_types[214]
-#define SWIGTYPE_p_pri_t swig_types[215]
-#define SWIGTYPE_p_pyr_t swig_types[216]
-#define SWIGTYPE_p_quad_t swig_types[217]
-#define SWIGTYPE_p_seg_t swig_types[218]
-#define SWIGTYPE_p_size_type swig_types[219]
-#define SWIGTYPE_p_std__functionT_double_fmfem__Mesh_p_int_constF_t swig_types[220]
-#define SWIGTYPE_p_std__functionT_double_fmfem__Mesh_p_int_const_bool_constF_t swig_types[221]
-#define SWIGTYPE_p_tet_t swig_types[222]
-#define SWIGTYPE_p_tri_t swig_types[223]
-#define SWIGTYPE_p_value_type swig_types[224]
-static swig_type_info *swig_types[226];
-static swig_module_info swig_module = {swig_types, 225, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__ExactError swig_types[46]
+#define SWIGTYPE_p_mfem__ExtrudeCoefficient swig_types[47]
+#define SWIGTYPE_p_mfem__FaceRestriction swig_types[48]
+#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[49]
+#define SWIGTYPE_p_mfem__FunctionCoefficient swig_types[50]
+#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[51]
+#define SWIGTYPE_p_mfem__GradientIntegrator swig_types[52]
+#define SWIGTYPE_p_mfem__GradientInterpolator swig_types[53]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[54]
+#define SWIGTYPE_p_mfem__GridFunctionCoefficient swig_types[55]
+#define SWIGTYPE_p_mfem__GroupConvectionIntegrator swig_types[56]
+#define SWIGTYPE_p_mfem__H1FaceRestriction swig_types[57]
+#define SWIGTYPE_p_mfem__IdentityInterpolator swig_types[58]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[59]
+#define SWIGTYPE_p_mfem__InnerProductCoefficient swig_types[60]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[61]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[62]
+#define SWIGTYPE_p_mfem__InverseIntegrator swig_types[63]
+#define SWIGTYPE_p_mfem__KellyErrorEstimator swig_types[64]
+#define SWIGTYPE_p_mfem__L2ElementRestriction swig_types[65]
+#define SWIGTYPE_p_mfem__L2FaceRestriction swig_types[66]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[67]
+#define SWIGTYPE_p_mfem__LSZienkiewiczZhuEstimator swig_types[68]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[69]
+#define SWIGTYPE_p_mfem__LpErrorEstimator swig_types[70]
+#define SWIGTYPE_p_mfem__LumpedIntegrator swig_types[71]
+#define SWIGTYPE_p_mfem__MassIntegrator swig_types[72]
+#define SWIGTYPE_p_mfem__Matrix swig_types[73]
+#define SWIGTYPE_p_mfem__MatrixInverse swig_types[74]
+#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[75]
+#define SWIGTYPE_p_mfem__MixedBilinearForm swig_types[76]
+#define SWIGTYPE_p_mfem__MixedCrossCurlCurlIntegrator swig_types[77]
+#define SWIGTYPE_p_mfem__MixedCrossCurlGradIntegrator swig_types[78]
+#define SWIGTYPE_p_mfem__MixedCrossCurlIntegrator swig_types[79]
+#define SWIGTYPE_p_mfem__MixedCrossGradCurlIntegrator swig_types[80]
+#define SWIGTYPE_p_mfem__MixedCrossGradGradIntegrator swig_types[81]
+#define SWIGTYPE_p_mfem__MixedCrossGradIntegrator swig_types[82]
+#define SWIGTYPE_p_mfem__MixedCrossProductIntegrator swig_types[83]
+#define SWIGTYPE_p_mfem__MixedCurlCurlIntegrator swig_types[84]
+#define SWIGTYPE_p_mfem__MixedDirectionalDerivativeIntegrator swig_types[85]
+#define SWIGTYPE_p_mfem__MixedDivGradIntegrator swig_types[86]
+#define SWIGTYPE_p_mfem__MixedDotProductIntegrator swig_types[87]
+#define SWIGTYPE_p_mfem__MixedGradDivIntegrator swig_types[88]
+#define SWIGTYPE_p_mfem__MixedGradGradIntegrator swig_types[89]
+#define SWIGTYPE_p_mfem__MixedScalarCrossCurlIntegrator swig_types[90]
+#define SWIGTYPE_p_mfem__MixedScalarCrossGradIntegrator swig_types[91]
+#define SWIGTYPE_p_mfem__MixedScalarCrossProductIntegrator swig_types[92]
+#define SWIGTYPE_p_mfem__MixedScalarCurlIntegrator swig_types[93]
+#define SWIGTYPE_p_mfem__MixedScalarDerivativeIntegrator swig_types[94]
+#define SWIGTYPE_p_mfem__MixedScalarDivergenceIntegrator swig_types[95]
+#define SWIGTYPE_p_mfem__MixedScalarIntegrator swig_types[96]
+#define SWIGTYPE_p_mfem__MixedScalarMassIntegrator swig_types[97]
+#define SWIGTYPE_p_mfem__MixedScalarVectorIntegrator swig_types[98]
+#define SWIGTYPE_p_mfem__MixedScalarWeakCrossProductIntegrator swig_types[99]
+#define SWIGTYPE_p_mfem__MixedScalarWeakCurlCrossIntegrator swig_types[100]
+#define SWIGTYPE_p_mfem__MixedScalarWeakCurlIntegrator swig_types[101]
+#define SWIGTYPE_p_mfem__MixedScalarWeakDerivativeIntegrator swig_types[102]
+#define SWIGTYPE_p_mfem__MixedScalarWeakDivergenceIntegrator swig_types[103]
+#define SWIGTYPE_p_mfem__MixedScalarWeakGradientIntegrator swig_types[104]
+#define SWIGTYPE_p_mfem__MixedVectorCurlIntegrator swig_types[105]
+#define SWIGTYPE_p_mfem__MixedVectorDivergenceIntegrator swig_types[106]
+#define SWIGTYPE_p_mfem__MixedVectorGradientIntegrator swig_types[107]
+#define SWIGTYPE_p_mfem__MixedVectorIntegrator swig_types[108]
+#define SWIGTYPE_p_mfem__MixedVectorMassIntegrator swig_types[109]
+#define SWIGTYPE_p_mfem__MixedVectorProductIntegrator swig_types[110]
+#define SWIGTYPE_p_mfem__MixedVectorWeakCurlIntegrator swig_types[111]
+#define SWIGTYPE_p_mfem__MixedVectorWeakDivergenceIntegrator swig_types[112]
+#define SWIGTYPE_p_mfem__MixedWeakCurlCrossIntegrator swig_types[113]
+#define SWIGTYPE_p_mfem__MixedWeakDivCrossIntegrator swig_types[114]
+#define SWIGTYPE_p_mfem__MixedWeakGradDotIntegrator swig_types[115]
+#define SWIGTYPE_p_mfem__NCL2FaceRestriction swig_types[116]
+#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[117]
+#define SWIGTYPE_p_mfem__NonconservativeDGTraceIntegrator swig_types[118]
+#define SWIGTYPE_p_mfem__NormalInterpolator swig_types[119]
+#define SWIGTYPE_p_mfem__NormalTraceJumpIntegrator swig_types[120]
+#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[121]
+#define SWIGTYPE_p_mfem__Operator swig_types[122]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[123]
+#define SWIGTYPE_p_mfem__PRefDiffEstimator swig_types[124]
+#define SWIGTYPE_p_mfem__PRefJumpEstimator swig_types[125]
+#define SWIGTYPE_p_mfem__PWConstCoefficient swig_types[126]
+#define SWIGTYPE_p_mfem__PowerCoefficient swig_types[127]
+#define SWIGTYPE_p_mfem__ProductCoefficient swig_types[128]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[129]
+#define SWIGTYPE_p_mfem__PyCoefficientBase swig_types[130]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[131]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[132]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[133]
+#define SWIGTYPE_p_mfem__QuadratureFunctionCoefficient swig_types[134]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[135]
+#define SWIGTYPE_p_mfem__RatioCoefficient swig_types[136]
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[137]
+#define SWIGTYPE_p_mfem__Refinement swig_types[138]
+#define SWIGTYPE_p_mfem__RestrictedCoefficient swig_types[139]
+#define SWIGTYPE_p_mfem__ScalarCrossProductInterpolator swig_types[140]
+#define SWIGTYPE_p_mfem__ScalarProductInterpolator swig_types[141]
+#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[142]
+#define SWIGTYPE_p_mfem__ScalarVectorProductInterpolator swig_types[143]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[144]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[145]
+#define SWIGTYPE_p_mfem__Solver swig_types[146]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[147]
+#define SWIGTYPE_p_mfem__SumCoefficient swig_types[148]
+#define SWIGTYPE_p_mfem__SumIntegrator swig_types[149]
+#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[150]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[151]
+#define SWIGTYPE_p_mfem__TraceJumpIntegrator swig_types[152]
+#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[153]
+#define SWIGTYPE_p_mfem__TransposeIntegrator swig_types[154]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[155]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[156]
+#define SWIGTYPE_p_mfem__Vector swig_types[157]
+#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[158]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[159]
+#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[160]
+#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[161]
+#define SWIGTYPE_p_mfem__VectorCrossProductInterpolator swig_types[162]
+#define SWIGTYPE_p_mfem__VectorCurlCurlIntegrator swig_types[163]
+#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[164]
+#define SWIGTYPE_p_mfem__VectorDiffusionIntegrator swig_types[165]
+#define SWIGTYPE_p_mfem__VectorDivergenceIntegrator swig_types[166]
+#define SWIGTYPE_p_mfem__VectorFECurlIntegrator swig_types[167]
+#define SWIGTYPE_p_mfem__VectorFEDivergenceIntegrator swig_types[168]
+#define SWIGTYPE_p_mfem__VectorFEMassIntegrator swig_types[169]
+#define SWIGTYPE_p_mfem__VectorFEWeakDivergenceIntegrator swig_types[170]
+#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[171]
+#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[172]
+#define SWIGTYPE_p_mfem__VectorInnerProductInterpolator swig_types[173]
+#define SWIGTYPE_p_mfem__VectorMassIntegrator swig_types[174]
+#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[175]
+#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[176]
+#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[177]
+#define SWIGTYPE_p_mfem__VectorRotProductCoefficient swig_types[178]
+#define SWIGTYPE_p_mfem__VectorScalarProductInterpolator swig_types[179]
+#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[180]
+#define SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator swig_types[181]
+#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[182]
+#define SWIGTYPE_p_p_mfem__BilinearForm swig_types[183]
+#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[184]
+#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[185]
+#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[186]
+#define SWIGTYPE_p_p_mfem__DenseSymmetricMatrix swig_types[187]
+#define SWIGTYPE_p_p_mfem__DiscreteLinearOperator swig_types[188]
+#define SWIGTYPE_p_p_mfem__ElementRestriction swig_types[189]
+#define SWIGTYPE_p_p_mfem__FaceRestriction swig_types[190]
+#define SWIGTYPE_p_p_mfem__FiniteElementSpace swig_types[191]
+#define SWIGTYPE_p_p_mfem__GridFunction swig_types[192]
+#define SWIGTYPE_p_p_mfem__H1FaceRestriction swig_types[193]
+#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[194]
+#define SWIGTYPE_p_p_mfem__IntegrationRule swig_types[195]
+#define SWIGTYPE_p_p_mfem__L2ElementRestriction swig_types[196]
+#define SWIGTYPE_p_p_mfem__L2FaceRestriction swig_types[197]
+#define SWIGTYPE_p_p_mfem__LinearForm swig_types[198]
+#define SWIGTYPE_p_p_mfem__Matrix swig_types[199]
+#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[200]
+#define SWIGTYPE_p_p_mfem__MixedBilinearForm swig_types[201]
+#define SWIGTYPE_p_p_mfem__NCL2FaceRestriction swig_types[202]
+#define SWIGTYPE_p_p_mfem__Operator swig_types[203]
+#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[204]
+#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[205]
+#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[206]
+#define SWIGTYPE_p_p_mfem__QuadratureFunction swig_types[207]
+#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[208]
+#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[209]
+#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[210]
+#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[211]
+#define SWIGTYPE_p_p_mfem__Solver swig_types[212]
+#define SWIGTYPE_p_p_mfem__SparseMatrix swig_types[213]
+#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[214]
+#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[215]
+#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[216]
+#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[217]
+#define SWIGTYPE_p_p_mfem__Vector swig_types[218]
+#define SWIGTYPE_p_pri_t swig_types[219]
+#define SWIGTYPE_p_pyr_t swig_types[220]
+#define SWIGTYPE_p_quad_t swig_types[221]
+#define SWIGTYPE_p_seg_t swig_types[222]
+#define SWIGTYPE_p_size_type swig_types[223]
+#define SWIGTYPE_p_std__functionT_double_fmfem__Mesh_p_int_constF_t swig_types[224]
+#define SWIGTYPE_p_std__functionT_double_fmfem__Mesh_p_int_const_bool_constF_t swig_types[225]
+#define SWIGTYPE_p_tet_t swig_types[226]
+#define SWIGTYPE_p_tri_t swig_types[227]
+#define SWIGTYPE_p_value_type swig_types[228]
+static swig_type_info *swig_types[230];
+static swig_module_info swig_module = {swig_types, 229, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4379,7 +4383,7 @@ SWIGINTERN PyObject *ZienkiewiczZhuEstimator_swiginit(PyObject *SWIGUNUSEDPARM(s
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_NewZienkiewiczZhuEstimator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_new_LSZienkiewiczZhuEstimator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearFormIntegrator *arg1 = 0 ;
   mfem::GridFunction *arg2 = 0 ;
@@ -4392,28 +4396,28 @@ SWIGINTERN PyObject *_wrap_new_NewZienkiewiczZhuEstimator(PyObject *SWIGUNUSEDPA
   char * kwnames[] = {
     (char *)"integ",  (char *)"sol",  NULL 
   };
-  mfem::NewZienkiewiczZhuEstimator *result = 0 ;
+  mfem::LSZienkiewiczZhuEstimator *result = 0 ;
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_NewZienkiewiczZhuEstimator", kwnames, &obj0, &obj1)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_LSZienkiewiczZhuEstimator", kwnames, &obj0, &obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__BilinearFormIntegrator,  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_NewZienkiewiczZhuEstimator" "', argument " "1"" of type '" "mfem::BilinearFormIntegrator &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_LSZienkiewiczZhuEstimator" "', argument " "1"" of type '" "mfem::BilinearFormIntegrator &""'"); 
   }
   if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_NewZienkiewiczZhuEstimator" "', argument " "1"" of type '" "mfem::BilinearFormIntegrator &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_LSZienkiewiczZhuEstimator" "', argument " "1"" of type '" "mfem::BilinearFormIntegrator &""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__GridFunction,  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_NewZienkiewiczZhuEstimator" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_LSZienkiewiczZhuEstimator" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_NewZienkiewiczZhuEstimator" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_LSZienkiewiczZhuEstimator" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
   }
   arg2 = reinterpret_cast< mfem::GridFunction * >(argp2);
   {
     try {
-      result = (mfem::NewZienkiewiczZhuEstimator *)new mfem::NewZienkiewiczZhuEstimator(*arg1,*arg2);
+      result = (mfem::LSZienkiewiczZhuEstimator *)new mfem::LSZienkiewiczZhuEstimator(*arg1,*arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -4430,16 +4434,16 @@ SWIGINTERN PyObject *_wrap_new_NewZienkiewiczZhuEstimator(PyObject *SWIGUNUSEDPA
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__NewZienkiewiczZhuEstimator, SWIG_POINTER_NEW |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__LSZienkiewiczZhuEstimator, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_NewZienkiewiczZhuEstimator_SetWithCoeff(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_LSZienkiewiczZhuEstimator_SetWithCoeff(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  mfem::NewZienkiewiczZhuEstimator *arg1 = (mfem::NewZienkiewiczZhuEstimator *) 0 ;
+  mfem::LSZienkiewiczZhuEstimator *arg1 = (mfem::LSZienkiewiczZhuEstimator *) 0 ;
   bool arg2 = (bool) true ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -4451,16 +4455,16 @@ SWIGINTERN PyObject *_wrap_NewZienkiewiczZhuEstimator_SetWithCoeff(PyObject *SWI
     (char *)"self",  (char *)"w_coeff",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:NewZienkiewiczZhuEstimator_SetWithCoeff", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NewZienkiewiczZhuEstimator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:LSZienkiewiczZhuEstimator_SetWithCoeff", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__LSZienkiewiczZhuEstimator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NewZienkiewiczZhuEstimator_SetWithCoeff" "', argument " "1"" of type '" "mfem::NewZienkiewiczZhuEstimator *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LSZienkiewiczZhuEstimator_SetWithCoeff" "', argument " "1"" of type '" "mfem::LSZienkiewiczZhuEstimator *""'"); 
   }
-  arg1 = reinterpret_cast< mfem::NewZienkiewiczZhuEstimator * >(argp1);
+  arg1 = reinterpret_cast< mfem::LSZienkiewiczZhuEstimator * >(argp1);
   if (obj1) {
     ecode2 = SWIG_AsVal_bool(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "NewZienkiewiczZhuEstimator_SetWithCoeff" "', argument " "2"" of type '" "bool""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LSZienkiewiczZhuEstimator_SetWithCoeff" "', argument " "2"" of type '" "bool""'");
     } 
     arg2 = static_cast< bool >(val2);
   }
@@ -4490,20 +4494,20 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_NewZienkiewiczZhuEstimator_DisableReconstructionAcrossSubdomains(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_LSZienkiewiczZhuEstimator_DisableReconstructionAcrossSubdomains(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  mfem::NewZienkiewiczZhuEstimator *arg1 = (mfem::NewZienkiewiczZhuEstimator *) 0 ;
+  mfem::LSZienkiewiczZhuEstimator *arg1 = (mfem::LSZienkiewiczZhuEstimator *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NewZienkiewiczZhuEstimator, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__LSZienkiewiczZhuEstimator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NewZienkiewiczZhuEstimator_DisableReconstructionAcrossSubdomains" "', argument " "1"" of type '" "mfem::NewZienkiewiczZhuEstimator *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LSZienkiewiczZhuEstimator_DisableReconstructionAcrossSubdomains" "', argument " "1"" of type '" "mfem::LSZienkiewiczZhuEstimator *""'"); 
   }
-  arg1 = reinterpret_cast< mfem::NewZienkiewiczZhuEstimator * >(argp1);
+  arg1 = reinterpret_cast< mfem::LSZienkiewiczZhuEstimator * >(argp1);
   {
     try {
       (arg1)->DisableReconstructionAcrossSubdomains();
@@ -4530,9 +4534,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_NewZienkiewiczZhuEstimator_SetTichonovRegularization(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+SWIGINTERN PyObject *_wrap_LSZienkiewiczZhuEstimator_SetTichonovRegularization(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  mfem::NewZienkiewiczZhuEstimator *arg1 = (mfem::NewZienkiewiczZhuEstimator *) 0 ;
+  mfem::LSZienkiewiczZhuEstimator *arg1 = (mfem::LSZienkiewiczZhuEstimator *) 0 ;
   double arg2 = (double) 1.0e-8 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -4544,16 +4548,16 @@ SWIGINTERN PyObject *_wrap_NewZienkiewiczZhuEstimator_SetTichonovRegularization(
     (char *)"self",  (char *)"tcoeff",  NULL 
   };
   
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:NewZienkiewiczZhuEstimator_SetTichonovRegularization", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NewZienkiewiczZhuEstimator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:LSZienkiewiczZhuEstimator_SetTichonovRegularization", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__LSZienkiewiczZhuEstimator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NewZienkiewiczZhuEstimator_SetTichonovRegularization" "', argument " "1"" of type '" "mfem::NewZienkiewiczZhuEstimator *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LSZienkiewiczZhuEstimator_SetTichonovRegularization" "', argument " "1"" of type '" "mfem::LSZienkiewiczZhuEstimator *""'"); 
   }
-  arg1 = reinterpret_cast< mfem::NewZienkiewiczZhuEstimator * >(argp1);
+  arg1 = reinterpret_cast< mfem::LSZienkiewiczZhuEstimator * >(argp1);
   if (obj1) {
     ecode2 = SWIG_AsVal_double(obj1, &val2);
     if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "NewZienkiewiczZhuEstimator_SetTichonovRegularization" "', argument " "2"" of type '" "double""'");
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "LSZienkiewiczZhuEstimator_SetTichonovRegularization" "', argument " "2"" of type '" "double""'");
     } 
     arg2 = static_cast< double >(val2);
   }
@@ -4583,9 +4587,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_NewZienkiewiczZhuEstimator_GetTotalError(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_LSZienkiewiczZhuEstimator_GetTotalError(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  mfem::NewZienkiewiczZhuEstimator *arg1 = (mfem::NewZienkiewiczZhuEstimator *) 0 ;
+  mfem::LSZienkiewiczZhuEstimator *arg1 = (mfem::LSZienkiewiczZhuEstimator *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
@@ -4593,14 +4597,14 @@ SWIGINTERN PyObject *_wrap_NewZienkiewiczZhuEstimator_GetTotalError(PyObject *SW
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NewZienkiewiczZhuEstimator, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__LSZienkiewiczZhuEstimator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NewZienkiewiczZhuEstimator_GetTotalError" "', argument " "1"" of type '" "mfem::NewZienkiewiczZhuEstimator const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LSZienkiewiczZhuEstimator_GetTotalError" "', argument " "1"" of type '" "mfem::LSZienkiewiczZhuEstimator const *""'"); 
   }
-  arg1 = reinterpret_cast< mfem::NewZienkiewiczZhuEstimator * >(argp1);
+  arg1 = reinterpret_cast< mfem::LSZienkiewiczZhuEstimator * >(argp1);
   {
     try {
-      result = (double)((mfem::NewZienkiewiczZhuEstimator const *)arg1)->GetTotalError();
+      result = (double)((mfem::LSZienkiewiczZhuEstimator const *)arg1)->GetTotalError();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -4624,9 +4628,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_NewZienkiewiczZhuEstimator_GetLocalErrors(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_LSZienkiewiczZhuEstimator_GetLocalErrors(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  mfem::NewZienkiewiczZhuEstimator *arg1 = (mfem::NewZienkiewiczZhuEstimator *) 0 ;
+  mfem::LSZienkiewiczZhuEstimator *arg1 = (mfem::LSZienkiewiczZhuEstimator *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
@@ -4634,11 +4638,11 @@ SWIGINTERN PyObject *_wrap_NewZienkiewiczZhuEstimator_GetLocalErrors(PyObject *S
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NewZienkiewiczZhuEstimator, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__LSZienkiewiczZhuEstimator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NewZienkiewiczZhuEstimator_GetLocalErrors" "', argument " "1"" of type '" "mfem::NewZienkiewiczZhuEstimator *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LSZienkiewiczZhuEstimator_GetLocalErrors" "', argument " "1"" of type '" "mfem::LSZienkiewiczZhuEstimator *""'"); 
   }
-  arg1 = reinterpret_cast< mfem::NewZienkiewiczZhuEstimator * >(argp1);
+  arg1 = reinterpret_cast< mfem::LSZienkiewiczZhuEstimator * >(argp1);
   {
     try {
       result = (mfem::Vector *) &(arg1)->GetLocalErrors();
@@ -4665,20 +4669,20 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_NewZienkiewiczZhuEstimator_Reset(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_LSZienkiewiczZhuEstimator_Reset(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  mfem::NewZienkiewiczZhuEstimator *arg1 = (mfem::NewZienkiewiczZhuEstimator *) 0 ;
+  mfem::LSZienkiewiczZhuEstimator *arg1 = (mfem::LSZienkiewiczZhuEstimator *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NewZienkiewiczZhuEstimator, 0 |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__LSZienkiewiczZhuEstimator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NewZienkiewiczZhuEstimator_Reset" "', argument " "1"" of type '" "mfem::NewZienkiewiczZhuEstimator *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LSZienkiewiczZhuEstimator_Reset" "', argument " "1"" of type '" "mfem::LSZienkiewiczZhuEstimator *""'"); 
   }
-  arg1 = reinterpret_cast< mfem::NewZienkiewiczZhuEstimator * >(argp1);
+  arg1 = reinterpret_cast< mfem::LSZienkiewiczZhuEstimator * >(argp1);
   {
     try {
       (arg1)->Reset();
@@ -4705,20 +4709,100 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_NewZienkiewiczZhuEstimator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_LSZienkiewiczZhuEstimator_EnableSolutionBasedFit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  mfem::NewZienkiewiczZhuEstimator *arg1 = (mfem::NewZienkiewiczZhuEstimator *) 0 ;
+  mfem::LSZienkiewiczZhuEstimator *arg1 = (mfem::LSZienkiewiczZhuEstimator *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NewZienkiewiczZhuEstimator, SWIG_POINTER_DISOWN |  0 );
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__LSZienkiewiczZhuEstimator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_NewZienkiewiczZhuEstimator" "', argument " "1"" of type '" "mfem::NewZienkiewiczZhuEstimator *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LSZienkiewiczZhuEstimator_EnableSolutionBasedFit" "', argument " "1"" of type '" "mfem::LSZienkiewiczZhuEstimator *""'"); 
   }
-  arg1 = reinterpret_cast< mfem::NewZienkiewiczZhuEstimator * >(argp1);
+  arg1 = reinterpret_cast< mfem::LSZienkiewiczZhuEstimator * >(argp1);
+  {
+    try {
+      (arg1)->EnableSolutionBasedFit();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LSZienkiewiczZhuEstimator_EnablePeriodicityInADoublyPeriodicCartesianMesh(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::LSZienkiewiczZhuEstimator *arg1 = (mfem::LSZienkiewiczZhuEstimator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__LSZienkiewiczZhuEstimator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LSZienkiewiczZhuEstimator_EnablePeriodicityInADoublyPeriodicCartesianMesh" "', argument " "1"" of type '" "mfem::LSZienkiewiczZhuEstimator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::LSZienkiewiczZhuEstimator * >(argp1);
+  {
+    try {
+      (arg1)->EnablePeriodicityInADoublyPeriodicCartesianMesh();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_LSZienkiewiczZhuEstimator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::LSZienkiewiczZhuEstimator *arg1 = (mfem::LSZienkiewiczZhuEstimator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__LSZienkiewiczZhuEstimator, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_LSZienkiewiczZhuEstimator" "', argument " "1"" of type '" "mfem::LSZienkiewiczZhuEstimator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::LSZienkiewiczZhuEstimator * >(argp1);
   {
     try {
       delete arg1;
@@ -4745,14 +4829,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *NewZienkiewiczZhuEstimator_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *LSZienkiewiczZhuEstimator_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__NewZienkiewiczZhuEstimator, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__LSZienkiewiczZhuEstimator, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *NewZienkiewiczZhuEstimator_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *LSZienkiewiczZhuEstimator_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
 
@@ -5891,6 +5975,683 @@ SWIGINTERN PyObject *KellyErrorEstimator_swiginit(PyObject *SWIGUNUSEDPARM(self)
   return SWIG_Python_InitShadowInstance(args);
 }
 
+SWIGINTERN PyObject *_wrap_new_PRefDiffEstimator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::GridFunction *arg1 = 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"sol_",  (char *)"p_comp_",  NULL 
+  };
+  mfem::PRefDiffEstimator *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_PRefDiffEstimator", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__GridFunction,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_PRefDiffEstimator" "', argument " "1"" of type '" "mfem::GridFunction &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_PRefDiffEstimator" "', argument " "1"" of type '" "mfem::GridFunction &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      result = (mfem::PRefDiffEstimator *)new mfem::PRefDiffEstimator(*arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__PRefDiffEstimator, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_PRefDiffEstimator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::PRefDiffEstimator *arg1 = (mfem::PRefDiffEstimator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PRefDiffEstimator, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_PRefDiffEstimator" "', argument " "1"" of type '" "mfem::PRefDiffEstimator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::PRefDiffEstimator * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PRefDiffEstimator_GetLocalErrors(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::PRefDiffEstimator *arg1 = (mfem::PRefDiffEstimator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Vector *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PRefDiffEstimator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PRefDiffEstimator_GetLocalErrors" "', argument " "1"" of type '" "mfem::PRefDiffEstimator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::PRefDiffEstimator * >(argp1);
+  {
+    try {
+      result = (mfem::Vector *) &(arg1)->GetLocalErrors();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PRefDiffEstimator_Reset(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::PRefDiffEstimator *arg1 = (mfem::PRefDiffEstimator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PRefDiffEstimator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PRefDiffEstimator_Reset" "', argument " "1"" of type '" "mfem::PRefDiffEstimator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::PRefDiffEstimator * >(argp1);
+  {
+    try {
+      (arg1)->Reset();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PRefDiffEstimator_GetTotalError(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::PRefDiffEstimator *arg1 = (mfem::PRefDiffEstimator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PRefDiffEstimator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PRefDiffEstimator_GetTotalError" "', argument " "1"" of type '" "mfem::PRefDiffEstimator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::PRefDiffEstimator * >(argp1);
+  {
+    try {
+      result = (double)((mfem::PRefDiffEstimator const *)arg1)->GetTotalError();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *PRefDiffEstimator_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__PRefDiffEstimator, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *PRefDiffEstimator_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_PRefJumpEstimator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::GridFunction *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"sol_",  NULL 
+  };
+  mfem::PRefJumpEstimator *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_PRefJumpEstimator", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__GridFunction,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_PRefJumpEstimator" "', argument " "1"" of type '" "mfem::GridFunction &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_PRefJumpEstimator" "', argument " "1"" of type '" "mfem::GridFunction &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
+  {
+    try {
+      result = (mfem::PRefJumpEstimator *)new mfem::PRefJumpEstimator(*arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__PRefJumpEstimator, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_PRefJumpEstimator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::PRefJumpEstimator *arg1 = (mfem::PRefJumpEstimator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PRefJumpEstimator, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_PRefJumpEstimator" "', argument " "1"" of type '" "mfem::PRefJumpEstimator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::PRefJumpEstimator * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PRefJumpEstimator_GetLocalErrors(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::PRefJumpEstimator *arg1 = (mfem::PRefJumpEstimator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Vector *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PRefJumpEstimator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PRefJumpEstimator_GetLocalErrors" "', argument " "1"" of type '" "mfem::PRefJumpEstimator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::PRefJumpEstimator * >(argp1);
+  {
+    try {
+      result = (mfem::Vector *) &(arg1)->GetLocalErrors();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PRefJumpEstimator_Reset(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::PRefJumpEstimator *arg1 = (mfem::PRefJumpEstimator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PRefJumpEstimator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PRefJumpEstimator_Reset" "', argument " "1"" of type '" "mfem::PRefJumpEstimator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::PRefJumpEstimator * >(argp1);
+  {
+    try {
+      (arg1)->Reset();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PRefJumpEstimator_GetTotalError(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::PRefJumpEstimator *arg1 = (mfem::PRefJumpEstimator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PRefJumpEstimator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PRefJumpEstimator_GetTotalError" "', argument " "1"" of type '" "mfem::PRefJumpEstimator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::PRefJumpEstimator * >(argp1);
+  {
+    try {
+      result = (double)((mfem::PRefJumpEstimator const *)arg1)->GetTotalError();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *PRefJumpEstimator_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__PRefJumpEstimator, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *PRefJumpEstimator_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_ExactError(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::GridFunction *arg1 = 0 ;
+  mfem::FunctionCoefficient *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"sol_",  (char *)"exact_",  NULL 
+  };
+  mfem::ExactError *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_ExactError", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__GridFunction,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ExactError" "', argument " "1"" of type '" "mfem::GridFunction &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ExactError" "', argument " "1"" of type '" "mfem::GridFunction &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FunctionCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ExactError" "', argument " "2"" of type '" "mfem::FunctionCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ExactError" "', argument " "2"" of type '" "mfem::FunctionCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FunctionCoefficient * >(argp2);
+  {
+    try {
+      result = (mfem::ExactError *)new mfem::ExactError(*arg1,*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ExactError, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_ExactError(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ExactError *arg1 = (mfem::ExactError *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ExactError, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ExactError" "', argument " "1"" of type '" "mfem::ExactError *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ExactError * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ExactError_GetLocalErrors(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ExactError *arg1 = (mfem::ExactError *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Vector *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ExactError, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ExactError_GetLocalErrors" "', argument " "1"" of type '" "mfem::ExactError *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ExactError * >(argp1);
+  {
+    try {
+      result = (mfem::Vector *) &(arg1)->GetLocalErrors();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ExactError_Reset(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ExactError *arg1 = (mfem::ExactError *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ExactError, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ExactError_Reset" "', argument " "1"" of type '" "mfem::ExactError *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ExactError * >(argp1);
+  {
+    try {
+      (arg1)->Reset();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ExactError_GetTotalError(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ExactError *arg1 = (mfem::ExactError *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ExactError, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ExactError_GetTotalError" "', argument " "1"" of type '" "mfem::ExactError const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ExactError * >(argp1);
+  {
+    try {
+      result = (double)((mfem::ExactError const *)arg1)->GetTotalError();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *ExactError_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__ExactError, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *ExactError_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
@@ -5917,16 +6678,18 @@ static PyMethodDef SwigMethods[] = {
 	 { "new_ZienkiewiczZhuEstimator", (PyCFunction)(void(*)(void))_wrap_new_ZienkiewiczZhuEstimator, METH_VARARGS|METH_KEYWORDS, "new_ZienkiewiczZhuEstimator(BilinearFormIntegrator integ, GridFunction sol, FiniteElementSpace flux_fes, bool own_flux_fes=False) -> ZienkiewiczZhuEstimator"},
 	 { "ZienkiewiczZhuEstimator_swigregister", ZienkiewiczZhuEstimator_swigregister, METH_O, NULL},
 	 { "ZienkiewiczZhuEstimator_swiginit", ZienkiewiczZhuEstimator_swiginit, METH_VARARGS, NULL},
-	 { "new_NewZienkiewiczZhuEstimator", (PyCFunction)(void(*)(void))_wrap_new_NewZienkiewiczZhuEstimator, METH_VARARGS|METH_KEYWORDS, "new_NewZienkiewiczZhuEstimator(BilinearFormIntegrator integ, GridFunction sol) -> NewZienkiewiczZhuEstimator"},
-	 { "NewZienkiewiczZhuEstimator_SetWithCoeff", (PyCFunction)(void(*)(void))_wrap_NewZienkiewiczZhuEstimator_SetWithCoeff, METH_VARARGS|METH_KEYWORDS, "NewZienkiewiczZhuEstimator_SetWithCoeff(NewZienkiewiczZhuEstimator self, bool w_coeff=True)"},
-	 { "NewZienkiewiczZhuEstimator_DisableReconstructionAcrossSubdomains", _wrap_NewZienkiewiczZhuEstimator_DisableReconstructionAcrossSubdomains, METH_O, "NewZienkiewiczZhuEstimator_DisableReconstructionAcrossSubdomains(NewZienkiewiczZhuEstimator self)"},
-	 { "NewZienkiewiczZhuEstimator_SetTichonovRegularization", (PyCFunction)(void(*)(void))_wrap_NewZienkiewiczZhuEstimator_SetTichonovRegularization, METH_VARARGS|METH_KEYWORDS, "NewZienkiewiczZhuEstimator_SetTichonovRegularization(NewZienkiewiczZhuEstimator self, double tcoeff=1.0e-8)"},
-	 { "NewZienkiewiczZhuEstimator_GetTotalError", _wrap_NewZienkiewiczZhuEstimator_GetTotalError, METH_O, "NewZienkiewiczZhuEstimator_GetTotalError(NewZienkiewiczZhuEstimator self) -> double"},
-	 { "NewZienkiewiczZhuEstimator_GetLocalErrors", _wrap_NewZienkiewiczZhuEstimator_GetLocalErrors, METH_O, "NewZienkiewiczZhuEstimator_GetLocalErrors(NewZienkiewiczZhuEstimator self) -> Vector"},
-	 { "NewZienkiewiczZhuEstimator_Reset", _wrap_NewZienkiewiczZhuEstimator_Reset, METH_O, "NewZienkiewiczZhuEstimator_Reset(NewZienkiewiczZhuEstimator self)"},
-	 { "delete_NewZienkiewiczZhuEstimator", _wrap_delete_NewZienkiewiczZhuEstimator, METH_O, "delete_NewZienkiewiczZhuEstimator(NewZienkiewiczZhuEstimator self)"},
-	 { "NewZienkiewiczZhuEstimator_swigregister", NewZienkiewiczZhuEstimator_swigregister, METH_O, NULL},
-	 { "NewZienkiewiczZhuEstimator_swiginit", NewZienkiewiczZhuEstimator_swiginit, METH_VARARGS, NULL},
+	 { "new_LSZienkiewiczZhuEstimator", (PyCFunction)(void(*)(void))_wrap_new_LSZienkiewiczZhuEstimator, METH_VARARGS|METH_KEYWORDS, "new_LSZienkiewiczZhuEstimator(BilinearFormIntegrator integ, GridFunction sol) -> LSZienkiewiczZhuEstimator"},
+	 { "LSZienkiewiczZhuEstimator_SetWithCoeff", (PyCFunction)(void(*)(void))_wrap_LSZienkiewiczZhuEstimator_SetWithCoeff, METH_VARARGS|METH_KEYWORDS, "LSZienkiewiczZhuEstimator_SetWithCoeff(LSZienkiewiczZhuEstimator self, bool w_coeff=True)"},
+	 { "LSZienkiewiczZhuEstimator_DisableReconstructionAcrossSubdomains", _wrap_LSZienkiewiczZhuEstimator_DisableReconstructionAcrossSubdomains, METH_O, "LSZienkiewiczZhuEstimator_DisableReconstructionAcrossSubdomains(LSZienkiewiczZhuEstimator self)"},
+	 { "LSZienkiewiczZhuEstimator_SetTichonovRegularization", (PyCFunction)(void(*)(void))_wrap_LSZienkiewiczZhuEstimator_SetTichonovRegularization, METH_VARARGS|METH_KEYWORDS, "LSZienkiewiczZhuEstimator_SetTichonovRegularization(LSZienkiewiczZhuEstimator self, double tcoeff=1.0e-8)"},
+	 { "LSZienkiewiczZhuEstimator_GetTotalError", _wrap_LSZienkiewiczZhuEstimator_GetTotalError, METH_O, "LSZienkiewiczZhuEstimator_GetTotalError(LSZienkiewiczZhuEstimator self) -> double"},
+	 { "LSZienkiewiczZhuEstimator_GetLocalErrors", _wrap_LSZienkiewiczZhuEstimator_GetLocalErrors, METH_O, "LSZienkiewiczZhuEstimator_GetLocalErrors(LSZienkiewiczZhuEstimator self) -> Vector"},
+	 { "LSZienkiewiczZhuEstimator_Reset", _wrap_LSZienkiewiczZhuEstimator_Reset, METH_O, "LSZienkiewiczZhuEstimator_Reset(LSZienkiewiczZhuEstimator self)"},
+	 { "LSZienkiewiczZhuEstimator_EnableSolutionBasedFit", _wrap_LSZienkiewiczZhuEstimator_EnableSolutionBasedFit, METH_O, "LSZienkiewiczZhuEstimator_EnableSolutionBasedFit(LSZienkiewiczZhuEstimator self)"},
+	 { "LSZienkiewiczZhuEstimator_EnablePeriodicityInADoublyPeriodicCartesianMesh", _wrap_LSZienkiewiczZhuEstimator_EnablePeriodicityInADoublyPeriodicCartesianMesh, METH_O, "LSZienkiewiczZhuEstimator_EnablePeriodicityInADoublyPeriodicCartesianMesh(LSZienkiewiczZhuEstimator self)"},
+	 { "delete_LSZienkiewiczZhuEstimator", _wrap_delete_LSZienkiewiczZhuEstimator, METH_O, "delete_LSZienkiewiczZhuEstimator(LSZienkiewiczZhuEstimator self)"},
+	 { "LSZienkiewiczZhuEstimator_swigregister", LSZienkiewiczZhuEstimator_swigregister, METH_O, NULL},
+	 { "LSZienkiewiczZhuEstimator_swiginit", LSZienkiewiczZhuEstimator_swiginit, METH_VARARGS, NULL},
 	 { "new_LpErrorEstimator", _wrap_new_LpErrorEstimator, METH_VARARGS, "\n"
 		"LpErrorEstimator(int p, GridFunction sol)\n"
 		"LpErrorEstimator(int p, Coefficient coef, GridFunction sol)\n"
@@ -5955,6 +6718,27 @@ static PyMethodDef SwigMethods[] = {
 	 { "KellyErrorEstimator_ResetCoefficientFunctions", _wrap_KellyErrorEstimator_ResetCoefficientFunctions, METH_O, "KellyErrorEstimator_ResetCoefficientFunctions(KellyErrorEstimator self)"},
 	 { "KellyErrorEstimator_swigregister", KellyErrorEstimator_swigregister, METH_O, NULL},
 	 { "KellyErrorEstimator_swiginit", KellyErrorEstimator_swiginit, METH_VARARGS, NULL},
+	 { "new_PRefDiffEstimator", (PyCFunction)(void(*)(void))_wrap_new_PRefDiffEstimator, METH_VARARGS|METH_KEYWORDS, "new_PRefDiffEstimator(GridFunction sol_, int p_comp_) -> PRefDiffEstimator"},
+	 { "delete_PRefDiffEstimator", _wrap_delete_PRefDiffEstimator, METH_O, "delete_PRefDiffEstimator(PRefDiffEstimator self)"},
+	 { "PRefDiffEstimator_GetLocalErrors", _wrap_PRefDiffEstimator_GetLocalErrors, METH_O, "PRefDiffEstimator_GetLocalErrors(PRefDiffEstimator self) -> Vector"},
+	 { "PRefDiffEstimator_Reset", _wrap_PRefDiffEstimator_Reset, METH_O, "PRefDiffEstimator_Reset(PRefDiffEstimator self)"},
+	 { "PRefDiffEstimator_GetTotalError", _wrap_PRefDiffEstimator_GetTotalError, METH_O, "PRefDiffEstimator_GetTotalError(PRefDiffEstimator self) -> double"},
+	 { "PRefDiffEstimator_swigregister", PRefDiffEstimator_swigregister, METH_O, NULL},
+	 { "PRefDiffEstimator_swiginit", PRefDiffEstimator_swiginit, METH_VARARGS, NULL},
+	 { "new_PRefJumpEstimator", (PyCFunction)(void(*)(void))_wrap_new_PRefJumpEstimator, METH_VARARGS|METH_KEYWORDS, "new_PRefJumpEstimator(GridFunction sol_) -> PRefJumpEstimator"},
+	 { "delete_PRefJumpEstimator", _wrap_delete_PRefJumpEstimator, METH_O, "delete_PRefJumpEstimator(PRefJumpEstimator self)"},
+	 { "PRefJumpEstimator_GetLocalErrors", _wrap_PRefJumpEstimator_GetLocalErrors, METH_O, "PRefJumpEstimator_GetLocalErrors(PRefJumpEstimator self) -> Vector"},
+	 { "PRefJumpEstimator_Reset", _wrap_PRefJumpEstimator_Reset, METH_O, "PRefJumpEstimator_Reset(PRefJumpEstimator self)"},
+	 { "PRefJumpEstimator_GetTotalError", _wrap_PRefJumpEstimator_GetTotalError, METH_O, "PRefJumpEstimator_GetTotalError(PRefJumpEstimator self) -> double"},
+	 { "PRefJumpEstimator_swigregister", PRefJumpEstimator_swigregister, METH_O, NULL},
+	 { "PRefJumpEstimator_swiginit", PRefJumpEstimator_swiginit, METH_VARARGS, NULL},
+	 { "new_ExactError", (PyCFunction)(void(*)(void))_wrap_new_ExactError, METH_VARARGS|METH_KEYWORDS, "new_ExactError(GridFunction sol_, FunctionCoefficient exact_) -> ExactError"},
+	 { "delete_ExactError", _wrap_delete_ExactError, METH_O, "delete_ExactError(ExactError self)"},
+	 { "ExactError_GetLocalErrors", _wrap_ExactError_GetLocalErrors, METH_O, "ExactError_GetLocalErrors(ExactError self) -> Vector"},
+	 { "ExactError_Reset", _wrap_ExactError_Reset, METH_O, "ExactError_Reset(ExactError self)"},
+	 { "ExactError_GetTotalError", _wrap_ExactError_GetTotalError, METH_O, "ExactError_GetTotalError(ExactError self) -> double"},
+	 { "ExactError_swigregister", ExactError_swigregister, METH_O, NULL},
+	 { "ExactError_swiginit", ExactError_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -5984,16 +6768,18 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "new_ZienkiewiczZhuEstimator", (PyCFunction)(void(*)(void))_wrap_new_ZienkiewiczZhuEstimator, METH_VARARGS|METH_KEYWORDS, "new_ZienkiewiczZhuEstimator(BilinearFormIntegrator integ, GridFunction sol, FiniteElementSpace flux_fes, bool own_flux_fes=False) -> ZienkiewiczZhuEstimator"},
 	 { "ZienkiewiczZhuEstimator_swigregister", ZienkiewiczZhuEstimator_swigregister, METH_O, NULL},
 	 { "ZienkiewiczZhuEstimator_swiginit", ZienkiewiczZhuEstimator_swiginit, METH_VARARGS, NULL},
-	 { "new_NewZienkiewiczZhuEstimator", (PyCFunction)(void(*)(void))_wrap_new_NewZienkiewiczZhuEstimator, METH_VARARGS|METH_KEYWORDS, "new_NewZienkiewiczZhuEstimator(BilinearFormIntegrator integ, GridFunction sol) -> NewZienkiewiczZhuEstimator"},
-	 { "NewZienkiewiczZhuEstimator_SetWithCoeff", (PyCFunction)(void(*)(void))_wrap_NewZienkiewiczZhuEstimator_SetWithCoeff, METH_VARARGS|METH_KEYWORDS, "SetWithCoeff(NewZienkiewiczZhuEstimator self, bool w_coeff=True)"},
-	 { "NewZienkiewiczZhuEstimator_DisableReconstructionAcrossSubdomains", _wrap_NewZienkiewiczZhuEstimator_DisableReconstructionAcrossSubdomains, METH_O, "DisableReconstructionAcrossSubdomains(NewZienkiewiczZhuEstimator self)"},
-	 { "NewZienkiewiczZhuEstimator_SetTichonovRegularization", (PyCFunction)(void(*)(void))_wrap_NewZienkiewiczZhuEstimator_SetTichonovRegularization, METH_VARARGS|METH_KEYWORDS, "SetTichonovRegularization(NewZienkiewiczZhuEstimator self, double tcoeff=1.0e-8)"},
-	 { "NewZienkiewiczZhuEstimator_GetTotalError", _wrap_NewZienkiewiczZhuEstimator_GetTotalError, METH_O, "GetTotalError(NewZienkiewiczZhuEstimator self) -> double"},
-	 { "NewZienkiewiczZhuEstimator_GetLocalErrors", _wrap_NewZienkiewiczZhuEstimator_GetLocalErrors, METH_O, "GetLocalErrors(NewZienkiewiczZhuEstimator self) -> Vector"},
-	 { "NewZienkiewiczZhuEstimator_Reset", _wrap_NewZienkiewiczZhuEstimator_Reset, METH_O, "Reset(NewZienkiewiczZhuEstimator self)"},
-	 { "delete_NewZienkiewiczZhuEstimator", _wrap_delete_NewZienkiewiczZhuEstimator, METH_O, "delete_NewZienkiewiczZhuEstimator(NewZienkiewiczZhuEstimator self)"},
-	 { "NewZienkiewiczZhuEstimator_swigregister", NewZienkiewiczZhuEstimator_swigregister, METH_O, NULL},
-	 { "NewZienkiewiczZhuEstimator_swiginit", NewZienkiewiczZhuEstimator_swiginit, METH_VARARGS, NULL},
+	 { "new_LSZienkiewiczZhuEstimator", (PyCFunction)(void(*)(void))_wrap_new_LSZienkiewiczZhuEstimator, METH_VARARGS|METH_KEYWORDS, "new_LSZienkiewiczZhuEstimator(BilinearFormIntegrator integ, GridFunction sol) -> LSZienkiewiczZhuEstimator"},
+	 { "LSZienkiewiczZhuEstimator_SetWithCoeff", (PyCFunction)(void(*)(void))_wrap_LSZienkiewiczZhuEstimator_SetWithCoeff, METH_VARARGS|METH_KEYWORDS, "SetWithCoeff(LSZienkiewiczZhuEstimator self, bool w_coeff=True)"},
+	 { "LSZienkiewiczZhuEstimator_DisableReconstructionAcrossSubdomains", _wrap_LSZienkiewiczZhuEstimator_DisableReconstructionAcrossSubdomains, METH_O, "DisableReconstructionAcrossSubdomains(LSZienkiewiczZhuEstimator self)"},
+	 { "LSZienkiewiczZhuEstimator_SetTichonovRegularization", (PyCFunction)(void(*)(void))_wrap_LSZienkiewiczZhuEstimator_SetTichonovRegularization, METH_VARARGS|METH_KEYWORDS, "SetTichonovRegularization(LSZienkiewiczZhuEstimator self, double tcoeff=1.0e-8)"},
+	 { "LSZienkiewiczZhuEstimator_GetTotalError", _wrap_LSZienkiewiczZhuEstimator_GetTotalError, METH_O, "GetTotalError(LSZienkiewiczZhuEstimator self) -> double"},
+	 { "LSZienkiewiczZhuEstimator_GetLocalErrors", _wrap_LSZienkiewiczZhuEstimator_GetLocalErrors, METH_O, "GetLocalErrors(LSZienkiewiczZhuEstimator self) -> Vector"},
+	 { "LSZienkiewiczZhuEstimator_Reset", _wrap_LSZienkiewiczZhuEstimator_Reset, METH_O, "Reset(LSZienkiewiczZhuEstimator self)"},
+	 { "LSZienkiewiczZhuEstimator_EnableSolutionBasedFit", _wrap_LSZienkiewiczZhuEstimator_EnableSolutionBasedFit, METH_O, "EnableSolutionBasedFit(LSZienkiewiczZhuEstimator self)"},
+	 { "LSZienkiewiczZhuEstimator_EnablePeriodicityInADoublyPeriodicCartesianMesh", _wrap_LSZienkiewiczZhuEstimator_EnablePeriodicityInADoublyPeriodicCartesianMesh, METH_O, "EnablePeriodicityInADoublyPeriodicCartesianMesh(LSZienkiewiczZhuEstimator self)"},
+	 { "delete_LSZienkiewiczZhuEstimator", _wrap_delete_LSZienkiewiczZhuEstimator, METH_O, "delete_LSZienkiewiczZhuEstimator(LSZienkiewiczZhuEstimator self)"},
+	 { "LSZienkiewiczZhuEstimator_swigregister", LSZienkiewiczZhuEstimator_swigregister, METH_O, NULL},
+	 { "LSZienkiewiczZhuEstimator_swiginit", LSZienkiewiczZhuEstimator_swiginit, METH_VARARGS, NULL},
 	 { "new_LpErrorEstimator", _wrap_new_LpErrorEstimator, METH_VARARGS, "\n"
 		"LpErrorEstimator(int p, GridFunction sol)\n"
 		"LpErrorEstimator(int p, Coefficient coef, GridFunction sol)\n"
@@ -6022,6 +6808,27 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "KellyErrorEstimator_ResetCoefficientFunctions", _wrap_KellyErrorEstimator_ResetCoefficientFunctions, METH_O, "ResetCoefficientFunctions(KellyErrorEstimator self)"},
 	 { "KellyErrorEstimator_swigregister", KellyErrorEstimator_swigregister, METH_O, NULL},
 	 { "KellyErrorEstimator_swiginit", KellyErrorEstimator_swiginit, METH_VARARGS, NULL},
+	 { "new_PRefDiffEstimator", (PyCFunction)(void(*)(void))_wrap_new_PRefDiffEstimator, METH_VARARGS|METH_KEYWORDS, "new_PRefDiffEstimator(GridFunction sol_, int p_comp_) -> PRefDiffEstimator"},
+	 { "delete_PRefDiffEstimator", _wrap_delete_PRefDiffEstimator, METH_O, "delete_PRefDiffEstimator(PRefDiffEstimator self)"},
+	 { "PRefDiffEstimator_GetLocalErrors", _wrap_PRefDiffEstimator_GetLocalErrors, METH_O, "GetLocalErrors(PRefDiffEstimator self) -> Vector"},
+	 { "PRefDiffEstimator_Reset", _wrap_PRefDiffEstimator_Reset, METH_O, "Reset(PRefDiffEstimator self)"},
+	 { "PRefDiffEstimator_GetTotalError", _wrap_PRefDiffEstimator_GetTotalError, METH_O, "GetTotalError(PRefDiffEstimator self) -> double"},
+	 { "PRefDiffEstimator_swigregister", PRefDiffEstimator_swigregister, METH_O, NULL},
+	 { "PRefDiffEstimator_swiginit", PRefDiffEstimator_swiginit, METH_VARARGS, NULL},
+	 { "new_PRefJumpEstimator", (PyCFunction)(void(*)(void))_wrap_new_PRefJumpEstimator, METH_VARARGS|METH_KEYWORDS, "new_PRefJumpEstimator(GridFunction sol_) -> PRefJumpEstimator"},
+	 { "delete_PRefJumpEstimator", _wrap_delete_PRefJumpEstimator, METH_O, "delete_PRefJumpEstimator(PRefJumpEstimator self)"},
+	 { "PRefJumpEstimator_GetLocalErrors", _wrap_PRefJumpEstimator_GetLocalErrors, METH_O, "GetLocalErrors(PRefJumpEstimator self) -> Vector"},
+	 { "PRefJumpEstimator_Reset", _wrap_PRefJumpEstimator_Reset, METH_O, "Reset(PRefJumpEstimator self)"},
+	 { "PRefJumpEstimator_GetTotalError", _wrap_PRefJumpEstimator_GetTotalError, METH_O, "GetTotalError(PRefJumpEstimator self) -> double"},
+	 { "PRefJumpEstimator_swigregister", PRefJumpEstimator_swigregister, METH_O, NULL},
+	 { "PRefJumpEstimator_swiginit", PRefJumpEstimator_swiginit, METH_VARARGS, NULL},
+	 { "new_ExactError", (PyCFunction)(void(*)(void))_wrap_new_ExactError, METH_VARARGS|METH_KEYWORDS, "new_ExactError(GridFunction sol_, FunctionCoefficient exact_) -> ExactError"},
+	 { "delete_ExactError", _wrap_delete_ExactError, METH_O, "delete_ExactError(ExactError self)"},
+	 { "ExactError_GetLocalErrors", _wrap_ExactError_GetLocalErrors, METH_O, "GetLocalErrors(ExactError self) -> Vector"},
+	 { "ExactError_Reset", _wrap_ExactError_Reset, METH_O, "Reset(ExactError self)"},
+	 { "ExactError_GetTotalError", _wrap_ExactError_GetTotalError, METH_O, "GetTotalError(ExactError self) -> double"},
+	 { "ExactError_swigregister", ExactError_swigregister, METH_O, NULL},
+	 { "ExactError_swiginit", ExactError_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -6037,8 +6844,8 @@ static void *_p_mfem__AnisotropicErrorEstimatorTo_p_mfem__AbstractErrorEstimator
 static void *_p_mfem__ZienkiewiczZhuEstimatorTo_p_mfem__AbstractErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::AbstractErrorEstimator *) (mfem::ErrorEstimator *)(mfem::AnisotropicErrorEstimator *) ((mfem::ZienkiewiczZhuEstimator *) x));
 }
-static void *_p_mfem__NewZienkiewiczZhuEstimatorTo_p_mfem__AbstractErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::AbstractErrorEstimator *) (mfem::ErrorEstimator *) ((mfem::NewZienkiewiczZhuEstimator *) x));
+static void *_p_mfem__LSZienkiewiczZhuEstimatorTo_p_mfem__AbstractErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::AbstractErrorEstimator *) (mfem::ErrorEstimator *) ((mfem::LSZienkiewiczZhuEstimator *) x));
 }
 static void *_p_mfem__LpErrorEstimatorTo_p_mfem__AbstractErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::AbstractErrorEstimator *) (mfem::ErrorEstimator *) ((mfem::LpErrorEstimator *) x));
@@ -6046,20 +6853,38 @@ static void *_p_mfem__LpErrorEstimatorTo_p_mfem__AbstractErrorEstimator(void *x,
 static void *_p_mfem__KellyErrorEstimatorTo_p_mfem__AbstractErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::AbstractErrorEstimator *) (mfem::ErrorEstimator *) ((mfem::KellyErrorEstimator *) x));
 }
+static void *_p_mfem__PRefDiffEstimatorTo_p_mfem__AbstractErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::AbstractErrorEstimator *) (mfem::ErrorEstimator *) ((mfem::PRefDiffEstimator *) x));
+}
+static void *_p_mfem__PRefJumpEstimatorTo_p_mfem__AbstractErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::AbstractErrorEstimator *) (mfem::ErrorEstimator *) ((mfem::PRefJumpEstimator *) x));
+}
+static void *_p_mfem__ExactErrorTo_p_mfem__AbstractErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::AbstractErrorEstimator *) (mfem::ErrorEstimator *) ((mfem::ExactError *) x));
+}
 static void *_p_mfem__AnisotropicErrorEstimatorTo_p_mfem__ErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::ErrorEstimator *)  ((mfem::AnisotropicErrorEstimator *) x));
 }
 static void *_p_mfem__ZienkiewiczZhuEstimatorTo_p_mfem__ErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::ErrorEstimator *) (mfem::AnisotropicErrorEstimator *) ((mfem::ZienkiewiczZhuEstimator *) x));
 }
-static void *_p_mfem__NewZienkiewiczZhuEstimatorTo_p_mfem__ErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ErrorEstimator *)  ((mfem::NewZienkiewiczZhuEstimator *) x));
+static void *_p_mfem__LSZienkiewiczZhuEstimatorTo_p_mfem__ErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ErrorEstimator *)  ((mfem::LSZienkiewiczZhuEstimator *) x));
 }
 static void *_p_mfem__LpErrorEstimatorTo_p_mfem__ErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::ErrorEstimator *)  ((mfem::LpErrorEstimator *) x));
 }
 static void *_p_mfem__KellyErrorEstimatorTo_p_mfem__ErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::ErrorEstimator *)  ((mfem::KellyErrorEstimator *) x));
+}
+static void *_p_mfem__PRefDiffEstimatorTo_p_mfem__ErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ErrorEstimator *)  ((mfem::PRefDiffEstimator *) x));
+}
+static void *_p_mfem__PRefJumpEstimatorTo_p_mfem__ErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ErrorEstimator *)  ((mfem::PRefJumpEstimator *) x));
+}
+static void *_p_mfem__ExactErrorTo_p_mfem__ErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ErrorEstimator *)  ((mfem::ExactError *) x));
 }
 static void *_p_mfem__ZienkiewiczZhuEstimatorTo_p_mfem__AnisotropicErrorEstimator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::AnisotropicErrorEstimator *)  ((mfem::ZienkiewiczZhuEstimator *) x));
@@ -6409,6 +7234,9 @@ static void *_p_mfem__QuadratureFunctionCoefficientTo_p_mfem__Coefficient(void *
 static void *_p_mfem__ExtrudeCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Coefficient *)  ((mfem::ExtrudeCoefficient *) x));
 }
+static void *_p_mfem__PyCoefficientBaseTo_p_mfem__FunctionCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FunctionCoefficient *)  ((mfem::PyCoefficientBase *) x));
+}
 static void *_p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase *) x));
 }
@@ -6728,7 +7556,6 @@ static swig_type_info _swigt__p_mfem__RestrictedCoefficient = {"_p_mfem__Restric
 static swig_type_info _swigt__p_mfem__DeltaCoefficient = {"_p_mfem__DeltaCoefficient", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__TransformedCoefficient = {"_p_mfem__TransformedCoefficient", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__GridFunctionCoefficient = {"_p_mfem__GridFunctionCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__FunctionCoefficient = {"_p_mfem__FunctionCoefficient", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__PWConstCoefficient = {"_p_mfem__PWConstCoefficient", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__ConstantCoefficient = {"_p_mfem__ConstantCoefficient", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__DeterminantCoefficient = {"_p_mfem__DeterminantCoefficient", 0, 0, 0, 0, 0};
@@ -6737,15 +7564,17 @@ static swig_type_info _swigt__p_mfem__ExtrudeCoefficient = {"_p_mfem__ExtrudeCoe
 static swig_type_info _swigt__p_mfem__ConvectionIntegrator = {"_p_mfem__ConvectionIntegrator", "mfem::ConvectionIntegrator *|mfem::NonconservativeConvectionIntegrator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DGTraceIntegrator = {"_p_mfem__DGTraceIntegrator", "mfem::DGTraceIntegrator *|mfem::ConservativeDGTraceIntegrator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ErrorEstimator = {"_p_mfem__ErrorEstimator", "mfem::ErrorEstimator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ExactError = {"_p_mfem__ExactError", "mfem::ExactError *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__FiniteElementSpace = {"_p_mfem__FiniteElementSpace", "mfem::FiniteElementSpace *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__FunctionCoefficient = {"_p_mfem__FunctionCoefficient", "mfem::FunctionCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationPoint = {"_p_mfem__IntegrationPoint", "mfem::IntegrationPoint *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__KellyErrorEstimator = {"_p_mfem__KellyErrorEstimator", "mfem::KellyErrorEstimator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__L2_FECollection = {"_p_mfem__L2_FECollection", "mfem::L2_FECollection *|mfem::DG_FECollection *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__LSZienkiewiczZhuEstimator = {"_p_mfem__LSZienkiewiczZhuEstimator", "mfem::LSZienkiewiczZhuEstimator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__LpErrorEstimator = {"_p_mfem__LpErrorEstimator", "mfem::LpErrorEstimator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__MatrixVectorProductCoefficient = {"_p_mfem__MatrixVectorProductCoefficient", "mfem::MatrixVectorProductCoefficient *|mfem::MatVecCoefficient *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__NewZienkiewiczZhuEstimator = {"_p_mfem__NewZienkiewiczZhuEstimator", "mfem::NewZienkiewiczZhuEstimator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Operator = {"_p_mfem__Operator", "mfem::Operator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__PyTimeDependentOperatorBase = {"_p_mfem__PyTimeDependentOperatorBase", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__PyOperatorBase = {"_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
@@ -6776,6 +7605,8 @@ static swig_type_info _swigt__p_mfem__TimeDependentAdjointOperator = {"_p_mfem__
 static swig_type_info _swigt__p_mfem__TimeDependentOperator = {"_p_mfem__TimeDependentOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__DiscreteLinearOperator = {"_p_mfem__DiscreteLinearOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__OperatorHandle = {"_p_mfem__OperatorHandle", "mfem::OperatorPtr *|mfem::OperatorHandle *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__PRefDiffEstimator = {"_p_mfem__PRefDiffEstimator", "mfem::PRefDiffEstimator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__PRefJumpEstimator = {"_p_mfem__PRefJumpEstimator", "mfem::PRefJumpEstimator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Refinement = {"_p_mfem__Refinement", "mfem::Refinement *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", "mfem::Solver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
@@ -6893,6 +7724,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__ElasticityIntegrator,
   &_swigt__p_mfem__ElementRestriction,
   &_swigt__p_mfem__ErrorEstimator,
+  &_swigt__p_mfem__ExactError,
   &_swigt__p_mfem__ExtrudeCoefficient,
   &_swigt__p_mfem__FaceRestriction,
   &_swigt__p_mfem__FiniteElementSpace,
@@ -6914,6 +7746,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__L2ElementRestriction,
   &_swigt__p_mfem__L2FaceRestriction,
   &_swigt__p_mfem__L2_FECollection,
+  &_swigt__p_mfem__LSZienkiewiczZhuEstimator,
   &_swigt__p_mfem__LinearForm,
   &_swigt__p_mfem__LpErrorEstimator,
   &_swigt__p_mfem__LumpedIntegrator,
@@ -6969,6 +7802,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__NormalizedVectorCoefficient,
   &_swigt__p_mfem__Operator,
   &_swigt__p_mfem__OperatorHandle,
+  &_swigt__p_mfem__PRefDiffEstimator,
+  &_swigt__p_mfem__PRefJumpEstimator,
   &_swigt__p_mfem__PWConstCoefficient,
   &_swigt__p_mfem__PowerCoefficient,
   &_swigt__p_mfem__ProductCoefficient,
@@ -7086,7 +7921,7 @@ static swig_cast_info _swigc__p_difference_type[] = {  {&_swigt__p_difference_ty
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__AbstractErrorEstimator[] = {  {&_swigt__p_mfem__AbstractErrorEstimator, 0, 0, 0},  {&_swigt__p_mfem__ErrorEstimator, _p_mfem__ErrorEstimatorTo_p_mfem__AbstractErrorEstimator, 0, 0},  {&_swigt__p_mfem__AnisotropicErrorEstimator, _p_mfem__AnisotropicErrorEstimatorTo_p_mfem__AbstractErrorEstimator, 0, 0},  {&_swigt__p_mfem__ZienkiewiczZhuEstimator, _p_mfem__ZienkiewiczZhuEstimatorTo_p_mfem__AbstractErrorEstimator, 0, 0},  {&_swigt__p_mfem__NewZienkiewiczZhuEstimator, _p_mfem__NewZienkiewiczZhuEstimatorTo_p_mfem__AbstractErrorEstimator, 0, 0},  {&_swigt__p_mfem__LpErrorEstimator, _p_mfem__LpErrorEstimatorTo_p_mfem__AbstractErrorEstimator, 0, 0},  {&_swigt__p_mfem__KellyErrorEstimator, _p_mfem__KellyErrorEstimatorTo_p_mfem__AbstractErrorEstimator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__AbstractErrorEstimator[] = {  {&_swigt__p_mfem__AbstractErrorEstimator, 0, 0, 0},  {&_swigt__p_mfem__ErrorEstimator, _p_mfem__ErrorEstimatorTo_p_mfem__AbstractErrorEstimator, 0, 0},  {&_swigt__p_mfem__AnisotropicErrorEstimator, _p_mfem__AnisotropicErrorEstimatorTo_p_mfem__AbstractErrorEstimator, 0, 0},  {&_swigt__p_mfem__ZienkiewiczZhuEstimator, _p_mfem__ZienkiewiczZhuEstimatorTo_p_mfem__AbstractErrorEstimator, 0, 0},  {&_swigt__p_mfem__LSZienkiewiczZhuEstimator, _p_mfem__LSZienkiewiczZhuEstimatorTo_p_mfem__AbstractErrorEstimator, 0, 0},  {&_swigt__p_mfem__LpErrorEstimator, _p_mfem__LpErrorEstimatorTo_p_mfem__AbstractErrorEstimator, 0, 0},  {&_swigt__p_mfem__KellyErrorEstimator, _p_mfem__KellyErrorEstimatorTo_p_mfem__AbstractErrorEstimator, 0, 0},  {&_swigt__p_mfem__PRefDiffEstimator, _p_mfem__PRefDiffEstimatorTo_p_mfem__AbstractErrorEstimator, 0, 0},  {&_swigt__p_mfem__PRefJumpEstimator, _p_mfem__PRefJumpEstimatorTo_p_mfem__AbstractErrorEstimator, 0, 0},  {&_swigt__p_mfem__ExactError, _p_mfem__ExactErrorTo_p_mfem__AbstractErrorEstimator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__AnisotropicErrorEstimator[] = {  {&_swigt__p_mfem__AnisotropicErrorEstimator, 0, 0, 0},  {&_swigt__p_mfem__ZienkiewiczZhuEstimator, _p_mfem__ZienkiewiczZhuEstimatorTo_p_mfem__AnisotropicErrorEstimator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__BilinearForm[] = {  {&_swigt__p_mfem__BilinearForm, 0, 0, 0},{0, 0, 0, 0}};
@@ -7182,7 +8017,6 @@ static swig_cast_info _swigc__p_mfem__RestrictedCoefficient[] = {{&_swigt__p_mfe
 static swig_cast_info _swigc__p_mfem__DeltaCoefficient[] = {{&_swigt__p_mfem__DeltaCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TransformedCoefficient[] = {{&_swigt__p_mfem__TransformedCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunctionCoefficient[] = {{&_swigt__p_mfem__GridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__FunctionCoefficient[] = {{&_swigt__p_mfem__FunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PWConstCoefficient[] = {{&_swigt__p_mfem__PWConstCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ConstantCoefficient[] = {{&_swigt__p_mfem__ConstantCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DeterminantCoefficient[] = {{&_swigt__p_mfem__DeterminantCoefficient, 0, 0, 0},{0, 0, 0, 0}};
@@ -7191,16 +8025,18 @@ static swig_cast_info _swigc__p_mfem__ExtrudeCoefficient[] = {{&_swigt__p_mfem__
 static swig_cast_info _swigc__p_mfem__Coefficient[] = {  {&_swigt__p_mfem__PyCoefficientBase, _p_mfem__PyCoefficientBaseTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__VectorRotProductCoefficient, _p_mfem__VectorRotProductCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__InnerProductCoefficient, _p_mfem__InnerProductCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__PowerCoefficient, _p_mfem__PowerCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__RatioCoefficient, _p_mfem__RatioCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__ProductCoefficient, _p_mfem__ProductCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__SumCoefficient, _p_mfem__SumCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__DivergenceGridFunctionCoefficient, _p_mfem__DivergenceGridFunctionCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__RestrictedCoefficient, _p_mfem__RestrictedCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__DeltaCoefficient, _p_mfem__DeltaCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__TransformedCoefficient, _p_mfem__TransformedCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__GridFunctionCoefficient, _p_mfem__GridFunctionCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__FunctionCoefficient, _p_mfem__FunctionCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__Coefficient, 0, 0, 0},  {&_swigt__p_mfem__PWConstCoefficient, _p_mfem__PWConstCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__ConstantCoefficient, _p_mfem__ConstantCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__DeterminantCoefficient, _p_mfem__DeterminantCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__QuadratureFunctionCoefficient, _p_mfem__QuadratureFunctionCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__ExtrudeCoefficient, _p_mfem__ExtrudeCoefficientTo_p_mfem__Coefficient, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ConvectionIntegrator[] = {  {&_swigt__p_mfem__ConvectionIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DGTraceIntegrator[] = {  {&_swigt__p_mfem__DGTraceIntegrator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ErrorEstimator[] = {  {&_swigt__p_mfem__ErrorEstimator, 0, 0, 0},  {&_swigt__p_mfem__AnisotropicErrorEstimator, _p_mfem__AnisotropicErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__ZienkiewiczZhuEstimator, _p_mfem__ZienkiewiczZhuEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__NewZienkiewiczZhuEstimator, _p_mfem__NewZienkiewiczZhuEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__LpErrorEstimator, _p_mfem__LpErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__KellyErrorEstimator, _p_mfem__KellyErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ErrorEstimator[] = {  {&_swigt__p_mfem__ErrorEstimator, 0, 0, 0},  {&_swigt__p_mfem__AnisotropicErrorEstimator, _p_mfem__AnisotropicErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__ZienkiewiczZhuEstimator, _p_mfem__ZienkiewiczZhuEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__LSZienkiewiczZhuEstimator, _p_mfem__LSZienkiewiczZhuEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__LpErrorEstimator, _p_mfem__LpErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__KellyErrorEstimator, _p_mfem__KellyErrorEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__PRefDiffEstimator, _p_mfem__PRefDiffEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__PRefJumpEstimator, _p_mfem__PRefJumpEstimatorTo_p_mfem__ErrorEstimator, 0, 0},  {&_swigt__p_mfem__ExactError, _p_mfem__ExactErrorTo_p_mfem__ErrorEstimator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ExactError[] = {  {&_swigt__p_mfem__ExactError, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__FiniteElementSpace[] = {  {&_swigt__p_mfem__FiniteElementSpace, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__FunctionCoefficient[] = {  {&_swigt__p_mfem__FunctionCoefficient, 0, 0, 0},  {&_swigt__p_mfem__PyCoefficientBase, _p_mfem__PyCoefficientBaseTo_p_mfem__FunctionCoefficient, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationPoint[] = {  {&_swigt__p_mfem__IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__KellyErrorEstimator[] = {  {&_swigt__p_mfem__KellyErrorEstimator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2_FECollection[] = {  {&_swigt__p_mfem__L2_FECollection, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__LSZienkiewiczZhuEstimator[] = {  {&_swigt__p_mfem__LSZienkiewiczZhuEstimator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LpErrorEstimator[] = {  {&_swigt__p_mfem__LpErrorEstimator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MatrixVectorProductCoefficient[] = {  {&_swigt__p_mfem__MatrixVectorProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__NewZienkiewiczZhuEstimator[] = {  {&_swigt__p_mfem__NewZienkiewiczZhuEstimator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PyOperatorBase[] = {{&_swigt__p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DenseMatrixInverse[] = {{&_swigt__p_mfem__DenseMatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
@@ -7231,6 +8067,8 @@ static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {{&_swigt__p_mfe
 static swig_cast_info _swigc__p_mfem__DiscreteLinearOperator[] = {{&_swigt__p_mfem__DiscreteLinearOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseSymmetricMatrix, _p_mfem__DenseSymmetricMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ElementRestriction, _p_mfem__ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2ElementRestriction, _p_mfem__L2ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__FaceRestriction, _p_mfem__FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__H1FaceRestriction, _p_mfem__H1FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2FaceRestriction, _p_mfem__L2FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__NCL2FaceRestriction, _p_mfem__NCL2FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__BilinearForm, _p_mfem__BilinearFormTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MixedBilinearForm, _p_mfem__MixedBilinearFormTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__RectangularConstrainedOperator, _p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ScaledOperator, _p_mfem__ScaledOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentAdjointOperator, _p_mfem__TimeDependentAdjointOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DiscreteLinearOperator, _p_mfem__DiscreteLinearOperatorTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__OperatorHandle[] = {  {&_swigt__p_mfem__OperatorHandle, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__PRefDiffEstimator[] = {  {&_swigt__p_mfem__PRefDiffEstimator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__PRefJumpEstimator[] = {  {&_swigt__p_mfem__PRefJumpEstimator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Refinement[] = {  {&_swigt__p_mfem__Refinement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__Solver, 0, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Solver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
@@ -7348,6 +8186,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__ElasticityIntegrator,
   _swigc__p_mfem__ElementRestriction,
   _swigc__p_mfem__ErrorEstimator,
+  _swigc__p_mfem__ExactError,
   _swigc__p_mfem__ExtrudeCoefficient,
   _swigc__p_mfem__FaceRestriction,
   _swigc__p_mfem__FiniteElementSpace,
@@ -7369,6 +8208,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__L2ElementRestriction,
   _swigc__p_mfem__L2FaceRestriction,
   _swigc__p_mfem__L2_FECollection,
+  _swigc__p_mfem__LSZienkiewiczZhuEstimator,
   _swigc__p_mfem__LinearForm,
   _swigc__p_mfem__LpErrorEstimator,
   _swigc__p_mfem__LumpedIntegrator,
@@ -7424,6 +8264,8 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__NormalizedVectorCoefficient,
   _swigc__p_mfem__Operator,
   _swigc__p_mfem__OperatorHandle,
+  _swigc__p_mfem__PRefDiffEstimator,
+  _swigc__p_mfem__PRefJumpEstimator,
   _swigc__p_mfem__PWConstCoefficient,
   _swigc__p_mfem__PowerCoefficient,
   _swigc__p_mfem__ProductCoefficient,

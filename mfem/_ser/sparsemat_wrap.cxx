@@ -4843,6 +4843,64 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_SparseMatrix_OverrideSize(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"height_",  (char *)"width_",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:SparseMatrix_OverrideSize", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_OverrideSize" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      (arg1)->OverrideSize(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_SparseMatrix_UseGPUSparse(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
@@ -16203,6 +16261,7 @@ static PyMethodDef SwigMethods[] = {
 		"SparseMatrix(SparseMatrix mat, bool copy_graph=True, mfem::MemoryType mt=PRESERVE)\n"
 		"new_SparseMatrix(Vector v) -> SparseMatrix\n"
 		""},
+	 { "SparseMatrix_OverrideSize", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_OverrideSize, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_OverrideSize(SparseMatrix self, int height_, int width_)"},
 	 { "SparseMatrix_UseGPUSparse", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_UseGPUSparse, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_UseGPUSparse(SparseMatrix self, bool useGPUSparse_=True)"},
 	 { "SparseMatrix_UseCuSparse", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_UseCuSparse, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_UseCuSparse(SparseMatrix self, bool useCuSparse_=True)"},
 	 { "SparseMatrix_MakeRef", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_MakeRef, METH_VARARGS|METH_KEYWORDS, "SparseMatrix_MakeRef(SparseMatrix self, SparseMatrix master)"},
@@ -16453,6 +16512,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"SparseMatrix(SparseMatrix mat, bool copy_graph=True, mfem::MemoryType mt=PRESERVE)\n"
 		"new_SparseMatrix(Vector v) -> SparseMatrix\n"
 		""},
+	 { "SparseMatrix_OverrideSize", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_OverrideSize, METH_VARARGS|METH_KEYWORDS, "OverrideSize(SparseMatrix self, int height_, int width_)"},
 	 { "SparseMatrix_UseGPUSparse", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_UseGPUSparse, METH_VARARGS|METH_KEYWORDS, "UseGPUSparse(SparseMatrix self, bool useGPUSparse_=True)"},
 	 { "SparseMatrix_UseCuSparse", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_UseCuSparse, METH_VARARGS|METH_KEYWORDS, "UseCuSparse(SparseMatrix self, bool useCuSparse_=True)"},
 	 { "SparseMatrix_MakeRef", (PyCFunction)(void(*)(void))_wrap_SparseMatrix_MakeRef, METH_VARARGS|METH_KEYWORDS, "MakeRef(SparseMatrix self, SparseMatrix master)"},

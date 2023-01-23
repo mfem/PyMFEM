@@ -3195,111 +3195,6 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__MixedWeakCurlCrossIntegrator swig_types[95]
 #define SWIGTYPE_p_mfem__MixedWeakDivCrossIntegrator swig_types[96]
 #define SWIGTYPE_p_mfem__MixedWeakGradDotIntegrator swig_types[97]
-<<<<<<< HEAD
-#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[98]
-#define SWIGTYPE_p_mfem__NonconservativeDGTraceIntegrator swig_types[99]
-#define SWIGTYPE_p_mfem__NormalInterpolator swig_types[100]
-#define SWIGTYPE_p_mfem__NormalTraceJumpIntegrator swig_types[101]
-#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[102]
-#define SWIGTYPE_p_mfem__Operator swig_types[103]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[104]
-#define SWIGTYPE_p_mfem__PRefinementTransferOperator swig_types[105]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[106]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[107]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[108]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[109]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[110]
-#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[111]
-#define SWIGTYPE_p_mfem__Refinement swig_types[112]
-#define SWIGTYPE_p_mfem__ScalarCrossProductInterpolator swig_types[113]
-#define SWIGTYPE_p_mfem__ScalarProductInterpolator swig_types[114]
-#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[115]
-#define SWIGTYPE_p_mfem__ScalarVectorProductInterpolator swig_types[116]
-#define SWIGTYPE_p_mfem__ScaledOperator swig_types[117]
-#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[118]
-#define SWIGTYPE_p_mfem__Solver swig_types[119]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[120]
-#define SWIGTYPE_p_mfem__SumIntegrator swig_types[121]
-#define SWIGTYPE_p_mfem__TensorProductPRefinementTransferOperator swig_types[122]
-#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[123]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[124]
-#define SWIGTYPE_p_mfem__TraceJumpIntegrator swig_types[125]
-#define SWIGTYPE_p_mfem__TransferOperator swig_types[126]
-#define SWIGTYPE_p_mfem__TransposeIntegrator swig_types[127]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[128]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[129]
-#define SWIGTYPE_p_mfem__TrueTransferOperator swig_types[130]
-#define SWIGTYPE_p_mfem__Vector swig_types[131]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[132]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[133]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[134]
-#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[135]
-#define SWIGTYPE_p_mfem__VectorCrossProductInterpolator swig_types[136]
-#define SWIGTYPE_p_mfem__VectorCurlCurlIntegrator swig_types[137]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[138]
-#define SWIGTYPE_p_mfem__VectorDiffusionIntegrator swig_types[139]
-#define SWIGTYPE_p_mfem__VectorDivergenceIntegrator swig_types[140]
-#define SWIGTYPE_p_mfem__VectorFECurlIntegrator swig_types[141]
-#define SWIGTYPE_p_mfem__VectorFEDivergenceIntegrator swig_types[142]
-#define SWIGTYPE_p_mfem__VectorFEMassIntegrator swig_types[143]
-#define SWIGTYPE_p_mfem__VectorFEWeakDivergenceIntegrator swig_types[144]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[145]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[146]
-#define SWIGTYPE_p_mfem__VectorInnerProductInterpolator swig_types[147]
-#define SWIGTYPE_p_mfem__VectorMassIntegrator swig_types[148]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[149]
-#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[150]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[151]
-#define SWIGTYPE_p_mfem__VectorScalarProductInterpolator swig_types[152]
-#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[153]
-#define SWIGTYPE_p_p_mfem__AbstractSparseMatrix swig_types[154]
-#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[155]
-#define SWIGTYPE_p_p_mfem__DenseMatrix swig_types[156]
-#define SWIGTYPE_p_p_mfem__DenseMatrixInverse swig_types[157]
-#define SWIGTYPE_p_p_mfem__DenseSymmetricMatrix swig_types[158]
-#define SWIGTYPE_p_p_mfem__ElementRestriction swig_types[159]
-#define SWIGTYPE_p_p_mfem__FaceRestriction swig_types[160]
-#define SWIGTYPE_p_p_mfem__FiniteElementSpace swig_types[161]
-#define SWIGTYPE_p_p_mfem__GridFunction swig_types[162]
-#define SWIGTYPE_p_p_mfem__H1FaceRestriction swig_types[163]
-#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[164]
-#define SWIGTYPE_p_p_mfem__IntegrationRule swig_types[165]
-#define SWIGTYPE_p_p_mfem__L2ElementRestriction swig_types[166]
-#define SWIGTYPE_p_p_mfem__L2FaceRestriction swig_types[167]
-#define SWIGTYPE_p_p_mfem__LinearForm swig_types[168]
-#define SWIGTYPE_p_p_mfem__Matrix swig_types[169]
-#define SWIGTYPE_p_p_mfem__MatrixInverse swig_types[170]
-#define SWIGTYPE_p_p_mfem__Operator swig_types[171]
-#define SWIGTYPE_p_p_mfem__PRefinementTransferOperator swig_types[172]
-#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[173]
-#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[174]
-#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[175]
-#define SWIGTYPE_p_p_mfem__QuadratureFunction swig_types[176]
-#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[177]
-#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[178]
-#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[179]
-#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[180]
-#define SWIGTYPE_p_p_mfem__Solver swig_types[181]
-#define SWIGTYPE_p_p_mfem__SparseMatrix swig_types[182]
-#define SWIGTYPE_p_p_mfem__TensorProductPRefinementTransferOperator swig_types[183]
-#define SWIGTYPE_p_p_mfem__TimeDependentAdjointOperator swig_types[184]
-#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[185]
-#define SWIGTYPE_p_p_mfem__TransferOperator swig_types[186]
-#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[187]
-#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[188]
-#define SWIGTYPE_p_p_mfem__TrueTransferOperator swig_types[189]
-#define SWIGTYPE_p_p_mfem__Vector swig_types[190]
-#define SWIGTYPE_p_pri_t swig_types[191]
-#define SWIGTYPE_p_pyr_t swig_types[192]
-#define SWIGTYPE_p_quad_t swig_types[193]
-#define SWIGTYPE_p_seg_t swig_types[194]
-#define SWIGTYPE_p_size_type swig_types[195]
-#define SWIGTYPE_p_tet_t swig_types[196]
-#define SWIGTYPE_p_tri_t swig_types[197]
-#define SWIGTYPE_p_value_type swig_types[198]
-static swig_type_info *swig_types[200];
-static swig_module_info swig_module = {swig_types, 199, 0, 0, 0, 0};
-=======
 #define SWIGTYPE_p_mfem__NCL2FaceRestriction swig_types[98]
 #define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[99]
 #define SWIGTYPE_p_mfem__NonconservativeDGTraceIntegrator swig_types[100]
@@ -3405,7 +3300,6 @@ static swig_module_info swig_module = {swig_types, 199, 0, 0, 0, 0};
 #define SWIGTYPE_p_value_type swig_types[200]
 static swig_type_info *swig_types[202];
 static swig_module_info swig_module = {swig_types, 201, 0, 0, 0, 0};
->>>>>>> master
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -6523,11 +6417,7 @@ static swig_cast_info _swigc__p_mfem__IdentityOperator[] = {{&_swigt__p_mfem__Id
 static swig_cast_info _swigc__p_mfem__SecondOrderTimeDependentOperator[] = {{&_swigt__p_mfem__SecondOrderTimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TimeDependentAdjointOperator[] = {{&_swigt__p_mfem__TimeDependentAdjointOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {{&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
-<<<<<<< HEAD
-static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseSymmetricMatrix, _p_mfem__DenseSymmetricMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ElementRestriction, _p_mfem__ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2ElementRestriction, _p_mfem__L2ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__FaceRestriction, _p_mfem__FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__H1FaceRestriction, _p_mfem__H1FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2FaceRestriction, _p_mfem__L2FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__RectangularConstrainedOperator, _p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ScaledOperator, _p_mfem__ScaledOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentAdjointOperator, _p_mfem__TimeDependentAdjointOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransferOperator, _p_mfem__TransferOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PRefinementTransferOperator, _p_mfem__PRefinementTransferOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TensorProductPRefinementTransferOperator, _p_mfem__TensorProductPRefinementTransferOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TrueTransferOperator, _p_mfem__TrueTransferOperatorTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
-=======
 static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseSymmetricMatrix, _p_mfem__DenseSymmetricMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ElementRestriction, _p_mfem__ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2ElementRestriction, _p_mfem__L2ElementRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__FaceRestriction, _p_mfem__FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__H1FaceRestriction, _p_mfem__H1FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__L2FaceRestriction, _p_mfem__L2FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__NCL2FaceRestriction, _p_mfem__NCL2FaceRestrictionTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__RectangularConstrainedOperator, _p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ScaledOperator, _p_mfem__ScaledOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentAdjointOperator, _p_mfem__TimeDependentAdjointOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransferOperator, _p_mfem__TransferOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PRefinementTransferOperator, _p_mfem__PRefinementTransferOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TensorProductPRefinementTransferOperator, _p_mfem__TensorProductPRefinementTransferOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TrueTransferOperator, _p_mfem__TrueTransferOperatorTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
->>>>>>> master
 static swig_cast_info _swigc__p_mfem__OperatorHandle[] = {  {&_swigt__p_mfem__OperatorHandle, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PRefinementTransferOperator[] = {  {&_swigt__p_mfem__PRefinementTransferOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Refinement[] = {  {&_swigt__p_mfem__Refinement, 0, 0, 0},{0, 0, 0, 0}};
@@ -6586,11 +6476,7 @@ static swig_cast_info _swigc__p_p_mfem__TimeDependentOperator[] = {{&_swigt__p_p
 static swig_cast_info _swigc__p_p_mfem__TransferOperator[] = {{&_swigt__p_p_mfem__TransferOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__PRefinementTransferOperator[] = {{&_swigt__p_p_mfem__PRefinementTransferOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__TrueTransferOperator[] = {{&_swigt__p_p_mfem__TrueTransferOperator, 0, 0, 0},{0, 0, 0, 0}};
-<<<<<<< HEAD
-static swig_cast_info _swigc__p_p_mfem__Operator[] = {  {&_swigt__p_p_mfem__PyTimeDependentOperatorBase, _p_p_mfem__PyTimeDependentOperatorBaseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__PyOperatorBase, _p_p_mfem__PyOperatorBaseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TensorProductPRefinementTransferOperator, _p_p_mfem__TensorProductPRefinementTransferOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Solver, _p_p_mfem__SolverTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__DenseMatrixInverse, _p_p_mfem__DenseMatrixInverseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__MatrixInverse, _p_p_mfem__MatrixInverseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__AbstractSparseMatrix, _p_p_mfem__AbstractSparseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__DenseSymmetricMatrix, _p_p_mfem__DenseSymmetricMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__DenseMatrix, _p_p_mfem__DenseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__SparseMatrix, _p_p_mfem__SparseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__L2ElementRestriction, _p_p_mfem__L2ElementRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__FaceRestriction, _p_p_mfem__FaceRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__H1FaceRestriction, _p_p_mfem__H1FaceRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ElementRestriction, _p_p_mfem__ElementRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__L2FaceRestriction, _p_p_mfem__L2FaceRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Matrix, _p_p_mfem__MatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Operator, 0, 0, 0},  {&_swigt__p_p_mfem__RectangularConstrainedOperator, _p_p_mfem__RectangularConstrainedOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ConstrainedOperator, _p_p_mfem__ConstrainedOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TripleProductOperator, _p_p_mfem__TripleProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__RAPOperator, _p_p_mfem__RAPOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ProductOperator, _p_p_mfem__ProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TransposeOperator, _p_p_mfem__TransposeOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ScaledOperator, _p_p_mfem__ScaledOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__IdentityOperator, _p_p_mfem__IdentityOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__SecondOrderTimeDependentOperator, _p_p_mfem__SecondOrderTimeDependentOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TimeDependentAdjointOperator, _p_p_mfem__TimeDependentAdjointOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TimeDependentOperator, _p_p_mfem__TimeDependentOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TransferOperator, _p_p_mfem__TransferOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__PRefinementTransferOperator, _p_p_mfem__PRefinementTransferOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TrueTransferOperator, _p_p_mfem__TrueTransferOperatorTo_p_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
-=======
 static swig_cast_info _swigc__p_p_mfem__Operator[] = {  {&_swigt__p_p_mfem__PyTimeDependentOperatorBase, _p_p_mfem__PyTimeDependentOperatorBaseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__PyOperatorBase, _p_p_mfem__PyOperatorBaseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TensorProductPRefinementTransferOperator, _p_p_mfem__TensorProductPRefinementTransferOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Solver, _p_p_mfem__SolverTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__DenseMatrixInverse, _p_p_mfem__DenseMatrixInverseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__MatrixInverse, _p_p_mfem__MatrixInverseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__AbstractSparseMatrix, _p_p_mfem__AbstractSparseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__DenseSymmetricMatrix, _p_p_mfem__DenseSymmetricMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__DenseMatrix, _p_p_mfem__DenseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__SparseMatrix, _p_p_mfem__SparseMatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__L2ElementRestriction, _p_p_mfem__L2ElementRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__FaceRestriction, _p_p_mfem__FaceRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__H1FaceRestriction, _p_p_mfem__H1FaceRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ElementRestriction, _p_p_mfem__ElementRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__L2FaceRestriction, _p_p_mfem__L2FaceRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__NCL2FaceRestriction, _p_p_mfem__NCL2FaceRestrictionTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Matrix, _p_p_mfem__MatrixTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Operator, 0, 0, 0},  {&_swigt__p_p_mfem__RectangularConstrainedOperator, _p_p_mfem__RectangularConstrainedOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ConstrainedOperator, _p_p_mfem__ConstrainedOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TripleProductOperator, _p_p_mfem__TripleProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__RAPOperator, _p_p_mfem__RAPOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ProductOperator, _p_p_mfem__ProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TransposeOperator, _p_p_mfem__TransposeOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ScaledOperator, _p_p_mfem__ScaledOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__IdentityOperator, _p_p_mfem__IdentityOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__SecondOrderTimeDependentOperator, _p_p_mfem__SecondOrderTimeDependentOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TimeDependentAdjointOperator, _p_p_mfem__TimeDependentAdjointOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TimeDependentOperator, _p_p_mfem__TimeDependentOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TransferOperator, _p_p_mfem__TransferOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__PRefinementTransferOperator, _p_p_mfem__PRefinementTransferOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TrueTransferOperator, _p_p_mfem__TrueTransferOperatorTo_p_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
->>>>>>> master
 static swig_cast_info _swigc__p_p_mfem__Solver[] = {  {&_swigt__p_p_mfem__Solver, 0, 0, 0},  {&_swigt__p_p_mfem__MatrixInverse, _p_p_mfem__MatrixInverseTo_p_p_mfem__Solver, 0, 0},  {&_swigt__p_p_mfem__DenseMatrixInverse, _p_p_mfem__DenseMatrixInverseTo_p_p_mfem__Solver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__GridFunction[] = {{&_swigt__p_p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__QuadratureFunction[] = {{&_swigt__p_p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};

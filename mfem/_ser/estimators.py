@@ -222,49 +222,59 @@ class ZienkiewiczZhuEstimator(AnisotropicErrorEstimator):
 # Register ZienkiewiczZhuEstimator in _estimators:
 _estimators.ZienkiewiczZhuEstimator_swigregister(ZienkiewiczZhuEstimator)
 
-class NewZienkiewiczZhuEstimator(ErrorEstimator):
-    r"""Proxy of C++ mfem::NewZienkiewiczZhuEstimator class."""
+class LSZienkiewiczZhuEstimator(ErrorEstimator):
+    r"""Proxy of C++ mfem::LSZienkiewiczZhuEstimator class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
     def __init__(self, integ, sol):
-        r"""__init__(NewZienkiewiczZhuEstimator self, BilinearFormIntegrator integ, GridFunction sol) -> NewZienkiewiczZhuEstimator"""
-        _estimators.NewZienkiewiczZhuEstimator_swiginit(self, _estimators.new_NewZienkiewiczZhuEstimator(integ, sol))
+        r"""__init__(LSZienkiewiczZhuEstimator self, BilinearFormIntegrator integ, GridFunction sol) -> LSZienkiewiczZhuEstimator"""
+        _estimators.LSZienkiewiczZhuEstimator_swiginit(self, _estimators.new_LSZienkiewiczZhuEstimator(integ, sol))
 
     def SetWithCoeff(self, w_coeff=True):
-        r"""SetWithCoeff(NewZienkiewiczZhuEstimator self, bool w_coeff=True)"""
-        return _estimators.NewZienkiewiczZhuEstimator_SetWithCoeff(self, w_coeff)
-    SetWithCoeff = _swig_new_instance_method(_estimators.NewZienkiewiczZhuEstimator_SetWithCoeff)
+        r"""SetWithCoeff(LSZienkiewiczZhuEstimator self, bool w_coeff=True)"""
+        return _estimators.LSZienkiewiczZhuEstimator_SetWithCoeff(self, w_coeff)
+    SetWithCoeff = _swig_new_instance_method(_estimators.LSZienkiewiczZhuEstimator_SetWithCoeff)
 
     def DisableReconstructionAcrossSubdomains(self):
-        r"""DisableReconstructionAcrossSubdomains(NewZienkiewiczZhuEstimator self)"""
-        return _estimators.NewZienkiewiczZhuEstimator_DisableReconstructionAcrossSubdomains(self)
-    DisableReconstructionAcrossSubdomains = _swig_new_instance_method(_estimators.NewZienkiewiczZhuEstimator_DisableReconstructionAcrossSubdomains)
+        r"""DisableReconstructionAcrossSubdomains(LSZienkiewiczZhuEstimator self)"""
+        return _estimators.LSZienkiewiczZhuEstimator_DisableReconstructionAcrossSubdomains(self)
+    DisableReconstructionAcrossSubdomains = _swig_new_instance_method(_estimators.LSZienkiewiczZhuEstimator_DisableReconstructionAcrossSubdomains)
 
     def SetTichonovRegularization(self, tcoeff=1.0e-8):
-        r"""SetTichonovRegularization(NewZienkiewiczZhuEstimator self, double tcoeff=1.0e-8)"""
-        return _estimators.NewZienkiewiczZhuEstimator_SetTichonovRegularization(self, tcoeff)
-    SetTichonovRegularization = _swig_new_instance_method(_estimators.NewZienkiewiczZhuEstimator_SetTichonovRegularization)
+        r"""SetTichonovRegularization(LSZienkiewiczZhuEstimator self, double tcoeff=1.0e-8)"""
+        return _estimators.LSZienkiewiczZhuEstimator_SetTichonovRegularization(self, tcoeff)
+    SetTichonovRegularization = _swig_new_instance_method(_estimators.LSZienkiewiczZhuEstimator_SetTichonovRegularization)
 
     def GetTotalError(self):
-        r"""GetTotalError(NewZienkiewiczZhuEstimator self) -> double"""
-        return _estimators.NewZienkiewiczZhuEstimator_GetTotalError(self)
-    GetTotalError = _swig_new_instance_method(_estimators.NewZienkiewiczZhuEstimator_GetTotalError)
+        r"""GetTotalError(LSZienkiewiczZhuEstimator self) -> double"""
+        return _estimators.LSZienkiewiczZhuEstimator_GetTotalError(self)
+    GetTotalError = _swig_new_instance_method(_estimators.LSZienkiewiczZhuEstimator_GetTotalError)
 
     def GetLocalErrors(self):
-        r"""GetLocalErrors(NewZienkiewiczZhuEstimator self) -> Vector"""
-        return _estimators.NewZienkiewiczZhuEstimator_GetLocalErrors(self)
-    GetLocalErrors = _swig_new_instance_method(_estimators.NewZienkiewiczZhuEstimator_GetLocalErrors)
+        r"""GetLocalErrors(LSZienkiewiczZhuEstimator self) -> Vector"""
+        return _estimators.LSZienkiewiczZhuEstimator_GetLocalErrors(self)
+    GetLocalErrors = _swig_new_instance_method(_estimators.LSZienkiewiczZhuEstimator_GetLocalErrors)
 
     def Reset(self):
-        r"""Reset(NewZienkiewiczZhuEstimator self)"""
-        return _estimators.NewZienkiewiczZhuEstimator_Reset(self)
-    Reset = _swig_new_instance_method(_estimators.NewZienkiewiczZhuEstimator_Reset)
-    __swig_destroy__ = _estimators.delete_NewZienkiewiczZhuEstimator
+        r"""Reset(LSZienkiewiczZhuEstimator self)"""
+        return _estimators.LSZienkiewiczZhuEstimator_Reset(self)
+    Reset = _swig_new_instance_method(_estimators.LSZienkiewiczZhuEstimator_Reset)
 
-# Register NewZienkiewiczZhuEstimator in _estimators:
-_estimators.NewZienkiewiczZhuEstimator_swigregister(NewZienkiewiczZhuEstimator)
+    def EnableSolutionBasedFit(self):
+        r"""EnableSolutionBasedFit(LSZienkiewiczZhuEstimator self)"""
+        return _estimators.LSZienkiewiczZhuEstimator_EnableSolutionBasedFit(self)
+    EnableSolutionBasedFit = _swig_new_instance_method(_estimators.LSZienkiewiczZhuEstimator_EnableSolutionBasedFit)
+
+    def EnablePeriodicityInADoublyPeriodicCartesianMesh(self):
+        r"""EnablePeriodicityInADoublyPeriodicCartesianMesh(LSZienkiewiczZhuEstimator self)"""
+        return _estimators.LSZienkiewiczZhuEstimator_EnablePeriodicityInADoublyPeriodicCartesianMesh(self)
+    EnablePeriodicityInADoublyPeriodicCartesianMesh = _swig_new_instance_method(_estimators.LSZienkiewiczZhuEstimator_EnablePeriodicityInADoublyPeriodicCartesianMesh)
+    __swig_destroy__ = _estimators.delete_LSZienkiewiczZhuEstimator
+
+# Register LSZienkiewiczZhuEstimator in _estimators:
+_estimators.LSZienkiewiczZhuEstimator_swigregister(LSZienkiewiczZhuEstimator)
 
 class LpErrorEstimator(ErrorEstimator):
     r"""Proxy of C++ mfem::LpErrorEstimator class."""
@@ -353,6 +363,93 @@ class KellyErrorEstimator(ErrorEstimator):
 
 # Register KellyErrorEstimator in _estimators:
 _estimators.KellyErrorEstimator_swigregister(KellyErrorEstimator)
+
+class PRefDiffEstimator(ErrorEstimator):
+    r"""Proxy of C++ mfem::PRefDiffEstimator class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, sol_, p_comp_):
+        r"""__init__(PRefDiffEstimator self, GridFunction sol_, int p_comp_) -> PRefDiffEstimator"""
+        _estimators.PRefDiffEstimator_swiginit(self, _estimators.new_PRefDiffEstimator(sol_, p_comp_))
+    __swig_destroy__ = _estimators.delete_PRefDiffEstimator
+
+    def GetLocalErrors(self):
+        r"""GetLocalErrors(PRefDiffEstimator self) -> Vector"""
+        return _estimators.PRefDiffEstimator_GetLocalErrors(self)
+    GetLocalErrors = _swig_new_instance_method(_estimators.PRefDiffEstimator_GetLocalErrors)
+
+    def Reset(self):
+        r"""Reset(PRefDiffEstimator self)"""
+        return _estimators.PRefDiffEstimator_Reset(self)
+    Reset = _swig_new_instance_method(_estimators.PRefDiffEstimator_Reset)
+
+    def GetTotalError(self):
+        r"""GetTotalError(PRefDiffEstimator self) -> double"""
+        return _estimators.PRefDiffEstimator_GetTotalError(self)
+    GetTotalError = _swig_new_instance_method(_estimators.PRefDiffEstimator_GetTotalError)
+
+# Register PRefDiffEstimator in _estimators:
+_estimators.PRefDiffEstimator_swigregister(PRefDiffEstimator)
+
+class PRefJumpEstimator(ErrorEstimator):
+    r"""Proxy of C++ mfem::PRefJumpEstimator class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, sol_):
+        r"""__init__(PRefJumpEstimator self, GridFunction sol_) -> PRefJumpEstimator"""
+        _estimators.PRefJumpEstimator_swiginit(self, _estimators.new_PRefJumpEstimator(sol_))
+    __swig_destroy__ = _estimators.delete_PRefJumpEstimator
+
+    def GetLocalErrors(self):
+        r"""GetLocalErrors(PRefJumpEstimator self) -> Vector"""
+        return _estimators.PRefJumpEstimator_GetLocalErrors(self)
+    GetLocalErrors = _swig_new_instance_method(_estimators.PRefJumpEstimator_GetLocalErrors)
+
+    def Reset(self):
+        r"""Reset(PRefJumpEstimator self)"""
+        return _estimators.PRefJumpEstimator_Reset(self)
+    Reset = _swig_new_instance_method(_estimators.PRefJumpEstimator_Reset)
+
+    def GetTotalError(self):
+        r"""GetTotalError(PRefJumpEstimator self) -> double"""
+        return _estimators.PRefJumpEstimator_GetTotalError(self)
+    GetTotalError = _swig_new_instance_method(_estimators.PRefJumpEstimator_GetTotalError)
+
+# Register PRefJumpEstimator in _estimators:
+_estimators.PRefJumpEstimator_swigregister(PRefJumpEstimator)
+
+class ExactError(ErrorEstimator):
+    r"""Proxy of C++ mfem::ExactError class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, sol_, exact_):
+        r"""__init__(ExactError self, GridFunction sol_, FunctionCoefficient exact_) -> ExactError"""
+        _estimators.ExactError_swiginit(self, _estimators.new_ExactError(sol_, exact_))
+    __swig_destroy__ = _estimators.delete_ExactError
+
+    def GetLocalErrors(self):
+        r"""GetLocalErrors(ExactError self) -> Vector"""
+        return _estimators.ExactError_GetLocalErrors(self)
+    GetLocalErrors = _swig_new_instance_method(_estimators.ExactError_GetLocalErrors)
+
+    def Reset(self):
+        r"""Reset(ExactError self)"""
+        return _estimators.ExactError_Reset(self)
+    Reset = _swig_new_instance_method(_estimators.ExactError_Reset)
+
+    def GetTotalError(self):
+        r"""GetTotalError(ExactError self) -> double"""
+        return _estimators.ExactError_GetTotalError(self)
+    GetTotalError = _swig_new_instance_method(_estimators.ExactError_GetTotalError)
+
+# Register ExactError in _estimators:
+_estimators.ExactError_swigregister(ExactError)
 
 
 
