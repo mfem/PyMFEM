@@ -163,7 +163,7 @@ plot_figs   = args.plotfigs
 save_figs   = args.savefigs
 
 restore_policy = False
-nbatches       = 30
+nbatches       = 50
 
 ## Configuration for multi objective problem
 prob_config = {
@@ -173,16 +173,16 @@ prob_config = {
     'order'             : 2,
     'optimization_type' : 'multi_objective', 
     'cost_function'     : 'ADF', # ADF for annealing desirability function, alpha for linear combination of costs
-    'dof_threshold'     : 1e5,
+    'dof_threshold'     : 1e6,
     'alpha'             : args.alpha,
     'observe_alpha'     : args.observe_alpha,
     'observe_budget'    : args.observe_budget,
     'num_iterations'    : 30,
     'num_batches'       : nbatches,
     'tau_min'           : np.log2(1e-6), #np.log2(1e-2), # np.log2(1e-3), #np.log2(1e-4),
-    'M_warm'            : 30, # number of batches in warming phase
-    'M_anneal'          : 30,  #5, # number of batches per tau in annealing phase
-    'N_anneal'          : 2,  #20,  # number of target errors to train on (not counting intitial target)
+    'M_warm'            : 50, # number of batches in warming phase
+    'M_anneal'          : 50,  #5, # number of batches per tau in annealing phase
+    'N_anneal'          : 3,  #20,  # number of target errors to train on (not counting intitial target)
     'M_retrain'         : 0,  #2,  # number of batches for retraining before each new tau
     'batch_size'        : 100 # number of episodes per batch
 }
@@ -219,27 +219,27 @@ model_config = {
 
 ## rllib parameters
 config = ppo.DEFAULT_CONFIG.copy()
-# config['batch_mode']            = 'truncate_episodes'
-config['batch_mode']              = 'complete_episodes'
+config['batch_mode']            = 'truncate_episodes'
+# config['batch_mode']              = 'complete_episodes'
 config['sgd_minibatch_size']      = 100
 config['rollout_fragment_length'] = 50
 config['num_workers']             = 10
 config['train_batch_size']        = config['rollout_fragment_length'] * config['num_workers']
 config['num_gpus']                = 0
 config['gamma']                   = 1.0
-config['lr']                      = 1e-5
+config['lr']                      = 1e-4 
 config['seed']                    = 4000
 config['model']                   = model_config
-config['entropy_coeff']           = 0.05
+# config['entropy_coeff']           = 0.05
 
 # set up learning rate schedule
 # lr_schedule = ray.rllib.utils.schedules.linear_schedule.LinearSchedule(initial_p = 10**-4, final_p = 10**-5, schedule_timesteps = nbatches, framework = 'tf') 
 #config['lr_schedule'] = lr_schedule
 
 # # set up epsilon greedy exploration
-schedule_object = ray.rllib.utils.schedules.constant_schedule.ConstantSchedule(value = 0.04, framework = 'tf')
-action_space = spaces.Box(low=0.0, high=0.999, shape=(1,), dtype=np.float32)
-config['explore'] = True
+# schedule_object = ray.rllib.utils.schedules.constant_schedule.ConstantSchedule(value = 0.04, framework = 'tf')
+# action_space = spaces.Box(low=0.0, high=0.999, shape=(1,), dtype=np.float32)
+# config['explore'] = True
 # config['exploration_config'] = {
 #    # Exploration sub-class by name or full path to module+class
 #    # (e.g. “ray.rllib.utils.exploration.epsilon_greedy.EpsilonGreedy”)
@@ -339,6 +339,8 @@ if ADF_bool:
 
     tau_max = np.log2(5e-2)
     tau_step = np.log2(5e-2) - np.log2(1e-2)
+    # tau_max = np.log2(1e-2)
+    # tau_step = np.log2(5e-2) - np.log2(1e-2)
     delta_warm = 1
     delta_anneal = 1
 
@@ -442,7 +444,7 @@ elif ADF_bool:
     if eval:
         tau_max = np.log2(5e-2)
         tau_step = np.log2(5e-2) - np.log2(1e-2)
-        params_to_eval = np.array([tau_max - i * tau_step for i in range(3)])
+        params_to_eval = np.array([tau_max - i * tau_step for i in range(4)])
         # params_to_eval = np.array([prob_config['tau_min']])
         print("\n *** params to eval =", params_to_eval, "\n")
         # min_error = env.tau_min

@@ -120,8 +120,11 @@ class ADF_MultiObjPoisson(Poisson):
         
         # define range of expected values for the observations
         if self.observe_budget == True:
-            # observation space includes mean, variance, tau, budget
-            self.observation_space = spaces.Box(low = np.array([-np.inf,-np.inf, -np.inf, 0.0]), high= np.array([np.inf, np.inf, np.inf, 1.0]))
+            # # observation space includes mean, variance, tau, budget
+            # self.observation_space = spaces.Box(low = np.array([-np.inf,-np.inf, -np.inf, 0.0]), high= np.array([np.inf, np.inf, np.inf, 1.0]))
+
+            # observation space includes mean, variance, budget
+            self.observation_space = spaces.Box(low = np.array([-np.inf,-np.inf, 0.0]), high= np.array([np.inf, np.inf, 1]))
         else: 
             # observation space includes mean, variance, tau
             self.observation_space = spaces.Box(low = np.array([-np.inf,-np.inf, -np.inf]), high= np.array([np.inf, np.inf, np.inf]))
@@ -168,14 +171,12 @@ class ADF_MultiObjPoisson(Poisson):
             global_error = GlobalError(self.errors)
 
             # update cost = alpha*(dof cost) + (1-alpha)*(error cost)
-            if True:
+            error_cost = np.log2(global_error)
+            if self.k == 1:
                 dofs_cost = np.log2(self.sum_of_dofs + num_dofs)
-                error_cost = np.log2(global_error)
             else: 
                 dofs_cost  = np.log2(1.0 + num_dofs/self.sum_of_dofs)
-                error_cost = np.log2(global_error/self.global_error)
-
-            # cost = dofs_cost * np.abs(self.tau - error_cost)/self.delta
+                # error_cost = np.log2(global_error/self.global_error)
 
             self.sum_of_dofs += num_dofs
             self.global_error = global_error
@@ -199,12 +200,19 @@ class ADF_MultiObjPoisson(Poisson):
             ## the cost computation in the next line penalizes the difference of the logs of the error:
             # cost = dofs_cost * np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
 
+            ## the cost computation in the next line weights by number of steps also:
+            cost = self.k * dofs_cost * np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
+
+            ## the cost computation in the next line weights only by dofs cost:
+            # cost = dofs_cost
+            
+
             if done:
                 ## the cost computation in the next line penalizes the difference of the logs of the error:
                 # cost = dofs_cost * np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
 
                 ## the cost computation in the next line weights by number of steps also:
-                cost = self.k * dofs_cost * np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
+                # cost = self.k * dofs_cost * np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
 
                 ## the cost computation in next line penalizes the log of the difference of the error
                 ##   and: dof penalty additive (equivalently, multiply cumulative dof count inside log2)
@@ -217,24 +225,6 @@ class ADF_MultiObjPoisson(Poisson):
                 # budget_cost = 2*np.log2(1 + self.k/self.num_iterations)
                 # cost = budget_cost + dofs_cost + np.log2(np.abs(current_target_error - self.global_error))/ray.get(self.ADF_Params.get_delta.remote())
                 
-                # done = True # don't need this line any more
-
-                # if quit_reason == 'dof':
-                #     cost = 100*cost
-                #     # print("*** dof threshold was exceeded; penalizing cost ***")
-                # elif quit_reason == 'its':
-                #     # print("*** iteration count was exceeded; penalizing cost ***")
-                #     cost = 100*cost
-
-                # if quit_reason == 'err':
-                #     cost = 0.01 * cost
-                #     # print("*** did better than desired; reducing cost")
-
-                # tau_used = ray.get(self.ADF_Params.get_tau.remote())
-                # print("tau used = {}".format(tau_used))
-                # print("dofs cost = {}, F_2 = {}".format(dofs_cost, np.abs(tau_used - error_cost)/self.delta))
-                # print("sum of dofs at stop  = {}".format(self.sum_of_dofs), flush=True)
-                # print("global error at stop = {}".format(self.global_error), flush=True)
                 print("@stop:",
                         "why=", quit_reason,
                         "step=", self.k,
@@ -245,7 +235,7 @@ class ADF_MultiObjPoisson(Poisson):
                         "dof=", self.sum_of_dofs, 
                         "thr=", self.dof_threshold,
                         "axn=", np.round(action[0],2),
-                        "$$$=", cost, 
+                        "$$$=", np.round(cost,4), 
                         # "tau diff=", np.round(ray.get(self.ADF_Params.get_tau.remote()) - error_cost,4),                         
                         )
             # else:
@@ -267,16 +257,18 @@ class ADF_MultiObjPoisson(Poisson):
     def GetObservation(self):
         if self.optimization_type == 'multi_objective':
             num_dofs = self.fespace.GetTrueVSize()
-            stats = Statistics(self.errors, num_dofs = num_dofs)
-
-            # define observation, which depends on observe_alpha and observe_budget
-            obs = [stats.mean, stats.variance, ray.get(self.ADF_Params.get_tau.remote())]
 
             if self.observe_budget == True:
                 # budget = self.k/self.num_iterations ## old version - budget in terms of steps
                 current_target_error = np.power(2, float(ray.get(self.ADF_Params.get_tau.remote())))
-                budget = current_target_error/self.global_error
-                obs.append(budget)
+                budget = current_target_error/self.global_erro
+                p = self.order
+                d = 2  # dimension of mesh geometry
+                eta = self.errors
+                zeta = np.sqrt(len(eta)) * num_dofs**(p/d) * eta
+                mean = np.sqrt(np.mean(zeta**2)) # technically the Euclidean mean: the sqrt of the second moment
+                sd = np.sqrt(np.var(zeta, ddof=0)) # default ddof = 0 (variance normalized by 1/(N-ddof))
+                obs = [np.log2(1+mean), np.log2(1+sd), budget]
 
             return np.array(obs)
         else:
