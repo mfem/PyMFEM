@@ -44,9 +44,9 @@ def run(alpha=0.5,
    if exponent_to_approximate > 1e-12:
        print("Approximating the fractional exponent " + 
              str(exponent_to_approximate))
-       ComputePartialFractionApproximation(exponent_to_approximate,
-                                          coeffs,
-                                          poles)
+
+       from ex33_common import ComputePartialFractionApproximation
+       poles, coeffs = ComputePartialFractionApproximation(exponent_to_approximate)
 
        # If the example is build without LAPACK, the exponent_to_approximate
        # might be modified by the function call above.
@@ -108,7 +108,7 @@ if __name__ == "__main__":
         rs=args.refs,
         meshfile=meshfile,
         visualization=visualization,
-        vef=args.verifification)
+        vef=args.verification)
 
     
 

@@ -7,7 +7,20 @@
 	     a CPointer object).
 	   - automatically creates two coefficients which return real and imaginary
 	     part, repsectively, when complex=True.
-	   - user function can use other MFEM coefficient as a variable (using dependency keyword)
+	   - user function can use other MFEM coefficient as a variable
+	     (using dependency keyword)
+	* mfem::Array<T>::Append accepts list/tuple
+	* Added --with-lapack option in setup.py. This option allows for building MFEM
+	  with MFEM_USE_LAPACK option. Use blas-libraries and lapack-libraries to specify
+	  the library locaiton if they are in non-standard location.
+	* Fixed Vector::__getitem__ so that it raise IndexError if Index is outside
+	  of -size < idx < size-1. This fixes an infinite loop error when mfem.Vector
+	  is used in for loop, like this.
+
+          >>> vec = mfem.Vector([1,2,3])
+	  >>> for x in vec:
+	         print(x)
+	  
 
 2022 03.
         * Added --cuda-arch option to specify the compute cuda archtecture

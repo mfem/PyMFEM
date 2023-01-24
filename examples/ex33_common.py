@@ -39,23 +39,41 @@ import scipy
 import mfem
 if mfem.mfem_mode == 'parallel':
     import mfem.par as mfem
+    from mfem.par import intArray, doubleArray
 else:
     import mfem.ser as mfem
+    from mfem.ser import intArray, doubleArray    
 
-from mfem import intArray, doubleArray    
+from sys import float_info
+eps = float_info.min
 
-def RationalApproximation_AAA(val, pt, z, f, w, tol, max_order):
+
+def RationalApproximation_AAA(val, pt, tol, max_order):
+    '''
+    RationalApproximation_AAA: compute the rational approximation (RA) of data
+    val at the set of points pt
+
+    in:
+        val        Vector of data values
+        pt         Vector of sample points
+        tol        Relative tolerance
+        max_order  Maximum number of terms (order) of the RA
+    out:
+        z          Support points of the RA in rational barycentric form
+        f          Data values at support points at z
+        w          Weights of the RA in rational barycentric form
+
+    See pg. A1501 of Nakatsukasa et al. [1].
+    '''
+    
     # number of sample points
     size = val.Size()
     assert pt.Size() == size, "size mismatch"
 
     # Initializations
-    J = intArray(list(range(size)))
-    z.SetSize(0)
-    f.SetSize(0)
+    J = list(range(size))
 
-
-    c_i = doubleArray()
+    c_i = mfem.doubleArray()
     C = mfem.DenseMatrix()
     Ctemp = mfem.DenseMatrix()    
     A = mfem.DenseMatrix()
@@ -64,7 +82,11 @@ def RationalApproximation_AAA(val, pt, z, f, w, tol, max_order):
     
     # mean of the value vector    
     mean_val = val.Sum()/size
-    R = mfem.Vector([mean_val]*val.Size())
+    R = np.array([mean_val]*size)
+
+    z = []
+    f = []
+    w = []
 
     for k in range(max_order):
         # select next support point
@@ -78,25 +100,24 @@ def RationalApproximation_AAA(val, pt, z, f, w, tol, max_order):
                idx = j
 
         # Append support points and data values
-        z.Append(pt[idx])
-        f.Append(val[idx])
+        z.append(pt[idx])
+        f.append(val[idx])
 
         # Update index vector
-        J.DeleteFirst(idx);
+        J.remove(idx);
 
         # next column in Cauchy matrix
-        C_tmp = doubleArray(size);
-        for j in range(size):
-            C_tmp[j] = 1.0/(pt[j]-pt[idx])
-            
+        C_tmp = [(1.0/(pp-pt[idx]) if pp != pt[idx] else np.inf) for pp in pt]
+
         c_i.Append(C_tmp);
-        h_C = C_tmp.Size()
+        h_C = len(C_tmp)
         w_C = k+1
-        
+
         C.UseExternalData(c_i.GetData(), h_C, w_C)
+
         Ctemp.Assign(C)
 
-        f_vec.SetDataAndSize(f.GetData(),f.Size());        
+        f_vec = mfem.Vector(f)
 
         Ctemp.InvLeftScaling(val)
         Ctemp.RightScaling(f_vec)
@@ -105,50 +126,74 @@ def RationalApproximation_AAA(val, pt, z, f, w, tol, max_order):
         mfem.Add(C, Ctemp, -1.0, A)
         A.LeftScaling(val)
 
-        h_Am = J.Size()
+        h_Am = len(J)
         w_Am = A.Width()
         Am.SetSize(h_Am,w_Am)
-        
+        print(h_Am, w_Am)
         for i in range(h_Am):
             ii = J[i];
             for j in range(w_Am):
                 Am[i,j] = A[ii,j]
+        
+        print("AM")
+        from io import StringIO
 
+        output = StringIO()
+        output.precision = 6
+        Am.Print(output)
+        fid = open("AM.dat", 'w')
+        fid.write(output.getvalue())
+        fid.close()
 
         AMM = Am.GetDataArray()
+        print(AMM)
         u, s, vh = np.linalg.svd(AMM, full_matrices=True)
 
-        w.Assign(v[k,:])
+        print(AMM.shape, u.shape, s.shape, vh.shape)
 
-       # N = C*(w.*f); D = C*w; % numerator and denominator
-       aux = mfem.Vector(w)
-       aux *= f_vec;
-       N = mfem.Vector(C.Height()) # Numerator
-       C.Mult(aux, N)
-       D =mfem.Vector(C.Height())  # Denominator
-       C.Mult(w,D);
+        #print(u, s, vh)
+        w = vh[k,:]
+        print("w here", s, w)
 
-       R.Assign(val)
-       for i in range(J.Size()):
-           ii = J[i];
-           R[ii] = N[ii]/D[ii]
-       }
+        # N = C*(w.*f); D = C*w; % numerator and denominator
+        aux = mfem.Vector(w)
+        aux *= f_vec;
+        N = mfem.Vector(C.Height()) # Numerator
+        C.Mult(aux, N)
+        D = mfem.Vector(C.Height())  # Denominator
+        ww = mfem.Vector(w)
+        C.Mult(ww, D)
+        D.Print()
 
-       val = mfem.Vector(val)
-       verr -= R
-
-       if (verr.Normlinf() <= tol*val.Normlinf()):
-           break
+        verr = [val[i] - N[ii]/D[ii] for i, ii in enumerate(J)]
+        if np.max(verr) <= tol*np.max(val):
+            break
    
+    return z, f, w
     
-def ComputePolesAndZeros(z, f, w, poles, zeros, scale):
+def ComputePolesAndZeros(z, f, w):
+    '''
+    ComputePolesAndZeros: compute the poles  and zeros of the
+    rational function f(z) = C p(z)/q(z) from its ration barycentric form.
+
+    in:
+        z      Support points in rational barycentric form
+        f      Data values at support points @a z
+        w      Weights in rational barycentric form
+    out:
+        poles  Array of poles (roots of p(z))
+        zeros  Array of zeros (roots of q(z))
+        scale  Scaling constant in f(z) = C p(z)/q(z)
+
+    See pg. A1501 of Nakatsukasa et al. [1].
+    '''
     
     # Initialization
-    poles.SetSize(0);
-    zeros.SetSize(0);
+    poles = []
+    zeros = []
 
     # Compute the poles
-    m = w.Size();
+    m = len(w)
     B = np.zeros((m+1, m+1))
     E = np.zeros((m+1, m+1))
     
@@ -161,11 +206,111 @@ def ComputePolesAndZeros(z, f, w, poles, zeros, scale):
     evalues = scipy.linalg.eig(E, B)
     new_poles = evalues[np.isfinite(evalues)]
 
-    for x in new_poles:
-        poles.Append(x)
+    poles.extend(new_poles)
     
+    B = np.zeros((m+1, m+1))
+    E = np.zeros((m+1, m+1))
+    for i in range(m):    
+       B[i,i] = 1.;
+       E[0,i] = w[i-1] * f[i-1]
+       E[i,0] = 1.
+       E[i,i] = z[i-1]
 
-    scale = w*f/w.Sum()
+    evalues = scipy.linalg.eig(E, B)
+    new_zeros = evalues[np.isfinite(evalues)]
+
+    zeros.extend(new_zeros)
+
+    sumw = np.sum(w)
+    scale = [ww*ff/sumw for ww, ff in zip(w, f)]
     
+    return poles, zeros, scale
 
+
+def PartialFractionExpansion(scale, poles, zeros, coeffs):
+    '''
+    PartialFractionExpansion: compute the partial fraction expansion of the
+    rational function f(z) = Σ_i c_i / (z - p_i) from its poles and zeros
+    @a zeros [in].
+
+    in: 
+        poles   Array of poles (same as p_i above)
+        zeros   Array of zeros
+        scale   Scaling constant
+    out:
+        coeffs  Coefficients c_i 
+    '''
+
+    # Note: C p(z)/q(z) = Σ_i c_i / (z - p_i) results in an system of equations
+    # where the N unknowns are the coefficients c_i. After multiplying the
+    # system with q(z), the coefficients c_i can be computed analytically by
+    # choosing N values for z. Choosing z_j = = p_j diagonalizes the system and
+    # one can obtain an analytic form for the c_i coefficients. The result is
+    # implemented in the code block below.
+
+    psize = len(poles)
+    zsize = len(zeros)
+    coeffs = [scale]* psize
+    
+    for i in range(psize):
+        tmp_numer=1.0;
+        for j in range(zsize):
+            tmp_numer *= poles[i]-zeros[j];
+
+        tmp_denom=1.0
+        for k in range(psize):
+            if k != i:
+                tmp_denom *= poles[i]-poles[k]
+        coeffs[i] *= tmp_numer / tmp_denom;
+    return coeffs
+
+def ComputePartialFractionApproximation(alpha,
+                                        lmax=1000.,
+                                        tol=1e-10,
+                                        npoints=1000,
+                                        max_order=100):
+    '''
+    ComputePartialFractionApproximation: compute a rational approximation (RA)
+    in partial fraction form, e.g., f(z) ≈ Σ_i c_i / (z - p_i), from sampled
+    values of the function f(z) = z^{-a}, 0 < a < 1.
+
+    in:
+       alpha         Exponent a in f(z) = z^-a
+       lmax,npoints  f(z) is uniformly sampled @a npoints times in the
+                     interval [ 0, @a lmax ]
+       tol           Relative tolerance
+       max_order     Maximum number of terms (order) of the RA
+
+    out:
+       coeffs        Coefficients c_i
+       poles         Poles p_i
+    '''
+
+    assert alpha < 1., "alpha must be less than 1"
+    assert alpha > 0., "alpha must be greater than 0"
+    assert npoints > 2, "npoints must be greater than 2"
+    assert lmax > 0,  "lmin must be greater than 0"
+    assert tol > 0,  "tol must be greater than 0"
+    
+        
+    dx = lmax / (npoints-1)
+                      
+    x = np.arange(npoints)*dx
+    val = x**(1-alpha)
+
+    # Apply triple-A algorithm to f(x) = x^{1-a}
+    z, f, w = RationalApproximation_AAA(mfem.Vector(val),
+                                        mfem.Vector(x),
+                                        tol, max_order)
+
+    # Compute poles and zeros for RA of f(x) = x^{1-a}
+    poles, zeros, scale = ComputePolesAndZeros(z, f, w)
+
+    # Remove the zero at x=0, thus, delivering a RA for f(x) = x^{-a}
+    zeros.remove(0.0)
+
+    # Compute partial fraction approximation of f(x) = x^{-a}
+    coeffs = PartialFractionExpansion(scale, poles, zeros)
+
+    return poles, coeffs
 

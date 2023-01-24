@@ -263,6 +263,10 @@ INSTANTIATE_ARRAY0(Vector *, Vector, 1)
            PyErr_SetString(PyExc_ValueError, "Argument must be either int or slice");
             return NULL; 	
         }
+	if ((idx >= len) && (idx >= -len-1)){
+	  PyErr_SetString(PyExc_IndexError, "Index must be < Size (counting forward) or > -Size-1 (counting backward)");
+          return NULL;
+	}
         if (idx >= 0){
            return PyFloat_FromDouble((* self)(idx));
         } else {

@@ -87,9 +87,12 @@ namespace mfem{
 %pythonprepend Array::__setitem__ %{
     i = int(i)
 %}
-  //%pythonprepend Array::__getitem__ %{
-  //    i = int(i)
-  //%}  
+%pythonprepend Array::Append %{
+    if isinstance(args[0], list):
+       return self.Append(self.__class__(args[0]))
+    if isinstance(args[0], tuple):
+       return self.Append(self.__class__(args[0]))
+%}
 %feature("shadow")Array::FakeToList %{
 def ToList(self):
     return [self[i] for i in range(self.Size())]

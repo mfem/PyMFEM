@@ -122,6 +122,8 @@ gslib_only = False
 
 enable_suitesparse = False
 suitesparse_prefix = ""
+
+enable_lapack = False
 blas_libraries = ""
 lapack_libraries = ""
 
@@ -808,6 +810,8 @@ def cmake_make_mfem(serial=True):
         if suitesparse_prefix != '':
             cmake_opts['DSuiteSparse_DIR'] = suitesparse_prefix
 
+    if enable_lapack:
+        cmake_opts['DMFEM_USE_LAPACK'] = '1'
     if blas_libraries != "":
         cmake_opts['DBLAS_LIBRARIES'] = blas_libraries
     if lapack_libraries != "":
@@ -1226,7 +1230,7 @@ def configure_install(self):
     global enable_libceed, libceed_prefix, libceed_only
     global enable_gslib, gslibs_prefix, gslibp_prefix, gslib_only
     global enable_suitesparse, suitesparse_prefix
-    global blas_libraries, lapack_libraries
+    global enable_lapack, blas_libraries, lapack_libraries
 
     verbose = bool(self.vv) if verbose == -1 else verbose
     dry_run = bool(self.dry_run) if dry_run == -1 else dry_run
@@ -1255,6 +1259,7 @@ def configure_install(self):
     enable_gslib = bool(self.with_gslib)
     gslib_only = bool(self.gslib_only)
     enable_suitesparse = bool(self.with_suitesparse)
+    enable_lapack = bool(self.with_lapack)
 
     build_parallel = bool(self.with_parallel)     # controlls PyMFEM parallel
     build_serial = not bool(self.no_serial)
@@ -1521,6 +1526,7 @@ class Install(_install):
         ('gslib-only', None, 'Build gslib only'),
         ('with-strumpack', None, 'enable strumpack (parallel only)'),
         ('strumpack-prefix=', None, 'Specify locaiton of strumpack'),
+        ('with-lapack', None, 'build MFEM with lapack'),
         ('blas-libraries=', None, 'Specify locaiton of Blas library (used to build MFEM)'),
         ('lapack-libraries=', None,
          'Specify locaiton of Lapack library (used to build MFEM)'),
@@ -1557,6 +1563,8 @@ class Install(_install):
 
         self.with_suitesparse = False
         self.suitesparse_prefix = ''
+
+        self.with_lapack = False        
         self.blas_libraries = ""
         self.lapack_libraries = ""
 
