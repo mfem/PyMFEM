@@ -181,6 +181,12 @@ class ADF_MultiObjPoisson(Poisson):
             self.sum_of_dofs += num_dofs
             self.global_error = global_error
             current_target_error = np.power(2, float(ray.get(self.ADF_Params.get_tau.remote())))
+            # weight the error distance smaller if error < target
+            if error_cost < ray.get(self.ADF_Params.get_tau.remote()):
+                error_dist = 0.1*np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
+            else:
+                error_dist = np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
+
 
             quit_reason = 'notdone'
             done = False
@@ -201,7 +207,7 @@ class ADF_MultiObjPoisson(Poisson):
             # cost = dofs_cost * np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
 
             ## the cost computation in the next line weights by number of steps also:
-            cost = self.k * dofs_cost * np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
+            cost = self.k * dofs_cost * error_dist
 
             ## the cost computation in the next line weights only by dofs cost:
             # cost = dofs_cost
@@ -261,7 +267,7 @@ class ADF_MultiObjPoisson(Poisson):
             if self.observe_budget == True:
                 # budget = self.k/self.num_iterations ## old version - budget in terms of steps
                 current_target_error = np.power(2, float(ray.get(self.ADF_Params.get_tau.remote())))
-                budget = current_target_error/self.global_erro
+                budget = current_target_error/self.global_error
                 p = self.order
                 d = 2  # dimension of mesh geometry
                 eta = self.errors

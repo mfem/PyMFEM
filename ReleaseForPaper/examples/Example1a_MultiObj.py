@@ -179,10 +179,11 @@ prob_config = {
     'observe_budget'    : args.observe_budget,
     'num_iterations'    : 30,
     'num_batches'       : nbatches,
-    'tau_min'           : np.log2(1e-6), #np.log2(1e-2), # np.log2(1e-3), #np.log2(1e-4),
-    'M_warm'            : 50, # number of batches in warming phase
-    'M_anneal'          : 50,  #5, # number of batches per tau in annealing phase
-    'N_anneal'          : 3,  #20,  # number of target errors to train on (not counting intitial target)
+    'tau_min'           : np.log2(5e-4), #np.log2(1e-2), # np.log2(1e-3), #np.log2(1e-4),
+    'tau_max'           : np.log2(5e-2),
+    'M_warm'            : 25, # number of batches in warming phase
+    'M_anneal'          : 25,  #5, # number of batches per tau in annealing phase
+    'N_anneal'          : 10,  #20,  # number of target errors to train on (not counting intitial target)
     'M_retrain'         : 0,  #2,  # number of batches for retraining before each new tau
     'batch_size'        : 100 # number of episodes per batch
 }
@@ -335,10 +336,12 @@ if ADF_bool:
     # print("WARNING: setting initial tau as tau_min in line below; should be tau_max")
     # ADF_params.set_initial_parameters.remote(prob_config['tau_min'], tau_step, delta_warm, delta_anneal)
 
-    print("\n\n\n ****** WARNING: hard coding initial parameters \n\n") # ***************
+    #print("\n\n\n ****** WARNING: hard coding initial parameters \n\n") # ***************
 
-    tau_max = np.log2(5e-2)
+    tau_min = prob_config['tau_min']
+    tau_max = prob_config['tau_max']
     tau_step = np.log2(5e-2) - np.log2(1e-2)
+    tau_step = (tau_max - tau_min)/N_anneal;
     # tau_max = np.log2(1e-2)
     # tau_step = np.log2(5e-2) - np.log2(1e-2)
     delta_warm = 1
@@ -442,9 +445,9 @@ if alpha_bool:
 # determine which errors/taus to evaluate on (tau is the 2log of the target error)
 elif ADF_bool:
     if eval:
-        tau_max = np.log2(5e-2)
-        tau_step = np.log2(5e-2) - np.log2(1e-2)
-        params_to_eval = np.array([tau_max - i * tau_step for i in range(4)])
+        #tau_max = np.log2(5e-2)
+        #tau_step = np.log2(5e-2) - np.log2(1e-2)
+        params_to_eval = np.array([tau_max - i * tau_step for i in range(N_anneal)])
         # params_to_eval = np.array([prob_config['tau_min']])
         print("\n *** params to eval =", params_to_eval, "\n")
         # min_error = env.tau_min
