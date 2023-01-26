@@ -123,6 +123,16 @@ class EulerSystem(mfem._ser.operators.TimeDependentOperator):
         return _auxiliary.EulerSystem_GetMaxWavespeed(self, x)
     GetMaxWavespeed = _swig_new_instance_method(_auxiliary.EulerSystem_GetMaxWavespeed)
 
+    def GetDensityBounds(self, solution, dim, gamma, num_equation, avgs, d_min, d_max):
+        r"""GetDensityBounds(EulerSystem self, GridFunction solution, int dim, double gamma, int num_equation, Vector avgs, Vector d_min, Vector d_max)"""
+        return _auxiliary.EulerSystem_GetDensityBounds(self, solution, dim, gamma, num_equation, avgs, d_min, d_max)
+    GetDensityBounds = _swig_new_instance_method(_auxiliary.EulerSystem_GetDensityBounds)
+
+    def ApplyLimiter(self, solution, dim, gamma, num_equation, avgs, d_min, d_max):
+        r"""ApplyLimiter(EulerSystem self, GridFunction solution, int dim, double gamma, int num_equation, Vector avgs, Vector d_min, Vector d_max)"""
+        return _auxiliary.EulerSystem_ApplyLimiter(self, solution, dim, gamma, num_equation, avgs, d_min, d_max)
+    ApplyLimiter = _swig_new_instance_method(_auxiliary.EulerSystem_ApplyLimiter)
+
     def Mult(self, x, y):
         r"""Mult(EulerSystem self, Vector x, Vector y)"""
         return _auxiliary.EulerSystem_Mult(self, x, y)

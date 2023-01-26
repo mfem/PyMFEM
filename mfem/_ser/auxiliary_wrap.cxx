@@ -3735,6 +3735,236 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_EulerSystem_GetDensityBounds(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  EulerSystem *arg1 = (EulerSystem *) 0 ;
+  mfem::GridFunction *arg2 = 0 ;
+  int arg3 ;
+  double arg4 ;
+  int arg5 ;
+  mfem::Vector *arg6 = 0 ;
+  mfem::Vector *arg7 = 0 ;
+  mfem::Vector *arg8 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"solution",  (char *)"dim",  (char *)"gamma",  (char *)"num_equation",  (char *)"avgs",  (char *)"d_min",  (char *)"d_max",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOOOO:EulerSystem_GetDensityBounds", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EulerSystem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EulerSystem_GetDensityBounds" "', argument " "1"" of type '" "EulerSystem *""'"); 
+  }
+  arg1 = reinterpret_cast< EulerSystem * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__GridFunction,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EulerSystem_GetDensityBounds" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EulerSystem_GetDensityBounds" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::GridFunction * >(argp2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  ecode4 = SWIG_AsVal_double(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "EulerSystem_GetDensityBounds" "', argument " "4"" of type '" "double""'");
+  } 
+  arg4 = static_cast< double >(val4);
+  {
+    if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg5 = PyArray_PyIntAsInt(obj4);
+  }
+  res6 = SWIG_ConvertPtr(obj5, &argp6, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "EulerSystem_GetDensityBounds" "', argument " "6"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp6) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EulerSystem_GetDensityBounds" "', argument " "6"" of type '" "mfem::Vector &""'"); 
+  }
+  arg6 = reinterpret_cast< mfem::Vector * >(argp6);
+  res7 = SWIG_ConvertPtr(obj6, &argp7, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "EulerSystem_GetDensityBounds" "', argument " "7"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp7) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EulerSystem_GetDensityBounds" "', argument " "7"" of type '" "mfem::Vector &""'"); 
+  }
+  arg7 = reinterpret_cast< mfem::Vector * >(argp7);
+  res8 = SWIG_ConvertPtr(obj7, &argp8, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "EulerSystem_GetDensityBounds" "', argument " "8"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp8) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EulerSystem_GetDensityBounds" "', argument " "8"" of type '" "mfem::Vector &""'"); 
+  }
+  arg8 = reinterpret_cast< mfem::Vector * >(argp8);
+  {
+    try {
+      (arg1)->GetDensityBounds(*arg2,arg3,arg4,arg5,*arg6,*arg7,*arg8);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_EulerSystem_ApplyLimiter(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  EulerSystem *arg1 = (EulerSystem *) 0 ;
+  mfem::GridFunction *arg2 = 0 ;
+  int arg3 ;
+  double arg4 ;
+  int arg5 ;
+  mfem::Vector *arg6 = 0 ;
+  mfem::Vector *arg7 = 0 ;
+  mfem::Vector *arg8 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"solution",  (char *)"dim",  (char *)"gamma",  (char *)"num_equation",  (char *)"avgs",  (char *)"d_min",  (char *)"d_max",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOOOO:EulerSystem_ApplyLimiter", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_EulerSystem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "EulerSystem_ApplyLimiter" "', argument " "1"" of type '" "EulerSystem *""'"); 
+  }
+  arg1 = reinterpret_cast< EulerSystem * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__GridFunction,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "EulerSystem_ApplyLimiter" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EulerSystem_ApplyLimiter" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::GridFunction * >(argp2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  ecode4 = SWIG_AsVal_double(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "EulerSystem_ApplyLimiter" "', argument " "4"" of type '" "double""'");
+  } 
+  arg4 = static_cast< double >(val4);
+  {
+    if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg5 = PyArray_PyIntAsInt(obj4);
+  }
+  res6 = SWIG_ConvertPtr(obj5, &argp6, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "EulerSystem_ApplyLimiter" "', argument " "6"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp6) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EulerSystem_ApplyLimiter" "', argument " "6"" of type '" "mfem::Vector &""'"); 
+  }
+  arg6 = reinterpret_cast< mfem::Vector * >(argp6);
+  res7 = SWIG_ConvertPtr(obj6, &argp7, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "EulerSystem_ApplyLimiter" "', argument " "7"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp7) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EulerSystem_ApplyLimiter" "', argument " "7"" of type '" "mfem::Vector &""'"); 
+  }
+  arg7 = reinterpret_cast< mfem::Vector * >(argp7);
+  res8 = SWIG_ConvertPtr(obj7, &argp8, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "EulerSystem_ApplyLimiter" "', argument " "8"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp8) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "EulerSystem_ApplyLimiter" "', argument " "8"" of type '" "mfem::Vector &""'"); 
+  }
+  arg8 = reinterpret_cast< mfem::Vector * >(argp8);
+  {
+    try {
+      (arg1)->ApplyLimiter(*arg2,arg3,arg4,arg5,*arg6,*arg7,*arg8);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_EulerSystem_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   EulerSystem *arg1 = (EulerSystem *) 0 ;
@@ -5771,6 +6001,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_EulerSystem", (PyCFunction)(void(*)(void))_wrap_new_EulerSystem, METH_VARARGS|METH_KEYWORDS, "new_EulerSystem(FiniteElementSpace vfes_, Operator A_, SparseMatrix Aflux_, double specific_heat_ratio_, int num_equation_) -> EulerSystem"},
 	 { "EulerSystem_GetMaxWavespeed", (PyCFunction)(void(*)(void))_wrap_EulerSystem_GetMaxWavespeed, METH_VARARGS|METH_KEYWORDS, "EulerSystem_GetMaxWavespeed(EulerSystem self, Vector x) -> float"},
+	 { "EulerSystem_GetDensityBounds", (PyCFunction)(void(*)(void))_wrap_EulerSystem_GetDensityBounds, METH_VARARGS|METH_KEYWORDS, "EulerSystem_GetDensityBounds(EulerSystem self, GridFunction solution, int dim, double gamma, int num_equation, Vector avgs, Vector d_min, Vector d_max)"},
+	 { "EulerSystem_ApplyLimiter", (PyCFunction)(void(*)(void))_wrap_EulerSystem_ApplyLimiter, METH_VARARGS|METH_KEYWORDS, "EulerSystem_ApplyLimiter(EulerSystem self, GridFunction solution, int dim, double gamma, int num_equation, Vector avgs, Vector d_min, Vector d_max)"},
 	 { "EulerSystem_Mult", (PyCFunction)(void(*)(void))_wrap_EulerSystem_Mult, METH_VARARGS|METH_KEYWORDS, "EulerSystem_Mult(EulerSystem self, Vector x, Vector y)"},
 	 { "delete_EulerSystem", _wrap_delete_EulerSystem, METH_O, "delete_EulerSystem(EulerSystem self)"},
 	 { "EulerSystem_swigregister", EulerSystem_swigregister, METH_O, NULL},
@@ -5839,6 +6071,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_EulerSystem", (PyCFunction)(void(*)(void))_wrap_new_EulerSystem, METH_VARARGS|METH_KEYWORDS, "new_EulerSystem(FiniteElementSpace vfes_, Operator A_, SparseMatrix Aflux_, double specific_heat_ratio_, int num_equation_) -> EulerSystem"},
 	 { "EulerSystem_GetMaxWavespeed", (PyCFunction)(void(*)(void))_wrap_EulerSystem_GetMaxWavespeed, METH_VARARGS|METH_KEYWORDS, "GetMaxWavespeed(EulerSystem self, Vector x) -> float"},
+	 { "EulerSystem_GetDensityBounds", (PyCFunction)(void(*)(void))_wrap_EulerSystem_GetDensityBounds, METH_VARARGS|METH_KEYWORDS, "GetDensityBounds(EulerSystem self, GridFunction solution, int dim, double gamma, int num_equation, Vector avgs, Vector d_min, Vector d_max)"},
+	 { "EulerSystem_ApplyLimiter", (PyCFunction)(void(*)(void))_wrap_EulerSystem_ApplyLimiter, METH_VARARGS|METH_KEYWORDS, "ApplyLimiter(EulerSystem self, GridFunction solution, int dim, double gamma, int num_equation, Vector avgs, Vector d_min, Vector d_max)"},
 	 { "EulerSystem_Mult", (PyCFunction)(void(*)(void))_wrap_EulerSystem_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(EulerSystem self, Vector x, Vector y)"},
 	 { "delete_EulerSystem", _wrap_delete_EulerSystem, METH_O, "delete_EulerSystem(EulerSystem self)"},
 	 { "EulerSystem_swigregister", EulerSystem_swigregister, METH_O, NULL},
