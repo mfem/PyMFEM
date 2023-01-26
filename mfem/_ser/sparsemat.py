@@ -73,7 +73,6 @@ import mfem._ser.vector
 import mfem._ser.operators
 import mfem._ser.matrix
 import mfem._ser.densemat
-import mfem._ser.globals
 
 def RAP_P(A, R, ORAP):
     r"""RAP_P(SparseMatrix A, SparseMatrix R, SparseMatrix ORAP) -> SparseMatrix"""
@@ -153,6 +152,11 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
 
 
         _sparsemat.SparseMatrix_swiginit(self, _sparsemat.new_SparseMatrix(*args))
+
+    def OverrideSize(self, height_, width_):
+        r"""OverrideSize(SparseMatrix self, int height_, int width_)"""
+        return _sparsemat.SparseMatrix_OverrideSize(self, height_, width_)
+    OverrideSize = _swig_new_instance_method(_sparsemat.SparseMatrix_OverrideSize)
 
     def UseGPUSparse(self, useGPUSparse_=True):
         r"""UseGPUSparse(SparseMatrix self, bool useGPUSparse_=True)"""

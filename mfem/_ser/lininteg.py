@@ -92,6 +92,21 @@ import mfem._ser.fe_ser
 import mfem._ser.eltrans
 import mfem._ser.coefficient
 import mfem._ser.symmat
+import mfem._ser.fespace
+import mfem._ser.mesh
+import mfem._ser.sort_pairs
+import mfem._ser.ncmesh
+import mfem._ser.gridfunc
+import mfem._ser.bilininteg
+import mfem._ser.fe_coll
+import mfem._ser.linearform
+import mfem._ser.nonlininteg
+import mfem._ser.vertex
+import mfem._ser.vtk
+import mfem._ser.std_vectors
+import mfem._ser.doftrans
+import mfem._ser.handle
+import mfem._ser.restriction
 class LinearFormIntegrator(object):
     r"""Proxy of C++ mfem::LinearFormIntegrator class."""
 
@@ -100,6 +115,16 @@ class LinearFormIntegrator(object):
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
+
+    def SupportsDevice(self):
+        r"""SupportsDevice(LinearFormIntegrator self) -> bool"""
+        return _lininteg.LinearFormIntegrator_SupportsDevice(self)
+    SupportsDevice = _swig_new_instance_method(_lininteg.LinearFormIntegrator_SupportsDevice)
+
+    def AssembleDevice(self, fes, markers, b):
+        r"""AssembleDevice(LinearFormIntegrator self, FiniteElementSpace fes, intArray markers, Vector b)"""
+        return _lininteg.LinearFormIntegrator_AssembleDevice(self, fes, markers, b)
+    AssembleDevice = _swig_new_instance_method(_lininteg.LinearFormIntegrator_AssembleDevice)
 
     def AssembleRHSElementVect(self, *args):
         r"""
@@ -170,6 +195,16 @@ class DomainLFIntegrator(DeltaLFIntegrator):
 
 
 
+    def SupportsDevice(self):
+        r"""SupportsDevice(DomainLFIntegrator self) -> bool"""
+        return _lininteg.DomainLFIntegrator_SupportsDevice(self)
+    SupportsDevice = _swig_new_instance_method(_lininteg.DomainLFIntegrator_SupportsDevice)
+
+    def AssembleDevice(self, fes, markers, b):
+        r"""AssembleDevice(DomainLFIntegrator self, FiniteElementSpace fes, intArray markers, Vector b)"""
+        return _lininteg.DomainLFIntegrator_AssembleDevice(self, fes, markers, b)
+    AssembleDevice = _swig_new_instance_method(_lininteg.DomainLFIntegrator_AssembleDevice)
+
     def AssembleDeltaElementVect(self, fe, Trans, elvect):
         r"""AssembleDeltaElementVect(DomainLFIntegrator self, FiniteElement fe, ElementTransformation Trans, Vector elvect)"""
         return _lininteg.DomainLFIntegrator_AssembleDeltaElementVect(self, fe, Trans, elvect)
@@ -202,6 +237,16 @@ class DomainLFGradIntegrator(DeltaLFIntegrator):
 
 
 
+
+    def SupportsDevice(self):
+        r"""SupportsDevice(DomainLFGradIntegrator self) -> bool"""
+        return _lininteg.DomainLFGradIntegrator_SupportsDevice(self)
+    SupportsDevice = _swig_new_instance_method(_lininteg.DomainLFGradIntegrator_SupportsDevice)
+
+    def AssembleDevice(self, fes, markers, b):
+        r"""AssembleDevice(DomainLFGradIntegrator self, FiniteElementSpace fes, intArray markers, Vector b)"""
+        return _lininteg.DomainLFGradIntegrator_AssembleDevice(self, fes, markers, b)
+    AssembleDevice = _swig_new_instance_method(_lininteg.DomainLFGradIntegrator_AssembleDevice)
 
     def AssembleDeltaElementVect(self, fe, Trans, elvect):
         r"""AssembleDeltaElementVect(DomainLFGradIntegrator self, FiniteElement fe, ElementTransformation Trans, Vector elvect)"""
@@ -320,6 +365,16 @@ class VectorDomainLFIntegrator(DeltaLFIntegrator):
 
 
 
+    def SupportsDevice(self):
+        r"""SupportsDevice(VectorDomainLFIntegrator self) -> bool"""
+        return _lininteg.VectorDomainLFIntegrator_SupportsDevice(self)
+    SupportsDevice = _swig_new_instance_method(_lininteg.VectorDomainLFIntegrator_SupportsDevice)
+
+    def AssembleDevice(self, fes, markers, b):
+        r"""AssembleDevice(VectorDomainLFIntegrator self, FiniteElementSpace fes, intArray markers, Vector b)"""
+        return _lininteg.VectorDomainLFIntegrator_AssembleDevice(self, fes, markers, b)
+    AssembleDevice = _swig_new_instance_method(_lininteg.VectorDomainLFIntegrator_AssembleDevice)
+
     def AssembleDeltaElementVect(self, fe, Trans, elvect):
         r"""AssembleDeltaElementVect(VectorDomainLFIntegrator self, FiniteElement fe, ElementTransformation Trans, Vector elvect)"""
         return _lininteg.VectorDomainLFIntegrator_AssembleDeltaElementVect(self, fe, Trans, elvect)
@@ -337,6 +392,44 @@ class VectorDomainLFIntegrator(DeltaLFIntegrator):
 
 # Register VectorDomainLFIntegrator in _lininteg:
 _lininteg.VectorDomainLFIntegrator_swigregister(VectorDomainLFIntegrator)
+
+class VectorDomainLFGradIntegrator(DeltaLFIntegrator):
+    r"""Proxy of C++ mfem::VectorDomainLFGradIntegrator class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, QF):
+        r"""__init__(VectorDomainLFGradIntegrator self, VectorCoefficient QF) -> VectorDomainLFGradIntegrator"""
+        _lininteg.VectorDomainLFGradIntegrator_swiginit(self, _lininteg.new_VectorDomainLFGradIntegrator(QF))
+
+    def SupportsDevice(self):
+        r"""SupportsDevice(VectorDomainLFGradIntegrator self) -> bool"""
+        return _lininteg.VectorDomainLFGradIntegrator_SupportsDevice(self)
+    SupportsDevice = _swig_new_instance_method(_lininteg.VectorDomainLFGradIntegrator_SupportsDevice)
+
+    def AssembleDevice(self, fes, markers, b):
+        r"""AssembleDevice(VectorDomainLFGradIntegrator self, FiniteElementSpace fes, intArray markers, Vector b)"""
+        return _lininteg.VectorDomainLFGradIntegrator_AssembleDevice(self, fes, markers, b)
+    AssembleDevice = _swig_new_instance_method(_lininteg.VectorDomainLFGradIntegrator_AssembleDevice)
+
+    def AssembleDeltaElementVect(self, fe, Trans, elvect):
+        r"""AssembleDeltaElementVect(VectorDomainLFGradIntegrator self, FiniteElement fe, ElementTransformation Trans, Vector elvect)"""
+        return _lininteg.VectorDomainLFGradIntegrator_AssembleDeltaElementVect(self, fe, Trans, elvect)
+    AssembleDeltaElementVect = _swig_new_instance_method(_lininteg.VectorDomainLFGradIntegrator_AssembleDeltaElementVect)
+
+    def AssembleRHSElementVect(self, *args):
+        r"""
+        AssembleRHSElementVect(VectorDomainLFGradIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
+        AssembleRHSElementVect(VectorDomainLFGradIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
+        AssembleRHSElementVect(VectorDomainLFGradIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)
+        """
+        return _lininteg.VectorDomainLFGradIntegrator_AssembleRHSElementVect(self, *args)
+    AssembleRHSElementVect = _swig_new_instance_method(_lininteg.VectorDomainLFGradIntegrator_AssembleRHSElementVect)
+    __swig_destroy__ = _lininteg.delete_VectorDomainLFGradIntegrator
+
+# Register VectorDomainLFGradIntegrator in _lininteg:
+_lininteg.VectorDomainLFGradIntegrator_swigregister(VectorDomainLFGradIntegrator)
 
 class VectorBoundaryLFIntegrator(LinearFormIntegrator):
     r"""Proxy of C++ mfem::VectorBoundaryLFIntegrator class."""
@@ -642,6 +735,44 @@ class DGElasticityDirichletLFIntegrator(LinearFormIntegrator):
 
 # Register DGElasticityDirichletLFIntegrator in _lininteg:
 _lininteg.DGElasticityDirichletLFIntegrator_swigregister(DGElasticityDirichletLFIntegrator)
+
+class WhiteGaussianNoiseDomainLFIntegrator(LinearFormIntegrator):
+    r"""Proxy of C++ mfem::WhiteGaussianNoiseDomainLFIntegrator class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+
+    def SetSeed(self, seed):
+        r"""SetSeed(WhiteGaussianNoiseDomainLFIntegrator self, int seed)"""
+        return _lininteg.WhiteGaussianNoiseDomainLFIntegrator_SetSeed(self, seed)
+    SetSeed = _swig_new_instance_method(_lininteg.WhiteGaussianNoiseDomainLFIntegrator_SetSeed)
+
+    def AssembleRHSElementVect(self, *args):
+        r"""
+        AssembleRHSElementVect(WhiteGaussianNoiseDomainLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
+        AssembleRHSElementVect(WhiteGaussianNoiseDomainLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
+        AssembleRHSElementVect(WhiteGaussianNoiseDomainLFIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elvect)
+        AssembleRHSElementVect(WhiteGaussianNoiseDomainLFIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elvect)
+        """
+        return _lininteg.WhiteGaussianNoiseDomainLFIntegrator_AssembleRHSElementVect(self, *args)
+    AssembleRHSElementVect = _swig_new_instance_method(_lininteg.WhiteGaussianNoiseDomainLFIntegrator_AssembleRHSElementVect)
+
+    def SaveFactors(self, NE):
+        r"""SaveFactors(WhiteGaussianNoiseDomainLFIntegrator self, int NE)"""
+        return _lininteg.WhiteGaussianNoiseDomainLFIntegrator_SaveFactors(self, NE)
+    SaveFactors = _swig_new_instance_method(_lininteg.WhiteGaussianNoiseDomainLFIntegrator_SaveFactors)
+
+    def ResetFactors(self, NE):
+        r"""ResetFactors(WhiteGaussianNoiseDomainLFIntegrator self, int NE)"""
+        return _lininteg.WhiteGaussianNoiseDomainLFIntegrator_ResetFactors(self, NE)
+    ResetFactors = _swig_new_instance_method(_lininteg.WhiteGaussianNoiseDomainLFIntegrator_ResetFactors)
+    __swig_destroy__ = _lininteg.delete_WhiteGaussianNoiseDomainLFIntegrator
+
+# Register WhiteGaussianNoiseDomainLFIntegrator in _lininteg:
+_lininteg.WhiteGaussianNoiseDomainLFIntegrator_swigregister(WhiteGaussianNoiseDomainLFIntegrator)
 
 class VectorQuadratureLFIntegrator(LinearFormIntegrator):
     r"""Proxy of C++ mfem::VectorQuadratureLFIntegrator class."""

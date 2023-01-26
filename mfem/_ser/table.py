@@ -217,6 +217,66 @@ class Table(object):
         return _table.Table_GetJMemory(self, *args)
     GetJMemory = _swig_new_instance_method(_table.Table_GetJMemory)
 
+    def ReadI(self, on_dev=True):
+        r"""ReadI(Table self, bool on_dev=True) -> int const *"""
+        return _table.Table_ReadI(self, on_dev)
+    ReadI = _swig_new_instance_method(_table.Table_ReadI)
+
+    def WriteI(self, on_dev=True):
+        r"""WriteI(Table self, bool on_dev=True) -> int *"""
+        return _table.Table_WriteI(self, on_dev)
+    WriteI = _swig_new_instance_method(_table.Table_WriteI)
+
+    def ReadWriteI(self, on_dev=True):
+        r"""ReadWriteI(Table self, bool on_dev=True) -> int *"""
+        return _table.Table_ReadWriteI(self, on_dev)
+    ReadWriteI = _swig_new_instance_method(_table.Table_ReadWriteI)
+
+    def HostReadI(self):
+        r"""HostReadI(Table self) -> int const *"""
+        return _table.Table_HostReadI(self)
+    HostReadI = _swig_new_instance_method(_table.Table_HostReadI)
+
+    def HostWriteI(self):
+        r"""HostWriteI(Table self) -> int *"""
+        return _table.Table_HostWriteI(self)
+    HostWriteI = _swig_new_instance_method(_table.Table_HostWriteI)
+
+    def HostReadWriteI(self):
+        r"""HostReadWriteI(Table self) -> int *"""
+        return _table.Table_HostReadWriteI(self)
+    HostReadWriteI = _swig_new_instance_method(_table.Table_HostReadWriteI)
+
+    def ReadJ(self, on_dev=True):
+        r"""ReadJ(Table self, bool on_dev=True) -> int const *"""
+        return _table.Table_ReadJ(self, on_dev)
+    ReadJ = _swig_new_instance_method(_table.Table_ReadJ)
+
+    def WriteJ(self, on_dev=True):
+        r"""WriteJ(Table self, bool on_dev=True) -> int *"""
+        return _table.Table_WriteJ(self, on_dev)
+    WriteJ = _swig_new_instance_method(_table.Table_WriteJ)
+
+    def ReadWriteJ(self, on_dev=True):
+        r"""ReadWriteJ(Table self, bool on_dev=True) -> int *"""
+        return _table.Table_ReadWriteJ(self, on_dev)
+    ReadWriteJ = _swig_new_instance_method(_table.Table_ReadWriteJ)
+
+    def HostReadJ(self):
+        r"""HostReadJ(Table self) -> int const *"""
+        return _table.Table_HostReadJ(self)
+    HostReadJ = _swig_new_instance_method(_table.Table_HostReadJ)
+
+    def HostWriteJ(self):
+        r"""HostWriteJ(Table self) -> int *"""
+        return _table.Table_HostWriteJ(self)
+    HostWriteJ = _swig_new_instance_method(_table.Table_HostWriteJ)
+
+    def HostReadWriteJ(self):
+        r"""HostReadWriteJ(Table self) -> int *"""
+        return _table.Table_HostReadWriteJ(self)
+    HostReadWriteJ = _swig_new_instance_method(_table.Table_HostReadWriteJ)
+
     def SortRows(self):
         r"""SortRows(Table self)"""
         return _table.Table_SortRows(self)

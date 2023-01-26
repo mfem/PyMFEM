@@ -592,6 +592,11 @@ class Vector(object):
         return _vector.Vector_Randomize(self, seed)
     Randomize = _swig_new_instance_method(_vector.Vector_Randomize)
 
+    def SetGlobalSeed(self, gseed):
+        r"""SetGlobalSeed(Vector self, int gseed)"""
+        return _vector.Vector_SetGlobalSeed(self, gseed)
+    SetGlobalSeed = _swig_new_instance_method(_vector.Vector_SetGlobalSeed)
+
     def Norml2(self):
         r"""Norml2(Vector self) -> double"""
         return _vector.Vector_Norml2(self)

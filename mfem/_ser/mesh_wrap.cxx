@@ -17392,6 +17392,81 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Mesh_GetFaceElementsAndFaces(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  int arg2 ;
+  mfem::Array< int > *arg3 = 0 ;
+  mfem::Array< int > *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"face",  (char *)"elems",  (char *)"faces",  NULL 
+  };
+  int result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:Mesh_GetFaceElementsAndFaces", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_GetFaceElementsAndFaces" "', argument " "1"" of type '" "mfem::Mesh const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Mesh_GetFaceElementsAndFaces" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Mesh_GetFaceElementsAndFaces" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "Mesh_GetFaceElementsAndFaces" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Mesh_GetFaceElementsAndFaces" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Array< int > * >(argp4);
+  {
+    try {
+      result = (int)((mfem::Mesh const *)arg1)->GetFaceElementsAndFaces(arg2,*arg3,*arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Mesh_GetFaceGeometryType(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
@@ -29002,6 +29077,7 @@ static PyMethodDef SwigMethods[] = {
 		"Mesh_GetFaceInfos(Mesh self, int Face, int * Inf1, int * Inf2)\n"
 		"Mesh_GetFaceInfos(Mesh self, int Face, int * Inf1, int * Inf2, int * NCFace)\n"
 		""},
+	 { "Mesh_GetFaceElementsAndFaces", (PyCFunction)(void(*)(void))_wrap_Mesh_GetFaceElementsAndFaces, METH_VARARGS|METH_KEYWORDS, "Mesh_GetFaceElementsAndFaces(Mesh self, int face, intArray elems, intArray faces) -> int"},
 	 { "Mesh_GetFaceGeometryType", (PyCFunction)(void(*)(void))_wrap_Mesh_GetFaceGeometryType, METH_VARARGS|METH_KEYWORDS, "Mesh_GetFaceGeometryType(Mesh self, int Face) -> mfem::Geometry::Type"},
 	 { "Mesh_GetFaceElementType", (PyCFunction)(void(*)(void))_wrap_Mesh_GetFaceElementType, METH_VARARGS|METH_KEYWORDS, "Mesh_GetFaceElementType(Mesh self, int Face) -> mfem::Element::Type"},
 	 { "Mesh_CheckElementOrientation", (PyCFunction)(void(*)(void))_wrap_Mesh_CheckElementOrientation, METH_VARARGS|METH_KEYWORDS, "Mesh_CheckElementOrientation(Mesh self, bool fix_it=True) -> int"},
@@ -29401,6 +29477,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"GetFaceInfos(Mesh self, int Face, int * Inf1, int * Inf2)\n"
 		"GetFaceInfos(Mesh self, int Face, int * Inf1, int * Inf2, int * NCFace)\n"
 		""},
+	 { "Mesh_GetFaceElementsAndFaces", (PyCFunction)(void(*)(void))_wrap_Mesh_GetFaceElementsAndFaces, METH_VARARGS|METH_KEYWORDS, "GetFaceElementsAndFaces(Mesh self, int face, intArray elems, intArray faces) -> int"},
 	 { "Mesh_GetFaceGeometryType", (PyCFunction)(void(*)(void))_wrap_Mesh_GetFaceGeometryType, METH_VARARGS|METH_KEYWORDS, "GetFaceGeometryType(Mesh self, int Face) -> mfem::Geometry::Type"},
 	 { "Mesh_GetFaceElementType", (PyCFunction)(void(*)(void))_wrap_Mesh_GetFaceElementType, METH_VARARGS|METH_KEYWORDS, "GetFaceElementType(Mesh self, int Face) -> mfem::Element::Type"},
 	 { "Mesh_CheckElementOrientation", (PyCFunction)(void(*)(void))_wrap_Mesh_CheckElementOrientation, METH_VARARGS|METH_KEYWORDS, "CheckElementOrientation(Mesh self, bool fix_it=True) -> int"},

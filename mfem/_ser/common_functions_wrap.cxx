@@ -2700,15 +2700,18 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[5]
 #define SWIGTYPE_p_mfem__ArrayT_mfem__SparseMatrix_p_t swig_types[6]
 #define SWIGTYPE_p_mfem__BlockMatrix swig_types[7]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[8]
-#define SWIGTYPE_p_mfem__OutStream swig_types[9]
-#define SWIGTYPE_p_mfem__STable swig_types[10]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[11]
-#define SWIGTYPE_p_mfem__Table swig_types[12]
-#define SWIGTYPE_p_mfem__Vector swig_types[13]
-#define SWIGTYPE_p_std__ostream swig_types[14]
-static swig_type_info *swig_types[16];
-static swig_module_info swig_module = {swig_types, 15, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__CholeskyFactors swig_types[8]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[9]
+#define SWIGTYPE_p_mfem__Factors swig_types[10]
+#define SWIGTYPE_p_mfem__LUFactors swig_types[11]
+#define SWIGTYPE_p_mfem__OutStream swig_types[12]
+#define SWIGTYPE_p_mfem__STable swig_types[13]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[14]
+#define SWIGTYPE_p_mfem__Table swig_types[15]
+#define SWIGTYPE_p_mfem__Vector swig_types[16]
+#define SWIGTYPE_p_std__ostream swig_types[17]
+static swig_type_info *swig_types[19];
+static swig_module_info swig_module = {swig_types, 18, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5345,6 +5348,12 @@ static void *_p_mfem__STableTo_p_mfem__Table(void *x, int *SWIGUNUSEDPARM(newmem
 static void *_p_mfem__OutStreamTo_p_std__ostream(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((std::ostream *)  ((mfem::OutStream *) x));
 }
+static void *_p_mfem__LUFactorsTo_p_mfem__Factors(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Factors *)  ((mfem::LUFactors *) x));
+}
+static void *_p_mfem__CholeskyFactorsTo_p_mfem__Factors(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Factors *)  ((mfem::CholeskyFactors *) x));
+}
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_bool = {"_p_bool", "bool *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
@@ -5354,6 +5363,9 @@ static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__SparseMatrix_p_t = {"_p_mfem__ArrayT_mfem__SparseMatrix_p_t", "mfem::Array< mfem::SparseMatrix * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__BlockMatrix = {"_p_mfem__BlockMatrix", "mfem::BlockMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DenseMatrix = {"_p_mfem__DenseMatrix", "mfem::DenseMatrix *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__Factors = {"_p_mfem__Factors", "mfem::Factors *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__LUFactors = {"_p_mfem__LUFactors", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__CholeskyFactors = {"_p_mfem__CholeskyFactors", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__SparseMatrix = {"_p_mfem__SparseMatrix", "mfem::SparseMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Table = {"_p_mfem__Table", "mfem::Table *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__STable = {"_p_mfem__STable", 0, 0, 0, 0, 0};
@@ -5370,7 +5382,10 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__ArrayT_int_t,
   &_swigt__p_mfem__ArrayT_mfem__SparseMatrix_p_t,
   &_swigt__p_mfem__BlockMatrix,
+  &_swigt__p_mfem__CholeskyFactors,
   &_swigt__p_mfem__DenseMatrix,
+  &_swigt__p_mfem__Factors,
+  &_swigt__p_mfem__LUFactors,
   &_swigt__p_mfem__OutStream,
   &_swigt__p_mfem__STable,
   &_swigt__p_mfem__SparseMatrix,
@@ -5388,6 +5403,9 @@ static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__Arra
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__SparseMatrix_p_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__SparseMatrix_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__BlockMatrix[] = {  {&_swigt__p_mfem__BlockMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {  {&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__LUFactors[] = {{&_swigt__p_mfem__LUFactors, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__CholeskyFactors[] = {{&_swigt__p_mfem__CholeskyFactors, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Factors[] = {  {&_swigt__p_mfem__Factors, 0, 0, 0},  {&_swigt__p_mfem__LUFactors, _p_mfem__LUFactorsTo_p_mfem__Factors, 0, 0},  {&_swigt__p_mfem__CholeskyFactors, _p_mfem__CholeskyFactorsTo_p_mfem__Factors, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SparseMatrix[] = {  {&_swigt__p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__STable[] = {{&_swigt__p_mfem__STable, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Table[] = {  {&_swigt__p_mfem__STable, _p_mfem__STableTo_p_mfem__Table, 0, 0},  {&_swigt__p_mfem__Table, 0, 0, 0},{0, 0, 0, 0}};
@@ -5404,7 +5422,10 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__ArrayT_int_t,
   _swigc__p_mfem__ArrayT_mfem__SparseMatrix_p_t,
   _swigc__p_mfem__BlockMatrix,
+  _swigc__p_mfem__CholeskyFactors,
   _swigc__p_mfem__DenseMatrix,
+  _swigc__p_mfem__Factors,
+  _swigc__p_mfem__LUFactors,
   _swigc__p_mfem__OutStream,
   _swigc__p_mfem__STable,
   _swigc__p_mfem__SparseMatrix,

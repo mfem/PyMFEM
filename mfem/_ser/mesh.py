@@ -826,6 +826,11 @@ class Mesh(object):
 
 
 
+    def GetFaceElementsAndFaces(self, face, elems, faces):
+        r"""GetFaceElementsAndFaces(Mesh self, int face, intArray elems, intArray faces) -> int"""
+        return _mesh.Mesh_GetFaceElementsAndFaces(self, face, elems, faces)
+    GetFaceElementsAndFaces = _swig_new_instance_method(_mesh.Mesh_GetFaceElementsAndFaces)
+
     def GetFaceGeometryType(self, Face):
         r"""GetFaceGeometryType(Mesh self, int Face) -> mfem::Geometry::Type"""
         return _mesh.Mesh_GetFaceGeometryType(self, Face)

@@ -74,7 +74,6 @@ import mfem._ser.sparsemat
 import mfem._ser.globals
 import mfem._ser.matrix
 import mfem._ser.densemat
-import mfem._ser.globals
 class ComplexOperator(mfem._ser.operators.Operator):
     r"""Proxy of C++ mfem::ComplexOperator class."""
 
