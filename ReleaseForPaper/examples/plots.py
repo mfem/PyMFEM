@@ -443,7 +443,7 @@ sns.set(style="whitegrid")
 f10, ax10 = plt.subplots(nrows=num_tgts, ncols=1, sharex=True, sharey=True, figsize = (6,10), squeeze=False)
 
 for i in range(num_tgts): # num of rows
-   tgtdf = pd.read_csv(output_dir + '/rl_data_tgt_' + str(all_tgts[i]) + '.csv', index_col=0)
+   tgtdf = pd.read_csv(output_dir + '/rl_data_tgt_' + str(np.round(all_tgts[i],8)) + '.csv', index_col=0)
    rl_tgt_axns = tgtdf.index.to_numpy()
    sns.lineplot(data=rl_tgt_axns, ax = ax10[i][0], marker='o', lw=1.3) # label=r'(AM)$^2$R policy'
    ax10[i][0].set_ylabel(r'$\theta$', fontsize=22)
