@@ -1152,329 +1152,362 @@ try:
                 isinstance(obj, VectorNumbaCoefficient) or
                 isinstance(obj, MatrixNumbaCoefficient))
 
-    class _JIT(object):
-        def _copy_func_and_apply_params(self, f, params):
-            import copy
-            import types
-            import functools
+    def _copy_func_and_apply_params(f, params):
+        import copy
+        import types
+        import functools
 
-            """Based on https://stackoverflow.com/a/13503277/2988730 (@unutbu)"""
-            globals = f.__globals__.copy()
-            for k in params:
-                globals[k] = params[k]
-            g = types.FunctionType(f.__code__, globals, name=f.__name__,
-                                   argdefs=f.__defaults__, closure=f.__closure__)
-            g = functools.update_wrapper(g, f)
-            g.__module__ = f.__module__
-            g.__kwdefaults__ = copy.copy(f.__kwdefaults__)
-            return g
+        """Based on https://stackoverflow.com/a/13503277/2988730 (@unutbu)"""
+        globals = f.__globals__.copy()
+        for k in params:
+            globals[k] = params[k]
+        g = types.FunctionType(f.__code__, globals, name=f.__name__,
+                               argdefs=f.__defaults__, closure=f.__closure__)
+        g = functools.update_wrapper(g, f)
+        g.__module__ = f.__module__
+        g.__kwdefaults__ = copy.copy(f.__kwdefaults__)
+        return g
+
+    class _JIT(object):
 
         def func(self, sig, params):
             def dec(func):
                 from numba import jit
-                gfunc=self._copy_func_and_apply_params(func, params)
+                gfunc=_copy_func_and_apply_params(func, params)
                 ff = jit(sig)(gfunc)
                 return ff
             return dec
 
-        def scalar(self, td=False, params=None, complex=False, dependency=None,
+        @staticmethod
+        def scalar(func=None, td=False, params=None, complex=False, dependency=None,
                    interface="simple", sdim=None, debug=False):
-            if dependency is None:
-                dependency = []
-            if params is None:
-                params = {}
-            params["sdim"] = sdim
-
-            def dec(func):
-                from numba import cfunc, njit
-
-                setting = get_setting(1, complex, dependency, td)
-
-                if interface=="c++":
-                    sig = generate_signature_scalar(setting)
-                elif interface=="simple":
-                    sig = generate_signature_scalar(setting)
-                else:
-                    sig = interface[1](setting)
-
-                if debug:
-                    print("(DEBUG) signature for function:", sig)
-
-                gfunc=self._copy_func_and_apply_params(func, params)
-                ff = njit(sig)(gfunc)
-
-                if complex:
-                    outtype = types.complex128
-                else:
-                    outtype = types.double
-
-                if td:
-                    caller_sig = outtype(types.CPointer(types.double),
-                                         types.int32,
-                                         types.double,
-                                         types.CPointer(types.voidptr))
-                else:
-                    caller_sig = outtype(types.CPointer(types.double),
-                                         types.int32,
-                                        types.CPointer(types.voidptr))
-
-                if interface=="c++":
-                     caller_txt = generate_caller_scalar(setting)
-                elif interface=="simple":
-                     caller_txt = generate_caller_scalar(setting)
-                else:
-                  caller_txt = interface[0](setting)
-
-                if debug:
-                     print("(DEBUG) generated caller function:\n", caller_txt)
-
-                exec(caller_txt, globals(), locals())
-                caller_params = {"inner_func": ff, "carray":carray, "farray":farray}
-                caller_func = self._copy_func_and_apply_params(locals()["_caller"], caller_params)
-                ff = cfunc(caller_sig)(caller_func)
-
-                if complex:
-                     coeff = GenerateScalarNumbaCoefficient(ff, td, 1)
-                     coeff.SetOutComplex(setting["output"])
-
-                     coeff.real = GenerateScalarNumbaCoefficient(ff, td, 1)
-                     coeff.imag = GenerateScalarNumbaCoefficient(ff, td, 2)
-                     coeffs = (coeff, coeff.real, coeff.imag)
-                else:
-                     coeff = GenerateScalarNumbaCoefficient(ff, td, 0)
-                     coeff.SetOutComplex(setting["output"])
-                     coeffs = (coeff, )
-
-                for c in coeffs:
-                     c.SetIsDepComplex(setting["isdepcomplex"])
-                     c.SetKinds(setting["kinds"])
-                     SetNumbaCoefficientDependency(c,
-                                                   setting["s_coeffs"],
-                                                   setting["v_coeffs"],
-                                                   setting["m_coeffs"],
-                                                   setting["ns_coeffs"],
-                                                   setting["nv_coeffs"],
-                                                   setting["nm_coeffs"])
-                     c._dependency_link = dependency
-                return coeff
-            return dec
-
-        def vector(self, vdim=None, shape=None, td=False, params=None,
+            def wrapper(func):
+                def dec(*args, **kwargs):
+                    return _scalar(*args, **kwargs)
+                return dec(func)
+            if func:
+                return wrapper(func)
+            else:
+                return wrapper
+        @staticmethod
+        def vector(func=None, vdim=None, shape=None, td=False, params=None,
                    complex=False, dependency=None, interface="simple", sdim=None, debug=False):
+            def wrapper(func):
+                def dec(*args, **kwargs):
+                    return _vector(*args, **kwargs)
+                return dec(func)
+            if func:
+                return wrapper(func)
+            else:
+                return wrapper
 
-            assert (vdim is not None or shape is not None), "vdim or shape must be given"
+        @staticmethod
+        def matrix(func=None, height=None, width=None, shape=None, td=False, params=None,
+            complex=False, dependency=None, interface="simple", sdim=None, debug=False):
+            def wrapper(func):
+                def dec(*args, **kwargs):
+                    return _matrixr(*args, **kwargs)
+                return dec(func)
+            if func:
+                return wrapper(func)
+            else:
+                return wrapper
 
-            if vdim is not None and shape is None:
-                shape = (vdim, )
-            if vdim is None and shape is not None:
-                vdim = shape[0]
-
-            assert vdim == shape[0], "vdim and shape are not consistent"
-
-            if dependency is None:
-                dependency = []
-            if params is None:
-                params = {}
-            params["shape"] = shape
-            params["vdim"] = vdim
-
-            if sdim is not None:
-                # optional parameter to use sdim in a user function
-                params["sdim"] = sdim
-
-            def dec(func):
-                from numba import cfunc, njit
-
-                setting = get_setting(shape, complex, dependency, td)
-
-                if interface == "simple":
-                    sig = generate_signature_array(setting)
-                elif interface == "c++":
-                    sig = generate_signature_array_oldstyle(setting)
-                else:
-                    sig = interface[1](setting)
-
-                if debug:
-                    print("(DEBUG) signature for function:", sig)
-
-                gfunc=self._copy_func_and_apply_params(func, params)
-                ff = njit(sig)(gfunc)
-
-                if complex:
-                    outtype = types.complex128
-                else:
-                    outtype = types.double
-
-                if td:
-                    caller_sig = types.void(types.CPointer(types.double),
-                                            types.int32,
-                                            types.double,
-                                            types.CPointer(types.voidptr),
-                                            types.CPointer(outtype))
-                else:
-                    caller_sig = types.void(types.CPointer(types.double),
-                                            types.int32,
-                                            types.CPointer(types.voidptr),
-                                            types.CPointer(outtype))
-
-                if interface == "simple":
-                    caller_txt = generate_caller_array(setting)
-                elif interface == "c++":
-                    caller_txt = generate_caller_array_oldstyle(setting)
-                else:
-                    caller_txt = interface[0](setting)
-
-                if debug:
-                     print("(DEBUG) generated caller function:\n", caller_txt)
-
-                exec(caller_txt, globals(), locals())
-
-                caller_params = {"inner_func": ff, "np":np, "shape":shape,
-                                 "carray":carray, "farray":farray}
-
-                if vdim is not None:
-                    caller_params["vdim"] = vdim
-
-                caller_func = self._copy_func_and_apply_params(locals()["_caller"], caller_params)
-                ff = cfunc(caller_sig)(caller_func)
-
-                if complex:
-                     coeff = GenerateVectorNumbaCoefficient(ff, shape[0], td, 1)
-                     coeff.SetOutComplex(setting["output"])
-
-                     coeff.real = GenerateVectorNumbaCoefficient(ff, shape[0], td, 1)
-                     coeff.imag = GenerateVectorNumbaCoefficient(ff, shape[0], td, 2)
-                     coeffs = (coeff, coeff.real, coeff.imag)
-                else:
-                     coeff =  GenerateVectorNumbaCoefficient(ff, shape[0], td, 0)
-                     coeff.SetOutComplex(setting["output"])
-                     coeffs = (coeff, )
-
-                for c in coeffs:
-                     c.SetIsDepComplex(setting["isdepcomplex"])
-                     c.SetKinds(setting["kinds"])
-                     SetNumbaCoefficientDependency(c,
-                                                   setting["s_coeffs"],
-                                                   setting["v_coeffs"],
-                                                   setting["m_coeffs"],
-                                                   setting["ns_coeffs"],
-                                                   setting["nv_coeffs"],
-                                                   setting["nm_coeffs"])
-                     c._dependency_link = dependency
-                return coeff
-            return dec
-
-        def matrix(self, height=None, width=None, shape=None, td=False, params=None,
-                   complex=False, dependency=None, interface="simple", sdim=None, debug=False):
-
-            if (width is None and height is not None or
-                width is not None and height is None) :
-                assert False, "height and width must be used together"
-
-            assert (width is not None or shape is not None), "w/h or shape must be given"
-
-            if width is not None and shape is None:
-                shape = (width, height)
-            if height is None and width is None and shape is not None:
-                width = shape[0]
-                height = shape[1]
-            assert height == shape[0], "height and shape[0] are not consistent"
-            assert width == shape[1], "width and shape[1] are not consistent"
-
-            if shape[0] != shape[1]:
-                import warnings
-                warning.warn("Rectangular matrix coefficient is experimental", UserWarning)
-		  
-            if dependency is None:
-                dependency = []
-            if params is None:
-                params = {}
-            params["sdim"] = sdim
-            params["shape"] = shape
-            params["width"] = width
-            params["height"] = height
-
-            def dec(func):
-                from numba import cfunc, njit
-
-                setting = get_setting(shape, complex, dependency, td)
-
-                if interface == "simple":
-                    sig = generate_signature_array(setting)
-                elif interface == "c++":
-                    sig = generate_signature_array_oldstyle(setting)
-                else:
-                    sig = interface[1](setting)
-
-                if debug:
-                    print("(DEBUG) signature for function:", sig)
-
-                gfunc=self._copy_func_and_apply_params(func, params)
-                ff = njit(sig)(gfunc)
-
-                if complex:
-                    outtype = types.complex128
-                else:
-                    outtype = types.double
-                if td:
-                    caller_sig = types.void(types.CPointer(types.double),
-                                            types.int32,
-                                            types.double,
-                                            types.CPointer(types.voidptr),
-                                            types.CPointer(outtype))
-                else:
-                    caller_sig = types.void(types.CPointer(types.double),
-                                            types.int32,
-                                            types.CPointer(types.voidptr),
-                                            types.CPointer(outtype))
-
-                if interface == "simple":
-                    caller_txt = generate_caller_array(setting)
-                elif interface == "c++":
-                    caller_txt = generate_caller_array_oldstyle(setting)
-                else:
-                    caller_txt = interface[0](setting)
-
-                if debug:
-                     print("(DEBUG) generated caller function:\n", caller_txt)
-
-                exec(caller_txt, globals(), locals())
-
-                caller_params = {"inner_func": ff, "np":np, "shape":shape,
-                                 "carray":carray, "farray":farray}
-                caller_func = self._copy_func_and_apply_params(locals()["_caller"], caller_params)
-                ff = cfunc(caller_sig)(caller_func)
-
-                if complex:
-                     coeff = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 1)
-                     coeff.SetOutComplex(setting["output"])
-
-                     coeff.real = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 1)
-                     coeff.imag = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 2)
-                     coeffs = (coeff, coeff.real, coeff.imag)
-
-                else:
-                     coeff = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 0)
-                     coeff.SetOutComplex(setting["output"])
-                     coeffs = (coeff, )
-
-                for c in coeffs:
-                     c.SetIsDepComplex(setting["isdepcomplex"])
-                     c.SetKinds(setting["kinds"])
-                     SetNumbaCoefficientDependency(c,
-                                                   setting["s_coeffs"],
-                                                   setting["v_coeffs"],
-                                                   setting["m_coeffs"],
-                                                   setting["ns_coeffs"],
-                                                   setting["nv_coeffs"],
-                                                   setting["nm_coeffs"])
-                     c._dependency_link = dependency
-                return coeff
-            return dec
     jit = _JIT()
 except ImportError:
     pass
 except BaseError:
     assert False, "Failed setting Numba signatures by an error other than ImportError"
+
+def _scalar(func, td=False, params=None, complex=False, dependency=None,
+            interface="simple", sdim=None, debug=False):
+    if dependency is None:
+        dependency = []
+    if params is None:
+        params = {}
+    params["sdim"] = sdim
+
+    from numba import cfunc, njit
+
+    setting = get_setting(1, complex, dependency, td)
+
+    if interface=="c++":
+        sig = generate_signature_scalar(setting)
+    elif interface=="simple":
+        sig = generate_signature_scalar(setting)
+    else:
+        sig = interface[1](setting)
+
+    if debug:
+        print("(DEBUG) signature for function:", sig)
+
+    gfunc=_copy_func_and_apply_params(func, params)
+    ff = njit(sig)(gfunc)
+
+    if complex:
+        outtype = types.complex128
+    else:
+        outtype = types.double
+
+    if td:
+        caller_sig = outtype(types.CPointer(types.double),
+                             types.int32,
+                             types.double,
+                             types.CPointer(types.voidptr))
+    else:
+        caller_sig = outtype(types.CPointer(types.double),
+                             types.int32,
+                            types.CPointer(types.voidptr))
+
+    if interface=="c++":
+         caller_txt = generate_caller_scalar(setting)
+    elif interface=="simple":
+         caller_txt = generate_caller_scalar(setting)
+    else:
+      caller_txt = interface[0](setting)
+
+    if debug:
+         print("(DEBUG) generated caller function:\n", caller_txt)
+
+    exec(caller_txt, globals(), locals())
+    caller_params = {"inner_func": ff, "carray":carray, "farray":farray}
+    caller_func = _copy_func_and_apply_params(locals()["_caller"], caller_params)
+    ff = cfunc(caller_sig)(caller_func)
+
+    if complex:
+         coeff = GenerateScalarNumbaCoefficient(ff, td, 1)
+         coeff.SetOutComplex(setting["output"])
+
+         coeff.real = GenerateScalarNumbaCoefficient(ff, td, 1)
+         coeff.imag = GenerateScalarNumbaCoefficient(ff, td, 2)
+         coeffs = (coeff, coeff.real, coeff.imag)
+    else:
+         coeff = GenerateScalarNumbaCoefficient(ff, td, 0)
+         coeff.SetOutComplex(setting["output"])
+         coeffs = (coeff, )
+
+    for c in coeffs:
+         c.SetIsDepComplex(setting["isdepcomplex"])
+         c.SetKinds(setting["kinds"])
+         SetNumbaCoefficientDependency(c,
+                                       setting["s_coeffs"],
+                                       setting["v_coeffs"],
+                                       setting["m_coeffs"],
+                                       setting["ns_coeffs"],
+                                       setting["nv_coeffs"],
+                                       setting["nm_coeffs"])
+         c._dependency_link = dependency
+    return coeff
+
+
+def _vector(func, vdim=None, shape=None, td=False, params=None,
+            complex=False, dependency=None, interface="simple", sdim=None, debug=False):
+
+    assert (vdim is not None or shape is not None), "vdim or shape must be given"
+
+    if vdim is not None and shape is None:
+        shape = (vdim, )
+    if vdim is None and shape is not None:
+        vdim = shape[0]
+
+    assert vdim == shape[0], "vdim and shape are not consistent"
+
+    if dependency is None:
+       dependency = []
+    if params is None:
+       params = {}
+    params["shape"] = shape
+    params["vdim"] = vdim
+
+    if sdim is not None:
+       # optional parameter to use sdim in a user function
+       params["sdim"] = sdim
+
+    from numba import cfunc, njit
+
+    setting = get_setting(shape, complex, dependency, td)
+
+    if interface == "simple":
+        sig = generate_signature_array(setting)
+    elif interface == "c++":
+        sig = generate_signature_array_oldstyle(setting)
+    else:
+        sig = interface[1](setting)
+
+    if debug:
+        print("(DEBUG) signature for function:", sig)
+
+    gfunc=_copy_func_and_apply_params(func, params)
+    ff = njit(sig)(gfunc)
+
+    if complex:
+        outtype = types.complex128
+    else:
+        outtype = types.double
+
+    if td:
+        caller_sig = types.void(types.CPointer(types.double),
+                                types.int32,
+                                types.double,
+                                types.CPointer(types.voidptr),
+                                types.CPointer(outtype))
+    else:
+        caller_sig = types.void(types.CPointer(types.double),
+                                types.int32,
+                                types.CPointer(types.voidptr),
+                                types.CPointer(outtype))
+
+    if interface == "simple":
+        caller_txt = generate_caller_array(setting)
+    elif interface == "c++":
+        caller_txt = generate_caller_array_oldstyle(setting)
+    else:
+        caller_txt = interface[0](setting)
+
+    if debug:
+         print("(DEBUG) generated caller function:\n", caller_txt)
+
+    exec(caller_txt, globals(), locals())
+
+    caller_params = {"inner_func": ff, "np":np, "shape":shape,
+                     "carray":carray, "farray":farray}
+
+    if vdim is not None:
+        caller_params["vdim"] = vdim
+
+    caller_func = _copy_func_and_apply_params(locals()["_caller"], caller_params)
+    ff = cfunc(caller_sig)(caller_func)
+
+    if complex:
+         coeff = GenerateVectorNumbaCoefficient(ff, shape[0], td, 1)
+         coeff.SetOutComplex(setting["output"])
+
+         coeff.real = GenerateVectorNumbaCoefficient(ff, shape[0], td, 1)
+         coeff.imag = GenerateVectorNumbaCoefficient(ff, shape[0], td, 2)
+         coeffs = (coeff, coeff.real, coeff.imag)
+    else:
+         coeff =  GenerateVectorNumbaCoefficient(ff, shape[0], td, 0)
+         coeff.SetOutComplex(setting["output"])
+         coeffs = (coeff, )
+
+    for c in coeffs:
+         c.SetIsDepComplex(setting["isdepcomplex"])
+         c.SetKinds(setting["kinds"])
+         SetNumbaCoefficientDependency(c,
+                                       setting["s_coeffs"],
+                                       setting["v_coeffs"],
+                                       setting["m_coeffs"],
+                                       setting["ns_coeffs"],
+                                       setting["nv_coeffs"],
+                                       setting["nm_coeffs"])
+         c._dependency_link = dependency
+    return coeff
+
+
+def _matrix(func, height=None, width=None, shape=None, td=False, params=None,
+            complex=False, dependency=None, interface="simple", sdim=None, debug=False):
+
+    if (width is None and height is not None or
+        width is not None and height is None) :
+        assert False, "height and width must be used together"
+
+    assert (width is not None or shape is not None), "w/h or shape must be given"
+
+    if width is not None and shape is None:
+        shape = (width, height)
+    if height is None and width is None and shape is not None:
+        width = shape[0]
+        height = shape[1]
+    assert height == shape[0], "height and shape[0] are not consistent"
+    assert width == shape[1], "width and shape[1] are not consistent"
+
+    if shape[0] != shape[1]:
+        import warnings
+        warning.warn("Rectangular matrix coefficient is experimental", UserWarning)
+
+    if dependency is None:
+        dependency = []
+    if params is None:
+        params = {}
+    params["sdim"] = sdim
+    params["shape"] = shape
+    params["width"] = width
+    params["height"] = height
+
+    from numba import cfunc, njit
+
+    setting = get_setting(shape, complex, dependency, td)
+
+    if interface == "simple":
+        sig = generate_signature_array(setting)
+    elif interface == "c++":
+        sig = generate_signature_array_oldstyle(setting)
+    else:
+        sig = interface[1](setting)
+
+    if debug:
+        print("(DEBUG) signature for function:", sig)
+
+    gfunc = _copy_func_and_apply_params(func, params)
+    ff = njit(sig)(gfunc)
+
+    if complex:
+        outtype = types.complex128
+    else:
+        outtype = types.double
+    if td:
+        caller_sig = types.void(types.CPointer(types.double),
+                                types.int32,
+                                types.double,
+                                types.CPointer(types.voidptr),
+                                types.CPointer(outtype))
+    else:
+        caller_sig = types.void(types.CPointer(types.double),
+                                types.int32,
+                                types.CPointer(types.voidptr),
+                                types.CPointer(outtype))
+
+    if interface == "simple":
+        caller_txt = generate_caller_array(setting)
+    elif interface == "c++":
+        caller_txt = generate_caller_array_oldstyle(setting)
+    else:
+        caller_txt = interface[0](setting)
+
+    if debug:
+         print("(DEBUG) generated caller function:\n", caller_txt)
+
+    exec(caller_txt, globals(), locals())
+
+    caller_params = {"inner_func": ff, "np":np, "shape":shape,
+                     "carray":carray, "farray":farray}
+    caller_func = _copy_func_and_apply_params(locals()["_caller"], caller_params)
+    ff = cfunc(caller_sig)(caller_func)
+
+    if complex:
+         coeff = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 1)
+         coeff.SetOutComplex(setting["output"])
+
+         coeff.real = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 1)
+         coeff.imag = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 2)
+         coeffs = (coeff, coeff.real, coeff.imag)
+
+    else:
+         coeff = GenerateMatrixNumbaCoefficient(ff, shape[0], shape[1], td, 0)
+         coeff.SetOutComplex(setting["output"])
+         coeffs = (coeff, )
+
+    for c in coeffs:
+         c.SetIsDepComplex(setting["isdepcomplex"])
+         c.SetKinds(setting["kinds"])
+         SetNumbaCoefficientDependency(c,
+                                       setting["s_coeffs"],
+                                       setting["v_coeffs"],
+                                       setting["m_coeffs"],
+                                       setting["ns_coeffs"],
+                                       setting["nv_coeffs"],
+                                       setting["nm_coeffs"])
+         c._dependency_link = dependency
+    return coeff
 
 %}
