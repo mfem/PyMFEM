@@ -35,7 +35,7 @@ jobs:
              python-version: 3.9
              env: {USE_FLAGS: "001"}
 #
-    runs-on: ${{ matrix.os }}	   
+    runs-on: ${{ matrix.os }}      
     #env: ${{ matrix.env }}
     env: 
        USE_FLAGS: ${{ matrix.env.USE_FLAGS }}
@@ -63,7 +63,7 @@ jobs:
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
         echo "PYTHONPATH:"$PYTHONPATH
 
-        pip install six numpy --verbose	
+        pip install six numpy --verbose 
         if [ "${{matrix.python-version}}" = "3.10" ] ; then
             pip install numba numba-scipy --verbose
             #pip install scipy
@@ -76,13 +76,15 @@ jobs:
         fi
 
         python -c "import sys;print(sys.path)"
-        python -c "import numpy;print(numpy.__file__)"	
+        python -c "import numpy;print(numpy.__file__)"  
 
         which swig  # this default is 4.0.1 
         pip install swig --prefix=~/sandbox
-        export PATH=/usr/local/cuda-${CUDA}/bin:~/sandbox/bin:$PATH	
+        export PATH=/usr/local/cuda-${CUDA}/bin:~/sandbox/bin:$PATH
+        ls ~/sandbox/bin
         which swig
         swig -version
+        ~/sandbox/bin/swig -version
 
         if [ "${USE_FLAGS:0:1}" = "1" ] ; then
             echo $cuda
@@ -96,12 +98,12 @@ jobs:
             #python -m pip install git+https://github.com/mpi4py/mpi4py
             #python -c "import mpi4py;print(mpi4py.get_include())";
         fi
-        ls -l $PYTHONLIB	
+        ls -l $PYTHONLIB        
         
     - name: Build
       run: |
         export PATH=/usr/local/cuda-${CUDA}/bin:~/sandbox/bin:$PATH
-        PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages	
+        PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages        
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
         echo $PATH
         echo $PYTHONPATH
@@ -129,7 +131,7 @@ jobs:
       run: |
 
         export PATH=/usr/local/cuda-${CUDA}/bin:$PATH
-        PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages	
+        PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages        
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
         echo $PATH
         echo $PYTHONPATH
@@ -154,5 +156,5 @@ jobs:
         fi
         if [ "${USE_FLAGS}" = "001" ]; then
            python ../examples/ex1.py -d ceed-cpu
-           python ../examples/ex9.py -d ceed-cpu	   
+           python ../examples/ex9.py -d ceed-cpu           
         fi

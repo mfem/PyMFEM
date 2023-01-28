@@ -238,7 +238,12 @@ def external_install_prefix(verbose=True):
         print("   prefix :", prefix)
 
     if '--user' in sys.argv:
-        paths = (usersite,)
+        path = usersite
+        if not os.path.exists(path):
+            os.makedirs(path)
+        path = os.path.join(path, 'mfem', 'external')
+        return path
+        
     else:
         # when prefix is given...let's borrow pip._internal to find the location ;D
         import pip._internal.locations
@@ -258,7 +263,7 @@ def external_install_prefix(verbose=True):
             sys.prefix + '/local/lib/python%s/site-packages/',
             '/Library/Python/%s/site-packages/',
         ))
-    
+
     for path in paths:
         # if verbose:
         #    print("testing installation path", path)
@@ -1303,6 +1308,7 @@ def configure_install(self):
         build_hypre = build_parallel
         build_metis = build_parallel or enable_suitesparse
 
+        print("ext_prefix", ext_prefix)
         if ext_prefix == '':
             ext_prefix = external_install_prefix()
         hypre_prefix = os.path.join(ext_prefix)
@@ -1463,7 +1469,7 @@ def configure_bdist(self):
 
     mfem_source = './external/mfem'
     ext_prefix = os.path.join(prefix, 'mfem', 'external')
-    print("ext_prefix", ext_prefix)
+    print("ext_prefix(bdist)", ext_prefix)
     hypre_prefix = ext_prefix
     metis_prefix = ext_prefix
 
