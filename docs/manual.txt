@@ -71,7 +71,7 @@ to find more details of the MFEM library.
         v = mfem.Vector(np.array([1,2,3,4.])
 
         Note that when list is passed. Contents of list is copied and data is
-	owned by mfem::Vector. When a NumPy array is passed, data is not copied.
+	owned by mfem::Vector. When a NumPy array is passed, data is NOT copied.
 	mfem::Vector holds the passed NumPy array as _link_to_data attribute,
 	so that python does not garbage collect the NumPy array until mfem::Vector
 	is deleted.

@@ -35,6 +35,7 @@
 '''
 import numpy as np
 import scipy
+from scipy.linalg import eig
 
 import mfem
 if mfem.mfem_mode == 'parallel':
@@ -42,7 +43,7 @@ if mfem.mfem_mode == 'parallel':
     from mfem.par import intArray, doubleArray
 else:
     import mfem.ser as mfem
-    from mfem.ser import intArray, doubleArray    
+    from mfem.ser import intArray, doubleArray
 
 from sys import float_info
 eps = float_info.min
@@ -65,7 +66,7 @@ def RationalApproximation_AAA(val, pt, tol, max_order):
 
     See pg. A1501 of Nakatsukasa et al. [1].
     '''
-    
+
     # number of sample points
     size = val.Size()
     assert pt.Size() == size, "size mismatch"
@@ -75,12 +76,12 @@ def RationalApproximation_AAA(val, pt, tol, max_order):
 
     c_i = mfem.doubleArray()
     C = mfem.DenseMatrix()
-    Ctemp = mfem.DenseMatrix()    
+    Ctemp = mfem.DenseMatrix()
     A = mfem.DenseMatrix()
     Am = mfem.DenseMatrix()
     f_vec = mfem.Vector()
-    
-    # mean of the value vector    
+
+    # mean of the value vector
     mean_val = val.Sum()/size
     R = np.array([mean_val]*size)
 
@@ -92,24 +93,25 @@ def RationalApproximation_AAA(val, pt, tol, max_order):
         # select next support point
         idx = 0
         tmp_max = 0
-        
+
         for j in range(size):
             tmp = abs(val[j] - R[j])
             if tmp > tmp_max:
-               tmp_max = tmp
-               idx = j
+                tmp_max = tmp
+                idx = j
 
         # Append support points and data values
         z.append(pt[idx])
         f.append(val[idx])
 
         # Update index vector
-        J.remove(idx);
+        print("idx", idx, R.shape, len(J))
+        J.remove(idx)
 
         # next column in Cauchy matrix
         C_tmp = [(1.0/(pp-pt[idx]) if pp != pt[idx] else np.inf) for pp in pt]
 
-        c_i.Append(C_tmp);
+        c_i.Append(C_tmp)
         h_C = len(C_tmp)
         w_C = k+1
 
@@ -128,49 +130,50 @@ def RationalApproximation_AAA(val, pt, tol, max_order):
 
         h_Am = len(J)
         w_Am = A.Width()
-        Am.SetSize(h_Am,w_Am)
-        print(h_Am, w_Am)
-        for i in range(h_Am):
-            ii = J[i];
-            for j in range(w_Am):
-                Am[i,j] = A[ii,j]
-        
-        print("AM")
-        from io import StringIO
+        Am.SetSize(h_Am, w_Am)
 
-        output = StringIO()
-        output.precision = 6
-        Am.Print(output)
-        fid = open("AM.dat", 'w')
-        fid.write(output.getvalue())
-        fid.close()
+        for i in range(h_Am):
+            ii = J[i]
+            for j in range(w_Am):
+                Am[i, j] = A[ii, j]
 
         AMM = Am.GetDataArray()
-        print(AMM)
         u, s, vh = np.linalg.svd(AMM, full_matrices=True)
 
         print(AMM.shape, u.shape, s.shape, vh.shape)
 
         #print(u, s, vh)
-        w = vh[k,:]
-        print("w here", s, w)
+        w = vh[k, :]
 
+        N = C.GetDataArray().dot(w*np.array(f))
+        D = C.GetDataArray().dot(w)
+        '''
         # N = C*(w.*f); D = C*w; % numerator and denominator
         aux = mfem.Vector(w)
+        print("w here", s, w)        
         aux *= f_vec;
+        print("w here", s, w)                        
         N = mfem.Vector(C.Height()) # Numerator
         C.Mult(aux, N)
         D = mfem.Vector(C.Height())  # Denominator
+        print("w here", s, w)                
+        print(w, type(w))
         ww = mfem.Vector(w)
+        ww.Print()
         C.Mult(ww, D)
-        D.Print()
+        #D.Print()
+        '''
+        R = val.GetDataArray().copy()
+        for i, ii in enumerate(J):
+            R[ii] = N[ii]/D[ii]
+        verr = val.GetDataArray() - R
 
-        verr = [val[i] - N[ii]/D[ii] for i, ii in enumerate(J)]
-        if np.max(verr) <= tol*np.max(val):
+        if np.max(verr) <= tol*max(val):
             break
-   
+
     return z, f, w
-    
+
+
 def ComputePolesAndZeros(z, f, w):
     '''
     ComputePolesAndZeros: compute the poles  and zeros of the
@@ -187,7 +190,7 @@ def ComputePolesAndZeros(z, f, w):
 
     See pg. A1501 of Nakatsukasa et al. [1].
     '''
-    
+
     # Initialization
     poles = []
     zeros = []
@@ -196,38 +199,43 @@ def ComputePolesAndZeros(z, f, w):
     m = len(w)
     B = np.zeros((m+1, m+1))
     E = np.zeros((m+1, m+1))
-    
-    for i in range(m):
-        B[i,i] = 1.
-        E[0,i] = w[i-1]
-        E[i,0] = 1.
-        E[i,i] = z[i-1]
 
-    evalues = scipy.linalg.eig(E, B)
+    for i in range(m+1):
+        if i == 0:
+            continue
+        B[i, i] = 1.
+        E[0, i] = w[i-1]
+        E[i, 0] = 1.
+        E[i, i] = z[i-1]
+
+    # real part of eigen value
+    evalues = eig(E, B, left=False, right=False).real
     new_poles = evalues[np.isfinite(evalues)]
 
     poles.extend(new_poles)
-    
+
     B = np.zeros((m+1, m+1))
     E = np.zeros((m+1, m+1))
-    for i in range(m):    
-       B[i,i] = 1.;
-       E[0,i] = w[i-1] * f[i-1]
-       E[i,0] = 1.
-       E[i,i] = z[i-1]
+    for i in range(m+1):
+        if i == 0:
+            continue
+        B[i, i] = 1.
+        E[0, i] = w[i-1] * f[i-1]
+        E[i, 0] = 1.
+        E[i, i] = z[i-1]
 
-    evalues = scipy.linalg.eig(E, B)
+    # real part of eigen value
+    evalues = eig(E, B, left=False, right=False).real
     new_zeros = evalues[np.isfinite(evalues)]
 
     zeros.extend(new_zeros)
 
-    sumw = np.sum(w)
-    scale = [ww*ff/sumw for ww, ff in zip(w, f)]
-    
+    scale = np.dot(w, f)/np.sum(w)
+
     return poles, zeros, scale
 
 
-def PartialFractionExpansion(scale, poles, zeros, coeffs):
+def PartialFractionExpansion(scale, poles, zeros):
     '''
     PartialFractionExpansion: compute the partial fraction expansion of the
     rational function f(z) = Σ_i c_i / (z - p_i) from its poles and zeros
@@ -250,19 +258,21 @@ def PartialFractionExpansion(scale, poles, zeros, coeffs):
 
     psize = len(poles)
     zsize = len(zeros)
-    coeffs = [scale]* psize
-    
-    for i in range(psize):
-        tmp_numer=1.0;
-        for j in range(zsize):
-            tmp_numer *= poles[i]-zeros[j];
+    coeffs = [scale] * psize
 
-        tmp_denom=1.0
+    for i in range(psize):
+        tmp_numer = 1.0
+        for j in range(zsize):
+            tmp_numer *= poles[i]-zeros[j]
+
+        tmp_denom = 1.0
         for k in range(psize):
             if k != i:
                 tmp_denom *= poles[i]-poles[k]
-        coeffs[i] *= tmp_numer / tmp_denom;
+
+        coeffs[i] *= tmp_numer / tmp_denom
     return coeffs
+
 
 def ComputePartialFractionApproximation(alpha,
                                         lmax=1000.,
@@ -291,10 +301,9 @@ def ComputePartialFractionApproximation(alpha,
     assert npoints > 2, "npoints must be greater than 2"
     assert lmax > 0,  "lmin must be greater than 0"
     assert tol > 0,  "tol must be greater than 0"
-    
-        
+
     dx = lmax / (npoints-1)
-                      
+
     x = np.arange(npoints)*dx
     val = x**(1-alpha)
 
@@ -313,4 +322,3 @@ def ComputePartialFractionApproximation(alpha,
     coeffs = PartialFractionExpansion(scale, poles, zeros)
 
     return poles, coeffs
-
