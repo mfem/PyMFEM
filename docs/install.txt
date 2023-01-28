@@ -85,6 +85,8 @@ and --mfem-prefix
 --mfemp-prefix : <location>  : (ooptional)specify parallel MFEM location separately
 
 ## Blas and Lapack
+--with-lapack : build MFEM with lapack
+
 <location> is used for CMAKE call to buid MFEM
 --blas_-libraries=<location>
 --lapack-libraries=<location>

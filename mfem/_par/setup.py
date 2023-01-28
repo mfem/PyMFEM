@@ -42,7 +42,7 @@ def get_extensions():
 
     try:
         from setup_local import (mfembuilddir, mfemincdir, mfemsrcdir, mfemlnkdir,
-                                 mfemptpl,
+                                 mfemptpl, build_mfem,
                                  hypreinc, metisinc, hyprelib, metis5lib,
                                  petscinc, petsclib,
                                  cc_par, cxx_par,
@@ -71,6 +71,7 @@ def get_extensions():
         add_pumi = ''
         add_gslibp = ''
         cxx11flag = ''
+        build_mfem = 0
 
     libraries = ['mfem', 'HYPRE', 'metis']
 
@@ -172,13 +173,20 @@ def get_extensions():
     macros = [('TARGET_PY3', '1'),
               ('NPY_NO_DEPRECATED_API', 'NPY_1_7_API_VERSION')]
 
+    if build_mfem:
+        runtime_library_dirs = library_dirs[:]
+        runtime_library_dirs[0] = "$ORIGIN/../external/par/lib"
+    else:
+        runtime_library_dirs = library_dirs
+
+
     ext_modules = [Extension(proxy_names[modules[0]],
                              sources=sources[modules[0]],
                              extra_compile_args=extra_compile_args,
                              extra_link_args=[],
                              include_dirs=include_dirs,
                              library_dirs=library_dirs,
-                             runtime_library_dirs=library_dirs,
+                             runtime_library_dirs=runtime_library_dirs,
                              libraries=libraries,
                              define_macros=macros), ]
 
@@ -188,7 +196,7 @@ def get_extensions():
                                   extra_link_args=[],
                                   include_dirs=include_dirs,
                                   library_dirs=library_dirs,
-                                  runtime_library_dirs=library_dirs,
+                                  runtime_library_dirs=runtime_library_dirs,
                                   libraries=libraries,
                                   define_macros=macros)
                         for name in modules[1:]])

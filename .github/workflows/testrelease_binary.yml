@@ -15,27 +15,23 @@ jobs:
           echo This job does not specify a container.
           echo It runs directly on the virtual machine.
           #
+          git clone https://github.com/mfem/PyMFEM.git
+          cd PyMFEM
+          #
           echo "!!!!!"
           REF=$(echo ${GITHUB_REF#refs/heads/})
           echo $REF
           echo "!!!!!"
-          git clone https://github.com/mfem/PyMFEM.git
-          cd PyMFEM
           git checkout $REF
           #
-          mkdir external
-          cd external
-          git clone https://github.com/mfem/mfem.git
-          cd ..
-          #
           export PATH=/opt/python/cp37-cp37m/bin:$PATH
-          echo $(python -c "import setuptools;print(setuptools.__version__)")
-          pip3 install setuptools==65.5.1
+
           pip3 install wheel six auditwheel twine
           pip3 install numpy==1.21.6
           #if [ -f requirements.txt ]; then
           #   pip3 install -r requirements.txt
           #fi
+
           rm -rf dist/*
           python3 setup.py sdist
           ls -l dist/
@@ -54,45 +50,44 @@ jobs:
       - name: build package
         run: |
           echo It runs in the container instead of the VM.
-          REF=$(echo ${GITHUB_REF#refs/heads/})
-          echo "!!!!!!: "$REF
           #
           git clone https://github.com/mfem/PyMFEM.git
           cd PyMFEM
           #
-          mkdir external
-          cd external
-          git clone https://github.com/mfem/mfem.git
-          cd ..
-          #
+          REF=$(echo ${GITHUB_REF#refs/heads/})
+          echo "!!!!!!: "$REF
           git checkout $REF
           #
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
-          echo $(python -c "import setuptools;print(setuptools.__version__)")
-          pip3 install setuptools==65.5.1
           pip3 install six auditwheel twine
 
           pip3 install numpy==1.21.6
           pip3 install numba-scipy
-          #if [ -f requirements.txt ]; then
-          #   pip3 install -r requirements.txt
-          #fi
+          if [ -f requirements.txt ]; then
+             pip3 install -r requirements.txt
+          fi
+
           CWD=$PWD
-          ls -l
           yum install -y zlib-devel
+          yum install -y chrpath
 
-          python3 setup.py install
-          # python3 -m pip install ./ --verbose	  (this seems okay too)
+          mkdir dist
+
+          # build wheel and check it
+          python3 -m pip wheel ./ --verbose --no-deps
+          pip3 install *.whl
+          cd test
+          python run_examples.py -serial -verbose -ex ex1
+          cd ..
+
           rm -rf dist/*
-          python3 setup.py bdist_wheel
+          export LD_LIBRARY_PATH=${CWD}/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
 
-          export LD_LIBRARY_PATH=${CWD}/PyMFEM/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
-          rm -rf wheelhouse/*
-          auditwheel repair dist/*.whl
+          auditwheel repair *.whl
           rm -rf dist/*
-
           mv wheelhouse/* dist/
+
           ls -l dist/
           python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
           #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*
@@ -110,17 +105,17 @@ jobs:
       - name: build package
         run: |
           echo It runs in the container instead of the VM.
-          REF=$(echo ${GITHUB_REF#refs/heads/})
-          echo "!!!!!!: "$REF
           #
           git clone https://github.com/mfem/PyMFEM.git
           cd PyMFEM
           #
+          REF=$(echo ${GITHUB_REF#refs/heads/})
+          echo "!!!!!!: "$REF
           git checkout $REF
           #
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
-          #pip3 install setuptools==65.5.1
+
           pip3 install six auditwheel twine
           pip3 install numba-scipy
           if [ -f requirements.txt ]; then
@@ -131,19 +126,26 @@ jobs:
 
           apt-get update
           apt-get install -y zlib1g-dbg
+          apt-get install -y chrpath
 
-          python3 -m pip install ./ --verbose
+          mkdir dist
+
+          # build wheel and check it
+          python3 -m pip wheel ./ --verbose --no-deps
+          pip3 install *.whl
+          cd test
+          python run_examples.py -serial -verbose -ex ex1
+          cd ..
 
           rm -rf dist/*
-          python3 setup.py bdist_wheel
-
-          export LD_LIBRARY_PATH=${CWD}/PyMFEM/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
+          export LD_LIBRARY_PATH=${CWD}/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
 
           rm -rf wheelhouse/*
-          auditwheel repair dist/*.whl
+          auditwheel repair *.whl
           rm -rf dist/*
 
           mv wheelhouse/* dist/
+
           ls -l dist/
           python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
           #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*

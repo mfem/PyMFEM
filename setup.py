@@ -49,19 +49,18 @@ repo_releases = {
     # "metis": "https://github.com/KarypisLab/METIS/archive/refs/tags/v5.1.1-DistDGL-v0.5.tar.gz",
     # "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
     "metis": "https://github.com/mfem/tpls/raw/gh-pages/metis-5.1.0.tar.gz",
-    "hypre": "https://github.com/hypre-space/hypre/archive/v2.24.0.tar.gz",
-    "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.10.0.tar.gz",
-    "gslib": "https://github.com/Nek5000/gslib/archive/refs/tags/v1.0.7.tar.gz"}
+    "hypre": "https://github.com/hypre-space/hypre/archive/v2.27.0.tar.gz",
+    "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.11.0.tar.gz",
+    "gslib": "https://github.com/Nek5000/gslib/archive/refs/tags/v1.0.8.tar.gz"}
 
 repos = {"mfem": "https://github.com/mfem/mfem.git",
          "libceed": "https://github.com/CEED/libCEED.git",
          "gklib": "https://github.com/KarypisLab/GKlib",
          "metis": "https://github.com/KarypisLab/METIS", }
 repos_sha = {
-    #    "mfem": "a1f6902ed72552f3e680d1489f1aa6ade2e0d3b2",   # version 4.4
     "mfem": "b7a4b61b5ce80b326a002aebccf7da7ad2432556",   # version 4.5
     "gklib": "a7f8172703cf6e999dd0710eb279bba513da4fec",
-             "metis": "94c03a6e2d1860128c2d0675cbbb86ad4f261256"}
+    "metis": "94c03a6e2d1860128c2d0675cbbb86ad4f261256", }
 
 rootdir = os.path.abspath(os.path.dirname(__file__))
 extdir = os.path.join(rootdir, 'external')
@@ -126,6 +125,8 @@ petsc_prefix = ""
 
 enable_suitesparse = False
 suitesparse_prefix = ""
+
+enable_lapack = False
 blas_libraries = ""
 lapack_libraries = ""
 
@@ -241,7 +242,7 @@ def external_install_prefix(verbose=True):
 
     if '--user' in sys.argv:
         paths = (usersite,)
-    elif prefix != '':
+    else:
         # when prefix is given...let's borrow pip._internal to find the location ;D
         import pip._internal.locations
         path = pip._internal.locations.get_scheme(
@@ -250,7 +251,7 @@ def external_install_prefix(verbose=True):
             os.makedirs(path)
         path = os.path.join(path, 'mfem', 'external')
         return path
-
+    '''
     else:
         py_version = '%s.%s' % (sys.version_info[0], sys.version_info[1])
         paths = (s % (py_version) for s in (
@@ -260,7 +261,7 @@ def external_install_prefix(verbose=True):
             sys.prefix + '/local/lib/python%s/site-packages/',
             '/Library/Python/%s/site-packages/',
         ))
-
+    
     for path in paths:
         # if verbose:
         #    print("testing installation path", path)
@@ -269,6 +270,7 @@ def external_install_prefix(verbose=True):
             return path
     assert False, "no installation path found"
     return None
+    '''
 
 
 def find_command(name):
@@ -822,6 +824,9 @@ def cmake_make_mfem(serial=True):
         cmake_opts['DPETSC_ARCH'] = ""
         cmake_opts["DPETSC_EXECUTABLE_RUNS"] = "YES"
 
+    if enable_lapack:
+        cmake_opts['DMFEM_USE_LAPACK'] = '1'
+
     if blas_libraries != "":
         cmake_opts['DBLAS_LIBRARIES'] = blas_libraries
     if lapack_libraries != "":
@@ -838,15 +843,23 @@ def cmake_make_mfem(serial=True):
     make_install('mfem_' + txt)
 
     from shutil import copytree, rmtree
-    #print("current working directory", os.getcwd())
-    #print(os.listdir("../data"))
-    print("copying mesh data for testing", "../data", cmake_opts['DCMAKE_INSTALL_PREFIX'])
+
+    print("copying mesh data for testing", "../data",
+          cmake_opts['DCMAKE_INSTALL_PREFIX'])
     path = os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "data")
     if os.path.exists(path):
-        rmtree(path)       
+        rmtree(path)
     copytree("../data", path)
- 
-    os.chdir(pwd)    
+
+    if do_bdist_wheel:
+        ex_dir = os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "examples")
+        for x in os.listdir(ex_dir):
+            path = os.path.join(ex_dir, x)
+            command = ['chrpath', '-r', "$ORIGIN/../lib", path]
+            make_call(command, force_verbose=True)
+
+    os.chdir(pwd)
+
 
 def write_setup_local():
     '''
@@ -908,6 +921,7 @@ def write_setup_local():
               'gslibsinc': os.path.join(gslibs_prefix, 'include'),
               'gslibpinc': os.path.join(gslibp_prefix, 'include'),
               'cxx11flag': cxx11_flag,
+              'build_mfem': '1' if build_mfem else '0'
               }
 
     try:
@@ -1239,7 +1253,7 @@ def configure_install(self):
     global enable_gslib, gslibs_prefix, gslibp_prefix, gslib_only
     global enable_suitesparse, suitesparse_prefix
     global enable_petsc, petsc_prefix
-    global blas_libraries, lapack_libraries
+    global enable_lapack, blas_libraries, lapack_libraries
 
     verbose = bool(self.vv) if verbose == -1 else verbose
     dry_run = bool(self.dry_run) if dry_run == -1 else dry_run
@@ -1269,6 +1283,8 @@ def configure_install(self):
     gslib_only = bool(self.gslib_only)
     enable_suitesparse = bool(self.with_suitesparse)
     enable_petsc = bool(self.with_petsc)
+    enable_lapack = bool(self.with_lapack)
+
 
     build_parallel = bool(self.with_parallel)     # controlls PyMFEM parallel
     build_serial = not bool(self.no_serial)
@@ -1460,11 +1476,16 @@ def configure_bdist(self):
 
     prefix = abspath(self.bdist_dir)
 
-    run_swig = False
-
-    build_mfem = False
     build_parallel = False
-    build_serial = False
+
+    if self.skip_build == 1:
+        build_mfem = False
+        build_serial = False
+        run_swig = False
+    else:
+        build_mfem = True
+        build_serial = True
+        run_swig = True
 
     global is_configured
     is_configured = True
@@ -1534,8 +1555,10 @@ class Install(_install):
         ('with-gslib', None, 'enable gslib'),
         ('gslib-only', None, 'Build gslib only'),
         ('with-strumpack', None, 'enable strumpack (parallel only)'),
-        ('strumpack-prefix=', None, 'locaiton of strumpack'),
-        ('blas-libraries=', None, 'locaiton of Blas library (used to build MFEM)'),
+
+        ('strumpack-prefix=', None, 'Specify locaiton of strumpack'),
+        ('with-lapack', None, 'build MFEM with lapack'),
+        ('blas-libraries=', None, 'Specify locaiton of Blas library (used to build MFEM)'),
         ('lapack-libraries=', None,
          'locaiton of Lapack library (used to build MFEM)'),
         ('with-petsc', None, 'enable petsc (default = on if import petsc works)'),
@@ -1573,6 +1596,8 @@ class Install(_install):
 
         self.with_suitesparse = False
         self.suitesparse_prefix = ''
+
+        self.with_lapack = False        
         self.blas_libraries = ""
         self.lapack_libraries = ""
 
@@ -1728,7 +1753,8 @@ class BuildPy(_build_py):
 if haveWheel:
     class BdistWheel(_bdist_wheel):
         '''
-        Wheel build performs serial+paralell
+        Wheel build performs SWIG + Serial in Default.
+        --skip-build option skip building entirely.
         '''
 
         def finalize_options(self):

@@ -27,4 +27,3 @@ import_array();
 %include "mesh/submesh/psubmesh.hpp"
 
 #endif
-
