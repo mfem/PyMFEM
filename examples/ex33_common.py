@@ -106,12 +106,14 @@ def RationalApproximation_AAA(val, pt, tol, max_order):
         h_C = len(C_tmp)
         w_C = k+1
 
+        # note: tranpose is necessary due to the difference of column-major
+        # and raw-major of matrix
         C = c_i.reshape(w_C, h_C).transpose()
         Ctemp = C.copy()
         Ctemp = Ctemp*(np.atleast_2d(1/val)).transpose()  # InvLeftScaling
-        Ctemp = Ctemp*f                                    # RgithScaling
+        Ctemp = Ctemp*f                                   # RgithScaling
         A = C - Ctemp
-        A = A*(np.atleast_2d(val)).transpose()             # LeftScaling
+        A = A*(np.atleast_2d(val)).transpose()            # LeftScaling
 
         h_Am = len(J)
         w_Am = A.shape[1]

@@ -1169,8 +1169,8 @@ try:
         return g
 
     class _JIT(object):
-
-        def func(self, sig, params):
+        def func(self, sig, params=None):
+            params = {} if params is None else params
             def dec(func):
                 from numba import jit
                 gfunc=_copy_func_and_apply_params(func, params)
@@ -1179,35 +1179,33 @@ try:
             return dec
 
         @staticmethod
-        def scalar(func=None, td=False, params=None, complex=False, dependency=None,
-                   interface="simple", sdim=None, debug=False):
+        def scalar(func=None, **kwargs):
             def wrapper(func):
                 def dec(*args, **kwargs):
                     return _scalar(*args, **kwargs)
-                return dec(func)
-            if func:
-                return wrapper(func)
-            else:
-                return wrapper
-        @staticmethod
-        def vector(func=None, vdim=None, shape=None, td=False, params=None,
-                   complex=False, dependency=None, interface="simple", sdim=None, debug=False):
-            def wrapper(func):
-                def dec(*args, **kwargs):
-                    return _vector(*args, **kwargs)
-                return dec(func)
+                return dec(func, **kwargs)
             if func:
                 return wrapper(func)
             else:
                 return wrapper
 
         @staticmethod
-        def matrix(func=None, height=None, width=None, shape=None, td=False, params=None,
-            complex=False, dependency=None, interface="simple", sdim=None, debug=False):
+        def vector(func=None, **kwargs):
+            def wrapper(func):
+                def dec(*args, **kwargs):
+                    return _vector(*args, **kwargs)
+                return dec(func, **kwargs)
+            if func:
+                return wrapper(func)
+            else:
+                return wrapper
+
+        @staticmethod
+        def matrix(func=None, **kwargs):
             def wrapper(func):
                 def dec(*args, **kwargs):
                     return _matrixr(*args, **kwargs)
-                return dec(func)
+                return dec(func, **kwargs)
             if func:
                 return wrapper(func)
             else:
