@@ -101,6 +101,7 @@ jobs:
         echo $PATH
         echo $PYTHONPATH
         echo $SANDBOX
+        echo "SWIG exe"$(which swig)
 
         if [ "${USE_FLAGS}" = "000" ]; then
            # test workflow to manually run swig
