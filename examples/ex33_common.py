@@ -1,7 +1,9 @@
 '''
   Ex33_common.py
 
-  This is a line-by-line translation of MFEM ex33.hpp. MFEM_USE_LAPACK is skipped
+  This is a translation of MFEM ex33.hpp. LAPACK call, mfem.Vector, 
+  mfem.DenseMatrix are replaced using numpy
+ 
 
                 (Implementation of the AAA algorithm)
 
@@ -68,21 +70,15 @@ def RationalApproximation_AAA(val, pt, tol, max_order):
     '''
 
     # number of sample points
-    size = val.Size()
-    assert pt.Size() == size, "size mismatch"
+    size = len(val)  # .Size()
+    assert len(pt) == size, "size mismatch"
 
     # Initializations
     J = list(range(size))
 
-    c_i = mfem.doubleArray()
-    C = mfem.DenseMatrix()
-    Ctemp = mfem.DenseMatrix()
-    A = mfem.DenseMatrix()
-    Am = mfem.DenseMatrix()
-    f_vec = mfem.Vector()
-
+    c_i = []
     # mean of the value vector
-    mean_val = val.Sum()/size
+    mean_val = np.mean(val)
     R = np.array([mean_val]*size)
 
     z = []
@@ -94,79 +90,48 @@ def RationalApproximation_AAA(val, pt, tol, max_order):
         idx = 0
         tmp_max = 0
 
-        for j in range(size):
-            tmp = abs(val[j] - R[j])
-            if tmp > tmp_max:
-                tmp_max = tmp
-                idx = j
-
+        idx = np.argmax(np.abs(val-R))
         # Append support points and data values
         z.append(pt[idx])
         f.append(val[idx])
 
         # Update index vector
-        print("idx", idx, R.shape, len(J))
         J.remove(idx)
 
         # next column in Cauchy matrix
         C_tmp = [(1.0/(pp-pt[idx]) if pp != pt[idx] else np.inf) for pp in pt]
 
-        c_i.Append(C_tmp)
+        c_i = np.hstack((c_i, C_tmp))
+
         h_C = len(C_tmp)
         w_C = k+1
 
-        C.UseExternalData(c_i.GetData(), h_C, w_C)
-
-        Ctemp.Assign(C)
-
-        f_vec = mfem.Vector(f)
-
-        Ctemp.InvLeftScaling(val)
-        Ctemp.RightScaling(f_vec)
-
-        A.SetSize(C.Height(), C.Width())
-        mfem.Add(C, Ctemp, -1.0, A)
-        A.LeftScaling(val)
+        C = c_i.reshape(w_C, h_C).transpose()
+        Ctemp = C.copy()
+        Ctemp = Ctemp*(np.atleast_2d(1/val)).transpose()  # InvLeftScaling
+        Ctemp = Ctemp*f                                    # RgithScaling
+        A = C - Ctemp
+        A = A*(np.atleast_2d(val)).transpose()             # LeftScaling
 
         h_Am = len(J)
-        w_Am = A.Width()
-        Am.SetSize(h_Am, w_Am)
+        w_Am = A.shape[1]
+        Am = np.zeros((h_Am, w_Am))
 
         for i in range(h_Am):
             ii = J[i]
             for j in range(w_Am):
                 Am[i, j] = A[ii, j]
 
-        AMM = Am.GetDataArray()
-        u, s, vh = np.linalg.svd(AMM, full_matrices=True)
+        u, s, vh = np.linalg.svd(Am)
 
-        print(AMM.shape, u.shape, s.shape, vh.shape)
-
-        #print(u, s, vh)
         w = vh[k, :]
 
-        N = C.GetDataArray().dot(w*np.array(f))
-        D = C.GetDataArray().dot(w)
-        '''
-        # N = C*(w.*f); D = C*w; % numerator and denominator
-        aux = mfem.Vector(w)
-        print("w here", s, w)        
-        aux *= f_vec;
-        print("w here", s, w)                        
-        N = mfem.Vector(C.Height()) # Numerator
-        C.Mult(aux, N)
-        D = mfem.Vector(C.Height())  # Denominator
-        print("w here", s, w)                
-        print(w, type(w))
-        ww = mfem.Vector(w)
-        ww.Print()
-        C.Mult(ww, D)
-        #D.Print()
-        '''
-        R = val.GetDataArray().copy()
+        N = C.dot(w*np.array(f))
+        D = C.dot(w)
+        R = val.copy()
         for i, ii in enumerate(J):
             R[ii] = N[ii]/D[ii]
-        verr = val.GetDataArray() - R
+        verr = val - R
 
         if np.max(verr) <= tol*max(val):
             break
@@ -308,8 +273,8 @@ def ComputePartialFractionApproximation(alpha,
     val = x**(1-alpha)
 
     # Apply triple-A algorithm to f(x) = x^{1-a}
-    z, f, w = RationalApproximation_AAA(mfem.Vector(val),
-                                        mfem.Vector(x),
+    z, f, w = RationalApproximation_AAA(val,  # mfem.Vector(val),
+                                        x,  # mfem.Vector(x),
                                         tol, max_order)
 
     # Compute poles and zeros for RA of f(x) = x^{1-a}
