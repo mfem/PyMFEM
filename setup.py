@@ -58,7 +58,8 @@ repos = {"mfem": "https://github.com/mfem/mfem.git",
          "gklib": "https://github.com/KarypisLab/GKlib",
          "metis": "https://github.com/KarypisLab/METIS", }
 repos_sha = {
-    "mfem": "b7a4b61b5ce80b326a002aebccf7da7ad2432556",   # version 4.5
+    "mfem": "2f6eb8838f8f5e8359abba0dd3434c8cc7147012", # version 4.5 with a few fix
+    #"mfem": "b7a4b61b5ce80b326a002aebccf7da7ad2432556",   # version 4.5
     "gklib": "a7f8172703cf6e999dd0710eb279bba513da4fec",
     "metis": "94c03a6e2d1860128c2d0675cbbb86ad4f261256", }
 
