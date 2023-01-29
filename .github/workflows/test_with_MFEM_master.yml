@@ -40,7 +40,7 @@ jobs:
     env: 
        USE_FLAGS: ${{ matrix.env.USE_FLAGS }}
        CUDA: "11.5"
-       SANDBOX: ~/sandbox
+       SANDBOX: ${HOME}/sandbox
 
     steps:
     - uses: actions/checkout@v3
@@ -57,7 +57,7 @@ jobs:
         #python -m pip install --upgrade pip setuptools wheel
         python -c "import setuptools;print(setuptools.__version__)"
 
-        PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages
+        PYTHONLIB=${HOME}/sandbox/lib/python${{ matrix.python-version }}/site-packages
         mkdir -p $PYTHONLIB
 
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
@@ -72,19 +72,20 @@ jobs:
         fi
 
         if [ -f requirements.txt ]; then
-           pip install -r requirements.txt --prefix=~/sandbox --verbose
+           pip install -r requirements.txt --prefix=${HOME}sandbox --verbose
         fi
 
         python -c "import sys;print(sys.path)"
         python -c "import numpy;print(numpy.__file__)"  
 
+        echo ${HOME}
         which swig  # this default is 4.0.1 
-        pip install swig --prefix=~/sandbox
-        export PATH=/usr/local/cuda-${CUDA}/bin:~/sandbox/bin:$PATH
-        ls ~/sandbox/bin
+        pip install swig --prefix=${HOME}/sandbox
+        export PATH=/usr/local/cuda-${CUDA}/bin:${HOME}/sandbox/bin:$PATH
+        ls ${HOME}/sandbox/bin
         which swig
         swig -version
-        ~/sandbox/bin/swig -version
+        ${HOME}/sandbox/bin/swig -version
 
         if [ "${USE_FLAGS:0:1}" = "1" ] ; then
             echo $cuda
@@ -94,7 +95,7 @@ jobs:
             sudo apt-get install mpich;
             sudo apt-get install libmpich-dev;
             pip install mpi4py
-            #pip install mpi4py --no-cache-dir --prefix=~/sandbox;
+            #pip install mpi4py --no-cache-dir --prefix=${HOME}/sandbox;
             #python -m pip install git+https://github.com/mpi4py/mpi4py
             #python -c "import mpi4py;print(mpi4py.get_include())";
         fi
@@ -102,8 +103,8 @@ jobs:
         
     - name: Build
       run: |
-        export PATH=/usr/local/cuda-${CUDA}/bin:~/sandbox/bin:$PATH
-        PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages        
+        export PATH=/usr/local/cuda-${CUDA}/bin:${HOME}/sandbox/bin:$PATH
+        PYTHONLIB=${HOME}/sandbox/lib/python${{ matrix.python-version }}/site-packages        
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
         echo $PATH
         echo $PYTHONPATH
@@ -129,9 +130,8 @@ jobs:
 
     - name: RUN_EXAMPLES
       run: |
-
         export PATH=/usr/local/cuda-${CUDA}/bin:$PATH
-        PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages        
+        PYTHONLIB=${HOME}sandbox/lib/python${{ matrix.python-version }}/site-packages        
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
         echo $PATH
         echo $PYTHONPATH
