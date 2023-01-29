@@ -1318,6 +1318,7 @@ def configure_install(self):
         mfem_prefix = ext_prefix
         mfems_prefix = os.path.join(ext_prefix, 'ser')
         mfemp_prefix = os.path.join(ext_prefix, 'par')
+        #enable_gslib = True
 
     if self.mfem_branch != '':
         mfem_branch = self.mfem_branch
@@ -1440,7 +1441,7 @@ def configure_bdist(self):
     called when bdist workflow is used
     '''
     global prefix, dry_run, verbose, run_swig
-    global build_mfem, build_parallel, build_serial
+    global build_mfem, build_parallel, build_serial, build_gslib
     global mfem_branch, mfem_source
     global mfems_prefix, mfemp_prefix, hypre_prefix, metis_prefix, ext_prefix
 
@@ -1462,6 +1463,7 @@ def configure_bdist(self):
     else:
         build_mfem = True
         build_serial = True
+        #build_gslib = True
         run_swig = True
 
     global is_configured
