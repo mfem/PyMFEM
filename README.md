@@ -10,11 +10,6 @@ Installer (setup.py) builds both MFEM and binding together.
 By default, "pip install mfem" downloads and builds the serial version of MFEM and PyMFEM.
 Additionally, the installer supports building MFEM with specific options together with other external libraries, including MPI version.
 
-## Requirement
-```
-numpy, swig  + mpi4py (for --with-parallel)
-
-```
 ## Install
 ```
 pip install mfem                    # binary install is available only on linux platforms (Py36-310) 
@@ -22,7 +17,7 @@ pip install mfem --no-binary mfem   # install serial MFEM + wrapper from source
 
 ```
 
-### Using additional features (MPI, GPU, GPU-Hypre, GSLIB, SuiteSparse)
+### Using additional features (MPI, GPU, GPU-Hypre, GSLIB, SuiteSparse, libCEED, LAPACK)
 The setup script accept various options. TO use it, one can either use --install-option flag
 with pip, or download the package manually and run the script. For example, this below download
 and build parallel version of MFEM library (linked with Metis and Hypre)
@@ -78,7 +73,7 @@ cd test
 python test_examples.py -serial
 ```  
 ## Usage
-Here is an example to solve div(grad(f)) = 1 in a square and to plot the result
+Here is an example to solve div(alpha grad(u)) = f in a square and to plot the result
 with matplotlib (modified from ex1.cpp). Use the badge above to open this in Binder.
 ```
 import mfem.ser as mfem
@@ -95,15 +90,24 @@ ess_tdof_list = mfem.intArray()
 ess_bdr = mfem.intArray([1]*mesh.bdr_attributes.Size())
 fespace.GetEssentialTrueDofs(ess_bdr, ess_tdof_list)
 
-# constant coefficient 
-one = mfem.ConstantCoefficient(1.0)
+# constant coefficient (diffusion coefficient and RHS)
+alpha = mfem.ConstantCoefficient(1.0)
+rhs = mfem.ConstantCoefficient(1.0)
+
+# Note:
+#    Diffusion coefficient can be variable. To use numba-JIT compiled
+#    functio. Use the following, where x is numpy-like array.
+# @mfem.jit.scalar
+# def alpha(x):
+#     return x+1.0
+#
 
 # define Bilinear and Linear operator
 a = mfem.BilinearForm(fespace)
-a.AddDomainIntegrator(mfem.DiffusionIntegrator(one))
+a.AddDomainIntegrator(mfem.DiffusionIntegrator(alpha))
 a.Assemble()
 b = mfem.LinearForm(fespace)
-b.AddDomainIntegrator(mfem.DomainLFIntegrator(one))
+b.AddDomainIntegrator(mfem.DomainLFIntegrator(rhs))
 b.Assemble()
 
 # create gridfunction, which is where the solution vector is stored
