@@ -721,8 +721,8 @@ def cmake_make_mfem(serial=True):
                   'DMFEM_USE_ZLIB': '1',
                   'DCMAKE_CXX_FLAGS': cxx11_flag,
                   'DCMAKE_BUILD_WITH_INSTALL_RPATH': '1'}
-    # if verbose:
-    cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
+    if verbose:
+        cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
 
     if serial:
         cmake_opts['DCMAKE_CXX_COMPILER'] = cxx_command
