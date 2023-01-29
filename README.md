@@ -53,8 +53,7 @@ $ python setup.py install --with-parallel --CC=icc --CXX=icpc --MPICC=mpiicc --M
 cd test
 python test_examples.py -serila
 
-# Other option
-For other configurations, see docs/install.txt or help
+# For other configurations, see docs/install.txt or help
 $ python setup.py install --help
 
 ```
