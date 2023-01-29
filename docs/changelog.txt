@@ -39,6 +39,8 @@
         * ex33, ex33p is added.
 	* ex15 is updated to use Numba
 
+        * Initial support of PETSc + MFEM
+
 2022 03.
         * Added --cuda-arch option to specify the compute cuda archtecture
 

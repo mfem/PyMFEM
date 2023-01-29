@@ -44,10 +44,11 @@ def get_extensions():
         from setup_local import (mfembuilddir, mfemincdir, mfemsrcdir, mfemlnkdir,
                                  mfemptpl, build_mfem,
                                  hypreinc, metisinc, hyprelib, metis5lib,
+                                 petscinc, petsclib,
                                  cc_par, cxx_par,
                                  cxx11flag,
                                  add_pumi, add_cuda, add_libceed, add_strumpack,
-                                 add_suitesparse, add_gslibp)
+                                 add_suitesparse, add_gslibp, add_petsc)
 
         include_dirs = [mfembuilddir, mfemincdir, mfemsrcdir,
                         numpy.get_include(),
@@ -154,6 +155,11 @@ def get_extensions():
         include_dirs.append(gslibpinc)
         modules.append("gslib")
 
+    if add_petsc == '1':
+        include_dirs.append(petscinc)
+        library_dirs.append(petsclib)
+        modules.append("petsc")
+
     sources = {name: [name + "_wrap.cxx"] for name in modules}
     proxy_names = {name: '_'+name for name in modules}
 
@@ -172,6 +178,7 @@ def get_extensions():
         runtime_library_dirs[0] = "$ORIGIN/../external/par/lib"
     else:
         runtime_library_dirs = library_dirs
+
 
     ext_modules = [Extension(proxy_names[modules[0]],
                              sources=sources[modules[0]],

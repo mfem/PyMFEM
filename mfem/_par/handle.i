@@ -12,6 +12,7 @@
 #include "fem/pfespace.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
+#include "../common/pycoefficient.hpp"    
 %}
 
 %include "../common/mfem_config.i"
@@ -34,7 +35,7 @@ import_array();
 %import "hypre.i"
 #endif
 #ifdef MFEM_USE_PETSC
-%include "petsc.i"
+%import "petsc.i"
 #endif
 
 %import "mem_manager.i"

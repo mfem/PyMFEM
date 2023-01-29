@@ -121,6 +121,10 @@ If you are sure, you could use --skip-swig option, so that it compiles the wrapp
 codes without re-generating it.
 $ python setup.py install --with-parallel --skip-ext --skip-swig --mfem-branch="master"
 
+## PETSC (experimental)
+
+$ pip install petsc
+$ python setup.py install --with-parallel --with-petsc 
 
 ## Other options
 --unverifiedSSL :
