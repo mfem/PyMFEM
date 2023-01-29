@@ -22,9 +22,10 @@ The setup script accept various options. TO use it, one can either use --install
 with pip, or download the package manually and run the script. For example, the one below downloads
 and build parallel version of MFEM library (linked with Metis and Hypre)
 and installs under <prefix>/mfem. See also, docs/install.txt
-```
+
 ### Using pip
-$ pip install mfem --install-option="--with-parallel" [--verbose]
+```
+$ pip install mfem --install-option="--with-parallel" 
 ```
 
 ### Build from local source file
