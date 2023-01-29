@@ -72,7 +72,7 @@ jobs:
         fi
 
         if [ -f requirements.txt ]; then
-           pip install -r requirements.txt --prefix=${HOME}sandbox --verbose
+           pip install -r requirements.txt --prefix=${HOME}/sandbox --verbose
         fi
 
         python -c "import sys;print(sys.path)"
