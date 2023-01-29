@@ -45,7 +45,7 @@ import_array();
 %import "../common/exception_director.i"
 
 %ignore Function;
-//%ignore DeltaCoefficient;
+
 namespace mfem {
 %pythonprepend MatrixConstantCoefficient::MatrixConstantCoefficient(const DenseMatrix &m) %{
    try:
@@ -76,34 +76,18 @@ namespace mfem {
    else:
       pass 
 %}
-%pythonprepend DeltaCoefficient::SetWeight %{
-    w.thisown=0 
-%}
-%pythonprepend VectorArrayCoefficient::Set %{ 
-    c.thisown=0 
-%}
-%pythonprepend MatrixArrayCoefficient::Set %{ 
-    c.thisown=0 
-%}
-%pythonappend VectorRestrictedCoefficient::VectorRestrictedCoefficient %{
-    self._ref_to_vc = vc
-%}
-%pythonappend RestrictedCoefficient::RestrictedCoefficient %{
-    self._ref_to_c = c_
-%}
-%pythonappend MatrixRestrictedCoefficient::MatrixRestrictedCoefficient %{
-    self._ref_to_mc = mc
-%}
-  
 }
+%include "../common/coefficient_common.i"
 
 %feature("notabstract") mfem::VectorFunctionCoefficient;
 %feature("notabstract") mfem::VectorConstantCoefficient;
 %feature("notabstract") mfem::VectorDeltaCoefficient;
+%feature("notabstract") mfem::MatrixArrayCoefficient;
 %feature("notabstract") mfem::MatrixFunctionCoefficient;
 %feature("notabstract") mfem::MatrixConstantCoefficient;
 %feature("notabstract") mfem::CurlGridFunctionCoefficient;
 %feature("notabstract") mfem::SymmetricMatrixConstantCoefficient;
+%feature("notabstract") mfem::SymmetricMatrixFunctionCoefficient;
 %feature("notabstract") mfem::VectorQuadratureFunctionCoefficient;
 
 /*
@@ -125,7 +109,7 @@ namespace mfem {
 %include "../common/typemap_macros.i"
 LIST_TO_MFEMOBJ_POINTERARRAY_IN(mfem::IntegrationRule const *irs[],  mfem::IntegrationRule *, 0)
 
-%include "../../headers/coefficient.hpp"
+%include "fem/coefficient.hpp"
 %include "../common/numba_coefficient.i"
 
 %feature("director") mfem::VectorPyCoefficientBase;

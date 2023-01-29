@@ -35,20 +35,19 @@ jobs:
              python-version: 3.9
              env: {USE_FLAGS: "001"}
 #
-    runs-on: ${{ matrix.os }}	   
+    runs-on: ${{ matrix.os }}      
     #env: ${{ matrix.env }}
     env: 
        USE_FLAGS: ${{ matrix.env.USE_FLAGS }}
        CUDA: "11.5"
-       SANDBOX: ~/sandbox
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 #      with:
 #        ref: master_tracking_branch
  
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
 
@@ -57,13 +56,13 @@ jobs:
         #python -m pip install --upgrade pip setuptools wheel
         python -c "import setuptools;print(setuptools.__version__)"
 
-        PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages
+        PYTHONLIB=${HOME}/sandbox/lib/python${{ matrix.python-version }}/site-packages
         mkdir -p $PYTHONLIB
 
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
         echo "PYTHONPATH:"$PYTHONPATH
 
-        pip install six numpy --verbose	
+        pip install six numpy --verbose 
         if [ "${{matrix.python-version}}" = "3.10" ] ; then
             pip install numba numba-scipy --verbose
             #pip install scipy
@@ -72,17 +71,20 @@ jobs:
         fi
 
         if [ -f requirements.txt ]; then
-           pip install -r requirements.txt --prefix=~/sandbox --verbose
+           pip install -r requirements.txt --prefix=${HOME}/sandbox --verbose
         fi
 
         python -c "import sys;print(sys.path)"
-        python -c "import numpy;print(numpy.__file__)"	
+        python -c "import numpy;print(numpy.__file__)"  
 
+        echo ${HOME}
         which swig  # this default is 4.0.1 
-        pip install swig --prefix=~/sandbox
-        export PATH=/usr/local/cuda-${CUDA}/bin:~/sandbox/bin:$PATH	
+        pip install swig --prefix=${HOME}/sandbox
+        export PATH=/usr/local/cuda-${CUDA}/bin:${HOME}/sandbox/bin:$PATH
+        ls ${HOME}/sandbox/bin
         which swig
         swig -version
+        ${HOME}/sandbox/bin/swig -version
 
         if [ "${USE_FLAGS:0:1}" = "1" ] ; then
             echo $cuda
@@ -92,47 +94,45 @@ jobs:
             sudo apt-get install mpich;
             sudo apt-get install libmpich-dev;
             pip install mpi4py
-            #pip install mpi4py --no-cache-dir --prefix=~/sandbox;
+            #pip install mpi4py --no-cache-dir --prefix=${HOME}/sandbox;
             #python -m pip install git+https://github.com/mpi4py/mpi4py
             #python -c "import mpi4py;print(mpi4py.get_include())";
         fi
-        ls -l $PYTHONLIB	
+        ls -l $PYTHONLIB        
         
     - name: Build
       run: |
-        export PATH=/usr/local/cuda-${CUDA}/bin:$PATH
-        PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages	
+        export PATH=/usr/local/cuda-${CUDA}/bin:${HOME}/sandbox/bin:$PATH
+        PYTHONLIB=${HOME}/sandbox/lib/python${{ matrix.python-version }}/site-packages        
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
         echo $PATH
         echo $PYTHONPATH
-        echo $SANDBOX
+        echo "SWIG exe"$(which swig)
 
         if [ "${USE_FLAGS}" = "000" ]; then  
            python setup.py install --user --mfem-branch='master'
         fi
         if [ "${USE_FLAGS}" = "010" ]; then
-           python setup.py install --with-parallel --prefix=$SANDBOX --mfem-branch='master'
+           python setup.py install --with-parallel --prefix=${HOME}/sandbox --mfem-branch='master'
         fi
         if [ "${USE_FLAGS}" = "100" ]; then
            ls -l /usr/local/cuda-${CUDA}/include
-           python setup.py install --with-cuda --prefix=$SANDBOX --mfem-branch='master'
+           python setup.py install --with-cuda --prefix=${HOME}/sandbox --mfem-branch='master'
         fi
         if [ "${USE_FLAGS}" = "110" ]; then
            python setup.py install --with-cuda --with-parallel --mfem-branch='master'
         fi
         if [ "${USE_FLAGS}" = "001" ]; then
-           python setup.py install --prefix=$SANDBOX --with-libceed --mfem-branch='master'
+           python setup.py install --prefix=${HOME}/sandbox --with-libceed --mfem-branch='master'
         fi
 
     - name: RUN_EXAMPLES
       run: |
-
         export PATH=/usr/local/cuda-${CUDA}/bin:$PATH
-        PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages	
+        PYTHONLIB=${HOME}/sandbox/lib/python${{ matrix.python-version }}/site-packages        
         export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
         echo $PATH
         echo $PYTHONPATH
-        echo $SANDBOX
         cd test
         echo $PATH
         echo $PYTHONPATH
@@ -153,5 +153,5 @@ jobs:
         fi
         if [ "${USE_FLAGS}" = "001" ]; then
            python ../examples/ex1.py -d ceed-cpu
-           python ../examples/ex9.py -d ceed-cpu	   
+           python ../examples/ex9.py -d ceed-cpu           
         fi

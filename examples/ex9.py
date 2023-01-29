@@ -66,7 +66,7 @@ def run(ref_levels=2,
 
     device = mfem.Device(device)
     device.Print()
-    
+
     # 2. Read the mesh from the given mesh file. We can handle geometrically
     #    periodic meshes in this code.
 

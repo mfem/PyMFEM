@@ -76,7 +76,7 @@ if myid == 0:
     parser.print_options(args)
 
 device = mfem.Device('cpu')
-if myid == 0:            
+if myid == 0:
     device.Print()
 
 ex18_common.num_equation = 4

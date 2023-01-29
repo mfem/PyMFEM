@@ -42,8 +42,6 @@ import_array();
 OSTREAM_TYPEMAP(std::ostream&)
 ISTREAM_TYPEMAP(std::istream&)
 
-%pointer_class(int, intp);
-
 /*
 %typemap(in) const mfem::IntegrationRule *irs[]{
   if (PyList_Check($input)) {

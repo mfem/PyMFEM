@@ -86,9 +86,9 @@ def run(order=1,
     #     when compiling it.
     if numba:
         params = {"dim": dim, "kappa": pi*freq}
-        E = mfem.jit.vector(sdim=3, params=params)(E_exact)
-        CurlE = mfem.jit.vector(sdim=3, params=params)(CurlE_exact)
-        f = mfem.jit.vector(sdim=3, params=params)(f_exact)
+        E = mfem.jit.vector(vdim=3, params=params)(E_exact)
+        CurlE = mfem.jit.vector(vdim=3, params=params)(CurlE_exact)
+        f = mfem.jit.vector(vdim=3, params=params)(f_exact)
     else:
         pass  # ToDo provide regular example.
 
@@ -321,7 +321,8 @@ def make_socketstrema():
     return sock
 
 
-def E_exact(x, E):
+def E_exact(x):
+    E = np.zeros(vdim)
     if dim == 1:
         E[0] = 1.1 * sin(kappa * x[0] + 0.0 * pi)
         E[1] = 1.2 * sin(kappa * x[0] + 0.4 * pi)
@@ -337,9 +338,11 @@ def E_exact(x, E):
 
         for i in range(3):
             E[i] = E[i]*cos(kappa * x[2])
+    return E
 
 
-def CurlE_exact(x, dE):
+def CurlE_exact(x):
+    dE = np.zeros(vdim)
     if dim == 1:
         c4 = cos(kappa * x[0] + 0.4 * pi)
         c9 = cos(kappa * x[0] + 0.9 * pi)
@@ -375,9 +378,11 @@ def CurlE_exact(x, dE):
         dE[2] = -sqrt1_2 * (1.1 * c0 - 1.2 * c4) * ck
         for i in range(3):
             dE[i] = dE[i]*kappa
+    return dE
 
 
-def f_exact(x, f):
+def f_exact(x):
+    f = np.zeros(vdim, dtype=np.float)
     if dim == 1:
         s0 = sin(kappa * x[0] + 0.0 * pi)
         s4 = sin(kappa * x[0] + 0.4 * pi)
@@ -422,6 +427,7 @@ def f_exact(x, f):
         f[2] = (0.6 * sqrt2 * s4 * ck -
                 sqrt2 * kappa * kappa * (0.55 * c0 + 0.6 * c4) * sk
                 + 1.3 * (2.0 + kappa * kappa) * s9 * ck)
+    return f
 
 
 if __name__ == "__main__":

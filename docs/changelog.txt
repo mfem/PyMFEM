@@ -1,30 +1,70 @@
-	<<<  Change Log. >>>
+        <<<  Change Log. >>>
+2023 01.
+        * Improved mfem.jit decorator to create Numba JITed coefficient.
+          (note, this involves an incompatible API change)
+
+           - parameter is passed as a numpy-like array to a user function (not as
+             a CPointer object).
+
+           - automatically creates two coefficients which return real and imaginary
+             part, repsectively, when complex=True.
+
+           - user function can use other MFEM coefficient as a variable
+             (using dependency keyword)
+
+	   - decorator without () is supported
+	     @mfem.jit.scalar is the same as
+	     @mfem.jit.scalar(td=False, params=None, complex=False,
+	                      dependency=None, interface="simple", sdim=None,
+			      debug=False)
+
+
+        * mfem::Array<T>::Append accepts list/tuple
+        * Added --with-lapack option in setup.py. This option allows for building MFEM
+          with MFEM_USE_LAPACK option. Use blas-libraries and lapack-libraries to specify
+          the library locaiton if they are in non-standard location.
+        * Fixed Vector::__getitem__ so that it raise IndexError if Index is outside
+          of -size < idx < size-1. This fixes an infinite loop error when mfem.Vector
+          is used in for loop, like this.
+
+          >>> vec = mfem.Vector([1,2,3])
+          >>> for x in vec:
+                 print(x)
+
+        * dependency library version updates
+            hypre version 2.27.0
+            libCEED version 0.11
+            gslib version 1.0.8
+
+        * ex33, ex33p is added.
+	* ex15 is updated to use Numba
+
 2022 03.
         * Added --cuda-arch option to specify the compute cuda archtecture
 
 2022 02.27
         * Added Cuda-build HYPRE support. Cuda is controlled by two setup.py options
-	    --with-cuda  :  MFEM_USE_CUDA is on.
-	    --with-cuda-hypre :  HYPRE is built with Cuda.
+            --with-cuda  :  MFEM_USE_CUDA is on.
+            --with-cuda-hypre :  HYPRE is built with Cuda.
         * mfem::Device is forced to be a singleton in Python layer too. This keeps MemoryManager
-	  from being deallocated before other objects are cleaned.
+          from being deallocated before other objects are cleaned.
         * bool mfem::is_HYPRE_USING_CUDA() is added to check if HYPRE is build with Cuda
-	* make sure that parallel examples calls mfem::Device
-	* enabled --parallel option when building extension modules
+        * make sure that parallel examples calls mfem::Device
+        * enabled --parallel option when building extension modules
 
 2022 02.15
         * added %import globals.i in sparsemat.i and common_functions.i. This is needed when
-	  MFEM
-    
+          MFEM
+
 2022 01.xx
         * Generalized multigrid constructor typemap. It now accept not only tuple/list but also
-	  Array<bool> Array<Operator *> and Array<Solver *>, like C++ API does.
-	* Following are added to return DoFTransformation
-	     FiniteElementSpace::GetElementDoFTransformation
+          Array<bool> Array<Operator *> and Array<Solver *>, like C++ API does.
+        * Following are added to return DoFTransformation
+             FiniteElementSpace::GetElementDoFTransformation
              FiniteElementSpace::GetElementVDoFTransformation
              FiniteElementSpace::GetBdrElementDoFTransformation
              FiniteElementSpace::GetBdrElementVDoFTransformation
-	 * DenseMatrix constructor using numpy array is added
+         * DenseMatrix constructor using numpy array is added
              >>> x = mfem.DenseMatrix(np.arange(12.).reshape(3,4))
              >>> x.Print()
                  [row +0]
@@ -36,179 +76,179 @@
 
 2021 12.xx
         * Improved array interface. ex: Array<T>::__getitem__ accespt slice to return subarray
-	* gslib support is included
-	* ex30.py, ex30p.py were added. CoefficientRefiner::SetIntRule accepts tuple/list
-	* ex25 is added. It demonstrates how to use numba JIT
-	* Fixed IntegrationPonitArray, IntegrationRulePtrArray. They now returns a proper proxy object
-	  when accessed using index
-	      ex: IntegrationPonitArray[0] -> return IntegrationPoint
+        * gslib support is included
+        * ex30.py, ex30p.py were added. CoefficientRefiner::SetIntRule accepts tuple/list
+        * ex25 is added. It demonstrates how to use numba JIT
+        * Fixed IntegrationPonitArray, IntegrationRulePtrArray. They now returns a proper proxy object
+          when accessed using index
+              ex: IntegrationPonitArray[0] -> return IntegrationPoint
                   IntegrationPonitArray[0:3] -> return IntegrationPointArray (this subarray does not own data)
-		  d = IntegrationPonitArray.GetData() -> return IntegrationPoint*
-		  IntegrationPonitArray((d, num)) -> A constructore borrowing data.
-	* Additional Array<T> template instatiation Array<Vector *> Array<FiniteElementSpace *> Array<bool>	  
-	* const IntegrationRule *irs[] in gridfunc.hpp, pgridfunc.hpp, complex_fem.hpp, coefficient.hpp
-	  are wrapped to accept tuple/list of IntegrationRule (see ex25.py)
-	* Warning about old numpy interface (NPY_1_7..... ) is addressed.
-	* GridFunction::Assign (renamed verison of operator ==) accept numpy vector
-	* ParGridFunction::Assign (renamed verison of operator ==) accept numpy vector	
-	
-	
+                  d = IntegrationPonitArray.GetData() -> return IntegrationPoint*
+                  IntegrationPonitArray((d, num)) -> A constructore borrowing data.
+        * Additional Array<T> template instatiation Array<Vector *> Array<FiniteElementSpace *> Array<bool>
+        * const IntegrationRule *irs[] in gridfunc.hpp, pgridfunc.hpp, complex_fem.hpp, coefficient.hpp
+          are wrapped to accept tuple/list of IntegrationRule (see ex25.py)
+        * Warning about old numpy interface (NPY_1_7..... ) is addressed.
+        * GridFunction::Assign (renamed verison of operator ==) accept numpy vector
+        * ParGridFunction::Assign (renamed verison of operator ==) accept numpy vector
+
+
 2021 10.xx
         * Fixed an issue due to new fe_xxx.hp
-	
+
 2021 08.27
         * memory leak
         * DenseTensor::Assign now accept numpy 3D array
-	
+
 2021 08.08
         * added ex0p, ex20p, ex21p, ex22p  ex24p, ex26p, ex27p, ex28p
         * memory handling of complex_fem for parallel version is fixed.
-	
+
 2021 08.06
         * ex27 is added
-	* ex26 is added
-	* array((int *, size)) and array((double *, size)) is wrapped. This allows
-	  for changing the contents of exisint Array<T>
-	  
+        * ex26 is added
+        * array((int *, size)) and array((double *, size)) is wrapped. This allows
+          for changing the contents of exisint Array<T>
+
 2021 08.04
-	* added ex24. This one shows partial assembly and numba coefficient
-	
+        * added ex24. This one shows partial assembly and numba coefficient
+
 2021 08.03
         * added constraints wrapper
-	* added ex28 and a few other serial examples
-	* added director to SecondOrdeorTimeDependentOperator
-	* added ex23
+        * added ex28 and a few other serial examples
+        * added director to SecondOrdeorTimeDependentOperator
+        * added ex23
 
 2021 08.02
         * Added ex21
-	* SwapNodes returns None when mesh object does not have Nodes
-	* added socketstream::good wrapper.
-	* added complex_fem wrapper
-	
+        * SwapNodes returns None when mesh object does not have Nodes
+        * added socketstream::good wrapper.
+        * added complex_fem wrapper
+
 2021 07.31
         * preparation for MFEM4.3
-	* test_example now compares all output files.
+        * test_example now compares all output files.
         * Added ex0, ex20, refreshed many examples
-	* mesh.AddVertex accept numpy float array, mfem.Vector or list
-	* mesh.AddQuad (and other similar routine which
-	  accept const *int vi) accept numpy int32 array, mfem.Array<int> or list
-	
+        * mesh.AddVertex accept numpy float array, mfem.Vector or list
+        * mesh.AddQuad (and other similar routine which
+          accept const *int vi) accept numpy int32 array, mfem.Array<int> or list
+
 2021 05.19
         * Fixed std::istream & wrapping not to return the lenght of data. This fixes
-	  the constructors such as mfem::Mesh(std::stream &)
-	* PrintGZ, SaveGZ, etc are added to the methods to save data to file. As
-	  the name suggest, they turn on compression internally.
+          the constructors such as mfem::Mesh(std::stream &)
+        * PrintGZ, SaveGZ, etc are added to the methods to save data to file. As
+          the name suggest, they turn on compression internally.
 
 2021 05.11
         * NumbaFunction, VectorNumbaFunction, and MatrixNumbaFunction is added
-	  to use Numba JITed python code for mfem function coefficients.
+          to use Numba JITed python code for mfem function coefficients.
 
 2021 05.07
         * vtk.py and datacollection.py was loaded in mfem.ser and mfem.par namespace properly
-	* istream& wrapping was improved in the same way as ostream&
-	* mfem-4.2 does not have Save(const char*, precision) yet. Added it in wrapper code.
-	* Fiexed MixedBilinearForm::AddBdrTraceFaceIntegrator
-	
+        * istream& wrapping was improved in the same way as ostream&
+        * mfem-4.2 does not have Save(const char*, precision) yet. Added it in wrapper code.
+        * Fiexed MixedBilinearForm::AddBdrTraceFaceIntegrator
+
 2021 04.30
         * improved std::ostream & wrappring. Methods which takes std::ostream& are
-	wrapped so that it accept either
-	   1) filename    for saving data to file
-	   2) mfem.STDOUT for writing data to stdout
-	   3) StringIO    for in-memory data passing
-	
+        wrapped so that it accept either
+           1) filename    for saving data to file
+           2) mfem.STDOUT for writing data to stdout
+           3) StringIO    for in-memory data passing
+
 2021 02.14
         * WriteToStram is added to mfem::Mesh, mfem::Vector and mfem::GrigFunction
 
 2021 02.07
         * A new Github action to automate PyPI binary release
-	
+
 2021 01.17
         * mesh.CartasianPartitioing is improved to accept an iterable (list/tuple)
-	  as an argument.
+          as an argument.
 2020 12.06
         * common/depelicated.i is added. This interface file contains
-	  two macros for specfing method and overloaded method as deprecated.
+          two macros for specfing method and overloaded method as deprecated.
 2020 11.29
         * bilininteg.i is adjusted so that NonlinearIntegrator is properly recognized
-	  as a base class of BilinearIntegrator class. This allows to use SetIntOrder
-	  and some others in BilinearIntegrator
+          as a base class of BilinearIntegrator class. This allows to use SetIntOrder
+          and some others in BilinearIntegrator
 2020 11.23
         * Mesh.GetElementCenterArray is added, which returns numpy array
 2020 11.21
         * cuda build is tested
-	* In solver.hpp, many routines takes Operator &, but FormLinearSystem
-	  takes OperatorHandle. A new typemap (operator_ptr_typemap) is added to
-	  call OperatorHandle -> Ptr() inside the wrapper so that one can pass
-	  OperatorHandle to the routines such as SetOperator, PCG and etc.
-	  
+        * In solver.hpp, many routines takes Operator &, but FormLinearSystem
+          takes OperatorHandle. A new typemap (operator_ptr_typemap) is added to
+          call OperatorHandle -> Ptr() inside the wrapper so that one can pass
+          OperatorHandle to the routines such as SetOperator, PCG and etc.
+
 2020 11.05
         * migration to pip install
-	* mesh.GetVertexArray() is added to return the all vertices
-	* mesh.Mesh(int, int, "element name") was fixed
+        * mesh.GetVertexArray() is added to return the all vertices
+        * mesh.Mesh(int, int, "element name") was fixed
 
 2018 09.27
-	* strumpack support is added
-	* ParFiniteElementSpace:: GetSharedEdgeDofs, ParFiniteElementSpace::GetSharedFaceDofs are wrapped to return list
+        * strumpack support is added
+        * ParFiniteElementSpace:: GetSharedEdgeDofs, ParFiniteElementSpace::GetSharedFaceDofs are wrapped to return list
 2018 06.22
-	* regenerate wrapper using MFEM 3.4
-	* In nonlinearfomr.i, a new typemap is introduce to wrap folloing
-	* arguments as list/tuple
-	**  Array<FiniteElementSpace *>
-	**  Array<Array<int>>
-	**  Array<Vector *>
-	* following dynamic cast wrapper is added
-	** Opr2BlockOpr : Operator -> BlockOprator
-	** Opr2SparseMat : Operator -> SparseMatrix
+        * regenerate wrapper using MFEM 3.4
+        * In nonlinearfomr.i, a new typemap is introduce to wrap folloing
+        * arguments as list/tuple
+        **  Array<FiniteElementSpace *>
+        **  Array<Array<int>>
+        **  Array<Vector *>
+        * following dynamic cast wrapper is added
+        ** Opr2BlockOpr : Operator -> BlockOprator
+        ** Opr2SparseMat : Operator -> SparseMatrix
 2018 04.18
-	* update ex10p
-	* CHypreParVec::__mul__, __imul__  are updated to support multiplying
-	complex number
-	* Various fixes in chypre.py
-	* wrapper class regenerated using mfem 324d66b0c7fc75225e830dcfb02647722bae1fe0
-	* INSTALL instruction is updated to mention DMFEM_USE_EXCEPTIONS=1
-	 
+        * update ex10p
+        * CHypreParVec::__mul__, __imul__  are updated to support multiplying
+        complex number
+        * Various fixes in chypre.py
+        * wrapper class regenerated using mfem 324d66b0c7fc75225e830dcfb02647722bae1fe0
+        * INSTALL instruction is updated to mention DMFEM_USE_EXCEPTIONS=1
+
 2018 02.12
-	* ParMesh::ParMesh(comm, filename)  
-	* ParMesh::ParPrintToFile(filename) # convinent version of ParPrint
-	* ParGridFunction::ParGridFunction(pmesh, filename)
+        * ParMesh::ParMesh(comm, filename)
+        * ParMesh::ParPrintToFile(filename) # convinent version of ParPrint
+        * ParGridFunction::ParGridFunction(pmesh, filename)
         ** this is implemented temporariy in a python proxy class
-	** it will be changed to call C++ constructor when a new version
-	** is released.
-	
+        ** it will be changed to call C++ constructor when a new version
+        ** is released.
+
 2018 02.02
-	* Vector::Print(filename) and SparseMatrix::Print(filename) are added
-	* chypre.IdentityPyMat is added
-	* chypre.CHypreVec.GlobalVector was rewritten to do allgather on python level.
+        * Vector::Print(filename) and SparseMatrix::Print(filename) are added
+        * chypre.IdentityPyMat is added
+        * chypre.CHypreVec.GlobalVector was rewritten to do allgather on python level.
 2018 01.24
-	* The issue of not raising the type conversion error when int is an argument
-	is fixed
-	* ToHypreParCSR is modified so that it causes hypre_CSRMatrixReorder call when
-	col_starts and row_starts are the same.
+        * The issue of not raising the type conversion error when int is an argument
+        is fixed
+        * ToHypreParCSR is modified so that it causes hypre_CSRMatrixReorder call when
+        col_starts and row_starts are the same.
 2018 01.20
-	* generating mfem::SparseMatrix from scipy.csr_matrix is added
-	* setting mfem::Vector using numpy array is added
-	* BlockOperator and BlockMatrix keeps a link to offset and operators
-	
+        * generating mfem::SparseMatrix from scipy.csr_matrix is added
+        * setting mfem::Vector using numpy array is added
+        * BlockOperator and BlockMatrix keeps a link to offset and operators
+
 2018 01.03
-	* fiexed mfem.par.InnerProduct. It was overwriten by InnerProduct defined in Vector
-	* EmptySquarePyMat and HStackPyVec are added in chypre.py
-	* DeltaCoefficient is not ignored anymore.
-	
+        * fiexed mfem.par.InnerProduct. It was overwriten by InnerProduct defined in Vector
+        * EmptySquarePyMat and HStackPyVec are added in chypre.py
+        * DeltaCoefficient is not ignored anymore.
+
 2017 12.27
         * Overloaded functions whose definitionsare distributed among several .hpp are
-	  handled by common_functions.i. Such functions include Add, Mult, Transpose,
-	  RAP, and InnerProduct.
-	* Due to above change, add_sparse, add_dense has been removed.
-	* Element access to DenseTensor object is added.
-	* GetDataArray of DenseTensor and DenseMatrix is changed to return a mere
-	  memory view of objects' internal data, instead of copy of data
-     	
-2017 12.03
-	* Rebuild all cxx to work with MFEM 3.3.2
-	* mesh::GetBdrElementAdjacentElement is wrapped to return two integers	
-	
-2017 10.10	chypre.py
-	* CHypreMat::__add__ and CHypreMat::__sub__ was calling CHypreMat without
- 	  specifing col_parts. 
+          handled by common_functions.i. Such functions include Add, Mult, Transpose,
+          RAP, and InnerProduct.
+        * Due to above change, add_sparse, add_dense has been removed.
+        * Element access to DenseTensor object is added.
+        * GetDataArray of DenseTensor and DenseMatrix is changed to return a mere
+          memory view of objects' internal data, instead of copy of data
 
-	
+2017 12.03
+        * Rebuild all cxx to work with MFEM 3.3.2
+        * mesh::GetBdrElementAdjacentElement is wrapped to return two integers
+
+2017 10.10      chypre.py
+        * CHypreMat::__add__ and CHypreMat::__sub__ was calling CHypreMat without
+          specifing col_parts.
+
+

@@ -34,7 +34,6 @@ import_array();
 
 %import "../common/hypre_int.i"
 
-%pointer_class(int, intp);
 %immutable face_nbr_glob_dof_map;
 //DoF accesser
 

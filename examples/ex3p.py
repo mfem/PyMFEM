@@ -46,29 +46,33 @@ def run(order=1,
     sdim = mesh.SpaceDimension()
 
     if numba:
-        @mfem.jit.vector()
-        def E_exact(x, out):
-            if dim == 3:            
-                out[0] = sin(kappa*x[1])
-                out[1] = sin(kappa*x[2])
-                out[2] = sin(kappa*x[0])
+        @mfem.jit.vector(sdim=sdim, shape=(dim,))
+        def E_exact(x):
+            if shape[0] == 3:
+                return np.array((sin(kappa*x[1]),
+                                 sin(kappa*x[2]),
+                                 sin(kappa*x[0])))
             else:
-                out[0] = sin(kappa*x[1])
-                out[1] = sin(kappa*x[0])
                 if sdim == 3:
-                    out[2] = 0.                    
-        @mfem.jit.vector()
+                    return np.array([sin(kappa*x[1]),
+                                     sin(kappa*x[0]),
+                                     0.0])
+                else:
+                    return np.array([sin(kappa*x[1]),
+                                     sin(kappa*x[0])])
+
+        @mfem.jit.vector(sdim=sdim, shape=(dim,), interface="c++")
         def f_exact(x, out):
-            if dim == 3:
+            if shape[0] == 3:
                 out[0] = (1 + kappa**2)*sin(kappa * x[1])
                 out[1] = (1 + kappa**2)*sin(kappa * x[2])
                 out[2] = (1 + kappa**2)*sin(kappa * x[0])
             else:
                 out[0] = (1 + kappa**2)*sin(kappa * x[1])
                 out[1] = (1 + kappa**2)*sin(kappa * x[0])
-                if sdim == 3:
+                if shape[0] == 3:
                     out[2] = 0.
-                
+
     else:
         class cE_exact(mfem.VectorPyCoefficient):
             def __init__(self):
@@ -80,13 +84,13 @@ def run(order=1,
                             sin(kappa * x[2]),
                             sin(kappa * x[0]))
                 elif sdim == 2:
-                        return (sin(kappa * x[1]),
-                                sin(kappa * x[0]),)
+                    return (sin(kappa * x[1]),
+                            sin(kappa * x[0]),)
                 else:
-                        return (sin(kappa * x[1]),
-                                sin(kappa * x[0]),
-                                0)
-                    
+                    return (sin(kappa * x[1]),
+                            sin(kappa * x[0]),
+                            0)
+
         E_exact = cE_exact()
 
         class cf_exact(mfem.VectorPyCoefficient):
@@ -94,18 +98,18 @@ def run(order=1,
                 mfem.VectorPyCoefficient.__init__(self, sdim)
 
             def EvalValue(self, x):
-                if dim == 3:                
+                if dim == 3:
                     return ((1 + kappa**2)*sin(kappa * x[1]),
-                           (1 + kappa**2)*sin(kappa * x[2]),
-                           (1 + kappa**2)*sin(kappa * x[0]))
+                            (1 + kappa**2)*sin(kappa * x[2]),
+                            (1 + kappa**2)*sin(kappa * x[0]))
                 elif sdim == 2:
                     return ((1 + kappa**2)*sin(kappa * x[1]),
-                           (1 + kappa**2)*sin(kappa * x[0]),)
+                            (1 + kappa**2)*sin(kappa * x[0]),)
                 else:
                     return ((1 + kappa**2)*sin(kappa * x[1]),
                             (1 + kappa**2)*sin(kappa * x[0]),
                             0.0)
-                    
+
         f_exact = cf_exact()
 
     # 5. Refine the serial mesh on all processors to increase the resolution. In
@@ -199,10 +203,10 @@ def run(order=1,
         prec_fespace = (a.SCParFESpace() if a.StaticCondensationIsEnabled()
                         else fespace)
         Amat = A.AsHypreParMatrix()
-        
+
         if verbose:
             print("Size of linear system: " + str(Amat.GetGlobalNumRows()))
-        
+
         ams = mfem.HypreAMS(Amat, prec_fespace)
         pcg = mfem.HyprePCG(Amat)
         pcg.SetTol(1e-12)
@@ -284,7 +288,7 @@ if __name__ == "__main__":
 
     from os.path import expanduser, join, dirname
     meshfile = expanduser(join(dirname(__file__), '..', 'data', args.mesh))
-    
+
     visualization = args.visualization
     device = args.device
     pa = args.partial_assembly

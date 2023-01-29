@@ -46,11 +46,22 @@ to find more details of the MFEM library.
 
         >>> print(x[3:])   # slice returns subarray. Note memory is not copyed
 	                   # subarray does not own data
+
+     Array<T>::Array accepts list or tuple
+     (example)     
+        >>> x = mfem.doubleArray([1,2,3])
+	>>> x.ToList()
+	[1.0, 2.0, 3.0]
 	
+     Array<T>.Append accepts list or tuple
+        >>> x = mfem.doubleArray([1,2,3])
+	>>> x.Append([4,5,6])
+	6
+
      mfem.intArray provides an access to int *. For this, we need to
      pass (int *, length) as a list/tuple.
         >>> parts = mesh.GeneratePartitioning(3)
-        >>> mfem.intArray([parts, mesh.GetNE()])   <-- int * and length 
+        >>> mfem.intArray([parts, mesh.GetNE()])   <-- int * and length
 
 
   4-1) mfem::Vector
@@ -60,7 +71,7 @@ to find more details of the MFEM library.
         v = mfem.Vector(np.array([1,2,3,4.])
 
         Note that when list is passed. Contents of list is copied and data is
-	owned by mfem::Vector. When a NumPy array is passed, data is not copied.
+	owned by mfem::Vector. When a NumPy array is passed, data is NOT copied.
 	mfem::Vector holds the passed NumPy array as _link_to_data attribute,
 	so that python does not garbage collect the NumPy array until mfem::Vector
 	is deleted.
@@ -80,6 +91,13 @@ to find more details of the MFEM library.
         v.Assign(np.array([1., 2., 3.])  (copy data from np.array)
 	
      Data Access as NumPy:  v.GetDataArray()
+
+     Vector works also in for loop.
+     (example)     
+        >>> vec = mfem.Vector([1,2,3])
+        >>> for x in vec:
+                print(x)
+
 
      In c++, a new partial view to existing vector is acquired as
 	Vector v(vec.GetData() + sc, sc);
@@ -107,6 +125,7 @@ to find more details of the MFEM library.
      
 
   4-2) mfem::Coefficient
+     ## Using Python function for function coefficient
        PyCoefficient is derived from FunctionCoefficient
        PyCoefficientT is time-dependent version
        VectorPyCoefficient  is derived from VectorFunctionCoefficient
@@ -141,22 +160,73 @@ to find more details of the MFEM library.
           Note: the argument is first tested if it can be converted using
 	        np.array(x,  dtype=float)
 
+      ## Just-in-time compilation of Python coefficient
        Function coefficient written in Python can be JITed using Numba. To use
        this feature, one can either use mfem.jit.* decorators or instantiate
        NumberFunction (or Vector/MatrixNumbaFunction) and call GenerateCoefficient
-       in most case, the first one is convenient. 
+       in most case, the first one is convenient.
 
-       -Example-
+       mfem.jit decorators uses the following syntax
+
+       sdim = mesh.SpaceDimension()
+       @scalar(td=False, params={}, complex=False, dependency=None, interface='simple',
+               sdim=None, debug=False)
+       @vector(vdim=None, shape=None, td=False, params={}, complex=False, dependency=None,
+               interface='simple', sdim=None, debug=False)
+       @matrix(height=None, width=None, shape=None, td=False, params={}, complex=False, dependency=None,
+                interface='simple', sdim=None, debug=False)
+
+            shape: shape of return value (following form can be used too)
+               vdim: length of vector coefficient
+               height/width: height and width of matrix coefficient
+
+            td: time-dependence (False: stationary, True: time-dependent
+            complex: complex coefficient. if ture, it returns a tuple of coefficient
+            depenency: dependency to other coefficient
+            interface: calling proceture
+               'simple': vector/matric function returns the result by value more pythonic.
+               'c++': vector/matric function returns the result by parameter like C++
+               other options: one can pass a tuple of (caller, signature) pair to create a custom
+                   interface
+            sdim: space dimension (optional)
+            debug: extra debug print
+
+       -- Example (1) --
        (Using jit decorator -- see more example in ex1 and ex24)
        >>>  @mfem.jit.scalar()
             def c12(ptx):
                 return s_func0(ptx[0], ptx[1],  ptx[2])
-       >>>  @mfem.jit.vector()
+
+       For vector/matrxi, we can use the following two forms of arguments
+       >>>  @mfem.jit.vector(shape=(3,))
+            def f_exact(x):
+                return np.array((1 + kappa**2)*sin(kappa * x[1])
+                                (1 + kappa**2)*sin(kappa * x[2])
+                                (1 + kappa**2)*sin(kappa * x[0]))
+       >>>  @mfem.jit.vector(shape=(3,), interface="c++")
             def f_exact(x, out):
                out[0] = (1 + kappa**2)*sin(kappa * x[1])
                out[1] = (1 + kappa**2)*sin(kappa * x[2])
                out[2] = (1 + kappa**2)*sin(kappa * x[0])
-       >>> x.ProjectCoefficient(f_exact)       
+	       
+       >>> x.ProjectCoefficient(f_exact)
+
+       -- Example (2) : complex coefficient 
+
+       mfem.jited coefficient can return a complex number. It will create
+       two coefficients for real and imaginary
+       
+       >>>  @mfem.jit.scalar(complex=True)
+            def c12(ptx):
+                return ptx[0] + 1j*ptx[1]
+       >>> x.ProjectCoefficient(c12.real)  # project real coefficient
+       >>> x.ProjectCoefficient(c12.imag)  # project imaginary coefficient       
+
+       -- Example (3) : dependency
+       mfem.jited coefficient can use other coefficient in the funciton
+       >>>  @mfem.jit.vector(vdim=3, complex=True, dependency=(E, B))
+            def P(ptx):
+                return E.dot(B)
 
        (Using NumbaFunction object)
        For example, to use Numba compiled function, one can use
@@ -490,7 +560,7 @@ to find more details of the MFEM library.
 	    gf.Save("data.gf")
 
             # save multile gf to one StringIO....
-	    from io import StringIO()
+	    from io import StringIO
 	    output = StringIO()
 	    output.precision = 8
 	    gf.Save(output)

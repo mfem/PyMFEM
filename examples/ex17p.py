@@ -170,9 +170,9 @@ if (kappa < 0):
     args.kappa = kappa
 if (myid == 0):
     parser.print_options(args)
-    
+
 device = mfem.Device('cpu')
-if myid == 0:            
+if myid == 0:
     device.Print()
 
 # 2. Read the mesh from the given mesh file.
