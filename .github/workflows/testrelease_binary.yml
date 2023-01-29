@@ -18,10 +18,8 @@ jobs:
           git clone https://github.com/mfem/PyMFEM.git
           cd PyMFEM
           #
-          echo "!!!!!"
           REF=$(echo ${GITHUB_REF#refs/heads/})
-          echo $REF
-          echo "!!!!!"
+          echo "!!!!!: "$REF
           git checkout $REF
           #
           export PATH=/opt/python/cp37-cp37m/bin:$PATH
