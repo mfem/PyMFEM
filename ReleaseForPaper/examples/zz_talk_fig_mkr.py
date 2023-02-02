@@ -220,7 +220,8 @@ if eval and not train:
     chkpt_num = nbatches
     checkpoint_dir = log_dir + temp_path
     # checkpoint_path=checkpoint_dir+'/checkpoint_0000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt < 100
-    checkpoint_path=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt > 99 and <1000
+    # checkpoint_path=checkpoint_dir+'/checkpoint_000'+str(chkpt_num)+'/checkpoint-'+str(chkpt_num) # if checkpt > 99 and <1000
+    checkpoint_path = '/Users/gillette7/Desktop/projects/drl_SI/PyMFEM/ReleaseForPaper/examples/logs/Example1a_2022-06-27_09-35-20/checkpoint_000150/checkpoint-150'
     output_dir = output_dir_ + temp_path
 
 # if train:
@@ -234,7 +235,7 @@ if eval and not train:
 
 if eval:
 
-    ## Enact trained policy
+    # ## Enact trained policy
     # trainer.restore(checkpoint_path)
     # rlactions = []
     # obs = env.reset()
@@ -257,7 +258,17 @@ if eval:
     #     print("episode cost = ", rlepisode_cost)
     #     rldofs.append(info['num_dofs'])
     #     rlerrors.append(info['global_error'])
-        
+
+    # env.render()
+    # env.mesh.Save(output_dir + '/rl_final.mesh')
+    # vizfec = mfem.L2_FECollection(0, 2) # 2 = dim
+    # vizfes = mfem.FiniteElementSpace(env.mesh, vizfec)
+    # refigf = mfem.GridFunction(vizfes)
+    # for i in range(0, env.mesh.GetNE()):
+    #     elem_dofs = vizfes.GetElementDofs(i)
+    #     refigf[elem_dofs[0]] = 0 
+    # refigf.Save(str(output_dir + '/rl_refi.gf'), 8)
+    # exit()
 
     ## Enact AMR policies
     costs = []
@@ -302,7 +313,7 @@ if eval:
     errors_tmp = [env.global_error]
     dofs_tmp = [env.sum_of_dofs]
     
-    max_steps   = 1
+    max_steps   = 65
     for i in range(max_steps):
         _, reward, done, info = env.step(action)
         # episode_cost_tmp -= reward
