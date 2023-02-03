@@ -235,7 +235,13 @@ class Poisson(gym.Env):
         AA.Threshold(0.0, False)
         SolveSparseSystem(AA,B,X)
         self.a.RecoverFEMSolution(X,self.b,self.x)
+        
+        ## uncomment to save FEM solution as GridFunction and exit:
+        # self.x.Save('zzsolution.gf',8)
+        # exit()
+        
         self.solution_norm = self.x.ComputeGradError(self.zerovector) + 1e-12
+
 
     def GetLocalErrors(self):
         self.estimator.Reset()
