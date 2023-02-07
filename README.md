@@ -41,7 +41,7 @@ or
 $ python setup.py install --with-parallel # it download and build metis/hypre/mfem
 
 # Verbose output
-$ python setup.py install -verbose # SWIG output and CMAKE_VERBOSE_MAKEFILE is on
+$ python setup.py install --verbose # SWIG output and CMAKE_VERBOSE_MAKEFILE is on
 
 # Cleaning
 $ python setup.py clean --all # clean external dependencies + wrapper code
