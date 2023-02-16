@@ -51,7 +51,7 @@ $ python setup.py install --with-parallel --CC=icc --CXX=icpc --MPICC=mpiicc --M
 
 # Run test
 cd test
-python test_examples.py -serila
+python test_examples.py -serial
 
 # For other configurations, see docs/install.txt or help
 $ python setup.py install --help
