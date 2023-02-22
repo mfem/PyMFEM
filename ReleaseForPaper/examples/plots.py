@@ -12,6 +12,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument("file_path", type=Path)
 parser.add_argument('--mesh_abbrv', type=str, required=False)
 parser.add_argument('--angle_abbrv', type=str, required=False)
+parser.add_argument('--fortalk', default=False, action='store_true')
+parser.add_argument('--adf', default=False, action='store_true')
 
 args = parser.parse_args()
 
@@ -105,6 +107,35 @@ save_figs = True
 have_expert_policy = False
 if fig_name_prefix == 'Example1a' or fig_name_prefix == 'Example1a_MO':
    have_expert_policy = True
+
+
+if args.fortalk:
+   # df = pd.DataFrame({
+   #             'policy': ['theta5rho7'],
+   #             'no ref': [.35],
+   #             'p ref' : [.5],
+   #             'h ref' : [1]
+   #             })
+   df = pd.DataFrame({
+               'policy': ['theta5rho7'],
+               'no ref': [.14],
+               'p ref' : [.7],
+               'h ref' : [1]
+               })
+   f0, ax0 = plt.subplots(figsize=(10,2))
+   # Note: this approach draws bars on top of each other
+   sns.barplot(x='h ref', y='policy', data=df, color=palette_list[0])
+   sns.barplot(x='p ref', y='policy', data=df, color=palette_list[1])
+   sns.barplot(x='no ref', y='policy', data=df, color=palette_list[2])
+   # ax0.set(xlabel="", ylabel="", xticks = [0,.35,0.5,1], yticks = [])
+   ax0.set(xlabel="", ylabel="", xticks = [0,.14,0.7,1], yticks = [])
+   ax0.tick_params(axis='x', labelsize=18)
+   sns.despine(left=True, bottom=True)
+   # %, color = ['white', 'orange', 'steelblue'])
+   # plt.show()
+   plt.savefig('stacked_bar.pdf',format='pdf', bbox_inches='tight')
+   print("Made stacked_bar.pdf and quit")
+   exit()
 
 print("*** Check that correct data was loaded here in plots.py ***")
 train_data_file = output_dir+'/training_data.csv'
@@ -217,7 +248,25 @@ if ex_type == 4: # expand this "if" condition to accomdate any hp problem
    # ax6.set_xlabel('mesh = ' + args.mesh_abbrv + ' tpp cost = ' +  str(np.round(tpp_ep_cost,2)) + ' RL cost = ' + str(np.round(rlepisode_cost, 2)))
    # ax6.set_ylabel(r'parameter values in trained (AM)$^2$R policy')
    ax6.legend(loc='lower left', prop={'size': 26})
-
+elif args.fortalk: 
+   theta01axns = 0.1*np.ones(19)
+   theta03axns = 0.3*np.ones(21)
+   theta05axns = 0.5*np.ones(22)
+   theta07axns = 0.7*np.ones(29)
+   theta09axns = 0.9*np.ones(65)
+   plt.plot(theta01axns,'-o',lw=1.3, color=palette_list[3], label=r'$\theta$ fixed')
+   plt.plot(theta03axns,'-o',lw=1.3, color=palette_list[3])
+   plt.plot(theta05axns,'-o',lw=1.3, color=palette_list[3])
+   plt.plot(theta07axns,'-o',lw=1.3, color=palette_list[3])
+   plt.plot(theta09axns,'-o',lw=1.3, color=palette_list[3])
+   plt.plot(rlactions,'-^',lw=1.3, color=palette_list[0], label=r'$\theta$ from $\textsc{decide}$')
+   ax6.set_xlim(-0.5, 64+0.5) # forces x axis to have ticks from 0 to 64
+   ax6.set_ylim(0.0, 1.0)
+   ax6.set_ylabel(r'$\theta$', fontsize=22, color=palette_list[1])
+   ax6.set_xlabel(r'Refinement iteration', fontsize=22)
+   ax6.tick_params(axis='x', labelsize=22)
+   ax6.tick_params(axis='y', labelsize=22)
+   ax6.legend(loc='lower right', prop={'size': 22})
 else:
    plt.plot(rlactions,'-o',lw=1.3, label=r'(AM)$^2$R policy')
    ax6.set_xlim(-0.5, len(rlactions)+0.5) # forces x axis to have ticks from 0 to 14
@@ -228,8 +277,6 @@ else:
    ax6.tick_params(axis='y', labelsize=22)
 if save_figs:
    plt.savefig(output_dir+'/'+fig_name_prefix+'_fig6.pdf',format='pdf', bbox_inches='tight')
-
-
 
 if have_expert_policy:
    ##########
@@ -283,27 +330,48 @@ if have_expert_policy:
    # make fig5
    ##########
    ## Make convergence plots (2/2)
-   cumdofs = []
-   cumrldofs = np.cumsum(rldofs)
-   for k in range(len(dofs)):
-      cumdofs.append(np.cumsum(dofs[k]))
-   plt.figure(figsize=(6,6))
-   ax5 = plt.gca()
-   plt.loglog(cumdofs[9],errors[9],'-o',lw=1.3, color=palette_list[3], alpha=alpha, label=r'AMR policies')
-   # plt.loglog(cumdofs[9][-1],errors[9][-1], marker="o", markersize=10, color=palette_list[3], label='_nolegend_')
-   for k in range(19,len(errors),10):
-      plt.loglog(cumdofs[k],errors[k],'-o',lw=1.3, color=palette_list[3], label='_nolegend_')
-      # plt.loglog(cumdofs[k][-1],errors[k][-1], marker="o", markersize=10, color=palette_list[3], alpha=alpha, label='_nolegend_')
-   plt.loglog(cumrldofs,rlerrors,marker="^",lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
-   # plt.loglog(cumrldofs[-1],rlerrors[-1], marker="o", markersize=10, color=palette_list[0], label='_nolegend_')
-   ax5.set_xlabel(r'Cumulative degrees of freedom $(J_k)$', fontsize=22)
-   ax5.set_ylabel(r'Global error estimate $(\eta_k)$', fontsize=22)
-   ax5.tick_params(axis='x', labelsize=22)
-   ax5.tick_params(axis='y', labelsize=22)
-   ax5.legend(loc='upper right', prop={'size': 14})
-   # for i in range(9,len(errors),10):
-   #    print("Cum dofs = ", cumdofs[i][-1])
-   # print("cumrldofs = ", cumrldofs[-1])
+
+   if args.fortalk: 
+      cumdofs = []
+      cumrldofs = np.cumsum(rldofs)
+      for k in range(len(dofs)):
+         cumdofs.append(np.cumsum(dofs[k]))
+      plt.figure(figsize=(6,6))
+      ax5 = plt.gca()
+      plt.loglog(cumdofs[9],errors[9],'-o',lw=1.3, color=palette_list[3], alpha=alpha, label=r'$\theta$ fixed')
+      # plt.loglog(cumdofs[9][-1],errors[9][-1], marker="o", markersize=10, color=palette_list[3], label='_nolegend_')
+      for k in range(19,len(errors),20):
+         plt.loglog(cumdofs[k],errors[k],'-o',lw=1.3, color=palette_list[3], label='_nolegend_')
+         # plt.loglog(cumdofs[k][-1],errors[k][-1], marker="o", markersize=10, color=palette_list[3], alpha=alpha, label='_nolegend_')
+      plt.loglog(cumrldofs,rlerrors,marker="^",lw=1.3, color=palette_list[0], label=r'$\theta$ from $\textsc{decide}$')
+      # plt.loglog(cumrldofs[-1],rlerrors[-1], marker="o", markersize=10, color=palette_list[0], label='_nolegend_')
+      ax5.set_xlabel(r'Cumulative degrees of freedom', fontsize=22)
+      ax5.set_ylabel(r'Global error estimate', fontsize=22)
+      ax5.tick_params(axis='x', labelsize=22)
+      ax5.tick_params(axis='y', labelsize=22)
+      ax5.legend(loc='upper right', prop={'size': 20})
+   else:
+      cumdofs = []
+      cumrldofs = np.cumsum(rldofs)
+      for k in range(len(dofs)):
+         cumdofs.append(np.cumsum(dofs[k]))
+      plt.figure(figsize=(6,6))
+      ax5 = plt.gca()
+      plt.loglog(cumdofs[9],errors[9],'-o',lw=1.3, color=palette_list[3], alpha=alpha, label=r'AMR policies')
+      # plt.loglog(cumdofs[9][-1],errors[9][-1], marker="o", markersize=10, color=palette_list[3], label='_nolegend_')
+      for k in range(19,len(errors),10):
+         plt.loglog(cumdofs[k],errors[k],'-o',lw=1.3, color=palette_list[3], label='_nolegend_')
+         # plt.loglog(cumdofs[k][-1],errors[k][-1], marker="o", markersize=10, color=palette_list[3], alpha=alpha, label='_nolegend_')
+      plt.loglog(cumrldofs,rlerrors,marker="^",lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
+      # plt.loglog(cumrldofs[-1],rlerrors[-1], marker="o", markersize=10, color=palette_list[0], label='_nolegend_')
+      ax5.set_xlabel(r'Cumulative degrees of freedom $(J_k)$', fontsize=22)
+      ax5.set_ylabel(r'Global error estimate $(\eta_k)$', fontsize=22)
+      ax5.tick_params(axis='x', labelsize=22)
+      ax5.tick_params(axis='y', labelsize=22)
+      ax5.legend(loc='upper right', prop={'size': 14})
+      # for i in range(9,len(errors),10):
+      #    print("Cum dofs = ", cumdofs[i][-1])
+      # print("cumrldofs = ", cumrldofs[-1])
    if save_figs:
       plt.savefig(output_dir+'/'+fig_name_prefix+'_fig5.pdf',format='pdf', bbox_inches='tight')
 
@@ -380,7 +448,9 @@ if ex_type == 4: # example 2c
 # make fig 9: ADF comparison: RL vs fixed, small bar graphs
 ##########
 
-have_adf_data = True
+if not args.adf:
+   exit() 
+
 print("*** Making ADF vs fixed policy figures from adf_vs_fxd.csv")
 adf_vs_fxd_file = output_dir+'/adf_vs_fxd.csv'
 
@@ -430,7 +500,10 @@ if save_figs:
 # make fig 10: Show RL actions for each evaluated target
 ##########
 
-have_adf_data = True
+
+if not args.adf:
+   exit() 
+   
 print("*** Making figures of RL actions for each error target")
 
 adf_vs_fxd_file = output_dir+'/adf_vs_fxd.csv'
@@ -443,7 +516,7 @@ sns.set(style="whitegrid")
 f10, ax10 = plt.subplots(nrows=num_tgts, ncols=1, sharex=True, sharey=True, figsize = (6,10), squeeze=False)
 
 for i in range(num_tgts): # num of rows
-   tgtdf = pd.read_csv(output_dir + '/rl_data_tgt_' + str(all_tgts[i]) + '.csv', index_col=0)
+   tgtdf = pd.read_csv(output_dir + '/rl_data_tgt_' + str(np.round(all_tgts[i],8)) + '.csv', index_col=0)
    rl_tgt_axns = tgtdf.index.to_numpy()
    sns.lineplot(data=rl_tgt_axns, ax = ax10[i][0], marker='o', lw=1.3) # label=r'(AM)$^2$R policy'
    ax10[i][0].set_ylabel(r'$\theta$', fontsize=22)
