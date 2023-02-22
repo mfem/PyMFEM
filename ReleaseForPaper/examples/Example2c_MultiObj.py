@@ -389,6 +389,10 @@ if train:
             
         print("training batch %d of %d batches" % (n+1, nbatches))
         print("tau = {}".format(ray.get(ADF_params.get_tau.remote())))
+        print("config: ")
+        print(config)
+        print("rl_config:")
+        print(rl_config)
         result = trainer.train()
         episode_score = -result["episode_reward_mean"]
         episode_length = result["episode_len_mean"]

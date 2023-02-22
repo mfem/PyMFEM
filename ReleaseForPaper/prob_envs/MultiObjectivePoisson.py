@@ -339,7 +339,7 @@ class hp_Angle_MultiObjPoisson(Angle_MultiObjPoisson):
 
     def __init__(self,**kwargs):
         super().__init__(**kwargs)  
-        self.action_space = spaces.Box(low = np.array([0.0, 0.0]), high = np.array([0.999, 0.999]), shape=(2,), dtype = np.float32)
+        self.action_space = spaces.Box(low = 0.0, high = 0.999, shape=(2,), dtype = np.float32)
 
     def Prefine(self, theta, rho):   
         mark_to_p_refine = []
