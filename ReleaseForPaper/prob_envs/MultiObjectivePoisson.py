@@ -181,12 +181,6 @@ class ADF_MultiObjPoisson(Poisson):
             self.sum_of_dofs += num_dofs
             self.global_error = global_error
             current_target_error = np.power(2, float(ray.get(self.ADF_Params.get_tau.remote())))
-            # weight the error distance smaller if error < target
-            if error_cost < ray.get(self.ADF_Params.get_tau.remote()):
-                error_dist = 0.1*np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
-            else:
-                error_dist = np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
-
 
             quit_reason = 'notdone'
             done = False
@@ -207,7 +201,7 @@ class ADF_MultiObjPoisson(Poisson):
             # cost = dofs_cost * np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
 
             ## the cost computation in the next line weights by number of steps also:
-            cost = self.k * dofs_cost * error_dist
+            cost = self.k * dofs_cost * np.abs(ray.get(self.ADF_Params.get_tau.remote()) - error_cost)/ray.get(self.ADF_Params.get_delta.remote())
 
             ## the cost computation in the next line weights only by dofs cost:
             # cost = dofs_cost
@@ -330,13 +324,13 @@ class Angle_MultiObjPoisson(MultiObjPoisson):
             self.initial_mesh.UniformRefinement()
         self.initial_mesh.EnsureNCMesh()
 
-    def reset(self, random_angle=True, new_alpha = True):
+    def reset(self, random_angle=True):
 
         if random_angle:
             angle = np.random.uniform(self.angle_lower, self.angle_upper, 1).item()
             # print("Resetting env angle to ", angle)
             self.set_angle(angle)
-        return super().reset(new_alpha = new_alpha)
+        return super().reset()
 
 
 
