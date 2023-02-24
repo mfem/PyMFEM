@@ -1265,6 +1265,7 @@ def _scalar(func, td=False, params=None, complex=False, dependency=None,
       caller_txt = interface[0](setting)
 
     if debug:
+         print("(DEBUG) generated caller sig:\n", caller_sig)
          print("(DEBUG) generated caller function:\n", caller_txt)
 
     exec(caller_txt, globals(), locals())
@@ -1363,6 +1364,7 @@ def _vector(func, vdim=None, shape=None, td=False, params=None,
         caller_txt = interface[0](setting)
 
     if debug:
+         print("(DEBUG) generated caller sig:\n", caller_sig)
          print("(DEBUG) generated caller function:\n", caller_txt)
 
     exec(caller_txt, globals(), locals())
@@ -1473,6 +1475,7 @@ def _matrix(func, height=None, width=None, shape=None, td=False, params=None,
         caller_txt = interface[0](setting)
 
     if debug:
+         print("(DEBUG) generated caller sig:\n", caller_sig)
          print("(DEBUG) generated caller function:\n", caller_txt)
 
     exec(caller_txt, globals(), locals())
