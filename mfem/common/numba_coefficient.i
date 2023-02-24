@@ -1226,6 +1226,7 @@ try:
                   caller_txt = interface[0](setting)
 
                 if debug:
+                     print("(DEBUG) generated caller sig:\n", caller_sig)
                      print("(DEBUG) generated caller function:\n", caller_txt)
 
                 exec(caller_txt, globals(), locals())
@@ -1325,6 +1326,7 @@ try:
                     caller_txt = interface[0](setting)
 
                 if debug:
+                     print("(DEBUG) generated caller sig:\n", caller_sig)
                      print("(DEBUG) generated caller function:\n", caller_txt)
 
                 exec(caller_txt, globals(), locals())
@@ -1384,7 +1386,7 @@ try:
             if shape[0] != shape[1]:
                 import warnings
                 warning.warn("Rectangular matrix coefficient is experimental", UserWarning)
-		  
+
             if dependency is None:
                 dependency = []
             if params is None:
@@ -1436,6 +1438,7 @@ try:
                     caller_txt = interface[0](setting)
 
                 if debug:
+                     print("(DEBUG) generated caller sig:\n", caller_sig)
                      print("(DEBUG) generated caller function:\n", caller_txt)
 
                 exec(caller_txt, globals(), locals())
