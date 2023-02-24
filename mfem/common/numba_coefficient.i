@@ -1204,7 +1204,7 @@ try:
         def matrix(func=None, **kwargs):
             def wrapper(func):
                 def dec(*args, **kwargs):
-                    return _matrixr(*args, **kwargs)
+                    return _matrix(*args, **kwargs)
                 return dec(func, **kwargs)
             if func:
                 return wrapper(func)
