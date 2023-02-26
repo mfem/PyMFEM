@@ -534,10 +534,9 @@ void NumbaCoefficientBase::PrepParams(mfem::ElementTransformation &T,
           }
         case 1:// vector
           {
-           vdim = vcoeffs[i]->GetVDim();
+           vdim = vcoeffs[v_counter]->GetVDim();
            mfem::Vector V(vdim);
            vcoeffs[v_counter]->Eval(V, T, ip);
-
            data_ptr[counter] = &data[idx];
            for (int j = 0; j < vdim; j++){
              data[idx] =  V[j];
