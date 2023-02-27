@@ -91,7 +91,7 @@ class NumbaCoefficientBase
   int num_dep = 0;
   int kinds[16];       // for now upto 16 coefficients
   int isdepcomplex[16];   // for now upto 16 coefficients
-  int isoutcomplex;   // if output is complex
+  bool isoutcomplex = 0;   // if output is complex
 
   mfem::Array<mfem::Coefficient *>  *pcoeffs = nullptr;
   mfem::Array<mfem::VectorCoefficient *>  *pvcoeffs = nullptr;
