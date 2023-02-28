@@ -1214,7 +1214,7 @@ try:
     jit = _JIT()
 except ImportError:
     pass
-except BaseError:
+except BaseException:
     assert False, "Failed setting Numba signatures by an error other than ImportError"
 
 def _scalar(func, td=False, params=None, complex=False, dependency=None,
