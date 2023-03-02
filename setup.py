@@ -608,28 +608,29 @@ def make_metis(use_int64=False, use_real64=False):
 
     pwd = chdir(path)
 
-    sed_command = find_command('sed')
-    if sed_command is None:
-        assert False, "sed is not foudn"
-
     if use_int64:
-        command = [sed_command, '-i',
-                   's/#define IDXTYPEWIDTH 32/#define IDXTYPEWIDTH 64/g',
-                   'include/metis.h']
+        pattern_int = "#define IDXTYPEWIDTH 32"
+        replace_int = "#define IDXTYPEWIDTH 64"
     else:
-        command = [sed_command, '-i',
-                   's/#define IDXTYPEWIDTH 64/#define IDXTYPEWIDTH 32/g',
-                   'include/metis.h']
+        pattern_int = "#define IDXTYPEWIDTH 64"
+        replace_int = "#define IDXTYPEWIDTH 32"
+    with open("include/metis.h", "r") as metis_header_fid:
+        metis_header_lines = metis_header_fid.readlines()
+    with open("include/metis.h", "w") as metis_header_fid:
+        for line in metis_header_lines:
+            metis_header_fid.write(re.sub(pattern_int, replace_int, line))
 
     if use_real64:
-        command = [sed_command, '-i',
-                   's/#define REALTYPEWIDTH 32/#define REALTYPEWIDTH 64/g',
-                   'include/metis.h']
+        pattern_real = "#define REALTYPEWIDTH 32"
+        replace_real = "#define REALTYPEWIDTH 64"
     else:
-        command = [sed_command, '-i',
-                   's/#define REALTYPEWIDTH 64/#define REALTYPEWIDTH 32/g',
-                   'include/metis.h']
-    make_call(command)
+        pattern_real = "#define REALTYPEWIDTH 64"
+        replace_real = "#define REALTYPEWIDTH 32"
+    with open("include/metis.h", "r") as metis_header_fid:
+        metis_header_lines = metis_header_fid.readlines()
+    with open("include/metis.h", "w") as metis_header_fid:
+        for line in metis_header_lines:
+            metis_header_fid.write(re.sub(pattern_real, replace_real, line))
 
     command = ['make', 'config', 'shared=1',
                'prefix=' + metis_prefix,
@@ -1669,10 +1670,10 @@ class BuildPy(_build_py):
                 if use_metis_gklib:
                     gitclone('gklib', use_sha=True)
                     gitclone('metis', use_sha=True)
-                    make_metis(use_int64=metis_64)
+                    make_metis(use_int64=metis_64, use_real64=metis_64)
                 else:
                     download('metis')
-                    make_metis(use_int64=metis_64)
+                    make_metis(use_int64=metis_64, use_real64=metis_64)
 
             if build_hypre:
                 download('hypre')
