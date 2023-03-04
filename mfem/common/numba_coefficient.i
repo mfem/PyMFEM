@@ -534,10 +534,9 @@ void NumbaCoefficientBase::PrepParams(mfem::ElementTransformation &T,
           }
         case 1:// vector
           {
-           vdim = vcoeffs[i]->GetVDim();
+           vdim = vcoeffs[v_counter]->GetVDim();
            mfem::Vector V(vdim);
            vcoeffs[v_counter]->Eval(V, T, ip);
-
            data_ptr[counter] = &data[idx];
            for (int j = 0; j < vdim; j++){
              data[idx] =  V[j];
@@ -1204,7 +1203,7 @@ try:
         def matrix(func=None, **kwargs):
             def wrapper(func):
                 def dec(*args, **kwargs):
-                    return _matrixr(*args, **kwargs)
+                    return _matrix(*args, **kwargs)
                 return dec(func, **kwargs)
             if func:
                 return wrapper(func)
