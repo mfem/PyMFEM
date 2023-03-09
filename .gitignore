@@ -16,3 +16,8 @@ test/*
 !test/cpp/
 *.egg-info
 *.py#
+
+**/*_wrap.h
+**/*_wrap.cxx
+mfem/**/*.py
+existing_mfem_headers.i
