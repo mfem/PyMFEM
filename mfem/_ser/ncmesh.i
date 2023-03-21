@@ -35,7 +35,7 @@ XXXPTR_SIZE_IN(mfem::Refinement *data_, int asize, mfem::Refinement)
 
 %immutable embeddings;
 
-%include  "mesh/ncmesh.hpp"
+%include "mesh/ncmesh.hpp"
 
 #ifndef SWIGIMPORTED
  //OSTREAM_ADD_DEFAULT_STDOUT_FILE(NCMesh, PrintVertexParents)

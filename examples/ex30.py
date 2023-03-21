@@ -44,7 +44,7 @@ def singular_coeff(p):
     r = np.sqrt((x - xc)**2.0 + (y - yc)**2)
     num = - (alpha - alpha**3 * (r**2 - r0**2))
     denom = (r * (alpha**2 * r0**2 + alpha**2 * r**2 -
-                 2 * alpha**2 * r0 * r + 1.0))**2
+                  2 * alpha**2 * r0 * r + 1.0))**2
     denom = max([denom, 1e-8])
     return num / denom
 

@@ -22,9 +22,9 @@ def run(order=1,
         serial_ref_levels=0):
 
     device = mfem.Device('cpu')
-    if myid == 0:    
+    if myid == 0:
         device.Print()
-    
+
     # 2. Read the mesh from the given mesh file. We can handle triangular,
     #    quadrilateral, tetrahedral, and hexahedral meshes with the same code.
     mesh = mfem.Mesh(meshfile, 1, 1)

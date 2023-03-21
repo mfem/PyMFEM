@@ -1,99 +1,130 @@
-# Install
+# Install Guide
+
+PyMFEM wrapper provides MPI version and non-MPI version of wrapper. 
 
 Default pip install installs serial MFEM + wrapper
 
+$ pip install mfem
+or
 $ pip install mfem --no-binary mfem
 
-For other configuration such as parallel version, one has to download
-the package and run setup script. pip download command download tar-gziped
-package.
+For other configuration such as parallel version, one can either use --install-option
+flags with pip or download the package as follows and run setup script, manually.
 
 $ pip download mfem --no-binary mfem
 
-Once the package is expanded, enter the package directory and
-use the setup.py on the top level. For example, --with-parallel option,
-it build MFEM in both serial and parallel and build wrapper. It also
-download Metis and Hypre for parallel MFEM.
-
-Note: python3 setup.py instal is deprecated. A recommended way is to use
-python -m pip install. Translation is straighforward.
-
-(old) python setup.py install --with-parallel
-(new) python -m pip install ./ --install-option="--with-parallel"
-
-One can also specify the MFEM installed in other location using
---mfem-prefix=<xxxx>. This will regenerate the SWIG wrapper. Or
-you can use --mfem-prefix-no-swig=<xxxx> to reuse the wrapper code
-distributed with this package
-
-setup.py allows various options. Some examples are listed below.
-Use -help to see the full list.
+In order to see the full list of options, use
 
 $ python setup.py install --help
 
-* build MFEM with suitesparse (only for parallel build)
-(old) $ python3 setup.py install --with-suitesparse --suitesparse-prefix='xxx' --with-parallel
+In below, for the brevity, examples are mostly shown using "python setup.py install" convention.
+When using PIP, each option needs to be passed using --install-option. 
 
-* building external (metis/hypre/mfem)
-(old) $ python3 setup.py install --prefix=~/sandbox --verbose --ext-only --with-parallel
+## Parallel MFEM
+--with-parallel : build both serial and parallel version of MFEM and wrapper
 
-* building PyMFEM (after --ext-only)
-(old) python3 setup.py install --prefix=~/sandbox --verbose --skip-ext --with-parallel
-(new) python -m pip install ./ --verbose --install-option="--mfem-branch=master" --install-option="--mfem-source=external/mfem" --install-option="--skip-ext" --install-option="--with-parallel"
+Note: this option turns on building metis and Hypre 
 
-* run swig
-(old) python3 setup.py install --prefix=~/sandbox --verbose --skip-ext --with-parallel --swig
-(new) python -m pip install ./ --verbose --install-option="--mfem-branch=master" --install-option="--mfem-source=external/mfem" --install-option="--swig" --install-option="--with-parallel"
+## Suitesparse
+--with-suitesparse : build MFEM with suitesparse. SuiteSparse needs to be installed separately.
+--suitesparse-prefix=<location>
 
-* clean up all externals
-$ python setup.py clean --all-externals
-
-* choosing compiler
-$ python setup.py install --parallel --CC=xxx, --CXX=xxx, --MPICC=xxx, --MPICXX=xxx
-
-* build with a specific mfem branch
-$ python setup.py install --mfem-branch="mfem-4.3-dev"
-
-# Using additional features (GPU, HYPRE-GPU, libCEED, GSLIB)
-Following features are supported. However, the build process is more involved.
-First we need to build MFEM and other libraries (without building wrapper), this allows for
-proper config.mk. Then, we re-genearte SWIG wrapper codes. For this, SWIG 4.0.2 is required.
-After that, we build wrapper code.
-
-Note that --ext-only option directs setup.py to build only the external libraries, while
---skip-ext option does do opposite.
-
-For example,
-
-$ python setup.py install --with-libceed --ext-only
-$ python setup.py clean -swig
-$ python setup.py install  --with-libceed --swig
-$ python setup.py install  --with-libceed --skip-ext
-
-* cuda
-cuda build supports both serial/parallel. In parallel, hypre cuda build is also
-supported. If you need, use --cuda-arch to specify cuda compute capablility.
+Note: this option turns on building metis in serial
+ 
+## CUDA
+--with-cuda option build MFEM with CUDA. Hypre cuda build is also supported using
+--with-cuda-hypre. --cuda-arch can be used to specify cuda compute capablility.
 (See table in https://en.wikipedia.org/wiki/CUDA#Supported_GPUs)
 
+-with-cuda : build MFEM using CUDA on
+--cuda-arch=<number>  : specify cuda compute capability version
+--with-cuda-hypre : build Hypre with cuda
+
+(example)
 $ python setup.py install --with-cuda
 $ python setup.py install --with-cuda --with-cuda-hypre
 $ python setup.py install --with-cuda --with-cuda-hypre --cuda-arch=80 (A100)
 $ python setup.py install --with-cuda --with-cuda-hypre --cuda-arch=75 (Turing)
 
-Again, actual build build requires to regenerate wrapper.
+## gslib
+--with-gslib : build MFEM with GSlib
 
-$ python setup.py install  --with-cuda (--with-parallel) --ext-only --cuda-arch=xx (choose appropriate xx for your GPU)
-$ python setup.py clean --swig (or one can do $ touch mfem/*/*.i)
-$ python setup.py install  --with-cuda (--with-parallel) --swig
-$ python setup.py install  --with-cuda (--with-parallel) --skip-ext
+Note: this option builds GSlib
 
-* libceed
-$ python setup.py install  --with-libceed --
+## libceed
+--with-libceed : build MFEM with libceed
+Note: this option builds libceed
 
-* Turn on everything...:D
-$ python setup.py install --with-parallel --with-cuda --with-libceed --with-gslib  --with-cuda-hypre
+## Specify compilers
+--CC                                 c compiler
+--CXX                                c++ compiler
+--MPICC                              mpic compiler
+--MPICXX                             mpic++ compiler
+
+(example)
+Using Intel compiler
+$ python setup.py install --with-parallel --CC=icc, --CXX=icpc, --MPICC=mpiicc, --MPICXX=mpiicpc
+
+## Building MFEM with specific version
+By default, setup.py build MFEM with specific SHA (which is usually the released latest version).
+In order to use the latest MFEM in Github. One can specify the branch name or SHA using mfem-branch
+option.
+
+-mfem-branch = <branch name or SHA>
+
+(example)
+$ python setup.py install --mfem-branch=master
+
+## Using MFEM build externally.
+These options are used to link PyMFEM wrapper with existing MFEM library. We need --mfem-source
+and --mfem-prefix
+
+--mfem-source : <location>   : the location of MFEM source used to build MFEM 
+--mfem-prefix : <location>   : the location of MFEM library. libmfem.so needs to be found in <location>/lib
+--mfems-prefix : <location>  : (optional) specify serial MFEM location separately
+--mfemp-prefix : <location>  : (ooptional)specify parallel MFEM location separately
+
+## Blas and Lapack
+--with-lapack : build MFEM with lapack
+
+<location> is used for CMAKE call to buid MFEM
+--blas_-libraries=<location>
+--lapack-libraries=<location>
+
+## Development and testing options
+--swig : run swig only
+--skip-swig : build without running swig
+--skip-ext : skip building external libraries.
+--ext-only : build exteranl libraries and exit.
+
+During the development, often we update depenencies (such as MFEM) and edit *.i file.
+
+First clean everything.
+
+$ python setup.py clean --all
+
+Then, build externals alone
+$ python setup.py install --with-parallel --ext-only --mfem-branch="master"
+
+Then, genrate swig wrappers.
+$ python setup.py install --with-parallel --swig --mfem-branch="master"
+
+If you are not happy with the wrapper (*.cxx and *.py), you edit *.i and redo
+the same. When you are happy, build the wrapper. --swig does not clean the
+existing wrapper. So, it will only update wrapper for updated *.i
+
+When building a wrapper, you can use --skip-ext option. By default, it will re-run
+swig to generate entire wrapper codes.
+$ python setup.py install --with-parallel --skip-ext --mfem-branch="master"
+
+If you are sure, you could use --skip-swig option, so that it compiles the wrapper
+codes without re-generating it.
+$ python setup.py install --with-parallel --skip-ext --skip-swig --mfem-branch="master"
 
 
-
+## Other options
+--unverifiedSSL :
+   This addresses error relating SSL certificate. Typical error message is
+   "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:xxx)>"
 
 

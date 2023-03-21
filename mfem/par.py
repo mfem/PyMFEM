@@ -72,6 +72,10 @@ from  mfem._par.fespacehierarchy import *
 from  mfem._par.multigrid import *
 from  mfem._par.constraints import *
 from  mfem._par.transfer import *
+from  mfem._par.qspace import *
+from  mfem._par.qfunction import *
+from  mfem._par.quadinterpolator import *
+from  mfem._par.quadinterpolator_face import *
 
 from  mfem._par.fe_base import *
 from  mfem._par.fe_h1 import *
@@ -84,6 +88,10 @@ from  mfem._par.fe_pos import *
 from  mfem._par.fe_nurbs import *
 from  mfem._par.doftrans import *
 from  mfem._par.std_vectors import *
+from  mfem._par.submesh import *
+from  mfem._par.psubmesh import *
+from  mfem._par.transfermap import *
+from  mfem._par.ptransfermap import *
 
 try:
    from  mfem._par.gslib import *
@@ -108,6 +116,8 @@ import mfem._par.pgridfunc as pgridfunc
 import mfem._par.solvers as solvers
 import mfem._par.vector as vector
 import mfem._par.sparsemat as sparsemat
+
+import mfem._par.tmop_modules as tmop
 
 try:
     import mfem._par.dist_solver as dist_solver

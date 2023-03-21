@@ -135,8 +135,19 @@ empty_tdof_list = mfem.intArray()
 a.FormLinearSystem(empty_tdof_list, x, b, A, X, B)
 
 AA = mfem.OperatorHandle2SparseMatrix(A)
-M = mfem.GSSmoother(AA)
-mfem.PCG(AA, M, B, X, 1, 200, 1e-12, 0.0)
+
+try:
+    umf_solver = mfem.UMFPackSolver()
+except:
+    umf_solver = None
+
+if umf_solver is None:
+    M = mfem.GSSmoother(AA)
+    mfem.PCG(AA, M, B, X, 1, 200, 1e-12, 0.0)
+else:
+    umf_solver.Control[mfem.UMFPACK_ORDERING] = mfem.UMFPACK_ORDERING_METIS
+    umf_solver.SetOperator(AA)
+    umf_solver.Mult(B, X)
 
 # 10. Recover the solution as a finite element grid function.
 a.RecoverFEMSolution(X, b, x)

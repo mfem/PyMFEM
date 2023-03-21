@@ -79,7 +79,7 @@ def run(order=1, static_cond=False,
     a = mfem.ParBilinearForm(fespace)
     if pa:
         a.SetAssemblyLevel(mfem.AssemblyLevel_PARTIAL)
-        
+
     a.AddDomainIntegrator(mfem.DiffusionIntegrator(one))
 
     if static_cond:
@@ -96,12 +96,12 @@ def run(order=1, static_cond=False,
         if mfem.UsesTensorBasis(fespace):
             if algebraic_ceed:
                 assert False, "not supported"
-                #prec = new ceed::AlgebraicSolver(a, ess_tdof_list);
+                # prec = new ceed::AlgebraicSolver(a, ess_tdof_list);
             else:
                 prec = mfem.OperatorJacobiSmoother(a, ess_tdof_list)
     else:
         prec = mfem.HypreBoomerAMG()
-        
+
     cg = mfem.CGSolver(MPI.COMM_WORLD)
     cg.SetRelTol(1e-12)
     cg.SetMaxIter(200)
@@ -118,6 +118,7 @@ def run(order=1, static_cond=False,
 
     pmesh.Print(mesh_name, 8)
     x.Save(sol_name, 8)
+
 
 if __name__ == "__main__":
     parser = ArgParser(description='Ex1 (Laplace Problem)')

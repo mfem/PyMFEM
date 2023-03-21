@@ -16,33 +16,31 @@ jobs:
           echo It runs directly on the virtual machine.
           #
           git clone https://github.com/mfem/PyMFEM.git
-          cd PyMFEM	  
-          git checkout test_release
+          cd PyMFEM
           #
-          mkdir external	  
-          cd external
-          git clone https://github.com/mfem/mfem.git
-          cd ..
+          REF=$(echo ${GITHUB_REF#refs/heads/})
+          echo "!!!!!: "$REF
+          git checkout $REF
           #
-          export PATH=/opt/python/cp36-cp36m/bin:$PATH	  
-          pip3 install wheel	  
-          pip3 install six
-          pip3 install auditwheel
-          pip3 install twine
-          if [ -f requirements.txt ]; then
-             pip3 install -r requirements.txt
-          fi	  
+          export PATH=/opt/python/cp37-cp37m/bin:$PATH
+
+          pip3 install wheel six auditwheel twine
+          pip3 install numpy==1.21.6
+          #if [ -f requirements.txt ]; then
+          #   pip3 install -r requirements.txt
+          #fi
+
           rm -rf dist/*
           python3 setup.py sdist
           ls -l dist/
           python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
           #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*
-  make_binary_3_6_7_8_9:
+  make_binary_3_7_8_9:
     needs: make_sdist
     strategy:
       matrix:
-        pythonpath: ["cp36-cp36m", "cp37-cp37m", "cp38-cp38", "cp39-cp39"]
- 
+        pythonpath: ["cp37-cp37m", "cp38-cp38", "cp39-cp39"]
+
     runs-on: ubuntu-latest
     container: quay.io/pypa/manylinux2014_x86_64
     #container: node:10.16-jessie
@@ -54,33 +52,40 @@ jobs:
           git clone https://github.com/mfem/PyMFEM.git
           cd PyMFEM
           #
-          mkdir external
-          cd external
-          git clone https://github.com/mfem/mfem.git
-          cd ..
-          #	  
-          git checkout test_release	  
+          REF=$(echo ${GITHUB_REF#refs/heads/})
+          echo "!!!!!!: "$REF
+          git checkout $REF
           #
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
           pip3 install six auditwheel twine
 
+          pip3 install numpy==1.21.6
+          pip3 install numba-scipy
           if [ -f requirements.txt ]; then
              pip3 install -r requirements.txt
-          fi	  
+          fi
+
           CWD=$PWD
-          ls -l
           yum install -y zlib-devel
-          python3 setup.py install
+          yum install -y chrpath
+
+          mkdir dist
+
+          # build wheel and check it
+          python3 -m pip wheel ./ --verbose --no-deps
+          pip3 install *.whl
+          cd test
+          python run_examples.py -serial -verbose -ex ex1
+          cd ..
 
           rm -rf dist/*
-          python3 setup.py bdist_wheel
-          export LD_LIBRARY_PATH=${CWD}/PyMFEM/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
-          rm -rf wheelhouse/*
-          auditwheel repair dist/*.whl
+          export LD_LIBRARY_PATH=${CWD}/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
+
+          auditwheel repair *.whl
           rm -rf dist/*
-          #python3 setup.py sdist
           mv wheelhouse/* dist/
+
           ls -l dist/
           python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
           #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*
@@ -102,31 +107,43 @@ jobs:
           git clone https://github.com/mfem/PyMFEM.git
           cd PyMFEM
           #
-          git checkout test_release
+          REF=$(echo ${GITHUB_REF#refs/heads/})
+          echo "!!!!!!: "$REF
+          git checkout $REF
           #
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
-          pip3 install six auditwheel twine
 
+          pip3 install six auditwheel twine
+          pip3 install numba-scipy
           if [ -f requirements.txt ]; then
              pip3 install -r requirements.txt
-          fi	  
+          fi
           CWD=$PWD
           ls -l
 
           apt-get update
           apt-get install -y zlib1g-dbg
+          apt-get install -y chrpath
 
-          python3 -m pip install ./ --verbose
+          mkdir dist
+
+          # build wheel and check it
+          python3 -m pip wheel ./ --verbose --no-deps
+          pip3 install *.whl
+          cd test
+          python run_examples.py -serial -verbose -ex ex1
+          cd ..
 
           rm -rf dist/*
-          python3 setup.py bdist_wheel
-          export LD_LIBRARY_PATH=${CWD}/PyMFEM/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
+          export LD_LIBRARY_PATH=${CWD}/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
+
           rm -rf wheelhouse/*
-          auditwheel repair dist/*.whl
+          auditwheel repair *.whl
           rm -rf dist/*
-          #python3 setup.py sdist
+
           mv wheelhouse/* dist/
+
           ls -l dist/
           python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
           #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*

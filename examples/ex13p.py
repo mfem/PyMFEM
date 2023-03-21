@@ -7,6 +7,8 @@
 
    See c++ version in the MFEM library for more detail 
 '''
+from numpy import sin, cos, exp
+import numpy as np
 import sys
 import mfem.par as mfem
 from mfem.par import intArray, doubleArray
@@ -16,8 +18,6 @@ from mpi4py import MPI
 num_procs = MPI.COMM_WORLD.size
 myid = MPI.COMM_WORLD.rank
 
-import numpy as np
-from numpy import sin, cos, exp
 
 ser_ref_levels = 2
 par_ref_levels = 1

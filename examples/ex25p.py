@@ -158,14 +158,15 @@ def run(meshfile="",
 
     # 10. Set up the linear form b(.) which corresponds to the right-hand side of
     #     the FEM linear system.
-    # if numba:
+
+    #     constant parameters used in JITed function can be given by params keyword
     params = {"comp_domain_bdr": comp_domain_bdr,
               "dim": dim,
               "omega": omega,
               "epsilon": epsilon,
               "prob": prob,
               "mu": mu}
-    f = mfem.jit.vector(sdim=dim, params=params)(source)
+    f = mfem.jit.vector(shape=(dim, ), params=params)(source)
     b = mfem.ParComplexLinearForm(fespace, conv)
     if prob == "general":
         b.AddDomainIntegrator(None, mfem.VectorFEDomainLFIntegrator(f))
@@ -178,15 +179,17 @@ def run(meshfile="",
     x = mfem.ParComplexGridFunction(fespace)
     x.Assign(0.0)
 
-    sig = types.void(types.CPointer(types.double),
-                     types.complex128[:], types.intc)
+    #     Here, we JIT compile a fuction using mfem.jit.func and use it later
+    #     in a coefficeint.
+    sig = types.complex128[:](types.double[:])
     exact_solution = mfem.jit.func(sig, params=params)(maxwell_solution)
 
     params = {'comp_domain_bdr': comp_domain_bdr,
               'exact_solution': exact_solution}
-    E_Re = mfem.jit.vector(sdim=dim, params=params)(E_bdr_data_Re)
-    E_Im = mfem.jit.vector(sdim=dim, params=params)(E_bdr_data_Im)
-    x.ProjectBdrCoefficientTangent(E_Re, E_Im, ess_bdr)
+    E_data = mfem.jit.vector(shape=(dim,),
+                             complex=True,
+                             params=params)(E_bdr_data)
+    x.ProjectBdrCoefficientTangent(E_data.real, E_data.imag, ess_bdr)
 
     # 12. Set up the sesquilinear form a(.,.)
     #
@@ -221,40 +224,38 @@ def run(meshfile="",
 
     cdim = 1 if dim == 2 else dim
 
-    def dm(x, m, sdim, _vdim):
-        diag = np.empty(sdim)
-        diag_func(x, diag)
-        for i in range(sdim):
-            m[i] = diag[i]
-
     # JIT compiles all functions first. params defines local variables
     # inside the JITed function.
-    sig = types.void(types.CPointer(types.double), types.float64[:])
-    params = {"StretchFunction": pml.StretchFunction, "dim": dim}
-    detJ_inv_JT_J_Re = mfem.jit.func(sig, params=params)(detJ_inv_JT_J_Re_f)
-    detJ_inv_JT_J_Im = mfem.jit.func(sig, params=params)(detJ_inv_JT_J_Im_f)
-    detJ_inv_JT_J_abs = mfem.jit.func(sig, params=params)(detJ_inv_JT_J_abs_f)
-    params = {"StretchFunction": pml.StretchFunction, "dim": dim}
-    detJ_JT_J_inv_Re = mfem.jit.func(sig, params=params)(detJ_JT_J_inv_Re_f)
-    detJ_JT_J_inv_Im = mfem.jit.func(sig, params=params)(detJ_JT_J_inv_Im_f)
-    detJ_JT_J_inv_abs = mfem.jit.func(sig, params=params)(detJ_JT_J_inv_abs_f)
+    params = {"StretchFunction": pml.StretchFunction}
+    detJ_inv_JT_J = mfem.jit.vector(shape=(dim,),
+                                    params=params,
+                                    complex=True)(detJ_inv_JT_J_f)
+    detJ_inv_JT_J_abs = mfem.jit.vector(shape=(dim,),
+                                        params=params)(detJ_inv_JT_J_abs_f)
 
-    pml_c1_Re = mfem.jit.vector(sdim=cdim,
-                                params={"diag_func": detJ_inv_JT_J_Re})(dm)
-    pml_c1_Im = mfem.jit.vector(sdim=cdim,
-                                params={"diag_func": detJ_inv_JT_J_Im})(dm)
+    detJ_JT_J_inv = mfem.jit.vector(params=params,
+                                    shape=(dim,),
+                                    complex=True)(detJ_JT_J_inv_f)
+    detJ_JT_J_inv_abs = mfem.jit.vector(shape=(dim,),
+                                        params=params)(detJ_JT_J_inv_abs_f)
 
-    c1_Re = mfem.ScalarVectorProductCoefficient(muinv, pml_c1_Re)
-    c1_Im = mfem.ScalarVectorProductCoefficient(muinv, pml_c1_Im)
+    def dm1(x, diag):
+        return (1/mu)*diag
+
+    c1 = mfem.jit.vector(shape=(cdim, ),
+                         dependency=(detJ_inv_JT_J,), complex=True)(dm1)
+    c1_Re = c1.real
+    c1_Im = c1.imag
     restr_c1_Re = mfem.VectorRestrictedCoefficient(c1_Re, attrPML)
     restr_c1_Im = mfem.VectorRestrictedCoefficient(c1_Im, attrPML)
 
-    pml_c2_Re = mfem.jit.vector(sdim=dim,
-                                params={"diag_func": detJ_JT_J_inv_Re})(dm)
-    pml_c2_Im = mfem.jit.vector(sdim=dim,
-                                params={"diag_func": detJ_JT_J_inv_Im})(dm)
-    c2_Re = mfem.ScalarVectorProductCoefficient(omeg, pml_c2_Re)
-    c2_Im = mfem.ScalarVectorProductCoefficient(omeg, pml_c2_Im)
+    def dm2(x, diag):
+        return (-omega**2 * epsilon)*diag
+
+    c2 = mfem.jit.vector(shape=(dim,),
+                         dependency=(detJ_JT_J_inv,), complex=True)(dm2)
+    c2_Re = c2.real
+    c2_Im = c2.imag
     restr_c2_Re = mfem.VectorRestrictedCoefficient(c2_Re, attrPML)
     restr_c2_Im = mfem.VectorRestrictedCoefficient(c2_Im, attrPML)
 
@@ -294,14 +295,15 @@ def run(meshfile="",
         prec.AddDomainIntegrator(mfem.CurlCurlIntegrator(restr_muinv))
         prec.AddDomainIntegrator(mfem.VectorFEMassIntegrator(restr_absomeg))
 
-        pml_c1_abs = mfem.jit.vector(
-            params={"diag_func": detJ_inv_JT_J_abs, "dim": cdim})(dm)
-        c1_abs = mfem.ScalarVectorProductCoefficient(muinv, pml_c1_abs)
+        c1_abs = mfem.jit.vector(shape=(cdim,),
+                                 dependency=(detJ_inv_JT_J_abs,))(dm1)
         restr_c1_abs = mfem.VectorRestrictedCoefficient(c1_abs, attrPML)
 
-        pml_c2_abs = mfem.jit.vector(
-            params={"diag_func": detJ_JT_J_inv_abs, "dim": dim})(dm)
-        c2_abs = mfem.ScalarVectorProductCoefficient(absomeg, pml_c2_abs)
+        def dm3(x, diag):
+            return (omega**2 * epsilon)*diag
+
+        c2_abs = mfem.jit.vector(shape=(dim,),
+                                 dependency=(detJ_JT_J_inv_abs,))(dm3)
         restr_c2_abs = mfem.VectorRestrictedCoefficient(c2_abs, attrPML)
 
         prec.AddDomainIntegrator(mfem.CurlCurlIntegrator(restr_c1_abs))
@@ -342,6 +344,7 @@ def run(meshfile="",
         gmres.SetPrintLevel(1)
         gmres.SetKDim(200)
         gmres.SetMaxIter(5000 if pa else 2000)
+        # gmres.SetMaxIter(1)
         gmres.SetRelTol(1e-5)
         gmres.SetAbsTol(0.0)
         gmres.SetOperator(A.Ptr())
@@ -354,10 +357,10 @@ def run(meshfile="",
 
     # If exact is known compute the error
     if exact_known:
-        E_ex_Re = mfem.jit.vector(sdim=dim,
-                                  params={"exact_solution": exact_solution, "sdim": dim})(E_exact_Re)
-        E_ex_Im = mfem.jit.vector(sdim=dim,
-                                  params={"exact_solution": exact_solution, "sdim": dim})(E_exact_Im)
+        E_ex = mfem.jit.vector(shape=(dim,),
+                               complex=True)(maxwell_solution)
+        E_ex_Re = E_ex.real
+        E_ex_Im = E_ex.imag
 
         order_quad = max([2, 2 * order + 1])
 
@@ -490,7 +493,7 @@ class CartesianPML:
         self.StretchFunction = self._GenerateStretchFunction()
 
     def _GenerateStretchFunction(self):
-        sig = types.void(types.CPointer(types.double), types.complex128[:])
+        sig = types.void(types.double[:], types.complex128[:])
         params = {"comp_domain_bdr": self.comp_dom_bdr,
                   "dim": self.dim,
                   "length": self.length,
@@ -525,7 +528,9 @@ class CartesianPML:
 #
 
 
-def source(x, out):
+def source(x):
+    dim = shape[0]
+    out = np.zeros(dim)
     center = np.zeros(dim)
     r = 0
     for i in range(dim):
@@ -538,19 +543,22 @@ def source(x, out):
     alpha = -n**2 * r
 
     out[0] = coeff * exp(alpha)
+    return out
 
 
-def maxwell_solution(x, E, sdim):
+def maxwell_solution(x):
+
     jn = scipy.special.jv
     yn = scipy.special.yn
+
     # Initialize
-    for i in range(sdim):
-        E[i] = 0.0
+    E = np.zeros(dim, dtype=np.complex128)
+
     zi = 1j
     k = omega * sqrt(epsilon * mu)
 
     if prob == "disc" or prob == "lshape" or prob == "fichera":
-        shift = np.zeros(sdim)
+        shift = np.zeros(dim)
         if prob == "fichera":
             shift += 1.0
         elif prob == "disc":
@@ -558,7 +566,7 @@ def maxwell_solution(x, E, sdim):
         else:
             shift -= 1.0
 
-        if sdim == 2:
+        if dim == 2:
             x0 = x[0] + shift[0]
             x1 = x[1] + shift[1]
             r = sqrt(x0 * x0 + x1 * x1)
@@ -582,7 +590,7 @@ def maxwell_solution(x, E, sdim):
             val_xy = 0.25 * zi * (r_xy * Ho_r + r_x * r_y * Ho_rr)
             E[0] = zi / k * (k * k * val + val_xx)
             E[1] = zi / k * val_xy
-        elif sdim == 3:
+        elif dim == 3:
             x0 = x[0] + shift[0]
             x1 = x[1] + shift[1]
             x2 = x[2] + shift[2]
@@ -614,88 +622,56 @@ def maxwell_solution(x, E, sdim):
             pass
     elif prob == 'beam':
         # T_10 mode
-        if sdim == 3:
+        if dim == 3:
             k10 = sqrt(k * k - pi*pi)
             E[1] = -zi * k / pi * sin(pi*x[2])*exp(zi * k10 * x[0])
-        elif sdim == 2:
+        elif dim == 2:
             E[1] = -zi * k / pi * exp(zi * k * x[0])
         else:
             pass
     else:
         pass
+    return E
 
 
-def E_exact_Re(x, E):
-    E_ = np.empty(sdim, dtype=np.complex128)
-    exact_solution(x, E_, sdim)
-    for i in range(sdim):
-        E[i] = E_[i].real
+def E_bdr_data(x):
+    dim = shape[0]
+    E = np.zeros(dim, dtype=np.complex128)
 
-
-def E_exact_Im(x, E):
-    E_ = np.empty(sdim, dtype=np.complex128)
-    exact_solution(x, E_, sdim)
-    for i in range(sdim):
-        E[i] = E_[i].imag
-
-
-def E_bdr_data_Re(x, E, sdim, _vdim):
-    for i in range(sdim):
-        E[i] = 0.0
     in_pml = False
 
-    for i in range(sdim):
+    for i in range(dim):
         # check if in PML
         if ((x[i] - comp_domain_bdr[i, 0]) < 0.0 or
                 (x[i] - comp_domain_bdr[i, 1]) > 0.0):
             in_pml = True
             break
     if not in_pml:
-        E_ = np.empty(sdim, dtype=np.complex128)
-        exact_solution(x, E_, sdim)
-        for i in range(sdim):
-            E[i] = E_[i].real
+        E = exact_solution(x)
+
+    return E
 
 
-def E_bdr_data_Im(x, E, sdim, _vdim):
-    for i in range(sdim):
-        E[i] = 0.0
-    in_pml = False
-
-    for i in range(sdim):
-        # check if in PML
-        if ((x[i] - comp_domain_bdr[i, 0]) < 0.0 or
-                (x[i] - comp_domain_bdr[i, 1]) > 0.0):
-            in_pml = True
-            break
-    if not in_pml:
-        E_ = np.empty(sdim, dtype=np.complex128)
-        exact_solution(x, E_, sdim)
-        for i in range(sdim):
-            E[i] = E_[i].imag
-
-
-def detJ_JT_J_inv_Re_f(x, D):
+def detJ_JT_J_inv_f(x):
+    dim = shape[0]
+    D = np.zeros(dim, dtype=np.complex128)
+    # print(D) # this print cause memory error....(why?)
     dxs = np.empty(dim, dtype=np.complex128)
     det = complex(1.0)
+
     StretchFunction(x, dxs)
     for i in range(dim):
         det *= dxs[i]
     for i in range(dim):
-        D[i] = (det / (dxs[i]**2)).real
+        D[i] = (det / (dxs[i]**2))
+
+    return D
 
 
-def detJ_JT_J_inv_Im_f(x, D):
-    dxs = np.empty(dim, dtype=np.complex128)
-    det = complex(1.0)
-    StretchFunction(x, dxs)
-    for i in range(dim):
-        det *= dxs[i]
-    for i in range(dim):
-        D[i] = (det / (dxs[i]**2)).imag
+def detJ_JT_J_inv_abs_f(x):
+    dim = shape[0]
+    D = np.zeros(dim, dtype=np.float)
 
-
-def detJ_JT_J_inv_abs_f(x, D):
     dxs = np.empty(dim, dtype=np.complex128)
     det = complex(1.0)
     StretchFunction(x, dxs)
@@ -703,9 +679,13 @@ def detJ_JT_J_inv_abs_f(x, D):
         det *= dxs[i]
     for i in range(dim):
         D[i] = abs(det / (dxs[i]**2))
+    return D
 
 
-def detJ_inv_JT_J_Re_f(x, D):
+def detJ_inv_JT_J_f(x):
+    dim = shape[0]
+    D = np.zeros(dim, dtype=np.complex128)
+
     dxs = np.empty(dim, dtype=np.complex128)
     det = 1.0
     StretchFunction(x, dxs)
@@ -713,27 +693,17 @@ def detJ_inv_JT_J_Re_f(x, D):
         det *= dxs[i]
     # in the 2D case the coefficient is scalar 1/det(J)
     if dim == 2:
-        D[0] = (1.0 / det).real
+        D[0] = (1.0 / det)
     else:
         for i in range(dim):
-            D[i] = (dxs[i]**2 / det).real
+            D[i] = (dxs[i]**2 / det)
+    return D
 
 
-def detJ_inv_JT_J_Im_f(x, D):
-    dxs = np.empty(dim, dtype=np.complex128)
-    det = 1.0
-    StretchFunction(x, dxs)
-    for i in range(dim):
-        det *= dxs[i]
-    # in the 2D case the coefficient is scalar 1/det(J)
-    if dim == 2:
-        D[0] = (1.0 / det).imag
-    else:
-        for i in range(dim):
-            D[i] = (dxs[i]**2 / det).imag
+def detJ_inv_JT_J_abs_f(x):
+    dim = shape[0]
+    D = np.zeros(dim, dtype=np.float)
 
-
-def detJ_inv_JT_J_abs_f(x, D):
     dxs = np.empty(dim, dtype=np.complex128)
     det = 1.0
     StretchFunction(x, dxs)
@@ -745,6 +715,7 @@ def detJ_inv_JT_J_abs_f(x, D):
     else:
         for i in range(dim):
             D[i] = abs(dxs[i]**2 / det)
+    return D
 
 
 if __name__ == "__main__":

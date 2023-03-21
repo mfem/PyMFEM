@@ -29,8 +29,6 @@
 %import "../common/exception.i"
 %include "../common/typemap_macros.i"
 
-%pointer_class(int, intp);
-
 LIST_TO_MFEMOBJ_ARRAY_IN(mfem::Array<mfem::ParFiniteElementSpace *> &pf,
     		        mfem::ParFiniteElementSpace *)
 LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::Array<int> *> &bdr_attr_is_ess,

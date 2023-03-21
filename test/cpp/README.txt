@@ -12,6 +12,11 @@ nvcc -ccbin mpic++  -I ${SITE}/mfem/external/par/include/ -I${SITE}/mfem/externa
 mpirun -np 2  xterm -e "gdb -ex "run" ./a.out"
 
 
+## samples placed here
+
+meshOptMWE.cpp  : minimum working example of mesh optimization (contribution by Ketan Mittel)
+
+
 
 
 

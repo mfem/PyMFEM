@@ -31,21 +31,21 @@ pip3 install -i  https://test.pypi.org/simple  mfem --no-binary mfem --verbose
 
 ### Test linux binary build locally using docker (1) for Python <= 3.9
 
-sudo docker pull quay.io/pypa/manylinux2010_x86_64
-sudo docker run -it -v $(pwd):/io quay.io/pypa/manylinux2010_x86_64
-yum install openssh-server openssh-clients
-yum install zlib-devel
+sudo docker pull quay.io/pypa/manylinux2014_x86_64
+sudo docker run -it -v $(pwd):/io quay.io/pypa/manylinux2014_x86_64
+yum install openssh-server openssh-clients zlib-devel
 #git clone git@github.com:mfem/PyMFEM.git
 git clone https://github.com/mfem/PyMFEM.git
-export PATH=/opt/python/cp36-cp36m/bin:$PATH
-pip install six numpy scipy auditwheel twine cmake
+export PATH=/opt/python/cp38-cp38/bin:$PATH
+pip install six numpy  auditwheel twine cmake swig
 python3 setup.py install
 rm -rf dist/*
 python3 setup.py bdist_wheel
 export LD_LIBRARY_PATH=/root/PyMFEM/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
 rm -rf wheelhouse/*
-auditwheel repair dist/mfem-4.2.1.30-cp38-cp38-linux_x86_64.whl
+auditwheel repair dist/mfem-*-linux_x86_64.whl
 rm -rf dist/*
+mv wheelhouse/* dist/
 python3 setup.py sdist
 
 ### Test linux binary build locally using docker (2) for Python <= 3.10
@@ -55,15 +55,16 @@ sudo docker run -it -v $(pwd):/io quay.io/pypa/manylinux_2_24_x86_64
 apt-get update
 apt-get install openssh-server zlib1g-dbg
 git clone https://github.com/mfem/PyMFEM.git
-export PATH=/opt/python/cp36-cp36m/bin:$PATH
-pip install six numpy scipy auditwheel twine cmake
+export PATH=/opt/python/cp38-cp38/bin:$PATH
+pip install six numpy scipy auditwheel twine cmake swig
 python3 setup.py install
 rm -rf dist/*
 python3 setup.py bdist_wheel
 export LD_LIBRARY_PATH=/root/PyMFEM/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
 rm -rf wheelhouse/*
-auditwheel repair dist/mfem-4.2.1.30-cp38-cp38-linux_x86_64.whl
+auditwheel repair dist/mfem-*-linux_x86_64.whl
 rm -rf dist/*
+mv wheelhouse/* dist/
 python3 setup.py sdist
 
 
@@ -112,20 +113,49 @@ $ conda install -c conda-forge/label/gcc9 mpi4py
 sudo docker pull python:3.9
 sudo docker run -it python:3.9 bash
 
-(usually we need an editor...)
-apt-get update
-apt-get install emacs
 
-pip install cmake 
-git clone https://github.com/mfem/PyMFEM.git
-python3 -m pip install --upgrade pip setuptools wheel
+# git clone https://github.com/mfem/PyMFEM.git
+# cd PyMFEM
+# git checkout next
+# pip install SWIG cmake numba-scipy
+# python3 setup.py install --mfem-branch=master
+# cd test
+# python run_examples.py -serial -verbose
 
-pip install six numpy scipy
-
-python -m pip install ./ --user
+for parallel
+# apt-get-update
+# apt-get install libopenmpi-dev libscalapack-openmpi-dev
+# pip install mpi4py --install-option="CC=mpicc"
+# python3 setup.py install --with-parallel --mfem-branch=master
 
 ### test using python:3.10 image
 sudo docker pull python:3.10
 sudo docker run -it python:3.10 bash
 
 python -m pip install ./ --user --install-option='--mfem-branch=master'
+
+
+### test using python:3.9 image wit parallel
+sudo docker pull python:3.9
+sudo docker run -it python:3.9 bash
+
+(usually we need an editor...)
+apt-get update
+apt-get install libmpich-dev
+
+pip install six numpy scipy auditwheel twine cmake swig mpi4py
+git clone https://github.com/mfem/PyMFEM.git
+
+# testing it without swig
+python setup.py install --with-parallel --mfem-branch='master'
+
+# testing it with swig
+git checkout tmop_support
+python setup.py clean --swig
+python setup.py install --ext-only --with-gslib --with-parallel --mfem-branch='master'
+python setup.py install --swig --with-gslib --with-parallel 
+python setup.py install --skip-ext --with-gslib --with-parallel
+
+
+
+

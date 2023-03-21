@@ -1,0 +1,157 @@
+name: Test_with_MFEM_master
+
+on:
+  pull_request:
+    types:
+      - labeled
+  #push:
+  #  branches: [ test ]
+  #pull_request:
+  #  branches: [ test ]
+  #  types: [synchronize]
+
+jobs:
+  build:
+    if: contains(github.event.pull_request.labels.*.name, 'in-test-with-mfem-master')
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.7", "3.8", "3.9", "3.10"]
+        #python-version: ["3.10"]
+        #os: [ubuntu-latest]
+        os: [ubuntu-20.04]
+        # USE_FLAGS :  cuda, parallel, libceed
+        env:
+           - { USE_FLAGS: "000"}
+           - { USE_FLAGS: "100"}
+           - { USE_FLAGS: "010"}
+           - { USE_FLAGS: "110"}
+
+        include:
+           - os: macos-latest
+             python-version: 3.9
+             env: {USE_FLAGS: "000"}
+           - os: [ubuntu-20.04]
+             python-version: 3.9
+             env: {USE_FLAGS: "001"}
+#
+    runs-on: ${{ matrix.os }}      
+    #env: ${{ matrix.env }}
+    env: 
+       USE_FLAGS: ${{ matrix.env.USE_FLAGS }}
+       CUDA: "11.5"
+
+    steps:
+    - uses: actions/checkout@v3
+#      with:
+#        ref: master_tracking_branch
+ 
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: |
+        #python -m pip install --upgrade pip setuptools wheel
+        python -c "import setuptools;print(setuptools.__version__)"
+
+        PYTHONLIB=${HOME}/sandbox/lib/python${{ matrix.python-version }}/site-packages
+        mkdir -p $PYTHONLIB
+
+        export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
+        echo "PYTHONPATH:"$PYTHONPATH
+
+        pip install six numpy --verbose 
+        if [ "${{matrix.python-version}}" = "3.10" ] ; then
+            pip install numba numba-scipy --verbose
+            #pip install scipy
+        else
+            pip install numba numba-scipy --verbose
+        fi
+
+        if [ -f requirements.txt ]; then
+           pip install -r requirements.txt --prefix=${HOME}/sandbox --verbose
+        fi
+
+        python -c "import sys;print(sys.path)"
+        python -c "import numpy;print(numpy.__file__)"  
+
+        echo ${HOME}
+        which swig  # this default is 4.0.1 
+        pip install swig --prefix=${HOME}/sandbox
+        export PATH=/usr/local/cuda-${CUDA}/bin:${HOME}/sandbox/bin:$PATH
+        ls ${HOME}/sandbox/bin
+        which swig
+        swig -version
+        ${HOME}/sandbox/bin/swig -version
+
+        if [ "${USE_FLAGS:0:1}" = "1" ] ; then
+            echo $cuda
+            source ./ci_scripts/add_cuda_11_5.sh;
+        fi
+        if [ "${USE_FLAGS:1:1}" = "1" ] ; then
+            sudo apt-get install mpich;
+            sudo apt-get install libmpich-dev;
+            pip install mpi4py
+            #pip install mpi4py --no-cache-dir --prefix=${HOME}/sandbox;
+            #python -m pip install git+https://github.com/mpi4py/mpi4py
+            #python -c "import mpi4py;print(mpi4py.get_include())";
+        fi
+        ls -l $PYTHONLIB        
+        
+    - name: Build
+      run: |
+        export PATH=/usr/local/cuda-${CUDA}/bin:${HOME}/sandbox/bin:$PATH
+        PYTHONLIB=${HOME}/sandbox/lib/python${{ matrix.python-version }}/site-packages        
+        export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
+        echo $PATH
+        echo $PYTHONPATH
+        echo "SWIG exe"$(which swig)
+
+        if [ "${USE_FLAGS}" = "000" ]; then  
+           python setup.py install --user --mfem-branch='master'
+        fi
+        if [ "${USE_FLAGS}" = "010" ]; then
+           python setup.py install --with-parallel --prefix=${HOME}/sandbox --mfem-branch='master'
+        fi
+        if [ "${USE_FLAGS}" = "100" ]; then
+           ls -l /usr/local/cuda-${CUDA}/include
+           python setup.py install --with-cuda --prefix=${HOME}/sandbox --mfem-branch='master'
+        fi
+        if [ "${USE_FLAGS}" = "110" ]; then
+           python setup.py install --with-cuda --with-parallel --mfem-branch='master'
+        fi
+        if [ "${USE_FLAGS}" = "001" ]; then
+           python setup.py install --prefix=${HOME}/sandbox --with-libceed --mfem-branch='master'
+        fi
+
+    - name: RUN_EXAMPLES
+      run: |
+        export PATH=/usr/local/cuda-${CUDA}/bin:$PATH
+        PYTHONLIB=${HOME}/sandbox/lib/python${{ matrix.python-version }}/site-packages        
+        export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
+        echo $PATH
+        echo $PYTHONPATH
+        cd test
+        echo $PATH
+        echo $PYTHONPATH
+        if [ "${USE_FLAGS}" = "000" ]; then  
+           #python ../examples/ex1.py
+           #python ../examples/ex9.py
+           python run_examples.py -serial -verbose
+        fi
+        if [ "${USE_FLAGS}" = "010" ]; then
+           which mpicc
+           python run_examples.py -parallel -verbose -np 2
+        fi
+        if [ "${USE_FLAGS}" = "100" ]; then
+           python ../examples/ex1.py --pa
+        fi
+        if [ "${USE_FLAGS}" = "110" ]; then
+           mpirun -np 2 python ../examples/ex1.py --pa
+        fi
+        if [ "${USE_FLAGS}" = "001" ]; then
+           python ../examples/ex1.py -d ceed-cpu
+           python ../examples/ex9.py -d ceed-cpu           
+        fi

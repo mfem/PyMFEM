@@ -179,7 +179,7 @@ class FaceIntegrator(mfem.NonlinearFormIntegrator):
         super(FaceIntegrator, self).__init__()
 
         self.fluxNA = np.atleast_2d(self.fluxN.GetDataArray())
-        
+
     def AssembleFaceVector(self, el1, el2, Tr, elfun, elvect):
         num_equation = globals()['num_equation']
         # Compute the term <F.n(u),[w]> on the interior faces.
@@ -211,12 +211,12 @@ class FaceIntegrator(mfem.NonlinearFormIntegrator):
             intorder += 1
 
         ir = mfem.IntRules.Get(Tr.GetGeometryType(), int(intorder))
-        
+
         mat1A = elvect1_mat.GetDataArray()
         mat2A = elvect2_mat.GetDataArray()
         shape1A = np.atleast_2d(self.shape1.GetDataArray())
         shape2A = np.atleast_2d(self.shape2.GetDataArray())
-        
+
         for i in range(ir.GetNPoints()):
             ip = ir.IntPoint(i)
             Tr.Loc1.Transform(ip, self.eip1)
@@ -381,7 +381,7 @@ def ComputePressure(state, dim):
 
     specific_heat_ratio = globals()["specific_heat_ratio"]
     #den_vel2 = np.sum(den_vel**2)/den
-    den_vel2 = (state[1:1+dim].Norml2())**2/den    
+    den_vel2 = (state[1:1+dim].Norml2())**2/den
     pres = (specific_heat_ratio - 1.0) * (den_energy - 0.5 * den_vel2)
 
     return pres

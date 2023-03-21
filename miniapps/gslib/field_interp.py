@@ -16,8 +16,11 @@ import os
 from os.path import expanduser, join
 import numpy as np
 
-import mfem.par as mfem
-
+try:
+    import mpi4py
+    import mfem.par as mfem
+except:
+    import mfem.ser as mfem
 
 def run(order=3,
         meshfile1='',
@@ -77,17 +80,18 @@ def run(order=3,
     @mfem.jit.scalar()
     def scalar_func(x):
         res = 0.0
-        for d in range(sdim):
+        for d in range(len(x)):
             res += x[d] * x[d]
         return res
 
-    @mfem.jit.vector(sdim=sdim, vdim=src_vdim)
-    def vector_func(x, F):
-        F[0] = 0.0
-        for d in range(sdim):
+    @mfem.jit.vector(vdim=src_vdim)
+    def vector_func(x):
+        F = np.zeros(vdim, dtype=float)
+        for d in range(len(x)):
             F[0] += x[d] * x[d]
         for i in range(1, src_vdim):
             F[i] = (i + 1) * (-1)**i * F[0]
+        return F
 
     if src_fieldtype > -1:
         src_fes = mfem.FiniteElementSpace(mesh_1, src_fec, src_ncomp)

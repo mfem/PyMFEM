@@ -36,6 +36,13 @@ from numpy import cos, sin, pi, exp, sqrt, arctan
 import mfem.ser as mfem
 from mfem.ser import intArray
 
+try:
+    from numba import jit, types, jit_module
+    HAS_NUMBA = True
+except ImportError:
+    HAS_NUMBA = False
+
+
 parser = ArgParser(description='Ex15')
 parser.add_argument('-m', '--mesh',
                     default='star-hilbert.mesh',
@@ -92,7 +99,7 @@ def front(x, y, z, t, dim):
 
 def ball(x, y, z, t, dim):
     r = sqrt(x**2 + y**2 + z**2)
-    return -atan(2.*(r - t)/alpha)
+    return -arctan(2.*(r - t)/alpha)
 
 
 def front_laplace(x, y, z, t, dim):
@@ -145,15 +152,27 @@ def composite_func(pt, t, f0, f1):
         return np.sum(f1(x - x0, y - y0, z, 0.25, dim))
 
 
-class BdrCoefficient(mfem.PyCoefficientT):
-    def EvalValue(self, pt, t):
+if HAS_NUMBA:
+    jit_module(nopython=True, error_model="numpy")
+
+    @mfem.jit.scalar(td=True)
+    def bdr(pt, t):
         return composite_func(pt, t, front, ball)
 
-
-class RhsCoefficient(mfem.PyCoefficientT):
-    def EvalValue(self, pt, t):
-        # print 'rhs', composite_func(pt, t, front_laplace, ball_laplace)
+    @mfem.jit.scalar(td=True)
+    def rhs(pt, t):
         return composite_func(pt, t, front_laplace, ball_laplace)
+else:
+    class BdrCoefficient(mfem.PyCoefficientT):
+        def EvalValue(self, pt, t):
+            return composite_func(pt, t, front, ball)
+
+    class RhsCoefficient(mfem.PyCoefficientT):
+        def EvalValue(self, pt, t):
+            # print 'rhs', composite_func(pt, t, front_laplace, ball_laplace)
+            return composite_func(pt, t, front_laplace, ball_laplace)
+    bdr = BdrCoefficient()
+    rhs = RhsCoefficient()
 
 
 def UpdateProblem(mesh, fespace, x, a, b):
@@ -210,8 +229,6 @@ a = mfem.BilinearForm(fespace)
 b = mfem.LinearForm(fespace)
 
 one = mfem.ConstantCoefficient(1.0)
-bdr = BdrCoefficient()
-rhs = RhsCoefficient()
 
 integ = mfem.DiffusionIntegrator(one)
 a.AddDomainIntegrator(integ)

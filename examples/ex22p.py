@@ -46,7 +46,7 @@ def run(mesh_file="",
     #    CUDA, OCCA, RAJA and OpenMP based on command line options.
     device = mfem.Device(device)
     if myid == 0:
-        device.Print()    
+        device.Print()
 
     # 3. Read the mesh from the given mesh file. We can handle triangular,
     #    quadrilateral, tetrahedral, hexahedral, surface and volume meshes

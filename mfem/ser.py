@@ -56,6 +56,10 @@ from  mfem._ser.multigrid import *
 from  mfem._ser.constraints import *
 from  mfem._ser.transfer import *
 from  mfem._ser.auxiliary import *
+from  mfem._ser.qspace import *
+from  mfem._ser.qfunction import *
+from  mfem._ser.quadinterpolator import *
+from  mfem._ser.quadinterpolator_face import *
 
 from  mfem._ser.fe_base import *
 from  mfem._ser.fe_h1 import *
@@ -68,6 +72,14 @@ from  mfem._ser.fe_pos import *
 from  mfem._ser.fe_nurbs import *
 from  mfem._ser.doftrans import *
 from  mfem._ser.std_vectors import *
+
+from  mfem._ser.submesh import *
+from  mfem._ser.transfermap import *
+
+try:
+   from  mfem._ser.gslib import *
+except:
+   pass
 
 import mfem._ser.array as array
 import mfem._ser.blockoperator as blockoperator
@@ -85,5 +97,5 @@ import mfem._ser.solvers as solvers
 import mfem._ser.vector as vector
 import mfem._ser.sparsemat as sparsemat
 
-
+import mfem._ser.tmop_modules as tmop
 

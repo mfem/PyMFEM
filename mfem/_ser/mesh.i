@@ -1,5 +1,5 @@
 %module(package="mfem._ser", directors="0")  mesh
-  
+
 %{
 #include <iostream>
 #include <sstream>
@@ -9,7 +9,7 @@
 #include <cstring>
 #include <ctime>
 #include <vector>
-#include "mfem.hpp"  
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
@@ -37,7 +37,7 @@ import_array();
 %import "element.i"
 %import "vertex.i"
 %import "vtk.i"
-%import "mesh/mesquite.hpp"
+ //%import "mesh/mesquite.hpp"
 %import "densemat.i"
 %import "sparsemat.i"
 %import "eltrans.i"
@@ -65,15 +65,15 @@ ISTREAM_TYPEMAP(std::istream&)
   }
 }
 
-// ignore these constructors, since in python element::type is given by 
+// ignore these constructors, since in python element::type is given by
 // string (see extend section below).
 // %ignore does not work well !?
 //%ignore mfem::Mesh(int nx, int ny, int nz, mfem::Element::Type type,
-//		   int generate_edges = 0, double sx = 1.0, double sy = 1.0,
-//		   double sz = 1.0);
+//                 int generate_edges = 0, double sx = 1.0, double sy = 1.0,
+//                 double sz = 1.0);
 //%ignore mfem::Mesh(int nx, int ny, mfem::Element::Type type,
 //                   int generate_edges = 0,
-//		     double sx = 1.0, double sy = 1.0);
+//                   double sx = 1.0, double sy = 1.0);
 %typemap(typecheck) (int nx, int ny, int nz, mfem::Element::Type type) {
   $1 = 0; // ignore this pattern
 }
@@ -97,15 +97,15 @@ CONST_INTPTR_IN(const int *vi)
 int res2 = 0;
 res2 = SWIG_ConvertPtr($input, (void **) &Pnodes, $descriptor(mfem::GridFunction *), 0);
 if (!SWIG_IsOK(res2)){
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_SwapNodes" "', argument " "2"" of type '" "*mfem::GridFunction""'");      
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_SwapNodes" "', argument " "2"" of type '" "*mfem::GridFunction""'");
  }
  $1 = &Pnodes;
  }
- 
+
 %typemap(in) int &own_nodes_ (int own_nodes){
   own_nodes = (int)PyInt_AsLong($input);
   $1 = &own_nodes;
-} 
+}
 %typemap(argout) (mfem::GridFunction *&nodes){
   Py_XDECREF($result);
   $result = PyList_New(0);
@@ -117,7 +117,7 @@ if (!SWIG_IsOK(res2)){
   }
  }
 %typemap(argout) int &own_nodes_{
-  %append_output(PyLong_FromLong((long)*$1));  
+  %append_output(PyLong_FromLong((long)*$1));
 }
 
 
@@ -138,7 +138,7 @@ def GetBdrElementVertices(self, i):
 def GetBdrElementAdjacentElement(self, bdr_el):
     from mfem.ser import intp
     el = intp()
-    info = intp()  
+    info = intp()
     $action(self, bdr_el, el, info)
     return el.value(), info.value()
 %}
@@ -155,25 +155,25 @@ def GetElementVertices(self, i):
 def GetElementEdges(self, i):
     from  .array import intArray
     ia = intArray()
-    ib = intArray()      
+    ib = intArray()
     $action(self, i, ia, ib)
-    return ia.ToList(), ib.ToList()      
-%} 
+    return ia.ToList(), ib.ToList()
+%}
 
 %feature("shadow") mfem::Mesh::GetBdrElementEdges %{
 def GetBdrElementEdges(self, i):
     from  .array import intArray
     ia = intArray()
-    ib = intArray()      
+    ib = intArray()
     $action(self, i, ia, ib)
     return ia.ToList(), ib.ToList()
-%} 
+%}
 
 %feature("shadow") mfem::Mesh::GetFaceEdges %{
 def GetFaceEdges(self, i):
     from  .array import intArray
     ia = intArray()
-    ib = intArray()      
+    ib = intArray()
     $action(self, i, ia, ib)
     return ia.ToList(), ib.ToList()
 %}
@@ -198,7 +198,7 @@ def GetFaceVertices(self, i):
 def GetElementFaces(self, i):
     from  .array import intArray
     ia = intArray()
-    ib = intArray()      
+    ib = intArray()
     $action(self, i, ia, ib)
     return ia.ToList(), ib.ToList()
 %}
@@ -207,8 +207,8 @@ def GetElementFaces(self, i):
 def GetBoundingBox(self, ref = 2):
     from  .vector import Vector
     min = Vector()
-    max = Vector()      
-    $action(self, min, max, ref)      
+    max = Vector()
+    $action(self, min, max, ref)
     return min.GetDataArray().copy(), max.GetDataArray().copy()
 %}
 
@@ -216,7 +216,7 @@ def GetBoundingBox(self, ref = 2):
 def GetFaceElements(self, Face):
     from mfem.ser import intp
     Elem1 = intp()
-    Elem2 = intp()  
+    Elem2 = intp()
     val = $action(self, Face, Elem1, Elem2)
     return Elem1.value(), Elem2.value()
 %}
@@ -252,18 +252,23 @@ def GetEdgeTransformation(self, i):
 def GetFaceInfos(self, i):
     from mfem.ser import intp
     Elem1 = intp()
-    Elem2 = intp()  
-  
-    $action(self, i, Elem1, Elem2)
-    return Elem1.value(), Elem2.value()
+    Elem2 = intp()
+
+    if self.Conforming():
+        $action(self, i, Elem1, Elem2)
+        return Elem1.value(), Elem2.value()
+    else:
+        NCFace = intp()
+        $action(self, i, Elem1, Elem2, NCFace)
+        return Elem1.value(), Elem2.value(), NCFace.value()
 %}
 %feature("shadow") mfem::Mesh::FindPoints %{
-def FindPoints(self, pp, warn=True, inv_trans=None):          
+def FindPoints(self, pp, warn=True, inv_trans=None):
     r"""count, element_id, integration_points = FindPoints(points, warn=True, inv_trans=None)"""
     import numpy as np
-    import mfem.ser as mfem      
+    import mfem.ser as mfem
 
-    pp = np.array(pp, copy=False, dtype=float).transpose()      
+    pp = np.array(pp, copy=False, dtype=float).transpose()
     M = mfem.DenseMatrix(pp.shape[0], pp.shape[1])
     M.Assign(pp)
     elem_ids = mfem.intArray()
@@ -275,7 +280,7 @@ def FindPoints(self, pp, warn=True, inv_trans=None):
 %feature("shadow") mfem::Mesh::CartesianPartitioning %{
 def CartesianPartitioning(self, nxyz, return_list=False):
     import mfem.ser as mfem
-    import warnings      
+    import warnings
     try:
         nxyz = list(nxyz)
         d = mfem.intArray(nxyz)
@@ -283,12 +288,12 @@ def CartesianPartitioning(self, nxyz, return_list=False):
     except BaseException:
         dd = nxyz
         warnings.warn("CartesianPartitioning argument should be iterable",
-		      DeprecationWarning,)
+                      DeprecationWarning,)
     r = $action(self, dd)
 
     if not return_list:
         return r
-    else:	 
+    else:
         result = mfem.intArray()
         result.MakeRef(r, self.GetNE())
         result.MakeDataOwner()
@@ -316,78 +321,115 @@ namespace mfem{
     //    std::ifstream imesh(mesh_file);
     //    if (!imesh)
     //    {
-    //	  std::cerr << "\nCan not open mesh file: " << mesh_file << '\n' << std::endl;
+    //    std::cerr << "\nCan not open mesh file: " << mesh_file << '\n' << std::endl;
     //  return NULL;
     //    }
-    //	mesh = new mfem::Mesh(imesh, generate_edges, refine, fix_orientation);
-    //	return mesh;
+    //  mesh = new mfem::Mesh(imesh, generate_edges, refine, fix_orientation);
+    //  return mesh;
     //   }
    Mesh(int nx, int ny, int nz, const char *type, bool generate_edges = 0,
         double sx = 1.0, double sy = 1.0, double sz = 1.0,
-	bool sfc_ordering = true){
-     mfem::Mesh *mesh;     
+        bool sfc_ordering = true){
+     mfem::Mesh *mesh;
 
      if (std::strcmp(type, "TETRAHEDRON") == 0) {
-	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::TETRAHEDRON,
-			       generate_edges, sx, sy, sz);
-	 
-     }	 
+         mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::TETRAHEDRON,
+                               generate_edges, sx, sy, sz);
+
+     }
      else if (std::strcmp(type, "HEXAHEDRON") == 0) {
-	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::HEXAHEDRON,
-			       generate_edges, sx, sy, sz);
-	 
-     }	 
+         mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::HEXAHEDRON,
+                               generate_edges, sx, sy, sz);
+
+     }
      else {
          return NULL;
      }
-     return mesh;       
+     return mesh;
    }
    Mesh(int nx, int ny,  const char *type, bool generate_edges = 0,
         double sx = 1.0, double sy = 1.0, bool sfc_ordering = true){
      mfem::Mesh *mesh;
      if (std::strcmp(type, "TRIANGLE") == 0) {
-	 mesh = new mfem::Mesh(nx, ny, mfem::Element::TRIANGLE,
-			       generate_edges, sx, sy);
-	 
+         mesh = new mfem::Mesh(nx, ny, mfem::Element::TRIANGLE,
+                               generate_edges, sx, sy);
+
      }
      else if (std::strcmp(type, "QUADRILATERAL") == 0) {
-	 mesh = new mfem::Mesh(nx, ny, mfem::Element::QUADRILATERAL,
-			       generate_edges, sx, sy);
-	 
-     }	 
+         mesh = new mfem::Mesh(nx, ny, mfem::Element::QUADRILATERAL,
+                               generate_edges, sx, sy);
+
+     }
      else {
          return NULL;
      }
-     return mesh;       
+     return mesh;
    }
+
+   static PyObject * MakeMerged(PyObject *tuple_or_list){
+     PyObject *input = tuple_or_list;
+     bool is_tuple = false;
+
+     if (PyList_Check(input)) {
+       is_tuple = false;
+     }
+     else if (PyTuple_Check(input)) {
+       is_tuple = true;
+     }
+     else {
+       PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
+       return NULL;
+     }
+
+     int size = (is_tuple) ? PyTuple_Size(input) : PyList_Size(input);
+
+     mfem::Mesh *mesh_array[size];
+     mfem::Mesh *tmp_ptr;
+
+     swig_type_info *ty = $descriptor(const mfem::Mesh *);
+
+     for (int i = 0; i < size; i++) {
+       PyObject *s = is_tuple ? PyTuple_GetItem(input, i) : PyList_GetItem(input,i);
+       if (!SWIG_IsOK(SWIG_ConvertPtr(s, (void **)&tmp_ptr, ty, 0|0))) {
+         PyErr_SetString(PyExc_ValueError, "List items must be mfem::Mesh *");
+         return NULL;
+       } else {
+         mesh_array[i] = tmp_ptr;
+       }
+     }
+     mfem::Mesh *mesh = new mfem::Mesh(mesh_array, size);
+     int own = 1;
+     return SWIG_NewPointerObj(SWIG_as_voidptr(mesh), ty, own);
+   }
+
    void PrintToFile(const char *mesh_file, const int precision) const
    {
-        std::cerr << "\nWarning Deprecated : Use Print(filename) insteead of SaveToFile \n";     
-	std::ofstream mesh_ofs(mesh_file);	
+        std::cerr << "\nWarning Deprecated : Use Print(filename) insteead of SaveToFile \n";
+        std::ofstream mesh_ofs(mesh_file);
         mesh_ofs.precision(precision);
-        self->Print(mesh_ofs);	
+        self->Print(mesh_ofs);
    }
 
    PyObject* WriteToStream(PyObject* StringIO) const
    {
       PyObject* module = PyImport_ImportModule("io");
       if (!module){
-   	 PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
+         PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
          return (PyObject *) NULL;
-      }      
+      }
       PyObject* cls = PyObject_GetAttrString(module, "StringIO");
       if (!cls){
-   	 PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
+         PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
          return (PyObject *) NULL;
-      }      
+      }
       int check = PyObject_IsInstance(StringIO, cls);
       Py_DECREF(module);
       if (! check){
- 	 PyErr_SetString(PyExc_TypeError, "First argument must be IOString");
+         PyErr_SetString(PyExc_TypeError, "First argument must be IOString");
          return (PyObject *) NULL;
       }
       std::ostringstream stream;
-      self->Print(stream);      
+      self->Print(stream);
       std::string str =  stream.str();
       const char* s = str.c_str();
       const int n = str.length();
@@ -398,7 +440,7 @@ namespace mfem{
       }
       return ret;
    }
-   
+
    PyObject* GetAttributeArray() const
    {
      int i;
@@ -409,49 +451,39 @@ namespace mfem{
        x[i] = (int)(self->GetElement(i)->GetAttribute());
      }
      return array;
-   }   
+   }
 
    PyObject* GetVertexArray(int i) const
    {
-     int L = self->SpaceDimension();     
+     int L = self->SpaceDimension();
      int n;
      const double *v = self->GetVertex(i);
      npy_intp dims[] = {L};
-     PyObject *array = PyArray_SimpleNew(1, dims, NPY_DOUBLE);
-     double *x    = (double *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
-     for (n = 0; n < L; n++) {
-        x[n] = v[n];
-     }
-     return array;
+     return  PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (double *)v);
    }
-   
+
    PyObject* GetVertexArray() const
    {
      int L = self->SpaceDimension();
-     int NV = self->GetNV();          
-     int n, counter;
+     int NV = self->GetNV();
+     const double *data;
+     npy_intp dims[] = {L};
 
-     npy_intp dims[] = {NV, L};
-     PyObject *array = PyArray_SimpleNew(2, dims, NPY_DOUBLE);
-     double *x    = (double *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
-     counter = 0;
-
+     PyObject *list = PyTuple_New(NV);
      for (int i = 0; i < NV; i++) {
-          const double *v = self->GetVertex(i);       
-          for (n = 0; n < L; n++) {
-              x[counter] = v[n];
-	      counter++;
-          }
+          data = self->GetVertex(i);
+          PyObject *array = PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (double *)data);
+          PyTuple_SetItem(list, i, array);
      }
-     return array;
+     return list;
    }
-   
+
    PyObject* GetBdrElementFace(int i) const
    {
      int a;
      int b;
      PyObject *o;
-     
+
      if (i >= self->GetNBE()){
         return Py_BuildValue("");
      }
@@ -469,12 +501,12 @@ namespace mfem{
        x[i] = (int)(self->GetBdrElement(i)->GetAttribute());
      }
      return array;
-   }   
+   }
    PyObject* GetBdrArray(int idx) const
    {
 
      int i;
-     int c = 0;     
+     int c = 0;
      for (i = 0; i < self->GetNBE() ; i++){
        if (self->GetBdrElement(i)->GetAttribute() == idx){c++;}
      }
@@ -484,7 +516,7 @@ namespace mfem{
      c = 0;
      for (i = 0; i < self -> GetNBE() ; i++){
        if (self->GetBdrElement(i)->GetAttribute() == idx){
-	 x[c] = (int)i;
+         x[c] = (int)i;
          c++;
        }
      }
@@ -494,7 +526,7 @@ namespace mfem{
    {
 
      int i;
-     int c = 0;     
+     int c = 0;
      for (i = 0; i < self->GetNE() ; i++){
        if (self->GetElement(i)->GetAttribute() == idx){c++;}
      }
@@ -504,13 +536,13 @@ namespace mfem{
      c = 0;
      for (i = 0; i < self -> GetNE() ; i++){
        if (self->GetElement(i)->GetAttribute() == idx){
-	 x[c] = (int)i;
+         x[c] = (int)i;
          c++;
        }
      }
      return array;
    }
-   
+
    PyObject* GetElementCenterArray(int idx)
    {
      int i;
@@ -522,7 +554,7 @@ namespace mfem{
      PyObject *array = PyArray_SimpleNew(1, dims, NPY_DOUBLE);
      double *x    = (double *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
      for (i = 0; i < v.Size() ; i++){
-	 x[i] = v[i];
+         x[i] = v[i];
      }
      return array;
    }
@@ -531,12 +563,12 @@ namespace mfem{
   {
     // compute scaled Jacobian
     //   i : element index
-    //   sd: subdivision 
+    //   sd: subdivision
     //   https://github.com/mfem/mfem/pull/1835/files
-    // 
+    //
     double attr = mfem::infinity();
     mfem::DenseMatrix J(self->Dimension());
-    
+
     mfem::Geometry::Type geom = self->GetElementBaseGeometry(i);
     mfem::ElementTransformation *T = self->GetElementTransformation(i);
 
@@ -548,34 +580,34 @@ namespace mfem{
 
     for (int j = 0; j < ir.GetNPoints(); j++)
       {
-	T->SetIntPoint(&ir.IntPoint(j));
-	mfem::Geometries.JacToPerfJac(geom, T->Jacobian(), J);
+        T->SetIntPoint(&ir.IntPoint(j));
+        mfem::Geometries.JacToPerfJac(geom, T->Jacobian(), J);
 
         // Jacobian determinant
         double sJ = J.Det();
 
         for (int k = 0; k < J.Width(); k++)
-	  {
-	    mfem::Vector col;
-	    J.GetColumnReference(k, col);
+          {
+            mfem::Vector col;
+            J.GetColumnReference(k, col);
             // Scale by column norms
-	    sJ /= col.Norml2();
-	  }
+            sJ /= col.Norml2();
+          }
 
-	attr = fmin(sJ, attr);
+        attr = fmin(sJ, attr);
       }
     return attr;
   }
 
-  PyObject *IsElementOnPlaneArray(PyObject *aa, PyObject *bb, PyObject *cc, PyObject *dd){  
+  PyObject *IsElementOnPlaneArray(PyObject *aa, PyObject *bb, PyObject *cc, PyObject *dd){
     /*
     return Boolean numpy array to indicate which element is on the plane
     defined by ax + by + cz + d = 0
     */
-    double a = PyFloat_AsDouble(aa);    
+    double a = PyFloat_AsDouble(aa);
     double b = PyFloat_AsDouble(bb);
     double c = PyFloat_AsDouble(cc);
-    double d = PyFloat_AsDouble(dd);    
+    double d = PyFloat_AsDouble(dd);
     /*
     return Boolean numpy array to indicate which element is on the plane
     defined by ax + by + cz + d = 0
@@ -586,24 +618,24 @@ namespace mfem{
     npy_intp dims[] = {nele};
     PyObject *array = PyArray_SimpleNew(1, dims, NPY_BOOL);
     if (self -> SpaceDimension() != 3  || self -> Dimension() != 3){
- 	 PyErr_SetString(PyExc_TypeError, "dim and sdim must be 3");
+         PyErr_SetString(PyExc_TypeError, "dim and sdim must be 3");
          return (PyObject *) NULL;
     }
     bool *x    = (bool *)PyArray_DATA(reinterpret_cast<PyArrayObject *>(array));
     bool check, check2;
-    
+
     for (int k = 0; k < self -> GetNE(); k++){
       self-> GetElementVertices(k, inodes);
-      ptx = self -> GetVertex(inodes[0]);    
+      ptx = self -> GetVertex(inodes[0]);
       check = (ptx[0]*a + ptx[1]*b + ptx[2]*c + d >=0);
       x[k] = false;
       for (int j=0; j < inodes.Size(); j++){
-	ptx = self -> GetVertex(inodes[j]);
+        ptx = self -> GetVertex(inodes[j]);
         check2 = (ptx[0]*a + ptx[1]*b + ptx[2]*c + d >=0);
         if (check != check2){
-	  x[k] = true;
-	  break;
-	}
+          x[k] = true;
+          break;
+        }
       }
     }
     return array;

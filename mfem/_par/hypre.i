@@ -191,16 +191,15 @@ if isinstance(args[-1], list):
      # in order to prevent python from freeing the input
      # array, object is kept in ParVector
      self._linked_array = args[-1]
-     self._hypreread_called = False
+  self._xhypreread_called = False
 %}
 %pythonappend mfem::HypreParVector::HypreRead %{
-     self._hypreread_called = True
+     self._xhypreread_called = True
 %}
 %pythonappend mfem::HypreParMatrix::operator*= %{
 #    val.thisown = 0
     return self
 %}
-
 
 %newobject mfem::HypreParVector::GlobalVector;
 %newobject mfem::HypreParMatrix::Transpose;
@@ -221,11 +220,20 @@ def parmat__repr__(self):
     shape = (self.GetGlobalNumRows(), self.GetGlobalNumCols())
     lshape = (self.GetNumRows(), self.GetNumCols())  	       
     return "HypreParMatrix "+str(shape)+"["+str(lshape)+"]"
-      
 
 HypreParVector.__repr__ = parvec__repr__
 HypreParVector.__del__  = parvec__del__      
 HypreParMatrix.__repr__ = parmat__repr__
+
+# setter/getter of _hyperread_called
+def hypreread_called(self):
+    if not hasattr(self, "_xhypreread_called"):
+        self._xhypreread_called = False
+    return self._xhypreread_called
+def hypreread_called_setter(self, x):
+    self._xhypreread_called = x
+	  
+HypreParVector._hypreread_called = property(hypreread_called).setter(hypreread_called_setter)
 %}
     
 %extend mfem::HypreParVector {
