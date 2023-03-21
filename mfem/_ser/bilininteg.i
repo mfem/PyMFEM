@@ -22,6 +22,7 @@ import_array();
     //    catch (std::exception &e) { SWIG_fail; }    
 }
 */
+%include "../common/mfem_config.i"
 %include "exception.i"
 
 %import "globals.i"

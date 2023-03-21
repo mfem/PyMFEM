@@ -15,6 +15,7 @@
 import_array();
 %}
 
+%include "../common/mfem_config.i"
 %include "exception.i"
 %import "operators.i"
 %import "fespace.i"

@@ -13,32 +13,6 @@ import numpy
 from distutils.core import Extension, setup
 from distutils      import sysconfig
 
-modules= ["io_stream", "vtk", "sort_pairs", "datacollection",
-          "cpointers", "symmat",
-          "globals", "mem_manager", "device", "hash", "stable3d",
-          "error", "auxiliary", "array", "common_functions", "socketstream", "handle",
-          "fe_base", "fe_fixed_order", "fe_h1", "fe_l2",
-          "fe_nd", "fe_nurbs", "fe_pos", "fe_rt", "fe_ser", "doftrans",
-          "segment", "point", "hexahedron", "quadrilateral",
-          "tetrahedron", "triangle", "wedge",
-          "blockvector", "blockoperator", "blockmatrix",
-          "vertex", "sets", "element", "table", "fe",
-          "mesh", "fespace",
-          "fe_coll", "coefficient",
-          "linearform", "vector", "lininteg", "complex_operator",
-          "complex_fem",
-          "gridfunc", "hybridization", "bilinearform",
-          "bilininteg", "intrules", "sparsemat", "densemat",
-          "solvers", "estimators", "mesh_operators", "ode",
-          "sparsesmoothers",
-          "matrix", "operators", "ncmesh", "eltrans", "geom",
-          "nonlininteg", "nonlinearform", "restriction",
-          "fespacehierarchy", "multigrid", "constraints",
-          "transfer", "std_vectors"]
-
-sources = {name: [name + "_wrap.cxx"] for name in modules}
-proxy_names = {name: '_'+name for name in modules}
-
 
 ddd = os.path.dirname(os.path.abspath(os.path.realpath(__file__)))
 root = os.path.abspath(os.path.join(ddd, '..', '..'))
@@ -107,7 +81,7 @@ def get_extensions():
     modules = ["io_stream", "vtk", "sort_pairs", "datacollection",
                "cpointers", "symmat",
                "globals", "mem_manager", "device", "hash", "stable3d",
-               "error", "array", "common_functions", "socketstream", "handle",
+               "error", "array", "auxiliary", "common_functions", "socketstream", "handle",
                "fe_base", "fe_fixed_order", "fe_h1", "fe_l2",
                "fe_nd", "fe_nurbs", "fe_pos", "fe_rt", "fe_ser", "doftrans",
                "segment", "point", "hexahedron", "quadrilateral",
@@ -127,8 +101,7 @@ def get_extensions():
                "fespacehierarchy", "multigrid", "constraints",
                "transfer", "std_vectors",
                "tmop", "tmop_amr", "tmop_tools", "qspace", "qfunction",
-               "quadinterpolator", "quadinterpolator_face",
-               "submesh", "transfermap"]
+               "quadinterpolator", "quadinterpolator_face"]
 
     if add_cuda == '1':
         from setup_local import cudainc

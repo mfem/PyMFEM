@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include "general/error.hpp"  
 %}
+%include "../common/mfem_config.i"
 %include "exception.i"
 %include "../common/exception.i"
 

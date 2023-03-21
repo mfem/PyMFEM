@@ -11,6 +11,7 @@ import_array();
 
 %include "std_string.i"
 
+%include "../common/mfem_config.i"
 %include "exception.i"
 %include "../common/typemap_macros.i"
 %include "../common/exception.i"

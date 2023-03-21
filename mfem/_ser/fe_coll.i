@@ -17,6 +17,7 @@
 import_array();
 %}
 
+%include "../common/mfem_config.i"
 %include "exception.i"
 %import "mesh.i"
 %import "array.i"

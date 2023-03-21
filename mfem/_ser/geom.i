@@ -10,6 +10,7 @@
 import_array();
 %}
 
+%include "../common/mfem_config.i"
 %include "exception.i"
 %import "intrules.i"
 %import "densemat.i"

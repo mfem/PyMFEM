@@ -15,6 +15,7 @@ import_array();
 %}
 
 //%rename(sopen)  open(const char hostname[], int port);
+%include "../common/mfem_config.i"
 %include "exception.i"
 %import "mesh.i"
 %import "gridfunc.i"

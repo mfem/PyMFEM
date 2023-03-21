@@ -22,6 +22,7 @@ import_array();
 %import "mesh.i"
 %import "transfermap.i"
 
+%include "../common/mfem_config.i"
 %include "mesh/submesh/submesh.hpp"
 
 #endif

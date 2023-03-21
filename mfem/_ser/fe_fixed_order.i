@@ -8,6 +8,7 @@
 %init %{
 import_array();
 %}
+%include "../common/mfem_config.i"
 %include "exception.i"
 %import "fe.i"
 %import "fe_base.i"

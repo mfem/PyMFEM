@@ -18,6 +18,7 @@
 import_array();
 %}
 
+%include "../common/mfem_config.i"
 %include "exception.i"
 %include "../common/exception.i"
 
