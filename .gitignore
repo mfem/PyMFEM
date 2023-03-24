@@ -21,3 +21,5 @@ test/*
 **/*_wrap.cxx
 mfem/**/*.py
 existing_mfem_headers.i
+
+external/
