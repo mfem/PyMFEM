@@ -26,10 +26,10 @@ def run(order=1,
         visualization=True):
 
     if nd == 2:
-        mesh = mfem.Mesh_MakeCartesian2D(
+        mesh = mfem.Mesh.MakeCartesian2D(
             1, 1, mfem.Element.QUADRILATERAL, True, length, length, False)
     else:
-        mesh = mfem.Mesh_MakeCartesian3D(
+        mesh = mfem.Mesh.MakeCartesian3D(
             1, 1, 1, mfem.Element.HEXAHEDRON, True, length, length, length)
 
     sdim = mesh.SpaceDimension()
