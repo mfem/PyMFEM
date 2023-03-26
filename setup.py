@@ -49,7 +49,7 @@ repo_releases = {
     # "metis": "https://github.com/KarypisLab/METIS/archive/refs/tags/v5.1.1-DistDGL-v0.5.tar.gz",
     # "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
     "metis": "https://github.com/mfem/tpls/raw/gh-pages/metis-5.1.0.tar.gz",
-    "hypre": "https://github.com/hypre-space/hypre/archive/v2.27.0.tar.gz",
+    "hypre": "https://github.com/hypre-space/hypre/archive/v2.28.0.tar.gz",
     "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.11.0.tar.gz",
     "gslib": "https://github.com/Nek5000/gslib/archive/refs/tags/v1.0.8.tar.gz"}
 
@@ -58,8 +58,8 @@ repos = {"mfem": "https://github.com/mfem/mfem.git",
          "gklib": "https://github.com/KarypisLab/GKlib",
          "metis": "https://github.com/KarypisLab/METIS", }
 repos_sha = {
-    "mfem": "2f6eb8838f8f5e8359abba0dd3434c8cc7147012", # version 4.5 with a few fix
-    #"mfem": "b7a4b61b5ce80b326a002aebccf7da7ad2432556",   # version 4.5
+    # "mfem": "2f6eb8838f8f5e8359abba0dd3434c8cc7147012",
+    "mfem": "00b2a0705f647e17a1d4ffcb289adca503f28d42",  # version 4.5.2
     "gklib": "a7f8172703cf6e999dd0710eb279bba513da4fec",
     "metis": "94c03a6e2d1860128c2d0675cbbb86ad4f261256", }
 
@@ -244,7 +244,7 @@ def external_install_prefix(verbose=True):
             os.makedirs(path)
         path = os.path.join(path, 'mfem', 'external')
         return path
-        
+
     else:
         # when prefix is given...let's borrow pip._internal to find the location ;D
         import pip._internal.locations
@@ -295,20 +295,28 @@ def make_call(command, target='', force_verbose=False):
 
     if dry_run:
         return
-    kwargs = {}
+    kwargs = {'universal_newlines': True}
 
     myverbose = verbose or force_verbose
     if not myverbose:
         kwargs['stdout'] = DEVNULL
         kwargs['stderr'] = DEVNULL
+    # else:
+    #    kwargs['stdout'] = subprocess.PIPE
+    #    kwargs['stderr'] = subprocess.STDOUT
 
-    try:
-        subprocess.check_call(command, **kwargs)
-    except subprocess.CalledProcessError:
+    p = subprocess.Popen(command, **kwargs)
+    p.communicate()
+    if p.returncode != 0:
         if target == '':
             target = " ".join(command)
         print("Failed when calling command: " + target)
-        raise
+        raise subprocess.CalledProcessError(p.returncode,
+                                            " ".join(command))
+
+        #subprocess.check_call(command, **kwargs)
+    # except subprocess.CalledProcessError:
+    # print(stdout)
 
 
 def chdir(path):
@@ -1089,6 +1097,8 @@ def generate_wrapper():
     mp_pool = Pool(max((multiprocessing.cpu_count() - 1, 1)))
     with mp_pool:
         mp_pool.map(make_call, commands)
+    # for c in commands:
+    #    make_call(c)
 
     os.chdir(pwd)
 
@@ -1574,7 +1584,7 @@ class Install(_install):
         self.with_suitesparse = False
         self.suitesparse_prefix = ''
 
-        self.with_lapack = False        
+        self.with_lapack = False
         self.blas_libraries = ""
         self.lapack_libraries = ""
 
