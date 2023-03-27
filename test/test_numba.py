@@ -13,7 +13,7 @@ import time
 if len(sys.argv) > 1 and sys.argv[1] == '-p':
     import mfem.par as mfem
     use_parallel = True
-    from mfem.common.mpi_debug import nicePrint as print
+    from mfem.common.mpi_debug import nicePrint
     from mpi4py import MPI
     myid = MPI.COMM_WORLD.rank
 
@@ -21,6 +21,7 @@ else:
     import mfem.ser as mfem
     use_parallel = False
     myid = 0
+    nicePrint = print
 
 
 class s_coeff(mfem.PyCoefficient):
@@ -321,7 +322,7 @@ def run_test():
     end = time.time()
     a3.Finalize()
     M3 = a3.SpMat()
-    print("Numba (simpler interface) (matrix)", end - start)
+    nicePrint("Numba (simpler interface) (matrix)", end - start)
 
     start = time.time()
     m_func4_complex.SetTime(3.0)
@@ -329,7 +330,7 @@ def run_test():
     end = time.time()
     a4.Finalize()
     M4 = a4.SpMat()
-    print("Numba (complex dependency as complex) (matrix)", end - start)
+    nicePrint("Numba (complex dependency as complex) (matrix)", end - start)
 
     start = time.time()
     m_func4_split.SetTime(3.0)
@@ -337,7 +338,7 @@ def run_test():
     end = time.time()
     a5.Finalize()
     M5 = a5.SpMat()
-    print("Numba (complex dependency as decomposed) (matrix)", end - start)
+    nicePrint("Numba (complex dependency as decomposed) (matrix)", end - start)
 
     #from mfem.commmon.sparse_utils import sparsemat_to_scipycsr
     #csr1 = sparsemat_to_scipycsr(M1, float)
@@ -360,7 +361,7 @@ def run_test():
     compare_mat(M1, M5)
 
     # print(m_func3.SpaceDimension())
-    print("PASSED")
+    nicePrint("PASSED")
 
 
 if __name__ == '__main__':
