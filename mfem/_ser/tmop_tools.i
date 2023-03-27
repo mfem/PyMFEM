@@ -11,11 +11,16 @@
 import_array();
 %}
 
+%include "../common/mfem_config.i"
+
 %include "exception.i"
 %import "../common/exception_director.i"
 
 %include "../common/typemap_macros.i"
 
+#ifdef MFEM_USE_GSLIB
+%import gslib.i
+#endif
 %import tmop.i
 %import bilinearform.i
 %import solvers.i
