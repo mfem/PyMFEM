@@ -41,7 +41,7 @@ except:
 
 file = open(input_file, "r")
 lines = file.readlines()
-n = len(lines) - 1
+n = len(lines)
 
 if second_file:
     file2 = open(input_file2, "r")
@@ -72,7 +72,7 @@ custom_params = {"axes.spines.right": False, "axes.spines.top": False}
 sns.set_theme(style="ticks", rc=custom_params)
 
 plt.rc('text', usetex=True)
-plt.rc('font', family='serif')
+#plt.rc('font', family='serif')
 plt.rc('text.latex', preamble=r'\usepackage{amsmath} \usepackage{amssymb}')
 # palette_list = sns.color_palette(palette="tab10", n_colors=10)
 
@@ -81,12 +81,12 @@ ax5 = plt.gca()
 
 # plot data for each tau
 taus = np.zeros(n); cum_dofs = np.zeros(n); error = np.zeros(n);
-for i in range(1, n+1):
+for i in range(0, n):
     data     = lines[i].split(', ')
 
-    taus    [i-1] = 2**float(data[0])
-    cum_dofs[i-1] =    float(data[1])
-    error   [i-1] =    float(data[2])
+    taus    [i] = 2**float(data[0])
+    cum_dofs[i] =    float(data[1])
+    error   [i] =    float(data[2])
 
 plt.scatter(cum_dofs, error, label = "RL policy")
 
@@ -142,7 +142,7 @@ plt.xscale('log')
 plt.yscale('log')
 
 # plot title
-plt.title(r'Example 1a with ADF Cost Function', fontdict = {'fontsize':24})
+plt.title(r'RL Policy vs Best Fixed-Theta Policies', fontdict = {'fontsize':24})
 
 ax5.set_xlabel(r'Cumulative degrees of freedom $(J_k)$', fontsize=22)
 ax5.set_ylabel(r'Global error estimate $(\eta_k)$', fontsize=22)

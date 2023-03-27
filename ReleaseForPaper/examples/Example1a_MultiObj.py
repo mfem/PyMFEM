@@ -177,11 +177,11 @@ prob_config = {
     'alpha'             : args.alpha,
     'observe_alpha'     : args.observe_alpha,
     'observe_budget'    : args.observe_budget,
-    'num_iterations'    : 30,
+    'num_iterations'    : 50,
     'num_batches'       : nbatches,
     'tau_min'           : np.log2(5e-4), #np.log2(1e-2), # np.log2(1e-3), #np.log2(1e-4),
-    'tau_max'           : np.log2(5e-2),
-    'M_warm'            : 25, # number of batches in warming phase
+    'tau_max'           : np.log2(5e-2),  #np.log2(5e-2),
+    'M_warm'            : 50, # number of batches in warming phase
     'M_anneal'          : 25,  #5, # number of batches per tau in annealing phase
     'N_anneal'          : 10,  #20,  # number of target errors to train on (not counting intitial target)
     'M_retrain'         : 0,  #2,  # number of batches for retraining before each new tau
@@ -340,8 +340,11 @@ if ADF_bool:
 
     tau_min = prob_config['tau_min']
     tau_max = prob_config['tau_max']
-    tau_step = np.log2(5e-2) - np.log2(1e-2)
-    tau_step = (tau_max - tau_min)/N_anneal;
+    #tau_step = np.log2(5e-2) - np.log2(1e-2)
+    if N_anneal > 0:
+        tau_step = (tau_max - tau_min)/N_anneal;
+    else:
+        tau_step = 0; 
     # tau_max = np.log2(1e-2)
     # tau_step = np.log2(5e-2) - np.log2(1e-2)
     delta_warm = 1
@@ -403,7 +406,8 @@ if eval and not train:
         # temp_path = 'Example1a_MO_2022-08-01_07-46-52'    # experiment set 23
         # temp_path = 'Example1a_MO_2022-08-01_09-30-28'    # experiment set 24
         # temp_path = 'Example1a_ADF_2023-01-17_13-27-58'     # well-trained ADF from 5e-2 to 8e-5
-        temp_path = 'Example1a_ADF_2023-01-20_11-25-50'     # observe budget of error rather than steps
+        # temp_path = 'Example1a_ADF_2023-01-20_11-25-50'     # observe budget of error rather than steps
+        temp_path = 'Poster_dataset_Example1a_ADF2'
     else:
         print("*** need to set path for eval *** exiting")
         exit()
@@ -447,8 +451,12 @@ elif ADF_bool:
     if eval:
         #tau_max = np.log2(5e-2)
         #tau_step = np.log2(5e-2) - np.log2(1e-2)
-        params_to_eval = np.array([tau_max - i * tau_step for i in range(N_anneal)])
-        # params_to_eval = np.array([prob_config['tau_min']])
+        if N_anneal > 0:
+            params_to_eval = np.array([tau_max - i * tau_step for i in range(N_anneal + 1)])
+        else:
+            params_to_eval = np.array([tau_max])
+        #params_to_eval = np.array([np.log2(0.01), np.log2(0.005), np.log2(0.001)])
+        params_to_eval = np.array([params_to_eval[5], params_to_eval[8], params_to_eval[10]])
         print("\n *** params to eval =", params_to_eval, "\n")
         # min_error = env.tau_min
         # max_error = tau_max
@@ -478,8 +486,9 @@ if args.savemesh:
     print("==> Saved initial mesh to ", output_dir, "/meshes_and_gfs/")
     saved_initial_mesh = True;
 
-adf_vs_fixed_df = pd.DataFrame(columns=['target', 'theta', 'steps', 'dofs', 'why'])
+adf_vs_fixed_df = pd.DataFrame(columns=['target', 'theta', 'steps', 'dofs', 'error', 'why'])
 
+save_every_step = True;
 for param in params_to_eval:
     ## Enact trained policy
     trainer.restore(checkpoint_path) 
@@ -510,7 +519,7 @@ for param in params_to_eval:
         obs, reward, done, info = env.step(action)
         if prob_config['optimization_type'] == 'dof_threshold' and done:
             break
-        rlactions.append(action[0])
+        rlactions.append(action[0]) 
         rlepisode_cost -= reward
         print("RL step =", env.k, 
               "axn =", np.round(float(action.item()),3),
@@ -522,7 +531,15 @@ for param in params_to_eval:
         rlerrors.append(info['global_error'])
         quit_reason = info['why']
 
+        if save_every_step == True and args.savemesh:
+            print("step {}".format(env.k))
+            env.render()
+            env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + "_tau_" + tau_str + '_step_' + str(env.k) + '.mesh')
+
+    save_every_step = False; # set this to false after saving one set of refinement meshes
+
     print("")
+
 
     if args.savemesh:
         #gfname = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + prob_config['problem_type'] + "_alpha_" + alpha_str + '.gf'
@@ -544,7 +561,7 @@ for param in params_to_eval:
 
     # save RL data to dataframe
     adf_vs_fixed_df = adf_vs_fixed_df.append(
-        {'target': np.round(np.power(2,param),8), 'theta': -1, 'steps': env.k, 'dofs': env.sum_of_dofs, 'why': quit_reason},
+        {'target': np.round(np.power(2,param),8), 'theta': np.round(float(action.item()),3), 'steps': env.k, 'dofs': env.sum_of_dofs, 'error' : rlerrors[-1], 'why': quit_reason},
         ignore_index=True)
     
     dftgt = pd.DataFrame({'rlactions':rlactions})
@@ -592,6 +609,7 @@ for param in params_to_eval:
             'theta': action[0],
             'steps': env.k,
             'dofs': env.sum_of_dofs,
+            'error' : errors[-1],
             'why': quit_reason},
             ignore_index=True)
 
