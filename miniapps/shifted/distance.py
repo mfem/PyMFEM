@@ -73,12 +73,12 @@ def run(order=2,
         if numba:
             @mfem.jit.scalar()
             def ls_coeff(x):
-                if sdim == 2:
+                if len(x) == 2:
                      xc = x[0] - 0.5
                      yc = x[1] - 0.5
                      r = sqrt(xc*xc + yc*yc)
                      return -1.0 if r >= 0.4 else 1.0
-                elif sdim == 3:
+                elif len(x) == 3:
                      xc = x[0] - 0.
                      yc = x[1] - 0.
                      zc = x[2] - 0.                 
@@ -109,7 +109,7 @@ def run(order=2,
                 x=xx[0]*period
                 y=xx[1]*period
                 z = 0.0
-                if sdim == 3:
+                if len(xx) == 3:
                     z=xx[2]*period
                 return (sin(x)*cos(y) + sin(y)*cos(z) + sin(z)*cos(x))
         else:
@@ -133,8 +133,6 @@ def run(order=2,
     else:
          assert False, "Wrong solver option."
 
-    dist_solver.print_level = 1
-                        
     fec = mfem.H1_FECollection(order, dim)
     pfes_s = mfem.ParFiniteElementSpace(pmesh, fec)
     pfes_v = mfem.ParFiniteElementSpace(pmesh, fec, dim)
