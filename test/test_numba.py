@@ -13,7 +13,7 @@ import time
 if len(sys.argv) > 1 and sys.argv[1] == '-p':
     import mfem.par as mfem
     use_parallel = True
-    from mfem.common.mpi_debug import nicePrint as print
+    from mfem.common.mpi_debug import nicePrint
     from mpi4py import MPI
     myid = MPI.COMM_WORLD.rank
 
@@ -21,6 +21,7 @@ else:
     import mfem.ser as mfem
     use_parallel = False
     myid = 0
+    nicePrint = print
 
 
 class s_coeff(mfem.PyCoefficient):
@@ -104,9 +105,13 @@ def m_func(ptx, out, sdim, vdim):
 
 # if dim is know, this provides a simpler way to use matrix coefficient
 
-
-@mfem.jit.matrix(sdim=3)
-def m_func2(p,):
+d1 = mfem.ConstantCoefficient(3)
+d2 = mfem.VectorConstantCoefficient([1,2])
+d3 = mfem.MatrixConstantCoefficient([[30,40], [50, 60]])
+@mfem.jit.matrix(shape=(3,3), sdim=3, dependency=(d1,d2, d3, (d2,d2), d1))
+def m_func2(p,d1, d2, d3, d4, d5):
+#@mfem.jit.matrix(shape=(3,3), sdim=3)
+#def m_func2(p):
     #out_array = farray(out, (3, 3))
     #out_array[0, 0] = ptx[0]
     #out_array[0, 1] = ptx[1]
@@ -114,6 +119,7 @@ def m_func2(p,):
     #out_array[1, 1] = ptx[1]
     #out_array[1, 2] = ptx[2]
     #out_array[2, 2] = ptx[2]
+    print(d2[0], d2[1], d1, d3[0,0], d3[0,1], d3[1, 0], d3[1,1], d4[0], d4[1], d5)
     return np.array([[p[0], p[1], p[2]],
                      [0.0, p[1], p[2]],
                      [0.0, 0.0, p[2]]])
@@ -151,7 +157,7 @@ def run_test():
     gf = mfem.GridFunction(fespace1)
     c1 = mfem.NumbaFunction(s_func, sdim).GenerateCoefficient()
 
-    @mfem.jit.scalar(sdim)
+    @mfem.jit.scalar
     def c11(ptx):
         return s_func0(ptx[0], ptx[1],  ptx[2])
 
@@ -182,7 +188,7 @@ def run_test():
     c3 = mfem.VectorNumbaFunction(v_func, sdim, dim).GenerateCoefficient()
     c4 = v_coeff(dim)
 
-    @mfem.jit.vector(sdim=3, dependency=(c3, c11), td=True,  complex=True)
+    @mfem.jit.vector(vdim=3, dependency=(c3, c11), td=True,  complex=True)
     def v_func4(ptx, t, c3, c11):
         return np.array([c3[0], c3[1], c3[2]], dtype=np.complex128)
     # @mfem.jit.vector(sdim=3, complex=True)
@@ -218,13 +224,13 @@ def run_test():
 
     print("speed comparision with C++")
 
-    @mfem.jit.vector(sdim=3, interface="c++", debug=True)
+    @mfem.jit.vector(vdim=3, interface="c++", debug=True)
     def v_func4_old(ptx, out):
         out[0] = 1
         out[1] = 2.
         out[2] = 3
 
-    @mfem.jit.vector(sdim=3)
+    @mfem.jit.vector(vdim=3)
     def v_func4_new(ptx):
         return np.array([1, 2, 3.])
 
@@ -268,18 +274,18 @@ def run_test():
     a2.AddDomainIntegrator(mfem.VectorFEMassIntegrator(c5))
     a3.AddDomainIntegrator(mfem.VectorFEMassIntegrator(m_func2))
 
-    @mfem.jit.matrix(sdim=3, dependency=(c4, c4), complex=True, td=True)
+    @mfem.jit.matrix(shape=(3,3), dependency=(c4, c4), complex=True, td=True)
     def m_func3(ptx, t, c4, c5):
         ret = np.array([[c5[0, 0], c5[0, 1], c5[0, 2]],
                         [0.0,      c5[1, 1], c5[1, 2]],
                         [0.0,      0.0,      c5[2, 2]]])
         return (t/3.0)*ret*1j
 
-    @mfem.jit.matrix(sdim=3, dependency=(m_func3, c4))
+    @mfem.jit.matrix(shape=(3,3), dependency=(m_func3, c4))
     def m_func4_complex(ptx, m_func3, c5):
         return m_func3.imag
 
-    @mfem.jit.matrix(sdim=3, dependency=((m_func3.real, m_func3.imag), c4), td=True)
+    @mfem.jit.matrix(shape=(3,3), dependency=((m_func3.real, m_func3.imag), c4), td=True)
     def m_func4_split(ptx, t, m_func3, c5):
         return m_func3.imag*(t/3.0)
 
@@ -316,7 +322,7 @@ def run_test():
     end = time.time()
     a3.Finalize()
     M3 = a3.SpMat()
-    print("Numba (simpler interface) (matrix)", end - start)
+    nicePrint("Numba (simpler interface) (matrix)", end - start)
 
     start = time.time()
     m_func4_complex.SetTime(3.0)
@@ -324,7 +330,7 @@ def run_test():
     end = time.time()
     a4.Finalize()
     M4 = a4.SpMat()
-    print("Numba (complex dependency as complex) (matrix)", end - start)
+    nicePrint("Numba (complex dependency as complex) (matrix)", end - start)
 
     start = time.time()
     m_func4_split.SetTime(3.0)
@@ -332,7 +338,7 @@ def run_test():
     end = time.time()
     a5.Finalize()
     M5 = a5.SpMat()
-    print("Numba (complex dependency as decomposed) (matrix)", end - start)
+    nicePrint("Numba (complex dependency as decomposed) (matrix)", end - start)
 
     #from mfem.commmon.sparse_utils import sparsemat_to_scipycsr
     #csr1 = sparsemat_to_scipycsr(M1, float)
@@ -355,7 +361,7 @@ def run_test():
     compare_mat(M1, M5)
 
     # print(m_func3.SpaceDimension())
-    print("PASSED")
+    nicePrint("PASSED")
 
 
 if __name__ == '__main__':

@@ -28,12 +28,12 @@ def run_test():
     n = 3
 
     ### 1D Periodic mesh
-    orig_mesh = mfem.Mesh_MakeCartesian1D(n)
+    orig_mesh = mfem.Mesh.MakeCartesian1D(n)
     translations = (mfem.Vector([1.0]),)
     #vv =mfem.vector_Vector(translations)
     mapping = orig_mesh.CreatePeriodicVertexMapping(translations)
 
-    mesh = mfem.Mesh_MakePeriodic(orig_mesh, mapping)
+    mesh = mfem.Mesh.MakePeriodic(orig_mesh, mapping)
 
     assert mesh.GetNV() == n, "GetNV is not correct"
 
@@ -46,11 +46,11 @@ def run_test():
     els = (mfem.Element.TRIANGLE, mfem.Element.QUADRILATERAL)
 
     for el in els:
-        orig_mesh = mfem.Mesh_MakeCartesian2D(n, n, el, False, 1, 1, False)
+        orig_mesh = mfem.Mesh.MakeCartesian2D(n, n, el, False, 1, 1, False)
         translations = (mfem.Vector([1., 0.]),
                         mfem.Vector([0., 1.]),)    
         mapping = orig_mesh.CreatePeriodicVertexMapping(translations)
-        mesh = mfem.Mesh_MakePeriodic(orig_mesh, mapping)
+        mesh = mfem.Mesh.MakePeriodic(orig_mesh, mapping)
 
         assert mesh.GetNV() == (n-1)**2 + 2*(n-1) + 1, "GetNV is not correct"
 
@@ -65,12 +65,12 @@ def run_test():
            mfem.Element.HEXAHEDRON,
            mfem.Element.WEDGE)
     for el in els:
-        orig_mesh = mfem.Mesh_MakeCartesian3D(n, n, n, el, 1, 1, 1, False)
+        orig_mesh = mfem.Mesh.MakeCartesian3D(n, n, n, el, 1, 1, 1, False)
         translations = (mfem.Vector([1., 0., 0.]),
                         mfem.Vector([0., 1., 0.]),
                         mfem.Vector([0., 0., 1.]),)
         mapping = orig_mesh.CreatePeriodicVertexMapping(translations)
-        mesh = mfem.Mesh_MakePeriodic(orig_mesh, mapping)
+        mesh = mfem.Mesh.MakePeriodic(orig_mesh, mapping)
 
         assert mesh.GetNV() == (n-1)**3 + 3*(n-1)**2 + 3*(n-1) +1, "GetNV is not correct"        
         if el == mfem.Element.HEXAHEDRON:

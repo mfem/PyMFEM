@@ -4,81 +4,62 @@
 
 #  MFEM + PyMFEM (FEM library)
 
-This repository provides Python binding for MFEM. MFEM is a high performance parallel finite element method (FEM) library (http://mfem.org/). 
+This repository provides Python binding for MFEM. MFEM is a high performance parallel finite element method (FEM) library (http://mfem.org/).
 
-Installer (setup.py) builds both MFEM and binding together. 
+Installer (setup.py) builds both MFEM and binding together.
 By default, "pip install mfem" downloads and builds the serial version of MFEM and PyMFEM.
 Additionally, the installer supports building MFEM with specific options together with other external libraries, including MPI version.
 
-## Requirement
-```
-numpy, swig  + mpi4py (for --with-parallel)
-
-```
 ## Install
 ```
-pip install mfem                    # binary install is available only on linux platforms (Py36-310) 
+pip install mfem                    # binary install is available only on linux platforms (Py36-310)
 pip install mfem --no-binary mfem   # install serial MFEM + wrapper from source
 
 ```
 
-### Using additional features (MPI, GPU, GPU-Hypre, GSLIB, SuiteSparse)
+## Build with additional features (MPI, GPU, GPU-Hypre, GSLIB, SuiteSparse, libCEED, LAPACK)
 The setup script accept various options. TO use it, one can either use --install-option flag
-with pip, or download the package manually and run the script. For example, this below download
+with pip, or download the package manually and run the script. For example, the one below downloads
 and build parallel version of MFEM library (linked with Metis and Hypre)
-and install under <prefix>/mfem. See also, docs/install.txt
-```
-### Using pip
-$ pip install mfem --install-option="--with-parallel" [--verbose]
+and installs under <prefix>/mfem. See also, docs/install.txt
 
-### Runnig setup.py
+### Using pip
+```
+$ pip install mfem --install-option="--with-parallel" 
+```
+
+### Build from local source file
+```
+# Download source and build
 $ pip download mfem --no-binary mfem (expand tar.gz file and move to the downloaded directory)
+or clone this repository
+$ git clone https://github.com/mfem/PyMFEM.git
+
+# Then, build it from local source
+$ python -m pip install ./ --install-option="--with-parallel" --install-option="--mfem-branch=master"
+or
 $ python setup.py install --with-parallel # it download and build metis/hypre/mfem
 
-### Verbose output
-$ python setup.py install --vv # SWIG output and CMAKE_VERBOSE_MAKEFILE is on
+# Verbose output
+$ python setup.py install --verbose # SWIG output and CMAKE_VERBOSE_MAKEFILE is on
 
-### Cleaning
+# Cleaning
 $ python setup.py clean --all # clean external dependencies + wrapper code
 
-```
-### Build with MFEM master in Github
-```
-$ pip install mfem --install-option="--with-parallel" --install-option="mfem-branch=master"[--verbose]
-(or)
-$ python setup.py install  --with-parallel --mfem-branch='master'
-
-```
-### Choosing compiler
-```
+# Choosing compiler
 $ python setup.py install --with-parallel --CC=icc --CXX=icpc --MPICC=mpiicc --MPICXX=mpiicpc
-
-### Other options
-```
-For other configurations, see docs/install.txt or help
-```
-$ python setup.py install --help
-```
-## Install from github source
-```
-# Clone this repo
-git clone https://github.com/mfem/PyMFEM.git
-
-# (Optional) Clean dependencies
-cd PyMFEM; python setup.py clean --all;cd ..
-
-# Build & Install
-pip install ./PyMFEM --verbosel # build both MFEM and PyMFEM
-  *or*
-cd PyMFEM
-python setup.py install # build both MFEM and PyMFEM
 
 # Run test
 cd test
 python test_examples.py -serial
-```  
+
+# For other configurations, see docs/install.txt or help
+$ python setup.py install --help
+
+```
+
 ## Usage
-Here is an example to solve div(grad(f)) = 1 in a square and to plot the result
+Here is an example to solve div(alpha grad(u)) = f in a square and to plot the result
 with matplotlib (modified from ex1.cpp). Use the badge above to open this in Binder.
 ```
 import mfem.ser as mfem
@@ -88,22 +69,31 @@ mesh = mfem.Mesh(10, 10, "TRIANGLE")
 
 # create finite element function space
 fec = mfem.H1_FECollection(1, mesh.Dimension())   # H1 order=1
-fespace = mfem.FiniteElementSpace(mesh, fec)      
+fespace = mfem.FiniteElementSpace(mesh, fec)
 
-# 
+#
 ess_tdof_list = mfem.intArray()
 ess_bdr = mfem.intArray([1]*mesh.bdr_attributes.Size())
 fespace.GetEssentialTrueDofs(ess_bdr, ess_tdof_list)
 
-# constant coefficient 
-one = mfem.ConstantCoefficient(1.0)
+# constant coefficient (diffusion coefficient and RHS)
+alpha = mfem.ConstantCoefficient(1.0)
+rhs = mfem.ConstantCoefficient(1.0)
+
+# Note:
+#    Diffusion coefficient can be variable. To use numba-JIT compiled
+#    functio. Use the following, where x is numpy-like array.
+# @mfem.jit.scalar
+# def alpha(x):
+#     return x+1.0
+#
 
 # define Bilinear and Linear operator
 a = mfem.BilinearForm(fespace)
-a.AddDomainIntegrator(mfem.DiffusionIntegrator(one))
+a.AddDomainIntegrator(mfem.DiffusionIntegrator(alpha))
 a.Assemble()
 b = mfem.LinearForm(fespace)
-b.AddDomainIntegrator(mfem.DomainLFIntegrator(one))
+b.AddDomainIntegrator(mfem.DomainLFIntegrator(rhs))
 b.Assemble()
 
 # create gridfunction, which is where the solution vector is stored

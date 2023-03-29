@@ -534,10 +534,9 @@ void NumbaCoefficientBase::PrepParams(mfem::ElementTransformation &T,
           }
         case 1:// vector
           {
-           vdim = vcoeffs[i]->GetVDim();
+           vdim = vcoeffs[v_counter]->GetVDim();
            mfem::Vector V(vdim);
            vcoeffs[v_counter]->Eval(V, T, ip);
-
            data_ptr[counter] = &data[idx];
            for (int j = 0; j < vdim; j++){
              data[idx] =  V[j];
@@ -1204,7 +1203,7 @@ try:
         def matrix(func=None, **kwargs):
             def wrapper(func):
                 def dec(*args, **kwargs):
-                    return _matrixr(*args, **kwargs)
+                    return _matrix(*args, **kwargs)
                 return dec(func, **kwargs)
             if func:
                 return wrapper(func)
@@ -1214,7 +1213,7 @@ try:
     jit = _JIT()
 except ImportError:
     pass
-except BaseError:
+except BaseException:
     assert False, "Failed setting Numba signatures by an error other than ImportError"
 
 def _scalar(func, td=False, params=None, complex=False, dependency=None,
@@ -1265,6 +1264,7 @@ def _scalar(func, td=False, params=None, complex=False, dependency=None,
       caller_txt = interface[0](setting)
 
     if debug:
+         print("(DEBUG) generated caller sig:\n", caller_sig)
          print("(DEBUG) generated caller function:\n", caller_txt)
 
     exec(caller_txt, globals(), locals())
@@ -1363,6 +1363,7 @@ def _vector(func, vdim=None, shape=None, td=False, params=None,
         caller_txt = interface[0](setting)
 
     if debug:
+         print("(DEBUG) generated caller sig:\n", caller_sig)
          print("(DEBUG) generated caller function:\n", caller_txt)
 
     exec(caller_txt, globals(), locals())
@@ -1473,6 +1474,7 @@ def _matrix(func, height=None, width=None, shape=None, td=False, params=None,
         caller_txt = interface[0](setting)
 
     if debug:
+         print("(DEBUG) generated caller sig:\n", caller_sig)
          print("(DEBUG) generated caller function:\n", caller_txt)
 
     exec(caller_txt, globals(), locals())

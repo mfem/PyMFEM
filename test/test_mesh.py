@@ -103,8 +103,8 @@ def run_test2(mfem):
 
 
 def run_test3(mfem):
-    m1 = mfem.Mesh_MakeCartesian3D(3, 3, 3, mfem.Element.TETRAHEDRON)
-    m2 = mfem.Mesh_MakeCartesian3D(3, 3, 3, mfem.Element.TETRAHEDRON)
+    m1 = mfem.Mesh.MakeCartesian3D(3, 3, 3, mfem.Element.TETRAHEDRON)
+    m2 = mfem.Mesh.MakeCartesian3D(3, 3, 3, mfem.Element.TETRAHEDRON)
 
     for i in range(m2.GetNV()):
         vv = m2.GetVertexArray(i)
@@ -114,21 +114,21 @@ def run_test3(mfem):
 
     print("test if it fails (1)")
     try:
-        m3 = mfem.Mesh_MakeMerged("error")
+        m3 = mfem.Mesh.MakeMerged("error")
     except:
         import traceback
         print("exception happens")
         traceback.print_exc()
     print("test if it fails (2)")
     try:
-        m3 = mfem.Mesh_MakeMerged(('hoge', m2))
+        m3 = mfem.Mesh.MakeMerged(('hoge', m2))
     except:
         import traceback
         print("exception happens")
         traceback.print_exc()
 
     print("test if this one is ok (3)")
-    m3 = mfem.Mesh_MakeMerged((m1, m2))
+    m3 = mfem.Mesh.MakeMerged((m1, m2))
     assert m3.GetNV() == m1.GetNV() + m2.GetNV(), "merge did not work"
     print("test (3) ok")
     # m3.Print('merged_mesh2.mesh')

@@ -57,7 +57,7 @@ def get_extensions():
         add_suitesparse = ''
         add_gslibs = ''
         cxx11flag = ''
-        build_mfem = 0
+        build_mfem = '0'
 
     libraries = ['mfem']
 
@@ -131,7 +131,7 @@ def get_extensions():
     macros = [('TARGET_PY3', '1'),
               ('NPY_NO_DEPRECATED_API', 'NPY_1_7_API_VERSION')]
 
-    if build_mfem:
+    if build_mfem == "1":
         runtime_library_dirs = library_dirs[:]
         runtime_library_dirs[0] = "$ORIGIN/../external/ser/lib"
     else:

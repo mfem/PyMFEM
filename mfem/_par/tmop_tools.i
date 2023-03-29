@@ -23,6 +23,9 @@ import_array();
 
 %include "../common/typemap_macros.i"
 
+#ifdef MFEM_USE_GSLIB
+%import gslib.i
+#endif
 %import tmop.i
 %import bilinearform.i
 %import pbilinearform.i
