@@ -851,12 +851,17 @@ def cmake_make_mfem(serial=True):
         rmtree(path)
     copytree("../data", path)
 
-    # if do_bdist_wheel:
-    #     ex_dir = os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "examples")
-    #     for x in os.listdir(ex_dir):
-    #         path = os.path.join(ex_dir, x)
-    #         command = ['patchelf', '--set-rpath', "$ORIGIN/../lib", path]
-    #         make_call(command, force_verbose=True)
+    if do_bdist_wheel:
+        ex_dir = os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "examples")
+        for x in os.listdir(ex_dir):
+            path = os.path.join(ex_dir, x)
+            print(path)
+            if platform == "linux" or platform == "linux2":
+                command = ['chrpath', '-r', "$ORIGIN/../lib", path]
+                dylibext = '.so'
+            elif platform == "darwin":
+                command = ['patchelf', '--set-rpath', "'\$\ORIGIN/../lib'", path]
+            make_call(command, force_verbose=True)
 
     os.chdir(pwd)
 
