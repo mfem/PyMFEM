@@ -725,7 +725,7 @@ def cmake_make_mfem(serial=True):
             rpaths.append(p)
 
     cmake_opts = {'DBUILD_SHARED_LIBS': '1',
-                  'DMFEM_ENABLE_EXAMPLES': '1',
+                  'DMFEM_ENABLE_EXAMPLES': '0',
                   'DMFEM_ENABLE_MINIAPPS': '1',
                   'DCMAKE_SHARED_LINKER_FLAGS': ldflags,
                   'DMFEM_USE_ZLIB': '1',
@@ -852,18 +852,18 @@ def cmake_make_mfem(serial=True):
         rmtree(path)
     copytree("../data", path)
 
-    if do_bdist_wheel:
-        ex_dir = os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "examples")
-        for x in os.listdir(ex_dir):
-            path = os.path.join(ex_dir, x)
-            print(path)
-            if platform == "linux" or platform == "linux2":
-                command = ['chrpath', '-r', "$ORIGIN/../lib", path]
-            elif platform == "darwin":
-                print(os.path.isfile(path))
-                command = ['patchelf', '--set-rpath', "'\$\ORIGIN/../lib'", path]
+    # if do_bdist_wheel:
+    #     ex_dir = os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "examples")
+    #     for x in os.listdir(ex_dir):
+    #         path = os.path.join(ex_dir, x)
+    #         print(path)
+    #         if platform == "linux" or platform == "linux2":
+    #             command = ['chrpath', '-r', "$ORIGIN/../lib", path]
+    #         elif platform == "darwin":
+    #             print(os.path.isfile(path))
+    #             command = ['patchelf', '--set-rpath', "'\$\ORIGIN/../lib'", path]
                     
-            make_call(command, force_verbose=True)
+    #         make_call(command, force_verbose=True)
 
     os.chdir(pwd)
 
@@ -1856,6 +1856,7 @@ class Clean(_clean):
 
 
 def run_setup():
+    global dylibext
     setup_args = metadata.copy()
     cmdclass = {'build_py': BuildPy,
                 'install': Install,
@@ -1874,7 +1875,7 @@ def run_setup():
         install_requires=install_req,
         packages=find_packages(),
         extras_require={},
-        package_data={'mfem._par': ['*.so'], 'mfem._ser': ['*.so']},
+        package_data={'mfem._par': [f'*{dylibext}'], 'mfem._ser': [f'*{dylibext}']},
         #data_files=[('data', datafiles)],
         entry_points={},
         **setup_args)
