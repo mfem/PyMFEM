@@ -860,7 +860,14 @@ def cmake_make_mfem(serial=True):
                 command = ['chrpath', '-r', "$ORIGIN/../lib", path]
                 dylibext = '.so'
             elif platform == "darwin":
-                command = ['patchelf', '--set-rpath', "'\$\ORIGIN/../lib'", path]
+                try:
+                    command = ['patchelf', '--set-rpath', "'\$\ORIGIN/../lib'", path]
+                except:
+                    print(os.path.isfile(path))
+                    raise ValueError
+                    
+                    
+                    
             make_call(command, force_verbose=True)
 
     os.chdir(pwd)
