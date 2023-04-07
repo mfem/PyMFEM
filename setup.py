@@ -725,7 +725,7 @@ def cmake_make_mfem(serial=True):
             rpaths.append(p)
 
     cmake_opts = {'DBUILD_SHARED_LIBS': '1',
-                  'DMFEM_ENABLE_EXAMPLES': '0',
+                  'DMFEM_ENABLE_EXAMPLES': '1',
                   'DMFEM_ENABLE_MINIAPPS': '1',
                   'DCMAKE_SHARED_LINKER_FLAGS': ldflags,
                   'DMFEM_USE_ZLIB': '1',
