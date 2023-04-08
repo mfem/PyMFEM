@@ -59,7 +59,7 @@ repos = {"mfem": "https://github.com/mfem/mfem.git",
          "metis": "https://github.com/KarypisLab/METIS", }
 repos_sha = {
     # "mfem": "2f6eb8838f8f5e8359abba0dd3434c8cc7147012",
-    "mfem": "00b2a0705f647e17a1d4ffcb289adca503f28d42",  # version 4.5.2
+    "mfem": "HCL-refactor",  # version 4.5.2
     "gklib": "a7f8172703cf6e999dd0710eb279bba513da4fec",
     "metis": "94c03a6e2d1860128c2d0675cbbb86ad4f261256", }
 
@@ -859,7 +859,7 @@ def cmake_make_mfem(serial=True):
             if platform == "linux" or platform == "linux2":
                 command = ['chrpath', '-r', "$ORIGIN/../lib", path]
             elif platform == "darwin":
-                command = ['install_name_tool', '-rpath', '"@executable_path/../lib/"', path]
+                command = ['install_name_tool', '-add_rpath', '"@executable_path/../lib/"', path]
             make_call(command, force_verbose=True)
 
     os.chdir(pwd)
