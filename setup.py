@@ -855,7 +855,10 @@ def cmake_make_mfem(serial=True):
         ex_dir = os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "examples")
         for x in os.listdir(ex_dir):
             path = os.path.join(ex_dir, x)
-            command = ['chrpath', '-r', "$ORIGIN/../lib", path]
+            if platform == "linux" or platform == "linux2":
+                command = ['chrpath', '-r', "$ORIGIN/../lib", path]
+            elif platform == "darwin":
+                command = ['install_name_tool', '-add_rpath', "@executable_path/../lib"]
             make_call(command, force_verbose=True)
 
     os.chdir(pwd)
