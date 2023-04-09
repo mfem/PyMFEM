@@ -858,7 +858,7 @@ def cmake_make_mfem(serial=True):
             if platform == "linux" or platform == "linux2":
                 command = ['chrpath', '-r', "$ORIGIN/../lib", path]
             elif platform == "darwin":
-                command = ['install_name_tool', '-add_rpath', "@executable_path/../lib"]
+                command = ['install_name_tool', '-add_rpath', "@executable_path/../lib", path]
             make_call(command, force_verbose=True)
 
     os.chdir(pwd)
