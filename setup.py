@@ -59,7 +59,7 @@ repos = {"mfem": "https://github.com/mfem/mfem.git",
          "metis": "https://github.com/KarypisLab/METIS", }
 repos_sha = {
     # "mfem": "2f6eb8838f8f5e8359abba0dd3434c8cc7147012",
-    "mfem": "HCL-refactor",  # version 4.5.2
+    "mfem": "HCL-refactor-Jacobian",  # version 4.5.2
     "gklib": "a7f8172703cf6e999dd0710eb279bba513da4fec",
     "metis": "94c03a6e2d1860128c2d0675cbbb86ad4f261256", }
 
