@@ -308,14 +308,14 @@ def run_test():
     a1.Finalize()
     M1 = a1.SpMat()
 
-    print("Numba time (matrix)", end - start)
+    nicdprint("Numba time (matrix)", end - start)
 
     start = time.time()
     a2.Assemble()
     end = time.time()
     a2.Finalize()
     M2 = a2.SpMat()
-    print("Python time (matrix)", end - start)
+    nicePprint("Python time (matrix)", end - start)
 
     start = time.time()
     a3.Assemble()
