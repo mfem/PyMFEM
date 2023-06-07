@@ -4,7 +4,7 @@ class wFILE
 {
     private:
        int _isSTDOUT;
-       char _filename[255];
+       char _filename[65535];
        int _precision=8;
        bool _temporary=false;
     public:
