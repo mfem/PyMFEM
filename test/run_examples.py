@@ -66,8 +66,8 @@ class bcolors:
 # special handling of text (needs to be set manually)
 ignore_txt_def = ['seconds', 'residual']
 ignore_txt_dict = {'ex15p': ['seconds', 'residual', ],
-                   'ex12p' : ['seconds'],
-                   'ex18p': ['time step' ],
+                   'ex12p': ['seconds'],
+                   'ex18p': ['time step'],
                    'ex10': ['iteration', 'seconds', 'residual', ],
                    'ex10p': ['iteration', 'seconds', 'residual', 'rtol'],
                    'ex13p': ['iteration', 'seconds', 'residual', ]}
@@ -84,7 +84,8 @@ def run_file(command, num=5):
     lines, errs = p.communicate()
 
     lines = lines.decode('utf-8').split('\n')
-    lines = [x for x in lines if not x.startswith('\x1b')] # remove line with ESC
+    lines = [x for x in lines if not x.startswith(
+        '\x1b')]  # remove line with ESC
 
     # debug print all output....
     # print("\n".join(lines))
@@ -92,6 +93,7 @@ def run_file(command, num=5):
     sys.stdout.flush()
     lines = [l for l in lines if len(l.strip()) != 0]
     return t2-t1, lines[-num:]
+
 
 def pad_lines(lines):
     length = max([len(l.strip()) for l in lines])
@@ -137,10 +139,11 @@ def compare_results(lines1, lines2, case, verbose=True):
         compare.append(flag)
     return all(compare)
 
+
 def do_compare_outputs(dir1, dir2):
     files1 = os.listdir(dir1)
     files2 = os.listdir(dir2)
-    
+
     unique_file = list(set(files1+files2))
     if (len(unique_file) != len(files1) or
             len(unique_file) != len(files2)):
@@ -158,7 +161,7 @@ def do_compare_outputs(dir1, dir2):
             if not flag:
                 return False
             continue
-        
+
         if not f in files2:
             print("File not found in python outputs", f)
             return False
@@ -166,34 +169,61 @@ def do_compare_outputs(dir1, dir2):
         l2 = open(os.path.join(dir2, f), 'r').readlines()
 
         mismatch = 0
+
+        # compute average of all the values in file
+        total = 0
+        for ll1 in l1:
+            try:
+                total = total + sum([abs(float(x)) for x in ll1.split(' ')])
+            except:
+                pass
+
+        www = total/len(l1)
+
         for ll1, ll2 in zip(l1, l2):
             if ll1 != ll2:
                 try:
-                    # compare 3 digits
-                    d1 = ['%s' % float('%.3g' % float(x)) for x in ll1.split(' ')]
-                    d2 = ['%s' % float('%.3g' % float(x)) for x in ll2.split(' ')]
-                    if d1 == d2:
-                        continue
+                    check = [abs(float(x))/www for x in ll1.split(' ')]
+                    flag = sum([x < 1e-7 for x in check])
+
+                    # find ratio as number
+                    dd1 = [float(x) for x in ll1.split(' ')]
+                    dd2 = [float(x) for x in ll2.split(' ')]
+                    mratio = max([abs(v1-v2)/abs(v1+v2)
+                                 for v1, v2 in zip(dd1, dd2)])
+
+                    # compare 5 digits in text
+                    d1 = ['%s' % float('%.5g' % float(x))
+                          for x in ll1.split(' ')]
+                    d2 = ['%s' % float('%.5g' % float(x))
+                          for x in ll2.split(' ')]
+                    if d1 != d2 and flag == 0:  # and mratio > 1e-7:
+                        print("line with difference", d1, d2, check, maratio)
+                        mismatch += 1
                     else:
-                        #print("line with difference", d1, d2)
-                        mismatch += 1                        
+                        #print("line with the same", d1, d2, check)
+                        continue
+
                 except:
                     #print("found a line mismatch :", ll1, ll2)
                     mismatch += 1
         if mismatch > 3:
-           print("Contents does not agree: ", f)
-           print("# "+str(mismatch) + " lines do not agree out of "+str(len(l1)))
-           fail = True
-           
+            print("Contents does not agree: ", f)
+            print("# "+str(mismatch) + " lines do not agree out of "+str(len(l1)))
+            fail = True
+
     if not fail:
-        print("No difference in generate files (Passed output file check) in " + os.path.basename(dir1))
-        
+        print("No difference in generate files (Passed output file check) in " +
+              os.path.basename(dir1))
+
     return not fail
 
-def compare_outputs(case):        
+
+def compare_outputs(case):
     dir1 = os.path.join(sandbox, case, 'exe')
     dir2 = os.path.join(sandbox, case, 'py')
     return do_compare_outputs(dir1, dir2)
+
 
 def run_test(mfem_exes, pymfem_exes, sandbox, serial=True, np=2, verbose=False):
     print("mfem examples from : " + os.path.dirname(mfem_exes[0]))
@@ -201,7 +231,7 @@ def run_test(mfem_exes, pymfem_exes, sandbox, serial=True, np=2, verbose=False):
     print(',  '.join([os.path.basename(x) for x in mfem_exes]))
 
     cwd = os.getcwd()
-    
+
     if not serial:
         comm_mpi = ["mpirun", "-np", str(np)]
     else:
@@ -219,19 +249,19 @@ def run_test(mfem_exes, pymfem_exes, sandbox, serial=True, np=2, verbose=False):
             continue
         case = os.path.basename(e1)
         opts = options_dict.get(case, options_def)
-        
+
         print("Running : " + case)
-        
+
         path = os.path.join(sandbox, case)
         os.makedirs(path)
         os.chdir(path)
         datadir = os.path.join(os.path.dirname(os.path.dirname(e1)), 'data')
         os.symlink(datadir, 'data')
-        
+
         path = os.path.join(sandbox, case, 'exe')
         os.makedirs(path)
         os.chdir(path)
-        
+
         comm = comm_mpi + [e1] + opts
         t1, l1 = run_file(comm, num=5)
 
@@ -280,7 +310,7 @@ def find_mfem_examples(dir, serial=True, example='all'):
         names = [x for x in names if not x.endswith('p')]
     else:
         names = [x for x in names if x.endswith('p')]
-        
+
     if example != 'all':
         names = [n for n in names if n == example]
     names = [n for n in names if not n in skip_test]
@@ -334,7 +364,7 @@ if __name__ == "__main__":
                         help='mfem (parallel) directory')
     parser.add_argument('-mfemsdir',
                         action='store',
-                        default=def_mfemsdir,                        
+                        default=def_mfemsdir,
                         help='mfem (serial) directory')
     parser.add_argument('-sandbox',
                         action='store', default="./sandbox",
@@ -357,9 +387,8 @@ if __name__ == "__main__":
     if not os.path.exists(os.path.join(mfempdir, "data")) and testp:
         assert False, "data file (under par dir) does not exist in the package directory"
 
-            
     sandbox = os.path.abspath(os.path.expanduser(args.sandbox))
-    
+
     if clean:
         od = os.getcwd()
         files = os.listdir(od)
@@ -374,7 +403,7 @@ if __name__ == "__main__":
             shutil.rmtree(sandbox)
         sys.exit()
     import mfem
-    
+
     if os.path.exists(sandbox):
         shutil.rmtree(sandbox)
     os.mkdir(sandbox)
@@ -423,9 +452,9 @@ if __name__ == "__main__":
             print("Serial Test \t" + bcolors.FAIL +
                   " ".join(fails) + bcolors.ENDC)
             sys.exit(1)
-        if len(skipped) > 0:            
+        if len(skipped) > 0:
             print("Serial Test Skipped due to the lack of Python vesion \t" + bcolors.FAIL +
-               " ".join(skipped) + bcolors.ENDC)            
+                  " ".join(skipped) + bcolors.ENDC)
 
     if testp and len(resultp) != 0:
         if all(resultp):
@@ -438,4 +467,4 @@ if __name__ == "__main__":
 
         if len(skippedp) > 0:
             print("Parallel Test Skipped due to the lack of Python vesion \t" + bcolors.FAIL +
-                 " ".join(skippedp) + bcolors.ENDC)
+                  " ".join(skippedp) + bcolors.ENDC)

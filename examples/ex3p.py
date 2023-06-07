@@ -226,7 +226,7 @@ def run(order=1,
 
     # 16. Save the refined mesh and the solution in parallel. This output can
     #     be viewed later using GLVis: "glvis -np <np> -m mesh -g sol".
-    x.Save('sol.'+smyid)
+    x.Save('sol.'+smyid, 8)
     pmesh.Print('mesh.'+smyid)
 
     # 17. Send the solution by socket to a GLVis server

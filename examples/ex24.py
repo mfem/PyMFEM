@@ -90,7 +90,7 @@ def run(order=1,
 
         @mfem.jit.vector(shape=(sdim,))
         def gradp_coef(x):
-            out = np.zeros(shape, dtype=np.float)
+            out = np.zeros(shape, dtype=np.float64)
             if dim == 3:
                 out[0] = cos(x[0]) * sin(x[1]) * sin(x[2])
                 out[1] = sin(x[0]) * cos(x[1]) * sin(x[2])
@@ -104,7 +104,7 @@ def run(order=1,
 
         @mfem.jit.vector(vdim=sdim, interface="c++")
         def v_coef(x, out):
-            out = np.zeros(shape, dtype=np.float)
+            out = np.zeros(shape, dtype=np.float64)
             if dim == 3:
                 out[0] = sin(kappa * x[1])
                 out[1] = sin(kappa * x[2])
