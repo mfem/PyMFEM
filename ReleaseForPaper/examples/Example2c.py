@@ -327,6 +327,7 @@ if eval and not args.marginals_eval:
     cols = ['theta', 'rho']
     rlactions = pd.DataFrame(columns=cols)
     obs = env.reset(random_angle=False)
+    rlobs = pd.DataFrame(columns=['budget','mean','stdev'])
     done = False
     rlepisode_cost = 0
     rlerrors = [env.global_error]
@@ -348,6 +349,10 @@ if eval and not args.marginals_eval:
         if not minimum_budget_problem and done:
             break
         rlactions = rlactions.append({'theta': action[0], 'rho':action[1]}, ignore_index=True)
+        # print("obs=",obs)
+        # print("type=",type(obs))
+        # exit()
+        rlobs = rlobs.append({'budget':obs[0], 'mean':obs[1], 'stdev':obs[2]}, ignore_index=True)
         rlepisode_cost -= reward
         print("RL step = ", env.k)
         num_steps_of_RL_policy = env.k
@@ -452,46 +457,47 @@ if eval and not args.marginals_eval:
     #     for rho in range(5, 6):      # include only theta = 0.6, rho = 0.5
     # for theta in range(6, 7):        # include only theta = 0.6, rho = 0.4
     #     for rho in range(4, 5):      # include only theta = 0.6, rho = 0.4
-    for theta in range(6, 7):        # include only theta = 0.6, rho = 0.3
-        for rho in range(3, 4):      # include only theta = 0.6, rho = 0.3
-            tp_actions[index_count] = np.array([theta/tp_nth, rho/tp_nth]) # note 1D action space
-            if theta/tp_nth == 1 and rho/tp_nth == 1: # avoid some linear algerbra error if action is [1,1]
-                tp_actions[index_count] = np.array([0.99, 0.99])
-            action = tp_actions[index_count]
-            print("two param action = ", tp_actions[index_count])
-            index_count += 1
-            obs = env.reset(random_angle=False)
-            done = False
-            episode_cost_tmp = 0
-            errors_tmp = [env.global_error]
-            dofs_tmp = [env.sum_of_dofs]
-            max_steps   = 40 # or:  num_steps_of_RL_policy
-            steps_taken = 0
-            while not done:
-                _, reward, done, info = env.step(action)
-                if not minimum_budget_problem and done:
-                    break
-                if steps_taken > max_steps:
-                    print("*** BREAKING EARLY - fixed action exceeded max step threshold of ", max_steps, "steps.")
-                    break
-                else:
-                    steps_taken += 1
-                episode_cost_tmp -= reward
-                errors_tmp.append(info['global_error'])
-                dofs_tmp.append(info['num_dofs'])
-            tp_costs.append(episode_cost_tmp)
-            tp_errors.append(errors_tmp)
-            tp_dofs.append(dofs_tmp)
-            print('two param episode cost = ', episode_cost_tmp)
-            # if theta == 5 and rho == 5:
-            #     env.render()
-            #     env.RenderHPmesh()
-            #     print("\nRendering two parmaeter policy ", tp_actions[index_count-1], "\n")
-            if save_mesh and prob_config['mesh_name'] == 'fichera.mesh':
-                mkdir_p(output_dir+"/meshes_and_gfs/")
-                gfname = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '_tpp.gf'
-                env.RenderHPmesh(gfname=gfname)
-                env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '_tpp.mesh')
+
+    # for theta in range(6, 7):        # include only theta = 0.6, rho = 0.3
+    #     for rho in range(3, 4):      # include only theta = 0.6, rho = 0.3
+    #         tp_actions[index_count] = np.array([theta/tp_nth, rho/tp_nth]) # note 1D action space
+    #         if theta/tp_nth == 1 and rho/tp_nth == 1: # avoid some linear algerbra error if action is [1,1]
+    #             tp_actions[index_count] = np.array([0.99, 0.99])
+    #         action = tp_actions[index_count]
+    #         print("two param action = ", tp_actions[index_count])
+    #         index_count += 1
+    #         obs = env.reset(random_angle=False)
+    #         done = False
+    #         episode_cost_tmp = 0
+    #         errors_tmp = [env.global_error]
+    #         dofs_tmp = [env.sum_of_dofs]
+    #         max_steps   = 40 # or:  num_steps_of_RL_policy
+    #         steps_taken = 0
+    #         while not done:
+    #             _, reward, done, info = env.step(action)
+    #             if not minimum_budget_problem and done:
+    #                 break
+    #             if steps_taken > max_steps:
+    #                 print("*** BREAKING EARLY - fixed action exceeded max step threshold of ", max_steps, "steps.")
+    #                 break
+    #             else:
+    #                 steps_taken += 1
+    #             episode_cost_tmp -= reward
+    #             errors_tmp.append(info['global_error'])
+    #             dofs_tmp.append(info['num_dofs'])
+    #         tp_costs.append(episode_cost_tmp)
+    #         tp_errors.append(errors_tmp)
+    #         tp_dofs.append(dofs_tmp)
+    #         print('two param episode cost = ', episode_cost_tmp)
+    #         # if theta == 5 and rho == 5:
+    #         #     env.render()
+    #         #     env.RenderHPmesh()
+    #         #     print("\nRendering two parmaeter policy ", tp_actions[index_count-1], "\n")
+    #         if save_mesh and prob_config['mesh_name'] == 'fichera.mesh':
+    #             mkdir_p(output_dir+"/meshes_and_gfs/")
+    #             gfname = output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '_tpp.gf'
+    #             env.RenderHPmesh(gfname=gfname)
+    #             env.mesh.Save(output_dir+"/meshes_and_gfs/" + 'rl_mesh_' + mesh_abbrv + "_angle_" + str(angle_abbrv) + '_tpp.mesh')
   
 
 if args.marginals_eval:
@@ -699,6 +705,16 @@ if save_data:
     print("\nSaving RL deployed policy data to: ", filename)  
     df2.to_csv(filename, index=False)
 
+    # #### rl observables df
+    # # pad rlobs with one extra row to enable df2obs creation
+    # rlobs = rlobs.append({'budget': 999, 'mean': 999, 'stdev': 999}, ignore_index=True)
+    # df2obs = pd.DataFrame({'theta':rlactions.iloc[:,0], 'rho':rlactions.iloc[:,1], 'rldofs':rldofs,'rlerrors':rlerrors})
+    # save a single value in every row of new column 'rlepisode_cost'
+    # df2obs['rlepisode_cost'] = rlepisode_cost 
+    filename = output_dir+"/rl_data_" + mesh_abbrv + "_angle_" + angle_abbrv + "_obs.csv"
+    print("\nSaving RL deployed policy observables data to: ", filename)  
+    rlobs.to_csv(filename, index=False)
+
     #### expert policy df
     
     if prob_config['problem_type'] == 'lshaped' and False:
@@ -707,17 +723,17 @@ if save_data:
         print("\nSaving expert AMR policies data to: ", filename)    
         df3.to_csv(filename, index=False)
 
-    #### two param policy df
-    df4 = pd.DataFrame({'theta':tp_actions[:,0], 'rho':tp_actions[:,1],'costs':tp_costs,'errors':tp_errors,'dofs':tp_dofs})
-    filename = output_dir + "/tpp_data_" + mesh_abbrv + "_angle_" + angle_abbrv + ".csv"
-    print("\nSaving two parameter AMR policies data to: ", filename)    
-    df4.to_csv(filename, index=False)
+    # #### two param policy df
+    # df4 = pd.DataFrame({'theta':tp_actions[:,0], 'rho':tp_actions[:,1],'costs':tp_costs,'errors':tp_errors,'dofs':tp_dofs})
+    # filename = output_dir + "/tpp_data_" + mesh_abbrv + "_angle_" + angle_abbrv + ".csv"
+    # print("\nSaving two parameter AMR policies data to: ", filename)    
+    # df4.to_csv(filename, index=False)
 
 """
     STEP 5: Plots
 """
 
-if plot_figs or save_figs:
+if plot_figs: # or save_figs:
 
     import subprocess
     string_to_call = "python plots.py " + output_dir + " --angle " + angle_abbrv + " --mesh " + mesh_abbrv
