@@ -24,7 +24,7 @@ output_dir = str(args.file_path)
 if args.angle_abbrv is not None:
    print("Plotting for angle ", args.angle_abbrv)
 
-if   output_dir.find('Example1a_MO') != -1:
+if output_dir.find('Example1a_MO') != -1:
    print("\nLoading data from ", output_dir)
    fig_name_prefix = 'Example1a_MO'
    ex_type = 6
@@ -278,6 +278,33 @@ else:
 if save_figs:
    plt.savefig(output_dir+'/'+fig_name_prefix+'_fig6.pdf',format='pdf', bbox_inches='tight')
 
+
+##########
+# make fig7: Plot observables vs. refinement step
+##########
+
+plt.figure(figsize=(6,6))
+ax7 = plt.gca()
+if ex_type == 4: # expand this "if" condition to accomdate any hp problem
+   rlobs_file = rldata_file[:-4] + '_obs.csv'
+   print("RL obs file = \n   ", rlobs_file)
+   dfobs = pd.read_csv(rlobs_file)
+   # asdf~b_k,~\mean_k[\zeta_T],~\sd_k[\zeta_T]~\right
+   # r'$\theta$ (h parameter)'
+   plt.plot(dfobs['budget'],'-o',ms=12.0, lw=4.0, ls='solid', color=palette_list[2], label=r'$b_k$ (budget)')
+   plt.plot(dfobs['mean'],  '-^',ms=12.0, lw=4.0, ls='solid', color=palette_list[3], label=r'$E_k[\zeta_T]$ (emp. mean)')
+   plt.plot(dfobs['stdev'],  '-^',ms=12.0, lw=4.0, ls='solid', color=palette_list[4], label=r'$SD_k[\zeta_T]$ (emp. st. dev.)')
+      
+   ax7.set_xlim(-0.5, 14.5) # forces x axis to have ticks from 0 to 14
+   ax7.set_ylim(0.0, 1.5)
+   plt.xticks(fontsize=30)
+   plt.yticks(fontsize=30)
+   # ax7.legend(loc='upper right', prop={'size': 15})
+if save_figs:
+   plt.savefig(output_dir+'/'+fig_name_prefix+'_fig7.pdf',format='pdf', bbox_inches='tight')
+
+
+
 if have_expert_policy:
    ##########
    # make fig3
@@ -315,9 +342,9 @@ if have_expert_policy:
    # plt.loglog(dofs[9][-1],errors[9][-1], marker="o", markersize=10, color=palette_list[3], label='_nolegend_')
    for k in range(19,len(errors),10):
       plt.loglog(dofs[k],errors[k],'-o',lw=1.3, color=palette_list[3], label='_nolegend_')
-      plt.loglog(dofs[k][-1],errors[k][-1], marker="o", markersize=10, color=palette_list[3], alpha=alpha, label='_nolegend_')
-   plt.loglog(rldofs,rlerrors,marker="^",lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
-   plt.loglog(rldofs[-1],rlerrors[-1], marker="^", markersize=10, color=palette_list[0], label='_nolegend_')
+      plt.loglog(dofs[k][-1],errors[k][-1], marker="o", markersize=5, color=palette_list[3], alpha=alpha, label='_nolegend_')
+   plt.loglog(rldofs, rlerrors, marker="^",markersize=9, lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
+   plt.loglog(rldofs[-1],rlerrors[-1], marker="^", markersize=11, color=palette_list[0], label='_nolegend_')
    ax4.set_xlabel(r'Degrees of freedom (ndofs$(\mathcal{T}_k)$)', fontsize=22)
    ax4.set_ylabel(r'Global error estimate $(\eta_k)$', fontsize=22)
    ax4.tick_params(axis='x', labelsize=22)
@@ -360,9 +387,9 @@ if have_expert_policy:
       plt.loglog(cumdofs[9],errors[9],'-o',lw=1.3, color=palette_list[3], alpha=alpha, label=r'AMR policies')
       # plt.loglog(cumdofs[9][-1],errors[9][-1], marker="o", markersize=10, color=palette_list[3], label='_nolegend_')
       for k in range(19,len(errors),10):
-         plt.loglog(cumdofs[k],errors[k],'-o',lw=1.3, color=palette_list[3], label='_nolegend_')
+         plt.loglog(cumdofs[k],errors[k],'-o',markersize=5,lw=1.3, color=palette_list[3], label='_nolegend_')
          # plt.loglog(cumdofs[k][-1],errors[k][-1], marker="o", markersize=10, color=palette_list[3], alpha=alpha, label='_nolegend_')
-      plt.loglog(cumrldofs,rlerrors,marker="^",lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
+      plt.loglog(cumrldofs,rlerrors,marker="^",markersize=9,lw=1.3, color=palette_list[0], label=r'(AM)$^2$R policy')
       # plt.loglog(cumrldofs[-1],rlerrors[-1], marker="o", markersize=10, color=palette_list[0], label='_nolegend_')
       ax5.set_xlabel(r'Cumulative degrees of freedom $(J_k)$', fontsize=22)
       ax5.set_ylabel(r'Global error estimate $(\eta_k)$', fontsize=22)
