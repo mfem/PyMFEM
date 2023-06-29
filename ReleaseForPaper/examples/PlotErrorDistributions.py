@@ -6,6 +6,19 @@ import seaborn as sns
 from seaborn.palettes import color_palette
 from prob_envs.Poisson import Poisson
 
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--mesh', type=int, required=True) # mesh 0 = square; 1 = lshaped
+parser.add_argument('--adap', type=int, required=False) # adap 0 = uniform; 1 = adaptive
+parser.add_argument('--stat', type=int, required=False) # stat 0 = tilde eta_T; 1 = zeta_T
+
+args = parser.parse_args()
+
+print("Parsed arguments: ", args)
+
+# if args.angle_abbrv is not None:
+
 def SaveErrorsToFile(env, df_ErrorHistory, error_file_name):
       num_dofs = env.fespace.GetTrueVSize()
       df_tmp = pd.DataFrame({str(num_dofs):env.errors})
@@ -25,16 +38,26 @@ plt.rc('font', family='serif')
 plt.rc('text.latex', preamble=r'\usepackage{amsmath} \usepackage{amssymb}')
 
 #### PARAMETERS
-fig = 'b' # 'a' or 'b'
+# fig = 'b' # 'a' or 'b'
 num_refs = 6
 num_unif_ref = 1
 order = 1
 recompute = True
 save_fig = True
-theta = 0.5
 ####
 
-if fig == 'a':
+if args.adap == 0:
+      print("Uniform refinement (theta = 0.0)")
+      adapstr = 'unif'
+      theta = 0.0
+else:
+      print("Adaptive refinement (theta = 0.5)")
+      adapstr = 'adap'
+      theta = 0.5
+
+if args.mesh == 0:
+      print("Mesh = square")
+      meshstr = 'sinsin'
       file_name = "./ReleaseForPaper/out/H10errors_sinsin.csv"
       prob_config = {
             'problem_type'      : 'sinsin',
@@ -43,6 +66,8 @@ if fig == 'a':
             'order'             : order,
       }
 else:
+      print("Mesh = Lshaped")
+      meshstr = 'lshape'
       file_name = "./ReleaseForPaper/out/H10errors_LShaped.csv"
       prob_config = {
             'problem_type'      : 'lshaped',
@@ -68,8 +93,14 @@ for i, col in enumerate(df.columns):
       num_dofs = float(col)
       num_non_zeros = len(df[col]) - df[col].isna().sum()
       # df[col] *= num_non_zeros**((1+order)/2)
-      # df[col] *= num_non_zeros**(1/2) * num_dofs**(order/2)
-      df[col] = -np.log(num_non_zeros**(1/2)*df[col]) / np.log(num_dofs)
+      if args.stat == 0:
+            print("Statistic = tilde eta_T")
+            statstr = 'eta'
+            df[col] *= num_non_zeros**(1/2) * num_dofs**(order/2) # this is \tilde\eta_T
+      else:
+            print("Statistic = zeta_T")
+            statstr = 'zeta'
+            df[col] = -np.log(num_non_zeros**(1/2)*df[col]) / np.log(num_dofs) # this is \zeta_T
       df.rename(columns={col:str(i)}, inplace=True)
 
 dofs = np.array(dofs)
@@ -81,6 +112,10 @@ maxes = df.max().to_numpy()
 proxy_df = pd.DataFrame(columns = df.columns)
 for i, col in enumerate(proxy_df.columns):
       proxy_df[col] = [means[i]]
+
+# print("df=\n",df)
+# print("proxydf=\n",proxy_df)
+# exit()
 
 # ax = sns.stripplot(data=proxy_df, zorder=10,  color="white", linewidth=1, jitter=False, edgecolor="black")
 ax = sns.boxenplot(data=df, width=.6,
@@ -105,6 +140,15 @@ for i in range(len(xticklabels)):
       xticklabels[i].set_text('$\\mathdefault{%i}$' % int(label))
 ax.set_xticklabels(xticklabels)
 
+
+if args.stat == 0:
+      if (theta == 0.0 and args.mesh != 0):
+            ax.set_yscale('log')
+      else:
+            ax.set_ylim(0.0, 1.7)
+else:
+      ax.set_ylim(0.0, 1.45)
+
 print('Means   = ', means)
 print('Medians = ', medians)
 print('Mins    = ', mins)
@@ -114,11 +158,12 @@ print('conv. rate of medians = ', 2 * np.log(medians[-1]/medians[-2])/np.log(dof
 print('conv. rate of mins    = ', 2 * np.log(mins[-2]/mins[-3])/np.log(dofs[-3]/dofs[-2]))
 print('conv. rate of maxes   = ', 2 * np.log(maxes[-1]/maxes[-2])/np.log(dofs[-2]/dofs[-1]))
 
-if save_fig:
-      if fig == 'a':
-            plt.savefig('./ReleaseForPaper/figures/fig1a_H10Errors_sinsin.pdf')
-      else:
-            plt.savefig('./ReleaseForPaper/figures/fig1b_H10Errors_LShaped.pdf')
+plt.savefig('./ReleaseForPaper/figures/fig1a_'+meshstr+'_'+adapstr+'_'+statstr+'.pdf')
+# if save_fig:
+#       if fig == 'a':
+#             plt.savefig('./ReleaseForPaper/figures/fig1a_H10Errors_sinsin.pdf')
+#       else:
+#             plt.savefig('./ReleaseForPaper/figures/fig1b_H10Errors_LShaped.pdf')
 plt.show()
 
 # print(np.log(env.global_errors[1][-1]/env.global_errors[1][-5])/np.log(env.global_errors[0][-5]/env.global_errors[0][-1]))

@@ -292,14 +292,16 @@ if ex_type == 4: # expand this "if" condition to accomdate any hp problem
    # asdf~b_k,~\mean_k[\zeta_T],~\sd_k[\zeta_T]~\right
    # r'$\theta$ (h parameter)'
    plt.plot(dfobs['budget'],'-o',ms=12.0, lw=4.0, ls='solid', color=palette_list[2], label=r'$b_k$ (budget)')
-   plt.plot(dfobs['mean'],  '-^',ms=12.0, lw=4.0, ls='solid', color=palette_list[3], label=r'$E_k[\zeta_T]$ (emp. mean)')
-   plt.plot(dfobs['stdev'],  '-^',ms=12.0, lw=4.0, ls='solid', color=palette_list[4], label=r'$SD_k[\zeta_T]$ (emp. st. dev.)')
+   plt.plot(dfobs['mean'],  '-^',ms=12.0, lw=4.0, ls='solid', color=palette_list[3], label=r'$\mathrm{E}_k[\zeta_T]$ (empirical mean)')
+   plt.plot(dfobs['stdev'],  '-^',ms=12.0, lw=4.0, ls='solid', color=palette_list[4], label=r'$\mathrm{SD}_k[\zeta_T]$ (empirical st.~dev.)')
+   # plt.plot(dfobs['mean'],  '-^',ms=12.0, lw=4.0, ls='solid', color=palette_list[3], label=r'$\mathrm{E}_k[\zeta_T]$ (emp.~mean)')
+   # plt.plot(dfobs['stdev'],  '-^',ms=12.0, lw=4.0, ls='solid', color=palette_list[4], label=r'$\mathrm{SD}_k[\zeta_T]$ (emp.~st.~dev.)')
       
    ax7.set_xlim(-0.5, 14.5) # forces x axis to have ticks from 0 to 14
    ax7.set_ylim(0.0, 1.5)
    plt.xticks(fontsize=30)
    plt.yticks(fontsize=30)
-   # ax7.legend(loc='upper right', prop={'size': 15})
+   # ax7.legend(loc='upper right', prop={'size': 20})
 if save_figs:
    plt.savefig(output_dir+'/'+fig_name_prefix+'_fig7.pdf',format='pdf', bbox_inches='tight')
 
