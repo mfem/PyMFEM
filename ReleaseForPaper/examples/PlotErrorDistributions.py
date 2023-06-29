@@ -127,7 +127,11 @@ ax = sns.boxenplot(data=df, width=.6,
                   )
 # if fig != 'a':
 #       ax.set_yscale('log')
-ax.set_ylabel(r'$\{\zeta_T \colon T\in\mathcal{T}_k\}$')
+if args.stat == 0:
+      ax.set_ylabel(r'$\{\widetilde{\eta}_T \colon T\in\mathcal{T}_k\}$')
+else:
+      ax.set_ylabel(r'$\{\zeta_T \colon T\in\mathcal{T}_k\}$')
+      
 # ax.set_ylabel(r'Local error estimate exponents $\{\zeta_T \colon T\in\mathcal{T}_k\}$')
 # ax.set_ylabel(r'$\{\widetilde{\eta}_T \colon T\in\mathcal{T}_k\}$')
 # ax.set_ylabel(r'Normalized local error estimates $\{\overline{\eta}_T \colon T\in\mathcal{T}_k\}$')
