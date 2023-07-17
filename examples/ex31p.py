@@ -382,7 +382,7 @@ def CurlE_exact(x):
 
 
 def f_exact(x):
-    f = np.zeros(vdim, dtype=np.float)
+    f = np.zeros(vdim, dtype=np.float64)
     if dim == 1:
         s0 = sin(kappa * x[0] + 0.0 * pi)
         s4 = sin(kappa * x[0] + 0.4 * pi)

@@ -262,7 +262,7 @@ to find more details of the MFEM library.
 	  GridFunction(fes, vec.GetData() + sc)
       the same is used for ParGridFunction
 
-      GridFunction::Save(std::ostream &out) is wrapped as Save(filename, precision=8)
+      GridFunction::Save(std::ostream &out) is wrapped as Save(filename, precision)
       QuadratureFunction::Save(std::ostream &out) is wrapped as Save(filename, precision=8)
 
       GridFunction::WriteToStream(IOString) writes data to io.IOString
