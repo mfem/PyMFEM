@@ -670,7 +670,7 @@ def detJ_JT_J_inv_f(x):
 
 def detJ_JT_J_inv_abs_f(x):
     dim = shape[0]
-    D = np.zeros(dim, dtype=np.float)
+    D = np.zeros(dim, dtype=np.float64)
 
     dxs = np.empty(dim, dtype=np.complex128)
     det = complex(1.0)
@@ -702,7 +702,7 @@ def detJ_inv_JT_J_f(x):
 
 def detJ_inv_JT_J_abs_f(x):
     dim = shape[0]
-    D = np.zeros(dim, dtype=np.float)
+    D = np.zeros(dim, dtype=np.float64)
 
     dxs = np.empty(dim, dtype=np.complex128)
     det = 1.0

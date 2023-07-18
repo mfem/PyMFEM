@@ -281,7 +281,7 @@ def run(order=1,
 
 
 def E_exact(x):
-    E = np.zeros(shape, dtype=np.float)
+    E = np.zeros(shape, dtype=np.float64)
     if dim == 1:
         E[0] = 1.1 * sin(kappa * x[0] + 0.0 * pi)
         E[1] = 1.2 * sin(kappa * x[0] + 0.4 * pi)
@@ -301,7 +301,7 @@ def E_exact(x):
 
 
 def CurlE_exact(x):
-    dE = np.zeros(shape, dtype=np.float)
+    dE = np.zeros(shape, dtype=np.float64)
     if dim == 1:
         c4 = cos(kappa * x[0] + 0.4 * pi)
         c9 = cos(kappa * x[0] + 0.9 * pi)
@@ -341,7 +341,7 @@ def CurlE_exact(x):
 
 
 def f_exact(x):
-    f = np.zeros(shape, dtype=np.float)
+    f = np.zeros(shape, dtype=np.float64)
     if dim == 1:
         s0 = sin(kappa * x[0] + 0.0 * pi)
         s4 = sin(kappa * x[0] + 0.4 * pi)
