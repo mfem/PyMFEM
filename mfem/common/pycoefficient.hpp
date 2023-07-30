@@ -79,6 +79,18 @@ class NumbaFunctionBase
   virtual ~NumbaFunctionBase(){}
 };
 
+class VectorBdrNormalCoefficient : public mfem::VectorFunctionCoefficient
+{
+ virtual void Eval(mfem::Vector &V,
+		   mfem::ElementTransformation &T,
+		   const mfem::IntegrationPoint &ip){
+   T.SetIntPoint(&ip);
+   mfem::DenseMatrix jac = T.Jacobian();
+   V.SetSize(jac.Height());
+   CalcOrtho(jac, V);
+ }
+};
+								   
 class NumbaCoefficientBase
 {
  private:

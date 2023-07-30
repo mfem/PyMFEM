@@ -109,6 +109,7 @@ hypre_prefix = ''
 enable_cuda = False
 enable_cuda_hypre = False
 cuda_prefix = ''
+cudatoolkit_prefix=''
 cuda_arch = ''
 enable_pumi = False
 pumi_prefix = ''
@@ -921,7 +922,7 @@ def write_setup_local():
               'gslibsinc': os.path.join(gslibs_prefix, 'include'),
               'gslibpinc': os.path.join(gslibp_prefix, 'include'),
               'cxx11flag': cxx11_flag,
-              'build_mfem': '1' if build_mfem else '0'
+              'build_mfem': '1' if build_mfem else '0',
               }
 
     try:
@@ -949,6 +950,8 @@ def write_setup_local():
         add_extra('strumpack')
     if enable_cuda:
         add_extra('cuda')
+        params['cudatoolkit_prefix'] = cudatoolkit_prefix
+        
     if enable_libceed:
         add_extra('libceed')
     if enable_suitesparse:
@@ -1220,6 +1223,10 @@ def print_config():
     print(" verbose : " + ("Yes" if verbose else "No"))
     print(" SWIG : " + swig_command)
 
+    if cuda_prefix != "":
+        print(" CUDA prefix : " + cuda_prefix)
+    if cudatoolkit_prefix != "":
+        print(" CUDAToolKit : " + cudatoolkit_prefix)
     if blas_libraries != "":
         print(" BLAS libraries : " + blas_libraries)
     if lapack_libraries != "":
@@ -1243,6 +1250,7 @@ def configure_install(self):
     global cc_command, cxx_command, mpicc_command, mpicxx_command
     global metis_64
     global enable_cuda, cuda_prefix, enable_cuda_hypre, cuda_arch
+    global cudatoolkit_prefix
     global enable_pumi, pumi_prefix
     global enable_strumpack, strumpack_prefix
     global enable_libceed, libceed_prefix, libceed_only
@@ -1381,6 +1389,7 @@ def configure_install(self):
     if enable_cuda:
         nvcc = find_command('nvcc')
         cuda_prefix = os.path.dirname(os.path.dirname(nvcc))
+        cudatoolkit_prefix = self.cudatoolkit_prefix
 
     if self.CC != '':
         cc_command = self.CC
@@ -1532,6 +1541,7 @@ class Install(_install):
         ('with-cuda', None, 'enable cuda'),
         ('with-cuda-hypre', None, 'enable cuda in hypre'),
         ('cuda-arch=', None, 'set cuda compute capability. Ex if A100, set to 80'),
+        ('cudatookilt-preifx=', None, 'set cudatoolkit prefix if cusolver.h (and others) are in differet location to cuda prefix'),
         ('with-metis64', None, 'use 64bit int in metis'),
         ('with-pumi', None, 'enable pumi (parallel only)'),
         ('pumi-prefix=', None, 'Specify locaiton of pumi'),
@@ -1574,6 +1584,7 @@ class Install(_install):
         self.with_cuda = False
         self.with_cuda_hypre = False
         self.cuda_arch = None
+        self.cudatoolkit_prefix = ''
         self.with_metis64 = False
 
         self.with_pumi = False
