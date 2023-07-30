@@ -32,6 +32,9 @@ def check_geometry_error(filename):
     meshfile = expanduser(join("..", 'data', filename))
     mesh = mfem.Mesh(meshfile)
 
+    print("File: " + filename)
+    print("NE", mesh.GetNE())
+    print("NBE", mesh.GetNBE())
     norm = mfem.VectorBdrNormalCoefficient(mesh.SpaceDimension())
 
     @mfem.jit.scalar(dependency=(norm,))
@@ -49,19 +52,25 @@ def check_geometry_error(filename):
     gf = mfem.GridFunction(fes)
     gf.Assign(0.0)
 
-    idx = mfem.intArray(list(np.unique(mesh.GetBdrAttributeArray())))
 
-    gf.ProjectBdrCoefficient(func, idx)
+    if mesh.Dimension() == 3:
+        idx = mfem.intArray(list(np.unique(mesh.GetBdrAttributeArray())))
+        gf.ProjectBdrCoefficient(func, idx)
+    else:
+        gf.ProjectCoefficient(func)
 
-    print("File: " + filename)
     print("-- maximum geometry error", np.max(gf.GetDataArray()))
 
+    gfname = filename[:-5]+'-data.gf'
+    gf.Save(gfname)
+    print("-- error is saved as " + gfname)
 
 def run_test():
     check_geometry_error('sphere-o2.mesh')
     check_geometry_error('sphere-o3.mesh')
     check_geometry_error('sphere-o4.mesh')
     check_geometry_error('sphere-o5.mesh')
+    check_geometry_error('sphere-surface-o3.mesh')
 
 
 if __name__ == '__main__':
