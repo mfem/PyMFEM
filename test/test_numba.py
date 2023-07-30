@@ -133,7 +133,6 @@ def check(a, b, msg):
 def run_test():
     #meshfile = expanduser(join(mfem_path, 'data', 'semi_circle.mesh'))
     mesh = mfem.Mesh(3, 3, 3, "TETRAHEDRON")
-    mesh.ReorientTetMesh()
 
     order = 1
 
