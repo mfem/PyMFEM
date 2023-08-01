@@ -53,7 +53,7 @@ repo_releases = {
     "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.11.0.tar.gz",
     "gslib": "https://github.com/Nek5000/gslib/archive/refs/tags/v1.0.8.tar.gz"}
 
-repos = {"mfem": "https://github.com/mfem/mfem.git",
+repos = {"mfem": "https://github.com/dohyun-cse/mfem.git",
          "libceed": "https://github.com/CEED/libCEED.git",
          "gklib": "https://github.com/KarypisLab/GKlib",
          "metis": "https://github.com/KarypisLab/METIS", }
