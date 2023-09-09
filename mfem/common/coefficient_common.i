@@ -64,9 +64,9 @@ namespace mfem {
 %}
 
 %pythonappend SumCoefficient::SumCoefficient %{
-    if len(args) > 0 and isinstance(agrs[0], Coefficient):
+    if len(args) > 0 and isinstance(args[0], Coefficient):
           self.linkA = args[0]
-    if len(args) > 1 and isinstance(agrs[1], Coefficient):
+    if len(args) > 1 and isinstance(args[1], Coefficient):
           self.linkB = args[0]
 
 %}
