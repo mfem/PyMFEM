@@ -62,20 +62,20 @@ def get_extensions():
     libraries = ['mfem']
 
     # remove current directory from path
-    print("__file__", os.path.abspath(__file__))
+    #print("__file__", os.path.abspath(__file__))
     if '' in sys.path:
         sys.path.remove('')
     items = [x for x in sys.path if os.path.abspath(
         x) == os.path.dirname(os.path.abspath(__file__))]
     for x in items:
         sys.path.remove(x)
-    print("sys path", sys.path)
+    #print("sys path", sys.path)
 
     # this forces to use compiler written in setup_local.py
     if cc_ser != '':
-        os.environ['CC'] = cc_ser
+        os.environ['CC'] = "echo "#cc_ser
     if cxx_ser != '':
-        os.environ['CXX'] = cxx_ser
+        os.environ['CXX'] = "echo "#cxx_ser
 
     modules = ["io_stream", "vtk", "sort_pairs", "datacollection",
                "cpointers", "symmat",
@@ -124,6 +124,8 @@ def get_extensions():
     tpl_include = []
     for x in mfemstpl.split(' '):
         if x.startswith("-I"):
+            if x.find("MacOS") != -1 and x.find(".sdk") != -1:
+                continue
             tpl_include.append(x[2:])
     include_dirs.extend(tpl_include)
 
