@@ -28,7 +28,7 @@ jobs:
 
         include:
            - os: macos-latest
-             python-version: 3.9
+             python-version: 3.11
              env: {USE_FLAGS: "000"}
 #           - os: [ubuntu-20.04]
 #             python-version: 3.9

@@ -73,9 +73,9 @@ def get_extensions():
 
     # this forces to use compiler written in setup_local.py
     if cc_ser != '':
-        os.environ['CC'] = "echo "#cc_ser
+        os.environ['CC'] = cc_ser
     if cxx_ser != '':
-        os.environ['CXX'] = "echo "#cxx_ser
+        os.environ['CXX'] = cxx_ser
 
     modules = ["io_stream", "vtk", "sort_pairs", "datacollection",
                "cpointers", "symmat",
