@@ -67,7 +67,7 @@ jobs:
             pip install scipy numba --verbose
         else
             #pip install numba numba-scipy --verbose
-	    pip install numba scipy --verbose
+            pip install numba scipy --verbose
         fi
 
         if [ -f requirements.txt ]; then
