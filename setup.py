@@ -60,7 +60,8 @@ repos = {"mfem": "https://github.com/mfem/mfem.git",
 repos_sha = {
     # "mfem": "00b2a0705f647e17a1d4ffcb289adca503f28d42", # version 4.5.2
     # "mfem": "962774d5ffa84ceed3bc670e52388250ee028da1",  # version 4.5.2 + distsolve
-    "mfem": "69fbae732d5279c8d0f42c5430c4fd5656731d00", # version 4.6
+    #"mfem": "69fbae732d5279c8d0f42c5430c4fd5656731d00", # version 4.6
+    "mfem": "8bb929c2ff86cdf2ee9bb058cc75e59acb07bb94",  # doftrans simplification
     "gklib": "a7f8172703cf6e999dd0710eb279bba513da4fec",
     "metis": "94c03a6e2d1860128c2d0675cbbb86ad4f261256", }
 
