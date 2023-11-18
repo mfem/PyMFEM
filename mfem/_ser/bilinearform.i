@@ -75,6 +75,7 @@ namespace mfem {
    %} 
 %pythonprepend MixedBilinearForm::AddDomainIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
+    bfi = args[0]
     self._integrators.append(bfi)
     bfi.thisown=0
    %}
@@ -103,11 +104,13 @@ namespace mfem {
    %}
 %pythonprepend DiscreteLinearOperator::AddDomainInterpolator %{
     if not hasattr(self, "_integrators"): self._integrators = []
+    di = args[0]
     self._integrators.append(di)
     di.thisown=0
    %} 
 %pythonprepend DiscreteLinearOperator::AddTraceFaceInterpolator %{
     if not hasattr(self, "_integrators"): self._integrators = []
+    di = args[0]
     self._integrators.append(di)
     di.thisown=0
     %}

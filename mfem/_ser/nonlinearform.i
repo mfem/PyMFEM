@@ -26,6 +26,7 @@ import_array();
 namespace mfem { 
 %pythonprepend NonlinearForm::AddDomainIntegrator %{
 #    if not hasattr(self, "_integrators"): self._integrators = []
+    nlfi = args[0]	     
 #    self._integrators.append(nlfi)
     nlfi.thisown=0 
 %}
@@ -36,13 +37,14 @@ namespace mfem {
 %}
 %pythonprepend NonlinearForm::AddBdrFaceIntegrator %{
 #    if not hasattr(self, "_integrators"): self._integrators = []
-#    self._integrators.append(nlfi)
     nlfi = args[0]
+#    self._integrators.append(nlfi)	     
     nlfi.thisown=0 
 %}
 %pythonprepend BlockNonlinearForm::AddDomainIntegrator %{
 #    if not hasattr(self, "_integrators"): self._integrators = []
-#    self._integrators.append(nlfi)
+    nlfi = args[0]
+#    self._integrators.append(nlfi)	     
     nlfi.thisown=0 
 %}
 %pythonprepend BlockNonlinearForm::AddInteriorFaceIntegrator %{
@@ -52,8 +54,8 @@ namespace mfem {
 %}
 %pythonprepend BlockNonlinearForm::AddBdrFaceIntegrator %{
 #    if not hasattr(self, "_integrators"): self._integrators = []
+    nlfi = args[0]	     
 #    self._integrators.append(nlfi)
-    nlfi = args[0]
     nlfi.thisown=0 
 %}
 }
