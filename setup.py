@@ -125,7 +125,7 @@ gslib_only = False
 mfemf_debug=False
 
 enable_suitesparse = False
-suitesparse_prefix = ""
+suitesparse_prefix = "/usr/"
 
 enable_lapack = False
 blas_libraries = ""

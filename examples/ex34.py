@@ -221,13 +221,14 @@ def run(ref_levels=1,
           mfem.PCG(A, M, B, X, 1, 500, 1e-12, 0.0)
 
       else:
-          print("\n".join(("\nSolving for magnetic vector potential ",
+          print("".join(("\nSolving for magnetic vector potential ",
                            "using UMFPack")))
 
           # 13a. If MFEM was compiled with SuiteSparse, use UMFPACK to solve the
           #     system.
           umf_solver = mfem.UMFPackSolver()
-          umf_solver.Control[UMFPACK_ORDERING] = UMFPACK_ORDERING_METIS;
+          umf_solver.Control[
+             mfem.UMFPACK_ORDERING] = mfem.UMFPACK_ORDERING_METIS
           umf_solver.SetOperator(A)
           umf_solver.Mult(B, X)
 
@@ -352,7 +353,7 @@ def ComputeCurrentDensityOnSubMesh(order, phi0_attr, phi1_attr, jn_zero_attr,
           #  If MFEM was compiled with SuiteSparse,
           # use UMFPACK to solve the system.
           umf_solver = mfem.UMFPackSolver()
-          umf_solver.Control[UMFPACK_ORDERING] = UMFPACK_ORDERING_METIS;
+          umf_solver.Control[mfem.UMFPACK_ORDERING] = mfem.UMFPACK_ORDERING_METIS;
           umf_solver.SetOperator(A)
           umf_solver.Mult(B, X)
    else:
@@ -374,6 +375,7 @@ def ComputeCurrentDensityOnSubMesh(order, phi0_attr, phi1_attr, jn_zero_attr,
    # visualization
    if visualization:
        port_sock = mfem.socketstream("localhost", 19916)
+       print(port_sock)
        port_sock.precision(8)
        port_sock << "solution\n" << mesh_cond << phi_h1
        port_sock << "window_title 'Conductor Potential'"
@@ -451,8 +453,8 @@ if __name__ == "__main__":
                         help='Enable GLVis visualization')
     
     if hasattr(mfem, "UMFPackSolver"):
-        parser.add_argument("-umfpack", "-use-umfpack",
-                             action='store_ture', default=False,
+        parser.add_argument("-noumfpack", "--no-use-umfpack",
+                             action='store_true', default=False,
                              help='Enable UMFPACK')
 
     args = parser.parse_args()
@@ -461,7 +463,10 @@ if __name__ == "__main__":
     globals()["pa"] = args.partial_assembly
     globals()["visualization"] = args.no_visualization
 
-    use_umfpack = args.use_umfpackif if hasattr(mfem, "UMFPackSolver") else False
+    if hasattr(mfem, "UMFPackSolver"):
+       use_umfpack = True if not args.no_use_umfpack else False
+    else:
+       use_umfpack = False
 
     run(ref_levels=args.refine,
         order=args.order,
