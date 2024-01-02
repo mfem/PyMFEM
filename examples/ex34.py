@@ -28,7 +28,7 @@ def run(ref_levels=1,
         static_cond=False,
         mixed=True,
         device_config="cpu",
-        umfpack=False):
+        use_umfpack=False):
 
 
    cond_attr = mfem.intArray()
@@ -38,14 +38,27 @@ def run(ref_levels=1,
       mesh_file = "../data/fichera.mesh"
 
    if mesh_file=="../data/fichera-mixed.mesh":
-      submesh_elems = mfem.intArray([0,2,3,5,9])
+      submesh_elems = mfem.intArray([0,2,3,4,9])
    else:
       submesh_elems = mfem.intArray([10, 14, 34, 36, 37, 38, 39])
 
    sym_plane_attr = mfem.intArray([9, 10, 11, 12, 13, 14, 15, 16,])
 
-   phi0_attr = mfem.intArray([2, 23])
-   jn_zero_attr = mfem.intArray([25])
+   phi0_attr = mfem.intArray()
+   phi1_attr = mfem.intArray()
+   jn_zero_attr = mfem.intArray()
+   
+   if (mesh_file == "../data/fichera-mixed.mesh" or
+       mesh_file == "../data/fichera.mesh"):
+       phi0_attr.Append(2)
+
+   if (mesh_file ==  "../data/fichera-mixed.mesh" or
+       mesh_file == "../data/fichera.mesh"):
+       phi1_attr.Append(23)
+
+   if (mesh_file ==  "../data/fichera-mixed.mesh" or
+       mesh_file == "../data/fichera.mesh"):
+       jn_zero_attr.Append(25)
    for i in range(sym_plane_attr.Size()):
       jn_zero_attr.Append(sym_plane_attr[i])
 
@@ -58,7 +71,7 @@ def run(ref_levels=1,
    #    can handle triangular, quadrilateral, tetrahedral, hexahedral, surface
    #    and volume meshes with the same code.
    mesh_file = expanduser(
-        join(os.path.dirname(__file__), mesh_file.split("/"))
+        join(os.path.dirname(__file__), *mesh_file.split("/")))
    mesh = mfem.Mesh(mesh_file, 1, 1)
    dim = mesh.Dimension()
    if not mixed or pa:
@@ -127,8 +140,8 @@ def run(ref_levels=1,
        sol_sock = mfem.socketstream("localhost", 19916)
        sol_sock.precision(8)
        sol_sock << "solution\n" << mesh << j_full
-                << "window_title 'J Full'"
-                << "window_geometry 400 430 400 350"
+       sol_sock << "window_title 'J Full'"
+       sol_sock << "window_geometry 400 430 400 350"
        sol_sock.flush()
 
    # 8. Determine the list of true (i.e. parallel conforming) essential
@@ -152,7 +165,7 @@ def run(ref_levels=1,
    #     element fespace.
    jCoef = mfem.VectorGridFunctionCoefficient(j_full)
    b = mfem.LinearForm(fespace_nd)
-   b.AddDomainIntegrator(new VectorFEDomainLFIntegrator(jCoef))
+   b.AddDomainIntegrator(mfem.VectorFEDomainLFIntegrator(jCoef))
    b.Assemble()
 
    # 10. Define the solution vector x as a parallel finite element grid
@@ -172,8 +185,8 @@ def run(ref_levels=1,
    a = mfem.BilinearForm(fespace_nd)
    if pa:
        a.SetAssemblyLevel(mfem.AssemblyLevel_PARTIAL)
-   a.AddDomainIntegrator(new CurlCurlIntegrator(muinv))
-   a.AddDomainIntegrator(new VectorFEMassIntegrator(delta))
+   a.AddDomainIntegrator(mfem.CurlCurlIntegrator(muinv))
+   a.AddDomainIntegrator(mfem.VectorFEMassIntegrator(delta))
 
    # 12. Assemble the parallel bilinear form and the corresponding linear
    #     system, applying any necessary transformations such as: parallel
@@ -193,7 +206,7 @@ def run(ref_levels=1,
       print("\n".join(("\nSolving for magnetic vector potential ",
                         "using CG with a Jacobi preconditioner")))
 
-      M = mfem.OperatorJacobiSmoother(ess_tdof_list)
+      M = mfem.OperatorJacobiSmoother(a, ess_tdof_list)
       mfem.PCG(A, M, B, X, 1, 1000, 1e-12, 0.0)
 
    else:
@@ -230,9 +243,10 @@ def run(ref_levels=1,
 
    # 16. Send the solution by socket to a GLVis server.
    if visualization:
+       sol_sock = mfem.socketstream("localhost", 19916)      
        sol_sock << "solution\n" << mesh << x
-                << "window_title 'Vector Potential'"
-                << "window_geometry 800 0 400 350"
+       sol_sock << "window_title 'Vector Potential'"
+       sol_sock << "window_geometry 800 0 400 350"
        sol_sock.flush()
 
    # 17. Compute the magnetic flux as the curl of the solution
@@ -250,10 +264,11 @@ def run(ref_levels=1,
 
    # 19. Send the curl of the solution by socket to a GLVis server.
    if visualization:
+       sol_sock = mfem.socketstream("localhost", 19916)            
        sol_sock.precision(8);
        sol_sock << "solution\n" << mesh << dx
-                << "window_title 'Magnetic Flux'"
-                << "window_geometry 1200 0 400 350"
+       sol_sock << "window_title 'Magnetic Flux'"
+       sol_sock << "window_geometry 1200 0 400 350"
        sol_sock.flush()               
     
 def ComputeCurrentDensityOnSubMesh(order, phi0_attr, phi1_attr, jn_zero_attr,
@@ -290,7 +305,7 @@ def ComputeCurrentDensityOnSubMesh(order, phi0_attr, phi1_attr, jn_zero_attr,
 
    # Setup the bilinear form corresponding to -Div(sigma Grad phi)
    a_h1 = mfem.BilinearForm(fes_cond_h1)
-   a_h1.AddDomainIntegrator(new DiffusionIntegrator(sigmaCoef))
+   a_h1.AddDomainIntegrator(mfem.DiffusionIntegrator(sigmaCoef))
    a_h1.Assemble()
 
    # Set the r.h.s. to zero
@@ -321,8 +336,9 @@ def ComputeCurrentDensityOnSubMesh(order, phi0_attr, phi1_attr, jn_zero_attr,
    a_h1.FormLinearSystem(ess_bdr_tdof_phi, phi_h1, b_h1, A, X, B)
 
    #  Solve the linear system
+
    if not pa:
-      if use_umfpack:
+      if not use_umfpack:
           print("".join(("\nSolving for electric potential using PCG ",
                          "with a Gauss-Seidel preconditioner")))
 
@@ -359,7 +375,7 @@ def ComputeCurrentDensityOnSubMesh(order, phi0_attr, phi1_attr, jn_zero_attr,
    if visualization:
        port_sock = mfem.socketstream("localhost", 19916)
        port_sock.precision(8)
-       port_sock << "solution\n" << mesh << phi_h1
+       port_sock << "solution\n" << mesh_cond << phi_h1
        port_sock << "window_title 'Conductor Potential'"
        port_sock << "window_geometry 0 0 400 350"
        port_sock.flush()
@@ -370,12 +386,12 @@ def ComputeCurrentDensityOnSubMesh(order, phi0_attr, phi1_attr, jn_zero_attr,
 
    # J will be computed in H(div) so we need an RT mass matrix
    m_rt = mfem.BilinearForm(fes_cond_rt)
-   m_rt.AddDomainIntegrator(new VectorFEMassIntegrator)
+   m_rt.AddDomainIntegrator(mfem.VectorFEMassIntegrator())
    m_rt.Assemble()
 
    # Assemble the (sigma Grad phi) operator
    d_h1 = mfem.MixedBilinearForm(fes_cond_h1, fes_cond_rt)
-   d_h1.AddDomainIntegrator(new MixedVectorGradientIntegrator(sigmaCoef))
+   d_h1.AddDomainIntegrator(mfem.MixedVectorGradientIntegrator(sigmaCoef))
    d_h1.Assemble()
 
    # Compute the r.h.s, b_rt = sigma E = -sigma Grad phi
@@ -393,7 +409,7 @@ def ComputeCurrentDensityOnSubMesh(order, phi0_attr, phi1_attr, jn_zero_attr,
    X = mfem.Vector()   
 
    fes_cond_rt.GetEssentialTrueDofs(ess_bdr_j, ess_bdr_tdof_rt)
-   j_cond = 0.0;
+   j_cond.Assign(0.0);
    m_rt.FormLinearSystem(ess_bdr_tdof_rt, j_cond, b_rt, M, X, B)
 
    cg = mfem.CGSolver()
@@ -422,7 +438,7 @@ if __name__ == "__main__":
                         action='store_true',
                         help="Enable static condensation.")
     parser.add_argument("-hex", "--hex-mesh",
-                        action='store_false',
+                        action='store_true',  default=False,
                         help= "Mixed mesh of hexahedral mesh.")
     parser.add_argument("-pa", "--partial-assembly",
                         action='store_true',
@@ -434,26 +450,26 @@ if __name__ == "__main__":
                         action='store_false', default=True,
                         help='Enable GLVis visualization')
     
-    if hasattr(mfem, "MFEM_USE_SUITESPARSE"):
-        parser.add_argument("-umfpack", "-use-umfpack"
+    if hasattr(mfem, "UMFPackSolver"):
+        parser.add_argument("-umfpack", "-use-umfpack",
                              action='store_ture', default=False,
                              help='Enable UMFPACK')
 
     args = parser.parse_args()
     parser.print_options(args)
 
-    globals["pa"] = args.partial_assembly
-    globals["visualization"] = args.no_visualization
+    globals()["pa"] = args.partial_assembly
+    globals()["visualization"] = args.no_visualization
 
-    use_umfpack = args.use_umfpackif hasattr(args, "use_umfpack") else False
-    
+    use_umfpack = args.use_umfpackif if hasattr(mfem, "UMFPackSolver") else False
+
     run(ref_levels=args.refine,
         order=args.order,
         delta_const=args.magnetic_cond,
         static_cond=args.static_condensation,
         mixed=(not args.hex_mesh),
         device_config=args.device,
-        umfpack=use_umfpack)
+        use_umfpack=use_umfpack)
 
 
                         
