@@ -121,6 +121,7 @@ enable_gslib = False
 gslibs_prefix = ''
 gslibp_prefix = ''
 gslib_only = False
+mfemf_debug=False
 
 enable_suitesparse = False
 suitesparse_prefix = ""
@@ -731,6 +732,10 @@ def cmake_make_mfem(serial=True):
                   'DMFEM_USE_ZLIB': '1',
                   'DCMAKE_CXX_FLAGS': cxx11_flag,
                   'DCMAKE_BUILD_WITH_INSTALL_RPATH': '1'}
+
+    if mfem_debug:
+        cmake_opts['DMFEM_DEBUG'] = 'YES'
+
     if verbose:
         cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
 
@@ -1236,7 +1241,7 @@ def configure_install(self):
     global clean_swig, run_swig, swig_only, skip_install, skip_swig
     global build_mfem, build_mfemp, build_parallel, build_serial
 
-    global mfem_branch, mfem_source
+    global mfem_branch, mfem_source, mfem_debug
     global build_metis, build_hypre, build_libceed, build_gslib
 
     global mfems_prefix, mfemp_prefix, metis_prefix, hypre_prefix
@@ -1284,6 +1289,8 @@ def configure_install(self):
 
     clean_swig = True
     run_swig = True
+
+    mfem_debug = bool(self.mfem_debug)
 
     if build_serial:
         build_serial = (not swig_only and not ext_only)
@@ -1514,6 +1521,7 @@ class Install(_install):
          'MFEM is cloned and built using the specfied branch '),
         ('mfem-source=', None, 'Specify mfem source location' +
          'MFEM source directory. Required to run-swig '),
+        ('mfem-debug', None, 'Build MFME with MFEM_DEBUG enabled'),
         ('hypre-prefix=', None, 'Specify locaiton of hypre' +
          'libHYPRE.so must exits under <hypre-prefix>/lib'),
         ('metis-prefix=', None, 'Specify locaiton of metis' +
@@ -1568,6 +1576,7 @@ class Install(_install):
         self.mfemp_prefix = ''
         self.mfem_source = './external/mfem'
         self.mfem_branch = ''
+        self.mfem_debug = False
         self.metis_prefix = ''
         self.hypre_prefix = ''
 
