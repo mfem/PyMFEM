@@ -392,13 +392,13 @@ if __name__ == "__main__":
                         action='store', default=1.0, type=float,
                         help="Step size alpha")
     parser.add_argument("-no-vis", "--no-visualization",
-                        action='store_false', default=True,
+                        action='store_true', default=False,
                         help='Enable GLVis visualization')
 
     args = parser.parse_args()
     parser.print_options(args)
 
-    globals()["visualization"] = args.no_visualization
+    globals()["visualization"] = not args.no_visualization
 
     run(refs=args.refs,
         order=args.order,
