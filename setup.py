@@ -1153,8 +1153,8 @@ def clean_wrapper():
 
 
 def clean_so(all=None):
-
-    command = ["python", "setup.py", "clean"]
+    python = sys.executable
+    command = [python, "setup.py", "clean"]
     if all == 1:
         command.append("--all")
 
