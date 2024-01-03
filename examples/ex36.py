@@ -372,7 +372,7 @@ def exact_solution_gradient_obstacle(x, y):
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
 
-    parser = ArgParser(description='Ex36(Energy Minimization)')
+    parser = ArgParser(description='Ex36(Obstacle problem)')
 
     parser.add_argument("-o", "--order",
                         action='store', default=1, type=int,

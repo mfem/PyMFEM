@@ -424,7 +424,7 @@ def ComputeCurrentDensityOnSubMesh(order, phi0_attr, phi1_attr, jn_zero_attr,
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
 
-    parser = ArgParser(description='Ex34 (Subdomain)')
+    parser = ArgParser(description='Ex34 (Sourse Function using a Submehs Transfer )')
 
     parser.add_argument('-r', '--refine',
                         action='store', default=1, type=int,
