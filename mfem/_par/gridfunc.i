@@ -175,7 +175,7 @@ PyObject* WriteToStream(PyObject* StringIO) const  {
     }
     return ret;      
 }
- 
+/*
 GridFunction & iadd(GridFunction &c)
    {
       *self += c;
@@ -201,9 +201,11 @@ GridFunction & idiv(double c)
       * self /= c;
       return *self;
    }
-  }
+*/
+  }   // end of extend
 }  // end of namespace
 
+/*
 %pythoncode %{
 def __iadd__(self, v):
     ret = _gridfunc.GridFunction_iadd(self, v)
@@ -227,7 +229,7 @@ GridFunction.__idiv__  = __idiv__
 GridFunction.__isub__  = __isub__
 GridFunction.__imul__  = __imul__      
 %} 
-
+*/
 /*
 fem/gridfunc.hpp:   virtual void Save(std::ostream &out) const;
 fem/gridfunc.hpp:   void Save(std::ostream &out) const;

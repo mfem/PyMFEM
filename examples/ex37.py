@@ -73,7 +73,7 @@ visualization = True
 paraview_output = False
 
 
-def proj(psi, target_volume, tol=1e-12, max_its=10):
+class Proj():
     '''
 
     @brief Bregman projection of ρ = sigmoid(ψ) onto the subspace
@@ -90,37 +90,40 @@ def proj(psi, target_volume, tol=1e-12, max_its=10):
     @return double Final volume, ∫_Ω sigmoid(ψ)
 
     '''
+    def __init__(self, psi):
+        self.psi = psi
+        self.sigmoid_psi = MappedGridFunctionCoefficient(psi, sigmoid)
+        self.der_sigmoid_psi = MappedGridFunctionCoefficient(psi, der_sigmoid)
 
-    sigmoid_psi = MappedGridFunctionCoefficient(psi, sigmoid)
-    der_sigmoid_psi = MappedGridFunctionCoefficient(psi, der_sigmoid)
+    def __call__(self, target_volume, tol=1e-12, max_its=10):
+        psi = self.psi
+        int_sigmoid_psi = mfem.LinearForm(psi.FESpace())
+        int_sigmoid_psi.AddDomainIntegrator(mfem.DomainLFIntegrator(self.sigmoid_psi))
+        int_der_sigmoid_psi = mfem.LinearForm(psi.FESpace())
+        int_der_sigmoid_psi.AddDomainIntegrator(mfem.DomainLFIntegrator(
+                                                  self.der_sigmoid_psi))
+        done = False
+        for k in range(max_its):  # Newton iteration
+            int_sigmoid_psi.Assemble()         # Recompute f(c) with updated ψ
+            f=int_sigmoid_psi.Sum() - target_volume
 
-    int_sigmoid_psi = mfem.LinearForm(psi.FESpace())
-    int_sigmoid_psi.AddDomainIntegrator(mfem.DomainLFIntegrator(sigmoid_psi))
-    int_der_sigmoid_psi = mfem.LinearForm(psi.FESpace())
-    int_der_sigmoid_psi.AddDomainIntegrator(mfem.DomainLFIntegrator(
-                                              der_sigmoid_psi))
-    done = False
-    for k in range(max_its):  # Newton iteration
-        int_sigmoid_psi.Assemble()         # Recompute f(c) with updated ψ
-        f=int_sigmoid_psi.Sum() - target_volume
+            int_der_sigmoid_psi.Assemble()      # Recompute df(c) with updated ψ
+            df=int_der_sigmoid_psi.Sum()
 
-        int_der_sigmoid_psi.Assemble()      # Recompute df(c) with updated ψ
-        df=int_der_sigmoid_psi.Sum()
+            dc=-f/df
+            psi += dc
+            if abs(dc) < tol:
+                done=True
+                break
 
-        dc=-f/df
-        psi += dc
-        if abs(dc) < tol:
-            done=True
-            break
+        if not done:
+            message=("Projection reached maximum iteration without converging. " +
+                       "Result may not be accurate.")
+            import warnigns
+            warnings.warn(message, RuntimeWarning)
 
-    if not done:
-        message=("Projection reached maximum iteration without converging. " +
-                   "Result may not be accurate.")
-        import warnigns
-        warnings.warn(message, RuntimeWarning)
-
-    int_sigmoid_psi.Assemble();
-    return int_sigmoid_psi.Sum();
+        int_sigmoid_psi.Assemble();
+        return int_sigmoid_psi.Sum();
 
 
 def run(ref_levels = 5,
@@ -280,7 +283,9 @@ def run(ref_levels = 5,
  
            
     # 11. Iterate:
-    for k in range(max_it):
+    proj = Proj(psi)    
+    #max_it = 1
+    for k in range(1, max_it+1):
         if k > 1:
             alpha *= k/(k-1.)
 
@@ -288,13 +293,18 @@ def run(ref_levels = 5,
 
         # Step 1 - Filter solve
         # Solve (ϵ^2 ∇ ρ̃, ∇ v ) + (ρ̃,v) = (ρ,v)
-        FilterSolver.rhs_cf = rho
-        FilterSolver.Solve();
+        FilterSolver.SetRHSCoefficient(rho)
+        FilterSolver.Solve()
         rho_filter = FilterSolver.GetFEMSolution()
 
         # Step 2 - State solve
         # Solve (λ r(ρ̃) ∇⋅u, ∇⋅v) + (2 μ r(ρ̃) ε(u), ε(v)) = (f,v)
-        SIMP_cf = SIMPInterpolationCoefficient(rho_filter, rho_min, 1.0)
+        if k == 1:
+            SIMP = SIMPInterpolationCoefficient(rho_filter, rho_min, 1.0)
+            SIMP_cf = SIMP.coeff
+        else:
+            SIMP.Update(rho_filter)
+            
         lambda_SIMP_cf = mfem.ProductCoefficient(lambda_cf,SIMP_cf)
         mu_SIMP_cf = mfem.ProductCoefficient(mu_cf,SIMP_cf)
         
@@ -306,9 +316,14 @@ def run(ref_levels = 5,
 
         # Step 3 - Adjoint filter solve
         # Solve (ϵ² ∇ w̃, ∇ v) + (w̃ ,v) = (-r'(ρ̃) ( λ |∇⋅u|² + 2 μ |ε(u)|²),v)
-        rhs_cf = StrainEnergyDensityCoefficient(lambda_cf, mu_cf, u, rho_filter,
-                                                rho_min)
-        FilterSolver.rhs_cf
+        if k == 1:
+            SEDC = StrainEnergyDensityCoefficient(lambda_cf, mu_cf, u, rho_filter,
+                                                    rho_min)
+            rhs_cf = SEDC.coeff
+        else:
+            SEDC.Update(u, rho_filter)
+             
+        FilterSolver.SetRHSCoefficient(rhs_cf)
         FilterSolver.Solve()
         w_filter = FilterSolver.GetFEMSolution()
 
@@ -322,7 +337,7 @@ def run(ref_levels = 5,
 
         # Step 5 - Update design variable ψ ← proj(ψ - αG)
         psi.Add(-alpha, grad)
-        material_volume = proj(psi, target_volume)
+        material_volume = proj(target_volume)
 
         # Compute ||ρ - ρ_old|| in control fes.
         norm_increment = zerogf.ComputeL1Error(succ_diff_rho)
@@ -330,10 +345,10 @@ def run(ref_levels = 5,
         psi_old.Assign(psi)
 
         compliance = (ElasticitySolver.GetLinearForm())(u)
-        print("norm of the reduced gradient = " + "{g:}".format(norm_reduced_gradient))
-        print("norm of the increment = " + "{g:}".format(norm_increment))
-        print("compliance = " + "{g:}".format(compliance))
-        print("volume fraction = " + "{g:}".format(material_volume / domain_volume))
+        print("norm of the reduced gradient = " + "{:g}".format(norm_reduced_gradient))
+        print("norm of the increment = " + "{:g}".format(norm_increment))
+        print("compliance = " + "{:g}".format(compliance))
+        print("volume fraction = " + "{:g}".format(material_volume / domain_volume))
 
         if visualization:
             r_gf = mfem.GridFunction(filter_fes)
@@ -357,10 +372,10 @@ if __name__ == "__main__":
     parser = ArgParser(description='Ex37 (Topology Optimization)')
 
     parser.add_argument('-r', '--ref_levels',
-                        action='store', default=1, type=int,
+                        action='store', default=5, type=int,
                         help="Number of times to refine the mesh uniformly.")
     parser.add_argument("-o", "--order",
-                        action='store', default=1, type=int,
+                        action='store', default=2, type=int,
                         help="Order (degree) of the finite elements.")
     parser.add_argument("-alpha", "--alpha-step-length",
                         action='store', default=1.0, type=float,
