@@ -1,4 +1,8 @@
 namespace mfem {
+%pythonappend BilinearFormIntegrator::BilinearFormIntegrator %{
+    self._coeff = args
+%}
+
 %pythonappend TransposeIntegrator::TransposeIntegrator %{
     if own_bfi_ == 1:  bfi_.thisown = 0
 %}

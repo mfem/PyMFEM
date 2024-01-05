@@ -22,6 +22,8 @@ for line in fid.readlines():
             pp = "    self._coeff = uD_"
         elif line.find("(self)") != -1:
             pass
+        elif line.find("(self, ir=None)") != -1:
+            pass
         else:
             print(cname)
             print(line)

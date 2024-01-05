@@ -3,6 +3,8 @@
 #include "mfem.hpp"
 #include "pyoperator.hpp"    
 #include "../common/pycoefficient.hpp"
+#include "../common/pybilininteg.hpp"
+#include "../common/pyintrules.hpp"    
 #include "numpy/arrayobject.h"
   //using namespace mfem;
 %}
@@ -48,10 +50,13 @@ import_array();
  //        throw Swig::DirectorMethodException();
  //    }
  //}
-%feature("director") mfem::BilinearFormIntegrator;
+ //%feature("director") mfem::BilinearFormIntegrator;
 
 %include "../common/bilininteg_ext.i"
 
 %ignore  mfem::MassIntegrator::SetupPA;
 
 %include "fem/bilininteg.hpp"
+
+%feature("director") mfem::PyBilinearFormIntegrator;
+%include "../common/pybilininteg.hpp"

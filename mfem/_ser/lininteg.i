@@ -10,6 +10,8 @@
 #include "mfem.hpp"    
 #include "pyoperator.hpp"      
 #include "../common/pycoefficient.hpp"
+#include "../common/pylininteg.hpp"
+#include "../common/pyintrules.hpp"  
 #include "numpy/arrayobject.h"        
 %}
 
@@ -32,5 +34,8 @@ import_array();
 %include "../common/lininteg_ext.i"
 
 %include "fem/lininteg.hpp"
+
+%feature("director") mfem::PyLinearFormIntegrator;
+%include "../common/pylininteg.hpp"
 
 
