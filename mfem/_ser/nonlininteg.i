@@ -2,7 +2,9 @@
 %{
 #include "mfem.hpp"        
 #include "../common/pycoefficient.hpp"
-#include "pyoperator.hpp"
+#include "../common/pyoperator.hpp"
+#include "../common/pyintrules.hpp"
+#include "../common/pynonlininteg.hpp"  
 using namespace mfem;  
 %}
 /*
@@ -28,6 +30,9 @@ import_array();
 %import "eltrans.i"
 %import "../common/exception_director.i"
 
-%feature("director") mfem::NonlinearFormIntegrator;
+
 
 %include "fem/nonlininteg.hpp"
+
+%feature("director") mfem::PyNonlinearFormIntegrator;
+%include "../common/pynonlininteg.hpp"

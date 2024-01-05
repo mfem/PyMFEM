@@ -8,7 +8,7 @@
 %{
 #include "linalg/complex_operator.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"     
+#include "../common/pyoperator.hpp"     
   %}
 %init %{
 import_array();

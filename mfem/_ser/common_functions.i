@@ -6,7 +6,7 @@
 #include "mfem.hpp"
 #include "../common/io_stream.hpp"          
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"     
+#include "../common/pyoperator.hpp"     
   %}
 %init %{
 import_array();

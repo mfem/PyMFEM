@@ -171,7 +171,7 @@ def run(problem=1,
     # 10. Compute the L2 solution error summed for all components.
     if (t_final == 2.0):
         error = sol.ComputeLpError(2., u0)
-        print("Solution error: " + str(error))
+        print("Solution error: " + "{:g}".format(error))
 
 
 if __name__ == "__main__":

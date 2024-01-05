@@ -4,7 +4,7 @@
 #include "linalg/symmat.hpp"
 #include "numpy/arrayobject.h"
 #include "../common/io_stream.hpp"    
-#include "pyoperator.hpp"    
+#include "../common/pyoperator.hpp"    
 %}
 
 %init %{

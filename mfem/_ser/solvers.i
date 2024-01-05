@@ -5,7 +5,7 @@
 #include "linalg/matrix.hpp"
 #include "linalg/sparsemat.hpp"
 #include "linalg/solvers.hpp"
-#include "pyoperator.hpp"
+#include "../common/pyoperator.hpp"
 #include "../common/pysolvers.hpp"
 #include "numpy/arrayobject.h"
 %}

@@ -5,7 +5,7 @@
 #include "linalg/operator.hpp"
 #include "linalg/sparsemat.hpp"    
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"   
+#include "../common/pyoperator.hpp"   
 %}
 // initialization required to return numpy array from SWIG
 %init %{

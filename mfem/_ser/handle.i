@@ -10,7 +10,7 @@
 #include "fem/gridfunc.hpp"  
 #include "fem/linearform.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"
+#include "../common/pyoperator.hpp"
 #ifdef MFEM_USE_MPI  
 #include "fem/pfespace.hpp"
 #endif

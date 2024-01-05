@@ -249,7 +249,6 @@ def run(refs=3,
             #       numpy representation.
             #    u_tmp.Assign(u_gf)
             #    u_tmp.GetDataArray()[:] = u_gf.GetDataArray()
-            
 
             gamma = 1.0
             delta_psi_gf *= gamma

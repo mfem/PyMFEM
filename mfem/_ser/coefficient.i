@@ -21,9 +21,11 @@
 #include <cstring>
 #include <ctime>
 #include "mfem.hpp"  
-#include "pyoperator.hpp"    
+#include "../common/pyoperator.hpp"    
 #include "../common/pycoefficient.hpp"
 #include "numpy/arrayobject.h"
+#include "../common/pyintrules.hpp"  
+#include "../common/pybilininteg.hpp"
 %}
 
 // initialization required to return numpy array from SWIG

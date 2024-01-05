@@ -1,3 +1,6 @@
+#ifndef PYMFEM_PYBILININTEG
+#define PYMFEM_PYBILININTEG
+
 #include <iostream>
 #include "fem/bilininteg.hpp"
 
@@ -8,4 +11,6 @@ public:
   PyBilinearFormIntegrator(const IntegrationRule *ir = NULL):BilinearFormIntegrator(ir){}
   virtual ~PyBilinearFormIntegrator() { }  
 };
-} // end of namespace  
+} // end of namespace
+
+#endif //PYMFEM_PYBILININTEG

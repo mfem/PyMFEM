@@ -8,7 +8,7 @@
 #include <cstring>
 #include <ctime>
 #include "mfem.hpp"    
-#include "pyoperator.hpp"      
+#include "../common/pyoperator.hpp"      
 #include "../common/pycoefficient.hpp"
 #include "../common/pylininteg.hpp"
 #include "../common/pyintrules.hpp"  

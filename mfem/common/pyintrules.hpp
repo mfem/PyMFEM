@@ -1,3 +1,6 @@
+#ifndef PYMFEM_PYINTRULES
+#define PYMFEM_PYINTRULES
+
 #include <iostream>
 #include "fem/intrules.hpp"
 
@@ -9,3 +12,5 @@ public:
   virtual ~PyIntegrationRule(){}
 };
 } // end of namespace
+
+#endif //PYMFEM_PYINTRULES

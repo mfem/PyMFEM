@@ -1,9 +1,10 @@
 %module(package="mfem._ser")  sidredatacollection
 %{
 #include "mfem.hpp"  
-#include "pyoperator.hpp"        
+#include "../common/pyoperator.hpp"        
 #include "numpy/arrayobject.h"
-#include "../common/pycoefficient.hpp"  
+#include "../common/pycoefficient.hpp"
+#include "../common/pyintrules.hpp"  
 %}
 
 %init %{

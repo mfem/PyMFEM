@@ -2,8 +2,10 @@
 %{
 #include "fem/bilinearform.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"
-#include "../common/pycoefficient.hpp"  
+#include "../common/pyoperator.hpp"
+#include "../common/pycoefficient.hpp"
+#include "../common/pyintrules.hpp"
+#include "../common/pybilininteg.hpp"
 using namespace mfem;  
 %}
 
@@ -31,7 +33,7 @@ import_array();
 %import "staticcond.i"
 %include "../common/exception_director.i"
 
-%feature("director") mfem::BilinearForm;
+//%feature("director") mfem::BilinearForm;
 
  //%include "fem/coefficient.hpp"
 namespace mfem { 

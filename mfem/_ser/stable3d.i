@@ -6,8 +6,9 @@
 #include <fstream>
 #include  "mfem.hpp"
 #include "../common/io_stream.hpp"
-#include "pyoperator.hpp"        
-#include "numpy/arrayobject.h"    
+#include "../common/pyoperator.hpp"        
+#include "numpy/arrayobject.h"
+#include "../common/pyintrules.hpp"  
 %}
 
 %begin %{

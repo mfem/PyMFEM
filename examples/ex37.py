@@ -90,6 +90,7 @@ class Proj():
     @return double Final volume, ∫_Ω sigmoid(ψ)
 
     '''
+
     def __init__(self, psi):
         self.psi = psi
         self.sigmoid_psi = MappedGridFunctionCoefficient(psi, sigmoid)
@@ -98,35 +99,36 @@ class Proj():
     def __call__(self, target_volume, tol=1e-12, max_its=10):
         psi = self.psi
         int_sigmoid_psi = mfem.LinearForm(psi.FESpace())
-        int_sigmoid_psi.AddDomainIntegrator(mfem.DomainLFIntegrator(self.sigmoid_psi))
+        int_sigmoid_psi.AddDomainIntegrator(
+            mfem.DomainLFIntegrator(self.sigmoid_psi))
         int_der_sigmoid_psi = mfem.LinearForm(psi.FESpace())
         int_der_sigmoid_psi.AddDomainIntegrator(mfem.DomainLFIntegrator(
-                                                  self.der_sigmoid_psi))
+            self.der_sigmoid_psi))
         done = False
         for k in range(max_its):  # Newton iteration
             int_sigmoid_psi.Assemble()         # Recompute f(c) with updated ψ
-            f=int_sigmoid_psi.Sum() - target_volume
+            f = int_sigmoid_psi.Sum() - target_volume
 
             int_der_sigmoid_psi.Assemble()      # Recompute df(c) with updated ψ
-            df=int_der_sigmoid_psi.Sum()
+            df = int_der_sigmoid_psi.Sum()
 
-            dc=-f/df
+            dc = -f/df
             psi += dc
             if abs(dc) < tol:
-                done=True
+                done = True
                 break
 
         if not done:
-            message=("Projection reached maximum iteration without converging. " +
+            message = ("Projection reached maximum iteration without converging. " +
                        "Result may not be accurate.")
             import warnigns
             warnings.warn(message, RuntimeWarning)
 
-        int_sigmoid_psi.Assemble();
-        return int_sigmoid_psi.Sum();
+        int_sigmoid_psi.Assemble()
+        return int_sigmoid_psi.Sum()
 
 
-def run(ref_levels = 5,
+def run(ref_levels=5,
         order=2,
         alpha=1.0,
         epsilon=0.01,
@@ -137,9 +139,9 @@ def run(ref_levels = 5,
         rho_min=1e-6,
         llambda=1.0,
         mu=1.0,):
-    
+
     mesh = mfem.Mesh.MakeCartesian2D(3, 1, mfem.Element.QUADRILATERAL,
-                                    True, 3.0, 1.0)
+                                     True, 3.0, 1.0)
     dim = mesh.Dimension()
 
     # 2. Set BCs.
@@ -158,19 +160,18 @@ def run(ref_levels = 5,
         else:
             # all other boundaries
             be.SetAttribute(2)
-    mesh.SetAttributes();
+    mesh.SetAttributes()
 
     # 3. Refine the mesh.
     for lev in range(ref_levels):
-       mesh.UniformRefinement()
-
+        mesh.UniformRefinement()
 
     # 4. Define the necessary finite element spaces on the mesh.
     state_fec = mfem.H1_FECollection(order, dim)    # space for u
     filter_fec = mfem.H1_FECollection(order, dim)   # space for ρ̃
-    control_fec = mfem.L2_FECollection (order-1, dim,
-                                        mfem.BasisType.GaussLobatto)  # space for ψ
-    state_fes = mfem.FiniteElementSpace(mesh, state_fec,dim)
+    control_fec = mfem.L2_FECollection(order-1, dim,
+                                       mfem.BasisType.GaussLobatto)  # space for ψ
+    state_fes = mfem.FiniteElementSpace(mesh, state_fec, dim)
     filter_fes = mfem.FiniteElementSpace(mesh, filter_fec)
     control_fes = mfem.FiniteElementSpace(mesh, control_fec)
 
@@ -181,13 +182,13 @@ def run(ref_levels = 5,
     print("Number of state unknowns: " + str(state_size))
     print("Number of filter unknowns: " + str(filter_size))
     print("Number of control unknowns: " + str(control_size))
-       
+
     #  5. Set the initial guess for ρ.
     u = mfem.GridFunction(state_fes)
     psi = mfem.GridFunction(control_fes)
     psi_old = mfem.GridFunction(control_fes)
     rho_filter = mfem.GridFunction(filter_fes)
-    
+
     u.Assign(0.0)
     rho_filter.Assign(vol_fraction)
     psi.Assign(inv_sigmoid(vol_fraction))
@@ -201,14 +202,14 @@ def run(ref_levels = 5,
     succ_diff_rho = DiffMappedGridFunctionCoefficient(psi, psi_old, sigmoid)
 
     # 6. Set-up the physics solver.
-    maxat = mesh.bdr_attributes.Max();
+    maxat = mesh.bdr_attributes.Max()
     ess_bdr = intArray([0]*maxat)
     ess_bdr[0] = 1
 
     one = mfem.ConstantCoefficient(1.0)
     lambda_cf = mfem.ConstantCoefficient(llambda)
     mu_cf = mfem.ConstantCoefficient(mu)
-    
+
     ElasticitySolver = LinearElasticitySolver()
     ElasticitySolver.mesh = mesh
     ElasticitySolver.order = state_fec.GetOrder()
@@ -228,7 +229,7 @@ def run(ref_levels = 5,
     FilterSolver.order = filter_fec.GetOrder()
     FilterSolver.diffcf = eps2_cf
     FilterSolver.masscf = one
-    
+
     if mesh.bdr_attributes.Size() > 0:
         ess_bdr_filter = mfem.intArray([0]*mesh.bdr_attributes.Max())
     else:
@@ -242,7 +243,7 @@ def run(ref_levels = 5,
     mass.Assemble()
     M = mfem.SparseMatrix()
     empty = mfem.intArray()
-    mass.FormSystemMatrix(empty,M)
+    mass.FormSystemMatrix(empty, M)
 
     # 8. Define the Lagrange multiplier and gradient functions.
     grad = mfem.GridFunction(control_fes)
@@ -254,7 +255,7 @@ def run(ref_levels = 5,
     onegf.Assign(1.0)
     zerogf = mfem.GridFunction(control_fes)
     zerogf.Assign(0.0)
-    
+
     vol_form = mfem.LinearForm(control_fes)
     vol_form.AddDomainIntegrator(mfem.DomainLFIntegrator(one))
     vol_form.Assemble()
@@ -263,27 +264,26 @@ def run(ref_levels = 5,
 
     # 10. Connect to GLVis. Prepare for VisIt output.
     if visualization:
-        sout_r = mfem.socketstream("localhost", 19916) 
+        sout_r = mfem.socketstream("localhost", 19916)
         sout_r.precision(8)
 
     if paraview_output:
-       paraview_dc = mfem.ParaViewDataCollection("ex37", mesh)                               
+        paraview_dc = mfem.ParaViewDataCollection("ex37", mesh)
 
-       rho_gf.ProjectCoefficient(rho)
-       paraview_dc.SetPrefixPath("ParaView")
-       paraview_dc.SetLevelsOfDetail(order);
-       paraview_dc.SetDataFormat(mfem.VTKFormat.BINARY)
-       paraview_dc.SetHighOrderOutput(True)
-       paraview_dc.SetCycle(0)
-       paraview_dc.SetTime(0.0)
-       paraview_dc.RegisterField("displacement", u)
-       paraview_dc.RegisterField("density", rho_gf)
-       paraview_dc.RegisterField("filtered_density", rho_filter)
-       paraview_dc.Save();
- 
-           
+        rho_gf.ProjectCoefficient(rho)
+        paraview_dc.SetPrefixPath("ParaView")
+        paraview_dc.SetLevelsOfDetail(order)
+        paraview_dc.SetDataFormat(mfem.VTKFormat.BINARY)
+        paraview_dc.SetHighOrderOutput(True)
+        paraview_dc.SetCycle(0)
+        paraview_dc.SetTime(0.0)
+        paraview_dc.RegisterField("displacement", u)
+        paraview_dc.RegisterField("density", rho_gf)
+        paraview_dc.RegisterField("filtered_density", rho_filter)
+        paraview_dc.Save()
+
     # 11. Iterate:
-    proj = Proj(psi)    
+    proj = Proj(psi)
     #max_it = 1
     for k in range(1, max_it+1):
         if k > 1:
@@ -304,13 +304,13 @@ def run(ref_levels = 5,
             SIMP_cf = SIMP.coeff
         else:
             SIMP.Update(rho_filter)
-            
-        lambda_SIMP_cf = mfem.ProductCoefficient(lambda_cf,SIMP_cf)
-        mu_SIMP_cf = mfem.ProductCoefficient(mu_cf,SIMP_cf)
-        
+
+        lambda_SIMP_cf = mfem.ProductCoefficient(lambda_cf, SIMP_cf)
+        mu_SIMP_cf = mfem.ProductCoefficient(mu_cf, SIMP_cf)
+
         ElasticitySolver.lambda_cf = lambda_SIMP_cf
         ElasticitySolver.mu_cf = mu_SIMP_cf
-        
+
         ElasticitySolver.Solve()
         u = ElasticitySolver.GetFEMSolution()
 
@@ -318,11 +318,11 @@ def run(ref_levels = 5,
         # Solve (ϵ² ∇ w̃, ∇ v) + (w̃ ,v) = (-r'(ρ̃) ( λ |∇⋅u|² + 2 μ |ε(u)|²),v)
         if k == 1:
             SEDC = StrainEnergyDensityCoefficient(lambda_cf, mu_cf, u, rho_filter,
-                                                    rho_min)
+                                                  rho_min)
             rhs_cf = SEDC.coeff
         else:
             SEDC.Update(u, rho_filter)
-             
+
         FilterSolver.SetRHSCoefficient(rhs_cf)
         FilterSolver.Solve()
         w_filter = FilterSolver.GetFEMSolution()
@@ -341,31 +341,33 @@ def run(ref_levels = 5,
 
         # Compute ||ρ - ρ_old|| in control fes.
         norm_increment = zerogf.ComputeL1Error(succ_diff_rho)
-        norm_reduced_gradient = norm_increment/alpha;
+        norm_reduced_gradient = norm_increment/alpha
         psi_old.Assign(psi)
 
         compliance = (ElasticitySolver.GetLinearForm())(u)
-        print("norm of the reduced gradient = " + "{:g}".format(norm_reduced_gradient))
+        print("norm of the reduced gradient = " +
+              "{:g}".format(norm_reduced_gradient))
         print("norm of the increment = " + "{:g}".format(norm_increment))
         print("compliance = " + "{:g}".format(compliance))
-        print("volume fraction = " + "{:g}".format(material_volume / domain_volume))
+        print("volume fraction = " +
+              "{:g}".format(material_volume / domain_volume))
 
         if visualization:
             r_gf = mfem.GridFunction(filter_fes)
-            r_gf.ProjectCoefficient(SIMP_cf);
+            r_gf.ProjectCoefficient(SIMP_cf)
             sout_r << "solution\n" << mesh << r_gf << "window_title 'Design density r(ρ̃)'"
             sout_r.flush()
-                
+
         if paraview_output:
-           rho_gf.ProjectCoefficient(rho)
-           paraview_dc.SetCycle(k)
-           paraview_dc.SetTime(float(k))
-           paraview_dc.Save()
+            rho_gf.ProjectCoefficient(rho)
+            paraview_dc.SetCycle(k)
+            paraview_dc.SetTime(float(k))
+            paraview_dc.Save()
 
         if norm_reduced_gradient < ntol and norm_increment < itol:
-           break;
+            break
 
-                      
+
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
 
@@ -385,7 +387,7 @@ if __name__ == "__main__":
                         help="Length scale for ρ.")
     parser.add_argument("-mi", "--max-it",
                         action='store', default=1000, type=int,
-                        help="Maximum number of gradient descent iterations.");
+                        help="Maximum number of gradient descent iterations.")
     parser.add_argument("-ntol", "--rel-tol",
                         action='store', default=1e-4, type=float,
                         help="Normalized exit tolerance.")
@@ -406,7 +408,7 @@ if __name__ == "__main__":
                         help="Minimum of density coefficient.")
     parser.add_argument("-pv", "--paraview",
                         action='store_true', default=False,
-                        help="Enable or disable ParaView output.");
+                        help="Enable or disable ParaView output.")
     parser.add_argument("-no-vis", "--no-visualization",
                         action='store_true', default=False,
                         help='Enable GLVis visualization')
@@ -428,4 +430,3 @@ if __name__ == "__main__":
         rho_min=args.psi_min,
         llambda=args.llambda,
         mu=args.mu)
-
