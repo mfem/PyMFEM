@@ -408,13 +408,13 @@ if __name__ == "__main__":
                         action='store_true', default=False,
                         help="Enable or disable ParaView output.");
     parser.add_argument("-no-vis", "--no-visualization",
-                        action='store_false', default=True,
+                        action='store_true', default=False,
                         help='Enable GLVis visualization')
 
     args = parser.parse_args()
     parser.print_options(args)
 
-    globals()["visualization"] = args.no_visualization
+    globals()["visualization"] = not args.no_visualization
     globals()["paraview_output"] = args.paraview
 
     run(ref_levels=args.ref_levels,
