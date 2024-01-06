@@ -1,11 +1,10 @@
 '''
-   PyMFEM example 36
+   PyMFEM example 36p
 
    See c++ version in the MFEM library for more detail
 
-   Sample runs:  
-      mpirun -np 4 python ex36.py -o 2
-      mpirun -np 4 python ex36.py -o 2 -r 4
+   Sample runs:  python ex36.py -o 2
+                 python ex36.py -o 2 -r 4
 
 
 '''
@@ -18,9 +17,13 @@ from numba import njit
 from numba.types import float64
 
 
-import mfem.ser as mfem
-from mfem.ser import intArray, doubleArray
+import mfem.par as mfem
+from mfem.par import intArray, doubleArray
+from mpi4py import MPI
 
+num_procs = MPI.COMM_WORLD.size
+myid = MPI.COMM_WORLD.rank
+smyid = '{:0>6d}'.format(myid)
 
 visualization = True
 
@@ -53,31 +56,42 @@ def run(refs=3,
     scale = 2*sqrt(2)
     nodes /= scale
 
+    pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
+    mesh.Clear()
+
     # 4. Define the necessary finite element spaces on the mesh.
     H1fec = mfem.H1_FECollection(order+1, dim)
-    H1fes = mfem.FiniteElementSpace(mesh, H1fec)
+    H1fes = mfem.ParFiniteElementSpace(pmesh, H1fec)
 
     L2fec = mfem.L2_FECollection(order-1, dim)
-    L2fes = mfem.FiniteElementSpace(mesh, L2fec)
+    L2fes = mfem.ParFiniteElementSpace(pmesh, L2fec)
 
-    print("Number of H1 finite element unknowns: " +
-          str(H1fes.GetTrueVSize()))
-    print("Number of L2 finite element unknowns: " +
-          str(L2fes.GetTrueVSize()))
+    num_dofs_H1 = H1fes.GlobalTrueVSize()
+    num_dofs_L2 = L2fes.GlobalTrueVSize()
+    if myid == 0:
+        print("Number of H1 finite element unknowns: " + str(num_dofs_H1))
+        print("Number of L2 finite element unknowns: " + str(num_dofs_L2))
 
     offsets = mfem.intArray((0, H1fes.GetVSize(), L2fes.GetVSize()))
     offsets.PartialSum()
+    toffsets = mfem.intArray((0, H1fes.GetTrueVSize(), L2fes.GetTrueVSize()))
+    toffsets.PartialSum()
 
     x = mfem.BlockVector(offsets)
     rhs = mfem.BlockVector(offsets)
     x.Assign(0.0)
     rhs.Assign(0.0)
+    tx = mfem.BlockVector(toffsets)
+    trhs = mfem.BlockVector(toffsets)
+    tx.Assign(0.0)
+    trhs.Assign(0.0)
 
     # 5. Determine the list of true (i.e. conforming) essential boundary dofs.
-    if mesh.bdr_attributes.Size() > 0:
-        ess_bdr = mfem.intArray([1]*mesh.bdr_attributes.Max())
-    else:
-        ess_bdr = mfem.intArray()
+    empty = mfem.intArray()
+    ess_tdof_list = mfem.intArray()
+    if pmesh.bdr_attributes.Size() > 0:
+        ess_bdr = mfem.intArray([1]*pmesh.bdr_attributes.Max())
+        H1fes.GetEssentialTrueDofs(ess_bdr, ess_tdof_list)
 
     # 6. Define an initial guess for the solution.
     @njit(float64(float64[:]))
@@ -93,15 +107,15 @@ def run(refs=3,
 
     # 7. Define the solution vectors as a finite element grid functions
     #    corresponding to the fespaces.
-    u_gf = mfem.GridFunction()
-    delta_psi_gf = mfem.GridFunction()
+    u_gf = mfem.ParGridFunction()
+    delta_psi_gf = mfem.ParGridFunction()
     u_gf.MakeRef(H1fes, x, offsets[0])
     delta_psi_gf.MakeRef(L2fes, x, offsets[1])
     delta_psi_gf.Assign(0.0)
 
-    u_old_gf = mfem.GridFunction(H1fes)
-    psi_old_gf = mfem.GridFunction(L2fes)
-    psi_gf = mfem.GridFunction(L2fes)
+    u_old_gf = mfem.ParGridFunction(H1fes)
+    psi_old_gf = mfem.ParGridFunction(L2fes)
+    psi_gf = mfem.ParGridFunction(L2fes)
     u_old_gf.Assign(0.0)
     psi_old_gf.Assign(0.0)
 
@@ -159,18 +173,19 @@ def run(refs=3,
     total_iterations = 0
     increment_u = 0.1
     for k in range(max_it):
-        u_tmp = mfem.GridFunction(H1fes)
+        u_tmp = mfem.ParGridFunction(H1fes)
         u_tmp.GetDataArray()[:] = u_old_gf.GetDataArray()
 
-        print("\nOUTER ITERATION " + str(k+1))
+        if myid == 0:
+            print("\nOUTER ITERATION " + str(k+1))
 
         for j in range(10):
             total_iterations += 1
 
             alpha_cf = mfem.ConstantCoefficient(alpha)
 
-            b0 = mfem.LinearForm()
-            b1 = mfem.LinearForm()
+            b0 = mfem.ParLinearForm()
+            b1 = mfem.ParLinearForm()
             b0.Update(H1fes, rhs.GetBlock(0), 0)
             b1.Update(L2fes, rhs.GetBlock(1), 0)
 
@@ -191,25 +206,25 @@ def run(refs=3,
             b1.AddDomainIntegrator(mfem.DomainLFIntegrator(obstacle))
             b1.Assemble()
 
-            a00 = mfem.BilinearForm(H1fes)
+            a00 = mfem.ParBilinearForm(H1fes)
             a00.SetDiagonalPolicy(mfem.Operator.DIAG_ONE)
             a00.AddDomainIntegrator(mfem.DiffusionIntegrator(alpha_cf))
             a00.Assemble()
-            a00.EliminateEssentialBC(ess_bdr, x.GetBlock(0), rhs.GetBlock(0),
-                                     mfem.Operator.DIAG_ONE)
-            a00.Finalize()
-            A00 = a00.SpMat()
+            A00 = mfem.HypreParMatrix()
+            a00.FormLinearSystem(ess_tdof_list, x.GetBlock(0), rhs.GetBlock(0),
+                                 A00, tx.GetBlock(0), trhs.GetBlock(0))
 
-            a10 = mfem.MixedBilinearForm(H1fes, L2fes)
+            a10 = mfem.ParMixedBilinearForm(H1fes, L2fes)
             a10.AddDomainIntegrator(mfem.MixedScalarMassIntegrator())
             a10.Assemble()
-            a10.EliminateTrialDofs(ess_bdr, x.GetBlock(0), rhs.GetBlock(1))
-            a10.Finalize()
-            A10 = a10.SpMat()
+            A10 = mfem.HypreParMatrix()
+            a10.FormRectangularLinearSystem(ess_tdof_list, empty, x.GetBlock(0),
+                                            rhs.GetBlock(1),
+                                            A10, tx.GetBlock(0), trhs.GetBlock(1))
 
-            A01 = mfem.Transpose(A10)
+            A01 = A10.Transpose()
 
-            a11 = mfem.BilinearForm(L2fes)
+            a11 = mfem.ParBilinearForm(L2fes)
             a11.AddDomainIntegrator(mfem.MassIntegrator(neg_exp_psi))
             # NOTE: Shift the spectrum of the Hessian matrix for additional
             #       stability (Quasi-Newton).
@@ -222,26 +237,35 @@ def run(refs=3,
                 a11.AddDomainIntegrator(mfem.DiffusionIntegrator(eps_cf))
 
             a11.Assemble()
-            a11.Finalize()
-            A11 = a11.SpMat()
+            A11 = mfem.HypreParMatrix()
+            a11.FormSystemMatrix(empty, A11)
 
-            A = mfem.BlockOperator(offsets)
+            A = mfem.BlockOperator(toffsets)
             A.SetBlock(0, 0, A00)
             A.SetBlock(1, 0, A10)
             A.SetBlock(0, 1, A01)
             A.SetBlock(1, 1, A11)
 
-            prec = mfem.BlockDiagonalPreconditioner(offsets)
-            gs1 = mfem.GSSmoother(A00)
-            gs2 = mfem.GSSmoother(A11)
-            prec.SetDiagonalBlock(0, gs1)
-            prec.SetDiagonalBlock(1, gs2)
+            prec = mfem.BlockDiagonalPreconditioner(toffsets)
+            P00 = mfem.HypreBoomerAMG(A00)
+            P11 = mfem.HypreBoomerAMG(A11)
+            P00.SetPrintLevel(0)
+            P11.SetPrintLevel(0)
+            prec.SetDiagonalBlock(0, P00)
+            prec.SetDiagonalBlock(1, P11)
             prec.owns_blocks = 0
 
-            mfem.GMRES(A, prec, rhs, x, 0, 10000, 500, 1e-12, 0.0)
+            gmres = mfem.GMRESSolver(MPI.COMM_WORLD)
+            gmres.SetPrintLevel(-1)
+            gmres.SetRelTol(1e-8)
+            gmres.SetMaxIter(20000)
+            gmres.SetKDim(500)
+            gmres.SetOperator(A)
+            gmres.SetPreconditioner(prec)
+            gmres.Mult(trhs, tx)
 
-            u_gf.MakeRef(H1fes, x.GetBlock(0), 0)
-            delta_psi_gf.MakeRef(L2fes, x.GetBlock(1), 0)
+            u_gf.SetFromTrueDofs(tx.GetBlock(0))
+            delta_psi_gf.SetFromTrueDofs(tx.GetBlock(1))
 
             u_tmp -= u_gf
             Newton_update_size = u_tmp.ComputeL2Error(zero)
@@ -256,47 +280,56 @@ def run(refs=3,
             psi_gf += delta_psi_gf
 
             if visualization:
-                sol_sock << "solution\n" << mesh << u_gf
+                sol_sock << "parallel " << num_procs << " " << myid << "\n"
+                sol_sock << "solution\n" << pmesh << u_gf
                 sol_sock << "window_title 'Discrete solution'"
                 sol_sock.flush()
-            print("Newton_update_size = " +
-                  "{:g}".format(Newton_update_size))
+
+            if myid == 0:
+                print("Newton_update_size = {:g}".format(Newton_update_size))
 
             del A01
 
             if Newton_update_size < increment_u:
                 break
 
-        u_tmp.GetDataArray()[:] = u_gf.GetDataArray()
+        u_tmp.Assign(u_gf)
         u_tmp -= u_old_gf
         increment_u = u_tmp.ComputeL2Error(zero)
 
-        print("Number of Newton iterations = " + str(j+1))
-        print("Increment (|| uₕ - uₕ_prvs||) = " + "{:g}".format(increment_u))
+        if myid == 0:
+            print("Number of Newton iterations = " + str(j+1))
+            print("Increment (|| uₕ - uₕ_prvs||) = " +
+                  "{:g}".format(increment_u))
 
-        u_old_gf.GetDataArray()[:] = u_gf.GetDataArray()
-        psi_old_gf.GetDataArray()[:] = psi_gf.GetDataArray()
+        u_old_gf.Assign(u_gf)
+        psi_old_gf.Assign(psi_gf)
 
         if increment_u < tol or k == max_it-1:
             break
 
         H1_error = u_gf.ComputeH1Error(exact_coef, exact_grad_coef)
-        print("H1-error  (|| u - uₕᵏ||)       = " + "{:g}".format(H1_error))
+        if myid == 0:
+            print("H1-error  (|| u - uₕᵏ||)       = " +
+                  "{:g}".format(H1_error))
 
-    print("Outer iterations: " + str(k+1))
-    print(" Total iterations: " + str(total_iterations))
-    print(" Total dofs:       " + str(H1fes.GetTrueVSize() + L2fes.GetTrueVSize()))
+    if myid == 0:
+        print("Outer iterations: " + str(k+1))
+        print(" Total iterations: " + str(total_iterations))
+        print(" Total dofs:       " +
+              str(H1fes.GetTrueVSize() + L2fes.GetTrueVSize()))
 
     # 11. Exact solution.
     if visualization:
         err_sock = mfem.socketstream("localhost", 19916)
         err_sock.precision(8)
 
-        error_gf = mfem.GridFunction(H1fes)
+        error_gf = mfem.ParGridFunction(H1fes)
         error_gf.ProjectCoefficient(exact_coef)
         error_gf -= u_gf
 
-        err_sock << "solution\n" << mesh << error_gf << "window_title 'Error'"
+        err_sock << "parallel " << num_procs << " " << myid << "\n"
+        err_sock << "solution\n" << pmesh << error_gf << "window_title 'Error'"
         err_sock.flush()
 
     L2_error = u_gf.ComputeL2Error(exact_coef)
@@ -310,16 +343,17 @@ def run(refs=3,
         max_val = 1e36
         return min(max_val, max(min_val, exp(val)+obstacle))
 
-    u_alt_gf = mfem.GridFunction(L2fes)
+    u_alt_gf = mfem.ParGridFunction(L2fes)
     u_alt_gf.ProjectCoefficient(u_alt_cf)
     L2_error_alt = u_alt_gf.ComputeL2Error(exact_coef)
 
-    print("\n Final L2-error (|| u - uₕ||)          = " +
-          "{:g}".format(L2_error))
-    print(" Final H1-error (|| u - uₕ||)          = " +
-          "{:g}".format(H1_error))
-    print(" Final L2-error (|| u - ϕ - exp(ψₕ)||) = " +
-          "{:g}".format(L2_error_alt))
+    if myid == 0:
+        print("\n Final L2-error (|| u - uₕ||)          = " +
+              "{:g}".format(L2_error))
+        print(" Final H1-error (|| u - uₕ||)          = " +
+              "{:g}".format(H1_error))
+        print(" Final L2-error (|| u - ϕ - exp(ψₕ)||) = " +
+              "{:g}".format(L2_error_alt))
 
 
 @njit(float64(float64, float64))
@@ -372,7 +406,7 @@ def exact_solution_gradient_obstacle(x, y):
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
 
-    parser = ArgParser(description='Ex36 (Obstacle problem)')
+    parser = ArgParser(description='Ex36p (Obstacle problem)')
 
     parser.add_argument("-o", "--order",
                         action='store', default=1, type=int,
@@ -396,7 +430,8 @@ if __name__ == "__main__":
                         help='Enable GLVis visualization')
 
     args = parser.parse_args()
-    parser.print_options(args)
+    if myid == 0:
+        parser.print_options(args)
 
     globals()["visualization"] = not args.no_visualization
 

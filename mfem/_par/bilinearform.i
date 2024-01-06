@@ -125,6 +125,8 @@ namespace mfem {
 %define FORM_SYSTEM_MATRIX_WRAP(OsType)
 %template(FormLinearSystem) mfem::BilinearForm::FormLinearSystem<mfem:: ## OsType>;
 %template(FormSystemMatrix) mfem::BilinearForm::FormSystemMatrix<mfem:: ## OsType>;
+%template(FormRectangularLinearSystem) mfem::MixedBilinearForm::FormRectangularLinearSystem<mfem:: ## OsType>;
+%template(FormRectangularSystemMatrix) mfem::MixedBilinearForm::FormRectangularSystemMatrix<mfem:: ## OsType>;
 %enddef
 
 FORM_SYSTEM_MATRIX_WRAP(SparseMatrix)
