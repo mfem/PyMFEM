@@ -1,5 +1,5 @@
 '''
-   MFEM example 33
+   MFEM example 33p
 
    See c++ version in the MFEM library for more detail
 
