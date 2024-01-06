@@ -16,7 +16,6 @@ import_array();
 %import "../common/numpy_int_typemap.i"
 %import "mem_manager.i"
 
-
 %immutable IntRules;
 %immutable RefinedIntRules;
 

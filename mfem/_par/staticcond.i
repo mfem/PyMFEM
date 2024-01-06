@@ -1,9 +1,10 @@
 %module(package="mfem._par")  staticcond
 %{
-#include "mfem.hpp"  
-#include "pyoperator.hpp"        
-#include "numpy/arrayobject.h"
-#include "../common/pycoefficient.hpp"  
+#include "mfem.hpp"
+#include "numpy/arrayobject.h"  
+#include "../common/pyoperator.hpp"
+#include "../common/pycoefficient.hpp"
+#include "../common/pyintrules.hpp"
 %}
 
 %init %{

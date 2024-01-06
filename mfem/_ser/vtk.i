@@ -1,9 +1,9 @@
 %module(package="mfem._ser") vtk
 %{
 #include  "mfem.hpp"
+#include "numpy/arrayobject.h"
+#include "../common/io_stream.hpp"  
 #include "../common/pyoperator.hpp"
-#include "numpy/arrayobject.h"    
-#include "../common/io_stream.hpp"
 #include "../common/pyintrules.hpp"  
 %}
 %begin %{

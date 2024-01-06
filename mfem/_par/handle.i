@@ -11,7 +11,7 @@
 #include "fem/linearform.hpp"
 #include "fem/pfespace.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"
+#include "../common/pyoperator.hpp"
 %}
 
 %include "../common/mfem_config.i"

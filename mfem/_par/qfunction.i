@@ -1,10 +1,11 @@
 %module(package="mfem._par") qfunction
 %{
 #include "mfem.hpp"
+#include "numpy/arrayobject.h"  
 #include "../common/io_stream.hpp"  
-#include "pyoperator.hpp"
+#include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"  
-#include "numpy/arrayobject.h"    
+#include "../common/pyintrules.hpp"
 %}
 
 %include "../common/existing_mfem_headers.i"

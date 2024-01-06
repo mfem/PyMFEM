@@ -1,8 +1,8 @@
 %module(package="mfem._ser") doftrans
 %{
 #include  "mfem.hpp"
+#include "numpy/arrayobject.h"  
 #include "../common/pyoperator.hpp"      
-#include "numpy/arrayobject.h"
 #include "../common/pyintrules.hpp"  
 %}
 

@@ -9,7 +9,7 @@
 #include "linalg/complex_operator.hpp"
 #include "numpy/arrayobject.h"
 #include "linalg/hypre.hpp"  
-#include "pyoperator.hpp"     
+#include "../common/pyoperator.hpp"     
   %}
 
 %include "../common/mfem_config.i"

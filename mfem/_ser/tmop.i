@@ -6,7 +6,7 @@
 #include "../common/pycoefficient.hpp"
 #include "../common/pyintrules.hpp"
 #include "../common/pybilininteg.hpp"
-#include "../common/pynonlininteg.hpp"  
+#include "../common/pynonlininteg.hpp"
 %}
 
 %init %{

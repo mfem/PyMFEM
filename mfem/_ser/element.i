@@ -3,8 +3,8 @@
 %{
 #include <iostream>  
 #include "mfem.hpp"
-#include "../common/pyoperator.hpp"      
-#include "numpy/arrayobject.h"
+#include "numpy/arrayobject.h"  
+#include "../common/pyoperator.hpp"
 #include "../common/pyintrules.hpp"  
 %}
 

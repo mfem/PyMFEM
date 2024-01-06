@@ -1,9 +1,9 @@
 %module(package="mfem._ser") quadrilateral
 %{
 #include  "mfem.hpp"
+#include "numpy/arrayobject.h"  
 #include "../common/pyoperator.hpp"      
-#include "numpy/arrayobject.h"
-#include "../common/pyintrules.hpp"  
+#include "../common/pyintrules.hpp"
 %}
 
 %init %{

@@ -16,13 +16,14 @@
   #include <cmath>
   #include <cstring>
   #include <ctime>
-  #include "mfem/mfem.hpp"  
+  #include "mfem/mfem.hpp"
+  #include "numpy/arrayobject.h"
+  #include "../common/io_stream.hpp"  
   #include "../common/pycoefficient.hpp"
   #include "../common/pyoperator.hpp"  
-  #include "numpy/arrayobject.h"
-  #include "../common/io_stream.hpp"
   #include "../common/pyintrules.hpp"
-  #include "../common/pybilininteg.hpp"    
+  #include "../common/pybilininteg.hpp"
+  
   using namespace mfem;  
 %}
 // initialization required to return numpy array from SWIG

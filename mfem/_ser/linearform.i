@@ -1,12 +1,5 @@
 %module(package="mfem._ser", directors="1")  linearform
 %{
-#include "fem/fem.hpp"
-#include "fem/fe_coll.hpp"
-#include "fem/fespace.hpp"
-#include "fem/eltrans.hpp"
-#include "fem/coefficient.hpp"
-#include "fem/linearform.hpp"  
-#include "fem/intrules.hpp"  
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -14,6 +7,7 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
+#include "mfem.hpp"    
 #include "numpy/arrayobject.h"
 #include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"

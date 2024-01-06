@@ -11,10 +11,12 @@
 #include <cstring>  
 #include <mpi.h>
 #include "mfem.hpp"
-#include "pyoperator.hpp"  
-#include "../common/io_stream.hpp"      
-#include "../common/pycoefficient.hpp"  
 #include "numpy/arrayobject.h"
+#include "../common/io_stream.hpp"        
+#include "../common/pyoperator.hpp"  
+#include "../common/pycoefficient.hpp"
+#include "../common/pyintrules.hpp"
+#include "../common/pybilininteg.hpp"    
 %}
 
 %include "../common/mfem_config.i"

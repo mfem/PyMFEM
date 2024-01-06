@@ -12,7 +12,7 @@
 #include "linalg/hypre.hpp"
 #include "linalg/hypre_parcsr.hpp"  
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"
+#include "../common/pyoperator.hpp"
 #include "../common/io_stream.hpp"
 %}
 

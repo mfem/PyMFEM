@@ -1,11 +1,10 @@
 %module(package="mfem._ser") restriction
 %{
 #include  "mfem.hpp"
-#include  "fem/restriction.hpp"
 #include "numpy/arrayobject.h"  
 #include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
-#include "../common/pyintrules.hpp"  
+#include "../common/pyintrules.hpp"
 %}
 
 %init %{

@@ -1,7 +1,7 @@
 %module(package="mfem._par") sparsesmoothers
 %{
 #include "linalg/sparsesmoothers.hpp"
-#include "pyoperator.hpp"
+#include "../common/pyoperator.hpp"
 #include "numpy/arrayobject.h"    
 %}
 

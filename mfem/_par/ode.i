@@ -2,7 +2,7 @@
 %{
 #include  "mfem.hpp"
 #include "linalg/ode.hpp"
-#include "pyoperator.hpp"
+#include "../common/pyoperator.hpp"
 #include "numpy/arrayobject.h"    
 #include "../common/io_stream.hpp"
 %}

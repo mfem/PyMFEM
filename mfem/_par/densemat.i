@@ -11,7 +11,7 @@
 #include <iostream>
 #include "mfem.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"
+#include "../common/pyoperator.hpp"
 #include "../common/io_stream.hpp"
 using namespace mfem;  
 %}

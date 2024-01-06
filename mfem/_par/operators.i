@@ -8,7 +8,7 @@
 #include "mfem.hpp"
 #include "../common/io_stream.hpp"        
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"
+#include "../common/pyoperator.hpp"
 %}
 
 %init %{
@@ -83,7 +83,7 @@ IGNORE_ARRAY_METHODS(mfem::Solver *)
 INSTANTIATE_ARRAY0(Solver *, Solver, 1)
 
 %include "linalg/operator.hpp"
-%include "pyoperator.hpp"
+%include "../common/pyoperator.hpp"
 
 %pythoncode %{
 class PyOperator(PyOperatorBase):

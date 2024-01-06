@@ -20,10 +20,12 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "mfem.hpp"  
-#include "pyoperator.hpp"    
+#include "mfem.hpp"
+#include "numpy/arrayobject.h"  
+#include "../common/pyoperator.hpp"    
 #include "../common/pycoefficient.hpp"
-#include "numpy/arrayobject.h"
+#include "../common/pyintrules.hpp"  
+#include "../common/pybilininteg.hpp"
 %}
 
 %include "../common/mfem_config.i"

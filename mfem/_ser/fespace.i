@@ -8,19 +8,12 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-
-#include "../common/io_stream.hpp"            
+#include "mfem.hpp"  
 #include "numpy/arrayobject.h"
-#include "fem/fem.hpp"
-#include "fem/fe_coll.hpp"
-#include "fem/fespace.hpp"
-#include "fem/eltrans.hpp"
-#include "fem/coefficient.hpp"
-#include "fem/intrules.hpp"  
-#include "fem/restriction.hpp"
+#include "../common/io_stream.hpp"  
 #include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
-#include "../common/pyintrules.hpp"  
+#include "../common/pyintrules.hpp"
 %}
 
 %init %{

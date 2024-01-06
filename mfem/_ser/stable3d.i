@@ -5,10 +5,10 @@
 %{
 #include <fstream>
 #include  "mfem.hpp"
+#include "numpy/arrayobject.h"  
 #include "../common/io_stream.hpp"
-#include "../common/pyoperator.hpp"        
-#include "numpy/arrayobject.h"
-#include "../common/pyintrules.hpp"  
+#include "../common/pyoperator.hpp"
+#include "../common/pyintrules.hpp"
 %}
 
 %begin %{

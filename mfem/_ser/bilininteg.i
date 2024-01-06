@@ -14,17 +14,6 @@
 import_array();
 %}
 
-/*
-%exception {
-    try { $action }
-    catch (Swig::DirectorException &e) { SWIG_fail; }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-}
-*/
 %include "exception.i"
 
 %import "globals.i"
@@ -44,14 +33,6 @@ import_array();
 %import "fe.i"
 %import "nonlininteg.i"
 %include "../common/exception_director.i"
- //%template(IntegrationPointArray) mfem::Array<mfem::IntegrationPoint>;
-
- //%feature("director:except") {
- //    if ($error != NULL) {
- //        throw Swig::DirectorMethodException();
- //    }
- //}
- //%feature("director") mfem::BilinearFormIntegrator;
 
 %include "../common/bilininteg_ext.i"
 

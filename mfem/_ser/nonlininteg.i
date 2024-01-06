@@ -30,8 +30,6 @@ import_array();
 %import "eltrans.i"
 %import "../common/exception_director.i"
 
-
-
 %include "fem/nonlininteg.hpp"
 
 %feature("director") mfem::PyNonlinearFormIntegrator;

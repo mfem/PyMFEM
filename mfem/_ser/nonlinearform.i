@@ -1,10 +1,6 @@
 %module(package="mfem._ser") nonlinearform
 %{
-#include "fem/estimators.hpp"  
-#include "fem/linearform.hpp"    
-#include "fem/nonlininteg.hpp"
-#include "fem/nonlinearform.hpp"
-#include "fem/fespace.hpp"
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
 #include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
