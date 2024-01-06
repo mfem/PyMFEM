@@ -50,8 +50,8 @@
        for Numerical Methods in Engineering, 86(6), 765-781.
 
 '''
-import mfem.ser as mfem
-from mfem.ser import intArray, doubleArray
+import mfem.par as mfem
+from mfem.par import intArray, doubleArray
 
 from ex37_common import (sigmoid,
                          der_sigmoid,
@@ -65,6 +65,11 @@ import os
 from os.path import expanduser, join
 import numpy as np
 from numpy import sin, cos, array, pi, sqrt, floor
+from mpi4py import MPI
+
+num_procs = MPI.COMM_WORLD.size
+myid = MPI.COMM_WORLD.rank
+smyid = '{:0>6d}'.format(myid)
 
 visualization = True
 paraview_output = False
@@ -85,20 +90,20 @@ class StrainEnergyDensityCoefficient():
         assert rho_min >= 0.0, "rho_min must be >= 0"
         assert rho_min < 1.0,  "rho_min must be > 1"
 
-        fes = u.FESpace()
-        assert fes.GetOrdering() == mfem.Ordering.byNODES, "u has to use byNODES ordering"
+        pfes = u.ParFESpace()
+        assert pfes.GetOrdering() == mfem.Ordering.byNODES, "u has to use byNODES ordering"
 
-        mesh = fes.GetMesh()
-        dim = mesh.Dimension()
+        pmesh = pfes.GetParMesh()
+        dim = pmesh.Dimension()
         assert dim == 2, "dim must be two."
 
-        fec = fes.FEColl()
-        fes = mfem.FiniteElementSpace(mesh, fec)
+        fec = pfes.FEColl()
+        pfes = mfem.ParFiniteElementSpace(pmesh, fec)
         size = len(u.GetDataArray())
 
-        u1 = mfem.GridFunction(fes, mfem.Vector(
+        u1 = mfem.ParGridFunction(pfes, mfem.Vector(
             u.GetDataArray()))   # first component
-        u2 = mfem.GridFunction(fes, mfem.Vector(
+        u2 = mfem.ParGridFunction(pfes, mfem.Vector(
             u.GetDataArray()), size//2)  # second component
 
         c_gradu1 = mfem.GradientGridFunctionCoefficient(u1)
@@ -122,16 +127,16 @@ class StrainEnergyDensityCoefficient():
                     density += M*grad[i, j]*(grad[i, j] + grad[j, i])
             return -exponent * val**(exponent-1.0)*(1-rho_min)*density
 
-        self.fes = fes
+        self.pfes = pfes
         self.size = size
         self.u1u2 = (u1, u2)
         self.dependency = (c_gradu1, c_gradu2, c_rho_filter)
         self.coeff = coeff
 
     def Update(self, u, rho_filter):
-        u1 = mfem.GridFunction(self.fes, mfem.Vector(u.GetDataArray()))
-        u2 = mfem.GridFunction(self.fes, mfem.Vector(u.GetDataArray()),
-                               self.size//2)
+        u1 = mfem.ParGridFunction(self.pfes, mfem.Vector(u.GetDataArray()))
+        u2 = mfem.ParGridFunction(self.pfes, mfem.Vector(u.GetDataArray()),
+                                  self.size//2)
         self.dependency[0].SetGridFunction(u1)
         self.dependency[1].SetGridFunction(u2)
         self.dependency[2].SetGridFunction(rho_filter)
@@ -147,24 +152,24 @@ class DiffusionSolver():
         self.gradient_cf = None
 
     def SetupFEM(self):
-        dim = self.mesh.Dimension()
+        dim = self.pmesh.Dimension()
         self.fec = mfem.H1_FECollection(self.order, dim)
-        self.fes = mfem.FiniteElementSpace(self.mesh, self.fec)
+        self.pfes = mfem.ParFiniteElementSpace(self.pmesh, self.fec)
 
-        if self.ess_bdr.Size() == 0 and self.mesh.bdr_attributes.Size() > 0:
-            self.ess_bdr = mfem.intArray([1]*self.mesh.bdr_attributes.Max())
+        if self.ess_bdr.Size() == 0 and self.pmesh.bdr_attributes.Size() > 0:
+            self.ess_bdr = mfem.intArray([1]*self.pmesh.bdr_attributes.Max())
 
     def Solve(self):
         A = mfem.OperatorPtr()
         B = mfem.Vector()
         X = mfem.Vector()
         ess_tdof_list = mfem.intArray()
-        self.fes.GetEssentialTrueDofs(self.ess_bdr, ess_tdof_list)
+        self.pfes.GetEssentialTrueDofs(self.ess_bdr, ess_tdof_list)
 
-        self.u = mfem.GridFunction(self.fes)
+        self.u = mfem.ParGridFunction(self.pfes)
         self.u.Assign(0.0)
 
-        b = mfem.LinearForm(self.fes)
+        b = mfem.ParLinearForm(self.pfes)
 
         if self.rhscf is not None:
             itg = mfem.DomainLFIntegrator(self.rhscf)
@@ -181,7 +186,7 @@ class DiffusionSolver():
 
         b.Assemble()
 
-        a = mfem.BilinearForm(self.fes)
+        a = mfem.ParBilinearForm(self.pfes)
         a.AddDomainIntegrator(mfem.DiffusionIntegrator(self.diffcf))
         if self.masscf is not None:
             a.AddDomainIntegrator(mfem.MassIntegrator(self.masscf))
@@ -190,14 +195,15 @@ class DiffusionSolver():
             self.u.ProjectBdrCoefficient(essbdr_cf, ess_bdr)
 
         a.FormLinearSystem(ess_tdof_list, self.u, b, A, X, B)
-        AA = A.AsSparseMatrix()
-        M = mfem.GSSmoother(AA)
-        cg = mfem.CGSolver()
+
+        M = mfem.HypreBoomerAMG()
+        M.SetPrintLevel(0)
+        cg = mfem.CGSolver(MPI.COMM_WORLD)
         cg.SetRelTol(1e-12)
         cg.SetMaxIter(10000)
         cg.SetPrintLevel(0)
         cg.SetPreconditioner(M)
-        cg.SetOperator(A)
+        cg.SetOperator(A.Ptr())
         cg.Mult(B, X)
 
         a.RecoverFEMSolution(X, b, self.u)
@@ -216,11 +222,11 @@ class LinearElasticitySolver():
         self.essbdr_cf = None
 
     def SetupFEM(self):
-        dim = self.mesh.Dimension()
+        dim = self.pmesh.Dimension()
         self.fec = mfem.H1_FECollection(
             self.order, dim, mfem.BasisType.Positive)
-        self.fes = mfem.FiniteElementSpace(self.mesh, self.fec, dim)
-        self.u = mfem.GridFunction(self.fes)
+        self.pfes = mfem.ParFiniteElementSpace(self.pmesh, self.fec, dim)
+        self.u = mfem.ParGridFunction(self.pfes)
         self.u.Assign(0.0)
 
     def Solve(self):
@@ -229,19 +235,19 @@ class LinearElasticitySolver():
         X = mfem.Vector()
 
         ess_tdof_list = mfem.intArray()
-        self.fes.GetEssentialTrueDofs(self.ess_bdr, ess_tdof_list)
+        self.pfes.GetEssentialTrueDofs(self.ess_bdr, ess_tdof_list)
 
-        x = mfem.GridFunction(self.fes)
+        x = mfem.ParGridFunction(self.pfes)
         x .Assign(0.0)
 
         self.u.Assign(0.0)
-        b = mfem.LinearForm(self.fes)
+        b = mfem.ParLinearForm(self.pfes)
 
         if self.rhs_cf is not None:
             b.AddDomainIntegrator(mfem.VectorDomainLFIntegrator(self.rhs_cf))
         b.Assemble()
 
-        a = mfem.BilinearForm(self.fes)
+        a = mfem.ParBilinearForm(self.pfes)
         a.AddDomainIntegrator(
             mfem.ElasticityIntegrator(self.lambda_cf, self.mu_cf))
         a.Assemble()
@@ -250,15 +256,15 @@ class LinearElasticitySolver():
 
         a.FormLinearSystem(ess_tdof_list, x, b, A, X, B)
 
-        AA = A.AsSparseMatrix()
-        M = mfem.GSSmoother(AA)
-        cg = mfem.CGSolver()
+        M = mfem.HypreBoomerAMG()
+        M.SetPrintLevel(0)
+        cg = mfem.CGSolver(MPI.COMM_WORLD)
 
         cg.SetRelTol(1e-10)
         cg.SetMaxIter(10000)
         cg.SetPrintLevel(0)
         cg.SetPreconditioner(M)
-        cg.SetOperator(A)
+        cg.SetOperator(A.Ptr())
         cg.Mult(B, X)
         a.RecoverFEMSolution(X, b, x)
 
@@ -268,7 +274,7 @@ class LinearElasticitySolver():
     def GetFEMSolution(self):
         return self.u
 
-    def GetLinearForm(self):
+    def GetParLinearForm(self):
         return self.b
 
 
@@ -297,20 +303,22 @@ class Proj():
 
     def __call__(self, target_volume, tol=1e-12, max_its=10):
         psi = self.psi
-        int_sigmoid_psi = mfem.LinearForm(psi.FESpace())
+        int_sigmoid_psi = mfem.ParLinearForm(psi.ParFESpace())
         int_sigmoid_psi.AddDomainIntegrator(
             mfem.DomainLFIntegrator(self.sigmoid_psi))
-        int_der_sigmoid_psi = mfem.LinearForm(psi.FESpace())
+        int_der_sigmoid_psi = mfem.ParLinearForm(psi.ParFESpace())
         int_der_sigmoid_psi.AddDomainIntegrator(mfem.DomainLFIntegrator(
             self.der_sigmoid_psi))
         done = False
         for k in range(max_its):  # Newton iteration
             int_sigmoid_psi.Assemble()         # Recompute f(c) with updated ψ
-            f = int_sigmoid_psi.Sum() - target_volume
+            f = int_sigmoid_psi.Sum()
+            f = MPI.COMM_WORLD.allreduce(f, MPI.SUM)
+            f -= target_volume
 
             int_der_sigmoid_psi.Assemble()      # Recompute df(c) with updated ψ
             df = int_der_sigmoid_psi.Sum()
-
+            df = MPI.COMM_WORLD.allreduce(df, MPI.SUM)
             dc = -f/df
             psi += dc
             if abs(dc) < tol:
@@ -324,7 +332,9 @@ class Proj():
             warnings.warn(message, RuntimeWarning)
 
         int_sigmoid_psi.Assemble()
-        return int_sigmoid_psi.Sum()
+        material_volume = int_sigmoid_psi.Sum()
+        material_volume = MPI.COMM_WORLD.allreduce(material_volume, MPI.SUM)
+        return material_volume
 
 
 def run(ref_levels=5,
@@ -364,29 +374,32 @@ def run(ref_levels=5,
     # 3. Refine the mesh.
     for lev in range(ref_levels):
         mesh.UniformRefinement()
+    pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
+    mesh.Clear()
 
     # 4. Define the necessary finite element spaces on the mesh.
     state_fec = mfem.H1_FECollection(order, dim)    # space for u
     filter_fec = mfem.H1_FECollection(order, dim)   # space for ρ̃
     control_fec = mfem.L2_FECollection(order-1, dim,
                                        mfem.BasisType.GaussLobatto)  # space for ψ
-    state_fes = mfem.FiniteElementSpace(mesh, state_fec, dim)
-    filter_fes = mfem.FiniteElementSpace(mesh, filter_fec)
-    control_fes = mfem.FiniteElementSpace(mesh, control_fec)
+    state_fes = mfem.ParFiniteElementSpace(pmesh, state_fec, dim)
+    filter_fes = mfem.ParFiniteElementSpace(pmesh, filter_fec)
+    control_fes = mfem.ParFiniteElementSpace(pmesh, control_fec)
 
-    state_size = state_fes.GetTrueVSize()
-    control_size = control_fes.GetTrueVSize()
-    filter_size = filter_fes.GetTrueVSize()
+    state_size = state_fes.GlobalTrueVSize()
+    control_size = control_fes.GlobalTrueVSize()
+    filter_size = filter_fes.GlobalTrueVSize()
 
-    print("Number of state unknowns: " + str(state_size))
-    print("Number of filter unknowns: " + str(filter_size))
-    print("Number of control unknowns: " + str(control_size))
+    if myid == 0:
+        print("Number of state unknowns: " + str(state_size))
+        print("Number of filter unknowns: " + str(filter_size))
+        print("Number of control unknowns: " + str(control_size))
 
     #  5. Set the initial guess for ρ.
-    u = mfem.GridFunction(state_fes)
-    psi = mfem.GridFunction(control_fes)
-    psi_old = mfem.GridFunction(control_fes)
-    rho_filter = mfem.GridFunction(filter_fes)
+    u = mfem.ParGridFunction(state_fes)
+    psi = mfem.ParGridFunction(control_fes)
+    psi_old = mfem.ParGridFunction(control_fes)
+    rho_filter = mfem.ParGridFunction(filter_fes)
 
     u.Assign(0.0)
     rho_filter.Assign(vol_fraction)
@@ -396,12 +409,12 @@ def run(ref_levels=5,
     # ρ = sigmoid(ψ)
     rho = MappedGridFunctionCoefficient(psi, sigmoid)
     #  Interpolation of ρ = sigmoid(ψ) in control fes (for ParaView output)
-    rho_gf = mfem.GridFunction(control_fes)
+    rho_gf = mfem.ParGridFunction(control_fes)
     # ρ - ρ_old = sigmoid(ψ) - sigmoid(ψ_old)
     succ_diff_rho = DiffMappedGridFunctionCoefficient(psi, psi_old, sigmoid)
 
     # 6. Set-up the physics solver.
-    maxat = mesh.bdr_attributes.Max()
+    maxat = pmesh.bdr_attributes.Max()
     ess_bdr = intArray([0]*maxat)
     ess_bdr[0] = 1
 
@@ -410,7 +423,7 @@ def run(ref_levels=5,
     mu_cf = mfem.ConstantCoefficient(mu)
 
     ElasticitySolver = LinearElasticitySolver()
-    ElasticitySolver.mesh = mesh
+    ElasticitySolver.pmesh = pmesh
     ElasticitySolver.order = state_fec.GetOrder()
     ElasticitySolver.SetupFEM()
 
@@ -424,38 +437,38 @@ def run(ref_levels=5,
     # 7. Set-up the filter solver.
     eps2_cf = mfem.ConstantCoefficient(epsilon*epsilon)
     FilterSolver = DiffusionSolver()
-    FilterSolver.mesh = mesh
+    FilterSolver.pmesh = pmesh
     FilterSolver.order = filter_fec.GetOrder()
     FilterSolver.diffcf = eps2_cf
     FilterSolver.masscf = one
 
-    if mesh.bdr_attributes.Size() > 0:
-        ess_bdr_filter = mfem.intArray([0]*mesh.bdr_attributes.Max())
+    if pmesh.bdr_attributes.Size() > 0:
+        ess_bdr_filter = mfem.intArray([0]*pmesh.bdr_attributes.Max())
     else:
         ess_bdr_filter = mfem.intArray()
 
     FilterSolver.ess_bdr = ess_bdr_filter
     FilterSolver.SetupFEM()
 
-    mass = mfem.BilinearForm(control_fes)
+    mass = mfem.ParBilinearForm(control_fes)
     mass.AddDomainIntegrator(mfem.InverseIntegrator(mfem.MassIntegrator(one)))
     mass.Assemble()
-    M = mfem.SparseMatrix()
+    M = mfem.HypreParMatrix()
     empty = mfem.intArray()
     mass.FormSystemMatrix(empty, M)
 
     # 8. Define the Lagrange multiplier and gradient functions.
-    grad = mfem.GridFunction(control_fes)
-    w_filter = mfem.GridFunction(filter_fes)
+    grad = mfem.ParGridFunction(control_fes)
+    w_filter = mfem.ParGridFunction(filter_fes)
 
     # 9. Define some tools for later.
     zero = mfem.ConstantCoefficient(0.0)
-    onegf = mfem.GridFunction(control_fes)
+    onegf = mfem.ParGridFunction(control_fes)
     onegf.Assign(1.0)
-    zerogf = mfem.GridFunction(control_fes)
+    zerogf = mfem.ParGridFunction(control_fes)
     zerogf.Assign(0.0)
 
-    vol_form = mfem.LinearForm(control_fes)
+    vol_form = mfem.ParLinearForm(control_fes)
     vol_form.AddDomainIntegrator(mfem.DomainLFIntegrator(one))
     vol_form.Assemble()
     domain_volume = vol_form(onegf)
@@ -467,7 +480,7 @@ def run(ref_levels=5,
         sout_r.precision(8)
 
     if paraview_output:
-        paraview_dc = mfem.ParaViewDataCollection("ex37", mesh)
+        paraview_dc = mfem.ParaViewDataCollection("ex37p", pmesh)
 
         rho_gf.ProjectCoefficient(rho)
         paraview_dc.SetPrefixPath("ParaView")
@@ -483,12 +496,12 @@ def run(ref_levels=5,
 
     # 11. Iterate:
     proj = Proj(psi)
-    #max_it = 1
     for k in range(1, max_it+1):
         if k > 1:
             alpha *= k/(k-1.)
 
-        print("\nStep = " + str(k))
+        if myid == 0:
+            print("\nStep = " + str(k))
 
         # Step 1 - Filter solve
         # Solve (ϵ^2 ∇ ρ̃, ∇ v ) + (ρ̃,v) = (ρ,v)
@@ -529,7 +542,7 @@ def run(ref_levels=5,
         # Step 4 - Compute gradient
         # Solve G = M⁻¹w̃
         w_cf = mfem.GridFunctionCoefficient(w_filter)
-        w_rhs = mfem.LinearForm(control_fes)
+        w_rhs = mfem.ParLinearForm(control_fes)
         w_rhs.AddDomainIntegrator(mfem.DomainLFIntegrator(w_cf))
         w_rhs.Assemble()
         M.Mult(w_rhs, grad)
@@ -543,18 +556,22 @@ def run(ref_levels=5,
         norm_reduced_gradient = norm_increment/alpha
         psi_old.Assign(psi)
 
-        compliance = (ElasticitySolver.GetLinearForm())(u)
-        print("norm of the reduced gradient = " +
-              "{:g}".format(norm_reduced_gradient))
-        print("norm of the increment = " + "{:g}".format(norm_increment))
-        print("compliance = " + "{:g}".format(compliance))
-        print("volume fraction = " +
-              "{:g}".format(material_volume / domain_volume))
+        compliance = (ElasticitySolver.GetParLinearForm())(u)
+        #compliance = MPI.COMM_WORLD.allreduce(compliance, MPI.SUM)
+
+        if myid == 0:
+            print("norm of the reduced gradient = " +
+                  "{:g}".format(norm_reduced_gradient))
+            print("norm of the increment = " + "{:g}".format(norm_increment))
+            print("compliance = " + "{:g}".format(compliance))
+            print("volume fraction = " +
+                  "{:g}".format(material_volume / domain_volume))
 
         if visualization:
-            r_gf = mfem.GridFunction(filter_fes)
+            r_gf = mfem.ParGridFunction(filter_fes)
             r_gf.ProjectCoefficient(SIMP_cf)
-            sout_r << "solution\n" << mesh << r_gf << "window_title 'Design density r(ρ̃)'"
+            sout_r << "parallel " << num_procs << " " << myid << "\n"
+            sout_r << "solution\n" << pmesh << r_gf << "window_title 'Design density r(ρ̃)'"
             sout_r.flush()
 
         if paraview_output:
@@ -570,9 +587,9 @@ def run(ref_levels=5,
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
 
-    parser = ArgParser(description='Ex37 (Topology Optimization)')
+    parser = ArgParser(description='Ex37p (Topology Optimization)')
 
-    parser.add_argument('-r', '--ref_levels',
+    parser.add_argument('-r', '--refine',
                         action='store', default=5, type=int,
                         help="Number of times to refine the mesh uniformly.")
     parser.add_argument("-o", "--order",
@@ -613,12 +630,14 @@ if __name__ == "__main__":
                         help='Enable GLVis visualization')
 
     args = parser.parse_args()
-    parser.print_options(args)
+
+    if myid == 0:
+        parser.print_options(args)
 
     globals()["visualization"] = not args.no_visualization
     globals()["paraview_output"] = args.paraview
 
-    run(ref_levels=args.ref_levels,
+    run(ref_levels=args.refine,
         order=args.order,
         alpha=args.alpha_step_length,
         epsilon=args.epsilon_thickness,

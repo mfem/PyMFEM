@@ -27,7 +27,6 @@ pa = False
 algebraic_ceed = False
 visualization = True
 
-
 def run(ser_ref_levels=1,
         par_ref_levels=1,
         order=1,
@@ -431,7 +430,7 @@ if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
 
     parser = ArgParser(
-        description='Ex34 (Sourse Function using a Submehs Transfer )')
+        description='Ex34p (Sourse Function using a Submehs Transfer )')
 
     parser.add_argument('-rs', '--refine-serial',
                         action='store', default=1, type=int,
