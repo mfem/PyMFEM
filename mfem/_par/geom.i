@@ -2,7 +2,7 @@
 %{
 #include "mfem.hpp"
 #include "numpy/arrayobject.h"
-#include "../common/io_stream.hpp"  
+#include "../common/io_stream.hpp"
 #include "../common/pyoperator.hpp"
 #include "../common/pyintrules.hpp"
 #include "../common/pybilininteg.hpp"

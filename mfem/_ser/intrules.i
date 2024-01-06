@@ -3,7 +3,7 @@
 %{
 #include "fem/intrules.hpp"
 #include "numpy/arrayobject.h"
-#include "../common/pyintrules.hpp"    
+#include "../common/pyintrules.hpp"
 %}
 
 %init %{

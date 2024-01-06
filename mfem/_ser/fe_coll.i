@@ -39,5 +39,5 @@ import_array();
 %include "fem/fe_coll.hpp"
 %pythoncode %{
   DG_FECollection = L2_FECollection
-%}   
+%}
 

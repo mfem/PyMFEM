@@ -2,7 +2,7 @@
 %{
 #include  "mfem.hpp"
 #include "general/mem_manager.hpp"
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"
 %}
 
 %init %{

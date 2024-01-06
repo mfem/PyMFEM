@@ -2,7 +2,7 @@
 %{
 #include <mpi.h>
 #include "general/sets.hpp"
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"
 %}
 
 %init %{

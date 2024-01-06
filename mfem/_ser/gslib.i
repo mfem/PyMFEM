@@ -3,7 +3,7 @@
 #include "mfem.hpp"
 #include "fem/gslib.hpp"
 #include "numpy/arrayobject.h"
-#include "../common/pyoperator.hpp"  
+#include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
 #include "../common/pyintrules.hpp"
 %}

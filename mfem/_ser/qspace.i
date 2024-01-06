@@ -1,10 +1,10 @@
 %module(package="mfem._ser") qspace
 %{
 #include "mfem.hpp"
-#include "numpy/arrayobject.h"  
-#include "../common/io_stream.hpp"  
+#include "numpy/arrayobject.h"
+#include "../common/io_stream.hpp"
 #include "../common/pyoperator.hpp"
-#include "../common/pycoefficient.hpp"  
+#include "../common/pycoefficient.hpp"
 #include "../common/pyintrules.hpp"
 %}
 

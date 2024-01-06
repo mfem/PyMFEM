@@ -1,11 +1,11 @@
 %module(package="mfem._par", directors="1") nonlininteg
 %{
-#include "mfem.hpp"        
+#include "mfem.hpp"
 #include "../common/pycoefficient.hpp"
 #include "../common/pyoperator.hpp"
 #include "../common/pyintrules.hpp"
-#include "../common/pynonlininteg.hpp"  
-using namespace mfem;  
+#include "../common/pynonlininteg.hpp"
+using namespace mfem;
 %}
 /*
 %init %{

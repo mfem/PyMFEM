@@ -7,7 +7,7 @@
 //     in a module which imports i file where std_vector.i is imported.
 %{
 #include <vector>
-#include "mfem.hpp"  
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
 #include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
@@ -35,4 +35,4 @@ import_array();
 %template(vector_HypreParMatrix) std::vector<mfem::HypreParMatrix *>;
 
 
-  
+

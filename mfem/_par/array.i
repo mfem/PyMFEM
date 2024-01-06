@@ -3,10 +3,10 @@
 
 //%rename(Equal) mfem::Array <class T>::operator=;
 %{
-#include <fstream>  
+#include <fstream>
 #include <iostream>
 #include <stdio.h>
-#include <vector>  
+#include <vector>
 #include "../common/io_stream.hpp"
 #include "mfem.hpp"
 #include "numpy/arrayobject.h"
@@ -71,7 +71,7 @@ XXXPTR_SIZE_IN(bool *data_, int asize, bool)
     Array object
     */
     mfem::Array <T>  *arr;
-    arr = new mfem::Array<T>(*(int*)List_or_Tuple);    
+    arr = new mfem::Array<T>(*(int*)List_or_Tuple);
     return arr;
   }
   void __setitem__(int i, const T v) {
@@ -79,7 +79,7 @@ XXXPTR_SIZE_IN(bool *data_, int asize, bool)
     }
   void Assign(const T &a){
      *self = a;
-  }   
+  }
   void FakeToList(void){}
   void __iter__(void){}
 };
@@ -115,7 +115,7 @@ def __iter__(self):
                 raise StopIteration
     return iter_array(self)
 %}
-}  
+}
 
 /*
 void Print(std::ostream &out = mfem::out, int width = 4) const;
@@ -131,8 +131,8 @@ OSTREAM_ADD_DEFAULT_STDOUT_FILE(Array2D, Save)
 #endif
 
 namespace mfem{
-%template(doubleSwap) Swap<double>;  
-%template(intSwap) Swap<int>;  
+%template(doubleSwap) Swap<double>;
+%template(intSwap) Swap<int>;
 }
 %import "../common/array_instantiation_macro.i"
 INSTANTIATE_ARRAY_INT

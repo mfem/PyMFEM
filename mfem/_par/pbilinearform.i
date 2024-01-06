@@ -1,11 +1,11 @@
 %module(package="mfem._par") pbilinearform
 %{
-//#include <mpi.h>  
+//#include <mpi.h>
 #include "mfem.hpp"
 #include "numpy/arrayobject.h"
 #include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
-#include "../common/pyintrules.hpp"  
+#include "../common/pyintrules.hpp"
 %}
 
 %include "../common/mfem_config.i"
@@ -45,7 +45,7 @@ import_array();
 			   OpType &A){
      return self->mfem::BilinearForm::FormSystemMatrix(ess_tdof_list, A);
    }
-};  
+};
 
 // instatitate template methods
 
@@ -57,12 +57,12 @@ import_array();
 %enddef
 
 P_FORM_SYSTEM_MATRIX_WRAP(mfem::SparseMatrix)
-  
+
 #ifdef MFEM_USE_MPI
   P_FORM_SYSTEM_MATRIX_WRAP(mfem::HypreParMatrix)
 #endif
-  
+
 #ifdef MFEM_USE_PETSC
   P_FORM_SYSTEM_MATRIX_WRAP(mfem::PetscParMatrix)
-#endif  
+#endif
 

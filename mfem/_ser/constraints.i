@@ -6,12 +6,12 @@
 %module(package="mfem._ser") constraints
 %feature("autodoc", "1");
 %{
-#include "mfem.hpp"        
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
 #include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
 #include "../common/pysolvers.hpp"
-#include "../common/pyintrules.hpp"  
+#include "../common/pyintrules.hpp"
 %}
 %init %{
 import_array();

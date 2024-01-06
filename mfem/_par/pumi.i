@@ -15,7 +15,7 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "../common/io_stream.hpp"         
+#include "../common/io_stream.hpp"
 #include "numpy/arrayobject.h"
 #include "../common/pycoefficient.hpp"
 

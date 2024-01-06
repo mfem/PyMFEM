@@ -1,13 +1,13 @@
 %module (package="mfem._par") auxiliary
 
 %{
-#include <iostream>  
+#include <iostream>
 #include "mfem.hpp"
 #include "numpy/arrayobject.h"
 #include "../common/pyoperator.hpp"
 #include "../common/pysolvers.hpp"
 #include "../common/pycoefficient.hpp"
-#include "../common/pyintrules.hpp"  
+#include "../common/pyintrules.hpp"
 %}
 
 %init %{

@@ -6,7 +6,7 @@
 #include "linalg/sparsemat.hpp"
 #include "linalg/solvers.hpp"
 #include "../common/pyoperator.hpp"
-#include "../common/pysolvers.hpp"  
+#include "../common/pysolvers.hpp"
 #include "numpy/arrayobject.h"
 using namespace mfem;
 %}
@@ -70,14 +70,14 @@ namespace mfem{
     mfem_error("Mult is not implemented");
   }
   void PyIterativeSolver::MultTranspose(const Vector &b, Vector &x) const{
-    mfem_error("MultTranspose is not implemented");    
+    mfem_error("MultTranspose is not implemented");
   }
   void PyIterativeSolver::SetPreconditioner(Solver &pr){
-    mfem_error("SetPreconditioner is not implemented");      
+    mfem_error("SetPreconditioner is not implemented");
   }
   /// Also calls SetOperator for the preconditioner if there is one
   void PyIterativeSolver::SetOperator(const Operator &op){
-    mfem_error("SetOperator is not implemented");        
+    mfem_error("SetOperator is not implemented");
   }
 } /* end of namespace */
 %}

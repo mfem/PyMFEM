@@ -4,10 +4,10 @@
 
 %{
 #include <fstream>
-#include <iostream>  
+#include <iostream>
 
 #include "mfem.hpp"
-#include "../common/io_stream.hpp"        
+#include "../common/io_stream.hpp"
 #include "../common/pyoperator.hpp"
 #include "numpy/arrayobject.h"
 %}
@@ -94,15 +94,15 @@ class PyOperator(PyOperatorBase):
        raise NotImplementedError('you must specify this method')
 
 class PyTimeDependentOperator(PyTimeDependentOperatorBase):
-   def __init__(self, *args):  
+   def __init__(self, *args):
        PyTimeDependentOperatorBase.__init__(self, *args)
    def _EvalMult(self, x):
        return self.EvalMult(x.GetDataArray())
    def EvalMult(self, x):
        raise NotImplementedError('you must specify this method')
-			 
+
 %}
-  
+
 /*
   void PrintMatlab(std::ostream & out, int n = 0, int m = 0) const;
 */

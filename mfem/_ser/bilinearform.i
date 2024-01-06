@@ -6,7 +6,7 @@
 #include "../common/pycoefficient.hpp"
 #include "../common/pyintrules.hpp"
 #include "../common/pybilininteg.hpp"
-using namespace mfem;  
+using namespace mfem;
 %}
 
 %init %{
@@ -36,7 +36,7 @@ import_array();
 //%feature("director") mfem::BilinearForm;
 
  //%include "fem/coefficient.hpp"
-namespace mfem { 
+namespace mfem {
 %pythonprepend BilinearForm::AddDomainIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     bfi = args[0]
@@ -49,15 +49,15 @@ namespace mfem {
     bfi = args[0]
     self._integrators.append(bfi)
     self.UseExternalIntegrators()
-    #bfi.thisown=0 
-   %} 
+    #bfi.thisown=0
+   %}
 %pythonprepend BilinearForm::AddBdrFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     bfi = args[0]
     self._integrators.append(bfi)
     self.UseExternalIntegrators()
     #bfi.thisown=0
-   %} 
+   %}
 %pythonprepend BilinearForm::AddInteriorFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(bfi)
@@ -74,7 +74,7 @@ namespace mfem {
     self._integrators.append(constr_integ)
     # constr_integ is deleted by Hybridization destructor
     constr_integ.thisown = 0
-   %} 
+   %}
 %pythonprepend MixedBilinearForm::AddDomainIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     bfi = args[0]
@@ -86,7 +86,7 @@ namespace mfem {
     bfi = args[0]
     self._integrators.append(bfi)
     bfi.thisown=0
-   %} 
+   %}
 %pythonprepend MixedBilinearForm::AddTraceFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(bfi)
@@ -97,8 +97,8 @@ namespace mfem {
     bfi = args[0]
     self._integrators.append(bfi)
     self.UseExternalIntegrators()
-    #bfi.thisown=0 
-   %} 
+    #bfi.thisown=0
+   %}
 %pythonappend MixedBilinearForm::SpMat %{
     if not hasattr(self, "_spmat"): self._spmat = []
     self._spmat.append(val)
@@ -109,7 +109,7 @@ namespace mfem {
     di = args[0]
     self._integrators.append(di)
     di.thisown=0
-   %} 
+   %}
 %pythonprepend DiscreteLinearOperator::AddTraceFaceInterpolator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     di = args[0]
@@ -135,7 +135,7 @@ INSTANTIATE_ARRAY0(BilinearForm *, BilinearForm, 1)
 
 %include "fem/bilinearform.hpp"
 
-// instatitate template methods 
+// instatitate template methods
 %define FORM_SYSTEM_MATRIX_WRAP(OsType)
 %template(FormLinearSystem) mfem::BilinearForm::FormLinearSystem<mfem:: ## OsType>;
 %template(FormSystemMatrix) mfem::BilinearForm::FormSystemMatrix<mfem:: ## OsType>;
@@ -148,7 +148,7 @@ FORM_SYSTEM_MATRIX_WRAP(SparseMatrix)
   FORM_SYSTEM_MATRIX_WRAP(mfem::HypreParMatrix)
 #endif
  */
-  
+
 #ifdef MFEM_USE_PETSC
   FORM_SYSTEM_MATRIX_WRAP(mfem::PetscParMatrix)
-#endif  
+#endif

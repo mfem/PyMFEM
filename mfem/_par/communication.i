@@ -3,7 +3,7 @@
 
 %{
 #include <fstream>
-#include <iostream>  
+#include <iostream>
 #include <mpi.h>
 #include "../common/io_stream.hpp"
 #include "mfem.hpp"

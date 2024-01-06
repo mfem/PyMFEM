@@ -1,9 +1,9 @@
 %module(package="mfem._par") element
-  
+
 %{
-#include <iostream>  
+#include <iostream>
 #include "mfem.hpp"
-#include "numpy/arrayobject.h"  
+#include "numpy/arrayobject.h"
 #include "../common/pyoperator.hpp"
 #include "../common/pyintrules.hpp"
 %}

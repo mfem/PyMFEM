@@ -2,7 +2,7 @@
 %{
 #include "linalg/sparsesmoothers.hpp"
 #include "../common/pyoperator.hpp"
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"
 %}
 
 %init %{
@@ -16,4 +16,4 @@ import_array();
 %import "matrix.i"
 %import "../common/exception.i"
 
-%include "linalg/sparsesmoothers.hpp" 
+%include "linalg/sparsesmoothers.hpp"

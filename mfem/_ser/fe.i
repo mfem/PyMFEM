@@ -1,7 +1,7 @@
 %module(package="mfem._ser") fe
 
 %{
-#include <iostream>  
+#include <iostream>
 #include "mfem.hpp"
 #include "numpy/arrayobject.h"
 #include "../common/pyoperator.hpp"

@@ -1,11 +1,11 @@
 %module(package="mfem._par", directors="1")  bilininteg
 %{
 #include "mfem.hpp"
-#include "../common/pyoperator.hpp"    
+#include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
 #include "../common/pybilininteg.hpp"
 #include "../common/pyintrules.hpp"
-#include "../common/pynonlininteg.hpp"  
+#include "../common/pynonlininteg.hpp"
 #include "numpy/arrayobject.h"
   //using namespace mfem;
 %}

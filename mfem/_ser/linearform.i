@@ -7,12 +7,12 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "mfem.hpp"    
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
 #include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
 #include "../common/pyintrules.hpp"
-#include "../common/pylininteg.hpp"  
+#include "../common/pylininteg.hpp"
 %}
 
 %init %{
@@ -35,29 +35,29 @@ import_array();
  //%import "fem/fespace.hpp
 
  //%include "fem/coefficient.hpp"
-namespace mfem { 
+namespace mfem {
 %pythonprepend LinearForm::AddDomainIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     lfi = args[0]
     self._integrators.append(lfi)
-    lfi.thisown=0 
+    lfi.thisown=0
    %}
 %pythonprepend LinearForm::AddBoundaryIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
-    lfi = args[0]	     
+    lfi = args[0]
     self._integrators.append(lfi)
     lfi.thisown=0
-   %} 
+   %}
 %pythonprepend LinearForm::AddBdrFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     lfi = args[0]
     self._integrators.append(lfi)
-    lfi.thisown=0 
+    lfi.thisown=0
    %}
 %pythonprepend LinearForm::AddInteriorFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(lfi)
-    lfi.thisown=0 
+    lfi.thisown=0
    %}
 }
 

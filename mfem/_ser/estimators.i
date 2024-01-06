@@ -6,7 +6,7 @@
 #include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
 #include "../common/pyintrules.hpp"
-#include "../common/pybilininteg.hpp"  
+#include "../common/pybilininteg.hpp"
   %}
 // initialization required to return numpy array from SWIG
 %init %{

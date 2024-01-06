@@ -3,12 +3,12 @@
 
 //%rename(Equal) mfem::Array <class T>::operator=;
 %{
-#include <fstream>  
+#include <fstream>
 #include <iostream>
 #include <stdio.h>
 #include "../common/io_stream.hpp"
 #include "mfem.hpp"
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"
 %}
 
 %begin %{
@@ -77,8 +77,8 @@ XXXPTR_SIZE_IN(bool *data_, int asize, bool)
     if (i >= 0){
         (* self)[i] = v;
     } else {
-       int len = self->Size();          
-       (* self)[len+i] = v;      
+       int len = self->Size();
+       (* self)[len+i] = v;
     }
   }
   void Assign(const T &a){
@@ -143,8 +143,8 @@ OSTREAM_ADD_DEFAULT_STDOUT_FILE(Array2D, Save)
 #endif
 
 namespace mfem{
-%template(doubleSwap) Swap<double>;  
-%template(intSwap) Swap<int>;  
+%template(doubleSwap) Swap<double>;
+%template(intSwap) Swap<int>;
 }
 
 %import "../common/array_instantiation_macro.i"

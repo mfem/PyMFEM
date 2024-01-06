@@ -1,7 +1,7 @@
 %module(package="mfem._par") plinearform
 %{
 #include "mfem.hpp"
-#include "numpy/arrayobject.h"  
+#include "numpy/arrayobject.h"
 #include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
 #include "../common/pyintrules.hpp"

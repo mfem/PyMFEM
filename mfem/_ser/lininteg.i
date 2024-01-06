@@ -7,12 +7,12 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "mfem.hpp"    
-#include "../common/pyoperator.hpp"      
+#include "mfem.hpp"
+#include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
 #include "../common/pylininteg.hpp"
-#include "../common/pyintrules.hpp"  
-#include "numpy/arrayobject.h"        
+#include "../common/pyintrules.hpp"
+#include "numpy/arrayobject.h"
 %}
 
 %init %{

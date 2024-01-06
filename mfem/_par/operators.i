@@ -6,7 +6,7 @@
 #include <fstream>
 #include <iostream>
 #include "mfem.hpp"
-#include "../common/io_stream.hpp"        
+#include "../common/io_stream.hpp"
 #include "numpy/arrayobject.h"
 #include "../common/pyoperator.hpp"
 %}
@@ -26,12 +26,12 @@ OSTREAM_TYPEMAP(std::ostream&)
 
 %exception {
     try { $action }
-    catch (Swig::DirectorException &e) { SWIG_fail; }    
+    catch (Swig::DirectorException &e) { SWIG_fail; }
     //catch (...){
     //  SWIG_fail;
     //}
     //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    //    catch (std::exception &e) { SWIG_fail; }
 }
 %feature("director:except") {
     if ($error != NULL) {
@@ -95,13 +95,13 @@ class PyOperator(PyOperatorBase):
        raise NotImplementedError('you must specify this method')
 
 class PyTimeDependentOperator(PyTimeDependentOperatorBase):
-   def __init__(self, *args):  
+   def __init__(self, *args):
        PyTimeDependentOperatorBase.__init__(self, *args)
    def _EvalMult(self, x):
        return self.EvalMult(x.GetDataArray())
    def EvalMult(self, x):
        raise NotImplementedError('you must specify this method')
-			 
+
 %}
 
 /*

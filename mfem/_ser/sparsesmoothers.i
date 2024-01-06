@@ -2,7 +2,7 @@
 %{
 #include "linalg/sparsesmoothers.hpp"
 #include "../common/pyoperator.hpp"
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"
 %}
 
 %init %{
@@ -23,7 +23,7 @@ import_array();
 /*
 %extend mfem::SparseSmoother{
   //  void mfem::SparseSmoother::SetOperator(const SparseMatrix &a) {
-  void SetOperator(mfem::SparseMatrix &a) {  
+  void SetOperator(mfem::SparseMatrix &a) {
     std::cout << "this is called\n";
     std::cout << std::to_string(a.Height()) << "\n";
     mfem::SparseMatrix *b = new mfem::SparseMatrix(a);
@@ -35,4 +35,4 @@ import_array();
 
 
 
-  
+

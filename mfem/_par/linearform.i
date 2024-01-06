@@ -12,7 +12,7 @@
 #include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
 #include "../common/pyintrules.hpp"
-#include "../common/pylininteg.hpp"  
+#include "../common/pylininteg.hpp"
 %}
 
 %init %{
@@ -36,33 +36,33 @@ import_array();
 
 %exception {
     try { $action }
-    catch (Swig::DirectorException &e) { SWIG_fail; }    
+    catch (Swig::DirectorException &e) { SWIG_fail; }
 }
 
  //%include "fem/coefficient.hpp"
-namespace mfem { 
-%pythonprepend LinearForm::AddDomainIntegrator %{ 
+namespace mfem {
+%pythonprepend LinearForm::AddDomainIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
-    lfi = args[0]	     
+    lfi = args[0]
     self._integrators.append(lfi)
-    lfi.thisown=0 
+    lfi.thisown=0
    %}
-%pythonprepend LinearForm::AddBoundaryIntegrator %{ 
+%pythonprepend LinearForm::AddBoundaryIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
-    lfi = args[0]	     	     
+    lfi = args[0]
     self._integrators.append(lfi)
-    lfi.thisown=0 
-   %} 
-%pythonprepend LinearForm::AddBdrFaceIntegrator %{ 
+    lfi.thisown=0
+   %}
+%pythonprepend LinearForm::AddBdrFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
-    lfi = args[0]	     
+    lfi = args[0]
     self._integrators.append(lfi)
-    lfi.thisown=0 
-   %} 
+    lfi.thisown=0
+   %}
 %pythonprepend LinearForm::AddInteriorFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(lfi)
-    lfi.thisown=0 
+    lfi.thisown=0
    %}
 }
 %include "fem/linearform.hpp"
