@@ -21,7 +21,7 @@ from numpy import sin, cos, array, pi, sqrt, floor
 from mpi4py import MPI
 num_procs = MPI.COMM_WORLD.size
 myid = MPI.COMM_WORLD.rank
-smyid = '{:0>6d}'.format(myid)
+smyid = '.{:0>6d}'.format(myid)
 
 pa = False
 algebraic_ceed = False
@@ -125,7 +125,7 @@ def run(ser_ref_levels=1,
     # 7a. Save the SubMesh and associated current density in parallel. This
     #     output can be viewed later using GLVis:
     #        "glvis -np <np> -m cond_mesh -g cond_j"
-    pmesh_cond.Print("cond_mesh."+smyid, 8)
+    pmesh_cond.Print("cond_mesh"+smyid, 8)
     j_cond.Save("cond_j"+smyid, 8)
 
     # 7b. Send the current density, computed on the SubMesh, to a GLVis server.
@@ -253,7 +253,7 @@ def run(ser_ref_levels=1,
 
     # 16. Save the refined mesh and the solution in parallel. This output can
     #     be viewed later using GLVis: "glvis -np <np> -m mesh -g sol".
-    pmesh.Print("mesh."+smyid, 8)
+    pmesh.Print("mesh"+smyid, 8)
     x.Save("sol"+smyid, 8)
 
     # 17. Send the solution by socket to a GLVis server.
