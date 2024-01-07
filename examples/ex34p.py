@@ -457,7 +457,7 @@ if __name__ == "__main__":
                         default="cpu", type=str,
                         help="Device configuration string, see Device::Configure().")
     parser.add_argument("-no-vis", "--no-visualization",
-                        action='store_false', default=True,
+                        action='store_true', default=False,
                         help='Enable GLVis visualization')
 
     args = parser.parse_args()
@@ -465,7 +465,7 @@ if __name__ == "__main__":
         parser.print_options(args)
 
     globals()["pa"] = args.partial_assembly
-    globals()["visualization"] = args.no_visualization
+    globals()["visualization"] = not args.no_visualization
 
     run(ser_ref_levels=args.refine_serial,
         par_ref_levels=args.refine_parallel,
