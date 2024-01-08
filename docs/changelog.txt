@@ -1,15 +1,19 @@
         <<<  Change Log. >>>
+
 2023  11 - 2024 01
       * MFEM 4.6 support
-      - Default MFEM SHA is updated to a version on 11/26/2023 (slightly newer than
-        MFEM4.6 release)
-      - new Python version of examples, translated from ex34, 34p, 35p, 36, 36p, 37,
-        37p, 38
-      - intrules_cut.i is added
-      - PyLinFormIntegraor, PyBilinearFormIntegrator, PyNonlinearFormIntegrator are
-        added as Director classes, which allows for implementing these integrators
-	using Python (see ex38.py)
-	
+       - Default MFEM SHA is updated to a version on 11/26/2023 (slightly newer than
+         MFEM4.6 release)
+       - new Python version of examples, translated from ex34, 34p, 35p, 36, 36p, 37,
+         37p, 38
+       - intrules_cut.i is added
+       - PyLinFormIntegraor, PyBilinearFormIntegrator, PyNonlinearFormIntegrator are
+         added as Director classes, which allows for implementing these integrators
+  	 using Python (see ex38.py)
+       - following method of (Par)MixedBilinearForm accept HypreParMatrix as OperatorPtr
+         - (Par)MixedBilinearForm::FormRectangularSystemMatrix
+          - (Par)MixedBilinearForm::FormRectangularLinearSystem
+
 2023 01.
         * Improved mfem.jit decorator to create Numba JITed coefficient.
           (note, this involves an incompatible API change)
