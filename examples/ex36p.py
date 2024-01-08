@@ -317,7 +317,7 @@ def run(refs=3,
         print("Outer iterations: " + str(k+1))
         print(" Total iterations: " + str(total_iterations))
         print(" Total dofs:       " +
-              str(H1fes.GetTrueVSize() + L2fes.GetTrueVSize()))
+              str(H1fes.GlobalTrueVSize() + L2fes.GlobalTrueVSize()))
 
     # 11. Exact solution.
     if visualization:
