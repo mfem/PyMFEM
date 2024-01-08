@@ -8,7 +8,9 @@
 #include <stdio.h>
 #include "../common/io_stream.hpp"
 #include "mfem.hpp"
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"
+
+template class mfem::Array<unsigned int>;
 %}
 
 %begin %{
@@ -152,3 +154,29 @@ INSTANTIATE_ARRAY_INT
 INSTANTIATE_ARRAY_DOUBLE
 IGNORE_ARRAY_METHODS(bool)
 INSTANTIATE_ARRAY_BOOL
+
+ // Array<T> for basic types using Numpy Data Types
+ // IGNORE_ARRAY_METHODS(unsigned int)
+ /*
+IGNORE_ARRAY_METHODS(unsigned char)
+IGNORE_ARRAY_METHODS(unsigned short)
+IGNORE_ARRAY_METHODS(unsigned long long)
+IGNORE_ARRAY_METHODS(char)
+IGNORE_ARRAY_METHODS(short)
+IGNORE_ARRAY_METHODS(long long)
+IGNORE_ARRAY_METHODS(float)
+ */
+ // unsigned integer
+INSTANTIATE_ARRAY_NUMPYARRAY(uint, unsigned int, NPY_UINT)       // 32bit
+ /*
+INSTANTIATE_ARRAY_NUMPYARRAY(uint8, unsigned char, NPY_UBYTE)    //  8bit
+INSTANTIATE_ARRAY_NUMPYARRAY(uint16, unsigned short, NPY_USHORT) // 16bit
+INSTANTIATE_ARRAY_NUMPYARRAY(uint64, unsigned long long, NPY_ULONGLONG)  // 64bit
+ // integer
+INSTANTIATE_ARRAY_NUMPYARRAY(int8, char, NPY_BYTE)    //  8bit
+INSTANTIATE_ARRAY_NUMPYARRAY(int16, short, NPY_SHORT) // 16bit
+INSTANTIATE_ARRAY_NUMPYARRAY(int64, long long, NPY_LONGLONG)  // 64bit
+ // float
+INSTANTIATE_ARRAY_NUMPYARRAY(float, float, NPY_FLOAT32)  // 32bit
+ */
+
