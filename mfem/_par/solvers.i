@@ -28,6 +28,7 @@ import_array();
 %import "operators.i"
 %import "matrix.i"
 %import "sparsemat.i"
+%import "hypre.i"
 %import "../common/exception.i"
 
 %ignore mfem::IterativeSolverMonitor::SetIterativeSolver;

@@ -71,7 +71,12 @@ def GroupEdge(self, group, i, *args):
         return $action(self, group, i, *args)      
 %}
 
+%typemap(out, optimal="1") mfem::Mesh %{
+  /* return by value optimization */
+  $result = SWIG_NewPointerObj(SWIG_as_voidptr(new $1_ltype($1)), $descriptor(mfem::Mesh *), 1);
+%}
 
+%exception; /* undo default director exception */
 %include "mesh/pmesh.hpp"
 
 namespace mfem{

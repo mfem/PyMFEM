@@ -27,6 +27,8 @@ import_array();
 %import "bilininteg.i"
 %import "linearform.i"
 %import "gridfunc.i"
+%import "hybridization.i"
+%import "staticcond.i"
 %include "../common/exception_director.i"
 
 %feature("director") mfem::BilinearForm;

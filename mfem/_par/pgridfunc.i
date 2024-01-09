@@ -72,6 +72,7 @@ ISTREAM_TYPEMAP(std::istream&)
 %newobject mfem::ParGridFunction::ParallelAverage;
 %newobject mfem::ParGridFunction::ParallelProject;
 %newobject mfem::ParGridFunction::GetTrueDofs;
+%newobject mfem::ParGridFunction::GetSerialGridFunction;
 
 
 %pythonprepend mfem::ParGridFunction::ParGridFunction %{
@@ -96,6 +97,12 @@ if (len(args) == 2 and isinstance(args[1], str) and
 %include "../common/typemap_macros.i"
 LIST_TO_MFEMOBJ_POINTERARRAY_IN(mfem::IntegrationRule const *irs[],  mfem::IntegrationRule *, 0)
 
+%typemap(out, optimal="1") mfem::GridFunction %{
+  /* return by value optimization */
+  $result = SWIG_NewPointerObj(SWIG_as_voidptr(new $1_ltype($1)), $descriptor(mfem::GridFunction *), 1);
+%}
+
+%exception; /* undo default director exception */
 %include "fem/pgridfunc.hpp"
 
 namespace mfem{
