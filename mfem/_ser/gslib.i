@@ -17,6 +17,7 @@ import_array();
 %include "exception.i"
 %include "../common/typemap_macros.i"
 %include "../common/exception.i"
+%import array.i
 %import vector.i
 %import mesh.i
 %import gridfunc.i
