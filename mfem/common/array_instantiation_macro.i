@@ -300,7 +300,6 @@ INSTANTIATE_ARRAY0(XXX, XXX, 0)
  };
 %enddef
 
-
 %define IGNORE_ARRAY_METHODS(XXX)
 %ignore mfem::Array<XXX>::Union;
 %ignore mfem::Array<XXX>::Find;
