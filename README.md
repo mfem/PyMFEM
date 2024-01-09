@@ -140,4 +140,4 @@ Please refer the developers' web sites for the external libraries
 * Hypre: https://computing.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods
 * METIS: http://glaros.dtc.umn.edu/gkhome/metis/metis/overview
 * libceed: https://github.com/CEED/libCEED
-* gslib": https://github.com/Nek5000/gslib
+* gslib: https://github.com/Nek5000/gslib
