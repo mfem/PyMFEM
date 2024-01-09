@@ -209,6 +209,66 @@ INSTANTIATE_ARRAY0(XXX, XXX, 0)
  };
 %enddef
 
+ // tool to deffine mfem::Array returining elements using numpy Scalar
+ // mfem::Array(unsigned int) -> uintArray
+ // NP_TYPE is things like NPY_FLOAT32
+%define INSTANTIATE_ARRAY_NUMPYARRAY(XXX, YYY, NP_TYPE)
+%template(##XXX##Array) mfem::Array<YYY>;
+%extend mfem::Array<YYY> { 
+  PyObject * __getitem__(PyObject* param) {
+    int len = self->Size();    
+    if (PySlice_Check(param)) {
+        long start = 0, stop = 0, step = 0, slicelength = 0;
+        int check;
+
+	//%#ifdef TARGET_PY3
+   	check = PySlice_GetIndicesEx(param, len, &start, &stop, &step,
+				     &slicelength);
+        //%#else
+   	//check = PySlice_GetIndicesEx((PySliceObject*)param, len, &start, &stop, &step,
+	//			     &slicelength);
+	//%#endif
+
+	if (check == -1) {
+            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<bool> failed.");
+            return NULL; 
+	}
+	if (step == 1) {
+            mfem::Array<YYY> *vec;
+            vec = new mfem::Array<YYY>(self->GetData() +  start, slicelength);
+            return SWIG_NewPointerObj(SWIG_as_voidptr(vec), $descriptor(mfem::Array<YYY> *), 1);  
+	} else {
+            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Array<T> with stride>1 not supported.");
+	    return NULL;
+	}
+    } else {
+        PyErr_Clear();
+        long idx = PyInt_AsLong(param);
+        if (PyErr_Occurred()) {
+           PyErr_SetString(PyExc_ValueError, "Argument must be either int or slice");
+            return NULL; 	
+        }
+        PyObject *np_val = NULL;
+        PyArray_Descr *descr = NULL;
+        if(! (descr = PyArray_DescrFromType(NP_TYPE))) {
+           PyErr_SetString(PyExc_TypeError, "Improper descriptor");
+           return NULL;
+        }
+
+	YYY *data_ptr; 
+        if (idx >= 0){
+ 	  data_ptr = &(self->operator[](idx));
+	} else {
+ 	  data_ptr = &(self->operator[](idx+len));
+	}
+        np_val = PyArray_Scalar(data_ptr, descr, NULL);
+       return np_val;
+    }
+  }
+ };
+%enddef
+
+
 %define IGNORE_ARRAY_METHODS(XXX)
 %ignore mfem::Array<XXX>::Union;
 %ignore mfem::Array<XXX>::Find;
