@@ -8,13 +8,15 @@
 #include <fstream>
 #include <limits>
 #include <cmath>
-#include <cstring>  
+#include <cstring>
 #include <mpi.h>
 #include "mfem.hpp"
-#include "pyoperator.hpp"  
-#include "../common/io_stream.hpp"      
-#include "../common/pycoefficient.hpp"  
 #include "numpy/arrayobject.h"
+#include "../common/io_stream.hpp"
+#include "../common/pyoperator.hpp"
+#include "../common/pycoefficient.hpp"
+#include "../common/pyintrules.hpp"
+#include "../common/pybilininteg.hpp"
 %}
 
 %include "../common/mfem_config.i"
@@ -50,12 +52,12 @@ ISTREAM_TYPEMAP(std::istream&)
     $1 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
     for (i = 0; i < size; i++) {
        PyObject *o = PyList_GetItem($input,i);
-       void *temp;       
+       void *temp;
        if (SWIG_ConvertPtr(o, &temp,
 	   $descriptor(mfem::IntegrationRule *),SWIG_POINTER_EXCEPTION) == -1){
            return NULL;
        }
-       $1[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
+       $1[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);
      }
   } else {
     PyErr_SetString(PyExc_TypeError,"not a list");
@@ -91,9 +93,9 @@ if (len(args) == 2 and isinstance(args[1], str) and
     pfes.thisown = 0
     g0.thisown = 0
     self.this = x.this
-    return 
+    return
 %}
-   
+
 %include "../common/typemap_macros.i"
 LIST_TO_MFEMOBJ_POINTERARRAY_IN(mfem::IntegrationRule const *irs[],  mfem::IntegrationRule *, 0)
 
@@ -108,7 +110,7 @@ LIST_TO_MFEMOBJ_POINTERARRAY_IN(mfem::IntegrationRule const *irs[],  mfem::Integ
 namespace mfem{
 %extend ParGridFunction{
 ParGridFunction(mfem::ParFiniteElementSpace *fes, const mfem::Vector &v, int offset){
-   mfem::ParGridFunction *gf;   
+   mfem::ParGridFunction *gf;
    gf = new mfem::ParGridFunction(fes, v.GetData() + offset);
    return gf;
  }
@@ -126,12 +128,12 @@ ParGridFunction(mfem::ParFiniteElementSpace *fes, const mfem::Vector &v, int off
   }
   //void Assign(const mfem::GridFunction &v) {
   //  (* self) = v;
-  //}  
+  //}
   void Assign(PyObject* param) {
     /* note that these error does not raise error in python
        type check is actually done in wrapper layer */
     PyArrayObject *param0 = reinterpret_cast<PyArrayObject *>(param);
-      
+
     if (!PyArray_Check(param0)){
        PyErr_SetString(PyExc_ValueError, "Input data must be ndarray");
        return;
@@ -146,19 +148,19 @@ ParGridFunction(mfem::ParFiniteElementSpace *fes, const mfem::Vector &v, int off
       PyErr_SetString(PyExc_ValueError, "Input data NDIM must be one");
       return ;
     }
-    npy_intp *shape = PyArray_DIMS(param0);    
+    npy_intp *shape = PyArray_DIMS(param0);
     int len = self->Size();
-    if (shape[0] != len){    
+    if (shape[0] != len){
       PyErr_SetString(PyExc_ValueError, "input data length does not match");
       return ;
-    }    
+    }
     (mfem::Vector &)(* self) = (double *) PyArray_DATA(param0);
   }
- 
+
 /*  this will be turn on in mfem-3.3.3
 ParGridFunction(ParMesh *pmesh, const char *gf_file){
     mfem::ParGridFunction *pgf;
-    mfem::ParFiniteElementSpace *pfes;    
+    mfem::ParFiniteElementSpace *pfes;
     std::ifstream gfstream(gf_file);
     if (!gfstream)
     {
@@ -168,9 +170,9 @@ ParGridFunction(ParMesh *pmesh, const char *gf_file){
     pgf = new mfem::GridFunction(pmesh, gfstream);
     return pgf;
     }
-*/ 
+*/
 };  //end of extend
-}  // end of namespace  
+}  // end of namespace
 
 /*
    virtual void Save(std::ostream &out) const;

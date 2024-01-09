@@ -36,7 +36,7 @@
     SWIG_fail;
   }
   else {
-    std::ofstream  out(filename); 
+    std::ofstream  out(filename);
     $1 = &out;
   }
 }

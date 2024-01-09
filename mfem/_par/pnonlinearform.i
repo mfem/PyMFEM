@@ -1,12 +1,11 @@
 %module(package="mfem._par") pnonlinearform
 %{
 #include <mpi.h>
-#include "config/config.hpp"
-#include "fem/pnonlinearform.hpp"
-#include "fem/linearform.hpp"
-#include "numpy/arrayobject.h"  
-#include "pyoperator.hpp"
-#include "../common/pycoefficient.hpp"  
+#include "mfem.hpp"
+#include "numpy/arrayobject.h"
+#include "../common/pyoperator.hpp"
+#include "../common/pycoefficient.hpp"
+#include "../common/pyintrules.hpp"
 %}
 
 %include "../common/mfem_config.i"

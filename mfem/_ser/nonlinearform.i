@@ -1,13 +1,12 @@
 %module(package="mfem._ser") nonlinearform
 %{
-#include "fem/estimators.hpp"  
-#include "fem/linearform.hpp"    
-#include "fem/nonlininteg.hpp"
-#include "fem/nonlinearform.hpp"
-#include "fem/fespace.hpp"
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"
-#include "../common/pycoefficient.hpp"  
+#include "../common/pyoperator.hpp"
+#include "../common/pycoefficient.hpp"
+#include "../common/pyintrules.hpp"
+#include "../common/pybilininteg.hpp"
+#include "../common/pynonlininteg.hpp"
 %}
 
 %init %{
@@ -23,38 +22,40 @@ import_array();
 %include "../common/typemap_macros.i"
 
 
-namespace mfem { 
+namespace mfem {
 %pythonprepend NonlinearForm::AddDomainIntegrator %{
 #    if not hasattr(self, "_integrators"): self._integrators = []
+    nlfi = args[0]
 #    self._integrators.append(nlfi)
-    nlfi.thisown=0 
+    nlfi.thisown=0
 %}
 %pythonprepend NonlinearForm::AddInteriorFaceIntegrator %{
 #    if not hasattr(self, "_integrators"): self._integrators = []
 #    self._integrators.append(nlfi)
-    nlfi.thisown=0 
+    nlfi.thisown=0
 %}
 %pythonprepend NonlinearForm::AddBdrFaceIntegrator %{
 #    if not hasattr(self, "_integrators"): self._integrators = []
-#    self._integrators.append(nlfi)
     nlfi = args[0]
-    nlfi.thisown=0 
+#    self._integrators.append(nlfi)
+    nlfi.thisown=0
 %}
 %pythonprepend BlockNonlinearForm::AddDomainIntegrator %{
 #    if not hasattr(self, "_integrators"): self._integrators = []
+    nlfi = args[0]
 #    self._integrators.append(nlfi)
-    nlfi.thisown=0 
+    nlfi.thisown=0
 %}
 %pythonprepend BlockNonlinearForm::AddInteriorFaceIntegrator %{
 #    if not hasattr(self, "_integrators"): self._integrators = []
 #    self._integrators.append(nlfi)
-    nlfi.thisown=0 
+    nlfi.thisown=0
 %}
 %pythonprepend BlockNonlinearForm::AddBdrFaceIntegrator %{
 #    if not hasattr(self, "_integrators"): self._integrators = []
-#    self._integrators.append(nlfi)
     nlfi = args[0]
-    nlfi.thisown=0 
+#    self._integrators.append(nlfi)
+    nlfi.thisown=0
 %}
 }
 

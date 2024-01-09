@@ -2,26 +2,29 @@
 %feature("autodoc", "1");
 
 %begin %{
-#ifndef PY_SSIZE_T_CLEAN  
+#ifndef PY_SSIZE_T_CLEAN
 #define PY_SSIZE_T_CLEAN
 #endif
 %}
 
 %{
 
-  #include <fstream>  
+  #include <fstream>
   #include <iostream>
   #include <sstream>
   #include <limits>
   #include <cmath>
   #include <cstring>
   #include <ctime>
-  #include "mfem/mfem.hpp"  
-  #include "../common/pycoefficient.hpp"
-  #include "pyoperator.hpp"  
+  #include "mfem/mfem.hpp"
   #include "numpy/arrayobject.h"
   #include "../common/io_stream.hpp"
-  using namespace mfem;  
+  #include "../common/pycoefficient.hpp"
+  #include "../common/pyoperator.hpp"
+  #include "../common/pyintrules.hpp"
+  #include "../common/pybilininteg.hpp"
+
+  using namespace mfem;
 %}
 // initialization required to return numpy array from SWIG
 %init %{
@@ -77,9 +80,9 @@ LIST_TO_MFEMOBJ_POINTERARRAY_IN(mfem::IntegrationRule const *irs[],  mfem::Integ
 
 namespace mfem{
 %extend GridFunction{
-     
+
 GridFunction(mfem::FiniteElementSpace *fes, const mfem::Vector &v, int offset){
-   mfem::GridFunction *gf;   
+   mfem::GridFunction *gf;
    gf = new mfem::GridFunction(fes, v.GetData() + offset);
    return gf;
 }
@@ -91,12 +94,12 @@ GridFunction(mfem::FiniteElementSpace *fes, const mfem::Vector &v, int offset){
   }
   void Assign(const mfem::GridFunction &v) {
     (* self) = v;
-  }  
+  }
   void Assign(PyObject* param) {
     /* note that these error does not raise error in python
        type check is actually done in wrapper layer */
     PyArrayObject *param0 = reinterpret_cast<PyArrayObject *>(param);
-      
+
     if (!PyArray_Check(param0)){
        PyErr_SetString(PyExc_ValueError, "Input data must be ndarray");
        return;
@@ -111,21 +114,21 @@ GridFunction(mfem::FiniteElementSpace *fes, const mfem::Vector &v, int offset){
       PyErr_SetString(PyExc_ValueError, "Input data NDIM must be one");
       return ;
     }
-    npy_intp *shape = PyArray_DIMS(param0);    
+    npy_intp *shape = PyArray_DIMS(param0);
     int len = self->Size();
-    if (shape[0] != len){    
+    if (shape[0] != len){
       PyErr_SetString(PyExc_ValueError, "input data length does not match");
       return ;
-    }    
+    }
     (Vector &)(* self) = (double *) PyArray_DATA(param0);
   }
 
 void SaveToFile(const char *gf_file, const int precision) const
    {
         std::cerr << "\nWarning Deprecated : Use Save(filename) insteead of SaveToFile \n";
-	std::ofstream mesh_ofs(gf_file);	
+	std::ofstream mesh_ofs(gf_file);
         mesh_ofs.precision(precision);
-        self->Save(mesh_ofs);	
+        self->Save(mesh_ofs);
    }
 
 PyObject* WriteToStream(PyObject* StringIO) const  {
@@ -133,12 +136,12 @@ PyObject* WriteToStream(PyObject* StringIO) const  {
     if (!module){
    	 PyErr_SetString(PyExc_RuntimeError, "Can not load io module");
          return (PyObject *) NULL;
-    }      
+    }
     PyObject* cls = PyObject_GetAttrString(module, "StringIO");
     if (!cls){
    	 PyErr_SetString(PyExc_RuntimeError, "Can not load StringIO");
          return (PyObject *) NULL;
-    }      
+    }
     int check = PyObject_IsInstance(StringIO, cls);
     Py_DECREF(module);
     if (! check){
@@ -155,9 +158,9 @@ PyObject* WriteToStream(PyObject* StringIO) const  {
        PyErr_SetString(PyExc_RuntimeError, "Error occured when writing IOString");
        return (PyObject *) NULL;
     }
-    return ret;      
+    return ret;
 }
- 
+/*
 GridFunction & iadd(GridFunction &c)
    {
       *self += c;
@@ -183,9 +186,10 @@ GridFunction & idiv(double c)
       * self /= c;
       return *self;
    }
-  }  
-}
-
+*/
+   }    // end of extend
+ }   //end of namespace
+   /*
 %pythoncode %{
 def __iadd__(self, v):
     ret = _gridfunc.GridFunction_iadd(self, v)
@@ -207,8 +211,9 @@ def __imul__(self, v):
 GridFunction.__iadd__  = __iadd__
 GridFunction.__idiv__  = __idiv__
 GridFunction.__isub__  = __isub__
-GridFunction.__imul__  = __imul__      
-%} 
+GridFunction.__imul__  = __imul__
+%}
+   */
 
 /*
 fem/gridfunc.hpp:   virtual void Save(std::ostream &out) const;
@@ -219,5 +224,5 @@ fem/gridfunc.hpp:   void SaveSTL(std::ostream &out, int TimesToRefine = 1);
 #ifndef SWIGIMPORTED
 OSTREAM_ADD_DEFAULT_FILE(GridFunction, Save)
 OSTREAM_ADD_DEFAULT_FILE(QuadratureFunction, Save)
-#endif   
-  
+#endif
+

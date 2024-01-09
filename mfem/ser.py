@@ -31,6 +31,7 @@ from  mfem._ser.linearform import *
 from  mfem._ser.bilininteg import *
 from  mfem._ser.gridfunc import *
 from  mfem._ser.intrules import *
+from  mfem._ser.intrules_cut import *
 from  mfem._ser.fe import *
 from  mfem._ser.ode import *
 from  mfem._ser.bilinearform import *

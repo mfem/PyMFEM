@@ -1,8 +1,8 @@
 %module(package="mfem._par") sparsesmoothers
 %{
 #include "linalg/sparsesmoothers.hpp"
-#include "pyoperator.hpp"
-#include "numpy/arrayobject.h"    
+#include "../common/pyoperator.hpp"
+#include "numpy/arrayobject.h"
 %}
 
 %init %{
@@ -16,4 +16,4 @@ import_array();
 %import "matrix.i"
 %import "../common/exception.i"
 
-%include "linalg/sparsesmoothers.hpp" 
+%include "linalg/sparsesmoothers.hpp"

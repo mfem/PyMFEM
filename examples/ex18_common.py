@@ -116,7 +116,7 @@ class FE_Evolution(mfem.TimeDependentOperator):
             y.SetSubVector(vdofs, ymat.GetData())
 
 
-class DomainIntegrator(mfem.BilinearFormIntegrator):
+class DomainIntegrator(mfem.PyBilinearFormIntegrator):
     def __init__(self, dim):
         num_equation = globals()['num_equation']
         self.flux = mfem.DenseMatrix(num_equation, dim)
@@ -165,7 +165,7 @@ class DomainIntegrator(mfem.BilinearFormIntegrator):
                             self.dshapedx[j, d]
 
 
-class FaceIntegrator(mfem.NonlinearFormIntegrator):
+class FaceIntegrator(mfem.PyNonlinearFormIntegrator):
     def __init__(self, rsolver, dim):
         self.rsolver = rsolver
         self.shape1 = mfem.Vector()

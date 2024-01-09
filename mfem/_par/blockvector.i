@@ -2,7 +2,7 @@
 
 %{
 #include "linalg/blockvector.hpp"
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"
 %}
 // initialization required to return numpy array from SWIG
 %init %{

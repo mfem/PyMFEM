@@ -1,8 +1,9 @@
 %module(package="mfem._ser") fe_rt
 %{
 #include  "mfem.hpp"
-#include "pyoperator.hpp"      
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"
+#include "../common/pyoperator.hpp"
+#include "../common/pyintrules.hpp"
 %}
 
 %init %{

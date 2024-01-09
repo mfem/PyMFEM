@@ -2,8 +2,11 @@
 %{
 #include "mfem.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"
-#include "../common/pycoefficient.hpp"  
+#include "../common/pyoperator.hpp"
+#include "../common/pycoefficient.hpp"
+#include "../common/pyintrules.hpp"
+#include "../common/pybilininteg.hpp"
+#include "../common/pynonlininteg.hpp"
 %}
 
 %init %{
@@ -22,7 +25,7 @@ LIST_TO_MFEMOBJ_BOOLARRAY_IN(const mfem::Array<bool>& )
 
 %import "../common/array_instantiation_macro.i"
 IGNORE_ARRAY_METHODS(mfem::TMOP_Integrator *)
-INSTANTIATE_ARRAY0(TMOP_Integrator *, TMOP_Integrator, 1) 
+INSTANTIATE_ARRAY0(TMOP_Integrator *, TMOP_Integrator, 1)
 
 /* destructor handles freeing evaluator */
 %pythonappend mfem::DiscreteAdaptTC::SetAdaptivityEvaluator %{

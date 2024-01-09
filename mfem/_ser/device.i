@@ -2,7 +2,7 @@
 %{
 #include  "mfem.hpp"
 #include "general/device.hpp"
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"
 %}
 
 %init %{
@@ -27,7 +27,7 @@ DEPRECATED_METHOD(mfem::Device::GetMemoryClass())
 %}
 %feature("shadow") mfem::Device::__new__ %{
     def __new__(cls, *args, **kwargs):
-        if globals()["singleton_device"] is None:  
+        if globals()["singleton_device"] is None:
              instance =  super(Device, cls).__new__(cls)
              globals()["singleton_device"] = instance
         return globals()["singleton_device"]

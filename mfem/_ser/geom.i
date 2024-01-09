@@ -2,8 +2,10 @@
 %{
 #include "mfem.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"      
-#include "../common/io_stream.hpp"      
+#include "../common/io_stream.hpp"
+#include "../common/pyoperator.hpp"
+#include "../common/pyintrules.hpp"
+#include "../common/pybilininteg.hpp"
 %}
 
 %init %{
@@ -45,7 +47,7 @@ namespace mfem{
      return (* self)[i];
  }
 };
-      
+
 %pythoncode %{
 Geometries = Geometry()
 %}

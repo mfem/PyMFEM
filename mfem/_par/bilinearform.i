@@ -2,8 +2,10 @@
 %{
 #include "fem/bilinearform.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"
-#include "../common/pycoefficient.hpp"  
+#include "../common/pyoperator.hpp"
+#include "../common/pycoefficient.hpp"
+#include "../common/pyintrules.hpp"
+#include "../common/pybilininteg.hpp"
 using namespace mfem;
 %}
 
@@ -32,30 +34,30 @@ import_array();
 %import "hybridization.i"
 %include "../common/exception_director.i"
 
-%feature("director") mfem::BilinearForm;
+ //%feature("director") mfem::BilinearForm;
 
-namespace mfem { 
+namespace mfem {
 %pythonprepend BilinearForm::AddDomainIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
-    bfi = args[0]	     
+    bfi = args[0]
     self._integrators.append(bfi)
     self.UseExternalIntegrators()
     #bfi.thisown=0
    %}
 %pythonprepend BilinearForm::AddBoundaryIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
-    bfi = args[0]	     	     
+    bfi = args[0]
     self._integrators.append(bfi)
     self.UseExternalIntegrators()
     #bfi.thisown=0
-   %} 
+   %}
 %pythonprepend BilinearForm::AddBdrFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     bfi = args[0]
     self._integrators.append(bfi)
     self.UseExternalIntegrators()
     bfi.thisown=0
-   %} 
+   %}
 %pythonprepend BilinearForm::AddInteriorFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(bfi)
@@ -70,20 +72,21 @@ namespace mfem {
 %pythonappend BilinearForm::EnableHybridization %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(constr_integ)
-    # this will be deleted by Hybridization destructor   
+    # this will be deleted by Hybridization destructor
     constr_integ.thisown = 0
-   %} 
+   %}
 %pythonprepend MixedBilinearForm::AddDomainIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
+    bfi = args[0]
     self._integrators.append(bfi)
     bfi.thisown=0
    %}
 %pythonprepend MixedBilinearForm::AddBoundaryIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
-    bfi = args[0]	     
+    bfi = args[0]
     self._integrators.append(bfi)
     bfi.thisown=0
-   %} 
+   %}
 %pythonprepend MixedBilinearForm::AddTraceFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(bfi)
@@ -91,10 +94,11 @@ namespace mfem {
    %}
 %pythonprepend MixedBilinearForm::AddBdrTraceFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
-    bfi = args[0]	     
+    bfi = args[0]
     self._integrators.append(bfi)
-    bfi.thisown=0
-   %} 
+    self.UseExternalIntegrators()
+    #bfi.thisown=0
+   %}
 %pythonappend MixedBilinearForm::SpMat %{
     if not hasattr(self, "_spmat"): self._spmat = []
     self._spmat.append(val)
@@ -102,32 +106,36 @@ namespace mfem {
    %}
 %pythonprepend DiscreteLinearOperator::AddDomainInterpolator %{
     if not hasattr(self, "_integrators"): self._integrators = []
-    self._integrators.append(di)
-    di.thisown=0
-   %} 
-%pythonprepend DiscreteLinearOperator::AddTraceFaceInterpolator %{
-    if not hasattr(self, "_integrators"): self._integrators = []
+    di = args[0]
     self._integrators.append(di)
     di.thisown=0
    %}
-  
+%pythonprepend DiscreteLinearOperator::AddTraceFaceInterpolator %{
+    if not hasattr(self, "_integrators"): self._integrators = []
+    di = args[0]
+    self._integrators.append(di)
+    di.thisown=0
+   %}
+
 } //end of namespace
 
 %include "fem/bilinearform.hpp"
 
-// instatitate template methods 
+// instatitate template methods
 %define FORM_SYSTEM_MATRIX_WRAP(OsType)
 %template(FormLinearSystem) mfem::BilinearForm::FormLinearSystem<mfem:: ## OsType>;
 %template(FormSystemMatrix) mfem::BilinearForm::FormSystemMatrix<mfem:: ## OsType>;
+%template(FormRectangularLinearSystem) mfem::MixedBilinearForm::FormRectangularLinearSystem<mfem:: ## OsType>;
+%template(FormRectangularSystemMatrix) mfem::MixedBilinearForm::FormRectangularSystemMatrix<mfem:: ## OsType>;
 %enddef
 
 FORM_SYSTEM_MATRIX_WRAP(SparseMatrix)
-  
+
 #ifdef MFEM_USE_MPI
   FORM_SYSTEM_MATRIX_WRAP(HypreParMatrix)
 #endif
-  
+
 #ifdef MFEM_USE_PETSC
   FORM_SYSTEM_MATRIX_WRAP(PetscParMatrix)
-#endif  
+#endif
 

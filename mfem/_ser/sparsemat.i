@@ -1,15 +1,15 @@
 %module (package="mfem._ser") sparsemat
 %{
-#include <fstream>  
+#include <fstream>
 #include <sstream>
 #include <limits>
 #include <cmath>
 #include <cstring>
 #include "mfem.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"
+#include "../common/pyoperator.hpp"
 #include "../common/io_stream.hpp"
-using namespace mfem;  
+using namespace mfem;
 %}
 // initialization required to return numpy array from SWIG
 %begin %{
@@ -45,7 +45,7 @@ OSTREAM_TYPEMAP(std::ostream&)
 %}
 
 %pythonprepend mfem::SparseMatrix::SparseMatrix %{
-import numpy as np  
+import numpy as np
 from scipy.sparse import csr_matrix
 if len(args) == 1 and isinstance(args[0], csr_matrix):
    csr = args[0]
@@ -65,9 +65,9 @@ if len(args) == 1 and isinstance(args[0], csr_matrix):
    self._i_data = i
    self._j_data = j
    self._d_data = data
-  
+
    return
-%}	  
+%}
 
 // RAP_P, RAP_R replaces RAP, since RAP has two definition one accept
 // pointer and the other accept reference. From Python, two
@@ -77,8 +77,8 @@ if len(args) == 1 and isinstance(args[0], csr_matrix):
 			     const mfem::SparseMatrix &R,
                              mfem::SparseMatrix *ORAP){
     return RAP(A, R, ORAP);
-  }    
-    
+  }
+
   mfem::SparseMatrix *RAP_R(const mfem::SparseMatrix &Rt,
 			    const mfem::SparseMatrix &A,
                             const mfem::SparseMatrix &P){
@@ -88,14 +88,14 @@ if len(args) == 1 and isinstance(args[0], csr_matrix):
   mfem::SparseMatrix &OperatorPtr2SparseMatrix(mfem::OperatorPtr op) {
     return dynamic_cast<mfem::SparseMatrix &>(* op);
   }
-  
+
   mfem::SparseMatrix &OperatorHandle2SparseMatrix(mfem::OperatorHandle op) {
     return dynamic_cast<mfem::SparseMatrix &>(* op);
   }
 %}
 
 /*
-    support numpy array input to 
+    support numpy array input to
     SparseMatrix(int *i, int *j, double *data, int m, int n);
     allows to use numpy array to call this
  */
@@ -118,11 +118,11 @@ if len(args) == 1 and isinstance(args[0], csr_matrix):
   //PyArray_CLEARFLAGS(tmp_arr1_, NPY_ARRAY_OWNDATA);
   //PyArray_CLEARFLAGS(tmp_arr2_, NPY_ARRAY_OWNDATA);
   //
-  PyArray_CLEARFLAGS(tmp_arr3_, NPY_ARRAY_OWNDATA);    
+  PyArray_CLEARFLAGS(tmp_arr3_, NPY_ARRAY_OWNDATA);
 }
 %typemap(freearg) (int *i, int *j, double *data, int m, int n){
   //Py_XDECREF(tmp_arr1_$argnum); Dont do this.. We set OwnsGraph and OwnsData to Fase in Python
-  //Py_XDECREF(tmp_arr2_$argnum);  
+  //Py_XDECREF(tmp_arr2_$argnum);
   //Py_XDECREF(tmp_arr3_$argnum);
 }
 
@@ -137,7 +137,7 @@ if len(args) == 1 and isinstance(args[0], csr_matrix):
        if (!PyArray_Check(PyList_GetItem($input,2))) $1 = 0;
        if (!PyInt_Check(PyList_GetItem($input,3))) $1 = 0;
        if (!PyInt_Check(PyList_GetItem($input,4))) $1 = 0;
-     } else $1 = 0;       
+     } else $1 = 0;
   }
 }
 
@@ -161,7 +161,7 @@ PyObject* GetJArray(void) const{
   }
 PyObject* GetDataArray(void) const{
   const int * I = self->GetI();
-  const double * A = self->GetData();    
+  const double * A = self->GetData();
   int L = self->Size();
   npy_intp dims[] = {I[L]};
   return  PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (void *)A);

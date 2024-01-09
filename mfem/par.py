@@ -40,6 +40,7 @@ from  mfem._par.linearform import *
 from  mfem._par.bilininteg import *
 from  mfem._par.gridfunc import *
 from  mfem._par.intrules import *
+from  mfem._par.intrules_cut import *
 from  mfem._par.fe import *
 from  mfem._par.ode import *
 from  mfem._par.bilinearform import *

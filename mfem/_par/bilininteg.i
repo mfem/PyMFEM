@@ -1,8 +1,11 @@
 %module(package="mfem._par", directors="1")  bilininteg
 %{
 #include "mfem.hpp"
-#include "pyoperator.hpp"    
+#include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
+#include "../common/pybilininteg.hpp"
+#include "../common/pyintrules.hpp"
+#include "../common/pynonlininteg.hpp"
 #include "numpy/arrayobject.h"
   //using namespace mfem;
 %}
@@ -32,11 +35,13 @@ import_array();
 %import "fe.i"
 %import "nonlininteg.i"
 %include "../common/exception_director.i"
- //%template(IntegrationPointArray) mfem::Array<mfem::IntegrationPoint>;
 
-%feature("director") mfem::BilinearFormIntegrator;
+%include "../common/bilininteg_ext.i"
 
 %ignore  mfem::MassIntegrator::SetupPA;
 
-%include "../common/bilininteg_ext.i"
 %include "fem/bilininteg.hpp"
+
+%feature("director") mfem::PyBilinearFormIntegrator;
+%include "../common/pybilininteg.hpp"
+

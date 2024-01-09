@@ -7,10 +7,11 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "mfem.hpp"  
-#include "pyoperator.hpp"  
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
-#include "../common/pycoefficient.hpp"  
+#include "../common/pyoperator.hpp"
+#include "../common/pycoefficient.hpp"
+#include "../common/pyintrules.hpp"
 %}
 
 %init %{
@@ -32,4 +33,4 @@ import_array();
 %include "fem/fe_coll.hpp"
 %pythoncode %{
   DG_FECollection = L2_FECollection
-%}   
+%}

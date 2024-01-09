@@ -8,18 +8,12 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-
-#include "../common/io_stream.hpp"            
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
-#include "fem/fem.hpp"
-#include "fem/fe_coll.hpp"
-#include "fem/fespace.hpp"
-#include "fem/eltrans.hpp"
-#include "fem/coefficient.hpp"
-#include "fem/intrules.hpp"  
-#include "fem/restriction.hpp"
-#include "pyoperator.hpp"
-#include "../common/pycoefficient.hpp"      
+#include "../common/io_stream.hpp"
+#include "../common/pyoperator.hpp"
+#include "../common/pycoefficient.hpp"
+#include "../common/pyintrules.hpp"
 %}
 
 %init %{
@@ -170,7 +164,7 @@ def GetEdgeInteriorDofs(self, i):
     if hasattr(self, 'this'):
         self.mesh = args[0]
         self.fec = args[1]
-      
+
 %}
 
 /* define FiniteElementSpacePtrArray */
@@ -204,12 +198,12 @@ OSTREAM_ADD_DEFAULT_STDOUT_FILE(QuadratureSpace, Save)
     return self->GetBdrElementDofs(bel, dofs);
   }
   virtual DofTransformation *GetElementVDofTransformation(int elem) const {
-    mfem::Array<int> dofs;    
+    mfem::Array<int> dofs;
     return self->GetElementVDofs(elem, dofs);
   }
   virtual DofTransformation *GetBdrElementVDofTransformation(int bel) const {
-    mfem::Array<int> dofs;        
+    mfem::Array<int> dofs;
     return self->GetBdrElementVDofs(bel, dofs);
   }
 };
- 
+

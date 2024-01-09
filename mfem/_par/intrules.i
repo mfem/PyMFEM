@@ -3,6 +3,7 @@
 %{
 #include "fem/intrules.hpp"
 #include "numpy/arrayobject.h"
+#include "../common/pyintrules.hpp"
 %}
 
 %init %{
@@ -34,4 +35,8 @@ IGNORE_ARRAY_METHODS(mfem::IntegrationRule *)
 INSTANTIATE_ARRAY0(IntegrationRule *, IntegrationRule, 1)
 
 %include "fem/intrules.hpp"
+
+%feature("director") mfem::PyIntegrationRule;
+%include "../common/pyintrules.hpp"
+
 

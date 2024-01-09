@@ -7,10 +7,12 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "mfem.hpp"    
-#include "pyoperator.hpp"      
+#include "mfem.hpp"
+#include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
-#include "numpy/arrayobject.h"        
+#include "../common/pylininteg.hpp"
+#include "../common/pyintrules.hpp"
+#include "numpy/arrayobject.h"
 %}
 
 %init %{
@@ -20,7 +22,7 @@ import_array();
 %include "exception.i"
 %import "globals.i"
 
- //%include "fem/coefficient.hpp"
+//%include "fem/coefficient.hpp"
 %import "fe.i"
 %import "vector.i"
 %import "eltrans.i"
@@ -32,5 +34,8 @@ import_array();
 %include "../common/lininteg_ext.i"
 
 %include "fem/lininteg.hpp"
+
+%feature("director") mfem::PyLinearFormIntegrator;
+%include "../common/pylininteg.hpp"
 
 

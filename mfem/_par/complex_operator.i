@@ -8,8 +8,8 @@
 %{
 #include "linalg/complex_operator.hpp"
 #include "numpy/arrayobject.h"
-#include "linalg/hypre.hpp"  
-#include "pyoperator.hpp"     
+#include "linalg/hypre.hpp"
+#include "../common/pyoperator.hpp"
   %}
 
 %include "../common/mfem_config.i"
@@ -29,14 +29,14 @@ import_array();
 %import "operators.i"
 %import "sparsemat.i"
 
-namespace mfem { 
+namespace mfem {
 %pythonprepend ComplexOperator::ComplexOperator %{
     self._parts = [Op_Real, Op_Imag]
     if ownReal:
        assert Op_Real.thisown != 0, "Real Op is not owned by passed object"
        Op_Real.thisown = 0
     if ownImag:
-       assert Op_Real.thisown != 0, "Imag Op is not owned by passed object"     
+       assert Op_Real.thisown != 0, "Imag Op is not owned by passed object"
        Op_Imag.thisown = 0
     %}
 %ignore ComplexOperator::ComplexOperator(Operator * Op_Real, Operator * Op_Imag,
