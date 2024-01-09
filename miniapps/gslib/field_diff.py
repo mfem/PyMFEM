@@ -7,7 +7,7 @@
 
    Sample runs:
       python field_diff.py -vis
-      python field-diff.py -m1 triple-pt-1.mesh -s1 triple-pt-1.gf -m2 triple-pt-2.mesh -s2 triple-pt-2.gf -p 200
+      python field_diff.py -m1 triple-pt-1.mesh -s1 triple-pt-1.gf -m2 triple-pt-2.mesh -s2 triple-pt-2.gf -p 200
 '''
 
 import os
@@ -128,8 +128,8 @@ def field_diff(meshfile1='triple-pt-1.mesh',
         avg_dist = -1.0
 
     print(f"Avg position difference: {avg_dist}\n"
-          f"Searched {pts_cnt} points."
-          f"Max diff: {max_diff}"
+          f"Searched {pts_cnt} points.\n"
+          f"Max diff: {max_diff}\n"
           f"Avg diff: {avg_diff}")
 
     # ll 210-223 of field-diff.cpp
