@@ -129,7 +129,7 @@ jobs:
           ls -l
 
           apt-get update
-          apt-get install -y zlib1g-dbg
+          #apt-get install -y zlib1g-dbg
           apt-get install -y chrpath
 
           mkdir dist
