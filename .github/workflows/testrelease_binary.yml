@@ -36,11 +36,11 @@ jobs:
           ls -l dist/
           python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
           #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*
-  make_binary_3_7_8_9:
+  make_binary_3_7_8_9_10:
     needs: make_sdist
     strategy:
       matrix:
-        pythonpath: ["cp37-cp37m", "cp38-cp38", "cp39-cp39"]
+        pythonpath: ["cp37-cp37m", "cp38-cp38", "cp39-cp39", "cp310-cp310"]
 
     runs-on: ubuntu-latest
     container: quay.io/pypa/manylinux2014_x86_64
@@ -86,68 +86,6 @@ jobs:
 
           auditwheel repair *.whl
           rm -rf dist/*
-          mv wheelhouse/* dist/
-
-          ls -l dist/
-          python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
-          #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*
-
-  make_binary_3_10:
-    needs: make_sdist
-    strategy:
-      matrix:
-        pythonpath: ["cp310-cp310"]
-
-    runs-on: ubuntu-latest
-    container: quay.io/pypa/manylinux_2_24_x86_64
-    #container: node:10.16-jessie
-    steps:
-      - name: build package
-        run: |
-          echo It runs in the container instead of the VM.
-          #
-          echo "deb http://security.debian.org/debian-security bullseye-security main contrib non-free" > /etc/apt/sources.list
-          apt-get update
-          #
-          git clone https://github.com/mfem/PyMFEM.git
-          cd PyMFEM
-          #
-          REF=$(echo ${GITHUB_REF#refs/heads/})
-          echo "!!!!!!: "$REF
-          git checkout $REF
-          #
-          ls -l /opt/python/
-          export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
-
-          pip3 install six auditwheel twine
-          pip3 install urllib3==1.26.6    # use older version to avoid OpenSSL vesion issue
-          pip3 install numba-scipy
-          if [ -f requirements.txt ]; then
-             pip3 install -r requirements.txt
-          fi
-          CWD=$PWD
-          ls -l
-
-          apt-get update
-          #apt-get install -y zlib1g-dbg
-          apt-get install -y chrpath
-
-          mkdir dist
-
-          # build wheel and check it
-          python3 -m pip wheel ./ --verbose --no-deps
-          pip3 install *.whl
-          cd test
-          python run_examples.py -serial -verbose -ex ex1
-          cd ..
-
-          rm -rf dist/*
-          export LD_LIBRARY_PATH=${CWD}/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
-
-          rm -rf wheelhouse/*
-          auditwheel repair *.whl
-          rm -rf dist/*
-
           mv wheelhouse/* dist/
 
           ls -l dist/
