@@ -157,5 +157,40 @@ python setup.py install --swig --with-gslib --with-parallel
 python setup.py install --skip-ext --with-gslib --with-parallel
 
 
+### test using python:3.9 image wit parallel as MFEM, HYPRE and METIS external
+sudo docker pull python:3.9
+sudo docker run -it python:3.9 bash
 
+(usually we need an editor...)
+apt-get update
+apt-get install libmpich-dev
 
+pip cmake six numpa-scipy mpi4py
+
+wget https://github.com/mfem/tpls/raw/gh-pages/metis-5.1.0.tar.gz
+wget https://github.com/hypre-space/hypre/archive/v2.28.0.tar.gz
+
+* Hypre
+tar -zxvf v2.28.0.tar.gz
+mv hypre-2.28.0 hypre
+cd hypre/src
+./configure --disable-fortran --prefix=/usr/local --enable-shared
+export CFLAGS=-np-pie
+make -j
+make install
+
+* METIS
+make config OPTFLAGS=-Wno-error=implicit-function-declaration prefix=/usr/local shared=1
+make -j
+make install
+
+* MFEM
+git clone https://github.com/mfem/mfem.git
+cd mfem
+make config MFEM_USE_MPI=YES MFEM_USE_METIS_5=YES PREFIX=/usr/local SHARED=YES
+make install -j
+
+#PyMFEM
+git clone https://github.com/mfem/pyMFEM.git
+cd PyMFEM
+python3 setup.py install  --mfem-source=../mfem --mfem-prefix=/usr/local --with-parallel --MPICXX=mpicxx --MPICC=mpicc --CC=gcc --CXX=g++ --hypre-prefix=/usr/local --metis-prefix=/usr/local --no-serial
