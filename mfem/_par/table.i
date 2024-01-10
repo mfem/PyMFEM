@@ -3,10 +3,10 @@
 %feature("autodoc", "1");
 
 %{
-#include <fstream>  
+#include <fstream>
 #include <iostream>
-#include "mfem.hpp"  
-#include "numpy/arrayobject.h"      
+#include "mfem.hpp"
+#include "numpy/arrayobject.h"
 #include "../common/io_stream.hpp"
 #include "general/table.hpp"
 %}

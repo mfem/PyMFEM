@@ -1,10 +1,10 @@
 %module(package="mfem._par") schwarz
 %{
-#include "mfem.hpp"      
+#include "mfem.hpp"
 #include "../../headers/schwarz.hpp"
-#include "pyoperator.hpp"    
-#include "../common/pycoefficient.hpp"  
-#include "numpy/arrayobject.h"    
+#include "../common/pyoperator.hpp"
+#include "../common/pycoefficient.hpp"
+#include "numpy/arrayobject.h"
 %}
 
 %include "../common/mfem_config.i"

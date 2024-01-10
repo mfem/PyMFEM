@@ -1,10 +1,11 @@
 %module(package="mfem._par") prestriction
 %{
 #include  "mfem.hpp"
-#include  "fem/prestriction.hpp"
+#include "fem/prestriction.hpp" // note:prestrition.hpp is not inclured from mfem.hpp
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"
-#include "../common/pycoefficient.hpp"  
+#include "../common/pyoperator.hpp"
+#include "../common/pycoefficient.hpp"
+#include "../common/pyintrules.hpp"
 %}
 
 %init %{

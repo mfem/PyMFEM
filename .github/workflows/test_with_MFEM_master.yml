@@ -18,22 +18,21 @@ jobs:
       matrix:
         python-version: ["3.7", "3.8", "3.9", "3.10"]
         #python-version: ["3.10"]
-        #os: [ubuntu-latest]
         os: [ubuntu-20.04]
         # USE_FLAGS :  cuda, parallel, libceed
         env:
            - { USE_FLAGS: "000"}
-           - { USE_FLAGS: "100"}
-           - { USE_FLAGS: "010"}
-           - { USE_FLAGS: "110"}
+#          - { USE_FLAGS: "100"}
+#          - { USE_FLAGS: "010"}
+#          - { USE_FLAGS: "110"}
 
         include:
            - os: macos-latest
              python-version: 3.9
              env: {USE_FLAGS: "000"}
-           - os: [ubuntu-20.04]
-             python-version: 3.9
-             env: {USE_FLAGS: "001"}
+#           - os: [ubuntu-20.04]
+#             python-version: 3.9
+#             env: {USE_FLAGS: "001"}
 #
     runs-on: ${{ matrix.os }}      
     #env: ${{ matrix.env }}
@@ -65,9 +64,10 @@ jobs:
         pip install six numpy --verbose 
         if [ "${{matrix.python-version}}" = "3.10" ] ; then
             pip install numba numba-scipy --verbose
-            #pip install scipy
+            #pip install scipy numba --verbose
         else
             pip install numba numba-scipy --verbose
+            #pip install numba scipy --verbose
         fi
 
         if [ -f requirements.txt ]; then

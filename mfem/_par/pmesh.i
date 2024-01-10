@@ -8,13 +8,14 @@
 #include <fstream>
 #include <limits>
 #include <cmath>
-#include <cstring>  
+#include <cstring>
 #include <mpi.h>
 #include "mfem.hpp"
-#include "pyoperator.hpp"
-#include "../common/io_stream.hpp"     
 #include "numpy/arrayobject.h"
-#include "../common/pycoefficient.hpp"    
+#include "../common/pyoperator.hpp"
+#include "../common/io_stream.hpp"
+#include "../common/pycoefficient.hpp"
+#include "../common/pyintrules.hpp"
 %}
 
 %include "../common/mfem_config.i"
@@ -50,33 +51,38 @@ ISTREAM_TYPEMAP(std::istream&)
 %feature("shadow") mfem::ParMesh::GroupFace %{
 def GroupFace(self, group, i, *args):
     if len(args) == 0:
-        from mfem.par import intp    
+        from mfem.par import intp
         face = intp()
         o = intp()
-        $action(self, group, i, face, o)      
+        $action(self, group, i, face, o)
         return face.value(), o.value()
     else:
-        return $action(self, group, i, *args)            
+        return $action(self, group, i, *args)
 %}
-	  
+
 %feature("shadow") mfem::ParMesh::GroupEdge %{
 def GroupEdge(self, group, i, *args):
     if len(args) == 0:
-        from mfem.par import intp  
+        from mfem.par import intp
         edge = intp()
-        o = intp()  
+        o = intp()
         $action(self, group, i, edge, o)
         return edge.value(), o.value()
     else:
-        return $action(self, group, i, *args)      
+        return $action(self, group, i, *args)
 %}
 
+%typemap(out, optimal="1") mfem::Mesh %{
+  /* return by value optimization */
+  $result = SWIG_NewPointerObj(SWIG_as_voidptr(new $1_ltype($1)), $descriptor(mfem::Mesh *), 1);
+%}
 
+%exception; /* undo default director exception */
 %include "mesh/pmesh.hpp"
 
 namespace mfem{
 %extend ParMesh{
-     //     
+     //
      //ParMesh(MPI_Comm comm, const char *mesh_file){
      //mfem::ParMesh *mesh;
      //std::ifstream imesh(mesh_file);
@@ -90,11 +96,11 @@ namespace mfem{
      //}
 void ParPrintToFile(const char *mesh_file, const int precision) const
     {
-    std::ofstream mesh_ofs(mesh_file);	
+    std::ofstream mesh_ofs(mesh_file);
     mesh_ofs.precision(precision);
-    self->ParPrint(mesh_ofs);	
+    self->ParPrint(mesh_ofs);
     }
-};   
+};
 }
 
 /*

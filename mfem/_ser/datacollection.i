@@ -1,9 +1,10 @@
 %module(package="mfem._ser") datacollection
 %{
 #include "mfem.hpp"
-#include "pyoperator.hpp"      
 #include "numpy/arrayobject.h"
-#include "../common/pycoefficient.hpp"    
+#include "../common/pyoperator.hpp"
+#include "../common/pycoefficient.hpp"
+#include "../common/pyintrules.hpp"
 %}
 
 %init %{

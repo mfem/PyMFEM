@@ -1,9 +1,10 @@
 %module(package="mfem._par") vertex
-  
+
 %{
 #include "mfem.hpp"
-#include "pyoperator.hpp"      
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"
+#include "../common/pyoperator.hpp"
+#include "../common/pyintrules.hpp"
 %}
 
 %init %{

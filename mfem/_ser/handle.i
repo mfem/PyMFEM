@@ -1,17 +1,17 @@
 %module(package="mfem._ser") handle
 %feature("autodoc", "1");
 %{
-#include <fstream>  
+#include <fstream>
 #include <iostream>
-#include "../common/io_stream.hpp"      
-#include "config/config.hpp"  
+#include "../common/io_stream.hpp"
+#include "config/config.hpp"
 #include "linalg/hypre.hpp"
-#include "linalg/handle.hpp"  
-#include "fem/gridfunc.hpp"  
+#include "linalg/handle.hpp"
+#include "fem/gridfunc.hpp"
 #include "fem/linearform.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"
-#ifdef MFEM_USE_MPI  
+#include "../common/pyoperator.hpp"
+#ifdef MFEM_USE_MPI
 #include "fem/pfespace.hpp"
 #endif
 %}
@@ -56,7 +56,7 @@ CONVERT_FROM_RENAME(SparseMatrix)
 %include "linalg/handle.hpp"
 
 %pythoncode %{
-OperatorPtr=OperatorHandle  
+OperatorPtr=OperatorHandle
 %}
 
 // instatitate template methods (step 2: Instantiation)
@@ -64,7 +64,7 @@ OperatorPtr=OperatorHandle
 AS_WRAP(SparseMatrix)
 IS_WRAP(SparseMatrix)
 GET_WRAP(SparseMatrix)
-RESET_WRAP(SparseMatrix)          
+RESET_WRAP(SparseMatrix)
 CONVERT_FROM_WRAP(SparseMatrix)
 
 

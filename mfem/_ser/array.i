@@ -3,12 +3,12 @@
 
 //%rename(Equal) mfem::Array <class T>::operator=;
 %{
-#include <fstream>  
+#include <fstream>
 #include <iostream>
 #include <stdio.h>
 #include "../common/io_stream.hpp"
 #include "mfem.hpp"
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"
 %}
 
 %begin %{
@@ -43,7 +43,7 @@ XXXPTR_SIZE_IN(bool *data_, int asize, bool)
 %pythonappend mfem::Array::Array %{
   if len(args) == 1 and isinstance(args[0], list):
       if (len(args[0]) == 2 and hasattr(args[0][0], 'disown') and
-	  not hasattr(args[0][1], 'disown')):
+          not hasattr(args[0][1], 'disown')):
           ## first element is SwigObject, like <Swig Object of type 'int *'>
           ## We do not own data in this case.
           pass
@@ -77,8 +77,8 @@ XXXPTR_SIZE_IN(bool *data_, int asize, bool)
     if (i >= 0){
         (* self)[i] = v;
     } else {
-       int len = self->Size();          
-       (* self)[len+i] = v;      
+       int len = self->Size();
+       (* self)[len+i] = v;
     }
   }
   void Assign(const T &a){
@@ -143,12 +143,46 @@ OSTREAM_ADD_DEFAULT_STDOUT_FILE(Array2D, Save)
 #endif
 
 namespace mfem{
-%template(doubleSwap) Swap<double>;  
-%template(intSwap) Swap<int>;  
+%template(doubleSwap) Swap<double>;
+%template(intSwap) Swap<int>;
 }
+
+/*
+  Instantiation of Array templates.
+
+  We instantiate some common use cases. Array.cpp instantiate these specialization.
+
+  template class Array<char>;
+  template class Array<int>;
+  template class Array<long long>;
+  template class Array<double>;
+  template class Array2D<int>;
+  template class Array2D<double>;
+*/
 
 %import "../common/array_instantiation_macro.i"
 INSTANTIATE_ARRAY_INT
 INSTANTIATE_ARRAY_DOUBLE
-IGNORE_ARRAY_METHODS(bool)
+INSTANTIATE_ARRAY_NUMPYARRAY(int8, char, NPY_BYTE)            // for 8bit data
+INSTANTIATE_ARRAY_NUMPYARRAY(int64, long long, NPY_LONGLONG)  // 64bit
+
+ /*
+For other classes, we need to ignore some  methods
+ To ignore methos defined in Array.cpp, we use
+   IGNORE_ARRAY_METHODS_PREMITIVE
+ In more genral object, we need to futher ignore methods which uses comparision (> or == operators).
+   IGNORE_ARRAY_METHODS
+ */
+
+IGNORE_ARRAY_METHODS_PREMITIVE(bool)
 INSTANTIATE_ARRAY_BOOL
+IGNORE_ARRAY_METHODS_PREMITIVE(unsigned int)
+INSTANTIATE_ARRAY_NUMPYARRAY(uint, unsigned int, NPY_UINT)       // 32bit
+
+/*
+   for these Array2D, we instantiate it. But we dont extend it since, Array2D<T> does not
+   expose the interanl pointer to array1d.
+*/
+%template(intArray2D) mfem::Array2D<int>;
+%template(doubleArray2D) mfem::Array2D<double>;
+

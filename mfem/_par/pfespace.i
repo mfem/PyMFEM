@@ -1,14 +1,11 @@
 %module(package="mfem._par") pfespace
 %{
 #include <mpi.h>
-#include  "config/config.hpp"
-#include "fem/linearform.hpp"  
-#include "fem/pfespace.hpp"
-#include "fem/restriction.hpp"
-#include "fem/prestriction.hpp"
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"
-#include "../common/pycoefficient.hpp"    
+#include "../common/pyoperator.hpp"
+#include "../common/pycoefficient.hpp"
+#include "../common/pyintrules.hpp"
 %}
 
 %include "../common/mfem_config.i"
@@ -45,7 +42,7 @@ import_array();
 %feature("shadow") mfem::ParFiniteElementSpace::GetSharedEdgeDofs %{
 def GetSharedEdgeDofs(self, group, ei):
     from  .array import intArray
-    dofs = intArray() 
+    dofs = intArray()
     $action(self, group, ei, dofs)
     return dofs.ToList()
 %}
@@ -90,7 +87,7 @@ def GetFaceNbrElementVDofs(self, i):
     return self->GetBdrElementDofs(bel, dofs);
   }
   virtual DofTransformation *GetFaceNbrVDofTransformation(int elem) const {
-    mfem::Array<int> dofs;    
+    mfem::Array<int> dofs;
     return self->GetFaceNbrElementVDofs(elem, dofs);
   }
 };

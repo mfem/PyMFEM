@@ -199,7 +199,7 @@ def run(mesh_file="",
             visualization = False
             print("GLVis visualization disabled.")
         else:
-            sout.precision(precision)
+            sout.precision(output.precision)
             sout << "solution\n" << mesh << dudt_gf
             sout << "pause\n"
             sout.flush()

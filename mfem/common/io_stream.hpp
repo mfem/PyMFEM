@@ -1,3 +1,6 @@
+#ifndef PYMFEM_IO_STREAM
+#define PYMFEM_IO_STREAM
+
 namespace PyMFEM
 {
 class wFILE
@@ -44,4 +47,6 @@ class wFILE
        }
 };
 }
+
+#endif // PYMFEM_IO_STREAM
 

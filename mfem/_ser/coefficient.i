@@ -20,10 +20,12 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "mfem.hpp"  
-#include "pyoperator.hpp"    
-#include "../common/pycoefficient.hpp"
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
+#include "../common/pyoperator.hpp"
+#include "../common/pycoefficient.hpp"
+#include "../common/pyintrules.hpp"
+#include "../common/pybilininteg.hpp"
 %}
 
 // initialization required to return numpy array from SWIG
@@ -57,10 +59,10 @@ namespace mfem {
 
    if can_np_array:
       v = mfem._ser.vector.Vector(np.transpose(value).flatten())
-      m = mfem._ser.densemat.DenseMatrix(v.GetData(), value.shape[0], value.shape[1])       
+      m = mfem._ser.densemat.DenseMatrix(v.GetData(), value.shape[0], value.shape[1])
       self._value = (v,m)
    else:
-      pass 
+      pass
 %}
 %pythonprepend VectorConstantCoefficient::VectorConstantCoefficient(const Vector &v) %{
    try:
@@ -74,7 +76,7 @@ namespace mfem {
       v = mfem._ser.vector.Vector(value)
       self._value = v
    else:
-      pass 
+      pass
 %}
 }
 %include "../common/coefficient_common.i"
@@ -93,12 +95,12 @@ namespace mfem {
 /*
 %exception {
     try { $action }
-    catch (Swig::DirectorException &e) { SWIG_fail; }    
+    catch (Swig::DirectorException &e) { SWIG_fail; }
     //catch (...){
     //  SWIG_fail;
     //}
     //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    //    catch (std::exception &e) { SWIG_fail; }
 }
 %feature("director:except") {
     if ($error != NULL) {
@@ -141,7 +143,7 @@ void fake_func_mat(const mfem::Vector &x, mfem::DenseMatrix &Kt)
   Kt(1,2) = 0.0;
   Kt(2,2) = 1.0;
 }
-namespace mfem{ 
+namespace mfem{
 double PyCoefficientBase::Eval(ElementTransformation &T,
                                const IntegrationPoint &ip)
 {
@@ -170,7 +172,7 @@ void VectorPyCoefficientBase::Eval(Vector &V, ElementTransformation &T,
    V.SetSize(vdim);
    if (isTimeDependent)
    {
-      _EvalPyT(transip, GetTime(),  V);          
+      _EvalPyT(transip, GetTime(),  V);
    }
    else
    {
@@ -200,10 +202,10 @@ void MatrixPyCoefficientBase::Eval(DenseMatrix &K, ElementTransformation &T,
    Vector transip(x, 3);
 
    T.Transform(ip, transip);
-   K.SetSize(height, width);   
+   K.SetSize(height, width);
    if (isTimeDependent)
    {
-      _EvalPyT(transip, GetTime(),  K);          
+      _EvalPyT(transip, GetTime(),  K);
    }
    else
    {
@@ -223,7 +225,7 @@ class PyCoefficient(PyCoefficientBase):
        return self.EvalValue(x.GetDataArray())
    def EvalValue(self, x):
        return 0.0
-  
+
 class PyCoefficientT(PyCoefficientBase):
    def __init__(self):
        PyCoefficientBase.__init__(self, 1)
@@ -231,7 +233,7 @@ class PyCoefficientT(PyCoefficientBase):
        return self.EvalValue(x.GetDataArray(), t)
    def EvalValue(self, x, t):
        return 0.0
-	 
+
 class VectorPyCoefficient(VectorPyCoefficientBase):
    def __init__(self, dim):
        self.vdim = dim
@@ -242,22 +244,22 @@ class VectorPyCoefficient(VectorPyCoefficientBase):
 
    def _EvalPyT(self, x, t, V):
        v = self.EvalValue(x.GetDataArray())
-       V.Assign(v)	 
+       V.Assign(v)
 
    def EvalValue(self, x):
        return [0,0,0]
-  
+
 class VectorPyCoefficientT(VectorPyCoefficientBase):
    def __init__(self, dim):
-       self.vdim = dim  
+       self.vdim = dim
        VectorPyCoefficientBase.__init__(self, dim, 1)
    def _EvalPy(self, x, V):
        v = self.EvalValue(x.GetDataArray(), 0)
-       V.Assign(v)	 	 
+       V.Assign(v)
 
    def _EvalPyT(self, x, t, V):
        v = self.EvalValue(x.GetDataArray(), t)
-       V.Assign(v)	 	 	 
+       V.Assign(v)
 
    def EvalValue(self, x, t):
        return [0,0,0]
@@ -268,21 +270,21 @@ class MatrixPyCoefficient(MatrixPyCoefficientBase):
        MatrixPyCoefficientBase.__init__(self, dim, 0)
    def _EvalPy(self, x, K):
        k = self.EvalValue(x.GetDataArray())
-       K.Assign(k)	 	 	 	 
+       K.Assign(k)
 
    def EvalValue(self, x):
        return np.array([[0,0,0], [0,0,0], [0,0,0]])
-  
+
 class MatrixPyCoefficientT(MatrixPyCoefficientBase):
    def __init__(self, dim):
-       self.vdim = dim  
+       self.vdim = dim
        MatrixPyCoefficientBase.__init__(self, dim, 1)
    def _EvalPyT(self, x, t, K):
        k = self.EvalValue(x.GetDataArray(), t)
-       K.Assign(k)	 	 	 	 	 
+       K.Assign(k)
 
    def EvalValue(self, x, t):
        return np.array([[0,0,0], [0,0,0], [0,0,0]])
-	 
+
 %}
 

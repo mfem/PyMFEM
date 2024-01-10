@@ -6,11 +6,12 @@
 %module(package="mfem._par") constraints
 %feature("autodoc", "1");
 %{
-#include "mfem.hpp"      
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"
+#include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
 #include "../common/pysolvers.hpp"
+#include "../common/pyintrules.hpp"
 %}
 %include "../common/mfem_config.i"
 

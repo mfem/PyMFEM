@@ -6,10 +6,11 @@
 #include <fstream>
 #include <iostream>
 #include "mfem.hpp"
-#include "../common/io_stream.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"  
-#include "../common/pycoefficient.hpp"  
+#include "../common/io_stream.hpp"
+#include "../common/pyoperator.hpp"
+#include "../common/pycoefficient.hpp"
+#include "../common/pyintrules.hpp"
 %}
 
 %init %{

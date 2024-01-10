@@ -14,5 +14,7 @@ test/*
 !test/*.py
 !test/cpp
 !test/cpp/
+!test/issues/*.py
+!test/issues/data_3960/VisIt_volume
 *.egg-info
 *.py#

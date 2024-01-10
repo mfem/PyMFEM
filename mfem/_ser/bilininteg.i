@@ -1,8 +1,11 @@
 %module(package="mfem._ser", directors="1")  bilininteg
 %{
 #include "mfem.hpp"
-#include "pyoperator.hpp"    
+#include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
+#include "../common/pybilininteg.hpp"
+#include "../common/pyintrules.hpp"
+#include "../common/pynonlininteg.hpp"
 #include "numpy/arrayobject.h"
   //using namespace mfem;
 %}
@@ -11,17 +14,6 @@
 import_array();
 %}
 
-/*
-%exception {
-    try { $action }
-    catch (Swig::DirectorException &e) { SWIG_fail; }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-}
-*/
 %include "exception.i"
 
 %import "globals.i"
@@ -41,17 +33,12 @@ import_array();
 %import "fe.i"
 %import "nonlininteg.i"
 %include "../common/exception_director.i"
- //%template(IntegrationPointArray) mfem::Array<mfem::IntegrationPoint>;
-
- //%feature("director:except") {
- //    if ($error != NULL) {
- //        throw Swig::DirectorMethodException();
- //    }
- //}
-%feature("director") mfem::BilinearFormIntegrator;
 
 %include "../common/bilininteg_ext.i"
 
 %ignore  mfem::MassIntegrator::SetupPA;
 
 %include "fem/bilininteg.hpp"
+
+%feature("director") mfem::PyBilinearFormIntegrator;
+%include "../common/pybilininteg.hpp"

@@ -1,8 +1,9 @@
 %module(package="mfem._ser") fe_base
 %{
 #include "mfem.hpp"
-#include "pyoperator.hpp"    
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"
+#include "../common/pyoperator.hpp"
+#include "../common/pyintrules.hpp"
 %}
 
 %init %{
@@ -11,6 +12,7 @@ import_array();
 %include "exception.i"
 %import "intrules.i"
 %import "geom.i"
+%import "doftrans.i"
 %include "../common/typemap_macros.i"
 %include "../common/exception.i"
 

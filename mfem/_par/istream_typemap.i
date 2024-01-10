@@ -4,7 +4,7 @@
 %typemap(in) std::istream& (boost_ifdstream *stream=NULL) {
   FILE *f=PyFile_AsFile($input); // Verify that this returns NULL for non-files
   if (!f) {
-    SWIG_Error(SWIG_TypeError, "File object expected.");  
+    SWIG_Error(SWIG_TypeError, "File object expected.");
     SWIG_fail;
   }
   else {

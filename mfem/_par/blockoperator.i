@@ -5,8 +5,8 @@
 #include "numpy/arrayobject.h"
 #include "linalg/operator.hpp"
 #include "linalg/sparsemat.hpp"
-#include "linalg/hypre.hpp"    
-#include "pyoperator.hpp"       
+#include "linalg/hypre.hpp"
+#include "../common/pyoperator.hpp"
 %}
 // initialization required to return numpy array from SWIG
 %init %{
@@ -17,7 +17,7 @@ import_array();
 %import "operators.i"
 
 %pythonappend mfem::BlockOperator::BlockOperator %{
-from mfem.par import intArray  
+from mfem.par import intArray
 if len(args) == 1:
    if isinstance(args[0], intArray):
        self._offsets = args[0]
@@ -30,7 +30,7 @@ if len(args) == 2:
   if not hasattr(self, '_linked_op'):
      self._linked_op = {}
   self._linked_op[iblock, iblock] = op
-%}  
+%}
 %pythonappend mfem::BlockOperator::SetBlock %{
   if not hasattr(self, '_linked_op'):
      self._linked_op = {}
@@ -64,7 +64,7 @@ if len(args) == 2:
       self._linked_op = {}
 
    self._linked_op[iRow, iCol] = op
-%}  
+%}
 
 %inline %{
   mfem::BlockOperator *Opr2BlockOpr(mfem::Operator *op) {
@@ -76,6 +76,6 @@ if len(args) == 2:
   mfem::HypreParMatrix *Opr2HypreParMat(mfem::Operator *op) {
     return dynamic_cast<mfem::HypreParMatrix*>(op);
   }
-  
+
 %}
 %include "linalg/blockoperator.hpp"

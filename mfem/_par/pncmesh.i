@@ -4,13 +4,13 @@
 
 %{
 #include <mpi.h>
-#include "../common/io_stream.hpp"       
-#include "config/config.hpp"
-#include "mesh/mesh_headers.hpp"
 #include "mpi4py/mpi4py.h"
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"
-#include "../common/pycoefficient.hpp"  
+#include "../common/io_stream.hpp"
+#include "../common/pyoperator.hpp"
+#include "../common/pycoefficient.hpp"
+#include "../common/pyintrules.hpp"
 %}
 
 %include "../common/mfem_config.i"

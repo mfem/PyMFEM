@@ -1,3 +1,6 @@
+#ifndef PYMFEM_PYOPERATOR
+#define PYMFEM_PYOPERATOR
+
 #include "linalg/operator.hpp"
 
 namespace mfem{
@@ -20,3 +23,5 @@ class PyOperatorBase : public Operator
     virtual ~PyTimeDependentOperatorBase() {}    
   };
 }
+
+#endif // PYMFEM_PYOPERATOR

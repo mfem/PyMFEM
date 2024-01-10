@@ -7,9 +7,9 @@
 //     in a module which imports i file where std_vector.i is imported.
 %{
 #include <vector>
-#include "mfem.hpp"  
+#include "mfem.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"
+#include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
 #include "../common/io_stream.hpp"
 %}
@@ -33,4 +33,4 @@ import_array();
 %template(vector_SparseMatrix) std::vector<mfem::SparseMatrix *>;
 
 
-  
+

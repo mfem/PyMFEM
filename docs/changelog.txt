@@ -1,4 +1,33 @@
         <<<  Change Log. >>>
+
+2023  11 - 2024 01
+      * MFEM 4.6 support
+       - Default MFEM SHA is updated to a version on 11/26/2023 (slightly newer than
+         MFEM4.6 release)
+       - new Python version of examples, translated from ex34, 34p, 35p, 36, 36p, 37,
+         37p, 38
+       - intrules_cut.i is added
+       - PyLinFormIntegraor, PyBilinearFormIntegrator, PyNonlinearFormIntegrator are
+         added as Director classes, which allows for implementing these integrators
+         using Python (see ex38.py)
+       - following method of (Par)MixedBilinearForm accept HypreParMatrix as OperatorPtr
+         - (Par)MixedBilinearForm::FormRectangularSystemMatrix
+          - (Par)MixedBilinearForm::FormRectangularLinearSystem
+       - field_diff.py is added under miniapps/gslib (PR195)
+       - wrappers for Array<char>, Array<long long>, and Array<unsigned char> are added as
+         uintArray, int8Array, int64Array.
+       - Since Array<unsigned int> is not explicitly instantiated in Array.cpp, thus some
+         method such as Print, Sort etc are not avaialbe. As a workaround, GetDataArray is
+         added to return a numpy array view of underlying memory section.
+             >>> v = mfem.uintArray(10)
+             >>> v.GetDataArray()[:] = (1, 105, 20, 3, 50, 4, 2, 15, 8)
+             >>> v.GetDataArray()[:] = np.sort(a.GetDataArray())
+             >>> v.ToList()
+              [1, 2, 3, 4, 8, 15, 20, 50, 105, 300]
+
+
+       - Fixed the return value of FindPointsGSLIB::GetCode() not being properly wrapped.
+
 2023 01.
         * Improved mfem.jit decorator to create Numba JITed coefficient.
           (note, this involves an incompatible API change)
@@ -12,11 +41,11 @@
            - user function can use other MFEM coefficient as a variable
              (using dependency keyword)
 
-	   - decorator without () is supported
-	     @mfem.jit.scalar is the same as
-	     @mfem.jit.scalar(td=False, params=None, complex=False,
-	                      dependency=None, interface="simple", sdim=None,
-			      debug=False)
+           - decorator without () is supported
+             @mfem.jit.scalar is the same as
+             @mfem.jit.scalar(td=False, params=None, complex=False,
+                              dependency=None, interface="simple", sdim=None,
+                              debug=False)
 
 
         * mfem::Array<T>::Append accepts list/tuple
@@ -37,7 +66,7 @@
             gslib version 1.0.8
 
         * ex33, ex33p is added.
-	* ex15 is updated to use Numba
+        * ex15 is updated to use Numba
 
 2022 03.
         * Added --cuda-arch option to specify the compute cuda archtecture

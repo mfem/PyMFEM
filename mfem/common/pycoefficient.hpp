@@ -1,3 +1,6 @@
+#ifndef PYMFEM_PYCOEFFICIENT
+#define PYMFEM_PYCOEFFICIENT
+
 #include "fem/coefficient.hpp"
 
 #define assertm(exp, msg) assert(((void)msg, exp))
@@ -190,4 +193,4 @@ class MatrixNumbaCoefficient : public mfem::MatrixFunctionCoefficient,  public N
 		    const mfem::IntegrationPoint &ip);
 };
 
-
+#endif //PYMFEM_PYCOEFFICIENT

@@ -1,9 +1,11 @@
 %module(package="mfem._par") estimators
 %{
 #include "mfem.hpp"
-#include "numpy/arrayobject.h"  
-#include "pyoperator.hpp"
-#include "../common/pycoefficient.hpp"  
+#include "numpy/arrayobject.h"
+#include "../common/pyoperator.hpp"
+#include "../common/pycoefficient.hpp"
+#include "../common/pyintrules.hpp"
+#include "../common/pybilininteg.hpp"
 %}
 
 %include "../common/mfem_config.i"
@@ -54,7 +56,7 @@ namespace mfem{
 }
 
 /* this is to ignroe final keyword */
-#define final 
+#define final
 %include "fem/estimators.hpp"
 
 
@@ -75,7 +77,7 @@ namespace mfem{
      L2ZienkiewiczZhuEstimator(mfem::BilinearFormIntegrator &integ,
      			       mfem::ParGridFunction &sol,
   			       mfem::ParFiniteElementSpace *flux_fes,
-                               mfem::ParFiniteElementSpace *smooth_flux_fes,     
+                               mfem::ParFiniteElementSpace *smooth_flux_fes,
 			       bool own_flux_fes = false){
        if (own_flux_fes){
 	 return new mfem::L2ZienkiewiczZhuEstimator(integ, sol,

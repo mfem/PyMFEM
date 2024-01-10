@@ -62,14 +62,14 @@ def get_extensions():
     libraries = ['mfem']
 
     # remove current directory from path
-    print("__file__", os.path.abspath(__file__))
+    #print("__file__", os.path.abspath(__file__))
     if '' in sys.path:
         sys.path.remove('')
     items = [x for x in sys.path if os.path.abspath(
         x) == os.path.dirname(os.path.abspath(__file__))]
     for x in items:
         sys.path.remove(x)
-    print("sys path", sys.path)
+    #print("sys path", sys.path)
 
     # this forces to use compiler written in setup_local.py
     if cc_ser != '':
@@ -92,7 +92,8 @@ def get_extensions():
                "linearform", "vector", "lininteg", "complex_operator",
                "complex_fem",
                "gridfunc", "hybridization", "bilinearform",
-               "bilininteg", "intrules", "sparsemat", "densemat",
+               "bilininteg", "intrules", "intrules_cut",
+               "sparsemat", "densemat",
                "solvers", "estimators", "mesh_operators", "ode",
                "sparsesmoothers",
                "matrix", "operators", "ncmesh", "eltrans", "geom",
@@ -101,7 +102,7 @@ def get_extensions():
                "transfer", "std_vectors",
                "tmop", "tmop_amr", "tmop_tools", "qspace", "qfunction",
                "quadinterpolator", "quadinterpolator_face",
-               "submesh", "transfermap"]
+               "submesh", "transfermap", "staticcond", "sidredatacollection"]
 
     if add_cuda == '1':
         from setup_local import cudainc
@@ -124,6 +125,8 @@ def get_extensions():
     tpl_include = []
     for x in mfemstpl.split(' '):
         if x.startswith("-I"):
+            if x.find("MacOS") != -1 and x.find(".sdk") != -1:
+                continue
             tpl_include.append(x[2:])
     include_dirs.extend(tpl_include)
 

@@ -1,9 +1,11 @@
 %module(package="mfem._par") hybridization
 %{
 #include "mfem.hpp"
-#include "pyoperator.hpp"  
 #include "numpy/arrayobject.h"
-#include "../common/pycoefficient.hpp"  
+#include "../common/pyoperator.hpp"
+#include "../common/pycoefficient.hpp"
+#include "../common/pyintrules.hpp"
+#include "../common/pybilininteg.hpp"
 %}
 
 %init %{

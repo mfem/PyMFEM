@@ -13,10 +13,10 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "../common/io_stream.hpp"         
+#include "../common/io_stream.hpp"
 #include "numpy/arrayobject.h"
 #include "../common/pycoefficient.hpp"
-#include "pyoperator.hpp"
+#include "../common/pyoperator.hpp"
 
 %}
 
@@ -100,7 +100,7 @@ char **argv_obj(PyObject* input){
 %pythonprepend mfem::STRUMPACKSolver::STRUMPACKSolver %{
   attach_argv = False
   if isinstance(args[0], list):
-      aa = [""]+args[0]  
+      aa = [""]+args[0]
       num = len(aa)
       ptr = argv_obj(aa)
       args = (num, ptr, args[1])
@@ -111,7 +111,7 @@ char **argv_obj(PyObject* input){
 %pythonappend mfem::STRUMPACKSolver::STRUMPACKSolver %{
   if attach_argv:
       self._argv = ptr
-%}  
+%}
 
 %include "SPOptions.hpp"
 %include "linalg/strumpack.hpp"

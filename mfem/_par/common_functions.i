@@ -3,9 +3,9 @@
 %{
 #include <fstream>
 #include "mfem.hpp"
-#include "../common/io_stream.hpp"            
+#include "../common/io_stream.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"     
+#include "../common/pyoperator.hpp"
   %}
 %include "../common/mfem_config.i"
 

@@ -1,12 +1,12 @@
 %module(package="mfem._par") blockmatrix
 
 %{
-#include <fstream>  
+#include <fstream>
 #include <iostream>
 #include "mfem.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"
-#include "../common/io_stream.hpp"      
+#include "../common/pyoperator.hpp"
+#include "../common/io_stream.hpp"
 %}
 // initialization required to return numpy array from SWIG
 %init %{
@@ -24,7 +24,7 @@ import_array();
 OSTREAM_TYPEMAP(std::ostream&)
 
 %pythonappend mfem::BlockMatrix::BlockMatrix %{
-from mfem.par import intArray  
+from mfem.par import intArray
 if len(args) == 1:
    if isinstance(args[0], intArray):
        self._offsets = args[0]

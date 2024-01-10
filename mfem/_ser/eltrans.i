@@ -2,9 +2,10 @@
 
 %{
 #include "mfem.hpp"
-#include "pyoperator.hpp"  
 #include "numpy/arrayobject.h"
+#include "../common/pyoperator.hpp"
 #include "../common/io_stream.hpp"
+#include "../common/pyintrules.hpp"
 %}
 
 %init %{

@@ -1,0 +1,29 @@
+{
+  "dsets": {
+    "main": {
+      "cycle": 0,
+      "domains": 20,
+      "fields": {
+        "pressure": {
+          "path": "cycle_000000/pressure.%06d",
+          "tags": {
+            "assoc": "nodes",
+            "comps": "1",
+            "lod": "2"
+          }
+        }
+      },
+      "mesh": {
+        "format": "1",
+        "path": "cycle_000000/pmesh.%06d",
+        "tags": {
+          "max_lods": "32",
+          "spatial_dim": "2",
+          "topo_dim": "2"
+        }
+      },
+      "time": 0.00033999721438235294,
+      "time_step": 0
+    }
+  }
+}
