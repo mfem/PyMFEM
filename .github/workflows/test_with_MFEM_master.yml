@@ -22,9 +22,9 @@ jobs:
         # USE_FLAGS :  cuda, parallel, libceed
         env:
            - { USE_FLAGS: "000"}
-#          - { USE_FLAGS: "100"}
-#          - { USE_FLAGS: "010"}
-#          - { USE_FLAGS: "110"}
+           - { USE_FLAGS: "100"}
+           - { USE_FLAGS: "010"}
+           - { USE_FLAGS: "110"}
 
         include:
            - os: macos-latest

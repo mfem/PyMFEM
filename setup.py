@@ -123,7 +123,7 @@ enable_gslib = False
 gslibs_prefix = ''
 gslibp_prefix = ''
 gslib_only = False
-mfemf_debug=False
+mfem_debug=False
 
 enable_suitesparse = False
 suitesparse_prefix = "/usr/"
