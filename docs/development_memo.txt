@@ -165,7 +165,7 @@ sudo docker run -it python:3.9 bash
 apt-get update
 apt-get install libmpich-dev
 
-pip cmake six numpa-scipy mpi4py
+pip install cmake six numba-scipy mpi4py
 
 wget https://github.com/mfem/tpls/raw/gh-pages/metis-5.1.0.tar.gz
 wget https://github.com/hypre-space/hypre/archive/v2.28.0.tar.gz
@@ -175,7 +175,6 @@ tar -zxvf v2.28.0.tar.gz
 mv hypre-2.28.0 hypre
 cd hypre/src
 ./configure --disable-fortran --prefix=/usr/local --enable-shared
-export CFLAGS=-np-pie
 make -j
 make install
 
@@ -194,3 +193,55 @@ make install -j
 git clone https://github.com/mfem/pyMFEM.git
 cd PyMFEM
 python3 setup.py install  --mfem-source=../mfem --mfem-prefix=/usr/local --with-parallel --MPICXX=mpicxx --MPICC=mpicc --CC=gcc --CXX=g++ --hypre-prefix=/usr/local --metis-prefix=/usr/local --no-serial
+
+
+### test using nvidia/cuda image wit parallel as MFEM, HYPRE and METIS external with cuda
+sudo docker pull nvidia/cuda:12.3.1-devel-ubuntu22.04
+
+This image need container-toolkit
+* instruction is here https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
+* After registering repo and installing it using apt-get install, we need to do 
+  sudo nvidia-ctk runtime configure --runtime=docker
+  sudo systemctl restart docker
+
+sudo docker run  --gpus all -it nvidia/cuda:12.3.1-devel-ubuntu22.04
+(inside docker)
+apt-get install python3-dev
+apt-get install python3-pip
+apt-get install libmpich-dev
+apt-get install wget
+apt-get install git
+
+pip install cmake swig six numba-scipy mpi4p
+wget https://github.com/mfem/tpls/raw/gh-pages/metis-5.1.0.tar.gz
+wget https://github.com/hypre-space/hypre/archive/v2.28.0.tar.gz
+
+* Hypre
+tar -zxvf v2.28.0.tar.gz
+mv hypre-2.28.0 hypre
+cd hypre/src
+./configure --disable-fortran --prefix=/usr/local --enable-shared
+make -j
+make install
+
+* METIS
+make config OPTFLAGS=-Wno-error=implicit-function-declaration prefix=/usr/local shared=1
+make -j
+make install
+
+* MFEM
+git clone https://github.com/mfem/mfem.git
+cd mfem
+make config MFEM_USE_MPI=YES MFEM_USE_METIS_5=YES PREFIX=/usr/local SHARED=YES
+make  -j
+make install
+
+# PyMFEM
+git clone https://github.com/mfem/pyMFEM.git
+cd PyMFEM
+python3 setup.py install  --mfem-source=../mfem --mfem-prefix=/usr/local --with-parallel --with-cuda --MPICXX=mpicxx --MPICC=mpicc --CC=gcc --CXX=g++ --hypre-prefix=/usr/local --metis-prefix=/usr/local --no-serial
+(above installes mfem under site-pakcage dir. somehow, the Python in this docker looks at dist-packages
+ for now, the following export works)
+export PYTHONPATH=/usr/lib/python3.10/site-packages/:$PYTHONPATH
+cd examples
+python3.10 ./ex1p.py -pa -d cuda
