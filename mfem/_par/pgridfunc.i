@@ -105,6 +105,24 @@ LIST_TO_MFEMOBJ_POINTERARRAY_IN(mfem::IntegrationRule const *irs[],  mfem::Integ
 %}
 
 %exception; /* undo default director exception */
+
+/*
+   note on SWIG 4.2
+   MakeRef expands to
+   1) mfem::ParGridFunction::MakeRef(FiniteElementSpace *f, double *v);
+   2) mfem::ParGridFunction::MakeRef(FiniteElementSpace *f, mfem::Vector &v, int v_offset);
+   3) mfem::ParGridFunction::MakeRef(mfem::FiniteElementSpace *f, double *v);
+   4) mfem::ParGridFunction::MakeRef(mfem::FiniteElementSpace *f, mfem::Vector &v, int v_offset);
+   among which 1) and 2) does not exsist. The following is to cherry-pick what should
+   be wrapped explicitly.
+
+*/
+%ignore mfem::ParGridFunction::MakeRef;
+%rename("") mfem::ParGridFunction::MakeRef(FiniteElementSpace *f, double *v);
+%rename("") mfem::ParGridFunction::MakeRef(FiniteElementSpace *f, Vector &v, int v_offset);
+%rename("") mfem::ParGridFunction::MakeRef(ParFiniteElementSpace *f, double *v);
+%rename("") mfem::ParGridFunction::MakeRef(ParFiniteElementSpace *f, Vector &v, int v_offset);
+
 %include "fem/pgridfunc.hpp"
 
 namespace mfem{
