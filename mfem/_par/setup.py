@@ -121,7 +121,7 @@ def get_extensions():
                "tmop", "tmop_amr", "tmop_tools", "qspace", "qfunction",
                "quadinterpolator", "quadinterpolator_face",
                "submesh", "transfermap", "staticcond","sidredatacollection",
-               "psubmesh", "ptransfermap"]
+               "psubmesh", "ptransfermap","navier_solver"]
 
     if add_pumi == '1':
         from setup_local import puminc, pumilib
