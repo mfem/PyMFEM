@@ -32,10 +32,10 @@ if myid == 0:
 
 # 3. Read the serial mesh from the given mesh file on all processors. We can
 #    handle geometrically periodic meshes in this code.
-meshfile = expanduser(join(path, 'data', 'periodic-hexagon.mesh'))
+meshfile = expanduser(join(path, '../data', 'periodic-hexagon.mesh'))
 if not exists(meshfile):
     path = dirname(dirname(__file__))
-    meshfile = expanduser(join(path, 'data', 'periodic-hexagon.mesh'))
+    meshfile = expanduser(join(path, '../data', 'periodic-hexagon.mesh'))
 
 mesh = mfem.Mesh(meshfile, 1, 1)
 dim = mesh.Dimension()

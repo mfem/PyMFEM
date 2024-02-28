@@ -158,7 +158,8 @@ def run(problem=1,
         if (done or ti % vis_steps == 0):
             print("time step: " + str(ti) + ", time: " + "{:g}".format(t))
             if (visualization):
-                sout << "solution\n" << mesh << mom << flush
+                sout << "solution\n" << mesh << mom
+                sout.flush()
 
     #  9. Save the final solution. This output can be viewed later using GLVis:
     #    "glvis -m vortex.mesh -g vortex-1-final.gf".
