@@ -889,7 +889,8 @@ def cmake_make_mfem(serial=True):
         ex_dir = os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "examples")
         for x in os.listdir(ex_dir):
             path = os.path.join(ex_dir, x)
-            command = ['chrpath', '-r', "$ORIGIN/../lib", path]
+            # command = ['chrpath', '-r', "$ORIGIN/../lib", path]
+            command = ['patchelf', '--set-rpath', "$ORIGIN/../lib", path]
             make_call(command, force_verbose=True)
 
     os.chdir(pwd)
