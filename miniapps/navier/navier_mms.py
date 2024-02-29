@@ -16,23 +16,23 @@ from mpi4py import MPI
 num_procs = 1
 myid = 0
 
-def vel(x, t, u):
+# def vel(x, t, u):
 
-    xi = x[0]
-    yi = x[1]
+#     xi = x[0]
+#     yi = x[1]
     
-    u = np.empty(1,2)
-    u[0] = pi * sin(t) * pow(sin(pi * xi), 2.0) * sin(2.0 * pi * yi)
-    u[1] = -(pi * sin(t) * sin(2.0 * pi * xi) * pow(sin(pi * yi), 2.0))
+#     u = np.empty(1,2)
+#     u[0] = pi * sin(t) * pow(sin(pi * xi), 2.0) * sin(2.0 * pi * yi)
+#     u[1] = -(pi * sin(t) * sin(2.0 * pi * xi) * pow(sin(pi * yi), 2.0))
 
-    return x, u
+#     return x, u
 
-def p(x, t):
+# def p(x, t):
 
-    xi = x[0]
-    yi = x[1]
+#     xi = x[0]
+#     yi = x[1]
 
-    return x, cos(pi * xi) * sin(t) * sin(pi * yi)
+#     return x, cos(pi * xi) * sin(t) * sin(pi * yi)
 
 
 def accel(x, t, u, kinvis):
@@ -70,7 +70,8 @@ def run(ser_ref_levels=1,
         pa = True,
         ni = False,
         visualization = True,
-        checkres = False):
+        checkres = False,
+        numba = True):
     
     mesh = mfem.Mesh("../../data/inline-quad.mesh",1,1)
     mesh.EnsureNodes()
@@ -87,27 +88,54 @@ def run(ser_ref_levels=1,
         print("Number of elements: " + str(mesh.GetNE()))
     
     pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
-    
-    navsolv = mfem.navier_solver(pmesh,order,kinvis)
-    mfem.navier_solver.EnablePA(pa)
-    mfem.navier_solver.EnableNI(ni)
-    
-    u_ic = navsolv.GetCurrentVelocity()
-    u_excoeff = mfem.VectorFunctionCoefficient(pmesh.Dimension(),vel)
-    
-    ### need to translate this stuff
 
-    p_excoeff = mfem.FunctionCoefficient(p)
+    navsolv = mfem.navier_solver.NavierSolver(pmesh,order,kinvis)
+    navsolv.EnablePA(pa)
+    navsolv.EnableNI(ni)
+    t = 0
+    #make sure this returns a pargrid function. 
+    #It seems like python interpreter doesn't know this returns pargridfnc but maybe will run anyway
+    u_ic = navsolv.GetCurrentVelocity()  
+    ## think these need some work
+    # u_excoeff = mfem.VectorFunctionCoefficient(pmesh.Dimension(),vel)
+    mfem.jit.vector()
+    # u_excoeff = mfem.VectorFunctionCoefficient(pmesh.Dimension(),vel)
+    if numba:
+        @mfem.jit.vector(vdim=pmesh.Dimension(), interface="c++")
+        # @mfem.jit.vector(shape=(pmesh.Dimension(),))
+        def u_excoeff(x, u):
+            t = 0
+            xi = x[0]
+            yi = x[1]
 
-    pmesh.bdr_attributes.Max()
-    attr = 1
+            u[0] = pi * sin(t) * pow(sin(pi * xi), 2.0) * sin(2.0 * pi * yi)
+            u[1] = -(pi * sin(t) * sin(2.0 * pi * xi) * pow(sin(pi * yi), 2.0))
+            
+    else:
+            assert False, "distance requires numba"
+
+
+    u_ic.ProjectCoefficient(u_excoeff)
+
+    # p_excoeff = mfem.FunctionCoefficient(p)
+
+    if numba:
+        @mfem.jit.scalar()
+        def p_excoeff(x):
+            t = 0
+            xi = x[0]
+            yi = x[1]
+
+            return cos(pi * xi) * sin(t) * sin(pi * yi)          
+    else:
+            assert False, "distance requires numba"
+    ## think these need some work
+
+    attr = intArray([1]*pmesh.bdr_attributes.Max())
     navsolv.AddVelDirichletBC(vel, attr)
 
-    pmesh.attributes.Max()
-    domain_attr = 1
+    domain_attr = intArray([1]*pmesh.attributes.Max())
     navsolv.AddAccelTerm(accel, domain_attr)
-
-    ### need to translate this stuff
 
     t = 0
     last_step = False
@@ -175,6 +203,9 @@ if __name__ == "__main__":
     parser.add_argument('-cr', '--checkresult',
                         action='store_true',
                         help="Enable or disable checking of the result. Returns -1 on failure.")
+    parser.add_argument("-n", "--numba",
+                        default=1, action='store', type=int,
+                        help="Use Number compiled coefficient")
    
     
     args = parser.parse_args()
@@ -182,7 +213,7 @@ if __name__ == "__main__":
 
     # meshfile = expanduser(
     #     join(os.path.dirname(__file__), '..', '..', 'data', args.mesh))
-    # numba = (args.numba == 1)
+    numba = (args.numba == 1)
 
     run(ser_ref_levels = args.refine_serial,
         order=args.order,
@@ -192,5 +223,6 @@ if __name__ == "__main__":
         pa=True,
         ni=False,
         # visualization=args.visualization,
-        checkres=False)
+        checkres=False,
+        numba=numba)
     
