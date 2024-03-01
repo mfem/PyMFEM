@@ -15,52 +15,6 @@ from mpi4py import MPI
 
 num_procs = 1
 myid = 0
-
-# def vel(x, t, u):
-
-#     xi = x[0]
-#     yi = x[1]
-    
-#     u = np.empty(1,2)
-#     u[0] = pi * sin(t) * pow(sin(pi * xi), 2.0) * sin(2.0 * pi * yi)
-#     u[1] = -(pi * sin(t) * sin(2.0 * pi * xi) * pow(sin(pi * yi), 2.0))
-
-#     return x, u
-
-# def p(x, t):
-
-#     xi = x[0]
-#     yi = x[1]
-
-#     return x, cos(pi * xi) * sin(t) * sin(pi * yi)
-
-
-def accel(x, t, u, kinvis):
-
-    xi = x[0]
-    yi = x[1]
-
-    u[0] = pi * sin(t) * sin(pi * xi) * sin(pi * yi) \
-          * (-1.0
-             + 2.0 * pow(pi, 2.0) * sin(t) * sin(pi * xi)
-             * sin(2.0 * pi * xi) * sin(pi * yi)) \
-          + pi \
-          * (2.0 * kinvis * pow(pi, 2.0)
-             * (1.0 - 2.0 * cos(2.0 * pi * xi)) * sin(t)
-             + cos(t) * pow(sin(pi * xi), 2.0)) \
-          * sin(2.0 * pi * yi)
-
-    u[1] = pi * cos(pi * yi) * sin(t) \
-          * (cos(pi * xi)
-             + 2.0 * kinvis * pow(pi, 2.0) * cos(pi * yi)
-             * sin(2.0 * pi * xi)) \
-          - pi * (cos(t) + 6.0 * kinvis * pow(pi, 2.0) * sin(t)) \
-          * sin(2.0 * pi * xi) * pow(sin(pi * yi), 2.0) \
-          + 4.0 * pow(pi, 3.0) * cos(pi * yi) * pow(sin(t), 2.0) \
-          * pow(sin(pi * xi), 2.0) * pow(sin(pi * yi), 3.0)
-    
-    return x, u
-
    
 def run(ser_ref_levels=1,
         order=5,
@@ -92,19 +46,13 @@ def run(ser_ref_levels=1,
     navsolv = mfem.navier_solver.NavierSolver(pmesh,order,kinvis)
     navsolv.EnablePA(pa)
     navsolv.EnableNI(ni)
-    t = 0
+
     #make sure this returns a pargrid function. 
     #It seems like python interpreter doesn't know this returns pargridfnc but maybe will run anyway
     u_ic = navsolv.GetCurrentVelocity()  
-    ## think these need some work
-    # u_excoeff = mfem.VectorFunctionCoefficient(pmesh.Dimension(),vel)
-    mfem.jit.vector()
-    # u_excoeff = mfem.VectorFunctionCoefficient(pmesh.Dimension(),vel)
     if numba:
-        @mfem.jit.vector(vdim=pmesh.Dimension(), interface="c++")
-        # @mfem.jit.vector(shape=(pmesh.Dimension(),))
-        def u_excoeff(x, u):
-            t = 0
+        @mfem.jit.vector(vdim=pmesh.Dimension(),td = True, interface = 'c++')
+        def u_excoeff(x,t,u):
             xi = x[0]
             yi = x[1]
 
@@ -114,30 +62,55 @@ def run(ser_ref_levels=1,
     else:
             assert False, "distance requires numba"
 
-
     u_ic.ProjectCoefficient(u_excoeff)
 
-    # p_excoeff = mfem.FunctionCoefficient(p)
 
     if numba:
-        @mfem.jit.scalar()
-        def p_excoeff(x):
-            t = 0
+        @mfem.jit.scalar(td = True)
+        def p_excoeff(x,t):
             xi = x[0]
             yi = x[1]
 
             return cos(pi * xi) * sin(t) * sin(pi * yi)          
     else:
             assert False, "distance requires numba"
-    ## think these need some work
+
 
     attr = intArray([1]*pmesh.bdr_attributes.Max())
-    navsolv.AddVelDirichletBC(vel, attr)
+    navsolv.AddVelDirichletBC(u_excoeff, attr)
+
+    if numba:
+        @mfem.jit.vector(vdim=pmesh.Dimension(),td = True, interface="c++")
+        def accel(x,t,u):
+            xi = x[0]
+            yi = x[1]
+
+            kinvis=1 #need to make this an argument obv
+
+            u[0] = pi * sin(t) * sin(pi * xi) * sin(pi * yi) \
+             * (-1.0
+             + 2.0 * pow(pi, 2.0) * sin(t) * sin(pi * xi)
+             * sin(2.0 * pi * xi) * sin(pi * yi)) \
+          + pi \
+          * (2.0 * kinvis * pow(pi, 2.0)
+             * (1.0 - 2.0 * cos(2.0 * pi * xi)) * sin(t)
+             + cos(t) * pow(sin(pi * xi), 2.0)) \
+          * sin(2.0 * pi * yi)
+
+            u[1] = pi * cos(pi * yi) * sin(t) \
+          * (cos(pi * xi)
+             + 2.0 * kinvis * pow(pi, 2.0) * cos(pi * yi)
+             * sin(2.0 * pi * xi)) \
+          - pi * (cos(t) + 6.0 * kinvis * pow(pi, 2.0) * sin(t)) \
+          * sin(2.0 * pi * xi) * pow(sin(pi * yi), 2.0) \
+          + 4.0 * pow(pi, 3.0) * cos(pi * yi) * pow(sin(t), 2.0) \
+          * pow(sin(pi * xi), 2.0) * pow(sin(pi * yi), 3.0)           
+    else:
+            assert False, "distance requires numba"
 
     domain_attr = intArray([1]*pmesh.attributes.Max())
     navsolv.AddAccelTerm(accel, domain_attr)
 
-    t = 0
     last_step = False
 
     navsolv.Setup(dt)
@@ -146,21 +119,28 @@ def run(ser_ref_levels=1,
     err_p = 0
     u_gf = navsolv.GetCurrentVelocity()
     p_gf = navsolv.GetCurrentPressure()
+    step = 0
+
+    time = 0.0
 
     while last_step == False:
-        if t + dt >= t_final - dt/2:
+        if time + dt >= t_final - dt/2:
             last_step = True
-        
-        navsolv.Step(t, dt, step) #t should update in here
 
-        u_excoeff.SetTime(t)
-        p_excoeff.SetTime(t)
+        print('t = ' + str(time))
+        
+        navsolv.Step(time, dt, step) #t should update in here
+
+        time = time + dt
+
+        u_excoeff.SetTime(time)
+        p_excoeff.SetTime(time)
         err_u = u_gf.ComputeL2Error(u_excoeff)
         err_p = p_gf.ComputeL2Error(p_excoeff)
 
-        if MPI.ROOT:
-            print("%11s %11s %11s %11s\n")
-            print("{:,5E} {:,5E} {:,5E} {:,5E}\n".format(t,dt,err_u,err_p))
+        # if MPI.ROOT:
+        #     print("%11s %11s %11s %11s\n")
+        #     print("{:,5E} {:,5E} {:,5E} {:,5E}\n".format(time,dt,err_u,err_p))
 
 
 
