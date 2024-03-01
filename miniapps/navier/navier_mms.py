@@ -1,5 +1,5 @@
 '''
-   navier_solver.py
+   navier_mms.py
 
    See c++ version in the MFEM library for more detail
 '''
