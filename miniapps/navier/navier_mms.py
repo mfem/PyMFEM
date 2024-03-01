@@ -85,7 +85,7 @@ def run(ser_ref_levels=1,
             xi = x[0]
             yi = x[1]
 
-            kinvis=1 #need to make this an argument obv
+            kinvis=1 #need to make this an argument to function
 
             u[0] = pi * sin(t) * sin(pi * xi) * sin(pi * yi) \
              * (-1.0
@@ -130,8 +130,6 @@ def run(ser_ref_levels=1,
         print('t = ' + str(time))
         
         navsolv.Step(time, dt, step) #t should update in here
-
-        time = time + dt
 
         u_excoeff.SetTime(time)
         p_excoeff.SetTime(time)
