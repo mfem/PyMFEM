@@ -126,17 +126,18 @@ def run(ser_ref_levels=1,
     while last_step == False:
         if time + dt >= t_final - dt/2:
             last_step = True
-
-        print('t = ' + str(time))
         
-        navsolv.Step(time, dt, step) #t should update in here
+        time = navsolv.Step(time, dt, step) #t should update in here
+
+        # print('t = ' + str(time))
 
         u_excoeff.SetTime(time)
         p_excoeff.SetTime(time)
         err_u = u_gf.ComputeL2Error(u_excoeff)
         err_p = p_gf.ComputeL2Error(p_excoeff)
 
-        # if MPI.ROOT:
+        if MPI.ROOT:
+             print("{} {} {} {}\n".format(time,dt,err_u,err_p))
         #     print("%11s %11s %11s %11s\n")
         #     print("{:,5E} {:,5E} {:,5E} {:,5E}\n".format(time,dt,err_u,err_p))
 
@@ -189,8 +190,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
     parser.print_options(args)
 
-    # meshfile = expanduser(
-    #     join(os.path.dirname(__file__), '..', '..', 'data', args.mesh))
     numba = (args.numba == 1)
 
     run(ser_ref_levels = args.refine_serial,
