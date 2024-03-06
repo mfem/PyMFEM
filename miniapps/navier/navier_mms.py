@@ -35,8 +35,6 @@ def run(ser_ref_levels=1,
     
     for i in range(ser_ref_levels):
         mesh.UniformRefinement()
-        
-    print("Number of Elements " + str(mesh.GetNE()))
 
     if MPI.ROOT:
         print("Number of elements: " + str(mesh.GetNE()))
@@ -60,7 +58,7 @@ def run(ser_ref_levels=1,
             u[1] = -(pi * sin(t) * sin(2.0 * pi * xi) * pow(sin(pi * yi), 2.0))
             
     else:
-            assert False, "distance requires numba"
+            assert False, "numba required"
 
     u_ic.ProjectCoefficient(u_excoeff)
 
@@ -73,19 +71,19 @@ def run(ser_ref_levels=1,
 
             return cos(pi * xi) * sin(t) * sin(pi * yi)          
     else:
-            assert False, "distance requires numba"
+            assert False, "numba required"
 
 
     attr = intArray([1]*pmesh.bdr_attributes.Max())
     navsolv.AddVelDirichletBC(u_excoeff, attr)
 
     if numba:
-        @mfem.jit.vector(vdim=pmesh.Dimension(),td = True, interface="c++")
+        @mfem.jit.vector(vdim=pmesh.Dimension(),td = True, interface="c++",params={"kinvis":kinvis})
         def accel(x,t,u):
             xi = x[0]
             yi = x[1]
 
-            kinvis=1 #need to make this an argument to function
+            # kinvis=1 #need to make this an argument to function
 
             u[0] = pi * sin(t) * sin(pi * xi) * sin(pi * yi) \
              * (-1.0
@@ -106,7 +104,7 @@ def run(ser_ref_levels=1,
           + 4.0 * pow(pi, 3.0) * cos(pi * yi) * pow(sin(t), 2.0) \
           * pow(sin(pi * xi), 2.0) * pow(sin(pi * yi), 3.0)           
     else:
-            assert False, "distance requires numba"
+            assert False, "numba required"
 
     domain_attr = intArray([1]*pmesh.attributes.Max())
     navsolv.AddAccelTerm(accel, domain_attr)
@@ -123,23 +121,34 @@ def run(ser_ref_levels=1,
 
     time = 0.0
 
+    # if visualization:
+    #     visit_dc = mfem.VisItDataCollection("navier_mms", pmesh)
+    #     #visit_dc.SetLevelsOfDetail(4)
+    #     visit_dc.RegisterField("u", u_gf)
+    #     visit_dc.SetCycle(0)
+    #     visit_dc.SetTime(0.0)
+    #     visit_dc.Save()
+
     while last_step == False:
         if time + dt >= t_final - dt/2:
             last_step = True
         
         time = navsolv.Step(time, dt, step) #t should update in here
 
-        # print('t = ' + str(time))
-
         u_excoeff.SetTime(time)
         p_excoeff.SetTime(time)
         err_u = u_gf.ComputeL2Error(u_excoeff)
         err_p = p_gf.ComputeL2Error(p_excoeff)
 
+        # if visualization and step % 10000 == 0:
+        #     visit_dc.SetCycle(step)
+        #     visit_dc.SetTime(time)
+        #     visit_dc.Save()
+
         if MPI.ROOT:
-             print("{} {} {} {}\n".format(time,dt,err_u,err_p))
-        #     print("%11s %11s %11s %11s\n")
-        #     print("{:,5E} {:,5E} {:,5E} {:,5E}\n".format(time,dt,err_u,err_p))
+             print(" "*7 + "Time" + " "*10 + "dt" + " "*7 + "err_u" + " "*7 + "err_p")
+             print(f'{time:.5e} {dt:.5e} {err_u:.5e} {err_p:.5e}\n')
+
 
 
 
@@ -152,6 +161,21 @@ def run(ser_ref_levels=1,
         if err_u > tol or err_p > tol:
             if MPI.ROOT:
                 print("Result has a larger error than expected.")
+
+    if visualization:
+        sock = mfem.socketstream("localhost", 19916)
+        sock.precision(8)
+        sock << "solution\n" << pmesh << u_ic
+        sock << "window_title 'Navier_MMS'\n"
+        sock << "keys\n maac\n" << "axis_labels 'x' 'y' 't'\n"
+        sock.flush()
+
+        visit_dc = mfem.VisItDataCollection("navier_mms", pmesh)
+        #visit_dc.SetLevelsOfDetail(4)
+        visit_dc.RegisterField("u_ic", u_ic)
+        visit_dc.SetCycle(0)
+        visit_dc.SetTime(0.0)
+        visit_dc.Save()
 
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
@@ -186,10 +210,13 @@ if __name__ == "__main__":
                         default=1, action='store', type=int,
                         help="Use Number compiled coefficient")
    
+   #NOTE: There is no argument to change kinvis, but this is also true in c++ version
     
     args = parser.parse_args()
     parser.print_options(args)
 
+    # meshfile = expanduser(
+    #     join(os.path.dirname(__file__), '..', '..', 'data', args.mesh))
     numba = (args.numba == 1)
 
     run(ser_ref_levels = args.refine_serial,
@@ -202,4 +229,4 @@ if __name__ == "__main__":
         # visualization=args.visualization,
         checkres=False,
         numba=numba)
-    
+
