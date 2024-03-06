@@ -45,8 +45,6 @@ def run(ser_ref_levels=1,
     navsolv.EnablePA(pa)
     navsolv.EnableNI(ni)
 
-    #make sure this returns a pargrid function. 
-    #It seems like python interpreter doesn't know this returns pargridfnc but maybe will run anyway
     u_ic = navsolv.GetCurrentVelocity()  
     if numba:
         @mfem.jit.vector(vdim=pmesh.Dimension(),td = True, interface = 'c++')
@@ -59,9 +57,7 @@ def run(ser_ref_levels=1,
             
     else:
             assert False, "numba required"
-
     u_ic.ProjectCoefficient(u_excoeff)
-
 
     if numba:
         @mfem.jit.scalar(td = True)
@@ -83,8 +79,6 @@ def run(ser_ref_levels=1,
             xi = x[0]
             yi = x[1]
 
-            # kinvis=1 #need to make this an argument to function
-
             u[0] = pi * sin(t) * sin(pi * xi) * sin(pi * yi) \
              * (-1.0
              + 2.0 * pow(pi, 2.0) * sin(t) * sin(pi * xi)
@@ -105,7 +99,6 @@ def run(ser_ref_levels=1,
           * pow(sin(pi * xi), 2.0) * pow(sin(pi * yi), 3.0)           
     else:
             assert False, "numba required"
-
     domain_attr = intArray([1]*pmesh.attributes.Max())
     navsolv.AddAccelTerm(accel, domain_attr)
 
