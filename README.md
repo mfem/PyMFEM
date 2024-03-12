@@ -9,20 +9,19 @@
 This repository repository modifies the pyMFEM setup to include the Navier miniapp. See the pyMFEM install page for full details
 
 ## Install
-```
+
 Run the command
 `git clone https://github.com/mfem/PyMFEM.git`
 
-Then setup and virtual environment and install the packages in `PyMFEM/requirements.txt`
+Then setup a virtual environment and install the packages 
+`pip install -r PyMFEM/requirements.txt`
 
-Install with 
+Install PyMFEM 
 `python setup.py install --with-parallel`
 
 PyMFEM should install with `navier_solver` as a module in python that is called by `mfem.navier_solver.<function_we_want>`.
 
-Note that input files are still being converted. Currently this is only compiles with the navier miniapp.
-
-```
+Currently only `navier_mms.cpp` is converted from MFEM to PyMFEM. Converting other inout files should be similar.
 
 
 ## License
