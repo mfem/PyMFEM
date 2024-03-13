@@ -21,7 +21,7 @@ Install PyMFEM
 
 PyMFEM should install with `navier_solver` as a module in python that is called by `mfem.navier_solver.<function_we_want>`.
 
-Currently only `navier_mms.cpp` is converted from MFEM to PyMFEM. Converting other inout files should be similar.
+Currently only `navier_mms.cpp` is converted from MFEM. We have also included `navier_2dfocs` which simulates flow over a 2D cylinder (based on `navier_3dfocs`). Converting and other input files should be similar.
 
 
 ## License
