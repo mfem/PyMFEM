@@ -1,6 +1,0 @@
-{
-    "files.associations": {
-        "pycoefficient.hpp": "c",
-        "pybilininteg.hpp": "c"
-    }
-}
