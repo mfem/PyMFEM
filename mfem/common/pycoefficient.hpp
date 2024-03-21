@@ -82,6 +82,26 @@ class NumbaFunctionBase
   virtual ~NumbaFunctionBase(){}
 };
 
+// Coefficent to return the (normalized) normal vector on boundary
+class VectorBdrNormalCoefficient : public mfem::VectorCoefficient
+{
+public:
+  VectorBdrNormalCoefficient(int dim):VectorCoefficient(dim){}
+  virtual void Eval(mfem::Vector &V,
+		   mfem::ElementTransformation &T,
+		   const mfem::IntegrationPoint &ip){
+    T.SetIntPoint(&ip);
+    mfem::DenseMatrix jac = T.Jacobian();
+    V.SetSize(jac.Height());
+    CalcOrtho(jac, V);
+    double l=0.0;
+    for (int i = 0; i < vdim; i++) {
+      l = l + V[i]*V[i];
+    }
+    V /= pow(l, 0.5);
+ }
+};
+								   
 class NumbaCoefficientBase
 {
  private:

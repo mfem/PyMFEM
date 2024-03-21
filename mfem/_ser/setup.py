@@ -105,8 +105,10 @@ def get_extensions():
                "submesh", "transfermap", "staticcond", "sidredatacollection"]
 
     if add_cuda == '1':
-        from setup_local import cudainc
+        from setup_local import cudainc, cudatoolkit_prefix
         include_dirs.append(cudainc)
+        if cudatoolkit_prefix != "":
+            include_dirs.append(os.path.join(cudatoolkit_prefix, 'include'))
     if add_libceed == '1':
         from setup_local import libceedinc
         include_dirs.append(libceedinc)
