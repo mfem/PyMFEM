@@ -102,7 +102,8 @@ def get_extensions():
                "transfer", "std_vectors",
                "tmop", "tmop_amr", "tmop_tools", "qspace", "qfunction",
                "quadinterpolator", "quadinterpolator_face",
-               "submesh", "transfermap", "staticcond", "sidredatacollection"]
+               "submesh", "transfermap", "staticcond",
+               "sidredatacollection", "enzyme"]
 
     if add_cuda == '1':
         from setup_local import cudainc
