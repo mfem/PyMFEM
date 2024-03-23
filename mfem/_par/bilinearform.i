@@ -119,6 +119,10 @@ namespace mfem {
 
 } //end of namespace
 
+%import "../common/array_instantiation_macro.i"
+IGNORE_ARRAY_METHODS(mfem::BilinearForm *)
+INSTANTIATE_ARRAY0(BilinearForm *, BilinearForm, 1)
+
 %include "fem/bilinearform.hpp"
 
 // instatitate template methods

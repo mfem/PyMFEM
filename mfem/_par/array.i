@@ -174,3 +174,6 @@ INSTANTIATE_ARRAY_NUMPYARRAY(uint, unsigned int, NPY_UINT)       // 32bit
 %template(intArray2D) mfem::Array2D<int>;
 %template(doubleArray2D) mfem::Array2D<double>;
 
+/* Array< Array<int> *> */
+IGNORE_ARRAY_METHODS(mfem::Array<int> *)
+INSTANTIATE_ARRAY2(Array<int> *, Array<int>, intArray, 1)

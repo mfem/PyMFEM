@@ -1,8 +1,8 @@
-%define INSTANTIATE_ARRAY0(XXX, YYY, USEPTR)
+%define INSTANTIATE_ARRAY2(XXX, YYY, ZZZ, USEPTR)
 #if USEPTR == 1
-%template(##YYY##Ptr##Array) mfem::Array<mfem::XXX>;
+%template(##ZZZ##Ptr##Array) mfem::Array<mfem::XXX>;
 #else
-%template(##YYY##Array) mfem::Array<mfem::XXX>;
+%template(##ZZZ##Array) mfem::Array<mfem::XXX>;
 #endif
 %extend mfem::Array<mfem::XXX> {
 
@@ -62,6 +62,11 @@ PyObject * __getitem__(PyObject* param) {
 %define INSTANTIATE_ARRAY(XXX)
 INSTANTIATE_ARRAY0(XXX, XXX, 0)
 %enddef
+
+%define INSTANTIATE_ARRAY0(XXX, YYY, USEPTR)
+INSTANTIATE_ARRAY2(XXX, YYY, YYY, USEPTR)
+%enddef
+
 
 %define INSTANTIATE_ARRAY_INT
 %template(intArray) mfem::Array<int>;
