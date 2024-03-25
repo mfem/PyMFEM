@@ -125,6 +125,11 @@ try:
 except:
     pass
 
+try:
+    import mfem._par.navier_solver as navier_solver
+except:
+    pass
+
 try:   
     from mfem._par.schwarz import (SchwarzSmoother,
                                    ComplexSchwarzSmoother)
