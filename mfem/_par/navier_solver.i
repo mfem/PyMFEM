@@ -44,10 +44,11 @@ OSTREAM_TYPEMAP(std::ostream&)
 %typemap(argout) double &time {
   %append_output(PyFloat_FromDouble(*$1));
 }
+\
 
-%ignore *::AddVelDirichletBC(VecFuncT *f, Array &);
-%ignore *::AddPresDirichletBC(ScalarFuncT *f, Array &);
-%ignore *::AddAccelTerm(VecFuncT *f, Array &);
+%ignore mfem::navier::NavierSolver::AddVelDirichletBC(VecFuncT *, Array<int> &);
+%ignore mfem::navier::NavierSolver::AddPresDirichletBC(ScalarFuncT *f, Array<int> &);
+%ignore mfem::navier::NavierSolver::AddAccelTerm(VecFuncT *f, Array<int> &);
 
 %include "miniapps/navier/navier_solver.hpp"
 
