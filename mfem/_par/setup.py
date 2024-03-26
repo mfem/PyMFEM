@@ -121,7 +121,7 @@ def get_extensions():
                "tmop", "tmop_amr", "tmop_tools", "qspace", "qfunction",
                "quadinterpolator", "quadinterpolator_face",
                "submesh", "transfermap", "staticcond","sidredatacollection",
-               "psubmesh", "ptransfermap","navier_solver", "enzyme"]
+               "psubmesh", "ptransfermap", "enzyme"]
 
     if add_pumi == '1':
         from setup_local import puminc, pumilib
@@ -140,6 +140,8 @@ def get_extensions():
     if add_cuda == '1':
         from setup_local import cudainc
         include_dirs.append(cudainc)
+    else:
+        modules.append("navier_solver")
 
     if add_libceed == '1':
         from setup_local import libceedinc
