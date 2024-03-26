@@ -15,6 +15,7 @@ import_array();
 %include "../common/typemap_macros.i"
 %include "../common/exception.i"
 
+%import "enzyme.i"
 %import "mem_manager.i"
 
 %include "../common/deprecation.i"

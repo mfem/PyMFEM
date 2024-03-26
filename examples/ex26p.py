@@ -23,17 +23,17 @@ def run(order_refinements=2,
 
     class DiffusionMultigrid(mfem.PyGeometricMultigrid):
         def __init__(self, fespaces, ess_bdr):
-            mfem.PyGeometricMultigrid.__init__(self, fespaces)
+            mfem.PyGeometricMultigrid.__init__(self, fespaces, ess_bdr)
 
             self.smoothers = []
-            self.ConstructCoarseOperatorAndSolver(fespaces.GetFESpaceAtLevel(0),
-                                                  ess_bdr)
+            self.ConstructCoarseOperatorAndSolver(
+                fespaces.GetFESpaceAtLevel(0),)
 
             for level in range(1, fespaces.GetNumLevels()):
                 self.ConstructOperatorAndSmoother(fespaces.GetFESpaceAtLevel(level),
-                                                  ess_bdr)
+                                                  level)
 
-        def ConstructBilinearForm(self, fespace, ess_bdr, partial_assembly):
+        def ConstructBilinearForm(self, fespace, partial_assembly):
             form = mfem.ParBilinearForm(fespace)
             if partial_assembly:
                 form.SetAssemblyLevel(mfem.AssemblyLevel_PARTIAL)
@@ -41,18 +41,13 @@ def run(order_refinements=2,
             form.Assemble()
             self.AppendBilinearForm(form)
 
-            ess = mfem.intArray()
-            self.AppendEssentialTDofs(ess)
-            fespace.GetEssentialTrueDofs(ess_bdr, ess)
+        def ConstructCoarseOperatorAndSolver(self, coarse_fespace,):
 
-        def ConstructCoarseOperatorAndSolver(self, coarse_fespace,
-                                             ess_bdr):
-
-            self.ConstructBilinearForm(coarse_fespace, ess_bdr, False)
+            self.ConstructBilinearForm(coarse_fespace, False)
 
             hypreCoarseMat = mfem.HypreParMatrix()
-            self.bfs[-1].FormSystemMatrix(self.essentialTrueDofs[-1],
-                                          hypreCoarseMat)
+            self.bfs[0].FormSystemMatrix(self.essentialTrueDofs[0],
+                                         hypreCoarseMat)
 
             amg = mfem.HypreBoomerAMG(hypreCoarseMat)
             amg.SetPrintLevel(-1)
@@ -69,20 +64,21 @@ def run(order_refinements=2,
             self.AddLevel(hypreCoarseMat, pcg, False, False)
             self.amg = amg
 
-        def ConstructOperatorAndSmoother(self, fespace, ess_bdr):
-            self.ConstructBilinearForm(fespace, ess_bdr, True)
+        def ConstructOperatorAndSmoother(self, fespace, level):
+            self.ConstructBilinearForm(fespace, True)
 
             opr = mfem.OperatorPtr()
             opr.SetType(mfem.Operator.ANY_TYPE)
 
-            self.bfs[-1].FormSystemMatrix(self.essentialTrueDofs[-1], opr)
+            self.bfs[level].FormSystemMatrix(
+                self.essentialTrueDofs[level], opr)
             opr.SetOperatorOwner(False)
 
             diag = mfem.Vector(fespace.GetTrueVSize())
-            self.bfs[-1].AssembleDiagonal(diag)
+            self.bfs[level].AssembleDiagonal(diag)
 
             smoother = mfem.OperatorChebyshevSmoother(opr.Ptr(), diag,
-                                                      self.essentialTrueDofs[-1],
+                                                      self.essentialTrueDofs[level],
                                                       2,
                                                       fespace.GetParMesh().GetComm())
 

@@ -31,33 +31,26 @@ LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::Operator*>&,
 LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::Solver*>&,
 			   mfem::Solver*)
 LIST_TO_MFEMOBJ_BOOLARRAY_IN(const mfem::Array<bool>& )
- /*
-ObjectArrayInput(mfem::Solver *);
-ObjectArrayInput(mfem::Operator *);
-BoolArrayInput(bool);
- */
-//%feature("director") mfem::PyGeometricMultigrid;
 
 %pythonprepend mfem::PyGeometricMultigrid::AppendBilinearForm %{
-   if not hasattr(self, "_forms"): self._forms = []
-   self._forms.append(form)
-   form.thisown = 0
+  if not hasattr(self, "forms"):
+      self.forms=[]
+  self.forms.append(form)
+  form.thisown=0
 %}
-%pythonprepend mfem::PyGeometricMultigrid::AppendEssentialTDofs %{
-   if not hasattr(self, "_esss"): self._esss = []
-   self._esss.append(ess)
-   ess.thisown = 0
-%}
+
 %feature("shadow") mfem::PyGeometricMultigrid::_pybfs %{
   @property
   def bfs(self):
-     return self._forms
- %}
+     return self._GetBilinearFormArray()
+%}
+
 %feature("shadow") mfem::PyGeometricMultigrid::_pyess %{
   @property
   def essentialTrueDofs(self):
-     return self._esss
+     return self._GetEssentialTrueDofs()
 %}
+
 %include "fem/multigrid.hpp"
 
 %inline %{
@@ -67,18 +60,24 @@ class PyGeometricMultigrid : public GeometricMultigrid
 public:
  PyGeometricMultigrid(const FiniteElementSpaceHierarchy& fespaces_)
    : GeometricMultigrid(fespaces_){}
+ PyGeometricMultigrid(const FiniteElementSpaceHierarchy& fespaces_,
+                      const Array<int> &ess_bdr_)
+   : GeometricMultigrid(fespaces_, ess_bdr_){}
 
   void AppendBilinearForm(BilinearForm *form){
     bfs.Append(form);
   }
-  void AppendEssentialTDofs(Array<int> *ess){
-      essentialTrueDofs.Append(ess);
+
+  Array<BilinearForm*> *_GetBilinearFormArray(){
+    return &bfs;
   }
+
+  Array<Array<int> *> *_GetEssentialTrueDofs(){
+    return &essentialTrueDofs;
+  }
+
   void _pybfs(void){}
   void _pyess(void){}
 };
   } /* end of namespace */
 %}
-
-
-
