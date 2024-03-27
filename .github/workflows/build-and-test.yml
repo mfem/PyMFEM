@@ -1,3 +1,4 @@
+# This is a clean-up/refactor of test_with_MFEM_release.yml
 name: build-and-test
 
 on:
@@ -40,22 +41,22 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
+    - name: Set PYTHONPATH
+      run: |
+        echo "PYTHONLIB=$HOME/sandbox/lib/python${{ matrix.python-version }}/site-packages" >> $GITHUB_ENV
+        mkdir -p $PYTHONLIB
+        echo "PYTHONPATH=$PYTHONLIB:$PYTHONPATH" >> $GITHUB_ENV
+
+    - name: Set PATH
+      run: |
+        echo "/usr/local/cuda-${CUDA}/bin" >> $GITHUB_PATH
+        echo "$HOME/sandbox/bin" >> $GITHUB_PATH
+
     - name: Install dependencies
       run: |
         python -c "import setuptools;print(setuptools.__version__)"
 
-        PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages
-        mkdir -p $PYTHONLIB
-
-        export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
-        echo "PYTHONPATH:"$PYTHONPATH
-
-        pip install six  --verbose	
-        if [ "${{matrix.python-version}}" = "3.10" ] ; then
-            pip install numba numba-scipy --verbose
-        else
-            pip install numba numba-scipy --verbose
-        fi
+        pip install six numba numba-scipy --verbose
 
         if [ -f requirements.txt ]; then
            pip install -r requirements.txt --prefix=~/sandbox --verbose
@@ -64,9 +65,7 @@ jobs:
         python -c "import sys;print(sys.path)"
         python -c "import numpy;print(numpy.__file__)"	
 
-        which swig  # this default is 4.0.1 
         pip install swig --prefix=~/sandbox
-        export PATH=/usr/local/cuda-${CUDA}/bin:~/sandbox/bin:$PATH	
         which swig
         swig -version
 
@@ -84,14 +83,6 @@ jobs:
         
     - name: Build
       run: |
-        export PATH=/usr/local/cuda-${CUDA}/bin:~/sandbox/bin:$PATH
-        PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages	
-        export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
-        echo $PATH
-        echo $PYTHONPATH
-        echo $SANDBOX
-        echo "SWIG exe"$(which swig)
-
         if [ "${USE_FLAGS}" = "000" ]; then
            # test workflow to manually run swig
            python setup.py clean --swig
@@ -105,16 +96,7 @@ jobs:
 
     - name: RUN_EXAMPLES
       run: |
-
-        export PATH=/usr/local/cuda-${CUDA}/bin:$PATH
-        PYTHONLIB=~/sandbox/lib/python${{ matrix.python-version }}/site-packages	
-        export PYTHONPATH=$PYTHONLIB:$PYTHONPATH
-        echo $PATH
-        echo $PYTHONPATH
-        echo $SANDBOX
         cd test
-        echo $PATH
-        echo $PYTHONPATH
         if [ "${USE_FLAGS}" = "000" ]; then
            python run_examples.py -serial -verbose
         fi
