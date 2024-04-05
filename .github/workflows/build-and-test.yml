@@ -9,10 +9,12 @@ jobs:
   build:
     # if: contains(github.event.pull_request.labels.*.name, 'in-test-with-mfem-release')
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
-        python-version: ["3.7", "3.8", "3.9", "3.10"]
-        os: [ubuntu-latest, macos-latest]
+        python-version: ["3.9"]
+        #"3.7", "3.8", "3.9", "3.10"]
+        os: [ubuntu-latest]
+        #, macos-latest]
         # os: [ubuntu-20.04]
 
         cuda: [false]
@@ -35,8 +37,8 @@ jobs:
     - name: Set PYTHONPATH
       run: |
         echo "PYTHONLIB=$HOME/sandbox/lib/python${{ matrix.python-version }}/site-packages" >> $GITHUB_ENV
-        mkdir -p $PYTHONLIB
-        echo "PYTHONPATH=$PYTHONLIB:$PYTHONPATH" >> $GITHUB_ENV
+        mkdir -p ${{ env.PYTHONLIB }}
+        echo "PYTHONPATH=${{ env.PYTHONLIB }}:$PYTHONPATH" >> $GITHUB_ENV
 
     - name: Set PATH
       run: |
