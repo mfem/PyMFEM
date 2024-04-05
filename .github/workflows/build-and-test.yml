@@ -61,14 +61,14 @@ jobs:
         which swig
         swig -version
     
-    - if: ${{ matrix.cuda == 'true' }}
+    - if: ${{ matrix.cuda == true }}
       name: Install CUDA
       run: |
         echo $cuda
         source ./ci_scripts/add_cuda_11_5.sh;
         echo "/usr/local/cuda-${CUDA}/bin" >> $GITHUB_PATH
 
-    - if: ${{ matrix.parallel == 'true' }}
+    - if: ${{ matrix.parallel == true }}
       name: Install MPI
       run: |
         sudo apt-get install mpich;
@@ -76,7 +76,7 @@ jobs:
         pip install mpi4py --prefix=$HOME/sandbox
         python -c "import mpi4py;print(mpi4py.get_include())";	    
         
-    - if: ${{ matrix.parallel != 'true' }}
+    - if: ${{ matrix.parallel == false }}
       name: Build serial
       run: |
         # test workflow to manually run swig
@@ -85,17 +85,17 @@ jobs:
         python setup.py install --swig --with-gslib --verbose
         python setup.py install --skip-ext --skip-swig --with-gslib --verbose
 
-    - if: ${{ matrix.parallel == 'true' }}
+    - if: ${{ matrix.parallel == true }}
       name: Build parallel
       run: |
         python setup.py install --with-gslib --with-parallel --prefix=$SANDBOX
 
-    - if: ${{ matrix.parallel != 'true' }}
+    - if: ${{ matrix.parallel == false }}
       name: Run serial
       run: |
         cd test
         python run_examples.py -serial -verbose
-    - if: ${{ matrix.parallel == 'true' }}
+    - if: ${{ matrix.parallel == true }}
       name: Run parallel
       run: |
         which mpicc
