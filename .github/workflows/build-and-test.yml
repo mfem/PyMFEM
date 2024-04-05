@@ -34,11 +34,11 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: Set PYTHONPATH
+    - name: Create PYTHONLIB and set PYTHONPATH
       run: |
-        echo "PYTHONLIB=$HOME/sandbox/lib/python${{ matrix.python-version }}/site-packages" >> $GITHUB_ENV
-        mkdir -p ${{ env.PYTHONLIB }}
-        echo "PYTHONPATH=${{ env.PYTHONLIB }}:$PYTHONPATH" >> $GITHUB_ENV
+        PYTHONLIB=${HOME}/sandbox/lib/python${{ matrix.python-version }}/site-packages
+        mkdir -p $PYTHONLIB
+        echo "PYTHONPATH=$PYTHONLIB:$PYTHONPATH" >> $GITHUB_ENV
 
     - name: Set PATH
       run: |
@@ -75,7 +75,6 @@ jobs:
         sudo apt-get install libmpich-dev;
         pip install mpi4py --prefix=$HOME/sandbox
         python -c "import mpi4py;print(mpi4py.get_include())";	    
-        ls -l $PYTHONLIB	
         
     - if: ${{ matrix.parallel != 'true' }}
       name: Build serial
