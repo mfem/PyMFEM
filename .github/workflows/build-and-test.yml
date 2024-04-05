@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    if: contains(github.event.pull_request.labels.*.name, 'in-test-with-mfem-release')
+    # if: contains(github.event.pull_request.labels.*.name, 'in-test-with-mfem-release')
     strategy:
       fail-fast: false
       matrix:
