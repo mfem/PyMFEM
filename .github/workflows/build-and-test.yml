@@ -46,14 +46,17 @@ jobs:
 
     - name: Install core dependencies
       run: |
-        python -c "import setuptools;print(setuptools.__version__)"
 
-        pip install six numba numba-scipy --verbose
+        # pip install six numba numba-scipy --verbose
+        # jgl: are six and numba-scipy used? I don't see them imported anywhere.
+        # jgl: should numba just go in requirements.txt?
+        pip install numba --verbose
 
         if [ -f requirements.txt ]; then
            pip install -r requirements.txt --prefix=$HOME/sandbox --verbose
         fi
 
+        python -c "import setuptools;print(setuptools.__version__)"
         python -c "import sys;print(sys.path)"
         python -c "import numpy;print(numpy.__file__)"	
 
@@ -61,23 +64,23 @@ jobs:
         which swig
         swig -version
     
-    - if: ${{ matrix.cuda == true }}
-      name: Install CUDA
+    - name: Install CUDA
+      if: ${{ matrix.cuda == true }}
       run: |
         echo $cuda
         source ./ci_scripts/add_cuda_11_5.sh;
         echo "/usr/local/cuda-${CUDA}/bin" >> $GITHUB_PATH
 
-    - if: ${{ matrix.parallel == true }}
-      name: Install MPI
+    - name: Install MPI
+      if: ${{ matrix.parallel == true }}
       run: |
         sudo apt-get install mpich;
         sudo apt-get install libmpich-dev;
         pip install mpi4py --prefix=$HOME/sandbox
         python -c "import mpi4py;print(mpi4py.get_include())";	    
         
-    - if: ${{ matrix.parallel == false }}
-      name: Build serial
+    - name: Build serial
+      if: ${{ matrix.parallel == false }}
       run: |
         # test workflow to manually run swig
         python setup.py clean --swig
@@ -85,18 +88,18 @@ jobs:
         python setup.py install --swig --with-gslib --verbose
         python setup.py install --skip-ext --skip-swig --with-gslib --verbose
 
-    - if: ${{ matrix.parallel == true }}
-      name: Build parallel
+    - name: Build parallel
+      if: ${{ matrix.parallel == true }}
       run: |
         python setup.py install --with-gslib --with-parallel --prefix=$SANDBOX
 
-    - if: ${{ matrix.parallel == false }}
-      name: Run serial
+    - name: Run serial
+      if: ${{ matrix.parallel == false }}
       run: |
         cd test
         python run_examples.py -serial -verbose
-    - if: ${{ matrix.parallel == true }}
-      name: Run parallel
+    - name: Run parallel
+      if: ${{ matrix.parallel == true }}
       run: |
         which mpicc
         cd test
@@ -109,17 +112,16 @@ jobs:
 
     - name: Generate artifact name
       if: always()    
-      id: generate-name
+      id: generate-artifact-name
       run: |
         txt=$(python -c "import datetime;print(datetime.datetime.now().strftime('%H_%M_%S_%f'))")
         name="test_result_"${txt}"_"${{ github.run_id }}".tar.gz"
-        echo $name
-        echo "artifact=${name}" >> $GITHUB_OUTPUT
+        echo "name=${name}" >> $GITHUB_OUTPUT
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
-      if: failure()      
+      # if: failure()
       with:
-          name: ${{ steps.generate-name.outputs.artifact }}      
+          name: ${{ steps.generate-artifact-name.outputs.name }}      
           path: sandbox.tar.gz
           retention-days: 1 
