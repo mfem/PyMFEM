@@ -112,6 +112,7 @@ build_libceed = False
 build_gslib = False
 build_parallel = False
 build_serial = False
+build_wheel = False
 
 ext_prefix = ''
 mfems_prefix = ''
@@ -1242,6 +1243,7 @@ def print_config():
     print(" call SWIG wrapper generator: " + ("Yes" if run_swig else "No"))
     print(" build serial wrapper: " + ("Yes" if build_serial else "No"))
     print(" build parallel wrapper : " + ("Yes" if build_parallel else "No"))
+    print(" build wheel : " + ("Yes" if build_wheel else "No"))
 
     print(" hypre prefix", hypre_prefix)
     print(" metis prefix", metis_prefix)
@@ -1267,7 +1269,7 @@ def configure_install(self):
     '''
     global prefix, dry_run, verbose, ext_prefix, git_sshclone
     global clean_swig, run_swig, swig_only, skip_install, skip_swig
-    global build_mfem, build_mfemp, build_parallel, build_serial
+    global build_mfem, build_mfemp, build_parallel, build_serial, build_wheel
 
     global mfem_branch, mfem_source, mfem_debug
     global build_metis, build_hypre, build_libceed, build_gslib
@@ -1316,6 +1318,7 @@ def configure_install(self):
 
     build_parallel = bool(self.with_parallel)     # controlls PyMFEM parallel
     build_serial = not bool(self.no_serial)
+    build_wheel = bool(self.build_wheel)
 
     clean_swig = True
     run_swig = True
@@ -1564,6 +1567,7 @@ class Install(_install):
         ('ext-only', None, 'Build metis, hypre, mfem(C++) only'),
         ('skip-ext', None, 'Skip building metis, hypre, mfem(C++) only'),
         ('build-only', None, 'Skip final install stage to prefix'),
+        ('build-wheel', None, 'Build a wheel'),
         ('CC=', None, 'c compiler'),
         ('CXX=', None, 'c++ compiler'),
         ('MPICC=', None, 'mpic compiler'),
@@ -1612,6 +1616,7 @@ class Install(_install):
         self.mfem_debug = False
         self.metis_prefix = ''
         self.hypre_prefix = ''
+        self.build_wheel = False
 
         self.with_cuda = False
         self.with_cuda_hypre = False
@@ -1772,7 +1777,7 @@ class BuildPy(_build_py):
             sys.exit()
 
 
-if haveWheel:
+if haveWheel and build_wheel:
     class BdistWheel(_bdist_wheel):
         '''
         Wheel build performs SWIG + Serial in Default.
@@ -1899,7 +1904,7 @@ def run_setup():
                 'install_egg_info': InstallEggInfo,
                 'install_scripts': InstallScripts,
                 'clean': Clean}
-    if haveWheel:
+    if haveWheel and build_wheel:
         cmdclass['bdist_wheel'] = BdistWheel
 
     install_req = install_requires()
