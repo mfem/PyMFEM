@@ -21,14 +21,14 @@ jobs:
         parallel: [true, false]
         libceed: [false]
 
-    runs-on: ${{ matrix.os }}	   
-    env: 
+    runs-on: ${{ matrix.os }}
+    env:
        CUDA: "11.5"
        SANDBOX: $HOME/sandbox
 
     steps:
     - uses: actions/checkout@v4
- 
+
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
@@ -58,12 +58,12 @@ jobs:
 
         python -c "import setuptools;print(setuptools.__version__)"
         python -c "import sys;print(sys.path)"
-        python -c "import numpy;print(numpy.__file__)"	
+        python -c "import numpy;print(numpy.__file__)"
 
         pip install swig --prefix=$HOME/sandbox
         which swig
         swig -version
-    
+
     - name: Install CUDA
       if: ${{ matrix.cuda == true }}
       run: |
@@ -77,8 +77,8 @@ jobs:
         sudo apt-get install mpich;
         sudo apt-get install libmpich-dev;
         pip install mpi4py --prefix=$HOME/sandbox
-        python -c "import mpi4py;print(mpi4py.get_include())";	    
-        
+        python -c "import mpi4py;print(mpi4py.get_include())";
+
     - name: Build serial
       if: ${{ matrix.parallel == false }}
       run: |
@@ -108,10 +108,10 @@ jobs:
     - name: Generate Artifact
       if: always()
       run: |
-        tar -cvzf sandbox.tar.gz test/sandbox      
+        tar -cvzf sandbox.tar.gz test/sandbox
 
     - name: Generate artifact name
-      if: always()    
+      if: always()
       id: generate-artifact-name
       run: |
         txt=$(python -c "import datetime;print(datetime.datetime.now().strftime('%H_%M_%S_%f'))")
@@ -122,6 +122,6 @@ jobs:
       uses: actions/upload-artifact@v4
       # if: failure()
       with:
-          name: ${{ steps.generate-artifact-name.outputs.name }}      
+          name: ${{ steps.generate-artifact-name.outputs.name }}
           path: sandbox.tar.gz
-          retention-days: 1 
+          retention-days: 1
