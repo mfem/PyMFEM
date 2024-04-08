@@ -56,10 +56,6 @@ jobs:
         python -c "import sys;print(sys.path)"
         python -c "import numpy;print(numpy.__file__)"
 
-        pip install swig --prefix=$HOME/sandbox
-        which swig
-        swig -version
-
     - name: Install CUDA
       if: ${{ matrix.cuda == true }}
       run: |
