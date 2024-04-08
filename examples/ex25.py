@@ -13,8 +13,6 @@
 
 '''
 from numba import jit, types, carray
-import numba
-import numba_scipy
 import os
 import mfem.ser as mfem
 from mfem.ser import intArray
