@@ -24,7 +24,6 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
        CUDA: "11.5"
-       SANDBOX: $HOME/sandbox
 
     steps:
     - uses: actions/checkout@v4
@@ -83,7 +82,7 @@ jobs:
     - name: Build parallel
       if: ${{ matrix.parallel == true }}
       run: |
-        python setup.py install --with-gslib --with-parallel --prefix=$SANDBOX
+        python setup.py install --with-gslib --with-parallel --prefix=$HOME/sandbox
 
     - name: Run serial
       if: ${{ matrix.parallel == false }}
