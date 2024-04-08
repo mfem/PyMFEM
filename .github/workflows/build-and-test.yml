@@ -47,15 +47,6 @@ jobs:
       run: |
         pip install -r requirements.txt --prefix=$HOME/sandbox --verbose
 
-    # - name: Print versions of installed python packages
-    #   run: |
-    #     packages=("setuptools" "numpy" "numba" "scipy" "swig" "cmake" "mpi4py")
-    #     for package in "${packages[@]}"
-    #     do
-    #         echo -n "Checking for $package... "
-    #         pip freeze | grep "$package"
-    #     done
-
     - name: Install CUDA
       if: ${{ matrix.cuda == true }}
       run: |
@@ -69,6 +60,19 @@ jobs:
         sudo apt-get install mpich libmpich-dev
         pip install mpi4py --prefix=$HOME/sandbox
         python -c "import mpi4py;print(mpi4py.get_include())";
+
+    - name: Print versions of installed python packages
+      run: |
+        packages=("setuptools" "wheel" "numpy" "numba" "scipy" "swig" "cmake" "mpi4py")
+        for package in "${packages[@]}"
+        do
+            output=$(pip list | grep "$package")
+            if [[ -n $output ]]; then
+                echo $output
+            else
+                echo "$package not installed"
+            fi
+        done
 
     - name: Build serial
       if: ${{ matrix.parallel == false }}
