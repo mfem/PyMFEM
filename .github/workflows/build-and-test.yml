@@ -50,11 +50,7 @@ jobs:
         # pip install six numba numba-scipy --verbose
         # jgl: are six and numba-scipy used? I don't see them imported anywhere.
         # jgl: should numba just go in requirements.txt?
-        pip install numba --verbose
-
-        if [ -f requirements.txt ]; then
-           pip install -r requirements.txt --prefix=$HOME/sandbox --verbose
-        fi
+        pip install -r requirements.txt --prefix=$HOME/sandbox --verbose
 
         python -c "import setuptools;print(setuptools.__version__)"
         python -c "import sys;print(sys.path)"
