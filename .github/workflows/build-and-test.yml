@@ -63,16 +63,18 @@ jobs:
 
     - name: Print versions of installed python packages
       run: |
-        packages=("setuptools" "wheel" "numpy" "numba" "scipy" "swig" "cmake" "mpi4py")
-        for package in "${packages[@]}"
-        do
-            output=$(pip list | grep "$package")
-            if [[ -n $output ]]; then
-                echo $output
-            else
-                echo "$package not installed"
-            fi
-        done
+        pip list
+
+      # packages=("setuptools" "wheel" "numpy" "numba" "scipy" "swig" "cmake" "mpi4py")
+      # for package in "${packages[@]}"
+      # do
+      #     output=$(pip list | grep "$package")
+      #     if [[ -n $output ]]; then
+      #         echo $output
+      #     else
+      #         echo "$package not installed"
+      #     fi
+      # done
 
     - name: Build serial
       if: ${{ matrix.parallel == false }}
