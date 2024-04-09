@@ -50,7 +50,6 @@ jobs:
     - name: Install CUDA
       if: ${{ matrix.cuda == true }}
       run: |
-        echo $cuda
         source ./ci_scripts/add_cuda_11_5.sh;
         echo "/usr/local/cuda-${CUDA}/bin" >> $GITHUB_PATH
 
@@ -59,9 +58,8 @@ jobs:
       run: |
         sudo apt-get install mpich libmpich-dev
         pip install mpi4py --prefix=$HOME/sandbox
-        python -c "import mpi4py;print(mpi4py.get_include())";
 
-    - name: Print versions of installed python packages
+    - name: Print python package versions
       run: |
         pip list
 
@@ -87,17 +85,14 @@ jobs:
     - name: Run parallel
       if: ${{ matrix.parallel == true }}
       run: |
-        which mpicc
         cd test
         python run_examples.py -parallel -verbose -np 2
 
     - name: Generate Artifact
-      if: always()
       run: |
         tar -cvzf sandbox.tar.gz test/sandbox
 
     - name: Generate artifact name
-      if: always()
       id: generate-artifact-name
       run: |
         txt=$(python -c "import datetime;print(datetime.datetime.now().strftime('%H_%M_%S_%f'))")
