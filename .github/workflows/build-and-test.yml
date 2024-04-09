@@ -26,27 +26,17 @@ jobs:
        CUDA: "11.5"
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repo
+      uses: actions/checkout@v4
 
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
 
-    # - name: Create PYTHONLIB and set PYTHONPATH
-    #   run: |
-    #     PYTHONLIB=${HOME}/sandbox/lib/python${{ matrix.python-version }}/site-packages
-    #     mkdir -p $PYTHONLIB
-    #     echo "PYTHONPATH=$PYTHONLIB:$PYTHONPATH" >> $GITHUB_ENV
-
-    # - name: Set PATH
-    #   run: |
-    #     echo "$HOME/sandbox/bin" >> $GITHUB_PATH
-
     - name: Install core dependencies via requirements.txt
       run: |
         pip install -r requirements.txt --verbose
-    #--prefix=$HOME/sandbox 
 
     - name: Install CUDA
       if: ${{ matrix.cuda == true }}
@@ -59,7 +49,6 @@ jobs:
       run: |
         sudo apt-get install mpich libmpich-dev
         pip install mpi4py
-      #--prefix=$HOME/sandbox
 
     - name: Print python package versions
       run: |
@@ -78,7 +67,6 @@ jobs:
       if: ${{ matrix.parallel == true }}
       run: |
         python setup.py install --with-gslib --with-parallel
-      # --prefix=$HOME/sandbox
 
     - name: Run serial
       if: ${{ matrix.parallel == false }}
