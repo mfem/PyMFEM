@@ -19,11 +19,16 @@ jobs:
 
         cuda: [false]
         parallel: [true, false]
+        # When phased==true, run each individual build step explicitly: mfem -> swig -> pymfem
+        phased: [true, false]
         libceed: [false]
+        gslib: [true]
 
     runs-on: ${{ matrix.os }}
     env:
        CUDA: "11.5"
+       build-flags: ${{ ((matrix.parallel == true) && '--with-parallel ') || '' }}
+                    ${{ ((matrix.gslib == true) && '--with-gslib ') || '' }}
 
     steps:
     - name: Checkout repo
@@ -54,19 +59,19 @@ jobs:
       run: |
         pip list
 
-    - name: Build serial
-      if: ${{ matrix.parallel == false }}
+    - name: Build (phased)
+      if: ${{ matrix.phased == true }}
       run: |
         # test workflow to manually run swig
         python setup.py clean --swig
-        python setup.py install --ext-only --with-gslib --verbose
-        python setup.py install --swig --with-gslib --verbose
-        python setup.py install --skip-ext --skip-swig --with-gslib --verbose
+        python setup.py install --ext-only --verbose ${{ env.build-flags }}
+        python setup.py install --swig --verbose ${{ env.build-flags }}
+        python setup.py install --skip-ext --skip-swig --verbose ${{ env.build-flags }}
 
-    - name: Build parallel
-      if: ${{ matrix.parallel == true }}
+    - name: Build
+      if: ${{ matrix.phased == false }}
       run: |
-        python setup.py install --with-gslib --with-parallel
+        python setup.py install ${{ env.build-flags }}
 
     - name: Run serial
       if: ${{ matrix.parallel == false }}
