@@ -1,12 +1,12 @@
 # This is a clean-up/refactor of test_with_MFEM_release.yml
-name: build-and-test
+name: Build and Test
 
 on:
   workflow_dispatch:
   pull_request:
 
 jobs:
-  build:
+  build-and-test:
     # if: contains(github.event.pull_request.labels.*.name, 'in-test-with-mfem-release')
     strategy:
       fail-fast: true
@@ -17,18 +17,25 @@ jobs:
         #, macos-latest]
         # os: [ubuntu-20.04]
 
+        # right now, default is a hardcoded sha defined in setup.py:repos_sha
+        mfem-branch: [master, default]
         cuda: [false]
         parallel: [true, false]
         # When phased==true, run each individual build step explicitly: mfem -> swig -> pymfem
         phased: [true, false]
         libceed: [false]
         gslib: [true]
+    name: ${{ matrix.os }}-${{ matrix.python-version }}-${{ matrix.target }}-${{ matrix.mpi }}-${{ matrix.hypre-target }}
+
 
     runs-on: ${{ matrix.os }}
     env:
        CUDA: "11.5"
        build-flags: ${{ ((matrix.parallel == true) && '--with-parallel ') || '' }}
                     ${{ ((matrix.gslib == true) && '--with-gslib ') || '' }}
+                    ${{ ((matrix.libceed == true) && '--with-libceed ') || '' }}
+                    ${{ ((matrix.cuda == true) && '--with-cuda ') || '' }}
+                    ${{ ((matrix.mfem-branch == default) && '') || '--mfem-branch='${{ matrix.mfem-branch }}'' }}
 
     steps:
     - name: Checkout repo
