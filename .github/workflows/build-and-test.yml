@@ -19,7 +19,7 @@ jobs:
         # right now, default is a hardcoded sha defined in setup.py:repos_sha
         mfem-branch: [master, default]
         parallel: [false, true]
-        cuda: [false]
+        cuda: [false, true]
         libceed: [false]
         gslib: [true]
         # When phases==true, run each individual build step explicitly: mfem -> swig -> pymfem
@@ -31,17 +31,26 @@ jobs:
             libceed: false
             gslib: true
             phases: true
+        exclude:
+          # CUDA does not support MacOS
+          - os: macos-latest
+            cuda: true
 
-    name: ${{ matrix.os }}-${{ matrix.python-version }}-${{ matrix.target }}-${{ matrix.mpi }}-${{ matrix.hypre-target }}
-
+    name: ${{ matrix.os }}-
+          ${{ matrix.python-version }}-
+          ${{ ((matrix.parallel == true) && 'par-') || '' }}
+          ${{ ((matrix.cuda == true) && 'cuda-') || '' }}
+          ${{ ((matrix.libceed == true) && 'libceed-') || '' }}
+          ${{ ((matrix.gslib == true) && 'gslib-') || '' }}
+          ${{ ((matrix.mfem-branch == default) && '') || 'mfem='${{ matrix.mfem-branch }}'' }}
 
     runs-on: ${{ matrix.os }}
     env:
        CUDA: "11.5"
        build-flags: ${{ ((matrix.parallel == true) && '--with-parallel ') || '' }}
-                    ${{ ((matrix.gslib == true) && '--with-gslib ') || '' }}
-                    ${{ ((matrix.libceed == true) && '--with-libceed ') || '' }}
                     ${{ ((matrix.cuda == true) && '--with-cuda ') || '' }}
+                    ${{ ((matrix.libceed == true) && '--with-libceed ') || '' }}
+                    ${{ ((matrix.gslib == true) && '--with-gslib ') || '' }}
                     ${{ ((matrix.mfem-branch == default) && '') || '--mfem-branch='${{ matrix.mfem-branch }}'' }}
 
     steps:
@@ -60,8 +69,8 @@ jobs:
     - name: Install CUDA
       if: ${{ matrix.cuda == true }}
       run: |
-        source ./ci_scripts/add_cuda_11_5.sh;
-        echo "/usr/local/cuda-${CUDA}/bin" >> $GITHUB_PATH
+        wget https://developer.download.nvidia.com/compute/cuda/12.4.1/local_installers/cuda_12.4.1_550.54.15_linux.run
+        sudo sh cuda_12.4.1_550.54.15_linux.run
 
     - name: Install MPI
       if: ${{ matrix.parallel == true }}
