@@ -15,16 +15,23 @@ jobs:
         #"3.7", "3.8", "3.9", "3.10"]
         os: [ubuntu-latest]
         #, macos-latest]
-        # os: [ubuntu-20.04]
 
         # right now, default is a hardcoded sha defined in setup.py:repos_sha
         mfem-branch: [master, default]
+        parallel: [false, true]
         cuda: [false]
-        parallel: [true, false]
-        # When phased==true, run each individual build step explicitly: mfem -> swig -> pymfem
-        phased: [true, false]
         libceed: [false]
         gslib: [true]
+        # When phases==true, run each individual build step explicitly: mfem -> swig -> pymfem
+        phases: [false]
+        include:
+          # Include a single example where the build is executed in phases
+          - parallel: false
+            cuda: false
+            libceed: false
+            gslib: true
+            phases: true
+
     name: ${{ matrix.os }}-${{ matrix.python-version }}-${{ matrix.target }}-${{ matrix.mpi }}-${{ matrix.hypre-target }}
 
 
@@ -66,8 +73,8 @@ jobs:
       run: |
         pip list
 
-    - name: Build (phased)
-      if: ${{ matrix.phased == true }}
+    - name: Build (phases)
+      if: ${{ matrix.phases == true }}
       run: |
         # test workflow to manually run swig
         python setup.py clean --swig
@@ -76,7 +83,7 @@ jobs:
         python setup.py install --skip-ext --skip-swig --verbose ${{ env.build-flags }}
 
     - name: Build
-      if: ${{ matrix.phased == false }}
+      if: ${{ matrix.phases == false }}
       run: |
         python setup.py install ${{ env.build-flags }}
 
