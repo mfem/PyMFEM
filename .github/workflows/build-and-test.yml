@@ -42,7 +42,7 @@ jobs:
           ${{ ((matrix.cuda == true) && 'cuda-') || '' }}
           ${{ ((matrix.libceed == true) && 'libceed-') || '' }}
           ${{ ((matrix.gslib == true) && 'gslib-') || '' }}
-          ${{ ((matrix.mfem-branch == default) && '') || 'mfem='${{ matrix.mfem-branch }}'' }}
+          ${{ ((matrix.mfem-branch == 'default') && '') || 'mfem='${{ matrix.mfem-branch }}'' }}
 
     runs-on: ${{ matrix.os }}
     env:
@@ -51,7 +51,7 @@ jobs:
                     ${{ ((matrix.cuda == true) && '--with-cuda ') || '' }}
                     ${{ ((matrix.libceed == true) && '--with-libceed ') || '' }}
                     ${{ ((matrix.gslib == true) && '--with-gslib ') || '' }}
-                    ${{ ((matrix.mfem-branch == default) && '') || '--mfem-branch='${{ matrix.mfem-branch }}'' }}
+                    ${{ ((matrix.mfem-branch == 'default') && '') || '--mfem-branch='${{ matrix.mfem-branch }}'' }}
 
     steps:
     - name: Checkout repo
