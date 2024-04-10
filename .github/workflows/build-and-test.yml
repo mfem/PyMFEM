@@ -31,7 +31,9 @@ jobs:
             cuda: true
         include:
           # Include a single example where the build is executed in phases
-          - parallel: false
+          - os: ubuntu-latest
+            mfem-branch: default
+            parallel: false
             cuda: false
             libceed: false
             gslib: true
@@ -39,12 +41,22 @@ jobs:
 
     runs-on: ${{ matrix.os }}
 
+    # https://7tonshark.com/posts/github-actions-ternary-operator/
+    name: ${{ matrix.os }}-
+          ${{ matrix.python-version }}-
+          ${{ ((matrix.parallel == true) && 'par-') || '' }}
+          ${{ ((matrix.cuda == true) && 'cuda-') || '' }}
+          ${{ ((matrix.libceed == true) && 'libceed-') || '' }}
+          ${{ ((matrix.gslib == true) && 'gslib-') || '' }}
+          ${{ (!(matrix.mfem-branch == 'default') && format('mfem={0}', matrix.mfem-branch)) || '' }}
+
     env:
        CUDA: "11.5"
        build-flags: ${{ ((matrix.parallel == true) && '--with-parallel ') || '' }}
                     ${{ ((matrix.cuda == true) && '--with-cuda ') || '' }}
                     ${{ ((matrix.libceed == true) && '--with-libceed ') || '' }}
                     ${{ ((matrix.gslib == true) && '--with-gslib ') || '' }}
+                    ${{ (!(matrix.mfem-branch == 'default') && format('--mfem-branch={0}', matrix.mfem-branch)) || '' }}
 
     steps:
     - name: Checkout repo
