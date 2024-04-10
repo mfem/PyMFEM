@@ -39,13 +39,6 @@ jobs:
 
     runs-on: ${{ matrix.os }}
 
-    # https://7tonshark.com/posts/github-actions-ternary-operator/
-    name: ${{ matrix.os }}-
-          ${{ matrix.python-version }}-
-          ${{ ((matrix.parallel == true) && 'par-') || '' }}
-          ${{ ((matrix.cuda == true) && 'cuda-') || '' }}
-          ${{ ((matrix.libceed == true) && 'libceed-') || '' }}
-          ${{ ((matrix.gslib == true) && 'gslib-') || '' }}
     env:
        CUDA: "11.5"
        build-flags: ${{ ((matrix.parallel == true) && '--with-parallel ') || '' }}
