@@ -11,10 +11,10 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        python-version: ["3.9"]
-        #"3.7", "3.8", "3.9", "3.10"]
         os: [ubuntu-latest]
         #, macos-latest]
+        python-version: [3.9]
+        #"3.7", "3.8", "3.9", "3.10"]
 
         # right now, default is a hardcoded sha defined in setup.py:repos_sha
         mfem-branch: [master, default]
@@ -32,6 +32,7 @@ jobs:
         include:
           # Include a single example where the build is executed in phases
           - os: ubuntu-latest
+            python-version: 3.9
             mfem-branch: default
             parallel: false
             cuda: false
@@ -42,21 +43,23 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     # https://7tonshark.com/posts/github-actions-ternary-operator/
-    name: ${{ matrix.os }}-
-          ${{ matrix.python-version }}-
-          ${{ ((matrix.parallel == true) && 'par-') || '' }}
-          ${{ ((matrix.cuda == true) && 'cuda-') || '' }}
-          ${{ ((matrix.libceed == true) && 'libceed-') || '' }}
-          ${{ ((matrix.gslib == true) && 'gslib-') || '' }}
-          ${{ (!(matrix.mfem-branch == 'default') && format('mfem={0}', matrix.mfem-branch)) || '' }}
+    name: >
+      ${{ matrix.os }}-
+      ${{ matrix.python-version }}-
+      ${{ ((matrix.parallel == true) && 'par-') || '' }}
+      ${{ ((matrix.cuda == true) && 'cuda-') || '' }}
+      ${{ ((matrix.libceed == true) && 'libceed-') || '' }}
+      ${{ ((matrix.gslib == true) && 'gslib-') || '' }}
+      ${{ (!(matrix.mfem-branch == 'default') && format('mfem={0}', matrix.mfem-branch)) || '' }}
 
     env:
        CUDA: "11.5"
-       build-flags: ${{ ((matrix.parallel == true) && '--with-parallel ') || '' }}
-                    ${{ ((matrix.cuda == true) && '--with-cuda ') || '' }}
-                    ${{ ((matrix.libceed == true) && '--with-libceed ') || '' }}
-                    ${{ ((matrix.gslib == true) && '--with-gslib ') || '' }}
-                    ${{ (!(matrix.mfem-branch == 'default') && format('--mfem-branch={0}', matrix.mfem-branch)) || '' }}
+       build-flags: >
+        ${{ ((matrix.parallel == true) && '--with-parallel ') || '' }}
+        ${{ ((matrix.cuda == true) && '--with-cuda ') || '' }}
+        ${{ ((matrix.libceed == true) && '--with-libceed ') || '' }}
+        ${{ ((matrix.gslib == true) && '--with-gslib ') || '' }}
+        ${{ (!(matrix.mfem-branch == 'default') && format('--mfem-branch={0}', matrix.mfem-branch)) || '' }}
 
     steps:
     - name: Checkout repo
