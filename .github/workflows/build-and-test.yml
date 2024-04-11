@@ -50,7 +50,6 @@ jobs:
       (${{ matrix.parallel && 'parallel' || 'serial' }}${{ matrix.cuda && ' + cuda' || '' }}${{ matrix.libceed && ' + libceed' || '' }}${{ matrix.gslib && ' + gslib' || '' }})
 
     env:
-       CUDA: "11.5"
        build-flags: >-
         ${{ matrix.parallel && '--with-parallel' || '' }}
         ${{ matrix.cuda && '--with-cuda' || '' }}
