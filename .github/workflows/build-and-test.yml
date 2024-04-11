@@ -74,8 +74,9 @@ jobs:
     - name: Install CUDA
       if: ${{ matrix.cuda == true }}
       run: |
-        wget https://developer.download.nvidia.com/compute/cuda/12.4.1/local_installers/cuda_12.4.1_550.54.15_linux.run
-        sudo bash cuda_12.4.1_550.54.15_linux.run
+        wget -q https://developer.download.nvidia.com/compute/cuda/12.4.1/local_installers/cuda_12.4.1_550.54.15_linux.run
+        sudo chmod +x cuda_12.4.1_550.54.15_linux.run
+        sudo ./cuda_12.4.1_550.54.15_linux.run -silent
 
     - name: Install MPI
       if: ${{ matrix.parallel == true }}
@@ -112,7 +113,7 @@ jobs:
         cd test
         python run_examples.py -parallel -verbose -np 2
 
-    - name: Generate Artifact
+    - name: Generate test results artifact
       run: |
         tar -cvzf sandbox.tar.gz test/sandbox
 
@@ -120,12 +121,12 @@ jobs:
       id: generate-artifact-name
       run: |
         txt=$(python -c "import datetime;print(datetime.datetime.now().strftime('%H_%M_%S_%f'))")
-        name="test_result_"${txt}"_"${{ github.run_id }}".tar.gz"
+        name="test_results_"${txt}"_"${{ github.run_id }}".tar.gz"
         echo "name=${name}" >> $GITHUB_OUTPUT
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
-      # if: failure()
+      if: failure()
       with:
           name: ${{ steps.generate-artifact-name.outputs.name }}
           path: sandbox.tar.gz
