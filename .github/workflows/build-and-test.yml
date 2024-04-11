@@ -56,7 +56,7 @@ jobs:
         ${{ matrix.cuda && '--with-cuda' || '' }}
         ${{ matrix.libceed && '--with-libceed' || '' }}
         ${{ matrix.gslib && '--with-gslib' || '' }}
-        ${{ (!(matrix.mfem-branch == 'default') && format('--mfem-branch={0}', matrix.mfem-branch)) || '' }}
+        ${{ (!(matrix.mfem-branch == 'default') && format('--mfem-branch=''{0}''', matrix.mfem-branch)) || '' }}
 
     steps:
     - name: Checkout repo
