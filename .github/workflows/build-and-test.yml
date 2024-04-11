@@ -44,19 +44,18 @@ jobs:
 
     # https://7tonshark.com/posts/github-actions-ternary-operator/
     name: >-
-      ${{ matrix.os }}-${{ matrix.python-version }}-${{ matrix.mfem-branch }}
-      (${{ matrix.parallel && 'parallel' || '' }},
-       ${{ matrix.cuda && 'cuda' || '' }},
-       ${{ matrix.libceed && 'libceed' || '' }},
-       ${{ matrix.gslib && 'gslib' || '' }})
+      ${{ matrix.os }}
+      py${{ matrix.python-version }}
+      mfem=${{ matrix.mfem-branch }}
+      (${{ matrix.parallel && 'par' || 'ser' }}${{ matrix.cuda && ' + cuda' || '' }}${{ matrix.libceed && ' + ceed' || '' }}${{ matrix.gslib && ' + gs' || '' }})
 
     env:
        CUDA: "11.5"
-       build-flags: >
-        ${{ ((matrix.parallel == true) && '--with-parallel ') || '' }}
-        ${{ ((matrix.cuda == true) && '--with-cuda ') || '' }}
-        ${{ ((matrix.libceed == true) && '--with-libceed ') || '' }}
-        ${{ ((matrix.gslib == true) && '--with-gslib ') || '' }}
+       build-flags: >-
+        ${{ matrix.parallel && '--with-parallel' || '' }}
+        ${{ matrix.cuda && '--with-cuda' || '' }}
+        ${{ matrix.libceed && '--with-libceed' || '' }}
+        ${{ matrix.gslib && '--with-gslib' || '' }}
         ${{ (!(matrix.mfem-branch == 'default') && format('--mfem-branch={0}', matrix.mfem-branch)) || '' }}
 
     steps:
@@ -76,7 +75,7 @@ jobs:
       if: ${{ matrix.cuda == true }}
       run: |
         wget https://developer.download.nvidia.com/compute/cuda/12.4.1/local_installers/cuda_12.4.1_550.54.15_linux.run
-        ./cuda_12.4.1_550.54.15_linux.run
+        sudo bash cuda_12.4.1_550.54.15_linux.run
 
     - name: Install MPI
       if: ${{ matrix.parallel == true }}
