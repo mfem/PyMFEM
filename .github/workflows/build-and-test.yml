@@ -78,7 +78,8 @@ jobs:
     - name: Install CUDA
       if: ${{ matrix.cuda == true }}
       run: |
-        sudo apt install nvidia-cuda-toolkit -y
+        sudo apt-get update
+        sudo apt-get install nvidia-cuda-toolkit -y
         which nvcc
         nvcc --version
 
