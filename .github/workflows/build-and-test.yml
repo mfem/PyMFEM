@@ -22,7 +22,7 @@ jobs:
         # cuda: [false, true]
         # temporary: only test cuda
         mfem-branch: [default]
-        parallel: [true]
+        parallel: [false]
         cuda: [true]
         libceed: [false]
         gslib: [true]
@@ -33,16 +33,16 @@ jobs:
           # CUDA does not support MacOS
           - os: macos-latest
             cuda: true
-        include:
-          # Include a single example where the build is executed in phases
-          - os: ubuntu-latest
-            python-version: 3.9
-            mfem-branch: default
-            parallel: false
-            cuda: false
-            libceed: false
-            gslib: true
-            phases: true
+        # include:
+        #   # Include a single example where the build is executed in phases
+        #   - os: ubuntu-latest
+        #     python-version: 3.9
+        #     mfem-branch: default
+        #     parallel: false
+        #     cuda: false
+        #     libceed: false
+        #     gslib: true
+        #     phases: true
 
     runs-on: ${{ matrix.os }}
 
@@ -80,6 +80,8 @@ jobs:
       run: |
         wget -q https://developer.download.nvidia.com/compute/cuda/12.4.1/local_installers/cuda_12.4.1_550.54.15_linux.run
         sudo sh cuda_12.4.1_550.54.15_linux.run --silent
+        which sh
+        which nvcc
 
     - name: Install MPI
       if: ${{ matrix.parallel == true }}
