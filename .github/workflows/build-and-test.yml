@@ -70,12 +70,13 @@ jobs:
       run: |
         pip install -r requirements.txt --verbose
 
+    # The --silent flag will bypass user-input, e.g. implicitly accepting the EULA
     - name: Install CUDA
       if: ${{ matrix.cuda == true }}
       run: |
         wget -q https://developer.download.nvidia.com/compute/cuda/12.4.1/local_installers/cuda_12.4.1_550.54.15_linux.run
         sudo chmod +x cuda_12.4.1_550.54.15_linux.run
-        sudo ./cuda_12.4.1_550.54.15_linux.run --silent
+        source cuda_12.4.1_550.54.15_linux.run --silent
 
     - name: Install MPI
       if: ${{ matrix.parallel == true }}
