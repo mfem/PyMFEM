@@ -9,7 +9,7 @@ jobs:
   build-and-test:
     # if: contains(github.event.pull_request.labels.*.name, 'in-test-with-mfem-release')
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         os: [ubuntu-latest]
         #, macos-latest]
@@ -23,7 +23,7 @@ jobs:
         # temporary: only test cuda
         mfem-branch: [default]
         parallel: [false]
-        cuda: [true]
+        cuda: [false, true]
         libceed: [false]
         gslib: [true]
         # When phases==true, run each individual build step explicitly: mfem -> swig -> pymfem
@@ -80,7 +80,6 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install nvidia-cuda-toolkit -y
-        which nvcc
         nvcc --version
 
     - name: Install MPI
@@ -93,26 +92,33 @@ jobs:
       run: |
         pip list
 
-    - name: Build (phases)
+    - name: Build MFEM (step 1)
       if: ${{ matrix.phases == true }}
       run: |
-        # test workflow to manually run swig
         python setup.py clean --swig
         python setup.py install --ext-only --verbose ${{ env.build-flags }}
+
+    - name: Build SWIG wrappers (step 2)
+      if: ${{ matrix.phases == true }}
+      run: |
         python setup.py install --swig --verbose ${{ env.build-flags }}
+
+    - name: Build PyMFEM (step 3)
+      if: ${{ matrix.phases == true }}
+      run: |
         python setup.py install --skip-ext --skip-swig --verbose ${{ env.build-flags }}
 
-    - name: Build
+    - name: Build all (steps 1-3)
       if: ${{ matrix.phases == false }}
       run: |
         python setup.py install ${{ env.build-flags }}
 
-    - name: Run serial
+    - name: Run tests (serial)
       if: ${{ matrix.parallel == false }}
       run: |
         cd test
         python run_examples.py -serial -verbose
-    - name: Run parallel
+    - name: Run tests (parallel)
       if: ${{ matrix.parallel == true }}
       run: |
         cd test
