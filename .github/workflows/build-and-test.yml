@@ -17,9 +17,13 @@ jobs:
         #"3.7", "3.8", "3.9", "3.10"]
 
         # right now, default is a hardcoded sha defined in setup.py:repos_sha
-        mfem-branch: [master, default]
-        parallel: [false, true]
-        cuda: [false, true]
+        # mfem-branch: [master, default]
+        # parallel: [false, true]
+        # cuda: [false, true]
+        # temporary: only test cuda
+        mfem-branch: [default]
+        parallel: [true]
+        cuda: [true]
         libceed: [false]
         gslib: [true]
         # When phases==true, run each individual build step explicitly: mfem -> swig -> pymfem
@@ -75,8 +79,7 @@ jobs:
       if: ${{ matrix.cuda == true }}
       run: |
         wget -q https://developer.download.nvidia.com/compute/cuda/12.4.1/local_installers/cuda_12.4.1_550.54.15_linux.run
-        sudo chmod +x cuda_12.4.1_550.54.15_linux.run
-        source cuda_12.4.1_550.54.15_linux.run --silent
+        sudo sh cuda_12.4.1_550.54.15_linux.run --silent
 
     - name: Install MPI
       if: ${{ matrix.parallel == true }}
