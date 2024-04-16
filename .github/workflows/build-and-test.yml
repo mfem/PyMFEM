@@ -14,7 +14,7 @@ jobs:
         os: [ubuntu-latest]
         #, macos-latest]
         python-version: [3.9]
-        #"3.7", "3.8", "3.9", "3.10"]
+        #3.7, 3.8, 3.9, 3.10, 3.11
 
         # right now, default is a hardcoded sha defined in setup.py:repos_sha
         # mfem-branch: [master, default]
@@ -54,6 +54,7 @@ jobs:
       (${{ matrix.parallel && 'parallel' || 'serial' }}${{ matrix.cuda && ' + cuda' || '' }}${{ matrix.libceed && ' + libceed' || '' }}${{ matrix.gslib && ' + gslib' || '' }})
 
     env:
+       cuda-installer-url: https://developer.download.nvidia.com/compute/cuda/12.4.1/local_installers/cuda_12.4.1_550.54.15_linux.run
        build-flags: >-
         ${{ matrix.parallel && '--with-parallel' || '' }}
         ${{ matrix.cuda && '--with-cuda' || '' }}
@@ -76,18 +77,10 @@ jobs:
 
     # The --silent flag will bypass user-input, e.g. implicitly accepting the EULA
     - name: Install CUDA
-      if: ${{ matrix.cuda == true }}
+      if: matrix.cuda
       run: |
-        # apt
-        # sudo apt-get update
-        # sudo apt-get install nvidia-cuda-toolkit -y
-
-        # script
-        # source ./ci_scripts/add_cuda_11_5.sh;
-
-        # run file
-        wget -q https://developer.download.nvidia.com/compute/cuda/12.4.1/local_installers/cuda_12.4.1_550.54.15_linux.run
-        sudo sh cuda_12.4.1_550.54.15_linux.run --silent --toolkit
+        wget -q -O cuda.run ${{ env.cuda-installer-url }}
+        sudo sh cuda.run --silent --toolkit
         echo "/usr/local/cuda/bin" >> $GITHUB_PATH
 
         # paths
