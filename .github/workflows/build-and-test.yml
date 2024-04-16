@@ -9,7 +9,7 @@ jobs:
   build-and-test:
     # if: contains(github.event.pull_request.labels.*.name, 'in-test-with-mfem-release')
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         os: [ubuntu-latest]
         #, macos-latest]
@@ -23,7 +23,7 @@ jobs:
         # temporary: only test cuda
         mfem-branch: [default]
         parallel: [false]
-        cuda: [false, true]
+        cuda: [true]
         libceed: [false]
         gslib: [true]
         # When phases==true, run each individual build step explicitly: mfem -> swig -> pymfem
