@@ -83,11 +83,11 @@ jobs:
         # sudo apt-get install nvidia-cuda-toolkit -y
 
         # script
-        source ./ci_scripts/add_cuda_11_5.sh;
+        # source ./ci_scripts/add_cuda_11_5.sh;
 
         # run file
-        # wget -q https://developer.download.nvidia.com/compute/cuda/12.4.1/local_installers/cuda_12.4.1_550.54.15_linux.run
-        # sudo sh cuda_12.4.1_550.54.15_linux.run --silent --toolkit --driver
+        wget -q https://developer.download.nvidia.com/compute/cuda/12.4.1/local_installers/cuda_12.4.1_550.54.15_linux.run
+        sudo sh cuda_12.4.1_550.54.15_linux.run --silent --toolkit --driver
 
         # paths
         echo "/usr/local/cuda-12.4/bin" >> $GITHUB_PATH
