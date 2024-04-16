@@ -118,11 +118,11 @@ jobs:
       run: python setup.py install --skip-ext --skip-swig --verbose ${{ env.build-flags }}
 
     - name: Build all (steps 1-3)
-      if: !matrix.phases
+      if: !(matrix.phases)
       run: python setup.py install ${{ env.build-flags }}
 
     - name: Run tests (serial)
-      if: !matrix.parallel
+      if: !(matrix.parallel)
       run: |
         cd test
         python run_examples.py -serial -verbose
