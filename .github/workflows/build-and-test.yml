@@ -9,7 +9,7 @@ jobs:
   build-and-test:
     # if: contains(github.event.pull_request.labels.*.name, 'in-test-with-mfem-release')
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest]
         python-version: ['3.9', '3.10', '3.11', '3.12']
@@ -17,11 +17,11 @@ jobs:
 
         # right now, default is a hardcoded sha defined in setup.py:repos_sha
         mfem-branch: [master, default]
-        # parallel: [false, true]
+        parallel: [false, true]
         # cuda: [false, true]
         # temporary: only test cuda
         # mfem-branch: [default]
-        parallel: [false]
+        # parallel: [false]
         cuda: [true]
         libceed: [false]
         gslib: [true]
