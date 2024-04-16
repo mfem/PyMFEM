@@ -83,11 +83,11 @@ jobs:
         # sudo apt-get install nvidia-cuda-toolkit -y
 
         # script
-        # source ./ci_scripts/add_cuda_11_5.sh;
+        source ./ci_scripts/add_cuda_11_5.sh;
 
         # run file
-        wget -q https://developer.download.nvidia.com/compute/cuda/12.4.1/local_installers/cuda_12.4.1_550.54.15_linux.run
-        sudo sh cuda_12.4.1_550.54.15_linux.run --silent --toolkit --driver
+        # wget -q https://developer.download.nvidia.com/compute/cuda/12.4.1/local_installers/cuda_12.4.1_550.54.15_linux.run
+        # sudo sh cuda_12.4.1_550.54.15_linux.run --silent --toolkit --driver
 
         # paths
         export "/usr/local/cuda-12.4/bin" >> $GITHUB_PATH
@@ -139,20 +139,17 @@ jobs:
         python run_examples.py -parallel -verbose -np 2
 
     - name: Generate test results artifact
+      id: generate-artifact
       run: |
         tar -cvzf sandbox.tar.gz test/sandbox
-
-    - name: Generate artifact name
-      id: generate-artifact-name
-      run: |
+        # generate a name for the artifact
         txt=$(python -c "import datetime;print(datetime.datetime.now().strftime('%H_%M_%S_%f'))")
-        name="test_results_"${txt}"_"${{ github.run_id }}".tar.gz"
-        echo "name=${name}" >> $GITHUB_OUTPUT
+        echo name="test_results_"${txt}"_"${{ github.run_id }}".tar.gz" >> $GITHUB_OUTPUT
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       if: failure()
       with:
-          name: ${{ steps.generate-artifact-name.outputs.name }}
+          name: ${{ steps.generate-artifact.outputs.name }}
           path: sandbox.tar.gz
           retention-days: 1
