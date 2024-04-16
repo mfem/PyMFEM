@@ -82,18 +82,18 @@ jobs:
       id: cache-cuda
       uses: actions/cache@v4
       with:
-        path: ~/cuda.run
-        key: ${{ matrix.cuda-version }}_${{ matrix.cuda-driver-version }}
+        path: ~/cache
+        key: cuda-${{ matrix.cuda-version }}-${{ matrix.cuda-driver-version }}
 
     - name: Download CUDA
       if: matrix.cuda && steps.cache-cuda.outputs.cache-hit != 'true'
-      run: wget -q -O ~/cuda.run ${{ env.cuda-installer-url }}
+      run: curl -o ~/cache/cuda.run --create-dirs ${{ env.cuda-installer-url }}
 
     - name: Install CUDA
       if: matrix.cuda
       run: |
         # The --silent flag is necessary to bypass user-input, e.g. accepting the EULA
-        sudo sh ~/cuda.run --silent --toolkit
+        sudo sh ~/cache/cuda.run --silent --toolkit
         echo "/usr/local/cuda/bin" >> $GITHUB_PATH
 
     - name: Print CUDA
