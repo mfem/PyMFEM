@@ -128,9 +128,7 @@ jobs:
     # -------------------------------------------------------------------------------------------------
     - name: Build MFEM (step 1)
       if: matrix.phases
-      run: |
-        python setup.py clean --swig
-        python setup.py install --ext-only --vv ${{ env.build-flags }}
+      run: python setup.py install --ext-only --vv ${{ env.build-flags }}
 
     - name: Build SWIG wrappers (step 2)
       if: matrix.phases
