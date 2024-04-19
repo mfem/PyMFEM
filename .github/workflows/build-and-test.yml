@@ -105,8 +105,8 @@ jobs:
     - name: Download CUDA
       if: matrix.cuda && steps.cache-cuda.outputs.cache-hit == false
       run: |
-      CUDA_URL="https://developer.download.nvidia.com/compute/cuda/${{ env.cuda-version.toolkit }}/local_installers/cuda_${{ env.cuda-version.toolkit }}_${{ env.cuda-version.driver }}_linux.run"
-      curl -o ~/cache/cuda.run --create-dirs $CUDA_URL
+        CUDA_URL="https://developer.download.nvidia.com/compute/cuda/${{ env.cuda-version.toolkit }}/local_installers/cuda_${{ env.cuda-version.toolkit }}_${{ env.cuda-version.driver }}_linux.run"
+        curl -o ~/cache/cuda.run --create-dirs $CUDA_URL
 
     - name: Install CUDA
       if: matrix.cuda
