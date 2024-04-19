@@ -28,8 +28,6 @@ jobs:
 
         # ---------- Dependencies ----------
         cuda: [true]
-        cuda-version: [12.4.1]
-        cuda-driver-version: [550.54.15]
         libceed: [false]
         gslib: [true]
 
@@ -49,8 +47,6 @@ jobs:
             mfem-branch: default
             parallel: false
             cuda: false
-            cuda-version: 12.4.1
-            cuda-driver-version: 550.54.15
             libceed: false
             gslib: true
             phases: false
@@ -65,8 +61,7 @@ jobs:
       (${{ matrix.parallel && 'parallel' || 'serial' }}${{ matrix.cuda && ' + cuda' || '' }}${{ matrix.libceed && ' + libceed' || '' }}${{ matrix.gslib && ' + gslib' || '' }})
 
     env:
-      # If we wanted to add windows support we could add another url
-      cuda-installer-url: https://developer.download.nvidia.com/compute/cuda/${{ matrix.cuda-version }}/local_installers/cuda_${{ matrix.cuda-version }}_${{ matrix.cuda-driver-version }}_linux.run
+      cuda-version: {toolkit: 12.4.1, driver: 550.54.15}
       # These are all passed to setup.py as one concatenated string
       build-flags: >-
         ${{ matrix.parallel && '--with-parallel' || '' }}
@@ -105,11 +100,13 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/cache
-        key: cuda-installer-${{ matrix.cuda-version }}-${{ matrix.cuda-driver-version }}
+        key: cuda-installer-${{ env.cuda-version.toolkit }}-${{ env.cuda-version.driver }}
 
     - name: Download CUDA
       if: matrix.cuda && steps.cache-cuda.outputs.cache-hit == false
-      run: curl -o ~/cache/cuda.run --create-dirs ${{ env.cuda-installer-url }}
+      run: |
+      echo "CUDA_URL=https://developer.download.nvidia.com/compute/cuda/${{ env.cuda-version.toolkit }}/local_installers/cuda_${{ env.cuda-version.toolkit }}_${{ env.cuda-version.driver }}_linux.run" >> $GITHUB_ENV
+      curl -o ~/cache/cuda.run --create-dirs $CUDA_URL
 
     - name: Install CUDA
       if: matrix.cuda
