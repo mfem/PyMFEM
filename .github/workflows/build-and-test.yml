@@ -1,39 +1,47 @@
-# This is a clean-up/refactor of test_with_MFEM_release.yml
+# build-and-test.yml
+#
+#  - Builds PyMFEM in three stages:
+#    - MFEM dependencies + MFEM
+#    - SWIG bindings
+#    - PyMFEM
+#  - Runs tests under `run_examples.py`
+#  - If there is a failure, uploads test outputs as an artifact
+
 name: Build and Test
 
 on:
   workflow_dispatch:
   pull_request:
+  # TODO: setup a trigger to run on MFEM releases
 
 jobs:
   build-and-test:
-    # if: contains(github.event.pull_request.labels.*.name, 'in-test-with-mfem-release')
     strategy:
       fail-fast: false
       matrix:
+        # ---------- Main ----------
         os: [ubuntu-latest, macos-latest]
-        python-version: ['3.7', '3.8', '3.9', '3.10', '3.11']
-
-        # right now, default is a hardcoded sha defined in setup.py:repos_sha
-        mfem-branch: [master, default]
+        python-version: ['3.7', '3.8', '3.9', '3.10', '3.11'] # 3.12 is not supported by scipy
+        # NOTE: If setup.py could accept a commit hash as an argument, that could give us more flexibility here
+        mfem-branch: [master, default] # 'default' uses a specific commit hash defined in setup.py:repos_sha
         parallel: [false, true]
-        # cuda: [false, true]
-        # temporary: only test cuda
-        # mfem-branch: [default]
-        # parallel: [false]
-        cuda: [true]
-        libceed: [false]
-        gslib: [true]
-        # When phases==true, run each individual build step explicitly: mfem -> swig -> pymfem
-        phases: [true]
 
+        # ---------- Dependencies ----------
+        cuda: [true]
         cuda-version: [12.4.1]
         cuda-driver-version: [550.54.15]
+        libceed: [false]
+        gslib: [true]
+
+        # ---------- Build process ----------
+        # When phases==true, run each individual build step explicitly: mfem -> swig -> pymfem
+        phases: [true]
 
         exclude:
           # CUDA does not support MacOS
           - os: macos-latest
             cuda: true
+
         include:
           # Include a single example where the build is executed all at once
           - os: ubuntu-latest
@@ -49,7 +57,7 @@ jobs:
 
     runs-on: ${{ matrix.os }}
 
-    # https://7tonshark.com/posts/github-actions-ternary-operator/
+    # Reference for $${{ x && y || z }} syntax: https://7tonshark.com/posts/github-actions-ternary-operator/
     name: >-
       ${{ matrix.os }},
       ${{ matrix.python-version }},
@@ -57,7 +65,9 @@ jobs:
       (${{ matrix.parallel && 'parallel' || 'serial' }}${{ matrix.cuda && ' + cuda' || '' }}${{ matrix.libceed && ' + libceed' || '' }}${{ matrix.gslib && ' + gslib' || '' }})
 
     env:
+      # If we wanted to add windows support we could add another url
       cuda-installer-url: https://developer.download.nvidia.com/compute/cuda/${{ matrix.cuda-version }}/local_installers/cuda_${{ matrix.cuda-version }}_${{ matrix.cuda-driver-version }}_linux.run
+      # These are all passed to setup.py as one concatenated string
       build-flags: >-
         ${{ matrix.parallel && '--with-parallel' || '' }}
         ${{ matrix.cuda && '--with-cuda' || '' }}
@@ -65,6 +75,9 @@ jobs:
         ${{ matrix.gslib && '--with-gslib' || '' }}
         ${{ (!(matrix.mfem-branch == 'default') && format('--mfem-branch=''{0}''', matrix.mfem-branch)) || '' }}
 
+    # -------------------------------------------------------------------------------------------------
+    # Begin workflow
+    # -------------------------------------------------------------------------------------------------
     steps:
     - name: Checkout repo
       uses: actions/checkout@v4
@@ -75,7 +88,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     # -------------------------------------------------------------------------------------------------
-    # Setup dependencies
+    # Download/install dependencies
     # -------------------------------------------------------------------------------------------------
     - name: Install core dependencies via requirements.txt
       run: pip install -r requirements.txt --verbose
@@ -114,7 +127,7 @@ jobs:
         nvcc --version || printf "CUDA not installed"
 
     # -------------------------------------------------------------------------------------------------
-    # Build
+    # Build MFEM + SWIG Bindings + PyMFEM
     # -------------------------------------------------------------------------------------------------
     - name: Build MFEM (step 1)
       if: matrix.phases
@@ -142,6 +155,7 @@ jobs:
       run: |
         cd test
         python run_examples.py -serial -verbose
+
     - name: Run tests (parallel)
       if: matrix.parallel
       run: |
@@ -149,7 +163,7 @@ jobs:
         python run_examples.py -parallel -verbose -np 2
 
     # -------------------------------------------------------------------------------------------------
-    # Artifact
+    # Generate an artifact (output of tests) on failure
     # -------------------------------------------------------------------------------------------------
     - name: Generate test results artifact
       id: generate-artifact
