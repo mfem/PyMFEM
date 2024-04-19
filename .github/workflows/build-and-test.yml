@@ -61,7 +61,8 @@ jobs:
       (${{ matrix.parallel && 'parallel' || 'serial' }}${{ matrix.cuda && ' + cuda' || '' }}${{ matrix.libceed && ' + libceed' || '' }}${{ matrix.gslib && ' + gslib' || '' }})
 
     env:
-      cuda-version: {toolkit: 12.4.1, driver: 550.54.15}
+      cuda-toolkit-version: '12.4.1'
+      cuda-driver-version: '550.54.15'
       # These are all passed to setup.py as one concatenated string
       build-flags: >-
         ${{ matrix.parallel && '--with-parallel' || '' }}
@@ -100,12 +101,12 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/cache
-        key: cuda-installer-${{ env.cuda-version.toolkit }}-${{ env.cuda-version.driver }}
+        key: cuda-installer-${{ env.cuda-toolkit-version }}-${{ env.cuda-driver-version }}
 
     - name: Download CUDA
       if: matrix.cuda && steps.cache-cuda.outputs.cache-hit == false
       run: |
-        CUDA_URL="https://developer.download.nvidia.com/compute/cuda/${{ env.cuda-version.toolkit }}/local_installers/cuda_${{ env.cuda-version.toolkit }}_${{ env.cuda-version.driver }}_linux.run"
+        CUDA_URL="https://developer.download.nvidia.com/compute/cuda/${{ env.cuda-toolkit-version }}/local_installers/cuda_${{ env.cuda-toolkit-version }}_${{ env.cuda-driver-version }}_linux.run"
         curl -o ~/cache/cuda.run --create-dirs $CUDA_URL
 
     - name: Install CUDA
