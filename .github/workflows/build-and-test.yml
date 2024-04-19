@@ -35,18 +35,18 @@ jobs:
           # CUDA does not support MacOS
           - os: macos-latest
             cuda: true
-        # include:
-        #   # Include a single example where the build is executed in phases
-        #   - os: ubuntu-latest
-        #     python-version: 3.9
-        #     mfem-branch: default
-        #     parallel: false
-        #     cuda: false
-        #     cuda-version: 12.4.1
-        #     cuda-driver-version: 550.54.15
-        #     libceed: false
-        #     gslib: true
-        #     phases: true
+        include:
+          # Include a single example where the build is executed all at once
+          - os: ubuntu-latest
+            python-version: 3.9
+            mfem-branch: default
+            parallel: false
+            cuda: false
+            cuda-version: 12.4.1
+            cuda-driver-version: 550.54.15
+            libceed: false
+            gslib: true
+            phases: false
 
     runs-on: ${{ matrix.os }}
 
