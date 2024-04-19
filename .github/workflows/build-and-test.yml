@@ -133,19 +133,19 @@ jobs:
       if: matrix.phases
       run: |
         python setup.py clean --swig
-        python setup.py install --ext-only --verbose ${{ env.build-flags }}
+        python setup.py install --ext-only --vv ${{ env.build-flags }}
 
     - name: Build SWIG wrappers (step 2)
       if: matrix.phases
-      run: python setup.py install --swig --verbose ${{ env.build-flags }}
+      run: python setup.py install --swig --vv ${{ env.build-flags }}
 
     - name: Build PyMFEM (step 3)
       if: matrix.phases
-      run: python setup.py install --skip-ext --skip-swig --verbose ${{ env.build-flags }}
+      run: python setup.py install --skip-ext --skip-swig --vv ${{ env.build-flags }}
 
     - name: Build all (steps 1-3)
       if: matrix.phases == false
-      run: python setup.py install ${{ env.build-flags }}
+      run: python setup.py install --vv ${{ env.build-flags }}
 
     # -------------------------------------------------------------------------------------------------
     # Run tests
