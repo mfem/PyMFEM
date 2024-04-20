@@ -121,8 +121,8 @@ def get_extensions():
                "tmop", "tmop_amr", "tmop_tools", "qspace", "qfunction",
                "quadinterpolator", "quadinterpolator_face",
                "submesh", "transfermap", "staticcond","sidredatacollection",
-               "psubmesh", "ptransfermap", "enzyme"]
-
+               "psubmesh", "ptransfermap", "enzyme",
+               "attribute_sets", "arrays_by_name"]
     if add_pumi == '1':
         from setup_local import puminc, pumilib
         modules.append("pumi")
