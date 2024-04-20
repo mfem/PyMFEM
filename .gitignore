@@ -18,3 +18,5 @@ test/*
 !test/issues/data_3960/VisIt_volume
 *.egg-info
 *.py#
+mfem/common/bilininteg_ext.i
+mfem/common/lininteg_ext.i
