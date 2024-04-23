@@ -1,0 +1,178 @@
+# build-and-test.yml
+#
+#  - Builds PyMFEM in three stages:
+#    - MFEM dependencies + MFEM
+#    - SWIG bindings
+#    - PyMFEM
+#  - Runs tests under `run_examples.py`
+#  - If there is a failure, uploads test outputs as an artifact
+
+name: Build and Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+  # TODO: setup a trigger to run on MFEM releases
+
+jobs:
+  build-and-test:
+    strategy:
+      fail-fast: false
+      matrix:
+        # ---------- Main ----------
+        os: [ubuntu-latest, macos-latest]
+        python-version: ['3.7', '3.8', '3.9', '3.10', '3.11'] # 3.12 is not supported by scipy
+        # NOTE: If setup.py could accept a commit hash as an argument, that could give us more flexibility here
+        mfem-branch: [master, default] # 'default' uses a specific commit hash defined in setup.py:repos_sha
+        parallel: [false, true]
+
+        # ---------- Dependencies ----------
+        cuda: [true]
+        libceed: [false]
+        gslib: [true]
+
+        # ---------- Build process ----------
+        # When phases==true, run each individual build step explicitly: mfem -> swig -> pymfem
+        phases: [true]
+
+        exclude:
+          # CUDA does not support MacOS
+          - os: macos-latest
+            cuda: true
+
+        include:
+          # Include a single example where the build is executed all at once
+          - os: ubuntu-latest
+            python-version: 3.9
+            mfem-branch: default
+            parallel: false
+            cuda: false
+            libceed: false
+            gslib: true
+            phases: false
+
+    runs-on: ${{ matrix.os }}
+
+    # Reference for $${{ x && y || z }} syntax: https://7tonshark.com/posts/github-actions-ternary-operator/
+    name: >-
+      ${{ matrix.os }},
+      ${{ matrix.python-version }},
+      ${{ matrix.mfem-branch }},
+      (${{ matrix.parallel && 'parallel' || 'serial' }}${{ matrix.cuda && ' + cuda' || '' }}${{ matrix.libceed && ' + libceed' || '' }}${{ matrix.gslib && ' + gslib' || '' }})
+
+    env:
+      cuda-toolkit-version: '12.4.1'
+      cuda-driver-version: '550.54.15'
+      # These are all passed to setup.py as one concatenated string
+      build-flags: >-
+        ${{ matrix.parallel && '--with-parallel' || '' }}
+        ${{ matrix.cuda && '--with-cuda' || '' }}
+        ${{ matrix.libceed && '--with-libceed' || '' }}
+        ${{ matrix.gslib && '--with-gslib' || '' }}
+        ${{ (!(matrix.mfem-branch == 'default') && format('--mfem-branch=''{0}''', matrix.mfem-branch)) || '' }}
+
+    # -------------------------------------------------------------------------------------------------
+    # Begin workflow
+    # -------------------------------------------------------------------------------------------------
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    # -------------------------------------------------------------------------------------------------
+    # Download/install dependencies
+    # -------------------------------------------------------------------------------------------------
+    - name: Install core dependencies via requirements.txt
+      run: pip install -r requirements.txt --verbose
+
+    - name: Install MPI
+      if: matrix.parallel
+      run: |
+        sudo apt-get install mpich libmpich-dev
+        pip install mpi4py
+
+    - name: Cache CUDA
+      if: matrix.cuda
+      id: cache-cuda
+      uses: actions/cache@v4
+      with:
+        path: ~/cache
+        key: cuda-installer-${{ env.cuda-toolkit-version }}-${{ env.cuda-driver-version }}
+
+    - name: Download CUDA
+      if: matrix.cuda && steps.cache-cuda.outputs.cache-hit == false
+      run: |
+        CUDA_URL="https://developer.download.nvidia.com/compute/cuda/${{ env.cuda-toolkit-version }}/local_installers/cuda_${{ env.cuda-toolkit-version }}_${{ env.cuda-driver-version }}_linux.run"
+        curl -o ~/cache/cuda.run --create-dirs $CUDA_URL
+
+    - name: Install CUDA
+      if: matrix.cuda
+      run: |
+        # The --silent flag is necessary to bypass user-input, e.g. accepting the EULA
+        sudo sh ~/cache/cuda.run --silent --toolkit
+        echo "/usr/local/cuda/bin" >> $GITHUB_PATH
+
+    - name: Print dependency information
+      run: |
+        pip list
+        printf "\n\n---------- MPI ----------\n"
+        mpiexec --version || printf "MPI not installed"
+        printf "\n\n---------- CUDA ----------\n"
+        nvcc --version || printf "CUDA not installed"
+
+    # -------------------------------------------------------------------------------------------------
+    # Build MFEM + SWIG Bindings + PyMFEM
+    # -------------------------------------------------------------------------------------------------
+    - name: Build MFEM (step 1)
+      if: matrix.phases
+      run: python setup.py install --ext-only --vv ${{ env.build-flags }}
+
+    - name: Build SWIG wrappers (step 2)
+      if: matrix.phases
+      run: python setup.py install --swig --vv ${{ env.build-flags }}
+
+    - name: Build PyMFEM (step 3)
+      if: matrix.phases
+      run: python setup.py install --skip-ext --skip-swig --vv ${{ env.build-flags }}
+
+    - name: Build all (steps 1-3)
+      if: matrix.phases == false
+      run: python setup.py install --vv ${{ env.build-flags }}
+
+    # -------------------------------------------------------------------------------------------------
+    # Run tests
+    # -------------------------------------------------------------------------------------------------
+    - name: Run tests (serial)
+      if: matrix.parallel == false
+      run: |
+        cd test
+        python run_examples.py -serial -verbose
+
+    - name: Run tests (parallel)
+      if: matrix.parallel
+      run: |
+        cd test
+        python run_examples.py -parallel -verbose -np 2
+
+    # -------------------------------------------------------------------------------------------------
+    # Generate an artifact (output of tests) on failure
+    # -------------------------------------------------------------------------------------------------
+    - name: Generate test results artifact
+      id: generate-artifact
+      run: |
+        tar -cvzf sandbox.tar.gz test/sandbox
+        # generate a name for the artifact
+        txt=$(python -c "import datetime;print(datetime.datetime.now().strftime('%H_%M_%S_%f'))")
+        echo name="test_results_"${txt}"_"${{ github.run_id }}".tar.gz" >> $GITHUB_OUTPUT
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+          name: ${{ steps.generate-artifact.outputs.name }}
+          path: sandbox.tar.gz
+          retention-days: 1
