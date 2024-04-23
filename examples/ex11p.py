@@ -127,6 +127,7 @@ if (myid == 0):
 #    serial and parallel assembly we extract the corresponding parallel
 #    matrices A and M.
 one = mfem.ConstantCoefficient(1.0)
+mone = mfem.ConstantCoefficient(-1.0)
 
 ess_bdr = mfem.intArray()
 if pmesh.bdr_attributes.Size() != 0:
@@ -134,7 +135,7 @@ if pmesh.bdr_attributes.Size() != 0:
     ess_bdr.Assign(1)
 
 a = mfem.ParBilinearForm(fespace)
-a.AddDomainIntegrator(mfem.DiffusionIntegrator(one))
+a.AddDomainIntegrator(mfem.DiffusionIntegrator(mone))
 if pmesh.bdr_attributes.Size() == 0:
     # Add a mass term if the mesh has no boundary, e.g. periodic mesh or
     # closed surface.
@@ -180,7 +181,7 @@ if use_strumpack:
     precond = strumpack
 else:
     amg = mfem.HypreBoomerAMG(A)
-    amg.SetPrintLevel(0)
+    amg.SetPrintLevel(1)
     precond = amg
 
 lobpcg = mfem.HypreLOBPCG(MPI.COMM_WORLD)

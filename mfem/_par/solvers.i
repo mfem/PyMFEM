@@ -34,6 +34,9 @@ import_array();
 %feature("director") mfem::IterativeSolverMonitor;
 %feature("director") mfem::PyIterativeSolver;
 
+// this is to expose PrintLevel structure
+%nestedworkaround;
+
 %include "linalg/solvers.hpp"
 %include "../common/pysolvers.hpp"
 

@@ -26,5 +26,7 @@ import_array();
 %import "pmesh.i"
 %import "solvers.i"
 
+%immutable print_level;
+
 %include "miniapps/common/dist_solver.hpp"
 
