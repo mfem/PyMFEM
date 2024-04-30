@@ -1,12 +1,13 @@
 '''
-   navier_2dfocs.py
+   navier_2dfocs)restart.py
 
-   2D flow over a cylinder.
+   Restarting 2D flow over a cylinder with given initial velocity field.
+   (Pressure field can also be provided)
 
    Example run with kinematic viscosity of 0.001 and visualization:
-   python navier_2dfocs.py -kinvis 0.001 -vis
+   python navier_2dfocs_restart.py -kinvis 0.001 -vis
 
-   paraview files will output in file '2dfoc'
+   paraview files will output in file '2dfoc_restart'
 '''
 
 from mfem.par import intArray, doubleArray
@@ -19,13 +20,11 @@ from numpy import sin, cos, exp, sqrt, zeros, abs, pi
 import numpy as np
 from mpi4py import MPI
 
-#set up simulation to run in parallel
 num_procs = MPI.COMM_WORLD.size
 myid = MPI.COMM_WORLD.rank
 smyid = '{:0>6d}'.format(myid)
    
-def run(ser_ref_levels=0,
-        order=4,
+def run(order=4,
         kinvis=0.001,
         t_final = 5,
         dt = 1e-3,
@@ -34,29 +33,23 @@ def run(ser_ref_levels=0,
         visualization = False,
         numba = True):
     
-    #choose mesh
+    # not sure how to just reload the mesh
     mesh = mfem.Mesh("rect-cylinder.msh")
-    
-    # refine mesh in MFEM.
-    # currently ser_ref_levels default is 0 (no refinement)
-    for i in range(ser_ref_levels):
-        mesh.UniformRefinement()
+    pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
 
-    if MPI.ROOT:
-        print("Number of elements: " + str(mesh.GetNE()))
-    
-    pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh) #parallel mesh
-
-    #Setup navier solver with partial assembly
+    #reinitialize flow solver, ideally we wouldn't do this
     flowsolver = mfem.navier_solver.NavierSolver(pmesh,order,kinvis)
     flowsolver.EnablePA(pa)
 
-    # I think the below lines are unclear in python. 
+    # I think the below 2 lines are unclear in python. 
     # u_ic points to the current flowsolver velocity, which means
     # changing u_ic sets the velocity of the flowsolver.
-    # E.g. u_ic.ProjectCoefficient(u_excoeff) set the initial condition
-    u_ic = flowsolver.GetCurrentVelocity()  
+    # E.g. u_ic.Assign(ParGridFunction(...)) will set the initial condition
 
+    u_ic = flowsolver.GetCurrentVelocity()
+    p_ic = flowsolver.GetCurrentPressure()
+
+    #still need to define this function just to set boundary conditions later
     if numba:
         @mfem.jit.vector(vdim=pmesh.Dimension(),td = True, interface = 'c++')
         def u_excoeff(x,t,u):
@@ -69,22 +62,24 @@ def run(ser_ref_levels=0,
                  u[1] = 0
 
             u[0] = 0.0
-            
     else:
             assert False, "numba required"
 
-    u_ic.ProjectCoefficient(u_excoeff)
+    
+    #Reload velocity and pressure, then assign them
+    ICv = mfem.ParGridFunction(pmesh,'nav2dv.'+smyid)
+    ICp = mfem.ParGridFunction(pmesh,'nav2dp.'+smyid)
+    u_ic.Assign(ICv)
+    p_ic.Assign(ICp)
 
-
-    # Set boundary conditions. Inlet and cylinder are Dirichlet 0,
-    # other boundaries are natural
+    #Set boundary conditions again
     attr = intArray(pmesh.bdr_attributes.Max())
     attr[0] = 1 #inlet
     attr[4] = 1 #cylinder
     flowsolver.AddVelDirichletBC(u_excoeff, attr)
 
-    #Flowsolver setup
-    time = 0.0
+    #everything below here is the same
+    time = 0
     last_step = False
 
     flowsolver.Setup(dt)
@@ -95,7 +90,7 @@ def run(ser_ref_levels=0,
     step = 0
 
     if visualization:
-         pvdc = mfem.ParaViewDataCollection("2dfoc", pmesh)
+         pvdc = mfem.ParaViewDataCollection("2dfoc_restart", pmesh)
          pvdc.SetDataFormat(mfem.VTKFormat_BINARY32)
          pvdc.SetHighOrderOutput(True)
          pvdc.SetLevelsOfDetail(order)
@@ -124,11 +119,9 @@ def run(ser_ref_levels=0,
 
         step = step + 1
     
-    flowsolver.PrintTimingData()
+    # flowsolver.PrintTimingData()
 
-    u_gf = flowsolver.GetCurrentVelocity()
-    p_gf = flowsolver.GetCurrentPressure()
-    
+    # save mesh, velocity, and pressure
     mesh_name = "nav2d-mesh."+smyid
     sol_name_v = "nav2dv."+smyid
     sol_name_p = "nav2dp."+smyid
@@ -137,14 +130,13 @@ def run(ser_ref_levels=0,
     p_gf.Save(sol_name_p, 8)
 
 
+
+
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
 
-    parser = ArgParser(description='navier_mms (translated from miniapps/navier/navier_mms.cpp)')
+    parser = ArgParser(description='navier_2dfocs')
 
-    parser.add_argument('-rs', '--refine-serial',
-                        action='store', default=0, type=int,
-                        help="Number of times to refine the mesh uniformly in serial.")
     parser.add_argument('-o', '--order',
                         action='store', default=4, type=int,
                         help="Order (degree) of the finite elements.")
@@ -175,8 +167,7 @@ if __name__ == "__main__":
 
     numba = (args.numba == 1)
 
-    run(ser_ref_levels = args.refine_serial,
-        order=args.order,
+    run(order=args.order,
         kinvis=args.kinvis,
         t_final=args.final_time,
         dt=args.time_step,
