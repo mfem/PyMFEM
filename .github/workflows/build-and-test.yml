@@ -7,7 +7,7 @@
 #  - Runs tests under `run_examples.py`
 #  - If there is a failure, uploads test outputs as an artifact
 
-name: Build and Test
+name: Build/test PyMFEM
 
 on:
   workflow_dispatch:
@@ -20,6 +20,9 @@ on:
   pull_request:
 
 jobs:
+  # -------------------------------------------------------------------------------------------------
+  # Build and test matrix
+  # -------------------------------------------------------------------------------------------------
   build-and-test-matrix:
     if: ${{ github.event_name == 'pull_request' || inputs.test_matrix == true }}
     strategy:
@@ -53,9 +56,6 @@ jobs:
       cuda-toolkit-version: '12.4.1'
       cuda-driver-version: '550.54.15'
 
-    # -------------------------------------------------------------------------------------------------
-    # Begin workflow
-    # -------------------------------------------------------------------------------------------------
     steps:
     - name: Build and test pymfem
       uses: mfem/github-actions/build-pymfem@pymfem-workflow
@@ -71,6 +71,9 @@ jobs:
         gslib: ${{ matrix.gslib }}
         phases: ${{ matrix.phases }}
 
+  # -------------------------------------------------------------------------------------------------
+  # Build and test defaults
+  # -------------------------------------------------------------------------------------------------
   build-and-test-defaults:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'workflow_dispatch' && inputs.test_matrix == false }}
