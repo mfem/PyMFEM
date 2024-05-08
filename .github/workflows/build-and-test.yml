@@ -31,13 +31,25 @@ jobs:
         libceed: [false]
         gslib: [true]
         phases: [true]
+        cuda-toolkit-version: ['12.4.1']
+        cuda-driver-version: ['550.54.15']
 
         exclude:
           # CUDA does not support MacOS
           - os: macos-latest
             cuda: true
-
-    runs-on: ${{ matrix.os }}
+    uses: ./.github/workflows/build-and-test-callable.yml
+    with:
+      os: ${{ matrix.os }}
+      python-version: ${{ matrix.python-version }}
+      mfem-branch: ${{ matrix.mfem-branch }}
+      parallel: ${{ matrix.parallel }}
+      cuda: ${{ matrix.cuda }}
+      cuda-toolkit-version: ${{ matrix.cuda-toolkit-version }}
+      cuda-driver-version: ${{ matrix.cuda-driver-version }}
+      libceed: ${{ matrix.libceed }}
+      gslib: ${{ matrix.gslib }}
+      phases: ${{ matrix.phases }}
 
     name: >-
       Build/test:
@@ -46,38 +58,9 @@ jobs:
       ${{ matrix.mfem-branch }},
       (${{ matrix.parallel && 'parallel' || 'serial' }}${{ matrix.cuda && ' + cuda' || '' }}${{ matrix.libceed && ' + libceed' || '' }}${{ matrix.gslib && ' + gslib' || '' }})
 
-    env:
-      cuda-toolkit-version: '12.4.1'
-      cuda-driver-version: '550.54.15'
-
-    steps:
-    - name: Checkout repo
-      uses: actions/checkout@v4
-
-    - name: Build and test pymfem
-      uses: ./.github/workflows/build-and-test-callable.yml@callable_workflow
-      with:
-        os: ${{ matrix.os }}
-        python-version: ${{ matrix.python-version }}
-        mfem-branch: ${{ matrix.mfem-branch }}
-        parallel: ${{ matrix.parallel }}
-        cuda: ${{ matrix.cuda }}
-        cuda-toolkit-version: ${{ env.cuda-toolkit-version }}
-        cuda-driver-version: ${{ env.cuda-driver-version }}
-        libceed: ${{ matrix.libceed }}
-        gslib: ${{ matrix.gslib }}
-        phases: ${{ matrix.phases }}
-
   # -------------------------------------------------------------------------------------------------
   # Build and test defaults
   # -------------------------------------------------------------------------------------------------
   build-and-test-defaults:
-    runs-on: ubuntu-latest
     if: ${{ github.event_name == 'workflow_dispatch' && inputs.test_matrix == false }}
-    name: "Build/test: (defaults)"
-    steps:
-    - name: Checkout repo
-      uses: actions/checkout@v4
-
-    - name: Build and test pymfem
-      uses: ./.github/workflows/build-and-test-callable.yml@callable_workflow
+    uses: ./.github/workflows/build-and-test-callable.yml
