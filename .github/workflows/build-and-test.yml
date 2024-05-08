@@ -51,6 +51,9 @@ jobs:
       cuda-driver-version: '550.54.15'
 
     steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
     - name: Build and test pymfem
       uses: ./.github/workflows/build-and-test-callable.yml@callable_workflow
       with:
@@ -73,5 +76,8 @@ jobs:
     if: ${{ github.event_name == 'workflow_dispatch' && inputs.test_matrix == false }}
     name: "Build/test: (defaults)"
     steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
     - name: Build and test pymfem
       uses: ./.github/workflows/build-and-test-callable.yml@callable_workflow
