@@ -7,7 +7,7 @@
 #  - Runs tests under `run_examples.py`
 #  - If there is a failure, uploads test outputs as an artifact
 
-name: Build and Test
+name: Build + Test
 
 on:
   workflow_call:

@@ -2,7 +2,7 @@
 #
 # Dispatch workflow for build-and-test-callable.yml
 
-name: B+T dispatcher
+name: Build + Test Dispatch
 
 on:
   workflow_dispatch:
