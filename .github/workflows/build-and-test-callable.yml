@@ -57,10 +57,11 @@ jobs:
 
     # Reference for $${{ x && y || z }} syntax: https://7tonshark.com/posts/github-actions-ternary-operator/
     name: >-
-      ${{ inputs.os }},
-      ${{ inputs.python-version }},
-      ${{ inputs.mfem-branch }},
-      (${{ inputs.parallel && 'parallel' || 'serial' }}${{ inputs.cuda && ' + cuda' || '' }}${{ inputs.libceed && ' + libceed' || '' }}${{ inputs.gslib && ' + gslib' || '' }})
+      ${{ inputs.os }} |
+      ${{ inputs.mfem-branch }} |
+      ${{ inputs.python-version }} |
+      ${{ inputs.parallel && 'parallel' || 'serial' }}
+      ${{ inputs.cuda && '| cuda' || '' }}${{ inputs.libceed && '| libceed' || '' }}${{ inputs.gslib && '| gslib' || '' }})
 
     env:
       cuda-toolkit-version: '12.4.1'
