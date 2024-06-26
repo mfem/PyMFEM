@@ -1,0 +1,102 @@
+# build-and-test-dispatch.yml
+#
+# Dispatch workflow for build-and-test-callable.yml
+
+name: Build and Test (dispatch)
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_options:
+        type: choice
+        required: true
+        description: 'Test all options. If set to false, will only trigger the CI for the default options.'
+        default: 'defaults'
+        options:
+          - 'defaults'
+          - 'fast'
+          - 'all'
+  pull_request:
+
+jobs:
+  # -------------------------------------------------------------------------------------------------
+  # Build and test whole matrix of options on linux
+  # -------------------------------------------------------------------------------------------------
+  test-linux:
+    if: ${{ github.event_name == 'pull_request' || inputs.test_options == 'all' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        mfem-branch: [master, default] # 'default' uses a specific commit hash defined in setup.py:repos_sha
+        python-version: ['3.7', '3.8', '3.9', '3.10', '3.11'] # 3.12 is not supported by scipy
+        parallel: [false, true]
+    name: test-linux | ${{ matrix.mfem-branch }} | ${{ matrix.python-version }} | ${{ matrix.parallel && 'parallel' || 'serial' }}
+    uses: ./.github/workflows/build-and-test-callable.yml
+    with:
+      os: ubuntu-latest
+      mfem-branch: ${{ matrix.mfem-branch }}
+      python-version: ${{ matrix.python-version }}
+      parallel: ${{ matrix.parallel }}
+
+
+  # -------------------------------------------------------------------------------------------------
+  # Fast test
+  # -------------------------------------------------------------------------------------------------
+  test-fast:
+    if: ${{ inputs.test_options == 'fast' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        mfem-branch: [master, default] # 'default' uses a specific commit hash defined in setup.py:repos_sha
+        parallel: [false, true]
+    name: test-fast | ${{ matrix.mfem-branch }} | ${{ matrix.parallel && 'parallel' || 'serial' }}
+    uses: ./.github/workflows/build-and-test-callable.yml
+    with:
+      os: ubuntu-latest
+      mfem-branch: ${{ matrix.mfem-branch }}
+      python-version: '3.9'
+      parallel: ${{ matrix.parallel }}
+
+  # -------------------------------------------------------------------------------------------------
+  # Specific cases (we want these to use defaults, and not expand the dimensions of the matrix)
+  # -------------------------------------------------------------------------------------------------
+  test-macos:
+    if: ${{ github.event_name == 'pull_request' || inputs.test_options == 'all' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        mfem-branch: [master, default]
+    name: test-macos | ${{ matrix.mfem-branch }}
+    uses: ./.github/workflows/build-and-test-callable.yml
+    with:
+      os: macos-latest
+      mfem-branch: ${{ matrix.mfem-branch }}
+
+  test-cuda:
+    if: ${{ github.event_name == 'pull_request' || inputs.test_options == 'all' }}
+    uses: ./.github/workflows/build-and-test-callable.yml
+    with:
+      cuda: true
+    name: test-cuda
+
+  test-libceed:
+    if: ${{ github.event_name == 'pull_request' || inputs.test_options == 'all' }}
+    uses: ./.github/workflows/build-and-test-callable.yml
+    with:
+      libceed: true
+    name: test-libceed
+
+  test-gslib:
+    if: ${{ github.event_name == 'pull_request' || inputs.test_options == 'all' }}
+    uses: ./.github/workflows/build-and-test-callable.yml
+    with:
+      gslib: true
+    name: test-gslib
+
+  # -------------------------------------------------------------------------------------------------
+  # Build and test defaults
+  # -------------------------------------------------------------------------------------------------
+  test-defaults:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.test_options == 'defaults' }}
+    uses: ./.github/workflows/build-and-test-callable.yml
+    name: test-defaults
