@@ -61,7 +61,7 @@ jobs:
       ${{ inputs.mfem-branch }} |
       ${{ inputs.python-version }} |
       ${{ inputs.parallel && 'parallel' || 'serial' }}
-      ${{ inputs.cuda && '| cuda' || '' }}${{ inputs.libceed && '| libceed' || '' }}${{ inputs.gslib && '| gslib' || '' }})
+      ${{ inputs.cuda && '| cuda' || '' }}${{ inputs.libceed && '| libceed' || '' }}${{ inputs.gslib && '| gslib' || '' }}
 
     env:
       cuda-toolkit-version: '12.4.1'
