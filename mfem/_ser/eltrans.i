@@ -22,6 +22,7 @@ import_array();
 %import "intrules.i"
 %import "geom.i"
 %import "../common/exception.i"
+%import "../common/mfem_config.i"
 
 %feature("shadow") mfem::ElementTransformation::Transform %{
 def Transform(self, *args):
@@ -39,5 +40,28 @@ def Transform(self, *args):
 %include "../common/deprecation.i"
 DEPRECATED_METHOD(mfem::IsoparametricTransformation::FinalizeTransformation())
 
+
+%ignore mfem::ElementTransformation::TransformBack;
+%ignore mfem::IsoparametricTransformation::TransformBack;
+
 %include "fem/eltrans.hpp"
 
+//
+//  special handling for TransformBack (this is because tol_0 is protected)
+//
+namespace mfem{
+  #ifdef MFEM_USE_DOUBLE
+  %extend IsoparametricTransformation{
+     virtual int _TransformBack(const Vector &pt, IntegrationPoint &ip,
+                                const real_t phys_tol = 1e-15){
+  #elif defined(MFEM_USE_SINGLE)
+     virtual int _TransformBack(const Vector &pt, IntegrationPoint &ip,
+                                const real_t phys_tol = 1e-7){
+  #endif
+       return self-> TransformBack(pt, ip, phys_tol);
+     }
+   };  //end of extend
+ } //end of namespace
+%pythoncode %{
+IsoparametricTransformation.TransformBack = IsoparametricTransformation._TransformBack
+%}
