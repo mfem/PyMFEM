@@ -15,58 +15,60 @@ on:
 
 jobs:
   # -------------------------------------------------------------------------------------------------
-  # Build and test matrix
+  # Build and test whole matrix of options on linux
   # -------------------------------------------------------------------------------------------------
-  test-matrix:
+  test-linux:
     if: ${{ github.event_name == 'pull_request' || inputs.test_all == true }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
         python-version: ['3.7', '3.8', '3.9', '3.10', '3.11'] # 3.12 is not supported by scipy
-        # NOTE: If setup.py could accept a commit hash as an argument, that could give us more flexibility here
         mfem-branch: [master, default] # 'default' uses a specific commit hash defined in setup.py:repos_sha
         parallel: [false, true]
-
+    name: " "
     uses: ./.github/workflows/build-and-test-callable.yml
     with:
-      os: ${{ matrix.os }}
+      os: ubuntu-latest
       python-version: ${{ matrix.python-version }}
       mfem-branch: ${{ matrix.mfem-branch }}
       parallel: ${{ matrix.parallel }}
 
-    name: ""
 
   # -------------------------------------------------------------------------------------------------
-  # Build and test misc (we want these to use defaults, and not expand the dimensions of the matrix)
+  # Specific cases (we want these to use defaults, and not expand the dimensions of the matrix)
   # -------------------------------------------------------------------------------------------------
   test-macos:
     if: ${{ github.event_name == 'pull_request' || inputs.test_all == true }}
+    strategy:
+      fail-fast: false
+      matrix:
+        mfem-branch: [master, default]
+    name: " "
     uses: ./.github/workflows/build-and-test-callable.yml
     with:
       os: macos-latest
-    name: ""
+      mfem-branch: ${{ matrix.mfem-branch }}
 
   test-cuda:
     if: ${{ github.event_name == 'pull_request' || inputs.test_all == true }}
     uses: ./.github/workflows/build-and-test-callable.yml
     with:
       cuda: true
-    name: ""
+    name: " "
 
   test-libceed:
     if: ${{ github.event_name == 'pull_request' || inputs.test_all == true }}
     uses: ./.github/workflows/build-and-test-callable.yml
     with:
       libceed: true
-    name: ""
+    name: " "
 
   test-gslib:
     if: ${{ github.event_name == 'pull_request' || inputs.test_all == true }}
     uses: ./.github/workflows/build-and-test-callable.yml
     with:
       gslib: true
-    name: ""
+    name: " "
 
   # -------------------------------------------------------------------------------------------------
   # Build and test defaults
