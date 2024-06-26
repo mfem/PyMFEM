@@ -27,17 +27,32 @@ jobs:
         # NOTE: If setup.py could accept a commit hash as an argument, that could give us more flexibility here
         mfem-branch: [master, default] # 'default' uses a specific commit hash defined in setup.py:repos_sha
         parallel: [false, true]
-        cuda: [true]
+        cuda: [false]
         libceed: [false]
-        gslib: [true]
+        gslib: [false]
 
-        # Include a single test using macos
+        # We don't want to expand dimensions for the following configurations
         include:
           - os: macos-latest
             python-version: '3.9'
             mfem-branch: 'default'
             parallel: false
             cuda: false
+          - os: ubuntu-latest
+            python-version: '3.9'
+            mfem-branch: 'default'
+            parallel: false
+            cuda: true
+          - os: ubuntu-latest
+            python-version: '3.9'
+            mfem-branch: 'default'
+            parallel: false
+            libceed: true
+          - os: ubuntu-latest
+            python-version: '3.9'
+            mfem-branch: 'default'
+            parallel: false
+            gslib: true
 
         # CUDA does not support MacOS - this is a safeguard and shouldn't be needed for most matrix configs
         exclude:
@@ -54,6 +69,7 @@ jobs:
       libceed: ${{ matrix.libceed }}
       gslib: ${{ matrix.gslib }}
 
+    name: 
     # name: >-
     #   Build/test:
     #   ${{ matrix.os }},
