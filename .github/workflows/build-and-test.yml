@@ -25,7 +25,7 @@ jobs:
         python-version: ['3.7', '3.8', '3.9', '3.10', '3.11'] # 3.12 is not supported by scipy
         mfem-branch: [master, default] # 'default' uses a specific commit hash defined in setup.py:repos_sha
         parallel: [false, true]
-    name: ' '
+    name: test-linux | py ${{ matrix.python-version }} | branch ${{ matrix.mfem-branch }} | ${{ matrix.parallel && 'parallel' || 'serial' }}
     uses: ./.github/workflows/build-and-test-callable.yml
     with:
       os: ubuntu-latest
@@ -43,7 +43,7 @@ jobs:
       fail-fast: false
       matrix:
         mfem-branch: [master, default]
-    name: " "
+    name: test-macos | branch ${{ matrix.mfem-branch }}
     uses: ./.github/workflows/build-and-test-callable.yml
     with:
       os: macos-latest
@@ -54,21 +54,21 @@ jobs:
     uses: ./.github/workflows/build-and-test-callable.yml
     with:
       cuda: true
-    name: " "
+    name: test-cuda
 
   test-libceed:
     if: ${{ github.event_name == 'pull_request' || inputs.test_all == true }}
     uses: ./.github/workflows/build-and-test-callable.yml
     with:
       libceed: true
-    name: " "
+    name: test-libceed
 
   test-gslib:
     if: ${{ github.event_name == 'pull_request' || inputs.test_all == true }}
     uses: ./.github/workflows/build-and-test-callable.yml
     with:
       gslib: true
-    name: " "
+    name: test-gslib
 
   # -------------------------------------------------------------------------------------------------
   # Build and test defaults
@@ -76,3 +76,4 @@ jobs:
   test-defaults:
     if: ${{ github.event_name == 'workflow_dispatch' && inputs.test_all == false }}
     uses: ./.github/workflows/build-and-test-callable.yml
+    name: test-defaults
