@@ -22,7 +22,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest]
         python-version: ['3.7', '3.8', '3.9', '3.10', '3.11'] # 3.12 is not supported by scipy
         # NOTE: If setup.py could accept a commit hash as an argument, that could give us more flexibility here
         mfem-branch: [master, default] # 'default' uses a specific commit hash defined in setup.py:repos_sha
@@ -30,14 +30,20 @@ jobs:
         cuda: [true]
         libceed: [false]
         gslib: [true]
-        phases: [true]
-        cuda-toolkit-version: ['12.4.1']
-        cuda-driver-version: ['550.54.15']
 
+        # Include a single test using macos
+        include:
+          - os: macos-latest
+            python-version: '3.9'
+            mfem-branch: 'default'
+            parallel: false
+            cuda: false
+
+        # CUDA does not support MacOS - this is a safeguard and shouldn't be needed for most matrix configs
         exclude:
-          # CUDA does not support MacOS
           - os: macos-latest
             cuda: true
+
     uses: ./.github/workflows/build-and-test-callable.yml
     with:
       os: ${{ matrix.os }}
@@ -45,18 +51,15 @@ jobs:
       mfem-branch: ${{ matrix.mfem-branch }}
       parallel: ${{ matrix.parallel }}
       cuda: ${{ matrix.cuda }}
-      cuda-toolkit-version: ${{ matrix.cuda-toolkit-version }}
-      cuda-driver-version: ${{ matrix.cuda-driver-version }}
       libceed: ${{ matrix.libceed }}
       gslib: ${{ matrix.gslib }}
-      phases: ${{ matrix.phases }}
 
-    name: >-
-      Build/test:
-      ${{ matrix.os }},
-      ${{ matrix.python-version }},
-      ${{ matrix.mfem-branch }},
-      (${{ matrix.parallel && 'parallel' || 'serial' }}${{ matrix.cuda && ' + cuda' || '' }}${{ matrix.libceed && ' + libceed' || '' }}${{ matrix.gslib && ' + gslib' || '' }})
+    # name: >-
+    #   Build/test:
+    #   ${{ matrix.os }},
+    #   ${{ matrix.python-version }},
+    #   ${{ matrix.mfem-branch }},
+    #   (${{ matrix.parallel && 'parallel' || 'serial' }}${{ matrix.cuda && ' + cuda' || '' }}${{ matrix.libceed && ' + libceed' || '' }}${{ matrix.gslib && ' + gslib' || '' }})
 
   # -------------------------------------------------------------------------------------------------
   # Build and test defaults
