@@ -25,7 +25,7 @@ jobs:
         python-version: ['3.7', '3.8', '3.9', '3.10', '3.11'] # 3.12 is not supported by scipy
         mfem-branch: [master, default] # 'default' uses a specific commit hash defined in setup.py:repos_sha
         parallel: [false, true]
-    name: " "
+    name: ${{ matrix.name }}
     uses: ./.github/workflows/build-and-test-callable.yml
     with:
       os: ubuntu-latest
