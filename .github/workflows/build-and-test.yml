@@ -2,13 +2,13 @@
 #
 # Dispatch workflow for build-and-test-callable.yml
 
-name: Build and Test
+name: B+T dispatcher
 
 on:
   workflow_dispatch:
     inputs:
-      test_matrix:
-        description: 'Test all options in the matrix. If set to false, will only trigger the CI for the default options.'
+      test_all:
+        description: 'Test all options. If set to false, will only trigger the CI for the default options.'
         default: false
         type: boolean
   pull_request:
@@ -17,8 +17,8 @@ jobs:
   # -------------------------------------------------------------------------------------------------
   # Build and test matrix
   # -------------------------------------------------------------------------------------------------
-  build-and-test-matrix:
-    if: ${{ github.event_name == 'pull_request' || inputs.test_matrix == true }}
+  test-matrix:
+    if: ${{ github.event_name == 'pull_request' || inputs.test_all == true }}
     strategy:
       fail-fast: false
       matrix:
@@ -27,32 +27,6 @@ jobs:
         # NOTE: If setup.py could accept a commit hash as an argument, that could give us more flexibility here
         mfem-branch: [master, default] # 'default' uses a specific commit hash defined in setup.py:repos_sha
         parallel: [false, true]
-        cuda: [false]
-        libceed: [false]
-        gslib: [false]
-
-        # We don't want to expand dimensions for the following configurations
-        include:
-          - os: macos-latest
-            python-version: '3.9'
-            mfem-branch: 'default'
-            parallel: false
-            cuda: false
-          - os: ubuntu-latest
-            python-version: '3.9'
-            mfem-branch: 'default'
-            parallel: false
-            cuda: true
-          - os: ubuntu-latest
-            python-version: '3.9'
-            mfem-branch: 'default'
-            parallel: false
-            libceed: true
-          - os: ubuntu-latest
-            python-version: '3.9'
-            mfem-branch: 'default'
-            parallel: false
-            gslib: true
 
         # CUDA does not support MacOS - this is a safeguard and shouldn't be needed for most matrix configs
         exclude:
@@ -65,21 +39,43 @@ jobs:
       python-version: ${{ matrix.python-version }}
       mfem-branch: ${{ matrix.mfem-branch }}
       parallel: ${{ matrix.parallel }}
-      cuda: ${{ matrix.cuda }}
-      libceed: ${{ matrix.libceed }}
-      gslib: ${{ matrix.gslib }}
 
-    name: 
-    # name: >-
-    #   Build/test:
-    #   ${{ matrix.os }},
-    #   ${{ matrix.python-version }},
-    #   ${{ matrix.mfem-branch }},
-    #   (${{ matrix.parallel && 'parallel' || 'serial' }}${{ matrix.cuda && ' + cuda' || '' }}${{ matrix.libceed && ' + libceed' || '' }}${{ matrix.gslib && ' + gslib' || '' }})
+    name: ""
+
+  # -------------------------------------------------------------------------------------------------
+  # Build and test misc (we want these to use defaults, and not expand the dimensions of the matrix)
+  # -------------------------------------------------------------------------------------------------
+  test-macos:
+    if: ${{ github.event_name == 'pull_request' || inputs.test_all == true }}
+    uses: ./.github/workflows/build-and-test-callable.yml
+    with:
+      os: macos-latest
+    name: ""
+
+  test-cuda:
+    if: ${{ github.event_name == 'pull_request' || inputs.test_all == true }}
+    uses: ./.github/workflows/build-and-test-callable.yml
+    with:
+      cuda: true
+    name: ""
+
+  test-libceed:
+    if: ${{ github.event_name == 'pull_request' || inputs.test_all == true }}
+    uses: ./.github/workflows/build-and-test-callable.yml
+    with:
+      libceed: true
+    name: ""
+
+  test-gslib:
+    if: ${{ github.event_name == 'pull_request' || inputs.test_all == true }}
+    uses: ./.github/workflows/build-and-test-callable.yml
+    with:
+      gslib: true
+    name: ""
 
   # -------------------------------------------------------------------------------------------------
   # Build and test defaults
   # -------------------------------------------------------------------------------------------------
-  build-and-test-defaults:
-    if: ${{ github.event_name == 'workflow_dispatch' && inputs.test_matrix == false }}
+  test-defaults:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.test_all == false }}
     uses: ./.github/workflows/build-and-test-callable.yml
