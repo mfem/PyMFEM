@@ -28,11 +28,6 @@ jobs:
         mfem-branch: [master, default] # 'default' uses a specific commit hash defined in setup.py:repos_sha
         parallel: [false, true]
 
-        # CUDA does not support MacOS - this is a safeguard and shouldn't be needed for most matrix configs
-        exclude:
-          - os: macos-latest
-            cuda: true
-
     uses: ./.github/workflows/build-and-test-callable.yml
     with:
       os: ${{ matrix.os }}
