@@ -255,10 +255,6 @@ namespace mfem {
     self._coeff = args
 %}
 
-%pythonappend ElasticityComponentIntegrator::ElasticityComponentIntegrator %{
-    self._coeff = parent_
-%}
-
 %pythonappend DGTraceIntegrator::DGTraceIntegrator %{
     self._coeff = args
 %}

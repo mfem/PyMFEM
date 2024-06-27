@@ -50,14 +50,20 @@ namespace mfem{
   %extend IsoparametricTransformation{
      virtual int _TransformBack(const Vector &pt, IntegrationPoint &ip,
                                 const real_t phys_tol = 1e-15){
-  #elif defined(MFEM_USE_SINGLE)
-     virtual int _TransformBack(const Vector &pt, IntegrationPoint &ip,
-                                const real_t phys_tol = 1e-7){
-  #endif
        return self-> TransformBack(pt, ip, phys_tol);
      }
    };  //end of extend
+  #elif defined(MFEM_USE_SINGLE)
+  %extend IsoparametricTransformation{
+     virtual int _TransformBack(const Vector &pt, IntegrationPoint &ip,
+                                const real_t phys_tol = 1e-7){
+       return self-> TransformBack(pt, ip, phys_tol);
+     }
+   };  //end of extend
+  #endif
  } //end of namespace
+
 %pythoncode %{
-IsoparametricTransformation.TransformBack = IsoparametricTransformation._TransformBack
+if hasattr(IsoparametricTransformation, "_TransformBack"):
+    IsoparametricTransformation.TransformBack = IsoparametricTransformation._TransformBack
 %}
