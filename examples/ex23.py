@@ -10,6 +10,8 @@ from os.path import expanduser, join, dirname
 import numpy as np
 from numpy import sin, cos, exp, sqrt, pi, abs, array, floor, log, sum
 
+mfem_version = mfem.MFEM_VERSION_MAJOR*10 + mfem.MFEM_VERSION_MINOR
+
 
 def run(mesh_file="",
         ref_levels=2,
@@ -30,7 +32,6 @@ def run(mesh_file="",
 
             self.ess_tdof_list = mfem.intArray()
 
-            rel_tol = 1e-8
             fespace.GetEssentialTrueDofs(ess_bdr, self.ess_tdof_list)
 
             c2 = mfem.ConstantCoefficient(speed*speed)
@@ -38,19 +39,24 @@ def run(mesh_file="",
             K.AddDomainIntegrator(mfem.DiffusionIntegrator(c2))
             K.Assemble()
 
-            self.Kmat0 = mfem.SparseMatrix()
             self.Kmat = mfem.SparseMatrix()
-            dummy = mfem.intArray()
-            K.FormSystemMatrix(dummy, self.Kmat0)
-            K.FormSystemMatrix(self.ess_tdof_list, self.Kmat)
-            self.K = K
-
             self.Mmat = mfem.SparseMatrix()
+
             M = mfem.BilinearForm(fespace)
             M.AddDomainIntegrator(mfem.MassIntegrator())
             M.Assemble()
+
+            if mfem_version < 47:
+                dummy = mfem.intArray()
+                self.Kmat0 = mfem.SparseMatrix()
+                K.FormSystemMatrix(dummy, self.Kmat0)
+            K.FormSystemMatrix(self.ess_tdof_list, self.Kmat)
             M.FormSystemMatrix(self.ess_tdof_list, self.Mmat)
+
+            self.K = K
             self.M = M
+
+            rel_tol = 1e-8
 
             M_solver = mfem.CGSolver()
             M_prec = mfem.DSmoother()
@@ -76,14 +82,19 @@ def run(mesh_file="",
             self.T_solver = T_solver
             self.T = None
 
+            self.z = mfem.Vector(self.Height())
+
         def Mult(self, u, du_dt, d2udt2):
             # Compute:
             #    d2udt2 = M^{-1}*-K(u)
             # for d2udt2
-            z = mfem.Vector(u.Size())
-            self.Kmat.Mult(u, z)
+            z = self.z
+            self.K.FullMult(u, z)
             z.Neg()  # z = -z
+
+            z.SetSubVector(self.ess_tdof_list, 0.0)
             self.M_solver.Mult(z, d2udt2)
+            d2udt2.SetSubVector(self.ess_tdof_list, 0.0)
 
         def ImplicitSolve(self, fac0, fac1, u, dudt, d2udt2):
             # Solve the equation:
@@ -92,15 +103,18 @@ def run(mesh_file="",
             if self.T is None:
                 self.T = mfem.Add(1.0, self.Mmat, fac0, self.Kmat)
                 self.T_solver.SetOperator(self.T)
-            z = mfem.Vector(u.Size())
-            self.Kmat0.Mult(u, z)
+
+            z = self.z
+            self.K.FullMult(u, z)
             z.Neg()
+            z.SetSubVector(self.ess_tdof_list, 0.0)
 
             # iterate over Array<int> :D
-            for j in self.ess_tdof_list:
-                z[j] = 0.0
+            # for j in self.ess_tdof_list:
+            #    z[j] = 0.0
 
             self.T_solver.Mult(z, d2udt2)
+            d2udt2.SetSubVector(self.ess_tdof_list, 0.0)
 
         def SetParameters(self, u):
             self.T = None
@@ -169,7 +183,7 @@ def run(mesh_file="",
         if (dirichlet):
             ess_bdr.Assign(1)
         else:
-            ess_bdr.Assigne(0)
+            ess_bdr.Assign(0)
 
     oper = WaveOperator(fespace, ess_bdr, speed)
 
@@ -200,7 +214,7 @@ def run(mesh_file="",
             print("GLVis visualization disabled.")
         else:
             sout.precision(output.precision)
-            sout << "solution\n" << mesh << dudt_gf
+            sout << "solution\n" << mesh << u_gf
             sout << "pause\n"
             sout.flush()
             print(
