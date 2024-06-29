@@ -114,7 +114,9 @@ def run(mesh_file="",
             #    z[j] = 0.0
 
             self.T_solver.Mult(z, d2udt2)
-            d2udt2.SetSubVector(self.ess_tdof_list, 0.0)
+
+            if mfem_version >= 47:
+                d2udt2.SetSubVector(self.ess_tdof_list, 0.0)
 
         def SetParameters(self, u):
             self.T = None
