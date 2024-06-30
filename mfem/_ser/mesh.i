@@ -313,6 +313,10 @@ def CartesianPartitioning(self, nxyz, return_list=False):
 %newobject mfem::Mesh::GetFaceToElementTable;
 %newobject mfem::Mesh::GetVertexToElementTable;
 
+%immutable mfem::MeshPart::mesh;
+%immutable mfem::MeshPart::nodal_fes;
+%immutable mfem::MeshPart::nodes;
+
 %include "../common/exception.i"
 %include "mesh/mesh.hpp"
 
