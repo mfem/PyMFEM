@@ -158,10 +158,10 @@ sol = mfem.ParGridFunction(vfes, u_block.GetData())
 sol.ProjectCoefficient(u0)
 
 smyid = '{:0>6d}'.format(myid)
-pmesh.Print("vortex-mesh."+smyid, 8)
+pmesh.Print("euler-mesh."+smyid, 8)
 for k in range(num_equation):
     uk = mfem.ParGridFunction(fes, u_block.GetBlock(k).GetData())
-    sol_name = "vortex-" + str(k) + "-init."+smyid
+    sol_name = "euler-" + str(k) + "-init."+smyid
     uk.Save(sol_name, 8)
 
 # 9. Set up the nonlinear form corresponding to the DG discretization of the
@@ -238,11 +238,11 @@ if myid == 0:
     print("done")
 
 # 11. Save the final solution. This output can be viewed later using GLVis:
-#     "glvis -np 4 -m vortex-mesh -g vortex-1-final".
+#     "glvis -np 4 -m euler-mesh -g euler-1-final".
 
 for k in range(num_equation):
     uk = mfem.ParGridFunction(fes, u_block.GetBlock(k).GetData())
-    sol_name = "vortex-" + str(k) + "-final."+smyid
+    sol_name = "euler-" + str(k) + "-final."+smyid
     uk.Save(sol_name, 8)
 
 # 12. Compute the L2 solution error summed for all components.

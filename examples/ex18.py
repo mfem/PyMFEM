@@ -21,7 +21,7 @@ def run(problem=1,
         ref_levels=1,
         order=3,
         ode_solver_type=4,
-        t_final=0.5,
+        t_final=2.0,
         dt=-0.01,
         cfl=0.3,
         visualization=True,
@@ -40,6 +40,12 @@ def run(problem=1,
     mesh = mfem.Mesh(meshfile, 1, 1)
     dim = mesh.Dimension()
 
+    # Refine the mesh to increase the resolution. In this example we do
+    # 'ref_levels' of uniform refinement, where 'ref_levels' is a
+    # command-line parameter.
+    for lev in range(ref_levels):
+        mesh.UniformRefinement()
+
     # 3. Define the ODE solver used for time integration. Several explicit
     #    Runge-Kutta methods are available.
     ode_solver = None
@@ -57,13 +63,7 @@ def run(problem=1,
         print("Unknown ODE solver type: " + str(ode_solver_type))
         exit
 
-    # 4. Refine the mesh to increase the resolution. In this example we do
-    #    'ref_levels' of uniform refinement, where 'ref_levels' is a
-    #    command-line parameter.
-    for lev in range(ref_levels):
-        mesh.UniformRefinement()
-
-    # 5. Define the discontinuous DG finite element space of the given
+    # 4. Define the discontinuous DG finite element space of the given
     #    polynomial order on the refined mesh.
 
     fec = mfem.DG_FECollection(order, dim)
@@ -78,7 +78,7 @@ def run(problem=1,
     assert fes.GetOrdering() == mfem.Ordering.byNODES, "Ordering must be byNODES"
     print("Number of unknowns: " + str(vfes.GetVSize()))
 
-    # 6. Define the initial conditions, save the corresponding mesh and grid
+    # 5. Define the initial conditions, save the corresponding mesh and grid
     #    functions to a file. This can be opened with GLVis with the -gc option.
     #    The solution u has components {density, x-momentum, y-momentum, energy}.
     #    These are stored contiguously in the BlockVector u_block.
@@ -89,20 +89,20 @@ def run(problem=1,
     mom = mfem.GridFunction(dfes, u_block,  offsets[1])
 
     #
-    #  Define coefficient using VecotrPyCoefficient and PyCoefficient
+    #  Define coefficient using VectorPyCoefficient and PyCoefficient
     #  A user needs to define EvalValue method
     #
     u0 = InitialCondition(num_equation)
     sol = mfem.GridFunction(vfes, u_block.GetData())
     sol.ProjectCoefficient(u0)
 
-    mesh.Print("vortex.mesh", 8)
+    mesh.Print("euler-mesh.mesh", 8)
     for k in range(num_equation):
         uk = mfem.GridFunction(fes, u_block.GetBlock(k).GetData())
-        sol_name = "vortex-" + str(k) + "-init.gf"
+        sol_name = "euler-" + str(k) + "-init.gf"
         uk.Save(sol_name, 8)
 
-    #  7. Set up the nonlinear form corresponding to the DG discretization of the
+    #  6. Set up the nonlinear form corresponding to the DG discretization of the
     #     flux divergence, and assemble the corresponding mass matrix.
     Aflux = mfem.MixedBilinearForm(dfes, fes)
     Aflux.AddDomainIntegrator(DomainIntegrator(dim))
@@ -113,7 +113,7 @@ def run(problem=1,
     ii = FaceIntegrator(rsolver, dim)
     A.AddInteriorFaceIntegrator(ii)
 
-    #  8. Define the time-dependent evolution operator describing the ODE
+    #  7. Define the time-dependent evolution operator describing the ODE
     #     right-hand side, and perform time-integration (looping over the time
     #     iterations, ti, with a time-step dt).
     euler = FE_Evolution(vfes, A, Aflux.SpMat())
@@ -158,17 +158,18 @@ def run(problem=1,
         if (done or ti % vis_steps == 0):
             print("time step: " + str(ti) + ", time: " + "{:g}".format(t))
             if (visualization):
-                sout << "solution\n" << mesh << mom << flush
+                sout << "solution\n" << mesh << mom
+                sout.flush()
 
-    #  9. Save the final solution. This output can be viewed later using GLVis:
-    #    "glvis -m vortex.mesh -g vortex-1-final.gf".
+    #  8. Save the final solution. This output can be viewed later using GLVis:
+    #    "glvis -m euler.mesh -g euler-1-final.gf".
     for k in range(num_equation):
         uk = mfem.GridFunction(fes, u_block.GetBlock(k).GetData())
-        sol_name = "vortex-" + str(k) + "-final.gf"
+        sol_name = "euler-" + str(k) + "-final.gf"
         uk.Save(sol_name, 8)
 
     print(" done")
-    # 10. Compute the L2 solution error summed for all components.
+    # 9. Compute the L2 solution error summed for all components.
     if (t_final == 2.0):
         error = sol.ComputeLpError(2., u0)
         print("Solution error: " + "{:g}".format(error))
@@ -176,51 +177,51 @@ def run(problem=1,
 
 if __name__ == "__main__":
 
-    parser = ArgParser(description='Ex18')
-    parser.add_argument('-m', '--mesh',
-                        default='periodic-square.mesh',
-                        action='store', type=str,
-                        help='Mesh file to use.')
-    parser.add_argument('-p', '--problem',
-                        action='store', default=1, type=int,
-                        help='Problem setup to use. See options in velocity_function().')
-    parser.add_argument('-r', '--refine',
-                        action='store', default=1, type=int,
-                        help="Number of times to refine the mesh uniformly.")
-    parser.add_argument('-o', '--order',
-                        action='store', default=3, type=int,
-                        help="Finite element order (polynomial degree)")
-    parser.add_argument('-s', '--ode_solver',
-                        action='store', default=4, type=int,
-                        help="ODE solver: 1 - Forward Euler,\n\t" +
-                        "            2 - RK2 SSP, 3 - RK3 SSP, 4 - RK4, 6 - RK6.")
-    parser.add_argument('-tf', '--t_final',
-                        action='store', default=2.0, type=float,
-                        help="Final time; start time is 0.")
-    parser.add_argument("-dt", "--time_step",
-                        action='store', default=-0.01, type=float,
-                        help="Time step.")
-    parser.add_argument('-c', '--cfl_number',
-                        action='store', default=0.3, type=float,
-                        help="CFL number for timestep calculation.")
-    parser.add_argument('-vis', '--visualization',
-                        action='store_true',
-                        help='Enable GLVis visualization')
-    parser.add_argument('-vs', '--visualization-steps',
-                        action='store', default=50, type=float,
-                        help="Visualize every n-th timestep.")
+parser = ArgParser(description='Ex18')
+parser.add_argument('-m', '--mesh',
+                    default='periodic-square.mesh',
+                    action='store', type=str,
+                    help='Mesh file to use.')
+parser.add_argument('-p', '--problem',
+                    action='store', default=1, type=int,
+                    help='Problem setup to use. See options in velocity_function().')
+parser.add_argument('-r', '--refine',
+                    action='store', default=1, type=int,
+                    help="Number of times to refine the mesh uniformly.")
+parser.add_argument('-o', '--order',
+                    action='store', default=3, type=int,
+                    help="Finite element order (polynomial degree)")
+parser.add_argument('-s', '--ode_solver',
+                    action='store', default=4, type=int,
+                    help="ODE solver: 1 - Forward Euler,\n\t" +
+                    "            2 - RK2 SSP, 3 - RK3 SSP, 4 - RK4, 6 - RK6.")
+parser.add_argument('-tf', '--t_final',
+                    action='store', default=2.0, type=float,
+                    help="Final time; start time is 0.")
+parser.add_argument("-dt", "--time_step",
+                    action='store', default=-0.01, type=float,
+                    help="Time step.")
+parser.add_argument('-c', '--cfl_number',
+                    action='store', default=0.3, type=float,
+                    help="CFL number for timestep calculation.")
+parser.add_argument('-vis', '--visualization',
+                    action='store_true',
+                    help='Enable GLVis visualization')
+parser.add_argument('-vs', '--visualization-steps',
+                    action='store', default=50, type=float,
+                    help="Visualize every n-th timestep.")
 
-    args = parser.parse_args()
+args = parser.parse_args()
 
-    parser.print_options(args)
+parser.print_options(args)
 
-    run(problem=args.problem,
-        ref_levels=args.refine,
-        order=args.order,
-        ode_solver_type=args.ode_solver,
-        t_final=args.t_final,
-        dt=args.time_step,
-        cfl=args.cfl_number,
-        visualization=args.visualization,
-        vis_steps=args.visualization_steps,
-        meshfile=args.mesh)
+run(problem=args.problem,
+    ref_levels=args.refine,
+    order=args.order,
+    ode_solver_type=args.ode_solver,
+    t_final=args.t_final,
+    dt=args.time_step,
+    cfl=args.cfl_number,
+    visualization=args.visualization,
+    vis_steps=args.visualization_steps,
+    meshfile=args.mesh)
