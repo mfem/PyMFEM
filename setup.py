@@ -59,12 +59,8 @@ repos = {"mfem": "https://github.com/mfem/mfem.git",
          "metis": "https://github.com/KarypisLab/METIS", }
 
 repos_sha = {
-    # "mfem": "00b2a0705f647e17a1d4ffcb289adca503f28d42", # version 4.5.2
-    # "mfem": "962774d5ffa84ceed3bc670e52388250ee028da1",  # version 4.5.2 + distsolve
-    # "mfem": "69fbae732d5279c8d0f42c5430c4fd5656731d00",  # version 4.6
-    # "mfem": "8bb929c2ff86cdf2ee9bb058cc75e59acb07bb94",  # doftrans simplification (Nov. 15. 2023)
-    # "mfem": "4a45c70d1269d293266b77a3a025a9756d10ed8f",  # socket connection fix (Nov. 29 2023)
-    "mfem": "68873fa4d403c7c94a653c7bc781815ff5b2734d",    # use constrained prolongation operator in ex26, ex26p (Nov. 30 2023)
+    # "mfem": "68873fa4d403c7c94a653c7bc781815ff5b2734d",    # use constrained prolongation operator in ex26, ex26p (Nov. 30 2023)
+    "mfem": "dc9128ef596e84daf1138aa3046b826bba9d259f",    # v4.7
     "gklib": "a7f8172703cf6e999dd0710eb279bba513da4fec",
     "metis": "94c03a6e2d1860128c2d0675cbbb86ad4f261256", }
 
