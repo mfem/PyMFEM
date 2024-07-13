@@ -1,0 +1,14 @@
+[build-system]
+requires = ["scikit-build-core", "swig"]
+build-backend = "scikit_build_core.build"
+
+
+[project]
+name = "pymfem_dev"
+version = "0.0.1"
+dependencies = [
+    "numpy>=1.20.0",
+    "numba",
+    "numba-scipy",
+    "scipy"
+]
