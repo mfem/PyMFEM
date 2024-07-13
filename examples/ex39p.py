@@ -3,9 +3,9 @@
 
    See c++ version in the MFEM library for more detail
 
-   Sample runs: python ex39.py
-                python ex39.py -ess "Southern Boundary"
-                python ex39.py -src Base
+   Sample runs: mpirun -np 4 python ex39p.py
+                mpirun -np 4 python ex39p.py -ess "Southern Boundary"
+                mpirun -np 4 python ex39p.py -src Base
 
    Description:  This example code demonstrates the use of named attribute
                  sets in MFEM to specify material regions, boundary regions,
@@ -46,7 +46,11 @@ import os
 from os.path import expanduser, join
 import numpy as np
 
-import mfem.ser as mfem
+import mfem.par as mfem
+
+from mpi4py import MPI
+num_procs = MPI.COMM_WORLD.size
+myid = MPI.COMM_WORLD.rank
 
 
 def run(order=1,
@@ -55,33 +59,44 @@ def run(order=1,
         ess_name='Boundary',
         visualization=True):
 
-    # 2. Read the mesh from the given mesh file. We can handle triangular,
-    #    quadrilateral, tetrahedral, hexahedral, surface and volume meshes with
-    #    the same code.
-
+    # 3. Read the serial mesh from the given mesh file.
     mesh = mfem.Mesh(meshfile, 1, 1)
     dim = mesh.Dimension()
 
-    # 3. Refine the mesh to increase the resolution. In this example we do
-    #    'ref_levels' of uniform refinement. We choose 'ref_levels' to be the
-    #    largest number that gives a final mesh with no more than 50,000
-    #    elements.
-    ref_levels = int(np.log(50000./mesh.GetNE())/np.log(2.)/dim)
+    # 4. Refine the serial mesh on all processors to increase the resolution. In
+    #    this example we do 'ref_levels' of uniform refinement. We choose
+    #    'ref_levels' to be the largest number that gives a final mesh with no
+    #    more than 10,000 elements.
+
+    ref_levels = int(np.log(10000./mesh.GetNE())/np.log(2.)/dim)
     for i in range(ref_levels):
         mesh.UniformRefinement()
 
-    # 4a. Display attribute set names contained in the initial mesh
-    #     GetAttributeSetNames returns Python set object.
-    attr_sets = mesh.attribute_sets
-    bdr_attr_sets = mesh.bdr_attribute_sets
-    names = attr_sets.GetAttributeSetNames()
-    print("Element Attribute Set Names: " +
-          ' '.join(['"' + x + '"' for x in names]))
-    names = bdr_attr_sets.GetAttributeSetNames()
-    print("Boundary Attribute Set Names: " +
-          ' '.join(['"' + x + '"' for x in names]))
+    # 5. Define a parallel mesh by a partitioning of the serial mesh. Refine
+    #    this mesh further in parallel to increase the resolution. Once the
+    #    parallel mesh is defined, the serial mesh can be deleted.
+    pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
+    del mesh
 
-    # 4b. Define new regions based on existing attribute sets
+    par_ref_levels = 2
+    for l in range(par_ref_levels):
+        pmesh.UniformRefinement()
+
+    # 6a. Display attribute set names contained in the initial mesh
+    #     GetAttributeSetNames returns Python set object.
+
+    attr_sets = pmesh.attribute_sets
+    bdr_attr_sets = pmesh.bdr_attribute_sets
+
+    if myid == 0:
+        names = attr_sets.GetAttributeSetNames()
+        print("Element Attribute Set Names: " +
+              ' '.join(['"' + x + '"' for x in names]))
+        names = bdr_attr_sets.GetAttributeSetNames()
+        print("Boundary Attribute Set Names: " +
+              ' '.join(['"' + x + '"' for x in names]))
+
+    # 6b. Define new regions based on existing attribute sets
     Na = attr_sets.GetAttributeSet("N Even")
     Nb = attr_sets.GetAttributeSet("N Odd")
     Sa = attr_sets.GetAttributeSet("S Even")
@@ -125,7 +140,7 @@ def run(order=1,
     attr_sets.SetAttributeSet("Rose", Ra)
     attr_sets.AddToAttributeSet("Rose", Rb)
 
-    # 4c. Define new boundary regions based on existing boundary attribute sets
+    # 6c. Define new boundary regions based on existing boundary attribute sets
     NNE = bdr_attr_sets.GetAttributeSet("NNE")
     NNW = bdr_attr_sets.GetAttributeSet("NNW")
     ENE = bdr_attr_sets.GetAttributeSet("ENE")
@@ -160,46 +175,47 @@ def run(order=1,
                                     bdr_attr_sets.GetAttributeSet
                                     ("Western Boundary"))
 
-    # 5. Define a finite element space on the mesh. Here we use continuous
-    #    Lagrange finite elements of the specified order.
-
+    # 7. Define a parallel finite element space on the parallel mesh. Here we
+    #    use continuous Lagrange finite elements of the specified order. If
+    #    order < 1, we instead use an isoparametric/isogeometric space.
     fec = mfem.H1_FECollection(order, dim)
-    fespace = mfem.FiniteElementSpace(mesh, fec)
-    print('Number of finite element unknowns: ' +
-          str(fespace.GetTrueVSize()))
+    fespace = mfem.ParFiniteElementSpace(pmesh, fec)
+    size = fespace.GlobalTrueVSize()
+    if myid == 0:
+        print('Number of finite element unknowns: ' + str(size))
 
-    # 6. Determine the list of true (i.e. conforming) essential boundary dofs.
-    #    In this example, the boundary conditions are defined by marking all
-    #    the boundary regions corresponding to the boundary attributes
-    #    contained in the set named "ess_name" as essential (Dirichlet) and
-    #    converting them to a list of true dofs.
+    # 8. Determine the list of true (i.e. parallel conforming) essential
+    #    boundary dofs. In this example, the boundary conditions are defined
+    #    by marking all the boundary regions corresponding to the boundary
+    #    attributes contained in the set named "ess_name" as essential
+    #    (Dirichlet) and converting them to a list of true dofs.
     ess_tdof_list = mfem.intArray()
     if bdr_attr_sets.AttributeSetExists(ess_name):
         ess_bdr_marker = bdr_attr_sets.GetAttributeSetMarker(ess_name)
         fespace.GetEssentialTrueDofs(ess_bdr_marker, ess_tdof_list)
 
-    # 7. Set up the linear form b(.) which corresponds to the right-hand side of
-    #    the FEM linear system, which in this case is (1_s,phi_i) where phi_i
-    #    are the basis functions in fespace and 1_s is an indicator function
-    #    equal to 1 on the region defined by the named set "source_name" and
-    #    zero elsewhere.
+    # 9. Set up the parallel linear form b(.) which corresponds to the
+    #    right-hand side of the FEM linear system, which in this case is
+    #    (1_s,phi_i) where phi_i are the basis functions in fespace and 1_s
+    #    is an indicator function equal to 1 on the region defined by the
+    #    named set "source_name" and zero elsewhere.
 
     source_marker = attr_sets.GetAttributeSetMarker(source_name)
-    b = mfem.LinearForm(fespace)
+    b = mfem.ParLinearForm(fespace)
     one = mfem.ConstantCoefficient(1.0)
     b.AddDomainIntegrator(mfem.DomainLFIntegrator(one), source_marker)
     b.Assemble()
 
-    # 8. Define the solution vector x as a finite element grid function
-    #    corresponding to fespace. Initialize x with initial guess of zero,
-    #    which satisfies the boundary conditions.
-    x = mfem.GridFunction(fespace)
+    # 10. Define the solution vector x as a parallel finite element grid
+    #     function corresponding to fespace. Initialize x with initial guess of
+    #     zero, which satisfies the boundary conditions.
+    x = mfem.ParGridFunction(fespace)
     x.Assign(0.0)
 
-    # 9. Set up the bilinear form a(.,.) on the finite element space
-    #    corresponding to the Laplacian operator -Delta, by adding the
-    #    Diffusion domain integrator.
-    a = mfem.BilinearForm(fespace)
+    # 11. Set up the parallel bilinear form a(.,.) on the finite element space
+    #     corresponding to the Laplacian operator -Delta, by adding the
+    #     Diffusion domain integrator.
+    a = mfem.ParBilinearForm(fespace)
 
     defaultCoef = mfem.ConstantCoefficient(1.0e-6)
     baseCoef = mfem.ConstantCoefficient(1.0)
@@ -215,33 +231,40 @@ def run(order=1,
     a.AddDomainIntegrator(mfem.DiffusionIntegrator(baseCoef), base_marker)
     a.AddDomainIntegrator(mfem.DiffusionIntegrator(roseCoef), rose_marker)
 
-    # 10. Assemble the bilinear form and the corresponding linear system,
+    # 12. Assemble the bilinear form and the corresponding linear system,
     #     applying any necessary transformations.
     a.Assemble()
 
-    A = mfem.SparseMatrix()
+    A = mfem.HypreParMatrix()
     B = mfem.Vector()
     X = mfem.Vector()
     a.FormLinearSystem(ess_tdof_list, x, b, A, X, B)
-    print("Size of linear system: " + str(A.Height()))
 
-    # 11. Solve the system using PCG with symmetric Gauss-Seidel preconditioner.
-    M = mfem.GSSmoother(A)
-    mfem.PCG(A, M, B, X, 1, 800, 1e-12, 0.0)
+    # 13. Solve the system using PCG with hypre's BoomerAMG preconditioner.
+    M = mfem.HypreBoomerAMG(A)
+    cg = mfem.CGSolver(MPI.COMM_WORLD)
+    cg.SetRelTol(1e-12)
+    cg.SetMaxIter(2000)
+    cg.SetPrintLevel(1)
+    cg.SetPreconditioner(M)
+    cg.SetOperator(A)
+    cg.Mult(B, X)
 
-    # 12. Recover the solution as a finite element grid function.
+    # 14. Recover the parallel grid function corresponding to X. This is the
+    #     local finite element solution on each processor.
     a.RecoverFEMSolution(X, b, x)
 
-    # 13. Save the refined mesh and the solution. This output can be viewed
-    #     later using GLVis: "glvis -m refined.mesh -g sol.gf".
-    x.Save('sol.gf')
-    mesh.Save('mesh.mesh')
+    # 15. Save the refined mesh and the solution in parallel. This output can
+    #     be viewed later using GLVis: "glvis -np <np> -m mesh -g sol".
+    pmesh.Save('mesh')
+    x.Save('sol')
 
-    # 14. Send the solution by socket to a GLVis server.
+    # 16. Send the solution by socket to a GLVis server.
     if visualization:
         sol_sock = mfem.socketstream("localhost", 19916)
+        sol_sock << "parallel " << num_procs << " " << myid << "\n"
         sol_sock.precision(8)
-        sol_sock << "solution\n" << mesh << x << "keys Rjmm"
+        sol_sock << "solution\n" << pmesh << x << "keys Rjmm"
         sol_sock.flush()
 
 
@@ -268,7 +291,8 @@ if __name__ == "__main__":
                         help='Disable or disable GLVis visualization')
 
     args = parser.parse_args()
-    parser.print_options(args)
+    if myid == 0:
+        parser.print_options(args)
 
     order = args.order
     meshfile = expanduser(
