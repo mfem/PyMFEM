@@ -93,6 +93,7 @@ from  mfem._par.submesh import *
 from  mfem._par.psubmesh import *
 from  mfem._par.transfermap import *
 from  mfem._par.ptransfermap import *
+from  mfem._par.hyperbolic import *
 
 try:
    from  mfem._par.gslib import *

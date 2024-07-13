@@ -177,51 +177,51 @@ def run(problem=1,
 
 if __name__ == "__main__":
 
-parser = ArgParser(description='Ex18')
-parser.add_argument('-m', '--mesh',
-                    default='periodic-square.mesh',
-                    action='store', type=str,
-                    help='Mesh file to use.')
-parser.add_argument('-p', '--problem',
-                    action='store', default=1, type=int,
-                    help='Problem setup to use. See options in velocity_function().')
-parser.add_argument('-r', '--refine',
-                    action='store', default=1, type=int,
-                    help="Number of times to refine the mesh uniformly.")
-parser.add_argument('-o', '--order',
-                    action='store', default=3, type=int,
-                    help="Finite element order (polynomial degree)")
-parser.add_argument('-s', '--ode_solver',
-                    action='store', default=4, type=int,
-                    help="ODE solver: 1 - Forward Euler,\n\t" +
-                    "            2 - RK2 SSP, 3 - RK3 SSP, 4 - RK4, 6 - RK6.")
-parser.add_argument('-tf', '--t_final',
-                    action='store', default=2.0, type=float,
-                    help="Final time; start time is 0.")
-parser.add_argument("-dt", "--time_step",
-                    action='store', default=-0.01, type=float,
-                    help="Time step.")
-parser.add_argument('-c', '--cfl_number',
-                    action='store', default=0.3, type=float,
-                    help="CFL number for timestep calculation.")
-parser.add_argument('-vis', '--visualization',
-                    action='store_true',
-                    help='Enable GLVis visualization')
-parser.add_argument('-vs', '--visualization-steps',
-                    action='store', default=50, type=float,
-                    help="Visualize every n-th timestep.")
+    parser = ArgParser(description='Ex18')
+    parser.add_argument('-m', '--mesh',
+                        default='periodic-square.mesh',
+                        action='store', type=str,
+                        help='Mesh file to use.')
+    parser.add_argument('-p', '--problem',
+                        action='store', default=1, type=int,
+                        help='Problem setup to use. See options in velocity_function().')
+    parser.add_argument('-r', '--refine',
+                        action='store', default=1, type=int,
+                        help="Number of times to refine the mesh uniformly.")
+    parser.add_argument('-o', '--order',
+                        action='store', default=3, type=int,
+                        help="Finite element order (polynomial degree)")
+    parser.add_argument('-s', '--ode_solver',
+                        action='store', default=4, type=int,
+                        help="ODE solver: 1 - Forward Euler,\n\t" +
+                        "            2 - RK2 SSP, 3 - RK3 SSP, 4 - RK4, 6 - RK6.")
+    parser.add_argument('-tf', '--t_final',
+                        action='store', default=2.0, type=float,
+                        help="Final time; start time is 0.")
+    parser.add_argument("-dt", "--time_step",
+                        action='store', default=-0.01, type=float,
+                        help="Time step.")
+    parser.add_argument('-c', '--cfl_number',
+                        action='store', default=0.3, type=float,
+                        help="CFL number for timestep calculation.")
+    parser.add_argument('-vis', '--visualization',
+                        action='store_true',
+                        help='Enable GLVis visualization')
+    parser.add_argument('-vs', '--visualization-steps',
+                        action='store', default=50, type=float,
+                        help="Visualize every n-th timestep.")
 
-args = parser.parse_args()
+    args = parser.parse_args()
 
-parser.print_options(args)
+    parser.print_options(args)
 
-run(problem=args.problem,
-    ref_levels=args.refine,
-    order=args.order,
-    ode_solver_type=args.ode_solver,
-    t_final=args.t_final,
-    dt=args.time_step,
-    cfl=args.cfl_number,
-    visualization=args.visualization,
-    vis_steps=args.visualization_steps,
-    meshfile=args.mesh)
+    run(problem=args.problem,
+        ref_levels=args.refine,
+        order=args.order,
+        ode_solver_type=args.ode_solver,
+        t_final=args.t_final,
+        dt=args.time_step,
+        cfl=args.cfl_number,
+        visualization=args.visualization,
+        vis_steps=args.visualization_steps,
+        meshfile=args.mesh)
