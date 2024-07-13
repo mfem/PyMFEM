@@ -71,74 +71,179 @@ def run(order=1,
         mesh.UniformRefinement()
 
     # 4a. Display attribute set names contained in the initial mesh
+    #     GetAttributeSetNames returns Python set object.
     attr_sets = mesh.attribute_sets
-    btr_attr_sets = mesh.bdr_attribute_sets
-    print(attr_sets.GetAttributeSetNames())
+    bdr_attr_sets = mesh.bdr_attribute_sets
+    names = attr_sets.GetAttributeSetNames()
+    print("Element Attribute Set Names: " + ' '.join(['"'+ x +'"' for x in names]))
+    names = bdr_attr_sets.GetAttributeSetNames()          
+    print("Boundary Attribute Set Names: " + ' '.join(['"'+ x +'"' for x in names]))              
 
-    '''
-      std::set<string> names = attr_sets.GetAttributeSetNames();
-      cout << "Element Attribute Set Names: ";
-      for (auto const &set_name : names)
-      {
-         cout << " \"" << set_name << "\"";
-      }
-      cout << endl;
+    # 4b. Define new regions based on existing attribute sets
+    Na = attr_sets.GetAttributeSet("N Even")
+    Nb = attr_sets.GetAttributeSet("N Odd")
+    Sa = attr_sets.GetAttributeSet("S Even")
+    Sb = attr_sets.GetAttributeSet("S Odd")
+    Ea = attr_sets.GetAttributeSet("E Even")
+    Eb = attr_sets.GetAttributeSet("E Odd")
+    Wa = attr_sets.GetAttributeSet("W Even")
+    Wb = attr_sets.GetAttributeSet("W Odd")
 
-      std::set<string> bdr_names = bdr_attr_sets.GetAttributeSetNames();
-      cout << "Boundary Attribute Set Names: ";
-      for (auto const &bdr_set_name : bdr_names)
-      {
-         cout << " \"" << bdr_set_name << "\"";
-      }
-      cout << endl;
-    '''
+    # Create a new set spanning the North point
+    attr_sets.SetAttributeSet("North", Na);
+    attr_sets.AddToAttributeSet("North", Nb);
 
+    # Create a new set spanning the South point
+    attr_sets.SetAttributeSet("South", Sa);
+    attr_sets.AddToAttributeSet("South", Sb);
+
+    # Create a new set spanning the East point
+    attr_sets.SetAttributeSet("East", Ea);
+    attr_sets.AddToAttributeSet("East", Eb);
+
+    # Create a new set spanning the West point
+    attr_sets.SetAttributeSet("West", Wa);
+    attr_sets.AddToAttributeSet("West", Wb);
+
+    # Create a new set consisting of the "a" sides of the compass rose
+    attr_sets.SetAttributeSet("Rose Even", Na);
+    attr_sets.AddToAttributeSet("Rose Even", Sa);
+    attr_sets.AddToAttributeSet("Rose Even", Ea);
+    attr_sets.AddToAttributeSet("Rose Even", Wa);
+
+    # Create a new set consisting of the "b" sides of the compass rose
+    attr_sets.SetAttributeSet("Rose Odd", Nb);
+    attr_sets.AddToAttributeSet("Rose Odd", Sb);
+    attr_sets.AddToAttributeSet("Rose Odd", Eb);
+    attr_sets.AddToAttributeSet("Rose Odd", Wb);
+
+    # Create a new set consisting of the full compass rose
+    Ra = attr_sets.GetAttributeSet("Rose Even")
+    Rb = attr_sets.GetAttributeSet("Rose Odd")
+    attr_sets.SetAttributeSet("Rose", Ra);
+    attr_sets.AddToAttributeSet("Rose", Rb);
+          
+    # 4c. Define new boundary regions based on existing boundary attribute sets
+    NNE = bdr_attr_sets.GetAttributeSet("NNE")
+    NNW = bdr_attr_sets.GetAttributeSet("NNW")
+    ENE = bdr_attr_sets.GetAttributeSet("ENE")
+    ESE = bdr_attr_sets.GetAttributeSet("ESE")
+    SSE = bdr_attr_sets.GetAttributeSet("SSE")
+    SSW = bdr_attr_sets.GetAttributeSet("SSW")
+    WNW = bdr_attr_sets.GetAttributeSet("WNW")
+    WSW = bdr_attr_sets.GetAttributeSet("WSW")
+
+    bdr_attr_sets.SetAttributeSet("Northern Boundary", NNE)
+    bdr_attr_sets.AddToAttributeSet("Northern Boundary", NNW)
+
+    bdr_attr_sets.SetAttributeSet("Southern Boundary", SSE)
+    bdr_attr_sets.AddToAttributeSet("Southern Boundary", SSW)
+
+    bdr_attr_sets.SetAttributeSet("Eastern Boundary", ENE)
+    bdr_attr_sets.AddToAttributeSet("Eastern Boundary", ESE)
+
+    bdr_attr_sets.SetAttributeSet("Western Boundary", WNW)
+    bdr_attr_sets.AddToAttributeSet("Western Boundary", WSW)
+
+    bdr_attr_sets.SetAttributeSet("Boundary",
+                                  bdr_attr_sets.GetAttributeSet
+                                  ("Northern Boundary"))
+    bdr_attr_sets.AddToAttributeSet("Boundary",
+                                    bdr_attr_sets.GetAttributeSet
+                                    ("Southern Boundary"))
+    bdr_attr_sets.AddToAttributeSet("Boundary",
+                                    bdr_attr_sets.GetAttributeSet
+                                    ("Eastern Boundary"))
+    bdr_attr_sets.AddToAttributeSet("Boundary",
+                                    bdr_attr_sets.GetAttributeSet
+                                    ("Western Boundary"))
+
+    # 5. Define a finite element space on the mesh. Here we use continuous
+    #    Lagrange finite elements of the specified order.
     
     fec = mfem.H1_FECollection(order,  mesh.Dimension())
     fespace = mfem.FiniteElementSpace(mesh, fec)
     print('Number of finite element unknowns: ' +
           str(fespace.GetTrueVSize()))
 
-    # 4. Extract the list of all the boundary DOFs. These will be marked as
-    #    Dirichlet in order to enforce zero boundary conditions.
-    boundary_dofs = mfem.intArray()
-    fespace.GetBoundaryTrueDofs(boundary_dofs)
+    # 6. Determine the list of true (i.e. conforming) essential boundary dofs.
+    #    In this example, the boundary conditions are defined by marking all
+    #    the boundary regions corresponding to the boundary attributes
+    #    contained in the set named "ess_name" as essential (Dirichlet) and
+    #    converting them to a list of true dofs.
+    ess_tdof_list = mfem.intArray()
+    print(bdr_attr_sets.AttributeSetExists(ess_name))
+    if bdr_attr_sets.AttributeSetExists(ess_name):
+        ess_bdr_marker = bdr_attr_sets.GetAttributeSetMarker(ess_name)
+        fespace.GetEssentialTrueDofs(ess_bdr_marker, ess_tdof_list)
+    
+    # 7. Set up the linear form b(.) which corresponds to the right-hand side of
+    #    the FEM linear system, which in this case is (1_s,phi_i) where phi_i
+    #    are the basis functions in fespace and 1_s is an indicator function
+    #    equal to 1 on the region defined by the named set "source_name" and
+    #    zero elsewhere.
 
-    # 5. Define the solution x as a finite element grid function in fespace. Set
-    #    the initial guess to zero, which also sets the boundary conditions.
+    source_marker = attr_sets.GetAttributeSetMarker(source_name)
+    b = mfem.LinearForm(fespace)
+    one = mfem.ConstantCoefficient(1.0)
+    b.AddDomainIntegrator(mfem.DomainLFIntegrator(one), source_marker)
+    b.Assemble()
+    
+    # 8. Define the solution vector x as a finite element grid function
+    #    corresponding to fespace. Initialize x with initial guess of zero,
+    #    which satisfies the boundary conditions.
     x = mfem.GridFunction(fespace)
     x.Assign(0.0)
 
-    # 6. Set up the linear form b(.) corresponding to the right-hand side.
-    one = mfem.ConstantCoefficient(1.0)
-    b = mfem.LinearForm(fespace)
-    b.AddDomainIntegrator(mfem.DomainLFIntegrator(one))
-    b.Assemble()
-
-    # 7. Set up the bilinear form a(.,.) corresponding to the -Delta operator.
+    # 9. Set up the bilinear form a(.,.) on the finite element space
+    #    corresponding to the Laplacian operator -Delta, by adding the
+    #    Diffusion domain integrator.
     a = mfem.BilinearForm(fespace)
-    a.AddDomainIntegrator(mfem.DiffusionIntegrator(one))
+
+    defaultCoef = mfem.ConstantCoefficient(1.0e-6)
+    baseCoef = mfem.ConstantCoefficient(1.0)
+    roseCoef = mfem.ConstantCoefficient(2.0)
+
+    base_marker = attr_sets.GetAttributeSetMarker("Base")
+    rose_marker = attr_sets.GetAttributeSetMarker("Rose Even")
+
+    # Impose a very small diffusion coefficient across the entire mesh
+    a.AddDomainIntegrator(mfem.DiffusionIntegrator(defaultCoef))
+
+    # Impose an additional, stronger diffusion coefficient in select regions
+    a.AddDomainIntegrator(mfem.DiffusionIntegrator(baseCoef), base_marker)
+    a.AddDomainIntegrator(mfem.DiffusionIntegrator(roseCoef), rose_marker)
+
+    # 10. Assemble the bilinear form and the corresponding linear system,
+    #     applying any necessary transformations.
     a.Assemble()
 
-    # 8. Form the linear system A X = B. This includes eliminating boundary
-    #    conditions, applying AMR constraints, and other transformations.
     A = mfem.SparseMatrix()
     B = mfem.Vector()
     X = mfem.Vector()
-    a.FormLinearSystem(boundary_dofs, x, b, A, X, B)
+    a.FormLinearSystem(ess_tdof_list, x, b, A, X, B)
     print("Size of linear system: " + str(A.Height()))
 
-    # 9. Solve the system using PCG with symmetric Gauss-Seidel preconditioner.
+    # 11. Solve the system using PCG with symmetric Gauss-Seidel preconditioner.
     M = mfem.GSSmoother(A)
-    mfem.PCG(A, M, B, X, 1, 200, 1e-12, 0.0)
+    mfem.PCG(A, M, B, X, 1, 800, 1e-12, 0.0)
 
-    # 10. Recover the solution x as a grid function and save to file. The output
-    #     can be viewed using GLVis as follows: "glvis -m mesh.mesh -g sol.gf"
+    # 12. Recover the solution as a finite element grid function.    
     a.RecoverFEMSolution(X, b, x)
+
+    # 13. Save the refined mesh and the solution. This output can be viewed
+    #     later using GLVis: "glvis -m refined.mesh -g sol.gf".
     x.Save('sol.gf')
     mesh.Save('mesh.mesh')
 
+    # 14. Send the solution by socket to a GLVis server.
+    if visualization:
+        sol_sock = mfem.socketstream("localhost", 19916)
+        sol_sock.precision(8)
+        sol_sock << "solution\n" << mesh << x << "keys Rjmm"
+        sol_sock.flush()
 
+        
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
 
@@ -154,7 +259,7 @@ if __name__ == "__main__":
                         action='store', default='Rose Even', type=str,
                         help='Name of attribute set containing source.');
     parser.add_argument('-ess','--ess-attr-name',
-                        action='store', default='Bondary', type=str,
+                        action='store', default='Boundary', type=str,
                         help='Name of attribute set containing essential BC.')
     parser.add_argument('-no-vis', '--no-visualization',
                         action='store_true',
