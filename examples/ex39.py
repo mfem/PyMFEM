@@ -234,8 +234,9 @@ def run(order=1,
 
     # 13. Save the refined mesh and the solution. This output can be viewed
     #     later using GLVis: "glvis -m refined.mesh -g sol.gf".
+    mesh.Save('refined.mesh')
     x.Save('sol.gf')
-    mesh.Save('mesh.mesh')
+
 
     # 14. Send the solution by socket to a GLVis server.
     if visualization:
