@@ -1,5 +1,5 @@
 [build-system]
-requires = ["scikit-build-core", "swig"]
+requires = ["scikit-build-core", "swig", "numpy"]
 build-backend = "scikit_build_core.build"
 
 
