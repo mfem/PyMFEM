@@ -1,10 +1,10 @@
 [build-system]
-requires = ["scikit-build-core", "swig", "numpy"]
+requires = ["scikit-build-core", "nanobind", "numpy"]
 build-backend = "scikit_build_core.build"
 
 
 [project]
-name = "pymfem_dev"
+name = "pymfem"
 version = "0.0.1"
 dependencies = [
     "numpy>=1.20.0",
