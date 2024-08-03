@@ -97,6 +97,7 @@ def run(problem=1,
     sol.ProjectCoefficient(u0)
 
     mesh.Print("euler-mesh.mesh", 8)
+
     for k in range(num_equation):
         uk = mfem.GridFunction(fes, u_block.GetBlock(k).GetData())
         sol_name = "euler-" + str(k) + "-init.gf"
@@ -204,8 +205,8 @@ if __name__ == "__main__":
     parser.add_argument('-c', '--cfl_number',
                         action='store', default=0.3, type=float,
                         help="CFL number for timestep calculation.")
-    parser.add_argument('-vis', '--visualization',
-                        action='store_true',
+    parser.add_argument('-novis', '--no_visualization',
+                        action='store_true', default=False,
                         help='Enable GLVis visualization')
     parser.add_argument('-vs', '--visualization-steps',
                         action='store', default=50, type=float,
@@ -215,6 +216,8 @@ if __name__ == "__main__":
 
     parser.print_options(args)
 
+    visualization = not args.no_visualization
+    
     run(problem=args.problem,
         ref_levels=args.refine,
         order=args.order,
@@ -222,6 +225,6 @@ if __name__ == "__main__":
         t_final=args.t_final,
         dt=args.time_step,
         cfl=args.cfl_number,
-        visualization=args.visualization,
+        visualization=visualization,
         vis_steps=args.visualization_steps,
         meshfile=args.mesh)
