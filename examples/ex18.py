@@ -3,6 +3,14 @@
       This is a version of Example 18 with a simple adaptive mesh
       refinement loop. 
       See c++ version in the MFEM library for more detail 
+
+   Sample runs:
+
+       python ex18.py -p 1 -r 2 -o 1 -s 3
+       python ex18.py -p 1 -r 1 -o 3 -s 4
+       python ex18.py -p 1 -r 0 -o 5 -s 6
+       python ex18.py -p 2 -r 1 -o 1 -s 3 -mf
+       python ex18.py -p 2 -r 0 -o 3 -s 3 -mf
 '''
 from mfem.common.arg_parser import ArgParser
 import mfem.ser as mfem
@@ -55,7 +63,7 @@ def run(problem=1,
     elif ode_solver_type == 2:
         ode_solver = mfem.RK2Solver(1.0)
     elif ode_solver_type == 3:
-        ode_solver = mfem.RK3SSolver()
+        ode_solver = mfem.RK3SSPSolver()
     elif ode_solver_type == 4:
         ode_solver = mfem.RK4Solver()
     elif ode_solver_type == 6:
@@ -111,7 +119,7 @@ def run(problem=1,
         numericalFlux, IntOrderOffset)
 
     euler = DGHyperbolicConservationLaws(vfes, formIntegrator,
-                                         preassembleWeakDiv)
+                                         preassembleWeakDivergence=preassembleWeakDiv)
 
     # 7. Visualize momentum with its magnitude
     if (visualization):
@@ -211,6 +219,10 @@ if __name__ == "__main__":
     parser.add_argument('-novis', '--no_visualization',
                         action='store_true', default=False,
                         help='Enable GLVis visualization')
+    parser.add_argument("-ea", "--element-assembly-divergence",
+                        action='store_true', default=False,
+                        help="Weak divergence assembly level\n" +
+                        "    ea - Element assembly with interpolated")
     parser.add_argument("-mf", "--matrix-free-divergence",
                         action='store_true', default=False,
                         help="Weak divergence assembly level\n" +
@@ -221,10 +233,23 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    parser.print_options(args)
-
     visualization = not args.no_visualization
-    preassembleWeakDiv = args.matrix_free_divergence
+
+    if (not args.matrix_free_divergence and
+            not args.element_assembly_divergence):
+        args.element_assembly_divergence = True
+        args.matrix_free_divergence = False
+        preassembleWeakDiv = True
+
+    elif args.element_assembly_divergence:
+        args.matrix_free_divergence = False
+        preassembleWeakDiv = True
+
+    elif args.matrix_free_divergence:
+        args.element_assembly_divergence = False
+        preassembleWeakDiv = False
+
+    parser.print_options(args)
 
     run(problem=args.problem,
         ref_levels=args.refine,

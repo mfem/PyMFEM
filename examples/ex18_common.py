@@ -3,12 +3,6 @@
 
     This is a python translation of ex18.hpp
 
-    note: following variabls are set from ex18 or ex18p
-        problem
-        num_equation
-        max_char_speed
-        specific_heat_ratio;
-        gas_constant;
 
 '''
 import numpy as np
@@ -47,7 +41,6 @@ class DGHyperbolicConservationLaws(mfem.TimeDependentOperator):
             else:
                 self.nonlinearForm = mfem.NonlinearForm(self.vfes)
 
-        print(self.formIntegrator)
         if preassembleWeakDivergence:
             self.ComputeWeakDivergence()
         else:
@@ -79,7 +72,7 @@ class DGHyperbolicConservationLaws(mfem.TimeDependentOperator):
         self.weakdiv = [None]*self.vfes.GetNE()
 
         for i in range(self.vfes.GetNE()):
-            dof = vfes.GetFE(i).GetDof()
+            dof = self.vfes.GetFE(i).GetDof()
             weakdiv_bynodes.SetSize(dof, dof*self.dim)
             weak_div.AssembleElementMatrix2(self.vfes.GetFE(i),
                                             self.vfes.GetFE(i),
@@ -87,14 +80,14 @@ class DGHyperbolicConservationLaws(mfem.TimeDependentOperator):
                                                 i),
                                             weakdiv_bynodes)
             self.weakdiv[i] = mfem.DenseMatrix()
-            self.weakdiv[i].SetSize(dof, dof*dim)
+            self.weakdiv[i].SetSize(dof, dof*self.dim)
 
             # Reorder so that trial space is ByDim.
             # This makes applying weak divergence to flux value simpler.
             for j in range(dof):
                 for d in range(self.dim):
                     self.weakdiv[i].SetCol(
-                        j*dim + d, weakdiv_bynodes.GetColumn(d*dof + j))
+                        j*self.dim + d, weakdiv_bynodes.GetColumn(d*dof + j))
 
     def Mult(self, x, y):
         # 0. Reset wavespeed computation before operator application.
@@ -105,7 +98,7 @@ class DGHyperbolicConservationLaws(mfem.TimeDependentOperator):
         #    If weak-divergence is not preassembled, we also have weak-divergence
         #         z = - <F̂(u_h,n), [[v]]>_e + (F(u_h), ∇v)
         self.nonlinearForm.Mult(x, self.z)
-
+        #print("!!!!", self.weakdiv)
         if self.weakdiv is not None:  # if weak divergence is pre-assembled
             # Apply weak divergence to F(u_h), and inverse mass to z_loc + weakdiv_loc
 
@@ -120,11 +113,11 @@ class DGHyperbolicConservationLaws(mfem.TimeDependentOperator):
             current_zmat = mfem.DenseMatrix()
             current_ymat = mfem.DenseMatrix()  # view of element result, dof x num_eq
 
-            fluxFunction = formIntegrator.GetFluxFunction()
+            fluxFunction = self.formIntegrator.GetFluxFunction()
 
-            vdofs = mfem.intArray()
             xval = mfem.Vector()
             zval = mfem.Vector()
+            flux_vec = mfem.Vector()
 
             for i in range(self.vfes.GetNE()):
                 Tr = self.vfes.GetElementTransformation(i)
@@ -132,28 +125,48 @@ class DGHyperbolicConservationLaws(mfem.TimeDependentOperator):
                 vdofs = mfem.intArray(self.vfes.GetElementVDofs(i))
 
                 x.GetSubVector(vdofs, xval)
-
                 current_xmat.UseExternalData(
                     xval.GetData(), dof, self.num_equations)
-                flux.SetSize(self.num_equations, dim*dof)
+
+                #
+                # Python Note:
+                #    C++ code access to array data with offset is done bu GetData() + offset
+                #    In Python, the same can be done by using numpy array generated from Vector::GetDataArray(),
+                #
+                #       array = vec.GetDataArray()
+                #       new_data_pointer = mfem.Vector(array[10:]).GetData()
+                #
+                #    note that the above does not work if mfem.Vector is replaced by mfem.DenseMatrix
+                #    This is because, while MFEM stores data in colume-major, Python numpy store raw-major.
+                #
+
+                flux.SetSize(self.num_equations, self.dim*dof)
+                flux_vec = mfem.Vector(
+                    flux.GetData(), self.num_equations*self.dim*dof)
+                data = flux_vec.GetDataArray()
+
                 for j in range(dof):  # compute flux for all nodes in the element
                     current_xmat.GetRow(j, current_state)
-                    current_flux.UseExternalData(flux.GetData() + self.num_equations*dim*j,
-                                                 self.num_equations, dof)
+
+                    data_ptr = mfem.Vector(
+                        data[self.num_equations*self.dim*j:]).GetData()
+                    current_flux = mfem.DenseMatrix(data_ptr,
+                                                    self.num_equations, dof)
                     fluxFunction.ComputeFlux(current_state, Tr, current_flux)
 
                 # Compute weak-divergence and add it to auxiliary result, z
                 # Recalling that weakdiv is reordered by dim, we can apply
                 # weak-divergence to the transpose of flux.
-                self.z.GetSubVector(mfem.intArray(vdofs), zval)
+                self.z.GetSubVector(vdofs, zval)
                 current_zmat.UseExternalData(
                     zval.GetData(), dof, self.num_equations)
-                mfem.AddMult_a_ABt(1.0, weakdiv[i], flux, current_zmat)
+                mfem.AddMult_a_ABt(1.0, self.weakdiv[i], flux, current_zmat)
 
                 # Apply inverse mass to auxiliary result to obtain the final result
                 current_ymat.SetSize(dof, self.num_equations)
-                mfem.Mult(invmass[i], current_zmat, current_ymat)
+                mfem.Mult(self.invmass[i], current_zmat, current_ymat)
                 y.SetSubVector(vdofs, current_ymat.GetData())
+
         else:
 
             # Apply block inverse mass
