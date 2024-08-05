@@ -4,7 +4,6 @@
       refinement loop. 
       See c++ version in the MFEM library for more detail 
 '''
-from ex18_common import FE_Evolution, InitialCondition, RiemannSolver, DomainIntegrator, FaceIntegrator
 from mfem.common.arg_parser import ArgParser
 import mfem.ser as mfem
 from mfem.ser import intArray
@@ -28,22 +27,19 @@ def run(problem=1,
         cfl=0.3,
         visualization=True,
         vis_steps=50,
-        preassembleWeakDiv = False,preassembleWeakDiv,        
+        preassembleWeakDiv=False,
         meshfile=''):
 
-    ex18_common.num_equation = 4
     specific_heat_ratio = 1.4
     gas_constant = 1.0
     IntOrderOffset = 1
-    
-
-    num_equation = ex18_common.num_equation
 
     # 2. Read the mesh from the given mesh file. This example requires a 2D
     #    periodic mesh, such as ../data/periodic-square.mesh.
 
     mesh = EulerMesh(meshfile, problem)
     dim = mesh.Dimension()
+    num_equation = dim + 2
 
     # Refine the mesh to increase the resolution. In this example we do
     # 'ref_levels' of uniform refinement, where 'ref_levels' is a
@@ -108,56 +104,45 @@ def run(problem=1,
         sol_name = "euler-" + str(k) + "-init.gf"
         uk.Save(sol_name, 8)
 
-    #  6. Set up the nonlinear form corresponding to the DG discretization of the
-    #     flux divergence, and assemble the corresponding mass matrix.
-    Aflux = mfem.MixedBilinearForm(dfes, fes)
-    Aflux.AddDomainIntegrator(DomainIntegrator(dim))
-    Aflux.Assemble()
-
-    A = mfem.NonlinearForm(vfes)
-    rsolver = RiemannSolver()
-    ii = FaceIntegrator(rsolver, dim)
-    A.AddInteriorFaceIntegrator(ii)
-    
     # 6. Set up the nonlinear form with euler flux and numerical flux
-    flux = EulerFlux(dim, specific_heat_ratio)
-    numericalFlux = RusanovFlux(flux)
-    formIntegrator = mfem.HyperbolicFormIntegrator(numericalFlux, IntOrderOffset),
+    flux = mfem.EulerFlux(dim, specific_heat_ratio)
+    numericalFlux = mfem.RusanovFlux(flux)
+    formIntegrator = mfem.HyperbolicFormIntegrator(
+        numericalFlux, IntOrderOffset)
 
-   euler = DGHyperbolicConservationLaws euler(
-      vfes, std::unique_ptr<HyperbolicFormIntegrator>(
-         new HyperbolicFormIntegrator(numericalFlux, IntOrderOffset)),
-      preassembleWeakDiv);
-   
-    #  7. Define the time-dependent evolution operator describing the ODE
-    #     right-hand side, and perform time-integration (looping over the time
-    #     iterations, ti, with a time-step dt).
-    euler = FE_Evolution(vfes, A, Aflux.SpMat())
+    euler = DGHyperbolicConservationLaws(vfes, formIntegrator,
+                                         preassembleWeakDiv)
 
+    # 7. Visualize momentum with its magnitude
     if (visualization):
         sout = mfem.socketstream("localhost", 19916)
         sout.precision(8)
         sout << "solution\n" << mesh << mom
+        sout << "window_title 'momentum, t = 0'\n"
+        sout << "view 0 0\n"  # view from top
+        sout << "keys jlm\n"  # turn off perspective and light, show mesh
         sout << "pause\n"
         sout.flush()
         print("GLVis visualization paused.")
         print(" Press space (in the GLVis window) to resume it.")
 
-    # Determine the minimum element size.
-    hmin = 0
+    # 8. Time integration
+    hmin = np.inf
     if (cfl > 0):
         hmin = min([mesh.GetElementSize(i, 1) for i in range(mesh.GetNE())])
+
+        # Find a safe dt, using a temporary vector. Calling Mult() computes the
+        # maximum char speed at all quadrature points on all faces (and all
+        # elements with -mf).
+        z = mfem.Vector(sol.Size())
+        euler.Mult(sol, z)
+
+        max_char_speed = euler.GetMaxCharSpeed()
+        dt = cfl * hmin / max_char_speed / (2 * order + 1)
 
     t = 0.0
     euler.SetTime(t)
     ode_solver.Init(euler)
-    if (cfl > 0):
-        #  Find a safe dt, using a temporary vector. Calling Mult() computes the
-        #  maximum char speed at all quadrature points on all faces.
-        z = mfem.Vector(A.Width())
-        A.Mult(sol, z)
-
-        dt = cfl * hmin / ex18_common.max_char_speed / (2*order+1)
 
     # Integrate in time.
     done = False
@@ -168,7 +153,8 @@ def run(problem=1,
         t, dt_real = ode_solver.Step(sol, t, dt_real)
 
         if (cfl > 0):
-            dt = cfl * hmin / ex18_common.max_char_speed / (2*order+1)
+            max_char_speed = euler.GetMaxCharSpeed()
+            dt = cfl * hmin / max_char_speed / (2*order+1)
         ti = ti+1
         done = (t >= t_final - 1e-8*dt)
         if (done or ti % vis_steps == 0):
@@ -179,8 +165,10 @@ def run(problem=1,
 
     #  8. Save the final solution. This output can be viewed later using GLVis:
     #    "glvis -m euler.mesh -g euler-1-final.gf".
+    mesh.Print("euler-mesh-final.mesh", 8)
     for k in range(num_equation):
-        uk = mfem.GridFunction(fes, u_block.GetBlock(k).GetData())
+        uk = mfem.GridFunction(fes, mfem.Vector(
+            sol.GetDataArray()[k*fes.GetNDofs():]))
         sol_name = "euler-" + str(k) + "-final.gf"
         uk.Save(sol_name, 8)
 
@@ -224,8 +212,8 @@ if __name__ == "__main__":
                         action='store_true', default=False,
                         help='Enable GLVis visualization')
     parser.add_argument("-mf", "--matrix-free-divergence",
-                        action='store_true', default=False,                        
-                        help = "Weak divergence assembly level\n"+
+                        action='store_true', default=False,
+                        help="Weak divergence assembly level\n" +
                         "    mf - Nonlinear assembly in matrix-free manner")
     parser.add_argument('-vs', '--visualization-steps',
                         action='store', default=50, type=float,
@@ -237,7 +225,7 @@ if __name__ == "__main__":
 
     visualization = not args.no_visualization
     preassembleWeakDiv = args.matrix_free_divergence
-    
+
     run(problem=args.problem,
         ref_levels=args.refine,
         order=args.order,
@@ -247,5 +235,5 @@ if __name__ == "__main__":
         cfl=args.cfl_number,
         visualization=visualization,
         vis_steps=args.visualization_steps,
-        preassembleWeakDiv = preassembleWeakDiv,
+        preassembleWeakDiv=preassembleWeakDiv,
         meshfile=args.mesh)

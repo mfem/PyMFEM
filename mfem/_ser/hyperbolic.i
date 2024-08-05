@@ -8,6 +8,7 @@
 #include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
 #include "../common/pyintrules.hpp"
+#include "../common/pynonlininteg.hpp"  
 %}
 
 %include "../common/existing_mfem_headers.i"
@@ -25,7 +26,7 @@ import_array();
 %import "vector.i"
 %import "densemat.i"
 %import "eltrans.i"
-
+%import "nonlininteg.i"
 
 %include "fem/hyperbolic.hpp"
 
