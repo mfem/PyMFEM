@@ -14,7 +14,8 @@ from numpy import sqrt, pi, cos, sin, hypot, arctan2
 from scipy.special import erfc
 
 # Equation constant parameters.(using globals to share them with ex18_common)
-import ex18_common
+from ex18_common import (EulerMesh,
+                         EulerInitialCondition)
 
 
 def run(problem=1,
@@ -29,15 +30,15 @@ def run(problem=1,
         meshfile=''):
 
     ex18_common.num_equation = 4
-    ex18_common.specific_heat_ratio = 1.4
-    ex18_common.gas_constant = 1.0
-    ex18_common.problem = problem
+    specific_heat_ratio = 1.4
+    gas_constant = 1.0
+
     num_equation = ex18_common.num_equation
 
     # 2. Read the mesh from the given mesh file. This example requires a 2D
     #    periodic mesh, such as ../data/periodic-square.mesh.
-    meshfile = expanduser(join(dirname(__file__), '..', 'data', meshfile))
-    mesh = mfem.Mesh(meshfile, 1, 1)
+
+    mesh = EulerMesh(meshfile, problem)
     dim = mesh.Dimension()
 
     # Refine the mesh to increase the resolution. In this example we do
@@ -79,27 +80,27 @@ def run(problem=1,
     print("Number of unknowns: " + str(vfes.GetVSize()))
 
     # 5. Define the initial conditions, save the corresponding mesh and grid
-    #    functions to a file. This can be opened with GLVis with the -gc option.
-    #    The solution u has components {density, x-momentum, y-momentum, energy}.
-    #    These are stored contiguously in the BlockVector u_block.
-
-    offsets = [k*vfes.GetNDofs() for k in range(num_equation+1)]
-    offsets = mfem.intArray(offsets)
-    u_block = mfem.BlockVector(offsets)
-    mom = mfem.GridFunction(dfes, u_block,  offsets[1])
-
-    #
-    #  Define coefficient using VectorPyCoefficient and PyCoefficient
-    #  A user needs to define EvalValue method
-    #
-    u0 = InitialCondition(num_equation)
-    sol = mfem.GridFunction(vfes, u_block.GetData())
+    #    functions to files. These can be opened with GLVis using:
+    #    "glvis -m euler-mesh.mesh -g euler-1-init.gf" (for x-momentum).
+    u0 = EulerInitialCondition(problem,
+                               specific_heat_ratio,
+                               gas_constant)
+    sol = mfem.GridFunction(vfes)
     sol.ProjectCoefficient(u0)
 
+    # (Python note): GridFunction pointing to the subset of vector FES.
+    #  sol is Vector with dim*fes.GetNDofs()
+    #  Since sol.GetDataArray() returns numpy array pointing to the data, we make
+    #  Vector from a sub-vector of the returned numpy array and pass it to GridFunction
+    #  constructor.
+
+    mom = mfem.GridFunction(dfes, mfem.Vector(
+        sol.GetDataArray()[fes.GetNDofs():]))
     mesh.Print("euler-mesh.mesh", 8)
 
     for k in range(num_equation):
-        uk = mfem.GridFunction(fes, u_block.GetBlock(k).GetData())
+        uk = mfem.GridFunction(fes, mfem.Vector(
+            sol.GetDataArray()[k*fes.GetNDofs():]))
         sol_name = "euler-" + str(k) + "-init.gf"
         uk.Save(sol_name, 8)
 
@@ -180,7 +181,7 @@ if __name__ == "__main__":
 
     parser = ArgParser(description='Ex18')
     parser.add_argument('-m', '--mesh',
-                        default='periodic-square.mesh',
+                        default='',
                         action='store', type=str,
                         help='Mesh file to use.')
     parser.add_argument('-p', '--problem',
@@ -217,7 +218,7 @@ if __name__ == "__main__":
     parser.print_options(args)
 
     visualization = not args.no_visualization
-    
+
     run(problem=args.problem,
         ref_levels=args.refine,
         order=args.order,

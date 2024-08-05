@@ -4,9 +4,9 @@
     This is a python translation of ex18.hpp
 
     note: following variabls are set from ex18 or ex18p
-        problem    
+        problem
         num_equation
-        max_char_speed 
+        max_char_speed
         specific_heat_ratio;
         gas_constant;
 
@@ -75,7 +75,7 @@ class FE_Evolution(mfem.TimeDependentOperator):
                 globals()['max_char_speed'] = mcs
 
         flux.Assign(np.stack(flux_data))
-        #print("max char speed", globals()['max_char_speed'])
+        # print("max char speed", globals()['max_char_speed'])
 
     def Mult(self, x, y):
         globals()['max_char_speed'] = 0.
@@ -251,7 +251,7 @@ class FaceIntegrator(mfem.PyNonlinearFormIntegrator):
             for k in range(num_equation):
                 for s in range(dof1):
                     elvect1_mat[s, k] -= self.fluxN[k] * self.shape1[s]
-                for s in range(dof2):                   
+                for s in range(dof2):
                     elvect2_mat[s, k] += self.fluxN[k] * self.shape2[s]
             '''
 
@@ -277,7 +277,7 @@ class RiemannSolver(object):
         ComputeFluxDotN(state1, nor, self.flux1)
         ComputeFluxDotN(state2, nor, self.flux2)
 
-        #normag = np.sqrt(np.sum(nor.GetDataArray()**2))
+        # normag = np.sqrt(np.sum(nor.GetDataArray()**2))
         normag = nor.Norml2()
 
         '''
@@ -296,7 +296,7 @@ def StateIsPhysical(state, dim):
     specific_heat_ratio = globals()["specific_heat_ratio"]
 
     den = state[0]
-    #den_vel = state.GetDataArray()[1:1+dim]
+    # den_vel = state.GetDataArray()[1:1+dim]
     den_energy = state[1 + dim]
 
     if (den < 0):
@@ -306,7 +306,7 @@ def StateIsPhysical(state, dim):
         print("Negative energy: " + str(state.GetDataArray()))
         return False
 
-    #den_vel2 = np.sum(den_vel**2)/den
+    # den_vel2 = np.sum(den_vel**2)/den
     den_vel2 = (state[1:1+dim].Norml2())**2/den
     pres = (specific_heat_ratio - 1.0) * (den_energy - 0.5 * den_vel2)
     if (pres <= 0):
@@ -376,11 +376,11 @@ class InitialCondition(mfem.VectorPyCoefficient):
 
 def ComputePressure(state, dim):
     den = state[0]
-    #den_vel = state.GetDataArray()[1:1+dim]
+    # den_vel = state.GetDataArray()[1:1+dim]
     den_energy = state[1 + dim]
 
     specific_heat_ratio = globals()["specific_heat_ratio"]
-    #den_vel2 = np.sum(den_vel**2)/den
+    # den_vel2 = np.sum(den_vel**2)/den
     den_vel2 = (state[1:1+dim].Norml2())**2/den
     pres = (specific_heat_ratio - 1.0) * (den_energy - 0.5 * den_vel2)
 
@@ -441,3 +441,130 @@ def ComputeMaxCharSpeed(state, dim):
     vel = np.sqrt(den_vel2 / den)
 
     return vel + sound
+
+
+std: : function < void(const Vector&, Vector&) > GetMovingVortexInit(
+   const real_t radius, const real_t Minf, const real_t beta,
+   const real_t gas_constant, const real_t specific_heat_ratio)
+{
+   return [specific_heat_ratio,
+           gas_constant, Minf, radius, beta](const Vector & x, Vector & y)
+   {
+      MFEM_ASSERT(x.Size() == 2, "");
+
+      const real_t xc = 0.0, yc = 0.0;
+
+      // Nice units
+      const real_t vel_inf = 1.;
+      const real_t den_inf = 1.;
+
+      // Derive remainder of background state from this and Minf
+      const real_t pres_inf = (den_inf / specific_heat_ratio) *
+                              (vel_inf / Minf) * (vel_inf / Minf);
+      const real_t temp_inf = pres_inf / (den_inf * gas_constant);
+
+def GetMovingVertexInit(radius, Minf, beta, gas_constant, specific_heat_ratio):
+    def func(x, y):
+        xc = 0.0
+        yc = 0.0
+        # Nice units
+        vel_inf = 1.
+        den_inf = 1.
+
+        pres_inf = (den_inf / specific_heat_ratio) * \
+            (vel_inf / Minf) * (vel_inf / Minf)
+        temp_inf = pres_inf / (den_inf * gas_constant)
+
+        r2rad = 0.0
+        r2rad += (x[0] - xc) * (x[0] - xc)
+        r2rad += (x[1] - yc) * (x[1] - yc)
+        r2rad /= (radius * radius)
+
+        shrinv1 = 1.0 / (specific_heat_ratio - 1.)
+
+        velX = vel_inf * \
+            (1 - beta * (x[1] - yc) / radius * np.exp(-0.5 * r2rad))
+        velY = vel_inf * beta * (x[0] - xc) / radius * np.exp(-0.5 * r2rad)
+        vel2 = velX * velX + velY * velY
+
+        specific_heat = gas_constant * specific_heat_ratio * shrinv1
+
+        temp = temp_inf - (0.5 * (vel_inf * beta) *
+                           (vel_inf * beta) / specific_heat * np.exp(-r2rad))
+
+        den = den_inf * (temp/temp_inf)**shrinv1
+        pres = den * gas_constant * temp
+        energy = shrinv1 * pres / den + 0.5 * vel2
+
+        y[0] = den
+        y[1] = den * velX
+        y[2] = den * velY
+        y[3] = den * energy
+
+def EulerMesh(meshfile, problem)
+    if meshfile == '':
+        if problem in (1, 2, 3):
+            meshfile = "periodic-square.mesh"
+
+        elif problem == 4:
+            meshfile = "periodic-segment.mesh"
+
+        else:
+            assert False, "Default mesh file not given for problem = " + \
+                str(problem)
+
+        meshfile = expanduser(join(dirname(__file__), '..', 'data', meshfile))
+
+    return mfem.Mesh(meshfile, 1, 1)
+
+# Initial condition
+def EulerInitialCondition(problem, specific_heat_ratio, gas_constant):
+
+    if problem == 1:
+        # fast moving vortex
+        func = GetMovingVortexInit(0.2, 0.5, 1. / 5., gas_constant,
+                                          specific_heat_ratio)
+        return mfem.jit.vector(vdim=4, interface="c++")(func)
+
+    elif problem == 2:
+        # slow moving vortex
+        func = GetMovingVortexInit(0.2, 0.05, 1. / 50., gas_constant,
+                                          specific_heat_ratio)
+        return mfem.jit.vector(vdim=4, interface="c++")(func)
+
+    elif problem == 3:
+        # moving sine wave
+        @ mfem.jit.vector(vdim=4, interface="c++")
+        def func(x, y):
+             assert len(x) > 2, "2D is not supportd for this probl"
+             density = 1.0 + 0.2 * np.sin(np.pi*(x[0]+x[1]))
+             velocity_x = 0.7
+             velocity_y = 0.3
+             pressure = 1.0
+             energy = (pressure / (1.4 - 1.0) +
+                       density * 0.5 * (velocity_x * velocity_x + velocity_y * velocity_y))
+
+             y[0] = density
+             y[1] = density * velocity_x
+             y[2] = density * velocity_y
+             y[3] = energy
+
+        return func
+
+    elif problem == 4:
+        @ mfem.jit.vector(vdim=3, interface="c++")
+        def func(x, y):
+            density = 1.0 + 0.2 * np.sin(np.pi * 2 * x[0])
+            velocity_x = 1.0
+            pressure = 1.0
+            energy = pressure / (1.4 - 1.0) + density * \
+                                 0.5 * (velocity_x * velocity_x)
+
+            y[0] = density
+            y[1] = density * velocity_x
+            y[2] = energy
+
+        return func
+
+    else:
+        assert False, "Problem Undefined"
