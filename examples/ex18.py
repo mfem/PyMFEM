@@ -20,7 +20,6 @@ import numpy as np
 from numpy import sqrt, pi, cos, sin, hypot, arctan2
 from scipy.special import erfc
 
-# Equation constant parameters.(using globals to share them with ex18_common)
 from ex18_common import (EulerMesh,
                          EulerInitialCondition,
                          DGHyperbolicConservationLaws)
@@ -168,6 +167,8 @@ def run(problem=1,
         if (done or ti % vis_steps == 0):
             print("time step: " + str(ti) + ", time: " + "{:g}".format(t))
             if (visualization):
+                sout << "window_title 'momentum, t = " << "{:g}".format(
+                    t) << "'\n"
                 sout << "solution\n" << mesh << mom
                 sout.flush()
 
@@ -218,7 +219,7 @@ if __name__ == "__main__":
                         help="CFL number for timestep calculation.")
     parser.add_argument('-novis', '--no_visualization',
                         action='store_true', default=False,
-                        help='Enable GLVis visualization')
+                        help='Disable GLVis visualization')
     parser.add_argument("-ea", "--element-assembly-divergence",
                         action='store_true', default=False,
                         help="Weak divergence assembly level\n" +
