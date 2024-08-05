@@ -25,6 +25,150 @@ gas_constant = 0
 problem = 0
 max_char_speed = 0
 
+class DGHyperbolicConservationLaws(mfem.TimeDependentOperator):
+    def __init__(self, vfes_, formIntegrator_, preassembleWeakDivergence=True):
+        
+        super(DGHyperbolicConservationLaws, self).__init__(vfes_.GetTrueVsize())
+        self.num_equations = formIntegrator_.num_equations
+        self.vfes = vfes_
+        self.dim = vfes_.GetMesh().SpaceDimension()
+        self.formIntegrator = formIntegrator_
+
+        self.z = mfem.Vector(vfes_.GetTrueVSize())
+        self.weakdiv = None
+
+        self.ComputeInvMass()
+
+        if mfem_mode == 'serial':
+            self.nonlinearForm = mfem.NonlinearForm(self.vfes)
+        else:
+            if isinstance(self.vfes, mfem.ParFiniteElementSpace):
+                self.nonlinearForm = mfem.ParNonlinearForm(self.vfes)
+            else:
+                self.nonlinearForm = mfem.NonlinearForm(self.vfes)
+
+
+        if preassembleWeakDivergence:
+            self.ComputeWeakDivergence()
+        else:
+            self.nonlinearForm.AddDomainIntegrator(self.formIntegrator)
+            
+        self.nonlinearForm.AddInteriorFaceIntegrator(self.formIntegrator)
+        self.nonlinearForm.UseExternalIntegrator()
+
+    def ComputeInvMass(self):
+        inv_mass = mfem.InverseIntegrator(mfem.MassIntegrator())
+
+        self.invmass = [None]*self.vfes.GetNE()
+        for i in range(self.vfes.GetNE()):
+            dof = vfes.GetFE(i).GetDof()
+            invmass[i] = mfem.DenseMatrix(dof)
+            inv_mass.AssembleElementMatrix(self.vfes.GetFE(i),
+                                           self.vfes.GetElementTransformation(i),
+                                           invmass[i])
+        
+
+    def ComputeWeakDivergence(self):
+        weak_div = mfem.TransposeIntegrator(mfem.GradientIntegrator())
+        
+        weakdiv_bynodes = mfem.DenseMatrix()
+
+        self.weakdiv = [None]*self.vfes.GetNE()
+
+        for i in range(self.vfes.GetNE()):
+            dof = vfes.GetFE(i).GetDof()
+            weakdiv_bynodes.SetSize(dof, dof*self.dim)
+            weak_div.AssembleElementMatrix2(self.vfes.GetFE(i),
+                                            self.vfes.GetFE(i),
+                                            self.vfes.GetElementTransformation(i),
+                                            weakdiv_bynodes);
+            self.weakdiv[i] = mfem.DenseMatrix()
+            self.weakdiv[i].SetSize(dof, dof*dim)
+            
+            # Reorder so that trial space is ByDim.
+            # This makes applying weak divergence to flux value simpler.
+            for j in range(dof):
+                for d in range(self.dim):
+                    self.weakdiv[i].SetCol(j*dim + d, weakdiv_bynodes.GetColumn(d*dof + j))
+
+
+    def Mult(x, y):
+        # 0. Reset wavespeed computation before operator application.
+        self.formIntegrator.ResetMaxCharSpeed()
+
+        
+        # 1. Apply Nonlinear form to obtain an auxiliary result
+        #         z = - <F̂(u_h,n), [[v]]>_e
+        #    If weak-divergence is not preassembled, we also have weak-divergence
+        #         z = - <F̂(u_h,n), [[v]]>_e + (F(u_h), ∇v)
+        self.nonlinearForm.>Mult(x, z)
+        
+        if self.weakdiv is not None: # if weak divergence is pre-assembled
+             # Apply weak divergence to F(u_h), and inverse mass to z_loc + weakdiv_loc
+            
+             current_state = mfem.Vector()     # view of current state at a node
+             current_flux = mfem.DenseMatrix() # flux of current state
+
+             flux = mfem.DenseMatrix()         # element flux value. Whose column is ordered by dim.
+             current_xmat = mfem.DenseMatrix() # view of current states in an element, dof x num_eq
+             current_zmat = mfem.DenseMatrix() # view of element auxiliary result, dof x num_eq
+             current_ymat = mfem.DenseMatrix() # view of element result, dof x num_eq
+
+             fluxFunction = formIntegrator.GetFluxFunction()
+             
+             vdofs = mfem.intArray()
+             xval = mfem.Vector()
+             zval = mfem.Vector()
+             
+             for i in range(self.vfes.GetNE()):
+                 Tr = self.vfes.GetElementTransformation(i)
+                 dof = self.vfes.GetFE(i).GetDof()
+                 self.vfes.GetElementVDofs(i, vdofs)
+         x.GetSubVector(vdofs, xval);
+         current_xmat.UseExternalData(xval.GetData(), dof, num_equations);
+         flux.SetSize(num_equations, dim*dof);
+         for (int j=0; j<dof; j++) // compute flux for all nodes in the element
+         {
+            current_xmat.GetRow(j, current_state);
+            current_flux.UseExternalData(flux.GetData() + num_equations*dim*j,
+                                         num_equations, dof);
+            fluxFunction.ComputeFlux(current_state, *Tr, current_flux);
+         }
+         // Compute weak-divergence and add it to auxiliary result, z
+         // Recalling that weakdiv is reordered by dim, we can apply
+         // weak-divergence to the transpose of flux.
+         z.GetSubVector(vdofs, zval);
+         current_zmat.UseExternalData(zval.GetData(), dof, num_equations);
+         mfem::AddMult_a_ABt(1.0, weakdiv[i], flux, current_zmat);
+         // Apply inverse mass to auxiliary result to obtain the final result
+         current_ymat.SetSize(dof, num_equations);
+         mfem::Mult(invmass[i], current_zmat, current_ymat);
+         y.SetSubVector(vdofs, current_ymat.GetData());
+      }
+   }
+   else
+   {
+      // Apply block inverse mass
+      Vector zval; // z_loc, dof*num_eq
+
+      DenseMatrix current_zmat; // view of element auxiliary result, dof x num_eq
+      DenseMatrix current_ymat; // view of element result, dof x num_eq
+      Array<int> vdofs;
+      for (int i=0; i<vfes.GetNE(); i++)
+      {
+         int dof = vfes.GetFE(i)->GetDof();
+         vfes.GetElementVDofs(i, vdofs);
+         z.GetSubVector(vdofs, zval);
+         current_zmat.UseExternalData(zval.GetData(), dof, num_equations);
+         current_ymat.SetSize(dof, num_equations);
+         mfem::Mult(invmass[i], current_zmat, current_ymat);
+         y.SetSubVector(vdofs, current_ymat.GetData());
+      }
+   }
+   max_char_speed = formIntegrator->GetMaxCharSpeed();
+}
+                    
+
 
 class FE_Evolution(mfem.TimeDependentOperator):
     def __init__(self, vfes, A, A_flux):
@@ -39,7 +183,7 @@ class FE_Evolution(mfem.TimeDependentOperator):
         self.state = mfem.Vector(num_equation)
         self.f = mfem.DenseMatrix(num_equation, self.dim)
         self.flux = mfem.DenseTensor(vfes.GetNDofs(), self.dim, num_equation)
-        self.z = mfem.Vector(A.Height())
+
 
         dof = vfes.GetFE(0).GetDof()
         Me = mfem.DenseMatrix(dof)

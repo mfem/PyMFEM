@@ -15,7 +15,8 @@ from scipy.special import erfc
 
 # Equation constant parameters.(using globals to share them with ex18_common)
 from ex18_common import (EulerMesh,
-                         EulerInitialCondition)
+                         EulerInitialCondition,
+                         DGHyperbolicConservationLaws)
 
 
 def run(problem=1,
@@ -27,11 +28,14 @@ def run(problem=1,
         cfl=0.3,
         visualization=True,
         vis_steps=50,
+        preassembleWeakDiv = False,preassembleWeakDiv,        
         meshfile=''):
 
     ex18_common.num_equation = 4
     specific_heat_ratio = 1.4
     gas_constant = 1.0
+    IntOrderOffset = 1
+    
 
     num_equation = ex18_common.num_equation
 
@@ -114,7 +118,17 @@ def run(problem=1,
     rsolver = RiemannSolver()
     ii = FaceIntegrator(rsolver, dim)
     A.AddInteriorFaceIntegrator(ii)
+    
+    # 6. Set up the nonlinear form with euler flux and numerical flux
+    flux = EulerFlux(dim, specific_heat_ratio)
+    numericalFlux = RusanovFlux(flux)
+    formIntegrator = mfem.HyperbolicFormIntegrator(numericalFlux, IntOrderOffset),
 
+   euler = DGHyperbolicConservationLaws euler(
+      vfes, std::unique_ptr<HyperbolicFormIntegrator>(
+         new HyperbolicFormIntegrator(numericalFlux, IntOrderOffset)),
+      preassembleWeakDiv);
+   
     #  7. Define the time-dependent evolution operator describing the ODE
     #     right-hand side, and perform time-integration (looping over the time
     #     iterations, ti, with a time-step dt).
@@ -209,6 +223,10 @@ if __name__ == "__main__":
     parser.add_argument('-novis', '--no_visualization',
                         action='store_true', default=False,
                         help='Enable GLVis visualization')
+    parser.add_argument("-mf", "--matrix-free-divergence",
+                        action='store_true', default=False,                        
+                        help = "Weak divergence assembly level\n"+
+                        "    mf - Nonlinear assembly in matrix-free manner")
     parser.add_argument('-vs', '--visualization-steps',
                         action='store', default=50, type=float,
                         help="Visualize every n-th timestep.")
@@ -218,7 +236,8 @@ if __name__ == "__main__":
     parser.print_options(args)
 
     visualization = not args.no_visualization
-
+    preassembleWeakDiv = args.matrix_free_divergence
+    
     run(problem=args.problem,
         ref_levels=args.refine,
         order=args.order,
@@ -228,4 +247,5 @@ if __name__ == "__main__":
         cfl=args.cfl_number,
         visualization=visualization,
         vis_steps=args.visualization_steps,
+        preassembleWeakDiv = preassembleWeakDiv,
         meshfile=args.mesh)
