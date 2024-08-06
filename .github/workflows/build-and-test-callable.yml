@@ -121,13 +121,6 @@ jobs:
         sudo sh ~/cache/cuda.run --silent --toolkit
         echo "/usr/local/cuda/bin" >> $GITHUB_PATH
 
-    # - name: Install CUDA
-    #   uses: Jimver/cuda-toolkit@master
-    #   id: cuda-toolkit
-    #   with:
-    #     log-file-suffix: '${{ inputs.os }}.txt'
-
-
     - name: Print dependency information
       run: |
         pip list
