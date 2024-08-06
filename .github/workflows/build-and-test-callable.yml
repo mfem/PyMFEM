@@ -98,6 +98,9 @@ jobs:
         sudo apt-get install mpich libmpich-dev
         pip install mpi4py
 
+    - name: Purge PIP cache
+      run: pip cache purge
+
     - name: Cache CUDA
       if: inputs.cuda
       id: cache-cuda
