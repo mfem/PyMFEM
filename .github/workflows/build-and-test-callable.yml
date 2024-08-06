@@ -119,10 +119,8 @@ jobs:
     - name: Install CUDA
       if: inputs.cuda
       run: |
-        # Make a separate temp dir so cuda doesn't run out of space
-        sudo mkdir -p ~/cudatemp
         # The --silent flag is necessary to bypass user-input, e.g. accepting the EULA
-        sudo sh ~/cache/cuda.run --silent --toolkit --tmpdir=~/cudatemp
+        sudo sh ~/cache/cuda.run --silent --toolkit
         echo "/usr/local/cuda/bin" >> $GITHUB_PATH
 
     - name: Print dependency information
