@@ -60,6 +60,7 @@ from  mfem._ser.qspace import *
 from  mfem._ser.qfunction import *
 from  mfem._ser.quadinterpolator import *
 from  mfem._ser.quadinterpolator_face import *
+from  mfem._ser.attribute_sets import *
 
 from  mfem._ser.fe_base import *
 from  mfem._ser.fe_h1 import *
