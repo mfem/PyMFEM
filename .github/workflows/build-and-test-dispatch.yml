@@ -40,7 +40,7 @@ jobs:
       mfem-branch: ${{ matrix.mfem-branch }}
       python-version: ${{ matrix.python-version }}
       parallel: ${{ matrix.parallel }}
-      
+
   test-linux-parallel:
     if: ${{ github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'skip-ci') || inputs.test_options == 'all' }}
     strategy:
@@ -56,7 +56,7 @@ jobs:
       mfem-branch: ${{ matrix.mfem-branch }}
       python-version: ${{ matrix.python-version }}
       parallel: ${{ matrix.parallel }}
-      
+
   # -------------------------------------------------------------------------------------------------
   # Fast test
   # -------------------------------------------------------------------------------------------------
