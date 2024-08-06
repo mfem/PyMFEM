@@ -16,6 +16,8 @@ on:
           - 'defaults'
           - 'fast'
           - 'cuda'
+          - 'libceed'
+          - 'gslib'
           - 'all'
   pull_request:
 
