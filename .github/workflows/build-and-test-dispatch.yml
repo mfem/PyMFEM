@@ -1,7 +1,6 @@
 # build-and-test-dispatch.yml
 #
 # Dispatch workflow for build-and-test-callable.yml
-
 name: Build and Test (dispatch)
 
 on:
@@ -15,6 +14,9 @@ on:
         options:
           - 'defaults'
           - 'fast'
+          - 'cuda'
+          - 'libceed'
+          - 'gslib'
           - 'all'
   pull_request:
 
@@ -22,14 +24,14 @@ jobs:
   # -------------------------------------------------------------------------------------------------
   # Build and test whole matrix of options on linux
   # -------------------------------------------------------------------------------------------------
-  test-linux:
+  test-linux-serial:
     if: ${{ github.event_name == 'pull_request' || inputs.test_options == 'all' }}
     strategy:
       fail-fast: false
       matrix:
         mfem-branch: [master, default] # 'default' uses a specific commit hash defined in setup.py:repos_sha
         python-version: ['3.7', '3.8', '3.9', '3.10', '3.11'] # 3.12 is not supported by scipy
-        parallel: [false, true]
+        parallel: [false]
     name: test-linux | ${{ matrix.mfem-branch }} | ${{ matrix.python-version }} | ${{ matrix.parallel && 'parallel' || 'serial' }}
     uses: ./.github/workflows/build-and-test-callable.yml
     with:
@@ -38,6 +40,21 @@ jobs:
       python-version: ${{ matrix.python-version }}
       parallel: ${{ matrix.parallel }}
 
+  test-linux-parallel:
+    if: ${{ github.event_name == 'pull_request' || inputs.test_options == 'all' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        mfem-branch: [master, default] # 'default' uses a specific commit hash defined in setup.py:repos_sha
+        python-version: ['3.9', '3.10', '3.11'] # 3.12 is not supported by scipy
+        parallel: [true]
+    name: test-linux | ${{ matrix.mfem-branch }} | ${{ matrix.python-version }} | ${{ matrix.parallel && 'parallel' || 'serial' }}
+    uses: ./.github/workflows/build-and-test-callable.yml
+    with:
+      os: ubuntu-latest
+      mfem-branch: ${{ matrix.mfem-branch }}
+      python-version: ${{ matrix.python-version }}
+      parallel: ${{ matrix.parallel }}
 
   # -------------------------------------------------------------------------------------------------
   # Fast test
@@ -73,21 +90,21 @@ jobs:
       mfem-branch: ${{ matrix.mfem-branch }}
 
   test-cuda:
-    if: ${{ github.event_name == 'pull_request' || inputs.test_options == 'all' }}
+    if: ${{ github.event_name == 'pull_request' || inputs.test_options == 'all' || inputs.test_options == 'cuda'}}
     uses: ./.github/workflows/build-and-test-callable.yml
     with:
       cuda: true
     name: test-cuda
 
   test-libceed:
-    if: ${{ github.event_name == 'pull_request' || inputs.test_options == 'all' }}
+    if: ${{ github.event_name == 'pull_request' || inputs.test_options == 'all' || inputs.test_options == 'libceed'}}
     uses: ./.github/workflows/build-and-test-callable.yml
     with:
       libceed: true
     name: test-libceed
 
   test-gslib:
-    if: ${{ github.event_name == 'pull_request' || inputs.test_options == 'all' }}
+    if: ${{ github.event_name == 'pull_request' || inputs.test_options == 'all' || inputs.test_options == 'gslib'}}
     uses: ./.github/workflows/build-and-test-callable.yml
     with:
       gslib: true
