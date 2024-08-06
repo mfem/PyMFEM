@@ -3,19 +3,17 @@
 2024 08
       * MFEM 4.7 support
         - AttributeSets are supported. ex39 and ex39p are added to demonstrate how to use it from Python
-	- hyperbolic conservation element/face form integrators (hyperbolic.hpp) are supported. ex18.py and
-	  ex18.py is updated to conformed the updated C++ examples.
-	- Update SWIG rerquirement to >= 4.2.1 (needed to wrap MFEM routines which uses recent C++ features)
-	- buiding --with-libceed download libceed 0.12.0, as required by MFEM4.7
-	- fixed eltrans::transformback
+	- Hyperbolic conservation element/face form integrators (hyperbolic.hpp) are supported. ex18.py and
+	  ex18.py are updated to conform with the updated C++ examples.
+	- Update SWIG requirement to >= 4.2.1 (required to wrap MFEM routines which use recent C++ features)
+	- Buiding --with-libceed will download libceed=0.12.0, as required by MFEM 4.7
+	- Fixed eltrans::transformback
 	- Improved testing using Github actions
-	  - new caller and dispatch yml configulations allows for running a test manually
-	  - test runs automatically for PR and PR update
-	  - test using Python3.11 is added
+	  - New caller and dispatch yml configulations allows for running a test manually
+	  - Test runs automatically for PR and PR update
+	  - Test using Python 3.11 is added
 
-
-        - This version will be released for Python3.8 and above.
-	- This version could be the last version to support Python3.8
+	- Python 3.7 has reached EOL and is no longer supported. This version will support Python 3.8 and above, and will likely be the last version to support Python 3.8.
 
 
 2023  11 - 2024 01
