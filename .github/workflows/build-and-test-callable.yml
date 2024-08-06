@@ -120,7 +120,7 @@ jobs:
       if: inputs.cuda
       run: |
         # Make a separate temp dir so cuda doesn't run out of space
-        mkdir -p ~/cudatemp
+        sudo mkdir -p ~/cudatemp
         # The --silent flag is necessary to bypass user-input, e.g. accepting the EULA
         sudo sh ~/cache/cuda.run --silent --toolkit --tmpdir=~/cudatemp
         echo "/usr/local/cuda/bin" >> $GITHUB_PATH
