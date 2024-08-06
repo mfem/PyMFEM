@@ -65,7 +65,7 @@ jobs:
 
     env:
       cuda-toolkit-version: '12.4.1'
-      CUDA_HOME: '/usr/local/cuda-12.4'
+      CUDA_HOME: '/usr/local/cuda'
       cuda-driver-version: '550.54.15'
       # These are all passed to setup.py as one concatenated string
       build-flags: >-
@@ -120,9 +120,9 @@ jobs:
       if: inputs.cuda
       run: |
         # Make a separate temp dir so cuda doesn't run out of space
-        mkdir -p ~/cache/cudatemp
+        mkdir -p ~/cudatemp
         # The --silent flag is necessary to bypass user-input, e.g. accepting the EULA
-        sudo sh ~/cache/cuda.run --silent --toolkit --tmpdir=~/cache/cudatemp
+        sudo sh ~/cache/cuda.run --silent --toolkit --tmpdir=~/cudatemp
         echo "/usr/local/cuda/bin" >> $GITHUB_PATH
 
     - name: Print dependency information
