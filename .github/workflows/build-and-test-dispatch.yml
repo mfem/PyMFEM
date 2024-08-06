@@ -1,7 +1,6 @@
 # build-and-test-dispatch.yml
 #
 # Dispatch workflow for build-and-test-callable.yml
-
 name: Build and Test (dispatch)
 
 on:
