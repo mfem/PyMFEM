@@ -102,26 +102,33 @@ jobs:
     - name: Purge PIP cache
       run: pip cache purge
 
-    - name: Cache CUDA
-      if: inputs.cuda
-      id: cache-cuda
-      uses: actions/cache@v4
-      with:
-        path: ~/cache
-        key: cuda-installer-${{ env.cuda-toolkit-version }}-${{ env.cuda-driver-version }}
+    # - name: Cache CUDA
+    #   if: inputs.cuda
+    #   id: cache-cuda
+    #   uses: actions/cache@v4
+    #   with:
+    #     path: ~/cache
+    #     key: cuda-installer-${{ env.cuda-toolkit-version }}-${{ env.cuda-driver-version }}
 
-    - name: Download CUDA
-      if: inputs.cuda && steps.cache-cuda.outputs.cache-hit == false
-      run: |
-        CUDA_URL="https://developer.download.nvidia.com/compute/cuda/${{ env.cuda-toolkit-version }}/local_installers/cuda_${{ env.cuda-toolkit-version }}_${{ env.cuda-driver-version }}_linux.run"
-        curl -o ~/cache/cuda.run --create-dirs $CUDA_URL
+    # - name: Download CUDA
+    #   if: inputs.cuda && steps.cache-cuda.outputs.cache-hit == false
+    #   run: |
+    #     CUDA_URL="https://developer.download.nvidia.com/compute/cuda/${{ env.cuda-toolkit-version }}/local_installers/cuda_${{ env.cuda-toolkit-version }}_${{ env.cuda-driver-version }}_linux.run"
+    #     curl -o ~/cache/cuda.run --create-dirs $CUDA_URL
+
+    # - name: Install CUDA
+    #   if: inputs.cuda
+    #   run: |
+    #     # The --silent flag is necessary to bypass user-input, e.g. accepting the EULA
+    #     sudo sh ~/cache/cuda.run --silent --toolkit
+    #     echo "/usr/local/cuda/bin" >> $GITHUB_PATH
 
     - name: Install CUDA
-      if: inputs.cuda
-      run: |
-        # The --silent flag is necessary to bypass user-input, e.g. accepting the EULA
-        sudo sh ~/cache/cuda.run --silent --toolkit
-        echo "/usr/local/cuda/bin" >> $GITHUB_PATH
+      uses: Jimver/cuda-toolkit@master
+      id: cuda-toolkit
+      with:
+        log-file-suffix: '${{ inputs.os }}.txt'
+
 
     - name: Print dependency information
       run: |
