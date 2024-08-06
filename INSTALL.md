@@ -1,43 +1,54 @@
-# Install Guide
+# Installation Guide
 
-PyMFEM wrapper provides MPI version and non-MPI version of wrapper.
+Most users will be fine with the default `pip` install:
 
-Default pip install installs serial MFEM + wrapper
-
-```bash
-$ pip install mfem
+```shell
+pip install mfem
 ```
 or
-```bash
-$ pip install mfem --no-binary mfem
+```shell
+pip install mfem --no-binary mfem
 ```
 
-For other configuration such as parallel version, one can either use `--install-option`
-flags with pip or download the package as follows and run setup script, manually.
+This will install a *serial* version of `MFEM` and the `PyMFEM` wrapper without any additional dependencies.
 
-```bash
-$ pip download mfem --no-binary mfem
+PyMFEM has many options for installation, including:
+ - Serial and parallel (MPI) wrappers
+ - Using pre-built local dependencies
+ - Installing additional dependencies such as
+   - `CUDA`
+   - `hypre`
+   - `gslib`
+   - `libceed`
+   - `metis`
+   - `suitesparse`
+
+
+For other configuration such as parallel version, one can either use `--install-option` flags with pip or download the package as follows and run setup script, manually.
+
+```shell
+pip download mfem --no-binary mfem
 ```
 
 In order to see the full list of options, use
 
-```bash
-$ python setup.py install --help
+```shell
+python setup.py install --help
 ```
 
 In below, for the brevity, examples are mostly shown using `python setup.py install` convention.
-When using PIP, each option needs to be passed using --install-option.
+When using PIP, each option needs to be passed using `--install-option`.
 
 ## Parallel MFEM
-`--with-parallel` : build both serial and parallel version of MFEM and wrapper
+`--with-parallel` : build both serial and parallel version of `MFEM` and wrapper
 
-Note: this option turns on building metis and Hypre
+Note: this option turns on building `metis` and `Hypre`
 
 ## Suitesparse
-`--with-suitesparse` : build MFEM with suitesparse. SuiteSparse needs to be installed separately.
-`--suitesparse-prefix=<location>`
+`--with-suitesparse` : build MFEM with `suitesparse`. `suitesparse` needs to be installed separately.
+Point to the location of `suitesparse` using the flag `--suitesparse-prefix=<location>`
 
-Note: this option turns on building metis in serial
+Note: this option turns on building `metis` in serial
 
 ## CUDA
 `--with-cuda` option build MFEM with CUDA. Hypre cuda build is also supported using
@@ -49,17 +60,17 @@ Note: this option turns on building metis in serial
 `--with-cuda-hypre` : build Hypre with cuda
 
 (examples)
-```bash
-$ python setup.py install --with-cuda
+```shell
+python setup.py install --with-cuda
 ```
-```bash
-$ python setup.py install --with-cuda --with-cuda-hypre
+```shell
+python setup.py install --with-cuda --with-cuda-hypre
 ```
-```bash
-$ python setup.py install --with-cuda --with-cuda-hypre --cuda-arch=80 (A100)
+```shell
+python setup.py install --with-cuda --with-cuda-hypre --cuda-arch=80 (A100)
 ```
-```bash
-$ python setup.py install --with-cuda --with-cuda-hypre --cuda-arch=75 (Turing)
+```shell
+python setup.py install --with-cuda --with-cuda-hypre --cuda-arch=75 (Turing)
 ```
 
 ## gslib
@@ -79,8 +90,8 @@ Note: this option builds libceed
 
 (example)
 Using Intel compiler
-```bash
-$ python setup.py install --with-parallel --CC=icc, --CXX=icpc, --MPICC=mpiicc, --MPICXX=mpiicpc
+```shell
+python setup.py install --with-parallel --CC=icc, --CXX=icpc, --MPICC=mpiicc, --MPICXX=mpiicpc
 ```
 
 ## Building MFEM with specific version
@@ -91,8 +102,8 @@ option.
 `--mfem-branch = <branch name or SHA>`
 
 (example)
-```bash
-$ python setup.py install --mfem-branch=master
+```shell
+python setup.py install --mfem-branch=master
 ```
 
 ## Using MFEM build externally.
@@ -124,18 +135,18 @@ During the development, often we update depenencies (such as MFEM) and edit `*.i
 
 First clean everything.
 
-```bash
-$ python setup.py clean --all
+```shell
+python setup.py clean --all
 ```
 
 Then, build externals alone
-```bash
-$ python setup.py install --with-parallel --ext-only --mfem-branch="master"
+```shell
+python setup.py install --with-parallel --ext-only --mfem-branch="master"
 ```
 
 Then, genrate swig wrappers.
-```bash
-$ python setup.py install --with-parallel --swig --mfem-branch="master"
+```shell
+python setup.py install --with-parallel --swig --mfem-branch="master"
 ```
 
 If you are not happy with the wrapper (`*.cxx` and `*.py`), you edit `*.i` and redo
@@ -144,14 +155,14 @@ existing wrapper. So, it will only update wrapper for updated `*.i`
 
 When building a wrapper, you can use `--skip-ext` option. By default, it will re-run
 swig to generate entire wrapper codes.
-```bash
-$ python setup.py install --with-parallel --skip-ext --mfem-branch="master"
+```shell
+python setup.py install --with-parallel --skip-ext --mfem-branch="master"
 ```
 
 If you are sure, you could use `--skip-swig` option, so that it compiles the wrapper
 codes without re-generating it.
-```bash
-$ python setup.py install --with-parallel --skip-ext --skip-swig --mfem-branch="master"
+```shell
+python setup.py install --with-parallel --skip-ext --skip-swig --mfem-branch="master"
 ```
 
 
