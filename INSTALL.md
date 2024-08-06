@@ -1,0 +1,163 @@
+# Install Guide
+
+PyMFEM wrapper provides MPI version and non-MPI version of wrapper.
+
+Default pip install installs serial MFEM + wrapper
+
+```bash
+$ pip install mfem
+```
+or
+```bash
+$ pip install mfem --no-binary mfem
+```
+
+For other configuration such as parallel version, one can either use `--install-option`
+flags with pip or download the package as follows and run setup script, manually.
+
+```bash
+$ pip download mfem --no-binary mfem
+```
+
+In order to see the full list of options, use
+
+```bash
+$ python setup.py install --help
+```
+
+In below, for the brevity, examples are mostly shown using `python setup.py install` convention.
+When using PIP, each option needs to be passed using --install-option.
+
+## Parallel MFEM
+`--with-parallel` : build both serial and parallel version of MFEM and wrapper
+
+Note: this option turns on building metis and Hypre
+
+## Suitesparse
+`--with-suitesparse` : build MFEM with suitesparse. SuiteSparse needs to be installed separately.
+`--suitesparse-prefix=<location>`
+
+Note: this option turns on building metis in serial
+
+## CUDA
+`--with-cuda` option build MFEM with CUDA. Hypre cuda build is also supported using
+`--with-cuda-hypre`. `--cuda-arch` can be used to specify cuda compute capablility.
+(See table in https://en.wikipedia.org/wiki/CUDA#Supported_GPUs)
+
+`--with-cuda` : build MFEM using CUDA on
+`--cuda-arch=<number>`  : specify cuda compute capability version
+`--with-cuda-hypre` : build Hypre with cuda
+
+(examples)
+```bash
+$ python setup.py install --with-cuda
+```
+```bash
+$ python setup.py install --with-cuda --with-cuda-hypre
+```
+```bash
+$ python setup.py install --with-cuda --with-cuda-hypre --cuda-arch=80 (A100)
+```
+```bash
+$ python setup.py install --with-cuda --with-cuda-hypre --cuda-arch=75 (Turing)
+```
+
+## gslib
+`--with-gslib` : build MFEM with GSlib
+
+Note: this option builds GSlib
+
+## libceed
+`--with-libceed` : build MFEM with libceed
+Note: this option builds libceed
+
+## Specify compilers
+`--CC`                                 c compiler
+`--CXX`                                c++ compiler
+`--MPICC`                              mpic compiler
+`--MPICXX`                             mpic++ compiler
+
+(example)
+Using Intel compiler
+```bash
+$ python setup.py install --with-parallel --CC=icc, --CXX=icpc, --MPICC=mpiicc, --MPICXX=mpiicpc
+```
+
+## Building MFEM with specific version
+By default, setup.py build MFEM with specific SHA (which is usually the released latest version).
+In order to use the latest MFEM in Github. One can specify the branch name or SHA using mfem-branch
+option.
+
+`--mfem-branch = <branch name or SHA>`
+
+(example)
+```bash
+$ python setup.py install --mfem-branch=master
+```
+
+## Using MFEM build externally.
+These options are used to link PyMFEM wrapper with existing MFEM library. We need `--mfem-source`
+and `--mfem-prefix`
+
+`--mfem-source <location>`   : the location of MFEM source used to build MFEM
+
+`--mfem-prefix <location>`   : the location of MFEM library. libmfem.so needs to be found in `<location>/lib`
+
+`--mfems-prefix <location>`  : (optional) specify serial MFEM location separately
+
+`--mfemp-prefix <location>`  : (ooptional)specify parallel MFEM location separately
+
+## Blas and Lapack
+--with-lapack : build MFEM with lapack
+
+`<location>` is used for CMAKE call to buid MFEM
+`--blas-libraries=<location>`
+`--lapack-libraries=<location>`
+
+## Development and testing options
+`--swig` : run swig only
+`--skip-swig` : build without running swig
+`--skip-ext` : skip building external libraries.
+`--ext-only` : build exteranl libraries and exit.
+
+During the development, often we update depenencies (such as MFEM) and edit `*.i` file.
+
+First clean everything.
+
+```bash
+$ python setup.py clean --all
+```
+
+Then, build externals alone
+```bash
+$ python setup.py install --with-parallel --ext-only --mfem-branch="master"
+```
+
+Then, genrate swig wrappers.
+```bash
+$ python setup.py install --with-parallel --swig --mfem-branch="master"
+```
+
+If you are not happy with the wrapper (`*.cxx` and `*.py`), you edit `*.i` and redo
+the same. When you are happy, build the wrapper. `--swig` does not clean the
+existing wrapper. So, it will only update wrapper for updated `*.i`
+
+When building a wrapper, you can use `--skip-ext` option. By default, it will re-run
+swig to generate entire wrapper codes.
+```bash
+$ python setup.py install --with-parallel --skip-ext --mfem-branch="master"
+```
+
+If you are sure, you could use `--skip-swig` option, so that it compiles the wrapper
+codes without re-generating it.
+```bash
+$ python setup.py install --with-parallel --skip-ext --skip-swig --mfem-branch="master"
+```
+
+
+## Other options
+`--unverifiedSSL` :
+   This addresses error relating SSL certificate. Typical error message is
+   "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:xxx)>"
+
+
