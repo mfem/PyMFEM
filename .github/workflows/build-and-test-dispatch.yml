@@ -32,7 +32,7 @@ jobs:
       matrix:
         mfem-branch: [master, default] # 'default' uses a specific commit hash defined in setup.py:repos_sha
         python-version: ['3.7', '3.8', '3.9', '3.10', '3.11'] # 3.12 is not supported by scipy
-        parallel: [false]
+        parallel: false
     name: test-linux | ${{ matrix.mfem-branch }} | ${{ matrix.python-version }} | ${{ matrix.parallel && 'parallel' || 'serial' }}
     uses: ./.github/workflows/build-and-test-callable.yml
     with:
@@ -40,7 +40,7 @@ jobs:
       mfem-branch: ${{ matrix.mfem-branch }}
       python-version: ${{ matrix.python-version }}
       parallel: ${{ matrix.parallel }}
-      
+
 test-linux-parallel:
     if: ${{ github.event_name == 'pull_request' || inputs.test_options == 'all' }}
     strategy:
@@ -48,7 +48,7 @@ test-linux-parallel:
       matrix:
         mfem-branch: [master, default] # 'default' uses a specific commit hash defined in setup.py:repos_sha
         python-version: ['3.9', '3.10', '3.11'] # 3.12 is not supported by scipy
-        parallel: [true]
+        parallel: true
     name: test-linux | ${{ matrix.mfem-branch }} | ${{ matrix.python-version }} | ${{ matrix.parallel && 'parallel' || 'serial' }}
     uses: ./.github/workflows/build-and-test-callable.yml
     with:
@@ -56,7 +56,7 @@ test-linux-parallel:
       mfem-branch: ${{ matrix.mfem-branch }}
       python-version: ${{ matrix.python-version }}
       parallel: ${{ matrix.parallel }}
-      
+
   # -------------------------------------------------------------------------------------------------
   # Fast test
   # -------------------------------------------------------------------------------------------------
