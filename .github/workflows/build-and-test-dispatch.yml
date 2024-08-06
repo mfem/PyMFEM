@@ -26,7 +26,7 @@ jobs:
   # Build and test whole matrix of options on linux
   # -------------------------------------------------------------------------------------------------
   test-linux-serial:
-    if: ${{ github.event_name == 'pull_request' || inputs.test_options == 'all' }}
+    if: ${{ github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'skip-ci') || inputs.test_options == 'all' }}
     strategy:
       fail-fast: false
       matrix:
@@ -42,7 +42,7 @@ jobs:
       parallel: ${{ matrix.parallel }}
       
   test-linux-parallel:
-    if: ${{ github.event_name == 'pull_request' || inputs.test_options == 'all' }}
+    if: ${{ github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'skip-ci') || inputs.test_options == 'all' }}
     strategy:
       fail-fast: false
       matrix:
@@ -79,7 +79,7 @@ jobs:
   # Specific cases (we want these to use defaults, and not expand the dimensions of the matrix)
   # -------------------------------------------------------------------------------------------------
   test-macos:
-    if: ${{ github.event_name == 'pull_request' || inputs.test_options == 'all' }}
+    if: ${{ github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'skip-ci') || inputs.test_options == 'all' }}
     strategy:
       fail-fast: false
       matrix:
@@ -91,21 +91,21 @@ jobs:
       mfem-branch: ${{ matrix.mfem-branch }}
 
   test-cuda:
-    if: ${{ github.event_name == 'pull_request' || inputs.test_options == 'all' || inputs.test_options == 'cuda'}}
+    if: ${{ github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'skip-ci') || inputs.test_options == 'all' || inputs.test_options == 'cuda'}}
     uses: ./.github/workflows/build-and-test-callable.yml
     with:
       cuda: true
     name: test-cuda
 
   test-libceed:
-    if: ${{ github.event_name == 'pull_request' || inputs.test_options == 'all' || inputs.test_options == 'libceed'}}
+    if: ${{ github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'skip-ci') || inputs.test_options == 'all' || inputs.test_options == 'libceed'}}
     uses: ./.github/workflows/build-and-test-callable.yml
     with:
       libceed: true
     name: test-libceed
 
   test-gslib:
-    if: ${{ github.event_name == 'pull_request' || inputs.test_options == 'all' || inputs.test_options == 'gslib'}}
+    if: ${{ github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'skip-ci') || inputs.test_options == 'all' || inputs.test_options == 'gslib'}}
     uses: ./.github/workflows/build-and-test-callable.yml
     with:
       gslib: true
