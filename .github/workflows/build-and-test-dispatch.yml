@@ -40,7 +40,7 @@ jobs:
       python-version: ${{ matrix.python-version }}
       parallel: ${{ matrix.parallel }}
 
-test-linux-parallel:
+  test-linux-parallel:
     if: ${{ github.event_name == 'pull_request' || inputs.test_options == 'all' }}
     strategy:
       fail-fast: false
