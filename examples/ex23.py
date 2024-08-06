@@ -10,7 +10,8 @@ from os.path import expanduser, join, dirname
 import numpy as np
 from numpy import sin, cos, exp, sqrt, pi, abs, array, floor, log, sum
 
-mfem_version = mfem.MFEM_VERSION_MAJOR*10 + mfem.MFEM_VERSION_MINOR
+mfem_version = (mfem.MFEM_VERSION_MAJOR*100 + mfem.MFEM_VERSION_MINOR*10+
+                mfem.MFEM_VERSION_PATCH)
 
 
 def run(mesh_file="",
@@ -46,7 +47,7 @@ def run(mesh_file="",
             M.AddDomainIntegrator(mfem.MassIntegrator())
             M.Assemble()
 
-            if mfem_version < 47:
+            if mfem_version < 471:
                 dummy = mfem.intArray()
                 self.Kmat0 = mfem.SparseMatrix()
                 K.FormSystemMatrix(dummy, self.Kmat0)
@@ -115,7 +116,7 @@ def run(mesh_file="",
 
             self.T_solver.Mult(z, d2udt2)
 
-            if mfem_version >= 47:
+            if mfem_version >= 471:
                 d2udt2.SetSubVector(self.ess_tdof_list, 0.0)
 
         def SetParameters(self, u):
