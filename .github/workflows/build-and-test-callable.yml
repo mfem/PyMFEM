@@ -34,10 +34,10 @@ on:
         default: false
       cuda-toolkit-version:
         type: string
-        default: '12.4.1'
+        default: '12.6.0'
       cuda-driver-version:
         type: string
-        default: '550.54.15'
+        default: '560.28.03'
       libceed:
         description: 'Build with libCEED'
         type: boolean
@@ -64,8 +64,7 @@ jobs:
       ${{ inputs.cuda && '| cuda' || '' }}${{ inputs.libceed && '| libceed' || '' }}${{ inputs.gslib && '| gslib' || '' }}
 
     env:
-      cuda-toolkit-version: '12.4.1'
-      cuda-driver-version: '550.54.15'
+      CUDA_HOME: '/usr/local/cuda'
       # These are all passed to setup.py as one concatenated string
       build-flags: >-
         ${{ inputs.parallel && '--with-parallel' || '' }}
@@ -108,12 +107,12 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/cache
-        key: cuda-installer-${{ env.cuda-toolkit-version }}-${{ env.cuda-driver-version }}
+        key: cuda-installer-${{ inputs.cuda-toolkit-version }}-${{ inputs.cuda-driver-version }}
 
     - name: Download CUDA
       if: inputs.cuda && steps.cache-cuda.outputs.cache-hit == false
       run: |
-        CUDA_URL="https://developer.download.nvidia.com/compute/cuda/${{ env.cuda-toolkit-version }}/local_installers/cuda_${{ env.cuda-toolkit-version }}_${{ env.cuda-driver-version }}_linux.run"
+        CUDA_URL="https://developer.download.nvidia.com/compute/cuda/${{ inputs.cuda-toolkit-version }}/local_installers/cuda_${{ inputs.cuda-toolkit-version }}_${{ inputs.cuda-driver-version }}_linux.run"
         curl -o ~/cache/cuda.run --create-dirs $CUDA_URL
 
     - name: Install CUDA
