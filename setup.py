@@ -50,7 +50,7 @@ repo_releases = {
     # "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
     "metis": "https://github.com/mfem/tpls/raw/gh-pages/metis-5.1.0.tar.gz",
     "hypre": "https://github.com/hypre-space/hypre/archive/v2.28.0.tar.gz",
-    "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.11.0.tar.gz",
+    "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.12.0.tar.gz",
     "gslib": "https://github.com/Nek5000/gslib/archive/refs/tags/v1.0.8.tar.gz"}
 
 repos = {"mfem": "https://github.com/mfem/mfem.git",
@@ -59,7 +59,6 @@ repos = {"mfem": "https://github.com/mfem/mfem.git",
          "metis": "https://github.com/KarypisLab/METIS", }
 
 repos_sha = {
-    # "mfem": "68873fa4d403c7c94a653c7bc781815ff5b2734d",    # use constrained prolongation operator in ex26, ex26p (Nov. 30 2023)
     "mfem": "dc9128ef596e84daf1138aa3046b826bba9d259f",    # v4.7
     "gklib": "a7f8172703cf6e999dd0710eb279bba513da4fec",
     "metis": "94c03a6e2d1860128c2d0675cbbb86ad4f261256", }

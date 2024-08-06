@@ -38,7 +38,6 @@ def run(meshfile="",
     device = mfem.Device(device_config)
     device.Print()
 
-    print(prob)
     # 3. Setup the mesh
     if meshfile == '':
         exact_known = True
