@@ -51,7 +51,7 @@ import mfem.par as mfem
 from mpi4py import MPI
 num_procs = MPI.COMM_WORLD.size
 myid = MPI.COMM_WORLD.rank
-
+smyid = '{:0>6d}'.format(myid)
 
 def run(order=1,
         meshfile='',
@@ -256,8 +256,8 @@ def run(order=1,
 
     # 15. Save the refined mesh and the solution in parallel. This output can
     #     be viewed later using GLVis: "glvis -np <np> -m mesh -g sol".
-    pmesh.Save('mesh')
-    x.Save('sol')
+    pmesh.Print('mesh.'+smyid)
+    x.Save('sol.'+smyid)
 
     # 16. Send the solution by socket to a GLVis server.
     if visualization:
