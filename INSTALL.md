@@ -58,25 +58,18 @@ Point to the location of `suitesparse` using the flag `--suitesparse-prefix=<loc
 Note: this option turns on building `metis` in serial
 
 ### CUDA
-`--with-cuda` option build MFEM with CUDA. Hypre cuda build is also supported using
+`--with-cuda` : build MFEM with CUDA. Hypre cuda build is also supported using
 `--with-cuda-hypre`. `--cuda-arch` can be used to specify cuda compute capablility.
 (See table in https://en.wikipedia.org/wiki/CUDA#Supported_GPUs)
-
-`--with-cuda` : build MFEM using CUDA on
-`--cuda-arch=<number>`  : specify cuda compute capability version
-`--with-cuda-hypre` : build Hypre with cuda
 
 (examples)
 ```shell
 python setup.py install --with-cuda
-```
-```shell
+
 python setup.py install --with-cuda --with-cuda-hypre
-```
-```shell
+
 python setup.py install --with-cuda --with-cuda-hypre --cuda-arch=80 (A100)
-```
-```shell
+
 python setup.py install --with-cuda --with-cuda-hypre --cuda-arch=75 (Turing)
 ```
 
