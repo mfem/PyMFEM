@@ -1,0 +1,98 @@
+name: testrelease_binary_v2
+
+on:
+  workflow_dispatch:
+
+jobs:
+  make_sdist:
+    runs-on: ubuntu-latest
+    container: quay.io/pypa/manylinux2014_x86_64
+    steps:
+      - name: build_sdist
+        run: |
+          echo This job does not specify a container.
+          echo It runs directly on the virtual machine.
+
+          git clone https://github.com/mfem/PyMFEM.git
+          cd PyMFEM
+
+          REF=$(echo ${GITHUB_REF#refs/heads/})
+          echo "!!!!!: "$REF
+          git checkout $REF
+
+          export PATH=/opt/python/cp38-cp38m/bin:$PATH
+
+          pip3 install wheel six auditwheel twine
+          pip3 install urllib3==1.26.6    # use older version to avoid OpenSSL vesion issue
+          pip3 install numpy==1.21.6
+          pip3 install -r requirements.txt
+
+          rm -rf dist/*
+          python3 setup.py sdist
+          ls -l dist/
+          # python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
+
+  make_binary_3_8_9_10_11:
+    needs: make_sdist
+    strategy:
+      matrix:
+        pythonpath: ["cp38-cp38", "cp39-cp39", "cp310-cp310", "cp311-cp311"]
+
+    runs-on: ubuntu-latest
+    container: quay.io/pypa/manylinux2014_x86_64
+    #container: node:10.16-jessie
+    steps:
+      - name: Checkout PyMFEM and set path
+        run: |
+          echo It runs in the container instead of the VM.
+
+          git clone https://github.com/mfem/PyMFEM.git
+          cd PyMFEM
+
+          REF=$(echo ${GITHUB_REF#refs/heads/})
+          echo "!!!!!!: "$REF
+          git checkout $REF
+
+          ls -l /opt/python/
+          export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
+
+      - name: Install python dependencies
+        run: |
+          pip3 install auditwheel twine
+          pip3 install urllib3==1.26.6    # use older version to avoid OpenSSL vesion issue
+          pip3 install -r requirements.txt
+
+      - name: Install other dependencies
+        run: |
+          CWD=$PWD
+          yum install -y zlib-devel
+          yum install -y chrpath
+
+      - name: Build wheel
+        run: |
+          mkdir dist
+          python3 -m pip wheel ./ --verbose --no-deps
+
+      - name: Install wheel
+        run: |
+          pip3 install *.whl
+
+      - name: Test the installation
+        run: |
+          cd test
+          python run_examples.py -serial -verbose -ex ex1
+
+      - name: Cleanup
+        run: |
+          cd ..
+          rm -rf dist/*
+          export LD_LIBRARY_PATH=${CWD}/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
+
+          auditwheel repair *.whl
+          rm -rf dist/*
+          mv wheelhouse/* dist/
+
+      - name: Upload to twine
+        run: |
+          ls -l dist/
+          # python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
