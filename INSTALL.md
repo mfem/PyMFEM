@@ -27,7 +27,7 @@ python setup.py install --user
 ```
 For example, parallel (MPI) support is built with  the `--with-parallel` flag:
 ```shell
-pip install mfem --with-parallel
+python setup.py install --with-parallel
 ```
 
 Note: this option turns on building `metis` and `Hypre`
