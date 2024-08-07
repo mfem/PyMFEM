@@ -62,7 +62,7 @@ Note: this option turns on building `metis` in serial
 `--with-cuda-hypre`. `--cuda-arch` can be used to specify cuda compute capablility.
 (See table in https://en.wikipedia.org/wiki/CUDA#Supported_GPUs)
 
-CUDA needs to be installed separately and nvcc must be found in PATH (Example: https://github.com/mfem/PyMFEM/blob/e1466a6a/.github/workflows/build-and-test-callable.yml#L111-L122).
+CUDA needs to be installed separately and nvcc must be found in PATH ([Example] (https://github.com/mfem/PyMFEM/blob/e1466a6a/.github/workflows/build-and-test-callable.yml#L111-L122)).
 
 (examples)
 ```shell
