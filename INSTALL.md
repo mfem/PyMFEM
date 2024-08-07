@@ -48,7 +48,6 @@ PyMFEM has many options for installation, including:
    - `metis`
 
 
-
 For other configuration such as parallel version, one can either use `--install-option` flags with pip or download the package as follows and run setup script, manually.
 
 ```shell
