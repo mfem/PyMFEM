@@ -51,13 +51,13 @@ python setup.py install --help
 
 ## Advanced options
 
-## Suitesparse
+### Suitesparse
 `--with-suitesparse` : build MFEM with `suitesparse`. `suitesparse` needs to be installed separately.
 Point to the location of `suitesparse` using the flag `--suitesparse-prefix=<location>`
 
 Note: this option turns on building `metis` in serial
 
-## CUDA
+### CUDA
 `--with-cuda` option build MFEM with CUDA. Hypre cuda build is also supported using
 `--with-cuda-hypre`. `--cuda-arch` can be used to specify cuda compute capablility.
 (See table in https://en.wikipedia.org/wiki/CUDA#Supported_GPUs)
@@ -80,16 +80,16 @@ python setup.py install --with-cuda --with-cuda-hypre --cuda-arch=80 (A100)
 python setup.py install --with-cuda --with-cuda-hypre --cuda-arch=75 (Turing)
 ```
 
-## gslib
+### gslib
 `--with-gslib` : build MFEM with GSlib
 
 Note: this option builds GSlib
 
-## libceed
+### libceed
 `--with-libceed` : build MFEM with libceed
 Note: this option builds libceed
 
-## Specifying compilers
+### Specifying compilers
 | Flag | Description |
 |------|--------|
 | `--CC` | c compiler |
@@ -103,7 +103,7 @@ Using Intel compiler
 python setup.py install --with-parallel --CC=icc, --CXX=icpc, --MPICC=mpiicc, --MPICXX=mpiicpc
 ```
 
-## Building MFEM with specific version
+### Building MFEM with specific version
 By default, setup.py build MFEM with specific SHA (which is usually the released latest version).
 In order to use the latest MFEM in Github. One can specify the branch name or SHA using mfem-branch
 option.
@@ -115,7 +115,7 @@ option.
 python setup.py install --mfem-branch=master
 ```
 
-## Using MFEM build externally.
+### Using MFEM build externally.
 These options are used to link PyMFEM wrapper with existing MFEM library. We need `--mfem-source`
 and `--mfem-prefix`
 
@@ -127,14 +127,14 @@ and `--mfem-prefix`
 | `--mfemp-prefix <location>`| (optional) Specify parallel MFEM location separately |
 
 
-## Blas and Lapack
+### Blas and Lapack
 --with-lapack : build MFEM with lapack
 
 `<location>` is used for CMAKE call to buid MFEM
 `--blas-libraries=<location>`
 `--lapack-libraries=<location>`
 
-## Development and testing options
+### Options fordDevelopment and testing
 `--swig` : run swig only
 `--skip-swig` : build without running swig
 `--skip-ext` : skip building external libraries.
