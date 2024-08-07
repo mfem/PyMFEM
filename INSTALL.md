@@ -45,12 +45,10 @@ PyMFEM has many options for installation, including:
  - Serial and parallel (MPI) wrappers
  - Using pre-built local dependencies
  - Installing additional dependencies such as
-   - `CUDA`
    - `hypre`
    - `gslib`
    - `libceed`
    - `metis`
-   - `suitesparse`
 
 
 For other configuration such as parallel version, one can either use `--install-option` flags with pip or download the package as follows and run setup script, manually.
