@@ -2,7 +2,6 @@ name: testrelease_binary_v2
 
 on:
   workflow_dispatch:
-  pull_request:
 
 jobs:
   make_sdist:
