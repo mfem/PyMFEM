@@ -16,10 +16,6 @@ jobs:
           git clone https://github.com/mfem/PyMFEM.git
           cd PyMFEM
 
-          REF=$(echo ${GITHUB_REF#refs/heads/})
-          echo "!!!!!: "$REF
-          git checkout $REF
-
           export PATH=/opt/python/cp38-cp38m/bin:$PATH
 
           pip3 install wheel six auditwheel twine
@@ -48,10 +44,6 @@ jobs:
 
           git clone https://github.com/mfem/PyMFEM.git
           cd PyMFEM
-
-          REF=$(echo ${GITHUB_REF#refs/heads/})
-          echo "!!!!!!: "$REF
-          git checkout $REF
 
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
