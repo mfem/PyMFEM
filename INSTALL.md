@@ -78,10 +78,10 @@ python setup.py install --with-cuda --with-cuda-hypre --cuda-arch=75 (Turing)
 
 Note: this option builds GSlib
 
-### libceed
+### libCEED
 `--with-libceed` : build MFEM with [libCEED](https://github.com/CEED/libCEED)
 
-Note: this option builds libceed
+Note: this option builds libCEED
 
 ### Specifying compilers
 | Flag | Description |
