@@ -38,10 +38,7 @@ Note: this option turns on building `metis` and `Hypre`
 |------|-------------|
 | `--with-parallel` | Install both serial and parallel versions of `MFEM` and the wrapper<br>(note: this option turns on building `metis` and `hypre`) |
 | `--mfem-branch=<reference>` | Download/install MFEM using a specific reference (`git` `branch`, `hash`, or `tag`) |
-| `--mfem-source=<location>` | Specify a local version of MFEM |
-| `--mfem-prefix <location>` | The location of the MFEM library. `libmfem.so` needs to be found in `<location>/lib` |
-| `--mfems-prefix <location>`| (optional) Specify serial MFEM location separately |
-| `--mfemp-prefix <location>`| (optional) Specify parallel MFEM location separately |
+| `--user` | Install in user's site-package |
 
 In order to see the full list of options, use
 
@@ -130,7 +127,7 @@ and `--mfem-prefix`
 `--blas-libraries=<location>`
 `--lapack-libraries=<location>`
 
-### Options fordDevelopment and testing
+### Options for development and testing
 `--swig` : run swig only
 `--skip-swig` : build without running swig
 `--skip-ext` : skip building external libraries.
