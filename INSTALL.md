@@ -7,17 +7,14 @@ Most users will be fine using the binary bundled in the default `pip` install:
 ```shell
 pip install mfem
 ```
-or, to install from source,
-```shell
-pip install mfem --no-binary mfem
-```
+The above installation will download and install a *serial* version of `MFEM`.
 
-By default, the installation will download and install a *serial* version of `MFEM`.
-
-## `pip install` vs `python setup.py install`
+##  Building from source
 Most of the options for PyMFEM can be used directly when installing via `python setup.py install`, e.g.
 ```shell
-python setup.py install --with-parallel
+git clone git@github:mfem/PyMFEM.git
+cd PyMFEM
+python setup.py install --user
 ```
 
 ## Parallel (MPI) support
@@ -45,12 +42,11 @@ PyMFEM has many options for installation, including:
  - Serial and parallel (MPI) wrappers
  - Using pre-built local dependencies
  - Installing additional dependencies such as
-   - `CUDA`
    - `hypre`
    - `gslib`
    - `libceed`
    - `metis`
-   - `suitesparse`
+
 
 
 For other configuration such as parallel version, one can either use `--install-option` flags with pip or download the package as follows and run setup script, manually.
@@ -167,12 +163,12 @@ python setup.py clean --all
 
 Then, build externals alone
 ```shell
-python setup.py install --with-parallel --ext-only --mfem-branch="master"
+python setup.py install --with-parallel --ext-only --mfem-branch=master
 ```
 
 Then, genrate swig wrappers.
 ```shell
-python setup.py install --with-parallel --swig --mfem-branch="master"
+python setup.py install --with-parallel --swig --mfem-branch=master
 ```
 
 If you are not happy with the wrapper (`*.cxx` and `*.py`), you edit `*.i` and redo
@@ -182,13 +178,13 @@ existing wrapper. So, it will only update wrapper for updated `*.i`
 When building a wrapper, you can use `--skip-ext` option. By default, it will re-run
 swig to generate entire wrapper codes.
 ```shell
-python setup.py install --with-parallel --skip-ext --mfem-branch="master"
+python setup.py install --with-parallel --skip-ext --mfem-branch=master
 ```
 
 If you are sure, you could use `--skip-swig` option, so that it compiles the wrapper
 codes without re-generating it.
 ```shell
-python setup.py install --with-parallel --skip-ext --skip-swig --mfem-branch="master"
+python setup.py install --with-parallel --skip-ext --skip-swig --mfem-branch=master
 ```
 
 
