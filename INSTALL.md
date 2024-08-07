@@ -174,8 +174,7 @@ codes without re-generating it.
 python setup.py install --with-parallel --skip-ext --skip-swig --mfem-branch=master
 ```
 
-
-## Other options
+### Other options
 `--unverifiedSSL` :
    This addresses error relating SSL certificate. Typical error message is
    `<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:xxx)>`
