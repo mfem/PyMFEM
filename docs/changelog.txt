@@ -14,7 +14,8 @@
 	  - Test using Python 3.11 is added
         - Refresh install instruction (Install.md)
 
-	- Python 3.7 has reached EOL and is no longer supported. This version will support Python 3.8 and above, and will likely be the last version to support Python 3.8.
+	- Python 3.7 has reached EOL and is no longer supported. This version will support Python 3.8 and above, and  
+          will likely be the last version to support Python 3.8.
 
 
 2023  11 - 2024 01
