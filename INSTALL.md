@@ -1,16 +1,45 @@
 # Installation Guide
 
-Most users will be fine with the default `pip` install:
+## Basic install
+
+Most users will be fine using the binary bundled in the default `pip` install:
 
 ```shell
 pip install mfem
 ```
-or
+or, to install from source,
 ```shell
 pip install mfem --no-binary mfem
 ```
 
-This will install a *serial* version of `MFEM` and the `PyMFEM` wrapper without any additional dependencies.
+By default, the installation will download and install a *serial* version of `MFEM`.
+
+## `pip install` vs `python setup.py install`
+Most of the options for PyMFEM can be used directly when installing via `python setup.py install`, e.g.
+```shell
+python setup.py install --with-parallel
+```
+
+## Parallel (MPI) support
+To build both serial and parallel version of `MFEM` and wrapper use the `--with-parallel` flag:
+```shell
+pip install mfem --with-parallel
+```
+
+Note: this option turns on building `metis` and `Hypre`
+
+## Commonly used flags
+
+| Flag | Description |
+|------|-------------|
+| `--with-parallel` | Install both serial and parallel versions of `MFEM` and the wrapper<br>(note: this option turns on building `metis` and `hypre`) |
+| `--mfem-branch=<reference>` | Download/install MFEM using a specific reference (`git` `branch`, `hash`, or `tag`) |
+| `--mfem-source=<location>` | Specify a local version of MFEM |
+| `--mfem-prefix <location>` | The location of the MFEM library. `libmfem.so` needs to be found in `<location>/lib` |
+| `--mfems-prefix <location>`| (optional) Specify serial MFEM location separately |
+| `--mfemp-prefix <location>`| (optional) Specify parallel MFEM location separately |
+
+## Advanced options
 
 PyMFEM has many options for installation, including:
  - Serial and parallel (MPI) wrappers
@@ -36,13 +65,8 @@ In order to see the full list of options, use
 python setup.py install --help
 ```
 
-In below, for the brevity, examples are mostly shown using `python setup.py install` convention.
-When using PIP, each option needs to be passed using `--install-option`.
-
-## Parallel MFEM
-`--with-parallel` : build both serial and parallel version of `MFEM` and wrapper
-
-Note: this option turns on building `metis` and `Hypre`
+In below, for brevity, examples are mostly shown using `python setup.py install` convention.
+When using pip, each option needs to be passed using `--install-option`.
 
 ## Suitesparse
 `--with-suitesparse` : build MFEM with `suitesparse`. `suitesparse` needs to be installed separately.
@@ -82,11 +106,13 @@ Note: this option builds GSlib
 `--with-libceed` : build MFEM with libceed
 Note: this option builds libceed
 
-## Specify compilers
-`--CC`                                 c compiler
-`--CXX`                                c++ compiler
-`--MPICC`                              mpic compiler
-`--MPICXX`                             mpic++ compiler
+## Specifying compilers
+| Flag | Description |
+|------|--------|
+| `--CC` | c compiler |
+| `--CXX` | c++ compiler |
+| `--MPICC` | mpic compiler |
+| `--MPICXX` | mpic++ compiler |
 
 (example)
 Using Intel compiler
@@ -110,13 +136,13 @@ python setup.py install --mfem-branch=master
 These options are used to link PyMFEM wrapper with existing MFEM library. We need `--mfem-source`
 and `--mfem-prefix`
 
-`--mfem-source <location>`   : the location of MFEM source used to build MFEM
+| Flag                       | Description                                                       |
+|----------------------------|-------------------------------------------------------------------|
+| `--mfem-source <location>` | The location of MFEM source used to build MFEM |
+| `--mfem-prefix <location>` | The location of the MFEM library. `libmfem.so` needs to be found in `<location>/lib` |
+| `--mfems-prefix <location>`| (optional) Specify serial MFEM location separately |
+| `--mfemp-prefix <location>`| (optional) Specify parallel MFEM location separately |
 
-`--mfem-prefix <location>`   : the location of MFEM library. libmfem.so needs to be found in `<location>/lib`
-
-`--mfems-prefix <location>`  : (optional) specify serial MFEM location separately
-
-`--mfemp-prefix <location>`  : (ooptional)specify parallel MFEM location separately
 
 ## Blas and Lapack
 --with-lapack : build MFEM with lapack
@@ -169,6 +195,6 @@ python setup.py install --with-parallel --skip-ext --skip-swig --mfem-branch="ma
 ## Other options
 `--unverifiedSSL` :
    This addresses error relating SSL certificate. Typical error message is
-   "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:xxx)>"
+   `<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:xxx)>`
 
 

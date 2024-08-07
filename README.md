@@ -11,7 +11,7 @@ By default, "pip install mfem" downloads and builds the serial version of MFEM a
 Additionally, the installer supports building MFEM with specific options together with other external libraries, including MPI version.
 
 ## Install
-```bash
+```shell
 pip install mfem                    # binary install is available only on linux platforms (Py36-310)
 pip install mfem --no-binary mfem   # install serial MFEM + wrapper from source
 
@@ -24,12 +24,12 @@ and build parallel version of MFEM library (linked with Metis and Hypre)
 and installs under <prefix>/mfem. See also, docs/install.txt
 
 ### Using pip
-```bash
-$ pip install mfem --install-option="--with-parallel" 
+```shell
+pip install mfem --install-option="--with-parallel"
 ```
 
 ### Build from local source file
-```python
+```shell
 # Download source and build
 $ pip download mfem --no-binary mfem (expand tar.gz file and move to the downloaded directory)
 or clone this repository
@@ -59,8 +59,9 @@ $ python setup.py install --help
 ```
 
 ## Usage
-This example solves the Poisson equation, $\nabla \cdot (\alpha \nabla u) = f$, in a square and plots the result
-with matplotlib (modified from `ex1.cpp`).
+This example (modified from `ex1.cpp`) solves the Poisson equation,
+$$\nabla \cdot (\alpha \nabla u) = f$$
+in a square and plots the result using matplotlib.
 Use the badge above to open this in Binder.
 
 ```python
