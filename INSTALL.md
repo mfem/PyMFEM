@@ -10,15 +10,22 @@ pip install mfem
 The above installation will download and install a *serial* version of `MFEM`.
 
 ##  Building from source
+PyMFEM has many options for installation, when building from source, including:
+ - Serial and parallel (MPI) wrappers
+ - Using pre-built local dependencies
+ - Installing additional dependencies such as
+   - `hypre`
+   - `gslib`
+   - `libceed`
+   - `metis`
+
 Most of the options for PyMFEM can be used directly when installing via `python setup.py install`, e.g.
 ```shell
 git clone git@github:mfem/PyMFEM.git
 cd PyMFEM
 python setup.py install --user
 ```
-
-## Parallel (MPI) support
-To build both serial and parallel version of `MFEM` and wrapper use the `--with-parallel` flag:
+For example, parallel (MPI) support is built with  the `--with-parallel` flag:
 ```shell
 pip install mfem --with-parallel
 ```
