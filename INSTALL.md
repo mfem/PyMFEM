@@ -80,6 +80,7 @@ Note: this option builds GSlib
 
 ### libceed
 `--with-libceed` : build MFEM with [libCEED](https://github.com/CEED/libCEED)
+
 Note: this option builds libceed
 
 ### Specifying compilers
