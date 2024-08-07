@@ -59,14 +59,10 @@ jobs:
           #
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
-          pip3 install six auditwheel twine
+          pip3 install auditwheel twine
           pip3 install urllib3==1.26.6    # use older version to avoid OpenSSL vesion issue
 
-          pip3 install numpy==1.21.6
-          pip3 install numba-scipy
-          if [ -f requirements.txt ]; then
-             pip3 install -r requirements.txt
-          fi
+          pip3 install -r requirements.txt
 
           CWD=$PWD
           yum install -y zlib-devel
