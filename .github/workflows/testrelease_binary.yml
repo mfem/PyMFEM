@@ -61,6 +61,7 @@ jobs:
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
 
           python -c "import setuptools;print('setuptools version', setuptools.__version__)"
+          pip3 install setuptools==67.4.0
           pip3 install auditwheel twine
           pip3 install urllib3==1.26.6    # use older version to avoid OpenSSL vesion issue
 
