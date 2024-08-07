@@ -128,12 +128,15 @@ and `--mfem-prefix`
 `--lapack-libraries=<location>`
 
 ### Options for development and testing
-`--swig` : run swig only
-`--skip-swig` : build without running swig
-`--skip-ext` : skip building external libraries.
-`--ext-only` : build exteranl libraries and exit.
+| Flag | Description |
+|------|--------|
+| `--swig` | run swig only |
+| `--skip-swig` | build without running swig` |
+| `--skip-ext` | skip building external libraries.|
+| `--ext-only` | build exteranl libraries and exit.|
 
 During the development, often we update depenencies (such as MFEM) and edit `*.i` file.
+
 
 First clean everything.
 
