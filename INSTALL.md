@@ -165,12 +165,12 @@ python setup.py clean --all
 
 Then, build externals alone
 ```shell
-python setup.py install --with-parallel --ext-only --mfem-branch="master"
+python setup.py install --with-parallel --ext-only --mfem-branch=master
 ```
 
 Then, genrate swig wrappers.
 ```shell
-python setup.py install --with-parallel --swig --mfem-branch="master"
+python setup.py install --with-parallel --swig --mfem-branch=master
 ```
 
 If you are not happy with the wrapper (`*.cxx` and `*.py`), you edit `*.i` and redo
@@ -180,13 +180,13 @@ existing wrapper. So, it will only update wrapper for updated `*.i`
 When building a wrapper, you can use `--skip-ext` option. By default, it will re-run
 swig to generate entire wrapper codes.
 ```shell
-python setup.py install --with-parallel --skip-ext --mfem-branch="master"
+python setup.py install --with-parallel --skip-ext --mfem-branch=master
 ```
 
 If you are sure, you could use `--skip-swig` option, so that it compiles the wrapper
 codes without re-generating it.
 ```shell
-python setup.py install --with-parallel --skip-ext --skip-swig --mfem-branch="master"
+python setup.py install --with-parallel --skip-ext --skip-swig --mfem-branch=master
 ```
 
 
