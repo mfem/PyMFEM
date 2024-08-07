@@ -62,6 +62,8 @@ Note: this option turns on building `metis` in serial
 `--with-cuda-hypre`. `--cuda-arch` can be used to specify cuda compute capablility.
 (See table in https://en.wikipedia.org/wiki/CUDA#Supported_GPUs)
 
+CUDA needs to be installed separately and nvcc must be found in PATH.
+
 (examples)
 ```shell
 python setup.py install --with-cuda
@@ -76,12 +78,12 @@ python setup.py install --with-cuda --with-cuda-hypre --cuda-arch=75 (Turing)
 ### gslib
 `--with-gslib` : build MFEM with [GSlib](https://github.com/Nek5000/gslib)
 
-Note: this option builds GSlib
+Note: this option downloads and builds GSlib
 
 ### libCEED
 `--with-libceed` : build MFEM with [libCEED](https://github.com/CEED/libCEED)
 
-Note: this option builds libCEED
+Note: this option downloads and builds libCEED
 
 ### Specifying compilers
 | Flag | Description |
