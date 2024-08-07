@@ -97,7 +97,8 @@ jobs:
         sudo apt-get install mpich libmpich-dev
         pip install mpi4py
 
-    - name: Purge PIP cache
+
+    - name: Purge PIP chach
       run: pip cache purge
 
     - name: Cache CUDA

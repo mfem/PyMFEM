@@ -24,6 +24,18 @@ import_array();
 OSTREAM_TYPEMAP(std::ostream&)
 ISTREAM_TYPEMAP(std::istream&)
 
+//
+//  AttributeSets::GetAttributeSetNames returns Python set
+//
+%typemap(out) std::set<std::string>{
+    resultobj = PySet_New(NULL);
+    for (auto const &set_name : *(& $1)){
+      std::ostringstream name2;
+      name2 << set_name;
+      PySet_Add(resultobj, PyUnicode_FromString(name2.str().c_str()));
+    }
+}
+
 %include "mesh/attribute_sets.hpp"
 
 #endif

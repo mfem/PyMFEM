@@ -104,7 +104,8 @@ def get_extensions():
                "quadinterpolator", "quadinterpolator_face",
                "submesh", "transfermap", "staticcond",
                "sidredatacollection", "enzyme",
-               "attribute_sets", "arrays_by_name"]
+               "attribute_sets", "arrays_by_name",
+               "hyperbolic"]
 
     if add_cuda == '1':
         from setup_local import cudainc

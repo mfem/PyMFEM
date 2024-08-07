@@ -36,11 +36,11 @@ jobs:
           ls -l dist/
           python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
           #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*
-  make_binary_3_7_8_9_10:
+  make_binary_3_8_9_10_11:
     needs: make_sdist
     strategy:
       matrix:
-        pythonpath: ["cp37-cp37m", "cp38-cp38", "cp39-cp39", "cp310-cp310"]
+        pythonpath: ["cp38-cp38", "cp39-cp39", "cp310-cp310", "cp311-cp311"]
 
     runs-on: ubuntu-latest
     container: quay.io/pypa/manylinux2014_x86_64
