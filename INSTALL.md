@@ -43,32 +43,13 @@ Note: this option turns on building `metis` and `Hypre`
 | `--mfems-prefix <location>`| (optional) Specify serial MFEM location separately |
 | `--mfemp-prefix <location>`| (optional) Specify parallel MFEM location separately |
 
-## Advanced options
-
-PyMFEM has many options for installation, including:
- - Serial and parallel (MPI) wrappers
- - Using pre-built local dependencies
- - Installing additional dependencies such as
-   - `hypre`
-   - `gslib`
-   - `libceed`
-   - `metis`
-
-
-For other configuration such as parallel version, one can either use `--install-option` flags with pip or download the package as follows and run setup script, manually.
-
-```shell
-pip download mfem --no-binary mfem
-```
-
 In order to see the full list of options, use
 
 ```shell
 python setup.py install --help
 ```
 
-In below, for brevity, examples are mostly shown using `python setup.py install` convention.
-When using pip, each option needs to be passed using `--install-option`.
+## Advanced options
 
 ## Suitesparse
 `--with-suitesparse` : build MFEM with `suitesparse`. `suitesparse` needs to be installed separately.
