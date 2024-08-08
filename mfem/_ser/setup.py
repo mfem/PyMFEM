@@ -10,6 +10,8 @@ import sys
 import os
 import numpy
 
+# this remove *.py in this directory to be imported from setuptools
+sys.path.remove(os.path.abspath(os.path.dirname(sys.argv[0])))
 from distutils.core import Extension, setup
 
 
