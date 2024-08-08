@@ -13,7 +13,6 @@ Additionally, the installer supports building MFEM with specific options togethe
 ## Install
 ```shell
 pip install mfem                    # binary install is available only on linux platforms (Py36-310)
-pip install mfem --no-binary mfem   # install serial MFEM + wrapper from source
 
 ```
 
@@ -23,10 +22,6 @@ with pip, or download the package manually and run the script. For example, the 
 and build parallel version of MFEM library (linked with Metis and Hypre)
 and installs under <prefix>/mfem. See also, docs/install.txt
 
-### Using pip
-```shell
-pip install mfem --install-option="--with-parallel"
-```
 
 ### Build from local source file
 ```shell
