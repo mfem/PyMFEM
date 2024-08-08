@@ -20,6 +20,8 @@ using namespace mfem;
 import_array();
 %}
 
+%import "../common/mfem_config.i"
+
 %include "exception.i"
 %import "array.i"
 %import "mem_manager.i"
@@ -100,7 +102,7 @@ if len(args) == 1 and isinstance(args[0], csr_matrix):
     SparseMatrix(int *i, int *j, double *data, int m, int n);
     allows to use numpy array to call this
  */
-%typemap(in) (int *i, int *j, double *data, int m, int n)
+%typemap(in) (int *i, int *j, mfem::real_t *data, int m, int n)
              (PyArrayObject *tmp_arr1_ = NULL,
 	      PyArrayObject *tmp_arr2_ = NULL,
 	      PyArrayObject *tmp_arr3_ = NULL,
@@ -121,13 +123,13 @@ if len(args) == 1 and isinstance(args[0], csr_matrix):
   //
   PyArray_CLEARFLAGS(tmp_arr3_, NPY_ARRAY_OWNDATA);
 }
-%typemap(freearg) (int *i, int *j, double *data, int m, int n){
+%typemap(freearg) (int *i, int *j, mfem::real_t *data, int m, int n){
   //Py_XDECREF(tmp_arr1_$argnum); Dont do this.. We set OwnsGraph and OwnsData to Fase in Python
   //Py_XDECREF(tmp_arr2_$argnum);
   //Py_XDECREF(tmp_arr3_$argnum);
 }
 
-%typemap(typecheck ) (int *i, int *j, double *data, int m, int n){
+%typemap(typecheck ) (int *i, int *j, mfem::real_t *data, int m, int n){
   /* check if list of 5 numpy array or not */
   if (!PyList_Check($input)) $1 = 0;
   else {
