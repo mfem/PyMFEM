@@ -66,7 +66,7 @@ bool is_HYPRE_USING_CUDA(){
                   HYPRE_Int *col);
 
 */
-%typemap(in) (double *data_,  HYPRE_BigInt *col)(PyArrayObject * tmp_arr1_ = NULL,  PyArrayObject * tmp_arr2_ = NULL){
+%typemap(in) (mfem::real_t *data_,  HYPRE_BigInt *col)(PyArrayObject * tmp_arr1_ = NULL,  PyArrayObject * tmp_arr2_ = NULL){
   //HypreParVec constructer requires outside object alive
   //   We keep reference to such outside numpy array in ProxyClass
   tmp_arr1_ = (PyArrayObject *)PyList_GetItem($input,0);
@@ -75,9 +75,9 @@ bool is_HYPRE_USING_CUDA(){
   $1 = (double *) PyArray_DATA(tmp_arr1_);
   $2 = (HYPRE_BigInt *) PyArray_DATA(tmp_arr2_);
 }
-%typemap(freearg) (double *data_,  HYPRE_BigInt *col){
+%typemap(freearg) (mfem::real_t *data_,  HYPRE_BigInt *col){
 }
-%typemap(typecheck )(double *data_,  HYPRE_BigInt *col){
+%typemap(typecheck )(mfem::real_t *data_,  HYPRE_BigInt *col){
   /* check if list of 2 numpy array or not */
   if (!PyList_Check($input)) $1 = 0;
   else {
@@ -103,7 +103,7 @@ bool is_HYPRE_USING_CUDA(){
 
 %typemap(in) (int *I,
 	      HYPRE_BigInt *J,
-              double *data,
+              mfem::real_t *data,
 	      HYPRE_BigInt *rows,
 	      HYPRE_BigInt *cols)
              (PyArrayObject *tmp_arr1_ = NULL,
@@ -131,7 +131,7 @@ bool is_HYPRE_USING_CUDA(){
   }
 }
 %typemap(freearg) (int *I, HYPRE_BigInt *J,
-		   double *data, HYPRE_BigInt *rows, HYPRE_BigInt *cols){
+		   mfem::real_t *data, HYPRE_BigInt *rows, HYPRE_BigInt *cols){
   Py_XDECREF(tmp_arr1_$argnum);
   Py_XDECREF(tmp_arr2_$argnum);
   Py_XDECREF(tmp_arr3_$argnum);
@@ -142,7 +142,7 @@ bool is_HYPRE_USING_CUDA(){
 }
 
 %typemap(typecheck ) (int *I, HYPRE_BigInt *J,
-                      double *data, HYPRE_BigInt *rows,
+                      mfem::real_t *data, HYPRE_BigInt *rows,
 		      HYPRE_BigInt *cols){
   /* check if list of 5 numpy array or not */
   if (!PyList_Check($input)) $1 = 0;
