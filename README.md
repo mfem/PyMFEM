@@ -56,7 +56,7 @@ $ python setup.py install --help
 This example (modified from `ex1.cpp`) solves the Poisson equation,
 $$\nabla \cdot (\alpha \nabla u) = f$$
 in a square and plots the result using matplotlib.
-Use the badge above to open this in Binder.
+Use the badge above to open this in Colab.
 
 ```python
 import mfem.ser as mfem
