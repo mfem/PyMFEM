@@ -94,6 +94,8 @@ XXXPTR_SIZE_IN(bool *data_, int asize, bool)
 namespace mfem{
 %pythonprepend Array::__setitem__ %{
     i = int(i)
+    if hasattr(v, "thisown"):
+        v.thisown = False
 %}
 %pythonprepend Array::Append %{
     if isinstance(args[0], list):

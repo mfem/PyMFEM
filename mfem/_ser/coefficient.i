@@ -110,6 +110,17 @@ namespace mfem {
 */
 %include "../common/typemap_macros.i"
 LIST_TO_MFEMOBJ_POINTERARRAY_IN(mfem::IntegrationRule const *irs[],  mfem::IntegrationRule *, 0)
+LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::Coefficient*> & coefs,  mfem::Coefficient *)
+LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::VectorCoefficient*> & coefs,  mfem::VectorCoefficient *)
+LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::MatrixCoefficient*> & coefs,  mfem::MatrixCoefficient *)
+
+%import "../common/array_instantiation_macro.i"
+IGNORE_ARRAY_METHODS(mfem::Coefficient *)
+INSTANTIATE_ARRAY0(Coefficient *, Coefficient, 1)
+IGNORE_ARRAY_METHODS(mfem::VectorCoefficient *)
+INSTANTIATE_ARRAY0(VectorCoefficient *, VectorCoefficient, 1)
+IGNORE_ARRAY_METHODS(mfem::MatrixCoefficient *)
+INSTANTIATE_ARRAY0(MatrixCoefficient *, MatrixCoefficient, 1)
 
 %include "fem/coefficient.hpp"
 %include "../common/numba_coefficient.i"
