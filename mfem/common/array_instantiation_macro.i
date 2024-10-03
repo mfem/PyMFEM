@@ -325,6 +325,8 @@ INSTANTIATE_ARRAY2(XXX, YYY, YYY, USEPTR)
 %ignore mfem::Array2D<XXX>::Print;
 %ignore mfem::Array2D<XXX>::PrintGZ;
 %ignore mfem::Array2D<XXX>::SaveGZ;
+%ignore mfem::Array2D<XXX>::Load;
+%ignore mfem::Array2D<XXX>::Save;
 %enddef
 
 
