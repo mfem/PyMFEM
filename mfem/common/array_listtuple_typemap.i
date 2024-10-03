@@ -71,6 +71,7 @@
       if (!SWIG_IsOK(SWIG_ConvertPtr(s, (void **) &temp_ptr$argnum, ty, 0|0))) {
    	  PyErr_SetString(PyExc_ValueError, "List items must be XXX");
       } else {
+          PyObject_SetAttrString(s, "thisown", Py_False);
 	  #if USEPTR==1
           (* result)[i] =  temp_ptr$argnum;
 	  #else

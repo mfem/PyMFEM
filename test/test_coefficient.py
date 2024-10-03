@@ -22,6 +22,7 @@ def test():
     max_attr = 5
     sigma_attr_coefs = mfem.MatrixCoefficientPtrArray(max_attr)
     sigma_attr = mfem.intArray(max_attr)
+
     tensors =  [mfem.DenseMatrix(np.ones((3,3))*i) for i in range(max_attr)]
     tensor_coefs =  [mfem.MatrixConstantCoefficient(mat) for mat in tensors]
     
@@ -31,11 +32,35 @@ def test():
         xx = mfem.MatrixConstantCoefficient(tensor)
         sigma_attr_coefs[ti] = xx
         sigma_attr[ti] = ti+1   
-    
+
+        
     # Create PW Matrix Coefficient
     sigmaCoef = mfem.PWMatrixCoefficient(dim, sigma_attr, sigma_attr_coefs, False)
     sigmaCoef = mfem.PWMatrixCoefficient(dim, sigma_attr, tensor_coefs, False)
 
+    tensor_coefs = mfem.MatrixCoefficientPtrArray([mfem.MatrixConstantCoefficient(mat) for mat in tensors])
+    sigmaCoef = mfem.PWMatrixCoefficient(dim, sigma_attr, tensor_coefs, False)
+
+    data = tensor_coefs.GetData()
+    tensor_coefs2 = mfem.MatrixCoefficientPtrArray(data, 5, False)
+    sigmaCoef = mfem.PWMatrixCoefficient(dim, sigma_attr, tensor_coefs2, False)
+
+    print("exiting")
+
+
+
+
 
 if __name__ == '__main__':
-    test()
+    import tracemalloc
+    
+    tracemalloc.start()
+
+    for i in range(10):
+        test()
+        print(tracemalloc.get_traced_memory())    
+    snapshot = tracemalloc.take_snapshot()
+    top_stats = snapshot.statistics('lineno') 
+    for stat in top_stats[:10]: 
+        print(stat)
+

@@ -114,6 +114,12 @@ LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::Coefficient*> & coefs,  mfem::C
 LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::VectorCoefficient*> & coefs,  mfem::VectorCoefficient *)
 LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::MatrixCoefficient*> & coefs,  mfem::MatrixCoefficient *)
 
+/* define CoefficientPtrArray, VectorCoefficientPtrArray, MatrixCoefficientPtrArray */
+%import "../common/array_listtuple_typemap.i"
+ARRAY_LISTTUPLE_INPUT_SWIGOBJ(mfem::Coefficient *, 1)
+ARRAY_LISTTUPLE_INPUT_SWIGOBJ(mfem::VectorCoefficient *, 1)
+ARRAY_LISTTUPLE_INPUT_SWIGOBJ(mfem::MatrixCoefficient *, 1)  
+  
 %import "../common/array_instantiation_macro.i"
 IGNORE_ARRAY_METHODS(mfem::Coefficient *)
 INSTANTIATE_ARRAY0(Coefficient *, Coefficient, 1)

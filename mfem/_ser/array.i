@@ -40,17 +40,6 @@ XXXPTR_SIZE_IN(int *data_, int asize, int)
 XXXPTR_SIZE_IN(double *data_, int asize, double)
 XXXPTR_SIZE_IN(bool *data_, int asize, bool)
 
-%pythonappend mfem::Array::Array %{
-  if len(args) == 1 and isinstance(args[0], list):
-      if (len(args[0]) == 2 and hasattr(args[0][0], 'disown') and
-          not hasattr(args[0][1], 'disown')):
-          ## first element is SwigObject, like <Swig Object of type 'int *'>
-          ## We do not own data in this case.
-          pass
-      else:
-          self.MakeDataOwner()
-%}
-
 %ignore mfem::Array::operator[];
 %ignore mfem::Array2D::operator[];
 %ignore mfem::BlockArray::operator[];
@@ -92,6 +81,16 @@ XXXPTR_SIZE_IN(bool *data_, int asize, bool)
 
 };
 namespace mfem{
+%pythonappend Array::Array %{
+  if len(args) == 1 and isinstance(args[0], list):
+      if (len(args[0]) == 2 and hasattr(args[0][0], 'disown') and
+          not hasattr(args[0][1], 'disown')):
+          ## first element is SwigObject, like <Swig Object of type 'int *'>
+          ## We do not own data in this case.
+          pass
+      else:
+          self.MakeDataOwner()
+%}
 %pythonprepend Array::__setitem__ %{
     i = int(i)
     if hasattr(v, "thisown"):
