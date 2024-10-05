@@ -1,6 +1,5 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mfem/PyMFEM/HEAD?labpath=examples%2Fjupyter)
-[![badge](examples/jupyter/ex1.svg)](https://mybinder.org/v2/gh/mfem/PyMFEM/HEAD?labpath=examples%2Fjupyter%2Fex1.ipynb)
-[![badge](examples/jupyter/ex9.svg)](https://mybinder.org/v2/gh/mfem/PyMFEM/HEAD?labpath=examples%2Fjupyter%2Fex9.ipynb)
+[![badge](examples/jupyter/.assets/ex1.svg)](https://colab.research.google.com/github/mfem/pymfem/blob/main/examples/jupyter/ex1.ipynb)
+[![badge](examples/jupyter/.assets/ex9.svg)](https://colab.research.google.com/github/mfem/pymfem/blob/main/examples/jupyter/ex9.ipynb)
 
 #  MFEM + PyMFEM (FEM library)
 
@@ -57,7 +56,7 @@ $ python setup.py install --help
 This example (modified from `ex1.cpp`) solves the Poisson equation,
 $$\nabla \cdot (\alpha \nabla u) = f$$
 in a square and plots the result using matplotlib.
-Use the badge above to open this in Binder.
+Use the badge above to open this in Colab.
 
 ```python
 import mfem.ser as mfem
