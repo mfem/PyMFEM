@@ -235,9 +235,5 @@ INSTANTIATE_ARRAY2(Array<int> *, Array<int>, intArray, 1)
 IGNORE_ARRAY_METHODS(mfem::DenseMatrix *)
 IGNORE_ARRAY_METHODS(mfem::SparseMatrix *)
 
-%template(densematArray2D) mfem::Array2D<mfem::DenseMatrix *>;
-%template(sparsematArray2D) mfem::Array2D<mfem::SparseMatrix *>;
-//%template(hypreparmatArray2D) mfem::Array2D<mfem::HypreParMatrix *>;
-
-
-
+%template(DenseMatrixArray2D) mfem::Array2D<mfem::DenseMatrix *>;
+%template(SparseMatrixArray2D) mfem::Array2D<mfem::SparseMatrix *>;

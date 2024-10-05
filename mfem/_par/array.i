@@ -224,7 +224,7 @@ IGNORE_ARRAY_METHODS(mfem::DenseMatrix *)
 IGNORE_ARRAY_METHODS(mfem::SparseMatrix *)
 IGNORE_ARRAY_METHODS(mfem::HypreParMatrix *)
 
-%template(densematArray2D) mfem::Array2D<mfem::DenseMatrix *>;
-%template(sparsematArray2D) mfem::Array2D<mfem::SparseMatrix *>;
-%template(hypreparmatArray2D) mfem::Array2D<mfem::HypreParMatrix *>;
+%template(DenseMatrixArray2D) mfem::Array2D<mfem::DenseMatrix *>;
+%template(SparseMatrixArray2D) mfem::Array2D<mfem::SparseMatrix *>;
+%template(HypreParMatrixArray2D) mfem::Array2D<mfem::HypreParMatrix *>;
 
