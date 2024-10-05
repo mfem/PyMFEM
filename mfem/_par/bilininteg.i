@@ -40,6 +40,7 @@ import_array();
 
 %ignore  mfem::MassIntegrator::SetupPA;
 
+%include "../common/kernel_dispatch.i"
 %include "fem/bilininteg.hpp"
 
 %feature("director") mfem::PyBilinearFormIntegrator;
