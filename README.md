@@ -1,5 +1,5 @@
-[![badge](examples/jupyter/.assets/ex1.svg)](https://colab.research.google.com/github/mfem/pymfem/blob/main/examples/jupyter/ex1.ipynb)
-[![badge](examples/jupyter/.assets/ex9.svg)](https://colab.research.google.com/github/mfem/pymfem/blob/main/examples/jupyter/ex9.ipynb)
+[![badge](examples/jupyter/.assets/ex1.svg)](https://colab.research.google.com/github/mfem/pymfem/blob/master/examples/jupyter/ex1.ipynb)
+[![badge](examples/jupyter/.assets/ex9.svg)](https://colab.research.google.com/github/mfem/pymfem/blob/master/examples/jupyter/ex9.ipynb)
 
 #  MFEM + PyMFEM (FEM library)
 
