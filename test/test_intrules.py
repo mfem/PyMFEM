@@ -52,13 +52,13 @@ def run_test():
 
     irs = [mfem.IntRules.Get(i, 2) for i in range(mfem.Geometry.NumGeom)]
     
-    rulearray = mfem.IntegrationRulePtrArray(irs)
+    rulearray = mfem.IntegrationRuleArray(irs)
 
     ir2 = rulearray[2]
     points3 = [(ir2[i].x, ir2[i].y) for i in range(ir2.GetNPoints())]
     assert (points3 == points), "IntegrationPointArray coords does not agree (check 2)."
 
-    # check slice of IntegrationRulePtrArray
+    # check slice of IntegrationRuleArray
     rulearray2 = rulearray[:5]
     assert not rulearray2.OwnsData(), "subarray should not own data"
     ir2 = rulearray2[2]
@@ -67,7 +67,7 @@ def run_test():
 
     # create it from a pointer array
     data = rulearray2.GetData()    # this returns <Swig Object of type 'mfem::IntegrationRule **'>
-    rulearray3 = mfem.IntegrationRulePtrArray((data, 5))
+    rulearray3 = mfem.IntegrationRuleArray((data, 5))
     ir2 = rulearray3[2]
     points3 = [(ir2[i].x, ir2[i].y) for i in range(ir2.GetNPoints())]
     assert (points3 == points), "IntegrationPointArray coords does not agree (check 3)."
