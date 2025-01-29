@@ -122,7 +122,6 @@ ess_tdof_list = mfem.intArray()
 ess_bdr.Assign(0)
 ess_bdr[0] = 1
 fespace.GetEssentialTrueDofs(ess_bdr, ess_tdof_list)
-print("here")
 
 #  9. Set up the parallel linear form b(.) which corresponds to the
 #     right-hand side of the FEM linear system. In this case, b_i equals the
@@ -151,7 +150,7 @@ b.Assemble()
 #     zero, which satisfies the boundary conditions.
 x = mfem.GridFunction(fespace)
 x.Assign(0.0)
-print('here')
+
 # 11. Set up the parallel bilinear form a(.,.) on the finite element space
 #     corresponding to the linear elasticity integrator with piece-wise
 #     constants coefficient lambda and mu.

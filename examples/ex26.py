@@ -18,34 +18,30 @@ def run(order_refinements=2,
 
     class DiffusionMultigrid(mfem.PyGeometricMultigrid):
         def __init__(self, fespaces, ess_bdr):
-            mfem.PyGeometricMultigrid.__init__(self, fespaces)
+            mfem.PyGeometricMultigrid.__init__(self, fespaces, ess_bdr)
 
             self.smoothers = []
-            self.ConstructCoarseOperatorAndSolver(fespaces.GetFESpaceAtLevel(0),
-                                                  ess_bdr)
+            self.ConstructCoarseOperatorAndSolver(
+                fespaces.GetFESpaceAtLevel(0),)
 
             for level in range(1, fespaces.GetNumLevels()):
                 self.ConstructOperatorAndSmoother(fespaces.GetFESpaceAtLevel(level),
-                                                  ess_bdr)
+                                                  level)
 
-        def ConstructBilinearForm(self, fespace, ess_bdr):
+        def ConstructBilinearForm(self, fespace):
             form = mfem.BilinearForm(fespace)
             form.SetAssemblyLevel(mfem.AssemblyLevel_PARTIAL)
             form.AddDomainIntegrator(mfem.DiffusionIntegrator(one))
             form.Assemble()
             self.AppendBilinearForm(form)
 
-            ess = mfem.intArray()
-            self.AppendEssentialTDofs(ess)
-            fespace.GetEssentialTrueDofs(ess_bdr, ess)
+        def ConstructCoarseOperatorAndSolver(self, coarse_fespace):
 
-        def ConstructCoarseOperatorAndSolver(self, coarse_fespace, ess_bdr):
-
-            self.ConstructBilinearForm(coarse_fespace, ess_bdr)
+            self.ConstructBilinearForm(coarse_fespace)
 
             opr = mfem.OperatorPtr()
             opr.SetType(mfem.Operator.ANY_TYPE)
-            self.bfs[-1].FormSystemMatrix(self.essentialTrueDofs[-1], opr)
+            self.bfs[0].FormSystemMatrix(self.essentialTrueDofs[0], opr)
             opr.SetOperatorOwner(False)
 
             pcg = mfem.CGSolver()
@@ -58,20 +54,20 @@ def run(order_refinements=2,
             self.smoothers.append((pcg, opr))
             self.AddLevel(opr.Ptr(), pcg, False, False)
 
-        def ConstructOperatorAndSmoother(self, fespace, ess_bdr):
-            self.ConstructBilinearForm(fespace, ess_bdr)
+        def ConstructOperatorAndSmoother(self, fespace, level):
+            self.ConstructBilinearForm(fespace)
 
             opr = mfem.OperatorPtr()
             opr.SetType(mfem.Operator.ANY_TYPE)
-            self.bfs[-1].FormSystemMatrix(self.essentialTrueDofs[-1], opr)
+
+            self.bfs[level].FormSystemMatrix(
+                self.essentialTrueDofs[level], opr)
             opr.SetOperatorOwner(False)
 
             diag = mfem.Vector(fespace.GetTrueVSize())
-            self.bfs[-1].AssembleDiagonal(diag)
-
+            self.bfs[level].AssembleDiagonal(diag)
             smoother = mfem.OperatorChebyshevSmoother(opr.Ptr(), diag,
-                                                      self.essentialTrueDofs[-1], 2)
-
+                                                      self.essentialTrueDofs[level], 2)
             self.smoothers.append((smoother, opr))
             self.AddLevel(opr.Ptr(), smoother, False, False)
 

@@ -57,12 +57,12 @@ namespace mfem {
     self._coeff = uD_
 %}
 %pythonappend WhiteGaussianNoiseDomainLFIntegrator::WhiteGaussianNoiseDomainLFIntegrator %{
-    self._coeff = args
+    self._coeff = QG
 %}
 %pythonappend VectorQuadratureLFIntegrator::VectorQuadratureLFIntegrator %{
-    self._coeff = args
+    self._coeff = (vqfc, ir)
 %}
 %pythonappend QuadratureLFIntegrator::QuadratureLFIntegrator %{
-    self._coeff = args
+    self._coeff = (qfc, ir)
 %}
 }

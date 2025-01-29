@@ -23,6 +23,7 @@ import_array();
 %import "handle.i"
 %import "bilinearform.i"
 %import "pfespace.i"
+%import "pgridfunc.i"
 %import "hypre.i"
 %import "../common/exception.i"
 

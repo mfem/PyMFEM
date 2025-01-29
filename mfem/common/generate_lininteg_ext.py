@@ -5,17 +5,25 @@ fid = open(file, 'r')
 for line in fid.readlines():
     if line.startswith("class"):
         cname = (line.split(' ')[1]).split('(')[0]
-         
+
     if line.startswith("    def __init__"):
         pp = ""
         if line.find("*args") != -1:
             pp = "    self._coeff = args"
+        elif line.find("self, seed_=0") != -1:
+            pp = "    self._coeff = QG"
+        elif line.find("self, vqfc, ir") != -1:
+            pp = "    self._coeff = (vqfc, ir)"
+        elif line.find("self, qfc, ir") != -1:
+            pp = "    self._coeff = (qfc, ir)"
         elif line.find(", QG") != -1:
             pp = "    self._coeff = QG"
         elif line.find(", QF)") != -1:
             pp = "    self._coeff = QF"
         elif line.find(", F)") != -1:
             pp = "    self._coeff = F"
+        elif line.find(", f)") != -1:
+            pp = "    self._coeff = f"
         elif line.find(", f, s=1.0, ir=None)") != -1:
             pp = "    self._coeff = (f, ir)"
         elif line.find(", uD_, lambda_, mu_, alpha_, kappa_)") != -1:

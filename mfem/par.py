@@ -77,6 +77,7 @@ from  mfem._par.qspace import *
 from  mfem._par.qfunction import *
 from  mfem._par.quadinterpolator import *
 from  mfem._par.quadinterpolator_face import *
+from  mfem._par.attribute_sets import *
 
 from  mfem._par.fe_base import *
 from  mfem._par.fe_h1 import *
@@ -93,6 +94,7 @@ from  mfem._par.submesh import *
 from  mfem._par.psubmesh import *
 from  mfem._par.transfermap import *
 from  mfem._par.ptransfermap import *
+from  mfem._par.hyperbolic import *
 
 try:
    from  mfem._par.gslib import *
@@ -122,6 +124,11 @@ import mfem._par.tmop_modules as tmop
 
 try:
     import mfem._par.dist_solver as dist_solver
+except:
+    pass
+
+try:
+    import mfem._par.navier_solver as navier_solver
 except:
     pass
 

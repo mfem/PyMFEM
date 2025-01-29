@@ -15,6 +15,12 @@
 #include "numpy/arrayobject.h"
 %}
 
+%include "../common/mfem_config.i"
+#ifdef MFEM_USE_MPI
+%include mpi4py/mpi4py.i
+%mpi4py_typemap(Comm, MPI_Comm);
+#endif
+
 %init %{
 import_array();
 %}
@@ -37,6 +43,5 @@ import_array();
 
 %feature("director") mfem::PyLinearFormIntegrator;
 %include "../common/pylininteg.hpp"
-
 
 

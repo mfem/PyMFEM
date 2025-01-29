@@ -13,8 +13,6 @@
 
 '''
 from numba import jit, types, carray
-import numba
-import numba_scipy
 import os
 import mfem.ser as mfem
 from mfem.ser import intArray
@@ -40,7 +38,6 @@ def run(meshfile="",
     device = mfem.Device(device_config)
     device.Print()
 
-    print(prob)
     # 3. Setup the mesh
     if meshfile == '':
         exact_known = True

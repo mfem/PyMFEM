@@ -50,19 +50,16 @@ repo_releases = {
     # "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
     "metis": "https://github.com/mfem/tpls/raw/gh-pages/metis-5.1.0.tar.gz",
     "hypre": "https://github.com/hypre-space/hypre/archive/v2.28.0.tar.gz",
-    "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.11.0.tar.gz",
+    "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.12.0.tar.gz",
     "gslib": "https://github.com/Nek5000/gslib/archive/refs/tags/v1.0.8.tar.gz"}
 
 repos = {"mfem": "https://github.com/mfem/mfem.git",
          "libceed": "https://github.com/CEED/libCEED.git",
          "gklib": "https://github.com/KarypisLab/GKlib",
          "metis": "https://github.com/KarypisLab/METIS", }
+
 repos_sha = {
-    # "mfem": "00b2a0705f647e17a1d4ffcb289adca503f28d42", # version 4.5.2
-    # "mfem": "962774d5ffa84ceed3bc670e52388250ee028da1",  # version 4.5.2 + distsolve
-    #"mfem": "69fbae732d5279c8d0f42c5430c4fd5656731d00", # version 4.6
-    #"mfem": "8bb929c2ff86cdf2ee9bb058cc75e59acb07bb94",  # doftrans simplification (Nov. 15. 2023)
-    "mfem": "4a45c70d1269d293266b77a3a025a9756d10ed8f",  # after socket connection fix (Nov. 29 2023)
+    "mfem": "dc9128ef596e84daf1138aa3046b826bba9d259f",    # v4.7
     "gklib": "a7f8172703cf6e999dd0710eb279bba513da4fec",
     "metis": "94c03a6e2d1860128c2d0675cbbb86ad4f261256", }
 
@@ -71,22 +68,32 @@ extdir = os.path.join(rootdir, 'external')
 if not os.path.exists(extdir):
     os.mkdir(os.path.join(rootdir, 'external'))
 
+
+osx_sysroot = ''
+
 if platform == "linux" or platform == "linux2":
     dylibext = '.so'
 elif platform == "darwin":
     # OS X
     dylibext = '.dylib'
+    import sysconfig
+    for i, x in enumerate(sysconfig.get_config_vars()['CFLAGS'].split()):
+        if x == '-isysroot':
+            osx_sysroot = sysconfig.get_config_vars()['CFLAGS'].split()[i+1]
+            break
+
 elif platform == "win32":
     # Windows...
     assert False, "Windows is not supported yet. Contribution is welcome"
 
 use_metis_gklib = False
 
-### global variables
+# global variables
 is_configured = False
 prefix = ''
 
 verbose = -1
+git_sshclone = False
 swig_only = False
 skip_install = False
 run_swig = False
@@ -123,7 +130,7 @@ enable_gslib = False
 gslibs_prefix = ''
 gslibp_prefix = ''
 gslib_only = False
-mfem_debug=False
+mfem_debug = False
 
 enable_suitesparse = False
 suitesparse_prefix = "/usr/"
@@ -205,14 +212,14 @@ metadata = {'name': 'mfem',
             'long_description_content_type': "text/markdown",
             'url': 'http://mfem.org',
             'download_url': 'https://github.com/mfem',
-            'classifiers': ['Development Status :: 4 - Beta',
+            'classifiers': ['Development Status :: 5 - Production/Stable',
                             'Intended Audience :: Developers',
                             'Topic :: Scientific/Engineering :: Physics',
                             'License :: OSI Approved :: BSD License',
-                            'Programming Language :: Python :: 3.7',
                             'Programming Language :: Python :: 3.8',
                             'Programming Language :: Python :: 3.9',
-                            'Programming Language :: Python :: 3.10', ],
+                            'Programming Language :: Python :: 3.10',
+                            'Programming Language :: Python :: 3.11', ],
             'keywords': [k for k in keywords.split('\n') if k],
             'platforms': [p for p in platforms.split('\n') if p],
             'license': 'BSD-3',
@@ -318,7 +325,7 @@ def make_call(command, target='', force_verbose=False):
         raise subprocess.CalledProcessError(p.returncode,
                                             " ".join(command))
 
-        #subprocess.check_call(command, **kwargs)
+        # subprocess.check_call(command, **kwargs)
     # except subprocess.CalledProcessError:
     # print(stdout)
 
@@ -390,17 +397,28 @@ def gitclone(xxx, use_sha=False, branch='master'):
     cwd = os.getcwd()
     repo_xxx = os.path.join(extdir, xxx)
     if os.path.exists(repo_xxx):
-        print("Deleting the existing " + xxx)
-        shutil.rmtree(repo_xxx)
+        os.chdir(repo_xxx)
+        command = ['git', 'checkout', branch]
+        make_call(command)
+        command = ['git', 'pull']
+        make_call(command)
 
-    os.chdir(extdir)
-    command = ['git', 'clone', repos[xxx], xxx]
-    make_call(command)
+        # print("Deleting the existing " + xxx)
+        # shutil.rmtree(repo_xxx)
+    else:
+        repo = repos[xxx]
+        if git_sshclone:
+            repo = repo.replace("https://github.com/", "git@github.com:")
+
+        os.chdir(extdir)
+        command = ['git', 'clone', repo, xxx]
+        make_call(command)
 
     if not dry_run:
         if not os.path.exists(repo_xxx):
             print(repo_xxx + " does not exist. Check if git clone worked")
         os.chdir(repo_xxx)
+
         if use_sha:
             sha = repos_sha[xxx]
             command = ['git', 'checkout',  sha]
@@ -439,6 +457,9 @@ def cmake(path, **kwargs):
     command = ['cmake', path]
     for key, value in kwargs.items():
         command.append('-' + key + '=' + value)
+
+    if osx_sysroot != '':
+        command.append('-DCMAKE_OSX_SYSROOT=' + osx_sysroot)
     make_call(command)
 
 
@@ -547,7 +568,7 @@ def make_metis_gklib(use_int64=False, use_real64=False):
     cmake('..', **cmake_opts)
     make('gklib')
     make_install('gklib')
-    #command = ['make', 'prefix=' + metis_prefix, 'cc=' + cc_command]
+    # command = ['make', 'prefix=' + metis_prefix, 'cc=' + cc_command]
     os.chdir(pwd)
 
     '''
@@ -573,7 +594,7 @@ def make_metis_gklib(use_int64=False, use_real64=False):
         options.append('r64=1')
 
     command = ['make', 'config', 'shared=1'] + options
-    #command = ['make', 'config'] + options
+    # command = ['make', 'config'] + options
     command = command + ['prefix=' + metis_prefix, 'cc=' + cc_command]
     make_call(command)
 
@@ -1239,7 +1260,7 @@ def configure_install(self):
     '''
     called when install workflow is used
     '''
-    global prefix, dry_run, verbose, ext_prefix
+    global prefix, dry_run, verbose, ext_prefix, git_sshclone
     global clean_swig, run_swig, swig_only, skip_install, skip_swig
     global build_mfem, build_mfemp, build_parallel, build_serial
 
@@ -1261,6 +1282,8 @@ def configure_install(self):
     dry_run = bool(self.dry_run) if dry_run == -1 else dry_run
     if dry_run:
         verbose = True
+
+    git_sshclone = bool(self.git_sshclone)
 
     prefix = abspath(self.prefix)
     mfem_source = abspath(self.mfem_source)
@@ -1339,7 +1362,7 @@ def configure_install(self):
         mfem_prefix = ext_prefix
         mfems_prefix = os.path.join(ext_prefix, 'ser')
         mfemp_prefix = os.path.join(ext_prefix, 'par')
-        #enable_gslib = True
+        # enable_gslib = True
 
     if self.mfem_branch != '':
         mfem_branch = self.mfem_branch
@@ -1484,7 +1507,7 @@ def configure_bdist(self):
     else:
         build_mfem = True
         build_serial = True
-        #build_gslib = True
+        # build_gslib = True
         run_swig = True
 
     global is_configured
@@ -1528,6 +1551,8 @@ class Install(_install):
          'libHYPRE.so must exits under <hypre-prefix>/lib'),
         ('metis-prefix=', None, 'Specify locaiton of metis' +
          'libmetis.so must exits under <metis-prefix>/lib'),
+        ('git-sshclone', None, 'Use SSH for git clone',
+         'try if default git clone using https fails (need Github account and setting for SSH)'),
         ('swig', None, 'Run Swig and exit'),
         ('skip-swig', None,
          'Skip running swig (used when wrapper is generated for the MFEM C++ library to be used'),
@@ -1569,6 +1594,7 @@ class Install(_install):
         self.skip_swig = False
         self.ext_only = False
 
+        self.git_sshclone = False
         self.skip_ext = False
         self.with_parallel = False
         self.build_only = False
@@ -1632,9 +1658,9 @@ class Install(_install):
         global verbose
         verbose = bool(self.vv)
         if given_prefix:
-            #global ext_prefix
+            # global ext_prefix
             self.prefix = abspath(prefix)
-            #ext_prefix = abspath(prefix)
+            # ext_prefix = abspath(prefix)
         else:
             if '--user' in sys.argv:
                 path = site.getusersitepackages()
@@ -1752,7 +1778,7 @@ if haveWheel:
             def _has_ext_modules():
                 return True
             from setuptools.dist import Distribution
-            #Distribution.is_pure = _is_pure
+            # Distribution.is_pure = _is_pure
             self.distribution.has_ext_modules = _has_ext_modules
             _bdist_wheel.finalize_options(self)
 
@@ -1764,7 +1790,7 @@ if haveWheel:
                 print_config()
             self.run_command("build")
             _bdist_wheel.run(self)
-            #assert False, "bdist install is not supported, use source install"
+            # assert False, "bdist install is not supported, use source install"
 
             # Ensure that there is a basic library build for bdist_egg to pull from.
             # self.run_command("build")
@@ -1880,7 +1906,7 @@ def run_setup():
         packages=find_packages(),
         extras_require={},
         package_data={'mfem._par': ['*.so'], 'mfem._ser': ['*.so']},
-        #data_files=[('data', datafiles)],
+        # data_files=[('data', datafiles)],
         entry_points={},
         **setup_args)
 

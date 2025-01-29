@@ -3,11 +3,16 @@
 """
 setup.py file for SWIG example
 """
-from distutils.core import Extension, setup
-import numpy
-import os
+
 import sys
+import os
+import numpy
+
 print('building paralel version')
+
+# this remove *.py in this directory to be imported from setuptools
+sys.path.remove(os.path.abspath(os.path.dirname(sys.argv[0])))
+from distutils.core import Extension, setup
 
 # first load variables from PyMFEM_ROOT/setup_local.py
 
@@ -121,7 +126,9 @@ def get_extensions():
                "tmop", "tmop_amr", "tmop_tools", "qspace", "qfunction",
                "quadinterpolator", "quadinterpolator_face",
                "submesh", "transfermap", "staticcond","sidredatacollection",
-               "psubmesh", "ptransfermap"]
+               "psubmesh", "ptransfermap", "enzyme",
+               "attribute_sets", "arrays_by_name",
+               "hyperbolic"]
 
     if add_pumi == '1':
         from setup_local import puminc, pumilib
@@ -140,6 +147,8 @@ def get_extensions():
     if add_cuda == '1':
         from setup_local import cudainc
         include_dirs.append(cudainc)
+    else:
+        modules.append("navier_solver")
 
     if add_libceed == '1':
         from setup_local import libceedinc
