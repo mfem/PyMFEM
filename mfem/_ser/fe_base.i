@@ -16,9 +16,16 @@ import_array();
 %include "../common/typemap_macros.i"
 %include "../common/exception.i"
 
- //%ignore FE;
+//forward declearation
+%inline %{
 namespace mfem{
   class FiniteElement;
 }
+%}
 
+// this is to avoild extern breaks template
+namespace mfem{
+  %ignore poly1d;
+}
 %include "fem/fe/fe_base.hpp"
+
