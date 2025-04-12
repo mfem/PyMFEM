@@ -30,6 +30,7 @@ jobs:
       fail-fast: false
       matrix:
         mfem-branch: [master, default] # 'default' uses a specific commit hash defined in setup.py:repos_sha
+        python-version: ['3.8', '3.9', '3.10', '3.11'] # 3.12 is not supported by scipy
         parallel: [false]
     name: test-linux | ${{ matrix.mfem-branch }} | ${{ matrix.python-version }} | ${{ matrix.parallel && 'parallel' || 'serial' }}
     uses: ./.github/workflows/build-and-test-callable.yml
