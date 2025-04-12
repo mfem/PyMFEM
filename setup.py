@@ -60,7 +60,7 @@ repos = {"mfem": "https://github.com/mfem/mfem.git",
 
 repos_sha = {
     "mfem": "a01719101027383954b69af1777dc828bf795d62",  # v4.8
-    #"mfem": "dc9128ef596e84daf1138aa3046b826bba9d259f", # v4.7
+    # "mfem": "dc9128ef596e84daf1138aa3046b826bba9d259f", # v4.7
     "gklib": "a7f8172703cf6e999dd0710eb279bba513da4fec",
     "metis": "94c03a6e2d1860128c2d0675cbbb86ad4f261256", }
 
@@ -299,7 +299,7 @@ if swig_command is None:
     assert False, "SWIG is not installed (hint: pip install swig)"
 
 
-def make_call(command, target='', force_verbose=False):
+def make_call(command, target='', force_verbose=False, env=None):
     '''
     call command
     '''
@@ -307,7 +307,9 @@ def make_call(command, target='', force_verbose=False):
 
     if dry_run:
         return
-    kwargs = {'universal_newlines': True}
+    kwargs = {'universal_newlines': True, 'env': env}
+    if env is not None:
+        env.update(os.environ)
 
     myverbose = verbose or force_verbose
     if not myverbose:
@@ -669,7 +671,7 @@ def make_metis(use_int64=False, use_real64=False):
     command = ['make', 'config', 'shared=1',
                'prefix=' + metis_prefix,
                'cc=' + cc_command]
-    make_call(command)
+    make_call(command, env={'CMAKE_POLICY_VERSION_MINIMUM': '3.5'})
     make('metis')
     make_install('metis')
 
