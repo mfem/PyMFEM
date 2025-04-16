@@ -162,7 +162,7 @@ jobs:
       if: inputs.parallel
       run: |
         cd test
-        mpirun -np 2 python ../examples/ex10p.py #run_examples.py -parallel -verbose -np 2
+        mpirun -np 2 python ../examples/ex1p.py #run_examples.py -parallel -verbose -np 2
 
     # -------------------------------------------------------------------------------------------------
     # Generate an artifact (output of tests) on failure
