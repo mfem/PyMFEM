@@ -96,7 +96,7 @@ jobs:
       run: |
         sudo apt-get install mpich libmpich-dev
         pip install mpi4py
-
+        mpirun -np 2 python -c "from  mpi4py import MPI;print(MPI.COMM_WORLD.rank)"
 
     - name: Purge PIP chach
       run: pip cache purge
