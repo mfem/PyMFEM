@@ -94,7 +94,9 @@ jobs:
     - name: Install MPI
       if: inputs.parallel
       run: |
-        sudo apt-get install mpich libmpich-dev
+        sudo apt-get install openmpi-bin libopenmpi-dev
+        export OMPI_MCA_rmaps_base_oversubscribe=1
+        # (broken?) sudo apt-get install mpich libmpich-dev
         pip install mpi4py
         mpirun -np 2 python -c "from  mpi4py import MPI;print(MPI.COMM_WORLD.rank)"
 
