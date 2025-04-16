@@ -1,6 +1,7 @@
 %define INSTANTIATE_ARRAY2(XXX, YYY, ZZZ, USEPTR)
 #if USEPTR == 1
-%template(##ZZZ##Ptr##Array) mfem::Array<mfem::XXX>;
+ //%template(##ZZZ##Ptr##Array) mfem::Array<mfem::XXX>;
+%template(##ZZZ##Array) mfem::Array<mfem::XXX>;
 #else
 %template(##ZZZ##Array) mfem::Array<mfem::XXX>;
 #endif
@@ -325,6 +326,8 @@ INSTANTIATE_ARRAY2(XXX, YYY, YYY, USEPTR)
 %ignore mfem::Array2D<XXX>::Print;
 %ignore mfem::Array2D<XXX>::PrintGZ;
 %ignore mfem::Array2D<XXX>::SaveGZ;
+%ignore mfem::Array2D<XXX>::Load;
+%ignore mfem::Array2D<XXX>::Save;
 %enddef
 
 
