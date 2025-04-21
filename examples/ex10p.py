@@ -71,7 +71,7 @@ parser.add_argument("-K", "--bulk-modulus",
                     action='store', default=5.0, type=float,
                     help="Bulk modulus in the Neo-Hookean hyperelastic model.")
 parser.add_argument('-vis', '--visualization',
-                    action='store_true', default=False,
+                    action='store_true', default=True,
                     help='Enable GLVis visualization')
 parser.add_argument("-vs", "--visualization-steps",
                     action='store', default=1,  type=int,
