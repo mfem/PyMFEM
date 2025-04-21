@@ -25,8 +25,8 @@ from numpy import sin, cos, exp, sqrt, pi
 
 try:
     import numba
-except ImportError
-assert False, "Numba is required"
+except ImportError:
+    assert False, "Numba is required"
 
 
 num_procs = MPI.COMM_WORLD.size
