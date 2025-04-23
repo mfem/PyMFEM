@@ -122,6 +122,18 @@ import mfem._par.sparsemat as sparsemat
 
 import mfem._par.tmop_modules as tmop
 
+#
+# modules not a part of standard build
+#
+try:
+   import mfem._par.pumi as pumi
+   from mfem._par.pumi import *
+except ImportError:
+   pass
+
+#
+#  import moduleds built from hpp/cpp under miniapp
+#
 try:
     import mfem._par.dist_solver as dist_solver
 except:
@@ -138,8 +150,3 @@ try:
 except:
     pass
 
-try:
-   import mfem._par.pumi as pumi
-   from mfem._par.pumi import *
-except ImportError:
-   pass
