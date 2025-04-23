@@ -753,7 +753,7 @@ def cmake_make_mfem(serial=True):
 
     cmake_opts = {'DBUILD_SHARED_LIBS': '1',
                   'DMFEM_ENABLE_EXAMPLES': '1',
-                  'DMFEM_ENABLE_MINIAPPS': '1',
+                  'DMFEM_ENABLE_MINIAPPS': '0',
                   'DCMAKE_SHARED_LINKER_FLAGS': ldflags,
                   'DMFEM_USE_ZLIB': '1',
                   'DCMAKE_CXX_FLAGS': cxx11_flag,
