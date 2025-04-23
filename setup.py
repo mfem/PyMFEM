@@ -132,6 +132,7 @@ gslibs_prefix = ''
 gslibp_prefix = ''
 gslib_only = False
 mfem_debug = False
+mfem_build_miniapps = True
 
 enable_suitesparse = False
 suitesparse_prefix = "/usr/"
@@ -762,6 +763,9 @@ def cmake_make_mfem(serial=True):
     if mfem_debug:
         cmake_opts['DMFEM_DEBUG'] = 'YES'
 
+    if mfem_build_miniapps:
+        cmake_opts['DMFEM_ENABLE_MINIAPPS'] = '1'
+
     if verbose:
         cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
 
@@ -1267,7 +1271,7 @@ def configure_install(self):
     global clean_swig, run_swig, swig_only, skip_install, skip_swig
     global build_mfem, build_mfemp, build_parallel, build_serial
 
-    global mfem_branch, mfem_source, mfem_debug
+    global mfem_branch, mfem_source, mfem_debug, mfem_build_miniapps
     global build_metis, build_hypre, build_libceed, build_gslib
 
     global mfems_prefix, mfemp_prefix, metis_prefix, hypre_prefix
@@ -1319,6 +1323,7 @@ def configure_install(self):
     run_swig = True
 
     mfem_debug = bool(self.mfem_debug)
+    mfem_build_miniapps = bool(self.mfem_build_miniapps)
 
     if build_serial:
         build_serial = (not swig_only and not ext_only)
@@ -1550,6 +1555,7 @@ class Install(_install):
         ('mfem-source=', None, 'Specify mfem source location' +
          'MFEM source directory. Required to run-swig '),
         ('mfem-debug', None, 'Build MFME with MFEM_DEBUG enabled'),
+        ('mfem-build-miniapps', None, 'build MFME Miniapps'),
         ('hypre-prefix=', None, 'Specify locaiton of hypre' +
          'libHYPRE.so must exits under <hypre-prefix>/lib'),
         ('metis-prefix=', None, 'Specify locaiton of metis' +
@@ -1608,6 +1614,7 @@ class Install(_install):
         self.mfem_source = './external/mfem'
         self.mfem_branch = ''
         self.mfem_debug = False
+        self.mfem_build_miniapps = False
         self.metis_prefix = ''
         self.hypre_prefix = ''
 
