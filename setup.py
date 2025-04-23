@@ -50,7 +50,7 @@ repo_releases = {
     # "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
     "metis": "https://github.com/mfem/tpls/raw/gh-pages/metis-5.1.0.tar.gz",
     "hypre": "https://github.com/hypre-space/hypre/archive/v2.28.0.tar.gz",
-    "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.11.0.tar.gz",
+    "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.12.0.tar.gz",
     "gslib": "https://github.com/Nek5000/gslib/archive/refs/tags/v1.0.8.tar.gz"}
 
 repos = {"mfem": "https://github.com/mfem/mfem.git",
@@ -59,12 +59,8 @@ repos = {"mfem": "https://github.com/mfem/mfem.git",
          "metis": "https://github.com/KarypisLab/METIS", }
 
 repos_sha = {
-    # "mfem": "00b2a0705f647e17a1d4ffcb289adca503f28d42", # version 4.5.2
-    # "mfem": "962774d5ffa84ceed3bc670e52388250ee028da1",  # version 4.5.2 + distsolve
-    # "mfem": "69fbae732d5279c8d0f42c5430c4fd5656731d00",  # version 4.6
-    # "mfem": "8bb929c2ff86cdf2ee9bb058cc75e59acb07bb94",  # doftrans simplification (Nov. 15. 2023)
-    # "mfem": "4a45c70d1269d293266b77a3a025a9756d10ed8f",  # socket connection fix (Nov. 29 2023)
-    "mfem": "68873fa4d403c7c94a653c7bc781815ff5b2734d",    # use constrained prolongation operator in ex26, ex26p (Nov. 30 2023)
+    "mfem": "a01719101027383954b69af1777dc828bf795d62",  # v4.8
+    # "mfem": "dc9128ef596e84daf1138aa3046b826bba9d259f", # v4.7
     "gklib": "a7f8172703cf6e999dd0710eb279bba513da4fec",
     "metis": "94c03a6e2d1860128c2d0675cbbb86ad4f261256", }
 
@@ -217,14 +213,14 @@ metadata = {'name': 'mfem',
             'long_description_content_type': "text/markdown",
             'url': 'http://mfem.org',
             'download_url': 'https://github.com/mfem',
-            'classifiers': ['Development Status :: 4 - Beta',
+            'classifiers': ['Development Status :: 5 - Production/Stable',
                             'Intended Audience :: Developers',
                             'Topic :: Scientific/Engineering :: Physics',
                             'License :: OSI Approved :: BSD License',
-                            'Programming Language :: Python :: 3.7',
                             'Programming Language :: Python :: 3.8',
                             'Programming Language :: Python :: 3.9',
-                            'Programming Language :: Python :: 3.10', ],
+                            'Programming Language :: Python :: 3.10',
+                            'Programming Language :: Python :: 3.11', ],
             'keywords': [k for k in keywords.split('\n') if k],
             'platforms': [p for p in platforms.split('\n') if p],
             'license': 'BSD-3',
@@ -303,7 +299,7 @@ if swig_command is None:
     assert False, "SWIG is not installed (hint: pip install swig)"
 
 
-def make_call(command, target='', force_verbose=False):
+def make_call(command, target='', force_verbose=False, env=None):
     '''
     call command
     '''
@@ -311,7 +307,9 @@ def make_call(command, target='', force_verbose=False):
 
     if dry_run:
         return
-    kwargs = {'universal_newlines': True}
+    kwargs = {'universal_newlines': True, 'env': env}
+    if env is not None:
+        env.update(os.environ)
 
     myverbose = verbose or force_verbose
     if not myverbose:
@@ -673,7 +671,7 @@ def make_metis(use_int64=False, use_real64=False):
     command = ['make', 'config', 'shared=1',
                'prefix=' + metis_prefix,
                'cc=' + cc_command]
-    make_call(command)
+    make_call(command, env={'CMAKE_POLICY_VERSION_MINIMUM': '3.5'})
     make('metis')
     make_install('metis')
 

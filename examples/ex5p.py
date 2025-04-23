@@ -306,7 +306,7 @@ def run(order=1,
         u_sock << "parallel " << num_procs << " " << myid << "\n"
         u_sock.precision(8)
         u_sock << "solution\n" << pmesh << u << "window_title 'Velocity'\n"
-        MPI.Barrier()
+        MPI.COMM_WORLD.Barrier()
         p_sock = mfem.socketstream("localhost", 19916)
         p_sock << "parallel " << num_procs << " " << myid << "\n"
         p_sock.precision(8)

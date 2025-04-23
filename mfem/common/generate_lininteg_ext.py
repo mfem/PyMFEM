@@ -22,6 +22,8 @@ for line in fid.readlines():
             pp = "    self._coeff = QF"
         elif line.find(", F)") != -1:
             pp = "    self._coeff = F"
+        elif line.find(", f)") != -1:
+            pp = "    self._coeff = f"
         elif line.find(", f, s=1.0, ir=None)") != -1:
             pp = "    self._coeff = (f, ir)"
         elif line.find(", uD_, lambda_, mu_, alpha_, kappa_)") != -1:

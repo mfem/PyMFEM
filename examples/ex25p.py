@@ -12,17 +12,22 @@
          * calling JITed function from JITed coefficient
      
 '''
+from mpi4py import MPI
+from mfem.common.bessel import yv as yn
+from mfem.common.bessel import jv as jn
 from numba import jit, types, carray
-import numba
-import numba_scipy
 import os
 import mfem.par as mfem
 from mfem.par import intArray
 from os.path import expanduser, join, dirname
 import numpy as np
 from numpy import sin, cos, exp, sqrt, pi
-import scipy.special
-from mpi4py import MPI
+
+try:
+    import numba
+except ImportError:
+    assert False, "Numba is required"
+
 
 num_procs = MPI.COMM_WORLD.size
 myid = MPI.COMM_WORLD.rank
@@ -547,9 +552,6 @@ def source(x):
 
 
 def maxwell_solution(x):
-
-    jn = scipy.special.jv
-    yn = scipy.special.yn
 
     # Initialize
     E = np.zeros(dim, dtype=np.complex128)

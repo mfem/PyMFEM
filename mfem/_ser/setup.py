@@ -10,6 +10,8 @@ import sys
 import os
 import numpy
 
+# this remove *.py in this directory to be imported from setuptools
+sys.path.remove(os.path.abspath(os.path.dirname(sys.argv[0])))
 from distutils.core import Extension, setup
 
 
@@ -104,7 +106,10 @@ def get_extensions():
                "quadinterpolator", "quadinterpolator_face",
                "submesh", "transfermap", "staticcond",
                "sidredatacollection", "enzyme",
+               "attribute_sets", "arrays_by_name",
+               "hyperbolic",
                "complex_densemat", "complexstaticcond", "complexweakform"]
+
 
     if add_cuda == '1':
         from setup_local import cudainc

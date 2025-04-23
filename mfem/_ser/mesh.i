@@ -31,6 +31,7 @@ import_array();
 %import "matrix.i"
 %import "mem_manager.i"
 %import "array.i"
+%import "attribute_sets.i"
 %import "sort_pairs.i"
 %import "ncmesh.i"
 %import "vector.i"
@@ -222,30 +223,34 @@ def GetFaceElements(self, Face):
     return Elem1.value(), Elem2.value()
 %}
 %feature("shadow") mfem::Mesh::GetElementTransformation %{
-def GetElementTransformation(self, i):
+def GetElementTransformation(self, i, Tr=None):
     from mfem.ser import IsoparametricTransformation
-    Tr = IsoparametricTransformation()
+    if Tr is None:
+       Tr = IsoparametricTransformation()
     $action(self, i, Tr)
     return Tr
 %}
 %feature("shadow") mfem::Mesh::GetBdrElementTransformation %{
-def GetBdrElementTransformation(self, i):
+def GetBdrElementTransformation(self, i, Tr=None):
     from mfem.ser import IsoparametricTransformation
-    Tr = IsoparametricTransformation()
+    if Tr is None:
+       Tr = IsoparametricTransformation()
     $action(self, i, Tr)
     return Tr
 %}
 %feature("shadow") mfem::Mesh::GetFaceTransformation %{
-def GetFaceTransformation(self, i):
+def GetFaceTransformation(self, i, Tr=None):
     from mfem.ser import IsoparametricTransformation
-    Tr = IsoparametricTransformation()
+    if Tr is None:
+       Tr = IsoparametricTransformation()
     $action(self, i, Tr)
     return Tr
 %}
 %feature("shadow") mfem::Mesh::GetEdgeTransformation %{
-def GetEdgeTransformation(self, i):
+def GetEdgeTransformation(self, i, Tr=None):
     from mfem.ser import IsoparametricTransformation
-    Tr = IsoparametricTransformation()
+    if Tr is None:
+       Tr = IsoparametricTransformation()
     $action(self, i, Tr)
     return Tr
 %}
@@ -307,6 +312,10 @@ def CartesianPartitioning(self, nxyz, return_list=False):
 
 %newobject mfem::Mesh::GetFaceToElementTable;
 %newobject mfem::Mesh::GetVertexToElementTable;
+
+%immutable mfem::MeshPart::mesh;
+%immutable mfem::MeshPart::nodal_fes;
+%immutable mfem::MeshPart::nodes;
 
 %include "../common/exception.i"
 %include "mesh/mesh.hpp"

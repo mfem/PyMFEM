@@ -1,4 +1,6 @@
-%module(package="mfem._ser") quadinterpolator
+%module(package="mfem._ser") hyperbolic
+%feature("autodoc", "1");
+
 %{
 #include "mfem.hpp"
 #include "numpy/arrayobject.h"
@@ -6,26 +8,29 @@
 #include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
 #include "../common/pyintrules.hpp"
+#include "../common/pynonlininteg.hpp"  
 %}
 
 %include "../common/existing_mfem_headers.i"
-#ifdef FILE_EXISTS_FEM_QUADINTERPOLATOR
+#ifdef FILE_EXISTS_FEM_HYPERBOLIC
 
 %init %{
 import_array();
 %}
+
 %include "exception.i"
-%import "fe.i"
-%import "fe_fixed_order.i"
-%import "element.i"
-%import "mesh.i"
-%import "qspace.i"
-%include "../common/typemap_macros.i"
+%include "std_string.i"
 %include "../common/exception.i"
 
-%import "../common/numpy_int_typemap.i"
+%import "array.i"
+%import "vector.i"
+%import "densemat.i"
+%import "eltrans.i"
+%import "nonlininteg.i"
 
-%include "../common/kernel_dispatch.i"
-%include "fem/quadinterpolator.hpp"
+%include "fem/hyperbolic.hpp"
 
 #endif
+
+
+

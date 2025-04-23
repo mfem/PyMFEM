@@ -60,6 +60,7 @@ from  mfem._ser.qspace import *
 from  mfem._ser.qfunction import *
 from  mfem._ser.quadinterpolator import *
 from  mfem._ser.quadinterpolator_face import *
+from  mfem._ser.attribute_sets import *
 
 from  mfem._ser.fe_base import *
 from  mfem._ser.fe_h1 import *
@@ -72,10 +73,15 @@ from  mfem._ser.fe_pos import *
 from  mfem._ser.fe_nurbs import *
 from  mfem._ser.doftrans import *
 from  mfem._ser.std_vectors import *
-from  mfem._ser.complex_densemat import *
+
+try:
+    from  mfem._ser.complex_densemat import *
+except ImportError:
+    pass
 
 from  mfem._ser.submesh import *
 from  mfem._ser.transfermap import *
+from  mfem._ser.hyperbolic import *
 
 import mfem._ser.array as array
 import mfem._ser.blockoperator as blockoperator

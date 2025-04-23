@@ -35,3 +35,7 @@ m.SetBlock(0, 1, mmat)
 m.SetBlock(1, 0, mmat)
 print(m._offsets)
 print(m._linked_mat)
+
+from mfem.common.sparse_utils import sparsemat_to_scipycsr
+print(m.CreateMonolithic())
+print(sparsemat_to_scipycsr(m.CreateMonolithic(), np.float64).todense())

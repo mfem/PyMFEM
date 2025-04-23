@@ -77,6 +77,7 @@ from  mfem._par.qspace import *
 from  mfem._par.qfunction import *
 from  mfem._par.quadinterpolator import *
 from  mfem._par.quadinterpolator_face import *
+from  mfem._par.attribute_sets import *
 
 from  mfem._par.fe_base import *
 from  mfem._par.fe_h1 import *
@@ -93,6 +94,7 @@ from  mfem._par.submesh import *
 from  mfem._par.psubmesh import *
 from  mfem._par.transfermap import *
 from  mfem._par.ptransfermap import *
+from  mfem._par.hyperbolic import *
 
 try:
    from  mfem._par.gslib import *
