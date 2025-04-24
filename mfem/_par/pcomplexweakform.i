@@ -1,7 +1,8 @@
-%module(package="mfem._ser") complex_densemat
+%module(package="mfem._par") pcomplexweakform
 %{
 #include "mfem.hpp"
 #include "numpy/arrayobject.h"
+#include "miniapps/dpg/util/pcomplexweakform.hpp"
 #include "../common/pyoperator.hpp"
 #include "../common/pysolvers.hpp"
 #include "../common/pycoefficient.hpp"
@@ -15,16 +16,27 @@
 import_array();
 %}
 
+%inline %{
+#include "miniapps/dpg/util/pcomplexweakform.cpp"
+%}
+
+
 %include "exception.i"
 %import "element.i"
 %import "../common/exception.i"
 
 %import "array.i"
 %import "vector.i"
-%import "densemat.i"
-%import "complex_operator.i"
+%import "gridfunc.i"
+%import "mesh.i"
+%import "solvers.i"
+%import "operators.i"
+%import "blockmatrix.i"
+%import "complex_densemat.i"
 %import "../common/exception.i"
 %import "../common/io_stream_typemap.i"
 
-%ignore mfem::ComplexLUFactors::Mult(int m, int n, std::complex<real_t> *X) const;
-%include "linalg/complex_densemat.hpp"
+OSTREAM_TYPEMAP(std::ostream&)
+
+
+%include "miniapps/dpg/util/pcomplexweakform.hpp"

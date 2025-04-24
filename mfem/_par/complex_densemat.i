@@ -1,4 +1,4 @@
-%module(package="mfem._ser") complex_densemat
+%module(package="mfem._par") complex_densemat
 %{
 #include "mfem.hpp"
 #include "numpy/arrayobject.h"

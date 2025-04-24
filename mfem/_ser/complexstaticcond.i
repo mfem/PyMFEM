@@ -32,6 +32,7 @@ import_array();
 %import "solvers.i"
 %import "operators.i"
 %import "blockmatrix.i"
+%import "blockoperator.i"
 %import "complex_densemat.i"
 %import "../common/exception.i"
 %import "../common/io_stream_typemap.i"

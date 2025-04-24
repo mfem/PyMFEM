@@ -34,6 +34,7 @@ from  mfem._par.mesh import *
 from  mfem._par.fe_coll import *
 from  mfem._par.vector import *
 from  mfem._par.complex_operator import *
+from  mfem._par.complex_densemat import *
 from  mfem._par.complex_fem import *
 from  mfem._par.fespace import *
 from  mfem._par.linearform import *
@@ -150,3 +151,13 @@ try:
 except:
     pass
 
+try:
+    import mfem._par.weakform as weakform    
+    import mfem._par.complexweakform as complexweakform
+    import mfem._par.commlexstaticcond as complexstaticcond
+    import mfem._par.blockstaticcond as blockstaticcond
+    import mfem._par.pweakform as pweakform    
+    import mfem._par.pcomplexweakform as pcomplexweakform
+    
+except:
+    pass
