@@ -1494,7 +1494,7 @@ def configure_bdist(self):
     '''
     global prefix, dry_run, verbose, run_swig
     global build_mfem, build_parallel, build_serial, build_gslib
-    global mfem_branch, mfem_source
+    global mfem_branch, mfem_source, mfem_build_miniapps
     global mfems_prefix, mfemp_prefix, hypre_prefix, metis_prefix, ext_prefix
 
     global cc_command, cxx_command, mpicc_command, mpicxx_command
@@ -1531,6 +1531,8 @@ def configure_bdist(self):
     mfem_prefix = ext_prefix
     mfems_prefix = os.path.join(ext_prefix, 'ser')
     mfemp_prefix = os.path.join(ext_prefix, 'par')
+
+    mfem_build_miniapps = False
 
 
 class Install(_install):
