@@ -40,7 +40,7 @@ jobs:
     needs: make_sdist
     strategy:
       matrix:
-        pythonpath: ["cp38-cp38", "cp39-cp39", "cp310-cp310", "cp311-cp311"]
+        pythonpath: ["cp38-cp38", "cp39-cp39", "cp310-cp310", "cp311-cp311", "cp312-cp312"
 
     runs-on: ubuntu-latest
     container: quay.io/pypa/manylinux2014_x86_64
@@ -83,7 +83,7 @@ jobs:
           rm -rf dist/*
           export LD_LIBRARY_PATH=${CWD}/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
 
-          auditwheel -v repair *.whl
+          auditwheel repair *.whl
           rm -rf dist/*
           mv wheelhouse/* dist/
 
