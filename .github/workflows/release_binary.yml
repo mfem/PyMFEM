@@ -8,7 +8,7 @@ on:
 jobs:
   make_sdist:
     runs-on: ubuntu-latest
-    container: quay.io/pypa/manylinux2014_x86_64
+    container: quay.io/pypa/manylinux2_34_x86_64
     steps:
       - name: build_sdist
         run: |
@@ -44,7 +44,7 @@ jobs:
         pythonpath: ["cp38-cp38", "cp39-cp39", "cp310-cp310", "cp311-cp311", "cp312-cp312"]
 
     runs-on: ubuntu-latest
-    container: quay.io/pypa/manylinux2014_x86_64
+    container: quay.io/pypa/manylinux2_34_x86_64
     #container: node:10.16-jessie
     steps:
       - name: build package

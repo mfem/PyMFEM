@@ -1091,9 +1091,10 @@ def generate_wrapper():
         command = [swig_command] + swigflag + serflag + [filename]
         commands.append(command)
 
+    from setup_helper import make_call_mp
     mp_pool = Pool(max((multiprocessing.cpu_count() - 1, 1)))
     with mp_pool:
-        mp_pool.map(make_call, commands)
+        mp_pool.map(make_call_mp, commands)
 
     if not build_parallel:
         os.chdir(pwd)
@@ -1131,8 +1132,9 @@ def generate_wrapper():
         commands.append(command)
 
     mp_pool = Pool(max((multiprocessing.cpu_count() - 1, 1)))
+    from setup_helper import make_call_mp
     with mp_pool:
-        mp_pool.map(make_call, commands)
+        mp_pool.map(make_call_mp, commands)
     # for c in commands:
     #    make_call(c)
 
