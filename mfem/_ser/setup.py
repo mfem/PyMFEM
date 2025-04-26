@@ -107,7 +107,9 @@ def get_extensions():
                "submesh", "transfermap", "staticcond",
                "sidredatacollection", "enzyme",
                "attribute_sets", "arrays_by_name",
-               "hyperbolic"]
+               "hyperbolic",
+               "complex_densemat", "complexstaticcond", "complexweakform"]
+
 
     if add_cuda == '1':
         from setup_local import cudainc
