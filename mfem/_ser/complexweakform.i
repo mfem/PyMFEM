@@ -17,6 +17,10 @@
 import_array();
 %}
 
+%include "../common/existing_mfem_headers.i"
+
+#ifdef FILE_EXISTS_MINIAPPS_DPG_UTIL_COMPLEXWEAKFORM
+
 %inline %{
 #include "miniapps/dpg/util/complexweakform.cpp"
 %}
@@ -38,3 +42,5 @@ import_array();
 OSTREAM_TYPEMAP(std::ostream&)
 
 %include "miniapps/dpg/util/complexweakform.hpp"
+
+#endif
