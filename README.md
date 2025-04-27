@@ -25,13 +25,10 @@ and installs under <prefix>/mfem. See also, docs/install.txt
 ### Build from local source file
 ```shell
 # Download source and build
-$ pip download mfem --no-binary mfem (expand tar.gz file and move to the downloaded directory)
-or clone this repository
 $ git clone https://github.com/mfem/PyMFEM.git
+$ python -m pip install ./
 
-# Then, build it from local source
-$ python -m pip install ./ --install-option="--with-parallel" --install-option="--mfem-branch=master"
-or
+# Building paralel version
 $ python setup.py install --with-parallel # it download and build metis/hypre/mfem
 
 # Verbose output
