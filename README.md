@@ -10,23 +10,19 @@ By default, "pip install mfem" downloads and builds the serial version of MFEM a
 Additionally, the installer supports building MFEM with specific options together with other external libraries, including MPI version.
 
 ## Install
+### Using pip (Serial MFEM)
 ```shell
-pip install mfem                    # binary install is available only on linux platforms (Py36-310)
+pip install mfem            # binary install is available only on linux platforms (Py38-312)
 
 ```
 
-## Build with additional features (MPI, GPU, GPU-Hypre, GSLIB, SuiteSparse, libCEED, LAPACK)
-The setup script accept various options. TO use it, one can either use --install-option flag
-with pip, or download the package manually and run the script. For example, the one below downloads
-and build parallel version of MFEM library (linked with Metis and Hypre)
-and installs under <prefix>/mfem. See also, docs/install.txt
+### Build with additional features (MPI, GPU, GPU-Hypre, GSLIB, SuiteSparse, libCEED, LAPACK)
 
+The setup script accept various options. Download the package manually and run the script. Examples below downloads and build parallel version of MFEM library (linked with Metis and Hypre) and installs under <prefix>/mfem. See INSTALL.md for various ohter options
 
-### Build from local source file
 ```shell
 # Download source and build
 $ git clone https://github.com/mfem/PyMFEM.git
-$ python -m pip install ./
 
 # Building paralel version
 $ python setup.py install --with-parallel # it download and build metis/hypre/mfem
@@ -44,7 +40,7 @@ $ python setup.py install --with-parallel --CC=icc --CXX=icpc --MPICC=mpiicc --M
 cd test
 python test_examples.py -serial
 
-# For other configurations, see docs/install.txt or help
+# For other configurations, see INSTALL.md or help
 $ python setup.py install --help
 
 ```
