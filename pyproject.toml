@@ -4,3 +4,4 @@ requires = ["setuptools",
 	    "cmake",
 	    "swig"]
 build-backend = "setuptools.build_meta"
+lincense = "BSD-3-Clause-Clear"
