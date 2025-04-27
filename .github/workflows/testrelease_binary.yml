@@ -36,7 +36,7 @@ jobs:
           python3 setup.py sdist
           ls -l dist/
           python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
-  make_binary_3_8_9_10_11:
+  make_binary_3_8_9_10_11_12:
     needs: make_sdist
     strategy:
       matrix:
