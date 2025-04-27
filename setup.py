@@ -218,11 +218,12 @@ metadata = {'name': 'mfem',
             'classifiers': ['Development Status :: 5 - Production/Stable',
                             'Intended Audience :: Developers',
                             'Topic :: Scientific/Engineering :: Physics',
-                            'License :: OSI Approved :: BSD License',
+                            'License :: BSD-3-Clause-Clear',
                             'Programming Language :: Python :: 3.8',
                             'Programming Language :: Python :: 3.9',
                             'Programming Language :: Python :: 3.10',
-                            'Programming Language :: Python :: 3.11', ],
+                            'Programming Language :: Python :: 3.11',
+                            'Programming Language :: Python :: 3.12', ],
             'keywords': [k for k in keywords.split('\n') if k],
             'platforms': [p for p in platforms.split('\n') if p],
             'license': 'BSD-3',
@@ -315,8 +316,8 @@ def make_call(command, target='', force_verbose=False, env=None):
 
     myverbose = verbose or force_verbose
     if not myverbose:
-        kwargs['stdout'] = DEVNULL
-        kwargs['stderr'] = DEVNULL
+        kwargs['stdout'] = subprocess.DEVNULL
+        kwargs['stderr'] = subprocess.DEVNULL
     # else:
     #    kwargs['stdout'] = subprocess.PIPE
     #    kwargs['stderr'] = subprocess.STDOUT
@@ -466,6 +467,30 @@ def cmake(path, **kwargs):
     if osx_sysroot != '':
         command.append('-DCMAKE_OSX_SYSROOT=' + osx_sysroot)
     make_call(command)
+
+
+def get_numpy_inc():
+    command = ["python", "-c", "import numpy;print(numpy.get_include())"]
+    try:
+        numpyinc = subprocess.run(
+            command, capture_output=True).stdout.decode().strip()
+    except subprocess.CalledProcessError:
+        assert False, "can not check numpy include directory"
+    except BaseException:
+        assert False, "can not check numpy include directory"
+    return numpyinc
+
+
+def get_mpi4py_inc():
+    command = ["python", "-c", "import mpi4py;print(mpi4py.get_include())"]
+    try:
+        mpi4pyinc = subprocess.run(
+            command, capture_output=True).stdout.decode().strip()
+    except subprocess.CalledProcessError:
+        assert False, "can not check numpy include directory"
+    except BaseException:
+        assert False, "can not check numpy include directory"
+    return mpi4pyinc
 
 
 def find_libpath_from_prefix(lib, prefix0):
@@ -919,8 +944,6 @@ def write_setup_local():
     mfemp_tpl = read_mfem_tplflags(mfemp_prefix) if build_parallel else ''
 
     print(mfems_tpl, mfemp_tpl)
-    from setup_helper import (get_numpy_inc,
-                              get_mpi4py_inc,)
 
     params = {'cxx_ser': cxx_command,
               'cc_ser': cc_command,
@@ -1012,10 +1035,6 @@ def generate_wrapper():
     run swig.
     '''
     # this should work as far as we are in the same directory ?
-    from setup_helper import (get_numpy_inc,
-                              get_mpi4py_inc,
-                              make_call_mp)
-
     if dry_run or verbose:
         print("generating SWIG wrapper")
         print("using MFEM source", os.path.abspath(mfem_source))
@@ -1097,7 +1116,7 @@ def generate_wrapper():
 
     mp_pool = Pool(max((multiprocessing.cpu_count() - 1, 1)))
     with mp_pool:
-        mp_pool.map(make_call_mp, commands)
+        mp_pool.map(subprocess.run, commands)
 
     if not build_parallel:
         os.chdir(pwd)
@@ -1134,9 +1153,8 @@ def generate_wrapper():
         commands.append(command)
 
     mp_pool = Pool(max((multiprocessing.cpu_count() - 1, 1)))
-    from setup_helper import make_call_mp
     with mp_pool:
-        mp_pool.map(make_call_mp, commands)
+        mp_pool.map(subprocess.run, commands)
     # for c in commands:
     #    make_call(c)
 
