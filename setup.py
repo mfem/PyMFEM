@@ -11,6 +11,7 @@ import re
 import shutil
 import configparser
 import itertools
+
 import subprocess
 from subprocess import DEVNULL
 
@@ -112,7 +113,7 @@ build_serial = False
 ext_prefix = ''
 mfems_prefix = ''
 mfemp_prefix = ''
-mfem_source = ''
+mfem_source = os.path.join(os.path.dirname(__file__), "external", "mfem")
 metis_prefix = ''
 hypre_prefix = ''
 
@@ -902,8 +903,6 @@ def write_setup_local():
     create setup_local.py. parameters written here will be read
     by setup.py in mfem._ser and mfem._par
     '''
-    import numpy
-
     # if build_mfem:
     #    mfemser = os.path.join(prefix, 'mfem', 'ser')
     #    mfempar = os.path.join(prefix, 'mfem', 'par')
@@ -920,6 +919,8 @@ def write_setup_local():
     mfemp_tpl = read_mfem_tplflags(mfemp_prefix) if build_parallel else ''
 
     print(mfems_tpl, mfemp_tpl)
+    from setup_helper import (get_numpy_inc,
+                              get_mpi4py_inc,)
 
     params = {'cxx_ser': cxx_command,
               'cc_ser': cc_command,
@@ -934,7 +935,8 @@ def write_setup_local():
               'hyprelib': hyprelibpath,
               'metisinc': os.path.join(metis_prefix, 'include'),
               'metis5lib': metislibpath,
-              'numpync': numpy.get_include(),
+              'numpyinc': get_numpy_inc(),
+              'mpi4pyinc': '',
               'mfembuilddir': os.path.join(mfempar, 'include'),
               'mfemincdir': os.path.join(mfempar, 'include', 'mfem'),
               'mfemlnkdir': os.path.join(mfempar, 'lib'),
@@ -959,11 +961,8 @@ def write_setup_local():
               'build_mfem': '1' if build_mfem else '0'
               }
 
-    try:
-        import mpi4py  # avaialbility of this is checked before
-        params['mpi4pyinc'] = mpi4py.get_include()
-    except ImportError:
-        params['mpi4pyinc'] = ''
+    if build_parallel:
+        params['mpi4pyinc'] = get_mpi4py_inc()
 
     def add_extra(xxx, inc_sub=None):
         params['add_' + xxx] = '1'
@@ -1012,6 +1011,11 @@ def generate_wrapper():
     '''
     run swig.
     '''
+    # this should work as far as we are in the same directory ?
+    from setup_helper import (get_numpy_inc,
+                              get_mpi4py_inc,
+                              make_call_mp)
+
     if dry_run or verbose:
         print("generating SWIG wrapper")
         print("using MFEM source", os.path.abspath(mfem_source))
@@ -1091,7 +1095,6 @@ def generate_wrapper():
         command = [swig_command] + swigflag + serflag + [filename]
         commands.append(command)
 
-    from setup_helper import make_call_mp
     mp_pool = Pool(max((multiprocessing.cpu_count() - 1, 1)))
     with mp_pool:
         mp_pool.map(make_call_mp, commands)
@@ -1102,13 +1105,12 @@ def generate_wrapper():
 
     chdir(os.path.join(rootdir, 'mfem', '_par'))
 
-    import mpi4py
     parflag = ['-I' + os.path.join(mfempar, 'include'),
                '-I' + os.path.join(mfempar, 'include', 'mfem'),
                '-I' + os.path.abspath(mfem_source),
                '-I' + os.path.join(hypre_prefix, 'include'),
                '-I' + os.path.join(metis_prefix, 'include'),
-               '-I' + mpi4py.get_include()]
+               '-I' + get_mpi4py_inc()]
 
     if enable_pumi:
         parflag.append('-I' + os.path.join(pumi_prefix, 'include'))
@@ -1524,7 +1526,7 @@ def configure_bdist(self):
     is_configured = True
     do_bdist_wheel = True
 
-    mfem_source = './external/mfem'
+    # mfem_source = './external/mfem'
     ext_prefix = os.path.join(prefix, 'mfem', 'external')
     print("ext_prefix(bdist)", ext_prefix)
     hypre_prefix = ext_prefix
@@ -1615,7 +1617,7 @@ class Install(_install):
         self.mfem_prefix = ''
         self.mfems_prefix = ''
         self.mfemp_prefix = ''
-        self.mfem_source = './external/mfem'
+        self.mfem_source = mfem_source
         self.mfem_branch = ''
         self.mfem_debug = False
         self.mfem_build_miniapps = False
@@ -1751,6 +1753,7 @@ class BuildPy(_build_py):
                     make_gslib()
 
             mfem_downloaded = False
+
             if build_mfem:
                 gitclone('mfem', use_sha=True) if mfem_branch is None else gitclone(
                     'mfem', branch=mfem_branch)
@@ -1797,7 +1800,8 @@ if haveWheel:
             _bdist_wheel.finalize_options(self)
 
         def run(self):
-            print("Engering BdistWheel::Run")
+            print("!!!!! Engering BdistWheel::Run")
+
             if not is_configured:
                 print('running config')
                 configure_bdist(self)
