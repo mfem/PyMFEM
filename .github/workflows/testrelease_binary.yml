@@ -22,8 +22,9 @@ jobs:
           echo "!!!!!: "$REF
           git checkout $REF
           #
-          export PATH=/opt/python/cp37-cp37m/bin:$PATH
+          export PATH=/opt/python/cp38-cp38/bin:$PATH
 
+          pip install -U packaging
           pip3 install wheel six auditwheel twine
           pip3 install urllib3==1.26.6    # use older version to avoid OpenSSL vesion issue
           pip3 install numpy==1.21.6
@@ -35,12 +36,11 @@ jobs:
           python3 setup.py sdist
           ls -l dist/
           python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
-          #python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*
-  make_binary_3_8_9_10_11:
+  make_binary_3_8_9_10_11_12:
     needs: make_sdist
     strategy:
       matrix:
-        pythonpath: ["cp38-cp38", "cp39-cp39", "cp310-cp310", "cp311-cp311"]
+        pythonpath: ["cp38-cp38", "cp39-cp39", "cp310-cp310", "cp311-cp311", "cp312-cp312"]
 
     runs-on: ubuntu-latest
     container: quay.io/pypa/manylinux2014_x86_64
@@ -60,6 +60,8 @@ jobs:
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
 
+          pip install setuptools
+          pip install -U packaging
           pip3 install auditwheel twine
           pip3 install urllib3==1.26.6    # use older version to avoid OpenSSL vesion issue
 
