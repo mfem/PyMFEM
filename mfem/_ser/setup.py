@@ -8,7 +8,6 @@ Serial version setup file
 # first load variables from PyMFEM_ROOT/setup_local.py
 import sys
 import os
-import numpy
 
 # this remove *.py in this directory to be imported from setuptools
 sys.path.remove(os.path.abspath(os.path.dirname(sys.argv[0])))
@@ -36,13 +35,12 @@ def get_extensions():
     sys.path.insert(0, root)
     try:
         from setup_local import (mfemserbuilddir, mfemserincdir, mfemsrcdir, mfemserlnkdir,
-                                 mfemstpl, build_mfem,
+                                 mfemstpl, build_mfem, numpyinc,
                                  cc_ser, cxx_ser,
                                  cxx11flag,
                                  add_cuda, add_libceed, add_suitesparse, add_gslibs,)
 
-        include_dirs = [mfemserbuilddir, mfemserincdir, mfemsrcdir,
-                        numpy.get_include()]
+        include_dirs = [mfemserbuilddir, mfemserincdir, mfemsrcdir, numpyinc,]
         library_dirs = [mfemserlnkdir, ]
 
     except ImportError:
