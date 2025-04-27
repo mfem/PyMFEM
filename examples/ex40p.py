@@ -1,12 +1,12 @@
 '''
-   MFEM example 40 (converted from ex40.cpp)
+   MFEM example 40p (converted from ex40p.cpp)
 
    See c++ version in the MFEM library for more detail
 
-   Sample runs: python ex40.py -step 10.0 -gr 2.0
-                python ex40.py -step 10.0 -gr 2.0 -o 3 -r 1
-                python ex40.py -step 10.0 -gr 2.0 -r 4 -m ../data/l-shape.mesh
-                python ex40.py -step 10.0 -gr 2.0 -r 2 -m ../data/fichera.mesh
+   Sample runs: mpirun -np  4 python ex40.py -step 10.0 -gr 2.0
+                mpirun -np  4 python ex40.py -step 10.0 -gr 2.0 -o 3 -r 1
+                mpirun -np  4 python ex40.py -step 10.0 -gr 2.0 -r 4 -m ../data/l-shape.mesh
+                mpirun -np  4 python ex40.py -step 10.0 -gr 2.0 -r 2 -m ../data/fichera.mesh
 
    Description: This example code demonstrates how to use MFEM to solve the
                 eikonal equation,
@@ -59,12 +59,12 @@ import os
 from os.path import expanduser, join
 import numpy as np
 
-import mfem.ser as mfem
+import mfem.par as mfem
 
-if hasattr(mfem, "UMFPackSolver"):
-    use_umfpack = True if not args.no_use_umfpack else False
-else:
-    use_umfpack = False
+from mpi4py import MPI
+num_procs = MPI.COMM_WORLD.size
+myid = MPI.COMM_WORLD.rank
+smyid = '.'+'{:0>6d}'.format(myid)
 
 
 def run(meshfile="",
@@ -76,6 +76,9 @@ def run(meshfile="",
         newton_scaling=0.8,
         eps=1e-6,
         tol=1e-4,
+        max_alpha=1e2,
+        max_psi=1e2,
+        eps2=1e-1,
         visualization=True):
 
     # 2. Read the mesh from the mesh file.
@@ -93,36 +96,53 @@ def run(meshfile="",
     curvature_order = max(order, 2)
     mesh.SetCurvature(curvature_order)
 
+    # 3C. Compute the maximum mesh size.
+    hmax = 0.0
+    for i in range(mesh.GetNE()):
+        hmax = max(mesh.GetElementSize(i, 1), hmax)
+
+    pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
+    del mesh
+
     # 4. Define the necessary finite element spaces on the mesh.
     RTfec = mfem.RT_FECollection(order, dim)
-    RTfes = mfem.FiniteElementSpace(mesh, RTfec)
+    RTfes = mfem.ParFiniteElementSpace(pmesh, RTfec)
 
     L2fec = mfem.L2_FECollection(order, dim)
-    L2fes = mfem.FiniteElementSpace(mesh, L2fec)
+    L2fes = mfem.ParFiniteElementSpace(pmesh, L2fec)
 
-    print("Number of H(div) dofs: " + str(RTfes.GetTrueVSize()))
-    print("Number of L² dofs: " + str(L2fes.GetTrueVSize()))
+    dofs_rt = RTfes.GlobalTrueVSize()
+    dofs_l2 = L2fes.GlobalTrueVSize()
+    if myid == 0:
+        print("Number of H(div) dofs: " + str(dofs_rt))
+        print("Number of L² dofs: " + str(dofs_l2))
 
     # 5. Define the offsets for the block matrices
     offsets = mfem.intArray([0, RTfes.GetVSize(), L2fes.GetVSize()])
     offsets.PartialSum()
+    toffsets = mfem.intArray([0, RTfes.GetTrueVSize(), L2fes.GetTrueVSize()])
+    toffsets.PartialSum()
 
     x = mfem.BlockVector(offsets)
     rhs = mfem.BlockVector(offsets)
     x.Assign(0.0)
     rhs.Assign(0.0)
+    tx = mfem.BlockVector(toffsets)
+    trhs = mfem.BlockVector(toffsets)
+    tx.Assign(0.0)
+    trhs.Assign(0.0)
 
     # 6. Define the solution vectors as a finite element grid functions
     #    corresponding to the fespaces.
 
-    u_gf = mfem.GridFunction()
-    delta_psi_gf = mfem.GridFunction()
+    u_gf = mfem.ParGridFunction()
+    delta_psi_gf = mfem.ParGridFunction()
     delta_psi_gf.MakeRef(RTfes, x, offsets[0])
     u_gf.MakeRef(L2fes, x, offsets[1])
 
-    psi_old_gf = mfem.GridFunction(RTfes)
-    psi_gf = mfem.GridFunction(RTfes)
-    u_old_gf = mfem.GridFunction(L2fes)
+    psi_old_gf = mfem.ParGridFunction(RTfes)
+    psi_gf = mfem.ParGridFunction(RTfes)
+    u_old_gf = mfem.ParGridFunction(L2fes)
 
     # 7. Define initial guesses for the solution variables.
     delta_psi_gf.Assign(0.0)
@@ -138,8 +158,11 @@ def run(meshfile="",
         sol_sock.precision(8)
 
     # 9. Coefficients to be used later.
-    neg_alpha_cf = mfem.ConstantCoefficient(-1.0*alpha)
     zero_cf = mfem.ConstantCoefficient(0.0)
+    one_cf = mfem.ConstantCoefficient(1.0)
+    zero_vec = mfem.Vector([0.0]*sdim)
+    zero_vec_cf = mfem.VectorConstantCoefficient(zero_vec)
+    neg_alpha_cf = mfem.ConstantCoefficient(-1.0*alpha)
 
     psigf_cf = mfem.VectorGridFunctionCoefficient(psi_gf)
 
@@ -169,8 +192,8 @@ def run(meshfile="",
         div_psi_old_cf, div_psi_cf, 1.0, -1.0)
 
     # 10. Assemble constant matrices/vectors to avoid reassembly in the loop.
-    b0 = mfem.LinearForm()
-    b1 = mfem.LinearForm()
+    b0 = mfem.ParLinearForm()
+    b1 = mfem.ParLinearForm()
     b0.MakeRef(RTfes, rhs.GetBlock(0), 0)
     b1.MakeRef(L2fes, rhs.GetBlock(1), 0)
 
@@ -178,63 +201,88 @@ def run(meshfile="",
     b1.AddDomainIntegrator(mfem.DomainLFIntegrator(neg_alpha_cf))
     b1.AddDomainIntegrator(mfem.DomainLFIntegrator(psi_old_minus_psi))
 
-    a00 = mfem.BilinearForm(RTfes)
+    a00 = mfem.ParBilinearForm(RTfes)
     a00.AddDomainIntegrator(mfem.VectorFEMassIntegrator(DZ))
 
-    a10 = mfem.MixedBilinearForm(RTfes, L2fes)
+    a10 = mfem.ParMixedBilinearForm(RTfes, L2fes)
     a10.AddDomainIntegrator(mfem.VectorFEDivergenceIntegrator())
     a10.Assemble()
     a10.Finalize()
-    A10 = a10.SpMat()
-    A01 = mfem.Transpose(A10)
+    A10 = a10.ParallelAssemble()
+    A01 = A10.Transpose()
+
+    vol_form = mfem.ParLinearForm(L2fes)
+    one_gf = mfem.ParGridFunction(L2fes)
+    one_gf.Assign(1.0)
+    vol_form.AddDomainIntegrator(mfem.DomainLFIntegrator(one_cf))
+    vol_form.Assemble()
+    domain_volume = vol_form(one_gf)
 
     # 11. Iterate.
     total_iterations = 0
     increment_u = 0.1
-    u_tmp = mfem.GridFunction(L2fes)
+    u_tmp = mfem.ParGridFunction(L2fes)
 
     for k in range(max_it):
         u_tmp.Assign(u_old_gf)
 
-        print("\nOUTER ITERATION " + str(k+1))
+        if myid == 0:
+            print("\nOUTER ITERATION " + str(k+1))
 
         for j in range(5):
             total_iterations += 1
 
             b0.Assemble()
+            b0.ParallelAssemble(trhs.GetBlock(0))
+
             b1.Assemble()
+            b1.ParallelAssemble(trhs.GetBlock(1))
 
             a00.Assemble(0)
             a00.Finalize(0)
-            A00 = a00.SpMat()
+            A00 = a00.ParallelAssemble()
 
             # Construct Schur-complement preconditioner
-            A00_diag = mfem.Vector(a00.Height())
+            A00_diag = mfem.HypreParVector(MPI.COMM_WORLD,
+                                           A00.GetGlobalNumRows(),
+                                           A00.GetRowStarts())
             A00.GetDiag(A00_diag)
+            S_tmp = mfem.HypreParMatrix(A01)
+            S_tmp.InvScaleRows(A00_diag)
             A00_diag.Reciprocal()
-            S = mfem.Mult_AtDA(A01, A00_diag)
+            S = mfem.ParMult(A10, S_tmp, True)
 
             # Python note:
             #    owns_blocks should be 0 in Python
             #    because wrapper class will delete blocks
-            prec = mfem.BlockDiagonalPreconditioner(offsets)
+            prec = mfem.BlockDiagonalPreconditioner(toffsets)
             prec.owns_blocks = 0
 
-            prec.SetDiagonalBlock(0, mfem.DSmoother(A00))
+            P00 = mfem.HypreBoomerAMG(A00)
+            P00.SetPrintLevel(0)
+            P11 = mfem.HypreBoomerAMG(S)
+            P11.SetPrintLevel(0)
+            prec.SetDiagonalBlock(0, P00)
+            prec.SetDiagonalBlock(1, P11)
 
-            if not use_umfpack:
-                prec.SetDiagonalBlock(1, mfem.GSSmoother(S))
-            else:
-                prec.SetDiagonalBlock(1, mfem.UMFPackSolver(S))
-
-            A = mfem.BlockOperator(offsets)
+            A = mfem.BlockOperator(toffsets)
             A.SetBlock(0, 0, A00)
             A.SetBlock(1, 0, A10)
             A.SetBlock(0, 1, A01)
 
-            mfem.MINRES(A, prec, rhs, x, 0, 2000, 1e-12)
+            minres = mfem.MINRESSolver(MPI.COMM_WORLD)
+            minres.SetPrintLevel(-1)
+            minres.SetRelTol(1e-12)
+            minres.SetMaxIter(10000)
+            minres.SetOperator(A)
+            minres.SetPreconditioner(prec)
+            minres.Mult(trhs, tx)
 
             del S
+            del A00
+
+            delta_psi_gf.SetFromTrueDofs(tx.GetBlock(0))
+            u_gf.SetFromTrueDofs(tx.GetBlock(1))
 
             u_tmp -= u_gf  # u_tmp = u_tmp - u_gf
 
@@ -246,24 +294,42 @@ def run(meshfile="",
             a00.Update()
 
             if visualization:
-                sol_sock << "solution\n" << mesh << u_gf
+                sol_sock << "parallel " << num_procs << " " << myid << "\n"
+                sol_sock << "solution\n" << pmesh << u_gf
                 sol_sock << "window_title 'Discrete solution'"
                 sol_sock.flush()
 
-            print("Newton_update_size = " + "{:g}".format(Newton_update_size))
+            if myid == 0:
+                print("Newton_update_size = " +
+                      "{:g}".format(Newton_update_size))
 
-            if Newton_update_size < increment_u:
+            if newton_scaling*Newton_update_size < increment_u:
                 break
 
         u_tmp.Assign(u_gf)
         u_tmp -= u_old_gf
         increment_u = u_tmp.ComputeL2Error(zero_cf)
 
-        print("Number of Newton iterations = " + str(j+1))
-        print("Increment (|| uₕ - uₕ_prvs||) = " + "{:g}".format(increment_u))
+        if myid == 0:
+            print("Number of Newton iterations = " + str(j+1))
+            print("Increment (|| uₕ - uₕ_prvs||) = " +
+                  "{:g}".format(increment_u))
 
         u_old_gf.Assign(u_gf)
         psi_old_gf.Assign(psi_gf)
+        alpha *= max(growth_rate, 1.0)
+
+        #  Safeguard 1: Stop alpha from growing too large
+        alpha = min(alpha, max_alpha)
+
+        # Safeguard 2: Stop |ψ| from growing too large
+        norm_psi = psi_old_gf.ComputeL1Error(zero_vec_cf)/domain_volume
+        if norm_psi > max_psi:
+            # Additional entropy regularization
+            neg_alpha_cf.constant = -alpha/(1.0 + eps2 * alpha * hmax)
+            psi_old_minus_psi.SetAlpha(1.0/(1.0 + eps2 * alpha * hmax))
+        else:
+            neg_alpha_cf.constant = -alpha
 
         if increment_u < tol or k == max_it-1:
             break
@@ -271,9 +337,10 @@ def run(meshfile="",
         alpha *= max(growth_rate, 1.0)
         neg_alpha_cf.constant = -alpha
 
-    print("\n Outer iterations: " + str(k+1) +
-          "\n Total iterations: " + str(total_iterations) +
-          "\n Total dofs:       " + str(RTfes.GetTrueVSize() + L2fes.GetTrueVSize()))
+    if myid == 0:
+        print("\n Outer iterations: " + str(k+1) +
+              "\n Total iterations: " + str(total_iterations) +
+              "\n Total dofs:       " + str(RTfes.GetTrueVSize() + L2fes.GetTrueVSize()))
 
 
 if __name__ == "__main__":
@@ -308,7 +375,8 @@ if __name__ == "__main__":
                         help='Disable or disable GLVis visualization')
 
     args = parser.parse_args()
-    parser.print_options(args)
+    if myid == 0:
+        parser.print_options(args)
 
     meshfile = expanduser(
         join(os.path.dirname(__file__), '..', 'data', args.mesh))
