@@ -17,6 +17,7 @@ import_array();
 
 %include "exception.i"
 %import "operators.i"
+%import "device.i"
 %import "fespace.i"
 %include "../common/exception.i"
 

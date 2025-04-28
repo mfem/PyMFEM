@@ -19,10 +19,12 @@
 import_array();
 %}
 
+
+
 %include "exception.i"
 %import "globals.i"
 
-//%include "fem/coefficient.hpp"
+
 %import "fe.i"
 %import "vector.i"
 %import "eltrans.i"

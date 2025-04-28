@@ -219,6 +219,10 @@ namespace mfem {
     self._coeff = args
 %}
 
+%pythonappend VectorFEBoundaryFluxIntegrator::VectorFEBoundaryFluxIntegrator %{
+    self._coeff = args
+%}
+
 %pythonappend DerivativeIntegrator::DerivativeIntegrator %{
     self._coeff = q
 %}

@@ -6,7 +6,6 @@ setup.py file for SWIG example
 
 import sys
 import os
-import numpy
 
 print('building paralel version')
 
@@ -36,18 +35,9 @@ def get_version():
 
 def get_extensions():
     sys.path.insert(0, root)
-
-    try:
-        import mpi4py
-        mpi4pyinc = mpi4py.get_include()
-    except ImportError:
-        if 'clean' not in sys.argv:
-            raise
-        mpi4pyinc = ''
-
     try:
         from setup_local import (mfembuilddir, mfemincdir, mfemsrcdir, mfemlnkdir,
-                                 mfemptpl, build_mfem,
+                                 mfemptpl, build_mfem, numpyinc, mpi4pyinc,
                                  hypreinc, metisinc, hyprelib, metis5lib,
                                  cc_par, cxx_par,
                                  cxx11flag,
@@ -55,7 +45,7 @@ def get_extensions():
                                  add_suitesparse, add_gslibp)
 
         include_dirs = [mfembuilddir, mfemincdir, mfemsrcdir,
-                        numpy.get_include(),
+                        numpyinc,
                         mpi4pyinc,
                         hypreinc, metisinc]
         library_dirs = [mfemlnkdir, hyprelib, metis5lib, ]
