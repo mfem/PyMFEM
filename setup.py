@@ -1258,6 +1258,7 @@ def print_config():
     print(" when needed, the dependency (mfem/hypre/metis) will be installed under " +
           ext_prefix)
     print(" build mfem : " + ("Yes" if build_mfem else "No"))
+    print(" build mfem-miniapps : " + ("Yes" if mfem_build_miniapps else "No"))
     print(" build metis : " + ("Yes" if build_metis else "No"))
     print(" build hypre : " + ("Yes" if build_hypre else "No"))
     print(" build libceed : " + ("Yes" if build_libceed else "No"))
