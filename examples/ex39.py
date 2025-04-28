@@ -249,7 +249,7 @@ def run(order=1,
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
 
-    parser = ArgParser(description='Ex1 (Laplace Problem)')
+    parser = ArgParser(description='Ex39 (Named attribute)')
     parser.add_argument('-m', '--mesh',
                         default='compass.msh',
                         action='store', type=str,
