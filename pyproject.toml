@@ -1,7 +1,11 @@
 [build-system]
-requires = ["setuptools",
-            "numpy",
-	    "cmake",
-	    "swig"]
+requires = [
+    "setuptools",
+    "numpy>=2.0.0",
+    "numba",
+    "scipy",
+	"cmake",
+	"swig>=4.3",
+]
 build-backend = "setuptools.build_meta"
-lincense = "BSD-3-Clause-Clear"
+license = "BSD-3-Clause-Clear"
