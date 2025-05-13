@@ -64,11 +64,6 @@ def external_install_prefix(verbose=True):
         return path
 
 
-def find_command(name):
-    from shutil import which
-    return which(name)
-
-
 def make_call(command, target='', force_verbose=False, env=None):
     '''
     call command

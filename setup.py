@@ -9,6 +9,7 @@ import site
 import re
 import shutil
 import subprocess
+from shutil import which as find_command
 
 import multiprocessing
 from multiprocessing import Pool
@@ -28,7 +29,7 @@ from distutils.command.clean import clean as _clean
 sys.path.insert(0, os.path.dirname(__file__))
 from setuputils import (
     read_mfem_tplflags, abspath, external_install_prefix,
-    find_command, make_call, chdir, remove_files,
+    make_call, chdir, remove_files,
     make, make_install, download, gitclone,
     record_mfem_sha, cmake, get_numpy_inc, get_mpi4py_inc, find_libpath_from_prefix,
 )
