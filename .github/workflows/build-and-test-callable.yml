@@ -88,10 +88,10 @@ jobs:
     # -------------------------------------------------------------------------------------------------
     # Download/install dependencies
     # -------------------------------------------------------------------------------------------------
-    - name: Install core dependencies via requirements.txt
-      run: |
-        pip install setuptools
-        pip install -r requirements.txt --verbose
+    # - name: Install core dependencies via requirements.txt
+      # run: |
+        # pip install setuptools
+        # pip install -r requirements.txt --verbose
 
     - name: Install MPI
       if: inputs.parallel
