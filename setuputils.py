@@ -12,9 +12,53 @@ import subprocess
 import multiprocessing
 import ssl
 import tarfile
+from collections import namedtuple
 
+# ----------------------------------------------------------------------------------------
+# Constants
+# ----------------------------------------------------------------------------------------
 
-# meta data
+release = namedtuple('Release', ['version', 'hash', 'tarball'])
+REPOS = dict(
+    mfem = dict(
+        url = "https://github.com/mfem/mfem.git",
+        # version, hash, tarball
+        releases = [
+            release("4.7", "dc9128ef596e84daf1138aa3046b826bba9d259f", None),
+            release("4.8", "a01719101027383954b69af1777dc828bf795d62", None),
+        ]
+    ),
+    metis = dict(
+        url = "https://github.com/KarypisLab/METIS",
+        releases = [
+            release("5.1.0", "94c03a6e2d1860128c2d0675cbbb86ad4f261256",
+             "https://github.com/mfem/tpls/raw/gh-pages/metis-5.1.0.tar.gz"),
+        ]
+    ),
+    gklib = dict(
+        url = "https://github.com/KarypisLab/GKlib",
+        releases = [
+            release("5.1.1", "a7f8172703cf6e999dd0710eb279bba513da4fec",
+             "https://github.com/KarypisLab/GKlib/archive/refs/tags/METIS-v5.1.1-DistDGL-0.5.tar.gz"),
+        ]
+    ),
+    libceed = dict(
+        url = "https://github.com/CEED/libCEED.git",
+        releases = [
+            release("0.12.0", None, "https://github.com/CEED/libCEED/archive/refs/tags/v0.12.0.tar.gz"),
+        ]
+    ),
+    hypre = dict(
+        url = None,
+        releases = [
+            release("2.28.0", None, "https://github.com/hypre-space/hypre/archive/v2.28.0.tar.gz"),
+        ]
+    ),
+)
+
+# ----------------------------------------------------------------------------------------
+# Metadata
+# ----------------------------------------------------------------------------------------
 
 def read_mfem_tplflags(prefix):
     filename = os.path.join(prefix, 'share', 'mfem', 'config.mk')
@@ -29,7 +73,9 @@ def read_mfem_tplflags(prefix):
     flags = dict(config.items('global'))['mfem_tplflags']
     return flags
 
-# utilities
+# ----------------------------------------------------------------------------------------
+# Utilities
+# ----------------------------------------------------------------------------------------
 
 def abspath(path):
     return os.path.abspath(os.path.expanduser(path))
@@ -141,7 +187,10 @@ def download(xxx):
     if os.path.exists(os.path.join(extdir, xxx)):
         print("Download " + xxx + " skipped. Use clean --all-exts if needed")
         return
-    url = repo_releases[xxx]
+    # Get the tarball for the latest release
+    url = REPOS[xxx]["releases"][-1].tarball
+    if url is None:
+        raise RuntimeError(f"Could not find tarball URL for {xxx}")
     print("Downloading :", url)
 
     if use_unverifed_SSL:
@@ -163,11 +212,8 @@ def gitclone(xxx, use_sha=False, branch='master'):
         make_call(command)
         command = ['git', 'pull']
         make_call(command)
-
-        # print("Deleting the existing " + xxx)
-        # shutil.rmtree(repo_xxx)
     else:
-        repo = repos[xxx]
+        repo = REPOS[xxx]["url"]
         if git_sshclone:
             repo = repo.replace("https://github.com/", "git@github.com:")
 
@@ -181,7 +227,7 @@ def gitclone(xxx, use_sha=False, branch='master'):
         os.chdir(repo_xxx)
 
         if use_sha:
-            sha = repos_sha[xxx]
+            sha = REPOS[xxx]["releases"][-1].hash
             command = ['git', 'checkout',  sha]
         else:
             command = ['git', 'checkout', branch]

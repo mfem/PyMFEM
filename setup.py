@@ -36,23 +36,6 @@ from setuputils import (
 # ----------------------------------------------------------------------------------------
 # Constants
 # ----------------------------------------------------------------------------------------
-repo_releases = {
-    "gklib": "https://github.com/KarypisLab/GKlib/archive/refs/tags/METIS-v5.1.1-DistDGL-0.5.tar.gz",
-    "metis": "https://github.com/mfem/tpls/raw/gh-pages/metis-5.1.0.tar.gz",
-    "hypre": "https://github.com/hypre-space/hypre/archive/v2.28.0.tar.gz",
-    "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.12.0.tar.gz",
-    "gslib": "https://github.com/Nek5000/gslib/archive/refs/tags/v1.0.8.tar.gz"}
-
-repos = {"mfem": "https://github.com/mfem/mfem.git",
-         "libceed": "https://github.com/CEED/libCEED.git",
-         "gklib": "https://github.com/KarypisLab/GKlib",
-         "metis": "https://github.com/KarypisLab/METIS", }
-
-repos_sha = {
-    "mfem": "a01719101027383954b69af1777dc828bf795d62",  # v4.8
-    # "mfem": "dc9128ef596e84daf1138aa3046b826bba9d259f", # v4.7
-    "gklib": "a7f8172703cf6e999dd0710eb279bba513da4fec",
-    "metis": "94c03a6e2d1860128c2d0675cbbb86ad4f261256", }
 
 rootdir = os.path.abspath(os.path.dirname(__file__))
 extdir = os.path.join(rootdir, 'external')
