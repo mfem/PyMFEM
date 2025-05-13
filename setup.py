@@ -25,7 +25,8 @@ from setuptools.command.install_scripts import install_scripts as _install_scrip
 
 from distutils.command.clean import clean as _clean
 
-from helpers.util import (
+sys.path.insert(0, os.path.dirname(__file__))
+from setuputils import (
     read_mfem_tplflags, abspath, external_install_prefix,
     find_command, make_call, chdir, remove_files,
     make, make_install, download, gitclone,

@@ -1,5 +1,5 @@
 """
-Helper functions for build
+Helper functions for setup.py
 """
 
 import os

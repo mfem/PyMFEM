@@ -18,6 +18,11 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
 ]
 requires-python = ">=3.8"
+dependencies = [
+    "numpy>=2.0.0",
+    "numba",
+    "scipy",
+]
 
 
 [project.urls]
@@ -28,9 +33,6 @@ requires-python = ">=3.8"
 [build-system]
 requires = [
     "setuptools",
-    "numpy>=2.0.0",
-    "numba",
-    "scipy",
 	"cmake",
 	"swig>=4.3",
 ]
