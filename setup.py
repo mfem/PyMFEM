@@ -177,16 +177,6 @@ def long_description():
         return f.read()
 
 
-def install_requires():
-    fname = os.path.join(rootdir, 'requirements.txt')
-    if not os.path.exists(fname):
-        return []
-    fid = open(fname)
-    requirements = fid.read().split('\n')
-    fid.close()
-    return requirements
-
-
 def read_mfem_tplflags(prefix):
     filename = os.path.join(prefix, 'share', 'mfem', 'config.mk')
     if not os.path.exists(filename):
@@ -1934,14 +1924,9 @@ def run_setup():
     if haveWheel:
         cmdclass['bdist_wheel'] = BdistWheel
 
-    install_req = install_requires()
-
-    # print(install_req)
     setup(
         cmdclass=cmdclass,
-        install_requires=install_req,
         packages=find_packages(),
-        extras_require={},
         package_data={'mfem._par': ['*.so'], 'mfem._ser': ['*.so']},
         # data_files=[('data', datafiles)],
         entry_points={},
