@@ -4,12 +4,8 @@ license = {file = "LICENSE"}
 description = "MFEM + PyMFEM (finite element method library)"
 dynamic = ["version"]
 readme = "README.md"
-authors = [
-  { name = "MFEM development team" }
-]
-maintainers = [
-  { name = "S. Shiraiwa", email = "shiraiwa@princeton.edu" }
-]
+authors = [ { name = "MFEM development team" } ]
+maintainers = [ { name = "S. Shiraiwa", email = "shiraiwa@princeton.edu" } ]
 keywords = ["scientific computing", "finite element method"]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
@@ -21,6 +17,7 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
 ]
+requires-python = ">=3.8"
 
 
 [project.urls]
@@ -39,6 +36,12 @@ requires = [
 ]
 build-backend = "setuptools.build_meta"
 
-
 [tool.setuptools.dynamic]
 version = { attr = "mfem.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["mfem", "mfem.*"]
+
+[tool.setuptools.package-data]
+"mfem._par" = ["*.so"]
+"mfem._ser" = ["*.so"]

@@ -1891,8 +1891,6 @@ def run_setup():
 
     setup(
         cmdclass=cmdclass,
-        packages=find_packages(),
-        package_data={'mfem._par': ['*.so'], 'mfem._ser': ['*.so']},
     )
 
 
