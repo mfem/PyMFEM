@@ -617,7 +617,7 @@ def configure_install(self):
 
         print("ext_prefix", ext_prefix)
         if ext_prefix == '':
-            ext_prefix = external_install_prefix()
+            ext_prefix = external_install_prefix(prefix)
         hypre_prefix = os.path.join(ext_prefix)
         metis_prefix = os.path.join(ext_prefix)
 
