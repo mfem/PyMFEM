@@ -1387,7 +1387,6 @@ class BuildPy(_build_py):
                 cmake_make_hypre()
             if build_libceed:
                 download('libceed')
-                # gitclone('libceed',branch='main')
                 make_libceed()
             if build_gslib:
                 download('gslib')
@@ -1437,12 +1436,11 @@ if haveWheel:
         def finalize_options(self):
             def _has_ext_modules():
                 return True
-            from setuptools.dist import Distribution
             self.distribution.has_ext_modules = _has_ext_modules
             _bdist_wheel.finalize_options(self)
 
         def run(self):
-            print("!!!!! Engering BdistWheel::Run")
+            print("!!!!! Entering BdistWheel::Run")
 
             if not is_configured:
                 print('running config')
@@ -1539,7 +1537,7 @@ class Clean(_clean):
         _clean.run(self)
 
 
-def run_setup():
+if __name__ == '__main__':
     cmdclass = {'build_py': BuildPy,
                 'install': Install,
                 'install_lib': InstallLib,
@@ -1552,11 +1550,3 @@ def run_setup():
     setup(
         cmdclass=cmdclass,
     )
-
-
-def main():
-    run_setup()
-
-
-if __name__ == '__main__':
-    main()
