@@ -28,9 +28,9 @@ from distutils.command.clean import clean as _clean
 sys.path.insert(0, os.path.dirname(__file__))
 from setuputils import (
     read_mfem_tplflags, abspath, external_install_prefix,
-    make_call, chdir, remove_files,
-    make, make_install, download, gitclone,
-    record_mfem_sha, cmake, get_numpy_inc, get_mpi4py_inc, find_libpath_from_prefix,
+    make_call, chdir, remove_files, download, gitclone,
+    record_mfem_sha, get_numpy_inc, get_mpi4py_inc, find_libpath_from_prefix,
+    cmake_make_hypre, make_metis, make_gslib, cmake_make_mfem,
 )
 
 # ----------------------------------------------------------------------------------------
@@ -84,6 +84,30 @@ swig_command = (find_command('swig') if os.getenv("SWIG") is None
                 else os.getenv("SWIG"))
 if swig_command is None:
     assert False, "SWIG is not installed (hint: pip install swig)"
+
+if haveWheel:
+    class BdistWheel(_bdist_wheel):
+        '''
+        Wheel build performs SWIG + Serial in Default.
+        --skip-build option skip building entirely.
+        '''
+
+        def finalize_options(self):
+            def _has_ext_modules():
+                return True
+            self.distribution.has_ext_modules = _has_ext_modules
+            _bdist_wheel.finalize_options(self)
+
+        def run(self):
+            print("!!!!! Entering BdistWheel::Run")
+
+            if not is_configured:
+                print('running config')
+                configure_bdist(self)
+                print_config()
+            self.run_command("build")
+            _bdist_wheel.run(self)
+
 
 # ----------------------------------------------------------------------------------------
 # Global variables
@@ -141,29 +165,6 @@ lapack_libraries = ""
 
 dry_run = -1
 do_bdist_wheel = False
-
-if haveWheel:
-    class BdistWheel(_bdist_wheel):
-        '''
-        Wheel build performs SWIG + Serial in Default.
-        --skip-build option skip building entirely.
-        '''
-
-        def finalize_options(self):
-            def _has_ext_modules():
-                return True
-            self.distribution.has_ext_modules = _has_ext_modules
-            _bdist_wheel.finalize_options(self)
-
-        def run(self):
-            print("!!!!! Entering BdistWheel::Run")
-
-            if not is_configured:
-                print('running config')
-                configure_bdist(self)
-                print_config()
-            self.run_command("build")
-            _bdist_wheel.run(self)
 
 
 
@@ -302,8 +303,6 @@ def generate_wrapper():
         os.chdir(pwd)
 
     def update_header_exists(mfem_source):
-        import re
-
         print("updating the list of existing headers")
         list_of_headers = []
         L = len(mfem_source.split(os.sep))
