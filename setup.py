@@ -30,7 +30,7 @@ from setuputils import (
     read_mfem_tplflags, abspath, external_install_prefix,
     make_call, chdir, remove_files, download, gitclone,
     record_mfem_sha, get_numpy_inc, get_mpi4py_inc, find_libpath_from_prefix,
-    cmake_make_hypre, make_metis, make_gslib, cmake_make_mfem,
+    cmake_make_hypre, make_metis, make_libceed, make_gslib, cmake_make_mfem,
 )
 
 # ----------------------------------------------------------------------------------------
