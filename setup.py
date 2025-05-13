@@ -190,41 +190,7 @@ def read_mfem_tplflags(prefix):
     flags = dict(config.items('global'))['mfem_tplflags']
     return flags
 
-
-keywords = """
-scientific computing
-finite element method
-"""
-
-platforms = """
-Mac OS X
-Linux
-"""
-metadata = {'name': 'mfem',
-            'version': version(),
-            'description': __doc__.strip(),
-            'long_description': long_description(),
-            'long_description_content_type': "text/markdown",
-            'url': 'http://mfem.org',
-            'download_url': 'https://github.com/mfem',
-            'classifiers': ['Development Status :: 5 - Production/Stable',
-                            'Intended Audience :: Developers',
-                            'Topic :: Scientific/Engineering :: Physics',
-                            'Programming Language :: Python :: 3.8',
-                            'Programming Language :: Python :: 3.9',
-                            'Programming Language :: Python :: 3.10',
-                            'Programming Language :: Python :: 3.11',
-                            'Programming Language :: Python :: 3.12', ],
-            'keywords': [k for k in keywords.split('\n') if k],
-            'platforms': [p for p in platforms.split('\n') if p],
-            'license': 'BSD-3',
-            'author': 'MFEM developement team',
-            'author_email': '',
-            'maintainer': 'S. Shiraiwa',
-            'maintainer_email': 'shiraiwa@princeton.edu', }
-
 # utilities
-
 
 def abspath(path):
     return os.path.abspath(os.path.expanduser(path))
@@ -1914,7 +1880,6 @@ class Clean(_clean):
 
 
 def run_setup():
-    setup_args = metadata.copy()
     cmdclass = {'build_py': BuildPy,
                 'install': Install,
                 'install_lib': InstallLib,
@@ -1928,9 +1893,7 @@ def run_setup():
         cmdclass=cmdclass,
         packages=find_packages(),
         package_data={'mfem._par': ['*.so'], 'mfem._ser': ['*.so']},
-        # data_files=[('data', datafiles)],
-        entry_points={},
-        **setup_args)
+    )
 
 
 def main():

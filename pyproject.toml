@@ -1,3 +1,33 @@
+[project]
+name = "mfem"
+license = {file = "LICENSE"}
+description = "MFEM + PyMFEM (finite element method library)"
+dynamic = ["version"]
+readme = "README.md"
+authors = [
+  { name = "MFEM development team" }
+]
+maintainers = [
+  { name = "S. Shiraiwa", email = "shiraiwa@princeton.edu" }
+]
+keywords = ["scientific computing", "finite element method"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "Topic :: Scientific/Engineering :: Physics",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+
+
+[project.urls]
+"Homepage" = "http://mfem.org"
+"Download" = "https://github.com/mfem"
+
+
 [build-system]
 requires = [
     "setuptools",
@@ -8,4 +38,7 @@ requires = [
 	"swig>=4.3",
 ]
 build-backend = "setuptools.build_meta"
-license = "BSD-3-Clause-Clear"
+
+
+[tool.setuptools.dynamic]
+version = { attr = "mfem.__version__" }
