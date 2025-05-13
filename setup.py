@@ -236,7 +236,6 @@ def make_metis_gklib(use_int64=False, use_real64=False):
     cmake('..', **cmake_opts)
     make('gklib')
     make_install('gklib')
-    # command = ['make', 'prefix=' + metis_prefix, 'cc=' + cc_command]
     os.chdir(pwd)
 
     '''
@@ -262,7 +261,6 @@ def make_metis_gklib(use_int64=False, use_real64=False):
         options.append('r64=1')
 
     command = ['make', 'config', 'shared=1'] + options
-    # command = ['make', 'config'] + options
     command = command + ['prefix=' + metis_prefix, 'cc=' + cc_command]
     make_call(command)
 
@@ -566,10 +564,6 @@ def write_setup_local():
     create setup_local.py. parameters written here will be read
     by setup.py in mfem._ser and mfem._par
     '''
-    # if build_mfem:
-    #    mfemser = os.path.join(prefix, 'mfem', 'ser')
-    #    mfempar = os.path.join(prefix, 'mfem', 'par')
-    # else:
     mfemser = mfems_prefix
     mfempar = mfemp_prefix
 
@@ -591,7 +585,6 @@ def write_setup_local():
               'no_whole_archive': '--no-whole-archive',
               'nocompactunwind': '',
               'swigflag': '-Wall -c++ -python -fastproxy -olddefs -keyword',
-
               'hypreinc': os.path.join(hypre_prefix, 'include'),
               'hyprelib': hyprelibpath,
               'metisinc': os.path.join(metis_prefix, 'include'),
@@ -779,10 +772,6 @@ def generate_wrapper():
 
     commands = []
     for filename in ifiles():
-        #        pumi.i does not depends on pumi specific header so this should
-        #        work
-        #        if file == 'pumi.i':# and not enable_pumi:
-        #            continue
         if filename == 'strumpack.i' and not enable_strumpack:
             continue
         if not check_new(filename):
@@ -793,8 +782,6 @@ def generate_wrapper():
     mp_pool = Pool(max((multiprocessing.cpu_count() - 1, 1)))
     with mp_pool:
         mp_pool.map(subprocess.run, commands)
-    # for c in commands:
-    #    make_call(c)
 
     os.chdir(pwd)
 
@@ -1451,7 +1438,6 @@ if haveWheel:
             def _has_ext_modules():
                 return True
             from setuptools.dist import Distribution
-            # Distribution.is_pure = _is_pure
             self.distribution.has_ext_modules = _has_ext_modules
             _bdist_wheel.finalize_options(self)
 
@@ -1464,13 +1450,6 @@ if haveWheel:
                 print_config()
             self.run_command("build")
             _bdist_wheel.run(self)
-            # assert False, "bdist install is not supported, use source install"
-
-            # Ensure that there is a basic library build for bdist_egg to pull from.
-            # self.run_command("build")
-            # _cleanup_symlinks(self)
-
-            # Run the default bdist_wheel command
 
 
 class InstallLib(_install_lib):
