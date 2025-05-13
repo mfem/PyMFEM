@@ -42,7 +42,6 @@ extdir = os.path.join(rootdir, 'external')
 if not os.path.exists(extdir):
     os.mkdir(os.path.join(rootdir, 'external'))
 
-
 osx_sysroot = ''
 
 haveWheel = False
@@ -69,6 +68,22 @@ elif platform == "win32":
     assert False, "Windows is not supported yet. Contribution is welcome"
 
 use_metis_gklib = False
+
+cc_command = 'cc' if os.getenv("CC") is None else os.getenv("CC")
+cxx_command = 'c++' if os.getenv("CC") is None else os.getenv("CXX")
+mpicc_command = 'mpicc' if os.getenv("MPICC") is None else os.getenv("MPICC")
+mpicxx_command = 'mpic++' if os.getenv(
+    "MPICXX") is None else os.getenv("MPICXX")
+cxx11_flag = '-std=c++11' if os.getenv(
+    "CXX11FLAG") is None else os.getenv("CXX11FLAG")
+
+use_unverifed_SSL = False if os.getenv(
+    "unverifedSSL") is None else os.getenv("unverifiedSSL")
+
+swig_command = (find_command('swig') if os.getenv("SWIG") is None
+                else os.getenv("SWIG"))
+if swig_command is None:
+    assert False, "SWIG is not installed (hint: pip install swig)"
 
 # ----------------------------------------------------------------------------------------
 # Global variables
@@ -127,421 +142,29 @@ lapack_libraries = ""
 dry_run = -1
 do_bdist_wheel = False
 
-cc_command = 'cc' if os.getenv("CC") is None else os.getenv("CC")
-cxx_command = 'c++' if os.getenv("CC") is None else os.getenv("CXX")
-mpicc_command = 'mpicc' if os.getenv("MPICC") is None else os.getenv("MPICC")
-mpicxx_command = 'mpic++' if os.getenv(
-    "MPICXX") is None else os.getenv("MPICXX")
-cxx11_flag = '-std=c++11' if os.getenv(
-    "CXX11FLAG") is None else os.getenv("CXX11FLAG")
+if haveWheel:
+    class BdistWheel(_bdist_wheel):
+        '''
+        Wheel build performs SWIG + Serial in Default.
+        --skip-build option skip building entirely.
+        '''
+
+        def finalize_options(self):
+            def _has_ext_modules():
+                return True
+            self.distribution.has_ext_modules = _has_ext_modules
+            _bdist_wheel.finalize_options(self)
+
+        def run(self):
+            print("!!!!! Entering BdistWheel::Run")
+
+            if not is_configured:
+                print('running config')
+                configure_bdist(self)
+                print_config()
+            self.run_command("build")
+            _bdist_wheel.run(self)
 
-use_unverifed_SSL = False if os.getenv(
-    "unverifedSSL") is None else os.getenv("unverifiedSSL")
-
-swig_command = (find_command('swig') if os.getenv("SWIG") is None
-                else os.getenv("SWIG"))
-if swig_command is None:
-    assert False, "SWIG is not installed (hint: pip install swig)"
-
-
-# ----------------------------------------------------------------------------------------
-# Build libraries
-# ----------------------------------------------------------------------------------------
-
-def cmake_make_hypre():
-    '''
-    build hypre
-    '''
-    if verbose:
-        print("Building hypre")
-
-    cmbuild = 'cmbuild'
-    path = os.path.join(extdir, 'hypre', 'src', cmbuild)
-    if os.path.exists(path):
-        print("working directory already exists!")
-    else:
-        os.makedirs(path)
-
-    pwd = chdir(path)
-
-    cmake_opts = {'DBUILD_SHARED_LIBS': '1',
-                  'DHYPRE_INSTALL_PREFIX': hypre_prefix,
-                  'DHYPRE_ENABLE_SHARED': '1',
-                  'DCMAKE_C_FLAGS': '-fPIC',
-                  'DCMAKE_INSTALL_PREFIX': hypre_prefix,
-                  'DCMAKE_INSTALL_NAME_DIR': os.path.join(hypre_prefix, 'lib'), }
-    if verbose:
-        cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
-
-    if enable_cuda and enable_cuda_hypre:
-        # in this case, settitng CMAKE_C_COMPILER
-        # causes "mpi.h" not found error. For now, letting CMAKE
-        # to find MPI
-        cmake_opts['DHYPRE_WITH_CUDA'] = '1'
-        if cuda_arch != '':
-            cmake_opts['DCMAKE_CUDA_ARCHITECTURES'] = cuda_arch
-    else:
-        cmake_opts['DCMAKE_C_COMPILER'] = mpicc_command
-
-    cmake('..', **cmake_opts)
-
-    make('hypre')
-    make_install('hypre')
-
-    os.chdir(pwd)
-
-
-def make_metis_gklib(use_int64=False, use_real64=False):
-    '''
-    build GKlib/metis
-    '''
-
-    '''
-    build/install GKlib
-    '''
-    if verbose:
-        print("Building gklib")
-
-    path = os.path.join(extdir, 'gklib')
-    if not dry_run and not os.path.exists(path):
-        assert False, "gklib is not downloaded"
-
-    path = os.path.join(path, 'cmbuild')
-    if os.path.exists(path):
-        print("working directory already exists!")
-    else:
-        os.makedirs(path)
-    pwd = chdir(path)
-
-    cmake_opts = {'DBUILD_SHARED_LIBS': '1',
-                  'DCMAKE_INSTALL_PREFIX': metis_prefix}
-    if verbose:
-        cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
-
-    cmake('..', **cmake_opts)
-    make('gklib')
-    make_install('gklib')
-    os.chdir(pwd)
-
-    '''
-    build/install metis
-    '''
-    path = os.path.join(extdir, 'metis')
-    if not dry_run and not os.path.exists(path):
-        assert False, "metis is not downloaded"
-    elif not os.path.exists(path):
-        os.makedirs(path)
-        os.makedirs(os.path.join(path, 'build'))
-
-    pwd = chdir(path)
-
-    gklibpath = os.path.dirname(find_libpath_from_prefix(
-        'GKlib', metis_prefix))
-
-    options = ['gklib_path='+metis_prefix]
-    if use_int64:
-        options.append('i64=1')
-
-    if use_real64:
-        options.append('r64=1')
-
-    command = ['make', 'config', 'shared=1'] + options
-    command = command + ['prefix=' + metis_prefix, 'cc=' + cc_command]
-    make_call(command)
-
-    chdir('build')
-    cmake_opts = {'DGKLIB_PATH': metis_prefix,
-                  'DSHARED': '1',
-                  'DCMAKE_C_COMPILER': cc_command,
-                  'DCMAKE_C_STANDARD_LIBRARIES': '-lGKlib',
-                  'DCMAKE_INSTALL_RPATH': gklibpath,
-                  'DCMAKE_BUILD_WITH_INSTALL_RPATH': '1',
-                  'DCMAKE_INSTALL_PREFIX': metis_prefix}
-    if verbose:
-        cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
-
-    cmake('..', **cmake_opts)
-    chdir(path)
-    make('metis')
-    make_install('metis')
-
-    if platform == "darwin":
-        command = ['install_name_tool',
-                   '-id',
-                   os.path.join(metis_prefix, 'lib', 'libGKlib.dylib'),
-                   os.path.join(metis_prefix, 'lib', 'libGKlib.dylib'), ]
-        make_call(command)
-        command = ['install_name_tool',
-                   '-id',
-                   os.path.join(metis_prefix, 'lib', 'libmetis.dylib'),
-                   os.path.join(metis_prefix, 'lib', 'libmetis.dylib'), ]
-        make_call(command)
-    os.chdir(pwd)
-
-
-def make_metis(use_int64=False, use_real64=False):
-    '''
-    build metis
-    '''
-    if verbose:
-        print("Building metis")
-
-    path = os.path.join(extdir, 'metis')
-    if not os.path.exists(path):
-        assert False, "metis is not downloaded"
-
-    pwd = chdir(path)
-
-    if use_int64:
-        pattern_int = "#define IDXTYPEWIDTH 32"
-        replace_int = "#define IDXTYPEWIDTH 64"
-    else:
-        pattern_int = "#define IDXTYPEWIDTH 64"
-        replace_int = "#define IDXTYPEWIDTH 32"
-    with open("include/metis.h", "r") as metis_header_fid:
-        metis_header_lines = metis_header_fid.readlines()
-    with open("include/metis.h", "w") as metis_header_fid:
-        for line in metis_header_lines:
-            metis_header_fid.write(re.sub(pattern_int, replace_int, line))
-
-    if use_real64:
-        pattern_real = "#define REALTYPEWIDTH 32"
-        replace_real = "#define REALTYPEWIDTH 64"
-    else:
-        pattern_real = "#define REALTYPEWIDTH 64"
-        replace_real = "#define REALTYPEWIDTH 32"
-    with open("include/metis.h", "r") as metis_header_fid:
-        metis_header_lines = metis_header_fid.readlines()
-    with open("include/metis.h", "w") as metis_header_fid:
-        for line in metis_header_lines:
-            metis_header_fid.write(re.sub(pattern_real, replace_real, line))
-
-    command = ['make', 'config', 'shared=1',
-               'prefix=' + metis_prefix,
-               'cc=' + cc_command]
-    make_call(command, env={'CMAKE_POLICY_VERSION_MINIMUM': '3.5'})
-    make('metis')
-    make_install('metis')
-
-    if platform == "darwin":
-        command = ['install_name_tool',
-                   '-id',
-                   os.path.join(metis_prefix, 'lib', 'libmetis.dylib'),
-                   os.path.join(metis_prefix, 'lib', 'libmetis.dylib'), ]
-        make_call(command)
-    os.chdir(pwd)
-
-
-def make_libceed(serial=False):
-    if verbose:
-        print("Building libceed")
-
-    path = os.path.join(extdir, 'libceed')
-    if not os.path.exists(path):
-        assert False, "libceed is not downloaded"
-
-    pwd = chdir(path)
-    try:
-        make_call(['make', 'clean'])
-    except:
-        pass
-
-    if enable_cuda:
-        command = ['make', 'configure', 'CUDA_DIR='+cuda_prefix]
-        make_call(command)
-
-    make('libceed')
-    make_install('libceed', prefix=libceed_prefix)
-    os.chdir(pwd)
-
-
-def make_gslib(serial=False):
-    if verbose:
-        print("Building gslib")
-
-    path = os.path.join(extdir, 'gslib')
-    if not os.path.exists(path):
-        assert False, "gslib is not downloaded"
-
-    pwd = chdir(path)
-    make_call(['make', 'clean'])
-    if serial:
-        command = ['make', 'CC=' + cc_command, 'MPI=0', 'CFLAGS=-fPIC']
-        make_call(command)
-        command = ['make', 'MPI=0', 'DESTDIR=' + gslibs_prefix]
-        make_call(command)
-    else:
-        command = ['make', 'CC=' + mpicc_command, 'CFLAGS=-O2 -fPIC']
-        make_call(command)
-        command = ['make', 'DESTDIR=' + gslibp_prefix]
-        make_call(command)
-    os.chdir(pwd)
-
-
-def cmake_make_mfem(serial=True):
-    '''
-    build MFEM
-    '''
-    cmbuild = 'cmbuild_ser' if serial else 'cmbuild_par'
-    path = os.path.join(extdir, 'mfem', cmbuild)
-    if os.path.exists(path):
-        print("working directory already exists!")
-    else:
-        os.makedirs(path)
-
-    ldflags = os.getenv('LDFLAGS') if os.getenv('LDFLAGS') is not None else ''
-    metisflags = ''
-    hypreflags = ''
-
-    rpaths = []
-
-    def add_rpath(p):
-        if not p in rpaths:
-            rpaths.append(p)
-
-    cmake_opts = {'DBUILD_SHARED_LIBS': '1',
-                  'DMFEM_ENABLE_EXAMPLES': '1',
-                  'DMFEM_ENABLE_MINIAPPS': '0',
-                  'DCMAKE_SHARED_LINKER_FLAGS': ldflags,
-                  'DMFEM_USE_ZLIB': '1',
-                  'DCMAKE_CXX_FLAGS': cxx11_flag,
-                  'DCMAKE_BUILD_WITH_INSTALL_RPATH': '1'}
-
-    if mfem_debug:
-        cmake_opts['DMFEM_DEBUG'] = 'YES'
-
-    if mfem_build_miniapps:
-        cmake_opts['DMFEM_ENABLE_MINIAPPS'] = '1'
-
-    if verbose:
-        cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
-
-    if serial:
-        cmake_opts['DCMAKE_CXX_COMPILER'] = cxx_command
-        cmake_opts['DMFEM_USE_EXCEPTIONS'] = '1'
-        cmake_opts['DCMAKE_INSTALL_PREFIX'] = mfems_prefix
-
-        add_rpath(os.path.join(mfems_prefix, 'lib'))
-        if enable_suitesparse:
-            enable_metis = True
-        else:
-            enable_metis = False
-    else:
-        cmake_opts['DCMAKE_CXX_COMPILER'] = mpicxx_command
-        cmake_opts['DMFEM_USE_EXCEPTIONS'] = '0'
-        cmake_opts['DCMAKE_INSTALL_PREFIX'] = mfemp_prefix
-        cmake_opts['DMFEM_USE_MPI'] = '1'
-        cmake_opts['DHYPRE_DIR'] = hypre_prefix
-        cmake_opts['DHYPRE_INCLUDE_DIRS'] = os.path.join(
-            hypre_prefix, "include")
-
-        add_rpath(os.path.join(mfemp_prefix, 'lib'))
-
-        hyprelibpath = os.path.dirname(
-            find_libpath_from_prefix(
-                'HYPRE', hypre_prefix))
-
-        add_rpath(hyprelibpath)
-
-        hypreflags = "-L" + hyprelibpath + " -lHYPRE "
-
-        if enable_strumpack:
-            cmake_opts['DMFEM_USE_STRUMPACK'] = '1'
-            cmake_opts['DSTRUMPACK_DIR'] = strumpack_prefix
-            libpath = os.path.dirname(
-                find_libpath_from_prefix("STRUMPACK", strumpack_prefix))
-            add_rpath(libpath)
-        if enable_pumi:
-            cmake_opts['DMFEM_USE_PUMI'] = '1'
-            cmake_opts['DPUMI_DIR'] = pumi_prefix
-            libpath = os.path.dirname(
-                find_libpath_from_prefix("pumi", strumpack_prefix))
-            add_rpath(libpath)
-        enable_metis = True
-
-    if enable_metis:
-        cmake_opts['DMFEM_USE_METIS_5'] = '1'
-        cmake_opts['DMETIS_DIR'] = metis_prefix
-        cmake_opts['DMETIS_INCLUDE_DIRS'] = os.path.join(
-            metis_prefix, "include")
-        metislibpath = os.path.dirname(
-            find_libpath_from_prefix(
-                'metis', metis_prefix))
-        add_rpath(metislibpath)
-
-        if use_metis_gklib:
-            metisflags = "-L" + metislibpath + " -lmetis -lGKlib "
-        else:
-            metisflags = "-L" + metislibpath + " -lmetis "
-
-    if ldflags != '':
-        cmake_opts['DCMAKE_SHARED_LINKER_FLAGS'] = ldflags
-        cmake_opts['DCMAKE_EXE_LINKER_FLAGS'] = ldflags
-
-    if metisflags != '':
-        cmake_opts['DMETIS_LIBRARIES'] = metisflags
-    if hypreflags != '':
-        cmake_opts['DHYPRE_LIBRARIES'] = hypreflags
-
-    if enable_cuda:
-        cmake_opts['DMFEM_USE_CUDA'] = '1'
-        if cuda_arch != '':
-            cmake_opts['DCMAKE_CUDA_ARCHITECTURES'] = cuda_arch
-
-    if enable_libceed:
-        cmake_opts['DMFEM_USE_CEED'] = '1'
-        cmake_opts['DCEED_DIR'] = libceed_prefix
-        libpath = os.path.dirname(
-            find_libpath_from_prefix("ceed", libceed_prefix))
-        add_rpath(libpath)
-
-    if enable_gslib:
-        if serial:
-            cmake_opts['DMFEM_USE_GSLIB'] = '1'
-            cmake_opts['DGSLIB_DIR'] = gslibs_prefix
-        else:
-            cmake_opts['DMFEM_USE_GSLIB'] = '1'
-            cmake_opts['DGSLIB_DIR'] = gslibp_prefix
-
-    if enable_suitesparse:
-        cmake_opts['DMFEM_USE_SUITESPARSE'] = '1'
-        if suitesparse_prefix != '':
-            cmake_opts['DSuiteSparse_DIR'] = suitesparse_prefix
-
-    if enable_lapack:
-        cmake_opts['DMFEM_USE_LAPACK'] = '1'
-    if blas_libraries != "":
-        cmake_opts['DBLAS_LIBRARIES'] = blas_libraries
-    if lapack_libraries != "":
-        cmake_opts['DLAPACK_LIBRARIES'] = lapack_libraries
-
-    cmake_opts['DCMAKE_INSTALL_RPATH'] = ":".join(rpaths)
-
-    pwd = chdir(path)
-    cmake('..', **cmake_opts)
-
-    txt = 'serial' if serial else 'parallel'
-
-    make('mfem_' + txt)
-    make_install('mfem_' + txt)
-
-    from shutil import copytree, rmtree
-
-    print("copying mesh data for testing", "../data",
-          cmake_opts['DCMAKE_INSTALL_PREFIX'])
-    path = os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "data")
-    if os.path.exists(path):
-        rmtree(path)
-    copytree("../data", path)
-
-    if do_bdist_wheel:
-        ex_dir = os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "examples")
-        for x in os.listdir(ex_dir):
-            path = os.path.join(ex_dir, x)
-            command = ['chrpath', '-r', "$ORIGIN/../lib", path]
-            make_call(command, force_verbose=True)
-
-    os.chdir(pwd)
 
 
 def write_setup_local():
@@ -1409,31 +1032,6 @@ class BuildPy(_build_py):
             _build_py.run(self)
         else:
             sys.exit()
-
-
-if haveWheel:
-    class BdistWheel(_bdist_wheel):
-        '''
-        Wheel build performs SWIG + Serial in Default.
-        --skip-build option skip building entirely.
-        '''
-
-        def finalize_options(self):
-            def _has_ext_modules():
-                return True
-            self.distribution.has_ext_modules = _has_ext_modules
-            _bdist_wheel.finalize_options(self)
-
-        def run(self):
-            print("!!!!! Entering BdistWheel::Run")
-
-            if not is_configured:
-                print('running config')
-                configure_bdist(self)
-                print_config()
-            self.run_command("build")
-            _bdist_wheel.run(self)
-
 
 class InstallLib(_install_lib):
     def finalize_options(self):
