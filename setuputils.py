@@ -5,10 +5,13 @@ Helper functions for setup.py
 import os
 import sys
 import configparser
+from urllib import request
 import itertools
 import site
 import subprocess
 import multiprocessing
+import ssl
+import tarfile
 
 
 # meta data
@@ -93,7 +96,7 @@ def make_call(command, target='', force_verbose=False, env=None):
 
 def chdir(path):
     '''
-    change directory
+    change directory to `path`; returns the previous directory
     '''
     pwd = os.getcwd()
     os.chdir(path)
@@ -134,8 +137,6 @@ def download(xxx):
     download tar.gz from somewhere. xxx is name.
     url is given by repos above
     '''
-    import ssl
-    import tarfile
 
     if os.path.exists(os.path.join(extdir, xxx)):
         print("Download " + xxx + " skipped. Use clean --all-exts if needed")

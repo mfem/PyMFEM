@@ -4,7 +4,6 @@
 from sys import platform
 import sys
 import os
-from urllib import request
 import site
 import re
 import shutil
@@ -34,7 +33,9 @@ from setuputils import (
     record_mfem_sha, cmake, get_numpy_inc, get_mpi4py_inc, find_libpath_from_prefix,
 )
 
-# constants
+# ----------------------------------------------------------------------------------------
+# Constants
+# ----------------------------------------------------------------------------------------
 repo_releases = {
     "gklib": "https://github.com/KarypisLab/GKlib/archive/refs/tags/METIS-v5.1.1-DistDGL-0.5.tar.gz",
     "metis": "https://github.com/mfem/tpls/raw/gh-pages/metis-5.1.0.tar.gz",
@@ -86,7 +87,9 @@ elif platform == "win32":
 
 use_metis_gklib = False
 
-# global variables
+# ----------------------------------------------------------------------------------------
+# Global variables
+# ----------------------------------------------------------------------------------------
 is_configured = False
 prefix = ''
 
@@ -158,10 +161,9 @@ if swig_command is None:
     assert False, "SWIG is not installed (hint: pip install swig)"
 
 
-###
-#  build libraries
-###
-
+# ----------------------------------------------------------------------------------------
+# Build libraries
+# ----------------------------------------------------------------------------------------
 
 def cmake_make_hypre():
     '''
