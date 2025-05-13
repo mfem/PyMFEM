@@ -152,7 +152,7 @@ jobs:
 
     - name: Build all (steps 1-3)
       if: inputs.phases == false
-      run: python setup.py install --vv ${{ env.build-flags }}
+      run: pip install -e . -C"--build-option=--vv" ${{ env.build-flags }}
 
     # -------------------------------------------------------------------------------------------------
     # Run tests
