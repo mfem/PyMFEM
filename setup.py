@@ -4,16 +4,11 @@
 from sys import platform
 import sys
 import os
-import urllib
-import gzip
+from urllib import request
 import site
 import re
 import shutil
-import configparser
-import itertools
-
 import subprocess
-from subprocess import DEVNULL
 
 import multiprocessing
 from multiprocessing import Pool
@@ -27,22 +22,19 @@ from setuptools.command.install import install as _install
 from setuptools.command.install_egg_info import install_egg_info as _install_egg_info
 from setuptools.command.install_lib import install_lib as _install_lib
 from setuptools.command.install_scripts import install_scripts as _install_scripts
-import setuptools.command.sdist
 
-# this stops working after setuptools (56)
-# try:
-#    from setuptools._distutils.command.clean import clean as _clean
-# except ImportError:
 from distutils.command.clean import clean as _clean
 
-# To use a consistent encoding
-# from codecs import open
+from helpers.util import (
+    read_mfem_tplflags, abspath, external_install_prefix,
+    find_command, make_call, chdir, remove_files,
+    make, make_install, download, gitclone,
+    record_mfem_sha, cmake, get_numpy_inc, get_mpi4py_inc, find_libpath_from_prefix,
+)
 
 # constants
 repo_releases = {
     "gklib": "https://github.com/KarypisLab/GKlib/archive/refs/tags/METIS-v5.1.1-DistDGL-0.5.tar.gz",
-    # "metis": "https://github.com/KarypisLab/METIS/archive/refs/tags/v5.1.1-DistDGL-v0.5.tar.gz",
-    # "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
     "metis": "https://github.com/mfem/tpls/raw/gh-pages/metis-5.1.0.tar.gz",
     "hypre": "https://github.com/hypre-space/hypre/archive/v2.28.0.tar.gz",
     "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.12.0.tar.gz",
@@ -158,324 +150,11 @@ cxx11_flag = '-std=c++11' if os.getenv(
 use_unverifed_SSL = False if os.getenv(
     "unverifedSSL") is None else os.getenv("unverifiedSSL")
 
-# meta data
-
-
-def version():
-    VERSIONFILE = os.path.join('mfem', '__init__.py')
-    initfile_lines = open(VERSIONFILE, 'rt').readlines()
-    VSRE = r"^__version__ = ['\"]([^'\"]*)['\"]"
-    for line in initfile_lines:
-        mo = re.search(VSRE, line, re.M)
-        if mo:
-            return mo.group(1)
-    raise RuntimeError('Unable to find version string in %s.' % (VERSIONFILE,))
-
-
-def long_description():
-    with open(os.path.join(rootdir, 'README.md'), encoding='utf-8') as f:
-        return f.read()
-
-
-def read_mfem_tplflags(prefix):
-    filename = os.path.join(prefix, 'share', 'mfem', 'config.mk')
-    if not os.path.exists(filename):
-        print("NOTE: " + filename + " does not exist.")
-        print("returning empty string")
-        return ""
-
-    config = configparser.ConfigParser()
-    with open(filename) as fp:
-        config.read_file(itertools.chain(['[global]'], fp), source=filename)
-    flags = dict(config.items('global'))['mfem_tplflags']
-    return flags
-
-# utilities
-
-def abspath(path):
-    return os.path.abspath(os.path.expanduser(path))
-
-
-def external_install_prefix(verbose=True):
-
-    if hasattr(site, "getusersitepackages"):
-        usersite = site.getusersitepackages()
-    else:
-        usersite = site.USER_SITE
-
-    if verbose:
-        print("running external_install_prefix with the following parameters")
-        print("   sys.argv :", sys.argv)
-        print("   sys.prefix :", sys.prefix)
-        print("   usersite :", usersite)
-        print("   prefix :", prefix)
-
-    if '--user' in sys.argv:
-        path = usersite
-        if not os.path.exists(path):
-            os.makedirs(path)
-        path = os.path.join(path, 'mfem', 'external')
-        return path
-
-    else:
-        # when prefix is given...let's borrow pip._internal to find the location ;D
-        import pip._internal.locations
-        path = pip._internal.locations.get_scheme(
-            "mfem", prefix=prefix).purelib
-        if not os.path.exists(path):
-            os.makedirs(path)
-        path = os.path.join(path, 'mfem', 'external')
-        return path
-    '''
-    else:
-        py_version = '%s.%s' % (sys.version_info[0], sys.version_info[1])
-        paths = (s % (py_version) for s in (
-            sys.prefix + '/lib/python%s/dist-packages/',
-            sys.prefix + '/lib/python%s/site-packages/',
-            sys.prefix + '/local/lib/python%s/dist-packages/',
-            sys.prefix + '/local/lib/python%s/site-packages/',
-            '/Library/Python/%s/site-packages/',
-        ))
-
-    for path in paths:
-        # if verbose:
-        #    print("testing installation path", path)
-        if os.path.exists(path):
-            path = os.path.join(path, 'mfem', 'external')
-            return path
-    assert False, "no installation path found"
-    return None
-    '''
-
-
-def find_command(name):
-    from shutil import which
-    return which(name)
-
-
 swig_command = (find_command('swig') if os.getenv("SWIG") is None
                 else os.getenv("SWIG"))
 if swig_command is None:
     assert False, "SWIG is not installed (hint: pip install swig)"
 
-
-def make_call(command, target='', force_verbose=False, env=None):
-    '''
-    call command
-    '''
-    print("calling ... " + " ".join(command))
-
-    if dry_run:
-        return
-    kwargs = {'universal_newlines': True, 'env': env}
-    if env is not None:
-        env.update(os.environ)
-
-    myverbose = verbose or force_verbose
-    if not myverbose:
-        kwargs['stdout'] = subprocess.DEVNULL
-        kwargs['stderr'] = subprocess.DEVNULL
-    # else:
-    #    kwargs['stdout'] = subprocess.PIPE
-    #    kwargs['stderr'] = subprocess.STDOUT
-
-    p = subprocess.Popen(command, **kwargs)
-    p.communicate()
-    if p.returncode != 0:
-        if target == '':
-            target = " ".join(command)
-        print("Failed when calling command: " + target)
-        raise subprocess.CalledProcessError(p.returncode,
-                                            " ".join(command))
-
-        # subprocess.check_call(command, **kwargs)
-    # except subprocess.CalledProcessError:
-    # print(stdout)
-
-
-def chdir(path):
-    '''
-    change directory
-    '''
-    pwd = os.getcwd()
-    os.chdir(path)
-    if verbose:
-        print("Moving to a directory : " + path)
-    return pwd
-
-
-def remove_files(files):
-    for f in files:
-        if verbose:
-            print("Removing : " + f)
-        if dry_run:
-            continue
-        os.remove(f)
-
-
-def make(target):
-    '''
-    make : add -j option automatically
-    '''
-    command = ['make', '-j', str(max((multiprocessing.cpu_count() - 1, 1)))]
-    make_call(command, target=target, force_verbose=True)
-
-
-def make_install(target, prefix=None):
-    '''
-    make install
-    '''
-    command = ['make', 'install']
-    if prefix is not None:
-        command.append('prefix='+prefix)
-    make_call(command, target=target)
-
-
-def download(xxx):
-    '''
-    download tar.gz from somewhere. xxx is name.
-    url is given by repos above
-    '''
-    from urllib import request
-    import ssl
-    import tarfile
-
-    if os.path.exists(os.path.join(extdir, xxx)):
-        print("Download " + xxx + " skipped. Use clean --all-exts if needed")
-        return
-    url = repo_releases[xxx]
-    print("Downloading :", url)
-
-    if use_unverifed_SSL:
-        ssl._create_default_https_context = ssl._create_unverified_context
-
-    ftpstream = request.urlopen(url)
-    targz = tarfile.open(fileobj=ftpstream, mode="r|gz")
-    targz.extractall(path=extdir)
-    os.rename(os.path.join(extdir, targz.getnames()[0].split('/')[0]),
-              os.path.join(extdir, xxx))
-
-
-def gitclone(xxx, use_sha=False, branch='master'):
-    cwd = os.getcwd()
-    repo_xxx = os.path.join(extdir, xxx)
-    if os.path.exists(repo_xxx):
-        os.chdir(repo_xxx)
-        command = ['git', 'checkout', branch]
-        make_call(command)
-        command = ['git', 'pull']
-        make_call(command)
-
-        # print("Deleting the existing " + xxx)
-        # shutil.rmtree(repo_xxx)
-    else:
-        repo = repos[xxx]
-        if git_sshclone:
-            repo = repo.replace("https://github.com/", "git@github.com:")
-
-        os.chdir(extdir)
-        command = ['git', 'clone', repo, xxx]
-        make_call(command)
-
-    if not dry_run:
-        if not os.path.exists(repo_xxx):
-            print(repo_xxx + " does not exist. Check if git clone worked")
-        os.chdir(repo_xxx)
-
-        if use_sha:
-            sha = repos_sha[xxx]
-            command = ['git', 'checkout',  sha]
-        else:
-            command = ['git', 'checkout', branch]
-        make_call(command)
-    os.chdir(cwd)
-
-
-def record_mfem_sha(mfem_source):
-    pwd = chdir(mfem_source)
-    command = ['git', 'rev-parse', 'HEAD']
-    try:
-        sha = subprocess.run(
-            command, capture_output=True).stdout.decode().strip()
-    except subprocess.CalledProcessError:
-        print("subprocess failed to read sha...continuing w/o recording SHA")
-        sha = None
-    except BaseException:
-        print("subprocess failed to read sha...continuing w/o recording SHA")
-        sha = None
-
-    chdir(pwd)
-
-    sha_file = os.path.join('mfem', '__sha__.py')
-    fid = open(sha_file, 'w')
-    if sha is not None:
-        fid.write('mfem = "' + sha + '"')
-    fid.close()
-
-
-def cmake(path, **kwargs):
-    '''
-    run cmake. must be called in the target directory
-    '''
-    command = ['cmake', path]
-    for key, value in kwargs.items():
-        command.append('-' + key + '=' + value)
-
-    if osx_sysroot != '':
-        command.append('-DCMAKE_OSX_SYSROOT=' + osx_sysroot)
-    make_call(command)
-
-
-def get_numpy_inc():
-    command = ["python", "-c", "import numpy;print(numpy.get_include())"]
-    try:
-        numpyinc = subprocess.run(
-            command, capture_output=True).stdout.decode().strip()
-    except subprocess.CalledProcessError:
-        assert False, "can not check numpy include directory"
-    except BaseException:
-        assert False, "can not check numpy include directory"
-    return numpyinc
-
-
-def get_mpi4py_inc():
-    command = ["python", "-c", "import mpi4py;print(mpi4py.get_include())"]
-    try:
-        mpi4pyinc = subprocess.run(
-            command, capture_output=True).stdout.decode().strip()
-    except subprocess.CalledProcessError:
-        assert False, "can not check numpy include directory"
-    except BaseException:
-        assert False, "can not check numpy include directory"
-    return mpi4pyinc
-
-
-def find_libpath_from_prefix(lib, prefix0):
-
-    prefix0 = os.path.expanduser(prefix0)
-    prefix0 = abspath(prefix0)
-
-    soname = 'lib' + lib + dylibext
-    aname = 'lib' + lib + '.a'
-
-    path = os.path.join(prefix0, 'lib', soname)
-    if os.path.exists(path):
-        return path
-    else:
-        path = os.path.join(prefix0, 'lib64', soname)
-        if os.path.exists(path):
-            return path
-
-    path = os.path.join(prefix0, 'lib', aname)
-    if os.path.exists(path):
-        return path
-    else:
-        path = os.path.join(prefix0, 'lib64', aname)
-        if os.path.exists(path):
-            return path
-    print("Can not find library by find_libpath_from_prefix (continue)", lib, prefix0)
-
-    return ''
 
 ###
 #  build libraries
