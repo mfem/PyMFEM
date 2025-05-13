@@ -49,7 +49,7 @@ on:
       phases:
         description: 'When true, run each build step individually (mfem, swig, pymfem)'
         type: boolean
-        default: true
+        default: false
 
 jobs:
   build-and-test:
