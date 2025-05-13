@@ -4,16 +4,11 @@
 from sys import platform
 import sys
 import os
-import urllib
-import gzip
 import site
 import re
 import shutil
-import configparser
-import itertools
-
 import subprocess
-from subprocess import DEVNULL
+from shutil import which as find_command
 
 import multiprocessing
 from multiprocessing import Pool
@@ -27,43 +22,25 @@ from setuptools.command.install import install as _install
 from setuptools.command.install_egg_info import install_egg_info as _install_egg_info
 from setuptools.command.install_lib import install_lib as _install_lib
 from setuptools.command.install_scripts import install_scripts as _install_scripts
-import setuptools.command.sdist
 
-# this stops working after setuptools (56)
-# try:
-#    from setuptools._distutils.command.clean import clean as _clean
-# except ImportError:
 from distutils.command.clean import clean as _clean
 
-# To use a consistent encoding
-# from codecs import open
+sys.path.insert(0, os.path.dirname(__file__))
+from setuputils import (
+    read_mfem_tplflags, abspath, external_install_prefix,
+    make_call, chdir, remove_files, download, gitclone,
+    record_mfem_sha, get_numpy_inc, get_mpi4py_inc, find_libpath_from_prefix,
+    cmake_make_hypre, make_metis, make_libceed, make_gslib, cmake_make_mfem,
+)
 
-# constants
-repo_releases = {
-    "gklib": "https://github.com/KarypisLab/GKlib/archive/refs/tags/METIS-v5.1.1-DistDGL-0.5.tar.gz",
-    # "metis": "https://github.com/KarypisLab/METIS/archive/refs/tags/v5.1.1-DistDGL-v0.5.tar.gz",
-    # "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
-    "metis": "https://github.com/mfem/tpls/raw/gh-pages/metis-5.1.0.tar.gz",
-    "hypre": "https://github.com/hypre-space/hypre/archive/v2.28.0.tar.gz",
-    "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.12.0.tar.gz",
-    "gslib": "https://github.com/Nek5000/gslib/archive/refs/tags/v1.0.8.tar.gz"}
-
-repos = {"mfem": "https://github.com/mfem/mfem.git",
-         "libceed": "https://github.com/CEED/libCEED.git",
-         "gklib": "https://github.com/KarypisLab/GKlib",
-         "metis": "https://github.com/KarypisLab/METIS", }
-
-repos_sha = {
-    "mfem": "a01719101027383954b69af1777dc828bf795d62",  # v4.8
-    # "mfem": "dc9128ef596e84daf1138aa3046b826bba9d259f", # v4.7
-    "gklib": "a7f8172703cf6e999dd0710eb279bba513da4fec",
-    "metis": "94c03a6e2d1860128c2d0675cbbb86ad4f261256", }
+# ----------------------------------------------------------------------------------------
+# Constants
+# ----------------------------------------------------------------------------------------
 
 rootdir = os.path.abspath(os.path.dirname(__file__))
 extdir = os.path.join(rootdir, 'external')
 if not os.path.exists(extdir):
     os.mkdir(os.path.join(rootdir, 'external'))
-
 
 osx_sysroot = ''
 
@@ -92,7 +69,49 @@ elif platform == "win32":
 
 use_metis_gklib = False
 
-# global variables
+cc_command = 'cc' if os.getenv("CC") is None else os.getenv("CC")
+cxx_command = 'c++' if os.getenv("CC") is None else os.getenv("CXX")
+mpicc_command = 'mpicc' if os.getenv("MPICC") is None else os.getenv("MPICC")
+mpicxx_command = 'mpic++' if os.getenv(
+    "MPICXX") is None else os.getenv("MPICXX")
+cxx11_flag = '-std=c++11' if os.getenv(
+    "CXX11FLAG") is None else os.getenv("CXX11FLAG")
+
+use_unverifed_SSL = False if os.getenv(
+    "unverifedSSL") is None else os.getenv("unverifiedSSL")
+
+swig_command = (find_command('swig') if os.getenv("SWIG") is None
+                else os.getenv("SWIG"))
+if swig_command is None:
+    assert False, "SWIG is not installed (hint: pip install swig)"
+
+if haveWheel:
+    class BdistWheel(_bdist_wheel):
+        '''
+        Wheel build performs SWIG + Serial in Default.
+        --skip-build option skip building entirely.
+        '''
+
+        def finalize_options(self):
+            def _has_ext_modules():
+                return True
+            self.distribution.has_ext_modules = _has_ext_modules
+            _bdist_wheel.finalize_options(self)
+
+        def run(self):
+            print("!!!!! Entering BdistWheel::Run")
+
+            if not is_configured:
+                print('running config')
+                configure_bdist(self)
+                print_config()
+            self.run_command("build")
+            _bdist_wheel.run(self)
+
+
+# ----------------------------------------------------------------------------------------
+# Global variables
+# ----------------------------------------------------------------------------------------
 is_configured = False
 prefix = ''
 
@@ -147,781 +166,6 @@ lapack_libraries = ""
 dry_run = -1
 do_bdist_wheel = False
 
-cc_command = 'cc' if os.getenv("CC") is None else os.getenv("CC")
-cxx_command = 'c++' if os.getenv("CC") is None else os.getenv("CXX")
-mpicc_command = 'mpicc' if os.getenv("MPICC") is None else os.getenv("MPICC")
-mpicxx_command = 'mpic++' if os.getenv(
-    "MPICXX") is None else os.getenv("MPICXX")
-cxx11_flag = '-std=c++11' if os.getenv(
-    "CXX11FLAG") is None else os.getenv("CXX11FLAG")
-
-use_unverifed_SSL = False if os.getenv(
-    "unverifedSSL") is None else os.getenv("unverifiedSSL")
-
-# meta data
-
-
-def version():
-    VERSIONFILE = os.path.join('mfem', '__init__.py')
-    initfile_lines = open(VERSIONFILE, 'rt').readlines()
-    VSRE = r"^__version__ = ['\"]([^'\"]*)['\"]"
-    for line in initfile_lines:
-        mo = re.search(VSRE, line, re.M)
-        if mo:
-            return mo.group(1)
-    raise RuntimeError('Unable to find version string in %s.' % (VERSIONFILE,))
-
-
-def long_description():
-    with open(os.path.join(rootdir, 'README.md'), encoding='utf-8') as f:
-        return f.read()
-
-
-def install_requires():
-    fname = os.path.join(rootdir, 'requirements.txt')
-    if not os.path.exists(fname):
-        return []
-    fid = open(fname)
-    requirements = fid.read().split('\n')
-    fid.close()
-    return requirements
-
-
-def read_mfem_tplflags(prefix):
-    filename = os.path.join(prefix, 'share', 'mfem', 'config.mk')
-    if not os.path.exists(filename):
-        print("NOTE: " + filename + " does not exist.")
-        print("returning empty string")
-        return ""
-
-    config = configparser.ConfigParser()
-    with open(filename) as fp:
-        config.read_file(itertools.chain(['[global]'], fp), source=filename)
-    flags = dict(config.items('global'))['mfem_tplflags']
-    return flags
-
-
-keywords = """
-scientific computing
-finite element method
-"""
-
-platforms = """
-Mac OS X
-Linux
-"""
-metadata = {'name': 'mfem',
-            'version': version(),
-            'description': __doc__.strip(),
-            'long_description': long_description(),
-            'long_description_content_type': "text/markdown",
-            'url': 'http://mfem.org',
-            'download_url': 'https://github.com/mfem',
-            'classifiers': ['Development Status :: 5 - Production/Stable',
-                            'Intended Audience :: Developers',
-                            'Topic :: Scientific/Engineering :: Physics',
-                            'Programming Language :: Python :: 3.8',
-                            'Programming Language :: Python :: 3.9',
-                            'Programming Language :: Python :: 3.10',
-                            'Programming Language :: Python :: 3.11',
-                            'Programming Language :: Python :: 3.12', ],
-            'keywords': [k for k in keywords.split('\n') if k],
-            'platforms': [p for p in platforms.split('\n') if p],
-            'license': 'BSD-3',
-            'author': 'MFEM developement team',
-            'author_email': '',
-            'maintainer': 'S. Shiraiwa',
-            'maintainer_email': 'shiraiwa@princeton.edu', }
-
-# utilities
-
-
-def abspath(path):
-    return os.path.abspath(os.path.expanduser(path))
-
-
-def external_install_prefix(verbose=True):
-
-    if hasattr(site, "getusersitepackages"):
-        usersite = site.getusersitepackages()
-    else:
-        usersite = site.USER_SITE
-
-    if verbose:
-        print("running external_install_prefix with the following parameters")
-        print("   sys.argv :", sys.argv)
-        print("   sys.prefix :", sys.prefix)
-        print("   usersite :", usersite)
-        print("   prefix :", prefix)
-
-    if '--user' in sys.argv:
-        path = usersite
-        if not os.path.exists(path):
-            os.makedirs(path)
-        path = os.path.join(path, 'mfem', 'external')
-        return path
-
-    else:
-        # when prefix is given...let's borrow pip._internal to find the location ;D
-        import pip._internal.locations
-        path = pip._internal.locations.get_scheme(
-            "mfem", prefix=prefix).purelib
-        if not os.path.exists(path):
-            os.makedirs(path)
-        path = os.path.join(path, 'mfem', 'external')
-        return path
-    '''
-    else:
-        py_version = '%s.%s' % (sys.version_info[0], sys.version_info[1])
-        paths = (s % (py_version) for s in (
-            sys.prefix + '/lib/python%s/dist-packages/',
-            sys.prefix + '/lib/python%s/site-packages/',
-            sys.prefix + '/local/lib/python%s/dist-packages/',
-            sys.prefix + '/local/lib/python%s/site-packages/',
-            '/Library/Python/%s/site-packages/',
-        ))
-
-    for path in paths:
-        # if verbose:
-        #    print("testing installation path", path)
-        if os.path.exists(path):
-            path = os.path.join(path, 'mfem', 'external')
-            return path
-    assert False, "no installation path found"
-    return None
-    '''
-
-
-def find_command(name):
-    from shutil import which
-    return which(name)
-
-
-swig_command = (find_command('swig') if os.getenv("SWIG") is None
-                else os.getenv("SWIG"))
-if swig_command is None:
-    assert False, "SWIG is not installed (hint: pip install swig)"
-
-
-def make_call(command, target='', force_verbose=False, env=None):
-    '''
-    call command
-    '''
-    print("calling ... " + " ".join(command))
-
-    if dry_run:
-        return
-    kwargs = {'universal_newlines': True, 'env': env}
-    if env is not None:
-        env.update(os.environ)
-
-    myverbose = verbose or force_verbose
-    if not myverbose:
-        kwargs['stdout'] = subprocess.DEVNULL
-        kwargs['stderr'] = subprocess.DEVNULL
-    # else:
-    #    kwargs['stdout'] = subprocess.PIPE
-    #    kwargs['stderr'] = subprocess.STDOUT
-
-    p = subprocess.Popen(command, **kwargs)
-    p.communicate()
-    if p.returncode != 0:
-        if target == '':
-            target = " ".join(command)
-        print("Failed when calling command: " + target)
-        raise subprocess.CalledProcessError(p.returncode,
-                                            " ".join(command))
-
-        # subprocess.check_call(command, **kwargs)
-    # except subprocess.CalledProcessError:
-    # print(stdout)
-
-
-def chdir(path):
-    '''
-    change directory
-    '''
-    pwd = os.getcwd()
-    os.chdir(path)
-    if verbose:
-        print("Moving to a directory : " + path)
-    return pwd
-
-
-def remove_files(files):
-    for f in files:
-        if verbose:
-            print("Removing : " + f)
-        if dry_run:
-            continue
-        os.remove(f)
-
-
-def make(target):
-    '''
-    make : add -j option automatically
-    '''
-    command = ['make', '-j', str(max((multiprocessing.cpu_count() - 1, 1)))]
-    make_call(command, target=target, force_verbose=True)
-
-
-def make_install(target, prefix=None):
-    '''
-    make install
-    '''
-    command = ['make', 'install']
-    if prefix is not None:
-        command.append('prefix='+prefix)
-    make_call(command, target=target)
-
-
-def download(xxx):
-    '''
-    download tar.gz from somewhere. xxx is name.
-    url is given by repos above
-    '''
-    from urllib import request
-    import ssl
-    import tarfile
-
-    if os.path.exists(os.path.join(extdir, xxx)):
-        print("Download " + xxx + " skipped. Use clean --all-exts if needed")
-        return
-    url = repo_releases[xxx]
-    print("Downloading :", url)
-
-    if use_unverifed_SSL:
-        ssl._create_default_https_context = ssl._create_unverified_context
-
-    ftpstream = request.urlopen(url)
-    targz = tarfile.open(fileobj=ftpstream, mode="r|gz")
-    targz.extractall(path=extdir)
-    os.rename(os.path.join(extdir, targz.getnames()[0].split('/')[0]),
-              os.path.join(extdir, xxx))
-
-
-def gitclone(xxx, use_sha=False, branch='master'):
-    cwd = os.getcwd()
-    repo_xxx = os.path.join(extdir, xxx)
-    if os.path.exists(repo_xxx):
-        os.chdir(repo_xxx)
-        command = ['git', 'checkout', branch]
-        make_call(command)
-        command = ['git', 'pull']
-        make_call(command)
-
-        # print("Deleting the existing " + xxx)
-        # shutil.rmtree(repo_xxx)
-    else:
-        repo = repos[xxx]
-        if git_sshclone:
-            repo = repo.replace("https://github.com/", "git@github.com:")
-
-        os.chdir(extdir)
-        command = ['git', 'clone', repo, xxx]
-        make_call(command)
-
-    if not dry_run:
-        if not os.path.exists(repo_xxx):
-            print(repo_xxx + " does not exist. Check if git clone worked")
-        os.chdir(repo_xxx)
-
-        if use_sha:
-            sha = repos_sha[xxx]
-            command = ['git', 'checkout',  sha]
-        else:
-            command = ['git', 'checkout', branch]
-        make_call(command)
-    os.chdir(cwd)
-
-
-def record_mfem_sha(mfem_source):
-    pwd = chdir(mfem_source)
-    command = ['git', 'rev-parse', 'HEAD']
-    try:
-        sha = subprocess.run(
-            command, capture_output=True).stdout.decode().strip()
-    except subprocess.CalledProcessError:
-        print("subprocess failed to read sha...continuing w/o recording SHA")
-        sha = None
-    except BaseException:
-        print("subprocess failed to read sha...continuing w/o recording SHA")
-        sha = None
-
-    chdir(pwd)
-
-    sha_file = os.path.join('mfem', '__sha__.py')
-    fid = open(sha_file, 'w')
-    if sha is not None:
-        fid.write('mfem = "' + sha + '"')
-    fid.close()
-
-
-def cmake(path, **kwargs):
-    '''
-    run cmake. must be called in the target directory
-    '''
-    command = ['cmake', path]
-    for key, value in kwargs.items():
-        command.append('-' + key + '=' + value)
-
-    if osx_sysroot != '':
-        command.append('-DCMAKE_OSX_SYSROOT=' + osx_sysroot)
-    make_call(command)
-
-
-def get_numpy_inc():
-    command = ["python", "-c", "import numpy;print(numpy.get_include())"]
-    try:
-        numpyinc = subprocess.run(
-            command, capture_output=True).stdout.decode().strip()
-    except subprocess.CalledProcessError:
-        assert False, "can not check numpy include directory"
-    except BaseException:
-        assert False, "can not check numpy include directory"
-    return numpyinc
-
-
-def get_mpi4py_inc():
-    command = ["python", "-c", "import mpi4py;print(mpi4py.get_include())"]
-    try:
-        mpi4pyinc = subprocess.run(
-            command, capture_output=True).stdout.decode().strip()
-    except subprocess.CalledProcessError:
-        assert False, "can not check numpy include directory"
-    except BaseException:
-        assert False, "can not check numpy include directory"
-    return mpi4pyinc
-
-
-def find_libpath_from_prefix(lib, prefix0):
-
-    prefix0 = os.path.expanduser(prefix0)
-    prefix0 = abspath(prefix0)
-
-    soname = 'lib' + lib + dylibext
-    aname = 'lib' + lib + '.a'
-
-    path = os.path.join(prefix0, 'lib', soname)
-    if os.path.exists(path):
-        return path
-    else:
-        path = os.path.join(prefix0, 'lib64', soname)
-        if os.path.exists(path):
-            return path
-
-    path = os.path.join(prefix0, 'lib', aname)
-    if os.path.exists(path):
-        return path
-    else:
-        path = os.path.join(prefix0, 'lib64', aname)
-        if os.path.exists(path):
-            return path
-    print("Can not find library by find_libpath_from_prefix (continue)", lib, prefix0)
-
-    return ''
-
-###
-#  build libraries
-###
-
-
-def cmake_make_hypre():
-    '''
-    build hypre
-    '''
-    if verbose:
-        print("Building hypre")
-
-    cmbuild = 'cmbuild'
-    path = os.path.join(extdir, 'hypre', 'src', cmbuild)
-    if os.path.exists(path):
-        print("working directory already exists!")
-    else:
-        os.makedirs(path)
-
-    pwd = chdir(path)
-
-    cmake_opts = {'DBUILD_SHARED_LIBS': '1',
-                  'DHYPRE_INSTALL_PREFIX': hypre_prefix,
-                  'DHYPRE_ENABLE_SHARED': '1',
-                  'DCMAKE_C_FLAGS': '-fPIC',
-                  'DCMAKE_INSTALL_PREFIX': hypre_prefix,
-                  'DCMAKE_INSTALL_NAME_DIR': os.path.join(hypre_prefix, 'lib'), }
-    if verbose:
-        cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
-
-    if enable_cuda and enable_cuda_hypre:
-        # in this case, settitng CMAKE_C_COMPILER
-        # causes "mpi.h" not found error. For now, letting CMAKE
-        # to find MPI
-        cmake_opts['DHYPRE_WITH_CUDA'] = '1'
-        if cuda_arch != '':
-            cmake_opts['DCMAKE_CUDA_ARCHITECTURES'] = cuda_arch
-    else:
-        cmake_opts['DCMAKE_C_COMPILER'] = mpicc_command
-
-    cmake('..', **cmake_opts)
-
-    make('hypre')
-    make_install('hypre')
-
-    os.chdir(pwd)
-
-
-def make_metis_gklib(use_int64=False, use_real64=False):
-    '''
-    build GKlib/metis
-    '''
-
-    '''
-    build/install GKlib
-    '''
-    if verbose:
-        print("Building gklib")
-
-    path = os.path.join(extdir, 'gklib')
-    if not dry_run and not os.path.exists(path):
-        assert False, "gklib is not downloaded"
-
-    path = os.path.join(path, 'cmbuild')
-    if os.path.exists(path):
-        print("working directory already exists!")
-    else:
-        os.makedirs(path)
-    pwd = chdir(path)
-
-    cmake_opts = {'DBUILD_SHARED_LIBS': '1',
-                  'DCMAKE_INSTALL_PREFIX': metis_prefix}
-    if verbose:
-        cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
-
-    cmake('..', **cmake_opts)
-    make('gklib')
-    make_install('gklib')
-    # command = ['make', 'prefix=' + metis_prefix, 'cc=' + cc_command]
-    os.chdir(pwd)
-
-    '''
-    build/install metis
-    '''
-    path = os.path.join(extdir, 'metis')
-    if not dry_run and not os.path.exists(path):
-        assert False, "metis is not downloaded"
-    elif not os.path.exists(path):
-        os.makedirs(path)
-        os.makedirs(os.path.join(path, 'build'))
-
-    pwd = chdir(path)
-
-    gklibpath = os.path.dirname(find_libpath_from_prefix(
-        'GKlib', metis_prefix))
-
-    options = ['gklib_path='+metis_prefix]
-    if use_int64:
-        options.append('i64=1')
-
-    if use_real64:
-        options.append('r64=1')
-
-    command = ['make', 'config', 'shared=1'] + options
-    # command = ['make', 'config'] + options
-    command = command + ['prefix=' + metis_prefix, 'cc=' + cc_command]
-    make_call(command)
-
-    chdir('build')
-    cmake_opts = {'DGKLIB_PATH': metis_prefix,
-                  'DSHARED': '1',
-                  'DCMAKE_C_COMPILER': cc_command,
-                  'DCMAKE_C_STANDARD_LIBRARIES': '-lGKlib',
-                  'DCMAKE_INSTALL_RPATH': gklibpath,
-                  'DCMAKE_BUILD_WITH_INSTALL_RPATH': '1',
-                  'DCMAKE_INSTALL_PREFIX': metis_prefix}
-    if verbose:
-        cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
-
-    cmake('..', **cmake_opts)
-    chdir(path)
-    make('metis')
-    make_install('metis')
-
-    if platform == "darwin":
-        command = ['install_name_tool',
-                   '-id',
-                   os.path.join(metis_prefix, 'lib', 'libGKlib.dylib'),
-                   os.path.join(metis_prefix, 'lib', 'libGKlib.dylib'), ]
-        make_call(command)
-        command = ['install_name_tool',
-                   '-id',
-                   os.path.join(metis_prefix, 'lib', 'libmetis.dylib'),
-                   os.path.join(metis_prefix, 'lib', 'libmetis.dylib'), ]
-        make_call(command)
-    os.chdir(pwd)
-
-
-def make_metis(use_int64=False, use_real64=False):
-    '''
-    build metis
-    '''
-    if verbose:
-        print("Building metis")
-
-    path = os.path.join(extdir, 'metis')
-    if not os.path.exists(path):
-        assert False, "metis is not downloaded"
-
-    pwd = chdir(path)
-
-    if use_int64:
-        pattern_int = "#define IDXTYPEWIDTH 32"
-        replace_int = "#define IDXTYPEWIDTH 64"
-    else:
-        pattern_int = "#define IDXTYPEWIDTH 64"
-        replace_int = "#define IDXTYPEWIDTH 32"
-    with open("include/metis.h", "r") as metis_header_fid:
-        metis_header_lines = metis_header_fid.readlines()
-    with open("include/metis.h", "w") as metis_header_fid:
-        for line in metis_header_lines:
-            metis_header_fid.write(re.sub(pattern_int, replace_int, line))
-
-    if use_real64:
-        pattern_real = "#define REALTYPEWIDTH 32"
-        replace_real = "#define REALTYPEWIDTH 64"
-    else:
-        pattern_real = "#define REALTYPEWIDTH 64"
-        replace_real = "#define REALTYPEWIDTH 32"
-    with open("include/metis.h", "r") as metis_header_fid:
-        metis_header_lines = metis_header_fid.readlines()
-    with open("include/metis.h", "w") as metis_header_fid:
-        for line in metis_header_lines:
-            metis_header_fid.write(re.sub(pattern_real, replace_real, line))
-
-    command = ['make', 'config', 'shared=1',
-               'prefix=' + metis_prefix,
-               'cc=' + cc_command]
-    make_call(command, env={'CMAKE_POLICY_VERSION_MINIMUM': '3.5'})
-    make('metis')
-    make_install('metis')
-
-    if platform == "darwin":
-        command = ['install_name_tool',
-                   '-id',
-                   os.path.join(metis_prefix, 'lib', 'libmetis.dylib'),
-                   os.path.join(metis_prefix, 'lib', 'libmetis.dylib'), ]
-        make_call(command)
-    os.chdir(pwd)
-
-
-def make_libceed(serial=False):
-    if verbose:
-        print("Building libceed")
-
-    path = os.path.join(extdir, 'libceed')
-    if not os.path.exists(path):
-        assert False, "libceed is not downloaded"
-
-    pwd = chdir(path)
-    try:
-        make_call(['make', 'clean'])
-    except:
-        pass
-
-    if enable_cuda:
-        command = ['make', 'configure', 'CUDA_DIR='+cuda_prefix]
-        make_call(command)
-
-    make('libceed')
-    make_install('libceed', prefix=libceed_prefix)
-    os.chdir(pwd)
-
-
-def make_gslib(serial=False):
-    if verbose:
-        print("Building gslib")
-
-    path = os.path.join(extdir, 'gslib')
-    if not os.path.exists(path):
-        assert False, "gslib is not downloaded"
-
-    pwd = chdir(path)
-    make_call(['make', 'clean'])
-    if serial:
-        command = ['make', 'CC=' + cc_command, 'MPI=0', 'CFLAGS=-fPIC']
-        make_call(command)
-        command = ['make', 'MPI=0', 'DESTDIR=' + gslibs_prefix]
-        make_call(command)
-    else:
-        command = ['make', 'CC=' + mpicc_command, 'CFLAGS=-O2 -fPIC']
-        make_call(command)
-        command = ['make', 'DESTDIR=' + gslibp_prefix]
-        make_call(command)
-    os.chdir(pwd)
-
-
-def cmake_make_mfem(serial=True):
-    '''
-    build MFEM
-    '''
-    cmbuild = 'cmbuild_ser' if serial else 'cmbuild_par'
-    path = os.path.join(extdir, 'mfem', cmbuild)
-    if os.path.exists(path):
-        print("working directory already exists!")
-    else:
-        os.makedirs(path)
-
-    ldflags = os.getenv('LDFLAGS') if os.getenv('LDFLAGS') is not None else ''
-    metisflags = ''
-    hypreflags = ''
-
-    rpaths = []
-
-    def add_rpath(p):
-        if not p in rpaths:
-            rpaths.append(p)
-
-    cmake_opts = {'DBUILD_SHARED_LIBS': '1',
-                  'DMFEM_ENABLE_EXAMPLES': '1',
-                  'DMFEM_ENABLE_MINIAPPS': '0',
-                  'DCMAKE_SHARED_LINKER_FLAGS': ldflags,
-                  'DMFEM_USE_ZLIB': '1',
-                  'DCMAKE_CXX_FLAGS': cxx11_flag,
-                  'DCMAKE_BUILD_WITH_INSTALL_RPATH': '1'}
-
-    if mfem_debug:
-        cmake_opts['DMFEM_DEBUG'] = 'YES'
-
-    if mfem_build_miniapps:
-        cmake_opts['DMFEM_ENABLE_MINIAPPS'] = '1'
-
-    if verbose:
-        cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
-
-    if serial:
-        cmake_opts['DCMAKE_CXX_COMPILER'] = cxx_command
-        cmake_opts['DMFEM_USE_EXCEPTIONS'] = '1'
-        cmake_opts['DCMAKE_INSTALL_PREFIX'] = mfems_prefix
-
-        add_rpath(os.path.join(mfems_prefix, 'lib'))
-        if enable_suitesparse:
-            enable_metis = True
-        else:
-            enable_metis = False
-    else:
-        cmake_opts['DCMAKE_CXX_COMPILER'] = mpicxx_command
-        cmake_opts['DMFEM_USE_EXCEPTIONS'] = '0'
-        cmake_opts['DCMAKE_INSTALL_PREFIX'] = mfemp_prefix
-        cmake_opts['DMFEM_USE_MPI'] = '1'
-        cmake_opts['DHYPRE_DIR'] = hypre_prefix
-        cmake_opts['DHYPRE_INCLUDE_DIRS'] = os.path.join(
-            hypre_prefix, "include")
-
-        add_rpath(os.path.join(mfemp_prefix, 'lib'))
-
-        hyprelibpath = os.path.dirname(
-            find_libpath_from_prefix(
-                'HYPRE', hypre_prefix))
-
-        add_rpath(hyprelibpath)
-
-        hypreflags = "-L" + hyprelibpath + " -lHYPRE "
-
-        if enable_strumpack:
-            cmake_opts['DMFEM_USE_STRUMPACK'] = '1'
-            cmake_opts['DSTRUMPACK_DIR'] = strumpack_prefix
-            libpath = os.path.dirname(
-                find_libpath_from_prefix("STRUMPACK", strumpack_prefix))
-            add_rpath(libpath)
-        if enable_pumi:
-            cmake_opts['DMFEM_USE_PUMI'] = '1'
-            cmake_opts['DPUMI_DIR'] = pumi_prefix
-            libpath = os.path.dirname(
-                find_libpath_from_prefix("pumi", strumpack_prefix))
-            add_rpath(libpath)
-        enable_metis = True
-
-    if enable_metis:
-        cmake_opts['DMFEM_USE_METIS_5'] = '1'
-        cmake_opts['DMETIS_DIR'] = metis_prefix
-        cmake_opts['DMETIS_INCLUDE_DIRS'] = os.path.join(
-            metis_prefix, "include")
-        metislibpath = os.path.dirname(
-            find_libpath_from_prefix(
-                'metis', metis_prefix))
-        add_rpath(metislibpath)
-
-        if use_metis_gklib:
-            metisflags = "-L" + metislibpath + " -lmetis -lGKlib "
-        else:
-            metisflags = "-L" + metislibpath + " -lmetis "
-
-    if ldflags != '':
-        cmake_opts['DCMAKE_SHARED_LINKER_FLAGS'] = ldflags
-        cmake_opts['DCMAKE_EXE_LINKER_FLAGS'] = ldflags
-
-    if metisflags != '':
-        cmake_opts['DMETIS_LIBRARIES'] = metisflags
-    if hypreflags != '':
-        cmake_opts['DHYPRE_LIBRARIES'] = hypreflags
-
-    if enable_cuda:
-        cmake_opts['DMFEM_USE_CUDA'] = '1'
-        if cuda_arch != '':
-            cmake_opts['DCMAKE_CUDA_ARCHITECTURES'] = cuda_arch
-
-    if enable_libceed:
-        cmake_opts['DMFEM_USE_CEED'] = '1'
-        cmake_opts['DCEED_DIR'] = libceed_prefix
-        libpath = os.path.dirname(
-            find_libpath_from_prefix("ceed", libceed_prefix))
-        add_rpath(libpath)
-
-    if enable_gslib:
-        if serial:
-            cmake_opts['DMFEM_USE_GSLIB'] = '1'
-            cmake_opts['DGSLIB_DIR'] = gslibs_prefix
-        else:
-            cmake_opts['DMFEM_USE_GSLIB'] = '1'
-            cmake_opts['DGSLIB_DIR'] = gslibp_prefix
-
-    if enable_suitesparse:
-        cmake_opts['DMFEM_USE_SUITESPARSE'] = '1'
-        if suitesparse_prefix != '':
-            cmake_opts['DSuiteSparse_DIR'] = suitesparse_prefix
-
-    if enable_lapack:
-        cmake_opts['DMFEM_USE_LAPACK'] = '1'
-    if blas_libraries != "":
-        cmake_opts['DBLAS_LIBRARIES'] = blas_libraries
-    if lapack_libraries != "":
-        cmake_opts['DLAPACK_LIBRARIES'] = lapack_libraries
-
-    cmake_opts['DCMAKE_INSTALL_RPATH'] = ":".join(rpaths)
-
-    pwd = chdir(path)
-    cmake('..', **cmake_opts)
-
-    txt = 'serial' if serial else 'parallel'
-
-    make('mfem_' + txt)
-    make_install('mfem_' + txt)
-
-    from shutil import copytree, rmtree
-
-    print("copying mesh data for testing", "../data",
-          cmake_opts['DCMAKE_INSTALL_PREFIX'])
-    path = os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "data")
-    if os.path.exists(path):
-        rmtree(path)
-    copytree("../data", path)
-
-    if do_bdist_wheel:
-        ex_dir = os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "examples")
-        for x in os.listdir(ex_dir):
-            path = os.path.join(ex_dir, x)
-            command = ['chrpath', '-r', "$ORIGIN/../lib", path]
-            make_call(command, force_verbose=True)
-
-    os.chdir(pwd)
 
 
 def write_setup_local():
@@ -929,10 +173,6 @@ def write_setup_local():
     create setup_local.py. parameters written here will be read
     by setup.py in mfem._ser and mfem._par
     '''
-    # if build_mfem:
-    #    mfemser = os.path.join(prefix, 'mfem', 'ser')
-    #    mfempar = os.path.join(prefix, 'mfem', 'par')
-    # else:
     mfemser = mfems_prefix
     mfempar = mfemp_prefix
 
@@ -954,7 +194,6 @@ def write_setup_local():
               'no_whole_archive': '--no-whole-archive',
               'nocompactunwind': '',
               'swigflag': '-Wall -c++ -python -fastproxy -olddefs -keyword',
-
               'hypreinc': os.path.join(hypre_prefix, 'include'),
               'hyprelib': hyprelibpath,
               'metisinc': os.path.join(metis_prefix, 'include'),
@@ -1064,8 +303,6 @@ def generate_wrapper():
         os.chdir(pwd)
 
     def update_header_exists(mfem_source):
-        import re
-
         print("updating the list of existing headers")
         list_of_headers = []
         L = len(mfem_source.split(os.sep))
@@ -1142,10 +379,6 @@ def generate_wrapper():
 
     commands = []
     for filename in ifiles():
-        #        pumi.i does not depends on pumi specific header so this should
-        #        work
-        #        if file == 'pumi.i':# and not enable_pumi:
-        #            continue
         if filename == 'strumpack.i' and not enable_strumpack:
             continue
         if not check_new(filename):
@@ -1156,8 +389,6 @@ def generate_wrapper():
     mp_pool = Pool(max((multiprocessing.cpu_count() - 1, 1)))
     with mp_pool:
         mp_pool.map(subprocess.run, commands)
-    # for c in commands:
-    #    make_call(c)
 
     os.chdir(pwd)
 
@@ -1386,7 +617,7 @@ def configure_install(self):
 
         print("ext_prefix", ext_prefix)
         if ext_prefix == '':
-            ext_prefix = external_install_prefix()
+            ext_prefix = external_install_prefix(prefix)
         hypre_prefix = os.path.join(ext_prefix)
         metis_prefix = os.path.join(ext_prefix)
 
@@ -1763,7 +994,6 @@ class BuildPy(_build_py):
                 cmake_make_hypre()
             if build_libceed:
                 download('libceed')
-                # gitclone('libceed',branch='main')
                 make_libceed()
             if build_gslib:
                 download('gslib')
@@ -1801,40 +1031,6 @@ class BuildPy(_build_py):
             _build_py.run(self)
         else:
             sys.exit()
-
-
-if haveWheel:
-    class BdistWheel(_bdist_wheel):
-        '''
-        Wheel build performs SWIG + Serial in Default.
-        --skip-build option skip building entirely.
-        '''
-
-        def finalize_options(self):
-            def _has_ext_modules():
-                return True
-            from setuptools.dist import Distribution
-            # Distribution.is_pure = _is_pure
-            self.distribution.has_ext_modules = _has_ext_modules
-            _bdist_wheel.finalize_options(self)
-
-        def run(self):
-            print("!!!!! Engering BdistWheel::Run")
-
-            if not is_configured:
-                print('running config')
-                configure_bdist(self)
-                print_config()
-            self.run_command("build")
-            _bdist_wheel.run(self)
-            # assert False, "bdist install is not supported, use source install"
-
-            # Ensure that there is a basic library build for bdist_egg to pull from.
-            # self.run_command("build")
-            # _cleanup_symlinks(self)
-
-            # Run the default bdist_wheel command
-
 
 class InstallLib(_install_lib):
     def finalize_options(self):
@@ -1923,8 +1119,7 @@ class Clean(_clean):
         _clean.run(self)
 
 
-def run_setup():
-    setup_args = metadata.copy()
+if __name__ == '__main__':
     cmdclass = {'build_py': BuildPy,
                 'install': Install,
                 'install_lib': InstallLib,
@@ -1934,23 +1129,6 @@ def run_setup():
     if haveWheel:
         cmdclass['bdist_wheel'] = BdistWheel
 
-    install_req = install_requires()
-
-    # print(install_req)
     setup(
         cmdclass=cmdclass,
-        install_requires=install_req,
-        packages=find_packages(),
-        extras_require={},
-        package_data={'mfem._par': ['*.so'], 'mfem._ser': ['*.so']},
-        # data_files=[('data', datafiles)],
-        entry_points={},
-        **setup_args)
-
-
-def main():
-    run_setup()
-
-
-if __name__ == '__main__':
-    main()
+    )

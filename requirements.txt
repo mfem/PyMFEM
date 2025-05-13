@@ -1,5 +1,0 @@
-numpy >= 1.22.4
-numba
-scipy
-swig >= 4.3
-cmake
