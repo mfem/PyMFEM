@@ -126,6 +126,17 @@ import mfem._par.tmop_modules as tmop
 #
 # modules not a part of standard build
 #
+import importlib.util
+import sys
+import types
+def load_module(module_name, module_code):
+    spec = importlib.util.spec_from_loader(module_name, loader=None, origin="dynamic")
+    module = types.ModuleType(module_name)
+    spec.loader.exec_module(module) if spec.loader else exec(module_code, module.__dict__)
+    sys.modules[module_name] = module
+    return module
+
+
 try:
    import mfem._par.pumi as pumi
    from mfem._par.pumi import *
@@ -151,13 +162,17 @@ try:
 except:
     pass
 
+
 try:
-    import mfem._par.weakform as weakform    
-    import mfem._par.complexweakform as complexweakform
-    import mfem._par.commlexstaticcond as complexstaticcond
-    import mfem._par.blockstaticcond as blockstaticcond
-    import mfem._par.pweakform as pweakform    
-    import mfem._par.pcomplexweakform as pcomplexweakform
-    
+    module_code = """
+     from mfem._par.weakform import *
+     from mfem._par.complexweakform import *
+     from mfem._par.commlexstaticcond impoft *
+     from mfem._par.blockstaticcond import *
+     from mfem._par.pweakform import *
+     from mfem._par.pcomplexweakform import *
+     from mfem._par.pml import *
+    """
+    dpg = load_module("dpg", module_code) 
 except:
     pass

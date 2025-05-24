@@ -108,10 +108,14 @@ except:
 #  import moduleds built from hpp/cpp under miniapp
 #
 try:
-    import mfem._ser.weakform as weakform    
-    import mfem._ser.complexweakform as complexweakform
-    import mfem._ser.commlexstaticcond as complexstaticcond
-    import mfem._ser.blockstaticcond as blockstaticcond
+    module_code = """
+     from mfem._par.weakform import *
+     from mfem._par.complexweakform import *
+     from mfem._par.commlexstaticcond impoft *
+     from mfem._par.blockstaticcond import *
+     from mfem._par.pml import *
+    """
+    dpg = load_module("dpg", module_code) 
 except:
     pass
 

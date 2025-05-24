@@ -13,13 +13,12 @@
 #include "../common/io_stream.hpp"
 %}
 
+%include "../common/existing_mfem_headers.i"
+#ifdef FILE_EXISTS_MINIAPPS_DPG_UTIL_COMPLEXWEAKFORM
+
 %init %{
 import_array();
 %}
-
-%include "../common/existing_mfem_headers.i"
-
-#ifdef FILE_EXISTS_MINIAPPS_DPG_UTIL_COMPLEXWEAKFORM
 
 %inline %{
 #include "miniapps/dpg/util/complexweakform.cpp"

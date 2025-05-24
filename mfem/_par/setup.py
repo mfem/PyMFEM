@@ -120,7 +120,7 @@ def get_extensions():
                "attribute_sets", "arrays_by_name",
                "hyperbolic", "complex_densemat",
                "blockstaticcond", "complexstaticcond", "complexweakform",
-               "weakform", "pweakform", "pcomplexweakform", ]
+               "weakform", "pweakform", "pcomplexweakform", "pml"]
               
     if add_pumi == '1':
         from setup_local import puminc, pumilib

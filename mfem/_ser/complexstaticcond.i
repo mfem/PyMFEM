@@ -12,13 +12,12 @@
 #include "../common/io_stream.hpp"
 %}
 
+%include "../common/existing_mfem_headers.i"
+#ifdef FILE_EXISTS_MINIAPPS_DPG_UTIL_COMPLEXSTATICCOND
+
 %init %{
 import_array();
 %}
-
-%include "../common/existing_mfem_headers.i"
-
-#ifdef FILE_EXISTS_MINIAPPS_DPG_UTIL_COMPLEXSTATICCOND
 
 %inline %{
 #include "miniapps/dpg/util/complexstaticcond.cpp"

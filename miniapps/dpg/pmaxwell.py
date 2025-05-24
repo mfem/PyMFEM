@@ -270,9 +270,486 @@ def run(meshfile='',
         epsrot_cf = epsrot
         negepsrot_cf = negepsrot
                                
+    detJ_r = mfem.PmlCoefficient(detJ_r_function,pml)
+    detJ_i = mfem.PmlCoefficient(detJ_i_function,pml)
+    abs_detJ_2 = mfem.PmlCoefficient(abs_detJ_2_function,pml)
+    detJ_Jt_J_inv_r = mfem.PmlMatrixCoefficient(dim,detJ_Jt_J_inv_r_function,pml)
+    detJ_Jt_J_inv_i = mfem.PmlMatrixCoefficient(dim,detJ_Jt_J_inv_i_function,pml)
+    abs_detJ_Jt_J_inv_2 = mfem.PmlMatrixCoefficient(dim,abs_detJ_Jt_J_inv_2_function,pml)
+    negmuomeg_detJ_r = mfem.ProductCoefficient(negmuomeg,detJ_r)
+    negmuomeg_detJ_i = mfem.ProductCoefficient(negmuomeg,detJ_i)
+    muomeg_detJ_r = mfem.ProductCoefficient(muomeg,detJ_r)
+    mu2omeg2_detJ_2 = mfem.ProductCoefficient(mu2omeg2,abs_detJ_2)
+    epsomeg_detJ_Jt_J_inv_i = mfem.ScalarMatrixProductCoefficient(epsomeg, detJ_Jt_J_inv_i)
+    epsomeg_detJ_Jt_J_inv_r = mfem.ScalarMatrixProductCoefficient(epsomeg, detJ_Jt_J_inv_r)
+    negepsomeg_detJ_Jt_J_inv_r = mfem.ScalarMatrixProductCoefficient(negepsomeg, detJ_Jt_J_inv_r)
+    muomeg_detJ_Jt_J_inv_r = mfem.ScalarMatrixProductCoefficient(muomeg,detJ_Jt_J_inv_r)
+    negmuomeg_detJ_Jt_J_inv_i = mfem.ScalarMatrixProductCoefficient(negmuomeg, detJ_Jt_J_inv_i)
+    negmuomeg_detJ_Jt_J_inv_r = mfem.ScalarMatrixProductCoefficient(negmuomeg, detJ_Jt_J_inv_r)
+    mu2omeg2_detJ_Jt_J_inv_2 = mfem.ScalarMatrixProductCoefficient(mu2omeg2, abs_detJ_Jt_J_inv_2)
+    eps2omeg2_detJ_Jt_J_inv_2 = mfem.ScalarMatrixProductCoefficient(eps2omeg2, abs_detJ_Jt_J_inv_2)
+    negmuomeg_detJ_r_restr = mfem.RestrictedCoefficient(negmuomeg_detJ_r,attrPML)
+    negmuomeg_detJ_i_restr = mfem.RestrictedCoefficient(negmuomeg_detJ_i,attrPML)
+    muomeg_detJ_r_restr = mfem.RestrictedCoefficient(muomeg_detJ_r,attrPML)
+    mu2omeg2_detJ_2_restr = mfem.RestrictedCoefficient(mu2omeg2_detJ_2,attrPML)
+    epsomeg_detJ_Jt_J_inv_i_restr = mfem.MatrixRestrictedCoefficient(epsomeg_detJ_Jt_J_inv_i,attrPML)
+    epsomeg_detJ_Jt_J_inv_r_restr = mfem.MatrixRestrictedCoefficient(epsomeg_detJ_Jt_J_inv_r,attrPML)
+    negepsomeg_detJ_Jt_J_inv_r_restr = mfem.MatrixRestrictedCoefficient(negepsomeg_detJ_Jt_J_inv_r,attrPML)
+    muomeg_detJ_Jt_J_inv_r_restr = mfem.MatrixRestrictedCoefficient(muomeg_detJ_Jt_J_inv_r, attrPML)
+    negmuomeg_detJ_Jt_J_inv_i_restr = mfem.MatrixRestrictedCoefficient(negmuomeg_detJ_Jt_J_inv_i,attrPML)
+    negmuomeg_detJ_Jt_J_inv_r_restr = mfem.MatrixRestrictedCoefficient(negmuomeg_detJ_Jt_J_inv_r,attrPML)
+    mu2omeg2_detJ_Jt_J_inv_2_restr = mfem.MatrixRestrictedCoefficient(mu2omeg2_detJ_Jt_J_inv_2,attrPML)
+    eps2omeg2_detJ_Jt_J_inv_2_restr = mfem.MatrixRestrictedCoefficient(eps2omeg2_detJ_Jt_J_inv_2,attrPML)
+                               
 
-    pass
+    if pml and dim == 2:
+        epsomeg_detJ_Jt_J_inv_i_rot = mfem.MatrixProductCoefficient(epsomeg_detJ_Jt_J_inv_i, rot)
+        epsomeg_detJ_Jt_J_inv_r_rot = mfem.MatrixProductCoefficient(epsomeg_detJ_Jt_J_inv_r, rot)
+        negepsomeg_detJ_Jt_J_inv_r_rot = mfem.MatrixProductCoefficient(negepsomeg_detJ_Jt_J_inv_r, rot)
+        epsomeg_detJ_Jt_J_inv_i_rot_restr = mfem.MatrixRestrictedCoefficient(epsomeg_detJ_Jt_J_inv_i_rot,
+                                                                             attrPML)
+        epsomeg_detJ_Jt_J_inv_r_rot_restr = mfem.MatrixRestrictedCoefficient(epsomeg_detJ_Jt_J_inv_r_rot,
+                                                                             attrPML)
+        negepsomeg_detJ_Jt_J_inv_r_rot_restr = mfem.MatrixRestrictedCoefficient(negepsomeg_detJ_Jt_J_inv_r_rot,
+                                                                                attrPML)
 
+
+    a = mfem.dpg.ParComplexDPGWeakForm(trial_fes,test_fec)
+    a.StoreMatrices()  # needed for AMR
+
+    # (E,∇ × F)
+    a.AddTrialIntegrator(mfem.TransposeIntegrator(mfem.MixedCurlIntegrator(one)),
+                         None, 
+                         TrialSpace["E_space"],
+                         TestSpace["F_space"])
+    # -i ω ϵ (E , G) = i (- ω ϵ E, G)
+    a.AddTrialIntegrator(None,
+                         mfem.TransposeIntegrator(mfem.VectorFEMassIntegrator(negepsomeg_cf)),
+                         TrialSpace["E_space"],
+                         TestSpace["G_space"])
+    #  (H,∇ × G)
+    a.AddTrialIntegrator(mfem.TransposeIntegrator(mfem.MixedCurlIntegrator(one)),
+                         None,
+                         TrialSpace["H_space"],
+                         TestSpace["G_space"])
+    # < n×Ĥ ,G>
+    a.AddTrialIntegrator(mfem.TangentTraceIntegrator, None,
+                         TrialSpace["hatH_space"],
+                         TestSpace["G_space"])
+    # test integrators
+    # (∇×G ,∇× δG)
+    a.AddTestIntegrator(mfem.CurlCurlIntegrator(one), None,
+                        TestSpace["G_space"],
+                        TestSpace["G_space"])
+    # (G,δG)
+    a.AddTestIntegrator(mfem.VectorFEMassIntegrator(one), None,
+                        TestSpace["G_space"],
+                        TestSpace["G_space"])
+
+    if dim == 3:
+        # i ω μ (H, F)
+        a.AddTrialIntegrator(None, mfem.TransposeIntegrator(
+                                   mfem.VectorFEMassIntegrator(muomeg_cf)),
+                             TrialSpace["H_space"],
+                             TestSpace["F_space"])
+        # < n×Ê,F>
+        a.AddTrialIntegrator(mfem.TangentTraceIntegrator, None,
+                             TrialSpace["hatE_space"],
+                             TestSpace["F_space"])
+
+        # test integrators
+        # (∇×F,∇×δF)
+        a.AddTestIntegrator(mfem.CurlCurlIntegrator(one), None,
+                            TestSpace["F_space"],
+                            TestSpace["F_space"])
+        # (F,δF)
+        a.AddTestIntegrator(mfem.VectorFEMassIntegrator(one), None,
+                            TestSpace["F_space"],
+                            TestSpace["F_space"])
+        # μ^2 ω^2 (F,δF)
+        a.AddTestIntegrator(mfem.VectorFEMassIntegrator(mu2omeg2_cf), None,
+                            TestSpace["F_space"],
+                            TestSpace["F_space"])
+        # -i ω μ (F,∇ × δG) = i (F, -ω μ ∇ × δ G)
+        a.AddTestIntegrator(None, mfem.MixedVectorWeakCurlIntegrator(negmuomeg_cf),
+                            TestSpace["F_space"],
+                            TestSpace["G_space"])
+        # -i ω ϵ (∇ × F, δG)
+        a.AddTestIntegrator(None, mfem.MixedVectorCurlIntegrator(negepsomeg_cf),
+                            TestSpace["F_space"],
+                            TestSpace["G_space"])
+        # i ω μ (∇ × G,δF)
+        a.AddTestIntegrator(None, mfem.MixedVectorCurlIntegrator(muomeg_cf),
+                            TestSpace["G_space"],
+                            TestSpace["F_space"])
+        # i ω ϵ (G, ∇ × δF )
+        a.AddTestIntegrator(None, mfem.MixedVectorWeakCurlIntegrator(epsomeg_cf),
+                            TestSpace["G_space"],
+                            TestSpace["F_space"])
+        # ϵ^2 ω^2 (G,δG)
+        a.AddTestIntegrator(mfem.VectorFEMassIntegrator(eps2omeg2_cf), None,
+                            TestSpace["G_space"],
+                            TestSpace["G_space"])
+    else:
+        # i ω μ (H, F)
+        a.AddTrialIntegrator(None, mfem.MixedScalarMassIntegrator(muomeg_cf),
+                             TrialSpace["H_space"],
+                             TestSpace["F_space"])
+        # < n×Ê,F>
+        a.AddTrialIntegrator(mfem.TraceIntegrator, None,
+                             TrialSpace["hatE_space"],
+                             TestSpace["F_space"])
+        # test integrators
+        # (∇F,∇δF)
+        a.AddTestIntegrator(mfem.DiffusionIntegrator(one), None,
+                            TestSpace["F_space"],
+                            TestSpace["F_space"])
+        # (F,δF)
+        a.AddTestIntegrator(mfem.MassIntegrator(one), None,
+                            TestSpace["F_space"],
+                            TestSpace["F_space"])
+        # μ^2 ω^2 (F,δF)
+        a.AddTestIntegrator(mfem.MassIntegrator(mu2omeg2_cf), None,
+                            TestSpace["F_space"],
+                            TestSpace["F_space"])
+        # -i ω μ (F,∇ × δG) = i (F, -ω μ ∇ × δ G)
+        a.AddTestIntegrator(None,
+                            mfem.TransposeIntegrator(mfem.MixedCurlIntegrator(negmuomeg_cf)),
+                            TestSpace["F_space"],
+                            TestSpace["G_space"])
+        # -i ω ϵ (∇ × F, δG) = i (- ω ϵ A ∇ F,δG), A = [0 1; -1; 0]
+        a.AddTestIntegrator(None, mfem.MixedVectorGradientIntegrator(negepsrot_cf),
+                            TestSpace["F_space"],
+                            TestSpace["G_space"])
+        # i ω μ (∇ × G,δF) = i (ω μ ∇ × G, δF )
+        a.AddTestIntegrator(None, mfem.MixedCurlIntegrator(muomeg_cf),
+                            TestSpace["G_space"],
+                            TestSpace["F_space"])
+        # i ω ϵ (G, ∇ × δF ) =  i (ω ϵ G, A ∇ δF) = i ( G , ω ϵ A ∇ δF)
+        a.AddTestIntegrator(None,
+                            mfem.TransposeIntegrator(mfem.MixedVectorGradientIntegrator(epsrot_cf))
+                            TestSpace["G_space"],
+                            TestSpace["F_space"])
+        # ϵ^2 ω^2 (G, δG)
+        a.AddTestIntegrator(mfem.VectorFEMassIntegrator(eps2omeg2_cf), None,
+                            TestSpace["G_space"],
+                            TestSpace["G_space"])
+    if pml:
+        assert False, "PML not supported yet"
+
+
+    # RHS
+    f_rhs_r = mfem.VectorFunctionCoefficient(dim, rhs_func_r)
+    f_rhs_i = mfem.VectorFunctionCoefficient(dim, rhs_func_i)
+    f_source = mfem.VectorFunctionCoefficient(dim, source_function)
+                               
+    if prob == 0:
+        a.AddDomainLFIntegrator(mfem.VectorFEDomainLFIntegrator(f_rhs_r),
+                                mfem.VectorFEDomainLFIntegrator(f_rhs_i),
+                                TestSpace["G_space"])
+    elif prob == 2:
+        a.AddDomainLFIntegrator(mfem.VectorFEDomainLFIntegrator(f_source),
+                                None,
+                                TestSpace["G_space"])
+ 
+    hatEex_r = mfem.VectorFunctionCoefficient(dim, hatE_exact_r)
+    hatEex_i = mfem.VectorFunctionCoefficient(dim, hatE_exact_i)
+
+    if myid == 0:
+       txt = "\n  Ref |" +  "    Dofs    |" +  "    ω    |"
+       if exact_known:
+          txt = txt + "  L2 Error  |" + "  Rate  |"
+                               
+       txt = txt + "  Residual  |" +  "  Rate  |" +  " PCG it |"
+       print(txt)
+                               
+       if exact_known:
+           print("-"*82)
+       else:
+           print("-"*60)
+                               
+    res0 = 0.
+    err0 = 0.
+    dof0 = 0
+                               
+    elements_to_refine = mfem.intArray()
+                               
+   socketstream E_out_r;
+   socketstream H_out_r;
+
+
+   Array<int> 
+
+   ParGridFunction E_r, E_i, H_r, H_i;
+
+   ParaViewDataCollection * paraview_dc = nullptr;
+
+    if static_cond:
+        a.EnableStaticCondensation()
+   for (int it = 0; it<=pr; it++)
+   {
+      a->Assemble();
+
+      Array<int> ess_tdof_list;
+      Array<int> ess_bdr;
+      if (pmesh.bdr_attributes.Size())
+      {
+         ess_bdr.SetSize(pmesh.bdr_attributes.Max());
+         ess_bdr = 1;
+         hatE_fes->GetEssentialTrueDofs(ess_bdr, ess_tdof_list);
+         if (pml)
+         {
+            ess_bdr = 0;
+            ess_bdr[1] = 1;
+         }
+      }
+
+      // shift the ess_tdofs
+      for (int j = 0; j < ess_tdof_list.Size(); j++)
+      {
+         ess_tdof_list[j] += E_fes->GetTrueVSize() + H_fes->GetTrueVSize();
+      }
+
+      Array<int> offsets(5);
+      offsets[0] = 0;
+      offsets[1] = E_fes->GetVSize();
+      offsets[2] = H_fes->GetVSize();
+      offsets[3] = hatE_fes->GetVSize();
+      offsets[4] = hatH_fes->GetVSize();
+      offsets.PartialSum();
+
+      Vector x(2*offsets.Last());
+      x = 0.;
+
+      if (prob != 2)
+      {
+         ParGridFunction hatE_gf_r(hatE_fes, x, offsets[2]);
+         ParGridFunction hatE_gf_i(hatE_fes, x, offsets.Last() + offsets[2]);
+         if (dim == 3)
+         {
+            hatE_gf_r.ProjectBdrCoefficientTangent(hatEex_r, ess_bdr);
+            hatE_gf_i.ProjectBdrCoefficientTangent(hatEex_i, ess_bdr);
+         }
+         else
+         {
+            hatE_gf_r.ProjectBdrCoefficientNormal(hatEex_r, ess_bdr);
+            hatE_gf_i.ProjectBdrCoefficientNormal(hatEex_i, ess_bdr);
+         }
+      }
+
+      OperatorPtr Ah;
+      Vector X,B;
+      a->FormLinearSystem(ess_tdof_list,x,Ah, X,B);
+
+      ComplexOperator * Ahc = Ah.As<ComplexOperator>();
+
+      BlockOperator * BlockA_r = dynamic_cast<BlockOperator *>(&Ahc->real());
+      BlockOperator * BlockA_i = dynamic_cast<BlockOperator *>(&Ahc->imag());
+
+      int num_blocks = BlockA_r->NumRowBlocks();
+      Array<int> tdof_offsets(2*num_blocks+1);
+
+      tdof_offsets[0] = 0;
+      int skip = (static_cond) ? 0 : 2;
+      int k = (static_cond) ? 2 : 0;
+      for (int i=0; i<num_blocks; i++)
+      {
+         tdof_offsets[i+1] = trial_fes[i+k]->GetTrueVSize();
+         tdof_offsets[num_blocks+i+1] = trial_fes[i+k]->GetTrueVSize();
+      }
+      tdof_offsets.PartialSum();
+
+      BlockOperator blockA(tdof_offsets);
+      for (int i = 0; i<num_blocks; i++)
+      {
+         for (int j = 0; j<num_blocks; j++)
+         {
+            blockA.SetBlock(i,j,&BlockA_r->GetBlock(i,j));
+            blockA.SetBlock(i,j+num_blocks,&BlockA_i->GetBlock(i,j), -1.0);
+            blockA.SetBlock(i+num_blocks,j+num_blocks,&BlockA_r->GetBlock(i,j));
+            blockA.SetBlock(i+num_blocks,j,&BlockA_i->GetBlock(i,j));
+         }
+      }
+
+      X = 0.;
+      BlockDiagonalPreconditioner M(tdof_offsets);
+
+      if (!static_cond)
+      {
+         HypreBoomerAMG * solver_E = new HypreBoomerAMG((HypreParMatrix &)
+                                                        BlockA_r->GetBlock(0,0));
+         solver_E->SetPrintLevel(0);
+         solver_E->SetSystemsOptions(dim);
+         HypreBoomerAMG * solver_H = new HypreBoomerAMG((HypreParMatrix &)
+                                                        BlockA_r->GetBlock(1,1));
+         solver_H->SetPrintLevel(0);
+         solver_H->SetSystemsOptions(dim);
+         M.SetDiagonalBlock(0,solver_E);
+         M.SetDiagonalBlock(1,solver_H);
+         M.SetDiagonalBlock(num_blocks,solver_E);
+         M.SetDiagonalBlock(num_blocks+1,solver_H);
+      }
+
+      HypreSolver * solver_hatH = nullptr;
+      HypreAMS * solver_hatE = new HypreAMS((HypreParMatrix &)BlockA_r->GetBlock(skip,
+                                                                                 skip),
+                                            hatE_fes);
+      solver_hatE->SetPrintLevel(0);
+      if (dim == 2)
+      {
+         solver_hatH = new HypreBoomerAMG((HypreParMatrix &)BlockA_r->GetBlock(skip+1,
+                                                                               skip+1));
+         dynamic_cast<HypreBoomerAMG*>(solver_hatH)->SetPrintLevel(0);
+      }
+      else
+      {
+         solver_hatH = new HypreAMS((HypreParMatrix &)BlockA_r->GetBlock(skip+1,skip+1),
+                                    hatH_fes);
+         dynamic_cast<HypreAMS*>(solver_hatH)->SetPrintLevel(0);
+      }
+
+      M.SetDiagonalBlock(skip,solver_hatE);
+      M.SetDiagonalBlock(skip+1,solver_hatH);
+      M.SetDiagonalBlock(skip+num_blocks,solver_hatE);
+      M.SetDiagonalBlock(skip+num_blocks+1,solver_hatH);
+
+      CGSolver cg(MPI_COMM_WORLD);
+      cg.SetRelTol(1e-6);
+      cg.SetMaxIter(10000);
+      cg.SetPrintLevel(0);
+      cg.SetPreconditioner(M);
+      cg.SetOperator(blockA);
+      cg.Mult(B, X);
+
+      for (int i = 0; i<num_blocks; i++)
+      {
+         delete &M.GetDiagonalBlock(i);
+      }
+
+      int num_iter = cg.GetNumIterations();
+
+      a->RecoverFEMSolution(X,x);
+
+      Vector & residuals = a->ComputeResidual(x);
+
+      real_t residual = residuals.Norml2();
+      real_t maxresidual = residuals.Max();
+      real_t globalresidual = residual * residual;
+      MPI_Allreduce(MPI_IN_PLACE, &maxresidual, 1, MPITypeMap<real_t>::mpi_type,
+                    MPI_MAX, MPI_COMM_WORLD);
+      MPI_Allreduce(MPI_IN_PLACE, &globalresidual, 1,
+                    MPITypeMap<real_t>::mpi_type, MPI_SUM, MPI_COMM_WORLD);
+
+      globalresidual = sqrt(globalresidual);
+
+      E_r.MakeRef(E_fes,x, 0);
+      E_i.MakeRef(E_fes,x, offsets.Last());
+
+      H_r.MakeRef(H_fes,x, offsets[1]);
+      H_i.MakeRef(H_fes,x, offsets.Last()+offsets[1]);
+
+      int dofs = 0;
+      for (int i = 0; i<trial_fes.Size(); i++)
+      {
+         dofs += trial_fes[i]->GlobalTrueVSize();
+      }
+
+      real_t L2Error = 0.0;
+      real_t rate_err = 0.0;
+
+      if (exact_known)
+      {
+         VectorFunctionCoefficient E_ex_r(dim,E_exact_r);
+         VectorFunctionCoefficient E_ex_i(dim,E_exact_i);
+         VectorFunctionCoefficient H_ex_r(dim,H_exact_r);
+         VectorFunctionCoefficient H_ex_i(dim,H_exact_i);
+         real_t E_err_r = E_r.ComputeL2Error(E_ex_r);
+         real_t E_err_i = E_i.ComputeL2Error(E_ex_i);
+         real_t H_err_r = H_r.ComputeL2Error(H_ex_r);
+         real_t H_err_i = H_i.ComputeL2Error(H_ex_i);
+         L2Error = sqrt(  E_err_r*E_err_r + E_err_i*E_err_i
+                          + H_err_r*H_err_r + H_err_i*H_err_i );
+         rate_err = (it) ? dim*log(err0/L2Error)/log((real_t)dof0/dofs) : 0.0;
+         err0 = L2Error;
+      }
+
+      real_t rate_res = (it) ? dim*log(res0/globalresidual)/log((
+                                                                   real_t)dof0/dofs) : 0.0;
+
+      res0 = globalresidual;
+      dof0 = dofs;
+
+      if (myid == 0)
+      {
+         std::ios oldState(nullptr);
+         oldState.copyfmt(std::cout);
+         std::cout << std::right << std::setw(5) << it << " | "
+                   << std::setw(10) <<  dof0 << " | "
+                   << std::setprecision(1) << std::fixed
+                   << std::setw(4) <<  2.0*rnum << " π  | "
+                   << std::setprecision(3);
+         if (exact_known)
+         {
+            std::cout << std::setw(10) << std::scientific <<  err0 << " | "
+                      << std::setprecision(2)
+                      << std::setw(6) << std::fixed << rate_err << " | " ;
+         }
+         std::cout << std::setprecision(3)
+                   << std::setw(10) << std::scientific <<  res0 << " | "
+                   << std::setprecision(2)
+                   << std::setw(6) << std::fixed << rate_res << " | "
+                   << std::setw(6) << std::fixed << num_iter << " | "
+                   << std::endl;
+         std::cout.copyfmt(oldState);
+      }
+
+      if (visualization)
+      {
+         const char * keys = (it == 0 && dim == 2) ? "jRcml\n" : nullptr;
+         char vishost[] = "localhost";
+         VisualizeField(E_out_r,vishost, visport, E_r,
+                        "Numerical Electric field (real part)", 0, 0, 500, 500, keys);
+         VisualizeField(H_out_r,vishost, visport, H_r,
+                        "Numerical Magnetic field (real part)", 501, 0, 500, 500, keys);
+      }
+
+      if (paraview)
+      {
+         paraview_dc->SetCycle(it);
+         paraview_dc->SetTime((real_t)it);
+         paraview_dc->Save();
+      }
+
+      if (it == pr)
+      {
+         break;
+      }
+
+      if (theta > 0.0)
+      {
+         elements_to_refine.SetSize(0);
+         for (int iel = 0; iel<pmesh.GetNE(); iel++)
+         {
+            if (residuals[iel] > theta * maxresidual)
+            {
+               elements_to_refine.Append(iel);
+            }
+         }
+         pmesh.GeneralRefinement(elements_to_refine,1,1);
+      }
+      else
+      {
+         pmesh.UniformRefinement();
+      }
+      if (pml) { pml->SetAttributes(&pmesh); }
+      for (int i =0; i<trial_fes.Size(); i++)
+      {
+         trial_fes[i]->Update(false);
+      }
+      a->Update();
+   }
+
+                               
 if __name__ == "__main__":
     from mfem.common.arg_parser import ArgParser
 

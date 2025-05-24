@@ -12,6 +12,9 @@
 #include "../common/io_stream.hpp"
 %}
 
+%include "../common/existing_mfem_headers.i"
+#ifdef FILE_EXISTS_MINIAPPS_DPG_UTIL_PWEAKFORM
+
 %init %{
 import_array();
 %}
@@ -40,3 +43,5 @@ OSTREAM_TYPEMAP(std::ostream&)
 
 
 %include "miniapps/dpg/util/pweakform.hpp"
+
+#endif

@@ -107,7 +107,7 @@ def get_extensions():
                "attribute_sets", "arrays_by_name",
                "hyperbolic", "complex_densemat", 
                "blockstaticcond", "complexstaticcond", "complexweakform",
-               "weakform"]
+               "weakform", "pml"]
 
 
     if add_cuda == '1':
