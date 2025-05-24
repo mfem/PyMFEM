@@ -250,8 +250,26 @@ def run(meshfile='',
     rot =mfem.MatrixConstantCoefficient(rot_mat)
     epsrot = mfem.ScalarMatrixProductCoefficient(epsomeg,rot)
     negepsrot = ScalarMatrixProductCoefficient(negepsomeg,rot)
-    
 
+    if pml:
+        epsomeg_cf = mfem.RestrictedCoefficient(epsomeg,attr)
+        negepsomeg_cf = mfem.RestrictedCoefficient(negepsomeg,attr)
+        eps2omeg2_cf = mfem.RestrictedCoefficient(eps2omeg2,attr)
+        muomeg_cf = mfem.RestrictedCoefficient(muomeg,attr)
+        negmuomeg_cf = mfem.RestrictedCoefficient(negmuomeg,attr)
+        mu2omeg2_cf = mfem.RestrictedCoefficient(mu2omeg2,attr)
+        epsrot_cf = mfem.MatrixRestrictedCoefficient(epsrot,attr)
+        negepsrot_cf = mfem.MatrixRestrictedCoefficient(negepsrot,attr)
+    else:
+        epsomeg_cf = epsomeg
+        negepsomeg_cf = negepsomeg
+        eps2omeg2_cf = eps2omeg2
+        muomeg_cf = muomeg
+        negmuomeg_cf = negmuomeg
+        mu2omeg2_cf = mu2omeg2
+        epsrot_cf = epsrot
+        negepsrot_cf = negepsrot
+                               
 
     pass
 
