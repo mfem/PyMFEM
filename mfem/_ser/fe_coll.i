@@ -32,9 +32,12 @@ import_array();
 %import "lininteg.i"
 %import "../common/exception.i"
 
- //%inline %{
- //  typedef mfem::L2_FECollection mfem::DG_FECollection;
- // %}
+/* define FiniteElementCollectionPtrArray */
+%import "../common/array_listtuple_typemap.i"
+ARRAY_LISTTUPLE_INPUT_SWIGOBJ(mfem::FiniteElementCollection *, 1)
+%import "../common/array_instantiation_macro.i"
+IGNORE_ARRAY_METHODS(mfem::FiniteElementCollection *)
+INSTANTIATE_ARRAY0(FiniteElementCollection *, FiniteElementCollection, 1)
 
 %include "fem/fe_coll.hpp"
 %pythoncode %{

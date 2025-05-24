@@ -75,6 +75,13 @@ def GetFaceNbrElementVDofs(self, i):
     return vdofs.ToList()
 %}
 
+/* define FiniteElementSpacePtrArray */
+%import "../common/array_listtuple_typemap.i"
+ARRAY_LISTTUPLE_INPUT_SWIGOBJ(mfem::ParFiniteElementSpace *, 1)
+%import "../common/array_instantiation_macro.i"
+IGNORE_ARRAY_METHODS(mfem::ParFiniteElementSpace *)
+INSTANTIATE_ARRAY0(ParFiniteElementSpace *, ParFiniteElementSpace, 1)
+
 %include "fem/pfespace.hpp"
 
 %extend mfem::ParFiniteElementSpace{
