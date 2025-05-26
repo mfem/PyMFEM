@@ -40,7 +40,7 @@ import_array();
 
 OSTREAM_TYPEMAP(std::ostream&)
 
-
+%ignore mfem::BlockStaticCondensation::ConvertListToReducedTrueDofs;
 %include "miniapps/dpg/util/blockstaticcond.hpp"
 
 #endif

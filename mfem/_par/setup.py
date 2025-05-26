@@ -119,8 +119,7 @@ def get_extensions():
                "psubmesh", "ptransfermap", "enzyme",
                "attribute_sets", "arrays_by_name",
                "hyperbolic", "complex_densemat",
-               "blockstaticcond", "complexstaticcond", "complexweakform",
-               "weakform", "pweakform", "pcomplexweakform", "pml"]
+               "dpg"]
               
     if add_pumi == '1':
         from setup_local import puminc, pumilib

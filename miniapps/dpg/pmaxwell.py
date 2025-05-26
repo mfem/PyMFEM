@@ -143,13 +143,47 @@ prob_type = {"plane_wave",
              "pml_plane_wave_scatter",
              "pml_pointsource"}
 
+visport = 19916;
+
+def VisualizeField(sock, vishost, visport,
+                   gf, title,
+                   x, y, w, h, keys, vec):
+    
+    mesh = gf.FESpace().GetMesh()
+
+    sock = None
+    newly_opened = False
+
+    while True:
+        if sock is None:
+           sock = mfem.socketstream("localhost", visport)            
+           sock.precision(8);
+           newly_opened = True
+
+        sock << "solution\n";
+        sock << mesh << gf
+
+        if newly_opend:
+            sock << "window_title '" << title << "'\n"
+            sock << "window_geometry "
+            sock << x << " " << y << " " << w << " " << h << "\n"
+
+            if keys != '':
+                sock << "keys " << keys << "\n"
+            if vec:
+                sock << "vvv"
+            sock.flush()
+
+    return sock
+
+
 def run(meshfile='',
         order=1,
         delta_order=1,        
         prob=0,
         sr=0, 
         pr=1, 
-        eps=1.0,
+        epsilon=1.0,
         mu=1.0,
         rnum=1.0,
         theta=0.0,
@@ -161,18 +195,27 @@ def run(meshfile='',
     
     if prob == 0:
        exact_known = True;
+       mesh_file = expanduser(
+        join(os.path.dirname(__file__), '..', 'data', meshfile))
+       
     elif prob == 1:
        meshfile = "meshes/fichera-waveguide.mesh";
        omega = 5.0;
-       rnum = omega/(2.*M_PI);
+       rnum = omega/(2.*pi)
+       mesh_file = expanduser(
+         join(os.path.dirname(__file__),  meshfile))
+       
     elif prob == 2:
        with_pml = True
+       mesh_file = expanduser(
+        join(os.path.dirname(__file__), '..', 'data', meshfile))
+       
     else:
        with_pml = True
-       meshfile = "meshes/scatter.mesh"
+       mesh_file = "meshes/scatter.mesh"
+       mesh_file = expanduser(
+         join(os.path.dirname(__file__),  meshfile))
        
-    mesh_file = expanduser(
-        join(os.path.dirname(__file__), '..', 'data', meshfile))
 
     mesh = mfem.Mesh(mesh_file, 1, 1)
     dim = mesh.Dimension()
@@ -202,11 +245,11 @@ def run(meshfile='',
                  "G_space": 1,}
 
     # Vector L2 L2 space for E
-    E_fec = mfem.FiniteElementCollection(order-1, dim)
+    E_fec = mfem.L2_FECollection(order-1, dim)
     E_fes = mfem.ParFiniteElementSpace(pmesh, E_fec, dim)
     
     # Vector L2 L2 space for H
-    H_fec = mfem.FiniteElementCollection(order-1, dim)
+    H_fec = mfem.L2_FECollection(order-1, dim)
     H_fes = mfem.ParFiniteElementSpace(pmesh, H_fec, dim)
 
     # H^-1/2 (curl) space for Ê
@@ -227,8 +270,8 @@ def run(meshfile='',
     
 
 
-    trial_fes = mfem.ParFiniteElementSpacePtrArray()
-    test_fec = mfem.FiniteElementCollectionPtrArray()
+    trial_fes = mfem.ParFiniteElementSpaceArray()
+    test_fec = mfem.FiniteElementCollectionArray()
     trial_fes.Append(E_fes)
     trial_fes.Append(H_fes)
     trial_fes.Append(hatE_fes)
@@ -246,12 +289,12 @@ def run(meshfile='',
     negmuomeg = mfem.ConstantCoefficient(-mu*omega)
 
     # for the 2D case
-    rot_mat = mfem.DenseMatrix(np.array([[0, 1.],[-1, 0]])
+    rot_mat = mfem.DenseMatrix(np.array([[0, 1.],[-1, 0]]))
     rot =mfem.MatrixConstantCoefficient(rot_mat)
     epsrot = mfem.ScalarMatrixProductCoefficient(epsomeg,rot)
-    negepsrot = ScalarMatrixProductCoefficient(negepsomeg,rot)
+    negepsrot = mfem.ScalarMatrixProductCoefficient(negepsomeg,rot)
 
-    if pml:
+    if with_pml:
         epsomeg_cf = mfem.RestrictedCoefficient(epsomeg,attr)
         negepsomeg_cf = mfem.RestrictedCoefficient(negepsomeg,attr)
         eps2omeg2_cf = mfem.RestrictedCoefficient(eps2omeg2,attr)
@@ -270,7 +313,7 @@ def run(meshfile='',
         epsrot_cf = epsrot
         negepsrot_cf = negepsrot
                                
-    detJ_r = mfem.PmlCoefficient(detJ_r_function,pml)
+    detJ_r = mfem.dpg.PmlCoefficient(detJ_r_function,pml)
     detJ_i = mfem.PmlCoefficient(detJ_i_function,pml)
     abs_detJ_2 = mfem.PmlCoefficient(abs_detJ_2_function,pml)
     detJ_Jt_J_inv_r = mfem.PmlMatrixCoefficient(dim,detJ_Jt_J_inv_r_function,pml)
@@ -302,7 +345,7 @@ def run(meshfile='',
     eps2omeg2_detJ_Jt_J_inv_2_restr = mfem.MatrixRestrictedCoefficient(eps2omeg2_detJ_Jt_J_inv_2,attrPML)
                                
 
-    if pml and dim == 2:
+    if with_pml and dim == 2:
         epsomeg_detJ_Jt_J_inv_i_rot = mfem.MatrixProductCoefficient(epsomeg_detJ_Jt_J_inv_i, rot)
         epsomeg_detJ_Jt_J_inv_r_rot = mfem.MatrixProductCoefficient(epsomeg_detJ_Jt_J_inv_r, rot)
         negepsomeg_detJ_Jt_J_inv_r_rot = mfem.MatrixProductCoefficient(negepsomeg_detJ_Jt_J_inv_r, rot)
@@ -427,14 +470,14 @@ def run(meshfile='',
                             TestSpace["F_space"])
         # i ω ϵ (G, ∇ × δF ) =  i (ω ϵ G, A ∇ δF) = i ( G , ω ϵ A ∇ δF)
         a.AddTestIntegrator(None,
-                            mfem.TransposeIntegrator(mfem.MixedVectorGradientIntegrator(epsrot_cf))
+                            mfem.TransposeIntegrator(mfem.MixedVectorGradientIntegrator(epsrot_cf)),
                             TestSpace["G_space"],
                             TestSpace["F_space"])
         # ϵ^2 ω^2 (G, δG)
         a.AddTestIntegrator(mfem.VectorFEMassIntegrator(eps2omeg2_cf), None,
                             TestSpace["G_space"],
                             TestSpace["G_space"])
-    if pml:
+    if with_pml:
         assert False, "PML not supported yet"
 
 
@@ -473,281 +516,207 @@ def run(meshfile='',
     dof0 = 0
                                
     elements_to_refine = mfem.intArray()
-                               
-   socketstream E_out_r;
-   socketstream H_out_r;
 
-
-   Array<int> 
-
-   ParGridFunction E_r, E_i, H_r, H_i;
-
-   ParaViewDataCollection * paraview_dc = nullptr;
-
+    ## visualizaiton socket                        
+    E_out_r = None
+    H_out_r = None                               
+ 
     if static_cond:
         a.EnableStaticCondensation()
-   for (int it = 0; it<=pr; it++)
-   {
-      a->Assemble();
+                               
+    for it in range(pr+1):
+       a.Assemble()
+ 
+       ess_tdof_list = mfem.intArray()
+       ess_bdr = mfem.intArray()       
 
-      Array<int> ess_tdof_list;
-      Array<int> ess_bdr;
-      if (pmesh.bdr_attributes.Size())
-      {
-         ess_bdr.SetSize(pmesh.bdr_attributes.Max());
-         ess_bdr = 1;
-         hatE_fes->GetEssentialTrueDofs(ess_bdr, ess_tdof_list);
-         if (pml)
-         {
-            ess_bdr = 0;
-            ess_bdr[1] = 1;
-         }
-      }
+       if pmesh.bdr_attributes.Size() != 0:
+           ess_bdr.SetSize(pmesh.bdr_attributes.Max())
+           ess_bdr.Assign(1)
+           hatE_fes.GetEssentialTrueDofs(ess_bdr, ess_tdof_list)
+           if with_pml:
+               ess_bdr.Assign(0)
+               ess_bdr[1] = 1
 
-      // shift the ess_tdofs
-      for (int j = 0; j < ess_tdof_list.Size(); j++)
-      {
-         ess_tdof_list[j] += E_fes->GetTrueVSize() + H_fes->GetTrueVSize();
-      }
 
-      Array<int> offsets(5);
-      offsets[0] = 0;
-      offsets[1] = E_fes->GetVSize();
-      offsets[2] = H_fes->GetVSize();
-      offsets[3] = hatE_fes->GetVSize();
-      offsets[4] = hatH_fes->GetVSize();
-      offsets.PartialSum();
+       # shift the ess_tdofs
+       for j in range(ess_tdof_list.Size()):
+          ess_tdof_list[j] += E_fes.GetTrueVSize() + H_fes.GetTrueVSize()
 
-      Vector x(2*offsets.Last());
-      x = 0.;
+       offsets = mfem.intArray(5)
+       offsets[0] = 0
+       offsets[1] = E_fes.GetVSize()
+       offsets[2] = H_fes.GetVSize()
+       offsets[3] = hatE_fes.GetVSize()
+       offsets[4] = hatH_fes.GetVSize()
+       offsets.PartialSum()
 
-      if (prob != 2)
-      {
-         ParGridFunction hatE_gf_r(hatE_fes, x, offsets[2]);
-         ParGridFunction hatE_gf_i(hatE_fes, x, offsets.Last() + offsets[2]);
-         if (dim == 3)
-         {
-            hatE_gf_r.ProjectBdrCoefficientTangent(hatEex_r, ess_bdr);
-            hatE_gf_i.ProjectBdrCoefficientTangent(hatEex_i, ess_bdr);
-         }
-         else
-         {
-            hatE_gf_r.ProjectBdrCoefficientNormal(hatEex_r, ess_bdr);
-            hatE_gf_i.ProjectBdrCoefficientNormal(hatEex_i, ess_bdr);
-         }
-      }
+       x = mfem.Vector([0.]*(2*offsets.Last()))
+       if prob != 2:
+           hatE_gf_r = mfem.ParGridFunction(hatE_fes, x, offsets[2])
+           hatE_gf_i = mfem.ParGridFunction(hatE_fes, x, offsets.Last() + offsets[2]);
+           if dim == 3:
+               hatE_gf_r.ProjectBdrCoefficientTangent(hatEex_r, ess_bdr)
+               hatE_gf_i.ProjectBdrCoefficientTangent(hatEex_i, ess_bdr)
+           else:
+               hatE_gf_r.ProjectBdrCoefficientNormal(hatEex_r, ess_bdr)
+               hatE_gf_i.ProjectBdrCoefficientNormal(hatEex_i, ess_bdr)
 
-      OperatorPtr Ah;
-      Vector X,B;
-      a->FormLinearSystem(ess_tdof_list,x,Ah, X,B);
+       Ah = mfem.OperatorPtr()
+       X = mfem.Vector()
+       B = mfem.Vector()       
+       a.FormLinearSystem(ess_tdof_list,x, Ah, X, B)
 
-      ComplexOperator * Ahc = Ah.As<ComplexOperator>();
+       Ahc = Ah.AsComplexOperator()
 
-      BlockOperator * BlockA_r = dynamic_cast<BlockOperator *>(&Ahc->real());
-      BlockOperator * BlockA_i = dynamic_cast<BlockOperator *>(&Ahc->imag());
+       assert False, "here (dynamic cast)"
+       #BlockOperator * BlockA_r = dynamic_cast<BlockOperator *>(&Ahc->real());
+       #BlockOperator * BlockA_i = dynamic_cast<BlockOperator *>(&Ahc->imag());
 
-      int num_blocks = BlockA_r->NumRowBlocks();
-      Array<int> tdof_offsets(2*num_blocks+1);
+       num_blocks = BlockA_r.NumRowBlocks()
+       tdof_offsets = mfem.intArray(2*num_blocks+1)
 
-      tdof_offsets[0] = 0;
-      int skip = (static_cond) ? 0 : 2;
-      int k = (static_cond) ? 2 : 0;
-      for (int i=0; i<num_blocks; i++)
-      {
-         tdof_offsets[i+1] = trial_fes[i+k]->GetTrueVSize();
-         tdof_offsets[num_blocks+i+1] = trial_fes[i+k]->GetTrueVSize();
-      }
-      tdof_offsets.PartialSum();
+       tdof_offsets[0] = 0
+       skip = 0 if static_cond else 2
+       k = 2 if static_cond else  0
+       for i in range(num_blocks):
+          tdof_offsets[i+1] = trial_fes[i+k].GetTrueVSize();
+          tdof_offsets[num_blocks+i+1] = trial_fes[i+k].GetTrueVSize()
+       tdof_offsets.PartialSum();
 
-      BlockOperator blockA(tdof_offsets);
-      for (int i = 0; i<num_blocks; i++)
-      {
-         for (int j = 0; j<num_blocks; j++)
-         {
-            blockA.SetBlock(i,j,&BlockA_r->GetBlock(i,j));
-            blockA.SetBlock(i,j+num_blocks,&BlockA_i->GetBlock(i,j), -1.0);
-            blockA.SetBlock(i+num_blocks,j+num_blocks,&BlockA_r->GetBlock(i,j));
-            blockA.SetBlock(i+num_blocks,j,&BlockA_i->GetBlock(i,j));
-         }
-      }
+       blockA = BlockOperator(tdof_offsets)
+       for i in range(num_blocks):
+           for j in range(num_blocks):                               
+                blockA.SetBlock(i, j, BlockA_r.GetBlock(i,j))
+                blockA.SetBlock(i, j+num_blocks, BlockA_i.GetBlock(i,j), -1.0)
+                blockA.SetBlock(i+num_blocks, j+num_blocks, BlockA_r.GetBlock(i,j))
+                blockA.SetBlock(i+num_blocks, j, BlockA_i.GetBlock(i,j))
+       X.Assign(0.0)
+       M = mfem.BlockDiagonalPreconditioner(tdof_offsets)
 
-      X = 0.;
-      BlockDiagonalPreconditioner M(tdof_offsets);
+       if notstatic_cond:
+           solver_E = mfem.HypreBoomerAMG(BlockA_r.GetBlock(0,0));
+           solver_E.SetPrintLevel(0)
+           solver_E.SetSystemsOptions(dim)
+           solver_H = mfem.HypreBoomerAMG(BlockA_r.GetBlock(1,1))
+           solver_H.SetPrintLevel(0)
+           solver_H.SetSystemsOptions(dim)
+           M.SetDiagonalBlock(0,solver_E)
+           M.SetDiagonalBlock(1,solver_H)
+           M.SetDiagonalBlock(num_blocks,solver_E)
+           M.SetDiagonalBlock(num_blocks+1,solver_H)
 
-      if (!static_cond)
-      {
-         HypreBoomerAMG * solver_E = new HypreBoomerAMG((HypreParMatrix &)
-                                                        BlockA_r->GetBlock(0,0));
-         solver_E->SetPrintLevel(0);
-         solver_E->SetSystemsOptions(dim);
-         HypreBoomerAMG * solver_H = new HypreBoomerAMG((HypreParMatrix &)
-                                                        BlockA_r->GetBlock(1,1));
-         solver_H->SetPrintLevel(0);
-         solver_H->SetSystemsOptions(dim);
-         M.SetDiagonalBlock(0,solver_E);
-         M.SetDiagonalBlock(1,solver_H);
-         M.SetDiagonalBlock(num_blocks,solver_E);
-         M.SetDiagonalBlock(num_blocks+1,solver_H);
-      }
 
-      HypreSolver * solver_hatH = nullptr;
-      HypreAMS * solver_hatE = new HypreAMS((HypreParMatrix &)BlockA_r->GetBlock(skip,
-                                                                                 skip),
-                                            hatE_fes);
-      solver_hatE->SetPrintLevel(0);
-      if (dim == 2)
-      {
-         solver_hatH = new HypreBoomerAMG((HypreParMatrix &)BlockA_r->GetBlock(skip+1,
-                                                                               skip+1));
-         dynamic_cast<HypreBoomerAMG*>(solver_hatH)->SetPrintLevel(0);
-      }
-      else
-      {
-         solver_hatH = new HypreAMS((HypreParMatrix &)BlockA_r->GetBlock(skip+1,skip+1),
-                                    hatH_fes);
-         dynamic_cast<HypreAMS*>(solver_hatH)->SetPrintLevel(0);
-      }
+       solver_hatH = None
+       solver_hatE = mfem.HypreAMS(BlockA_r.GetBlock(skip, skip), hatE_fes)
+       solver_hatE.SetPrintLevel(0)
+       if dim == 2:
+           solver_hatH = mfem.HypreBoomerAMG(BlockA_r.GetBlock(skip+1, skip+1))
+           solver_hatH.SetPrintLevel(0)
+       else:
+           solver_hatH = mfem.HypreAMS(BlockA_r.GetBlock(skip+1,skip+1),
+                                       hatH_fes)
+           solver_hatH.SetPrintLevel(0)
 
-      M.SetDiagonalBlock(skip,solver_hatE);
-      M.SetDiagonalBlock(skip+1,solver_hatH);
-      M.SetDiagonalBlock(skip+num_blocks,solver_hatE);
-      M.SetDiagonalBlock(skip+num_blocks+1,solver_hatH);
+       M.SetDiagonalBlock(skip,solver_hatE)
+       M.SetDiagonalBlock(skip+1,solver_hatH)
+       M.SetDiagonalBlock(skip+num_blocks,solver_hatE)
+       M.SetDiagonalBlock(skip+num_blocks+1,solver_hatH)
 
-      CGSolver cg(MPI_COMM_WORLD);
-      cg.SetRelTol(1e-6);
-      cg.SetMaxIter(10000);
-      cg.SetPrintLevel(0);
-      cg.SetPreconditioner(M);
-      cg.SetOperator(blockA);
-      cg.Mult(B, X);
+       cg = mfem.CGSolver(MPI.COMM_WORLD)
+       cg.SetRelTol(1e-6)
+       cg.SetMaxIter(10000)
+       cg.SetPrintLevel(0)
+       cg.SetPreconditioner(M)
+       cg.SetOperator(blockA)
+       cg.Mult(B, X)
 
-      for (int i = 0; i<num_blocks; i++)
-      {
-         delete &M.GetDiagonalBlock(i);
-      }
+       #for i in range(num_blocks):
+       #  delete &M.GetDiagonalBlock(i);
+                               
+       num_iter = cg.GetNumIterations()
 
-      int num_iter = cg.GetNumIterations();
+       a.RecoverFEMSolution(X,x)
 
-      a->RecoverFEMSolution(X,x);
+       residuals = a.ComputeResidual(x)
 
-      Vector & residuals = a->ComputeResidual(x);
+       residual = residuals.Norml2()
+       maxresidual = residuals.Max()
+       globalresidual = residual * residual;
 
-      real_t residual = residuals.Norml2();
-      real_t maxresidual = residuals.Max();
-      real_t globalresidual = residual * residual;
-      MPI_Allreduce(MPI_IN_PLACE, &maxresidual, 1, MPITypeMap<real_t>::mpi_type,
-                    MPI_MAX, MPI_COMM_WORLD);
-      MPI_Allreduce(MPI_IN_PLACE, &globalresidual, 1,
-                    MPITypeMap<real_t>::mpi_type, MPI_SUM, MPI_COMM_WORLD);
+       maxresidual = MPI.COMM_WORLD.allreduce(maxresidual, op=MPI.MAX)
+       globalresidual = MPI.COMM_WORLD.allreduce(globalresidual, op=MPI.SUM)                               
+       globalresidual = np.sqrt(globalresidual)
 
-      globalresidual = sqrt(globalresidual);
+       E_r.MakeRef(E_fes,x, 0);
+       E_i.MakeRef(E_fes,x, offsets.Last())
 
-      E_r.MakeRef(E_fes,x, 0);
-      E_i.MakeRef(E_fes,x, offsets.Last());
+       H_r.MakeRef(H_fes,x, offsets[1])
+       H_i.MakeRef(H_fes,x, offsets.Last()+offsets[1])
 
-      H_r.MakeRef(H_fes,x, offsets[1]);
-      H_i.MakeRef(H_fes,x, offsets.Last()+offsets[1]);
+       dofs = 0;
+       for  i in range(trial_fes.Size()):
+         dofs += trial_fes[i].GlobalTrueVSize()
 
-      int dofs = 0;
-      for (int i = 0; i<trial_fes.Size(); i++)
-      {
-         dofs += trial_fes[i]->GlobalTrueVSize();
-      }
 
-      real_t L2Error = 0.0;
-      real_t rate_err = 0.0;
+       if exact_known:
+            E_ex_r = mfem.VectorFunctionCoefficient(dim, E_exact_r)
+            E_ex_i = mfem.VectorFunctionCoefficient(dim, E_exact_i)                               
+            H_ex_r = mfem.VectorFunctionCoefficient(dim, H_exact_r)
+            H_ex_i = mfem.VectorFunctionCoefficient(dim, H_exact_i)                               
+            E_err_r = E_r.ComputeL2Error(E_ex_r)
+            E_err_i = E_r.ComputeL2Error(E_ex_i)
+            H_err_r = H_r.ComputeL2Error(E_ex_r)
+            H_err_i = H_r.ComputeL2Error(E_ex_i)
+            L2Error = np.sqrt(E_err_r*E_err_r + E_err_i*E_err_i
+                              + H_err_r*H_err_r + H_err_i*H_err_i )
+            rate_err = 0 if it == 0 else  dim*np.log(err0/L2Error)/np.log(dof0/dofs)
+            err0 = L2Error
 
-      if (exact_known)
-      {
-         VectorFunctionCoefficient E_ex_r(dim,E_exact_r);
-         VectorFunctionCoefficient E_ex_i(dim,E_exact_i);
-         VectorFunctionCoefficient H_ex_r(dim,H_exact_r);
-         VectorFunctionCoefficient H_ex_i(dim,H_exact_i);
-         real_t E_err_r = E_r.ComputeL2Error(E_ex_r);
-         real_t E_err_i = E_i.ComputeL2Error(E_ex_i);
-         real_t H_err_r = H_r.ComputeL2Error(H_ex_r);
-         real_t H_err_i = H_i.ComputeL2Error(H_ex_i);
-         L2Error = sqrt(  E_err_r*E_err_r + E_err_i*E_err_i
-                          + H_err_r*H_err_r + H_err_i*H_err_i );
-         rate_err = (it) ? dim*log(err0/L2Error)/log((real_t)dof0/dofs) : 0.0;
-         err0 = L2Error;
-      }
+       rate_res = 0.0 if it == 0 else  dim*np.log(res0/globalresidual)/np.log(dof0/dofs)
 
-      real_t rate_res = (it) ? dim*log(res0/globalresidual)/log((
-                                                                   real_t)dof0/dofs) : 0.0;
+       res0 = globalresidual;
+       dof0 = dofs;
 
-      res0 = globalresidual;
-      dof0 = dofs;
+       if myid == 0:
+            txt = ("{:5d}".format(it) + "|" +
+                   "{:10d}".format(dof0) + "|" +
+                   "{:4f}".format(2.0*runm) + " π  | " )
+            if exact_known:
+                 txt = txt + ("{:10e}".format(err0) + "|" +
+                              "{:6f}".format(rate_err) + " | " )
 
-      if (myid == 0)
-      {
-         std::ios oldState(nullptr);
-         oldState.copyfmt(std::cout);
-         std::cout << std::right << std::setw(5) << it << " | "
-                   << std::setw(10) <<  dof0 << " | "
-                   << std::setprecision(1) << std::fixed
-                   << std::setw(4) <<  2.0*rnum << " π  | "
-                   << std::setprecision(3);
-         if (exact_known)
-         {
-            std::cout << std::setw(10) << std::scientific <<  err0 << " | "
-                      << std::setprecision(2)
-                      << std::setw(6) << std::fixed << rate_err << " | " ;
-         }
-         std::cout << std::setprecision(3)
-                   << std::setw(10) << std::scientific <<  res0 << " | "
-                   << std::setprecision(2)
-                   << std::setw(6) << std::fixed << rate_res << " | "
-                   << std::setw(6) << std::fixed << num_iter << " | "
-                   << std::endl;
-         std::cout.copyfmt(oldState);
-      }
+            txt = txt + ("{:10e}".format(res0) + "|" +
+                        "{:6d}".format(rate_err) + " | " +
+                        "{:6d}".format(num_iter) + " | " )
+            print(txt)
+                               
+       if visualization:
+         keys = "jRcml\n" if it == 0 and dim == 2 else ""
+         
+         E_out_r = VisualizeField(E_out_r, "localhost", visport, E_r,
+                        "Numerical Electric field (real part)", 0, 0, 500, 500, keys)
+         H_out_r = VisualizeField(H_out_r, "localhost", visport, H_r,
+                        "Numerical Magnetic field (real part)", 0, 0, 500, 500, keys);                        
+         
+       if it == pr:
+           break
 
-      if (visualization)
-      {
-         const char * keys = (it == 0 && dim == 2) ? "jRcml\n" : nullptr;
-         char vishost[] = "localhost";
-         VisualizeField(E_out_r,vishost, visport, E_r,
-                        "Numerical Electric field (real part)", 0, 0, 500, 500, keys);
-         VisualizeField(H_out_r,vishost, visport, H_r,
-                        "Numerical Magnetic field (real part)", 501, 0, 500, 500, keys);
-      }
+       if theta > 0.0:
+           elements_to_refine.SetSize(0);
+           for iel in range(pmesh.GetNE()):
+               if residuals[iel] > theta * maxresidual:
+                   elements_to_refine.Append(iel)
+           pmesh.GeneralRefinement(elements_to_refine,1,1)
+       else:
+           pmesh.UniformRefinement();
 
-      if (paraview)
-      {
-         paraview_dc->SetCycle(it);
-         paraview_dc->SetTime((real_t)it);
-         paraview_dc->Save();
-      }
+       if with_pml:
+           pml.SetAttributes(pmesh)
+       for i in range(trial_fes.Size()):
+           trial_fes[i].Update(False)
+       a.Update()
 
-      if (it == pr)
-      {
-         break;
-      }
-
-      if (theta > 0.0)
-      {
-         elements_to_refine.SetSize(0);
-         for (int iel = 0; iel<pmesh.GetNE(); iel++)
-         {
-            if (residuals[iel] > theta * maxresidual)
-            {
-               elements_to_refine.Append(iel);
-            }
-         }
-         pmesh.GeneralRefinement(elements_to_refine,1,1);
-      }
-      else
-      {
-         pmesh.UniformRefinement();
-      }
-      if (pml) { pml->SetAttributes(&pmesh); }
-      for (int i =0; i<trial_fes.Size(); i++)
-      {
-         trial_fes[i]->Update(false);
-      }
-      a->Update();
-   }
 
                                
 if __name__ == "__main__":
@@ -810,7 +779,7 @@ if __name__ == "__main__":
         prob=args.problem,
         sr=args.serial_ref,
         pr=args.parallel_ref,        
-        eps=args.permittivity,
+        epsilon=args.permittivity,
         mu=args.permeability,
         delta_order=args.delta_order,
         rnum=args.number_of_wavelengths,

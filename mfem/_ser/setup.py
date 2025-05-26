@@ -105,9 +105,8 @@ def get_extensions():
                "submesh", "transfermap", "staticcond",
                "sidredatacollection", "enzyme",
                "attribute_sets", "arrays_by_name",
-               "hyperbolic", "complex_densemat", 
-               "blockstaticcond", "complexstaticcond", "complexweakform",
-               "weakform", "pml"]
+               "hyperbolic", "complex_densemat",
+               "dpg"]
 
 
     if add_cuda == '1':

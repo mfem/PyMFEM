@@ -42,7 +42,7 @@ import_array();
 
 OSTREAM_TYPEMAP(std::ostream&)
 
-
+%ignore mfem::ComplexBlockStaticCondensation::ConvertListToReducedTrueDofs;
 %include "miniapps/dpg/util/complexstaticcond.hpp"
 
 #endif
