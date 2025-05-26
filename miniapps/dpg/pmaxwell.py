@@ -131,17 +131,17 @@ import numpy as np
 from numpy import pi
 
 import mfem.par as mfem
+mdpg = mfem.dpg
+
+from mfem.common.bessel import jv as jn
+from mfem.common.bessel import yv as yn
+
+from numba import njit, void, int32, int64, float64, complex128, types
 
 from mpi4py import MPI
 num_procs = MPI.COMM_WORLD.size
 myid = MPI.COMM_WORLD.rank
 smyid = '.'+'{:0>6d}'.format(myid)
-
-prob_type = {"plane_wave",
-             "fichera_oven",
-             "pml_general",
-             "pml_plane_wave_scatter",
-             "pml_pointsource"}
 
 visport = 19916;
 
@@ -176,6 +176,189 @@ def VisualizeField(sock, vishost, visport,
 
     return sock
 
+prob_type = ("plane_wave",
+             "fichera_oven",
+             "pml_general",
+             "pml_plane_wave_scatter",
+             "pml_pointsource")
+
+class Functions:
+    def __init__(self, dim, dimc, omega, epsilon, mu, iprob):
+
+
+        prob = prob_type[iprob]
+        print("params", dim, dimc, omega, epsilon, mu, prob)
+        
+        @njit(complex128[:](float64[:]))
+        def maxwell_solution(x):
+            E = np.zeros(dim, dtype=np.complex128)
+
+            if prob == "plane_wave":
+                E[0] = np.exp(1j * omega * np.sum(x))
+
+            elif prob == "pml_plane_wave_scatter":
+                E[1] = exp(1j * omega * x[0])
+
+            elif prob == "fichera_oven":
+                if abs(x[2] - 3.0) < 1e-10:
+                   E[0] = np.sin(pi*x[1])
+            elif prob == "pml_pointsource":
+                k = omega * np.sqrt(epsilon * mu)
+                shift = np.array([-0.5]*dim);
+
+                if dim == 2:
+                    x0 = x[0] + shift[0]
+                    x1 = x[1] + shift[1]            
+                    r = np.sqrt(x0 * x0 + x1 * x1)
+                    beta = k * r;
+
+                    # Bessel functions
+                    Ho = jn(0, beta).real + 1j * yn(0, beta).real
+                    Ho_r = -k * jn(1, beta).real + 1j* yn(1, beta).real
+                    Ho_rr = -k * k * (1. / beta *
+                                      (jn(1, beta).real + 1j * yn(1, beta).real) -
+                                      (jn(2, beta).real + 1j * yn(2, beta).real))
+
+                    # First derivatives
+                    r_x = x0 / r
+                    r_y = x1 / r
+                    r_xy = -(r_x / r) * r_y
+                    r_xx = (1.0 / r) * (1.0 - r_x * r_x)
+
+                    val = 0.25 * 1j * Ho
+                    val_xx = 0.25 * 1j * (r_xx * Ho_r + r_x * r_x * Ho_rr)
+                    val_xy = 0.25 * 1j * (r_xy * Ho_r + r_x * r_y * Ho_rr)
+                    E[0] = 1j / k * (k * k * val + val_xx)
+                    E[1] = 1j / k * val_xy
+                else:
+                    x0 = x[0] + shift[0]
+                    x1 = x[1] + shift[1]
+                    x2 = x[2] + shift[2]            
+                    r = sqrt(x0 * x0 + x1 * x1 + x2 * x2)
+
+                    r_x = x0 / r
+                    r_y = x1 / r
+                    r_z = x2 / r
+                    r_xx = (1.0 / r) * (1.0 - r_x * r_x)
+                    r_yx = -(r_y / r) * r_x
+                    r_zx = -(r_z / r) * r_x
+
+                    val = np.exp(1j * k * r) / r
+                    val_r = val / r * (1j * k * r - 1.)
+                    val_rr = val / (r * r) * (-k * k * r * r
+                                              - 2. * 1j * k * r + 2.)
+
+                    val_xx = val_rr * r_x * r_x + val_r * r_xx
+                    val_yx = val_rr * r_x * r_y + val_r * r_yx
+                    val_zx = val_rr * r_x * r_z + val_r * r_zx
+                    alpha = 1j * k / 4. / pi / k / k
+                    E[0] = alpha * (k * k * val + val_xx)
+                    E[1] = alpha * val_yx
+                    E[2] = alpha * val_zx
+            else:
+                assert False, "should not come here"
+            return E
+
+        @njit(complex128[:](float64[:]))
+        def maxwell_solution_curl(x):
+            curlE = np.zeros(dimc, dtype=np.complex128)
+            if prob == "plane_wave":
+                pw = np.exp(1j * omega * np.sum(x))
+                if dim == 3:
+                    curlE[0] = 0.0;
+                    curlE[1] = 1j * omega * pw;
+                    curlE[2] = -1j * omega * pw;
+                else:
+                    curlE[0] = -1j * omega * pw;
+            elif prob == "pml_plane_wave_scatter":
+                pw = np.exp(1j * omega * (x[0]))
+                curlE[0] = 1j * omega * pw
+            else:
+                assert False, "should not come here"
+            return curlE
+
+        @njit(complex128[:](float64[:]))             
+        def maxwell_solution_curlcurl(x):
+            curlcurlE = np.zeros(dimc, dtype=np.complex128)
+            if prob == "plane_wave":
+                 pw = np.exp(1j * omega * np.sum(x))
+                 if dim == 3:
+                     curlcurlE[0] = 2. * omega * omega * pw
+                     curlcurlE[1] = - omega * omega * pw
+                     curlcurlE[2] = - omega * omega * pw
+                 else:
+                     curlcurlE[0] = omega * omega * pw
+                     curlcurlE[1] = -omega * omega * pw
+            elif prob == "pml_plane_wave_scatter":
+                pw = np.exp(1j * omega * x[0])
+                curlcurlE[1] = omega * omega * pw
+            else:
+                assert False, "should not come here"
+            return curlcurlE
+
+        self.maxwell_solution = maxwell_solution
+        self.maxwell_solution_curl = maxwell_solution_curl
+        self.maxwell_solution_curlcurl = maxwell_solution_curlcurl
+        
+        @njit(complex128[:](float64[:]))                     
+        def curlH_exact(x):
+            # ∇ × H = ∇ × ∇ × E / ω μ
+            curlcurlE = maxwell_solution_curlcurl(x)
+            return 1j*curlcurlE / (omega * mu)
+        
+        @njit(complex128[:](float64[:]))                     
+        def hatE_exact(x):
+            if dim == 3:
+                E = maxwell_solution(x)
+                return E
+            else:
+                ret  = np.zeros(2, dtype=np.complex128)
+                E = maxwell_solution(x)
+                ret[0] = E[0]
+                ret[1] = -E[1]
+            return ret
+
+        @mfem.jit.vector(vdim=dim)        
+        def E_exact_r(x):
+            E = maxwell_solution(x)
+            return E.real
+
+        @mfem.jit.vector(vdim=dim)        
+        def E_exact_i(x):
+            E = maxwell_solution(x)
+            return E.imag
+        
+        @mfem.jit.vector(vdim=dim)        
+        def hatE_exact_r(x):
+            ret = hatE_exact(x)
+            return ret.real
+        
+        @mfem.jit.vector(vdim=dim)        
+        def hatE_exact_i(x):
+            ret = hatE_exact(x)
+            return ret.imag
+        
+        self.hatE_exact_r = hatE_exact_r
+        self.hatE_exact_i = hatE_exact_i
+            
+        # J = -i ω ϵ E + ∇ × H
+        # J_r + iJ_i = -i ω ϵ (E_r + i E_i) + ∇ × (H_r + i H_i)
+        @mfem.jit.vector(vdim=dim)
+        def rhs_func_r(x):
+            # J_r = ω ϵ E_i + ∇ × H_r
+            E = maxwell_solution(x)
+            curlH = curlH_exact(x)
+            return  omega * epsilon * E.imag * curlH.real
+        @mfem.jit.vector(vdim=dim)
+        def rhs_func_i(x):
+            # J_r = ω ϵ E_i + ∇ × H_r
+            E = maxwell_solution(x)
+            curlH = curlH_exact(x)
+            return  -omega * epsilon * E.real * curlH.imag
+
+        self.rhs_func_r = rhs_func_r
+        self.rhs_func_i = rhs_func_i        
+
 
 def run(meshfile='',
         order=1,
@@ -196,7 +379,7 @@ def run(meshfile='',
     if prob == 0:
        exact_known = True;
        mesh_file = expanduser(
-        join(os.path.dirname(__file__), '..', 'data', meshfile))
+        join(os.path.dirname(__file__), '..', '..', 'data', meshfile))
        
     elif prob == 1:
        meshfile = "meshes/fichera-waveguide.mesh";
@@ -208,7 +391,7 @@ def run(meshfile='',
     elif prob == 2:
        with_pml = True
        mesh_file = expanduser(
-        join(os.path.dirname(__file__), '..', 'data', meshfile))
+        join(os.path.dirname(__file__), '..', '..', 'data', meshfile))
        
     else:
        with_pml = True
@@ -227,6 +410,7 @@ def run(meshfile='',
     mesh.EnsureNCMesh(False)
 
 
+    pml = None
     if with_pml:
         assert False, "PML is not supported"
         
@@ -313,12 +497,12 @@ def run(meshfile='',
         epsrot_cf = epsrot
         negepsrot_cf = negepsrot
                                
-    detJ_r = mfem.dpg.PmlCoefficient(detJ_r_function,pml)
-    detJ_i = mfem.PmlCoefficient(detJ_i_function,pml)
-    abs_detJ_2 = mfem.PmlCoefficient(abs_detJ_2_function,pml)
-    detJ_Jt_J_inv_r = mfem.PmlMatrixCoefficient(dim,detJ_Jt_J_inv_r_function,pml)
-    detJ_Jt_J_inv_i = mfem.PmlMatrixCoefficient(dim,detJ_Jt_J_inv_i_function,pml)
-    abs_detJ_Jt_J_inv_2 = mfem.PmlMatrixCoefficient(dim,abs_detJ_Jt_J_inv_2_function,pml)
+    detJ_r = mdpg.PmlCoefficient(mdpg.detJ_r_function,pml)
+    detJ_i = mdpg.PmlCoefficient(mdpg.detJ_i_function,pml)
+    abs_detJ_2 = mdpg.PmlCoefficient(mdpg.abs_detJ_2_function,pml)
+    detJ_Jt_J_inv_r = mdpg.PmlMatrixCoefficient(dim, mdpg.detJ_Jt_J_inv_r_function,pml)
+    detJ_Jt_J_inv_i = mdpg.PmlMatrixCoefficient(dim, mdpg.detJ_Jt_J_inv_i_function,pml)
+    abs_detJ_Jt_J_inv_2 = mdpg.PmlMatrixCoefficient(dim, mdpg.abs_detJ_Jt_J_inv_2_function,pml)
     negmuomeg_detJ_r = mfem.ProductCoefficient(negmuomeg,detJ_r)
     negmuomeg_detJ_i = mfem.ProductCoefficient(negmuomeg,detJ_i)
     muomeg_detJ_r = mfem.ProductCoefficient(muomeg,detJ_r)
@@ -357,7 +541,7 @@ def run(meshfile='',
                                                                                 attrPML)
 
 
-    a = mfem.dpg.ParComplexDPGWeakForm(trial_fes,test_fec)
+    a = mdpg.ParComplexDPGWeakForm(trial_fes,test_fec)
     a.StoreMatrices()  # needed for AMR
 
     # (E,∇ × F)
@@ -376,7 +560,7 @@ def run(meshfile='',
                          TrialSpace["H_space"],
                          TestSpace["G_space"])
     # < n×Ĥ ,G>
-    a.AddTrialIntegrator(mfem.TangentTraceIntegrator, None,
+    a.AddTrialIntegrator(mfem.TangentTraceIntegrator(), None,
                          TrialSpace["hatH_space"],
                          TestSpace["G_space"])
     # test integrators
@@ -396,7 +580,7 @@ def run(meshfile='',
                              TrialSpace["H_space"],
                              TestSpace["F_space"])
         # < n×Ê,F>
-        a.AddTrialIntegrator(mfem.TangentTraceIntegrator, None,
+        a.AddTrialIntegrator(mfem.TangentTraceIntegrator(), None,
                              TrialSpace["hatE_space"],
                              TestSpace["F_space"])
 
@@ -439,7 +623,7 @@ def run(meshfile='',
                              TrialSpace["H_space"],
                              TestSpace["F_space"])
         # < n×Ê,F>
-        a.AddTrialIntegrator(mfem.TraceIntegrator, None,
+        a.AddTrialIntegrator(mfem.TraceIntegrator(), None,
                              TrialSpace["hatE_space"],
                              TestSpace["F_space"])
         # test integrators
@@ -481,22 +665,22 @@ def run(meshfile='',
         assert False, "PML not supported yet"
 
 
+    fncs = Functions(dim, dimc, omega, epsilon, mu, prob)
     # RHS
-    f_rhs_r = mfem.VectorFunctionCoefficient(dim, rhs_func_r)
-    f_rhs_i = mfem.VectorFunctionCoefficient(dim, rhs_func_i)
-    f_source = mfem.VectorFunctionCoefficient(dim, source_function)
-                               
     if prob == 0:
+        f_rhs_r = fncs.rhs_func_r
+        f_rhs_i = fncs.rhs_func_i
         a.AddDomainLFIntegrator(mfem.VectorFEDomainLFIntegrator(f_rhs_r),
                                 mfem.VectorFEDomainLFIntegrator(f_rhs_i),
                                 TestSpace["G_space"])
     elif prob == 2:
+        f_source =fncs.source_function
         a.AddDomainLFIntegrator(mfem.VectorFEDomainLFIntegrator(f_source),
                                 None,
                                 TestSpace["G_space"])
  
-    hatEex_r = mfem.VectorFunctionCoefficient(dim, hatE_exact_r)
-    hatEex_i = mfem.VectorFunctionCoefficient(dim, hatE_exact_i)
+    hatEex_r = fncs.hatE_exact_r
+    hatEex_i = fncs.hatE_exact_i
 
     if myid == 0:
        txt = "\n  Ref |" +  "    Dofs    |" +  "    ω    |"
@@ -724,7 +908,7 @@ if __name__ == "__main__":
 
     parser = ArgParser(description='Ex40 (Eikonal queation)')
     parser.add_argument('-m', '--mesh',
-                        default='star.mesh',
+                        default="inline-quad.mesh",
                         action='store', type=str,
                         help='Mesh file to use.')
     parser.add_argument('-o', '--order',
@@ -741,7 +925,7 @@ if __name__ == "__main__":
                         action='store', default=1.0, type=float,                         
                         help="Permittivity of free space (or mass constant).");
     parser.add_argument("-prob", "--problem",
-                       action='store', default=1, type=int,
+                       action='store', default=0, type=int,
                        help="\n".join(("Problem case"
                                       " 0: plane wave, 1: Fichera 'oven', "
                          " 2: Generic PML problem with point source given as a load "
