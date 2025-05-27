@@ -394,6 +394,11 @@ def run(meshfile='',
         static_cond=False,
         visualization=False):
 
+    device = mfem.Device('cpu')
+    if myid == 0:
+        device.Print()
+    
+
     omega = 2.*pi*rnum
     with_pml = False
 
