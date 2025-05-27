@@ -40,5 +40,4 @@ import_array();
 %include "miniapps/dpg/util/weakform.hpp"
 %include "miniapps/dpg/util/complexweakform.hpp"
 
-
 #endif

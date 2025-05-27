@@ -73,7 +73,13 @@ if len(args) == 2:
   mfem::SparseMatrix *Opr2SparseMat(mfem::Operator *op) {
     return dynamic_cast<mfem::SparseMatrix*>(op);
   }
+  mfem::SparseMatrix *Opr2SparseMatrix(mfem::Operator *op) {
+    return dynamic_cast<mfem::SparseMatrix*>(op);
+  }
   mfem::HypreParMatrix *Opr2HypreParMat(mfem::Operator *op) {
+    return dynamic_cast<mfem::HypreParMatrix*>(op);
+  }
+  mfem::HypreParMatrix *Opr2HypreParMatrix(mfem::Operator *op) {
     return dynamic_cast<mfem::HypreParMatrix*>(op);
   }
 

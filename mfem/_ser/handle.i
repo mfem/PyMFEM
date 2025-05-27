@@ -53,6 +53,13 @@ GET_RENAME(SparseMatrix)
 RESET_RENAME(SparseMatrix)
 CONVERT_FROM_RENAME(SparseMatrix)
 
+//CONSTRUCTOR_WRAP(ComplexOperator)
+AS_RENAME(ComplexOperator)
+IS_RENAME(ComplexOperator)
+GET_RENAME(ComplexOperator)
+RESET_RENAME(ComplexOperator)
+CONVERT_FROM_RENAME(ComplexOperator)
+
 %include "linalg/handle.hpp"
 
 %pythoncode %{
@@ -67,4 +74,11 @@ GET_WRAP(SparseMatrix)
 RESET_WRAP(SparseMatrix)
 CONVERT_FROM_WRAP(SparseMatrix)
 
+//CONSTRUCTOR_WRAP(ComplexOperator)
+AS_WRAP(ComplexOperator)
+IS_WRAP(ComplexOperator)
+GET_WRAP(ComplexOperator)
+RESET_WRAP(ComplexOperator)
+CONVERT_FROM_WRAP(ComplexOperator)
+  
 

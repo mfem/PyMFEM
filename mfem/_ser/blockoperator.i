@@ -74,6 +74,9 @@ if len(args) == 2:
   mfem::SparseMatrix *Opr2SparseMat(mfem::Operator *op) {
     return dynamic_cast<mfem::SparseMatrix*>(op);
   }
+  mfem::SparseMatrix *Opr2SparseMatrix(mfem::Operator *op) {
+    return dynamic_cast<mfem::SparseMatrix*>(op);
+  }
 %}
 
 %include "linalg/blockoperator.hpp"

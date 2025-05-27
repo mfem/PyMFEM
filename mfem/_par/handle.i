@@ -29,6 +29,7 @@ import_array();
 %import "../common/exception.i"
 
 %import "operators.i"
+%import "complex_operator.i"
 
 #ifdef MFEM_USE_MPI
 %import "hypre.i"
@@ -56,6 +57,13 @@ IS_RENAME(HypreParMatrix)
 GET_RENAME(HypreParMatrix)
 RESET_RENAME(HypreParMatrix)
 CONVERT_FROM_RENAME(HypreParMatrix)
+
+//CONSTRUCTOR_WRAP(ComplexOperator)
+AS_RENAME(ComplexOperator)
+IS_RENAME(ComplexOperator)
+GET_RENAME(ComplexOperator)
+RESET_RENAME(ComplexOperator)
+CONVERT_FROM_RENAME(ComplexOperator)
 
 //CONSTRUCTOR_RENAME(ComplexHypreParMatrix)
 AS_RENAME(ComplexHypreParMatrix)
@@ -94,6 +102,13 @@ GET_WRAP(HypreParMatrix)
 RESET_WRAP(HypreParMatrix)
 CONVERT_FROM_WRAP(HypreParMatrix)
 
+//CONSTRUCTOR_WRAP(ComplexOperator)
+AS_WRAP(ComplexOperator)
+IS_WRAP(ComplexOperator)
+GET_WRAP(ComplexOperator)
+RESET_WRAP(ComplexOperator)
+CONVERT_FROM_WRAP(ComplexOperator)
+
 //CONSTRUCTOR_WRAP(ComplexHypreParMatrix)
 AS_WRAP(ComplexHypreParMatrix)
 IS_WRAP(ComplexHypreParMatrix)
@@ -110,3 +125,5 @@ RESET_WRAP(PetscParMatrix)
 CONVERT_FROM_WRAP(PetscParMatrix)
 #endif
 
+
+  

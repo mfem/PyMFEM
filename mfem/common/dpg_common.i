@@ -17,6 +17,60 @@ OSTREAM_TYPEMAP(std::ostream&)
 %ignore mfem::BlockStaticCondensation::ConvertListToReducedTrueDofs;
 %ignore mfem::ComplexBlockStaticCondensation::ConvertListToReducedTrueDofs;
 
+namespace mfem {
+%pythonprepend DPGWeakForm::AddTrialIntegrator %{
+    if not hasattr(self, "_integrators"): self._integrators = []
+    di = bfi
+    self._integrators.append(di)
+    di.thisown=0	     ## ownership is C++ side
+   %}
+%pythonprepend DPGWeakForm::AddTestIntegrator %{
+    if not hasattr(self, "_integrators"): self._integrators = []
+    di = bfi
+    self._integrators.append(di)
+    di.thisown=0	     ## ownership is C++ side
+   %}
+%pythonprepend DPGWeakForm::AddDomainLFIntegrator %{
+    if not hasattr(self, "_integrators"): self._integrators = []
+    di = lfi
+    self._integrators.append(di)
+    di.thisown=0	     ## ownership is C++ side
+   %}
+%pythonprepend ComplexDPGWeakForm::AddTrialIntegrator %{
+    if not hasattr(self, "_integrators"): self._integrators = []
+    di = bfi_r
+    if di is not None:
+        self._integrators.append(di)
+        di.thisown=0	     ## ownership is C++ side
+    di = bfi_i
+    if di is not None:
+        self._integrators.append(di)
+        di.thisown=0	     ## ownership is C++ side
+   %}
+%pythonprepend ComplexDPGWeakForm::AddTestIntegrator %{
+    if not hasattr(self, "_integrators"): self._integrators = []
+    di = bfi_r
+    if di is not None:
+        self._integrators.append(di)
+        di.thisown=0	     ## ownership is C++ side
+    di = bfi_i
+    if di is not None:
+        self._integrators.append(di)
+        di.thisown=0	     ## ownership is C++ side
+   %}
+%pythonprepend ComplexDPGWeakForm::AddDomainLFIntegrator %{
+    if not hasattr(self, "_integrators"): self._integrators = []
+    di = lfi_r
+    if di is not None:
+        self._integrators.append(di)
+        di.thisown=0	     ## ownership is C++ side
+    di = lfi_i
+    if di is not None:
+        self._integrators.append(di)
+        di.thisown=0	     ## ownership is C++ side
+   %}
+}
+
 //%constant mfem::real_t detJ_r_function(const mfem::Vector &, mfem::CartesianPML *);
 
 %constant mfem::real_t detJ_r_function(const mfem::Vector &, mfem::CartesianPML *);
