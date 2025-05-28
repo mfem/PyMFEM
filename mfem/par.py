@@ -150,3 +150,8 @@ try:
 except:
     pass
 
+
+#
+#   initialize hypre 
+#
+Hypre.Init()

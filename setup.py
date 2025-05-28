@@ -44,7 +44,7 @@ repo_releases = {
     # "metis": "https://github.com/KarypisLab/METIS/archive/refs/tags/v5.1.1-DistDGL-v0.5.tar.gz",
     # "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
     "metis": "https://github.com/mfem/tpls/raw/gh-pages/metis-5.1.0.tar.gz",
-    "hypre": "https://github.com/hypre-space/hypre/archive/v2.28.0.tar.gz",
+    "hypre": "https://github.com/hypre-space/hypre/archive/refs/tags/v2.32.0.tar.gz",
     "libceed": "https://github.com/CEED/libCEED/archive/refs/tags/v0.12.0.tar.gz",
     "gslib": "https://github.com/Nek5000/gslib/archive/refs/tags/v1.0.8.tar.gz"}
 
