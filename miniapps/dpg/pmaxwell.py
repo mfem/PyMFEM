@@ -4,6 +4,11 @@
 # Compile with: make pmaxwell
 ##
 # sample run
+
+# mpirun -np 1 python pmaxwell.py  -o 2 -pref 2 -prob 0
+# mpirun -np 4 python pmaxwell.py  -o 3 -sref 0 -pref 3 -rnum 4.8 -sc -prob 0
+# mpirun -np 1 python pmaxwell.py  -o 2 -pref 2 -prob 0 -m inline-hex.mesh
+
 # mpirun -np 4 python pmaxwell.py -m ../../data/star.mesh -o 2 -sref 0 -pref 3 -rnum 0.5 -prob 0
 # mpirun -np 4 python pmaxwell.py -m ../../data/inline-quad.mesh -o 3 -sref 0 -pref 3 -rnum 4.8 -sc -prob 0
 # mpirun -np 4 python pmaxwell.py -m ../../data/inline-hex.mesh -o 2 -sref 0 -pref 1 -rnum 0.8 -sc -prob 0
@@ -132,7 +137,7 @@ import os
 from os.path import expanduser, join
 
 import numpy as np
-from numpy import pi
+from numpy import pi, exp
 
 import mfem.par as mfem
 mdpg = mfem.dpg
@@ -149,7 +154,7 @@ def VisualizeField(sock, vishost, visport,
                    gf, title,
                    x=0, y=0, w=400, h=400, keys='', vec=False):
 
-    mesh = gf.FESpace().GetMesh()
+    pmesh = gf.ParFESpace().GetParMesh()
 
     newly_opened = False
 
@@ -159,8 +164,9 @@ def VisualizeField(sock, vishost, visport,
             sock.precision(8)
             newly_opened = True
 
+        sock << "parallel " << str(num_procs) << " " << str(myid) << "\n"
         sock << "solution\n"
-        sock << mesh << gf
+        sock << pmesh << gf
 
         if newly_opened:
             sock << "window_title '" << title << "'\n"
@@ -197,7 +203,7 @@ class Functions:
             E = np.zeros(dim, dtype=np.complex128)
 
             if prob == "plane_wave":
-                E[0] = np.exp(1j * omega * np.sum(x))
+                E[0] = exp(1j * omega * np.sum(x))
 
             elif prob == "pml_plane_wave_scatter":
                 E[1] = exp(1j * omega * x[0])
@@ -246,7 +252,7 @@ class Functions:
                     r_yx = -(r_y / r) * r_x
                     r_zx = -(r_z / r) * r_x
 
-                    val = np.exp(1j * k * r) / r
+                    val = exp(1j * k * r) / r
                     val_r = val / r * (1j * k * r - 1.)
                     val_rr = val / (r * r) * (-k * k * r * r
                                               - 2. * 1j * k * r + 2.)
@@ -266,7 +272,7 @@ class Functions:
         def maxwell_solution_curl(x):
             curlE = np.zeros(dimc, dtype=np.complex128)
             if prob == "plane_wave":
-                pw = np.exp(1j * omega * np.sum(x))
+                pw = exp(1j * omega * np.sum(x))
                 if dim == 3:
                     curlE[0] = 0.0
                     curlE[1] = 1j * omega * pw
@@ -274,7 +280,7 @@ class Functions:
                 else:
                     curlE[0] = -1j * omega * pw
             elif prob == "pml_plane_wave_scatter":
-                pw = np.exp(1j * omega * (x[0]))
+                pw = exp(1j * omega * (x[0]))
                 curlE[0] = 1j * omega * pw
             else:
                 assert False, "should not come here"
@@ -282,9 +288,9 @@ class Functions:
 
         @njit(complex128[:](float64[:]))
         def maxwell_solution_curlcurl(x):
-            curlcurlE = np.zeros(dimc, dtype=np.complex128)
+            curlcurlE = np.zeros(dim, dtype=np.complex128)
             if prob == "plane_wave":
-                pw = np.exp(1j * omega * np.sum(x))
+                pw = exp(1j * omega * np.sum(x))
                 if dim == 3:
                     curlcurlE[0] = 2. * omega * omega * pw
                     curlcurlE[1] = - omega * omega * pw
@@ -322,8 +328,8 @@ class Functions:
             else:
                 ret = np.zeros(2, dtype=np.complex128)
                 E = maxwell_solution(x)
-                ret[0] = E[0]
-                ret[1] = -E[1]
+                ret[0] = E[1]
+                ret[1] = -E[0]
             return ret
 
         @mfem.jit.vector(vdim=dim)
@@ -368,17 +374,33 @@ class Functions:
             # J_r = ω ϵ E_i + ∇ × H_r
             E = maxwell_solution(x)
             curlH = curlH_exact(x)
-            return omega * epsilon * E.imag * curlH.real
+            return omega * epsilon * E.imag + curlH.real
 
         @mfem.jit.vector(vdim=dim)
         def rhs_func_i(x):
             # J_r = ω ϵ E_i + ∇ × H_r
             E = maxwell_solution(x)
             curlH = curlH_exact(x)
-            return -omega * epsilon * E.real * curlH.imag
+            return -omega * epsilon * E.real + curlH.imag
 
         self.rhs_func_r = rhs_func_r
         self.rhs_func_i = rhs_func_i
+
+        @mfem.jit.vector(vdim=dim)
+        def source_function(x):
+            center = np.zeros(dim)+0.5
+            r = 0.0
+            for i in range(dim):
+                r += (x[i] - center[i])**2
+
+            n = 5.0 * omega * np.sqrt(epsilon * mu) / pi
+            coeff = pow(n, 2) / pi
+            alpha = -pow(n, 2) * r
+            f = np.zeros(dim)
+            f[0] = -omega * coeff * exp(alpha)/omega
+            return f
+
+        self.source_function = source_function
 
 
 def run(meshfile='',
@@ -394,13 +416,9 @@ def run(meshfile='',
         static_cond=False,
         visualization=False):
 
-    device = mfem.Device('cpu')
-    if myid == 0:
-        device.Print()
-    
-
     omega = 2.*pi*rnum
     with_pml = False
+    exact_known = False
 
     if prob == 0:
         exact_known = True
@@ -421,7 +439,7 @@ def run(meshfile='',
 
     else:
         with_pml = True
-        mesh_file = "meshes/scatter.mesh"
+        meshfile = "meshes/scatter.mesh"
         mesh_file = expanduser(
             join(os.path.dirname(__file__),  meshfile))
 
@@ -436,13 +454,19 @@ def run(meshfile='',
 
     pml = None
     if with_pml:
-        assert False, "PML is not supported"
+        length = mfem.doubleArray2D(dim, 2)
+        length.Assign(0.25)
+        pml = mdpg.CartesianPML(mesh, length)
+        pml.SetOmega(omega)
+        pml.SetEpsilonAndMu(epsilon, mu)
 
     pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
     del mesh
 
     attr = mfem.intArray()
     attrPML = mfem.intArray()
+    if with_pml:
+        pml.SetAttributes(pmesh, attr, attrPML)
 
     # Define spaces
     TrialSpace = {"E_space": 0,
@@ -710,10 +734,111 @@ def run(meshfile='',
                             TestSpace["G_space"],
                             TestSpace["G_space"])
     if with_pml:
-        assert False, "PML not supported yet"
+        # trial integrators
+        # -i ω ϵ (β E , G) = -i ω ϵ ((β_re + i β_im) E, G)
+        #                  = (ω ϵ β_im E, G) + i (- ω ϵ β_re E, G)
+        a.AddTrialIntegrator(mfem.TransposeIntegrator(mfem.VectorFEMassIntegrator(
+            epsomeg_detJ_Jt_J_inv_i_restr)),
+            mfem.TransposeIntegrator(mfem.VectorFEMassIntegrator(
+                negepsomeg_detJ_Jt_J_inv_r_restr)),
+            TrialSpace["E_space"], TestSpace["G_space"])
+        if dim == 3:
+            # trial integrators
+            # i ω μ (α^-1 H, F) = i ω μ ( (α^-1_re + i α^-1_im) H, F)
+            #                   = (- ω μ α^-1_im, H,F) + i *(ω μ α^-1_re H, F)
+            a.AddTrialIntegrator(
+                mfem.TransposeIntegrator(mfem.VectorFEMassIntegrator(
+                    negmuomeg_detJ_Jt_J_inv_i_restr)),
+                mfem.TransposeIntegrator(mfem.VectorFEMassIntegrator(
+                    muomeg_detJ_Jt_J_inv_r_restr)),
+                TrialSpace["H_space"], TestSpace["F_space"])
+            # test integrators
+            # μ^2 ω^2 (|α|^-2 F,δF)
+            a.AddTestIntegrator(
+                mfem.VectorFEMassIntegrator(
+                    mu2omeg2_detJ_Jt_J_inv_2_restr), None,
+                TestSpace["F_space"], TestSpace["F_space"])
+            # -i ω μ (α^-* F,∇ × δG) = i (F, - ω μ α^-1 ∇ × δ G)
+            #                        = i (F, - ω μ (α^-1_re + i α^-1_im) ∇ × δ G)
+            #                        = (F, - ω μ α^-1_im ∇ × δ G) + i (F, - ω μ α^-1_re ∇×δG)
+            a.AddTestIntegrator(mfem.MixedVectorWeakCurlIntegrator(
+                negmuomeg_detJ_Jt_J_inv_i_restr),
+                mfem.MixedVectorWeakCurlIntegrator(
+                negmuomeg_detJ_Jt_J_inv_r_restr),
+                TestSpace["F_space"], TestSpace["G_space"])
+            # -i ω ϵ (β ∇ × F, δG) = -i ω ϵ ((β_re + i β_im) ∇ × F, δG)
+            #                      = (ω ϵ β_im  ∇ × F, δG) + i (- ω ϵ β_re ∇ × F, δG)
+            a.AddTestIntegrator(mfem.MixedVectorCurlIntegrator(
+                epsomeg_detJ_Jt_J_inv_i_restr),
+                mfem.MixedVectorCurlIntegrator(
+                negepsomeg_detJ_Jt_J_inv_r_restr),
+                TestSpace["F_space"], TestSpace["G_space"])
+            # i ω μ (α^-1 ∇ × G,δF) = i ω μ ((α^-1_re + i α^-1_im) ∇ × G,δF)
+            #                       = (- ω μ α^-1_im ∇ × G,δF) + i (ω μ α^-1_re ∇ × G,δF)
+            a.AddTestIntegrator(mfem.MixedVectorCurlIntegrator(
+                negmuomeg_detJ_Jt_J_inv_i_restr),
+                mfem.MixedVectorCurlIntegrator(
+                muomeg_detJ_Jt_J_inv_r_restr),
+                TestSpace["G_space"], TestSpace["F_space"])
+            # i ω ϵ (β^* G, ∇×δF) = i ω ϵ ( (β_re - i β_im) G, ∇×δF)
+            #                     = (ω ϵ β_im G, ∇×δF) + i ( ω ϵ β_re G, ∇×δF)
+            a.AddTestIntegrator(mfem.MixedVectorWeakCurlIntegrator(
+                epsomeg_detJ_Jt_J_inv_i_restr),
+                mfem.MixedVectorWeakCurlIntegrator(
+                epsomeg_detJ_Jt_J_inv_r_restr),
+                TestSpace["G_space"], TestSpace["F_space"])
+            # ϵ^2 ω^2 (|β|^2 G,δG)
+            a.AddTestIntegrator(mfem.VectorFEMassIntegrator(
+                eps2omeg2_detJ_Jt_J_inv_2_restr), None,
+                TestSpace["G_space"], TestSpace["G_space"])
 
-    fncs = Functions(dim, dimc, omega, epsilon, mu, prob)
+        else:
+            # trial integrators
+            # i ω μ (α^-1 H, F) = i ω μ ( (α^-1_re + i α^-1_im) H, F)
+            #                   = (- ω μ α^-1_im, H,F) + i *(ω μ α^-1_re H, F)
+            a.AddTrialIntegrator(
+                mfem.MixedScalarMassIntegrator(negmuomeg_detJ_i_restr),
+                mfem.MixedScalarMassIntegrator(muomeg_detJ_r_restr),
+                TrialSpace["H_space"], TestSpace["F_space"])
+            # test integrators
+            # μ^2 ω^2 (|α|^-2 F,δF)
+            a.AddTestIntegrator(mfem.MassIntegrator(mu2omeg2_detJ_2_restr), None,
+                                TestSpace["F_space"], TestSpace["F_space"])
+            # -i ω μ (α^-* F,∇ × δG) = (F, ω μ α^-1 ∇ × δ G)
+            #                        =(F, - ω μ α^-1_im ∇ × δ G) + i (F, - ω μ α^-1_re ∇×δG)
+            a.AddTestIntegrator(
+                mfem.TransposeIntegrator(
+                    mfem.MixedCurlIntegrator(negmuomeg_detJ_i_restr)),
+                mfem.TransposeIntegrator(
+                    mfem.MixedCurlIntegrator(negmuomeg_detJ_r_restr)),
+                TestSpace["F_space"], TestSpace["G_space"])
+            # -i ω ϵ (β ∇ × F, δG) = i (- ω ϵ β A ∇ F,δG), A = [0 1; -1; 0]
+            #                      = (ω ϵ β_im A ∇ F, δG) + i (- ω ϵ β_re A ∇ F, δG)
+            a.AddTestIntegrator(mfem.MixedVectorGradientIntegrator(
+                epsomeg_detJ_Jt_J_inv_i_rot_restr),
+                mfem.MixedVectorGradientIntegrator(
+                negepsomeg_detJ_Jt_J_inv_r_rot_restr),
+                TestSpace["F_space"], TestSpace["G_space"])
+            # i ω μ (α^-1 ∇ × G,δF) = i (ω μ α^-1 ∇ × G, δF )
+            #                       = (- ω μ α^-1_im ∇ × G,δF) + i (ω μ α^-1_re ∇ × G,δF)
+            a.AddTestIntegrator(mfem.MixedCurlIntegrator(negmuomeg_detJ_i_restr),
+                                mfem.MixedCurlIntegrator(muomeg_detJ_r_restr),
+                                TestSpace["G_space"], TestSpace["F_space"])
+            # i ω ϵ (β^* G, ∇ × δF ) = i ( G , ω ϵ β A ∇ δF)
+            #                        =  ( G , ω ϵ β_im A ∇ δF) + i ( G , ω ϵ β_re A ∇ δF)
+            a.AddTestIntegrator(
+                mfem.TransposeIntegrator(mfem.MixedVectorGradientIntegrator(
+                    epsomeg_detJ_Jt_J_inv_i_rot_restr)),
+                mfem.TransposeIntegrator(mfem.MixedVectorGradientIntegrator(
+                    epsomeg_detJ_Jt_J_inv_r_rot_restr)),
+                TestSpace["G_space"], TestSpace["F_space"])
+            # ϵ^2 ω^2 (|β|^2 G,δG)
+            a.AddTestIntegrator(mfem.VectorFEMassIntegrator(
+                eps2omeg2_detJ_Jt_J_inv_2_restr), None,
+                TestSpace["G_space"], TestSpace["G_space"])
+
     # RHS
+    fncs = Functions(dim, dimc, omega, epsilon, mu, prob)
     if prob == 0:
         f_rhs_r = fncs.rhs_func_r
         f_rhs_i = fncs.rhs_func_i
@@ -784,6 +909,7 @@ def run(meshfile='',
         offsets[2] = H_fes.GetVSize()
         offsets[3] = hatE_fes.GetVSize()
         offsets[4] = hatH_fes.GetVSize()
+
         offsets.PartialSum()
         offsetsl = offsets.ToList()
 
@@ -798,18 +924,24 @@ def run(meshfile='',
             else:
                 hatE_gf_r.ProjectBdrCoefficientNormal(hatEex_r, ess_bdr)
                 hatE_gf_i.ProjectBdrCoefficientNormal(hatEex_i, ess_bdr)
-
         Ah = mfem.OperatorPtr()
         X = mfem.Vector()
         B = mfem.Vector()
+
         a.FormLinearSystem(ess_tdof_list, x, Ah, X, B)
 
         Ahc = Ah.AsComplexOperator()
 
         BlockA_r = mfem.Opr2BlockOpr(Ahc.real())
         BlockA_i = mfem.Opr2BlockOpr(Ahc.imag())
-
         num_blocks = BlockA_r.NumRowBlocks()
+
+        # this is to debug matrix
+        # for i in range(num_blocks):
+        #    for j in range(num_blocks):
+        #       (mfem.Opr2HypreParMatrix(BlockA_r.GetBlock(i, j))).Print(str(i)+"_"+str(j)+"r")
+        #       (mfem.Opr2HypreParMatrix(BlockA_i.GetBlock(i, j))).Print(str(i)+"_"+str(j)+"i")
+
         tdof_offsets = mfem.intArray(2*num_blocks+1)
 
         tdof_offsets[0] = 0
@@ -834,6 +966,7 @@ def run(meshfile='',
         if not static_cond:
             E_mat = mfem.Opr2HypreParMatrix(BlockA_r.GetBlock(0, 0))
             H_mat = mfem.Opr2HypreParMatrix(BlockA_r.GetBlock(1, 1))
+
             solver_E = mfem.HypreBoomerAMG(E_mat)
             solver_E.SetPrintLevel(0)
             solver_E.SetSystemsOptions(dim)
@@ -854,7 +987,7 @@ def run(meshfile='',
             solver_hatH = mfem.HypreBoomerAMG(hatH_mat)
             solver_hatH.SetPrintLevel(0)
         else:
-            solver_hatH = mfem.HypreAMS(hatH_nat, hatH_fes)
+            solver_hatH = mfem.HypreAMS(hatH_mat, hatH_fes)
             solver_hatH.SetPrintLevel(0)
 
         M.SetDiagonalBlock(skip, solver_hatE)
@@ -927,7 +1060,7 @@ def run(meshfile='',
                              " {:.2f} ".format(rate_err) + " | ")
 
             txt = txt + (" {:.3e}".format(res0) + " | " +
-                         " {:.2f} ".format(rate_err) + " | " +
+                         " {:.2f} ".format(rate_res) + " | " +
                          "{:6d}".format(num_iter) + " | ")
             print(txt)
 
