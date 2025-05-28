@@ -162,8 +162,15 @@ try:
 except:
     pass
 
+
 try:
     import mfem._par.dpg as dpg
 except:
     pass
+
+
+#
+#   initialize hypre 
+#
+Hypre.Init()
 
