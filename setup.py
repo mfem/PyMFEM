@@ -1,7 +1,7 @@
 """
   MFEM + PyMFEM (finite element method library)
 """
-from sys import platform
+
 import sys
 import os
 import site
@@ -10,6 +10,7 @@ import shutil
 import subprocess
 from shutil import which as find_command
 
+from sys import platform
 import multiprocessing
 from multiprocessing import Pool
 # force fork instead of spawn on MacOS to avoid race condition on mfem/__init__.py
@@ -25,73 +26,38 @@ from setuptools.command.install_scripts import install_scripts as _install_scrip
 
 from distutils.command.clean import clean as _clean
 
-sys.path.insert(0, os.path.dirname(__file__))
-from setuputils import (
-    read_mfem_tplflags, abspath, external_install_prefix,
-    make_call, chdir, remove_files, download, gitclone,
-    record_mfem_sha, get_numpy_inc, get_mpi4py_inc, find_libpath_from_prefix,
-    cmake_make_hypre, make_metis, make_libceed, make_gslib, cmake_make_mfem,
-)
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "_build_system"))
+
+from build_utils import *
+from build_consts import *
+from build_pymfem import *
+from build_hypre import *
+from build_metis import *
+from build_mfem import *
+
+import build_globals as bglb
 
 # ----------------------------------------------------------------------------------------
 # Constants
 # ----------------------------------------------------------------------------------------
 
-rootdir = os.path.abspath(os.path.dirname(__file__))
-extdir = os.path.join(rootdir, 'external')
-if not os.path.exists(extdir):
-    os.mkdir(os.path.join(rootdir, 'external'))
-
-osx_sysroot = ''
-
+from sys import platform
 haveWheel = False
 
 if platform == "linux" or platform == "linux2":
-    dylibext = '.so'
-    # Wheel build only works on linux because of chrpath command
     try:
         from wheel.bdist_wheel import bdist_wheel as _bdist_wheel
         haveWheel = True
     except ImportError:
         print("Skipping wheel build; wheel not installed.")
-elif platform == "darwin":
-    # OS X
-    dylibext = '.dylib'
-    import sysconfig
-    for i, x in enumerate(sysconfig.get_config_vars()['CFLAGS'].split()):
-        if x == '-isysroot':
-            osx_sysroot = sysconfig.get_config_vars()['CFLAGS'].split()[i+1]
-            break
-
-elif platform == "win32":
-    # Windows...
-    assert False, "Windows is not supported yet. Contribution is welcome"
-
-use_metis_gklib = False
-
-cc_command = 'cc' if os.getenv("CC") is None else os.getenv("CC")
-cxx_command = 'c++' if os.getenv("CC") is None else os.getenv("CXX")
-mpicc_command = 'mpicc' if os.getenv("MPICC") is None else os.getenv("MPICC")
-mpicxx_command = 'mpic++' if os.getenv(
-    "MPICXX") is None else os.getenv("MPICXX")
-cxx11_flag = '-std=c++11' if os.getenv(
-    "CXX11FLAG") is None else os.getenv("CXX11FLAG")
-
-use_unverifed_SSL = False if os.getenv(
-    "unverifedSSL") is None else os.getenv("unverifiedSSL")
-
-swig_command = (find_command('swig') if os.getenv("SWIG") is None
-                else os.getenv("SWIG"))
-if swig_command is None:
-    assert False, "SWIG is not installed (hint: pip install swig)"
 
 if haveWheel:
+
     class BdistWheel(_bdist_wheel):
         '''
         Wheel build performs SWIG + Serial in Default.
         --skip-build option skip building entirely.
         '''
-
         def finalize_options(self):
             def _has_ext_modules():
                 return True
@@ -100,8 +66,9 @@ if haveWheel:
 
         def run(self):
             print("!!!!! Entering BdistWheel::Run")
-
-            if not is_configured:
+            import build_globals as bglb
+            
+            if not bglb.is_configured:
                 print('running config')
                 configure_bdist(self)
                 print_config()
@@ -109,330 +76,6 @@ if haveWheel:
             _bdist_wheel.run(self)
 
 
-# ----------------------------------------------------------------------------------------
-# Global variables
-# ----------------------------------------------------------------------------------------
-is_configured = False
-prefix = ''
-
-verbose = -1
-git_sshclone = False
-swig_only = False
-skip_install = False
-run_swig = False
-clean_swig = False
-build_mfem = False
-mfem_branch = None
-build_mfemp = False
-build_metis = False
-build_hypre = False
-build_libceed = False
-build_gslib = False
-build_parallel = False
-build_serial = False
-
-ext_prefix = ''
-mfems_prefix = ''
-mfemp_prefix = ''
-mfem_source = os.path.join(os.path.dirname(__file__), "external", "mfem")
-metis_prefix = ''
-hypre_prefix = ''
-
-enable_cuda = False
-enable_cuda_hypre = False
-cuda_prefix = ''
-cuda_arch = ''
-enable_pumi = False
-pumi_prefix = ''
-enable_strumpack = False
-strumpack_prefix = ''
-enable_libceed = False
-libceed_prefix = ''
-libceed_only = False
-enable_gslib = False
-gslibs_prefix = ''
-gslibp_prefix = ''
-gslib_only = False
-mfem_debug = False
-mfem_build_miniapps = True
-
-enable_suitesparse = False
-suitesparse_prefix = "/usr/"
-
-enable_lapack = False
-blas_libraries = ""
-lapack_libraries = ""
-
-dry_run = -1
-do_bdist_wheel = False
-
-
-
-def write_setup_local():
-    '''
-    create setup_local.py. parameters written here will be read
-    by setup.py in mfem._ser and mfem._par
-    '''
-    mfemser = mfems_prefix
-    mfempar = mfemp_prefix
-
-    hyprelibpath = os.path.dirname(
-        find_libpath_from_prefix('HYPRE', hypre_prefix))
-    metislibpath = os.path.dirname(
-        find_libpath_from_prefix('metis', metis_prefix))
-
-    mfems_tpl = read_mfem_tplflags(mfems_prefix)
-    mfemp_tpl = read_mfem_tplflags(mfemp_prefix) if build_parallel else ''
-
-    print(mfems_tpl, mfemp_tpl)
-
-    params = {'cxx_ser': cxx_command,
-              'cc_ser': cc_command,
-              'cxx_par': mpicxx_command,
-              'cc_par': mpicc_command,
-              'whole_archive': '--whole-archive',
-              'no_whole_archive': '--no-whole-archive',
-              'nocompactunwind': '',
-              'swigflag': '-Wall -c++ -python -fastproxy -olddefs -keyword',
-              'hypreinc': os.path.join(hypre_prefix, 'include'),
-              'hyprelib': hyprelibpath,
-              'metisinc': os.path.join(metis_prefix, 'include'),
-              'metis5lib': metislibpath,
-              'numpyinc': get_numpy_inc(),
-              'mpi4pyinc': '',
-              'mfembuilddir': os.path.join(mfempar, 'include'),
-              'mfemincdir': os.path.join(mfempar, 'include', 'mfem'),
-              'mfemlnkdir': os.path.join(mfempar, 'lib'),
-              'mfemserbuilddir': os.path.join(mfemser, 'include'),
-              'mfemserincdir': os.path.join(mfemser, 'include', 'mfem'),
-              'mfemserlnkdir': os.path.join(mfemser, 'lib'),
-              'mfemsrcdir': os.path.join(mfem_source),
-              'mfemstpl': mfems_tpl,
-              'mfemptpl': mfemp_tpl,
-              'add_pumi': '',
-              'add_strumpack': '',
-              'add_cuda': '',
-              'add_libceed': '',
-              'add_suitesparse': '',
-              'add_gslib': '',
-              'add_gslibp': '',
-              'add_gslibs': '',
-              'libceedinc': os.path.join(libceed_prefix, 'include'),
-              'gslibsinc': os.path.join(gslibs_prefix, 'include'),
-              'gslibpinc': os.path.join(gslibp_prefix, 'include'),
-              'cxx11flag': cxx11_flag,
-              'build_mfem': '1' if build_mfem else '0'
-              }
-
-    if build_parallel:
-        params['mpi4pyinc'] = get_mpi4py_inc()
-
-    def add_extra(xxx, inc_sub=None):
-        params['add_' + xxx] = '1'
-        if inc_sub is None:
-            params[xxx +
-                   'inc'] = os.path.join(globals()[xxx +
-                                                   '_prefix'], 'include')
-        else:
-            params[xxx +
-                   'inc'] = os.path.join(globals()[xxx +
-                                                   '_prefix'], 'include', inc_sub)
-
-        params[xxx + 'lib'] = os.path.join(globals()[xxx + '_prefix'], 'lib')
-
-    if enable_pumi:
-        add_extra('pumi')
-    if enable_strumpack:
-        add_extra('strumpack')
-    if enable_cuda:
-        add_extra('cuda')
-    if enable_libceed:
-        add_extra('libceed')
-    if enable_suitesparse:
-        add_extra('suitesparse', inc_sub='suitesparse')
-    if enable_gslib:
-        add_extra('gslibs')
-    if enable_gslib:
-        add_extra('gslibp')
-
-    pwd = chdir(rootdir)
-
-    fid = open('setup_local.py', 'w')
-    fid.write("#  setup_local.py \n")
-    fid.write("#  generated from setup.py\n")
-    fid.write("#  do not edit this directly\n")
-
-    for key, value in params.items():
-        text = key.lower() + ' = "' + value + '"'
-        fid.write(text + "\n")
-    fid.close()
-
-    os.chdir(pwd)
-
-
-def generate_wrapper():
-    '''
-    run swig.
-    '''
-    # this should work as far as we are in the same directory ?
-    if dry_run or verbose:
-        print("generating SWIG wrapper")
-        print("using MFEM source", os.path.abspath(mfem_source))
-    if not os.path.exists(os.path.abspath(mfem_source)):
-        assert False, "MFEM source directory. Use --mfem-source=<path>"
-
-    def ifiles():
-        ifiles = os.listdir()
-        ifiles = [x for x in ifiles if x.endswith('.i')]
-        ifiles = [x for x in ifiles if not x.startswith('#')]
-        ifiles = [x for x in ifiles if not x.startswith('.')]
-        return ifiles
-
-    def check_new(ifile):
-        wfile = ifile[:-2] + '_wrap.cxx'
-        if not os.path.exists(wfile):
-            return True
-        return os.path.getmtime(ifile) > os.path.getmtime(wfile)
-
-    def update_integrator_exts():
-        pwd = chdir(os.path.join(rootdir, 'mfem', 'common'))
-        command1 = [sys.executable, "generate_lininteg_ext.py"]
-        command2 = [sys.executable, "generate_bilininteg_ext.py"]
-        make_call(command1)
-        make_call(command2)
-        os.chdir(pwd)
-
-    def update_header_exists(mfem_source):
-        print("updating the list of existing headers")
-        list_of_headers = []
-        L = len(mfem_source.split(os.sep))
-        for (dirpath, dirnames, filenames) in os.walk(mfem_source):
-            for filename in filenames:
-                if filename.endswith('.hpp'):
-                    dirs = dirpath.split(os.sep)[L:]
-                    dirs.append(filename[:-4])
-                    tmp = '_'.join(dirs)
-                    xx = re.split('_|-', tmp)
-                    new_name = 'FILE_EXISTS_'+'_'.join([x.upper() for x in xx])
-                    if new_name not in list_of_headers:
-                        list_of_headers.append(new_name)
-
-        pwd = chdir(os.path.join(rootdir, 'mfem', 'common'))
-        fid = open('existing_mfem_headers.i', 'w')
-        for x in list_of_headers:
-            fid.write("#define " + x + "\n")
-        fid.close()
-        os.chdir(pwd)
-
-    mfemser = mfems_prefix
-    mfempar = mfemp_prefix
-
-    update_header_exists(mfem_source)
-
-    swigflag = '-Wall -c++ -python -fastproxy -olddefs -keyword'.split(' ')
-
-    pwd = chdir(os.path.join(rootdir, 'mfem', '_ser'))
-
-    serflag = ['-I' + os.path.join(mfemser, 'include'),
-               '-I' + os.path.join(mfemser, 'include', 'mfem'),
-               '-I' + os.path.abspath(mfem_source)]
-    if enable_suitesparse:
-        serflag.append('-I' + os.path.join(suitesparse_prefix,
-                                           'include', 'suitesparse'))
-
-    for filename in ['lininteg.i', 'bilininteg.i']:
-        command = [swig_command] + swigflag + serflag + [filename]
-        make_call(command)
-    update_integrator_exts()
-
-    commands = []
-    for filename in ifiles():
-        if not check_new(filename):
-            continue
-        command = [swig_command] + swigflag + serflag + [filename]
-        commands.append(command)
-
-    mp_pool = Pool(max((multiprocessing.cpu_count() - 1, 1)))
-    with mp_pool:
-        mp_pool.map(subprocess.run, commands)
-
-    if not build_parallel:
-        os.chdir(pwd)
-        return
-
-    chdir(os.path.join(rootdir, 'mfem', '_par'))
-
-    parflag = ['-I' + os.path.join(mfempar, 'include'),
-               '-I' + os.path.join(mfempar, 'include', 'mfem'),
-               '-I' + os.path.abspath(mfem_source),
-               '-I' + os.path.join(hypre_prefix, 'include'),
-               '-I' + os.path.join(metis_prefix, 'include'),
-               '-I' + get_mpi4py_inc()]
-
-    if enable_pumi:
-        parflag.append('-I' + os.path.join(pumi_prefix, 'include'))
-    if enable_strumpack:
-        parflag.append('-I' + os.path.join(strumpack_prefix, 'include'))
-    if enable_suitesparse:
-        parflag.append('-I' + os.path.join(suitesparse_prefix,
-                                           'include', 'suitesparse'))
-
-    commands = []
-    for filename in ifiles():
-        if filename == 'strumpack.i' and not enable_strumpack:
-            continue
-        if not check_new(filename):
-            continue
-        command = [swig_command] + swigflag + parflag + [filename]
-        commands.append(command)
-
-    mp_pool = Pool(max((multiprocessing.cpu_count() - 1, 1)))
-    with mp_pool:
-        mp_pool.map(subprocess.run, commands)
-
-    os.chdir(pwd)
-
-
-def clean_wrapper():
-    from pathlib import Path
-
-    # serial
-    pwd = chdir(os.path.join(rootdir, 'mfem', '_ser'))
-    wfiles = [x for x in os.listdir() if x.endswith('_wrap.cxx')]
-    remove_files(wfiles)
-
-    wfiles = [x for x in os.listdir() if x.endswith('_wrap.h')]
-    remove_files(wfiles)
-
-    wfiles = [x for x in os.listdir() if x.endswith('.py')]
-    wfiles.remove("__init__.py")
-    wfiles.remove("setup.py")
-    wfiles.remove("tmop_modules.py")
-    remove_files(wfiles)
-
-    ifiles = [x for x in os.listdir() if x.endswith('.i')]
-    for x in ifiles:
-        Path(x).touch()
-
-    # parallel
-    chdir(os.path.join(rootdir, 'mfem', '_par'))
-    wfiles = [x for x in os.listdir() if x.endswith('_wrap.cxx')]
-
-    remove_files(wfiles)
-    wfiles = [x for x in os.listdir() if x.endswith('_wrap.h')]
-    remove_files(wfiles)
-
-    wfiles = [x for x in os.listdir() if x.endswith('.py')]
-    wfiles.remove("__init__.py")
-    wfiles.remove("setup.py")
-    wfiles.remove("tmop_modules.py")
-    remove_files(wfiles)
-
-    ifiles = [x for x in os.listdir() if x.endswith('.i')]
-    for x in ifiles:
-        Path(x).touch()
-
-    chdir(pwd)
 
 
 def clean_so(all=None):
@@ -460,59 +103,36 @@ def clean_so(all=None):
     chdir(pwd)
 
 
-def make_mfem_wrapper(serial=True):
-    '''
-    compile PyMFEM wrapper code
-    '''
-    if dry_run or verbose:
-        print("compiling wrapper code, serial=" + str(serial))
-    if not os.path.exists(os.path.abspath(mfem_source)):
-        assert False, "MFEM source directory. Use --mfem-source=<path>"
-
-    record_mfem_sha(mfem_source)
-
-    write_setup_local()
-
-    if serial:
-        pwd = chdir(os.path.join(rootdir, 'mfem', '_ser'))
-    else:
-        pwd = chdir(os.path.join(rootdir, 'mfem', '_par'))
-
-    python = sys.executable
-    command = [python, 'setup.py', 'build_ext', '--inplace', '--parallel',
-               str(max((multiprocessing.cpu_count() - 1, 1)))]
-    make_call(command, force_verbose=True)
-    os.chdir(pwd)
-
-
 def print_config():
-    print("----configuration----")
-    print(" prefix", prefix)
-    print(" when needed, the dependency (mfem/hypre/metis) will be installed under " +
-          ext_prefix)
-    print(" build mfem : " + ("Yes" if build_mfem else "No"))
-    print(" build metis : " + ("Yes" if build_metis else "No"))
-    print(" build hypre : " + ("Yes" if build_hypre else "No"))
-    print(" build libceed : " + ("Yes" if build_libceed else "No"))
-    print(" build gslib : " + ("Yes" if build_gslib else "No"))
-    print(" call SWIG wrapper generator: " + ("Yes" if run_swig else "No"))
-    print(" build serial wrapper: " + ("Yes" if build_serial else "No"))
-    print(" build parallel wrapper : " + ("Yes" if build_parallel else "No"))
+    import build_globals as bglb    
 
-    print(" hypre prefix", hypre_prefix)
-    print(" metis prefix", metis_prefix)
+    print("----configuration----")
+    print(" prefix", bglb.prefix)
+    print(" when needed, the dependency (mfem/hypre/metis) will be installed under " +
+          bglb.ext_prefix)
+    print(" build mfem : " + ("Yes" if bglb.build_mfem else "No"))
+    print(" build metis : " + ("Yes" if bglb.build_metis else "No"))
+    print(" build hypre : " + ("Yes" if bglb.build_hypre else "No"))
+    print(" build libceed : " + ("Yes" if bglb.build_libceed else "No"))
+    print(" build gslib : " + ("Yes" if bglb.build_gslib else "No"))
+    print(" call SWIG wrapper generator: " + ("Yes" if bglb.run_swig else "No"))
+    print(" build serial wrapper: " + ("Yes" if bglb.build_serial else "No"))
+    print(" build parallel wrapper : " + ("Yes" if bglb.build_parallel else "No"))
+
+    print(" hypre prefix", bglb.hypre_prefix)
+    print(" metis prefix", bglb.metis_prefix)
     print(" c compiler : " + cc_command)
     print(" c++ compiler : " + cxx_command)
     print(" mpi-c compiler : " + mpicc_command)
     print(" mpi-c++ compiler : " + mpicxx_command)
 
-    print(" verbose : " + ("Yes" if verbose else "No"))
+    print(" verbose : " + ("Yes" if bglb.verbose else "No"))
     print(" SWIG : " + swig_command)
 
-    if blas_libraries != "":
-        print(" BLAS libraries : " + blas_libraries)
-    if lapack_libraries != "":
-        print(" Lapack libraries : " + lapack_libraries)
+    if bglb.blas_libraries != "":
+        print(" BLAS libraries : " + bglb.blas_libraries)
+    if bglb.lapack_libraries != "":
+        print(" Lapack libraries : " + bglb.lapack_libraries)
 
     print("")
 
@@ -521,113 +141,95 @@ def configure_install(self):
     '''
     called when install workflow is used
     '''
-    global prefix, dry_run, verbose, ext_prefix, git_sshclone
-    global clean_swig, run_swig, swig_only, skip_install, skip_swig
-    global build_mfem, build_mfemp, build_parallel, build_serial
+    verbose = bool(self.vv) if bglb.verbose == -1 else bglb.verbose
+    dry_run = bool(self.dry_run) if bglb.dry_run == -1 else bglb.dry_run
+    if bglb.dry_run:
+        bglb.verbose = True
 
-    global mfem_branch, mfem_source, mfem_debug, mfem_build_miniapps
-    global build_metis, build_hypre, build_libceed, build_gslib
+    bglb.git_sshclone = bool(self.git_sshclone)
 
-    global mfems_prefix, mfemp_prefix, metis_prefix, hypre_prefix
-    global cc_command, cxx_command, mpicc_command, mpicxx_command
-    global metis_64
-    global enable_cuda, cuda_prefix, enable_cuda_hypre, cuda_arch
-    global enable_pumi, pumi_prefix
-    global enable_strumpack, strumpack_prefix
-    global enable_libceed, libceed_prefix, libceed_only
-    global enable_gslib, gslibs_prefix, gslibp_prefix, gslib_only
-    global enable_suitesparse, suitesparse_prefix
-    global enable_lapack, blas_libraries, lapack_libraries
+    bglb.prefix = abspath(self.prefix)
+    bglb.mfem_source = abspath(self.mfem_source)
 
-    verbose = bool(self.vv) if verbose == -1 else verbose
-    dry_run = bool(self.dry_run) if dry_run == -1 else dry_run
-    if dry_run:
-        verbose = True
+    bglb.skip_ext = bool(self.skip_ext)
+    bglb.skip_install = bool(self.build_only)
+    bglb.skip_swig = bool(self.skip_swig)
 
-    git_sshclone = bool(self.git_sshclone)
+    bglb.swig_only = bool(self.swig)
+    bglb.ext_only = bool(self.ext_only)
 
-    prefix = abspath(self.prefix)
-    mfem_source = abspath(self.mfem_source)
-
-    skip_ext = bool(self.skip_ext)
-    skip_install = bool(self.build_only)
-    skip_swig = bool(self.skip_swig)
-
-    swig_only = bool(self.swig)
-    ext_only = bool(self.ext_only)
-
-    metis_64 = bool(self.with_metis64)
-    enable_pumi = bool(self.with_pumi)
-    enable_strumpack = bool(self.with_strumpack)
-    enable_cuda = bool(self.with_cuda)
-    enable_cuda_hypre = bool(self.with_cuda_hypre)
+    bglb.metis_64 = bool(self.with_metis64)
+    bglb.enable_pumi = bool(self.with_pumi)
+    bglb.enable_strumpack = bool(self.with_strumpack)
+    bglb.enable_cuda = bool(self.with_cuda)
+    bglb.enable_cuda_hypre = bool(self.with_cuda_hypre)
     if self.cuda_arch is not None:
-        cuda_arch = self.cuda_arch
-    enable_libceed = bool(self.with_libceed)
-    libceed_only = bool(self.libceed_only)
-    enable_gslib = bool(self.with_gslib)
-    gslib_only = bool(self.gslib_only)
-    enable_suitesparse = bool(self.with_suitesparse)
-    enable_lapack = bool(self.with_lapack)
+        bglb.cuda_arch = self.cuda_arch
+    bglb.enable_libceed = bool(self.with_libceed)
+    bglb.libceed_only = bool(self.libceed_only)
+    bglb.enable_gslib = bool(self.with_gslib)
+    bglb.gslib_only = bool(self.gslib_only)
+    bglb.enable_suitesparse = bool(self.with_suitesparse)
+    bglb.enable_lapack = bool(self.with_lapack)
 
-    build_parallel = bool(self.with_parallel)     # controlls PyMFEM parallel
-    build_serial = not bool(self.no_serial)
+    bglb.build_parallel = bool(self.with_parallel)     # controlls PyMFEM parallel
+    bglb.build_serial = not bool(self.no_serial)
 
-    clean_swig = True
-    run_swig = True
+    bglb.clean_swig = True
+    bglb.run_swig = True
 
-    mfem_debug = bool(self.mfem_debug)
-    mfem_build_miniapps = bool(self.mfem_build_miniapps)
+    bglb.mfem_debug = bool(self.mfem_debug)
+    bglb.mfem_build_miniapps = bool(self.mfem_build_miniapps)
 
-    if build_serial:
-        build_serial = (not swig_only and not ext_only)
+    if bglb.build_serial:
+        bglb.build_serial = (not bglb.swig_only and not bglb.ext_only)
 
-    if build_parallel:
+    if bglb.build_parallel:
         try:
             import mpi4py
         except ImportError:
             assert False, "Can not import mpi4py"
 
     if self.mfem_prefix != '':
-        mfem_prefix = abspath(self.mfem_prefix)
-        mfems_prefix = abspath(self.mfem_prefix)
-        mfemp_prefix = abspath(self.mfem_prefix)
+        bglb.mfem_prefix = abspath(self.mfem_prefix)
+        bglb.mfems_prefix = abspath(self.mfem_prefix)
+        bglb.mfemp_prefix = abspath(self.mfem_prefix)
         if self.mfems_prefix != '':
-            mfems_prefix = abspath(self.mfems_prefix)
+            bglb.mfems_prefix = abspath(self.mfems_prefix)
         if self.mfemp_prefix != '':
-            mfemp_prefix = abspath(self.mfemp_prefix)
+            bglb.mfemp_prefix = abspath(self.mfemp_prefix)
 
-        check = find_libpath_from_prefix('mfem', mfems_prefix)
+        check = find_libpath_from_prefix('mfem', bglb.mfems_prefix)
         assert check != '', "libmfem.so is not found in the specified <path>/lib"
-        check = find_libpath_from_prefix('mfem', mfemp_prefix)
+        check = find_libpath_from_prefix('mfem', bglb.mfemp_prefix)
         assert check != '', "libmfem.so is not found in the specified <path>/lib"
 
-        build_mfem = False
-        hypre_prefix = mfem_prefix
-        metis_prefix = mfem_prefix
+        bglb.build_mfem = False
+        hypre_prefix = bglb.mfem_prefix
+        metis_prefix = bglb.mfem_prefix
 
-        if swig_only:
-            clean_swig = False
+        if bglb.swig_only:
+            bglb.clean_swig = False
 
     else:
-        build_mfem = True
-        build_mfemp = build_parallel
-        build_hypre = build_parallel
-        build_metis = build_parallel or enable_suitesparse
+        bglb.build_mfem = True
+        bglb.build_mfemp = bglb.build_parallel
+        bglb.build_hypre = bglb.build_parallel
+        bglb.build_metis = bglb.build_parallel or bglb.enable_suitesparse
 
-        print("ext_prefix", ext_prefix)
-        if ext_prefix == '':
-            ext_prefix = external_install_prefix(prefix)
-        hypre_prefix = os.path.join(ext_prefix)
-        metis_prefix = os.path.join(ext_prefix)
+        print("ext_prefix", bglb.ext_prefix)
+        if bglb.ext_prefix == '':
+            bglb.ext_prefix = external_install_prefix(prefix)
+        bglb.hypre_prefix = os.path.join(bglb.ext_prefix)
+        bglb.metis_prefix = os.path.join(bglb.ext_prefix)
 
-        mfem_prefix = ext_prefix
-        mfems_prefix = os.path.join(ext_prefix, 'ser')
-        mfemp_prefix = os.path.join(ext_prefix, 'par')
+        bglb.mfem_prefix = bglb.ext_prefix
+        bglb.mfems_prefix = os.path.join(bglb.ext_prefix, 'ser')
+        bglb.mfemp_prefix = os.path.join(bglb.ext_prefix, 'par')
         # enable_gslib = True
 
     if self.mfem_branch != '':
-        mfem_branch = self.mfem_branch
+        bglb.mfem_branch = self.mfem_branch
 
     if self.hypre_prefix != '':
         check = find_libpath_from_prefix('HYPRE', self.hypre_prefix)
@@ -638,44 +240,46 @@ def configure_install(self):
     if self.metis_prefix != '':
         check = find_libpath_from_prefix('metis', self.metis_prefix)
         assert check != '', "libmetis.so is not found in the specified <path>/lib or lib64"
-        metis_prefix = os.path.expanduser(self.metis_prefix)
-        build_metis = False
+        bglb.metis_prefix = os.path.expanduser(self.metis_prefix)
+        bglb.build_metis = False
 
-    if enable_libceed or libceed_only:
+    if bglb.enable_libceed or bglb.libceed_only:
         if self.libceed_prefix != '':
-            libceed_prefix = os.path.expanduser(self.libceed_prefix)
-            build_libceed = False
+            bglb.libceed_prefix = os.path.expanduser(self.libceed_prefix)
+            bglb.build_libceed = False
         else:
-            libceed_prefix = mfem_prefix
-            build_libceed = True
+            bglb.libceed_prefix = bglb.mfem_prefix
+            bglb.build_libceed = True
 
-    if enable_gslib or gslib_only:
+    if bglb.enable_gslib or bglb.gslib_only:
         if self.gslib_prefix != '':
-            build_gslib = False
-            gslibs_prefix = os.path.expanduser(self.gslib_prefix)
-            gslibp_prefix = os.path.expanduser(self.gslib_prefix)
+            bglb.build_gslib = False
+            bglb.gslibs_prefix = os.path.expanduser(self.gslib_prefix)
+            bglb.gslibp_prefix = os.path.expanduser(self.gslib_prefix)
         else:
-            gslibs_prefix = mfems_prefix
-            gslibp_prefix = mfemp_prefix
-            build_gslib = True
+            bglb.gslibs_prefix = bglb.mfems_prefix
+            bglb.gslibp_prefix = bglb.mfemp_prefix
+            bglb.build_gslib = True
 
-    if enable_suitesparse and self.suitesparse_prefix != '':
-        suitesparse_prefix = self.suitesparse_prefix
+    if bglb.enable_suitesparse and self.suitesparse_prefix != '':
+        bglb.suitesparse_prefix = self.suitesparse_prefix
 
     if self.pumi_prefix != '':
-        pumi_prefix = abspath(self.pumi_prefix)
+        bglb.pumi_prefix = abspath(self.pumi_prefix)
     else:
-        pumi_prefix = mfem_prefix
+        bglb.pumi_prefix = mfem_prefix
 
     if self.strumpack_prefix != '':
-        strumpack_prefix = abspath(self.strumpack_prefix)
+        bglb.strumpack_prefix = abspath(self.strumpack_prefix)
     else:
-        strumpack_prefix = mfem_prefix
+        bglb.strumpack_prefix = bglb.mfem_prefix
 
-    if enable_cuda:
+    if bglb.enable_cuda:
         nvcc = find_command('nvcc')
-        cuda_prefix = os.path.dirname(os.path.dirname(nvcc))
+        bglb.cuda_prefix = os.path.dirname(os.path.dirname(nvcc))
 
+    '''
+    this has to be handled differently
     if self.CC != '':
         cc_command = self.CC
     if self.CXX != '':
@@ -684,109 +288,101 @@ def configure_install(self):
         mpicc_command = self.MPICC
     if self.MPICXX != '':
         mpicxx_command = self.MPICXX
+    '''
 
     if self.blas_libraries != "":
-        blas_libraries = self.blas_libraries
+        bglb.blas_libraries = self.blas_libraries
     if self.lapack_libraries != "":
-        lapack_libraries = self.lapack_libraries
+        bglb.lapack_libraries = self.lapack_libraries
 
     if skip_ext:
-        build_metis = False
-        build_hypre = False
-        build_mfem = False
-        build_mfemp = False
-        build_libceed = False
-        build_gslib = False
+        bglb.build_metis = False
+        bglb.build_hypre = False
+        bglb.build_mfem = False
+        bglb.build_mfemp = False
+        bglb.build_libceed = False
+        bglb.build_gslib = False
 
     if self.skip_swig:
-        clean_swig = False
-        run_swig = False
+        bglb.clean_swig = False
+        bglb.run_swig = False
 
-    if swig_only:
-        build_serial = False
-        clean_swig = False
+    if bglb.swig_only:
+        bglb.build_serial = False
+        bglb.clean_swig = False
 
-    if ext_only:
-        clean_swig = False
-        run_swig = False
-        build_serial = False
-        build_parallel = False
-        skip_install = True
+    if bglb.ext_only:
+        bglb.clean_swig = False
+        bglb.run_swig = False
+        bglb.build_serial = False
+        bglb.build_parallel = False
+        bglb.skip_install = True
 
-    if libceed_only:
-        clean_swig = False
-        run_swig = False
-        build_mfem = False
-        build_mfemp = False
-        build_metis = False
-        build_hypre = False
-        build_gslib = False
-        build_serial = False
-        build_parallel = False
-        build_libceed = True
-        skip_install = True
+    if bglb.libceed_only:
+        bglb.clean_swig = False
+        bglb.run_swig = False
+        bglb.build_mfem = False
+        bglb.build_mfemp = False
+        bglb.build_metis = False
+        bglb.build_hypre = False
+        bglb.build_gslib = False
+        bglb.build_serial = False
+        bglb.build_parallel = False
+        bglb.build_libceed = True
+        bglb.skip_install = True
 
-    if gslib_only:
-        clean_swig = False
-        run_swig = False
-        build_mfem = False
-        build_mfemp = False
-        build_metis = False
-        build_hypre = False
-        build_serial = False
-        build_libceed = False
-        build_gslib = True
-        skip_install = True
+    if bglb.gslib_only:
+        bglb.clean_swig = False
+        bglb.run_swig = False
+        bglb.build_mfem = False
+        bglb.build_mfemp = False
+        bglb.build_metis = False
+        bglb.build_hypre = False
+        bglb.build_serial = False
+        bglb.build_libceed = False
+        bglb.build_gslib = True
+        bglb.skip_install = True
 
-    global is_configured
-    is_configured = True
+    bglb.is_configured = True
 
 
 def configure_bdist(self):
     '''
     called when bdist workflow is used
     '''
-    global prefix, dry_run, verbose, run_swig
-    global build_mfem, build_parallel, build_serial, build_gslib
-    global mfem_branch, mfem_source, mfem_build_miniapps
-    global mfems_prefix, mfemp_prefix, hypre_prefix, metis_prefix, ext_prefix
+    
+    bglb.dry_run = bool(self.dry_run) if bglb.dry_run == -1 else bglb.dry_run
+    bglb.verbose = bool(self.verbose) if bglb.verbose == -1 else bglb.verbose
 
-    global cc_command, cxx_command, mpicc_command, mpicxx_command
-    global enable_pumi, pumi_prefix
-    global enable_strumpack, strumpack_prefix
-    global do_bdist_wheel
-    dry_run = bool(self.dry_run) if dry_run == -1 else dry_run
-    verbose = bool(self.verbose) if verbose == -1 else verbose
+    bglb.prefix = abspath(self.bdist_dir)
+    bglb.prefix = abspath(self.bdist_dir)
 
-    prefix = abspath(self.bdist_dir)
-
-    build_parallel = False
+    bglb.build_parallel = False
 
     if self.skip_build == 1:
-        build_mfem = False
-        build_serial = False
-        run_swig = False
+        bglb.build_mfem = False
+        bglb.build_serial = False
+        bglb.run_swig = False
     else:
-        build_mfem = True
-        build_serial = True
+        bglb.build_mfem = True
+        bglb.build_serial = True
         # build_gslib = True
-        run_swig = True
+        bglb.run_swig = True
 
-    global is_configured
-    is_configured = True
-    do_bdist_wheel = True
+    bglb.is_configured = True
+    bglb.do_bdist_wheel = True
 
     # mfem_source = './external/mfem'
-    ext_prefix = os.path.join(prefix, 'mfem', 'external')
-    print("ext_prefix(bdist)", ext_prefix)
-    hypre_prefix = ext_prefix
-    metis_prefix = ext_prefix
+    bglb.ext_prefix = os.path.join(bglb.prefix, 'mfem', 'external')
+    print("ext_prefix(bdist)", bglb.ext_prefix)
+    bglb.hypre_prefix = bglb.ext_prefix
+    bglb.metis_prefix = bglb.ext_prefix
 
-    mfem_prefix = ext_prefix
-    mfems_prefix = os.path.join(ext_prefix, 'ser')
-    mfemp_prefix = os.path.join(ext_prefix, 'par')
+    bglb.mfem_prefix = bglb.ext_prefix
+    bglb.mfems_prefix = os.path.join(bglb.ext_prefix, 'ser')
+    bglb.mfemp_prefix = os.path.join(bglb.ext_prefix, 'par')
 
-    mfem_build_miniapps = False
+    bglb.mfem_build_miniapps = False
 
 
 class Install(_install):
@@ -867,7 +463,7 @@ class Install(_install):
         self.mfem_prefix = ''
         self.mfems_prefix = ''
         self.mfemp_prefix = ''
-        self.mfem_source = mfem_source
+        self.mfem_source = bglb.mfem_source
         self.mfem_branch = ''
         self.mfem_debug = False
         self.mfem_build_miniapps = False
@@ -909,7 +505,6 @@ class Install(_install):
         self.unverifiedSSL = False
 
     def finalize_options(self):
-
         if (bool(self.ext_only) and bool(self.skip_ext)):
             assert False, "skip-ext and ext-only can not use together"
 
@@ -921,11 +516,10 @@ class Install(_install):
             self.prefix = os.path.expanduser(self.prefix)
             prefix = self.prefix
 
-        global verbose
-        verbose = bool(self.vv)
+        bglb.verbose = bool(self.vv)
         if given_prefix:
             # global ext_prefix
-            self.prefix = abspath(prefix)
+            self.prefix = abspath(bglb.prefix)
             # ext_prefix = abspath(prefix)
         else:
             if '--user' in sys.argv:
@@ -949,18 +543,17 @@ class Install(_install):
         self.user = 0
         _install.finalize_options(self)
 
-        global use_unverifed_SSL
-        use_unverifed_SSL = self.unverifiedSSL
+        bglb.use_unverifed_SSL = self.unverifiedSSL
 
-        if verbose:
+        if bglb.verbose:
             print("prefix is :", self.prefix)
 
     def run(self):
-        if not is_configured:
+        if not bglb.is_configured:
             configure_install(self)
             print_config()
 
-        if swig_only:
+        if bglb.swig_only:
             self.run_command("build")
         else:
             _install.run(self)
@@ -979,8 +572,8 @@ class BuildPy(_build_py):
         _build_py.finalize_options(self)
 
     def run(self):
-        if not swig_only:
-            if build_metis:
+        if not bglb.swig_only:
+            if bglb.build_metis:
                 if use_metis_gklib:
                     gitclone('gklib', use_sha=True)
                     gitclone('metis', use_sha=True)
@@ -989,45 +582,45 @@ class BuildPy(_build_py):
                     download('metis')
                     make_metis(use_int64=metis_64, use_real64=metis_64)
 
-            if build_hypre:
+            if bglb.build_hypre:
                 download('hypre')
                 cmake_make_hypre()
-            if build_libceed:
+            if bglb.build_libceed:
                 download('libceed')
                 make_libceed()
-            if build_gslib:
+            if bglb.build_gslib:
                 download('gslib')
                 make_gslib(serial=True)
-                if build_hypre:
+                if bglb.build_hypre:
                     make_gslib()
 
             mfem_downloaded = False
 
-            if build_mfem:
-                gitclone('mfem', use_sha=True) if mfem_branch is None else gitclone(
-                    'mfem', branch=mfem_branch)
+            if bglb.build_mfem:
+                gitclone('mfem', use_sha=True) if bglb.mfem_branch is None else gitclone(
+                    'mfem', branch=bglb.mfem_branch)
                 mfem_downloaded = True
                 cmake_make_mfem(serial=True)
 
-            if build_mfemp:
+            if bglb.build_mfemp:
                 if not mfem_downloaded:
-                    gitclone('mfem', use_sha=True) if mfem_branch is None else gitclone(
-                        'mfem', branch=mfem_branch)
+                    gitclone('mfem', use_sha=True) if bglb.mfem_branch is None else gitclone(
+                        'mfem', branch=bglb.mfem_branch)
                 cmake_make_mfem(serial=False)
 
-        if clean_swig:
+        if bglb.clean_swig:
             clean_wrapper()
-        if run_swig:
+        if bglb.run_swig:
             generate_wrapper()
-            if swig_only:
+            if bglb.swig_only:
                 return
 
-        if build_serial:
+        if bglb.build_serial:
             make_mfem_wrapper(serial=True)
-        if build_parallel:
+        if bglb.build_parallel:
             make_mfem_wrapper(serial=False)
 
-        if not skip_install:
+        if not bglb.skip_install:
             _build_py.run(self)
         else:
             sys.exit()
@@ -1042,7 +635,7 @@ class InstallLib(_install_lib):
 
 class InstallEggInfo(_install_egg_info):
     def run(self):
-        if not dry_run:
+        if not bglb.dry_run:
             _install_egg_info.run(self)
         else:
             print("skipping regular install_egg_info")
@@ -1050,7 +643,7 @@ class InstallEggInfo(_install_egg_info):
 
 class InstallScripts(_install_scripts):
     def run(self):
-        if not dry_run:
+        if not bglb.dry_run:
             _install_scripts.run(self)
         else:
             print("skipping regular install_scripts")
@@ -1079,9 +672,8 @@ class Clean(_clean):
         self.all_exts = False
 
     def run(self):
-        global dry_run, verbose
-        dry_run = self.dry_run
-        verbose = bool(self.verbose)
+        bglb.dry_run = self.dry_run
+        bglb.verbose = bool(self.verbose)
 
         os.chdir(extdir)
 

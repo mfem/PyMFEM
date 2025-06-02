@@ -76,6 +76,8 @@ def read_mfem_tplflags(prefix):
 # ----------------------------------------------------------------------------------------
 # Utilities
 # ----------------------------------------------------------------------------------------
+verbose = 1
+dry_run = -1
 
 def abspath(path):
     return os.path.abspath(os.path.expanduser(path))

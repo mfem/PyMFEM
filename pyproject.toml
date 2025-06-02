@@ -1,6 +1,6 @@
 [project]
 name = "mfem"
-license = {file = "LICENSE"}
+license-files = ["LICENSE"]
 description = "MFEM + PyMFEM (finite element method library)"
 dynamic = ["version"]
 readme = "README.md"
@@ -27,16 +27,16 @@ dependencies = [
 
 [project.urls]
 "Homepage" = "http://mfem.org"
-"Download" = "https://github.com/mfem"
-
+"Download" = "https://github.com/pymfem"
 
 [build-system]
 requires = [
     "setuptools",
-	"cmake",
+	"cmake>=4.0.0",
 	"swig>=4.3",
 ]
-build-backend = "setuptools.build_meta"
+build-backend = "backend"
+backend-path = ["_build_system"]
 
 [tool.setuptools.dynamic]
 version = { attr = "mfem.__version__" }
