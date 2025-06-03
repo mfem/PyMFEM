@@ -1,6 +1,6 @@
 [project]
 name = "mfem"
-license-files = ["LICENSE"]
+license = "BSD-3-Clause"
 description = "MFEM + PyMFEM (finite element method library)"
 dynamic = ["version"]
 readme = "README.md"
@@ -31,7 +31,8 @@ dependencies = [
 
 [build-system]
 requires = [
-    "setuptools",
+        "setuptools",
+	"numpy>=2.0.0",
 	"cmake>=4.0.0",
 	"swig>=4.3",
 ]

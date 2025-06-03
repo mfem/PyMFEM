@@ -6,7 +6,7 @@ import os
 is_configured = False
 prefix = ''
 
-verbose = -1
+verbose = True
 git_sshclone = False
 swig_only = False
 skip_install = False
@@ -54,7 +54,7 @@ enable_lapack = False
 blas_libraries = ""
 lapack_libraries = ""
 
-dry_run = -1
+dry_run = False
 do_bdist_wheel = False
 
 use_unverifed_SSL = False if os.getenv(

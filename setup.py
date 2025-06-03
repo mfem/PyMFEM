@@ -69,7 +69,7 @@ if haveWheel:
             import build_globals as bglb
             
             if not bglb.is_configured:
-                print('running config')
+                print('!!!!! Running config (bdist wheel)')
                 configure_bdist(self)
                 print_config()
             self.run_command("build")
@@ -141,8 +141,7 @@ def configure_install(self):
     '''
     called when install workflow is used
     '''
-    verbose = bool(self.vv) if bglb.verbose == -1 else bglb.verbose
-    dry_run = bool(self.dry_run) if bglb.dry_run == -1 else bglb.dry_run
+    bglb.verbose = bool(self.vv) if not bglb.verbose else bglb.verbose
     if bglb.dry_run:
         bglb.verbose = True
 
@@ -217,9 +216,9 @@ def configure_install(self):
         bglb.build_hypre = bglb.build_parallel
         bglb.build_metis = bglb.build_parallel or bglb.enable_suitesparse
 
-        print("ext_prefix", bglb.ext_prefix)
+        print("!!!!! ext_prefix", bglb.ext_prefix)
         if bglb.ext_prefix == '':
-            bglb.ext_prefix = external_install_prefix(prefix)
+            bglb.ext_prefix = external_install_prefix(bglb.prefix)
         bglb.hypre_prefix = os.path.join(bglb.ext_prefix)
         bglb.metis_prefix = os.path.join(bglb.ext_prefix)
 
@@ -267,7 +266,7 @@ def configure_install(self):
     if self.pumi_prefix != '':
         bglb.pumi_prefix = abspath(self.pumi_prefix)
     else:
-        bglb.pumi_prefix = mfem_prefix
+        bglb.pumi_prefix = bglb.mfem_prefix
 
     if self.strumpack_prefix != '':
         bglb.strumpack_prefix = abspath(self.strumpack_prefix)
@@ -295,7 +294,7 @@ def configure_install(self):
     if self.lapack_libraries != "":
         bglb.lapack_libraries = self.lapack_libraries
 
-    if skip_ext:
+    if bglb.skip_ext:
         bglb.build_metis = False
         bglb.build_hypre = False
         bglb.build_mfem = False
@@ -303,7 +302,7 @@ def configure_install(self):
         bglb.build_libceed = False
         bglb.build_gslib = False
 
-    if self.skip_swig:
+    if bglb.skip_swig:
         bglb.clean_swig = False
         bglb.run_swig = False
 
@@ -350,9 +349,7 @@ def configure_bdist(self):
     '''
     called when bdist workflow is used
     '''
-    
-    bglb.dry_run = bool(self.dry_run) if bglb.dry_run == -1 else bglb.dry_run
-    bglb.verbose = bool(self.verbose) if bglb.verbose == -1 else bglb.verbose
+    bglb.dry_run = bool(self.dry_run) or bglb.dry_run
 
     bglb.prefix = abspath(self.bdist_dir)
     bglb.prefix = abspath(self.bdist_dir)
@@ -374,7 +371,7 @@ def configure_bdist(self):
 
     # mfem_source = './external/mfem'
     bglb.ext_prefix = os.path.join(bglb.prefix, 'mfem', 'external')
-    print("ext_prefix(bdist)", bglb.ext_prefix)
+    print("!!!!! ext_prefix(bdist)", bglb.ext_prefix)
     bglb.hypre_prefix = bglb.ext_prefix
     bglb.metis_prefix = bglb.ext_prefix
 
@@ -526,7 +523,7 @@ class Install(_install):
                 path = site.getusersitepackages()
                 if not os.path.exists(path):
                     try:
-                        print("attempting to make a --user directory", path)
+                        print("!!!!! attempting to make a --user directory", path)
                         os.makedirs(path)
                     except BaseException:
                         pass
@@ -546,10 +543,11 @@ class Install(_install):
         bglb.use_unverifed_SSL = self.unverifiedSSL
 
         if bglb.verbose:
-            print("prefix is :", self.prefix)
+            print("!!!!! prefix is :", self.prefix)
 
     def run(self):
         if not bglb.is_configured:
+            print('!!!!! Running config (install)')
             configure_install(self)
             print_config()
 
