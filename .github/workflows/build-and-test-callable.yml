@@ -96,7 +96,7 @@ jobs:
     - name: Install chrpath on ubuntu
       if: inputs.os == 'ubuntu-latest'
       run: |
-        sudo apt-get instlal chrpath
+        sudo apt-get install chrpath
 
     - name: Install MPI
       if: inputs.parallel

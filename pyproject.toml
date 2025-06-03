@@ -32,6 +32,7 @@ dependencies = [
 [build-system]
 requires = [
         "setuptools",
+	"pip", 
 	"numpy>=2.0.0",
 	"cmake>=4.0.0",
 	"swig>=4.3",
