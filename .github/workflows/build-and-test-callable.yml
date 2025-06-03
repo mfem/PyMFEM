@@ -88,10 +88,15 @@ jobs:
     # -------------------------------------------------------------------------------------------------
     # Download/install dependencies
     # -------------------------------------------------------------------------------------------------
-    # - name: Install core dependencies via requirements.txt
-      # run: |
-        # pip install setuptools
-        # pip install -r requirements.txt --verbose
+      # - name: Install core dependencies via requirements.txt
+      #   run: |
+      #     pip install setuptools
+      #     pip install -r requirements.txt --verbose
+
+    - name: Install chrpath on ubuntu
+      if: inputs.os == 'ubuntu-latest'
+      run: |
+        sudo apt-get instlal chrpath
 
     - name: Install MPI
       if: inputs.parallel
