@@ -33,10 +33,10 @@ def write_setup_local():
 
     print(mfems_tpl, mfemp_tpl)
 
-    params = {'cxx_ser': cxx_command,
-              'cc_ser': cc_command,
-              'cxx_par': mpicxx_command,
-              'cc_par': mpicc_command,
+    params = {'cxx_ser': bglb.cxx_command,
+              'cc_ser': bglb.cc_command,
+              'cxx_par': bglb.mpicxx_command,
+              'cc_par': bglb.mpicc_command,
               'whole_archive': '--whole-archive',
               'no_whole_archive': '--no-whole-archive',
               'nocompactunwind': '',
@@ -67,7 +67,7 @@ def write_setup_local():
               'libceedinc': os.path.join(bglb.libceed_prefix, 'include'),
               'gslibsinc': os.path.join(bglb.gslibs_prefix, 'include'),
               'gslibpinc': os.path.join(bglb.gslibp_prefix, 'include'),
-              'cxx11flag': cxx11_flag,
+              'cxx11flag': bglb.cxx11_flag,
               'build_mfem': '1' if bglb.build_mfem else '0'
               }
 

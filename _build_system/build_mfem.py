@@ -40,7 +40,7 @@ def cmake_make_mfem(serial=True):
                   'DMFEM_ENABLE_MINIAPPS': '0',
                   'DCMAKE_SHARED_LINKER_FLAGS': ldflags,
                   'DMFEM_USE_ZLIB': '1',
-                  'DCMAKE_CXX_FLAGS': cxx11_flag,
+                  'DCMAKE_CXX_FLAGS': bglb.cxx11_flag,
                   'DCMAKE_BUILD_WITH_INSTALL_RPATH': '1'}
 
     if bglb.mfem_debug:
@@ -53,7 +53,7 @@ def cmake_make_mfem(serial=True):
         cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
 
     if serial:
-        cmake_opts['DCMAKE_CXX_COMPILER'] = cxx_command
+        cmake_opts['DCMAKE_CXX_COMPILER'] = bglb.cxx_command
         cmake_opts['DMFEM_USE_EXCEPTIONS'] = '1'
         cmake_opts['DCMAKE_INSTALL_PREFIX'] = bglb.mfems_prefix
 
@@ -63,7 +63,7 @@ def cmake_make_mfem(serial=True):
         else:
             enable_metis = False
     else:
-        cmake_opts['DCMAKE_CXX_COMPILER'] = mpicxx_command
+        cmake_opts['DCMAKE_CXX_COMPILER'] = bglb.mpicxx_command
         cmake_opts['DMFEM_USE_EXCEPTIONS'] = '0'
         cmake_opts['DCMAKE_INSTALL_PREFIX'] = bglb.mfemp_prefix
         cmake_opts['DMFEM_USE_MPI'] = '1'

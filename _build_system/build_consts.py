@@ -6,24 +6,8 @@ import os
 from shutil import which as find_command
 from collections import namedtuple
 
-__all__ = ["cc_command", "cxx_command", "mpicc_command", "mpicxx_command",
-           "cxx11_flag", "swig_command", "rootdir", "extdir",
+__all__ = ["swig_command", "rootdir", "extdir",
            "REPOS", "dylibext", "osx_sysroot"]
-
-# ----------------------------------------------------------------------------------------
-#   enviromental variables.
-# ----------------------------------------------------------------------------------------
-cc_command = 'cc' if os.getenv("CC") is None else os.getenv("CC")
-cxx_command = 'c++' if os.getenv("CC") is None else os.getenv("CXX")
-mpicc_command = 'mpicc' if os.getenv("MPICC") is None else os.getenv("MPICC")
-mpicxx_command = 'mpic++' if os.getenv(
-    "MPICXX") is None else os.getenv("MPICXX")
-cxx11_flag = '-std=c++11' if os.getenv(
-    "CXX11FLAG") is None else os.getenv("CXX11FLAG")
-swig_command = (find_command('swig') if os.getenv("SWIG") is None
-                else os.getenv("SWIG"))
-if swig_command is None:
-    assert False, "SWIG is not installed (hint: pip install swig)"
 
 # ----------------------------------------------------------------------------------------
 #  package directory
@@ -61,6 +45,14 @@ elif platform == "win32":
     # Windows...
     assert False, "Windows is not supported yet. Contribution is welcome"
 
+# ----------------------------------------------------------------------------------------
+# SWIG
+# ----------------------------------------------------------------------------------------
+
+swig_command = (find_command('swig') if os.getenv("SWIG") is None
+                else os.getenv("SWIG"))
+if swig_command is None:
+    assert False, "SWIG is not installed (hint: pip install swig)"
 
 # ----------------------------------------------------------------------------------------
 # Constants

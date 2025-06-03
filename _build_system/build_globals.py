@@ -61,3 +61,23 @@ use_unverifed_SSL = False if os.getenv(
     "unverifedSSL") is None else os.getenv("unverifiedSSL")
 
 use_metis_gklib = False
+metis_64 = False
+
+# ----------------------------------------------------------------------------------------
+#   command line configuration parameter (pip -C)
+# ----------------------------------------------------------------------------------------
+
+cfs = {}
+
+# ----------------------------------------------------------------------------------------
+#   enviromental variables.
+# ----------------------------------------------------------------------------------------
+cc_command = 'cc' if os.getenv("CC") is None else os.getenv("CC")
+cxx_command = 'c++' if os.getenv("CC") is None else os.getenv("CXX")
+mpicc_command = 'mpicc' if os.getenv("MPICC") is None else os.getenv("MPICC")
+mpicxx_command = 'mpic++' if os.getenv(
+    "MPICXX") is None else os.getenv("MPICXX")
+cxx11_flag = '-std=c++11' if os.getenv(
+    "CXX11FLAG") is None else os.getenv("CXX11FLAG")
+
+

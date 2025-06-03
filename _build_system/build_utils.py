@@ -20,7 +20,7 @@ __all__ = ["read_mfem_tplflags", "abspath", "external_install_prefix",
            "make_call", "chdir", "remove_files",
            "make", "make_install", "download", "gitclone",
            "record_mfem_sha", "cmake",
-           "get_numpy_inc", "get_mpi4py_inc", "find_libpath_from_prefix"]
+           "get_numpy_inc", "get_mpi4py_inc", "find_libpath_from_prefix",]
 
 # ----------------------------------------------------------------------------------------
 #   global constant and variabls for build-process
@@ -168,7 +168,7 @@ def download(xxx):
         raise RuntimeError(f"Could not find tarball URL for {xxx}")
     print("Downloading :", url)
 
-    if use_unverifed_SSL:
+    if bglb.use_unverifed_SSL:
         ssl._create_default_https_context = ssl._create_unverified_context
 
     ftpstream = request.urlopen(url)

@@ -48,7 +48,7 @@ def cmake_make_hypre():
         if bglb.cuda_arch != '':
             cmake_opts['DCMAKE_CUDA_ARCHITECTURES'] = bglb.cuda_arch
     else:
-        cmake_opts['DCMAKE_C_COMPILER'] = mpicc_command
+        cmake_opts['DCMAKE_C_COMPILER'] = bglb.mpicc_command
 
     cmake('..', **cmake_opts)
 

@@ -5,6 +5,7 @@ import sys
 import os
 import re
 import subprocess
+from sys import platform
 
 __all__ = ["make_metis_gklib", "make_metis"]
 
@@ -69,13 +70,13 @@ def make_metis_gklib(use_int64=False, use_real64=False):
         options.append('r64=1')
 
     command = ['make', 'config', 'shared=1'] + options
-    command = command + ['prefix=' + bglb.metis_prefix, 'cc=' + cc_command]
+    command = command + ['prefix=' + bglb.metis_prefix, 'cc=' + bglb.cc_command]
     make_call(command)
 
     chdir('build')
-    cmake_opts = {'DGKLIB_PATH': metis_prefix,
+    cmake_opts = {'DGKLIB_PATH': bglb.metis_prefix,
                   'DSHARED': '1',
-                  'DCMAKE_C_COMPILER': cc_command,
+                  'DCMAKE_C_COMPILER': bglb.cc_command,
                   'DCMAKE_C_STANDARD_LIBRARIES': '-lGKlib',
                   'DCMAKE_INSTALL_RPATH': gklibpath,
                   'DCMAKE_BUILD_WITH_INSTALL_RPATH': '1',
@@ -140,8 +141,8 @@ def make_metis(use_int64=False, use_real64=False):
             metis_header_fid.write(re.sub(pattern_real, replace_real, line))
 
     command = ['make', 'config', 'shared=1',
-               'prefix=' + metis_prefix,
-               'cc=' + cc_command]
+               'prefix=' + bglb.metis_prefix,
+               'cc=' + bglb.cc_command]
     make_call(command, env={'CMAKE_POLICY_VERSION_MINIMUM': '3.5'})
     make('metis')
     make_install('metis')
