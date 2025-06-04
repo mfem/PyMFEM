@@ -43,6 +43,9 @@ def cmake_make_mfem(serial=True):
                   'DCMAKE_CXX_FLAGS': bglb.cxx11_flag,
                   'DCMAKE_BUILD_WITH_INSTALL_RPATH': '1'}
 
+    if sys.platform == 'darwin':
+        cmake_opts["DCMAKE_MACOSX_RPATH"] = 'YES'
+
     if bglb.mfem_debug:
         cmake_opts['DMFEM_DEBUG'] = 'YES'
 

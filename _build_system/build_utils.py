@@ -344,9 +344,11 @@ def macos_fix_link_with_rpath(target, file):
     target (say libmfem) library written as fullpath is modified using
     relative path (@rpath/libmfem)
     '''
+    print("processing ", file, target)
     command = ["otool", "-L", file]
     output = subprocess.run(command, capture_output=True)
 
+    print(command)
     path = ''
     for x in output.stdout.decode().split("\n"):
         if x.find(target) != -1:
@@ -358,5 +360,6 @@ def macos_fix_link_with_rpath(target, file):
     libname = "@rpath/"+path.split('/')[-1]
 
     command = ["install_name_tool", "-change", path, libname, file]
+    print(command)    
     subprocess.run(command)
 
