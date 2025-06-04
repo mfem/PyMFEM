@@ -312,4 +312,15 @@ def make_mfem_wrapper(serial=True):
                str(max((cpu_count() - 1, 1)))]
     make_call(command, force_verbose=True)
 
+
+    if sys.platform == "darwin":
+        for x in os.listdir(pwd):
+            if not x.endswith(".so"): continue
+            
+            path = os.path.join(pwd, x)
+            macos_fix_link_with_rpath("libmfem", path)
+            if not serial:
+                macos_fix_link_with_rpath("libHYPRE", path)
+                macos_fix_link_with_rpath("libmetis", path)            
+
     os.chdir(pwd)

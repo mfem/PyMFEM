@@ -9,9 +9,7 @@ def get_requires_for_build_wheel(config_settings=None):
 
     need_mpi = False
     if config_settings is not None:
-        for flag in ("with-parallel", "with-gslib", "with-pumi",
-                     "with-libceed", "with-cuda", "with-strumpack"):
-
+        for flag in ("with-parallel", ):
             value = config_settings.pop(flag, "No")
             if value.upper() in ("YES", "TRUE", "1"):
                 need_mpi = True

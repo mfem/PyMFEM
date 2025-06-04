@@ -139,9 +139,12 @@ def get_extensions():
     macros = [('TARGET_PY3', '1'),
               ('NPY_NO_DEPRECATED_API', 'NPY_1_7_API_VERSION')]
 
-    if build_mfem == "1":
+    if build_mfem == "1" and sys.platform  in ("linux", "linux2"):
         runtime_library_dirs = library_dirs[:]
         runtime_library_dirs[0] = "$ORIGIN/../external/ser/lib"
+    elif build_mfem == "1" and sys.platform  in ("linux", "linux2"):
+        runtime_library_dirs = library_dirs[:]
+        runtime_library_dirs[0] = "@loader_path/../external/ser/lib"
     else:
         runtime_library_dirs = library_dirs
 
