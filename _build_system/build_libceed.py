@@ -6,16 +6,11 @@ import os
 import re
 import subprocess
 
-from build_utils import (
-    read_mfem_tplflags, abspath, external_install_prefix,
-    make_call, chdir, remove_files, download, gitclone,
-    record_mfem_sha, get_numpy_inc, get_mpi4py_inc, find_libpath_from_prefix,]
-
 import build_globals as bglb
-from build_consts as import *
+from build_consts import *
+from build_utils import *
 
 __all__ = ["make_libceed"]
-
 
 def make_libceed(serial=False):
     if bglb.verbose:

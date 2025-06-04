@@ -1,18 +1,6 @@
 """
   MFEM + PyMFEM (finite element method library)
 """
-
-import build_globals as bglb
-from build_mfem import *
-from build_metis import *
-from build_hypre import *
-from build_pymfem import *
-from build_libceed import *
-from build_gslib import *
-from build_config import *
-from build_consts import *
-from build_utils import *
-
 import sys
 import os
 import site
@@ -38,6 +26,17 @@ from setuptools.command.bdist_wheel import bdist_wheel as _bdist_wheel
 from distutils.command.clean import clean as _clean
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "_build_system"))
+
+import build_globals as bglb
+from build_mfem import *
+from build_metis import *
+from build_hypre import *
+from build_pymfem import *
+from build_libceed import *
+from build_gslib import *
+from build_config import *
+from build_consts import *
+from build_utils import *
 
 
 # ----------------------------------------------------------------------------------------
