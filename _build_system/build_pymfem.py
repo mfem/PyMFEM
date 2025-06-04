@@ -76,16 +76,15 @@ def write_setup_local():
 
     def add_extra(xxx, inc_sub=None):
         params['add_' + xxx] = '1'
+        ex_prefix = getattr(bglb, xxx + '_prefix')
         if inc_sub is None:
             params[xxx +
-                   'inc'] = os.path.join(globals()[xxx +
-                                                   '_prefix'], 'include')
+                   'inc'] = os.path.join(ex_prefix, 'include')
         else:
             params[xxx +
-                   'inc'] = os.path.join(globals()[xxx +
-                                                   '_prefix'], 'include', inc_sub)
+                   'inc'] = os.path.join(ex_prefix, 'include', inc_sub)
 
-        params[xxx + 'lib'] = os.path.join(globals()[xxx + '_prefix'], 'lib')
+        params[xxx + 'lib'] = os.path.join(ex_prefix, 'lib')
 
     if bglb.enable_pumi:
         add_extra('pumi')
