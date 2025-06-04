@@ -20,7 +20,8 @@ __all__ = ["read_mfem_tplflags", "abspath", "external_install_prefix",
            "make_call", "chdir", "remove_files",
            "make", "make_install", "download", "gitclone",
            "record_mfem_sha", "cmake", "chrpathdir",
-           "get_numpy_inc", "get_mpi4py_inc", "find_libpath_from_prefix",]
+           "get_numpy_inc", "get_mpi4py_inc", "find_libpath_from_prefix",
+           "macos_fix_link_with_rpath"]
 
 # ----------------------------------------------------------------------------------------
 #   global constant and variabls for build-process
@@ -336,7 +337,7 @@ def find_libpath_from_prefix(lib, prefix0):
     return ''
 
 
-def macos_fix_libpath_with_rpath(target, file):
+def macos_fix_link_with_rpath(target, file):
     '''
     target (say libmfem) library written as fullpath is modified using
     relative path (@rpath/libmfem)
