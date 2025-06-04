@@ -8,9 +8,9 @@ import sys
 import os
 
 try:
+    from setuptools._distutils.core import Extension, setup    
+except BaseException:    
     from distutils.core import Extension, setup
-except:
-    from setuptools._distutils.core import Extension, setup
 
 from distutils.core import Extension, setup
 
