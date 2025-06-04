@@ -142,7 +142,7 @@ def get_extensions():
     if build_mfem == "1" and sys.platform  in ("linux", "linux2"):
         runtime_library_dirs = library_dirs[:]
         runtime_library_dirs[0] = "$ORIGIN/../external/ser/lib"
-    elif build_mfem == "1" and sys.platform  in ("linux", "linux2"):
+    elif build_mfem == "1" and sys.platform == "darwin":
         runtime_library_dirs = library_dirs[:]
         runtime_library_dirs[0] = "@loader_path/../external/ser/lib"
     else:

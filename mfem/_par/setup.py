@@ -172,6 +172,10 @@ def get_extensions():
         runtime_library_dirs = library_dirs[:]
         runtime_library_dirs[0] = "$ORIGIN/../external/par/lib"
         runtime_library_dirs.append("$ORIGIN/../external/lib")
+    elif build_mfem == "1" and sys.platform  == "darwin":        
+        runtime_library_dirs = library_dirs[:]
+        runtime_library_dirs[0] = "@loader_path/../external/par/lib"
+        runtime_library_dirs.append("@loader_path/../external/lib")
     else:
         runtime_library_dirs = library_dirs
 
