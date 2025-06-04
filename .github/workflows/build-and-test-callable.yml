@@ -92,8 +92,8 @@ jobs:
       run: |
         pip install setuptools>=79.0.1
         pip install numpy>=2.0.0
-	pip install cmake>=4.0.0
-	pip install swig>=4.3
+        pip install cmake>=4.0.0
+        pip install swig>=4.3
 
     - name: Install chrpath on ubuntu
       if: inputs.os == 'ubuntu-latest'
