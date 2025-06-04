@@ -30,8 +30,14 @@ def cmake_make_mfem(serial=True):
     hypreflags = ''
 
     rpaths = []
+    if sys.platform in ("linux", "linux2"):
+        rpaths_origin = "$ORIGIN"
+    elif sys.platform == "darwin":
+        rpaths_origin = "@loader_path"
 
-    def add_rpath(p):
+    def add_rpath(p, dest):
+        p = os.path.join(rpaths_origin, os.path.relpath(p, dest))
+        
         if not p in rpaths:
             rpaths.append(p)
 
@@ -45,6 +51,7 @@ def cmake_make_mfem(serial=True):
 
     if sys.platform == 'darwin':
         cmake_opts["DCMAKE_MACOSX_RPATH"] = 'YES'
+        cmake_opts["DCMAKE_INSTALL_NAME_DIR"] = '@rpath'        
 
     if bglb.mfem_debug:
         cmake_opts['DMFEM_DEBUG'] = 'YES'
@@ -56,16 +63,19 @@ def cmake_make_mfem(serial=True):
         cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
 
     if serial:
+        ex_loc = os.path.join(bglb.mfems_prefix, "examples")        
         cmake_opts['DCMAKE_CXX_COMPILER'] = bglb.cxx_command
         cmake_opts['DMFEM_USE_EXCEPTIONS'] = '1'
         cmake_opts['DCMAKE_INSTALL_PREFIX'] = bglb.mfems_prefix
 
-        add_rpath(os.path.join(bglb.mfems_prefix, 'lib'))
+        add_rpath(os.path.join(bglb.mfems_prefix, 'lib'), ex_loc)
         if bglb.enable_suitesparse:
             enable_metis = True
         else:
             enable_metis = False
+        #assert False, rpaths            
     else:
+        ex_loc = os.path.join(bglb.mfemp_prefix, "examples")
         cmake_opts['DCMAKE_CXX_COMPILER'] = bglb.mpicxx_command
         cmake_opts['DMFEM_USE_EXCEPTIONS'] = '0'
         cmake_opts['DCMAKE_INSTALL_PREFIX'] = bglb.mfemp_prefix
@@ -74,13 +84,13 @@ def cmake_make_mfem(serial=True):
         cmake_opts['DHYPRE_INCLUDE_DIRS'] = os.path.join(
             bglb.hypre_prefix, "include")
 
-        add_rpath(os.path.join(bglb.mfemp_prefix, 'lib'))
+        add_rpath(os.path.join(bglb.mfemp_prefix, 'lib'), ex_loc)
 
         hyprelibpath = os.path.dirname(
             find_libpath_from_prefix(
                 'HYPRE', bglb.hypre_prefix))
 
-        add_rpath(hyprelibpath)
+        add_rpath(hyprelibpath, ex_loc)
 
         hypreflags = "-L" + hyprelibpath + " -lHYPRE "
 
@@ -89,13 +99,13 @@ def cmake_make_mfem(serial=True):
             cmake_opts['DSTRUMPACK_DIR'] = bglb.strumpack_prefix
             libpath = os.path.dirname(
                 find_libpath_from_prefix("STRUMPACK", bglb.strumpack_prefix))
-            add_rpath(libpath)
+            add_rpath(libpath, ex_loc)
         if bglb.enable_pumi:
             cmake_opts['DMFEM_USE_PUMI'] = '1'
             cmake_opts['DPUMI_DIR'] = bglb.pumi_prefix
             libpath = os.path.dirname(
                 find_libpath_from_prefix("pumi", bglb.strumpack_prefix))
-            add_rpath(libpath)
+            add_rpath(libpath, ex_loc)
         enable_metis = True
 
     if enable_metis:
@@ -106,7 +116,7 @@ def cmake_make_mfem(serial=True):
         metislibpath = os.path.dirname(
             find_libpath_from_prefix(
                 'metis', bglb.metis_prefix))
-        add_rpath(metislibpath)
+        add_rpath(metislibpath, ex_loc)
 
         if bglb.use_metis_gklib:
             metisflags = "-L" + metislibpath + " -lmetis -lGKlib "
@@ -132,7 +142,7 @@ def cmake_make_mfem(serial=True):
         cmake_opts['DCEED_DIR'] = bglb.libceed_prefix
         libpath = os.path.dirname(
             find_libpath_from_prefix("ceed", bglb.libceed_prefix))
-        add_rpath(libpath)
+        add_rpath(libpath, ex_loc)
 
     if bglb.enable_gslib:
         if serial:
@@ -173,7 +183,8 @@ def cmake_make_mfem(serial=True):
         rmtree(path)
     copytree("../data", path)
 
-    if bglb.do_bdist_wheel:
+    #if bglb.do_bdist_wheel:
+    if False:
         ex_dir = os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "examples")
         chrpathdir(ex_dir, ["/../lib","/../../lib"])
 

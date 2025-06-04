@@ -161,6 +161,7 @@ class BdistWheel(_bdist_wheel):
             print('!!!!! Running config (bdist wheel)')
             bglb.prefix = abspath(self.bdist_dir)
             bglb.ext_prefix = os.path.join(bglb.prefix, 'mfem', 'external')
+            bglb.bdist_wheel_dir = abspath(self.bdist_dir)
             bglb.do_bdist_wheel = True
             configure_build(self)
             print_config()

@@ -92,12 +92,14 @@ def make_metis_gklib(use_int64=False, use_real64=False):
     if platform == "darwin":
         command = ['install_name_tool',
                    '-id',
-                   os.path.join(bglb.metis_prefix, 'lib', 'libGKlib.dylib'),
+                   '@rpath',                   
+#                   os.path.join(bglb.metis_prefix, 'lib', 'libGKlib.dylib'),
                    os.path.join(bglb.metis_prefix, 'lib', 'libGKlib.dylib'), ]
         make_call(command)
         command = ['install_name_tool',
-                   '-id',
-                   os.path.join(bglb.metis_prefix, 'lib', 'libmetis.dylib'),
+                   '-id', 
+                   '@rpath',                  
+#                   os.path.join(bglb.metis_prefix, 'lib', 'libmetis.dylib'),
                    os.path.join(bglb.metis_prefix, 'lib', 'libmetis.dylib'), ]
         make_call(command)
     os.chdir(pwd)
@@ -150,7 +152,8 @@ def make_metis(use_int64=False, use_real64=False):
     if platform == "darwin":
         command = ['install_name_tool',
                    '-id',
-                   os.path.join(metis_prefix, 'lib', 'libmetis.dylib'),
+                   '@rpath',
+#                   os.path.join(metis_prefix, 'lib', 'libmetis.dylib'),
                    os.path.join(metis_prefix, 'lib', 'libmetis.dylib'), ]
         make_call(command)
     os.chdir(pwd)

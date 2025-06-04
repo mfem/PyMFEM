@@ -36,7 +36,7 @@ def cmake_make_hypre():
                   'DHYPRE_ENABLE_SHARED': '1',
                   'DCMAKE_C_FLAGS': '-fPIC',
                   'DCMAKE_INSTALL_PREFIX': bglb.hypre_prefix,
-                  'DCMAKE_INSTALL_NAME_DIR': os.path.join(bglb.hypre_prefix, 'lib'), }
+                  'DCMAKE_INSTALL_NAME_DIR': "@rpath", }
     if bglb.verbose:
         cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'
 
