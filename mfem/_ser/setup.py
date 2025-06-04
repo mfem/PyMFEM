@@ -4,11 +4,13 @@
 Serial version setup file
 """
 
-
-# first load variables from PyMFEM_ROOT/setup_local.py
-from distutils.core import Extension, setup
 import sys
 import os
+
+try:
+    from distutils.core import Extension, setup
+except:
+    from setuptools._distutils.core import Extension, setup
 
 # this remove *.py in this directory to be imported from setuptools
 sys.path.remove(os.path.abspath(os.path.dirname(sys.argv[0])))
@@ -32,6 +34,7 @@ def get_version():
 
 
 def get_extensions():
+    # first load variables from PyMFEM_ROOT/setup_local.py
     sys.path.insert(0, root)
     try:
         from setup_local import (mfemserbuilddir, mfemserincdir, mfemsrcdir, mfemserlnkdir,

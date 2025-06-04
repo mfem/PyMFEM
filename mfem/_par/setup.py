@@ -7,18 +7,20 @@ setup.py file for SWIG example
 import sys
 import os
 
-print('building paralel version')
+try:
+    from distutils.core import Extension, setup
+except:
+    from setuptools._distutils.core import Extension, setup
+
+from distutils.core import Extension, setup
 
 # this remove *.py in this directory to be imported from setuptools
 sys.path.remove(os.path.abspath(os.path.dirname(sys.argv[0])))
-from distutils.core import Extension, setup
-
-# first load variables from PyMFEM_ROOT/setup_local.py
-
 
 ddd = os.path.dirname(os.path.abspath(os.path.realpath(__file__)))
 root = os.path.abspath(os.path.join(ddd, '..', '..'))
 
+#print('building paralel version')
 
 def get_version():
     # read version number from __init__.py
@@ -32,8 +34,8 @@ def get_version():
             version = eval(x.split('=')[-1].strip())
     return version
 
-
 def get_extensions():
+    # first load variables from PyMFEM_ROOT/setup_local.py
     sys.path.insert(0, root)
     try:
         from setup_local import (mfembuilddir, mfemincdir, mfemsrcdir, mfemlnkdir,
