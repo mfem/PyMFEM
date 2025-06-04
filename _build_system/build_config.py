@@ -427,7 +427,6 @@ def configure_install(self):
 
     bglb.is_configured = True
 
-
 def configure_bdist(self):
     '''
     called when bdist workflow is used
@@ -463,5 +462,5 @@ def configure_bdist(self):
 
     bglb.mfem_build_miniapps = False
                 
-#configure_build = configure_install
-configure_build = configure_bdist
+configure_build = configure_install
+#configure_build = configure_bdist

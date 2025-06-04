@@ -177,4 +177,12 @@ def cmake_make_mfem(serial=True):
             command = ['chrpath', '-r', "$ORIGIN/../lib", path]
             make_call(command, force_verbose=True)
 
+        lib_dir = os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "lib")
+        for x in os.listdir(lib_dir):
+            if not x.endswith(dylibext):
+                continue
+            path = os.path.join(lib_dir, x)
+            command = ['chrpath', '-r', "$ORIGIN/../../lib", path]
+            make_call(command, force_verbose=True)
+
     os.chdir(pwd)

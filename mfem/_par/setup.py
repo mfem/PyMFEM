@@ -171,6 +171,7 @@ def get_extensions():
     if build_mfem == "1":
         runtime_library_dirs = library_dirs[:]
         runtime_library_dirs[0] = "$ORIGIN/../external/par/lib"
+        runtime_library_dirs.append("$ORIGIN/../external/lib")
     else:
         runtime_library_dirs = library_dirs
 

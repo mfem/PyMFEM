@@ -312,4 +312,5 @@ def make_mfem_wrapper(serial=True):
     command = [python, 'setup.py', 'build_ext', '--inplace', '--parallel',
                str(max((cpu_count() - 1, 1)))]
     make_call(command, force_verbose=True)
+
     os.chdir(pwd)

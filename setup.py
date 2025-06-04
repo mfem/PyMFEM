@@ -2,6 +2,14 @@
   MFEM + PyMFEM (finite element method library)
 """
 
+import build_globals as bglb
+from build_mfem import *
+from build_metis import *
+from build_hypre import *
+from build_pymfem import *
+from build_config import *
+from build_consts import *
+from build_utils import *
 import sys
 import os
 import site
@@ -23,24 +31,16 @@ from setuptools.command.install import install as _install
 from setuptools.command.install_egg_info import install_egg_info as _install_egg_info
 from setuptools.command.install_lib import install_lib as _install_lib
 from setuptools.command.install_scripts import install_scripts as _install_scripts
-from setuptools.command.bdist_wheel import  bdist_wheel as _bdist_wheel
+from setuptools.command.bdist_wheel import bdist_wheel as _bdist_wheel
 from distutils.command.clean import clean as _clean
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "_build_system"))
 
-from build_utils import *
-from build_consts import *
-from build_config import *
-from build_pymfem import *
-from build_hypre import *
-from build_metis import *
-from build_mfem import *
-
-import build_globals as bglb
 
 # ----------------------------------------------------------------------------------------
 # Constants
 # ----------------------------------------------------------------------------------------
+
 
 def clean_so(all=None):
     python = sys.executable
@@ -65,7 +65,6 @@ def clean_so(all=None):
     make_call(command)
 
     chdir(pwd)
-
 
 
 class Install(_install):
@@ -134,35 +133,38 @@ class Install(_install):
         else:
             _install.run(self)
 
+
 class BdistWheel(_bdist_wheel):
-        '''
-        Wheel build performs SWIG + Serial in Default.
-        --skip-build option skip building entirely.
-        '''
-        user_options = _bdist_wheel.user_options + cmd_options
+    '''
+    Wheel build performs SWIG + Serial in Default.
+    --skip-build option skip building entirely.
+    '''
+    user_options = _bdist_wheel.user_options + cmd_options
 
-        def initialize_options(self):
-            _bdist_wheel.initialize_options(self)
-            initialize_cmd_options(self)
+    def initialize_options(self):
+        _bdist_wheel.initialize_options(self)
+        initialize_cmd_options(self)
 
-        def finalize_options(self):
-            def _has_ext_modules():
-                return True
-            self.distribution.has_ext_modules = _has_ext_modules
-            _bdist_wheel.finalize_options(self)
+    def finalize_options(self):
+        def _has_ext_modules():
+            return True
+        self.distribution.has_ext_modules = _has_ext_modules
+        _bdist_wheel.finalize_options(self)
 
-        def run(self):
-            print("!!!!! Entering BdistWheel::Run")
-            import build_globals as bglb
+    def run(self):
+        print("!!!!! Entering BdistWheel::Run")
+        import build_globals as bglb
 
-            if not bglb.is_configured:
-                print('!!!!! Running config (bdist wheel)')
-                bglb.prefix = abspath(self.bdist_dir)
-                bglb.do_bdist_wheel = True
-                configure_build(self)
-                print_config()
-            self.run_command("build")
-            _bdist_wheel.run(self)
+        if not bglb.is_configured:
+            print('!!!!! Running config (bdist wheel)')
+            bglb.prefix = abspath(self.bdist_dir)
+            bglb.ext_prefix = os.path.join(bglb.prefix, 'mfem', 'external')
+            bglb.do_bdist_wheel = True
+            configure_build(self)
+            print_config()
+        self.run_command("build")
+        _bdist_wheel.run(self)
+
 
 class BuildPy(_build_py):
     '''
@@ -182,10 +184,12 @@ class BuildPy(_build_py):
                 if bglb.use_metis_gklib:
                     gitclone('gklib', use_sha=True)
                     gitclone('metis', use_sha=True)
-                    make_metis(use_int64=bglb.metis_64, use_real64=bglb.metis_64)
+                    make_metis(use_int64=bglb.metis_64,
+                               use_real64=bglb.metis_64)
                 else:
                     download('metis')
-                    make_metis(use_int64=bglb.metis_64, use_real64=bglb.metis_64)
+                    make_metis(use_int64=bglb.metis_64,
+                               use_real64=bglb.metis_64)
 
             if bglb.build_hypre:
                 download('hypre')
@@ -229,6 +233,7 @@ class BuildPy(_build_py):
             _build_py.run(self)
         else:
             sys.exit()
+
 
 class InstallLib(_install_lib):
     def finalize_options(self):
@@ -316,7 +321,6 @@ class Clean(_clean):
         _clean.run(self)
 
 
-
 if __name__ == '__main__':
     cmdclass = {'build_py': BuildPy,
                 'install': Install,
@@ -324,7 +328,7 @@ if __name__ == '__main__':
                 'install_egg_info': InstallEggInfo,
                 'install_scripts': InstallScripts,
                 'clean': Clean,
-                'bdist_wheel':BdistWheel}
+                'bdist_wheel': BdistWheel}
 
     setup(
         cmdclass=cmdclass,
