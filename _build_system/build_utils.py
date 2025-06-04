@@ -261,6 +261,8 @@ def chrpathdir(dirpath, dest, ext=""):
         target = ":".join(["$ORIGIN"+x for x in dest])
         command = ["chrpath", "-r"]
     elif sys.platform == "darwin":
+        target = ":".join(["@loader_path"+x for x in dest])
+        command = ["install_name_tool", "-add_rpath"]
         return
         pass
     else:
