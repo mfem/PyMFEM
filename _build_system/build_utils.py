@@ -19,7 +19,7 @@ from shutil import which as find_command
 __all__ = ["read_mfem_tplflags", "abspath", "external_install_prefix",
            "make_call", "chdir", "remove_files",
            "make", "make_install", "download", "gitclone",
-           "record_mfem_sha", "cmake",
+           "record_mfem_sha", "cmake", "chrpathdir",
            "get_numpy_inc", "get_mpi4py_inc", "find_libpath_from_prefix",]
 
 # ----------------------------------------------------------------------------------------
@@ -244,6 +244,13 @@ def cmake(path, **kwargs):
         command.append('-DCMAKE_OSX_SYSROOT=' + osx_sysroot)
     make_call(command)
 
+def chrpathdir(dir, ext=""):
+    '''
+    change rpath using chrpath or install_name_tool (MacOS) of files
+    in a given directory.
+
+    '''
+    pass
 
 def get_numpy_inc():
 

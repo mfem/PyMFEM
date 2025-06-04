@@ -26,12 +26,7 @@ dylibext = '.so'
 
 if platform == "linux" or platform == "linux2":
     dylibext = '.so'
-    # Wheel build only works on linux because of chrpath command
-    try:
-        from wheel.bdist_wheel import bdist_wheel as _bdist_wheel
-        haveWheel = True
-    except ImportError:
-        print("Skipping wheel build; wheel not installed.")
+
 elif platform == "darwin":
     # OS X
     dylibext = '.dylib'
