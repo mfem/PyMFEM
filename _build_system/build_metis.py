@@ -78,7 +78,7 @@ def make_metis_gklib(use_int64=False, use_real64=False):
                   'DSHARED': '1',
                   'DCMAKE_C_COMPILER': bglb.cc_command,
                   'DCMAKE_C_STANDARD_LIBRARIES': '-lGKlib',
-                  'DCMAKE_INSTALL_RPATH': gklibpath,
+                  'DCMAKE_INSTALL_RPATH': "@loader_path",
                   'DCMAKE_BUILD_WITH_INSTALL_RPATH': '1',
                   'DCMAKE_INSTALL_PREFIX': bglb.metis_prefix}
     if bglb.verbose:
@@ -98,8 +98,7 @@ def make_metis_gklib(use_int64=False, use_real64=False):
         make_call(command)
         command = ['install_name_tool',
                    '-id', 
-                   os.path.join("@rpath", 'libmetis.dylib'),                   
-#                   os.path.join(bglb.metis_prefix, 'lib', 'libmetis.dylib'),
+                   os.path.join("@rpath", 'libmetis.dylib'),
                    os.path.join(bglb.metis_prefix, 'lib', 'libmetis.dylib'), ]
         make_call(command)
     os.chdir(pwd)
@@ -152,8 +151,7 @@ def make_metis(use_int64=False, use_real64=False):
     if platform == "darwin":
         command = ['install_name_tool',
                    '-id',
-                    os.path.join('@rpath', 'libmetis.dylib'),                   
-#                   os.path.join(metis_prefix, 'lib', 'libmetis.dylib'),
+                   os.path.join('@rpath', 'libmetis.dylib'),
                    os.path.join(bglb.metis_prefix, 'lib', 'libmetis.dylib'), ]
         make_call(command)
     os.chdir(pwd)

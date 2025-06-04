@@ -164,7 +164,7 @@ def cmake_make_mfem(serial=True):
     if bglb.lapack_libraries != "":
         cmake_opts['DLAPACK_LIBRARIES'] = bglb.lapack_libraries
 
-    cmake_opts['DCMAKE_INSTALL_RPATH'] = ":".join(rpaths)
+    cmake_opts['DCMAKE_INSTALL_RPATH'] = ";".join(rpaths)
 
     pwd = chdir(path)
     cmake('..', **cmake_opts)
