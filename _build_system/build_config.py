@@ -197,7 +197,6 @@ def process_cmd_options(command_obj, cfs):
         command_obj.mpicxx_command = cc
     
     for item in cmd_options:
-        print(item)
         param, _none, hit = item
         attr = "_".join(param.split("-"))
         
@@ -214,7 +213,7 @@ def process_cmd_options(command_obj, cfs):
             if not hasattr(command_obj, attr):
                assert False, str(command_obj) + " does not have " + attr
             
-            if value in ("Yes", "True", "1"):
+            if value.upper() in ("YES", "TRUE", "1"):
                 setattr(command_obj, attr, True)
             else:
                 setattr(command_obj, attr, False)               
@@ -225,7 +224,11 @@ def configure_install(self):
     called when install workflow is used
 
     '''
-    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", bglb.cfs)
+    print("!!!!!!!!")
+    print("!!!!!!!!  setting up build global configuration parameters")
+    print("!!!!!!!!  command-line input: ", bglb.cfs)
+    print("!!!!!!!!")
+    
     process_cmd_options(self, bglb.cfs)
     bglb.verbose = bool(self.vv) if not bglb.verbose else bglb.verbose
     if bglb.dry_run:
