@@ -152,7 +152,7 @@ def make_metis(use_int64=False, use_real64=False):
     if platform == "darwin":
         command = ['install_name_tool',
                    '-id',
-                    os.path.join(@rpath, 'libmetis.dylib'),                   
+                    os.path.join('@rpath', 'libmetis.dylib'),                   
 #                   os.path.join(metis_prefix, 'lib', 'libmetis.dylib'),
                    os.path.join(bglb.metis_prefix, 'lib', 'libmetis.dylib'), ]
         make_call(command)
