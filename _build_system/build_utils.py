@@ -334,3 +334,22 @@ def find_libpath_from_prefix(lib, prefix0):
     print("Can not find library by find_libpath_from_prefix (continue)", lib, prefix0)
 
     return ''
+
+
+def macos_add_rpath():
+import subprocess
+file = "_array.cpython-311-darwin.so"
+command = ["otool", "-L", file]
+output = subprocess.run(command, capture_output=True)
+
+path = ''
+for x in output.stdout.decode().split("\n"):
+    if x.find("libmfem") != -1:
+        path = x.split("(")[0].strip()
+        break        
+
+libname = "@rpath/"+path.split('/')[-1]
+
+command = ["install_name_tool", "-change", path, libname, file]
+subprocess.run(command)
+
