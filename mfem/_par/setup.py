@@ -7,12 +7,11 @@ setup.py file for SWIG example
 import sys
 import os
 
-try:
-    from setuptools._distutils.core import Extension, setup    
-except BaseException:    
-    from distutils.core import Extension, setup
-
-from distutils.core import Extension, setup
+#try:
+#    #from setuptools._distutils.core import Extension, setup
+#except BaseException:
+#    from distutils.core import Extension, setup
+from setuptools import Extension, setup
 
 # this remove *.py in this directory to be imported from setuptools
 sys.path.remove(os.path.abspath(os.path.dirname(sys.argv[0])))
