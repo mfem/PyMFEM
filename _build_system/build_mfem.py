@@ -172,17 +172,21 @@ def cmake_make_mfem(serial=True):
 
     if bglb.do_bdist_wheel:
         ex_dir = os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "examples")
-        for x in os.listdir(ex_dir):
-            path = os.path.join(ex_dir, x)
-            command = ['chrpath', '-r', "$ORIGIN/../lib:$ORIGIN/../../lib", path]
-            make_call(command, force_verbose=True)
+        chrpathdir(ex_dir, ["/../lib","/../../lib"])
 
         lib_dir = os.path.join(cmake_opts['DCMAKE_INSTALL_PREFIX'], "lib")
-        for x in os.listdir(lib_dir):
-            if not x.endswith(dylibext):
-                continue
-            path = os.path.join(lib_dir, x)
-            command = ['chrpath', '-r', "$ORIGIN/../../lib", path]
-            make_call(command, force_verbose=True)
+        chrpathdir(lib_dir, ["/../../lib"], ext=dylibext)
+
+        #for x in os.listdir(ex_dir):
+        #    path = os.path.join(ex_dir, x)
+        #    command = ['chrpath', '-r', "$ORIGIN/../lib:$ORIGIN/../../lib", path]
+        #    make_call(command, force_verbose=True)
+
+        #for x in os.listdir(lib_dir):
+        #    if not x.endswith(dylibext):
+        #        continue
+        #    path = os.path.join(lib_dir, x)
+        #    command = ['chrpath', '-r', "$ORIGIN/../../lib", path]
+        #    make_call(command, force_verbose=True)
 
     os.chdir(pwd)
