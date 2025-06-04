@@ -1,3 +1,17 @@
+# ----------------------------------------------------------------------------------------
+# Routines for gslib
+# ----------------------------------------------------------------------------------------
+import sys
+import os
+import re
+import subprocess
+
+import build_globals as bglb
+from build_consts import *
+from build_utils import *
+
+__all__ = ['make_gslib']
+
 def make_gslib(serial=False):
     if bglb.verbose:
         print("Building gslib")

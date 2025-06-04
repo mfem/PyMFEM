@@ -26,10 +26,10 @@ def make_libceed(serial=False):
     except:
         pass
 
-    if enable_cuda:
-        command = ['make', 'configure', 'CUDA_DIR='+cuda_prefix]
+    if bglb.enable_cuda:
+        command = ['make', 'configure', 'CUDA_DIR='+bglb.cuda_prefix]
         make_call(command)
 
     make('libceed')
-    make_install('libceed', prefix=libceed_prefix)
+    make_install('libceed', prefix=bglb.libceed_prefix)
     os.chdir(pwd)
