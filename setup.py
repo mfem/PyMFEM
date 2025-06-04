@@ -7,9 +7,12 @@ from build_mfem import *
 from build_metis import *
 from build_hypre import *
 from build_pymfem import *
+from build_libceed import *
+from build_gslib import *
 from build_config import *
 from build_consts import *
 from build_utils import *
+
 import sys
 import os
 import site
