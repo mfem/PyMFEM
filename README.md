@@ -39,9 +39,6 @@ $ python setup.py clean --all # clean external dependencies + wrapper code
 cd test
 python test_examples.py -serial
 
-# For other configurations, see docs/install.txt or help
-$ python setup.py install --help
-
 ```
 
 ## Usage
