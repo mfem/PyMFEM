@@ -7,18 +7,14 @@ setup.py file for SWIG example
 import sys
 import os
 
-print('building paralel version')
-
 # this remove *.py in this directory to be imported from setuptools
+# Github workflow (next import) fails without this, because it loads
+# array.py in current directoy
 sys.path.remove(os.path.abspath(os.path.dirname(sys.argv[0])))
 from distutils.core import Extension, setup
 
-# first load variables from PyMFEM_ROOT/setup_local.py
-
-
 ddd = os.path.dirname(os.path.abspath(os.path.realpath(__file__)))
 root = os.path.abspath(os.path.join(ddd, '..', '..'))
-
 
 def get_version():
     # read version number from __init__.py
@@ -32,8 +28,8 @@ def get_version():
             version = eval(x.split('=')[-1].strip())
     return version
 
-
 def get_extensions():
+    # first load variables from PyMFEM_ROOT/setup_local.py
     sys.path.insert(0, root)
     try:
         from setup_local import (mfembuilddir, mfemincdir, mfemsrcdir, mfemlnkdir,
@@ -42,14 +38,13 @@ def get_extensions():
                                  cc_par, cxx_par,
                                  cxx11flag,
                                  add_pumi, add_cuda, add_libceed, add_strumpack,
-                                 add_suitesparse, add_gslibp)
+                                 add_suitesparse, add_gslibp, bdist_wheel_dir)
 
         include_dirs = [mfembuilddir, mfemincdir, mfemsrcdir,
                         numpyinc,
                         mpi4pyinc,
                         hypreinc, metisinc]
-        library_dirs = [mfemlnkdir, hyprelib, metis5lib, ]
-
+        library_dirs = [mfemlnkdir,]
     except ImportError:
         if 'clean' not in sys.argv:
             raise
@@ -67,7 +62,7 @@ def get_extensions():
         cxx11flag = ''
         build_mfem = '0'
 
-    libraries = ['mfem', 'HYPRE', 'metis']
+    libraries = ['mfem',]
 
     # remove current directory from path
     print("__file__", os.path.abspath(__file__))
@@ -77,7 +72,6 @@ def get_extensions():
         x) == os.path.dirname(os.path.abspath(__file__))]
     for x in items:
         sys.path.remove(x)
-    print("sys path", sys.path)
 
     # this forces to use compiler written in setup_local.py
     if cc_par != '':
@@ -125,15 +119,12 @@ def get_extensions():
         from setup_local import puminc, pumilib
         modules.append("pumi")
         include_dirs.append(pumiinc)
-        library_dirs.append(pumilib)
 
     if add_strumpack == '1':
         from setup_local import strumpackinc, strumpacklib
         modules.append("strumpack")
         if strumpackinc != "":
             include_dirs.append(strumpackinc)
-        if strumpacklib != "":
-            library_dirs.append(strumpacklib)
 
     if add_cuda == '1':
         from setup_local import cudainc
@@ -169,9 +160,13 @@ def get_extensions():
     macros = [('TARGET_PY3', '1'),
               ('NPY_NO_DEPRECATED_API', 'NPY_1_7_API_VERSION')]
 
-    if build_mfem == "1":
-        runtime_library_dirs = library_dirs[:]
-        runtime_library_dirs[0] = "$ORIGIN/../external/par/lib"
+    runtime_library_dirs = [x for x in library_dirs if x.find(bdist_wheel_dir) == -1]
+    if build_mfem == "1" and sys.platform  in ("linux", "linux2"):        
+        runtime_library_dirs.append("$ORIGIN/../external/par/lib")
+        runtime_library_dirs.append("$ORIGIN/../external/lib")
+    elif build_mfem == "1" and sys.platform  == "darwin":        
+        runtime_library_dirs.append("@loader_path/../external/par/lib")
+        runtime_library_dirs.append("@loader_path/../external/lib")
     else:
         runtime_library_dirs = library_dirs
 

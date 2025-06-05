@@ -69,7 +69,7 @@ jobs:
 
           CWD=$PWD
           yum install -y zlib-devel
-          yum install -y chrpath
+          #yum install -y chrpath
 
           mkdir dist
 
