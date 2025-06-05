@@ -43,32 +43,6 @@ from build_utils import *
 # Constants
 # ----------------------------------------------------------------------------------------
 
-
-def clean_so(all=None):
-    python = sys.executable
-    command = [python, "setup.py", "clean"]
-    if all == 1:
-        command.append("--all")
-
-    pwd = chdir(os.path.join(rootdir, 'mfem', '_ser'))
-    for f in os.listdir():
-        if f.endswith('.so'):
-            os.remove(f)
-        if f.endswith('.dylib'):
-            os.remove(f)
-    make_call(command)
-
-    chdir(os.path.join(rootdir, 'mfem', '_par'))
-    for f in os.listdir():
-        if f.endswith('.so'):
-            os.remove(f)
-        if f.endswith('.dylib'):
-            os.remove(f)
-    make_call(command)
-
-    chdir(pwd)
-
-
 class Install(_install):
     '''
     called when pyton setup.py install

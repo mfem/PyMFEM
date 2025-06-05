@@ -21,7 +21,7 @@ __all__ = ["read_mfem_tplflags", "abspath", "external_install_prefix",
            "make", "make_install", "download", "gitclone",
            "record_mfem_sha", "cmake", "chrpathdir",
            "get_numpy_inc", "get_mpi4py_inc", "find_libpath_from_prefix",
-           "macos_fix_link_with_rpath"]
+           "clean_so", ]
 
 # ----------------------------------------------------------------------------------------
 #   global constant and variabls for build-process
@@ -338,28 +338,29 @@ def find_libpath_from_prefix(lib, prefix0):
 
     return ''
 
+def clean_so(all=None):
+    python = sys.executable
+    command = [python, "setup.py", "clean"]
+    if all == 1:
+        command.append("--all")
 
-def macos_fix_link_with_rpath(target, file):
-    '''
-    target (say libmfem) library written as fullpath is modified using
-    relative path (@rpath/libmfem)
-    '''
-    print("processing ", file, target)
-    command = ["otool", "-L", file]
-    output = subprocess.run(command, capture_output=True)
+    pwd = chdir(os.path.join(rootdir, 'mfem', '_ser'))
+    for f in os.listdir():
+        if f.endswith('.so'):
+            os.remove(f)
+        if f.endswith('.dylib'):
+            os.remove(f)
+    make_call(command)
 
-    print(command)
-    path = ''
-    for x in output.stdout.decode().split("\n"):
-        if x.find(target) != -1:
-            path = x.split("(")[0].strip()
-            break        
-    if path == '':
-        print(target + " is not found in " + file)
-    
-    libname = "@rpath/"+path.split('/')[-1]
+    chdir(os.path.join(rootdir, 'mfem', '_par'))
+    for f in os.listdir():
+        if f.endswith('.so'):
+            os.remove(f)
+        if f.endswith('.dylib'):
+            os.remove(f)
+    make_call(command)
 
-    command = ["install_name_tool", "-change", path, libname, file]
-    print(command)    
-    subprocess.run(command)
+    chdir(pwd)
+
+
 
