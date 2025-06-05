@@ -1,6 +1,6 @@
 [project]
 name = "mfem"
-license = {file = "LICENSE"}
+license = "BSD-3-Clause"
 description = "MFEM + PyMFEM (finite element method library)"
 dynamic = ["version"]
 readme = "README.md"
@@ -11,11 +11,11 @@ classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Intended Audience :: Developers",
   "Topic :: Scientific/Engineering :: Physics",
-  "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
 ]
 requires-python = ">=3.8"
 dependencies = [
@@ -24,19 +24,23 @@ dependencies = [
     "scipy",
 ]
 
+[project.optional-dependencies]
+MPI = ["mpi4py"]
 
 [project.urls]
 "Homepage" = "http://mfem.org"
-"Download" = "https://github.com/mfem"
-
+"Download" = "https://github.com/pymfem"
 
 [build-system]
 requires = [
-    "setuptools",
-	"cmake",
+        "setuptools>=80.0.1",
+        "pip>=25.1.0", 
+	"numpy>=2.0.0",
+	"cmake>=4.0.0",
 	"swig>=4.3",
 ]
-build-backend = "setuptools.build_meta"
+build-backend = "backend"
+backend-path = ["_build_system"]
 
 [tool.setuptools.dynamic]
 version = { attr = "mfem.__version__" }

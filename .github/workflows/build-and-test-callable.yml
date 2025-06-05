@@ -67,11 +67,11 @@ jobs:
       CUDA_HOME: '/usr/local/cuda'
       # These are all passed to setup.py as one concatenated string
       build-flags: >-
-        ${{ inputs.parallel && '-C"--build-option=--with-parallel"' || '' }}
-        ${{ inputs.cuda && '-C"--build-option=--with-cuda"' || '' }}
-        ${{ inputs.libceed && '-C"--build-option=--with-libceed"' || '' }}
-        ${{ inputs.gslib && '-C"--build-option=--with-gslib"' || '' }}
-        ${{ (!(inputs.mfem-branch == 'default') && format('-C"--build-option=--mfem-branch=''{0}''"', inputs.mfem-branch)) || '' }}
+        ${{ inputs.parallel && '-C"with-parallel=Yes"' || '' }}
+        ${{ inputs.cuda && '-C"with-cuda=Yes"' || '' }}
+        ${{ inputs.libceed && '-C"with-libceed=Yes"' || '' }}
+        ${{ inputs.gslib && '-C"with-gslib=Yes"' || '' }}
+        ${{ (!(inputs.mfem-branch == 'default') && format('-C"mfem-branch=''{0}''"', inputs.mfem-branch)) || '' }}
 
     # -------------------------------------------------------------------------------------------------
     # Begin workflow
@@ -88,10 +88,17 @@ jobs:
     # -------------------------------------------------------------------------------------------------
     # Download/install dependencies
     # -------------------------------------------------------------------------------------------------
-    # - name: Install core dependencies via requirements.txt
-      # run: |
-        # pip install setuptools
-        # pip install -r requirements.txt --verbose
+    - name: Install core dependencies via requirements.txt
+      run: |
+        pip install -U setuptools>=79.0.1
+        pip install -U numpy>=2.0.0
+        pip install -U cmake>=4.0.0
+        pip install -U swig>=4.3
+
+    #- name: Install chrpath on ubuntu
+    #  if: inputs.os == 'ubuntu-latest'
+    #  run: |
+    #    sudo apt-get install chrpath
 
     - name: Install MPI
       if: inputs.parallel
@@ -150,9 +157,13 @@ jobs:
     #   if: inputs.phases
     #   run: python setup.py install --skip-ext --skip-swig --vv ${{ env.build-flags }}
 
+    #- name: Build all (steps 1-3)
+    #  if: inputs.phases == false
+    #  run: pip install -e . -C"--build-option=--vv" ${{ env.build-flags }}
+
     - name: Build all (steps 1-3)
       if: inputs.phases == false
-      run: pip install -e . -C"--build-option=--vv" ${{ env.build-flags }}
+      run: pip install . ${{ env.build-flags }} --verbose
 
     # -------------------------------------------------------------------------------------------------
     # Run tests
