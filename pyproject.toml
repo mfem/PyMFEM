@@ -24,6 +24,9 @@ dependencies = [
     "scipy",
 ]
 
+[project.optional-dependencies]
+MPI = ["mpi4py"]
+
 [project.urls]
 "Homepage" = "http://mfem.org"
 "Download" = "https://github.com/pymfem"

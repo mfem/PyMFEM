@@ -18,7 +18,7 @@ from shutil import which as find_command
 
 __all__ = ["print_config",
            "initialize_cmd_options",
-           "cmd_options", 
+           "cmd_options",
            "process_cmd_options",
            "configure_build"
 ]
@@ -28,8 +28,6 @@ from build_consts import *
 import build_globals as bglb
 
 def print_config():
-    import build_globals as bglb    
-
     print("----configuration----")
     print(" prefix", bglb.prefix)
     print(" when needed, the dependency (mfem/hypre/metis) will be installed under " +
@@ -174,7 +172,7 @@ cmd_options = [
         ('blas-libraries=', None, 'Specify locaiton of Blas library (used to build MFEM)'),
         ('lapack-libraries=', None,
          'Specify locaiton of Lapack library (used to build MFEM)'),
-    ]    
+    ]
 
 def process_cmd_options(command_obj, cfs):
     '''
@@ -195,14 +193,14 @@ def process_cmd_options(command_obj, cfs):
     cc = cfs.pop("MPICXX", "")
     if cc != "":
         command_obj.mpicxx_command = cc
-    
+
     for item in cmd_options:
         param, _none, hit = item
         attr = "_".join(param.split("-"))
-        
+
         if param.endswith("="):
             param = param[:-1]
-            attr = attr[:-1]            
+            attr = attr[:-1]
             value = cfs.pop(param, "")
             if cc != "":
                 if not hasattr(command_obj, attr):
@@ -212,12 +210,28 @@ def process_cmd_options(command_obj, cfs):
             value = cfs.pop(param, "No")
             if not hasattr(command_obj, attr):
                assert False, str(command_obj) + " does not have " + attr
-            
+
             if value.upper() in ("YES", "TRUE", "1"):
                 setattr(command_obj, attr, True)
             else:
-                setattr(command_obj, attr, False)               
+                setattr(command_obj, attr, False)
 
+def process_setup_options(command_obj, args):
+    for item in args:
+        if item.startswith('--'):
+            item = item[2:]
+        if item.startswith('-'):
+            item = item[1:]
+
+        if len(item.split('='))==2:
+            param = item.split('=')[0]
+            value = item.split('=')[1]
+        else:
+            param = item.strip()
+            value = True
+        attr = "_".join(param.split("-"))
+
+        setattr(command_obj, attr, value)
 
 def configure_install(self):
     '''
@@ -226,10 +240,15 @@ def configure_install(self):
     '''
     print("!!!!!!!!")
     print("!!!!!!!!  setting up build global configuration parameters")
-    print("!!!!!!!!  command-line input: ", bglb.cfs)
     print("!!!!!!!!")
-    
-    process_cmd_options(self, bglb.cfs)
+
+    if sys.argv[0] == 'setup.py' and sys.argv[1] == 'install':
+        print("!!!!!!!!  command-line input (setup.py install): ", sys.argv)
+        process_setup_options(self, sys.argv[2:])
+    else:
+        print("!!!!!!!!  command-line input (pip): ", bglb.cfs)
+        process_cmd_options(self, bglb.cfs)
+
     bglb.verbose = bool(self.vv) if not bglb.verbose else bglb.verbose
     if bglb.dry_run:
         bglb.verbose = True
@@ -464,6 +483,6 @@ def configure_bdist(self):
     bglb.mfemp_prefix = os.path.join(bglb.ext_prefix, 'par')
 
     bglb.mfem_build_miniapps = False
-                
+
 configure_build = configure_install
 #configure_build = configure_bdist
