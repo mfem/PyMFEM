@@ -95,10 +95,10 @@ jobs:
         pip install -U cmake>=4.0.0
         pip install -U swig>=4.3
 
-    - name: Install chrpath on ubuntu
-      if: inputs.os == 'ubuntu-latest'
-      run: |
-        sudo apt-get install chrpath
+    #- name: Install chrpath on ubuntu
+    #  if: inputs.os == 'ubuntu-latest'
+    #  run: |
+    #    sudo apt-get install chrpath
 
     - name: Install MPI
       if: inputs.parallel
