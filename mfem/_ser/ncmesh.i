@@ -36,6 +36,11 @@ XXXPTR_SIZE_IN(mfem::Refinement *data_, int asize, mfem::Refinement)
 
 %immutable embeddings;
 
+%ignore mfem::NCMesh::FindFaceNodes(const Face &fa) const;
+%ignore mfem::NCMesh::GetElement(int i) const;
+%ignore mfem::NCMesh::GetFace(int i) const;
+%ignore mfem::NCMesh::GetNode(int i) const;
+
 %include "mesh/ncmesh.hpp"
 
 #ifndef SWIGIMPORTED
