@@ -7,20 +7,14 @@ setup.py file for SWIG example
 import sys
 import os
 
-#try:
-#    #from setuptools._distutils.core import Extension, setup
-#except BaseException:
-#    from distutils.core import Extension, setup
-
 # this remove *.py in this directory to be imported from setuptools
+# Github workflow (next import) fails without this, because it loads
+# array.py in current directoy
 sys.path.remove(os.path.abspath(os.path.dirname(sys.argv[0])))
-
-from setuptools import Extension, setup
+from distutils.core import Extension, setup
 
 ddd = os.path.dirname(os.path.abspath(os.path.realpath(__file__)))
 root = os.path.abspath(os.path.join(ddd, '..', '..'))
-
-#print('building paralel version')
 
 def get_version():
     # read version number from __init__.py
