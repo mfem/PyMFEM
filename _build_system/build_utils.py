@@ -19,7 +19,7 @@ from shutil import which as find_command
 __all__ = ["read_mfem_tplflags", "abspath", "external_install_prefix",
            "make_call", "chdir", "remove_files",
            "make", "make_install", "download", "gitclone",
-           "record_mfem_sha", "cmake", "chrpathdir",
+           "record_mfem_sha", "cmake", 
            "get_numpy_inc", "get_mpi4py_inc", "find_libpath_from_prefix",
            "clean_so", ]
 
@@ -245,37 +245,6 @@ def cmake(path, **kwargs):
         command.append('-DCMAKE_OSX_SYSROOT=' + osx_sysroot)
     make_call(command)
 
-
-def chrpathdir(dirpath, dest, ext=""):
-    '''
-    change rpath using chrpath or install_name_tool (MacOS) of files
-    in a given directory.
-
-    if 
-        dest = ["/../lib", "/../../lib"]
-    target becomes
-        "$ORIGIN/../lib:$ORIGIN/../../lib"
-
-    '''
-    if sys.platform == "linux" or sys.platform == "linux2":
-        target = ":".join(["$ORIGIN"+x for x in dest])
-        command = ["chrpath", "-r"]
-    elif sys.platform == "darwin":
-        target = ":".join(["@loader_path"+x for x in dest])
-        command = ["install_name_tool", "-add_rpath"]
-        return
-        pass
-    else:
-        assert False, "unsupported platform " + sys.platform
-
-    for x in os.listdir(dirpath):
-        if ext != "" and not x.endswith(ext):
-            continue
-        path = os.path.join(dirpath, x)
-        cc = command + [target, path]
-        make_call(cc, force_verbose=True)
-
-    pass
 
 
 def get_numpy_inc():
