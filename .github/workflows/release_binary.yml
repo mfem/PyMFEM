@@ -8,7 +8,7 @@ on:
 jobs:
   make_sdist:
     runs-on: ubuntu-latest
-    container: quay.io/pypa/manylinux2_34_x86_64
+    container: quay.io/pypa/manylinux2014_x86_64
     steps:
       - name: build_sdist
         run: |
@@ -37,14 +37,14 @@ jobs:
           ls -l dist/
           #python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
           python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*
-  make_binary_3_8_9_10_11:
+  make_binary_3_8_9_10_11_12:
     needs: make_sdist
     strategy:
       matrix:
         pythonpath: ["cp38-cp38", "cp39-cp39", "cp310-cp310", "cp311-cp311", "cp312-cp312"]
 
     runs-on: ubuntu-latest
-    container: quay.io/pypa/manylinux2_34_x86_64
+    container: quay.io/pypa/manylinux2014_x86_64
     #container: node:10.16-jessie
     steps:
       - name: build package
@@ -70,7 +70,7 @@ jobs:
 
           CWD=$PWD
           yum install -y zlib-devel
-          yum install -y chrpath
+          #yum install -y chrpath
 
           mkdir dist
 
