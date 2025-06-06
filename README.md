@@ -24,26 +24,18 @@ The setup script accept various options. Download the package manually and run t
 # Download source and build
 $ git clone https://github.com/mfem/PyMFEM.git
 
-# Building paralel version
-$ python setup.py install --with-parallel # it download and build metis/hypre/mfem
+# Build it from local source with MPI
+$ pip install ./ -C"with-parallel=Yes" --verbose
 
-# Verbose output
-$ python setup.py install --verbose # SWIG output and CMAKE_VERBOSE_MAKEFILE is on
 
 # Cleaning
 $ python setup.py clean --all # clean external dependencies + wrapper code
-
-# Choosing compiler
-$ python setup.py install --with-parallel --CC=icc --CXX=icpc --MPICC=mpiicc --MPICXX=mpiicpc
 
 # Run test
 cd test
 python test_examples.py -serial
 
-# For other configurations, see INSTALL.md or help
-$ python setup.py install --help
-
-```
+# For other configurations, see INSTALL.md
 
 ## Usage
 This example (modified from `ex1.cpp`) solves the Poisson equation,
