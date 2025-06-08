@@ -29,26 +29,15 @@ $ pip download mfem --no-binary mfem (expand tar.gz file and move to the downloa
 or clone this repository
 $ git clone https://github.com/mfem/PyMFEM.git
 
-# Then, build it from local source
-$ python -m pip install ./ --install-option="--with-parallel" --install-option="--mfem-branch=master"
-or
-$ python setup.py install --with-parallel # it download and build metis/hypre/mfem
-
-# Verbose output
-$ python setup.py install --verbose # SWIG output and CMAKE_VERBOSE_MAKEFILE is on
+# Build it from local source with MPI
+$ pip install ./ -C"with-parallel=Yes" --verbose
 
 # Cleaning
 $ python setup.py clean --all # clean external dependencies + wrapper code
 
-# Choosing compiler
-$ python setup.py install --with-parallel --CC=icc --CXX=icpc --MPICC=mpiicc --MPICXX=mpiicpc
-
 # Run test
 cd test
 python test_examples.py -serial
-
-# For other configurations, see docs/install.txt or help
-$ python setup.py install --help
 
 ```
 

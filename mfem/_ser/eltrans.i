@@ -44,6 +44,7 @@ DEPRECATED_METHOD(mfem::IsoparametricTransformation::FinalizeTransformation())
 %ignore mfem::ElementTransformation::TransformBack;
 %ignore mfem::IsoparametricTransformation::TransformBack;
 
+%include "../common/kernel_dispatch.i"
 %include "fem/eltrans.hpp"
 
 //

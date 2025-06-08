@@ -205,9 +205,9 @@ def ex19_main(args):
 '''
 
 
-class GeneralResidualMonitor(mfem.IterativeSolverMonitor):
+class GeneralResidualMonitor(mfem.IterativeSolverController):
     def __init__(self, prefix, print_level):
-        mfem.IterativeSolverMonitor.__init__(self)
+        mfem.IterativeSolverController.__init__(self)
         if myid == 0:
             self.print_level = print_level
         else:

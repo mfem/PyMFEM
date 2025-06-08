@@ -25,6 +25,7 @@ import_array();
 
 %import "../common/numpy_int_typemap.i"
 
+%include "../common/kernel_dispatch.i"
 %include "fem/quadinterpolator.hpp"
 
 #endif

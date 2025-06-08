@@ -1267,9 +1267,10 @@ def _scalar(func, td=False, params=None, complex=False, dependency=None,
          print("(DEBUG) generated caller sig:\n", caller_sig)
          print("(DEBUG) generated caller function:\n", caller_txt)
 
-    exec(caller_txt, globals(), locals())
+    ll = {}
+    exec(caller_txt, globals(), ll)
     caller_params = {"inner_func": ff, "carray":carray, "farray":farray}
-    caller_func = _copy_func_and_apply_params(locals()["_caller"], caller_params)
+    caller_func = _copy_func_and_apply_params(ll["_caller"], caller_params)
     ff = cfunc(caller_sig)(caller_func)
 
     if complex:
@@ -1366,7 +1367,8 @@ def _vector(func, vdim=None, shape=None, td=False, params=None,
          print("(DEBUG) generated caller sig:\n", caller_sig)
          print("(DEBUG) generated caller function:\n", caller_txt)
 
-    exec(caller_txt, globals(), locals())
+    ll = {}
+    exec(caller_txt, globals(), ll)
 
     caller_params = {"inner_func": ff, "np":np, "shape":shape,
                      "carray":carray, "farray":farray}
@@ -1374,7 +1376,7 @@ def _vector(func, vdim=None, shape=None, td=False, params=None,
     if vdim is not None:
         caller_params["vdim"] = vdim
 
-    caller_func = _copy_func_and_apply_params(locals()["_caller"], caller_params)
+    caller_func = _copy_func_and_apply_params(ll["_caller"], caller_params)
     ff = cfunc(caller_sig)(caller_func)
 
     if complex:
@@ -1477,11 +1479,12 @@ def _matrix(func, height=None, width=None, shape=None, td=False, params=None,
          print("(DEBUG) generated caller sig:\n", caller_sig)
          print("(DEBUG) generated caller function:\n", caller_txt)
 
-    exec(caller_txt, globals(), locals())
+    ll = {}
+    exec(caller_txt, globals(), ll)
 
     caller_params = {"inner_func": ff, "np":np, "shape":shape,
                      "carray":carray, "farray":farray}
-    caller_func = _copy_func_and_apply_params(locals()["_caller"], caller_params)
+    caller_func = _copy_func_and_apply_params(ll["_caller"], caller_params)
     ff = cfunc(caller_sig)(caller_func)
 
     if complex:

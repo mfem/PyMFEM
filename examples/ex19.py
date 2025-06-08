@@ -244,9 +244,9 @@ class JacobianPreconditioner(mfem.Solver):
         self.stiff_pcg.SetOperator(self.jacobian.GetBlock(0, 0))
 
 
-class GeneralResidualMonitor(mfem.IterativeSolverMonitor):
+class GeneralResidualMonitor(mfem.IterativeSolverController):
     def __init__(self, prefix, print_level):
-        mfem.IterativeSolverMonitor.__init__(self)
+        mfem.IterativeSolverController.__init__(self)
         self.print_level = print_level
         self.prefix = prefix
         self.norm = 0
