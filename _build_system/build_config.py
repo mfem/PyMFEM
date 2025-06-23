@@ -297,6 +297,7 @@ def configure_install(self):
             assert False, "Can not import mpi4py"
 
     if self.mfem_prefix != '':
+        bglb.mfem_outside = True
         bglb.mfem_prefix = abspath(self.mfem_prefix)
         bglb.mfems_prefix = abspath(self.mfem_prefix)
         bglb.mfemp_prefix = abspath(self.mfem_prefix)
@@ -318,6 +319,7 @@ def configure_install(self):
             bglb.clean_swig = False
 
     else:
+        bglb.mfem_outside = False
         bglb.build_mfem = True
         bglb.build_mfemp = bglb.build_parallel
         bglb.build_hypre = bglb.build_parallel

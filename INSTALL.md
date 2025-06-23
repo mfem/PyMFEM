@@ -9,6 +9,16 @@ pip install mfem
 ```
 The above installation will download and install a *serial* version of `MFEM`.
 
+##  Environmental variables
+Build script checks the following environmental variables
+- CC : c compiler for parallel build
+- CXX : c++ compiler for serial build
+- MPICC : c compiler for parallel build
+- MPICXX : c++ compiler for parallel build
+- CXX11FLAG : C++11 flag for C++ compiler
+- MPIINC : the location of MPI.h (if this variable is set, the parallle PyMFEM is build with CXX, not MPICXX)
+
+
 ##  Building from source
 PyMFEM has many options for installation, when building from source, including:
  - Serial and parallel (MPI) wrappers
