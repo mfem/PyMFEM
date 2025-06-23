@@ -47,6 +47,8 @@ def write_setup_local():
               'metis5lib': metislibpath,
               'numpyinc': get_numpy_inc(),
               'mpi4pyinc': '',
+              'mpiinc':bglb.mpiinc,
+              'mfem_outside': '1' if  bglb.mfem_outside else '0',
               'mfembuilddir': os.path.join(mfempar, 'include'),
               'mfemincdir': os.path.join(mfempar, 'include', 'mfem'),
               'mfemlnkdir': os.path.join(mfempar, 'lib'),
