@@ -82,6 +82,6 @@ mpicxx_command = 'mpic++' if os.getenv(
 cxx11_flag = '-std=c++11' if os.getenv(
     "CXX11FLAG") is None else os.getenv("CXX11FLAG")
 
-# location of MPI.h. Usually it is not needed, as long as MPI compilere can be used
+# location of MPI.h. Usually it is not needed, as long as MPI compiler can be used
 #
 mpiinc = '' if os.getenv("MPIINC") is None else os.getenv("MPIINC")
