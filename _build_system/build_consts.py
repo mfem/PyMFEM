@@ -89,6 +89,8 @@ REPOS = dict(
         releases=[
             release(
                 "2.28.0", None, "https://github.com/hypre-space/hypre/archive/v2.28.0.tar.gz"),
+            release(
+                "2.32.0", None, "https://github.com/hypre-space/hypre/archive/v2.32.0.tar.gz"),
         ]
     ),
     gslib=dict(
