@@ -134,7 +134,7 @@ from numba import njit, void, int32, int64, float64, complex128, types
 from mfem.common.bessel import yv as yn
 from mfem.common.bessel import jv as jn
 import os
-from os.path import expanduser, join
+from os.path import expanduser, join, dirname
 
 import numpy as np
 from numpy import pi, exp
@@ -423,25 +423,25 @@ def run(meshfile='',
     if prob == 0:
         exact_known = True
         mesh_file = expanduser(
-            join(os.path.dirname(__file__), '..', '..', 'data', meshfile))
+            join(dirname(__file__), '..', '..', 'data', meshfile))
 
     elif prob == 1:
         meshfile = "meshes/fichera-waveguide.mesh"
         omega = 5.0
         rnum = omega/(2.*pi)
         mesh_file = expanduser(
-            join(os.path.dirname(__file__),  meshfile))
+            join(dirname(__file__),  meshfile))
 
     elif prob == 2:
         with_pml = True
         mesh_file = expanduser(
-            join(os.path.dirname(__file__), '..', '..', 'data', meshfile))
+            join(dirname(__file__), '..', '..', 'data', meshfile))
 
     else:
         with_pml = True
         meshfile = "meshes/scatter.mesh"
         mesh_file = expanduser(
-            join(os.path.dirname(__file__),  meshfile))
+            join(dirname(__file__),  meshfile))
 
     mesh = mfem.Mesh(mesh_file, 1, 1)
     dim = mesh.Dimension()
