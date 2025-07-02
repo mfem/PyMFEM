@@ -445,7 +445,7 @@ def _process_dependencies(dependencies, setting):
             if isinstance(xx, MatrixCoefficient):
                 h1, w1 = x[0].GetHeight(), x[0].GetWidth()
                 h2, w2 = x[1].GetHeight(), x[1].GetWidth()
-                assert h1 == w1, "matrix must be square"
+                #assert h1 == w1, "matrix must be square"
                 assert h1 == h2, "real and imaginary has to have the same vdim"
                 assert w1 == w2, "real and imaginary has to have the same vdim"
         else:
@@ -461,8 +461,8 @@ def _process_dependencies(dependencies, setting):
             else:
                 iscomplex.append(0)
 
-            if isinstance(xx, MatrixCoefficient):
-                assert xx.GetHeight() == xx.GetWidth(), "matrix must be square"
+            #if isinstance(xx, MatrixCoefficient):
+            #    assert xx.GetHeight() == xx.GetWidth(), "matrix must be square"
 
         if isinstance(xx, Coefficient):
             kinds.append(0)

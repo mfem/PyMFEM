@@ -1419,12 +1419,12 @@ def _matrix(func, height=None, width=None, shape=None, td=False, params=None,
     if height is None and width is None and shape is not None:
         width = shape[0]
         height = shape[1]
-    assert height == shape[0], "height and shape[0] are not consistent"
-    assert width == shape[1], "width and shape[1] are not consistent"
+    assert height == shape[1], "height and shape[0] are not consistent"
+    assert width == shape[0], "width and shape[1] are not consistent"
 
-    if shape[0] != shape[1]:
-        import warnings
-        warning.warn("Rectangular matrix coefficient is experimental", UserWarning)
+    #if shape[0] != shape[1]:
+    #    import warnings
+    #    warnings.warn("Rectangular matrix coefficient is experimental", UserWarning)
 
     if dependency is None:
         dependency = []
