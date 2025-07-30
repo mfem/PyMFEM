@@ -41,6 +41,25 @@ import_array();
 
 OSTREAM_TYPEMAP(std::ostream&)
 
+%import "../common/object_array_typemap.i"
+LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::ParFiniteElementSpace*>&,
+			   ParFiniteElementSpace*)
+LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::FiniteElementCollection*>&,
+			   FiniteElementCollection*)
+
+
+%pythonprepend mfem::ParDPGWeakForm::ParDPGWeakForm %{
+    if len(args) > 0:
+     trial_fes_, fecol_ = args
+     self._fes = trial_pfes_
+     self._fecol = fecol_
+
+%}
+
+%pythonprepend mfem::ParDPGWeakForm::SetParSpaces %{
+  self._fes = trial_pfes_
+  self._fecol = fecol_
+%}
 
 %include "miniapps/dpg/util/pweakform.hpp"
 

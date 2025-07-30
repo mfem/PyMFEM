@@ -99,3 +99,68 @@ namespace mfem {
 %rename(detJ_Jt_J_inv_r_f) mfem::detJ_Jt_J_inv_r_function;
 %rename(detJ_Jt_J_inv_i_f) mfem::detJ_Jt_J_inv_i_function;
 %rename(abs_detJ_Jt_J_inv_2_f) mfem::abs_detJ_Jt_J_inv_2_function;
+
+
+// % handle Array input
+%include "../common/typemap_macros.i"
+LIST_TO_MFEMOBJ_ARRAY_IN(mfem::Array<mfem::FiniteElementSpace*>&,
+			 mfem::FiniteElementSpace*)
+LIST_TO_MFEMOBJ_ARRAY_IN(mfem::Array<mfem::ParFiniteElementSpace*>&,
+			 mfem::ParFiniteElementSpace*)
+LIST_TO_MFEMOBJ_ARRAY_IN(mfem::Array<mfem::FiniteElementCollection*>&,
+			 mfem::FiniteElementCollection*)
+
+
+//DPGWeakForm
+%pythonprepend mfem::DPGWeakForm::DPGWeakForm %{
+  if len(args) > 0:
+     fes_, fecol_ = args
+     self._fes = fes_
+     self._fecol = fecol_
+%}
+
+%pythonprepend mfem::DPGWeakForm::SetSpaces %{
+  self._fes = fes_
+  self._fecol = fecol_
+%}
+
+//ComplexDPGWeakForm
+%pythonprepend mfem::ComplexDPGWeakForm::ComplexDPGWeakForm %{
+  if len(args) > 0:
+     fes_, fecol_ = args
+     self._fes = fes_
+     self._fecol = fecol_
+%}
+
+%pythonprepend mfem::ComplexDPGWeakForm::SetSpaces %{
+  self._fes = fes_
+  self._fecol = fecol_
+%}
+
+//ParDPGWeakForm
+%pythonprepend mfem::ParDPGWeakForm::ParDPGWeakForm %{
+    if len(args) > 0:
+     trial_pfes_, fecol_ = args
+     self._fes = trial_pfes_
+     self._fecol = fecol_
+
+%}
+
+%pythonprepend mfem::ParDPGWeakForm::SetParSpaces %{
+  self._pfes = trial_pfes_
+  self._fecol = fecol_
+%}
+
+//ParComplexDPGWeakForm
+%pythonprepend mfem::ParComplexDPGWeakForm::ParComplexDPGWeakForm %{
+    if len(args) > 0:
+     trial_pfes_, fecol_ = args
+     self._fes = trial_pfes_
+     self._fecol = fecol_
+
+%}
+
+%pythonprepend mfem::ParComplexDPGWeakForm::SetParSpaces %{
+  self._pfes = trial_pfes_
+  self._fecol = fecol_
+%}

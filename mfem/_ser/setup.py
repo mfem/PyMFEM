@@ -36,7 +36,7 @@ def get_extensions():
         from setup_local import (mfemserbuilddir, mfemserincdir, mfemsrcdir, mfemserlnkdir,
                                  mfemstpl, build_mfem, numpyinc,
                                  cc_ser, cxx_ser,
-                                 cxx11flag,
+                                 cxx11flag, mfem_outside,
                                  add_cuda, add_libceed, add_suitesparse, add_gslibs,
                                  bdist_wheel_dir)
 
@@ -58,6 +58,8 @@ def get_extensions():
         add_gslibs = ''
         cxx11flag = ''
         build_mfem = '0'
+        mfem_outside = '0'
+        mpiinc = ''
 
     libraries = ['mfem']
 
@@ -140,9 +142,9 @@ def get_extensions():
 
     runtime_library_dirs = [
         x for x in library_dirs if x.find(bdist_wheel_dir) == -1]
-    if build_mfem == "1" and sys.platform in ("linux", "linux2"):
+    if mfem_outside == "0" and sys.platform in ("linux", "linux2"):
         runtime_library_dirs.append("$ORIGIN/../external/ser/lib")
-    elif build_mfem == "1" and sys.platform == "darwin":
+    elif mfem_outside == "0" and sys.platform == "darwin":
         runtime_library_dirs.append("@loader_path/../external/ser/lib")
     else:
         runtime_library_dirs = library_dirs

@@ -40,6 +40,26 @@ import_array();
 
 OSTREAM_TYPEMAP(std::ostream&)
 
+%import "../common/object_array_typemap.i"
+LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::FiniteElementSpace*>&,
+			   FiniteElementSpace*)
+LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::FiniteElementCollection*>&,
+			   FiniteElementCollection*)
+
+
+%pythonprepend mfem::ComplexDPGWeakForm::ComplexDPGWeakForm %{
+  if len(args) > 0:
+     fes_, fecol_ = args
+     self._fes = fes_
+     self._fecol = fecol_
+%}
+
+%pythonprepend mfem::ComplexDPGWeakForm::SetSpaces %{
+  self._fes = fes_
+  self._fecol = fecol_
+%}
+
+
 %include "miniapps/dpg/util/complexweakform.hpp"
 
 #endif

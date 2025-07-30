@@ -500,14 +500,17 @@ def run(meshfile='',
     hatH_fes = mfem.ParFiniteElementSpace(pmesh, hatH_fec)
     G_fec = mfem.ND_FECollection(test_order, dim)
 
-    trial_fes = mfem.ParFiniteElementSpaceArray()
-    test_fec = mfem.FiniteElementCollectionArray()
-    trial_fes.Append(E_fes)
-    trial_fes.Append(H_fes)
-    trial_fes.Append(hatE_fes)
-    trial_fes.Append(hatH_fes)
-    test_fec.Append(F_fec)
-    test_fec.Append(G_fec)
+    # trial_fes = mfem.ParFiniteElementSpaceArray()
+    # test_fec = mfem.FiniteElementCollectionArray()
+    trial_fes = []
+    test_fec = []
+
+    trial_fes.append(E_fes)
+    trial_fes.append(H_fes)
+    trial_fes.append(hatE_fes)
+    trial_fes.append(hatH_fes)
+    test_fec.append(F_fec)
+    test_fec.append(G_fec)
 
     # Bilinear form coefficients
     one = mfem.ConstantCoefficient(1.0)
@@ -1027,7 +1030,7 @@ def run(meshfile='',
         H_i.MakeRef(H_fes, x, offsetsl[-1]+offsetsl[1])
 
         dofs = 0
-        for i in range(trial_fes.Size()):
+        for i in range(len(trial_fes)):
             dofs += trial_fes[i].GlobalTrueVSize()
 
         if exact_known:
@@ -1085,7 +1088,7 @@ def run(meshfile='',
 
         if with_pml:
             pml.SetAttributes(pmesh)
-        for i in range(trial_fes.Size()):
+        for i in range(len(trial_fes)):
             trial_fes[i].Update(False)
         a.Update()
 
