@@ -59,7 +59,6 @@ def get_extensions():
         cxx11flag = ''
         build_mfem = '0'
         mfem_outside = '0'
-        mpiinc = ''
 
     libraries = ['mfem']
 
