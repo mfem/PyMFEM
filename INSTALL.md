@@ -35,7 +35,7 @@ install option needs to be specifed using -C flag. In this case, option name is 
 without leading "--". Also, the value of option should be written explicitly and each
 option needs tobe bein using separately by dedicated -C flag.
 
-For example, parallel (MPI) support and GSlib support is built with  the `--with-parallel`
+For example, parallel (MPI) support and GSlib support is built with  `--with-parallel`
 and `--with-gslib' flags as follows.
 
 ```shell
