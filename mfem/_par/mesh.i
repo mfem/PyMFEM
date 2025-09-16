@@ -269,7 +269,7 @@ def FindPoints(self, pp, warn=True, inv_trans=None):
     import numpy as np
     import mfem.par as mfem
 
-    pp = np.array(pp, copy=False, dtype=float).transpose()
+    pp = np.asarray(pp, dtype=float).transpose()
     M = mfem.DenseMatrix(pp.shape[0], pp.shape[1])
     M.Assign(pp)
     elem_ids = mfem.intArray()
