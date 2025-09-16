@@ -4,6 +4,7 @@
 Serial version setup file
 """
 
+from distutils.core import Extension, setup
 import sys
 import os
 
@@ -11,10 +12,10 @@ import os
 # Github workflow (next import) fails without this, because it loads
 # array.py in current directoy
 sys.path.remove(os.path.abspath(os.path.dirname(sys.argv[0])))
-from distutils.core import Extension, setup
 
 ddd = os.path.dirname(os.path.abspath(os.path.realpath(__file__)))
 root = os.path.abspath(os.path.join(ddd, '..', '..'))
+
 
 def get_version():
     # read version number from __init__.py
@@ -34,7 +35,7 @@ def get_extensions():
     sys.path.insert(0, root)
     try:
         from setup_local import (mfemserbuilddir, mfemserincdir, mfemsrcdir, mfemserlnkdir,
-                                 mfemstpl, build_mfem, numpyinc,
+                                 mfemstpl, mfem_external, numpyinc,
                                  cc_ser, cxx_ser,
                                  cxx11flag,
                                  add_cuda, add_libceed, add_suitesparse, add_gslibs,
@@ -57,7 +58,7 @@ def get_extensions():
         add_suitesparse = ''
         add_gslibs = ''
         cxx11flag = ''
-        build_mfem = '0'
+        mfem_external = '0'
 
     libraries = ['mfem']
 
@@ -140,9 +141,9 @@ def get_extensions():
 
     runtime_library_dirs = [
         x for x in library_dirs if x.find(bdist_wheel_dir) == -1]
-    if build_mfem == "1" and sys.platform in ("linux", "linux2"):
+    if mfem_external == "0" and sys.platform in ("linux", "linux2"):
         runtime_library_dirs.append("$ORIGIN/../external/ser/lib")
-    elif build_mfem == "1" and sys.platform == "darwin":
+    elif mfem_external == "0" and sys.platform == "darwin":
         runtime_library_dirs.append("@loader_path/../external/ser/lib")
     else:
         runtime_library_dirs = library_dirs

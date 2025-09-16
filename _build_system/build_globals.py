@@ -26,6 +26,7 @@ ext_prefix = ''
 mfems_prefix = ''
 mfemp_prefix = ''
 mfem_source = os.path.join(os.path.dirname(__file__), "..", "external", "mfem")
+mfem_external = False    # flag to check if we use externally build MFEM
 metis_prefix = ''
 hypre_prefix = ''
 
@@ -57,6 +58,8 @@ lapack_libraries = ""
 dry_run = False
 do_bdist_wheel = False
 bdist_wheel_dir = ''
+
+keep_temp = False
 
 use_unverifed_SSL = False if os.getenv(
     "unverifedSSL") is None else os.getenv("unverifiedSSL")
