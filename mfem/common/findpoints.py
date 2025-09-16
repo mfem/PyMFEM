@@ -28,7 +28,7 @@ def do_findpoints(mesh, *args):
     return v, elem_id, ips
 
 def eval_at_points(gf, *args):
-    args = [np.atleast_1d(np.array(t, copy=False)) for t in args]    
+    args = [np.atleast_1d(np.asarray(t)) for t in args]
     mesh = gf.FESpace().Mesh()
     v, elem_id, ips = findpoints(mesh, *args)
     
@@ -45,6 +45,6 @@ def findpoints(mesh, *args):
     elif len(args) != 1 and sdim == 1:
         assert False, "SpaceDimension = 3, pass x"
     else:
-        args = [np.atleast_1d(np.array(t, copy=False)) for t in args]                
+        args = [np.atleast_1d(np.array(t)) for t in args]
         return do_findpoints(mesh, *args)
 
