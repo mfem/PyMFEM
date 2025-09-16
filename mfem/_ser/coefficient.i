@@ -52,7 +52,7 @@ namespace mfem {
 %pythonprepend MatrixConstantCoefficient::MatrixConstantCoefficient(const DenseMatrix &m) %{
    try:
       import numpy as np
-      value = np.array(m, copy=False, dtype=float)
+      value = np.asarray(m, dtype=float)
       can_np_array = True
    except:
       can_np_array = False
@@ -67,7 +67,7 @@ namespace mfem {
 %pythonprepend VectorConstantCoefficient::VectorConstantCoefficient(const Vector &v) %{
    try:
       import numpy as np
-      value = np.array(v, copy=False, dtype=float).flatten()
+      value = np.asarray(v, dtype=float).flatten()
       can_np_array = True
    except:
       can_np_array = False

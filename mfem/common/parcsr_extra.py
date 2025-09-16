@@ -504,7 +504,7 @@ def ResetHypreDiag(M, idx, value=1.0):
               np.min(jcn),  np.max(jcn), (m, n))
         raise
 
-    idx = np.array(idx, dtype=int, copy=False)
+    idx = np.asarray(idx, dtype=int)
     ii = idx[np.logical_and(idx >= ilower, idx <= iupper)]
     mat[ii-ilower, ii] = value
     # for ii in idx:
@@ -583,7 +583,7 @@ def ReadHypreDiag(M, idx):
               np.min(jcn),  np.max(jcn), (m, n))
         raise
 
-    idx = np.array(idx, dtype=int, copy=False)
+    idx = np.asarray(idx, dtype=int)
     ii = idx[np.logical_and(idx >= ilower, idx <= iupper)]
 
     tmp = mat[ii-ilower, ii].toarray().flatten()
