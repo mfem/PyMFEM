@@ -188,7 +188,6 @@ def get_extensions():
     else:
         runtime_library_dirs = library_dirs
 
-    print(runtime_library_dirs)
     ext_modules = [Extension(proxy_names[modules[0]],
                              sources=sources[modules[0]],
                              extra_compile_args=extra_compile_args,
