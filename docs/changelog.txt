@@ -15,7 +15,7 @@
 	- updated HYPRE version to 2.32
 	- wrappers for the following MFEM objects are added
 	    -- Array2D
-	    -- IterativeSolverController;
+	    -- IterativeSolverController
 	    -- CoefficientPtrArray
 	    -- VectorCoefficientPtrArray
 	    -- MatrixCoefficientPtrArray

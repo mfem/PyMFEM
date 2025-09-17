@@ -30,10 +30,9 @@ or
 python setup.py install --user
 ```
 
-Note `python setup.py install` is deprecated and is going to be removed soon. With pip
-install option needs to be specifed using -C flag. In this case, option name is given
-without leading "--". Also, the value of option should be written explicitly and each
-option needs tobe bein using separately by dedicated -C flag.
+Note that `python setup.py install` is deprecated and will be removed soon in favor of `pip`.
+When installing via `pip`, options are specified using the `-C` flag using the syntax `-C"name=value"`; e.g. the `--with-parallel` option is now specified as `-C"with-parallel=Yes`.
+The name and value of each option should be written explicitly with a dedicated -C flag.
 
 For example, parallel (MPI) support and GSlib support is built with  `--with-parallel`
 and `--with-gslib' flags as follows.

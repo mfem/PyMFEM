@@ -18,7 +18,7 @@ pip install mfem            # binary install is available only on linux platform
 
 ### Build with additional features (MPI, GPU, GPU-Hypre, GSLIB, SuiteSparse, libCEED, LAPACK)
 
-The setup script accept various options. Download the package manually and run the script. Examples below downloads and build parallel version of MFEM library (linked with Metis and Hypre) and installs under <prefix>/mfem. See INSTALL.md for various ohter options
+The setup script accept various options. Download the package manually and run the script. Examples below downloads and build parallel version of MFEM library (linked with Metis and Hypre) and installs under <prefix>/mfem. See INSTALL.md for various other options
 
 ```shell
 # Download source and build
