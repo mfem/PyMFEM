@@ -98,7 +98,8 @@ class Install(_install):
 
     def run(self):
         if not bglb.is_configured:
-            print('!!!!! Running config (install)')
+            if bglb.verbose:
+                 print('!!!!! Running config (install)')
             bglb.prefix = abspath(self.prefix)
             configure_build(self)
             print_config()
@@ -131,7 +132,8 @@ class BdistWheel(_bdist_wheel):
         import build_globals as bglb
 
         if not bglb.is_configured:
-            print('!!!!! Running config (bdist wheel)')
+            if bglb.verbose:
+                print('!!!!! Running config (bdist wheel)')
             bglb.prefix = abspath(self.bdist_dir)
             bglb.ext_prefix = os.path.join(bglb.prefix, 'mfem', 'external')
             bglb.bdist_wheel_dir = abspath(self.bdist_dir)
@@ -142,7 +144,6 @@ class BdistWheel(_bdist_wheel):
             if bglb.keep_temp:
                 self.keep_temp = True
             print_config()
-            self.keep_temp = True
 
         self.run_command("build")
 

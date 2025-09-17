@@ -65,7 +65,7 @@ def print_config():
 
 
 def clean_dist_info(wheeldir):
-    if not os.path.exists(wheeldir):
+    if not os.path.isdir(wheeldir):
         return
     for x in os.listdir(wheeldir):
         if x.endswith(".dist-info"):
@@ -257,7 +257,8 @@ def configure_install(self):
     if sys.argv[0] == 'setup.py' and sys.argv[1] == 'install':
         process_setup_options(self, sys.argv[2:])
     else:
-        #print("!!!!!!!!  command-line input (pip): ", bglb.cfs)
+        if bglb.verbose:
+            print("!!!!!!!!  command-line input (pip): ", bglb.cfs)
         process_cmd_options(self, bglb.cfs)
 
     bglb.verbose = bool(self.vv) if not bglb.verbose else bglb.verbose
@@ -337,7 +338,6 @@ def configure_install(self):
         bglb.build_hypre = bglb.build_parallel
         bglb.build_metis = bglb.build_parallel or bglb.enable_suitesparse
 
-        #print("!!!!! ext_prefix", bglb.ext_prefix)
         if bglb.ext_prefix == '':
             bglb.ext_prefix = external_install_prefix(bglb.prefix)
         bglb.hypre_prefix = os.path.join(bglb.ext_prefix)
@@ -469,4 +469,3 @@ def configure_install(self):
     bglb.is_configured = True
 
 configure_build = configure_install
-
