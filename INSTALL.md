@@ -149,43 +149,38 @@ and `--mfem-prefix`
 | `--ext-only` | build exteranl libraries and exit.|
 
 During the development, often we update depenencies (such as MFEM) and edit `*.i` file.
+These options allows for building PyMFEM in a step-by-step manner, without rebuilding
+the entire wrapper everytime.
 
-
-First clean everything.
+First clone the repository or clean everything.
 
 ```shell
+git clone git@github.com:mfem/PyMFEM.git;cd PyMFEM
 python setup.py clean --all
 ```
 
-Then, build externals alone
+Then, build externals alone using the ext-only option
 ```shell
-python setup.py install --with-parallel --ext-only --mfem-branch=master
+pip install . -C"ext-only=Yes" --verbose
+pip install . -C"with-parallel=Yes" -C"ext-only=Yes" --verbose
 ```
 
-Then, genrate swig wrappers.
+Then, genrate swig wrappers, using the swig option, together with skip-ext, so that
+external libraies are not rebuild.
 ```shell
-python setup.py install --with-parallel --swig --mfem-branch=master
+pip install . -C"skip-ext=Yes"  -C"swig=Yes" --verbose
+pip install . -C"with-parallel=Yes" -C"skip-ext=Yes"  -C"swig=Yes" --verbose
 ```
 
 If you are not happy with the wrapper (`*.cxx` and `*.py`), you edit `*.i` and redo
-the same. When you are happy, build the wrapper. `--swig` does not clean the
-existing wrapper. So, it will only update wrapper for updated `*.i`
+the same. When you are happy, build the wrapper with skip-swig and skip-ext.
 
-When building a wrapper, you can use `--skip-ext` option. By default, it will re-run
-swig to generate entire wrapper codes.
 ```shell
-python setup.py install --with-parallel --skip-ext --mfem-branch=master
-```
-
-If you are sure, you could use `--skip-swig` option, so that it compiles the wrapper
-codes without re-generating it.
-```shell
-python setup.py install --with-parallel --skip-ext --skip-swig --mfem-branch=master
+pip install . -C"skip-ext=Yes"  -C"skip-swig=Yes" --verbose
+pip install . -C"with-parallel=Yes" -C"skip-ext=Yes"  -C"skip-swig=Yes" --verbose
 ```
 
 ### Other options
 `--unverifiedSSL` :
    This addresses error relating SSL certificate. Typical error message is
    `<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:xxx)>`
-
-
