@@ -50,7 +50,7 @@ def get_extensions():
                         hypreinc,
                         metisinc,]
 
-        library_dirs = [mfemlnkdir,] 
+        library_dirs = [mfemlnkdir,]
     except ImportError:
         if 'clean' not in sys.argv:
             raise
@@ -127,7 +127,7 @@ def get_extensions():
                "psubmesh", "ptransfermap", "enzyme",
                "attribute_sets", "arrays_by_name",
                "hyperbolic"]
-    
+
     if mpiinc != '':
         include_dirs.append(mpiinc)
 
@@ -179,10 +179,10 @@ def get_extensions():
 
     runtime_library_dirs = [
         x for x in library_dirs if x.find(bdist_wheel_dir) == -1]
-    if mfem_outside == "0" and sys.platform  in ("linux", "linux2"):        
+    if mfem_outside == "0" and sys.platform  in ("linux", "linux2"):
         runtime_library_dirs.append("$ORIGIN/../external/par/lib")
         runtime_library_dirs.append("$ORIGIN/../external/lib")
-    elif mfem_outside == "0" and sys.platform  == "darwin":        
+    elif mfem_outside == "0" and sys.platform  == "darwin":
         runtime_library_dirs.append("@loader_path/../external/par/lib")
         runtime_library_dirs.append("@loader_path/../external/lib")
     else:
