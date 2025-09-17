@@ -118,7 +118,7 @@ def write_setup_local():
     os.chdir(pwd)
 
 
-def generate_wrapper():
+def generate_wrapper(do_parallel):
     '''
     run swig.
     '''
@@ -207,7 +207,7 @@ def generate_wrapper():
     with mp_pool:
         mp_pool.map(subprocess.run, commands)
 
-    if not bglb.build_parallel:
+    if not do_parallel:
         os.chdir(pwd)
         return
 

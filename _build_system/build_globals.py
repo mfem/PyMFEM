@@ -9,7 +9,6 @@ prefix = ''
 verbose = True
 git_sshclone = False
 swig_only = False
-skip_install = False
 run_swig = False
 clean_swig = False
 build_mfem = False

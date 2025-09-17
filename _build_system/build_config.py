@@ -70,7 +70,7 @@ def clean_dist_info(wheeldir):
     for x in os.listdir(wheeldir):
         if x.endswith(".dist-info"):
             fname = os.path.join(wheeldir, x)
-            print("!!!!!!!! removing exising ", fname)
+            print("!!! removing exising ", fname)
             shutil.rmtree(fname)
 
 
@@ -82,7 +82,6 @@ def initialize_cmd_options(command_obj):
     command_obj.git_sshclone = False
     command_obj.skip_ext = False
     command_obj.with_parallel = False
-    command_obj.build_only = False
     command_obj.no_serial = False
     command_obj.mfem_prefix = ''
     command_obj.mfems_prefix = ''
@@ -159,7 +158,6 @@ cmd_options = [
      'Skip running swig (used when wrapper is generated for the MFEM C++ library to be used'),
     ('ext-only', None, 'Build metis, hypre, mfem(C++) only'),
     ('skip-ext', None, 'Skip building metis, hypre, mfem(C++) only'),
-    ('build-only', None, 'Skip final install stage to prefix'),
     ('CC=', None, 'c compiler'),
     ('CXX=', None, 'c++ compiler'),
     ('MPICC=', None, 'mpic compiler'),
@@ -256,15 +254,11 @@ def configure_install(self):
     called when install workflow is used
 
     '''
-    print("!!!!!!!!")
-    print("!!!!!!!!  setting up build global configuration parameters")
-    print("!!!!!!!!")
-
     if sys.argv[0] == 'setup.py' and sys.argv[1] == 'install':
-        print("!!!!!!!!  command-line input (setup.py install): ", sys.argv)
+        #print("!!!!!!!!  command-line input (setup.py install): ", sys.argv)
         process_setup_options(self, sys.argv[2:])
     else:
-        print("!!!!!!!!  command-line input (pip): ", bglb.cfs)
+        #print("!!!!!!!!  command-line input (pip): ", bglb.cfs)
         process_cmd_options(self, bglb.cfs)
 
     bglb.verbose = bool(self.vv) if not bglb.verbose else bglb.verbose
@@ -276,7 +270,6 @@ def configure_install(self):
     bglb.mfem_source = abspath(self.mfem_source)
 
     bglb.skip_ext = bool(self.skip_ext)
-    bglb.skip_install = bool(self.build_only)
     bglb.skip_swig = bool(self.skip_swig)
 
     bglb.swig_only = bool(self.swig)
@@ -302,6 +295,7 @@ def configure_install(self):
 
     bglb.clean_swig = True
     bglb.run_swig = True
+    bglb.run_swig_parallel = bool(self.with_parallel)
 
     bglb.mfem_debug = bool(self.mfem_debug)
     bglb.mfem_build_miniapps = bool(self.mfem_build_miniapps)
@@ -344,7 +338,7 @@ def configure_install(self):
         bglb.build_hypre = bglb.build_parallel
         bglb.build_metis = bglb.build_parallel or bglb.enable_suitesparse
 
-        print("!!!!! ext_prefix", bglb.ext_prefix)
+        #print("!!!!! ext_prefix", bglb.ext_prefix)
         if bglb.ext_prefix == '':
             bglb.ext_prefix = external_install_prefix(bglb.prefix)
         bglb.hypre_prefix = os.path.join(bglb.ext_prefix)
@@ -424,7 +418,6 @@ def configure_install(self):
         bglb.build_parallel = False
         bglb.clean_swig = False
         bglb.keep_temp = True
-        # bglb.skip_install = True
         bglb.skip_ext = True
 
     if bglb.skip_ext:
@@ -445,7 +438,7 @@ def configure_install(self):
         bglb.build_serial = False
         bglb.build_parallel = False
         bglb.keep_temp = True
-        # bglb.skip_install = True
+
 
     if bglb.libceed_only:
         bglb.clean_swig = False
@@ -459,7 +452,7 @@ def configure_install(self):
         bglb.build_parallel = False
         bglb.build_libceed = True
         bglb.keep_temp = True
-        # bglb.skip_install = True
+
 
     if bglb.gslib_only:
         bglb.clean_swig = False
@@ -472,52 +465,9 @@ def configure_install(self):
         bglb.build_libceed = False
         bglb.build_gslib = True
         bglb.keep_temp = True
-        # bglb.skip_install = True
 
-    # if not bglb.build_serial and not bglb.build_parallel:
-    #    bglb.skip_install = True
 
     bglb.is_configured = True
 
-
-'''    
-def configure_bdist(self):
-    #
-    #called when bdist workflow is used
-    #
-    bglb.dry_run = bool(self.dry_run) or bglb.dry_run
-
-    bglb.prefix = abspath(self.bdist_dir)
-
-    bglb.build_parallel = False
-
-    if self.skip_build == 1:
-        bglb.build_mfem = False
-        bglb.build_serial = False
-        bglb.run_swig = False
-    else:
-        bglb.build_mfem = True
-        bglb.build_serial = True
-        # build_gslib = True
-        bglb.run_swig = True
-
-    if not bglb.build_serial and not bglb.build_parallel:
-        bglb.skip_install = False
-
-    bglb.is_configured = True
-    bglb.do_bdist_wheel = True
-
-    # mfem_source = './external/mfem'
-    bglb.ext_prefix = os.path.join(bglb.prefix, 'mfem', 'external')
-    print("!!!!! ext_prefix(bdist)", bglb.ext_prefix)
-    bglb.hypre_prefix = bglb.ext_prefix
-    bglb.metis_prefix = bglb.ext_prefix
-
-    bglb.mfem_prefix = bglb.ext_prefix
-    bglb.mfems_prefix = os.path.join(bglb.ext_prefix, 'ser')
-    bglb.mfemp_prefix = os.path.join(bglb.ext_prefix, 'par')
-
-    bglb.mfem_build_miniapps = False
-'''
 configure_build = configure_install
-# configure_build = configure_bdist
+
