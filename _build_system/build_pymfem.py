@@ -69,7 +69,7 @@ def write_setup_local():
               'libceedinc': os.path.join(bglb.libceed_prefix, 'include'),
               'gslibsinc': os.path.join(bglb.gslibs_prefix, 'include'),
               'gslibpinc': os.path.join(bglb.gslibp_prefix, 'include'),
-              'cxx11flag': bglb.cxx11_flag,
+              'cxxstdflag': bglb.cxxstd_flag,
               'build_mfem': '1' if bglb.build_mfem else '0',
               'bdist_wheel_dir': bglb.bdist_wheel_dir,
               }

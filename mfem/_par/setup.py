@@ -40,7 +40,7 @@ def get_extensions():
                                  mfemptpl, numpyinc, mpi4pyinc, mpiinc,
                                  hypreinc, metisinc, hyprelib, metis5lib,
                                  cc_par, cxx_par, cc_ser, cxx_ser,
-                                 cxx11flag, mfem_outside,
+                                 cxxstdflag, mfem_outside,
                                  add_pumi, add_cuda, add_libceed, add_strumpack,
                                  add_suitesparse, add_gslibp, bdist_wheel_dir)
 
@@ -65,7 +65,7 @@ def get_extensions():
         add_strumpack = ''
         add_pumi = ''
         add_gslibp = ''
-        cxx11flag = ''
+        cxxstdflag = '-std=c++17'
         mfem_outside = '0'
         mpiinc = ''
 
@@ -126,7 +126,7 @@ def get_extensions():
                "submesh", "transfermap", "staticcond", "sidredatacollection",
                "psubmesh", "ptransfermap", "enzyme",
                "attribute_sets", "arrays_by_name",
-               "hyperbolic"]
+               "hyperbolic", "bounds"]
 
     if mpiinc != '':
         include_dirs.append(mpiinc)
@@ -172,7 +172,7 @@ def get_extensions():
             tpl_include.append(x[2:])
     include_dirs.extend(tpl_include)
 
-    extra_compile_args = [cxx11flag, '-DSWIG_TYPE_TABLE=PyMFEM']
+    extra_compile_args = [cxxstdflag, '-DSWIG_TYPE_TABLE=PyMFEM']
 
     macros = [('TARGET_PY3', '1'),
               ('NPY_NO_DEPRECATED_API', 'NPY_1_7_API_VERSION')]

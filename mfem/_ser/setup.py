@@ -38,7 +38,7 @@ def get_extensions():
         from setup_local import (mfemserbuilddir, mfemserincdir, mfemsrcdir, mfemserlnkdir,
                                  mfemstpl, numpyinc,
                                  cc_ser, cxx_ser,
-                                 cxx11flag, mfem_outside,
+                                 cxxstdflag, mfem_outside,
                                  add_cuda, add_libceed, add_suitesparse, add_gslibs,
                                  bdist_wheel_dir)
 
@@ -58,7 +58,7 @@ def get_extensions():
         add_libceed = ''
         add_suitesparse = ''
         add_gslibs = ''
-        cxx11flag = ''
+        cxxstdflag = '-std=c++17'        
         mfem_outside = '0'
 
 
@@ -109,7 +109,8 @@ def get_extensions():
                "sidredatacollection", "enzyme",
                "attribute_sets", "arrays_by_name",
                "hyperbolic",
-               "complex_densemat", "complexstaticcond", "complexweakform"]
+               "complex_densemat", "complexstaticcond", "complexweakform",
+               "bounds"]
 
     if add_cuda == '1':
         from setup_local import cudainc
@@ -137,7 +138,7 @@ def get_extensions():
             tpl_include.append(x[2:])
     include_dirs.extend(tpl_include)
 
-    extra_compile_args = [cxx11flag, '-DSWIG_TYPE_TABLE=PyMFEM']
+    extra_compile_args = [cxxstdflag, '-DSWIG_TYPE_TABLE=PyMFEM']
     macros = [('TARGET_PY3', '1'),
               ('NPY_NO_DEPRECATED_API', 'NPY_1_7_API_VERSION')]
 
