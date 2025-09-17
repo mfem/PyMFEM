@@ -71,7 +71,7 @@ jobs:
         ${{ inputs.cuda && '-C"with-cuda=Yes"' || '' }}
         ${{ inputs.libceed && '-C"with-libceed=Yes"' || '' }}
         ${{ inputs.gslib && '-C"with-gslib=Yes"' || '' }}
-        ${{ (!(inputs.mfem-branch == 'default') && format('-C"mfem-branch='{0}'"', inputs.mfem-branch)) || '' }}
+        ${{ (!(inputs.mfem-branch == 'default') && format('-C"mfem-branch={0}"', inputs.mfem-branch)) || '' }}
 
     # -------------------------------------------------------------------------------------------------
     # Begin workflow
