@@ -1,8 +1,8 @@
 # Installation Guide
 
-## Basic install
+## Basic serial install
 
-Most users will be fine using the binary bundled in the default `pip` install:
+Most users (on Linux and Mac) will be fine using the binary bundled in the default `pip` install:
 
 ```shell
 pip install mfem
@@ -19,15 +19,28 @@ PyMFEM has many options for installation, when building from source, including:
    - `libceed`
    - `metis`
 
-Most of the options for PyMFEM can be used directly when installing via `python setup.py install`, e.g.
+Most of the options for PyMFEM can be used directly when installing via `pip install . or python setup.py install`, e.g.
 ```shell
 git clone git@github:mfem/PyMFEM.git
 cd PyMFEM
+pip install . --user
+
+or
+
 python setup.py install --user
 ```
-For example, parallel (MPI) support is built with  the `--with-parallel` flag:
+
+Note that `python setup.py install` is deprecated and will be removed soon in favor of `pip`.
+When installing via `pip`, options are specified using the `-C` flag using the syntax `-C"name=value"`; e.g. the `--with-parallel` option is now specified as `-C"with-parallel=Yes`.
+The name and value of each option should be written explicitly with a dedicated -C flag.
+
+For example, parallel (MPI) support and GSlib support is built with  `--with-parallel`
+and `--with-gslib' flags as follows.
+
 ```shell
-python setup.py install --with-parallel
+python setup.py install --with-parallel --with-gslib
+or
+pip install . -C"with-parallel=Yes" -C"with-gslib=Yes"
 ```
 
 Note: this option turns on building `metis` and `Hypre`
