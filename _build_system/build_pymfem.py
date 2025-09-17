@@ -47,6 +47,8 @@ def write_setup_local():
               'metis5lib': metislibpath,
               'numpyinc': get_numpy_inc(),
               'mpi4pyinc': '',
+              'mpiinc':bglb.mpiinc,
+              'mfem_outside': '1' if  bglb.mfem_outside else '0',
               'mfembuilddir': os.path.join(mfempar, 'include'),
               'mfemincdir': os.path.join(mfempar, 'include', 'mfem'),
               'mfemlnkdir': os.path.join(mfempar, 'lib'),
@@ -117,7 +119,7 @@ def write_setup_local():
     os.chdir(pwd)
 
 
-def generate_wrapper():
+def generate_wrapper(do_parallel):
     '''
     run swig.
     '''
@@ -206,7 +208,7 @@ def generate_wrapper():
     with mp_pool:
         mp_pool.map(subprocess.run, commands)
 
-    if not bglb.build_parallel:
+    if not do_parallel:
         os.chdir(pwd)
         return
 

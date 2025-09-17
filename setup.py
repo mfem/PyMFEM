@@ -38,7 +38,6 @@ from build_config import *
 from build_consts import *
 from build_utils import *
 
-
 # ----------------------------------------------------------------------------------------
 # Constants
 # ----------------------------------------------------------------------------------------
@@ -99,12 +98,14 @@ class Install(_install):
 
     def run(self):
         if not bglb.is_configured:
-            print('!!!!! Running config (install)')
+            if bglb.verbose:
+                 print('!!!!! Running config (install)')
             bglb.prefix = abspath(self.prefix)
             configure_build(self)
             print_config()
 
-        if bglb.swig_only:
+        if bglb.swig_only and not bglb.build_py_done:
+            #  comes here if python setup.py install is used
             self.run_command("build")
         else:
             _install.run(self)
@@ -128,18 +129,24 @@ class BdistWheel(_bdist_wheel):
         _bdist_wheel.finalize_options(self)
 
     def run(self):
-        print("!!!!! Entering BdistWheel::Run")
         import build_globals as bglb
 
         if not bglb.is_configured:
-            print('!!!!! Running config (bdist wheel)')
+            if bglb.verbose:
+                print('!!!!! Running config (bdist wheel)')
             bglb.prefix = abspath(self.bdist_dir)
             bglb.ext_prefix = os.path.join(bglb.prefix, 'mfem', 'external')
             bglb.bdist_wheel_dir = abspath(self.bdist_dir)
             bglb.do_bdist_wheel = True
+
             configure_build(self)
+            clean_dist_info(bglb.prefix)
+            if bglb.keep_temp:
+                self.keep_temp = True
             print_config()
+
         self.run_command("build")
+
         _bdist_wheel.run(self)
 
 
@@ -156,6 +163,8 @@ class BuildPy(_build_py):
         _build_py.finalize_options(self)
 
     def run(self):
+        bglb.build_py_done = True
+
         if not bglb.swig_only:
             if bglb.build_metis:
                 if bglb.use_metis_gklib:
@@ -197,20 +206,14 @@ class BuildPy(_build_py):
         if bglb.clean_swig:
             clean_wrapper()
         if bglb.run_swig:
-            generate_wrapper()
-            if bglb.swig_only:
-                return
+            generate_wrapper(bglb.run_swig_parallel)
 
         if bglb.build_serial:
             make_mfem_wrapper(serial=True)
         if bglb.build_parallel:
             make_mfem_wrapper(serial=False)
 
-        if not bglb.skip_install:
-            _build_py.run(self)
-        else:
-            sys.exit()
-
+        _build_py.run(self)
 
 class InstallLib(_install_lib):
     def finalize_options(self):
@@ -218,6 +221,12 @@ class InstallLib(_install_lib):
         src_cmd_obj = self.distribution.get_command_obj('install')
         src_cmd_obj.ensure_finalized()
         self.install_dir = src_cmd_obj.install_platlib
+
+    def run(self):
+        if not bglb.dry_run:
+            _install_lib.run(self)
+        else:
+            print("skipping regular install_lib")
 
 
 class InstallEggInfo(_install_egg_info):

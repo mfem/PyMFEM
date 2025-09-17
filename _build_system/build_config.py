@@ -13,6 +13,7 @@ import subprocess
 import multiprocessing
 import ssl
 import tarfile
+import shutil
 from collections import namedtuple
 from shutil import which as find_command
 
@@ -20,12 +21,14 @@ __all__ = ["print_config",
            "initialize_cmd_options",
            "cmd_options",
            "process_cmd_options",
-           "configure_build"
-]
+           "configure_build",
+           "clean_dist_info",
+           ]
 
 from build_utils import *
 from build_consts import *
 import build_globals as bglb
+
 
 def print_config():
     print("----configuration----")
@@ -37,9 +40,11 @@ def print_config():
     print(" build hypre : " + ("Yes" if bglb.build_hypre else "No"))
     print(" build libceed : " + ("Yes" if bglb.build_libceed else "No"))
     print(" build gslib : " + ("Yes" if bglb.build_gslib else "No"))
-    print(" call SWIG wrapper generator: " + ("Yes" if bglb.run_swig else "No"))
+    print(" call SWIG wrapper generator: " +
+          ("Yes" if bglb.run_swig else "No"))
     print(" build serial wrapper: " + ("Yes" if bglb.build_serial else "No"))
-    print(" build parallel wrapper : " + ("Yes" if bglb.build_parallel else "No"))
+    print(" build parallel wrapper : " +
+          ("Yes" if bglb.build_parallel else "No"))
 
     print(" hypre prefix", bglb.hypre_prefix)
     print(" metis prefix", bglb.metis_prefix)
@@ -59,6 +64,16 @@ def print_config():
     print("")
 
 
+def clean_dist_info(wheeldir):
+    if not os.path.isdir(wheeldir):
+        return
+    for x in os.listdir(wheeldir):
+        if x.endswith(".dist-info"):
+            fname = os.path.join(wheeldir, x)
+            print("!!! removing existing ", fname)
+            shutil.rmtree(fname)
+
+
 def initialize_cmd_options(command_obj):
     command_obj.swig = False
     command_obj.skip_swig = False
@@ -67,7 +82,6 @@ def initialize_cmd_options(command_obj):
     command_obj.git_sshclone = False
     command_obj.skip_ext = False
     command_obj.with_parallel = False
-    command_obj.build_only = False
     command_obj.no_serial = False
     command_obj.mfem_prefix = ''
     command_obj.mfems_prefix = ''
@@ -115,64 +129,64 @@ def initialize_cmd_options(command_obj):
 
 
 cmd_options = [
-        ('vv', None, 'More verbose output (CMAKE_VERBOSE_MAKEFILE etc)'),
-        ('with-parallel', None, 'Installed both serial and parallel version'),
-        ('no-serial', None, 'Skip building the serial wrapper'),
-        ('mfem-prefix=', None, 'Specify locaiton of mfem' +
-         'libmfem.so must exits under <mfem-prefix>/lib. ' +
-         'This mode uses clean-swig + run-swig, unless mfem-prefix-no-swig is on'),
-        ('mfemp-prefix=', None, 'Specify locaiton of parallel mfem ' +
-         'libmfem.so must exits under <mfemp-prefix>/lib. ' +
-         'Need to use it with mfem-prefix'),
-        ('mfems-prefix=', None, 'Specify locaiton of serial mfem ' +
-         'libmfem.so must exits under <mfems-prefix>/lib. ' +
-         'Need to use it with mfem-prefix'),
-        ('mfem-branch=', None, 'Specify branch of mfem' +
-         'MFEM is cloned and built using the specfied branch '),
-        ('mfem-source=', None, 'Specify mfem source location' +
-         'MFEM source directory. Required to run-swig '),
-        ('mfem-debug', None, 'Build MFME with MFEM_DEBUG enabled'),
-        ('mfem-build-miniapps', None, 'build MFME Miniapps'),
-        ('hypre-prefix=', None, 'Specify locaiton of hypre' +
-         'libHYPRE.so must exits under <hypre-prefix>/lib'),
-        ('metis-prefix=', None, 'Specify locaiton of metis' +
-         'libmetis.so must exits under <metis-prefix>/lib'),
-        ('git-sshclone', None, 'Use SSH for git clone' +
-         'try if default git clone using https fails (need Github account and setting for SSH)'),
-        ('swig', None, 'Run Swig and exit'),
-        ('skip-swig', None,
-         'Skip running swig (used when wrapper is generated for the MFEM C++ library to be used'),
-        ('ext-only', None, 'Build metis, hypre, mfem(C++) only'),
-        ('skip-ext', None, 'Skip building metis, hypre, mfem(C++) only'),
-        ('build-only', None, 'Skip final install stage to prefix'),
-        ('CC=', None, 'c compiler'),
-        ('CXX=', None, 'c++ compiler'),
-        ('MPICC=', None, 'mpic compiler'),
-        ('MPICXX=', None, 'mpic++ compiler'),
-        ('unverifiedSSL', None, 'use unverified SSL context for downloading'),
-        ('with-cuda', None, 'enable cuda'),
-        ('with-cuda-hypre', None, 'enable cuda in hypre'),
-        ('cuda-arch=', None, 'set cuda compute capability. Ex if A100, set to 80'),
-        ('with-metis64', None, 'use 64bit int in metis'),
-        ('with-pumi', None, 'enable pumi (parallel only)'),
-        ('pumi-prefix=', None, 'Specify locaiton of pumi'),
-        ('with-suitesparse', None,
-         'build MFEM with suitesparse (MFEM_USE_SUITESPARSE=YES) (parallel only)'),
-        ('suitesparse-prefix=', None,
-         'Specify locaiton of suitesparse (=SuiteSparse_DIR)'),
-        ('with-libceed', None, 'enable libceed'),
-        ('libceed-prefix=', None, 'Specify locaiton of libceed'),
-        ('libceed-only', None, 'Build libceed only'),
-        ('gslib-prefix=', None, 'Specify locaiton of gslib'),
-        ('with-gslib', None, 'enable gslib'),
-        ('gslib-only', None, 'Build gslib only'),
-        ('with-strumpack', None, 'enable strumpack (parallel only)'),
-        ('strumpack-prefix=', None, 'Specify locaiton of strumpack'),
-        ('with-lapack', None, 'build MFEM with lapack'),
-        ('blas-libraries=', None, 'Specify locaiton of Blas library (used to build MFEM)'),
-        ('lapack-libraries=', None,
-         'Specify locaiton of Lapack library (used to build MFEM)'),
-    ]
+    ('vv', None, 'More verbose output (CMAKE_VERBOSE_MAKEFILE etc)'),
+    ('with-parallel', None, 'Installed both serial and parallel version'),
+    ('no-serial', None, 'Skip building the serial wrapper'),
+    ('mfem-prefix=', None, 'Specify locaiton of mfem' +
+     'libmfem.so must exits under <mfem-prefix>/lib. ' +
+     'This mode uses clean-swig + run-swig, unless mfem-prefix-no-swig is on'),
+    ('mfemp-prefix=', None, 'Specify locaiton of parallel mfem ' +
+     'libmfem.so must exits under <mfemp-prefix>/lib. ' +
+     'Need to use it with mfem-prefix'),
+    ('mfems-prefix=', None, 'Specify locaiton of serial mfem ' +
+     'libmfem.so must exits under <mfems-prefix>/lib. ' +
+     'Need to use it with mfem-prefix'),
+    ('mfem-branch=', None, 'Specify branch of mfem' +
+     'MFEM is cloned and built using the specfied branch '),
+    ('mfem-source=', None, 'Specify mfem source location' +
+     'MFEM source directory. Required to run-swig '),
+    ('mfem-debug', None, 'Build MFME with MFEM_DEBUG enabled'),
+    ('mfem-build-miniapps', None, 'build MFME Miniapps'),
+    ('hypre-prefix=', None, 'Specify locaiton of hypre' +
+     'libHYPRE.so must exits under <hypre-prefix>/lib'),
+    ('metis-prefix=', None, 'Specify locaiton of metis' +
+     'libmetis.so must exits under <metis-prefix>/lib'),
+    ('git-sshclone', None, 'Use SSH for git clone' +
+     'try if default git clone using https fails (need Github account and setting for SSH)'),
+    ('swig', None, 'Run Swig and exit'),
+    ('skip-swig', None,
+     'Skip running swig (used when wrapper is generated for the MFEM C++ library to be used'),
+    ('ext-only', None, 'Build metis, hypre, mfem(C++) only'),
+    ('skip-ext', None, 'Skip building metis, hypre, mfem(C++) only'),
+    ('CC=', None, 'c compiler'),
+    ('CXX=', None, 'c++ compiler'),
+    ('MPICC=', None, 'mpic compiler'),
+    ('MPICXX=', None, 'mpic++ compiler'),
+    ('unverifiedSSL', None, 'use unverified SSL context for downloading'),
+    ('with-cuda', None, 'enable cuda'),
+    ('with-cuda-hypre', None, 'enable cuda in hypre'),
+    ('cuda-arch=', None, 'set cuda compute capability. Ex if A100, set to 80'),
+    ('with-metis64', None, 'use 64bit int in metis'),
+    ('with-pumi', None, 'enable pumi (parallel only)'),
+    ('pumi-prefix=', None, 'Specify locaiton of pumi'),
+    ('with-suitesparse', None,
+     'build MFEM with suitesparse (MFEM_USE_SUITESPARSE=YES) (parallel only)'),
+    ('suitesparse-prefix=', None,
+     'Specify locaiton of suitesparse (=SuiteSparse_DIR)'),
+    ('with-libceed', None, 'enable libceed'),
+    ('libceed-prefix=', None, 'Specify locaiton of libceed'),
+    ('libceed-only', None, 'Build libceed only'),
+    ('gslib-prefix=', None, 'Specify locaiton of gslib'),
+    ('with-gslib', None, 'enable gslib'),
+    ('gslib-only', None, 'Build gslib only'),
+    ('with-strumpack', None, 'enable strumpack (parallel only)'),
+    ('strumpack-prefix=', None, 'Specify locaiton of strumpack'),
+    ('with-lapack', None, 'build MFEM with lapack'),
+    ('blas-libraries=', None, 'Specify locaiton of Blas library (used to build MFEM)'),
+    ('lapack-libraries=', None,
+     'Specify locaiton of Lapack library (used to build MFEM)'),
+]
+
 
 def process_cmd_options(command_obj, cfs):
     '''
@@ -209,12 +223,13 @@ def process_cmd_options(command_obj, cfs):
         else:
             value = cfs.pop(param, "No")
             if not hasattr(command_obj, attr):
-               assert False, str(command_obj) + " does not have " + attr
+                assert False, str(command_obj) + " does not have " + attr
 
             if value.upper() in ("YES", "TRUE", "1"):
                 setattr(command_obj, attr, True)
             else:
                 setattr(command_obj, attr, False)
+
 
 def process_setup_options(command_obj, args):
     for item in args:
@@ -223,7 +238,7 @@ def process_setup_options(command_obj, args):
         if item.startswith('-'):
             item = item[1:]
 
-        if len(item.split('='))==2:
+        if len(item.split('=')) == 2:
             param = item.split('=')[0]
             value = item.split('=')[1]
         else:
@@ -233,20 +248,17 @@ def process_setup_options(command_obj, args):
 
         setattr(command_obj, attr, value)
 
+
 def configure_install(self):
     '''
     called when install workflow is used
 
     '''
-    print("!!!!!!!!")
-    print("!!!!!!!!  setting up build global configuration parameters")
-    print("!!!!!!!!")
-
     if sys.argv[0] == 'setup.py' and sys.argv[1] == 'install':
-        print("!!!!!!!!  command-line input (setup.py install): ", sys.argv)
         process_setup_options(self, sys.argv[2:])
     else:
-        print("!!!!!!!!  command-line input (pip): ", bglb.cfs)
+        if bglb.verbose:
+            print("!!!!!!!!  command-line input (pip): ", bglb.cfs)
         process_cmd_options(self, bglb.cfs)
 
     bglb.verbose = bool(self.vv) if not bglb.verbose else bglb.verbose
@@ -258,7 +270,6 @@ def configure_install(self):
     bglb.mfem_source = abspath(self.mfem_source)
 
     bglb.skip_ext = bool(self.skip_ext)
-    bglb.skip_install = bool(self.build_only)
     bglb.skip_swig = bool(self.skip_swig)
 
     bglb.swig_only = bool(self.swig)
@@ -278,11 +289,13 @@ def configure_install(self):
     bglb.enable_suitesparse = bool(self.with_suitesparse)
     bglb.enable_lapack = bool(self.with_lapack)
 
-    bglb.build_parallel = bool(self.with_parallel)     # controlls PyMFEM parallel
+    # controlls PyMFEM parallel
+    bglb.build_parallel = bool(self.with_parallel)
     bglb.build_serial = not bool(self.no_serial)
 
     bglb.clean_swig = True
     bglb.run_swig = True
+    bglb.run_swig_parallel = bool(self.with_parallel)
 
     bglb.mfem_debug = bool(self.mfem_debug)
     bglb.mfem_build_miniapps = bool(self.mfem_build_miniapps)
@@ -310,6 +323,7 @@ def configure_install(self):
         check = find_libpath_from_prefix('mfem', bglb.mfemp_prefix)
         assert check != '', "libmfem.so is not found in the specified <path>/lib"
 
+        bglb.mfem_outside = True
         bglb.build_mfem = False
         hypre_prefix = bglb.mfem_prefix
         metis_prefix = bglb.mfem_prefix
@@ -318,12 +332,12 @@ def configure_install(self):
             bglb.clean_swig = False
 
     else:
+        bglb.mfem_outside = False
         bglb.build_mfem = True
         bglb.build_mfemp = bglb.build_parallel
         bglb.build_hypre = bglb.build_parallel
         bglb.build_metis = bglb.build_parallel or bglb.enable_suitesparse
 
-        print("!!!!! ext_prefix", bglb.ext_prefix)
         if bglb.ext_prefix == '':
             bglb.ext_prefix = external_install_prefix(bglb.prefix)
         bglb.hypre_prefix = os.path.join(bglb.ext_prefix)
@@ -384,7 +398,6 @@ def configure_install(self):
         nvcc = find_command('nvcc')
         bglb.cuda_prefix = os.path.dirname(os.path.dirname(nvcc))
 
-
     if self.CC != '':
         bglb.cc_command = self.CC
     if self.CXX != '':
@@ -399,6 +412,13 @@ def configure_install(self):
     if self.lapack_libraries != "":
         bglb.lapack_libraries = self.lapack_libraries
 
+    if bglb.swig_only:
+        bglb.build_serial = False
+        bglb.build_parallel = False
+        bglb.clean_swig = False
+        bglb.keep_temp = True
+        bglb.skip_ext = True
+
     if bglb.skip_ext:
         bglb.build_metis = False
         bglb.build_hypre = False
@@ -411,16 +431,13 @@ def configure_install(self):
         bglb.clean_swig = False
         bglb.run_swig = False
 
-    if bglb.swig_only:
-        bglb.build_serial = False
-        bglb.clean_swig = False
-
     if bglb.ext_only:
         bglb.clean_swig = False
         bglb.run_swig = False
         bglb.build_serial = False
         bglb.build_parallel = False
-        bglb.skip_install = True
+        bglb.keep_temp = True
+
 
     if bglb.libceed_only:
         bglb.clean_swig = False
@@ -433,7 +450,8 @@ def configure_install(self):
         bglb.build_serial = False
         bglb.build_parallel = False
         bglb.build_libceed = True
-        bglb.skip_install = True
+        bglb.keep_temp = True
+
 
     if bglb.gslib_only:
         bglb.clean_swig = False
@@ -445,44 +463,9 @@ def configure_install(self):
         bglb.build_serial = False
         bglb.build_libceed = False
         bglb.build_gslib = True
-        bglb.skip_install = True
+        bglb.keep_temp = True
+
 
     bglb.is_configured = True
-
-def configure_bdist(self):
-    '''
-    called when bdist workflow is used
-    '''
-    bglb.dry_run = bool(self.dry_run) or bglb.dry_run
-
-    bglb.prefix = abspath(self.bdist_dir)
-
-    bglb.build_parallel = False
-
-    if self.skip_build == 1:
-        bglb.build_mfem = False
-        bglb.build_serial = False
-        bglb.run_swig = False
-    else:
-        bglb.build_mfem = True
-        bglb.build_serial = True
-        # build_gslib = True
-        bglb.run_swig = True
-
-    bglb.is_configured = True
-    bglb.do_bdist_wheel = True
-
-    # mfem_source = './external/mfem'
-    bglb.ext_prefix = os.path.join(bglb.prefix, 'mfem', 'external')
-    print("!!!!! ext_prefix(bdist)", bglb.ext_prefix)
-    bglb.hypre_prefix = bglb.ext_prefix
-    bglb.metis_prefix = bglb.ext_prefix
-
-    bglb.mfem_prefix = bglb.ext_prefix
-    bglb.mfems_prefix = os.path.join(bglb.ext_prefix, 'ser')
-    bglb.mfemp_prefix = os.path.join(bglb.ext_prefix, 'par')
-
-    bglb.mfem_build_miniapps = False
 
 configure_build = configure_install
-#configure_build = configure_bdist

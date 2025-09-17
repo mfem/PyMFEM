@@ -9,7 +9,6 @@ prefix = ''
 verbose = True
 git_sshclone = False
 swig_only = False
-skip_install = False
 run_swig = False
 clean_swig = False
 build_mfem = False
@@ -23,9 +22,11 @@ build_parallel = False
 build_serial = False
 
 ext_prefix = ''
+mfem_outside = False
 mfems_prefix = ''
 mfemp_prefix = ''
 mfem_source = os.path.join(os.path.dirname(__file__), "..", "external", "mfem")
+
 metis_prefix = ''
 hypre_prefix = ''
 
@@ -58,6 +59,8 @@ dry_run = False
 do_bdist_wheel = False
 bdist_wheel_dir = ''
 
+keep_temp = False
+
 use_unverifed_SSL = False if os.getenv(
     "unverifedSSL") is None else os.getenv("unverifiedSSL")
 
@@ -81,4 +84,6 @@ mpicxx_command = 'mpic++' if os.getenv(
 cxx11_flag = '-std=c++11' if os.getenv(
     "CXX11FLAG") is None else os.getenv("CXX11FLAG")
 
-
+# location of MPI.h. Usually it is not needed, as long as MPI compiler can be used
+#
+mpiinc = '' if os.getenv("MPIINC") is None else os.getenv("MPIINC")

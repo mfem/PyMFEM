@@ -81,7 +81,7 @@ def external_install_prefix(prefix, verbose=True):
         # when prefix is given...let's borrow pip._internal to find the location ;D
         import pip._internal.locations
         path = pip._internal.locations.get_scheme(
-            "mfem", prefix=prefix).purelib
+            "mfem", prefix=prefix).platlib
         if not os.path.exists(path):
             os.makedirs(path)
         path = os.path.join(path, 'mfem', 'external')
