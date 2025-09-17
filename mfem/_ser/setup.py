@@ -4,7 +4,7 @@
 Serial version setup file
 """
 
-from distutils.core import Extension, setup
+
 import sys
 import os
 
@@ -12,6 +12,7 @@ import os
 # Github workflow (next import) fails without this, because it loads
 # array.py in current directoy
 sys.path.remove(os.path.abspath(os.path.dirname(sys.argv[0])))
+from distutils.core import Extension, setup
 
 ddd = os.path.dirname(os.path.abspath(os.path.realpath(__file__)))
 root = os.path.abspath(os.path.join(ddd, '..', '..'))
