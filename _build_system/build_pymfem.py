@@ -47,6 +47,8 @@ def write_setup_local():
               'metis5lib': metislibpath,
               'numpyinc': get_numpy_inc(),
               'mpi4pyinc': '',
+              'mpiinc':bglb.mpiinc,
+              'mfem_outside': '1' if  bglb.mfem_outside else '0',
               'mfembuilddir': os.path.join(mfempar, 'include'),
               'mfemincdir': os.path.join(mfempar, 'include', 'mfem'),
               'mfemlnkdir': os.path.join(mfempar, 'lib'),
@@ -69,7 +71,6 @@ def write_setup_local():
               'gslibpinc': os.path.join(bglb.gslibp_prefix, 'include'),
               'cxx11flag': bglb.cxx11_flag,
               'build_mfem': '1' if bglb.build_mfem else '0',
-              'mfem_external': '1' if bglb.mfem_external else '0',
               'bdist_wheel_dir': bglb.bdist_wheel_dir,
               }
 

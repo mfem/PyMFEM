@@ -323,8 +323,8 @@ def configure_install(self):
         check = find_libpath_from_prefix('mfem', bglb.mfemp_prefix)
         assert check != '', "libmfem.so is not found in the specified <path>/lib"
 
+        bglb.mfem_outside = True
         bglb.build_mfem = False
-        bglb.mfem_external = True
         hypre_prefix = bglb.mfem_prefix
         metis_prefix = bglb.mfem_prefix
 
@@ -332,8 +332,8 @@ def configure_install(self):
             bglb.clean_swig = False
 
     else:
+        bglb.mfem_outside = False
         bglb.build_mfem = True
-        bglb.mfem_external = False
         bglb.build_mfemp = bglb.build_parallel
         bglb.build_hypre = bglb.build_parallel
         bglb.build_metis = bglb.build_parallel or bglb.enable_suitesparse

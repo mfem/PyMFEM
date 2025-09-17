@@ -40,6 +40,11 @@ if len(args) == 2:
   self._linked_mat[i, j] = mat
 %}
 
+%inline %{
+  mfem::BlockMatrix *Opr2BlockMatrix(mfem::Operator *op) {
+    return dynamic_cast<mfem::BlockMatrix*>(op);
+  }
+%}
 %include "linalg/blockmatrix.hpp"
 
  /*

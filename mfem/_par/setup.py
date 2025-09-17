@@ -13,6 +13,7 @@ import os
 # array.py in current directoy
 sys.path.remove(os.path.abspath(os.path.dirname(sys.argv[0])))
 from distutils.core import Extension, setup
+from setuptools import setup
 
 ddd = os.path.dirname(os.path.abspath(os.path.realpath(__file__)))
 root = os.path.abspath(os.path.join(ddd, '..', '..'))
@@ -36,18 +37,20 @@ def get_extensions():
     sys.path.insert(0, root)
     try:
         from setup_local import (mfembuilddir, mfemincdir, mfemsrcdir, mfemlnkdir,
-                                 mfemptpl, mfem_external, numpyinc, mpi4pyinc,
+                                 mfemptpl, numpyinc, mpi4pyinc, mpiinc,
                                  hypreinc, metisinc, hyprelib, metis5lib,
-                                 cc_par, cxx_par,
-                                 cxx11flag,
+                                 cc_par, cxx_par, cc_ser, cxx_ser,
+                                 cxx11flag, mfem_outside,
                                  add_pumi, add_cuda, add_libceed, add_strumpack,
                                  add_suitesparse, add_gslibp, bdist_wheel_dir)
 
         include_dirs = [mfembuilddir, mfemincdir, mfemsrcdir,
                         numpyinc,
                         mpi4pyinc,
-                        hypreinc, metisinc]
-        library_dirs = [mfemlnkdir,]
+                        hypreinc,
+                        metisinc,]
+
+        library_dirs = [mfemlnkdir,] 
     except ImportError:
         if 'clean' not in sys.argv:
             raise
@@ -63,7 +66,8 @@ def get_extensions():
         add_pumi = ''
         add_gslibp = ''
         cxx11flag = ''
-        mfem_external = '0'
+        mfem_outside = '0'
+        mpiinc = ''
 
     libraries = ['mfem',]
 
@@ -77,10 +81,17 @@ def get_extensions():
         sys.path.remove(x)
 
     # this forces to use compiler written in setup_local.py
-    if cc_par != '':
-        os.environ['CC'] = cc_par
-    if cxx_par != '':
-        os.environ['CXX'] = cxx_par
+    # if MPIINC (the location of MPI is given), serial compiler is used to build
+    if mpiinc == '':
+        if cc_par != '':
+            os.environ['CC'] = cc_par
+        if cxx_par != '':
+            os.environ['CXX'] = cxx_par
+    else:
+        if cc_par != '':
+            os.environ['CC'] = cc_ser
+        if cxx_par != '':
+            os.environ['CXX'] = cxx_ser
 
     modules = ["io_stream", "vtk", "sort_pairs", "datacollection",
                "globals", "mem_manager", "device", "hash", "stable3d",
@@ -116,6 +127,9 @@ def get_extensions():
                "psubmesh", "ptransfermap", "enzyme",
                "attribute_sets", "arrays_by_name",
                "hyperbolic"]
+    
+    if mpiinc != '':
+        include_dirs.append(mpiinc)
 
     if add_pumi == '1':
         from setup_local import puminc, pumilib
@@ -159,24 +173,25 @@ def get_extensions():
     include_dirs.extend(tpl_include)
 
     extra_compile_args = [cxx11flag, '-DSWIG_TYPE_TABLE=PyMFEM']
+
     macros = [('TARGET_PY3', '1'),
               ('NPY_NO_DEPRECATED_API', 'NPY_1_7_API_VERSION')]
 
     runtime_library_dirs = [
         x for x in library_dirs if x.find(bdist_wheel_dir) == -1]
-    if mfem_external == "0" and sys.platform in ("linux", "linux2"):
+    if mfem_outside == "0" and sys.platform  in ("linux", "linux2"):        
         runtime_library_dirs.append("$ORIGIN/../external/par/lib")
         runtime_library_dirs.append("$ORIGIN/../external/lib")
-    elif mfem_external == "0" and sys.platform == "darwin":
+    elif mfem_outside == "0" and sys.platform  == "darwin":        
         runtime_library_dirs.append("@loader_path/../external/par/lib")
         runtime_library_dirs.append("@loader_path/../external/lib")
     else:
         runtime_library_dirs = library_dirs
 
+    print(runtime_library_dirs)
     ext_modules = [Extension(proxy_names[modules[0]],
                              sources=sources[modules[0]],
                              extra_compile_args=extra_compile_args,
-                             extra_link_args=[],
                              include_dirs=include_dirs,
                              library_dirs=library_dirs,
                              runtime_library_dirs=runtime_library_dirs,
@@ -186,7 +201,6 @@ def get_extensions():
     ext_modules.extend([Extension(proxy_names[name],
                                   sources=sources[name],
                                   extra_compile_args=extra_compile_args,
-                                  extra_link_args=[],
                                   include_dirs=include_dirs,
                                   library_dirs=library_dirs,
                                   runtime_library_dirs=runtime_library_dirs,
