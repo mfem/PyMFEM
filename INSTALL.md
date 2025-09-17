@@ -165,7 +165,7 @@ pip install . -C"ext-only=Yes" --verbose
 pip install . -C"with-parallel=Yes" -C"ext-only=Yes" --verbose
 ```
 
-Then, genrate swig wrappers, using the swig option, together with skip-ext, so that
+Then, generate swig wrappers, using the swig option, together with skip-ext, so that
 external libraies are not rebuild.
 ```shell
 pip install . -C"skip-ext=Yes"  -C"swig=Yes" --verbose

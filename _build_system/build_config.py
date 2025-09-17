@@ -70,7 +70,7 @@ def clean_dist_info(wheeldir):
     for x in os.listdir(wheeldir):
         if x.endswith(".dist-info"):
             fname = os.path.join(wheeldir, x)
-            print("!!! removing exising ", fname)
+            print("!!! removing existing ", fname)
             shutil.rmtree(fname)
 
 
@@ -255,7 +255,6 @@ def configure_install(self):
 
     '''
     if sys.argv[0] == 'setup.py' and sys.argv[1] == 'install':
-        #print("!!!!!!!!  command-line input (setup.py install): ", sys.argv)
         process_setup_options(self, sys.argv[2:])
     else:
         #print("!!!!!!!!  command-line input (pip): ", bglb.cfs)
