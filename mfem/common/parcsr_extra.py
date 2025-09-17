@@ -504,7 +504,7 @@ def ResetHypreDiag(M, idx, value=1.0):
               np.min(jcn),  np.max(jcn), (m, n))
         raise
 
-    idx = np.array(idx, dtype=int, copy=False)
+    idx = np.asarray(idx, dtype=int)
     ii = idx[np.logical_and(idx >= ilower, idx <= iupper)]
     mat[ii-ilower, ii] = value
     # for ii in idx:
@@ -529,7 +529,7 @@ def ResetHypreRow(M, idx):
     n = M.N()
     from scipy.sparse import coo_matrix, lil_matrix
 
-    k = np.in1d(irn, idx)
+    k = np.isin(irn, idx)
     data[k] = 0.0
 
     mat = coo_matrix((data, (irn-ilower, jcn)), shape=(m, n)).tocsr()
@@ -553,7 +553,7 @@ def ResetHypreCol(M, idx):
     n = M.N()
     from scipy.sparse import coo_matrix, lil_matrix
 
-    k = np.in1d(jcn, idx)
+    k = np.isin(jcn, idx)
     data[k] = 0.0
 
     mat = coo_matrix((data, (irn-ilower, jcn)), shape=(m, n)).tocsr()
@@ -583,7 +583,7 @@ def ReadHypreDiag(M, idx):
               np.min(jcn),  np.max(jcn), (m, n))
         raise
 
-    idx = np.array(idx, dtype=int, copy=False)
+    idx = np.asarray(idx, dtype=int)
     ii = idx[np.logical_and(idx >= ilower, idx <= iupper)]
 
     tmp = mat[ii-ilower, ii].toarray().flatten()
