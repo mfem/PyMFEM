@@ -22,8 +22,9 @@ jobs:
           echo "!!!!!: "$REF
           git checkout $REF
           #
-          export PATH=/opt/python/cp38-cp38/bin:$PATH
-
+          export PATH=/opt/python/cp39-cp39/bin:$PATH
+	  
+          pip install setuptools
           pip install -U packaging
           pip3 install wheel six auditwheel twine
           pip3 install urllib3==1.26.6    # use older version to avoid OpenSSL vesion issue
