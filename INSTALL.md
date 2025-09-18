@@ -47,7 +47,7 @@ and `--with-gslib` flags as follows.
 pip install . -C"with-parallel=Yes" -C"with-gslib=Yes"
 ```
 
-(Warning) Some of the example commands are not tested yet, which are indicated by using old conversion of "python setup.py install XXXX"
+(Warning) The migration to `pip install . ` is on-going effort and Some of the example commands are not tested yet, which are indicated by using old conversion of "python setup.py install XXXX"
 
 
 ## Commonly used flags
@@ -57,12 +57,6 @@ pip install . -C"with-parallel=Yes" -C"with-gslib=Yes"
 | `--with-parallel` | Install both serial and parallel versions of `MFEM` and the wrapper<br>(note: this option turns on building `metis` and `hypre`) |
 | `--mfem-branch=<reference>` | Download/install MFEM using a specific reference (`git` `branch`, `hash`, or `tag`) |
 | `--user` | Install in user's site-package |
-
-In order to see the full list of options, use
-
-```shell
-python setup.py install --help
-```
 
 ## Advanced options
 
