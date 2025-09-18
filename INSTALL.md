@@ -2,24 +2,23 @@
 
 ## Basic serial install
 
-Most users (on Linux and Mac) will be fine using the binary bundled in the default `pip` install:
+For serial version, most users (on Linux and Mac) will be fine using the binary bundled in the default `pip` install:
 
 ```shell
 pip install mfem
 ```
 The above installation will download and install a *serial* version of `MFEM`.
 
-##  Environmental variables
-Build script checks the following environmental variables
-- CC : c compiler for parallel build
-- CXX : c++ compiler for serial build
-- MPICC : c compiler for parallel build
-- MPICXX : c++ compiler for parallel build
-- CXX11FLAG : C++11 flag for C++ compiler
-- MPIINC : the location of MPI.h (if this variable is set, the parallle PyMFEM is build with CXX, not MPICXX)
-
 
 ##  Building from source
+To build it from source, clone the repository and use pip command
+
+```shell
+git clone git@github:mfem/PyMFEM.git
+cd PyMFEM
+pip install . --user
+```
+
 PyMFEM has many options for installation, when building from source, including:
  - Serial and parallel (MPI) wrappers
  - Using pre-built local dependencies
@@ -28,17 +27,13 @@ PyMFEM has many options for installation, when building from source, including:
    - `gslib`
    - `libceed`
    - `metis`
-
-Most of the options for PyMFEM can be used directly when installing via `pip install . or python setup.py install`, e.g.
-```shell
-git clone git@github:mfem/PyMFEM.git
-cd PyMFEM
-pip install . --user
-
-or
-
-python setup.py install --user
-```
+Build script checks the following environmental variables
+  - CC : c compiler for parallel build
+  - CXX : c++ compiler for serial build
+  - MPICC : c compiler for parallel build
+  - MPICXX : c++ compiler for parallel build
+  - CXX11FLAG : C++11 flag for C++ compiler
+  - MPIINC : the location of MPI.h (if this variable is set, the parallle PyMFEM is build with CXX, not MPICXX)
 
 Note that `python setup.py install` is deprecated and will be removed soon in favor of `pip`.
 When installing via `pip`, options are specified using the `-C` flag using the syntax `-C"name=value"`; e.g. the `--with-parallel` option is now specified as `-C"with-parallel=Yes`.
@@ -48,12 +43,11 @@ For example, parallel (MPI) support and GSlib support is built with  `--with-par
 and `--with-gslib' flags as follows.
 
 ```shell
-python setup.py install --with-parallel --with-gslib
-or
 pip install . -C"with-parallel=Yes" -C"with-gslib=Yes"
 ```
 
-Note: this option turns on building `metis` and `Hypre`
+(Warning) Some of the example commands are not tested yet, which are indicated by using old conversion of "python setup.py install XXXX"
+
 
 ## Commonly used flags
 
