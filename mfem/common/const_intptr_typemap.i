@@ -1,4 +1,7 @@
 //
+// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
+//
+//
 // const_intptr_typemap
 //
 // This typemap accept list/const */Array<int>/numpy float array for int32 *  (used in mesh.i)

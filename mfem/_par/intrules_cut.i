@@ -1,3 +1,6 @@
+//
+// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
+//
 %module (package="mfem._par", director="1") intrules_cut
 
 %{

@@ -18,24 +18,25 @@ pip install mfem            # binary install is available only on linux platform
 
 ### Build with additional features (MPI, GPU, GPU-Hypre, GSLIB, SuiteSparse, libCEED, LAPACK)
 
-The setup script accept various options. Download the package manually and run the script. Examples below downloads and build parallel version of MFEM library (linked with Metis and Hypre) and installs under <prefix>/mfem. See INSTALL.md for various other options
+The setup script accept various options. Download the package manually and run the script. Examples below downloads and build parallel version of MFEM library (linked with Metis and Hypre) and installs under <prefix>/mfem. See [INSTALL](INSTALL.md) for various other options
 
+#### Download source and build
 ```shell
-# Download source and build
 $ git clone https://github.com/mfem/PyMFEM.git
 
 # Build it from local source with MPI
 $ pip install ./ -C"with-parallel=Yes" --verbose
+```
 
-
-# Cleaning
+#### Cleaning
+```shell
 $ python setup.py clean --all # clean external dependencies + wrapper code
-
-# Run test
+```
+#### Run test
+```shell
 cd test
 python test_examples.py -serial
-
-# For other configurations, see INSTALL.md
+```
 
 ## Usage
 This example (modified from `ex1.cpp`) solves the Poisson equation,
@@ -118,7 +119,9 @@ plt.show()
 
 
 ## License
-PyMFEM is licensed under BSD-3.
+PyMFEM is licensed under BSD-3 license. All new contributions
+must be made under this license. See [License](LICENSE) for details.
+
 Please refer the developers' web sites for the external libraries
 * MFEM: https://mfem.org/
 * Hypre: https://computing.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods

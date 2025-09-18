@@ -1,4 +1,7 @@
 //
+// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
+//
+//
 //   allows to pass OperatorPtr to operator & 
 //
 %typemap(in, noblock=1) mfem::Operator & (void *argp = 0, int res = 0) {

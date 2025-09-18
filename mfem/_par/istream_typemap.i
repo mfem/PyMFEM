@@ -1,3 +1,6 @@
+//
+// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
+//
 %module(package="mfem._par") istream_typemap
 
 //recipe for istream

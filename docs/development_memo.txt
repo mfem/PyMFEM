@@ -12,22 +12,25 @@ $ twine check dist/*        # check syntax
 $ python3 -m twine upload --repository testpypi dist/*    # upload at testpypi
 $ python3 -m twine upload dist/*                          # uploade to the official
 
+### check test PyPI distribution
+pip3 install -i  https://test.pypi.org/simple  mfem==4.8.0rc10  -verbose
+
+
 ### building step-by-step
-pip download -i  https://test.pypi.org/simple/ mfem
-python3 setup.py install --prefix=~/sandbox --verbose --with-parallel
+git clone https://github.com/mfem/PyMFEM.git
+cd PyMFEM
 
-### test inside virtualenv
-virtualenv env
-source env/bin/activate
+1)  build external libraries
+pip install . -C"ext-only=Yes" --verbose
+pip install . -C"with-parallel=Yes" -C"ext-only=Yes" --verbose
+ 
+2) generate wrapper codes
+pip install . -C"skip-ext=Yes"  -C"swig=Yes" --verbose
+pip install . -C"with-parallel=Yes" -C"skip-ext=Yes"  -C"swig=Yes" --verbose
 
-### test verious pip combinations
-pip3 install -i  https://test.pypi.org/simple  mfem --no-binary mfem --verbose
-pip3 install -i  https://test.pypi.org/simple  mfem --no-binary mfem --verbose --prefix=~/sandbox
-
-virtualenv env
-source env/bin/activate
-pip3 install -i  https://test.pypi.org/simple  mfem --no-binary mfem --verbose
-
+3) compile wrapper
+pip install . -C"skip-ext=Yes"  -C"skip-swig=Yes" --verbose
+pip install . -C"with-parallel=Yes" -C"skip-ext=Yes"  -C"skip-swig=Yes" --verbose
 
 ### Test linux binary build locally using docker (1) for Python <= 3.9
 

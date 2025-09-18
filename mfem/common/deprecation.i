@@ -1,3 +1,6 @@
+//
+// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
+//
 // deprecate an overload method
 %define DEPRECATED_OVERLOADED_METHOD(method, message, condition)
 %feature("pythonprepend") method %{

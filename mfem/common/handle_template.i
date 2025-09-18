@@ -1,4 +1,7 @@
 //
+// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
+//
+//
 //    AS_RENAME  rename As -> AsHypreParMatrix
 //    AS_WRAP    instatiate As <T>
 //

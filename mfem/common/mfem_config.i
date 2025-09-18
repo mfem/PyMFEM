@@ -1,3 +1,6 @@
+//
+// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
+//
 %ignore MFEM_GIT_STRING;
 %ignore MFEM_HYPRE_VERSION;
 %ignore MFEM_SOURCE_DIR;

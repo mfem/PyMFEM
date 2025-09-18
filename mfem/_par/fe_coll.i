@@ -1,3 +1,6 @@
+//
+// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
+//
 %module(package="mfem._par") fe_coll
 %{
 #include <iostream>

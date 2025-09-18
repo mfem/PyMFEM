@@ -1,4 +1,7 @@
 //
+// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
+//
+//
 //   this typemap is used together with %extend, which
 //   adds a class member taking int *pymfem_size 
 //
