@@ -1,3 +1,6 @@
+//
+// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
+//
 // integer array output with known length (tuple)
 %define INTARRAY_OUT_TO_TUPLE(type_name, l)
 %typemap(out) type_name{

@@ -1,3 +1,6 @@
+//
+// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
+//
 %define ENUM_CLASS_WRAP(P1, P2)
 %pythoncode %{
  

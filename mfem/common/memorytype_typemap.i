@@ -1,4 +1,7 @@
 //
+// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
+//
+//
 //   this typemap is used to replace MemoryType input
 //   to mfem.MemoryType in Pythonl, which is a IntEnum class
 //

@@ -1,4 +1,7 @@
 //
+// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
+//
+//
 // const_doubleptr_typemap
 //
 // this typemap accept list/const */vector/numpy float array for double *  (used in mesh.i)

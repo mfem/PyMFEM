@@ -1,3 +1,6 @@
+//
+// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
+//
 // Used in array.i
 //  INTPTR_SIZE_IN(int *data_, int asize)
 //  DOUBLEPTR_SIZE_IN(double *data_, int asize)

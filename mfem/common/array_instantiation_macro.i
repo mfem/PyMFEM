@@ -1,3 +1,6 @@
+//
+// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
+//
 %define INSTANTIATE_ARRAY2(XXX, YYY, ZZZ, USEPTR)
 #if USEPTR == 1
  //%template(##ZZZ##Ptr##Array) mfem::Array<mfem::XXX>;

@@ -1,3 +1,6 @@
+//
+// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
+//
 //  conversion of Int (can handle numpy int)
 %typemap(in) int {
   if ((PyArray_PyIntAsInt($input) == -1) && PyErr_Occurred()) {

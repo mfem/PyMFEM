@@ -1,3 +1,6 @@
+//
+// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
+//
 namespace mfem {
 %pythonappend BilinearFormIntegrator::BilinearFormIntegrator %{
     self._coeff = args

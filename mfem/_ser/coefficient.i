@@ -1,3 +1,6 @@
+//
+// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
+//
 /*
    coefficient.i
    SWIG interface file for coefficient.hpp
