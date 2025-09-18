@@ -27,6 +27,7 @@ PyMFEM has many options for installation, when building from source, including:
    - `gslib`
    - `libceed`
    - `metis`
+   
 Build script checks the following environmental variables
   - CC : c compiler for parallel build
   - CXX : c++ compiler for serial build
@@ -40,7 +41,7 @@ When installing via `pip`, options are specified using the `-C` flag using the s
 The name and value of each option should be written explicitly with a dedicated -C flag.
 
 For example, parallel (MPI) support and GSlib support is built with  `--with-parallel`
-and `--with-gslib' flags as follows.
+and `--with-gslib` flags as follows.
 
 ```shell
 pip install . -C"with-parallel=Yes" -C"with-gslib=Yes"
