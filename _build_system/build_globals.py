@@ -81,8 +81,8 @@ cxx_command = 'c++' if os.getenv("CC") is None else os.getenv("CXX")
 mpicc_command = 'mpicc' if os.getenv("MPICC") is None else os.getenv("MPICC")
 mpicxx_command = 'mpic++' if os.getenv(
     "MPICXX") is None else os.getenv("MPICXX")
-cxx11_flag = '-std=c++11' if os.getenv(
-    "CXX11FLAG") is None else os.getenv("CXX11FLAG")
+cxxstd_flag = '-std=c++17' if os.getenv(
+    "CXXSTDFLAG") is None else os.getenv("CXXSTDFLAG")
 
 # location of MPI.h. Usually it is not needed, as long as MPI compiler can be used
 #

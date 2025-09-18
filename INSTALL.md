@@ -128,7 +128,7 @@ option.
 
 (example)
 ```shell
-python setup.py install --mfem-branch=master
+pip install . -C"mfem-branch=master"
 ```
 
 ### Using MFEM build externally.

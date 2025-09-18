@@ -46,7 +46,7 @@ def cmake_make_mfem(serial=True):
                   'DMFEM_ENABLE_MINIAPPS': '0',
                   'DCMAKE_SHARED_LINKER_FLAGS': ldflags,
                   'DMFEM_USE_ZLIB': '1',
-                  'DCMAKE_CXX_FLAGS': bglb.cxx11_flag,
+                  'DCMAKE_CXX_FLAGS': bglb.cxxstd_flag,
                   'DCMAKE_BUILD_WITH_INSTALL_RPATH': '1'}
 
     if sys.platform == 'darwin':

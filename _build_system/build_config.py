@@ -216,7 +216,7 @@ def process_cmd_options(command_obj, cfs):
             param = param[:-1]
             attr = attr[:-1]
             value = cfs.pop(param, "")
-            if cc != "":
+            if value != "":
                 if not hasattr(command_obj, attr):
                     assert False, str(command_obj) + " does not have " + attr
                 setattr(command_obj, attr, value)
