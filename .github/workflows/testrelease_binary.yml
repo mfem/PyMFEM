@@ -66,8 +66,6 @@ jobs:
           pip3 install auditwheel twine
           pip3 install urllib3==1.26.6    # use older version to avoid OpenSSL vesion issue
 
-          pip3 install -r requirements.txt
-
           CWD=$PWD
           yum install -y zlib-devel
           #yum install -y chrpath
