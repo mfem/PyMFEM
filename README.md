@@ -26,15 +26,17 @@ $ git clone https://github.com/mfem/PyMFEM.git
 
 # Build it from local source with MPI
 $ pip install ./ -C"with-parallel=Yes" --verbose
-
+```
 
 # Cleaning
+```shell
 $ python setup.py clean --all # clean external dependencies + wrapper code
-
+```
 # Run test
+```shell
 cd test
 python test_examples.py -serial
-
+```
 # For other configurations, see INSTALL.md
 
 ## Usage
@@ -118,7 +120,9 @@ plt.show()
 
 
 ## License
-PyMFEM is licensed under BSD-3.
+PyMFEM is licensed under BSD-3 license. All new contributions
+must be made under this license. See [License](LICENSE) for details.
+
 Please refer the developers' web sites for the external libraries
 * MFEM: https://mfem.org/
 * Hypre: https://computing.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods
