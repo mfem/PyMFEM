@@ -40,17 +40,6 @@ XXXPTR_SIZE_IN(int *data_, int asize, int)
 XXXPTR_SIZE_IN(double *data_, int asize, double)
 XXXPTR_SIZE_IN(bool *data_, int asize, bool)
 
-%pythonappend mfem::Array::Array %{
-  if len(args) == 1 and isinstance(args[0], list):
-      if (len(args[0]) == 2 and hasattr(args[0][0], 'disown') and
-          not hasattr(args[0][1], 'disown')):
-          ## first element is SwigObject, like <Swig Object of type 'int *'>
-          ## We do not own data in this case.
-          pass
-      else:
-          self.MakeDataOwner()
-%}
-
 %ignore mfem::Array::operator[];
 %ignore mfem::Array2D::operator[];
 %ignore mfem::BlockArray::operator[];
@@ -92,8 +81,20 @@ XXXPTR_SIZE_IN(bool *data_, int asize, bool)
 
 };
 namespace mfem{
+%pythonappend Array::Array %{
+  if len(args) == 1 and isinstance(args[0], list):
+      if (len(args[0]) == 2 and hasattr(args[0][0], 'disown') and
+          not hasattr(args[0][1], 'disown')):
+          ## first element is SwigObject, like <Swig Object of type 'int *'>
+          ## We do not own data in this case.
+          pass
+      else:
+          self.MakeDataOwner()
+%}
 %pythonprepend Array::__setitem__ %{
     i = int(i)
+    if hasattr(v, "thisown"):
+        v.thisown = False
 %}
 %pythonprepend Array::Append %{
     if isinstance(args[0], list):
@@ -179,14 +180,60 @@ INSTANTIATE_ARRAY_BOOL
 IGNORE_ARRAY_METHODS_PREMITIVE(unsigned int)
 INSTANTIATE_ARRAY_NUMPYARRAY(uint, unsigned int, NPY_UINT)       // 32bit
 
-/*
-   for these Array2D, we instantiate it. But we dont extend it since, Array2D<T> does not
-   expose the interanl pointer to array1d.
-*/
-%template(intArray2D) mfem::Array2D<int>;
-%template(doubleArray2D) mfem::Array2D<double>;
-
 /* Array< Array<int> *> */
 IGNORE_ARRAY_METHODS(mfem::Array<int> *)
 INSTANTIATE_ARRAY2(Array<int> *, Array<int>, intArray, 1)
 
+/*
+   Array2D:: Assign and data access
+*/
+
+%extend mfem::Array2D{
+  void Assign(const T &a){
+     *self = a;
+  }
+  void Assign(const mfem::Array2D<T> &a){
+     *self = a;
+  }
+
+  void __setitem__(PyObject* param, const T v) {
+    if (PyTuple_Check(param)) {
+        PyErr_Clear();
+        int i = PyInt_AsLong(PyTuple_GetItem(param, 0));
+        int j = PyInt_AsLong(PyTuple_GetItem(param, 1));
+
+        if (PyErr_Occurred()) {
+           PyErr_SetString(PyExc_ValueError, "Argument must be i, j");
+           return;
+        }
+	T *arr =  self -> GetRow(i);
+        arr[j] = v;
+    }
+  }
+  T __getitem__(PyObject* param) {
+    if (PyTuple_Check(param)) {
+        PyErr_Clear();
+        int i = PyInt_AsLong(PyTuple_GetItem(param, 0));
+        int j = PyInt_AsLong(PyTuple_GetItem(param, 1));
+
+        if (PyErr_Occurred()) {
+           PyErr_SetString(PyExc_ValueError, "Argument must be i, j");
+	   i = 0;
+	   j = 0;
+        }
+	T *arr = self -> GetRow(i);
+        return arr[j];
+    }
+  }
+}
+
+%template(intArray2D) mfem::Array2D<int>;
+%template(doubleArray2D) mfem::Array2D<double>;
+
+/* Array2D<* DenseMatrix>, Array2D<* SparseMatrix>,  Array2D<* HypreParMatrix> */
+
+IGNORE_ARRAY_METHODS(mfem::DenseMatrix *)
+IGNORE_ARRAY_METHODS(mfem::SparseMatrix *)
+
+%template(DenseMatrixArray2D) mfem::Array2D<mfem::DenseMatrix *>;
+%template(SparseMatrixArray2D) mfem::Array2D<mfem::SparseMatrix *>;

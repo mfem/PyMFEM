@@ -36,6 +36,10 @@ for line in fid.readlines():
             pass
         elif line.find("(self, fes, e=1.0)") != -1:
             pass
+        elif line.find("(self, vdim_=1)") != -1:
+            pass
+        elif line.find("(self, vdim_)") != -1:
+            pass
         else:
             print(cname)
             print(line)

@@ -1,0 +1,53 @@
+[project]
+name = "mfem"
+license = "BSD-3-Clause"
+description = "MFEM + PyMFEM (finite element method library)"
+dynamic = ["version"]
+readme = "README.md"
+authors = [ { name = "MFEM development team" } ]
+maintainers = [ { name = "S. Shiraiwa", email = "shiraiwa@princeton.edu" } ]
+keywords = ["scientific computing", "finite element method"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "Topic :: Scientific/Engineering :: Physics",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "numpy>=2.0.0",
+    "numba",
+    "scipy",
+]
+
+[project.optional-dependencies]
+MPI = ["mpi4py"]
+
+[project.urls]
+"Homepage" = "http://mfem.org"
+"Download" = "https://github.com/pymfem"
+
+[build-system]
+requires = [
+        "setuptools>=80.0.1",
+        "pip>=25.1.0", 
+	"numpy>=2.0.0",
+	"cmake>=4.0.0",
+	"swig>=4.3",
+]
+build-backend = "backend"
+backend-path = ["_build_system"]
+
+[tool.setuptools.dynamic]
+version = { attr = "mfem.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["mfem", "mfem.*"]
+
+[tool.setuptools.package-data]
+"mfem._par" = ["*.so"]
+"mfem._ser" = ["*.so"]

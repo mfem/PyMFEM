@@ -493,7 +493,7 @@ def run(order=1,
 
     # 14. Compute the various boundary integrals.
     if myid == 0:
-        print("Verifying boundary conditions" +
+        print("Verifying boundary conditions\n" +
               "=============================")
 
     # Integrate the solution on the Dirichlet boundary and compare to the

@@ -1,13 +1,23 @@
 # Installation Guide
 
-## Basic install
+## Basic serial install
 
-Most users will be fine using the binary bundled in the default `pip` install:
+Most users (on Linux and Mac) will be fine using the binary bundled in the default `pip` install:
 
 ```shell
 pip install mfem
 ```
 The above installation will download and install a *serial* version of `MFEM`.
+
+##  Environmental variables
+Build script checks the following environmental variables
+- CC : c compiler for parallel build
+- CXX : c++ compiler for serial build
+- MPICC : c compiler for parallel build
+- MPICXX : c++ compiler for parallel build
+- CXX11FLAG : C++11 flag for C++ compiler
+- MPIINC : the location of MPI.h (if this variable is set, the parallle PyMFEM is build with CXX, not MPICXX)
+
 
 ##  Building from source
 PyMFEM has many options for installation, when building from source, including:
@@ -19,15 +29,28 @@ PyMFEM has many options for installation, when building from source, including:
    - `libceed`
    - `metis`
 
-Most of the options for PyMFEM can be used directly when installing via `python setup.py install`, e.g.
+Most of the options for PyMFEM can be used directly when installing via `pip install . or python setup.py install`, e.g.
 ```shell
 git clone git@github:mfem/PyMFEM.git
 cd PyMFEM
+pip install . --user
+
+or
+
 python setup.py install --user
 ```
-For example, parallel (MPI) support is built with  the `--with-parallel` flag:
+
+Note that `python setup.py install` is deprecated and will be removed soon in favor of `pip`.
+When installing via `pip`, options are specified using the `-C` flag using the syntax `-C"name=value"`; e.g. the `--with-parallel` option is now specified as `-C"with-parallel=Yes`.
+The name and value of each option should be written explicitly with a dedicated -C flag.
+
+For example, parallel (MPI) support and GSlib support is built with  `--with-parallel`
+and `--with-gslib' flags as follows.
+
 ```shell
-python setup.py install --with-parallel
+python setup.py install --with-parallel --with-gslib
+or
+pip install . -C"with-parallel=Yes" -C"with-gslib=Yes"
 ```
 
 Note: this option turns on building `metis` and `Hypre`
@@ -105,7 +128,7 @@ option.
 
 (example)
 ```shell
-python setup.py install --mfem-branch=master
+pip install . -C"mfem-branch=master"
 ```
 
 ### Using MFEM build externally.
@@ -136,43 +159,38 @@ and `--mfem-prefix`
 | `--ext-only` | build exteranl libraries and exit.|
 
 During the development, often we update depenencies (such as MFEM) and edit `*.i` file.
+These options allows for building PyMFEM in a step-by-step manner, without rebuilding
+the entire wrapper everytime.
 
-
-First clean everything.
+First clone the repository or clean everything.
 
 ```shell
+git clone git@github.com:mfem/PyMFEM.git;cd PyMFEM
 python setup.py clean --all
 ```
 
-Then, build externals alone
+Then, build externals alone using the ext-only option
 ```shell
-python setup.py install --with-parallel --ext-only --mfem-branch=master
+pip install . -C"ext-only=Yes" --verbose
+pip install . -C"with-parallel=Yes" -C"ext-only=Yes" --verbose
 ```
 
-Then, genrate swig wrappers.
+Then, generate swig wrappers, using the swig option, together with skip-ext, so that
+external libraies are not rebuild.
 ```shell
-python setup.py install --with-parallel --swig --mfem-branch=master
+pip install . -C"skip-ext=Yes"  -C"swig=Yes" --verbose
+pip install . -C"with-parallel=Yes" -C"skip-ext=Yes"  -C"swig=Yes" --verbose
 ```
 
 If you are not happy with the wrapper (`*.cxx` and `*.py`), you edit `*.i` and redo
-the same. When you are happy, build the wrapper. `--swig` does not clean the
-existing wrapper. So, it will only update wrapper for updated `*.i`
+the same. When you are happy, build the wrapper with skip-swig and skip-ext.
 
-When building a wrapper, you can use `--skip-ext` option. By default, it will re-run
-swig to generate entire wrapper codes.
 ```shell
-python setup.py install --with-parallel --skip-ext --mfem-branch=master
-```
-
-If you are sure, you could use `--skip-swig` option, so that it compiles the wrapper
-codes without re-generating it.
-```shell
-python setup.py install --with-parallel --skip-ext --skip-swig --mfem-branch=master
+pip install . -C"skip-ext=Yes"  -C"skip-swig=Yes" --verbose
+pip install . -C"with-parallel=Yes" -C"skip-ext=Yes"  -C"skip-swig=Yes" --verbose
 ```
 
 ### Other options
 `--unverifiedSSL` :
    This addresses error relating SSL certificate. Typical error message is
    `<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:xxx)>`
-
-

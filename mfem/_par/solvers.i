@@ -31,10 +31,16 @@ import_array();
 %import "hypre.i"
 %import "../common/exception.i"
 
-%ignore mfem::IterativeSolverMonitor::SetIterativeSolver;
 %feature("director") mfem::IterativeSolverMonitor;
+%feature("director") mfem::IterativeSolverController;
 %feature("director") mfem::PyIterativeSolver;
 
+// Forward declaration
+%inline %{
+  namespace mfem{
+     class IterativeSolver;
+  }
+%}  
 %include "linalg/solvers.hpp"
 %include "../common/pysolvers.hpp"
 

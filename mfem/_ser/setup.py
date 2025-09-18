@@ -5,15 +5,14 @@ Serial version setup file
 """
 
 
-# first load variables from PyMFEM_ROOT/setup_local.py
 import sys
 import os
-import numpy
 
 # this remove *.py in this directory to be imported from setuptools
+# Github workflow (next import) fails without this, because it loads
+# array.py in current directoy
 sys.path.remove(os.path.abspath(os.path.dirname(sys.argv[0])))
 from distutils.core import Extension, setup
-
 
 ddd = os.path.dirname(os.path.abspath(os.path.realpath(__file__)))
 root = os.path.abspath(os.path.join(ddd, '..', '..'))
@@ -33,16 +32,17 @@ def get_version():
 
 
 def get_extensions():
+    # first load variables from PyMFEM_ROOT/setup_local.py
     sys.path.insert(0, root)
     try:
         from setup_local import (mfemserbuilddir, mfemserincdir, mfemsrcdir, mfemserlnkdir,
-                                 mfemstpl, build_mfem,
+                                 mfemstpl, numpyinc,
                                  cc_ser, cxx_ser,
-                                 cxx11flag,
-                                 add_cuda, add_libceed, add_suitesparse, add_gslibs,)
+                                 cxxstdflag, mfem_outside,
+                                 add_cuda, add_libceed, add_suitesparse, add_gslibs,
+                                 bdist_wheel_dir)
 
-        include_dirs = [mfemserbuilddir, mfemserincdir, mfemsrcdir,
-                        numpy.get_include()]
+        include_dirs = [mfemserbuilddir, mfemserincdir, mfemsrcdir, numpyinc,]
         library_dirs = [mfemserlnkdir, ]
 
     except ImportError:
@@ -58,20 +58,21 @@ def get_extensions():
         add_libceed = ''
         add_suitesparse = ''
         add_gslibs = ''
-        cxx11flag = ''
-        build_mfem = '0'
+        cxxstdflag = '-std=c++17'        
+        mfem_outside = '0'
+
 
     libraries = ['mfem']
 
     # remove current directory from path
-    #print("__file__", os.path.abspath(__file__))
+    # print("__file__", os.path.abspath(__file__))
     if '' in sys.path:
         sys.path.remove('')
     items = [x for x in sys.path if os.path.abspath(
         x) == os.path.dirname(os.path.abspath(__file__))]
     for x in items:
         sys.path.remove(x)
-    #print("sys path", sys.path)
+    # print("sys path", sys.path)
 
     # this forces to use compiler written in setup_local.py
     if cc_ser != '':
@@ -107,7 +108,9 @@ def get_extensions():
                "submesh", "transfermap", "staticcond",
                "sidredatacollection", "enzyme",
                "attribute_sets", "arrays_by_name",
-               "hyperbolic"]
+               "hyperbolic",
+               "complex_densemat", "complexstaticcond", "complexweakform",
+               "bounds"]
 
     if add_cuda == '1':
         from setup_local import cudainc
@@ -135,13 +138,16 @@ def get_extensions():
             tpl_include.append(x[2:])
     include_dirs.extend(tpl_include)
 
-    extra_compile_args = [cxx11flag, '-DSWIG_TYPE_TABLE=PyMFEM']
+    extra_compile_args = [cxxstdflag, '-DSWIG_TYPE_TABLE=PyMFEM']
     macros = [('TARGET_PY3', '1'),
               ('NPY_NO_DEPRECATED_API', 'NPY_1_7_API_VERSION')]
 
-    if build_mfem == "1":
-        runtime_library_dirs = library_dirs[:]
-        runtime_library_dirs[0] = "$ORIGIN/../external/ser/lib"
+    runtime_library_dirs = [
+        x for x in library_dirs if x.find(bdist_wheel_dir) == -1]
+    if mfem_outside == "0" and sys.platform in ("linux", "linux2"):
+        runtime_library_dirs.append("$ORIGIN/../external/ser/lib")
+    elif mfem_outside == "0" and sys.platform == "darwin":
+        runtime_library_dirs.append("@loader_path/../external/ser/lib")
     else:
         runtime_library_dirs = library_dirs
 

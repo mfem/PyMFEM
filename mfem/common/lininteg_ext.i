@@ -44,6 +44,9 @@ namespace mfem {
 %pythonappend VectorFEBoundaryFluxLFIntegrator::VectorFEBoundaryFluxLFIntegrator %{
     self._coeff = args
 %}
+%pythonappend VectorFEBoundaryNormalLFIntegrator::VectorFEBoundaryNormalLFIntegrator %{
+    self._coeff = f
+%}
 %pythonappend VectorFEBoundaryTangentLFIntegrator::VectorFEBoundaryTangentLFIntegrator %{
     self._coeff = QG
 %}

@@ -19,8 +19,14 @@ from mfem.ser import intArray
 from os.path import expanduser, join, dirname
 import numpy as np
 from numpy import sin, cos, exp, sqrt, pi
-import scipy.special
 
+try:
+    import numba
+except ImportError:
+    assert False, "Numba is required"
+
+from mfem.common.bessel import jv as jn
+from mfem.common.bessel import yv as yn
 
 prob = ''
 
@@ -526,8 +532,6 @@ def source(x, out):
 
 
 def maxwell_solution(x, E, sdim):
-    jn = scipy.special.jv
-    yn = scipy.special.yn
     # Initialize
     for i in range(sdim):
         E[i] = 0.0
@@ -683,7 +687,7 @@ def detJ_JT_J_inv_Im_f(x, D):
         det *= dxs[i]
     for i in range(dim):
         D[i] = (det / (dxs[i]**2)).imag
-    #print("imag", D)
+    # print("imag", D)
 
 
 def detJ_JT_J_inv_abs_f(x, D):

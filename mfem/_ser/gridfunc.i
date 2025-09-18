@@ -48,6 +48,7 @@ import_array();
 %import "sparsemat.i"
 %import "lininteg.i"
 %import "eltrans.i"
+%import "bounds.i"
 
 %import "../common/io_stream_typemap.i"
 OSTREAM_TYPEMAP(std::ostream&)

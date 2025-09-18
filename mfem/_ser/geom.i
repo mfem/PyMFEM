@@ -33,6 +33,7 @@ namespace mfem{
    %ignore Array<Geometry::Type>::DeleteFirst;
    %ignore Array<Geometry::Type>::Unique;
    %ignore Array<Geometry::Type>::PartialSum;
+   %ignore Array<Geometry::Type>::Abs;
    %ignore Array<Geometry::Type>::Sum;
    %ignore Array<Geometry::Type>::IsSorted;
    %ignore Array<Geometry::Type>::Save;

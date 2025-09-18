@@ -460,7 +460,7 @@ def run(order=1,
     m.FormSystemMatrix(ess_tdof_list, M)
 
     # 14. Compute the various boundary integrals.
-    print("Verifying boundary conditions" +
+    print("Verifying boundary conditions\n" +
           "=============================")
 
     # Integrate the solution on the Dirichlet boundary and compare to the
