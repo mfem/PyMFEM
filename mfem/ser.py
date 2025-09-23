@@ -74,6 +74,9 @@ from  mfem._ser.fe_nurbs import *
 from  mfem._ser.doftrans import *
 from  mfem._ser.std_vectors import *
 
+from  mfem._ser.bounds import *
+from  mfem._ser.integrator import *
+
 try:
     from  mfem._ser.complex_densemat import *
 except ImportError:
