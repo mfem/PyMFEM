@@ -9,6 +9,7 @@
 #include "../common/pybilininteg.hpp"
 #include "../common/pyintrules.hpp"
 #include "../common/pynonlininteg.hpp"
+#include "../common/pylininteg.hpp"
 #include "numpy/arrayobject.h"
   //using namespace mfem;
 %}

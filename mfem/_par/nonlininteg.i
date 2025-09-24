@@ -21,6 +21,7 @@ import_array();
 %import operators.i
 %import fespace.i
 %import eltrans.i
+%import integrator.i
 %import "../common/exception_director.i"
 
 %include "fem/nonlininteg.hpp"
