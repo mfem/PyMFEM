@@ -96,6 +96,9 @@ from  mfem._par.transfermap import *
 from  mfem._par.ptransfermap import *
 from  mfem._par.hyperbolic import *
 
+from  mfem._par.bounds import *
+from  mfem._par.integrator import *
+
 try:
    from  mfem._par.gslib import *
 except:

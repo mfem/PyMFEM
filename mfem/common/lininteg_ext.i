@@ -1,6 +1,3 @@
-//
-// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
-//
 namespace mfem {
 %pythonappend LinearFormIntegrator::LinearFormIntegrator %{
     self._coeff = args
@@ -24,6 +21,7 @@ namespace mfem {
     self._coeff = QG
 %}
 %pythonappend VectorDomainLFIntegrator::VectorDomainLFIntegrator %{
+    self._ir=ir
     self._coeff = QF
 %}
 %pythonappend VectorDomainLFGradIntegrator::VectorDomainLFGradIntegrator %{
@@ -42,7 +40,8 @@ namespace mfem {
     self._coeff = QF
 %}
 %pythonappend VectorBoundaryFluxLFIntegrator::VectorBoundaryFluxLFIntegrator %{
-    self._coeff = (f, ir)
+    self._ir=ir
+    self._coeff = f
 %}
 %pythonappend VectorFEBoundaryFluxLFIntegrator::VectorFEBoundaryFluxLFIntegrator %{
     self._coeff = args
@@ -66,9 +65,14 @@ namespace mfem {
     self._coeff = QG
 %}
 %pythonappend VectorQuadratureLFIntegrator::VectorQuadratureLFIntegrator %{
-    self._coeff = (vqfc, ir)
+    self._ir=ir
+    self._coeff = vqfc
 %}
 %pythonappend QuadratureLFIntegrator::QuadratureLFIntegrator %{
-    self._coeff = (qfc, ir)
+    self._ir=ir
+    self._coeff = qfc
+%}
+%pythonappend PyLinearFormIntegrator::PyLinearFormIntegrator %{
+    self._ir=ir
 %}
 }

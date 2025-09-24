@@ -1,3 +1,4 @@
+include _build_system/*.py
 include mfem/*/*.i
 include mfem/*/*.cxx
 include mfem/*/*.h
