@@ -41,6 +41,7 @@ namespace mfem{
    %ignore Array<Geometry::Type>::Save;
    %ignore Array<Geometry::Type>::Max;
    %ignore Array<Geometry::Type>::Min;
+   %ignore Array<Geometry::Type>::IsConstant;
    %ignore Array<Geometry::Type>::Print;
    %ignore Array<Geometry::Type>::Load;
 }

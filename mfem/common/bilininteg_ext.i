@@ -307,6 +307,10 @@ namespace mfem {
     self._coeff = vc
 %}
 
+%pythonappend PyBilinearFormIntegrator::PyBilinearFormIntegrator %{
+    self._ir=ir
+%}
+
 %pythonappend SumIntegrator::AddIntegrator %{
    if self.own_integs == 1: integ.thisown = 0
 %}

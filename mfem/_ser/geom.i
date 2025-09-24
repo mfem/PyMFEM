@@ -28,6 +28,8 @@ ARRAY_LISTTUPLE_INPUT(mfem::Geometry::Type, PyLong_AsLong)
 
 %include "fem/geom.hpp"
 
+%import "../common/array_listtuple_typemap.i"
+
 namespace mfem{
    %ignore Array<Geometry::Type>::Union;
    %ignore Array<Geometry::Type>::Find;
@@ -42,6 +44,7 @@ namespace mfem{
    %ignore Array<Geometry::Type>::Save;
    %ignore Array<Geometry::Type>::Max;
    %ignore Array<Geometry::Type>::Min;
+   %ignore Array<Geometry::Type>::IsConstant;
    %ignore Array<Geometry::Type>::Print;
    %ignore Array<Geometry::Type>::Load;
 }
