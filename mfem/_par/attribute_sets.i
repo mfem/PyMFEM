@@ -15,7 +15,7 @@
 #ifdef FILE_EXISTS_MESH_ATTRIBUTE_SETS
 
 %init %{
-import_array();
+import_array1(-1);
 %}
 
 %include "exception.i"

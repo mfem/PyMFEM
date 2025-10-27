@@ -16,7 +16,7 @@
 #ifdef FILE_EXISTS_FEM_INTEGRATOR
 
 %init %{
-import_array();
+import_array1(-1);
 %}
 %include "exception.i"
 %include "../common/exception.i"

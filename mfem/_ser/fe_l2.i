@@ -10,7 +10,7 @@
 %}
 
 %init %{
-import_array();
+import_array1(-1);
 %}
 %include "exception.i"
 %import "fe_h1.i"

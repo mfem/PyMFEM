@@ -24,7 +24,7 @@
 #define PY_SSIZE_T_CLEAN
 %}
 %init %{
-import_array();
+import_array1(-1);
 %}
 
 %include "exception.i"

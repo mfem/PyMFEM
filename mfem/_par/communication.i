@@ -16,7 +16,7 @@
 %include "../common/mfem_config.i"
 
 %init %{
-import_array();
+import_array1(-1);
 %}
 
 %import "../common/io_stream_typemap.i"
@@ -26,7 +26,7 @@ OSTREAM_TYPEMAP(std::ostream&)
 %mpi4py_typemap(Comm, MPI_Comm);
 /*
 %init %{
-import_array();
+import_array1(-1);
 %}
 */
 %include "exception.i"

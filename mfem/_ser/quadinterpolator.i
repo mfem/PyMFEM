@@ -15,7 +15,7 @@
 #ifdef FILE_EXISTS_FEM_QUADINTERPOLATOR
 
 %init %{
-import_array();
+import_array1(-1);
 %}
 %include "exception.i"
 %import "fe.i"

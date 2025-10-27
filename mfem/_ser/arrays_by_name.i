@@ -15,7 +15,7 @@
 
 #ifdef FILE_EXISTS_GENERAL_ARRAYS_BY_NAME
 %init %{
-import_array();
+import_array1(-1);
 %}
 
 %include "exception.i"
