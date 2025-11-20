@@ -102,19 +102,26 @@ def make_call(command, target='', force_verbose=False, env=None):
         env.update(os.environ)
 
     myverbose = bglb.verbose or force_verbose
-    if not myverbose:
-        kwargs['stdout'] = subprocess.DEVNULL
-        kwargs['stderr'] = subprocess.DEVNULL
-
+    
+    kwargs['stdout'] = subprocess.PIPE
+    kwargs['stderr'] = subprocess.PIPE
+        
     p = subprocess.Popen(command, **kwargs)
-    p.communicate()
+    stdout, stderr= p.communicate()
     if p.returncode != 0:
         if target == '':
             target = " ".join(command)
+
+        print("!!!!!!!!!!!!!!!", p)
+        print(stdout)        
+        print(stderr)
+            
         print("Failed when calling command: " + target)
         raise subprocess.CalledProcessError(p.returncode,
                                             " ".join(command))
 
+    if not myverbose:
+        print(stdout)
 
 def chdir(path):
     '''
