@@ -118,7 +118,7 @@ def make_call(command, target='', force_verbose=False, env=None):
         print(stderr)
         raise subprocess.CalledProcessError(p.returncode,
                                             " ".join(command))
-    if not myverbose:
+    if myverbose:
         print(stdout)
 
 

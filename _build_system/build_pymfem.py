@@ -147,7 +147,19 @@ def generate_wrapper(do_parallel):
         return os.path.getmtime(ifile) > os.path.getmtime(wfile)
 
     def update_integrator_exts():
-        pwd = chdir(os.path.join(rootdir, 'mfem', 'common'))
+        commdir = os.path.join(rootdir, 'mfem', 'common')
+        pwd = chdir(commdir)
+        
+        for filename in ('bilininteg_ext.i', 'lininteg_ext.i'):
+            fid = open(filename, "w")
+            fid.close()
+            
+        os.chdir(pwd)
+        for filename in ['lininteg.i', 'bilininteg.i']:
+            command = [swig_command] + swigflag + serflag + [filename]
+            make_call(command)
+
+        os.chdir(commdir)
         command1 = [sys.executable, "generate_lininteg_ext.py"]
         command2 = [sys.executable, "generate_bilininteg_ext.py"]
         make_call(command1)
@@ -196,13 +208,6 @@ def generate_wrapper(do_parallel):
     #    create empty files
     #    run swig with *.i files
     #    call update scripts
-    for filename in ('../common/bilininteg_ext.i',
-                     '../common/lininteg_ext.i'):
-        fid = open(filename)
-        fid.close()
-    for filename in ['lininteg.i', 'bilininteg.i']:
-        command = [swig_command] + swigflag + serflag + [filename]
-        make_call(command)
     update_integrator_exts()
 
     commands = []
