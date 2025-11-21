@@ -6,10 +6,14 @@
 import os
 import time
 import mfem.ser as mfem
+
 from mfem.ser import intArray
 from os.path import expanduser, join, dirname
 import numpy as np
 from numpy import sin, cos, exp
+
+use_umfpack = hasattr(mfem, "UMFPackSolver")
+
 
 def run(order=1,
         meshfile='',
@@ -77,7 +81,8 @@ def run(order=1,
     else:
         if ny <= 0:
             ny = nx
-        mesh = mfem.Mesh.MakeCartesian2D(nx, ny, mfem.Element.QUADRILATERL)
+        print(nx, ny)
+        mesh = mfem.Mesh.MakeCartesian2D(nx, ny, mfem.Element.QUADRILATERAL)
 
     dim = mesh.Dimension()
 
@@ -85,7 +90,7 @@ def run(order=1,
     #    'ref_levels' of uniform refinement. We choose 'ref_levels' to be the
     #    largest number that gives a final mesh with no more than 10,000
     #    elements.
-    
+
     ref_levels = int(np.floor(np.log(10000./mesh.GetNE())/np.log(2.)/dim))
     for x in range(ref_levels):
         mesh.UniformRefinement()
@@ -99,9 +104,9 @@ def run(order=1,
         R_coll_dg = mfem.L2_FECollection(order+1, dim)
     else:
         R_coll = mfem.RT_FECollection(order, dim)
-    
+
     W_coll = mfem.L2_FECollection(order, dim)
-    
+
     R_space = mfem.FiniteElementSpace(mesh, R_coll, dim if dg else 1)
     if brt:
         R_space_hg = mfem.FiniteElementSpace(mesh, R_coll_dg, dim)
@@ -113,18 +118,18 @@ def run(order=1,
     #    offsets for each variable. The last component of the Array is the sum
     #    of the dimensions of each block.
 
-    block_offsets = darcy.GetOffsets().ToList()
-
+    block_offsets = darcy.GetOffsets()
+    offsets = block_offsets.ToList()
     print("***********************************************************")
-    print("dim(R) = "  + str(block_offsets[1] - block_offsets[0]))
-    print("dim(W) = "  + str(block_offsets[2] - block_offsets[1]))
-    print("dim(R+W) = "  + str(block_offsets[-1]))
+    print("dim(R) = " + str(offsets[1] - offsets[0]))
+    print("dim(W) = " + str(offsets[2] - offsets[1]))
+    print("dim(R+W) = " + str(offsets[-1]))
     print("***********************************************************")
 
     # 7. Define the coefficients, analytical solution, and rhs of the PDE.
 
-    kcoeff = mfem.ConstantCoefficient(1.0) # acoustic resistance
-    ikcoeff = mfem.RatioCoefficient(1., kcoeff) # inverse acoustic resistance
+    kcoeff = mfem.ConstantCoefficient(1.0)  # acoustic resistance
+    ikcoeff = mfem.RatioCoefficient(1., kcoeff)  # inverse acoustic resistance
 
     fcoeff = fFunc(dim)
     fnatcoeff = f_natural()
@@ -137,35 +142,36 @@ def run(order=1,
     #    linear forms fform and gform for the right hand side.  The data
     #    allocated by x and rhs are passed as a reference to the grid functions
     #    (u,p) and the linear forms (fform, gform).
-    
-    mt = device.GetMemoryType();
+
+    mt = mfem.MemoryType(device.GetDeviceMemoryType())
     x = mfem.BlockVector(block_offsets, mt)
     rhs = mfem.BlockVector(block_offsets, mt)
-    
+
     fform = mfem.LinearForm()
     fform.Update(R_space, rhs.GetBlock(0), 0)
 
     if dg:
         fform.AddDomainIntegrator(mfem.VectorDomainLFIntegrator(fcoeff))
-        fform.AddBdrFaceIntegrator(mfem.VectorBoundaryFluxLFIntegrator(fnatcoeff))
-   else
-   {
-      fform.AddDomainIntegrator(mfem.VectorFEDomainLFIntegrator(fcoeff))
-      if brt:
-         fform.AddBdrFaceIntegrator(mfem.VectorFEBoundaryFluxLFIntegrator(fnatcoeff))
-      else:
-         fform.AddBoundaryIntegrator(mfem.VectorFEBoundaryFluxLFIntegrator(fnatcoeff))
-    
+        fform.AddBdrFaceIntegrator(
+            mfem.VectorBoundaryFluxLFIntegrator(fnatcoeff))
+    else:
+        fform.AddDomainIntegrator(mfem.VectorFEDomainLFIntegrator(fcoeff))
+        if brt:
+            fform.AddBdrFaceIntegrator(
+                mfem.VectorFEBoundaryFluxLFIntegrator(fnatcoeff))
+        else:
+            fform.AddBoundaryIntegrator(
+                mfem.VectorFEBoundaryFluxLFIntegrator(fnatcoeff))
 
     fform.Assemble()
     fform.SyncAliasMemory(rhs)
-       
+
     gform = mfem.LinearForm()
     gform.Update(W_space, rhs.GetBlock(1), 0)
     gform.AddDomainIntegrator(mfem.DomainLFIntegrator(gcoeff))
     gform.Assemble()
     gform.SyncAliasMemory(rhs)
-       
+
     # 9. Assemble the finite element matrices for the Darcy operator
     #                            D = [ M  B^T ]
     #                                [ B   0  ]
@@ -177,32 +183,33 @@ def run(order=1,
     bVarf = darcy.GetFluxDivForm()
 
     if dg:
-         mtVarf = darcy.GetPotentialMassForm()        
-         mVarf.AddDomainIntegrator(mfem.VectorMassIntegrator(kcoeff))
-         bVarf.AddDomainIntegrator(mfem.VectorDivergenceIntegrator())
-         bVarf.AddInteriorFaceIntegrator(mfem.TransposeIntegrator(
-                                          mfem.DGNormalTraceIntegrator(-1.)))
-         mtVarf.AddInteriorFaceIntegrator(mfem.HDGDiffusionIntegrator(ikcoeff, td))
+        mtVarf = darcy.GetPotentialMassForm()
+        mVarf.AddDomainIntegrator(mfem.VectorMassIntegrator(kcoeff))
+        bVarf.AddDomainIntegrator(mfem.VectorDivergenceIntegrator())
+        bVarf.AddInteriorFaceIntegrator(mfem.TransposeIntegrator(
+            mfem.DGNormalTraceIntegrator(-1.)))
+        mtVarf.AddInteriorFaceIntegrator(
+            mfem.HDGDiffusionIntegrator(ikcoeff, td))
     else:
         mVarf.AddDomainIntegrator(mfem.VectorFEMassIntegrator(kcoeff))
-        bVarf.AddDomainIntegrator(mfem.VectorFEDivergenceIntegrator)
-       if brt:
-           bVarf.AddInteriorFaceIntegrator(mfem.TransposeIntegrator(
-                                             mfem.DGNormalTraceIntegrator(-1.)))
+        bVarf.AddDomainIntegrator(mfem.VectorFEDivergenceIntegrator())
+        if brt:
+            bVarf.AddInteriorFaceIntegrator(mfem.TransposeIntegrator(
+                mfem.DGNormalTraceIntegrator(-1.)))
 
-    #set hybridization / assembly level
+    # set hybridization / assembly level
     chrono = time.time()
-       
+
     ess_flux_tdofs_list = mfem.intArray()
-    if hybridization:
-       trace_coll = mfem.DG_Interface_FECollection(order, dim);
-       trace_space = mfem.FiniteElementSpace(mesh, trace_coll);
-       darcy.EnableHybridization(trace_space,
-                                 mfem.NormalTraceJumpIntegrator(),
-                                 ess_flux_tdofs_list)
-    elif (reduction and (dg or brt)):
-       darcy.EnableFluxReduction()
-       
+    if hb:
+        trace_coll = mfem.DG_Interface_FECollection(order, dim)
+        trace_space = mfem.FiniteElementSpace(mesh, trace_coll)
+        darcy.EnableHybridization(trace_space,
+                                  mfem.NormalTraceJumpIntegrator(),
+                                  ess_flux_tdofs_list)
+    elif (rd and (dg or brt)):
+        darcy.EnableFluxReduction()
+
     if pa:
         mVarf.SetAssemblyLevel(mfem.AssemblyLevel_PARTIAL)
 
@@ -210,92 +217,91 @@ def run(order=1,
 
     pDarcyOp = mfem.OperatorHandle()
     X = mfem.Vector()
-    B = mfem.Vector()       
+    B = mfem.Vector()
     x.Assign(0.0)
     darcy.FormLinearSystem(ess_flux_tdofs_list, x, rhs, pDarcyOp, X, B)
 
     print("Assembly took " + str(time.time() - chrono))
-       
+
     maxIter = 1000
     rtol = 1e-6
     atol = 1e-10
 
-   if (hybridization or (reduction and (dg or brt))):
-       # 10. Construct the preconditioner       
-       prec = mfem.GSSmoother(pDarcyOp.AsSparseMatrix())
-       
-       # 11. Solve the linear system with GMRES.
-       #     Check the norm of the unpreconditioned residual.
-       chrono = time.time()
-       solver = mfem.GMRESSolver()
-       solver.SetAbsTol(atol)
-       solver.SetRelTol(rtol)
-       solver.SetMaxIter(maxIter)
-       solver.SetOperator(pDarcyOp)
-       solver.SetPreconditioner(prec)
-       solver.SetPrintLevel(1)
+    if hb or (rd and (dg or brt)):
+        # 10. Construct the preconditioner
+        prec = mfem.GSSmoother(pDarcyOp.AsSparseMatrix())
 
-       p
+        # 11. Solve the linear system with GMRES.
+        #     Check the norm of the unpreconditioned residual.
+        chrono = time.time()
+        solver = mfem.GMRESSolver()
+        solver.SetAbsTol(atol)
+        solver.SetRelTol(rtol)
+        solver.SetMaxIter(maxIter)
+        solver.SetOperator(pDarcyOp)
+        solver.SetPreconditioner(prec)
+        solver.SetPrintLevel(1)
 
+        solver.Mult(B, X)
+        darcy.RecoverFEMSolution(X, rhs, x)
 
-       mVarf.AddDomainIntegrator(mfem.VectorFEMassIntegrator(k))
-    mVarf.Assemble()
-    if not pa:
-        mVarf.Finalize()
+        if solver.GetConverged():
+            print("GMRES converged in " + str(solver.GetNumIterations()) +
+                  " iterations with a residual norm of " + str(solver.GetFinalNorm()))
+        else:
+            print("GMRES did not converge in " + str(solver.GetNumIterations()) +
+                  " iterations with a residual norm of " + str(solver.GetFinalNorm()))
 
-    if pa:
-        bVarf.SetAssemblyLevel(mfem.AssemblyLevel_PARTIAL)
-    bVarf.AddDomainIntegrator(mfem.VectorFEDivergenceIntegrator())
-    bVarf.Assemble()
-    if not pa:
-        bVarf.Finalize()
+        print("GMRES solver took " + str(time.time() - chrono) + "s.\n")
 
-    darcyOp = mfem.BlockOperator(block_offsets)
-
-    if pa:
-        Bt = mfem.TransposeOperator(bVarf)
-
-        darcyOp.SetBlock(0, 0, mVarf)
-        darcyOp.SetBlock(0, 1, Bt, -1)
-        darcyOp.SetBlock(1, 0, bVarf, -1)
     else:
-        M = mVarf.SpMat()
-        B = bVarf.SpMat()
-        B *= -1
-        if mfem.Device.IsEnabled():
-            B = mfem.Transpose(B)
-        Bt = mfem.TransposeOperator(B)
+        # 10. Construct the operators for preconditioner
+        #
+        #                 P = [ diag(M)         0         ]
+        #                     [  0       B diag(M)^-1 B^T ]
+        #
+        #     Here we use Symmetric Gauss-Seidel to approximate the inverse of the
+        #     pressure Schur Complement
+        MinvBt = mfem.SparseMatrix()
+        Md = mfem.Vector()
+        darcyPrec = mfem.BlockDiagonalPreconditioner(block_offsets)
 
-        darcyOp.SetBlock(0, 0, M)
-        darcyOp.SetBlock(0, 1, Bt)
-        darcyOp.SetBlock(1, 0, B)
+        if pa:
+            mVarf.AssembleDiagonal(Md)
+            Md_host = Md.HostRead()
+            intMd = mfem.Vector(mVarf.Height())
 
-    Md = mfem.Vector(mVarf.Height())
-    darcyPrec = mfem.BlockDiagonalPreconditioner(block_offsets)
+            intMd.GetDataArray()[:] = 1./Md_host.GetDataArray()
 
-    if pa:
-        mVarf.AssembleDiagonal(Md)
-        Md_host = mfem.Vector(Md.HostRead(), mVarf.Height())
-        invMd = mfem.Vector(mVarf.Height())
+            BMBt_diag = mfem.Vector(bVarf.Height())
+            bVarf.AssembleDiagonal_ADAt(invMd, BMBt_diag)
 
-        for i in range(invMd.Size()):
-            invMd[i] = 1.0/Md_host[i]
+            ess_tdof_list = intArray()
 
-        BMBt_diag = mfem.Vector(bVarf.Height())
-        bVarf.AssembleDiagonal_ADAt(invMd, BMBt_diag)
-        ess_tdof_list = mfem.intArray()
-        invM = mfem.OperatorJacobiSmoother(Md, ess_tdof_list)
-        invS = mfem.OperatorJacobiSmoother(BMBt_diag, ess_tdof_list)
-    else:
-        MinvBt = mfem.Transpose(B)
-        M.GetDiag(Md)
+            invM = mfem.OperatorJacobiSmoother(Md, ess_tdof_list)
+            invS = mfem.OperatorJacobiSmoother(BMBt_diag, ess_tdof_list)
+        else:
+            M = mfem.SparseMatrix(mVarf.SpMat())
+            M.GetDiag(Md)
+            Md.HostReadWrite()
 
-        for i in range(Md.Size()):
-            MinvBt.ScaleRow(i, 1/Md[i])
-        S = mfem.Mult(B, MinvBt)
+            B = mfem.SparseMatrix(bVarf.SpMat())
+            MinvBt = mfem.Transpose(B)
 
-        invM = mfem.DSmoother(M)
-        invS = mfem.GSSmoother(S)
+            for i in range(Md.Size()):
+                MinvBt.ScaleRow(i, 1./Md[i])
+
+            S = mfem.Mult(B, MinvBt)
+            if dg:
+                Mtm = mfem.SparseMatrix(mtVarf.SpMat())
+                Snew = mfem.Add(Mtm, S)
+                S = Snew
+            invM = mfem.DSmoother(M)
+
+            if use_umfpack:
+                invS = mfem.UMFPackSolver(S)
+            else:
+                invS = mfem.GSSmoother(S)
 
     invM.iterative_mode = False
     invS.iterative_mode = False
@@ -303,21 +309,18 @@ def run(order=1,
     darcyPrec.SetDiagonalBlock(0, invM)
     darcyPrec.SetDiagonalBlock(1, invS)
 
-    maxIter = 1000
-    rtol = 1e-6
-    atol = 1e-10
+    chrono = time.time()
 
     solver = mfem.MINRESSolver()
     solver.SetAbsTol(atol)
     solver.SetRelTol(rtol)
     solver.SetMaxIter(maxIter)
-    solver.SetOperator(darcyOp)
+    solver.SetOperator(pDarcyOp)
     solver.SetPreconditioner(darcyPrec)
     solver.SetPrintLevel(1)
-    x.Assign(0.0)
-    solver.Mult(rhs, x)
 
-    solve_time = clock() - stime
+    solver.Mult(rhs, x)
+    solve_time = time.time() - chrono
 
     if solver.GetConverged():
         print("MINRES converged in " + str(solver.GetNumIterations()) +
@@ -325,11 +328,20 @@ def run(order=1,
     else:
         print("MINRES did not converge in " + str(solver.GetNumIterations()) +
               " iterations. Residual norm is " + "{:g}".format(solver.GetFinalNorm()))
+
     print("MINRES solver took " + str(solve_time) + "s.")
+
+    # 12. Create the grid functions u and p. Compute the L2 error norms.
 
     u = mfem.GridFunction()
     p = mfem.GridFunction()
-    u.MakeRef(R_space, x.GetBlock(0), 0)
+    if dg:
+        u_broken = mfem.GridFunction(R_space, x.GetBlock(0), 0)
+        coeff = mfem.VectorGridFunctionCoefficient(u_broken)
+        u.SetSpace(R_space_dg)
+        u.ProjectCoefficient(coeff)
+    else:
+        u.MakeRef(R_space, x.GetBlock(0), 0)
     p.MakeRef(W_space, x.GetBlock(1), 0)
 
     order_quad = max(2, 2*order+1)
@@ -369,9 +381,14 @@ def run(order=1,
         sout_u = mfem.socketstream("localhost", 19916)
         sout_u.precision(8)
         sout_u << "solution\n" << mesh << u << "window_title 'Velocity'\n"
+        sout_u << "keys Rljvvvvvmmc"
+        sout_u.flush()
+
         sout_p = mfem.socketstream("localhost", 19916)
         sout_p.precision(8)
         sout_p << "solution\n" << mesh << p << "window_title 'Pressure'\n"
+        sout_p << "keys Rljmmc"
+        sout_p.flush()
 
 
 if __name__ == "__main__":
@@ -383,17 +400,17 @@ if __name__ == "__main__":
                         action='store', type=str,
                         help='Mesh file to use.')
     parser.add_argument("-nx", "--ncells-x",
-                        action='store', type=int, default=0,
+                        action='store', type=int, default=5,
                         help="Number of cells in x.")
     parser.add_argument("-ny", "--ncells-y",
-                        action='store', type=int, default=0,
+                        action='store', type=int, default=5,
                         help="Number of cells in y.")
     parser.add_argument('-o', '--order',
                         action='store', default=1, type=int,
-                        help="Finite element order (polynomial degree).");
+                        help="Finite element order (polynomial degree).")
     parser.add_argument("-dg", "--discontinuous",
                         action='store_true',
-                        help="Enable DG elements for fluxes.");
+                        help="Enable DG elements for fluxes.")
     parser.add_argument("-brt", "--broken-RT",
                         action='store_true',
                         help="Enable broken RT elements for fluxes.")
@@ -419,13 +436,15 @@ if __name__ == "__main__":
                         action='store_true',
                         help='Enable GLVis visualization')
 
-
     args = parser.parse_args()
     parser.print_options(args)
 
     order = args.order
-    meshfile = expanduser(
-        join(dirname(__file__), '..', 'data', args.mesh))
+    if args.mesh != "":
+        meshfile = expanduser(
+            join(dirname(__file__), '..', 'data', args.mesh))
+    else:
+        meshfile = ""
     visualization = args.visualization
     device = args.device
     pa = args.partial_assembly
@@ -433,12 +452,12 @@ if __name__ == "__main__":
     run(order=order,
         meshfile=meshfile,
         nx=args.ncells_x,
-        ny=args.ncells_y,        
-        dg=args.discontinous,
-        brt=args.broken_RF,
+        ny=args.ncells_y,
+        dg=args.discontinuous,
+        brt=args.broken_RT,
         td=args.stab_diff,
-        hb=args.hybridizatoin,
-        rd=args.reduciton,
+        hb=args.hybridization,
+        rd=args.reduction,
         sn=args.solution_norm,
         visualization=visualization,
         device=device,
