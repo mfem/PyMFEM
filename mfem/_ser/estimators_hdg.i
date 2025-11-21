@@ -8,6 +8,8 @@
 #include "numpy/arrayobject.h"
 #include "../common/pyoperator.hpp"
 #include "../common/pyintrules.hpp"
+#include "../common/pybilininteg.hpp"
+#include "../common/pycoefficient.hpp"
 %}
 
 %include "../common/existing_mfem_headers.i"
@@ -19,7 +21,8 @@ import_array();
 %include "exception.i"
 %include "../common/exception.i"
 
+%import "bilininteg.i"
+
 %include "fem/darcy/estimators_hdg.hpp"
 
 #endif
-

@@ -8,6 +8,7 @@
 #include "numpy/arrayobject.h"
 #include "../common/pyoperator.hpp"
 #include "../common/pyintrules.hpp"
+#include "../common/pycoefficient.hpp"
 %}
 
 %include "../common/existing_mfem_headers.i"
@@ -19,7 +20,10 @@ import_array();
 %include "exception.i"
 %include "../common/exception.i"
 
+ //%ignore mfem::DarcyHybridization::m_nlfi_u;
+%ignore mfem::DarcyHybridization;
+%import "nonlininteg.i"
+
 %include "fem/darcy/darcyhybridization.hpp"
 
 #endif
-

@@ -112,7 +112,7 @@ def get_extensions():
                "complex_densemat", "complexstaticcond", "complexweakform",
                "bounds", "integrator",
                "darcyform","estimators_hdg", "bilininteg_hdg",
-               "darcyreductoin", "darcyhybridization"]
+               "darcyreduction", "darcyhybridization"]
 
     if add_cuda == '1':
         from setup_local import cudainc

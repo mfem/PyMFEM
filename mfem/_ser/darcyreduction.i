@@ -8,6 +8,9 @@
 #include "numpy/arrayobject.h"
 #include "../common/pyoperator.hpp"
 #include "../common/pyintrules.hpp"
+#include "../common/pycoefficient.hpp"
+#include "../common/pybilininteg.hpp"
+#include "../common/pynonlininteg.hpp"
 %}
 
 %include "../common/existing_mfem_headers.i"
@@ -19,7 +22,12 @@ import_array();
 %include "exception.i"
 %include "../common/exception.i"
 
+%import "fespace.i"
+%import "nonlinearform.i"
+%import "sparsemat.i"
+%import "blockmatrix.i"
+%import "blockvector.i"
+
 %include "fem/darcy/darcyreduction.hpp"
 
 #endif
-

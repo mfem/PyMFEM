@@ -19,7 +19,7 @@ from shutil import which as find_command
 __all__ = ["read_mfem_tplflags", "abspath", "external_install_prefix",
            "make_call", "chdir", "remove_files",
            "make", "make_install", "download", "gitclone",
-           "record_mfem_sha", "cmake", 
+           "record_mfem_sha", "cmake",
            "get_numpy_inc", "get_mpi4py_inc", "find_libpath_from_prefix",
            "clean_so", ]
 
@@ -102,26 +102,25 @@ def make_call(command, target='', force_verbose=False, env=None):
         env.update(os.environ)
 
     myverbose = bglb.verbose or force_verbose
-    
+
     kwargs['stdout'] = subprocess.PIPE
     kwargs['stderr'] = subprocess.PIPE
-        
+
     p = subprocess.Popen(command, **kwargs)
-    stdout, stderr= p.communicate()
+    stdout, stderr = p.communicate()
     if p.returncode != 0:
         if target == '':
             target = " ".join(command)
 
-        print("!!!!!!!!!!!!!!!", p)
-        print(stdout)        
-        print(stderr)
-            
+        print("!!!!!!!!!!!!!!! make call faield !!!!!!!!!!!!!!!!!")
         print("Failed when calling command: " + target)
+        print(stdout)
+        print(stderr)
         raise subprocess.CalledProcessError(p.returncode,
                                             " ".join(command))
-
     if not myverbose:
         print(stdout)
+
 
 def chdir(path):
     '''
@@ -253,7 +252,6 @@ def cmake(path, **kwargs):
     make_call(command)
 
 
-
 def get_numpy_inc():
 
     python = sys.executable
@@ -314,6 +312,7 @@ def find_libpath_from_prefix(lib, prefix0):
 
     return ''
 
+
 def clean_so(all=None):
     python = sys.executable
     command = [python, "setup.py", "clean"]
@@ -337,6 +336,3 @@ def clean_so(all=None):
     make_call(command)
 
     chdir(pwd)
-
-
-

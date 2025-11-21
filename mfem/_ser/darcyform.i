@@ -8,6 +8,8 @@
 #include "numpy/arrayobject.h"
 #include "../common/pyoperator.hpp"
 #include "../common/pyintrules.hpp"
+#include "../common/pycoefficient.hpp"
+#include "../common/pybilininteg.hpp"  
 %}
 
 %include "../common/existing_mfem_headers.i"
@@ -23,6 +25,8 @@ import_array();
 %import "blockvector.i"
 %import "bilinearform.i"
 %import "nonlinearform.i"
+%import "darcyreduction.i"
+%import "darcyhybridization.i"
 
 %include "fem/darcy/darcyform.hpp"
 

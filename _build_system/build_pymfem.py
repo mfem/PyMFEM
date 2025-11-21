@@ -192,6 +192,14 @@ def generate_wrapper(do_parallel):
         serflag.append('-I' + os.path.join(bglb.suitesparse_prefix,
                                            'include', 'suitesparse'))
 
+    # generate xxinteg_ext.i
+    #    create empty files
+    #    run swig with *.i files
+    #    call update scripts
+    for filename in ('../common/bilininteg_ext.i',
+                     '../common/lininteg_ext.i'):
+        fid = open(filename)
+        fid.close()
     for filename in ['lininteg.i', 'bilininteg.i']:
         command = [swig_command] + swigflag + serflag + [filename]
         make_call(command)
@@ -207,6 +215,10 @@ def generate_wrapper(do_parallel):
     mp_pool = Pool(max((cpu_count() - 1, 1)))
     with mp_pool:
         mp_pool.map(subprocess.run, commands)
+
+    #for c in commands:
+    #   print(" ".join(c))
+    #    subprocess.run(c)
 
     if not do_parallel:
         os.chdir(pwd)
