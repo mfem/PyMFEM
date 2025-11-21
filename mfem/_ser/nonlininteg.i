@@ -3,6 +3,7 @@
 //
 %module(package="mfem._ser", directors="1") nonlininteg
 %{
+#include "numpy/arrayobject.h"    
 #include "mfem.hpp"
 #include "../common/pycoefficient.hpp"
 #include "../common/pyoperator.hpp"
@@ -10,11 +11,11 @@
 #include "../common/pynonlininteg.hpp"
 using namespace mfem;
 %}
-/*
+
 %init %{
 import_array();
 %}
-*/
+
 /*
 %exception {
     try { $action }
