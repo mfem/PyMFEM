@@ -354,8 +354,8 @@ def configure_install(self):
     if self.hypre_prefix != '':
         check = find_libpath_from_prefix('HYPRE', self.hypre_prefix)
         assert check != '', "libHYPRE.so is not found in the specified <path>/lib or lib64"
-        hypre_prefix = os.path.expanduser(self.hypre_prefix)
-        build_hypre = False
+        bglb.hypre_prefix = os.path.expanduser(self.hypre_prefix)
+        bglb.build_hypre = False
 
     if self.metis_prefix != '':
         check = find_libpath_from_prefix('metis', self.metis_prefix)
