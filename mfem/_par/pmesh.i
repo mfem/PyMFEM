@@ -24,7 +24,7 @@
 %include "../common/mfem_config.i"
 
 %init %{
-import_array();
+import_array1(-1);
 %}
 
 #ifdef MFEM_USE_MPI

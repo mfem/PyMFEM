@@ -15,7 +15,7 @@
 %}
 
 %init %{
-import_array();
+import_array1(-1);
 %}
 
 //%rename(sopen)  open(const char hostname[], int port);

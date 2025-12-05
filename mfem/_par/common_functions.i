@@ -16,7 +16,7 @@
 %mpi4py_typemap(Comm, MPI_Comm);
 
 %init %{
-import_array();
+import_array1(-1);
 %}
 
 %include "exception.i"

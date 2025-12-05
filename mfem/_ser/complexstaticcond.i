@@ -16,7 +16,7 @@
 %}
 
 %init %{
-import_array();
+import_array1(-1);
 %}
 
 %include "../common/existing_mfem_headers.i"

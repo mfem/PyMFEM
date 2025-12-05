@@ -31,7 +31,7 @@
 %}
 // initialization required to return numpy array from SWIG
 %init %{
-import_array();
+import_array1(-1);
 %}
 
 %include "exception.i"

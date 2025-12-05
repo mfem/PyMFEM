@@ -8,7 +8,7 @@
 %}
 
 %init %{
-import_array();
+import_array1(-1);
 %}
 
 %include "exception.i"

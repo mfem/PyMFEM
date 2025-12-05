@@ -21,7 +21,6 @@ namespace mfem {
     self._coeff = QG
 %}
 %pythonappend VectorDomainLFIntegrator::VectorDomainLFIntegrator %{
-    self._ir=ir
     self._coeff = QF
 %}
 %pythonappend VectorDomainLFGradIntegrator::VectorDomainLFGradIntegrator %{
