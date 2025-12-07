@@ -110,7 +110,9 @@ def get_extensions():
                "attribute_sets", "arrays_by_name",
                "hyperbolic",
                "complex_densemat", "complexstaticcond", "complexweakform",
-               "bounds", "integrator"]
+               "bounds", "integrator",
+               "darcyform","estimators_hdg", "bilininteg_hdg",
+               "darcyreduction", "darcyhybridization"]
 
     if add_cuda == '1':
         from setup_local import cudainc

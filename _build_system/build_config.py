@@ -230,6 +230,9 @@ def process_cmd_options(command_obj, cfs):
             else:
                 setattr(command_obj, attr, False)
 
+    if len(cfs) != 0:
+       assert False, "Following build options are undefined: " +  ", ".join(list(cfs))
+
 
 def process_setup_options(command_obj, args):
     for item in args:

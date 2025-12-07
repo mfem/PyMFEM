@@ -147,7 +147,19 @@ def generate_wrapper(do_parallel):
         return os.path.getmtime(ifile) > os.path.getmtime(wfile)
 
     def update_integrator_exts():
-        pwd = chdir(os.path.join(rootdir, 'mfem', 'common'))
+        commdir = os.path.join(rootdir, 'mfem', 'common')
+        pwd = chdir(commdir)
+        
+        for filename in ('bilininteg_ext.i', 'lininteg_ext.i'):
+            fid = open(filename, "w")
+            fid.close()
+            
+        os.chdir(pwd)
+        for filename in ['lininteg.i', 'bilininteg.i']:
+            command = [swig_command] + swigflag + serflag + [filename]
+            make_call(command)
+
+        os.chdir(commdir)
         command1 = [sys.executable, "generate_lininteg_ext.py"]
         command2 = [sys.executable, "generate_bilininteg_ext.py"]
         make_call(command1)
@@ -192,9 +204,10 @@ def generate_wrapper(do_parallel):
         serflag.append('-I' + os.path.join(bglb.suitesparse_prefix,
                                            'include', 'suitesparse'))
 
-    for filename in ['lininteg.i', 'bilininteg.i']:
-        command = [swig_command] + swigflag + serflag + [filename]
-        make_call(command)
+    # generate xxinteg_ext.i
+    #    create empty files
+    #    run swig with *.i files
+    #    call update scripts
     update_integrator_exts()
 
     commands = []
@@ -207,6 +220,10 @@ def generate_wrapper(do_parallel):
     mp_pool = Pool(max((cpu_count() - 1, 1)))
     with mp_pool:
         mp_pool.map(subprocess.run, commands)
+
+    #for c in commands:
+    #   print(" ".join(c))
+    #    subprocess.run(c)
 
     if not do_parallel:
         os.chdir(pwd)
