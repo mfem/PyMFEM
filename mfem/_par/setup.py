@@ -129,7 +129,8 @@ def get_extensions():
                "submesh", "transfermap", "staticcond", "sidredatacollection",
                "psubmesh", "ptransfermap", "enzyme",
                "attribute_sets", "arrays_by_name",
-               "hyperbolic", "bounds", "integrator", "ordering"]
+               "hyperbolic", "bounds", "integrator", "ordering",
+               "particleset", "particlevector"]
 
     if mpiinc != '':
         include_dirs.append(mpiinc)

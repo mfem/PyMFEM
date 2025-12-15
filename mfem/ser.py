@@ -62,6 +62,8 @@ from  mfem._ser.quadinterpolator import *
 from  mfem._ser.quadinterpolator_face import *
 from  mfem._ser.attribute_sets import *
 from  mfem._ser.ordering import *
+from  mfem._ser.particleset import *
+from  mfem._ser.particlevector import *
 
 from  mfem._ser.fe_base import *
 from  mfem._ser.fe_h1 import *

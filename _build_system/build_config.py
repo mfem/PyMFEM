@@ -222,9 +222,13 @@ def process_cmd_options(command_obj, cfs):
                     assert False, str(command_obj) + " does not have " + attr
                 setattr(command_obj, attr, value)
         else:
-            value = cfs.pop(param, "No")
             if not hasattr(command_obj, attr):
                 assert False, str(command_obj) + " does not have " + attr
+
+            if getattr(command_obj, attr):
+                value = cfs.pop(param, "Yes")
+            else:
+                value = cfs.pop(param, "No")
 
             if value.upper() in ("YES", "TRUE", "1"):
                 setattr(command_obj, attr, True)

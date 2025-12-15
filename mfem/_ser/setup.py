@@ -113,7 +113,8 @@ def get_extensions():
                "attribute_sets", "arrays_by_name",
                "hyperbolic",
                "complex_densemat", "complexstaticcond", "complexweakform",
-               "bounds", "integrator", "ordering"]
+               "bounds", "integrator", "ordering", 
+               "particleset", "particlevector"]
 
     if add_cuda == '1':
         from setup_local import cudainc
