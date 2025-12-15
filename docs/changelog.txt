@@ -2,6 +2,8 @@
 2025 12
      * PyMFEM4.9
 	- ordering.i is added and made correponding adjustment in *.i files.
+	- update ex22, ex22p to save ComplexGridFunction as is
+	- fixed ParComplexGridFunction::Save wrapping
 
 2025 09
       * PyMFEM 4.8

@@ -40,7 +40,7 @@ def get_extensions():
                                  mfemptpl, numpyinc, mpi4pyinc, mpiinc,
                                  hypreinc, metisinc, hyprelib, metis5lib,
                                  cc_par, cxx_par, cc_ser, cxx_ser,
-                                 cxxstdflag, mfem_outside,
+                                 cxxstdflag, mfem_outside, build_miniapps,
                                  add_pumi, add_cuda, add_libceed, add_strumpack,
                                  add_suitesparse, add_gslibp, bdist_wheel_dir)
 
@@ -67,9 +67,12 @@ def get_extensions():
         add_gslibp = ''
         cxxstdflag = '-std=c++17'
         mfem_outside = '0'
+        build_miniapps = '0'
         mpiinc = ''
 
     libraries = ['mfem',]
+    if build_miniapps ==  '0':
+        libraries.append("mfem-common")
 
     # remove current directory from path
     print("__file__", os.path.abspath(__file__))

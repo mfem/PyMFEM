@@ -35,10 +35,10 @@ def get_extensions():
     # first load variables from PyMFEM_ROOT/setup_local.py
     sys.path.insert(0, root)
     try:
-        from setup_local import (mfemserbuilddir, mfemserincdir, mfemsrcdir, mfemserlnkdir,
-                                 mfemstpl, numpyinc,
+        from setup_local import (mfemserbuilddir, mfemserincdir, mfemsrcdir,
+                                 mfemserlnkdir, mfemstpl, numpyinc,
                                  cc_ser, cxx_ser,
-                                 cxxstdflag, mfem_outside,
+                                 cxxstdflag, mfem_outside, build_miniapps,
                                  add_cuda, add_libceed, add_suitesparse, add_gslibs,
                                  bdist_wheel_dir)
 
@@ -58,11 +58,14 @@ def get_extensions():
         add_libceed = ''
         add_suitesparse = ''
         add_gslibs = ''
-        cxxstdflag = '-std=c++17'        
+        cxxstdflag = '-std=c++17'
         mfem_outside = '0'
+        build_miniapps = '0'
 
 
     libraries = ['mfem']
+    if build_miniapps ==  '0':
+        libraries.append("mfem-common")
 
     # remove current directory from path
     # print("__file__", os.path.abspath(__file__))

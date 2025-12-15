@@ -36,6 +36,7 @@ def print_config():
     print(" when needed, the dependency (mfem/hypre/metis) will be installed under " +
           bglb.ext_prefix)
     print(" build mfem : " + ("Yes" if bglb.build_mfem else "No"))
+    print(" build miniapps: " + ("Yes" if bglb.mfem_miniapps else "No"))
     print(" build metis : " + ("Yes" if bglb.build_metis else "No"))
     print(" build hypre : " + ("Yes" if bglb.build_hypre else "No"))
     print(" build libceed : " + ("Yes" if bglb.build_libceed else "No"))
@@ -89,7 +90,7 @@ def initialize_cmd_options(command_obj):
     command_obj.mfem_source = bglb.mfem_source
     command_obj.mfem_branch = ''
     command_obj.mfem_debug = False
-    command_obj.mfem_build_miniapps = False
+    command_obj.mfem_miniapps = True
     command_obj.metis_prefix = ''
     command_obj.hypre_prefix = ''
 
@@ -146,7 +147,7 @@ cmd_options = [
     ('mfem-source=', None, 'Specify mfem source location' +
      'MFEM source directory. Required to run-swig '),
     ('mfem-debug', None, 'Build MFME with MFEM_DEBUG enabled'),
-    ('mfem-build-miniapps', None, 'build MFME Miniapps'),
+    ('mfem-miniapps', None, 'build MFME Miniapps'),
     ('hypre-prefix=', None, 'Specify locaiton of hypre' +
      'libHYPRE.so must exits under <hypre-prefix>/lib'),
     ('metis-prefix=', None, 'Specify locaiton of metis' +
@@ -298,7 +299,7 @@ def configure_install(self):
     bglb.run_swig_parallel = bool(self.with_parallel)
 
     bglb.mfem_debug = bool(self.mfem_debug)
-    bglb.mfem_build_miniapps = bool(self.mfem_build_miniapps)
+    bglb.mfem_miniapps = bool(self.mfem_miniapps)
 
     if bglb.build_serial:
         bglb.build_serial = (not bglb.swig_only and not bglb.ext_only)
