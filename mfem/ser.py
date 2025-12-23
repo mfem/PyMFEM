@@ -25,6 +25,7 @@ from  mfem._ser.socketstream import *
 from  mfem._ser.fe_coll import *
 from  mfem._ser.vector import *
 from  mfem._ser.complex_operator import *
+from  mfem._ser.complex_densemat import *
 from  mfem._ser.complex_fem import *
 from  mfem._ser.fespace import *
 from  mfem._ser.linearform import *
@@ -74,14 +75,8 @@ from  mfem._ser.fe_pos import *
 from  mfem._ser.fe_nurbs import *
 from  mfem._ser.doftrans import *
 from  mfem._ser.std_vectors import *
-
 from  mfem._ser.bounds import *
 from  mfem._ser.integrator import *
-
-try:
-    from  mfem._ser.complex_densemat import *
-except ImportError:
-    pass
 
 from  mfem._ser.submesh import *
 from  mfem._ser.transfermap import *
@@ -115,9 +110,11 @@ except:
 #
 #  import moduleds built from hpp/cpp under miniapp
 #
+
 try:
-    import mfem._ser.complexweakform as complexweakform
-    import mfem._ser.commlexstaticcond as complexstaticcond
+    import mfem._ser.dpg as dpg
 except:
     pass
+
+
 

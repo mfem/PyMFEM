@@ -1,10 +1,8 @@
-//
-// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
-//
-%module(package="mfem._ser") complex_densemat
+%module(package="mfem._par") pml
 %{
 #include "mfem.hpp"
 #include "numpy/arrayobject.h"
+#include "miniapps/dpg/util/pcomplexweakform.hpp"
 #include "../common/pyoperator.hpp"
 #include "../common/pysolvers.hpp"
 #include "../common/pycoefficient.hpp"
@@ -14,9 +12,17 @@
 #include "../common/io_stream.hpp"
 %}
 
+%include "../common/existing_mfem_headers.i"
+#ifdef FILE_EXISTS_MINIAPPS_DPG_UTIL_PML
+
 %init %{
-import_array1(-1);
+import_array();
 %}
+
+%inline %{
+#include "miniapps/dpg/util/pml.cpp"
+%}
+
 
 %include "exception.i"
 %import "element.i"
@@ -24,10 +30,15 @@ import_array1(-1);
 
 %import "array.i"
 %import "vector.i"
-%import "densemat.i"
-%import "complex_operator.i"
+%import "gridfunc.i"
+%import "mesh.i"
+%import "solvers.i"
+%import "operators.i"
+%import "blockmatrix.i"
+%import "complex_densemat.i"
 %import "../common/exception.i"
 %import "../common/io_stream_typemap.i"
 
-%ignore mfem::ComplexLUFactors::Mult(int m, int n, std::complex<real_t> *X) const;
-%include "linalg/complex_densemat.hpp"
+%include "miniapps/dpg/util/pml.hpp"
+
+#endif

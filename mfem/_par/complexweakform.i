@@ -1,7 +1,4 @@
-//
-// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
-//
-%module(package="mfem._ser") complexweakform
+%module(package="mfem._par") complexweakform
 %{
 #include "mfem.hpp"
 #include "numpy/arrayobject.h"
@@ -20,7 +17,7 @@
 #ifdef FILE_EXISTS_MINIAPPS_DPG_UTIL_COMPLEXWEAKFORM
 
 %init %{
-import_array1(-1);
+import_array();
 %}
 
 %inline %{
@@ -43,10 +40,10 @@ import_array1(-1);
 
 OSTREAM_TYPEMAP(std::ostream&)
 
-%include "../common/typemap_macros.i"
-LIST_TO_MFEMOBJ_ARRAY_IN(mfem::Array<mfem::FiniteElementSpace*>&,
+%import "../common/object_array_typemap.i"
+LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::FiniteElementSpace*>&,
 			   FiniteElementSpace*)
-LIST_TO_MFEMOBJ_ARRAY_IN(mfem::Array<mfem::FiniteElementCollection*>&,
+LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::FiniteElementCollection*>&,
 			   FiniteElementCollection*)
 
 

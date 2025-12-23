@@ -34,6 +34,7 @@ from  mfem._par.mesh import *
 from  mfem._par.fe_coll import *
 from  mfem._par.vector import *
 from  mfem._par.complex_operator import *
+from  mfem._par.complex_densemat import *
 from  mfem._par.complex_fem import *
 from  mfem._par.fespace import *
 from  mfem._par.linearform import *
@@ -129,6 +130,17 @@ import mfem._par.tmop_modules as tmop
 #
 # modules not a part of standard build
 #
+import importlib.util
+import sys
+import types
+def load_module(module_name, module_code):
+    spec = importlib.util.spec_from_loader(module_name, loader=None, origin="dynamic")
+    module = types.ModuleType(module_name)
+    spec.loader.exec_module(module) if spec.loader else exec(module_code, module.__dict__)
+    sys.modules[module_name] = module
+    return module
+
+
 try:
    import mfem._par.pumi as pumi
    from mfem._par.pumi import *
@@ -155,7 +167,14 @@ except:
     pass
 
 
+try:
+    import mfem._par.dpg as dpg
+except:
+    pass
+
+
 #
 #   initialize hypre 
 #
 Hypre.Init()
+

@@ -1,7 +1,4 @@
-//
-// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
-//
-%module(package="mfem._ser") complexstaticcond
+%module(package="mfem._par") complexstaticcond
 %{
 #include "mfem.hpp"
 #include "numpy/arrayobject.h"
@@ -19,7 +16,7 @@
 #ifdef FILE_EXISTS_MINIAPPS_DPG_UTIL_COMPLEXSTATICCOND
 
 %init %{
-import_array1(-1);
+import_array();
 %}
 
 %inline %{
