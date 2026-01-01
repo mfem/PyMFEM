@@ -4,6 +4,12 @@
 	- ordering.i is added and made correponding adjustment in *.i files.
 	- update ex22, ex22p to save ComplexGridFunction as is
 	- fixed ParComplexGridFunction::Save wrapping
+	- fixed GetDataArray of Vector/DenseMatrix/DenseTensor/SparseMatrix so that
+	  destructore is not pre-maturely called when return value is not stored to
+	  a variable.
+	- particleset.hpp, particlevector.hpp wrapper
+	- miniapp/dpg/utils/*.hpp is wrapped.
+	- Python version of pmaxwell.py in miniapp/dpg directory
 
 2025 09
       * PyMFEM 4.8
