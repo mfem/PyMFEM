@@ -131,8 +131,8 @@ def get_extensions():
                "attribute_sets", "arrays_by_name",
                "hyperbolic",  "complex_densemat",
                "bounds", "integrator", "ordering",
-               "dpg"]
-    
+               "dpg", "particleset", "particlevector"]
+
 
     if mpiinc != '':
         include_dirs.append(mpiinc)

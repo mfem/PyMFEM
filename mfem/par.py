@@ -80,6 +80,8 @@ from  mfem._par.quadinterpolator import *
 from  mfem._par.quadinterpolator_face import *
 from  mfem._par.attribute_sets import *
 from  mfem._par.ordering import *
+from  mfem._par.particleset import *
+from  mfem._par.particlevector import *
 
 from  mfem._par.fe_base import *
 from  mfem._par.fe_h1 import *
