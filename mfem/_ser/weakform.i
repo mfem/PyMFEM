@@ -35,7 +35,7 @@ import_array();
 %import "blockvector.i"
 %import "bilininteg.i"
 %import "lininteg.i"
-%import "fespace.i"
+%import "fe_coll.i"
 %import "blockmatrix.i"
 %import "operators.i"
 %import "../common/exception.i"
@@ -45,9 +45,9 @@ OSTREAM_TYPEMAP(std::ostream&)
 
 %import "../common/object_array_typemap.i"
 LIST_TO_MFEMOBJ_ARRAY_IN(mfem::Array<mfem::FiniteElementSpace*>&,
-			   FiniteElementSpace*)
+			 mfem::FiniteElementSpace*)
 LIST_TO_MFEMOBJ_ARRAY_IN(mfem::Array<mfem::FiniteElementCollection*>&,
-			   FiniteElementCollection*)
+			 mfem::FiniteElementCollection*)
 
 
 %pythonprepend mfem::DPGWeakForm::DPGWeakForm %{

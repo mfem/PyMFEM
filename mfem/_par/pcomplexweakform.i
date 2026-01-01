@@ -43,9 +43,9 @@ OSTREAM_TYPEMAP(std::ostream&)
 
 %import "../common/object_array_typemap.i"
 LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::ParFiniteElementSpace*>&,
-			   ParFiniteElementSpace*)
+			 mfem::ParFiniteElementSpace*)
 LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::FiniteElementCollection*>&,
-			   FiniteElementCollection*)
+			 mfem::FiniteElementCollection*)
 
 
 %pythonprepend mfem::ParComplexDPGWeakForm::ParComplexDPGWeakForm %{

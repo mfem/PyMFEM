@@ -147,6 +147,28 @@ if len(args) == 1 and isinstance(args[0], csr_matrix):
   }
 }
 
+%typemap(out) PyObject* mfem::SparseMatrix::GetDataArray() {
+     // assign self to base object 
+     Py_INCREF($self); 
+     PyArray_SetBaseObject((PyArrayObject *) $1, $self);
+
+     $result = $1;
+}
+%typemap(out) PyObject* mfem::SparseMatrix::GetJArray() {
+     // assign self to base object 
+     Py_INCREF($self); 
+     PyArray_SetBaseObject((PyArrayObject *) $1, $self);
+
+     $result = $1;
+}
+%typemap(out) PyObject* mfem::SparseMatrix::GetIArray() {
+     // assign self to base object 
+     Py_INCREF($self); 
+     PyArray_SetBaseObject((PyArrayObject *) $1, $self);
+
+     $result = $1;
+}
+
 //%rename(add_sparse) mfem::Add;
 %include "linalg/sparsemat.hpp"
 

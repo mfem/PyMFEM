@@ -124,6 +124,21 @@ def __getitem__(self, *args):
      return _densemat.DenseTensor___getitem__(self, check)
 %}
 
+%typemap(out) PyObject* mfem::DenseMatrix::GetDataArray() {
+     // assign self to base object 
+     Py_INCREF($self); 
+     PyArray_SetBaseObject((PyArrayObject *) $1, $self);
+
+     $result = $1;
+}
+%typemap(out) PyObject* mfem::DenseTensor::GetDataArray() {
+     // assign self to base object 
+     Py_INCREF($self); 
+     PyArray_SetBaseObject((PyArrayObject *) $1, $self);
+
+     $result = $1;
+}
+
 %include "linalg/densemat.hpp"
 
 %extend mfem::DenseMatrix {

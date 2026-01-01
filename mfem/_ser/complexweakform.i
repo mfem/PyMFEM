@@ -33,10 +33,12 @@ import_array1(-1);
 %import "../common/exception.i"
 
 %import "coefficient.i"
+%import "fe_coll.i"
 %import "gridfunc.i"
 %import "mesh.i"
 %import "solvers.i"
 %import "operators.i"
+%import "fespace.i"
 %import "blockmatrix.i"
 %import "../common/exception.i"
 %import "../common/io_stream_typemap.i"
@@ -45,9 +47,9 @@ OSTREAM_TYPEMAP(std::ostream&)
 
 %include "../common/typemap_macros.i"
 LIST_TO_MFEMOBJ_ARRAY_IN(mfem::Array<mfem::FiniteElementSpace*>&,
-			   FiniteElementSpace*)
+			 mfem::FiniteElementSpace*)
 LIST_TO_MFEMOBJ_ARRAY_IN(mfem::Array<mfem::FiniteElementCollection*>&,
-			   FiniteElementCollection*)
+			 mfem::FiniteElementCollection*)
 
 
 %pythonprepend mfem::ComplexDPGWeakForm::ComplexDPGWeakForm %{
