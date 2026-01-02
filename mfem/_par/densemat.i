@@ -125,16 +125,18 @@ def __getitem__(self, *args):
 %}
 
 %typemap(out) PyObject* mfem::DenseMatrix::GetDataArray() {
-     // assign self to base object 
-     Py_INCREF($self); 
-     PyArray_SetBaseObject((PyArrayObject *) $1, $self);
+     // assign self to base object
+     Py_INCREF($self);
+     PyObject * base = PyArray_BASE((PyArrayObject *) $1);
+     PyArray_SetBaseObject((PyArrayObject *) base , $self);
 
      $result = $1;
 }
 %typemap(out) PyObject* mfem::DenseTensor::GetDataArray() {
-     // assign self to base object 
-     Py_INCREF($self); 
-     PyArray_SetBaseObject((PyArrayObject *) $1, $self);
+     // assign self to base object
+     Py_INCREF($self);
+     PyObject * base = PyArray_BASE((PyArrayObject *) $1);
+     PyArray_SetBaseObject((PyArrayObject *) base, $self);
 
      $result = $1;
 }
