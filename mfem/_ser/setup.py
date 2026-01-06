@@ -64,7 +64,7 @@ def get_extensions():
 
 
     libraries = ['mfem']
-    if build_miniapps ==  '0':
+    if build_miniapps != '0':
         libraries.append("mfem-common")
 
     # remove current directory from path

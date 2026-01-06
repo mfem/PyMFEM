@@ -235,6 +235,9 @@ def process_cmd_options(command_obj, cfs):
             else:
                 setattr(command_obj, attr, False)
 
+    if len(cfs) != 0:
+        assert False, "unknonw input is given " + str(cfs)
+
 
 def process_setup_options(command_obj, args):
     for item in args:
@@ -444,7 +447,6 @@ def configure_install(self):
         bglb.build_parallel = False
         bglb.keep_temp = True
 
-
     if bglb.libceed_only:
         bglb.clean_swig = False
         bglb.run_swig = False
@@ -458,7 +460,6 @@ def configure_install(self):
         bglb.build_libceed = True
         bglb.keep_temp = True
 
-
     if bglb.gslib_only:
         bglb.clean_swig = False
         bglb.run_swig = False
@@ -471,7 +472,7 @@ def configure_install(self):
         bglb.build_gslib = True
         bglb.keep_temp = True
 
-
     bglb.is_configured = True
+
 
 configure_build = configure_install
