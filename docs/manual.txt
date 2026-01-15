@@ -681,6 +681,54 @@ to find more details of the MFEM library.
               M = mfem.GSSmoother(AA)
               mfem.PCG(A, M, B, X, 1, 200, 1e-12, 0.0)
 
+     4-19) fespace/pfespace
+           Following routines are wrapped using Shadow feature
+              FiniteElementSpace::GetBdrElementVDofs
+              FiniteElementSpace::GetElementVDofs
+              FiniteElementSpace::GetPatchVDofs
+              FiniteElementSpace::GetFaceVDofs
+              FiniteElementSpace::GetEdgeVDofs
+              FiniteElementSpace::GetVertexVDofs
+              FiniteElementSpace::GetElementInteriorVDofs
+              FiniteElementSpace::GetEdgeInteriorVDofs
+
+              FiniteElementSpace::GetBdrElementDofs
+              FiniteElementSpace::GetElementDofs
+              FiniteElementSpace::GetPatchDofs
+              FiniteElementSpace::GetFaceDofs
+              FiniteElementSpace::GetEdgeDofs
+              FiniteElementSpace::GetVertexDofs
+              FiniteElementSpace::GetElementInteriorDofs
+              FiniteElementSpace::GetEdgeInterioVDofs
+
+              ParFiniteElementSpace::GetSharedEdgeDofs
+              ParFiniteElementSpace::GetSharedTriangleDofs
+              ParFiniteElementSpace::GetSharedQuadrilateralDofs
+              ParFiniteElementSpace::GetFaceNbrElementVDofs
+
+          For example, GetPatchDofs are wrapped with
+
+             %feature("shadow") mfem::FiniteElementSpace::GetPatchDofs %{
+              def GetPatchDofs(self, *args):
+                  if len(args) == 1:
+                      from  .array import intArray
+                      dofs = intArray()
+                      $action(self, args[0], dofs)
+                      return vdofs.ToList()
+                  else:
+                     return $action(self, *args)
+             %}
+
+           Therefore,
+             # this returns a newly created Python list,
+	     GetPatchDofs(i)
+
+             # this stores data to intArray (more closed to C++ syntax)
+	     arr = mfem.ntArray()
+	     GetPatchDofs(i, arr)
+
+
+
 -- Known issues --
 
   PyMFEM is an on-going effort. Not all MFEM functionality is properly
