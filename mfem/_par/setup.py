@@ -71,8 +71,8 @@ def get_extensions():
         mpiinc = ''
 
     libraries = ['mfem',]
-    if build_miniapps !=  '0':
-        libraries.append("mfem-common")
+    #if build_miniapps !=  '0':
+    #    libraries.append("mfem-common")
 
     # remove current directory from path
     print("__file__", os.path.abspath(__file__))
