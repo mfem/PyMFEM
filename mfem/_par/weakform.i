@@ -7,7 +7,7 @@
 #include "../common/pysolvers.hpp"
 #include "../common/pycoefficient.hpp"
 #include "../common/pyintrules.hpp"
-#include "../common/pylininteg.hpp"    
+#include "../common/pylininteg.hpp"
 #include "../common/pybilininteg.hpp"
 #include "../common/pynonlininteg.hpp"
 #include "../common/io_stream.hpp"
@@ -60,6 +60,19 @@ LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::FiniteElementCollection*>&,
 %pythonprepend mfem::DPGWeakForm::SetSpaces %{
   self._fes = fes_
   self._fecol = fecol_
+%}
+
+%pythonappend mfem::DPGWeakForm::AddDomainLFIntegrator %{
+  if lfi is not None:
+      lfi.this.disown()
+%}
+%pythonappend mfem::DPGWeakForm::AddTrialIntegrator %{
+  if bfi is not None:
+      bfi.this.disown()
+%}
+%pythonappend mfem::DPGWeakForm::AddTestIntegrator %{
+  if bfi is not None:
+      bfi.this.disown()
 %}
 
 %include "miniapps/dpg/util/weakform.hpp"

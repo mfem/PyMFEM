@@ -434,6 +434,7 @@ def configure_install(self):
         bglb.build_mfemp = False
         bglb.build_libceed = False
         bglb.build_gslib = False
+        bglb.keep_temp = True
 
     if bglb.skip_swig:
         bglb.clean_swig = False
