@@ -16,12 +16,12 @@ for line in fid.readlines():
         elif line.find("own_bfi_") != -1:
             pp.append("    if own_bfi_ == 1:")
             pp.append("        bfi_.thisown = 0")
-            pp.append("    if hasattr(bfi_, '_coeff')")
+            pp.append("    if hasattr(bfi_, '_coeff'):")
             pp.append("        self._coeff = bfi_._coeff")
         elif line.find("integ, own_integ=1") != -1:
             pp.append("    if own_integ == 1:")
             pp.append("        integ.thisown = 0")
-            pp.append("    if hasattr(integ, '_coeff')")
+            pp.append("    if hasattr(integ, '_coeff'):")
             pp.append("        self._coeff = integ._coeff")
         elif line.find("own_integs=1") != -1:
             pp.append("    self.own_integs = own_integs")
