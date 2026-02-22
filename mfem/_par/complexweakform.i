@@ -52,6 +52,7 @@ LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::FiniteElementCollection*>&,
      fes_, fecol_ = args
      self._fes = fes_
      self._fecol = fecol_
+  self._integrators = []
 %}
 
 %pythonprepend mfem::ComplexDPGWeakForm::SetSpaces %{
@@ -62,20 +63,26 @@ LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::FiniteElementCollection*>&,
 %pythonappend mfem::ComplexDPGWeakForm::AddDomainLFIntegrator %{
   if lfi_r is not None:
       lfi_r.this.disown()
+      self._integrators.append(lfi_r)
   if lfi_i is not None:
       lfi_i.this.disown()
+      self._integrators.append(lfi_i)
 %}
 %pythonappend mfem::ComplexDPGWeakForm::AddTrialIntegrator %{
   if bfi_r is not None:
       bfi_r.this.disown()
+      self._integrators.append(bfi_r)
   if bfi_i is not None:
       bfi_i.this.disown()
+      self._integrators.append(bfi_i)
 %}
 %pythonappend mfem::ComplexDPGWeakForm::AddTestIntegrator %{
   if bfi_r is not None:
       bfi_r.this.disown()
+      self._integrators.append(bfi_r)
   if bfi_i is not None:
       bfi_i.this.disown()
+      self._integrators.append(bfi_i)
 %}
 
 %include "miniapps/dpg/util/complexweakform.hpp"
