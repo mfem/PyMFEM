@@ -96,7 +96,8 @@ def get_extensions():
         if cxx_par != '':
             os.environ['CXX'] = cxx_ser
 
-    modules = ["io_stream", "vtk", "sort_pairs", "datacollection",
+    modules = ["config",
+               "io_stream", "vtk", "sort_pairs", "datacollection",
                "globals", "mem_manager", "device", "hash", "stable3d",
                "cpointers", "symmat",
                "error", "array", "common_functions",

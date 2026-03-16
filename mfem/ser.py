@@ -1,3 +1,5 @@
+import mfem._ser.config as config
+
 from  mfem._ser.cpointers import *
 from  mfem._ser.globals import *
 from  mfem._ser.mem_manager import *
