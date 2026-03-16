@@ -76,6 +76,8 @@ def clean_dist_info(wheeldir):
 
 
 def initialize_cmd_options(command_obj):
+    command_obj.prefix = ''
+
     command_obj.swig = False
     command_obj.skip_swig = False
     command_obj.ext_only = False
@@ -131,6 +133,7 @@ def initialize_cmd_options(command_obj):
 
 cmd_options = [
     ('vv', None, 'More verbose output (CMAKE_VERBOSE_MAKEFILE etc)'),
+    ('prefix=', None, 'Install prefix'),
     ('with-parallel', None, 'Installed both serial and parallel version'),
     ('no-serial', None, 'Skip building the serial wrapper'),
     ('mfem-prefix=', None, 'Specify locaiton of mfem' +

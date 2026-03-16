@@ -7,7 +7,7 @@
 #include "../common/pysolvers.hpp"
 #include "../common/pycoefficient.hpp"
 #include "../common/pyintrules.hpp"
-#include "../common/pylininteg.hpp"  
+#include "../common/pylininteg.hpp"
 #include "../common/pybilininteg.hpp"
 #include "../common/pynonlininteg.hpp"
 #include "../common/io_stream.hpp"
@@ -55,6 +55,7 @@ LIST_TO_MFEMOBJ_ARRAY_IN(mfem::Array<mfem::FiniteElementCollection*>&,
      fes_, fecol_ = args
      self._fes = fes_
      self._fecol = fecol_
+  self._integrators = []
 %}
 
 %pythonprepend mfem::DPGWeakForm::SetSpaces %{
@@ -62,6 +63,21 @@ LIST_TO_MFEMOBJ_ARRAY_IN(mfem::Array<mfem::FiniteElementCollection*>&,
   self._fecol = fecol_
 %}
 
+%pythonappend mfem::DPGWeakForm::AddDomainLFIntegrator %{
+  if lfi is not None:
+      lfi.this.disown()
+      self._integrators.append(lfi)
+%}
+%pythonappend mfem::DPGWeakForm::AddTrialIntegrator %{
+  if bfi is not None:
+      bfi.this.disown()
+      self._integrators.append(bfi)
+%}
+%pythonappend mfem::DPGWeakForm::AddTestIntegrator %{
+  if bfi is not None:
+      bfi.this.disown()
+      self._integrators.append(bfi)
+%}
 
 %include "miniapps/dpg/util/weakform.hpp"
 
