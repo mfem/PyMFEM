@@ -150,10 +150,10 @@ namespace mfem {
         self.linkA = args[0]
         self.linkB = args[1]
     if len(args) > 2:
-       if isinstance(agrs[2], Coefficient):
+       if isinstance(args[2], Coefficient):
           self.linkAlphaCoef = args[2]
     if len(args) > 3:	    
-       if isinstance(agrs[3], Coefficient):
+       if isinstance(args[3], Coefficient):
           self.linkBetaCoef = args[3]	
 %}
 %pythonappend VectorSumCoefficient::SetACoef %{
