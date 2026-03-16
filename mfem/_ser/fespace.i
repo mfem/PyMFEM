@@ -144,7 +144,7 @@ def GetBdrElementDofs(self, *args):
         from  .array import intArray
         dofs = intArray()
         $action(self, args[0], dofs)
-        return vdofs.ToList()
+        return dofs.ToList()
     else:
         return $action(self, *args)
 %}
@@ -154,7 +154,7 @@ def GetElementDofs(self, *args):
         from  .array import intArray
         dofs = intArray()
         $action(self, args[0], dofs)
-        return vdofs.ToList()
+        return dofs.ToList()
     else:
         return $action(self, *args)
 %}
@@ -164,7 +164,7 @@ def GetFaceDofs(self, *args):
         from  .array import intArray
         dofs = intArray()
         $action(self, args[0], dofs)
-        return vdofs.ToList()
+        return dofs.ToList()
     else:
         return $action(self, *args)
 %}
@@ -174,7 +174,7 @@ def GetEdgeDofs(self, *args):
         from  .array import intArray
         dofs = intArray()
         $action(self, args[0], dofs)
-        return vdofs.ToList()
+        return dofs.ToList()
     else:
         return $action(self, *args)
 %}
@@ -184,7 +184,7 @@ def GetVertexDofs(self, *args):
         from  .array import intArray
         dofs = intArray()
         $action(self, args[0], dofs)
-        return vdofs.ToList()
+        return dofs.ToList()
     else:
         return $action(self, *args)
 %}
@@ -194,7 +194,7 @@ def GetElementInteriorDofs(self, *args):
         from  .array import intArray
         dofs = intArray()
         $action(self, args[0], dofs)
-        return vdofs.ToList()
+        return dofs.ToList()
     else:
         return $action(self, *args)
 %}
@@ -204,7 +204,7 @@ def GetEdgeInteriorDofs(self, *args):
         from  .array import intArray
         dofs = intArray()
         $action(self, args[0], dofs)
-        return vdofs.ToList()
+        return dofs.ToList()
     else:
         return $action(self, *args)
 %}
@@ -214,7 +214,7 @@ def GetPatchDofs(self, *args):
         from  .array import intArray
         dofs = intArray()
         $action(self, args[0], dofs)
-        return vdofs.ToList()
+        return dofs.ToList()
     else:
         return $action(self, *args)
 %}
