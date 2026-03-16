@@ -116,7 +116,6 @@ namespace mfem {
    %}
 %pythonprepend DiscreteLinearOperator::AddTraceFaceInterpolator %{
     if not hasattr(self, "_integrators"): self._integrators = []
-    di = args[0]
     self._integrators.append(di)
     di.thisown=0
    %}
