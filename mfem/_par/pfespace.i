@@ -44,40 +44,52 @@ import_array1(-1);
 }
 
 %feature("shadow") mfem::ParFiniteElementSpace::GetSharedEdgeDofs %{
-def GetSharedEdgeDofs(self, group, ei):
-    from  .array import intArray
-    dofs = intArray()
-    $action(self, group, ei, dofs)
-    return dofs.ToList()
-%}
-%feature("shadow") mfem::ParFiniteElementSpace::GetSharedFaceDofs %{
-def GetSharedFaceDofs(self, group, fi):
-    from  .array import intArray
-    dofs = intArray()
-    $action(self, group, fi, dofs)
-    return dofs.ToList()
+def GetSharedEdgeDofs(self, *args):
+    if len(args) == 2:
+        from  .array import intArray
+        dofs = intArray()
+        $action(self, args[0], args[1], dofs)
+        return dofs.ToList()
+    else:
+        $action(self, *args)
 %}
 %feature("shadow") mfem::ParFiniteElementSpace::GetSharedTriangleDofs %{
-def GetSharedTriangleDofs(self, group, fi):
-    from  .array import intArray
-    dofs = intArray()
-    $action(self, group, fi, dofs)
-    return dofs.ToList()
+def GetSharedTriangleDofs(self, *args):
+    if len(args) == 2:
+        from  .array import intArray
+        dofs = intArray()
+        $action(self, args[0], args[1], dofs)
+        return dofs.ToList()
+    else:
+        $action(self, *args)
 %}
 %feature("shadow") mfem::ParFiniteElementSpace::GetSharedQuadrilateralDofs %{
-def GetSharedQuadrilateralDofs(self, group, fi):
-    from  .array import intArray
-    dofs = intArray()
-    $action(self, group, fi, dofs)
-    return dofs.ToList()
+def GetSharedQuadrilateralDofs(self, *args):
+    if len(args) == 2:
+        from  .array import intArray
+        dofs = intArray()
+        $action(self, args[0], args[1], dofs)
+        return dofs.ToList()
+    else:
+        $action(self, *args)
 %}
 %feature("shadow") mfem::ParFiniteElementSpace::GetFaceNbrElementVDofs %{
-def GetFaceNbrElementVDofs(self, i):
-    from  .array import intArray
-    vdofs = intArray()
-    $action(self, i, vdofs)
-    return vdofs.ToList()
+def GetFaceNbrElementVDofs(self, *args):
+    if len(args) == 1:
+        from  .array import intArray
+        vdofs = intArray()
+        $action(self, i, vdofs)
+        return vdofs.ToList()
+    else:
+        return $action(self, *args)
 %}
+
+/* define FiniteElementSpaceArray */
+%import "../common/array_listtuple_typemap.i"
+ARRAY_LISTTUPLE_INPUT_SWIGOBJ(mfem::ParFiniteElementSpace *, 1)
+%import "../common/array_instantiation_macro.i"
+IGNORE_ARRAY_METHODS(mfem::ParFiniteElementSpace *)
+INSTANTIATE_ARRAY0(ParFiniteElementSpace *, ParFiniteElementSpace, 1)
 
 %include "fem/pfespace.hpp"
 
@@ -95,4 +107,3 @@ def GetFaceNbrElementVDofs(self, i):
     return self->GetFaceNbrElementVDofs(elem, dofs);
   }
 };
-

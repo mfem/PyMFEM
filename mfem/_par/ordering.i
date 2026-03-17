@@ -13,10 +13,12 @@
 import_array1(-1);
 %}
 %include "exception.i"
-%import "element.i"
+
 %include "../common/typemap_macros.i"
 %include "../common/exception.i"
 
+%import "array.i"
+%import "vector.i"
 
 %include "linalg/ordering.hpp"
 

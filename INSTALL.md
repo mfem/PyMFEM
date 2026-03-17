@@ -56,6 +56,7 @@ pip install . -C"with-parallel=Yes" -C"with-gslib=Yes"
 |------|-------------|
 | `--with-parallel` | Install both serial and parallel versions of `MFEM` and the wrapper<br>(note: this option turns on building `metis` and `hypre`) |
 | `--mfem-branch=<reference>` | Download/install MFEM using a specific reference (`git` `branch`, `hash`, or `tag`) |
+| `--mfem-miniapps` | Install MFEM with MFEM C++ miniapps |
 | `--user` | Install in user's site-package |
 
 ## Advanced options

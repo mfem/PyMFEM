@@ -168,6 +168,14 @@ XXXPTR_SIZE_IN(mfem::Vector **data_, int asize, mfem::Vector *)
 IGNORE_ARRAY_METHODS(mfem::Vector *)
 INSTANTIATE_ARRAY0(Vector *, Vector, 1)
 
+%typemap(out) PyObject* mfem::Vector::GetDataArray() {
+     // assign self to base object   
+     Py_INCREF($self); 
+     PyArray_SetBaseObject((PyArrayObject *) $1, $self);
+
+     $result = $1;
+}
+
 %include "linalg/vector.hpp"
 
 %extend mfem::Vector {

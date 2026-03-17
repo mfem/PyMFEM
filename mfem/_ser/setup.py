@@ -35,10 +35,10 @@ def get_extensions():
     # first load variables from PyMFEM_ROOT/setup_local.py
     sys.path.insert(0, root)
     try:
-        from setup_local import (mfemserbuilddir, mfemserincdir, mfemsrcdir, mfemserlnkdir,
-                                 mfemstpl, numpyinc,
+        from setup_local import (mfemserbuilddir, mfemserincdir, mfemsrcdir,
+                                 mfemserlnkdir, mfemstpl, numpyinc,
                                  cc_ser, cxx_ser,
-                                 cxxstdflag, mfem_outside,
+                                 cxxstdflag, mfem_outside, build_miniapps,
                                  add_cuda, add_libceed, add_suitesparse, add_gslibs,
                                  bdist_wheel_dir)
 
@@ -58,11 +58,14 @@ def get_extensions():
         add_libceed = ''
         add_suitesparse = ''
         add_gslibs = ''
-        cxxstdflag = '-std=c++17'        
+        cxxstdflag = '-std=c++17'
         mfem_outside = '0'
+        build_miniapps = '0'
 
 
     libraries = ['mfem']
+    #if build_miniapps != '0':
+    #    libraries.append("mfem-common")
 
     # remove current directory from path
     # print("__file__", os.path.abspath(__file__))
@@ -80,7 +83,8 @@ def get_extensions():
     if cxx_ser != '':
         os.environ['CXX'] = cxx_ser
 
-    modules = ["io_stream", "vtk", "sort_pairs", "datacollection",
+    modules = ["config",
+               "io_stream", "vtk", "sort_pairs", "datacollection",
                "cpointers", "symmat",
                "globals", "mem_manager", "device", "hash", "stable3d",
                "error", "array", "common_functions", "socketstream", "handle",
@@ -108,9 +112,9 @@ def get_extensions():
                "submesh", "transfermap", "staticcond",
                "sidredatacollection", "enzyme",
                "attribute_sets", "arrays_by_name",
-               "hyperbolic",
-               "complex_densemat", "complexstaticcond", "complexweakform",
-               "bounds", "integrator", "ordering"]
+               "hyperbolic", "complex_densemat", 
+               "bounds", "integrator", "ordering", 
+               "dpg", "particleset", "particlevector"]
 
     if add_cuda == '1':
         from setup_local import cudainc

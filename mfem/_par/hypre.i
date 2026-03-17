@@ -104,11 +104,11 @@ bool is_HYPRE_USING_CUDA(){
     is 4, cols is set to be rows.
  */
 
-%typemap(in) (int *I,
-	      HYPRE_BigInt *J,
-              mfem::real_t *data,
-	      HYPRE_BigInt *rows,
-	      HYPRE_BigInt *cols)
+%typemap(in) (const int *I,
+	      const HYPRE_BigInt *J,
+              const mfem::real_t *data,
+	      const HYPRE_BigInt *rows,
+	      const HYPRE_BigInt *cols)
              (PyArrayObject *tmp_arr1_ = NULL,
 	      PyArrayObject *tmp_arr2_ = NULL,
 	      PyArrayObject *tmp_arr3_ = NULL,
@@ -133,8 +133,11 @@ bool is_HYPRE_USING_CUDA(){
     $5 = (HYPRE_BigInt *) PyArray_DATA(tmp_arr5_);
   }
 }
-%typemap(freearg) (int *I, HYPRE_BigInt *J,
-		   mfem::real_t *data, HYPRE_BigInt *rows, HYPRE_BigInt *cols){
+%typemap(freearg) (const int *I,
+		   const HYPRE_BigInt *J,
+		   const mfem::real_t *data,
+		   const HYPRE_BigInt *rows,
+		   const HYPRE_BigInt *cols){
   Py_XDECREF(tmp_arr1_$argnum);
   Py_XDECREF(tmp_arr2_$argnum);
   Py_XDECREF(tmp_arr3_$argnum);
@@ -144,9 +147,11 @@ bool is_HYPRE_USING_CUDA(){
   }
 }
 
-%typemap(typecheck ) (int *I, HYPRE_BigInt *J,
-                      mfem::real_t *data, HYPRE_BigInt *rows,
-		      HYPRE_BigInt *cols){
+%typemap(typecheck ) (const int *I,
+		      const HYPRE_BigInt *J,
+                      const mfem::real_t *data,
+		      const HYPRE_BigInt *rows,
+		      const HYPRE_BigInt *cols){
   /* check if list of 5 numpy array or not */
   if (!PyList_Check($input)) $1 = 0;
   else {

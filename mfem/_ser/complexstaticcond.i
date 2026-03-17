@@ -15,13 +15,12 @@
 #include "../common/io_stream.hpp"
 %}
 
+%include "../common/existing_mfem_headers.i"
+#ifdef FILE_EXISTS_MINIAPPS_DPG_UTIL_COMPLEXSTATICCOND
+
 %init %{
 import_array1(-1);
 %}
-
-%include "../common/existing_mfem_headers.i"
-
-#ifdef FILE_EXISTS_MINIAPPS_DPG_UTIL_COMPLEXSTATICCOND
 
 %inline %{
 #include "miniapps/dpg/util/complexstaticcond.cpp"
@@ -39,13 +38,14 @@ import_array1(-1);
 %import "solvers.i"
 %import "operators.i"
 %import "blockmatrix.i"
+%import "blockoperator.i"
 %import "complex_densemat.i"
 %import "../common/exception.i"
 %import "../common/io_stream_typemap.i"
 
 OSTREAM_TYPEMAP(std::ostream&)
 
-
+%ignore mfem::ComplexBlockStaticCondensation::ConvertListToReducedTrueDofs;
 %include "miniapps/dpg/util/complexstaticcond.hpp"
 
 #endif

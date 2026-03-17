@@ -37,7 +37,7 @@ def eliminate_cols(m, cols):
     m.eliminate_zeros()
     return m
 
-def sparsemat_to_scipycsr(mat, dtype):
+def sparsemat_to_scipycsr(mat, dtype=float):
      w, h = mat.Width(), mat.Height()
      I = mat.GetIArray()
      J = mat.GetJArray()

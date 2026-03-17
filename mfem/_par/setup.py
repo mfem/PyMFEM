@@ -40,7 +40,7 @@ def get_extensions():
                                  mfemptpl, numpyinc, mpi4pyinc, mpiinc,
                                  hypreinc, metisinc, hyprelib, metis5lib,
                                  cc_par, cxx_par, cc_ser, cxx_ser,
-                                 cxxstdflag, mfem_outside,
+                                 cxxstdflag, mfem_outside, build_miniapps,
                                  add_pumi, add_cuda, add_libceed, add_strumpack,
                                  add_suitesparse, add_gslibp, bdist_wheel_dir)
 
@@ -67,9 +67,12 @@ def get_extensions():
         add_gslibp = ''
         cxxstdflag = '-std=c++17'
         mfem_outside = '0'
+        build_miniapps = '0'
         mpiinc = ''
 
     libraries = ['mfem',]
+    #if build_miniapps !=  '0':
+    #    libraries.append("mfem-common")
 
     # remove current directory from path
     print("__file__", os.path.abspath(__file__))
@@ -93,7 +96,8 @@ def get_extensions():
         if cxx_par != '':
             os.environ['CXX'] = cxx_ser
 
-    modules = ["io_stream", "vtk", "sort_pairs", "datacollection",
+    modules = ["config",
+               "io_stream", "vtk", "sort_pairs", "datacollection",
                "globals", "mem_manager", "device", "hash", "stable3d",
                "cpointers", "symmat",
                "error", "array", "common_functions",
@@ -126,7 +130,10 @@ def get_extensions():
                "submesh", "transfermap", "staticcond", "sidredatacollection",
                "psubmesh", "ptransfermap", "enzyme",
                "attribute_sets", "arrays_by_name",
-               "hyperbolic", "bounds", "integrator", "ordering"]
+               "hyperbolic",  "complex_densemat",
+               "bounds", "integrator", "ordering",
+               "dpg", "particleset", "particlevector"]
+
 
     if mpiinc != '':
         include_dirs.append(mpiinc)

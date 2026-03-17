@@ -43,7 +43,7 @@ def cmake_make_mfem(serial=True):
 
     cmake_opts = {'DBUILD_SHARED_LIBS': '1',
                   'DMFEM_ENABLE_EXAMPLES': '1',
-                  'DMFEM_ENABLE_MINIAPPS': '0',
+                  'DMFEM_ENABLE_MINIAPPS': '1',
                   'DCMAKE_SHARED_LINKER_FLAGS': ldflags,
                   'DMFEM_USE_ZLIB': '1',
                   'DCMAKE_CXX_FLAGS': bglb.cxxstd_flag,
@@ -56,8 +56,8 @@ def cmake_make_mfem(serial=True):
     if bglb.mfem_debug:
         cmake_opts['DMFEM_DEBUG'] = 'YES'
 
-    if bglb.mfem_build_miniapps:
-        cmake_opts['DMFEM_ENABLE_MINIAPPS'] = '1'
+    if not bglb.mfem_miniapps:
+        cmake_opts['DMFEM_ENABLE_MINIAPPS'] = '0'
 
     if bglb.verbose:
         cmake_opts['DCMAKE_VERBOSE_MAKEFILE'] = '1'

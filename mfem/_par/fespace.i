@@ -55,104 +55,166 @@ INT_DEFAULT_NEGATIVE_ONE(int component = -1)
 
 //VDoF accesser
 %feature("shadow") mfem::FiniteElementSpace::GetBdrElementVDofs %{
-def GetBdrElementVDofs(self, i):
-    from  .array import intArray
-    vdofs = intArray()
-    $action(self, i, vdofs)
-    return vdofs.ToList()
+def GetBdrElementVDofs(self, *args):
+    if len(args) == 1:
+        from  .array import intArray
+        vdofs = intArray()
+        $action(self, args[0], vdofs)
+        return vdofs.ToList()
+    else:
+        return $action(self, *args)
 %}
 %feature("shadow") mfem::FiniteElementSpace::GetElementVDofs %{
-def GetElementVDofs(self, i):
-    from  .array import intArray
-    vdofs = intArray()
-    $action(self, i, vdofs)
-    return vdofs.ToList()
+def GetElementVDofs(self, *args):
+    if len(args) == 1:
+        from  .array import intArray
+        vdofs = intArray()
+        $action(self, args[0], vdofs)
+        return vdofs.ToList()
+    else:
+        return $action(self, *args)
+%}
+%feature("shadow") mfem::FiniteElementSpace::GetPatchVDofs %{
+def GetPatchVDofs(self, *args):
+    if len(args) == 1:
+        from  .array import intArray
+        vdofs = intArray()
+        $action(self, args[0], vdofs)
+        return vdofs.ToList()
+    else:
+        return $action(self, *args)
 %}
 %feature("shadow") mfem::FiniteElementSpace::GetFaceVDofs %{
-def GetFaceVDofs(self, i):
-    from  .array import intArray
-    vdofs = intArray()
-    $action(self, i, vdofs)
-    return vdofs.ToList()
+def GetFaceVDofs(self, *args):
+    if len(args) == 1:
+        from  .array import intArray
+        vdofs = intArray()
+        $action(self, args[0], vdofs)
+        return vdofs.ToList()
+    else:
+        return $action(self, *args)
 %}
 %feature("shadow") mfem::FiniteElementSpace::GetEdgeVDofs %{
-def GetEdgeVDofs(self, i):
-    from  .array import intArray
-    vdofs = intArray()
-    $action(self, i, vdofs)
-    return vdofs.ToList()
+def GetEdgeVDofs(self, *args):
+    if len(args) == 1:
+        from  .array import intArray
+        vdofs = intArray()
+        $action(self, args[0], vdofs)
+        return vdofs.ToList()
+    else:
+        return $action(self, *args)
 %}
 %feature("shadow") mfem::FiniteElementSpace::GetVertexVDofs %{
-def GetVertexVDofs(self, i):
-    from  .array import intArray
-    vdofs = intArray()
-    $action(self, i, vdofs)
-    return vdofs.ToList()
+def GetVertexVDofs(self, *args):
+    if len(args) == 1:
+        from  .array import intArray
+        vdofs = intArray()
+        $action(self, args[0], vdofs)
+        return vdofs.ToList()
+    else:
+        return $action(self, *args)
 %}
 %feature("shadow") mfem::FiniteElementSpace::GetElementInteriorVDofs %{
-def GetElementInteriorVDofs(self, i):
-    from  .array import intArray
-    vdofs = intArray()
-    $action(self, i, vdofs)
-    return vdofs.ToList()
+def GetElementInteriorVDofs(self, *args):
+    if len(args) == 1:
+        from  .array import intArray
+        vdofs = intArray()
+        $action(self, args[0], vdofs)
+        return vdofs.ToList()
+    else:
+        return $action(self, *args)
 %}
 %feature("shadow") mfem::FiniteElementSpace::GetEdgeInteriorVDofs %{
-def GetEdgeInteriorVDofs(self, i):
-    from  .array import intArray
-    vdofs = intArray()
-    $action(self, i, vdofs)
-    return vdofs.ToList()
+def GetEdgeInteriorVDofs(self, *args):
+    if len(args) == 1:
+        from  .array import intArray
+        vdofs = intArray()
+        $action(self, args[0], vdofs)
+        return vdofs.ToList()
+    else:
+        return $action(self, *args)
 %}
 
 //DoF accesser
 %feature("shadow") mfem::FiniteElementSpace::GetBdrElementDofs %{
-def GetBdrElementDofs(self, i):
-    from  .array import intArray
-    vdofs = intArray()
-    $action(self, i, vdofs)
-    return vdofs.ToList()
+def GetBdrElementDofs(self, *args):
+    if len(args) == 1:
+        from  .array import intArray
+        dofs = intArray()
+        $action(self, args[0], dofs)
+        return dofs.ToList()
+    else:
+        return $action(self, *args)
 %}
 %feature("shadow") mfem::FiniteElementSpace::GetElementDofs %{
-def GetElementDofs(self, i):
-    from  .array import intArray
-    vdofs = intArray()
-    $action(self, i, vdofs)
-    return vdofs.ToList()
+def GetElementDofs(self, *args):
+    if len(args) == 1:
+        from  .array import intArray
+        dofs = intArray()
+        $action(self, args[0], dofs)
+        return dofs.ToList()
+    else:
+        return $action(self, *args)
 %}
 %feature("shadow") mfem::FiniteElementSpace::GetFaceDofs %{
-def GetFaceDofs(self, i):
-    from  .array import intArray
-    vdofs = intArray()
-    $action(self, i, vdofs)
-    return vdofs.ToList()
+def GetFaceDofs(self, *args):
+    if len(args) == 1:
+        from  .array import intArray
+        dofs = intArray()
+        $action(self, args[0], dofs)
+        return dofs.ToList()
+    else:
+        return $action(self, *args)
 %}
 %feature("shadow") mfem::FiniteElementSpace::GetEdgeDofs %{
-def GetEdgeDofs(self, i):
-    from  .array import intArray
-    vdofs = intArray()
-    $action(self, i, vdofs)
-    return vdofs.ToList()
+def GetEdgeDofs(self, *args):
+    if len(args) == 1:
+        from  .array import intArray
+        dofs = intArray()
+        $action(self, args[0], dofs)
+        return dofs.ToList()
+    else:
+        return $action(self, *args)
 %}
 %feature("shadow") mfem::FiniteElementSpace::GetVertexDofs %{
-def GetVertexDofs(self, i):
-    from  .array import intArray
-    vdofs = intArray()
-    $action(self, i, vdofs)
-    return vdofs.ToList()
+def GetVertexDofs(self, *args):
+    if len(args) == 1:
+        from  .array import intArray
+        dofs = intArray()
+        $action(self, args[0], dofs)
+        return dofs.ToList()
+    else:
+        return $action(self, *args)
 %}
 %feature("shadow") mfem::FiniteElementSpace::GetElementInteriorDofs %{
-def GetElementInteriorDofs(self, i):
-    from  .array import intArray
-    vdofs = intArray()
-    $action(self, i, vdofs)
-    return vdofs.ToList()
+def GetElementInteriorDofs(self, *args):
+    if len(args) == 1:
+        from  .array import intArray
+        dofs = intArray()
+        $action(self, args[0], dofs)
+        return dofs.ToList()
+    else:
+        return $action(self, *args)
 %}
 %feature("shadow") mfem::FiniteElementSpace::GetEdgeInteriorDofs %{
-def GetEdgeInteriorDofs(self, i):
-    from  .array import intArray
-    vdofs = intArray()
-    $action(self, i, vdofs)
-    return vdofs.ToList()
+def GetEdgeInteriorDofs(self, *args):
+    if len(args) == 1:
+        from  .array import intArray
+        dofs = intArray()
+        $action(self, args[0], dofs)
+        return dofs.ToList()
+    else:
+        return $action(self, *args)
+%}
+%feature("shadow") mfem::FiniteElementSpace::GetPatchDofs %{
+def GetPatchDofs(self, *args):
+    if len(args) == 1:
+        from  .array import intArray
+        dofs = intArray()
+        $action(self, args[0], dofs)
+        return dofs.ToList()
+    else:
+        return $action(self, *args)
 %}
 
 %pythonappend mfem::FiniteElementSpace::FiniteElementSpace%{

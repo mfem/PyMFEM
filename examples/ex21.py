@@ -59,7 +59,12 @@ def run(order=1,
     f.Set(dim-1, mfem.PWConstCoefficient(pull_force))
 
     b = mfem.LinearForm(fespace)
-    b.AddDomainIntegrator(mfem.VectorBoundaryLFIntegrator(f))
+
+    if mfem.MFEM_VERSION >= 40901:
+        b.AddBoundaryIntegrator(mfem.VectorBoundaryLFIntegrator(f))
+    else:
+        b.AddDomainIntegrator(mfem.VectorBoundaryLFIntegrator(f))
+
 
     # 6. Set up the bilinear form a(.,.) on the finite element space
     #    corresponding to the linear elasticity integrator with piece-wise

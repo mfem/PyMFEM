@@ -99,6 +99,8 @@ REPOS = dict(
         releases=[
             release(
                 "1.0.8", None, "https://github.com/Nek5000/gslib/archive/refs/tags/v1.0.8.tar.gz"),
+            release(
+                "1.0.9", None, "https://github.com/Nek5000/gslib/archive/refs/tags/v1.0.9.tar.gz"),
         ]
     ),
 )

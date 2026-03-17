@@ -4,7 +4,6 @@
 %module(package="mfem._ser") ode
 %{
 #include  "mfem.hpp"
-#include "linalg/ode.hpp"
 #include "../common/pyoperator.hpp"
 #include "numpy/arrayobject.h"
 #include "../common/io_stream.hpp"
@@ -39,5 +38,7 @@ OSTREAM_TYPEMAP(std::ostream&)
  }
 
 
-%include "linalg/ode.hpp"
+%ignore SupportsImplicitVariableType;
 
+
+%include "linalg/ode.hpp"

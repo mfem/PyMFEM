@@ -36,6 +36,7 @@ def print_config():
     print(" when needed, the dependency (mfem/hypre/metis) will be installed under " +
           bglb.ext_prefix)
     print(" build mfem : " + ("Yes" if bglb.build_mfem else "No"))
+    print(" build miniapps: " + ("Yes" if bglb.mfem_miniapps else "No"))
     print(" build metis : " + ("Yes" if bglb.build_metis else "No"))
     print(" build hypre : " + ("Yes" if bglb.build_hypre else "No"))
     print(" build libceed : " + ("Yes" if bglb.build_libceed else "No"))
@@ -75,6 +76,8 @@ def clean_dist_info(wheeldir):
 
 
 def initialize_cmd_options(command_obj):
+    command_obj.prefix = ''
+
     command_obj.swig = False
     command_obj.skip_swig = False
     command_obj.ext_only = False
@@ -89,7 +92,7 @@ def initialize_cmd_options(command_obj):
     command_obj.mfem_source = bglb.mfem_source
     command_obj.mfem_branch = ''
     command_obj.mfem_debug = False
-    command_obj.mfem_build_miniapps = False
+    command_obj.mfem_miniapps = True
     command_obj.metis_prefix = ''
     command_obj.hypre_prefix = ''
 
@@ -130,6 +133,7 @@ def initialize_cmd_options(command_obj):
 
 cmd_options = [
     ('vv', None, 'More verbose output (CMAKE_VERBOSE_MAKEFILE etc)'),
+    ('prefix=', None, 'Install prefix'),
     ('with-parallel', None, 'Installed both serial and parallel version'),
     ('no-serial', None, 'Skip building the serial wrapper'),
     ('mfem-prefix=', None, 'Specify locaiton of mfem' +
@@ -146,7 +150,7 @@ cmd_options = [
     ('mfem-source=', None, 'Specify mfem source location' +
      'MFEM source directory. Required to run-swig '),
     ('mfem-debug', None, 'Build MFME with MFEM_DEBUG enabled'),
-    ('mfem-build-miniapps', None, 'build MFME Miniapps'),
+    ('mfem-miniapps', None, 'build MFME Miniapps'),
     ('hypre-prefix=', None, 'Specify locaiton of hypre' +
      'libHYPRE.so must exits under <hypre-prefix>/lib'),
     ('metis-prefix=', None, 'Specify locaiton of metis' +
@@ -221,14 +225,21 @@ def process_cmd_options(command_obj, cfs):
                     assert False, str(command_obj) + " does not have " + attr
                 setattr(command_obj, attr, value)
         else:
-            value = cfs.pop(param, "No")
             if not hasattr(command_obj, attr):
                 assert False, str(command_obj) + " does not have " + attr
+
+            if getattr(command_obj, attr):
+                value = cfs.pop(param, "Yes")
+            else:
+                value = cfs.pop(param, "No")
 
             if value.upper() in ("YES", "TRUE", "1"):
                 setattr(command_obj, attr, True)
             else:
                 setattr(command_obj, attr, False)
+
+    if len(cfs) != 0:
+        assert False, "unknonw input is given " + str(cfs)
 
 
 def process_setup_options(command_obj, args):
@@ -298,7 +309,7 @@ def configure_install(self):
     bglb.run_swig_parallel = bool(self.with_parallel)
 
     bglb.mfem_debug = bool(self.mfem_debug)
-    bglb.mfem_build_miniapps = bool(self.mfem_build_miniapps)
+    bglb.mfem_miniapps = bool(self.mfem_miniapps)
 
     if bglb.build_serial:
         bglb.build_serial = (not bglb.swig_only and not bglb.ext_only)
@@ -426,6 +437,7 @@ def configure_install(self):
         bglb.build_mfemp = False
         bglb.build_libceed = False
         bglb.build_gslib = False
+        bglb.keep_temp = True
 
     if bglb.skip_swig:
         bglb.clean_swig = False
@@ -438,7 +450,6 @@ def configure_install(self):
         bglb.build_serial = False
         bglb.build_parallel = False
         bglb.keep_temp = True
-
 
     if bglb.libceed_only:
         bglb.clean_swig = False
@@ -453,7 +464,6 @@ def configure_install(self):
         bglb.build_libceed = True
         bglb.keep_temp = True
 
-
     if bglb.gslib_only:
         bglb.clean_swig = False
         bglb.run_swig = False
@@ -466,7 +476,7 @@ def configure_install(self):
         bglb.build_gslib = True
         bglb.keep_temp = True
 
-
     bglb.is_configured = True
+
 
 configure_build = configure_install

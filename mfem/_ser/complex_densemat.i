@@ -29,4 +29,5 @@ import_array1(-1);
 %import "../common/exception.i"
 %import "../common/io_stream_typemap.i"
 
+%ignore mfem::ComplexLUFactors::Mult(int m, int n, std::complex<real_t> *X) const;
 %include "linalg/complex_densemat.hpp"

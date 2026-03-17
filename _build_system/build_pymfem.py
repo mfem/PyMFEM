@@ -71,6 +71,7 @@ def write_setup_local():
               'gslibpinc': os.path.join(bglb.gslibp_prefix, 'include'),
               'cxxstdflag': bglb.cxxstd_flag,
               'build_mfem': '1' if bglb.build_mfem else '0',
+              'build_miniapps': '1' if bglb.mfem_miniapps else '0',
               'bdist_wheel_dir': bglb.bdist_wheel_dir,
               }
 

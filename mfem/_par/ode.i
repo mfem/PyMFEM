@@ -36,6 +36,7 @@ OSTREAM_TYPEMAP(std::ostream&)
   %append_output(PyFloat_FromDouble(*$1));
  }
 
+%ignore SupportsImplicitVariableType;
 
 %include "linalg/ode.hpp"
 
