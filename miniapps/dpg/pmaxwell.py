@@ -133,7 +133,6 @@ from mpi4py import MPI
 from numba import njit, void, int32, int64, float64, complex128, types
 from mfem.common.bessel import yv as yn
 from mfem.common.bessel import jv as jn
-import os
 from os.path import expanduser, join, dirname
 
 import numpy as np
