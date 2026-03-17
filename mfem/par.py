@@ -8,7 +8,7 @@ debug_print = mfem.debug_print
 
 from mpi4py import MPI
 
-import mfem._par.config as config
+from  mfem._par.config import *
 
 from  mfem._par.cpointers import *
 from  mfem._par.globals import *

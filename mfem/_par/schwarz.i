@@ -7,6 +7,7 @@
 #include "../../headers/schwarz.hpp"
 #include "../common/pyoperator.hpp"
 #include "../common/pycoefficient.hpp"
+#include "../common/pyintrules.hpp"
 #include "numpy/arrayobject.h"
 %}
 

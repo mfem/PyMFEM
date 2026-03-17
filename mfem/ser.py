@@ -1,4 +1,4 @@
-import mfem._ser.config as config
+from mfem._ser.config import *
 
 from  mfem._ser.cpointers import *
 from  mfem._ser.globals import *
