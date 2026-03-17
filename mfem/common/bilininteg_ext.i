@@ -4,15 +4,24 @@ namespace mfem {
 %}
 
 %pythonappend TransposeIntegrator::TransposeIntegrator %{
-    if own_bfi_ == 1:  bfi_.thisown = 0
+    if own_bfi_ == 1:
+        bfi_.thisown = 0
+    if hasattr(bfi_, '_coeff'):
+        self._coeff = bfi_._coeff
 %}
 
 %pythonappend LumpedIntegrator::LumpedIntegrator %{
-    if own_bfi_ == 1:  bfi_.thisown = 0
+    if own_bfi_ == 1:
+        bfi_.thisown = 0
+    if hasattr(bfi_, '_coeff'):
+        self._coeff = bfi_._coeff
 %}
 
 %pythonappend InverseIntegrator::InverseIntegrator %{
-    if own_integ == 1:  integ.thisown = 0
+    if own_integ == 1:
+        integ.thisown = 0
+    if hasattr(integ, '_coeff'):
+        self._coeff = integ._coeff
 %}
 
 %pythonappend SumIntegrator::SumIntegrator %{

@@ -30,7 +30,9 @@ $ pip install ./ -C"with-parallel=Yes" --verbose
 
 #### Cleaning
 ```shell
-$ python setup.py clean --all # clean external dependencies + wrapper code
+$ rm -rf build    # clean build directory
+$ rm -rf external # clean external dependencies + wrapper code
+$ git clean -f    # clean files under mfem/_ser and mfem/_par
 ```
 #### Run test
 ```shell
