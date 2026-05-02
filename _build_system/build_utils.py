@@ -17,9 +17,9 @@ from collections import namedtuple
 from shutil import which as find_command
 
 __all__ = ["read_mfem_tplflags", "abspath", "external_install_prefix",
-           "make_call", "chdir", "remove_files",
+           "make_call", "chdir", "remove_files", "cpu_count",
            "make", "make_install", "download", "gitclone",
-           "record_mfem_sha", "cmake", 
+           "record_mfem_sha", "cmake",
            "get_numpy_inc", "get_mpi4py_inc", "find_libpath_from_prefix",
            "clean_so", ]
 
@@ -55,6 +55,11 @@ def read_mfem_tplflags(prefix):
 def abspath(path):
     return os.path.abspath(os.path.expanduser(path))
 
+def cpu_count():
+    ncpu = multiprocessing.cpu_count()
+    ncpu = int(os.environ.get('PYMFEM_BUILD_NCPU', str(ncpu - 1)))
+
+    return ncpu
 
 def external_install_prefix(prefix, verbose=True):
 
@@ -330,6 +335,3 @@ def clean_so(all=None):
     make_call(command)
 
     chdir(pwd)
-
-
-

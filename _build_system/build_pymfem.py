@@ -125,7 +125,7 @@ def generate_wrapper(do_parallel):
     run swig.
     '''
     # this should work as far as we are in the same directory ?
-    from multiprocessing import Pool, cpu_count
+    from multiprocessing import Pool
     import build_globals as bglb
 
     if bglb.dry_run or bglb.verbose:
@@ -294,7 +294,6 @@ def make_mfem_wrapper(serial=True):
     '''
     compile PyMFEM wrapper code
     '''
-    from multiprocessing import cpu_count
     import build_globals as bglb
 
     if bglb.dry_run or bglb.verbose:
@@ -312,8 +311,11 @@ def make_mfem_wrapper(serial=True):
         pwd = chdir(os.path.join(rootdir, 'mfem', '_par'))
 
     python = sys.executable
-    command = [python, 'setup.py', 'build_ext', '--inplace', '--parallel',
-               str(max((cpu_count() - 1, 1)))]
+
+
+    command = [python, 'setup.py', 'build_ext', '--inplace',
+               '--parallel',  str(cpu_count())]
+
     make_call(command, force_verbose=True)
 
     os.chdir(pwd)

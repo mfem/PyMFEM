@@ -49,6 +49,8 @@ pip install . -C"with-parallel=Yes" -C"with-gslib=Yes"
 
 (Warning) The migration to `pip install . ` is on-going effort and Some of the example commands are not tested yet, which are indicated by using old conversion of "python setup.py install XXXX"
 
+## Environmental variable
+`PYMFEM_BUILD_NCPU` :  set number of parallel jobs used when calling SWIG and build-extension.
 
 ## Commonly used flags
 
