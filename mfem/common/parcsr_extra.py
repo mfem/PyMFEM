@@ -143,7 +143,7 @@ def ToHypreParCSR(mat, check_partitioning=False, verbose=False,
     n = nl
     nrows = ml
 
-    i = mat.indptr.astype(dtype)
+    i = mat.indptr.astype('int32')
     j = mat.indices.astype(dtype)
     data = mat.data
 
