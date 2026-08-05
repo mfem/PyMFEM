@@ -5,6 +5,7 @@
      * pgridfunc.i is adjusted to deal with an error caused by
          mfem::ParGridFunction::ProjectDiscCoefficient(std::variant<mfem::Coefficient*, mfem::VectorCoefficient*>)
        which was introduced recently in pgridfunc.hpp
+     * fe_pyramid.i is added
      
 2025 12
      * PyMFEM4.9
