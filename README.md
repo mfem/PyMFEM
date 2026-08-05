@@ -23,6 +23,7 @@ The setup script accept various options. Download the package manually and run t
 #### Download source and build
 ```shell
 $ git clone https://github.com/mfem/PyMFEM.git
+$ cd PyMFEM
 
 # Build it from local source with MPI
 $ pip install ./ -C"with-parallel=Yes" --verbose
@@ -37,7 +38,7 @@ $ git clean -f    # clean files under mfem/_ser and mfem/_par
 #### Run test
 ```shell
 cd test
-python test_examples.py -serial
+python run_examples.py -serial
 ```
 
 ## Usage
