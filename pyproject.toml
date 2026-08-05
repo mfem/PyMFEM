@@ -37,7 +37,7 @@ requires = [
         "pip>=25.1.0", 
 	"numpy>=2.0.0",
 	"cmake>=4.0.0",
-	"swig>=4.3",
+	"swig>=4.4",
 ]
 build-backend = "backend"
 backend-path = ["_build_system"]

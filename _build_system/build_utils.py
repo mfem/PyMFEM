@@ -183,6 +183,20 @@ def download(xxx):
     os.rename(os.path.join(extdir, targz.getnames()[0].split('/')[0]),
               os.path.join(extdir, xxx))
 
+def git_is_tracking_remote():
+    try:
+        # Queries if the current branch has an upstream tracking branch configured
+        command = ["git", "rev-parse", "--abbrev-ref", "@{upstream}"]
+        make_call(command)
+
+        #subprocess.check_output(
+        #    ["git", "rev-parse", "--abbrev-ref", "@{upstream}"],
+        #    cwd=repo_path,
+        #    stderr=subprocess.DEVNULL
+        #)
+        return True
+    except subprocess.CalledProcessError:
+        return False
 
 def gitclone(xxx, use_sha=False, branch='master'):
     cwd = os.getcwd()
@@ -191,8 +205,9 @@ def gitclone(xxx, use_sha=False, branch='master'):
         os.chdir(repo_xxx)
         command = ['git', 'checkout', branch]
         make_call(command)
-        command = ['git', 'pull']
-        make_call(command)
+        if git_is_tracking_remote():
+           command = ['git', 'pull']
+           make_call(command)
     else:
         repo = REPOS[xxx]["url"]
         if bglb.git_sshclone:
