@@ -126,6 +126,15 @@ LIST_TO_MFEMOBJ_POINTERARRAY_IN(mfem::IntegrationRule const *irs[],  mfem::Integ
 %rename("") mfem::ParGridFunction::MakeRef(ParFiniteElementSpace *f, double *v);
 %rename("") mfem::ParGridFunction::MakeRef(ParFiniteElementSpace *f, Vector &v, int v_offset);
 
+/* note on ProjectDiscCoefficient
+   mfem::ParGridFunction::ProjectDiscCoefficient(std::variant<mfem::Coefficient*, mfem::VectorCoefficient*>) is
+   declared in protected region. Furtheremore, ProjectDiscCoefficient is an alias made by using. 
+   The following is to wrap only specific public methods
+*/
+%ignore mfem::ParGridFunction::ProjectDiscCoefficient;
+%rename("") mfem::ParGridFunction::ProjectDiscCoefficient(Coefficient &coeff, AvgType type);
+%rename("") mfem::ParGridFunction::ProjectDiscCoefficient(VectorCoefficient &vcoeff, AvgType type);
+
 %include "fem/pgridfunc.hpp"
 
 namespace mfem{

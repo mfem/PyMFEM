@@ -18,6 +18,7 @@ import_array1(-1);
 %import "array.i"
 %import "vector.i"
 %import "operators.i"
+%import "hypre.i"
 
 %pythonappend mfem::BlockOperator::BlockOperator %{
 from mfem.par import intArray

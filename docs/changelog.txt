@@ -2,6 +2,9 @@
 2025 08
      * Requires SWIG >= 4.4.
      * Added git_is_tracking_remote in build_util, which is called before git pull.
+     * pgridfunc.i is adjusted to deal with an error caused by
+         mfem::ParGridFunction::ProjectDiscCoefficient(std::variant<mfem::Coefficient*, mfem::VectorCoefficient*>)
+       which was introduced recently in pgridfunc.hpp
      
 2025 12
      * PyMFEM4.9
