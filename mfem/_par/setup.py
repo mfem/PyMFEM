@@ -132,7 +132,7 @@ def get_extensions():
                "attribute_sets", "arrays_by_name",
                "hyperbolic",  "complex_densemat",
                "bounds", "integrator", "ordering",
-               "dpg", "particleset", "particlevector"]
+               "dpg", "particleset", "particlevector", "fe_pyramid"]
 
 
     if mpiinc != '':

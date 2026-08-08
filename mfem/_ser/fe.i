@@ -35,6 +35,7 @@ import_array1(-1);
 %import "fe_nurbs.i"
 %import "fe_pos.i"
 %import "fe_ser.i"
+%import "fe_pyramid.i"
 %import "../common/exception.i"
 
 %ignore mfem::DofToQuad::FE;
