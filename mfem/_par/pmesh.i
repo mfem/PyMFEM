@@ -97,6 +97,17 @@ namespace mfem{
      //mesh = new mfem::ParMesh(comm, imesh);
      //return mesh;
      //}
+ParMesh(MPI_Comm comm, apf::Mesh2* pumi_mesh){
+    mfem::ParMesh *mesh;
+    if (!pumi_mesh)
+    {
+    std::cerr << "\nPointer to pumi_mesh is not set\n" << std::endl;
+    return NULL;
+    }
+    mesh = new mfem::ParPumiMesh(comm, pumi_mesh, 0, true);
+    return mesh;
+    }
+
 void ParPrintToFile(const char *mesh_file, const int precision) const
     {
     std::ofstream mesh_ofs(mesh_file);
