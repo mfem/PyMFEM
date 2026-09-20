@@ -176,6 +176,8 @@ INSTANTIATE_ARRAY0(Vector *, Vector, 1)
      $result = $1;
 }
 
+%ignore mfem::Vector::GetArrayView;
+
 %include "linalg/vector.hpp"
 
 %extend mfem::Vector {
