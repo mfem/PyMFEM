@@ -13,7 +13,16 @@
           (which is not copy/move-able).
         - Expose ODESolver::SupportsImplicitVariableType and SetImplicitVariableType
           through %extend and using the public TimeDependentOperator enum.
-        - Added DGMassInv wrapper (massinv.i) 
+        - Add DGMassInv wrapper (dgmassinv.i).
+        - Add low-order refined discretization wrappers (lor.i). Following templrate
+	  specialiation are created
+	   (serial)   LORGSSmoother (LORSolver<GSSmoother>)
+	              LORDSmoother  (LORSolver<DSmoother>)
+	   (parallel) LORHypreBoomerAMG (LORSolver<HypreBoomerAMG>)
+  	              LORHypreAMS  (LORSolver<HypreAMS>)
+	              LORHypreADS (LORSolver<HypreADS>)
+        - Python ex41 and ex41p for IMEX advection-diffusion,
+        - Add star-mixed.mesh and star-mixed-p2.mesh to the example mesh data.
 2025 08
      * Requires SWIG >= 4.4.
      * Added git_is_tracking_remote in build_util, which is called before git pull.
