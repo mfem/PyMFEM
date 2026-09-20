@@ -1,7 +1,18 @@
         <<<  Change Log. >>>
 2026 09
-     * Update for MFEM 4.10
-     ** Default build is made using MFEM 4.10
+     * PyMFEM 4.10.0
+        - Default build uses MFEM 4.10.
+        - Requires SWIG >= 4.5.
+        - Replace legacy PyInt/PyString APIs and SWIG_Python_str_FromChar
+          with Python 3 integer and Unicode APIs in the SWIG interfaces.
+        - Update STRUMPACK argument conversion to use owned, mutable UTF-8 copies.
+        - Add serial and parallel MultiVector wrappers and corresponding imports.
+        - Suppress invalid IntegerSet constructors generated from inherited
+          Array<int> copy/move constructors.
+        - Exclude Vector::GetArrayView from Python wrapping because MemoryView
+          cannot be copied or moved by the generated wrapper.
+        - Expose ODESolver::SupportsImplicitVariableType and SetImplicitVariableType
+          through forwarding methods using the public TimeDependentOperator enum.
 2025 08
      * Requires SWIG >= 4.4.
      * Added git_is_tracking_remote in build_util, which is called before git pull.
