@@ -6,7 +6,7 @@
 %typemap(out) type_name{
   $result = PyTuple_New(l);
   for(int i = 0; i < l; i++) {
-    PyTuple_SetItem($result, i, PyInt_FromLong($1[i]));
+    PyTuple_SetItem($result, i, PyLong_FromLong($1[i]));
   }
 }
 %enddef
@@ -16,7 +16,7 @@
 %typemap(out) type_name{
   $result = PyList_New(l);
   for(int i = 0; i < l; i++) {
-    PyList_SetItem($result, i, PyInt_FromLong($1[i]));
+    PyList_SetItem($result, i, PyLong_FromLong($1[i]));
   }
 }
 %enddef
@@ -24,15 +24,15 @@
 // integer output as int point
 %define INTARRAY_OUT_TO_INT(type_name)
 %typemap(out) type_name{
-  $result = PyInt_FromLong($1[0]);
+  $result = PyLong_FromLong($1[0]);
 }
 %enddef
 
 // wrap integer with  default -1
 %define INT_DEFAULT_NEGATIVE_ONE(type_name)
 %typemap(in) (type_name) {
-  if (PyInt_Check($input)) {
-     $1 = PyInt_AsLong($input);
+  if (PyLong_Check($input)) {
+     $1 = PyLong_AsLong($input);
   } else if ((PyArray_PyIntAsInt($input) != -1) || !PyErr_Occurred()) {
      $1 = PyArray_PyIntAsInt($input);
   } else {
@@ -41,7 +41,7 @@
   }
 }
 %typemap(typecheck) (type_name) {
-  if (PyInt_Check($input)) {
+  if (PyLong_Check($input)) {
     $1 = 1;
   } else if ((PyArray_PyIntAsInt($input) != -1) || !PyErr_Occurred()) {
     $1 = 1;
@@ -58,13 +58,13 @@
      int ll = PyList_Size($input);
      for (int i = 0; i < ll; i++) {
         PyObject *s = PyList_GetItem($input,i);
-        temp[i] = (int)PyInt_AsLong(s);
+        temp[i] = (int)PyLong_AsLong(s);
      }
   } else if (PyTuple_Check($input)) {
      int ll = PyTuple_Size($input);
      for (int i = 0; i < ll; i++) {
         PyObject *s = PyTuple_GetItem($input,i);
-        temp[i] = (int)PyInt_AsLong(s);
+        temp[i] = (int)PyLong_AsLong(s);
      }
   } else {
     PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
@@ -92,8 +92,8 @@
 // int pointer input for single int
 %define INT_TO_INTARRAY_IN(type_name)
 %typemap(in) type_name (int temp){
-  if (PyInt_Check($input)) {
-     temp = PyInt_AsLong($input);
+  if (PyLong_Check($input)) {
+     temp = PyLong_AsLong($input);
   } else if ((PyArray_PyIntAsInt($input) != -1) || !PyErr_Occurred()) {
      temp = PyArray_PyIntAsInt($input);
   } else {
@@ -103,7 +103,7 @@
   $1 = &temp;
 }
 %typemap(typecheck, precedence=SWIG_TYPECHECK_POINTER) (type_name) {
-  if (PyInt_Check($input)) {
+  if (PyLong_Check($input)) {
     $1 = 1;
   } else if ((PyArray_PyIntAsInt($input) != -1) || !PyErr_Occurred()) {
     $1 = 1;
@@ -139,7 +139,7 @@
      $1 = new double[si];
      for (i = 0; i < si; i++) {
         PyObject *s = PyList_GetItem($input,i);
-        if (PyInt_Check(s)) {
+        if (PyLong_Check(s)) {
             $1[i] = (double)PyFloat_AsDouble(s);
         } else if (PyFloat_Check(s)) {
             $1[i] = (double)PyFloat_AsDouble(s);
@@ -229,7 +229,7 @@
   tmp_ptrarray = $1;
   #if KEEPLINK == 1
      char ref_name[] = "_inputlist_$descriptor(OBJTYPE)_$argnum";
-     PyObject *_ref_str = SWIG_Python_str_FromChar(ref_name);
+     PyObject *_ref_str = PyUnicode_FromString(ref_name);
      PyObject_SetAttr($self, _ref_str, $input);
      Py_DecRef(_ref_str);
   #endif
@@ -241,7 +241,7 @@
       PyObject *ref = SWIG_NewPointerObj(SWIG_as_voidptr(tmp_ptrarray$argnum),
 					 $descriptor(OBJTYPE *),
 							 true);
-      PyObject *_ref_str = SWIG_Python_str_FromChar("_ptrarray_$descriptor(OBJTYPE)_$argnum");
+      PyObject *_ref_str = PyUnicode_FromString("_ptrarray_$descriptor(OBJTYPE)_$argnum");
       PyObject_SetAttr($self, _ref_str, ref);
       Py_DecRef(_ref_str);
       if (allocated$argnum){

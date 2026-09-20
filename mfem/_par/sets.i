@@ -15,6 +15,10 @@ import_array1(-1);
 %include "exception.i"
 %include "../common/exception.i"
 
+%ignore mfem::Array::Array(Array< int > const &);
+%ignore mfem::Array::Array(Array< int > &&);
+
 %import "array.i"
 %import "table.i"
+
 %include "general/sets.hpp"

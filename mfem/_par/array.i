@@ -191,8 +191,8 @@ INSTANTIATE_ARRAY2(Array<int> *, Array<int>, intArray, 1)
   void __setitem__(PyObject* param, const T v) {
     if (PyTuple_Check(param)) {
         PyErr_Clear();
-        int i = PyInt_AsLong(PyTuple_GetItem(param, 0));
-        int j = PyInt_AsLong(PyTuple_GetItem(param, 1));
+        int i = PyLong_AsLong(PyTuple_GetItem(param, 0));
+        int j = PyLong_AsLong(PyTuple_GetItem(param, 1));
 
         if (PyErr_Occurred()) {
            PyErr_SetString(PyExc_ValueError, "Argument must be i, j");
@@ -205,8 +205,8 @@ INSTANTIATE_ARRAY2(Array<int> *, Array<int>, intArray, 1)
   T __getitem__(PyObject* param) {
     if (PyTuple_Check(param)) {
         PyErr_Clear();
-        int i = PyInt_AsLong(PyTuple_GetItem(param, 0));
-        int j = PyInt_AsLong(PyTuple_GetItem(param, 1));
+        int i = PyLong_AsLong(PyTuple_GetItem(param, 0));
+        int j = PyLong_AsLong(PyTuple_GetItem(param, 1));
 
         if (PyErr_Occurred()) {
            PyErr_SetString(PyExc_ValueError, "Argument must be i, j");

@@ -49,8 +49,8 @@
     is_allocated = true;
     for (i = 0; i < l; i++) {
       PyObject *s = (is_tuple) ? PyTuple_GetItem($input, i) : PyList_GetItem($input,i);
-      if (PyInt_Check(s)) {
-        $1[i] = (int)PyInt_AsLong(s);
+      if (PyLong_Check(s)) {
+        $1[i] = (int)PyLong_AsLong(s);
       } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
         $1[i] = PyArray_PyIntAsInt(s);
       } else {    

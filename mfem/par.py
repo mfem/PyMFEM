@@ -101,6 +101,7 @@ from  mfem._par.psubmesh import *
 from  mfem._par.transfermap import *
 from  mfem._par.ptransfermap import *
 from  mfem._par.hyperbolic import *
+from  mfem._par.multivector import *
 
 from  mfem._par.bounds import *
 from  mfem._par.integrator import *

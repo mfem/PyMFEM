@@ -9,6 +9,7 @@ namespace mfem {
     self._coeff = args
 %}
 %pythonappend DomainLFGradIntegrator::DomainLFGradIntegrator %{
+    self._ir=ir
     self._coeff = QF
 %}
 %pythonappend BoundaryLFIntegrator::BoundaryLFIntegrator %{
@@ -31,6 +32,7 @@ namespace mfem {
     self._coeff = QG
 %}
 %pythonappend VectorFEDomainLFIntegrator::VectorFEDomainLFIntegrator %{
+    self._ir=ir
     self._coeff = F
 %}
 %pythonappend VectorFEDomainLFCurlIntegrator::VectorFEDomainLFCurlIntegrator %{

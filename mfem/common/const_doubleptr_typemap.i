@@ -46,7 +46,7 @@
     is_allocated = true;
     for (i = 0; i < l; i++) {
       PyObject *s = (is_tuple) ? PyTuple_GetItem($input, i) : PyList_GetItem($input,i);      
-      if (PyInt_Check(s)) {
+      if (PyLong_Check(s)) {
         $1[i] = (double)PyFloat_AsDouble(s);
       } else if (PyFloat_Check(s)) {
         $1[i] = (double)PyFloat_AsDouble(s);

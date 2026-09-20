@@ -1,4 +1,7 @@
         <<<  Change Log. >>>
+2026 09
+     * Update for MFEM 4.10
+     ** Default build is made using MFEM 4.10
 2025 08
      * Requires SWIG >= 4.4.
      * Added git_is_tracking_remote in build_util, which is called before git pull.

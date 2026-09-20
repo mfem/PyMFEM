@@ -630,14 +630,14 @@ void NumbaCoefficientBase::SetKinds(PyObject *kinds_){
      }
      for (int i = 0; i < ll; i++) {
         PyObject *s = PyList_GetItem(kinds_, i);
-        kinds[i] = (int)PyInt_AsLong(s);
+        kinds[i] = (int)PyLong_AsLong(s);
      }
      num_dep = ll;
   } else if (PyTuple_Check(kinds_)) {
      int ll = PyTuple_Size(kinds_);
      for (int i = 0; i < ll; i++) {
         PyObject *s = PyTuple_GetItem(kinds_,i);
-        kinds[i] = (int)PyInt_AsLong(s);
+        kinds[i] = (int)PyLong_AsLong(s);
      }
      if (ll > 16){
        PyErr_SetString(PyExc_ValueError, "Dependecy must be less than 16");
@@ -657,14 +657,14 @@ void NumbaCoefficientBase::SetIsDepComplex(PyObject *isComplex_){
      }
      for (int i = 0; i < ll; i++) {
         PyObject *s = PyList_GetItem(isComplex_, i);
-        isdepcomplex[i] = (int)PyInt_AsLong(s);
+        isdepcomplex[i] = (int)PyLong_AsLong(s);
      }
      num_dep = ll;
   } else if (PyTuple_Check(isComplex_)) {
      int ll = PyTuple_Size(isComplex_);
      for (int i = 0; i < ll; i++) {
         PyObject *s = PyTuple_GetItem(isComplex_,i);
-        isdepcomplex[i] = (int)PyInt_AsLong(s);
+        isdepcomplex[i] = (int)PyLong_AsLong(s);
      }
      num_dep = ll;
      if (ll > 16){

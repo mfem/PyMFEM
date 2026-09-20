@@ -38,7 +38,7 @@ PyObject * __getitem__(PyObject* param) {
         }
     } else {
         PyErr_Clear();
-        long idx = PyInt_AsLong(param);
+        long idx = PyLong_AsLong(param);
         if (PyErr_Occurred()) {
            PyErr_SetString(PyExc_ValueError, "Argument must be either int or slice");
             return NULL;
@@ -103,7 +103,7 @@ INSTANTIATE_ARRAY2(XXX, YYY, YYY, USEPTR)
         }
     } else {
         PyErr_Clear();
-        long idx = PyInt_AsLong(param);
+        long idx = PyLong_AsLong(param);
         if (PyErr_Occurred()) {
            PyErr_SetString(PyExc_ValueError, "Argument must be either int or slice");
             return NULL;
@@ -162,7 +162,7 @@ INSTANTIATE_ARRAY2(XXX, YYY, YYY, USEPTR)
         }
     } else {
         PyErr_Clear();
-        long idx = PyInt_AsLong(param);
+        long idx = PyLong_AsLong(param);
         if (PyErr_Occurred()) {
            PyErr_SetString(PyExc_ValueError, "Argument must be either int or slice");
             return NULL;
@@ -214,7 +214,7 @@ INSTANTIATE_ARRAY2(XXX, YYY, YYY, USEPTR)
         }
     } else {
         PyErr_Clear();
-        long idx = PyInt_AsLong(param);
+        long idx = PyLong_AsLong(param);
         if (PyErr_Occurred()) {
            PyErr_SetString(PyExc_ValueError, "Argument must be either int or slice");
             return NULL;
@@ -277,7 +277,7 @@ INSTANTIATE_ARRAY2(XXX, YYY, YYY, USEPTR)
         }
     } else {
         PyErr_Clear();
-        long idx = PyInt_AsLong(param);
+        long idx = PyLong_AsLong(param);
         if (PyErr_Occurred()) {
            PyErr_SetString(PyExc_ValueError, "Argument must be either int or slice");
             return NULL;

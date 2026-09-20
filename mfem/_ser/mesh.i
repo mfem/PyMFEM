@@ -108,7 +108,7 @@ if (!SWIG_IsOK(res2)){
  }
 
 %typemap(in) int &own_nodes_ (int own_nodes){
-  own_nodes = (int)PyInt_AsLong($input);
+  own_nodes = (int)PyLong_AsLong($input);
   $1 = &own_nodes;
 }
 %typemap(argout) (mfem::GridFunction *&nodes){
@@ -128,7 +128,7 @@ if (!SWIG_IsOK(res2)){
 
 // default number is -1, which conflict with error code of PyArray_PyIntAsInt...
 %typemap(typecheck) (int nonconforming = -1) {
-   $1 = PyInt_Check($input) ? 1 : 0;
+   $1 = PyLong_Check($input) ? 1 : 0;
 }
 
 %feature("shadow") mfem::Mesh::GetBdrElementVertices %{

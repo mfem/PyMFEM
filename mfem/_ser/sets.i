@@ -12,6 +12,10 @@ import_array1(-1);
 %}
 
 %include "exception.i"
+
+%ignore mfem::Array::Array(Array< int > const &);
+%ignore mfem::Array::Array(Array< int > &&);
+
 %import "array.i"
 %import "table.i"
 %import "../common/exception.i"

@@ -81,7 +81,7 @@ from  mfem._ser.doftrans import *
 from  mfem._ser.std_vectors import *
 from  mfem._ser.bounds import *
 from  mfem._ser.integrator import *
-
+from  mfem._par.multivector import *
 from  mfem._ser.submesh import *
 from  mfem._ser.transfermap import *
 from  mfem._ser.hyperbolic import *

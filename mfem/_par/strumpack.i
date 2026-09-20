@@ -53,7 +53,7 @@ import_array1(-1);
   $2 = (char **) malloc(($1+1)*sizeof(char *));
   for (i = 0; i < $1; i++) {
     PyObject *s = PyList_GetItem($input,i);
-    if (!PyString_Check(s)) {
+    if (!PyUnicode_Check(s)) {
         free($2);
         PyErr_SetString(PyExc_ValueError, "List items must be strings");
         return NULL;
@@ -73,23 +73,41 @@ import_array1(-1);
  */
 %inline %{
 char **argv_obj(PyObject* input){
-  int i;
   if (!PyList_Check(input)) {
     PyErr_SetString(PyExc_ValueError, "Expecting a list");
     return NULL;
   }
-  int num = PyList_Size(input);
-  char **out = (char **) malloc((num+1)*sizeof(char *));
-  for (i = 0; i < num; i++) {
-    PyObject *s = PyList_GetItem(input,i);
-    if (!PyString_Check(s)) {
-        free(out);
-        PyErr_SetString(PyExc_ValueError, "List items must be strings");
-        return NULL;
+  Py_ssize_t num = PyList_Size(input);
+  size_t size = (num + 1) * sizeof(char *);
+  for (Py_ssize_t j = 0; j < num; j++) {
+    PyObject *s = PyList_GetItem(input, j);
+    if (!PyUnicode_Check(s)) {
+      PyErr_SetString(PyExc_ValueError, "List items must be strings");
+      return NULL;
     }
-    out[i] = PyString_AsString(s);
+    Py_ssize_t length;
+    if (!PyUnicode_AsUTF8AndSize(s, &length)) return NULL;
+    size += length + 1;
   }
-  out[i] = 0;
+  // Own mutable copies together with the pointer array in one allocation.
+  char **out = (char **) malloc(size);
+  if (!out) {
+    PyErr_NoMemory();
+    return NULL;
+  }
+  char *buffer = reinterpret_cast<char *>(out + num + 1);
+  for (Py_ssize_t j = 0; j < num; j++) {
+    Py_ssize_t length;
+    const char *text = PyUnicode_AsUTF8AndSize(PyList_GetItem(input, j), &length);
+    if (!text) {
+      free(out);
+      return NULL;
+    }
+    out[j] = buffer;
+    memcpy(buffer, text, length + 1);
+    buffer += length + 1;
+  }
+  out[num] = NULL;
   return out;
  };
  %}
