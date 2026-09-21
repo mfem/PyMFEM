@@ -31,23 +31,22 @@ jobs:
           REF=$(echo ${GITHUB_REF#refs/heads/})
           echo "!!!!!: "$REF
           git checkout $REF
-          export PATH=/opt/python/cp39-cp39/bin:$PATH
+          export PATH=/opt/python/cp311-cp311/bin:$PATH
 
           pip install setuptools
           pip install -U packaging
           pip3 install wheel six auditwheel twine
-          pip3 install urllib3==1.26.6    # use older version to avoid OpenSSL vesion issue
-          pip3 install numpy==1.21.6
+          pip3 install "urllib3==1.26.6"    # use older version to avoid OpenSSL vesion issue
 
           rm -rf dist/*
           python3 setup.py sdist
           ls -l dist/
           python3 -m twine upload --verbose dist/*
-  make_binary_3_10_11_12_13_14:
+  make_binary_3_11_12_13_14:
     needs: make_sdist
     strategy:
       matrix:
-        pythonpath: ["cp310-cp310", "cp311-cp311", "cp312-cp312", "cp313-cp313", "cp314-cp314"]
+        pythonpath: ["cp311-cp311", "cp312-cp312", "cp313-cp313", "cp314-cp314"]
 
     runs-on: ubuntu-latest
     container: quay.io/pypa/manylinux2014_x86_64
@@ -71,7 +70,7 @@ jobs:
           pip3 install --upgrade pip setuptools packaging
           pip3 wheel ./ --verbose --no-deps
           pip3 install auditwheel twine
-          pip3 install urllib3==1.26.6    # use older version to avoid OpenSSL vesion issue
+          pip3 install "urllib3==1.26.6"    # use older version to avoid OpenSSL vesion issue
 
           CWD=$PWD
           yum install -y zlib-devel
