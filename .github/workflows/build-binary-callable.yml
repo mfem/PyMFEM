@@ -1,0 +1,96 @@
+name: Build Linux binary release
+
+on:
+  workflow_call:
+    inputs:
+      repository-url:
+        description: PyPI or TestPyPI upload endpoint.
+        type: string
+        required: true
+    secrets:
+      upload-token:
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  make_sdist:
+    runs-on: ubuntu-latest
+    container: quay.io/pypa/manylinux2014_x86_64
+    steps:
+      - name: build_sdist
+        env:
+          TWINE_REPOSITORY_URL: ${{ inputs.repository-url }}
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.upload-token }}
+          TWINE_NON_INTERACTIVE: '1'
+        run: |
+          git clone https://github.com/mfem/PyMFEM.git
+          cd PyMFEM
+          REF=$(echo ${GITHUB_REF#refs/heads/})
+          echo "!!!!!: "$REF
+          git checkout $REF
+          export PATH=/opt/python/cp39-cp39/bin:$PATH
+
+          pip install setuptools
+          pip install -U packaging
+          pip3 install wheel six auditwheel twine
+          pip3 install urllib3==1.26.6    # use older version to avoid OpenSSL vesion issue
+          pip3 install numpy==1.21.6
+
+          rm -rf dist/*
+          python3 setup.py sdist
+          ls -l dist/
+          python3 -m twine upload --verbose dist/*
+  make_binary_3_10_11_12_13_14:
+    needs: make_sdist
+    strategy:
+      matrix:
+        pythonpath: ["cp310-cp310", "cp311-cp311", "cp312-cp312", "cp313-cp313", "cp314-cp314"]
+
+    runs-on: ubuntu-latest
+    container: quay.io/pypa/manylinux2014_x86_64
+    steps:
+      - name: build package
+        env:
+          TWINE_REPOSITORY_URL: ${{ inputs.repository-url }}
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.upload-token }}
+          TWINE_NON_INTERACTIVE: '1'
+        run: |
+          echo It runs in the container instead of the VM.
+          git clone https://github.com/mfem/PyMFEM.git
+          cd PyMFEM
+          REF=$(echo ${GITHUB_REF#refs/heads/})
+          echo "!!!!!!: "$REF
+          git checkout $REF
+          ls -l /opt/python/
+          export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
+
+          pip3 install --upgrade pip setuptools packaging
+          pip3 wheel ./ --verbose --no-deps
+          pip3 install auditwheel twine
+          pip3 install urllib3==1.26.6    # use older version to avoid OpenSSL vesion issue
+
+          CWD=$PWD
+          yum install -y zlib-devel
+
+          mkdir dist
+
+          # build wheel and check it
+          python3 -m pip wheel ./ --verbose --no-deps
+          pip3 install *.whl
+          cd test
+          python run_examples.py -serial -verbose -ex ex1
+          cd ..
+
+          rm -rf dist/*
+          export LD_LIBRARY_PATH=${CWD}/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
+
+          auditwheel repair *.whl
+          rm -rf dist/*
+          mv wheelhouse/* dist/
+
+          ls -l dist/
+          python3 -m twine upload --verbose dist/*
