@@ -1,0 +1,19 @@
+name: testrelease_macbinary
+
+on:
+  push:
+    tags: ["test_*"]
+  # Manual runs build and test artifacts without publishing.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  macos-wheels:
+    uses: ./.github/workflows/build-macbinary-callable.yml
+    with:
+      publish: ${{ github.event_name == 'push' }}
+      repository-url: https://test.pypi.org/legacy/
+    secrets:
+      upload-token: ${{ secrets.TEST_PYPI_TOKEN }}

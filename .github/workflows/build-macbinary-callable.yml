@@ -1,0 +1,133 @@
+name: Build macOS ARM wheels
+
+on:
+  workflow_call:
+    inputs:
+      publish:
+        description: Publish only after every wheel has passed validation.
+        type: boolean
+        default: false
+      repository-url:
+        description: PyPI or TestPyPI upload endpoint.
+        type: string
+        required: true
+    secrets:
+      upload-token:
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    # The standard macos-14 runner is Apple Silicon; verify below as well.
+    runs-on: macos-14
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.11', '3.12', '3.13', '3.14']
+    env:
+      MACOSX_DEPLOYMENT_TARGET: '14.0'
+      CMAKE_OSX_DEPLOYMENT_TARGET: '14.0'
+      CMAKE_OSX_ARCHITECTURES: arm64
+      ARCHFLAGS: '-arch arm64'
+      CC: clang
+      CXX: clang++
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: arm64
+
+      - name: Check build architecture
+        run: |
+          test "$(uname -m)" = arm64
+          python -c "import platform; assert platform.machine() == 'arm64'"
+          clang --version
+
+      - name: Install wheel tools
+        run: python -m pip install --upgrade pip delocate twine
+
+      - name: Build serial wheel and bundled MFEM
+        run: |
+          set -o pipefail
+          python -m pip wheel . --verbose --no-deps --wheel-dir raw-wheels 2>&1 | tee build-macos.log
+
+      - name: Repair wheel dependencies
+        run: |
+          delocate-wheel --verbose --require-archs arm64 --wheel-dir wheelhouse raw-wheels/*.whl
+          python -m twine check wheelhouse/*.whl
+          delocate-listdeps --all wheelhouse/*.whl
+
+      - name: Check wheel platform tag
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from packaging.utils import parse_wheel_filename
+
+          wheels = list(Path('wheelhouse').glob('*.whl'))
+          assert len(wheels) == 1, wheels
+          _, _, _, tags = parse_wheel_filename(wheels[0].name)
+          assert all(tag.platform == 'macosx_14_0_arm64' for tag in tags), tags
+          PY
+
+      - name: Test installed repaired wheel outside checkout
+        run: |
+          smoke_dir=$(mktemp -d "$RUNNER_TEMP/pymfem-smoke.XXXXXX")
+          python -m venv "$smoke_dir/venv"
+          "$smoke_dir/venv/bin/python" -m pip install "$GITHUB_WORKSPACE"/wheelhouse/*.whl
+          cp examples/ex1.py "$smoke_dir/ex1.py"
+          cp data/star.mesh "$smoke_dir/star.mesh"
+          cd "$smoke_dir"
+          unset PYTHONPATH DYLD_LIBRARY_PATH DYLD_FALLBACK_LIBRARY_PATH
+          "$smoke_dir/venv/bin/python" -I - <<'PY'
+          import sys
+          from pathlib import Path
+          import mfem
+          import mfem.ser
+
+          assert Path(mfem.__file__).resolve().is_relative_to(Path(sys.prefix).resolve())
+          print('Testing installed package:', mfem.__file__)
+          PY
+          "$smoke_dir/venv/bin/python" -I ex1.py -m "$smoke_dir/star.mesh"
+
+      - name: Save validated wheel
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-arm64-py${{ matrix.python-version }}
+          path: wheelhouse/*.whl
+          if-no-files-found: error
+
+      - name: Save build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-build-log-py${{ matrix.python-version }}
+          path: build-macos.log
+          if-no-files-found: ignore
+
+  publish:
+    needs: build
+    if: ${{ inputs.publish }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: macos-arm64-py*
+          merge-multiple: true
+          path: dist
+      - name: Validate and upload wheels
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.upload-token }}
+          TWINE_REPOSITORY_URL: ${{ inputs.repository-url }}
+          TWINE_NON_INTERACTIVE: '1'
+        run: |
+          python -m pip install --upgrade twine
+          python -m twine check dist/*.whl
+          python -m twine upload dist/*.whl
