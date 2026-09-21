@@ -17,7 +17,7 @@ permissions:
 jobs:
   make_sdist:
     runs-on: ubuntu-latest
-    container: quay.io/pypa/manylinux2014_x86_64
+    container: quay.io/pypa/manylinux_2_28_x86_64
     steps:
       - name: build_sdist
         env:
@@ -49,7 +49,7 @@ jobs:
         pythonpath: ["cp311-cp311", "cp312-cp312", "cp313-cp313", "cp314-cp314"]
 
     runs-on: ubuntu-latest
-    container: quay.io/pypa/manylinux2014_x86_64
+    container: quay.io/pypa/manylinux_2_28_x86_64
     steps:
       - name: build package
         env:
@@ -67,13 +67,13 @@ jobs:
           ls -l /opt/python/
           export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
 
+          dnf install -y zlib-devel
           pip3 install --upgrade pip setuptools packaging
           pip3 wheel ./ --verbose --no-deps
           pip3 install auditwheel twine
           pip3 install "urllib3==1.26.6"    # use older version to avoid OpenSSL vesion issue
 
           CWD=$PWD
-          yum install -y zlib-devel
 
           mkdir dist
 
