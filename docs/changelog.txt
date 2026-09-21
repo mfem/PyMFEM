@@ -1,28 +1,38 @@
         <<<  Change Log. >>>
 2026 09
      * PyMFEM 4.10.0
-        - Default build uses MFEM 4.10.
-        - Requires SWIG >= 4.5.
-        - Replace PyInt/PyString APIs (from Python 2) and SWIG_Python_str_FromChar
-          with Python 3 APIs.
-        - Update STRUMPACK argument conversion to use owned, mutable UTF-8 copies.
-        - Add MultiVector wrapper (multivector.i).
-        - Suppress invalid IntegerSet constructors generated due to using Array<int>
-          in sets.hpp (and how SWIG interprets it).
-        - Vector::GetArrayView is currently ignored. This method returns MemoryView
-          (which is not copy/move-able).
-        - Expose ODESolver::SupportsImplicitVariableType and SetImplicitVariableType
-          through %extend and using the public TimeDependentOperator enum.
-        - Add DGMassInv wrapper (dgmassinv.i).
-        - Add low-order refined discretization wrappers (lor.i). Following templrate
-	  specialiation are created
-	   (serial)   LORGSSmoother (LORSolver<GSSmoother>)
-	              LORDSmoother  (LORSolver<DSmoother>)
-	   (parallel) LORHypreBoomerAMG (LORSolver<HypreBoomerAMG>)
-  	              LORHypreAMS  (LORSolver<HypreAMS>)
-	              LORHypreADS (LORSolver<HypreADS>)
-        - Python ex41 and ex41p for IMEX advection-diffusion,
-        - Add star-mixed.mesh and star-mixed-p2.mesh to the example mesh data.
+        Supported environment:
+           - Default build uses MFEM 4.10.
+           - Update requirement Python >= 3.11, NumPy >= 2.4.1, and SWIG >= 4.5.
+           - Droped Python 3.10 support, although it will strill built from source.
+
+        Wrapper enhancement/fix:
+           - Add MultiVector wrapper (multivector.i).
+           - Suppress invalid IntegerSet constructors generated due to using Array<int>
+             in sets.hpp (and how SWIG interprets it).
+           - Vector::GetArrayView is currently ignored. This method returns MemoryView
+             (which is not copy/move-able).
+           - Expose ODESolver::SupportsImplicitVariableType and SetImplicitVariableType
+             through %extend and using the public TimeDependentOperator enum.
+           - Add DGMassInv wrapper (dgmassinv.i).
+           - Add low-order refined discretization wrappers (lor.i). Following templrate
+             specialiation are created
+              (serial)   LORGSSmoother (LORSolver<GSSmoother>)
+                         LORDSmoother  (LORSolver<DSmoother>)
+              (parallel) LORHypreBoomerAMG (LORSolver<HypreBoomerAMG>)
+                         LORHypreAMS  (LORSolver<HypreAMS>)
+                         LORHypreADS (LORSolver<HypreADS>)
+           - Add FilteredSolver wrapper (filteredsolver.i).
+           - Add ex41.py and ex41p.py for IMEX advection-diffusion.
+           - Add star-mixed.mesh and star-mixed-p2.mesh to the example mesh data.
+           - Replace PyInt/PyString APIs (from Python 2) and SWIG_Python_str_FromChar
+             with Python 3 APIs.
+        Update on release script:
+           - Add macOS ARM64 binary release workflows (for Apple Silicon with macOS>=14).
+           - Common workflows are separated from PyPI and TestPyPI release scripts.
+           - Linux build container is updated to manylinux_2_28_x86_64
+           - Moved Python 3.11
+
 2025 08
      * Requires SWIG >= 4.4.
      * Added git_is_tracking_remote in build_util, which is called before git pull.
@@ -30,39 +40,39 @@
          mfem::ParGridFunction::ProjectDiscCoefficient(std::variant<mfem::Coefficient*, mfem::VectorCoefficient*>)
        which was introduced recently in pgridfunc.hpp
      * fe_pyramid.i is added
-     
+
 2025 12
      * PyMFEM4.9
-	- ordering.i is added and made correponding adjustment in *.i files.
-	- update ex22, ex22p to save ComplexGridFunction as is
-	- fixed ParComplexGridFunction::Save wrapping
-	- fixed GetDataArray of Vector/DenseMatrix/DenseTensor/SparseMatrix so that
-	  destructore is not pre-maturely called when return value is not stored to
-	  a variable.
-	- particleset.hpp, particlevector.hpp wrapper
-	- miniapp/dpg/utils/*.hpp is wrapped.
-	- Python version of pmaxwell.py in miniapp/dpg directory
-	- Shadowed method in fespace.i and pfespace.i are improved to return intArray and DofTransformation
-	  as a pre-allocated object.
+        - ordering.i is added and made correponding adjustment in *.i files.
+        - update ex22, ex22p to save ComplexGridFunction as is
+        - fixed ParComplexGridFunction::Save wrapping
+        - fixed GetDataArray of Vector/DenseMatrix/DenseTensor/SparseMatrix so that
+          destructore is not pre-maturely called when return value is not stored to
+          a variable.
+        - particleset.hpp, particlevector.hpp wrapper
+        - miniapp/dpg/utils/*.hpp is wrapped.
+        - Python version of pmaxwell.py in miniapp/dpg directory
+        - Shadowed method in fespace.i and pfespace.i are improved to return intArray and DofTransformation
+          as a pre-allocated object.
 
 2025 09
       * PyMFEM 4.8
         - Default branch is set to MFEM 4.8 release
-	- Support Python 3.12 and Python 3.13 (in CI)
-	- Python 3.8 is not supported anymore.
-	- Last version to support Python 3.9
-	- Install process is overwhauled,
-	   -- wheel is build both on Linux and Mac.
-	   -- local build-from-source is now done by "pip install . ", not "python setup.py install".
-	   -- ad-hoc call of chrpath is removed.
-	   -- CI script is updated to use pip install
-	- migrated to numpy 2.
-	- added custom numba-compiled bessel function to eliminate numba-scipy dependency
-	- ex40 and ex40p are translated.
-	- updated HYPRE version to 2.32
-	- wrappers for the following MFEM objects are added
-	    -- Array2D
-	    -- IterativeSolverController
+        - Support Python 3.12 and Python 3.13 (in CI)
+        - Python 3.8 is not supported anymore.
+        - Last version to support Python 3.9
+        - Install process is overwhauled,
+           -- wheel is build both on Linux and Mac.
+           -- local build-from-source is now done by "pip install . ", not "python setup.py install".
+           -- ad-hoc call of chrpath is removed.
+           -- CI script is updated to use pip install
+        - migrated to numpy 2.
+        - added custom numba-compiled bessel function to eliminate numba-scipy dependency
+        - ex40 and ex40p are translated.
+        - updated HYPRE version to 2.32
+        - wrappers for the following MFEM objects are added
+            -- Array2D
+            -- IterativeSolverController
             -- CoefficientPtrArray
             -- VectorCoefficientPtrArray
             -- MatrixCoefficientPtrArray
