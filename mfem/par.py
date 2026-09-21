@@ -104,7 +104,7 @@ from mfem._par.hyperbolic import *
 from mfem._par.multivector import *
 from mfem._par.dgmassinv import *
 from mfem._par.lor import *
-
+from mfem._par.filteredsolver import *
 from mfem._par.bounds import *
 from mfem._par.integrator import *
 

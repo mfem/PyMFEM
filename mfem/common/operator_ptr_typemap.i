@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.
+// Copyright (c) 2020-2026, Princeton Plasma Physics Laboratory, All rights reserved.
 //
 //
 //   allows to pass OperatorPtr to operator & 

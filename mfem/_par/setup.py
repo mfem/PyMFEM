@@ -133,7 +133,7 @@ def get_extensions():
                "hyperbolic",  "complex_densemat",
                "bounds", "integrator", "ordering",
                "dpg", "particleset", "particlevector", "fe_pyramid",
-               "multivector", "dgmassinv", "lor"]
+               "multivector", "dgmassinv", "lor", "filteredsolver"]
 
     if mpiinc != '':
         include_dirs.append(mpiinc)
