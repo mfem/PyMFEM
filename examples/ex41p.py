@@ -45,8 +45,8 @@ myid = comm.rank
 
 
 class Implicit_Solver(mfem.Solver):
-    """Solver for the implicit part of the ODE (the diffusion term).
-
+    """
+    Solver for the implicit part of the ODE (the diffusion term).
     Solves systems of the form: (M + dt*S) k = rhs.
     """
     def __init__(self, M, S, fes):
@@ -88,9 +88,9 @@ class Implicit_Solver(mfem.Solver):
 
 
 class IMEX_Evolution(mfem.PyTimeDependentOperator):
-    """A time-dependent operator for the right-hand side of the ODE.
-
-    The weak form of the advection-diffusion equation is M du/dt = K u - S u + b,
+    """
+    A time-dependent operator for the right-hand side of the ODE. The weak
+    form of the advection-diffusion equation is M du/dt = K u - S u + b,
     where M is the mass matrix, K and S are the advection and diffusion
     matrices, and b describes the flow on the boundary. In the case of IMEX
     evolution, the diffusion term is treated implicitly, and the advection
@@ -111,7 +111,7 @@ class IMEX_Evolution(mfem.PyTimeDependentOperator):
         self.M_prec = mfem.HypreSmoother(self.M, mfem.HypreSmoother.Jacobi)
         self.implicit_solver = Implicit_Solver(self.M, self.S, M.FESpace())
         self.ess_tdof_list = mfem.intArray()
-        # C++: LORSolver<HypreBoomerAMG>(A, ess_tdof_list).
+        
         self.lor_solver = mfem.LORHypreBoomerAMG(A, self.ess_tdof_list)
         self.lor_solver.GetSolver().SetSystemsOptions(A.ParFESpace().GetVDim(), True)
         self.implicit_solver.SetPreconditioner(self.lor_solver)
@@ -331,8 +331,8 @@ def run(meshfile='', problem=0, ser_ref_levels=2, par_ref_levels=0, order=3,
                 print('GLVis visualization paused. Press space (in the GLVis window) to resume it.')
 
     # 10. Define the time-dependent evolution operator describing the ODE
-    #    right-hand side, and perform time-integration (looping over the time
-    #    iterations, ti, with a time-step dt).
+    #     right-hand side, and perform time-integration (looping over the time
+    #     iterations, ti, with a time-step dt).
     adv = IMEX_Evolution(m, k, s, b, a)
     t = 0.0
     adv.SetTime(t)

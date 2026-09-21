@@ -25,8 +25,9 @@ import_array1(-1);
 %include "exception.i"
 %include "../common/typemap_macros.i"
 %include "../common/exception.i"
-%import vector.i
+
 %import mesh.i
 %import gridfunc.i
+%import particlevector.i
 
 %include "fem/gslib.hpp"
