@@ -11,15 +11,14 @@ classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Intended Audience :: Developers",
   "Topic :: Scientific/Engineering :: Physics",
-  "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: 3.14",  
 ]
-requires-python = ">=3.8"
+requires-python = ">=3.11"
 dependencies = [
-    "numpy>=2.0.0",
+    "numpy>=2.4.1",
     "numba",
     "scipy",
 ]
@@ -35,9 +34,9 @@ MPI = ["mpi4py"]
 requires = [
         "setuptools>=80.0.1",
         "pip>=25.1.0", 
-	"numpy>=2.0.0",
-	"cmake>=4.0.0",
-	"swig>=4.5",
+	      "numpy>=2.4.1",
+	      "cmake>=4.0.0",
+	      "swig>=4.5",
 ]
 build-backend = "backend"
 backend-path = ["_build_system"]

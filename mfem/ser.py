@@ -87,7 +87,7 @@ from mfem._ser.lor import *
 from mfem._ser.submesh import *
 from mfem._ser.transfermap import *
 from mfem._ser.hyperbolic import *
-
+from mfem._ser.filteredsolver import *
 
 import mfem._ser.array as array
 import mfem._ser.blockoperator as blockoperator

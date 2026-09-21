@@ -19,7 +19,7 @@ on:
       python-version:
         description: 'Python version'
         type: string
-        default: '3.10'
+        default: '3.11'
       mfem-branch:
         description: 'MFEM branch to checkout'
         type: string
@@ -90,10 +90,10 @@ jobs:
     # -------------------------------------------------------------------------------------------------
     - name: Install core dependencies via requirements.txt
       run: |
-        pip install -U setuptools>=79.0.1
-        pip install -U numpy>=2.0.0
-        pip install -U cmake>=4.0.0
-        pip install -U swig>=4.4
+        pip install -U "setuptools>=80.0.1"
+        pip install -U "numpy>=2.4.1"
+        pip install -U "cmake>=4.0.0"
+        pip install -U "swig>=4.5"
 
     #- name: Install chrpath on ubuntu
     #  if: inputs.os == 'ubuntu-latest'

@@ -2,91 +2,15 @@ name: release_binary
 
 on:
   push:
-    #branches: [ action_test ]
     tags: ["v*"]
 
+permissions:
+  contents: read
+
 jobs:
-  make_sdist:
-    runs-on: ubuntu-latest
-    container: quay.io/pypa/manylinux2014_x86_64
-    steps:
-      - name: build_sdist
-        run: |
-          echo This job does not specify a container.
-          echo It runs directly on the virtual machine.
-          #
-          git clone https://github.com/mfem/PyMFEM.git
-          cd PyMFEM
-          #
-          REF=$(echo ${GITHUB_REF#refs/heads/})
-          echo "!!!!!: "$REF
-          git checkout $REF
-          #
-          export PATH=/opt/python/cp39-cp39/bin:$PATH
-
-          pip install setuptools
-          pip install -U packaging
-          pip3 install wheel six auditwheel twine
-          pip3 install urllib3==1.26.6    # use older version to avoid OpenSSL vesion issue
-          pip3 install numpy==1.21.6
-          #if [ -f requirements.txt ]; then
-          #   pip3 install -r requirements.txt
-          #fi
-
-          rm -rf dist/*
-          python3 setup.py sdist
-          ls -l dist/
-          #python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
-          python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*
-  make_binary_3_10_11_12_13_14:
-    needs: make_sdist
-    strategy:
-      matrix:
-        pythonpath: ["cp310-cp310", "cp311-cp311", "cp312-cp312", "cp313-cp313", "cp314-cp314"]
-
-    runs-on: ubuntu-latest
-    container: quay.io/pypa/manylinux2014_x86_64
-    #container: node:10.16-jessie
-    steps:
-      - name: build package
-        run: |
-          echo It runs in the container instead of the VM.
-          #
-          git clone https://github.com/mfem/PyMFEM.git
-          cd PyMFEM
-          #
-          REF=$(echo ${GITHUB_REF#refs/heads/})
-          echo "!!!!!!: "$REF
-          git checkout $REF
-          #
-          ls -l /opt/python/
-          export PATH=/opt/python/${{ matrix.pythonpath }}/bin:$PATH
-
-          pip install setuptools
-          pip install -U packaging
-          pip3 install auditwheel twine
-          pip3 install urllib3==1.26.6    # use older version to avoid OpenSSL vesion issue
-
-          CWD=$PWD
-          yum install -y zlib-devel
-          #yum install -y chrpath
-
-          mkdir dist
-
-          # build wheel and check it
-          python3 -m pip wheel ./ --verbose --no-deps
-          pip3 install *.whl
-          cd test
-          python run_examples.py -serial -verbose -ex ex1
-          cd ..
-
-          rm -rf dist/*
-          export LD_LIBRARY_PATH=${CWD}/external/mfem/cmbuild_ser/:$LD_LIBRARY_PATH
-
-          auditwheel repair *.whl
-          rm -rf dist/*
-          mv wheelhouse/* dist/
-
-          ls -l dist/
-          #python3 -m twine upload --repository-url https://test.pypi.org/legacy/ --password ${{ secrets.TEST_PYPI_TOKEN }} --username __token__ --verbose dist/*
-          python3 -m twine upload --password ${{ secrets.PYPI_TOKEN }} --username __token__ --verbose dist/*
+  linux-release:
+    uses: ./.github/workflows/build-binary-callable.yml
+    with:
+      repository-url: https://upload.pypi.org/legacy/
+    secrets:
+      upload-token: ${{ secrets.PYPI_TOKEN }}

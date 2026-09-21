@@ -1,7 +1,7 @@
 import os
 
 txt1 = "//\n"
-txt2 = "// Copyright (c) 2020-2025, Princeton Plasma Physics Laboratory, All rights reserved.\n"
+txt2 = "// Copyright (c) 2020-2026, Princeton Plasma Physics Laboratory, All rights reserved.\n"
 
 def find_i_file(path):
 
