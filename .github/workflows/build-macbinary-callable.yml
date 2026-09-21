@@ -32,6 +32,8 @@ jobs:
       CMAKE_OSX_DEPLOYMENT_TARGET: '14.0'
       CMAKE_OSX_ARCHITECTURES: arm64
       ARCHFLAGS: '-arch arm64'
+      # Match wheel metadata to the ARM-only build, including with universal2 Python.
+      _PYTHON_HOST_PLATFORM: macosx-14.0-arm64
       CC: clang
       CXX: clang++
     steps:
@@ -45,6 +47,7 @@ jobs:
         run: |
           test "$(uname -m)" = arm64
           python -c "import platform; assert platform.machine() == 'arm64'"
+          python -c "import sysconfig; print('Wheel build platform:', sysconfig.get_platform())"
           clang --version
 
       - name: Install wheel tools
@@ -54,6 +57,19 @@ jobs:
         run: |
           set -o pipefail
           python -m pip wheel . --verbose --no-deps --wheel-dir raw-wheels 2>&1 | tee build-macos.log
+
+      - name: Check raw wheel platform tag
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from packaging.utils import parse_wheel_filename
+
+          wheels = list(Path('raw-wheels').glob('*.whl'))
+          assert len(wheels) == 1, wheels
+          print('Raw wheel:', wheels[0].name)
+          _, _, _, tags = parse_wheel_filename(wheels[0].name)
+          assert all(tag.platform == 'macosx_14_0_arm64' for tag in tags), tags
+          PY
 
       - name: Repair wheel dependencies
         run: |
