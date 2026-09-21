@@ -1,4 +1,28 @@
         <<<  Change Log. >>>
+2026 09
+     * PyMFEM 4.10.0
+        - Default build uses MFEM 4.10.
+        - Requires SWIG >= 4.5.
+        - Replace PyInt/PyString APIs (from Python 2) and SWIG_Python_str_FromChar
+          with Python 3 APIs.
+        - Update STRUMPACK argument conversion to use owned, mutable UTF-8 copies.
+        - Add MultiVector wrapper (multivector.i).
+        - Suppress invalid IntegerSet constructors generated due to using Array<int>
+          in sets.hpp (and how SWIG interprets it).
+        - Vector::GetArrayView is currently ignored. This method returns MemoryView
+          (which is not copy/move-able).
+        - Expose ODESolver::SupportsImplicitVariableType and SetImplicitVariableType
+          through %extend and using the public TimeDependentOperator enum.
+        - Add DGMassInv wrapper (dgmassinv.i).
+        - Add low-order refined discretization wrappers (lor.i). Following templrate
+	  specialiation are created
+	   (serial)   LORGSSmoother (LORSolver<GSSmoother>)
+	              LORDSmoother  (LORSolver<DSmoother>)
+	   (parallel) LORHypreBoomerAMG (LORSolver<HypreBoomerAMG>)
+  	              LORHypreAMS  (LORSolver<HypreAMS>)
+	              LORHypreADS (LORSolver<HypreADS>)
+        - Python ex41 and ex41p for IMEX advection-diffusion,
+        - Add star-mixed.mesh and star-mixed-p2.mesh to the example mesh data.
 2025 08
      * Requires SWIG >= 4.4.
      * Added git_is_tracking_remote in build_util, which is called before git pull.

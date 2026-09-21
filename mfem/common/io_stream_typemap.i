@@ -14,7 +14,7 @@
 		  PyObject *ret=0){
    //  PyMFEM::wFILE or string argument or StringIO
    if (SWIG_ConvertPtr($input, (void **) &temp, $descriptor(PyMFEM::wFILE *), 0 | 0) == -1) {
-      if (!PyString_Check($input) && !PyUnicode_Check($input)) {	
+      if (!PyUnicode_Check($input)) {
  	 // not string, check if it is StringIO
          PyObject* module = PyImport_ImportModule("io");
          if (!module){
@@ -72,7 +72,7 @@
   //std::string *ptr2 = (std::string *)0;
   if (SWIG_ConvertPtr($input, (void **) &ptr, $descriptor(PyMFEM::wFILE *), 0 |0) == -1) {
       PyErr_Clear();
-      if (!PyString_Check($input) && !PyUnicode_Check($input)) {	
+      if (!PyUnicode_Check($input)) {
  	 // not string
          $1 = 1;	   	
          PyObject* module = PyImport_ImportModule("io");
@@ -202,7 +202,7 @@ void method ## GZ(const char *file, int precision=16){
 		  std::istringstream *stream=0, Py_ssize_t len = 0){
    //  PyMFEM::wFILE or string argument or StringIO
    if (SWIG_ConvertPtr($input, (void **) &temp, $descriptor(PyMFEM::wFILE *), 0 | 0) == -1) {
-      if (!PyString_Check($input) && !PyUnicode_Check($input)) {	
+      if (!PyUnicode_Check($input)) {
  	 // not string, check if it is StringIO
          PyObject* module = PyImport_ImportModule("io");
          if (!module){
@@ -269,7 +269,7 @@ void method ## GZ(const char *file, int precision=16){
   //std::string *ptr2 = (std::string *)0;
   if (SWIG_ConvertPtr($input, (void **) &ptr, $descriptor(PyMFEM::wFILE *), 0 |0) == -1) {
       PyErr_Clear();
-      if (!PyString_Check($input) && !PyUnicode_Check($input)) {	
+      if (!PyUnicode_Check($input)) {
  	 // not string
          $1 = 1;	   	
          PyObject* module = PyImport_ImportModule("io");

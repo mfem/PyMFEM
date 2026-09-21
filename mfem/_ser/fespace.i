@@ -48,10 +48,10 @@ ISTREAM_TYPEMAP(std::istream&)
 
 // default number is -1, which conflict with error code of PyArray_PyIntAsInt...
 %typemap(typecheck) (int ndofs = -1) {
-   $1 = PyInt_Check($input) ? 1 : 0;
+   $1 = PyLong_Check($input) ? 1 : 0;
 }
 %typemap(typecheck) (int component = -1) {
-   $1 = PyInt_Check($input) ? 1 : 0;
+   $1 = PyLong_Check($input) ? 1 : 0;
 }
 
 

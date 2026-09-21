@@ -110,8 +110,8 @@ if len(args) == 1 and isinstance(args[0], csr_matrix):
   tmp_arr1_ = (PyArrayObject *)PyList_GetItem($input,0);
   tmp_arr2_ = (PyArrayObject *)PyList_GetItem($input,1);
   tmp_arr3_ = (PyArrayObject *)PyList_GetItem($input,2);
-  tmp_4_ = PyInt_AsLong(PyList_GetItem($input,3));
-  tmp_5_ = PyInt_AsLong(PyList_GetItem($input,4));
+  tmp_4_ = PyLong_AsLong(PyList_GetItem($input,3));
+  tmp_5_ = PyLong_AsLong(PyList_GetItem($input,4));
 
   $1 = (int *) PyArray_DATA(tmp_arr1_);
   $2 = (int *) PyArray_DATA(tmp_arr2_);
@@ -138,8 +138,8 @@ if len(args) == 1 and isinstance(args[0], csr_matrix):
        if (!PyArray_Check(PyList_GetItem($input,0))) $1 = 0;
        if (!PyArray_Check(PyList_GetItem($input,1))) $1 = 0;
        if (!PyArray_Check(PyList_GetItem($input,2))) $1 = 0;
-       if (!PyInt_Check(PyList_GetItem($input,3))) $1 = 0;
-       if (!PyInt_Check(PyList_GetItem($input,4))) $1 = 0;
+       if (!PyLong_Check(PyList_GetItem($input,3))) $1 = 0;
+       if (!PyLong_Check(PyList_GetItem($input,4))) $1 = 0;
      } else $1 = 0;
   }
 }

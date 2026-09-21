@@ -36,7 +36,28 @@ OSTREAM_TYPEMAP(std::ostream&)
   %append_output(PyFloat_FromDouble(*$1));
  }
 
+// Suppress the original wrappers using the protected alias.
+// Then, inject PyMFEM version using publicly enum.
 %ignore SupportsImplicitVariableType;
+%ignore mfem::ODESolver::SetImplicitVariableType;
+
+%rename(SupportsImplicitVariableType)
+    mfem::ODESolver::PySupportsImplicitVariableType;
+%rename(SetImplicitVariableType)
+    mfem::ODESolver::PySetImplicitVariableType;
 
 %include "linalg/ode.hpp"
+
+%extend mfem::ODESolver {
+    bool PySupportsImplicitVariableType(
+        mfem::TimeDependentOperator::ImplicitVariableType var) const {
+        return $self->SupportsImplicitVariableType(var);
+    }
+
+    void PySetImplicitVariableType(
+        mfem::TimeDependentOperator::ImplicitVariableType var) {
+        $self->SetImplicitVariableType(var);
+    }
+}
+
 

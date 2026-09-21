@@ -20,8 +20,9 @@ import_array1(-1);
 
 %include "exception.i"
 %import "mem_manager.i"
-%import "vector.i"
 %import "array.i"
+%import "vector.i"
+%import "multivector.i"
 %import "../common/exception_director.i"
 
 %import "../common/io_stream_typemap.i"

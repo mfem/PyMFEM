@@ -176,6 +176,8 @@ INSTANTIATE_ARRAY0(Vector *, Vector, 1)
      $result = $1;
 }
 
+%ignore mfem::Vector::GetArrayView;
+
 %include "linalg/vector.hpp"
 
 %extend mfem::Vector {
@@ -262,7 +264,7 @@ INSTANTIATE_ARRAY0(Vector *, Vector, 1)
 	}
     } else {
         PyErr_Clear();
-        long idx = PyInt_AsLong(param);
+        long idx = PyLong_AsLong(param);
         if (PyErr_Occurred()) {
            PyErr_SetString(PyExc_ValueError, "Argument must be either int or slice");
             return NULL;

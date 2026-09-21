@@ -114,7 +114,8 @@ def get_extensions():
                "attribute_sets", "arrays_by_name",
                "hyperbolic", "complex_densemat", 
                "bounds", "integrator", "ordering", 
-               "dpg", "particleset", "particlevector", "fe_pyramid"]
+               "dpg", "particleset", "particlevector", "fe_pyramid",
+               "multivector", "dgmassinv", "lor"]
 
     if add_cuda == '1':
         from setup_local import cudainc
