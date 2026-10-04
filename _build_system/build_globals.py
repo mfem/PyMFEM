@@ -20,6 +20,7 @@ build_libceed = False
 build_gslib = False
 build_parallel = False
 build_serial = False
+enable_numba_swig_bridge = False
 
 ext_prefix = ''
 mfem_outside = False

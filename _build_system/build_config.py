@@ -46,6 +46,8 @@ def print_config():
     print(" build serial wrapper: " + ("Yes" if bglb.build_serial else "No"))
     print(" build parallel wrapper : " +
           ("Yes" if bglb.build_parallel else "No"))
+    print(" enable numba-swig-bridge : " +
+          ("Yes" if bglb.enable_numba_swig_bridge else "No"))
 
     print(" hypre prefix", bglb.hypre_prefix)
     print(" metis prefix", bglb.metis_prefix)
@@ -85,6 +87,7 @@ def initialize_cmd_options(command_obj):
     command_obj.git_sshclone = False
     command_obj.skip_ext = False
     command_obj.with_parallel = False
+    command_obj.with_numba_swig_bridge = False
     command_obj.no_serial = False
     command_obj.mfem_prefix = ''
     command_obj.mfems_prefix = ''
@@ -135,6 +138,8 @@ cmd_options = [
     ('vv', None, 'More verbose output (CMAKE_VERBOSE_MAKEFILE etc)'),
     ('prefix=', None, 'Install prefix'),
     ('with-parallel', None, 'Installed both serial and parallel version'),
+    ('with-numba-swig-bridge', None,
+     'Enable experimental numba-swig-bridge annotations'),
     ('no-serial', None, 'Skip building the serial wrapper'),
     ('mfem-prefix=', None, 'Specify locaiton of mfem' +
      'libmfem.so must exits under <mfem-prefix>/lib. ' +
@@ -232,8 +237,10 @@ def process_cmd_options(command_obj, cfs):
                 value = cfs.pop(param, "Yes")
             else:
                 value = cfs.pop(param, "No")
+            if isinstance(value, (list, tuple)):
+                value = value[-1] if value else "No"
 
-            if value.upper() in ("YES", "TRUE", "1"):
+            if str(value).upper() in ("YES", "TRUE", "1"):
                 setattr(command_obj, attr, True)
             else:
                 setattr(command_obj, attr, False)
@@ -303,6 +310,7 @@ def configure_install(self):
     # controlls PyMFEM parallel
     bglb.build_parallel = bool(self.with_parallel)
     bglb.build_serial = not bool(self.no_serial)
+    bglb.enable_numba_swig_bridge = bool(self.with_numba_swig_bridge)
 
     bglb.clean_swig = True
     bglb.run_swig = True

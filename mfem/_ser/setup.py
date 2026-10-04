@@ -40,6 +40,7 @@ def get_extensions():
                                  cc_ser, cxx_ser,
                                  cxxstdflag, mfem_outside, build_miniapps,
                                  add_cuda, add_libceed, add_suitesparse, add_gslibs,
+                                 enable_numba_swig_bridge,
                                  bdist_wheel_dir)
 
         include_dirs = [mfemserbuilddir, mfemserincdir, mfemsrcdir, numpyinc,]
@@ -61,6 +62,7 @@ def get_extensions():
         cxxstdflag = '-std=c++17'
         mfem_outside = '0'
         build_miniapps = '0'
+        enable_numba_swig_bridge = '0'
 
 
     libraries = ['mfem']
@@ -135,6 +137,25 @@ def get_extensions():
     sources = {name: [name + "_wrap.cxx"] for name in modules}
     proxy_names = {name: '_'+name for name in modules}
 
+    if enable_numba_swig_bridge == '1' and 'clean' not in sys.argv:
+        from pathlib import Path
+        from numba_swig_bridge.build_info import get_build_info
+
+        bridge_info = get_build_info()
+        director_root = Path(ddd) / '.nsb-generated' / 'director'
+        helper = 'nsb_director_bindings'
+        helper_sources = [
+            Path(ddd) / (helper + '_wrap.cxx'),
+            director_root / 'cpp' / 'nsb_director.cpp',
+            *[Path(path) for path in bridge_info['sources']],
+        ]
+        missing = [str(path) for path in helper_sources if not path.is_file()]
+        if missing:
+            raise RuntimeError('missing generated Numba director helper source: ' + missing[0])
+        modules.append(helper)
+        sources[helper] = [str(path) for path in helper_sources]
+        proxy_names[helper] = '_' + helper
+
     tpl_include = []
     for x in mfemstpl.split(' '):
         if x.startswith("-I"):
@@ -142,6 +163,10 @@ def get_extensions():
                 continue
             tpl_include.append(x[2:])
     include_dirs.extend(tpl_include)
+
+    if enable_numba_swig_bridge == '1' and 'clean' not in sys.argv:
+        include_dirs.extend([str(director_root / 'cpp'), bridge_info['include_dir'],
+                             bridge_info['cpp_dir']])
 
     extra_compile_args = [cxxstdflag, '-DSWIG_TYPE_TABLE=PyMFEM']
     macros = [('TARGET_PY3', '1'),

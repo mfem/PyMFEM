@@ -72,6 +72,8 @@ def write_setup_local():
               'cxxstdflag': bglb.cxxstd_flag,
               'build_mfem': '1' if bglb.build_mfem else '0',
               'build_miniapps': '1' if bglb.mfem_miniapps else '0',
+              'enable_numba_swig_bridge': ('1' if bglb.enable_numba_swig_bridge
+                                           else '0'),
               'bdist_wheel_dir': bglb.bdist_wheel_dir,
               }
 
@@ -183,6 +185,83 @@ def generate_wrapper(do_parallel):
     update_header_exists(bglb.mfem_source)
 
     swigflag = '-Wall -c++ -python -std=c++17 -fastproxy -olddefs -keyword'.split(' ')
+    bridgeflag = []
+    bridge_include_dir = None
+    if bglb.enable_numba_swig_bridge:
+        # The backend installs this build requirement only when the matching
+        # PEP 517 setting is enabled. Its include directory provides the
+        # annotation macros used by mfem/common/bridges/*.i.
+        from numba_swig_bridge.build_info import get_build_info
+        bridge_build_info = get_build_info()
+        bridge_include_dir = bridge_build_info['include_dir']
+        bridgeflag = ['-DNUMBA_SWIG_BRIDGE', '-I' + bridge_include_dir]
+
+    serial_bridge_modules = (
+        "vector", "densemat", "array", "doftrans", "fespace", "fe_base",
+        "eltrans", "nonlinearform", "hyperbolic", "operators",
+    )
+
+    def generate_serial_bridge():
+        """Generate one serial bridge descriptor across enabled interfaces."""
+        from pathlib import Path
+        import shutil
+        from numba_swig_bridge.generator import generate_bridge
+        from numba_swig_bridge.generator.api import InterfaceSpec
+
+        package_dir = Path(rootdir) / "mfem" / "_ser"
+        output_dir = package_dir / ".nsb-generated"
+
+        def interface_spec(module_name):
+            """Describe one serial SWIG module selected for ordinary bridging."""
+            return InterfaceSpec(
+                interface=f"mfem/_ser/{module_name}.i",
+                python_module=f"mfem._ser.{module_name}",
+                include_dirs=[
+                    str(Path(rootdir) / "mfem" / "_ser"),
+                    str(Path(rootdir) / "mfem" / "common"),
+                    bridge_include_dir,
+                    os.path.join(bglb.mfem_source, "cmbuild_ser"),
+                    os.path.abspath(bglb.mfem_source),
+                ],
+                swig_options=("-python", "-DMFEM_NUMBA_SWIG_BRIDGE_SER"),
+            )
+
+        manifest = generate_bridge(
+            bridge_id="pymfem-ser",
+            # One invocation produces one descriptor and one registration
+            # module for all selected interfaces, with one helper per module.
+            interfaces=[interface_spec(module_name) for module_name in serial_bridge_modules],
+            source_root=rootdir,
+            output_dir=output_dir,
+            registration_module="mfem._ser._nsb_registration",
+            director_helper_module="mfem._ser.nsb_director_bindings",
+            swig=swig_command,
+        )
+        for relative in manifest.data["python_files"]:
+            source = manifest.path(relative)
+            shutil.copy2(source, package_dir / source.name)
+        director = manifest.data["director"]
+        assert director is not None
+        director_include = manifest.path(director["headers"][0]).parent
+        director_wrapper = package_dir / "nsb_director_bindings_wrap.cxx"
+        director_includes = [
+            str(director_include),
+            str(Path(rootdir) / "mfem" / "_ser"),
+            bridge_include_dir,
+            bridge_build_info["cpp_dir"],
+            os.path.join(mfemser, "include"),
+            os.path.join(mfemser, "include", "mfem"),
+            os.path.abspath(bglb.mfem_source),
+        ]
+        make_call([
+            swig_command, "-c++", "-python",
+            *["-I" + path for path in director_includes],
+            "-outdir", str(package_dir), "-o", str(director_wrapper),
+            str(manifest.path(director["swig_interface"])),
+        ])
+        return ["-I" + str(output_dir), "-DNUMBA_SWIG_BRIDGE_GENERATED",
+                "-DMFEM_NUMBA_SWIG_BRIDGE_SER"]
+
 
     pwd = chdir(os.path.join(rootdir, 'mfem', '_ser'))
 
@@ -192,9 +271,14 @@ def generate_wrapper(do_parallel):
     if bglb.enable_suitesparse:
         serflag.append('-I' + os.path.join(bglb.suitesparse_prefix,
                                            'include', 'suitesparse'))
+    serial_bridge_flags = []
+    serial_bridge_interfaces = {module_name + ".i"
+                                for module_name in serial_bridge_modules}
+    if bglb.enable_numba_swig_bridge:
+        serial_bridge_flags = generate_serial_bridge()
 
     for filename in ['lininteg.i', 'bilininteg.i']:
-        command = [swig_command] + swigflag + serflag + [filename]
+        command = [swig_command] + swigflag + bridgeflag + serflag + [filename]
         make_call(command)
     update_integrator_exts()
 
@@ -202,7 +286,9 @@ def generate_wrapper(do_parallel):
     for filename in ifiles():
         if not check_new(filename):
             continue
-        command = [swig_command] + swigflag + serflag + [filename]
+        interface_bridge = (serial_bridge_flags
+                            if filename in serial_bridge_interfaces else [])
+        command = [swig_command] + swigflag + bridgeflag + interface_bridge + serflag + [filename]
         commands.append(command)
 
     mp_pool = Pool(max((cpu_count() - 1, 1)))
@@ -229,14 +315,13 @@ def generate_wrapper(do_parallel):
     if bglb.enable_suitesparse:
         parflag.append('-I' + os.path.join(bglb.suitesparse_prefix,
                                            'include', 'suitesparse'))
-
     commands = []
     for filename in ifiles():
         if filename == 'strumpack.i' and not bglb.enable_strumpack:
             continue
         if not check_new(filename):
             continue
-        command = [swig_command] + swigflag + parflag + [filename]
+        command = [swig_command] + swigflag + bridgeflag + parflag + [filename]
         commands.append(command)
 
     mp_pool = Pool(max((cpu_count() - 1, 1)))
@@ -263,6 +348,8 @@ def clean_wrapper():
     wfiles.remove("__init__.py")
     wfiles.remove("setup.py")
     wfiles.remove("tmop_modules.py")
+    if "bridge_registration.py" in wfiles:
+        wfiles.remove("bridge_registration.py")
     remove_files(wfiles)
 
     ifiles = [x for x in os.listdir() if x.endswith('.i')]
@@ -281,6 +368,8 @@ def clean_wrapper():
     wfiles.remove("__init__.py")
     wfiles.remove("setup.py")
     wfiles.remove("tmop_modules.py")
+    if "bridge_registration.py" in wfiles:
+        wfiles.remove("bridge_registration.py")
     remove_files(wfiles)
 
     ifiles = [x for x in os.listdir() if x.endswith('.i')]

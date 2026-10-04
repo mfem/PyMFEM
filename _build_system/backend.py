@@ -4,19 +4,24 @@ from setuptools.build_meta import *
 import build_globals as bglb
 
 
+def _enabled(config_settings, flag):
+    """Return whether a PEP 517 boolean build setting is enabled."""
+    if not config_settings:
+        return False
+    value = config_settings.get(flag, "No")
+    if isinstance(value, (list, tuple)):
+        value = value[-1] if value else "No"
+    return str(value).upper() in ("YES", "TRUE", "1")
+
+
 def get_requires_for_build_wheel(config_settings=None):
+    # Do not consume config_settings here: build_wheel passes the same setting
+    # on to setup.py, where build_config.py enables the matching feature.
     ret = _orig.get_requires_for_build_wheel(config_settings)
-
-    need_mpi = False
-    if config_settings is not None:
-        for flag in ("with-parallel", ):
-            value = config_settings.pop(flag, "No")
-            if value.upper() in ("YES", "TRUE", "1"):
-                need_mpi = True
-                break
-
-    if need_mpi:
+    if _enabled(config_settings, "with-parallel"):
         ret = ret + ['mpi4py']
+    if _enabled(config_settings, "with-numba-swig-bridge"):
+        ret = ret + ['numba-swig-bridge>=0.8.0']
     return ret
 
 
@@ -28,4 +33,8 @@ def build_wheel(*args, **kwargs):
     bglb.cfs = args[1]
     if bglb.cfs is None:
         bglb.cfs = {}
+    else:
+        # process_cmd_options consumes its input. Keep the caller-owned PEP 517
+        # mapping intact for build frontends that reuse it.
+        bglb.cfs = dict(bglb.cfs)
     return _orig.build_wheel(*args, **kwargs)

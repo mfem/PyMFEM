@@ -47,6 +47,16 @@ and `--with-gslib` flags as follows.
 pip install . -C"with-parallel=Yes" -C"with-gslib=Yes"
 ```
 
+Enable the experimental Numba bridge during a source build with:
+
+```shell
+pip install . -C"with-numba-swig-bridge=Yes"
+```
+
+`pip install "mfem[bridge]"` installs the bridge runtime for a bridge-enabled
+wheel. Extras are resolved after build requirements, so the build setting is
+still required when generating wrappers from source.
+
 (Warning) The migration to `pip install . ` is on-going effort and Some of the example commands are not tested yet, which are indicated by using old conversion of "python setup.py install XXXX"
 
 ## Environmental variable
