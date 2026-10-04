@@ -12,6 +12,8 @@ import argparse
 import sys
 from pathlib import Path
 
+import numpy as np
+
 import numba_swig_bridge as nsb
 from numba import njit, types
 import mfem.ser as mfem
@@ -34,12 +36,6 @@ import ex18 as reference_ex18
         "invmass": mfem.DenseTensor,
         "weakdiv": mfem.DenseTensor,
         "vdofs": mfem.intArray,
-        "xval": mfem.Vector,
-        "zval": mfem.Vector,
-        "yval": mfem.Vector,
-        "current_state": mfem.Vector,
-        "current_flux": mfem.DenseMatrix,
-        "flux": mfem.DenseMatrix,
         "num_equations": types.intc,
         "dimension": types.intc,
         "element_count": types.intc,
@@ -48,11 +44,11 @@ import ex18 as reference_ex18
     fallback="error",
 )
 class NumbaDGHyperbolicConservationLaws(mfem.TimeDependentOperator):
-    """Example-18 operator with NumPy-view arithmetic inside a Numba director.
+    """Example-18 operator with NumPy work arrays inside a Numba director.
 
-    The tensors keep all element matrices in C++-owned storage. Their
-    ``GetDataArray`` views are used only during a callback and do not transfer
-    ownership to Numba.
+    Element matrices stay in C++-owned tensors. Per-call work arrays are
+    ordinary Numba arrays; frame-owned MFEM views expose the state and flux
+    buffers only for the ``ComputeFlux`` C++ call.
     """
 
     def __init__(self, vfes, form_integrator, preassembleWeakDivergence=True):
@@ -73,24 +69,26 @@ class NumbaDGHyperbolicConservationLaws(mfem.TimeDependentOperator):
         self.element_dofs = element_dofs
         self.z = mfem.Vector(vfes.GetTrueVSize())
         self.vdofs = mfem.intArray()
-        self.xval = mfem.Vector(element_dofs * self.num_equations)
-        self.zval = mfem.Vector(element_dofs * self.num_equations)
-        self.yval = mfem.Vector(element_dofs * self.num_equations)
-        self.current_state = mfem.Vector(self.num_equations)
-        self.current_flux = mfem.DenseMatrix(self.num_equations, self.dimension)
-        self.flux = mfem.DenseMatrix(
-            self.num_equations, self.dimension * element_dofs
-        )
         self.invmass = mfem.DenseTensor(element_dofs, element_dofs, element_count)
         self.weakdiv = mfem.DenseTensor(
             element_dofs, element_dofs * self.dimension, element_count
         )
 
         self._assemble_element_data()
+        self._validate_vdofs()
         nonlinear_form = mfem.NonlinearForm(vfes)
         nonlinear_form.AddInteriorFaceIntegrator(form_integrator)
         nonlinear_form.UseExternalIntegrators()
         self.nonlinear_form = nonlinear_form
+
+    def _validate_vdofs(self):
+        """Require unsigned DG vdofs before using direct data-view indexing."""
+        for element in range(self.element_count):
+            self.vfes.GetElementVDofs(element, self.vdofs)
+            if any(index < 0 for index in self.vdofs.ToList()):
+                raise ValueError(
+                    "bridge ex18 data-view gather/scatter requires unsigned element vdofs"
+                )
 
     def _assemble_element_data(self):
         """Preassemble Python-side matrices into C++ tensors for the callback."""
@@ -130,12 +128,43 @@ class NumbaDGHyperbolicConservationLaws(mfem.TimeDependentOperator):
 
         inverse_mass = self.invmass.GetDataArray()
         weak_divergence = self.weakdiv.GetDataArray()
-        flux_data = self.flux.GetDataArray()
-        state_data = self.current_state.GetDataArray()
-        current_flux_data = self.current_flux.GetDataArray()
-        x_data = self.xval.GetDataArray()
-        z_data = self.zval.GetDataArray()
-        y_data = self.yval.GetDataArray()
+        input_data = x.GetDataArray()
+        auxiliary_data = self.z.GetDataArray()
+        output_data = y.GetDataArray()
+        local_size = self.element_dofs * self.num_equations
+        # MFEM's dof-by-equation DenseMatrix layout is column-major. Its
+        # transposed representation is C-contiguous and lets Numba use whole
+        # matrix products below.
+        x_data = np.empty(
+            (self.num_equations, self.element_dofs), dtype=np.float64
+        )
+        z_data = np.empty(
+            (self.num_equations, self.element_dofs), dtype=np.float64
+        )
+        y_data = np.empty(
+            (self.num_equations, self.element_dofs), dtype=np.float64
+        )
+        x_data_flat = x_data.reshape(local_size)
+        z_data_flat = z_data.reshape(local_size)
+        y_data_flat = y_data.reshape(local_size)
+        flux_data = np.empty(
+            (self.num_equations, self.dimension * self.element_dofs),
+            dtype=np.float64,
+        )
+        state_data = np.empty(self.num_equations, dtype=np.float64)
+        # This C-order shape has the same physical layout as MFEM's
+        # column-major (num_equations, dimension) DenseMatrix.
+        current_flux_data = np.empty(
+            (self.dimension, self.num_equations), dtype=np.float64
+        )
+        current_state = mfem.Vector(
+            nsb.as_cpointer(state_data), self.num_equations
+        )
+        current_flux = mfem.DenseMatrix(
+            nsb.as_cpointer(current_flux_data),
+            self.num_equations,
+            self.dimension,
+        )
         flux_function = self.form_integrator.GetFluxFunction()
         # The generic bridge maps C++ pointer returns to Optional[T]. MFEM
         # creates this helper with the integrator, but retain the native null
@@ -149,38 +178,33 @@ class NumbaDGHyperbolicConservationLaws(mfem.TimeDependentOperator):
             # The nullable borrowed DofTransformation is irrelevant here; the
             # mutable Array<int>& receives the element vector dofs.
             self.vfes.GetElementVDofs(element, self.vdofs)
-            x.GetSubVector(self.vdofs, self.xval)
-            self.z.GetSubVector(self.vdofs, self.zval)
+            vdof_data = self.vdofs.GetDataArray()
+            x_data_flat[:] = input_data[vdof_data]
+            z_data_flat[:] = auxiliary_data[vdof_data]
 
             for node in range(self.element_dofs):
-                for equation in range(self.num_equations):
-                    state_data[equation] = x_data[node + self.element_dofs * equation]
+                state_data[:] = x_data[:, node]
                 flux_function.ComputeFlux(
-                    self.current_state, transformation, self.current_flux
+                    current_state, transformation, current_flux
                 )
-                for equation in range(self.num_equations):
-                    for direction in range(self.dimension):
-                        flux_data[equation, self.dimension * node + direction] = (
-                            current_flux_data[equation, direction]
-                        )
+                start = self.dimension * node
+                flux_data[:, start:start + self.dimension] = current_flux_data.T
 
-            # z_loc += weakdiv * flux.T; then y_loc = invmass * z_loc.
-            for row in range(self.element_dofs):
-                for equation in range(self.num_equations):
-                    value = z_data[row + self.element_dofs * equation]
-                    for column in range(self.element_dofs * self.dimension):
-                        value += weak_divergence[element, row, column] * flux_data[equation, column]
-                    z_data[row + self.element_dofs * equation] = value
-
-            for row in range(self.element_dofs):
-                for equation in range(self.num_equations):
-                    value = 0.0
-                    for column in range(self.element_dofs):
-                        value += inverse_mass[element, row, column] * z_data[
-                            column + self.element_dofs * equation
-                        ]
-                    y_data[row + self.element_dofs * equation] = value
-            y.SetSubVector(self.vdofs, self.yval)
+            # This is the transposed NumPy form of the original MFEM calls:
+            # AddMult_a_ABt(1.0, weakdiv, flux, current_zmat) and
+            # Mult(invmass, current_zmat, current_ymat).
+            # A DenseTensor is a single contiguous MFEM buffer whose 2-D
+            # element slices use MFEM's column-major matrix layout.  The
+            # complete 3-D view is therefore strided, but each slice is
+            # Fortran-contiguous.  These calls only assert that slice layout;
+            # they do not copy its data.
+            weak_divergence_element = np.asfortranarray(
+                weak_divergence[element]
+            )
+            inverse_mass_element = np.asfortranarray(inverse_mass[element])
+            z_data += flux_data @ weak_divergence_element.T
+            y_data[:] = z_data @ inverse_mass_element.T
+            output_data[vdof_data] = y_data_flat
 
 
 
