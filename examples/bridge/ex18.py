@@ -41,7 +41,9 @@ import ex18 as reference_ex18
         "element_count": types.intc,
         "element_dofs": types.intc,
     },
-    fallback="error",
+    # Automatic director selection also exposes non-pure MFEM virtuals. This
+    # example implements only Mult; the rest intentionally use MFEM defaults.
+    fallback="silent",
 )
 class NumbaDGHyperbolicConservationLaws(mfem.TimeDependentOperator):
     """Example-18 operator with NumPy work arrays inside a Numba director.
