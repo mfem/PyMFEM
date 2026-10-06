@@ -23,3 +23,10 @@ are recorded in the shared integration report
 `test_data_members.py` verifies automatically bridged IntegrationPoint fields,
 ElementTransformation element numbers, and const integration-point reads through
 MFEM coefficient projection. It also rejects writes to the const callback input.
+
+`test_linearform_integrators.py` exercises direct `LinearFormIntegrator` NSB
+directors through `LinearForm.Assemble()`, including native ownership transfer,
+facade closure before assembly, surface and subdomain shape paths, and comparison
+with Python callbacks and MFEM's native `DomainLFIntegrator`. Its callbacks and
+the direct coefficient tests also exercise explicit callback-local
+`stateaccess` declarations through real MFEM projection and assembly calls.

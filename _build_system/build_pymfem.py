@@ -198,7 +198,8 @@ def generate_wrapper(do_parallel):
 
     serial_bridge_modules = (
         "vector", "densemat", "array", "doftrans", "fespace", "fe_base",
-        "eltrans", "intrules", "coefficient", "nonlinearform", "hyperbolic", "operators",
+        "eltrans", "intrules", "coefficient", "lininteg", "nonlinearform",
+        "hyperbolic", "operators",
     )
 
     def generate_serial_bridge():
@@ -278,7 +279,10 @@ def generate_wrapper(do_parallel):
         serial_bridge_flags = generate_serial_bridge()
 
     for filename in ['lininteg.i', 'bilininteg.i']:
-        command = [swig_command] + swigflag + bridgeflag + serflag + [filename]
+        interface_bridge = (serial_bridge_flags
+                            if filename in serial_bridge_interfaces else [])
+        command = ([swig_command] + swigflag + bridgeflag + interface_bridge
+                   + serflag + [filename])
         make_call(command)
     update_integrator_exts()
 
