@@ -1,0 +1,136 @@
+{
+  "schema_version": 2,
+  "kind": "generated_nsb_director_recipe",
+  "directors": [
+    {
+      "cxx_type": "mfem::Coefficient",
+      "factory": "create_nsb_director_mfem_Coefficient",
+      "declaring_header": "fem/coefficient.hpp",
+      "methods": [
+        {
+          "identity": "mfem::Coefficient::Eval(mfem::ElementTransformation&, const mfem::IntegrationPoint&)",
+          "symbol": "mfem__Coefficient__Eval_mfem__ElementTransformation___const_mfem__IntegrationPoint",
+          "abstract": true
+        }
+      ]
+    },
+    {
+      "cxx_type": "mfem::LinearFormIntegrator",
+      "factory": "create_nsb_director_mfem_LinearFormIntegrator",
+      "declaring_header": "fem/lininteg.hpp",
+      "methods": [
+        {
+          "identity": "mfem::LinearFormIntegrator::AssembleRHSElementVect(const mfem::FiniteElement&, mfem::ElementTransformation&, mfem::Vector&)",
+          "symbol": "mfem__LinearFormIntegrator__AssembleRHSElementVect_const_mfem__FiniteElement___mfem__ElementTransformation___mfem__Vector",
+          "abstract": true
+        }
+      ]
+    },
+    {
+      "cxx_type": "mfem::MatrixCoefficient",
+      "factory": "create_nsb_director_mfem_MatrixCoefficient",
+      "declaring_header": "fem/coefficient.hpp",
+      "methods": [
+        {
+          "identity": "mfem::MatrixCoefficient::Eval(mfem::DenseMatrix&, mfem::ElementTransformation&, const mfem::IntegrationPoint&)",
+          "symbol": "mfem__MatrixCoefficient__Eval_mfem__DenseMatrix___mfem__ElementTransformation___const_mfem__IntegrationPoint",
+          "abstract": true
+        }
+      ]
+    },
+    {
+      "cxx_type": "mfem::TimeDependentOperator",
+      "factory": "create_nsb_director_mfem_TimeDependentOperator",
+      "declaring_header": "linalg/operator.hpp",
+      "methods": [
+        {
+          "identity": "mfem::TimeDependentOperator::ExplicitMult(const mfem::Vector&, mfem::Vector&) const",
+          "symbol": "mfem__TimeDependentOperator__ExplicitMult_const_mfem__Vector___mfem__Vector___const",
+          "abstract": false
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::GetImplicitVariableType() const",
+          "symbol": "mfem__TimeDependentOperator__GetImplicitVariableType___const",
+          "abstract": false
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::GetTime() const",
+          "symbol": "mfem__TimeDependentOperator__GetTime___const",
+          "abstract": false
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::ImplicitMult(const mfem::Vector&, const mfem::Vector&, mfem::Vector&) const",
+          "symbol": "mfem__TimeDependentOperator__ImplicitMult_const_mfem__Vector___const_mfem__Vector___mfem__Vector___const",
+          "abstract": false
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::ImplicitSolve(const mfem::real_t, const mfem::Vector&, mfem::Vector&)",
+          "symbol": "mfem__TimeDependentOperator__ImplicitSolve_const_mfem__real_t__const_mfem__Vector___mfem__Vector",
+          "abstract": false
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::ImplicitVarTypeIsSlope() const",
+          "symbol": "mfem__TimeDependentOperator__ImplicitVarTypeIsSlope___const",
+          "abstract": false
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::ImplicitVarTypeIsState() const",
+          "symbol": "mfem__TimeDependentOperator__ImplicitVarTypeIsState___const",
+          "abstract": false
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::Mult(const mfem::Vector&, mfem::Vector&) const",
+          "symbol": "mfem__TimeDependentOperator__Mult_const_mfem__Vector___mfem__Vector___const",
+          "abstract": false
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::SUNImplicitSetup(const mfem::Vector&, const mfem::Vector&, int, int*, mfem::real_t)",
+          "symbol": "mfem__TimeDependentOperator__SUNImplicitSetup_const_mfem__Vector___const_mfem__Vector___int__int___mfem__real_t",
+          "abstract": false
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::SUNImplicitSolve(const mfem::Vector&, mfem::Vector&, mfem::real_t)",
+          "symbol": "mfem__TimeDependentOperator__SUNImplicitSolve_const_mfem__Vector___mfem__Vector___mfem__real_t",
+          "abstract": false
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::SUNMassMult(const mfem::Vector&, mfem::Vector&)",
+          "symbol": "mfem__TimeDependentOperator__SUNMassMult_const_mfem__Vector___mfem__Vector",
+          "abstract": false
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::SUNMassSetup()",
+          "symbol": "mfem__TimeDependentOperator__SUNMassSetup",
+          "abstract": false
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::SUNMassSolve(const mfem::Vector&, mfem::Vector&, mfem::real_t)",
+          "symbol": "mfem__TimeDependentOperator__SUNMassSolve_const_mfem__Vector___mfem__Vector___mfem__real_t",
+          "abstract": false
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::SetEvalMode(const mfem::TimeDependentOperator::EvalMode)",
+          "symbol": "mfem__TimeDependentOperator__SetEvalMode_const_mfem__TimeDependentOperator__EvalMode",
+          "abstract": false
+        },
+        {
+          "identity": "mfem::TimeDependentOperator::SetTime(const mfem::real_t)",
+          "symbol": "mfem__TimeDependentOperator__SetTime_const_mfem__real_t",
+          "abstract": false
+        }
+      ]
+    },
+    {
+      "cxx_type": "mfem::VectorCoefficient",
+      "factory": "create_nsb_director_mfem_VectorCoefficient",
+      "declaring_header": "fem/coefficient.hpp",
+      "methods": [
+        {
+          "identity": "mfem::VectorCoefficient::Eval(mfem::Vector&, mfem::ElementTransformation&, const mfem::IntegrationPoint&)",
+          "symbol": "mfem__VectorCoefficient__Eval_mfem__Vector___mfem__ElementTransformation___const_mfem__IntegrationPoint",
+          "abstract": true
+        }
+      ]
+    }
+  ]
+}
